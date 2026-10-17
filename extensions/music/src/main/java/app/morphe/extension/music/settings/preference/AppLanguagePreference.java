@@ -19,6 +19,8 @@ import android.preference.Preference;
 import android.provider.Settings;
 import android.util.AttributeSet;
 
+import androidx.annotation.RequiresApi;
+
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
@@ -45,7 +47,11 @@ public class AppLanguagePreference extends Preference {
     }
 
     private static String getAppLanguageName(Context context) {
-        LocaleList locales = context.getSystemService(LocaleManager.class).getApplicationLocales();
+        LocaleList locales = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            locales = context.getSystemService(LocaleManager.class).getApplicationLocales();
+        }
+        assert locales != null;
         if (locales.isEmpty()) {
             return str("morphe_music_app_language_summary_default");
         }
@@ -55,6 +61,7 @@ public class AppLanguagePreference extends Preference {
         return name.substring(0, 1).toUpperCase(locale) + name.substring(1);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
     protected void onClick() {
         Context context = getContext();

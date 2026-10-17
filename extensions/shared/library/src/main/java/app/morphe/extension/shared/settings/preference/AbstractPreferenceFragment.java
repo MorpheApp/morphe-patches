@@ -59,13 +59,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.text.Collator;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -277,7 +280,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     private String existingSettings = "";
 
-    private String pendingTextToExport = null;
+    private Collection<String> pendingLinesToExport = null;
     private Consumer<Boolean> pendingTextExportResult = null;
     private Consumer<String> pendingTextImportResult = null;
 
@@ -287,44 +290,44 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     private final SharedPreferences.OnSharedPreferenceChangeListener listener =
             (sharedPreferences, str) -> {
-        try {
-            if (updatingPreference) {
-                Logger.printDebug(() -> "Ignoring preference change as sync is in progress");
-                return;
-            }
+                try {
+                    if (updatingPreference) {
+                        Logger.printDebug(() -> "Ignoring preference change as sync is in progress");
+                        return;
+                    }
 
-            Setting<?> setting = Setting.getSettingFromPath(Objects.requireNonNull(str));
-            if (setting == null) {
-                return;
-            }
-            Preference pref = findPreference(str);
-            if (pref == null) {
-                return;
-            }
-            Logger.printDebug(() -> "Preference changed: " + setting.key);
+                    Setting<?> setting = Setting.getSettingFromPath(Objects.requireNonNull(str));
+                    if (setting == null) {
+                        return;
+                    }
+                    Preference pref = findPreference(str);
+                    if (pref == null) {
+                        return;
+                    }
+                    Logger.printDebug(() -> "Preference changed: " + setting.key);
 
-            if (!settingImportInProgress && !showingUserDialogMessage) {
-                if (setting.userDialogMessage != null && !prefIsSetToDefault(pref, setting)) {
-                    // Do not change the setting yet, to allow preserving whatever
-                    // list/text value was previously set if it needs to be reverted.
-                    showSettingUserDialogConfirmation(pref, setting);
-                    return;
-                } else if (setting.rebootApp) {
-                    showRestartDialog(getContext());
+                    if (!settingImportInProgress && !showingUserDialogMessage) {
+                        if (setting.userDialogMessage != null && !prefIsSetToDefault(pref, setting)) {
+                            // Do not change the setting yet, to allow preserving whatever
+                            // list/text value was previously set if it needs to be reverted.
+                            showSettingUserDialogConfirmation(pref, setting);
+                            return;
+                        } else if (setting.rebootApp) {
+                            showRestartDialog(getContext());
+                        }
+                    }
+
+                    updatingPreference = true;
+                    // Apply 'Setting <- Preference', unless during importing when it needs to be 'Setting -> Preference'.
+                    // Updating here can cause a recursive call back into this same method.
+                    updatePreference(pref, setting, true, settingImportInProgress);
+                    // Update any other preference availability that may now be different.
+                    updateUIAvailability();
+                    updatingPreference = false;
+                } catch (Exception ex) {
+                    Logger.printException(() -> "OnSharedPreferenceChangeListener failure", ex);
                 }
-            }
-
-            updatingPreference = true;
-            // Apply 'Setting <- Preference', unless during importing when it needs to be 'Setting -> Preference'.
-            // Updating here can cause a recursive call back into this same method.
-            updatePreference(pref, setting, true, settingImportInProgress);
-            // Update any other preference availability that may now be different.
-            updateUIAvailability();
-            updatingPreference = false;
-        } catch (Exception ex) {
-            Logger.printException(() -> "OnSharedPreferenceChangeListener failure", ex);
-        }
-    };
+            };
 
     /**
      * Initialize this instance, and do any custom behavior.
@@ -349,7 +352,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         PreferenceScreen screen = getPreferenceScreen();
         sortPreferenceGroups(screen);
-        Utils.setPreferenceTitlesToMultiLineIfNeeded(screen);
+        Utils.setPreferenceTitlesToMultiLine(screen);
     }
 
     private void showSettingUserDialogConfirmation(Preference pref, Setting<?> setting) {
@@ -701,8 +704,20 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
      * @param onResult Called with the result, or not called if the user picks no file.
      */
     public void exportTextActivity(String fileName, String text, Consumer<Boolean> onResult) {
+        exportLinesActivity(fileName, List.of(text), onResult);
+    }
+
+    /**
+     * Opens the file picker to stream a collection of lines directly to a file
+     * without concatenating them into a single String in memory first.
+     *
+     * @param fileName Name suggested to the user.
+     * @param lines    Lines to write.
+     * @param onResult Called with the result, or not called if the user picks no file.
+     */
+    public void exportLinesActivity(String fileName, Collection<String> lines, Consumer<Boolean> onResult) {
         try {
-            pendingTextToExport = text;
+            pendingLinesToExport = lines;
             pendingTextExportResult = onResult;
 
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
@@ -711,7 +726,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             intent.putExtra(Intent.EXTRA_TITLE, fileName);
             startActivityForResult(intent, WRITE_TEXT_REQUEST_CODE);
         } catch (Exception ex) {
-            Logger.printException(() -> "exportTextActivity failure", ex);
+            Logger.printException(() -> "exportLinesActivity failure", ex);
         }
     }
 
@@ -736,12 +751,23 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     private void saveTextToUri(Uri uri) {
-        if (pendingTextExportResult == null) return;
+        if (pendingTextExportResult == null || pendingLinesToExport == null) return;
 
         boolean success = false;
-        try (OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt")) {
-            if (out != null) {
-                out.write(pendingTextToExport.getBytes(StandardCharsets.UTF_8));
+        try (OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt");
+             BufferedWriter writer = out != null
+                     ? new BufferedWriter(new OutputStreamWriter(out, StandardCharsets.UTF_8))
+                     : null) {
+            if (writer != null) {
+                boolean first = true;
+                for (String line : pendingLinesToExport) {
+                    if (!first) {
+                        writer.newLine();
+                    }
+                    writer.write(line);
+                    first = false;
+                }
+                writer.flush();
                 success = true;
             }
         } catch (Exception ex) {
@@ -749,7 +775,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
 
         pendingTextExportResult.accept(success);
-        pendingTextToExport = null;
+        pendingLinesToExport = null;
         pendingTextExportResult = null;
     }
 
@@ -793,31 +819,33 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
     }
 
-    private void exportToFile(String logsToExport) {
-        if (!BaseSettings.DEBUG.get() || logsToExport == null || logsToExport.trim().isEmpty()) {
+    private void exportToFile(Collection<String> logsToExport) {
+        if (!BaseSettings.DEBUG.get() || logsToExport == null || logsToExport.isEmpty()) {
             Utils.showToastShort(str("morphe_debug_logs_none_found"));
             return;
         }
 
-        exportTextActivity(exportFileName("Debug_Logs"), logsToExport, success -> showLocalizedToast(
+        List<String> snapshot = new ArrayList<>(logsToExport);
+
+        exportLinesActivity(exportFileName("Debug_Logs"), snapshot, success -> showLocalizedToast(
                 success ? "morphe_debug_export_logs_success" : "morphe_debug_export_logs_failed",
                 success ? "Debug logs exported successfully" : "Failed to export debug logs"));
     }
 
     private static class LogAdapter extends BaseAdapter {
         private final List<String> allLogs;
-        private final List<String> filteredLogs = new ArrayList<>();
+        private final List<String> filteredLogs;
         private final Context context;
         private String query = "";
 
-        LogAdapter(Context context, String[] logs) {
+        LogAdapter(Context context, Collection<String> logs) {
             this.context = context;
-            this.allLogs = List.of(logs);
-            this.filteredLogs.addAll(this.allLogs);
+            this.allLogs = new ArrayList<>(logs);
+            this.filteredLogs = new ArrayList<>(this.allLogs);
         }
 
         void filter(String q) {
-            this.query = q.toLowerCase(Locale.ROOT);
+            this.query = q.trim().toLowerCase(Locale.ROOT);
             filteredLogs.clear();
             if (query.isEmpty()) {
                 filteredLogs.addAll(allLogs);
@@ -829,6 +857,54 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 }
             }
             notifyDataSetChanged();
+        }
+
+        void clearLogs() {
+            allLogs.clear();
+            filteredLogs.clear();
+            notifyDataSetChanged();
+        }
+
+        /**
+         * @return The list of logs matching the current search filter (used for zero-copy file streaming).
+         */
+        @NonNull
+        List<String> getFilteredLogs() {
+            return filteredLogs;
+        }
+
+        /**
+         * @return Only the logs matching the current search filter, capped at
+         *         {@link Logger#CLIPBOARD_MAX_LENGTH} to respect Android's Binder transaction limit.
+         */
+        @NonNull
+        String getFilteredLogsString() {
+            if (filteredLogs.isEmpty()) {
+                return "";
+            }
+
+            int totalChars = 0;
+            int startIndex = filteredLogs.size() - 1;
+            for (; startIndex >= 0; startIndex--) {
+                int entryLength = filteredLogs.get(startIndex).length() + 1;
+                if (totalChars + entryLength > Logger.CLIPBOARD_MAX_LENGTH) {
+                    break;
+                }
+                totalChars += entryLength;
+            }
+
+            boolean truncated = startIndex >= 0;
+            int actualStart = truncated ? startIndex + 1 : 0;
+
+            StringBuilder sb = new StringBuilder(totalChars + 64);
+            if (truncated) {
+                sb.append("... [Truncated older logs to fit clipboard limit] ...\n");
+            }
+            for (int i = actualStart, size = filteredLogs.size(); i < size; i++) {
+                if (i > actualStart) sb.append('\n');
+                sb.append(filteredLogs.get(i));
+            }
+            return sb.toString();
         }
 
         @Override public int getCount() { return filteredLogs.size(); }
@@ -887,11 +963,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 return;
             }
 
-            final String allLogs = Logger.getFilteredLogs();
-            final String[] logLines = allLogs.split("\n");
-
             ListView logViewer = new ListView(context);
-            LogAdapter logAdapter = new LogAdapter(context, logLines);
+            LogAdapter logAdapter = new LogAdapter(context, Logger.getLogBuffer());
             logViewer.setAdapter(logAdapter);
             logViewer.setDividerHeight(0);
             logViewer.setPadding(0, Dim.dp4, 0, Dim.dp4);
@@ -905,10 +978,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     null,
                     null,
                     str("morphe_settings_import_copy"),
-                    () -> exportToClipboard(allLogs),
+                    () -> exportToClipboard(logAdapter.getFilteredLogsString()),
                     () -> {},
                     str("morphe_debug_export_logs_clear"),
-                    Logger::clearLogBufferData,
+                    () -> {
+                        Logger.clearLogBufferData();
+                        logAdapter.clearLogs();
+                    },
                     true
             );
 
@@ -922,12 +998,12 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
             EditText searchBar = CustomDialog.createSearchBar(context,
                     str("morphe_debug_logs_search_hint"), query -> {
-                if (searchRunnable[0] != null) {
-                    searchHandler.removeCallbacks(searchRunnable[0]);
-                }
-                searchRunnable[0] = () -> logAdapter.filter(query);
-                searchHandler.postDelayed(searchRunnable[0], 200);
-            });
+                        if (searchRunnable[0] != null) {
+                            searchHandler.removeCallbacks(searchRunnable[0]);
+                        }
+                        searchRunnable[0] = () -> logAdapter.filter(query);
+                        searchHandler.postDelayed(searchRunnable[0], 200);
+                    });
 
             LinearLayout.LayoutParams searchParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -943,7 +1019,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
             Button buttonExport = CustomDialog.createButton(context, dialogPair.first,
                     str("morphe_settings_export_file"),
-                    () -> exportToFile(allLogs),
+                    () -> exportToFile(logAdapter.getFilteredLogs()),
                     false, true);
 
             LinearLayout.LayoutParams buttonExportParams = new LinearLayout.LayoutParams(

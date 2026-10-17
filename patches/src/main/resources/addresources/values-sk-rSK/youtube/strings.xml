@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Zakázať aktualizácie rozloženia</string>
   <string name="morphe_disable_layout_updates_summary">Zabraňuje serveru aktualizovať rozloženie aplikácie</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Rozloženie sa vráti do rozloženia používaného pri prvom nainštalovaní.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Rozloženie aplikácie sa vráti do rozloženia používaného pri prvej inštalácii.
 
-Niektoré rozloženia zo strany servera sa nemusia vrátiť.
+Niektoré serverové rozloženia sa nemusia vrátiť.
 
 Zmeny zahŕňajú:
-• Komponenty v rozbaľovacej ponuke prehrávača (alebo súvisiace nastavenia) nemusia fungovať.
-• Čísla sa neanimujú.
-• Karta Knižnica je zobrazená.
-• Sekcia Hudba v popise videa nemusí fungovať.
-• Položky rozbaľovacej ponuky prehrávača sa nedajú skryť.
-• Tlačidlo pre prepínanie účtov sa nemusí objaviť na karte Knižnica."</string>
+• Komponenty v liete prehrávača (alebo súvisiace nastavenia) nemusia fungovať
+• Rolovacie čísla sa neanimujú
+• Karta Knižnica je zobrazená
+• Hudobná sekcia popisu videa nemusí fungovať
+• Položky liety prehrávača nemôžu byť skryté
+• Tlačidlo prepínania účtov sa nemusí zobraziť na karte Knižnica"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Povoliť filter v rozbaľovacej ponuke</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filter v rozbaľovacej ponuke</string>
@@ -133,7 +133,7 @@ Zmeny zahŕňajú:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">Skryť YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Skryje sezónne a tematické animácie na logu YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Zobrazovanie Doodles na YouTube môže zabrániť zobrazovaniu vlastných hlavičiek.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Zobrazovanie YouTube Doodleov môže zabrániť zobrazovaniu vlastných hlavičiek</string>
   <string name="morphe_hide_channel_bar_title">Skryť panel kanála</string>
   <string name="morphe_hide_channel_watermark_title">Skryť vodoznak kanála</string>
   <string name="morphe_hide_chapters_timeline_button_title">Skryť kapitoly a tlačidlo \'V tomto videu\'</string>
@@ -193,7 +193,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_how_this_was_made_section_title">Skryť sekciu \'Ako to bolo vytvorené\'</string>
   <string name="morphe_hide_hype_points_title">Skryť hype body</string>
   <string name="morphe_hide_info_cards_section_title">Skryť sekciu Informačné karty</string>
-  <string name="morphe_hide_key_concepts_section_title">Skryť sekciu \'Kľúčové pojmy\'</string>
+  <string name="morphe_hide_key_concepts_section_title">Skryť sekciu „Kľúčové koncepty“</string>
   <string name="morphe_hide_quizzes_section_title">Skryť sekciu Kvízy</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Skryť časť \'Hľadanie v tomto videu\'</string>
   <string name="morphe_hide_subscribe_button_title">Skryť tlačidlo Odoberať</string>
@@ -281,7 +281,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_comments_menu_button_summary">Skryje tlačidlo ponuky s tromi bodkami pri každom komentári</string>
   <string name="morphe_hide_comments_preview_comment_title">Skryť predhliadku komentára</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skryje ukážku komentára pod videami pred otvorením celej sekcie komentárov</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Komentár skrytý aplikáciou Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Komentár skrytý aplikáciou Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Povoliť minimálne tlačidlo komentárov</string>
   <string name="morphe_minimal_comments_button_summary">Skryje posuvné karty aj ich výber stránok zobrazené na tlačidle komentárov.</string>
   <string name="morphe_hide_comments_thanks_button_title">Skryť tlačidlo Vďaka</string>
@@ -490,7 +490,7 @@ Váš API kľúč by sa nikdy nemal zdieľať. Každý, kto k nemu má prístup,
   <string name="morphe_vot_openrouter_open_website">Otvoriť OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">Preklad OpenRouter zlyhal (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Dosiahnutý denný limit MyMemory</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Dostupné o %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Ďalšie dostupné o %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Použili ste dnešnú bezplatnú kvótu pre preklad MyMemory (5 000 znakov). Pridajte e-mailovú adresu MyMemory v nastaveniach, aby ste zvýšili denný limit na 50 000 znakov, alebo prepnite na inú prekladovú službu</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Použili ste dnešnú kvótu pre preklad MyMemory (50 000 znakov). Prepnite sa na inú prekladovú službu alebo skúste znova zajtra</string>
   <string name="morphe_vot_mymemory_error">Preklad MyMemory zlyhal (stav %s)</string>
@@ -560,10 +560,29 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Otvára rad Morphe namiesto radu YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">Pridať položku ponuky do rozbaľovacej ponuky fronty informačného kanála</string>
   <string name="morphe_queue_add_flyout_menu_summary">Pridá ďalšiu položku do rozbaľovacej ponuky. Povoľte, ak sa \"Pridať do frontu\" nezobrazuje</string>
+  <string name="morphe_local_queue_title">Fronta v štýle Premium</string>
+  <string name="morphe_local_queue_summary">"Nahrádza frontu Morphe frontou uloženou v zariadení, ktorá sa prehráva sama a dá sa pretiahnutím preusporiadať
+
+Informácia: Ďalšie video vo fronte sa spustí iba vtedy, keď je YouTube na obrazovke"</string>
+  <string name="morphe_local_queue_sheet_title">Fronta</string>
+  <string name="morphe_local_queue_open">Fronta (%s)</string>
+  <string name="morphe_local_queue_clear">Vyčistiť všetko</string>
+  <string name="morphe_local_queue_empty">Vo fronte nie je nič</string>
+  <string name="morphe_local_queue_empty_hint">Na ľubovoľnom videu použite možnosť Prehrať ako ďalšie vo fronte</string>
+  <string name="morphe_local_queue_now_playing">Práve sa prehráva</string>
+  <string name="morphe_local_queue_play_next">Prehrať ako ďalšie vo fronte</string>
+  <string name="morphe_local_queue_play_last">Prehrať posledný v rade</string>
+  <string name="morphe_local_queue_reorder">Preusporiadať</string>
+  <string name="morphe_local_queue_remove">Vymazať</string>
+  <string name="morphe_local_queue_added">Pridané do frontu</string>
+  <string name="morphe_local_queue_unavailable">Toto video sa nepodarilo pridať do radu</string>
+  <string name="morphe_local_queue_playlist_unsupported">Playlisty nemožno pridať do radu</string>
+  <string name="morphe_local_queue_full">Front je plný</string>
+  <string name="morphe_local_queue_play_failed">Nepodarilo sa spustiť video</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Zoznam povolených reklám v rozbaľovacej ponuke</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Pridá položku do rozbaľovacej ponuky, ktorá umožní prehrávanie reklám na kanáli tohto videa.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Táto funkcia môže vyžadovať použitie PotHelper alebo prepnutie „Spoofovať video streamy“ na prihlásenie cez TV alebo Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Táto funkcia môže vyžadovať použitie PotHelper alebo zmenenie „Spoof video streams</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Zoznam povolených rýchlostí v rozbaľovacej ponuke</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Pridá položku do rozbaľovacej ponuky, vďaka ktorej sa kanál tohto videa vždy prehrá rýchlosťou 1,0x.</string>
   <string name="morphe_queue_manager_check_failed_auth">Neprihlásený</string>
@@ -746,6 +765,9 @@ Ak to chcete vyriešiť, zapnite 'Spoofovať video streamy' a zmeňte 'Predvolen
   <string name="morphe_preferred_caption_language_title">Preferovaný jazyk titulkov</string>
   <string name="morphe_preferred_caption_language_summary">Najprv vyberie titulky poskytovateľa a potom ich automaticky preloží do preferovaného jazyka</string>
   <string name="morphe_preferred_caption_language_entry_off">Vypnuté</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Pridať ďalšie jazyky pre automatický preklad</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Pridá viac jazykov do ponuky automatického prekladu</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Nastaviť súbory cookie s titulkami</string>
   <string name="morphe_set_caption_cookies_summary">"Opravuje chybu v pôvodnom YouTube, kde automaticky preložené titulky nemusia byť dostupné kvôli chýbajúcim cookies
@@ -785,9 +807,9 @@ Je potrebné poskytnúť 'Cookies pre titulky'"</string>
   <string name="morphe_hide_navigation_button_labels_title">Skryť popisky navigačných tlačidiel</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Skryť bodku nového obsahu</string>
   <string name="morphe_hide_navigation_bar_title">Skryť navigačný panel</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Toto úplne skryje navigačný panel, vrátane karty „Vy“.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Týmto sa úplne skryje navigačný panel, vrátane karty \"Vy\".
 
-Na prístup k nastaveniam povoľte tlačidlo Nastavenia v časti Všeobecné → Panel nástrojov → Zobraziť Nastavenia."</string>
+Ak chcete získať prístup k Nastaveniam, povoľte tlačidlo Nastavenia cez Všeobecné → Panel nástrojov → Zobraziť nastavenia"</string>
   <string name="morphe_narrow_navigation_buttons_title">Povoliť úzke navigačné tlačidlá</string>
   <string name="morphe_narrow_navigation_buttons_summary">Znižuje horizontálnu medzeru medzi tlačidlami</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Zakázať navigačné tlačidlá bez označení</string>
@@ -1024,7 +1046,7 @@ Rozloženie pre automobil
   <string name="morphe_tablet_layout_in_player_summary">"Obnoví staré rozloženie prehrávača
 
 Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrstva 'Ďalšie videá' nemusí byť k dispozícii"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Povolenie tejto funkcie môže narušiť niektoré funkcie rozloženia prehrávača, napríklad sekciu komentárov alebo \'Ďalšie videá\' zobrazené pod prehrávačom.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Povolenie tejto možnosti môže narušiť niektoré funkcie rozloženia prehrávača, ako je sekcia komentárov alebo \"Viac videí\" zobrazených pod prehrávačom</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Obnoviť staré správanie titulkov</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré ukladanie do zoznamu videí</string>
@@ -1089,6 +1111,12 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Zakázať automatické obnovovanie kanála</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Zabraňuje automatickému obnovovaniu kanálov po tom, čo zastarajú</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Rozloženie karty kanála</string>
+  <string name="morphe_feed_card_layout_entry_1">Klasické</string>
+  <string name="morphe_feed_card_layout_entry_2">Karty</string>
+  <string name="morphe_feed_card_layout_entry_3">Karty s tlačidlami lajk, komentár a uloženie</string>
+  <string name="morphe_feed_card_layout_comments">Komentáre</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Zakázať obnovovanie mini-prehrávača</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Zakáže miniplayer s pokračovaním sledovania, funkciu YouTube Premium, ktorá sa zobrazuje pri spustení aplikácie</string>
@@ -1123,9 +1151,6 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tlačidlo späť ukončí informačný kanál</string>
   <string name="morphe_back_button_always_exits_feed_summary">Stlačením tlačidla späť sa vždy ukončí aplikácia namiesto posúvania na začiatok informačného kanála</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Vynútiť systémové písmo</string>
-  <string name="morphe_force_system_font_summary">Zobrazuje aplikáciu s písmom zariadenia namiesto YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skryť stavový riadok</string>
   <string name="morphe_hide_status_bar_summary">Skryje systémový stavový riadok. Potiahnite prstom nadol z horného okraja, aby sa na chvíľu zobrazil</string>
@@ -1206,7 +1231,7 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Sfalšovať rozmery zariadenia</string>
   <string name="morphe_spoof_device_dimensions_summary">Povolením tejto možnosti môžete odomknúť vyššiu kvalitu videa</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Povolením tejto funkcie môže dôjsť k problémom s prehrávaním videa, horšej výdrži batérie a neznámym následkom.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Povolením tejto funkcie môže dôjsť k problémom s prehrávaním videa, horšej výdrži batérie a neznámym následkom</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Haptická spätná väzba</string>
   <string name="morphe_disable_haptic_feedback_summary">Vyberte si, ktoré interakcie spúšťajú vibrácie zariadenia</string>
@@ -1216,7 +1241,7 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Zakázať haptickú odozvu pri stlačení a podržaní</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Zakázať haptickú spätnú väzbu pre zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Ak ste nedávno zmenili svoje prihlasovacie údaje k účtu, odinštalujte a znovu nainštalujte microG.</string>
+  <string name="microg_offline_account_login_error">Ak ste nedávno zmenili svoje prihlasovacie údaje k účtu, odinštalujte a znovu nainštalujte microG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Obísť presmerovania URL</string>
   <string name="morphe_bypass_link_redirects_summary">Otvára pôvodný odkaz priamo, obchádza sledovací odkaz (youtube.com/redirect)</string>
@@ -1296,18 +1321,21 @@ Obmedzenia:
 • Farby môžu vyzerať nesprávne, ak displej v skutočnosti nedokáže zobraziť HDR
 • Prehrávanie môže zlyhať, ak dekodér nedokáže spracovať HDR
 • HDR stále závisí od klienta na spoofovanie video streamov"</string>
-  <string name="morphe_force_avc_codec_title">Vynútiť codec AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Výhody:
-• Môže zlepšiť výdrž batérie
-• Môže obnoviť chýbajúce video rozlíšenia na starších zariadeniach
-
-Obmedzenia:
-• Maximálne rozlíšenie je 1080p
-• Vyššia spotreba dát pri prehrávaní videa ako VP9 alebo AV1
-• HDR videá nebudú využívať AVC
-• Niektoré zariadenia nemôžu vynútiť AVC"</string>
+  <string name="morphe_video_codec_title">Videokodek</string>
+  <string name="morphe_video_codec_entry_default">Predvolený</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Na používanie tejto funkcie nastavte \'Falšovanie toku videa\' na \'Android VR\' alebo \'Android Studio\'.</string>
+  <string name="morphe_video_codec_avc_not_available">Ak chcete vynútiť AVC, zmeňte „Spoofovanie video streamov“ na „Android Studio“, „Android VR“ alebo „visionOS“</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Môže predĺžiť výdrž batérie a opraviť zadrhávanie prehrávania
+• Spotrebúva viac internetových dát ako AV1
+
+AVC (H.264)
+• Vyžaduje klienta na spoofovanie video streamov „Android Studio“, „Android VR“ alebo „visionOS“
+• Môže ešte viac predĺžiť výdrž batérie
+• Môže obnoviť chýbajúce rozlíšenia videa na starších zariadeniach
+• Maximálne rozlíšenie je 1080p
+• HDR videá nemusia používať AVC
+• Niektoré zariadenia nedokážu vynútiť AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otvoriť menu pokročilých nastavení kvality</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskočí menu výberu kvality a otvorí priamo menu kvality \'Pokročilé\'</string>
@@ -1322,8 +1350,9 @@ Obmedzenia:
   <string name="morphe_spoof_video_streams_av1_summary">Umožňuje softvérové dekódovanie AV1 pri používaní klienta \'Android VR\' / visionOS.</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Povolením tohto nastavenia sa môže využívať softvérové dekódovanie AV1.
 
-Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať snímky."</string>
+Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať snímky"</string>
   <string name="morphe_spoof_video_streams_about_title">Možné následky falšovania</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Prehrávanie môže zlyhať po 1 minúte</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Chýba ponuka \'Audio Track\'.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Video kodek AV1 nie je podporovaný</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR ponorenie nie je k dispozícii</string>
@@ -1350,4 +1379,154 @@ Obmedzenie: Vracia sa k starému štýlu prekrytia 'Ďalšie videá'"</string>
   <string name="morphe_player_icon_style_entry_bold">Tučný</string>
   <string name="morphe_player_icon_style_entry_custom">Vlastné</string>
   <string name="morphe_shorts_icon_style_title">Štýl ikony Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Sledovanie seriálov</string>
+  <string name="morphe_series_tracker_screen_summary">Sledujte playlisty ako seriály a udržiavajte svoje miesto</string>
+  <string name="morphe_series_tracker_title">Povoliť sledovanie seriálov</string>
+  <string name="morphe_series_tracker_summary">Pridáva stránku Seriály do histórie a možnosť Sledovať seriály do playlistov</string>
+  <string name="morphe_series_tracker_show_button_title">Zobraziť tlačidlá Sledovanie seriálov</string>
+  <string name="morphe_series_tracker_show_button_summary">Pridá tlačidlo prehrávača na sledovanie alebo otvorenie seriálu aktuálneho videa</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Zaznamenávať postup sledovaných seriálov</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Zaznamenávať prehrávanie v tomto telefóne pre uložené seriály a záložky</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Zobraziť históriu v navigačnej lište</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Domov, Odber, Upozornenia, História a Vy</string>
+  <string name="morphe_series_tracker_ui_cancel">Zrušiť</string>
+  <string name="morphe_series_tracker_ui_save">Uložiť</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Uložiť záložku</string>
+  <string name="morphe_series_tracker_ui_series_name">Názov seriálu</string>
+  <string name="morphe_series_tracker_ui_series_options">Možnosti seriálu</string>
+  <string name="morphe_series_tracker_ui_library_options">Možnosti knižnice</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Obnoviť epizódy</string>
+  <string name="morphe_series_tracker_ui_rename">Premenovať</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Otvoriť playlist v YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Odstrániť z knižnice</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Odkaz alebo ID playlistu</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Vymazať všetok miestny postup</string>
+  <string name="morphe_series_tracker_ui_clear_history">Vymazať históriu</string>
+  <string name="morphe_series_tracker_clear_progress_title">Vymazať všetok miestny postup?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Tým sa vymažu polohy, prepísania sledovanosti a výbery pokračovania pre každé video. Uložené séria a ich katalogy zostanú. Nové prehrávanie bude zaznamenávané, ak je zaznamenávanie povolené</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Označiť ako pozreté</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Označiť ako nepozreté</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Použiť automatický stav</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Reštartovať od 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Prehrať znova od 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Stave uložené</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Skúsiť znovu ukladanie</string>
+  <string name="morphe_series_tracker_ui_previous_100">Predchádzajúce 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Nasledujúce 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Otvoriť uložené video</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Miestny postup vymazaný</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Otvorte Historiu v časti Vy, aby ste si pozreli svoje seriály</string>
+  <string name="morphe_series_tracker_ui_watch_history">História prehliadania</string>
+  <string name="morphe_series_tracker_ui_series">Seriály</string>
+  <string name="morphe_series_tracker_ui_history">História</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Odbery</string>
+  <string name="morphe_series_tracker_ui_notifications">Upozornenia</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Načítavanie uložených seriálov...</string>
+  <string name="morphe_series_tracker_empty_library">Sledujte playlist, aby ste sledovali jeho epizódy</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Záložka playlistu</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Obnovovanie epizód...</string>
+  <string name="morphe_series_tracker_ui_all_series">Všetky seriály</string>
+  <string name="morphe_series_tracker_watched">Pozreté</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Načítavanie epizód...</string>
+  <string name="morphe_series_tracker_ui_more_options">Ďalšie možnosti</string>
+  <string name="morphe_series_tracker_record_consent">"Zaznamenávajte postup iba pre svoje uložené série a zakonzervované videá.
+
+Táto knižnica je uložená na tomto zariadení a zdieľa sa naprieč účty YouTube. Ovládacie prvky pozastavenia a vymazania histórie YouTube ju nezmenia. Použite Séria → Viac → Vymazať lokálny postup a odstráňte ju.
+
+Automatické zaznamenávanie zastaví v režime inkognito, keď je nedostupná totožnosť účtu, alebo keď prepnete na iný účet. Sledovanie znova povolte, aby ste ho použili s týmto účtom"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Sledovanie nemôže byť povolené v režime inkognito ani predtým, ako YouTube načíta stav aktuálneho účtu. Vráťte sa na Domovskú obrazovku a skúste to znova. Prihlásenie nie je vyžadované</string>
+  <string name="morphe_series_tracker_enable">Povoliť miestne sledovanie</string>
+  <string name="morphe_series_tracker_tracking_paused">Zaznamenávanie postupu je vypnuté</string>
+  <string name="morphe_series_tracker_resume_at">Pokračovať od %1$s</string>
+  <string name="morphe_series_tracker_watched_count">Zoznam epizód sledovaných %1$s / %2$s</string>
+  <string name="morphe_series_tracker_episode_position">Epizóda %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Epizódy %1$s-%2$s z %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Obnoviť a skúsiť načítanie epizód. Súkromné playlisty vyžadujú prístup k účtu; záložka sa stále otvorí v YouTube</string>
+  <string name="morphe_series_tracker_open_failed">YouTube túto epizódu nemohol otvoriť</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube tento playlist nemohol otvoriť</string>
+  <string name="morphe_series_tracker_plan_changed">Vyberte epizódu</string>
+  <string name="morphe_series_tracker_plan_caught_up">Aktuálne</string>
+  <string name="morphe_series_tracker_plan_none">Žiadne prehrateľné epizódy</string>
+  <string name="morphe_series_tracker_saved_position">Uložené video · %1$s</string>
+  <string name="morphe_series_tracker_follow">Sledovať seriál</string>
+  <string name="morphe_series_tracker_view_series">Zobraziť seriál</string>
+  <string name="morphe_series_tracker_continue">Pokračovať</string>
+  <string name="morphe_series_tracker_start_here">Začať tu</string>
+  <string name="morphe_series_tracker_start_saved">Počiatočný bod uložený</string>
+  <string name="morphe_series_tracker_watched_to_here">Pozreté po tu</string>
+  <string name="morphe_series_tracker_marked">Epizódy označené ako pozreté</string>
+  <string name="morphe_series_tracker_undo">Vrátiť späť</string>
+  <string name="morphe_series_tracker_enable_short">Povoliť</string>
+  <string name="morphe_series_tracker_new_episode">1 nová epizóda</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s nových epizód</string>
+  <string name="morphe_series_tracker_record_short">Zaznamenávať postup v tomto zariadení</string>
+  <string name="morphe_series_tracker_follow_consent">"Vaše série a postup zostanú na tomto zariadení, zdieľané naprieč účtami YouTube. Ovládacie prvky histórie YouTube ich nezmenia. Postup zmazať z ponuky Série.
+
+Automatické zaznamenávanie je voliteľné. Zastaví sa v režime inkognito alebo keď sa zmení účet"</string>
+  <string name="morphe_series_tracker_follow_unavailable">Epizódy nebolo možné načítať. Playlist si môžete uložiť ako záložku</string>
+  <string name="morphe_series_tracker_error_pending_full">Príliš mnoho neuložených zmien. Najprv skúste uloženie opätovne</string>
+  <string name="morphe_series_tracker_error_storage_busy">Ukladanie je zaneprázdnené. Skúste to znova</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Načítavanie epizód je zaneprázdnené. Skúste to znova</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Úložisko je nedostupné. Vaše uložené údaje boli ponechané</string>
+  <string name="morphe_series_tracker_error_storage_save">Zmeny nebolo možné uložiť. Pred zatvorením YouTube skúste uloženie opätovne</string>
+  <string name="morphe_series_tracker_error_conflict">Táto séria je už uložená alebo sa jej playlist zmenil. Otvorte ju opätovne</string>
+  <string name="morphe_series_tracker_error_series_changed">Táto séria sa zmenila alebo bola odstránená. Znova otvorte knižnicu</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Playlist sa zmenil. Vyberte epizódu znovu</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Táto epizóda je nedostupná. Vyberte inú</string>
+  <string name="morphe_series_tracker_error_name_required">Zadajte názov série</string>
+  <string name="morphe_series_tracker_error_playlist_input">Zadajte odkaz na playlist YouTube alebo ID playlistu</string>
+  <string name="morphe_series_tracker_error_retry_later">Pred ďalším obnovením prosím počkajte</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Epizódy nebolo možné načítať. Skúste to neskôr</string>
+  <string name="morphe_series_tracker_error_operation">Zmenu nebolo možné dokončiť. Skúste to znova</string>
+  <string name="morphe_series_tracker_error_resume">Pokračovanie nebolo potvrdené. Skontrolujte prehrávač a skúste to znova</string>
+  <string name="morphe_series_tracker_followed">Sledovaný seriál</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Toto video nie je v tomto playliste</string>
+  <string name="morphe_series_tracker_finding_playlists">Hľadanie playlistov...</string>
+  <string name="morphe_series_tracker_paste_playlist">Vložiť odkaz na playlist</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Playlist sa nenašiel</string>
+  <string name="morphe_series_tracker_no_available_episodes">Žiadne dostupné epizódy</string>
+  <string name="morphe_series_tracker_hide_watched">Skryť pozreté</string>
+  <string name="morphe_series_tracker_watch_previous">Predchádzajúce epizódy označiť ako pozreté</string>
+  <string name="morphe_series_tracker_order_starts_with">Začína na: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Poradie epizód</string>
+  <string name="morphe_series_tracker_playlist_order">Poradie playlistu</string>
+  <string name="morphe_series_tracker_reverse_order">Reverzné poradie playlistu</string>
+  <string name="morphe_series_tracker_view_count">%1$s zhliadnutí</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s zhliadnutie</string>
+  <string name="morphe_series_tracker_completion_title">Označiť epizódy ako pozreté</string>
+  <string name="morphe_series_tracker_completion_summary">Aspoň %1$s%% sledovaných s najviac 90 sekundami do konca, alebo %2$s sekúnd do konca</string>
+  <string name="morphe_series_tracker_completion_explanation">Automaticky označiť epizódu ako sledovanú po dosiahnutí jednej z týchto hraníc. Podiel percentuálnej pravidiel tiež vyžaduje najviac 90 sekúnd do konca, takže koniec dlhých epizód sa nepreskočí. Pravidlo zostávajúceho času sa uplatňuje na videá dlhšie než jednu minútu; nastavte ho na 0 na vypnutie. Zmeny sa uplatnia na budúce aktualizácie postupu. Manuálne výbery sledovaných/nesledovaných zostanú</string>
+  <string name="morphe_series_tracker_completion_percent">Percento sledovaných (1–100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Sekundy do konca (0–300; 0 vypína)</string>
+  <string name="morphe_series_tracker_completion_range">Zadajte hodnotu od %1$s do %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Použiť postup zo služby YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Pokračovať v sledovaných seriáloch po prehratí na inom zariadení</string>
+  <string name="morphe_series_tracker_sync_consent">Prečítajte si stav sledovanosti a pozície pokračovania pre vaše sledované série z aktuálneho účtu YouTube. Uvedené sú iba zhodujúce epizódy a ukladajú sa na tomto telefóne. Kontroly behajú, keď je otvorená knižnica seriálov a pred Pokračovať. História YouTube musí byť povolená na inom zariadení</string>
+  <string name="morphe_series_tracker_sync_checking">Kontrola postupu YouTube...</string>
+  <string name="morphe_series_tracker_sync_failed">Postup YouTube je nedostupný. Používa sa uložený postup</string>
+  <string name="morphe_series_tracker_sync_partial">Niektoré kroky YouTube sú nedostupné. Uložené polohy sa ponechávajú</string>
+  <string name="morphe_series_tracker_backup_title">Zálohovanie a obnova</string>
+  <string name="morphe_series_tracker_backup_summary">Uložte knižnicu svojich seriálov do súboru alebo obnovte zálohu</string>
+  <string name="morphe_series_tracker_backup_explanation">Ukláda sledované série, pozície epizód a výbery sledovania. Zaznamenávanie a povolenia postupu YouTube nie sú zahrnuté</string>
+  <string name="morphe_series_tracker_backup_save">Uložiť zálohu</string>
+  <string name="morphe_series_tracker_backup_restore">Obnoviť zálohu</string>
+  <string name="morphe_series_tracker_backup_preview">Pridať %1$s série. %2$s sérií už vo vašej knižnici zostávajú. Existujúci postup videa zostáva</string>
+  <string name="morphe_series_tracker_backup_saved">Záloha seriálov uložená</string>
+  <string name="morphe_series_tracker_backup_restored">Obnovené %1$s série</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Tento súbor nieje podporovanou zálohou série alebo je príliš veľký. Vaša knižnica bola zmenená</string>
+  <string name="morphe_series_tracker_error_backup_write">Nepodarilo sa uložiť zálohu. Skúste iné umiestnenie</string>
+  <string name="morphe_series_tracker_removed">Seriály odstránené</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Táto epizóda sa teraz zobrazuje viac než raz. Vyberte, z ktorej má pokračovať</string>
+  <string name="morphe_series_tracker_recovery_missing">Vaša uložená epizóda už nie je v tomto playliste. Uložená poloha zostáva</string>
+  <string name="morphe_series_tracker_recovery_continue">Pokračovať s epizódom %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Môžete si tiež vybrať ktorúkoľvek nižšiu epizódu. Skoršie epizódy sa nemenia</string>
+  <string name="morphe_series_tracker_playback_changed">Tento playlist sa zmenil. Otvorte sériu a vyberte, kde pokračovať</string>
+  <string name="morphe_series_tracker_playback_boundary">V tomto smere už nie sú žiadne epizódy</string>
+  <string name="morphe_series_tracker_continue_series">Pokračovať %1$s</string>
+  <string name="morphe_series_tracker_search_series">Hľadať seriály</string>
+  <string name="morphe_series_tracker_clear_search">Vymazať vyhľadávanie</string>
+  <string name="morphe_series_tracker_no_search_results">Nenašli sa žiadne seriály</string>
+  <string name="morphe_series_tracker_untitled_episode">Epizóda bez názvu</string>
+  <string name="morphe_series_tracker_unavailable_episode">Epizóda nedostupná</string>
 </resources>

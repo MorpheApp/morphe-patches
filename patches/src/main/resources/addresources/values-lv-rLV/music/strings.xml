@@ -18,6 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_cancel">Atcelt</string>
+  <string name="morphe_music_jam_open">Atvērt</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- misc.album.albumMusicVideoPatch -->
@@ -27,6 +28,10 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_2_feed_title">Plūsma</string>
+  <string name="morphe_settings_music_screen_3_general_title">Vispārīgi</string>
+  <string name="morphe_settings_music_screen_4_player_title">Atskaņotājs</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Dažādi</string>
   <!-- ad.hideAdsPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_comments_screen_title">Komentāri</string>
@@ -76,5 +81,6 @@ Second \"item\" text"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_romanize_language_DEFAULT">Automātiski</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

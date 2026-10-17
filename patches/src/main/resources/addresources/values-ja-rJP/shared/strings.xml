@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">色を初期化</string>
   <string name="morphe_settings_color_invalid">色の値が無効です</string>
   <string name="morphe_settings_restart_title">再起動が必要です</string>
-  <string name="morphe_settings_restart_dialog_message">この変更を反映するには、アプリを再起動してください。</string>
+  <string name="morphe_settings_restart_dialog_message">この変更を反映するにはアプリを再起動してください</string>
   <string name="morphe_settings_restart">再起動</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">インポート</string>
   <string name="morphe_settings_import_copy">コピー</string>
   <string name="morphe_settings_import_reset">Morphe の設定をデフォルトにリセットしました</string>
-  <string name="morphe_settings_import_success">%d 個の設定をインポートしました</string>
+  <string name="morphe_settings_import_success">%s 個の設定をインポートしました</string>
   <string name="morphe_settings_import_failure_parse">インポートに失敗しました: %s</string>
   <string name="morphe_settings_navigate_up">上へ移動</string>
   <string name="morphe_settings_search_hint">設定を検索</string>
@@ -101,9 +101,9 @@ Second \"item\" text"</string>
   <string name="morphe_debug_stacktrace_title">スタック トレースをデバッグログに追加</string>
   <string name="morphe_debug_stacktrace_summary">エラーの特定に役立つスタック トレースをデバッグログに追加します</string>
   <string name="morphe_debug_toast_on_error_title">Morphe のエラー時にトーストを表示</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"エラーのトースト通知をオフにすると、Morphe のすべてのエラー通知が表示されなくなります。
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"エラー通知をオフにすると、Morphe のすべてのエラー通知が表示されなくなります。
 
-予期しないイベントが発生した場合でも通知されません。"</string>
+予期しないイベントが発生した場合でも通知されません"</string>
   <string name="morphe_debug_export_logs_title">デバッグログのエクスポート</string>
   <string name="morphe_debug_export_logs_summary">Morphe のデバッグログをエクスポートします</string>
   <string name="morphe_debug_export_logs_success">デバッグログのエクスポートに成功しました</string>
@@ -179,31 +179,31 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG の設定メニューを開く</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG がインストールされていません。インストールしてください。</string>
+  <string name="gms_core_toast_not_installed_message">MicroG がインストールされていません。インストールしてください</string>
   <string name="gms_core_dialog_title">操作が必要です</string>
-  <string name="gms_core_dialog_outdated_message">"お使いのMicroG v%1sは古いバージョンであり、問題を引き起こす可能性があります。
+  <string name="gms_core_dialog_outdated_message">"インストールされている MicroG v%1s は古く、問題を引き起こす可能性があります。
 
-MicroGを最新バージョンv%2sに更新してください。"</string>
+最新版 v%2s に MicroG を更新してください"</string>
   <string name="gms_core_dialog_update_text">更新</string>
   <string name="gms_core_dialog_ignore_text">無視</string>
-  <string name="gms_core_dialog_conflict_message">"現在インストールされている MicroG は、Morphe が推奨しているものではありません:
+  <string name="gms_core_dialog_conflict_message">"インストールされている MicroG は Morphe が推奨していません：
 
 %1s
 
-タップしてアンインストールし、このアプリを再度開いて MicroG RE をインストールしてください。"</string>
+タップしてアンインストールし、このアプリを再度開いて MicroG RE をインストールしてください"</string>
   <string name="gms_core_dialog_uninstall_text">アンインストール</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG には、バックグラウンドで実行するための権限が与えられていません。
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG にはバックグラウンドで実行する権限がありません。
 
-下記ウェブサイト「Don't kill my app!」の携帯電話メーカー別のガイドに従い、MicroG に対するデバイスの設定を変更してください。
+お使いの携帯電話向けの \"Don't kill my app\" ガイドに従い、MicroG インストールに対して指示を適用してください。
 
-この操作は、アプリが正常に動作するために必要です。"</string>
+これによりアプリが正常に動作します"</string>
   <string name="gms_core_dialog_open_website_text">ウェブサイトを開く</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG の電池の最適化は、問題を防ぐために無効にする必要があります。
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"問題を避けるために、MicroG のバッテリー最適化を無効にする必要があります。
 
-MicroG に対して電池の最適化を無効にしても、バッテリー消費に悪影響はありません。
+MicroG に対するバッテリー最適化を無効にしても、バッテリー消費に悪影響はありません。
 
-[続行] をタップして電池の最適化を無効にしてください"</string>
+[続行] をタップして最適化の変更を許可してください"</string>
   <string name="gms_core_dialog_continue_text">続行</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG の電池の最適化ダイアログを表示</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"このダイアログを無効にすると、MicroG の電池の最適化に関する通知が表示されなくなります。

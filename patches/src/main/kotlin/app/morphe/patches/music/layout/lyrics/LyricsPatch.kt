@@ -52,7 +52,7 @@ private const val LYRICS_PANEL_FILTER =
 @Suppress("unused")
 val lyricsPatch = bytecodePatch(
     name = "Third-party lyrics",
-    description = "Adds an option to show synced lyrics with experience enhancement from 16+ providers in the lyrics panel."
+    description = "Adds an option to show synced lyrics with experience enhancement from 18+ providers in the lyrics panel."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -60,13 +60,17 @@ val lyricsPatch = bytecodePatch(
         addResourcesPatch,
         lithoFilterPatch,
         musicVideoInformationPatch,
-        // The copy button needs its icon whether the patch that owns
-        // these resources is applied.
+        // The copy and romanize buttons need their icons whether the patches
+        // that own these resources are applied.
         resourcePatch {
             execute {
                 copyResources(
                     "copyvideolinkbutton",
                     ResourceGroup("drawable", "morphe_yt_copy_bold.xml")
+                )
+                copyResources(
+                    "romanisationbutton",
+                    ResourceGroup("drawable", "morphe_yt_romanize.xml")
                 )
             }
         }
@@ -127,9 +131,13 @@ val lyricsPatch = bytecodePatch(
                         dependency = "morphe_music_lyrics_enabled"
                     ),
                     SwitchPreference("morphe_music_lyrics_word_sync", summary = true),
+                    SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
+                    SwitchPreference("morphe_music_lyrics_keep_screen_on", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_played", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_unplayed", summary = true),
-                    SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
+                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
+                    SwitchPreference("morphe_music_lyrics_split_background", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_section", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
                     ListPreference(
@@ -138,15 +146,51 @@ val lyricsPatch = bytecodePatch(
                         entryValuesKey = "morphe_language_entry_values"
                     ),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
+                    ListPreference(key = "morphe_music_lyrics_romanize_language"),
+                    SwitchPreference(
+                        key = "morphe_music_lyrics_local_romanization",
+                        summary = true,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsLocalRomanizationPreference"
+                    ),
+                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true)
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_music_lyrics_section_ai_endpoint",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_ai_config",
+                        titleKey = "morphe_music_lyrics_use_ai_title",
+                        summaryKey = null,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsAiConfigPreference",
+                        selectable = true,
+                        dependency = "morphe_music_lyrics_enabled"
+                    ),
                     SwitchPreference(
                         key = "morphe_music_lyrics_use_ai_translation",
                         summary = true,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsAiConfigPreference"
+                        tag = "app.morphe.extension.music.settings.preference.LyricsAiPromptPreference"
                     ),
-                    SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
-                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
-                    SwitchPreference("morphe_music_lyrics_keep_screen_on", summary = true)
+                    SwitchPreference(
+                        key = "morphe_music_lyrics_use_ai_romanization",
+                        summary = true,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsAiPromptPreference"
+                    ),
+                    SwitchPreference(
+                        key = "morphe_music_lyrics_use_ai_section",
+                        summary = true,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsAiPromptPreference"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_transcribe_key",
+                        titleKey = "morphe_music_lyrics_transcribe_key_title",
+                        summaryKey = "morphe_music_lyrics_transcribe_key_summary",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsTranscribeKeyPreference",
+                        selectable = true,
+                        dependency = "morphe_music_lyrics_enabled"
+                    )
                 )
             ),
             PreferenceCategory(
@@ -172,7 +216,10 @@ val lyricsPatch = bytecodePatch(
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_about",
                         titleKey = null,
-                        summaryKey = "morphe_music_lyrics_about_summary",
+                        // The summary is written by the preference itself, since what the fetched
+                        // reading dictionaries add to it is not known when the layout is built.
+                        summaryKey = null,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsAboutPreference",
                         dependency = "morphe_music_lyrics_enabled"
                     )
                 )

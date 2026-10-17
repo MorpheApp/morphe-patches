@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Paketname eingeben</string>
   <string name="morphe_external_downloader_other_item">Andere</string>
   <string name="morphe_external_downloader_not_found_title">App nicht installiert</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s ist nicht installiert. Bitte installieren Sie es zuerst.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s ist nicht installiert. Bitte installieren Sie es</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Es konnte keine installierte App mit dem Paketnamen %s gefunden werden.
 
 Überprüfen Sie, ob der Paketname korrekt ist und die App installiert ist"</string>
@@ -84,7 +84,7 @@ Um das Symbol überall zu ändern, patche erneut und ändere die Patch-Option 'A
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Spiel</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Hinweis</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Ihr Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setzen Sie &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalten Sie alle DNS-Blocker und Proxies aus.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Ihr Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setzen Sie &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalten Sie alle DNS-Blocker und Proxies aus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nicht wieder anzeigen</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video-Streams spoofen</string>
@@ -93,7 +93,13 @@ Um das Symbol überall zu ändern, patche erneut und ändere die Patch-Option 'A
 
 Als Nutzer von YouTube Premium ist diese Einstellung möglicherweise nicht erforderlich."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Es konnten keine Client-Streams abgerufen werden</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Das Deaktivieren dieser Einstellung kann Wiedergabeprobleme verursachen.</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Standard-Client funktioniert nicht</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s hat mehrmals hintereinander nicht funktioniert, aber %2$s schon.
+
+Soll %2$s als Standard-Client festgelegt werden?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Wechseln</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Das Deaktivieren dieser Einstellung kann Wiedergabeprobleme verursachen</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Versuch, dies zu aktivieren: „Video-Streams spoofen“ &gt; Android VR Anmeldung</string>
@@ -128,7 +134,7 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
 • Wenn Sie Ihr Google-Kennwort ändern oder dieses Gerät von Ihren Google-Einstellungen deregistrieren, müssen Sie sich erneut anmelden"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ist vorübergehend nicht verfügbar (API Timeout)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-Anmeldung abgelaufen, versuchen Sie erneut sich bei VR anzumelden</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 ist vorübergehend nicht verfügbar (Status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 ist vorübergehend nicht verfügbar (Status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 ist vorübergehend nicht verfügbar</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Eine Anmeldung bei VR ist nicht möglich, da die Website-Authentifizierung nicht genehmigt wurde</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Eine Anmeldung bei VR ist nicht möglich: %s</string>
@@ -191,7 +197,7 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
 
 Das kann beim Erstellen benutzerdefinierter Filter helfen, Komponenten besser zu identifizieren.
 
-Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel deine IP-Adresse."</string>
+Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel deine IP-Adresse"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Eigener Filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurieren Sie benutzerdefinierte Filter, um Komponenten auszublenden</string>
@@ -223,6 +229,12 @@ Um diese Funktion zu nutzen, deaktiviere 'Video-Streams spoofen'.originalText"</
   <string name="morphe_external_potoken_provider_about_summary">"Diese Funktion befindet sich derzeit in der Entwicklung und funktioniert möglicherweise nicht
 
 Tippe hier, um PotHelper herunterzuladen."</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper funktioniert nicht mehr</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Das in dieser Version von PotHelper enthaltene Token funktioniert nicht mehr
+
+Aktivieren Sie „Video-Streams vortäuschen“, um die Wiedergabe zu reparieren"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Aktivieren</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">App-Version spoofen</string>
   <string name="morphe_spoof_app_version_summary">Täuscht dem Server eine ältere App-Version vor, um ältere UI-Funktionen wiederherzustellen</string>
@@ -230,7 +242,7 @@ Tippe hier, um PotHelper herunterzuladen."</string>
 
 Dadurch ändert sich das Erscheinungsbild und die Funktionen der App, es können jedoch unbekannte Nebeneffekte auftreten.
 
-Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu löschen, um Fehler in der Benutzeroberfläche zu vermeiden."</string>
+Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu löschen, um Fehler in der Benutzeroberfläche zu vermeiden"</string>
   <string name="morphe_spoof_app_version_target_title">Angestrebte App-Version</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Bildwiederholrate der App</string>
@@ -241,10 +253,19 @@ Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu
   <string name="morphe_app_refresh_rate_type_entry_2">Wiedergabe im Hochformat</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Wiedergabe im Vollbild</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Wiedergabe im Hochformat und Vollbild</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Schriftart</string>
+  <string name="morphe_custom_font_type_entry_default">Standard</string>
+  <string name="morphe_custom_font_type_entry_system">Systemschriftart des Geräts</string>
+  <string name="morphe_custom_font_type_entry_custom">Benutzerdefinierte Schriftartdatei</string>
+  <string name="morphe_custom_font_file_title">Benutzerdefinierte Schriftartdatei</string>
+  <string name="morphe_custom_font_file_summary">Wählen Sie eine TTF- oder OTF-Schriftdatei aus</string>
+  <string name="morphe_custom_font_file_invalid">Die ausgewählte Datei ist keine TTF- oder OTF-Schriftdatei</string>
+  <string name="morphe_custom_font_failed_to_load">Die benutzerdefinierte Schriftartdatei konnte nicht geladen werden und ist deaktiviert</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes sind vorübergehend nicht verfügbar (API Timeout)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Dislikes sind nicht verfügbar (Status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Dislikes sind nicht verfügbar (Status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Dislikes sind nicht verfügbar (Limit der Client-API)</string>
   <string name="morphe_ryd_failure_generic">Dislikes sind nicht verfügbar (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -270,12 +291,12 @@ Die ID des Videos, das du dir ansiehst, wird an die Return YouTube Dislike-API g
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislikes sind vorübergehend nicht verfügbar - Client API Ratenbegrenzung aktiv</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API-Abstimmungen abrufen, Anzahl der Aufrufe</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Keine Netzwerkanrufe durchgeführt</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d Netzwerkaufrufe durchgeführt</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s Netzwerkanrufe durchgeführt</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-Abruf der Bewertungen, Anzahl der Zeitüberschreitungen</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Keine Netzwerkaufrufe haben eine Zeitüberschreitung erreicht</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d Netzwerkaufrufe haben eine Zeitüberschreitung erreicht</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s Netzwerkanrufe sind abgelaufen</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Client-Ratenbegrenzungen der API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Keine Client-Ratenbegrenzungen festgestellt</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client-Ratenbegrenzung %d Mal festgestellt</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d Millisekunden</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client-Ratenbegrenzung %s-mal encountered</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s Millisekunden</string>
 </resources>

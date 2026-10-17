@@ -48,6 +48,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.ViewAnimations;
+import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -200,39 +201,18 @@ public final class MinimalMiniplayerPatch {
     private static final float maxDragProgress = 0.95f;
 
     /**
-     * The title and channel of the last regular video. {@link VideoInformation} holds whatever
-     * player loaded last, and a Short opened while the bar is up replaces them with its own.
+     * The last title and channel shown, kept while a new video has not loaded its own yet.
      */
     private static String videoTitle = "";
     private static String channelName = "";
 
     /**
-     * Set once the Shorts player opens, and cleared by the next video loaded with it closed.
-     * Closing it hands the video ID back to the regular player, but the title and channel stay
-     * those of the last Short until a new video is loaded.
-     * A Short opened in the regular player does not open the Shorts player, and it is what
-     * the bar is playing, so it is shown like any other video.
+     * The title last set to the title view. The view can show another text, as its title is
+     * replaced by {@link RestoreOriginalTitlesPatch} if enabled (original or DeArrow title),
+     * so it is set only when it changes.
      */
-    private static boolean waitingForRegularVideo;
-
-    static {
-        if (ENABLED) {
-            ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
-                if (isOpen) {
-                    waitingForRegularVideo = true;
-                }
-                return Unit.INSTANCE;
-            });
-
-            // Fired right before the title and channel name of the new video are set.
-            VideoInformation.onChannelIdChange.addObserver((String channelId) -> {
-                if (!ShortsPlayerState.isOpen()) {
-                    waitingForRegularVideo = false;
-                }
-                return Unit.INSTANCE;
-            });
-        }
-    }
+    @Nullable
+    private static String shownTitle;
 
     /**
      * Injection point.
@@ -261,6 +241,7 @@ public final class MinimalMiniplayerPatch {
 
             TextView title = Utils.getChildViewByResourceName(controlsLayout, "floaty_title");
             titleRef = new WeakReference<>(title);
+            shownTitle = null;
 
             TextView subtitle = Utils.getChildViewByResourceName(controlsLayout, "floaty_subtitle_text");
             if (title != null && HIDE_TITLE) {
@@ -465,7 +446,21 @@ public final class MinimalMiniplayerPatch {
 
         // Docked against it even when YouTube rests lower. After a recreated activity its
         // resting bounds are still the ones from before the system insets moved everything up.
-        return top;
+        return top - boundsOriginInWindow();
+    }
+
+    /**
+     * The bounds are relative to the layout that holds the player, not to the window. That
+     * layout can start below the status bar, which would otherwise move the bar down by its
+     * height and put it under the navigation bar.
+     */
+    private static int boundsOriginInWindow() {
+        View watchPlayer = watchPlayer();
+        if (watchPlayer == null || !(watchPlayer.getParent() instanceof View parent)) return 0;
+
+        parent.getLocationInWindow(windowLocation);
+
+        return windowLocation[1];
     }
 
     /**
@@ -1064,19 +1059,21 @@ public final class MinimalMiniplayerPatch {
     }
 
     private static void updateText() {
-        if (!waitingForRegularVideo) {
-            String title = VideoInformation.getVideoTitle();
-            if (!title.isEmpty()) {
-                videoTitle = title;
-            }
-
-            String channel = VideoInformation.getChannelName();
-            if (!channel.isEmpty()) {
-                channelName = channel;
-            }
+        String title = VideoInformation.getVideoTitle();
+        if (!title.isEmpty()) {
+            videoTitle = title;
         }
 
-        setText(titleRef.get(), videoTitle);
+        String channel = VideoInformation.getChannelName();
+        if (!channel.isEmpty()) {
+            channelName = channel;
+        }
+
+        TextView titleView = titleRef.get();
+        if (titleView != null && !videoTitle.equals(shownTitle)) {
+            shownTitle = videoTitle;
+            setText(titleView, videoTitle);
+        }
 
         TextView subtitle = subtitleRef.get();
         if (setText(subtitle, channelName)) {

@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
@@ -105,7 +106,11 @@ public final class UnisonProvider implements LyricsProvider {
             if (format == null || lyrics == null) {
                 return null;
             }
-            return parseLyrics(format, lyrics, videoId);
+            final JSONObject submitter = data.optJSONObject("submitter");
+            final String submitterName = submitter != null
+                    ? LyricsRequests.optString(submitter, "displayName")
+                    : null;
+            return parseLyrics(format, lyrics, videoId, submitterName);
         } catch (IOException | JSONException ex) {
             Logger.printDebug(() -> "Could not fetch Unison lyrics", ex);
             return null;
@@ -176,31 +181,38 @@ public final class UnisonProvider implements LyricsProvider {
     }
 
     private static String sourceUrl(String videoId) {
-        return "https://unison.betterlyrics.org/song/" + videoId;
+        return "https://unison.boidu.dev/song/" + videoId;
     }
 
     @Nullable
-    private Lyrics parseLyrics(String format, String lyrics, String videoId) {
+    private Lyrics parseLyrics(String format, String lyrics, String videoId,
+                               @Nullable String submitter) {
         switch (format.toLowerCase(Locale.ROOT)) {
             case "ttml":
-                return TTMLParser.ttmlToLyrics(lyrics, name(), sourceUrl(videoId));
+                return withSubmitter(
+                        TTMLParser.ttmlToLyrics(lyrics, name(), sourceUrl(videoId)), submitter);
             case "lrc":
                 LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lyrics);
                 if (result.lines.isEmpty()) {
                     return null;
                 }
-                return new Lyrics(result.lines, name(), true, null, null, null,
+                return withSubmitter(new Lyrics(result.lines, name(), true,
+                        null, null, null,
                         result.creditLines.isEmpty() ? null : result.creditLines,
-                        lyrics, "lrc", sourceUrl(videoId));
+                        lyrics, "lrc", sourceUrl(videoId)), submitter);
             case "plain":
                 final List<LyricsLine> plain = LRCParser.parsePlain(lyrics);
                 if (plain.isEmpty()) {
                     return null;
                 }
-                return new Lyrics(plain, name(), false, null, null, null, null, lyrics, "plain",
-                        sourceUrl(videoId));
+                return withSubmitter(new Lyrics(plain, name(), false,
+                        null, null, null, null, lyrics, "plain", sourceUrl(videoId)), submitter);
             default:
                 return null;
         }
+    }
+
+    private static Lyrics withSubmitter(@Nullable Lyrics lyrics, @Nullable String submitter) {
+        return LyricsMerge.addSongwriter(lyrics, submitter == null ? null : "Submitted by " + submitter);
     }
 }

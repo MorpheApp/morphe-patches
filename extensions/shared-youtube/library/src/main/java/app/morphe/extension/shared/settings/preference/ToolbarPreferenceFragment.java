@@ -14,6 +14,7 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Insets;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -33,12 +34,21 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.BaseAppRefreshRatePatch;
+import app.morphe.extension.shared.patches.CustomFontPatch;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CustomFontFilePreference.PICK_FONT_REQUEST_CODE && CustomFontPatch.isPatchIncluded()) {
+            CustomFontFilePreference.handleActivityResult(getContext(), resultCode, data);
+        }
+    }
 
     /**
      * Removes the list of preferences from this fragment, if they exist.

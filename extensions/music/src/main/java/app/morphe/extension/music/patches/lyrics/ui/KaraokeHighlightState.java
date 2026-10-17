@@ -10,23 +10,14 @@ package app.morphe.extension.music.patches.lyrics.ui;
 import java.util.List;
 
 /**
- * The handoff state of karaoke (word sync) highlighting: which line still wears sung
- * word colors after the highlight moved on ({@code last}), which one is waiting to
- * retire on a later tick ({@code pending}), and whether word sync is on.
+ * Karaoke handoff: which line still wears sung word colors ({@code last}), which is
+ * waiting to retire on a later tick ({@code pending}), and whether word sync is on.
  *
- * <p>The machine is pure: {@link #advance} reads the inputs it is given, updates the
- * three fields, and appends the actions the view has to perform, in the exact order
- * the inline logic it replaces executed them. It never touches a view, an animation
- * or an Android type, so the whole handoff rule lives in this one file and the view
- * only executes what comes out of it.
+ * <p>Pure, so the handoff rule can be tested without a view.
  */
 final class KaraokeHighlightState {
 
-    /**
-     * The word timings of the built lines, read without holding the views they belong
-     * to. {@link #size()} is the line count both backing lists agree on; every line
-     * index passed to the other methods is smaller than it.
-     */
+    /** Word timings of the built lines, read without holding their views. */
     interface Lines {
         int size();
 
@@ -38,19 +29,19 @@ final class KaraokeHighlightState {
     }
 
     enum Kind {
-        /** Paints the word colors at a position, propagating to background lines. */
+        /** Paint the word colors at a position, propagating to background lines. */
         PAINT,
-        /** Drops the word overlay of a line, background lines included. */
+        /** Drop the word overlay, background lines included. */
         CLEAR,
         CLEAR_FADE,
-        /** Fades a line to the inactive alpha, word overlay untouched. */
+        /** Fade to the inactive alpha, word overlay untouched. */
         FADE,
-        /** Restores a line to its non-karaoke colors while word sync is being turned off. */
+        /** Restore non-karaoke colors while word sync is being turned off. */
         RESET_ACTIVE,
         RESET_INACTIVE
     }
 
-    /** One queued effect on one line; the view applies the list synchronously. */
+    /** One queued effect on one line. */
     record Action(Kind kind, int line, long posMs, boolean allSung) {}
 
     static boolean stillLit(Lines lines, int line, long pos) {
@@ -65,10 +56,10 @@ final class KaraokeHighlightState {
     private boolean wasEnabled = true;
 
     /**
-     * Runs one tick. {@code active} is the highlighted line, {@code enabled} the word
-     * sync setting. Actions are appended to {@code out} in the order the view has to
-     * run them; the caller owns the list and clears it after execution.
+     * Runs one tick, appending actions in the order the view has to run them. The caller
+     * owns {@code out} and clears it after execution.
      */
+    @SuppressWarnings("ConstantValue")
     void advance(long pos, int active, boolean enabled, Lines lines, List<Action> out) {
         if (enabled != wasEnabled) {
             if (!enabled) {
@@ -136,9 +127,9 @@ final class KaraokeHighlightState {
     }
 
     /**
-     * Retires the line the highlight left: staged on the single pending slot while
-     * its words are still sung, cleared at once otherwise. Nothing else ever clears
-     * a line that reached the slot, so staging evicts the occupant first.
+     * Retires the line the highlight left: staged on the pending slot while its words
+     * are still sung, cleared at once otherwise. Staging evicts the occupant first,
+     * because nothing else ever clears a line that reached the slot.
      */
     private void handoff(int old, long pos, Lines lines, List<Action> out) {
         if (stillLit(lines, old, pos)) {
@@ -151,21 +142,18 @@ final class KaraokeHighlightState {
         }
     }
 
-    /** Drops the pending slot; the line it held stays cleared by its own path. */
+    /** Drops the pending slot; its line stays cleared by its own path. */
     void resetPending() {
         pendingLine = -1;
     }
 
-    /** Drops both slots, for the content under them being rebuilt or switched. */
+    /** Drops both slots, for the content being rebuilt or switched. */
     void resetContent() {
         lastLine = -1;
         pendingLine = -1;
     }
 
-    /**
-     * Realigns the toggle memory with the setting, for the code path that resets
-     * karaoke state without a tick to notice the change on.
-     */
+    /** Realigns the toggle memory, for the reset path with no tick to notice on. */
     void syncEnabled(boolean enabled) {
         wasEnabled = enabled;
     }

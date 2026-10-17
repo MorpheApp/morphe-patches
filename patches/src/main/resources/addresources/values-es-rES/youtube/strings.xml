@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Desactivar actualizaciones de diseño</string>
   <string name="morphe_disable_layout_updates_summary">Evita que el servidor actualice el diseño de la aplicación</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"El diseño de la aplicación vuelve al que se utilizaba cuando se instaló por primera vez.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"El diseño de la aplicación vuelve al layout utilizado cuando se instaló por primera vez.
 
-Es posible que algunos diseños del lado del servidor no se restablezcan.
+Algunos layouts del lado del servidor pueden no revertirse.
 
 Los cambios incluyen:
-• Es posible que los componentes del menú desplegable del reproductor (o ajustes relacionados) no funcionen.
-• Los contadores no están animados.
-• Se muestra la pestaña Biblioteca.
-• Es posible que la sección de música de la descripción del vídeo no funcione.
-• No se pueden ocultar los elementos del menú desplegable del reproductor.
-• Es posible que el botón para cambiar de cuenta no aparezca en la pestaña Biblioteca."</string>
+• Los componentes en el menú desplegable del reproductor (o ajustes relacionados) pueden no funcionar
+• Los números en movimiento no están animados
+• Se muestra la pestaña Biblioteca
+• La sección de música de la descripción del vídeo puede no funcionar
+• Los elementos del menú desplegable del reproductor no se pueden ocultar
+• El botón de cambio de cuenta puede no aparecer en la pestaña Biblioteca"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Activar filtro del menú flotante del feed</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtro del menú flotante del feed</string>
@@ -133,7 +133,7 @@ Los cambios incluyen:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">Ocultar Doodles de YouTube</string>
   <string name="morphe_hide_youtube_doodles_summary">Oculta las animaciones de temporada y basadas en eventos en el logotipo de YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Mostrar los Doodles de YouTube puede impedir que se muestren encabezados personalizados.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Mostrar los Doodles de YouTube puede impedir que se muestren las cabeceras personalizadas</string>
   <string name="morphe_hide_channel_bar_title">Ocultar barra de canales</string>
   <string name="morphe_hide_channel_watermark_title">Ocultar marca de agua del canal</string>
   <string name="morphe_hide_chapters_timeline_button_title">Ocultar Capítulos y botón \'En este vídeo\'</string>
@@ -281,7 +281,7 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_menu_button_summary">Oculta el botón de menú de tres puntos de cada comentario</string>
   <string name="morphe_hide_comments_preview_comment_title">Ocultar vista previa de comentarios</string>
   <string name="morphe_hide_comments_preview_comment_summary">Oculta la vista previa de comentarios debajo del vídeo antes de abrir la sección de comentarios completa</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Comentario oculto por Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Comentario oculto por Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Activar botón de comentarios mínimo</string>
   <string name="morphe_minimal_comments_button_summary">Oculta las tarjetas deslizantes y su selector de páginas, que se muestran en el botón de comentarios</string>
   <string name="morphe_hide_comments_thanks_button_title">Ocultar botón Gracias</string>
@@ -490,7 +490,7 @@ Tu clave API nunca debe compartirse. Cualquiera que tenga acceso a ella puede us
   <string name="morphe_vot_openrouter_open_website">Abrir OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">Falló la traducción con OpenRouter (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Límite diario de MyMemory alcanzado</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Próximo disponible en %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Próximo disponible en %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Has utilizado la cuota diaria gratuita de traducción de MyMemory (5.000 caracteres). Añade una dirección de correo electrónico de MyMemory en los ajustes para aumentar el límite diario a 50.000 caracteres o cambia a un servicio de traducción diferente</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Has utilizado la cuota de traducción de MyMemory de hoy (50.000 caracteres). Cambia a un servicio de traducción diferente o inténtalo de nuevo mañana</string>
   <string name="morphe_vot_mymemory_error">Falló la traducción con MyMemory (estado %s)</string>
@@ -560,10 +560,29 @@ Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Abre la cola de Morphe en lugar de la cola de YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">Añadir Cola al menú flotante del feed</string>
   <string name="morphe_queue_add_flyout_menu_summary">Añade un elemento adicional al menú flotante. Actívalo si no se muestra \'Añadir a la cola\'</string>
+  <string name="morphe_local_queue_title">Cola de estilo premium</string>
+  <string name="morphe_local_queue_summary">"Reemplaza la cola de Morphe por una que reside en el dispositivo, se reproduce sola y se puede reordenar arrastrando
+
+Información: el siguiente video en la cola solo se inicia mientras YouTube está en pantalla"</string>
+  <string name="morphe_local_queue_sheet_title">Cola</string>
+  <string name="morphe_local_queue_open">Cola (%s)</string>
+  <string name="morphe_local_queue_clear">Borrar todo</string>
+  <string name="morphe_local_queue_empty">Nada en la cola</string>
+  <string name="morphe_local_queue_empty_hint">Usa «Reproducir a continuación en la cola» en cualquier video</string>
+  <string name="morphe_local_queue_now_playing">Reproduciendo ahora</string>
+  <string name="morphe_local_queue_play_next">Reproducir a continuación en la cola</string>
+  <string name="morphe_local_queue_play_last">Reproducir último en cola</string>
+  <string name="morphe_local_queue_reorder">Reordenar</string>
+  <string name="morphe_local_queue_remove">Quitar</string>
+  <string name="morphe_local_queue_added">Añadido a la cola</string>
+  <string name="morphe_local_queue_unavailable">No se ha podido añadir este vídeo a la cola</string>
+  <string name="morphe_local_queue_playlist_unsupported">No se pueden añadir listas de reproducción a la cola</string>
+  <string name="morphe_local_queue_full">La cola está llena</string>
+  <string name="morphe_local_queue_play_failed">No se pudo iniciar el video</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Lista de excepción para anuncios en el menú flotante</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Añade un elemento en el menú flotante que permite los anuncios en el canal de ese vídeo</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Esta función puede requerir el uso de PotHelper o cambiar \'Falsificar transmisiones de vídeo\' a TV o Inicio de sesión de Android VR</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Esta función puede requerir el uso de PotHelper o cambiar \"Falsificar transmisiones de vídeo\" a TV o Inicio de sesión de Android VR</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Lista de excepción para velocidad en el menú flotante</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Añade un elemento en el menú flotante que reproduce siempre los vídeos de ese canal a velocidad 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">No has iniciado sesión</string>
@@ -746,6 +765,9 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_preferred_caption_language_title">Idioma preferido para subtítulos</string>
   <string name="morphe_preferred_caption_language_summary">Selecciona primero los subtítulos del proveedor y luego los traduce automáticamente al idioma preferido</string>
   <string name="morphe_preferred_caption_language_entry_off">Desactivado</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Añadir idiomas adicionales de traducción automática</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Añade más idiomas al menú de traducción automática</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Establecer cookies de subtítulos</string>
   <string name="morphe_set_caption_cookies_summary">"Corrige un error de YouTube en el que los subtítulos con traducción automática pueden no estar disponibles debido a la falta de cookies
@@ -787,7 +809,7 @@ Se deben proporcionar 'cookies de subtítulos'"</string>
   <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegación</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Esto oculta por completo la barra de navegación, incluida la pestaña 'Tú'.
 
-Para acceder a los ajustes, activa el botón de ajustes a través de General → Barra de herramientas → Mostrar Ajustes."</string>
+Para acceder a los ajustes, activa el botón de ajustes a través de General → Barra de herramientas → Mostrar Ajustes"</string>
   <string name="morphe_narrow_navigation_buttons_title">Activar botones de navegación estrechos</string>
   <string name="morphe_narrow_navigation_buttons_summary">Reduce el espacio horizontal entre los botones</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Desactivar botones de navegación sin etiquetas</string>
@@ -1025,7 +1047,7 @@ Diseño para automóviles
   <string name="morphe_tablet_layout_in_player_summary">"Restaura el diseño antiguo del reproductor
 
 Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está desactivada, es posible que la superposición 'Más vídeos' no esté disponible"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Activar esto puede hacer que algunas funciones del diseño del reproductor dejen de funcionar, como la sección de comentarios o \'Más vídeos\' debajo del reproductor.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Activar esto puede hacer que algunas funciones del diseño del reproductor dejen de funcionar, como la sección de comentarios o \'Más vídeos\' debajo del reproductor</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restaurar comportamiento antiguo de los subtítulos</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar guardado antiguo de lista de reproducción</string>
@@ -1090,6 +1112,12 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Desactivar actualización automática del feed</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Evita que los feeds se actualicen automáticamente cuando quedan desactualizados</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Diseño de tarjeta del feed</string>
+  <string name="morphe_feed_card_layout_entry_1">Clásico</string>
+  <string name="morphe_feed_card_layout_entry_2">Tarjetas</string>
+  <string name="morphe_feed_card_layout_entry_3">Tarjetas con botones para dar Me gusta, comentar y guardar</string>
+  <string name="morphe_feed_card_layout_comments">Comentarios</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Desactivar reanudación del reproductor en miniatura</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Desactiva el reproductor en miniatura de \'Seguir viendo\', una función de YouTube Premium que aparece al iniciar la aplicación.</string>
@@ -1124,9 +1152,6 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">El botón Atrás cierra el feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Al pulsar Atrás, la aplicación siempre se cierra en lugar de desplazarse al principio del feed</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Forzar fuente del sistema</string>
-  <string name="morphe_force_system_font_summary">Muestra la aplicación con la fuente del dispositivo en lugar de YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ocultar barra de estado</string>
   <string name="morphe_hide_status_bar_summary">Oculta la barra de estado del sistema. Desliza hacia abajo desde el borde superior para mostrarla un momento</string>
@@ -1207,7 +1232,7 @@ Los videos se solicitan mediante un prefijo corto del ID de video con hash, por 
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Falsificar dimensiones del dispositivo</string>
   <string name="morphe_spoof_device_dimensions_summary">Activar esto puede desbloquear calidades de vídeo más altas</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Activar esto puede causar demora en la reproducción de vídeo, peor duración de la batería y efectos secundarios desconocidos.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Activar esto puede causar demora en la reproducción de vídeo, peor duración de la batería y efectos secundarios desconocidos</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Vibración</string>
   <string name="morphe_disable_haptic_feedback_summary">Elige qué interacciones activan la vibración del dispositivo</string>
@@ -1217,7 +1242,7 @@ Los videos se solicitan mediante un prefijo corto del ID de video con hash, por 
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Desactivar vibración al mantener pulsado</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Desactivar vibración del zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Si has cambiado recientemente los datos de inicio de sesión de tu cuenta, desinstala y vuelve a instalar MicroG.</string>
+  <string name="microg_offline_account_login_error">Si has cambiado recientemente los datos de inicio de sesión de tu cuenta, desinstala y vuelve a instalar MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omitir redirecciones de enlace</string>
   <string name="morphe_bypass_link_redirects_summary">Abre el enlace original directamente, omitiendo el enlace de seguimiento (youtube.com/redirect)</string>
@@ -1297,18 +1322,21 @@ Limitaciones:
 • Los colores pueden verse incorrectos si la pantalla no puede mostrar realmente HDR
 • La reproducción puede fallar si el decodificador no puede manejar HDR
 • El HDR sigue dependiendo del cliente de 'Falsificar transmisiones de vídeo'"</string>
-  <string name="morphe_force_avc_codec_title">Forzar códec AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Ventajas:
-• Puede mejorar la duración de la batería
-• Puede restaurar resoluciones de vídeo perdidas en dispositivos antiguos
-
-Limitaciones:
-• La resolución máxima es 1080p
-• La reproducción de vídeo utilizará más datos de internet que VP9 o AV1
-• Los vídeos HDR no utilizarán AVC
-• Algunos dispositivos no pueden forzar AVC"</string>
+  <string name="morphe_video_codec_title">Códec de video</string>
+  <string name="morphe_video_codec_entry_default">Predeterminado</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Para usar esta función, configura \'Falsificar transmisiones de vídeo\' como \'Android VR\' o \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Para forzar AVC, cambia «Falsificar transmisiones de vídeo» a «Android Studio», «Android VR» o «visionOS»</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Puede mejorar la duración de la batería y solucionar los problemas de interrupciones en la reproducción
+• Utiliza más datos de internet que AV1
+
+AVC (H.264)
+• Requiere un cliente de falsificar transmisión de vídeo «Android Studio», «Android VR» o «visionOS»
+• Puede mejorar aún más la duración de la batería
+• Puede restaurar las resoluciones de vídeo que faltan en dispositivos más antiguos
+• La resolución máxima es de 1080p
+• Es posible que los vídeos HDR no utilicen AVC
+• Algunos dispositivos no pueden forzar AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Abrir menú de calidad avanzada</string>
   <string name="morphe_advanced_video_quality_menu_summary">Omite el menú de selección de calidad y abre el menú de calidad Avanzada directamente</string>
@@ -1323,8 +1351,9 @@ Limitaciones:
   <string name="morphe_spoof_video_streams_av1_summary">Permite la decodificación por software de AV1 al usar el cliente \'Android VR\' o visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Al activar este ajuste, es posible que se utilice la decodificación AV1 del software.
 
-La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</string>
+La reproducción de vídeo con AV1 se puede atascar o perder fotogramas"</string>
   <string name="morphe_spoof_video_streams_about_title">Efectos secundarios de la falsificación</string>
+  <string name="morphe_spoof_video_streams_about_failure">• La reproducción puede fallar al cabo de 1 minuto</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Falta el menú \'Pista de audio\'</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Sin códec de vídeo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• El modo inmersivo 360° VR no está disponible</string>
@@ -1351,4 +1380,154 @@ Limitación: Vuelve al antiguo estilo de superposición de 'Más vídeos'"</stri
   <string name="morphe_player_icon_style_entry_bold">Grueso</string>
   <string name="morphe_player_icon_style_entry_custom">Personalizado</string>
   <string name="morphe_shorts_icon_style_title">Estilo de iconos de Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Rastreador de series</string>
+  <string name="morphe_series_tracker_screen_summary">Sigue las listas de reproducción como series y guarda tu posición</string>
+  <string name="morphe_series_tracker_title">Activar seguimiento de series</string>
+  <string name="morphe_series_tracker_summary">Agrega una página de Series al Historial y una opción de Seguir series a las listas de reproducción</string>
+  <string name="morphe_series_tracker_show_button_title">Mostrar botón del rastreador de series</string>
+  <string name="morphe_series_tracker_show_button_summary">Añade un botón de reproducción para seguir o abrir la serie del vídeo actual</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Registrar progreso de las series seguidas</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Registrar la reproducción en este teléfono para las series guardadas y los marcadores</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Mostrar Historial en la barra de navegación</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Inicio, Suscripciones, Notificaciones, Historial y Tú</string>
+  <string name="morphe_series_tracker_ui_cancel">Cancelar</string>
+  <string name="morphe_series_tracker_ui_save">Guardar</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Guardar marcador</string>
+  <string name="morphe_series_tracker_ui_series_name">Nombre de la serie</string>
+  <string name="morphe_series_tracker_ui_series_options">Opciones de la serie</string>
+  <string name="morphe_series_tracker_ui_library_options">Opciones de la biblioteca</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Actualizar episodios</string>
+  <string name="morphe_series_tracker_ui_rename">Renombrar</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Abrir lista de reproducción en YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Eliminar de la biblioteca</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Enlace o ID de la lista de reproducción</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Borrar todo el progreso local</string>
+  <string name="morphe_series_tracker_ui_clear_history">Borrar historial</string>
+  <string name="morphe_series_tracker_clear_progress_title">¿Borrar todo el progreso local?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Esto borra las posiciones, anulaciones de vistas y selecciones de reanudación para todos los vídeos. Las series guardadas y sus catálogos permanecen. Se grabará la nueva reproducción si la grabación está habilitada</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Marcar como visto</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Marcar como no visto</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Usar estado automático</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Reiniciar desde 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Reproducir de nuevo desde 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Estado guardado</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Reintentar guardado</string>
+  <string name="morphe_series_tracker_ui_previous_100">Anterior 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Siguiente 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Abrir vídeo guardado</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Progreso local borrado</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Abre Historial desde Tú para ver tus series</string>
+  <string name="morphe_series_tracker_ui_watch_history">Historial de reproducción</string>
+  <string name="morphe_series_tracker_ui_series">Series</string>
+  <string name="morphe_series_tracker_ui_history">Historial</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Suscripciones</string>
+  <string name="morphe_series_tracker_ui_notifications">Notificaciones</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Cargando series guardadas…</string>
+  <string name="morphe_series_tracker_empty_library">Sigue una lista de reproducción para rastrear sus episodios</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Marcador de lista de reproducción</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Actualizando episodios…</string>
+  <string name="morphe_series_tracker_ui_all_series">Todas las series</string>
+  <string name="morphe_series_tracker_watched">Visto</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Cargando episodios…</string>
+  <string name="morphe_series_tracker_ui_more_options">Más opciones</string>
+  <string name="morphe_series_tracker_record_consent">"Graba el progreso solo para tus series guardadas y vídeos marcados como favoritos.
+
+Esta biblioteca se almacena en este dispositivo y se comparte entre cuentas de YouTube. Los controles de pausa y borrado de historial de YouTube no la modifican. Usa Serie → Más → Borrar progreso local para borrarla.
+
+La grabación automática se detiene en modo incógnito, cuando la identidad de la cuenta no está disponible o cuando cambias a otra cuenta. Habilita el seguimiento de nuevo para usarlo con esa cuenta"</string>
+  <string name="morphe_series_tracker_identity_unavailable">El seguimiento no se puede activar en modo incógnito ni antes de que YouTube haya cargado el estado de la cuenta actual. Vuelve al Inicio e inténtalo de nuevo. No se requiere inicio de sesión</string>
+  <string name="morphe_series_tracker_enable">Activar seguimiento local</string>
+  <string name="morphe_series_tracker_tracking_paused">La grabación de progreso está desactivada</string>
+  <string name="morphe_series_tracker_resume_at">Reanudar en %1$s</string>
+  <string name="morphe_series_tracker_watched_count"><b>%1$s</b> / <b>%2$s</b> episodios vistos</string>
+  <string name="morphe_series_tracker_episode_position">Episodio %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Episodios %1$s-%2$s de %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Actualiza para intentar cargar episodios. Las listas privadas necesitan acceso a la cuenta; su marcador sigue abriéndose en YouTube</string>
+  <string name="morphe_series_tracker_open_failed">YouTube no pudo abrir este episodio</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube no pudo abrir esta lista de reproducción</string>
+  <string name="morphe_series_tracker_plan_changed">Elige un episodio</string>
+  <string name="morphe_series_tracker_plan_caught_up">Al día</string>
+  <string name="morphe_series_tracker_plan_none">Sin episodios reproducibles</string>
+  <string name="morphe_series_tracker_saved_position">Vídeo guardado · %1$s</string>
+  <string name="morphe_series_tracker_follow">Seguir serie</string>
+  <string name="morphe_series_tracker_view_series">Ver serie</string>
+  <string name="morphe_series_tracker_continue">Continuar</string>
+  <string name="morphe_series_tracker_start_here">Empezar aquí</string>
+  <string name="morphe_series_tracker_start_saved">Punto inicial guardado</string>
+  <string name="morphe_series_tracker_watched_to_here">Visto hasta aquí</string>
+  <string name="morphe_series_tracker_marked">Episodios marcados como vistos</string>
+  <string name="morphe_series_tracker_undo">Deshacer</string>
+  <string name="morphe_series_tracker_enable_short">Activar</string>
+  <string name="morphe_series_tracker_new_episode">1 nuevo episodio</string>
+  <string name="morphe_series_tracker_new_episodes"><b>%1$s</b> nuevos episodios</string>
+  <string name="morphe_series_tracker_record_short">Registrar progreso en este dispositivo</string>
+  <string name="morphe_series_tracker_follow_consent">"Tus series y el progreso se mantienen en este dispositivo, compartidos entre cuentas de YouTube. Los controles de historial de YouTube no los modifican. Borra el progreso desde el menú de Series.
+
+La grabación automática es opcional. Se detiene en modo incógnito o cuando cambia la cuenta"</string>
+  <string name="morphe_series_tracker_follow_unavailable">No se pudieron cargar los episodios. Puedes guardar la lista de reproducción como marcador</string>
+  <string name="morphe_series_tracker_error_pending_full">Demasiados cambios sin guardar. Reintenta guardar primero</string>
+  <string name="morphe_series_tracker_error_storage_busy">Guardando. Intentarlo de nuevo</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Cargando episodios. Intentarlo de nuevo</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Almacenamiento no disponible. Tus datos guardados se han conservado</string>
+  <string name="morphe_series_tracker_error_storage_save">No se pudieron guardar los cambios. Reintenta guardar antes de cerrar YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">Esta serie ya está guardada o su lista de reproducción ha cambiado. Ábrela de nuevo</string>
+  <string name="morphe_series_tracker_error_series_changed">Esta serie ha cambiado o se ha eliminado. Abre la biblioteca de nuevo</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Ha cambiado la lista de reproducción. Selecciona el episodio de nuevo</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Este episodio no está disponible. Elige otro</string>
+  <string name="morphe_series_tracker_error_name_required">Introduce un nombre de serie</string>
+  <string name="morphe_series_tracker_error_playlist_input">Introduce un enlace o ID de lista de reproducción de YouTube</string>
+  <string name="morphe_series_tracker_error_retry_later">Espera antes de actualizar de nuevo</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">No se pudieron cargar los episodios. Inténtalo de nuevo más tarde</string>
+  <string name="morphe_series_tracker_error_operation">No se pudo completar el cambio. Inténtalo de nuevo</string>
+  <string name="morphe_series_tracker_error_resume">No se pudo confirmar la reanudación. Comprueba el reproductor e inténtalo de nuevo</string>
+  <string name="morphe_series_tracker_followed">Siguiendo series</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Este vídeo no está en esta lista de reproducción</string>
+  <string name="morphe_series_tracker_finding_playlists">Buscando listas de reproducción…</string>
+  <string name="morphe_series_tracker_paste_playlist">Pegar enlace de lista de reproducción</string>
+  <string name="morphe_series_tracker_discovery_unavailable">No se encontró una lista de reproducción</string>
+  <string name="morphe_series_tracker_no_available_episodes">No hay episodios disponibles</string>
+  <string name="morphe_series_tracker_hide_watched">Ocultar vistos</string>
+  <string name="morphe_series_tracker_watch_previous">Marcar episodios anteriores como vistos</string>
+  <string name="morphe_series_tracker_order_starts_with">Empieza por: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Orden de episodios</string>
+  <string name="morphe_series_tracker_playlist_order">Orden de lista de reproducción</string>
+  <string name="morphe_series_tracker_reverse_order">Invertir orden de lista de reproducción</string>
+  <string name="morphe_series_tracker_view_count">%1$s visualizaciones</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s visualización</string>
+  <string name="morphe_series_tracker_completion_title">Marcar episodios como vistos</string>
+  <string name="morphe_series_tracker_completion_summary">Al menos %1$s%% visto con como máximo 90 segundos restantes, o %2$s segundos restantes</string>
+  <string name="morphe_series_tracker_completion_explanation">Marca automáticamente un episodio como visto después de alcanzar cualquiera de los umbrales. La regla del porcentaje también requiere que queden como máximo 90 segundos, por lo que el final de los episodios largos no se omite. La regla del tiempo restante se aplica a vídeos de más de un minuto; establécela en 0 para desactivarla. Los cambios se aplican a futuras actualizaciones de progreso. Las elecciones manuales de visto/no visto se conservan</string>
+  <string name="morphe_series_tracker_completion_percent">Porcentaje visto (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Segundos restantes (0-300; 0 desactiva)</string>
+  <string name="morphe_series_tracker_completion_range">Introduce un valor entre %1$s y %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Usar progreso de YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Retomar series seguidas después de verlas en otro dispositivo</string>
+  <string name="morphe_series_tracker_sync_consent">Lee el estado de visto y las posiciones de reanudación para tus series seguidas desde la cuenta actual de YouTube. Solo se guardan en este teléfono los episodios coincidentes. Las comprobaciones se ejecutan mientras está abierta la biblioteca de series y antes de Continuar. Debes tener habilitado el historial de YouTube en tu otro dispositivo</string>
+  <string name="morphe_series_tracker_sync_checking">Comprobando progreso de YouTube…</string>
+  <string name="morphe_series_tracker_sync_failed">El progreso de YouTube no está disponible. Usando el progreso guardado</string>
+  <string name="morphe_series_tracker_sync_partial">Parte del progreso de YouTube no está disponible. Se conservan las posiciones guardadas</string>
+  <string name="morphe_series_tracker_backup_title">Copia de seguridad y restauración</string>
+  <string name="morphe_series_tracker_backup_summary">Guarda tu biblioteca de series en un archivo o restaura una copia de seguridad</string>
+  <string name="morphe_series_tracker_backup_explanation">Guarda series seguidas, posiciones de episodios y elecciones de vistas. No se incluyen los permisos de grabación y progreso de YouTube</string>
+  <string name="morphe_series_tracker_backup_save">Guardar copia de seguridad</string>
+  <string name="morphe_series_tracker_backup_restore">Restaurar copia de seguridad</string>
+  <string name="morphe_series_tracker_backup_preview">Añadir <b>%1$s</b> series. Las <b>%2$s</b> series ya en tu biblioteca se mantienen. Se mantiene el progreso de video existente</string>
+  <string name="morphe_series_tracker_backup_saved">Copia de seguridad de series guardada</string>
+  <string name="morphe_series_tracker_backup_restored"><b>%1$s</b> series restauradas</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Este archivo no es una copia de seguridad de serie compatible o es demasiado grande. Tu biblioteca no se ha modificado</string>
+  <string name="morphe_series_tracker_error_backup_write">No se pudo guardar la copia de seguridad. Prueba con otra ubicación</string>
+  <string name="morphe_series_tracker_removed">Serie eliminada</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Este episodio ahora aparece más de una vez. Elige cuál continuar</string>
+  <string name="morphe_series_tracker_recovery_missing">Tu episodio guardado ya no está en esta lista de reproducción. Se conserva tu posición guardada</string>
+  <string name="morphe_series_tracker_recovery_continue">Continuar con episodio %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">También puedes elegir cualquier episodio de abajo. Los episodios anteriores no cambian</string>
+  <string name="morphe_series_tracker_playback_changed">Ha cambiado la lista de reproducción. Abre la serie para elegir dónde continuar</string>
+  <string name="morphe_series_tracker_playback_boundary">No hay más episodios en esta dirección</string>
+  <string name="morphe_series_tracker_continue_series">Continuar %1$s</string>
+  <string name="morphe_series_tracker_search_series">Buscar series</string>
+  <string name="morphe_series_tracker_clear_search">Borrar búsqueda</string>
+  <string name="morphe_series_tracker_no_search_results">No se encontraron series</string>
+  <string name="morphe_series_tracker_untitled_episode">Episodio sin título</string>
+  <string name="morphe_series_tracker_unavailable_episode">Episodio no disponible</string>
 </resources>

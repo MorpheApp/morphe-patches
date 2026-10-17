@@ -17,10 +17,8 @@ import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -28,14 +26,13 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
-import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.music.settings.Settings;
 
-public final class LunaBeatProvider implements LyricsProvider {
+public final class LunaBeatProvider extends ScoredSongProvider {
 
     private static final String BASE_URL = "https://2755337087.github.io/ttml-hub/";
     private static final String MANIFEST_URL = BASE_URL + "api/v1/manifest.json";
@@ -160,33 +157,7 @@ public final class LunaBeatProvider implements LyricsProvider {
     }
 
     @Override
-    public boolean hasCandidates() {
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
-        List<ScoredSong> candidates = fetchScoredSongs(track);
-        if (candidates.isEmpty()) {
-            return null;
-        }
-        ScoredSong top = candidates.get(0);
-        return FetchResult.of(top.lyrics(), top.title(), top.artist(), 0, track);
-    }
-
-    @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
-        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-        for (ScoredSong candidate : fetchScoredSongs(track)) {
-            scored.add(new Lyrics.ScoredLyrics(candidate.score(), candidate.lyrics()));
-        }
-        return scored;
-    }
-
-    private record ScoredSong(int score, Lyrics lyrics, String title, String artist) {}
-
-    private List<ScoredSong> fetchScoredSongs(TrackInfo track) {
+    protected List<ScoredSong> fetchScoredSongs(TrackInfo track) {
         ensureIndexLoaded();
 
         List<Song> matches = searchLunabeatIndex(track);
@@ -206,7 +177,7 @@ public final class LunaBeatProvider implements LyricsProvider {
             if (lyrics != null && !lyrics.isEmpty()) {
                 int score = scoreLunabeatCandidate(
                         song.title(), artist, lyrics, track);
-                scored.add(new ScoredSong(score, lyrics, song.title(), artist));
+                scored.add(new ScoredSong(score, lyrics, song.title(), artist, 0L));
             }
         }
 
@@ -279,28 +250,7 @@ public final class LunaBeatProvider implements LyricsProvider {
             }
             String ttml = sb.toString();
 
-            Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, name(), null);
-            if (lyrics == null) return null;
-
-            Map<String, List<LyricsLine>> translations = lyrics.translations();
-            if (translations == null || translations.isEmpty()) return lyrics;
-
-            String deviceLang = LyricsRequests.deviceLanguage();
-            if ("zh".equals(deviceLang)) {
-                List<LyricsLine> zhLines = translations.get("zh");
-                if (zhLines == null) return lyrics;
-                Map<String, List<LyricsLine>> filtered = new HashMap<>(1);
-                filtered.put("zh", zhLines);
-                return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(),
-                        lyrics.romanization(), filtered, lyrics.romanizations(),
-                        lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(),
-                        lyrics.sourceUrl());
-            }
-
-            return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(),
-                    lyrics.romanization(), null, lyrics.romanizations(),
-                    lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(),
-                    lyrics.sourceUrl());
+            return TTMLParser.ttmlToLyrics(ttml, name(), null);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not fetch LunaBeat lyrics", ex);
             return null;

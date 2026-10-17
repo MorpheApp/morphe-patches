@@ -85,10 +85,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">Asetusten tuonti onnistui</string>
   <string name="morphe_sb_settings_import_failed">Tuonti epäonnistui: %s</string>
   <string name="morphe_sb_settings_export_failed">Vienti epäonnistui: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Asetuksesi sisältävät yksityisen SponsorBlockin UserID:si.
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Asetuksissasi on yksityinen SponsorBlock-käyttäjä ID.
 
-UserID on kuin salasana, eikä sitä pidä jakaa kenellekään.
-"</string>
+Käyttäjä ID on kuin salasana, ja sitä ei saa koskaan jakaa"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Älä näytä uudelleen</string>
   <string name="morphe_sb_diff_segments_title">Muuta osion käyttäytymistä</string>
   <string name="morphe_sb_segments_sponsor">Sponsori</string>
@@ -151,7 +150,7 @@ UserID on kuin salasana, eikä sitä pidä jakaa kenellekään.
   <string name="morphe_sb_skip_ignore">Poista käytöstä</string>
   <string name="morphe_sb_submit_failed_invalid">Osiota ei voitu lähettää: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock on tilapäisesti poissa käytöstä</string>
-  <string name="morphe_sb_submit_failed_unknown_error">Osiota ei voitu lähettää (tila: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Osiota ei voitu lähettää (tila: %1$s %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Segmenttiä ei voida lähettää. Nopeuden rajoitus (liian monta samalta käyttäjältä tai IP-osoitteesta)</string>
   <string name="morphe_sb_submit_failed_forbidden">Osiota ei voi lähettää: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Ei voida lähettää segmenttiä.
@@ -159,10 +158,10 @@ On jo olemassa"</string>
   <string name="morphe_sb_submit_succeeded">Osion lähetys onnistui</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock ei ole tilapäisesti käytettävissä (API-timeout)</string>
-  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock ei ole tilapäisesti käytettävissä (tila %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock ei ole tilapäisesti käytettävissä (tila %s)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock ei ole tilapäisesti käytettävissä</string>
   <string name="morphe_sb_vote_failed_timeout">Osiota ei voitu äänestää (API aikakatkaistu)</string>
-  <string name="morphe_sb_vote_failed_unknown_error">Osiota ei voitu äänestää (tila: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Osiota ei voitu äänestää (tila: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Osiota ei voitu äänestää: %s</string>
   <string name="morphe_sb_vote_upvote">Ylä-ääni</string>
   <string name="morphe_sb_vote_downvote">Alaääni</string>
@@ -171,7 +170,7 @@ On jo olemassa"</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s–%2$s</string>
   <string name="morphe_sb_new_segment_choose_category">Valitse osion kategoria</string>
-  <string name="morphe_sb_new_segment_disabled_category">Kategoria on poistettu käytöstä asetuksissa. Salli kategoria lähettääksesi.</string>
+  <string name="morphe_sb_new_segment_disabled_category">Kategoria on poistettu käytöstä asetuksissa. Salli kategoria lähettääksesi</string>
   <string name="morphe_sb_new_segment_title">Uusi SponsorBlock-osio</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Asetetaanko %s uuden osion aluksi vai lopuksi?</string>
   <string name="morphe_sb_new_segment_mark_start">Alku</string>
@@ -210,7 +209,7 @@ Jos et lähetä korostusta, napauta Peruuta ja merkitse toinen sijainti"</string
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock ei ole käytössä</string>
   <string name="morphe_sb_stats_username">Käyttäjänimesi: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Vaihda käyttäjänimeä napauttamalla tästä</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Käyttäjänimeä ei voitu vaihtaa: Tila: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Käyttäjänimeä ei voitu vaihtaa: Tila: %1$s %2$s</string>
   <string name="morphe_sb_stats_username_changed">Käyttäjänimen vaihto onnistui</string>
   <string name="morphe_sb_stats_reputation">Maineesi on &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Olet luonut &lt;b&gt;%s&lt;/b&gt; osiota</string>

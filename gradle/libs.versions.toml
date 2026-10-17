@@ -1,8 +1,8 @@
 # Dependencies must also be addded to LicensesDialog.java
 
 [versions]
-morphe-patcher = "1.14.0"
-morphe-patches-library = "1.9.0-dev.4"
+morphe-patcher = "1.15.1"
+morphe-patches-library = "1.9.0-dev.9"
 # Tracking https://github.com/google/smali/issues/100.
 smali = "d92701d947"
 agp = "9.1.0"
@@ -16,6 +16,9 @@ guava = "33.6.0-jre"
 hiddenapi = "6.1"
 protobuf = "0.10.0"
 protoc = "4.36.2"
+junit = "4.13.2"
+junit-jupiter = "5.10.1"
+kotlinx-coroutines = "1.10.2"
 
 [libraries]
 morphe-patches-library = { module = "app.morphe:morphe-patches-library", version.ref = "morphe-patches-library" }
@@ -30,6 +33,9 @@ guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hiddenapi = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapi" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protoc" }
 protobuf-protoc = { module = "com.google.protobuf:protoc", version.ref = "protoc" }
+junit = { module = "junit:junit", version.ref = "junit" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 
 [plugins]
 android-library = { id = "com.android.library" }

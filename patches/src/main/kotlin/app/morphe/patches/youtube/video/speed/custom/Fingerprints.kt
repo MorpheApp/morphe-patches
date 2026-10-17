@@ -161,10 +161,6 @@ internal object AudioOffloadEnabledFingerprint : Fingerprint(
         Opcode.IF_NEZ,
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
-        Opcode.IGET_BOOLEAN,
-        Opcode.IF_NEZ,
-        Opcode.RETURN,
-        Opcode.RETURN,
-        Opcode.RETURN
+        Opcode.IGET_BOOLEAN
     )
 )

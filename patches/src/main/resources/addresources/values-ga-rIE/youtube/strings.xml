@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Díchumasaigh nuashonruithe leagan amach</string>
   <string name="morphe_disable_layout_updates_summary">Coscann sé seo an freastalaí ó leagan amach an aip a nuashonrú</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Fillfidh leagan amach an aip ar an leagan amach a úsáideadh nuair a suiteáladh é ar dtús.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Téann leagan amach an aip ar ais chuig an leagan amach a úsáideadh nuair a suiteáladh é ar dtús.
 
-B’fhéidir nach bhfillfidh roinnt leagan amach taobh an fhreastalaí.
+B’fhéidir nach n-athróidh roinnt leagan amach taobh an fhreastalaí.
 
 I measc na n-athruithe tá:
-• Seans nach n-oibreoidh comhpháirteanna i roghchlár eitilte an imreora (nó socruithe gaolmhara).
-• Ní bheidh uimhreacha rollta beoite.
-• Taispeántar an cluaisín Leabharlainne.
-• Seans nach n-oibreoidh an chuid ceoil de thuairisc an fhíseáin.
-• Ní féidir míreanna roghchláir eitilte an imreora a cheilt.
-• Seans nach mbeidh cnaipe athraithe cuntais le feiceáil ar an cluaisín Leabharlainne."</string>
+• Seans nach n-oibreoidh comhpháirteanna i roghchlár eitilte an imreora (nó socruithe gaolmhara)
+• Ní bheochan na huimhreacha rollta
+• Taispeántar an cluaisín leabharlainne
+• Seans nach n-oibreoidh an chuid ceoil de thuairisc an fhíseáin
+• Ní féidir míreanna roghchláir eitilte an imreora a cheilt
+• Seans nach mbeidh an cnaipe athraithe cuntais le feiceáil ar an cluaisín leabharlainne"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Cumasaigh scagaire roghchláir sleamhnáin beatha</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Scagaire roghchláir eitilte beatha</string>
@@ -133,7 +133,7 @@ I measc na n-athruithe tá:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">Folaigh YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Folaíonn sé beochana séasúracha agus imeachtaí-bhunaithe ar lógó YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">D’fhéadfadh sé nach mbeadh ceanntásca saincheaptha le feiceáil má thaispeántar YouTube Doodles.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">D’fhéadfadh sé go gcuirfeadh taispeáint Doodles YouTube cosc ​​ar cheanntásca saincheaptha a bheith le feiceáil.</string>
   <string name="morphe_hide_channel_bar_title">Folaigh barra cainéal</string>
   <string name="morphe_hide_channel_watermark_title">Folaigh uiscemharc an chainéil</string>
   <string name="morphe_hide_chapters_timeline_button_title">Folaigh Caibidlí agus cnaipe \'San fhíseán seo\'</string>
@@ -281,7 +281,7 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_menu_button_summary">Folaíonn sé cnaipe roghchláir trí phonc gach tráchtaireachta</string>
   <string name="morphe_hide_comments_preview_comment_title">Folaigh trácht réamhamharc</string>
   <string name="morphe_hide_comments_preview_comment_summary">Folaíonn sé réamhamharc na dtuairimí faoin bhfíseán sula n-osclaítear an chuid iomlán de na tuairimí</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Trácht i bhfolach ag Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Trácht i bhfolach ag Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Cumasaigh an cnaipe tráchtanna íosta</string>
   <string name="morphe_minimal_comments_button_summary">Folaíonn sé na cártaí sleamhnáin agus a roghnóir leathanaigh, a thaispeántar ar an gcnaipe tráchtaí</string>
   <string name="morphe_hide_comments_thanks_button_title">Folaigh an cnaipe Buíochais</string>
@@ -490,7 +490,7 @@ Níor cheart d'eochair API a roinnt choíche. Is féidir le duine ar bith a bhfu
   <string name="morphe_vot_openrouter_open_website">Oscail OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">Theip ar aistriúchán OpenRouter (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Teorainn laethúil MyMemory sroichte</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Ar fáil ag %s an chéad cheann eile.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Ar fáil arís ag %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Tá cuóta aistriúcháin saor in aisce MyMemory (5,000 carachtar) úsáidte agat inniu. Cuir ríomhphost MyMemory leis sna socruithe chun an teorainn laethúil a ardú go 50,000 carachtar, nó aistrigh chuig seirbhís aistriúcháin eile.</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Tá cuóta aistriúcháin MyMemory (50,000 carachtar) úsáidte agat inniu. Athraigh chuig seirbhís aistriúcháin eile nó déan iarracht arís amárach.</string>
   <string name="morphe_vot_mymemory_error">Theip ar aistriúchán MyMemory (stádas %s)</string>
@@ -560,10 +560,29 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Osclaíonn sé an scuaine Morphe in ionad scuaine YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">Cuir mír roghchláir scuaine amach beatha leis</string>
   <string name="morphe_queue_add_flyout_menu_summary">Cuireann sé mír bhreise ar an leathanach leis. Cumasaigh é seo mura bhfuil \"Cuir leis an scuaine\" le feiceáil.</string>
+  <string name="morphe_local_queue_title">Ciú ar stíl Premium</string>
+  <string name="morphe_local_queue_summary">"Cuirtear in ionad an chiú Morphe ceann a fhanann ar an ngléas, a sheinneann ar aghaidh leis féin agus is féidir é a atheagrú trí tharraingt
+
+Eolas: Ní thosaíonn an chéad fhíseán eile atá sa chiú ach amháin fad is atá YouTube ar an scáileán"</string>
+  <string name="morphe_local_queue_sheet_title">Scuaine</string>
+  <string name="morphe_local_queue_open">Scuaine (%s)</string>
+  <string name="morphe_local_queue_clear">Glan gach rud</string>
+  <string name="morphe_local_queue_empty">Níl aon rud sa scuaine</string>
+  <string name="morphe_local_queue_empty_hint">Úsáid \'Seinn ina dhiaidh sin sa scuaine\' ar aon fhíseán</string>
+  <string name="morphe_local_queue_now_playing">Ag seinm anois</string>
+  <string name="morphe_local_queue_play_next">Seinn an chéad cheann eile sa scuaine</string>
+  <string name="morphe_local_queue_play_last">Seinn an ceann dheireanach sa scuaine</string>
+  <string name="morphe_local_queue_reorder">Athordú</string>
+  <string name="morphe_local_queue_remove">Bain</string>
+  <string name="morphe_local_queue_added">Cuireadh leis an scuaine</string>
+  <string name="morphe_local_queue_unavailable">Níorbh fhéidir an físeán seo a chur leis an scuaine</string>
+  <string name="morphe_local_queue_playlist_unsupported">Ní féidir liostaí seinn a chur leis an scuaine</string>
+  <string name="morphe_local_queue_full">Tá an scuaine lán</string>
+  <string name="morphe_local_queue_play_failed">Níorbh fhéidir an físeán a thosú</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Liosta bán fógraí sa roghchlár sleamhnáin</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Cuireann sé mír fillte leis a ligeann do fhógraí seinm ar chainéal an fhíseáin sin</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">D\'fhéadfadh go n-éileodh an ghné seo úsáid a bhaint as PotHelper nó \"sruthanna físeáin spoof\" a athrú go síniú isteach teilifíse nó Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">D\'fhéadfadh go n-éileodh an ghné seo úsáid a bhaint as PotHelper nó \"sruthanna físeáin spoof\" a athrú go síniú isteach teilifíse nó Android VR</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Liosta bán luais sa roghchlár aníos</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Cuireann mír fillteán leis a sheinneann cainéal an fhíseáin sin i gcónaí ag luas 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Gan logáil isteach</string>
@@ -746,6 +765,9 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
   <string name="morphe_preferred_caption_language_title">Teanga na bhfo-theideal is fearr leat</string>
   <string name="morphe_preferred_caption_language_summary">Roghnaíonn sé fotheidil an tsoláthraí ar dtús, agus ansin aistríonn sé go huathoibríoch iad go dtí an teanga is fearr leat.</string>
   <string name="morphe_preferred_caption_language_entry_off">As</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Cuir teangacha breise aistriúcháin uathoibríoch leis</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Cuireann sé níos mó teangacha leis an roghchlár aistriúcháin uathoibríoch</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Socraigh fianáin fotheidil</string>
   <string name="morphe_set_caption_cookies_summary">"Deisítear fabht stoic YouTube inar féidir nach mbíonn na fotheidil uathoibríoch-aistrithe ar fáil mar gheall ar fhianáin ar iarraidh.
@@ -785,12 +807,12 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <string name="morphe_hide_navigation_button_labels_title">Folaigh lipéid na gcnaipí nascleanúna</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Folaigh ponc ábhair nua</string>
   <string name="morphe_hide_navigation_bar_title">Folaigh an barra nascleanúna</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Cuireann sé seo an barra nascleanúna i bhfolach go hiomlán, an cluaisín 'Tusa' san áireamh.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Folaíonn sé seo an barra nascleanúna go hiomlán, an cluaisín 'Tú' san áireamh.
 
-Chun rochtain a fháil ar Socruithe, cumasaigh an cnaipe Socruithe trí Ghinearálta → Barra Uirlisí → Taispeáin Socruithe."</string>
+Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí Ginearálta → Barra Uirlisí → Taispeáin Socruithe."</string>
   <string name="morphe_narrow_navigation_buttons_title">Cumasaigh cnaipí nascleanúna caola</string>
   <string name="morphe_narrow_navigation_buttons_summary">Laghdaíonn an spásáil chothrománach idir cnaipí</string>
-  <string name="morphe_disable_icon_only_navigation_buttons_title">Díchumasaigh na cnaipí nascleanúna gan lipéid</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Díchumasaigh cnaipí nascleanúna gan lipéid</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Taispeánann sé na cnaipí nascleanúna le lipéid, má sheolann YouTube iad gan lipéid</string>
   <string name="morphe_navigation_bar_animations_title">Cumasaigh beochana barra nascleanúna</string>
   <string name="morphe_navigation_bar_animations_summary">Beochan aistrithe agus tú ag aistriú idir cluaisíní</string>
@@ -1025,7 +1047,7 @@ Leagan amach gluaisteán
   <string name="morphe_tablet_layout_in_player_summary">"Athchóiríonn sé leagan amach an tsean-imreoir
 
 Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múchta, b'fhéidir nach mbeidh forleagan 'Tuilleadh físeáin' ar fáil"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Má chuirtear an ghné seo ar siúl, d\'fhéadfadh sé roinnt gnéithe den leagan amach atá ag an seinnteoir a bhriseadh, mar shampla rannóg na dtráchtanna nó \'Tuilleadh físeán\' a thaispeántar thíos faoin seinnteoir.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Má chuirtear an ghné seo ar siúl, d\'fhéadfadh sé roinnt gnéithe den leagan amach atá ag an seinnteoir a bhriseadh, mar shampla rannóg na dtráchtanna nó \'Tuilleadh físeán\' a thaispeántar thíos faoin seinnteoir</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Athchóirigh iompar fotheidil d\'aois</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Athchóirigh an sean-shábháil chuig an seinmliosta</string>
@@ -1090,6 +1112,12 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Díchumasaigh athnuachan uathoibríoch fothaí</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Cuireann sé cosc ar athnuachan uathoibríoch fothaí tar éis dóibh dul as dáta.</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Treisiú cárta srutha</string>
+  <string name="morphe_feed_card_layout_entry_1">Clasaiceach</string>
+  <string name="morphe_feed_card_layout_entry_2">Cártaí</string>
+  <string name="morphe_feed_card_layout_entry_3">Cártaí le cnaipe líonta, trácht agus sábháil</string>
+  <string name="morphe_feed_card_layout_comments">Tráchtanna</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Díchumasaigh atosú an mhionimreoir</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Díchumasaíonn sé an miniplayer \'Lean ar aghaidh ag breathnú\', gné de chuid YouTube Premium a thaispeántar nuair a thosaítear an aip</string>
@@ -1124,9 +1152,6 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Fágann an cnaipe cúil as an bhfotha</string>
   <string name="morphe_back_button_always_exits_feed_summary">Má bhrúnn tú ar ais, fágtar an aip i gcónaí seachas scrollaigh go barr an fhotha</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Fórsáil cló an chórais</string>
-  <string name="morphe_force_system_font_summary">Taispeánann sé an aip le cló an ghléis in ionad YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Folaigh an barra stádais</string>
   <string name="morphe_hide_status_bar_summary">Folaíonn sé barra stádais an chórais. Svaip anuas ón imeall uachtarach chun é a thaispeáint ar feadh tamaill</string>
@@ -1177,8 +1202,8 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_dearrow_titles_icon_summary">Taispeánann sé deilbhín DeArrow ar theidil físeán slua-fhoinsithe</string>
   <string name="morphe_dearrow_casual_mode_title">Mód ócáideach</string>
   <string name="morphe_dearrow_casual_mode_summary">Taispeánann sé an teideal bunaidh in ionad an teidil DeArrow má vótáil úsáideoirí DeArrow gur maith leo an teideal bunaidh</string>
-  <string name="morphe_dearrow_casual_mode_min_votes_title">Íoslíon vótaí ócáideacha chun an teideal bunaidh a thaispeáint.</string>
-  <string name="morphe_dearrow_casual_mode_min_votes_summary">An líon vótaí ócáideacha in aon chatagóir amháin, ar nós greannmhar nó cruthaitheach, a theastaíonn chun an teideal bunaidh a thaispeáint.</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">Íonlíon vótaí ó úsáideoirí ócáideacha chun an buntheideal a thaispeáint</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">An líon vótaí ócáideacha in aon chatagóir amháin, ar nós greannmhar nó cruthaitheach, a theastaíonn chun an teideal bunaidh a thaispeáint</string>
   <string name="morphe_dearrow_thumbnails_title">Mionsamhlacha DeArrow</string>
   <string name="morphe_dearrow_thumbnail_options_entry_1">Mionsamhlacha bunaidh</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; Mionsamhlacha bunaidh</string>
@@ -1207,7 +1232,7 @@ Iarrtar físeáin le réimír ghearr den aitheantóir físeáin hasáilte, mar s
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Toisí gléas a fhalsú</string>
   <string name="morphe_spoof_device_dimensions_summary">Is féidir cáilíochtaí físe níos airde a dhíghlasáil trí seo a chumasú</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Is féidir go mbeidh stad ar athsheinm físe, saolré na ceallraí níos measa, agus fo-iarsmaí anaithnide mar thoradh air seo.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Is féidir go mbeidh stad ar athsheinm físe, saolré na ceallraí níos measa, agus fo-iarsmaí anaithnide mar thoradh air seo</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Aiseolas haptaic</string>
   <string name="morphe_disable_haptic_feedback_summary">Roghnaigh cé na hidirghníomhaíochtaí a spreagann creathadh gléis</string>
@@ -1217,7 +1242,7 @@ Iarrtar físeáin le réimír ghearr den aitheantóir físeáin hasáilte, mar s
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Díchumasaigh haptaic tapáil agus coinnigh</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Díchumasaigh haptaic súmála</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Má d’athraigh tú sonraí logála isteach do chuntais le déanaí, ansin díshuiteáil agus athshuiteáil MicroG.</string>
+  <string name="microg_offline_account_login_error">Má d\'athraigh tú sonraí logála isteach do chuntais le déanaí, díshuiteáil agus athshuiteáil MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Seachain atreoruithe nasc</string>
   <string name="morphe_bypass_link_redirects_summary">Osclaíonn sé an nasc bunaidh go díreach, ag seachaint an naisc rianaithe (youtube.com/redirect)</string>
@@ -1297,18 +1322,21 @@ Teorainneacha:
 • D’fhéadfadh cuma mhícheart a bheith ar na dathanna mura féidir leis an taispeántas HDR a thaispeáint i ndáiríre
 • D’fhéadfadh teip a bheith ar an athsheinm mura féidir leis an díchódóir HDR a láimhseáil
 • Braitheann HDR fós ar an gcliant sruthanna físe bréige"</string>
-  <string name="morphe_force_avc_codec_title">Códc AVC (H.264) a fhorchur</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Sochair:
-• Féadfaidh sé saolré na ceallraí a fheabhsú
-• Féadfaidh sé réitigh físeáin atá in easnamh a chur ar ais ar ghléasanna níos sine
-
-Teorainneacha:
-• Is é 1080p an t-uasréiteach
-• Úsáidfidh athsheinm físeáin níos mó sonraí idirlín ná VP9 nó AV1
-• Ní úsáidfidh físeáin HDR AVC
-• Ní féidir le roinnt gléasanna AVC a bhrú"</string>
+  <string name="morphe_video_codec_title">Códec físeáin</string>
+  <string name="morphe_video_codec_entry_default">Réamhshocrú</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Chun an ghné seo a úsáid, socraigh \'Sruthanna físe bréige\' go \'Android VR\' nó \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Chun AVC a chur i bhfeidhm, athraigh \'Sruthanna físe a aithris\' go \'Android Studio\', \'Android VR\' nó \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Féadann sé feabhas a chur ar shaol na ceallraí agus stadaíl athsheinm a réiteach
+• Úsáideann sé níos mó sonraí idirlín ná AV1
+
+AVC (H.264)
+• Éilíonn sé 'Android Studio', 'Android VR', nó 'visionOS' mar chliant aithrise sruthanna físe
+• Féadann sé feabhas a chur ar shaol na ceallraí níos mó fós
+• Féadann sé réitigh físe atá in easnamh a chur ar ais ar ghléasanna níos sine
+• Is é 1080p an t-uasréiteach
+• Seans nach n-úsáidfidh físeáin HDR AVC
+• Ní féidir le roinnt gléasanna AVC a chur i bhfeidhm"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Oscail an roghchlár Ardchaighdeáin</string>
   <string name="morphe_advanced_video_quality_menu_summary">Léimeann sé an roghchlár um roghnú cáilíochta agus osclaíonn sé an roghchlár Ardchaighdeán go díreach</string>
@@ -1323,8 +1351,9 @@ Teorainneacha:
   <string name="morphe_spoof_video_streams_av1_summary">Ceadaíonn sé díchódú bogearraí AV1 agus cliant \'Android VR\' / visionOS in úsáid</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"D’fhéadfadh sé go n-úsáidfí díchódú bogearraí AV1 agus an socrú seo á chumasú.
 
-D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe le AV1."</string>
+D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe le AV1"</string>
   <string name="morphe_spoof_video_streams_about_title">Fo-iarsmaí spóifithe</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Seans go dteipfidh an t-athsheinm ag 1 nóiméad</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Tá an roghchlár \'Rian Fuaime\' ar iarraidh</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Gan aon chóideic físe AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Níl mód tumtha VR 360° ar fáil</string>
@@ -1351,4 +1380,154 @@ Teorannú: Filleann sé ar an leagan sean-stíle den fhorleagan 'Tuilleadh físe
   <string name="morphe_player_icon_style_entry_bold">Trom</string>
   <string name="morphe_player_icon_style_entry_custom">Saincheaptha</string>
   <string name="morphe_shorts_icon_style_title">Stíl deilbhín Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Rianaire Sraitheanna</string>
+  <string name="morphe_series_tracker_screen_summary">Lean seinmliostaí mar shraitheanna agus coinnigh do láthair</string>
+  <string name="morphe_series_tracker_title">Cumasaigh rianú sraitheanna</string>
+  <string name="morphe_series_tracker_summary">Cuireann sé leathanach Sraithe leis an Stair, agus rogha chun sraith a leanúint le seinmliostaí.</string>
+  <string name="morphe_series_tracker_show_button_title">Taispeáin an cnaipe Rianaitheora Sraitheanna</string>
+  <string name="morphe_series_tracker_show_button_summary">Cuireann sé cnaipe imreora leis chun an tsraith a bhaineann leis an bhfíseán reatha a leanúint nó a oscailt</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Taifead dul chun cinn na sraitheanna leanúnacha</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Taifead athsheinm ar an bhfón seo le haghaidh sraitheanna sábháilte agus leabharmharcanna</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Taispeáin Stair sa barra nascleanúna</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Baile, Síntiúis, Fógraí, Stair agus Tusa</string>
+  <string name="morphe_series_tracker_ui_cancel">Cealaigh</string>
+  <string name="morphe_series_tracker_ui_save">Sábháil</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Sábháil leabharmharc</string>
+  <string name="morphe_series_tracker_ui_series_name">Ainm sraithe</string>
+  <string name="morphe_series_tracker_ui_series_options">Roghanna sraithe</string>
+  <string name="morphe_series_tracker_ui_library_options">Roghanna leabharlainne</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Athnuachan eipeasóidí</string>
+  <string name="morphe_series_tracker_ui_rename">Athainmnigh</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Oscail an seinmliosta i YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Bain ón leabharlann</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Nasc nó ID seinmliosta</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Glan gach dul chun cinn áitiúil</string>
+  <string name="morphe_series_tracker_ui_clear_history">Glan stair</string>
+  <string name="morphe_series_tracker_clear_progress_title">Glan gach dul chun cinn áitiúil?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Glanann sé seo suíomhanna, sáruithe faire, agus roghanna athchromtha do gach físeán. Fanann sraitheanna sábháilte agus a gcatalóga i bhfeidhm. Déanfar athsheinm nua a thaifeadadh má tá taifeadadh cumasaithe.</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Marcáil mar féicthe</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Marcáil mar neamhfhéicthe</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Úsáid stádas uathoibríoch</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Athosaigh ó 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Seinn arís ó 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Stádas sábhálta</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Déan iarracht arís sábháil</string>
+  <string name="morphe_series_tracker_ui_previous_100">100 Roimhe Seo</string>
+  <string name="morphe_series_tracker_ui_next_100">100 Ar Aghaidh</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Oscail físeán sábháilte</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Dul chun cinn áitiúil glanta</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Oscail an Stair ó \'Tú\' chun do shraith a fheiceáil</string>
+  <string name="morphe_series_tracker_ui_watch_history">Stair faire</string>
+  <string name="morphe_series_tracker_ui_series">Sraith</string>
+  <string name="morphe_series_tracker_ui_history">Stair</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Síntiúis</string>
+  <string name="morphe_series_tracker_ui_notifications">Fógraí</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Á luchtú sraithithe sábháilte…</string>
+  <string name="morphe_series_tracker_empty_library">Lean seinmliosta chun súil a choinneáil ar a chuid eipeasóidí</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Leabharmharc seinmliosta</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Eipeasóidí athnuachana…</string>
+  <string name="morphe_series_tracker_ui_all_series">Gach sraith</string>
+  <string name="morphe_series_tracker_watched">Féachta</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Ag lódáil eipeasóidí…</string>
+  <string name="morphe_series_tracker_ui_more_options">Tuilleadh roghanna</string>
+  <string name="morphe_series_tracker_record_consent">"Déantar dul chun cinn a thaifeadadh ach amháin i gcás na sraitheanna atá sábháilte agat agus na físeáin atá marcáilte agat.
+
+Tá an leabharlann seo stóráilte ar an ngléas seo agus roinnte thar chuntais YouTube éagsúla. Ní dhéanann na rialuithe YouTube chun an stair a chur ar sos nó a ghlanadh aon athrú air seo. Úsáid Sraitheanna → Tuilleadh → Glan an dul chun cinn áitiúil chun é a scriosadh.
+
+Stopann an taifeadadh uathoibríoch i mód incognito, nuair nach bhfuil sonraí an chuntais ar fáil, nó nuair a athraíonn tú go cuntas eile. Cumasaigh an rianú arís chun é a úsáid leis an gcuntas sin."</string>
+  <string name="morphe_series_tracker_identity_unavailable">Ní féidir rianú a chumasú i mód incognito, ná sula mbeidh staid reatha an chuntais luchtaithe ag YouTube. Téigh ar ais go dtí an Baile agus bain triail as arís. Ní gá síniú isteach.</string>
+  <string name="morphe_series_tracker_enable">Cumasaigh rianú áitiúil</string>
+  <string name="morphe_series_tracker_tracking_paused">Tá taifeadadh dul chun cinn as</string>
+  <string name="morphe_series_tracker_resume_at">Athosaigh ag %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s eipeasóid féachtha</string>
+  <string name="morphe_series_tracker_episode_position">Eipeasóid %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Eipeasóidí %1$s-%2$s de %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Athnuaigh chun iarracht a dhéanamh eipeasóidí a luchtú. Teastaíonn rochtain ar chuntas le haghaidh seinmliostaí príobháideacha; osclaíonn an leabharmharc dóibh fós ar YouTube.</string>
+  <string name="morphe_series_tracker_open_failed">Níorbh fhéidir le YouTube an eipeasóid seo a oscailt</string>
+  <string name="morphe_series_tracker_playlist_failed">Níorbh fhéidir le YouTube an seinmliosta seo a oscailt</string>
+  <string name="morphe_series_tracker_plan_changed">Roghnaigh eipeasóid</string>
+  <string name="morphe_series_tracker_plan_caught_up">Suas chun dáta</string>
+  <string name="morphe_series_tracker_plan_none">Gan eipeasóidí in-sheinnte</string>
+  <string name="morphe_series_tracker_saved_position">Físeán sábháilte · %1$s</string>
+  <string name="morphe_series_tracker_follow">Lean an tsraith</string>
+  <string name="morphe_series_tracker_view_series">Féach sraith</string>
+  <string name="morphe_series_tracker_continue">Lean ar aghaidh</string>
+  <string name="morphe_series_tracker_start_here">Tosaigh anseo</string>
+  <string name="morphe_series_tracker_start_saved">Pointe tosaigh sábháilte</string>
+  <string name="morphe_series_tracker_watched_to_here">Féicthe go dtí anseo</string>
+  <string name="morphe_series_tracker_marked">Eipeasóidí marcáilte mar fheicthe</string>
+  <string name="morphe_series_tracker_undo">Cuir ar ceal</string>
+  <string name="morphe_series_tracker_enable_short">Cumasaigh</string>
+  <string name="morphe_series_tracker_new_episode">1 eipeasóid nua</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s eipeasóid nua</string>
+  <string name="morphe_series_tracker_record_short">Taifead dul chun cinn ar an ngléas seo</string>
+  <string name="morphe_series_tracker_follow_consent">"Fanann do shraitheanna agus do dhul chun cinn ar an ngléas seo, agus iad roinnte thar chuntais YouTube éagsúla. Ní dhéanann rialuithe staire YouTube aon athrú orthu. Is féidir dul chun cinn a ghlanadh tríd an roghchlár Sraitheanna.
+
+Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a athraítear an cuntas."</string>
+  <string name="morphe_series_tracker_follow_unavailable">Níorbh fhéidir eipeasóidí a luchtú. Is féidir leat an seinmliosta a shábháil mar leabharmharc</string>
+  <string name="morphe_series_tracker_error_pending_full">Tá an iomarca athruithe ann nár sábháladh. Déan iarracht iad a shábháil ar dtús</string>
+  <string name="morphe_series_tracker_error_storage_busy">Tá an sábháil ar siúl. Bain triail as arís</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Tá an eipeasóid á luchtú. Bain triail as arís</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Níl stóráil ar fáil. Coinníodh do shonraí sábháilte</string>
+  <string name="morphe_series_tracker_error_storage_save">Níorbh fhéidir athruithe a shábháil. Bain triail as sábháil arís sula ndúnann tú YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">Tá an tsraith seo sábháilte cheana féin, nó tá a seinmliosta athraithe. Oscail arís í</string>
+  <string name="morphe_series_tracker_error_series_changed">Athraíodh an tsraith seo nó baineadh í. Oscail an leabharlann arís</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Athraíodh an seinmliosta. Roghnaigh an eipeasóid arís</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Níl an eipeasóid seo ar fáil. Roghnaigh ceann eile</string>
+  <string name="morphe_series_tracker_error_name_required">Cuir isteach ainm sraithe</string>
+  <string name="morphe_series_tracker_error_playlist_input">Cuir isteach nasc nó ID seinmliosta YouTube</string>
+  <string name="morphe_series_tracker_error_retry_later">Fan le do thoil sula ndéanann tú athnuachan arís</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Níorbh fhéidir eipeasóidí a luchtú. Bain triail as arís níos déanaí</string>
+  <string name="morphe_series_tracker_error_operation">Níorbh fhéidir an t-athrú a chur i gcrích. Bain triail as arís</string>
+  <string name="morphe_series_tracker_error_resume">Níorbh fhéidir an t-athchromadh a dheimhniú. Seiceáil an t-imreoir agus bain triail as arís</string>
+  <string name="morphe_series_tracker_followed">An tsraith a leanann</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Níl an físeán seo sa seinmliosta seo</string>
+  <string name="morphe_series_tracker_finding_playlists">Ag lorg seinmliostaí…</string>
+  <string name="morphe_series_tracker_paste_playlist">Greamaigh nasc an seinmliosta</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Níorbh fhéidir seinmliosta a aimsiú</string>
+  <string name="morphe_series_tracker_no_available_episodes">Níl aon eipeasóid ar fáil</string>
+  <string name="morphe_series_tracker_hide_watched">Folaigh an méid a breathnaíodh</string>
+  <string name="morphe_series_tracker_watch_previous">Marcáil eipeasóidí roimhe seo mar a bhí feicthe</string>
+  <string name="morphe_series_tracker_order_starts_with">Tosaíonn le: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Ord na n-eipeasóidí</string>
+  <string name="morphe_series_tracker_playlist_order">Ord an liosta seinm</string>
+  <string name="morphe_series_tracker_reverse_order">Aisiompaigh ord an seinmliosta</string>
+  <string name="morphe_series_tracker_view_count">%1$s radharc</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s radharc</string>
+  <string name="morphe_series_tracker_completion_title">Marcáil eipeasóidí mar a bhí feicthe</string>
+  <string name="morphe_series_tracker_completion_summary">Bhreathnaigh %1$s%% ar a laghad nuair nach raibh ach 90 soicind fágtha ar a mhéad, nó %2$s soicind fágtha</string>
+  <string name="morphe_series_tracker_completion_explanation">Marcáil go huathoibríoch eipeasóid a breathnaíodh tar éis ceachtar tairseach. Éilíonn an riail céatadáin nach mó ná 90 soicind fágtha, mar sin ní scipeáiltear deireadh eipeasóidí fada. Baineann an riail maidir leis an am atá fágtha le físeáin atá níos faide ná nóiméad amháin; socraigh é go 0 chun é a dhíchumasú. Baineann athruithe le nuashonruithe dul chun cinn amach anseo. Coinnítear roghanna láimhe breathnaithe/neamhbreathnaithe</string>
+  <string name="morphe_series_tracker_completion_percent">Céatadán a breathnaíodh (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Soicindí fágtha (0-300; díchumasaíonn 0 é)</string>
+  <string name="morphe_series_tracker_completion_range">Cuir isteach luach ó %1$s go %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Úsáid dul chun cinn YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Tabhair suas sraithithe leanúna tar éis imirt ar ghléas eile</string>
+  <string name="morphe_series_tracker_sync_consent">Faigh stádas féachana agus suíomhanna athchromtha do na sraitheanna a leanann tú ón gcuntas YouTube reatha. Ní shábháiltear ar an bhfón seo ach eipeasóidí a mheaitseálann. Déantar seiceálacha nuair a bhíonn leabharlann na sraitheanna ar oscailt agus sula roghnaítear \'Lean ar aghaidh\'. Caithfidh stair YouTube a bheith cumasaithe ar do ghléas eile</string>
+  <string name="morphe_series_tracker_sync_checking">Seiceáil dul chun cinn YouTube…</string>
+  <string name="morphe_series_tracker_sync_failed">Níl dul chun cinn YouTube ar fáil. Á úsáid an dul chun cinn atá sábháilte</string>
+  <string name="morphe_series_tracker_sync_partial">Níl roinnt dul chun cinn ar YouTube ar fáil. Coinnítear suíomhanna sábháilte</string>
+  <string name="morphe_series_tracker_backup_title">Cúltaca agus athchóiriú</string>
+  <string name="morphe_series_tracker_backup_summary">Sábháil do leabharlann sraitheanna i gcomhad nó athchóirigh cóip chúltaca</string>
+  <string name="morphe_series_tracker_backup_explanation">Sábhálann sé sraitheanna, suíomhanna eipeasóidí, agus roghanna féachana. Ní chuirtear ceadanna a bhaineann le taifeadadh ná le dul chun cinn ar YouTube san áireamh</string>
+  <string name="morphe_series_tracker_backup_save">Sábháil cúltaca</string>
+  <string name="morphe_series_tracker_backup_restore">Athchóirigh cúltaca</string>
+  <string name="morphe_series_tracker_backup_preview">Cuir sraith %1$s leis. Coinnítear sraitheanna %2$s atá i do leabharlann cheana féin. Coinnítear an dul chun cinn atá déanta cheana ar fhíseáin</string>
+  <string name="morphe_series_tracker_backup_saved">Sábháladh cúltaca sraithe</string>
+  <string name="morphe_series_tracker_backup_restored">Sraith %1$s athchóirithe</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Ní cúltaca sraithe tacaithe é an comhad seo, nó tá sé ró-mhór. Ní dhearnadh aon athrú ar do leabharlann</string>
+  <string name="morphe_series_tracker_error_backup_write">Níorbh fhéidir an cúltaca a shábháil. Bain triail as suíomh eile</string>
+  <string name="morphe_series_tracker_removed">Sraith bainte</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Tá an eipeasóid seo le feiceáil níos mó ná uair amháin anois. Roghnaigh cé acu ceann ar mhaith leat leanúint ar aghaidh uaidh</string>
+  <string name="morphe_series_tracker_recovery_missing">Níl d’eipeasóid shábháilte sa seinmliosta seo a thuilleadh. Coinnítear do shuíomh sábháilte</string>
+  <string name="morphe_series_tracker_recovery_continue">Lean ar aghaidh leis an eipeasóid %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Is féidir leat aon eipeasóid thíos a roghnú freisin. Níor athraíodh na heipeasóidí níos luaithe</string>
+  <string name="morphe_series_tracker_playback_changed">Tá athrú tagtha ar an seinmliosta seo. Oscail an tsraith chun a roghnú cá háit ar cheart leanúint ar aghaidh</string>
+  <string name="morphe_series_tracker_playback_boundary">Níl tuilleadh eipeasóid sa treo seo</string>
+  <string name="morphe_series_tracker_continue_series">Lean ar aghaidh %1$s</string>
+  <string name="morphe_series_tracker_search_series">Cuardaigh sraitheanna</string>
+  <string name="morphe_series_tracker_clear_search">Glan an cuardach</string>
+  <string name="morphe_series_tracker_no_search_results">Níor aimsíodh aon tsraith</string>
+  <string name="morphe_series_tracker_untitled_episode">Eipeasóid gan teideal</string>
+  <string name="morphe_series_tracker_unavailable_episode">Eipeasóid nach bhfuil ar fáil</string>
 </resources>

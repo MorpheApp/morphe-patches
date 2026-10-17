@@ -24,13 +24,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">रङ रिसेट गर्नुहोस्</string>
   <string name="morphe_settings_color_invalid">अवैध रङ</string>
   <string name="morphe_settings_restart_title">पुनःसुरु आवश्यक</string>
-  <string name="morphe_settings_restart_dialog_message">एपलाई प्रभावमा ल्याउन पुन:सुरु गर्नुहोस्।</string>
   <string name="morphe_settings_restart">पुनःसुरु गर्नुहोस्</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">आयात गर्नुहोस्</string>
   <string name="morphe_settings_import_copy">कपि गर्नुहोस्</string>
   <string name="morphe_settings_import_reset">मर्फ सेटिङहरू पूर्वनिर्धारितमा रिसेट गरियो</string>
-  <string name="morphe_settings_import_success">%d सेटिङहरू आयात गरिए</string>
   <string name="morphe_settings_import_failure_parse">आयात असफल भयो: %s</string>
   <string name="morphe_settings_search_hint">सेटिङहरू खोज्नुहोस्</string>
   <string name="morphe_settings_screen_info_title">के बारे में</string>
@@ -86,9 +84,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_screen_title">डिबगिङ</string>
   <string name="morphe_debug_stacktrace_title">डिबग लग स्ट्याक ट्रेस</string>
   <string name="morphe_debug_toast_on_error_title">मर्फ त्रुटिमा टोस्ट देखाउनुहोस्</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"त्रुटि टोस्टहरू बन्द गर्नाले सबै मर्फ त्रुटि सूचनाहरू लुकाउँछ।
-
-तपाईंलाई कुनै अप्रत्याशित घटनाहरूको बारेमा जानकारी दिइने छैन।"</string>
   <string name="morphe_debug_export_logs_title">डिबग लगहरू निर्यात गर्नुहोस्</string>
   <string name="morphe_debug_export_logs_summary">मर्फ डिबग लगहरू निर्यात गर्नुहोस्</string>
   <string name="morphe_debug_export_logs_success">डिबग लगहरू सफलतापूर्वक निर्यात गरियो</string>
@@ -117,20 +112,9 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">माइक्रोज सेटिङहरू खोल्नुहोस्</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG स्थापना गरिएको छैन। यसलाई स्थापना गर्नुहोस्।</string>
   <string name="gms_core_dialog_title">कारबाही आवश्यक</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG लाई पृष्ठभूमिमा चलाउन अनुमति छैन।
-
-कृपया आफ्नो फोनको लागि \"मेरो एप मार्नुहोस्\" गाइड पालना गर्नुहोस्, र आफ्नो MicroG स्थापनामा निर्देशनहरू लागू गर्नुहोस्।
-
-यो एपलाई काम गर्न आवश्यक छ।"</string>
   <string name="gms_core_dialog_open_website_text">वेबसाइट खोल्नुहोस्</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG ब्याट्री अप्टिमाइजेसनहरू मुद्दाहरू रोक्नको लागि निष्क्रिय हुनुपर्छ।
-
-MicroG को लागि ब्याट्री अप्टिमाइजेसनहरू निष्क्रिय पार्नाले ब्याट्रीको प्रयोगमा नकारात्मक प्रभाव पर्दैन।
-
-जारी राख्नुहोस् बटनमा ट्याप गर्नुहोस् र अप्टिमाइजेसन परिवर्तनहरूलाई अनुमति दिनुहोस्।"</string>
   <string name="gms_core_dialog_continue_text">जारी राख्नुहोस्</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"यो अक्षम गर्नाले माइक्रोजी ब्याट्री अनुकूलन प्रम्प्ट लुकाउनेछ।
 

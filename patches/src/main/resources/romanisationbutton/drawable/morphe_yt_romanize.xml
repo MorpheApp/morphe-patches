@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/tabler/tabler-icons/blob/v1.45/icons/outline/language-hiragana.svg
+    Changes made: Converted the strokes to filled paths, so the icon matches the solid
+    icons the buttons beside it use. Scaled the viewport to 21.6 so the glyph fills the
+    same 20dp height they do. Copyright notice kept as the MIT licence requires.
+
+    Copyright (c) 2020-2024 Pawel Kuna
+
+    Licensed under the MIT License.
+    Permission is hereby granted, free of charge, to any person obtaining a copy of
+    this software and associated documentation files (the "Software"), to deal in
+    the Software without restriction, including without limitation the rights to
+    use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+    the Software, and to permit persons to whom the Software is furnished to do so,
+    subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+    FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+    COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="21.6"
+    android:viewportHeight="21.6">
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M 4,4 A 1,1 0 0 0 3,5 1,1 0 0 0 4,6 h 7 A 1,1 0 0 0 12,5 1,1 0 0 0 11,4 Z" />
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M 7,3 A 1,1 0 0 0 6,4 c 0,4.846 -0.1514107,6.933507 0.6054687,8.447266 a 1,1 0 0 0 1.3417969,0.447265 1,1 0 0 0 0.4472657,-1.341797 C 8.1514107,11.066493 8,8.846 8,4 A 1,1 0 0 0 7,3 Z" />
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M 7,7 C 5.8333333,7 4.778671,7.3072665 4.0429687,8.0429688 3.3072665,8.778671 3,9.8333333 3,11 3,12.635713 4.4955556,14 6.5,14 7.742,14 8.771441,13.234512 9.5859375,12.240234 10.096351,11.617158 10.452311,10.844152 10.699219,10.019531 10.89799,10.234067 11,10.493139 11,10.857422 c 0,1.232224 -0.356815,1.777365 -1.3945312,2.222656 a 1,1 0 0 0 -0.5253907,1.314453 1,1 0 0 0 1.3144529,0.525391 C 12.022815,14.221213 13,12.673198 13,10.857422 13,9.2766678 11.848006,8.1678824 10.644531,7.6523437 10.446526,7.5675234 10.248858,7.6102848 10.044922,7.5449219 A 1,1 0 0 0 10,7.5 1,1 0 0 0 9.96875,7.53125 C 8.9565757,7.2191107 7.8919544,7 7,7 Z M 7,9 C 7.5367017,9 8.1078027,9.1772333 8.6933594,9.2910156 8.5358278,9.8841125 8.4203168,10.507249 8.0390625,10.972656 7.478559,11.656878 6.758,12 6.5,12 5.5044444,12 5,11.094287 5,11 5,10.166667 5.1927335,9.721329 5.4570312,9.4570313 5.721329,9.1927335 6.1666667,9 7,9 Z" />
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="m 16,10 a 1.0001,1.0001 0 0 0 -0.914062,0.59375 l -4,9 a 1,1 0 0 0 0.507812,1.320312 1,1 0 0 0 1.320313,-0.507812 L 16,13.462891 19.085937,20.40625 a 1,1 0 0 0 1.320313,0.507812 1,1 0 0 0 0.507812,-1.320312 l -4,-9 A 1.0001,1.0001 0 0 0 16,10 Z" />
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="m 12.900391,17 a 1,1 0 0 0 -1,1 1,1 0 0 0 1,1 h 6.199218 a 1,1 0 0 0 1,-1 1,1 0 0 0 -1,-1 z" />
+</vector>

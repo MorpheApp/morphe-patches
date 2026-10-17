@@ -14,6 +14,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Outline;
@@ -34,6 +35,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -42,17 +44,19 @@ import androidx.annotation.Nullable;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -60,8 +64,10 @@ import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest;
+import app.morphe.extension.youtube.patches.utils.requests.ChannelUploadsRequest;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.ChannelSearchResponse;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.ChannelSearchResult;
+import app.morphe.extension.youtube.patches.utils.requests.VideoDetailsRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -82,53 +88,88 @@ public final class ChannelSearchPatch {
             this.sortName = sf(sortName).toString();
         }
 
-        public List<ChannelSearchResult> sort(List<ChannelSearchResult> results) {
-            switch (this) {
-                case RELEVANCE -> results.sort(Comparator.comparingInt(a -> a.originalIndex));
-                case NEWEST -> results.sort((a, b) -> {
-                    if (a.publishedTimeSeconds == Long.MAX_VALUE && b.publishedTimeSeconds == Long.MAX_VALUE) {
-                        return Integer.compare(a.originalIndex, b.originalIndex);
-                    }
-                    if (a.publishedTimeSeconds == Long.MAX_VALUE) return 1;
-                    if (b.publishedTimeSeconds == Long.MAX_VALUE) return -1;
-                    final int cmp = Long.compare(a.publishedTimeSeconds, b.publishedTimeSeconds);
-                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
-                });
-                case OLDEST -> results.sort((a, b) -> {
-                    if (a.publishedTimeSeconds == Long.MAX_VALUE && b.publishedTimeSeconds == Long.MAX_VALUE) {
-                        return Integer.compare(a.originalIndex, b.originalIndex);
-                    }
-                    if (a.publishedTimeSeconds == Long.MAX_VALUE) return 1;
-                    if (b.publishedTimeSeconds == Long.MAX_VALUE) return -1;
-                    final int cmp = Long.compare(b.publishedTimeSeconds, a.publishedTimeSeconds);
-                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
-                });
-                case MOST_VIEWED -> results.sort((a, b) -> {
-                    final int cmp = Long.compare(b.viewCount, a.viewCount);
-                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
-                });
-                case LEAST_VIEWED -> results.sort(Comparator.comparingLong((ChannelSearchResult a)
-                        -> a.viewCount).thenComparingInt(a -> a.originalIndex));
-                case SHORTEST -> results.sort((a, b) -> {
-                    if (a.lengthSeconds == 0 && b.lengthSeconds == 0) {
-                        return Integer.compare(a.originalIndex, b.originalIndex);
-                    }
-                    if (a.lengthSeconds == 0) return 1;
-                    if (b.lengthSeconds == 0) return -1;
-                    final int cmp = Long.compare(a.lengthSeconds, b.lengthSeconds);
-                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
-                });
-                case LONGEST -> results.sort((a, b) -> {
-                    if (a.lengthSeconds == 0 && b.lengthSeconds == 0) {
-                        return Integer.compare(a.originalIndex, b.originalIndex);
-                    }
-                    if (a.lengthSeconds == 0) return 1;
-                    if (b.lengthSeconds == 0) return -1;
-                    final int cmp = Long.compare(b.lengthSeconds, a.lengthSeconds);
-                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
-                });
+        /**
+         * @return Whether this sort needs the exact view count of every result.
+         */
+        boolean usesViewCount() {
+            return this == MOST_VIEWED || this == LEAST_VIEWED;
+        }
+
+        /**
+         * @return Whether this sort needs the length of every result.
+         */
+        boolean usesLength() {
+            return this == SHORTEST || this == LONGEST;
+        }
+
+        /**
+         * @param uploads Uploads of the channel, which tell the age of most results exactly.
+         */
+        public List<ChannelSearchResult> sort(List<ChannelSearchResult> results,
+                                              ChannelUploadsRequest.Uploads uploads) {
+            if (this == RELEVANCE) {
+                results.sort(Comparator.comparingInt(a -> a.originalIndex));
+                return results;
             }
+
+            // Each result gets its key once, so the order stays consistent while details arrive.
+            final long now = System.currentTimeMillis() / 1000;
+            Map<String, Long> keys = new HashMap<>(2 * results.size());
+            for (ChannelSearchResult result : results) {
+                keys.put(result.videoId, sortKey(result, uploads, now));
+            }
+
+            final boolean ascending = this == NEWEST || this == LEAST_VIEWED || this == SHORTEST;
+            results.sort((a, b) -> {
+                Long keyA = keys.get(a.videoId);
+                Long keyB = keys.get(b.videoId);
+                // Results with an unknown value go last, in any sort.
+                if (keyA == null || keyB == null) {
+                    if (keyA != keyB) return keyA == null ? 1 : -1;
+                } else {
+                    final int cmp = ascending ? Long.compare(keyA, keyB) : Long.compare(keyB, keyA);
+                    if (cmp != 0) return cmp;
+                }
+                final int cmp = Integer.compare(a.originalIndex, b.originalIndex);
+                return cmp != 0 ? cmp : a.videoId.compareTo(b.videoId);
+            });
             return results;
+        }
+
+        /**
+         * @return The value to sort by, or null if it is not known. The age of an upload is
+         *         its place in the uploads, and uploads that are not listed are older than
+         *         all listed ones, so they come after them by the age shown in the search.
+         */
+        @Nullable
+        private Long sortKey(ChannelSearchResult result, ChannelUploadsRequest.Uploads uploads, long now) {
+            switch (this) {
+                case NEWEST, OLDEST -> {
+                    Integer position = uploads.positions.get(result.videoId);
+                    if (position != null) return (long) position;
+
+                    VideoDetailsRequest.VideoDetails details = VideoDetailsRequest.get(result.videoId);
+                    final long ageSeconds = details != null
+                            ? now - details.publishTimeSeconds
+                            : result.publishedTimeSeconds;
+                    if (ageSeconds == Long.MAX_VALUE) return null;
+                    return uploads.positions.size() + Math.max(0, ageSeconds);
+                }
+                case MOST_VIEWED, LEAST_VIEWED -> {
+                    VideoDetailsRequest.VideoDetails details = VideoDetailsRequest.get(result.videoId);
+                    if (details != null) return details.viewCount;
+                    if (result.viewCount >= 0) return result.viewCount;
+                    // The exact view count can be missing, such as when too many were fetched.
+                    return uploads.roundedViewCounts.get(result.videoId);
+                }
+                case SHORTEST, LONGEST -> {
+                    // Live streams, premieres and Shorts in the search results show no length.
+                    if (result.lengthSeconds > 0) return result.lengthSeconds;
+                    VideoDetailsRequest.VideoDetails details = VideoDetailsRequest.get(result.videoId);
+                    return details != null && details.lengthSeconds > 0 ? details.lengthSeconds : null;
+                }
+            }
+            return null;
         }
     }
 
@@ -142,6 +183,11 @@ public final class ChannelSearchPatch {
     private static final int TOOLBAR_ID = ResourceUtils.getIdIdentifier("toolbar");
 
     private static final int DIALOG_ANIMATION_DURATION_MILLISECONDS = 300;
+
+    /**
+     * Share of the screen height the results take up at most.
+     */
+    private static final int LIST_MAX_HEIGHT_PERCENT = 60;
 
     /**
      * The app runs a submit through more than one code path, and only the first one counts.
@@ -187,10 +233,11 @@ public final class ChannelSearchPatch {
     /**
      * Injection point.
      * The search feed is not a browse page, and returning to it from a channel sets no browse id.
+     * The channel is left too, so searching from the search feed again searches all of YouTube.
      */
     public static void clearBrowseId() {
         currentBrowseId = "";
-        // Keep a dedicated-button selection through the transition to search results.
+        pendingChannelSearchBrowseId = "";
         updateChannelSearchButton();
     }
 
@@ -320,83 +367,264 @@ public final class ChannelSearchPatch {
 
     private static final class SearchController implements ChannelSearchRequest.ChannelSearchCallback {
         private final Activity activity;
+        private final String channelId;
         private final String query;
-        private SheetBottomDialog.SlideDialog dialog;
-        private LinearLayout listContainer;
-        private ScrollView scrollView;
+        private final SheetBottomDialog.SlideDialog dialog;
+        private final TextView scopeView;
+        private final LinearLayout listContainer;
+        private final ScrollView scrollView;
+        /** Shown while a sort other than relevance still completes its results. */
+        private final ProgressBar sortLoadingView;
+        @Nullable
         private ChannelSearchResponse lastResponse;
+        private boolean isSearchComplete;
         private SortOption activeSort = SortOption.RELEVANCE;
         private volatile boolean isCancelled;
 
-        private SearchController(Activity activity, String query) {
+        /**
+         * Uploads of the channel, whose matches are the results of every sort but relevance.
+         * The search itself leaves out different videos every time.
+         */
+        private ChannelUploadsRequest.Uploads uploads = new ChannelUploadsRequest.Uploads();
+        private boolean uploadsRequested;
+        private boolean uploadsComplete;
+        private int pendingDetailFetches;
+
+        /**
+         * Shows the results right away, with a loading animation until the search finds any.
+         */
+        private SearchController(Activity activity, String channelId, String query) {
             this.activity = activity;
+            this.channelId = channelId;
             this.query = query;
+
+            hideKeyboard(activity);
+
+            SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
+                    .createMainLayout(activity, null);
+            scopeView = new TextView(activity);
+            mainLayout.addView(createHeader(activity, query, scopeView));
+            mainLayout.addView(createDivider(activity));
+
+            sortLoadingView = createLoadingView(activity);
+            sortLoadingView.setVisibility(View.INVISIBLE);
+            mainLayout.addView(createSortBar(activity, this, sortLoadingView));
+
+            listContainer = new LinearLayout(activity);
+            listContainer.setOrientation(LinearLayout.VERTICAL);
+            listContainer.setPadding(0, 0, 0, Dim.dp16);
+
+            scrollView = SheetBottomDialog.createCappedScrollView(activity, LIST_MAX_HEIGHT_PERCENT);
+            scrollView.setLayoutParams(new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.0f));
+            scrollView.addView(listContainer);
+            mainLayout.addView(scrollView);
+            showState(null);
+
+            dialog = SheetBottomDialog.createSlideDialog(activity, mainLayout, DIALOG_ANIMATION_DURATION_MILLISECONDS);
+            dialog.setOnDismissListener(dismissed -> {
+                cancel();
+                thumbnailCache.clear();
+            });
+            dialog.show();
         }
 
         @Override
         public boolean isCancelled() {
-            return isCancelled || (dialog != null && !dialog.isShowing());
+            return isCancelled || !dialog.isShowing();
         }
 
         public void cancel() {
             isCancelled = true;
         }
 
-        public void bindUI(SheetBottomDialog.SlideDialog dialog, LinearLayout listContainer, ScrollView scrollView) {
-            this.dialog = dialog;
-            this.listContainer = listContainer;
-            this.scrollView = scrollView;
-        }
-
         @Override
         public void onResponsePage(@Nullable ChannelSearchResponse response, boolean isComplete) {
-            if (isCancelled()) {
-                return;
-            }
-            Utils.runOnMainThread(() -> {
+            Utils.runOnMainThreadNowOrLater(() -> {
                 if (isCancelled()) {
                     return;
                 }
-                if (response == null) {
-                    if (dialog == null) {
-                        Utils.showToastShort(str("morphe_channel_search_failed"));
+                if (response != null && !response.results.isEmpty()) {
+                    if (lastResponse == null && !response.channelName.isEmpty()) {
+                        String scope = str("morphe_channel_search_results") + "  •  " + response.channelName;
+                        scopeView.setText(scope);
                     }
+                    lastResponse = response;
+                } else if (!isComplete) {
+                    return;
+                } else if (lastResponse == null) {
+                    showState(str(response == null
+                            ? "morphe_channel_search_failed"
+                            : "morphe_channel_search_no_results"));
                     return;
                 }
-                if (response.results.isEmpty()) {
-                    if (dialog == null) {
-                        Utils.showToastShort(str("morphe_channel_search_no_results"));
-                    }
-                    return;
-                }
-
-                lastResponse = response;
-                if (dialog == null) {
-                    showResultsDialog(activity, query, response, this);
-                } else if (dialog.isShowing()) {
-                    refreshResults();
-                }
+                // A later page that failed keeps the results of the pages before it.
+                isSearchComplete = isComplete;
+                completeResults();
+                refreshResults();
             });
         }
 
         public void setSort(SortOption selectedOption) {
             this.activeSort = selectedOption;
+            scrollView.scrollTo(0, 0);
+            completeResults();
             refreshResults();
+        }
+
+        /**
+         * Sorts other than relevance need every matching upload, and the view count sorts
+         * their exact view count. Called on main thread.
+         */
+        private void completeResults() {
+            if (activeSort == SortOption.RELEVANCE || lastResponse == null || isCancelled()) {
+                return;
+            }
+
+            if (!uploadsRequested) {
+                uploadsRequested = true;
+                ChannelUploadsRequest.fetch(channelId, query, this::isCancelled,
+                        (fetchedUploads, isComplete) -> Utils.runOnMainThread(() -> {
+                            if (isCancelled()) return;
+                            uploads = fetchedUploads;
+                            uploadsComplete = isComplete;
+                            completeResults();
+                            refreshResults();
+                        })
+                );
+            }
+
+            // Each video needs a request of its own, so these are only made for the search
+            // results whose description is searched, and whose exact view count or length is not known.
+            final boolean searchesDescriptions = uploadsComplete && titleMatches().isEmpty();
+            List<String> videoIds = new ArrayList<>();
+            for (ChannelSearchResult result : searchesDescriptions ? lastResponse.results : allResults()) {
+                if (searchesDescriptions || (activeSort.usesViewCount() && result.viewCount < 0)
+                        || (activeSort.usesLength() && result.lengthSeconds <= 0)) {
+                    videoIds.add(result.videoId);
+                }
+            }
+            if (videoIds.isEmpty()) {
+                return;
+            }
+
+            pendingDetailFetches++;
+            VideoDetailsRequest.fetch(videoIds, this::isCancelled, isComplete ->
+                    Utils.runOnMainThread(() -> {
+                        if (isComplete) pendingDetailFetches--;
+                        refreshResults();
+                    })
+            );
+        }
+
+        /**
+         * The search finds a different part of the matching videos every time, and pads them
+         * with other videos of the channel. So sorts other than relevance show the uploads whose
+         * title has the search, and only fall back to the search results whose description
+         * or tags have it if no title does.
+         *
+         * @return The results to sort.
+         */
+        private List<ChannelSearchResult> allResults() {
+            if (activeSort == SortOption.RELEVANCE) {
+                return new ArrayList<>(lastResponse.results);
+            }
+
+            List<ChannelSearchResult> results = titleMatches();
+            if (results.isEmpty() && uploadsComplete) {
+                for (ChannelSearchResult result : lastResponse.results) {
+                    if (descriptionMatches(result)) {
+                        results.add(result);
+                    }
+                }
+            }
+            return results;
+        }
+
+        private List<ChannelSearchResult> titleMatches() {
+            List<ChannelSearchResult> results = new ArrayList<>(uploads.matches);
+            Set<String> videoIds = new HashSet<>(2 * results.size());
+            for (ChannelSearchResult result : results) {
+                videoIds.add(result.videoId);
+            }
+            // The uploads of the largest channels are only partly listed.
+            for (ChannelSearchResult result : lastResponse.results) {
+                if (ChannelUploadsRequest.matches(result.title, query) && videoIds.add(result.videoId)) {
+                    results.add(result);
+                }
+            }
+            return results;
+        }
+
+        private boolean descriptionMatches(ChannelSearchResult result) {
+            VideoDetailsRequest.VideoDetails details = VideoDetailsRequest.get(result.videoId);
+            if (details == null) {
+                // Kept until the details tell, unless they could not be fetched.
+                return pendingDetailFetches > 0;
+            }
+            return ChannelUploadsRequest.matches(details.text, query);
+        }
+
+        /**
+         * @return Whether the results of the active sort can still change.
+         */
+        private boolean isLoading() {
+            return !isSearchComplete || (activeSort != SortOption.RELEVANCE
+                    && (!uploadsComplete || pendingDetailFetches > 0));
         }
 
         public SortOption getActiveSort() {
             return activeSort;
         }
 
-        public void refreshResults() {
-            if (lastResponse != null && listContainer != null) {
-                int scrollY = scrollView != null ? scrollView.getScrollY() : 0;
-                List<ChannelSearchResult> sorted = activeSort.sort(new ArrayList<>(lastResponse.results));
-                populateList(activity, sorted, listContainer, dialog);
-                if (scrollY > 0 && scrollView != null) {
-                    scrollView.scrollTo(0, scrollY);
-                }
+        private void refreshResults() {
+            if (lastResponse == null) {
+                return;
             }
+
+            final boolean loading = isLoading();
+            sortLoadingView.setVisibility(loading && activeSort != SortOption.RELEVANCE
+                    ? View.VISIBLE : View.INVISIBLE);
+
+            List<ChannelSearchResult> sorted = activeSort.sort(allResults(), uploads);
+            if (sorted.isEmpty()) {
+                showState(loading ? null : str("morphe_channel_search_no_results"));
+                return;
+            }
+
+            final int scrollY = scrollView.getScrollY();
+            populateList(activity, sorted, listContainer, dialog);
+            if (scrollY > 0) {
+                scrollView.scrollTo(0, scrollY);
+            }
+        }
+
+        /**
+         * Replaces the results with a loading animation, or with a message.
+         *
+         * @param message Null to show that the results are loading.
+         */
+        private void showState(@Nullable String message) {
+            listContainer.removeAllViews();
+
+            if (message == null) {
+                // Takes up the room of the results, so the dialog does not grow when they show.
+                FrameLayout loading = new FrameLayout(activity);
+                loading.addView(createLoadingView(activity), new FrameLayout.LayoutParams(
+                        Dim.dp36, Dim.dp36, Gravity.CENTER));
+                listContainer.addView(loading, new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, Dim.pctHeight(LIST_MAX_HEIGHT_PERCENT)));
+                return;
+            }
+
+            TextView messageView = new TextView(activity);
+            messageView.setText(message);
+            messageView.setTextColor(ThemeUtils.getAppForegroundColor());
+            messageView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+            messageView.setAlpha(0.7f);
+            messageView.setGravity(Gravity.CENTER);
+            messageView.setPadding(Dim.dp32, Dim.dp36, Dim.dp32, Dim.dp28);
+            listContainer.addView(messageView);
         }
     }
 
@@ -434,12 +662,13 @@ public final class ChannelSearchPatch {
             SearchController previousController = activeControllerRef.get();
             if (previousController != null) {
                 previousController.cancel();
-                if (previousController.dialog != null && previousController.dialog.isShowing()) {
+                if (previousController.dialog.isShowing()) {
                     previousController.dialog.dismiss();
                 }
             }
 
-            SearchController controller = new SearchController(activity, query);
+            // The results show right away, and fill in as the search finds them.
+            SearchController controller = new SearchController(activity, channelId, query);
             activeControllerRef = new WeakReference<>(controller);
             ChannelSearchRequest.fetchProgressive(channelId, query, controller);
 
@@ -451,48 +680,14 @@ public final class ChannelSearchPatch {
         return false;
     }
 
-    private static void showResultsDialog(Activity activity, String query, ChannelSearchResponse response,
-                                         SearchController controller) {
-        try {
-            hideKeyboard(activity);
-
-            SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
-                    .createMainLayout(activity, null);
-            mainLayout.addView(createHeader(activity, query, response.channelName));
-            mainLayout.addView(createDivider(activity));
-
-            LinearLayout listContainer = new LinearLayout(activity);
-            listContainer.setOrientation(LinearLayout.VERTICAL);
-            listContainer.setPadding(0, 0, 0, Dim.dp16);
-
-            ScrollView scrollView = SheetBottomDialog.createCappedScrollView(activity, 60);
-            scrollView.setLayoutParams(new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.0f));
-            scrollView.addView(listContainer);
-
-            SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
-                    .createSlideDialog(activity, mainLayout, DIALOG_ANIMATION_DURATION_MILLISECONDS);
-
-            controller.bindUI(dialog, listContainer, scrollView);
-
-            View sortBar = createSortBar(activity, controller);
-            mainLayout.addView(sortBar);
-
-            controller.refreshResults();
-
-            mainLayout.addView(scrollView);
-
-            dialog.setOnDismissListener(dismissed -> {
-                controller.cancel();
-                thumbnailCache.clear();
-            });
-            dialog.show();
-        } catch (Exception ex) {
-            Logger.printException(() -> "showResultsDialog failure", ex);
-        }
+    private static ProgressBar createLoadingView(Activity activity) {
+        ProgressBar loadingView = new ProgressBar(activity);
+        loadingView.setIndeterminate(true);
+        loadingView.setIndeterminateTintList(ColorStateList.valueOf(ThemeUtils.getAppForegroundColor()));
+        return loadingView;
     }
 
-    private static View createSortBar(Activity activity, SearchController controller) {
+    private static View createSortBar(Activity activity, SearchController controller, View loadingView) {
         LinearLayout sortBarLayout = new LinearLayout(activity);
         sortBarLayout.setOrientation(LinearLayout.HORIZONTAL);
         sortBarLayout.setGravity(Gravity.CENTER_VERTICAL);
@@ -549,6 +744,10 @@ public final class ChannelSearchPatch {
         });
         sortBarLayout.addView(sortButton);
 
+        LinearLayout.LayoutParams loadingParams = new LinearLayout.LayoutParams(Dim.dp20, Dim.dp20);
+        loadingParams.setMarginStart(Dim.dp12);
+        sortBarLayout.addView(loadingView, loadingParams);
+
         return sortBarLayout;
     }
 
@@ -559,8 +758,8 @@ public final class ChannelSearchPatch {
         for (int i = 0; i < count; i++) {
             View child = listContainer.getChildAt(i);
             Object tag = child.getTag();
-            if (tag instanceof String) {
-                existingViews.put((String) tag, child);
+            if (tag instanceof String videoId) {
+                existingViews.put(videoId, child);
             }
         }
 
@@ -586,8 +785,10 @@ public final class ChannelSearchPatch {
 
     /**
      * The query alone reads like a global search, so the channel it was scoped to is shown under it.
+     *
+     * @param scopeView Shows the scope of the search, and later the name of the channel.
      */
-    private static View createHeader(Activity activity, String query, String channelName) {
+    private static View createHeader(Activity activity, String query, TextView scopeView) {
         final int foregroundColor = ThemeUtils.getAppForegroundColor();
 
         LinearLayout header = new LinearLayout(activity);
@@ -616,13 +817,7 @@ public final class ChannelSearchPatch {
         queryView.setEllipsize(TextUtils.TruncateAt.END);
         text.addView(queryView);
 
-        String scope = str("morphe_channel_search_results");
-        if (!channelName.isEmpty()) {
-            scope += "  •  " + channelName;
-        }
-
-        TextView scopeView = new TextView(activity);
-        scopeView.setText(scope);
+        scopeView.setText(str("morphe_channel_search_results"));
         scopeView.setTextColor(foregroundColor);
         scopeView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         scopeView.setAlpha(0.7f);
@@ -761,11 +956,11 @@ public final class ChannelSearchPatch {
     @Nullable
     private static Bitmap downloadThumbnail(String url) {
         try {
-            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            HttpURLConnection connection = Requester.openConnection(url);
             connection.setConnectTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
             // A response without an image, such as no content, is not decoded.
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+            if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
             }
             try (InputStream stream = connection.getInputStream()) {

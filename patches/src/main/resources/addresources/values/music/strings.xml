@@ -51,7 +51,7 @@ Second \"item\" text"</string>
     <string name="morphe_music_jam_show_qr">Show QR</string>
     <string name="morphe_music_jam_done">Done</string>
     <string name="morphe_music_jam_invite_title">Invite to your Jam</string>
-    <string name="morphe_music_jam_invite_message">Scan to join and edit this queue. Ending the Jam revokes the invitation.</string>
+    <string name="morphe_music_jam_invite_message">Scan to join and edit this queue. Ending the Jam revokes the invitation</string>
     <string name="morphe_music_jam_copy_link">Copy link</string>
     <string name="morphe_music_jam_invitation_clip">Jam invitation</string>
     <string name="morphe_music_jam_reconnecting_toast">Jam is reconnecting; try again shortly</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
     <string name="morphe_music_jam_updating">Updating Jam…</string>
     <string name="morphe_music_jam_finding_host">Finding your host on Wi-Fi…</string>
     <string name="morphe_music_jam_waiting_people">Waiting for people</string>
-    <string name="morphe_music_jam_one_connected">%d person connected</string>
-    <string name="morphe_music_jam_many_connected">%d people connected</string>
-    <string name="morphe_music_jam_code_expires">Enter this code on a nearby device. Wi-Fi Aware works across separate LANs when supported. Expires in %d minutes.</string>
+    <string name="morphe_music_jam_one_connected">%s person connected</string>
+    <string name="morphe_music_jam_many_connected">%s people connected</string>
+    <string name="morphe_music_jam_code_expires">Enter this code on a nearby device. Wi-Fi Aware works across separate LANs when supported. Expires in %s minutes</string>
     <string name="morphe_music_jam_seek_to">Seek to %s?</string>
     <string name="morphe_music_jam_package_example" translatable="false">app.example.jam</string>
     <string name="morphe_music_jam_code_example" translatable="false">ABCD-EFGH</string>
@@ -78,12 +78,12 @@ Second \"item\" text"</string>
     <string name="morphe_music_jam_unsupported">Unsupported during Jam</string>
     <string name="morphe_music_jam_cancelled">Joining cancelled</string>
     <string name="morphe_music_jam_reconnecting_host">Reconnecting to your host…</string>
-    <string name="morphe_music_jam_share_prompt">Share a queue. Let everyone add songs.</string>
+    <string name="morphe_music_jam_share_prompt">Share a queue. Let everyone add songs</string>
     <string name="morphe_music_jam_invite_people">Invite people</string>
     <string name="morphe_music_jam_guest_edits">Guests can edit the queue</string>
     <string name="morphe_music_jam_end_jam">End Jam</string>
-    <string name="morphe_music_jam_participant_help">The host plays the music. Add, move or remove songs directly in the YouTube Music queue.</string>
-    <string name="morphe_music_jam_joining_help">Keep both devices nearby. You can cancel while we look for the host.</string>
+    <string name="morphe_music_jam_participant_help">The host plays the music. Add, move or remove songs directly in the YouTube Music queue</string>
+    <string name="morphe_music_jam_joining_help">Keep both devices nearby. You can cancel while we look for the host</string>
     <string name="morphe_music_jam_cancel_joining">Cancel joining</string>
     <string name="morphe_music_jam_leave_jam">Leave Jam</string>
     <string name="morphe_music_jam_start_jam">Start a Jam</string>
@@ -138,7 +138,7 @@ Second \"item\" text"</string>
     <string name="morphe_music_in_app_downloads_summary">Downloads audio inside YouTube Music instead of opening the external downloader app</string>
     <string name="morphe_music_in_app_downloads_user_dialog_message">"Tracks are saved to the private storage of the app and are deleted if YouTube Music is uninstalled.
 
-While this is on, the Downloads tab lists these tracks instead of the Music Premium offline library. Turning it off restores the tab, and Premium downloads are never touched."</string>
+While this is on, the Downloads tab lists these tracks instead of the Music Premium offline library. Turning it off restores the tab, and Premium downloads are never touched"</string>
     <string name="morphe_music_downloads_screen_title">Downloads</string>
     <string name="morphe_music_downloads_empty">"No downloads
 Downloaded tracks appear here"</string>
@@ -487,7 +487,7 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_scrobbling_custom_regex_title">Custom regex cleanup</string>
     <string name="morphe_music_scrobbling_custom_regex_summary">Enter a custom regular expression to remove additional text from song titles, artists, or albums. Example: (?i)\\s*\\((clean|explicit)\\)</string>
     <string name="morphe_music_scrobbling_parse_title_title">Parse artist and track from title</string>
-    <string name="morphe_music_scrobbling_parse_title_summary">Extract artist and track name from the video title using \" - \" separator. Useful for reuploaded content where the channel name may be used as the artist.</string>
+    <string name="morphe_music_scrobbling_parse_title_summary">Extract artist and track name from the video title using \" - \" separator. Useful for reuploaded content where the channel name may be used as the artist</string>
     <string name="morphe_music_scrobbling_guess_album_title">Fill in missing album</string>
     <string name="morphe_music_scrobbling_guess_album_summary">When the music does not include an album, look it up on Last.fm so your scrobble is complete</string>
 
@@ -504,6 +504,7 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_lyrics_section_service_title">Lyrics service</string>
     <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
     <string name="morphe_music_lyrics_section_sync_title">Synchronisation</string>
+<string name="morphe_music_lyrics_section_ai_endpoint_title">AI endpoint</string>
     <string name="morphe_music_lyrics_source_all_disabled">All providers disabled — built-in lyrics and embedded lyrics</string>
     <string name="morphe_music_lyrics_source_reset_title">Reset provider order?</string>
     <string name="morphe_music_lyrics_source_reset_message">Restore providers to the default priority order</string>
@@ -518,7 +519,7 @@ Steps:
     <string name="morphe_music_apple_music_token_dialog_hint" translatable="false">media-user-token</string>
     <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token saved</string>
     <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token cleared</string>
-    <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: invalid media-user-token — please check and try again</string>
+    <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: invalid media-user-token - please check and try again</string>
     <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
     <string name="morphe_music_spotify_token_dialog_instruction">"Paste the sp_dc cookie from Spotify.
 
@@ -529,7 +530,7 @@ Steps:
     <string name="morphe_music_spotify_token_dialog_hint" translatable="false">sp_dc</string>
     <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc saved</string>
     <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc cleared</string>
-    <string name="morphe_music_spotify_token_toast_invalid">Spotify: invalid sp_dc — please check and try again</string>
+    <string name="morphe_music_spotify_token_toast_invalid">Spotify: invalid sp_dc - please check and try again</string>
     <string name="morphe_music_apple_token_optional_hint">Apple Music token is optional. Without it, Lyrically will be used as fallback</string>
     <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
     <string name="morphe_music_deezer_arl_dialog_instruction">"Paste the arl cookie from Deezer.
@@ -541,14 +542,14 @@ Steps:
     <string name="morphe_music_deezer_arl_dialog_hint" translatable="false">arl</string>
     <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl saved</string>
     <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl cleared</string>
-    <string name="morphe_music_deezer_arl_toast_invalid">Deezer: invalid arl — please check and try again</string>
+    <string name="morphe_music_deezer_arl_toast_invalid">Deezer: invalid arl - please check and try again</string>
     <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
     <string name="morphe_music_musixmatch_token_dialog_instruction">Add a token only to use your own account. It has to come from the Musixmatch Android app: tokens copied from musixmatch.com belong to the retired desktop client and the API refuses them</string>
     <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch works without a token, so this field can stay empty</string>
     <string name="morphe_music_musixmatch_token_dialog_hint">user token</string>
     <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token saved</string>
     <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token cleared</string>
-    <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: invalid user token — please check and try again</string>
+    <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: invalid user token - please check and try again</string>
     <string name="morphe_music_youtube_cookies_title">YouTube Cookies</string>
     <string name="morphe_music_youtube_cookies_dialog_instruction">"Paste your YouTube cookies to query captions and timetext from YouTube.
 
@@ -561,15 +562,23 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_youtube_cookies_dialog_hint" translatable="false">SID=...; HSID=...; SSID=...; SAPISID=...</string>
     <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies saved</string>
     <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies cleared</string>
-    <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: invalid cookies — please check and try again</string>
+    <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: invalid cookies - please check and try again</string>
     <string name="morphe_music_lyrics_tap_to_seek_title">Tap a line to seek</string>
     <string name="morphe_music_lyrics_tap_to_seek_summary">Tapping a line jumps to that moment in the song</string>
+    <string name="morphe_music_lyrics_show_section_title">Show section tags</string>
+    <string name="morphe_music_lyrics_show_section_summary">Label each new section of the lyrics with a small tag, such as Verse or Chorus</string>
     <string name="morphe_music_lyrics_show_copy_button_title">Show Copy button</string>
     <string name="morphe_music_lyrics_show_copy_button_summary">Tap to copy original lyrics as plain text; long press to save raw lyrics source file to Downloads</string>
     <string name="morphe_music_lyrics_show_translate_button_title">Show Translate button</string>
     <string name="morphe_music_lyrics_show_translate_button_summary">Tap to toggle translation; long press for translation only. Uses provider translations, Google Translate, or an OpenAI-compatible API</string>
     <string name="morphe_music_lyrics_show_romanize_button_title">Show Romanize button</string>
     <string name="morphe_music_lyrics_show_romanize_button_summary">Tap to toggle romanization; long press for romanization only. Uses provider romanization, Google Translate, or an OpenAI-compatible API</string>
+    <string name="morphe_music_lyrics_local_romanization_title">Local romanization</string>
+    <string name="morphe_music_lyrics_local_romanization_summary">Romanize on the device when the provider, an OpenAI-compatible endpoint and Google Translate have all failed. CJK only, about 80 MB of readings to download.</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_building">Reading %1$s: %2$d%%</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_ready">Readings ready (%1$d CJK words)</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_failed">Download failed — turn this off and on again to retry</string>
     <string name="morphe_music_lyrics_show_refresh_button_title">Show Refresh button</string>
     <string name="morphe_music_lyrics_show_refresh_button_summary">Tap to switch to next lyrics candidate; long press to search lyrics by song title and artist</string>
     <string name="morphe_music_lyrics_search_dialog_title">Search lyrics</string>
@@ -580,6 +589,8 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_saved">Saved</string>
     <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
     <string name="morphe_music_lyrics_word_sync_summary">Prioritize word-by-word lyrics when available. When lyrics carry word timing, highlights each word or syllable in time with the music</string>
+    <string name="morphe_music_lyrics_split_background_title">Show background vocals separately</string>
+    <string name="morphe_music_lyrics_split_background_summary">Moves a background vocal written in brackets, such as \"(Oh) I want you\", out of the sung line into a dimmer line of its own</string>
     <string name="morphe_music_lyrics_hide_played_title">Hide played lyrics</string>
     <string name="morphe_music_lyrics_hide_played_summary">Hide lyrics lines above the currently playing line</string>
     <string name="morphe_music_lyrics_hide_unplayed_title">Hide unplayed lyrics</string>
@@ -604,42 +615,72 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_sb_no_video">This track has no video id to submit</string>
     <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
     <string name="morphe_music_lyrics_source_label">Source: %s</string>
+    <string name="morphe_music_lyrics_contribute_credit">Long-press the copy button to save this LRC; if you can fine-tune the timings and share them with the community providers, we\'d be grateful.</string>
     <string name="morphe_music_lyrics_translated_by_google">Translated by Google</string>
     <string name="morphe_music_lyrics_romanized_by_google">Romanized by Google</string>
     <string name="morphe_music_lyrics_translated_by_ai">Translated by %s</string>
     <string name="morphe_music_lyrics_romanized_by_ai">Romanized by %s</string>
+    <string name="morphe_music_lyrics_romanized_by_local">Romanized by %s</string>
     <!-- Tappable label under the lyrics that turns the translation on. -->
     <string name="morphe_music_lyrics_translate_hide">Translated</string>
     <string name="morphe_music_lyrics_translation_language_title">Translation language</string>
+    <string name="morphe_music_lyrics_romanize_language_title">Romanization language</string>
     <string name="morphe_music_lyrics_translating">Translating…</string>
     <string name="morphe_music_lyrics_translate_failed">Could not translate the lyrics</string>
     <string name="morphe_music_lyrics_romanize_hide">Romanized</string>
+    <string name="morphe_romanize_language_DEFAULT">Automatic</string>
     <string name="morphe_music_lyrics_romanizing">Romanizing…</string>
     <string name="morphe_music_lyrics_romanize_failed">Could not romanize the lyrics</string>
     <string name="morphe_music_lyrics_translate_only">Translated only</string>
     <string name="morphe_music_lyrics_romanize_only">Romanized only</string>
+    <string name="morphe_music_lyrics_dual_only">Dual mode</string>
     <string name="morphe_music_lyrics_copied">Copied to clipboard</string>
     <string name="morphe_music_lyrics_refreshing">Refreshing</string>
     <string name="morphe_music_lyrics_refreshed">Refreshed</string>
+    <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API key</string>
+    <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transcribes or time-aligns the lyrics for the current track. A separate service, unrelated to the OpenAI-compatible endpoint above.</string>
+    <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC key saved. Use the align button in the lyrics search dialog, or the panel prompt when a track has no lyrics.</string>
+    <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API key saved</string>
+    <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC did not accept that key</string>
+    <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API key cleared</string>
+    <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC times lyrics that have none, or transcribes them from the track, at a cost of credits. With a key set, tracks with no lyrics offer transcription and the search dialog gains an alignment button.</string>
+    <string name="morphe_music_lyrics_transcribe_align">Request QuickLRC alignment</string>
+    <string name="morphe_music_lyrics_transcribe_aligning">Aligning</string>
+    <string name="morphe_music_lyrics_transcribe_apply_align">Apply alignment</string>
+    <string name="morphe_music_lyrics_transcribe_prompt">Request QuickLRC transcription</string>
+    <string name="morphe_music_lyrics_transcribe_working">Transcribing</string>
+    <string name="morphe_music_lyrics_transcribe_cancelled">Transcription cancelled</string>
+    <string name="morphe_music_lyrics_transcribe_local_unsupported">Only tracks played from YouTube can be transcribed</string>
+    <string name="morphe_music_lyrics_transcribe_no_text">No lyrics to align — transcribing instead</string>
+    <string name="morphe_music_lyrics_transcribe_failed">QuickLRC could not process this track</string>
+    <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC credits are used up for this track</string>
     <string name="morphe_music_lyrics_about_summary">"Lyrics are matched by title and artist, unusual metadata may find nothing or the wrong version. Use refresh to switch versions. Providers marked * require a token. All enabled providers are not always requested in your order, but respond based on their speed"</string>
-    <string name="morphe_music_lyrics_source_advice_summary">Only enable the providers you use, or keep the default — constant requests can overwhelm small community lyrics sites</string>
+    <string name="morphe_music_lyrics_source_advice_summary">Only enable the providers you use, or keep the default - constant requests can overwhelm small community lyrics sites</string>
     <string name="morphe_music_lyrics_hide_info_title">Hide credit line</string>
     <string name="morphe_music_lyrics_hide_info_summary">Hide the credit line shown below the lyrics</string>
     <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>
     <string name="morphe_music_lyrics_swap_trans_roma_summary">ON puts romanization below lyrics and translation above; OFF keeps romanization above and translation below</string>
-    <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI-compatible Translation</string>
-    <string name="morphe_music_lyrics_use_ai_translation_summary">Use a custom OpenAI-compatible API for translation and romanization instead of Google Translate</string>
-    <string name="morphe_music_lyrics_ai_config_dialog_title">AI Translation Settings</string>
-    <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configure the OpenAI-compatible API endpoint for AI-powered lyrics translation and romanization.</string>
+    <string name="morphe_music_lyrics_use_ai_title">OpenAI-compatible API</string>
+    <string name="morphe_music_lyrics_use_ai_translation_title">AI Translation</string>
+    <string name="morphe_music_lyrics_use_ai_translation_summary">Prefers the translation the provider ships with, then your OpenAI-compatible model, and Google Translate last</string>
+    <string name="morphe_music_lyrics_use_ai_romanization_title">AI Romanization</string>
+    <string name="morphe_music_lyrics_use_ai_romanization_summary">Prefers the romanization the provider ships with, then your OpenAI-compatible model, and Google Translate last</string>
+    <string name="morphe_music_lyrics_use_ai_section_title">AI Section</string>
+    <string name="morphe_music_lyrics_use_ai_section_summary">Only used when the provider ships no section labels such as Chorus or Verse, which your OpenAI-compatible model then detects</string>
+<string name="morphe_music_lyrics_ai_config_dialog_title">AI Settings</string>
+    <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configure the OpenAI-compatible API endpoint for AI-powered lyrics translation, romanization and section.</string>
     <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://text.pollinations.ai/openai)</string>
     <string name="morphe_music_lyrics_ai_config_api_token_hint">API key (leave empty for anonymous access)</string>
     <string name="morphe_music_lyrics_ai_config_model_hint">Model name (e.g. openai-fast, gpt-4o-mini)</string>
-    <string name="morphe_music_lyrics_ai_config_prompt_hint">Prompt template (variables: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
-    <string name="morphe_music_lyrics_ai_config_toast_saved">AI translation settings saved</string>
-    <string name="morphe_music_lyrics_ai_config_toast_invalid">Could not connect to AI endpoint. Please check your settings.</string>
-    <string name="morphe_music_lyrics_ai_config_toast_reset">AI translation settings reset</string>
-    <string name="morphe_music_lyrics_ai_config_status_configured">Configured</string>
-    <string name="morphe_music_lyrics_ai_config_status_not_configured">Tap to configure</string>
+    <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt Template</string>
+    <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+    <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt saved</string>
+    <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt saved, but the AI endpoint is not usable yet. Configure it under AI Settings first.</string>
+    <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt reset</string>
+    <string name="morphe_music_lyrics_ai_config_toast_saved">AI settings saved</string>
+    <string name="morphe_music_lyrics_ai_config_toast_invalid">Could not connect to AI endpoint. Please check your settings</string>
+    <string name="morphe_music_lyrics_ai_config_toast_reset">AI settings reset</string>
+    <string name="morphe_music_lyrics_ai_config_summary_configured">Model %1$s configured</string>
     <string name="morphe_music_lyrics_ai_config_status_empty_url">Base URL cannot be empty</string>
     <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL must start with http:// or https://</string>
     <string name="morphe_music_lyrics_ai_config_status_empty_model">Model name cannot be empty</string>

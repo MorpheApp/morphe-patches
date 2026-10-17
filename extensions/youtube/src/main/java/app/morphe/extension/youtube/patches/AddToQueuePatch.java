@@ -11,6 +11,7 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
+import android.util.Pair;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
@@ -22,6 +23,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
+import app.morphe.extension.youtube.patches.utils.LocalQueueSheet;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -45,7 +47,15 @@ public final class AddToQueuePatch {
     }
 
     public static int addFlyoutButton(Object flyoutPanel, int index, String videoId) {
-        if (!isPatchIncluded() || !Settings.QUEUE_ADD_FLYOUT_MENU.get() ||
+        if (!isPatchIncluded()) {
+            return index;
+        }
+
+        if (LocalQueuePatch.isEnabled()) {
+            return addLocalQueueButtons(flyoutPanel, index, videoId);
+        }
+
+        if (!Settings.QUEUE_ADD_FLYOUT_MENU.get() ||
                 !FlyoutUtils.getFlyoutPlaylistId().isEmpty() ||
                 videoId.isEmpty()) {
             return index;
@@ -64,42 +74,120 @@ public final class AddToQueuePatch {
     }
 
     public static void onListBound(ViewGroup itemList) {
-        if (!isPatchIncluded() || !Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()
-                || SECONDARY_CONTAINER_ID == 0) {
+        if (!isPatchIncluded() || !isFlyoutOverrideEnabled()) {
             return;
         }
 
-        int itemIndex = -1;
+        final String videoId = FlyoutUtils.getFlyoutVideoId();
         for (var button : FlyoutUtils.getVisibleFlyoutButtons()) {
-            if (queueButtonOriginalNames.contains(button.first)) {
-                itemIndex = button.second - 1;
-                break;
+            final String buttonName = button.first;
+            if (!queueButtonOriginalNames.contains(buttonName)) {
+                continue;
+            }
+
+            final int itemIndex = button.second - 1;
+            if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
+                continue;
+            }
+
+            android.view.View item = itemList.getChildAt(itemIndex);
+            var badge = SECONDARY_CONTAINER_ID == 0 ? null : item.findViewById(SECONDARY_CONTAINER_ID);
+            if (badge != null && badge.getVisibility() != android.view.View.GONE) {
+                Logger.printDebug(() -> "Hiding the menu item secondary icon");
+                badge.setVisibility(android.view.View.GONE);
+            }
+
+            if (LocalQueuePatch.isEnabled()) {
+                Logger.printDebug(() -> "Queue row " + buttonName + " video id: '" + videoId + "'");
+                item.setOnClickListener(v -> {
+                    if (videoId.isEmpty()) {
+                        Utils.showToastShort(str(FlyoutUtils.getFlyoutPlaylistId().isEmpty()
+                                ? "morphe_local_queue_unavailable"
+                                : "morphe_local_queue_playlist_unsupported"));
+                        FlyoutUtils.dismissFlyout();
+                    } else {
+                        flyoutButtonClickLogic(buttonName, videoId);
+                    }
+                });
             }
         }
+    }
 
-        if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
-            return;
+    private static boolean isFlyoutOverrideEnabled() {
+        return LocalQueuePatch.isEnabled() || Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get();
+    }
+
+    private static boolean hasFlyoutButton(String buttonName) {
+        for (Pair<String, Integer> button : FlyoutUtils.getVisibleFlyoutButtons()) {
+            if (button.first.equals(buttonName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int addLocalQueueButtons(Object flyoutPanel, int index, String videoId) {
+        final boolean feedFlyout = !FlyoutUtils.getFlyoutVideoId().isEmpty();
+        if (feedFlyout && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
+                && !hasFlyoutButton(queueButtonOriginalNames.get(0))) {
+            index = FlyoutUtils.addFlyoutButton(
+                    flyoutPanel,
+                    queueButtonDrawable,
+                    str("morphe_local_queue_play_next"),
+                    v -> flyoutButtonClickLogic(queueButtonOriginalNames.get(0), videoId),
+                    index
+            );
         }
 
-        var badge = itemList.getChildAt(itemIndex)
-                .findViewById(SECONDARY_CONTAINER_ID);
-
-        if (badge != null && badge.getVisibility() != android.view.View.GONE) {
-            Logger.printDebug(() -> "Hiding the menu item secondary icon");
-            badge.setVisibility(android.view.View.GONE);
+        if (feedFlyout && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
+                && !hasFlyoutButton(queueButtonOriginalNames.get(1))) {
+            index = FlyoutUtils.addFlyoutButton(
+                    flyoutPanel,
+                    queueButtonDrawable,
+                    str("morphe_local_queue_play_last"),
+                    v -> flyoutButtonClickLogic(queueButtonOriginalNames.get(1), videoId),
+                    index
+            );
         }
+
+        final int size = LocalQueuePatch.size();
+        if (feedFlyout && size > 0) {
+            index = FlyoutUtils.addFlyoutButton(
+                    flyoutPanel,
+                    queueButtonDrawable,
+                    str("morphe_local_queue_open", size),
+                    v -> {
+                        FlyoutUtils.dismissFlyout();
+                        Activity activity = Utils.getActivity();
+                        if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
+                            LocalQueueSheet.show(activity);
+                        } else {
+                            Logger.printException(() -> "Could not open queue sheet, activity is not available");
+                        }
+                    },
+                    index
+            );
+        }
+
+        return index;
     }
 
     /**
      * Injection point.
      */
     public static Runnable replaceButtonRunnable(Runnable original) {
-        if (!Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
+        if (!isFlyoutOverrideEnabled()) {
             return original;
         }
 
         if (FlyoutUtils.getFlyoutVideoId().isEmpty()) {
             Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
+            if (LocalQueuePatch.isEnabled() && queueButtonOriginalNames.contains(FlyoutUtils.getCurrentButtonName())) {
+                return () -> {
+                    Utils.showToastShort(str("morphe_local_queue_playlist_unsupported"));
+                    FlyoutUtils.dismissFlyout();
+                };
+            }
             return original;
         }
 
@@ -112,7 +200,7 @@ public final class AddToQueuePatch {
      */
     public static boolean replaceOnItemClick(Object object) {
         try {
-            if (!Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
+            if (!isFlyoutOverrideEnabled()) {
                 return false;
             }
 
@@ -167,6 +255,12 @@ public final class AddToQueuePatch {
     public static boolean flyoutButtonClickLogic(String buttonName, String videoId) {
         try {
             if (queueButtonOriginalNames.contains(buttonName)) {
+                if (LocalQueuePatch.isEnabled()) {
+                    LocalQueuePatch.add(videoId, queueButtonOriginalNames.get(0).equals(buttonName));
+                    FlyoutUtils.dismissFlyout();
+                    return true;
+                }
+
                 Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + videoId);
 
                 Activity activity = Utils.getActivity();

@@ -41,16 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Tắt cập nhật giao diện</string>
   <string name="morphe_disable_layout_updates_summary">Chặn cập nhật bố cục từ máy chủ</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Giao diện ứng dụng sẽ trở về như lúc mới cài đặt.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Bố cục ứng dụng sẽ quay lại bố cục được sử dụng khi lần đầu tiên cài đặt.
 
-Một số thay đổi từ phía máy chủ có thể không được hoàn tác.
+Một số bố cục phía máy chủ có thể không được quay lại.
 
-Ví dụ:
-• Một số mục trong menu tùy chọn của trình phát (hoặc các cài đặt liên quan) có thể không dùng được hoặc không ẩn được.
-• Không có hiệu ứng số cuộn.
-• Thẻ Thư viện có thể hiện lại.
-• Phần âm nhạc trong mô tả video có thể bị lỗi.
-• Nút chuyển đổi tài khoản có thể biến mất trong thẻ Thư viện."</string>
+Các thay đổi bao gồm:
+• Các thành phần trong menu bay ra của trình phát (hoặc cài đặt liên quan) có thể không hoạt động
+• Số cuộn không được hoạt hình hóa
+• Thẻ Thư viện được hiển thị
+• Phần âm nhạc trong mô tả video có thể không hoạt động
+• Các mục trong menu bay ra của trình phát không thể bị ẩn
+• Nút chuyển đổi tài khoản có thể không xuất hiện trên thẻ Thư viện"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Bật bộ lọc menu tùy chọn trên trang video</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Bộ lọc menu tùy chọn trên trang video</string>
@@ -132,7 +133,7 @@ Ví dụ:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">Ẩn YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Ẩn các hoạt ảnh theo mùa và sự kiện trên logo YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Tiêu đề tùy chỉnh có thể không xuất hiện khi YouTube Doodles được bật.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Tiêu đề tùy chỉnh có thể không xuất hiện khi YouTube Doodles được bật</string>
   <string name="morphe_hide_channel_bar_title">Ẩn nút kênh</string>
   <string name="morphe_hide_channel_watermark_title">Ẩn hình mờ của kênh</string>
   <string name="morphe_hide_chapters_timeline_button_title">Ẩn Chương và nút \'Trong video này\'</string>
@@ -192,7 +193,7 @@ Ví dụ:
   <string name="morphe_hide_how_this_was_made_section_title">Ẩn phần \'Cách mà điều này được tạo ra\'</string>
   <string name="morphe_hide_hype_points_title">Ẩn Điểm khuấy động</string>
   <string name="morphe_hide_info_cards_section_title">Ẩn phần Thẻ thông tin</string>
-  <string name="morphe_hide_key_concepts_section_title">Ẩn phần \"Khái niệm chính\"</string>
+  <string name="morphe_hide_key_concepts_section_title">Ẩn \"Khái niệm chính\"</string>
   <string name="morphe_hide_quizzes_section_title">Ẩn phần Câu hỏi</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Ẩn phần \'Tìm kiếm trong video này\'</string>
   <string name="morphe_hide_subscribe_button_title">Ẩn nút Đăng ký</string>
@@ -280,7 +281,7 @@ Ví dụ:
   <string name="morphe_hide_comments_menu_button_summary">Ẩn nút menu 3 chấm của mỗi bình luận</string>
   <string name="morphe_hide_comments_preview_comment_title">Ẩn xem trước bình luận</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ẩn phần xem trước nhận xét dưới video trước khi mở toàn bộ phần bình luận</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Bình luận bị ẩn bởi Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Bình luận bị ẩn bởi Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Bật nút bình luận tối giản</string>
   <string name="morphe_minimal_comments_button_summary">Ẩn các thẻ trượt và bộ chọn trang của chúng, hiển thị trên nút bình luận</string>
   <string name="morphe_hide_comments_thanks_button_title">Ẩn nút Cảm ơn</string>
@@ -489,7 +490,7 @@ Tuyệt đối không được chia sẻ khoá API. Bởi vì, bất kỳ ai có
   <string name="morphe_vot_openrouter_open_website">Truy cập OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">Dịch qua OpenRouter thất bại (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Đã đạt giới hạn dịch hàng ngày của MyMemory</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Có thể thử lại vào lúc %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Có thể thử lại vào lúc %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Bạn đã dùng hết hạn mức dịch miễn phí của MyMemory cho hôm nay (5.000 ký tự). Hãy thêm email MyMemory trong phần Cài đặt để nâng giới hạn hằng ngày lên 50.000 ký tự hoặc chuyển sang dịch vụ dịch khác</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Bạn đã dùng hết hạn mức dịch miễn phí của MyMemory cho hôm nay (5.000 ký tự). Hãy chuyển sang dịch vụ dịch khác hoặc thử lại vào ngày mai</string>
   <string name="morphe_vot_mymemory_error">Dịch qua MyMemory thất bại (trạng thái %s)</string>
@@ -559,10 +560,29 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_queue_override_flyout_menu_summary">Mở hàng chờ Morphe thay vì hàng chờ YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">Thêm menu hàng chờ trên trang video</string>
   <string name="morphe_queue_add_flyout_menu_summary">Thêm tùy chọn vào menu bổ sung. Bật tùy chọn này nếu không thấy \"Thêm vào hàng chờ\"</string>
+  <string name="morphe_local_queue_title">Hàng đợi kiểu Premium</string>
+  <string name="morphe_local_queue_summary">"Thay thế hàng đợi Morphe bằng hàng đợi được lưu trên thiết bị, tự động phát liên tục và có thể sắp xếp lại bằng cách kéo
+
+Thông tin: Video tiếp theo trong hàng đợi chỉ bắt đầu phát khi YouTube đang hiển thị trên màn hình"</string>
+  <string name="morphe_local_queue_sheet_title">Hàng đợi</string>
+  <string name="morphe_local_queue_open">Hàng đợi (%s)</string>
+  <string name="morphe_local_queue_clear">Xóa tất cả</string>
+  <string name="morphe_local_queue_empty">Không có gì trong hàng đợi</string>
+  <string name="morphe_local_queue_empty_hint">Sử dụng Phát tiếp theo trong hàng đợi trên bất kỳ video nào</string>
+  <string name="morphe_local_queue_now_playing">Đang phát</string>
+  <string name="morphe_local_queue_play_next">Phát tiếp theo trong hàng đợi</string>
+  <string name="morphe_local_queue_play_last">Phát thứ cuối trong hàng chờ</string>
+  <string name="morphe_local_queue_reorder">Sắp xếp lại</string>
+  <string name="morphe_local_queue_remove">Xóa</string>
+  <string name="morphe_local_queue_added">Đã thêm vào hàng đợi</string>
+  <string name="morphe_local_queue_unavailable">Không thể thêm video này vào hàng chờ</string>
+  <string name="morphe_local_queue_playlist_unsupported">Danh sách phát không thể thêm vào hàng chờ</string>
+  <string name="morphe_local_queue_full">Hàng đợi đã đầy</string>
+  <string name="morphe_local_queue_play_failed">Không thể phát video</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Danh sách trắng quảng cáo trong menu bật lên</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Thêm một mục trong menu bật lên cho phép quảng cáo phát trên kênh của video đó</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Tính năng này có thể yêu cầu sử dụng PotHelper hoặc chuyển \"Giả lập luồng video\" sang đăng nhập TV hoặc Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Tính năng này có thể yêu cầu sử dụng PotHelper hoặc thay đổi \"Gài nhẹ luồng video\" thành TV hoặc YouTube VR đăng nhập</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Danh sách trắng tốc độ trong menu bật lên</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Thêm một mục trong menu bật lên để luôn phát kênh của video đó với tốc độ 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Chưa đăng nhập</string>
@@ -745,6 +765,9 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_preferred_caption_language_title">Ngôn ngữ phụ đề ưa thích</string>
   <string name="morphe_preferred_caption_language_summary">Chọn phụ đề từ nhà cung cấp trước, sau đó tự động dịch sang ngôn ngữ ưa thích</string>
   <string name="morphe_preferred_caption_language_entry_off">Tắt</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Thêm ngôn ngữ tự dịch bổ sung</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Thêm nhiều ngôn ngữ hơn vào menu tự dịch</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Thiết lập cookie phụ đề</string>
   <string name="morphe_set_caption_cookies_summary">"Sửa lỗi của Youtube khiến phụ đề không được dịch tự động do thiếu cookie.
@@ -784,9 +807,9 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_hide_navigation_button_labels_title">Ẩn tên nút điều hướng</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Ẩn dấu chấm nội dung mới</string>
   <string name="morphe_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tùy chọn này sẽ ẩn trên hoàn toàn thanh điều hướng, kể cả tab \"Bạn\".
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Thao tác này hoàn toàn ẩn thanh điều hướng, bao gồm cả tab 'Bạn'.
 
-Để vào Cài đặt, hãy bật nút Cài đặt trong Chung → Thanh công cụ → Hiện Cài đặt."</string>
+Để truy cập Cài đặt, hãy bật nút Cài đặt qua Tổng quát → Thanh công cụ → Hiển thị Cài đặt"</string>
   <string name="morphe_narrow_navigation_buttons_title">Thu hẹp nút điều hướng</string>
   <string name="morphe_narrow_navigation_buttons_summary">Giảm khoảng cách ngang giữa các nút</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Tắt các nút điều hướng không có nhãn</string>
@@ -1024,7 +1047,7 @@ Bố cục ô tô
   <string name="morphe_tablet_layout_in_player_summary">"Khôi phục bố cục trình phát cũ
 
 Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị tắt, lớp phủ \"Thêm video\" có thể không xuất hiện"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Bật tính năng này có thể làm hỏng một số tính năng bố cục trình phát, chẳng hạn như phần bình luận hoặc \'Video khác\' hiển thị bên dưới trình phát.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Việc bật tính năng này có thể làm hỏng một số tính năng bố trí trình phát, chẳng hạn như phần bình luận hoặc \'Video khác\' hiển thị bên dưới trình phát</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Khôi phục hành vi phụ đề cũ</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Khôi phục ‘Lưu vào danh sách phát’ kiểu cũ</string>
@@ -1089,6 +1112,12 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Tắt tự động làm mới nguồn cấp dữ liệu</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Ngăn các nguồn cấp dữ liệu tự động làm mới sau khi chúng trở nên lỗi thời</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Bố cục thẻ nguồn cấp</string>
+  <string name="morphe_feed_card_layout_entry_1">Cổ điển</string>
+  <string name="morphe_feed_card_layout_entry_2">Thẻ bài</string>
+  <string name="morphe_feed_card_layout_entry_3">Thẻ có nút thích, bình luận và lưu</string>
+  <string name="morphe_feed_card_layout_comments">Bình luận</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Tắt tiếp tục phát trong trình phát thu nhỏ</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Ngăn không cho trình phát thu nhỏ \"tiếp tục xem\" khi mở ứng dụng (một tính năng Premium)</string>
@@ -1123,9 +1152,6 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Bấm quay lại để thoát trang video</string>
   <string name="morphe_back_button_always_exits_feed_summary">Bấm nút quay lại sẽ luôn luôn thoát ứng dụng thay vì lướt lên đầu trang video</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Luôn dùng phông chữ hệ thống</string>
-  <string name="morphe_force_system_font_summary">Hiển thị ứng dụng với phông chữ của thiết bị thay vì YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ẩn thanh trạng thái</string>
   <string name="morphe_hide_status_bar_summary">Ẩn thanh trạng thái hệ thống. Vuốt xuống từ mép trên để hiện thanh trạng thái trong giây lát</string>
@@ -1206,7 +1232,7 @@ Video được yêu cầu bằng một tiền tố ngắn của ID video đã b�
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Giả mạo kích thước thiết bị</string>
   <string name="morphe_spoof_device_dimensions_summary">Bật tính năng này có thể mở khóa chất lượng video cao hơn</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Bật tính năng này có thể làm giật lag khi phát video, hao pin, và các sự cố không xác định.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Bật tính năng này có thể làm giật lag khi phát video, hao pin, và các sự cố không xác định</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Phản hồi xúc giác</string>
   <string name="morphe_disable_haptic_feedback_summary">Chọn các thao tác sẽ kích hoạt rung thiết bị</string>
@@ -1216,7 +1242,7 @@ Video được yêu cầu bằng một tiền tố ngắn của ID video đã b�
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Tắt phản hồi xúc giác khi bấm giữ</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Tắt phản hồi xúc giác khi thu phóng</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Nếu gần đây bạn đã cập nhật thông tin đăng nhập tài khoản của mình, hãy gỡ và cài đặt lại microG.</string>
+  <string name="microg_offline_account_login_error">Nếu gần đây bạn đã cập nhật thông tin đăng nhập tài khoản của mình, hãy gỡ và cài đặt lại microG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Bỏ qua chuyển hướng liên kết</string>
   <string name="morphe_bypass_link_redirects_summary">Mở liên kết gốc trực tiếp, bỏ qua liên kết theo dõi (youtube.com/redirect)</string>
@@ -1296,18 +1322,21 @@ Hạn chế:
 • Màu sắc có thể hiển thị sai nếu màn hình không thực sự hỗ trợ HDR
 • Phát lại có thể thất bại nếu bộ giải mã không xử lý được HDR
 • HDR vẫn phụ thuộc vào ứng dụng khách giả lập luồng video"</string>
-  <string name="morphe_force_avc_codec_title">Buộc codec AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Lợi ích:
-• Có thể cải thiện thời lượng pin
-• Có thể khôi phục độ phân giải video bị thiếu trên thiết bị cũ
-
-Hạn chế:
-• Độ phân giải tối đa là 1080p
-• Phát video sẽ sử dụng nhiều dữ liệu internet hơn VP9 hoặc AV1
-• Video HDR sẽ không sử dụng AVC
-• Một số thiết bị không thể buộc sử dụng AVC"</string>
+  <string name="morphe_video_codec_title">Codec video</string>
+  <string name="morphe_video_codec_entry_default">Mặc định</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Để dùng tính năng này, hãy đặt \'Giả mạo luồng phát video\' thành \'Android VR\' hoặc \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Để buộc dùng AVC, hãy đổi \'Giả mạo luồng video\' thành \'Android Studio\', \'Android VR\' hoặc \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Có thể cải thiện thời lượng pin và khắc phục tình trạng phát lại bị giật
+• Sử dụng nhiều dữ liệu internet hơn AV1
+
+AVC (H.264)
+• Yêu cầu máy khách giả mạo luồng video phải là 'Android Studio', 'Android VR' hoặc 'visionOS'
+• Có thể cải thiện thời lượng pin nhiều hơn nữa
+• Có thể khôi phục các độ phân giải video bị thiếu trên các thiết bị cũ
+• Độ phân giải tối đa là 1080p
+• Video HDR có thể không sử dụng AVC
+• Một số thiết bị không thể buộc dùng AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Mở menu Chất lượng nâng cao</string>
   <string name="morphe_advanced_video_quality_menu_summary">Bỏ qua menu chọn chất lượng và mở trực tiếp menu chất lượng nâng cao</string>
@@ -1322,8 +1351,9 @@ Hạn chế:
   <string name="morphe_spoof_video_streams_av1_summary">Cho phép giải mã AV1 bằng phần mềm khi sử dụng client \'Android VR\' / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Bật cài đặt này có thể sử dụng giải mã AV1 bằng phần mềm.
 
-Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
+Phát video bằng AV1 có thể bị giật hoặc tụt khung hình"</string>
   <string name="morphe_spoof_video_streams_about_title">Hạn chế khi giả mạo</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Phát lại có thể bị lỗi sau 1 phút</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Thiếu menu \"Bản âm thanh\"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Không có codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Không hỗ trợ chế độ trải nhiệm VR 360°</string>
@@ -1350,4 +1380,154 @@ Hạn chế: Trở về lớp phủ 'Xem thêm video' kiểu cũ"</string>
   <string name="morphe_player_icon_style_entry_bold">Đậm</string>
   <string name="morphe_player_icon_style_entry_custom">Tùy chỉnh</string>
   <string name="morphe_shorts_icon_style_title">Kiểu biểu tượng Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Theo dõi loạt phim</string>
+  <string name="morphe_series_tracker_screen_summary">Theo dõi danh sách phát như các loạt phim và giữ vị trí hiện tại</string>
+  <string name="morphe_series_tracker_title">Bật theo dõi loạt phim</string>
+  <string name="morphe_series_tracker_summary">Thêm trang Loạt phim vào Lịch sử và tùy chọn Theo dõi loạt phim cho danh sách phát</string>
+  <string name="morphe_series_tracker_show_button_title">Hiện nút Theo dõi Loạt tập</string>
+  <string name="morphe_series_tracker_show_button_summary">Thêm một nút trình phát để theo dõi hoặc mở loạt tập của video hiện tại</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Ghi lại tiến độ của loạt tập đang theo dõi</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Ghi lại việc phát trên thiết bị này cho các loạt tập đã lưu và dấu trang</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Hiển thị Lịch sử trong thanh điều hướng</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Trang chủ, Đăng ký, Thông báo, Lịch sử và Bạn</string>
+  <string name="morphe_series_tracker_ui_cancel">Thôi</string>
+  <string name="morphe_series_tracker_ui_save">Lưu</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Lưu dấu trang</string>
+  <string name="morphe_series_tracker_ui_series_name">Tên loạt tập</string>
+  <string name="morphe_series_tracker_ui_series_options">Tùy chọn loạt tập</string>
+  <string name="morphe_series_tracker_ui_library_options">Tùy chọn thư viện</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Làm mới tập</string>
+  <string name="morphe_series_tracker_ui_rename">Đổi tên</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Mở danh sách phát trên YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Xóa khỏi thư viện</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Liên kết hoặc ID danh sách phát</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Xóa tất cả tiến độ cục bộ</string>
+  <string name="morphe_series_tracker_ui_clear_history">Xóa lịch sử</string>
+  <string name="morphe_series_tracker_clear_progress_title">Xóa tất cả tiến độ cục bộ?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Thao tác này xóa vị trí, ghi đè đã xem và lựa chọn tiếp tục cho mọi video. Loạt phim đã lưu và danh mục của chúng vẫn giữ nguyên. Việc phát lại mới sẽ được ghi nếu tính năng ghi được bật</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Đánh dấu đã xem</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Đánh dấu chưa xem</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Sử dụng trạng thái tự động</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Khởi động lại từ 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Phát lại từ 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Đã lưu trạng thái</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Thử lại lưu</string>
+  <string name="morphe_series_tracker_ui_previous_100">100 mục trước</string>
+  <string name="morphe_series_tracker_ui_next_100">100 mục sau</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Mở video đã lưu</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Tiến độ cục bộ đã được xóa</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Mở Lịch sử từ Bạn để xem loạt tập của bạn</string>
+  <string name="morphe_series_tracker_ui_watch_history">Lịch sử đã xem</string>
+  <string name="morphe_series_tracker_ui_series">Loạt tập</string>
+  <string name="morphe_series_tracker_ui_history">Lịch sử</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Kênh đăng ký</string>
+  <string name="morphe_series_tracker_ui_notifications">Thông báo</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Đang tải loạt tập đã lưu…</string>
+  <string name="morphe_series_tracker_empty_library">Theo dõi playlist để giám sát các tập phim của nó</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Dấu trang danh sách phát</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Đang làm mới các tập…</string>
+  <string name="morphe_series_tracker_ui_all_series">Tất cả loạt tập</string>
+  <string name="morphe_series_tracker_watched">Đã xem</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Đang tải các tập…</string>
+  <string name="morphe_series_tracker_ui_more_options">Nhiều tuỳ chọn hơn</string>
+  <string name="morphe_series_tracker_record_consent">"Chỉ ghi tiến độ cho loạt phim đã lưu và video được gắn dấu trang của bạn.
+
+Thư viện này được lưu trên thiết bị hiện tại và chia sẻ giữa các tài khoản YouTube. Điều khiển暂停 và xóa lịch sử của YouTube không ảnh hưởng đến thư viện này. Sử dụng Loạt phim → Thêm → Xóa tiến độ cục bộ để xóa thư viện này.
+
+Ghi tự động dừng ở chế độ ẩn danh, khi danh tính tài khoản không khả dụng hoặc khi bạn chuyển sang tài khoản khác. Bật theo dõi lại để sử dụng với tài khoản đó"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Không thể bật tính năng theo dõi trong chế độ ẩn danh hoặc trước khi YouTube tải trạng thái tài khoản hiện tại. Hãy quay về Trang chủ và thử lại. Không cần đăng nhập</string>
+  <string name="morphe_series_tracker_enable">Bật theo dõi cục bộ</string>
+  <string name="morphe_series_tracker_tracking_paused">Tính năng ghi tiến độ đang tắt</string>
+  <string name="morphe_series_tracker_resume_at">Tiếp tục lúc %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$s/%2$s tập đã xem</string>
+  <string name="morphe_series_tracker_episode_position">Tập %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Tập %1$s-%2$s của %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Làm mới để thử tải tập phim. Danh sách phát riêng tư cần quyền truy cập tài khoản; dấu trang của chúng vẫn mở trên YouTube</string>
+  <string name="morphe_series_tracker_open_failed">YouTube không thể mở tập phim này</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube không thể mở danh sách phát này</string>
+  <string name="morphe_series_tracker_plan_changed">Chọn một tập</string>
+  <string name="morphe_series_tracker_plan_caught_up">Cập nhật</string>
+  <string name="morphe_series_tracker_plan_none">Không có tập nào có thể phát</string>
+  <string name="morphe_series_tracker_saved_position">Video đã lưu · %1$s</string>
+  <string name="morphe_series_tracker_follow">Theo dõi loạt tập</string>
+  <string name="morphe_series_tracker_view_series">Xem loạt tập</string>
+  <string name="morphe_series_tracker_continue">Tiếp</string>
+  <string name="morphe_series_tracker_start_here">Bắt đầu tại đây</string>
+  <string name="morphe_series_tracker_start_saved">Điểm bắt đầu đã được lưu</string>
+  <string name="morphe_series_tracker_watched_to_here">Đã xem đến đây</string>
+  <string name="morphe_series_tracker_marked">Các tập được đánh dấu là đã xem</string>
+  <string name="morphe_series_tracker_undo">Hoàn tác</string>
+  <string name="morphe_series_tracker_enable_short">Không sợ</string>
+  <string name="morphe_series_tracker_new_episode">1 tập mới</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s tập mới</string>
+  <string name="morphe_series_tracker_record_short">Ghi tiến độ trên thiết bị này</string>
+  <string name="morphe_series_tracker_follow_consent">"Danh sách và tiến độ theo dõi của bạn được lưu trên thiết bị này, đồng bộ qua các tài khoản YouTube. Lịch sử YouTube không làm thay đổi chúng. Xóa tiến độ từ menu Series.
+
+Tự động ghi là tùy chọn. Nó dừng lại khi ở chế độ ẩn danh hoặc khi tài khoản thay đổi"</string>
+  <string name="morphe_series_tracker_follow_unavailable">Không thể tải các tập phim. Bạn có thể lưu danh sách phát làm dấu trang</string>
+  <string name="morphe_series_tracker_error_pending_full">Quá nhiều thay đổi chưa được lưu. Hãy thử lưu trước</string>
+  <string name="morphe_series_tracker_error_storage_busy">Đang lưu. Thử lại</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Đang tải tập phim. Thử lại</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Bộ nhớ không khả dụng. Dữ liệu đã lưu của bạn được giữ nguyên</string>
+  <string name="morphe_series_tracker_error_storage_save">Không thể lưu thay đổi. Hãy thử lưu trước khi đóng YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">Series này đã được lưu, hoặc danh sách phát của nó đã thay đổi. Hãy mở lại</string>
+  <string name="morphe_series_tracker_error_series_changed">Series này đã thay đổi hoặc bị xóa. Mở lại thư viện</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Danh sách phát đã thay đổi. Chọn lại tập phim</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Tập phim này không khả dụng. Hãy chọn cái khác</string>
+  <string name="morphe_series_tracker_error_name_required">Nhập tên series</string>
+  <string name="morphe_series_tracker_error_playlist_input">Nhập liên kết danh sách phát YouTube hoặc ID danh sách phát</string>
+  <string name="morphe_series_tracker_error_retry_later">Vui lòng đợi trước khi làm mới lại</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Không thể tải các tập phim. Hãy thử lại sau</string>
+  <string name="morphe_series_tracker_error_operation">Thao tác thay đổi không thể hoàn tất. Hãy thử lại</string>
+  <string name="morphe_series_tracker_error_resume">Không thể xác nhận tiếp tục. Kiểm tra trình phát và thử lại</string>
+  <string name="morphe_series_tracker_followed">Đang theo dõi loạt tập</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Video này không nằm trong danh sách phát</string>
+  <string name="morphe_series_tracker_finding_playlists">Đang tìm danh sách phát…</string>
+  <string name="morphe_series_tracker_paste_playlist">Dán liên kết danh sách phát</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Không tìm thấy danh sách phát</string>
+  <string name="morphe_series_tracker_no_available_episodes">Không có tập nào khả dụng</string>
+  <string name="morphe_series_tracker_hide_watched">Ẩn những tập đã xem</string>
+  <string name="morphe_series_tracker_watch_previous">Đánh dấu các tập trước đó là đã xem</string>
+  <string name="morphe_series_tracker_order_starts_with">Bắt đầu bằng: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Thứ tự các tập</string>
+  <string name="morphe_series_tracker_playlist_order">Thứ tự danh sách phát</string>
+  <string name="morphe_series_tracker_reverse_order">Đảo ngược thứ tự danh sách phát</string>
+  <string name="morphe_series_tracker_view_count">%1$s lượt xem</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s lượt xem</string>
+  <string name="morphe_series_tracker_completion_title">Đánh dấu các tập là đã xem</string>
+  <string name="morphe_series_tracker_completion_summary">Ít nhất %1$s%% đã xem với không quá 90 giây còn lại, hoặc còn %2$s giây</string>
+  <string name="morphe_series_tracker_completion_explanation">Tự động đánh dấu tập là đã xem khi đạt một trong hai ngưỡng. Quy tắc phần trăm cũng yêu cầu không quá 90 giây còn lại, do đó phần kết thúc của các tập dài sẽ không bị bỏ qua. Quy tắc thời gian còn lại áp dụng cho video dài hơn một phút; đặt giá trị này về 0 để vô hiệu hóa nó. Các thay đổi áp dụng cho các cập nhật tiến độ trong tương lai. Các lựa chọn đánh dấu thủ công đã xem/chưa được giữ nguyên</string>
+  <string name="morphe_series_tracker_completion_percent">Phần trăm đã xem (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Giây còn lại (0-300; 0 để tắt)</string>
+  <string name="morphe_series_tracker_completion_range">Nhập giá trị từ %1$s đến %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Sử dụng tiến độ từ YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Tiếp tục các loạt tập đã theo dõi sau khi xem trên thiết bị khác</string>
+  <string name="morphe_series_tracker_sync_consent">Đọc trạng thái xem và vị trí tiếp tục cho các series bạn theo dõi từ tài khoản YouTube hiện tại. Chỉ các tập phim khớp nhau mới được lưu trên điện thoại này. Việc kiểm tra diễn ra khi thư viện series đang mở và trước khi Tiếp tục. Lịch sử YouTube phải được bật trên thiết bị khác của bạn</string>
+  <string name="morphe_series_tracker_sync_checking">Đang kiểm tra tiến độ YouTube…</string>
+  <string name="morphe_series_tracker_sync_failed">Tiến độ YouTube không khả dụng. Đang sử dụng tiến độ đã lưu</string>
+  <string name="morphe_series_tracker_sync_partial">Một số tiến độ YouTube không khả dụng. Các vị trí đã lưu được giữ nguyên</string>
+  <string name="morphe_series_tracker_backup_title">Sao lưu và khôi phục</string>
+  <string name="morphe_series_tracker_backup_summary">Lưu thư viện loạt tập của bạn vào tệp hoặc khôi phục bản sao lưu</string>
+  <string name="morphe_series_tracker_backup_explanation">Lưu các series đang theo dõi, vị trí tập phim và lựa chọn đã xem. Không bao gồm quyền ghi và tiến độ YouTube</string>
+  <string name="morphe_series_tracker_backup_save">Lưu bản sao lưu</string>
+  <string name="morphe_series_tracker_backup_restore">Khôi phục bản sao lưu</string>
+  <string name="morphe_series_tracker_backup_preview">Thêm %1$s series. Các series đã có trong thư viện của bạn (%2$s) sẽ được giữ lại. Tiến độ xem video hiện tại được giữ nguyên</string>
+  <string name="morphe_series_tracker_backup_saved">Đã lưu bản sao lưu loạt tập</string>
+  <string name="morphe_series_tracker_backup_restored">Đã khôi phục %1$s series</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Tệp này không phải là bản sao lưu series được hỗ trợ, hoặc quá lớn. Thư viện của bạn không thay đổi</string>
+  <string name="morphe_series_tracker_error_backup_write">Không thể lưu bản sao lưu. Hãy thử vị trí khác</string>
+  <string name="morphe_series_tracker_removed">Đã xóa loạt tập</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Tập phim này nay xuất hiện nhiều hơn một lần. Hãy chọn nơi để tiếp tục</string>
+  <string name="morphe_series_tracker_recovery_missing">Tập phim đã lưu của bạn không còn trong danh sách phát này. Vị trí đã lưu của bạn được giữ nguyên</string>
+  <string name="morphe_series_tracker_recovery_continue">Tiếp tục với tập %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Bạn cũng có thể chọn bất kỳ tập phim nào bên dưới. Các tập phim trước đó không bị thay đổi</string>
+  <string name="morphe_series_tracker_playback_changed">Danh sách phát đã thay đổi. Mở series để chọn nơi tiếp tục</string>
+  <string name="morphe_series_tracker_playback_boundary">Không còn tập nào theo hướng này</string>
+  <string name="morphe_series_tracker_continue_series">Tiếp tục %1$s</string>
+  <string name="morphe_series_tracker_search_series">Tìm kiếm loạt tập</string>
+  <string name="morphe_series_tracker_clear_search">Xóa tìm kiếm</string>
+  <string name="morphe_series_tracker_no_search_results">Không tìm thấy loạt tập nào</string>
+  <string name="morphe_series_tracker_untitled_episode">Tập không tiêu đề</string>
+  <string name="morphe_series_tracker_unavailable_episode">Tập không khả dụng</string>
 </resources>

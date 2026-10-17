@@ -20,9 +20,9 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -372,7 +372,32 @@ internal object MiniplayerSetIconsLegacyFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.42+
+ */
 internal object ShowMiniplayerCommandFingerprint: Fingerprint(
+    classFingerprint = Fingerprint(
+        filters = listOf(
+            literal(164817L),
+            literal(121253L)
+        )
+    ),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Z",
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        opcode(Opcode.IF_NEZ),
+        opcode(
+            opcode = Opcode.IF_EQZ,
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * 21.41 and lower.
+ */
+internal object ShowMiniplayerCommandLegacyFingerprint: Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),

@@ -313,13 +313,15 @@ internal object ShowFloatingMicrophoneButtonLegacyFingerprint : Fingerprint(
 internal object HideViewCountFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Ljava/lang/CharSequence;",
-    filters = opcodesToFilters(
-        Opcode.RETURN_OBJECT,
-        Opcode.CONST_STRING,
-        Opcode.RETURN_OBJECT,
-    ),
-    strings = listOf(
-        "Has attachmentRuns but drawableRequester is missing.",
+    filters = listOf(
+        string("Has attachmentRuns but drawableRequester is missing."),
+        methodCall(smali = "Landroid/util/TypedValue;->applyDimension(IFLandroid/util/DisplayMetrics;)F"),
+        methodCall( // Sets the span of the returned string.
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Landroid/text/SpannableString;", "Ljava/lang/Object;", "I", "Z", "I"),
+            returnType = "V",
+            location = MatchAfterWithin(10)
+        )
     )
 )
 

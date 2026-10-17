@@ -15,6 +15,7 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("deprecation")
 public class NavigationBarPreferenceCategory extends ConditionalPreferenceCategory {
@@ -50,5 +51,7 @@ public class NavigationBarPreferenceCategory extends ConditionalPreferenceCatego
                 context,
                 Settings.HIDE_GAMES_BUTTON
         ));
+
+        Utils.setPreferenceTitlesToMultiLine(this);
     }
 }

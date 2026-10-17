@@ -320,6 +320,25 @@ internal object PlaybackControlViewsFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Reads the bottomSheetPeekHeight attribute, styleable index 3. Each measure pass adds it to the
+ * drag handle and tab strip heights to get the collapsed player bottom sheet peek height.
+ */
+internal object BottomSheetPeekHeightFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/music/watchpage/ui/WatchWhileLayout;",
+    name = "<init>",
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
+    filters = listOf(
+        literal(3),
+        methodCall(
+            definingClass = "Landroid/content/res/TypedArray;",
+            name = "getDimensionPixelSize",
+            location = MatchAfterImmediately(),
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+    )
+)
+
 /** The operations manager has a single construction/capture point. */
 internal fun queueManagerConstructorFingerprint(managerType: String) = Fingerprint(
     definingClass = managerType,

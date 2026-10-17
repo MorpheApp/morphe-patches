@@ -13,9 +13,6 @@ import androidx.annotation.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,17 +21,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.youtube.settings.Settings;
 
 public final class ChannelSearchRequest {
 
@@ -44,6 +38,7 @@ public final class ChannelSearchRequest {
         public final String metadata;
         public final String thumbnailUrl;
         public final long publishedTimeSeconds;
+        /** Negative if not known. */
         public final long viewCount;
         public final long lengthSeconds;
         public final int originalIndex;
@@ -73,85 +68,52 @@ public final class ChannelSearchRequest {
     }
 
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 15 * 1000;
-    private static final int MAX_SEARCH_RESULTS = 200;
-    private static final int MAX_CONTINUATION_PAGES = 7;
+    /**
+     * The search stops by itself after a different number of pages every time,
+     * so these only bound searches of the largest channels.
+     */
+    private static final int MAX_SEARCH_RESULTS = 1000;
+    private static final int MAX_CONTINUATION_PAGES = 50;
 
-    public static final Pattern PATTERN_VIEW_COUNT = Pattern.compile("(\\d+([.,]\\d+)?)");
+    private static final Pattern PATTERN_VIEW_COUNT = Pattern.compile("(\\d+([.,]\\d+)?)");
 
-    public static final Pattern PATTERN_PUBLISHED_TIME = Pattern.compile(
+    private static final Pattern PATTERN_PUBLISHED_TIME = Pattern.compile(
             "(\\d+)\\s*(year|month|week|day|hour|minute|second)");
 
     public interface ChannelSearchCallback {
+        /**
+         * Called on a background thread after each page, and on the calling thread if the search is cached.
+         *
+         * @param response   Null if the search failed.
+         * @param isComplete Whether this is the last page.
+         */
         void onResponsePage(@Nullable ChannelSearchResponse response, boolean isComplete);
         boolean isCancelled();
     }
 
-    private static final Map<String, ChannelSearchRequest> cache = Collections.synchronizedMap(
+    /**
+     * Complete searches only, as a search that was cancelled before its last page is not.
+     */
+    private static final Map<String, ChannelSearchResponse> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(10));
 
-    private final Future<ChannelSearchResponse> future;
-
-    private static final ChannelSearchCallback DUMMY_CALLBACK = new ChannelSearchCallback() {
-        @Override
-        public void onResponsePage(@Nullable ChannelSearchResponse response, boolean isComplete) {}
-
-        @Override
-        public boolean isCancelled() {
-            return false;
-        }
-    };
-
-    private ChannelSearchRequest(Future<ChannelSearchResponse> future) {
-        this.future = future;
-    }
-
-    private ChannelSearchRequest(String channelId, String query) {
-        this.future = Utils.submitOnBackgroundThread(() -> fetch(channelId, query, DUMMY_CALLBACK));
-    }
-
-    public static ChannelSearchRequest fetchRequestIfNeeded(String channelId, String query) {
-        return cache.computeIfAbsent(
-                channelId + "\n" + query,
-                key -> new ChannelSearchRequest(channelId, query)
-        );
+    private ChannelSearchRequest() {
     }
 
     public static void fetchProgressive(String channelId, String query, ChannelSearchCallback callback) {
-        ChannelSearchRequest cached = cache.get(channelId + "\n" + query);
+        String key = channelId + "\n" + query;
+        ChannelSearchResponse cached = cache.get(key);
         if (cached != null) {
-            ChannelSearchResponse cachedResp = cached.getResponse();
-            if (cachedResp != null) {
-                callback.onResponsePage(cachedResp, true);
-                return;
-            }
+            callback.onResponsePage(cached, true);
+            return;
         }
 
         Utils.runOnBackgroundThread(() -> {
-            ChannelSearchResponse finalResponse = fetch(channelId, query, callback);
-            if (finalResponse != null) {
-                cache.put(channelId + "\n" + query, new ChannelSearchRequest(
-                        Utils.submitOnBackgroundThread(() -> finalResponse)
-                ));
+            ChannelSearchResponse response = fetch(channelId, query, callback);
+            if (response != null && !callback.isCancelled()) {
+                cache.put(key, response);
             }
         });
-    }
-
-    /**
-     * Null if the request failed. Results are empty if the channel has nothing matching the query.
-     */
-    @Nullable
-    public ChannelSearchResponse getResponse() {
-        try {
-            return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
-        } catch (TimeoutException ex) {
-            Logger.printInfo(() -> "getResponse timed out", ex);
-        } catch (InterruptedException ex) {
-            Logger.printException(() -> "getResponse interrupted", ex);
-            Thread.currentThread().interrupt();
-        } catch (ExecutionException ex) {
-            Logger.printException(() -> "getResponse failure", ex);
-        }
-        return null;
     }
 
     @Nullable
@@ -180,62 +142,46 @@ public final class ChannelSearchRequest {
         Future<ChannelSearchResponse> englishFuture = Utils.submitOnBackgroundThread(
                 () -> fetchSingle(channelId, query, Locale.US, cancelProxy));
 
+        ChannelSearchResponse merged = null;
         try {
             ChannelSearchResponse english = englishFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
             ChannelSearchResponse localized = localizedFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
-
-            if (localized == null) {
-                callback.onResponsePage(english, true);
-                return english;
-            }
-            if (english == null) {
-                callback.onResponsePage(localized, true);
-                return localized;
-            }
-
-            //noinspection ExtractMethodRecommender
-            List<ChannelSearchResult> englishResults = english.results;
-            Map<String, ChannelSearchResult> englishMap = new HashMap<>(2 * englishResults.size());
-            for (ChannelSearchResult item : englishResults) {
-                englishMap.put(item.videoId, item);
-            }
-
-            List<ChannelSearchResult> localizedResults = localized.results;
-            Set<String> mergedSeen = new HashSet<>(2 * localizedResults.size());
-            List<ChannelSearchResult> mergedResults = new ArrayList<>(localizedResults.size());
-            for (ChannelSearchResult item : localizedResults) {
-                if (!mergedSeen.add(item.videoId)) { // Continuation can include duplicates.
-                    continue;
-                }
-
-                ChannelSearchResult englishItem = englishMap.get(item.videoId);
-                final long publishedTimeSeconds = englishItem != null
-                        ? englishItem.publishedTimeSeconds : item.publishedTimeSeconds;
-                final long viewCount = englishItem != null
-                        ? englishItem.viewCount : item.viewCount;
-                final long lengthSeconds = englishItem != null
-                        ? englishItem.lengthSeconds : item.lengthSeconds;
-
-                mergedResults.add(new ChannelSearchResult(
-                        item.videoId,
-                        item.title,
-                        item.metadata,
-                        item.thumbnailUrl,
-                        publishedTimeSeconds,
-                        viewCount,
-                        lengthSeconds,
-                        item.originalIndex
-                ));
-            }
-
-            ChannelSearchResponse merged = new ChannelSearchResponse(localized.channelName, mergedResults);
-            callback.onResponsePage(merged, true);
-            return merged;
+            merged = localized == null || english == null
+                    ? (localized == null ? english : localized)
+                    : merge(localized, english);
         } catch (Exception ex) {
             Logger.printException(() -> "fetch parallel failed", ex);
         }
 
-        return null;
+        callback.onResponsePage(merged, true);
+        return merged;
+    }
+
+    /**
+     * The localized results, with the age, view count and length parsed from the English ones.
+     */
+    private static ChannelSearchResponse merge(ChannelSearchResponse localized, ChannelSearchResponse english) {
+        Map<String, ChannelSearchResult> englishMap = new HashMap<>(2 * english.results.size());
+        for (ChannelSearchResult item : english.results) {
+            englishMap.put(item.videoId, item);
+        }
+
+        List<ChannelSearchResult> mergedResults = new ArrayList<>(localized.results.size());
+        for (ChannelSearchResult item : localized.results) {
+            ChannelSearchResult englishItem = englishMap.get(item.videoId);
+            mergedResults.add(englishItem == null ? item : new ChannelSearchResult(
+                    item.videoId,
+                    item.title,
+                    item.metadata,
+                    item.thumbnailUrl,
+                    englishItem.publishedTimeSeconds,
+                    englishItem.viewCount,
+                    englishItem.lengthSeconds,
+                    item.originalIndex
+            ));
+        }
+
+        return new ChannelSearchResponse(localized.channelName, mergedResults);
     }
 
     @Nullable
@@ -247,63 +193,42 @@ public final class ChannelSearchRequest {
         final long startTime = System.currentTimeMillis();
         List<ChannelSearchResult> allResults = new ArrayList<>();
         Set<String> seenVideoIds = new HashSet<>();
-        String channelName;
 
         try {
-            byte[] requestBody = ChannelSearchRoutes.createBody(channelId, query, locale);
-            HttpURLConnection connection = ChannelSearchRoutes.getConnection(ChannelSearchRoutes.CHANNEL_SEARCH);
-            connection.setFixedLengthStreamingMode(requestBody.length);
-            connection.getOutputStream().write(requestBody);
-
-            final int responseCode = connection.getResponseCode();
-            if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
-                String error = Requester.parseErrorStringAndDisconnect(connection);
-                logDebugException("Channel search failed with code: " + responseCode + " error: " + error);
+            JSONObject json = ChannelSearchRoutes.fetch(ChannelSearchRoutes.CHANNEL_SEARCH,
+                    ChannelSearchRoutes.createBody(channelId, query, locale));
+            if (json == null) {
                 callback.onResponsePage(null, true);
                 return null;
             }
 
-            JSONObject firstJson = Requester.parseJSONObject(connection);
-            channelName = parseChannelName(firstJson);
-
+            String channelName = parseChannelName(json);
             int[] indexRef = {0};
-            String nextToken = parseResponsePage(firstJson, allResults, seenVideoIds, indexRef, isEnglish);
-
-            final boolean isLast = (nextToken == null || nextToken.isEmpty() || allResults.size() >= MAX_SEARCH_RESULTS);
-            callback.onResponsePage(new ChannelSearchResponse(channelName, new ArrayList<>(allResults)), isLast);
-
-            int page = 1;
-            while (nextToken != null && !nextToken.isEmpty() && page < MAX_CONTINUATION_PAGES && allResults.size() < MAX_SEARCH_RESULTS) {
+            for (int page = 1; ; page++) {
+                String nextToken = parseResponsePage(json, allResults, seenVideoIds, indexRef, isEnglish);
+                final boolean isLast = nextToken == null || nextToken.isEmpty()
+                        || page >= MAX_CONTINUATION_PAGES || allResults.size() >= MAX_SEARCH_RESULTS;
+                ChannelSearchResponse response = new ChannelSearchResponse(channelName, new ArrayList<>(allResults));
+                callback.onResponsePage(response, isLast);
+                if (isLast) {
+                    return response;
+                }
                 if (callback.isCancelled()) {
-                    Logger.printDebug(() -> "Channel search continuation cancelled (dialog closed)");
-                    break;
+                    Logger.printDebug(() -> "Channel search cancelled");
+                    return response;
                 }
 
-                page++;
-                byte[] contBody = ChannelSearchRoutes.createContinuationBody(nextToken, locale);
-                HttpURLConnection contConn = ChannelSearchRoutes.getConnection(ChannelSearchRoutes.CHANNEL_SEARCH);
-                contConn.setFixedLengthStreamingMode(contBody.length);
-                contConn.getOutputStream().write(contBody);
-
-                if (contConn.getResponseCode() == Requester.HTTP_STATUS_CODE_SUCCESS) {
-                    JSONObject contJson = Requester.parseJSONObject(contConn);
-                    nextToken = parseResponsePage(contJson, allResults, seenVideoIds, indexRef, isEnglish);
-
-                    final boolean isDone = (nextToken == null || nextToken.isEmpty() || page >= MAX_CONTINUATION_PAGES || allResults.size() >= MAX_SEARCH_RESULTS);
-                    callback.onResponsePage(new ChannelSearchResponse(channelName, new ArrayList<>(allResults)), isDone);
-                } else {
-                    Requester.parseErrorStringAndDisconnect(contConn);
-                    break;
+                json = ChannelSearchRoutes.fetch(ChannelSearchRoutes.CHANNEL_SEARCH,
+                        ChannelSearchRoutes.createContinuationBody(nextToken, locale));
+                if (json == null) {
+                    // A page that could not be fetched ends the search with the results so far.
+                    callback.onResponsePage(response, true);
+                    return response;
                 }
             }
-
-            return new ChannelSearchResponse(channelName, allResults);
-        } catch (SocketTimeoutException ex) {
-            Logger.printInfo(() -> "Connection timeout", ex);
-        } catch (IOException ex) {
-            Logger.printInfo(() -> "Network error", ex);
         } catch (Exception ex) {
             Logger.printException(() -> "fetch failed", ex);
+            callback.onResponsePage(null, true);
         } finally {
             Logger.printDebug(() -> "Fetched channel search (" + locale + "), items=" + allResults.size()
                     + " took: " + (System.currentTimeMillis() - startTime) + "ms");
@@ -438,7 +363,7 @@ public final class ChannelSearchRequest {
                     .getJSONObject("continuationCommand")
                     .getString("token");
         } catch (Exception ex) {
-            logDebugException("Could not extract continuation token: " + continuationItemRenderer);
+            Logger.printDebug(() -> "Could not extract continuation token: " + continuationItemRenderer);
             return null;
         }
     }
@@ -453,12 +378,32 @@ public final class ChannelSearchRequest {
         return channel == null ? "" : channel.optString("title");
     }
 
+    /**
+     * An upload of the channel, which is not a search result. It comes after
+     * the search results that are equal to it in a sort.
+     *
+     * @param details Localized view count and age of the upload, as shown under the title.
+     *                Both are rounded, so the exact ones are fetched with the details of the video.
+     */
+    static ChannelSearchResult createResult(String videoId, String title, String thumbnailUrl,
+                                            String lengthText, List<String> details) {
+        StringBuilder metadata = new StringBuilder();
+        appendMetadata(metadata, lengthText);
+        for (String detail : details) {
+            appendMetadata(metadata, detail);
+        }
+
+        // The age is localized and rounded, and the place in the uploads is used instead.
+        return new ChannelSearchResult(videoId, title, metadata.toString(), thumbnailUrl,
+                Long.MAX_VALUE, -1, parseLengthSeconds(lengthText), Integer.MAX_VALUE);
+    }
+
     @Nullable
     private static ChannelSearchResult parseVideo(JSONObject video, int index, boolean isEnglish) {
         String videoId = video.optString("videoId");
         String title = parseText(video.optJSONObject("title"));
         if (videoId.isEmpty() || title.isEmpty()) {
-            logDebugException("Could not parse videoId: " + videoId);
+            Logger.printDebug(() -> "Could not parse videoId: " + videoId);
             return null;
         }
 
@@ -494,7 +439,7 @@ public final class ChannelSearchRequest {
             }
             return totalSeconds;
         } catch (Exception ex) {
-            logDebugException("Could not parse length: " + lengthText);
+            Logger.printDebug(() -> "Could not parse length: " + lengthText);
             return 0;
         }
     }
@@ -512,7 +457,7 @@ public final class ChannelSearchRequest {
 
         Matcher matcher = PATTERN_PUBLISHED_TIME.matcher(lower);
         if (!matcher.find()) {
-            logDebugException("Could not parse time:" + timeText);
+            Logger.printDebug(() -> "Could not parse time:" + timeText);
             return Long.MAX_VALUE;
         }
 
@@ -520,7 +465,7 @@ public final class ChannelSearchRequest {
         try {
             number = Long.parseLong(matcher.group(1));
         } catch (Exception ex) {
-            logDebugException("Could not parse time:" + timeText);
+            Logger.printDebug(() -> "Could not parse time:" + timeText);
             return Long.MAX_VALUE;
         }
 
@@ -537,16 +482,12 @@ public final class ChannelSearchRequest {
         };
     }
 
-    private static void logDebugException(String message) {
-        if (Settings.DEBUG.get()) {
-            Logger.printException(() -> "Debug: " + message);
-        } else {
-            Logger.printDebug(() -> message);
-        }
-    }
-
+    /**
+     * @param viewCountText      Exact view count, such as "8,512,345 views", or empty.
+     * @param shortViewCountText Rounded English view count, such as "8.5M views".
+     */
     @SuppressWarnings("ConstantConditions")
-    private static long parseViewCount(String viewCountText, String shortViewCountText) {
+    static long parseViewCount(String viewCountText, String shortViewCountText) {
         if (viewCountText != null && !viewCountText.isEmpty()) {
             String digitsOnly = viewCountText.replaceAll("[^0-9]", "");
             if (!digitsOnly.isEmpty()) {
@@ -557,7 +498,7 @@ public final class ChannelSearchRequest {
         String textToParse = (shortViewCountText != null && !shortViewCountText.isEmpty())
                 ? shortViewCountText : viewCountText;
         if (textToParse == null || textToParse.isEmpty()) {
-            logDebugException("Could not parse view count: " + shortViewCountText);
+            Logger.printDebug(() -> "Could not parse view count: " + shortViewCountText);
             return 0;
         }
 
@@ -592,7 +533,7 @@ public final class ChannelSearchRequest {
             String digitsOnly = numStr.replaceAll("[.,\\s]", "");
             return Long.parseLong(digitsOnly);
         } catch (Exception ex) {
-            logDebugException("Could not parse view count: " + viewCountText
+            Logger.printDebug(() -> "Could not parse view count: " + viewCountText
                     + " shortText:" + shortViewCountText );
             return 0;
         }
@@ -642,11 +583,13 @@ public final class ChannelSearchRequest {
      */
     private static String parseThumbnail(JSONObject video) {
         JSONObject thumbnail = video.optJSONObject("thumbnail");
-        if (thumbnail == null) {
-            return "";
-        }
+        return thumbnail == null ? "" : widestThumbnail(thumbnail.optJSONArray("thumbnails"));
+    }
 
-        JSONArray thumbnails = thumbnail.optJSONArray("thumbnails");
+    /**
+     * @param thumbnails Thumbnails of different sizes, each with its url and width.
+     */
+    static String widestThumbnail(@Nullable JSONArray thumbnails) {
         if (thumbnails == null) {
             return "";
         }

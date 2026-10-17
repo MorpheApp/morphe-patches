@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Patayin ang mga pag-update sa layout </string>
   <string name="morphe_disable_layout_updates_summary">Pinipigilan ang server na i-update ang layout ng app</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Bumabalik ang layout ng aplikasyon sa layout na ginamit noong unang na-install. 
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Bumabalik ang layout ng aplikasyon sa layout na ginamit noong unang na-install.
 
-Maaaring hindi bumalik ang ilang layout sa server-side. 
+Maaaring hindi bumalik ang ilang server-side layouts.
 
-Kasama sa mga pagbabago ang: 
-• Maaaring hindi gumana ang mga komponente sa flyout menu ng manlalaro (o mga kaugnay na pagpipilian). 
-• Hindi animated ang mga naka-roll na numero. 
-• Ipinapakita ang tab ng Aklatan. 
-• Maaaring hindi gumana ang seksyon ng musika ng paglalarawan ng video. 
-• Hindi maitatago ang mga aytem sa flyout menu ng manlalaro. 
-• Maaaring hindi lumabas ang button ng paglipat ng account sa tab na Aklatan."</string>
+Kasama sa mga pagbabago ang:
+• Maaaring hindi gumana ang mga component sa player flyout menu (o mga related settings)
+• Hindi animated ang mga rolling numbers
+• Ipinapakita ang Library tab
+• Maaaring hindi gumana ang Music section ng video description
+• Hindi maitatago ang mga item sa Player flyout menu
+• Maaaring hindi lumabas ang Account switch button sa Library tab"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Paganahin ang feed flyout menu filter</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Feed flyout menu filter</string>
@@ -133,7 +133,7 @@ Kasama sa mga pagbabago ang:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">Itago ang YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Itinatago ang mga seasonal at event-based na animation sa logo ng YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Ang pagpapakita ng mga Doodle ng YouTube ay maaaring pumigil sa pagpapakita ng mga custom header.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Ang pagpapakita ng YouTube Doodles ay maaaring magpigil sa custom headers na maipakita</string>
   <string name="morphe_hide_channel_bar_title">Itago ang channel bar</string>
   <string name="morphe_hide_channel_watermark_title">Itago ang watermark sa channel</string>
   <string name="morphe_hide_chapters_timeline_button_title">Itago ang mga Kabanata at ang pindutang \'Sa video na ito\'</string>
@@ -193,7 +193,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_how_this_was_made_section_title">Itago ang seksyong \'Paano ito ginawa\' section</string>
   <string name="morphe_hide_hype_points_title">Itago ang mga puntos ng Hype</string>
   <string name="morphe_hide_info_cards_section_title">Itago ang seksyon ng Info cards</string>
-  <string name="morphe_hide_key_concepts_section_title">Itago ang seksyon na \'Pangunahing konsepto\'</string>
+  <string name="morphe_hide_key_concepts_section_title">Itago ang seksyon ng \'Key Concepts\'</string>
   <string name="morphe_hide_quizzes_section_title">Itago ang seksyon ng Quizzes</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Itago ang seksyon na \'Maghanap sa loob ng videong ito\'</string>
   <string name="morphe_hide_subscribe_button_title">Itago ang button na Mag-subscribe</string>
@@ -281,7 +281,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_menu_button_summary">Itinatago ang pindutan ng menu na may tatlong tuldok para sa bawat komento</string>
   <string name="morphe_hide_comments_preview_comment_title">Itago ang pasilip na komento</string>
   <string name="morphe_hide_comments_preview_comment_summary">Itinatago ang preview ng komento sa ilalim ng video bago buksan ang buong seksyon ng mga komento</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Komentong itinago ni Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Nakatago ang komento ni Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Paganahin ang minimal na button ng mga komento</string>
   <string name="morphe_minimal_comments_button_summary">Itinatago ang mga dumudulas na card at ang tagapili ng pahina nito, na ipinapakita sa button ng mga komento</string>
   <string name="morphe_hide_comments_thanks_button_title">Itago ang button na Salamat</string>
@@ -490,7 +490,7 @@ Hindi dapat ibahagi ang iyong API key. Sinumang may access dito ay maaaring guma
   <string name="morphe_vot_openrouter_open_website">Buksan ang OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">Nabigo ang pagsasalin ng OpenRouter (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Naabot na ang pang-araw-araw na limitasyon ng MyMemory</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Available muli sa %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Susunod na available sa %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Ginagamit mo na ang pang-araw-araw na libreng quota ng pagsasalin ng MyMemory (5,000 character). Magdagdag ng email ng MyMemory sa mga setting upang itaas ang pang-araw-araw na limitasyon sa 50,000 character, o lumipat sa ibang serbisyo ng pagsasalin</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Ginagamit mo na ang quota ng pagsasalin ng MyMemory ngayong araw (50,000 character). Lumipat sa ibang serbisyo ng pagsasalin o subukan muli bukas</string>
   <string name="morphe_vot_mymemory_error">Nabigo ang pagsasalin ng MyMemory (status %s)</string>
@@ -560,10 +560,29 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Binubuksan ang pila ng Morphe sa halip na ang pila ng YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">Idagdag ang feed flyout queue na menu item</string>
   <string name="morphe_queue_add_flyout_menu_summary">Nagdaragdag ng karagdagang flyout item. I-enable ito kung hindi ipinapakita ang \"Idagdag sa queue\".</string>
+  <string name="morphe_local_queue_title">Pilang istilong Premium</string>
+  <string name="morphe_local_queue_summary">"Pinapalitan nito ang pila ng Morphe ng isang pila na nasa device, kusang nagpe-play, at maaaring muling ayusin sa pamamagitan ng pag-drag
+
+Impormasyon: Magsisimula lang ang susunod na naka-pilang video habang nasa screen ang YouTube"</string>
+  <string name="morphe_local_queue_sheet_title">Pila</string>
+  <string name="morphe_local_queue_open">Pila (%s)</string>
+  <string name="morphe_local_queue_clear">I-clear lahat</string>
+  <string name="morphe_local_queue_empty">Walang nakapila</string>
+  <string name="morphe_local_queue_empty_hint">Gamitin ang I-play sa susunod sa pila sa anumang video</string>
+  <string name="morphe_local_queue_now_playing">Kasalukuyang pinapatugtog</string>
+  <string name="morphe_local_queue_play_next">I-play sa susunod sa pila</string>
+  <string name="morphe_local_queue_play_last">Ilaro ang huling nasa pila</string>
+  <string name="morphe_local_queue_reorder">Muling ayusin</string>
+  <string name="morphe_local_queue_remove">Alisin</string>
+  <string name="morphe_local_queue_added">Idinagdag sa pila</string>
+  <string name="morphe_local_queue_unavailable">Hindi ma-idagdag ang bidong ito sa pila</string>
+  <string name="morphe_local_queue_playlist_unsupported">Ang mga playlist ay hindi maaaring idagdag sa pila</string>
+  <string name="morphe_local_queue_full">Puno na ang pila</string>
+  <string name="morphe_local_queue_play_failed">Hindi masimulan ang video</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Ad whitelist sa flyout menu</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Nagdaragdag ng flyout item na nagpapahintulot sa mga ad na mag-play sa channel ng video na iyon</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ang feature na ito ay maaaring mangailangan ng paggamit ng PotHelper o pagpapalit ng \"I-spoof ang mga video stream\" sa TV o Android VR sign-in.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Maaaring kailanganin nitong feature na gamitin ang PotHelper o baguhin ang \"Spoof video streams\" sa TV o Android VR sign-in</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Speed whitelist sa flyout menu</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Nagdaragdag ng flyout item na palaging nagpe-play sa channel ng video na iyon sa bilis na 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Hindi naka-log in</string>
@@ -746,6 +765,9 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_preferred_caption_language_title">Ginustong wika ng caption</string>
   <string name="morphe_preferred_caption_language_summary">Pinipili muna ang mga subtitle mula sa provider, pagkatapos ay awtomatikong isinasalin ang mga ito sa ginustong wika</string>
   <string name="morphe_preferred_caption_language_entry_off">Naka-off</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Magdagdag ng karagdagang awtomatikong isalin na mga wika</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Nagdadagdag ng higit pang mga wika sa menu ng awtomatikong isalin</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Magtakda ng mga caption cookies</string>
   <string name="morphe_set_caption_cookies_summary">"Inaayos ang isang stock YouTube bug kung saan ang mga awtomatikong isinalin na caption ay maaaring hindi available dahil sa nawawalang cookies
@@ -785,9 +807,9 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <string name="morphe_hide_navigation_button_labels_title">Itago ang mga tatak ng navigation button</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Itago ang tuldok ng bagong nilalaman</string>
   <string name="morphe_hide_navigation_bar_title">Itago ang navigation bar</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Lubos na itinatago nito ang navigation bar, kabilang ang tab na 'You'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ginagawa nitong ganap na nakatago ang navigation bar, kasama ang 'You' tab.
 
-Upang ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng General → Toolbar → Show Settings."</string>
+Para i-access ang Settings, i-enable ang Settings button sa pamamagitan ng General → Toolbar → Show Settings"</string>
   <string name="morphe_narrow_navigation_buttons_title">Paganahin ang makitid na navigation button</string>
   <string name="morphe_narrow_navigation_buttons_summary">Binabawasan ang pahalang na espasyo sa pagitan ng mga button</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">I-disable ang mga navigation button na walang mga label</string>
@@ -1023,7 +1045,7 @@ Layout ng automotive
   <string name="morphe_tablet_layout_in_player_summary">"Ibinabalik ang lumang layout ng player
 
 Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring hindi magamit ang overlay na 'Higit pang mga video'"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Ang pagpapagana nito ay maaaring makasira sa ilang mga tampok ng layout ng player, tulad ng seksyon ng komento o \'Higit pang mga video\' na ipinapakita sa ibaba ng player.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Ang pag-enable nito ay maaaring sirain ang ilang features ng player layout, tulad ng comment section o \'More videos\' na ipinapakita sa ibaba ng player</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ibalik ang dating pag-uugali ng mga caption</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ibalik ang lumang save sa playlist</string>
@@ -1088,6 +1110,12 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">I-disable ang awtomatikong pag-refresh ng feed</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Pinipigilan ang mga feed na awtomatikong mag-refresh kapag lipas na ang mga ito</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Pormat ng kard sa feed</string>
+  <string name="morphe_feed_card_layout_entry_1">Klasiko</string>
+  <string name="morphe_feed_card_layout_entry_2">Mga Card</string>
+  <string name="morphe_feed_card_layout_entry_3">Mga card may like, komento, at save button</string>
+  <string name="morphe_feed_card_layout_comments">Mga Komento</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Huwag paganahin ang pagpapatuloy ng miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Hindi pinapagana ang \'Continue watching\' miniplayer, isang tampok ng YouTube Premium na lumalabas sa paglunsad ng app.</string>
@@ -1122,9 +1150,6 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pressing back always exits the app instead of scrolling to the top of the feed</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Pilitin ang system font</string>
-  <string name="morphe_force_system_font_summary">Ipinapakita ang app gamit ang font ng device sa halip na YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Itago ang status bar</string>
   <string name="morphe_hide_status_bar_summary">Itinatago ang system status bar. Mag-swipe pababa mula sa tuktok na gilid upang maipakita ito sandali</string>
@@ -1205,7 +1230,7 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">I-spoof ang device dimensions</string>
   <string name="morphe_spoof_device_dimensions_summary">Ang pagpapagana nito ay maaaring mag-unlock ng mas mataas na kalidad ng video</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Ang pag-enable nito ay maaaring magdulot ng pag-stall ng video playback, mas malalang buhay ng baterya, at hindi pa alam na mga epekto.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Ang pag-enable nito ay maaaring magdulot ng stuttering sa video playback, mas mahirap battery life, at hindi kilalang side effects</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Haptic feedback</string>
   <string name="morphe_disable_haptic_feedback_summary">Pumili kung aling mga interaction ang magti-trigger ng vibration ng device</string>
@@ -1215,7 +1240,7 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">I-disable ang mga haptic na feedback sa pag-tap at pagpindot</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">I-disable ang haptics ng pag-zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Kung kamakailan mo binago ang iyong mga detalye sa pag-login ng account, i-uninstall at i-reinstall ang MicroG.</string>
+  <string name="microg_offline_account_login_error">Kung kumusta mong binago ang mga detalye ng login ng iyong account, i-uninstall at i-reinstall ang MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Lumaktaw sa mga pagpapalit ng link</string>
   <string name="morphe_bypass_link_redirects_summary">Binubuksan ang orihinal na link nang direkta, nilalaktawan ang link ng pagsubaybay (youtube.com/redirect)</string>
@@ -1295,18 +1320,21 @@ Mga Limitasyon:
 • Maaaring mali ang mga kulay kung hindi kayang ipakita ng display ang HDR
 • Maaaring mabigo ang playback kung hindi kayang hawakan ng decoder ang HDR
 • Nakadepende pa rin ang HDR sa client na nagpapanggap ng video streams"</string>
-  <string name="morphe_force_avc_codec_title">Puwersahin ang AVC (H.264) codec</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Mga benepisyo:
-• Maaaring mapabuti ang buhay ng baterya
-• Maaaring ibalik ang nawawalang mga resolution ng video sa mas lumang device
-
-Mga limitasyon:
-• Ang maximum na resolution ay 1080p
-• Ang pag-playback ng video ay gumagamit ng mas maraming data sa internet kaysa sa VP9 o AV1
-• Ang HDR video ay hindi gagamit ng AVC
-• Ang ilang device ay hindi mapipilitan ng AVC"</string>
+  <string name="morphe_video_codec_title">Codec ng video</string>
+  <string name="morphe_video_codec_entry_default">Awtomatiko</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Upang gamitin ang tampok na ito, itakda ang \'Gayahin ang mga video stream\' sa \'Android VR\' o \'Android Studio\'.</string>
+  <string name="morphe_video_codec_avc_not_available">Para pilitin ang AVC, palitan ang \'I-spoof ang mga video stream\' ng \'Android Studio\', \'Android VR\' o \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Maaaring mapahaba ang buhay ng baterya at ayusin ang pag-stutter ng playback
+• Gumagamit ng mas maraming data sa internet kaysa sa AV1
+
+AVC (H.264)
+• Nangangailangan ng client para sa pag-i-spoof ng video stream: 'Android Studio', 'Android VR', o 'visionOS'
+• Maaaring mas mapahaba pa ang buhay ng baterya
+• Maaaring maibalik ang mga nawawalang resolusyon ng video sa mga mas lumang device
+• Ang pinakamataas na resolusyon ay 1080p
+• Maaaring hindi gumamit ng AVC ang mga HDR video
+• Hindi kayang pilitin ng ilang device ang AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Buksan ang menu ng kalidad na advanced</string>
   <string name="morphe_advanced_video_quality_menu_summary">Nilalaktawan ang menu ng pagpili ng kalidad at direktang binubuksan ang Advanced na menu ng kalidad</string>
@@ -1319,10 +1347,11 @@ Mga limitasyon:
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Payagan ang \'Android VR\' / visionOS AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Pinapayagan ang software na pag-decode ng AV1 kapag ginagamit ang \'Android VR\' / visionOS client.</string>
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ang pag-e-enable ng setting na ito ay maaaring gumamit ng software AV1 decoding.
+  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ang pag-enable nito ay maaaring gumamit ng software AV1 decoding.
 
-Ang pag-playback ng video gamit ang AV1 ay maaaring mag-stutter o mag-drop ng mga frame."</string>
+Ang video playback na may AV1 ay maaaring mag-stutter o mag-drop ng frames"</string>
   <string name="morphe_spoof_video_streams_about_title">Mga epekto ng spoofing</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Maaaring mabigo ang playback pagkatapos ng 1 minuto</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Ang menu na \'Audio Track\' ay nawawala.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Walang codec ng video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Ang 360° VR na immersive mode ay hindi magagamit</string>
@@ -1349,4 +1378,154 @@ Limitasyon: Bumabalik sa lumang istilo ng overlay na 'Higit pang mga video'"</st
   <string name="morphe_player_icon_style_entry_bold">Makapal</string>
   <string name="morphe_player_icon_style_entry_custom">Pasadya</string>
   <string name="morphe_shorts_icon_style_title">Estilo ng icon ng Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Serbisyo ng Pagsubaybay serye</string>
+  <string name="morphe_series_tracker_screen_summary">Sumunod sa mga playlist bilang series at panatilihin ang iyong posisyon</string>
+  <string name="morphe_series_tracker_title">Paganahin ang pagsubaybay ng serye</string>
+  <string name="morphe_series_tracker_summary">Idinadagdag ang pahina ng Serye sa Kasaysayan at isang Opsyon na Sumunod sa Serye para sa mga playlist</string>
+  <string name="morphe_series_tracker_show_button_title">Ipakita ang button ng Tracker ng Serye</string>
+  <string name="morphe_series_tracker_show_button_summary">Idinadagdag ang player button para sundan o buksan ang serye ng kasalukuyang video</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Ire-record ang progreso sa sumusunod na serye</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Ire-record ang playback sa teleponong ito para sa mga naka-save na serye at bookmark</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Ipakita ang History sa navigation bar</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Home, Subscriptions, Notifications, History at You</string>
+  <string name="morphe_series_tracker_ui_cancel">Ikansela</string>
+  <string name="morphe_series_tracker_ui_save">I-save</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">I-save ang bookmark</string>
+  <string name="morphe_series_tracker_ui_series_name">Pangalan ng serye</string>
+  <string name="morphe_series_tracker_ui_series_options">Mga opsyon ng serye</string>
+  <string name="morphe_series_tracker_ui_library_options">Mga opsyon ng Library</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">I-refresh ang mga episode</string>
+  <string name="morphe_series_tracker_ui_rename">Palitan</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Buksan ang playlist sa YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Alisin mula sa library</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Link o ID ng playlist</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Linisin ang lahat ng lokal na progreso</string>
+  <string name="morphe_series_tracker_ui_clear_history">Linisin ang history</string>
+  <string name="morphe_series_tracker_clear_progress_title">Linisin ang lahat ng lokal na progreso?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Tinatalo nito ang mga posisyon, watched overrides at resume selections para sa bawat video. Ang naka-save series at ang kanilang catalogs ay nananatili. Magrererecord ang bagong playback kung enabled ang recording</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Markahan bilang tinitirah</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Markahan bilang hindi tinitirah</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Gamitin ang automatic na status</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">I-restart mula sa 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">I-play ulit mula sa 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Naka-save na ang status</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Subukan ulit ang pag-save</string>
+  <string name="morphe_series_tracker_ui_previous_100">Nakaraang 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Susunod na 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Buksan ang naka-save na video</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Nilinisan na ang lokal na progreso</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Buksan ang History from You upang makita ang iyong mga serye</string>
+  <string name="morphe_series_tracker_ui_watch_history">History ng pagmanonood</string>
+  <string name="morphe_series_tracker_ui_series">Serye</string>
+  <string name="morphe_series_tracker_ui_history">Kasaysayan</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Subkripsyon</string>
+  <string name="morphe_series_tracker_ui_notifications">Mga Abiso</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Inilo-load ang mga naka-save na serye…</string>
+  <string name="morphe_series_tracker_empty_library">Sundan ang playlist upang mapagtuluran ang mga episode nito</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Bookmark ng playlist</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Inire-refresh ang mga episode…</string>
+  <string name="morphe_series_tracker_ui_all_series">Lahat ng serye</string>
+  <string name="morphe_series_tracker_watched">Tinitirahan</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Inilo-load ang mga episode…</string>
+  <string name="morphe_series_tracker_ui_more_options">Karagdagang opsyon</string>
+  <string name="morphe_series_tracker_record_consent">"Mag-record ng progress lamang para sa iyong naka-save series at bookmarked videos.
+
+Ipinaninda-locate ang library na ito sa device na ito at hinahati-hati sa lahat ng YouTube accounts. Hindi ito binabagyo ng YouTube’s pause at clear history controls. Gamitin ang Series → More → Clear local progress upang burahin ito.
+
+Itatatigil ang automatic recording sa incognito, kapag walang available ang identity ng account, o kapag lumipat ka sa iba pang account. Ibalik ang tracking upang gamitin ito sa account na iyon"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Hindi mai-e-enable ang tracking sa incognito o bago pa lumoad ang YouTube ang current account state. Bumalik sa Home at subukan ulit. Kailangan ng sign-in</string>
+  <string name="morphe_series_tracker_enable">I-enable ang lokal na tracking</string>
+  <string name="morphe_series_tracker_tracking_paused">Naka-off ang recording ng progreso</string>
+  <string name="morphe_series_tracker_resume_at">Mag-resume sa %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s episodyo ang na-watch na</string>
+  <string name="morphe_series_tracker_episode_position">Episodyo %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Episodyo %1$s-%2$s sa kabuuan ng %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">I-refresh upang subukang maload ang mga episode. Kailangan ng account access ang private playlists; bukas pa rin ang kanilang bookmark sa YouTube</string>
+  <string name="morphe_series_tracker_open_failed">Hindi nakabuksan ng YouTube ang episodyong ito</string>
+  <string name="morphe_series_tracker_playlist_failed">Hindi nakabuksan ng YouTube ang listahang ito</string>
+  <string name="morphe_series_tracker_plan_changed">Pumili ng isang episode</string>
+  <string name="morphe_series_tracker_plan_caught_up">Kasalukuyang update na</string>
+  <string name="morphe_series_tracker_plan_none">Walang available na playable na episode</string>
+  <string name="morphe_series_tracker_saved_position">Naka-save na video · %1$s</string>
+  <string name="morphe_series_tracker_follow">Sundin ang serye</string>
+  <string name="morphe_series_tracker_view_series">Tanawin ang serye</string>
+  <string name="morphe_series_tracker_continue">Magpatuloy</string>
+  <string name="morphe_series_tracker_start_here">Simulan dito</string>
+  <string name="morphe_series_tracker_start_saved">Naka-save na ang starting point</string>
+  <string name="morphe_series_tracker_watched_to_here">Tinitirahan hanggang dito</string>
+  <string name="morphe_series_tracker_marked">Mga episode na marked na tinitirahan</string>
+  <string name="morphe_series_tracker_undo">Ipawalang-bisa</string>
+  <string name="morphe_series_tracker_enable_short">Paganahin</string>
+  <string name="morphe_series_tracker_new_episode">1 bagong episode</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s bagong episodyo</string>
+  <string name="morphe_series_tracker_record_short">Ire-record ang progreso sa device na ito</string>
+  <string name="morphe_series_tracker_follow_consent">"Nananatili ang iyong series at progress sa device na ito, hinahati-hati sa lahat ng YouTube accounts. Hindi binabagyo ng YouTube history controls ang mga ito. Burahin ang progress mula sa Series menu.
+
+Optional ang automatic recording. Itinatigil ito sa incognito o kapag nabagyo ang account"</string>
+  <string name="morphe_series_tracker_follow_unavailable">Hindi naiload ang mga episode. Maaari mong i-save ang playlist bilang bookmark</string>
+  <string name="morphe_series_tracker_error_pending_full">Masyado kang maraming di-naka-save na pagbabago. Subukan muling mag-save</string>
+  <string name="morphe_series_tracker_error_storage_busy">Busy ang pag-save. Subukan muli</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Busy ang pag-load ng episode. Subukan muli</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Unavailable ang storage. Nanatili ang iyong naka-save data</string>
+  <string name="morphe_series_tracker_error_storage_save">Hindi naka-save ang mga pagbabago. Subukan ulit ang pag-save bago isara ang YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">Naka-save na ang series na ito, o nabagyo ang kanyang playlist. Buksan ulit ito</string>
+  <string name="morphe_series_tracker_error_series_changed">Bago o tinanggal ang series na ito. Buksan ulit ang library</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Bago ang playlist. Pumili muli ng episode</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Unavailable ang episodyong ito. Pumili ng iba</string>
+  <string name="morphe_series_tracker_error_name_required">Ilagay ang pangalan ng series</string>
+  <string name="morphe_series_tracker_error_playlist_input">Ilagay ang link o playlist ID ng YouTube playlist</string>
+  <string name="morphe_series_tracker_error_retry_later">Maghintay bago i-refresh muli</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Hindi naiload ang mga episode. Subukan ulit mamaya</string>
+  <string name="morphe_series_tracker_error_operation">Hindi makumpleto ang pagbabago. Subukan muli</string>
+  <string name="morphe_series_tracker_error_resume">Hindi makumpirma ang resume. Suriin ang player at subukan muli</string>
+  <string name="morphe_series_tracker_followed">Sumusunod sa serye</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Wala sa listahan ito ang video</string>
+  <string name="morphe_series_tracker_finding_playlists">Hanapin ang mga playlist…</string>
+  <string name="morphe_series_tracker_paste_playlist">I-paste ang link ng playlist</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Hindi natagpuan ang isang playlist</string>
+  <string name="morphe_series_tracker_no_available_episodes">Walang available na episode</string>
+  <string name="morphe_series_tracker_hide_watched">Itago ang mga tinitirahan</string>
+  <string name="morphe_series_tracker_watch_previous">Markahan ang mga nakaraang episode na tinitirahan</string>
+  <string name="morphe_series_tracker_order_starts_with">Nagsisimula sa: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Ayos ng episode</string>
+  <string name="morphe_series_tracker_playlist_order">Urutan ng playlist</string>
+  <string name="morphe_series_tracker_reverse_order">Baliktarin ang urutan ng playlist</string>
+  <string name="morphe_series_tracker_view_count">%1$s mga panonood</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s panood</string>
+  <string name="morphe_series_tracker_completion_title">I-mark ang mga episo na pinanood</string>
+  <string name="morphe_series_tracker_completion_summary">Pinanood nang kamatis %1$s%% habang higit sa 90 segundo lamang ang natira, o %2$s segundo ang natitira</string>
+  <string name="morphe_series_tracker_completion_explanation">Awtomatikong markahan ang episode bilang pinanood pagkatapos ng isa sa dalawang threshold. Kailangan rin ng percentage rule na wala nang higit sa 90 segundo, kaya hindi sasalpasin ang dulo ng mahahabang episode. Aplikable ang remaining-time rule sa mga video na mas mahaba sa isang minuto; itakda ito sa 0 upang i-disable. Babagyo ang mga pagbabago sa future progress updates. Panatilihin ang manual watched/unwatched choices</string>
+  <string name="morphe_series_tracker_completion_percent">Percentage pinanood (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Segundo na natitira (0-300; 0 i-disable)</string>
+  <string name="morphe_series_tracker_completion_range">Ilagay ang value mula %1$s hanggang %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Gamitin ang YouTube progress</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Ituloy ang pinagsubaybaying serye matapos maging pinanood sa ibang device</string>
+  <string name="morphe_series_tracker_sync_consent">Basahin ang status na pinanood at mga posisyon ng resume para sa iyong sinusundan series mula sa current YouTube account. Naka-save lang ang tugmang mga episode sa teleponong ito. Tinitignan ang series library kapag bukas ito at bago ang Continue. Kailanganeng enabled ang YouTube history sa iyong ibang device</string>
+  <string name="morphe_series_tracker_sync_checking">Sinusuri ang YouTube progress…</string>
+  <string name="morphe_series_tracker_sync_failed">Unavailable ang YouTube progress. Gumagamit ng naka-save progress</string>
+  <string name="morphe_series_tracker_sync_partial">Bahagi ng YouTube progress ay unavailable. Nanatili ang naka-save positions</string>
+  <string name="morphe_series_tracker_backup_title">Backup at restore</string>
+  <string name="morphe_series_tracker_backup_summary">I-save ang iyong series library sa isang file o i-restore ang backup</string>
+  <string name="morphe_series_tracker_backup_explanation">Naka-save ang sinusundan series, mga posisyon ng episode at mga choice na pinanood. Hindi kasama ang Recording at YouTube progress permissions</string>
+  <string name="morphe_series_tracker_backup_save">I-save ang backup</string>
+  <string name="morphe_series_tracker_backup_restore">I-restore ang backup</string>
+  <string name="morphe_series_tracker_backup_preview">Idagdag ang %1$s series. Nananatili ang %2$s series na nasa library mo. Nananatili ang existing video progress</string>
+  <string name="morphe_series_tracker_backup_saved">Na-save ang backup ng serye</string>
+  <string name="morphe_series_tracker_backup_restored">Inibalik ang %1$s series</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Hindi ito supported series backup file, o sobrang malaki. Hindi nabago ang iyong library</string>
+  <string name="morphe_series_tracker_error_backup_write">Hindi naka-save ang backup. Subukan ang ibang location</string>
+  <string name="morphe_series_tracker_removed">Kinuha ang serye</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Mas marami na ngayon sa isang page ang episodyong ito. Pumilihing alin ang itutuloy</string>
+  <string name="morphe_series_tracker_recovery_missing">Wala na sa playlist na ito ang iyong naka-save episode. Nanatili ang iyong naka-save position</string>
+  <string name="morphe_series_tracker_recovery_continue">Ituloy sa episode %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Maaari mo ring pumili ng anumang episode sa ibaba. Hindi binago ang mas maagang mga episode</string>
+  <string name="morphe_series_tracker_playback_changed">Bago ang playlist. Buksan ang series upang pumili kung saan itutuloy</string>
+  <string name="morphe_series_tracker_playback_boundary">Wala nang iba pang mga episo sa direksyong ito</string>
+  <string name="morphe_series_tracker_continue_series">Tuloy %1$s</string>
+  <string name="morphe_series_tracker_search_series">Maghanap ng serye</string>
+  <string name="morphe_series_tracker_clear_search">Alisin ang hanap</string>
+  <string name="morphe_series_tracker_no_search_results">Walang nahanap na serye</string>
+  <string name="morphe_series_tracker_untitled_episode">Episodong walang pamagat</string>
+  <string name="morphe_series_tracker_unavailable_episode">Episodong hindi available</string>
 </resources>

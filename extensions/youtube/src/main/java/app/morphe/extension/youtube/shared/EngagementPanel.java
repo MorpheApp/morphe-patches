@@ -2,7 +2,6 @@ package app.morphe.extension.youtube.shared;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
@@ -62,9 +61,5 @@ public final class EngagementPanel {
             }
         }
         return false;
-    }
-
-    public static List<String> getCurrentOpenedPanels() {
-        return new ArrayList<>(engagementPanelIds);
     }
 }

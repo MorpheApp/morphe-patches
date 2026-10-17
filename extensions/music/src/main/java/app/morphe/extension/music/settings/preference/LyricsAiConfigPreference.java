@@ -14,7 +14,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.preference.SwitchPreference;
+import android.preference.Preference;
 import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -31,12 +32,12 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
+/**
+ * The endpoint every AI feature talks to. It is one shared setting rather than a switch of its
+ * own, so the features next to it stay the only switches a user has to reason about.
+ */
 @SuppressWarnings({"unused", "deprecation"})
-public class LyricsAiConfigPreference extends SwitchPreference {
-
-    private boolean dialogShowing = false;
-    private volatile boolean saveInProgress = false;
-    private boolean settingFromCode = false;
+public class LyricsAiConfigPreference extends Preference {
 
     public LyricsAiConfigPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -59,52 +60,27 @@ public class LyricsAiConfigPreference extends SwitchPreference {
     }
 
     private void init() {
-        setSummary(Settings.LYRICS_USE_AI_TRANSLATION.get()
-                ? str("morphe_music_lyrics_ai_config_status_configured")
-                : str("morphe_music_lyrics_ai_config_status_not_configured"));
+        setSelectable(true);
+        setPersistent(false);
+        updateSummary();
     }
 
-    private void setCheckedSilently(boolean checked) {
-        settingFromCode = true;
-        setChecked(checked);
-        settingFromCode = false;
+    private void updateSummary() {
+        String model = Settings.LYRICS_AI_MODEL.get();
+        setSummary(model.isEmpty()
+                ? null
+                : str("morphe_music_lyrics_ai_config_summary_configured", model));
     }
 
     @Override
-    protected boolean callChangeListener(Object newValue) {
-        if (settingFromCode) {
-            return super.callChangeListener(newValue);
-        }
-        if (dialogShowing) {
-            return false;
-        }
-        boolean turningOn = Boolean.TRUE.equals(newValue);
-        if (turningOn && !Settings.LYRICS_USE_AI_TRANSLATION.get()) {
-            String baseUrl = Settings.LYRICS_AI_BASE_URL.get();
-            String apiToken = Settings.LYRICS_AI_API_TOKEN.get();
-            String model = Settings.LYRICS_AI_MODEL.get();
-            dialogShowing = true;
-            setCheckedSilently(false);
-            setSummary(str("morphe_music_lyrics_ai_config_status_validating"));
-            Utils.runOnBackgroundThread(() -> {
-                boolean valid = validateConfig(baseUrl, apiToken, model);
-                Utils.runOnMainThread(() -> {
-                    if (!valid) {
-                        Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_invalid"));
-                    }
-                    showDialog();
-                });
-            });
-            return false;
-        }
-        return super.callChangeListener(newValue);
+    protected void onClick() {
+        showDialog();
     }
 
     private void showDialog() {
         Context context = getContext();
         if (!(context instanceof Activity activity) || activity.isFinishing()
                 || activity.isDestroyed()) {
-            dialogShowing = false;
             return;
         }
 
@@ -159,81 +135,42 @@ public class LyricsAiConfigPreference extends SwitchPreference {
         }
         content.addView(modelInput, modelParams);
 
-        LinearLayout.LayoutParams promptParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        promptParams.topMargin = Dim.dp8;
-        EditText promptInput = createThemedEditText(context);
-        promptInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-        promptInput.setSingleLine(false);
-        promptInput.setMinLines(3);
-        promptInput.setMaxLines(6);
-        promptInput.setVerticalScrollBarEnabled(true);
-        String currentPrompt = Settings.LYRICS_AI_PROMPT.get();
-        if (!currentPrompt.isEmpty()) {
-            promptInput.setText(currentPrompt);
-            promptInput.setSelection(currentPrompt.length());
-        }
-        content.addView(promptInput, promptParams);
-
-        TextView promptCaption = new TextView(context);
-        promptCaption.setText(str("morphe_music_lyrics_ai_config_prompt_hint"));
-        promptCaption.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        promptCaption.setTextColor(ThemeUtils.getAppForegroundColor() & 0xAAFFFFFF);
-        LinearLayout.LayoutParams promptCaptionParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        promptCaptionParams.topMargin = Dim.dp8;
-        content.addView(promptCaption, promptCaptionParams);
-
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
-                str("morphe_music_lyrics_ai_config_dialog_title"),
+                str("morphe_music_lyrics_use_ai_title"),
                 null,
                 null,
                 str("morphe_settings_save"),
                 () -> {
-                    saveInProgress = true;
                     String baseUrl = baseUrlInput.getText().toString().trim();
                     String apiToken = apiTokenInput.getText().toString().trim();
                     String model = modelInput.getText().toString().trim();
 
                     if (baseUrl.isEmpty()) {
-                        saveInProgress = false;
                         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_empty_url"));
                         return;
                     }
                     if (!baseUrl.startsWith("http://") && !baseUrl.startsWith("https://")) {
-                        saveInProgress = false;
                         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
                         return;
                     }
                     if (model.isEmpty()) {
-                        saveInProgress = false;
                         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_empty_model"));
                         return;
                     }
 
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
                     Utils.runOnBackgroundThread(() -> {
-                        boolean valid = validateConfig(baseUrl, apiToken, model);
+                        boolean valid = OpenAIClient.validateConfig(baseUrl, apiToken, model);
                         Utils.runOnMainThread(() -> {
                             if (!valid) {
-                                saveInProgress = false;
-                                setCheckedSilently(false);
-                                setSummary(str("morphe_music_lyrics_ai_config_status_not_configured"));
                                 Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_invalid"));
                                 return;
                             }
                             Settings.LYRICS_AI_BASE_URL.save(baseUrl);
                             Settings.LYRICS_AI_API_TOKEN.save(apiToken);
                             Settings.LYRICS_AI_MODEL.save(model);
-                            Settings.LYRICS_AI_PROMPT.save(
-                                    promptInput.getText().toString().trim());
-                            Settings.LYRICS_USE_AI_TRANSLATION.save(true);
-                            saveInProgress = false;
-                            setCheckedSilently(true);
-                            setSummary(str("morphe_music_lyrics_ai_config_status_configured"));
+                            updateSummary();
                             Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_saved"));
                         });
                     });
@@ -244,11 +181,10 @@ public class LyricsAiConfigPreference extends SwitchPreference {
                     Settings.LYRICS_AI_BASE_URL.resetToDefault();
                     Settings.LYRICS_AI_API_TOKEN.resetToDefault();
                     Settings.LYRICS_AI_MODEL.resetToDefault();
-                    Settings.LYRICS_AI_PROMPT.resetToDefault();
                     baseUrlInput.setText(Settings.LYRICS_AI_BASE_URL.get());
                     apiTokenInput.setText("");
                     modelInput.setText(Settings.LYRICS_AI_MODEL.get());
-                    promptInput.setText(Settings.LYRICS_AI_PROMPT.get());
+                    updateSummary();
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_reset"));
                 },
                 false
@@ -262,59 +198,10 @@ public class LyricsAiConfigPreference extends SwitchPreference {
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        dialog.setOnDismissListener(d -> {
-            dialogShowing = false;
-            if (saveInProgress) return;
-            boolean saved = Settings.LYRICS_USE_AI_TRANSLATION.get();
-            setCheckedSilently(saved);
-            setSummary(saved
-                    ? str("morphe_music_lyrics_ai_config_status_configured")
-                    : str("morphe_music_lyrics_ai_config_status_not_configured"));
-        });
-
         try {
             dialog.show();
-        } catch (WindowManager.BadTokenException ignored) {
-            dialogShowing = false;
-        }
-    }
-
-    private static boolean validateConfig(String baseUrl, String apiToken, String model) {
-        java.net.HttpURLConnection conn = null;
-        try {
-            org.json.JSONObject body = new org.json.JSONObject();
-            body.put("model", model);
-            org.json.JSONArray messages = new org.json.JSONArray();
-            messages.put(new org.json.JSONObject()
-                    .put("role", "user")
-                    .put("content", "hi"));
-            body.put("messages", messages);
-            body.put("max_tokens", 1);
-
-            String requestBody = body.toString();
-
-            conn = (java.net.HttpURLConnection) new java.net.URL(baseUrl).openConnection();
-            conn.setRequestMethod("POST");
-            conn.setConnectTimeout(10_000);
-            conn.setReadTimeout(15_000);
-            conn.setRequestProperty("Content-Type", "application/json");
-            if (!apiToken.isEmpty()) {
-                conn.setRequestProperty("Authorization", "Bearer " + apiToken);
-            }
-            conn.setDoOutput(true);
-
-            try (java.io.OutputStream os = conn.getOutputStream()) {
-                os.write(requestBody.getBytes(java.nio.charset.StandardCharsets.UTF_8));
-            }
-
-            return conn.getResponseCode() == 200;
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "testApiEndpoint failure", ex);
-            return false;
-        } finally {
-            if (conn != null) {
-                conn.disconnect();
-            }
+        } catch (WindowManager.BadTokenException ex) {
+            Logger.printException(() -> "Could not show the AI settings dialog", ex);
         }
     }
 

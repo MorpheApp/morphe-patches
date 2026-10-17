@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Išjungti išdėliojimo atnaujinimus</string>
   <string name="morphe_disable_layout_updates_summary">Uždraudžia serveriui atnaujinti programėlės išdėliojimą</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Programos išdėstymas grįžta į išdėstymą, kuris buvo pirmą kartą įdiegus.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Programos maketas grįžta į maketą, kuris buvo naudojamas pirmą kartą diegiant.
 
-Kai kurie serverio pusės išdėstymai gali nebegrįžti.
+Kai kurie serverio pusėje nustatyti maketai gali negrįžti.
 
-Pakeitimai:
-• Grotuvo išskleidžiamojo meniu komponentai (arba susiję nustatymai) gali neveikti.
-• Besisukantys skaičiai neanimuojami.
-• Rodomas skirtukas „Biblioteka“.
-• Vaizdo įrašo aprašo muzikos skiltis gali neveikti.
-• Grotuvo išskleidžiamojo meniu elementų negalima paslėpti.
-• Paskyros perjungimo mygtukas gali neatsirasti skirtuke „Biblioteka“."</string>
+Pakeitimai apima:
+• Grojimo planą flyout meniu (ar susijusius nustatymus) veiksmai gali neveikti
+• Sukimosi numeriai nėra animuoti
+• Bibliotekos skirtukas rodomas
+• Vaizdo aprašymo muzikos skiltis gali neveikti
+• Player flyout meniu punktai negali būti paslėpti
+• Paskyros perjungimo mygtikas gali nerodytis Bibliotekos skirtuke"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Įjungti informacijos kanalo išskleidžiamojo meniu filtrą</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Informacijos kanalo išskleidžiamojo meniu filtras</string>
@@ -133,7 +133,7 @@ Pakeitimai:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">Slėpti „YouTube Doodles“</string>
   <string name="morphe_hide_youtube_doodles_summary">Paslepia sezonines ir įvykių animacijas ant „YouTube“ logotipo</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Rodant „YouTube Doodles“ gali būti neberodomi pasirinktiniai antraščių logotipai.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube piešininių rodymas gali neleisti rodyti individualių antraščių</string>
   <string name="morphe_hide_channel_bar_title">Slėpti kanalo juostą</string>
   <string name="morphe_hide_channel_watermark_title">Slėpti kanalo vandenženklį</string>
   <string name="morphe_hide_chapters_timeline_button_title">Slėpti skyrių ir mygtuką „Šiame vaizdo įraše“</string>
@@ -193,7 +193,7 @@ Pakeitimai:
   <string name="morphe_hide_how_this_was_made_section_title">Slėpti skiltį „Kaip tai sukurta“</string>
   <string name="morphe_hide_hype_points_title">Slėpti „Hype“ taškus</string>
   <string name="morphe_hide_info_cards_section_title">Slėpti skiltį „Informacijos kortelės“</string>
-  <string name="morphe_hide_key_concepts_section_title">Slėpti skiltį „Pagrindinės sąvokos“</string>
+  <string name="morphe_hide_key_concepts_section_title">Paslėpti \'Pagrindinės sąvokos\' skyrių</string>
   <string name="morphe_hide_quizzes_section_title">Slėpti skiltį „Viktorinos“</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Slėpti skiltį „Ieškoti šiame vaizdo įraše“</string>
   <string name="morphe_hide_subscribe_button_title">Slėpti mygtuką „Prenumeruoti“</string>
@@ -281,7 +281,7 @@ Pakeitimai:
   <string name="morphe_hide_comments_menu_button_summary">Paslepia kiekvieno komentaro 3 taškų meniu mygtuką</string>
   <string name="morphe_hide_comments_preview_comment_title">Slėpti komentaro peržiūrą</string>
   <string name="morphe_hide_comments_preview_comment_summary">Paslepia komentaro peržiūrą po vaizdo įrašu prieš atidarant visą komentarų skiltį</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Komentaras paslėptas Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Komentaras paslėptas „Morphe“…</string>
   <string name="morphe_minimal_comments_button_title">Įgalinti minimalistinį komentarų mygtuką</string>
   <string name="morphe_minimal_comments_button_summary">Paslepia slankiąsias korteles ir jų puslapio parinkiklį, rodomus ant komentarų mygtuko</string>
   <string name="morphe_hide_comments_thanks_button_title">Slėpti mygtuką „Padėkoti“</string>
@@ -490,7 +490,7 @@ Jūsų API raktas niekada neturėtų būti dalijamas. Kiekvienas, turintis priei
   <string name="morphe_vot_openrouter_open_website">Atidaryti OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">„OpenRouter“ vertimas nepavyko (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Pasiektas „MyMemory“ dienos limitas</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Kitas galimas laikas: %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Kita lauka bus prieinama %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Išnaudojote šios dienos nemokamą „MyMemory“ vertimo limitą (5 000 simbolių). Pridėkite „MyMemory“ el. paštą nustatymuose, kad dienos limitas padidėtų iki 50 000 simbolių, arba pasirinkite kitą vertimo paslaugą</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Išnaudojote šios dienos „MyMemory“ vertimo limitą (50 000 simbolių). Pasirinkite kitą vertimo paslaugą arba bandykite dar kartą rytoj</string>
   <string name="morphe_vot_mymemory_error">„MyMemory“ vertimas nepavyko (būsena %s)</string>
@@ -560,10 +560,29 @@ Informacija: gali neveikti tiesioginių transliacijų atveju"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Atidaro Morphe eilę, o ne „YouTube“ eilę</string>
   <string name="morphe_queue_add_flyout_menu_title">Pridėti meniu elementą „Eilė“ prie sklaidos kanalo išskleidžiamojo meniu</string>
   <string name="morphe_queue_add_flyout_menu_summary">Prideda papildomą išskleidžiamojo meniu elementą. Įgalinkite, jei „Pridėti į eilę“ nerodomas</string>
+  <string name="morphe_local_queue_title">Premium stiliaus eilė</string>
+  <string name="morphe_local_queue_summary">"Pakeičia Morphe eilę tokia, kuri yra įrenginyje, groja automatiškai ir kurią galima pertvarkyti vilkiant
+
+Info: kitas eilėje esantis vaizdo įrašas paleidžiamas tik tada, kai YouTube yra ekrane"</string>
+  <string name="morphe_local_queue_sheet_title">Eilė</string>
+  <string name="morphe_local_queue_open">Eilė (%s)</string>
+  <string name="morphe_local_queue_clear">Išvalyti viską</string>
+  <string name="morphe_local_queue_empty">Eilėje nieko nėra</string>
+  <string name="morphe_local_queue_empty_hint">Bet kuriame vaizdo įraše naudokite parinktį „Leisti toliau eilėje“</string>
+  <string name="morphe_local_queue_now_playing">Dabar grojama</string>
+  <string name="morphe_local_queue_play_next">Leisti toliau eilėje</string>
+  <string name="morphe_local_queue_play_last">Groti paskutinę eilėje</string>
+  <string name="morphe_local_queue_reorder">Pertvarkyti</string>
+  <string name="morphe_local_queue_remove">Šalinti</string>
+  <string name="morphe_local_queue_added">Įtraukta į eilę</string>
+  <string name="morphe_local_queue_unavailable">Šio vaizdo įrašo nepavyko pridėti į sąrašą</string>
+  <string name="morphe_local_queue_playlist_unsupported">Grojaraščių negalima pridėti į sąrašą</string>
+  <string name="morphe_local_queue_full">Eilė pilna</string>
+  <string name="morphe_local_queue_play_failed">Nepavyko paleisti vaizdo įrašo</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Skelbimų baltasis sąrašas iškylančiajame meniu</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Prideda iškylančiojo meniu elementą, leidžiantį rodyti skelbimus to vaizdo įrašo kanale</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Šiai funkcijai gali prireikti naudoti PotHelper arba pakeisti „Maskuoti vaizdo srautus“ į TV arba Android VR prisijungimą.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ši funkcija gali reikalauti naudoti „PotHelper“ arba pakeisti nustatymą „Maskuoti video srautus“ į TV arba Android VR prisijungimą</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Atkūrimo greičio baltasis sąrašas iškylančiajame meniu</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Prideda iškylančiojo meniu elementą, kuris to vaizdo įrašo kanalo vaizdo įrašus visada atkuria 1.0x greičiu</string>
   <string name="morphe_queue_manager_check_failed_auth">Neprisijungta</string>
@@ -746,6 +765,9 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <string name="morphe_preferred_caption_language_title">Pageidaujama subtitrų kalba</string>
   <string name="morphe_preferred_caption_language_summary">Pirmiausia parenka teikėjo subtitrus, tada automatiškai išverčia į pageidaujamą kalbą</string>
   <string name="morphe_preferred_caption_language_entry_off">Ne</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Pridėti papildomų automatinio vertimo kalbų</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Padidina automatinio vertimo meniu kalbų skaičių</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Nustatyti subtitrų slapukus</string>
   <string name="morphe_set_caption_cookies_summary">"Ištaiso standartinės „YouTube“ programos klaidą, kai automatinio vertimo subtitrai gali būti nepasiekiami dėl trūkstamų slapukų
@@ -787,7 +809,7 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_hide_navigation_bar_title">Slėpti naršymo juostą</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Tai visiškai paslepia naršymo juostą, įskaitant skirtuką „Jūs“.
 
-Norėdami pasiekti nustatymus, įjunkite nustatymų mygtuką: Bendrieji → Įrankių juosta → Rodyti nustatymus."</string>
+Norėdami gauti prieigą prie nustatymų, įgalinkite Nustatymų mygtuką: Bendruosios → Įrankių juosta → Rodyti nustatymus"</string>
   <string name="morphe_narrow_navigation_buttons_title">Įjungti siaurus naršymo mygtukus</string>
   <string name="morphe_narrow_navigation_buttons_summary">Sumažina horizontalų tarpą tarp mygtukų</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Išjungti navigacijos mygtukus be etikečių</string>
@@ -1025,7 +1047,7 @@ Automobilio maketas
   <string name="morphe_tablet_layout_in_player_summary">"Atkuria senąjį grotuvo maketą
 
 Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą“ išjungta, perdanga „Daugiau vaizdo įrašų“ gali būti nepasiekiama"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Įjungus šią parinktį gali sugesti kai kurios grotuvo išdėstymo funkcijos, pvz., komentarų skiltis arba „Daugiau vaizdo įrašų“, rodoma po grotuvu.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Įgalinus šią parinktį gali būti sugriauta kai kurie grojimo plano elementai, pvz., komentarų skiltis arba „Daugiau vaizdo įrašų“ rodymas po valdikliu</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 – Atkurti senąją subtitrų elgseną</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 – atkurti senąjį išsaugojimą į grojaraštį</string>
@@ -1090,6 +1112,12 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Išjungti automatinį kanalo atnaujinimą</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Neleidžia kanalams automatiškai atsinaujinti, kai jie pasensta</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Srauto kortelių išdėstymas</string>
+  <string name="morphe_feed_card_layout_entry_1">Klasikinės</string>
+  <string name="morphe_feed_card_layout_entry_2">Kortos</string>
+  <string name="morphe_feed_card_layout_entry_3">Kortos su like, komentarų ir išsaugojimo mygtukais</string>
+  <string name="morphe_feed_card_layout_comments">Komentarai</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Išjungti mini grotuvo atkūrimą</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Išjungia mini grotuvą „Tęsti žiūrėjimą“, „YouTube Premium“ funkciją, rodomą paleidžiant programą</string>
@@ -1124,9 +1152,6 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Grįžimo mygtukas išeina iš sklaidos kanalo</string>
   <string name="morphe_back_button_always_exits_feed_summary">Paspaudus grįžimo mygtuką programa visada uždaroma, o ne slenkama į sklaidos kanalo viršų</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Priverstinai naudoti sistemos šriftą</string>
-  <string name="morphe_force_system_font_summary">Rodo programėlę su įrenginio šriftu vietoj YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Slėpti būsenos juostą</string>
   <string name="morphe_hide_status_bar_summary">Paslepia sistemos būsenos juostą. Braukite žemyn nuo viršutinio krašto, kad ją trumpam parodytumėte</string>
@@ -1207,7 +1232,7 @@ Vaizdo įrašai užklausiami pagal trumpą maišyto vaizdo įrašo ID priešdėl
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Klastoti įrenginio matmenis</string>
   <string name="morphe_spoof_device_dimensions_summary">Įjungus gali atsirasti aukštesnės vaizdo kokybės parinktys</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Tai įjungus gali atsirasti vaizdo įrašų atkūrimo trūkčiojimas, prastesnis baterijos veikimo laikas ir nežinomų šalutinių poveikių.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Įgalinus šią parinktį gali kilti vaizdo įrašų atkūrimo strigimų, blogesnė baterijos veikimo trukmė ir nežinomi šalutiniai poveikiai</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Haptinis atsakas</string>
   <string name="morphe_disable_haptic_feedback_summary">Pasirinkite, kurios sąveikos sukelia įrenginio vibraciją</string>
@@ -1217,7 +1242,7 @@ Vaizdo įrašai užklausiami pagal trumpą maišyto vaizdo įrašo ID priešdėl
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Išjungti paspaudimo ir laikymo haptinį atsaką</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Išjungti mastelio keitimo haptinį atsaką</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Jei neseniai pakeitėte paskyros prisijungimo duomenis, iš naujo įdiekite MicroG.</string>
+  <string name="microg_offline_account_login_error">Jei neseniai pakeitėte savo paskyros prisijungimo duomenis, tada pašalinkite ir iš naujo įdiekite „MicroG“ programą</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Apeiti nuorodų peradresavimus</string>
   <string name="morphe_bypass_link_redirects_summary">Atidaro originalią nuorodą tiesiogiai, apeinant stebėjimo nuorodą (youtube.com/redirect)</string>
@@ -1297,18 +1322,21 @@ Apribojimai:
 • Spalvos gali atrodyti neteisingai, jei ekranas iš tikrųjų negali rodyti HDR
 • Atkūrimas gali nepavykti, jei dekoderis negali apdoroti HDR
 • HDR vis tiek priklauso nuo vaizdo įrašų srautų maskavimo kliento"</string>
-  <string name="morphe_force_avc_codec_title">Priverstinai naudoti AVC (H.264) kodeką</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Privalumai:
-• Gali pagerinti baterijos veikimo laiką
-• Gali atkurti trūkstamas vaizdo raiškas senesniuose įrenginiuose
-
-Apribojimai:
-• Maksimali raiška – 1080p
-• Vaizdo įrašų atkūrimas sunaudos daugiau interneto duomenų nei VP9 arba AV1
-• HDR vaizdo įrašai nenaudos AVC
-• Kai kurie įrenginiai negali priverstinai naudoti AVC"</string>
+  <string name="morphe_video_codec_title">Vaizdo įrašų kodekas</string>
+  <string name="morphe_video_codec_entry_default">Numatytasis</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Norėdami naudoti šią funkciją, nustatykite „Maskuoti vaizdo įrašų srautus“ į „Android VR“ arba „Android Studio“</string>
+  <string name="morphe_video_codec_avc_not_available">Norėdami priverstinai naudoti AVC, pakeiskite „Maskuoti vaizdo srautus“ į „Android Studio“, „Android VR“ arba „visionOS“</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Gali prailginti akumuliatoriaus veikimą ir pašalinti vaizdo atkūrimo trikdžius.
+• Naudoja daugiau interneto duomenų nei AV1.
+
+AVC (H.264)
+• Privalomas „Android Studio“, „Android VR“ arba „visionOS“ vaizdo įrašo srauto kliento programos imitavimas.
+• Gali dar labiau pailginti akumuliatoriaus veikimą.
+• Gali atkurti trūkstamas vaizdo raiškas senesniuose įrenginiuose.
+• Maksimali raiška yra 1080p.
+• HDR vaizdo įrašams AVC negali būti naudojamas.
+• Kai kurie įrenginiai negali priversti AVC."</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Atidaryti išplėstinės kokybės meniu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Praleidžia kokybės pasirinkimo meniu ir tiesiogiai atidaro išplėstinės kokybės meniu</string>
@@ -1321,10 +1349,11 @@ Apribojimai:
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Leisti „Android VR“ / visionOS AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Leidžia programinį AV1 dekodavimą, kai naudojamas „Android VR“ / visionOS klientas</string>
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Įjungus šį nustatymą gali būti naudojamas programinis AV1 dekodavimas.
+  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Įgalinus šią nustatymą gali būti naudojamas programinis AV1 dekodavimas.
 
-Atkūrus AV1 vaizdo įrašus gali trūkčioti arba kristi kadrai."</string>
+Vaizdo įrašų atkūrimas su AV1 gali strigti arba praleisti kadras"</string>
   <string name="morphe_spoof_video_streams_about_title">Klastojimo šalutiniai poveikiai</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Atkūrimas gali nutrūkti po 1 minutės.</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Trūksta meniu „Garso takelis“.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nėra AV1 vaizdo kodeko</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR įtraukiančios realybės režimas nepasiekiamas</string>
@@ -1351,4 +1380,154 @@ Ribojimas: grąžina prie senosios stiliaus „Daugiau vaizdo įrašų“ perdan
   <string name="morphe_player_icon_style_entry_bold">Paryškintas</string>
   <string name="morphe_player_icon_style_entry_custom">Pasirinktinis</string>
   <string name="morphe_shorts_icon_style_title">„Shorts“ piktogramos stilius</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Serijų sekimas</string>
+  <string name="morphe_series_tracker_screen_summary">Sekite grojaraščius kaip serijas ir išsaugokite savo vietą</string>
+  <string name="morphe_series_tracker_title">Įgalinti serijų stebėjimą</string>
+  <string name="morphe_series_tracker_summary">Pridedamas serijų puslapis istorijoje ir „Stebėti serijas“ parinktis grojaraščiams</string>
+  <string name="morphe_series_tracker_show_button_title">Rodyti serijų sekikio mygtuką</string>
+  <string name="morphe_series_tracker_show_button_summary">Prideda valdiklio mygtuką, kad būtų galima sekti arba atidaryti dabartinio vaizdo įrašo seriją</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Fiksuoti stebimų serijų eigą</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Fiksuoti grojimą šiame telefone išsaugotoms serijoms ir žymoms</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Istorija naršymo juostoje</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">„Pradžia“, „Prenumeratos“, „Pranešimai“, „Istorija“ ir „Jūs“</string>
+  <string name="morphe_series_tracker_ui_cancel">Atšaukti</string>
+  <string name="morphe_series_tracker_ui_save">Išsaugoti</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Įtraukti žymę</string>
+  <string name="morphe_series_tracker_ui_series_name">Serijos pavadinimas</string>
+  <string name="morphe_series_tracker_ui_series_options">Serijos nustatymai</string>
+  <string name="morphe_series_tracker_ui_library_options">Bibliotekos nustatymai</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Atnaujinti epizodus</string>
+  <string name="morphe_series_tracker_ui_rename">Pervadinti</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Atidaryti grojaraštį „YouTube“</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Šalinti iš bibliotekos</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Grojaraščio nuoroda arba ID</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Valyti visą vietinę eigą</string>
+  <string name="morphe_series_tracker_ui_clear_history">Valyti istoriją</string>
+  <string name="morphe_series_tracker_clear_progress_title">Ar tikrai norite valyti visą vietinę eigą?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Tai išvalo pozicijas, peržiūros apribojimus ir tęsinio pasirinkimus visiems vaizdo įrašams. Išsaugotos serijos ir jų katalogai lieka. Jei įgalintas įrašymas, bus registruojamas naujas atkūrimas</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Pažymėti kaip peržiūrėtą</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Pažymėti kaip neperžiūrėtą</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Naudoti automatinį būseną</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Paleisti nuo 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Paleisti iš naujo nuo 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Būsena išsaugota</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Kartoti bandymą išsaugoti</string>
+  <string name="morphe_series_tracker_ui_previous_100">Ankstesni 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Kiti 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Atidaryti išsaugotą vaizdo įrašą</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Vietinė eiga išvalyta</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Atidarykite „Istoriją“ skiltyje „Jūs“, kad peržiūrėtumėte savo serijas</string>
+  <string name="morphe_series_tracker_ui_watch_history">Peržiūros istorija</string>
+  <string name="morphe_series_tracker_ui_series">Serijos</string>
+  <string name="morphe_series_tracker_ui_history">Istorija</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Prenumeratos</string>
+  <string name="morphe_series_tracker_ui_notifications">Pranešimai</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Kraunamos išsaugotos serijos…</string>
+  <string name="morphe_series_tracker_empty_library">Sekite sąrašą, kad stebėtumėte jo epizodus</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Grojaraščio žymė</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Atnaujinami epizodai…</string>
+  <string name="morphe_series_tracker_ui_all_series">Visos serijos</string>
+  <string name="morphe_series_tracker_watched">Peržiūrėta</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Kraunami epizodai…</string>
+  <string name="morphe_series_tracker_ui_more_options">Daugiau parinkčių</string>
+  <string name="morphe_series_tracker_record_consent">"Fiksuokite tik savo išsaugotų serijų ir užkirstų vaizdo įrašų progressą.
+
+Ši biblioteka yra saugoma šiame įrenginyje ir bendrinama tarp YouTube paskyrų. YouTube istorijos valdymo priemonės to nekeičia. Norėdami ją ištrinti, naudokite Paslaugos → Daugiau → Išvalyti vietinį progresą.
+
+Automatinis įrašymas sustabdomas slaptojo režimo metu, kai neprieinama paskyros tapatybė, arba perjungus į kitą paskyrą. Įgalinkite sekimą iš naujo, kad galėtumėte jį naudoti su ta paskyra"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Slaptojo režime arba prieš „YouTube“ užkraunant dabartinės paskyros būseną seimas negalima įgalinti. Grįžkite į Pradžios ekraną ir bandykite dar kartą. Prisijungti nėra būtina</string>
+  <string name="morphe_series_tracker_enable">Įjungti vietinį sekimą</string>
+  <string name="morphe_series_tracker_tracking_paused">Eigos registracija išjungta</string>
+  <string name="morphe_series_tracker_resume_at">Tęsti nuo %1$s</string>
+  <string name="morphe_series_tracker_watched_count">Peržiūrėti epizodai: %1$s / %2$s</string>
+  <string name="morphe_series_tracker_episode_position">Epizodas %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Epizodai %1$s–%2$s iš %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Atnaujinkite, kad bandytumėte įkelti epizodus. Privatus sąrašai reikalauja paskyros prieigos; jų užkirtimo nuoroda vis tiek atidaroma „YouTube“</string>
+  <string name="morphe_series_tracker_open_failed">„YouTube“ nepavyko atidaryti šio epizodo</string>
+  <string name="morphe_series_tracker_playlist_failed">„YouTube“ nepavyko atidaryti šio sąrašo</string>
+  <string name="morphe_series_tracker_plan_changed">Pasirinkite epizodą</string>
+  <string name="morphe_series_tracker_plan_caught_up">Atnaujinta</string>
+  <string name="morphe_series_tracker_plan_none">Nėra grojamų epizodų</string>
+  <string name="morphe_series_tracker_saved_position">Išsaugotas vaizdo įrašas · %1$s</string>
+  <string name="morphe_series_tracker_follow">Stebėti seriją</string>
+  <string name="morphe_series_tracker_view_series">Peržiūrėti seriją</string>
+  <string name="morphe_series_tracker_continue">Tęsti</string>
+  <string name="morphe_series_tracker_start_here">Pradėti čia</string>
+  <string name="morphe_series_tracker_start_saved">Pradžios vieta išsaugota</string>
+  <string name="morphe_series_tracker_watched_to_here">Čia peržiūrėta</string>
+  <string name="morphe_series_tracker_marked">Peržiūrėti pažymėti epizodai</string>
+  <string name="morphe_series_tracker_undo">Anuliuoti</string>
+  <string name="morphe_series_tracker_enable_short">Įjungti</string>
+  <string name="morphe_series_tracker_new_episode">1 naujas epizodas</string>
+  <string name="morphe_series_tracker_new_episodes">Naujų epizodų: %1$s</string>
+  <string name="morphe_series_tracker_record_short">Fiksuoti eiga šiame įrenginyje</string>
+  <string name="morphe_series_tracker_follow_consent">"Jūsų serijos ir progresas lieka šiame įrenginyje, bendrinami tarp YouTube paskyrų. YouTube istorijos valdymo priemonės to nekeičia. Progresą išvalykite iš Paslaugos meniu.
+
+Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu arba kai keičiasi paskyra"</string>
+  <string name="morphe_series_tracker_follow_unavailable">Epizodų nepavyko įkelti. Galite išsaugoti sąrašą kaip užkirtimą</string>
+  <string name="morphe_series_tracker_error_pending_full">Pernelyg daug neišsaugotų pakeitimų. Pirmiausia bandykite išsaugoti dar kartą</string>
+  <string name="morphe_series_tracker_error_storage_busy">Išsaugojimas vykdomas. Bandykite dar kartą</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Epizodų įkėlimas vykdomas. Bandykite dar kartą</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Laikmena neprieinama. Jūsų išsaugoti duomenys buvo išlaikyti</string>
+  <string name="morphe_series_tracker_error_storage_save">Pakeitimų nepavyko išsaugoti. Prieš uždarydami „YouTube“, bandykite išsaugoti dar kartą</string>
+  <string name="morphe_series_tracker_error_conflict">Ši serija jau išsaugota arba jos sąrašas pasikeitė. Atidarykite ją iš naujo</string>
+  <string name="morphe_series_tracker_error_series_changed">Ši serija pasikeitė arba buvo pašalinta. Atidarykite biblioteką iš naujo</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Sąrašas pasikeitė. Vėl pasirinkite epizodą</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Šis epizodas neprieinamas. Pasirinkite kitą</string>
+  <string name="morphe_series_tracker_error_name_required">Įveskite serijos pavadinimą</string>
+  <string name="morphe_series_tracker_error_playlist_input">Įveskite „YouTube“ sąrašo nuorodą arba sąrašo ID</string>
+  <string name="morphe_series_tracker_error_retry_later">Prašome palaukti prieš atnaujindami dar kartą</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Epizodų nepavyko įkelti. Bandykite vėliau</string>
+  <string name="morphe_series_tracker_error_operation">Pakeitimo nepavyko užbaigti. Bandykite dar kartą</string>
+  <string name="morphe_series_tracker_error_resume">Tęsinio nepavyko patvirtinti. Patikrinkite valdiklį ir bandykite dar kartą</string>
+  <string name="morphe_series_tracker_followed">Stebimos serijos</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Šis vaizdo įrašas nėra šiame sąraše</string>
+  <string name="morphe_series_tracker_finding_playlists">Ieškomi grojaraščiai…</string>
+  <string name="morphe_series_tracker_paste_playlist">Įklijuoti grojaraščio nuorodą</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Nepavyko rasti grojaraščio</string>
+  <string name="morphe_series_tracker_no_available_episodes">Netinka epizodai</string>
+  <string name="morphe_series_tracker_hide_watched">Slėpti peržiūrėtus</string>
+  <string name="morphe_series_tracker_watch_previous">Pažymėti ankstesnius epizodus kaip peržiūrėtus</string>
+  <string name="morphe_series_tracker_order_starts_with">Pradedama nuo: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Epizodų tvarka</string>
+  <string name="morphe_series_tracker_playlist_order">Grojaraščio tvarka</string>
+  <string name="morphe_series_tracker_reverse_order">Grįžti grojaraščio tvarką</string>
+  <string name="morphe_series_tracker_view_count">Peržiūros %1$s</string>
+  <string name="morphe_series_tracker_view_count_one">Peržiūra %1$s</string>
+  <string name="morphe_series_tracker_completion_title">Pažymėti epizodus peržiūrėtais</string>
+  <string name="morphe_series_tracker_completion_summary">Mažiausiai %1$s%% peržiūrėta, likus ne daugiau kaip 90 sekundžių, arba liko %2$s sekundžių</string>
+  <string name="morphe_series_tracker_completion_explanation">Automatiškai pažymėkite epizodą kaip peržiūrėtą pasiekus vieną iš ribų. Procentų taisyklė taip pat reikalauja, kad liktų ne daugiau kaip 90 sekundžių, todėl ilgų epizodų pabaiga nėra praleidžiama. Likusių laiko taisyklė taikoma vaizdo įrašams, ilgesniems nei vieną minutę; nustatykite 0, kad ją išjungtumėte. Pakeitimai taikomi būsimiems progreso atnaujinimams. Rankiniai peržiūrėto/neperžiūrėto pasirinkimai išsaugomi</string>
+  <string name="morphe_series_tracker_completion_percent">Procentas peržiūrėta (1–100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Likusios sekundės (0–300; 0 išjungia)</string>
+  <string name="morphe_series_tracker_completion_range">Įveskite reikšmę nuo %1$s iki %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Naudoti „YouTube“ eigą</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Tęsti stebimas serijas po to, kai jas matote kituose įrenginiuose</string>
+  <string name="morphe_series_tracker_sync_consent">Skaitote peržiūrėtos būsenos ir tęsinio pozicijų duomenis iš jūsų sekimų serijų pagal dabartinę „YouTube“ paskyrą. Šiame telefone išsaugomi tik sutampančios epizodai. Tikrinimai vykdomi, kai serijų biblioteka atidaryta ir prieš Tęsti. Kitame įrenginyje turi būti įgalinta „YouTube“ istorija</string>
+  <string name="morphe_series_tracker_sync_checking">Tikrinama „YouTube“ eiga…</string>
+  <string name="morphe_series_tracker_sync_failed">„YouTube“ progresas neprieinamas. Naudotas išsaugotas progresas</string>
+  <string name="morphe_series_tracker_sync_partial">Kai kuriais „YouTube“ progresais negalima pasinaudoti. Išsaugotos pozicijos išlaikytos</string>
+  <string name="morphe_series_tracker_backup_title">Atsarginės kopijos kūrimas ir atstatymas</string>
+  <string name="morphe_series_tracker_backup_summary">Išsaugokite serijų biblioteką faile arba atstatykite atsarginę kopiją</string>
+  <string name="morphe_series_tracker_backup_explanation">Išsaugo stebimas serijas, epizodų pozicijas ir peržiūros pasirinkimus. Apie įrašymą ir „YouTube“ progreso leidimus nieko nesako</string>
+  <string name="morphe_series_tracker_backup_save">Išsaugoti atsarginę kopiją</string>
+  <string name="morphe_series_tracker_backup_restore">Atstatyti atsarginę kopiją</string>
+  <string name="morphe_series_tracker_backup_preview">Pridėti %1$s serijas. Jūsų bibliotekoje jau esančios %2$s serijos išlaikytos. Egzistuojantis vaizdo įrašų progresas išlaikytas</string>
+  <string name="morphe_series_tracker_backup_saved">Serijų atsarginė kopija išsaugota</string>
+  <string name="morphe_series_tracker_backup_restored">Atstatyta %1$s serijų</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Šis failas nėra palaikoma serijų atsarginė kopija arba jis per didelis. Jūsų biblioteka nebuvo pakeista</string>
+  <string name="morphe_series_tracker_error_backup_write">Nepavyko išsaugoti atsarginės kopijos. Bandykite kitą vietą</string>
+  <string name="morphe_series_tracker_removed">Serijos pašalintos</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Šis epizodas dabar atrodo daugiau nei vieną kartą. Pasirinkite, iš kurio tęsti</string>
+  <string name="morphe_series_tracker_recovery_missing">Jūsų išsaugotas epizodas nebėra šiame sąraše. Jūsų išsaugota pozicija išlaikyta</string>
+  <string name="morphe_series_tracker_recovery_continue">Tęsti su epizodu %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Taip pat galite pasirinkti bet kurį žemiau esantį epizodą. Ankstesni epizodai nekeičiami</string>
+  <string name="morphe_series_tracker_playback_changed">Sąrašas pasikeitė. Atidarykite seriją, kad pasirinktumėte, kur tęsti</string>
+  <string name="morphe_series_tracker_playback_boundary">Šia kryptimi epizodų nebėra</string>
+  <string name="morphe_series_tracker_continue_series">Tęsti %1$s</string>
+  <string name="morphe_series_tracker_search_series">Ieškoti serijos</string>
+  <string name="morphe_series_tracker_clear_search">Išvalyti paiešką</string>
+  <string name="morphe_series_tracker_no_search_results">Jokių serijų nerasta</string>
+  <string name="morphe_series_tracker_untitled_episode">Be pavadinimo epizodas</string>
+  <string name="morphe_series_tracker_unavailable_episode">Nepasiekiamas epizodas</string>
 </resources>

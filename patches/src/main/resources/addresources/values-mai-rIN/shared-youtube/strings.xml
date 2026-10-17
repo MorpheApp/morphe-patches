@@ -38,16 +38,11 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_title">नोटिफिकेशन आइकन</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">मॉरफे नोटिस</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">तहार वाच हिस्ट्री बचायल नाहे।
-
-एह सबसे अधिक DNS एड ब्लॉकर या नेटवर्क प्रॉक्सी के कारण हो सकेला।
-
-एह ठीक करबाक लेल, <b>s.youtube.com</b> whitelist करबा या सभ DNS ब्लॉकर आ प्रॉक्सी बंद करबा।</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">फेर सँ नाहीं देखाउ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम स्पूफ करू</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">क्लाइंट स्ट्रीम प्राप्त कर सकल नाहीं</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">एहि सेटिंग बंद करबा से प्लेबैक समस्या हो सकैत अछि।</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">प्रयास करू: स्पूफ वीडियो स्ट्रीम &gt; Android VR साइन इन</string>
@@ -82,7 +77,6 @@ Second \"item\" text"</string>
 • यदि ताहि Google पासवर्ड बदलाब या Google सेटिंग सँ एह डिवाइसके डि-रजिस्टर करेस, ताहि ताहि साइन इन करबाक आवश्यकता होई।"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 अस्थायी रूप सँ अनुपलब्ध अछि (API समय सीमा समाप्त)।</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR साइन इन समाप्त भेल अछि, VR में फेर सँ साइन इन करबाक प्रयास करू।</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 अस्थायी रूप सँ अनुपलब्ध अछि (स्थिति %d)।</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 अस्थायी रूप सँ अनुपलब्ध अछि।</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR में साइन इन नहि करी पाउब अछि, वेबसाइट प्रमाणीकरण स्वीकृत नहि कएल गेल अछि।</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR में साइन इन नहि करी पाउब अछि: %s</string>
@@ -113,8 +107,10 @@ Second \"item\" text"</string>
   <!-- misc.potoken.poTokenProviderPatch -->
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <!-- layout.font.baseCustomFontPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- Video likes have been set to hidden by the video uploader. -->

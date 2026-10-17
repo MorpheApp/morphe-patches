@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">השבתה של עדכונים שלayout</string>
   <string name="morphe_disable_layout_updates_summary">מונע מהשרת לעדכן את פריסת היישום</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"התצורה של האפליקציה חוזרת לתצורה שהייתה בשימוש לראשונה.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"פריסת האפליקציה חוזרת לפריסה שהיא הייתה בעת ההתקנה הראשונה.
 
-לתצורות מסוימות שרתיי עשויה שלא לחזור.
+חלק מפריסות בצד השרת לא יוחזרו.
 
-השינויים כוללים:
-• מרכיבים בתפריט הטיסה של שחקן (או הגדרות קשורות) עשויים שלא לעבוד.
-• המספרים המתגלגלים אינם מתנוענים.
-• טאב ספרייה מופיע.
-•部分 של המוזיקה של תיאור הוידאו עשויה שלא לעבוד.
-•מרכיבי תפריט הטיסה של שחקן לא ניתן להסתר.
-• כפתור החלפת חשבון עשוי שלא להופיע על טאב הספרייה."</string>
+שינויים כוללים:
+• רכיבים בתפריט קפיצה של הנגן (או הגדרות רלוונטיות) לא יכולים לעבוד
+• מספרים מתגלגלים לא מונפשים
+• כרטיסיית ספרייה מוצגת
+• אזור המוזיקה של תיאור וידאו לא יכול לעבוד
+• פריטים בתפריט קפיצה של הנגן לא יכולים להיות מוסתרים
+• כפתור החלפת חשבון לא מופיע בכרטיסיית הספרייה"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">אפשר את סינון תפריט הטיסה של האכبار</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">סינון תפריט הטיסה של האכבר</string>
@@ -133,7 +133,7 @@ Second \"item\" text"</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">הסתר YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">מסתיר אנימציות עונתיות ומבוססות-אירועים על הלוגו של YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">הצגת סרטוני Doodle של YouTube עלולה למנוע את הצגת הכותרות המותאמות אישית.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">הצגת הנקישות של YouTube עלולה למנוע את התצוגה של כותרות גליון מותאמות</string>
   <string name="morphe_hide_channel_bar_title">הסתר סרגל ערוץ</string>
   <string name="morphe_hide_channel_watermark_title">הסתר סימן מים של ערוץ</string>
   <string name="morphe_hide_chapters_timeline_button_title">הסתר פרקים וכפתור \'בסרטון זה\'</string>
@@ -193,7 +193,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_how_this_was_made_section_title">הסתר את הקטע \'איך זה נוצר\'</string>
   <string name="morphe_hide_hype_points_title">הסתר נקודות הייפ</string>
   <string name="morphe_hide_info_cards_section_title">הסתר סעיף \'כרטיסי מידע\'</string>
-  <string name="morphe_hide_key_concepts_section_title">הסתר את סעיף \'מושגי מפתח\'</string>
+  <string name="morphe_hide_key_concepts_section_title">הסתר את החלק \'מושגי מפתח\'</string>
   <string name="morphe_hide_quizzes_section_title">הסתר סעיף \'חידונים\'</string>
   <string name="morphe_hide_search_inside_this_video_section_title">הסתר את סעיף \'חיפוש בתוך הסרטון הזה\'</string>
   <string name="morphe_hide_subscribe_button_title">הסתר לחצן הרשמה למינוי</string>
@@ -281,7 +281,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">מסתיר את כפתור התפריט בעל שלוש הנקודות של כל תגובה</string>
   <string name="morphe_hide_comments_preview_comment_title">הסתר תצוגה מקדימה של תגובה</string>
   <string name="morphe_hide_comments_preview_comment_summary">מסתיר את תצוגת המקדימה של תגובות מתחת לסרטון לפני פתיחת סעיף התגובות המלא</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">תגובה הוסתרה על ידי Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">התגובה הוסתרה על ידי Morphe…</string>
   <string name="morphe_minimal_comments_button_title">הפעל כפתור תגובות מינימלי</string>
   <string name="morphe_minimal_comments_button_summary">מסתיר את הכרטיסים המחליקים ואת בורר העמודים שלהם, המוצגים על כפתור התגובות</string>
   <string name="morphe_hide_comments_thanks_button_title">הסתר לחצן תודה</string>
@@ -490,7 +490,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_openrouter_open_website">פתח את OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">תרגום OpenRouter נכשל (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">הגיעה מגבלת היומית של MyMemory</string>
-  <string name="morphe_vot_mymemory_quota_next_available">זמין שוב ב-%s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">זמינות הבאה תתאפשר ב-%s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">השתמשת במכסת התרגום החינמית של MyMemory להיום (5,000 תווים). הוסף דוא\"ל MyMemory בהגדרות כדי להעלות את המגבלה היומית ל-50,000 תווים, או החלף לשירות תרגום אחר</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">השתמשת במכסת התרגום של MyMemory להיום (50,000 תווים). החלף לשירות תרגום אחר או נסה שוב מחר</string>
   <string name="morphe_vot_mymemory_error">תרגום MyMemory נכשל (סטטוס %s)</string>
@@ -560,10 +560,29 @@ Second \"item\" text"</string>
   <string name="morphe_queue_override_flyout_menu_summary">פותח את תור ה-Morphe במקום את התור של YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">הוסף הזנה לתור</string>
   <string name="morphe_queue_add_flyout_menu_summary">מוסיף פריט תפריט מוקפץ נוסף. הפעל זאת אם \'הוסף לתור\' אינו מוצג</string>
+  <string name="morphe_local_queue_title">תור בסגנון פרימיום</string>
+  <string name="morphe_local_queue_summary">"מחליף את התור של Morphe בתור שמאוחסן במכשיר, מתנגן מעצמו, וניתן לסדר אותו מחדש על ידי גרירה
+
+מידע: הסרטון הבא בתור מתחיל להתנגן רק בזמן ש-YouTube מוצג על המסך"</string>
+  <string name="morphe_local_queue_sheet_title">תור</string>
+  <string name="morphe_local_queue_open">תור (%s)</string>
+  <string name="morphe_local_queue_clear">נקה הכל</string>
+  <string name="morphe_local_queue_empty">אין פריטים בתור</string>
+  <string name="morphe_local_queue_empty_hint">השתמש באפשרות \"נגן הבא בתור\" בכל סרטון</string>
+  <string name="morphe_local_queue_now_playing">מתנגן עכשיו</string>
+  <string name="morphe_local_queue_play_next">נגן הבא בתור</string>
+  <string name="morphe_local_queue_play_last">נגן את האחרון בתור</string>
+  <string name="morphe_local_queue_reorder">סדר מחדש</string>
+  <string name="morphe_local_queue_remove">הסר</string>
+  <string name="morphe_local_queue_added">נוסף לתור</string>
+  <string name="morphe_local_queue_unavailable">לא הצלחתי להוסיף סרטון זה לתור</string>
+  <string name="morphe_local_queue_playlist_unsupported">תקליטורים לא ניתן להוסיף לתור</string>
+  <string name="morphe_local_queue_full">התור מלא</string>
+  <string name="morphe_local_queue_play_failed">לא ניתן היה להפעיל את הסרטון</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">רשימת היתרים למודעות בתפריט נשלף</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">מוסיף פריט בתפריט נשלף שמאפשר למודעות להתנגן בערוץ של אותו סרטון</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">תכונה זו עשויה לדרוש שימוש ב-PotHelper או שינוי של \"זיוף הזרמות וידאו\" להתחברות כ-TV או כ-Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">ייתכן שתכונה זו תידרש להשתמש ב-PotHelper או לשנות את \"הסתרת זרימות וידאו\" ל-TV או ל-Android VR לחתימה</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">רשימת היתרים למהירות בתפריט נשלף</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">מוסיף פריט בתפריט נשלף שתמיד מנגן את הערוץ של אותו סרטון במהירות 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">לא מחובר</string>
@@ -746,6 +765,9 @@ Second \"item\" text"</string>
   <string name="morphe_preferred_caption_language_title">שפת כתוביות מועדפת</string>
   <string name="morphe_preferred_caption_language_summary">בוחר תחילה בכתוביות של הספק, ולאחר מכן מתרגם אותן אוטומטית לשפה המועדפת</string>
   <string name="morphe_preferred_caption_language_entry_off">כבוי</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">הוספת שפות נוספות לתרגום אוטומטי</string>
+  <string name="morphe_auto_translate_additional_languages_summary">מוסיף עוד שפות לתפריט התרגום האוטומטי</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">הגדר עוגיות כתוביות</string>
   <string name="morphe_set_caption_cookies_summary">"מתקן באג ביוטיוב הרגיל שבו כתוביות התרגום האוטומטי עשויות לא להיות זמינות בגלל עוגיות חסרות
@@ -785,9 +807,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">הסתר תוויות לחצני ניווט</string>
   <string name="morphe_hide_navigation_new_content_dot_title">הסתר נקודת תוכן חדש</string>
   <string name="morphe_hide_navigation_bar_title">הסתר סרגל ניווט</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"זה מסתיר לחלוטין את סרגל הניווט, כולל הלשונית 'אתה'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"פעולה זו מסתירה לחלוטין את סרגל הניווט, כולל הכרטיסייה 'אתה'.
 
-כדי לגשת להגדרות, הפעילו את כפתור ההגדרות דרך כללי → סרגל כלים → הצג הגדרות."</string>
+כדי לגשת להגדרות, אפשר את כפתור ההגדרות דרך כללי → סרגל כלים → הצג הגדרות"</string>
   <string name="morphe_narrow_navigation_buttons_title">הפעלת כפתורי ניווט צרים</string>
   <string name="morphe_narrow_navigation_buttons_summary">מצמצם את המרווח האופקי בין הכפתורים</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">השבת לחצני ניווט ללא תוויות</string>
@@ -1025,7 +1047,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"משחזר את פריסת הנגן הישנה
 
 מגבלה: אם \"שחזר סרגל הפעולות של הווידאו הישן\" כבוי, ייתכן ש-\"עוד סרטונים\" לא יהיה זמין"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">הפעלת אפשרות זו עלולה לשבור חלק מתכונות פריסת הנגן, כמו אזור התגובות או “סרטונים נוספים” שמוצגים מתחת לנגן.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">הפעלת פעולה זו עלולה לשבץ חלק מתכונות פריסת הנגן, כמו אזור התגובות או \'סרטונים נוספים\' המוצגים מתחת לנגן</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - שחזור התנהגות הכתוביות הישנה</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - שחזר שפופרות ישנות לפלייליסט</string>
@@ -1090,6 +1112,12 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">השבת רענון אוטומטי של עדכונים</string>
   <string name="morphe_disable_auto_feed_refresh_summary">מונע מהעדכונים להתרענן אוטומטית לאחר שהם מתיישנים</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">פריסת כרטיס ברצועת העדכונים</string>
+  <string name="morphe_feed_card_layout_entry_1">קלאסי</string>
+  <string name="morphe_feed_card_layout_entry_2">כרטיסים</string>
+  <string name="morphe_feed_card_layout_entry_3">כרטיסים עם כפתורים ללייק, תגובה ואחסון</string>
+  <string name="morphe_feed_card_layout_comments">תגובות</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">השבת המשך נגן מיני</string>
   <string name="morphe_miniplayer_disable_resuming_summary">משבית את הנגן המיני \'המשך לצפות\', תכונה בתשלום של YouTube Premium שמופיעה בעת הפעלת האפליקציה</string>
@@ -1124,9 +1152,6 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">כפתור חזרה יוצא מהפיד</string>
   <string name="morphe_back_button_always_exits_feed_summary">לחיצה על כפתור חזרה תמיד יוצאת מהאפליקציה במקום לגלול לראש הפיד</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">אלץ גופן מערכת</string>
-  <string name="morphe_force_system_font_summary">מציג את האפליקציה עם גופן המכשיר במקום YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">הסתר את שורת הסטטוס</string>
   <string name="morphe_hide_status_bar_summary">מסתיר את שורת הסטטוס של המערכת. החלק מטה מהקצה העליון כדי להציג אותה לרגע</string>
@@ -1207,7 +1232,7 @@ Second \"item\" text"</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">זייף ממדי מכשיר</string>
   <string name="morphe_spoof_device_dimensions_summary">הפעלת אפשרות זו עשויה לאפשר איכויות וידאו גבוהות יותר</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">הפעלת אפשרות זו עלולה לגרום לגמגום בהפעלת סרטון, חיי סוללה גרועים יותר, ותופעות לוואי לא ידועות.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">הפעלת אפשרות זו עלולה לגרום לגמגום בהפעלת סרטון, חיי סוללה גרועים יותר, ותופעות לוואי לא ידועות</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">משוב ברטט</string>
   <string name="morphe_disable_haptic_feedback_summary">בחר אילו אינטראקציות מפעילות רטט במכשיר</string>
@@ -1217,7 +1242,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">השבת משוב טאפ אנד הולד</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">השבת משוב זום ברטט</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">אם פרטי הכניסה לחשבונך השתנו לאחרונה, אז יש להסיר ולהתקין מחדש את MicroG.</string>
+  <string name="microg_offline_account_login_error">אם פרטי הכניסה לחשבונך השתנו לאחרונה, אז יש להסיר ולהתקין מחדש את MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">עקוף הפניות קישורים</string>
   <string name="morphe_bypass_link_redirects_summary">פותח את הקישור המקורי ישירות, תוך עקיפת קישור המעקב (youtube.com/redirect)</string>
@@ -1297,18 +1322,21 @@ Second \"item\" text"</string>
 • צבעים עשויים להיראות לא נכונים אם התצוגה אינה יכולה להציג HDR בפועל
 • הפעלה עלולה להיכשל אם המפענח אינו יכול להתמודד עם HDR
 • HDR עדיין תלוי בלקוח שמזייף זרמי וידאו"</string>
-  <string name="morphe_force_avc_codec_title">כופה קידוד AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"יתרונות:
-• יכול לשפר את חיי הסוללה
-• יכול לשחזר רזולוציות וידאו חסרות במכשירים ישנים יותר
-
-מגבלות:
-• הרזולוציה המקסימלית היא 1080p
-• הפעלת וידאו תשתמש ביותר נתוני אינטרנט מאשר VP9 או AV1
-• סרטוני HDR לא ישתמשו ב-AVC
-• התקנים מסוימים אינם יכולים לאכוף AVC"</string>
+  <string name="morphe_video_codec_title">קודק וידאו</string>
+  <string name="morphe_video_codec_entry_default">ברירת מחדל</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">כדי להשתמש בתכונה זו, הגדר \'זיוף זרמי וידאו\' ל\'Android VR\' או \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">כדי לאלץ AVC, שנה את \'זיוף זרמי וידאו\' ל-\'Android Studio\', \'Android VR\' או \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• יכול לשפר את חיי הסוללה ולתקן גמגומים בהשמעה
+• צורך יותר נתוני אינטרנט מאשר AV1
+
+AVC (H.264)
+• דורש 'Android Studio', 'Android VR' או 'visionOS' כלקוח לזיוף זרמי וידאו
+• יכול לשפר את חיי הסוללה אפילו יותר
+• יכול להחזיר רזולוציות וידאו חסרות במכשירים ישנים יותר
+• הרזולוציה המקסימלית היא 1080p
+• סרטוני HDR עשויים שלא להשתמש ב-AVC
+• בחלק מהמכשירים לא ניתן לאלץ AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">פתח תפריט איכות מתקדם</string>
   <string name="morphe_advanced_video_quality_menu_summary">מדלג על תפריט בחירת האיכות ופותח ישירות את תפריט האיכות המתקדם</string>
@@ -1323,8 +1351,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_av1_summary">מאפשר פענוח AV1 בתוכנה בעת שימוש בלקוח \'Android VR\' / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"הפעלת הגדרה זו עשויה להשתמש בפענוח תוכנה של AV1.
 
-הפעלת וידאו עם AV1 עלולה לגרום לגמגום או לדלוג על פריימים."</string>
+הפעלת וידאו עם AV1 עלולה לגרום לגמגום או לדלוג על פריימים"</string>
   <string name="morphe_spoof_video_streams_about_title">תופעות לוואי של התחזות</string>
+  <string name="morphe_spoof_video_streams_about_failure">• ההשמעה עלולה להיכשל בדקה 1</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• תפריט \'ערוץ השמע\' חסר</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• אין קודק וידאו מסוג AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• מצב 360° VR אינו זמין</string>
@@ -1351,4 +1380,154 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_bold">מודגש</string>
   <string name="morphe_player_icon_style_entry_custom">מותאם אישית</string>
   <string name="morphe_shorts_icon_style_title">סגנון אייקון Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">מעקב סדרות</string>
+  <string name="morphe_series_tracker_screen_summary">עקוב אחר רשימות השמעה כסדרות ושמור את המקום שלך</string>
+  <string name="morphe_series_tracker_title">הפעל מעקב סדרות</string>
+  <string name="morphe_series_tracker_summary">מוסיף עמוד סדרות להיסטוריה ואפשרות לעקיבת סדרות לרשימות ההשמעה</string>
+  <string name="morphe_series_tracker_show_button_title">הצג כפתור מעקב אחר סדרות</string>
+  <string name="morphe_series_tracker_show_button_summary">מוסיף כפתור נגן כדי לעקוב או לפתוח את הסדרה של הווידאו הנוכחי</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">תעד התקדמות בסדרות שעוקבים אחריהן</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">תעד הפעלה בטלפון זה עבור סדרות שמורות וסימניות</string>
+  <string name="morphe_series_tracker_show_history_tab_title">הצג היסטוריה בשורת הניווט</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">בית, מנויים, התראות, היסטוריה ואתה</string>
+  <string name="morphe_series_tracker_ui_cancel">בטל</string>
+  <string name="morphe_series_tracker_ui_save">שמור</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">שמור סימניה</string>
+  <string name="morphe_series_tracker_ui_series_name">שם הסדרה</string>
+  <string name="morphe_series_tracker_ui_series_options">אפשרויות סדרה</string>
+  <string name="morphe_series_tracker_ui_library_options">אפשרויות ספרייה</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">רענן פרקים</string>
+  <string name="morphe_series_tracker_ui_rename">שנה שם</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">פתח רשימת השמעה ב-YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">הסר מהספרייה</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">קישור לרשימת השמעה או מזהה</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">נקה כל ההתקדמות המקומית</string>
+  <string name="morphe_series_tracker_ui_clear_history">נקה היסטוריה</string>
+  <string name="morphe_series_tracker_clear_progress_title">לנקות את כל ההתקדמות המקומית?</string>
+  <string name="morphe_series_tracker_clear_progress_message">פעולה זו מנקה עמדות, עדכוני צפייה ומחירי המשך עבור כל סרטון. סדרות שנשמרו והקטלוג שלהן נשארים. הקלטת שידור חדשה יוקלט אם הקלטת מופעלת</string>
+  <string name="morphe_series_tracker_ui_mark_watched">סמן כצפוי</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">סמן כלא צפוי</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">השתמש בסטטוס אוטומטי</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">התחל מחדש מ-0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">נגן שוב מ-0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">סטטוס נשמר</string>
+  <string name="morphe_series_tracker_ui_retry_saving">נסה שוב לשמור</string>
+  <string name="morphe_series_tracker_ui_previous_100">100 הקודמים</string>
+  <string name="morphe_series_tracker_ui_next_100">100 הבאים</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">פתח וידאו שמור</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">ההתקדמות המקומית נוקתה</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">פתח היסטוריה מתפריט \'אתה\' כדי לצפות בסדרות שלך</string>
+  <string name="morphe_series_tracker_ui_watch_history">היסטוריית צפייה</string>
+  <string name="morphe_series_tracker_ui_series">סדרות</string>
+  <string name="morphe_series_tracker_ui_history">היסטוריה</string>
+  <string name="morphe_series_tracker_ui_subscriptions">מינויים</string>
+  <string name="morphe_series_tracker_ui_notifications">עדכונים</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">טוען סדרות שמורות…</string>
+  <string name="morphe_series_tracker_empty_library">עקוב אחר רשימת השמעה כדי לעקוב אחר הפרקים</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">סימניית רשימת השמעה</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">מרענן פרקים…</string>
+  <string name="morphe_series_tracker_ui_all_series">כל הסדרות</string>
+  <string name="morphe_series_tracker_watched">נצפה</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">טוען פרקים…</string>
+  <string name="morphe_series_tracker_ui_more_options">אפשרויות נוספות</string>
+  <string name="morphe_series_tracker_record_consent">"הקלט התקדמות רק לסדרות שלך ולסרטונים שמועדפים.
+
+ספרייה זו מאוחסנת במכשיר זה ומשותפת בין חשבונות של YouTube. בקרות היסטוריית YouTube אינה משנה אותה. השתמש בסדרה → עוד → נקה התקדמות מקומית כדי למחוק אותו.
+
+הקלטה אוטומטית עוצרת בתוכנית פרטית, כאשר זיהוי החשבון אינו זמין, או כאשר אתה עובר לחשבון אחר. הפעל מעקב שוב כדי להשתמש בו עם החשבון הזה"</string>
+  <string name="morphe_series_tracker_identity_unavailable">מעקב לא ניתן להפעלה בתוכנית פרטית או לפני שה-YouTube טוען את מצב החשבון הנוכחי. חזור לדף הבית ונסה שוב. אין צורך בחתימה</string>
+  <string name="morphe_series_tracker_enable">הפעל מעקב מקומי</string>
+  <string name="morphe_series_tracker_tracking_paused">הקלטת ההתקדמות כבויה</string>
+  <string name="morphe_series_tracker_resume_at">המשך מ-%1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s פרקים צפויים</string>
+  <string name="morphe_series_tracker_episode_position">פרק %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">פרקים %1$s-%2$s מתוך %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">רענן כדי לנסות ולטעון פרקים. רשימות השמעה פרטיות זקוקות לגישה לחשבון; הספרייה שלהם עדיין פתוחה ב-YouTube</string>
+  <string name="morphe_series_tracker_open_failed">YouTube לא יכול לפתוח פרק זה</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube לא יכול לפתוח רשימת השמעה זו</string>
+  <string name="morphe_series_tracker_plan_changed">בחר פרק</string>
+  <string name="morphe_series_tracker_plan_caught_up">מעודכן</string>
+  <string name="morphe_series_tracker_plan_none">אין פרקים ניתנים לניגון</string>
+  <string name="morphe_series_tracker_saved_position">וידאו שמור · %1$s</string>
+  <string name="morphe_series_tracker_follow">עקוב אחר סדרה</string>
+  <string name="morphe_series_tracker_view_series">צפה בסדרה</string>
+  <string name="morphe_series_tracker_continue">המשך</string>
+  <string name="morphe_series_tracker_start_here">התחל כאן</string>
+  <string name="morphe_series_tracker_start_saved">נקודת התחלה נשמרה</string>
+  <string name="morphe_series_tracker_watched_to_here">נצפה עד כאן</string>
+  <string name="morphe_series_tracker_marked">פרקים מסומנים כנצפים</string>
+  <string name="morphe_series_tracker_undo">בטל</string>
+  <string name="morphe_series_tracker_enable_short">הפעל</string>
+  <string name="morphe_series_tracker_new_episode"><b>1</b> פרק חדש</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s פרקים חדשים</string>
+  <string name="morphe_series_tracker_record_short">תעד התקדמות במכשיר זה</string>
+  <string name="morphe_series_tracker_follow_consent">"הסדרה שלך וההתקדמות נשארים על מכשיר זה, משותפים בין חשבונות של YouTube. בקרות היסטוריית YouTube אינה משנות אותם. נקה התקדמות מהתפריט סדרה.
+
+הקלטה אוטומטית היא אופציונלית. היא עוצרת בתוכנית פרטית או כאשר החשבון משתנה"</string>
+  <string name="morphe_series_tracker_follow_unavailable">לא ניתן היה לטעון פרקים. ניתן לשמור את רשימת ההשמעה כסימניה</string>
+  <string name="morphe_series_tracker_error_pending_full">יותר מדי שינויים שלא נשמרו. נסה שוב קודם לשמור</string>
+  <string name="morphe_series_tracker_error_storage_busy">שמירה פעילה. נסה שוב</string>
+  <string name="morphe_series_tracker_error_catalog_busy">טעינת פרק פעיל. נסה שוב</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">אחסון אינו זמין. הנתונים השמורים שלך נשמרו</string>
+  <string name="morphe_series_tracker_error_storage_save">לא ניתן היה לשמור שינויים. נסה שוב לשמור לפני סגירת YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">סדרה זו כבר נשמרה, או שרשימת ההשמעה שלה השתנתה. פתח אותה שוב</string>
+  <string name="morphe_series_tracker_error_series_changed">סדרה זו השתנתה או הוסרה. פתח את הספרייה שוב</string>
+  <string name="morphe_series_tracker_error_playlist_changed">רשימת ההשמעה השתנתה. בחר שוב את הפרק</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">פרק זה אינו זמין. בחר אחד אחר</string>
+  <string name="morphe_series_tracker_error_name_required">הזן שם לסדרה</string>
+  <string name="morphe_series_tracker_error_playlist_input">הזן קישור לרשימת השמעה של YouTube או מזהה של רשימת השמעה</string>
+  <string name="morphe_series_tracker_error_retry_later">אנחנו מחכים לפני ריענון שוב</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">לא ניתן היה לטעון פרקים. נסה שוב מאוחר יותר</string>
+  <string name="morphe_series_tracker_error_operation">השינוי לא יכול להושלם. נסה שוב</string>
+  <string name="morphe_series_tracker_error_resume">לא ניתן היה לאשר את ההמשך. בדוק את הנגן ונסה שוב</string>
+  <string name="morphe_series_tracker_followed">עוקבים אחר סדרה</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">סרטון זה אינו ברשימת ההשמעה הזו</string>
+  <string name="morphe_series_tracker_finding_playlists">מוצא רשימות השמעה…</string>
+  <string name="morphe_series_tracker_paste_playlist">הדבק קישור לרשימת השמעה</string>
+  <string name="morphe_series_tracker_discovery_unavailable">לא נמצאה רשימת השמעה</string>
+  <string name="morphe_series_tracker_no_available_episodes">אין פרקים זמינים</string>
+  <string name="morphe_series_tracker_hide_watched">הסתר צפוי</string>
+  <string name="morphe_series_tracker_watch_previous">סמן פרקים קודמים כנצפים</string>
+  <string name="morphe_series_tracker_order_starts_with">מתחיל עם: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">סדרת פרקים</string>
+  <string name="morphe_series_tracker_playlist_order">סדרת רשימת השמעה</string>
+  <string name="morphe_series_tracker_reverse_order">הפוך סדרת רשימת השמעה</string>
+  <string name="morphe_series_tracker_view_count">%1$s צפיות</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s צפייה</string>
+  <string name="morphe_series_tracker_completion_title">סמן פרקים כנצפים</string>
+  <string name="morphe_series_tracker_completion_summary">לפחות %1$s%% צפייה עם לכל היותר 90 שניות שנותרו, או %2$s שניות שנותרו</string>
+  <string name="morphe_series_tracker_completion_explanation">סמן פרק כצפוי אוטומטית אחרי אחת מספים. כלל האחוזים דורש גם לא יותר מ-90 שניות שנותרו, כך שסוף פרקים ארוכים לא מדלג. כלל הזמן הנותר חל על סרטונים באורך יותר מדקה אחת; הגדר אותו ל-0 כדי לכבות אותו. השינויים יחולו על עדכוני ההתקדמות העתידיים. בחירות צפייה ידניות/לא צפויים נשמרות</string>
+  <string name="morphe_series_tracker_completion_percent">אחוז צפייה (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">שניות שנותרו (0-300; 0 מבטל)</string>
+  <string name="morphe_series_tracker_completion_range">הזן ערך מ-%1$s עד %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">השתמש בהתקדמות של YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">קח נוף סדרות עקבות אחרי צפייה במכשיר אחר</string>
+  <string name="morphe_series_tracker_sync_consent">קרא מצב צפייה ועמדות המשך עבור הסדרות שעוקבות מהחשבון הנוכחי של YouTube. רק פרקים תואמים נשמרים בטלפון זה. בדיקות מופעלות כספריית הסדרות פתוחה ולפני המשך. היסטוריית YouTube חייבת להיות מופעלת במכשיר האחר שלך</string>
+  <string name="morphe_series_tracker_sync_checking">בודק התקדמות YouTube…</string>
+  <string name="morphe_series_tracker_sync_failed">התקדמות של YouTube אינה זמינה. משתמשים בהתקדמות שמורה</string>
+  <string name="morphe_series_tracker_sync_partial">חלק מההתקדמות של YouTube אינה זמינה. עמדות שמורות נשמרות</string>
+  <string name="morphe_series_tracker_backup_title">גיבוי ושחזור</string>
+  <string name="morphe_series_tracker_backup_summary">שמור את ספריית הסדרות שלך לקובץ או שחזר גיבוי</string>
+  <string name="morphe_series_tracker_backup_explanation">שומר סדרות עוקבות, עמדות פרקים ובחירות צפייה. הרשאות הקלטה והתקדמות של YouTube אינן כלולות</string>
+  <string name="morphe_series_tracker_backup_save">שמור גיבוי</string>
+  <string name="morphe_series_tracker_backup_restore">שחזר גיבוי</string>
+  <string name="morphe_series_tracker_backup_preview">הוסף %1$s סדרות. %2$s סדרות כבר בספרייה שלך נשמרות. התקדמות סרטון קיימת נשמרת</string>
+  <string name="morphe_series_tracker_backup_saved">גיבוי סדרות נשמר</string>
+  <string name="morphe_series_tracker_backup_restored">שוחזר %1$s סדרות</string>
+  <string name="morphe_series_tracker_error_backup_invalid">קובץ זה אינו גיבוי סדרה נתמך, או גדול מדי. הספרייה שלך לא שונתה</string>
+  <string name="morphe_series_tracker_error_backup_write">לא ניתן היה לשמור את הגיבוי. נסה מיקום אחר</string>
+  <string name="morphe_series_tracker_removed">סדרות הוסרו</string>
+  <string name="morphe_series_tracker_recovery_duplicate">פרק זה כעת מופיע יותר מפעם אחת. בחר איזה אחד להמשיך ממנו</string>
+  <string name="morphe_series_tracker_recovery_missing">פרק השמור שלך כבר אינו ברשימת השמעה זו. העמדה השמורה שלך נשמרת</string>
+  <string name="morphe_series_tracker_recovery_continue">המשך עם פרק %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">אתה יכול גם לבחור פרק כל אחד מתחת. פרקים מוקדמים לא משתנים</string>
+  <string name="morphe_series_tracker_playback_changed">רשימת השמעה זו השתנתה. פתח את הסדרה כדי לבחור איפה להמשיך</string>
+  <string name="morphe_series_tracker_playback_boundary">אין עוד פרקים בכיוון הזה</string>
+  <string name="morphe_series_tracker_continue_series">המשך %1$s</string>
+  <string name="morphe_series_tracker_search_series">חפש סדרות</string>
+  <string name="morphe_series_tracker_clear_search">נקה חיפוש</string>
+  <string name="morphe_series_tracker_no_search_results">לא נמצאו סדרות</string>
+  <string name="morphe_series_tracker_untitled_episode">פרק ללא שם</string>
+  <string name="morphe_series_tracker_unavailable_episode">פרק לא זמין</string>
 </resources>

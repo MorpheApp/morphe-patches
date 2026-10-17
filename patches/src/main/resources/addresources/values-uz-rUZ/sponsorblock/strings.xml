@@ -87,9 +87,6 @@ Bu sizning shaxsiy foydalanuvchi identifikatoringizni o'z ichiga oladi. Bunga eh
   <string name="morphe_sb_settings_import_successful">Sozlamalar muvaffaqiyatli import qilindi</string>
   <string name="morphe_sb_settings_import_failed">Import qilish mumkin emas: %s</string>
   <string name="morphe_sb_settings_export_failed">Eksport qilish mumkin emas: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Sizning sozlamalaringizda shaxsiy SponsorBlock foydalanuvchi identifikatori mavjud.
-
-Sizning foydalanuvchi identifikatoringiz parolga o'xshaydi va uni hech qachon baham ko'rmaslik kerak."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Yana ko\'rsatma</string>
   <string name="morphe_sb_diff_segments_title">Segment xulqini o\'zgartirish</string>
   <string name="morphe_sb_segments_sponsor">Homiylar</string>
@@ -152,17 +149,14 @@ Sizning foydalanuvchi identifikatoringiz parolga o'xshaydi va uni hech qachon ba
   <string name="morphe_sb_skip_ignore">Tugash</string>
   <string name="morphe_sb_submit_failed_invalid">Segmentni yuborish mumkin emas: %s</string>
   <string name="morphe_sb_submit_failed_timeout">Segment boshlanish vaqti</string>
-  <string name="morphe_sb_submit_failed_unknown_error">Segmentni yuborish mumkin emas (holat: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Segmentni yuborish mumkin emas. Tezlik chegarasiga erishildi (bir foydalanuvchi yoki IP manzildan juda ko\'p so\'rovlar)</string>
   <string name="morphe_sb_submit_failed_forbidden">Segmentni yuborish mumkin emas: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Yuborish"</string>
   <string name="morphe_sb_submit_succeeded">Boshlanish tugashdan oldin bo\'lishi kerak</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock vaqtinchalik mavjud emas (API vaqtini kutish muddati tugadi)</string>
-  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock vaqtinchalik mavjud emas (holat %d)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">Vaqtni qo\'lda tahrirlash</string>
   <string name="morphe_sb_vote_failed_timeout">Segmentga ovoz berish mumkin emas (API vaqtini kutish muddati tugadi)</string>
-  <string name="morphe_sb_vote_failed_unknown_error">Segmentga ovoz berish mumkin emas (holat: %1$d %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Segmentga ovoz berish mumkin emas: %s</string>
   <string name="morphe_sb_vote_upvote">Ovozni ko\'tarish</string>
   <string name="morphe_sb_vote_downvote">Muhim jihatni yuborish</string>
@@ -171,7 +165,6 @@ Sizning foydalanuvchi identifikatoringiz parolga o'xshaydi va uni hech qachon ba
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s dan %2$s gacha</string>
   <string name="morphe_sb_new_segment_choose_category">SponsorBlock o\'chirib qo\'yilgan</string>
-  <string name="morphe_sb_new_segment_disabled_category">Kategoriya sozlamalarda o\'chirilgan. Yuborish uchun kategoriyani yoqing.</string>
   <string name="morphe_sb_new_segment_title">Foydalanuvchi nomingizni o\'zgartirish uchun shu yerga teging</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">%s ni yangi segmentning boshlanishi yoki oxiri sifatida belgilashni xohlaysizmi?</string>
   <string name="morphe_sb_new_segment_mark_start">Foydalanuvchi nomi muvaffaqiyatli o\'zgartirildi</string>
@@ -210,7 +203,6 @@ Agar siz muhim qismini jo'natmoqchi bo'lsangiz, Bekor tugmasini bosing va ikkinc
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock o\'chirilgan</string>
   <string name="morphe_sb_stats_username">Sizning foydalanuvchi nomingiz: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Foydalanuvchi nomingizni o\'zgartirish uchun bering</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Foydalanuvchi nomini o\'zgartirish mumkin emas: Holat: %1$d %2$s</string>
   <string name="morphe_sb_stats_username_changed">Foydalanuvchi nomi muvaffaqiyatli o\'zgartirildi</string>
   <string name="morphe_sb_stats_reputation">Sizning obro\'yingiz &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Siz &lt;b&gt;%s&lt;/b&gt; segment yaratdingiz</string>

@@ -107,16 +107,7 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
         return widthAxisSupport;
     }
 
-    private static final class CompressionFit {
-        final float letterSpacingEm;
-        @Nullable
-        final String fontVariation;
-
-        CompressionFit(float letterSpacingEm, @Nullable String fontVariation) {
-            this.letterSpacingEm = letterSpacingEm;
-            this.fontVariation = fontVariation;
-        }
-    }
+    private record CompressionFit(float letterSpacingEm, @Nullable String fontVariation) {}
 
     static final class FittedState {
         int width = -1;
@@ -197,6 +188,7 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
             super(context);
         }
 
+        @SuppressWarnings("ConstantValue")
         @Override
         public void setText(CharSequence text, BufferType type) {
             super.setText(text, type);
@@ -205,6 +197,7 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
             }
         }
 
+        @SuppressWarnings("SizeReplaceableByIsEmpty")
         @Override
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);

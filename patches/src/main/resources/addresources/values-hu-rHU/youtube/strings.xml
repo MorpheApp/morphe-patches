@@ -41,12 +41,12 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Megjelenés frissítések letiltása</string>
   <string name="morphe_disable_layout_updates_summary">Megakadályozza, hogy a szerver frissítse az alkalmazás megjelenését</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Az alkalmazás megjelenése visszaáll a legelső telepítéskori állapotra.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Alkalmazás-elrendezés visszatér ahhoz az elrendezéshez, amely a telepítés első pillanatában volt.
 
 Néhány szerveroldali elrendezés esetében előfordulhat, hogy a visszaállítás nem történik meg.
 
 A változások a következőket tartalmazzák:
-• A lejátszó felugró menüjének elemei (vagy a kapcsolódó beállítások)  nem működhetnek.
+• A lejátszó felugró menüjének elemei (vagy a kapcsolódó beállítások) nem működhetnek.
 • A pörgő számok animációja megszűnik.
 • Megjelenik a Könyvtár lap.
 • A videóleírások zenei szekciója nem működhet.
@@ -133,7 +133,7 @@ A változások a következőket tartalmazzák:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">Alkalmi YouTube-logók elrejtése</string>
   <string name="morphe_hide_youtube_doodles_summary">Szezonális és eseményekhez köthető logóanimációk elrejtése</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">A YouTube Doodles megjelenítése megakadályozhatja az egyéni fejlécek megjelenítését.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">A YouTube Doodle-ok megjelenítése megakadályozhatja, hogy az egyéni fejlécek megjelenjenek</string>
   <string name="morphe_hide_channel_bar_title">Csatornasáv elrejtése</string>
   <string name="morphe_hide_channel_watermark_title">Csatorna-vízjel elrejtése</string>
   <string name="morphe_hide_chapters_timeline_button_title">Fejezetek és az \"Ebben a videóban\" gomb elrejtése</string>
@@ -281,7 +281,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_comments_menu_button_summary">Elrejti minden hozzászólás 3-pontos menü gombját</string>
   <string name="morphe_hide_comments_preview_comment_title">Megjegyzés előnézet elrejtése</string>
   <string name="morphe_hide_comments_preview_comment_summary">Megjegyzések előnézetének elrejtése a teljes megjegyzések szekció megnyitása előtt</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">A hozzászólást a Morphe elrejtette...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">A megjegyzést Morphe… elrejtette</string>
   <string name="morphe_minimal_comments_button_title">Minimális hozzászólásgomb engedélyezése</string>
   <string name="morphe_minimal_comments_button_summary">Elrejti a hozzászólásgombon megjelenő csúsztatható kártyákat és azok oldalválasztóját</string>
   <string name="morphe_hide_comments_thanks_button_title">Köszönet gomb elrejtése</string>
@@ -490,7 +490,7 @@ A API kulcsodat soha nem szabad megosztani. Bárki, akinek hozzáférése van ho
   <string name="morphe_vot_openrouter_open_website">Nyissa meg az OpenRouter.ai oldalt</string>
   <string name="morphe_vot_openrouter_error">Az OpenRouter fordítása sikertelen (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">A MyMemory napi limite elérése</string>
-  <string name="morphe_vot_mymemory_quota_next_available">A következő elérhetőség: %s</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Következő elérhető: %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Kimerítette a mai ingyenes MyMemory fordítási kvótát (5000 karakter). Adjon meg egy MyMemory e-mail címet a beállításokban a napi korlát 50000 karakterre emeléséhez, vagy váltson másik fordításszolgáltatót</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Kimerítette a mai MyMemory fordítási kvótát (50000 karakter). Váltson másik fordításszolgáltatót, vagy próbálkozzon holnap</string>
   <string name="morphe_vot_mymemory_error">A MyMemory fordítása sikertelen (állapot %s)</string>
@@ -560,10 +560,29 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_queue_override_flyout_menu_summary">A Morphe sorbanálítást nyit meg a YouTube sor helyett.</string>
   <string name="morphe_queue_add_flyout_menu_title">Sor menüelem hozzáadása a hírfolyam felugró menühöz</string>
   <string name="morphe_queue_add_flyout_menu_summary">Hozzáad egy további felugró menüelemet. Engedélyezze, ha a \"Hozzáadás a sorhoz\" nem jelenik meg.</string>
+  <string name="morphe_local_queue_title">Prémium stílusú várólista</string>
+  <string name="morphe_local_queue_summary">"A Morphe-várólistát egy olyan várólistára cseréli, amely az eszközön tárolódik, magától végigjátssza a listát, és húzással átrendezhető
+
+Információ: A várólista következő videója csak akkor indul el, ha a YouTube éppen a képernyőn van"</string>
+  <string name="morphe_local_queue_sheet_title">Várólista</string>
+  <string name="morphe_local_queue_open">Sor (%s)</string>
+  <string name="morphe_local_queue_clear">Összes törlése</string>
+  <string name="morphe_local_queue_empty">Nincs semmi a sorban</string>
+  <string name="morphe_local_queue_empty_hint">Bármelyik videón használd a „Lejátszás a sorban következőként” lehetőséget</string>
+  <string name="morphe_local_queue_now_playing">Lejátszás alatt</string>
+  <string name="morphe_local_queue_play_next">Lejátszás a sorban következőként</string>
+  <string name="morphe_local_queue_play_last">Utolsó a sorban</string>
+  <string name="morphe_local_queue_reorder">Átrendezés</string>
+  <string name="morphe_local_queue_remove">Eltávolítás</string>
+  <string name="morphe_local_queue_added">Hozzáadva a sorhoz</string>
+  <string name="morphe_local_queue_unavailable">Ezt a videót nem lehetett hozzáadni a listához</string>
+  <string name="morphe_local_queue_playlist_unsupported">Lejátszási listák nem adhatók hozzá a listához</string>
+  <string name="morphe_local_queue_full">A sor tele van</string>
+  <string name="morphe_local_queue_play_failed">Nem sikerült elindítani a videót</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Hirdetési fehérlista a felugró menüben</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Felugró menüelemet ad hozzá, amely lehetővé teszi, hogy hirdetések jelenjenek meg az adott videó csatornáján</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ehhez a funkcióhoz szükség lehet a PotHelper használatára, vagy a \"Videostreamok megtévesztése\" beállítás TV- vagy Android VR-bejelentkezésre módosítására.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ez a funkció igénybe veheti a PotHelper használatát vagy a \"Videófolyamok hamisítása\" TV-re vagy Android VR bejelentkezésre állítását</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Sebességfehérlista a felugró menüben</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Hozzáad egy felugró menüelemet, amely az adott videó csatornáját mindig 1.0x sebességgel játssza le</string>
   <string name="morphe_queue_manager_check_failed_auth">Nem jelentkezett be</string>
@@ -746,6 +765,9 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_preferred_caption_language_title">Feliratok előnyben részesített nyelve</string>
   <string name="morphe_preferred_caption_language_summary">Először a szolgáltató feliratait választja ki, majd automatikusan lefordítja az előnyben részesített nyelvre</string>
   <string name="morphe_preferred_caption_language_entry_off">Ki</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">További automatikus fordítási nyelvek hozzáadása</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Több nyelv kerül a automatikus fordítás menübe</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Állítsa be a feliratok sütijeit</string>
   <string name="morphe_set_caption_cookies_summary">"Javítja a YouTube egyik alapértelmezett hibáját, ahol az automatikus feliratok nem biztos, hogy elérhetők a hiányzó cookie-k miatt
@@ -785,9 +807,9 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_hide_navigation_button_labels_title">A navigációs gombok címkéinek elrejtése</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Új tartalom pont elrejtése</string>
   <string name="morphe_hide_navigation_bar_title">Navigációs sáv elrejtése</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ez teljesen elrejti a navigációs sávot, beleértve a 'Te' fület is.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ezzel teljesen elrejti a navigációs sávot, beleértve a 'Te' fület is.
 
-A Beállítások eléréséhez engedje a Beállítások gombot a Általános → Eszköztár → Mutassa meg a Beállításokat menüpontban."</string>
+A Beállítások eléréséhez engedélyezze a Beállítások gombot az Általános → Eszköztár → Beállítások megjelenítése menüben"</string>
   <string name="morphe_narrow_navigation_buttons_title">Szeletelt navigációs gombok engedélyezése</string>
   <string name="morphe_narrow_navigation_buttons_summary">Csökkenti a gombok közötti vízszintes távolságot</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Címkék nélküli navigációs gombok letiltása</string>
@@ -1025,7 +1047,7 @@ Autós elrendezés
   <string name="morphe_tablet_layout_in_player_summary">"A régi lejátszó elrendezés visszaállítása
 
 Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapcsolva, a „További videók” réteg nem jelenhet meg."</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Ennek engedélyezése megtörheti a lejátszó elrendezésének egyes funkcióit, például a hozzászólások szakaszát vagy a lejátszó alatt megjelenő „További videók” részt.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Az engedélyezés felbonthat néhány lejátszó-elrendezési funkciót, például a megjegyzés-szekciót vagy a \'További videók\' opciót, amelyek a lejátszó alatt jelennek meg</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - A régi felirat-viselkedés visszaállítása</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Visszaállítjuk az régi mentést a lejátslóba</string>
@@ -1090,6 +1112,12 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Automatikus hírcsatorna-frissítés letiltása</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Megakadályozza, hogy a hírcsatornák automatikusan frissüljenek, miután elavulttá válnak</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Cikkkártya-elrendezés</string>
+  <string name="morphe_feed_card_layout_entry_1">Klasszikus</string>
+  <string name="morphe_feed_card_layout_entry_2">Kártyák</string>
+  <string name="morphe_feed_card_layout_entry_3">Kártyák lájkolási, kommentezési és mentési gombokkal</string>
+  <string name="morphe_feed_card_layout_comments">Megjegyzések</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">A miniplayer folytatásának letiltása</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Letiltja a „Folytatás” minilejátszót, a YouTube Premium funkciót, amely az alkalmazás indításakor jelenik meg.</string>
@@ -1124,9 +1152,6 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Kilépés a kezdőoldalról a vissza gombbal</string>
   <string name="morphe_back_button_always_exits_feed_summary">A vissza gomb megnyomása esetén kilép az alkalmazásból a kezdőoldal tetejére görgetés helyett</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Rendszerbetűtípus kényszerítése</string>
-  <string name="morphe_force_system_font_summary">Az alkalmazást az eszköz betűtípusával jeleníti meg a YouTube Sans helyett</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Állapotsor elrejtése</string>
   <string name="morphe_hide_status_bar_summary">Elrejti a rendszer állapotsorát. Húzza le az ujját a felső szélétől, hogy egy pillanatra megjelenjen</string>
@@ -1207,7 +1232,7 @@ A videókat a hash-elt videóazonosító rövid előtagjával kérik le, így a 
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Eszközméret hamisítása</string>
   <string name="morphe_spoof_device_dimensions_summary">Ennek engedélyezése magasabb videóminőségeket oldhat fel</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Ennek engedélyezése a videólejátszás akadozását, rosszabb akkuidőt és ismeretlen hatásokat okozhat.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Ennek engedélyezése a videólejátszás akadozását, rosszabb akkuidőt és ismeretlen hatásokat okozhat</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Haptikus visszajelzés</string>
   <string name="morphe_disable_haptic_feedback_summary">Válassza ki, hogy mely interakciók idézzék elő a készülék vibrálását</string>
@@ -1217,7 +1242,7 @@ A videókat a hash-elt videóazonosító rövid előtagjával kérik le, így a 
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Haptikus visszajelzések tap és tartás letiltása</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Haptikus zoom letiltása</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Ha nemrég módosította a fiókja bejelentkezési adatait, távolítsa el, majd telepítse újra a MicroG-t.</string>
+  <string name="microg_offline_account_login_error">Ha nemrég módosította a fiókja bejelentkezési adatait, távolítsa el, majd telepítse újra a MicroG-t</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">A linkek átirányításainak megkerülése</string>
   <string name="morphe_bypass_link_redirects_summary">Közvetlenül nyitja meg az eredeti linket, kihagyva a követő linket (youtube.com/redirect)</string>
@@ -1297,18 +1322,21 @@ Korlátozások:
 • A színek hibásnak tűnhetnek, ha a kijelző nem tudja valóban megjeleníteni a HDR-t
 • A lejátszás meghiúsulhat, ha a dekódoló nem tudja kezelni a HDR-t
 • A HDR továbbra is a spoof video streams klienstől függ"</string>
-  <string name="morphe_force_avc_codec_title">A funkció használatához állítsa be a \'Videóstreamek hamisítását\' Android VR-re vagy Android Studióra</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Előnyök:
-• Javíthatja az akkumulátor élettartamát
-• Visszaállíthatja a hiányzó videófelbontásokat régebbi eszközökön
-
-Korlátozások:
-• A maximális felbontás 1080p
-• A videólejátszás több internetadatot fog használni, mint a VP9 vagy az AV1
-• A HDR videók nem fogják használni az AVC-t
-• Néhány eszköz nem tudja kikényszeríteni az AVC-t"</string>
+  <string name="morphe_video_codec_title">Videó kodek</string>
+  <string name="morphe_video_codec_entry_default">Alapértelmezett</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">A funkció használatához állítsa a „Videóstreamek hamisítása” beállítást „Android VR” vagy „Android Studio” értékre.</string>
+  <string name="morphe_video_codec_avc_not_available">Az AVC kényszerítéséhez módosítsd a \'Videóstreamek megszemélyesítése\' beállítás értékét a következők egyikére: \'Android Studio\', \'Android VR\' vagy \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Javíthatja az akkumulátor-üzemidőt, és megszüntetheti a lejátszás akadozását
+• Több internetes adatot használ fel, mint az AV1
+
+AVC (H.264)
+• A 'Videóstreamek megszemélyesítése' beállításnál 'Android Studio', 'Android VR' vagy 'visionOS' érték szükséges
+• Az akkumulátor-üzemidőt még jobban javíthatja
+• Régebbi eszközökön visszaállíthatja a hiányzó videófelbontásokat
+• A maximális felbontás 1080p
+• Előfordulhat, hogy a HDR-videók nem használnak AVC-t
+• Egyes eszközökön nem kényszeríthető ki az AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Nyissa meg a fejlett minőség menüt</string>
   <string name="morphe_advanced_video_quality_menu_summary">A minőségi beállítások menüt kihagyva közvetlenül megnyitja a Speciális minőségi menüt</string>
@@ -1323,8 +1351,9 @@ Korlátozások:
   <string name="morphe_spoof_video_streams_av1_summary">Lehetővé teszi a szoftveres AV1 dekódolást az „Android VR” / visionOS kliens használatakor.</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ennek a beállításnak az engedélyezése szoftveres AV1 dekódolást használhat.
 
-Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
+Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet"</string>
   <string name="morphe_spoof_video_streams_about_title">Hamisítás mellékhatásai</string>
+  <string name="morphe_spoof_video_streams_about_failure">• A lejátszás 1 percnél megszakadhat</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Hiányzik a „Hangsáv” menü.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nincs AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR merőleges mód nem elérhető</string>
@@ -1351,4 +1380,154 @@ Korlátozás: Visszaáll a régi stílusú 'További videók' átfedésre"</stri
   <string name="morphe_player_icon_style_entry_bold">Félkövér</string>
   <string name="morphe_player_icon_style_entry_custom">Egyéni</string>
   <string name="morphe_shorts_icon_style_title">Shorts ikonstílus</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Sorozatok követése</string>
+  <string name="morphe_series_tracker_screen_summary">Kövesd a lejátszási listákat sorozatként és tartsd a helyedet</string>
+  <string name="morphe_series_tracker_title">Sorozatok követésének engedélyezése</string>
+  <string name="morphe_series_tracker_summary">Sorozatoldalt ad a előzményekhez és Követés opciót a lejátszási listákhoz</string>
+  <string name="morphe_series_tracker_show_button_title">Sorozatok követése gomb megjelenítése</string>
+  <string name="morphe_series_tracker_show_button_summary">Lejátszó gomb hozzáadása a jelenlegi videó sorozatának követéséhez vagy megnyitásához</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Követett sorozatok előrehaladásának rögzítése</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Jelenlegi telefonon történő lejátszás rögzítése a mentett sorozatok és könyvjelzők esetén</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Előzmények megjelenítése a navigációs sávban</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Kezdőlap, Feliratkozások, Értesítések, Előzmények és Te</string>
+  <string name="morphe_series_tracker_ui_cancel">Mégse</string>
+  <string name="morphe_series_tracker_ui_save">Mentés</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Könyvjelző mentése</string>
+  <string name="morphe_series_tracker_ui_series_name">Sorozat neve</string>
+  <string name="morphe_series_tracker_ui_series_options">Sorozat beállításai</string>
+  <string name="morphe_series_tracker_ui_library_options">Könyvtár beállításai</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Epizódok frissítése</string>
+  <string name="morphe_series_tracker_ui_rename">Átnevezés</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Lejátszási lista megnyitása YouTube-on</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Eltávolítás a könyvtárból</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Lejátszási lista linkje vagy azonosítója</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Összes helyi előrehaladás törlése</string>
+  <string name="morphe_series_tracker_ui_clear_history">Előzmények törlése</string>
+  <string name="morphe_series_tracker_clear_progress_title">Összes helyi előrehaladás törlése?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Ez törli minden videó pozícióját, a nézett előfelülírásokat és a folytatási választásokat. A mentett sorozatok és katalógusuk megmarad. Az új lejátszás rögzítésre kerül, ha a rögzítés engedélyezett</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Megnézettként megjelölés</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Nézetlenként megjelölés</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Automatikus állapot használata</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Újraindítás 0:00-ról</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Lejátszás újrakezdése 0:00-ról</string>
+  <string name="morphe_series_tracker_ui_status_saved">Az állapot mentve</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Újrapróbálkozás mentés közben</string>
+  <string name="morphe_series_tracker_ui_previous_100">Előző 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Következő 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Mentett videó megnyitása</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Helyi előrehaladás törölve</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Sorozatok megtekintéséhez nyissa meg az Előzményeket a Te menüből</string>
+  <string name="morphe_series_tracker_ui_watch_history">Nézési előzmények</string>
+  <string name="morphe_series_tracker_ui_series">Sorozatok</string>
+  <string name="morphe_series_tracker_ui_history">Előzmények</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Feliratkozások</string>
+  <string name="morphe_series_tracker_ui_notifications">Értesítések</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Mentett sorozatok betöltése…</string>
+  <string name="morphe_series_tracker_empty_library">Kövessen lejátszási listát epizódjai nyomon követéséhez</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Lejátszási lista könyvjelző</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Epizódok frissítése…</string>
+  <string name="morphe_series_tracker_ui_all_series">Összes sorozat</string>
+  <string name="morphe_series_tracker_watched">Megnézett</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Epizódok betöltése…</string>
+  <string name="morphe_series_tracker_ui_more_options">További lehetőségek</string>
+  <string name="morphe_series_tracker_record_consent">"Csak a mentett sorozataihoz és könyvjelzővel ellátott videókhoz rögzítse a haladást.
+
+Ez a könyvtár ezen az eszközön tárolódik és megosztva van a YouTube-fiókok között. A YouTube szüneteltetési és törlési előzményvezérlői nem változtatnak ezen. Használja a Sorozat → További → Helyi haladás törlése lehetőséget a törléshez.
+
+Az automatikus rögzítés abbamaradincognito módban, amikor a fiókazonosság nem érhető el, vagy amikor más fiókra vált. Engedélyezze újra a nyomon követést, hogy használható legyen ezzel a fiókkal"</string>
+  <string name="morphe_series_tracker_identity_unavailable">A nyomon követés nem engedélyezhető incognito módban, mielőtt a YouTube betöltötte a jelenlegi fiók állapotát. Térjen vissza a Kezdőlapra, és próbálja újra. Bejelentkezés nem szükséges</string>
+  <string name="morphe_series_tracker_enable">Helyi követés engedélyezése</string>
+  <string name="morphe_series_tracker_tracking_paused">Az előrehaladás-rögzítés ki van kapcsolva</string>
+  <string name="morphe_series_tracker_resume_at">Folytatás innen: %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s epizód nézve</string>
+  <string name="morphe_series_tracker_episode_position">%1$s. epizód · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">%1$s–%2$s epizódok a(z) %3$s-ból</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Frissíts az epizódok betöltéséhez. A privát lejátszási listákhoz fiókhozzáférés szükséges; a könyvjelző továbbra is megnyílik a YouTube-on</string>
+  <string name="morphe_series_tracker_open_failed">A YouTube nem tudta megnyitni ezt az epizódot</string>
+  <string name="morphe_series_tracker_playlist_failed">A YouTube nem tudta megnyitni ezt a lejátszási listát</string>
+  <string name="morphe_series_tracker_plan_changed">Válasszon egy epizódot</string>
+  <string name="morphe_series_tracker_plan_caught_up">Rújafris</string>
+  <string name="morphe_series_tracker_plan_none">Nincsenek lejátszható epizódok</string>
+  <string name="morphe_series_tracker_saved_position">Mentett videó · %1$s</string>
+  <string name="morphe_series_tracker_follow">Sorozat követése</string>
+  <string name="morphe_series_tracker_view_series">Sorozat megtekintése</string>
+  <string name="morphe_series_tracker_continue">Folytatás</string>
+  <string name="morphe_series_tracker_start_here">Kezdés itt</string>
+  <string name="morphe_series_tracker_start_saved">Indulópont mentve</string>
+  <string name="morphe_series_tracker_watched_to_here">Megnézett eddig</string>
+  <string name="morphe_series_tracker_marked">Megnézettként megjelölt epizódok</string>
+  <string name="morphe_series_tracker_undo">Visszavonás</string>
+  <string name="morphe_series_tracker_enable_short">Engedélyezés</string>
+  <string name="morphe_series_tracker_new_episode">1 új epizód</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s új epizód</string>
+  <string name="morphe_series_tracker_record_short">Előrehaladás rögzítése ezen a készüléken</string>
+  <string name="morphe_series_tracker_follow_consent">"A sorozataid és a haladásod ezen a készüléken marad, megosztva a YouTube-fiókok között. A YouTube előzményvezérlőinek beállításai nem módosítják ezeket. Az előrehaladást a Sorozatok menüben törölheted.
+
+A automatikus rögzítés opcionális. Inkognitó módban vagy a fiókváltás során leáll."</string>
+  <string name="morphe_series_tracker_follow_unavailable">Az epizódok nem tölthetők be. A lejátszási listát mentheted könyvjelzőként</string>
+  <string name="morphe_series_tracker_error_pending_full">Túl sok nem mentett módosítás. Először próbálj meg menteni</string>
+  <string name="morphe_series_tracker_error_storage_busy">A mentés folyamatban van. Próbáld újra</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Az epizódok betöltése folyamatban van. Próbáld újra</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">A tárhely nem elérhető. A mentett adataid megmaradtak</string>
+  <string name="morphe_series_tracker_error_storage_save">A módosítások nem menthetők el. Próba meg menteni bezárás előtt a YouTube-ot</string>
+  <string name="morphe_series_tracker_error_conflict">Ez a sorozat már mentve van, vagy a lejátszási listája megváltozott. Nyisd meg újra</string>
+  <string name="morphe_series_tracker_error_series_changed">Ez a sorozat megváltozott vagy eltávolították. Nyisd meg újra a könyvtárat</string>
+  <string name="morphe_series_tracker_error_playlist_changed">A lejátszási lista megváltozott. Válasszd ki újra az epizódot</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Ez az epizód nem érhető el. Válassz másikat</string>
+  <string name="morphe_series_tracker_error_name_required">Adj meg egy sorozatnevet</string>
+  <string name="morphe_series_tracker_error_playlist_input">Adj meg egy YouTube-lejátszási lista linkjét vagy lejátszási lista azonosítóját</string>
+  <string name="morphe_series_tracker_error_retry_later">Kérlek várj, mielőtt újra frissítenél</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Az epizódok nem tölthetők be. Próbáld újra később</string>
+  <string name="morphe_series_tracker_error_operation">A módosítást nem lehetett végrehajtani. Próbáld újra</string>
+  <string name="morphe_series_tracker_error_resume">A folytatást nem sikerült megerősíteni. Ellenőrizd a lejátszót, és próbáld újra</string>
+  <string name="morphe_series_tracker_followed">Követett sorozatok</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Ez a videó nincs ebben a lejátszási listában</string>
+  <string name="morphe_series_tracker_finding_playlists">Lejátszási lista keresése…</string>
+  <string name="morphe_series_tracker_paste_playlist">Beillesztési lista hivatkozása</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Nem található lejátszási lista</string>
+  <string name="morphe_series_tracker_no_available_episodes">Nincs elérhető epizód</string>
+  <string name="morphe_series_tracker_hide_watched">Megnézettek elrejtése</string>
+  <string name="morphe_series_tracker_watch_previous">Korábbi epizódok megjelölése megtekintettként</string>
+  <string name="morphe_series_tracker_order_starts_with">Ezzel kezdődik: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Epizódok sorrendje</string>
+  <string name="morphe_series_tracker_playlist_order">Lejátszási lista sorrendje</string>
+  <string name="morphe_series_tracker_reverse_order">Lejátszási lista sorrendjének megfordítása</string>
+  <string name="morphe_series_tracker_view_count">%1$s megtekintés</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s megtekintés</string>
+  <string name="morphe_series_tracker_completion_title">Epizódok megjelölése megtekintettként</string>
+  <string name="morphe_series_tracker_completion_summary">Legalább %1$s%% nézve, legfeljebb 90 másodperc hátralevővel, vagy %2$s másodperc hátralevővel</string>
+  <string name="morphe_series_tracker_completion_explanation">Automatikusan jelölje meg nézettnek egy epizódot a megadott küszöb érték alapján. A százalékos szabálynak csak ennyire van szüksége, így a hosszú epizódok vége nem kerül kihagyásra. A hátralevő idő szabály a legalább egyperces videókra vonatkozik; állítsa 0-ra letiltásához. A változtatások a jövőbeli progresszusfrissítések érvényesülnek. A manuális nézett/nem nézett választások megmaradnak.</string>
+  <string name="morphe_series_tracker_completion_percent">Százalék nézve (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Hátralevő másodpercek (0-300; 0 tiltja)</string>
+  <string name="morphe_series_tracker_completion_range">Érték megadása %1$s és %2$s között</string>
+  <string name="morphe_series_tracker_youtube_progress_title">YouTube előrehaladás használata</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Követett sorozatok folytatása másik eszközön való megtekintés után</string>
+  <string name="morphe_series_tracker_sync_consent">Olvassa el a követett sorozatok megtekintési állapotát és a folytatási pozíciókat a jelenlegi YouTube-fiókból. Csak a megfelelő epizódok kerülnek mentésre ezen a telefonon. A ellenőrzések akkor futnak, amikor a sorozatkönyvtár nyitva van, és a Tovább előtt. A YouTube-előzményeknek engedélyezve kell lenniük a másik eszközödön</string>
+  <string name="morphe_series_tracker_sync_checking">YouTube előrehaladás ellenőrzése…</string>
+  <string name="morphe_series_tracker_sync_failed">A YouTube-haladás nem elérhető. A mentett haladás használata</string>
+  <string name="morphe_series_tracker_sync_partial">Néhány YouTube-haladás nem elérhető. A mentett pozíciók megmaradnak</string>
+  <string name="morphe_series_tracker_backup_title">Biztonsági mentés és helyreállítás</string>
+  <string name="morphe_series_tracker_backup_summary">Sorozatkönyvtár mentése fájlba vagy biztonsági másolat helyreállítása</string>
+  <string name="morphe_series_tracker_backup_explanation">Menti a követett sorozatokat, az epizódpozíciókat és a megtekintési választásokat. A rögzítés és a YouTube-haladás engedélyei nem tartoznak ide</string>
+  <string name="morphe_series_tracker_backup_save">Biztonsági mentés mentése</string>
+  <string name="morphe_series_tracker_backup_restore">Biztonsági másolat helyreállítása</string>
+  <string name="morphe_series_tracker_backup_preview">%1$s sorozat hozzáadása. %2$s már a könyvtárában lévő sorozatot megtartja. A meglévő videómegfigyelés is megmarad.</string>
+  <string name="morphe_series_tracker_backup_saved">Sorozatbiztonsági mentés mentve</string>
+  <string name="morphe_series_tracker_backup_restored">%1$s sorozat visszaállítva</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Ez a fájl nem támogatott sorozatbiztonsági mentés, vagy túl nagy. A könyvtárad nem változott</string>
+  <string name="morphe_series_tracker_error_backup_write">A biztonsági mentés nem menthető. Próbálj meg egy másik helyszínt</string>
+  <string name="morphe_series_tracker_removed">Sorozat eltávolítva</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Ez az epizód most többször jelenik meg. Válaszd ki, melyikkel folytass</string>
+  <string name="morphe_series_tracker_recovery_missing">A mentett epizód már nincs ebben a lejátszási listában. A mentett pozíciód megmarad</string>
+  <string name="morphe_series_tracker_recovery_continue">Folytatás a(z) %1$s. epizóddal · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Választhat bármely alábbi epizódot is. Az előző epizódok nem változnak</string>
+  <string name="morphe_series_tracker_playback_changed">A lejátszási lista megváltozott. Nyisd meg a sorozatot, hogy válaszd ki, hol folytatod</string>
+  <string name="morphe_series_tracker_playback_boundary">Nincs több epizód ebben az irányban</string>
+  <string name="morphe_series_tracker_continue_series">Folytatás %1$s</string>
+  <string name="morphe_series_tracker_search_series">Sorozatok keresése</string>
+  <string name="morphe_series_tracker_clear_search">Keresés törlése</string>
+  <string name="morphe_series_tracker_no_search_results">Nincs találat</string>
+  <string name="morphe_series_tracker_untitled_episode">Cím nélküli epizód</string>
+  <string name="morphe_series_tracker_unavailable_episode">Nem elérhető epizód</string>
 </resources>

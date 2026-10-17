@@ -132,8 +132,8 @@ public final class LyricifyProvider implements LyricsProvider {
         }
 
         final Map<String, List<LyricsLine>> translations;
-        final String deviceLang = LyricsRequests.deviceLanguage();
-        if ("zh".equals(deviceLang) && trans != null && !trans.isEmpty()) {
+        if ("zh".equals(LyricsRequests.primarySubtag(LyricsRequests.translationLanguage()))
+                && trans != null && !trans.isEmpty()) {
             final List<String> translatedTexts = LyricifyParser.parseTranslation(trans, offset);
             if (!translatedTexts.isEmpty()) {
                 while (translatedTexts.size() < lines.size()) {

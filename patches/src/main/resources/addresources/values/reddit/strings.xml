@@ -37,6 +37,9 @@ Second \"item\" text"</string>
     <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
 
     <string name="morphe_screen_layout_title">Layout</string>
+    <string name="morphe_copy_text_title">Copy text</string>
+    <string name="morphe_copy_text_summary">Allows selecting and copying text in posts and comments. Disables collapsing comments</string>
+    <string name="morphe_copy_text_user_dialog_message">Collapsing comments will stop working while Copy text is enabled</string>
     <string name="morphe_custom_font_title">Custom font</string>
     <string name="morphe_custom_font_summary">Load a custom TTF or OTF font file from the path below. Enabling this also turns off Force system font</string>
     <string name="morphe_custom_font_file_path_title">Custom font file</string>
@@ -58,8 +61,15 @@ Second \"item\" text"</string>
     <string name="morphe_hide_trending_shelves_summary">Hides the Trending shelves from feed and search suggestions</string>
     <string name="morphe_remove_notification_dialog_title">Remove notification suggestion dialog</string>
     <string name="morphe_remove_notification_dialog_summary">Automatically dismisses the notification suggestion dialog when visiting a subreddit</string>
+    <string name="morphe_show_flairs_in_home_feed_title">Show flairs in home feed</string>
+    <string name="morphe_show_flairs_in_home_feed_summary">Shows post flair badges in the home feed</string>
+    <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Some feed items may not show a flair</string>
     <string name="morphe_show_view_count_title">Show view count on posts</string>
     <string name="morphe_show_view_count_summary">Limitation: Only available if the API response includes the view count</string>
+    <string name="morphe_flip_post_action_bar_title">Flip post action bar</string>
+    <string name="morphe_flip_post_action_bar_summary">Moves the vote and comment buttons of posts to the right side, and the crosspost and share buttons to the left side</string>
+    <string name="morphe_swap_post_vote_comment_buttons_title">Swap vote and comment buttons</string>
+    <string name="morphe_swap_post_vote_comment_buttons_summary">Shows the comment button of posts before the vote buttons</string>
     <string name="morphe_remove_nsfw_dialog_title">Remove NSFW warning dialog</string>
     <string name="morphe_remove_nsfw_dialog_summary">Automatically accepts the NSFW content warning when visiting a subreddit</string>
 
@@ -70,8 +80,24 @@ Second \"item\" text"</string>
     <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
     <string name="morphe_open_links_directly_title">Open links directly</string>
     <string name="morphe_open_links_directly_summary">Bypasses redirect URLs when opening external links</string>
+    <string name="morphe_full_width_feed_media_title">Full width feed media</string>
+    <string name="morphe_full_width_feed_media_summary">Shows images and videos edge to edge in the feed and post details, without side padding and rounded corners</string>
+    <string name="morphe_media_viewer_fade_title">Media viewer fade strength</string>
+    <string name="morphe_media_viewer_fade_summary">Strength of the dark fade behind the caption when viewing images and videos, from 0 (no fade) to 1 (Reddit\'s default)</string>
+    <string name="morphe_keep_feed_position_title">Keep feed position</string>
+    <string name="morphe_keep_feed_position_summary">Keeps the feed at the same position after closing a post, image or video, instead of moving the opened post to the top</string>
+    <string name="morphe_feed_media_max_height_title">Feed media max height</string>
+    <string name="morphe_feed_media_max_height_summary">Maximum height of images, videos and galleries in the feed, as a multiple of their width. Taller media is cropped. 1.33 is Reddit\'s default</string>
+    <string name="morphe_hide_media_viewer_overlay_title">Hide media viewer overlay</string>
+    <string name="morphe_hide_media_viewer_overlay_summary">Hides the title, buttons and video controls when opening an image or video. Tap the media to show them</string>
+    <string name="morphe_hide_join_conversation_button_title">Hide See the conversation button</string>
+    <string name="morphe_hide_join_conversation_button_summary">Hides the \"See the conversation\" button at the bottom of the media viewer</string>
+    <string name="morphe_media_viewer_black_background_title">Media viewer black background</string>
+    <string name="morphe_media_viewer_black_background_summary">Uses a black background behind images and videos in the media viewer, instead of the theme background color</string>
     <string name="morphe_open_links_externally_title">Open links externally</string>
     <string name="morphe_open_links_externally_summary">Opens links in your browser instead of the in-app browser</string>
+    <string name="morphe_remember_collapsed_comments_title">Remember collapsed comments</string>
+    <string name="morphe_remember_collapsed_comments_summary">Comments you collapse stay collapsed when you reopen the post</string>
     <string name="morphe_app_icon_title">App icon</string>
     <string name="morphe_app_icon_choose_title">Choose app icon</string>
     <string name="morphe_app_icon_default">Default</string>

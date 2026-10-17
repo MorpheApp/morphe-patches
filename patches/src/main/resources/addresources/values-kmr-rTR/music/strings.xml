@@ -270,7 +270,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Paqijkirina regex-a xwerû</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Bi rêzekê ya pêşniyazkirî bikar bîne da ku nivîsa zêde ji sernavên stran, hunermend an albûman were hildan. Mînak: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Hûnerê ji sernavê de dîtin û şîrovekirin</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Navê hunerê û şîrovekirinê ji sernavê vîdyoyê bi rêya vê neşê \" - \" derxin. Ji bo naverokên ku hatine barkirin lênêrîn, navê kanalê dikare wek hunerê were bikaranîn.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling bi xwezayî karanîna YouTube Music ya we bi profîla we ya Last.fm an ListenBrainz re hevdeng dike.
 
@@ -289,6 +288,7 @@ Ji bo ku bêyî astengiyê scrobbling li ser lîstikên paşnavê were hevdengki
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translating">Wergerandin…</string>
   <string name="morphe_music_lyrics_translate_failed">Nefibû ku nivîs were wergerandin</string>
+  <string name="morphe_romanize_language_DEFAULT">Otomatîk</string>
   <string name="morphe_music_lyrics_copied">Li bernameyê hatî kopî kirin</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Îkonên stûr neçalak bike</string>

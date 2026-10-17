@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.Dialog;
 import android.graphics.Insets;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.DisplayCutout;
@@ -142,6 +143,44 @@ public final class HideStatusBarPatch {
         if (Settings.HIDE_STATUS_BAR.get()) {
             view.setVisibility(View.INVISIBLE);
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The app lays out the top bars with the system window insets of a stable layout, which keep the
+     * height of the status bar when it is hidden and leave an empty bar above the top bars.
+     * The top inset is replaced by the inset of a display cutout at the top, so the top bars
+     * are still laid out below a front camera hole, the same as with the status bar inset.
+     */
+    public static void setSystemWindowInsetTop(Rect systemWindowInsets, @Nullable View view) {
+        if (view == null || !Settings.HIDE_STATUS_BAR.get()) {
+            return;
+        }
+
+        try {
+            View decorView = view.getRootView();
+            WindowInsets insets = decorView.getRootWindowInsets();
+            if (insets == null || isStatusBarVisible(decorView)) {
+                return;
+            }
+
+            systemWindowInsets.top = getDisplayCutoutInsetTop(insets);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setSystemWindowInsetTop failure", ex);
+        }
+    }
+
+    private static int getDisplayCutoutInsetTop(WindowInsets insets) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            return insets.getInsets(WindowInsets.Type.displayCutout()).top;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            DisplayCutout cutout = insets.getDisplayCutout();
+            return cutout == null ? 0 : cutout.getSafeInsetTop();
+        }
+        // Display cutouts have no API before Android 9.
+        return 0;
     }
 
     /**

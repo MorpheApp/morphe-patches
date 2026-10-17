@@ -21,6 +21,7 @@ import app.morphe.extension.reddit.patches.VersionCheckPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.ImportExportPreference;
 import app.morphe.extension.shared.settings.preference.SortedListPreference;
@@ -79,6 +80,11 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             ));
         }
 
+        addPreference(new BooleanSettingPreference(
+                context,
+                BaseSettings.DEBUG
+        ));
+
         // Include original privacy policy link that was changed to open Morphe settings.
         if (VersionCheckPatch.is_2026_25_or_greater) {
             URLLinkPreference preference = new URLLinkPreference(context);
@@ -86,5 +92,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             preference.externalURL = ResourceUtils.getString("privacy_policy_uri");
             addPreference(preference);
         }
+
+        Utils.setPreferenceTitlesToMultiLine(this);
     }
 }

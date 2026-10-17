@@ -8,6 +8,7 @@
 package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -21,8 +22,10 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findElementByAttributeValueOrThrow
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/jam/JamUI;"
+private const val EXTENSION_BAR_CLASS = "Lapp/morphe/extension/music/patches/jam/JamBar;"
 
 private val jamResources = resourcePatch {
     dependsOn(versionCheckPatch)
@@ -70,10 +73,6 @@ private val jamResources = resourcePatch {
                 tabs,
             )
         }
-
-        document("res/layout/watch_while_layout.xml").use { doc ->
-            doc.documentElement.setAttribute("app:bottomSheetPeekHeight", "68dp")
-        }
     }
 }
 
@@ -108,6 +107,21 @@ val jamQueueSharingPatch = bytecodePatch(
             0,
             "invoke-static/range {p0 .. p0}, $EXTENSION_CLASS->install(Landroid/app/Activity;)V",
         )
+
+        BottomSheetPeekHeightFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { p0, v$register }, $EXTENSION_BAR_CLASS->getBottomSheetPeekHeight(Landroid/view/View;I)I
+                        move-result v$register
+                    """
+                )
+            }
+        }
 
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(

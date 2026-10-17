@@ -5,6 +5,8 @@ plugins {
 }
 
 dependencies {
+    testImplementation(libs.junit)
+
     compileOnly(libs.annotation)
     compileOnly(libs.morphe.extensions.library)
     compileOnly(project(":extensions:shared-youtube:library"))

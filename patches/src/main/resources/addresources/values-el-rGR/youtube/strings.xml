@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Απενεργοποίηση ενημερώσεων διάταξης</string>
   <string name="morphe_disable_layout_updates_summary">Αποτρέπει τον διακομιστή από το να ενημερώνει τη διάταξη της εφαρμογής</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Η διάταξη της εφαρμογής επαναφέρεται στη διάταξη που χρησιμοποιήθηκε όταν εγκαταστάθηκε για πρώτη φορά.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Η διάταξη της εφαρμογής επαναφέρεται στη διάταξη που χρησιμοποιούνταν κατά την πρώτη εγκατάσταση.
 
-Διάταξεις που είναι διαθέσιμες από τον διακομιστή μπορεί να μην επαναφερθούν.
+Μερικές διατάξεις του server ενδέχεται να μην επανέλθουν.
 
 Οι αλλαγές περιλαμβάνουν:
-• Στοιχεία στο μενού πλαισίου αναπαραγωγής (ή τις σχετικές ρυθμίσεις) μπορεί να μην λειτουργούν.
-• Οι κυλυώμενοι αριθμοί δεν κινούνται.
-• Η καρτέλα βιβλιοθήκης εμφανίζεται.
-• Ο τομέας μουσικής του περιεχομένου περιγραφής βίντεο μπορεί να μην λειτουργήσει.
-• Οι επιλογές του μενού πλαισίου αναπαραγωγής δεν μπορούν να αποκρυφθούν.
-• Το κουμπί αλλαγής λογαριασμού μπορεί να μην εμφανιστεί στη καρτέλα Βιβλιοθήκη."</string>
+• Τα στοιχεία στο μενού player flyout (ή οι σχετικές ρυθμίσεις) ενδέχεται να μην λειτουργούν
+• Οι κύλιωμοι αριθμοί δεν animation
+• Η καρτέλα Βιβλιοθήκης εμφανίζεται
+• Η ενότητα Μουσικής της περιγραφής βίντεο ενδέχεται να μην λειτουργεί
+• Τα στοιχεία του μενού player flyout δεν μπορούν να αποκρυφούν
+• Το κουμπί αλλαγής λογαριασμού ενδέχεται να μην εμφανίζεται στην καρτέλα Βιβλιοθήκη"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Ενεργοποιήστε το φίλτρο του μενού του feed</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Φίλτρο του μενού του feed</string>
@@ -133,7 +133,7 @@ Second \"item\" text"</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Απόκρυψη εποχιακών και βασισμένων σε γεγονότα κινούμενων σχεδίων στο λογότυπο του YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Η εμφάνιση των Doodles της YouTube ενδέχεται να εμποδίσει την εμφάνιση προσαρμοσμένων κεφαλίδων.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Η εμφάνιση YouTube Doodles μπορεί να εμποδίσει την προβολή προσαρμοσμένων κεφαλίδων</string>
   <string name="morphe_hide_channel_bar_title">Γραμμή καναλιού</string>
   <string name="morphe_hide_channel_watermark_title">Υδατογράφημα καναλιού</string>
   <string name="morphe_hide_chapters_timeline_button_title">Απόκρυψη κεφαλαίων και του κουμπιού \'Σε αυτό το βίντεο\'</string>
@@ -193,7 +193,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_how_this_was_made_section_title">Απόκρυψη της ενότητας \'Πώς φτιάχτηκε αυτό\'</string>
   <string name="morphe_hide_hype_points_title">Πόντοι Hype</string>
   <string name="morphe_hide_info_cards_section_title">Απόκρυψη τμήματος Καρτών πληροφοριών</string>
-  <string name="morphe_hide_key_concepts_section_title">Απόκρυψη τμήματος «Βασικές έννοιες»</string>
+  <string name="morphe_hide_key_concepts_section_title">Απόκρυψη ενότητας «Βασικές έννοιες»</string>
   <string name="morphe_hide_quizzes_section_title">Απόκρυψη τμήματος Κουίζ</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Απόκρυψη ενότητας \'Αναζήτηση σε αυτό το βίντεο\'</string>
   <string name="morphe_hide_subscribe_button_title">Κουμπί «Εγγραφή»</string>
@@ -281,7 +281,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">Αποκρύπτει το κουμπί μενού με τις τρεις τελείες κάθε σχολίου</string>
   <string name="morphe_hide_comments_preview_comment_title">Προεπισκόπηση σχολίου</string>
   <string name="morphe_hide_comments_preview_comment_summary">Απόκρυψη της προεπισκόπησης σχολίων κάτω από το βίντεο πριν ανοίξετε την πλήρη ενότητα σχολίων</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Σχόλιο κρυμμένο από τον Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Σχόλιο κρυμμένο από Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Ενεργοποίηση μίνιμαλ κουμπιού σχολίων</string>
   <string name="morphe_minimal_comments_button_summary">Αποκρύπτει τις συρόμενες κάρτες και τον επιλογέα σελίδας τους, που εμφανίζονται στο κουμπί σχολίων.</string>
   <string name="morphe_hide_comments_thanks_button_title">Κουμπί «Σας ευχαριστούμε»</string>
@@ -490,7 +490,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_openrouter_open_website">Άνοιγμα OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">Αποτυχία μετάφρασης OpenRouter (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Επιτεύχθηκε το ημερήσιο όριο MyMemory</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Διαθέσιμο στις %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Επόμενος διαθέσιμος στις %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Έχετε χρησιμοποιήσει το σημερινό δωρεάν ποσοστωτικό μετάφρασης MyMemory (5.000 χαρακτήρες). Προσθέστε ένα email MyMemory στις ρυθμίσεις για να αυξήσετε το ημερήσιο όριο σε 50.000 χαρακτήρες ή αλλάξτε σε μια άλλη υπηρεσία μετάφρασης</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Έχετε χρησιμοποιήσει το σημερινό ποσοστωτικό μετάφρασης MyMemory (50.000 χαρακτήρες). Αλλάξτε σε μια άλλη υπηρεσία μετάφρασης ή δοκιμάστε ξανά αύριο</string>
   <string name="morphe_vot_mymemory_error">Αποτυχία μετάφρασης MyMemory (κατάσταση %s)</string>
@@ -560,10 +560,29 @@ Second \"item\" text"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Ανοίγει την ουρά Morphe αντί για την ουρά YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">Προσθήκη στοιχείου μενού αναδυόμενου παραθύρου ροής</string>
   <string name="morphe_queue_add_flyout_menu_summary">Προσθέτει ένα επιπλέον στοιχείο αναδυόμενου παραθύρου. Ενεργοποιήστε αυτό εάν δεν εμφανίζεται η \"Προσθήκη στην ουρά\"</string>
+  <string name="morphe_local_queue_title">Ουρά τύπου Premium</string>
+  <string name="morphe_local_queue_summary">"Αντικαθιστά την ουρά του Morphe με μία που βρίσκεται στη συσκευή, αναπαράγεται από μόνη της και μπορεί να αναδιαταχθεί με σύρσιμο
+
+Πληροφορίες: Το επόμενο βίντεο στην ουρά ξεκινά μόνο όταν το YouTube είναι στην οθόνη"</string>
+  <string name="morphe_local_queue_sheet_title">Ουρά</string>
+  <string name="morphe_local_queue_open">Ουρά (%s)</string>
+  <string name="morphe_local_queue_clear">Εκκαθάριση όλων</string>
+  <string name="morphe_local_queue_empty">Δεν υπάρχει τίποτα στην ουρά</string>
+  <string name="morphe_local_queue_empty_hint">Χρησιμοποιήστε την επιλογή «Αναπαραγωγή επόμενου στην ουρά» σε οποιοδήποτε βίντεο</string>
+  <string name="morphe_local_queue_now_playing">Τώρα αναπαραγωγή</string>
+  <string name="morphe_local_queue_play_next">Αναπαραγωγή επόμενου στην ουρά</string>
+  <string name="morphe_local_queue_play_last">Αναπαραγωγή τελευταίου στην ουρά</string>
+  <string name="morphe_local_queue_reorder">Αναδιάταξη</string>
+  <string name="morphe_local_queue_remove">Αφαίρεση</string>
+  <string name="morphe_local_queue_added">Προστέθηκε στην ουρά</string>
+  <string name="morphe_local_queue_unavailable">Δεν ήταν δυνατή η προσθήκη αυτού του βίντεο στην ουρά</string>
+  <string name="morphe_local_queue_playlist_unsupported">Οι λίστες αναπαραγωγής δεν μπορούν να προστεθούν στην ουρά</string>
+  <string name="morphe_local_queue_full">Η ουρά είναι γεμάτη</string>
+  <string name="morphe_local_queue_play_failed">Δεν ήταν δυνατή η εκκίνηση του βίντεο</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Λίστα επιτρεπόμενων διαφημίσεων στο αναδυόμενο μενού</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Προσθέτει ένα στοιχείο αναδυόμενου μενού που επιτρέπει την αναπαραγωγή διαφημίσεων στο κανάλι αυτού του βίντεο</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Αυτή η δυνατότητα μπορεί να απαιτεί τη χρήση του PotHelper ή την αλλαγή της επιλογής \"Παραποίηση ροών βίντεο\" σε σύνδεση μέσω TV ή Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Αυτό το χαρακτηριστικό ενδέχεται να απαιτεί τη χρήση του PotHelper ή την αλλαγή της ρύθμισης «Απάτη ροών βίντεο» σε TV ή Android VR για είσοδο στο λογαριασμό</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Λίστα επιτρεπόμενων ταχυτήτων στο αναδυόμενο μενού</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Προσθέτει ένα στοιχείο αναδυόμενου μενού που αναπαράγει πάντα το κανάλι αυτού του βίντεο σε ταχύτητα 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Δεν έχετε συνδεθεί</string>
@@ -746,6 +765,9 @@ Second \"item\" text"</string>
   <string name="morphe_preferred_caption_language_title">Προτιμώμενη γλώσσα υποτίτλων</string>
   <string name="morphe_preferred_caption_language_summary">Επιλέγει πρώτα τους υποτίτλους του παρόχου και στη συνέχεια μεταφράζει αυτόματα στην προτιμώμενη γλώσσα</string>
   <string name="morphe_preferred_caption_language_entry_off">Ανενεργό</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Προσθήκη επιπλέον γλωσσών αυτομάτου μεταφρασμού</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Προσθέτει περισσότερες γλώσσες στο μενού αυτομάτης μετάφρασης</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Ορίστε cookies υποτίτλων</string>
   <string name="morphe_set_caption_cookies_summary">"Διορθώνει ένα σφάλμα του YouTube όπου οι υπότιτλοι αυτόματης μετάφρασης ενδέχεται να μην είναι διαθέσιμοι λόγω ελλιπών cookies
@@ -785,9 +807,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">Ονομασίες κουμπιών γραμμής πλοήγησης</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Απόκρυψη κουκκίδας νέου περιεχομένου</string>
   <string name="morphe_hide_navigation_bar_title">Γραμμή πλοήγησης</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Αυτό κρύβει εντελώς τη γραμμή πλοήγησης, συμπεριλαμβανομένου του 'Εγώ' tab.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Αυτό κρύβει πλήρως τη γραμμή πλοήγησης, συμπεριλαμβανομένης της καρτέλας «Εσύ».
 
-Για να έχετε πρόσβαση στις Ρυθμίσεις, ενεργοποιήστε το κουμπί Ρυθμίσεις μέσω Γενικά → Εργαλειοθήκη → Εμφάνιση Ρυθμίσεων."</string>
+Για να πρόσβαση στις Ρυθμίσεις, ενεργοποιήστε το κουμπί Ρυθμίσεων μέσω Γενικά → Γραμμή εργαλείων → Εμφάνιση Ρυθμίσεων"</string>
   <string name="morphe_narrow_navigation_buttons_title">Ενεργοποίηση στενών κουμπιών πλοήγησης</string>
   <string name="morphe_narrow_navigation_buttons_summary">Απόκρυψη κουμπιού Σύμπτυξης</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Απενεργοποίηση κουμπιών πλοήγησης χωρίς ετικέτες</string>
@@ -1010,7 +1032,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"Επαναφέρει την παλιά διάταξη του παίκτη
 
 Περιορισμός: Εάν η επιλογή 'Επαναφορά παλαιού γραμμής εργαλείων βίντεο' είναι απενεργοποιημένη, η επικάλυψη 'Περισσότερα βίντεο' ενδέχεται να μην είναι διαθέσιμη"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Η ενεργοποίηση αυτής της επιλογής ενδέχεται να διαταράξει ορισμένες λειτουργίες διάταξης του προγράμματος αναπαραγωγής, όπως το τμήμα σχολίων ή τα «Περισσότερα βίντεο» που εμφανίζονται κάτω από το πρόγραμμα αναπαραγωγής.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Η ενεργοποίηση αυτής της λειτουργίας ενδέχεται να διαταράξει ορισμένα χαρακτηριστικά διάταξης του player, όπως η ενότητα σχολίων ή τα «Περισσότερα βίντεο» που εμφανίζονται κάτω από τον player</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Επαναφορά παλιάς συμπεριφοράς λεζάντων</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Επαναφορά παλιών σωζημάτων σε αναπαραγωγή</string>
@@ -1075,6 +1097,12 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Απενεργοποίηση αυτόματης ανανέωσης ροής</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Αποτρέπει την αυτόματη ανανέωση των ροών όταν αυτές καταστούν ξεπερασμένες</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Διάταξη καρτέλας τροφοδοσίας</string>
+  <string name="morphe_feed_card_layout_entry_1">Κλασική</string>
+  <string name="morphe_feed_card_layout_entry_2">Κάρτες</string>
+  <string name="morphe_feed_card_layout_entry_3">Κάρτες με κουμπιά όπως, σχόλιο και αποθήκευση</string>
+  <string name="morphe_feed_card_layout_comments">Σχόλια</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Απενεργοποίηση συνέχισης του miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Απενεργοποιεί το μίνι player \"Συνέχιση παρακολούθησης\", μια λειτουργία YouTube Premium που εμφανίζεται κατά την εκκίνηση της εφαρμογής</string>
@@ -1109,9 +1137,6 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Το κουμπί πίσω βγαίνει από τη ροή</string>
   <string name="morphe_back_button_always_exits_feed_summary">Πατώντας πίσω βγαίνετε πάντα από την εφαρμογή αντί να μεταφέρεστε στην κορυφή της ροής.</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Υποχρεωτική γραμματοσειρά συστήματος</string>
-  <string name="morphe_force_system_font_summary">Εμφανίζει την εφαρμογή με τη γραμματοσειρά της συσκευής αντί για το YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Απόκρυψη γραμμής κατάστασης</string>
   <string name="morphe_hide_status_bar_summary">Αποκρύπτει τη γραμμή κατάστασης του συστήματος. Σύρετε προς τα κάτω από το πάνω άκρο για να εμφανιστεί για μια στιγμή</string>
@@ -1192,7 +1217,7 @@ Second \"item\" text"</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Παραποίηση διαστάσεων συσκευής</string>
   <string name="morphe_spoof_device_dimensions_summary">Η ενεργοποίηση αυτής της λειτουργίας μπορεί να ξεκλειδώσει υψηλότερες ποιότητες βίντεο</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Η ενεργοποίηση αυτής της λειτουργίας μπορεί να προκαλέσει μικρο-κολλήματα κατά την αναπαραγωγή, χειρότερη διάρκεια ζωής μπαταρίας, και άλλες άγνωστες παρενέργειες.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Η ενεργοποίηση αυτής της λειτουργίας μπορεί να προκαλέσει μικρο-κολλήματα κατά την αναπαραγωγή, χειρότερη διάρκεια ζωής μπαταρίας, και άλλες άγνωστες παρενέργειες</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Απόκριση δόνησης</string>
   <string name="morphe_disable_haptic_feedback_summary">Επιλέξτε ποιες αλληλεπιδράσεις πυροδοτούν τον κραδασμό της συσκευής</string>
@@ -1202,7 +1227,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Απενεργοποίηση απόκρισης δόνησης κατά το πατημα και κρατημα</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Απενεργοποίηση απόκρισης δόνησης χειρονομίας ζουμ</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Εάν αλλάξατε πρόσφατα τα στοιχεία σύνδεσης του λογαριασμού σας, απεγκαταστήστε και εγκαταστήστε ξανά το MicroG.</string>
+  <string name="microg_offline_account_login_error">Εάν αλλάξατε πρόσφατα τα στοιχεία σύνδεσης του λογαριασμού σας, απεγκαταστήστε και εγκαταστήστε ξανά το MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Παράκαμψη ανακατευθύνσεων συνδέσμων</string>
   <string name="morphe_bypass_link_redirects_summary">Ανοίγει τον αρχικό σύνδεσμο απευθείας, παρακάμπτοντας τον σύνδεσμο παρακολούθησης (youtube.com/redirect)</string>
@@ -1282,18 +1307,21 @@ Second \"item\" text"</string>
 • Τα χρώματα μπορεί να φαίνονται λανθασμένα αν στην πραγματικότητα η οθόνη δεν μπορεί να απεικονίσει HDR
 • Η αναπαραγωγή μπορεί να αποτύχει αν ο αποκωδικοποιητής δεν μπορεί να χειριστεί το HDR
 • Το HDR εξαρτάται και από το επιλεγμένο πρόγραμμα-πελάτη παραποίησης ροών βίντεο"</string>
-  <string name="morphe_force_avc_codec_title">Εξαναγκάζει τον κωδικοποιητή AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Οφέλη:
-• Μπορεί να βελτιώσει τη διάρκεια ζωής της μπαταρίας
-• Μπορεί να αποκαταστήσει αναλύσεις βίντεο που λείπουν σε παλαιότερες συσκευές
-
-Περιορισμοί:
-• Η μέγιστη ανάλυση είναι 1080p
-• Η αναπαραγωγή βίντεο θα χρησιμοποιεί περισσότερα δεδομένα διαδικτύου από τον VP9 ή AV1
-• Τα βίντεο HDR δεν θα χρησιμοποιούν τον κωδικοποιητή AVC
-• Ορισμένες συσκευές δεν μπορούν να επιβάλλουν τον κωδικοποιητή AVC"</string>
+  <string name="morphe_video_codec_title">Κωδικοποιητής βίντεο</string>
+  <string name="morphe_video_codec_entry_default">Προεπιλογή</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, ορίστε τη \'Παραποίηση ροών βίντεο\' σε \'Android VR\' ή \'Android Studio\'.</string>
+  <string name="morphe_video_codec_avc_not_available">Για να επιβάλετε το AVC, αλλάξτε την επιλογή \'Πλαστογράφηση ροών βίντεο\' σε \'Android Studio\', \'Android VR\' ή \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Μπορεί να βελτιώσει τη διάρκεια ζωής της μπαταρίας και να διορθώσει το τραύλισμα της αναπαραγωγής
+• Χρησιμοποιεί περισσότερα δεδομένα διαδικτύου από το AV1
+
+AVC (H.264)
+• Απαιτεί την επιλογή 'Πλαστογράφηση ροών βίντεο' να είναι 'Android Studio', 'Android VR' ή 'visionOS'
+• Μπορεί να βελτιώσει ακόμη περισσότερο τη διάρκεια ζωής της μπαταρίας
+• Μπορεί να επαναφέρει αναλύσεις βίντεο που λείπουν σε παλαιότερες συσκευές
+• Η μέγιστη ανάλυση είναι 1080p
+• Τα βίντεο HDR ενδέχεται να μην χρησιμοποιούν AVC
+• Ορισμένες συσκευές δεν μπορούν να επιβάλουν το AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Άνοιγμα μενού προηγμένης ποιότητας</string>
   <string name="morphe_advanced_video_quality_menu_summary">Παρακάμπτει το μενού επιλογής ποιότητας και ανοίγει απευθείας το μενού ποιότητας \'Προχωρημένων\'</string>
@@ -1308,8 +1336,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_av1_summary">Επιτρέπει την αποκωδικοποίηση AV1 μέσω λογισμικού όταν χρησιμοποιείτε τον πελάτη \'Android VR\' / visionOS.</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Η ενεργοποίηση αυτής της ρύθμισης ενδέχεται να χρησιμοποιήσει αποκωδικοποίηση λογισμικού AV1.
 
-Η αναπαραγωγή βίντεο μπορεί να κομπιάζει ή να χάνει καρέ."</string>
+Η αναπαραγωγή βίντεο μπορεί να κομπιάζει ή να χάνει καρέ"</string>
   <string name="morphe_spoof_video_streams_about_title">Παρενέργειες παραποίησης</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Η αναπαραγωγή ενδέχεται να αποτύχει στο 1 λεπτό</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Το μενού «Κομμάτι ήχου» λείπει</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Δεν υπάρχει ο κωδικοποιητής βίντεο AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Η 360° VR βιωματική λειτουργία δεν είναι διαθέσιμη</string>
@@ -1336,4 +1365,154 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_bold">Έντονο</string>
   <string name="morphe_player_icon_style_entry_custom">Προσαρμοσμένο</string>
   <string name="morphe_shorts_icon_style_title">Στυλ εικονιδίων Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Ακολουθητής σειρών</string>
+  <string name="morphe_series_tracker_screen_summary">Ακολουθήστε λίστες αναπαραγωγής ως σειρές και διατηρήστε τη θέση σας</string>
+  <string name="morphe_series_tracker_title">Ενεργοποίηση παρακολούθησης σειρών</string>
+  <string name="morphe_series_tracker_summary">Προσθέτει σελίδα Σειρά στην Ιστορία και επιλογή Παρακολούθηση σειράς στις λίστες αναπαραγωγής</string>
+  <string name="morphe_series_tracker_show_button_title">Εμφάνιση κουμπιού Ιχνηλάτη Σειρών</string>
+  <string name="morphe_series_tracker_show_button_summary">Προσθήκη κουμπιού αναπαραγωγής για παρακολούθηση ή άνοιγμα της σειράς του τρέχοντος βίντεο</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Καταγραφή προόδου ακολουθούμενων σειρών</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Καταγραφή αναπαραγωγής σε αυτή την τηλεόραση για αποθηκευμένες σειρές και σελιδοδείκτες</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Εμφάνιση ιστορικού στη γραμμή πλοήγησης</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Αρχική, Εγγραφές, Ειδοποιήσεις, Ιστορικό και Εσύ</string>
+  <string name="morphe_series_tracker_ui_cancel">Ακύρωση</string>
+  <string name="morphe_series_tracker_ui_save">Αποθήκευση</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Αποθήκευση σελιδοδείκτη</string>
+  <string name="morphe_series_tracker_ui_series_name">Όνομα σειράς</string>
+  <string name="morphe_series_tracker_ui_series_options">Επιλογές σειράς</string>
+  <string name="morphe_series_tracker_ui_library_options">Επιλογές βιβλιοθήκης</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Ανανέωση επεισοδίων</string>
+  <string name="morphe_series_tracker_ui_rename">Μετονομασία</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Άνοιγμα λίστας αναπαραγωγής στο YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Κατάργηση από τη βιβλιοθήκη</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Σύνδεσμος ή ID λίστας αναπαραγωγής</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Καθαρισμός όλης της τοπικής προόδου</string>
+  <string name="morphe_series_tracker_ui_clear_history">Καθαρισμός ιστορικού</string>
+  <string name="morphe_series_tracker_clear_progress_title">Καθαρισμός όλης της τοπικής προόδου;</string>
+  <string name="morphe_series_tracker_clear_progress_message">Αυτό καθαρίζει τις θέσεις, τις εξαιρέσεις παρακολούθησης και τις επιλογές συνέχισης για κάθε βίντεο. Οι αποθηκευμένες σειρές και οι κατάλογοί τους παραμένουν. Η νέα αναπαραγωγή θα καταγράφεται αν είναι ενεργή η εγγραφή</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Σήμανση ως παρακολουθούμενο</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Σήμανση ως μη παρακολουθούμενο</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Χρήση αυτόματης κατάστασης</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Εκκίνηση από 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Ξανααναπαραγωγή από 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Η κατάσταση αποθηκεύτηκε</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Δοκιμή αποθήκευσης ξανά</string>
+  <string name="morphe_series_tracker_ui_previous_100">Προηγούμενα 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Επόμενα 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Άνοιγμα αποθηκευμένου βίντεο</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Η τοπική πρόοδος καθαρίστηκε</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Άνοιγμα Ιστορικού από Εσύ για προβολή των σειρών σας</string>
+  <string name="morphe_series_tracker_ui_watch_history">Ιστορικό παρακολούθησης</string>
+  <string name="morphe_series_tracker_ui_series">Σειρές</string>
+  <string name="morphe_series_tracker_ui_history">Ιστορικό</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Συνδρομές</string>
+  <string name="morphe_series_tracker_ui_notifications">Ειδοποιήσεις</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Φόρτωση αποθηκευμένων σειρών…</string>
+  <string name="morphe_series_tracker_empty_library">Ακολουθήστε μια λίστα αναπαραγωγής για να παρακολουθείτε τα επεισόδιά της</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Σελιδοδείκτης λίστας αναπαραγωγής</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Ανανέωση επεισοδίων…</string>
+  <string name="morphe_series_tracker_ui_all_series">Όλες οι σειρές</string>
+  <string name="morphe_series_tracker_watched">Παρακολουθήθηκαν</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Φόρτωση επεισοδίων…</string>
+  <string name="morphe_series_tracker_ui_more_options">Περισσότερες επιλογές</string>
+  <string name="morphe_series_tracker_record_consent">"Καταγράψτε την πρόοδο μόνο για τις αποθηκευμένες σας σειρές και τα σελιδοδεικτημένα βίντεο.
+
+Αυτή η βιβλιοθήκη αποθηκεύεται στην τρέχουσα συσκευή και κοινοποιείται μεταξύ λογαριασμών YouTube. Οι έλεγχοι διακοπής και καθαρμού ιστορικού του YouTube δεν την αλλάζουν. Χρησιμοποιήστε Σειρές → Περισσότερα → Καθαρισμός τοπικής προόδου για να τη διαγράψετε.
+
+Η αυτόματη εγγραφή σταματά σε λειτουργία incognito, όταν δεν είναι διαθέσιμη η ταυτότητα λογαριασμού, ή όταν αλλάζετε σε διαφορετικό λογαριασμό. Ενεργοποιήστε ξανά την παρακολούθηση για να τη χρησιμοποιήσετε με αυτόν τον λογαριασμό"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Η παρακολούθηση δεν μπορεί να ενεργοποιηθεί σε λειτουργία incognito ή πριν φορτωθεί η κατάσταση τρέχοντος λογαριασμού στο YouTube. Επισκεφθείτε την Αρχική και προσπαθήστε ξανά. Δεν απαιτείται είσοδος στον λογαριασμό</string>
+  <string name="morphe_series_tracker_enable">Ενεργοποίηση τοπικού ιχνηλάτη</string>
+  <string name="morphe_series_tracker_tracking_paused">Η καταγραφή προόδου είναι απενεργοποιημένη</string>
+  <string name="morphe_series_tracker_resume_at">Συνέχιση από %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s επεισόδια παρακολουθήθηκαν</string>
+  <string name="morphe_series_tracker_episode_position">Επεισόδιο %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Επεισόδια %1$s-%2$s από %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Ανανέωση για προσπάθεια φόρτωσης επεισοδίων. Οι ιδιωτικές λίστες αναπαραγωγής απαιτούν πρόσβαση λογαριασμού· το σελιδοδείκτη τους ανοίγει ακόμη στο YouTube</string>
+  <string name="morphe_series_tracker_open_failed">Το YouTube δεν μπόρεσε να ανοίξει αυτό το επεισόδιο</string>
+  <string name="morphe_series_tracker_playlist_failed">Το YouTube δεν μπόρεσε να ανοίξει αυτή τη λίστα αναπαραγωγής</string>
+  <string name="morphe_series_tracker_plan_changed">Επίλεξε ένα επεισόδιο</string>
+  <string name="morphe_series_tracker_plan_caught_up">Έως την τελευταία λεπτομέρεια</string>
+  <string name="morphe_series_tracker_plan_none">Δεν υπάρχουν διαθέσιμα επεισόδια</string>
+  <string name="morphe_series_tracker_saved_position">Αποθηκευμένο βίντεο · %1$s</string>
+  <string name="morphe_series_tracker_follow">Ακολουθήστε σειρά</string>
+  <string name="morphe_series_tracker_view_series">Προβολή σειράς</string>
+  <string name="morphe_series_tracker_continue">Συνέχεια</string>
+  <string name="morphe_series_tracker_start_here">Ξεκινήστε εδώ</string>
+  <string name="morphe_series_tracker_start_saved">Τη θέση εκκίνησης αποθηκεύτηκε</string>
+  <string name="morphe_series_tracker_watched_to_here">Παρακολούθηση έως εδώ</string>
+  <string name="morphe_series_tracker_marked">Επεισόδια σημειωμένα ως παρακολουθούμενα</string>
+  <string name="morphe_series_tracker_undo">Αναίρεση</string>
+  <string name="morphe_series_tracker_enable_short">Ενεργοποίηση</string>
+  <string name="morphe_series_tracker_new_episode">1 νέο επεισόδιο</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s νέα επεισόδια</string>
+  <string name="morphe_series_tracker_record_short">Καταγραφή προόδου σε αυτή τη συσκευή</string>
+  <string name="morphe_series_tracker_follow_consent">"Οι σειρές σας και η πρόδοσή σας παραμένουν σε αυτή τη συσκευή, κοινή για λογαριασμούς YouTube. Οι έλεγχοι ιστορικού του YouTube δεν τις αλλάζουν. Καθαρίστε την πρόοδο από το μενού Σειρές.
+
+Η αυτόματη εγγραφή είναι προαιρετική. Σταματά σε λειτουργία incognito ή όταν αλλάζει ο λογαριασμός"</string>
+  <string name="morphe_series_tracker_follow_unavailable">Τα επεισόδια δεν μπόρεσαν να φορτωθούν. Μπορείτε να αποθηκεύσετε τη λίστα αναπαραγωγής ως σελιδοδείκτη</string>
+  <string name="morphe_series_tracker_error_pending_full">Πολύ许多 μη αποθηκευμένες αλλαγές. Προσπαθήστε πρώτα να αποθηκεύσετε ξανά</string>
+  <string name="morphe_series_tracker_error_storage_busy">Η αποθήκευση απασχολείται. Προσπαθήστε ξανά</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Η φόρτωση επεισοδίων απασχολείται. Προσπαθήστε ξανά</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Ο χώρος αποθήκευσης δεν είναι διαθέσιμος. Τα δεδομένα σας διατηρήθηκαν</string>
+  <string name="morphe_series_tracker_error_storage_save">Οι αλλαγές δεν μπόρεσαν να αποθηκευτούν. Προσπαθήστε να αποθηκεύσετε ξανά πριν κλείσετε το YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">Αυτή η σειρά έχει ήδη αποθηκευτεί ή η λίστα αναπαραγωγής της άλλαξε. Ανοίξτε την ξανά</string>
+  <string name="morphe_series_tracker_error_series_changed">Αυτή η σειρά άλλαξε ή αφαιρέθηκε. Ανοίξτε ξανά τη βιβλιοθήκη</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Η λίστα αναπαραγωγής άλλαξε. Επιλέξτε ξανά το επεισόδιο</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Αυτό το επεισόδιο δεν είναι διαθέσιμο. Διαλέξτε ένα άλλο</string>
+  <string name="morphe_series_tracker_error_name_required">Εισαγάγετε όνομα σειράς</string>
+  <string name="morphe_series_tracker_error_playlist_input">Εισαγάγετε σύνδεσμο λίστας αναπαραγωγής YouTube ή ID λίστας</string>
+  <string name="morphe_series_tracker_error_retry_later">Περιμένετε πριν ανανεώσετε ξανά</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Τα επεισόδια δεν μπόρεσαν να φορτωθούν. Δοκιμάστε ξανά αργότερα</string>
+  <string name="morphe_series_tracker_error_operation">Η αλλαγή δεν ολοκληρώθηκε. Προσπαθήστε ξανά</string>
+  <string name="morphe_series_tracker_error_resume">Η συνέχεια δεν μπορούσε να επιβεβαιωθεί. Ελέγξτε τον player και προσπαθήστε ξανά</string>
+  <string name="morphe_series_tracker_followed">Ακολουθούμενες σειρές</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Αυτό το βίντεο δεν βρίσκεται σε αυτή τη λίστα αναπαραγωγής</string>
+  <string name="morphe_series_tracker_finding_playlists">Αναζήτηση λιστών αναπαραγωγής…</string>
+  <string name="morphe_series_tracker_paste_playlist">Επικόλληση συνδέσμου λίστας αναπαραγωγής</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Δεν βρέθηκε λίστα αναπαραγωγής</string>
+  <string name="morphe_series_tracker_no_available_episodes">Δεν υπάρχουν διαθέσιμα επεισόδια</string>
+  <string name="morphe_series_tracker_hide_watched">Κρυφή παρακολούθηση</string>
+  <string name="morphe_series_tracker_watch_previous">Σήμανση προηγούμενων επεισοδίων ως παρακολουθούμενων</string>
+  <string name="morphe_series_tracker_order_starts_with">Ξεκινά με: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Σειρά επεισοδίων</string>
+  <string name="morphe_series_tracker_playlist_order">Σειρά λίστας αναπαραγωγής</string>
+  <string name="morphe_series_tracker_reverse_order">Αντίστροφη σειρά λίστας αναπαραγωγής</string>
+  <string name="morphe_series_tracker_view_count">%1$s προβολές</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s προβολή</string>
+  <string name="morphe_series_tracker_completion_title">Σήμανση επεισοδίων ως παρακολουθούμενων</string>
+  <string name="morphe_series_tracker_completion_summary">Τουλάχιστον %1$s%% παρακολουθήθηκε με το πολύ 90 δευτερόλεπτα υπόλοιπο, ή %2$s δευτερόλεπτα εναπομείναντα</string>
+  <string name="morphe_series_tracker_completion_explanation">Αυτόματη επισήμανση ενός επεισοδίου ως παρακολουθηθέν μετά από οποιοδήποτε από αυτά τα κατώφλια. Ο κανόνας ποσοστού απαιτεί επίσης το πολύ 90 δευτερόλεπτα υπόλοιπο, ώστε το τέλος των μακρών επεισοδίων να μην παραλείπεται. Ο κανόνας υπολειπόμενου χρόνου ισχύει για βίντεο άνω του ενός λεπτού· ορίστε το σε 0 για απενεργοποίηση. Οι αλλαγές ισχύουν για μελλοντικές ενημερώσεις προόδου. Οι χειροκίνητες επιλογές παρακολουθήθηκε/μη παρακολουθήθηκε διατηρούνται</string>
+  <string name="morphe_series_tracker_completion_percent">Ποσοστό παρακολούθησης (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Δευτερόλεπτα υπολοίπου (0-300; 0 απενεργοποιεί)</string>
+  <string name="morphe_series_tracker_completion_range">Εισαγάγετε τιμή από %1$s έως %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Χρήση προόδου YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Συνέχεια ακολουθούμενων σειρών μετά από παρακολούθηση σε άλλη συσκευή</string>
+  <string name="morphe_series_tracker_sync_consent">Διαβάστε την κατάσταση παρακολούθησης και τις θέσεις συνέχισης για τις ακολουθούμενες σειρές σας από τον τρέχοντα λογαριασμό YouTube. Μόνο τα ταιριαστά επεισόδια αποθηκεύονται σε αυτό το τηλέφωνο. Οι έλεγχοι εκτελούνται ενώ η βιβλιοθήκη σειρών είναι ανοιχτή και πριν τη Συνέχιση. Το ιστορικό στο YouTube πρέπει να είναι ενεργό στη άλλη συσκευή σας</string>
+  <string name="morphe_series_tracker_sync_checking">Έλεγχος προόδου YouTube…</string>
+  <string name="morphe_series_tracker_sync_failed">Η πρόδοση στο YouTube δεν είναι διαθέσιμη. Χρήση αποθηκευμένης προόδου</string>
+  <string name="morphe_series_tracker_sync_partial">Μερική πρόδοση στο YouTube δεν είναι διαθέσιμη. Διατηρούνται οι αποθηκευμένες θέσεις</string>
+  <string name="morphe_series_tracker_backup_title">Backup και επαναφορά</string>
+  <string name="morphe_series_tracker_backup_summary">Αποθήκευση της βιβλιοθήκης σας σε αρχείο ή επαναφορά backup</string>
+  <string name="morphe_series_tracker_backup_explanation">Αποθηκεύει τις ακολουθούμενες σειρές, τις θέσεις επεισοδίων και τις επιλογές παρακολούθησης. Δεν περιλαμβάνονται οι άδειες εγγραφής και προόδου YouTube</string>
+  <string name="morphe_series_tracker_backup_save">Αποθήκευση backup</string>
+  <string name="morphe_series_tracker_backup_restore">Επαναφορά backup</string>
+  <string name="morphe_series_tracker_backup_preview">Προσθήκη %1$s σειρών. Οι %2$s σειρές που υπάρχουν ήδη στη βιβλιοθήκη σας διατηρούνται. Υπάρχουσα πρόοδος βίντεο διατηρείται</string>
+  <string name="morphe_series_tracker_backup_saved">Το backup σειράς αποθηκεύτηκε</string>
+  <string name="morphe_series_tracker_backup_restored">Αποκαταστάθηκαν %1$s σειρές</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Αυτό το αρχείο δεν είναι υποστηριζόμενο backup σειράς ή είναι πολύ μεγάλο. Η βιβλιοθήκη σας δεν άλλαξε</string>
+  <string name="morphe_series_tracker_error_backup_write">Δεν μπόρεσε να αποθηκεστεί το backup. Προσπαθήστε με άλλη τοποθεσία</string>
+  <string name="morphe_series_tracker_removed">Σειρά αφαιρέθηκε</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Αυτό το επεισόδιο εμφανίζεται πλέον περισσότερες από μία φορές. Επιλέξτε από ποιο θα συνεχίσετε</string>
+  <string name="morphe_series_tracker_recovery_missing">Το αποθηκευμένο σας επεισόδιο δεν βρίσκεται πια σε αυτή τη λίστα αναπαραγωγής. Η αποθηκευμένη θέση σας διατηρείται</string>
+  <string name="morphe_series_tracker_recovery_continue">Συνέχεια με επεισόδιο %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Μπορείτε επίσης να επιλέξετε οποιοδήποτε επεισόδιο παρακάτω. Τα προηγούμενα επεισόδια δεν αλλάζουν</string>
+  <string name="morphe_series_tracker_playback_changed">Η λίστα αναπαραγωγής άλλαξε. Ανοίξτε τη σειρά για να επιλέξετε πού να συνεχίσετε</string>
+  <string name="morphe_series_tracker_playback_boundary">Δεν υπάρχουν περισσότερα επεισόδια σε αυτή την κατεύθυνση</string>
+  <string name="morphe_series_tracker_continue_series">Συνέχεια %1$s</string>
+  <string name="morphe_series_tracker_search_series">Αναζήτηση σειρών</string>
+  <string name="morphe_series_tracker_clear_search">Καθαρισμός αναζήτησης</string>
+  <string name="morphe_series_tracker_no_search_results">Δεν βρέθηκαν σειρές</string>
+  <string name="morphe_series_tracker_untitled_episode">Επεισόδιο χωρίς τίτλο</string>
+  <string name="morphe_series_tracker_unavailable_episode">Μη διαθέσιμο επεισόδιο</string>
 </resources>

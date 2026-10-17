@@ -208,6 +208,22 @@ public final class NavigationBarPatch {
         }
     }
 
+    /**
+     * Injection point.
+     *
+     * @param original The color the app theme gives the system navigation buttons.
+     */
+    public static int getSystemNavigationBarColor(int original) {
+        if (!DISABLE_TRANSLUCENT_NAVIGATION) return original;
+
+        try {
+            return OpaqueSystemBars.systemNavigationBarColor(original);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getSystemNavigationBarColor failure", ex);
+            return original;
+        }
+    }
+
     // Navigation search and settings button
     private static final boolean SHOW_SEARCH_BUTTON = Settings.SHOW_SEARCH_BUTTON.get();
     private static final IntegerSetting SHOW_SEARCH_BUTTON_INDEX = Settings.SHOW_SEARCH_BUTTON_INDEX;
@@ -273,17 +289,6 @@ public final class NavigationBarPatch {
                 Logger.printException(() -> "Failed to set search bar OnClickListener", ex);
             }
         }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static boolean useTranslucentNavigation(boolean original) {
-        if (DISABLE_TRANSLUCENT_NAVIGATION) {
-            return false;
-        }
-
-        return original;
     }
 
     /**

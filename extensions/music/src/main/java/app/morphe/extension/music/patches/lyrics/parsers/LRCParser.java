@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics.parsers;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -28,8 +29,13 @@ import app.morphe.extension.shared.Logger;
  */
 public final class LRCParser {
 
+    /** Runs of whitespace inside a heading, collapsed so {@code [Pre - Chorus]} reads as one phrase. */
+    private static final Pattern HEADING_SPACES = Pattern.compile("\\s+");
+
     /** Tags such as {@code [ar:Artist]} that are not timestamps. */
     private static final String METADATA_TAG_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
+
+    private static final String BG_TAG = "bg:1";
 
     public static final Set<String> CREDIT_META_KEYS = Set.of("ti", "ar", "al", "au");
 
@@ -103,6 +109,13 @@ public final class LRCParser {
 
             List<Long> timestamps = new ArrayList<>(1);
             int index = 0;
+            // A leading bracket that is neither metadata nor a timestamp names the section the line
+            // opens, e.g. [00:10.00][Verse 1] walking down the street. The first one wins.
+            String songPart = null;
+            // Enhanced LRC may put the vocal agent in its own leading bracket, [v1:], rather than in
+            // front of the text. A marker in the text still wins, so the two forms agree.
+            String bracketedAgent = null;
+            boolean isBg = false;
 
             while (index < line.length() && line.charAt(index) == '[') {
                 int end = line.indexOf(']', index);
@@ -111,7 +124,9 @@ public final class LRCParser {
                 }
 
                 String tag = line.substring(index + 1, end);
-                if (isMetadataTag(tag)) {
+                if (BG_TAG.equalsIgnoreCase(tag)) {
+                    isBg = true;
+                } else if (isMetadataTag(tag)) {
                     Long offset = parseOffsetTag(tag);
                     if (offset != null) {
                         fileOffsetMs = offset;
@@ -120,6 +135,12 @@ public final class LRCParser {
                     long time = parseTimestamp(tag);
                     if (time != LyricsLine.NO_TIME) {
                         timestamps.add(time);
+                    } else if (agentMarker(tag) != null) {
+                        if (bracketedAgent == null) {
+                            bracketedAgent = tag;
+                        }
+                    } else if (songPart == null && !tag.trim().isEmpty()) {
+                        songPart = collapseSpaces(tag);
                     }
                 }
 
@@ -142,16 +163,19 @@ public final class LRCParser {
                 words = stripAgentMarker(words, agentMarker);
                 agentId = agentMarker.substring(0, agentMarker.length() - 1);
                 isDuet = isDuetAgent(agentId);
+            } else if (bracketedAgent != null) {
+                agentId = bracketedAgent.substring(0, bracketedAgent.length() - 1);
+                isDuet = isDuetAgent(agentId);
             }
             if (!words.isEmpty()) {
                 for (long time : timestamps) {
-                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text, words,
-                            agentId, isDuet, false));
+                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), LyricsLine.NO_TIME,
+                            text, words, agentId, isDuet, isBg, songPart));
                 }
             } else if (!text.isEmpty()) {
                 for (long time : timestamps) {
-                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text, List.of(),
-                            agentId, isDuet, false));
+                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), LyricsLine.NO_TIME,
+                            text, List.of(), agentId, isDuet, isBg, songPart));
                 }
             }
         }
@@ -169,7 +193,6 @@ public final class LRCParser {
 
     private static BodyParse parseBody(String body, long lineStartMs) {
         if (body.indexOf('<') < 0 && body.indexOf('[') < 0) {
-            // No word-level tags, so this is a plain line.
             return new BodyParse(body, List.of());
         }
 
@@ -189,7 +212,7 @@ public final class LRCParser {
                 final char close = (c == '<') ? '>' : ']';
                 final int end = body.indexOf(close, index);
                 if (end < 0) {
-                    // Unterminated tag: keep the remainder as literal text.
+                    // Unterminated tag: the rest is text, not a tag.
                     full.append(body, index, length);
                     pending.append(body, index, length);
                     break;
@@ -197,7 +220,6 @@ public final class LRCParser {
                 final long time = parseTimestamp(body.substring(index + 1, end));
                 if (time != LyricsLine.NO_TIME) {
                     if (pendingStart == LyricsLine.NO_TIME) {
-                        // First word tag: text accumulated so far precedes any timed word.
                         prefix = pending.toString();
                     } else {
                         String word = pending.toString();
@@ -209,7 +231,7 @@ public final class LRCParser {
                     hasToken = true;
                     pending.setLength(0);
                 } else {
-                    // Not a timestamp (e.g. [chorus]): keep as literal text.
+                    // Not a timestamp, so a section bracket like [chorus] stays in the text.
                     full.append(body, index, end + 1);
                     pending.append(body, index, end + 1);
                 }
@@ -222,7 +244,6 @@ public final class LRCParser {
         }
 
         if (!hasToken) {
-            // No valid word tag was found; treat the whole body as a plain line.
             return new BodyParse(body, List.of());
         }
 
@@ -282,6 +303,16 @@ public final class LRCParser {
 
     public static String formatLine(LyricsLine line) {
         StringBuilder builder = new StringBuilder(formatTimestamp(line.startTimeMs()));
+        if (line.isBG()) {
+            builder.append('[').append(BG_TAG).append(']');
+        }
+        // The section label goes back into its own bracket, right after the timestamp, which is
+        // where a parser looks for it. Dropping it here would strip the label off every line that
+        // comes back out of the cache.
+        String songPart = line.songPart();
+        if (songPart != null && !songPart.isEmpty()) {
+            builder.append('[').append(songPart).append(']');
+        }
         String agentMarker = agentMarker(line.agentId() == null ? null : line.agentId() + ":");
         if (agentMarker != null) {
             builder.append(agentMarker);
@@ -304,22 +335,85 @@ public final class LRCParser {
 
     /**
      * Parses plain (unsynced) lyrics, one line per text line.
+     *
+     * <p>A line that is entirely a bracketed tag (for example {@code [Chorus]}, as Genius and
+     * several other providers publish) is a section heading rather than a lyric. It is dropped
+     * from the returned lines and attached to {@link LyricsLine#songPart()} of the next line
+     * that has content, so the view can show it as a label instead of singing it. Brackets that
+     * only appear inside a line, such as {@code Hello [world]}, stay plain text.
      */
     public static List<LyricsLine> parsePlain(@Nullable String plain) {
+        return parsePlainWithSlots(plain).lines();
+    }
+
+    /**
+     * Plain lyrics together with the position every source line ended up in.
+     *
+     * @param lines Parsed lines, with headings removed.
+     * @param slots For each line of the source text, the index it became in {@code lines}, or
+     *              {@code -1} when it was a heading that was dropped. Callers aligning a
+     *              translation against the source text need this, because a heading in the
+     *              original shifts every following line down by one.
+     */
+    public record PlainLyrics(List<LyricsLine> lines, int[] slots) {
+    }
+
+    /**
+     * Same parse as {@link #parsePlain}, also reporting where each source line landed. Both go
+     * through one loop so the mapping can never drift from the parser that produced it.
+     */
+    public static PlainLyrics parsePlainWithSlots(@Nullable String plain) {
         if (plain == null || plain.isEmpty()) {
-            return Collections.emptyList();
+            return new PlainLyrics(Collections.emptyList(), new int[0]);
         }
 
-        List<LyricsLine> lines = new ArrayList<>();
-        for (String rawLine : plain.split("\\r?\\n")) {
-            lines.add(new LyricsLine(LyricsLine.NO_TIME, rawLine.trim()));
+        String[] raw = plain.split("\\r?\\n");
+        List<LyricsLine> lines = new ArrayList<>(raw.length);
+        int[] slots = new int[raw.length];
+        Arrays.fill(slots, -1);
+        String pendingPart = null;
+        for (int i = 0; i < raw.length; i++) {
+            String trimmed = raw[i].trim();
+            if (isSectionHeader(trimmed)) {
+                pendingPart = sectionLabel(trimmed);
+                continue;
+            }
+            if (trimmed.isEmpty()) {
+                // Keep the blank line as spacing, but do not let it carry the heading.
+                lines.add(new LyricsLine(LyricsLine.NO_TIME, trimmed));
+            } else {
+                lines.add(new LyricsLine(LyricsLine.NO_TIME, LyricsLine.NO_TIME, trimmed,
+                        List.of(), null, false, false, pendingPart));
+                pendingPart = null;
+            }
+            slots[i] = lines.size() - 1;
         }
 
-        // Trailing blank lines add nothing but scroll space.
+        // Trailing blank lines add nothing but scroll space. Their slots now point past the end
+        // of the list, which callers treat as out of range.
         while (!lines.isEmpty() && lines.get(lines.size() - 1).text().isEmpty()) {
             lines.remove(lines.size() - 1);
         }
-        return lines;
+        return new PlainLyrics(lines, slots);
+    }
+
+    /**
+     * @return {@code true} if the whole line is a bracketed heading, such as {@code [Verse 1]}.
+     *         Bracketed metadata such as {@code [ar:Artist]} never reaches plain lyrics, and an
+     *         empty {@code []} is too short to be a heading.
+     */
+    private static boolean isSectionHeader(String trimmed) {
+        return trimmed.length() > 2 && trimmed.charAt(0) == '['
+                && trimmed.charAt(trimmed.length() - 1) == ']';
+    }
+
+    /** The heading text without its brackets, with runs of whitespace collapsed. */
+    private static String sectionLabel(String trimmed) {
+        return collapseSpaces(trimmed.substring(1, trimmed.length() - 1));
+    }
+
+    private static String collapseSpaces(String text) {
+        return HEADING_SPACES.matcher(text).replaceAll(" ").trim();
     }
 
     /**

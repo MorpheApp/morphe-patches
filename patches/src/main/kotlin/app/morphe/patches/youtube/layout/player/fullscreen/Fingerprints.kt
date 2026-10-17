@@ -10,7 +10,6 @@ package app.morphe.patches.youtube.layout.player.fullscreen
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -64,20 +63,11 @@ internal object PlayerDragGestureInitFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "I",
     parameters = listOf("I", "I", "I", "I"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IGET_OBJECT,
-        Opcode.IF_EQZ,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.IGET,
-        Opcode.IF_NE,
-        Opcode.IGET,
-        Opcode.IF_NE,
-        Opcode.CONST_4,
-        Opcode.RETURN
-    ) + fieldAccess(
-        opcode = Opcode.IGET_OBJECT,
-        type = "/NextGenWatchLayout;",
-        location = MatchAfterImmediately()
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;"
+        )
     )
 )
 
@@ -88,6 +78,24 @@ internal object YouTubePlayerOverlaysLayoutConstructorFingerprint : Fingerprint(
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
     filters = listOf(
         opcode(Opcode.RETURN_VOID)
+    )
+)
+
+/**
+ * The video view is a field of a superclass with an obfuscated name.
+ */
+internal object PlayerViewConstructorFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/player/ui/PlayerView;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
+    filters = listOf(
+        string("videoView has already been set"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/view/View;",
+            location = MatchAfterWithin(5)
+        )
     )
 )
 

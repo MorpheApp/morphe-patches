@@ -43,15 +43,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_layout_updates_summary">Sunucunun uygulama düzenini güncellemesini engeller</string>
   <string name="morphe_disable_layout_updates_user_dialog_message">"Uygulama düzeni, ilk yüklendiğinde kullanılan düzene geri döner.
 
-Bazı sunucu tarafı düzenlemeler geri alınamayabilir.
+Sunucu taraflı bazı düzenler eski hâline dönmeyebilir.
 
 Değişiklikler şunları içerir:
-• Oynatıcı açılır menüsündeki (veya ilgili ayarlardaki) bileşenler çalışmayabilir.
-• Kayan sayılar animasyonlu değildir.
-• Kitaplık sekmesi gösterilir.
-• Video açıklamasındaki müzik bölümü çalışmayabilir.
-• Oynatıcı açılır menü öğeleri gizlenemez.
-• Kitaplık sekmesinde hesap değiştirme düğmesi görünmeyebilir."</string>
+
+• Oynatıcının açılır menüsündeki bileşenler (veya ilgili ayarlar) çalışmayabilir
+• Kayan sayılar animasyonlu gösterilmez
+• Kitaplık sekmesi gösterilir
+• Video açıklamasındaki müzik bölümü çalışmayabilir
+• Oynatıcının açılır menüsündeki öğeler gizlenemez
+• Hesap değiştirme düğmesi Kitaplık sekmesinde görünmeyebilir"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Akış açılır menü filtresini etkinleştir</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Akış açılır menü filtresi</string>
@@ -133,7 +134,7 @@ Değişiklikler şunları içerir:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles\'ı gizle</string>
   <string name="morphe_hide_youtube_doodles_summary">YouTube logosundaki dönemsel ve etkinlik tabanlı animasyonları gizler</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodles\'ın gösterilmesi, özel başlıkların görüntülenmesini engelleyebilir.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodles\'ın gösterilmesi, özel başlıkların görüntülenmesini engelleyebilir</string>
   <string name="morphe_hide_channel_bar_title">Kanal çubuğunu gizle</string>
   <string name="morphe_hide_channel_watermark_title">Kanal filigranını gizle</string>
   <string name="morphe_hide_chapters_timeline_button_title">Bölümleri ve \'Bu videoda\' düğmesini gizle</string>
@@ -193,7 +194,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_how_this_was_made_section_title">\'Bu nasıl yapıldı\' bölümünü gizle</string>
   <string name="morphe_hide_hype_points_title">Hype puanlarını gizle</string>
   <string name="morphe_hide_info_cards_section_title">Bilgi kartları bölümünü gizle</string>
-  <string name="morphe_hide_key_concepts_section_title">\'Anahtar kavramlar\' bölümünü gizle</string>
+  <string name="morphe_hide_key_concepts_section_title">\'Anahtar Kavramlar\' bölümünü gizle</string>
   <string name="morphe_hide_quizzes_section_title">Testler bölümünü gizle</string>
   <string name="morphe_hide_search_inside_this_video_section_title">\'Bu videodaki aramayı\' bölümünü gizle</string>
   <string name="morphe_hide_subscribe_button_title">Abone ol düğmesini gizle</string>
@@ -281,7 +282,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_menu_button_summary">Her yorumun 3 noktalı menü düğmesini gizler</string>
   <string name="morphe_hide_comments_preview_comment_title">Ön izlenen yorumu gizle</string>
   <string name="morphe_hide_comments_preview_comment_summary">Tam yorumlar bölümünü açmadan önce videonun altındaki yorum ön izlemesini gizler</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Yorum Morphe tarafından gizlendi...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Yorum Morphe tarafından gizlendi…</string>
   <string name="morphe_minimal_comments_button_title">Minimal yorumlar düğmesini etkinleştir</string>
   <string name="morphe_minimal_comments_button_summary">Yorumlar düğmesinde görüntülenen kayan kartları ve sayfa seçicisini gizler</string>
   <string name="morphe_hide_comments_thanks_button_title">Teşekkürler düğmesini gizle</string>
@@ -490,7 +491,7 @@ API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRoute
   <string name="morphe_vot_openrouter_open_website">OpenRouter.ai\'ı aç</string>
   <string name="morphe_vot_openrouter_error">OpenRouter çevirisi başarısız oldu (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">MyMemory günlük limiti aşıldı</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Sonraki kullanım %s\'de.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Sonraki kullanım %s\'de</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Bugünün ücretsiz MyMemory çeviri kotasını (5.000 karakter) kullandınız. Günlük limiti 50.000 karaktere çıkarmak için ayarlarınızda bir MyMemory e-postası ekleyin veya farklı bir çeviri hizmetine geçin</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Bugünün MyMemory çeviri kotasını (50.000 karakter) kullandınız. Farklı bir çeviri hizmetine geçin veya yarın tekrar deneyin</string>
   <string name="morphe_vot_mymemory_error">MyMemory çevirisi başarısız oldu (durum %s)</string>
@@ -560,10 +561,29 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_override_flyout_menu_summary">YouTube sırası yerine Morphe sırasını açar</string>
   <string name="morphe_queue_add_flyout_menu_title">Akış açılır menüsüne kuyruk menü öğesi ekle</string>
   <string name="morphe_queue_add_flyout_menu_summary">Ek bir açılır menü öğesi ekler. \"Kuyruğa ekle\" gösterilmiyorsa bunu etkinleştirin.</string>
+  <string name="morphe_local_queue_title">Premium tarzı kuyruk</string>
+  <string name="morphe_local_queue_summary">"Morphe kuyruğunu cihazda bulunan, kendi kendine oynayan ve sürükleyerek yeniden sıralanabilen bir kuyrukla değiştirir
+
+Bilgi: Sıradaki video yalnızca YouTube ekrandayken başlar"</string>
+  <string name="morphe_local_queue_sheet_title">Kuyruk</string>
+  <string name="morphe_local_queue_open">Kuyruk (%s)</string>
+  <string name="morphe_local_queue_clear">Tümünü temizle</string>
+  <string name="morphe_local_queue_empty">Sırada hiçbir şey yok</string>
+  <string name="morphe_local_queue_empty_hint">Herhangi bir videoda Sıradakini Oynat\'ı kullanın</string>
+  <string name="morphe_local_queue_now_playing">Şimdi oynatılıyor</string>
+  <string name="morphe_local_queue_play_next">Sıradakini Oynat</string>
+  <string name="morphe_local_queue_play_last">Sıradakilerin en sonunda çal</string>
+  <string name="morphe_local_queue_reorder">Yeniden sırala</string>
+  <string name="morphe_local_queue_remove">Kaldır</string>
+  <string name="morphe_local_queue_added">Sıraya eklendi</string>
+  <string name="morphe_local_queue_unavailable">Bu video kuyruğa eklenemedi</string>
+  <string name="morphe_local_queue_playlist_unsupported">Çalma listeleri kuyruğa eklenemez</string>
+  <string name="morphe_local_queue_full">Sıra dolu</string>
+  <string name="morphe_local_queue_play_failed">Video başlatılamadı</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Açılır menüde reklam beyaz listesi</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Bu videonun kanalında reklamların oynatılmasına izin veren bir açılır menü öğesi ekler.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Bu özellik PotHelper kullanmayı veya \"Video akışlarını taklit et\" seçeneğini TV ya da Android VR oturum açma olarak değiştirmeyi gerektirebilir.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Bu özellik için PotHelper kullanmanız veya \"Video akışlarını kandırma\" seçeneğini TV veya Android VR girişi olarak ayarlamanız gerekebilir</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Açılır menüde hız beyaz listesi</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Bu videonun kanalını her zaman 1.0x hızda oynatan bir açılır menü öğesi ekler.</string>
   <string name="morphe_queue_manager_check_failed_auth">Giriş yapılmadı</string>
@@ -746,6 +766,9 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_preferred_caption_language_title">Tercih edilen altyazı dili</string>
   <string name="morphe_preferred_caption_language_summary">Önce sağlayıcı altyazılarını seçer, ardından otomatik olarak tercih edilen dile çevirir</string>
   <string name="morphe_preferred_caption_language_entry_off">Kapalı</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Ek otomatik çeviri dilleri ekleyin</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Otomatik çeviri menüsüne daha fazla dil ekler</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Altyazı çerezlerini ayarla</string>
   <string name="morphe_set_caption_cookies_summary">"YouTube'un yerleşik bir hatasını düzeltir; eksik çerezler nedeniyle otomatik çeviri altyazıları kullanılamayabilir
@@ -785,9 +808,9 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_hide_navigation_button_labels_title">Gezinme düğmesi etiketlerini gizle</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Yeni içerik noktasını gizle</string>
   <string name="morphe_hide_navigation_bar_title">Gezinme çubuğunu gizle</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Bu, 'Siz' sekmesi de dahil olmak üzere gezinme çubuğunu tamamen gizler.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Bu, gezinme çubuğunu tamamen gizler, 'Siz' sekmesi dahil.
 
-Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla Ayarlar düğmesini etkinleştirin."</string>
+Ayarlar'a erişmek için Ayarlar düğmesini Genel → Araç Çubuğu → Ayarları Göster üzerinden etkinleştirin"</string>
   <string name="morphe_narrow_navigation_buttons_title">Dar gezinme düğmelerini etkinleştir</string>
   <string name="morphe_narrow_navigation_buttons_summary">Düğmeler arasındaki yatay boşluğu azaltır</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Etiketsiz gezinme düğmelerini devre dışı bırak</string>
@@ -1025,7 +1048,7 @@ Otomotiv düzeni
   <string name="morphe_tablet_layout_in_player_summary">"Eski oynatıcı düzenini geri yükler
 
 Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha fazla video' katmanı kullanılamayabilir"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Bunu etkinleştirmek, oynatıcı düzeninin bazı özelliklerini, örneğin yorum bölümünü veya oynatıcının altında gösterilen \'Daha fazla video\' bölümünü bozabilir.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Bunu etkinleştirmek, yorum bölümü veya oynatıcının altında gösterilen \"Daha fazla video\" gibi bazı oynatıcı düzeni özelliklerini bozabilir</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Eski altyazı davranışını geri yükle</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Oynatma listesine kaydetme için eski düzeni geri getir</string>
@@ -1090,6 +1113,12 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Otomatik akış yenilemeyi devre dışı bırak</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Akışların güncelliğini yitirdikten sonra otomatik olarak yenilenmesini engeller</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Akış kartı düzeni</string>
+  <string name="morphe_feed_card_layout_entry_1">Klasik</string>
+  <string name="morphe_feed_card_layout_entry_2">Kartlar</string>
+  <string name="morphe_feed_card_layout_entry_3">Beğenme, yorum yapma ve kaydetme düğmeleri içeren kartlar</string>
+  <string name="morphe_feed_card_layout_comments">Yorumlar</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mini oynatıcıyı sürdürmeyi devre dışı bırak</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Uygulama başlangıcında görünen YouTube Premium özelliği \'İzlemeye devam edin\' mini oynatıcısını devre dışı bırakır</string>
@@ -1124,9 +1153,6 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Geri düğmesi akıştan çıkar</string>
   <string name="morphe_back_button_always_exits_feed_summary">Geri tuşuna basmak, akışın en üstüne kaydırmak yerine her zaman uygulamadan çıkar.  This is a placeholder to ensure validity.</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Sistem yazı tipini zorla</string>
-  <string name="morphe_force_system_font_summary">Uygulamayı YouTube Sans yerine cihaz yazı tipiyle gösterir</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Durum çubuğunu gizle</string>
   <string name="morphe_hide_status_bar_summary">Sistem durum çubuğunu gizler. Bir anlığına göstermek için üst kenardan aşağı kaydırın</string>
@@ -1207,7 +1233,7 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz boyutlarını taklit et</string>
   <string name="morphe_spoof_device_dimensions_summary">Bunu etkinleştirmek daha yüksek video kalitelerini açabilir</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Bunu etkinleştirmek video oynatma takılmaları, daha kötü pil ömrü, ve bilinmeyen yan etkiler yaşamanıza sebep olabilir.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Bunu etkinleştirmek video oynatma takılmaları, daha kötü pil ömrü, ve bilinmeyen yan etkiler yaşamanıza sebep olabilir</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Titreşimli geri bildirim</string>
   <string name="morphe_disable_haptic_feedback_summary">Hangi etkileşimlerin cihaz titreşimini tetikleyeceğini seçin</string>
@@ -1217,7 +1243,7 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Dokunma ve basılı tutma titreşimini devre dışı bırak</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Yakınlaştırma titreşimini devre dışı bırak</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Yakın zamanda hesap giriş bilgilerinizi değiştirdiyseniz MicroG\'yi kaldırıp yeniden yükleyin.</string>
+  <string name="microg_offline_account_login_error">Yakın zamanda hesap giriş bilgilerinizi değiştirdiyseniz MicroG\'yi kaldırıp yeniden yükleyin</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Bağlantı yönlendirmelerini atla</string>
   <string name="morphe_bypass_link_redirects_summary">İzleme bağlantısını (youtube.com/redirect) atlayarak orijinal bağlantıyı doğrudan açar</string>
@@ -1297,18 +1323,22 @@ Sınırlamalar:
 • Ekran gerçekten HDR gösteremiyorsa renkler yanlış görünebilir
 • Kod çözücü HDR'yi işleyemezse oynatma başarısız olabilir
 • HDR hala spoof video akışı istemcisine bağlıdır"</string>
-  <string name="morphe_force_avc_codec_title">AVC (H.264) kodeğini zorla</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Faydaları:
-• Pil ömrünü iyileştirebilir
-• Eski cihazlarda eksik video çözünürlüklerini geri yükleyebilir
-
-Sınırlamalar:
-• Maksimum çözünürlük 1080p'dir
-• Video oynatma, VP9 veya AV1'den daha fazla internet verisi kullanır
-• HDR videolar AVC kullanmaz
-• Bazı cihazlar AVC'yi zorlayamaz"</string>
+  <string name="morphe_video_codec_title">Video kodek</string>
+  <string name="morphe_video_codec_entry_default">Varsayılan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\'i Android VR veya Android Studio olarak ayarlayın</string>
+  <string name="morphe_video_codec_avc_not_available">AVC\'yi zorlamak için \'Video akışlarını taklit et\' ayarını \'Android Studio\', \'Android VR\' veya \'visionOS\' olarak değiştirin</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Pil ömrünü artırabilir ve oynatmadaki takılmaları düzeltebilir
+• AV1'e göre daha fazla internet verisi tüketir
+
+AVC (H.264)
+• 'Android Studio', 'Android VR' veya 'visionOS' sahte video akışı istemcisi (Spoof video stream client) seçeneğini gerektirir
+• Pil ömrünü daha da iyileştirebilir
+• Eski cihazlarda eksik olan video çözünürlüklerini geri getirebilir
+• Maksimum çözünürlük 1080p'dir
+• HDR videolar AVC kullanamayabilir
+• Bazı cihazlar AVC kullanmaya zorlanamaz
+"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Gelişmiş kalite menüsünü aç</string>
   <string name="morphe_advanced_video_quality_menu_summary">Kalite seçim menüsünü atlar ve doğrudan Gelişmiş kalite menüsünü açar</string>
@@ -1323,8 +1353,9 @@ Sınırlamalar:
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS istemcisi kullanılırken yazılımsal AV1 kod çözmeye izin verir</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Bu ayarı etkinleştirmek yazılım tabanlı AV1 kod çözmeyi kullanabilir.
 
-AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
+AV1 ile video oynatma takılabilir veya kare atlayabilir"</string>
   <string name="morphe_spoof_video_streams_about_title">Taklit yan etkileri</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Oynatma 1. dakikada başarısız olabilir</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Ses Parçası menüsü eksik</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeği yok</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersif modu mevcut değil</string>
@@ -1351,4 +1382,154 @@ Sınırlama: Eski stil 'Diğer videolar' katmanına geri döner"</string>
   <string name="morphe_player_icon_style_entry_bold">Kalın</string>
   <string name="morphe_player_icon_style_entry_custom">Özel</string>
   <string name="morphe_shorts_icon_style_title">Shorts simge stili</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Dizi Takipçisi</string>
+  <string name="morphe_series_tracker_screen_summary">Çalma listelerini dizi olarak takip edin ve konumunuzu koruyun</string>
+  <string name="morphe_series_tracker_title">Dizi takibini etkinleştir</string>
+  <string name="morphe_series_tracker_summary">Geçmişe bir Dizi sayfası ekler ve çalma listelerine Bir Diziyi Takip Et seçeneği ekler</string>
+  <string name="morphe_series_tracker_show_button_title">Dizi Takipçisi düğmesini göster</string>
+  <string name="morphe_series_tracker_show_button_summary">Mevcut videonun serisini takip etmek veya açmak için bir oynatıcı düğmesi ekler.</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Seri takibi ilerlemesini kaydet</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Bu telefonda, kaydedilmiş dizilerin ve yer imlerinin kaydını oynatın.</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Gezinti çubuğunda geçmişi göster</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Anasayfa, Abonelikler, Bildirimler, Geçmiş ve Siz</string>
+  <string name="morphe_series_tracker_ui_cancel">İptal</string>
+  <string name="morphe_series_tracker_ui_save">Kaydet</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Yer imini kaydet</string>
+  <string name="morphe_series_tracker_ui_series_name">Dizi adı</string>
+  <string name="morphe_series_tracker_ui_series_options">Dizi seçenekleri</string>
+  <string name="morphe_series_tracker_ui_library_options">Kütüphane seçenekleri</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Bölümleri yenile</string>
+  <string name="morphe_series_tracker_ui_rename">Yeniden adlandır</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Oynatma listesini YouTube\'da aç</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Kütüphaneden kaldır</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Oynatma listesi bağlantısı veya Kimliği</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Tüm yerel ilerlemeyi temizle</string>
+  <string name="morphe_series_tracker_ui_clear_history">Geçmişi temizle</string>
+  <string name="morphe_series_tracker_clear_progress_title">Tüm yerel ilerleme silinsin mi?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Bu işlem, her video için konumları, izlenen ayarları ve devam eden seçimleri temizler. Kaydedilen diziler ve katalogları kalır. Kayıt etkinleştirilmişse, yeni oynatma kaydedilecektir</string>
+  <string name="morphe_series_tracker_ui_mark_watched">İzlenileni işaretle</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">İzlenilmeyeni işaretle</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Otomatik durum kullan</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">0:00\'dan yeniden başlat</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">0:00\'dan itibaren tekrar oynat</string>
+  <string name="morphe_series_tracker_ui_status_saved">Durum kaydedildi</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Kaydetmeyi yeniden dene</string>
+  <string name="morphe_series_tracker_ui_previous_100">Önceki 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Sonraki 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Kaydedilen videoyu aç</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Yerel ilerleme temizlendi</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Serilerinizi görüntülemek için \"Siz\" bölümünden Geçmiş\'i açın.</string>
+  <string name="morphe_series_tracker_ui_watch_history">Geçmişi izle</string>
+  <string name="morphe_series_tracker_ui_series">Diziler</string>
+  <string name="morphe_series_tracker_ui_history">Geçmiş</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Abonelikler</string>
+  <string name="morphe_series_tracker_ui_notifications">Bildirimler</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Kaydedilmiş seriler yükleniyor…</string>
+  <string name="morphe_series_tracker_empty_library">Bölümlerini takip etmek için bir oynatma listesini izlemeye alın</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Çalma listesi yer imi</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Bölümler yenileniyor…</string>
+  <string name="morphe_series_tracker_ui_all_series">Tüm diziler</string>
+  <string name="morphe_series_tracker_watched">İzlendi</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Bölümler yükleniyor…</string>
+  <string name="morphe_series_tracker_ui_more_options">Daha fazla seçenek</string>
+  <string name="morphe_series_tracker_record_consent">"İlerleme kaydı yalnızca kayıtlı dizileriniz ve yer imi eklediğiniz videolarınız için tutulur.
+
+Bu kitaplık cihazınızda saklanır ve YouTube hesapları arasında paylaşılır. YouTube'un duraklatma ve geçmişi temizleme kontrolleri bu durumu değiştirmez. Kayıtları silmek için Dizi → Diğer → Yerel ilerlemeyi temizle yolunu izleyin.
+
+Gizli moddayken, hesap kimliği kullanılamadığında veya farklı bir hesaba geçtiğinizde otomatik kayıt durdurulur. Bu özelliği ilgili hesapla kullanmak için takibi yeniden etkinleştirin"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Gizli modda veya YouTube mevcut hesap durumunu yüklemeden önce izleme özelliği etkinleştirilemez. Ana Sayfa\'ya dönüp tekrar deneyin. Oturum açmanız gerekmez</string>
+  <string name="morphe_series_tracker_enable">Yerel izlemeyi etkinleştir</string>
+  <string name="morphe_series_tracker_tracking_paused">İlerleme kaydı kapalı</string>
+  <string name="morphe_series_tracker_resume_at">%1$s noktasından devam et</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s bölümler izlendi</string>
+  <string name="morphe_series_tracker_episode_position">Bölüm %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">%3$s dizisinin %1$s-%2$s bölümleri</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Bölümleri yüklemeyi denemek için sayfayı yenileyin. Gizli oynatma listeleri hesap erişimi gerektirir; bunların yer imleri yine de YouTube\'da açılır</string>
+  <string name="morphe_series_tracker_open_failed">YouTube bu bölümü açamadı</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube bu oynatma listesini açamadı</string>
+  <string name="morphe_series_tracker_plan_changed">Bir bölüm seç</string>
+  <string name="morphe_series_tracker_plan_caught_up">Güncel</string>
+  <string name="morphe_series_tracker_plan_none">Oynatılabilir bölüm yok</string>
+  <string name="morphe_series_tracker_saved_position">Kaydedilen video · %1$s</string>
+  <string name="morphe_series_tracker_follow">Seriyi takip et</string>
+  <string name="morphe_series_tracker_view_series">Dizileri görüntüle</string>
+  <string name="morphe_series_tracker_continue">Devam et</string>
+  <string name="morphe_series_tracker_start_here">Buradan başlat</string>
+  <string name="morphe_series_tracker_start_saved">Başlangıç ​​noktası kaydedildi</string>
+  <string name="morphe_series_tracker_watched_to_here">Buraya kadar izledim.</string>
+  <string name="morphe_series_tracker_marked">İzlendi olarak işaretlenen bölümler</string>
+  <string name="morphe_series_tracker_undo">Geri al</string>
+  <string name="morphe_series_tracker_enable_short">Etkinleştir</string>
+  <string name="morphe_series_tracker_new_episode">1 yeni bölüm</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s yeni bölüm</string>
+  <string name="morphe_series_tracker_record_short">İlerlemeyi bu cihazda kaydet</string>
+  <string name="morphe_series_tracker_follow_consent">"Dizileriniz ve ilerleme durumunuz bu cihazda saklanır ve YouTube hesapları arasında paylaşılır. YouTube geçmişi ayarları bunları değiştirmez. İlerleme durumunu Dizi menüsünden silebilirsiniz.
+
+Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değiştirildiğinde durur"</string>
+  <string name="morphe_series_tracker_follow_unavailable">Bölümler yüklenemedi. Oynatma listesini yer imi olarak kaydedebilirsiniz</string>
+  <string name="morphe_series_tracker_error_pending_full">Çok fazla kaydedilmemiş değişiklik var. Önce kaydetmeyi tekrar deneyin</string>
+  <string name="morphe_series_tracker_error_storage_busy">Kaydetme işlemi devam ediyor. Tekrar deneyin</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Bölüm yüklenirken bir yoğunluk yaşanıyor. Tekrar deneyin</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Depolama alanı kullanılamıyor. Kaydedilmiş verileriniz saklandı</string>
+  <string name="morphe_series_tracker_error_storage_save">Değişiklikler kaydedilemedi. YouTube\'u kapatmadan önce kaydetmeyi tekrar deneyin</string>
+  <string name="morphe_series_tracker_error_conflict">Bu seri zaten kaydedilmiş veya oynatma listesi değiştirilmiş. Yeniden açın</string>
+  <string name="morphe_series_tracker_error_series_changed">Bu seri değişti veya kaldırıldı. Kitaplığı yeniden açın</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Çalma listesi değişti. Bölümü tekrar seçin</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Bu bölüm mevcut değil. Başka bir tane seçin</string>
+  <string name="morphe_series_tracker_error_name_required">Bir seri adı girin</string>
+  <string name="morphe_series_tracker_error_playlist_input">Bir YouTube oynatma listesi bağlantısı veya oynatma listesi kimliği girin</string>
+  <string name="morphe_series_tracker_error_retry_later">Lütfen tekrar yenilemeden önce bekleyin</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Bölümler yüklenemedi. Daha sonra tekrar deneyin</string>
+  <string name="morphe_series_tracker_error_operation">Değişiklik tamamlanamadı. Tekrar deneyin</string>
+  <string name="morphe_series_tracker_error_resume">Sürdürme işlemi onaylanamadı. Oynatıcıyı kontrol edin ve tekrar deneyin</string>
+  <string name="morphe_series_tracker_followed">Takip eden seri</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Bu video bu oynatma listesinde değil</string>
+  <string name="morphe_series_tracker_finding_playlists">Çalma listeleri bulunuyor…</string>
+  <string name="morphe_series_tracker_paste_playlist">Çalma listesi bağlantısını yapıştırın</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Çalma listesi bulunamadı</string>
+  <string name="morphe_series_tracker_no_available_episodes">Kullanılabilir bölüm yok</string>
+  <string name="morphe_series_tracker_hide_watched">İzlenenleri gizle</string>
+  <string name="morphe_series_tracker_watch_previous">Önceki bölümleri izlendi olarak işaretle</string>
+  <string name="morphe_series_tracker_order_starts_with">Şuradan başlat: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Bölüm sıralaması</string>
+  <string name="morphe_series_tracker_playlist_order">Çalma listesi sırası</string>
+  <string name="morphe_series_tracker_reverse_order">Çalma listesi sırasını tersine çevir</string>
+  <string name="morphe_series_tracker_view_count">%1$s görüntüleme</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s görünüm</string>
+  <string name="morphe_series_tracker_completion_title">Bölümleri izlendi olarak işaretle</string>
+  <string name="morphe_series_tracker_completion_summary">En az %1$s%% izlendiğinde ve en fazla 90 saniye kaldığında veya %2$s saniye kaldığında</string>
+  <string name="morphe_series_tracker_completion_explanation">Belirlenen eşiklerden herhangi birine ulaşıldığında, bölüm otomatik olarak izlenmiş olarak işaretlenir. Yüzde kuralı ayrıca bölümün bitimine en fazla 90 saniye kalmış olmasını gerektirir; böylece uzun bölümlerin son kısımları atlanmamış olur. Kalan süre kuralı, bir dakikadan uzun videolar için geçerlidir; devre dışı bırakmak için bu değeri 0 olarak ayarlayın. Yapılan değişiklikler, bundan sonraki izleme ilerlemesi güncellemeleri için geçerli olacaktır. Manuel olarak yapılan \"izlendi/izlenmedi\" seçimleri korunur</string>
+  <string name="morphe_series_tracker_completion_percent">İzleme yüzdesi (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Kalan saniye (0-300; 0 devre dışı bırakır)</string>
+  <string name="morphe_series_tracker_completion_range">%1$s ile %2$s arasında bir değer girin</string>
+  <string name="morphe_series_tracker_youtube_progress_title">YouTube ilerleme durumunu kullan</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Başka bir cihazda izledikten sonra seriye kaldığınız yerden devam edin.</string>
+  <string name="morphe_series_tracker_sync_consent">Mevcut YouTube hesabınızdaki takip ettiğiniz diziler için izlenme durumunu ve kaldığınız yerleri okuyun. Bu telefona yalnızca eşleşen bölümler kaydedilir. Kontroller, dizi kitaplığı açıkken ve \"Devam Et\" işleminden önce gerçekleştirilir. Diğer cihazınızda YouTube geçmişinin etkinleştirilmiş olması gerekir</string>
+  <string name="morphe_series_tracker_sync_checking">YouTube ilerlemesi kontrol ediliyor…</string>
+  <string name="morphe_series_tracker_sync_failed">YouTube ilerleme durumu kullanılamıyor. Kaydedilmiş ilerleme durumu kullanılıyor</string>
+  <string name="morphe_series_tracker_sync_partial">Bazı YouTube ilerleme bilgileri kullanılamıyor. Kaydedilen konumlar korunur</string>
+  <string name="morphe_series_tracker_backup_title">Yedekleme ve geri yükleme</string>
+  <string name="morphe_series_tracker_backup_summary">Dizi kütüphanenizi bir dosyaya kaydedin veya bir yedeği geri yükleyin.</string>
+  <string name="morphe_series_tracker_backup_explanation">Kaydedilenler; dizileri, bölüm konumlarını ve izleme tercihlerini takip eder. Kayıt ve YouTube ilerleme durumu izinleri dahil değildir</string>
+  <string name="morphe_series_tracker_backup_save">Yedek kaydet</string>
+  <string name="morphe_series_tracker_backup_restore">Yedeği geri yükle</string>
+  <string name="morphe_series_tracker_backup_preview">%1$s dizi ekleyin. Kitaplığınızda halihazırda bulunan %2$s dizi korunur. Mevcut video ilerleme durumu korunur</string>
+  <string name="morphe_series_tracker_backup_saved">Seri yedeği kaydedildi</string>
+  <string name="morphe_series_tracker_backup_restored">%1$s serisi yeniden yüklendi</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Bu dosya desteklenen bir seri yedeği değil ya da boyutu çok büyük. Kitaplığınızda herhangi bir değişiklik yapılmadı</string>
+  <string name="morphe_series_tracker_error_backup_write">Yedekleme kaydedilemedi. Başka bir konum deneyin</string>
+  <string name="morphe_series_tracker_removed">Diziler kaldırıldı</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Bu bölüm artık birden fazla kez görünüyor. Hangi noktadan devam edeceğinizi seçin</string>
+  <string name="morphe_series_tracker_recovery_missing">Kaydettiğiniz bölüm artık bu çalma listesinde değil. Kaydedilen konumunuz korunuyor</string>
+  <string name="morphe_series_tracker_recovery_continue">Bölüm %1$s · %2$s ile devam edin</string>
+  <string name="morphe_series_tracker_recovery_choose">Ayrıca aşağıdan dilediğiniz bölümü seçebilirsiniz. Daha önceki bölümler değiştirilmemiştir</string>
+  <string name="morphe_series_tracker_playback_changed">Bu oynatma listesi değişti. Nereden devam edeceğinizi seçmek için seriyi açın</string>
+  <string name="morphe_series_tracker_playback_boundary">Bu doğrultuda başka bölüm yok.</string>
+  <string name="morphe_series_tracker_continue_series">%1$s ile devam et</string>
+  <string name="morphe_series_tracker_search_series">Dizileri ara</string>
+  <string name="morphe_series_tracker_clear_search">Aramayı temizle</string>
+  <string name="morphe_series_tracker_no_search_results">Dizi bulunamadı</string>
+  <string name="morphe_series_tracker_untitled_episode">İsimsiz bölüm</string>
+  <string name="morphe_series_tracker_unavailable_episode">Mevcut olmayan bölüm</string>
 </resources>

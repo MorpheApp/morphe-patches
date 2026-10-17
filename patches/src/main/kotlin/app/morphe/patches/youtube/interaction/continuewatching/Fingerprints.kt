@@ -65,7 +65,6 @@ internal object AutoplayConfirmDialogEnabledFingerprint : Fingerprint(
         literal(45381478L),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            parameters = listOf("J", "Z"),
             returnType = "Z",
             location = MatchAfterWithin(2)
         ),

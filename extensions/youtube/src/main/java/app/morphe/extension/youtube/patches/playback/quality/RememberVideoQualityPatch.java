@@ -23,7 +23,6 @@ import app.morphe.extension.youtube.patches.VideoInformation.*;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import j$.util.Optional;
-import kotlin.Unit;
 
 @SuppressWarnings({"rawtypes", "unused"})
 public class RememberVideoQualityPatch {
@@ -32,17 +31,6 @@ public class RememberVideoQualityPatch {
     private static final IntegerSetting videoQualityMobile = Settings.VIDEO_QUALITY_DEFAULT_MOBILE;
     private static final IntegerSetting shortsQualityWifi = Settings.SHORTS_QUALITY_DEFAULT_WIFI;
     private static final IntegerSetting shortsQualityMobile = Settings.SHORTS_QUALITY_DEFAULT_MOBILE;
-
-    static {
-        ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
-            if (!isOpen) {
-                // A regular video that stayed loaded while a Short played is not started again,
-                // so it would otherwise be given the quality of the Short.
-                VideoInformation.setDesiredVideoResolution(getDefaultQualityResolution());
-            }
-            return Unit.INSTANCE;
-        });
-    }
 
     public static boolean shouldRememberVideoQuality() {
         BooleanSetting preference = ShortsPlayerState.isOpen()
@@ -105,10 +93,14 @@ public class RememberVideoQualityPatch {
      * (e.g. 'Auto (recommended)' - 360p/480p, 'Higher picture quality' - 720p/1080p...)
      * If the maximum video quality available is 1080p and the default video quality is 2160p,
      * 1080p is used as an initial video quality.
-     * <p>
-     * Called before {@link #newVideoStarted(VideoInformation.PlaybackController)}.
      */
     public static Optional getInitialVideoQuality(Optional optional) {
+        if (optional.isPresent() && VideoInformation.isQualitySelectedByUser()) {
+            // YouTube reloads the video with the quality selected by the user.
+            Logger.printDebug(() -> "initialVideoQuality selected by the user: " + optional.get());
+            return optional;
+        }
+
         int preferredQuality = getDefaultQualityResolution();
         if (preferredQuality != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
             Logger.printDebug(() -> "initialVideoQuality: " + preferredQuality);
@@ -123,6 +115,8 @@ public class RememberVideoQualityPatch {
      */
     public static void userChangedShortsQuality(int userSelectedQualityIndex) {
         try {
+            VideoInformation.userSelectedQuality();
+
             if (shouldRememberVideoQuality()) {
                 VideoQualityInterface[] currentQualities = VideoInformation.getCurrentQualities();
                 if (currentQualities == null) {
@@ -139,11 +133,19 @@ public class RememberVideoQualityPatch {
 
     /**
      * Injection point.  Regular videos.
+     * @param quality Quality selected by the user.
+     */
+    public static void userChangedQuality(VideoQualityInterface quality) {
+        userChangedQuality(quality.patch_getResolution());
+    }
+
+    /**
      * @param videoResolution Human-readable resolution: 480, 720, 1080.
      */
     public static void userChangedQuality(int videoResolution) {
         Utils.verifyOnMainThread();
         Logger.printDebug(() -> "User changed quality to: " + videoResolution);
+        VideoInformation.userSelectedQuality();
 
         if (shouldRememberVideoQuality()) {
             saveDefaultQuality(videoResolution);
@@ -151,9 +153,45 @@ public class RememberVideoQualityPatch {
     }
 
     /**
-     * Injection point.
+     * @return If a default quality is set, so YouTube must not choose the quality automatically.
      */
-    public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
-        VideoInformation.setDesiredVideoResolution(getDefaultQualityResolution());
+    private static boolean isDefaultQualitySet() {
+        return getDefaultQualityResolution() != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * If this flag is off, YouTube ignores the initial video quality set by
+     * {@link #getInitialVideoQuality(Optional)} and automatically chooses the quality
+     * when the video starts, both on the device and on the server with SABR streams.
+     *
+     * @return If the initial video quality is used as a fixed quality.
+     */
+    public static boolean useInitialVideoQuality(boolean original) {
+        return original || isDefaultQualitySet();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * If this flag is off, the minimum and maximum quality allowed by the player
+     * are not sent with the SABR requests, and the server can choose another quality.
+     */
+    public static boolean sendQualityConstraintToServer(boolean original) {
+        return original || isDefaultQualitySet();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Overrides the 'Video quality preferences' in YouTube settings with the setting
+     * used when the user selects a quality from the quality menu, so neither the device
+     * nor the SABR server choose the quality automatically (such as with 'Data saver').
+     *
+     * @return If the 'Advanced' video quality setting is used.
+     */
+    public static boolean useAdvancedVideoQualitySetting() {
+        return isDefaultQualitySet();
     }
 }

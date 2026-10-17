@@ -12,20 +12,32 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.CopyTextPatch;
+import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
-import app.morphe.extension.reddit.patches.CustomFontPatch;
+import app.morphe.extension.reddit.patches.FeedMediaMaxHeightPatch;
+import app.morphe.extension.reddit.patches.FlipPostActionBarPatch;
 import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
+import app.morphe.extension.reddit.patches.FullWidthFeedMediaPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
-import app.morphe.extension.reddit.patches.HideCommunitiesShelf;
+import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
+import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
+import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
+import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
+import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
+import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
+import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.CustomFontFilePreference;
 import app.morphe.extension.reddit.settings.preference.CustomFontTogglePreference;
 import app.morphe.extension.reddit.settings.preference.ForceSystemFontPreference;
+import app.morphe.extension.reddit.settings.preference.NumberSettingPreference;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("deprecation")
 public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
@@ -38,16 +50,33 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     public boolean getSettingsStatus() {
         return DisableModernHomePatch.isPatchIncluded() ||
                 DisableScreenshotPopupPatch.isPatchIncluded() ||
+                CopyTextPatch.isPatchIncluded() ||
                 CustomFontPatch.isPatchIncluded() ||
                 ForceSystemFontPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
-                HideCommunitiesShelf.isPatchIncluded() ||
+                HideCommunitiesShelfPatch.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
-                RemoveSubRedditDialogPatch.isPatchIncluded();
+                FullWidthFeedMediaPatch.isPatchIncluded() ||
+                MediaViewerFadePatch.isPatchIncluded() ||
+                KeepFeedPositionPatch.isPatchIncluded() ||
+                FeedMediaMaxHeightPatch.isPatchIncluded() ||
+                HideMediaViewerComponentsPatch.isPatchIncluded() ||
+                MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
+                RemoveSubRedditDialogPatch.isPatchIncluded() ||
+                ShowViewCountPatch.isPatchIncluded() ||
+                FlipPostActionBarPatch.isPatchIncluded() ||
+                RememberCollapsedCommentsPatch.isPatchIncluded();
     }
 
     @Override
     public void addPreferences(Context context) {
+        if (CopyTextPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.COPY_TEXT
+            ));
+        }
+
         if (CustomFontPatch.isPatchIncluded()) {
             addPreference(new CustomFontTogglePreference(context));
             addPreference(new CustomFontFilePreference(
@@ -81,7 +110,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (HideCommunitiesShelf.isPatchIncluded()) {
+        if (HideCommunitiesShelfPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_COMMUNITIES_SHELF
@@ -110,6 +139,82 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SHOW_VIEW_COUNT
+            ));
+        }
+
+        if (FullWidthFeedMediaPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FULL_WIDTH_FEED_MEDIA
+            ));
+        }
+
+        if (MediaViewerFadePatch.isPatchIncluded()) {
+            addPreference(new NumberSettingPreference(
+                    context,
+                    Settings.MEDIA_VIEWER_FADE
+            ));
+        }
+
+        if (KeepFeedPositionPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.KEEP_FEED_POSITION
+            ));
+        }
+
+        if (FeedMediaMaxHeightPatch.isPatchIncluded()) {
+            addPreference(new NumberSettingPreference(
+                    context,
+                    Settings.FEED_MEDIA_MAX_HEIGHT
+            ));
+        }
+
+        if (HideMediaViewerComponentsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_JOIN_CONVERSATION_BUTTON
+            ));
+
+            if (HideMediaViewerComponentsPatch.isHideOverlayIncluded()) {
+                addPreference(new BooleanSettingPreference(
+                        context,
+                        Settings.HIDE_MEDIA_VIEWER_OVERLAY
+                ));
+            }
+        }
+
+        if (MediaViewerBlackBackgroundPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.MEDIA_VIEWER_BLACK_BACKGROUND
+            ));
+        }
+
+        if (FlipPostActionBarPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FLIP_POST_ACTION_BAR
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SWAP_POST_VOTE_COMMENT_BUTTONS
+            ));
+        }
+
+        if (RememberCollapsedCommentsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.REMEMBER_COLLAPSED_COMMENTS
+            ));
+        }
+
+        Utils.setPreferenceTitlesToMultiLine(this);
+
+        if (ShowFlairsInHomeFeedPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SHOW_FLAIRS_IN_HOME_FEED
             ));
         }
     }

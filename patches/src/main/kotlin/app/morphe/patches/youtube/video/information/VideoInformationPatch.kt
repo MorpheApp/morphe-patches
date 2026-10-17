@@ -54,6 +54,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -109,7 +110,7 @@ private var setPlaybackSpeedMethodIndex = -1
 private lateinit var setPlaybackRateMethodRef : WeakReference<MutableMethod>
 private var setPlaybackRateMethodIndex = -1
 
-internal lateinit var playerStatusMethodRef : WeakReference<MutableMethod>
+private lateinit var playerStatusMethodRef : WeakReference<MutableMethod>
 
 val videoInformationPatch = bytecodePatch(
     description = "Hooks YouTube to get information about the current playing video.",
@@ -368,17 +369,19 @@ val videoInformationPatch = bytecodePatch(
         VideoQualityFingerprint.let {
             videoQualityClassType = it.classDef.type
 
-            // Fix bad data used by YouTube.
-            it.method.addInstructions(
-                0,
-                """
-                    invoke-static { p3, p1 }, $EXTENSION_CLASS->fixVideoQualityResolution(Ljava/lang/String;I)I    
-                    move-result p1
-                """
-            )
-
             // Add methods to access obfuscated quality fields.
             it.classDef.apply {
+                // Only one string field.
+                val qualityNameField = fields.single { field ->
+                    field.type == "Ljava/lang/String;"
+                }
+
+                // The field keeps the resolution set by YouTube, as the player and
+                // SABR requests use it to match the formats of the stream.
+                val resolutionField = fields.single { field ->
+                    field.type == "I"
+                }
+
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
                 interfaces.add(EXTENSION_VIDEO_QUALITY_INTERFACE)
                 methods.add(
@@ -392,11 +395,6 @@ val videoInformationPatch = bytecodePatch(
                         null,
                         MutableMethodImplementation(2),
                     ).toMutable().apply {
-                        // Only one string field.
-                        val qualityNameField = fields.single { field ->
-                            field.type == "Ljava/lang/String;"
-                        }
-
                         addInstructions(
                             0,
                             """
@@ -416,16 +414,15 @@ val videoInformationPatch = bytecodePatch(
                         AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
                         null,
                         null,
-                        MutableMethodImplementation(2),
+                        MutableMethodImplementation(3),
                     ).toMutable().apply {
-                        val resolutionField = fields.single { field ->
-                            field.type == "I"
-                        }
-
                         addInstructions(
                             0,
                             """
                                 iget v0, p0, $resolutionField
+                                iget-object v1, p0, $qualityNameField
+                                invoke-static { v1, v0 }, $EXTENSION_CLASS->fixVideoQualityResolution(Ljava/lang/String;I)I
+                                move-result v0
                                 return v0
                             """
                         )
@@ -822,6 +819,30 @@ fun playerStatusHook(targetMethodClass: String, targetMethodName: String) {
         addInstruction(
             insertIndex,
             "invoke-static/range { p1 .. p1 }, $targetMethodClass->$targetMethodName(Ljava/lang/Enum;)V"
+        )
+    }
+}
+
+/**
+ * Hook the player status, and skip the rest of the status change if the target method returns true.
+ * The hook runs before [playerStatusHook] hooks, so those are not called if the status change is skipped.
+ */
+fun playerStatusOverrideHook(targetMethodClass: String, targetMethodName: String) {
+    playerStatusMethodRef.get()!!.apply {
+        val insertIndex = indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT)
+        // Instructions are added just above the SGET_OBJECT, so its register is free to use.
+        val freeRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
+
+        addInstructionsWithLabels(
+            insertIndex,
+            """
+                invoke-static/range { p1 .. p1 }, $targetMethodClass->$targetMethodName(Ljava/lang/Enum;)Z
+                move-result v$freeRegister
+                if-eqz v$freeRegister, :continue
+                return-void
+                :continue
+                nop
+            """
         )
     }
 }

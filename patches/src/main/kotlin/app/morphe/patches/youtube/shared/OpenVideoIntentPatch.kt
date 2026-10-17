@@ -7,6 +7,7 @@
 
 package app.morphe.patches.youtube.shared
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -76,6 +77,19 @@ val openVideoIntentPatch = bytecodePatch(
             else ShortsPlaybackIntentFingerprintLegacy).method
         )
     }
+}
+
+/**
+ * Hooks the command that opens a regular video, before the video is opened.
+ *
+ * @param methodDescriptor Method with the signature (Ljava/lang/Object;Ljava/util/Map;)V.
+ */
+fun hookVideoIntentCommand(methodDescriptor: String) {
+    videoPlaybackIntentMethod.get()!!.addInstruction(
+        0,
+        "invoke-static/range { p1 .. p2 }, $methodDescriptor"
+    )
+    videoPlaybackIntentInsertIndex++
 }
 
 fun hookVideoIntent(

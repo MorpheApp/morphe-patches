@@ -52,6 +52,7 @@ import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.removeFromParent
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -200,10 +201,34 @@ val navigationBarPatch = bytecodePatch(
         // Hide navigation bar
         addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
 
+        // The translucent navigation bar comes from three feature flags that not every account
+        // gets, so all of them are always turned on. The bar then looks the same on every account,
+        // and the opaque option below paints over the same translucent bar everywhere.
+        TranslucentNavigationBarFeatureFlagsFingerprint.matchAllMethodIndicesForEach { index ->
+            insertLiteralOverride(index, true)
+        }
+
         // Paint over the translucent status bar and navigation bar, instead of turning off the
         // feature flags that drive them. Those flags also switch the app out of edge to edge, which
         // moves the whole window layout and breaks everything measuring against it.
         addBottomBarContainerHook("$EXTENSION_CLASS->setNavigationBarOpaque(Landroid/view/View;)V")
+
+        // The translucent theme hands the window a transparent color for the system navigation
+        // buttons, so an opaque one is swapped in there instead of turning off the feature flag.
+        SystemNavigationBarColorFingerprint.let {
+            it.method.apply {
+                val colorIndex = it.instructionMatches[1].index
+                val colorRegister = getInstruction<OneRegisterInstruction>(colorIndex).registerA
+
+                addInstructions(
+                    colorIndex + 1,
+                    """
+                        invoke-static { v$colorRegister }, $EXTENSION_CLASS->getSystemNavigationBarColor(I)I
+                        move-result v$colorRegister
+                    """
+                )
+            }
+        }
 
         AnimatedNavigationTabsFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
@@ -266,13 +291,6 @@ val navigationBarPatch = bytecodePatch(
                             "searchQueryViewLoaded(Landroid/widget/TextView;)V"
                 )
             }
-        }
-
-        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-            )
         }
 
         PivotBarRendererFingerprint.let {

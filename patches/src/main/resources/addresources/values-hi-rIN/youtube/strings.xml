@@ -43,15 +43,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_layout_updates_summary">सर्वर को ऐप लेआउट अपडेट करने से रोकता है</string>
   <string name="morphe_disable_layout_updates_user_dialog_message">"ऐप लेआउट पहली बार इंस्टॉल किए गए लेआउट पर वापस आ जाएगा।
 
-हो सकता है कुछ सर्वर-साइड लेआउट वापस न आएं।
+कुछ सर्वर-साइड लेआउट वापस नहीं आ सकते।
 
-बदलावों में शामिल हैं:
-• प्लेयर फ़्लाईआउट मेनू (या संबंधित सेटिंग्स) के घटक काम नहीं कर सकते हैं।
-• रोलिंग नंबर एनिमेट नहीं होंगे।
-• 'लाइब्रेरी' टैब दिखाई देगा।
-• वीडियो विवरण में म्यूज़िक सेक्शन काम नहीं कर सकता है।
-• प्लेयर फ़्लाईआउट मेनू के आइटम छिपाए नहीं जा सकेंगे।
-• लाइब्रेरी टैब पर अकाउंट स्विच बटन दिखाई नहीं दे सकता है।"</string>
+बदलाव इस प्रकार हैं:
+• प्लेयर फ़्लाईआउट मेनू (या संबंधित सेटिंग्स) के घटक काम नहीं कर सकते
+• रोलिंग नंबर एनिमेट नहीं होते
+• लाइब्रेरी टैब दिखाई देता है
+• वीडियो विवरण में संगीत अनुभाग काम नहीं कर सकता
+• प्लेयर फ़्लाईआउट मेनू आइटम छिपाए नहीं जा सकते
+• लाइब्रेरी टैब पर खाता स्विच बटन दिखाई नहीं दे सकता"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">फ़ीड फ़्लाईआउट मेनू फ़िल्टर चालू करें</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">फ़ीड फ़्लाईआउट मेनू फ़िल्टर</string>
@@ -133,7 +133,7 @@ Second \"item\" text"</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube के डुडल्स को छुपाएं</string>
   <string name="morphe_hide_youtube_doodles_summary">YouTube लोगो पर मौसमी और इवेंट-आधारित एनिमेशन को छुपाता है</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodles दिखाने से कस्टम हेडर प्रदर्शित होने से रुक सकते हैं।</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube डूडल्स दिखाने से कस्टम हेडर डिस्प्ले नहीं हो सकते</string>
   <string name="morphe_hide_channel_bar_title">चैनल बार को छुपाएं</string>
   <string name="morphe_hide_channel_watermark_title">चैनल वॉटरमार्क को छुपाएं</string>
   <string name="morphe_hide_chapters_timeline_button_title">अध्याय और \'इस वीडियो में\' बटन छिपाएं</string>
@@ -193,7 +193,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_how_this_was_made_section_title">छिपाएँ \'यह कैसे बनाया गया\' अनुभाग</string>
   <string name="morphe_hide_hype_points_title">छिपाएं हाइप पॉइंट्स</string>
   <string name="morphe_hide_info_cards_section_title">जानकारी कार्ड अनुभाग छुपाएं</string>
-  <string name="morphe_hide_key_concepts_section_title">\'मुख्य अवधारणाएं\' अनुभाग छुपाएं</string>
+  <string name="morphe_hide_key_concepts_section_title">\'मुख्य अवधारणाएं\' सेक्शन छुपाएं</string>
   <string name="morphe_hide_quizzes_section_title">प्रश्नोत्तरी अनुभाग छुपाएं</string>
   <string name="morphe_hide_search_inside_this_video_section_title">\"Search inside this video\" अनुभाग छिपाएँ</string>
   <string name="morphe_hide_subscribe_button_title">सबस्क्राइब बटन छुपाएं</string>
@@ -281,7 +281,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">प्रत्येक टिप्पणी का 3-डॉट मेनू बटन छिपाता है</string>
   <string name="morphe_hide_comments_preview_comment_title">छुपाएं पूर्वावलोकन टिप्पणी</string>
   <string name="morphe_hide_comments_preview_comment_summary">संपूर्ण टिप्पणी अनुभाग खोलने से पहले वीडियो के नीचे टिप्पणी पूर्वावलोकन को छुपाता है</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Morphe द्वारा टिप्पणी छिपाई गई...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Morphe द्वारा टिप्पणी छुपाई गई…</string>
   <string name="morphe_minimal_comments_button_title">न्यूनतम कमेंट बटन सक्षम करें</string>
   <string name="morphe_minimal_comments_button_summary">कमेंट बटन पर प्रदर्शित स्लाइडिंग कार्ड और उसका पेज चयनकर्ता को छिपाता है</string>
   <string name="morphe_hide_comments_thanks_button_title">छुपाएं \'धन्यवाद\' बटन</string>
@@ -490,7 +490,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_vot_openrouter_open_website">OpenRouter.ai खोलें</string>
   <string name="morphe_vot_openrouter_error">OpenRouter अनुवाद विफल (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">MyMemory दैनिक सीमा पहुंच गई</string>
-  <string name="morphe_vot_mymemory_quota_next_available">अगली उपलब्धता %s पर।</string>
+  <string name="morphe_vot_mymemory_quota_next_available">अगला उपलब्ध %s पर</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">आपने आज का मुफ्त MyMemory अनुवाद कोटा (5,000 वर्ण) उपयोग कर लिया है। दैनिक सीमा को 50,000 वर्णों तक बढ़ाने के लिए सेटिंग्स में एक MyMemory ईमेल जोड़ें, या किसी भिन्न अनुवाद सेवा पर स्विच करें</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">आपने आज का MyMemory अनुवाद कोटा (50,000 वर्ण) उपयोग कर लिया है। किसी भिन्न अनुवाद सेवा पर स्विच करें या कल फिर से प्रयास करें</string>
   <string name="morphe_vot_mymemory_error">MyMemory अनुवाद विफल (स्थिति %s)</string>
@@ -560,10 +560,29 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_queue_override_flyout_menu_summary">Morphe कतार को YouTube कतार के बजाय खोलता है</string>
   <string name="morphe_queue_add_flyout_menu_title">फ़ीड फ़्लाईआउट कतार मेनू आइटम जोड़ें</string>
   <string name="morphe_queue_add_flyout_menu_summary">एक अतिरिक्त फ़्लाईआउट आइटम जोड़ता है। यदि \"कतार में जोड़ें\" नहीं दिखाया गया है तो इसे सक्षम करें।</string>
+  <string name="morphe_local_queue_title">प्रीमियम-शैली कतार</string>
+  <string name="morphe_local_queue_summary">"Morphe कतार को एक ऐसी कतार से बदलता है जो डिवाइस पर रहती है, अपने आप चलती रहती है, और जिसे खींचकर पुनः क्रमबद्ध किया जा सकता है
+
+जानकारी: कतार में अगला वीडियो केवल तभी शुरू होता है जब YouTube स्क्रीन पर होता है"</string>
+  <string name="morphe_local_queue_sheet_title">कतार</string>
+  <string name="morphe_local_queue_open">कतार (%s)</string>
+  <string name="morphe_local_queue_clear">सभी साफ़ करें</string>
+  <string name="morphe_local_queue_empty">कतार में कुछ नहीं है</string>
+  <string name="morphe_local_queue_empty_hint">किसी भी वीडियो पर कतार में अगला चलाएं का उपयोग करें</string>
+  <string name="morphe_local_queue_now_playing">अभी चल रहा है</string>
+  <string name="morphe_local_queue_play_next">कतार में अगला चलाएं</string>
+  <string name="morphe_local_queue_play_last">कतारी में आखिर में चलाएं</string>
+  <string name="morphe_local_queue_reorder">क्रम बदलें</string>
+  <string name="morphe_local_queue_remove">हटाएँ</string>
+  <string name="morphe_local_queue_added">कतार में जोड़ा गया</string>
+  <string name="morphe_local_queue_unavailable">इस वीडियो को कतारा में जोड़ नहीं सका</string>
+  <string name="morphe_local_queue_playlist_unsupported">प्लेलिस्ट कतारा में जोड़ी नहीं जा सकती</string>
+  <string name="morphe_local_queue_full">कतार भरी हुई है</string>
+  <string name="morphe_local_queue_play_failed">वीडियो शुरू नहीं हो सका</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">फ़्लाईआउट मेनू में विज्ञापन श्वेतसूची</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">एक फ़्लाईआउट आइटम जोड़ता है जो उस वीडियो के चैनल पर विज्ञापन चलाने की अनुमति देता है</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">इस सुविधा के लिए PotHelper का उपयोग करने या \"वीडियो स्ट्रीम स्पूफ़ करें\" को TV या Android VR साइन-इन में बदलने की आवश्यकता हो सकती है।</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">इस सुविधा के लिए PotHelper का उपयोग या \"वीडियो स्ट्रीम्स को स्पोफ़ करें\" को टीवी या Android VR साइन-इन पर बदलने की आवश्यकता हो सकती है</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">फ़्लाईआउट मेनू में स्पीड श्वेतसूची</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">एक फ़्लाईआउट आइटम जोड़ता है जो उस वीडियो के चैनल को हमेशा 1.0x गति पर चलाता है</string>
   <string name="morphe_queue_manager_check_failed_auth">लॉग इन नहीं किया गया</string>
@@ -746,6 +765,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_preferred_caption_language_title">पसंदीदा कैप्शन भाषा</string>
   <string name="morphe_preferred_caption_language_summary">पहले प्रदाता उपशीर्षक चुनता है, फिर स्वतः पसंदीदा भाषा में अनुवाद करता है</string>
   <string name="morphe_preferred_caption_language_entry_off">बंद</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">अतिरिक्त स्वतः अनुवादित भाषाएँ जोड़ें</string>
+  <string name="morphe_auto_translate_additional_languages_summary">स्वतः अनुवाद मेनू में अधिक भाषाएँ जोड़ता है</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">कैप्शन कुकी सेट करें</string>
   <string name="morphe_set_caption_cookies_summary">"एक स्टॉक YouTube बग को ठीक करता है जहां ऑटो-ट्रांसलेट कैप्शन कुकीज़ की कमी के कारण उपलब्ध नहीं हो सकते हैं
@@ -785,9 +807,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_navigation_button_labels_title">नेविगेशन बटन लेबल्स छिपाएं</string>
   <string name="morphe_hide_navigation_new_content_dot_title">नए कंटेंट का डॉट छिपाएं</string>
   <string name="morphe_hide_navigation_bar_title">नेविगेशन बार छिपाएँ</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"यह नेविगेशन बार को पूरी तरह से छिपा देता है, जिसमें 'You' टैब भी शामिल है।
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"यह नेविगेशन बार् को पूरी तरह से छुपा देता है, जिसमें 'आप' टैब भी शामिल है।
 
-सेटिंग्स तक पहुंचने के लिए, जनरल → टूलबार → शो सेटिंग्स के माध्यम से सेटिंग्स बटन को सक्षम करें।"</string>
+सेटिंग्स तक पहुंचने के लिए, सामान्य → टूलबार → सेटिंग्स दिखाएं के माध्यम से सेटिंग्स बटन सक्षम करें"</string>
   <string name="morphe_narrow_navigation_buttons_title">नarrow नैविगेशन बटनें सक्षम करें</string>
   <string name="morphe_narrow_navigation_buttons_summary">स्क्रॉल करते समय नेविगेशन बार को दृश्यमान रखता है</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">बिना लेबल वाले नेविगेशन बटनों को अक्षम करें</string>
@@ -1025,7 +1047,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_tablet_layout_in_player_summary">"पुराने प्लेयर लेआउट को पुनर्स्थापित करता है
 
 सीमा: यदि 'पुराने वीडियो एक्शन बार को पुनर्स्थापित करें' बंद कर दिया गया है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">इसे चालू करने से प्लेयर लेआउट के कुछ फ़ीचर्स ठीक से काम न करें, जैसे कि टिप्पणियाँ या प्लेयर के नीचे दिखने वाले \'ज़्यादा वीडियो\'।</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">इसे सक्षम करने से कुछ प्लेयर लेआउट सुविधाएं, जैसे कि टिप्पणी अनुभाग या प्लेयर के नीचे दिखाए गए \'और वीडियो\' बिगड़ सकते हैं</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - पुराने कैप्शन व्यवहार को पुनर्स्थापित करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराने सेव को प्लेलिस्ट में पुन: स्थापित करें</string>
@@ -1090,6 +1112,12 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">फ़ीड का अपने आप रीफ़्रेश होना बंद करें</string>
   <string name="morphe_disable_auto_feed_refresh_summary">फ़ीड के पुराने होने पर उसे अपने आप रीफ़्रेश होने से रोकता है</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Feed कार्ड लेआउट</string>
+  <string name="morphe_feed_card_layout_entry_1">क्लासिक</string>
+  <string name="morphe_feed_card_layout_entry_2">कार्ड्स</string>
+  <string name="morphe_feed_card_layout_entry_3">लॉगिन और सेव बटन वाले कार्ड्स</string>
+  <string name="morphe_feed_card_layout_comments">टिप्पणियाँ</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेयर में फिर से शुरू करने की सुविधा बंद करें</string>
   <string name="morphe_miniplayer_disable_resuming_summary">\'जारी रखें देखें\' मिनीप्लेयर को अक्षम करता है, एक YouTube प्रीमियम सुविधा जो ऐप शुरू होने पर दिखाई देती है।</string>
@@ -1124,9 +1152,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">बैक बटन फ़ीड से बाहर निकलता है</string>
   <string name="morphe_back_button_always_exits_feed_summary">बैक दबाने से हमेशा ऐप से बाहर निकलता है, फ़ीड के शीर्ष पर स्क्रॉल करने के बजाय</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">सिस्टम फ़ॉन्ट अनिवार्य रूप से लागू करें</string>
-  <string name="morphe_force_system_font_summary">ऐप को YouTube Sans के बजाय डिवाइस फ़ॉन्ट के साथ दिखाता है</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">स्टेटस बार छिपाएँ</string>
   <string name="morphe_hide_status_bar_summary">सिस्टम स्टेटस बार छिपाता है। इसे एक पल के लिए दिखाने के लिए ऊपरी किनारे से नीचे की ओर स्वाइप करें</string>
@@ -1207,7 +1232,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">डिवाइस आयामों को स्पूफ करें</string>
   <string name="morphe_spoof_device_dimensions_summary">इसे सक्षम करने से उच्च वीडियो गुणवत्ता अनलॉक हो सकती है</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">यह सक्षम करने से वीडियो प्लेबैक स्टटरिंग, खराब बैटरी लाइफ और अज्ञात दुष्प्रभाव हो सकते हैं।</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">इसे सक्षम करने से वीडियो प्लेबैक में झटके, खराब बैटरी लाइफ और अज्ञात दुष्प्रभाव हो सकते हैं</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">हैप्टिक फीडबैक</string>
   <string name="morphe_disable_haptic_feedback_summary">डिवाइस कंपन को ट्रिगर करने वाली प्रतिक्रियाओं को चुनें</string>
@@ -1217,7 +1242,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">डिसेबल टैप ऐंड होल्ड हॅप्टिक्स</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ज़ूम haptिक्स अक्षम करें</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">यदि आपने हाल ही में अपना खाता लॉगिन विवरण बदल दिया है, तो MicroG को अनइंस्टॉल और फिर से इंस्टॉल करें।</string>
+  <string name="microg_offline_account_login_error">यदि आपने हाल ही में अपने खाता लॉगिन विवरण बदले हैं, तो MicroG को अनइंस्टॉल और पुनः इंस्टॉल करें</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">लिंक रीडायरेक्ट को बायपास करें</string>
   <string name="morphe_bypass_link_redirects_summary">ट्रैकिंग लिंक (youtube.com/redirect) को बायपास करके मूल लिंक को सीधे खोलता है</string>
@@ -1297,18 +1322,21 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
 • यदि डिस्प्ले वास्तव में HDR नहीं दिखा सकता तो रंग गलत दिख सकते हैं
 • यदि डिकोडर HDR संभाल नहीं सकता तो प्लेबैक विफल हो सकता है
 • HDR अभी भी स्पूफ वीडियो स्ट्रीम क्लाइंट पर निर्भर करता है"</string>
-  <string name="morphe_force_avc_codec_title">एवीसी (H.264) कोडेक को बाध्य करें</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"लाभ:
-• बैटरी लाइफ में सुधार हो सकता है
-• पुराने डिवाइस पर गायब वीडियो रिज़ॉल्यूशन को पुनर्स्थापित कर सकता है
-
-सीमाएँ:
-• अधिकतम रिज़ॉल्यूशन 1080p है
-• VP9 या AV1 की तुलना में VP1 प्लेबैक को अधिक इंटरनेट डेटा का उपयोग करना होगा
-• HDR वीडियो AVC का उपयोग नहीं करेंगे
-• कुछ डिवाइस AVC को बल नहीं लगा सकते"</string>
+  <string name="morphe_video_codec_title">वीडियो कोडेक</string>
+  <string name="morphe_video_codec_entry_default">डिफ़ॉल्ट</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">इस सुविधा का उपयोग करने के लिए, \'वीडियो स्ट्रीम स्पूफ़िंग\' को \'Android VR\' या \'Android Studio\' पर सेट करें</string>
+  <string name="morphe_video_codec_avc_not_available">AVC को बलपूर्वक लागू करने के लिए, \'वीडियो स्ट्रीम्स स्पूफ़ करें\' को \'Android Studio\', \'Android VR\' या \'visionOS\' में बदलें</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• बैटरी जीवन में सुधार कर सकता है और प्लेबैक की रुकावट को ठीक कर सकता है
+• AV1 की तुलना में अधिक इंटरनेट डेटा का उपयोग करता है
+
+AVC (H.264)
+• इसके लिए वीडियो स्ट्रीम क्लाइंट को 'Android Studio', 'Android VR' या 'visionOS' के रूप में स्पूफ़ करना आवश्यक है
+• बैटरी जीवन में और भी सुधार कर सकता है
+• पुराने डिवाइसों पर गायब वीडियो रिज़ॉल्यूशन को वापस ला सकता है
+• अधिकतम रिज़ॉल्यूशन 1080p है
+• हो सकता है कि HDR वीडियो AVC का उपयोग न करें
+• कुछ डिवाइसों पर AVC को बलपूर्वक लागू नहीं किया जा सकता"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">उन्नत गुणवत्ता मेनू खोलें</string>
   <string name="morphe_advanced_video_quality_menu_summary">गुणवत्ता चयन मेनू को छोड़ता है और सीधे \'उन्नत\' गुणवत्ता मेनू खोलता है</string>
@@ -1321,10 +1349,11 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1 की अनुमति दें</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS क्लाइंट का उपयोग करते समय सॉफ़्टवेयर AV1 डिकोडिंग की अनुमति देता है</string>
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"इस सेटिंग को सक्षम करने पर सॉफ्टवेयर AV1 डिकोडिंग का उपयोग किया जा सकता है।
+  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"इस सेटिंग को सक्षम करने से सॉफ्टवेयर AV1 डिकोडिंग का उपयोग हो सकता है।
 
-AV1 के साथ वीडियो प्लेबैक स्टटर या फ़्रेम छोड़ सकता है।"</string>
+AV1 के साथ वीडियो प्लेबैक में झटके आ सकते हैं या फ्रेम गिर सकते हैं"</string>
   <string name="morphe_spoof_video_streams_about_title">Spoofing साइड इफेक्ट</string>
+  <string name="morphe_spoof_video_streams_about_failure">• प्लेबैक 1 मिनट पर विफल हो सकता है</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'ऑडियो ट्रैक\' मेनू गायब है</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• कोई AV1 वीडियो कोडेक नहीं</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR इमर्सिव मोड उपलब्ध नहीं है।</string>
@@ -1351,4 +1380,154 @@ AV1 के साथ वीडियो प्लेबैक स्टटर �
   <string name="morphe_player_icon_style_entry_bold">बोल्ड</string>
   <string name="morphe_player_icon_style_entry_custom">कस्टम</string>
   <string name="morphe_shorts_icon_style_title">Shorts आइकन शैली</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">सीरीज़ ट्रैकर</string>
+  <string name="morphe_series_tracker_screen_summary">प्लेलिस्ट को सीरीज़ के रूप में फॉलो करें और अपनी स्थिति बनाए रखें</string>
+  <string name="morphe_series_tracker_title">सीरीज़ ट्रैकिंग सक्षम करें</string>
+  <string name="morphe_series_tracker_summary">इतिहास में एक सीरीज़ पेज जोड़ता है और प्लेलिस्ट में सीरीज़ फॉलो करने का विकल्प देता है</string>
+  <string name="morphe_series_tracker_show_button_title">सिरीज ट्रैकर बटन दिखाएं</string>
+  <string name="morphe_series_tracker_show_button_summary">वर्तमान वीडियो की श्रृंखला का अनुसरण करने या खोलने के लिए प्लेयर बटन जोड़ता है</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">अनुसरित-श्रृंखला प्रगति रिकॉर्ड करें</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">बचती श्रृंखला और बुकमार्क के लिए इस फोन पर प्लेबैक रिकॉर्ड करें</string>
+  <string name="morphe_series_tracker_show_history_tab_title">नेविगेशन बार में इतिहास दिखाएं</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">होम, सदस्यताएं, सूचनाएं, इतिहास और आप</string>
+  <string name="morphe_series_tracker_ui_cancel">रद्द करें</string>
+  <string name="morphe_series_tracker_ui_save">सेव करें</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">बुकमार्क सहेजें</string>
+  <string name="morphe_series_tracker_ui_series_name">श्रृंखला का नाम</string>
+  <string name="morphe_series_tracker_ui_series_options">श्रृंखला विकल्प</string>
+  <string name="morphe_series_tracker_ui_library_options">लाइब्रेरी विकल्प</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">एपिसोड रीफ़्रेश करें</string>
+  <string name="morphe_series_tracker_ui_rename">नाम बदलें</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">YouTube में प्लेलिस्ट खोलें</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">लाइब्रेरी से हटाएं</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">प्लेलिंक लिंक या ID</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">सभी स्थानीय प्रगति साफ़ करें</string>
+  <string name="morphe_series_tracker_ui_clear_history">इतिहास साफ़ करें</string>
+  <string name="morphe_series_tracker_clear_progress_title">सभी स्थानीय प्रगति साफ़ करें?</string>
+  <string name="morphe_series_tracker_clear_progress_message">यह हर वीडियो के लिए स्थितियां, देखी गई ओवरराइड और पुनः प्रारंभ चयन हटा देता है। सुरक्षित सीरीज और उनकी कैटलॉग बनी रहती हैं। यदि रिकॉर्डिंग सक्षम है तो नया प्लेबैक रिकॉर्ड किया जाएगा</string>
+  <string name="morphe_series_tracker_ui_mark_watched">देखा चिन्हित करें</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">अनुपलब्ध/अनादेखा चिन्हित करें</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">स्वचालित स्थिति का उपयोग करें</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">0:00 से पुनः आरंभ करें</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">0:00 से फिर से चलाएं</string>
+  <string name="morphe_series_tracker_ui_status_saved">स्थिति सहेजी गई</string>
+  <string name="morphe_series_tracker_ui_retry_saving">सहेजने के लिए पुनः प्रयास करें</string>
+  <string name="morphe_series_tracker_ui_previous_100">पिछले 100</string>
+  <string name="morphe_series_tracker_ui_next_100">अगले 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">संरक्षित वीडियो खोलें</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">स्थानीय प्रगति साफ़ की गई</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">आपकी श्रृंखला देखने के लिए \'आप\' से इतिहास खोलें</string>
+  <string name="morphe_series_tracker_ui_watch_history">देखने का इतिहास</string>
+  <string name="morphe_series_tracker_ui_series">श्रृंखलाएं</string>
+  <string name="morphe_series_tracker_ui_history">इतिहास</string>
+  <string name="morphe_series_tracker_ui_subscriptions">सदस्यताएं</string>
+  <string name="morphe_series_tracker_ui_notifications">सूचनाएं</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">संरक्षित श्रृंखलाएं लोड हो रही हैं…</string>
+  <string name="morphe_series_tracker_empty_library">अपनी सीरीज की एपिसोड को ट्रैक करने के लिए प्लेलिस्ट का अनुसरण करें</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">प्लेलिस्ट बुकमार्क</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">एपिसोड रीफ़्रेश हो रहे हैं…</string>
+  <string name="morphe_series_tracker_ui_all_series">सभी श्रृंखलाएं</string>
+  <string name="morphe_series_tracker_watched">देखा गया</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">एपिसोड लोड हो रहे हैं…</string>
+  <string name="morphe_series_tracker_ui_more_options">अधिक विकल्प</string>
+  <string name="morphe_series_tracker_record_consent">"केवल अपनी सुरक्षित सीरीज और बुकमार्क किए गए वीडियो के लिए प्रगति रिकॉर्ड करें।
+
+यह लाइब्रेरी इस डिवाइस पर संग्रहीत होती है और YouTube खातों के बीच साझा होती है। YouTube का रुकावट और इतिहास मिटाने नियंत्रण इसे नहीं बदलते। इसे मिटाने के लिए सीरीज → अधिक → स्थानीय प्रगति मिटाएं का उपयोग करें।
+
+इन्कोग्निटो मोड में, जब खाता पहचान अनुपलब्ध होती है, या जब आप किसी अन्य खाते पर स्विच करते हैं तब स्वचालित रिकॉर्डिंग रुक जाती है। उस खाते के साथ इसका उपयोग करने के लिए ट्रैकिंग फिर से सक्षम करें"</string>
+  <string name="morphe_series_tracker_identity_unavailable">इन्कोग्निटो मोड में या YouTube द्वारा वर्तमान खाता स्थिति लोड होने से पहले ट्रैकिंग सक्षम नहीं की जा सकती है। होम पर वापस जाएं और पुनः प्रयास करें। साइन-इन की आवश्यकता नहीं है</string>
+  <string name="morphe_series_tracker_enable">स्थानीय ट्रैकिंग सक्षम करें</string>
+  <string name="morphe_series_tracker_tracking_paused">प्रगति रिकॉर्डिंग बंद है</string>
+  <string name="morphe_series_tracker_resume_at">%1$s पर फिर से शुरू करें</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s एपिसोड देखे गए</string>
+  <string name="morphe_series_tracker_episode_position">एपिसोड %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">%3$s में से एपिसोड %1$s-%2$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">एपिसोड लोड करने के लिए रीफ्रेश करें। निजी प्लेलिस्ट के लिए खाता एक्सेस आवश्यक है; उनका बुकमार्क अभी भी YouTube में खुलता है</string>
+  <string name="morphe_series_tracker_open_failed">YouTube इस एपिसोड को नहीं खोल सका</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube इस प्लेलिस्ट को नहीं खोल सका</string>
+  <string name="morphe_series_tracker_plan_changed">एक एपिसोड चुनें</string>
+  <string name="morphe_series_tracker_plan_caught_up">अप-टू-डेट</string>
+  <string name="morphe_series_tracker_plan_none">कोई चलाने योग्य एपिसोड नहीं</string>
+  <string name="morphe_series_tracker_saved_position">सहेजा गया वीडियो · %1$s</string>
+  <string name="morphe_series_tracker_follow">सीरीज़ फॉलो करें</string>
+  <string name="morphe_series_tracker_view_series">सीरीज़ देखें</string>
+  <string name="morphe_series_tracker_continue">जारी रखें</string>
+  <string name="morphe_series_tracker_start_here">यहाँ से शुरू करें</string>
+  <string name="morphe_series_tracker_start_saved">शुरुआत बिंदु सहेजा गया</string>
+  <string name="morphe_series_tracker_watched_to_here">यहाँ तक देखा गया</string>
+  <string name="morphe_series_tracker_marked">देखे गए चिह्नित एपिसोड</string>
+  <string name="morphe_series_tracker_undo">पहले जैसा करें</string>
+  <string name="morphe_series_tracker_enable_short">सक्षम करें</string>
+  <string name="morphe_series_tracker_new_episode">1 नया एपिसोड</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s नए एपिसोड</string>
+  <string name="morphe_series_tracker_record_short">इस डिवाइस पर प्रगति रिकॉर्ड करें</string>
+  <string name="morphe_series_tracker_follow_consent">"आपकी सीरीज और प्रगति इस डिवाइस पर रहती है, YouTube खातों के बीच साझा होती है। YouTube इतिहास नियंत्रण उन्हें नहीं बदलते। सीरीज मेनू से प्रगति मिटाएं।
+
+स्वचालित रिकॉर्डिंग वैकल्पिक है। यह इन्कोग्निटो मोड में या जब खाता बदल जाता है तब रुक जाती है"</string>
+  <string name="morphe_series_tracker_follow_unavailable">एपिसोड लोड नहीं हुए। आप प्लेलिस्ट को बुकमार्क के रूप में सहेज सकते हैं</string>
+  <string name="morphe_series_tracker_error_pending_full">बहुत सारे अनसहेजे बदलाव हैं। पहले सहेजने का पुनः प्रयास करें</string>
+  <string name="morphe_series_tracker_error_storage_busy">सहेजने की प्रक्रिया व्यस्त है। पुनः प्रयास करें</string>
+  <string name="morphe_series_tracker_error_catalog_busy">एपिसोड लोड की प्रक्रिया व्यस्त है। पुनः प्रयास करें</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">स्टोरेज अनुपलब्ध है। आपका सुरक्षित डेटा बनाए रखा गया</string>
+  <string name="morphe_series_tracker_error_storage_save">बदलाव सहेजे नहीं जा सके। YouTube बंद करने से पहले सहेजने का पुनः प्रयास करें</string>
+  <string name="morphe_series_tracker_error_conflict">यह सीरीज पहले से ही सुरक्षित है, या उसकी प्लेलिस्ट बदल गई है। इसे पुनः खोलें</string>
+  <string name="morphe_series_tracker_error_series_changed">यह सीरीज बदली गई या हटा दी गई। लाइब्रेरी को पुनः खोलें</string>
+  <string name="morphe_series_tracker_error_playlist_changed">प्लेलिस्ट बदल गई है। एपिसोड फिर से चुनें</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">यह एपिसोड अनुपलब्ध है। कोई अन्य चुनें</string>
+  <string name="morphe_series_tracker_error_name_required">एक सीरीज नाम दर्ज करें</string>
+  <string name="morphe_series_tracker_error_playlist_input">YouTube प्लेलिंक लिंक या प्लेलिस्ट आईडी दर्ज करें</string>
+  <string name="morphe_series_tracker_error_retry_later">पुनः रीफ्रेश करने से पहले कृपया प्रतीक्षा करें</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">एपिसोड लोड नहीं हुए। बाद में पुनः प्रयास करें</string>
+  <string name="morphe_series_tracker_error_operation">बदलाव पूरा नहीं हो सका। पुनः प्रयास करें</string>
+  <string name="morphe_series_tracker_error_resume">पुनः प्रारंभ की पुष्टि नहीं की जा सकी। प्लेयर की जांच करें और पुनः प्रयास करें</string>
+  <string name="morphe_series_tracker_followed">सीरीज़ फॉलो कर रहे हैं</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">यह वीडियो इस प्लेलिस्ट में नहीं है</string>
+  <string name="morphe_series_tracker_finding_playlists">प्लेलिस्ट ढूंढ रही है…</string>
+  <string name="morphe_series_tracker_paste_playlist">प्लेलिस्ट लिंक पेस्ट करें</string>
+  <string name="morphe_series_tracker_discovery_unavailable">कोई प्लेलिस्ट नहीं मिली</string>
+  <string name="morphe_series_tracker_no_available_episodes">कोई उपलब्ध एपिसोड नहीं</string>
+  <string name="morphe_series_tracker_hide_watched">देखे गए छुपाएं</string>
+  <string name="morphe_series_tracker_watch_previous">पिछले एपिसोड देखे गए चिह्नित करें</string>
+  <string name="morphe_series_tracker_order_starts_with">%1$s के साथ शुरू</string>
+  <string name="morphe_series_tracker_episode_order">एपिसोड क्रम</string>
+  <string name="morphe_series_tracker_playlist_order">प्लेलिस्ट क्रम</string>
+  <string name="morphe_series_tracker_reverse_order">प्लेलिस्ट क्रम उलटें</string>
+  <string name="morphe_series_tracker_view_count">%1$s बार देखा गया</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s बार देखा गया</string>
+  <string name="morphe_series_tracker_completion_title">एपिसोड देखे गए के रूप में चिन्हित करें</string>
+  <string name="morphe_series_tracker_completion_summary">%1$s%% या कम से कम शेष 90 सेकंड के साथ देखा गया, या %2$s सेकंड शेष</string>
+  <string name="morphe_series_tracker_completion_explanation">या तो थ्रेशोल्ड के बाद एक एपिसोड को स्वचालित रूप से देखा हुआ मार्क करें। प्रतिशत नियम के लिए शेष 90 सेकंड से अधिक नहीं होने की भी आवश्यकता होती है, इसलिए लंबे एपिसोड का अंत स्किप नहीं होता है। शेष समय का नियम एक मिनट से लंबे वीडियो पर लागू होता है; इसे अक्षम करने के लिए इसे 0 पर सेट करें। बदलाव भविष्य की प्रगति अपडेट पर लागू होंगे। मैन्युअल देखा/नहीं देखा चुना गया विकल्प बनाए रखे जाएंगे</string>
+  <string name="morphe_series_tracker_completion_percent">देखा गया प्रतिशत (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">शेष सेकंड (0-300; 0 अक्षम करता है)</string>
+  <string name="morphe_series_tracker_completion_range">%1$s से %2$s तक मान दर्ज करें</string>
+  <string name="morphe_series_tracker_youtube_progress_title">YouTube प्रगति का उपयोग करें</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">किसी अन्य डिवाइस पर देखने के बाद फॉलो किए गए सीरीज़ को जारी रखें</string>
+  <string name="morphe_series_tracker_sync_consent">वर्तमान YouTube खाते से अपनी अनुसरित सीरीज की देखा गया स्थिति और पुनः प्रारंभ स्थितियां पढ़ें। केवल मिलाने वाले एपिसोड इस फोन पर सहेजे जाते हैं। जाँच तब चलाई जाती है जब सीरीज लाइब्रेरी खुली होती है और जारी रखने से पहले होती है। आपके अन्य डिवाइस पर YouTube इतिहास सक्षम होना चाहिए</string>
+  <string name="morphe_series_tracker_sync_checking">YouTube प्रगति की जाँच की जा रही है…</string>
+  <string name="morphe_series_tracker_sync_failed">YouTube प्रगति अनुपलब्ध है। सुरक्षित प्रगति का उपयोग कर रहे हैं</string>
+  <string name="morphe_series_tracker_sync_partial">कुछ YouTube प्रगति अनुपलब्ध है। सुरक्षित स्थितियां बनाए रखी गई हैं</string>
+  <string name="morphe_series_tracker_backup_title">बैकअप और पुनर्स्थापना</string>
+  <string name="morphe_series_tracker_backup_summary">अपनी सीरीज़ लाइब्रेरी को एक फ़ाइल में सहेजें या बैकअप पुनर्स्थापित करें</string>
+  <string name="morphe_series_tracker_backup_explanation">अनुसरित सीरीज, एपिसोड स्थितियां और देखा गए चयन सहेजता है। रिकॉर्डिंग और YouTube प्रगति अनुमतियां शामिल नहीं हैं</string>
+  <string name="morphe_series_tracker_backup_save">बैकअप सहेजें</string>
+  <string name="morphe_series_tracker_backup_restore">बैकअप पुनर्स्थापित करें</string>
+  <string name="morphe_series_tracker_backup_preview">%1$s सीरीज जोड़ें। आपके लाइब्रेरी में पहले से मौजूद %2$s सीरीज बनाए रखी जाएंगी। मौजूदा वीडियो प्रगति बनाए रखी जाएगी</string>
+  <string name="morphe_series_tracker_backup_saved">सीरीज़ बैकअप सहेजा गया</string>
+  <string name="morphe_series_tracker_backup_restored">%1$s सीरीज पुनर्स्थापित</string>
+  <string name="morphe_series_tracker_error_backup_invalid">यह फ़ाइल एक समर्थित सीरीज बैकअप नहीं है, या बहुत बड़ी है। आपकी लाइब्रेरी नहीं बदली गई</string>
+  <string name="morphe_series_tracker_error_backup_write">बैकअप सहेजा नहीं जा सका। कोई अन्य स्थान आज़माएं</string>
+  <string name="morphe_series_tracker_removed">सीरीज़ हटा दी गई</string>
+  <string name="morphe_series_tracker_recovery_duplicate">यह एपिसोड अब एक से अधिक बार दिखाई देता है। चुनें कि किससे जारी रखना है</string>
+  <string name="morphe_series_tracker_recovery_missing">आपका सुरक्षित एपिसोड अब इस प्लेलिस्ट में नहीं है। आपकी सुरक्षित स्थिति बनाए रखी गई है</string>
+  <string name="morphe_series_tracker_recovery_continue">एपिसोड %1$s · %2$s के साथ जारी रखें</string>
+  <string name="morphe_series_tracker_recovery_choose">आप नीचे किसी भी एपिसोड को भी चुन सकते हैं। पहले के एपिसोड नहीं बदले जाएंगे</string>
+  <string name="morphe_series_tracker_playback_changed">यह प्लेलिस्ट बदल गई है। कहाँ जारी रखना है यह चुनने के लिए सीरीज खोलें</string>
+  <string name="morphe_series_tracker_playback_boundary">इस दिशा में और कोई एपिसोड नहीं है</string>
+  <string name="morphe_series_tracker_continue_series">%1$s जारी रखें</string>
+  <string name="morphe_series_tracker_search_series">सीरीज़ खोजें</string>
+  <string name="morphe_series_tracker_clear_search">खोज साफ़ करें</string>
+  <string name="morphe_series_tracker_no_search_results">कोई सीरीज़ नहीं मिली</string>
+  <string name="morphe_series_tracker_untitled_episode">शीर्षकहीन एपिसोड</string>
+  <string name="morphe_series_tracker_unavailable_episode">अनुपलब्ध एपिसोड</string>
 </resources>

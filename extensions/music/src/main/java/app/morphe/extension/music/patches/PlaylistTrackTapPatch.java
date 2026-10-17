@@ -12,7 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
-import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 
 import app.morphe.extension.music.settings.Settings;
@@ -40,6 +39,11 @@ public final class PlaylistTrackTapPatch {
          */
         @Nullable
         Object patch_getWatchEndpoint();
+
+        /**
+         * @return Serialized watch endpoint.
+         */
+        byte[] patch_serializeWatchEndpoint(Object watchEndpoint);
 
         /**
          * @return Copy of the command, with the playlist id and index cleared from its watch endpoint.
@@ -92,9 +96,6 @@ public final class PlaylistTrackTapPatch {
     private static final int WIRE_TYPE_LENGTH_DELIMITED = 2;
     private static final int WIRE_TYPE_FIXED32 = 5;
 
-    @Nullable
-    private static volatile Method toByteArrayMethod;
-
     /**
      * The fields of a watch endpoint that tell what was tapped.
      */
@@ -121,7 +122,7 @@ public final class PlaylistTrackTapPatch {
             Object watchEndpoint = command.patch_getWatchEndpoint();
             if (watchEndpoint == null) return command;
 
-            WatchEndpointFields fields = parseWatchEndpoint(serialize(watchEndpoint));
+            WatchEndpointFields fields = parseWatchEndpoint(command.patch_serializeWatchEndpoint(watchEndpoint));
             if (!isPlaylistTrackTap(fields)) return command;
 
             if (action == TapAction.PLAY_SINGLE_TRACK) {
@@ -149,18 +150,6 @@ public final class PlaylistTrackTapPatch {
                 && !fields.playlistId.isEmpty()
                 && !fields.playlistSetVideoId.isEmpty()
                 && fields.params.isEmpty();
-    }
-
-    /**
-     * Uses the unobfuscated {@code MessageLite.toByteArray()} of the proto.
-     */
-    private static byte[] serialize(Object message) throws Exception {
-        Method method = toByteArrayMethod;
-        if (method == null) {
-            method = message.getClass().getMethod("toByteArray");
-            toByteArrayMethod = method;
-        }
-        return (byte[]) method.invoke(message);
     }
 
     private static WatchEndpointFields parseWatchEndpoint(byte[] data) {

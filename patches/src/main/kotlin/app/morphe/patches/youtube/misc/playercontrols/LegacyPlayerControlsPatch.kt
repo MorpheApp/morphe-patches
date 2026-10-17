@@ -34,7 +34,10 @@ import app.morphe.patches.youtube.misc.playservice.is_21_04_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_38_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -209,7 +212,7 @@ internal fun disableNewPlayerControlsFeatureFlag() {
         }
     }
 
-    if (is_21_04_or_greater) {
+    if (is_21_04_or_greater && !is_21_41_or_greater) {
         val flagMethod = NewPlayerOverlaysFeatureFlagFingerprint.matchSingle().let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
@@ -298,9 +301,31 @@ val legacyPlayerControlsPatch = bytecodePatch(
             disableNewPlayerControlsFeatureFlag()
         }
 
+        if (is_21_08_or_greater) {
+            // The elevated player shows the video metadata without a background over the
+            // ambient mode colors, so the light theme text can not be read.
+            // The metadata panel also has its own forced dark and light themes, which do not depend
+            // on the elevated player. With the forced dark theme and the elevated player off, the
+            // white text is drawn on the light background of the watch page, so turn all of them off
+            // and the metadata panel uses the app theme.
+            arrayOf(
+                ElevatedPlayerFeatureFlagFingerprint to true,
+                MetapanelForceDarkThemeFeatureFlagFingerprint to is_21_29_or_greater,
+                MetapanelForceLightThemeFeatureFlagFingerprint to is_21_38_or_greater
+            ).forEach { (fingerprint, applyChanges) ->
+                if (applyChanges) {
+                    fingerprint.matchAll().forEach {
+                        it.method.insertLiteralOverride(
+                            it.instructionMatches.first().index,
+                            false
+                        )
+                    }
+                }
+            }
+        }
+
         // Override flags that interfere with old player icons override.
         arrayOf(
-            PlayerControlsModernAccessibilityFeatureFlagFingerprint to is_21_08_or_greater,
             PlayerCommentTeaserFeatureFlagFingerprint to is_21_15_or_greater,
             RecycleViewScrollingFlagFingerprint to is_21_15_or_greater
         ).forEach { (fingerprint, applyChanges) ->

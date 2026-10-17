@@ -28,8 +28,8 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.numberOfParameterRegistersLogical
 import app.morphe.util.p0Register
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -41,6 +41,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/Enable
 internal fun enableDebuggingPatch(
     block: BytecodePatchBuilder.() -> Unit = {},
     executeBlock: BytecodePatchContext.() -> Unit = {},
+    hookIndexedBooleanFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     hookStringFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     hookLongFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     hookDoubleFeatureFlag: BytecodePatchBuilder.() -> Boolean,
@@ -105,26 +106,41 @@ internal fun enableDebuggingPatch(
             )
         )
 
-        fun MutableMethod.firstLongParameterRegister(): Int = numberOfParameterRegistersLogical +
-                p0Register +
-                parameterTypes.indexOf("J") -1
+        fun MutableMethod.firstLongParameterRegister(): Int {
+            // Parameter types can be CharSequence objects that are not Strings.
+            val types = parameterTypes.map { it.toString() }
+            val longIndex = types.indexOf("J")
+            check(longIndex >= 0) { "Method has no long parameter: $this" }
 
-        ExperimentalBooleanFeatureFlagFingerprint.method.cloneParameters().apply {
-            val longParameter1 = firstLongParameterRegister()
-            val longParameter2 = longParameter1 + 1
+            return p0Register +
+                    (if (AccessFlags.STATIC.isSet(accessFlags)) 0 else 1) +
+                    types.take(longIndex).sumOf { if (it == "J" || it == "D") 2 else 1 }
+        }
 
-            findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
+        fun overrideBooleanFeatureValue(fingerprint: Fingerprint) {
+            fingerprint.method.cloneParameters().apply {
+                val longParameter1 = firstLongParameterRegister()
+                val longParameter2 = longParameter1 + 1
 
-                addInstructionsAtControlFlowLabel(
-                    index,
-                    """ 
-                        invoke-static { v$register, v$longParameter1, v$longParameter2 }, $EXTENSION_CLASS->isBooleanFeatureFlagEnabled(ZJ)Z
-                        move-result v$register
-                    """
-                )
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """ 
+                            invoke-static { v$register, v$longParameter1, v$longParameter2 }, $EXTENSION_CLASS->isBooleanFeatureFlagEnabled(ZJ)Z
+                            move-result v$register
+                        """
+                    )
+                }
             }
         }
+
+        overrideBooleanFeatureValue(ExperimentalBooleanFeatureFlagFingerprint)
+
+        if (hookIndexedBooleanFeatureFlag()) overrideBooleanFeatureValue(
+            ExperimentalIndexedBooleanFeatureFlagFingerprint
+        )
 
         fun overrideWideFeatureValue(fingerprint: Fingerprint, extensionMethod: String) {
             fingerprint.method.cloneParameters().apply {

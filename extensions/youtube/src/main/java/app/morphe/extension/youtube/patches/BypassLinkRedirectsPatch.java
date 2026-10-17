@@ -20,6 +20,10 @@ public class BypassLinkRedirectsPatch {
         if (Settings.BYPASS_LINK_REDIRECTS.get() && Objects.equals(uri.getPath(), "/redirect")) {
             String queryParam = uri.getQueryParameter("q");
             if (queryParam != null) {
+                if (Uri.parse(queryParam).getScheme() == null) {
+                    // Channel links can omit the scheme (q=twitch.tv/name) and no app opens them.
+                    queryParam = "http://" + queryParam;
+                }
                 var query = Uri.parse(queryParam);
                 Logger.printDebug(() -> "Bypassing YouTube redirect URI: " + query);
                 return query;

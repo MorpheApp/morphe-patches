@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">بازنشانی رنگ</string>
   <string name="morphe_settings_color_invalid">رنگ نامعتبر است</string>
   <string name="morphe_settings_restart_title">راه‌اندازی مجدد لازم است</string>
-  <string name="morphe_settings_restart_dialog_message">برای اعمال این تغییر، برنامه را راه‌اندازی مجدد کنید.</string>
+  <string name="morphe_settings_restart_dialog_message">برای اعمال این تغییر، برنامه را راه‌اندازی مجدد کنید</string>
   <string name="morphe_settings_restart">راه‌اندازی مجدد</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">واردکردن</string>
   <string name="morphe_settings_import_copy">کپی</string>
   <string name="morphe_settings_import_reset">تنظیمات Morphe به پیش‌فرض بازنشانی شد</string>
-  <string name="morphe_settings_import_success">%d تنظیم وارد شد</string>
+  <string name="morphe_settings_import_success">%s تنظیم وارد شد</string>
   <string name="morphe_settings_import_failure_parse">واردکردن ناموفق بود: %s</string>
   <string name="morphe_settings_navigate_up">بازگشت به بالا</string>
   <string name="morphe_settings_search_hint">جست‌وجوی تنظیمات</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_title">نمایش پیام کوتاه هنگام خطای Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"خاموش‌کردن پیام‌های کوتاه خطا، همهٔ اعلان‌های خطای Morphe را پنهان می‌کند.
 
-از هیچ رویداد غیرمنتظره‌ای مطلع نخواهید شد."</string>
+از هیچ رویداد غیرمنتظره‌ای مطلع نخواهید شد"</string>
   <string name="morphe_debug_export_logs_title">صادرکردن گزارش‌های اشکال‌زدایی</string>
   <string name="morphe_debug_export_logs_summary">گزارش‌های اشکال‌زدایی Morphe را صادر کنید</string>
   <string name="morphe_debug_export_logs_success">گزارش‌های اشکال‌زدایی با موفقیت صادر شدند</string>
@@ -179,31 +179,31 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">بازکردن تنظیمات MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG نصب نیست. آن را نصب کنید.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG نصب نیست. آن را نصب کنید</string>
   <string name="gms_core_dialog_title">اقدام لازم است</string>
   <string name="gms_core_dialog_outdated_message">"MicroG شما، نسخهٔ %1s، قدیمی است و ممکن است مشکل ایجاد کند.
 
-لطفاً MicroG را به جدیدترین نسخهٔ %2s به‌روزرسانی کنید."</string>
+لطفاً MicroG را به جدیدترین نسخهٔ %2s به‌روزرسانی کنید"</string>
   <string name="gms_core_dialog_update_text">به‌روزرسانی</string>
   <string name="gms_core_dialog_ignore_text">نادیده‌گرفتن</string>
   <string name="gms_core_dialog_conflict_message">"MicroG نصب‌شده توسط Morphe توصیه نمی‌شود:
 
 %1s
 
-برای حذف آن ضربه بزنید، سپس این برنامه را دوباره باز کنید و MicroG RE را نصب کنید."</string>
+برای حذف آن ضربه بزنید، سپس این برنامه را دوباره باز کنید و MicroG RE را نصب کنید"</string>
   <string name="gms_core_dialog_uninstall_text">حذف</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG اجازهٔ اجرا در پس‌زمینه را ندارد.
 
 راهنمای «برنامهٔ من را نکش» را برای تلفن خود دنبال کنید و دستورالعمل‌ها را برای نصب MicroG اعمال کنید.
 
-این کار برای کارکرد برنامه لازم است."</string>
+این کار برای کارکرد برنامه لازم است"</string>
   <string name="gms_core_dialog_open_website_text">بازکردن وب‌سایت</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"برای جلوگیری از مشکلات، بهینه‌سازی‌های باتری MicroG باید غیرفعال شوند.
 
 غیرفعال‌کردن بهینه‌سازی باتری برای MicroG تأثیر منفی بر مصرف باتری نخواهد داشت.
 
-روی دکمهٔ ادامه ضربه بزنید و تغییرات بهینه‌سازی را اجازه دهید."</string>
+روی دکمهٔ ادامه ضربه بزنید و تغییرات بهینه‌سازی را اجازه دهید"</string>
   <string name="gms_core_dialog_continue_text">ادامه</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">نمایش گفت‌وگوی بهینه‌سازی باتری MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"با غیرفعال‌کردن این گزینه، پیام بهینه‌سازی باتری MicroG پنهان می‌شود.

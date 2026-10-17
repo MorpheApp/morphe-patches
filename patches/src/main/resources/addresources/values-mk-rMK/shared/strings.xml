@@ -24,13 +24,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Врати ја бојата</string>
   <string name="morphe_settings_color_invalid">Невалидна боја</string>
   <string name="morphe_settings_restart_title">Рестартирање е потребно</string>
-  <string name="morphe_settings_restart_dialog_message">Рестартирај ја апликацијата за да стапат промените на сила.</string>
   <string name="morphe_settings_restart">Рестартирај</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Импортирај</string>
   <string name="morphe_settings_import_copy">Копирај</string>
   <string name="morphe_settings_import_reset">Паденијата на Morphe се вратени на нивните вредности по дефолт</string>
-  <string name="morphe_settings_import_success">Импортирани %d паденија</string>
   <string name="morphe_settings_import_failure_parse">Импортирањето не успеа: %s</string>
   <string name="morphe_settings_search_hint">Пребарување на паденија</string>
   <string name="morphe_settings_screen_info_title">Филмови</string>
@@ -91,9 +89,6 @@ Second \"item\" text"</string>
   <string name="morphe_debug_stacktrace_title">Дебугирај го тракот од позиција во скок</string>
   <string name="morphe_debug_stacktrace_summary">Вклучува завршни завршни завршни завршни завршни зафати за завршни зафати</string>
   <string name="morphe_debug_toast_on_error_title">Прикажи тост при грешка во Morphe</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Исклучувањето на пораките за грешка во тост ги крие сите известувања за грешки во Morphe.
-
-Не ќе бидете известени за какви било неочекувани настани."</string>
   <string name="morphe_debug_export_logs_title">Извези ги завршните поруки за грешки</string>
   <string name="morphe_debug_export_logs_summary">Извези завршни поруки за грешки од Morphe</string>
   <string name="morphe_debug_export_logs_success">Завршни поруки за грешки се извезони успешно</string>
@@ -125,20 +120,9 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Отвори ги поставките на MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG не е инсталиран. Инсталирајте го.</string>
   <string name="gms_core_dialog_title">Потребна е акција</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG нема дозвола да работи во позадина.
-
-Следете го водичот „Не го убивајте мојата апликација“ за вашиот телефон и применете ги инструкциите на вашата инсталација на MicroG.
-
-Ова е потребно за апликацијата да функционира."</string>
   <string name="gms_core_dialog_open_website_text">Отвори веб-страница</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Оптимизациите на батеријата на MicroG мора да бидат деактивирани за да се избегнат проблеми.
-
-Деактивирањето на оптимизациите на батеријата за MicroG нема негативно да влијае на траењето на батеријата.
-
-Допрете копчето продолжете и дозволете ги промените за оптимизација."</string>
   <string name="gms_core_dialog_continue_text">Продолжи</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Прикажи го дијалогот за оптимизација на батеријата на MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Исклучувањето на ова ќе го скрие повикувањето за оптимизација на батеријата на MicroG.

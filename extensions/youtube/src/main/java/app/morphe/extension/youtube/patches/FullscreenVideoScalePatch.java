@@ -10,8 +10,6 @@ package app.morphe.extension.youtube.patches;
 import android.app.Activity;
 import android.os.Build;
 import android.util.DisplayMetrics;
-import android.view.SurfaceView;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -22,8 +20,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +44,15 @@ import kotlin.Unit;
  */
 @SuppressWarnings("unused")
 public class FullscreenVideoScalePatch {
+
+    /**
+     * Added to {@code PlayerView}, whose video view field has an obfuscated name.
+     */
+    public interface PlayerViewInterface {
+        // Method is added during patching.
+        @Nullable
+        View patch_getVideoView();
+    }
 
     public enum VideoScaleMode {
         DEFAULT("morphe_fullscreen_video_scale_fit"),
@@ -267,7 +272,7 @@ public class FullscreenVideoScalePatch {
     }
 
     private static float getVideoAspectRatio(View view, int viewW, int viewH) {
-        View child = findDirectVideoSurface(view);
+        View child = getVideoView(view);
         if (child != null && child != view && child.getWidth() > 8 && child.getHeight() > 8) {
             float childAR = child.getWidth() / (float) child.getHeight();
             float parentAR = viewW / (float) viewH;
@@ -518,59 +523,14 @@ public class FullscreenVideoScalePatch {
         return null;
     }
 
+    /**
+     * The video view is sized to the video when the renderer does not letterbox the video itself.
+     */
     @Nullable
-    private static View findDirectVideoSurface(@Nullable View container) {
-        if (isUsableVideoView(container)) {
-            return container;
-        }
-
-        if (container instanceof ViewGroup group) {
-            for (int i = 0, childCount = group.getChildCount(); i < childCount; i++) {
-                View child = group.getChildAt(i);
-                if (isUsableVideoView(child)) {
-                    return child;
-                }
-            }
-        }
-        return findVideoViewField(container);
-    }
-
-    @Nullable
-    private static View findVideoViewField(@Nullable View playerView) {
-        if (playerView == null) {
-            return null;
-        }
-
-        Class<?> cls = playerView.getClass();
-        for (int depth = 0; depth < 8 && cls != null && cls != ViewGroup.class && cls != View.class; depth++) {
-            for (Field field : cls.getDeclaredFields()) {
-                if (Modifier.isStatic(field.getModifiers())) {
-                    continue;
-                }
-                if (!View.class.isAssignableFrom(field.getType())) {
-                    continue;
-                }
-
-                try {
-                    field.setAccessible(true);
-                    Object value = field.get(playerView);
-                    if (value instanceof View candidate && candidate != playerView
-                            && isUsableVideoView(candidate)) {
-                        return candidate;
-                    }
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "Ignoring exception", ex); // Ignore exception?
-                    // Keep looking.
-                }
-            }
-            cls = cls.getSuperclass();
-        }
-
-        return null;
-    }
-
-    private static boolean isUsableVideoView(@Nullable View view) {
-        return view instanceof TextureView || view instanceof SurfaceView;
+    private static View getVideoView(View playerView) {
+        return playerView instanceof PlayerViewInterface player
+                ? player.patch_getVideoView()
+                : null;
     }
 
     private static final class SavedClipState {

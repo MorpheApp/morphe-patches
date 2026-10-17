@@ -37,17 +37,6 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Исклучи ги ажурирањата на изгледот</string>
   <string name="morphe_disable_layout_updates_summary">Спречува дека серверот ќе го ажурира изгледот на апликацијата</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Изгледот на апликацијата ќе се врати на изгледот што се користеше при првата инсталација.
-
-Некои странични изгледи можеби нема да се вратат.
-
-Промените вклучуваат:
-• Компоненти во изворното мени на плеерот (или поврзани поставки) можеби нема да функционираат.
-• Бројките што се вртат не се анимирани.
-• Прикажана е картичката Библиотека.
-• Делот за музика од описот на видеото можеби нема да функционира.
-• Објектите од менито на плеерот не можат да бидат скриени.
-• Копчето за менување сметка можеби не се појавува на картичката Библиотека."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Вклучи филтер за менито Flyout</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Филтер на менито Flyout</string>
@@ -142,7 +131,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_videos_section_title">Прикриј дел „Препорачани видеа“</string>
   <string name="morphe_hide_hype_points_title">Скриј ги поените за поттик</string>
   <string name="morphe_hide_info_cards_section_title">Прикриј дел „Информациски картички“</string>
-  <string name="morphe_hide_key_concepts_section_title">Прикриј дел „Клучни концепти“</string>
   <string name="morphe_hide_quizzes_section_title">Прикриј дел „Квизови“</string>
   <string name="morphe_hide_subscribe_button_title">Скриј копче за претплатување</string>
   <string name="morphe_hide_transcript_section_title">Прикриј дел „Транскрипт“</string>
@@ -273,6 +261,7 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_success_toast">Видеото успешно е зачувано на плејлиста „Гледај подоцна“</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Ова видео веќе е зачувано на плејлистата „Гледај подоцна“</string>
   <string name="morphe_save_to_watch_later_error_toast">Не може да се зачува ова видео во плејлистата „Гледај подоцна“</string>
+  <string name="morphe_local_queue_remove">Отстрани</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Отворете канал од аватарот во живо</string>
@@ -395,6 +384,7 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Скриј автоматски титри</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">Исклучено</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Поставете колачиња за натписи</string>
   <string name="morphe_caption_cookies_title">Колчиња за титри</string>
@@ -429,9 +419,6 @@ Second \"item\" text"</string>
   <string name="morphe_swap_create_with_notifications_button_title">Заменете го копчето „Креирај“ со копчето „Известувања“</string>
   <string name="morphe_hide_navigation_button_labels_title">Скриј ги ознаките на копчињата за навигација</string>
   <string name="morphe_hide_navigation_bar_title">Скриј лента за навигација</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ова целосно го скрива навигацискиот панел, вклучувајќи ја картичката „Вие“.
-
-За да пристапите до поставките, овозможете ја копчето Поставки преку Општо → Алatна лента → Прикажи поставки."</string>
   <string name="morphe_narrow_navigation_buttons_title">Вклучи тесни навигациски копчиња</string>
   <string name="morphe_narrow_navigation_buttons_summary">Намалување на хоризонталното растојание меѓу копчињата</string>
   <string name="morphe_navigation_bar_animations_title">Овозможете анимации на лентата за навигација</string>
@@ -658,6 +645,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Исклучено</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Исклучи продолжување на мини-плеер</string>
   <string name="morphe_miniplayer_screen_title">Мини-плеер</string>
@@ -678,7 +666,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_opacity_title">Непровидност на наслагата</string>
   <string name="morphe_miniplayer_opacity_summary">Прилагодете ја транспарентноста (0 е транспарентно, 100 е непровидно)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Вклучи анимиран екран за вчитување</string>
@@ -727,7 +714,6 @@ Second \"item\" text"</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Спојување на димензии на уредот</string>
   <string name="morphe_spoof_device_dimensions_summary">Овозможувањето на ова може да отклучи повисоки квалитети на видеа</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Вклучувањето на ова може да предизвика прекинување на видео репродукцијата, пократок живот на батеријата и непознати несакани ефекти.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Хептична повратна врска</string>
   <string name="morphe_disable_haptic_feedback_summary">Изберете ги интеракциите што ја зачекуваат вибрацијата на уредот</string>
@@ -737,7 +723,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Исклучи хептична повратна врска при допир и задржување</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Исклучете хептична повратна врска за зумирање</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Ако неодамна ги променивте деталите за најава на вашиот акаунт, отстранете ја и повторно инсталирајте MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Отворете ги линковите во прегледувач</string>
@@ -783,18 +768,13 @@ Second \"item\" text"</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Исклучи HDR видео</string>
-  <string name="morphe_force_avc_codec_title">Принуден кодек AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Користете подобар живот на батеријата
-• Може да го врати недостижниот квалитет на видео за постари уреди"</string>
+  <string name="morphe_video_codec_entry_default">Стандардно</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Скриј опции за квалитет на Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Вклучувањето на оваа поставка може да користи софтверско декодирање на AV1.
-
-Репродукцијата на видео со AV1 може да запие и да пропушти кадри."</string>
   <string name="morphe_spoof_video_streams_about_title">Несакани ефекти од спојување</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодек AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Недостапен имерзивен режим со 360° VR</string>
@@ -809,4 +789,7 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_auto">Автоматски</string>
   <string name="morphe_player_icon_style_entry_default">Стандардно</string>
   <string name="morphe_player_icon_style_entry_custom">По нарачка</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_cancel">Откажи</string>
+  <string name="morphe_series_tracker_undo">Врати</string>
 </resources>

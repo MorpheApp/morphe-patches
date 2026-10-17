@@ -22,6 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
@@ -32,6 +33,9 @@ import app.morphe.extension.shared.requests.Requester;
 public final class SimpMusicProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://api-lyrics.simpmusic.org/v1/";
+
+    private static final String CLIENT_USER_AGENT = "SimpMusicLyrics/1.0";
+
     private static final Pattern HTML_ENTITY =
             Pattern.compile("&#x([0-9a-fA-F]+);|&#(\\d+);");
 
@@ -56,6 +60,7 @@ public final class SimpMusicProvider implements LyricsProvider {
         try {
             final String url = BASE_URL + LyricsRequests.encode(videoId);
             connection = LyricsRequests.openConnection(url);
+            connection.setRequestProperty("User-Agent", CLIENT_USER_AGENT);
             connection.setRequestProperty("Accept", "application/json");
 
             final int code = connection.getResponseCode();
@@ -114,20 +119,21 @@ public final class SimpMusicProvider implements LyricsProvider {
 
     @Nullable
     private Lyrics parseEntry(JSONObject entry, String videoId) {
+        final String contributor = LyricsRequests.optString(entry, "contributor");
         final String richSync = LyricsRequests.optString(entry, "richSyncLyrics");
         if (richSync != null) {
-            return parseLrc(richSync, videoId);
+            return withContributor(parseLrc(richSync, videoId), contributor);
         }
         final String synced = LyricsRequests.optString(entry, "syncedLyrics");
         if (synced != null) {
-            return parseLrc(synced, videoId);
+            return withContributor(parseLrc(synced, videoId), contributor);
         }
         final String plain = LyricsRequests.optString(entry, "plainLyric");
         if (plain != null) {
             final List<LyricsLine> lines = LRCParser.parsePlain(plain);
             if (!lines.isEmpty()) {
-                return new Lyrics(lines, name(), false,
-                        null, null, null, null, plain, "plain", sourceUrl(videoId));
+                return withContributor(new Lyrics(lines, name(), false,
+                        null, null, null, null, plain, "plain", sourceUrl(videoId)), contributor);
             }
         }
         return null;
@@ -218,5 +224,10 @@ public final class SimpMusicProvider implements LyricsProvider {
             }
         }
         return result;
+    }
+
+    private static Lyrics withContributor(@Nullable Lyrics lyrics, @Nullable String contributor) {
+        return LyricsMerge.addSongwriter(lyrics,
+                contributor == null ? null : "Submitted by " + contributor);
     }
 }

@@ -31,7 +31,6 @@ import com.android.tools.smali.dexlib2.immutable.value.ImmutableStringEncodedVal
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/checks/CheckEnvironmentPatch;"
@@ -104,7 +103,6 @@ fun checkEnvironmentPatch(
     }
 }
 
-@OptIn(ExperimentalEncodingApi::class)
 private val String.encodedAndHashed
     get() = MutableStringEncodedValue(
         ImmutableStringEncodedValue(

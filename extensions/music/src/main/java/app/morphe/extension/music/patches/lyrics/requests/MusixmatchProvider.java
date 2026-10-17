@@ -33,7 +33,7 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
-public final class MusixmatchProvider implements LyricsProvider {
+public final class MusixmatchProvider extends ScoredSongProvider {
 
     private static final String API_BASE = "https://apic.musixmatch.com/ws/1.1/";
     private static final String TOKEN_URL = API_BASE + "token.get";
@@ -58,35 +58,7 @@ public final class MusixmatchProvider implements LyricsProvider {
     }
 
     @Override
-    public boolean hasCandidates() {
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
-        List<ScoredSong> candidates = fetchScoredSongs(track);
-        if (candidates.isEmpty()) {
-            return null;
-        }
-        ScoredSong top = candidates.get(0);
-        return FetchResult.of(top.lyrics(), top.title(), top.artist(),
-                top.durationSec(), track);
-    }
-
-    @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
-        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-        for (ScoredSong candidate : fetchScoredSongs(track)) {
-            scored.add(new Lyrics.ScoredLyrics(candidate.score(), candidate.lyrics()));
-        }
-        return scored;
-    }
-
-    private record ScoredSong(int score, Lyrics lyrics, String title, String artist,
-                              long durationSec) {}
-
-    private List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
+    protected List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
         final String token = ensureToken();
         if (token == null) {
             return Collections.emptyList();

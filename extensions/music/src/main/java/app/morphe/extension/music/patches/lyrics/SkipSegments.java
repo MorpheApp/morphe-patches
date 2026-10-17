@@ -39,23 +39,17 @@ import app.morphe.extension.shared.sponsorblock.requests.SBRoutes;
 /**
  * SponsorBlock skip segments used to align lyrics with playback.
  *
- * <p>Lyrics fetched from title-keyed providers are written against the released audio: the
- * content that is left after the segments a sponsor block would skip. The player reports
- * video time, which still contains those segments, so playback time has to drop every
- * segment that precedes it before it is compared with lyric timestamps ({@link #contentMs}),
- * and a seek has to push the lyric timestamp forward by those same segments instead
- * ({@link #remapTimestamp}). The provider search filters candidates by duration, so it has
- * to ask with the content duration instead ({@link #effectiveDurationMs}).
+ * <p>Those lyrics are timed against the released audio, but the player reports video time, so
+ * segments have to be dropped from playback time ({@link #contentMs}), added back on a seek
+ * ({@link #remapTimestamp}) and counted out of the duration asked with ({@link
+ * #effectiveDurationMs}).
  *
- * <p>Every entry point follows the lyrics SponsorBlock switch: while it is off nothing is
- * requested, every answer is null, and the pipeline behaves as if segments did not exist.
- * Failures are silent and retried after a short cooldown, so an
- * unreachable service never costs the lyrics lookup more than one background round trip, and
- * while no own answer exists the segments SponsorBlock itself downloaded for the playing
- * video are used instead ({@link #fromController}).
+ * <p>Everything follows the lyrics SponsorBlock switch: off means nothing is requested and
+ * every answer is null. Failures are silent and retried after a cooldown, so an unreachable
+ * service costs one background round trip; until an own answer exists, the segments
+ * SponsorBlock itself downloaded are used ({@link #fromController}).
  *
- * <p>{@link #await} blocks, so it is only called from the lyrics lookup threads - never from
- * the main thread. {@link #peek} never blocks and is the way playback time reads segments.
+ * <p>{@link #await} blocks, so only lookup threads may call it. {@link #peek} never blocks.
  */
 public final class SkipSegments {
 
@@ -73,10 +67,9 @@ public final class SkipSegments {
     private static final int CACHE_MAX_ENTRIES = 16;
 
     /**
-     * Every music relevant category, URL-encoded the way {@code SegmentCategory} builds the
-     * list for the API. Every segment of these categories separates the video from the
-     * released audio, so all of them count - the local skip behavior decides whether the
-     * player jumps over them, not whether they exist in the timeline.
+     * Every music relevant category, URL-encoded the way {@code SegmentCategory} builds it.
+     * All of them separate the video from the released audio, so all count: whether the
+     * player skips one locally is not what puts it in the timeline.
      */
     private static final String FETCH_CATEGORIES = "[%22sponsor%22,%22selfpromo%22,"
             + "%22interaction%22,%22intro%22,%22outro%22,%22preview%22,%22hook%22,"
@@ -84,7 +77,7 @@ public final class SkipSegments {
 
     private static final Object LOCK = new Object();
 
-    /** Video id to sorted, merged segments; entries are empty when the fetch found none. */
+    /** Video id to merged segments; empty when the fetch found none. */
     private static final Map<String, List<Seg>> CACHE = new LinkedHashMap<>(16, 0.75f, true) {
         @Override
         protected boolean removeEldestEntry(Map.Entry<String, List<Seg>> eldest) {
@@ -95,8 +88,8 @@ public final class SkipSegments {
     private static final Map<String, FutureTask<List<Seg>>> TASKS = new HashMap<>();
 
     /**
-     * When the last fetch of a video failed, the next attempt may start. A failed fetch is
-     * never cached, so without this the playback path would start a new request every frame.
+     * When the next attempt after a failed fetch may start. A failure is never cached, so
+     * without this the playback path would request every frame.
      */
     private static final Map<String, Long> RETRY_AFTER = new HashMap<>();
 
@@ -113,10 +106,7 @@ public final class SkipSegments {
     private SkipSegments() {
     }
 
-    /**
-     * Starts fetching the segments of a video in the background. Cheap when the video is
-     * already cached or being fetched. Never throws, never blocks.
-     */
+    /** Backgrounds a fetch. Cheap when cached or in flight. Never throws or blocks. */
     public static void prefetch(@Nullable String videoId) {
         if (videoId == null || videoId.isEmpty() || !Settings.LYRICS_SB_MATCHING.get()) {
             return;
@@ -139,12 +129,11 @@ public final class SkipSegments {
     }
 
     /**
-     * Waits for the segments of a video, up to {@link #AWAIT_TIMEOUT_MS}.
+     * Waits up to {@link #AWAIT_TIMEOUT_MS}.
      *
-     * @param durationMs Duration of the track; a segment whose submitting client recorded
-     *                   a different video duration is stale and dropped.
-     * @return The sorted, merged segments; empty when the video has none, null when no
-     *         answer is available or the switch is off - both mean no correction applies.
+     * @param durationMs A segment recorded against a different duration is stale, dropped.
+     * @return The merged segments; empty when the video has none, null when unavailable or
+     *         off. Both mean no correction applies.
      */
     @Nullable
     public static List<Seg> await(@Nullable String videoId, long durationMs) {
@@ -172,11 +161,11 @@ public final class SkipSegments {
             try {
                 segs = task.get(timeoutMs, TimeUnit.MILLISECONDS);
             } catch (TimeoutException ignored) {
-                // The fetch keeps running; the next await picks the result up.
+                // Still running; the next await picks it up.
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             } catch (ExecutionException ignored) {
-                // fetchFor never throws, so this is only a safety net.
+                // Safety net only.
             }
         }
         if (segs == null) {
@@ -185,8 +174,8 @@ public final class SkipSegments {
             }
         }
         if (segs == null) {
-            // Nothing answered - the fetch failed, is cooling down, or had not started.
-            // SponsorBlock may already hold the segments for the video being played.
+            // Nothing answered: the fetch failed, is cooling down, or had not started.
+            // SponsorBlock may already hold the segments for the playing video.
             segs = fromController(videoId);
         }
         return applicable(segs, durationMs);
@@ -334,6 +323,7 @@ public final class SkipSegments {
         return merge(segs);
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Nullable
     private static FutureTask<List<Seg>> startFetchLocked(String videoId) {
         Long retryAfter = RETRY_AFTER.get(videoId);
@@ -347,6 +337,7 @@ public final class SkipSegments {
         return task;
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Nullable
     private static List<Seg> fetchFor(String videoId, int epoch) {
         List<Seg> result = null;
@@ -360,8 +351,8 @@ public final class SkipSegments {
                 return result;
             }
             if (result == null) {
-                // Not an answer: nothing is cached, the cooldown keeps every reader from
-                // starting a new attempt until it expires.
+                // Not an answer, so nothing is cached; the cooldown keeps readers from
+                // retrying until it expires.
                 RETRY_AFTER.put(videoId, System.currentTimeMillis() + RETRY_COOLDOWN_MS);
             } else {
                 CACHE.put(videoId, result);
