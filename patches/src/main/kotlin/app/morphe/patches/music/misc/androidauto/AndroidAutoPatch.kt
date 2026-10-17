@@ -40,6 +40,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -909,9 +910,19 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
 // region Android Auto browse results
 
 /**
- * Passes browse results through Java's `handleAndroidAutoBrowseResult` before YTM sends them to Android Auto.
+ * Applies browse changes before delivery, then limits the result size when YTM has no native size guard.
  */
 private fun hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod: MutableMethod) {
+    val hasNativeSizeGuard = deliverAndroidAutoMediaItemsMethod.instructions.any {
+        it.getReference<StringReference>()?.string == " from first 10 items."
+    }
+    if (!hasNativeSizeGuard) {
+        deliverAndroidAutoMediaItemsMethod.addInstructions(0, """
+            invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->limitAndroidAutoBrowseItems(Ljava/util/List;)Ljava/util/List;
+            move-result-object p1
+        """)
+    }
+
     val handleAndroidAutoBrowseResultMethod = "$EXTENSION_CLASS->handleAndroidAutoBrowseResult(" +
             EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE +
             "Ljava/util/List;)Ljava/util/List;"

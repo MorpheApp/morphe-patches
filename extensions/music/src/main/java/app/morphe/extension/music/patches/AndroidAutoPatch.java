@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcel;
 import android.support.v4.media.MediaBrowserCompat;
 import android.support.v4.media.MediaDescriptionCompat;
 
@@ -596,6 +597,33 @@ public final class AndroidAutoPatch {
      */
     public static boolean isAndroidAutoPodcastsMediaId(@Nullable String mediaId) {
         return PODCASTS_MEDIA_ID.equals(mediaId);
+    }
+
+    /**
+     * YTM 9.15 needs this guard: oversized browse results fail Binder delivery and leave Auto loading.
+     * Use newer YTM's 410 KiB budget and the first ten items' average parcel size to estimate an item limit.
+     * Injected only when YTM's native delivery method has no size guard.
+     */
+    @Nullable
+    public static List<MediaBrowserCompat.MediaItem> limitAndroidAutoBrowseItems(
+            @Nullable List<MediaBrowserCompat.MediaItem> items) {
+        if (items == null || items.size() <= 10) return items;
+
+        int sampleBytes = 0;
+        for (int i = 0; i < 10; i++) {
+            Parcel parcel = Parcel.obtain();
+            try {
+                items.get(i).writeToParcel(parcel, 0);
+                sampleBytes += parcel.dataSize();
+            } catch (RuntimeException ex) {
+                Logger.printException(() -> "Could not measure Android Auto item", ex);
+                sampleBytes += 10;
+            } finally {
+                parcel.recycle();
+            }
+        }
+        int itemLimit = (410 * 1024) / Math.max(1, sampleBytes / 10);
+        return itemLimit < items.size() ? new ArrayList<>(items.subList(0, itemLimit)) : items;
     }
 
     /**

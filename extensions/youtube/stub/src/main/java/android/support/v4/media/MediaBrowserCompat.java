@@ -1,5 +1,7 @@
 package android.support.v4.media;
 
+import android.os.Parcel;
+
 // Used only while compiling; YouTube Music provides the real class at runtime.
 public class MediaBrowserCompat {
     public static class MediaItem {
@@ -7,6 +9,10 @@ public class MediaBrowserCompat {
         public static final int FLAG_PLAYABLE = 2;
 
         public MediaItem(MediaDescriptionCompat description, int flags) {
+            throw new UnsupportedOperationException("Stub");
+        }
+
+        public void writeToParcel(Parcel parcel, int flags) {
             throw new UnsupportedOperationException("Stub");
         }
 
