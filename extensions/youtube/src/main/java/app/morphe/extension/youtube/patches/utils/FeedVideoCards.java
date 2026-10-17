@@ -7,12 +7,11 @@
 
 package app.morphe.extension.youtube.patches.utils;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
 import com.facebook.litho.ComponentHost;
@@ -20,6 +19,7 @@ import com.facebook.litho.TextContent;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -95,26 +95,21 @@ public final class FeedVideoCards {
      */
     private static final String PLAYLIST = "playlist";
 
-
     private static final Pattern THUMBNAIL_VIDEO_ID_PATTERN =
             Pattern.compile("/vi(?:_webp)?/([A-Za-z0-9_-]{11})/");
 
     private static final byte[] THUMBNAIL_PATH = "/vi".getBytes(StandardCharsets.US_ASCII);
 
     /** Text -> video id, or {@link #AMBIGUOUS}. Oldest texts are removed first. */
-    private static final Map<String, String> textVideoIds = new LinkedHashMap<>(256, 0.75f, true) {
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
-            return size() > MAX_TEXTS;
-        }
-    };
-
-    private static final Handler handler = new Handler(Looper.getMainLooper());
+    @GuardedBy("itself")
+    private static final Map<String, String> textVideoIds = Utils
+            .createSizeRestrictedMap(256, true);
 
     private static final List<Listener> listeners = new ArrayList<>();
 
     /** Root host -> video of the card, of the cards laid out last. Used only on the main thread. */
-    private static final Map<ComponentHost, String> cardVideoIds = new WeakHashMap<>();
+    private static final Map<ComponentHost, String> cardVideoIds = Collections.synchronizedMap(
+            new WeakHashMap<>());
 
     static {
         if (ENABLED) {
@@ -448,8 +443,9 @@ public final class FeedVideoCards {
      * The root host is a LithoView, which may not call the layout method of its super class,
      * so the layout of any host schedules its root host.
      */
-    private static final Map<ComponentHost, Boolean> rootsToUpdate = new WeakHashMap<>();
-    private static boolean rootsUpdateScheduled;
+    private static final Map<ComponentHost, Boolean> rootsToUpdate = Collections.synchronizedMap(
+            new WeakHashMap<>());
+    private static volatile boolean rootsUpdateScheduled;
 
     private static final Runnable updateRootsRunnable = () -> {
         rootsUpdateScheduled = false;
@@ -496,7 +492,7 @@ public final class FeedVideoCards {
             rootsToUpdate.put(root, Boolean.TRUE);
             if (!rootsUpdateScheduled) {
                 rootsUpdateScheduled = true;
-                handler.post(updateRootsRunnable);
+                Utils.runOnMainThread(updateRootsRunnable);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onComponentHostLayout failure", ex);
