@@ -37,6 +37,9 @@ final class AndroidAutoSearchResponseParser {
     private static final int COMPACT_RESULT_CONTENT = 1;
     private static final int COMPACT_RESULT_HEADER = 1;
     private static final int COMPACT_RESULT_ROWS = 2;
+    private static final int TOP_RESULT_COMPONENTS = 9;
+    private static final int TOP_RESULT_CARD = 1;
+    private static final int TOP_RESULT_RELATED_ROW = 2;
 
     enum ResultCategory {
         TOP_RESULT("search_shelf_top_result_title"),
@@ -112,6 +115,11 @@ final class AndroidAutoSearchResponseParser {
                 addSearchResult(results, topResult.messageField(TOP_RESULT_PRIMARY), TOP_RESULT_TAP, true);
                 for (ProtoMessage row : topResult.repeatedMessageField(TOP_RESULT_RELATED))
                     addSearchResult(results, row, RESULT_TAP, false);
+                // Top results can wrap the primary card and related results in separate components.
+                for (ProtoMessage component : topResult.repeatedMessageField(TOP_RESULT_COMPONENTS)) {
+                    addSearchResult(results, component.messageField(TOP_RESULT_CARD), TOP_RESULT_TAP, true);
+                    addSearchResult(results, component.messageField(TOP_RESULT_RELATED_ROW), RESULT_TAP, false);
+                }
                 // Compact cards also carry multi-row collections such as Listen again.
                 // Only untitled cards are top results; named collections retain each row's category.
                 ProtoMessage card = model.messagePath(COMPACT_RESULT_CARD, COMPACT_RESULT_CONTENT);
