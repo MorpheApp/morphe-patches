@@ -118,6 +118,19 @@ internal val videoTitlesHookPatch = bytecodePatch(
             }
         }
 
+        // The minimal miniplayer shows the title of the opened video without the video id.
+        MinimalMiniplayerTitleViewFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->restorePlayerTitle(Landroid/widget/TextView;)V"
+                )
+            }
+        }
+
         // The next video of the collapsed playlist panel does not include the video id.
         NextVideoTitleViewFingerprint.matchAll().forEach {
             it.method.apply {

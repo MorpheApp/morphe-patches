@@ -15,4 +15,19 @@ public final class Optional<T> {
         return null;
     }
 
+    /**
+     * @return {@code true} if a value is present, otherwise {@code false}
+     */
+    public boolean isPresent() {
+        return false;
+    }
+
+    /**
+     * @return the non-{@code null} value described by this {@code Optional}
+     * @throws java.util.NoSuchElementException if no value is present
+     */
+    public T get() {
+        return null;
+    }
+
 }

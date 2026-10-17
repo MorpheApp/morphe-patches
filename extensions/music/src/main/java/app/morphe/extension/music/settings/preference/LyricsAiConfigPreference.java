@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -136,7 +137,7 @@ public class LyricsAiConfigPreference extends Preference {
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
-                str("morphe_music_lyrics_ai_config_dialog_title"),
+                str("morphe_music_lyrics_use_ai_title"),
                 null,
                 null,
                 str("morphe_settings_save"),
@@ -160,7 +161,7 @@ public class LyricsAiConfigPreference extends Preference {
 
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
                     Utils.runOnBackgroundThread(() -> {
-                        boolean valid = validateConfig(baseUrl, apiToken, model);
+                        boolean valid = OpenAIClient.validateConfig(baseUrl, apiToken, model);
                         Utils.runOnMainThread(() -> {
                             if (!valid) {
                                 Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_invalid"));
@@ -201,45 +202,6 @@ public class LyricsAiConfigPreference extends Preference {
             dialog.show();
         } catch (WindowManager.BadTokenException ex) {
             Logger.printException(() -> "Could not show the AI settings dialog", ex);
-        }
-    }
-
-    private static boolean validateConfig(String baseUrl, String apiToken, String model) {
-        java.net.HttpURLConnection conn = null;
-        try {
-            org.json.JSONObject body = new org.json.JSONObject();
-            body.put("model", model);
-            org.json.JSONArray messages = new org.json.JSONArray();
-            messages.put(new org.json.JSONObject()
-                    .put("role", "user")
-                    .put("content", "hi"));
-            body.put("messages", messages);
-            body.put("max_tokens", 1);
-
-            String requestBody = body.toString();
-
-            conn = (java.net.HttpURLConnection) new java.net.URL(baseUrl).openConnection();
-            conn.setRequestMethod("POST");
-            conn.setConnectTimeout(10_000);
-            conn.setReadTimeout(15_000);
-            conn.setRequestProperty("Content-Type", "application/json");
-            if (!apiToken.isEmpty()) {
-                conn.setRequestProperty("Authorization", "Bearer " + apiToken);
-            }
-            conn.setDoOutput(true);
-
-            try (java.io.OutputStream os = conn.getOutputStream()) {
-                os.write(requestBody.getBytes(java.nio.charset.StandardCharsets.UTF_8));
-            }
-
-            return conn.getResponseCode() == 200;
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "testApiEndpoint failure", ex);
-            return false;
-        } finally {
-            if (conn != null) {
-                conn.disconnect();
-            }
         }
     }
 

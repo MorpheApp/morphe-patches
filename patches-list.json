@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.48.0-dev.8",
+  "version": "1.48.0-dev.9",
   "patches": [
     {
       "name": "AI channel filter",
@@ -20,14 +20,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -98,14 +98,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -176,14 +176,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -310,6 +310,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -318,13 +325,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -424,14 +424,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -502,14 +502,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -580,14 +580,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -642,7 +642,7 @@
     },
     {
       "name": "Captions",
-      "description": "Adds an option to disable captions from being automatically enabled or to set caption cookies.",
+      "description": "Adds options to disable captions from being automatically enabled, select a preferred caption language, and add more auto-translate languages.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -658,14 +658,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -736,14 +736,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -881,14 +881,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -1107,14 +1107,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -1185,14 +1185,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -1263,14 +1263,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -1398,14 +1398,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -1513,6 +1513,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -1521,13 +1528,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -1570,14 +1570,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -1648,14 +1648,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -1877,14 +1877,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -1991,6 +1991,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -1999,13 +2006,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2116,6 +2116,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -2124,13 +2131,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2173,14 +2173,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2251,14 +2251,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2328,6 +2328,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -2336,13 +2343,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2385,14 +2385,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2520,14 +2520,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2663,14 +2663,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2741,14 +2741,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2819,14 +2819,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2897,14 +2897,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3032,14 +3032,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3110,14 +3110,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3188,14 +3188,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3266,14 +3266,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3343,6 +3343,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -3351,13 +3358,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3400,14 +3400,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3478,14 +3478,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3556,14 +3556,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3633,6 +3633,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -3641,13 +3648,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3690,14 +3690,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3768,14 +3768,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3846,14 +3846,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3924,14 +3924,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4059,14 +4059,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4251,14 +4251,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4500,6 +4500,13 @@
           ],
           "targets": [
             {
+              "version": "21.42.241",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
@@ -4507,7 +4514,78 @@
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.28.208",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.23.492",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "21.20.405",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "21.16.256",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.21.37",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Feed card layout",
+      "description": "Adds an option to show or hide the card layout of feed videos, which YouTube sends as an A/B test.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "targets": [
+            {
+              "version": "21.42.241",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4577,6 +4655,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -4585,13 +4670,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4634,14 +4712,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4769,14 +4847,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4903,6 +4981,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -4911,13 +4996,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4959,6 +5037,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -4967,13 +5052,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5016,14 +5094,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5151,14 +5229,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5228,6 +5306,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -5236,13 +5321,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5284,6 +5362,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -5292,13 +5377,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5341,14 +5419,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5437,6 +5515,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -5445,13 +5530,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5550,6 +5628,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -5558,13 +5643,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5607,14 +5685,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5685,14 +5763,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5819,6 +5897,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -5827,13 +5912,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5876,14 +5954,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5954,14 +6032,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6089,14 +6167,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6224,14 +6302,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6301,6 +6379,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6309,13 +6394,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6414,6 +6492,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6422,13 +6507,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6471,14 +6549,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6549,14 +6627,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6627,14 +6705,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6705,14 +6783,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6782,6 +6860,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6790,13 +6875,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6839,14 +6917,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6917,14 +6995,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6995,14 +7073,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7129,6 +7207,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -7137,13 +7222,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7186,14 +7264,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7321,14 +7399,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7398,6 +7476,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -7406,13 +7491,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7454,6 +7532,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -7462,13 +7547,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7511,14 +7589,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7646,14 +7724,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7781,14 +7859,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7935,14 +8013,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8013,14 +8091,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8091,14 +8169,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8168,6 +8246,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -8176,13 +8261,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8224,6 +8302,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -8232,13 +8317,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8281,14 +8359,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8359,14 +8437,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8437,14 +8515,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8515,14 +8593,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8601,14 +8679,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8736,14 +8814,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8814,14 +8892,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8892,14 +8970,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9027,14 +9105,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9105,14 +9183,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9307,14 +9385,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9385,14 +9463,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9462,6 +9540,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -9470,13 +9555,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9519,14 +9597,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9768,14 +9846,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9845,6 +9923,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -9853,13 +9938,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9959,14 +10037,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10037,14 +10115,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10172,14 +10250,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10306,6 +10384,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -10314,13 +10399,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10363,14 +10441,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10441,14 +10519,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10576,14 +10654,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10654,14 +10732,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10789,14 +10867,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10867,14 +10945,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -10945,14 +11023,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11090,14 +11168,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11225,14 +11303,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11360,14 +11438,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11438,14 +11516,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11523,6 +11601,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -11531,13 +11616,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11644,14 +11722,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11721,6 +11799,13 @@
           ],
           "targets": [
             {
+              "version": "2026.42.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.41.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -11729,13 +11814,6 @@
             },
             {
               "version": "2026.40.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.39.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11778,14 +11856,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11939,14 +12017,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -12123,14 +12201,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -12201,14 +12279,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -12279,14 +12357,14 @@
           ],
           "targets": [
             {
-              "version": "21.41.525",
+              "version": "21.42.241",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
               "description": null
             },
             {
-              "version": "21.40.161",
+              "version": "21.41.525",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,

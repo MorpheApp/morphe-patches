@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 
 final class LyricsLineView extends TextView {
@@ -49,6 +50,7 @@ final class LyricsLineView extends TextView {
     private int[] cachedWordLine;
     private int[] cachedWordWrappedLine;
     private int cachedWordCount;
+
     private int cachedLineCount;
     private int[] cachedLineTop;
     private int[] cachedLineBottom;
@@ -80,6 +82,7 @@ final class LyricsLineView extends TextView {
     int transEnd = -1;
     int romaStart = -1;
     int romaEnd = -1;
+    boolean perWordReading;
     float lastTouchY;
     private final Paint layerPaint = new Paint();
     private PorterDuffColorFilter tintFilter;
@@ -112,9 +115,10 @@ final class LyricsLineView extends TextView {
         transEnd = end;
     }
 
-    void setRomanizationBounds(int start, int end) {
+    void setRomanizationBounds(int start, int end, boolean perWord) {
         romaStart = start;
         romaEnd = end;
+        perWordReading = perWord;
     }
 
     void setActiveLine(boolean active, int color) {
@@ -310,15 +314,28 @@ final class LyricsLineView extends TextView {
             }
             final int snappedStart = snapToClusterStart(clusters, s);
             final int snappedEnd = snapToClusterEnd(clusters, e);
-            final int line = layout.getLineForOffset(s);
-            final int endLine = layout.getLineForOffset(e);
-            final float lead = layout.getPrimaryHorizontal(snappedStart);
-            float trail;
+            final int line = lineDrawing(layout, s);
+            // e lands on the break when the word ends its line; its last character never does.
+            final int endLine = lineDrawing(layout, e - 1);
+            // Both ends of a word sit on one of its lines, whatever an offset that lands on a
+            // break reports for itself.
+            final float lineLeft = Math.min(layout.getLineLeft(line),
+                    layout.getLineRight(line));
+            final float lineRight = Math.max(layout.getLineLeft(line),
+                    layout.getLineRight(line));
+            final float lead = Math.min(
+                    Math.max(layout.getPrimaryHorizontal(snappedStart), lineLeft), lineRight);
+            final float trail;
             if (endLine != line) {
+                // measureText reads the raw text, so a smaller size span is worth nothing to
+                // it and the word measures wider than it is drawn.
                 final float width = paint.measureText(text, s, e);
-                trail = layout.isRtlCharAt(s) ? lead - width : lead + width;
+                final float measured = layout.isRtlCharAt(s) ? lead - width : lead + width;
+                trail = Math.min(Math.max(measured, lineLeft), lineRight);
             } else {
-                trail = layout.getPrimaryHorizontal(snappedEnd);
+                final float end = layout.getPrimaryHorizontal(snappedEnd);
+                // That offset reports where the next line starts; a word ending its line ends at its right.
+                trail = end <= lead ? lineRight : Math.min(Math.max(end, lineLeft), lineRight);
             }
             cachedWordLeadX[i] = lead;
             cachedWordTrailX[i] = trail;
@@ -484,9 +501,12 @@ final class LyricsLineView extends TextView {
         final float contentNow = contentReveal;
         final int mainAlpha = Math.round(((unsungColor != 0 && !wordTimings.isEmpty())
                 ? LyricsColors.UNSUNG_ALPHA * 255f : baseTextAlpha) * lineAlpha * contentNow);
-        final int secondaryAlpha = Math.round((activeLine
-                ? 255f
-                : Color.alpha(LyricsColors.secondaryTextColor()) * lineAlpha) * contentNow);
+        final float secondaryWeight = lineAlpha
+                * (activeLine ? 255f : Color.alpha(LyricsColors.secondaryTextColor()));
+        final int secondaryAlpha = Math.round(secondaryWeight * contentNow);
+        final int romaAlpha = activeLine && perWordReading && Settings.LYRICS_WORD_SYNC.get()
+                ? Math.round(secondaryWeight * LyricsColors.ACTIVE_READING_ALPHA * contentNow)
+                : secondaryAlpha;
 
         final boolean[] secondaryLine = new boolean[lineCount];
         markSecondaryLines(layout, transStart, transEnd, secondaryLine);
@@ -524,7 +544,7 @@ final class LyricsLineView extends TextView {
                             && runStart >= romaFirst && runLast <= romaLast;
                     final float reveal = isRoma ? romaReveal : transReveal;
                     drawTextRun(canvas, layout, runStart, runLast,
-                            Math.round(secondaryAlpha * reveal),
+                            Math.round((isRoma ? romaAlpha : secondaryAlpha) * reveal),
                             activeLine ? secondaryActiveColor : 0);
                 } else {
                     drawTextRun(canvas, layout, runStart, runLast, mainAlpha, 0);
@@ -568,7 +588,8 @@ final class LyricsLineView extends TextView {
     @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Override
     protected void onDraw(Canvas canvas) {
-        if (!drawBaseText(canvas)) {
+        final boolean baseDrawn = drawBaseText(canvas);
+        if (!baseDrawn) {
             super.onDraw(canvas);
         }
         try {
@@ -623,44 +644,88 @@ final class LyricsLineView extends TextView {
                     firstSungLine = lineNum;
                 }
                 final float lead = cachedWordLeadX[i];
-                final float edge = lead + (cachedWordTrailX[i] - lead) * progress;
+                // A word that runs on below shares its progress with the lines it reaches, so
+                // its own line takes only the share that falls here. For a word that fits, this
+                // is the progress itself.
+                final int charsOnFirstLine = Math.min(e, layout.getLineEnd(lineNum)) - s;
+                final float firstLineProgress = Math.min(1f,
+                        Math.max(0f, progress * (e - s) / (float) charsOnFirstLine));
+                final float edge = lead + (cachedWordTrailX[i] - lead) * firstLineProgress;
                 lineMaxSungX[lineNum] = extendSung(lineMaxSungX[lineNum], edge,
                         isRightToLeftLine(layout, lineNum));
-                final int wrappedLine = cachedWordWrappedLine[i];
-                if (wrappedLine >= 0 && wrappedLine < lineCount) {
-                    final int charsOnLine0 = layout.getLineEnd(lineNum) - s;
-                    final int charsOnLine1 = e - layout.getLineEnd(lineNum);
-                    if (charsOnLine1 > 0) {
-                        final float line1Progress = Math.max(0f,
-                                (progress * (charsOnLine0 + charsOnLine1) - charsOnLine0)
-                                        / (float) charsOnLine1);
-                        if (line1Progress > 0f) {
-                            final float line1Edge = layout.getLineLeft(wrappedLine)
-                                    + (layout.getLineRight(wrappedLine)
-                                            - layout.getLineLeft(wrappedLine))
-                                            * line1Progress;
-                            lineMaxSungX[wrappedLine] = extendSung(
-                                    lineMaxSungX[wrappedLine], line1Edge,
-                                    isRightToLeftLine(layout, wrappedLine));
-                        }
+                final int wrappedEnd = cachedWordWrappedLine[i];
+                for (int ln = lineNum + 1; ln <= wrappedEnd && ln < lineCount; ln++) {
+                    final int lineStart = layout.getLineStart(ln);
+                    final int charsHere = Math.min(e, layout.getLineEnd(ln)) - lineStart;
+                    if (charsHere <= 0) {
+                        continue;
+                    }
+                    final float lineProgress = Math.min(1f, Math.max(0f,
+                            (progress * (e - s) - (lineStart - s)) / (float) charsHere));
+                    if (lineProgress <= 0f) {
+                        continue;
+                    }
+                    // The word runs on below, so it does not fill this line. Its progress was
+                    // scaled against the whole line, which lit the rest of the line with it.
+                    final float lineLeft = layout.getLineLeft(ln);
+                    final float lineRight = Math.max(lineLeft, layout.getLineRight(ln));
+                    final float reach = ln == wrappedEnd
+                            ? Math.min(Math.max(layout.getPrimaryHorizontal(e), lineLeft),
+                                    lineRight)
+                            : lineRight;
+                    final float lineEdge = lineLeft + (reach - lineLeft) * lineProgress;
+                    lineMaxSungX[ln] = extendSung(lineMaxSungX[ln], lineEdge,
+                            isRightToLeftLine(layout, ln));
+                }
+            }
+
+            // The line is past its end but has no word timings left to measure it with, so its
+            // reach comes from the bounds. The reading counts: it sits outside the lyric's own
+            // end, or it stays dark against a lit lyric.
+            if (allSung && firstSungLine < 0) {
+                int firstOffset = -1;
+                int lastOffset = -1;
+                if (origStart >= 0 && origStart < text.length()) {
+                    firstOffset = origStart;
+                    lastOffset = originalEnd(text, origStart);
+                }
+                // A reading still fading in was never drawn; lighting it would show it.
+                if (romaReveal > 0f && romaStart >= 0 && romaEnd > romaStart
+                        && romaStart < text.length()) {
+                    final int romaLast = Math.min(romaEnd, text.length());
+                    if (firstOffset < 0 || romaStart < firstOffset) {
+                        firstOffset = romaStart;
+                    }
+                    if (romaLast > lastOffset) {
+                        lastOffset = romaLast;
+                    }
+                }
+                if (firstOffset >= 0) {
+                    final int firstLine = layout.getLineForOffset(firstOffset);
+                    final int lastLine = layout.getLineForOffset(
+                            Math.max(lastOffset - 1, firstOffset));
+                    for (int ln = firstLine; ln <= lastLine && ln < lineCount; ln++) {
+                        lineMaxSungX[ln] = isRightToLeftLine(layout, ln)
+                                ? cachedLineLeft[ln] : cachedLineRight[ln];
                     }
                 }
             }
 
-            if (allSung && firstSungLine < 0 && origStart >= 0
-                    && origStart < text.length()) {
-                final int lastChar = originalEnd(text, origStart) - 1;
-                final int firstLine = layout.getLineForOffset(origStart);
-                final int lastLine = layout.getLineForOffset(Math.max(lastChar, origStart));
-                for (int ln = firstLine; ln <= lastLine && ln < lineCount; ln++) {
-                    lineMaxSungX[ln] = isRightToLeftLine(layout, ln)
-                            ? cachedLineLeft[ln] : cachedLineRight[ln];
-                }
+            // A reading carries its progress in its own colour. The lyric's white is what marks a
+            // sung word there; on the reading it reads as a line of its own, and once the
+            // reading wraps the two halves come out in different colours.
+            int romaFirstLine = -1;
+            int romaLastLine = -1;
+            if (romaStart >= 0 && romaEnd > romaStart && romaStart < text.length()) {
+                romaFirstLine = layout.getLineForOffset(romaStart);
+                romaLastLine = layout.getLineForOffset(
+                        Math.min(romaEnd, text.length()) - 1);
             }
-
+            final int readingColor = (activeLine && secondaryActiveColor != 0
+                    ? secondaryActiveColor : LyricsColors.secondaryTextColor()) | 0xFF000000;
+            final int lyricColor = LyricsColors.lineTextColor() | 0xFF000000;
             final ColorFilter prevFilter = tp.getColorFilter();
-            tp.setColorFilter(new PorterDuffColorFilter(
-                    LyricsColors.lineTextColor() | 0xFF000000, PorterDuff.Mode.SRC_IN));
+            int appliedColor = -1;
 
             canvas.save();
             if (contentReveal < 1f) {
@@ -673,6 +738,12 @@ final class LyricsLineView extends TextView {
                 final float edge = lineMaxSungX[ln];
                 if (Float.isNaN(edge)) {
                     continue;
+                }
+                final int color = ln >= romaFirstLine && ln <= romaLastLine
+                        ? readingColor : lyricColor;
+                if (color != appliedColor) {
+                    tp.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
+                    appliedColor = color;
                 }
                 canvas.save();
                 final int clipTop = ln == 0 ? -textOriginY() : cachedLineTop[ln];
@@ -694,6 +765,20 @@ final class LyricsLineView extends TextView {
         } catch (Exception ex) {
             Logger.printException(() -> "LyricsLineView onDraw failure", ex);
         }
+    }
+
+    private static int lineDrawing(Layout layout, int offset) {
+        int low = 0;
+        int high = layout.getLineCount() - 1;
+        while (low < high) {
+            final int mid = (low + high) >>> 1;
+            if (offset < layout.getLineStart(mid + 1)) {
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return low;
     }
 
     private static boolean isRightToLeftLine(Layout layout, int line) {

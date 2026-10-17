@@ -67,6 +67,7 @@ named after the icon it replaces. Any icon left out keeps the **Automatic** styl
 | `morphe_sb_forward.xml` | SponsorBlock, fast forward |
 | `morphe_sb_publish.xml` | SponsorBlock, submit segment |
 | `morphe_sb_voting.xml` | SponsorBlock, vote |
+| `morphe_series_tracker_button.xml` | Series tracker button |
 | `morphe_yt_copy.xml` | Copy video link button |
 | `morphe_yt_copy_timestamp.xml` | Copy video link with timestamp button |
 | `morphe_yt_download_button.xml` | Download button |

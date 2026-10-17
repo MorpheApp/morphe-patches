@@ -15,7 +15,6 @@ import android.net.Uri;
 
 import androidx.annotation.Nullable;
 
-import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.util.Collections;
 import java.util.Map;
@@ -31,6 +30,15 @@ import app.morphe.extension.shared.ui.ReminderDialog;
 
 @SuppressWarnings("unused")
 public class PoTokenProviderPatch {
+    /**
+     * Added to the media request class of the app, whose fields are obfuscated.
+     */
+    public interface HttpRequest {
+        // Method is added during patching.
+        @Nullable
+        String patch_getUrl();
+    }
+
     public static final class PoTokenProviderAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
@@ -62,8 +70,6 @@ public class PoTokenProviderPatch {
     private static int responsesWithoutMedia;
     @Nullable
     private static volatile Boolean helperInUse;
-    @Nullable
-    private static volatile Field requestUrlField;
 
     static {
         Uri.Builder builder = new Uri.Builder();
@@ -130,12 +136,12 @@ public class PoTokenProviderPatch {
      * Injection point.
      * Called off the main thread when a media request starts.
      */
-    public static void onMediaRequest(Object request, Object callbacks) {
+    public static void onMediaRequest(HttpRequest request, Object callbacks) {
         try {
             if (!isHelperInUse()) {
                 return;
             }
-            String url = getRequestUrl(request);
+            String url = request.patch_getUrl();
             // Live streams can have responses without media while the stream waits for new segments.
             if (url != null && url.contains("/videoplayback") && url.contains("sabr=1")
                     && !url.contains("yt_live_broadcast") && !url.contains("yt_premiere_broadcast")) {
@@ -162,26 +168,6 @@ public class PoTokenProviderPatch {
         SabrResponseReader reader = new SabrResponseReader();
         sabrResponseReaders.put(callbacks, reader);
         lastSabrResponseReader = reader;
-    }
-
-    @Nullable
-    private static String getRequestUrl(Object request) throws IllegalAccessException {
-        Field field = requestUrlField;
-        if (field == null) {
-            // The URL is the only String field of the request.
-            for (Field candidate : request.getClass().getDeclaredFields()) {
-                if (candidate.getType() == String.class) {
-                    candidate.setAccessible(true);
-                    field = candidate;
-                    break;
-                }
-            }
-            if (field == null) {
-                return null;
-            }
-            requestUrlField = field;
-        }
-        return (String) field.get(request);
     }
 
     /**

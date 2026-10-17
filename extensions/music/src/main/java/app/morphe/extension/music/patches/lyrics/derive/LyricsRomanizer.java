@@ -21,6 +21,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
@@ -31,7 +32,7 @@ public final class LyricsRomanizer {
     public interface Callback {
         void onRomanized(@Nullable List<LyricsLine> romanizedLines,
                          boolean fromGoogle, boolean fromAI, @Nullable String aiModel,
-                         boolean perWord);
+                         boolean perWord, @Nullable String localDictionary);
     }
 
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -50,11 +51,19 @@ public final class LyricsRomanizer {
 
         executor.execute(() -> {
             try {
+                // A romanization is read by line index, so one without an entry for every
+                // line describes a different lyric and would put a reading under the wrong
+                // line. It is dropped so the line is romanized again.
+                final int lineCount = lyrics.lines().size();
                 List<LyricsLine> embedded = lyrics.romanization();
+                if (embedded != null && embedded.size() != lineCount) {
+                    embedded = null;
+                }
                 if (embedded == null || embedded.isEmpty()) {
                     Map<String, List<LyricsLine>> romanizations = lyrics.romanizations();
                     if (romanizations != null && !romanizations.isEmpty()) {
-                        embedded = collectMatchingRomanizations(romanizations, lyrics.lines());
+                        embedded = collectMatchingRomanizations(romanizations, lyrics.lines(),
+                                LyricsMerge.hasBackgroundTrack(lyrics, romanizations));
                     }
                 }
 
@@ -62,7 +71,7 @@ public final class LyricsRomanizer {
                 if (LyricsMerge.hasText(embedded) || perWord) {
                     List<LyricsLine> result = embedded;
                     Utils.runOnMainThread(
-                            () -> callback.onRomanized(result, false, false, null, perWord));
+                            () -> callback.onRomanized(result, false, false, null, perWord, null));
                     return;
                 }
 
@@ -75,35 +84,46 @@ public final class LyricsRomanizer {
                             track, source, lines);
                     if (aiCached != null) {
                         Utils.runOnMainThread(() -> callback.onRomanized(
-                                aiCached, false, true, model, false));
+                                aiCached, false, true, model, false, null));
                         return;
                     }
 
-                    List<String> aiResult = aiRomanize(lines, LyricsRequests.deviceLanguage(), track.title(),
+                    List<String> aiResult = aiRomanize(lines, LyricsRequests.romanizationLanguage(), track.title(),
                             track.artist(), baseUrl, apiToken, model);
                     if (aiResult != null) {
                         List<LyricsLine> aiLines = toLines(aiResult);
                         LyricsCache.putRomanizationAI(track, source, lines, aiLines);
                         Utils.runOnMainThread(() -> callback.onRomanized(
-                                aiLines, false, true, model, false));
+                                aiLines, false, true, model, false, null));
                         return;
                     }
                 }
 
                 List<LyricsLine> romanized = LyricsCache.getRomanization(track, source, lines);
+                boolean online = romanized != null;
                 if (romanized == null) {
                     List<String> romanizedText = romanizeOnline(lines);
                     if (romanizedText != null) {
                         romanized = toLines(romanizedText);
                         LyricsCache.putRomanization(track, source, lines, romanized);
+                        online = true;
                     }
                 }
 
-                List<LyricsLine> result = romanized;
-                Utils.runOnMainThread(
-                        () -> callback.onRomanized(result, result != null, false, null, false));
+                // The last resort. Its reading is not stored, so an online one is used again
+                // as soon as there is one.
+                LocalRomanizer.Result local = romanized == null
+                        && Settings.LYRICS_LOCAL_ROMANIZATION.get()
+                        ? LocalRomanizer.romanize(lines) : null;
+
+                List<LyricsLine> result = local != null ? toLines(local.lines) : romanized;
+                final boolean fromGoogle = online && local == null && result != null;
+                Utils.runOnMainThread(() -> callback.onRomanized(
+                        result, fromGoogle, false, null, false,
+                        local != null ? local.dictionary : null));
             } catch (Throwable ignored) {
-                Utils.runOnMainThread(() -> callback.onRomanized(null, false, false, null, false));
+                Utils.runOnMainThread(
+                        () -> callback.onRomanized(null, false, false, null, false, null));
             }
         });
     }
@@ -117,14 +137,17 @@ public final class LyricsRomanizer {
     }
 
     private static List<LyricsLine> collectMatchingRomanizations(
-            Map<String, List<LyricsLine>> romanizations, List<LyricsLine> allLines) {
-        String langTag = Locale.getDefault().toLanguageTag();
-        String langCode = langTag.contains("-")
-                ? langTag.substring(0, langTag.indexOf("-")) : langTag;
+            Map<String, List<LyricsLine>> romanizations, List<LyricsLine> allLines,
+            boolean fallbackToSungLine) {
+        // Keys are xml:lang from the file, with "romaji" standing in for a sidecar that named none.
+        String langTag = LyricsRequests.isDefaultRomanizationLanguage()
+                ? Locale.getDefault().toLanguageTag()
+                : LyricsRequests.romanizationLanguage();
+        String langCode = LyricsRequests.primarySubtag(langTag);
 
         List<String> matchedKeys = new ArrayList<>();
         for (String key : romanizations.keySet()) {
-            if (key.startsWith("bg:")) continue;
+            if (key.startsWith(LyricsMerge.BACKGROUND_TRACK_PREFIX)) continue;
             if (key.equals(langTag) || key.equals(langCode)
                     || key.startsWith(langCode + "-") || key.startsWith(langCode + "_")) {
                 matchedKeys.add(key);
@@ -133,7 +156,7 @@ public final class LyricsRomanizer {
 
         if (matchedKeys.isEmpty()) {
             for (String key : romanizations.keySet()) {
-                if (!key.startsWith("bg:")) {
+                if (!key.startsWith(LyricsMerge.BACKGROUND_TRACK_PREFIX)) {
                     matchedKeys.add(key);
                 }
             }
@@ -172,23 +195,42 @@ public final class LyricsRomanizer {
 
         if (allLines != null) {
             for (int i = 0; i < result.size() && i < allLines.size(); i++) {
-                if (allLines.get(i).isBG()) {
-                    String bgRoma = result.get(i).text();
-                    if (bgRoma == null || bgRoma.isEmpty()) {
-                        for (int j = i - 1; j >= 0; j--) {
-                            if (!allLines.get(j).isBG() && j < result.size()) {
-                                String parentRoma = result.get(j).text();
-                                if (parentRoma != null && !parentRoma.isEmpty()) {
-                                    result.set(i, new LyricsLine(LyricsLine.NO_TIME, parentRoma));
-                                }
-                                break;
+                if (!allLines.get(i).isBG()) {
+                    continue;
+                }
+                String own = "";
+                for (String key : matchedKeys) {
+                    own = LyricsMerge.textAt(
+                            LyricsMerge.backgroundTrack(romanizations, key), i);
+                    if (!own.isEmpty()) {
+                        break;
+                    }
+                }
+                if (!own.isEmpty()) {
+                    result.set(i, new LyricsLine(LyricsLine.NO_TIME, own));
+                    continue;
+                }
+                if (!fallbackToSungLine) {
+                    continue;
+                }
+                String bgRoma = result.get(i).text();
+                if (bgRoma == null || bgRoma.isEmpty()) {
+                    for (int j = i - 1; j >= 0; j--) {
+                        if (!allLines.get(j).isBG() && j < result.size()) {
+                            String parentRoma = result.get(j).text();
+                            if (parentRoma != null && !parentRoma.isEmpty()) {
+                                result.set(i, new LyricsLine(LyricsLine.NO_TIME, parentRoma));
                             }
+                            break;
                         }
                     }
                 }
             }
         }
 
+        if (allLines == null || result.size() != allLines.size()) {
+            return null;
+        }
         return result;
     }
 
@@ -205,10 +247,11 @@ public final class LyricsRomanizer {
 
     @Nullable
     private static List<String> romanizeOnline(List<String> lines) {
+        final String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
         return LyricsMerge.mapLinesOnline(lines,
                 l -> {
                     try {
-                        return TextTranslator.romanize(l);
+                        return TextTranslator.romanize(l, language);
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }

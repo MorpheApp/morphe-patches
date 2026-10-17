@@ -48,6 +48,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.ViewAnimations;
+import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -206,6 +207,14 @@ public final class MinimalMiniplayerPatch {
     private static String channelName = "";
 
     /**
+     * The title last set to the title view. The view can show another text, as its title is
+     * replaced by {@link RestoreOriginalTitlesPatch} if enabled (original or DeArrow title),
+     * so it is set only when it changes.
+     */
+    @Nullable
+    private static String shownTitle;
+
+    /**
      * Injection point.
      * <p>
      * The legacy bar layout, looked up by YouTube itself and then left unused.
@@ -232,6 +241,7 @@ public final class MinimalMiniplayerPatch {
 
             TextView title = Utils.getChildViewByResourceName(controlsLayout, "floaty_title");
             titleRef = new WeakReference<>(title);
+            shownTitle = null;
 
             TextView subtitle = Utils.getChildViewByResourceName(controlsLayout, "floaty_subtitle_text");
             if (title != null && HIDE_TITLE) {
@@ -436,7 +446,21 @@ public final class MinimalMiniplayerPatch {
 
         // Docked against it even when YouTube rests lower. After a recreated activity its
         // resting bounds are still the ones from before the system insets moved everything up.
-        return top;
+        return top - boundsOriginInWindow();
+    }
+
+    /**
+     * The bounds are relative to the layout that holds the player, not to the window. That
+     * layout can start below the status bar, which would otherwise move the bar down by its
+     * height and put it under the navigation bar.
+     */
+    private static int boundsOriginInWindow() {
+        View watchPlayer = watchPlayer();
+        if (watchPlayer == null || !(watchPlayer.getParent() instanceof View parent)) return 0;
+
+        parent.getLocationInWindow(windowLocation);
+
+        return windowLocation[1];
     }
 
     /**
@@ -1045,7 +1069,11 @@ public final class MinimalMiniplayerPatch {
             channelName = channel;
         }
 
-        setText(titleRef.get(), videoTitle);
+        TextView titleView = titleRef.get();
+        if (titleView != null && !videoTitle.equals(shownTitle)) {
+            shownTitle = videoTitle;
+            setText(titleView, videoTitle);
+        }
 
         TextView subtitle = subtitleRef.get();
         if (setText(subtitle, channelName)) {

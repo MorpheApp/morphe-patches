@@ -18,6 +18,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.navigation.navigationBarPatch
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -55,15 +56,8 @@ private val seriesTrackerResourcesPatch = resourcePatch {
     dependsOn(legacyPlayerControlsResourcePatch)
 
     execute {
-        copyResources(
-            "seriestracker",
-            ResourceGroup(
-                "drawable",
-                "morphe_series_tracker_button.xml",
-                "morphe_series_tracker_button_bold.xml",
-            ),
-            ResourceGroup("layout", "morphe_series_tracker_history.xml"),
-        )
+        copyPlayerButtonIcons("seriestracker", "morphe_series_tracker_button")
+        copyResources("seriestracker", ResourceGroup("layout", "morphe_series_tracker_history.xml"))
     }
 
     finalize {
@@ -140,7 +134,7 @@ val seriesTrackerPatch = bytecodePatch(
                 VideoIdFingerprint.instructionMatches.first().getMethodCalled()
             ).originalMethod
 
-            interfaces.add("${SERIES_TRACKER_EXTENSION_PREFIX}PlaybackBridge\$Source;")
+            interfaces.add($$"$${SERIES_TRACKER_EXTENSION_PREFIX}PlaybackBridge$Source;")
 
             fun addGetter(name: String, returnType: String, target: String, wide: Boolean) {
                 methods.add(

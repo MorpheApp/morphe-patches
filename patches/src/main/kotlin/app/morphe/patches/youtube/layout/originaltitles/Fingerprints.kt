@@ -92,3 +92,20 @@ internal object NextVideoTitleViewFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Creates the title view of the minimal miniplayer.
+ */
+internal object MinimalMiniplayerTitleViewFingerprint : Fingerprint(
+    name = "<init>",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "floaty_title"),
+        methodCall(name = "findViewById", location = MatchAfterImmediately()),
+        checkCast("Landroid/widget/TextView;", location = MatchAfterWithin(2)),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/widget/TextView;",
+            location = MatchAfterImmediately()
+        )
+    )
+)

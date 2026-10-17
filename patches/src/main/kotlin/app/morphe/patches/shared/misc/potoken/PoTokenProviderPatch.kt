@@ -8,11 +8,13 @@
 package app.morphe.patches.shared.misc.potoken
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.InstallerType
 import app.morphe.patcher.patch.PatchAvailability
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -20,9 +22,13 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.registersUsed
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/PoTokenProviderPatch;"
+private const val EXTENSION_HTTP_REQUEST_INTERFACE = $$"Lapp/morphe/extension/shared/patches/PoTokenProviderPatch$HttpRequest;"
 
 internal fun poTokenProviderPatch(
     originalAppPackageName: String,
@@ -80,9 +86,37 @@ internal fun poTokenProviderPatch(
         }
 
         // Watch media responses for the server rejecting the token the helper made.
+        mutableClassDefBy(HTTP_REQUEST_CLASS_TYPE).apply {
+            // The URL is the only String field of the request.
+            val urlField = instanceFields.single { field -> field.type == "Ljava/lang/String;" }
+
+            interfaces.add(EXTENSION_HTTP_REQUEST_INTERFACE)
+            methods.add(
+                ImmutableMethod(
+                    type,
+                    "patch_getUrl",
+                    listOf(),
+                    "Ljava/lang/String;",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(2),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            iget-object v0, p0, $urlField
+                            return-object v0
+                        """
+                    )
+                }
+            )
+        }
+
         NetFetchStartFetchTaskFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p1 .. p2 }, $EXTENSION_CLASS->onMediaRequest(Ljava/lang/Object;Ljava/lang/Object;)V"
+            "invoke-static/range { p1 .. p2 }, $EXTENSION_CLASS->" +
+                    "onMediaRequest(${EXTENSION_HTTP_REQUEST_INTERFACE}Ljava/lang/Object;)V"
         )
         NetFetchResponseChunkFingerprint.method.addInstruction(
             0,

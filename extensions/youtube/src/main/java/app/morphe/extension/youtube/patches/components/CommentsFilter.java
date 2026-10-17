@@ -266,7 +266,10 @@ public class CommentsFilter extends Filter {
 
         if (matchedGroup == commentCardsIndicator) {
             return Utils.contains(path, "carousel_header") &&
-                    Utils.endsWith(path, "|ContainerType|ContainerType|ContainerType|");
+                            // Old action buttons layout.
+                            (Utils.endsWith(path, "|ContainerType|ContainerType|ContainerType|")
+                            // New action buttons layout.
+                            || Utils.contains(path, "|dot_indicator.e"));
         }
 
         return true;

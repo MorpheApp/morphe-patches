@@ -104,6 +104,8 @@ final class SponsorBlockMusicSubmitDialog {
         offsetSlider.setValue(manager.getTemporaryOffsetMs());
         offsetSlider.setOnOffsetChanged(ms -> {
             manager.setTemporaryOffsetMs(ms);
+            // Same offset the panel drags, so it saves it the same way.
+            manager.persistTemporaryOffsetMs();
             onOffsetSync.accept(ms);
         });
 

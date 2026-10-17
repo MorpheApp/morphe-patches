@@ -274,6 +274,11 @@ public final class RestoreOriginalTitlesPatch {
     private static final Set<TextView> knownTitleViews = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
+     * Views that show the title of the opened video, such as the title of the minimal miniplayer.
+     */
+    private static final Set<TextView> playerTitleViews = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
      * Translated title -> video ids of the videos with the title, of the titles that are verified.
      * Different videos can have the same title, such as a video and its reupload.
      */
@@ -1006,11 +1011,13 @@ public final class RestoreOriginalTitlesPatch {
     /**
      * Injection point.
      * <p>
-     * Replaces the translated title of the fullscreen engagement overlay,
-     * shown by swiping up in fullscreen.
+     * Replaces the translated title of a view that shows the title of the opened video,
+     * such as the fullscreen engagement overlay (shown by swiping up in fullscreen)
+     * and the minimal miniplayer.
      */
     public static void restorePlayerTitle(TextView view) {
-        if (view == null) {
+        // Views can be set up again, and only need one listener.
+        if (view == null || !playerTitleViews.add(view)) {
             return;
         }
 

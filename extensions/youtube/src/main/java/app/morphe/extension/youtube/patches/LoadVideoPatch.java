@@ -19,7 +19,6 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Method;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
@@ -39,6 +38,14 @@ public final class LoadVideoPatch {
         // Method is added during patching.
         void patch_dismissPlayer();
         Parcelable patch_getIntentParcelable(Intent intent);
+    }
+
+    /**
+     * Interface to deliver intents to the main activity, as {@link Activity#onNewIntent(Intent)} is protected.
+     */
+    public interface MainActivityInterface {
+        // Method is added during patching.
+        void patch_onNewIntent(Intent intent);
     }
 
     /**
@@ -250,7 +257,7 @@ public final class LoadVideoPatch {
         try {
             PlayerInterface playerInterface = playerInterfaceRef.get();
             Activity activity = Utils.getActivity();
-            if (playerInterface == null || activity == null) {
+            if (playerInterface == null || !(activity instanceof MainActivityInterface mainActivity)) {
                 return false;
             }
 
@@ -263,9 +270,7 @@ public final class LoadVideoPatch {
             intent.putExtra("android.intent.extra.inventory_identifier", new String[]{"vnd.youtube://" + videoId});
             intent.putExtra("watch", playerInterface.patch_getIntentParcelable(intent));
 
-            Method onNewIntent = Activity.class.getDeclaredMethod("onNewIntent", Intent.class);
-            onNewIntent.setAccessible(true);
-            onNewIntent.invoke(activity, intent);
+            mainActivity.patch_onNewIntent(intent);
             return true;
         } catch (Exception ex) {
             Logger.printException(() -> "deliverVideoIntentInProcess failure", ex);

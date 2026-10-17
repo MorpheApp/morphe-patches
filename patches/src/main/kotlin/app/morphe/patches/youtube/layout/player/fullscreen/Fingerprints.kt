@@ -81,6 +81,24 @@ internal object YouTubePlayerOverlaysLayoutConstructorFingerprint : Fingerprint(
     )
 )
 
+/**
+ * The video view is a field of a superclass with an obfuscated name.
+ */
+internal object PlayerViewConstructorFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/player/ui/PlayerView;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
+    filters = listOf(
+        string("videoView has already been set"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/view/View;",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
 internal object YouTubePlayerViewOnLayoutFingerprint : Fingerprint(
     definingClass = "Lcom/google/android/apps/youtube/app/player/YouTubePlayerViewNotForReflection;",
     name = "onLayout",
