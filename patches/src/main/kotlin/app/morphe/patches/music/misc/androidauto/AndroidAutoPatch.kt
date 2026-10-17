@@ -76,14 +76,14 @@ private const val SUBTITLE_FIELD_NAME = "h"
 /**
  * Reuses YTM's phone requests and playback commands to supply Android Auto content.
  *
- * [hookBrowseResults] keeps native podcast folders in a Podcasts tab.
+ * [hookBrowseResults] loads Home recommendations and keeps native podcast folders in a Podcasts tab.
  * [patchFolderRefresh] refreshes Home, Library collections, and Podcasts after Library changes.
  * [patchPlaylistMediaIdBuilder] supplies the media IDs Android Auto uses to play playlists.
  */
 @Suppress("unused")
 val androidAutoPatch = bytecodePatch(
     name = "Android Auto",
-    description = "Bypasses certificate checks and restores YouTube Music Library collections and podcasts in Android Auto.",
+    description = "Bypasses certificate checks and restores YouTube Music Home recommendations, Library collections, and podcasts in Android Auto.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -181,7 +181,7 @@ private fun BytecodePatchContext.patchPhoneBrowseClient() {
 }
 
 /**
- * Fetches a phone page by its browse ID (YTM's page ID).
+ * Fetches a phone page by its browse ID (YTM's page ID), or its next page by a continuation token.
  * YTM creates and sends the request; the returned future contains the response.
  */
 private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
@@ -201,6 +201,25 @@ private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
             invoke-virtual { p0 }, $createPhoneBrowseRequestMethod
             move-result-object v0
             invoke-virtual { v0, p1 }, $setRequestBrowseIdMethod
+            invoke-virtual { v0 }, $initializeTrackingMethod
+            invoke-virtual { p0, v0, p2 }, $sendPhoneBrowseRequestMethod
+            move-result-object v0
+            return-object v0
+        """
+    )
+
+    val continuationField = phoneBrowseContinuationFingerprint(createPhoneBrowseRequestMethod.returnType)
+        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+    phoneBrowseClientClass.addInterfaceMethod(
+        interfaceMethod = findInterfaceMethod(
+            PHONE_BROWSE_CLIENT,
+            "patch_requestBrowseContinuation",
+        ),
+        registerCount = 4,
+        instructions = """
+            invoke-virtual { p0 }, $createPhoneBrowseRequestMethod
+            move-result-object v0
+            iput-object p1, v0, $continuationField
             invoke-virtual { v0 }, $initializeTrackingMethod
             invoke-virtual { p0, v0, p2 }, $sendPhoneBrowseRequestMethod
             move-result-object v0
@@ -354,7 +373,7 @@ private fun BytecodePatchContext.addPaginatedLibraryGridDecoder(
 // Read returned Library data
 
 /**
- * Exposes YTM's Library readers and the response bytes needed to parse collections.
+ * Exposes YTM's Library readers and the response bytes needed to parse Home and collections.
  * The pagination getter uses YTM's parser copied by [addPaginatedLibraryGridDecoder].
  */
 private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
@@ -917,7 +936,7 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
 // region Android Auto browse results
 
 /**
- * Adds Podcasts and applies Library layout changes before results reach Android Auto.
+ * Adds Podcasts and applies Home and Library layout changes before results reach Android Auto.
  */
 private fun hookBrowseResults(deliverItemsMethod: MutableMethod) {
     // YTM 9.15 lacks the size guard used by later versions; oversized results otherwise leave Auto loading.
@@ -935,12 +954,20 @@ private fun hookBrowseResults(deliverItemsMethod: MutableMethod) {
             BROWSE_REQUEST +
             "Ljava/util/List;)Ljava/util/List;"
 
-    deliverItemsMethod.addInstructions(
+    val loadHomeMethod = "$EXTENSION_CLASS->loadHome(" +
+        BROWSE_REQUEST + "Ljava/util/List;)Z"
+    val scratch = deliverItemsMethod.findFreeRegister(0)
+    deliverItemsMethod.addInstructionsWithLabels(
         0,
         """
             invoke-static/range { p0 .. p1 }, $handleBrowseResultMethod
             move-result-object p1
-        """
+            invoke-static/range { p0 .. p1 }, $loadHomeMethod
+            move-result v$scratch
+            if-eqz v$scratch, :native_delivery
+            return-void
+        """,
+        ExternalLabel("native_delivery", deliverItemsMethod.getInstruction(0))
     )
 }
 

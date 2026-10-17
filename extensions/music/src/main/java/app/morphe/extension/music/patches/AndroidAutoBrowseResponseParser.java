@@ -18,6 +18,7 @@ final class AndroidAutoBrowseResponseParser {
     static final int SECTION_LIST = 49_399_797;
     // ItemSectionRenderer wraps child renderers, including rows, cards, and titled groups.
     static final int ITEM_SECTION = 50_195_462;
+    private static final int NEXT_CONTINUATION = 52_047_593;
     private static final int GRID = 51_805_506;
     static final int ELEMENT = 153_515_154;
     static final int NEW_ELEMENT = 172_660_663;
@@ -41,20 +42,26 @@ final class AndroidAutoBrowseResponseParser {
     private static final int MENU_NAVIGATION_ITEM = 66_441_108;
     private static final int MENU_SERVICE_ITEM = 66_441_155;
     private static final int MENU_TOGGLE_SERVICE_ITEM = 77_258_115;
+    private static final int YOUTUBE_MODEL = 413_471_385;
+    private static final int MENU_HEADER_CONTENT = 1_051;
     private static final int MENU_BUTTON_CAROUSEL = 33_556_355;
     private static final int SERIAL_COMMAND = 170_382_688;
     private static final int QUEUE_ADD = 163_162_354;
 
     private static final int BROWSE_CONTENTS = 9;
+    private static final int BROWSE_CONTINUATION = 10;
     private static final int BROWSE_TABS = 1;
     static final int SECTION_LIST_CONTENTS = 1;
+    private static final int SECTION_LIST_CONTINUATIONS = 2;
     static final int ITEM_SECTION_CONTENTS = 1;
     private static final int GRID_ITEMS = 1;
     static final int MUSIC_SHELF_CONTENTS = 2;
     private static final int PLAYLIST_SHELF_CONTENTS = 3;
+    private static final int CONTINUATION_TOKEN = 1;
     static final int TAB_CONTENTS = 4;
     static final int ELEMENT_TYPE = 1;
     static final int COMPONENT_MODEL = 5;
+    private static final int VIEW_MODEL = 1;
     static final int BROWSE_ID = 2;
     private static final int WATCH_VIDEO_ID = 1;
     private static final int WATCH_PLAYLIST_ID = 2;
@@ -87,13 +94,20 @@ final class AndroidAutoBrowseResponseParser {
     static final int SHELF_ITEM_TAP = 5;
     static final int SHELF_ITEM_MENU = 9;
     private static final int SPEED_DIAL_CONTENT = 5;
+    private static final int SPEED_DIAL_ITEMS = 1;
     private static final int SPEED_DIAL_HEADER = 2;
+    private static final int SPEED_DIAL_TITLE = 1;
+    private static final int SPEED_DIAL_IMAGE = 2;
+    private static final int SPEED_DIAL_MENU = 4;
+    private static final int SPEED_DIAL_TAP = 9;
+    private static final int SPEED_DIAL_PLAY = 10;
     private static final int TOP_RESULT_BUTTONS = 14;
     private static final int TOP_RESULT_BUTTON_ITEMS = 1;
     private static final int TOP_RESULT_BUTTON_CONTENT = 2;
     private static final int TOP_RESULT_BUTTON_TAP = 6;
     static final int MENU_CONTENT = 1;
     private static final int MENU_ITEMS = 1;
+    private static final int MENU_HEADER_SUBTITLE = 3;
     private static final int MENU_NAVIGATION_ENDPOINT = 3;
     private static final int MENU_SERVICE_ENDPOINT = 3;
     private static final int MENU_CAROUSEL_BUTTONS = 4;
@@ -116,7 +130,7 @@ final class AndroidAutoBrowseResponseParser {
 
     /**
      * A phone tap may open a page instead of playing; playCommandBytes holds a separate playback action when available.
-     * Shelf metadata identifies the titled group containing this result.
+     * Shelf metadata identifies the titled Home group containing this result.
      */
     record BrowseItem(String title, String subtitle, String artworkUrl, byte[] tapCommandBytes, boolean tapStartsPlayback,
                       byte[] playCommandBytes, String shelfTitle, String shelfBrowseId) {
@@ -126,12 +140,36 @@ final class AndroidAutoBrowseResponseParser {
         }
     }
 
+    record HomePage(List<BrowseItem> items, String continuation) {}
+
+    static HomePage homePage(byte[] response) {
+        ProtoMessage sectionList = sectionList(response);
+        List<BrowseItem> items = new ArrayList<>();
+        for (BrowseItem item : readSections(sectionList)) {
+            String browseId = new ProtoMessage(item.tapCommandBytes()).messageField(BROWSE).stringField(BROWSE_ID);
+            if (!item.tapStartsPlayback() && !browseId.startsWith("UC") && !browseId.startsWith("MPRE") && !browseId.startsWith("VL")) continue;
+            byte[] playCommandBytes = item.tapStartsPlayback() ? item.tapCommandBytes() : item.playCommandBytes();
+            if (isPlayable(new ProtoMessage(playCommandBytes))) {
+                items.add(item);
+            }
+        }
+        String continuation = "";
+        for (ProtoMessage command : sectionList.repeatedMessageField(SECTION_LIST_CONTINUATIONS)) {
+            continuation = command.messageField(NEXT_CONTINUATION).stringField(CONTINUATION_TOKEN);
+            if (!continuation.isEmpty()) break;
+        }
+        return new HomePage(List.copyOf(items), continuation);
+    }
+
     static List<BrowseItem> collection(byte[] response) {
         return readSections(sectionList(response));
     }
 
     private static ProtoMessage sectionList(byte[] response) {
         ProtoMessage root = new ProtoMessage(response);
+        // Home's later shelves arrive as a section-list continuation, without the initial tab wrapper.
+        ProtoMessage continuedSections = root.messagePath(BROWSE_CONTINUATION, SECTION_LIST);
+        if (!continuedSections.isEmpty()) return continuedSections;
         ProtoMessage pageContents = root.messageField(BROWSE_CONTENTS);
         ProtoMessage sectionList = pageContents.messageField(SECTION_LIST);
         if (sectionList.isEmpty()) {
@@ -159,7 +197,16 @@ final class AndroidAutoBrowseResponseParser {
                 if (shelfTitle.isEmpty()) shelfTitle = model.messagePath(ROW_SHELF, ROW_SHELF_HEADER).stringField(SHELF_HEADER_TITLE);
                 String shelfBrowseId = model.messagePath(SPEED_DIAL, SPEED_DIAL_CONTENT, SPEED_DIAL_HEADER,
                         SHELF_HEADER_TAP, INNERTUBE_COMMAND, BROWSE).stringField(BROWSE_ID);
-                // Full collection pages use grid cards.
+                // Phone Home uses a separate Speed dial card layout.
+                for (ProtoMessage card : model.messagePath(SPEED_DIAL, SPEED_DIAL_CONTENT).repeatedMessageField(SPEED_DIAL_ITEMS)) {
+                    ProtoMessage tapCommand = card.messagePath(SPEED_DIAL_TAP, INNERTUBE_COMMAND);
+                    boolean tapStartsPlayback = isPlayable(tapCommand);
+                    if ((!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty()) || card.stringField(SPEED_DIAL_TITLE).isEmpty()) continue;
+                    items.add(new BrowseItem(card.stringField(SPEED_DIAL_TITLE), menuSubtitle(card.messagePath(SPEED_DIAL_MENU, INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU)),
+                            artwork(card.messagePath(SPEED_DIAL_IMAGE, IMAGE_CONTENT)), tapCommand.serializedBytes(), tapStartsPlayback,
+                            card.messagePath(SPEED_DIAL_PLAY, INNERTUBE_COMMAND).serializedBytes()));
+                }
+                // Full collection pages use grid cards rather than Home's compact cards.
                 addBrowseItem(items, model.messagePath(GRID_ITEM, GRID_ITEM_CONTENT), RESULT_TAP,
                         CARD_TITLE, CARD_SUBTITLE, CARD_IMAGE);
                 for (ProtoMessage row : model.messageField(RESULT_ROWS).repeatedMessageField(RESULT_ROWS_ITEMS)) {
@@ -184,6 +231,16 @@ final class AndroidAutoBrowseResponseParser {
             }
         }
         return Collections.unmodifiableList(items);
+    }
+
+    static String menuSubtitle(ProtoMessage menu) {
+        // Compact phone cards keep their creator or collection subtitle in the menu header.
+        for (ProtoMessage menuItem : menu.repeatedMessageField(MENU_ITEMS)) {
+            String subtitle = menuItem.messagePath(ELEMENT, NEW_ELEMENT, ELEMENT_TYPE, COMPONENT_TYPE, COMPONENT_MODEL,
+                    YOUTUBE_MODEL, VIEW_MODEL, MENU_HEADER_CONTENT, MENU_HEADER_SUBTITLE).stringField(TEXT_CONTENT);
+            if (!subtitle.isEmpty()) return subtitle;
+        }
+        return "";
     }
 
     private static void readShelf(List<BrowseItem> items, ProtoMessage shelf, int contentsField) {

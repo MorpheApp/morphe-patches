@@ -175,7 +175,7 @@ internal fun phoneClientProviderFingerprint(phoneClientType: String) = Fingerpri
     )
 )
 
-/** Creates a request for the phone's Library or a playlist. */
+/** Creates a request for the phone's Library, Home, or a playlist. */
 internal object CreatePhoneBrowseRequestFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("L"),
@@ -221,6 +221,22 @@ internal object PhoneBrowseRequestCallsFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_VIRTUAL,
             parameters = listOf("L", "Ljava/util/concurrent/Executor;"),
             returnType = "Lcom/google/common/util/concurrent/ListenableFuture;"
+        )
+    )
+)
+
+/** Identifies the continuation token field in the phone browse request's diagnostic string. */
+internal fun phoneBrowseContinuationFingerprint(requestType: String) = Fingerprint(
+    definingClass = requestType,
+    returnType = "Ljava/lang/String;",
+    parameters = emptyList(),
+    strings = listOf("browseId"),
+    filters = listOf(
+        string("continuation"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;",
+            location = MatchAfterWithin(2)
         )
     )
 )
