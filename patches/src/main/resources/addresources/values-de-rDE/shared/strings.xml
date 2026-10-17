@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Farbe zurücksetzen</string>
   <string name="morphe_settings_color_invalid">Ungültige Farbe</string>
   <string name="morphe_settings_restart_title">Neustart erforderlich</string>
-  <string name="morphe_settings_restart_dialog_message">Starten Sie die App neu, damit diese Änderung wirksam wird.</string>
+  <string name="morphe_settings_restart_dialog_message">Starten Sie die App neu, damit diese Änderung wirksam wird</string>
   <string name="morphe_settings_restart">Neustart</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importieren</string>
   <string name="morphe_settings_import_copy">Kopieren</string>
   <string name="morphe_settings_import_reset">Morphe-Einstellungen auf Standardwerte zurückgesetzt</string>
-  <string name="morphe_settings_import_success">%d Einstellungen importiert</string>
+  <string name="morphe_settings_import_success">%s Einstellungen importiert</string>
   <string name="morphe_settings_import_failure_parse">Import fehlgeschlagen: %s</string>
   <string name="morphe_settings_navigate_up">Nach oben navigieren</string>
   <string name="morphe_settings_search_hint">Sucheinstellungen</string>
@@ -103,7 +103,7 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_debug_toast_on_error_title">Pop-Up bei Morphe Fehler anzeigen</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Das Ausschalten von Fehler-Pop-Ups blendet alle Benachrichtigungen über Fehler in Morphe aus.
 
-Sie werden nicht über unerwartete Ereignisse informiert."</string>
+Sie werden nicht über unerwartete Ereignisse informiert"</string>
   <string name="morphe_debug_export_logs_title">Debug-Logs exportieren</string>
   <string name="morphe_debug_export_logs_summary">Morphe Debug-Logs exportieren</string>
   <string name="morphe_debug_export_logs_success">Debug-Logs erfolgreich exportiert</string>
@@ -179,31 +179,31 @@ Das Verhalten ist früher in der Suche verschwunden, daher könnte mehr als ein 
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Öffne die MicroG-Einstellungen</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG ist nicht installiert. Installieren Sie es.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG ist nicht installiert. Installiere es</string>
   <string name="gms_core_dialog_title">Aktion notwendig</string>
-  <string name="gms_core_dialog_outdated_message">"Ihre MicroG-Version v%1s ist veraltet und kann Probleme verursachen.
+  <string name="gms_core_dialog_outdated_message">"Dein MicroG v%1s ist veraltet und kann zu Problemen führen.
 
-Bitte aktualisieren Sie MicroG auf die neueste Version v%2s."</string>
+Bitte aktualisiere MicroG auf die neueste Version v%2s"</string>
   <string name="gms_core_dialog_update_text">Update</string>
   <string name="gms_core_dialog_ignore_text">Ignorieren</string>
   <string name="gms_core_dialog_conflict_message">"Das installierte MicroG wird von Morphe nicht empfohlen:
 
 %1s
 
-Tippen Sie zum Deinstallieren darauf, öffnen Sie danach diese App erneut und installieren Sie MicroG RE."</string>
+Tippe, um es zu deinstallieren, öffne diese App erneut und installiere MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Deinstallieren</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG hat keine Berechtigung, im Hintergrund zu laufen.
 
-Folgen Sie der Anleitung “Don't kill my app” für Ihr Telefon und wenden Sie die Anleitungen auf Ihre MicroG-Installation an.
+Befolge die Anleitung \"Don't kill my app\" für dein Telefon und wende die Anweisungen auf deine MicroG-Installation an.
 
-Dies ist erforderlich, damit die App funktioniert."</string>
+Dies ist erforderlich, damit die App funktioniert"</string>
   <string name="gms_core_dialog_open_website_text">Website öffnen</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Die Akkuoptimierung muss für MicroG deaktiviert werden, um Probleme zu vermeiden.
 
 Die Deaktivierung der Akkuoptimierung von MicroG hat keinen negativen Einfluss auf den Akkuverbrauch.
 
-Tippe auf die Schaltfläche „Weiter“ und erlaube die Änderungen."</string>
+Tippe auf die Schaltfläche „Weiter“ und erlaube die Änderungen"</string>
   <string name="gms_core_dialog_continue_text">Weiter</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur MicroG-Akkuoptimierung anzeigen</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die Aufforderung zur Akkuoptimierung von MicroG.

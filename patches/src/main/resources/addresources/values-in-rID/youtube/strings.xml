@@ -45,13 +45,13 @@ Second \"item\" text"</string>
 
 Beberapa tata letak sisi server mungkin tidak kembali.
 
-Perubahan termasuk:
-• Komponen di menu flyout pemutar (atau setelan terkait) mungkin tidak berfungsi.
-• Angka yang bergulir tidak dianimasi.
-• Tab koleksi ditampilkan.
-• Bagian musik dari deskripsi video mungkin tidak berfungsi.
-• Item menu flyout pemutar tidak dapat disembunyikan.
-• Tombol beralih akun mungkin tidak muncul di tab Koleksi."</string>
+Perubahan mencakup:
+• Komponen di menu flyout pemutar (atau setelan terkait) mungkin tidak berfungsi
+• Angka bergulir tidak dianimasi
+• Tab perpustakaan ditampilkan
+• Bagian musik dari deskripsi video mungkin tidak berfungsi
+• Item menu flyout pemutar tidak dapat disembunyikan
+• Tombol beralih akun mungkin tidak muncul di tab Perpustakaan"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Aktifkan penyaring menu feed flyout</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Penyaring menu feed flyout</string>
@@ -133,7 +133,7 @@ Perubahan termasuk:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">Sembunyikan YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Menampilkan YouTube Doodles dapat mencegah header khusus untuk ditampilkan.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Menampilkan YouTube Doodles dapat mencegah header khusus untuk ditampilkan</string>
   <string name="morphe_hide_channel_bar_title">Sembunyikan bilah saluran</string>
   <string name="morphe_hide_channel_watermark_title">Sembunyikan tanda air saluran</string>
   <string name="morphe_hide_chapters_timeline_button_title">Sembunyikan tombol Bab dan \'Pada video ini\'</string>
@@ -281,7 +281,7 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_menu_button_summary">Menyembunyikan tombol menu tiga titik pada setiap komentar</string>
   <string name="morphe_hide_comments_preview_comment_title">Sembunyikan pratinjau komentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Menyembunyikan pratinjau komentar di bawah video sebelum membuka bagian komentar penuh</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Komentar disembunyikan oleh Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Komentar disembunyikan oleh Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Aktifkan tombol komentar minimal</string>
   <string name="morphe_minimal_comments_button_summary">Menyembunyikan kartu geser dan pemilih halamannya, yang ditampilkan pada tombol komentar</string>
   <string name="morphe_hide_comments_thanks_button_title">Sembunyikan tombol Terima Kasih</string>
@@ -490,7 +490,7 @@ Kunci API Anda tidak boleh dibagikan. Siapa pun yang memiliki akses ke kunci ter
   <string name="morphe_vot_openrouter_open_website">Buka OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">Terjemahan OpenRouter gagal (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Batas harian MyMemory tercapai</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Tersedia kembali pada %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Tersedia berikutnya pada %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Anda telah menggunakan kuota terjemahan MyMemory gratis hari ini (5.000 karakter). Tambahkan email MyMemory di setelan untuk meningkatkan batas harian menjadi 50.000 karakter, atau ganti ke layanan terjemahan yang berbeda</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Anda telah menggunakan kuota terjemahan MyMemory hari ini (50.000 karakter). Ganti ke layanan terjemahan yang berbeda atau coba lagi besok</string>
   <string name="morphe_vot_mymemory_error">Terjemahan MyMemory gagal (status %s)</string>
@@ -565,21 +565,24 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
 
 Info: Video berikutnya dalam antrean hanya mulai diputar saat YouTube sedang berada di layar"</string>
   <string name="morphe_local_queue_sheet_title">Antrean</string>
-  <string name="morphe_local_queue_open">Antrean (%d)</string>
+  <string name="morphe_local_queue_open">Antrean (%s)</string>
   <string name="morphe_local_queue_clear">Bersihkan semua</string>
   <string name="morphe_local_queue_empty">Tidak ada yang diantrekan</string>
   <string name="morphe_local_queue_empty_hint">Gunakan Putar berikutnya dalam antrean pada video apa pun</string>
   <string name="morphe_local_queue_now_playing">Sedang diputar</string>
   <string name="morphe_local_queue_play_next">Putar berikutnya dalam antrean</string>
+  <string name="morphe_local_queue_play_last">Putar terakhir di antrean</string>
   <string name="morphe_local_queue_reorder">Urutkan ulang</string>
   <string name="morphe_local_queue_remove">Hapus</string>
   <string name="morphe_local_queue_added">Ditambahkan ke antrean</string>
+  <string name="morphe_local_queue_unavailable">Tidak dapat menambahkan video ini ke antrean</string>
+  <string name="morphe_local_queue_playlist_unsupported">Daftar putar tidak dapat ditambahkan ke antrean</string>
   <string name="morphe_local_queue_full">Antrean penuh</string>
   <string name="morphe_local_queue_play_failed">Tidak dapat memulai video</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Daftar putih iklan di menu flyout</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Menambahkan item menu flyout yang memungkinkan iklan diputar di saluran video tersebut</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Fitur ini mungkin memerlukan penggunaan PotHelper atau mengubah \"Palsukan aliran video\" menjadi TV atau masuk Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Fitur ini mungkin memerlukan penggunaan PotHelper atau mengubah \"Palsukan aliran video\" menjadi TV atau masuk Android VR</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Daftar putih kecepatan di menu flyout</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Menambahkan item menu flyout yang selalu memutar saluran video tersebut dengan kecepatan 1,0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Belum masuk</string>
@@ -762,6 +765,9 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_preferred_caption_language_title">Bahasa teks pilihan</string>
   <string name="morphe_preferred_caption_language_summary">Memilih subtitle dari penyedia terlebih dahulu, lalu menerjemahkan secara otomatis ke bahasa pilihan</string>
   <string name="morphe_preferred_caption_language_entry_off">Nonaktif</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Tambahkan bahasa terjemahan otomatis tambahan</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Menambahkan lebih banyak bahasa ke menu terjemahan otomatis</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Atur cookie teks</string>
   <string name="morphe_set_caption_cookies_summary">"Memperbaiki bug bawaan YouTube di mana teks terjemahan otomatis mungkin tidak tersedia karena cookie yang hilang
@@ -803,7 +809,7 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_hide_navigation_bar_title">Sembunyikan bilah navigasi</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Ini sepenuhnya menyembunyikan bilah navigasi, termasuk tab 'Anda'.
 
-Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat → Tampilkan Setelan."</string>
+Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat → Tampilkan Setelan"</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktifkan tombol navigasi sempit</string>
   <string name="morphe_narrow_navigation_buttons_summary">Mengurangi jarak horizontal antara tombol</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Nonaktifkan tombol navigasi tanpa label</string>
@@ -1041,7 +1047,7 @@ Tata letak Otomotif
   <string name="morphe_tablet_layout_in_player_summary">"Mengembalikan tata letak pemutar lama
 
 Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Video lainnya' mungkin tidak tersedia"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Mengaktifkan ini dapat merusak beberapa fitur tata letak pemutar, seperti bagian komentar atau \'Video lainnya\' yang ditampilkan di bawah pemutar.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Mengaktifkan ini dapat mengganggu beberapa elemen tata letak pemutar, seperti bagian komentar atau \'Video lainnya\' yang ditampilkan di bawah pemutar</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Kembalikan perilaku teks lama</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Kembalikan penyimpanan lama ke daftar putar</string>
@@ -1106,6 +1112,12 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Nonaktifkan penyegaran feed otomatis</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Mencegah feed agar tidak disegarkan secara otomatis setelah kedaluwarsa</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Tata letak kartu feed</string>
+  <string name="morphe_feed_card_layout_entry_1">Klasik</string>
+  <string name="morphe_feed_card_layout_entry_2">Kartu</string>
+  <string name="morphe_feed_card_layout_entry_3">Kartu dengan tombol suka, komentar, dan simpan</string>
+  <string name="morphe_feed_card_layout_comments">Komentar</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Nonaktifkan melanjutkan pemutar mini</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Menonaktifkan pemutar mini \'Lanjutkan menonton\', fitur YouTube Premium yang muncul saat aplikasi dimulai</string>
@@ -1220,7 +1232,7 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Palsukan dimensi perangkat</string>
   <string name="morphe_spoof_device_dimensions_summary">Mengaktifkan ini dapat membuka kualitas video yang lebih tinggi</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Mengaktifkan ini dapat menyebabkan pemutaran video tersendat-sendat, masa pakai baterai yang lebih buruk, dan efek samping yang tidak diketahui.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Mengaktifkan ini dapat menyebabkan pemutaran video tersendat-sendat, masa pakai baterai yang lebih buruk, dan efek samping yang tidak diketahui</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Umpan balik sentuh getar</string>
   <string name="morphe_disable_haptic_feedback_summary">Pilih interaksi mana yang memicu getaran perangkat</string>
@@ -1230,7 +1242,7 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Nonaktifkan getar sentuh dan tahan</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Nonaktifkan sentuh getar zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, copot dan pasang ulang MicroG.</string>
+  <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, copot dan pasang ulang MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Lewati pengalihan tautan</string>
   <string name="morphe_bypass_link_redirects_summary">Membuka tautan asli secara langsung, melewati tautan pelacakan (youtube.com/redirect)</string>
@@ -1313,13 +1325,13 @@ Batasan:
   <string name="morphe_video_codec_title">Codec video</string>
   <string name="morphe_video_codec_entry_default">Bawaan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_video_codec_avc_not_available">Untuk memaksa AVC, ubah \'Tiru streaming video\' menjadi \'Android Studio\', \'Android VR\', atau \'visionOS\'</string>
+  <string name="morphe_video_codec_avc_not_available">Untuk memaksa AVC, ubah \'Palsukan aliran video\' menjadi \'Android Studio\', \'Android VR\', atau \'visionOS\'</string>
   <string name="morphe_video_codec_user_dialog_message">"VP9
 • Dapat meningkatkan daya tahan baterai dan mengatasi pemutaran yang tersendat
 • Menggunakan lebih banyak data internet daripada AV1
 
 AVC (H.264)
-• Memerlukan klien tiruan streaming video, yaitu 'Android Studio', 'Android VR', atau 'visionOS'
+• Memerlukan klien Palsukan aliran video, yaitu 'Android Studio', 'Android VR', atau 'visionOS'
 • Dapat lebih meningkatkan daya tahan baterai
 • Dapat mengembalikan resolusi video yang hilang pada perangkat lama
 • Resolusi maksimum adalah 1080p
@@ -1339,7 +1351,7 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_av1_summary">Mengizinkan dekode perangkat lunak AV1 saat menggunakan klien \'Android VR\' / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Mengaktifkan setelan ini mungkin menggunakan dekode perangkat lunak AV1.
 
-Pemutaran video dengan AV1 dapat tersendat atau kehilangan frame."</string>
+Pemutaran video dengan AV1 dapat tersendat atau kehilangan frame"</string>
   <string name="morphe_spoof_video_streams_about_title">Efek samping pemalsuan</string>
   <string name="morphe_spoof_video_streams_about_failure">• Pemutaran dapat gagal pada menit 1</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menu \'Trek Audio\' hilang</string>
@@ -1378,7 +1390,7 @@ Batasan: Mengembalikan tampilan hamparan 'Video lainnya' ke gaya lama"</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Catat kemajuan seri yang diikuti</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Catat pemutaran pada ponsel ini untuk seri dan penanda buku yang disimpan</string>
   <string name="morphe_series_tracker_show_history_tab_title">Tampilkan Riwayat di bilah navigasi</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Beranda, Langganan, Notifikasi, Riwayat, dan Anda</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Beranda, Subscription, Notifikasi, Riwayat, dan Anda</string>
   <string name="morphe_series_tracker_ui_cancel">Batalkan</string>
   <string name="morphe_series_tracker_ui_save">Simpan</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Simpan penanda buku</string>
@@ -1393,7 +1405,7 @@ Batasan: Mengembalikan tampilan hamparan 'Video lainnya' ke gaya lama"</string>
   <string name="morphe_series_tracker_ui_clear_all_local_progress">Hapus semua kemajuan lokal</string>
   <string name="morphe_series_tracker_ui_clear_history">Hapus riwayat</string>
   <string name="morphe_series_tracker_clear_progress_title">Hapus semua kemajuan lokal?</string>
-  <string name="morphe_series_tracker_clear_progress_message">Ini akan menghapus posisi, pengecualian tontonan, dan pemilihan lanjutkan untuk setiap video. Seri yang disimpan dan katalognya tetap ada. Pemutaran baru akan dicatat jika pencatatan diaktifkan.</string>
+  <string name="morphe_series_tracker_clear_progress_message">Ini akan menghapus posisi, override yang diawasi, dan pemilihan lanjutan untuk setiap video. Seri yang disimpan beserta katalognya tetap ada. Pemutaran baru akan dicatat jika pencatatan diaktifkan</string>
   <string name="morphe_series_tracker_ui_mark_watched">Tandai ditonton</string>
   <string name="morphe_series_tracker_ui_mark_unwatched">Tandai belum ditonton</string>
   <string name="morphe_series_tracker_ui_use_automatic_status">Gunakan status otomatis</string>
@@ -1412,36 +1424,34 @@ Batasan: Mengembalikan tampilan hamparan 'Video lainnya' ke gaya lama"</string>
   <string name="morphe_series_tracker_ui_subscriptions">Subscription</string>
   <string name="morphe_series_tracker_ui_notifications">Notifikasi</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Memuat seri yang disimpan…</string>
-  <string name="morphe_series_tracker_empty_library">Ikuti daftar putar untuk melacak episodenyanya.</string>
+  <string name="morphe_series_tracker_empty_library">Ikuti daftar putar untuk melacak episode-episode-nya</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Penanda buku daftar putar</string>
   <string name="morphe_series_tracker_ui_refreshing_episodes">Mengepos episode…</string>
   <string name="morphe_series_tracker_ui_all_series">Semua seri</string>
   <string name="morphe_series_tracker_watched">Ditonton</string>
   <string name="morphe_series_tracker_ui_loading_episodes">Memuat episode…</string>
   <string name="morphe_series_tracker_ui_more_options">Lebih banyak opsi</string>
-  <string name="morphe_series_tracker_record_consent">"Catat kemajuan hanya untuk seri yang disimpan dan video berpenanda buku.
+  <string name="morphe_series_tracker_record_consent">"Catat kemajuan hanya untuk seri yang disimpan dan video yang ditandai.
 
-Koleksi ini disimpan di perangkat ini dan dibagikan di akun-akun YouTube. Kontrol riwayat YouTube tidak mengubahnya. Gunakan Seri → Lainnya → Hapus kemajuan lokal untuk menghapusnya.
+Perpustakaan ini disimpan di perangkat ini dan dibagikan di semua akun YouTube. Kontrol riwayat pause dan clear dari YouTube tidak mengubahnya. Gunakan Series → More → Clear local progress untuk menghapusnya.
 
-Pencatatan otomatis berhenti dalam mode penyamaran, ketika identitas akun tidak tersedia, atau ketika Anda beralih ke akun lain. Aktifkan pelacakan lagi untuk menggunakannya dengan akun tersebut."</string>
-  <string name="morphe_series_tracker_identity_unavailable">Pelacakan tidak dapat diaktifkan dalam mode penyamaran atau sebelum YouTube memuat kondisi akun saat ini. Kembali ke Beranda dan coba lagi. Tidak perlu masuk.</string>
+Pencatatan otomatis berhenti dalam mode penyamaran, ketika identitas akun tidak tersedia, atau saat Anda beralih ke akun lain. Aktifkan pelacakan lagi untuk menggunakannya dengan akun tersebut"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Pelacakan tidak dapat diaktifkan dalam mode penyamaran atau sebelum YouTube memuat status akun saat ini. Kembali ke Beranda dan coba lagi. Tidak diperlukan masuk</string>
   <string name="morphe_series_tracker_enable">Aktifkan pelacakan lokal</string>
   <string name="morphe_series_tracker_tracking_paused">Pencatatan kemajuan dimatikan</string>
   <string name="morphe_series_tracker_resume_at">Lanjutkan di %1$s</string>
-  <string name="morphe_series_tracker_watched_count">%1$d / %2$d episode ditonton</string>
-  <string name="morphe_series_tracker_episode_position">Episode %1$d · %2$s</string>
-  <string name="morphe_series_tracker_episode_range">Episode %1$d–%2$d dari %3$d</string>
-  <string name="morphe_series_tracker_catalog_unavailable">Segarkan untuk mencoba memuat episode. Daftar putar pribadi membutuhkan akses akun; penanda bukunya tetap dibuka di YouTube.</string>
-  <string name="morphe_series_tracker_open_failed">YouTube tidak dapat membuka episode ini.</string>
-  <string name="morphe_series_tracker_playlist_failed">YouTube tidak dapat membuka daftar putar ini.</string>
-  <string name="morphe_series_tracker_plan_open">Penanda buku daftar putar</string>
+  <string name="morphe_series_tracker_watched_count">Episode %1$s / %2$s ditonton</string>
+  <string name="morphe_series_tracker_episode_position">Episode %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Episode %1$s-%2$s dari %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Segarkan untuk mencoba memuat episode. Daftar putar privat memerlukan akses akun; tanda buchunya masih dapat membuka di YouTube</string>
+  <string name="morphe_series_tracker_open_failed">YouTube tidak dapat membuka episode ini</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube tidak dapat membuka daftar putar ini</string>
   <string name="morphe_series_tracker_plan_changed">Pilih episode</string>
   <string name="morphe_series_tracker_plan_caught_up">Terbaru</string>
   <string name="morphe_series_tracker_plan_none">Tidak ada episode yang dapat diputar</string>
   <string name="morphe_series_tracker_saved_position">Video disimpan · %1$s</string>
   <string name="morphe_series_tracker_follow">Ikuti seri</string>
   <string name="morphe_series_tracker_view_series">Lihat seri</string>
-  <string name="morphe_series_tracker_add_icon">Ikuti seri</string>
   <string name="morphe_series_tracker_continue">Lanjutkan</string>
   <string name="morphe_series_tracker_start_here">Mulai dari sini</string>
   <string name="morphe_series_tracker_start_saved">Titik awal disimpan</string>
@@ -1450,29 +1460,29 @@ Pencatatan otomatis berhenti dalam mode penyamaran, ketika identitas akun tidak 
   <string name="morphe_series_tracker_undo">Urungkan</string>
   <string name="morphe_series_tracker_enable_short">Aktifkan</string>
   <string name="morphe_series_tracker_new_episode">1 episode baru</string>
-  <string name="morphe_series_tracker_new_episodes">%1$d episode baru</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s episode baru</string>
   <string name="morphe_series_tracker_record_short">Catat kemajuan di perangkat ini</string>
-  <string name="morphe_series_tracker_follow_consent">"Seri dan kemajuan Anda tetap ada di perangkat ini, dibagikan di akun-akun YouTube. Kontrol riwayat YouTube tidak mengubahnya. Hapus kemajuan dari menu Seri.
+  <string name="morphe_series_tracker_follow_consent">"Seri dan kemajuan Anda tetap berada di perangkat ini, dibagikan di semua akun YouTube. Kontrol riwayat YouTube tidak mengubahnya. Hapus kemajuan dari menu Series.
 
-Pencatatan otomatis bersifat opsional. Ini berhenti dalam mode penyamaran atau ketika akun berubah."</string>
-  <string name="morphe_series_tracker_follow_unavailable">Episode tidak dapat dimuat. Anda dapat menyimpan daftar putar sebagai penanda buku.</string>
-  <string name="morphe_series_tracker_error_pending_full">Terlalu banyak perubahan yang belum disimpan. Coba simpan dulu.</string>
-  <string name="morphe_series_tracker_error_storage_busy">Sedang menyimpan. Coba lagi.</string>
-  <string name="morphe_series_tracker_error_catalog_busy">Sedang memuat episode. Coba lagi.</string>
-  <string name="morphe_series_tracker_error_storage_unavailable">Penyimpanan tidak tersedia. Data yang disimpan tetap aman.</string>
-  <string name="morphe_series_tracker_error_storage_save">Perubahan tidak dapat disimpan. Coba simpan sebelum menutup YouTube.</string>
-  <string name="morphe_series_tracker_error_conflict">Seri ini sudah disimpan, atau daftar putarnya telah berubah. Buka kembali seri ini.</string>
-  <string name="morphe_series_tracker_error_series_changed">Seri ini telah berubah atau dihapus. Buka kembali koleksi.</string>
-  <string name="morphe_series_tracker_error_playlist_changed">Daftar putar telah berubah. Pilih episode lagi.</string>
-  <string name="morphe_series_tracker_error_episode_unavailable">Episode ini tidak tersedia. Pilih yang lain.</string>
-  <string name="morphe_series_tracker_error_name_required">Masukkan nama seri.</string>
-  <string name="morphe_series_tracker_error_playlist_input">Masukkan tautan daftar putar YouTube atau ID daftar putar.</string>
-  <string name="morphe_series_tracker_error_retry_later">Harap tunggu sebelum menyegarkan lagi.</string>
-  <string name="morphe_series_tracker_error_catalog_unavailable">Episode tidak dapat dimuat. Coba lagi nanti.</string>
-  <string name="morphe_series_tracker_error_operation">Perubahan tidak dapat diselesaikan. Coba lagi.</string>
-  <string name="morphe_series_tracker_error_resume">Lanjutkan tidak dapat dikonfirmasi. Periksa pemutar dan coba lagi.</string>
+Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran atau saat akun berubah"</string>
+  <string name="morphe_series_tracker_follow_unavailable">Episode tidak dapat dimuat. Anda dapat menyimpan daftar putar sebagai tanda buku</string>
+  <string name="morphe_series_tracker_error_pending_full">Terlalu banyak perubahan yang belum disimpan. Coba simpan terlebih dahulu</string>
+  <string name="morphe_series_tracker_error_storage_busy">Proses penyimpanan sedang sibuk. Coba lagi</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Pemrosesan pemuatan episode sedang sibuk. Coba lagi</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Penyimpanan tidak tersedia. Data tersimpan Anda tetap terjaga</string>
+  <string name="morphe_series_tracker_error_storage_save">Perubahan tidak dapat disimpan. Coba simpan sebelum menutup YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">Seri ini sudah disimpan, atau daftar putarnya telah berubah. Buka kembali</string>
+  <string name="morphe_series_tracker_error_series_changed">Seri ini telah berubah atau dihapus. Buka kembali perpustakaan</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Daftar putar telah berubah. Pilih episode lagi</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Episode ini tidak tersedia. Pilih yang lain</string>
+  <string name="morphe_series_tracker_error_name_required">Masukkan nama seri</string>
+  <string name="morphe_series_tracker_error_playlist_input">Masukkan tautan playlist YouTube atau ID playlist</string>
+  <string name="morphe_series_tracker_error_retry_later">Harap tunggu sebelum menyegarkan lagi</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Episode tidak dapat dimuat. Coba lagi nanti</string>
+  <string name="morphe_series_tracker_error_operation">Perubahan tidak dapat diselesaikan. Coba lagi</string>
+  <string name="morphe_series_tracker_error_resume">Lanjutan tidak dapat dikonfirmasi. Periksa pemutar dan coba lagi</string>
   <string name="morphe_series_tracker_followed">Mengikuti seri</string>
-  <string name="morphe_series_tracker_video_not_in_playlist">Video ini tidak ada dalam daftar putar ini.</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Video ini tidak ada di daftar putar ini</string>
   <string name="morphe_series_tracker_finding_playlists">Mencari daftar putar…</string>
   <string name="morphe_series_tracker_paste_playlist">Tempel tautan daftar putar</string>
   <string name="morphe_series_tracker_discovery_unavailable">Tidak dapat menemukan daftar putar</string>
@@ -1483,38 +1493,36 @@ Pencatatan otomatis bersifat opsional. Ini berhenti dalam mode penyamaran atau k
   <string name="morphe_series_tracker_episode_order">Urutan episode</string>
   <string name="morphe_series_tracker_playlist_order">Urutan daftar putar</string>
   <string name="morphe_series_tracker_reverse_order">Membalik urutan daftar putar</string>
-  <string name="morphe_series_tracker_view_count_large">%1$s tampilan</string>
   <string name="morphe_series_tracker_view_count">%1$s tampilan</string>
   <string name="morphe_series_tracker_view_count_one">%1$s tampilan</string>
   <string name="morphe_series_tracker_completion_title">Tandai episode ditonton</string>
-  <string name="morphe_series_tracker_completion_summary">Setidaknya %1$d%% ditonton dengan maksimal 90 detik tersisa, atau %2$d detik tersisa</string>
-  <string name="morphe_series_tracker_completion_explanation">Secara otomatis tandai episode ditonton setelah salah satu ambang batas tercapai. Aturan persentase juga memerlukan tidak lebih dari 90 detik tersisa, sehingga akhir episode panjang tidak dilewati. Aturan waktu sisa berlaku untuk video yang lebih lama dari satu menit; atur ke 0 untuk menonaktifkannya. Perubahan diterapkan pada pembaruan kemajuan masa depan. Pilihan manual ditonton/belum ditonton tetap dipertahankan.</string>
-  <string name="morphe_series_tracker_completion_percent">Persentase ditonton (1–100)</string>
-  <string name="morphe_series_tracker_completion_seconds">Detik tersisa (0–300; 0 menonaktifkan)</string>
-  <string name="morphe_series_tracker_completion_save">Simpan</string>
-  <string name="morphe_series_tracker_completion_range">Masukkan nilai dari %1$d hingga %2$d.</string>
+  <string name="morphe_series_tracker_completion_summary">Minimal %1$s%% ditonton dengan sisa waktu paling banyak 90 detik, atau %2$s detik tersisa</string>
+  <string name="morphe_series_tracker_completion_explanation">Tandai episode secara otomatis sebagai ditonton setelah salah satu ambang batas tercapai. Aturan persentase juga mengharuskan sisa waktu tidak lebih dari 90 detik, sehingga akhir episode panjang tidak dilewati. Aturan waktu tersisa berlaku untuk video yang lebih lama dari satu menit; atur ke 0 untuk menonaktifkannya. Perubahan berlaku untuk pembaruan kemajuan di masa depan. Pilihan manual ditonton/tidak ditonton tetap dipertahankan</string>
+  <string name="morphe_series_tracker_completion_percent">Persentase yang ditonton (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Detik tersisa (0-300; 0 untuk menonaktifkan)</string>
+  <string name="morphe_series_tracker_completion_range">Masukkan nilai dari %1$s hingga %2$s</string>
   <string name="morphe_series_tracker_youtube_progress_title">Gunakan kemajuan YouTube</string>
   <string name="morphe_series_tracker_youtube_progress_summary">Lanjutkan seri yang diikuti setelah menonton di perangkat lain</string>
-  <string name="morphe_series_tracker_sync_consent">Baca status ditonton dan posisi lanjutkan untuk seri yang diikuti dari akun YouTube saat ini. Hanya episode yang cocok yang disimpan di ponsel ini. Pemeriksaan berjalan saat koleksi seri terbuka dan sebelum Lanjutkan. Riwayat YouTube harus diaktifkan di perangkat lainnya.</string>
+  <string name="morphe_series_tracker_sync_consent">Baca status ditonton dan posisi lanjutan untuk seri yang diikuti dari akun YouTube saat ini. Hanya episode yang cocok yang disimpan di ponsel ini. Pemeriksaan berjalan saat perpustakaan seri terbuka dan sebelum Melanjutkan. Riwayat YouTube harus diaktifkan di perangkat lain Anda</string>
   <string name="morphe_series_tracker_sync_checking">Memeriksa kemajuan YouTube…</string>
-  <string name="morphe_series_tracker_sync_failed">Kemajuan YouTube tidak tersedia. Menggunakan kemajuan yang disimpan.</string>
-  <string name="morphe_series_tracker_sync_partial">Beberapa kemajuan YouTube tidak tersedia. Posisi yang disimpan tetap aman.</string>
+  <string name="morphe_series_tracker_sync_failed">Kemajuan YouTube tidak tersedia. Menggunakan kemajuan yang tersimpan</string>
+  <string name="morphe_series_tracker_sync_partial">Beberapa kemajuan YouTube tidak tersedia. Posisi yang disimpan tetap terjaga</string>
   <string name="morphe_series_tracker_backup_title">Cadangan dan pulihkan</string>
   <string name="morphe_series_tracker_backup_summary">Simpan koleksi seri Anda ke file atau pulihkan cadangan</string>
-  <string name="morphe_series_tracker_backup_explanation">Menyimpan seri yang diikuti, posisi episode, dan pilihan ditonton. Izin pencatatan dan kemajuan YouTube tidak disertakan.</string>
+  <string name="morphe_series_tracker_backup_explanation">Menyimpan seri yang diikuti, posisi episode, dan pilihan yang ditonton. Izin pencatatan dan kemajuan YouTube tidak termasuk</string>
   <string name="morphe_series_tracker_backup_save">Simpan cadangan</string>
   <string name="morphe_series_tracker_backup_restore">Pulihkan cadangan</string>
-  <string name="morphe_series_tracker_backup_preview">Tambahkan %1$d seri. %2$d seri yang sudah ada di koleksi Anda tetap terjaga. Kemajuan video yang ada tetap terjaga.</string>
+  <string name="morphe_series_tracker_backup_preview">Tambahkan seri %1$s. Seri %2$s yang sudah ada di perpustakaan Anda tetap terjaga. Kemajuan video yang ada tetap terjaga</string>
   <string name="morphe_series_tracker_backup_saved">Cadangan seri disimpan</string>
-  <string name="morphe_series_tracker_backup_restored">%1$d seri dipulihkan</string>
-  <string name="morphe_series_tracker_error_backup_invalid">File ini bukan cadangan seri yang didukung, atau terlalu besar. Koleksi Anda tidak berubah.</string>
-  <string name="morphe_series_tracker_error_backup_write">Tidak dapat menyimpan cadangan. Coba lokasi lain.</string>
+  <string name="morphe_series_tracker_backup_restored">Dipulihkan %1$s seri</string>
+  <string name="morphe_series_tracker_error_backup_invalid">File ini bukan cadangan seri yang didukung, atau terlalu besar. Perpustakaan Anda tidak diubah</string>
+  <string name="morphe_series_tracker_error_backup_write">Tidak dapat menyimpan cadangan. Coba lokasi lain</string>
   <string name="morphe_series_tracker_removed">Seri dihapus</string>
-  <string name="morphe_series_tracker_recovery_duplicate">Episode ini sekarang muncul lebih dari sekali. Pilih mana yang akan dilanjutkan.</string>
-  <string name="morphe_series_tracker_recovery_missing">Episode yang Anda simpan tidak lagi berada dalam daftar putar ini. Posisi penyimpanan Anda tetap terjaga.</string>
-  <string name="morphe_series_tracker_recovery_continue">Lanjutkan dengan episode %1$d · %2$s</string>
-  <string name="morphe_series_tracker_recovery_choose">Anda juga dapat memilih episode apa pun di bawah ini. Episode sebelumnya tidak berubah.</string>
-  <string name="morphe_series_tracker_playback_changed">Daftar putar ini telah berubah. Buka seri untuk memilih di mana melanjutkan.</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Episode ini sekarang muncul lebih dari sekali. Pilih mana yang akan dilanjutkan dari</string>
+  <string name="morphe_series_tracker_recovery_missing">Episode yang disimpan Anda tidak lagi ada di daftar putar ini. Posisi yang disimpan tetap terjaga</string>
+  <string name="morphe_series_tracker_recovery_continue">Lanjutkan dengan episode %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Anda juga dapat memilih episode apa pun di bawah ini. Episode sebelumnya tidak diubah</string>
+  <string name="morphe_series_tracker_playback_changed">Daftar putar ini telah berubah. Buka seri untuk memilih tempat melanjutkan</string>
   <string name="morphe_series_tracker_playback_boundary">Tidak ada lagi episode dalam arah ini</string>
   <string name="morphe_series_tracker_continue_series">Lanjutkan %1$s</string>
   <string name="morphe_series_tracker_search_series">Cari seri</string>

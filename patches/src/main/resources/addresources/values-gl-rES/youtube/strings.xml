@@ -108,6 +108,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">Off</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
@@ -184,6 +185,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Off</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
@@ -237,5 +239,4 @@ Second \"item\" text"</string>
   <string name="morphe_series_tracker_plan_caught_up">Ao día</string>
   <string name="morphe_series_tracker_continue">Continuar</string>
   <string name="morphe_series_tracker_undo">Anular</string>
-  <string name="morphe_series_tracker_completion_save">Gardar</string>
 </resources>

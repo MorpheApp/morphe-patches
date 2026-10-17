@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Rozložení</string>
   <string name="morphe_copy_text_title">Kopírovat text</string>
   <string name="morphe_copy_text_summary">Umožňuje vybírat a kopírovat text v příspěvcích a komentářích. Zakazuje sbalování komentářů</string>
-  <string name="morphe_copy_text_user_dialog_message">Sbalování komentářů přestane fungovat, dokud je povoleno kopírování textu.</string>
+  <string name="morphe_copy_text_user_dialog_message">Sbírané komentáře přestanou fungovat, zatímco Copy text je zapnuto</string>
   <string name="morphe_custom_font_title">Vlastní písmo</string>
   <string name="morphe_custom_font_summary">Načte vlastní soubor písma TTF nebo OTF z cesty níže. Povolení této možnosti také vypne použití systémového písma.</string>
   <string name="morphe_custom_font_file_path_title">Soubor vlastního písma</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Skryje doporučené regály z kanálu a návrhů vyhledávání</string>
   <string name="morphe_remove_notification_dialog_title">Odstranit dialogové okno s návrhem oznámení</string>
   <string name="morphe_remove_notification_dialog_summary">Automaticky zavře dialog s návrhy oznámení při návštěvě subredditu</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Zobrazit označení v domovském kanále</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Zobrazuje odznáčky přezdívek příspěvků v domovském kanále</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Některé položky kanálu nemusí zobrazovat přezdívku</string>
   <string name="morphe_show_view_count_title">Zobrazit počet zobrazení u příspěvků</string>
   <string name="morphe_show_view_count_summary">Omezení: Dostupná pouze pokud odpověď API obsahuje počet zobrazení</string>
   <string name="morphe_flip_post_action_bar_title">Přehodit lištu akcí příspěvku</string>

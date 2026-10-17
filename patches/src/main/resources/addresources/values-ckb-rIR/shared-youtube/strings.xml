@@ -46,14 +46,12 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">هاوتاکردنی وێنۆکەی ئەپ</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">ڕاگەیاندنی Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">جوتیان تۆمارە نەکراوە. &lt;br&gt;&lt;br&gt;ئەگەری زۆرە کە ئەمەش بەهۆی مسرەفەکانی DNS یان ناوتۆکی کاربێت.&lt;br&gt;&lt;br&gt;چۆنیەت بە ڕێگای سڕینەوە &lt;b&gt;s.youtube.com&lt;/b&gt; یان خەڵادانەوەی هەموو مسرەفەکانی DNS ناوتۆکی و پرووکسێکان.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">نیشانی مەدەوە دووبارە</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ</string>
   <string name="morphe_spoof_video_streams_screen_summary">شێوەپێدانی spoofing کلایەنت بۆ ڕێگرتن لە کێشەکانی پەخش کردنەوە</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">هیچ ڕاستگۆیەکی ئەندازی نەیادەخرێت</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_user_dialog_message">خەڵادانەوەی ئەم ناسنامەیە دەبێتە هۆی کێشە لە پەرباسەدا.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">دۆخراوه‌ت: ڕاستکردنه‌وه‌ی ڕێگه‌ی ڤیدیو &gt; چوارده‌وه‌ی Android VR-ه‌ ده‌رباره‌ی نۆی‌ن</string>
@@ -84,7 +82,7 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
 • كاتێكی ٦ مانگ ڕابێت، گۆگڵ ئەم ڕێكخستنە ده‌سڕێت
 • كاتێك وشه‌ختكه‌وتۆت، پێویسته‌ جارێكی تری ده‌رببێ بۆچون"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 بەردەست نیە ( کاتەکەی بەسەرچووە API)</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 هۊتا سەرلەشêره (ئاستی %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 هۊتا سەرلەشêره (ئاستی %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 بەشێوەیەکی کاتی بەردەست نیە</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">نەتوانم چواردوورە ببنێم، پشتەڕوایی ئەندازەی سایت پەسەند نەکرا</string>
   <string name="morphe_oauth2_connection_failure_auth_error">نەتوانم لە VR چواردووەم: %s</string>
@@ -118,7 +116,7 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
 
 ئەمەش دەتوانێت یارمەت بدات لە دروست کردنی فیلترە سەر بەڕێوەکان. 
 
-بەڵام، چالاک کردنەوە ئەمەش ڕەنگە هەندێك لە زانیارییەکانی کاربەر تۆمار بکات وەک: ناوی IP-ت."</string>
+بەڵام، چالاک کردنەوە ئەمەش ڕەنگە هەندێك لە زانیارییەکانی کاربەر تۆمار بکات وەک: ناوی IP-ت"</string>
   <!-- Custom filter -->
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>

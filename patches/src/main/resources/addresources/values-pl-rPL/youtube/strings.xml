@@ -46,12 +46,12 @@ Second \"item\" text"</string>
 Niektóre zmiany układu wprowadzone po stronie serwera mogą nie zostać przywrócone.
 
 Zmiany obejmują:
-• Elementy menu wysuwanego odtwarzacza (lub powiązanych ustawień) mogą nie działać.
-• Liczby nie są animowane.
-• Zakładka Biblioteka jest widoczna.
-• Sekcja muzyki w opisie filmu może nie działać.
-• Elementy menu wysuwanego odtwarzacza nie mogą zostać ukryte.
-• Przycisk przełączania konta może nie pojawiać się w zakładce Biblioteka."</string>
+• Elementy menu wysuwanego odtwarzacza (lub powiązanych ustawień) mogą nie działać
+• Liczby nie są animowane
+• Zakładka Biblioteka jest widoczna
+• Sekcja muzyki w opisie filmu może nie działać
+• Elementy menu wysuwanego odtwarzacza nie mogą zostać ukryte
+• Przycisk przełączania konta może nie pojawiać się w zakładce Biblioteka"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Włącz filtr menu strony głównej</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Menu do ukrycia</string>
@@ -133,7 +133,7 @@ Zmiany obejmują:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">Ukryj YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Ukrywa sezonowe i okolicznościowe animacje na logo YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Wyświetlanie YouTube Doodles może blokować własne logo w nagłówku.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Wyświetlanie YouTube Doodles może blokować własne logo w nagłówku</string>
   <string name="morphe_hide_channel_bar_title">Ukryj pasek kanału</string>
   <string name="morphe_hide_channel_watermark_title">Ukryj znak wodny kanału</string>
   <string name="morphe_hide_chapters_timeline_button_title">Ukryj przycisk Rozdziały i \"W tym filmie\"</string>
@@ -281,7 +281,7 @@ Zmiany obejmują:
   <string name="morphe_hide_comments_menu_button_summary">Ukrywa przycisk menu z trzema kropkami przy każdym komentarzu</string>
   <string name="morphe_hide_comments_preview_comment_title">Ukryj podgląd komentarza</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ukrywa podgląd komentarza pod filmem przed otwarciem pełnej sekcji komentarzy</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Komentarz ukryty przez Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Komentarz ukryty przez Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Włącz minimalistyczny przycisk Komentarze</string>
   <string name="morphe_minimal_comments_button_summary">Ukrywa przesuwane karty oraz ich selektor stron, które wyświetlają się na przycisku komentarzy</string>
   <string name="morphe_hide_comments_thanks_button_title">Ukryj przycisk Podziękuj</string>
@@ -490,7 +490,7 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_vot_openrouter_open_website">Otwórz OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">Tłumaczenie OpenRouter nie powiodło się (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Osiągnięto dzienny limit MyMemory</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Dostępne ponownie o %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Dostępne ponownie o %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Wykorzystano dzisiejszy darmowy limit tłumaczeń MyMemory (5000 znaków). Dodaj adres e-mail MyMemory w ustawieniach, aby zwiększyć dzienny limit do 50 000 znaków, lub zmień usługę tłumaczenia</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Wykorzystano dzisiejszy limit tłumaczeń MyMemory (50 000 znaków). Zmień usługę tłumaczenia lub spróbuj ponownie jutro</string>
   <string name="morphe_vot_mymemory_error">Tłumaczenie MyMemory nie powiodło się (status %s)</string>
@@ -565,21 +565,24 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
 
 Uwaga: Następny film w kolejce uruchamia się tylko wtedy, gdy YouTube jest widoczny na ekranie"</string>
   <string name="morphe_local_queue_sheet_title">Kolejka</string>
-  <string name="morphe_local_queue_open">Kolejka (%d)</string>
+  <string name="morphe_local_queue_open">Kolejka (%s)</string>
   <string name="morphe_local_queue_clear">Wyczyść wszystko</string>
   <string name="morphe_local_queue_empty">Kolejka jest pusta</string>
   <string name="morphe_local_queue_empty_hint">Użyj opcji \"Odtwórz jako następny w kolejce\" na dowolnym filmie</string>
   <string name="morphe_local_queue_now_playing">Teraz odtwarzane</string>
   <string name="morphe_local_queue_play_next">Odtwórz jako następny w kolejce</string>
+  <string name="morphe_local_queue_play_last">Odtwórz jako ostatni w kolejce</string>
   <string name="morphe_local_queue_reorder">Zmień kolejność</string>
   <string name="morphe_local_queue_remove">Usuń</string>
   <string name="morphe_local_queue_added">Dodano do kolejki</string>
+  <string name="morphe_local_queue_unavailable">Nie udało się dodać tego filmu do kolejki</string>
+  <string name="morphe_local_queue_playlist_unsupported">Playlisty nie mogą być dodane do kolejki</string>
   <string name="morphe_local_queue_full">Kolejka jest pełna</string>
   <string name="morphe_local_queue_play_failed">Nie udało się uruchomić filmu</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Biała lista reklam w menu filmu</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Dodaje do menu opcję, która pozwala na wyświetlanie reklam na kanale danego filmu</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ta funkcja może wymagać użycia PotHelpera lub zmiany opcji \"Fałszowanie strumieni filmów\" na TV lub Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ta funkcja może wymagać użycia PotHelpera lub zmiany opcji \"Fałszowanie strumieni filmów\" na TV lub Android VR</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Biała lista prędkości w menu filmu</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Dodaje do menu opcję, która zawsze odtwarza kanał danego filmu z prędkością 1x</string>
   <string name="morphe_queue_manager_check_failed_auth">Nie zalogowano</string>
@@ -762,6 +765,9 @@ Uwaga: Następny film w kolejce uruchamia się tylko wtedy, gdy YouTube jest wid
   <string name="morphe_preferred_caption_language_title">Preferowany język napisów</string>
   <string name="morphe_preferred_caption_language_summary">Najpierw wybiera napisy dostawcy, a następnie automatycznie tłumaczy je na preferowany język</string>
   <string name="morphe_preferred_caption_language_entry_off">Wyłączone</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Dodaj więcej języków automatycznego tłumaczenia</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Dodaje więcej języków do menu automatycznego tłumaczenia</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Ustaw ciasteczka napisów</string>
   <string name="morphe_set_caption_cookies_summary">"Naprawia błąd oryginalnego YouTube, przez który automatyczne tłumaczenie napisów może być niedostępne z powodu braku ciasteczek
@@ -803,7 +809,7 @@ Uwaga: Następny film w kolejce uruchamia się tylko wtedy, gdy YouTube jest wid
   <string name="morphe_hide_navigation_bar_title">Ukryj pasek nawigacji</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"To całkowicie ukrywa pasek nawigacji, w tym zakładkę \"Ty\".
 
-Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi → Przycisk Ustawienia."</string>
+Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi → Przycisk Ustawienia"</string>
   <string name="morphe_narrow_navigation_buttons_title">Włącz wąskie przyciski nawigacji</string>
   <string name="morphe_narrow_navigation_buttons_summary">Zmniejsza poziome odstępy między przyciskami</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Wyłącz przyciski nawigacji bez etykiet</string>
@@ -1040,7 +1046,7 @@ Układ samochodowy
   <string name="morphe_tablet_layout_in_player_summary">"Przywraca stary układ odtwarzacza
 
 Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączona, nakładka \"Więcej filmów\" może być niedostępna"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Włączenie tej opcji może popsuć niektóre elementy układu odtwarzacza, takie jak sekcja komentarzy lub \"Więcej filmów\" pod odtwarzaczem.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Włączenie tej opcji może popsuć niektóre elementy układu odtwarzacza, takie jak sekcja komentarzy lub \"Więcej filmów\" pod odtwarzaczem</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Przywraca stare zachowanie napisów</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Przywraca stare menu dodawania do playlisty</string>
@@ -1105,6 +1111,12 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Wyłącz automatyczne odświeżanie</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Zapobiega automatycznemu odświeżaniu treści, gdy stają się nieaktualne</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Układ kart na stronie głównej</string>
+  <string name="morphe_feed_card_layout_entry_1">Klasyczny</string>
+  <string name="morphe_feed_card_layout_entry_2">Karty</string>
+  <string name="morphe_feed_card_layout_entry_3">Karty z przyciskami polubienia, komentarzy i zapisywania</string>
+  <string name="morphe_feed_card_layout_comments">Komentarze</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Wyłącz wznawianie filmu w miniodtwarzaczu</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Wyłącza miniodtwarzacz \"Kontynuuj oglądanie\", funkcję YouTube Premium wyświetlaną przy starcie aplikacji</string>
@@ -1219,7 +1231,7 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Fałszuj rozdzielczość urządzenia</string>
   <string name="morphe_spoof_device_dimensions_summary">Włączenie tej opcji może odblokować wyższą jakość filmów</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Włączenie tego może spowodować zacinanie się obrazu, szybsze zużycie baterii oraz inne nieprzewidziane skutki uboczne.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Włączenie tej opcji może spowodować zacinanie się obrazu, szybsze zużycie baterii oraz inne nieprzewidziane skutki uboczne</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Wibracje</string>
   <string name="morphe_disable_haptic_feedback_summary">Zdecyduj, które interakcje wywołują wibracje urządzenia</string>
@@ -1229,7 +1241,7 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Wyłącz wibracje przy przytrzymaniu</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Wyłącz wibracje przy przybliżaniu filmu</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Wystąpił błąd logowania, jeśli Twoje hasło zostało zmienione, spróbuj przeinstalować MicroG.</string>
+  <string name="microg_offline_account_login_error">W przypadku niedawnej zmiany danych logowania do konta odinstaluj i zainstaluj ponownie MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omiń przekierowania linków</string>
   <string name="morphe_bypass_link_redirects_summary">Otwiera oryginalny link bezpośrednio, omijając link śledzący (youtube.com/redirect)</string>
@@ -1338,7 +1350,7 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_av1_summary">Umożliwia programowe dekodowanie AV1 podczas korzystania z klienta Android VR / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Włączenie tej opcji może wymusić programowe dekodowanie AV1.
 
-Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie klatek."</string>
+Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie klatek"</string>
   <string name="morphe_spoof_video_streams_about_title">Skutki uboczne fałszowania</string>
   <string name="morphe_spoof_video_streams_about_failure">• Odtwarzanie może zostać przerwane w 1 minucie</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Brakuje menu \"Ścieżka dźwiękowa\"</string>
@@ -1392,7 +1404,7 @@ Ograniczenie: Przywraca stary wygląd nakładki \"Więcej filmów\""</string>
   <string name="morphe_series_tracker_ui_clear_all_local_progress">Wyczyść cały lokalny postęp</string>
   <string name="morphe_series_tracker_ui_clear_history">Wyczyść historię</string>
   <string name="morphe_series_tracker_clear_progress_title">Wyczyścić cały lokalny postęp?</string>
-  <string name="morphe_series_tracker_clear_progress_message">Spowoduje to wyczyszczenie pozycji odtwarzania, ręcznych oznaczeń obejrzanych filmów i punktów wznawiania dla każdego filmu. Zapisane serie i ich listy odcinków pozostaną zachowane. Nowe odtwarzanie będzie zapisywane, jeśli ta funkcja jest włączona.</string>
+  <string name="morphe_series_tracker_clear_progress_message">Spowoduje to wyczyszczenie pozycji odtwarzania, ręcznych oznaczeń obejrzanych filmów i punktów wznawiania dla każdego filmu. Zapisane serie i ich listy odcinków pozostaną zachowane. Nowe odtwarzanie będzie zapisywane, jeśli ta funkcja jest włączona</string>
   <string name="morphe_series_tracker_ui_mark_watched">Oznacz jako obejrzane</string>
   <string name="morphe_series_tracker_ui_mark_unwatched">Oznacz jako nieobejrzane</string>
   <string name="morphe_series_tracker_ui_use_automatic_status">Użyj automatycznego statusu</string>
@@ -1422,25 +1434,23 @@ Ograniczenie: Przywraca stary wygląd nakładki \"Więcej filmów\""</string>
 
 ​Ta biblioteka jest przechowywana na tym urządzeniu i współdzielona między kontami YouTube. Wstrzymanie lub wyczyszczenie historii YouTube jej nie zmienia. Aby ją wyczyścić, wybierz Serie → Więcej → Wyczyść lokalny postęp.
 
-​Automatyczne zapisywanie zatrzymuje się w trybie incognito, gdy informacje o koncie są niedostępne lub po przełączeniu na inne konto. Włącz śledzenie ponownie, aby używać go na tym koncie."</string>
-  <string name="morphe_series_tracker_identity_unavailable">Nie można włączyć śledzenia w trybie incognito ani przed wczytaniem stanu bieżącego konta przez YouTube. Wróć na stronę główną i spróbuj ponownie. Logowanie nie jest wymagane.</string>
+​Automatyczne zapisywanie zatrzymuje się w trybie incognito, gdy informacje o koncie są niedostępne lub po przełączeniu na inne konto. Włącz śledzenie ponownie, aby używać go na tym koncie"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Nie można włączyć śledzenia w trybie incognito ani przed wczytaniem stanu bieżącego konta przez YouTube. Wróć na stronę główną i spróbuj ponownie. Logowanie nie jest wymagane</string>
   <string name="morphe_series_tracker_enable">Włącz lokalne śledzenie</string>
   <string name="morphe_series_tracker_tracking_paused">Zapisywanie postępu jest wyłączone</string>
   <string name="morphe_series_tracker_resume_at">Wznów od %1$s</string>
-  <string name="morphe_series_tracker_watched_count">Obejrzano %1$d z %2$d odcinków</string>
-  <string name="morphe_series_tracker_episode_position">Odcinek %1$d · %2$s</string>
-  <string name="morphe_series_tracker_episode_range">Odcinki %1$d-%2$d z %3$d</string>
+  <string name="morphe_series_tracker_watched_count">Obejrzano %1$s z %2$s odcinków</string>
+  <string name="morphe_series_tracker_episode_position">Odcinek %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Odcinki %1$s-%2$s z %3$s</string>
   <string name="morphe_series_tracker_catalog_unavailable">Odśwież, aby spróbować wczytać odcinki. Prywatne playlisty wymagają dostępu do konta. Ich zakładkę nadal można otworzyć w YouTube</string>
   <string name="morphe_series_tracker_open_failed">YouTube nie mógł otworzyć tego odcinka</string>
   <string name="morphe_series_tracker_playlist_failed">YouTube nie mógł otworzyć tej playlisty</string>
-  <string name="morphe_series_tracker_plan_open">Zakładka playlisty</string>
   <string name="morphe_series_tracker_plan_changed">Wybierz odcinek</string>
   <string name="morphe_series_tracker_plan_caught_up">Na bieżąco</string>
   <string name="morphe_series_tracker_plan_none">Brak odcinków do odtworzenia</string>
   <string name="morphe_series_tracker_saved_position">Zapisany film · %1$s</string>
   <string name="morphe_series_tracker_follow">Obserwuj serię</string>
   <string name="morphe_series_tracker_view_series">Pokaż serię</string>
-  <string name="morphe_series_tracker_add_icon">Obserwuj serię</string>
   <string name="morphe_series_tracker_continue">Kontynuuj</string>
   <string name="morphe_series_tracker_start_here">Zacznij tutaj</string>
   <string name="morphe_series_tracker_start_saved">Zapisano punkt początkowy</string>
@@ -1449,11 +1459,11 @@ Ograniczenie: Przywraca stary wygląd nakładki \"Więcej filmów\""</string>
   <string name="morphe_series_tracker_undo">Cofnij</string>
   <string name="morphe_series_tracker_enable_short">Włącz</string>
   <string name="morphe_series_tracker_new_episode">1 nowy odcinek</string>
-  <string name="morphe_series_tracker_new_episodes">%1$d nowych odcinków</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s nowych odcinków</string>
   <string name="morphe_series_tracker_record_short">Zapisuj postęp na tym urządzeniu</string>
   <string name="morphe_series_tracker_follow_consent">"Twoje serie i postęp pozostają na tym urządzeniu i są współdzielone między kontami YouTube. Ustawienia historii YouTube ich nie zmieniają. Postęp możesz wyczyścić w menu \"Serie\".
 
-​Automatyczne zapisywanie jest opcjonalne. Zatrzymuje się w trybie incognito lub po zmianie konta."</string>
+​Automatyczne zapisywanie jest opcjonalne. Zatrzymuje się w trybie incognito lub po zmianie konta"</string>
   <string name="morphe_series_tracker_follow_unavailable">Nie udało się wczytać odcinków. Możesz zapisać playlistę jako zakładkę</string>
   <string name="morphe_series_tracker_error_pending_full">Zbyt wiele niezapisanych zmian. Najpierw ponów zapisywanie</string>
   <string name="morphe_series_tracker_error_storage_busy">Trwa zapisywanie. Spróbuj ponownie</string>
@@ -1482,36 +1492,34 @@ Ograniczenie: Przywraca stary wygląd nakładki \"Więcej filmów\""</string>
   <string name="morphe_series_tracker_episode_order">Kolejność odcinków</string>
   <string name="morphe_series_tracker_playlist_order">Kolejność z playlisty</string>
   <string name="morphe_series_tracker_reverse_order">Odwrócona kolejność z playlisty</string>
-  <string name="morphe_series_tracker_view_count_large">%1$s wyświetleń</string>
   <string name="morphe_series_tracker_view_count">%1$s wyświetleń</string>
   <string name="morphe_series_tracker_view_count_one">%1$s wyświetlenie</string>
   <string name="morphe_series_tracker_completion_title">Oznaczaj odcinki jako obejrzane</string>
-  <string name="morphe_series_tracker_completion_summary">Obejrzano co najmniej %1$d%% i zostało najwyżej 90 sekund lub gdy do końca zostało %2$d sek.</string>
-  <string name="morphe_series_tracker_completion_explanation">Automatycznie oznacza odcinek jako obejrzany po przekroczeniu dowolnego z tych progów. Reguła procentowa wymaga również, aby do końca pozostało nie więcej niż 90 sekund, dzięki czemu końcówki długich odcinków nie są pomijane. Reguła pozostałego czasu dotyczy filmów dłuższych niż minuta. Ustaw ją na 0, aby ją wyłączyć. Zmiany mają zastosowanie do przyszłych aktualizacji postępu. Ręczne oznaczenia odcinków jako obejrzane lub nieobejrzane zostają zachowane.</string>
+  <string name="morphe_series_tracker_completion_summary">Obejrzano co najmniej %1$s%% i zostało najwyżej 90 sekund lub gdy do końca zostało %2$s sek.</string>
+  <string name="morphe_series_tracker_completion_explanation">Automatycznie oznacza odcinek jako obejrzany po przekroczeniu dowolnego z tych progów. Reguła procentowa wymaga również, aby do końca pozostało nie więcej niż 90 sekund, dzięki czemu końcówki długich odcinków nie są pomijane. Reguła pozostałego czasu dotyczy filmów dłuższych niż minuta. Ustaw ją na 0, aby ją wyłączyć. Zmiany mają zastosowanie do przyszłych aktualizacji postępu. Ręczne oznaczenia odcinków jako obejrzane lub nieobejrzane zostają zachowane</string>
   <string name="morphe_series_tracker_completion_percent">Obejrzany procent (1-100)</string>
   <string name="morphe_series_tracker_completion_seconds">Pozostałe sekundy (0-300, 0 wyłącza)</string>
-  <string name="morphe_series_tracker_completion_save">Zapisz</string>
-  <string name="morphe_series_tracker_completion_range">Wprowadź wartość od %1$d do %2$d</string>
+  <string name="morphe_series_tracker_completion_range">Wprowadź wartość od %1$s do %2$s</string>
   <string name="morphe_series_tracker_youtube_progress_title">Używaj postępu z YouTube</string>
   <string name="morphe_series_tracker_youtube_progress_summary">Wznawiaj obserwowane serie po oglądaniu na innym urządzeniu</string>
-  <string name="morphe_series_tracker_sync_consent">Odczytuj status obejrzenia i punkty wznawiania obserwowanych serii z bieżącego konta YouTube. Na tym urządzeniu zapisywane są tylko pasujące odcinki. Sprawdzanie odbywa się, gdy biblioteka serii jest otwarta oraz przed użyciem przycisku \"Kontynuuj\". Na drugim urządzeniu musi być włączona historia YouTube.</string>
+  <string name="morphe_series_tracker_sync_consent">Odczytuj status obejrzenia i punkty wznawiania obserwowanych serii z bieżącego konta YouTube. Na tym urządzeniu zapisywane są tylko pasujące odcinki. Sprawdzanie odbywa się, gdy biblioteka serii jest otwarta oraz przed użyciem przycisku \"Kontynuuj\". Na drugim urządzeniu musi być włączona historia YouTube</string>
   <string name="morphe_series_tracker_sync_checking">Sprawdzanie postępu w YouTube…</string>
   <string name="morphe_series_tracker_sync_failed">Postęp z YouTube jest niedostępny. Użyto zapisanego postępu</string>
   <string name="morphe_series_tracker_sync_partial">Część postępu z YouTube jest niedostępna. Zachowano zapisane pozycje</string>
   <string name="morphe_series_tracker_backup_title">Kopia zapasowa i przywracanie</string>
   <string name="morphe_series_tracker_backup_summary">Zapisz bibliotekę serii do pliku lub przywróć kopię zapasową</string>
-  <string name="morphe_series_tracker_backup_explanation">Zapisuje obserwowane serie, pozycje w odcinkach oraz oznaczenia obejrzanych filmów. Zgody na zapisywanie postępu i pobieranie go z YouTube nie są uwzględniane.</string>
+  <string name="morphe_series_tracker_backup_explanation">Zapisuje obserwowane serie, pozycje w odcinkach oraz oznaczenia obejrzanych filmów. Zgody na zapisywanie postępu i pobieranie go z YouTube nie są uwzględniane</string>
   <string name="morphe_series_tracker_backup_save">Zapisz kopię zapasową</string>
   <string name="morphe_series_tracker_backup_restore">Przywróć kopię zapasową</string>
-  <string name="morphe_series_tracker_backup_preview">Dodaj %1$d serie. %2$d serii już znajdujących się w bibliotece zostaną zachowane. Istniejący postęp oglądania zostanie zachowany</string>
+  <string name="morphe_series_tracker_backup_preview">Dodaj %1$s serie. %2$s serii już znajdujących się w bibliotece zostaną zachowane. Istniejący postęp oglądania zostanie zachowany</string>
   <string name="morphe_series_tracker_backup_saved">Zapisano kopię zapasową serii</string>
-  <string name="morphe_series_tracker_backup_restored">Przywrócono %1$d serii</string>
+  <string name="morphe_series_tracker_backup_restored">Przywrócono %1$s serii</string>
   <string name="morphe_series_tracker_error_backup_invalid">Ten plik nie jest obsługiwaną kopią zapasową serii lub jest zbyt duży. Twoja biblioteka nie została zmieniona</string>
   <string name="morphe_series_tracker_error_backup_write">Nie udało się zapisać kopii zapasowej. Wybierz inną lokalizację</string>
   <string name="morphe_series_tracker_removed">Usunięto serię</string>
   <string name="morphe_series_tracker_recovery_duplicate">Ten odcinek występuje teraz więcej niż raz. Wybierz, od którego chcesz kontynuować</string>
   <string name="morphe_series_tracker_recovery_missing">Twojego zapisanego odcinka nie ma już na tej playliście. Zapisana pozycja została zachowana</string>
-  <string name="morphe_series_tracker_recovery_continue">Kontynuuj od odcinka %1$d · %2$s</string>
+  <string name="morphe_series_tracker_recovery_continue">Kontynuuj od odcinka %1$s · %2$s</string>
   <string name="morphe_series_tracker_recovery_choose">Możesz też wybrać dowolny odcinek poniżej. Wcześniejsze odcinki nie zostaną zmienione</string>
   <string name="morphe_series_tracker_playback_changed">Ta playlista uległa zmianie. Otwórz serię, aby wybrać miejsce wznowienia</string>
   <string name="morphe_series_tracker_playback_boundary">Brak kolejnych odcinków w tym kierunku</string>

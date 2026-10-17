@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">显示二维码</string>
   <string name="morphe_music_jam_done">完成</string>
   <string name="morphe_music_jam_invite_title">邀请加入你的 Jam</string>
-  <string name="morphe_music_jam_invite_message">扫码加入并编辑此队列。结束 Jam 将撤销邀请。</string>
+  <string name="morphe_music_jam_invite_message">扫描以加入并编辑此队列。结束 Jam 活动将撤销邀请</string>
   <string name="morphe_music_jam_copy_link">复制链接</string>
   <string name="morphe_music_jam_invitation_clip">Jam 邀请</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam 正在重新连接，请稍后重试。</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">正在更新 Jam…</string>
   <string name="morphe_music_jam_finding_host">正在通过 Wi-Fi 查找你的主机…</string>
   <string name="morphe_music_jam_waiting_people">正在等待其他人加入</string>
-  <string name="morphe_music_jam_one_connected">%d 人已连接</string>
-  <string name="morphe_music_jam_many_connected">%d 人已连接</string>
-  <string name="morphe_music_jam_code_expires">在附近的设备上输入此代码。Wi-Fi Aware 在支持的情况下可跨不同的局域网工作。代码将在 %d 分钟后过期。</string>
+  <string name="morphe_music_jam_one_connected">%s 人连接</string>
+  <string name="morphe_music_jam_many_connected">%s 人连接</string>
+  <string name="morphe_music_jam_code_expires">在近旁设备输入此代码。Wi-Fi Aware 在支持时跨独立 LAN 工作。%s 分钟后过期</string>
   <string name="morphe_music_jam_seek_to">要跳转到 %s 吗？</string>
   <string name="morphe_music_jam_edits_open">编辑已开启</string>
   <string name="morphe_music_jam_edits_locked">编辑已锁定</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Jam 期间不支持</string>
   <string name="morphe_music_jam_cancelled">已取消加入</string>
   <string name="morphe_music_jam_reconnecting_host">正在重新连接到你的主机…</string>
-  <string name="morphe_music_jam_share_prompt">共享一个队列，让每个人都能添加歌曲。</string>
+  <string name="morphe_music_jam_share_prompt">共享队列。让所有人添加歌曲</string>
   <string name="morphe_music_jam_invite_people">邀请他人</string>
   <string name="morphe_music_jam_guest_edits">访客可以编辑队列</string>
   <string name="morphe_music_jam_end_jam">结束 Jam</string>
-  <string name="morphe_music_jam_participant_help">主机播放音乐。可以直接在 YouTube Music 队列中添加、移动或移除歌曲。</string>
-  <string name="morphe_music_jam_joining_help">让两台设备保持靠近。在查找主机时，你可以取消。</string>
+  <string name="morphe_music_jam_participant_help">主持人播放音乐。直接在 YouTube Music 队列中添加、移动或删除歌曲</string>
+  <string name="morphe_music_jam_joining_help">保持两个设备靠近。我们正在查找主机时，您可以取消</string>
   <string name="morphe_music_jam_cancel_joining">取消加入</string>
   <string name="morphe_music_jam_leave_jam">离开 Jam</string>
   <string name="morphe_music_jam_start_jam">开始 Jam</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">使用您选择的外部下载器代替系统默认的「下载」弹出菜单</string>
   <string name="morphe_music_in_app_downloads_title">在应用内下载</string>
   <string name="morphe_music_in_app_downloads_summary">在 YouTube Music 内下载音频，而不是打开外部下载应用</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"曲目保存在应用的私有存储中，如果卸载 YouTube Music，这些曲目将被删除。
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"曲目保存于应用的私有存储中，如果卸载 YouTube Music，这些曲目将被删除。
 
-开启此选项后，“下载”标签页将列出这些曲目，而不是 Music Premium 离线曲库。关闭此选项可恢复该标签页，Premium 下载内容绝不会受到影响。"</string>
+开启此功能后，下载标签页将列出这些曲目，而不是 Music Premium 离线库。关闭它将恢复该标签页，且绝不会触碰 Premium 下载内容"</string>
   <string name="morphe_music_downloads_screen_title">下载</string>
   <string name="morphe_music_downloads_empty">"没有下载
 下载的曲目将显示在此处"</string>
@@ -445,7 +445,7 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">自定义正则表达式清理</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">输入自定义正则表达式以移除歌曲标题、艺术家或专辑中的额外文本。例如：(?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">解析标题中的艺术家和曲目</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">使用 \" - \" 分隔符从视频标题中提取艺术家和曲目名称。对于重新上传的内容，当频道名称可用作艺术家时，此功能很有用。</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">使用 \" - \" 分隔符从视频标题中提取艺术家和曲目名称。对于可能将频道名称用作艺术家名的重新上传内容很有用</string>
   <string name="morphe_music_scrobbling_guess_album_title">补全缺失的专辑</string>
   <string name="morphe_music_scrobbling_guess_album_summary">当音乐不包含专辑时，请在 Last.fm 上查询，以便你的 scrobble 完整。</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_section_service_title">歌词服务</string>
   <string name="morphe_music_lyrics_section_overlay_title">叠加层</string>
   <string name="morphe_music_lyrics_section_sync_title">同步</string>
-  <string name="morphe_music_lyrics_source_all_disabled">所有提供程序均已禁用 — 内置歌词与内嵌歌词</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI 端点</string>
+  <string name="morphe_music_lyrics_source_all_disabled">所有提供商已禁用——内置歌词和嵌入式歌词</string>
   <string name="morphe_music_lyrics_source_reset_title">重置提供程序顺序？</string>
   <string name="morphe_music_lyrics_source_reset_message">将提供程序恢复为默认优先级顺序</string>
   <string name="morphe_music_token_dialog_get_token">获取令牌</string>
@@ -473,7 +474,7 @@ SABR 播放（模拟视频流已关闭）"</string>
 3. 复制 \"media-user-token\" 的值"</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music：media-user-token 已保存</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music：media-user-token 已清除</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music：media-user-token 无效——请检查后重试</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music：无效媒体用户令牌 - 请检查并重试</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"粘贴来自 Spotify 的 sp_dc cookie。
 
@@ -483,7 +484,7 @@ SABR 播放（模拟视频流已关闭）"</string>
 3. 复制 \"sp_dc\" 的值"</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify：sp_dc 已保存</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify：sp_dc 已清除</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify：sp_dc 无效——请检查后重试</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify：无效 sp_dc - 请检查并重试</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music 令牌是可选的。没有它时，将使用 Lyrically 作为后备方案。</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"粘贴来自 Deezer 的 arl cookie。
@@ -494,14 +495,14 @@ SABR 播放（模拟视频流已关闭）"</string>
 3. 复制 \"arl\" 的值"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer：arl 已保存</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl 已清除</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer：arl 无效——请检查后重试</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer：无效 arl - 请检查并重试</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch 令牌</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">仅当使用您自己的帐户时才添加令牌。它必须来自 Musixmatch Android 应用：从 musixmatch.com 复制的令牌属于已停用的桌面客户端，API 会拒绝它们</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch 无需令牌即可使用，因此此字段可以留空</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">用户令牌</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch：用户 token 已保存</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch：用户 token 已清除</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch：用户 token 无效——请检查后重试</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch：无效用户令牌 - 请检查并重试</string>
   <string name="morphe_music_youtube_cookies_title">YouTube Cookie</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"粘贴你的 YouTube Cookie，以从 YouTube 查询字幕和时间文本。
 
@@ -513,7 +514,7 @@ SABR 播放（模拟视频流已关闭）"</string>
 所需 Cookie：SID、HSID、SSID、SAPISID、__Secure-3PAPISID、__Secure-1PAPISID、LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube：Cookie 已保存</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube：Cookie 已清除</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube：Cookie 无效 — 请检查后重试</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube：无效 Cookie - 请检查并重试</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">点击歌词行以跳转</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">点击一行将跳到歌曲的该时刻</string>
   <string name="morphe_music_lyrics_show_section_title">显示段落标签</string>
@@ -524,6 +525,12 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">点按以切换翻译；长按仅翻译。使用提供方翻译、Google 翻译或兼容 OpenAI 的 API</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">显示音译按钮</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">点按以切换罗马音；长按仅显示罗马音。使用提供方罗马音、Google 翻译或兼容 OpenAI 的 API</string>
+  <string name="morphe_music_lyrics_local_romanization_title">本地罗马化</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">当提供程序、OpenAI 兼容端点和 Google Translate 均失败时，在设备上执行罗马化。仅限 CJK，需下载约 80 MB 的阅读内容。</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">阅读 %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">阅读准备就绪（%1$d 个 CJK 词汇）</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">下载失败 — 关闭后重新开启以重试</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">显示刷新按钮</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">点按可切换到下一个歌词候选；长按可按歌曲标题和歌手搜索歌词</string>
   <string name="morphe_music_lyrics_search_dialog_title">搜索歌词</string>
@@ -534,6 +541,8 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_saved">已保存</string>
   <string name="morphe_music_lyrics_word_sync_title">高亮显示同步的单词或音节</string>
   <string name="morphe_music_lyrics_word_sync_summary">优先考虑可用逐字歌词。当歌词带有时间标志，随着音乐及时高亮每个单词或音节</string>
+  <string name="morphe_music_lyrics_split_background_title">单独显示背景人声</string>
+  <string name="morphe_music_lyrics_split_background_summary">将写在括号中的背景人声（如“(Oh) I want you”）从演唱行中分离出来，形成独立的弱音行</string>
   <string name="morphe_music_lyrics_hide_played_title">隐藏已播歌词</string>
   <string name="morphe_music_lyrics_hide_played_summary">隐藏当前播放行之上的歌词行</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">隐藏未播歌词</string>
@@ -558,25 +567,47 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_sb_no_video">此曲目没有可提交的视频 id</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">来源：%s</string>
+  <string name="morphe_music_lyrics_contribute_credit">长按复制按钮以保存此 LRC；如果您能微调时间轴并与社区提供者分享，我们将不胜感激。</string>
   <string name="morphe_music_lyrics_translated_by_google">由 Google 翻译</string>
   <string name="morphe_music_lyrics_romanized_by_google">由 Google 提供音译</string>
   <string name="morphe_music_lyrics_translated_by_ai">由 %s 翻译</string>
   <string name="morphe_music_lyrics_romanized_by_ai">由 %s 音译</string>
+  <string name="morphe_music_lyrics_romanized_by_local">由 %s 罗马化</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">翻译</string>
   <string name="morphe_music_lyrics_translation_language_title">翻译目标语言</string>
+  <string name="morphe_music_lyrics_romanize_language_title">罗马化语言</string>
   <string name="morphe_music_lyrics_translating">正在翻译…</string>
   <string name="morphe_music_lyrics_translate_failed">无法翻译歌词</string>
   <string name="morphe_music_lyrics_romanize_hide">已音译</string>
+  <string name="morphe_romanize_language_DEFAULT">自动</string>
   <string name="morphe_music_lyrics_romanizing">正在音译…</string>
   <string name="morphe_music_lyrics_romanize_failed">无法为歌词生成音译</string>
   <string name="morphe_music_lyrics_translate_only">仅翻译</string>
   <string name="morphe_music_lyrics_romanize_only">仅罗马音</string>
+  <string name="morphe_music_lyrics_dual_only">双模式</string>
   <string name="morphe_music_lyrics_copied">复制到剪贴板</string>
   <string name="morphe_music_lyrics_refreshing">正在刷新</string>
   <string name="morphe_music_lyrics_refreshed">已刷新</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API 密钥</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC 为当前曲目转录或对齐歌词。这是一项独立的服务，与上述 OpenAI 兼容端点无关。</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">已保存 QuickLRC 密钥。使用歌词搜索对话框中的对齐按钮，或在没有歌词的曲目面板提示时使用。</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API 密钥已保存</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC 不接受该密钥</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API 密钥已清除</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC 为没有歌词的曲目设置时间轴，或从曲目中转录，这将消耗积分。设置密钥后，没有歌词的曲目会提供转录功能，并且搜索对话框会增加一个对齐按钮。</string>
+  <string name="morphe_music_lyrics_transcribe_align">请求 QuickLRC 对齐</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">对齐中</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">应用对齐</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">请求 QuickLRC 转录</string>
+  <string name="morphe_music_lyrics_transcribe_working">转录中</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">转录已取消</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">仅可从 YouTube 播放的曲目才能进行转录</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">无可对齐的歌词 — 改为进行转录</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC 无法处理此曲目</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">此曲目的 QuickLRC 积分已用完</string>
   <string name="morphe_music_lyrics_about_summary">"歌词根据标题和艺术家进行匹配，异常的元数据可能导致找不到结果或匹配到错误的版本。使用刷新以切换版本。标有 * 的提供程序需要令牌。并非所有已启用的提供程序都会按您的顺序被请求，而是根据其速度进行响应。"</string>
-  <string name="morphe_music_lyrics_source_advice_summary">只启用你使用的提供方，或保持默认——持续请求可能会压垮小型社区歌词网站</string>
+  <string name="morphe_music_lyrics_source_advice_summary">仅启用您使用的提供者，或保留默认值 - 频繁请求可能会压垮小型社区歌词网站</string>
   <string name="morphe_music_lyrics_hide_info_title">隐藏署名行</string>
   <string name="morphe_music_lyrics_hide_info_summary">隐藏显示在歌词下方的署名行</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交换翻译和音译</string>
@@ -589,17 +620,17 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI 段落识别</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">仅在提供商未发送如副歌或主歌等段落标签，且由您的 OpenAI 兼容模型检测到时使用</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI 设置</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">配置 OpenAI 兼容的 API 端点，用于 AI 驱动的歌词翻译、罗马化和段落识别。</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">配置用于 AI 驱动歌词翻译、罗马化和分段的 OpenAI 兼容 API 端点。</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 端点 URL（例如 https://text.pollinations.ai/openai）</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API 密钥（留空以匿名访问）</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">模型名称（例如 openai-fast、gpt-4o-mini）</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">提示词模板</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">占位符：{language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">提示词模板</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">提示词已保存</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">提示已保存，但 AI 端点尚不可用。请先在 AI 设置中进行配置。</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">提示词已重置</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI 设置已保存</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">无法连接到 AI 端点。请检查您的设置。</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">无法连接到 AI 端点。请检查您的设置</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI 设置已重置</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">模型 %1$s 已配置</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">基础 URL 不能为空</string>

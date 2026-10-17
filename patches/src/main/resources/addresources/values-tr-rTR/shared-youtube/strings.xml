@@ -83,7 +83,7 @@ Simgeyi her yerde değiştirmek için uygulamayı tekrar yamalayın ve 'Uygulama
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirimi</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">İzleme geçmişiniz kaydedilmiyor.&lt;br&gt;&lt;br&gt;Bu büyük ihtimalle bir reklam engelleyici DNS\'den veya proxy\'den kaynaklanıyor.&lt;br&gt;&lt;br&gt;Bunu düzeltmek için, &lt;b&gt;s.youtube.com&lt;/b&gt; adresini beyaz listeye ekleyin veya bütün engelleyici DNSleri ve proxy\'leri kapatın.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">İzleme geçmişiniz kaydedilmiyor.&lt;br&gt;&lt;br&gt;Bu büyük ihtimalle bir reklam engelleyici DNS\'den veya proxy\'den kaynaklanıyor.&lt;br&gt;&lt;br&gt;Bunu düzeltmek için, &lt;b&gt;s.youtube.com&lt;/b&gt; adresini beyaz listeye ekleyin veya bütün engelleyici DNSleri ve proxy\'leri kapatın</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Bir daha gösterme</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video akışlarını taklit et</string>
@@ -98,7 +98,7 @@ YouTube Premium kullanıcısıysanız, bu ayar gerekli olmayabilir"</string>
 
 %2$s varsayılan istemci yapılsın mı?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Değiştir</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Bu ayarı devre dışı bırakmak oynatma sorunlarına yol açabilir.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Bu ayarı devre dışı bırakmak oynatma sorunlarına yol açabilir</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Şunu etkinleştirmeyi dene: Video akışlarını taklit et &gt; Android VR oturum açma</string>
@@ -133,7 +133,7 @@ Oturum açmak için, devam et butonuna basın."</string>
 • Google şifrenizi değiştirirseniz veya bu cihazı Google ayarlarınızdan kaldırırsanız tekrar oturum açmanız gerekir"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 geçici olarak kullanılamıyor (API zaman aşımına uğradı)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR oturum süresi doldu, VR\'da tekrar oturum açmayı deneyin</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 geçici olarak kullanılamıyor (durum %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 geçici olarak kullanılamıyor (durum %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 geçici olarak kullanılamıyor</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR oturumu açılamadı, web sitesi kimlik doğrulaması onaylanmadı</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR oturumu açılamadı: %s</string>
@@ -196,7 +196,7 @@ Oturum açmak için, devam et butonuna basın."</string>
 
 Bu, özel filtreler oluştururken bileşenleri tanımlamaya yardımcı olabilir.
 
-Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini de günlüğe kaydeder."</string>
+Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini de günlüğe kaydeder"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Özel filtre</string>
   <string name="morphe_custom_filter_screen_summary">Herhangi bir bileşeni gizlemek için özel filtreleri yapılandırın</string>
@@ -237,11 +237,11 @@ Oynatmayı düzeltmek için 'Video akışlarını taklit et' seçeneğini aç."<
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Uygulama sürümünü taklit et</string>
   <string name="morphe_spoof_app_version_summary">Sunucuya daha eski bir uygulama sürümü kullandığınızı düşündürerek eski arayüz özelliklerini geri yükler</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Uygulama sürümü, daha eski bir sürüme taklit edilecektir.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Uygulama sürümü, daha eski bir sürüm gibi gösterilecektir.
 
-Bu, uygulamanın görünümünü ve özelliklerini değiştirecektir, ancak bilinmeyen yan etkiler ortaya çıkabilir.
+Bu işlem uygulamanın görünümünü ve özelliklerini değiştirecektir; ancak öngörülemeyen yan etkiler ortaya çıkabilir.
 
-Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerinin temizlenmesi önerilir."</string>
+Daha sonra bu özellik kapatılırsa, arayüz hatalarını önlemek için uygulama verilerinin temizlenmesi önerilir."</string>
   <string name="morphe_spoof_app_version_target_title">Hedef uygulama sürümü taklidi</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Uygulama yenileme hızı</string>
@@ -264,7 +264,7 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Beğenmeme sayıları geçici olarak kullanılamıyor (API zaman aşımına uğradı)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Beğenilmemeler kullanılamıyor (durum %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Beğenilmemeler kullanılamıyor (durum %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Beğenilmemeler kullanılamıyor (istemci API sınırı)</string>
   <string name="morphe_ryd_failure_generic">Beğenilmemeler kullanılamıyor (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -290,12 +290,12 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Beğenmeme sayıları geçici olarak kullanılamıyor - İstemci API hız sınırı yürürlükte</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API\'den oy isteme çağrısı sayısı</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Hiç çağrı yapılmadı</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d ağ çağrısı yapıldı</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s ağ çağrısı yapıldı</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API oylarını getirme, zaman aşımı sayısı</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Hiçbir ağ çağrısı zaman aşımına uğramadı</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d ağ çağrısı zaman aşımına uğradı</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s ağ çağrısı zaman aşımına uğradı</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API istemci hız sınırları</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Hiçbir istemci hız sınırıyla karşılaşılmadı</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">İstemci hız sınırıyla %d kez karşılaşıldı</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d milisaniye</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">İstemci hız sınırı %s kez aşıldı</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milisaniye</string>
 </resources>

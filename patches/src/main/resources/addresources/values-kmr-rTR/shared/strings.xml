@@ -24,13 +24,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Reng saz bike</string>
   <string name="morphe_settings_color_invalid">Reng nebaş</string>
   <string name="morphe_settings_restart_title">Nûtin hewce ye</string>
-  <string name="morphe_settings_restart_dialog_message">Ji bo pêşxistina ev biguhere, sepanê nûtinê bike.</string>
   <string name="morphe_settings_restart">Nûtinê bike</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importe kirin</string>
   <string name="morphe_settings_import_copy">Nuşînekiye</string>
   <string name="morphe_settings_import_reset">Sazkarên Morphe pêşdizitin</string>
-  <string name="morphe_settings_import_success">%d sazkar hatin imported kirin</string>
   <string name="morphe_settings_import_failure_parse">Importe kirin ne serket: %s</string>
   <string name="morphe_settings_search_hint">Dizimên sazkarê bigere</string>
   <string name="morphe_settings_screen_info_title">Derbarê</string>
@@ -92,9 +90,6 @@ Da ku zimanên nû wergerînin an wergerandinên hebin baş bikin, malpera morph
   <string name="morphe_debug_stacktrace_title">Rêveşeke logsê debug</string>
   <string name="morphe_debug_stacktrace_summary">Hêlanîna şopên pelan di tomarên teşhîsê de da ku alîkariya dîtina xeletiyan bike</string>
   <string name="morphe_debug_toast_on_error_title">Qextinê li toastê ser Morphe error</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Qextinê ava toastê dixebite gelî ser bibe ê qextinê li hemû qextinê têvene.
-
-Tu nedaî belav bibe de kû dabeş bendê neqezbîn."</string>
   <string name="morphe_debug_export_logs_title">Rapora logên çepkirinê</string>
   <string name="morphe_debug_export_logs_summary">Logs debug ên Morphe vekişîne</string>
   <string name="morphe_debug_export_logs_success">Logs debug bi serketî hatin vekirin</string>
@@ -128,20 +123,9 @@ Tu nedaî belav bibe de kû dabeş bendê neqezbîn."</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Sazîna MicroG veke</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG saz nebûye. Ewan saz bike.</string>
   <string name="gms_core_dialog_title">Çawa kirin heye</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG rê neçebîne ku di navpeyivê de bixebite.
-
-Lê pêşniyarên “Nesazîna sepanê min” ji bo telefona we bişîne, û rêznameyên xwe bi sazîna MicroG re bicûlê. 
-
-Ev ji bo xebata sepanê pêwist e."</string>
   <string name="gms_core_dialog_open_website_text">Malper veke</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimîzasyonên bateriyê MicroG divin quteyn kirin da ku kêmbûriyan pêşî bînin.
-
-Quteyîn optimîzasyonên bateriyê ji bo MicroG bê bandora berhetiyê li ser karanîna bateriyê nabe. 
-
-Serzêviya pêşveçûna din bitşikîne û guherînên optimîzasyonê pêşî bînin."</string>
   <string name="gms_core_dialog_continue_text">Bidomîne</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Nîşanîya dîyaloga çêkirina hestiyariya pîlê ya MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Birçawiya vê, dê ragirinê MicroG optimîzasyona bateriyê veşêre.

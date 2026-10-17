@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">레이아웃</string>
   <string name="morphe_copy_text_title">텍스트 복사하기</string>
   <string name="morphe_copy_text_summary">게시물과 댓글에서 텍스트를 선택하고 복사할 수 있습니다. 댓글 접기를 비활성화합니다</string>
-  <string name="morphe_copy_text_user_dialog_message">텍스트 복사가 사용 설정된 동안에는 댓글 접기가 작동하지 않습니다.</string>
+  <string name="morphe_copy_text_user_dialog_message">\'텍스트 복사하기\'가 활성화되어 있는 동안에는 댓글 접기가 작동하지 않습니다</string>
   <string name="morphe_custom_font_title">사용자 정의 글꼴</string>
   <string name="morphe_custom_font_summary">아래 경로에 있는 사용자 정의 TTF 또는 OTF 글꼴 파일을 불러옵니다. 이 옵션을 활성화하면 \'시스템 글꼴 강제 사용\'이 자동으로 비활성화됩니다</string>
   <string name="morphe_custom_font_file_path_title">사용자 정의 글꼴 파일</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">피드 및 검색 추천에서 \'인기 급상승 중\' 선반을 숨깁니다</string>
   <string name="morphe_remove_notification_dialog_title">알림 제안 대화 상자 제거하기</string>
   <string name="morphe_remove_notification_dialog_summary">서브레딧 방문 시 나타나는 알림 제안 대화 상자를 자동으로 닫습니다</string>
+  <string name="morphe_show_flairs_in_home_feed_title">홈 피드에서 분류 태그 배지 표시하기</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">홈 피드에 게시글 분류 태그 배지를 표시합니다</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">일부 피드 항목에는 분류 태그 배지가 표시되지 않을 수 있습니다</string>
   <string name="morphe_show_view_count_title">게시물에서 조회수 표시하기</string>
   <string name="morphe_show_view_count_summary">제한 사항: API 응답에 조회수가 포함된 경우에만 사용할 수 있습니다</string>
   <string name="morphe_flip_post_action_bar_title">게시물 액션바 뒤집기</string>

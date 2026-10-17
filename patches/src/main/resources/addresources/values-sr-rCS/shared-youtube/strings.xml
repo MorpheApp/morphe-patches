@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Unesite naziv paketa</string>
   <string name="morphe_external_downloader_other_item">Ostalo</string>
   <string name="morphe_external_downloader_not_found_title">Aplikacija nije instalirana</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s nije instalirana. Molimo vas da je instalirate.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s nije instaliran. Molimo vas da ga instalirate</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Nije pronađena instalirana aplikacija sa nazivom paketa: %s
 
 Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</string>
@@ -84,7 +84,7 @@ Da biste promenili ikonu svuda, ponovo izvršite patch i promenite opciju patch-
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe pleј</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe obaveštenje</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša istorija gledanja se ne čuva.&lt;br&gt;&lt;br&gt;Ovo je najverovatnije uzrokovano DNS blokatorom oglasa ili mrežnim proksijem.&lt;br&gt;&lt;br&gt;Da biste ovo popravili, stavite na belu listu &lt;b&gt;s.youtube.com&lt;/b&gt; ili isključite sve DNS blokatore i proksije.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša istorija gledanja se ne čuva.&lt;br&gt;&lt;br&gt;Ovo je najverovatnije uzrokovano DNS blokatorom oglasa ili mrežnim proksijem.&lt;br&gt;&lt;br&gt;Da biste ovo popravili, stavite na belu listu &lt;b&gt;s.youtube.com&lt;/b&gt; ili isključite sve DNS blokatore i proksije</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj ponovo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Lažirani video strimovi</string>
@@ -99,7 +99,7 @@ Da biste promenili ikonu svuda, ponovo izvršite patch i promenite opciju patch-
 
 Postavi %2$s kao podrazumevani klijent?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Prebaci</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Isključivanje ovog podešavanja može izazvati probleme sa reprodukcijom.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Isključivanje ovog podešavanja može izazvati probleme sa reprodukcijom</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Pokušaj da uključiš: Fali video strame > Prijava na Android VR</string>
@@ -134,7 +134,7 @@ Da bi se prijavili, pritisnite nastavi ispod"</string>
 • Ako promijenite lozinku za Google ili uklonite ovaj uređaj iz postavki Google, trebate ponovno prijaviti"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 privremeno nije dostupan (API istekao)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Prijavljivanje na Android VR je isteklo, pokušajte ponovo da se prijavite na VR</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 privremeno nije dostupan (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 privremeno nije dostupan (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 privremeno nije dostupan</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nije moguće se prijaviti na VR, web autentifikacija nije odobrena</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ne mogu se prijaviti na VR: %s</string>
@@ -197,7 +197,7 @@ Da bi se prijavili, pritisnite nastavi ispod"</string>
 
 Ovo može pomoći u identifikaciji komponenti prilikom pravljenja prilagođenih filtera.
 
-Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke, kao što je vaša IP adresa."</string>
+Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke, kao što je vaša IP adresa"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Prilagođeni filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurišite prilagođene filtere da sakrijete bilo koju komponentu</string>
@@ -237,11 +237,11 @@ Uključi „Lažiranje video strimova“ da bi se reprodukcija popravila"</strin
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Lažirana verzija aplikacije</string>
   <string name="morphe_spoof_app_version_summary">Prevarite server da misli da koristite stariju verziju aplikacije kako biste vratili funkcije starijeg korisničkog interfejsa</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Verzija aplikacije će biti lažirana na stariju verziju.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Verzija aplikacije će biti simulirana na stariju verziju.
 
-Ovo će promeniti izgled i funkcije aplikacije, ali se mogu pojaviti i nepoznati neželjeni efekti.
+Ovo će promeniti izgled i funkcije aplikacije, ali se mogu pojaviti nepoznati nusproizvodi.
 
-Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da biste sprečili greške u korisničkom interfejsu."</string>
+Ako se kasnije isključi, preporučuje se brisanje podataka aplikacije kako bi se sprečile greške u korisničkom interfejsu"</string>
   <string name="morphe_spoof_app_version_target_title">Ciljna verzija aplikacije za lažiranje</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Brzina osvežavanja aplikacije</string>
@@ -264,7 +264,7 @@ Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da bi
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Nesviđanja su privremeno nedostupna (API isteklo vreme)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Nesviđanja nisu dostupna (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Nesviđanja nisu dostupna (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Nesviđanja nisu dostupna (ograničenje klijenta API-ja)</string>
   <string name="morphe_ryd_failure_generic">Nesviđanja nisu dostupna (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -290,12 +290,12 @@ ID video zapisa koji gledate šalje se Return YouTube Dislike API-ju, a vaši la
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Nesviđanja su privremeno nedostupna - Dostižno je ograničenje brzine API-ja klijenta</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API prikupljanje glasova, broj poziva</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nije ostvaren nijedan mrežni poziv</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d mrežnih poziva izvršeno</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Napravljeno je %s mrežnih poziva</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API prikupljanje glasova, broj vremenskih ograničenja</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Nijedan mrežni poziv nije istekao</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d mrežnih poziva je isteklo</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Vreme za %s mrežnih poziva je isteklo</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Ograničenja brzine API-ja klijenta</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nije naišlo na ograničenja brzine klijenta</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Ograničenje brzine klijenta naišlo %d puta</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d milisekundi</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Suočeni smo sa limitom brzine klijenta %s puta</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milisekundi</string>
 </resources>

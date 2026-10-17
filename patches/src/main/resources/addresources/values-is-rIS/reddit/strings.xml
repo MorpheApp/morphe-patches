@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Útlaga</string>
   <string name="morphe_copy_text_title">Afrita texta</string>
   <string name="morphe_copy_text_summary">Leyfir að velja og afrita texta í færslum og athugasemdum. Gerir samanbrot athugasemda óvirkt</string>
-  <string name="morphe_copy_text_user_dialog_message">Að fella saman athugasemdir mun hætta að virka meðan afritun texta er virk.</string>
+  <string name="morphe_copy_text_user_dialog_message">Samdráttarmæskur munu hætta að virka á meðan Afrita texta er virkt</string>
   <string name="morphe_custom_font_title">Sérsniðin leturstíll</string>
   <string name="morphe_custom_font_summary">Hlaðið sérsniðinni TTF eða OTF leturskriftarskránni frá slóðinni hér að neðan. Ef þetta er virkt þá er einnig lokað því að nota kerfont</string>
   <string name="morphe_custom_font_file_path_title">Sérsniðin leturstíllarskrá</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Felur Trending hillirnir úr fóræði og leitarsuggestions</string>
   <string name="morphe_remove_notification_dialog_title">Fjarlægja tilkynningartillögu gluggann</string>
   <string name="morphe_remove_notification_dialog_summary">Fjarlægir sjálfkrafa tilkynningartillögu gluggann þegar heimsótt er undirredditt</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Sýna merkjum í heimasíðufé</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Sýnir póstar merkjamenskur í heimasíðufé</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Sumar færuhlutar gætu ekki sýnt merki</string>
   <string name="morphe_show_view_count_title">Sýna skoðanir á færslum</string>
   <string name="morphe_show_view_count_summary">Takmörkun: Aðeins fáanlegt ef API svarið inniheldur skoðanir</string>
   <string name="morphe_flip_post_action_bar_title">Snúa aðgerðastiku færslna við</string>

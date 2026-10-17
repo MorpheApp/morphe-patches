@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">Wys QR</string>
   <string name="morphe_music_jam_done">Klaar</string>
   <string name="morphe_music_jam_invite_title">Nooi na jou Jam</string>
-  <string name="morphe_music_jam_invite_message">Skandeer om aan te sluit en hierdie tou te redigeer. Beëindiging van die Jam herroep die uitnodiging.</string>
+  <string name="morphe_music_jam_invite_message">Skander om aan te sluit by en hierdie wagtelys te wysig. Die beëindiging van die Jam trek die uitnodiging in</string>
   <string name="morphe_music_jam_copy_link">Kopieer skakel</string>
   <string name="morphe_music_jam_invitation_clip">Jam-uitnodiging</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam is besig om weer te koppel; probeer binnekort weer.</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Besig om Jam op te dateer…</string>
   <string name="morphe_music_jam_finding_host">Soek jou gasheer op Wi-Fi…</string>
   <string name="morphe_music_jam_waiting_people">Wag vir mense</string>
-  <string name="morphe_music_jam_one_connected">%d persoon gekoppel</string>
-  <string name="morphe_music_jam_many_connected">%d mense gekoppel</string>
-  <string name="morphe_music_jam_code_expires">Voer hierdie kode op ’n nabygeleë toestel in. Wi-Fi Aware werk oor afsonderlike LAN’s wanneer dit ondersteun word. Verval binne %d minute.</string>
+  <string name="morphe_music_jam_one_connected">%s persoon aangesluit</string>
+  <string name="morphe_music_jam_many_connected">%s persone aangesluit</string>
+  <string name="morphe_music_jam_code_expires">Gee hierdie kode in op \'n nabygeleë toestel. Wi-Fi Aware werk oor afsonderlike LAN\'s wanneer dit ondersteun word. Verstryk in %s minute</string>
   <string name="morphe_music_jam_seek_to">Spoel na %s?</string>
   <string name="morphe_music_jam_edits_open">Wysigings oop</string>
   <string name="morphe_music_jam_edits_locked">Wysigings gesluit</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Nie ondersteun tydens Jam nie</string>
   <string name="morphe_music_jam_cancelled">Aansluiting gekanselleer</string>
   <string name="morphe_music_jam_reconnecting_host">Besig om weer met jou gasheer te koppel…</string>
-  <string name="morphe_music_jam_share_prompt">Deel ’n tou. Laat almal liedjies byvoeg.</string>
+  <string name="morphe_music_jam_share_prompt">Deel \'n wagtelys. Laat almal liedjies byvoeg</string>
   <string name="morphe_music_jam_invite_people">Nooi mense</string>
   <string name="morphe_music_jam_guest_edits">Gaste kan die tou redigeer</string>
   <string name="morphe_music_jam_end_jam">Beëindig Jam</string>
-  <string name="morphe_music_jam_participant_help">Die gasheer speel die musiek. Voeg liedjies by, skuif of verwyder hulle direk in die YouTube Music-tou.</string>
-  <string name="morphe_music_jam_joining_help">Hou albei toestelle naby mekaar. Jy kan kanselleer terwyl ons na die gasheer soek.</string>
+  <string name="morphe_music_jam_participant_help">Die gasheer speel die musiek. Voeg, skuif of verwyder liedjies direk in die YouTube Music-wagtelys</string>
+  <string name="morphe_music_jam_joining_help">Hou beide toestelle naby mekaar. U kan kanselleer terwyl ons vir die gasheer soek</string>
   <string name="morphe_music_jam_cancel_joining">Kanselleer aansluiting</string>
   <string name="morphe_music_jam_leave_jam">Verlaat Jam</string>
   <string name="morphe_music_jam_start_jam">Begin ’n Jam</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Gebruik jou gekose eksterne aflaaier in plaas van die standaard Download-vliegmenu</string>
   <string name="morphe_music_in_app_downloads_title">Laai in die app af</string>
   <string name="morphe_music_in_app_downloads_summary">Laai oudio binne YouTube Music af in plaas van om die eksterne aflaaier-toepassing oop te maak</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Snitte word in die toep se privaat berging gestoor en word verwyder as YouTube Music gedeïnstalleer word.
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Snare word na die privaat berging van die toepassing gestoor en word uitgevee as YouTube Music oninstallēr is.
 
-Terwyl dit aan is, lys die Aflaaie-oortjie hierdie snitte in plaas van Music Premium se vanlynbiblioteek. As jy dit afskakel, word die oortjie herstel, en Premium-aflaaie word nooit geraak nie."</string>
+Terwyl dit geaktiveer is, lys die Aflaai-oortjie hierdie snare in plaas van die Premium-aflyfbiblioteek. Deaktivering herstel die oortjie, en Premium-aflaaie raak nooit beschadig nie"</string>
   <string name="morphe_music_downloads_screen_title">Aflaaie</string>
   <string name="morphe_music_downloads_empty">"Geen aflaaie nie
 Afgelaaide snitte verskyn hier"</string>
@@ -445,7 +445,7 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Custom regex opruiming</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Voer \'n pasgemaakte regulêre uitdrukking in om ekstra teks uit liedtitels, kunstenaars of albums te verwyder. Voorbeeld: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Ontleed kunstenaar en snit uit titel</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Haal die kunstenaar en snitnaam uit die video se titel met behulp van die \" - \" skeidingsteken. Nuttig vir heropgelaaide inhoud waar die kanaalnaam as die kunstenaar gebruik mag word.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Trek kunstenaar- en titelnaam uit die video-titel met die \" - \"-skeier. Nuttig vir hernoorbeelde inhoud waar die kanaalnaam dalk as die kunstenaar gebruik word</string>
   <string name="morphe_music_scrobbling_guess_album_title">Vul ontbrekende album in</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Wanneer die musiek nie \'n album bevat nie, slaan dit op Last.fm na sodat jou scrobble volledig is</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
   <string name="morphe_music_lyrics_section_service_title">Lirieke-diens</string>
   <string name="morphe_music_lyrics_section_overlay_title">Oorleg</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinchronisasie</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Alle verskaffers is gedeaktiveer — ingeboude en ingebedde lirieke</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI-eindpunt</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Alle verskaffers gedeaktiveer — ingeboude lirika en ingebedde lirika</string>
   <string name="morphe_music_lyrics_source_reset_title">Verskaffervolgorde terugstel?</string>
   <string name="morphe_music_lyrics_source_reset_message">Herstel verskaffers na die standaardprioriteitsorde</string>
   <string name="morphe_music_token_dialog_get_token">Kry token</string>
@@ -473,7 +474,7 @@ Stappe:
 3. Kopieer die waarde van \"media-user-token\""</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token gestoor</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token verwyder</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: ongeldige media-user-token — kontroleer asseblief en probeer weer</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: ongeldige media-gebruikertoken - neem asseblief kennis en probeer weer</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Plak die sp_dc-koekie van Spotify.
 
@@ -483,7 +484,7 @@ Stappe:
 3. Kopieer die waarde van \"sp_dc\""</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Sonder dit sal Lyrically as terugval gebruik word.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc verwyder</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: ongeldige sp_dc — kontroleer asseblief en probeer weer</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: ongeldige sp_dc - neem asseblief kennis en probeer weer</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music-token is opsioneel. Sonder dit sal Lyrically as terugval gebruik word.</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Kopieer die waarde van \"arl\"</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Plak die arl-koekie van Deezer.
@@ -494,21 +495,21 @@ Stappe:
 3. Kopieer die waarde van \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl gestoor</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: ongeldige arl, probeer asseblief weer</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ongeldige arl — kontroleer asseblief en probeer weer</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ongeldige arl - neem asseblief kennis en probeer weer</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopieer die waarde van die gebruikerstoken</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Voeg slegs \'n token by om jou eie rekening te gebruik. Dit moet van die Musixmatch Android-toepassing kom: tokens wat van musixmatch.com gekopieer is, behoort aan die uitgefaseerde lessenaarkliënt en die API weier hulle.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch werk sonder \'n token, so hierdie veld kan leeg bly.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ongeldige gebruikerstoken, probeer asseblief weer</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: gebruikerstoken gestoor</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: gebruikerstoken verwyder</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: ongeldige gebruikerstoken — kontroleer asseblief en probeer weer</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: ongeldige gebruikertoken - neem asseblief kennis en probeer weer</string>
   <string name="morphe_music_youtube_cookies_title">YouTube-koekies</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Plak […] Kopieer die volledige koekie-string (sleutel=waarde-pare geskei deur kommapunte)
 
 Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: koekies gestoor</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: koekies skoongemaak</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ongeldige koekies — gaan na en probeer asseblief weer</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ongeldige koekies - neem asseblief kennis en probeer weer</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Tik \'n reël om te soek</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Tik op \'n reël spring na daardie oomblik in die liedjie</string>
   <string name="morphe_music_lyrics_show_section_title">Wys afdeling-etikette</string>
@@ -519,6 +520,12 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling te wissel; druk lank vir slegs vertaling. Gebruik die verskaffer se vertalings, Google Translate, of \'n OpenAI-versoenbare API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Wys romaniseer-knoppie</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om romanisering te wissel; druk lank vir slegs romanisering. Gebruik die verskaffer se romanisering, Google Translate, of \'n OpenAI-versoenbare API.</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Lokale romanisering</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Romaniseer op die toestel wanneer die verskaffer, \'n OpenAI-kompatibele eindpunt en Google Vertaal almal misluk. Slegs CJK, ongeveer 80 MB om te aflaai.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Lees %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lesings gereed (%1$d CJK-woorde)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Aflaai misluk — skakel dit af en aan weer om te probeer</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Wys verfris-knoppie</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tik om na die volgende lirieke-kandidaat oor te skakel; langdruk om lirieke volgens liedjietitel en kunstenaar te soek</string>
   <string name="morphe_music_lyrics_search_dialog_title">Soek lirieke</string>
@@ -529,6 +536,8 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_saved">Gestoor</string>
   <string name="morphe_music_lyrics_word_sync_title">Raak aan ▲/▼ om die prioriteitsorde te stel, en die blokkie om elke verskaffer te aktiveer of deaktiveer.</string>
   <string name="morphe_music_lyrics_word_sync_summary">Alle verskaffers gedeaktiveer — ingeboude lirieke en ingebedde lirieke.</string>
+  <string name="morphe_music_lyrics_split_background_title">Wys agtergrondvokale afsonderlik</string>
+  <string name="morphe_music_lyrics_split_background_summary">Verskuif \'n agtergrond-vokaal wat in hakies geskryf is, soos \"(Oh) ek wil hê jy\", uit die gesong lyn na \'n eie dowwer lyn</string>
   <string name="morphe_music_lyrics_hide_played_title">Verskafferorde terugstel?</string>
   <string name="morphe_music_lyrics_hide_played_summary">Versteek liriekreëls bo die reël wat tans speel</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Versteek ongespeelde lirieke</string>
@@ -553,25 +562,47 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_sb_no_video">Hierdie snit het geen video-id om in te dien nie</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Bron: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Druk lank op die kopieerknoppie om hierdie LRC te stoor; as jy die tydsduur kan verfyn en dit met die gemeenskaplike verskaffers kan deel, sal ons dankbaar wees.</string>
   <string name="morphe_music_lyrics_translated_by_google">Gereedskapsafdelings?</string>
   <string name="morphe_music_lyrics_romanized_by_google">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_translated_by_ai">Vertaal deur %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Geromaniseer deur %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Gromaniseer deur %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Me […] lirieke. […] :\"Lirieke\"</string>
   <string name="morphe_music_lyrics_translation_language_title">Vertalingstaal</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Romaniseringstaal</string>
   <string name="morphe_music_lyrics_translating">Besig met vertaling…</string>
   <string name="morphe_music_lyrics_translate_failed">Kon nie die lirieke vertaal nie</string>
   <string name="morphe_music_lyrics_romanize_hide">Lirieke-bron?</string>
+  <string name="morphe_romanize_language_DEFAULT">Outomaties</string>
   <string name="morphe_music_lyrics_romanizing">Me […] lirieke. […] :\"Lirieke\"</string>
   <string name="morphe_music_lyrics_romanize_failed">Gereedskapsafdelings?</string>
   <string name="morphe_music_lyrics_translate_only">Slegs vertaal.</string>
   <string name="morphe_music_lyrics_romanize_only">Slegs geromaniseer</string>
+  <string name="morphe_music_lyrics_dual_only">Dubbele modus</string>
   <string name="morphe_music_lyrics_copied">Na knipbord gekopieer</string>
   <string name="morphe_music_lyrics_refreshing">Besig om te verfris</string>
   <string name="morphe_music_lyrics_refreshed">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-sleutel</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkribeer of bely die sangteks vir die huidige snit. \'n Afsonderlike diens, ongebonde aan die OpenAI-kompatibele eindpunt hierbo.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-sleutel gestoor. Gebruik die belynknoppie in die soekdialoog vir sangtekste, of die paneelaanwysing wanneer \'n snit geen sangteks het nie.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API-sleutel gestoor</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC het daardie sleutel nie aanvaar nie</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API-sleutel gewis</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC gee tydsduur aan sangtekste wat nie een het nie, of transkribeer dit van die snit, teen \'n koste van krediete. Met \'n ingestelde sleutel, bied snitte sonder sangtekste transkripsie aan en die soekdialoog kry \'n belynknoppie.</string>
+  <string name="morphe_music_lyrics_transcribe_align">Vra QuickLRC-belyning aan</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Belyn tans</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Pas belyning toe</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Vra QuickLRC-transkripsie aan</string>
+  <string name="morphe_music_lyrics_transcribe_working">Transkribeer tans</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Transkripsie gekanselleer</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Slegs snitte wat van YouTube gespeel word, kan getranskribeer word</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Geen sangteks om te bely nie — tans wel getranskribeer</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC kon nie hierdie snit verwerk nie</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-krediete is vir hierdie snit gebruik</string>
   <string name="morphe_music_lyrics_about_summary">"Lirieke word volgens titel en kunstenaar gekoppel, ongewone metadata mag niks of die verkeerde weergawe vind nie. Gebruik verfris om van weergawe te wissel. Verskaffers wat met * gemerk is, vereis 'n token. Nie alle geaktiveerde verskaffers word altyd in jou volgorde aangevra nie, maar hulle reageer op grond van hul spoed."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Aktiveer slegs die verskaffers wat jy gebruik, of behou die verstek — konstante versoeke kan klein gemeenskaps-lirieke-webwerwe oorweldig</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Aktiveer slegs die verskaffers wat u gebruik, of behou die verstek – konstante versoekings kan klein gemeenskapsliedjie-bladsye oorweldig</string>
   <string name="morphe_music_lyrics_hide_info_title">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_hide_info_summary">Lirieke word gesoek volgens kunstenaar en titel, […] Jy kan ook die verfris-knoppie probeer om handmatig van weergawe te wissel. […] Alle verskaffers word nie altyd in die bestelling versoek nie, maar reageer op grond van hul spoed</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Lirieke-bron?</string>
@@ -584,17 +615,17 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_use_ai_section_title">Kunsmatige Intelligensie-afdeling</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Word slegs gebruik wanneer die verskaffer geen afdelinglabels soos Koors of Vers stuur nie, wat jou OpenAI-versoenbare model dan opspoor</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">KI-instellings</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigureer die OpenAI-versoenbare API-eindpunt vir KI-aangedrewe liriekaansevertaling, romanisering en afdelings.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Stel die OpenAI-kompatibele API-eindpunt vir AI-gestuurde sangteksvertaling, romanisering en afdeling in.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt URL (bv. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-sleutel (los leeg vir anonieme toegang)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modelnaam (bv. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Aanwysingtemplaat</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Kiesers: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">Aanwysingtemplaat</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Aanwysing gestoor</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Plein gestoor, maar die AI-eindpunt is nog nie bruikbaar nie. Stel dit eerstens onder AI-instellings in.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Aanwysing teruggestel</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">KI-instellings gestoor</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Kon nie aan AI-eindpunt koppel nie. Kontroleer asseblief jou instellings.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Konnie nie met die AI-eindpunt verbind nie. Neem asseblief kennis van jou instellings</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">KI-instellings teruggestel</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">Model %1$s is gekonfigureer</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Basis-URL kan nie leeg wees nie</string>

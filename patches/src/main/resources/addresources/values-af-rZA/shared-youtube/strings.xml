@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Voer pakketnaam in</string>
   <string name="morphe_external_downloader_other_item">Ander</string>
   <string name="morphe_external_downloader_not_found_title">App is nie geïnstalleer nie</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s is nie geïnstalleer nie. Installeer dit.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s is nie geïnstalleer. Installeer dit</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Kon nie geïnstalleerde app met pakketnaam vind nie: %s
 
 Verifieer dat die pakketnaam korrek is en die app geïnstalleer is"</string>
@@ -84,7 +84,7 @@ Om die ikoon oral te verander, pas die patch weer toe en verander die patchopsie
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe speel</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Kennisgewing</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">U kykgeskiedenis word nie gestoor nie.&lt;br&gt;&lt;br&gt;Dit word heel waarskynlik veroorsaak deur \'n DNS-advertensieblokkeerder of \'n netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit op te los, voeg &lt;b&gt;s.youtube.com&lt;/b&gt; by die witlys of skakel alle DNS-blokkeerders en -proxies af.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">U kykgeskiedenis word nie gestoor nie.&lt;br&gt;&lt;br&gt;Dit word heel waarskynlik veroorsaak deur \'n DNS-advertensieblokkeerder of \'n netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit op te los, voeg &lt;b&gt;s.youtube.com&lt;/b&gt; by die witlys of skakel alle DNS-blokkeerders en -proxies af</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Moenie weer wys nie</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Verfraai videostrome</string>
@@ -99,7 +99,7 @@ As jy 'n YouTube Premium-gebruiker is, is hierdie instelling dalk nie vereis nie
 
 Maak %2$s die verstekkliënt?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Wissel</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Om hierdie instelling af te skakel, kan dit speelprobleme veroorsaak.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Om hierdie instelling af te skakel, kan dit speelprobleme veroorsaak</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Probeer om dit te aktiveer: Verfraai videostrome &gt; Android VR aanteken</string>
@@ -134,7 +134,7 @@ Om aan te meld, druk voort hieronder"</string>
 • U moet weer aanteken indien u u Google-wagwoord verander of hierdie toestel van u Google-instellings deregistreer."</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is tans nie beskikbaar (API het tydperk verstryk)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-aanmelding het verstryk, probeer om weer by VR aan te meld</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 is tans nie beskikbaar (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 is tans nie beskikbaar nie (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 is tans nie beskikbaar</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan nie by VR aanteken nie: webwerfverifikasie is nie goedgekeur nie</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan nie by VR aanteken nie: %s</string>
@@ -193,11 +193,11 @@ Om aan te meld, druk voort hieronder"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Ontwikkelingslogprotokol buffer</string>
   <string name="morphe_debug_protobuffer_summary">Voeg bykomende loginligting by vir ontwikkelaars om app-komponente te identifiseer</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Deur hierdie instelling in te skakel, sal bykomende uitlegdata gelog word, insluitend teks op die skerm vir sommige UI-komponente.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Die aktivering van hierdie instelling sal aanvullende opsetdata log, insluitend teks op die skerm vir sekere UI-komponente.
 
-Dit kan help om komponente te identifiseer wanneer pasgemaakte filters geskep word.
+Dit kan help om komponente te identifiseer tydens die skep van aanpasbare filters.
 
-Let wel, deur dit in te skakel, sal ook sekere gebruikerdata soos jou IP-adres gelog word."</string>
+Echter, die aktivering daarvan sal ook sekere gebruikersdata soos jou IP-adres log"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Pasgestelde filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigureer pasgestelde filters om enige komponent te verberg</string>
@@ -238,11 +238,11 @@ Skakel 'Vervals videostrome' aan om terugspeel reg te stel"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Valse weergawe van app</string>
   <string name="morphe_spoof_app_version_summary">Mislei die bediener om te dink jy gebruik \'n ouer weergawe van die app om verstoude UI-funksies te herstel</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Die app-weergawe sal na 'n ouer weergawe vervals word.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Die app-weergawe sal verval word na 'n ouer weergawe.
 
-Dit sal die voorkoms en funksies van die app verander, maar onbekende newe-effekte kan voorkom.
+Dit sal die voorkoms en kenmerke van die app verander, maar onbekende neweffekte kan voorkom.
 
-Indien later afgeskakel, word dit aanbeveel om die app se data uit te vee om UI-foute te voorkom."</string>
+As dit later gedeaktiveer word, word aanbeveel dat die app-gegewe gewis word om UI-foute te verhoed"</string>
   <string name="morphe_spoof_app_version_target_title">Tegenseilweergawe van app</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">App-verversingstempo</string>
@@ -265,7 +265,7 @@ Indien later afgeskakel, word dit aanbeveel om die app se data uit te vee om UI-
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes is tans nie beskikbaar nie (API het tyd uit)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Dislikes is nie beskikbaar nie (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Afminderings is nie beskikbaar nie (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Dislikes is nie beskikbaar nie (kliënt API-limiet)</string>
   <string name="morphe_ryd_failure_generic">Dislikes is nie beskikbaar nie (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Die ID van die video wat jy kyk, word na die Return YouTube Dislike API gestuur,
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislikes is tydelik nie beskikbaar nie - Kliënt API-limiet van krag</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API haal stemme, aantal oproepe</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Geen netwerkoproepe uitgevoer nie</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d netwerkoproepe uitgevoer</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s netwerkoprope gedoen</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API haal stemme, aantal tyduitoor</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Geen netwerkoproepe het tyd uit</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d netwerkoproepe het tyd uit</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s netwerkoprope het uitgetimer</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API-kliënt tarief beperkings</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Geen kliënt tarief beperkings gekom nie</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kliënt tarief beperking gekom %d keer</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d millisekondes</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kliëntspoedlimiet met %s keer gekonfronteer</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s millisekondes</string>
 </resources>

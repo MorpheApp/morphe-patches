@@ -36,17 +36,6 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">लेआउट अपडेट अक्षम करा</string>
   <string name="morphe_disable_layout_updates_summary">सर्व्हरला ॲप लेआउट अपडेट करण्यापासून प्रतिबंधित करते</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"ॲप लेआउट पहिल्यांदा इंस्टॉल केल्यावर वापरलेला लेआउटवर रीसेट होते.
-
-काही सर्व्हर-साइड लेआउट रीसेट होणार नाहीत.
-
-बदलांमध्ये समाविष्ट आहेत:
-• प्लेयर फ्लाईआउट मेनू (किंवा संबंधित सेटिंग्ज) मधील घटक काम करू शकत नाहीत.
-• रोलिंग नंबर ॲनिमेटेड नाहीत.
-• लायब्ररी टॅब दर्शविला जातो.
-• व्हिडिओ वर्णनातील संगीत विभाग काम करू शकत नाही.
-• प्लेयर फ्लाईआउट मेनू आयटम लपवले जाऊ शकत नाहीत.
-• खाते स्विच बटण लायब्ररी टॅबवर दिसणार नाही."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">अ‍ॅक्टिव्ह फीड फ्लाईआउट मेनू फिल्टर</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">फीड फ्लाईआउट मेनू फिल्टर</string>
@@ -116,7 +105,6 @@ Second \"item\" text"</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles लपवा</string>
   <string name="morphe_hide_youtube_doodles_summary">YouTube लोगोवरील हंगामी आणि इव्हेंट-आधारित ॲनिमेशन लपवते</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodle दाखवल्याने कस्टम हेडर दिसण्यात येऊ शकतात.</string>
   <string name="morphe_hide_channel_bar_title">चॅनेल बार लपवा</string>
   <string name="morphe_hide_channel_watermark_title">चॅनेल वॉटरमार्क लपवा</string>
   <string name="morphe_hide_chapters_timeline_button_title">अध्याय आणि \'या व्हिडिओमध्ये\' बटण लपवा</string>
@@ -382,7 +370,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_vot_openrouter_open_website">OpenRouter.ai उघडा</string>
   <string name="morphe_vot_openrouter_error">OpenRouter भाषांतर अयशस्वी झाले (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">MyMemory दैनिक मर्यादा पोहोचली</string>
-  <string name="morphe_vot_mymemory_quota_next_available">पुढील उपलब्धता %s वाजता.</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">तुम्ही आजचे विनामूल्य MyMemory भाषांतर कोटा (5,000 वर्ण) वापरले आहे. दररोजची मर्यादा 50,000 वर्णांपर्यंत वाढवण्यासाठी सेटिंग्जमध्ये MyMemory ईमेल जोडा, किंवा भिन्न भाषांतर सेवा स्विच करा</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">तुम्ही आजचे MyMemory भाषांतर कोटा (50,000 वर्ण) वापरले आहे. भिन्न भाषांतर सेवा स्विच करा किंवा उद्या पुन्हा प्रयत्न करा</string>
   <string name="morphe_vot_mymemory_error">MyMemory भाषांतर अयशस्वी झाले (स्थिती %s)</string>
@@ -592,6 +579,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_auto_captions_style_legacy_entry_1">ऑटो कॅप्शन दाखवा</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">ऑटो कॅप्शन लपवा</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">कॅपशन कुकीज सेट करा</string>
   <string name="morphe_set_caption_cookies_summary">"स्टॉक YouTube बग दुरुस्त करते जिथे स्वयंचलित भाषांतर मथळे कुकीजच्या कमतरतेमुळे उपलब्ध नसू शकतात
@@ -630,9 +618,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swap_create_with_notifications_button_summary">जर ही सेटिंग बदलल्याचा परिणाम झाला नाही, तर इन्कॉग्निटो मोड वापरून पहा.</string>
   <string name="morphe_hide_navigation_button_labels_title">नेव्हिगेशन बटण लेबल्स लपवा</string>
   <string name="morphe_hide_navigation_bar_title">नेव्हिगेशन बार लपवा</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"हे नेव्हिगेशन बार पूर्णपणे लपवते, ज्यात 'You' टॅब देखील समाविष्ट आहे.
-
-सेटिंग्ज ॲक्सेस करण्यासाठी, General → Toolbar → Show Settings वरून Settings बटण सक्षम करा."</string>
   <string name="morphe_narrow_navigation_buttons_title">नॅरो नेव्हिगेशन बटणे सक्षम करा</string>
   <string name="morphe_narrow_navigation_buttons_summary">बटणांमधील क्षैतिज अंतर कमी करते</string>
   <string name="morphe_navigation_bar_animations_title">नेव्हिगेशन बार एनिमेशन सक्रिय करा</string>
@@ -880,6 +865,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_playback_in_feeds_entry_off">\u092c\u0926\u094d\u0926</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेअर पुन्हा सुरू करणे अक्षम करा</string>
   <string name="morphe_miniplayer_disable_resuming_summary">\'Continue watching\' मिनीप्लेअर अक्षम करते, YouTube Premium चे वैशिष्ट्य जे ॲप सुरू झाल्यावर दिसते.</string>
@@ -964,7 +950,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">डिव्हाइसचे आकारमान Spoof करा</string>
   <string name="morphe_spoof_device_dimensions_summary">हे सक्षम केल्याने उच्च व्हिडिओ गुणवत्ता अनलॉक होऊ शकते</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">हे सक्षम केल्याने व्हिडिओ प्लेबॅक मध्ये अडथळा, बॅटरीची लाईफ कमी होणे आणि अनपेक्षित दुष्परिणाम होऊ शकतात.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Haptic feedback</string>
   <string name="morphe_disable_haptic_feedback_summary">उपकरणाच्या (Device) कंपनांना (Vibrations) ट्रिगर (Trigger) करणारे इंटरॅक्शन (Interaction) निवडा</string>
@@ -974,7 +959,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">टॅप आणि होल्ड हॅप्टिक्स अक्षम करा</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoom Haptics अक्षम करा</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">तुम्ही नुकतेच तुमचे खाते लॉगिन तपशील बदलले असल्यास, MicroG अनइंस्टॉल आणि रीइंस्टॉल करा.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">लिंक रीडायरेक्ट्स बायपास करा</string>
   <string name="morphe_bypass_link_redirects_summary">ट्रॅकिंग लिंक (youtube.com/redirect) बायपास करून मूळ लिंक थेट उघडते</string>
@@ -1040,9 +1024,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1 ला परवानगी द्या</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS क्लायंट वापरताना सॉफ्टवेअर AV1 डीकोडिंगची परवानगी देते.</string>
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"हे सेटिंग सक्षम केल्यास सॉफ्टवेअर AV1 डिकोडिंग वापरले जाऊ शकते.
-
-AV1 सह व्हिडिओ प्लेबॅक स्टटर किंवा फ्रेम ड्रॉप होऊ शकते."</string>
   <string name="morphe_spoof_video_streams_about_title">स्पूफिंगचे दुष्परिणाम</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'ऑडिओ ट्रॅक\' मेनू गहाळ आहे</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 व्हिडिओ कोडेक नाही</string>

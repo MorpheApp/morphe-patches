@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Rozloženie</string>
   <string name="morphe_copy_text_title">Kopírovať text</string>
   <string name="morphe_copy_text_summary">Umožňuje vybrať a kopírovať text v príspevkoch a komentároch. Vypína zbaľovanie komentárov</string>
-  <string name="morphe_copy_text_user_dialog_message">Zbaľovanie komentárov prestane fungovať, kým je povolené Kopírovanie textu.</string>
+  <string name="morphe_copy_text_user_dialog_message">Zbieranie komentárov prestane fungovať, kedy je povolené kopírovanie textu</string>
   <string name="morphe_custom_font_title">Vlastné písmo</string>
   <string name="morphe_custom_font_summary">Načítať vlastný TTF alebo OTF fontový súbor z nižšie uvedenej cesty. Zapnutie tejto možnosti tiež vypne Používanie systémového písma.</string>
   <string name="morphe_custom_font_file_path_title">Súbor vlastného písma</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Skryje Trending police z kanála a návrhov na vyhľadávanie</string>
   <string name="morphe_remove_notification_dialog_title">Skryť návrh notifikácií</string>
   <string name="morphe_remove_notification_dialog_summary">Automaticky zatvorí dialógové okno s návrhom notifikácie pri návšteve subredditu</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Zobraziť štítky v domovskom kanáli</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Zobrazuje odznaky postov v domovskom kanáli</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Niektoré položky kanála nemusia zobrazovať štítok</string>
   <string name="morphe_show_view_count_title">Zobrazovať počet zhliadnutí na príspevkoch</string>
   <string name="morphe_show_view_count_summary">Obmedzenie: Zobrazuje sa iba v prípade, že odpoveď z API zahŕňa počet zobrazení</string>
   <string name="morphe_flip_post_action_bar_title">Prehodiť panel akcií príspevku</string>

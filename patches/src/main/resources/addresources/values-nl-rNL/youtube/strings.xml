@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Layout-updates uitschakelen</string>
   <string name="morphe_disable_layout_updates_summary">Voorkomt dat de server de app-lay-out bijwerkt</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"De lay-out van de app wordt teruggezet naar de lay-out die bij de eerste installatie werd gebruikt.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"De app-layout keert terug naar de lay-out die bij eerste installatie werd gebruikt.
 
-Sommige server-side lay-outs kunnen niet worden teruggezet.
+Enkele server-side lay-outs kunnen mogelijk niet terugkeren.
 
 Wijzigingen zijn:
-• Componenten in het vliegschermmenu van de speler (of gerelateerde instellingen) kunnen niet werken.
-• Rollende nummers worden niet geanimeerd.
-• De bibliotheektab is zichtbaar.
-• De muzieksectie van de videobeschrijving kan niet werken.
-• Items in het vliegschermmenu van de speler kunnen niet worden verborgen.
-• De knop voor het wisselen van accounts kan niet op de bibliotheektab verschijnen."</string>
+• Componenten in het flyout-menu van de speler (of gerelateerde instellingen) werken mogelijk niet
+• Rolnummers worden niet geanimeerd
+• Tabblad Bibliotheek wordt weergegeven
+• Muzieksectie van videobeschrijving werkt mogelijk niet
+• Items in het flyout-menu van de speler kunnen niet worden verborgen
+• Knop Accountwissel verschijnt mogelijk niet op het tabblad Bibliotheek"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Schakel filter voor het uitvouwmenu van de feed in</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filter voor het uitvouwmenu van de feed</string>
@@ -133,7 +133,7 @@ Wijzigingen zijn:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles verbergen</string>
   <string name="morphe_hide_youtube_doodles_summary">Verbergt seizoensgebonden en evenementgerelateerde animaties op het YouTube-logo</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Het tonen van YouTube Doodles kan voorkomen dat aangepaste headers worden weergegeven.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Het weergeven van YouTube-Doodles kan ervoor zorgen dat aangepaste kopteksten niet worden getoond</string>
   <string name="morphe_hide_channel_bar_title">Kanaalbalk verbergen</string>
   <string name="morphe_hide_channel_watermark_title">Verberg kanaal watermerk</string>
   <string name="morphe_hide_chapters_timeline_button_title">Verberg Hoofdstukken en de knop \'In deze video\'</string>
@@ -281,7 +281,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_menu_button_summary">Verbergt de menuknop met drie puntjes van elke reactie</string>
   <string name="morphe_hide_comments_preview_comment_title">Reactie in preview verbergen</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbergt het commentaarvoorbeeldunder de video voordat de volledige commentaarsectie wordt geopend</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Reactie verborgen door Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Reactie verborgen door Morphe…</string>
   <string name="morphe_minimal_comments_button_title">Minimale reactiesknop inschakelen</string>
   <string name="morphe_minimal_comments_button_summary">Verbergt de schuifkaarten en de bijbehorende paginaselector, weergegeven op de reactiesknop</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg de knop \'Bedankt\'</string>
@@ -490,7 +490,7 @@ Uw API-sleutel mag nooit worden gedeeld. Iedereen met toegang tot deze sleutel k
   <string name="morphe_vot_openrouter_open_website">Open OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">OpenRouter-vertaling mislukt (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">MyMemory-dagelijkse limiet bereikt</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Volgende beschikbaar op %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Volgende beschikbaar om %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">U heeft de gratis MyMemory-vertaling-quotum van vandaag bereikt (5.000 tekens). Voeg een MyMemory-e-mailadres toe in de instellingen om de dagelijkse limiet te verhogen tot 50.000 tekens, of schakel over naar een andere vertaaldienst</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">U heeft de MyMemory-vertaling-quotum van vandaag bereikt (50.000 tekens). Schakel over naar een andere vertaaldienst of probeer het morgen opnieuw</string>
   <string name="morphe_vot_mymemory_error">MyMemory-vertaling mislukt (status %s)</string>
@@ -565,21 +565,24 @@ Info: Werkt mogelijk niet op livestreams"</string>
 
 Info: De volgende video in de wachtrij start alleen terwijl YouTube op het scherm staat"</string>
   <string name="morphe_local_queue_sheet_title">Wachtrij</string>
-  <string name="morphe_local_queue_open">Wachtrij (%d)</string>
+  <string name="morphe_local_queue_open">Wachtrij (%s)</string>
   <string name="morphe_local_queue_clear">Alles wissen</string>
   <string name="morphe_local_queue_empty">Niets in wachtrij</string>
   <string name="morphe_local_queue_empty_hint">Gebruik \'Volgende in wachtrij afspelen\' op elke video</string>
   <string name="morphe_local_queue_now_playing">Nu afspelen</string>
   <string name="morphe_local_queue_play_next">Volgende in wachtrij afspelen</string>
+  <string name="morphe_local_queue_play_last">Speel laatste in wachtrij</string>
   <string name="morphe_local_queue_reorder">Herschikken</string>
   <string name="morphe_local_queue_remove">Verwijderen</string>
   <string name="morphe_local_queue_added">Toegevoegd aan wachtrij</string>
+  <string name="morphe_local_queue_unavailable">Kon deze video niet aan de wachtrij toevoegen</string>
+  <string name="morphe_local_queue_playlist_unsupported">Afspeellijsten kunnen niet aan de wachtrij worden toegevoegd</string>
   <string name="morphe_local_queue_full">Wachtrij is vol</string>
   <string name="morphe_local_queue_play_failed">Kan de video niet starten</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Advertentie-whitelist in flyoutmenu</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Voegt een flyoutitem toe waarmee advertenties op het kanaal van die video kunnen worden afgespeeld</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Deze functie vereist mogelijk het gebruik van PotHelper of het wijzigen van \"Videostreams vervalsen\" in TV- of Android VR-aanmelding.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Voor deze functie moet mogelijk PotHelper worden gebruikt of moet \"Video streams spoofen\" worden ingesteld op TV of Android VR inloggen</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Snelheids-whitelist in flyoutmenu</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Voegt een flyoutitem toe dat het kanaal van die video altijd op 1.0x snelheid afspeelt</string>
   <string name="morphe_queue_manager_check_failed_auth">Niet ingelogd</string>
@@ -762,6 +765,9 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_preferred_caption_language_title">Voorkeurstaal voor ondertiteling</string>
   <string name="morphe_preferred_caption_language_summary">Selecteert eerst de ondertiteling van de provider en vertaalt deze vervolgens automatisch naar de voorkeurstaal</string>
   <string name="morphe_preferred_caption_language_entry_off">Uit</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Extra talen voor automatische vertaling toevoegen</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Voegt meer talen toe aan het menu voor automatische vertaling</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Stel ondertitelcookies in</string>
   <string name="morphe_set_caption_cookies_summary">"Verhelpt een standaard YouTube-probleem waarbij de automatisch vertaalde ondertitels mogelijk niet beschikbaar zijn vanwege ontbrekende cookies\n\n'Ondertitel-cookies' moeten worden verstrekt"</string>
@@ -799,9 +805,9 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_hide_navigation_button_labels_title">Navigatieknoppenlabels verbergen</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Verberg nieuwe contentstip</string>
   <string name="morphe_hide_navigation_bar_title">Verberg de navigatiebalk</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dit verbergt de navigatiebalk volledig, inclusief het tabblad 'Jij'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Hiermee wordt de navigatiebalk volledig verborgen, inclusief het tabblad 'Jij'.
 
-Om Instellingen te openen, schakelt u de knop Instellingen in via Algemeen → Werkbalk → Instellingen weergeven."</string>
+Om Instellingen te openen, schakel je de knop Instellingen in via Algemeen → Gereedschapsbalk → Instellingen weergeven"</string>
   <string name="morphe_narrow_navigation_buttons_title">Smalle navigatieknoppen inschakelen</string>
   <string name="morphe_narrow_navigation_buttons_summary">Vermindert de horizontale ruimte tussen knoppen</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Navigatieknoppen zonder labels uitschakelen</string>
@@ -1039,7 +1045,7 @@ Automotive-indeling
   <string name="morphe_tablet_layout_in_player_summary">"Herstelt de oude player layout
 
 Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer video's\" overlay mogelijk niet beschikbaar"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Het inschakelen hiervan kan ertoe leiden dat sommige functies van de spelerlay-out niet meer werken, zoals het opmerkingengedeelte of \'Meer video\'s\' onder de speler.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Het inschaken hiervan kan enkele lay-outfuncties van de speler breken, zoals het reactiegedeelte of \'Meer video\'s\' onder de speler</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Herstel het oude gedrag van ondertitels</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel oude Shorts-speler pictogrammen</string>
@@ -1104,6 +1110,12 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Automatische feedvernieuwing uitschakelen</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Voorkomt dat feeds automatisch worden vernieuwd nadat ze verouderd zijn</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Voedingskaartopmaak</string>
+  <string name="morphe_feed_card_layout_entry_1">Klassiek</string>
+  <string name="morphe_feed_card_layout_entry_2">Kaarten</string>
+  <string name="morphe_feed_card_layout_entry_3">Kaarten met knoppen voor liken, opmerken en opslaan</string>
+  <string name="morphe_feed_card_layout_comments">Reacties</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Schakel het hervatten van de miniplayer uit</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Schakelt de \'Doorgaan met kijken\'-minispeler uit, een functie van YouTube Premium die verschijnt bij het opstarten van de app</string>
@@ -1218,7 +1230,7 @@ Video's worden opgevraagd via een kort voorvoegsel van de gehashte video-ID, zod
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Spoof apparaatdimensies</string>
   <string name="morphe_spoof_device_dimensions_summary">Het inschakelen hiervan kan hogere videokwaliteiten ontgrendelen</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Het inschakelen hiervan kan haperingen tijdens het afspelen van video\'s, een kortere batterijduur en onbekende bijwerkingen veroorzaken.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Het inschakelen hiervan kan haperingen tijdens het afspelen van video\'s, een kortere batterijduur en onbekende bijwerkingen veroorzaken</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Haptische feedback</string>
   <string name="morphe_disable_haptic_feedback_summary">Kies welke interacties apparaat trillingen activeren</string>
@@ -1228,7 +1240,7 @@ Video's worden opgevraagd via een kort voorvoegsel van de gehashte video-ID, zod
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Uitschakelen tap en houd haptiek</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoom-haptics uitschakelen</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Als u onlangs de inloggegevens van uw account hebt gewijzigd, verwijder dan MicroG en installeer het opnieuw.</string>
+  <string name="microg_offline_account_login_error">Als u onlangs de inloggegevens van uw account hebt gewijzigd, verwijder dan MicroG en installeer het opnieuw</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Omzeil linkomleidingen</string>
   <string name="morphe_bypass_link_redirects_summary">Opent de originele link direct, waarbij de trackinglink (youtube.com/redirect) wordt omzeild</string>
@@ -1337,7 +1349,7 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_av1_summary">Staat softwarematige AV1-decodering toe bij gebruik van de \'Android VR\' / visionOS-client</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Het inschakelen van deze instelling kan gebruikmaken van softwarematige AV1-decodering.
 
-Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
+Het afspelen van video met AV1 kan haperen of frames overslaan"</string>
   <string name="morphe_spoof_video_streams_about_title">Spoofing-neveneffecten</string>
   <string name="morphe_spoof_video_streams_about_failure">• Afspelen kan na 1 minuut mislukken</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audiotrack-menu\' ontbreekt</string>
@@ -1391,7 +1403,7 @@ Beperking: keert terug naar de oude stijl van de overlay 'Meer video's'."</strin
   <string name="morphe_series_tracker_ui_clear_all_local_progress">Alle lokale vordering wissen</string>
   <string name="morphe_series_tracker_ui_clear_history">Geschiedenis wissen</string>
   <string name="morphe_series_tracker_clear_progress_title">Lokale vordering wissen?</string>
-  <string name="morphe_series_tracker_clear_progress_message">Hiermee worden posities, gekeken overschrijvingen en hervatselecties voor elke video gewist. Opgeslagen series en hun catalogi blijven behouden. Nieuwe afspeelvordering wordt geregistreerd als registratie is ingeschakeld.</string>
+  <string name="morphe_series_tracker_clear_progress_message">Hiermee worden posities, overschrijvingen voor bekeken en voortzettingselecties voor elke video gewist. Opgeslagen series en hun catalogi blijven behouden. Nieuwe afspeelactiviteit wordt geregistreerd als registratie is ingeschakeld</string>
   <string name="morphe_series_tracker_ui_mark_watched">Markeren als bekeken</string>
   <string name="morphe_series_tracker_ui_mark_unwatched">Markeren als niet bekeken</string>
   <string name="morphe_series_tracker_ui_use_automatic_status">Automatische status gebruiken</string>
@@ -1410,36 +1422,34 @@ Beperking: keert terug naar de oude stijl van de overlay 'Meer video's'."</strin
   <string name="morphe_series_tracker_ui_subscriptions">Abonnementen</string>
   <string name="morphe_series_tracker_ui_notifications">Meldingen</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Opgeslagen series laden…</string>
-  <string name="morphe_series_tracker_empty_library">Volg een afspeellijst om de afleveringen bij te houden.</string>
+  <string name="morphe_series_tracker_empty_library">Volg een afspeellijst om de afleveringen bij te houden</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Afspeellijstbladwijzer</string>
   <string name="morphe_series_tracker_ui_refreshing_episodes">Afleveringen vernieuwen…</string>
   <string name="morphe_series_tracker_ui_all_series">Alle series</string>
   <string name="morphe_series_tracker_watched">Bekeken</string>
   <string name="morphe_series_tracker_ui_loading_episodes">Afleveringen laden…</string>
   <string name="morphe_series_tracker_ui_more_options">Meer opties</string>
-  <string name="morphe_series_tracker_record_consent">"Registreer alleen vordering voor jouw opgeslagen series en geblokte videolinks.
+  <string name="morphe_series_tracker_record_consent">"Registreer alleen voortgang voor je opgeslagen series en met een bladmarker gemarkeerde video's.
 
-Deze bibliotheek wordt op dit apparaat opgeslagen en gedeeld tussen YouTube-acounts. De pauze- en wistfuncties van YouTube veranderen dit niet. Gebruik Series → Meer → Lokale vordering wissen om het te verwijderen.
+Deze bibliotheek is op dit apparaat opgeslagen en gedeeld over YouTube-accounts. De pauzeer- en wisknoppen voor geschiedenis van YouTube hebben hier geen invloed op. Gebruik Serie → Meer → Lokale voortgang wissen om ze te wissen.
 
-Automatische registratie stopt in incognito-modus, wanneer accountidentiteit niet beschikbaar is, of wanneer je naar een ander account schakelt. Schakel tracking opnieuw in om het met dat account te gebruiken."</string>
-  <string name="morphe_series_tracker_identity_unavailable">Tracking kan niet worden ingeschakeld in incognito-modus of voordat YouTube de status van het huidige account heeft geladen. Ga terug naar Home en probeer opnieuw. Aanmelden is niet vereist.</string>
+Automatische registratie stopt in incognito-modus wanneer de accountidentiteit niet beschikbaar is, of wanneer je naar een ander account wisselt. Schakel tracking weer in om het met dat account te gebruiken"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Tracking kan niet worden ingeschakeld in incognito-modus of voordat YouTube de status van het huidige account heeft geladen. Ga terug naar Startpagina en probeer het opnieuw. Er is geen aanmelding vereist</string>
   <string name="morphe_series_tracker_enable">Lokale tracking inschakelen</string>
   <string name="morphe_series_tracker_tracking_paused">Vorderingregistratie is uitgeschakeld</string>
   <string name="morphe_series_tracker_resume_at">Hervatten op %1$s</string>
-  <string name="morphe_series_tracker_watched_count">%1$d / %2$d afleveringen bekeken</string>
-  <string name="morphe_series_tracker_episode_position">Aflevering %1$d · %2$s</string>
-  <string name="morphe_series_tracker_episode_range">Afleveringen %1$d–%2$d van %3$d</string>
-  <string name="morphe_series_tracker_catalog_unavailable">Vernieuwen om afleveringen te laden. Privé-afspeellijsten hebben toegang tot een account nodig; de bladwijzer wordt nog steeds geopend in YouTube.</string>
-  <string name="morphe_series_tracker_open_failed">YouTube kon deze aflevering niet openen.</string>
-  <string name="morphe_series_tracker_playlist_failed">YouTube kon deze afspeellijst niet openen.</string>
-  <string name="morphe_series_tracker_plan_open">Afspeellijstbladwijzer</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s afleveringen bekeken</string>
+  <string name="morphe_series_tracker_episode_position">Aflevering %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Afleveringen %1$s-%2$s van %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Vernieuwen om afleveringen te proberen laden. Privé-afspeellijsten vereisen accounttoegang; het bladmarkeuringslinkje wordt nog steeds geopend in YouTube</string>
+  <string name="morphe_series_tracker_open_failed">YouTube kon deze aflevering niet openen</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube kon deze afspeellijst niet openen</string>
   <string name="morphe_series_tracker_plan_changed">Een aflevering kiezen</string>
   <string name="morphe_series_tracker_plan_caught_up">Up-to-date</string>
   <string name="morphe_series_tracker_plan_none">Geen speelbare afleveringen</string>
   <string name="morphe_series_tracker_saved_position">Opgeslagen video · %1$s</string>
   <string name="morphe_series_tracker_follow">Serie volgen</string>
   <string name="morphe_series_tracker_view_series">Serie bekijken</string>
-  <string name="morphe_series_tracker_add_icon">Serie volgen</string>
   <string name="morphe_series_tracker_continue">Doorgaan</string>
   <string name="morphe_series_tracker_start_here">Hier beginnen</string>
   <string name="morphe_series_tracker_start_saved">Startpunt opgeslagen</string>
@@ -1448,29 +1458,29 @@ Automatische registratie stopt in incognito-modus, wanneer accountidentiteit nie
   <string name="morphe_series_tracker_undo">Ona</string>
   <string name="morphe_series_tracker_enable_short">Inschakelen</string>
   <string name="morphe_series_tracker_new_episode">1 nieuwe aflevering</string>
-  <string name="morphe_series_tracker_new_episodes">%1$d nieuwe afleveringen</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s nieuwe afleveringen</string>
   <string name="morphe_series_tracker_record_short">Vordering op dit apparaat registreren</string>
-  <string name="morphe_series_tracker_follow_consent">"Jouw series en vordering blijven op dit apparaat, gedeeld tussen YouTube-acounts. YouTube-geschiedenisbesturingselementen veranderen ze niet. Wissen de vordering via het menu Serie.
+  <string name="morphe_series_tracker_follow_consent">"Je series en voortgang blijven op dit apparaat, gedeeld over YouTube-accounts. YouTube-geschiedenisbesturingselementen veranderen hier niets aan. Wis de voortgang via het menu Serie.
 
-Automatische registratie is optioneel. Het stopt in incognito-modus of wanneer het account verandert."</string>
-  <string name="morphe_series_tracker_follow_unavailable">Afleveringen konden niet worden geladen. Je kunt de afspeellijst opslaan als bladwijzer.</string>
-  <string name="morphe_series_tracker_error_pending_full">Te veel niet-opgeslagen wijzigingen. Probeer eerst opnieuw op te slaan.</string>
-  <string name="morphe_series_tracker_error_storage_busy">Opslaan is bezig. Probeer het opnieuw.</string>
-  <string name="morphe_series_tracker_error_catalog_busy">Het laden van afleveringen is bezig. Probeer het opnieuw.</string>
-  <string name="morphe_series_tracker_error_storage_unavailable">Opslagruimte niet beschikbaar. Je gegevens zijn bewaard.</string>
-  <string name="morphe_series_tracker_error_storage_save">Wijzigingen konden niet worden opgeslagen. Probeer op te slaan voordat je YouTube sluit.</string>
-  <string name="morphe_series_tracker_error_conflict">Deze serie is al opgeslagen, of de afspeellijst is gewijzigd. Open hem opnieuw.</string>
-  <string name="morphe_series_tracker_error_series_changed">Deze serie is gewijzigd of verwijderd. Open de bibliotheek opnieuw.</string>
-  <string name="morphe_series_tracker_error_playlist_changed">De afspeellijst is gewijzigd. Kies de aflevering opnieuw.</string>
-  <string name="morphe_series_tracker_error_episode_unavailable">Deze aflevering is niet beschikbaar. Kies een andere.</string>
-  <string name="morphe_series_tracker_error_name_required">Voer een serienaam in.</string>
-  <string name="morphe_series_tracker_error_playlist_input">Voer een YouTube-afspeellijstkoppeling of afspeellijst-ID in.</string>
-  <string name="morphe_series_tracker_error_retry_later">Even geduld voordat je opnieuw vernieuwt.</string>
-  <string name="morphe_series_tracker_error_catalog_unavailable">Afleveringen konden niet worden geladen. Probeer het later opnieuw.</string>
-  <string name="morphe_series_tracker_error_operation">De wijziging kon niet worden voltooid. Probeer het opnieuw.</string>
-  <string name="morphe_series_tracker_error_resume">Hervatten kon niet worden bevestigd. Controleer de speler en probeer het opnieuw.</string>
+Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een accountwijziging"</string>
+  <string name="morphe_series_tracker_follow_unavailable">Afleveringen konden niet worden geladen. Je kunt de afspeellijst opslaan als een bladmarkeer</string>
+  <string name="morphe_series_tracker_error_pending_full">Te veel niet-opgeslagen wijzigingen. Probeer eerst opnieuw op te slaan</string>
+  <string name="morphe_series_tracker_error_storage_busy">Opslaan is bezig. Probeer het opnieuw</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Laden van afleveringen is bezig. Probeer het opnieuw</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Opslagruimte is niet beschikbaar. Je opgeslagen gegevens zijn bewaard</string>
+  <string name="morphe_series_tracker_error_storage_save">Wijzigingen konden niet worden opgeslagen. Probeer opnieuw op te slaan voordat je YouTube sluit</string>
+  <string name="morphe_series_tracker_error_conflict">Deze serie is al opgeslagen, of de afspeellijst is gewijzigd. Open hem opnieuw</string>
+  <string name="morphe_series_tracker_error_series_changed">Deze serie is gewijzigd of verwijderd. Open de bibliotheek opnieuw</string>
+  <string name="morphe_series_tracker_error_playlist_changed">De afspeellijst is gewijzigd. Selecteer de aflevering opnieuw</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Deze aflevering is niet beschikbaar. Kies er een andere</string>
+  <string name="morphe_series_tracker_error_name_required">Voer een serienaam in</string>
+  <string name="morphe_series_tracker_error_playlist_input">Voer een link naar een YouTube-afspeellijst of een afspeellijst-ID in</string>
+  <string name="morphe_series_tracker_error_retry_later">Even geduld voordat je opnieuw vernieuwt</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Afleveringen konden niet worden geladen. Probeer het later opnieuw</string>
+  <string name="morphe_series_tracker_error_operation">De wijziging kon niet worden voltooid. Probeer het opnieuw</string>
+  <string name="morphe_series_tracker_error_resume">Voortzetten kon niet worden bevestigd. Controleer de speler en probeer het opnieuw</string>
   <string name="morphe_series_tracker_followed">Series volgen</string>
-  <string name="morphe_series_tracker_video_not_in_playlist">Deze video staat niet in deze afspeellijst.</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Deze video bevindt zich niet in deze afspeellijst</string>
   <string name="morphe_series_tracker_finding_playlists">Afspeellijsten zoeken…</string>
   <string name="morphe_series_tracker_paste_playlist">Afspeellijstkoppeling plakken</string>
   <string name="morphe_series_tracker_discovery_unavailable">Geen afspeellijst gevonden</string>
@@ -1481,38 +1491,36 @@ Automatische registratie is optioneel. Het stopt in incognito-modus of wanneer h
   <string name="morphe_series_tracker_episode_order">Aflevering volgorde</string>
   <string name="morphe_series_tracker_playlist_order">Afspeellijstvolgorde</string>
   <string name="morphe_series_tracker_reverse_order">Afspeellijstvolgorde omkeren</string>
-  <string name="morphe_series_tracker_view_count_large">%1$s keer bekeken</string>
   <string name="morphe_series_tracker_view_count">%1$s keer bekeken</string>
   <string name="morphe_series_tracker_view_count_one">%1$s keer bekeken</string>
   <string name="morphe_series_tracker_completion_title">Afleveringen markeren als bekeken</string>
-  <string name="morphe_series_tracker_completion_summary">Minimaal %1$d%% bekeken met maximaal 90 seconden over, of %2$d seconde resterend</string>
-  <string name="morphe_series_tracker_completion_explanation">Markeer automatisch een aflevering als bekeken na overschrijding van één van beide thresholds. De percentage-regel vereist ook maximaal 90 seconden over, zodat het einde van lange afleveringen niet wordt overgeslagen. De regel voor resterende tijd geldt voor video\'s langer dan een minuut; stel het in op 0 om het uit te schakelen. Wijzigingen zijn van toepassing op toekomstige vorderingsupdates. Handmatige keuze voor bekeken/niet bekeken blijft behouden.</string>
-  <string name="morphe_series_tracker_completion_percent">Percentage bekeken (1–100)</string>
-  <string name="morphe_series_tracker_completion_seconds">Resterende seconden (0–300; 0 schakelt uit)</string>
-  <string name="morphe_series_tracker_completion_save">Opslaan</string>
-  <string name="morphe_series_tracker_completion_range">Voer een waarde in van %1$d tot %2$d.</string>
+  <string name="morphe_series_tracker_completion_summary">Ten minste %1$s%% bekeken met maximaal 90 seconden te gaan, of %2$s seconden resterend</string>
+  <string name="morphe_series_tracker_completion_explanation">Markeer automatisch een aflevering als bekeken na either drempel. De procentregel vereist ook niet meer dan 90 seconden te gaan, zodat het einde van lange afleveringen niet wordt overgeslagen. De regel voor resterende tijd geldt voor video\'s langer dan één minuut; stel dit in op 0 om het uit te schakelen. Wijzigingen komen van toepassing op toekomstige voortgangsupdates. Handmatige keuzes voor bekeken/niet bekeken worden behouden</string>
+  <string name="morphe_series_tracker_completion_percent">Percentage bekeken (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Resterende seconden (0-300; 0 schakelt uit)</string>
+  <string name="morphe_series_tracker_completion_range">Voer een waarde in van %1$s tot %2$s</string>
   <string name="morphe_series_tracker_youtube_progress_title">YouTube-vordering gebruiken</string>
   <string name="morphe_series_tracker_youtube_progress_summary">Gevolgde series oppakken na het kijken op een ander apparaat</string>
-  <string name="morphe_series_tracker_sync_consent">Lees de gekeken-status en hervatposities voor jouw gevolgde series vanuit het huidige YouTube-account. Alleen bijpassende afleveringen worden opgeslagen op deze telefoon. Controlerungen gebeuren terwijl de seriesbibliotheek geopend is en voor Voortzetten. YouTube-geschiedenis moet op je andere apparaat zijn ingeschakeld.</string>
+  <string name="morphe_series_tracker_sync_consent">Lees de bekeken-status en voortzettingsposities voor je gevolgde series vanuit het huidige YouTube-account. Alleen matchinge afleveringen worden opgeslagen op deze telefoon. Controleren vindt plaats terwijl de seriesbibliotheek open is en vóór Doorgaan. YouTube-geschiedenis moet zijn ingeschakeld op je andere apparaat</string>
   <string name="morphe_series_tracker_sync_checking">YouTube-vordering controleren…</string>
-  <string name="morphe_series_tracker_sync_failed">YouTube-vordering niet beschikbaar. Opgeslagen vordering wordt gebruikt.</string>
-  <string name="morphe_series_tracker_sync_partial">Sommige YouTube-vordering is niet beschikbaar. Opgeslagen posities zijn bewaard.</string>
+  <string name="morphe_series_tracker_sync_failed">YouTube-voortgang is niet beschikbaar. Opgeslagen voortgang wordt gebruikt</string>
+  <string name="morphe_series_tracker_sync_partial">Sommige YouTube-voortgangen zijn niet beschikbaar. Opgeslagen posities worden bewaard</string>
   <string name="morphe_series_tracker_backup_title">Back-up en herstel</string>
   <string name="morphe_series_tracker_backup_summary">Sla je seriesbibliotheek op in een bestand of herstel een back-up</string>
-  <string name="morphe_series_tracker_backup_explanation">Slaat gevolgde series, afleveringsposities en keuzes voor bekeken op. Registratie- en YouTube-vorderingtoestemmingen zijn hierbij niet inbegrepen.</string>
+  <string name="morphe_series_tracker_backup_explanation">Slaat gevolgde series, afleveringsposities en bekeken-keuzes op. Registratie- en YouTube-voortgangsrechten zijn niet inbegrepen</string>
   <string name="morphe_series_tracker_backup_save">Back-up opslaan</string>
   <string name="morphe_series_tracker_backup_restore">Back-up herstellen</string>
-  <string name="morphe_series_tracker_backup_preview">%1$d series toevoegen. %2$d series die al in je bibliotheek staan, blijven behouden. Bestaande videovordering blijft behouden.</string>
+  <string name="morphe_series_tracker_backup_preview">%1$s series toevoegen. %2$s series die al in je bibliotheek zitten, worden bewaard. Bestaande video-voortgang wordt bewaard</string>
   <string name="morphe_series_tracker_backup_saved">Seriesback-up opgeslagen</string>
-  <string name="morphe_series_tracker_backup_restored">%1$d series hersteld</string>
-  <string name="morphe_series_tracker_error_backup_invalid">Dit bestand is geen ondersteunde seriesback-up of te groot. Je bibliotheek is niet gewijzigd.</string>
-  <string name="morphe_series_tracker_error_backup_write">De back-up kon niet worden opgeslagen. Probeer een andere locatie.</string>
+  <string name="morphe_series_tracker_backup_restored">%1$s series hersteld</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Dit bestand is geen ondersteunde serieback-up, of is te groot. Je bibliotheek is niet gewijzigd</string>
+  <string name="morphe_series_tracker_error_backup_write">De back-up kon niet worden opgeslagen. Probeer een andere locatie</string>
   <string name="morphe_series_tracker_removed">Series verwijderd</string>
-  <string name="morphe_series_tracker_recovery_duplicate">Deze aflevering verschijnt nu meer dan eens. Kies welke je wilt voortzetten.</string>
-  <string name="morphe_series_tracker_recovery_missing">Jouw opgeslagen aflevering staat niet meer in deze afspeellijst. Je opgeslagen positie blijft behouden.</string>
-  <string name="morphe_series_tracker_recovery_continue">Voortgaan met aflevering %1$d · %2$s</string>
-  <string name="morphe_series_tracker_recovery_choose">Je kunt ook een andere aflevering hieronder kiezen. Eerdere afleveringen worden niet gewijzigd.</string>
-  <string name="morphe_series_tracker_playback_changed">Deze afspeellijst is gewijzigd. Open de serie om te kiezen waar je wilt voortzetten.</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Deze aflevering verschijnt nu meer dan eens. Kies welke er moet worden vervolgd</string>
+  <string name="morphe_series_tracker_recovery_missing">Je opgeslagen aflevering staat niet meer in deze afspeellijst. Je opgeslagen positie wordt bewaard</string>
+  <string name="morphe_series_tracker_recovery_continue">Ga verder met aflevering %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Je kunt ook elke aflevering hieronder kiezen. Eerdere afleveringen worden niet gewijzigd</string>
+  <string name="morphe_series_tracker_playback_changed">Deze afspeellijst is gewijzigd. Open de serie om te kiezen waar je verder gaat</string>
   <string name="morphe_series_tracker_playback_boundary">Geen afleveringen meer in deze richting</string>
   <string name="morphe_series_tracker_continue_series">Doorgaan met %1$s</string>
   <string name="morphe_series_tracker_search_series">Series zoeken</string>

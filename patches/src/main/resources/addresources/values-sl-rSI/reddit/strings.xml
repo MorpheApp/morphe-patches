@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Postavitev</string>
   <string name="morphe_copy_text_title">Kopiraj besedilo</string>
   <string name="morphe_copy_text_summary">Omogoča izbiro in kopiranje besedila v objavah in komentarjih. Onemogoči strnjevanje komentarjev</string>
-  <string name="morphe_copy_text_user_dialog_message">Strnjevanje komentarjev ne bo delovalo, dokler je omogočeno kopiranje besedila.</string>
+  <string name="morphe_copy_text_user_dialog_message">Strjevanje komentarjev bo prenehalo delovati, ko je omogočeno Kopiraj besedilo</string>
   <string name="morphe_custom_font_title">Poželjna pisava</string>
   <string name="morphe_custom_font_summary">Naložite datoteko pisave TTF ali OTF po spodnji poti. Omogočanje te možnosti onemogoči tudi možnost uporabe sistemske pisave.</string>
   <string name="morphe_custom_font_file_path_title">Datoteka s pożyelnjo pisavo</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Skrije priljubljene police iz vira in predlogov iskanja</string>
   <string name="morphe_remove_notification_dialog_title">Odstrani dialog za predlog obvestil</string>
   <string name="morphe_remove_notification_dialog_summary">Samodejno skrije okno z obvestili, ko obiščete subreddit.</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Prikaži osebna označevanja v domačem viru</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">V domačem viru prikaže oznake za postane</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Nekateri elementi vira morda ne prikazujejo osebne označevanja</string>
   <string name="morphe_show_view_count_title">Prikaži število ogledov na objavah</string>
   <string name="morphe_show_view_count_summary">Omejitev: Na voljo samo, če odziv API vključuje število ogledov</string>
   <string name="morphe_flip_post_action_bar_title">Obrni vrstico dejanj objave</string>

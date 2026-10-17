@@ -87,9 +87,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">設定のインポートに成功しました</string>
   <string name="morphe_sb_settings_import_failed">インポートに失敗しました: %s</string>
   <string name="morphe_sb_settings_export_failed">エクスポートに失敗しました: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"あなたの設定テキストには、SponsorBlock の非公開ユーザー ID が含まれています。
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"設定にはプライベートな SponsorBlock ユーザー ID が含まれています。
 
-このユーザー ID は、パスワードのようなものであり、決して共有すべきではありません。"</string>
+ユーザー ID はパスワードのようなもので、決して共有しないでください。"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">今後表示しない</string>
   <string name="morphe_sb_diff_segments_title">セグメントに対する動作を変更</string>
   <string name="morphe_sb_segments_sponsor">スポンサー (広告)</string>
@@ -152,7 +152,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_ignore">無効</string>
   <string name="morphe_sb_submit_failed_invalid">セグメントの送信に失敗しました: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock は一時的にダウンしています</string>
-  <string name="morphe_sb_submit_failed_unknown_error">セグメントの送信に失敗しました (status: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_unknown_error">セグメントの送信に失敗しました (status: %1$s %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">セグメントの送信に失敗しました (レート制限: 同じユーザー / IP からの通信が多すぎます)</string>
   <string name="morphe_sb_submit_failed_forbidden">セグメントを送信できません: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"セグメントを送信できません。
@@ -160,10 +160,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_succeeded">セグメントの送信に成功しました</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock は一時的に利用できません (API タイムアウト)</string>
-  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock は一時的に利用できません (status %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock は一時的に利用できません (status %s)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock は一時的に利用できません</string>
   <string name="morphe_sb_vote_failed_timeout">セグメントへの投票に失敗しました (API タイムアウト)</string>
-  <string name="morphe_sb_vote_failed_unknown_error">セグメントへの投票に失敗しました (status: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">セグメントへの投票に失敗しました (status: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">セグメントへの投票に失敗しました: %s</string>
   <string name="morphe_sb_vote_upvote">高評価</string>
   <string name="morphe_sb_vote_downvote">低評価</string>
@@ -172,7 +172,7 @@ Second \"item\" text"</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s ～ %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">セグメントのカテゴリを選択してください</string>
-  <string name="morphe_sb_new_segment_disabled_category">カテゴリが「無効」に設定されています。送信するには、設定を変更してください。</string>
+  <string name="morphe_sb_new_segment_disabled_category">カテゴリは設定で無効になっています。送信するにはカテゴリを有効にしてください。</string>
   <string name="morphe_sb_new_segment_title">新しいセグメント </string>
   <string name="morphe_sb_new_segment_mark_time_as_question">%s を SponsorBlock の新しいセグメントの開始位置 / 終了位置に設定しますか？</string>
   <string name="morphe_sb_new_segment_mark_start">開始位置</string>
@@ -211,7 +211,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock が無効です</string>
   <string name="morphe_sb_stats_username">ユーザー名: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">ユーザー名を変更するには、ここをタップしてください</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">ユーザー名の変更に失敗しました (status: %1$d %2$s)</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">ユーザー名の変更に失敗しました (status: %1$s %2$s)</string>
   <string name="morphe_sb_stats_username_changed">ユーザー名の変更に成功しました</string>
   <string name="morphe_sb_stats_reputation">あなたの評価は &lt;b&gt;%.2f&lt;/b&gt; です</string>
   <string name="morphe_sb_stats_submissions">合計で &lt;b&gt;%s&lt;/b&gt; 個のセグメントを作成しました</string>

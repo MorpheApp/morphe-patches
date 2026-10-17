@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">लेआउट</string>
   <string name="morphe_copy_text_title">टेक्स्ट कॉपी करें</string>
   <string name="morphe_copy_text_summary">पोस्ट और टिप्पणियों में टेक्स्ट चुनने और कॉपी करने की अनुमति देता है। टिप्पणियों को संक्षिप्त करना अक्षम करता है</string>
-  <string name="morphe_copy_text_user_dialog_message">कॉपी टेक्स्ट सक्षम होने पर टिप्पणियों को संक्षिप्त करना काम नहीं करेगा।</string>
+  <string name="morphe_copy_text_user_dialog_message">Copy text सक्षम होने के दौरान Collapsing comments काम करना बंद कर देंगे</string>
   <string name="morphe_custom_font_title">कस्टम फ़ॉन्ट</string>
   <string name="morphe_custom_font_summary">नीचे दिए गए पाथ से कस्टम TTF या OTF फ़ॉन्ट फ़ाइल लोड करें। इसे चालू करने पर फ़ोर्स सिस्टम फ़ॉन्ट भी बंद हो जाता है</string>
   <string name="morphe_custom_font_file_path_title">कस्टम फ़ॉन्ट फ़ाइल</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">फ़ीड और सर्च सुझावों से ट्रेंडिंग शेल्फ़ छिपाता है</string>
   <string name="morphe_remove_notification_dialog_title">नोटिफ़िकेशन सुझाव डायलॉग हटाएँ</string>
   <string name="morphe_remove_notification_dialog_summary">किसी सबरेडिट पर जाने पर नोटिफ़िकेशन सुझाव डायलॉग अपने आप हटा देता है</string>
+  <string name="morphe_show_flairs_in_home_feed_title">होम फ़ीड में फ्लेयर दिखाएं</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">होम फ़ीड में पोस्ट फ्लेयर बैज दिखाता है</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">कुछ फ़ीड आइटम फ्लेयर नहीं दिखा सकते</string>
   <string name="morphe_show_view_count_title">पोस्ट पर व्यू काउंट दिखाएँ</string>
   <string name="morphe_show_view_count_summary">सीमा: यह केवल तभी उपलब्ध होगा जब API रिस्पॉन्स में व्यू काउंट शामिल हो</string>
   <string name="morphe_flip_post_action_bar_title">पोस्ट एक्शन बार पलटें</string>

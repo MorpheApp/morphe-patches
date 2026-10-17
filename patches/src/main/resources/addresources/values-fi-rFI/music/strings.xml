@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">Näytä QR</string>
   <string name="morphe_music_jam_done">Valmis</string>
   <string name="morphe_music_jam_invite_title">Kutsu Jamiisi</string>
-  <string name="morphe_music_jam_invite_message">Skannaa liittyäksesi ja muokataksesi tätä jonoa. Jamin lopettaminen peruuttaa kutsun.</string>
+  <string name="morphe_music_jam_invite_message">Skannaa liittyäksesi ja muokata tätä jonotusta. Jamin päätös peruuttaa kutsun</string>
   <string name="morphe_music_jam_copy_link">Kopioi linkki</string>
   <string name="morphe_music_jam_invitation_clip">Jam-kutsu</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam muodostaa yhteyttä uudelleen; yritä hetken kuluttua</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Päivitetään Jamia…</string>
   <string name="morphe_music_jam_finding_host">Etsitään isäntää Wi-Fi-verkosta…</string>
   <string name="morphe_music_jam_waiting_people">Odotetaan ihmisiä</string>
-  <string name="morphe_music_jam_one_connected">%d henkilö liittynyt</string>
-  <string name="morphe_music_jam_many_connected">%d henkilöä liittynyt</string>
-  <string name="morphe_music_jam_code_expires">Anna tämä koodi lähellä olevassa laitteessa. Wi-Fi Aware toimii erillisten lähiverkkojen välillä, kun se on tuettu. Vanhenee %d minuutin kuluttua.</string>
+  <string name="morphe_music_jam_one_connected">%s henkilö yhdistetty</string>
+  <string name="morphe_music_jam_many_connected">%s ihmistä yhdistetty</string>
+  <string name="morphe_music_jam_code_expires">Syötä tämä koodi lähellä olevalle laitteelle. Wi-Fi Aware toimii erillisten LAN-verkkojen välillä, kun sitä tuetaan. Valtuu %s minuutissa</string>
   <string name="morphe_music_jam_seek_to">Siirry kohtaan %s?</string>
   <string name="morphe_music_jam_edits_open">Muokkaukset avoinna</string>
   <string name="morphe_music_jam_edits_locked">Muokkaukset lukittu</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Ei tuettu Jamin aikana</string>
   <string name="morphe_music_jam_cancelled">Liittyminen peruutettu</string>
   <string name="morphe_music_jam_reconnecting_host">Yhdistetään uudelleen isäntääsi…</string>
-  <string name="morphe_music_jam_share_prompt">Jaa jono. Anna kaikkien lisätä kappaleita.</string>
+  <string name="morphe_music_jam_share_prompt">Jaa jonotus. Salli kaikkien lisätä kappaleita</string>
   <string name="morphe_music_jam_invite_people">Kutsu ihmisiä</string>
   <string name="morphe_music_jam_guest_edits">Vieraat voivat muokata jonoa</string>
   <string name="morphe_music_jam_end_jam">Lopeta Jam</string>
-  <string name="morphe_music_jam_participant_help">Isäntä soittaa musiikin. Lisää, siirrä tai poista kappaleita suoraan YouTube Music -jonossa.</string>
-  <string name="morphe_music_jam_joining_help">Pidä molemmat laitteet lähellä. Voit peruuttaa, kun etsimme isäntää.</string>
+  <string name="morphe_music_jam_participant_help">Isäntä soittaa musiikin. Lisää, siirrä tai poista kappaleita suoraan YouTube Music -jonotuksesta</string>
+  <string name="morphe_music_jam_joining_help">Pidä molemmat laitteet lähellä. Voit peruuttaa, kun etsimme isäntää</string>
   <string name="morphe_music_jam_cancel_joining">Peruuta liittyminen</string>
   <string name="morphe_music_jam_leave_jam">Poistu Jamista</string>
   <string name="morphe_music_jam_start_jam">Aloita Jam</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Käyttää valitsemaasi ulkoista latausohjelmaa tavallisen Lataa-pikavalikon sijaan</string>
   <string name="morphe_music_in_app_downloads_title">Lataa sovelluksessa</string>
   <string name="morphe_music_in_app_downloads_summary">Lataa äänen YouTube Musicissa avaamatta ulkoista lataussovellusta</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Kappaleet tallennetaan sovelluksen yksityiseen tallennustilaan, ja ne poistetaan, jos YouTube Music poistetaan.
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Kappaleet tallennetaan sovelluksen yksityiseen varastoon ja ne poistetaan, jos YouTube Music poistetaan.
 
-Kun tämä on päällä, Lataukset-välilehti listaa nämä kappaleet Music Premium -offlinekirjaston sijaan. Kun sen ottaa pois päältä, välilehti palautuu, eikä Premium-latauksiin kosketa koskaan."</string>
+Tämän ollessa päällä Lataukset-välilehti luettelee nämä kappaleet Musiikki Premium -offline-kirjaston sijaan. Sen poistaminen käytöstä palauttaa välilehden, eikä Premium-latauksiin koskaan puututa"</string>
   <string name="morphe_music_downloads_screen_title">Lataukset</string>
   <string name="morphe_music_downloads_empty">"Ei latauksia
 Ladatut kappaleet näkyvät tässä"</string>
@@ -445,7 +445,7 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Mukautettu regex-puhdistus</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Kirjoita mukautettu säännöllinen lauseke poistaaksesi ylimääräistä tekstiä kappaleiden, artistien tai albumien nimistä. Esimerkki: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Jaa artistin ja kappaleen nimi otsikosta</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Erota artistin ja kappaleen nimi videon otsikosta käyttämällä erotinta \" - \". Hyödyllinen uudelleenladatulle sisällölle, jossa kanavan nimeä voidaan käyttää artistina.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Pura artistin ja kappaleen nimi videon otsikosta käyttäen \" - \" -eronmerkkiä. Hyödyllinen uudelleenladatuille sisällöille, joissa kanavan nimiä saatetaan käyttää artistin nimessä</string>
   <string name="morphe_music_scrobbling_guess_album_title">Täytä puuttuva albumi</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Kun musiikki ei sisällä albumia, hae se Last.fm:stä, jotta scrobble on täydellinen.</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ Varmistaaksesi, että scrobbling synkronoidaan taustatoiston aikana, varmista, e
   <string name="morphe_music_lyrics_section_service_title">Sanoituspalvelu</string>
   <string name="morphe_music_lyrics_section_overlay_title">Päällekkäisnäyttö</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronointi.</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Kaikki palveluntarjoajat poistettu käytöstä — sisäänrakennetut ja upotetut sanoitukset.</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI-päätepiste</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Kaikki tarjoajat poissa päältä — sisäänrakennetut sävelsanat ja upotetut sävelsanat</string>
   <string name="morphe_music_lyrics_source_reset_title">Palautetaanko palveluntarjoajien järjestys?</string>
   <string name="morphe_music_lyrics_source_reset_message">Palauta palveluntarjoajat oletusarvoiseen prioriteettijärjestykseen.</string>
   <string name="morphe_music_token_dialog_get_token">Hae tunnus.</string>
@@ -473,7 +474,7 @@ Vaiheet:
 3. Kopioi arvo kohdasta \"media-user-token\""</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token tallennettu</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token tyhjennetty</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: virheellinen media-user-token — tarkista ja yritä uudelleen</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: virheetön media-user-token - tarkista ja yritä uudelleen</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Liitä sp_dc-eväste Spotifysta.
 
@@ -483,7 +484,7 @@ Vaiheet:
 3. Kopioi \"sp_dc\":n arvo"</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Ilman sitä Lyricallyä käytetään varavaihtoehtona.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc tyhjennetty</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: virheellinen sp_dc — tarkista ja yritä uudelleen</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: virhetön sp_dc - tarkista ja yritä uudelleen</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music -token on valinnainen. Ilman sitä käytetään Lyricallyä varavaihtoehtona.</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Kopioi \"arl\"-arvo.</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Liitä arl-eväste Deezeristä.
@@ -494,21 +495,21 @@ Vaiheet:
 3. Kopioi \"arl\":n arvo"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl tallennettu.</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Virheellinen ARL, yritä uudelleen.</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: virheellinen arl — tarkista ja yritä uudelleen</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: virhetön arl - tarkista ja yritä uudelleen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopioi käyttäjätunnuksen arvo.</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Lisää token vain käyttääksesi omaa tiliäsi. Sen on oltava peräisin Musixmatchin Android-sovelluksesta: musixmatch.com-sivustolta kopioidut tokenit kuuluvat käytöstä poistetulle työpöytäsovellukselle, eikä API hyväksy niitä.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch toimii ilman tokenia, joten tämä kenttä voidaan jättää tyhjäksi.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Virheellinen käyttäjätunnus, yritä uudelleen.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: käyttäjäntunnus tallennettu</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: käyttäjäntunnus tyhjennetty</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: virheellinen käyttäjäntunnus — tarkista ja yritä uudelleen</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: virhetön käyttäjätunnus - tarkista ja yritä uudelleen</string>
   <string name="morphe_music_youtube_cookies_title">YouTuben evästeet.</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Liitä […] Kopioi koko evästerivi (avain=arvo-parit puolipisteillä erotettuina)
 
 Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO."</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: evästeet tallennettu.</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: evästeet tyhjennetty.</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: virheelliset evästeet — tarkista ja yritä uudelleen.</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: virheelliset evästeet - tarkista ja yritä uudelleen</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Napauta riviä siirtyäksesi</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Rivin napauttaminen hyppää siihen kohtaan kappaleessa</string>
   <string name="morphe_music_lyrics_show_section_title">Näytä osiotunnisteet</string>
@@ -519,6 +520,12 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_show_translate_button_summary">Napauta vaihtaaksesi käännöksen; pitkä painallus vain käännöstä varten. Käyttää palveluntarjoajan käännöksiä, Google Kääntäjää tai OpenAI-yhteensopivaa API:ta</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Näytä romanisointipainike.</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Napauta vaihtaaksesi romanisoinnin; pitkä painallus vain romanisointia varten. Käyttää palveluntarjoajan romanisointia, Google Kääntäjää tai OpenAI-yhteensopivaa API:ta</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Paikallinen latinisointi</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Latinalaistetaan laitteella, kun tarjoaja, OpenAI-yhteensopiva päätepiste ja Google Translate ovat epäonnistuneet. Vain CJK-kielit, noin 80 Mt äännetietoja ladattavaksi.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d %%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Äänteet %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Äänteet valmiina (%1$d CJK-sanaa)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Lataus epäonnistui — poista käytöstä ja ota käyttöön uudelleen yrittääksesi uudelleen</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Napauta vaihtaaksesi seuraavaan sanoitusehdotukseen; pitkä painallus päivittää.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Napauta vaihtaaksesi seuraavaan sanoitusehdokkaaseen; paina pitkään hakeaksesi sanoituksia kappaleen nimen ja artistin perusteella</string>
   <string name="morphe_music_lyrics_search_dialog_title">Hae sanoituksia</string>
@@ -529,6 +536,8 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_saved">Tallennettu</string>
   <string name="morphe_music_lyrics_word_sync_title">Korosta synkronoidut sanat tai tavut</string>
   <string name="morphe_music_lyrics_word_sync_summary">Priorisoi sana sanalta -lyriikat, kun ne ovat saatavilla. Kun lyriikoissa on sanan ajoitus, korostaa jokaisen sanan tai tavun musiikin tahdissa</string>
+  <string name="morphe_music_lyrics_split_background_title">Näytä taustalaulu erikseen</string>
+  <string name="morphe_music_lyrics_split_background_summary">Siirtää sulkuihin kirjoitetun taustalaulun, kuten \"(Oh) I want you\", laulun sävellysviivan ulkopuolelle omaksi himmeämmäksi rivikseen</string>
   <string name="morphe_music_lyrics_hide_played_title">Piilota soitetut lyriikat</string>
   <string name="morphe_music_lyrics_hide_played_summary">Piilota lyriikkarivit nykyisen soittorivin yläpuolelta</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Piilota soittamattomat lyriikat</string>
@@ -553,25 +562,47 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_sb_no_video">Tällä kappaleella ei ole videotunnusta lähetettäväksi</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Lähde: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Pitkä painaminen kopiointipainiketta tallentaa tämän LRC:n; jos pystyt hienosäätämään ajastuksia jakamaan ne yhteisön tarjoajille, kiitämme.</string>
   <string name="morphe_music_lyrics_translated_by_google">Kääntänyt Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Romanisoinut Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Kääntänyt %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Latinisoinut %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Latinisoitu tekijän %s toimesta</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Käännetty</string>
   <string name="morphe_music_lyrics_translation_language_title">Käännöskieli</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Latinisointikieli</string>
   <string name="morphe_music_lyrics_translating">Käännetään…</string>
   <string name="morphe_music_lyrics_translate_failed">Sanoituksia ei voitu kääntää</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanisoitu</string>
+  <string name="morphe_romanize_language_DEFAULT">Automaattinen</string>
   <string name="morphe_music_lyrics_romanizing">Romanisoidaan…</string>
   <string name="morphe_music_lyrics_romanize_failed">Lyriikoiden romanisointi epäonnistui</string>
   <string name="morphe_music_lyrics_translate_only">Vain käännös</string>
   <string name="morphe_music_lyrics_romanize_only">Vain romanisoituna</string>
+  <string name="morphe_music_lyrics_dual_only">Kaksoismoodi</string>
   <string name="morphe_music_lyrics_copied">Kopioitu leikepöydälle</string>
   <string name="morphe_music_lyrics_refreshing">Päivitetään</string>
   <string name="morphe_music_lyrics_refreshed">Päivitetty</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-avain</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkriboi tai ajoittaa sanoitukset nykyiseen kappaleeseen. Erillinen palvelu, joka ei liity edellä mainittuun OpenAI-yhteensopivaan päätepisteeseen.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-avain tallennettu. Käytä kohdistuspainiketta sanoitushakupaneelissa tai paneelin kehotettaessa, kun kappaaleella ei ole sanoituksia.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API-avain tallennettu</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC ei hyväksynyt kyseistä avainta</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API-avain nollattu</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC ajoittaa sanoitukset, joilla ei ole aikaleimoja, tai transkriboi ne kappaleesta luoton kuluttaen. Avaimen ollessa asetettuna kappaleet, joilla ei ole sanoituksia, tarjoavat transkriptiota ja hakupaneeliin tulee kohdistuspainike.</string>
+  <string name="morphe_music_lyrics_transcribe_align">Pyydä QuickLRC-kohdistusta</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Kohtiutaan</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Ota kohdistus käyttöön</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Pyydä QuickLRC-transkriptioita</string>
+  <string name="morphe_music_lyrics_transcribe_working">Transkrioidaan</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Transkriptio peruutettu</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Vain YouTubesta soitettuja kappaleita voi transkriboida</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Ei sanoituksia kohdistettavaksi — transkriboidaan sen sijaan</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC ei pystynyt käsittelemään tätä kappaletta</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-luodot loppuivat tältä kappaleelta</string>
   <string name="morphe_music_lyrics_about_summary">"Sanoitukset yhdistetään kappaleen nimen ja esittäjän perusteella. Epätavalliset metatiedot voivat jättää tulokset löytymättä tai tuottaa väärän version. Käytä päivitystä vaihtaaksesi versiota. Tähdellä (*) merkityt palveluntarjoajat vaativat tunnuksen. Kaikkia käytössä olevia palveluntarjoajia ei aina pyydetä haluamassasi järjestyksessä, vaan ne vastaavat nopeutensa mukaan."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Ota käyttöön vain käyttämäsi palveluntarjoajat, tai pidä oletusasetus — jatkuvat pyynnöt voivat ylikuormittaa pieniä yhteisöllisiä sanoitussivustoja</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Ota käyttöön vain sinä käyttämäsi tarjoajat tai jätä oletusarvo - jatkuva pyyntö voi kuormittaa pienet yhteisöiden sanalause-sivustot</string>
   <string name="morphe_music_lyrics_hide_info_title">Piilota tekijätietorivi</string>
   <string name="morphe_music_lyrics_hide_info_summary">Piilota lyriikoiden alla näkyvä tekijätietorivi</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Vaihda käännöksen ja romanisoinnin paikkaa</string>
@@ -584,17 +615,17 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_use_ai_section_title">Tekoälyosio</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Käytetään vain, kun palveluntarjoaja ei toimita osioiden tunnisteita, kuten Kertosäe tai Säkeistö, jolloin OpenAI-yhteensopiva mallisi tunnistaa ne</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">Tekoälyasetukset</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Määritä OpenAI-yhteensopiva API-päätepiste tekoälyavusteiseen sanoitusten kääntämiseen, romanisointiin ja osioiden tunnistamiseen.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Määritä OpenAI-yhteensopiva API-päätepiste tekoälyvoimaiseen sanoituskäännökseen, latinisointiin ja osioinnin.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-päätepisteen URL-osoite (esim. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-avain (jätä tyhjäksi anonyymiä käyttöä varten)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Mallin nimi (esim. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Kehotepohja</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Paikkamerkit: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">Kehotepohja</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Kehote tallennettu</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Tehtäväpohja tallennettu, mutta tekoälyn päätepiste ei ole vielä käyttökelpoinen. Määritä se ensiksi tekoälyasetuksissa.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Kehote nollattu</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Tekoälyasetukset tallennettu</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Yhteyttä tekoälypäätepisteeseen ei voitu muodostaa. Tarkista asetuksesi.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Yhteyttä AI-päätepisteeseen ei voitu muodostaa. Tarkista asetuksesi</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Tekoälyasetukset nollattu</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">Malli %1$s määritetty</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Perus-URL-osoite ei voi olla tyhjä</string>

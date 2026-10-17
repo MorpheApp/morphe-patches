@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Vložte jméno balíčku </string>
   <string name="morphe_external_downloader_other_item">Jiné</string>
   <string name="morphe_external_downloader_not_found_title">Aplikace není nainstalována</string>
-  <string name="morphe_external_downloader_not_installed_warning">Aplikace %s není nainstalována. Prosím, nainstalujte ji.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s není nainstalován. Nainstalujte jej</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Nepodařilo se najít nainstalovanou aplikaci s názvem balíčku: %s
 
 Ověřte, zda je název balíčku správný a zda je aplikace nainstalována"</string>
@@ -84,7 +84,7 @@ Pokud chcete ikonu změnit všude, aplikujte záplatu znovu a změňte volbu zá
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe přehrávání</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornění Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaše historie sledování není ukládána.&lt;br&gt;&lt;br&gt;Toto je s největší pravděpodobností způsobeno blokátorem reklam DNS nebo síťovým proxy.&lt;br&gt;&lt;br&gt;Pro opravu toho přidejte na bílý seznam &lt;b&gt;s.youtube.com&lt;/b&gt; nebo vypněte všechny blokátory DNS a proxy.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaše historie sledování není ukládána.&lt;br&gt;&lt;br&gt;Příčinou je s největší pravděpodobností DNS blokátor reklam nebo síťový proxy server.&lt;br&gt;&lt;br&gt;Chcete-li to opravit, přidejte&lt;b&gt;s.youtube.com&lt;/b&gt; na whitelist nebo vypněte všechny DNS blokátory a proxy servery</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Znovu nezobrazovat</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falšovat video streamy</string>
@@ -134,7 +134,7 @@ Pro přihlášení stiskněte pokračovat níže"</string>
 • Jestliže změníte své heslo Googlu nebo odstraníte toto zařízení z Vašich nastavení Googlu, budete muset znovu se přihlásit."</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 dočasně není k dispozici (Časový limit API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Přihlášení do Android VR vypršelo, zkuste se přihlásit do VR znovu</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 dočasně není k dispozici (stav %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 je dočasně nedostupný (stav %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 dočasně není k dispozici</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nelze se přihlásit do VR, autentizace webové stránky nebyla schválena</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nemůže se přihlásit do VR: %s</string>
@@ -197,7 +197,7 @@ Pro přihlášení stiskněte pokračovat níže"</string>
 
 To může pomoci identifikovat komponenty při vytváření vlastních filtrů.
 
-Povolením této možnosti se však budou zaznamenávat i některá uživatelská data, jako je vaše IP adresa."</string>
+Povolením této možnosti se však budou zaznamenávat i některá uživatelská data, jako je vaše IP adresa"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Vlastní filtr</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurujte vlastní filtry pro skrytí libovolné komponenty</string>
@@ -238,11 +238,11 @@ Zapněte ‚Spoofovat video streamy‘, abyste opravili přehrávání"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Napodobit verzi aplikace</string>
   <string name="morphe_spoof_app_version_summary">Oklame server, aby si myslel, že používáte starší verzi aplikace a tím obnovil starší prvky uživatelského rozhraní</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Verze aplikace bude změněna na starší verzi.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Verze aplikace bude padána jako starší verze.
 
-To změní vzhled a funkce aplikace, ale mohou se objevit neznámé vedlejší efekty.
+To změní vzhled a funkce aplikace, ale mohou se objevit neznámé vedlejší účinky.
 
-Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabránilo chybám uživatelského rozhraní."</string>
+Pokud bude později vypnuto, doporučujeme vymazat data aplikace, aby se zabránilo chybám uživatelského rozhraní"</string>
   <string name="morphe_spoof_app_version_target_title">Cíl napodobení verze aplikace</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Obnovovací frekvence aplikace</string>
@@ -265,7 +265,7 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Nelíbí se se dočasně nedají použít (časový limit API)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Nelíbí se se nedají použít (stav %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Nelíbí se se nedají použít (stav %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Počty „Nelíbí se mi“ nejsou k dispozici (limit rozhraní API klienta)</string>
   <string name="morphe_ryd_failure_generic">Nelíbí se se nedají použít (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -293,12 +293,12 @@ ID videa, které sledujete, je odesláno do API Return YouTube Dislike a vaše l
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Nelíbí se se dočasně nedají použít – aktivní limit rychlosti klienta API</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Načítání hlasů rozhraní API, počet volání</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nebyla provedena žádná síťová volání</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d síťových volání provedeno</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Provedeno %s síťových volání</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Načítání hlasů rozhraní API, počet časových limitů</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Žádné síťové volání nevypršelo</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d síťových volání vypršelo</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Časový limit pro %s síťových volání vypršel</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Limity rychlosti klienta API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nebyla detekována žádná omezení rychlosti klienta</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Omezení rychlosti klienta bylo detekováno %d krát</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d milisekund</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Setkali jste se s omezením rychlosti klienta %s krát</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milisekund</string>
 </resources>

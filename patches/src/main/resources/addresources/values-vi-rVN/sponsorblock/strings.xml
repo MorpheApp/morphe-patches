@@ -87,9 +87,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">Cài đặt đã được nhập thành công</string>
   <string name="morphe_sb_settings_import_failed">Nhập thất bại: %s</string>
   <string name="morphe_sb_settings_export_failed">Xuất thất bại: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Cài đặt của bạn có chứa mã người dùng riêng tư của SponsorBlock.
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Cài đặt của bạn chứa mã định danh người dùng SponsorBlock riêng tư.
 
-Cứ tưởng tượng mã này như mật khẩu Facebook đi, đừng chia sẻ với bất kỳ ai :D"</string>
+Mã định danh người dùng giống như mật khẩu, và nó không bao giờ được chia sẻ"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Không hiện lại nữa</string>
   <string name="morphe_sb_diff_segments_title">Thay đổi hành vi phân đoạn</string>
   <string name="morphe_sb_segments_sponsor">Tài trợ</string>
@@ -152,17 +152,17 @@ Cứ tưởng tượng mã này như mật khẩu Facebook đi, đừng chia s�
   <string name="morphe_sb_skip_ignore">Tắt</string>
   <string name="morphe_sb_submit_failed_invalid">Không thể gửi phân đoạn: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock tạm thời không hoạt động</string>
-  <string name="morphe_sb_submit_failed_unknown_error">Không thể gửi phân đoạn (trạng thái: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Không thể gửi phân đoạn (trạng thái: %1$s %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Không thể gửi phân đoạn. Giới hạn tỷ lệ (quá nhiều từ cùng một người dùng hoặc IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Không thể gửi phân đoạn: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Không thể gửi phân đoạn trùng lặp."</string>
   <string name="morphe_sb_submit_succeeded">Phân đoạn được gửi thành công</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock tạm thời không khả dụng (hết thời gian chờ API)</string>
-  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock tạm thời không khả dụng (trạng thái %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock tạm thời không khả dụng (trạng thái %s)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock tạm thời không khả dụng</string>
   <string name="morphe_sb_vote_failed_timeout">Không thể bỏ phiếu phân đoạn (hết thời gian chờ API)</string>
-  <string name="morphe_sb_vote_failed_unknown_error">Không thể bỏ phiếu phân đoạn (trạng thái: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Không thể bỏ phiếu phân đoạn (trạng thái: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Không thể bỏ phiếu cho phân đoạn: %s</string>
   <string name="morphe_sb_vote_upvote">Ủng hộ</string>
   <string name="morphe_sb_vote_downvote">Phản đối</string>
@@ -171,7 +171,7 @@ Cứ tưởng tượng mã này như mật khẩu Facebook đi, đừng chia s�
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s đến %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">Chọn danh mục phân đoạn</string>
-  <string name="morphe_sb_new_segment_disabled_category">Danh mục này bị tắt trong cài đặt. Bật danh mục để gửi.</string>
+  <string name="morphe_sb_new_segment_disabled_category">Danh mục này bị tắt trong cài đặt. Bật danh mục để gửi</string>
   <string name="morphe_sb_new_segment_title">Tạo phân đoạn SponsorBlock mới</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Đặt %s là bắt đầu hoặc là kết thúc của một phân đoạn mới?</string>
   <string name="morphe_sb_new_segment_mark_start">Bắt đầu</string>
@@ -210,7 +210,7 @@ Nếu bạn chưa muốn gửi đoạn nổi bật, hãy bấm Hủy và đánh 
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock đã tắt</string>
   <string name="morphe_sb_stats_username">Tên người dùng của bạn: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Chạm vào đây để thay đổi tên người dùng của bạn</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Không thay đổi được tên người dùng: Trạng thái: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Không thay đổi được tên người dùng: Trạng thái: %1$s %2$s</string>
   <string name="morphe_sb_stats_username_changed">Tên người dùng đã được thay đổi thành công</string>
   <string name="morphe_sb_stats_reputation">Danh tiếng của bạn là &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Bạn đã tạo &lt;b&gt;%s&lt;/b&gt; phân đoạn</string>

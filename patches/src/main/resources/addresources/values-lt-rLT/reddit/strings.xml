@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Išdėstymas</string>
   <string name="morphe_copy_text_title">Kopijuoti tekstą</string>
   <string name="morphe_copy_text_summary">Leidžia žymėti ir kopijuoti tekstą įrašuose ir komentaruose. Išjungia komentarų sutraukimą</string>
-  <string name="morphe_copy_text_user_dialog_message">Komentarų sutraukimas nustos veikti, kol įjungtas teksto kopijavimas.</string>
+  <string name="morphe_copy_text_user_dialog_message">Kai įjungta teksto kopijavimo funkcija, komentarų sutraukimas neveiks</string>
   <string name="morphe_custom_font_title">Pasirinktinis šriftas</string>
   <string name="morphe_custom_font_summary">Įkelkite pasirinktinį TTF arba OTF šrifto failą iš toliau nurodyto kelio. Įjungus šią parinktį taip pat išjungiama parinktis „Naudoti sistemos šriftą“</string>
   <string name="morphe_custom_font_file_path_title">Pasirinktinio šrifto failas</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Paslepia Populiariausių skyrių naujienų ir paieškos pasiūlymuose</string>
   <string name="morphe_remove_notification_dialog_title">Pašalinti pranešimo pasiūlymą dialogo langas</string>
   <string name="morphe_remove_notification_dialog_summary">Automatiškai uždaro pranešimo pasiūlymo dialogo langą, kai aplankyta subredditas</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Rodyti žymes pagrindinėje skiltyje</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Rodo postų žymių ženklelius pagrindinėje skiltyje</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Kai kuriuose skilties elementuose gali nebūti žymės</string>
   <string name="morphe_show_view_count_title">Rodyti peržiūrų skaičių įrašuose</string>
   <string name="morphe_show_view_count_summary">Apribojimas: Prieinama tik tuomet, kai API atsakyme yra parodyta skaičių suma.</string>
   <string name="morphe_flip_post_action_bar_title">Apversti įrašo veiksmų juostą</string>

@@ -32,17 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_auto_pause_on_screen_lock_off">کوژاوە</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
-  <string name="morphe_disable_layout_updates_user_dialog_message">"شێوازی ئەپەکە دەگەڕێتەوە بۆ ئەو شێوازەی کە بەکارهاتووە کاتێک بۆ یەکەمجار دامەزراوە.
-
- ڕەنگە هەندێک لە نەخشەکانی لای سێرڤەر نەگەڕێنەوە.
-
- گۆڕانکارییەکان بریتین لە:
- • پێکهاتەکانی ناو مینیوی فڕینی پێکردن (یان ڕێکخستنە پەیوەندیدارەکان) لەوانەیە کار نەکەن.
- • ژمارە ڕۆڵینەکان ئەنیمەیشن نین.
- • تابی کتێبخانە پیشان دەدرێت.
- • بەشی مۆسیقای وەسفکردنی ڤیدیۆ لەوانەیە کار نەکات.
- • ناتوانرێت شتەکانی مینیوی فڕینی پێکردن بشاردرێتەوە.
- • لەوانەیە دوگمەی گۆڕینی هەژمار لە تابی کتێبخانەدا دەرنەکەوێت."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">فلتەری مێنۆی فڕینی پێشهات چالاک بکە</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">فلتەری مێنۆی فلای ئاوتی پێشهات</string>
@@ -259,6 +248,7 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">به‌کارھێنانی زیروکان قایم بگرە</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">کوژاوە</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_caption_cookies_title">کێکەکان</string>
   <string name="morphe_get_caption_cookies_title">کێکەکانی ناوی سەره‌نگ</string>
@@ -441,6 +431,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">کوژاوە</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">خوارەوە</string>
   <string name="morphe_miniplayer_type_title">جۆرەی خوارەوە</string>
@@ -488,7 +479,7 @@ Second \"item\" text"</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">بەڵكو لە ڕەوشتەوە پاشخانی كەشناسی دەربخە</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">چەستیكردنی ئەم شێوە دەتوانێت دەربازبوونی ڤیديۆ كەش بكەوێتە خوارووی، زۆر كاری شارژە زۆر بێت، و لاوازییەكانی نەزانراو دروست بكات.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">چەستیكردنی ئەم شێوە دەتوانێت دەربازبوونی ڤیديۆ كەش بكەوێتە خوارووی، زۆر كاری شارژە زۆر بێت، و لاوازییەكانی نەزانراو دروست بكات</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">پێدایەکی هێما (Haptic feedback)</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">بکوژین هەستی haptics بۆ بەشەکان</string>
@@ -497,7 +488,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">خه‌مه‌كانی پۆشینی ڕیوه‌ڵه‌وه‌ هه‌ڵده‌ده‌سته‌.</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">عیبهی زۈم دەس نالوײەە تا ڕاۈە</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">هەركێ ڕوخی نیگەړانت گۆری ڕووخانی دڵسۈکره، پەرگەتەن و كارخوری مایكروجی دەر داسةكی زۆر بۊرى</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.buffer.playbackBufferPatch -->
@@ -524,7 +514,7 @@ Second \"item\" text"</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_video_quality_prioritize_title">به‌هۆی باوه‌ڕی به‌رهه‌می ڤیدۆ، خاڵه‌کان پێشێل بکه‌.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"چالاکی کردنی ئەم ڕێکخستنە دەکرێت بەکارهێنانێک لە دەربڕەخستنی نەرمەکاری AV1."</string>
+  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"چالاکی کردنی ئەم ڕێکخستنە دەکرێت بەکارهێنانێک لە دەربڕەخستنی نەرمەکاری AV1"</string>
   <string name="morphe_spoof_video_streams_about_title">لائەكانی دروستكردن</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• ناکۆكی كۆدێكی ڤیدیۆ ڤێ (AV1) نییه</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• دەربارەی پێشبڕکێی دەنگی پاوەستادار، ئەو پێشبڕکێی پێشبڕکێ دەست نەکەوێت</string>

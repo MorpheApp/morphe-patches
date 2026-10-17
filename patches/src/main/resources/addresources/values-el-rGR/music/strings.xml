@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">Εμφάνιση QR</string>
   <string name="morphe_music_jam_done">Τέλος</string>
   <string name="morphe_music_jam_invite_title">Πρόσκληση στο Jam σας</string>
-  <string name="morphe_music_jam_invite_message">Σαρώστε για να συμμετάσχετε και να επεξεργαστείτε αυτήν την ουρά. Ο τερματισμός του Jam ανακαλεί την πρόσκληση.</string>
+  <string name="morphe_music_jam_invite_message">Σκανάρετε για να ενταχθείτε και να επεξεργαστείτε αυτή τη λίστα αναμονής. Η τερματισμός του Jam ακυρώνει την πρόσκληση</string>
   <string name="morphe_music_jam_copy_link">Αντιγραφή συνδέσμου</string>
   <string name="morphe_music_jam_invitation_clip">Πρόσκληση Jam</string>
   <string name="morphe_music_jam_reconnecting_toast">Το Jam επανασυνδέεται· δοκιμάστε ξανά σύντομα</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Ενημέρωση Jam…</string>
   <string name="morphe_music_jam_finding_host">Αναζήτηση του οικοδεσπότη σας μέσω Wi-Fi…</string>
   <string name="morphe_music_jam_waiting_people">Αναμονή για άτομα</string>
-  <string name="morphe_music_jam_one_connected">Συνδέθηκε %d άτομο</string>
-  <string name="morphe_music_jam_many_connected">Συνδέθηκαν %d άτομα</string>
-  <string name="morphe_music_jam_code_expires">Εισαγάγετε αυτόν τον κωδικό σε μια κοντινή συσκευή. Το Wi-Fi Aware λειτουργεί σε ξεχωριστά LAN όταν υποστηρίζεται. Λήγει σε %d λεπτά.</string>
+  <string name="morphe_music_jam_one_connected">Συνδεδεμένες άνθρωποι %s</string>
+  <string name="morphe_music_jam_many_connected">%s άνθρωπο συνδεδεμένοι</string>
+  <string name="morphe_music_jam_code_expires">Είστεψε αυτόν τον κωδικό σε μια πλησιαία μονάδα. Το Wi-Fi Aware λειτούργει αναμέσα χωριστά LAN όταν υποστηρείται. Λήγει σε %s λλίπα</string>
   <string name="morphe_music_jam_seek_to">Μετάβαση στο %s;</string>
   <string name="morphe_music_jam_edits_open">Επεξεργασία ανοιχτή</string>
   <string name="morphe_music_jam_edits_locked">Επεξεργασία κλειδωμένη</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Δεν υποστηρίζεται κατά τη διάρκεια του Jam</string>
   <string name="morphe_music_jam_cancelled">Η συμμετοχή ακυρώθηκε</string>
   <string name="morphe_music_jam_reconnecting_host">Επανασύνδεση με τον οικοδεσπότη σας…</string>
-  <string name="morphe_music_jam_share_prompt">Μοιραστείτε μια ουρά αναπαραγωγής. Αφήστε όλους να προσθέτουν τραγούδια.</string>
+  <string name="morphe_music_jam_share_prompt">Ταμίαστε μια οποτά. Αφήστε όλους να προσθετίσουν τραγούδια</string>
   <string name="morphe_music_jam_invite_people">Πρόσκληση ατόμων</string>
   <string name="morphe_music_jam_guest_edits">Οι επισκέπτες μπορούν να επεξεργάζονται την ουρά</string>
   <string name="morphe_music_jam_end_jam">Τερματισμός Jam</string>
-  <string name="morphe_music_jam_participant_help">Ο οικοδεσπότης αναπαράγει τη μουσική. Προσθέστε, μετακινήστε ή αφαιρέστε τραγούδια απευθείας στην ουρά του YouTube Music.</string>
-  <string name="morphe_music_jam_joining_help">Κρατήστε και τις δύο συσκευές κοντά. Μπορείτε να ακυρώσετε όσο αναζητούμε τον οικοδεσπότη.</string>
+  <string name="morphe_music_jam_participant_help">Ο διοργανωτής παίζει τη μουσική. Προσθέστε, μετακινήστε ή αφαιρέστε τραγούδια απευθείας στη λίστα αναμονής του YouTube Music</string>
+  <string name="morphe_music_jam_joining_help">Κρατήστε τις δύο συσκευές κοντά. Μπορείτε να ακυρώσετε τη διαδικασία ενώ αναζητούμε τον διοργανωτή</string>
   <string name="morphe_music_jam_cancel_joining">Ακύρωση συμμετοχής</string>
   <string name="morphe_music_jam_leave_jam">Αποχώρηση από το Jam</string>
   <string name="morphe_music_jam_start_jam">Έναρξη Jam</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Χρησιμοποιεί τον επιλεγμένο εξωτερικό λήπτη αντί για το προεπιλεγμένο μενού «Λήψη»</string>
   <string name="morphe_music_in_app_downloads_title">Λήψη εντός εφαρμογής</string>
   <string name="morphe_music_in_app_downloads_summary">Κατεβάζει ήχο μέσα στο YouTube Music αντί να ανοίγει την εξωτερική εφαρμογή λήψης</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Τα κομμάτια αποθηκεύονται στον ιδιωτικό χώρο αποθήκευσης της εφαρμογής και διαγράφονται αν απεγκατασταθεί το YouTube Music.
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Τα κομμάτια αποθηκεύονται στον ιδιωτικό χώρο αποθήκευσης της εφαρμογής και διαγράφονται εάν το YouTube Music εγκατασταθεί από τις συσκευές.
 
-Όσο αυτό είναι ενεργό, η καρτέλα Λήψεις παραθέτει αυτά τα κομμάτια αντί για την offline βιβλιοθήκη του Music Premium. Αν το απενεργοποιήσετε, η καρτέλα επανέρχεται και οι λήψεις Premium δεν επηρεάζονται ποτέ."</string>
+Εφόσον είναι ενεργοποιημένη, η καρτέλα Λήψεις εμφανίζει αυτά τα κομμάτια αντί για την αρχεία Premium εκτός σύνδεσης. Ο ανενεργοποίησης επαναφέρει την καρτέλα, και οι λήψεις Premium δεν επηρεάζονται ποτέ"</string>
   <string name="morphe_music_downloads_screen_title">Λήψεις</string>
   <string name="morphe_music_downloads_empty">"Δεν υπάρχουν λήψεις
 Τα κομμάτια που έχετε κατεβάσει εμφανίζονται εδώ"</string>
@@ -445,7 +445,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Προσαρμοσμένος καθαρισμός regex</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Εισαγάγετε μια προσαρμοσμένη κανονική έκφραση για να αφαιρέσετε επιπλέον κείμενο από τους τίτλους τραγουδιών, τους καλλιτέχνες ή τα άλμπουμ. Παράδειγμα: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Ανάλυση καλλιτέχνη και κομματιού από τον τίτλο</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Εξαγωγή ονόματος καλλιτέχνη και κομματιού από τον τίτλο του βίντεο χρησιμοποιώντας τον διαχωριστή \" - \". Χρήσιμο για περιεχόμενο που έχει επαναφορτωθεί όπου το όνομα του καναλιού μπορεί να χρησιμοποιηθεί ως καλλιτέχνης.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Εξαγάγετε το όνομα καλλιτέχνη και τίτλου κομματιού από τον τίτλο της βίντεο χρησιμοποιώντας τον διαχωριστή \" - \". Χρήσιμο για περιεχόμενο που έχει ξαναανεβεί, όπου το όνομα του καναλιού μπορεί να χρησιμοποιείται ως ονομασία καλλιτέχνη</string>
   <string name="morphe_music_scrobbling_guess_album_title">Συμπληρώστε το άλμπουμ που λείπει</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Όταν η μουσική δεν περιλαμβάνει άλμπουμ, αναζητήστε το στο Last.fm για να ολοκληρωθεί το scrobble σας</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_section_service_title">Υπηρεσία στίχων</string>
   <string name="morphe_music_lyrics_section_overlay_title">Επικάλυψη</string>
   <string name="morphe_music_lyrics_section_sync_title">Συγχρονισμός</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Όλοι οι πάροχοι είναι απενεργοποιημένοι — στίχοι της εφαρμογής και στίχοι ενσωματωμένοι στα αρχεία</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">Τερματικό σημείο AI</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Όλοι οι πάροχοι απενεργοποιημένοι — ενσωματωμένα στίχοι και εντοιχισμένοι στίχοι</string>
   <string name="morphe_music_lyrics_source_reset_title">Επαναφορά σειράς παρόχων;</string>
   <string name="morphe_music_lyrics_source_reset_message">Επαναφορά των παρόχων στην προεπιλεγμένη σειρά προτεραιότητας</string>
   <string name="morphe_music_token_dialog_get_token">Λήψη token</string>
@@ -473,7 +474,7 @@ Second \"item\" text"</string>
 3. Αντιγράψτε την τιμή του \"media-user-token\""</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: το media-user-token αποθηκεύτηκε</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: το media-user-token διαγράφηκε</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: μη έγκυρο media-user-token — ελέγξτε το και δοκιμάστε ξανά</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: ακύριο διαρυστικό χαρακτηριστικό μεγαλήτα – ελέγξτε ενεργή και δοκιμάστε</string>
   <string name="morphe_music_spotify_token_title">Spotify: Αντιγράψτε την τιμή του \"sp_dc\".</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Επικολλήστε το cookie sp_dc από το Spotify.
 
@@ -483,7 +484,7 @@ Second \"item\" text"</string>
 3. Αντιγράψτε την τιμή του \"sp_dc\""</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: το sp_dc αποθηκεύτηκε</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: το sp_dc διαγράφηκε</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: μη έγκυρο sp_dc — ελέγξτε το και δοκιμάστε ξανά</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: ακύριο sp_dc – ελέγξτε ενεργή και δοκιμάστε</string>
   <string name="morphe_music_apple_token_optional_hint">Το Apple Music token είναι προαιρετικό. Χωρίς αυτό, θα χρησιμοποιηθεί το Lyrically ως εναλλακτική.</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Επικολλήστε το cookie arl από το Deezer.
@@ -494,21 +495,21 @@ Second \"item\" text"</string>
 3. Αντιγράψτε την τιμή του \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: το ARL αποθηκεύτηκε.</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: το arl διαγράφηκε</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: μη έγκυρο arl — ελέγξτε το και δοκιμάστε ξανά</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ακύριο arl – ελέγξτε ενεργή και δοκιμάστε</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Προσθέστε ένα διακριτικό μόνο για να χρησιμοποιήσετε τον δικό σας λογαριασμό. Πρέπει να προέρχεται από την εφαρμογή Musixmatch για Android: τα διακριτικά που αντιγράφηκαν από το musixmatch.com ανήκουν στον αποσυρμένο πελάτη επιτραπέζιου υπολογιστή και το API τα απορρίπτει.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Το Musixmatch λειτουργεί χωρίς διακριτικό, οπότε αυτό το πεδίο μπορεί να παραμείνει κενό.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">token χρήστη</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: το user token αποθηκεύτηκε</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: το user token διαγράφηκε</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: μη έγκυρο user token — ελέγξτε το και δοκιμάστε ξανά</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: άκυρο token χρήστη - ελέγξτε και δοκιμάστε ξανά</string>
   <string name="morphe_music_youtube_cookies_title">Cookies YouTube</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Επικολλήστε ολόκληρη τη συμβολοσειρά cookie (ζεύγη κλειδιού-τιμής διαχωρισμένα με ερωτηματικά).
 
 Απαιτούμενα cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: τα cookies αποθηκεύτηκαν</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: τα cookies καθαρίστηκαν</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: μη έγκυρα cookies — ελέγξτε τα και δοκιμάστε ξανά.</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: άκυρα cookie - ελέγξτε και δοκιμάστε ξανά</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Πατήστε μια γραμμή για αναζήτηση</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Πατώντας μια γραμμή μεταβαίνει σε αυτό το σημείο του τραγουδιού</string>
   <string name="morphe_music_lyrics_show_section_title">Εμφάνιση ετικετών ενοτήτων</string>
@@ -519,6 +520,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Πατήστε για εναλλαγή μετάφρασης· παρατεταμένο πάτημα για μετάφραση μόνο. Χρησιμοποιεί μεταφράσεις παρόχου, Google Translate ή ένα API συμβατό με OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Εμφάνιση κουμπιού μεταγραφής.</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Πατήστε για εναλλαγή λατινοποίησης· παρατεταμένο πάτημα για λατινοποίηση μόνο. Χρησιμοποιεί λατινοποίηση παρόχου, Google Translate ή ένα API συμβατό με OpenAI.</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Τοπική ρωμαιοποίηση</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Ρωμαιοποιήστε στη συσκευή όταν αποτύχουν ο πάροχος, μια συμβατή με OpenAI διεπαφή και το Google Translate. Μόνο για CJK, περίπου 80 MB αναγνώσεων για λήψη.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Ανάγνωση %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Οι αναγνώσεις είναι έτοιμες (%1$d λέξεις CJK)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Η λήψη απέτυχε — απενεργοποιήστε και ενεργοποιήστε ξανά αυτή τη λειτουργία για επανάληψη</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Εμφάνιση κουμπιού ανανέωσης</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Πατήστε για εναλλαγή στην επόμενη υποψήφια επιλογή στίχων· παρατεταμένο πάτημα για αναζήτηση στίχων με βάση τον τίτλο τραγουδιού και τον καλλιτέχνη</string>
   <string name="morphe_music_lyrics_search_dialog_title">Αναζήτηση στίχων</string>
@@ -529,6 +536,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_saved">Αποθηκεύτηκε</string>
   <string name="morphe_music_lyrics_word_sync_title">Επισήμανση συγχρονισμένων λέξεων ή συλλαβών</string>
   <string name="morphe_music_lyrics_word_sync_summary">Δώστε προτεραιότητα στους στίχους λέξη-λέξη όταν είναι διαθέσιμοι. Όταν οι στίχοι έχουν χρονισμό λέξεων, επισημαίνεται κάθε λέξη ή συλλαβή σε συγχρονισμό με τη μουσική.</string>
+  <string name="morphe_music_lyrics_split_background_title">Εμφάνιση των φωνητικών φόντου ξεχωριστά</string>
+  <string name="morphe_music_lyrics_split_background_summary">Μετακινεί ένα φωνητικό υπόβαθρο που γράφεται σε αγκύλες, όπως \"(Oh) I want you\", εκτός της τραγουδισμένης γραμμής σε μια ξεχωριστή γραμμή με μικρότερη ένταση</string>
   <string name="morphe_music_lyrics_hide_played_title">Απόκρυψη γραμμής που έχει παιχτεί.</string>
   <string name="morphe_music_lyrics_hide_played_summary">Απόκρυψη γραμμών στίχων πάνω από τον τρέχοντα στίχο</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Απόκρυψη στίχων που δεν έχουν παιχτεί.</string>
@@ -553,25 +562,47 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_sb_no_video">Αυτό το κομμάτι δεν έχει αναγνωριστικό βίντεο για υποβολή</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Πηγή: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Πατήστε παρατεταμένα το κουμπί αντιγραφής για να αποθηκεύσετε αυτό το LRC· αν μπορέσετε να κάνετε λεπτομερή ρύθμιση των χρονικοποιήσεων και να τις κοινοποιήσετε στους παρόχους της κοινότητας, θα εκτιμηθούμε.</string>
   <string name="morphe_music_lyrics_translated_by_google">Μετάφραση από Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Μεταγραφή από Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Μεταφράστηκε από %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Μεταγράφηκε σε λατινικούς χαρακτήρες από %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Ρωμαιοποιήθηκε από %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Μεταφρασμένο</string>
   <string name="morphe_music_lyrics_translation_language_title">Γλώσσα μετάφρασης</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Γλώσσα ρωμαιοποίησης</string>
   <string name="morphe_music_lyrics_translating">Μετάφραση…</string>
   <string name="morphe_music_lyrics_translate_failed">Δεν ήταν δυνατή η μετάφραση των στίχων</string>
   <string name="morphe_music_lyrics_romanize_hide">Μεταγεγραμμένο</string>
+  <string name="morphe_romanize_language_DEFAULT">Αυτόματο</string>
   <string name="morphe_music_lyrics_romanizing">Μεταγραφή…</string>
   <string name="morphe_music_lyrics_romanize_failed">Δεν ήταν δυνατή η μεταγραφή των στίχων.</string>
   <string name="morphe_music_lyrics_translate_only">Μόνο μετάφραση</string>
   <string name="morphe_music_lyrics_romanize_only">Μόνο σε λατινική γραφή</string>
+  <string name="morphe_music_lyrics_dual_only">Διπλή λειτουργία</string>
   <string name="morphe_music_lyrics_copied">Αντιγράφηκε στο πρόχειρο</string>
   <string name="morphe_music_lyrics_refreshing">Ανανέωση</string>
   <string name="morphe_music_lyrics_refreshed">Ανανεώθηκε</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">API κλειδί QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">Το QuickLRC μεταγράφει ή χρονικοποιεί τους στίχους για το τρέχον κομμάτι. Μια ανεξάρτητη υπηρεσία, χωρίς σχέση με την παραπάνω συμβατή με OpenAI διεπαφή.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">Το κλειδί QuickLRC έχει αποθηκευτεί. Χρησιμοποιήστε το κουμπί ευθυγράμμισης στον διάλογο αναζήτησης στίχων, ή την πρόταση στο πάνελ όταν ένα κομμάτι δεν έχει στίχους.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">Το API κλειδί QuickLRC έχει αποθηκευτεί</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">Το QuickLRC δεν δέχτηκε αυτό το κλειδί</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">Το API κλειδί QuickLRC διαγράφηκε</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">Το QuickLRC χρονικοποιεί στίχους που δεν έχουν κανένα, ή τους μεταγράφει από το κομμάτι, με κόστος πιστωτικών μονάδων. Με καθορισμένο κλειδί, τα κομμάτια χωρίς στίχους προσφέρουν μεταγραφή και ο διάλογος αναζήτησης αποκτά κουμπί ευθυγράμμισης.</string>
+  <string name="morphe_music_lyrics_transcribe_align">Αίτηση ευθυγράμμισης QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Γίνεται ευθυγράμμιση</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Εφαρμογή ευθυγράμμισης</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Αίτηση μεταγραφής QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_working">Γίνεται μεταγραφή</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Η μεταγραφή ακυρώθηκε</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Μόνο τα κομμάτια που αναπαράγονται από YouTube μπορούν να μεταγραφούν</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Κανέναν στίχο προς ευθυγράμμιση — γίνεται μεταγραφή αντί αυτού</string>
+  <string name="morphe_music_lyrics_transcribe_failed">Το QuickLRC δεν μπόρεσε να επεξεργαστεί αυτό το κομμάτι</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">Τα πιστωτικά μονάδες QuickLRC εξαντλήθηκαν για αυτό το κομμάτι</string>
   <string name="morphe_music_lyrics_about_summary">"Οι στίχοι αντιστοιχίζονται με βάση τον τίτλο και τον καλλιτέχνη· ασυνήθιστα μεταδεδομένα μπορεί να μην βρουν τίποτα ή τη λάθος έκδοση. Χρησιμοποιήστε την ανανέωση για να αλλάξετε εκδόσεις. Οι πάροχοι που επισημαίνονται με * απαιτούν διακριτικό (token). Δεν ζητούνται πάντα όλοι οι ενεργοποιημένοι πάροχοι με τη σειρά που έχετε ορίσει, αλλά αποκρίνονται με βάση την ταχύτητά τους."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Ενεργοποιήστε μόνο τους παρόχους που χρησιμοποιείτε ή κρατήστε την προεπιλογή — τα συνεχή αιτήματα μπορούν να κατακλύσουν μικρές ιστοσελίδες στίχων της κοινότητας</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Ενεργοποιήστε μόνο τους παρόχους που χρησιμοποιείτε, ή αφήστε τις προεπιλογές - οι σταθερές αιτήσεις μπορεί να υπερφορτώσουν ιστοσελίδες κοινότητας με στίχους</string>
   <string name="morphe_music_lyrics_hide_info_title">Απόκρυψη γραμμής πιστώσεων.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Απόκρυψη της γραμμής πιστώσεων που εμφανίζεται κάτω από τους στίχους.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Εναλλαγή μετάφρασης και μεταγραφής.</string>
@@ -584,17 +615,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Ενότητα AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Χρησιμοποιείται μόνο όταν ο πάροχος δεν παρέχει ετικέτες ενοτήτων, όπως Ρεφρέν ή Στροφή, τις οποίες στη συνέχεια ανιχνεύει το μοντέλο συμβατό με το OpenAI</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">Ρυθμίσεις AI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Διαμορφώστε το API endpoint συμβατό με το OpenAI για τη μετάφραση στίχων, τη λατινική μεταγραφή και τις ενοτήτων μέσω AI.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Ρυθμίστε τη συμβατή με OpenAI διεπαφή API για μετάφραση, ρωμαιοποίηση και εντοπισμό τμημάτων στίχων με υποστήριξη AI.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL τελικού σημείου API (π.χ. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Κλειδί API (αφήστε κενό για ανώνυμη πρόσβαση)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Όνομα μοντέλου (π.χ. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Πρότυπο Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Υποκαταστάτες: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">Πρότυπο prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Το prompt αποθηκεύτηκε</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Η πρόσκληση αποθηκεύτηκε, αλλά η διεπαφή AI δεν είναι ακόμη διαθέσιμη. Ρυθμίστε την πρώτα στις Ρυθμίσεις AI.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Το prompt επαναφέρθηκε</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Οι ρυθμίσεις AI αποθηκεύτηκαν</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Δεν ήταν δυνατή η σύνδεση με το τελικό σημείο AI. Ελέγξτε τις ρυθμίσεις σας.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Αδυναμία σύνδεσης στο σημείο τελείας AI. Ελέγξτε τις ρυθμίσεις σας</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Οι ρυθμίσεις AI επαναφέρθηκαν</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">Διαμορφώθηκε το μοντέλο %1$s</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Το βασικό URL δεν μπορεί να είναι κενό</string>

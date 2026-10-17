@@ -37,17 +37,6 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Tartib sozlamalarini oʻzgartirishni oʻchirish</string>
   <string name="morphe_disable_layout_updates_summary">Ilovaning tartibini yangilash oldini oladi</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Ilova tartibi dastlab oʻrnatilgan tartibga qaytadi.
-
-Baʼzi server tomonidagi tartiblar qaytmaydi.
-
-Oʻzgarishlar:
-• Pleer menyusidagi komponentlar (yoki tegishli sozlamalar) ishlamasligi mumkin.
-• Raqamlar animatsiyalanmaydi.
-• Kutubxona varagʻi koʻrsatiladi.
-• Videoning tavsifidan musiqiy boʻlim ishlamasligi mumkin.
-• Pleer menyusidagi elementlarni yashirish mumkin emas.
-• Kutubxona varagʻida hisob almashish tugmasi koʻrinmasligi mumkin."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Oziqlantirish menyusini filtrlashni yoqish</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Oziqlantirish menyusini filtrlash</string>
@@ -119,7 +108,6 @@ Oʻzgarishlar:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles’larni yashirish</string>
   <string name="morphe_hide_youtube_doodles_summary">YouTube logotipidagi mavsumiy va tadbirga asoslangan animatsiyani yashiradi</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube chekishlari ko\'rsatilsa, maxsus sarlavhalar ko\'rinmasligi mumkin.</string>
   <string name="morphe_hide_channel_bar_title">Kanal paneli</string>
   <string name="morphe_hide_channel_watermark_title">Kanal suv belgisini yashirish</string>
   <string name="morphe_hide_chapters_timeline_button_title">Boblar va \'Ushbu videoda\' tugmasini yashirish</string>
@@ -394,7 +382,6 @@ Sizning API kalitingiz hech kim bilan baham ko'rilmasligi kerak. Uni kirish huqu
   <string name="morphe_vot_openrouter_open_website">OpenRouter.ai ni oching</string>
   <string name="morphe_vot_openrouter_error">OpenRouter tarjimasi muvaffaqiyatsiz (%s HTTP)</string>
   <string name="morphe_vot_mymemory_quota_title">MyMemory kunlik limiti yetib keldi</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Keyingi vaqt %s da mavjud bo\'ladi.</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Siz bugungi kungi MyMemory tarjima kvotasini (5000 ta belgilar) ishlatdingiz. Kunlik limitni 50 000 gacha oshirish uchun sozlamalarda MyMemory elektron pochta manzilini kiriting yoki boshqa tarjima xizmatidan foydalaning.</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Siz MyMemory tarjima kvotasini (50 000 ta belgilar) ishlatdingiz. Boshqa tarjima xizmatidan foydalaning yoki ertaga urinib koʻring.</string>
   <string name="morphe_vot_mymemory_error">MyMemory tarjimasi muvaffaqiyatsiz (holat %s)</string>
@@ -614,6 +601,7 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Avtomatik yozuvlarni ko\'rsatish</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Avtomatik yozuvlarni yashirish</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Sarlavha kuki-larini belgilash</string>
   <string name="morphe_set_caption_cookies_summary">"Standart YouTube xatosini tuzatadi, bunda avtomatik tarjima subtitrlari cookie'lar yetishmagani sababli mavjud bo'lmasligi mumkin
@@ -652,9 +640,6 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Agar ushbu sozlamani o\'zgartirish ta\'sir qilmasa, inkognito rejimiga o\'ting</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigatsiya tugma yorliqlarini yashirish</string>
   <string name="morphe_hide_navigation_bar_title">Navigatsiya panelini yashirish</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Navigatsiya panelini toʻliq yashiradi, jumladan 'Siz' tugmasini.
-
-Sozlamalarga kirish uchun Umumiy → Asboblar → Sozlamalarni koʻrsatish orqali sozlang."</string>
   <string name="morphe_narrow_navigation_buttons_title">Tor navigatsiya tugmalarini yoqish</string>
   <string name="morphe_narrow_navigation_buttons_summary">Navigatsiya tugmachalari orasidagi gorizontal masofani kamaytiradi</string>
   <string name="morphe_navigation_bar_animations_title">Navigatsiya paneli animatsiyalarini yoqish</string>
@@ -922,6 +907,7 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_playback_in_feeds_entry_off">Oʻchirilgan</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mini-pleerni qayta boshlashni oʻchirish</string>
   <string name="morphe_miniplayer_disable_resuming_summary">YouTube Premium xususiyati bo\'lgan mini-pleyerning qayta tiklanishini o\'chirish</string>
@@ -1010,7 +996,6 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Manipulyatsiya qilish</string>
   <string name="morphe_spoof_device_dimensions_summary">Buni yoqish yuqori sifatli videolarni ochishi mumkin</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Ushbu sozlash tizimni buzishi, batareyaning ishlash muddatini qisqartirishi va boshqa noma\'lum effektlarga olib kelishi mumkin.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">• Audio izlash yo\'q</string>
   <string name="morphe_disable_haptic_feedback_summary">Qaysi harakatlar qurilmani tebratishni talab qilishini sozlash</string>
@@ -1020,7 +1005,6 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Tezkor harakatga javob harakatlarini oʻchirish</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">• Audio izlash yo\'q</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Agar hisobingiz nomini o\'zgargan bo\'lsangiz, MicroGni qayta yuklab o\'rnatishni tavsiya etamiz.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Havola yo\'nalishlarini o\'rab o\'tish</string>
   <string name="morphe_bypass_link_redirects_summary">Asosiy havolani to\'g\'ridan-to\'g\'ri ochadi, izlash havolasidan (youtube.com/redirect) o\'tib ketmaydi</string>
@@ -1096,9 +1080,6 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS AV1 ruxsat berish</string>
   <string name="morphe_spoof_video_streams_av1_summary">Android VR / visionOS mijozidan foydalanilganda dasturiy AV1 dekodlashga ruxsat beradi</string>
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ushbu sozlash dasturiy ta'minot AV1 dekodini ishga tushirishi mumkin.
-
-AV1 bilan video o'ynashda lag yoki to'silishlar yuzaga kelishi mumkin."</string>
   <string name="morphe_spoof_video_streams_about_title">Manipulyatsiya qilish effektlari</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audio Track\' menyusi mavjud emas</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeki yo\'q</string>

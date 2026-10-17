@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">รูปแบบ</string>
   <string name="morphe_copy_text_title">คัดลอกข้อความ</string>
   <string name="morphe_copy_text_summary">อนุญาตให้เลือกและคัดลอกข้อความในโพสต์และความคิดเห็น ปิดใช้งานการยุบความคิดเห็น</string>
-  <string name="morphe_copy_text_user_dialog_message">การยุบความคิดเห็นจะหยุดทำงานเมื่อเปิดใช้การคัดลอกข้อความ</string>
+  <string name="morphe_copy_text_user_dialog_message">การยุบความคิดเห็นจะหยุดทำงานขณะที่เปิดใช้งานการคัดลอกข้อความ</string>
   <string name="morphe_custom_font_title">ฟอนต์ที่กำหนดเอง</string>
   <string name="morphe_custom_font_summary">โหลดไฟล์ฟอนต์ TTF หรือ OTF ที่กำหนดเองจากพาธด้านล่าง การเปิดใช้งานนี้จะปิดการใช้งานบังคับใช้ฟอนต์ระบบด้วย</string>
   <string name="morphe_custom_font_file_path_title">ไฟล์ฟอนต์ที่กำหนดเอง</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">ซ่อนชั้นวางสินค้าที่กำลังเป็นที่นิยมออกจากฟีดและคำแนะนำในการค้นหา</string>
   <string name="morphe_remove_notification_dialog_title">นำกล่องโต้ตอบคำแนะนำการแจ้งเตือนออก</string>
   <string name="morphe_remove_notification_dialog_summary">ปิดกล่องโต้ตอบคำแนะนำการแจ้งเตือนโดยอัตโนมัติเมื่อเข้าสู่ subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">แสดงแฟลร์ในฟีดหน้าแรก</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">แสดงตราสัญลักษณ์แฟลร์ของโพสต์ในฟีดหน้าแรก</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">บางรายการในฟีดอาจไม่แสดงแฟลร์</string>
   <string name="morphe_show_view_count_title">แสดงจำนวนการเข้าชมในโพสต์</string>
   <string name="morphe_show_view_count_summary">ข้อจำกัด: ใช้ได้เฉพาะเมื่อการตอบกลับของ API มีจำนวนการเข้าชม</string>
   <string name="morphe_flip_post_action_bar_title">สลับด้านแถบการดำเนินการของโพสต์</string>

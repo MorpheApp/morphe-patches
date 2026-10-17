@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Kopier tekst</string>
   <string name="morphe_copy_text_summary">Giver mulighed for at markere og kopiere tekst i opslag og kommentarer. Deaktiverer sammenklapning af kommentarer</string>
-  <string name="morphe_copy_text_user_dialog_message">Sammenklapning af kommentarer vil ikke længere virke, mens Kopiér tekst er aktiveret.</string>
+  <string name="morphe_copy_text_user_dialog_message">Sammenslåede kommentarer stopper med at fungere, mens Kopier tekst er aktiveret</string>
   <string name="morphe_custom_font_title">Brugerdefineret skrifttype</string>
   <string name="morphe_custom_font_summary">Indlæs en brugerdefineret TTF- eller OTF-skrifttypefil fra stien nedenfor. Aktivering af dette slår også tvungen systemskrifttype fra.</string>
   <string name="morphe_custom_font_file_path_title">Brugerdefineret skrifttypefil</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Skjuler de Trending hylder fra feed og søgeforslag</string>
   <string name="morphe_remove_notification_dialog_title">Fjern notifikationsforslagsdialog</string>
   <string name="morphe_remove_notification_dialog_summary">Lukker automatisk forslag til notifikationsdialogen, når du besøger et subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Vis flairs i hjem-feed</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Vis post-flair badges i hjem-feed</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Nogle feed-elementer viser måske ikke en flair</string>
   <string name="morphe_show_view_count_title">Vis antal visninger på opslag</string>
   <string name="morphe_show_view_count_summary">Begrænsning: Kun tilgængelig, hvis API-svaret inkluderer visningstallet</string>
   <string name="morphe_flip_post_action_bar_title">Vend handlingslinjen for opslag</string>

@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Ange paketnamn</string>
   <string name="morphe_external_downloader_other_item">Annat</string>
   <string name="morphe_external_downloader_not_found_title">Appen har inte installerats</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s har inte installerats. Installera den.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s har inte installerats. Installera den</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Det gick inte att hitta en installerad app med paketnamnet: %s
 
 Verifiera att paketnamnet är korrekt och att appen har installerats"</string>
@@ -84,7 +84,7 @@ För att ändra ikonen överallt, applicera patchen igen och ändra patchalterna
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe – spela upp</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-meddelande</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Din visningshistorik sparas inte.&lt;br&gt;&lt;br&gt;Detta orsakas troligen av en DNS-annonsblockerare eller nätverksproxy.&lt;br&gt;&lt;br&gt;För att åtgärda detta, vitlista &lt;b&gt;s.youtube.com&lt;/b&gt; eller stäng av alla DNS-blockerare och proxyer.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Din visningshistorik sparas inte.&lt;br&gt;&lt;br&gt;Detta orsakas troligen av en DNS-annonsblockerare eller nätverksproxy.&lt;br&gt;&lt;br&gt;För att åtgärda detta, vitlista &lt;b&gt;s.youtube.com&lt;/b&gt; eller stäng av alla DNS-blockerare och proxyer</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Visa inte igen</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Förfalska videostreamar</string>
@@ -99,7 +99,7 @@ Om du är en YouTube Premium-användare kan det hända att den här inställning
 
 Gör %2$s till standardklient?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Byt</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Om du stänger av den här inställningen kan det leda till problem med uppspelning.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Om du stänger av den här inställningen kan det leda till problem med uppspelning</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Testa att aktivera: Förfalska videostreamar &gt; Logga in i Android VR</string>
@@ -134,7 +134,7 @@ Tryck på Fortsätt nedan för att logga in"</string>
 • Du måste logga in igen om du ändrar ditt Google-lösenord eller avregistrerar den här enheten i dina Google-inställningar"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 är för tillfället inte tillgängligt (API-tidsgräns nådd)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-inloggningen har gått ut. Försök logga in i VR igen</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 är för tillfället inte tillgängligt (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 är för tillfället inte tillgängligt (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 är för tillfället inte tillgängligt</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Det går inte att logga in i VR. Webbautentiseringen godkändes inte</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Det går inte att logga in i VR: %s</string>
@@ -197,7 +197,7 @@ Tryck på Fortsätt nedan för att logga in"</string>
 
 Detta kan hjälpa till att identifiera komponenter när du skapar anpassade filter.
 
-Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress, att loggas."</string>
+Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress, att loggas"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Anpassat filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurera anpassade filter för att dölja valfri komponent</string>
@@ -242,7 +242,7 @@ Aktivera 'Spoofa videoströmmar' för att åtgärda uppspelning"</string>
 
 Detta kommer att ändra utseendet och funktionerna i appen, men okända bieffekter kan uppstå.
 
-Om du senare inaktiverar det rekommenderar vi att rensa appens data för att förhindra fel i användargränssnittet."</string>
+Om du senare inaktiverar det rekommenderar vi att rensa appens data för att förhindra fel i användargränssnittet"</string>
   <string name="morphe_spoof_app_version_target_title">Mål för Förfalska appversionen</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Appens uppdateringsfrekvens</string>
@@ -265,7 +265,7 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ogilla-markeringar är inte tillgängliga just nu (API-tidsgräns nådd)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Ogilla-markeringar är inte tillgängliga (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Ogilla-markeringar är inte tillgängliga (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Ogilla-markeringar är inte tillgängliga (API-gräns för klienten)</string>
   <string name="morphe_ryd_failure_generic">Ogilla-markeringar är inte tillgängliga (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ ID för videon du tittar på skickas till Return YouTube Dislike API, och dina g
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Ogilla-markeringar är tillfälligt inte tillgängliga – klientens API-begränsning gäller</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API-rösthämtning, antal anrop</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Inga nätverksanrop har gjorts</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d nätverksanrop har gjorts</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s nätverksanrop har gjorts</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-rösthämtning, antal timeouts</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Inga nätverksanrop nådde tidsgränsen</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d nätverksanrop nådde tidsgränsen</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s nätverksanrop timade ut</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API-klientbegränsningar</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Inga klientbegränsningar påträffades</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klientbegränsning påträffades %d gånger</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d millisekunder</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klientens hastighetsbegränsning inträffade %s gånger</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s millisekunder</string>
 </resources>

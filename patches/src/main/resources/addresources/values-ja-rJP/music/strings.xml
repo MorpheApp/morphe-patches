@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">QR コードを表示</string>
   <string name="morphe_music_jam_done">完了</string>
   <string name="morphe_music_jam_invite_title">あなたの Jam に招待</string>
-  <string name="morphe_music_jam_invite_message">スキャンして、このキューに参加・編集できます。Jam を終了すると招待は無効になります。</string>
+  <string name="morphe_music_jam_invite_message">スキャンしてこのキューに参加・編集しましょう。Jamを終了すると招待が取り消されます</string>
   <string name="morphe_music_jam_copy_link">リンクをコピー</string>
   <string name="morphe_music_jam_invitation_clip">Jam の招待</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam は再接続中です。しばらくしてもう一度お試しください</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Jam を更新中…</string>
   <string name="morphe_music_jam_finding_host">Wi-Fi でホストを探しています…</string>
   <string name="morphe_music_jam_waiting_people">参加者を待っています</string>
-  <string name="morphe_music_jam_one_connected">%d 人が接続しています</string>
-  <string name="morphe_music_jam_many_connected">%d 人が接続しています</string>
-  <string name="morphe_music_jam_code_expires">このコードを近くのデバイスで入力してください。Wi-Fi Aware は、対応している場合は別々の LAN 間でも動作します。有効期限は %d 分後です。</string>
+  <string name="morphe_music_jam_one_connected">%s人が接続済み</string>
+  <string name="morphe_music_jam_many_connected">%s人が接続済み</string>
+  <string name="morphe_music_jam_code_expires">近くのデバイスにこのコードを入力してください。Wi-Fi Awareは、サポートされている場合、別のLAN間でも動作します。%s分で期限切れになります</string>
   <string name="morphe_music_jam_seek_to">%s にシークしますか？</string>
   <string name="morphe_music_jam_edits_open">編集を許可</string>
   <string name="morphe_music_jam_edits_locked">編集をロック</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Jam 中は非対応</string>
   <string name="morphe_music_jam_cancelled">参加をキャンセルしました</string>
   <string name="morphe_music_jam_reconnecting_host">ホストに再接続しています…</string>
-  <string name="morphe_music_jam_share_prompt">キューを共有しましょう。みんなが曲を追加できます。</string>
+  <string name="morphe_music_jam_share_prompt">キューを共有しましょう。全員が曲を追加できるようにします</string>
   <string name="morphe_music_jam_invite_people">人を招待</string>
   <string name="morphe_music_jam_guest_edits">ゲストはキューを編集できます</string>
   <string name="morphe_music_jam_end_jam">Jam を終了</string>
-  <string name="morphe_music_jam_participant_help">ホストが音楽を再生します。YouTube Music のキューで曲を直接追加、移動、削除できます。</string>
-  <string name="morphe_music_jam_joining_help">両方のデバイスを近くに置いてください。ホストを探している間にキャンセルできます。</string>
+  <string name="morphe_music_jam_participant_help">ホストが音楽を再生します。YouTube Musicのキューで直接曲の追加、移動、削除を行うことができます</string>
+  <string name="morphe_music_jam_joining_help">両方のデバイスを近くに置いてください。ホストを探す間にキャンセルできます</string>
   <string name="morphe_music_jam_cancel_joining">参加をキャンセル</string>
   <string name="morphe_music_jam_leave_jam">Jam から退出</string>
   <string name="morphe_music_jam_start_jam">Jam を開始</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">フライアウト メニューの「オフラインに一時保存」の呼び出し先を、「純正アプリ内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
   <string name="morphe_music_in_app_downloads_title">アプリ内ダウンロード</string>
   <string name="morphe_music_in_app_downloads_summary">外部ダウンロード アプリを開くことなく、YouTube Music 内に音声をダウンロードします</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"ダウンロードした楽曲は、YouTube Music の非公開ストレージ領域に保存されるため、YouTube Music をアンインストールすると削除されます。
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"楽曲はアプリのプライベートストレージに保存され、YouTube Musicをアンインストールした場合に削除されます。
 
-この機能をオンにしている間は、Premium 機能でダウンロードした楽曲の代わりに、この機能でダウンロードした楽曲を、オフラインのコンテンツとしてライブラリタブに表示します。オフにすると元に戻ります。この機能が Premium 機能でダウンロードした楽曲に影響を及ぼすことはありません。"</string>
+この機能がオンの間、[ダウンロード]タブにはPremiumのオフラインライブラリではなくこれらの楽曲が表示されます。オフにするとタブが復元され、Premiumのダウンロードは影響を受けません"</string>
   <string name="morphe_music_downloads_screen_title">ダウンロード一覧</string>
   <string name="morphe_music_downloads_empty">"まだダウンロードしていません
 ダウンロードした楽曲がここに表示されます"</string>
@@ -445,7 +445,7 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">正規表現による除去</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">曲のタイトル、アーティスト名、アルバム名から不要なテキストを除去するための正規表現を入力してください。例: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">タイトルから曲名とアーティスト名を取得</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">動画のタイトルを「 - 」で分割し、前半を曲名として、後半をアーティスト名として取得します。この機能は、動画タイトル全体が曲名として、チャンネル名がアーティスト名として取得される場合がある、非公式動画で有用です。</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">\" - \"区切り文字を使用して動画タイトルからアーティスト名と曲名を取得します。チャンネル名がアーティストとして使用される再アップロードコンテンツに役立ちます</string>
   <string name="morphe_music_scrobbling_guess_album_title">アルバム名を補完</string>
   <string name="morphe_music_scrobbling_guess_album_summary">楽曲からアルバム名を取得できない場合に、Last.fm で検索して Scrobble に登録します</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_section_service_title">歌詞配信サービス</string>
   <string name="morphe_music_lyrics_section_overlay_title">オーバーレイ</string>
   <string name="morphe_music_lyrics_section_sync_title">同期</string>
-  <string name="morphe_music_lyrics_source_all_disabled">すべてのプロバイダーが無効です — 内蔵歌詞と埋め込み歌詞</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI エンドポイント</string>
+  <string name="morphe_music_lyrics_source_all_disabled">アプリの歌詞 / ローカルの埋め込み歌詞 (すべての外部サービスが無効になっています)</string>
   <string name="morphe_music_lyrics_source_reset_title">プロバイダーの順序をリセットしますか？</string>
   <string name="morphe_music_lyrics_source_reset_message">プロバイダーを既定の優先順位に戻します</string>
   <string name="morphe_music_token_dialog_get_token">トークンを取得</string>
@@ -473,7 +474,7 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
 3.「media-user-token」の値をコピー"</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token を保存しました</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token を消去しました</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: 無効な media-user-token です。確認して再度お試しください</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: 無効なmedia-user-tokenです - 確認してもう一度お試しください</string>
   <string name="morphe_music_spotify_token_title">Spotify […] \"sp_dc\" の値をコピーしてください</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Spotify の sp_dc Cookie を貼り付けてください。
 
@@ -483,7 +484,7 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
 3. 「sp_dc」の値をコピーします"</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc を保存しました</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc […] これがない場合、Lyrically がフォールバックとして使用されます</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc が無効です。値を確認してもう一度お試しください</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: 無効なsp_dcです - 確認してもう一度お試しください</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music のトークンは必須ではありません。このトークンがない場合は、代替として Lyrically を使用します</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] \"arl\" の値をコピーしてください</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer の arl Cookie を貼り付けてください。
@@ -494,19 +495,19 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
 3. 「arl」の値をコピーします"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl を保存しました</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl が無効です。もう一度お試しください</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl が無効です。値を確認してもう一度お試しください</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: 無効なarlです - 確認してもう一度お試しください</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] ユーザートークンの値をコピーしてください</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">トークンを追加するのは、自分のアカウントを使用する場合のみです。これは Musixmatch Android アプリから取得する必要があります: musixmatch.com からコピーしたトークンは廃止されたデスクトップクライアント用であり、API はそれらを拒否します</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch はトークンなしでも動作するため、このフィールドは空のままで構いません</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">ユーザートークンが無効です。もう一度お試しください</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token 保存済み</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token 削除済み</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: user token が無効です。値を確認してもう一度お試しください</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: 無効なユーザートークンです - 確認してもう一度お試しください</string>
   <string name="morphe_music_youtube_cookies_title">YouTube</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"YouTube の値をコピーしてください"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube を保存しました</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube が無効です。もう一度お試しください</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: 無効なクッキーです - 確認してもう一度お試しください</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">タップした行の再生位置に移動</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">タップした行の再生位置に移動します</string>
   <string name="morphe_music_lyrics_show_section_title">セクションタグを表示</string>
@@ -517,6 +518,12 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">タップで翻訳を切り替え、長押しで翻訳のみ表示します。プロバイダー提供の翻訳、Google翻訳、またはOpenAI互換APIを使用します。</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">ローマ字化ボタンを表示</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">タップでローマ字表記を切り替え、長押しでローマ字表記のみ表示します。プロバイダー提供のローマ字表記、Google翻訳、またはOpenAI互換APIを使用します。</string>
+  <string name="morphe_music_lyrics_local_romanization_title">ローマ字表記</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">プロバイダー、OpenAI互換エンドポイント、Google翻訳のすべてが失敗した場合にデバイス上でローマ字に変換します。CJKのみ対応。約80MBの読み仮名データをダウンロードする必要があります。</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">読み仮名 %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">読み仮名準備完了 (%1$d CJK単語)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">ダウンロードに失敗しました — 再試行するにはこれをオフにしてからオンに戻してください</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">更新ボタンを表示</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">タップして次の歌詞候補に切り替え、長押しして曲名とアーティストで歌詞を検索します</string>
   <string name="morphe_music_lyrics_search_dialog_title">歌詞を検索</string>
@@ -527,6 +534,8 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_saved">保存しました</string>
   <string name="morphe_music_lyrics_word_sync_title">同期された単語または音節をハイライト</string>
   <string name="morphe_music_lyrics_word_sync_summary">利用可能な場合は単語ごとの歌詞を優先します。歌詞に単語タイミングがある場合、音楽に合わせて各単語または音節をハイライトします</string>
+  <string name="morphe_music_lyrics_split_background_title">背景ボーカルを分離して表示</string>
+  <string name="morphe_music_lyrics_split_background_summary">（Oh）I want you のように括弧で囲まれた背景ボーカルを、歌われる歌詞行から外して独立した暗めの行へと移動します</string>
   <string name="morphe_music_lyrics_hide_played_title">再生済み […] 行を非表示</string>
   <string name="morphe_music_lyrics_hide_played_summary">現在再生中の行より上の歌詞行を非表示にする</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">未再生の歌詞を非表示</string>
@@ -551,25 +560,47 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_sb_no_video">このトラックには送信する動画IDがありません</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">提供: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">コピーボタンを長押ししてこのLRCを保存します。タイムを微調整し、コミュニティプロバイダーと共有できる場合は幸いです。</string>
   <string name="morphe_music_lyrics_translated_by_google">保存済み</string>
   <string name="morphe_music_lyrics_romanized_by_google">未保存</string>
   <string name="morphe_music_lyrics_translated_by_ai">翻訳: %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">ローマ字: %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">ローマ字: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">歌詞が見つかりません</string>
   <string name="morphe_music_lyrics_translation_language_title">翻訳言語</string>
+  <string name="morphe_music_lyrics_romanize_language_title">ローマ字変換言語</string>
   <string name="morphe_music_lyrics_translating">翻訳中…</string>
   <string name="morphe_music_lyrics_translate_failed">歌詞を翻訳できませんでした</string>
   <string name="morphe_music_lyrics_romanize_hide">歌詞が見つかりません</string>
+  <string name="morphe_romanize_language_DEFAULT">自動</string>
   <string name="morphe_music_lyrics_romanizing">ロード中</string>
   <string name="morphe_music_lyrics_romanize_failed">[…] をローマ字化できませんでした</string>
   <string name="morphe_music_lyrics_translate_only">翻訳のみ</string>
   <string name="morphe_music_lyrics_romanize_only">ローマ字のみ</string>
+  <string name="morphe_music_lyrics_dual_only">デュアルモード</string>
   <string name="morphe_music_lyrics_copied">クリップボードにコピーしました</string>
   <string name="morphe_music_lyrics_refreshing">更新中</string>
   <string name="morphe_music_lyrics_refreshed">更新済み</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC APIキー</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRCは現在のトラックの歌詞を変換またはタイミング合わせを行います。上記のOpenAI互換エンドポイントとは無関係な独立したサービスです。</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRCキーが保存されました。歌詞検索ダイアログのアラインボタンを使用するか、トラックに歌詞がない場合のパネルプロンプトをご利用ください。</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC APIキーが保存されました</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRCがそのキーを受け入れませんでした</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC APIキーが消去されました</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRCは歌詞がないトラックに時間を割り当てたり、クレジットコストを払ってトラックから変換を行ったりします。キーが設定されている場合、歌詞のないトラックでは変換が提供され、検索ダイアログに整列ボタンが表示されます。</string>
+  <string name="morphe_music_lyrics_transcribe_align">QuickLRCのアラインをリクエスト</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">整列中</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">整列を適用</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">QuickLRCの変換をリクエスト</string>
+  <string name="morphe_music_lyrics_transcribe_working">変換中</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">変換がキャンセルされました</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">YouTubeから再生されたトラックのみ変換可能です</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">整列する歌詞がありません — 代わりに変換しています</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRCはこのトラックを処理できませんでした</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRCのクレジットがこのトラックに対して使い切られました</string>
   <string name="morphe_music_lyrics_about_summary">"歌詞はタイトルとアーティストで照合されます。通常とは異なるメタデータでは、何も見つからないか、間違ったバージョンが見つかる可能性があります。更新を使用してバージョンを切り替えてください。* が付いているプロバイダーはトークンが必要です。有効なすべてのプロバイダーが常に指定された順序で要求されるわけではなく、応答速度に基づいて応答します。"</string>
-  <string name="morphe_music_lyrics_source_advice_summary">使用するプロバイダーのみを有効にするか、デフォルトのままにしてください。常時リクエストは小規模なコミュニティ歌詞サイトに過負荷をかける可能性があります</string>
+  <string name="morphe_music_lyrics_source_advice_summary">使用中のプロバイダーのみ有効にするか、デフォルトのままにしてください。定期的なリクエストにより小規模なコミュニティの歌詞サイトが overload する可能性があります</string>
   <string name="morphe_music_lyrics_hide_info_title">この歌詞を編集</string>
   <string name="morphe_music_lyrics_hide_info_summary">この歌詞を編集</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">この歌詞を編集</string>
@@ -582,17 +613,17 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI セクション</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">プロバイダーが「サビ」や「Aメロ」などのセクションラベルを提供せず、OpenAI 互換モデルがそれを検出する場合にのみ使用されます</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI 設定</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI による歌詞の翻訳、ローマ字表記、およびセクション検出に使用する OpenAI 互換 API のエンドポイントを設定します。</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI搭載の歌詞翻訳、ローマ字変換、セクション分割のためのOpenAI互換APIエンドポイントを設定します。</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API エンドポイント URL (例: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API キー (認証なしの場合は空欄)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">モデル名 (例: openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">プロンプト テンプレート</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">プレースホルダー: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">プロンプト テンプレート</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">プロンプトを保存しました</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">プロンプトは保存されましたが、AIエンドポイントはまだ使用できません。まずAI設定で構成してください。</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">プロンプトをリセットしました</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI 設定を保存しました</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">AI エンドポイントに接続できませんでした。設定を確認してください。</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">AIエンドポイントに接続できませんでした。設定を確認してください</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI 設定をリセットしました</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">モデル %1$s が設定されました</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">ベース URL は空欄にはできません</string>

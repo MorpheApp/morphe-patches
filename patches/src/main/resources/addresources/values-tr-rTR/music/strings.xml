@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">Karekodu göster</string>
   <string name="morphe_music_jam_done">Bitti</string>
   <string name="morphe_music_jam_invite_title">Jam\'inize davet edin</string>
-  <string name="morphe_music_jam_invite_message">Bu sıraya katılmak ve düzenlemek için tarayın. Jam’in sona ermesi, daveti geçersiz kılar.</string>
+  <string name="morphe_music_jam_invite_message">Bu sıraya katılmak ve düzenlemek için tarayın. Jam’in sona ermesi, daveti geçersiz kılar</string>
   <string name="morphe_music_jam_copy_link">Bağlantıyı kopyala</string>
   <string name="morphe_music_jam_invitation_clip">Jam davetiyesi</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam yeniden bağlanıyor; biraz sonra tekrar deneyin</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Jam güncelleniyor...</string>
   <string name="morphe_music_jam_finding_host">Wi-Fi üzerinden host\'un aranıyor...</string>
   <string name="morphe_music_jam_waiting_people">İnsanlar bekleniyor</string>
-  <string name="morphe_music_jam_one_connected">%d kişi bağlandı</string>
-  <string name="morphe_music_jam_many_connected">%d kişi bağlı</string>
-  <string name="morphe_music_jam_code_expires">Bu kodu yakındaki bir cihaza girin. Wi-Fi Aware, desteklendiği durumlarda farklı LAN ağları arasında da çalışır. %d dakika sonra geçerliliği sona erecek.</string>
+  <string name="morphe_music_jam_one_connected">%s kişi bağlandı</string>
+  <string name="morphe_music_jam_many_connected">%s kişi bağlı</string>
+  <string name="morphe_music_jam_code_expires">Bu kodu yakındaki bir cihaza girin. Wi-Fi Aware, desteklendiği durumlarda farklı LAN ağları arasında da çalışır. %s dakika sonra geçerliliği sona erecek</string>
   <string name="morphe_music_jam_seek_to">%s konumuna atla?</string>
   <string name="morphe_music_jam_edits_open">Düzenlemeler açık</string>
   <string name="morphe_music_jam_edits_locked">Düzenlemeler kilitlendi</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Jam sırasında desteklenmiyor</string>
   <string name="morphe_music_jam_cancelled">Katılım iptal edildi</string>
   <string name="morphe_music_jam_reconnecting_host">Sunucunuzla yeniden bağlantı kuruluyor...</string>
-  <string name="morphe_music_jam_share_prompt">Bir çalma listesini paylaşın. Herkesin şarkı eklemesine izin verin.</string>
+  <string name="morphe_music_jam_share_prompt">Bir çalma listesini paylaşın. Herkesin şarkı eklemesine izin verin</string>
   <string name="morphe_music_jam_invite_people">Kullacıları davet et</string>
   <string name="morphe_music_jam_guest_edits">Konuklar kuyruğu düzenleyebilir</string>
   <string name="morphe_music_jam_end_jam">Jam\'i sonlandır</string>
-  <string name="morphe_music_jam_participant_help">Müzikleri sunucu çalar. Şarkıları doğrudan YouTube Music kuyruğuna ekleyebilir, taşıyabilir veya kaldırabilirsiniz.</string>
-  <string name="morphe_music_jam_joining_help">Her iki cihazı da yakınınızda bulundurun. Biz sunucuyu ararken siz işlemi iptal edebilirsiniz.</string>
+  <string name="morphe_music_jam_participant_help">Müzikleri sunucu çalar. Şarkıları doğrudan YouTube Music kuyruğuna ekleyebilir, taşıyabilir veya kaldırabilirsiniz</string>
+  <string name="morphe_music_jam_joining_help">Her iki cihazı da yakınınızda bulundurun. Biz sunucuyu ararken siz işlemi iptal edebilirsiniz</string>
   <string name="morphe_music_jam_cancel_joining">Katılımı iptal et</string>
   <string name="morphe_music_jam_leave_jam">Jam\'den ayrıl</string>
   <string name="morphe_music_jam_start_jam">Bir Jam başlat</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Varsayılan İndir açılır menüsü yerine, seçtiğiniz harici indiriciyi kullanır.</string>
   <string name="morphe_music_in_app_downloads_title">Uygulama içi indirme</string>
   <string name="morphe_music_in_app_downloads_summary">YouTube Music içinde ses indirir; harici indirme uygulamasını açmak yerine</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Parçalar uygulamanın özel depolama alanına kaydedilir ve YouTube Music kaldırılırsa silinir.
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Parçalar uygulamanın özel depolamasına kaydedilir ve YouTube Music kaldırıldığında silinir.
 
-Bu açıkken, İndirilenler sekmesi bu parçaları Music Premium çevrimdışı kitaplığı yerine listeler. Kapatıldığında sekme geri yüklenir ve Premium indirmelerine asla dokunulmaz."</string>
+Bu açıkken, İndirmeler sekmesi bu parçaları Müzik Premium çevrimdışı kütüphanesi yerine listeler. Kapatmak sekmeyi geri getirir ve Premium indirmeleri asla değiştirilmez"</string>
   <string name="morphe_music_downloads_screen_title">İndirilenler</string>
   <string name="morphe_music_downloads_empty">"İndirilen yok
 İndirilen parçalar burada görünür"</string>
@@ -445,7 +445,7 @@ SABR oynatma (video akışlarını taklit etme kapalı)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Özel düzenli ifade temizleme</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Şarkı adlarından, sanatçılardan veya albümlerden ek metni kaldırmak için özel bir düzenli ifade girin. Örnek: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Başlıktan sanatçı ve parça adını ayrıştır</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">\" - \" ayıracını kullanarak video başlığından sanatçı ve parça adını çıkar. Kanal adı sanatçı olarak kullanılmış yeniden yüklenmiş içerik için kullanışlıdır.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">\" - \" ayırıcısını kullanarak sanatçı ve parça adını video başlığından çıkar. Kanal adının sanatçı olarak kullanıldığı yeniden yüklenen içerikler için kullanışlı</string>
   <string name="morphe_music_scrobbling_guess_album_title">Eksik albümü tamamla</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Müzik bir albüm içermiyorsa, scrobble\'ınızın tamamlanması için Last.fm\'de arayın.</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ Scrobbling'in arka planda çalma sırasında senkronize olduğundan emin olmak i
   <string name="morphe_music_lyrics_section_service_title">Şarkı sözü servisi</string>
   <string name="morphe_music_lyrics_section_overlay_title">Yer paylaşımı</string>
   <string name="morphe_music_lyrics_section_sync_title">Senkronizasyon</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Tüm sağlayıcılar devre dışı — yerleşik şarkı sözleri ve gömülü şarkı sözleri</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI uç noktası</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Tüm sağlayıcılar devre dışı — dahili şarkı sözleri ve gömülü şarkı sözleri</string>
   <string name="morphe_music_lyrics_source_reset_title">Sağlayıcı sırası sıfırlansın mı?</string>
   <string name="morphe_music_lyrics_source_reset_message">Sağlayıcıları varsayılan öncelik sırasına geri yükle</string>
   <string name="morphe_music_token_dialog_get_token">Token alın</string>
@@ -473,7 +474,7 @@ Adımlar:
 3. \"media-user-token\" değerini kopyalayın"</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token kaydedildi</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Spotify: geçersiz sp_dc — lütfen kontrol edip tekrar deneyin</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: geçersiz media-user-token — lütfen kontrol edin ve tekrar deneyin</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: geçersiz medya-kullanıcı-belirtici - lütfen kontrol edip tekrar deneyin</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Spotify'dan sp_dc çerezini yapıştırın.
 
@@ -483,7 +484,7 @@ Adımlar:
 3. \"sp_dc\" değerini kopyalayın"</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc kaydedildi</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc temizlendi</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: geçersiz sp_dc — lütfen kontrol edip tekrar deneyin</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: geçersiz sp_dc - lütfen kontrol edip tekrar deneyin</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music tokeni isteğe bağlıdır. Bu token yoksa, Lyrically yedek seçenek olarak kullanılacak.</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer'dan arl çerezini yapıştırın.
@@ -494,14 +495,14 @@ Adımlar:
 3. \"arl\" değerini kopyalayın"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl kaydedildi</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl temizlendi</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: geçersiz arl — lütfen kontrol edip tekrar deneyin</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: geçersiz arl - lütfen kontrol edip tekrar deneyin</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Tokeni</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Yalnızca kendi hesabınızı kullanmak için bir token ekleyin. Bu token, Musixmatch Android uygulamasından gelmelidir: musixmatch.com\'dan kopyalanan tokenler, kullanımdan kaldırılmış masaüstü istemcisine aittir ve API bunları reddeder.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch bir token olmadan çalışır, bu yüzden bu alan boş bırakılabilir.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">kullanıcı tokeni</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: kullanıcı belirteci kaydedildi</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: kullanıcı belirteci temizlendi</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: geçersiz kullanıcı belirteci — lütfen kontrol edip tekrar deneyin</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: geçersiz kullanıcı belirteci - lütfen kontrol edip tekrar deneyin</string>
   <string name="morphe_music_youtube_cookies_title">YouTube: çerezler kaydedildi</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"YouTube’dan altyazıları ve zaman damgalarını sorgulamak için YouTube çerezlerinizi yapıştırın.
 
@@ -513,7 +514,7 @@ Adımlar:
 Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: çerezler kaydedildi</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: çerezler temizlendi</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: geçersiz çerezler — lütfen kontrol edin ve tekrar deneyin</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: geçersiz çerezler - lütfen kontrol edip tekrar deneyin</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Bir satıra dokunarak şarkıda ilerle</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Bir satıra dokunmak şarkıda o ana atlar</string>
   <string name="morphe_music_lyrics_show_section_title">Bölüm etiketlerini göster</string>
@@ -524,6 +525,12 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_show_translate_button_summary">Çeviriyi açıp kapatmak için dokunun; yalnızca çeviri için uzun basın. Sağlayıcı çevirilerini, Google Çeviri\'yi veya OpenAI ile uyumlu bir API kullanır.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Okunuş butonunu göster</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizasyonu açıp kapatmak için dokunun; yalnızca romanizasyon için uzun basın. Sağlayıcı romanizasyonunu, Google Çeviri\'yi veya OpenAI ile uyumlu bir API kullanır.</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Yerel latinize etme</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Sağlayıcı, OpenAI uyumlu uç nokta ve Google Translate hepsi başarısız olduğunda cihazda latinize et. Sadece Çince/Japonca/Korece, indirilecek okuma seti yaklaşık 80 MB.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Okuma %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Okuma hazır (%1$d ÇJK kelime)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">İndirme başarısız — yeniden denemek için bunu kapatıp açın</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Yenile düğmesini göster</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Bir sonraki şarkı sözü adayına geçmek için dokunun; şarkı adı ve sanatçıya göre şarkı sözü aramak için uzun basın</string>
   <string name="morphe_music_lyrics_search_dialog_title">Şarkı sözü ara</string>
@@ -534,6 +541,8 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_saved">Kaydedildi</string>
   <string name="morphe_music_lyrics_word_sync_title">Senkronize kelimeleri veya heceleri vurgula</string>
   <string name="morphe_music_lyrics_word_sync_summary">Mümkün olduğunda kelime kelime şarkı sözlerine öncelik ver. Şarkı sözleri kelime zamanlaması içeriyorsa, her kelimeyi veya heceyi müzikle eş zamanlı olarak vurgular</string>
+  <string name="morphe_music_lyrics_split_background_title">Arka plan vokallerini ayrı göster</string>
+  <string name="morphe_music_lyrics_split_background_summary">Parantez içinde yazılan arka plan vokalleri, örneğin \"(Oh) seni istiyorum\", söylenen satırdan ayrı bir daha düşük sesli satıra taşır</string>
   <string name="morphe_music_lyrics_hide_played_title">Satırı gizle</string>
   <string name="morphe_music_lyrics_hide_played_summary">Şu anda çalınan satırın üzerindeki şarkı sözü satırlarını gizle</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Okunmamış şarkı sözlerini gizle</string>
@@ -558,25 +567,47 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_sb_no_video">Bu parçanın gönderilecek video kimliği yok</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Kaynak: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Bu LRC\'yi kaydetmek için kopyalama düğmesine uzun basın; zamanlamaları ince ayarlayıp topluluk sağlayıcılarıyla paylaşırsanız minnettar oluruz.</string>
   <string name="morphe_music_lyrics_translated_by_google">Yenile</string>
   <string name="morphe_music_lyrics_romanized_by_google">Okunuşu sağlayan: Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Çeviren: %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romanize eden: %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Okunuşu sağlayan: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Çevrildi</string>
   <string name="morphe_music_lyrics_translation_language_title">Çeviri dili</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Romanizasyon dili</string>
   <string name="morphe_music_lyrics_translating">Çeviriliyor…</string>
   <string name="morphe_music_lyrics_translate_failed">Şarkı sözleri çevrilemedi</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanize</string>
+  <string name="morphe_romanize_language_DEFAULT">Otomatik</string>
   <string name="morphe_music_lyrics_romanizing">Romanize ediliyor...</string>
   <string name="morphe_music_lyrics_romanize_failed">Şarkı sözleri romanize edilemedi</string>
   <string name="morphe_music_lyrics_translate_only">Yalnızca çevrilmiş</string>
   <string name="morphe_music_lyrics_romanize_only">Sadece romanize</string>
+  <string name="morphe_music_lyrics_dual_only">Çift mod</string>
   <string name="morphe_music_lyrics_copied">Panoya kopyalandı</string>
   <string name="morphe_music_lyrics_refreshing">Yenileniyor</string>
   <string name="morphe_music_lyrics_refreshed">Yenilendi</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API anahtarı</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC, geçerli parça için sözleri transkribe eder veya zamanlar. Yukarıdaki OpenAI uyumlu uç nokta ile ilişkisi olmayan bağımsız bir hizmettir.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC anahtarı kaydedildi. Söz arama iletişim kutusundaki hizalama düğmesini veya parçada söz yokken görüntülenen panel istemini kullanın.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API anahtarı kaydedildi</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC bu anahtarı kabul etmedi</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API anahtarı temizlendi</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC, krediler pahasına sözleri olmayan parçaların zamanını belirler veya onları parçadan transkribe eder. Anahtar ayarlandığında, sözsüz parçalar transkripsiyon sunar ve arama iletişim kutusuna bir hizalama düğmesi eklenir.</string>
+  <string name="morphe_music_lyrics_transcribe_align">QuickLRC hizalama isteğinde bulunun</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Hizalanıyor</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Hizalamayı uygula</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">QuickLRC transkripsiyonu iste</string>
+  <string name="morphe_music_lyrics_transcribe_working">Transkribe ediliyor</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Transkripsiyon iptal edildi</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Yalnızca YouTube\'dan oynatılan parçalar transkribe edilebilir</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Hizalanacak söz yok — bunun yerine transkript ediliyor</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC bu parçayı işleyemedi</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">Bu parça için QuickLRC kredileri tükendi</string>
   <string name="morphe_music_lyrics_about_summary">"Şarkı sözleri başlık ve sanatçıya göre eşleştirilir, olağandışı meta veriler hiçbir şey bulamayabilir veya yanlış sürümü bulabilir. Sürümleri değiştirmek için yenilemeyi kullanın. * ile işaretlenen sağlayıcılar bir belirteç gerektirir. Etkinleştirilen tüm sağlayıcılar her zaman belirttiğiniz sırada istenmez, ancak hızlarına göre yanıt verirler."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Yalnızca kullandığınız sağlayıcıları etkinleştirin veya varsayılanı koruyun — sürekli istekler küçük topluluk şarkı sözü sitelerini bunaltabilir</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Sadece kullandığınız sağlayıcıları etkinleştirin veya varsayılanı koruyun; sürekli istekler küçük topluluk şarkı sözü sitelerini aşırı yükleyebilir</string>
   <string name="morphe_music_lyrics_hide_info_title">Yenile</string>
   <string name="morphe_music_lyrics_hide_info_summary">Şarkı sözlerinin altında gösterilen künye satırını gizle</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Çeviri ve okunuşun yerini değiştir</string>
@@ -589,17 +620,17 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_use_ai_section_title">Yapay Zeka Bölümü</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Yalnızca sağlayıcı Nakarat veya Kıta gibi bölüm etiketleri göndermediğinde ve bunları OpenAI uyumlu modeliniz tespit ettiğinde kullanılır</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">YZ Ayarları</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Yapay zeka destekli şarkı sözü çevirisi, romanizasyon ve bölümlendirme için OpenAI uyumlu API uç noktasını yapılandırın.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Yapay zeka destekli söz çevirisi, romanizasyon ve bölümleme için OpenAI uyumlu API uç noktasını yapılandırın.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API uç noktası URL’si (ör. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API anahtarı (anonim erişim için boş bırakın)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Model adı (ör. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">İstem Şablonu</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Yer tutucular: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">İstem şablonu</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">İstem kaydedildi</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Savlanma kaydedildi ancak AI uç noktası henüz kullanılamaz. Önce AI Ayarları altında yapılandırın.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">İstem sıfırlandı</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">YZ ayarları kaydedildi</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">AI uç noktasına bağlanılamadı. Lütfen ayarlarınızı kontrol edin.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">AI uç noktasına bağlanılamadı. Lütfen ayarlarınızı kontrol edin</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">YZ ayarları sıfırlandı</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">%1$s modeli yapılandırıldı</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Temel URL boş olamaz</string>

@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Atstatyti spalvą</string>
   <string name="morphe_settings_color_invalid">Neteisinga spalva</string>
   <string name="morphe_settings_restart_title">Reikia iš naujo paleisti</string>
-  <string name="morphe_settings_restart_dialog_message">Kad šis pakeitimas įsigaliotų, paleiskite programėlę iš naujo.</string>
+  <string name="morphe_settings_restart_dialog_message">Kad pokytis įsigaliotų, paleiskite programą iš naujo</string>
   <string name="morphe_settings_restart">Paleisti iš naujo</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importuoti</string>
   <string name="morphe_settings_import_copy">Kopijuoti</string>
   <string name="morphe_settings_import_reset">Morphe nustatymai atstatyti į numatytuosius</string>
-  <string name="morphe_settings_import_success">Importuota nustatymų: %d</string>
+  <string name="morphe_settings_import_success">Importuotos %s nustatymai</string>
   <string name="morphe_settings_import_failure_parse">Nepavyko importuoti: %s</string>
   <string name="morphe_settings_navigate_up">Grįžti atgal</string>
   <string name="morphe_settings_search_hint">Ieškoti nustatymuose</string>
@@ -101,9 +101,9 @@ Norėdami išversti naujas kalbas ar pagerinti esamus vertimus, apsilankykite mo
   <string name="morphe_debug_stacktrace_title">Derinimo žurnalo iškvietimų seka</string>
   <string name="morphe_debug_stacktrace_summary">Įtraukia iškvietimų sekas į derinimo žurnalus, kad padėtų nustatyti klaidas</string>
   <string name="morphe_debug_toast_on_error_title">Rodyti Morphe klaidos pranešimą</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Išjungus klaidų pranešimus, visi Morphe klaidų pranešimai bus paslėpti.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Išjungus klaidų pranešimus bus paslėpti visi „Morphe“ klaidos pranešimai.
 
-Apie netikėtus įvykius nebūsite informuojami."</string>
+Jūs nebusite informuojami apie jokiems netikėtus įvykius"</string>
   <string name="morphe_debug_export_logs_title">Eksportuoti derinimo žurnalus</string>
   <string name="morphe_debug_export_logs_summary">Eksportuoti Morphe derinimo žurnalus</string>
   <string name="morphe_debug_export_logs_success">Derinimo žurnalai sėkmingai eksportuoti</string>
@@ -179,31 +179,31 @@ Elgesys išnyko anksčiau paieškos metu, todėl gali būti susijusios kelios v�
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Atidaryti MicroG nustatymus</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG neįdiegtas. Įdiekite jį.</string>
+  <string name="gms_core_toast_not_installed_message">„MicroG“ nie instaliuotas. Jis turi būti suinstaliuotas</string>
   <string name="gms_core_dialog_title">Reikalingas veiksmas</string>
-  <string name="gms_core_dialog_outdated_message">"Jūsų MicroG v%1s yra pasenęs ir gali sukelti problemų.
+  <string name="gms_core_dialog_outdated_message">"„MicroG“ v%1s yra pasenusi ir gali kelti problemų.
 
-Atnaujinkite MicroG iki naujausios versijos v%2s."</string>
+Atnaujinkite „MicroG“ į naujausią versiją v%2s"</string>
   <string name="gms_core_dialog_update_text">Naujinti</string>
   <string name="gms_core_dialog_ignore_text">Ignoruoti</string>
-  <string name="gms_core_dialog_conflict_message">"Įdiegtas MicroG nerekomenduojamas Morphe:
+  <string name="gms_core_dialog_conflict_message">"Įdiegta „MicroG“ versija nėra rekomenduojama „Morphe“:
 
 %1s
 
-Bakstelėkite, kad jį pašalintumėte, tada iš naujo atidarykite šią programėlę ir įdiekite MicroG RE."</string>
+Spustelėkite, kad pašalintumėte, tada iš naujo atidarykite šį programėlę ir įdiekite „MicroG RE“"</string>
   <string name="gms_core_dialog_uninstall_text">Išdiegti</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG neturi leidimo veikti fone.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"„MicroG“ neturi leidimo veikti fone.
 
-Vadovaukitės savo telefono „Don't kill my app“ vadovu ir pritaikykite nurodymus savo MicroG diegimui.
+Sekite „Don't kill my app“ vadovą savo telefonui ir taikykite instrukcijas savo „MicroG“ diegimui.
 
-Tai būtina, kad programa veiktų."</string>
+Tai būtina, kad programėlė veiktų"</string>
   <string name="gms_core_dialog_open_website_text">Atidaryti svetainę</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Norint išvengti problemų, MicroG akumuliatoriaus optimizavimas turi būti išjungtas.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Kad būtų išvengta problemų, „MicroG“ baterijos optimizavimas turi būti išjungtas.
 
-Išjungus MicroG akumuliatoriaus optimizavimą, tai neturės neigiamos įtakos akumuliatoriaus naudojimui.
+Išjungus „MicroG“ baterijos optimizavimą tai neigiamai neapsitvertys baterijos naudojimo trukme.
 
-Bakstelėkite mygtuką „Tęsti“ ir leiskite atlikti optimizavimo pakeitimus."</string>
+Spustelėkite toliau mygtuką ir leiskite pakeisti optimizavimus"</string>
   <string name="gms_core_dialog_continue_text">Tęsti</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Rodyti „MicroG“ akumuliatoriaus optimizavimo dialogI langą</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Išjungus tai bus paslėptas MicroG akumuliatoriaus optimizavimo raginimas.

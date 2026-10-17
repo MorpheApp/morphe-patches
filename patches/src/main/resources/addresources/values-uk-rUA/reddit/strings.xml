@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Приховує панелі \"Популярне\" зі стрічки та пошукових підказок</string>
   <string name="morphe_remove_notification_dialog_title">Видалити діалог пропозиції сповіщень</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматично закриває діалог пропозиції сповіщень при відвідуванні субредіту</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Показати відзнаки у стрічці новин</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Показувати бейджі відзнак публікацій у стрічці новин</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Деякі елементи стрічки можуть не містити відзнаку</string>
   <string name="morphe_show_view_count_title">Показувати кількість переглядів у публікаціях</string>
   <string name="morphe_show_view_count_summary">Обмеження: Доступно лише якщо відповідь API містить кількість переглядів</string>
   <string name="morphe_flip_post_action_bar_title">Перевернути панель дій допису</string>

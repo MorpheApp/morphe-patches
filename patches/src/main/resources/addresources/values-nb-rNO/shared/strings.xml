@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Tilbakestill farge</string>
   <string name="morphe_settings_color_invalid">Ugyldig farge</string>
   <string name="morphe_settings_restart_title">Omstart kreves</string>
-  <string name="morphe_settings_restart_dialog_message">Start appen på nytt for at endringen skal tre i kraft.</string>
+  <string name="morphe_settings_restart_dialog_message">Start appen på nytt for at denne endringen skal tre i kraft</string>
   <string name="morphe_settings_restart">Start på nytt</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importer</string>
   <string name="morphe_settings_import_copy">Kopier</string>
   <string name="morphe_settings_import_reset">Morphe-innstillinger tilbakestilt til standard</string>
-  <string name="morphe_settings_import_success">Importerte %d innstillinger</string>
+  <string name="morphe_settings_import_success">Importerte %s-innstillinger</string>
   <string name="morphe_settings_import_failure_parse">Import mislyktes: %s</string>
   <string name="morphe_settings_navigate_up">Naviger opp</string>
   <string name="morphe_settings_search_hint">Søk i innstillinger</string>
@@ -101,9 +101,9 @@ For å oversette nye språk eller forbedre de eksisterende oversettelsene, besø
   <string name="morphe_debug_stacktrace_title">Feilsøkingslogg stakkspor</string>
   <string name="morphe_debug_stacktrace_summary">Inkluderer stakksporing i feilsøkingslogger for å hjelpe med å identifisere feil</string>
   <string name="morphe_debug_toast_on_error_title">Vis toast ved Morphe-feil</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Å slå av feilmeldinger skjuler alle Morphe-feilmeldinger.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Å deaktivere feil-varsler skjuler alle Morphe-feilvarsler.
 
-Du vil ikke bli varslet om uventede hendelser."</string>
+Du vil ikke varsles om uventede hendelser"</string>
   <string name="morphe_debug_export_logs_title">Eksporter feilsøkingslogger</string>
   <string name="morphe_debug_export_logs_summary">Eksporter Morphe-feilsøkingslogger</string>
   <string name="morphe_debug_export_logs_success">Feilsøkingslogger eksportert vellykket</string>
@@ -179,31 +179,31 @@ Atferden forsvant tidligere i søket, så mer enn ett flagg kan være involvert,
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Åpne MicroG-innstillingene</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG er ikke installert. Installer det.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG er ikke installert. Installer det</string>
   <string name="gms_core_dialog_title">Handling nødvendig</string>
-  <string name="gms_core_dialog_outdated_message">"Din MicroG v%1s er utdatert og kan forårsake problemer.
+  <string name="gms_core_dialog_outdated_message">"Den installerte MicroG-versjonen v%1s er utdatert og kan forårsake problemer.
 
-Vennligst oppdater MicroG til den nyeste versjonen v%2s."</string>
+Oppdater MicroG til nyeste versjon v%2s"</string>
   <string name="gms_core_dialog_update_text">Oppdater</string>
   <string name="gms_core_dialog_ignore_text">Ignorer</string>
-  <string name="gms_core_dialog_conflict_message">"Den installerte MicroG-en anbefales ikke av Morphe:
+  <string name="gms_core_dialog_conflict_message">"Morphe anbefaler ikke den installerte MicroG:
 
 %1s
 
-Trykk for å avinstallere den. Åpne deretter appen på nytt og installer MicroG RE."</string>
+Trykk for å avinstallere, åpne appen på nytt og installer MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Avinstaller</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG har ikke tillatelse til å kjøre i bakgrunnen.
 
-Følg «Ikke drep appen min»-veiledningen for telefonen din, og bruk instruksjonene på MicroG-installasjonen din.
+Følg \"Don't kill my app\"-veiledningen for telefonen din og følg instruksjonene for MicroG-installasjonen din.
 
-Dette er nødvendig for at appen skal fungere."</string>
+Dette er nødvendig for at appen skal fungere"</string>
   <string name="gms_core_dialog_open_website_text">Åpne nettside</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG batterioptimaliseringer må deaktiveres for å unngå problemer.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG-batterioptimaliseringer må deaktiveres for å hindre problemer.
 
-Å deaktivere batterioptimaliseringer for MicroG vil ikke påvirke batteribruken negativt.
+Å deaktivere batterioptimaliseringer for MicroG påvirker ikke batteribruk negativt.
 
-Trykk på fortsett-knappen og tillat optimaliseringsendringer."</string>
+Trykk på fortsett-knappen og tillatt optimaliseringsendringer"</string>
   <string name="gms_core_dialog_continue_text">Fortsett</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Vis dialog for MicroG-batterioptimalisering</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Å deaktivere dette vil skjule MicroG-dialogboksen for batterioptimalisering.

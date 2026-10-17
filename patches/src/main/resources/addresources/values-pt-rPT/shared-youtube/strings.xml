@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Nome do pacote do downloader</string>
   <string name="morphe_external_downloader_other_item">Outro</string>
   <string name="morphe_external_downloader_not_found_title">Aplicativo não instalado</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s não está instalado. Por favor, instale-o.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s não está instalado. Instale-o</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Não foi possível encontrar o aplicativo instalado com o nome do pacote: %s
 
 Verifique se o nome do pacote está correto e o aplicativo está instalado"</string>
@@ -84,7 +84,7 @@ Para alterar o ícone em todos os lugares, aplique o patch novamente e altere a 
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso do Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">O teu histórico de visualização não está a ser guardado.&lt;br&gt;&lt;br&gt;Isto é mais provávelmente causado por um bloqueador de anúncios DNS ou proxy de rede.&lt;br&gt;&lt;br&gt;Para reparar isto, adiciona às exceções &lt;b&gt;s.youtube.com&lt;/b&gt; ou desativa todos os bloqueadores DNS e proxies.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">O teu histórico de visualização não está a ser guardado.&lt;br&gt;&lt;br&gt;Isto é mais provávelmente causado por um bloqueador de anúncios DNS ou proxy de rede.&lt;br&gt;&lt;br&gt;Para reparar isto, adiciona às exceções &lt;b&gt;s.youtube.com&lt;/b&gt; ou desativa todos os bloqueadores DNS e proxies</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Não mostrar novamente</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsificar fluxos de vídeo</string>
@@ -99,7 +99,7 @@ Se você é um usuário do YouTube Premium, esta configuração pode não ser ne
 
 Definir %2$s como cliente padrão?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Trocar</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Desativar esta configuração pode causar problemas de reprodução.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Desativar esta configuração pode causar problemas de reprodução</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Tente habilitar: Spoof video streams > Android VR sign in</string>
@@ -134,7 +134,7 @@ Para entrar, pressione continuar abaixo"</string>
 • Você precisará conectar-se novamente se alterar sua senha do Google ou desregistrar este dispositivo das configurações do Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">O OAuth2 está temporariamente indisponível (API expirou)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Entrada Android VR expirou, tente entrar novamente na VR</string>
-  <string name="morphe_oauth2_connection_failure_status">O OAuth2 está temporariamente indisponível (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 temporariamente indisponível (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">O OAuth2 está temporariamente indisponível</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Não é possível entrar na VR, a autenticação do site não foi aprovada</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Não é possível fazer login no VR: %s</string>
@@ -197,7 +197,7 @@ Para entrar, pressione continuar abaixo"</string>
 
 Isto pode ajudar a identificar componentes ao criar filtros personalizados.
 
-No entanto, ativar isto também irá registar alguns dados do utilizador, como o seu endereço IP."</string>
+No entanto, ativar isto também irá registar alguns dados do utilizador, como o seu endereço IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
   <string name="morphe_custom_filter_screen_summary">Configure filtros personalizados para ocultar qualquer componente</string>
@@ -238,11 +238,11 @@ Ative 'Disfarçar streams de vídeo' para corrigir a reprodução"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Versão do Spoof app</string>
   <string name="morphe_spoof_app_version_summary">Engana o servidor, fazendo com que ele pense que você está usando uma versão mais antiga do aplicativo, para restaurar recursos de interface de usuário legados.</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"A versão do aplicativo será falsificada para uma versão mais antiga.
+  <string name="morphe_spoof_app_version_user_dialog_message">"A versão do aplicativo será simulada como uma versão mais antiga.
 
-Isso alterará a aparência e os recursos do aplicativo, mas podem ocorrer efeitos colaterais desconhecidos.
+Isso alterará a aparência e os recursos do aplicativo, mas efeitos colaterais desconhecidos podem ocorrer.
 
-Se desativado posteriormente, recomenda-se limpar os dados do aplicativo para evitar erros de interface do usuário."</string>
+Se desativado posteriormente, recomenda-se limpar os dados do aplicativo para evitar bugs de IU"</string>
   <string name="morphe_spoof_app_version_target_title">Destaque de versão do app</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Taxa de atualização do app</string>
@@ -265,7 +265,7 @@ Se desativado posteriormente, recomenda-se limpar os dados do aplicativo para ev
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes temporariamente indisponível (API expirou)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Descurtir não disponível (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Descurtir não disponível (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">As não gostos não estão disponíveis (limite da API do cliente)</string>
   <string name="morphe_ryd_failure_generic">Descurtir não disponível (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ O ID do vídeo que você assiste é enviado para a API do Return YouTube Dislike
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislikes temporariamente indisponível - Limite de taxa da API do cliente em vigor</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Votos de busca de API, número de chamadas</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nenhuma chamada de rede feita</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d chamadas de rede feitas</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s chamadas de rede realizadas</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Votos de busca de API, número de tempos limite</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Nenhuma chamada de rede expirou</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d chamadas de rede expiraram</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s chamadas de rede com tempo esgotado</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Limites de taxa do cliente da API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nenhum limite de taxa do cliente encontrado</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limite de taxa do cliente encontrado %d vezes</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d milissegundos</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limite de taxa do cliente encontrado %s vezes</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milissegundos</string>
 </resources>

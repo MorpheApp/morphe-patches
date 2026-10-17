@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">QR দেখান</string>
   <string name="morphe_music_jam_done">সম্পন্ন</string>
   <string name="morphe_music_jam_invite_title">আপনার Jam-এ আমন্ত্রণ জানান</string>
-  <string name="morphe_music_jam_invite_message">যোগ দিতে এবং এই কিউ সম্পাদনা করতে স্ক্যান করুন। Jam শেষ করলে আমন্ত্রণ বাতিল হয়ে যাবে।</string>
+  <string name="morphe_music_jam_invite_message">এই ক্যুতে যোগদান এবং এডিট করতে স্ক্যান করুন। জ্যাম শেষ করলে আমন্ত্রণ বাতিল হয়ে যায়</string>
   <string name="morphe_music_jam_copy_link">লিংক কপি করুন</string>
   <string name="morphe_music_jam_invitation_clip">Jam আমন্ত্রণ</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam পুনরায় সংযোগ করছে; কিছুক্ষণ পরে আবার চেষ্টা করুন</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Jam আপডেট করা হচ্ছে…</string>
   <string name="morphe_music_jam_finding_host">Wi-Fi-তে আপনার হোস্ট খুঁজছে…</string>
   <string name="morphe_music_jam_waiting_people">লোকজনের জন্য অপেক্ষা করা হচ্ছে</string>
-  <string name="morphe_music_jam_one_connected">%d জন ব্যক্তি সংযুক্ত</string>
-  <string name="morphe_music_jam_many_connected">%d জন লোক সংযুক্ত</string>
-  <string name="morphe_music_jam_code_expires">কাছের কোনো ডিভাইসে এই কোডটি লিখুন। সমর্থিত হলে Wi-Fi Aware আলাদা LAN-এর মধ্যেও কাজ করে। %d মিনিটের মধ্যে মেয়াদ শেষ হবে।</string>
+  <string name="morphe_music_jam_one_connected">%s জন সংযুক্ত</string>
+  <string name="morphe_music_jam_many_connected">%s জন সংযুক্ত</string>
+  <string name="morphe_music_jam_code_expires">নিকটবর্তী ডিভাইসে এই কোডটি दर्ज করুন। Wi-Fi Aware সমর্থিত হলে পৃথক LAN-এর ওপর কাজ করে। %s মিনিটে মেয়াদ শেষ হবে</string>
   <string name="morphe_music_jam_seek_to">%s-এ সিক করবেন?</string>
   <string name="morphe_music_jam_edits_open">সম্পাদনা উন্মুক্ত</string>
   <string name="morphe_music_jam_edits_locked">সম্পাদনা লক করা</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Jam চলাকালীন সমর্থিত নয়</string>
   <string name="morphe_music_jam_cancelled">যোগদান বাতিল হয়েছে</string>
   <string name="morphe_music_jam_reconnecting_host">আপনার হোস্টে পুনরায় সংযোগ করা হচ্ছে…</string>
-  <string name="morphe_music_jam_share_prompt">একটি কিউ শেয়ার করুন। সবাইকে গান যোগ করার সুযোগ দিন।</string>
+  <string name="morphe_music_jam_share_prompt">একটি ক্যু শেয়ার করুন। সবাইকে গান যোগ করতে দিন</string>
   <string name="morphe_music_jam_invite_people">লোকদের আমন্ত্রণ জানান</string>
   <string name="morphe_music_jam_guest_edits">অতিথিরা কিউ সম্পাদনা করতে পারবেন</string>
   <string name="morphe_music_jam_end_jam">Jam শেষ করুন</string>
-  <string name="morphe_music_jam_participant_help">হোস্ট সঙ্গীত বাজায়। সরাসরি YouTube Music কিউতে গান যোগ করুন, সরান বা মুছুন।</string>
-  <string name="morphe_music_jam_joining_help">দুটি ডিভাইস কাছাকাছি রাখুন। আমরা হোস্ট খোঁজার সময় আপনি বাতিল করতে পারেন।</string>
+  <string name="morphe_music_jam_participant_help">হোস্ট মিউজিক চালিয়েছেন। সরাসরি YouTube Music ক্যুতে গান যোগ, স্থানান্তর বা মুছে ফেলুন</string>
+  <string name="morphe_music_jam_joining_help">উভয় ডিভাইস একসাথে রাখুন। হোস্ট খোঁজার সময় আপনি বাতিল করতে পারেন</string>
   <string name="morphe_music_jam_cancel_joining">যোগদান বাতিল করুন</string>
   <string name="morphe_music_jam_leave_jam">Jam ছেড়ে দিন</string>
   <string name="morphe_music_jam_start_jam">Jam শুরু করুন</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">আপনার নির্বাচিত বাহ্যিক ডাউনলোডারটি স্টক ডাউনলোড ফ্লাইআউট মেনুর পরিবর্তে ব্যবহার করে।</string>
   <string name="morphe_music_in_app_downloads_title">অ্যাপে ডাউনলোড</string>
   <string name="morphe_music_in_app_downloads_summary">YouTube Music-এর ভিতরে অডিও ডাউনলোড করে, বাহ্যিক ডাউনলোডার অ্যাপ খোলার পরিবর্তে</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"ট্র্যাকগুলি অ্যাপের ব্যক্তিগত স্টোরেজে সংরক্ষিত হয় এবং YouTube মিউজিক আনইনস্টল করলে সেগুলি মুছে যায়।
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"ট্র্যাকগুলি অ্যাপের প্রাইভেট স্টোরেজে সংরক্ষিত হয় এবং YouTube Music অপসারণ করা হলে সেগুলি মুছে যাবে।
 
-যখন এটি চালু থাকে, ডাউনলোড ট্যাবটি মিউজিক Premium অফলাইন লাইব্রেরির পরিবর্তে এই ট্র্যাকগুলিকে তালিকাভুক্ত করে। এটি বন্ধ করলে ট্যাবটি পুনরুদ্ধার হয়, এবং Premium ডাউনলোডগুলি কখনও স্পর্শ করা হয় না।"</string>
+এটি চালু থাকাকালীন, ডাউনলোডস ট্যাবে মিউজিক প্রিমিয়াম অফলাইন লাইব্রেরির বদলে এই ট্র্যাকগুলি দেখাবে। এটি বন্ধ করলে ট্যাবটি ফিরে আসবে এবং প্রিমিয়াম ডাউনলোডগুলি কখনও নষ্ট হবে না"</string>
   <string name="morphe_music_downloads_screen_title">ডাউনলোড</string>
   <string name="morphe_music_downloads_empty">"কোনো ডাউনলোড নেই
 ডাউনলোড করা ট্র্যাকগুলো এখানে দেখা যাবে"</string>
@@ -445,7 +445,7 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_scrobbling_custom_regex_title">কাস্টম রেজেক্স পরিষ্কার</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">গান শিরোনাম, শিল্পী বা অ্যালবম থেকে অতিরিক্ত টেক্সট সরানোর জন্য একটি কাস্টম রেগুলার এক্সপ্রেশন লিখুন। উদাহরণ: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">শিরোনাম থেকে শিল্পী এবং ট্র্যাক পার্স করুন</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">\" - \" বিভাজক ব্যবহার করে ভিডিওর শিরোনাম থেকে শিল্পী এবং ট্র্যাকের নাম বের করুন। চ্যানেলের নাম শিল্পীর নাম হিসাবে ব্যবহৃত হতে পারে এমন পুনরায় আপলোড করা সামগ্রীর জন্য এটি উপযোগী।</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">ভিডিওয়ের শিরোনাম থেকে শিল্পী এবং ট্র্যাকের নাম \" - \" সепарেটর ব্যবহার করে বের করুন। যেখানে চ্যানেলের নামটি শিল্পীর নাম হিসেবে ব্যবহার করা হয়েছে such কন্টেন্টের জন্য এটি উপযোগী</string>
   <string name="morphe_music_scrobbling_guess_album_title">অনুপস্থিত অ্যালবাম পূরণ করুন</string>
   <string name="morphe_music_scrobbling_guess_album_summary">যখন সংগীতে অ্যালবাম থাকে না, তখন Last.fm-এ এটি খুঁজে দেখুন যাতে আপনার scrobble সম্পূর্ণ হয়।</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_section_service_title">লিরিক্স পরিষেবা</string>
   <string name="morphe_music_lyrics_section_overlay_title">ওভারলে</string>
   <string name="morphe_music_lyrics_section_sync_title">সিঙ্ক্রোনাইজেশন</string>
-  <string name="morphe_music_lyrics_source_all_disabled">সব প্রদানকারী অক্ষম — বিল্ট-ইন লিরিক্স এবং এমবেড করা লিরিক্স</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">এআই এন্ডপয়েন্ট</string>
+  <string name="morphe_music_lyrics_source_all_disabled">সকল প্রোভাইডার নিষ্ক্রিয় — বিল্ট-ইন লিরিক্স এবং এমবেডেড লিরিক্স</string>
   <string name="morphe_music_lyrics_source_reset_title">প্রদানকারীর ক্রম পুনরায় সেট করবেন?</string>
   <string name="morphe_music_lyrics_source_reset_message">প্রদানকারীদের ডিফল্ট অগ্রাধিকার ক্রমে পুনরুদ্ধার করুন</string>
   <string name="morphe_music_token_dialog_get_token">টোকেন পান</string>
@@ -473,7 +474,7 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
 3. \"media-user-token\"-এর মান কপি করুন"</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token মুছে ফেলা হয়েছে</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: অবৈধ media-user-token — অনুগ্রহ করে পরীক্ষা করে আবার চেষ্টা করুন</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: অকার্যকর মিডিয়া-ইউজার-টোকেন - দয়া করে পরীক্ষা করুন এবং আবার চেষ্টা করুন</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Spotify থেকে sp_dc কুকিটি পেস্ট করুন।
 
@@ -483,7 +484,7 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
 3. \"sp_dc\"-এর মান কপি করুন"</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] এটি ছাড়া, Lyrically ফলব্যাক হিসেবে ব্যবহার করা হবে।</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc মুছে ফেলা হয়েছে</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: অবৈধ sp_dc — অনুগ্রহ করে পরীক্ষা করে আবার চেষ্টা করুন</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: অকার্যকর sp_dc - দয়া করে পরীক্ষা করুন এবং আবার চেষ্টা করুন</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music টোকেন ঐচ্ছিক। এটি না থাকলে, Lyrically ফলব্যাক হিসেবে ব্যবহৃত হবে।</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] \"arl\"-এর মান কপি করুন</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer থেকে arl কুকিটি পেস্ট করুন।
@@ -494,21 +495,21 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
 3. \"arl\"-এর মান কপি করুন"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl অবৈধ — অনুগ্রহ করে আবার পরীক্ষা করে চেষ্টা করুন।</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: অবৈধ arl — অনুগ্রহ করে পরীক্ষা করে আবার চেষ্টা করুন</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: অকার্যকর arl - দয়া করে পরীক্ষা করুন এবং আবার চেষ্টা করুন</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] ব্যবহারকারীর টোকেনের মান কপি করুন</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">একটি টোকেন যোগ করুন শুধুমাত্র আপনার নিজের অ্যাকাউন্ট ব্যবহার করার জন্য। এটি অবশ্যই Musixmatch Android অ্যাপ থেকে আসতে হবে: musixmatch.com থেকে কপি করা টোকেনগুলো অপ্রচলিত ডেস্কটপ ক্লায়েন্টের টোকেন, এবং API সেগুলি প্রত্যাখ্যান করে।</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch টোকেন ছাড়াই কাজ করে, তাই এই ক্ষেত্রটি খালি রাখা যেতে পারে।</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ব্যবহারকারীর টোকেন অবৈধ — অনুগ্রহ করে আবার পরীক্ষা করে চেষ্টা করুন।</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: ইউজার টোকেন সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: ব্যবহারকারীর টোকেন মুছে ফেলা হয়েছে</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: অবৈধ ইউজার টোকেন — অনুগ্রহ করে পরীক্ষা করে আবার চেষ্টা করুন</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: অকার্যকর ইউজার টোকেন - দয়া করে পরীক্ষা করুন এবং আবার চেষ্টা করুন</string>
   <string name="morphe_music_youtube_cookies_title">YouTube কুকিজ</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"পেস্ট […] সম্পূর্ণ কুকি স্ট্রিং কপি করুন (সেমিকোলন দিয়ে আলাদা করা key=value জোড়া)
 
 প্রয়োজনীয় কুকি: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: কুকিজ সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: কুকিজ সাফ করা হয়েছে</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: কুকিজ অবৈধ — অনুগ্রহ করে আবার পরীক্ষা করে চেষ্টা করুন।</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: অকার্যকর cookies - দয়া করে পরীক্ষা করুন এবং আবার চেষ্টা করুন</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">লাইনটিতে ট্যাপ করে যান</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">একটি লাইনে ট্যাপ করলে গানের সেই মুহূর্তটিতে যাওয়া যাবে</string>
   <string name="morphe_music_lyrics_show_section_title">সেকশন ট্যাগ দেখান</string>
@@ -519,6 +520,12 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_show_translate_button_summary">অনুবাদ টগল করতে ট্যাপ করুন; শুধুমাত্র অনুবাদের জন্য দীর্ঘ চাপ দিন। প্রদানকারীর অনুবাদ, Google Translate, বা OpenAI-সামঞ্জস্যপূর্ণ API ব্যবহার করে।</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Romanize বাটন দেখান</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">রোমানাইজেশন টগল করতে ট্যাপ করুন; শুধুমাত্র রোমানাইজেশনের জন্য দীর্ঘ চাপ দিন। প্রদানকারীর রোমানাইজেশন, Google Translate, বা OpenAI-সামঞ্জস্যপূর্ণ API ব্যবহার করে।</string>
+  <string name="morphe_music_lyrics_local_romanization_title">লোকাল রোমানাইজেশন</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">যখন প্রোভাইডার, একটি OpenAI-কম্প্যাটিবল এন্ডপয়েন্ট এবং Google Translate সবই ব্যর্থ হয়, তখন ডিভাইসে রোমানাইজ করুন। শুধুমাত্র CJK, ডাউনলোড করার জন্য প্রায় ৮০ এমবি পাঠ্য।</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">পাঠ %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">পাঠ্য প্রস্তুত (%1$d CJK শব্দ)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">ডাউনলোড ব্যর্থ — আবার চেষ্টা করতে এটি বন্ধ করে আবার চালু করুন</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">রিফ্রেশ বোতাম দেখান</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">পরবর্তী প্রস্তাবিত গানের কথায় স্যুইচ করতে ট্যাপ করুন; গানের শিরোনাম এবং শিল্পীর নাম দিয়ে গানের কথা অনুসন্ধান করতে দীর্ঘ চাপ দিন।</string>
   <string name="morphe_music_lyrics_search_dialog_title">গানের কথা অনুসন্ধান</string>
@@ -529,6 +536,8 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_saved">সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_lyrics_word_sync_title">সিঙ্ক্রোনাইজড শব্দ বা সিলেবল হাইলাইট করুন</string>
   <string name="morphe_music_lyrics_word_sync_summary">যখন পাওয়া যায়, শব্দে শব্দে লিরিক্সকে অগ্রাধিকার দিন। যখন লিরিক্সে শব্দের সময় থাকে, তখন সঙ্গীতের সাথে সময় মিলিয়ে প্রতিটি শব্দ বা সিলেবল হাইলাইট হয়।</string>
+  <string name="morphe_music_lyrics_split_background_title">ব্যাকগ্রাউন্ড ভোক্যাল আলাদাভাবে দেখান</string>
+  <string name="morphe_music_lyrics_split_background_summary">\"(Oh)\" ইচ্ছুক অংশ বন্ধনীতে লেখা ব্যাকগ্রাউন্ড ভোক্যালকে গানের লাইন থেকে সরিয়ে একটি নিঃস্ব যমের রেখে দেয়</string>
   <string name="morphe_music_lyrics_hide_played_title">লিরিক্স লুকান […]</string>
   <string name="morphe_music_lyrics_hide_played_summary">বর্তমানে বাজতে থাকা লাইনের উপরের লিরিক্সের লাইনগুলো লুকান</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">যে লিরিক্স এখনো বাজানো হয়নি সেগুলো লুকান</string>
@@ -553,25 +562,47 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_sb_no_video">এই ট্র্যাকে জমা দেওয়ার জন্য কোনো ভিডিও আইডি নেই</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">উৎস: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">এই LRC সংরক্ষণ করতে কপি বাটনে দীর্ঘক্ষণ টিপুন; আপনি যদি সময়গুলি ফাইন-টিউন করতে পারেন এবং কমিউনিটি প্রোভাইডারদের সাথে শেয়ার করেন, তবে আমরা ধন্যবাদ জানাবো।</string>
   <string name="morphe_music_lyrics_translated_by_google">Google দ্বারা অনুবাদিত</string>
   <string name="morphe_music_lyrics_romanized_by_google">Google দ্বারা রোমানাইজড</string>
   <string name="morphe_music_lyrics_translated_by_ai">অনুবাদ করেছেন %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">রোমানাইজ করেছেন %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">রোমানাইজ করেছে %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">রোমানাইজ করা হচ্ছে…</string>
   <string name="morphe_music_lyrics_translation_language_title">অনুবাদের ভাষা</string>
+  <string name="morphe_music_lyrics_romanize_language_title">রোমানাইজেশনের ভাষা</string>
   <string name="morphe_music_lyrics_translating">অনুবাদ করা হচ্ছে…</string>
   <string name="morphe_music_lyrics_translate_failed">লিরিক্স অনুবাদ করা যায়নি</string>
   <string name="morphe_music_lyrics_romanize_hide">লিরিক্স রোমানাইজ করা যায়নি</string>
+  <string name="morphe_romanize_language_DEFAULT">স্বয়ংক্রিয়</string>
   <string name="morphe_music_lyrics_romanizing">রিফ্রেশ করা হচ্ছে</string>
   <string name="morphe_music_lyrics_romanize_failed">রিফ্রেশ করা হয়েছে</string>
   <string name="morphe_music_lyrics_translate_only">শুধুমাত্র অনুবাদিত</string>
   <string name="morphe_music_lyrics_romanize_only">শুধুমাত্র রোমানাইজড</string>
+  <string name="morphe_music_lyrics_dual_only">ডুয়াল মোড</string>
   <string name="morphe_music_lyrics_copied">ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
   <string name="morphe_music_lyrics_refreshing">লিরিক্স খোঁজার সময় শিরোনাম, শিল্পী এবং অ্যালবাম অনুসারে একটি ট্র্যাক খুঁজে পাওয়া যায় না, অথবা ভুল সংস্করণ পাওয়া যায়। আপনি ম্যানুয়ালি সঠিক সংস্করণটি নির্বাচন করতে পারেন, অথবা অনুসন্ধানটি আবার চেষ্টা করতে পারেন।</string>
   <string name="morphe_music_lyrics_refreshed">ক্রেডিট লাইন লুকান</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API কী</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC বর্তমান ট্র্যাকটির গানের লিরিক্স ট্রান্সক্রাইব বা টাইম-অ্যালাইন করে। এটি উপরের OpenAI-কম্প্যাটিবল এন্ডপয়েন্ট থেকে সম্পূর্ণ আলাদা একটি সেবা।</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC কী সংরক্ষিত হয়েছে। লিরিক্স খোঁজার ডায়লগে অ্যালাইন বাটন ব্যবহার করুন, অথবা কোনো ট্র্যাকে লিরিক্স না থাকলে প্যানেল প্রম্পট ব্যবহার করুন।</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API কী সংরক্ষিত</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC সেই কী গ্রহণ করেনি</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API কী মুছে ফেলা হয়েছে</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">ক্রেডিট ব্যয়ের ঝুঁকিতে QuickLRC এমন লিরিক্সগুলির সময় নির্ধারণ করে যা নেই, অথবা ট্র্যাক থেকে তাদের ট্রান্সক্রাইব করে। কী সেট থাকলে, কোনও লিরিক্স ছোট ট্র্যাকগুলো ট্রান্সক্রিপশন অফার করে এবং খোঁজার ডায়লগে একটি অ্যালাইনমেন্ট বাটন যোগ হয়।</string>
+  <string name="morphe_music_lyrics_transcribe_align">QuickLRC অ্যালাইনমেন্ট অনুরোধ করুন</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">অ্যালাইন করা হচ্ছে</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">অ্যালাইনমেন্ট প্রয়োগ করুন</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">QuickLRC ট্রান্সক্রিপশন অনুরোধ করুন</string>
+  <string name="morphe_music_lyrics_transcribe_working">ট্রান্সক্রাইব করা হচ্ছে</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">ট্রান্সক্রিপশন বাতিল হয়েছে</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">শুধুমাত্র YouTube থেকে চালানো ট্র্যাকগুলি ট্রান্সক্রাইব করা যেতে পারে</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">অ্যালাইন করার মতো লিরিক্স নেই — তার বদলে ট্রান্সক্রাইব করা হচ্ছে</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC এই ট্র্যাকটি প্রসেস করতে পারেনি</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">এই ট্র্যাকটির জন্য QuickLRC ক্রেডিট শেষ হয়ে গেছে</string>
   <string name="morphe_music_lyrics_about_summary">"গানের কথা শিরোনাম এবং শিল্পীর নাম দ্বারা মেলানো হয়; অস্বাভাবিক মেটাডেটা কিছুই খুঁজে নাও পেতে পারে বা ভুল সংস্করণ খুঁজে পেতে পারে। সংস্করণ পরিবর্তন করতে রিফ্রেশ ব্যবহার করুন। * চিহ্নিত প্রদানকারীদের একটি টোকেন প্রয়োজন। সক্রিয় করা সমস্ত প্রদানকারী সবসময় আপনার ক্রমে অনুরোধ করা হয় না, বরং তাদের গতির ভিত্তিতে সাড়া দেয়।"</string>
-  <string name="morphe_music_lyrics_source_advice_summary">শুধুমাত্র আপনি যে প্রোভাইডারগুলো ব্যবহার করেন সেগুলো সক্রিয় করুন, অথবা ডিফল্ট রাখুন — অবিরাম অনুরোধ ছোট কমিউনিটি গানের কথা সাইটগুলোকে ওভারলোড করতে পারে</string>
+  <string name="morphe_music_lyrics_source_advice_summary">শুধুমাত্র যেসব প্রোভাইডার আপনি ব্যবহার করেন সেগুলিকে চালু করুন, অথবা ডিফল্ট সেট রাখুন। ধারাবাহিক অনুরোধ ছোট কমিউনিটি লিরিক্স সাইটগুলিকে ভারপ্রাপ্ত করতে পারে</string>
   <string name="morphe_music_lyrics_hide_info_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>
   <string name="morphe_music_lyrics_hide_info_summary">ON রোমানাইজেশনকে লিরিক্সের নিচে এবং অনুবাদকে উপরে রাখে; OFF রোমানাইজেশনকে উপরে এবং অনুবাদকে নিচে রাখে</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>
@@ -584,17 +615,17 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_use_ai_section_title">AI সেকশন</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">শুধুমাত্র তখনই ব্যবহৃত হয় যখন প্রোভাইডার Chorus বা Verse-এর মতো কোনো সেকশন লেবেল প্রদান করে না, যা আপনার OpenAI-সামঞ্জস্যপূর্ণ মডেল তখন শনাক্ত করে</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI সেটিংস</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI-চালিত গানের লিরিক্স অনুবাদ, রোমানাইজেশন এবং সেকশনের জন্য OpenAI-সামঞ্জস্যপূর্ণ API এন্ডপয়েন্ট কনফিগার করুন।</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI-চালিত লিরিক্স অনুবাদ, রোমানাইজেশন এবং বিভাগের জন্য OpenAI-কম্প্যাটিবল API এন্ডপয়েন্ট কনফিগার করুন।</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API এন্ডপয়েন্ট URL (যেমন: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API কী (বেনামী অ্যাক্সেসের জন্য খালি রাখুন)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">মডেলের নাম (যেমন: openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">প্রম্পট টেমপ্লেট</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">প্লেসহোল্ডার: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">প্রম্পট টেমপ্লেট</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">প্রম্পট সংরক্ষিত হয়েছে</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">প্রম্পট সংরক্ষিত, কিন্তু AI এন্ডপয়েন্ট এখনও ব্যবহারযোগ্য নয়। আগে AI সেটিংসের অধীনে এটি কনফিগার করুন।</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">প্রম্পট রিসেট করা হয়েছে</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI সেটিংস সংরক্ষিত হয়েছে</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">AI এন্ডপয়েন্টে সংযোগ করা যায়নি। অনুগ্রহ করে আপনার সেটিংস পরীক্ষা করুন।</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">AI endpoint-এ সংযোগ স্থাপন করা যায়নি। দয়া করে আপনার সেটিংস যাচাই করুন</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI সেটিংস রিসেট করা হয়েছে</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">মডেল %1$s কনফিগার করা হয়েছে</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">বেস URL খালি হতে পারবে না</string>

@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Herstel kleur</string>
   <string name="morphe_settings_color_invalid">Ongeldige kleur</string>
   <string name="morphe_settings_restart_title">Herbegin benodig</string>
-  <string name="morphe_settings_restart_dialog_message">Herstart die program sodat hierdie verandering in werking kan tree.</string>
+  <string name="morphe_settings_restart_dialog_message">Herstart die program sodat hierdie verandering in werking kan tree</string>
   <string name="morphe_settings_restart">Herbegin</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Invoer</string>
   <string name="morphe_settings_import_copy">Kopie</string>
   <string name="morphe_settings_import_reset">Morphe instellings is teruggesit na verstek</string>
-  <string name="morphe_settings_import_success">%d instellings ingevoer</string>
+  <string name="morphe_settings_import_success">%s instellings ingevoer</string>
   <string name="morphe_settings_import_failure_parse">Invoer misluk: %s</string>
   <string name="morphe_settings_navigate_up">Navigeer op</string>
   <string name="morphe_settings_search_hint">Soek instellings</string>
@@ -103,7 +103,7 @@ Om nuwe tale te vertaal of bestaande vertalings te verbeter, besoek morphe.softw
   <string name="morphe_debug_toast_on_error_title">Wys rooster op Morphe fout</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Om foutrooster uit te skakel, verberg dit al Morphe foutkennisgewings.
 
-Jy sal nie van enige onverwags gebeurtenisse in kennis gestel word nie."</string>
+Jy sal nie van enige onverwags gebeurtenisse in kennis gestel word nie"</string>
   <string name="morphe_debug_export_logs_title">Voer ontfouting protokolle uit</string>
   <string name="morphe_debug_export_logs_summary">Voer Morphe ontfouting protokolle uit</string>
   <string name="morphe_debug_export_logs_success">Ontfouting logboeke is suksesvol uitgevoer</string>
@@ -179,31 +179,31 @@ Die gedrag het vroeër in die soektog verdwyn, so meer as een kenmerk-vlag kan b
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Maak MicroG instellings oop</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG is nie geïnstalleer nie. Installeer dit.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG is nie geïnstalleer nie. Installeer dit</string>
   <string name="gms_core_dialog_title">Aandag benodig</string>
-  <string name="gms_core_dialog_outdated_message">"Jou MicroG v%1s is verouderd en kan probleme veroorsaak.
+  <string name="gms_core_dialog_outdated_message">"Jou MicroG v%1s is oud en kan probleme veroorsaak.
 
-Dateer asseblief MicroG op na die nuutste weergawe v%2s."</string>
+Bewerk asseblief MicroG na die nuutste weergawe v%2s"</string>
   <string name="gms_core_dialog_update_text">Dateer op</string>
   <string name="gms_core_dialog_ignore_text">Ignoreer</string>
   <string name="gms_core_dialog_conflict_message">"Die geïnstalleerde MicroG word nie deur Morphe aanbeveel nie:
 
 %1s
 
-Tik om dit te deïnstalleer, en maak dan hierdie app weer oop en installeer MicroG RE."</string>
+Tik om dit deÿnstelleer te maak, heropen dan hierdie toepassing en installeer MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Deïnstalleer</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG het nie toestemming om op die agtergrond te loop nie.
 
 Volg die \"Moenie my program doodmaak nie\" begeleiding vir jou foon, en pas die instruksies toe op jou MicroG installasie.
 
-Dit is benodig vir die program om te werk."</string>
+Dit is benodig vir die program om te werk"</string>
   <string name="gms_core_dialog_open_website_text">Maak webwerf oop</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG battery optimerings moet afgeskakel word om probleme te voorkom.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG se batterijoptimerings moet afgeskakel word om probleme te vermy.
 
-Deaktivering van battery optimerings vir MicroG sal nie batterygebruik negatief beïnvloed nie.
+Afkeskakeling van batterijoptimerings vir MicroG sal nie negatief op batterylewing raak nie.
 
-Tik die voortgaan knoppie en laat optimeringsveranderings toe."</string>
+Tik die voortgaan-knoop en staar optimaliseringsveranderinge toe"</string>
   <string name="gms_core_dialog_continue_text">Gaan voort</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Toon MicroG battery optimerings dialoog</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering hiervan sal die MicroG battery optimerings prompt verberg.

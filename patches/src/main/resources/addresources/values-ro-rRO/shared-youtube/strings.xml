@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Introduceţi numele pachetului</string>
   <string name="morphe_external_downloader_other_item">Altele</string>
   <string name="morphe_external_downloader_not_found_title">Aplicația nu este instalată</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s nu este instalată. Vă rugăm să o instalați.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s nu este instalat. Vă rugăm să îl instalați</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Nu s-a putut găsi aplicația instalată cu numele pachetului: %s
 
 Verificați dacă numele pachetului este corect și aplicația este instalată"</string>
@@ -84,7 +84,7 @@ Pentru a schimba pictograma peste tot, aplicați patch-ul din nou și modificaț
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Notificare Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Istoricul de vizionare nu este salvat.&lt;br&gt;&lt;br&gt;Cel mai probabil este cauzată de un DNS de blocare a anunțurilor sau de un proxy de rețea.&lt;br&gt;&lt;br&gt;Pentru a remedia acest lucru, lista albă &lt;b&gt;s.youtube.com&lt;/b&gt; sau pentru a opri toate blocantele DNS și proxy-urile.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Istoricul de vizionare nu este salvat.&lt;br&gt;&lt;br&gt;Cel mai probabil este cauzată de un DNS de blocare a anunțurilor sau de un proxy de rețea.&lt;br&gt;&lt;br&gt;Pentru a remedia acest lucru, lista albă &lt;b&gt;s.youtube.com&lt;/b&gt; sau pentru a opri toate blocantele DNS și proxy-urile</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nu mai afișa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsifică fluxurile video</string>
@@ -99,7 +99,7 @@ Dacă ești un utilizator YouTube Premium, această setare s-ar putea să nu fie
 
 Faci din %2$s clientul implicit?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Comută</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Dezactivarea acestei setări poate cauza probleme de redare.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Dezactivarea acestei setări poate cauza probleme de redare</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Încearcă activarea: Spoof video streams > Autentificare Android VR</string>
@@ -134,7 +134,7 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
 • Dacă schimbi parola Google sau deblochezi acest dispozitiv din setări Google, vei avea nevoie să te autentifici din nou"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 este momentan indisponibil (API a expirat)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Apărarea la Android VR a expirat, încearcă din nou</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 este momentan indisponibil (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 temporar indisponibil (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 este momentan indisponibil</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nu se poate apăra la VR, autentificarea website-ului nu a fost aprobată</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nu puteți vă conecta la VR: %s</string>
@@ -197,7 +197,7 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
 
 Acest lucru poate ajuta la identificarea componentelor atunci când creați filtre personalizate.
 
-Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale utilizatorului, cum ar fi adresa dvs. IP."</string>
+Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale utilizatorului, cum ar fi adresa dvs. IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtru personalizat</string>
   <string name="morphe_custom_filter_screen_summary">Configurați filtre personalizate pentru a ascunde orice componentă</string>
@@ -238,11 +238,11 @@ Activează „Simulare fluxuri video” pentru a remedia redarea"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary">Păcălește serverul să creadă că folosești o versiune mai veche a aplicației pentru a restabili funcționalități UI vechi</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Versiunea aplicației va fi falsificată la o versiune mai veche.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Versiunea aplicației va fi simulată ca o versiune mai veche.
 
-Acest lucru va schimba aspectul și caracteristicile aplicației, dar pot apărea efecte secundare necunoscute.
+Acest lucru va schimba aspectul și funcțiile aplicației, dar pot apărea efecte secundare necunoscute.
 
-Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației pentru a preveni erorile UI."</string>
+Dacă opțiunea este dezactivată ulterior, se recomandă ștergerea datelor aplicației pentru a preveni erorile UI"</string>
   <string name="morphe_spoof_app_version_target_title">Țintă versiune falsificată a aplicației</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Rata de reîmprospătare a aplicației</string>
@@ -265,7 +265,7 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislike-uri temporar indisponibile (API a expirat)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Dislike-uri indisponibile (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Dislike-uri indisponibile (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Nu există aprecieri negative disponibile (limită API client)</string>
   <string name="morphe_ryd_failure_generic">Dislike-uri indisponibile (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ ID-ul videoclipului pe care îl urmărești este trimis către API-ul Return You
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislike-uri temporar indisponibile - Limită de rată API client în vigoare</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Preluarea de voturi API, numărul de apeluri</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nu s-au efectuat apeluri în rețea</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d apeluri de rețea efectuate</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">S-au efectuat %s apeluri de rețea</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Preluarea de voturi API, numărul de încercări eșuate</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Niciun apel de rețea nu a expirat</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d apeluri de rețea au expirat</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Timpul de așteptare pentru %s apeluri de rețea a expirat</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Limite de rată client API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nici o limită de rată client întâlnită</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limita de rată client întâlnită de %d ori</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d milisecunde</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limita de rată a clientului a fost întâlnită de %s ori</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milisecunde</string>
 </resources>

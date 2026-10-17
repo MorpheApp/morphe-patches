@@ -119,6 +119,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">បិទ</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
@@ -192,6 +193,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">បិទ</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
@@ -239,5 +241,4 @@ Second \"item\" text"</string>
   <string name="morphe_series_tracker_ui_save">រក្សាទុក</string>
   <string name="morphe_series_tracker_ui_rename">ប្ដូរឈ្មោះ</string>
   <string name="morphe_series_tracker_undo">អាន់ឌូ</string>
-  <string name="morphe_series_tracker_completion_save">រក្សាទុក</string>
 </resources>

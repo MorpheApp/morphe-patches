@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Aspect</string>
   <string name="morphe_copy_text_title">Copiază textul</string>
   <string name="morphe_copy_text_summary">Permite selectarea și copierea textului în postări și comentarii. Dezactivează restrângerea comentariilor</string>
-  <string name="morphe_copy_text_user_dialog_message">Restrângerea comentariilor nu va mai funcționa atâta timp cât opțiunea Copiere text este activată.</string>
+  <string name="morphe_copy_text_user_dialog_message">Comentariile colapsate vor înceta să funcționeze cât timp Copy text este activat</string>
   <string name="morphe_custom_font_title">Font personalizat</string>
   <string name="morphe_custom_font_summary">Încarcă un fișier font TTF sau OTF personalizat din calea de mai jos. Activarea acestei opțiuni dezactivează și utilizarea fontului sistem.</string>
   <string name="morphe_custom_font_file_path_title">Fișier font personalizat</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Ascunde rafturile \"În tendințe\" din flux și din sugestiile de căutare</string>
   <string name="morphe_remove_notification_dialog_title">Elimină dialogul de sugestie a notificărilor</string>
   <string name="morphe_remove_notification_dialog_summary">Dismissă automat sugestia de notificare când vizitezi un subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Afișează insignele în sursa de acasă</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Afișează badge-urile de flair în sursa de acasă</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Unele elemente din sursă pot să nu afișeze un flair</string>
   <string name="morphe_show_view_count_title">Afișează numărul de vizualizări pe postări</string>
   <string name="morphe_show_view_count_summary">Limitare: Disponibilă doar dacă răspunsul API include numărul de afișări</string>
   <string name="morphe_flip_post_action_bar_title">Inversează bara de acțiuni a postării</string>

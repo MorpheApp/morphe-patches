@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">Prikažite QR</string>
   <string name="morphe_music_jam_done">Gotovo</string>
   <string name="morphe_music_jam_invite_title">Pozovite u svoj Jam</string>
-  <string name="morphe_music_jam_invite_message">Skenirajte da se pridružite i uređujete ovaj red čekanja. Završetak Jam sesije poništava pozivnicu.</string>
+  <string name="morphe_music_jam_invite_message">Skenirajte da biste se pridružili i uređivali ovaj red. Završavanje Jama povlači pozivnicu</string>
   <string name="morphe_music_jam_copy_link">Kopirajte poveznicu</string>
   <string name="morphe_music_jam_invitation_clip">Pozivnica za Jam</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam se ponovno povezuje; pokušajte ponovo za koji trenutak.</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Ažuriranje Jam sesije…</string>
   <string name="morphe_music_jam_finding_host">Traženje vašeg domaćina na Wi-Fi mreži…</string>
   <string name="morphe_music_jam_waiting_people">Čekanje na sudionike</string>
-  <string name="morphe_music_jam_one_connected">%d osoba povezana</string>
-  <string name="morphe_music_jam_many_connected">%d osoba povezano</string>
-  <string name="morphe_music_jam_code_expires">Unesite ovaj kod na obližnjem uređaju. Wi-Fi Aware može povezati obližnje uređaje čak i ako se njihove lokalne mreže razlikuju. Kod istječe za %d min.</string>
+  <string name="morphe_music_jam_one_connected">%s osoba povezana</string>
+  <string name="morphe_music_jam_many_connected">%s osobe povezane</string>
+  <string name="morphe_music_jam_code_expires">Unesite ovaj kod na susjednom uređaju. Wi-Fi Aware radi na odvojenim LAN mrežama kada je podržano. Istječe za %s minuta</string>
   <string name="morphe_music_jam_seek_to">Premotajte na %s?</string>
   <string name="morphe_music_jam_edits_open">Uređivanje otvoreno</string>
   <string name="morphe_music_jam_edits_locked">Uređivanje zaključano</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Nije podržano tijekom Jam sesije</string>
   <string name="morphe_music_jam_cancelled">Pridruživanje je otkazano</string>
   <string name="morphe_music_jam_reconnecting_host">Ponovno povezivanje s vašim domaćinom…</string>
-  <string name="morphe_music_jam_share_prompt">Podijelite red čekanja. Dopustite svima da dodaju pjesme.</string>
+  <string name="morphe_music_jam_share_prompt">Podijelite red. Neka svi dodaju pjesme</string>
   <string name="morphe_music_jam_invite_people">Pozovite ljude</string>
   <string name="morphe_music_jam_guest_edits">Gosti mogu uređivati red čekanja.</string>
   <string name="morphe_music_jam_end_jam">Završite Jam</string>
-  <string name="morphe_music_jam_participant_help">Domaćin pušta glazbu. Dodajte, premještajte ili uklanjajte pjesme izravno u redu čekanja usluge YouTube Music.</string>
-  <string name="morphe_music_jam_joining_help">Držite oba uređaja u blizini. Možete odustati dok tražimo domaćina.</string>
+  <string name="morphe_music_jam_participant_help">Voditelj reproducira glazbu. Dodajte, premjestite ili uklonite pjesme izravno u redu YouTube Music</string>
+  <string name="morphe_music_jam_joining_help">Zadržavajte oba uređaja blizu. Možete otkazati dok tražimo voditelja</string>
   <string name="morphe_music_jam_cancel_joining">Otkažite pridruživanje</string>
   <string name="morphe_music_jam_leave_jam">Napustite Jam</string>
   <string name="morphe_music_jam_start_jam">Pokrenite Jam</string>
@@ -127,7 +127,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_in_app_downloads_summary">Preuzima audiozapis unutar YouTube Musica umjesto otvaranja vanjske aplikacije za preuzimanje.</string>
   <string name="morphe_music_in_app_downloads_user_dialog_message">"Pjesme se spremaju u privatnu pohranu aplikacije i brišu se ako se YouTube Music deinstalira.
 
-Dok je ova opcija uključena, kartica Preuzimanja prikazuje ove pjesme umjesto izvanmrežne knjižnice Music Premium. Ako je isključite, kartica se vraća, a Premium preuzimanja se nikada ne diraju."</string>
+Dok je ovo uključeno, kartica Preuzimanja prikazuje ove pjesme umjesto offline knjižnice Premium. Isključivanjem se vraća kartica, a Premium preuzimanja se nikad ne diraju"</string>
   <string name="morphe_music_downloads_screen_title">Preuzimanja</string>
   <string name="morphe_music_downloads_empty">"Nema preuzimanja
 Ovdje se prikazuju preuzete pjesme"</string>
@@ -445,7 +445,7 @@ SABR reprodukcija (imitiranje video streamova je isključeno)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Prilagođeno čišćenje regularnim izrazom</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Unesite prilagođeni regularni izraz za uklanjanje dodatnog teksta iz naslova pjesama, izvođača ili albuma. Primjer: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Raščlani izvođača i pjesmu iz naslova</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Izdvojite izvođača i naziv pjesme iz naslova videozapisa pomoću razdjelnika \" - \". Korisno za ponovno prenesene sadržaje gdje se naziv kanala može koristiti kao izvođač.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Izdvajajte ime izvođača i naziv pjesme iz naslova videa koristeći separator \" - \". Korisno za sadržaje koji su ponovno objavljeni gdje se naziv kanala može koristiti kao ime izvođača</string>
   <string name="morphe_music_scrobbling_guess_album_title">Ispuni nedostajući album</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Kada glazba ne sadrži album, potraži ga na Last.fm kako bi tvoj scrobble bio potpun.</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,6 +460,7 @@ Kako biste osigurali sinkronizaciju scrobblinga tijekom reprodukcije u pozadini,
   <string name="morphe_music_lyrics_section_service_title">Usluga stihova</string>
   <string name="morphe_music_lyrics_section_overlay_title">Pregač</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinkronizacija</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">Krajnja točka AI-ja</string>
   <string name="morphe_music_lyrics_source_all_disabled">Svi pružatelji usluga onemogućeni — ugrađeni tekstovi pjesama i tekstovi ugrađeni u datoteku</string>
   <string name="morphe_music_lyrics_source_reset_title">Ponovno postaviti redoslijed pružatelja?</string>
   <string name="morphe_music_lyrics_source_reset_message">Vrati pružatelje na zadani redoslijed prioriteta</string>
@@ -483,7 +484,7 @@ Koraci:
 3. Kopiraj vrijednost \"sp_dc\""</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc spremljen</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc obrisan</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: neispravan sp_dc — provjeri i pokušaj ponovno</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: nevažeći sp_dc — molimo provjerite i pokušajte ponovno</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music token nije obavezan. Bez njega, Lyrically će se koristiti kao rezerva.</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Zalijepi kolačić arl s Deezerja.
@@ -494,14 +495,14 @@ Koraci:
 3. Kopiraj vrijednost \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl spremljen</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl obrisan</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: neispravan arl — provjeri i pokušaj ponovno</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: nevažeći arl — molimo provjerite i pokušajte ponovno</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Dodaj token samo za korištenje vlastitog računa. Mora doći iz Musixmatch Android aplikacije: tokeni kopirani s musixmatch.com pripadaju umirovljenom desktop klijentu i API ih odbija.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch radi bez tokena, tako da ovo polje može ostati prazno.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">korisnički token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: korisnički token spremljen</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: korisnički token obrisan</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: neispravan korisnički token — provjeri i pokušaj ponovno</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: nevažeći token korisnika — molimo provjerite i pokušajte ponovno</string>
   <string name="morphe_music_youtube_cookies_title">YouTube kolačići</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Zalijepi svoje YouTube kolačiće za dohvaćanje titlova i vremenskog teksta s YouTubea.
 
@@ -513,7 +514,7 @@ Koraci:
 Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: kolačići spremljeni</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: kolačići obrisani</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: neispravni kolačići — provjeri i pokušaj ponovno</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: nevažeći kolačići — molimo provjerite i pokušajte ponovno</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Dodirnite redak za pomicanje</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Dodir na redak vodi na taj trenutak u pjesmi</string>
   <string name="morphe_music_lyrics_show_section_title">Prikaži oznake odjeljaka</string>
@@ -524,6 +525,12 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_translate_button_summary">Dodirnite za uključivanje/isključivanje prijevoda; dugi pritisak za samo prijevod. Koristi prijevode pružatelja usluge, Google Translate ili API kompatibilan s OpenAI-jem.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Prikaži gumb za romanizaciju</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Dodirnite za uključivanje/isključivanje romanizacije; dugi pritisak za samo romanizaciju. Koristi romanizaciju pružatelja usluge, Google Translate ili API kompatibilan s OpenAI-jem.</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Lokalna romanizacija</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Romanizirajte na uređaju kada sve tri usluge (provajder, OpenAI kompatibilna točka priključka i Google Translate) ne uspiju. Samo za kineski, japanski i korejski jezik (CJK), oko 80 MB podataka za preuzimanje.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Čitanje %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Čitanja spremna (%1$d riječi CJK)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Preuzimanje nije uspjelo — isključite i ponovno uključite da biste pokušali ponovno</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Prikaži gumb za osvježavanje</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Dodirnite za prebacivanje na sljedećeg kandidata za tekst pjesme; dugo pritisnite za pretraživanje tekstova pjesama po naslovu pjesme i izvođaču.</string>
   <string name="morphe_music_lyrics_search_dialog_title">Pretraži tekst pjesme</string>
@@ -534,6 +541,8 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_saved">Spremljeno</string>
   <string name="morphe_music_lyrics_word_sync_title">Istakni sinkronizirane riječi ili slogove</string>
   <string name="morphe_music_lyrics_word_sync_summary">Daj prednost tekstovima pjesama riječ po riječ kada su dostupni. Kada tekstovi nose vremenske oznake riječi, istakni svaku riječ ili slog u ritmu s glazbom.</string>
+  <string name="morphe_music_lyrics_split_background_title">Prikažite pozadinske vokale odvojeno</string>
+  <string name="morphe_music_lyrics_split_background_summary">Premješta vokale pozadine upisane u zagradama, poput \"(Oh) I want you\", iz pjevne dionice u vlastitu liniju manjeg intenziteta</string>
   <string name="morphe_music_lyrics_hide_played_title">Sakrij reproducirane tekstove pjesama</string>
   <string name="morphe_music_lyrics_hide_played_summary">Sakrij retke teksta pjesme iznad trenutačno reproduciranog retka.</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Sakrij nereproducirane tekstove pjesama</string>
@@ -558,25 +567,47 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_sb_no_video">Ova pjesma nema id videozapisa za slanje</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Izvor: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Dugo pritisnite gumb za kopiranje da biste spremiti ovaj LRC; ako možete finije podesiti vremena i podijeliti ih s pružateljima zajednice, bili bismo zahvalni.</string>
   <string name="morphe_music_lyrics_translated_by_google">Preveo Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Romanizirao Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Prijevod: %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizirano: %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Romanizirao/romanizirala %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Prijevod</string>
   <string name="morphe_music_lyrics_translation_language_title">Jezik prijevoda</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Jezična opcija romanizacije</string>
   <string name="morphe_music_lyrics_translating">Prijevod u tijeku…</string>
   <string name="morphe_music_lyrics_translate_failed">Prijevod stihova nije uspio</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizacija</string>
+  <string name="morphe_romanize_language_DEFAULT">Automatski</string>
   <string name="morphe_music_lyrics_romanizing">Romanizacija…</string>
   <string name="morphe_music_lyrics_romanize_failed">Nije uspjelo romanizirati tekstove pjesama.</string>
   <string name="morphe_music_lyrics_translate_only">Samo prevedeno</string>
   <string name="morphe_music_lyrics_romanize_only">Samo romanizirano</string>
+  <string name="morphe_music_lyrics_dual_only">Dvinačini način</string>
   <string name="morphe_music_lyrics_copied">Kopirano u međuspremnik</string>
   <string name="morphe_music_lyrics_refreshing">Osvježavanje…</string>
   <string name="morphe_music_lyrics_refreshed">Osvježeno</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">Ključ API-ja QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkribira ili vremenski poravnava tekstove pjesama za trenutnu pjesmu. Odvojena usluga, nepovezana s gore navedenom OpenAI-sukladnom točkom kraja.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">Ključ QuickLRC-a spremljen. Koristite gumb za poravnanje u dijalogu pretraživanja tekstova pjesama ili upitnik panela kada pjesma nema tekstove.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">Ključ API-ja QuickLRC spremljen</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC nije prihvatio taj ključ</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">Ključ API-ja QuickLRC je poništen</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC dodjeljuje vremena tekstopjesmama koje nemaju nijedne, ili ih transkribira iz pjesme, uz trošak kredita. S postavljenim ključem, pjesme bez tekstova nude transkripciju, a dijalog pretraživanja dobiva gumb za poravnavanje.</string>
+  <string name="morphe_music_lyrics_transcribe_align">Zatražite poravnanje QuickLRC-a</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Poravnavanje</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Primijenite poravnanje</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Zatražite transkripciju QuickLRC-a</string>
+  <string name="morphe_music_lyrics_transcribe_working">Transkripcija</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Transkripcija je otkazana</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Mogu se transkribirati samo pjesme reproducirane s YouTubea</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Nema tekstova za poravnanje — umjesto toga transkribira se</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC nije mogao obraditi ovu pjesmu</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">Krediti QuickLRC-a su potrošeni za ovu pjesmu</string>
   <string name="morphe_music_lyrics_about_summary">"Tekstovi se usklađuju prema naslovu i izvođaču, a neuobičajeni metapodaci možda neće pronaći ništa ili pogrešnu verziju. Koristite osvježavanje za promjenu verzija. Davatelji označeni sa * zahtijevaju token. Svi omogućeni davatelji nisu uvijek pozvani vašim redoslijedom, već odgovaraju prema svojoj brzini."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Omogući samo pružatelje koje koristiš ili zadrži zadane postavke — stalni zahtjevi mogu preopteretiti male stranice zajednice sa stihovima</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Omogućite samo pružatelje koje koristite ili zadržite zadane — stalni zahtjevi mogu preplaviti male web-mjestima s tekstovima zajednice</string>
   <string name="morphe_music_lyrics_hide_info_title">Sakrij redak sa zaslugama</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sakrij redak sa zaslugama prikazan ispod tekstova pjesama.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamijeni prijevod i romanizaciju</string>
@@ -589,17 +620,17 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_use_ai_section_title">AI odjeljak</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Koristi se samo kada pružatelj ne šalje oznake odjeljaka kao što su Refren ili Strofa, koje zatim detektira vaš OpenAI-kompatibilni model</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI postavke</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurirajte OpenAI-kompatibilnu API krajnju točku za AI prijevod teksta pjesama, romanizaciju i odjeljke.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurirajte OpenAI-sukladnu API točku kraja za AI-pokretani prijevod, romanizaciju i razdvajanje dijelova tekstova pjesama.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL API krajnje točke (npr. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API ključ (ostavite prazno za anonimni pristup)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Naziv modela (npr. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Predložak prompta</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Zamjenici: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">Predložak prompta</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt spremljen</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Upit je spremljen, ali AI točka kraja još nije upotrebljiva. Prvo je konfigurirajte u postavkama AI.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt poništen</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI postavke spremljene</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Ne mogu se povezati s AI krajnjom točkom. Provjerite svoje postavke.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Nije moguće se povezati s krajnjom točkom AI-a. Molimo provjerite svoje postavke</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI postavke poništene</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">Model %1$s je konfiguriran</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Osnovni URL ne može biti prazan</string>

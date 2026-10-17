@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Voer pakketnaam in</string>
   <string name="morphe_external_downloader_other_item">Overige</string>
   <string name="morphe_external_downloader_not_found_title">App niet geïnstalleerd</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s is niet geïnstalleerd. Installeer deze alstublieft.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s is niet geïnstalleerd. Installeer het</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Kon geen geïnstalleerde app vinden met pakketnaam: %s
 
 Controleer of de pakketnaam correct is en of de app is geïnstalleerd"</string>
@@ -84,7 +84,7 @@ Om het pictogram overal te wijzigen, moet je opnieuw patchen en de patchoptie 'A
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Melding</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Uw kijkgeschiedenis wordt niet opgeslagen.&lt;br&gt;&lt;br&gt;Dit wordt hoogstwaarschijnlijk veroorzaakt door een DNS-adblocker of netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit te verhelpen, voegt u &lt;b&gt;s.youtube.com&lt;/b&gt; toe aan de witte lijst of schakelt u alle DNS-blokkers en proxies uit.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Uw kijkgeschiedenis wordt niet opgeslagen.&lt;br&gt;&lt;br&gt;Dit wordt hoogstwaarschijnlijk veroorzaakt door een DNS-adblocker of netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit te verhelpen, voegt u &lt;b&gt;s.youtube.com&lt;/b&gt; toe aan de witte lijst of schakelt u alle DNS-blokkers en proxies uit</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Niet meer weergeven</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Videostreams spoofen</string>
@@ -99,7 +99,7 @@ Als u een YouTube Premium-gebruiker bent, is deze instelling mogelijk niet verei
 
 Wil je %2$s als standaardclient instellen?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Overschakelen</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Het uitschakelen van deze instelling kan afspeelproblemen veroorzaken.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Het uitschakelen van deze instelling kan afspeelproblemen veroorzaken</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Probeer het volgende inschakelen: Spoof video streams > Inloggen in Android VR</string>
@@ -128,7 +128,7 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
 • U moet opnieuw inloggen als u uw Google-wachtwoord wijzigt of deze apparaat deregistreert bij uw Google-instellingen"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is tijdelijk niet beschikbaar (API heeft time-out)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR inloggen is verlopen, probeer het nog eens</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 is tijdelijk niet beschikbaar (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 is tijdelijk niet beschikbaar (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 is tijdelijk niet beschikbaar</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan niet inloggen bij VR, website-verificatie is niet goedgekeurd</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan niet aanmelden bij VR: %s</string>
@@ -191,7 +191,7 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
 
 Dit kan helpen bij het identificeren van componenten bij het maken van aangepaste filters.
 
-Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP-adres, vastgelegd."</string>
+Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP-adres, vastgelegd"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Aangepaste filter</string>
   <string name="morphe_custom_filter_screen_summary">Configureer aangepaste filters om elk component te verbergen</string>
@@ -232,11 +232,11 @@ Schakel 'Videostreams nabootsen' in om het afspelen te herstellen"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Vervalst de app-versie</string>
   <string name="morphe_spoof_app_version_summary">Misleidt de server om te denken dat je een oudere app-versie gebruikt om oude UI-functies te herstellen</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"De app-versie wordt gespoofed naar een oudere versie.
+  <string name="morphe_spoof_app_version_user_dialog_message">"De app-versie wordt gesimuleerd naar een oudere versie.
 
 Dit zal het uiterlijk en de functies van de app veranderen, maar er kunnen onbekende neveneffecten optreden.
 
-Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen om UI-fouten te voorkomen."</string>
+Als dit later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen om UI-fouten te voorkomen"</string>
   <string name="morphe_spoof_app_version_target_title">Doel voor vervalsen app-versie</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Verversingssnelheid van de app</string>
@@ -259,7 +259,7 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">\"Dislikes\" zijn tijdelijk niet beschikbaar (API-time-out)</string>
-  <string name="morphe_ryd_failure_connection_status_code">\"Dislikes\" niet beschikbaar (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">\"Dislikes\" niet beschikbaar (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Vind ik niet leuk is niet beschikbaar (limiet van client-API)</string>
   <string name="morphe_ryd_failure_generic">\"Dislikes\" niet beschikbaar (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -285,12 +285,12 @@ De ID van de video die je bekijkt wordt naar de Return YouTube Dislike API gestu
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">\"Dislikes\" zijn tijdelijk niet beschikbaar - Client API-snelheidslimiet is van kracht</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API-ophalen stemmen, aantal oproepen</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Geen netwerko oproepen gedaan</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d netwerkoproepen gedaan</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s netwerkoproepen uitgevoerd</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-ophalen stemmen, aantal time-outs</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Geen netwerkoproepen zijn vastgelopen</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d netwerkoproepen zijn vastgelopen</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s netwerkoproepen time-out</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Client snelheidslimieten van de API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Geen client snelheidslimieten aangetroffen</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client snelheidslimiet %d keer aangetroffen</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d milliseconden</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client rate limit encountered %s times</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milliseconden</string>
 </resources>

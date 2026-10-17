@@ -1,3 +1,22 @@
+## [1.48.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.9...v1.48.0-dev.10) (2026-10-17)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Default video quality:** Forcely disabled automatic stock quality selection and deprecated the code to handle both Stock/Morphe quality selections ([93e0c2b](https://github.com/MorpheApp/morphe-patches/commit/93e0c2b4db27760a22b1e48aef8b87dc330a92bf))
+* **YouTube - Feed cards layout:** Keep horizontal layout for search results on tablets ([0108028](https://github.com/MorpheApp/morphe-patches/commit/0108028df245e0664974d345c58a291f95a1245e))
+* **YouTube - Feed cards layout:** Make new style more consistent ([#3801](https://github.com/MorpheApp/morphe-patches/issues/3801)) ([5dc0d0c](https://github.com/MorpheApp/morphe-patches/commit/5dc0d0c71ef9c9c11709e62568eb9c1778e9a4c7))
+* **YouTube - Minimal miniplayer:** Apply minimized position based on commit [#9d8b0df43](https://github.com/MorpheApp/morphe-patches/issues/9d8b0df43) insets ([7f9fb1f](https://github.com/MorpheApp/morphe-patches/commit/7f9fb1f7df988afc7a21ffa4735227a404c06444))
+* **YouTube - Minimal miniplayer:** Show DeArrow title on type 1 style ([72f7b82](https://github.com/MorpheApp/morphe-patches/commit/72f7b82c8ac8d9032d7834abb10ae9f9b86c5ba1))
+* **YouTube - New feed cards layout:** Rounded edges and padding was wrong ([7d54662](https://github.com/MorpheApp/morphe-patches/commit/7d5466217e5dc7ea1ea323d4f9d7a6baf9f42f8a))
+* **YouTube:** Force show translucent navigation bar ([e5bb8bf](https://github.com/MorpheApp/morphe-patches/commit/e5bb8bfea55258a6926243fbfb7ed19fffea3925))
+* **YouTube:** Light/Dark theme colors are wrong ([93cf169](https://github.com/MorpheApp/morphe-patches/commit/93cf169e8fa7f96bef741fe5f02f5654b2ae70f6))
+* **YouTube:** Status bar becomes dark ([9d8b0df](https://github.com/MorpheApp/morphe-patches/commit/9d8b0df43ae3cd4dfc1a537311d4dfc6aa600ac5))
+
+### ✨ New Features
+
+* **Reddit:** Add `Show flairs in home feed` patch ([#3260](https://github.com/MorpheApp/morphe-patches/issues/3260)) ([93501dd](https://github.com/MorpheApp/morphe-patches/commit/93501dd4b31a103c37509b1c26f7644ca9082aff))
+* **YouTube - Player icon style:** Add Series tracker button icons ([179ff66](https://github.com/MorpheApp/morphe-patches/commit/179ff663d36806e11bd3869df8d1a66287072a7f))
+
 ## [1.48.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.8...v1.48.0-dev.9) (2026-10-16)
 
 ### 🐛 Bug Fixes

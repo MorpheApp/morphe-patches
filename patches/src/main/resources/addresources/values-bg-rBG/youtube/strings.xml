@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Изключи актуализацията на макета</string>
   <string name="morphe_disable_layout_updates_summary">Предотвратява актуализирането на оформлението на приложението от сървъра</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Лаятът на приложението се връща към лаяут, използван при първоначална инсталиране.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Макетът на приложението се връща към макета, използван при първата инсталация.
 
-Некоторые серверни лаяути може да не се връщат.
+Някои сървърни макети може да не се върнат.
 
-Промени включват:
-• Компонентите в менюто за полети на играча (или свързани настройки) може да не работят.
-• Броят на роловете не е анимиран.
-• Табът Библиотека се показва.
-• Музикалният раздел на описанието на видеото може да не работи.
-• Елементите в менюто за полети на играча не могат да бъдат скрити.
-• Кнопката за превключване на сметка може да не се показва на таба Библиотека."</string>
+Промените включват:
+• Компоненти в изплъзващото се меню на плейъра (или свързани настройки) може да не работят
+• Завъртащите числа не са анимирани
+| Раздел Библиотека е показан
+• Музикалната секция на описанието на видеоклип може да не работи
+• Елементите в изплъзващото се меню на плейъра не могат да бъдат скриени
+| Бутонът за превключване на акаунт може да не се появява в раздела Библиотека"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Включете филтър за излизане на лентата</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Филтър за излизане на лентата</string>
@@ -133,7 +133,7 @@ Second \"item\" text"</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary">Скрива сезонните и тематични анимации на логото на YouTube</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Показването на Doodles от YouTube може да попречи на показването на персонализирани заглавки.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Показването на Ютюб Дудли може да предотврати показването на персонализирани заглавки</string>
   <string name="morphe_hide_channel_bar_title">Скриване на лентата на канала</string>
   <string name="morphe_hide_channel_watermark_title">Скриване на водния знак на канала</string>
   <string name="morphe_hide_chapters_timeline_button_title">Скрий главите и бутона \'В това видео\'</string>
@@ -281,7 +281,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">Скрива бутона за меню с 3 точки на всеки коментар</string>
   <string name="morphe_hide_comments_preview_comment_title">Скрийте предварителен коментар</string>
   <string name="morphe_hide_comments_preview_comment_summary">Скрива предварителния преглед на коментара под видеото, преди да се отвори пълната секция с коментари</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">Коментарът е скрит от Morphe...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Коментарът е скрит от Морфе…</string>
   <string name="morphe_minimal_comments_button_title">Включване на минимален бутон за коментари</string>
   <string name="morphe_minimal_comments_button_summary">Скрива плъзгащите се карти и техния селектор за страници, показани на бутона за коментари</string>
   <string name="morphe_hide_comments_thanks_button_title">Скрийте бутона \'Благодаряне\'</string>
@@ -490,7 +490,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_openrouter_open_website">Отворете OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">OpenRouter преводът не успя (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Достигнат дневен лимит на MyMemory</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Наличност отново на %s.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Следващо налично в %s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Използвахте дневната безплатна квота за превод на MyMemory (5000 знака). Добавете имейл адрес на MyMemory в настройките, за да увеличите дневния лимит до 50 000 знака, или превключете към друга услуга за превод</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Използвахте дневната квота за превод на MyMemory (50 000 знака). Превключете към друга услуга за превод или опитайте отново утре</string>
   <string name="morphe_vot_mymemory_error">MyMemory преводът не успя (състояние %s)</string>
@@ -565,21 +565,24 @@ Second \"item\" text"</string>
 
 Информация: Следващото видео от опашката стартира само когато YouTube е на екрана"</string>
   <string name="morphe_local_queue_sheet_title">Опашка</string>
-  <string name="morphe_local_queue_open">Опашка (%d)</string>
+  <string name="morphe_local_queue_open">Чакаща опашка (%s)</string>
   <string name="morphe_local_queue_clear">Изчисти всичко</string>
   <string name="morphe_local_queue_empty">Няма нищо в опашката</string>
   <string name="morphe_local_queue_empty_hint">Използвайте „Пусни след това в опашката“ за произволен видеоклип</string>
   <string name="morphe_local_queue_now_playing">В момента се възпроизвежда</string>
   <string name="morphe_local_queue_play_next">Пусни след това в опашката</string>
+  <string name="morphe_local_queue_play_last">Изпускай на опашката</string>
   <string name="morphe_local_queue_reorder">Пренареждане</string>
   <string name="morphe_local_queue_remove">Премахване</string>
   <string name="morphe_local_queue_added">Добавено в опашката</string>
+  <string name="morphe_local_queue_unavailable">Не може да добави това видео към опашката</string>
+  <string name="morphe_local_queue_playlist_unsupported">Плейлисти не могат да бъдат добавени към опашката</string>
   <string name="morphe_local_queue_full">Опашката е пълна</string>
   <string name="morphe_local_queue_play_failed">Видеото не може да се пусне</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Бял списък за реклами в изскачащото меню</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Добавя елемент в изскачащото меню, който позволява рекламите да се пускат в канала на това видео</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Тази функция може да изисква използването на PotHelper или промяната на „Прикриване на видео потоците“ на TV или Android VR вход.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Тази функция може да изисква използване на PotHelper или промяна на „Излъчване на видео потоци“ към TV или Android VR влезте</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Бял списък за скорост в изскачащото меню</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Добавя елемент в изскачащото меню, който винаги възпроизвежда канала на това видео със скорост 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Невход в системата</string>
@@ -762,6 +765,9 @@ Second \"item\" text"</string>
   <string name="morphe_preferred_caption_language_title">Предпочитан език на субтитрите</string>
   <string name="morphe_preferred_caption_language_summary">Първо избира субтитрите от доставчика, след което автоматично превежда на предпочитания език</string>
   <string name="morphe_preferred_caption_language_entry_off">Изключено</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Добавете допълнителни езици за автоматичен превод</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Добавя повече езици в менюто за автоматичен превод</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Задайте бисквитки за надписи</string>
   <string name="morphe_set_caption_cookies_summary">"Коригира стандартен бъг в YouTube, при който автоматично преведените субтитри може да не са налични поради липсващи бисквитки
@@ -801,9 +807,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">Етикетите са скрити</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Скриване на точката за ново съдържание</string>
   <string name="morphe_hide_navigation_bar_title">Скриване на лентата за навигация</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Това напълно скрива навигационната лента, включително раздела 'You'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Това напълно скрива навигационната лента, включително раздела „Вие“.
 
-За да получите достъп до Настройки, активирайте бутона Настройки чрез Общи → Инструменти → Показване на Настройки."</string>
+За достъп до Настройки, активирайте бутона Настройки чрез Общи → Лента с инструменти → Покажи настройки"</string>
   <string name="morphe_narrow_navigation_buttons_title">Включи тесни навигационни бутони</string>
   <string name="morphe_narrow_navigation_buttons_summary">Скрий менюто „Заключване на екрана“</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Деактивиране на навигационните бутони без етикети</string>
@@ -1041,7 +1047,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"Възстановява стария вид на плейъра
 
 Ограничение: Ако „Възстановяване на старата лента за действия във видеоклипа“ е изключено, покритието „Още видеоклипове“ може да не е достъпно"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">Активирането на това може да наруши някои функции на оформлението на плейъра, като например секцията за коментари или „Още видеоклипове“, показани под плейъра.</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Активирането на това може да наруши някои функции на макета на плейъра, като секцията за коментари или „Още видеоклипове“, показани под плейъра</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Възстановяване на старото поведение на субтитрите</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Възстанови старите запазвания в списъка</string>
@@ -1106,6 +1112,12 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Изключване на автоматичното опресняване на емисията</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Предотвратява автоматичното опресняване на емисиите, след като остареят</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Оформение на карточката във филтъра</string>
+  <string name="morphe_feed_card_layout_entry_1">Класически</string>
+  <string name="morphe_feed_card_layout_entry_2">Карти</string>
+  <string name="morphe_feed_card_layout_entry_3">Карти с бутони за харесване, коментиране и запазване</string>
+  <string name="morphe_feed_card_layout_comments">Коментари</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Изключване на продължаването на мини-плеъра</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Деактивира мини плейъра „Продължи да гледаш“, функция на YouTube Premium, която се появява при стартиране на приложението</string>
@@ -1220,7 +1232,7 @@ Second \"item\" text"</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">По подразбиране</string>
   <string name="morphe_spoof_device_dimensions_summary">Активирането на това може да отключи по-високо качество на видеото</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Курсове / Учебни</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Активирането на това може да причини прекъсване на възпроизвеждането на видеоклипове, по-слаба батерия и неизвестни странични ефекти</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Изследване</string>
   <string name="morphe_disable_haptic_feedback_summary">Изберете кои взаимодействия да предизвикват вибрация на устройството</string>
@@ -1230,7 +1242,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Изключи вибрации при натискане и държане</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Плейлисти</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Спорт</string>
+  <string name="microg_offline_account_login_error">Ако скоро сте променили входните данни за акаунта си, деинсталирайте и преинсталирайте MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Премахване на пренасочванията на връзки</string>
   <string name="morphe_bypass_link_redirects_summary">Отваря оригиналната връзка директно, заобикаляйки връзката за проследяване (youtube.com/redirect)</string>
@@ -1337,9 +1349,9 @@ AVC (H.264)
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Разрешаване на \'Android VR\' / visionOS AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Позволява софтуерно декодиране на AV1 при използване на клиента \'Android VR\' / visionOS</string>
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Активиране на това настройка може да използва софтуерно AV1 дешифриране.
+  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Активирането на тази настройка може да използва софтуерно AV1 декодиране.
 
-Видео преглед с AV1 може да се качне или да има падане на кадри."</string>
+Възпроизвеждането на видео с AV1 може да се прекъсва или да пропуска кадри"</string>
   <string name="morphe_spoof_video_streams_about_title">Манипулиране на ефекти на видео</string>
   <string name="morphe_spoof_video_streams_about_failure">• Възпроизвеждането може да се прекъсне на <b>1</b> минута</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Менюто \'Аудио пътека\' липсва</string>
@@ -1393,7 +1405,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_clear_all_local_progress">Изчисти всички локални данни за прогрес</string>
   <string name="morphe_series_tracker_ui_clear_history">Изчисти историята</string>
   <string name="morphe_series_tracker_clear_progress_title">Да изчиствате ли всички локални данни за прогрес?</string>
-  <string name="morphe_series_tracker_clear_progress_message">Това ще изчисти позициите, ръчните настройки на гледане и опциите за продължаване за всеки видеоклип. Запазените поредици и техните каталози остават. Новото възпроизвеждане ще се записва, ако функцията е активна.</string>
+  <string name="morphe_series_tracker_clear_progress_message">Това изчиства позициите, надделяванията за гледане и селекциите за продължаване за всяко видео. Запазените серии и техните каталози остават. Новото възпроизвеждане ще бъде регистрирано, ако е активирано регистрирането</string>
   <string name="morphe_series_tracker_ui_mark_watched">Отбележи като прегледано</string>
   <string name="morphe_series_tracker_ui_mark_unwatched">Отбележи като непрегледано</string>
   <string name="morphe_series_tracker_ui_use_automatic_status">Използвай автоматичен статус</string>
@@ -1412,36 +1424,34 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_subscriptions">Абонаменти</string>
   <string name="morphe_series_tracker_ui_notifications">Известия</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Зареждане на запазените поредици…</string>
-  <string name="morphe_series_tracker_empty_library">Проследявайте плейлист, за да наблюдавате епизодите му.</string>
+  <string name="morphe_series_tracker_empty_library">Последвайте плейлист, за да проследявате нейните епизоди</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Отметка за плейлист</string>
   <string name="morphe_series_tracker_ui_refreshing_episodes">Актуализиране на епизодите…</string>
   <string name="morphe_series_tracker_ui_all_series">Всички поредици</string>
   <string name="morphe_series_tracker_watched">Прегледани</string>
   <string name="morphe_series_tracker_ui_loading_episodes">Зареждане на епизоди…</string>
   <string name="morphe_series_tracker_ui_more_options">Още опции</string>
-  <string name="morphe_series_tracker_record_consent">"Записвай прогрес само за вашите запазени поредици и отметнати видеоклипове.
+  <string name="morphe_series_tracker_record_consent">"Регистрирайте прогреса само за вашите запазени серии и отметнати видеоклипове.
 
-Тази библиотека се съхранява на това устройство и се споделя между акаунтите в YouTube. Контролите за пауза и изчистване на историята в YouTube не я променят. Използвайте Поредици → Още → Изчисти локалния прогрес, за да я изтриете.
+Тази библиотека е съхранена на това устройство и е споделяна между акаунти в YouTube. Контролите за паузиране и изчистване на историята на YouTube не я променят. Използвайте Серия → Още → Изчисти локалния прогрес, за да го изтриете.
 
-Автоматичното записване спира в режим „инкогнито”, когато идентичността на акаунта е недостъпна или когато превключвате към друг акаунт. Активирайте проследяването отново, за да го използвате с този акаунт."</string>
-  <string name="morphe_series_tracker_identity_unavailable">Проследяването не може да се активира в режим „инкогнито” или преди YouTube да зареди състоянието на текущия акаунт. Върнете се към Началото и опитайте отново. Не е необходимо влизане в акаунт.</string>
+Автоматичното записване спира в режим инкогнито, когато идентичността на акаунта е недостъпна, или когато превключите към друг акаунт. Активирайте отново проследяването, за да го използвате с този акаунт"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Проследяването не може да бъде активирано в режим инкогнито или преди YouTube да зареди текущото състояние на акаунта. Върнете се към Начален екран и опитайте отново. Не е необходимо влизане</string>
   <string name="morphe_series_tracker_enable">Активирай локалното проследяване</string>
   <string name="morphe_series_tracker_tracking_paused">Записването на прогреса е изключено</string>
   <string name="morphe_series_tracker_resume_at">Продължи от %1$s</string>
-  <string name="morphe_series_tracker_watched_count">%1$d / %2$d прегледани епизода</string>
-  <string name="morphe_series_tracker_episode_position">Епизод %1$d · %2$s</string>
-  <string name="morphe_series_tracker_episode_range">Епизоди %1$d–%2$d от %3$d</string>
-  <string name="morphe_series_tracker_catalog_unavailable">Обновете, за да опитате зареждане на епизодите. Частните плейлисти изискват достъп до акаунт; тяхната отметка все още се отваря в YouTube.</string>
-  <string name="morphe_series_tracker_open_failed">YouTube не успя да отвори този епизод.</string>
-  <string name="morphe_series_tracker_playlist_failed">YouTube не успя да отвори този плейлист.</string>
-  <string name="morphe_series_tracker_plan_open">Отметка за плейлист</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s прегледани епизода</string>
+  <string name="morphe_series_tracker_episode_position">Епизод %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Епизоди %1$s-%2$s от %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Обновете, за да опитате зареждане на епизоди. Частните плейлисти изискват достъп до акаунт; тяхната отметка все още се отваря в YouTube</string>
+  <string name="morphe_series_tracker_open_failed">YouTube не можа да отвори този епизод</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube не можа да отвори този плейлист</string>
   <string name="morphe_series_tracker_plan_changed">Изберете епизод</string>
   <string name="morphe_series_tracker_plan_caught_up">Актуален</string>
   <string name="morphe_series_tracker_plan_none">Няма достъпни за възпроизвеждане епизоди</string>
   <string name="morphe_series_tracker_saved_position">Запазен видеоклип · %1$s</string>
   <string name="morphe_series_tracker_follow">Проследявай поредица</string>
   <string name="morphe_series_tracker_view_series">Разгледай поредицата</string>
-  <string name="morphe_series_tracker_add_icon">Проследявай поредица</string>
   <string name="morphe_series_tracker_continue">Продължи</string>
   <string name="morphe_series_tracker_start_here">Започнете тук</string>
   <string name="morphe_series_tracker_start_saved">Началната точка е запазена</string>
@@ -1450,29 +1460,29 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">Отмяна</string>
   <string name="morphe_series_tracker_enable_short">Активиране</string>
   <string name="morphe_series_tracker_new_episode">1 нов епизод</string>
-  <string name="morphe_series_tracker_new_episodes">Нови %1$d епизода</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s нови епизода</string>
   <string name="morphe_series_tracker_record_short">Записвай прогреса на това устройство</string>
-  <string name="morphe_series_tracker_follow_consent">"Вашите поредици и прогресът остават на това устройство, споделяйки ги между акаунтите в YouTube. Контролите за история на YouTube не ги променят. Изчистете прогреса от менюто на поредицата.
+  <string name="morphe_series_tracker_follow_consent">"Вашите серии и прогрес са на това устройство, споделяни между акаунти в YouTube. Контролите за историята на YouTube не ги променят. Изчистете прогреса от менюто Сербии.
 
-Автоматичното записване е по избор. То спира в режим „инкогнито” или при смяна на акаунта."</string>
-  <string name="morphe_series_tracker_follow_unavailable">Епизодите не могат да бъдат заредени. Можете да запазите плейлиста като отметка.</string>
-  <string name="morphe_series_tracker_error_pending_full">Твърде много незапазени промени. Първо опитайте пак запазването.</string>
-  <string name="morphe_series_tracker_error_storage_busy">Запазването е заето. Опитайте отново.</string>
-  <string name="morphe_series_tracker_error_catalog_busy">Зареждането на епизоди е заето. Опитайте отново.</string>
-  <string name="morphe_series_tracker_error_storage_unavailable">Съхранението е недостъпно. Западените ви данни са задържани.</string>
-  <string name="morphe_series_tracker_error_storage_save">Промените не можаха да бъдат запазени. Опитайте пак запазването преди затваряне на YouTube.</string>
-  <string name="morphe_series_tracker_error_conflict">Тази поредица вече е запазена или нейният плейлист е променен. Отворете я отново.</string>
-  <string name="morphe_series_tracker_error_series_changed">Тази поредица е променена или премахната. Отворете библиотеката отново.</string>
-  <string name="morphe_series_tracker_error_playlist_changed">Плейлистът е променен. Изберете отново епизода.</string>
-  <string name="morphe_series_tracker_error_episode_unavailable">Този епизод е недостъпен. Изберете друг.</string>
-  <string name="morphe_series_tracker_error_name_required">Въведете име на поредица.</string>
-  <string name="morphe_series_tracker_error_playlist_input">Въведете връзка към плейлист в YouTube или ID на плейлист.</string>
-  <string name="morphe_series_tracker_error_retry_later">Моля, изчакайте, преди да опитате отново обновяването.</string>
-  <string name="morphe_series_tracker_error_catalog_unavailable">Епизодите не могат да бъдат заредени. Опитайте по-късно.</string>
-  <string name="morphe_series_tracker_error_operation">Промяната не може да бъде завършена. Опитайте отново.</string>
-  <string name="morphe_series_tracker_error_resume">Продължаването не може да бъде потвърдено. Проверете плеъра и опитайте отново.</string>
+Автоматичното записване е по избор. Спира в режим инкогнито или когато акаунтът се промени"</string>
+  <string name="morphe_series_tracker_follow_unavailable">Епизодите не можеха да бъдат заредени. Можете да запазите плейлиста като отметка</string>
+  <string name="morphe_series_tracker_error_pending_full">Твърде много незапазени промени. Опитайте да запазите първо</string>
+  <string name="morphe_series_tracker_error_storage_busy">Запазването е заето. Опитайте отново</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Зареждането на епизодите е заето. Опитайте отново</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Съхранението е недостъпно. Вашите запазени данни бяха запазени</string>
+  <string name="morphe_series_tracker_error_storage_save">Промените не можеха да бъдат запазени. Опитайте да запазите преди затваряне на YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">Тази серия вече е запазена или нейният плейлист е променен. Отворете я повторно</string>
+  <string name="morphe_series_tracker_error_series_changed">Тази серия беше променена или премахната. Отворете библиотеката повторно</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Плейлистът беше променен. Изберете епизода отново</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Този епизод е недостъпен. Изберете друг</string>
+  <string name="morphe_series_tracker_error_name_required">Въведете име на серия</string>
+  <string name="morphe_series_tracker_error_playlist_input">Въведете линк към плейлист в YouTube или ID на плейлист</string>
+  <string name="morphe_series_tracker_error_retry_later">Моля, изчакайте, преди да обновите отново</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Епизодите не можеха да бъдат заредени. Опитайте по-късно</string>
+  <string name="morphe_series_tracker_error_operation">Промяната не може да бъде завършена. Опитайте отново</string>
+  <string name="morphe_series_tracker_error_resume">Продължаването не може да бъде потвърдено. Проверете плейъра и опитайте отново</string>
   <string name="morphe_series_tracker_followed">Проследявани поредици</string>
-  <string name="morphe_series_tracker_video_not_in_playlist">Този видеоклип не е в този плейлист.</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Това видео не е в този плейлист</string>
   <string name="morphe_series_tracker_finding_playlists">Търсене на плейлисти…</string>
   <string name="morphe_series_tracker_paste_playlist">Поставете връзка към плейлист</string>
   <string name="morphe_series_tracker_discovery_unavailable">Не беше открит плейлист</string>
@@ -1483,38 +1493,36 @@ AVC (H.264)
   <string name="morphe_series_tracker_episode_order">Порядък на епизодите</string>
   <string name="morphe_series_tracker_playlist_order">Порядък на плейлиста</string>
   <string name="morphe_series_tracker_reverse_order">Объркан порядък на плейлиста</string>
-  <string name="morphe_series_tracker_view_count_large">%1$s преглеждания</string>
   <string name="morphe_series_tracker_view_count">%1$s преглеждания</string>
   <string name="morphe_series_tracker_view_count_one">%1$s преглеждане</string>
   <string name="morphe_series_tracker_completion_title">Отбележи епизодите като прегледани</string>
-  <string name="morphe_series_tracker_completion_summary">Поне %1$d%% прегледани с най-много 90 секунди оставен време или %2$d секунди оставено време</string>
-  <string name="morphe_series_tracker_completion_explanation">Автоматично маркирайте един епизод като прегледан след преодоляване на някой от праговете. Правилото за процент изисква също така да имат останали не повече от 90 секунди, така че краят на дългите епизоди не се пропуска. Правилото за оставащо време се прилага към видеоклипове с продължителност над една минута; задайте го на 0, за да го деактивирате. Промените се прилагат за бъдещи актуализации на прогреса. Ръчно избранияте състояния прегледано/непрегледано се запазват.</string>
-  <string name="morphe_series_tracker_completion_percent">Процент на прегледаност (1–100)</string>
-  <string name="morphe_series_tracker_completion_seconds">Оставащи секунди (0–300; 0 деактивира)</string>
-  <string name="morphe_series_tracker_completion_save">Запази</string>
-  <string name="morphe_series_tracker_completion_range">Въведете стойност от %1$d до %2$d.</string>
+  <string name="morphe_series_tracker_completion_summary">Най-малко %1$s%% са гледани с най-много 90 секунди останали, или %2$s секунди оставащи</string>
+  <string name="morphe_series_tracker_completion_explanation">Автоматично маркиране на епизод като гледан след достигане на прага. Правилото за процент също изисква най-много 90 секунди останали, така че краят на дългите епизоди не се пропуска. Правилото за оставащо време се прилага за видеоклипове с продължителност повече от една минута; задайте го на 0, за да го деактивирате. Промените се прилагат за бъдещи актуализации на прогреса. Ръчните избори за гледано/негледано се запазват</string>
+  <string name="morphe_series_tracker_completion_percent">Процент гледани (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Оставащи секунди (0-300; 0 деактивира)</string>
+  <string name="morphe_series_tracker_completion_range">Въведете стойност от %1$s до %2$s</string>
   <string name="morphe_series_tracker_youtube_progress_title">Използвай прогреса от YouTube</string>
   <string name="morphe_series_tracker_youtube_progress_summary">Продължи проследяваните поредици след гледане на друго устройство</string>
-  <string name="morphe_series_tracker_sync_consent">Четеш статуса на прегледаност и позициите за продължаване за проследяваните ви поредици от текущия акаунт в YouTube. Само съвпадащите епизоди се записват на това устройство. Проверките се изпълняват, докато библиотеката с поредици е отворена и преди Продължаване. Историјата на YouTube трябва да бъде активирана на другото ви устройство.</string>
+  <string name="morphe_series_tracker_sync_consent">Четете статуса за гледане и позициите за продължаване за последваните ви серии от текущия акаунт в YouTube. Само съответстващите епизоди се запазват на този телефон. Проверките се изпълняват, докато библиотеката със серии е отворена и преди Продължаване. Историята в YouTube трябва да бъде активирана на другото ви устройство</string>
   <string name="morphe_series_tracker_sync_checking">Проверка на прогреса в YouTube…</string>
-  <string name="morphe_series_tracker_sync_failed">Прогресът в YouTube е недостъпен. Използва се запазен прогрес.</string>
-  <string name="morphe_series_tracker_sync_partial">Някои данни от прогреса в YouTube са недостъпни. Запазените позиции са задържани.</string>
+  <string name="morphe_series_tracker_sync_failed">Прогресът в YouTube е недостъпен. Използва се запазен прогрес</string>
+  <string name="morphe_series_tracker_sync_partial">Някой прогрес в YouTube е недостъпен. Запазените позиции се запазват</string>
   <string name="morphe_series_tracker_backup_title">Архивиране и възстановяване</string>
   <string name="morphe_series_tracker_backup_summary">Запази библиотеката си с поредици във файл или възстанови резервно копие</string>
-  <string name="morphe_series_tracker_backup_explanation">Запазва проследяваните поредици, позициите на епизодите и изборите за прегледаност. Разрешенията за записване и прогреса в YouTube не са включени.</string>
+  <string name="morphe_series_tracker_backup_explanation">Запазва последваните серии, позициите на епизодите и изборите за гледани. Права за записване и прогрес в YouTube не са включени</string>
   <string name="morphe_series_tracker_backup_save">Запази архив</string>
   <string name="morphe_series_tracker_backup_restore">Възстанови архив</string>
-  <string name="morphe_series_tracker_backup_preview">Добавяне на %1$d поредици. %2$d поредици, които вече са във вашата библиотека, се запазват. Съществуващият прогрес на видеоклиповете се запазва.</string>
+  <string name="morphe_series_tracker_backup_preview">Добавете %1$s серии. %2$s серии, които вече са във вашата библиотека, се запазват. Съществуващият прогрес на видео се запазва</string>
   <string name="morphe_series_tracker_backup_saved">Архивът на поредици е запазен</string>
-  <string name="morphe_series_tracker_backup_restored">Възстановени %1$d поредици</string>
-  <string name="morphe_series_tracker_error_backup_invalid">Този файл не е поддържан архив на поредици или е твърде голям. Вашата библиотека не е променена.</string>
-  <string name="morphe_series_tracker_error_backup_write">Не може да се запише архива. Опитайте друга локация.</string>
+  <string name="morphe_series_tracker_backup_restored">Възстановени %1$s серии</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Този файл не е поддържана резервна копия на серия или е твърде голям. Вашата библиотека не беше променена</string>
+  <string name="morphe_series_tracker_error_backup_write">Неуспешно запазване на резервната копия. Опитайте друга позиция</string>
   <string name="morphe_series_tracker_removed">Поредицата е премахната</string>
-  <string name="morphe_series_tracker_recovery_duplicate">Този епизод сега се появява повече от веднъж. Изберете от който да продължите.</string>
-  <string name="morphe_series_tracker_recovery_missing">Вашият запазен епизод вече не е в този плейлист. Запазената позиция е задържана.</string>
-  <string name="morphe_series_tracker_recovery_continue">Продължи с епизод %1$d · %2$s</string>
-  <string name="morphe_series_tracker_recovery_choose">Можете също да изберете който и да е епизод по-долу. Предходните епизоди не се променят.</string>
-  <string name="morphe_series_tracker_playback_changed">Плейлистът е променен. Отворете поредицата, за да изберете къде да продължите.</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Този епизод сега изглежда повече от веднъж. Изберете от кой да продължите</string>
+  <string name="morphe_series_tracker_recovery_missing">Вашият запазен епизод вече не е в този плейлист. Запазената ви позиция се запазва</string>
+  <string name="morphe_series_tracker_recovery_continue">Продължете с епизод %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Можете също да изберете всеки епизод по-долу. По-ранните епизоди не се променят</string>
+  <string name="morphe_series_tracker_playback_changed">Плейлистът беше променен. Отворете серията, за да изберете къде да продължите</string>
   <string name="morphe_series_tracker_playback_boundary">Няма повече епизоди в тази посока</string>
   <string name="morphe_series_tracker_continue_series">Продължи %1$s</string>
   <string name="morphe_series_tracker_search_series">Търсене на поредици</string>

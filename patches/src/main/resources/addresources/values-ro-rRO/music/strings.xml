@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">Arată codul QR</string>
   <string name="morphe_music_jam_done">Gata</string>
   <string name="morphe_music_jam_invite_title">Invită în sesiunea ta Jam</string>
-  <string name="morphe_music_jam_invite_message">Scanează pentru a te alătura și a edita această coadă. Încheierea sesiunii Jam revocă invitația.</string>
+  <string name="morphe_music_jam_invite_message">Scanează pentru a te alătura și a edita acest coadă. Încheierea sesiunii revocă invitația</string>
   <string name="morphe_music_jam_copy_link">Copiază linkul</string>
   <string name="morphe_music_jam_invitation_clip">Invitație Jam</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam se reconectează; încearcă din nou în scurt timp</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Se actualizează Jam…</string>
   <string name="morphe_music_jam_finding_host">Se caută gazda ta în rețeaua Wi-Fi…</string>
   <string name="morphe_music_jam_waiting_people">Se așteaptă participanții</string>
-  <string name="morphe_music_jam_one_connected">%d persoană conectată</string>
-  <string name="morphe_music_jam_many_connected">%d persoane conectate</string>
-  <string name="morphe_music_jam_code_expires">Introdu acest cod pe un dispozitiv din apropiere. Wi-Fi Aware funcționează între rețele locale separate, dacă este suportat. Expiră în %d minute.</string>
+  <string name="morphe_music_jam_one_connected">%s persoană conectată</string>
+  <string name="morphe_music_jam_many_connected">%s persoane conectate</string>
+  <string name="morphe_music_jam_code_expires">Introdu acest cod pe un dispozitiv apropiat. Wi-Fi Aware funcționează între rețele LAN separate când este suportat. Expiră în %s minute</string>
   <string name="morphe_music_jam_seek_to">Sari la %s?</string>
   <string name="morphe_music_jam_edits_open">Editări deschise</string>
   <string name="morphe_music_jam_edits_locked">Editări blocate</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Neacceptat în timpul sesiunii Jam</string>
   <string name="morphe_music_jam_cancelled">Alăturarea a fost anulată</string>
   <string name="morphe_music_jam_reconnecting_host">Se reconectează la gazda ta…</string>
-  <string name="morphe_music_jam_share_prompt">Partajează o coadă. Lasă-i pe toți să adauge melodii.</string>
+  <string name="morphe_music_jam_share_prompt">Distribuie o coadă. Lasă-i pe toți să adauge melodii</string>
   <string name="morphe_music_jam_invite_people">Invită persoane</string>
   <string name="morphe_music_jam_guest_edits">Invitații pot edita coada</string>
   <string name="morphe_music_jam_end_jam">Încheie sesiunea Jam</string>
-  <string name="morphe_music_jam_participant_help">Gazda redă muzica. Adaugă, mută sau elimină melodii direct în coada YouTube Music.</string>
-  <string name="morphe_music_jam_joining_help">Păstrează ambele dispozitive în apropiere. Poți anula în timp ce căutăm gazda.</string>
+  <string name="morphe_music_jam_participant_help">Gazda redă muzica. Adaugă, mută sau elimină melodii direct în coada YouTube Music</string>
+  <string name="morphe_music_jam_joining_help">Ține ambele dispozitive aproape. Poți anula în timp ce căutăm gazda</string>
   <string name="morphe_music_jam_cancel_joining">Anulează alăturarea</string>
   <string name="morphe_music_jam_leave_jam">Ieși din Jam</string>
   <string name="morphe_music_jam_start_jam">Începe o sesiune Jam</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Folosește descărcătorul extern ales în locul meniului implicit flyout Descarcă</string>
   <string name="morphe_music_in_app_downloads_title">Descărcare în aplicație</string>
   <string name="morphe_music_in_app_downloads_summary">Descarcă audio în YouTube Music în loc să deschidă aplicația externă de descărcare</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Melodiile sunt salvate în stocarea privată a aplicației și sunt șterse dacă YouTube Music este dezinstalat.
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Piese sunt salvate în spațiul de stocare privat al aplicației și sunt șterse dacă YouTube Music este dezinstalată.
 
-Cât timp aceasta este activată, fila Descărcări afișează aceste melodii în locul bibliotecii offline Music Premium. Dezactivarea readuce fila, iar descărcările Premium nu sunt niciodată afectate."</string>
+Când această opțiune este activată, fila Descărcări listează aceste piese în loc de biblioteca offline Premium. Dezactivarea o restabilește pe filo, iar descărcările Premium nu sunt atinse niciodată"</string>
   <string name="morphe_music_downloads_screen_title">Descărcări</string>
   <string name="morphe_music_downloads_empty">"Nicio descărcare
 Melodiile descărcate apar aici"</string>
@@ -445,7 +445,7 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Curățare regex personalizată</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Introduceți o expresie regulată personalizată pentru a elimina text suplimentar din titlurile, artiștii sau albumele melodiilor. Exemplu: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Analizeazã artistul în titlu</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Extrage numele artistului și al piesei din titlul videoclipului folosind separatorul \" - \". Util pentru conținut reîncărcat unde numele canalului poate fi utilizat ca artist.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Extrage artistul și numele piesei din titlul videoclipului folosind separatorul \" - \". Utile pentru conținutul reîncărcat unde numele canalului poate fi folosit ca artist</string>
   <string name="morphe_music_scrobbling_guess_album_title">Completează albumul lipsă</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Când melodia nu include un album, caută-l pe Last.fm, pentru ca scrobble-ul tău să fie complet.</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ Pentru a te asigura că scrobbling-ul este sincronizat în timpul redării în f
   <string name="morphe_music_lyrics_section_service_title">Serviciul de versuri</string>
   <string name="morphe_music_lyrics_section_overlay_title">Suprapunere</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronizare</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Toți furnizorii dezactivați — versuri integrate și versuri încorporate.</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">Endpoint AI</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Toți furnizorii dezactivați — versuri integrate și versuri încorporate</string>
   <string name="morphe_music_lyrics_source_reset_title">Resetați ordinea furnizorilor?</string>
   <string name="morphe_music_lyrics_source_reset_message">Restabiliți ordinea implicită de prioritate a furnizorilor.</string>
   <string name="morphe_music_token_dialog_get_token">Obțineți tokenul</string>
@@ -471,32 +472,32 @@ Pași:
 1. […] Copiați valoarea \"media-user-token\"."</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: token media-user salvat.</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: token media-user șters.</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token nevalid — te rugăm să verifici și să încerci din nou</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: token-media-user invalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_spotify_token_title">Spotify: token media-user salvat.</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Spotify: token media-user șters."</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Fără el, Lyrically va fi folosit ca soluție de rezervă.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Deezer: token media-user expirat.</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Deezer: sp_dc nevalid — te rugăm să verifici și să încerci din nou</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc invalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_apple_token_optional_hint">Tokenul Apple Music este opțional. Fără el, Lyrically va fi folosit ca rezervă</string>
   <string name="morphe_music_deezer_arl_title">Apple Music: token media-user salvat.</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Apple Music: token media-user șters."</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl salvat</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl nevalid, încercați din nou.</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl nevalid — te rugăm să verifici și să încerci din nou</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl invalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_musixmatch_token_title">Deezer: token media-user salvat.</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Adaugă un token doar pentru a-ți folosi propriul cont. Acesta trebuie să provină din aplicația Musixmatch pentru Android: tokenurile copiate de pe musixmatch.com aparțin clientului desktop scos din uz, iar API-ul le refuză.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funcționează fără token, deci acest câmp poate rămâne gol.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: token de utilizator nevalid, încercați din nou.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Deezer: token media-user expirat.</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Cookie-uri YouTube</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: tokenul utilizatorului nevalid — te rugăm să verifici și să încerci din nou</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: token utilizator invalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_youtube_cookies_title">YouTube: autentificare necesară.</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Copiați întregul șir de cookie-uri (perechi cheie=valoare separate prin punct și virgulă)
 
 Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie-uri nevalide. Verificați și încercați din nou.</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: token media-user șters.</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookie-uri nevalide — te rugăm să verifici și să încerci din nou</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookie-uri invalide — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Atingeți o linie pentru a naviga</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Atingerea unei linii saltă la acel moment din melodie</string>
   <string name="morphe_music_lyrics_show_section_title">Afișează etichetele secțiunilor</string>
@@ -507,6 +508,12 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_translate_button_summary">Atingeți pentru a comuta traducerea; apăsați lung pentru doar traducere. Utilizează traducerile furnizorului, Google Translate sau un API compatibil cu OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Afișați butonul Romanize.</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Atingeți pentru a comuta romanizarea; apăsați lung pentru doar romanizare. Utilizează romanizarea furnizorului, Google Translate sau un API compatibil cu OpenAI.</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Romanizare locală</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Romani pe dispozitiv când furnizorul, un endpoint compatibil OpenAI și Google Translate au eșuat toate. Doar CJK, aproximativ 80 MB de citiri de descărcat.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Citire %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Citiri pregătite (%1$d cuvinte CJK)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Descărcare eșuată — dezactivați și activați din nou pentru a reîncerca</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Afișați butonul Reîmprospătare.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Atingeți pentru a trece la următorul candidat de versuri; apăsați lung pentru a căuta versuri după titlul melodiei și artist.</string>
   <string name="morphe_music_lyrics_search_dialog_title">Căutare versuri</string>
@@ -517,6 +524,8 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_saved">Salvat</string>
   <string name="morphe_music_lyrics_word_sync_title">Evidențiați cuvintele sau silabele sincronizate</string>
   <string name="morphe_music_lyrics_word_sync_summary">Nu s-a putut face romanizarea versurilor.</string>
+  <string name="morphe_music_lyrics_split_background_title">Afișați vocalurile de fundal separat</string>
+  <string name="morphe_music_lyrics_split_background_summary">Mută vocea de fundal scrisă între paranteze, cum ar fi \"(Oh) te vreau\", din linia cântată într-o linie mai slabă</string>
   <string name="morphe_music_lyrics_hide_played_title">Ascundeți versurile.</string>
   <string name="morphe_music_lyrics_hide_played_summary">Ascundeți rândurile de versuri de mai jos.</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ascundeți versurile necunoscute.</string>
@@ -541,25 +550,47 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_sb_no_video">Această piesă nu are niciun id video de trimis</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Sursă: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Apăsarea lungă a butonului de copiere salvează acest LRC; dacă puteți ajusta timpii și le partajați cu furnizorii comunității, vă vom fi recunoscători.</string>
   <string name="morphe_music_lyrics_translated_by_google">Redare întreruptă.</string>
   <string name="morphe_music_lyrics_romanized_by_google">Redare în curs.</string>
   <string name="morphe_music_lyrics_translated_by_ai">Tradus de %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizat de %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Romanaizat de %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Redare reluată.</string>
   <string name="morphe_music_lyrics_translation_language_title">Limba de traducere</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Limba de romanizare</string>
   <string name="morphe_music_lyrics_translating">Se traduce…</string>
   <string name="morphe_music_lyrics_translate_failed">Nu s-au putut traduce versurile</string>
   <string name="morphe_music_lyrics_romanize_hide">Redare reluată.</string>
+  <string name="morphe_romanize_language_DEFAULT">Automat</string>
   <string name="morphe_music_lyrics_romanizing">Se romanizează…</string>
   <string name="morphe_music_lyrics_romanize_failed">Nu s-a putut face romanizarea versurilor.</string>
   <string name="morphe_music_lyrics_translate_only">Doar traducerea</string>
   <string name="morphe_music_lyrics_romanize_only">Doar romanizat</string>
+  <string name="morphe_music_lyrics_dual_only">Mod dual</string>
   <string name="morphe_music_lyrics_copied">Copiat în clipboard</string>
   <string name="morphe_music_lyrics_refreshing">Se încarcă…</string>
   <string name="morphe_music_lyrics_refreshed">Reîmprospătat</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">Cheie API QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transcrie sau aliniază temporal versurile pentru piesa curentă. Un serviciu separat, neconectat la endpoint-ul compatibil OpenAI de mai sus.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">Cheie QuickLRC salvată. Folosiți butonul de aliniere din dialogul de căutare a versurilor, sau mesajul din panou când o piesă nu are versuri.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">Cheie API QuickLRC salvată</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC nu a acceptat acea cheie</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">Cheie API QuickLRC ștearsă</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC atribuie timpi versurilor care nu au astfel, sau le transcrie din piesă, cu costul de credite. Cu o cheie setată, piesele fără versuri oferă transcriere, iar dialogul de căutare primește un buton de aliniere.</string>
+  <string name="morphe_music_lyrics_transcribe_align">Solicitare aliniere QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Aliniere</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Aplicare aliniere</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Solicitare transcriere QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_working">Transcriere</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Transcriere anulată</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Doar piesele redate de pe YouTube pot fi transcrise</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Nu există versuri de aliniat — se transcrie în schimb</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC nu a putut procesa această piesă</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">Creditele QuickLRC au epuizat pentru această piesă</string>
   <string name="morphe_music_lyrics_about_summary">"Versurile sunt potrivite după titlu și artist, metadatele neobișnuite pot să nu găsească nimic sau versiunea greșită. Folosiți reîmprospătarea pentru a comuta versiunile. Furnizorii marcați cu * necesită un token. Furnizorii activați nu sunt solicitați întotdeauna în ordinea ta, ci răspund în funcție de viteza lor."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Activează doar furnizorii pe care îi folosești, sau păstrează setarea implicită — solicitările constante pot supraîncărca site-urile mici de versuri ale comunității</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Activează doar furnizorii pe care îi utilizezi sau păstrează setările implicite — solicitările constante pot copleși site-urile comunitare mici de versuri</string>
   <string name="morphe_music_lyrics_hide_info_title">Redare în curs pe acest dispozitiv.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Redare în curs pe un alt dispozitiv.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Redare în curs pe acest dispozitiv.</string>
@@ -572,17 +603,17 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_use_ai_section_title">Secțiune AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilizat doar atunci când furnizorul nu trimite etichete de secțiune, cum ar fi Refren sau Strofă, pe care modelul tău compatibil cu OpenAI le detectează ulterior</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">Setări AI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configurează punctul final al API-ului compatibil cu OpenAI pentru traducerea versurilor, romanizare și secțiuni bazate pe AI.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configurați endpoint-ul API compatibil OpenAI pentru traducerea AI a versurilor, romanizarea și secționarea.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL endpoint API (de ex. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Cheie API (lasă gol pentru acces anonim)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nume model (de ex. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Șablon de Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder-e: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">Șablon de prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt salvat</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt salvat, dar endpoint-ul AI nu este utilizabil încă. Configurați-l mai întâi în Setări AI.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt resetat</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Setările AI salvate</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Nu s-a putut conecta la endpoint-ul AI. Verifică setările.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Nu s-a putut stabili conexiunea cu punctul final AI. Te rugăm să verifici setările tale</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Setările AI resetate</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">Model %1$s configurat</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">URL-ul de bază nu poate fi gol</string>

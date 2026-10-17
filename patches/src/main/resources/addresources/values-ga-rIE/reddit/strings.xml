@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Leagan Amach</string>
   <string name="morphe_copy_text_title">Cóipeáil téacs</string>
   <string name="morphe_copy_text_summary">Ceadaíonn sé téacs a roghnú agus a chóipeáil i bpoist agus i dtráchtanna. Díchumasaíonn sé filleadh na dtráchtanna</string>
-  <string name="morphe_copy_text_user_dialog_message">Ní oibreoidh filleadh na dtráchtanna fad atá Cóipeáil téacs cumasaithe.</string>
+  <string name="morphe_copy_text_user_dialog_message">Ní bheidh feidhm le titim tuairimí a dhéanamh fad is atá an rogha chun téacs a chóipeáil cumasaithe.</string>
   <string name="morphe_custom_font_title">Cló saincheaptha</string>
   <string name="morphe_custom_font_summary">Luchtaigh comhad cló saincheaptha TTF nó OTF ón gcosán thíos. Má chumasaítear é seo, múchtar Fórsáil cló córais freisin.</string>
   <string name="morphe_custom_font_file_path_title">Comhad cló saincheaptha</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Folaíonn sé na seilfeanna Treochta ó mholtaí beatha agus cuardaigh</string>
   <string name="morphe_remove_notification_dialog_title">Bain an dialóg moladh fógra</string>
   <string name="morphe_remove_notification_dialog_summary">Diúltaíonn sé go huathoibríoch don chomhrá moladh fógra nuair a thugtar cuairt ar fho-reddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Taispeáin aitheantóirí sa fhéide baile</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Taispeánann méid aitheantóirí tionscnaimh sa fhéide baile</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">B\'fhéidir nach dtaispeánfaidh roinnt mír feidhme aitheantóir</string>
   <string name="morphe_show_view_count_title">Taispeáin líon na n-amharc ar phoist</string>
   <string name="morphe_show_view_count_summary">Teorainn: Ar fáil ach amháin má tá an líon radharcanna san áireamh sa fhreagra API</string>
   <string name="morphe_flip_post_action_bar_title">Smeach barra gníomhartha an phoist</string>

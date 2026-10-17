@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Copia testo</string>
   <string name="morphe_copy_text_summary">Consente di selezionare e copiare il testo nei post e nei commenti. Disattiva la compressione dei commenti</string>
-  <string name="morphe_copy_text_user_dialog_message">La compressione dei commenti smetterà di funzionare mentre l\'opzione Copia testo è abilitata.</string>
+  <string name="morphe_copy_text_user_dialog_message">Il collasso dei commenti non funzionerà mentre la funzione Copia testo è abilitata</string>
   <string name="morphe_custom_font_title">Carattere personalizzato</string>
   <string name="morphe_custom_font_summary">Carica un file font TTF o OTF personalizzato dal percorso sottostante. Abilitando questa opzione, si disattiva anche l\'uso del font di sistema.</string>
   <string name="morphe_custom_font_file_path_title">File del carattere personalizzato</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Nasconde gli scaffali di tendenza dal feed e dai suggerimenti di ricerca</string>
   <string name="morphe_remove_notification_dialog_title">Rimuovi finestra di dialogo dei suggerimenti di notifica</string>
   <string name="morphe_remove_notification_dialog_summary">Chiude automaticamente la finestra di dialogo del suggerimenti di notifica, che appaiono quando si visita un subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Mostra i flair nel feed principale</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Mostra i badge dei flair nei post del feed principale</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Alcuni elementi del feed potrebbero non mostrare un flair</string>
   <string name="morphe_show_view_count_title">Mostra il conteggio delle visualizzazioni nei post</string>
   <string name="morphe_show_view_count_summary">Limitazione: disponibile solo se la risposta dell\'API include il conteggio delle visualizzazioni</string>
   <string name="morphe_flip_post_action_bar_title">Inverti la barra delle azioni dei post</string>

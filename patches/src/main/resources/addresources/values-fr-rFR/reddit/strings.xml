@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Mise en page</string>
   <string name="morphe_copy_text_title">Copier le texte</string>
   <string name="morphe_copy_text_summary">Permet de sélectionner et de copier le texte dans les posts et les commentaires. Désactive la possibilité de réduire les commentaires</string>
-  <string name="morphe_copy_text_user_dialog_message">Réduire les commentaires ne fonctionnera plus tant que \'Copier le texte\' sera activée.</string>
+  <string name="morphe_copy_text_user_dialog_message">Réduire les commentaires ne fonctionnera plus tant que \'Copier le texte\' sera activée</string>
   <string name="morphe_custom_font_title">Police personnalisée</string>
   <string name="morphe_custom_font_summary">Chargez un fichier de police TTF ou OTF personnalisé à partir du chemin ci-dessous. L\'activation de cette option désactive également \'Forcer la police système\'</string>
   <string name="morphe_custom_font_file_path_title">Fichier de police personnalisé</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Masque les étagères \'Tendance\' dans le flux et les suggestions de recherche</string>
   <string name="morphe_remove_notification_dialog_title">Supprimer la boîte de dialogue de suggestion de notification</string>
   <string name="morphe_remove_notification_dialog_summary">Ferme automatiquement la boîte de dialogue de suggestion de notifications lors de la visite d\'un subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Afficher les flairs dans le flux d\'accueil</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Affiche les badges de flair des posts dans le flux d\'accueil</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Certains éléments du flux d\'accueil peuvent ne pas afficher de flair</string>
   <string name="morphe_show_view_count_title">Afficher le nombre de vues sur les posts</string>
   <string name="morphe_show_view_count_summary">Limitation : Disponible uniquement si la réponse de l\'API inclut le nombre de vues</string>
   <string name="morphe_flip_post_action_bar_title">Inverser la barre d\'action des posts</string>

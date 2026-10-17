@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">版面配置</string>
   <string name="morphe_copy_text_title">複製文字</string>
   <string name="morphe_copy_text_summary">允許選取及複製貼文和留言中的文字。停用留言摺疊功能</string>
-  <string name="morphe_copy_text_user_dialog_message">啟用「複製文字」時，收合留言將停止運作。</string>
+  <string name="morphe_copy_text_user_dialog_message">啟用「複製文字」時，收合留言功能將無法使用</string>
   <string name="morphe_custom_font_title">自訂字型</string>
   <string name="morphe_custom_font_summary">從以下路徑載入自訂的 TTF 或 OTF 字型檔案。啟用這項選項也會關閉強制系統字型。</string>
   <string name="morphe_custom_font_file_path_title">自訂字型檔案</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">從動態消息和搜尋建議中隱藏熱門專區</string>
   <string name="morphe_remove_notification_dialog_title">移除通知建議對話框</string>
   <string name="morphe_remove_notification_dialog_summary">前往 subreddit 時自動解除通知建議對話方塊</string>
+  <string name="morphe_show_flairs_in_home_feed_title">在主資訊流中顯示標籤</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">在主資訊流中顯示文章標籤徽章</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">部份資訊流項目可能不會顯示標籤</string>
   <string name="morphe_show_view_count_title">在貼文中顯示檢視次數</string>
   <string name="morphe_show_view_count_summary">限制：僅在 API 回應包含檢視次數時可用</string>
   <string name="morphe_flip_post_action_bar_title">翻轉貼文操作列</string>

@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">লেআউট আপডেট বন্ধ করুন</string>
   <string name="morphe_disable_layout_updates_summary">সার্ভারকে অ্যাপ লেআউট আপডেট করা থেকে বিরত করে</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"অ্যাপের লেআউট প্রথম ইনস্টল করার সময় ব্যবহৃত লেআউটে ফিরে যায়।
+  <string name="morphe_disable_layout_updates_user_dialog_message">"অ্যাপ লেআউট প্রথম ইনস্টল করার সময় ব্যবহৃত লেআউটে ফিরে আসে।
 
-কিছু সার্ভার-সাইড লেআউট ফিরে না যেতে পারে।
+কিছু সার্ভার-সাইড লেআউট ফিরে আসতে পারে না।
 
-পরিবর্তনগুলি:
-• প্লেয়ার ফ্লাইআউট মেনু (অথবা সম্পর্কিত সেটিংস) এর কম্পোনেন্টগুলি কাজ করতে পারে না।
-• রোলিং নম্বরগুলি অ্যানিমেটেড নয়।
-• লাইব্রেরি ট্যাব দেখানো হয়।
-• ভিডিও বর্ণনায় মিউজিক সেকশন কাজ করতে পারে না।
-• প্লেয়ার ফ্লাইআউট মেনু আইটেমগুলি লুকানো যায় না।
-• লাইব্রেরি ট্যাবে অ্যাকাউন্ট চেঞ্জ বাটন দেখা যায় না।"</string>
+পরিবর্তনগুলির মধ্যে:
+• প্লেয়ার ফ্লাইআউট মেনু (অথবা সংশ্লিষ্ট সেটিংস)-এ কম্পোনেন্ট কাজ নাও করতে পারে
+• গড়া সংখ্যাগুলি অ্যানিমেটেড নয়
+• লাইব্রেরি ট্যাব দেখানো হয়
+• ভিডিও বর্ণনাতে সঙ্গীত বিভাগ কাজ নাও করতে পারে
+• প্লেয়ার ফ্লাইআউট মেনু আইটেম লুকানো যায় না
+• অ্যাকাউন্ট সুইচ বোতাম লাইব্রেরি ট্যাবে নাও হতে পারে"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">ফিড ফ্লাইটমেন্যু ফিল্টার চালু করুন</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">ফিড ফ্লাইটমেন্যু ফিল্টার</string>
@@ -133,7 +133,7 @@ Second \"item\" text"</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles छिपाएँ</string>
   <string name="morphe_hide_youtube_doodles_summary">YouTube লোগোতে ঋতুভিত্তিক এবং ইভেন্ট-ভিত্তিক অ্যানিমেশন লুকায়</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube ডूडল দেখা কাস্টম হেডারগুলি দেখানো থেকে আটকাতে পারে।</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodles দেখানো হতে পারে কাস্টম শিরোনাম প্রদর্শন করতে বাধা দেয়</string>
   <string name="morphe_hide_channel_bar_title">চ্যানেল বার লুকান</string>
   <string name="morphe_hide_channel_watermark_title">চ্যানেল জলছাপ লুকান</string>
   <string name="morphe_hide_chapters_timeline_button_title">অধ্যায় এবং \'এই ভিডিওতে\' বোতাম লুকান</string>
@@ -281,7 +281,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_menu_button_summary">প্রতিটি মন্তব্যের 3-ডট মেনু বোতাম লুকিয়ে রাখে</string>
   <string name="morphe_hide_comments_preview_comment_title">মন্তব্যের পূর্বরূপ লুকান</string>
   <string name="morphe_hide_comments_preview_comment_summary">পুরো মন্তব্য বিভাগ খোলার আগে ভিডিওর নিচে মন্তব্য প্রিভিউ লুকায়</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">মন্তব্যটি Morphe দ্বারা লুকানো হয়েছে...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Morphe দ্বারা মন্তব্য লুকানো…</string>
   <string name="morphe_minimal_comments_button_title">ন্যূনতম মন্তব্য বোতাম সক্রিয় করুন</string>
   <string name="morphe_minimal_comments_button_summary">মন্তব্য বোতামে প্রদর্শিত স্লাইডিং কার্ডগুলো এবং এর পৃষ্ঠা নির্বাচকটি লুকিয়ে রাখে</string>
   <string name="morphe_hide_comments_thanks_button_title">ধন্যবাদ বাটন লুকান</string>
@@ -490,7 +490,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_vot_openrouter_open_website">OpenRouter.ai খুলুন</string>
   <string name="morphe_vot_openrouter_error">OpenRouter অনুবাদ ব্যর্থ (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">MyMemory দৈনিক সীমা শেষ</string>
-  <string name="morphe_vot_mymemory_quota_next_available">পরবর্তী সুযোগ %s-এ উপলব্ধ।</string>
+  <string name="morphe_vot_mymemory_quota_next_available">%s সময় পরবর্তীতে পাওয়া যাবে</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">আজকের ফ্রি MyMemory অনুবাদ কোটা (৫,০০০ ক্যারেক্টার) শেষ হয়েছে। দৈনিক সীমা ৫০,০০০ ক্যারেক্টার করতে সেটিংসে একটি MyMemory ইমেইল যোগ করুন, অথবা অন্য কোনো অনুবাদ সার্ভিস বেছে নিন</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">আজকের MyMemory অনুবাদ কোটা (৫০,০০০ ক্যারেক্টার) শেষ হয়েছে। অন্য কোনো অনুবাদ সার্ভিস বেছে নিন অথবা আগামীকাল আবার চেষ্টা করুন</string>
   <string name="morphe_vot_mymemory_error">MyMemory অনুবাদ ব্যর্থ হয়েছে (স্ট্যাটাস %s)</string>
@@ -565,21 +565,24 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
 
 তথ্য: পরবর্তী সারিবদ্ধ ভিডিওটি শুধুমাত্র YouTube স্ক্রিনে থাকাকালীন শুরু হয়"</string>
   <string name="morphe_local_queue_sheet_title">সারি</string>
-  <string name="morphe_local_queue_open">সারি (%d)</string>
+  <string name="morphe_local_queue_open">সারি (%s)</string>
   <string name="morphe_local_queue_clear">সব মুছুন</string>
   <string name="morphe_local_queue_empty">কিউতে কিছু নেই</string>
   <string name="morphe_local_queue_empty_hint">যেকোনো ভিডিওতে \'কিউতে পরবর্তী চালান\' ব্যবহার করুন</string>
   <string name="morphe_local_queue_now_playing">এখন চলছে</string>
   <string name="morphe_local_queue_play_next">কিউতে পরবর্তী চালান</string>
+  <string name="morphe_local_queue_play_last">কিউতে শেষে চালাও</string>
   <string name="morphe_local_queue_reorder">পুনর্বিন্যাস করুন</string>
   <string name="morphe_local_queue_remove">সরান</string>
   <string name="morphe_local_queue_added">ভিডিও তালিকায় যুক্ত করা হয়েছে</string>
+  <string name="morphe_local_queue_unavailable">এই ভিডিওটি কিউতে যোগ করা যায়নি</string>
+  <string name="morphe_local_queue_playlist_unsupported">প্লিলিস্টগুলো কিউতে যোগ করা যায় না</string>
   <string name="morphe_local_queue_full">কিউ পূর্ণ</string>
   <string name="morphe_local_queue_play_failed">ভিডিওটি শুরু করা যায়নি</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">ফ্লাইআউট মেনুতে বিজ্ঞাপনের সাদা তালিকা</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">এমন একটি ফ্লাইআউট আইটেম যোগ করে যা সেই ভিডিওর চ্যানেলে বিজ্ঞাপন চালানোর অনুমতি দেয়</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">এই বৈশিষ্ট্যটির জন্য PotHelper ব্যবহার করা লাগতে পারে অথবা \"ছদ্মবেশী ভিডিও স্ট্রিম\"-কে TV বা Android VR সাইন-ইনে পরিবর্তন করা লাগতে পারে।</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">এই বৈশিষ্ট্যটির জন্য PotHelper ব্যবহার করা বা \"ভিডিও স্ট্রিম মিথ্যা\" সেটিং TV বা Android VR সাইন-ইনে পরিবর্তন করা প্রয়োজন হতে পারে</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">ফ্লাইআউট মেনুতে গতির সাদা তালিকা</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">এমন একটি ফ্লাইআউট আইটেম যোগ করে যা সেই ভিডিওর চ্যানেলটি সবসময় 1.0x গতিতে চালায়</string>
   <string name="morphe_queue_manager_check_failed_auth">লগইন করা হয়নি</string>
@@ -762,6 +765,9 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_preferred_caption_language_title">পছন্দের ক্যাপশন ভাষা</string>
   <string name="morphe_preferred_caption_language_summary">প্রথমে প্রদানকারীর সাবটাইটেল নির্বাচন করে, তারপর স্বয়ংক্রিয়ভাবে পছন্দের ভাষায় অনুবাদ করে</string>
   <string name="morphe_preferred_caption_language_entry_off">বন্ধ</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">অতিরিক্য অটো-অনুবাদ ভাষা যোগ করুন</string>
+  <string name="morphe_auto_translate_additional_languages_summary">অটো-অনুবাদ মেনুতে আরও বেশি ভাষা যোগ করে</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">ক্যাপশন কুকি সেট করুন।</string>
   <string name="morphe_set_caption_cookies_summary">"স্টক ইউটিউবের একটি বাগ ঠিক করে যেখানে মিসিং কুকিজের কারণে অটো-অনুবাদ ক্যাপশন উপলব্ধ নাও হতে পারে
@@ -801,9 +807,9 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_hide_navigation_button_labels_title">নেভিগেশন বোতাম লেবেল লুকান</string>
   <string name="morphe_hide_navigation_new_content_dot_title">নতুন সামগ্রীর ডট লুকান</string>
   <string name="morphe_hide_navigation_bar_title">নেভিগেশন বার লুকান</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"এটি সম্পূর্ণভাবে নেভিগেশন বার গোপন করে, যার মধ্যে 'You' ট্যাবও অন্তর্ভুক্ত।
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"এটি নেভিগেশন বার সম্পূর্ণভাবে লুকিয়ে রাখে, 'You' ট্যাব সহ।
 
-সেটিংস অ্যাক্সেস করতে, জেনারেল → টুলবার → সেটিংস দেখান -এর মাধ্যমে সেটিংস বোতামটি সক্রিয় করুন।"</string>
+সেটিংস অ্যাক্সেস করতে, General → Toolbar → Show Settings এর মাধ্যমে সেটিংস বোতাম সক্রিয় করুন"</string>
   <string name="morphe_narrow_navigation_buttons_title">নেভিগেশন বাটনগুলোকে সংকুচিত করুন</string>
   <string name="morphe_narrow_navigation_buttons_summary">বাটনগুলির মধ্যে অনুভূমিক ব্যবধান কমিয়ে দেয়</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">লেবেল ছাড়া নেভিগেশন বাটন নিষ্ক্রিয় করুন</string>
@@ -1026,7 +1032,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_tablet_layout_in_player_summary">"পুরানো প্লেয়ার লেআউট ফিরিয়ে আনুন
 
 সীমাবদ্ধতা: \"পুরানো ভিডিও অ্যাকশন বার ফিরিয়ে আনুন\" অপশনটি বন্ধ থাকলে, \"আরও ভিডিও\" ওভারলেটি পাওয়া নাও যেতে পারে"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">এটি সক্ষম করলে প্লেয়ারের কিছু লেআউট বৈশিষ্ট্য ভেঙে যেতে পারে, যেমন কমেন্ট বিভাগ বা প্লেয়ারের নীচে দেখানো \'আরও ভিডিও\'।</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">এটি সক্রিয় করলে কিছু প্লেয়ার লেআউট বৈশিষ্ট্য যেমন কমেন্ট সেকশন বা \'More videos\' প্লেয়ারের নিচে দেখানো হয় তা ভেঙে যেতে পারে</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - পুরনো ক্যাপশন আচরণ পুনরুদ্ধার করুন</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - প্লেলিস্টে পুরোনো সেভ করার অপশন ফিরিয়ে আনুন</string>
@@ -1091,6 +1097,12 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">স্বয়ংক্রিয় ফিড রিফ্রেশ নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_auto_feed_refresh_summary">ফিড পুরানো হয়ে গেলে সেগুলি স্বয়ংক্রিয়ভাবে রিফ্রেশ হওয়া প্রতিরোধ করে</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">ফিড কার্ড লেআউট</string>
+  <string name="morphe_feed_card_layout_entry_1">ক্লাসিক</string>
+  <string name="morphe_feed_card_layout_entry_2">কার্ড</string>
+  <string name="morphe_feed_card_layout_entry_3">লাইক, মন্তব্য এবং সেভ বাটন সহ কার্ড</string>
+  <string name="morphe_feed_card_layout_comments">মন্তব্য</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">মিনিপ্লেয়ারে আবার শুরু করা বন্ধ করুন</string>
   <string name="morphe_miniplayer_disable_resuming_summary">\'কন্টিনিউ ওয়াচিং\' মিনিপ্লেয়ারকে নিষ্ক্রিয় করে, যা একটি ইউটিউব প্রিমিয়াম বৈশিষ্ট্য যা অ্যাপ চালু করার সময় প্রদর্শিত হয়</string>
@@ -1205,7 +1217,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">ডিভাইস ডাইমেনশন স্পুফ করুন</string>
   <string name="morphe_spoof_device_dimensions_summary">এটি সক্রিয় করা উচ্চ ভিডিও গুণমানগুলি আনলক করতে পারে।</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">এটি সক্রিয় করার ফলে আপনি ভিডিও চলার ক্ষেত্রে আটকে চলা, খারাপ ব্যাটারি লাইফ এবং অজানা পার্শ্ব-প্রতিক্রিয়ার সম্মুখিন হতে পারেন।</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">এটি সক্রিয় করার ফলে ভিডিও প্লেব্যাকে বিড়বিড় করা, ব্যাটারি লাইফ খারাপ হওয়া এবং অজানা পার্শ্বপ্রতিক্রিয়া ঘটে যেতে পারে</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">কম্পন প্রতিক্রিয়া</string>
   <string name="morphe_disable_haptic_feedback_summary">কোথায় ভাইব্রেশন ফিডব্যাক ট্রিগার হবে তা নির্বাচন করুন</string>
@@ -1215,7 +1227,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">ট্যাপ এবং হোল্ড হ্যাপ্টিক্স নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">জুম করার কম্পন নিষ্ক্রিয় করুন</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">আপনি যদি সম্প্রতি আপনার অ্যাকাউন্ট লগইন বিশদ পরিবর্তন করে থাকেন, তবে MicroG আনইনস্টল করুন এবং পুনরায় ইনস্টল করুন।</string>
+  <string name="microg_offline_account_login_error">যদি আপনি সাম্প্রতি আপনার অ্যাকাউন্ট লগইন বিশদ পরিবর্তন করে থাকেন, তবে MicroG আনইনস্টল করুন এবং পুনরায় ইনস্টল করুন</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">লিঙ্ক রিডাইরেক্টগুলি বাইপাস করুন</string>
   <string name="morphe_bypass_link_redirects_summary">ট্র্যাকিং লিঙ্ক (youtube.com/redirect) বাইপাস করে সরাসরি আসল লিঙ্ক খোলে।</string>
@@ -1322,9 +1334,9 @@ AVC (H.264)
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1 অনুমতি দিন</string>
   <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS ক্লায়েন্ট ব্যবহার করার সময় সফটওয়্যার AV1 ডিকোডিং অনুমতি দেয়</string>
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"এই সেটিংটি চালু করলে সফটওয়্যার AV1 ডিকোডিং ব্যবহার হতে পারে।
+  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"এই সেটিংটি চালু করলে সফটওয়্যার AV1 ডিকোডিং ব্যবহার হতে পারে।
 
-AV1 সহ ভিডিও প্লেব্যাক আটকে যেতে পারে বা ফ্রেম বাদ দিতে পারে।"</string>
+AV1 দিয়ে ভিডিও প্লেব্যেকে বিড়বিড় করা বা ফ্রেম বাদ দেওয়া হতে পারে"</string>
   <string name="morphe_spoof_video_streams_about_title">স্পুফিংয়ের পার্শ্বপ্রতিক্রিয়া</string>
   <string name="morphe_spoof_video_streams_about_failure">• 1 মিনিটে প্লেব্যাক ব্যর্থ হতে পারে</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'অডিও ট্র্যাক\' মেনু অনুপস্থিত</string>
@@ -1378,7 +1390,7 @@ AV1 সহ ভিডিও প্লেব্যাক আটকে যেতে
   <string name="morphe_series_tracker_ui_clear_all_local_progress">স্থানীয় অগ্রগতি মুছুন</string>
   <string name="morphe_series_tracker_ui_clear_history">ইতিহাস মুছুন</string>
   <string name="morphe_series_tracker_clear_progress_title">সকল স্থানীয় অগ্রগতি মুছে ফেলবেন?</string>
-  <string name="morphe_series_tracker_clear_progress_message">এতে প্রতিটি ভিডিওর অবস্থান, watch ওভাররাইড এবং রিজুম সিলেকশন মুছে ফেলা হবে। সংরক্ষিত সিরিজ এবং তাদের ক্যাটালগ অপরিবর্তিত থাকবে। যদি রেকর্ডিং সক্রিয় করা থাকে তবে নতুন প্লেব্যাক রেকর্ড করা হবে।</string>
+  <string name="morphe_series_tracker_clear_progress_message">এটি প্রতিটি ভিডিওর জন্য অবস্থান, ওয়াচড ওভাররাইড এবং রিজুম সিলেকশন মুছে ফেলে। সংরক্ষিত সিরিজ এবং তাদের ক্যাটালাগ বজায় থাকবে। রেকর্ডিং সক্রিয় থাকলে নতুন প্লেব্যাক রেকর্ড করা হবে</string>
   <string name="morphe_series_tracker_ui_mark_watched">দেখা হয়েছে হিসাবে চিহ্নিত করুন</string>
   <string name="morphe_series_tracker_ui_mark_unwatched">না দেখা হয়েছে হিসাবে চিহ্নিত করুন</string>
   <string name="morphe_series_tracker_ui_use_automatic_status">স্বয়ংক্রিয় স্ট্যাটাস ব্যবহার করুন</string>
@@ -1397,36 +1409,34 @@ AV1 সহ ভিডিও প্লেব্যাক আটকে যেতে
   <string name="morphe_series_tracker_ui_subscriptions">সদস্যতা</string>
   <string name="morphe_series_tracker_ui_notifications">নোটিস্য়াসেগ</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">সংরক্ষিত সিরিজ লোড হচ্ছে…</string>
-  <string name="morphe_series_tracker_empty_library">এর অধ্যায়গুলো ট্র্যাক করার জন্য একটি প্লেলিস্ট অনুসরণ করুন।</string>
+  <string name="morphe_series_tracker_empty_library">এপিসোডগুলি ট্র্যাক করতে একটি প্লেলিস্ট অনুসরণ করুন</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">প্লেলিস্ট বুকমার্ক</string>
   <string name="morphe_series_tracker_ui_refreshing_episodes">অধ্যায়গুলো রিফ্রেশ হচ্ছে…</string>
   <string name="morphe_series_tracker_ui_all_series">সকল সিরিজ</string>
   <string name="morphe_series_tracker_watched">দেখা হয়েছে</string>
   <string name="morphe_series_tracker_ui_loading_episodes">অধ্যায়গুলো লোড হচ্ছে…</string>
   <string name="morphe_series_tracker_ui_more_options">আরো বিকল্প</string>
-  <string name="morphe_series_tracker_record_consent">"শুধুমাত্র আপনার সংরক্ষিত সিরিজ এবং বুকমার্ক করা ভিডিওগুলোর জন্য অগ্রগতি রেকর্ড করুন।
+  <string name="morphe_series_tracker_record_consent">"শুধুমাত্র আপনার সংরক্ষিত সিরিজ এবং বুকমার্ক করা ভিডিওগুলির জন্য অগ্রগতি রেকর্ড করুন।
 
-এই লাইব্রেরি এই ডিভাইসে সংরক্ষিত থাকে এবং YouTube অ্যাকাউন্টগুলোর মধ্যে শেয়ার করা হয়। YouTube-এর বিরতি এবং ইতিহাস মুছে ফেলার নিয়ন্ত্রণগুলো এটি পরিবর্তন করে না। এটি মুছে ফেলতে সিরিজ → আরো → স্থানীয় অগ্রগতি মুছুন ব্যবহার করুন।
+এই লাইব্রেরি এই ডিভাইসে সংরক্ষিত হয় এবং YouTube অ্যাকাউন্ট জুড়ে শেয়ার করা হয়। YouTube-এর বিরতি এবং ইতিহাস মুছে ফেলার নিয়ন্ত্রণ এটি পরিবর্তন করে না। এটি মুছে ফেলতে Series → More → Clear local progress ব্যবহার করুন।
 
-Incognito মোডে, অ্যাকাউন্টের পরিচয় উপলব্ধ না থাকলে, বা আপনি অন্য একটি অ্যাকাউন্টে switched হলে স্বয়ংক্রিয় রেকর্ডিং থেমে যায়। সেই অ্যাকাউন্টে এটি ব্যবহার করতে ট্র্যাকিং আবার সক্রিয় করুন।"</string>
-  <string name="morphe_series_tracker_identity_unavailable">Incognito মোডে অথবা YouTube বর্তমান অ্যাকাউন্ট স্টেট লোড করার আগে ট্র্যাকিং সক্রিয় করা যায় না। হোমে ফিরে যান এবং আবার চেষ্টা করুন। সাইন-ইন প্রয়োজন নেই।</string>
+Incognito মোডে, অ্যাকাউন্ট পরিচয় উপলব্ধ না থাকলে বা আপনি ভিন্ন অ্যাকাউন্টে চলে গেলে স্বয়ংক্রিয় রেকর্ডিং বন্ধ হয়ে যায়। সেই অ্যাকাউন্টে এটি ব্যবহার করতে ট্র্যাকিং আবার সক্রিয় করুন"</string>
+  <string name="morphe_series_tracker_identity_unavailable">Incognito মোডে বা YouTube বর্তমান অ্যাকাউন্ট অবস্থা লোড করার আগে ট্র্যাকিং সক্রিয় করা যাবে না। Home তে ফিরে যান এবং আবার চেষ্টা করুন। সাইন-ইনের কোনো প্রয়োজন নেই</string>
   <string name="morphe_series_tracker_enable">স্থানীয় ট্র্যাকিং সক্রিয় করুন</string>
   <string name="morphe_series_tracker_tracking_paused">অগ্রগতি রেকর্ডিং বন্ধ আছে</string>
   <string name="morphe_series_tracker_resume_at">%1$s তে রিজুম করুন</string>
-  <string name="morphe_series_tracker_watched_count">%1$d / %2$d অধ্যায় দেখা হয়েছে</string>
-  <string name="morphe_series_tracker_episode_position">অধ্যায় %1$d · %2$s</string>
-  <string name="morphe_series_tracker_episode_range">অধ্যায় %1$d–%2$d / %3$d</string>
-  <string name="morphe_series_tracker_catalog_unavailable">অধ্যায়গুলো লোড করার চেষ্টা করতে রিফ্রেশ করুন। ব্যক্তিগত প্লেলিস্টের জন্য অ্যাকাউন্ট অ্যাক্সেস প্রয়োজন; তাদের বুকমার্ক এখনও YouTube-এ খোলে।</string>
-  <string name="morphe_series_tracker_open_failed">YouTube এই অধ্যায়টি খুলতে পারেনি।</string>
-  <string name="morphe_series_tracker_playlist_failed">YouTube এই প্লেলিস্টটি খুলতে পারেনি।</string>
-  <string name="morphe_series_tracker_plan_open">প্লেলিস্ট বুকমার্ক</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s এপিসোড দেখা হয়েছে</string>
+  <string name="morphe_series_tracker_episode_position">এপিসোড %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">%3$s এর মধ্যে এপিসোড %1$s-%2$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">এপিসোডগুলি লোড করতে আপডেট করুন। গোপন প্লেলিস্টগুলির জন্য অ্যাকাউন্ট অ্যাক্সেস প্রয়োজন; তাদের বুকমার্ক এখনও YouTube এ খুলে</string>
+  <string name="morphe_series_tracker_open_failed">এই এপিসোডটি YouTube খুলতে পারেনি</string>
+  <string name="morphe_series_tracker_playlist_failed">এই প্লেলিস্টটি YouTube খুলতে পারেনি</string>
   <string name="morphe_series_tracker_plan_changed">একটি অধ্যায় নির্বাচন করুন</string>
   <string name="morphe_series_tracker_plan_caught_up">আপডেটেড</string>
   <string name="morphe_series_tracker_plan_none">কোনো প্লেযোগ্য অধ্যায় নেই</string>
   <string name="morphe_series_tracker_saved_position">সংরক্ষিত ভিডিও · %1$s</string>
   <string name="morphe_series_tracker_follow">সিরিজ অনুসরণ করুন</string>
   <string name="morphe_series_tracker_view_series">সিরিজ দেখুন</string>
-  <string name="morphe_series_tracker_add_icon">সিরিজ অনুসরণ করুন</string>
   <string name="morphe_series_tracker_continue">এগিয়ে যান</string>
   <string name="morphe_series_tracker_start_here">এখানে শুরু করুন</string>
   <string name="morphe_series_tracker_start_saved">শুরু করার বিন্দু সংরক্ষিত হয়েছে</string>
@@ -1435,29 +1445,29 @@ Incognito মোডে, অ্যাকাউন্টের পরিচয় 
   <string name="morphe_series_tracker_undo">পূর্বাবস্থা</string>
   <string name="morphe_series_tracker_enable_short">সক্রিয় করুন</string>
   <string name="morphe_series_tracker_new_episode">১টি নতুন অধ্যায়</string>
-  <string name="morphe_series_tracker_new_episodes">%1$dটি নতুন অধ্যায়</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s নতুন এপিসোড</string>
   <string name="morphe_series_tracker_record_short">এই ডিভাইসে অগ্রগতি রেকর্ড করুন</string>
-  <string name="morphe_series_tracker_follow_consent">"আপনার সিরিজ এবং অগ্রগতি এই ডিভাইসেই থাকবে, যা YouTube অ্যাকাউন্টগুলোর মধ্যে শেয়ার করা হয়। YouTube-এর ইতিহাস নিয়ন্ত্রণগুলো এটি পরিবর্তন করে না। সিরিজ মেনু থেকে অগ্রগতি মুছুন।
+  <string name="morphe_series_tracker_follow_consent">"আপনার সিরিজ এবং অগ্রগতি এই ডিভাইসে স্থায়ী হয়, YouTube অ্যাকাউন্ট জুড়ে শেয়ার করা হয়। YouTube ইতিহাসের নিয়ন্ত্রণ এদের পরিবর্তন করে না। সিরিজ মেনু থেকে অগ্রগতি মুছে ফেলুন।
 
-স্বয়ংক্রিয় রেকর্ডিং ঐচ্ছিক। এটি incognito মোডে বা অ্যাকাউন্ট পরিবর্তন হলে থেমে যায়।"</string>
-  <string name="morphe_series_tracker_follow_unavailable">অধ্যায়গুলো লোড করা যায়নি। আপনি প্লেলিস্টটি একটি বুকমার্ক হিসাবে সংরক্ষণ করতে পারেন।</string>
-  <string name="morphe_series_tracker_error_pending_full">অসংখ্য সংরক্ষণ করা নয় এমন পরিবর্তন রয়েছে। আগে সংরক্ষণ করার চেষ্টা করুন।</string>
-  <string name="morphe_series_tracker_error_storage_busy">সংরক্ষণ ব্যস্ত। আবার চেষ্টা করুন।</string>
-  <string name="morphe_series_tracker_error_catalog_busy">অধ্যায় লোড ব্যস্ত। আবার চেষ্টা করুন।</string>
-  <string name="morphe_series_tracker_error_storage_unavailable">স্টোরেজ উপলব্ধ নেই। আপনার সংরক্ষিত ডেটা ধরে রাখা হয়েছে।</string>
-  <string name="morphe_series_tracker_error_storage_save">পরিবর্তনগুলো সংরক্ষণ করা যায়নি। YouTube বন্ধ করার আগে সংরক্ষণ আবার চেষ্টা করুন।</string>
-  <string name="morphe_series_tracker_error_conflict">এই সিরিজটি ইতিমধ্যে সংরক্ষিত আছে, অথবা এর প্লেলিস্ট পরিবর্তন হয়েছে। এটি আবার খুলুন।</string>
-  <string name="morphe_series_tracker_error_series_changed">এই সিরিজটি পরিবর্তিত হয়েছে বা সরানো হয়েছে। লাইব্রেরি আবার খুলুন।</string>
-  <string name="morphe_series_tracker_error_playlist_changed">প্লেলিস্ট পরিবর্তন হয়েছে। আবার অধ্যায়টি নির্বাচন করুন।</string>
-  <string name="morphe_series_tracker_error_episode_unavailable">এই অধ্যায়টি উপলব্ধ নেই। অন্যটি নির্বাচন করুন।</string>
-  <string name="morphe_series_tracker_error_name_required">একটি সিরিজের নাম লিখুন।</string>
-  <string name="morphe_series_tracker_error_playlist_input">একটি YouTube প্লেলিস্ট লিংক বা প্লেলিস্ট আইডি লিখুন।</string>
-  <string name="morphe_series_tracker_error_retry_later">আবার রিফ্রেশ করার আগে দয়া করে অপেক্ষা করুন।</string>
-  <string name="morphe_series_tracker_error_catalog_unavailable">অধ্যায়গুলো লোড করা যায়নি। পরে আবার চেষ্টা করুন।</string>
-  <string name="morphe_series_tracker_error_operation">পরিবর্তন সম্পন্ন করা যায়নি। আবার চেষ্টা করুন।</string>
-  <string name="morphe_series_tracker_error_resume">রিজুম নিশ্চিত করা যায়নি। প্লেয়ারটি পরীক্ষা করুন এবং আবার চেষ্টা করুন।</string>
+স্বয়ংক্রিয় রেকর্ডিংঐচ্ছিক। এটি Incognito মোডে বা অ্যাকাউন্ট পরিবর্তনের সময় বন্ধ হয়ে যায়"</string>
+  <string name="morphe_series_tracker_follow_unavailable">এপিসোডগুলি লোড করা যায়নি। আপনি প্লেলিস্টকে বুকমার্ক হিসাবে সংরক্ষণ করতে পারেন</string>
+  <string name="morphe_series_tracker_error_pending_full">অনেকগুলো সংরক্ষণযোগ্য পরিবর্তন রয়েছে। সংরক্ষণ করার আগে আবার চেষ্টা করুন</string>
+  <string name="morphe_series_tracker_error_storage_busy">সংরক্ষণ করা ব্যস্ত। আবার চেষ্টা করুন</string>
+  <string name="morphe_series_tracker_error_catalog_busy">এপিসোড লোডিং ব্যস্ত। আবার চেষ্টা করুন</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">স্টোরেজ উপলব্ধ নয়। আপনার সংরক্ষিত ডেটা ধরে রাখা হয়েছে</string>
+  <string name="morphe_series_tracker_error_storage_save">পরিবর্তনগুলি সংরক্ষণ করা যায়নি। YouTube বন্ধ করার আগে সংরক্ষণ করার জন্য আবার চেষ্টা করুন</string>
+  <string name="morphe_series_tracker_error_conflict">এই সিরিজটি আগেই সংরক্ষিত আছে, অথবা এর প্লেলিস্ট পরিবর্তন হয়েছে। এটি আবার খুলুন</string>
+  <string name="morphe_series_tracker_error_series_changed">এই সিরিজটি পরিবর্তন হয়েছে বা সরানো হয়েছে। লাইব্রেরি আবার খুলুন</string>
+  <string name="morphe_series_tracker_error_playlist_changed">প্লেলিস্ট পরিবর্তন হয়েছে। আবার এপিসোড নির্বাচন করুন</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">এই এপিসোডটি উপলব্ধ নয়। অন্যটি বেছে নিন</string>
+  <string name="morphe_series_tracker_error_name_required">একটি সিরিজ নাম লিখুন</string>
+  <string name="morphe_series_tracker_error_playlist_input">একটি YouTube প্লেলিস্ট লিংক বা প্লেলিস্ট আইডি লিখুন</string>
+  <string name="morphe_series_tracker_error_retry_later">আবার আপডেট করার আগে অপেক্ষা করুন</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">এপিসোডগুলি লোড করা যায়নি। পরে আবার চেষ্টা করুন</string>
+  <string name="morphe_series_tracker_error_operation">পরিবর্তন সম্পন্ন করা যায়নি। আবার চেষ্টা করুন</string>
+  <string name="morphe_series_tracker_error_resume">রিজুম নিশ্চিত করা যায়নি। প্লেয়ারটি পরীক্ষা করুন এবং আবার চেষ্টা করুন</string>
   <string name="morphe_series_tracker_followed">সিরিজ অনুসরণ হচ্ছে</string>
-  <string name="morphe_series_tracker_video_not_in_playlist">এই ভিডিওটি এই প্লেলিস্টে নেই।</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">এই ভিডিওটি এই প্লেলিস্টে নেই</string>
   <string name="morphe_series_tracker_finding_playlists">প্লেলিস্ট খুঁজে হচ্ছে…</string>
   <string name="morphe_series_tracker_paste_playlist">প্লেলিস্ট লিংক পেস্ট করুন</string>
   <string name="morphe_series_tracker_discovery_unavailable">কোনো প্লেলিস্ট পাওয়া যায়নি</string>
@@ -1468,38 +1478,36 @@ Incognito মোডে, অ্যাকাউন্টের পরিচয় 
   <string name="morphe_series_tracker_episode_order">অধ্যায়ের ক্রম</string>
   <string name="morphe_series_tracker_playlist_order">প্লেলিস্টের ক্রম</string>
   <string name="morphe_series_tracker_reverse_order">প্লেলিস্টের ক্রম উল্টো করুন</string>
-  <string name="morphe_series_tracker_view_count_large">%1$s ভিউ</string>
   <string name="morphe_series_tracker_view_count">%1$s ভিউ</string>
   <string name="morphe_series_tracker_view_count_one">%1$s ভিউ</string>
   <string name="morphe_series_tracker_completion_title">অধ্যায়গুলো দেখা হয়েছে হিসাবে চিহ্নিত করুন</string>
-  <string name="morphe_series_tracker_completion_summary">অন্তত %1$d%% দেখা হয়েছে এবং সর্বোচ্চ ৯০ সেকেন্ড বাকি, অথবা %2$d সেকেন্ড বাকি</string>
-  <string name="morphe_series_tracker_completion_explanation">যেকোনো থ্রেশহোল্ডের পর স্বয়ংক্রিয়ভাবে একটি অধ্যায়কে দেখা হয়েছে হিসাবে চিহ্নিত করুন। শতাংশ নিয়মের জন্যও সর্বোচ্চ ৯০ সেকেন্ড বাকি থাকা প্রয়োজন, তাই দীর্ঘ অধ্যায়ের শেষের দিক skipped হয় না। সময়ের নিয়মটি এক মিনিটের বেশি সময়ের ভিডিওগুলোর জন্য প্রযোজ্য; এটি অক্ষম করতে এটি ০ সেট করুন। পরিবর্তনগুলো ভবিষ্যতের অগ্রগতি আপডেটে প্রযোজ্য হবে। يدوي ভিউয়েড/না দেখা হয়েছে পছন্দগুলো রাখা হবে।</string>
-  <string name="morphe_series_tracker_completion_percent">শতাংশ দেখা হয়েছে (১–১০০)</string>
-  <string name="morphe_series_tracker_completion_seconds">সেকেন্ড বাকি (০–৩০০; ০ অক্ষম করে)</string>
-  <string name="morphe_series_tracker_completion_save">সংরক্ষণ করুন</string>
-  <string name="morphe_series_tracker_completion_range">%1$d থেকে %2$d পর্যন্ত একটি মান লিখুন।</string>
+  <string name="morphe_series_tracker_completion_summary">সর্বোচ্চ ৯০ সেকেন্ড অবশিষ্ট থাকলে অন্তত %1$s%% দেখা হয়েছে, অথবা %2$s সেকেন্ড অবশিষ্ট</string>
+  <string name="morphe_series_tracker_completion_explanation">থ্রেশহোল্ডের যেকোনোর পরে স্বয়ংক্রিয়ভাবে এপিসোডটি দেখা হয়েছে হিসাবে চিহ্নিত করুন। শতাংশের নিয়মের জন্য আরও ৯০ সেকেন্ড অবশিষ্ট থাকা উচিত নয়, তাই দীর্ঘ এপিসোডের শেষ অংশ বাদ দেওয়া হয় না। অবশিষ্ট-সময়ের নিয়ম এক মিনিটের বেশি সময়ের ভিডিওগুলির জন্য প্রযোজ্য; এটি নিষ্ক্রিয় করতে এটি 0 তে সেট করুন। পরিবর্তনগুলি ভবিষ্যতের অগ্রগতি আপডেটগুলিতে প্রযোজ্য। ম্যানুয়াল দেখা হয়েছে/অদৃশ্য চয়েজ ধরে রাখা হবে</string>
+  <string name="morphe_series_tracker_completion_percent">শতাংশ দেখা হয়েছে (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">অবশিষ্ট সেকেন্ড (0-300; 0 নিষ্ক্রিয় করে)</string>
+  <string name="morphe_series_tracker_completion_range">%1$s থেকে %2$s পর্যন্ত একটি মান লিখুন</string>
   <string name="morphe_series_tracker_youtube_progress_title">YouTube অগ্রগতি ব্যবহার করুন</string>
   <string name="morphe_series_tracker_youtube_progress_summary">অন্য ডিভাইসে দেখার পর অনুসৃত সিরিজ জোরদ করুন</string>
-  <string name="morphe_series_tracker_sync_consent">বর্তমান YouTube অ্যাকাউন্ট থেকে আপনার অনুসৃত সিরিজের জন্য দেখা হয়েছে স্ট্যাটাস এবং রিজুম অবস্থান পড়ুন। শুধুমাত্র মিলে যাওয়া অধ্যায়গুলো এই ফোনে সংরক্ষিত হয়। সিরিজ লাইব্রেরি খোলা থাকাকালীন এবং Continue এর আগে চেক চলে। আপনার অন্য ডিভাইসে YouTube ইতিহাস সক্রিয় হতে হবে।</string>
+  <string name="morphe_series_tracker_sync_consent">বর্তমান YouTube অ্যাকাউন্ট থেকে আপনার অনুসরণ করা সিরিজগুলির জন্য দেখা হয়েছে অবস্থা এবং রিজুম অবস্থান পড়ুন। শুধুমাত্র মিলিত এপিসোডগুলি এই ফোনে সংরক্ষিত হয়। চেকগুলি সিরিজ লাইব্রেরি খোলা এবং Continue এর আগে চালানো হয়। আপনার অন্যান্য ডিভাইসে YouTube ইতিহাস সক্রিয় করা প্রয়োজন</string>
   <string name="morphe_series_tracker_sync_checking">YouTube অগ্রগতি পরীক্ষা হচ্ছে…</string>
-  <string name="morphe_series_tracker_sync_failed">YouTube অগ্রগতি উপলব্ধ নয়। সংরক্ষিত অগ্রগতি ব্যবহার করা হচ্ছে।</string>
-  <string name="morphe_series_tracker_sync_partial">কিছু YouTube অগ্রগতি উপলব্ধ নয়। সংরক্ষিত অবস্থান ধরে রাখা হয়েছে।</string>
+  <string name="morphe_series_tracker_sync_failed">YouTube অগ্রগতি উপলব্ধ নয়। সংরক্ষিত অগ্রগতি ব্যবহার করা হচ্ছে</string>
+  <string name="morphe_series_tracker_sync_partial">কিছু YouTube অগ্রগতি উপলব্ধ নয়। সংরক্ষিত অবস্থান ধরে রাখা হয়েছে</string>
   <string name="morphe_series_tracker_backup_title">ব্যাকআপ এবং পুনরুদ্ধার</string>
   <string name="morphe_series_tracker_backup_summary">একটি ফাইলে আপনার সিরিজ লাইব্রেরি সংরক্ষণ করুন বা ব্যাকআপ পুনরুদ্ধার করুন</string>
-  <string name="morphe_series_tracker_backup_explanation">অনুসৃত সিরিজ, অধ্যায়ের অবস্থান এবং দেখা হয়েছে পছন্দ সংরক্ষণ করে। রেকর্ডিং এবং YouTube অগ্রগতি অনুমতি অন্তর্ভুক্ত নয়।</string>
+  <string name="morphe_series_tracker_backup_explanation">অনুসরণ করা সিরিজ, এপিসোড অবস্থান এবং দেখা হয়েছে চয়েজ সংরক্ষণ করে। রেকর্ডিং এবং YouTube অগ্রগতি অনুমতির অন্তর্ভুক্ত নয়</string>
   <string name="morphe_series_tracker_backup_save">ব্যাকআপ সংরক্ষণ করুন</string>
   <string name="morphe_series_tracker_backup_restore">ব্যাকআপ পুনরুদ্ধার করুন</string>
-  <string name="morphe_series_tracker_backup_preview">%1$d সিরিজ যোগ করুন। আপনার লাইব্রেরিতে %2$d সিরিজ ইতিমধ্যে রয়েছে যা ধরে রাখা হবে। বিদ্যমান ভিডিও অগ্রগতি ধরে রাখা হবে।</string>
+  <string name="morphe_series_tracker_backup_preview">%1$s সিরিজ যোগ করুন। আপনার লাইব্রেরিতে already থাকা %2$s সিরিজ ধরে রাখা হবে। বিদ্যমান ভিডিও অগ্রগতি ধরে রাখা হবে</string>
   <string name="morphe_series_tracker_backup_saved">সিরিজ ব্যাকআপ সংরক্ষিত হয়েছে</string>
-  <string name="morphe_series_tracker_backup_restored">%1$d সিরজ পুনরুদ্ধার করা হয়েছে</string>
-  <string name="morphe_series_tracker_error_backup_invalid">এই ফাইলটি একটি সমর্থিত সিরিজ ব্যাকআপ নয়, অথবা এটি খুব বড়। আপনার লাইব্রেরি পরিবর্তন করা হয়নি।</string>
-  <string name="morphe_series_tracker_error_backup_write">ব্যাকআপ সংরক্ষণ করা যায়নি। অন্য একটি স্থান চেষ্টা করুন।</string>
+  <string name="morphe_series_tracker_backup_restored">%1$s সিরিজ পুনরুদ্ধার করা হয়েছে</string>
+  <string name="morphe_series_tracker_error_backup_invalid">এই ফাইলটি একটি সমর্থিত সিরিজ ব্যাকআপ নয়, অথবা এটি খুব বড়। আপনার লাইব্রেরি পরিবর্তন করা হয়নি</string>
+  <string name="morphe_series_tracker_error_backup_write">ব্যাকআপ সংরক্ষণ করা যায়নি। অন্য একটি স্থান চেষ্টা করুন</string>
   <string name="morphe_series_tracker_removed">সিরিজ সরানো হয়েছে</string>
-  <string name="morphe_series_tracker_recovery_duplicate">এখন এই অধ্যায়টি একাধিকবার দেখাচ্ছে। যেখান থেকে চালিয়ে যেতে হবে তা নির্বাচন করুন।</string>
-  <string name="morphe_series_tracker_recovery_missing">আপনার সংরক্ষিত অধ্যায়টি এখন আর এই প্লেলিস্টে নেই। আপনার সংরক্ষিত অবস্থান ধরে রাখা হয়েছে।</string>
-  <string name="morphe_series_tracker_recovery_continue">অধ্যায় %1$d · %2$s দিয়ে চালিয়ে যান</string>
-  <string name="morphe_series_tracker_recovery_choose">আপনি নিচের যেকোনো অধ্যায়টিও নির্বাচন করতে পারেন। পূর্ববর্তী অধ্যায়গুলো পরিবর্তন করা হবে না।</string>
-  <string name="morphe_series_tracker_playback_changed">এই প্লেলিস্ট পরিবর্তন হয়েছে। কোথা থেকে চালিয়ে যেতে হবে তা নির্বাচন করতে সিরিজটি খুলুন।</string>
+  <string name="morphe_series_tracker_recovery_duplicate">এই এপিসোডটি এখন একাধিকবার দেখাচ্ছে। কোনটি থেকে চালিয়ে যেতে হবে তা নির্বাচন করুন</string>
+  <string name="morphe_series_tracker_recovery_missing">আপনার সংরক্ষিত এপিসোডটি এখন আর এই প্লেলিস্টে নেই। আপনার সংরক্ষিত অবস্থান ধরে রাখা হয়েছে</string>
+  <string name="morphe_series_tracker_recovery_continue">এপিসোড %1$s · %2$s দিয়ে চালিয়ে যান</string>
+  <string name="morphe_series_tracker_recovery_choose">আপনি নীচের যেকোনো এপিসোডটিও বেছে নিতে পারেন। আগের এপিসোডগুলি পরিবর্তন করা হবে না</string>
+  <string name="morphe_series_tracker_playback_changed">এই প্লেলিস্টটি পরিবর্তন হয়েছে। কোথা থেকে চালিয়ে যেতে হবে তা বেছে নিতে সিরিজটি খুলুন</string>
   <string name="morphe_series_tracker_playback_boundary">এই দিকে আর কোনো অধ্যায় নেই</string>
   <string name="morphe_series_tracker_continue_series">%1$s চালিয়ে যান</string>
   <string name="morphe_series_tracker_search_series">সিরিজ অনুসন্ধান করুন</string>

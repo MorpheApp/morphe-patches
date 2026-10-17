@@ -32,17 +32,6 @@ Second \"item\" text"</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">लेआउट अपडेटहरू अक्षम गर्नुहोस्</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"एप लेआउट पहिलो पटक स्थापना गर्दा प्रयोग गरिएको लेआउटमा फर्किन्छ।
-
- केही सर्भर-साइड लेआउटहरू फर्किन सक्दैनन्।
-
-परिवर्तनहरूमा समावेश छन्:
-• प्लेयर फ्लाईआउट मेनु (वा सम्बन्धित सेटिङहरू) मा कम्पोनेन्टहरू काम नगर्न सक्छन्।
-• रोलिङ नम्बरहरू एनिमेटेड हुँदैनन्।
-• लाइब्रेरी ट्याब देखाइन्छ।
-• भिडियो विवरणको संगीत खण्डले काम नगर्न सक्छ।
-• प्लेयर फ्लाईआउट मेनुका वस्तुहरू लुकाउन सकिँदैन।
-• खाता स्विच बटन लाइब्रेरी ट्याबमा देखा नपर्न सक्छ।"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">फिड फ्लाईआउट मेनु फिल्टर सक्षम गर्नुहोस्</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">फिड फ्लाईआउट मेनु फिल्टर</string>
@@ -264,6 +253,7 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">ऑटो कैप्शन दिखाओ</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">ऑटो कैप्शन छिपाइ</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_caption_cookies_title">क्याप्शन कुकीहरू</string>
   <string name="morphe_get_caption_cookies_title">कुकीहरू प्राप्त गर्न क्लिक गर्नुहोस्
@@ -284,9 +274,6 @@ Second \"item\" text"</string>
   <string name="morphe_show_settings_button_type_title">सेटिङ बटन कार्य</string>
   <string name="morphe_hide_navigation_button_labels_title">नेभिगेशन बटन लेबलहरू लुकाउनुहोस्</string>
   <string name="morphe_hide_navigation_bar_title">नेभिगेसन बार लुकाउनुहोस्</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"यसले नेभिगेसन बारलाई पूर्ण रूपमा लुकाउँछ, 'तपाईं' ट्याब सहित।
-
-सेटिङहरू पहुँच गर्न, सामान्य → उपकरण पट्टी → सेटिङ देखाउनुहोस् मार्फत सेटिङ बटन सक्षम गर्नुहोस्।"</string>
   <string name="morphe_narrow_navigation_buttons_title">संकरी नेविगेशन बटन सक्षम करी</string>
   <string name="morphe_navigation_bar_animations_title">नेभिगेशन बार एनिमेसनहरू सक्षम गर्नुहोस्</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">स्वचालित रूपमा लुकाउने नेभिगेसन बारलाई अक्षम गर्नुहोस्</string>
@@ -438,6 +425,7 @@ Second \"item\" text"</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेयरको पुन: सुरुवात अक्षम गर्नुहोस्</string>
   <string name="morphe_miniplayer_screen_title">मिनीप्लेयर</string>
@@ -487,7 +475,6 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_player_buttons_title">पुरानो प्लेयर बटन शैली पुनर्स्थापित गर्नुहोस्</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">डिवाइस आयाम क स्पूफ करी</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">यसलाई सक्षम गर्नाले ब्याट्रीको आयु खराब हुन सक्छ, भिडियो प्लेब्याक स्टटर हुन सक्छ, र अज्ञात साइड प्रभावहरू आउन सक्छन्।</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">हैप्टिक फीडबैक</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">अध्याय हैप्टिक्स अक्षम करी</string>
@@ -496,7 +483,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">ट्याप र होल्ड ह्याप्टिक प्रतिक्रिया अक्षम गर्नुहोस्</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ज़ूम हैप्टिक्स अक्षम करी</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">यदि तपाईंले हालै आफ्नो खाताको लगइन विवरणहरू परिवर्तन गर्नुभएको छ भने, कृपया MicroG स्थापना रद्द गर्नुहोस् र पुन: स्थापना गर्नुहोस्।</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">लिंक ब्राउजर में खोलि</string>
@@ -527,9 +513,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_premium_video_quality_title">प्रीमियम गुणस्तर विकल्पहरू लुकाउनुहोस्</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"यो सेटिङ सक्षम गर्नाले सफ्टवेयर AV1 डिकोडिङ प्रयोग हुन सक्छ।
-
-AV1 को साथ भिडियो प्लेब्याक स्टटर हुन सक्छ वा फ्रेमहरू छाड्न सक्छ।"</string>
   <string name="morphe_spoof_video_streams_about_title">स्पूफिंग साइड इफेक्ट</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 वीडियो कोडेक नहि अछि।</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• ३६०° VR इमर्सिभ मोड उपलब्ध छैन</string>

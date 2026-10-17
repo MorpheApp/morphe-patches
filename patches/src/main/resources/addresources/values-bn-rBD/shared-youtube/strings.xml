@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">প্যাকেজের নাম লিখুন</string>
   <string name="morphe_external_downloader_other_item">অন্যান্য</string>
   <string name="morphe_external_downloader_not_found_title">অ্যাপটি ইনস্টল করা নেই</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s ইনস্টল করা নেই। অনুগ্রহ করে এটি ইনস্টল করুন।</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s ইনস্টল করা নেই। অনুগ্রহ করে এটি ইনস্টল করুন</string>
   <string name="morphe_external_downloader_package_not_found_warning">"প্যাকেজ নামের সাথে ইনস্টল করা অ্যাপ খুঁজে পাওয়া যায়নি: %s
 
 প্যাকেজের নামটি সঠিক কিনা এবং অ্যাপটি ইনস্টল করা আছে কিনা তা যাচাই করুন"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe প্লে</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe নোটিশ</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">আপনার দেখার ইতিহাস সংরক্ষিত হচ্ছে না।&lt;br&gt;&lt;br&gt;এটি সম্ভবত DNS অ্যাড ব্লকার অথবা নেটওয়ার্ক প্রক্সির কারণে।&lt;br&gt;&lt;br&gt;এটি ঠিক করার জন্য, &lt;b&gt;s.youtube.com&lt;/b&gt;  সাদা তালিকাভুক্ত করুন অথবা সকল DNS ব্লকার এবং প্রক্সি বন্ধ করুন।</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">আপনার দেখার ইতিহাস সংরক্ষিত হচ্ছে না।&lt;br&gt;&lt;br&gt;এটি সম্ভবত DNS অ্যাড ব্লকার অথবা নেটওয়ার্ক প্রক্সির কারণে।&lt;br&gt;&lt;br&gt;এটি ঠিক করার জন্য, &lt;b&gt;s.youtube.com&lt;/b&gt; সাদা তালিকাভুক্ত করুন অথবা সকল DNS ব্লকার এবং প্রক্সি বন্ধ করুন</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">আবার দেখাবেন না</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">ভিডিও স্ট্রিম স্পুফ করুন</string>
@@ -99,7 +99,7 @@ Second \"item\" text"</string>
 
 %2$s-কে ডিফল্ট ক্লায়েন্ট বানাবেন?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">বদল করুন</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">এই সেটিং বন্ধ করলে প্লেব্যাক সমস্যা হতে পারে।</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">এই সেটিং বন্ধ করলে প্লেব্যাক সমস্যা হতে পারে</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">চেষ্টা করুন সক্রিয় করতে: ভিডিও স্ট্রিম স্পুফিং > অ্যান্ড্রয়েড ভিআর সাইন ইন করুন</string>
@@ -134,7 +134,7 @@ Second \"item\" text"</string>
 • যদি আপনি আপনার গুগল পাসওয়ার্ড পরিবর্তন করেন বা আপনার গুগল সেটিংস থেকে এই ডিভাইস আনয়ন করেন তাহলে আপনাকে আবার সাইন ইন করতে হবে"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 সাময়িকভাবে উপলব্ধ নয় (API সময় শেষ হয়েছে)</string>
   <string name="morphe_oauth2_connection_failure_status_400">আন্ড্রয়েড ভিআর সাইন ইন মেয়াদোত্তীর্ণ, ভিআরতে পুনরায় সাইন ইন করার চেষ্টা করুন</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 সাময়িকভাবে উপলব্ধ নয় (অবস্থা %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 সাময়িকভাবে উপলভ্য নয় (অবস্থা %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 সাময়িকভাবে উপলব্ধ নয়</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">ভিআরতে সাইন ইন করতে পারছেন না, ওয়েবসাইট অথেন্টিকেশন অনুমোদিত হয়নি</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR এ প্রবেশ করতে ব্যর্থ হয়েছে: %s</string>
@@ -193,9 +193,9 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">ডিবাগ লগ প্রোটোকল বাফার</string>
   <string name="morphe_debug_protobuffer_summary">অ্যাপ উপাদান সনাক্ত করতে ডেভেলপারদের জন্য অতিরিক্ত লগিং তথ্য যোগ করে</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"এই সেটিংস সক্ষম করলে কিছু UI উপাদানের জন্য অন-স্ক্রীন পাঠ্য সহ অতিরিক্ত লেআউট ডেটা লগ করা হবে।
+  <string name="morphe_debug_protobuffer_user_dialog_message">"এই সেটিংস সক্ষম করলে কিছু UI উপাদানের জন্য অন-স্ক্রীন পাঠ্য সহ অতিরিক্ত লেআউট ডেটা লগ করা হবে。
 
-এটি কাস্টম ফিল্টার তৈরি করার সময় উপাদান সনাক্ত করতে সাহায্য করতে পারে।
+এটি কাস্টম ফিল্টার তৈরি করার সময় উপাদান সনাক্ত করতে সাহায্য করতে পারে。
 
 তবে, এটি সক্রিয় করলে আপনার আইপি ঠিকানার মতো কিছু ব্যবহারকারীর ডেটাও লগ করা হবে।"</string>
   <!-- Custom filter -->
@@ -238,11 +238,11 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">অ্যাপের সংস্করণ স্পুফ করুন</string>
   <string name="morphe_spoof_app_version_summary">পুরোনো ইউজার ইন্টারফেস (UI) ফিচারগুলো ফিরিয়ে আনতে সার্ভারকে এমনভাবে বিভ্রান্ত করে যেন মনে হয় আপনি অ্যাপের একটি পুরোনো সংস্করণ ব্যবহার করছেন</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"অ্যাপের ভার্সন বদলে একটি পুরোনো ভার্সন করে দেওয়া হবে।
+  <string name="morphe_spoof_app_version_user_dialog_message">"অ্যাপের ভার্সন একটি পুরোনো ভার্সনে স্পুফ করা হবে。
 
-এতে অ্যাপের ডিজাইন ও ফিচার পরিবর্তন হবে, তবে কিছু অচেনা সমস্যা দেখা দিতে পারে।
+এতে অ্যাপের ডিজাইন ও ফিচার পরিবর্তন হবে, তবে কিছু অচেনা পার্শ্বপ্রতিক্রিয়া দেখা দিতে পারে。
 
-পরে কখনো এটি বন্ধ করলে, অ্যাপের ডিজাইনে কোনো সমস্যা বা বাগ এড়াতে অ্যাপ ডাটা ক্লিয়ার (Clear Data) করার পরামর্শ দেওয়া হচ্ছে।"</string>
+পরবর্তীতে এটি বন্ধ করলে, UI বাগ এড়াতে অ্যাপের ডেটা ক্লিয়ার করার পরামর্শ দেওয়া হয়"</string>
   <string name="morphe_spoof_app_version_target_title">যে অ্যাপ ভার্সনে স্পুফ করবেন</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">অ্যাপ রিফ্রেশ রেট</string>
@@ -265,7 +265,7 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">অপছন্দ সাময়িকভাবে উপলভ্য নয় (API সময় শেষ হয়েছে)</string>
-  <string name="morphe_ryd_failure_connection_status_code">অপছন্দ উপলভ্য নয় (অবস্থা %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">অপছন্দ উপলভ্য নয় (অবস্থা %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">অপছন্দগুলি উপলব্ধ নেই (ক্লায়েন্ট API সীমা)</string>
   <string name="morphe_ryd_failure_generic">অপছন্দ উপলভ্য নয় (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">অপছন্দ সাময়িকভাবে উপলভ্য নয় - ক্লায়েন্ট API হার সীমা কার্যকর</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API ভোট, কল সংখ্যা</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">কোন নেটওয়ার্ক কল তৈরি করা হয়নি</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d নেটওয়ার্ক কল করা হয়েছে</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s নেটওয়ার্ক কল করা হয়েছে</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API ভোট, কল সংখ্যা</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">কোন নেটওয়ার্ক কল সময় শেষ হয়নি</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d নেটওয়ার্ক কল সময় শেষ হয়েছে</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s নেটওয়ার্ক কলের মেয়াদ শেষ হয়েছে</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API ক্লায়েন্ট হার সীমা</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">কোন ক্লায়েন্ট হার সীমা সম্মুখীন হয়নি</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ক্লায়েন্ট হার সীমা %d বার সম্মুখীন হয়েছে</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d মিলিসেকেন্ড</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ক্লায়েন্ট রেট লিমিট %s বার_encountered_ হয়েছে</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s মিলিসেকেন্ড</string>
 </resources>

@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">Показати QR-код</string>
   <string name="morphe_music_jam_done">Готово</string>
   <string name="morphe_music_jam_invite_title">Запросити до вашого Jam</string>
-  <string name="morphe_music_jam_invite_message">Скануйте, щоб приєднатися та редагувати цю чергу. Завершення Jam скасовує запрошення.</string>
+  <string name="morphe_music_jam_invite_message">Скануйте, щоб приєднатися та редагувати цю чергу. Завершення Jam скасовує запрошення</string>
   <string name="morphe_music_jam_copy_link">Скопіювати посилання</string>
   <string name="morphe_music_jam_invitation_clip">Запрошення до Jam</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam перепідключається; спробуйте ще раз незабаром</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Оновлення Jam…</string>
   <string name="morphe_music_jam_finding_host">Пошук вашого ведучого в мережі Wi-Fi…</string>
   <string name="morphe_music_jam_waiting_people">Очікування учасників</string>
-  <string name="morphe_music_jam_one_connected">%d людина приєдналася</string>
-  <string name="morphe_music_jam_many_connected">%d людей приєдналося</string>
-  <string name="morphe_music_jam_code_expires">Введіть цей код на пристрої поблизу. Wi-Fi Aware працює між різними локальними мережами, якщо підтримується. Термін дії спливає через %d хв.</string>
+  <string name="morphe_music_jam_one_connected">%s людина приєдналася</string>
+  <string name="morphe_music_jam_many_connected">%s людей приєдналося</string>
+  <string name="morphe_music_jam_code_expires">Введіть цей код на пристрої поблизу. Wi-Fi Aware працює між різними локальними мережами, якщо підтримується. Термін дії спливає через %s хв</string>
   <string name="morphe_music_jam_seek_to">Перемотати до %s?</string>
   <string name="morphe_music_jam_edits_open">Редагування відкрито</string>
   <string name="morphe_music_jam_edits_locked">Редагування заблоковано</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Не підтримується під час Jam</string>
   <string name="morphe_music_jam_cancelled">Приєднання скасовано</string>
   <string name="morphe_music_jam_reconnecting_host">Повторне підключення до вашого ведучого…</string>
-  <string name="morphe_music_jam_share_prompt">Поділіться чергою. Дозвольте всім додавати пісні.</string>
+  <string name="morphe_music_jam_share_prompt">Поділіться чергою. Дозвольте всім додавати пісні</string>
   <string name="morphe_music_jam_invite_people">Запросити людей</string>
   <string name="morphe_music_jam_guest_edits">Гості можуть редагувати чергу</string>
   <string name="morphe_music_jam_end_jam">Завершити Jam</string>
-  <string name="morphe_music_jam_participant_help">Ведучий відтворює музику. Додавайте, переміщуйте або видаляйте пісні безпосередньо в черзі YouTube Music.</string>
-  <string name="morphe_music_jam_joining_help">Тримайте обидва пристрої поруч. Ви можете скасувати, поки ми шукаємо ведучого.</string>
+  <string name="morphe_music_jam_participant_help">Ведучий відтворює музику. Додавайте, переміщуйте або видаляйте пісні безпосередньо в черзі YouTube Music</string>
+  <string name="morphe_music_jam_joining_help">Тримайте обидва пристрої поруч. Ви можете скасувати, поки ми шукаємо ведучого</string>
   <string name="morphe_music_jam_cancel_joining">Скасувати приєднання</string>
   <string name="morphe_music_jam_leave_jam">Покинути Jam</string>
   <string name="morphe_music_jam_start_jam">Почати Jam</string>
@@ -127,7 +127,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_in_app_downloads_summary">Завантажує аудіо всередині YouTube Music замість відкриття зовнішнього застосунку завантажувача</string>
   <string name="morphe_music_in_app_downloads_user_dialog_message">"Треки зберігаються в приватному сховищі застосунку і видаляються, якщо YouTube Music буде видалено.
 
-Поки цю функцію ввімкнено, у вкладці \"Завантаження\" відображаються саме ці треки замість офлайн-бібліотеки Music Premium. Вимкнення функції відновлює вкладку, а завантаження Premium залишаються незмінними."</string>
+Поки цю функцію ввімкнено, у вкладці \"Завантаження\" відображаються саме ці треки замість офлайн-бібліотеки Music Premium. Вимкнення функції відновлює вкладку, а завантаження Premium залишаються незмінними"</string>
   <string name="morphe_music_downloads_screen_title">Завантаження</string>
   <string name="morphe_music_downloads_empty">"Немає завантажень
 Завантажені треки з'являються тут"</string>
@@ -445,7 +445,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Власне очищення за допомогою регулярних виразів</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Введіть власний регулярний вираз для видалення додаткового тексту з назв треків, виконавців або альбомів. Приклад: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Визначати виконавця та трек із назви</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Визначає виконавця та назву треку з заголовка відео за допомогою роздільника \" - \". Корисно для перезавантаженого контенту, де назва каналу може використовуватись як виконавець.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Визначає виконавця та назву треку з заголовка відео за допомогою роздільника \" - \". Корисно для перезавантаженого контенту, де назва каналу може використовуватись як виконавець</string>
   <string name="morphe_music_scrobbling_guess_album_title">Заповнити відсутній альбом</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Якщо музика не містить альбому, шукати його на Last.fm, щоб scrobble був повним</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,6 +460,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_section_service_title">Сервіс текстів пісень</string>
   <string name="morphe_music_lyrics_section_overlay_title">Оверлей</string>
   <string name="morphe_music_lyrics_section_sync_title">Синхронізація</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">Кінцева точка AI</string>
   <string name="morphe_music_lyrics_source_all_disabled">Усіх постачальників вимкнено - вбудовані тексти пісень і вбудовані субтитри</string>
   <string name="morphe_music_lyrics_source_reset_title">Скинути порядок постачальників?</string>
   <string name="morphe_music_lyrics_source_reset_message">Відновити типовий порядок пріоритету постачальників</string>
@@ -524,6 +525,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Натисніть, щоб перемкнути переклад; довге натискання лише для перекладу. Використовує переклади постачальника, Google Translate або API, сумісний з OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показати кнопку \"Романізувати\"</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Натисніть, щоб перемкнути романізацію; довге натискання лише для романізації. Використовує романізацію постачальника, Google Translate або API, сумісний з OpenAI</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Локальна транслітерація</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Транслітерувати на пристрої, коли постачальник, сумісна з OpenAI точка доступу та Google Translate не спрацювали. Лише CJK, потрібно завантажити близько 80 МБ прочитань.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Прочитано %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Готово прочитань (%1$d слів CJK)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Завантаження не вдалося — вимкніть і увімкніть знову, щоб повторити</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Показувати кнопку \"Оновити\"</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Натисніть, щоб перейти до наступного варіанта тексту пісні; довге натискання для пошуку тексту за назвою пісні та виконавцем</string>
   <string name="morphe_music_lyrics_search_dialog_title">Шукати текст пісні</string>
@@ -534,6 +541,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_saved">Збережено</string>
   <string name="morphe_music_lyrics_word_sync_title">Підсвічувати синхронізовані слова або склади</string>
   <string name="morphe_music_lyrics_word_sync_summary">Надавати пріоритет тексту пісні по словах, коли доступно. Якщо текст пісні містить синхронізацію по словах, підсвічує кожне слово або склад у такт музиці</string>
+  <string name="morphe_music_lyrics_split_background_title">Показувати фоновий вокал окремо</string>
+  <string name="morphe_music_lyrics_split_background_summary">Переміщує бек-вокал, записаний у дужках, наприклад \"(Ох) Я хочу тебе\", з основного рядка пісні в окремий приглушений рядок</string>
   <string name="morphe_music_lyrics_hide_played_title">Приховувати відтворені рядки тексту</string>
   <string name="morphe_music_lyrics_hide_played_summary">Приховувати рядки тексту пісні над рядком, що зараз відтворюється</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Приховувати ще не відтворені рядки тексту</string>
@@ -558,23 +567,45 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_sb_no_video">У цього треку немає ідентифікатора відео для надсилання</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Джерело: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Довго натисніть кнопку копіювання, щоб зберегти цей LRC; якщо ви можете тонко налаштувати часи та поділитися ними з постачальниками спільноти, ми будемо вдячні.</string>
   <string name="morphe_music_lyrics_translated_by_google">Перекладено Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Романізовано Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Перекладено %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Романізовано %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Романізовано %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перекладено</string>
   <string name="morphe_music_lyrics_translation_language_title">Мова перекладу</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Мова транслітерації</string>
   <string name="morphe_music_lyrics_translating">Переклад…</string>
   <string name="morphe_music_lyrics_translate_failed">Не вдалося перекласти текст пісні</string>
   <string name="morphe_music_lyrics_romanize_hide">Романізовано</string>
+  <string name="morphe_romanize_language_DEFAULT">Автоматичний</string>
   <string name="morphe_music_lyrics_romanizing">Романізується…</string>
   <string name="morphe_music_lyrics_romanize_failed">Не вдалося романізувати текст пісні</string>
   <string name="morphe_music_lyrics_translate_only">Лише переклад</string>
   <string name="morphe_music_lyrics_romanize_only">Лише романізовано</string>
+  <string name="morphe_music_lyrics_dual_only">Двійковий режим</string>
   <string name="morphe_music_lyrics_copied">Скопійовано</string>
   <string name="morphe_music_lyrics_refreshing">Оновлення</string>
   <string name="morphe_music_lyrics_refreshed">Оновлено</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">Ключ API QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC транскрибує або синхронізує час лірики для поточної доріжки. Це окремий сервіс, який не пов\'язаний із точкою доступу, сумісною з OpenAI, що вказана вище.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">Ключ QuickLRC збережено. Використовуйте кнопку синхронізації в діалозі пошуку лірики або підказку панелі, якщо доріжка не має лірики.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">Ключ API QuickLRC збережено</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC не прийняв цей ключ</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">Ключ API QuickLRTC очищено</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC визначає час для лірики без часу або транскрибує її з доріжки за витрату кредитів. Якщо ключ встановлено, доріжки без лірики пропонують транскрипцію, а діалог пошуку отримує кнопку синхронізації.</string>
+  <string name="morphe_music_lyrics_transcribe_align">Запросити синхронізацію QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Синхронізація</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Застосувати синхронізацію</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Запросити транскрипцію QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_working">Транскрипція</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Транскрипцію скасовано</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Транскрибувати можна лише доріжки, відтворені з YouTube</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Немає лірики для синхронізації — натомість транскрибуємо</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC не зміг обробити цю доріжку</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">Кредити QuickLRC для цієї доріжки вичерпалися</string>
   <string name="morphe_music_lyrics_about_summary">"Текст пісні шукається за назвою та виконавцем, нетипові метадані можуть не знайти нічого або знайти неправильну версію. Скористайтесь оновленням, щоб змінити версію. Постачальники, позначені *, потребують токен. Не всі увімкнені постачальники завжди запитуються у вашому порядку, вони відповідають залежно від швидкості"</string>
   <string name="morphe_music_lyrics_source_advice_summary">Вмикайте лише тих постачальників, якими користуєтеся, або залиште типові налаштування, бо постійні запити можуть перевантажити невеликі спільнотні сайти з текстами пісень</string>
   <string name="morphe_music_lyrics_hide_info_title">Приховати рядок з інформацією про авторів</string>
@@ -595,11 +626,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Назва моделі (наприклад, openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Шаблон запиту</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Заповнювачі: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">Шаблон запиту</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Запит збережено</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Підказка збережена, але кінцева точка AI ще не придатна для використання. Спочатку налаштуйте її в розділі Налаштування AI.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Запит скинуто</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Налаштування AI збережено</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Не вдалося підключитися до кінцевої точки AI. Будь ласка, перевірте налаштування.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Не вдалося підключитися до кінцевої точки AI. Будь ласка, перевірте налаштування</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Налаштування AI скинуто</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">Модель %1$s налаштовано</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Базова URL-адреса не може бути порожньою</string>

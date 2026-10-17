@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Copiar texto</string>
   <string name="morphe_copy_text_summary">Permite selecionar e copiar texto em publicações e comentários. Desativa o recolhimento de comentários</string>
-  <string name="morphe_copy_text_user_dialog_message">O recolhimento de comentários deixará de funcionar enquanto a opção Copiar texto estiver ativada.</string>
+  <string name="morphe_copy_text_user_dialog_message">A funcionalidade de comentários colapsados parará de funcionar enquanto Copiar texto estiver habilitado</string>
   <string name="morphe_custom_font_title">Fonte personalizada</string>
   <string name="morphe_custom_font_summary">Carregue um arquivo de fonte TTF ou OTF personalizado do caminho abaixo. Ativar isso também desativa a fonte do sistema.</string>
   <string name="morphe_custom_font_file_path_title">Arquivo de fonte personalizada</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Oculta as prateleiras de Tendências do feed e das sugestões de pesquisa</string>
   <string name="morphe_remove_notification_dialog_title">Remover diálogo de sugestão de notificação</string>
   <string name="morphe_remove_notification_dialog_summary">Fecha automaticamente a caixa de diálogo de sugestão de notificação ao visitar um subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Mostrar selos no feed inicial</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Exibe distintivos de postagens no feed inicial</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Alguns itens do feed podem não mostrar um selo</string>
   <string name="morphe_show_view_count_title">Mostrar contagem de visualizações nas publicações</string>
   <string name="morphe_show_view_count_summary">Limitação: Disponível apenas se a resposta da API incluir a contagem de visualizações</string>
   <string name="morphe_flip_post_action_bar_title">Inverter a barra de ações da publicação</string>

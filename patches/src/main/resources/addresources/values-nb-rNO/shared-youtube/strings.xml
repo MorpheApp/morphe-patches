@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Angi pakkenavn</string>
   <string name="morphe_external_downloader_other_item">Annet</string>
   <string name="morphe_external_downloader_not_found_title">Appen er ikke installert</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s er ikke installert. Vennligst installer den.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s er ikke installert. Vennligst installer det</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Kunne ikke finne installert app med pakkenavn: %s
 
 Verifiser at pakkenavnet er korrekt og appen er installert"</string>
@@ -84,7 +84,7 @@ For å endre ikonet overalt, må du patche på nytt og endre patch-alternativet 
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe spill</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-varsel</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Din seerhistorikk lagres ikke.&lt;br&gt;&lt;br&gt;Dette skyldes mest sannsynlig en DNS-annonsesblokkering eller et nettverksproxy.&lt;br&gt;&lt;br&gt;For å fikse dette, legg til &lt;b&gt;s.youtube.com&lt;/b&gt; på hvitelisten eller slå av alle DNS-blokkeringer og proxyer.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Tittelisten din blir ikke lagret.&lt;br&gt;&lt;br&gt;Dette skyldes mest sannsynlig en DNS-reklameblokker eller et nettverksproxy&lt;br&gt;&lt;br&gt;For å løse dette, legg til &lt;b&gt;s.youtube.com&lt;/b&gt; i hvitlisten eller skru av alle DNS-blokkerer og proxyer</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ikke vis igjen</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Forfalske videostrømmer</string>
@@ -99,7 +99,7 @@ Hvis du er en YouTube Premium-bruker, er kanskje ikke denne innstillingen nødve
 
 Gjør %2$s til standardklient?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Bytt</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Hvis du slår av denne innstillingen, kan det oppstå avspillingsproblemer.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Hvis du skrur av denne innstillingen, kan det oppstå problemer med avspilling</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prøv å aktivere: Forfalske videostrømmer > Android VR-pålogging</string>
@@ -134,7 +134,7 @@ Trykk på Fortsett nedenfor for å logge på"</string>
 • Du må logge inn igjen hvis du endrer Google-passordet ditt eller avregistrerer denne enheten fra Google-innstillingene dine"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er midlertidig ikke tilgjengelig (API-utløp)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-påloggingen har utløpt, prøv å logge inn på VR igjen</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 er midlertidig ikke tilgjengelig (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 er midlertidig utilgjengelig (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 er midlertidig ikke tilgjengelig</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan ikke logge på VR, nettstedautentiseringen ble ikke godkjent</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge på VR: %s</string>
@@ -193,11 +193,11 @@ Trykk på Fortsett nedenfor for å logge på"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Debug-logprotokollbuffer</string>
   <string name="morphe_debug_protobuffer_summary">Legger til ekstra logginformasjon for utviklere for å identifisere appkomponenter</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Hvis du aktiverer denne innstillingen, vil det bli logget ekstra layoutdata, inkludert tekst på skjermen for noen brukergrensesnittkomponenter.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Å aktivere denne innstillingen vil logge tillegg layoutdata, inkludert tekst på skjermen for noen UI-komponenter.
 
 Dette kan hjelpe med å identifisere komponenter når du lager egendefinerte filtre.
 
-Men, hvis du aktiverer dette, vil også noe brukerdata, som for eksempel IP-adressen din, bli logget."</string>
+Men å aktivere dette vil også logge brukerdata som IP-adressen din"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Egendefinert filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurer egendefinerte filtre for å skjule alle komponenter</string>
@@ -238,11 +238,11 @@ Slå på «Forfalsk videostrømmer» for å fikse avspilling"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Forfalske app-versjon</string>
   <string name="morphe_spoof_app_version_summary">Lurer serveren til å tro at du bruker en eldre app-versjon for å gjenopprette gamle brukergrensesnittfunksjoner</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"App-versjonen vil bli forfalsket til en eldre versjon.
+  <string name="morphe_spoof_app_version_user_dialog_message">"App-versjonen vil bli spoofet til en eldre versjon.
 
-Dette vil endre utseendet og funksjonene til appen, men ukjente bivirkninger kan oppstå.
+Dette vil endre utseendet og funksjonene i appen, men ukjente bivirkninger kan oppstå.
 
-Hvis du slår det av senere, anbefales det å slette appdataene for å forhindre brukergrensesnittfeil."</string>
+Hvis det skrus av senere, anbefales det å slette appdata for å forhindre UI-bugger"</string>
   <string name="morphe_spoof_app_version_target_title">Mål for å forfalske app-versjon</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Appens oppdateringsfrekvens</string>
@@ -265,7 +265,7 @@ Hvis du slår det av senere, anbefales det å slette appdataene for å forhindre
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Misliker er midlertidig ikke tilgjengelige (API-timeout)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Misliker er ikke tilgjengelige (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Dislikes er ikke tilgjengelig (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Misliker er ikke tilgjengelige (klientens API-grense)</string>
   <string name="morphe_ryd_failure_generic">Misliker er ikke tilgjengelige (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ ID-en til videoen du ser, sendes til Return YouTube Dislike API, og liker og mis
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Misliker er midlertidig ikke tilgjengelige – Klientens API-grense er gjeldende</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API-henting av stemmer, antall kall</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Ingen nettverkskall er utført</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d nettverkskall er utført</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s nettverkskall utført</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-henting av stemmer, antall tidsavbrudd</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Ingen nettverkskall har tidsavbrudd</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d nettverkskall har tidsavbrudd</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s nettverkskall tidsavbrutt</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API-klientens grenser for hastighet</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ingen klientgrenser for hastighet er registrert</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klientens grense for hastighet er registrert %d ganger</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d millisekunder</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klientens hastighetsbegrensning ble møtt %s ganger</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s millisekunder</string>
 </resources>
