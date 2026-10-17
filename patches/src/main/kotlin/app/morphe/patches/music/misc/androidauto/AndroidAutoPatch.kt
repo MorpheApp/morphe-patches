@@ -79,6 +79,7 @@ private const val SUBTITLE_FIELD_NAME = "h"
  * [hookBrowseResults] loads Home recommendations and keeps native podcast folders in a Podcasts tab.
  * [patchFolderRefresh] refreshes Home, Library collections, and Podcasts after Library changes.
  * [patchPlaylistMediaIdBuilder] supplies the media IDs Android Auto uses to play playlists.
+ * [patchSearch] supplies catalog and uploaded music search results through YTM's phone search client.
  */
 @Suppress("unused")
 val androidAutoPatch = bytecodePatch(
@@ -112,6 +113,7 @@ val androidAutoPatch = bytecodePatch(
         patchFolderRefresh()
         patchPlaylistMediaIdBuilder(encodeCommandMediaIdMethod)
         patchCommandEncoder(encodeCommandMediaIdMethod)
+        patchSearch()
     }
 }
 

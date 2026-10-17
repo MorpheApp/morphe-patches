@@ -10,6 +10,9 @@ package app.morphe.extension.music.patches;
 import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.*;
 import static app.morphe.extension.music.patches.ProtoMessage.WIRE_LENGTH_DELIMITED;
 
+import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.ResultCategory;
+import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.SearchResult;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -1137,7 +1140,8 @@ public final class AndroidAutoPatch {
     }
 
     static Scope scope(Object client) {
-        Object account = client instanceof PhoneBrowseClient browse ? browse.patch_accountScope() : null;
+        Object account = client instanceof PhoneBrowseClient browse ? browse.patch_accountScope()
+                : client instanceof AndroidAutoSearchPatch.PhoneSearchClient search ? search.patch_accountScope() : null;
         return new Scope(client, account, Utils.getContext().getResources()
                 .getConfiguration().getLocales().toLanguageTags());
     }
@@ -1258,4 +1262,31 @@ public final class AndroidAutoPatch {
             return new Lease(work);
         }
     }
+    // Search results and playback commands
+
+    static List<MediaBrowserCompat.MediaItem> createPlayableSearchResults(List<SearchResult> results) {
+        PreparedItems playableResults = new PreparedItems(1);
+        Map<ResultCategory, List<SearchResult>> resultsByCategory = new LinkedHashMap<>();
+        // Order categories by their first result; keep each category together so Auto shows one heading.
+        for (var result : results) resultsByCategory.computeIfAbsent(result.category(), ignored -> new ArrayList<>()).add(result);
+        List<SearchResult> groupedResults = new ArrayList<>();
+        for (var categoryResults : resultsByCategory.values()) groupedResults.addAll(categoryResults);
+        Set<String> seenMediaIds = new HashSet<>();
+        for (var searchResult : groupedResults) {
+            byte[] playCommandBytes = searchResult.playCommandBytes();
+            if (playCommandBytes.length > MAX_COMMAND_BYTES) continue;
+            var playCommand = new ProtoMessage(playCommandBytes);
+            if (!isPlayable(playCommand)) continue;
+            String playlistId = playCommand.messageField(WATCH_PLAYLIST).stringField(PLAYLIST_ID);
+            // A menu's playlist action may shuffle; use ordered playback for albums and playlists.
+            // Preserve YTM's "Start radio" action, which plays a generated mix.
+            String mediaId = !searchResult.preservePlaybackCommand() && !playlistId.isEmpty() && !playlistId.startsWith("RD")
+                    ? createPlaylistMediaId(playlistId) : encodeCommand(playCommandBytes);
+            if (mediaId == null || !seenMediaIds.add(mediaId)) continue;
+            playableResults.add(mediaId, searchResult.title(), searchResult.subtitle(), searchResult.artworkUrl(),
+                    true, ResourceUtils.getString(searchResult.category().titleResource));
+        }
+        return playableResults;
+    }
+
 }
