@@ -77,6 +77,18 @@ public final class FeedVideoCards {
     private static final int MIN_TEXT_LENGTH = 4;
     /** A text this long is almost always a title, and alone finds the video. */
     private static final int TITLE_TEXT_LENGTH = 20;
+    /**
+     * Texts that are kept. A video has tens of texts, such as its title, channel, view count,
+     * accessibility labels and urls, so this is enough for the videos of a long feed.
+     */
+    private static final int MAX_TEXTS = 4000;
+
+    /**
+     * A card whose texts are not drawn yet, or whose video is not known yet, is checked again,
+     * because its texts can be drawn without a layout of the card.
+     */
+    private static final int MAX_RETRIES = 3;
+    private static final long RETRY_DELAY_MS = 500;
 
     /**
      * Result of {@link #findVideoId(ComponentHost)} for a video card whose texts are not drawn yet,
@@ -104,7 +116,7 @@ public final class FeedVideoCards {
     /** Text -> video id, or {@link #AMBIGUOUS}. Oldest texts are removed first. */
     @GuardedBy("itself")
     private static final Map<String, String> textVideoIds = Utils
-            .createSizeRestrictedMap(256, true);
+            .createSizeRestrictedMap(MAX_TEXTS, true);
 
     private static final List<Listener> listeners = new ArrayList<>();
 
@@ -451,6 +463,31 @@ public final class FeedVideoCards {
             new WeakHashMap<>());
     private static volatile boolean rootsUpdateScheduled;
 
+    /** Root host -> number of checks since its last layout. Used only on the main thread. */
+    private static final Map<ComponentHost, Integer> retries = new WeakHashMap<>();
+
+    private static void scheduleUpdate(ComponentHost root) {
+        rootsToUpdate.put(root, Boolean.TRUE);
+        if (!rootsUpdateScheduled) {
+            rootsUpdateScheduled = true;
+            Utils.runOnMainThread(updateRootsRunnable);
+        }
+    }
+
+    private static void scheduleRetry(ComponentHost root) {
+        Integer count = retries.get(root);
+        final int attempt = count == null ? 0 : count;
+        if (attempt >= MAX_RETRIES) {
+            return;
+        }
+        retries.put(root, attempt + 1);
+        root.postDelayed(() -> {
+            if (root.isAttachedToWindow()) {
+                scheduleUpdate(root);
+            }
+        }, RETRY_DELAY_MS);
+    }
+
     private static final Runnable updateRootsRunnable = () -> {
         rootsUpdateScheduled = false;
         try {
@@ -462,6 +499,12 @@ public final class FeedVideoCards {
                     continue;
                 }
                 String videoId = findVideoId(root);
+                if (NOT_READY.equals(videoId)
+                        || (videoId == null && isVideoShaped(root) && !hasHorizontalList(root))) {
+                    scheduleRetry(root);
+                } else {
+                    retries.remove(root);
+                }
                 if (NOT_READY.equals(videoId)) {
                     continue;
                 }
@@ -493,11 +536,9 @@ public final class FeedVideoCards {
             if (root == null) {
                 return;
             }
-            rootsToUpdate.put(root, Boolean.TRUE);
-            if (!rootsUpdateScheduled) {
-                rootsUpdateScheduled = true;
-                Utils.runOnMainThread(updateRootsRunnable);
-            }
+            // A new layout can show another video, which is checked again as many times.
+            retries.remove(root);
+            scheduleUpdate(root);
         } catch (Exception ex) {
             Logger.printException(() -> "onComponentHostLayout failure", ex);
         }
