@@ -83,6 +83,7 @@ final class LyricsLineView extends TextView {
     int romaStart = -1;
     int romaEnd = -1;
     boolean perWordReading;
+    boolean smallRunHoldsWords;
     float lastTouchY;
     private final Paint layerPaint = new Paint();
     private PorterDuffColorFilter tintFilter;
@@ -120,6 +121,15 @@ final class LyricsLineView extends TextView {
         romaEnd = end;
         perWordReading = perWord;
     }
+
+    /**
+     * With the swap on and no reading to hand them to, the timings sit on the original, and it
+     * has to dim the way the reading does.
+     */
+    void setSmallRunHoldsWords(boolean holdsWords) {
+        smallRunHoldsWords = holdsWords;
+    }
+
 
     void setActiveLine(boolean active, int color) {
         if (activeLine == active && secondaryActiveColor == color) {
@@ -333,9 +343,9 @@ final class LyricsLineView extends TextView {
                 final float measured = layout.isRtlCharAt(s) ? lead - width : lead + width;
                 trail = Math.min(Math.max(measured, lineLeft), lineRight);
             } else {
-                final float end = layout.getPrimaryHorizontal(snappedEnd);
-                // That offset reports where the next line starts; a word ending its line ends at its right.
-                trail = end <= lead ? lineRight : Math.min(Math.max(end, lineLeft), lineRight);
+                trail = trailOnLine(lineLeft, lineRight, lead,
+                        layout.getPrimaryHorizontal(snappedEnd),
+                        isRightToLeftLine(layout, line));
             }
             cachedWordLeadX[i] = lead;
             cachedWordTrailX[i] = trail;
@@ -356,6 +366,61 @@ final class LyricsLineView extends TextView {
             cachedLineLeft[ln] = layout.getLineLeft(ln);
             cachedLineRight[ln] = layout.getLineRight(ln);
         }
+    }
+
+    /**
+     * A small run takes the reading's colour so it reads as a line of its own, and a wrapped one would
+     * otherwise come out in two colours mid-word. What makes a run small is the main run beside it, not
+     * whether it holds the words: a dual line hands those to the reading wherever the swap puts it, so a
+     * main run without them still reads as the lyric, as does a line with nothing beside it.
+     */
+    /**
+     * Only one of the two ranges is set on a dual line, so this run is the reading's exactly when
+     * the reading's range is the one present.
+     */
+    /**
+     * Such a run has no word to light it, so it would sit in the unsung colour for the whole line
+     * and then jump white the moment the last word ends. Drawing it while the line is active gives
+     * it the sung colour for as long as the line is being sung, and keeping it once every word is
+     * past leaves it there instead of dropping back when the line stops being active.
+     *
+     * <p>The guards keep this to that one arrangement: a line with no words is not a dual line,
+     * and a plain line paints its own words on the main run, which is already lit word by word and
+     * would hold the whole run white for good.
+     */
+    private static boolean shouldFillMainRun(boolean hasWords, boolean anyWordOnMain,
+            boolean activeLine, boolean allWordsDone) {
+        return hasWords && !anyWordOnMain && (activeLine || allWordsDone);
+    }
+
+    private static boolean runHoldsWords(boolean smallRunHoldsWords, boolean romaPresent,
+            boolean isRoma) {
+        return smallRunHoldsWords ? isRoma == romaPresent : isRoma;
+    }
+
+    private static int sungColorForLine(boolean smallRun, boolean anyMainLine,
+            int readingColor, int lyricColor) {
+        return smallRun && anyMainLine ? readingColor : lyricColor;
+    }
+
+    /**
+     * The end offset reports along the line's primary direction, so a word ending its line comes back
+     * describing the next one and has to be sent to the far edge of the line it is on. Which side is
+     * far follows the line, and a right-to-left word reports its end left of its own lead, so the test
+     * mirrors with it: read as left-to-right such a word goes to the right edge, where its sweep grows
+     * the wrong way and shrinks the lit area as it is sung.
+     */
+
+private static float trailOnLine(float lineLeft, float lineRight, float lead, float end,
+            boolean rightToLeft) {
+        if (rightToLeft) {
+            if (end >= lead) {
+                return lineLeft;
+            }
+        } else if (end <= lead) {
+            return lineRight;
+        }
+        return Math.min(Math.max(end, lineLeft), lineRight);
     }
 
     private static int[] clusterBoundaries(CharSequence text) {
@@ -542,9 +607,11 @@ final class LyricsLineView extends TextView {
                 if (runSecondary) {
                     final boolean isRoma = romaFirst >= 0
                             && runStart >= romaFirst && runLast <= romaLast;
+                    final boolean runHoldsWords = runHoldsWords(
+                            smallRunHoldsWords, romaFirst >= 0, isRoma);
                     final float reveal = isRoma ? romaReveal : transReveal;
                     drawTextRun(canvas, layout, runStart, runLast,
-                            Math.round((isRoma ? romaAlpha : secondaryAlpha) * reveal),
+                            Math.round((runHoldsWords ? romaAlpha : secondaryAlpha) * reveal),
                             activeLine ? secondaryActiveColor : 0);
                 } else {
                     drawTextRun(canvas, layout, runStart, runLast, mainAlpha, 0);
@@ -617,6 +684,27 @@ final class LyricsLineView extends TextView {
             }
             Arrays.fill(lineMaxSungX, 0, lineCount, Float.NaN);
             int firstSungLine = -1;
+            // A line without words is not the case the fill is for: it has no words on the small
+            // run either, so it must not be filled along with those.
+            final boolean hasWords = cachedWordCount > 0;
+            // The state machine only reports a line sung when the line carries no words at all,
+            // so a line whose words all live on one run beside another is never told.
+            boolean allWordsDone = hasWords;
+            // What tells the two arrangements apart: a plain line paints its own words, so it
+            // never needs the fill below, while a dual line hands them all to the run beside the
+            // main one and leaves that main run with nothing to paint it.
+            boolean anyWordOnMain = false;
+
+            final boolean[] secondaryLine = new boolean[lineCount];
+            markSecondaryLines(layout, transStart, transEnd, secondaryLine);
+            markSecondaryLines(layout, romaStart, romaEnd, secondaryLine);
+            boolean anyMainLine = false;
+            for (int ln = 0; ln < lineCount; ln++) {
+                if (!secondaryLine[ln]) {
+                    anyMainLine = true;
+                    break;
+                }
+            }
 
             for (int i = 0; i < cachedWordCount; i++) {
                 final LyricsSpanBuilder.WordTiming timing = wordTimings.get(i);
@@ -636,12 +724,19 @@ final class LyricsLineView extends TextView {
                     progress = (float) (positionMs - timing.startMs())
                             / (float) (timing.endMs() - timing.startMs());
                 }
+                // A word still to come counts as unsung, so this has to sit ahead of the continue
+                // below or the line looks finished from its first word.
+                allWordsDone = allWordsDone && progress >= 1f;
                 if (progress <= 0f) {
                     continue;
                 }
                 final int lineNum = cachedWordLine[i];
                 if (firstSungLine < 0) {
                     firstSungLine = lineNum;
+                }
+
+                if (!secondaryLine[lineNum]) {
+                    anyWordOnMain = true;
                 }
                 final float lead = cachedWordLeadX[i];
                 // A word that runs on below shares its progress with the lines it reaches, so
@@ -711,19 +806,23 @@ final class LyricsLineView extends TextView {
                 }
             }
 
-            // A reading carries its progress in its own colour. The lyric's white is what marks a
-            // sung word there; on the reading it reads as a line of its own, and once the
-            // reading wraps the two halves come out in different colours.
-            int romaFirstLine = -1;
-            int romaLastLine = -1;
-            if (romaStart >= 0 && romaEnd > romaStart && romaStart < text.length()) {
-                romaFirstLine = layout.getLineForOffset(romaStart);
-                romaLastLine = layout.getLineForOffset(
-                        Math.min(romaEnd, text.length()) - 1);
-            }
+            // Smallness follows the run beside it, never the words it holds: a dual line hands those to the
+            // reading wherever the swap puts it, so a main run without them is still the main run.
             final int readingColor = (activeLine && secondaryActiveColor != 0
                     ? secondaryActiveColor : LyricsColors.secondaryTextColor()) | 0xFF000000;
             final int lyricColor = LyricsColors.lineTextColor() | 0xFF000000;
+            final boolean fillMainRun = shouldFillMainRun(hasWords, anyWordOnMain,
+                    activeLine, allWordsDone && firstSungLine >= 0);
+            if (fillMainRun) {
+                for (int ln = 0; ln < lineCount; ln++) {
+                    if (!Float.isNaN(lineMaxSungX[ln])
+                            || secondaryLine[ln] && anyMainLine) {
+                        continue;
+                    }
+                    lineMaxSungX[ln] = isRightToLeftLine(layout, ln)
+                            ? cachedLineLeft[ln] : cachedLineRight[ln];
+                }
+            }
             final ColorFilter prevFilter = tp.getColorFilter();
             int appliedColor = -1;
 
@@ -739,8 +838,8 @@ final class LyricsLineView extends TextView {
                 if (Float.isNaN(edge)) {
                     continue;
                 }
-                final int color = ln >= romaFirstLine && ln <= romaLastLine
-                        ? readingColor : lyricColor;
+                final int color = sungColorForLine(secondaryLine[ln],
+                        anyMainLine, readingColor, lyricColor);
                 if (color != appliedColor) {
                     tp.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
                     appliedColor = color;

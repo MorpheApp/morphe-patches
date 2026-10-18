@@ -40,6 +40,12 @@ public final class JapaneseDictStore {
 
     private static final String[] SOURCES = {"small_lex.zip", "core_lex.zip", "notcore_lex.zip"};
 
+    /** Bumped when the record offsets changed, so a table built before that is not read. */
+    static final byte[] MAGIC = {'M', 'J', 'P', 'W', '0', '0', '0', '2'};
+
+    /** A table half full costs several probes for every miss, and a miss is what a lyric makes most. */
+    static final int SLOT_COUNT = 1 << 23;
+
     private static final String TABLE_NAME = "japanese_readings_" + VERSION + ".bin";
     private static final String NOTICE_NAME = "japanese_readings.NOTICE.txt";
 
@@ -54,21 +60,19 @@ public final class JapaneseDictStore {
 
     private static final AtomicBoolean RUNNING = new AtomicBoolean();
 
-    private static volatile JapaneseReadingTable table;
+    private static volatile WordReadingTable table;
 
     private JapaneseDictStore() {
     }
 
     public static boolean isReady() {
-        File file = tableFile();
-        return file != null && file.isFile()
-                && file.length() > JapaneseReadingTable.HEADER_BYTES;
+        return table() != null;
     }
 
     /** Starts a build if the table is missing. Safe to call whenever the setting is on. */
     public static void ensure(RomanizationDict.Listener listener) {
         if (isReady()) {
-            JapaneseReadingTable opened = table();
+            WordReadingTable opened = table();
             if (opened != null) {
                 listener.onReady(opened.size());
                 return;
@@ -90,13 +94,13 @@ public final class JapaneseDictStore {
 
     /** Null when the table has not been built. */
     @Nullable
-    public static JapaneseReadingTable table() {
-        JapaneseReadingTable open = table;
+    public static WordReadingTable table() {
+        WordReadingTable open = table;
         if (open != null) return open;
 
         File file = tableFile();
         if (file == null) return null;
-        open = JapaneseReadingTable.open(file.toPath());
+        open = WordReadingTable.open(file.toPath(), MAGIC);
         if (open != null) {
             table = open;
         }
@@ -123,7 +127,8 @@ public final class JapaneseDictStore {
         //noinspection ResultOfMethodCallIgnored
         built.delete();
 
-        JapaneseReadingTable.Builder builder = new JapaneseReadingTable.Builder(built.toPath());
+        WordReadingTable.Builder builder = new WordReadingTable.Builder(built.toPath(), MAGIC,
+                SLOT_COUNT);
         for (String source : SOURCES) {
             File archive = new File(directory, source);
             if (!archive.isFile()) {
@@ -141,7 +146,7 @@ public final class JapaneseDictStore {
         listener.onReady(builder.size());
     }
 
-    private static void addSource(JapaneseReadingTable.Builder builder, File archive,
+    private static void addSource(WordReadingTable.Builder builder, File archive,
             RomanizationDict.Listener listener) throws IOException {
         int seen = 0;
 

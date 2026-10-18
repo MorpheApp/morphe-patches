@@ -32,7 +32,7 @@ import app.morphe.extension.shared.Utils;
  */
 public final class RomanizationDict {
 
-    private static final String DIRECTORY_NAME = "morphe_lyrics_cjkromadict";
+    private static final String DIRECTORY_NAME = "morphe_lyrics_romandict";
     private static final String DOWNLOAD_SUFFIX = ".part";
     private static final int CONNECT_TIMEOUT_MS = 15000;
     private static final int READ_TIMEOUT_MS = 30000;
@@ -85,6 +85,9 @@ public final class RomanizationDict {
             long expected = connection.getContentLength();
             long written = 0;
             int lastPercent = -1;
+
+            // A compressed response reports no length, so the file is named before the wait starts.
+            if (expected <= 0) listener.onDownload(reportedName, 0);
 
             try (InputStream in = new BufferedInputStream(connection.getInputStream(),
                     BUFFER_BYTES);

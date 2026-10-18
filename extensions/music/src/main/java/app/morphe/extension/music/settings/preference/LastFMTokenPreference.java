@@ -11,8 +11,6 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.preference.Preference;
 import android.text.InputType;
 import android.util.AttributeSet;
@@ -98,7 +96,7 @@ public class LastFMTokenPreference extends Preference {
         instructionParams.bottomMargin = Dim.dp12;
         content.addView(instruction, instructionParams);
 
-        EditText usernameInput = createThemedEditText(context);
+        EditText usernameInput = ThemedInput.create(context);
         usernameInput.setHint(str("morphe_music_lastfm_token_dialog_username_hint"));
         if (!currentUsername.isEmpty()) {
             usernameInput.setText(currentUsername);
@@ -109,7 +107,7 @@ public class LastFMTokenPreference extends Preference {
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         content.addView(usernameInput, usernameParams);
 
-        EditText passwordInput = createThemedEditText(context);
+        EditText passwordInput = ThemedInput.create(context);
         passwordInput.setHint(str("morphe_music_lastfm_token_dialog_password_hint"));
         passwordInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         LinearLayout.LayoutParams passwordParams = new LinearLayout.LayoutParams(
@@ -205,19 +203,5 @@ public class LastFMTokenPreference extends Preference {
         status.setText(text);
         status.setTextColor(color);
         status.setVisibility(View.VISIBLE);
-    }
-
-    private static EditText createThemedEditText(Context context) {
-        EditText editText = new EditText(context);
-        editText.setSingleLine(true);
-        editText.setTextSize(16);
-        editText.setTextColor(ThemeUtils.getAppForegroundColor());
-        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(10), null, null));
-        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
-        editText.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
-        editText.setBackground(background);
-        editText.setClipToOutline(true);
-        return editText;
     }
 }

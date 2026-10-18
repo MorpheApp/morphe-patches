@@ -12,8 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.preference.Preference;
 import android.text.InputType;
 import android.util.AttributeSet;
@@ -97,7 +95,7 @@ public class LyricsAiConfigPreference extends Preference {
         instructionParams.bottomMargin = Dim.dp12;
         content.addView(instruction, instructionParams);
 
-        EditText baseUrlInput = createThemedEditText(context);
+        EditText baseUrlInput = ThemedInput.create(context);
         baseUrlInput.setHint(str("morphe_music_lyrics_ai_config_base_url_hint"));
         String currentBaseUrl = Settings.LYRICS_AI_BASE_URL.get();
         if (!currentBaseUrl.isEmpty()) {
@@ -112,7 +110,7 @@ public class LyricsAiConfigPreference extends Preference {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         tokenParams.topMargin = Dim.dp8;
-        EditText apiTokenInput = createThemedEditText(context);
+        EditText apiTokenInput = ThemedInput.create(context);
         apiTokenInput.setHint(str("morphe_music_lyrics_ai_config_api_token_hint"));
         apiTokenInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         String currentToken = Settings.LYRICS_AI_API_TOKEN.get();
@@ -126,7 +124,7 @@ public class LyricsAiConfigPreference extends Preference {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         modelParams.topMargin = Dim.dp8;
-        EditText modelInput = createThemedEditText(context);
+        EditText modelInput = ThemedInput.create(context);
         modelInput.setHint(str("morphe_music_lyrics_ai_config_model_hint"));
         String currentModel = Settings.LYRICS_AI_MODEL.get();
         if (!currentModel.isEmpty()) {
@@ -135,6 +133,25 @@ public class LyricsAiConfigPreference extends Preference {
         }
         content.addView(modelInput, modelParams);
 
+        LinearLayout.LayoutParams extraBodyParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        extraBodyParams.topMargin = Dim.dp8;
+        EditText extraBodyInput = ThemedInput.create(context);
+        extraBodyInput.setSingleLine(false);
+        extraBodyInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        extraBodyInput.setMinLines(2);
+        extraBodyInput.setMaxLines(5);
+        extraBodyInput.setVerticalScrollBarEnabled(true);
+        extraBodyInput.setHint(str("morphe_music_lyrics_ai_extra_body_hint"));
+        String currentExtraBody = Settings.LYRICS_AI_EXTRA_BODY.get();
+        if (!currentExtraBody.isEmpty()) {
+            extraBodyInput.setText(currentExtraBody);
+            extraBodyInput.setSelection(currentExtraBody.length());
+        }
+        content.addView(extraBodyInput, extraBodyParams);
+
+        final Dialog[] shown = new Dialog[1];
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
                 str("morphe_music_lyrics_use_ai_title"),
@@ -145,6 +162,7 @@ public class LyricsAiConfigPreference extends Preference {
                     String baseUrl = baseUrlInput.getText().toString().trim();
                     String apiToken = apiTokenInput.getText().toString().trim();
                     String model = modelInput.getText().toString().trim();
+                    String extraBody = extraBodyInput.getText().toString().trim();
 
                     if (baseUrl.isEmpty()) {
                         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_empty_url"));
@@ -158,6 +176,13 @@ public class LyricsAiConfigPreference extends Preference {
                         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_empty_model"));
                         return;
                     }
+                    // Nothing is sent until this parses, so a body that will not is refused here, not saved.
+                    if (!OpenAIClient.isValidExtraBody(extraBody)) {
+                        Utils.showToastShort(str("morphe_music_lyrics_ai_extra_body_invalid"));
+                        return;
+                    }
+                    // Written before the endpoint is asked, so one that only takes what this body makes answers yes.
+                    Settings.LYRICS_AI_EXTRA_BODY.save(extraBody);
 
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
                     Utils.runOnBackgroundThread(() -> {
@@ -171,6 +196,7 @@ public class LyricsAiConfigPreference extends Preference {
                             Settings.LYRICS_AI_API_TOKEN.save(apiToken);
                             Settings.LYRICS_AI_MODEL.save(model);
                             updateSummary();
+                            if (shown[0] != null) shown[0].dismiss();
                             Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_saved"));
                         });
                     });
@@ -181,17 +207,22 @@ public class LyricsAiConfigPreference extends Preference {
                     Settings.LYRICS_AI_BASE_URL.resetToDefault();
                     Settings.LYRICS_AI_API_TOKEN.resetToDefault();
                     Settings.LYRICS_AI_MODEL.resetToDefault();
+                    Settings.LYRICS_AI_EXTRA_BODY.resetToDefault();
                     baseUrlInput.setText(Settings.LYRICS_AI_BASE_URL.get());
                     apiTokenInput.setText("");
                     modelInput.setText(Settings.LYRICS_AI_MODEL.get());
+                    extraBodyInput.setText("");
                     updateSummary();
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_reset"));
                 },
+                false,
+                true,
                 false
         );
 
         Dialog dialog = dialogPair.first;
         LinearLayout mainLayout = dialogPair.second;
+        shown[0] = dialog;
 
         mainLayout.addView(content, mainLayout.getChildCount() - 1,
                 new LinearLayout.LayoutParams(
@@ -203,19 +234,5 @@ public class LyricsAiConfigPreference extends Preference {
         } catch (WindowManager.BadTokenException ex) {
             Logger.printException(() -> "Could not show the AI settings dialog", ex);
         }
-    }
-
-    private static EditText createThemedEditText(Context context) {
-        EditText editText = new EditText(context);
-        editText.setSingleLine(true);
-        editText.setTextSize(16);
-        editText.setTextColor(ThemeUtils.getAppForegroundColor());
-        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(10), null, null));
-        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
-        editText.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
-        editText.setBackground(background);
-        editText.setClipToOutline(true);
-        return editText;
     }
 }

@@ -26,7 +26,6 @@ import app.morphe.extension.shared.Logger;
 
 public final class RMMProvider implements LyricsProvider {
 
-    private static final String ITUNES_SEARCH = "https://itunes.apple.com/search";
     private static final String RMM_LYRICS = "https://lyrics.rmmreviv.al/lyrics?id=";
 
     private static final String DISPLAY_NAME = "RMM Revival";
@@ -126,7 +125,7 @@ public final class RMMProvider implements LyricsProvider {
         HttpURLConnection connection = null;
         try {
             String term = LyricsRequests.encode(track.title() + " " + track.artist());
-            String url = ITUNES_SEARCH + "?term=" + term + "&entity=song&limit=5";
+            String url = LyricsRequests.ITUNES_SEARCH_URL + "?term=" + term + "&entity=song&limit=5";
             connection = LyricsRequests.openConnection(url);
             final int code = connection.getResponseCode();
             if (code != 200) {
@@ -330,7 +329,6 @@ public final class RMMProvider implements LyricsProvider {
         return lines.isEmpty() ? null : lines;
     }
 
-    @SuppressWarnings("unused")
     @Nullable
     private static Lyrics buildLyrics(JSONObject root, long trackId) {
         if (!root.optBoolean("hasLyrics", false)) {

@@ -229,7 +229,9 @@ public final class KanaRomanizer {
 
     /** Whether a reading fits the one byte packing the dictionary file uses. */
     public static boolean isPackable(char c) {
-        return c >= KANA_BASE && c < 0x3100;
+        // Strictly above the base, since the escape in a reading table is a zero byte and
+        // packing the base character itself would produce one.
+        return c > KANA_BASE && c < 0x3100;
     }
 
     public static byte pack(char c) {

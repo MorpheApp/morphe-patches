@@ -12,8 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
 import android.preference.Preference;
 import android.util.AttributeSet;
@@ -98,7 +96,7 @@ public class ListenBrainzTokenPreference extends Preference {
         instructionParams.bottomMargin = Dim.dp12;
         content.addView(instruction, instructionParams);
 
-        EditText tokenInput = createThemedEditText(context);
+        EditText tokenInput = ThemedInput.create(context);
         tokenInput.setHint(str("morphe_music_listenbrainz_token_dialog_hint"));
         if (loggedIn) {
             String currentToken = Settings.LISTENBRAINZ_USER_TOKEN.get();
@@ -237,19 +235,5 @@ public class ListenBrainzTokenPreference extends Preference {
         status.setText(text);
         status.setTextColor(color);
         status.setVisibility(View.VISIBLE);
-    }
-
-    private static EditText createThemedEditText(Context context) {
-        EditText editText = new EditText(context);
-        editText.setSingleLine(true);
-        editText.setTextSize(16);
-        editText.setTextColor(ThemeUtils.getAppForegroundColor());
-        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(10), null, null));
-        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
-        editText.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
-        editText.setBackground(background);
-        editText.setClipToOutline(true);
-        return editText;
     }
 }

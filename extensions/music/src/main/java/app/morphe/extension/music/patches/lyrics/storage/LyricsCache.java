@@ -45,7 +45,7 @@ import app.morphe.extension.shared.Utils;
 public final class LyricsCache {
 
     private static final String TTML_FORMAT_TYPE = "ttml";
-    private static final int MEMORY_ENTRIES = 200;
+    private static final int MEMORY_INITIAL_CAPACITY = 200;
     private static final int MEMORY_MAX_ENTRIES = 500;
 
     private static final int DISK_ENTRIES = 5000;
@@ -71,7 +71,7 @@ public final class LyricsCache {
     private static final String RAW_SUFFIX = ".raw";
 
     private static final Map<String, Lyrics> memoryCache = Collections.synchronizedMap(
-            new LinkedHashMap<>(MEMORY_ENTRIES, 0.75f, true) {
+            new LinkedHashMap<>(MEMORY_INITIAL_CAPACITY, 0.75f, true) {
                 @Override
                 protected boolean removeEldestEntry(Map.Entry<String, Lyrics> eldest) {
                     return size() > MEMORY_MAX_ENTRIES;

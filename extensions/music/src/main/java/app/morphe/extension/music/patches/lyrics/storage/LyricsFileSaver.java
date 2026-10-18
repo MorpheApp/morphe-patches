@@ -81,8 +81,7 @@ public final class LyricsFileSaver {
             formatType = "txt";
         }
 
-        String fileName = sanitizeFileName(track.artist() + " - " + track.title())
-                + "." + formatType;
+        String fileName = fileName(track, lyrics, formatType);
 
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
@@ -230,6 +229,15 @@ public final class LyricsFileSaver {
 
     private static String sanitizeFileName(String name) {
         return name.replaceAll("[\\\\/:*?\"<>|]", "_").replaceAll("\\s+", " ").trim();
+    }
+
+    private static String fileName(TrackInfo track, Lyrics lyrics, String formatType) {
+        String name = sanitizeFileName(track.artist() + " - " + track.title());
+        String provider = sanitizeFileName(lyrics.providerName());
+        if (!provider.isEmpty()) {
+            name += " [" + provider + "]";
+        }
+        return name + "." + formatType;
     }
 
     private static String getMimeType(String formatType) {

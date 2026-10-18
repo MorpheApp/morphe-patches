@@ -24,6 +24,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.lyrics.TextTrim;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
@@ -1188,14 +1189,16 @@ public final class TTMLParser {
     private static void stripBgWordParens(List<Word> bgWords) {
         if (bgWords.isEmpty()) return;
         final Word first = bgWords.get(0);
-        final String strippedFirst = first.text().replaceAll("^[(（]+", "").stripLeading();
+        final String strippedFirst = TextTrim.stripLeading(
+                first.text().replaceAll("^[(（]+", ""));
         if (!strippedFirst.equals(first.text())) {
             bgWords.set(0, new Word(first.startMs(), first.endMs(),
                     strippedFirst, first.romaji(), first.endsWithSpace()));
         }
         final int lastIdx = bgWords.size() - 1;
         final Word last = bgWords.get(lastIdx);
-        final String strippedLast = last.text().replaceAll("[)）]+$", "").stripTrailing();
+        final String strippedLast = TextTrim.stripTrailing(
+                last.text().replaceAll("[)）]+$", ""));
         if (!strippedLast.equals(last.text())) {
             bgWords.set(lastIdx, new Word(last.startMs(), last.endMs(),
                     strippedLast, last.romaji(), false));

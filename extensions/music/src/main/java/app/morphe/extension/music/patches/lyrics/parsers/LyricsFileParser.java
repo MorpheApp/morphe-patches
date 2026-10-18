@@ -14,6 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.morphe.extension.music.patches.lyrics.TextTrim;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
@@ -212,7 +213,7 @@ public final class LyricsFileParser {
                 }
                 sequence.add(readValue(lines, cursor, indent + 2));
             } else {
-                lines.set(cursor.index, " ".repeat(indent + 2) + rest);
+                lines.set(cursor.index, TextTrim.spaces(indent + 2) + rest);
                 sequence.add(readMapping(lines, cursor, indent + 2));
             }
         }
