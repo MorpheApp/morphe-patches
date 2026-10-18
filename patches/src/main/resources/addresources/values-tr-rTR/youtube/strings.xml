@@ -478,6 +478,12 @@ OpenRouter.ai'yi açmak için buraya dokunun"</string>
   <string name="morphe_vot_cost_per_hour">100 video saati başına %s</string>
   <string name="morphe_vot_tts_voice_type">Ses</string>
   <string name="morphe_vot_tts_system">Sistem</string>
+    <string name="morphe_vot_catalog_refresh">Ses listesini yenile</string>
+    <string name="morphe_vot_catalog_source_online">Çevrimiçi</string>
+    <string name="morphe_vot_catalog_source_cache">Önbellek</string>
+    <string name="morphe_vot_catalog_source_fallback">Yerleşik</string>
+    <string name="morphe_vot_catalog_status">%1$s · %2$d ses · +%3$d / -%4$d</string>
+    <string name="morphe_vot_catalog_error">Güncelleme başarısız: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Çok dilli erkek</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Çok dilli kadın</string>
   <string name="morphe_vot_voice_gender_male">Erkek</string>
