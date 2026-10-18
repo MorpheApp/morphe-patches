@@ -43,9 +43,8 @@ import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
+import java.util.function.Consumer;
 import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.shared.Logger;
@@ -369,18 +368,8 @@ public final class AndroidAutoPatch {
             if (browseClient == null) return false;
             String requestedMediaId = request.patch_getRequestedMediaId();
             if (requestedMediaId == null) return false;
-            if (requestedMediaId.equals(SPEED_DIAL_MEDIA_ID)) {
-                HomeShelfLoad load = new HomeShelfLoad(request, SPEED_DIAL_BROWSE_ID, null);
-                mainHandler.postDelayed(load.timeout, DEADLINE_MS);
-                BACKGROUND_EXECUTOR.execute(load::start);
-                return true;
-            }
-            if (requestedMediaId.startsWith(HOME_SHELF_PREFIX)) {
-                // These media IDs store the shelf title; reread Home to find its current contents.
-                String shelfTitle = Uri.decode(requestedMediaId.substring(HOME_SHELF_PREFIX.length()));
-                HomeShelfLoad load = new HomeShelfLoad(request, "FEmusic_home", shelfTitle);
-                mainHandler.postDelayed(load.timeout, DEADLINE_MS);
-                BACKGROUND_EXECUTOR.execute(load::start);
+            if (requestedMediaId.equals(SPEED_DIAL_MEDIA_ID) || requestedMediaId.startsWith(HOME_SHELF_PREFIX)) {
+                new HomeLoad(request, null).start();
                 return true;
             }
             if (requestedMediaId.equals(libraryMediaId)) {
@@ -397,9 +386,7 @@ public final class AndroidAutoPatch {
             if (requestedMediaId.startsWith(PODCAST_COLLECTION_PREFIX)
                     || requestedMediaId.startsWith(LIBRARY_PREFIX)
                     && !requestedMediaId.equals(LibraryFolder.PLAYLISTS.mediaId())) {
-                LibraryLoad load = new LibraryLoad(request);
-                mainHandler.postDelayed(load.timeout, DEADLINE_MS);
-                BACKGROUND_EXECUTOR.execute(() -> load.start(requestedMediaId));
+                new LibraryLoad(request, requestedMediaId).start();
                 return true;
             }
             if (!requestedMediaId.equals(LibraryFolder.PLAYLISTS.mediaId())
@@ -830,54 +817,40 @@ public final class AndroidAutoPatch {
                 || homeMediaId == null) return false;
         // Sending Home results calls this method again; skip our completed list to avoid another load.
         if (nativeItems instanceof PreparedItems) return false;
-        HomeLoad load = new HomeLoad(request, nativeItems);
-        mainHandler.postDelayed(load.timeout, DEADLINE_MS);
-        BACKGROUND_EXECUTOR.execute(load::start);
+        new HomeLoad(request, nativeItems).start();
         return true;
     }
 
     /** Home spans multiple phone responses; both its previews and expanded shelves need pagination. */
-    private abstract static class HomeFeedLoad extends Load {
+    private static final class HomeLoad extends Load {
         private final String browseId;
+        @Nullable private final String shelfTitle;
+        @Nullable private final List<MediaBrowserCompat.MediaItem> podcastFolders;
         @GuardedBy("this")
         private final List<BrowseItem> collected = new ArrayList<>();
         private final Set<String> continuations = new HashSet<>();
 
-        HomeFeedLoad(BrowseRequest request, String browseId) {
+        HomeLoad(BrowseRequest request, @Nullable List<MediaBrowserCompat.MediaItem> podcastFolders) {
             super(request);
-            this.browseId = browseId;
+            String mediaId = request.patch_getRequestedMediaId();
+            browseId = SPEED_DIAL_MEDIA_ID.equals(mediaId) ? SPEED_DIAL_BROWSE_ID : "FEmusic_home";
+            // Expanded groups store their title in the media ID; reread Home to find their current contents.
+            shelfTitle = mediaId.startsWith(HOME_SHELF_PREFIX) ? Uri.decode(mediaId.substring(HOME_SHELF_PREFIX.length())) : null;
+            this.podcastFolders = podcastFolders == null ? null : new ArrayList<>(podcastFolders);
         }
 
-        final void start() { requestPage(""); }
+        @Override void load() { requestPage(""); }
 
         private void requestPage(String continuation) {
-            if (finished.get()) return;
-            try {
-                if (!current(client)) { finish(Collections.emptyList()); return; }
-                var future = transformFuture(continuation.isEmpty()
-                                ? client.patch_requestBrowse(browseId, BACKGROUND_EXECUTOR)
-                                : client.patch_requestBrowseContinuation(continuation, BACKGROUND_EXECUTOR),
-                        response -> homePage(response.patch_responseBytes()), BACKGROUND_EXECUTOR);
-                pending = future;
-                if (finished.get()) { future.cancel(true); return; }
-                future.whenCompleteAsync((page, error) -> {
-                    if (finished.get()) return;
-                    if (error != null) {
-                        Logger.printException(() -> "Could not load Android Auto Home page", error);
-                        finishCollected();
-                        return;
-                    }
-                    synchronized (this) { collected.addAll(page.items()); }
-                    if (page.continuation().isEmpty() || !continuations.add(page.continuation())) {
-                        finishCollected();
-                    } else {
-                        requestPage(page.continuation());
-                    }
-                }, BACKGROUND_EXECUTOR);
-            } catch (Exception ex) {
-                Logger.printException(() -> "Could not request Android Auto Home page", ex);
-                finishCollected();
-            }
+            requestPage(browseId, continuation, response -> {
+                HomePage page = homePage(response.patch_responseBytes());
+                synchronized (this) { collected.addAll(page.items()); }
+                if (page.continuation().isEmpty() || !continuations.add(page.continuation())) {
+                    finishCollected();
+                } else {
+                    requestPage(page.continuation());
+                }
+            });
         }
 
         private void finishCollected() {
@@ -895,22 +868,18 @@ public final class AndroidAutoPatch {
         // A slow or failed continuation must not discard shelves already received.
         @Override void timedOut() { finishCollected(); }
 
-        abstract List<MediaBrowserCompat.MediaItem> convert(List<BrowseItem> items);
-    }
-
-    private static final class HomeLoad extends HomeFeedLoad {
-        final List<MediaBrowserCompat.MediaItem> podcastFolders;
-
-        HomeLoad(BrowseRequest request, List<MediaBrowserCompat.MediaItem> podcastFolders) {
-            super(request, "FEmusic_home");
-            this.podcastFolders = new ArrayList<>(podcastFolders);
-        }
-
-        @Override List<MediaBrowserCompat.MediaItem> convert(List<BrowseItem> items) {
-            return homeMediaItems(items);
+        private List<MediaBrowserCompat.MediaItem> convert(List<BrowseItem> items) {
+            if (podcastFolders != null) return homeMediaItems(items);
+            if (shelfTitle != null) items.removeIf(item -> !shelfTitle.equals(item.shelfTitle()));
+            // Expanded Speed dial uses a list; expanded recommendation groups use an artwork grid.
+            return playableItems(items, shelfTitle == null ? 1 : 2, false);
         }
 
         @Override void deliver(List<MediaBrowserCompat.MediaItem> items) {
+            if (podcastFolders == null) {
+                super.deliver(items);
+                return;
+            }
             PreparedItems home = new PreparedItems();
             if (current(client)) {
                 home.addAll(items);
@@ -948,50 +917,24 @@ public final class AndroidAutoPatch {
         return homeItems;
     }
 
-    /** Reloads the selected Home shelf so returning to it reflects YTM's current recommendations. */
-    private static final class HomeShelfLoad extends HomeFeedLoad {
-        @Nullable final String shelfTitle;
-
-        HomeShelfLoad(BrowseRequest request, String browseId, @Nullable String shelfTitle) {
-            super(request, browseId);
-            this.shelfTitle = shelfTitle;
-        }
-
-        @Override List<MediaBrowserCompat.MediaItem> convert(List<BrowseItem> items) {
-            List<BrowseItem> shelfItems = new ArrayList<>();
-            for (var item : items) {
-                if (shelfTitle == null || shelfTitle.equals(item.shelfTitle())) shelfItems.add(item);
-            }
-            // Expanded Speed dial uses a list; the Home preview remains an artwork grid.
-            return playableItems(shelfItems, shelfTitle == null ? 1 : 2, false);
-        }
-    }
-
     // Library: categories (including Last played), uploads, and episodes from saved podcast shows
 
     private static final class LibraryLoad extends Load {
-        LibraryLoad(BrowseRequest request) {
+        final String mediaId;
+
+        LibraryLoad(BrowseRequest request, String mediaId) {
             super(request);
+            this.mediaId = mediaId;
         }
 
-        void start(String mediaId) {
-            if (finished.get()) return;
-            try {
-                if (!current(client)) {
-                    finish(Collections.emptyList()); return;
-                }
-                boolean podcastPage = mediaId.startsWith(PODCAST_COLLECTION_PREFIX);
-                LibraryFolder folder = podcastPage ? null : LibraryFolder.valueOf(mediaId.substring(LIBRARY_PREFIX.length()));
-                String browseId = podcastPage ? Uri.decode(mediaId.substring(PODCAST_COLLECTION_PREFIX.length())) : folder.browseId;
-                finishWhenComplete(transformFuture(client.patch_requestBrowse(browseId, BACKGROUND_EXECUTOR),
-                        response -> {
-                            var phoneItems = libraryItems(response.patch_responseBytes());
-                            return podcastPage ? playableItems(phoneItems, 1) : libraryMediaItems(folder, phoneItems);
-                        }, BACKGROUND_EXECUTOR));
-            } catch (Exception ex) {
-                Logger.printException(() -> "Could not load Android Auto Library collection", ex);
-                finish(Collections.emptyList());
-            }
+        @Override void load() {
+            boolean podcastPage = mediaId.startsWith(PODCAST_COLLECTION_PREFIX);
+            LibraryFolder folder = podcastPage ? null : LibraryFolder.valueOf(mediaId.substring(LIBRARY_PREFIX.length()));
+            String browseId = podcastPage ? Uri.decode(mediaId.substring(PODCAST_COLLECTION_PREFIX.length())) : folder.browseId;
+            requestPage(browseId, "", response -> {
+                var phoneItems = libraryItems(response.patch_responseBytes());
+                finish(podcastPage ? playableItems(phoneItems, 1) : libraryMediaItems(folder, phoneItems));
+            });
         }
     }
 
@@ -1093,21 +1036,6 @@ public final class AndroidAutoPatch {
         return client != null && client == phoneBrowseClient;
     }
 
-    // Avoid Futures.transform: YTM's bundled Guava can throw NoSuchMethodError.
-    static <T, R> CompletableFuture<R> transformFuture(ListenableFuture<T> source,
-                                                      Function<T, R> convert, Executor executor) {
-        CompletableFuture<R> result = new CompletableFuture<>();
-        result.whenComplete((value, error) -> {
-            if (result.isCancelled()) source.cancel(true);
-        });
-        source.addListener(() -> {
-            if (result.isDone()) return;
-            try { result.complete(convert.apply(source.get())); }
-            catch (Exception ex) { result.completeExceptionally(ex); }
-        }, executor);
-        return result;
-    }
-
     /** Each load owns its pending request and completes once, including when it times out. */
     abstract static class Load {
         final BrowseRequest request;
@@ -1115,7 +1043,7 @@ public final class AndroidAutoPatch {
         final long loadNumber = browseLoadCounter.incrementAndGet();
         final FolderDelivery folderDelivery;
         final AtomicBoolean finished = new AtomicBoolean();
-        volatile CompletableFuture<?> pending;
+        volatile ListenableFuture<?> pending;
         final Runnable timeout = this::timedOut;
 
         Load(BrowseRequest request) {
@@ -1124,16 +1052,40 @@ public final class AndroidAutoPatch {
             folderDelivery = getFolderDelivery(request);
         }
 
-        void finishWhenComplete(CompletableFuture<List<MediaBrowserCompat.MediaItem>> future) {
-            pending = future;
-            if (finished.get()) { future.cancel(true); return; }
-            future.whenComplete((items, error) -> {
-                if (finished.get()) return;
-                if (error != null) {
-                    Logger.printException(() -> "Could not load Android Auto content", error);
+        final void start() {
+            mainHandler.postDelayed(timeout, DEADLINE_MS);
+            BACKGROUND_EXECUTOR.execute(() -> {
+                try { load(); }
+                catch (Exception ex) {
+                    Logger.printException(() -> "Could not load Android Auto content", ex);
+                    timedOut();
                 }
-                finish(error == null ? items : Collections.emptyList());
             });
+        }
+
+        abstract void load();
+
+        final void requestPage(String browseId, String continuation, Consumer<PhoneBrowseResponse> receive) {
+            if (finished.get()) return;
+            try {
+                if (!current(client)) { finish(Collections.emptyList()); return; }
+                var future = continuation.isEmpty()
+                        ? client.patch_requestBrowse(browseId, BACKGROUND_EXECUTOR)
+                        : client.patch_requestBrowseContinuation(continuation, BACKGROUND_EXECUTOR);
+                pending = future;
+                if (finished.get()) { future.cancel(true); return; }
+                future.addListener(() -> {
+                    if (finished.get()) return;
+                    try { receive.accept(future.get()); }
+                    catch (Exception ex) {
+                        Logger.printException(() -> "Could not read Android Auto page", ex);
+                        timedOut();
+                    }
+                }, BACKGROUND_EXECUTOR);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not request Android Auto page", ex);
+                timedOut();
+            }
         }
 
         void finish(List<MediaBrowserCompat.MediaItem> items) {

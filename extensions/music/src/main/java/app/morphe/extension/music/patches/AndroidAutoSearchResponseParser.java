@@ -105,7 +105,8 @@ final class AndroidAutoSearchResponseParser {
     private static List<SearchResult> readSections(ProtoMessage sectionList) {
         List<SearchResult> results = new ArrayList<>();
         for (ProtoMessage sectionRenderer : sectionList.repeatedMessageField(SECTION_LIST_CONTENTS)) {
-            readShelf(results, sectionRenderer.messageField(MUSIC_SHELF));
+            for (ProtoMessage childRenderer : sectionRenderer.messageField(MUSIC_SHELF).repeatedMessageField(MUSIC_SHELF_CONTENTS))
+                addSearchResult(results, childRenderer.messageField(SHELF_ITEM), SHELF_ITEM_TAP, false);
             for (ProtoMessage childRenderer : sectionRenderer.messageField(ITEM_SECTION).repeatedMessageField(ITEM_SECTION_CONTENTS)) {
                 ProtoMessage model = childRenderer.messagePath(ELEMENT, NEW_ELEMENT, ELEMENT_TYPE, COMPONENT_TYPE, COMPONENT_MODEL);
                 for (ProtoMessage row : model.messageField(RESULT_ROWS)
@@ -133,61 +134,34 @@ final class AndroidAutoSearchResponseParser {
         return Collections.unmodifiableList(results);
     }
 
-    private static void readShelf(List<SearchResult> results, ProtoMessage shelf) {
-        for (ProtoMessage childRenderer : shelf.repeatedMessageField(MUSIC_SHELF_CONTENTS)) {
-            ProtoMessage shelfItem = childRenderer.messageField(SHELF_ITEM);
-            ProtoMessage tapCommand = shelfItem.messageField(SHELF_ITEM_TAP);
-            boolean tapStartsPlayback = isPlayable(tapCommand);
-            String title = textRuns(shelfItem.messageField(SHELF_ITEM_TITLE));
-            if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) continue;
-            // If tapping opens a page on the phone, use its menu's play action.
-            ProtoMessage menu = shelfItem.messagePath(SHELF_ITEM_MENU, MENU);
-            ProtoMessage playCommand = tapStartsPlayback ? tapCommand : menuPlayCommand(menu);
-            ResultCategory category = resultCategory(tapCommand);
-            if (!isPlayable(playCommand) && category == ResultCategory.EPISODES)
-                playCommand = episodePlayCommand(menu);
-            boolean podcast = category == ResultCategory.PODCASTS;
-            if (!isPlayable(playCommand) && podcast) playCommand = podcastPlayCommand(tapCommand);
-            boolean uploadedCollection = category == ResultCategory.UPLOADED_ALBUMS
-                    || category == ResultCategory.UPLOADED_ARTISTS;
-            if (uploadedCollection) playCommand = playlistPlayCommand(
-                    playCommand.messageField(WATCH_PLAYLIST).stringField(PLAYLIST_ID), true);
-            String subtitle = podcastSubtitle(menu, category, textRuns(shelfItem.messageField(SHELF_ITEM_SUBTITLE)));
-            results.add(new SearchResult(title, subtitle,
-                    artwork(shelfItem.messagePath(SHELF_ITEM_IMAGE, THUMBNAIL, THUMBNAIL_CONTENTS)),
-                    playCommand.serializedBytes(), tapStartsPlayback || podcast || uploadedCollection, category));
-        }
-    }
-
     private static void addSearchResult(List<SearchResult> results, ProtoMessage renderer,
                                         int tapField, boolean groupAsTopResult) {
+        boolean shelfItem = tapField == SHELF_ITEM_TAP;
         boolean topResultCard = tapField == TOP_RESULT_TAP;
-        String title = renderer.stringField(RESULT_TITLE);
-        ProtoMessage tapCommand = renderer.messagePath(tapField, INNERTUBE_COMMAND);
+        String title = shelfItem ? textRuns(renderer.messageField(SHELF_ITEM_TITLE)) : renderer.stringField(RESULT_TITLE);
+        ProtoMessage tapCommand = shelfItem ? renderer.messageField(tapField) : renderer.messagePath(tapField, INNERTUBE_COMMAND);
         boolean tapStartsPlayback = isPlayable(tapCommand);
         if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
-        String artworkUrl = artwork(renderer.messagePath(RESULT_IMAGE, IMAGE_CONTENT));
-        String subtitle = renderer.stringField(RESULT_SUBTITLE);
+        String artworkUrl = artwork(shelfItem ? renderer.messagePath(SHELF_ITEM_IMAGE, THUMBNAIL, THUMBNAIL_CONTENTS)
+                : renderer.messagePath(RESULT_IMAGE, IMAGE_CONTENT));
+        String subtitle = shelfItem ? textRuns(renderer.messageField(SHELF_ITEM_SUBTITLE)) : renderer.stringField(RESULT_SUBTITLE);
         ResultCategory category = resultCategory(tapCommand);
-        ProtoMessage playCommand = tapCommand;
-        if (!tapStartsPlayback) {
-            ProtoMessage menu = renderer.messagePath(
-                    topResultCard ? TOP_RESULT_MENU : RESULT_MENU,
-                    INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
-            // Use the menu's play action without loading the result's phone page.
-            playCommand = menuPlayCommand(menu);
-            if (topResultCard) playCommand = topResultPlayCommand(renderer, playCommand);
-            if (!isPlayable(playCommand) && category == ResultCategory.EPISODES)
-                playCommand = episodePlayCommand(menu);
-            subtitle = podcastSubtitle(menu, category, subtitle);
-        }
-        if (category == ResultCategory.EPISODES) subtitle = episodeSubtitle(renderer, subtitle);
+        ProtoMessage menu = ProtoMessage.EMPTY;
+        if (shelfItem) menu = renderer.messagePath(SHELF_ITEM_MENU, MENU);
+        else if (!tapStartsPlayback) menu = renderer.messagePath(topResultCard ? TOP_RESULT_MENU : RESULT_MENU,
+                INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
+        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, topResultCard);
+        if (shelfItem || !tapStartsPlayback) subtitle = podcastSubtitle(menu, category, subtitle);
+        if (!shelfItem && category == ResultCategory.EPISODES) subtitle = episodeSubtitle(renderer, subtitle);
         boolean podcast = category == ResultCategory.PODCASTS;
-        if (!isPlayable(playCommand) && podcast) playCommand = podcastPlayCommand(tapCommand);
+        if (!isPlayable(playCommand) && podcast) {
+            String browseId = tapCommand.messageField(BROWSE).stringField(BROWSE_ID);
+            playCommand = new ProtoMessage(AndroidAutoPatch.orderedPlaylistCommand(browseId.substring(4), false));
+        }
         boolean uploadedCollection = category == ResultCategory.UPLOADED_ALBUMS
                 || category == ResultCategory.UPLOADED_ARTISTS;
-        if (uploadedCollection) playCommand = playlistPlayCommand(
-                playCommand.messageField(WATCH_PLAYLIST).stringField(PLAYLIST_ID), true);
+        if (uploadedCollection) playCommand = new ProtoMessage(AndroidAutoPatch.orderedPlaylistCommand(
+                playCommand.messageField(WATCH_PLAYLIST).stringField(PLAYLIST_ID), true));
         results.add(new SearchResult(title, subtitle, artworkUrl,
                 playCommand.serializedBytes(), tapStartsPlayback || podcast || uploadedCollection,
                 groupAsTopResult ? ResultCategory.TOP_RESULT : category));
@@ -222,15 +196,6 @@ final class AndroidAutoSearchResponseParser {
                     ? ResultCategory.VIDEOS : ResultCategory.SONGS;
         }
         return ResultCategory.OTHER;
-    }
-
-    private static ProtoMessage podcastPlayCommand(ProtoMessage tapCommand) {
-        String browseId = tapCommand.messageField(BROWSE).stringField(BROWSE_ID);
-        return playlistPlayCommand(browseId.substring(4), false);
-    }
-
-    private static ProtoMessage playlistPlayCommand(String playlistId, boolean uploaded) {
-        return new ProtoMessage(AndroidAutoPatch.orderedPlaylistCommand(playlistId, uploaded));
     }
 
 }

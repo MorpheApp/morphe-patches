@@ -11,7 +11,6 @@ import static app.morphe.extension.music.patches.AndroidAutoPatch.BACKGROUND_EXE
 import static app.morphe.extension.music.patches.AndroidAutoPatch.DEADLINE_MS;
 import static app.morphe.extension.music.patches.AndroidAutoPatch.createPlayableSearchResults;
 import static app.morphe.extension.music.patches.AndroidAutoPatch.mainHandler;
-import static app.morphe.extension.music.patches.AndroidAutoPatch.transformFuture;
 
 import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.SearchResult;
 
@@ -30,7 +29,6 @@ import java.util.WeakHashMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -156,15 +154,10 @@ public final class AndroidAutoSearchPatch {
         final PhoneSearchClient client;
         final String query;
         final AtomicBoolean finished = new AtomicBoolean();
-        volatile SearchResponses responses;
-        final Runnable timeout = () -> {
-            var pending = responses;
-            try { finish(pending == null ? null : pending.availableResults()); }
-            catch (Exception ex) {
-                Logger.printException(() -> "Could not finish Android Auto search", ex);
-                finish(null);
-            }
-        };
+        final CompletableFuture<List<SearchResult>> catalog = new CompletableFuture<>();
+        final CompletableFuture<List<SearchResult>> uploads = new CompletableFuture<>();
+        final List<ListenableFuture<PhoneSearchResponse>> pendingResponses = new ArrayList<>();
+        final Runnable timeout = this::finishAvailableResults;
         final List<SearchRequest> requests = new ArrayList<>();
         final Runnable submit;
 
@@ -177,23 +170,19 @@ public final class AndroidAutoSearchPatch {
 
         void start() {
             if (finished.get()) return;
-            try {
-                if (client != phoneSearchClient) { finish(Collections.emptyList()); return; }
-                listenForResults(new SearchResponses(client, query));
-            } catch (Exception ex) {
-                Logger.printException(() -> "Could not request Android Auto search", ex);
-                finish(null);
-            }
+            if (client != phoneSearchClient) { finish(Collections.emptyList()); return; }
+            CompletableFuture.allOf(catalog, uploads).whenComplete((ignored, error) -> finishAvailableResults());
+            request(false, null, catalog);
+            request(true, null, uploads);
         }
 
-        void listenForResults(SearchResponses pending) {
-            responses = pending;
-            if (finished.get()) { pending.resultsFuture.cancel(true); return; }
-            pending.resultsFuture.whenComplete((playableResults, error) -> {
-                if (finished.get()) return;
-                if (error != null) Logger.printException(() -> "Could not load Android Auto search results", error);
-                finish(error == null ? playableResults : null);
-            });
+        void finishAvailableResults() {
+            if (finished.get()) return;
+            try { finish(availableResults()); }
+            catch (Exception ex) {
+                Logger.printException(() -> "Could not finish Android Auto search", ex);
+                finish(null);
+            }
         }
 
         void finish(@Nullable List<MediaBrowserCompat.MediaItem> playableResults) {
@@ -203,8 +192,9 @@ public final class AndroidAutoSearchPatch {
             synchronized (AndroidAutoSearchPatch.class) {
                 if (pendingSearch == this) pendingSearch = null;
             }
-            var pending = responses;
-            if (pending != null) pending.resultsFuture.cancel(true);
+            synchronized (pendingResponses) {
+                for (var response : pendingResponses) response.cancel(true);
+            }
             Utils.runOnMainThread(() -> deliver(playableResults));
         }
 
@@ -214,62 +204,32 @@ public final class AndroidAutoSearchPatch {
                 catch (Exception ex) { Logger.printException(() -> "Could not deliver Android Auto search results", ex); }
             }
         }
-    }
 
-    /** Keeps catalog or upload results when the other request fails or exceeds the Auto deadline. */
-    private static final class SearchResponses {
-        final CompletableFuture<List<SearchResult>> catalog;
-        final CompletableFuture<List<SearchResult>> uploads;
-        final CompletableFuture<List<MediaBrowserCompat.MediaItem>> resultsFuture;
-
-        SearchResponses(PhoneSearchClient client, String query) {
-            catalog = request(client, query, false);
-            uploads = request(client, query, true);
-            resultsFuture = CompletableFuture.allOf(catalog, uploads).handle((ignored, error) -> availableResults());
-            resultsFuture.whenComplete((results, error) -> {
-                if (resultsFuture.isCancelled()) {
-                    catalog.cancel(true);
-                    uploads.cancel(true);
-                }
-            });
-        }
-
-        private static CompletableFuture<List<SearchResult>> request(
-                PhoneSearchClient client, String query, boolean uploaded) {
+        private void request(boolean uploaded, @Nullable String params, CompletableFuture<List<SearchResult>> results) {
+            if (finished.get()) return;
             try {
-                var initialResponse = transformFuture(
-                        client.patch_search(query, uploaded, null, BACKGROUND_EXECUTOR),
-                        PhoneSearchResponse::patch_responseBytes, BACKGROUND_EXECUTOR);
-                AtomicReference<CompletableFuture<List<SearchResult>>> uploadResultsRequest =
-                        new AtomicReference<>();
-                AtomicBoolean cancelled = new AtomicBoolean();
-                var results = initialResponse.thenCompose(response -> {
-                    String params = uploaded ? AndroidAutoSearchResponseParser.uploadedSearchParams(response) : "";
-                    if (params.isEmpty()) return CompletableFuture.completedFuture(
-                            AndroidAutoSearchResponseParser.parseSearchResults(response, uploaded));
-                    // The first response supplies the Uploads tab; follow its search parameters to load the account's results.
-                    var uploadResults = transformFuture(
-                            client.patch_search(query, true, params, BACKGROUND_EXECUTOR),
-                            uploadResponse -> AndroidAutoSearchResponseParser.parseSearchResults(uploadResponse.patch_responseBytes(), true),
-                            BACKGROUND_EXECUTOR);
-                    uploadResultsRequest.set(uploadResults);
-                    if (cancelled.get()) uploadResults.cancel(true);
-                    return uploadResults;
-                });
-                results.whenComplete((value, error) -> {
-                    if (!results.isCancelled()) return;
-                    cancelled.set(true);
-                    initialResponse.cancel(true);
-                    var uploadResults = uploadResultsRequest.get();
-                    if (uploadResults != null) uploadResults.cancel(true);
-                });
-                return results;
+                var response = client.patch_search(query, uploaded, params, BACKGROUND_EXECUTOR);
+                synchronized (pendingResponses) {
+                    if (finished.get()) { response.cancel(true); return; }
+                    pendingResponses.add(response);
+                }
+                response.addListener(() -> {
+                    if (finished.get()) return;
+                    try {
+                        byte[] bytes = response.get().patch_responseBytes();
+                        String uploadParams = uploaded && params == null
+                                ? AndroidAutoSearchResponseParser.uploadedSearchParams(bytes) : "";
+                        // The first response supplies the Uploads tab; follow its parameters to load the results.
+                        if (!uploadParams.isEmpty()) request(true, uploadParams, results);
+                        else results.complete(AndroidAutoSearchResponseParser.parseSearchResults(bytes, uploaded));
+                    } catch (Exception ex) { results.completeExceptionally(ex); }
+                }, BACKGROUND_EXECUTOR);
             } catch (Exception ex) {
-                Logger.printException(() -> "Could not request Android Auto search results", ex);
-                return CompletableFuture.completedFuture(null);
+                results.completeExceptionally(ex);
             }
         }
 
+        /** Keeps catalog or upload results when the other request fails or exceeds the Auto deadline. */
         @Nullable
         List<MediaBrowserCompat.MediaItem> availableResults() {
             List<SearchResult> combined = new ArrayList<>();

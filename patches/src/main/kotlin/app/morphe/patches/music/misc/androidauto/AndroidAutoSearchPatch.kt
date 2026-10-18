@@ -14,6 +14,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
+import app.morphe.patches.music.interaction.jam.addReferenceGetter
+import app.morphe.patches.music.interaction.jam.implementsType
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
@@ -61,22 +63,18 @@ internal fun BytecodePatchContext.patchSearch() {
     val createSearchRequestMethod = submissionCalls.single { it.returnType == requestType && it.parameterTypes.isEmpty() }
     val clientClass = mutableClassDefBy(createSearchRequestMethod.definingClass)
 
-    fun hierarchy(type: String): Set<String> = buildSet {
-        var current: String? = type
-        while (current != null && add(current)) current = classDefByOrNull(current)?.superclass
-    }
-
-    val requestHierarchy = hierarchy(requestType)
     val submitSearchMethodReference = submissionCalls.single { call ->
         call.returnType == "V" && call.parameterTypes.size == 3 &&
-                call.parameterTypes.first().toString() in requestHierarchy &&
+                implementsType(requestType, call.parameterTypes.first().toString()) &&
                 clientClass.methods.any {
                     it.parameterTypes.isEmpty() && it.returnType == call.parameterTypes.last().toString()
                 }
     }
     val policyType = submitSearchMethodReference.parameterTypes.last().toString()
     val requestPolicyMethod = clientClass.methods.single { it.parameterTypes.isEmpty() && it.returnType == policyType }
-    val requestSenderField = clientClass.instanceFields.single { submitSearchMethodReference.definingClass in hierarchy(it.type) }
+    val requestSenderField = clientClass.instanceFields.single {
+        implementsType(it.type, submitSearchMethodReference.definingClass)
+    }
     val requestSenderClass = classDefBy(submitSearchMethodReference.definingClass)
     val submitSearchMethod = navigate(submitSearchMethodReference).original()
     val responseConverterField = submitSearchMethod.instructions.mapNotNull {
@@ -193,10 +191,7 @@ private fun BytecodePatchContext.hookSearchRequests() {
     val searchRequestInterface = $$"Lapp/morphe/extension/music/patches/AndroidAutoSearchPatch$SearchRequest;"
     val queryField = searchRequestClass.instanceFields.single { it.type == "Ljava/lang/String;" }
     searchRequestClass.interfaces.add(searchRequestInterface)
-    searchRequestClass.addInterfaceMethod(findInterfaceMethod(searchRequestInterface, "patch_query"), 1, """
-        iget-object p0, p0, $queryField
-        return-object p0
-    """)
+    searchRequestClass.addReferenceGetter("patch_query", queryField)
     searchRequestClass.addInterfaceMethod(findInterfaceMethod(searchRequestInterface, "patch_deliverSearchResults"), 2, """
         invoke-virtual { p0, p1 }, $deliverSearchResultsMethod
         return-void

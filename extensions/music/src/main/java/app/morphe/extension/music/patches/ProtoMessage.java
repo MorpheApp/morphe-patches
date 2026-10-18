@@ -21,7 +21,7 @@ final class ProtoMessage {
     private static final int WIRE_FIXED64 = WireFormat.WIRETYPE_FIXED64;
     static final int WIRE_LENGTH_DELIMITED = WireFormat.WIRETYPE_LENGTH_DELIMITED;
     private static final int WIRE_FIXED32 = WireFormat.WIRETYPE_FIXED32;
-    private static final byte[] EMPTY = new byte[0];
+    static final ProtoMessage EMPTY = new ProtoMessage(new byte[0]);
     private final byte[] data;
     private final int start;
     private final int end;
@@ -52,7 +52,7 @@ final class ProtoMessage {
     private ProtoMessage messageField(int fieldNumber, int wireType) {
         List<ProtoMessage> matches = repeatedMessageField(fieldNumber, wireType);
         if (matches.size() > 1) throw new IllegalArgumentException("Repeated singular field: " + fieldNumber);
-        return matches.isEmpty() ? new ProtoMessage(EMPTY) : matches.get(0);
+        return matches.isEmpty() ? EMPTY : matches.get(0);
     }
 
     long varintField(int fieldNumber) {

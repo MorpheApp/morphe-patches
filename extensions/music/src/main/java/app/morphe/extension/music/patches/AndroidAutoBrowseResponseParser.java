@@ -265,13 +265,9 @@ final class AndroidAutoBrowseResponseParser {
             String title = textRuns(shelfItem.messageField(SHELF_ITEM_TITLE));
             if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) continue;
             ProtoMessage menu = shelfItem.messagePath(SHELF_ITEM_MENU, MENU);
-            ProtoMessage playCommand = tapStartsPlayback ? tapCommand : menuPlayCommand(menu);
-            if (!isPlayable(playCommand) && tapCommand.messageField(BROWSE).stringField(BROWSE_ID).startsWith("MPED")) {
-                playCommand = episodePlayCommand(menu);
-            }
             items.add(new BrowseItem(title, textRuns(shelfItem.messageField(SHELF_ITEM_SUBTITLE)),
                     artwork(shelfItem.messagePath(SHELF_ITEM_IMAGE, THUMBNAIL, THUMBNAIL_CONTENTS)), tapCommand.serializedBytes(), tapStartsPlayback,
-                    playCommand.serializedBytes()));
+                    playCommand(tapCommand, menu, shelfItem, false).serializedBytes()));
         }
     }
 
@@ -286,17 +282,9 @@ final class AndroidAutoBrowseResponseParser {
         boolean tapStartsPlayback = isPlayable(tapCommand);
         if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
         String artworkUrl = artwork(renderer.messagePath(imageField, IMAGE_CONTENT));
-        ProtoMessage playCommand = tapCommand;
-        if (!tapStartsPlayback) {
-            ProtoMessage menu = renderer.messagePath(
-                    tapField == TOP_RESULT_TAP ? TOP_RESULT_MENU : RESULT_MENU,
-                    INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
-            playCommand = menuPlayCommand(menu);
-            if (!isPlayable(playCommand) && tapCommand.messageField(BROWSE).stringField(BROWSE_ID).startsWith("MPED")) {
-                playCommand = episodePlayCommand(menu);
-            }
-            if (tapField == TOP_RESULT_TAP) playCommand = topResultPlayCommand(renderer, playCommand);
-        }
+        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(tapField == TOP_RESULT_TAP ? TOP_RESULT_MENU : RESULT_MENU,
+                INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
+        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, tapField == TOP_RESULT_TAP);
         String subtitle = renderer.stringField(subtitleField);
         if (tapCommand.messageField(BROWSE).stringField(BROWSE_ID).startsWith("MPED")) {
             subtitle = episodeSubtitle(renderer, subtitle);
@@ -305,6 +293,16 @@ final class AndroidAutoBrowseResponseParser {
     }
 
     // Text, artwork, and playback helpers also used by search.
+
+    static ProtoMessage playCommand(ProtoMessage tapCommand, ProtoMessage menu, ProtoMessage renderer,
+                                    boolean topResultCard) {
+        if (isPlayable(tapCommand)) return tapCommand;
+        ProtoMessage command = menuPlayCommand(menu);
+        if (topResultCard) command = topResultPlayCommand(renderer, command);
+        if (!isPlayable(command) && tapCommand.messageField(BROWSE).stringField(BROWSE_ID).startsWith("MPED"))
+            command = episodePlayCommand(menu);
+        return command;
+    }
 
     static String menuSubtitle(ProtoMessage menu) {
         // Compact phone cards keep their creator or collection subtitle in the menu header.
@@ -369,7 +367,7 @@ final class AndroidAutoBrowseResponseParser {
                 }
             }
         }
-        return new ProtoMessage(new byte[0]);
+        return ProtoMessage.EMPTY;
     }
 
     static ProtoMessage episodePlayCommand(ProtoMessage menu) {
@@ -382,7 +380,7 @@ final class AndroidAutoBrowseResponseParser {
                 }
             }
         }
-        return new ProtoMessage(new byte[0]);
+        return ProtoMessage.EMPTY;
     }
 
 }

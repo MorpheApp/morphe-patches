@@ -20,8 +20,10 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.interaction.jam.addBridge
-import app.morphe.patches.music.interaction.jam.protoDefaultInstanceFingerprint
-import app.morphe.patches.music.interaction.jam.protoParserFingerprint
+import app.morphe.patches.music.interaction.jam.decode
+import app.morphe.patches.music.interaction.jam.implementsType
+import app.morphe.patches.music.interaction.jam.installNativeAccessor
+import app.morphe.patches.music.interaction.jam.resolveProto
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -390,12 +392,7 @@ private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
         .mapNotNull { it.getReference<FieldReference>() }
         .filter { it.definingClass == phoneBrowseResponseClass.type }
         .distinct()
-    val responseProto = responseFields.single { field ->
-        val hierarchy = generateSequence(classDefByOrNull(field.type)) { currentClass ->
-            currentClass.superclass?.let { classDefByOrNull(it) }
-        }
-        hierarchy.any { "Lcom/google/protobuf/MessageLite;" in it.interfaces }
-    }
+    val responseProto = responseFields.single { implementsType(it.type, "Lcom/google/protobuf/MessageLite;") }
     phoneBrowseResponseClass.addInterfaceMethod(
         findInterfaceMethod(PHONE_BROWSE_RESPONSE, "patch_responseBytes"), 1, """
             iget-object p0, p0, $responseProto
@@ -404,17 +401,9 @@ private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
             return-object p0
         """,
     )
-    phoneBrowseResponseClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            PHONE_BROWSE_RESPONSE,
-            "patch_getTabs",
-        ),
-        registerCount = 1,
-        instructions = """
-            invoke-virtual { p0 }, $getTabsMethod
-            move-result-object p0
-            return-object p0
-        """
+    installNativeAccessor(
+        phoneBrowseResponseClass, "patch_getTabs", getTabsMethod,
+        resultType = findInterfaceMethod(PHONE_BROWSE_RESPONSE, "patch_getTabs").returnType,
     )
 
     phoneBrowseResponseClass.addInterfaceMethod(
@@ -476,30 +465,14 @@ private fun BytecodePatchContext.addGridRendererInterface() {
     val gridRendererType = getItemsMethod.parameterTypes.single().toString()
     val gridRendererClass = mutableClassDefBy(gridRendererType)
     gridRendererClass.interfaces.add(GRID_RENDERER)
-    gridRendererClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            GRID_RENDERER,
-            "patch_getItems",
-        ),
-        registerCount = 1,
-        instructions = """
-            invoke-static { p0 }, $getItemsMethod
-            move-result-object p0
-            return-object p0
-        """
-    )
-    gridRendererClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            GRID_RENDERER,
-            "patch_getPaginationCommands",
-        ),
-        registerCount = 1,
-        instructions = """
-            invoke-static { p0 }, $getPaginationCommandsMethod
-            move-result-object p0
-            return-object p0
-        """
-    )
+    mapOf("patch_getItems" to getItemsMethod, "patch_getPaginationCommands" to getPaginationCommandsMethod)
+        .forEach { (name, getter) ->
+            gridRendererClass.addInterfaceMethod(findInterfaceMethod(GRID_RENDERER, name), 1, """
+                invoke-static { p0 }, $getter
+                move-result-object p0
+                return-object p0
+            """)
+        }
 }
 
 // endregion
@@ -515,12 +488,7 @@ private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
         .instruction
         .getReference<FieldReference>()!!
         .type
-    val phoneBrowseItemFields = classDefBy(phoneBrowseItemType).fields.toList()
-
-    fun phoneBrowseItemField(name: String) = phoneBrowseItemFields
-        .single { field ->
-            !AccessFlags.STATIC.isSet(field.accessFlags) && field.name == name
-        }
+    val phoneBrowseItemFields = classDefBy(phoneBrowseItemType).instanceFields.toList()
 
     // Both phone thumbnail renderers must agree on the container and decoded thumbnail fields.
     val (artworkContainerField, thumbnailDetailsField) = phoneBrowseItemArtworkFingerprint(phoneBrowseItemType)
@@ -530,8 +498,8 @@ private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
         }
         .distinct()
         .single()
-    val titleField = phoneBrowseItemField(TITLE_FIELD_NAME)
-    val subtitleField = phoneBrowseItemField(SUBTITLE_FIELD_NAME)
+    val titleField = phoneBrowseItemFields.single { it.name == TITLE_FIELD_NAME }
+    val subtitleField = phoneBrowseItemFields.single { it.name == SUBTITLE_FIELD_NAME }
     if (artworkContainerField.type == titleField.type || titleField.type != subtitleField.type) {
         throw PatchException("Unexpected phone Browse item metadata fields")
     }
@@ -548,9 +516,7 @@ private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
     val createArtworkUriMethod = artworkUriMatch.instruction.getReference<MethodReference>()!!
     val itemCommandType = encodeCommandMediaIdMethod.parameterTypes.single().toString()
     // Both tap commands are read; resolvePlaylistBrowseId does not depend on their order.
-    val commandFields = phoneBrowseItemFields.filter { field ->
-        !AccessFlags.STATIC.isSet(field.accessFlags) && field.type == itemCommandType
-    }
+    val commandFields = phoneBrowseItemFields.filter { it.type == itemCommandType }
     if (commandFields.size != 2) throw PatchException("Expected two phone item commands")
 
     val commandToBrowseEndpointMethod = browseEndpointFromCommandFingerprint(
@@ -994,24 +960,12 @@ private fun BytecodePatchContext.patchPlaylistMediaIdBuilder(encodeCommandMediaI
 
 /** Decodes command bytes with YTM's protobuf registry before using its Android Auto media ID encoder. */
 private fun BytecodePatchContext.patchCommandEncoder(encoder: MethodReference) {
-    val type = encoder.parameterTypes.single().toString()
-    val defaultInstance = protoDefaultInstanceFingerprint(type).matchSingle().instructionMatches.single()
-        .instruction.getReference<FieldReference>()!!
-    val hierarchy = buildSet {
-        var current: String? = type
-        while (current != null && add(current)) current = classDefByOrNull(current)?.superclass
-    }
-    val parser = protoParserFingerprint(hierarchy).matchSingle().originalMethod
+    val command = resolveProto(encoder.parameterTypes.single().toString(), "Android Auto playback command")
     val patchClass = mutableClassDefBy(EXTENSION_CLASS)
     val stub = patchClass.methods.single { it.name == "encodeCommand" }
     val method = stub.addFreeRegisters(2).first
     method.addInstructions(0, """
-        sget-object v0, $defaultInstance
-        invoke-static {}, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
-        move-result-object v1
-        invoke-static { v0, p0, v1 }, $parser
-        move-result-object v0
-        check-cast v0, $type
+        ${command.decode("p0", "v0")}
         invoke-static { v0 }, $encoder
         move-result-object v0
         return-object v0
