@@ -23,7 +23,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,12 +56,10 @@ final class TTSEngine {
 
     public static final TTSEngine INSTANCE = new TTSEngine();
 
-    private static final String WS_HOST            = "speech.platform.bing.com";
+    private static final String WS_HOST            = "api.msedgeservices.com";
     private static final int    WS_PORT            = 443;
     private static final String TOKEN              = "6A5AA1D4EAFF4E9FB37E23D68491D6F4";
     private static final String AUDIO_FORMAT       = "audio-24khz-48kbitrate-mono-mp3";
-    // Keep in sync with the Edge browser version used in the User-Agent below.
-    private static final String SEC_MS_GEC_VERSION = "1-143.0.3650.75";
 
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS    = 20_000;
@@ -538,13 +535,10 @@ final class TTSEngine {
             closeSocket();
         }
 
-        String secMsGec     = genSecMsGec();
-        String connectionId = uuidHex();
-        String path = "/consumer/speech/synthesize/readaloud/edge/v1"
-                + "?TrustedClientToken=" + TOKEN
-                + "&ConnectionId=" + connectionId
-                + "&Sec-MS-GEC=" + secMsGec
-                + "&Sec-MS-GEC-Version=" + SEC_MS_GEC_VERSION;
+        // The old readaloud/edge/v1 endpoint rejects V1 Sec-MS-GEC tokens with HTTP 403.
+        // The Edge services endpoint accepts the same speech.config and SSML messages.
+        String path = "/tts/cognitiveservices/websocket/v1"
+                + "?Ocp-Apim-Subscription-Key=" + TOKEN;
 
         SSLSocket socket = (SSLSocket) SSLSocketFactory.getDefault().createSocket();
         try {
@@ -793,29 +787,6 @@ final class TTSEngine {
                 currentPlayer = null;
             }
         });
-    }
-
-    /**
-     * Generates the Sec-MS-GEC DRM token required by the Edge TTS WebSocket endpoint.
-     * Algorithm: current time → Windows FILETIME ticks, rounded to 5 minutes,
-     * concatenated with the trusted client token, SHA-256 hashed.
-     */
-    private static String genSecMsGec() throws Exception {
-        // Windows FILETIME epoch offset: 100-nanosecond ticks from 1601-01-01 to 1970-01-01.
-        final long EPOCH_OFFSET_TICKS = 116_444_736_000_000_000L;
-        // 5 minutes expressed in 100-nanosecond ticks.
-        final long FIVE_MIN_TICKS     = 3_000_000_000L;
-
-        final long ticks   = System.currentTimeMillis() * 10_000L + EPOCH_OFFSET_TICKS;
-        final long rounded = ticks - (ticks % FIVE_MIN_TICKS);
-
-        String input = (rounded + TOKEN).toUpperCase(Locale.US);
-        MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
-        byte[] hash = sha256.digest(input.getBytes(StandardCharsets.UTF_8));
-
-        StringBuilder sb = new StringBuilder(64);
-        for (byte b : hash) sb.append(String.format("%02X", b));
-        return sb.toString();
     }
 
     /** Extract locale portion from a voice name, e.g. "uk-UA-OstapNeural" → "uk-UA". */
