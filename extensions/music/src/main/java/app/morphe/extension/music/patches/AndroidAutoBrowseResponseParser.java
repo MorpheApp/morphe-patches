@@ -12,87 +12,78 @@ import java.util.Collections;
 import java.util.List;
 
 final class AndroidAutoBrowseResponseParser {
-    // These phone response field numbers are independent of YTM's generated class names.
-    static final int TAB = 58_174_010;
-    private static final int SINGLE_COLUMN_BROWSE = 58_173_949;
-    static final int SECTION_LIST = 49_399_797;
-    // ItemSectionRenderer wraps child renderers, including rows, cards, and titled groups.
-    static final int ITEM_SECTION = 50_195_462;
-    private static final int NEXT_CONTINUATION = 52_047_593;
-    private static final int GRID = 51_805_506;
-    static final int ELEMENT = 153_515_154;
-    static final int NEW_ELEMENT = 172_660_663;
-    static final int COMPONENT_TYPE = 168_777_401;
-    static final int RESULT_ROWS = 410_090_561;
-    static final int TOP_RESULT = 1_223;
-    private static final int GRID_ITEM = 1_105;
-    private static final int SPEED_DIAL = 487_343_630;
-    private static final int CARD_SHELF = 404_005_902;
-    private static final int ROW_SHELF = 405_953_475;
-    static final int INNERTUBE_COMMAND = 169_495_254;
-    static final int WATCH = 48_687_757;
-    static final int WATCH_PLAYLIST = 52_666_186;
-    static final int BROWSE = 48_687_626;
-    static final int MUSIC_SHELF = 91_303_872;
-    private static final int PLAYLIST_SHELF = 175_617_300;
-    static final int SHELF_ITEM = 161_429_595;
-    static final int THUMBNAIL = 164_480_666;
-    static final int MENU_ENDPOINT = 98_150_882;
-    static final int MENU = 66_439_850;
-    private static final int MENU_NAVIGATION_ITEM = 66_441_108;
-    private static final int MENU_SERVICE_ITEM = 66_441_155;
-    private static final int MENU_TOGGLE_SERVICE_ITEM = 77_258_115;
-    private static final int YOUTUBE_MODEL = 413_471_385;
-    private static final int MENU_HEADER_CONTENT = 1_051;
-    private static final int MENU_BUTTON_CAROUSEL = 33_556_355;
-    private static final int SERIAL_COMMAND = 170_382_688;
-    private static final int QUEUE_ADD = 163_162_354;
-
+    // Protobuf field numbers for YTM's phone Home, Library, and search responses.
     private static final int BROWSE_CONTENTS = 9;
     private static final int BROWSE_CONTINUATION = 10;
+    private static final int SINGLE_COLUMN_BROWSE = 58_173_949;
     private static final int BROWSE_TABS = 1;
+    static final int TAB = 58_174_010;
+    static final int TAB_CONTENTS = 4;
+
+    static final int SECTION_LIST = 49_399_797;
     static final int SECTION_LIST_CONTENTS = 1;
     private static final int SECTION_LIST_CONTINUATIONS = 2;
+    // ItemSectionRenderer wraps child renderers, including rows, cards, and titled groups.
+    static final int ITEM_SECTION = 50_195_462;
     static final int ITEM_SECTION_CONTENTS = 1;
+    private static final int GRID = 51_805_506;
     private static final int GRID_ITEMS = 1;
-    static final int MUSIC_SHELF_CONTENTS = 2;
-    private static final int PLAYLIST_SHELF_CONTENTS = 3;
+    private static final int NEXT_CONTINUATION = 52_047_593;
     private static final int CONTINUATION_TOKEN = 1;
-    static final int TAB_CONTENTS = 4;
+
+    static final int ELEMENT = 153_515_154;
+    static final int NEW_ELEMENT = 172_660_663;
     static final int ELEMENT_TYPE = 1;
+    static final int COMPONENT_TYPE = 168_777_401;
     static final int COMPONENT_MODEL = 5;
-    private static final int VIEW_MODEL = 1;
-    static final int BROWSE_ID = 2;
-    private static final int WATCH_VIDEO_ID = 1;
-    private static final int WATCH_PLAYLIST_ID = 2;
-    static final int PLAYLIST_ID = 1;
-    static final int RESULT_TAP = 4;
-    static final int TOP_RESULT_TAP = 8;
-    static final int RESULT_MENU = 5;
-    static final int TOP_RESULT_MENU = 9;
+
+    static final int MUSIC_SHELF = 91_303_872;
+    static final int MUSIC_SHELF_CONTENTS = 2;
+    private static final int PLAYLIST_SHELF = 175_617_300;
+    private static final int PLAYLIST_SHELF_CONTENTS = 3;
+    static final int SHELF_ITEM = 161_429_595;
+    static final int SHELF_ITEM_IMAGE = 1;
+    static final int SHELF_ITEM_TITLE = 3;
+    static final int SHELF_ITEM_SUBTITLE = 4;
+    static final int SHELF_ITEM_TAP = 5;
+    static final int SHELF_ITEM_MENU = 9;
+
+    static final int RESULT_ROWS = 410_090_561;
+    static final int RESULT_ROWS_ITEMS = 1;
+    static final int RESULT_IMAGE = 1;
     static final int RESULT_TITLE = 2;
     static final int RESULT_SUBTITLE = 3;
-    static final int RESULT_IMAGE = 1;
-    static final int RESULT_ROWS_ITEMS = 1;
+    static final int RESULT_TAP = 4;
+    static final int RESULT_MENU = 5;
+
+    static final int TOP_RESULT = 1_223;
     static final int TOP_RESULT_CONTENT = 1;
     static final int TOP_RESULT_PRIMARY = 5;
     static final int TOP_RESULT_RELATED = 7;
+    static final int TOP_RESULT_TAP = 8;
+    static final int TOP_RESULT_MENU = 9;
+    private static final int TOP_RESULT_BUTTONS = 14;
+    private static final int TOP_RESULT_BUTTON_ITEMS = 1;
+    private static final int TOP_RESULT_BUTTON_CONTENT = 2;
+    private static final int TOP_RESULT_BUTTON_TAP = 6;
+
+    private static final int GRID_ITEM = 1_105;
     private static final int GRID_ITEM_CONTENT = 1;
+    private static final int CARD_TITLE = 1;
+    private static final int CARD_SUBTITLE = 2;
+    private static final int CARD_IMAGE = 3;
+
+    private static final int CARD_SHELF = 404_005_902;
     private static final int CARD_SHELF_CONTENT = 1;
-    private static final int CARD_SHELF_HEADER = 5;
     private static final int CARD_SHELF_ITEMS = 3;
+    private static final int CARD_SHELF_HEADER = 5;
+    private static final int ROW_SHELF = 405_953_475;
     private static final int ROW_SHELF_HEADER = 5;
     private static final int ROW_SHELF_ITEMS = 6;
     private static final int SHELF_HEADER_TITLE = 1;
     private static final int SHELF_HEADER_TAP = 5;
-    private static final int CARD_TITLE = 1;
-    private static final int CARD_SUBTITLE = 2;
-    private static final int CARD_IMAGE = 3;
-    static final int SHELF_ITEM_TITLE = 3;
-    static final int SHELF_ITEM_SUBTITLE = 4;
-    static final int SHELF_ITEM_IMAGE = 1;
-    static final int SHELF_ITEM_TAP = 5;
-    static final int SHELF_ITEM_MENU = 9;
+
+    private static final int SPEED_DIAL = 487_343_630;
     private static final int SPEED_DIAL_CONTENT = 5;
     private static final int SPEED_DIAL_ITEMS = 1;
     private static final int SPEED_DIAL_HEADER = 2;
@@ -101,27 +92,51 @@ final class AndroidAutoBrowseResponseParser {
     private static final int SPEED_DIAL_MENU = 4;
     private static final int SPEED_DIAL_TAP = 9;
     private static final int SPEED_DIAL_PLAY = 10;
-    private static final int TOP_RESULT_BUTTONS = 14;
-    private static final int TOP_RESULT_BUTTON_ITEMS = 1;
-    private static final int TOP_RESULT_BUTTON_CONTENT = 2;
-    private static final int TOP_RESULT_BUTTON_TAP = 6;
+
+    static final int INNERTUBE_COMMAND = 169_495_254;
+    static final int BROWSE = 48_687_626;
+    static final int BROWSE_ID = 2;
+    static final int WATCH = 48_687_757;
+    private static final int WATCH_VIDEO_ID = 1;
+    private static final int WATCH_PLAYLIST_ID = 2;
+    static final int WATCH_PLAYLIST = 52_666_186;
+    static final int PLAYLIST_ID = 1;
+
+    static final int MENU_ENDPOINT = 98_150_882;
     static final int MENU_CONTENT = 1;
+    static final int MENU = 66_439_850;
     private static final int MENU_ITEMS = 1;
-    private static final int MENU_HEADER_SUBTITLE = 3;
+    private static final int MENU_NAVIGATION_ITEM = 66_441_108;
     private static final int MENU_NAVIGATION_ENDPOINT = 3;
+    private static final int MENU_SERVICE_ITEM = 66_441_155;
+    private static final int MENU_TOGGLE_SERVICE_ITEM = 77_258_115;
     private static final int MENU_SERVICE_ENDPOINT = 3;
+
+    private static final int YOUTUBE_MODEL = 413_471_385;
+    private static final int VIEW_MODEL = 1;
+    private static final int MENU_HEADER_CONTENT = 1_051;
+    private static final int MENU_HEADER_SUBTITLE = 3;
+
+    private static final int MENU_BUTTON_CAROUSEL = 33_556_355;
     private static final int MENU_CAROUSEL_BUTTONS = 4;
     private static final int MENU_BUTTON_TAP = 3;
+
+    private static final int SERIAL_COMMAND = 170_382_688;
     private static final int SERIAL_COMMANDS = 1;
+    private static final int QUEUE_ADD = 163_162_354;
     private static final int QUEUE_ADD_ITEMS = 1;
     private static final int QUEUE_ITEM_COMMAND = 4;
+
     private static final int TEXT_RUNS = 1;
     private static final int TEXT_RUN_TEXT = 1;
     static final int TEXT_CONTENT = 1;
+
     static final int IMAGE_CONTENT = 1;
+    static final int THUMBNAIL = 164_480_666;
     static final int THUMBNAIL_CONTENTS = 1;
     private static final int THUMBNAILS = 1;
     private static final int THUMBNAIL_URL = 1;
+
     private static final int EPISODE_PROGRESS = 18;
     private static final int EPISODE_PROGRESS_CONTAINER = 23;
     private static final int EPISODE_NESTED_PROGRESS = 9;
@@ -129,8 +144,8 @@ final class AndroidAutoBrowseResponseParser {
     private static final int PROGRESS_FALLBACK_DURATION = 6;
 
     /**
-     * A phone tap may open a page instead of playing; playCommandBytes holds a separate playback action when available.
-     * Shelf metadata identifies the titled Home group containing this result.
+     * Phone album taps open the track list; playCommandBytes can hold a Play action for Auto to use instead.
+     * shelfTitle groups Home recommendations under headings such as Quick picks.
      */
     record BrowseItem(String title, String subtitle, String artworkUrl, byte[] tapCommandBytes, boolean tapStartsPlayback,
                       byte[] playCommandBytes, String shelfTitle, String shelfBrowseId) {

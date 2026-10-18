@@ -18,13 +18,14 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
+import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.protoDefaultInstanceFingerprint
 import app.morphe.patches.music.interaction.jam.protoParserFingerprint
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.util.addFreeRegisters
 import app.morphe.util.cloneMutable
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findMutableMethodOf
@@ -35,7 +36,6 @@ import app.morphe.util.returnEarly
 import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
@@ -43,7 +43,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
@@ -154,8 +153,6 @@ private fun BytecodePatchContext.patchPhoneBrowseClient() {
 
     val phoneBrowseClientClass = mutableClassDefBy(phoneBrowseClientType)
     phoneBrowseClientClass.interfaces.add(PHONE_BROWSE_CLIENT)
-    addPhoneAccountScopeBridge(phoneBrowseClientClass, createPhoneBrowseRequestMethod,
-        PHONE_BROWSE_CLIENT)
     addPhoneBrowseRequestMethod(
         phoneBrowseClientClass,
         createPhoneBrowseRequestMethod,
@@ -389,11 +386,16 @@ private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
     )
     val phoneBrowseResponseClass = mutableClassDefBy(getTabsMethod.definingClass)
     phoneBrowseResponseClass.interfaces.add(PHONE_BROWSE_RESPONSE)
-    val responseProto = getTabsMethod.instructions.mapNotNull { it.getReference<FieldReference>() }.distinct()
-        .single { it.definingClass == phoneBrowseResponseClass.type && classDefByOrNull(it.type)?.let { type ->
-            generateSequence(type) { current -> current.superclass?.let { parent -> classDefByOrNull(parent) } }
-                .any { current -> current.interfaces.contains("Lcom/google/protobuf/MessageLite;") }
-        } == true }
+    val responseFields = getTabsMethod.instructions
+        .mapNotNull { it.getReference<FieldReference>() }
+        .filter { it.definingClass == phoneBrowseResponseClass.type }
+        .distinct()
+    val responseProto = responseFields.single { field ->
+        val hierarchy = generateSequence(classDefByOrNull(field.type)) { currentClass ->
+            currentClass.superclass?.let { classDefByOrNull(it) }
+        }
+        hierarchy.any { "Lcom/google/protobuf/MessageLite;" in it.interfaces }
+    }
     phoneBrowseResponseClass.addInterfaceMethod(
         findInterfaceMethod(PHONE_BROWSE_RESPONSE, "patch_responseBytes"), 1, """
             iget-object p0, p0, $responseProto
@@ -965,7 +967,7 @@ private fun BytecodePatchContext.patchPlaylistMediaIdBuilder(encodeCommandMediaI
         .single { method -> method.name == "build" && method.parameterTypes.isEmpty() }
     val patchClass = mutableClassDefBy(EXTENSION_CLASS)
     val stub = patchClass.methods.single { it.name == "createPlaylistMediaId" }
-    val method = stub.cloneMutable(additionalRegisters = 7)
+    val method = stub.addFreeRegisters(7).first
     method.addInstructions(
         0,
         """
@@ -987,36 +989,11 @@ private fun BytecodePatchContext.patchPlaylistMediaIdBuilder(encodeCommandMediaI
             return-object v0
         """
     )
-    patchClass.methods.remove(stub)
-    patchClass.methods.add(method)
 }
 
 // endregion
 
 // region Methods added to YTM classes
-
-/** Reads the account used for requests so pending loads are not shared or delivered across accounts. */
-internal fun BytecodePatchContext.addPhoneAccountScopeBridge(
-    client: MutableClass, factory: MethodReference, api: String,
-) {
-    val method = classDefBy(factory.definingClass).methods.single {
-        it.name == factory.name && it.parameterTypes == factory.parameterTypes
-    }
-    val constructors = method.instructions.mapNotNull { it.getReference<MethodReference>() }
-        .filter { it.name == "<init>" && it.definingClass == factory.returnType }
-    val getter = method.instructions.filter { it.opcode == Opcode.INVOKE_INTERFACE }
-        .mapNotNull { it.getReference<MethodReference>() }.distinct().single { call ->
-            call.parameterTypes.isEmpty() && constructors.any { call.returnType in it.parameterTypes } &&
-                    client.instanceFields.any { it.type == call.definingClass }
-        }
-    val field = client.instanceFields.single { it.type == getter.definingClass }
-    client.addInterfaceMethod(findInterfaceMethod(api, "patch_accountScope"), 1, """
-        iget-object p0, p0, $field
-        invoke-interface { p0 }, $getter
-        move-result-object p0
-        return-object p0
-    """)
-}
 
 /** Decodes command bytes with YTM's protobuf registry before using its Android Auto media ID encoder. */
 private fun BytecodePatchContext.patchCommandEncoder(encoder: MethodReference) {
@@ -1030,7 +1007,7 @@ private fun BytecodePatchContext.patchCommandEncoder(encoder: MethodReference) {
     val parser = protoParserFingerprint(hierarchy).matchSingle().originalMethod
     val patchClass = mutableClassDefBy(EXTENSION_CLASS)
     val stub = patchClass.methods.single { it.name == "encodeCommand" }
-    val method = stub.cloneMutable(additionalRegisters = 2)
+    val method = stub.addFreeRegisters(2).first
     method.addInstructions(0, """
         sget-object v0, $defaultInstance
         invoke-static {}, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
@@ -1042,8 +1019,6 @@ private fun BytecodePatchContext.patchCommandEncoder(encoder: MethodReference) {
         move-result-object v0
         return-object v0
     """)
-    patchClass.methods.remove(stub)
-    patchClass.methods.add(method)
 }
 
 internal fun BytecodePatchContext.findInterfaceMethod(
@@ -1057,23 +1032,12 @@ internal fun MutableClass.addInterfaceMethod(
     interfaceMethod: Method,
     registerCount: Int,
     instructions: String,
-) {
-    methods.add(
-        ImmutableMethod(
-            type,
-            interfaceMethod.name,
-            interfaceMethod.parameters.map { parameter ->
-                ImmutableMethodParameter(parameter.type, null, null)
-            },
-            interfaceMethod.returnType,
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-            null,
-            null,
-            MutableMethodImplementation(registerCount),
-        ).toMutable().apply {
-            addInstructions(0, instructions)
-        }
-    )
-}
+) = addBridge(
+    name = interfaceMethod.name,
+    parameters = interfaceMethod.parameterTypes.map(CharSequence::toString),
+    returnType = interfaceMethod.returnType,
+    registers = registerCount,
+    body = instructions,
+)
 
 // endregion

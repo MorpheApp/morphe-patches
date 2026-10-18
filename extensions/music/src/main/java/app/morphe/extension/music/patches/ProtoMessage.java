@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/** Reads selected protobuf fields as byte slices, without YTM's generated message classes. */
 final class ProtoMessage {
     private static final int WIRE_VARINT = WireFormat.WIRETYPE_VARINT;
     private static final int WIRE_FIXED64 = WireFormat.WIRETYPE_FIXED64;

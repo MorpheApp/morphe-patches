@@ -34,13 +34,15 @@ private const val EXECUTOR = "Ljava/util/concurrent/Executor;"
 
 // region Phone search client and responses
 
-/** Identifies the query field in a phone search request. */
+/** Identifies the query and parameter fields in a phone search request. */
 private object PhoneSearchRequestFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     parameters = emptyList(),
     strings = listOf("query", "params", "musicSearchRequestType"),
     filters = listOf(
         string("query"),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;", location = MatchAfterWithin(2)),
+        string("params"),
         fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;", location = MatchAfterWithin(2)),
     ),
 )
@@ -76,9 +78,7 @@ internal fun BytecodePatchContext.patchSearch() {
     val requestPolicyMethod = clientClass.methods.single { it.parameterTypes.isEmpty() && it.returnType == policyType }
     val requestSenderField = clientClass.instanceFields.single { submitSearchMethodReference.definingClass in hierarchy(it.type) }
     val requestSenderClass = classDefBy(submitSearchMethodReference.definingClass)
-    val submitSearchMethod = requestSenderClass.methods.single {
-        it.name == submitSearchMethodReference.name && it.parameterTypes == submitSearchMethodReference.parameterTypes
-    }
+    val submitSearchMethod = navigate(submitSearchMethodReference).original()
     val responseConverterField = submitSearchMethod.instructions.mapNotNull {
         if (it.opcode == Opcode.SGET_OBJECT) it.getReference<FieldReference>() else null
     }.single()
@@ -89,13 +89,9 @@ internal fun BytecodePatchContext.patchSearch() {
         )
     }
 
-    val queryField = PhoneSearchRequestFingerprint.instructionMatches.mapNotNull {
+    val (queryField, paramsField) = PhoneSearchRequestFingerprint.instructionMatches.mapNotNull {
         it.instruction.getReference<FieldReference>()
-    }.single()
-    val requestDescription = PhoneSearchRequestFingerprint.originalMethod.instructions.toList()
-    val paramsNameIndex = requestDescription.indexOfFirst { it.getReference<StringReference>()?.string == "params" }
-    val paramsField = requestDescription.drop(paramsNameIndex + 1).first { it.opcode == Opcode.IGET_OBJECT }
-        .getReference<FieldReference>()!!
+    }
     val requestClass = classDefBy(requestType)
     // The phone uses the same request builder for catalog and uploaded music searches.
     val searchTypeMatches = requestClass.instanceFields.mapNotNull { field ->
@@ -119,7 +115,6 @@ internal fun BytecodePatchContext.patchSearch() {
     val (requestTypeField, catalogSearchValueField, uploadedSearchValueField) = searchTypeMatches.single()
 
     clientClass.interfaces.add(PHONE_SEARCH_CLIENT)
-    addPhoneAccountScopeBridge(clientClass, createSearchRequestMethod, PHONE_SEARCH_CLIENT)
     clientClass.addInterfaceMethod(
         findInterfaceMethod(PHONE_SEARCH_CLIENT, "patch_search"),
         10,

@@ -11,10 +11,8 @@ import static app.morphe.extension.music.patches.AndroidAutoPatch.BACKGROUND_EXE
 import static app.morphe.extension.music.patches.AndroidAutoPatch.DEADLINE_MS;
 import static app.morphe.extension.music.patches.AndroidAutoPatch.createPlayableSearchResults;
 import static app.morphe.extension.music.patches.AndroidAutoPatch.mainHandler;
-import static app.morphe.extension.music.patches.AndroidAutoPatch.scope;
 import static app.morphe.extension.music.patches.AndroidAutoPatch.transformFuture;
 
-import app.morphe.extension.music.patches.AndroidAutoPatch.RequestKey;
 import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.SearchResult;
 
 import android.support.v4.media.MediaBrowserCompat;
@@ -35,6 +33,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Supplies playable phone search results while retaining YTM's local Library search and caller checks.
@@ -44,8 +43,6 @@ import app.morphe.extension.shared.Logger;
 public final class AndroidAutoSearchPatch {
     /** Added to YTM's phone search client to select catalog or uploaded music. */
     public interface PhoneSearchClient {
-        /** Current account used to construct YTM's search requests. */
-        Object patch_accountScope();
         ListenableFuture<PhoneSearchResponse> patch_search(String query, boolean uploaded,
                                                           @Nullable String params, Executor executor);
     }
@@ -80,7 +77,7 @@ public final class AndroidAutoSearchPatch {
         SearchLoad previous;
         synchronized (AndroidAutoSearchPatch.class) {
             previous = pendingSearch;
-            if (previous != null && previous.key.input().equals(request.patch_query())) previous = null;
+            if (previous != null && previous.query.equals(request.patch_query())) previous = null;
         }
         // Clearing the query can return through YTM's local-search path before handleSearch runs.
         if (previous != null) previous.finish(Collections.emptyList());
@@ -136,17 +133,17 @@ public final class AndroidAutoSearchPatch {
             SearchCompletion completion = searchCompletions.get(request);
             if (completion != null) completion.cancelDeadline();
         }
-        RequestKey key = new RequestKey(query, scope(client));
         SearchLoad load;
         SearchLoad previous;
         synchronized (AndroidAutoSearchPatch.class) {
             previous = pendingSearch;
-            if (previous != null && !previous.finished.get() && key.scope().account() != null && previous.key.equals(key)) {
+            if (previous != null && !previous.finished.get()
+                    && previous.client == client && previous.query.equals(query)) {
                 // Repeated queries keep the original deadline so they cannot prolong loading indefinitely.
                 previous.requests.add(request);
                 return true;
             }
-            pendingSearch = load = new SearchLoad(request, key);
+            pendingSearch = load = new SearchLoad(request, client, query);
         }
         if (previous != null) previous.finish(Collections.emptyList());
         mainHandler.postDelayed(load.timeout, DEADLINE_MS);
@@ -156,7 +153,8 @@ public final class AndroidAutoSearchPatch {
 
     /** Identical queries share a pending load and its deadline; each caller completes once. */
     private static final class SearchLoad {
-        final RequestKey key;
+        final PhoneSearchClient client;
+        final String query;
         final AtomicBoolean finished = new AtomicBoolean();
         volatile SearchResponses responses;
         final Runnable timeout = () -> {
@@ -170,8 +168,9 @@ public final class AndroidAutoSearchPatch {
         final List<SearchRequest> requests = new ArrayList<>();
         final Runnable submit;
 
-        SearchLoad(SearchRequest request, RequestKey key) {
-            this.key = key;
+        SearchLoad(SearchRequest request, PhoneSearchClient client, String query) {
+            this.client = client;
+            this.query = query;
             requests.add(request);
             submit = () -> BACKGROUND_EXECUTOR.execute(this::start);
         }
@@ -179,8 +178,8 @@ public final class AndroidAutoSearchPatch {
         void start() {
             if (finished.get()) return;
             try {
-                if (!current(key)) { finish(Collections.emptyList()); return; }
-                listenForResults(new SearchResponses((PhoneSearchClient) key.scope().client(), key.input()));
+                if (client != phoneSearchClient) { finish(Collections.emptyList()); return; }
+                listenForResults(new SearchResponses(client, query));
             } catch (Exception ex) {
                 Logger.printException(() -> "Could not request Android Auto search", ex);
                 finish(null);
@@ -206,27 +205,15 @@ public final class AndroidAutoSearchPatch {
             }
             var pending = responses;
             if (pending != null) pending.resultsFuture.cancel(true);
-            mainHandler.post(() -> {
-                try { deliver(playableResults); }
-                catch (Exception ex) { Logger.printException(() -> "Could not deliver Android Auto search results", ex); }
-            });
+            Utils.runOnMainThread(() -> deliver(playableResults));
         }
 
         void deliver(@Nullable List<MediaBrowserCompat.MediaItem> playableResults) {
-            // Account or service changes can happen while results wait on the main thread.
-            if (!current(key)) playableResults = Collections.emptyList();
             for (SearchRequest request : requests) {
                 try { request.patch_deliverSearchResults(playableResults); }
                 catch (Exception ex) { Logger.printException(() -> "Could not deliver Android Auto search results", ex); }
             }
         }
-    }
-
-    // Request scope and completion
-
-    private static boolean current(RequestKey key) {
-        Object client = key.scope().client();
-        return client == phoneSearchClient && key.scope().equals(scope(client));
     }
 
     /** Keeps catalog or upload results when the other request fails or exceeds the Auto deadline. */
@@ -278,7 +265,7 @@ public final class AndroidAutoSearchPatch {
                 });
                 return results;
             } catch (Exception ex) {
-                Logger.printException(() -> "Could not request Android Auto search scope", ex);
+                Logger.printException(() -> "Could not request Android Auto search results", ex);
                 return CompletableFuture.completedFuture(null);
             }
         }
@@ -295,7 +282,7 @@ public final class AndroidAutoSearchPatch {
                     completed = true;
                     combined.addAll(results);
                 } catch (Exception ex) {
-                    Logger.printException(() -> "Could not load Android Auto search scope", ex);
+                    Logger.printException(() -> "Could not read Android Auto search response", ex);
                 }
             }
             return completed ? createPlayableSearchResults(combined) : null;

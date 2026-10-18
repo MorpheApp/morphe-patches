@@ -15,28 +15,33 @@ import java.util.List;
 
 /** Reads titles, artwork, and playback actions from phone search responses. */
 final class AndroidAutoSearchResponseParser {
-    private static final int TABBED_SEARCH = 60_498_879;
-    private static final int COMPACT_RESULT_CARD = 1_297;
-    private static final int MESSAGE = 58_508_690;
-    private static final int SEARCH = 48_687_709;
-    private static final int BROWSE_MUSIC_CONFIG = 172_183_029;
-    private static final int WATCH_SUPPORTED_CONFIG = 136_656_028;
-    private static final int WATCH_MUSIC_CONFIG = 136_657_325;
     private static final int SEARCH_CONTENTS = 4;
+    private static final int TABBED_SEARCH = 60_498_879;
     private static final int SEARCH_TABS = 1;
     private static final int TAB_ID = 11;
     private static final int TAB_COMMAND = 1;
+    private static final int MESSAGE = 58_508_690;
+
+    private static final int SEARCH = 48_687_709;
     private static final int SEARCH_PARAMS = 2;
+
     private static final int BROWSE_SUPPORTED_CONFIG = 6;
+    private static final int BROWSE_MUSIC_CONFIG = 172_183_029;
     private static final int MUSIC_PAGE_TYPE = 1;
-    private static final int MUSIC_VIDEO_TYPE = 2;
     private static final int PAGE_TYPE_PROFILE = 5;
+
+    private static final int WATCH_SUPPORTED_CONFIG = 136_656_028;
+    private static final int WATCH_MUSIC_CONFIG = 136_657_325;
+    private static final int MUSIC_VIDEO_TYPE = 2;
     private static final int VIDEO_TYPE_OFFICIAL_MUSIC_VIDEO = 2;
     private static final int VIDEO_TYPE_USER_GENERATED = 3;
     private static final int VIDEO_TYPE_UPLOADED_TRACK = 6;
+
+    private static final int COMPACT_RESULT_CARD = 1_297;
     private static final int COMPACT_RESULT_CONTENT = 1;
     private static final int COMPACT_RESULT_HEADER = 1;
     private static final int COMPACT_RESULT_ROWS = 2;
+
     private static final int TOP_RESULT_COMPONENTS = 9;
     private static final int TOP_RESULT_CARD = 1;
     private static final int TOP_RESULT_RELATED_ROW = 2;
@@ -59,10 +64,6 @@ final class AndroidAutoSearchResponseParser {
         ResultCategory(String titleResource) { this.titleResource = titleResource; }
     }
 
-    /**
-     * {@code preservePlaybackCommand} keeps commands from playable taps, podcasts, and uploads intact.
-     * Otherwise, non-radio playlist commands may be rebuilt to play in order.
-     */
     record SearchResult(String title, String subtitle, String artworkUrl, byte[] playCommandBytes,
                         boolean preservePlaybackCommand, ResultCategory category) {}
     static List<SearchResult> parseSearchResults(byte[] response, boolean uploaded) {
@@ -115,7 +116,8 @@ final class AndroidAutoSearchResponseParser {
                 addSearchResult(results, topResult.messageField(TOP_RESULT_PRIMARY), TOP_RESULT_TAP, true);
                 for (ProtoMessage row : topResult.repeatedMessageField(TOP_RESULT_RELATED))
                     addSearchResult(results, row, RESULT_TAP, false);
-                // Top results can wrap the primary card and related results in separate components.
+                // Some responses put the top match and related results in a nested list.
+                // Reading only the fields above would miss them.
                 for (ProtoMessage component : topResult.repeatedMessageField(TOP_RESULT_COMPONENTS)) {
                     addSearchResult(results, component.messageField(TOP_RESULT_CARD), TOP_RESULT_TAP, true);
                     addSearchResult(results, component.messageField(TOP_RESULT_RELATED_ROW), RESULT_TAP, false);
@@ -123,9 +125,9 @@ final class AndroidAutoSearchResponseParser {
                 // Compact cards also carry multi-row collections such as Listen again.
                 // Only untitled cards are top results; named collections retain each row's category.
                 ProtoMessage card = model.messagePath(COMPACT_RESULT_CARD, COMPACT_RESULT_CONTENT);
-                boolean isTopResult = card.messageField(COMPACT_RESULT_HEADER).stringField(TEXT_CONTENT).isEmpty();
+                boolean groupAsTopResult = card.messageField(COMPACT_RESULT_HEADER).stringField(TEXT_CONTENT).isEmpty();
                 for (ProtoMessage row : card.repeatedMessageField(COMPACT_RESULT_ROWS))
-                    addSearchResult(results, row, RESULT_TAP, isTopResult);
+                    addSearchResult(results, row, RESULT_TAP, groupAsTopResult);
             }
         }
         return Collections.unmodifiableList(results);
@@ -158,8 +160,8 @@ final class AndroidAutoSearchResponseParser {
     }
 
     private static void addSearchResult(List<SearchResult> results, ProtoMessage renderer,
-                                        int tapField, boolean isTopResult) {
-        boolean hasTopResultButtons = tapField == TOP_RESULT_TAP;
+                                        int tapField, boolean groupAsTopResult) {
+        boolean topResultCard = tapField == TOP_RESULT_TAP;
         String title = renderer.stringField(RESULT_TITLE);
         ProtoMessage tapCommand = renderer.messagePath(tapField, INNERTUBE_COMMAND);
         boolean tapStartsPlayback = isPlayable(tapCommand);
@@ -170,11 +172,11 @@ final class AndroidAutoSearchResponseParser {
         ProtoMessage playCommand = tapCommand;
         if (!tapStartsPlayback) {
             ProtoMessage menu = renderer.messagePath(
-                    hasTopResultButtons ? TOP_RESULT_MENU : RESULT_MENU,
+                    topResultCard ? TOP_RESULT_MENU : RESULT_MENU,
                     INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
             // Use the menu's play action without loading the result's phone page.
             playCommand = menuPlayCommand(menu);
-            if (hasTopResultButtons) playCommand = topResultPlayCommand(renderer, playCommand);
+            if (topResultCard) playCommand = topResultPlayCommand(renderer, playCommand);
             if (!isPlayable(playCommand) && category == ResultCategory.EPISODES)
                 playCommand = episodePlayCommand(menu);
             subtitle = podcastSubtitle(menu, category, subtitle);
@@ -188,7 +190,7 @@ final class AndroidAutoSearchResponseParser {
                 playCommand.messageField(WATCH_PLAYLIST).stringField(PLAYLIST_ID), true);
         results.add(new SearchResult(title, subtitle, artworkUrl,
                 playCommand.serializedBytes(), tapStartsPlayback || podcast || uploadedCollection,
-                isTopResult ? ResultCategory.TOP_RESULT : category));
+                groupAsTopResult ? ResultCategory.TOP_RESULT : category));
     }
 
     private static String podcastSubtitle(ProtoMessage menu, ResultCategory category, String subtitle) {

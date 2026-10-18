@@ -46,7 +46,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.shared.Logger;
@@ -61,8 +60,6 @@ import app.morphe.extension.shared.Utils;
 public final class AndroidAutoPatch {
 
     public interface PhoneBrowseClient {
-        /** Current account used to construct YTM's browse requests. */
-        Object patch_accountScope();
         ListenableFuture<PhoneBrowseResponse> patch_requestBrowse(
                 String browseId, Executor executor);
         ListenableFuture<PhoneBrowseResponse> patch_requestBrowseContinuation(
@@ -82,7 +79,6 @@ public final class AndroidAutoPatch {
     }
 
     public interface PhoneBrowseTab {
-        /** Decoded renderers from this phone tab's section list. */
         @Nullable Iterable<?> patch_getSectionContents();
     }
 
@@ -114,6 +110,7 @@ public final class AndroidAutoPatch {
         void patch_deliverBrowseItems(List<MediaBrowserCompat.MediaItem> items);
     }
 
+    /** Calls YTM's browser service to reload an Auto page, such as Albums. */
     public interface FolderReload {
         void patch_reloadFolder(String parentMediaId, Object connection, @Nullable Bundle options);
     }
@@ -132,8 +129,8 @@ public final class AndroidAutoPatch {
     private static final class PlaylistsFolderLoad {
         // Use the same YTM object throughout pagination, even if MusicBrowserService restarts.
         private final PhoneBrowseClient phoneBrowseClient;
-        private final long loadNumber = playlistsLoadCounter.incrementAndGet();
-        private final PlaylistsFolderDelivery folderDelivery;
+        private final long loadNumber = browseLoadCounter.incrementAndGet();
+        private final FolderDelivery folderDelivery;
         @GuardedBy("this")
         private final List<MediaBrowserCompat.MediaItem> libraryPlaylists = new ArrayList<>();
         @GuardedBy("this")
@@ -141,7 +138,7 @@ public final class AndroidAutoPatch {
         @GuardedBy("this")
         private boolean deliveryPreparationStarted;
 
-        private PlaylistsFolderLoad(PhoneBrowseClient browseClient, PlaylistsFolderDelivery folderDelivery) {
+        private PlaylistsFolderLoad(PhoneBrowseClient browseClient, FolderDelivery folderDelivery) {
             this.phoneBrowseClient = browseClient;
             this.folderDelivery = folderDelivery;
         }
@@ -174,30 +171,37 @@ public final class AndroidAutoPatch {
     }
 
     /** Prevents older results from replacing newer results for the same folder and Android Auto connection. */
-    private static final class PlaylistsFolderDelivery {
+    private static final class FolderDelivery {
         @GuardedBy("this")
         private long lastDeliveredLoadNumber;
 
         // Keep the check, send, and update together so another load cannot send between them.
-        private synchronized void deliver(long loadNumber, BrowseRequest request,
-                                          List<MediaBrowserCompat.MediaItem> playlistItems, String logReason) {
-            // A newer load still in progress does not prevent this one from returning playlists.
+        private synchronized void deliver(long loadNumber, Runnable send) {
+            // A newer load still in progress does not prevent this one from returning its results.
             if (loadNumber < lastDeliveredLoadNumber) return;
-            Logger.printDebug(() -> "YTM Library: " + logReason + "; returning: " +
-                    playlistItems.size() + " playlists");
             try {
-                request.patch_deliverBrowseItems(playlistItems);
-                // A failed send must not prevent an older load from returning its playlists.
+                send.run();
+                // A failed send must not prevent an older load from returning its results.
                 lastDeliveredLoadNumber = loadNumber;
             } catch (RuntimeException ex) {
                 // Do not retry: YTM may already consider this request answered.
-                // Reopening Library or Playlists starts a new request.
-                Logger.printException(() -> "Could not deliver Android Auto playlists", ex);
+                // Reopening the page starts a new request.
+                Logger.printException(() -> "Could not deliver Android Auto results", ex);
             }
         }
     }
 
-    /** Saves a folder's media ID, service, and connection so its contents can be requested again. */
+    private static FolderDelivery getFolderDelivery(BrowseRequest request) {
+        Object connection = request.patch_getBrowserConnection();
+        // Without the connection, we cannot identify other loads updating the same Auto page.
+        if (connection == null) return new FolderDelivery();
+        synchronized (folderDeliveries) {
+            return folderDeliveries.computeIfAbsent(connection, ignored -> new HashMap<>())
+                    .computeIfAbsent(request.patch_getRequestedMediaId(), ignored -> new FolderDelivery());
+        }
+    }
+
+    /** Remembers which Auto page (such as Albums) to reload on a connection after Library changes. */
     private record FolderSubscription(WeakReference<FolderReload> browserService,
                                            String parentMediaId, WeakReference<Object> connection) {
         private FolderSubscription(FolderReload browserService,
@@ -263,7 +267,7 @@ public final class AndroidAutoPatch {
         String mediaId() { return LIBRARY_PREFIX + name(); }
 
         String artworkUri() {
-            // Native Auto uses YTM's drawables; resolve them in the patched app's package.
+            // Use this install's package name so Library icons still load when GmsCore support renames the app.
             return "android.resource://" + Utils.getContext().getPackageName()
                     + "/drawable/yt_outline_experimental_" + iconName + "_vd_theme_24";
         }
@@ -271,6 +275,8 @@ public final class AndroidAutoPatch {
         MediaBrowserCompat.MediaItem mediaItem() {
             Bundle extras = new Bundle();
             boolean uploads = this == UPLOADED_ALBUMS || this == UPLOADED_SONGS || this == UPLOADED_ARTISTS;
+            // Show the category itself as a row; the child hints apply after opening it.
+            // Styles: 1 = list, 2 = artwork grid, 3 = category list with tintable icons.
             extras.putInt("android.media.browse.CONTENT_STYLE_SINGLE_ITEM_HINT", 1);
             extras.putInt("android.media.browse.CONTENT_STYLE_BROWSABLE_HINT", this == LAST_PLAYED || uploads ? 1 : 3);
             extras.putInt("android.media.browse.CONTENT_STYLE_PLAYABLE_HINT", this == LAST_PLAYED || this == PODCASTS ? 1 : 2);
@@ -289,13 +295,11 @@ public final class AndroidAutoPatch {
 
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
     private static final Set<String> playlistsTitleMatchMediaIds = ConcurrentHashMap.newKeySet();
-    // Give each Library load a number to distinguish earlier requests from later requests.
-    private static final AtomicLong playlistsLoadCounter = new AtomicLong();
-    // Remember which Library load last updated each folder on each Android Auto connection.
-
+    // Give each browse load a number to distinguish earlier requests from later requests.
+    private static final AtomicLong browseLoadCounter = new AtomicLong();
+    // Remember which load last updated each folder on each Android Auto connection.
     @GuardedBy("itself")
-    private static final WeakHashMap<Object, Map<String, PlaylistsFolderDelivery>>
-            playlistsFolderDeliveries = new WeakHashMap<>();
+    private static final WeakHashMap<Object, Map<String, FolderDelivery>> folderDeliveries = new WeakHashMap<>();
     // Most recently opened Library folder, podcast show, or Home shelf to refresh after Library changes.
     @Nullable
     @GuardedBy("AndroidAutoPatch.class")
@@ -392,21 +396,7 @@ public final class AndroidAutoPatch {
             if (!requestedMediaId.equals(LibraryFolder.PLAYLISTS.mediaId())
                     && !playlistsTitleMatchMediaIds.contains(requestedMediaId)) return false;
 
-            Object connection = request.patch_getBrowserConnection();
-            PlaylistsFolderDelivery folderDelivery;
-            synchronized (playlistsFolderDeliveries) {
-                if (connection == null) {
-                    // Without the connection, there is no way to identify other requests for this same folder.
-                    folderDelivery = new PlaylistsFolderDelivery();
-                } else {
-                    // Reopening Library or Playlists, or refreshing either, can overlap an unfinished load.
-                    folderDelivery = playlistsFolderDeliveries
-                            .computeIfAbsent(connection, ignored -> new HashMap<>())
-                            .computeIfAbsent(requestedMediaId, ignored -> new PlaylistsFolderDelivery());
-                }
-            }
-
-            PlaylistsFolderLoad load = new PlaylistsFolderLoad(browseClient, folderDelivery);
+            PlaylistsFolderLoad load = new PlaylistsFolderLoad(browseClient, getFolderDelivery(request));
             try {
                 Utils.runOnMainThreadDelayed(
                         () -> deliverPlaylists(request, load, "timed out"),
@@ -585,7 +575,11 @@ public final class AndroidAutoPatch {
                                                     PlaylistsFolderLoad load, String logReason) {
         List<MediaBrowserCompat.MediaItem> collectedPlaylists = load.takePlaylistsForDelivery();
         if (collectedPlaylists == null) return;
-        load.folderDelivery.deliver(load.loadNumber, request, collectedPlaylists, logReason);
+        load.folderDelivery.deliver(load.loadNumber, () -> {
+            Logger.printDebug(() -> "YTM Library: " + logReason + "; returning: " +
+                    collectedPlaylists.size() + " playlists");
+            request.patch_deliverBrowseItems(collectedPlaylists);
+        });
     }
 
     /** Replaced during patching with calls to YTM's playlist command builder and Android Auto media ID encoder. */
@@ -837,10 +831,9 @@ public final class AndroidAutoPatch {
         @GuardedBy("this")
         private final List<BrowseItem> collected = new ArrayList<>();
         private final Set<String> continuations = new HashSet<>();
-        private volatile Requests<RequestKey, HomePage>.Lease pageLease;
 
-        HomeFeedLoad(String browseId) {
-            super(phoneBrowseClient);
+        HomeFeedLoad(BrowseRequest request, String browseId) {
+            super(request);
             this.browseId = browseId;
         }
 
@@ -849,19 +842,14 @@ public final class AndroidAutoPatch {
         private void requestPage(String continuation) {
             if (finished.get()) return;
             try {
-                if (!current(scope)) { finish(Collections.emptyList()); return; }
-                PhoneBrowseClient client = (PhoneBrowseClient) scope.client();
-                String key = continuation.isEmpty() ? browseId : "continuation:" + continuation;
-                var work = HOME_PAGES.acquire(scope.account() == null ? null : new RequestKey(key, scope),
-                        () -> transformFuture(continuation.isEmpty()
-                                        ? client.patch_requestBrowse(browseId, BACKGROUND_EXECUTOR)
-                                        : client.patch_requestBrowseContinuation(continuation, BACKGROUND_EXECUTOR),
-                                response -> homePage(response.patch_responseBytes()),
-                                BACKGROUND_EXECUTOR));
-                pageLease = work;
-                if (finished.get()) { work.close(); return; }
-                work.future.whenCompleteAsync((page, error) -> {
-                    work.close();
+                if (!current(client)) { finish(Collections.emptyList()); return; }
+                var future = transformFuture(continuation.isEmpty()
+                                ? client.patch_requestBrowse(browseId, BACKGROUND_EXECUTOR)
+                                : client.patch_requestBrowseContinuation(continuation, BACKGROUND_EXECUTOR),
+                        response -> homePage(response.patch_responseBytes()), BACKGROUND_EXECUTOR);
+                pending = future;
+                if (finished.get()) { future.cancel(true); return; }
+                future.whenCompleteAsync((page, error) -> {
                     if (finished.get()) return;
                     if (error != null) {
                         Logger.printException(() -> "Could not load Android Auto Home page", error);
@@ -896,21 +884,14 @@ public final class AndroidAutoPatch {
         // A slow or failed continuation must not discard shelves already received.
         @Override void timedOut() { finishCollected(); }
 
-        @Override void cleanup() {
-            var work = pageLease;
-            if (work != null) work.close();
-        }
-
         abstract List<MediaBrowserCompat.MediaItem> convert(List<BrowseItem> items);
     }
 
     private static final class HomeLoad extends HomeFeedLoad {
-        final BrowseRequest request;
         final List<MediaBrowserCompat.MediaItem> podcastFolders;
 
         HomeLoad(BrowseRequest request, List<MediaBrowserCompat.MediaItem> podcastFolders) {
-            super("FEmusic_home");
-            this.request = request;
+            super(request, "FEmusic_home");
             this.podcastFolders = new ArrayList<>(podcastFolders);
         }
 
@@ -920,7 +901,7 @@ public final class AndroidAutoPatch {
 
         @Override void deliver(List<MediaBrowserCompat.MediaItem> items) {
             PreparedItems home = new PreparedItems();
-            if (current(scope)) {
+            if (current(client)) {
                 home.addAll(items);
                 // Phone music recommendations and Auto podcast folders have no shared ranking; keep each source's order.
                 home.addAll(podcastFolders);
@@ -958,12 +939,10 @@ public final class AndroidAutoPatch {
 
     /** Reloads the selected Home shelf so returning to it reflects YTM's current recommendations. */
     private static final class HomeShelfLoad extends HomeFeedLoad {
-        final BrowseRequest request;
         @Nullable final String shelfTitle;
 
         HomeShelfLoad(BrowseRequest request, String browseId, @Nullable String shelfTitle) {
-            super(browseId);
-            this.request = request;
+            super(request, browseId);
             this.shelfTitle = shelfTitle;
         }
 
@@ -975,46 +954,33 @@ public final class AndroidAutoPatch {
             // Expanded Speed dial uses a list; the Home preview remains an artwork grid.
             return playableItems(shelfItems, shelfTitle == null ? 1 : 2, false);
         }
-
-        @Override void deliver(List<MediaBrowserCompat.MediaItem> items) {
-            request.patch_deliverBrowseItems(items);
-        }
     }
 
     // Library collections
 
     private static final class CollectionLoad extends Load {
-        final BrowseRequest request;
-
         CollectionLoad(BrowseRequest request) {
-            super(phoneBrowseClient);
-            this.request = request;
+            super(request);
         }
 
         void start(String mediaId) {
             if (finished.get()) return;
             try {
-                if (!current(scope)) {
+                if (!current(client)) {
                     finish(Collections.emptyList()); return;
                 }
                 boolean podcastPage = mediaId.startsWith(PODCAST_COLLECTION_PREFIX);
                 LibraryFolder folder = podcastPage ? null : LibraryFolder.valueOf(mediaId.substring(LIBRARY_PREFIX.length()));
                 String browseId = podcastPage ? Uri.decode(mediaId.substring(PODCAST_COLLECTION_PREFIX.length())) : folder.browseId;
-                PhoneBrowseClient client = (PhoneBrowseClient) scope.client();
-                await(REQUESTS.acquire(scope.account() == null ? null : new RequestKey(mediaId, scope),
-                        () -> transformFuture(client.patch_requestBrowse(browseId, BACKGROUND_EXECUTOR),
-                                response -> {
-                                    var phoneItems = collection(response.patch_responseBytes());
-                                    return podcastPage ? playableItems(phoneItems, 1) : libraryMediaItems(folder, phoneItems);
-                                }, BACKGROUND_EXECUTOR)));
+                finishWhenComplete(transformFuture(client.patch_requestBrowse(browseId, BACKGROUND_EXECUTOR),
+                        response -> {
+                            var phoneItems = collection(response.patch_responseBytes());
+                            return podcastPage ? playableItems(phoneItems, 1) : libraryMediaItems(folder, phoneItems);
+                        }, BACKGROUND_EXECUTOR));
             } catch (Exception ex) {
                 Logger.printException(() -> "Could not load Android Auto Library collection", ex);
                 finish(Collections.emptyList());
             }
-        }
-
-        @Override void deliver(List<MediaBrowserCompat.MediaItem> items) {
-            request.patch_deliverBrowseItems(items);
         }
     }
 
@@ -1034,8 +1000,6 @@ public final class AndroidAutoPatch {
     }
 
     static final long DEADLINE_MS = 8_000;
-    private static final Requests<RequestKey, List<MediaBrowserCompat.MediaItem>> REQUESTS = new Requests<>();
-    private static final Requests<RequestKey, HomePage> HOME_PAGES = new Requests<>();
     private static final int MAX_COMMAND_BYTES = 16 * 1024;
     static final int MAX_MEDIA_ID_LENGTH = 24 * 1024;
 
@@ -1116,31 +1080,11 @@ public final class AndroidAutoPatch {
         throw new UnsupportedOperationException("Android Auto command bridge was not installed");
     }
 
-    // Request sharing, timeouts, and cancellation
+    // Request timeouts and cancellation
 
-    record Scope(Object client, Object account, String locale) {
-        @Override public boolean equals(Object other) {
-            return other instanceof Scope scope && client == scope.client && Objects.equals(account, scope.account)
-                    && locale.equals(scope.locale);
-        }
-        @Override public int hashCode() {
-            return Objects.hash(System.identityHashCode(client), account, locale);
-        }
+    private static boolean current(PhoneBrowseClient client) {
+        return client != null && client == phoneBrowseClient;
     }
-
-    static Scope scope(Object client) {
-        Object account = client instanceof PhoneBrowseClient browse ? browse.patch_accountScope()
-                : client instanceof AndroidAutoSearchPatch.PhoneSearchClient search ? search.patch_accountScope() : null;
-        return new Scope(client, account, Utils.getContext().getResources()
-                .getConfiguration().getLocales().toLanguageTags());
-    }
-
-    static boolean current(Scope captured) {
-        Object client = captured.client();
-        return client != null && client == phoneBrowseClient && captured.equals(scope(client));
-    }
-
-    record RequestKey(String input, Scope scope) {}
 
     // Avoid Futures.transform: YTM's bundled Guava can throw NoSuchMethodError.
     static <T, R> CompletableFuture<R> transformFuture(ListenableFuture<T> source,
@@ -1157,98 +1101,46 @@ public final class AndroidAutoPatch {
         return result;
     }
 
-    /** Each caller completes once and has its own timeout, even when requests are shared. */
+    /** Each load owns its pending request and completes once, including when it times out. */
     abstract static class Load {
-        final Scope scope;
+        final BrowseRequest request;
+        final PhoneBrowseClient client;
+        final long loadNumber = browseLoadCounter.incrementAndGet();
+        final FolderDelivery folderDelivery;
         final AtomicBoolean finished = new AtomicBoolean();
-        volatile Requests<RequestKey, List<MediaBrowserCompat.MediaItem>>.Lease lease;
+        volatile CompletableFuture<?> pending;
         final Runnable timeout = this::timedOut;
 
-        Load(Object client) { scope = scope(client); }
+        Load(BrowseRequest request) {
+            this.request = request;
+            client = phoneBrowseClient;
+            folderDelivery = getFolderDelivery(request);
+        }
 
-        void await(Requests<RequestKey, List<MediaBrowserCompat.MediaItem>>.Lease work) {
-            lease = work;
-            if (finished.get()) { work.close(); return; }
-            work.future.whenComplete((items, error) -> {
+        void finishWhenComplete(CompletableFuture<List<MediaBrowserCompat.MediaItem>> future) {
+            pending = future;
+            if (finished.get()) { future.cancel(true); return; }
+            future.whenComplete((items, error) -> {
                 if (finished.get()) return;
-                try {
-                    if (error != null) throw new java.util.concurrent.CompletionException(error);
-                    finish(items);
+                if (error != null) {
+                    Logger.printException(() -> "Could not load Android Auto content", error);
                 }
-                catch (Exception ex) {
-                    Logger.printException(() -> "Could not load Android Auto content", ex);
-                    finish(Collections.emptyList());
-                }
+                finish(error == null ? items : Collections.emptyList());
             });
         }
 
         void finish(List<MediaBrowserCompat.MediaItem> items) {
             if (!finished.compareAndSet(false, true)) return;
             mainHandler.removeCallbacks(timeout);
-            cleanup();
-            var work = lease;
-            if (work != null) {
-                work.future.cancel(true);
-                work.close();
-            }
-            mainHandler.post(() -> {
-                try { deliver(current(scope) ? items : Collections.emptyList()); }
-                catch (Exception ex) { Logger.printException(() -> "Could not deliver Android Auto results", ex); }
-            });
+            var future = pending;
+            if (future != null) future.cancel(true);
+            mainHandler.post(() -> folderDelivery.deliver(loadNumber,
+                    () -> deliver(current(client) ? items : Collections.emptyList())));
         }
 
         void timedOut() { finish(Collections.emptyList()); }
-        void cleanup() {}
-        abstract void deliver(List<MediaBrowserCompat.MediaItem> items);
-    }
-
-    /** Shares pending work only; completed results are never reused. */
-    static final class Requests<K, V> {
-        private final Map<K, Work> pending = new HashMap<>();
-
-        private final class Work {
-            final K key;
-            final CompletableFuture<V> future;
-            int users;
-
-            Work(K key, CompletableFuture<V> future) {
-                this.key = key;
-                this.future = future;
-            }
-        }
-
-        final class Lease implements AutoCloseable {
-            final CompletableFuture<V> future;
-            private Work work;
-
-            Lease(Work work) {
-                this.work = work;
-                work.users++;
-                // A separate future lets one caller time out without cancelling the others.
-                future = work.future.thenApply(Function.identity());
-            }
-
-            @Override
-            public void close() {
-                Work released;
-                synchronized (Requests.this) {
-                    released = work;
-                    if (released == null) return;
-                    work = null;
-                    if (--released.users != 0) return;
-                    pending.remove(released.key, released);
-                }
-                released.future.cancel(true);
-            }
-        }
-
-        synchronized Lease acquire(K key, Supplier<CompletableFuture<V>> start) {
-            Work work = key == null ? null : pending.get(key);
-            if (work == null || work.future.isDone()) {
-                work = new Work(key, start.get());
-                if (key != null) pending.put(key, work);
-            }
-            return new Lease(work);
+        void deliver(List<MediaBrowserCompat.MediaItem> items) {
+            request.patch_deliverBrowseItems(items);
         }
     }
     // Search results and playback commands
@@ -1258,22 +1150,22 @@ public final class AndroidAutoPatch {
         Map<ResultCategory, List<SearchResult>> resultsByCategory = new LinkedHashMap<>();
         // Order categories by their first result; keep each category together so Auto shows one heading.
         for (var result : results) resultsByCategory.computeIfAbsent(result.category(), ignored -> new ArrayList<>()).add(result);
-        List<SearchResult> groupedResults = new ArrayList<>();
-        for (var categoryResults : resultsByCategory.values()) groupedResults.addAll(categoryResults);
         Set<String> seenMediaIds = new HashSet<>();
-        for (var searchResult : groupedResults) {
-            byte[] playCommandBytes = searchResult.playCommandBytes();
-            if (playCommandBytes.length > MAX_COMMAND_BYTES) continue;
-            var playCommand = new ProtoMessage(playCommandBytes);
-            if (!isPlayable(playCommand)) continue;
-            String playlistId = playCommand.messageField(WATCH_PLAYLIST).stringField(PLAYLIST_ID);
-            // A menu's playlist action may shuffle; use ordered playback for albums and playlists.
-            // Preserve YTM's "Start radio" action, which plays a generated mix.
-            String mediaId = !searchResult.preservePlaybackCommand() && !playlistId.isEmpty() && !playlistId.startsWith("RD")
-                    ? createPlaylistMediaId(playlistId) : encodeCommand(playCommandBytes);
-            if (mediaId == null || !seenMediaIds.add(mediaId)) continue;
-            playableResults.add(mediaId, searchResult.title(), searchResult.subtitle(), searchResult.artworkUrl(),
-                    true, ResourceUtils.getString(searchResult.category().titleResource));
+        for (var categoryResults : resultsByCategory.values()) {
+            for (var searchResult : categoryResults) {
+                byte[] playCommandBytes = searchResult.playCommandBytes();
+                if (playCommandBytes.length > MAX_COMMAND_BYTES) continue;
+                var playCommand = new ProtoMessage(playCommandBytes);
+                if (!isPlayable(playCommand)) continue;
+                String playlistId = playCommand.messageField(WATCH_PLAYLIST).stringField(PLAYLIST_ID);
+                // A menu's playlist action may shuffle; use ordered playback for albums and playlists.
+                // Preserve YTM's "Start radio" action, which plays a generated mix.
+                String mediaId = !searchResult.preservePlaybackCommand() && !playlistId.isEmpty() && !playlistId.startsWith("RD")
+                        ? createPlaylistMediaId(playlistId) : encodeCommand(playCommandBytes);
+                if (mediaId == null || !seenMediaIds.add(mediaId)) continue;
+                playableResults.add(mediaId, searchResult.title(), searchResult.subtitle(), searchResult.artworkUrl(),
+                        true, ResourceUtils.getString(searchResult.category().titleResource));
+            }
         }
         return playableResults;
     }
