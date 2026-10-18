@@ -229,18 +229,29 @@ public final class AndroidAutoPatch {
 
     private static final String PHONE_LIBRARY_BROWSE_ID = "FEmusic_library_landing";
     private static final String EPISODES_FOR_LATER_BROWSE_ID = "VLSE";
-    public static final String PLAYLISTS_TITLE_RESOURCE_STRING
-            = ResourceUtils.getString("library_playlists_shelf_title");
-    // Return collected playlists when this timeout expires.
-    private static final int PLAYLIST_TIMEOUT_MS = 30_000;
-    private static final int LIBRARY_REFRESH_DELAY_MS = 5_000;
+    private static final String SPEED_DIAL_BROWSE_ID = "FEmusic_listen_again";
+
     private static final String ROOT_MEDIA_ID = "com.google.android.projection.gearhead";
+    private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
     private static final String PODCASTS_MEDIA_ID = "morphe:aa:podcasts";
     private static final String SPEED_DIAL_MEDIA_ID = "morphe:aa:speed-dial";
-    private static final String SPEED_DIAL_BROWSE_ID = "FEmusic_listen_again";
+
     private static final String HOME_SHELF_PREFIX = "morphe-aa-home://section/";
     private static final String PODCAST_COLLECTION_PREFIX = "morphe-aa-podcast://collection/";
     private static final String LIBRARY_PREFIX = "morphe-aa-library://collection/";
+    private static final String FORCE_REFRESH = "com.google.android.apps.youtube.music.mediabrowser.force_refresh";
+
+    public static final String PLAYLISTS_TITLE_RESOURCE_STRING
+            = ResourceUtils.getString("library_playlists_shelf_title");
+    private static final String PODCASTS_TITLE_RESOURCE_NAME = "offline_podcasts_shelf_title";
+
+    // Return collected playlists when this timeout expires.
+    private static final int PLAYLIST_TIMEOUT_MS = 30_000;
+    private static final int LIBRARY_REFRESH_DELAY_MS = 5_000;
+    static final long DEADLINE_MS = 8_000;
+
+    private static final int MAX_COMMAND_BYTES = 16 * 1024;
+    static final int MAX_MEDIA_ID_LENGTH = 24 * 1024;
 
     private enum LibraryFolder {
         LAST_PLAYED("FEmusic_history", "morphe_music_android_auto_last_played", "history"),
@@ -286,9 +297,7 @@ public final class AndroidAutoPatch {
                     Uri.parse(artworkUri()), extras, null), MediaBrowserCompat.MediaItem.FLAG_BROWSABLE);
         }
     }
-    private static final String PODCASTS_TITLE_RESOURCE_NAME = "offline_podcasts_shelf_title";
-    private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
-    private static final String FORCE_REFRESH = "com.google.android.apps.youtube.music.mediabrowser.force_refresh";
+
     static final Executor BACKGROUND_EXECUTOR = Utils::runOnBackgroundThread;
     static final Handler mainHandler = new Handler(Looper.getMainLooper());
     private static final Runnable REFRESH_LIBRARY = AndroidAutoPatch::refreshLibrary;
@@ -348,7 +357,7 @@ public final class AndroidAutoPatch {
         if (mediaId != null) playlistsTitleMatchMediaIds.add(mediaId);
     }
 
-    // Intercept Android Auto browse requests
+    // Route expanded Home groups and Library requests
 
     /**
      * Injection point after YTM detaches the result for asynchronous delivery.
@@ -388,7 +397,7 @@ public final class AndroidAutoPatch {
             if (requestedMediaId.startsWith(PODCAST_COLLECTION_PREFIX)
                     || requestedMediaId.startsWith(LIBRARY_PREFIX)
                     && !requestedMediaId.equals(LibraryFolder.PLAYLISTS.mediaId())) {
-                CollectionLoad load = new CollectionLoad(request);
+                LibraryLoad load = new LibraryLoad(request);
                 mainHandler.postDelayed(load.timeout, DEADLINE_MS);
                 BACKGROUND_EXECUTOR.execute(() -> load.start(requestedMediaId));
                 return true;
@@ -414,7 +423,7 @@ public final class AndroidAutoPatch {
         }
     }
 
-    // Playlist loading and pagination
+    // Library > Playlists: native grid loading and pagination
 
     /**
      * Reads Library responses on background threads and follows pagination until no command remains.
@@ -688,7 +697,7 @@ public final class AndroidAutoPatch {
         if (home != null) home.reload(true);
     }
 
-    // Home and Podcasts
+    // Browse delivery, root tabs, and the Podcasts tab
 
     /** Injection point. Recognizes media IDs handled by the patch instead of YTM's decoder. */
     public static boolean isCustomMediaId(@Nullable String mediaId) {
@@ -810,6 +819,8 @@ public final class AndroidAutoPatch {
         }
         cachedPodcastFolders = folders;
     }
+
+    // Home: recommendations, Speed dial, and expanded groups
 
     /** Injection point. Loads phone Home before the native browse request completes. */
     public static boolean loadHome(BrowseRequest request,
@@ -956,10 +967,10 @@ public final class AndroidAutoPatch {
         }
     }
 
-    // Library collections
+    // Library: categories (including Last played), uploads, and episodes from saved podcast shows
 
-    private static final class CollectionLoad extends Load {
-        CollectionLoad(BrowseRequest request) {
+    private static final class LibraryLoad extends Load {
+        LibraryLoad(BrowseRequest request) {
             super(request);
         }
 
@@ -974,7 +985,7 @@ public final class AndroidAutoPatch {
                 String browseId = podcastPage ? Uri.decode(mediaId.substring(PODCAST_COLLECTION_PREFIX.length())) : folder.browseId;
                 finishWhenComplete(transformFuture(client.patch_requestBrowse(browseId, BACKGROUND_EXECUTOR),
                         response -> {
-                            var phoneItems = collection(response.patch_responseBytes());
+                            var phoneItems = libraryItems(response.patch_responseBytes());
                             return podcastPage ? playableItems(phoneItems, 1) : libraryMediaItems(folder, phoneItems);
                         }, BACKGROUND_EXECUTOR));
             } catch (Exception ex) {
@@ -999,11 +1010,21 @@ public final class AndroidAutoPatch {
         return items;
     }
 
-    static final long DEADLINE_MS = 8_000;
-    private static final int MAX_COMMAND_BYTES = 16 * 1024;
-    static final int MAX_MEDIA_ID_LENGTH = 24 * 1024;
+    private static PreparedItems podcastFolders(List<BrowseItem> phoneItems) {
+        PreparedItems folders = new PreparedItems(1);
+        Set<String> seenBrowseIds = new HashSet<>();
+        for (var item : phoneItems) {
+            String browseId = new ProtoMessage(item.tapCommandBytes())
+                    .messageField(BROWSE).stringField(BROWSE_ID);
+            if (browseId.isEmpty() || !seenBrowseIds.add(browseId)) continue;
+            // Phone show IDs return empty pages through Auto's loader. Request their phone episode lists instead.
+            folders.add(PODCAST_COLLECTION_PREFIX + Uri.encode(browseId),
+                    item.title(), item.subtitle(), item.artworkUrl(), false);
+        }
+        return folders;
+    }
 
-    // Media items, artwork, and playback commands
+    // Shared media items and playback commands
 
     /** Converted Auto results; delivery hooks recognize this type to avoid starting another load. */
     static final class PreparedItems extends ArrayList<MediaBrowserCompat.MediaItem> {
@@ -1026,20 +1047,6 @@ public final class AndroidAutoPatch {
                     mediaId, title, subtitle, null, null, artworkUrl.isEmpty() ? null : Uri.parse(artworkUrl), extras, null),
                     playable ? MediaBrowserCompat.MediaItem.FLAG_PLAYABLE : MediaBrowserCompat.MediaItem.FLAG_BROWSABLE));
         }
-    }
-
-    private static PreparedItems podcastFolders(List<BrowseItem> phoneItems) {
-        PreparedItems folders = new PreparedItems(1);
-        Set<String> seenBrowseIds = new HashSet<>();
-        for (var item : phoneItems) {
-            String browseId = new ProtoMessage(item.tapCommandBytes())
-                    .messageField(BROWSE).stringField(BROWSE_ID);
-            if (browseId.isEmpty() || !seenBrowseIds.add(browseId)) continue;
-            // Phone show IDs return empty pages through Auto's loader. Request their phone episode lists instead.
-            folders.add(PODCAST_COLLECTION_PREFIX + Uri.encode(browseId),
-                    item.title(), item.subtitle(), item.artworkUrl(), false);
-        }
-        return folders;
     }
 
     private static PreparedItems playableItems(List<BrowseItem> phoneItems,

@@ -22,6 +22,15 @@ final class AndroidAutoSearchResponseParser {
     private static final int TAB_COMMAND = 1;
     private static final int MESSAGE = 58_508_690;
 
+    private static final int COMPACT_RESULT_CARD = 1_297;
+    private static final int COMPACT_RESULT_CONTENT = 1;
+    private static final int COMPACT_RESULT_HEADER = 1;
+    private static final int COMPACT_RESULT_ROWS = 2;
+
+    private static final int TOP_RESULT_COMPONENTS = 9;
+    private static final int TOP_RESULT_CARD = 1;
+    private static final int TOP_RESULT_RELATED_ROW = 2;
+
     private static final int SEARCH = 48_687_709;
     private static final int SEARCH_PARAMS = 2;
 
@@ -36,15 +45,6 @@ final class AndroidAutoSearchResponseParser {
     private static final int VIDEO_TYPE_OFFICIAL_MUSIC_VIDEO = 2;
     private static final int VIDEO_TYPE_USER_GENERATED = 3;
     private static final int VIDEO_TYPE_UPLOADED_TRACK = 6;
-
-    private static final int COMPACT_RESULT_CARD = 1_297;
-    private static final int COMPACT_RESULT_CONTENT = 1;
-    private static final int COMPACT_RESULT_HEADER = 1;
-    private static final int COMPACT_RESULT_ROWS = 2;
-
-    private static final int TOP_RESULT_COMPONENTS = 9;
-    private static final int TOP_RESULT_CARD = 1;
-    private static final int TOP_RESULT_RELATED_ROW = 2;
 
     enum ResultCategory {
         TOP_RESULT("search_shelf_top_result_title"),

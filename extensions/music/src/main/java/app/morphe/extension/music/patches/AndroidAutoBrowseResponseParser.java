@@ -23,13 +23,15 @@ final class AndroidAutoBrowseResponseParser {
     static final int SECTION_LIST = 49_399_797;
     static final int SECTION_LIST_CONTENTS = 1;
     private static final int SECTION_LIST_CONTINUATIONS = 2;
+    private static final int NEXT_CONTINUATION = 52_047_593;
+    private static final int CONTINUATION_TOKEN = 1;
+
     // ItemSectionRenderer wraps child renderers, including rows, cards, and titled groups.
     static final int ITEM_SECTION = 50_195_462;
     static final int ITEM_SECTION_CONTENTS = 1;
+
     private static final int GRID = 51_805_506;
     private static final int GRID_ITEMS = 1;
-    private static final int NEXT_CONTINUATION = 52_047_593;
-    private static final int CONTINUATION_TOKEN = 1;
 
     static final int ELEMENT = 153_515_154;
     static final int NEW_ELEMENT = 172_660_663;
@@ -157,6 +159,7 @@ final class AndroidAutoBrowseResponseParser {
 
     record HomePage(List<BrowseItem> items, String continuation) {}
 
+    /** Home previews, expanded Speed dial, and expanded recommendation groups. */
     static HomePage homePage(byte[] response) {
         ProtoMessage sectionList = sectionList(response);
         List<BrowseItem> items = new ArrayList<>();
@@ -176,9 +179,15 @@ final class AndroidAutoBrowseResponseParser {
         return new HomePage(List.copyOf(items), continuation);
     }
 
-    static List<BrowseItem> collection(byte[] response) {
+    /**
+     * Library categories, including Last played, and episodes from saved podcast shows.
+     * Playlists uses YTM's native grid loader instead.
+     */
+    static List<BrowseItem> libraryItems(byte[] response) {
         return readSections(sectionList(response));
     }
+
+    // Response layouts shared by Home and Library.
 
     private static ProtoMessage sectionList(byte[] response) {
         ProtoMessage root = new ProtoMessage(response);
@@ -248,16 +257,6 @@ final class AndroidAutoBrowseResponseParser {
         return Collections.unmodifiableList(items);
     }
 
-    static String menuSubtitle(ProtoMessage menu) {
-        // Compact phone cards keep their creator or collection subtitle in the menu header.
-        for (ProtoMessage menuItem : menu.repeatedMessageField(MENU_ITEMS)) {
-            String subtitle = menuItem.messagePath(ELEMENT, NEW_ELEMENT, ELEMENT_TYPE, COMPONENT_TYPE, COMPONENT_MODEL,
-                    YOUTUBE_MODEL, VIEW_MODEL, MENU_HEADER_CONTENT, MENU_HEADER_SUBTITLE).stringField(TEXT_CONTENT);
-            if (!subtitle.isEmpty()) return subtitle;
-        }
-        return "";
-    }
-
     private static void readShelf(List<BrowseItem> items, ProtoMessage shelf, int contentsField) {
         for (ProtoMessage childRenderer : shelf.repeatedMessageField(contentsField)) {
             ProtoMessage shelfItem = childRenderer.messageField(SHELF_ITEM);
@@ -274,21 +273,6 @@ final class AndroidAutoBrowseResponseParser {
                     artwork(shelfItem.messagePath(SHELF_ITEM_IMAGE, THUMBNAIL, THUMBNAIL_CONTENTS)), tapCommand.serializedBytes(), tapStartsPlayback,
                     playCommand.serializedBytes()));
         }
-    }
-
-    static String textRuns(ProtoMessage text) {
-        StringBuilder value = new StringBuilder();
-        for (ProtoMessage run : text.repeatedMessageField(TEXT_RUNS)) value.append(run.stringField(TEXT_RUN_TEXT));
-        return value.toString();
-    }
-
-    static String artwork(ProtoMessage thumbnails) {
-        String url = "";
-        for (ProtoMessage thumbnail : thumbnails.repeatedMessageField(THUMBNAILS)) {
-            String candidate = thumbnail.stringField(THUMBNAIL_URL);
-            if (candidate.startsWith("https://")) url = candidate;
-        }
-        return url;
     }
 
     private static void addBrowseItem(List<BrowseItem> items, ProtoMessage renderer, int tapField) {
@@ -318,6 +302,33 @@ final class AndroidAutoBrowseResponseParser {
             subtitle = episodeSubtitle(renderer, subtitle);
         }
         items.add(new BrowseItem(title, subtitle, artworkUrl, tapCommand.serializedBytes(), tapStartsPlayback, playCommand.serializedBytes()));
+    }
+
+    // Text, artwork, and playback helpers also used by search.
+
+    static String menuSubtitle(ProtoMessage menu) {
+        // Compact phone cards keep their creator or collection subtitle in the menu header.
+        for (ProtoMessage menuItem : menu.repeatedMessageField(MENU_ITEMS)) {
+            String subtitle = menuItem.messagePath(ELEMENT, NEW_ELEMENT, ELEMENT_TYPE, COMPONENT_TYPE, COMPONENT_MODEL,
+                    YOUTUBE_MODEL, VIEW_MODEL, MENU_HEADER_CONTENT, MENU_HEADER_SUBTITLE).stringField(TEXT_CONTENT);
+            if (!subtitle.isEmpty()) return subtitle;
+        }
+        return "";
+    }
+
+    static String textRuns(ProtoMessage text) {
+        StringBuilder value = new StringBuilder();
+        for (ProtoMessage run : text.repeatedMessageField(TEXT_RUNS)) value.append(run.stringField(TEXT_RUN_TEXT));
+        return value.toString();
+    }
+
+    static String artwork(ProtoMessage thumbnails) {
+        String url = "";
+        for (ProtoMessage thumbnail : thumbnails.repeatedMessageField(THUMBNAILS)) {
+            String candidate = thumbnail.stringField(THUMBNAIL_URL);
+            if (candidate.startsWith("https://")) url = candidate;
+        }
+        return url;
     }
 
     // Top results expose their primary play action separately from the menu.
