@@ -10,6 +10,11 @@ import java.nio.charset.StandardCharsets;
 
 /** Generates version-2 Sec-MS-GEC request tokens for Microsoft Edge TTS. */
 final class EdgeTtsV2Token {
+    static final String TRUSTED_CLIENT_TOKEN = "6A5AA1D4EAFF4E9FB37E23D68491D6F4";
+    static final String SEC_MS_GEC_VERSION = "2-143.0.3650.75";
+    static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            + " (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0";
+
     private EdgeTtsV2Token() {}
 
     private static final long WINDOWS_EPOCH_SECONDS = 11_644_473_600L;

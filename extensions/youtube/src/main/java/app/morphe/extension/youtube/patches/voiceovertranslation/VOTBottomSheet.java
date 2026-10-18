@@ -311,6 +311,48 @@ public final class VOTBottomSheet {
     private static void showEnginePicker(Context context, SheetBottomDialog.SlideDialog mainDialog) {
         String lang = VoiceOverTranslationPatch.resolveTargetLang();
 
+        final int fg = ThemeUtils.getAppForegroundColor();
+
+        SheetBottomDialog.DraggableLinearLayout pickerRoot =
+                SheetBottomDialog.createMainLayout(context, getDialogBackgroundColor());
+        pickerRoot.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
+        pickerRoot.addView(makeTitle(context, str("morphe_vot_tts_voice_type"), fg));
+
+        SheetBottomDialog.SlideDialog pickerDialog =
+                SheetBottomDialog.createSlideDialog(context, pickerRoot, fadeInDuration);
+
+        ScrollView scroll = new ScrollView(context);
+        LinearLayout listLayout = new LinearLayout(context);
+        listLayout.setOrientation(LinearLayout.VERTICAL);
+        scroll.addView(listLayout);
+
+        int speakerRes = Utils.appIsUsingBoldIcons() ? DRAWABLE_SPEAKER_BOLD : DRAWABLE_SPEAKER;
+        final int rippleColor = Color.argb(60, Color.red(fg), Color.green(fg), Color.blue(fg));
+
+        populateVoiceRows(context, listLayout, pickerDialog, lang, fg, rippleColor, speakerRes);
+
+        pickerRoot.addView(scroll);
+        mainDialog.dismiss();
+        pickerDialog.setOnCancelListener(d -> VOTBottomSheet.show(context));
+        PipDismissHelper.dismissOnPip(pickerDialog);
+        pickerDialog.show();
+
+        // Do not block the picker while a fresh catalog is fetched. The bundled
+        // and disk-cached voices remain available until the refresh finishes.
+        EdgeTtsVoiceRepository.refreshIfNeeded(context, () -> {
+            if (pickerDialog.isShowing()
+                    && lang.equals(VoiceOverTranslationPatch.resolveTargetLang())) {
+                populateVoiceRows(context, listLayout, pickerDialog, lang,
+                        fg, rippleColor, speakerRes);
+            }
+        });
+    }
+
+    /** Rebuild the voice picker from the latest catalog without changing its language filter. */
+    private static void populateVoiceRows(Context context, LinearLayout listLayout,
+                                          SheetBottomDialog.SlideDialog pickerDialog,
+                                          String lang, int fg, int rippleColor, int speakerRes) {
+        listLayout.removeAllViews();
         List<VoiceCatalog.Voice> allVoices = VoiceCatalog.getVoicesForLang(lang);
         List<VoiceCatalog.Voice> nativeVoices = new ArrayList<>();
         List<VoiceCatalog.Voice> multilingualVoices = new ArrayList<>();
@@ -332,24 +374,6 @@ public final class VOTBottomSheet {
         String selectedValue = Settings.VOT_USE_NATIVE_TTS.get()
                 ? TTS_ENGINE_SYSTEM
                 : VoiceCatalog.resolve(lang, voiceId);
-
-        final int fg = ThemeUtils.getAppForegroundColor();
-
-        SheetBottomDialog.DraggableLinearLayout pickerRoot =
-                SheetBottomDialog.createMainLayout(context, getDialogBackgroundColor());
-        pickerRoot.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
-        pickerRoot.addView(makeTitle(context, str("morphe_vot_tts_voice_type"), fg));
-
-        SheetBottomDialog.SlideDialog pickerDialog =
-                SheetBottomDialog.createSlideDialog(context, pickerRoot, fadeInDuration);
-
-        ScrollView scroll = new ScrollView(context);
-        LinearLayout listLayout = new LinearLayout(context);
-        listLayout.setOrientation(LinearLayout.VERTICAL);
-        scroll.addView(listLayout);
-
-        int speakerRes = Utils.appIsUsingBoldIcons() ? DRAWABLE_SPEAKER_BOLD : DRAWABLE_SPEAKER;
-        final int rippleColor = Color.argb(60, Color.red(fg), Color.green(fg), Color.blue(fg));
 
         int maleCount = 0;
         int femaleCount = 0;
@@ -394,11 +418,6 @@ public final class VOTBottomSheet {
             }
         }
 
-        pickerRoot.addView(scroll);
-        mainDialog.dismiss();
-        pickerDialog.setOnCancelListener(d -> VOTBottomSheet.show(context));
-        PipDismissHelper.dismissOnPip(pickerDialog);
-        pickerDialog.show();
     }
 
     private static void addVoiceRow(Context context, LinearLayout listLayout,
