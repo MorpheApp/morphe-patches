@@ -350,6 +350,12 @@ public final class VOTBottomSheet {
         refreshButton.setTextColor(fg);
         refreshButton.setGravity(Gravity.CENTER);
         refreshButton.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
+        TextView refreshFeedback = new TextView(context);
+        refreshFeedback.setTextSize(12);
+        refreshFeedback.setTextColor(secondaryColor(fg));
+        refreshFeedback.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp8);
+        refreshFeedback.setVisibility(View.GONE);
+
         Runnable showStatus = () -> {
             EdgeTtsVoiceRepository.Status state = EdgeTtsVoiceRepository.getStatus();
             String source = str("morphe_vot_catalog_source_" + state.source.name().toLowerCase(java.util.Locale.ROOT));
@@ -372,19 +378,32 @@ public final class VOTBottomSheet {
         };
         showStatus.run();
         refreshButton.setOnClickListener(v -> {
+            refreshFeedback.setText(str("morphe_vot_catalog_refreshing"));
+            refreshFeedback.setVisibility(View.VISIBLE);
             EdgeTtsVoiceRepository.refreshNow(context, () -> {
-                if (pickerDialog.isShowing()) {
-                    int previousScrollY = scroll.getScrollY();
-                    populateVoiceRows(context, listLayout, pickerDialog, lang,
-                            fg, rippleColor, speakerRes);
-                    scroll.post(() -> scroll.scrollTo(0, previousScrollY));
-                    showStatus.run();
+                if (!pickerDialog.isShowing()) return;
+
+                EdgeTtsVoiceRepository.Status result = EdgeTtsVoiceRepository.getStatus();
+                if (result.error != null) {
+                    refreshFeedback.setText(str("morphe_vot_catalog_refresh_failed"));
+                } else if (result.added == 0 && result.removed == 0) {
+                    refreshFeedback.setText(str("morphe_vot_catalog_unchanged"));
+                } else {
+                    refreshFeedback.setText(str("morphe_vot_catalog_changed",
+                            result.added, result.removed));
                 }
+
+                int previousScrollY = scroll.getScrollY();
+                populateVoiceRows(context, listLayout, pickerDialog, lang,
+                        fg, rippleColor, speakerRes);
+                scroll.post(() -> scroll.scrollTo(0, previousScrollY));
+                showStatus.run();
             });
             showStatus.run();
         });
         pickerRoot.addView(catalogStatus);
         pickerRoot.addView(refreshButton);
+        pickerRoot.addView(refreshFeedback);
         pickerRoot.addView(scroll);
         mainDialog.dismiss();
         pickerDialog.setOnCancelListener(d -> VOTBottomSheet.show(context));

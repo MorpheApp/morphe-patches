@@ -524,6 +524,9 @@ Tap here to open OpenRouter.ai"</string>
     <string name="morphe_vot_catalog_refreshing">Refreshing...</string>
     <string name="morphe_vot_catalog_updated">Last updated: %s</string>
     <string name="morphe_vot_catalog_refresh">Refresh voice list</string>
+    <string name="morphe_vot_catalog_unchanged">Voice list is up to date</string>
+    <string name="morphe_vot_catalog_changed">Voice list updated: +%1$d / -%2$d</string>
+    <string name="morphe_vot_catalog_refresh_failed">Could not refresh the voice list</string>
     <string name="morphe_vot_catalog_source_online">Online</string>
     <string name="morphe_vot_catalog_source_cache">Cached</string>
     <string name="morphe_vot_catalog_source_fallback">Built-in</string>
