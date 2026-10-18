@@ -331,6 +331,40 @@ public final class VOTBottomSheet {
 
         populateVoiceRows(context, listLayout, pickerDialog, lang, fg, rippleColor, speakerRes);
 
+        // Keep catalog diagnostics outside the scrollable voice list so refreshing
+        // remains accessible even with hundreds of voices.
+        TextView catalogStatus = new TextView(context);
+        catalogStatus.setTextColor(secondaryColor(fg));
+        catalogStatus.setTextSize(12);
+        catalogStatus.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
+        TextView refreshButton = new TextView(context);
+        refreshButton.setText(str("morphe_vot_catalog_refresh"));
+        refreshButton.setTextColor(fg);
+        refreshButton.setGravity(Gravity.CENTER);
+        refreshButton.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
+        Runnable showStatus = () -> {
+            EdgeTtsVoiceRepository.Status state = EdgeTtsVoiceRepository.getStatus();
+            String source = str("morphe_vot_catalog_source_" + state.source.name().toLowerCase(java.util.Locale.ROOT));
+            String details = str("morphe_vot_catalog_status", source,
+                    state.totalVoices, state.added, state.removed);
+            if (state.error != null) details += " — " + str("morphe_vot_catalog_error", state.error);
+            catalogStatus.setText(details);
+            refreshButton.setEnabled(!state.refreshing);
+            refreshButton.setAlpha(state.refreshing ? 0.5f : 1f);
+        };
+        showStatus.run();
+        refreshButton.setOnClickListener(v -> {
+            EdgeTtsVoiceRepository.refreshNow(context, () -> {
+                if (pickerDialog.isShowing()) {
+                    populateVoiceRows(context, listLayout, pickerDialog, lang,
+                            fg, rippleColor, speakerRes);
+                    showStatus.run();
+                }
+            });
+            showStatus.run();
+        });
+        pickerRoot.addView(catalogStatus);
+        pickerRoot.addView(refreshButton);
         pickerRoot.addView(scroll);
         mainDialog.dismiss();
         pickerDialog.setOnCancelListener(d -> VOTBottomSheet.show(context));
@@ -344,6 +378,7 @@ public final class VOTBottomSheet {
                     && lang.equals(VoiceOverTranslationPatch.resolveTargetLang())) {
                 populateVoiceRows(context, listLayout, pickerDialog, lang,
                         fg, rippleColor, speakerRes);
+                showStatus.run();
             }
         });
     }
