@@ -23,6 +23,7 @@ import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.protoDefaultInstanceFingerprint
 import app.morphe.patches.music.interaction.jam.protoParserFingerprint
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.addFreeRegisters
@@ -42,7 +43,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
@@ -922,10 +922,7 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
 /** Adds Podcasts and applies Home and Library layout changes before results reach Android Auto. */
 private fun hookBrowseResults(deliverItemsMethod: MutableMethod) {
     // YTM 9.15 lacks the size guard used by later versions; oversized results otherwise leave Auto loading.
-    val hasNativeSizeGuard = deliverItemsMethod.instructions.any {
-        it.getReference<StringReference>()?.string == " from first 10 items."
-    }
-    if (!hasNativeSizeGuard) {
+    if (!is_9_20_or_greater) {
         deliverItemsMethod.addInstructions(0, """
             invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->limitBrowseItems(Ljava/util/List;)Ljava/util/List;
             move-result-object p1
