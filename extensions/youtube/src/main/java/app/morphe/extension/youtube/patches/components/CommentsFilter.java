@@ -10,7 +10,6 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.patches.TextComponentPatch.newSpanUsingStylingOfAnotherSpan;
 
 import android.support.v7.widget.RecyclerView;
@@ -72,10 +71,14 @@ public class CommentsFilter extends Filter {
     private final StringFilterGroup emojiButton;
     private final StringFilterGroup commentCardsIndicator;
     private final StringFilterGroup menuButton;
+    private final StringFilterGroup previewCommentCardsIndicator;
     private final StringFilterGroup translateButton;
 
-    private static final CharSequence hiddenPreviewCommentCharSequence =
-            str("morphe_hide_comments_preview_comment_hidden");
+    /**
+     * Replacement text for a preview comment that slips past the filters below.
+     * Deliberately empty: the preview is hidden, not replaced with a label.
+     */
+    private static final CharSequence hiddenPreviewCommentCharSequence = "";
 
     public CommentsFilter() {
         var channelGuidelines = new StringFilterGroup(
@@ -174,6 +177,27 @@ public class CommentsFilter extends Filter {
                 VIDEO_METADATA_CAROUSEL_PATH
         );
 
+        // Hide the preview comment itself instead of replacing its text.
+        // The teaser/simplebox component is the preview row (avatar + comment text);
+        // the "Comments" header and comment count are a separate component and stay.
+        var previewCommentEntryPoint = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_PREVIEW_COMMENT,
+                "comments_entry_point_teaser.e",
+                "comments_entry_point_simplebox.e"
+        );
+
+        // Newer layouts show the preview as sliding cards in the metadata carousel,
+        // the same components the minimal comments button setting hides.
+        var previewCommentCarouselItem = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_PREVIEW_COMMENT,
+                "|carousel_item.e"
+        );
+
+        previewCommentCardsIndicator = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_PREVIEW_COMMENT,
+                VIDEO_METADATA_CAROUSEL_PATH
+        );
+
 
         var thanksButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_THANKS_BUTTON,
@@ -216,6 +240,9 @@ public class CommentsFilter extends Filter {
                 giftAnimationAndCards,
                 previewComment,
                 commentCardsIndicator,
+                previewCommentEntryPoint,
+                previewCommentCarouselItem,
+                previewCommentCardsIndicator,
                 menuButton,
                 thanksButton,
                 timestampButton,
@@ -271,6 +298,11 @@ public class CommentsFilter extends Filter {
         }
 
         if (matchedGroup == commentCardsIndicator) {
+            return Utils.contains(path, "carousel_header") &&
+                    Utils.endsWith(path, "|ContainerType|ContainerType|ContainerType|");
+        }
+
+        if (matchedGroup == previewCommentCardsIndicator) {
             return Utils.contains(path, "carousel_header") &&
                     Utils.endsWith(path, "|ContainerType|ContainerType|ContainerType|");
         }
