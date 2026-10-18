@@ -54,8 +54,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Supplies Android Auto Home and Library with content from YTM's phone app.
- * The Podcasts tab uses folders from YTM's original Android Auto Home response.
+ * Supplies Home and Library from phone pages, and Podcasts from YTM's native Auto Home folders.
  * Phone browse IDs identify server pages; Auto media IDs identify folders or carry playback commands.
  */
 @SuppressWarnings("unused")
@@ -109,8 +108,7 @@ public final class AndroidAutoPatch {
         @Nullable Object patch_getBrowserConnection();
 
         /**
-         * Sends the list through YTM, including the hook for
-         * {@link AndroidAutoPatch#handleBrowseResult}.
+         * Sends items through YTM and {@link AndroidAutoPatch#handleBrowseResult}.
          * YTM may remove items to keep the returned list within its byte limit.
          */
         void patch_deliverBrowseItems(List<MediaBrowserCompat.MediaItem> items);
@@ -122,9 +120,8 @@ public final class AndroidAutoPatch {
 
     public interface PhoneBrowseItem {
         /**
-         * Returns a playlist page ID, or null if none is found or the item's commands identify different playlists.
-         * A command that does not open a page makes YTM's converter throw;
-         * {@link AndroidAutoPatch#collectPlaylistsFromGrid} skips that item.
+         * Returns a playlist page ID, or null for missing or conflicting IDs.
+         * YTM throws for non-page commands; {@link AndroidAutoPatch#collectPlaylistsFromGrid} skips those items.
          */
         @Nullable String patch_getPlaylistBrowseId();
         @Nullable Uri patch_getArtworkUri();
@@ -166,7 +163,6 @@ public final class AndroidAutoPatch {
 
         /**
          * Allows only one delivery attempt, whether pagination finishes, fails, or times out.
-         *
          * @return a copy of the collected playlists, possibly empty; null if delivery preparation already started
          */
         @Nullable
@@ -201,9 +197,7 @@ public final class AndroidAutoPatch {
         }
     }
 
-    /**
-     * Saves an Android Auto folder's media ID, service, and connection so its contents can be requested again.
-     */
+    /** Saves a folder's media ID, service, and connection so its contents can be requested again. */
     private record FolderSubscription(WeakReference<FolderReload> browserService,
                                            String parentMediaId, WeakReference<Object> connection) {
         private FolderSubscription(FolderReload browserService,
@@ -342,9 +336,7 @@ public final class AndroidAutoPatch {
                 client.getClass().getName());
     }
 
-    /**
-     * Injection point. Identify the Playlists folder by its translated title; its ID varies.
-     */
+    /** Injection point. Identify the Playlists folder by its translated title; its ID varies. */
     public static void rememberPlaylistsTitleMatch(@Nullable String mediaId,
                                                    @Nullable CharSequence title) {
         if (title == null || (PLAYLISTS_TITLE_RESOURCE_STRING != null
@@ -355,9 +347,7 @@ public final class AndroidAutoPatch {
     // Intercept Android Auto browse requests
 
     /**
-     * Injection point. YTM has already called detach() on the result, so it can be sent after this method returns.
-     * Failed or timed-out playlist loads return the items collected so far.
-     *
+     * Injection point after YTM detaches the result for asynchronous delivery.
      * @return true if the patch will answer the request; false to leave it to YTM.
      */
     public static boolean handleBrowseRequest(BrowseRequest request) {
@@ -588,7 +578,8 @@ public final class AndroidAutoPatch {
     // Return playlists to Android Auto
 
     /**
-     * Stops collection before sending the result so a concurrent timeout cannot send it twice.
+     * Returns the playlists collected so far, including after failure or timeout.
+     * Stops collection before sending so a concurrent completion cannot deliver twice.
      */
     private static void deliverPlaylists(BrowseRequest request,
                                                     PlaylistsFolderLoad load, String logReason) {
@@ -714,9 +705,8 @@ public final class AndroidAutoPatch {
     }
 
     /**
-     * YTM 9.15 needs this guard: oversized browse results fail Binder delivery and leave Auto loading.
-     * Use newer YTM's 410 KiB budget and the first ten items' average parcel size to estimate an item limit.
-     * Injected only when YTM's native delivery method has no size guard.
+     * Backports the missing 9.15 size guard to avoid Binder failures that leave Auto loading.
+     * Estimates an item limit from newer YTM's 410 KiB budget and the first ten items' average parcel size.
      */
     @Nullable
     public static List<MediaBrowserCompat.MediaItem> limitBrowseItems(
@@ -741,9 +731,8 @@ public final class AndroidAutoPatch {
     }
 
     /**
-     * Injection point. Modify lists before YTM sends them to Android Auto.
-     * Add a Podcasts tab, cache Home's podcast folders, and return them when that tab is requested.
-     * New Home results also refresh Podcasts if it has been opened.
+     * Injection point before YTM delivers browse results. Adds Podcasts using cached Home podcast folders.
+     * New Home results refresh Podcasts if it has been opened.
      */
     @Nullable
     public static synchronized List<MediaBrowserCompat.MediaItem> handleBrowseResult(

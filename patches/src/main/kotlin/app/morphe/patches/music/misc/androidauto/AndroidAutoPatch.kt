@@ -74,12 +74,8 @@ private const val TITLE_FIELD_NAME = "g"
 private const val SUBTITLE_FIELD_NAME = "h"
 
 /**
- * Reuses YTM's phone requests and playback commands to supply Android Auto content.
- *
- * [hookBrowseResults] loads Home recommendations and keeps native podcast folders in a Podcasts tab.
- * [patchFolderRefresh] refreshes Home, Library collections, and Podcasts after Library changes.
- * [patchPlaylistMediaIdBuilder] supplies the media IDs Android Auto uses to play playlists.
- * [patchSearch] supplies catalog and uploaded music search results through YTM's phone search client.
+ * Reuses YTM's phone requests and playback commands for Home, Library, and search in Android Auto.
+ * Keeps native podcast folders in a Podcasts tab and refreshes folders after Library changes.
  */
 @Suppress("unused")
 val androidAutoPatch = bytecodePatch(
@@ -119,9 +115,7 @@ val androidAutoPatch = bytecodePatch(
 
 // region Identify the Playlists folder in Android Auto's Library
 
-/**
- * The Playlists folder has no fixed media ID, so recognize it by its translated title.
- */
+/** The Playlists folder has no fixed media ID, so recognize it by its translated title. */
 private fun BytecodePatchContext.hookPlaylistsTitleMediaIds() {
     BuildMediaItemFingerprint.let {
         it.method.apply {
@@ -147,9 +141,8 @@ private fun BytecodePatchContext.hookPlaylistsTitleMediaIds() {
 // region Phone browse requests
 
 /**
- * Reuses the YTM object that sends phone browse requests.
- * [addPhoneBrowseRequestMethod] requests a page; [addLibraryPaginationRequestMethod] requests more Library items.
- * [hookPhoneClientOnServiceCreate] saves the client when YTM's Auto service starts.
+ * Reuses YTM's phone client for page and Library pagination requests.
+ * Captures the client when MusicBrowserService starts so Android Auto can use it.
  */
 private fun BytecodePatchContext.patchPhoneBrowseClient() {
     val (createPhoneBrowseRequestMethod, setRequestBrowseIdMethod, initializeTrackingMethod, sendPhoneBrowseRequestMethod) =
@@ -353,9 +346,8 @@ private fun BytecodePatchContext.patchPhoneBrowseResponses() {
 private fun BytecodePatchContext.addPaginatedLibraryGridDecoder(
     decodePaginatedLibraryGridMethod: Method,
 ): Method {
-    // YTM's pagination parser only needs the response data.
-    // Copy it as a static method so Android Auto can use it without creating
-    // the object that manages the phone's Library screen.
+    // YTM's pagination parser only needs response data, so copy it as a static method for Android Auto
+    // without creating the object that manages the phone's Library screen.
     val clonedDecoderMethod = decodePaginatedLibraryGridMethod.cloneMutable(
         name = "patch_decodePaginatedLibraryGrid",
         accessFlags = AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
@@ -512,9 +504,7 @@ private fun BytecodePatchContext.addGridRendererInterface() {
 
 // region Library items
 
-/**
- * Exposes Library playlist metadata and returns YTM's media ID encoder for playback.
- */
+/** Exposes Library playlist metadata and returns YTM's media ID encoder for playback. */
 private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
     // The field read after YTM's presence check identifies the class used for Library items.
     val phoneBrowseItemType = GridRendererItemsFingerprint
@@ -591,9 +581,7 @@ private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
     return encodeCommandMediaIdMethod
 }
 
-/**
- * Reads both tap actions so conflicting playlist browse IDs can be rejected.
- */
+/** Reads both tap actions so conflicting playlist browse IDs can be rejected. */
 private fun MutableClass.addPlaylistBrowseIdGetter(
     interfaceMethod: Method,
     firstCommandField: FieldReference,
@@ -651,9 +639,7 @@ private fun MutableClass.addTextGetter(
     )
 }
 
-/**
- * Uses YTM's artwork URI converter so Android Auto can load the phone item's thumbnail.
- */
+/** Uses YTM's artwork URI converter so Android Auto can load the phone item's thumbnail. */
 private fun BytecodePatchContext.addArtworkUriGetter(
     itemClass: MutableClass,
     artworkContainerField: FieldReference,
@@ -776,9 +762,7 @@ private fun BytecodePatchContext.skipCustomMediaIdDecoding(requestedMediaIdField
     )
 }
 
-/**
- * When the patch handles a page request, skip YTM's handler to avoid returning two results.
- */
+/** When the patch handles a page request, skip YTM's handler to avoid returning two results. */
 private fun BytecodePatchContext.hookBrowseRequest(
     requestHandlerType: String,
     requestType: String,
@@ -804,9 +788,7 @@ private fun BytecodePatchContext.hookBrowseRequest(
 
 // region Android Auto connections and folder refresh
 
-/**
- * Reloads Android Auto folders after successful Library changes.
- */
+/** Reloads Android Auto folders after successful Library changes. */
 private fun BytecodePatchContext.patchFolderRefresh() {
     // Android Auto requests folder updates through MediaBrowserServiceCompat.
     // MediaBrowserService.notifyChildrenChanged does not reach that connection, so refresh through the compat service.
@@ -869,9 +851,7 @@ private fun BytecodePatchContext.addRequestConnectionGetter(reloadMethod: Method
     )
 }
 
-/**
- * Retains folder subscriptions so Library changes can reload them on the current Auto connection.
- */
+/** Retains folder subscriptions so Library changes can reload them on the current Auto connection. */
 private fun BytecodePatchContext.addFolderReload(
     baseServiceType: String,
     reloadMethod: Method,
@@ -937,9 +917,7 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
 
 // region Android Auto browse results
 
-/**
- * Adds Podcasts and applies Home and Library layout changes before results reach Android Auto.
- */
+/** Adds Podcasts and applies Home and Library layout changes before results reach Android Auto. */
 private fun hookBrowseResults(deliverItemsMethod: MutableMethod) {
     // YTM 9.15 lacks the size guard used by later versions; oversized results otherwise leave Auto loading.
     val hasNativeSizeGuard = deliverItemsMethod.instructions.any {
@@ -977,9 +955,7 @@ private fun hookBrowseResults(deliverItemsMethod: MutableMethod) {
 
 // region Playlist playback
 
-/**
- * Uses YTM's playlist playback command so selecting a playlist loads its queue.
- */
+/** Uses YTM's playlist playback command so selecting a playlist loads its queue. */
 private fun BytecodePatchContext.patchPlaylistMediaIdBuilder(encodeCommandMediaIdMethod: MethodReference) {
     val commandType = encodeCommandMediaIdMethod.parameterTypes.single().toString()
     val createPlaybackCommandMethod = playlistPlaybackCommandFingerprint(commandType).originalMethod

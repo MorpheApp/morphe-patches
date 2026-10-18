@@ -37,10 +37,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import app.morphe.extension.shared.Logger;
 
 /**
- * Replaces Android Auto's online search with the phone app's search across YouTube Music.
- * YTM's local Library search and caller checks stay in place.
- * Waits 250 ms before submitting a query so further typing can replace it.
- * Returns only results that have a playback action.
+ * Supplies playable phone search results while retaining YTM's local Library search and caller checks.
+ * Delays query submission by 250 ms so further typing can replace it.
  */
 @SuppressWarnings("unused")
 public final class AndroidAutoSearchPatch {
@@ -127,7 +125,6 @@ public final class AndroidAutoSearchPatch {
 
     /**
      * Injection point after YTM's caller and local-search checks. Queues a phone search after typing stops.
-     *
      * @return true when the patch will deliver results; false to continue YTM's native search.
      */
     public static boolean handleSearch(SearchRequest request) {

@@ -89,8 +89,7 @@ internal fun decodedMediaIdFingerprint(mediaIdType: String) = Fingerprint(
 
 /**
  * Matches the constructor that stores an Android Auto item's ID, title, and artwork.
- * [BuildMediaItemFingerprint] uses it to find where YTM creates the link to Playlists;
- * [mediaDescriptionFingerprint] uses it to find YTM's artwork conversion.
+ * Used to locate creation of the Playlists link and YTM's artwork conversion.
  */
 internal val MEDIA_DESCRIPTION_CONSTRUCTOR_CALL = methodCall(
     definingClass = "Landroid/support/v4/media/MediaDescriptionCompat;",
