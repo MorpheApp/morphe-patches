@@ -49,6 +49,23 @@ public class VoiceCatalogTest {
     }
 
     @Test
+    public void catalogDiffIgnoresOrderingAndTracksAdditionsAndRemovals() {
+        VoiceCatalog.Voice tr = new VoiceCatalog.Voice(true, "tr-TR-AhmetNeural");
+        VoiceCatalog.Voice de = new VoiceCatalog.Voice(false, "de-DE-KatjaNeural");
+        VoiceCatalog.Voice newVoice = new VoiceCatalog.Voice(false, "tr-TR-NewNeural");
+
+        VoiceCatalog.ChangeSummary same = VoiceCatalog.compare(
+                Arrays.asList(tr, de), Arrays.asList(de, tr));
+        assertEquals(0, same.added);
+        assertEquals(0, same.removed);
+
+        VoiceCatalog.ChangeSummary changed = VoiceCatalog.compare(
+                Arrays.asList(tr, de), Arrays.asList(tr, newVoice));
+        assertEquals(1, changed.added);
+        assertEquals(1, changed.removed);
+    }
+
+    @Test
     public void bundledVoicesRemainAvailableOffline() {
         VoiceCatalog.useBundledVoices();
         assertNotNull(VoiceCatalog.getVoice("tr-TR-AhmetNeural"));
