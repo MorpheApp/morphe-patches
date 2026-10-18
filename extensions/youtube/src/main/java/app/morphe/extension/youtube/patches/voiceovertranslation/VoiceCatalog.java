@@ -455,6 +455,31 @@ final class VoiceCatalog {
         current = Snapshot.of(voices);
     }
 
+    /** Stable identity-based diff; ordering and gender labels do not count as new voices. */
+    static ChangeSummary compare(List<Voice> previous, List<Voice> next) {
+        java.util.Set<String> before = new java.util.HashSet<>();
+        java.util.Set<String> after = new java.util.HashSet<>();
+        for (Voice voice : previous) before.add(voice.id);
+        for (Voice voice : next) after.add(voice.id);
+        int added = 0, removed = 0;
+        for (String id : after) if (!before.contains(id)) added++;
+        for (String id : before) if (!after.contains(id)) removed++;
+        return new ChangeSummary(added, removed);
+    }
+
+    static List<Voice> getAvailableVoices() {
+        return new ArrayList<>(current.byId.values());
+    }
+
+    static final class ChangeSummary {
+        final int added;
+        final int removed;
+        ChangeSummary(int added, int removed) {
+            this.added = added;
+            this.removed = removed;
+        }
+    }
+
     /** Keep the bundled voices as a reliable offline fallback. */
     static void useBundledVoices() {
         current = Snapshot.of(Arrays.asList(FALLBACK_VOICES));
