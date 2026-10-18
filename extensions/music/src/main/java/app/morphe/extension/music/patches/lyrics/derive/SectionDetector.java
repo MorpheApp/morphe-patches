@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.derive;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -116,16 +117,7 @@ public final class SectionDetector {
         boolean changed = false;
         for (int i = 0; i < lines.size(); i++) {
             LyricsLine line = lines.get(i);
-            String label = i < sections.size() ? sections.get(i) : null;
-            if (label != null) {
-                label = label.trim();
-                // mapLines already turns a skipped line into an empty entry; SKIP is accepted here
-                // as well so an answer that reached this method another way cannot be read as a
-                // section literally named "SKIP".
-                if (label.isEmpty() || SKIP.equalsIgnoreCase(label)) {
-                    label = null;
-                }
-            }
+            String label = getLabel(sections, i);
             if (Objects.equals(label, line.songPart())) {
                 out.add(line);
                 continue;
@@ -141,5 +133,20 @@ public final class SectionDetector {
                 lyrics.romanization(), lyrics.translations(), lyrics.romanizations(),
                 lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(),
                 lyrics.sourceUrl(), lyrics.about());
+    }
+
+    @Nullable
+    private static String getLabel(@NonNull List<String> sections, int i) {
+        String label = i < sections.size() ? sections.get(i) : null;
+        if (label != null) {
+            label = label.trim();
+            // mapLines already turns a skipped line into an empty entry; SKIP is accepted here
+            // as well so an answer that reached this method another way cannot be read as a
+            // section literally named "SKIP".
+            if (label.isEmpty() || SKIP.equalsIgnoreCase(label)) {
+                label = null;
+            }
+        }
+        return label;
     }
 }

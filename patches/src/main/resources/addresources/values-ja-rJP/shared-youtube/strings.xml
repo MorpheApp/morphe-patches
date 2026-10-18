@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">パッケージ名を入力してください</string>
   <string name="morphe_external_downloader_other_item">その他</string>
   <string name="morphe_external_downloader_not_found_title">アプリがインストールされていません</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s はインストールされていません。インストールしてください。</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s はインストールされていません。インストールしてください</string>
   <string name="morphe_external_downloader_package_not_found_warning">"パッケージ名「%s」のインストール済みアプリが見つかりませんでした
 
 パッケージ名が正しいこと、およびアプリがインストールされていることを確認してください"</string>
@@ -84,7 +84,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からの通知</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これはおそらく、DNS 広告ブロッカーまたはネットワーク プロキシが原因です。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください。</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">今後表示しない</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">動画ストリームを偽装</string>
@@ -99,7 +98,7 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
 
 %2$s をデフォルト クライアントにしますか？"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">切り替える</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">この設定をオフにすると、動画の再生が止まる問題が発生する可能性があります。</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">この設定をオフにすると、再生に問題が発生する可能性があります</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">以下を試す: [動画ストリームを偽装] &gt; [Android VR (ログイン)] をオン</string>
@@ -134,7 +133,7 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
 • Google アカウントのパスワードを変更した場合、または Google アカウントの設定からこのデバイスの登録を解除した場合は、再度ログインする必要があります"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 は一時的に利用できません (API タイムアウト)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR へのログインが期限切れです。再度ログインしてください</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 は一時的に利用できません (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 は現在利用できません (ステータス %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 は一時的に利用できません</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR にログインできません。ウェブサイトの認証が承認されませんでした</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR にログインできません: %s</string>
@@ -193,11 +192,11 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">デバッグログ (protocol buffer)</string>
   <string name="morphe_debug_protobuffer_summary">開発者がアプリのコンポーネントを識別するための、より詳細なログ情報をデバッグログに追加します</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"この設定を有効にすると、一部の UI コンポーネントの画面上に表示されるテキストを含む追加のレイアウト データがログに記録されるようになります。
+  <string name="morphe_debug_protobuffer_user_dialog_message">"この設定を有効にすると、一部の UI コンポーネントの画面上に表示されるテキストを含む追加のレイアウト データがログに記録されます。
 
-このデータは、カスタム フィルタを作成する際にコンポーネントを識別するのに役立ちます。
+これは、カスタム フィルタを作成する際にコンポーネントを識別するのに役立ちます。
 
-ただし、有効にすると、IP アドレスなどの一部のユーザーデータもログに記録されるようになります。"</string>
+ただし、有効にすると、IP アドレスなどの一部のユーザーデータもログに記録されます"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">カスタム フィルタ</string>
   <string name="morphe_custom_filter_screen_summary">任意のコンポーネントを非表示にするフィルタであるカスタム フィルタの設定をします</string>
@@ -238,11 +237,11 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">アプリのバージョンを偽装</string>
   <string name="morphe_spoof_app_version_summary">古いバージョンのアプリを使用しているとサーバーに認識させて、以前の UI デザインや機能を復元します</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"アプリのバージョンを古いバージョンに偽装します。
+  <string name="morphe_spoof_app_version_user_dialog_message">"アプリのバージョンが古いバージョンに偽装されます。
 
-アプリの外観と機能を変更することができますが、予期しない副作用が引き起こされる可能性があります。
+これにより、アプリの外観と機能が変更されますが、不明な副作用が発生する可能性があります。
 
-偽装をオフに戻した際には、UI の不具合を防ぐためにアプリデータを消去することを推奨します。"</string>
+後で無効にする場合は、UI の不具合を防ぐためにアプリデータを消去することを推奨します"</string>
   <string name="morphe_spoof_app_version_target_title">アプリバージョンの偽装先</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">アプリのリフレッシュ レート</string>
@@ -265,7 +264,7 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">低評価数表示は一時的に利用できません (API タイムアウト)</string>
-  <string name="morphe_ryd_failure_connection_status_code">低評価数表示は利用できません (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">低評価数表示は利用できません (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">低評価数表示は利用できません (API のレート制限)</string>
   <string name="morphe_ryd_failure_generic">低評価数表示は利用できません (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +290,12 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">低評価数表示は一時的に利用できません: クライアント API のレート制限中</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API 投票数取得 (呼び出し回数)</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">ネットワーク呼び出しは実行されていません</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d 回のネットワーク呼び出しが実行されました</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s 回のネットワーク呼び出しが実行されました</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API 投票数取得 (タイムアウト回数)</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">ネットワーク呼び出しは 1 度もタイムアウトしていません</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d 回のネットワーク呼び出しがタイムアウトしました</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s 回のネットワーク呼び出しがタイムアウトしました</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API クライアントのレート制限</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">クライアントのレート制限は発生していません</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">クライアントのレート制限は %d 回発生しました</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d ミリ秒</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">クライアントのレート制限は %s 回発生しました</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s ミリ秒</string>
 </resources>

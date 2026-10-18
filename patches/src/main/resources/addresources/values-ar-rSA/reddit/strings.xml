@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">التخطيط</string>
   <string name="morphe_copy_text_title">نسخ النص</string>
   <string name="morphe_copy_text_summary">يتيح تحديد ونسخ النص في المنشورات والتعليقات. يعطّل طي التعليقات</string>
-  <string name="morphe_copy_text_user_dialog_message">سيتوقف طي التعليقات عن العمل أثناء تفعيل نسخ النص.</string>
+  <string name="morphe_copy_text_user_dialog_message">التعليقات المطوية ستتوقف عن العمل أثناء تمكين نسخ النص</string>
   <string name="morphe_custom_font_title">خط مخصص</string>
   <string name="morphe_custom_font_summary">حمّل ملف خط TTF أو OTF مخصص من المسار أدناه. وتمكين هذا يؤدي أيضًا إلى إيقاف تشغيل خط النظام</string>
   <string name="morphe_custom_font_file_path_title">ملف الخط المخصص</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">يخفي رفوف \"الترند\" من موجز الأخبار واقتراحات البحث</string>
   <string name="morphe_remove_notification_dialog_title">إزالة مربع حوار اقتراح الإشعارات</string>
   <string name="morphe_remove_notification_dialog_summary">يقوم بإخفاء حوار اقتراح الإشعار تلقائيًا عند زيارة subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">إظهار الشارات في خلاصة الرئيسية</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">يعرض شارات التصنيفات للمشاركات في خلاصة الرئيسية</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">قد لا تظهر بعض عناصر الخلاصة تصنيفاً</string>
   <string name="morphe_show_view_count_title">إظهار عدد المشاهدات</string>
   <string name="morphe_show_view_count_summary">القيود: متاح فقط إذا كان استجابة واجهة برمجة التطبيقات تتضمن عدد المشاهدات</string>
   <string name="morphe_flip_post_action_bar_title">عكس شريط إجراءات المنشور</string>

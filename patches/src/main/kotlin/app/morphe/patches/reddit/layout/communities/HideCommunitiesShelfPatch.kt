@@ -18,10 +18,10 @@ import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/reddit/patches/HideCommunitiesShelf;"
+    "Lapp/morphe/extension/reddit/patches/HideCommunitiesShelfPatch;"
 
 @Suppress("unused")
-val hideCommunitiesShelf = bytecodePatch(
+val hideCommunitiesShelfPatch = bytecodePatch(
     name = "Hide communities shelf",
     description = "Adds an option to hide the related or suggested communities shelf in subreddits."
 ) {

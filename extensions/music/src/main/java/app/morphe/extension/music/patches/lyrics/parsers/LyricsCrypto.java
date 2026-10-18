@@ -71,10 +71,6 @@ public final class LyricsCrypto {
         }
     }
 
-    /**
-     * ECB is weak, but the mode is not ours to choose: it is what the NetEase eapi endpoint
-     * encrypts with, so anything else would simply fail to decrypt.
-     */
     @SuppressLint("GetInstance")
     public static String aesEcbPkcs5DecryptBase64ToString(String base64Data, String key) {
         try {

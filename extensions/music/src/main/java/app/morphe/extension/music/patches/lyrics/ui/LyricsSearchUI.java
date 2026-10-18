@@ -22,7 +22,7 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import java.util.List;
 
-final class LyricsSearchUi {
+final class LyricsSearchUI {
 
     static AutoCompleteTextView createSearchInput(Context context, String hint) {
         AutoCompleteTextView input = new AutoCompleteTextView(context);

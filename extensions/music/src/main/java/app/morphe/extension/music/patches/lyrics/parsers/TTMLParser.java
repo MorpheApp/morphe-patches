@@ -102,12 +102,17 @@ public final class TTMLParser {
                             inSongwriters = true;
                             songwritersDepth = 1;
                         } else if (inSongwriters) {
-                            songwritersDepth++;
                             if ("songwriter".equals(local)) {
+                                // readTextContent swallows the closing tag too, so counting this
+                                // one would leave songwritersDepth above zero at
+                                // </songwriters> and latch inSongwriters, which swallows
+                                // the transliterations below.
                                 final String name = readTextContent(p);
                                 if (!name.trim().isEmpty()) {
                                     songwriters.add(name.trim());
                                 }
+                            } else {
+                                songwritersDepth++;
                             }
                         } else if ("meta".equals(local) && NS_AMLL.equals(p.getNamespace())) {
                             final String key = getAttr(p, NS_AMLL, "key", "amll:key");
@@ -248,6 +253,16 @@ public final class TTMLParser {
                         final ParsedLine pl = processPElement(p, pBegin, pEnd);
 
                         if (pl != null && !pl.text().trim().isEmpty()) {
+                            final List<RomajiSyllable> lineSidecar =
+                                    findSidecarRoman(lineId, sidecarRoman);
+                            // Read off the sidecar before the words carry a reading, or the
+                            // line loses the parts no word matched.
+                            final String romaText = buildLineRomaji(pl.words(), lineSidecar);
+                            // The panel draws a reading over the words, not beside them.
+                            if (lineSidecar != null && !lineSidecar.isEmpty()) {
+                                alignRomajiToWords(pl.words(), lineSidecar);
+                            }
+
                             final LyricsLine line = new LyricsLine(
                                     pl.begin(), pl.end(), pl.text(), pl.words(),
                                     agentId, false, false, divSongPart);
@@ -263,10 +278,6 @@ public final class TTMLParser {
                                 lines.add(bgLine);
                             }
 
-                            final List<RomajiSyllable> lineSidecar =
-                                    findSidecarRoman(lineId, sidecarRoman);
-                            final String romaText = buildLineRomaji(
-                                    pl.words(), lineSidecar);
                             romanization.add(new LyricsLine(
                                     LyricsLine.NO_TIME, romaText));
                             for (int i = 0; i < pl.bgLines().size(); i++) {
@@ -855,7 +866,23 @@ public final class TTMLParser {
                 final String beginAttr = getAttr(p, null, "begin", "begin");
                 final String endAttr = getAttr(p, null, "end", "end");
 
-                if (inBg) {
+                // Ruby is settled first: an annotation sits inside the vocal it reads,
+                // so the background branch below would drop its base text.
+                if ("container".equals(ruby)) {
+                    inRubyContainer = true;
+                    rubyBaseBuf.setLength(0);
+                    rubyTags.clear();
+                } else if ("base".equals(ruby) && inRubyContainer) {
+                    inRubyBase = true;
+                    rubyBaseBuf.setLength(0);
+                } else if ("textContainer".equals(ruby) && inRubyContainer) {
+                    inRubyTextContainer = true;
+                } else if ("text".equals(ruby) && inRubyTextContainer) {
+                    inRubyText = true;
+                    rubyTextBuf.setLength(0);
+                    rubyTextBegin = parseTime(beginAttr);
+                    rubyTextEnd = parseTime(endAttr);
+                } else if (inBg) {
                     if ("x-translation".equals(role)) {
                         inBgTranslation = true;
                         bgTransBuf.setLength(0);
@@ -886,20 +913,6 @@ public final class TTMLParser {
                     inRoman = true;
                     romanBuf.setLength(0);
                     romanLang = getAttr(p, NS_XML, "lang", "xml:lang");
-                } else if ("container".equals(ruby)) {
-                    inRubyContainer = true;
-                    rubyBaseBuf.setLength(0);
-                    rubyTags.clear();
-                } else if ("base".equals(ruby) && inRubyContainer) {
-                    inRubyBase = true;
-                    rubyBaseBuf.setLength(0);
-                } else if ("textContainer".equals(ruby) && inRubyContainer) {
-                    inRubyTextContainer = true;
-                } else if ("text".equals(ruby) && inRubyTextContainer) {
-                    inRubyText = true;
-                    rubyTextBuf.setLength(0);
-                    rubyTextBegin = parseTime(beginAttr);
-                    rubyTextEnd = parseTime(endAttr);
                 } else if (beginAttr != null && endAttr != null) {
                     inWord = true;
                     wordBuf.setLength(0);
@@ -945,14 +958,6 @@ public final class TTMLParser {
                             bgWords.add(new Word(bgWordBegin, bgWordEnd, text, null,
                                     endsWithSpace));
                         }
-                    } else if (inBg && bgWrapperDepth > 0) {
-                        bgWrapperDepth--;
-                    } else if (inBg) {
-                        flushBgLine(bgLines, bgWords, bgFullText, bgBeginMs, bgEndMs,
-                                pBegin, pEnd);
-                        bgWords.clear();
-                        bgFullText.setLength(0);
-                        inBg = false;
                     } else if (inRubyText && inRubyContainer) {
                         inRubyText = false;
                         final String text = normalizeText(rubyTextBuf.toString());
@@ -980,11 +985,25 @@ public final class TTMLParser {
                                 rRoma.append(rs.text());
                             }
                             //noinspection SizeReplaceableByIsEmpty
-                            String romaji = rRoma.length() > 0 ? rRoma.toString() : null;
+                            final String romaji = rRoma.length() > 0 ? rRoma.toString() : null;
 
-                            fullText.append(baseText);
-                            words.add(new Word(rBegin, rEnd, baseText, romaji, false));
+                            // The base is the sung text either way, only the line differs.
+                            if (inBg) {
+                                bgFullText.append(baseText);
+                                bgWords.add(new Word(rBegin, rEnd, baseText, romaji, false));
+                            } else {
+                                fullText.append(baseText);
+                                words.add(new Word(rBegin, rEnd, baseText, romaji, false));
+                            }
                         }
+                    } else if (inBg && bgWrapperDepth > 0) {
+                        bgWrapperDepth--;
+                    } else if (inBg) {
+                        flushBgLine(bgLines, bgWords, bgFullText, bgBeginMs, bgEndMs,
+                                pBegin, pEnd);
+                        bgWords.clear();
+                        bgFullText.setLength(0);
+                        inBg = false;
                     } else if (inTranslation) {
                         inTranslation = false;
                         final String tText = transBuf.toString().trim();
@@ -1035,6 +1054,10 @@ public final class TTMLParser {
                     bgRomanBuf.append(raw);
                 } else if (inBgWord) {
                     bgWordBuf.append(raw);
+                } else if (inRubyBase && inRubyContainer) {
+                    rubyBaseBuf.append(raw);
+                } else if (inRubyText && inRubyContainer) {
+                    rubyTextBuf.append(raw);
                 } else if (inBg && bgWrapperDepth == 0) {
                     // Formatting newlines (whitespace + \n) between BG word spans
                     if (!formattingNewline) {
@@ -1049,10 +1072,6 @@ public final class TTMLParser {
                                     prev.text(), prev.romaji(), true));
                         }
                     }
-                } else if (inRubyBase && inRubyContainer) {
-                    rubyBaseBuf.append(raw);
-                } else if (inRubyText && inRubyContainer) {
-                    rubyTextBuf.append(raw);
                 } else if (inTranslation) {
                     transBuf.append(raw);
                 } else if (inRoman) {
@@ -1134,8 +1153,10 @@ public final class TTMLParser {
                 bgInlineRoma.isEmpty() ? null : bgInlineRoma);
     }
 
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void flushBgLine(List<LyricsLine> bgLines, List<Word> bgWords,
-            StringBuilder bgFullText, long bgBeginMs, long bgEndMs, long pBegin, long pEnd) {
+                                    StringBuilder bgFullText, long bgBeginMs,
+                                    long bgEndMs, long pBegin, long pEnd) {
         if (bgWords.isEmpty() && bgFullText.length() == 0) {
             return;
         }
@@ -1382,7 +1403,6 @@ public final class TTMLParser {
             }
         }
 
-        // Add main translations (with word-level timing if available)
         for (Map.Entry<String, SidecarTranslation> entry : mainByLang.entrySet()) {
             final String lang = entry.getKey();
             final SidecarTranslation st = entry.getValue();
@@ -1396,7 +1416,6 @@ public final class TTMLParser {
             }
         }
 
-        // Add BG translations (from sidecar) — prefixed with "bg:" to distinguish
         for (Map.Entry<String, SidecarTranslation> entry : bgByLang.entrySet()) {
             final String lang = "bg:" + entry.getKey();
             final SidecarTranslation st = entry.getValue();

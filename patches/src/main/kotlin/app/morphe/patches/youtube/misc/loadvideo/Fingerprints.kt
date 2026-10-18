@@ -69,9 +69,6 @@ internal object BackButtonFinishActivityOnNewVideoIntentFingerprint : Fingerprin
     returnType = "V",
     parameters = listOf("L"),
     filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IGET,
-        Opcode.IF_EQZ,
-        Opcode.RETURN_VOID,
         Opcode.IGET_OBJECT,
         Opcode.CHECK_CAST,
         Opcode.IGET_OBJECT,
@@ -79,5 +76,49 @@ internal object BackButtonFinishActivityOnNewVideoIntentFingerprint : Fingerprin
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
         Opcode.IGET_OBJECT,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT,
+        Opcode.IPUT_BOOLEAN,
+        Opcode.INVOKE_INTERFACE,
+        Opcode.MOVE_RESULT_OBJECT,
+        Opcode.CHECK_CAST,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT,
+        Opcode.IPUT_BOOLEAN
     ),
+)
+
+private const val ACCESSIBILITY_STATE_CHANGE_LISTENER =
+    $$"Landroid/view/accessibility/AccessibilityManager$AccessibilityStateChangeListener;"
+
+/**
+ * Adds a reason that blocks playback in feeds.
+ */
+internal object BlockInlinePlaybackFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;"),
+        methodCall(smali = "Ljava/util/Set;->add(Ljava/lang/Object;)Z")
+    ),
+    custom = { _, classDef ->
+        classDef.interfaces.contains(ACCESSIBILITY_STATE_CHANGE_LISTENER)
+    }
+)
+
+/**
+ * Removes a reason that blocks playback in feeds.
+ */
+internal object UnblockInlinePlaybackFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;"),
+        methodCall(smali = "Ljava/util/Set;->remove(Ljava/lang/Object;)Z")
+    ),
+    custom = { _, classDef ->
+        classDef.interfaces.contains(ACCESSIBILITY_STATE_CHANGE_LISTENER)
+    }
 )

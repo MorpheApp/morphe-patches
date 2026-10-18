@@ -250,7 +250,11 @@ internal object NerdsStatsVideoFormatBuilderFingerprint : Fingerprint(
     parameters = listOf("L"),
     filters = listOf(
         string("codecs=\"")
-    )
+    ),
+    custom = { method, _ ->
+        // 21.42+ has a mime type codecs parser with the same string.
+        method.parameterTypes.first() != "Ljava/lang/String;"
+    }
 )
 
 // Feature flag that turns on Platypus programming language code compiled to native C++.

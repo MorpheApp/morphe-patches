@@ -39,6 +39,10 @@ public class PreferredCaptionLanguagePatch {
          */
         @Nullable
         List<CaptionTrackInterface> patch_getAutoTranslateCaptionTracks();
+
+        /** @return YouTube's default original caption source for the current audio, if available. */
+        @Nullable
+        CaptionTrackInterface patch_getDefaultCaptionSource();
     }
 
     /**
@@ -58,8 +62,8 @@ public class PreferredCaptionLanguagePatch {
         String patch_getVssId();
     }
 
-    private static final String DISABLE_OPTION = "DISABLE_CAPTIONS_OPTION";
-    private static final String AUTO_TRANSLATE_OPTION = "AUTO_TRANSLATE_CAPTIONS_OPTION";
+    static final String DISABLE_OPTION = "DISABLE_CAPTIONS_OPTION";
+    static final String AUTO_TRANSLATE_OPTION = "AUTO_TRANSLATE_CAPTIONS_OPTION";
     private static final String PREFERRED_TRACK_SELECT_TYPE = "PREFERRED_TRACK";
 
     /**
@@ -108,7 +112,6 @@ public class PreferredCaptionLanguagePatch {
 
             // Priority 1: Direct tracks (provider subtitle, or native language subtitle).
             CaptionTrackInterface nativeTrack = null;
-            boolean autoTranslateAvailable = false;
 
             List<CaptionTrackInterface> directTracks = subtitleManager.patch_getDirectCaptionTracks();
             if (directTracks != null) {
@@ -116,7 +119,6 @@ public class PreferredCaptionLanguagePatch {
                     String lang = track.patch_getLanguageCode();
 
                     if (AUTO_TRANSLATE_OPTION.equals(lang)) {
-                        autoTranslateAvailable = true;
                         continue;
                     }
 
@@ -143,21 +145,12 @@ public class PreferredCaptionLanguagePatch {
                 return recordProgrammaticSelection(nativeTrack);
             }
 
-            // Priority 2: Auto-translate to target language.
-            // Only evaluate if YouTube actually offers auto-translation on this video.
-            if (autoTranslateAvailable) {
-                List<CaptionTrackInterface> autoTracks = subtitleManager.patch_getAutoTranslateCaptionTracks();
-                if (autoTracks != null) {
-                    for (CaptionTrackInterface track : autoTracks) {
-                        if (matchesLanguage(track.patch_getLanguageCode(), targetLang)) {
-                            Logger.printDebug(() -> "Selected priority 2 (auto-translated subtitle): " + track);
-                            return recordProgrammaticSelection(track);
-                        }
-                    }
-                }
-            } else {
-                Logger.printDebug(() -> "Auto-translation not available for this video, skipping priority 2");
-            }
+            // Priority 2: Existing translation, then a validated current-audio source fallback.
+            // A missing menu row does not mean the backend cannot translate the source.
+            CaptionTrackInterface translated = findAutoTranslatedTrack(directTracks,
+                    subtitleManager.patch_getAutoTranslateCaptionTracks(),
+                    subtitleManager.patch_getDefaultCaptionSource(), targetLang, Requester.getAppLocale());
+            if (translated != null) return recordProgrammaticSelection(translated);
 
             // Priority 3: Fallback to the original YouTube selection.
             Logger.printDebug(() -> "Falling back to original track: " + originalTrack);
@@ -166,6 +159,25 @@ public class PreferredCaptionLanguagePatch {
             Logger.printException(() -> "getPreferredCaptionTrack failure", ex);
             return originalTrack;
         }
+    }
+
+    @Nullable
+    static CaptionTrackInterface findAutoTranslatedTrack(@Nullable List<CaptionTrackInterface> directTracks,
+            @Nullable List<CaptionTrackInterface> translatedTracks, @Nullable CaptionTrackInterface defaultSource,
+            String targetLanguage, Locale locale) {
+        if (translatedTracks != null) {
+            // Prefer the requested region when both regional and generic translations exist.
+            String normalizedTarget = normalizeLanguageCode(targetLanguage);
+            for (CaptionTrackInterface track : translatedTracks) {
+                if (normalizedTarget.equals(normalizeLanguageCode(track.patch_getLanguageCode()))) return track;
+            }
+            for (CaptionTrackInterface track : translatedTracks) {
+                if (matchesLanguage(track.patch_getLanguageCode(), targetLanguage)) return track;
+            }
+        }
+        String language = AutoTranslateCaptionsPatch.translationLanguage(targetLanguage);
+        return language == null ? null : AutoTranslateCaptionsPatch.createTranslation(
+                AutoTranslateCaptionsPatch.findFallbackSource(directTracks, defaultSource), language, locale);
     }
 
     /**

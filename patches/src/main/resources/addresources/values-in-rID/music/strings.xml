@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Memperbarui Jam…</string>
   <string name="morphe_music_jam_finding_host">Mencari host Anda di Wi-Fi…</string>
   <string name="morphe_music_jam_waiting_people">Menunggu orang lain</string>
-  <string name="morphe_music_jam_one_connected">%d orang terhubung</string>
-  <string name="morphe_music_jam_many_connected">%d orang terhubung</string>
-  <string name="morphe_music_jam_code_expires">Masukkan kode ini pada perangkat di dekat Anda. Wi-Fi Aware dapat beroperasi lintas LAN terpisah jika didukung. Kedaluwarsa dalam %d menit.</string>
+  <string name="morphe_music_jam_one_connected">%s orang terhubung</string>
+  <string name="morphe_music_jam_many_connected">%s orang terhubung</string>
+  <string name="morphe_music_jam_code_expires">Masukkan kode ini pada perangkat di dekat Anda. Wi-Fi Aware dapat beroperasi lintas LAN terpisah jika didukung. Kedaluwarsa dalam %s menit</string>
   <string name="morphe_music_jam_seek_to">Pindah ke %s?</string>
   <string name="morphe_music_jam_edits_open">Edit terbuka</string>
   <string name="morphe_music_jam_edits_locked">Edit terkunci</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Tidak didukung selama Jam</string>
   <string name="morphe_music_jam_cancelled">Bergabung dibatalkan</string>
   <string name="morphe_music_jam_reconnecting_host">Menghubungkan ulang ke host Anda…</string>
-  <string name="morphe_music_jam_share_prompt">Bagikan antrean. Biarkan semua orang menambahkan lagu.</string>
+  <string name="morphe_music_jam_share_prompt">Bagikan antrean. Biarkan semua orang menambahkan lagu</string>
   <string name="morphe_music_jam_invite_people">Undang orang</string>
   <string name="morphe_music_jam_guest_edits">Tamu dapat mengedit antrean</string>
   <string name="morphe_music_jam_end_jam">Akhiri Jam</string>
-  <string name="morphe_music_jam_participant_help">Host memutar musik. Tambahkan, pindahkan, atau hapus lagu secara langsung di antrean YouTube Music.</string>
-  <string name="morphe_music_jam_joining_help">Dekatkan kedua perangkat. Anda dapat membatalkan sementara kami mencari host.</string>
+  <string name="morphe_music_jam_participant_help">Host memutar musik. Tambahkan, pindahkan, atau hapus lagu secara langsung di antrean YouTube Music</string>
+  <string name="morphe_music_jam_joining_help">Jauhkan kedua perangkat tetap berdekatan. Anda dapat membatalkan sambil kami mencari host</string>
   <string name="morphe_music_jam_cancel_joining">Batalkan bergabung</string>
   <string name="morphe_music_jam_leave_jam">Tinggalkan Jam</string>
   <string name="morphe_music_jam_start_jam">Mulai Jam</string>
@@ -127,7 +127,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_in_app_downloads_summary">Mengunduh audio di dalam YouTube Music daripada membuka aplikasi pengunduh eksternal</string>
   <string name="morphe_music_in_app_downloads_user_dialog_message">"Trek disimpan di penyimpanan pribadi aplikasi dan akan dihapus jika YouTube Music dicopot.
 
-Selama fitur ini aktif, tab Unduhan mencantumkan trek ini, bukan pustaka offline Music Premium. Mematikannya akan memulihkan tab tersebut, dan unduhan Premium tidak akan pernah tersentuh."</string>
+Selama fitur ini aktif, tab Unduhan mencantumkan trek ini, bukan pustaka offline Music Premium. Mematikannya akan memulihkan tab tersebut, dan unduhan Premium tidak akan pernah tersentuh"</string>
   <string name="morphe_music_downloads_screen_title">Unduhan</string>
   <string name="morphe_music_downloads_empty">"Tidak ada unduhan
 Lagu yang diunduh akan muncul di sini"</string>
@@ -249,7 +249,7 @@ Lagu yang diunduh akan muncul di sini"</string>
   <string name="morphe_music_crossfade_about_how_title">Cara kerjanya</string>
   <string name="morphe_music_crossfade_about_how_summary">"Crossfade menumpangtindihkan akhir satu lagu dengan awal lagu berikutnya, menggunakan durasi dan kurva Anda
 
-Ini berjalan pada lanjut otomatis dan lewati manual, masing-masing dengan sakelarnya sendiri. Pada lanjut otomatis, perpaduan dimulai beberapa detik sebelum lagu berakhir.    guna"</string>
+Ini berjalan pada lanjut otomatis dan lewati manual, masing-masing dengan sakelarnya sendiri. Pada lanjut otomatis, perpaduan dimulai beberapa detik sebelum lagu berakhir"</string>
   <string name="morphe_music_crossfade_about_quirks_title">Keterbatasan</string>
   <string name="morphe_music_crossfade_about_quirks_summary">"Video musik diputar hanya sebagai audio saat crossfade aktif. Tekan lama tombol acak untuk menjeda crossfade dan menonton videonya
 
@@ -445,7 +445,7 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Pembersihan regex khusus</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Masukkan ekspresi reguler khusus untuk menghapus teks tambahan dari judul lagu, artis, atau album. Contoh: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Parsing artis dan trek dari judul</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Ekstrak nama artis dan trek dari judul video menggunakan pemisah \" - \". Berguna untuk konten yang diunggah ulang di mana nama channel dapat digunakan sebagai artis.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Ekstrak nama artis dan trek dari judul video menggunakan pemisah \" - \". Berguna untuk konten yang diunggah ulang di mana nama saluran mungkin digunakan sebagai nama artis</string>
   <string name="morphe_music_scrobbling_guess_album_title">Isi album yang hilang</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Jika musik tidak menyertakan album, cari di Last.fm agar scrobble Anda lengkap</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastik
   <string name="morphe_music_lyrics_section_service_title">Layanan lirik</string>
   <string name="morphe_music_lyrics_section_overlay_title">Hamparan</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinkronisasi</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Semua penyedia dinonaktifkan — lirik bawaan dan lirik tersemat</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">Titik akhir AI</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Semua penyedia dinonaktifkan - lirik bawaan dan lirik tertanam</string>
   <string name="morphe_music_lyrics_source_reset_title">Setel ulang urutan penyedia?</string>
   <string name="morphe_music_lyrics_source_reset_message">Kembalikan penyedia ke urutan prioritas bawaan</string>
   <string name="morphe_music_token_dialog_get_token">Dapatkan token</string>
@@ -473,7 +474,7 @@ Langkah-langkah:
 3. Salin nilai \"media-user-token\""</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token disimpan</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token dihapus</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token tidak valid — periksa kembali dan coba lagi</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: token media-user tidak valid - silakan periksa dan coba lagi</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Tempel cookie sp_dc dari Spotify.
 
@@ -483,7 +484,7 @@ Langkah-langkah:
 3. Salin nilai \"sp_dc\""</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc disimpan</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc dihapus</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc tidak valid — periksa kembali dan coba lagi</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc tidak valid - silakan periksa dan coba lagi</string>
   <string name="morphe_music_apple_token_optional_hint">Token Apple Music bersifat opsional. Tanpa token tersebut, Lyrically akan digunakan sebagai cadangan</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Tempel cookie arl dari Deezer.
@@ -494,14 +495,14 @@ Langkah-langkah:
 3. Salin nilai \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl disimpan</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl tidak valid. Silakan coba lagi.</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl tidak valid — periksa kembali dan coba lagi</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl tidak valid - silakan periksa dan coba lagi</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal dari aplikasi Musixmatch Android: token yang disalin dari musixmatch.com milik klien desktop yang sudah pensiun dan API menolaknya.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch berfungsi tanpa token, jadi kolom ini bisa tetap kosong.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">user token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token pengguna disimpan</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token pengguna dihapus</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: token pengguna tidak valid — periksa kembali dan coba lagi</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: token pengguna tidak valid - silakan periksa dan coba lagi</string>
   <string name="morphe_music_youtube_cookies_title">Cookie YouTube</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Tempelkan cookie YouTube Anda untuk mengambil subtitle dan teks waktu dari YouTube.
 
@@ -513,7 +514,7 @@ Langkah-langkah:
 Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie disimpan</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookie dihapus</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookie tidak valid — periksa kembali dan coba lagi.</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookie tidak valid - silakan periksa dan coba lagi</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Ketuk baris untuk mencari</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Mengetuk baris akan melompat ke momen itu di lagu</string>
   <string name="morphe_music_lyrics_show_section_title">Tampilkan tag bagian</string>
@@ -524,6 +525,12 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_show_translate_button_summary">Ketuk untuk mengalihkan terjemahan; tekan lama untuk hanya terjemahan. Menggunakan penyedia terjemahan, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Tampilkan tombol Romanisasi</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Ketuk untuk mengalihkan romanisasi; tekan lama untuk hanya romanisasi. Menggunakan penyedia romanisasi, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Romanisasi lokal</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Romani di perangkat ketika penyedia, ujung endpoint yang kompatibel dengan OpenAI, dan Google Translate semuanya gagal. Hanya CJK, sekitar 80 MB bacaan untuk diunduh.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Membaca %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Bacaan siap (%1$d kata CJK)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Unduhan gagal — matikan dan nyalakan kembali untuk mencoba lagi</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Tampilkan tombol Segarkan</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk berpindah ke kandidat lirik berikutnya; tekan lama untuk mencari lirik berdasarkan judul lagu dan artis.</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cari lirik</string>
@@ -534,6 +541,8 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_saved">Tersimpan</string>
   <string name="morphe_music_lyrics_word_sync_title">Sorot kata atau suku kata yang disinkronkan</string>
   <string name="morphe_music_lyrics_word_sync_summary">Utamakan lirik kata per kata jika tersedia. Setiap kata atau suku kata akan disorot sesuai irama musik.</string>
+  <string name="morphe_music_lyrics_split_background_title">Tampilkan vokal latar secara terpisah</string>
+  <string name="morphe_music_lyrics_split_background_summary">Memindahkan vokal latar belakang yang ditulis dalam tanda kurung, seperti \"(Oh) saya ingin kamu\", dari baris lagu ke baris redupnya sendiri</string>
   <string name="morphe_music_lyrics_hide_played_title">Sembunyikan lirik yang telah diputar</string>
   <string name="morphe_music_lyrics_hide_played_summary">Sembunyikan baris lirik di atas garis yang sedang diputar</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Sembunyikan lirik yang belum diputar</string>
@@ -558,25 +567,47 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_sb_no_video">Lagu ini tidak memiliki id video untuk dikirim</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Sumber: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Tekan lama tombol salin untuk menyimpan LRC ini; jika Anda dapat menyetel waktu secara halus dan membagikannya dengan penyedia komunitas, kami akan sangat berterima kasih.</string>
   <string name="morphe_music_lyrics_translated_by_google">Diterjemahkan oleh Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Diromanisasi oleh Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Diterjemahkan oleh %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Diromanisasi oleh %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Diromani oleh %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Diterjemahkan</string>
   <string name="morphe_music_lyrics_translation_language_title">Bahasa terjemahan</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Bahasa romanisasi</string>
   <string name="morphe_music_lyrics_translating">Menerjemahkan…</string>
   <string name="morphe_music_lyrics_translate_failed">Tidak dapat menerjemahkan lirik</string>
   <string name="morphe_music_lyrics_romanize_hide">Diromanisasi</string>
+  <string name="morphe_romanize_language_DEFAULT">Otomatis</string>
   <string name="morphe_music_lyrics_romanizing">Meromanisasi…</string>
   <string name="morphe_music_lyrics_romanize_failed">Tidak dapat meromanisasi lirik</string>
   <string name="morphe_music_lyrics_translate_only">Terjemahan saja</string>
   <string name="morphe_music_lyrics_romanize_only">Hanya romanisasi</string>
+  <string name="morphe_music_lyrics_dual_only">Mode ganda</string>
   <string name="morphe_music_lyrics_copied">Disalin ke papan klip</string>
   <string name="morphe_music_lyrics_refreshing">MediaSession</string>
   <string name="morphe_music_lyrics_refreshed">Segarkan</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">Kunci API QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC mentranskripsi atau menyelaraskan lirik untuk trek saat ini. Layanan terpisah, tidak terkait dengan ujung endpoint yang kompatibel dengan OpenAI di atas.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">Kunci QuickLRC telah disimpan. Gunakan tombol selaraskan di dialog pencarian lirik, atau prompt panel ketika trek tidak memiliki lirik.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">Kunci API QuickLRC telah disimpan</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC tidak menerima kunci tersebut</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">Kunci API QuickLRC telah dihapus</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC memberikan waktu pada lirik yang tidak memilikinya, atau mentranskripsinya dari trek, dengan biaya kredit. Dengan kunci yang disetel, trek tanpa lirik menawarkan transkripsi dan dialog pencarian mendapatkan tombol penyelarasan.</string>
+  <string name="morphe_music_lyrics_transcribe_align">Permintaan penyelarasan QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Menyelaraskan</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Terapkan penyelarasan</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Permintaan transkripsi QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_working">Mentranskripsi</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Transkripsi dibatalkan</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Hanya trek yang diputar dari YouTube yang dapat ditranskripsi</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Tidak ada lirik untuk disejajarkan — alih-alih mentranskripsi</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC tidak dapat memproses trek ini</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">Kredit QuickLRC telah habis untuk trek ini</string>
   <string name="morphe_music_lyrics_about_summary">"Lirik dicocokkan berdasarkan judul dan artis, metadata yang tidak biasa mungkin tidak menemukan apa pun atau versi yang salah. Gunakan refresh untuk mengganti versi. Penyedia yang ditandai * memerlukan token. Semua penyedia yang diaktifkan tidak selalu diminta sesuai urutan Anda, tetapi merespons berdasarkan kecepatannya."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Hanya aktifkan penyedia yang Anda gunakan, atau pertahankan default — permintaan terus-menerus dapat membebani situs lirik komunitas kecil</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Hanya aktifkan penyedia yang Anda gunakan, atau biarkan default - permintaan terus-menerus dapat membebani situs lirik komunitas kecil</string>
   <string name="morphe_music_lyrics_hide_info_title">Sembunyikan baris kredit</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sembunyikan baris kredit yang ditampilkan di bawah lirik</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Tukar terjemahan dan romanisasi</string>
@@ -589,17 +620,17 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_use_ai_section_title">Bagian AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Hanya digunakan ketika provider tidak memberikan label bagian seperti Chorus atau Verse, yang kemudian akan dideteksi oleh model yang kompatibel dengan OpenAI</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">Setelan AI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurasikan endpoint API yang kompatibel dengan OpenAI untuk terjemahan lirik, romanisasi, dan bagian berbasis AI.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurasikan ujung endpoint API yang kompatibel dengan OpenAI untuk terjemahan lirik, romanisasi, dan bagian yang powered AI.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL titik akhir API (mis. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Kunci API (kosongkan untuk akses anonim)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nama model (mis. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Templat Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Penampung: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">Templat prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt disimpan</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt disimpan, tetapi ujung endpoint AI belum dapat digunakan. Konfigurasikan terlebih dahulu di bawah Pengaturan AI.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt diatur ulang</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Setelan AI disimpan</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Tidak dapat terhubung ke titik akhir AI. Periksa pengaturan Anda.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Tidak dapat terhubung ke endpoint AI. Silakan periksa pengaturan Anda</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Setelan AI diatur ulang</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">Model %1$s telah dikonfigurasi</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">URL dasar tidak boleh kosong</string>

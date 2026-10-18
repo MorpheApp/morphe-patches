@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">QR-kód megjelenítése</string>
   <string name="morphe_music_jam_done">Kész</string>
   <string name="morphe_music_jam_invite_title">Meghívás a Jamedbe</string>
-  <string name="morphe_music_jam_invite_message">Olvasd be a kódot a csatlakozáshoz és a várólista szerkesztéséhez. A Jam befejezése visszavonja a meghívót.</string>
+  <string name="morphe_music_jam_invite_message">Szkennelje a kódot, hogy hozzácsatlakozzon és szerkessze ezt a sorban állást. A Jam lezárása visszavonja a meghívót</string>
   <string name="morphe_music_jam_copy_link">Hivatkozás másolása</string>
   <string name="morphe_music_jam_invitation_clip">Jam-meghívó</string>
   <string name="morphe_music_jam_reconnecting_toast">A Jam újracsatlakozik; próbáld újra hamarosan.</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Jam frissítése…</string>
   <string name="morphe_music_jam_finding_host">A házigazdád keresése Wi-Fi-n…</string>
   <string name="morphe_music_jam_waiting_people">Várakozás a résztvevőkre</string>
-  <string name="morphe_music_jam_one_connected">%d fő csatlakozott</string>
-  <string name="morphe_music_jam_many_connected">%d fő csatlakozott</string>
-  <string name="morphe_music_jam_code_expires">Add meg ezt a kódot egy közeli eszközön. A Wi-Fi Aware támogatott esetben különböző helyi hálózatok között is működik. %d perc múlva lejár.</string>
+  <string name="morphe_music_jam_one_connected">%s csatlakozott</string>
+  <string name="morphe_music_jam_many_connected">%s kapcsolódott</string>
+  <string name="morphe_music_jam_code_expires">Adja meg ezt a kódot egy közeli eszközön. A Wi-Fi Aware LAN-hálózatokon is működik, ha támogatott. %s perc múlva lejárat</string>
   <string name="morphe_music_jam_seek_to">Ugrás ide: %s?</string>
   <string name="morphe_music_jam_edits_open">Szerkesztés nyitva</string>
   <string name="morphe_music_jam_edits_locked">Szerkesztés zárolva</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Jam közben nem támogatott.</string>
   <string name="morphe_music_jam_cancelled">A csatlakozás megszakítva.</string>
   <string name="morphe_music_jam_reconnecting_host">Újracsatlakozás a házigazdádhoz…</string>
-  <string name="morphe_music_jam_share_prompt">Oszd meg a várólistát. Hagyd, hogy mindenki adjon hozzá dalokat.</string>
+  <string name="morphe_music_jam_share_prompt">Ossza meg a sorban állást. Hagyja, hogy mindenki dalokat adjon hozzá</string>
   <string name="morphe_music_jam_invite_people">Emberek meghívása</string>
   <string name="morphe_music_jam_guest_edits">A vendégek szerkeszthetik a várólistát.</string>
   <string name="morphe_music_jam_end_jam">Jam befejezése</string>
-  <string name="morphe_music_jam_participant_help">A házigazda játssza a zenét. Adj hozzá, mozgass vagy távolíts el dalokat közvetlenül a YouTube Music várólistájában.</string>
-  <string name="morphe_music_jam_joining_help">Tartsd egymás közelében a két eszközt. Amíg keressük a házigazdát, megszakíthatod a csatlakozást.</string>
+  <string name="morphe_music_jam_participant_help">A házigazda játssza le a zenét. Adjon hozzá, mozgasson vagy távolítson el dalokat közvetlenül a YouTube Music sorban állásában</string>
+  <string name="morphe_music_jam_joining_help">Tartsa mindkét eszközt közel egymáshoz. Még akkor is megszakíthatja, amíg a házigazdát keressük</string>
   <string name="morphe_music_jam_cancel_joining">Csatlakozás megszakítása</string>
   <string name="morphe_music_jam_leave_jam">Kilépés a Jamből</string>
   <string name="morphe_music_jam_start_jam">Jam indítása</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">A kiválasztott külső letöltőt használja a beépített Letöltés felugró menü helyett</string>
   <string name="morphe_music_in_app_downloads_title">Letöltés az alkalmazásban</string>
   <string name="morphe_music_in_app_downloads_summary">Audiót tölt le a YouTube Musicban a külső letöltőalkalmazás megnyitása helyett</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"A számok az alkalmazás privát tárterületére kerülnek mentve, és törlődnek, ha a YouTube Music zostanie telepítve.
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"A dalok az alkalmazás privát tárolójába kerülnek, és törlődnek, ha eltávolítja a YouTube Musict.
 
-Amíg ez bekapcsolva van, a Letöltések fül ezeket a számokat listázza a Music Premium offline könyvtár helyett. A kikapcsolás visszaállítja a fül funkcióját, és a Premium letöltések érintetlenek maradnak."</string>
+Amikor ez be van kapcsolva, letöltések fülön ezek a dalok jelennek meg, nem pedig a Zenei prémium离线 könyvtára. Ha letiltja, visszaállítja a fület, és a Prémium letöltéseket nem érinti"</string>
   <string name="morphe_music_downloads_screen_title">Letöltések</string>
   <string name="morphe_music_downloads_empty">"Nincs letöltés
 A letöltött számok itt jelennek meg"</string>
@@ -445,7 +445,7 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Egyéni reguláris kifejezéses tisztítás</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Adj meg egy egyéni reguláris kifejezést a dalok címéből, előadóból vagy albumokból felesleges szöveg eltávolításához. Példa: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Bontsa ki a művészt és a számcímet a címből</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">A videó címéből szűri ki a művész és a számcím nevét a \" - \" elválasztóval. Hasznos feltöltött tartalmak esetén, ahol a csatorna neve a művész nevéként szerepel.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Bontsa ki a előadó és a szám nevét a videó címéből „ - ” elválasztó karakter segítségével. Hasznos újrafeltöltött tartalmaknál, ahol a csatorna neve lehet az előadó</string>
   <string name="morphe_music_scrobbling_guess_album_title">Hiányzó album megadása</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Ha a zeneszám nem tartalmaz albumot, keresd meg a Last.fm-en, hogy a scrobble teljes legyen.</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ A háttérlejátszás közbeni szinkronizálás biztosításához győződjön m
   <string name="morphe_music_lyrics_section_service_title">Dalszöveg-szolgáltatás</string>
   <string name="morphe_music_lyrics_section_overlay_title">Átfedés</string>
   <string name="morphe_music_lyrics_section_sync_title">Szinkronizálás</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Minden szolgáltató le van tiltva – a beépített és a beágyazott dalszövegek is.</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI végpont</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Minden szolgáltató letiltva – beépített és beágyazott szövegek</string>
   <string name="morphe_music_lyrics_source_reset_title">Visszaállítja a szolgáltatók sorrendjét?</string>
   <string name="morphe_music_lyrics_source_reset_message">Szolgáltatók visszaállítása az alapértelmezett prioritási sorrendre.</string>
   <string name="morphe_music_token_dialog_get_token">Token lekérése</string>
@@ -473,7 +474,7 @@ Lépések:
 3. Másold ki a \"media-user-token\" értékét"</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token elmentve</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token törölve</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: érvénytelen media-user-token — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: érvénytelen média-felhasználói token – kérjük, ellenőrizze, majd próbálja újra</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Illeszd be a Spotify sp_dc cookie-ját.
 
@@ -483,7 +484,7 @@ Lépések:
 3. Másold ki a \"sp_dc\" értékét"</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Enélkül a Lyrically lesz tartalékként használva.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc törölve</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: érvénytelen sp_dc — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: érvénytelen sp_dc – kérjük, ellenőrizze, majd próbálja újra</string>
   <string name="morphe_music_apple_token_optional_hint">Az Apple Music token opcionális. Enélkül a Lyrically szolgál tartalékként.</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Másolja ki az \"arl\" értékét.</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Illeszd be a Deezer arl cookie-ját.
@@ -494,14 +495,14 @@ Lépések:
 3. Másold ki az \"arl\" értékét"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl elmentve</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: érvénytelen arl, próbálja újra.</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: érvénytelen arl — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: érvénytelen arl – kérjük, ellenőrizze, majd próbálja újra</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch-token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Csak akkor adj meg tokent, ha a saját fiókodat szeretnéd használni. A tokennek a Musixmatch Android alkalmazásból kell származnia: a musixmatch.com-ról kimásolt tokenek a megszűnt asztali klienshez tartoznak, és az API elutasítja azokat.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">A Musixmatch token nélkül is működik, így ez a mező üresen hagyható.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">felhasználói token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: felhasználói token elmentve</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: felhasználói token törölve</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: érvénytelen felhasználói token — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: érvénytelen felhasználói token – kérjük, ellenőrizze, majd próbálja újra</string>
   <string name="morphe_music_youtube_cookies_title">YouTube-cookie-k</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"A YouTube-cookie-kat illeszd be, ha feliratokat és időzített szövegeket szeretnél lekérdezni a YouTube-ról.
 
@@ -513,7 +514,7 @@ Lépések:
 Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie-k elmentve</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookie-k törölve</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: érvénytelen cookie-k — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: érvénytelen sütkék – kérjük, ellenőrizze, majd próbálja újra</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Érintse meg a sort az ugráshoz</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">A sor megérintése ugrássá teszi a dalban a megfelelő pillanatra</string>
   <string name="morphe_music_lyrics_show_section_title">Szakaszcímkék megjelenítése</string>
@@ -524,6 +525,12 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_translate_button_summary">Koppintson a fordítás be-/kikapcsolásához; hosszú megnyomással csak a fordítás jelenik meg. Szolgáltatói fordításokat, Google Fordítót vagy OpenAI-kompatibilis API-t használ.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Romanizálás gomb megjelenítése</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Koppintson a romanizálás be-/kikapcsolásához; hosszú megnyomással csak a romanizálás jelenik meg. Szolgáltatói romanizálást, Google Fordítót vagy OpenAI-kompatibilis API-t használ.</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Helyi romanizálás</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">A szolgáltató, az OpenAI-kompatible végpont és a Google Fordító használata során fellépő hiba esetén eszközhöz kapcsolódó helyi romanizálást használ. Csak CJK, kb. 80 MB olvasandó letölteni.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Olvasás %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Olvasások készen állnak (%1$d CJK szó)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Letöltés sikertelen — állítsa le és be újra a próbálkozáshoz</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Frissítés gomb megjelenítése</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Koppintson a következő dalszövegjelöltre váltáshoz; hosszú megnyomással dalszöveget kereshet cím és előadó alapján</string>
   <string name="morphe_music_lyrics_search_dialog_title">Dalszöveg keresése</string>
@@ -534,6 +541,8 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_saved">Mentett</string>
   <string name="morphe_music_lyrics_word_sync_title">Szinkronizált szavak vagy szótagok kiemelése</string>
   <string name="morphe_music_lyrics_word_sync_summary">Előnyben részesíti a szavankénti dalszövegeket, ha elérhetők. Ha a dalszöveg szószintű időzítést tartalmaz, a zene ütemére emeli ki az egyes szavakat vagy szótagokat.</string>
+  <string name="morphe_music_lyrics_split_background_title">A háttérvokál megjelenítése külön</string>
+  <string name="morphe_music_lyrics_split_background_summary">A zárójelben megadott háttérvokált (például: „(Óh) téged szeretlek”) kiveszi a dalos sorból, és elkülönít egy halkabb, saját sort hoz létre neki.</string>
   <string name="morphe_music_lyrics_hide_played_title">A lejátszott sor elrejtése</string>
   <string name="morphe_music_lyrics_hide_played_summary">Minilejátszó dalszövegének megjelenítése</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">A még el nem hangzott dalszövegek elrejtése</string>
@@ -558,25 +567,47 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_sb_no_video">Ennek a számnak nincs beküldhető videóazonosítója</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Forrás: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Nyomja meg hosszan a másolás gombot az LRC mentéséhez; ha tudja finoman hangolni a időzítést és megosztani őket a közösségi szolgáltatókkal, hálásak lennénk.</string>
   <string name="morphe_music_lyrics_translated_by_google">Fordította a Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">A Google romanizálta</string>
   <string name="morphe_music_lyrics_translated_by_ai">Fordította: %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizálta: %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Romanizálta: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Lefordítva</string>
   <string name="morphe_music_lyrics_translation_language_title">Fordítás nyelve</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Romanizálási nyelv</string>
   <string name="morphe_music_lyrics_translating">Fordítás…</string>
   <string name="morphe_music_lyrics_translate_failed">A dalszöveg fordítása sikertelen</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizált</string>
+  <string name="morphe_romanize_language_DEFAULT">Automatikus</string>
   <string name="morphe_music_lyrics_romanizing">Romanizálás…</string>
   <string name="morphe_music_lyrics_romanize_failed">Nem sikerült romanizálni a dalszöveget.</string>
   <string name="morphe_music_lyrics_translate_only">Csak a fordítás</string>
   <string name="morphe_music_lyrics_romanize_only">Csak romanizált</string>
+  <string name="morphe_music_lyrics_dual_only">Kettős mód</string>
   <string name="morphe_music_lyrics_copied">Másolva a vágólapra</string>
   <string name="morphe_music_lyrics_refreshing">Frissítés</string>
   <string name="morphe_music_lyrics_refreshed">Frissítve</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API kulcs</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">A QuickLRC átírja vagy időre igazítja a jelenlegi számhoz tartozó dalszöveget. Egy elkülönített szolgáltatás, amely nem kapcsolódik a fenti OpenAI-kompatibilis végpontihoz.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC kulcs megtörténik. Használja az igazítás gombot a dalszöveg keresés párbeszédablakban, vagy a panel feliratát akkor, ha nincs dalszöveg a számhoz.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API kulcs megtartott</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC nem fogadta el azt a kulcsot</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API kulcs törölve</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC időbe állítja azoknak a számoknak a dalszövegét, amelyeknek nincs, vagy az átírásból történő dalszöveget ad, hitelköltséggel. A kulcs beállítása után a dalszöveg nélküli számkor az átírási funkció elérhetővé válik és a keresési párbeszédablak igazítás gombot kap.</string>
+  <string name="morphe_music_lyrics_transcribe_align">QuickLRC igazálási kérelem</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Igazítás folyamatban</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Igazítás alkalmazása</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">QuickLRC átírási kérelem</string>
+  <string name="morphe_music_lyrics_transcribe_working">Átírás folyamatban</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Átírás megszakítva</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Csak YouTube-ról játszott számszöveg átírható</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Nincs igazi dalszöveg — az átírás lesz a következő lépés</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC nem tudta ezt a számot feldolgozni</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC hiteltények elfogytak erre a számra</string>
   <string name="morphe_music_lyrics_about_summary">"A dalszövegek cím és előadó alapján kerülnek párosításra; a szokatlan metaadatok miatt előfordulhat, hogy semmi nem található, vagy rossz verzió jelenik meg. A frissítés segítségével válthatsz a verziók között. A *-gal jelölt szolgáltatók tokent igényelnek. Az összes engedélyezett szolgáltató nem mindig a kérésed szerinti sorrendben kerül lekérdezésre, hanem sebességük alapján válaszolnak."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Csak az általad használt szolgáltatókat engedélyezd, vagy hagyd meg az alapértelmezettet — a folyamatos kérések túlterhelhetik a kis közösségi dalszövegoldalakat</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Csak engedélyezze azokat a szolgáltatókat, amelyeket használ, vagy tartsa meg az alapértelmezettet – a folyamatos kérések túlterhelhetik a kis közösségi dalszövegoldalakokat</string>
   <string name="morphe_music_lyrics_hide_info_title">Forrásmegjelölés elrejtése</string>
   <string name="morphe_music_lyrics_hide_info_summary">A dalszöveg alatt látható forrásmegjelölés elrejtése</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">A fordítás és a romanizáció felcserélése</string>
@@ -589,17 +620,17 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_use_ai_section_title">AI szakasz</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Csak akkor használja, ha a szolgáltató nem küld szakaszcímkéket, mint például Korus vagy Vers, amelyeket ezután az OpenAI-kompatibilis modell érzékel</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI Beállítások</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurálja az OpenAI-kompatibilis API végpontot az AI-alapú dalszakasz-fordításhoz, romanizáláshoz és szakaszok meghatározásához.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurálja az OpenAI-kompatibilis API végpontot mesterséges intelligencia alapú dalszöveg fordításhoz, romanizáláshoz és szakaszolózáshoz.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-végpont URL-címe (pl. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-kulcs (hagyja üresen anonim hozzáféréshez)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modellnév (pl. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt sablon</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Helyőrzők: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">Prompt sablon</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt mentve</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Befogadás megtörtént, de még nem használható a AI végpont. Konfigurálja először az AI Beállításokban.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt alapértékekre visszaállítva</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI beállítások mentve</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Nem sikerült csatlakozni az AI-végponthoz. Ellenőrizze a beállításokat.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Nem lehetett csatlakozni az AI végponthoz. Kérjük, ellenőrizze a beállításait</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI beállítások alapértékekre visszaállítva</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">%1$s modell beállítva</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">A Base URL nem lehet üres</string>

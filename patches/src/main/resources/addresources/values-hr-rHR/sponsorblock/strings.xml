@@ -89,7 +89,7 @@ To uključuje vaš privatni korisnički ID. Obavezno ovo mudro podijelite"</stri
   <string name="morphe_sb_settings_export_failed">Nije moguće izvesti: %s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Vaše postavke sadrže privatni SponsorBlock korisnički ID.
 
-Vaš korisnički ID je poput lozinke i nikada se ne smije dijeliti."</string>
+Vaš korisnički ID je poput lozinke i nikada se ne smije dijeliti"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Nije moguće podesati segment: %1$d %2$s</string>
   <string name="morphe_sb_diff_segments_title">Promijeni ponašanje segmenata</string>
   <string name="morphe_sb_segments_sponsor">Sponzor</string>
@@ -152,7 +152,7 @@ Vaš korisnički ID je poput lozinke i nikada se ne smije dijeliti."</string>
   <string name="morphe_sb_skip_ignore">Onemogući</string>
   <string name="morphe_sb_submit_failed_invalid">Ne može se poslati segment: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock je privremeno nedostupan</string>
-  <string name="morphe_sb_submit_failed_unknown_error">Ne može se poslati segment (status: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Ne može se poslati segment (status: %1$s %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Ne može se poslati segment. Ograničen (previše od istog korisnika ili IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Ne možete poslati segment: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Ne možete poslati segment.
@@ -160,10 +160,10 @@ Već postoji"</string>
   <string name="morphe_sb_submit_succeeded">Segment uspješno poslato</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock je privremeno nedostupan (API je isteklo)</string>
-  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock je privremeno nedostupan (status %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock je privremeno nedostupan (status %s)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock je privremeno nedostupan</string>
   <string name="morphe_sb_vote_failed_timeout">Ne može se glasati za segment (API je isteklo)</string>
-  <string name="morphe_sb_vote_failed_unknown_error">Ne može se glasati za segment (status: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Ne može se glasati za segment (status: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Ne može se glasati za segment: %s</string>
   <string name="morphe_sb_vote_upvote">Ocijeni</string>
   <string name="morphe_sb_vote_downvote">Oblaciti</string>
@@ -172,7 +172,7 @@ Već postoji"</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s do %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">Odaberite kategoriju segmenata</string>
-  <string name="morphe_sb_new_segment_disabled_category">Kategorija je onemogućena u postavkama. Omogućite kategoriju da biste poslali.</string>
+  <string name="morphe_sb_new_segment_disabled_category">Kategorija je onemogućena u postavkama. Omogućite kategoriju da biste poslali</string>
   <string name="morphe_sb_new_segment_title">Novi SponsorBlock segment</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Da li želiš postaviti %s kao početak ili kraj novog segmenata?</string>
   <string name="morphe_sb_new_segment_mark_start">Početak</string>
@@ -211,7 +211,7 @@ Ako ne šaljete istaknuti dio, dodirnite Otkaži i označite drugu lokaciju"</st
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock je onemogućen</string>
   <string name="morphe_sb_stats_username">Vaše ime: <b>%s</b></string>
   <string name="morphe_sb_stats_username_change">Kliknite ovdje da promijenite ime</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Ne može se promijeniti ime: Status: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Ne može se promijeniti ime: Status: %1$s %2$s</string>
   <string name="morphe_sb_stats_username_changed">Ime uspješno promijenjeno</string>
   <string name="morphe_sb_stats_reputation">Vaša reputacija je <b>%.2f</b></string>
   <string name="morphe_sb_stats_submissions">Imate <b>%s</b> segmenata</string>

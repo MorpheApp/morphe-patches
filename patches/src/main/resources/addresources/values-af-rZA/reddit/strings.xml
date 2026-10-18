@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Uitleg</string>
   <string name="morphe_copy_text_title">Kopieer teks</string>
   <string name="morphe_copy_text_summary">Laat jou toe om teks in plasings en kommentaar te kies en te kopieer. Deaktiveer die invou van kommentaar</string>
-  <string name="morphe_copy_text_user_dialog_message">Die invou van kommentaar sal ophou werk terwyl Kopieer teks geaktiveer is.</string>
+  <string name="morphe_copy_text_user_dialog_message">Ineenstortende kommentare sal ophou werk terwyl Kopieer teks geaktiveer is</string>
   <string name="morphe_custom_font_title">Custom font</string>
   <string name="morphe_custom_font_summary">Laai \'n pasgemaakte TTF- of OTF-lettertipelêer vanaf die pad hieronder. Deur dit te aktiveer, word die stelsielettertipe ook afgeskakel.</string>
   <string name="morphe_custom_font_file_path_title">Custom lettertipe lêer</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Verberg die Trending-rakke van die nuutvoerm en soekvoorstelle</string>
   <string name="morphe_remove_notification_dialog_title">Verwyder kennisgewing-voorstel-dialoog</string>
   <string name="morphe_remove_notification_dialog_summary">Sluit die kennisgewingvoorstel-dialoog outomaties wanneer \'n subreddit besoek word</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Wys opflakkings in die tuisvoer</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Wys posopflakkings in die tuisvoer</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Sommige items in die voer dalk nie \'n opflikking wys nie</string>
   <string name="morphe_show_view_count_title">Wys vertoon telling op plasings</string>
   <string name="morphe_show_view_count_summary">Beperking: Slegs beskikbaar as die API-antwoord die vertoontelling insluit</string>
   <string name="morphe_flip_post_action_bar_title">Draai die plasing-aksiebalk om</string>

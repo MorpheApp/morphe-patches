@@ -53,6 +53,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 public final class LocalQueueSheet {
@@ -101,6 +102,8 @@ public final class LocalQueueSheet {
     private final Consumer<String> metadataListener = this::onMetadata;
     @Nullable
     private Row nowPlayingRow;
+    @Nullable
+    private LocalQueuePatch.Item nowPlayingItem;
 
     private int interactions;
     private boolean renderPending;
@@ -159,7 +162,7 @@ public final class LocalQueueSheet {
         render();
 
         LocalQueuePatch.setListeners(changeListener, metadataListener);
-        dialog.setOnDismissListener(d -> {
+        PipDismissHelper.dismissOnPip(dialog, () -> {
             LocalQueuePatch.clearListeners(changeListener, metadataListener);
             scrollView.setOnScrollChangeListener(null);
             drag = null;
@@ -380,7 +383,13 @@ public final class LocalQueueSheet {
         Row row = new Row(videoId, index, item, root, foreground, thumbnail, titleView,
                 channelView, titleBar, channelBar);
         if (nowPlaying) {
-            row.bindText(VideoInformation.getVideoTitle(), VideoInformation.getChannelName());
+            String title = emptyToNull(VideoInformation.getVideoTitle());
+            String channel = emptyToNull(VideoInformation.getChannelName());
+            if (nowPlayingItem != null && nowPlayingItem.videoId.equals(videoId)) {
+                if (title == null) title = nowPlayingItem.title;
+                if (channel == null) channel = nowPlayingItem.author;
+            }
+            row.bindText(title, channel);
             return row;
         }
 
@@ -413,6 +422,9 @@ public final class LocalQueueSheet {
     }
 
     private void onMetadata(String videoId) {
+        if (nowPlayingRow != null && nowPlayingItem != null && nowPlayingRow.videoId.equals(videoId)) {
+            nowPlayingRow.bindText(nowPlayingItem.title, nowPlayingItem.author);
+        }
         for (Row row : rows) {
             if (row.videoId.equals(videoId) && row.item != null) {
                 row.bindText(row.item.title, row.item.author);
@@ -454,7 +466,17 @@ public final class LocalQueueSheet {
         }
         if (row.item != null) {
             LocalQueuePatch.fetchMetadataIfNeeded(row.item);
+        } else if (row == nowPlayingRow) {
+            nowPlayingItem = new LocalQueuePatch.Item(row.videoId,
+                    emptyToNull(VideoInformation.getVideoTitle()),
+                    emptyToNull(VideoInformation.getChannelName()));
+            LocalQueuePatch.fetchMetadataIfNeeded(nowPlayingItem);
         }
+    }
+
+    @Nullable
+    private static String emptyToNull(@Nullable String text) {
+        return text == null || text.isEmpty() ? null : text;
     }
 
     private void onThumbnailLoaded(String videoId) {

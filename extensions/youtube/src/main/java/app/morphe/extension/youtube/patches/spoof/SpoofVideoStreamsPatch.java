@@ -53,8 +53,6 @@ public class SpoofVideoStreamsPatch {
                 // ClientType.ANDROID_VR_DASH
         );
 
-        app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setForceAVC(
-                codec == VideoCodec.AVC);
         app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(
                 availableClients, client);
     }

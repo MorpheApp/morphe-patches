@@ -37,6 +37,46 @@ public final class OpenAIClient {
 
     private static final String MODELS_PATH_SUFFIX = "/models";
 
+    public static boolean validateConfig(String baseUrl, String apiToken, String model) {
+        if (baseUrl == null || baseUrl.trim().isEmpty()
+                || model == null || model.trim().isEmpty()) {
+            return false;
+        }
+        HttpURLConnection conn = null;
+        try {
+            JSONObject body = new JSONObject();
+            body.put("model", model);
+            body.put("messages", new JSONArray().put(
+                    new JSONObject().put("role", "user").put("content", "hi")));
+            body.put("max_tokens", 1);
+
+            conn = (HttpURLConnection) new URL(baseUrl.trim()).openConnection();
+            conn.setRequestMethod("POST");
+            conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
+            conn.setReadTimeout(READ_TIMEOUT_MS);
+            conn.setRequestProperty("Content-Type", "application/json");
+            if (apiToken != null && !apiToken.isEmpty()) {
+                conn.setRequestProperty("Authorization", "Bearer " + apiToken);
+            }
+            conn.setDoOutput(true);
+
+            byte[] payload = body.toString().getBytes(StandardCharsets.UTF_8);
+            conn.setFixedLengthStreamingMode(payload.length);
+            try (OutputStream stream = conn.getOutputStream()) {
+                stream.write(payload);
+            }
+
+            return conn.getResponseCode() == 200;
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not validate the AI endpoint", ex);
+            return false;
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+    }
+
     public static String[] fetchReasoningEfforts(String baseUrl, String apiToken, String model) {
         final String url = modelsUrl(baseUrl);
         if (url == null) {
@@ -168,6 +208,7 @@ public final class OpenAIClient {
     }
 
     /** The stored effort, sent as typed, or empty when nothing is stored. */
+    @SuppressWarnings("ConstantValue")
     public static String reasoningEffort() {
         final String configured = Settings.LYRICS_AI_REASONING_EFFORT.get();
         if (configured != null && !configured.trim().isEmpty()) {

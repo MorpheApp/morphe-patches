@@ -13,6 +13,7 @@ package app.morphe.patches.youtube.layout.buttons.overlay
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -22,7 +23,31 @@ import app.morphe.patcher.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+/**
+ * 21.42+
+ */
 internal object OverlayCastButtonVisibilityFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        checkCast("Landroidx/mediarouter/app/MediaRouteButton;"),
+        methodCall(
+            smali = "Landroid/view/View;->setVisibility(I)V",
+            location = MatchAfterImmediately()
+        ),
+        checkCast("Lcom/google/android/libraries/youtube/mdx/mediaroute/entrypoint/MdxEntryPointButton;"),
+        methodCall(
+            smali = "Landroid/view/View;->setVisibility(I)V",
+            location = MatchAfterImmediately()
+        ),
+        literal(11208L)
+    )
+)
+
+/**
+ * 21.35 - 21.41
+ */
+internal object OverlayCastButtonVisibilityLegacy2135Fingerprint : Fingerprint(
     classFingerprint = OverlayCastButtonVisibilityLegacyFingerprint,
     returnType = "V",
     parameters = listOf("Landroid/view/View;", "Z"),
@@ -32,6 +57,9 @@ internal object OverlayCastButtonVisibilityFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.34 and lower.
+ */
 internal object OverlayCastButtonVisibilityLegacyFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),

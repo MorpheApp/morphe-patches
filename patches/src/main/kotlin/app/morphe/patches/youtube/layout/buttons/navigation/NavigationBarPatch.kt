@@ -48,6 +48,7 @@ import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.containsLiteralInstruction
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
@@ -199,6 +200,21 @@ val navigationBarPatch = bytecodePatch(
 
         // Hide navigation bar
         addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
+
+        // The translucent navigation bar comes from three feature flags that not every account
+        // gets, so all of them are turned on whenever the window is drawn edge to edge. The bar then
+        // looks the same on every account, and the opaque option below paints over the same
+        // translucent bar everywhere.
+        TranslucentNavigationBarFeatureFlagsFingerprint.matchAll().forEach { match ->
+            match.method.apply {
+                TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS.forEach { flag ->
+                    if (containsLiteralInstruction(flag)) {
+                        // Overrides every read of the flag in the method.
+                        insertLiteralOverride(flag, "$EXTENSION_CLASS->useTranslucentNavigationBar(Z)Z")
+                    }
+                }
+            }
+        }
 
         // Paint over the translucent status bar and navigation bar, instead of turning off the
         // feature flags that drive them. Those flags also switch the app out of edge to edge, which

@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Оформление</string>
   <string name="morphe_copy_text_title">Копиране на текст</string>
   <string name="morphe_copy_text_summary">Позволява избиране и копиране на текст в публикации и коментари. Деактивира свиването на коментарите</string>
-  <string name="morphe_copy_text_user_dialog_message">Свиването на коментарите ще спре да работи, докато е разрешено копирането на текст.</string>
+  <string name="morphe_copy_text_user_dialog_message">Коментарите ще спрат да се свиват, докато опцията \"Копиране на текст\" е активирана</string>
   <string name="morphe_custom_font_title">Потребителски шрифт</string>
   <string name="morphe_custom_font_summary">Заредете потребителски TTF или OTF шрифтов файл от посочения път. Активирането на тази опция също изключва използването на системния шрифт.</string>
   <string name="morphe_custom_font_file_path_title">Файл с потребителски шрифт</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Скрива секциите \"Тенденции\" от началната страница и предложенията за търсене.</string>
   <string name="morphe_remove_notification_dialog_title">Премахване на диалоговия прозорец за предложения за известия</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматично затваря диалоговия прозорец за предложение за известие при посещение на подреддит</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Показване на етикети в началния източник</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Показва значки за постове с етикети в началния източник</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Някои елементи от източника може да не показват етикет</string>
   <string name="morphe_show_view_count_title">Покажи броя на преглежданията на публикациите</string>
   <string name="morphe_show_view_count_summary">Ограничение: Налично само ако отговорът от API включва броя на преглежданията</string>
   <string name="morphe_flip_post_action_bar_title">Обръщане на лентата за действия на публикациите</string>

@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-14T09:06:04",
-  "description": "## [1.48.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.6...v1.48.0-dev.7) (2026-10-14)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Jam queue sharing:** Keep the YouTube Music player aligned when Jam queue sharing is off ([#3704](https://github.com/MorpheApp/morphe-patches/issues/3704)) ([fd0db0b](https://github.com/MorpheApp/morphe-patches/commit/fd0db0b04bc12f80acde7fc259d7f72dbf724b13))\n\n### ✨ New Features\n\n* **YouTube Music - Third-party lyrics:** Add new providers ([#3717](https://github.com/MorpheApp/morphe-patches/issues/3717)) ([89e31ba](https://github.com/MorpheApp/morphe-patches/commit/89e31ba6d69e26a08b5bdd97b3afb4daa927048f))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.48.0-dev.7/patches-1.48.0-dev.7.mpp",
+  "created_at": "2026-10-17T18:37:28",
+  "description": "## [1.48.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.10...v1.48.0-dev.11) (2026-10-17)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Captions:** Restore translations from original caption sources ([#3794](https://github.com/MorpheApp/morphe-patches/issues/3794)) ([46ab900](https://github.com/MorpheApp/morphe-patches/commit/46ab900bd9daa990a4d741a6e7f3dc5611173cdb))\n* **YouTube - Feed cards layout:** Cards sometimes lose spacing ([0658f00](https://github.com/MorpheApp/morphe-patches/commit/0658f0083bc5d143b379097b706d4114a845a08f))\n\n### ✨ New Features\n\n* **YouTube:** Add `Feed video actions` patch ([#3758](https://github.com/MorpheApp/morphe-patches/issues/3758)) ([b263c08](https://github.com/MorpheApp/morphe-patches/commit/b263c08af15eb0a72f6ea707bd49597d95209d29))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.48.0-dev.11/patches-1.48.0-dev.11.mpp",
   "signature_download_url": "",
-  "version": "1.48.0-dev.7"
+  "version": "1.48.0-dev.11"
 }

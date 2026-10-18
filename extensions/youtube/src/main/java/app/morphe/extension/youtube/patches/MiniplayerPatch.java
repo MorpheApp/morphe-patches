@@ -19,6 +19,7 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerTyp
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
 
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
@@ -170,13 +171,14 @@ public final class MiniplayerPatch {
     private static final boolean MINIPLAYER_HORIZONTAL_DRAG_ENABLED = DRAG_AND_DROP_ENABLED
             && (MINIMAL_BAR_SELECTED || !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get());
 
-    private static final Map<Integer, String> MINIMAL_PLAYER_DRAWABLES = Map.of(
-            ResourceUtils.getStringIdentifier("accessibility_pause"),
-            "yt_fill_pause_vd_theme_24",
-            ResourceUtils.getStringIdentifier("accessibility_play"),
-            "yt_fill_play_arrow_vd_theme_24",
-            ResourceUtils.getStringIdentifier("accessibility_replay"),
-            "yt_outline_replay_arrow_vd_theme_24"
+    /**
+     * Keyed by the content description string name, as resolving the ids here can give 0 for
+     * all of them on some installs, and duplicate keys make the map crash the app at launch.
+     */
+    private static final Map<String, String> MINIMAL_PLAYER_DRAWABLES = Map.of(
+            "accessibility_pause", "yt_fill_pause_vd_theme_24",
+            "accessibility_play", "yt_fill_play_arrow_vd_theme_24",
+            "accessibility_replay", "yt_outline_replay_arrow_vd_theme_24"
     );
 
     private static final int OPACITY_LEVEL =
@@ -631,12 +633,17 @@ public final class MiniplayerPatch {
             return;
         }
 
-        String drawableName = MINIMAL_PLAYER_DRAWABLES.get(contentDescriptionId);
-        if (drawableName != null) {
-            Drawable drawable = ResourceUtils.getDrawable(drawableName);
-            if (drawable != null) {
-                view.setImageDrawable(drawable);
+        try {
+            String drawableName = MINIMAL_PLAYER_DRAWABLES.get(
+                    view.getResources().getResourceEntryName(contentDescriptionId));
+            if (drawableName != null) {
+                Drawable drawable = ResourceUtils.getDrawable(drawableName);
+                if (drawable != null) {
+                    view.setImageDrawable(drawable);
+                }
             }
+        } catch (Resources.NotFoundException ex) {
+            Logger.printDebug(() -> "overrideMiniplayerActionButtonDrawable failure", ex);
         }
     }
 }

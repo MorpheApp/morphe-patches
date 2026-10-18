@@ -10,7 +10,7 @@ package app.morphe.extension.reddit.patches;
 import app.morphe.extension.reddit.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class HideCommunitiesShelf {
+public final class HideCommunitiesShelfPatch {
 
     /**
      * @return If this patch was included during patching.

@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Ipasok ang pangalan ng pakete</string>
   <string name="morphe_external_downloader_other_item">Iba pa</string>
   <string name="morphe_external_downloader_not_found_title">Hindi naka-install ang app</string>
-  <string name="morphe_external_downloader_not_installed_warning">Hindi naka-install ang %s. Paki-install ito.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s ay hindi naka-install. Paki-install ito</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Hindi mahanap ang naka-install na app na may pangalan ng pakete: %s
 
 I-verify na tama ang pangalan ng pakete at naka-install ang app"</string>
@@ -84,7 +84,7 @@ Para mabago ang icon sa lahat ng dako, mag-patch muli at baguhin ang opsyon sa p
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Paunawa ng Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Hindi sine-save ang iyong kasaysayan ng panonood.&lt;br&gt;&lt;br&gt;Malamang na ito ay sanhi ng isang DNS ad blocker o network proxy.&lt;br&gt;&lt;br&gt;Upang ayusin ito, i-whitelist ang &lt;b&gt;s.youtube.com&lt;/b&gt; o patayin ang lahat ng DNS blocker at proxy.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Hindi sine-save ang iyong kasaysayan ng panonood.&lt;br&gt;&lt;br&gt;Malamang na ito ay sanhi ng isang DNS ad blocker o network proxy.&lt;br&gt;&lt;br&gt;Upang ayusin ito, i-whitelist ang &lt;b&gt;s.youtube.com&lt;/b&gt; o patayin ang lahat ng DNS blocker at proxy</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Huwag nang ipakita muli</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Gayahin ang mga video stream</string>
@@ -99,7 +99,7 @@ Kung ikaw ay isang gumagamit ng YouTube Premium, maaaring hindi na kailanganin a
 
 Gawing default na kliyente ang %2$s?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Lumipat</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng isyu sa playback kung pinatay mo ang pagpipilian na ito</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng mga isyu sa playback kung patid mo ang setting na ito</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Subukang paganahin: Gayahin ang mga video stream &gt; Pag-sign in sa Android VR</string>
@@ -134,7 +134,7 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
 • Kakailanganin mong mag-sign in muli kung babaguhin mo ang iyong password sa Google o aalisin sa pagkakarehistro ang device na ito sa iyong mga pagpipilian sa Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">Pansamantalang hindi magagamit ang OAuth2 (Nag-time out ang API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Natapos ang pag-sign in sa Android VR, subukang mag-sign muli sa VR</string>
-  <string name="morphe_oauth2_connection_failure_status">Pansamantalang hindi magagamit ang OAuth2 (kapalaran %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">Pansamantalang hindi magagamit ang OAuth2 (kapalaran %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Pansamantalang hindi magagamit ang OAuth2</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Hindi maka-sign in sa VR, hindi naaprubahan ang pagpapatunay sa website</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Hindi maka-sign in sa VR: %s</string>
@@ -197,7 +197,7 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
 
 Makakatulong ito na matukoy ang mga komponente kapag gumagawa ng mga pasadyang filter. 
 
-Gayunpaman, magtatala din ng ilang datos ng tagagamit ang pagpapagana nito kagaya ng iyong IP address."</string>
+Gayunpaman, magtatala din ng ilang datos ng tagagamit ang pagpapagana nito kagaya ng iyong IP address"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Pasadyang filter</string>
   <string name="morphe_custom_filter_screen_summary">I-configure ang mga pasadyang filter upang itago ang anumang component</string>
@@ -238,11 +238,11 @@ I-on ang 'Gayahin ang mga video stream' upang ayusin ang pag-playback"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Pekein ang bersyon ng app</string>
   <string name="morphe_spoof_app_version_summary">Niloloko nito ang server para isipin na gumagamit ka ng mas lumang bersyon ng app upang maibalik ang mga dating feature ng UI</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Pekein ang bersyon ng app sa mas lumang bersyon.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Ang bersyon ng app ay iisusubok na maging lumang bersyon.
 
-Magbabago ang hitsura at mga feature ng app, ngunit maaaring may mga hindi inaasahang side effect.
+Magbago ang hitsura at mga feature ng app, ngunit maaaring magkaroon ng mga hindi inaasahang side effects.
 
-Kung patayin ito sa kalaunan, inirerekomenda na i-clear ang data ng app upang maiwasan ang mga bug sa UI."</string>
+Kung ito ay babaliksa sa huli, inirerekomenda ang paglinis ng data ng app upang maiwasan ang mga bug sa UI"</string>
   <string name="morphe_spoof_app_version_target_title">Target na pekein ang bersyon ng app</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Rate ng pag-refresh ng app</string>
@@ -265,7 +265,7 @@ Kung patayin ito sa kalaunan, inirerekomenda na i-clear ang data ng app upang ma
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Pansamantalang hindi magagamit ang mga dislike (Nag-time out ang API)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Hindi magagamit ang mga dislike (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Hindi available ang mga dislike (katayuan %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Hindi magagamit ang mga dislike (limit ng client API)</string>
   <string name="morphe_ryd_failure_generic">Hindi magagamit ang mga dislike (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Ang ID ng video na iyong pinapanood ay ipinapadala sa Return YouTube Dislike API
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Pansamantalang hindi magagamit ang mga dislike - May bisa ang limit ng client API</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Mga tawag sa pagkuha ng boto ng API, bilang ng mga tawag</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Walang ginawang mga tawag sa network</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d mga tawag sa network ang ginawa</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s na network calls na ginawa</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Mga tawag sa pagkuha ng boto ng API, bilang ng mga timeout</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Walang nag-timeout na mga tawag sa network</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d mga tawag sa network ang nag-timeout</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s na network calls na timeout</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Mga limitasyon ng rate ng client ng API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Walang nakaharap na mga limitasyon ng rate ng client</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Nakaharap ang limitasyon ng rate ng client ng %d beses</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d milliseconds</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kinakaharap ang client rate limit na %s beses</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s miliseconds</string>
 </resources>

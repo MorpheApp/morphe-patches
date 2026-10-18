@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Paket adını qeyd et</string>
   <string name="morphe_external_downloader_other_item">Digər</string>
   <string name="morphe_external_downloader_not_found_title">Tətbiq quraşdırılmayıb</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s quraşdırılmayıb. Xahiş olunur, onu quraşdır.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s quraşdırılmayıb. Xahiş olunur, onu quraşdır</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Paket adı: %s ilə quraşdırılmış tətbiq tapılmadı
 
 Paket adının düzgün olduğunu və tətbiqin quraşdırıldığını yoxla"</string>
@@ -84,7 +84,7 @@ Simvolu hər yerdə dəyişdirmək üçün təkrar yamaqlayın və 'Tətbiq simv
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe oynat</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirişi</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanılmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam əngəlləyici və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;Bunu düzəltmək üçün s.youtube.com-u&lt;/b&gt; &lt;b&gt;ağ siyahıya salın və ya bütün DNS əngəlləyiciləri və proksiləri bağlayın.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanılmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam əngəlləyici və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;Bunu düzəltmək üçün s.youtube.com-u&lt;/b&gt; &lt;b&gt;ağ siyahıya salın və ya bütün DNS əngəlləyiciləri və proksiləri bağlayın</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Təkrar göstərmə</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video yayımların saxtalaşdır</string>
@@ -99,7 +99,7 @@ YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər
 
  %2$s ilkin qəbuledici təyin edilsin?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Keçid</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Bu tənzimləməni qapatmaq oynatma problemlərinə səbəb ola bilər.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Bu tənzimləməni qapatmaq oynatma problemlərinə səbəb ola bilər</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Aktivləşdirməyə cəhd edin: Video yayımların saxtalaşdır &gt; Android VR girişi</string>
@@ -134,7 +134,7 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
 • Google parolunuzu dəyişdirsəniz və ya bu cihazı Google tənzimləmələrinizdən çıxarsanız, təkrar daxil olmalı olacaqsınız"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 keçici olaraq əlçatan deyil (API vaxtı bitdi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR girişi sonlandı, VR-a təkrar daxil olmağa cəhd et</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 keçici olaraq əlçatan deyil (vəziyyət %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 keçici olaraq əlçatan deyil (vəziyyət %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 keçici olaraq əlçatan deyil</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR-a daxil olmaq olmur, veb sayt təsdiqlənməsi qəbul edilməyib</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR-a daxil olmaq olmur: %s</string>
@@ -197,7 +197,7 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
 
 Bu, xüsusi filtrlər yaradarkən quruluşları müəyyən etməyə kömək edə bilər.
 
-Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlumatın da daxil edəcək."</string>
+Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlumatın da daxil edəcək"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Fərdi filtr</string>
   <string name="morphe_custom_filter_screen_summary">Hər hansı elementi gizlətmək üçün fərdi filtrləri tənzimlə</string>
@@ -242,7 +242,7 @@ PotHelper-i yükləmək üçün buraya toxun"</string>
 
 Bu tətbiqin görünüşün və xüsusiyyətlərin dəyişdirəcək, lakin bilinməyən yan təsirlər ola bilər.
 
-Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların silmək tövsiyə olunur."</string>
+Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların silmək tövsiyə olunur"</string>
   <string name="morphe_spoof_app_version_target_title">Saxta tətbiq versiyası hədəfi</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Tətbiq yeniləmə sürəti</string>
@@ -265,7 +265,7 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Bəyənməmə müvəqqəti əlçatmazdır (API zaman aşımı)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Bəyənməmə əlçatmazdır (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Bəyənməmə əlçatmazdır (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Bəyənməmələr mövcud deyil (qəbuledici API limiti)</string>
   <string name="morphe_ryd_failure_generic">Bəyənməmə əlçatmazdır (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Bəyənməmələr müvəqqəti olaraq əlçatmazdır - Qəbuledici API sürət limiti var</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API səs alma, çağırış sayı</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Heç bir şəbəkə çağırışı olmadı</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d şəbəkə çağırışı edildi</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s şəbəkə çağırışı edildi</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API səs alma, zaman aşımı sayı</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Heç bir şəbəkə çağırışı zaman aşımı yaşamadı</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d şəbəkə çağırışı zaman aşımı yaşadı</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s şəbəkə çağırışı zaman aşımı yaşadı</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API qəbuledici sürət məhdudiyyətləri</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Heç bir qəbuledici sürət limiti olmadı</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Qəbuledici sürət limiti %d dəfə baş verdi</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d millisaniyə</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Qəbuledici sürət limiti %s dəfə baş verdi</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s millisaniyə</string>
 </resources>

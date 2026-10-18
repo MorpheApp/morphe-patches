@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Düzen</string>
   <string name="morphe_copy_text_title">Metni kopyala</string>
   <string name="morphe_copy_text_summary">Gönderilerde ve yorumlarda metin seçme ve kopyalama olanağı sağlar. Yorumların daraltılmasını devre dışı bırakır.</string>
-  <string name="morphe_copy_text_user_dialog_message">Metin kopyalama etkinken yorumları daraltma çalışmayacaktır.</string>
+  <string name="morphe_copy_text_user_dialog_message">Metin kopyalama etkinleştirildiğinde yorumları daraltma özelliği çalışmayacaktır</string>
   <string name="morphe_custom_font_title">Özel yazı tipi</string>
   <string name="morphe_custom_font_summary">Aşağıdaki yoldan özel bir TTF veya OTF font dosyası yükleyin. Bunu etkinleştirmek aynı zamanda zorunlu sistem fontunu da kapatır.</string>
   <string name="morphe_custom_font_file_path_title">Özel yazı tipi dosyası</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Arama önerilerinde Trendler rafını gizler</string>
   <string name="morphe_remove_notification_dialog_title">Bildirim öneri iletişim kutusunu kaldır</string>
   <string name="morphe_remove_notification_dialog_summary">Bir subreddit ziyaret edildiğinde bildirim önerisi iletişim kutusunu otomatik olarak kapatır</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Ana akışta etiketleri göster</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Gönderi etiketi rozetlerini ana akışda gösterir</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Bazı akış öğeleri bir etiket göstermeyebilir</string>
   <string name="morphe_show_view_count_title">Gönderilerde görüntüleme sayısını göster</string>
   <string name="morphe_show_view_count_summary">Sınırlama: Yalnızca API yanıtı görüntüleme sayısını içeriyorsa kullanılabilir</string>
   <string name="morphe_flip_post_action_bar_title">Gönderi eylem çubuğunu ters çevir</string>

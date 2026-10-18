@@ -46,7 +46,6 @@ public final class LyricsPanelInstaller {
     /** Panel heading, which tells the lyrics panel from the other engagement panels. */
     private static final String PANEL_TITLE_ID = "modern_title";
 
-    /** Resource name of the app string used for the lyrics panel heading. */
     private static final String LYRICS_TITLE_RESOURCE = "lyrics_tab_title";
 
     /** Time given to the panel to attach its views after the component is built. */
@@ -109,6 +108,7 @@ public final class LyricsPanelInstaller {
                 return;
             }
             if (Settings.LYRICS_SOURCE.key.equals(key)
+                    || Settings.LYRICS_SPLIT_BACKGROUND.key.equals(key)
                     || LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.key.equals(key)
                     || LyricsFilterDefaults.LYRICS_TEXT_FILTER.key.equals(key)
                     || LyricsFilterDefaults.LYRICS_CREDIT_LINE_REGEX.key.equals(key)) {
@@ -135,6 +135,12 @@ public final class LyricsPanelInstaller {
                 panelView.applyToolbarButtonSettings();
             } else if (Settings.LYRICS_TEXT_SIZE.key.equals(key)) {
                 panelView.applyTextSize();
+            } else if (Settings.LYRICS_SWAP_TRANS_ROMA.key.equals(key)
+                    || Settings.LYRICS_TAP_TO_SEEK.key.equals(key)) {
+                // Both are read while the line is laid out, so the lines need rebuilding.
+                panelView.applyLyricLayoutSettings();
+            } else if (Settings.LYRICS_WORD_SYNC.key.equals(key)) {
+                panelView.applyWordSyncSetting();
             } else if (Settings.LYRICS_HIDE_INFO.key.equals(key)) {
                 panelView.applyHideInfo();
             } else if (Settings.LYRICS_SHOW_SECTION.key.equals(key)) {
@@ -225,8 +231,8 @@ public final class LyricsPanelInstaller {
     }
 
     private static void detectLyricsPanel() {
-        // Whichever panel holds the container while the lyrics component is built is the
-        // lyrics panel, which keeps this working without knowing what the app calls it.
+        // Whichever panel holds the container during the lyrics build is the lyrics panel,
+        // which keeps this working without knowing what the app calls it.
         Object panel = currentPanelReference.get();
         if (panel != null) {
             lyricsPanelReference = new WeakReference<>(panel);
@@ -243,9 +249,8 @@ public final class LyricsPanelInstaller {
         }
 
         installPending = true;
-        // With lyrics already loaded the panel can be covered on the next frame, which
-        // is what keeps the built-in lyrics from being visible first. Otherwise, the app
-        // is given time to attach its views, since there is nothing to show yet anyway.
+        // With lyrics loaded the panel can cover the next frame, which keeps the built-in
+        // lyrics from showing first; otherwise the app is given time to attach its views.
         final long delay = LyricsManager.getInstance().hasLyrics()
                 ? 0
                 : INSTALL_DELAY_MILLISECONDS;
@@ -318,8 +323,8 @@ public final class LyricsPanelInstaller {
         }
 
         if (existing != null && existing.getParent() == panel) {
-            // Reopening the panel makes the app restore its own content, so the
-            // overlay state has to be reapplied rather than assumed still correct.
+            // Reopening makes the app restore its own content, so the overlay state is
+            // reapplied rather than assumed still correct.
             existing.setKeepScreenOn(Settings.LYRICS_KEEP_SCREEN_ON.get());
             existing.syncOverlay();
             return true;
@@ -379,22 +384,19 @@ public final class LyricsPanelInstaller {
     private static ViewGroup findLyricsPanelContent(View root) {
         TextView title = findVisibleTitle(root);
         if (title != null) {
-            // The heading and the content live in the same panel, so the container is
-            // looked up from the panel the heading belongs to rather than globally.
+            // Heading and content share a panel, so the container comes from the heading's
+            // own panel rather than a global lookup.
             return isLyricsTitle(title) ? findPanelContent(title) : null;
         }
 
-        // Without a heading there is nothing to look the panel up from, so the container
-        // on screen is taken as is, once the app agrees the lyrics panel is the one in it.
+        // Without a heading there is nothing to look up, so the container on screen is
+        // taken as is, once the app agrees the lyrics panel is the one in it.
         if (!isCurrentPanelLyrics()) {
             return null;
         }
         return findForegroundPanelContent(root);
     }
 
-    /**
-     * @return The content container of the engagement panel currently on screen, if any.
-     */
     @Nullable
     private static ViewGroup findForegroundPanelContent(View root) {
         final int panelContentId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_CONTENT_ID);
@@ -433,9 +435,6 @@ public final class LyricsPanelInstaller {
         return null;
     }
 
-    /**
-     * @return The heading of the engagement panel currently on screen, if any.
-     */
     @Nullable
     private static TextView findVisibleTitle(View root) {
         final int titleId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_TITLE_ID);

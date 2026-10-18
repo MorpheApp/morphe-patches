@@ -21,6 +21,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -302,6 +303,7 @@ public final class GeniusProvider implements LyricsProvider {
         return credits.isEmpty() ? null : credits;
     }
 
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static void addCredit(List<String> credits, String label,
                                   @Nullable JSONArray artists) {
         if (artists == null) {
@@ -540,7 +542,7 @@ public final class GeniusProvider implements LyricsProvider {
     @Nullable
     private static String fetchPage(String url) {
         try {
-            return get(url, false, true, PAGE_READ_TIMEOUT_MS, LyricsRequests::parseGzipString);
+            return get(url, false, PAGE_READ_TIMEOUT_MS, LyricsRequests::parseGzipString);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not read the Genius song page", ex);
             return null;
@@ -564,13 +566,14 @@ public final class GeniusProvider implements LyricsProvider {
                     return again;
                 }
                 try {
-                    JSONObject song = get(SONG_RECORD + songId, true, true, RECORD_READ_TIMEOUT_MS,
+                    JSONObject song = get(SONG_RECORD + songId, true, RECORD_READ_TIMEOUT_MS,
                             LyricsRequests::parseGzipJsonObject);
                     if (song == null) {
                         return null;
                     }
                     JSONObject record = song.optJSONObject("response") != null
-                            ? song.optJSONObject("response").optJSONObject("song") : null;
+                            ? Objects.requireNonNull(song.optJSONObject("response"))
+                            .optJSONObject("song") : null;
                     if (record != null) {
                         recordCache.put(songId, record);
                     }
@@ -586,8 +589,8 @@ public final class GeniusProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static <T> T get(String url, boolean json, boolean retryTransient,
-                             int readTimeoutMs, Reader<T> reader) throws IOException {
+    private static <T> T get(String url, boolean json, int readTimeoutMs, Reader<T> reader)
+            throws IOException {
         for (int attempt = 0; ; attempt++) {
             LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             HttpURLConnection connection = null;
@@ -598,7 +601,7 @@ public final class GeniusProvider implements LyricsProvider {
                 if (code == 200) {
                     return reader.read(connection);
                 }
-                if (retryTransient && attempt == 0) {
+                if (attempt == 0) {
                     if (code == 429) {
                         long wait = retryAfterMs(connection);
                         Logger.printDebug(
@@ -621,7 +624,7 @@ public final class GeniusProvider implements LyricsProvider {
                 // A reset or timed-out connection is worth one more try, but only while the
                 // lookup still wants the answer: the manager cancels a stage by interrupting,
                 // and fighting that cancellation would hold the thread past its deadline.
-                if (retryTransient && attempt == 0 && sleepBeforeRetry(RETRY_IO_WAIT_MS)) {
+                if (attempt == 0 && sleepBeforeRetry(RETRY_IO_WAIT_MS)) {
                     continue;
                 }
                 throw ex;
@@ -636,7 +639,7 @@ public final class GeniusProvider implements LyricsProvider {
         }
     }
 
-    /** True when the wait finished and the caller may retry; false when the thread was cancelled. */
+    /** True when the wait finished and the caller may retry; false when the thread was canceled. */
     private static boolean sleepBeforeRetry(long waitMs) {
         if (Thread.currentThread().isInterrupted()) {
             return false;
@@ -665,7 +668,6 @@ public final class GeniusProvider implements LyricsProvider {
             } catch (NumberFormatException ex) {
                 // Retry-After may also be an HTTP date, which falls back to the default wait.
                 Logger.printDebug(() -> "Genius sent a Retry-After that is not seconds: " + value, ex);
-                ms = 0;
             }
         }
         if (ms <= 0) {
@@ -690,6 +692,7 @@ public final class GeniusProvider implements LyricsProvider {
      * are page furniture rather than lyrics (a translations menu, annotation links), so nesting is
      * tracked and anything inside {@code data-exclude-from-selection} is dropped.
      */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Nullable
     static String lyricsText(@Nullable String html) {
         if (html == null || html.isEmpty()) {
@@ -715,8 +718,8 @@ public final class GeniusProvider implements LyricsProvider {
                     container.append(html, at, tag.start());
                 }
                 at = tag.end();
-                String name = tag.group(2).toLowerCase(Locale.ROOT);
-                boolean closing = tag.group(1).equals("/");
+                String name = Objects.requireNonNull(tag.group(2)).toLowerCase(Locale.ROOT);
+                boolean closing = Objects.equals(tag.group(1), "/");
                 if ("br".equals(name)) {
                     if (excludedAt < 0) {
                         container.append('\n');
@@ -724,7 +727,7 @@ public final class GeniusProvider implements LyricsProvider {
                     continue;
                 }
                 if (!NESTING_TAGS.contains(name)
-                        || tag.group(3).trim().endsWith("/")) {
+                        || Objects.requireNonNull(tag.group(3)).trim().endsWith("/")) {
                     continue;
                 }
                 if (closing) {
@@ -734,7 +737,8 @@ public final class GeniusProvider implements LyricsProvider {
                     }
                 } else {
                     if (excludedAt < 0
-                            && tag.group(3).contains("data-exclude-from-selection=\"true\"")) {
+                            && Objects.requireNonNull(tag.group(3)).contains(
+                                    "data-exclude-from-selection=\"true\"")) {
                         excludedAt = depth;
                     }
                     depth++;

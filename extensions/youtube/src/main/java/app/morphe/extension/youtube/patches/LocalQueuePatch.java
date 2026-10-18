@@ -44,7 +44,7 @@ public final class LocalQueuePatch {
         @Nullable
         public volatile String author;
 
-        Item(String videoId, @Nullable String title, @Nullable String author) {
+        public Item(String videoId, @Nullable String title, @Nullable String author) {
             this.videoId = videoId;
             this.title = title;
             this.author = author;
@@ -284,7 +284,7 @@ public final class LocalQueuePatch {
                 return false;
             }
 
-            if (!canStartPlayback()) {
+            if (!canStartPlayback() && !canDeliverInProcess()) {
                 return false;
             }
 
@@ -324,11 +324,25 @@ public final class LocalQueuePatch {
                 && LoadVideoPatch.isPlayerInterfaceAvailable();
     }
 
+    /**
+     * Android blocks starting an activity from the background, but the running activity can still be handed the intent.
+     */
+    private static boolean canDeliverInProcess() {
+        Activity activity = Utils.getActivity();
+        return activity != null && !activity.isFinishing() && !activity.isDestroyed()
+                && LoadVideoPatch.isPlayerInterfaceAvailable();
+    }
+
     private static boolean startPlayback(String videoId) {
         try {
             if (!canStartPlayback()) {
-                Logger.printDebug(() -> "Cannot start queued video, no active player interface");
-                return false;
+                if (!canDeliverInProcess()) {
+                    Logger.printDebug(() -> "Cannot start queued video, no active player interface");
+                    return false;
+                }
+
+                Logger.printDebug(() -> "Starting queued video in the background: " + videoId);
+                return LoadVideoPatch.deliverVideoIntentInProcess(videoId);
             }
 
             Logger.printDebug(() -> "Starting queued video: " + videoId);

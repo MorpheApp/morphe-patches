@@ -6,6 +6,30 @@ public final class Link extends ILink {
     }
 
     public String getUrl() {
+      throw new UnsupportedOperationException("Stub");
+    }
+  
+    public String getId() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public String getKindWithId() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public String getSubreddit() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public String getLinkFlairText() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public String getLinkFlairTextColor() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public String getLinkFlairBackgroundColor() {
         throw new UnsupportedOperationException("Stub");
     }
 }

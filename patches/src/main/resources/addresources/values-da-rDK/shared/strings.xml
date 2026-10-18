@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Nulstil farve</string>
   <string name="morphe_settings_color_invalid">Ugyldig farve</string>
   <string name="morphe_settings_restart_title">Genstart kræves</string>
-  <string name="morphe_settings_restart_dialog_message">Genstart appen for at denne ændring træder i kraft.</string>
+  <string name="morphe_settings_restart_dialog_message">Genstart appen for at denne ændring træder i kraft</string>
   <string name="morphe_settings_restart">Genstart</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importer</string>
   <string name="morphe_settings_import_copy">Kopier</string>
   <string name="morphe_settings_import_reset">Morphe-indstillinger nulstillet til standard</string>
-  <string name="morphe_settings_import_success">%d indstillinger importeret</string>
+  <string name="morphe_settings_import_success">%s indstillinger importeret</string>
   <string name="morphe_settings_import_failure_parse">Import mislykkedes: %s</string>
   <string name="morphe_settings_navigate_up">Naviger op</string>
   <string name="morphe_settings_search_hint">Søg i indstillinger</string>
@@ -103,7 +103,7 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_debug_toast_on_error_title">Vis toastbesked ved Morphe-fejl</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Hvis du deaktiverer fejl-toasts, skjules alle Morphe-fejlmeddelelser.
 
-Du modtager ikke notifikationer om uventede hændelser."</string>
+Du modtager ikke notifikationer om uventede hændelser"</string>
   <string name="morphe_debug_export_logs_title">Eksportér fejlfindingslogfiler</string>
   <string name="morphe_debug_export_logs_summary">Eksportér Morphe fejlfindingslogfiler</string>
   <string name="morphe_debug_export_logs_success">Fejlfindingslogge eksporteret med succes</string>
@@ -179,31 +179,31 @@ Adfærden forsvandt tidligere i søgningen, så mere end ét flag kan være invo
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Åbn MicroG-indstillingerne</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG er ikke installeret. Installer den.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG er ikke installeret. Installer den</string>
   <string name="gms_core_dialog_title">Handling påkrævet</string>
   <string name="gms_core_dialog_outdated_message">"Din MicroG v%1s er forældet og kan forårsage problemer.
 
-Opdater venligst MicroG til den nyeste version v%2s."</string>
+Opgrader venligst MicroG til den seneste version v%2s"</string>
   <string name="gms_core_dialog_update_text">Opdater</string>
   <string name="gms_core_dialog_ignore_text">Ignorer</string>
   <string name="gms_core_dialog_conflict_message">"Den installerede MicroG anbefales ikke af Morphe:
 
 %1s
 
-Tryk for at afinstallere den, og åbn derefter denne app igen og installér MicroG RE. \"key\":\"gms_core_dialog_conflict_message\",\"context\":\"gms_core_dialog_conflict_message\",\"maxLength\":null,\"terms\":[{\"source\":\"Morphe\",\"translatable\":false,\"translation\":\"Morphe\",\"partOfSpeech\":\"PROPN\"},{\"source\":\"MicroG\",\"translatable\":false,\"translation\":\"MicroG\",\"partOfSpeech\":\"PROPN\"}]}]} no no. Need output correct JSON. Above accidentally malformed? I must final valid. Need ensure no extra text. I'll output array.[{"</string>
+Tryk for at afinstallere det, åbn derefter denne app igen og installer MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Afinstaller</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG har ikke tilladelse til at køre i baggrunden.
 
 Følg vejledningen \"Don't kill my app\" til din telefon, og anvend instruktionerne på din MicroG-installation.
 
-Dette er nødvendigt for, at appen fungerer."</string>
+Dette er nødvendigt for, at appen fungerer"</string>
   <string name="gms_core_dialog_open_website_text">Åbn hjemmeside</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Batterioptimeringer for MicroG skal deaktiveres for at undgå problemer.
 
 Deaktivering af batterioptimeringer for MicroG vil ikke negativt påvirke batteriforbrug.
 
-Tryk på knappen Fortsæt og tillad optimeringsændringer."</string>
+Tryk på knappen Fortsæt og tillad optimeringsændringer"</string>
   <string name="gms_core_dialog_continue_text">Fortsæt</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Vis batterioptimeringsdialog for MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering af dette skjuler MicroG batterioptimeringsprompten.

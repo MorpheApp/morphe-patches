@@ -274,6 +274,11 @@ public final class RestoreOriginalTitlesPatch {
     private static final Set<TextView> knownTitleViews = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
+     * Views that show the title of the opened video, such as the title of the minimal miniplayer.
+     */
+    private static final Set<TextView> playerTitleViews = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
      * Translated title -> video ids of the videos with the title, of the titles that are verified.
      * Different videos can have the same title, such as a video and its reupload.
      */
@@ -950,6 +955,10 @@ public final class RestoreOriginalTitlesPatch {
 
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable text) {
                 if (!REPLACE_TITLES || !replacesTitlesForCurrentNavigation()) {
                     return;
                 }
@@ -970,12 +979,9 @@ public final class RestoreOriginalTitlesPatch {
                     return;
                 }
 
-                // The text cannot be changed while the listeners are notified.
-                view.post(() -> restoreOriginalTitle(view, videoId));
-            }
-
-            @Override
-            public void afterTextChanged(Editable text) {
+                // The text is replaced before the view is drawn, so a title fetched before,
+                // such as the title of the element that opened the video, is not shown translated first.
+                restoreOriginalTitle(view, videoId);
             }
         });
     }
@@ -1005,11 +1011,13 @@ public final class RestoreOriginalTitlesPatch {
     /**
      * Injection point.
      * <p>
-     * Replaces the translated title of the fullscreen engagement overlay,
-     * shown by swiping up in fullscreen.
+     * Replaces the translated title of a view that shows the title of the opened video,
+     * such as the fullscreen engagement overlay (shown by swiping up in fullscreen)
+     * and the minimal miniplayer.
      */
     public static void restorePlayerTitle(TextView view) {
-        if (view == null) {
+        // Views can be set up again, and only need one listener.
+        if (view == null || !playerTitleViews.add(view)) {
             return;
         }
 
@@ -1020,17 +1028,18 @@ public final class RestoreOriginalTitlesPatch {
 
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable text) {
                 if (!REPLACE_TITLES || DeArrowTitleIcon.hasIcon(text)
                         || text.toString().equals(LOADING_TITLE.toString())) {
                     return;
                 }
 
-                // The text cannot be changed while the listeners are notified.
-                view.post(() -> setPlayerTitle(view, text));
-            }
-
-            @Override
-            public void afterTextChanged(Editable text) {
+                // The text is replaced before the view is drawn,
+                // so a title fetched before is not shown translated first.
+                setPlayerTitle(view, text);
             }
         });
     }
@@ -1753,7 +1762,18 @@ public final class RestoreOriginalTitlesPatch {
                                         @Nullable Consumer<String> onTitleVerified) {
         requestVerification(videoId, texts);
         List<String> titles = verifiedTitles(videoId);
-        String title = titles == null ? null : findTitle(videoId, texts, titles);
+        String title;
+        if (titles != null) {
+            title = findTitle(videoId, texts, titles);
+        } else {
+            // The original title or a title seen before for the video is the title even while other texts
+            // of the video are verified, such as another title shown by an element of the opened video,
+            // so the title of the opened video that was shown before in a feed is not shown as loading.
+            OriginalTitleRequest.OriginalVideo originalVideo = OriginalTitleRequest.getOriginalIfFetched(videoId);
+            title = findTitle(videoId, texts, originalVideo == null
+                    ? Collections.emptyList()
+                    : Collections.singletonList(originalVideo.title()));
+        }
         if (title == null) {
             // The titles can be verified before the element was parsed, such as for another element
             // of the video, and the element can show the title auto-translated or in another language.

@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Введите имя пакета</string>
   <string name="morphe_external_downloader_other_item">Другое</string>
   <string name="morphe_external_downloader_not_found_title">Приложение не установлено</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s не установлено. Пожалуйста, установите его.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s не установлен. Пожалуйста, установите его</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Не удалось найти установленное приложение с именем пакета: %s
 
 Убедитесь, что имя пакета указано верно и приложение установлено"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша история просмотра не сохраняется.&lt;br&gt;&lt;br&gt; Вероятнее всего это вызвано DNS блокировщиком рекламы или сетевым прокси.&lt;br&gt;&lt;br&gt; Чтобы это исправить, добавьте &lt;b&gt;s.youtube.com&lt;/b&gt; в белый список блокировщика рекламы или отключите все блокировщики DNS и прокси.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша история просмотра не сохраняется.&lt;br&gt;&lt;br&gt; Вероятнее всего это вызвано DNS блокировщиком рекламы или сетевым прокси.&lt;br&gt;&lt;br&gt; Чтобы это исправить, добавьте &lt;b&gt;s.youtube.com&lt;/b&gt; в белый список блокировщика рекламы или отключите все блокировщики DNS и прокси</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не показывать снова</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Подмена видеопотоков</string>
@@ -99,7 +99,7 @@ Second \"item\" text"</string>
 
 Сделать %2$s клиентом по умолчанию?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Переключить</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Выключение этой настройки может привести к возникновению проблем с воспроизведением.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Выключение этой настройки может привести к возникновению проблем с воспроизведением</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Попробуйте включить: Поддельные видео потоки &gt; Вход в Android VR</string>
@@ -134,7 +134,7 @@ Second \"item\" text"</string>
 • Вам нужно будет снова войти, если вы измените пароль Google или отмените регистрацию этого устройства в настройках Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 временно недоступен (время ожидания API истекло)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Срок действия входа в Android VR истек. Попробуйте войти в VR снова</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 временно недоступна (статус %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 временно недоступен (статус %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 временно недоступна</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Невозможно войти в VR, веб-авторизация не была одобрена</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не удается войти в VR: %s</string>
@@ -197,7 +197,7 @@ Second \"item\" text"</string>
 
 Это может помочь определить компоненты при создании пользовательских фильтров.
 
-Однако включение этой функции также приведет к регистрации некоторых пользовательских данных, таких как ваш IP-адрес."</string>
+Однако включение этой функции также приведет к регистрации некоторых пользовательских данных, таких как ваш IP-адрес"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Пользовательский фильтр</string>
   <string name="morphe_custom_filter_screen_summary">Настройте пользовательские фильтры, чтобы скрыть любой компонент</string>
@@ -242,7 +242,7 @@ Second \"item\" text"</string>
 
 Это изменит внешний вид и функции приложения, но могут возникнуть неизвестные побочные эффекты.
 
-Если позже эта функция будет отключена, рекомендуется очистить данные приложения, чтобы предотвратить ошибки интерфейса."</string>
+Если позже функция будет отключена, рекомендуется очистить данные приложения, чтобы предотвратить ошибки интерфейса"</string>
   <string name="morphe_spoof_app_version_target_title">Подменить версию приложения на</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Частота обновления приложения</string>
@@ -265,7 +265,7 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Дизлайки временно недоступны (таймаут API)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Дизлайки недоступны (статус %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Дизлайки недоступны (статус %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Дизлайки недоступны (лимит клиентов API)</string>
   <string name="morphe_ryd_failure_generic">Дизлайки недоступны (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Дизлайки временно недоступны — действует ограничение скорости клиентского API</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API получает голоса, количество запросов</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Сетевые запросы не выполнены</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Выполнено %d сетевых запросов</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s количество сетевых вызовов</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API получает голоса, количество запросов</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Сетевые запросы не завершились с ошибкой</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d сетевых запросов завершились с ошибкой</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s истек время ожидания сетевых вызовов</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Ограничения скорости клиентского API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ограничения скорости клиентского API не обнаружены</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Превышение ограничения скорости клиентского API встретилось %d раз</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d миллисекунд</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Превышен лимит запросов клиента %s раз</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s миллисекунд</string>
 </resources>

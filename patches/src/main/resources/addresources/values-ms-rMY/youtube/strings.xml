@@ -37,17 +37,6 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Lumpuhkan kemas kini tataletak</string>
   <string name="morphe_disable_layout_updates_summary">Mengelakkan pelayan daripada mengemas kini tataletak aplikasi</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Tataletak aplikasi kembali kepada tataletak yang digunakan semasa pertama kali dipasang.
-
-Beberapa tataletak sisi pelayan mungkin tidak kembali.
-
-Perubahan termasuk:
-• Komponen di menu terbang keluar pemain (atau tetapan berkaitan) mungkin tidak berfungsi.
-• Nombor yang berpusing tidak dianimasikan.
-• Tab Pustaka ditunjukkan.
-• Bahagian muzik bagi perihalan video mungkin tidak berfungsi.
-• Item menu terbang keluar pemain tidak dapat disorokkan.
-• Butang penukaran akaun mungkin tidak muncul di tab Pustaka."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Dayakan penapis menu terbang keluar suapan</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Penapis menu terbang keluar suapan</string>
@@ -92,7 +81,7 @@ Perubahan termasuk:
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Menunjukkan Doodles YouTube mungkin mengelakkan pengepala tersuai daripada dipaparkan.</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Menunjukkan Doodles YouTube mungkin mengelakkan pengepala tersuai daripada dipaparkan</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
@@ -129,6 +118,7 @@ Perubahan termasuk:
   <string name="morphe_copy_video_link_button_summary">Ketik untuk menyalin pautan video, ketik dan tahan untuk menyalin dengan cap masa</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Membalikkan tindakan ketik serta ketik dan tahan bagi butang \'Salin pautan video\'</string>
   <!-- interaction.copytext.copyTextPatch -->
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -199,6 +189,7 @@ Perubahan termasuk:
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">Mati</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
@@ -310,6 +301,7 @@ Automotive layout
   <string name="morphe_playback_in_feeds_entry_off">Mati</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_type_entry_0">Dilumpuhkan</string>
   <string name="morphe_miniplayer_type_entry_1">Lalai</string>
@@ -369,4 +361,8 @@ Automotive layout
   <string name="morphe_player_icon_style_entry_auto">Automatik</string>
   <string name="morphe_player_icon_style_entry_default">Lalai</string>
   <string name="morphe_player_icon_style_entry_custom">Tersuai</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_history">Sejarah</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Langganan</string>
+  <string name="morphe_series_tracker_continue">Teruskan</string>
 </resources>

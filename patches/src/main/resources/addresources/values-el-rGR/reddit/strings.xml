@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Διάταξη</string>
   <string name="morphe_copy_text_title">Αντιγραφή κειμένου</string>
   <string name="morphe_copy_text_summary">Επιτρέπει την επιλογή και αντιγραφή κειμένου σε αναρτήσεις και σχόλια. Απενεργοποιεί τη σύμπτυξη σχολίων</string>
-  <string name="morphe_copy_text_user_dialog_message">Η σύμπτυξη σχολίων θα σταματήσει να λειτουργεί όσο είναι ενεργοποιημένη η Αντιγραφή κειμένου.</string>
+  <string name="morphe_copy_text_user_dialog_message">Οι αναδιπλούμενες κειμενικές απαντήσεις θα σταματήσουν να λειτουργούν ενώ η επιλογή αντιγραφής κειμένου είναι ενεργή</string>
   <string name="morphe_custom_font_title">Προσαρμοσμένη γραμματοσειρά</string>
   <string name="morphe_custom_font_summary">Φόρτωση ενός προσαρμοσμένου αρχείου γραμματοσειράς TTF ή OTF από την παρακάτω διαδρομή. Η ενεργοποίηση αυτή απενεργοποιεί επίσης την Χρήση γραμματοσειράς συστήματος.</string>
   <string name="morphe_custom_font_file_path_title">Αρχείο προσαρμοσμένης γραμματοσειράς</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Απόκρυψη των προτεινόμενων κατηγοριών από τη ροή και τις προτάσεις αναζήτησης</string>
   <string name="morphe_remove_notification_dialog_title">Αφαίρεση του διαλόγου \"Προτεινόμενη Ειδοποίηση\"</string>
   <string name="morphe_remove_notification_dialog_summary">Απορρίπτει αυτόματα το παράθυρο διαλόγου υποδείξεων ειδοποιήσεων κατά την επίσκεψη σε ένα subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Εμφάνιση ετικετών στην κύρια ροή</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Εμφανίζει τις ετικέτες αναρτήσεων στην κύρια ροή</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Μερικά στοιχεία της ροής ενδέχεται να μην εμφανίζουν ετικέτα</string>
   <string name="morphe_show_view_count_title">Εμφάνιση αριθμού προβολών στις δημοσιεύσεις</string>
   <string name="morphe_show_view_count_summary">Περιορισμός: Διαθέσιμο μόνο εάν η απάντηση του API περιλαμβάνει τον αριθμό προβολών</string>
   <string name="morphe_flip_post_action_bar_title">Αναστροφή γραμμής ενεργειών ανάρτησης</string>

@@ -51,12 +51,12 @@ Second \"item\" text"</string>
 Some server-side layouts may not revert.
 
 Changes include:
-• Components in player flyout menu (or related settings) may not work.
-• Rolling numbers are not animated.
-• Library tab is shown.
-• Music section of video description may not work.
-• Player flyout menu items cannot be hidden.
-• Account switch button may not appear on the Library tab."</string>
+• Components in player flyout menu (or related settings) may not work
+• Rolling numbers are not animated
+• Library tab is shown
+• Music section of video description may not work
+• Player flyout menu items cannot be hidden
+• Account switch button may not appear on the Library tab"</string>
 
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
     <string name="morphe_hide_feed_flyout_menu_title">Enable feed flyout menu filter</string>
@@ -139,7 +139,7 @@ Changes include:
     <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
     <string name="morphe_hide_youtube_doodles_title">Hide YouTube Doodles</string>
     <string name="morphe_hide_youtube_doodles_summary">Hides seasonal and event-based animations on the YouTube logo</string>
-    <string name="morphe_hide_youtube_doodles_user_dialog_message">Showing YouTube Doodles may prevent custom headers from displaying.</string>
+    <string name="morphe_hide_youtube_doodles_user_dialog_message">Showing YouTube Doodles may prevent custom headers from displaying</string>
 
     <string name="morphe_hide_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_channel_watermark_title">Hide channel watermark</string>
@@ -201,7 +201,7 @@ Changes include:
     <string name="morphe_hide_how_this_was_made_section_title">Hide \'How this was made\' section</string>
     <string name="morphe_hide_hype_points_title">Hide Hype points</string>
     <string name="morphe_hide_info_cards_section_title">Hide Info cards section</string>
-    <string name="morphe_hide_key_concepts_section_title">Hide \'Key concepts\' section</string>
+    <string name="morphe_hide_key_concepts_section_title">Hide \'Key Concepts\' section</string>
     <string name="morphe_hide_quizzes_section_title">Hide Quizzes section</string>
     <string name="morphe_hide_search_inside_this_video_section_title">Hide \'Search inside this video\' section</string>
     <string name="morphe_hide_subscribe_button_title">Hide Subscribe button</string>
@@ -293,7 +293,7 @@ Changes include:
     <string name="morphe_hide_comments_menu_button_summary">Hides the 3-dot menu button of each comment</string>
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
     <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
-    <string name="morphe_hide_comments_preview_comment_hidden">Comment hidden by Morphe...</string>
+    <string name="morphe_hide_comments_preview_comment_hidden">Comment hidden by Morphe…</string>
     <string name="morphe_minimal_comments_button_title">Enable minimal comments button</string>
     <string name="morphe_minimal_comments_button_summary">Hides the sliding cards and its page selector, displayed on the comments button</string>
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
@@ -460,6 +460,13 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_copy_comments_summary">Tap and hold a comment to copy it</string>
     <string name="morphe_copy_comments_success">Comment copied to clipboard</string>
 
+    <!-- interaction.feedactions.feedVideoActionsPatch -->
+    <string name="morphe_feed_long_press_menu_title">Tap and hold to open video menu</string>
+    <string name="morphe_feed_long_press_menu_summary">Tapping and holding anywhere on a feed video opens its menu</string>
+    <string name="morphe_feed_watch_later_button_title">Show Watch later button on thumbnails</string>
+    <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos. Tapping and holding it opens Save to playlist</string>
+
+
     <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
     <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
     <string name="morphe_disable_connect_your_devices_popup_title">Disable \'Connect your devices\' popup</string>
@@ -532,7 +539,7 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_vot_openrouter_open_website">Open OpenRouter.ai</string>
     <string name="morphe_vot_openrouter_error">OpenRouter translation failed (HTTP %s)</string>
     <string name="morphe_vot_mymemory_quota_title">MyMemory daily limit reached</string>
-    <string name="morphe_vot_mymemory_quota_next_available">Next available at %s.</string>
+    <string name="morphe_vot_mymemory_quota_next_available">Next available at %s</string>
     <string name="morphe_vot_mymemory_quota_message_no_email">You\'ve used today\'s free MyMemory translation quota (5,000 characters). Add a MyMemory email in settings to raise the daily limit to 50,000 characters, or switch to a different translation service</string>
     <string name="morphe_vot_mymemory_quota_message_with_email">You\'ve used today\'s MyMemory translation quota (50,000 characters). Switch to a different translation service or try again tomorrow</string>
     <string name="morphe_vot_mymemory_error">MyMemory translation failed (status %s)</string>
@@ -613,21 +620,24 @@ Info: May not work on live streams"</string>
 
 Info: The next queued video only starts while YouTube is on screen"</string>
     <string name="morphe_local_queue_sheet_title">Queue</string>
-    <string name="morphe_local_queue_open">Queue (%d)</string>
+    <string name="morphe_local_queue_open">Queue (%s)</string>
     <string name="morphe_local_queue_clear">Clear all</string>
     <string name="morphe_local_queue_empty">Nothing queued</string>
     <string name="morphe_local_queue_empty_hint">Use Play next in queue on any video</string>
     <string name="morphe_local_queue_now_playing">Now playing</string>
     <string name="morphe_local_queue_play_next">Play next in queue</string>
+    <string name="morphe_local_queue_play_last">Play last in queue</string>
     <string name="morphe_local_queue_reorder">Reorder</string>
     <string name="morphe_local_queue_remove">Remove</string>
     <string name="morphe_local_queue_added">Added to queue</string>
+    <string name="morphe_local_queue_unavailable">Could not add this video to the queue</string>
+    <string name="morphe_local_queue_playlist_unsupported">Playlists cannot be added to the queue</string>
     <string name="morphe_local_queue_full">Queue is full</string>
     <string name="morphe_local_queue_play_failed">Could not start the video</string>
     <string name="morphe_ads_channel_whitelist_flyout_menu_title">Ad whitelist in flyout menu</string>
     <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Adds a flyout item that lets ads play on the channel of that video</string>
     <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-    <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">This feature may require using PotHelper or changing \"Spoof video streams\" to TV or Android VR sign-in.</string>
+    <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">This feature may require using PotHelper or changing \"Spoof video streams\" to TV or Android VR sign-in</string>
     <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Speed whitelist in flyout menu</string>
     <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Adds a flyout item that always plays the channel of that video at 1.0x speed</string>
     <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
@@ -823,6 +833,10 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_preferred_caption_language_summary">Selects provider subtitles first, then automatically translates to the preferred language</string>
     <string name="morphe_preferred_caption_language_entry_off">Off</string>
 
+    <!-- layout.captions.autoTranslateCaptionsPatch -->
+    <string name="morphe_auto_translate_additional_languages_title">Add additional auto-translate languages</string>
+    <string name="morphe_auto_translate_additional_languages_summary">Adds more languages to the auto-translate menu</string>
+
     <!-- layout.captions.captionCookiesPatch -->
     <string name="morphe_set_caption_cookies_title">Set caption cookies</string>
     <string name="morphe_set_caption_cookies_summary">"Fixes a stock YouTube bug where the auto-translate captions may not be available due to missing cookies
@@ -866,7 +880,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_navigation_bar_user_dialog_message">"This completely hides the navigation bar, including the \'You\' tab.
 
-To access Settings, enable the Settings button via General → Toolbar → Show Settings."</string>
+To access Settings, enable the Settings button via General → Toolbar → Show Settings"</string>
     <string name="morphe_narrow_navigation_buttons_title">Enable narrow navigation buttons</string>
     <string name="morphe_narrow_navigation_buttons_summary">Reduces the horizontal spacing between buttons</string>
     <string name="morphe_disable_icon_only_navigation_buttons_title">Disable navigation buttons without labels</string>
@@ -1131,7 +1145,7 @@ Automotive layout
     <string name="morphe_tablet_layout_in_player_summary">"Restores the old player layout
 
 Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' overlay may not be available"</string>
-    <string name="morphe_tablet_layout_in_player_user_dialog_message">Enabling this may break some player layout features, such as the comment section or \'More videos\' shown below the player.</string>
+    <string name="morphe_tablet_layout_in_player_user_dialog_message">Enabling this may break some player layout features, such as the comment section or \'More videos\' shown below the player</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restore old captions behavior</string>
@@ -1207,6 +1221,13 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_disable_auto_feed_refresh_title">Disable auto feed refresh</string>
     <string name="morphe_disable_auto_feed_refresh_summary">Prevents feeds from refreshing automatically after they become outdated</string>
 
+    <!-- layout.feedcards.feedCardLayoutPatch -->
+    <string name="morphe_feed_card_layout_title">Feed card layout</string>
+    <string name="morphe_feed_card_layout_entry_1">Classic</string>
+    <string name="morphe_feed_card_layout_entry_2">Cards</string>
+    <string name="morphe_feed_card_layout_entry_3">Cards with like, comment and save buttons</string>
+    <string name="morphe_feed_card_layout_comments">Comments</string>
+
     <!-- layout.miniplayer.miniplayerPatch -->
     <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
     <string name="morphe_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
@@ -1246,6 +1267,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <!-- layout.statusbar.hideStatusBarPatch -->
     <string name="morphe_hide_status_bar_title">Hide status bar</string>
     <string name="morphe_hide_status_bar_summary">Hides the system status bar. Swipe down from the top edge to show it for a moment</string>
+    <string name="morphe_fix_status_bar_layout_title">Fix status bar covering the top bars</string>
+    <string name="morphe_fix_status_bar_layout_summary">Keeps the layout of the status bar consistent, so it does not cover the top bars and leaves no empty space above the player. Turn this off if the app crashes or the top bars look wrong</string>
 
     <!-- layout.theme.themePatch -->
     <string name="morphe_theme_color_light_title">Light theme background</string>
@@ -1341,7 +1364,7 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
     <string name="morphe_spoof_device_dimensions_title">Spoof device dimensions</string>
     <string name="morphe_spoof_device_dimensions_summary">Enabling this can unlock higher video qualities</string>
-    <string name="morphe_spoof_device_dimensions_user_dialog_message">Enabling this can cause video playback stuttering, worse battery life, and unknown side effects.</string>
+    <string name="morphe_spoof_device_dimensions_user_dialog_message">Enabling this can cause video playback stuttering, worse battery life, and unknown side effects</string>
 
     <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
     <string name="morphe_disable_haptic_feedback_title">Haptic feedback</string>
@@ -1353,7 +1376,7 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_disable_haptic_feedback_zoom_title">Disable zoom haptics</string>
 
     <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-    <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG.</string>
+    <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG</string>
 
     <!-- misc.links.bypassLinkRedirectsPatch -->
     <string name="morphe_bypass_link_redirects_title">Bypass link redirects</string>
@@ -1478,7 +1501,7 @@ AVC (H.264)
     <string name="morphe_spoof_video_streams_av1_summary">Permits software AV1 decoding when using the \'Android VR\' / visionOS client</string>
     <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Enabling this setting may use software AV1 decoding.
 
-Video playback with AV1 may stutter or drop frames."</string>
+Video playback with AV1 may stutter or drop frames"</string>
     <string name="morphe_spoof_video_streams_about_title">Spoofing side effects</string>
     <string name="morphe_spoof_video_streams_about_failure">• Playback may fail at 1 minute</string>
     <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audio Track\' menu is missing</string>
@@ -1516,4 +1539,155 @@ Limitation: Reverts to old style \'More videos\' overlay"</string>
     <string name="morphe_player_icon_style_entry_sharp" translatable="false">Sharp</string>
     <string name="morphe_player_icon_style_entry_custom">Custom</string>
     <string name="morphe_shorts_icon_style_title">Shorts icon style</string>
+
+    <!-- video.series.seriesTrackerPatch -->
+    <string name="morphe_series_tracker_screen_title">Series Tracker</string>
+    <string name="morphe_series_tracker_screen_summary">Follow playlists as series and keep your place</string>
+    <string name="morphe_series_tracker_title">Enable series tracking</string>
+    <string name="morphe_series_tracker_summary">Adds a Series page to History and a Follow series option to playlists</string>
+    <string name="morphe_series_tracker_show_button_title">Show Series Tracker button</string>
+    <string name="morphe_series_tracker_show_button_summary">Adds a player button to follow or open the series of the current video</string>
+    <string name="morphe_series_tracker_record_followed_progress_title">Record followed-series progress</string>
+    <string name="morphe_series_tracker_record_followed_progress_summary">Record playback on this phone for saved series and bookmarks</string>
+    <string name="morphe_series_tracker_show_history_tab_title">Show History in navigation bar</string>
+    <string name="morphe_series_tracker_show_history_tab_summary">Home, Subscriptions, Notifications, History and You</string>
+    <string name="morphe_series_tracker_ui_cancel">Cancel</string>
+    <string name="morphe_series_tracker_ui_save">Save</string>
+    <string name="morphe_series_tracker_ui_save_bookmark">Save bookmark</string>
+    <string name="morphe_series_tracker_ui_series_name">Series name</string>
+    <string name="morphe_series_tracker_ui_series_options">Series options</string>
+    <string name="morphe_series_tracker_ui_library_options">Library options</string>
+    <string name="morphe_series_tracker_ui_refresh_episodes">Refresh episodes</string>
+    <string name="morphe_series_tracker_ui_rename">Rename</string>
+    <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Open playlist in YouTube</string>
+    <string name="morphe_series_tracker_ui_remove_from_library">Remove from library</string>
+    <string name="morphe_series_tracker_ui_playlist_link_or_id">Playlist link or ID</string>
+    <string name="morphe_series_tracker_ui_clear_all_local_progress">Clear all local progress</string>
+    <string name="morphe_series_tracker_ui_clear_history">Clear history</string>
+    <string name="morphe_series_tracker_clear_progress_title">Clear all local progress?</string>
+    <string name="morphe_series_tracker_clear_progress_message">This clears positions, watched overrides and resume selections for every video. Saved series and their catalogs remain. New playback will be recorded if recording is enabled</string>
+    <string name="morphe_series_tracker_ui_mark_watched">Mark watched</string>
+    <string name="morphe_series_tracker_ui_mark_unwatched">Mark unwatched</string>
+    <string name="morphe_series_tracker_ui_use_automatic_status">Use automatic status</string>
+    <string name="morphe_series_tracker_ui_restart_from_0_00">Restart from 0:00</string>
+    <string name="morphe_series_tracker_ui_play_again_from_0_00">Play again from 0:00</string>
+    <string name="morphe_series_tracker_ui_status_saved">Status saved</string>
+    <string name="morphe_series_tracker_ui_retry_saving">Retry saving</string>
+    <string name="morphe_series_tracker_ui_previous_100">Previous 100</string>
+    <string name="morphe_series_tracker_ui_next_100">Next 100</string>
+    <string name="morphe_series_tracker_ui_open_saved_video">Open saved video</string>
+    <string name="morphe_series_tracker_ui_local_progress_cleared">Local progress cleared</string>
+    <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Open History from You to view your series</string>
+    <string name="morphe_series_tracker_ui_watch_history">Watch history</string>
+    <string name="morphe_series_tracker_ui_series">Series</string>
+    <string name="morphe_series_tracker_ui_history">History</string>
+    <string name="morphe_series_tracker_ui_subscriptions">Subscriptions</string>
+    <string name="morphe_series_tracker_ui_notifications">Notifications</string>
+    <string name="morphe_series_tracker_ui_loading_saved_series">Loading saved series…</string>
+    <string name="morphe_series_tracker_empty_library">Follow a playlist to track its episodes</string>
+    <string name="morphe_series_tracker_ui_playlist_bookmark">Playlist bookmark</string>
+    <string name="morphe_series_tracker_ui_refreshing_episodes">Refreshing episodes…</string>
+    <string name="morphe_series_tracker_ui_all_series">All series</string>
+    <string name="morphe_series_tracker_watched">Watched</string>
+    <string name="morphe_series_tracker_ui_loading_episodes">Loading episodes…</string>
+    <string name="morphe_series_tracker_ui_more_options">More options</string>
+    <string name="morphe_series_tracker_record_consent">"Record progress only for your saved series and bookmarked videos.
+
+This library is stored on this device and shared across YouTube accounts. YouTube’s pause and clear history controls do not change it. Use Series → More → Clear local progress to erase it.
+
+Automatic recording stops in incognito, when account identity is unavailable, or when you switch to a different account. Enable tracking again to use it with that account"</string>
+    <string name="morphe_series_tracker_identity_unavailable">Tracking cannot be enabled in incognito or before YouTube has loaded the current account state. Return to Home and try again. No sign-in is required</string>
+    <string name="morphe_series_tracker_enable">Enable local tracking</string>
+    <string name="morphe_series_tracker_tracking_paused">Progress recording is off</string>
+    <string name="morphe_series_tracker_resume_at">Resume at %1$s</string>
+    <string name="morphe_series_tracker_watched_count">%1$s / %2$s episodes watched</string>
+    <string name="morphe_series_tracker_episode_position">Episode %1$s · %2$s</string>
+    <string name="morphe_series_tracker_episode_range">Episodes %1$s-%2$s of %3$s</string>
+    <string name="morphe_series_tracker_catalog_unavailable">Refresh to try loading episodes. Private playlists need account access; their bookmark still opens in YouTube</string>
+    <string name="morphe_series_tracker_open_failed">YouTube could not open this episode</string>
+    <string name="morphe_series_tracker_playlist_failed">YouTube could not open this playlist</string>
+    <string name="morphe_series_tracker_plan_changed">Choose an episode</string>
+    <string name="morphe_series_tracker_plan_caught_up">Up to date</string>
+    <string name="morphe_series_tracker_plan_none">No playable episodes</string>
+    <string name="morphe_series_tracker_saved_position">Saved video · %1$s</string>
+    <string name="morphe_series_tracker_follow">Follow series</string>
+    <string name="morphe_series_tracker_view_series">View series</string>
+    <string name="morphe_series_tracker_continue">Continue</string>
+    <string name="morphe_series_tracker_start_here">Start here</string>
+    <string name="morphe_series_tracker_start_saved">Starting point saved</string>
+    <string name="morphe_series_tracker_watched_to_here">Watched up to here</string>
+    <string name="morphe_series_tracker_marked">Episodes marked watched</string>
+    <string name="morphe_series_tracker_undo">Undo</string>
+    <string name="morphe_series_tracker_enable_short">Enable</string>
+    <string name="morphe_series_tracker_new_episode">1 new episode</string>
+    <string name="morphe_series_tracker_new_episodes">%1$s new episodes</string>
+    <string name="morphe_series_tracker_record_short">Record progress on this device</string>
+    <string name="morphe_series_tracker_follow_consent">"Your series and progress stay on this device, shared across YouTube accounts. YouTube history controls do not change them. Clear progress from the Series menu.
+
+Automatic recording is optional. It stops in incognito or when the account changes"</string>
+    <string name="morphe_series_tracker_follow_unavailable">Episodes could not be loaded. You can save the playlist as a bookmark</string>
+    <string name="morphe_series_tracker_error_pending_full">Too many unsaved changes. Retry saving first</string>
+    <string name="morphe_series_tracker_error_storage_busy">Saving is busy. Try again</string>
+    <string name="morphe_series_tracker_error_catalog_busy">Episode loading is busy. Try again</string>
+    <string name="morphe_series_tracker_error_storage_unavailable">Storage is unavailable. Your saved data was kept</string>
+    <string name="morphe_series_tracker_error_storage_save">Changes could not be saved. Retry saving before closing YouTube</string>
+    <string name="morphe_series_tracker_error_conflict">This series is already saved, or its playlist changed. Reopen it</string>
+    <string name="morphe_series_tracker_error_series_changed">This series changed or was removed. Reopen the library</string>
+    <string name="morphe_series_tracker_error_playlist_changed">The playlist changed. Select the episode again</string>
+    <string name="morphe_series_tracker_error_episode_unavailable">This episode is unavailable. Choose another</string>
+    <string name="morphe_series_tracker_error_name_required">Enter a series name</string>
+    <string name="morphe_series_tracker_error_playlist_input">Enter a YouTube playlist link or playlist ID</string>
+    <string name="morphe_series_tracker_error_retry_later">Please wait before refreshing again</string>
+    <string name="morphe_series_tracker_error_catalog_unavailable">Episodes could not be loaded. Try again later</string>
+    <string name="morphe_series_tracker_error_operation">The change could not be completed. Try again</string>
+    <string name="morphe_series_tracker_error_resume">Resume could not be confirmed. Check the player and try again</string>
+    <string name="morphe_series_tracker_followed">Following series</string>
+    <string name="morphe_series_tracker_video_not_in_playlist">This video is not in this playlist</string>
+    <string name="morphe_series_tracker_finding_playlists">Finding playlists…</string>
+    <string name="morphe_series_tracker_paste_playlist">Paste playlist link</string>
+    <string name="morphe_series_tracker_discovery_unavailable">Could not find a playlist</string>
+    <string name="morphe_series_tracker_no_available_episodes">No episodes available</string>
+    <string name="morphe_series_tracker_hide_watched">Hide watched</string>
+    <string name="morphe_series_tracker_watch_previous">Mark previous episodes watched</string>
+    <string name="morphe_series_tracker_order_starts_with">Starts with: %1$s</string>
+    <string name="morphe_series_tracker_episode_order">Episode order</string>
+    <string name="morphe_series_tracker_playlist_order">Playlist order</string>
+    <string name="morphe_series_tracker_reverse_order">Reverse playlist order</string>
+    <string name="morphe_series_tracker_view_count">%1$s views</string>
+    <string name="morphe_series_tracker_view_count_one">%1$s view</string>
+    <string name="morphe_series_tracker_completion_title">Mark episodes watched</string>
+    <string name="morphe_series_tracker_completion_summary">At least %1$s%% watched with at most 90 seconds left, or %2$s seconds remaining</string>
+    <string name="morphe_series_tracker_completion_explanation">Automatically mark an episode watched after either threshold. The percentage rule also requires no more than 90 seconds left, so the ending of long episodes is not skipped. The remaining-time rule applies to videos longer than one minute; set it to 0 to disable it. Changes apply to future progress updates. Manual watched/unwatched choices are kept</string>
+    <string name="morphe_series_tracker_completion_percent">Percentage watched (1-100)</string>
+    <string name="morphe_series_tracker_completion_seconds">Seconds remaining (0-300; 0 disables)</string>
+    <string name="morphe_series_tracker_completion_range">Enter a value from %1$s to %2$s</string>
+    <string name="morphe_series_tracker_youtube_progress_title">Use YouTube progress</string>
+    <string name="morphe_series_tracker_youtube_progress_summary">Pick up followed series after watching on another device</string>
+    <string name="morphe_series_tracker_sync_consent">Read watched status and resume positions for your followed series from the current YouTube account. Only matching episodes are saved on this phone. Checks run while the series library is open and before Continue. YouTube history must be enabled on your other device</string>
+    <string name="morphe_series_tracker_sync_checking">Checking YouTube progress…</string>
+    <string name="morphe_series_tracker_sync_failed">YouTube progress is unavailable. Using saved progress</string>
+    <string name="morphe_series_tracker_sync_partial">Some YouTube progress is unavailable. Saved positions are kept</string>
+    <string name="morphe_series_tracker_backup_title">Backup and restore</string>
+    <string name="morphe_series_tracker_backup_summary">Save your series library to a file or restore a backup</string>
+    <string name="morphe_series_tracker_backup_explanation">Saves followed series, episode positions and watched choices. Recording and YouTube progress permissions are not included</string>
+    <string name="morphe_series_tracker_backup_save">Save backup</string>
+    <string name="morphe_series_tracker_backup_restore">Restore backup</string>
+    <string name="morphe_series_tracker_backup_preview">Add %1$s series. %2$s series already in your library are kept. Existing video progress is kept</string>
+    <string name="morphe_series_tracker_backup_saved">Series backup saved</string>
+    <string name="morphe_series_tracker_backup_restored">Restored %1$s series</string>
+    <string name="morphe_series_tracker_error_backup_invalid">This file is not a supported series backup, or is too large. Your library was not changed</string>
+    <string name="morphe_series_tracker_error_backup_write">Could not save the backup. Try another location</string>
+    <string name="morphe_series_tracker_removed">Series removed</string>
+    <string name="morphe_series_tracker_recovery_duplicate">This episode now appears more than once. Choose which one to continue from</string>
+    <string name="morphe_series_tracker_recovery_missing">Your saved episode is no longer in this playlist. Your saved position is kept</string>
+    <string name="morphe_series_tracker_recovery_continue">Continue with episode %1$s · %2$s</string>
+    <string name="morphe_series_tracker_recovery_choose">You can also choose any episode below. Earlier episodes are not changed</string>
+    <string name="morphe_series_tracker_playback_changed">This playlist changed. Open the series to choose where to continue</string>
+    <string name="morphe_series_tracker_playback_boundary">No more episodes in this direction</string>
+    <string name="morphe_series_tracker_continue_series">Continue %1$s</string>
+    <string name="morphe_series_tracker_search_series">Search series</string>
+    <string name="morphe_series_tracker_clear_search">Clear search</string>
+    <string name="morphe_series_tracker_no_search_results">No series found</string>
+    <string name="morphe_series_tracker_untitled_episode">Untitled episode</string>
+    <string name="morphe_series_tracker_unavailable_episode">Unavailable episode</string>
 </resources>

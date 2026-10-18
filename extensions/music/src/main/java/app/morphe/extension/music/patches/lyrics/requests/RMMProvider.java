@@ -24,7 +24,7 @@ import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.shared.Logger;
 
-public final class RmmProvider implements LyricsProvider {
+public final class RMMProvider implements LyricsProvider {
 
     private static final String ITUNES_SEARCH = "https://itunes.apple.com/search";
     private static final String RMM_LYRICS = "https://lyrics.rmmreviv.al/lyrics?id=";
@@ -330,6 +330,7 @@ public final class RmmProvider implements LyricsProvider {
         return lines.isEmpty() ? null : lines;
     }
 
+    @SuppressWarnings("unused")
     @Nullable
     private static Lyrics buildLyrics(JSONObject root, long trackId) {
         if (!root.optBoolean("hasLyrics", false)) {

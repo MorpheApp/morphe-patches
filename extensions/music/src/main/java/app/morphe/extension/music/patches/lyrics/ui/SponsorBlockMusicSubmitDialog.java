@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -103,6 +104,8 @@ final class SponsorBlockMusicSubmitDialog {
         offsetSlider.setValue(manager.getTemporaryOffsetMs());
         offsetSlider.setOnOffsetChanged(ms -> {
             manager.setTemporaryOffsetMs(ms);
+            // Same offset the panel drags, so it saves it the same way.
+            manager.persistTemporaryOffsetMs();
             onOffsetSync.accept(ms);
         });
 
@@ -278,6 +281,7 @@ final class SponsorBlockMusicSubmitDialog {
         return params;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private static void bindTimeView(TextView view, long[] times, int[] slots, int index,
                                      Runnable refreshTimes) {
         final long[] downSample = new long[1];
@@ -413,6 +417,7 @@ final class SponsorBlockMusicSubmitDialog {
             setMeasuredDimension(w, h);
         }
 
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouchEvent(@NonNull MotionEvent event) {
             final float x = event.getX();

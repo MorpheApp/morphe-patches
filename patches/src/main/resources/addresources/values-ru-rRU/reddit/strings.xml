@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Макет</string>
   <string name="morphe_copy_text_title">Скопировать текст</string>
   <string name="morphe_copy_text_summary">Позволяет выделять и копировать текст в постах и комментариях. Отключает сворачивание комментариев</string>
-  <string name="morphe_copy_text_user_dialog_message">Сворачивание комментариев перестанет работать, пока включена опция «Копировать текст».</string>
+  <string name="morphe_copy_text_user_dialog_message">Сворачивание комментариев не будет работать, пока включена функция «Копировать текст»</string>
   <string name="morphe_custom_font_title">Пользовательский шрифт</string>
   <string name="morphe_custom_font_summary">Загрузить пользовательский файл шрифта TTF или OTF из указанного пути. Включение этой опции также отключает использование системного шрифта.</string>
   <string name="morphe_custom_font_file_path_title">Файл пользовательского шрифта</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Скрывает полки \"В тренде\" из ленты и предложений поиска</string>
   <string name="morphe_remove_notification_dialog_title">Удалить диалоговое окно предложения уведомлений</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматически закрывает диалоговое окно с предложением уведомления при посещении сабреддита</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Показывать флаги в ленте \"Главная\"</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Показывать значки флагов на публикаций в ленте \"Главная\"</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Некоторые элементы ленты могут не отображать флаг</string>
   <string name="morphe_show_view_count_title">Показывать количество просмотров в публикациях</string>
   <string name="morphe_show_view_count_summary">Ограничение: доступно только если в ответе API указано количество просмотров</string>
   <string name="morphe_flip_post_action_bar_title">Перевернуть панель действий поста</string>

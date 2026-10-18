@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
@@ -190,6 +191,35 @@ public final class NavigationBarPatch {
      */
     public static void hideNavigationBar(View view) {
         Utils.hideViewUnderCondition(HIDE_NAVIGATION_BAR, view);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The translucent navigation bar comes from feature flags that not every account gets, so they
+     * are turned on to make the bar look the same on every account. With them, the navigation bar
+     * and the pages make room for the system navigation buttons, which is only right when
+     * the window is drawn behind them. That comes from the edge to edge top bar feature flag,
+     * so without it the room is added twice: the navigation bar is raised and an empty bar is left
+     * at the bottom (https://github.com/MorpheApp/morphe-patches/issues/3825).
+     */
+    public static boolean useTranslucentNavigationBar(boolean original) {
+        try {
+            Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
+            if (edgeToEdge == null) {
+                // Not read yet, or the Hide status bar patch is not included.
+                return original;
+            }
+            if (!edgeToEdge) {
+                return false;
+            }
+
+            // Forcing it on Android 11 and lower can hang the app.
+            return original || Build.VERSION.SDK_INT >= Build.VERSION_CODES.S;
+        } catch (Exception ex) {
+            Logger.printException(() -> "useTranslucentNavigationBar failure", ex);
+            return original;
+        }
     }
 
     /**

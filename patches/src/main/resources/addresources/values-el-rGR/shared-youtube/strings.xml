@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Εισαγάγετε το όνομα πακέτου</string>
   <string name="morphe_external_downloader_other_item">Άλλο</string>
   <string name="morphe_external_downloader_not_found_title">Η εφαρμογή δεν είναι εγκατεστημένη</string>
-  <string name="morphe_external_downloader_not_installed_warning">Το %s δεν είναι εγκατεστημένο. Παρακαλώ εγκαταστήστε το.</string>
+  <string name="morphe_external_downloader_not_installed_warning">Το %s δεν είναι εγκατεστημένο. Παρακαλώ εγκαταστήστε το</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Δεν ήταν δυνατή η εύρεση εγκατεστημένης εφαρμογής με όνομα πακέτου: %s
 
 Επαληθεύστε ότι το όνομα πακέτου είναι σωστό και ότι η εφαρμογή είναι εγκατεστημένη"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Ειδοποίηση Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Το ιστορικό παρακολούθησης δεν αποθηκεύεται.&lt;br&gt;&lt;br&gt;Πιθανό να συμβαίνει λόγω κάποιας υπηρεσίας DNS που μπλοκάρει διαφημίσεις ή μέσω κάποιου διακομιστή μεσολάβησης δικτύου.&lt;br&gt;&lt;br&gt;Μια λύση γι\'αυτό θα ήταν να προσθέσετε σε whitelist το &lt;b&gt;s.youtube.com&lt;/b&gt; ή να απενεργοποιήστε το DNS και τους διακομιστές μεσολάβησης δικτύου.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Το ιστορικό παρακολούθησης δεν αποθηκεύεται.&lt;br&gt;&lt;br&gt;Πιθανό να συμβαίνει λόγω κάποιας υπηρεσίας DNS που μπλοκάρει διαφημίσεις ή μέσω κάποιου διακομιστή μεσολάβησης δικτύου.&lt;br&gt;&lt;br&gt;Μια λύση γι\'αυτό θα ήταν να προσθέσετε σε whitelist το &lt;b&gt;s.youtube.com&lt;/b&gt; ή να απενεργοποιήστε το DNS και τους διακομιστές μεσολάβησης δικτύου</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Να μην εμφανιστεί ξανά</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Παραποίηση ροών βίντεο</string>
@@ -99,7 +99,7 @@ Second \"item\" text"</string>
 
 Να οριστεί το %2$s ως προεπιλεγμένος πελάτης;"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Εναλλαγή</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Η απενεργοποίηση αυτής της ρύθμισης ενδέχεται να προκαλέσει προβλήματα αναπαραγωγής.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Η απενεργοποίηση αυτής της ρύθμισης ενδέχεται να προκαλέσει προβλήματα αναπαραγωγής</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Δοκιμάστε να ενεργοποιήσετε: Μίμηση ροής βίντεο &gt; Είσοδος με Android VR</string>
@@ -134,7 +134,7 @@ Second \"item\" text"</string>
 • Θα χρειαστεί να συνδεθείτε ξανά, εάν αλλάξετε το κωδικό πρόσβασης της Google ή απεγράψετε αυτή την συσκευή από τις ρυθμίσεις της Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">Το OAuth2 είναι προσωρινά μη διαθέσιμο (λήξη API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Η σύνδεση Android VR έληξε, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
-  <string name="morphe_oauth2_connection_failure_status">Το OAuth2 είναι προσωρινά μη διαθέσιμο (κατάσταση %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">Το OAuth2 είναι προσωρινά μη διαθέσιμο (κατάσταση %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Το OAuth2 είναι προσωρινά μη διαθέσιμο</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Δεν είναι δυνατή η είσοδος στο VR, η ταυτοποίηση δεν εγκρίθηκε</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Δεν είναι δυνατή η σύνδεση στο VR: %s</string>
@@ -197,7 +197,7 @@ Second \"item\" text"</string>
 
 Αυτό μπορεί να βοηθήσει στον εντοπισμό στοιχείων κατά τη δημιουργία προσαρμοσμένων φίλτρων.
 
-Ωστόσο, η ενεργοποίηση αυτής της ρύθμισης θα καταγράψει επίσης ορισμένα δεδομένα χρήστη, όπως τη διεύθυνση IP σας."</string>
+Ωστόσο, η ενεργοποίηση αυτής της ρύθμισης θα καταγράψει επίσης ορισμένα δεδομένα χρήστη, όπως τη διεύθυνση IP σας"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Προσαρμοσμένο φίλτρο</string>
   <string name="morphe_custom_filter_screen_summary">Διαμόρφωση προσαρμοσμένων φίλτρων για απόκρυψη οποιουδήποτε στοιχείου</string>
@@ -234,11 +234,11 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Παραποίηση έκδοσης εφαρμογής</string>
   <string name="morphe_spoof_app_version_summary">Εξαπατά τον διακομιστή ώστε να νομίζει ότι χρησιμοποιείτε μια παλαιότερη έκδοση εφαρμογής για να επαναφέρετε παλαιότερα στοιχεία διεπαφής χρήστη</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Η έκδοση της εφαρμογής θα παραποιηθεί σε μια παλαιότερη έκδοση.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Η έκδοση της εφαρμογής θα παραποιηθεί σε παλαιότερη.
 
-Αυτό θα αλλάξει την εμφάνιση και τα χαρακτηριστικά της εφαρμογής, αλλά ενδέχεται να προκύψουν άγνωστες παρενέργειες.
+Αυτό θα αλλάξει την εμφάνιση και τα χαρακτηριστικά της εφαρμογής, αλλά ενδέχεται να εμφανιστούν άγνωστες παρενέργειες.
 
-Εάν αργότερα απενεργοποιηθεί, συνιστάται η εκκαθάριση των δεδομένων της εφαρμογής για την αποφυγή σφαλμάτων διεπαφής χρήστη."</string>
+Εάν απενεργοποιηθεί αργότερα, συνιστάται η εκκαθάριση των δεδομένων της εφαρμογής για την αποφυγή σφαλμάτων UI"</string>
   <string name="morphe_spoof_app_version_target_title">Έκδοση παραποίησης της εφαρμογής</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Ρυθμός ανανέωσης εφαρμογής</string>
@@ -261,7 +261,7 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Τα Dislike δεν είναι προσωρινά διαθέσιμα (υπερβολικός χρόνος αναμονής της API)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Δεδομένα dislike μη διαθέσιμα (κατάσταση %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Δεδομένα dislike μη διαθέσιμα (κατάσταση %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Δεδομένα dislike μη διαθέσιμα (όριο API πελάτη)</string>
   <string name="morphe_ryd_failure_generic">Δεδομένα dislike μη διαθέσιμα (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -287,12 +287,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Τα Dislike δεν είναι προσωρινά διαθέσιμα - Εφαρμόζεται όριο ρυθμού API πελάτη</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API ανάκτηση ψήφων, αριθμός κλήσεων</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Δεν πραγματοποιήθηκαν κλήσεις δικτύου</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d κλήσεις δικτύου που έγιναν</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s κλήσεις δικτύου πραγματοποιήθηκαν</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API ανάκτηση ψήφων, αριθμός αποτυχιών</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Δεν έχουν χρονικά όρια κλήσεων δικτύου</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d κλήσεις δικτύου έληξαν</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s κλήσεις δικτύου εξαντλήθηκαν</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Όρια ρυθμού πελάτη API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Δεν έχουν συναντηθεί όρια ρυθμού πελάτη</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Το όριο ρυθμού πελάτη συναντήθηκε %d φορές</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d χιλιοστά δευτερολέπτου</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Συναντήθηκε όριο ρυθμού client %s φορές</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s χιλιοστά δευτερολέπτου</string>
 </resources>

@@ -12,11 +12,11 @@ package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -24,12 +24,11 @@ internal object ScrollPositionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IF_NEZ,
-        Opcode.INVOKE_DIRECT,
-        Opcode.RETURN_VOID
-    ),
-    strings = listOf("scroll_position")
+    filters = listOf(
+        opcode(Opcode.IF_NEZ),
+        methodCall(opcode = Opcode.INVOKE_DIRECT, location = MatchAfterImmediately()),
+        string("scroll_position")
+    )
 )
 
 internal object RecyclerViewTopScrollingFingerprint : Fingerprint(

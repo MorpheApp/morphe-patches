@@ -73,21 +73,20 @@ internal object OnTouchEventHandlerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.PUBLIC),
     returnType = "Z",
     parameters = listOf("L"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_VIRTUAL, // nMethodReference
-        Opcode.RETURN,
-        Opcode.IGET_OBJECT,
-        Opcode.IGET_BOOLEAN,
-        Opcode.IF_EQZ,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.RETURN,
-        Opcode.INT_TO_FLOAT,
-        Opcode.INT_TO_FLOAT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQZ,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.INVOKE_VIRTUAL, // oMethodReference
+    filters = listOf(
+        opcode(Opcode.INVOKE_VIRTUAL), // nMethodReference
+        // Skip over a return (21.41 and lower) or goto (21.42+).
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterWithin(1)),
+        opcode(Opcode.IGET_BOOLEAN, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.INT_TO_FLOAT, location = MatchAfterWithin(1)),
+        opcode(Opcode.INT_TO_FLOAT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()), // oMethodReference
     )
 )
 
@@ -268,8 +267,11 @@ internal object SeekbarBigBoardsUpdateFingerprint : Fingerprint (
     parameters = listOf(),
     filters = listOf(
         literal(1),
-        opcode(opcode = Opcode.IF_NEZ, location = MatchAfterImmediately()),
-        opcode(opcode = Opcode.RETURN, location = MatchAfterImmediately())
+        opcode(opcode = Opcode.SGET_OBJECT),
+        opcode(opcode = Opcode.IF_EQ, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.SGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IF_EQ, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.SGET_OBJECT, location = MatchAfterImmediately())
     )
 )
 

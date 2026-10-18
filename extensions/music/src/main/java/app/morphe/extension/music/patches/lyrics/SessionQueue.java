@@ -94,7 +94,7 @@ final class SessionQueue {
         MediaDescription description = item.getDescription();
         String rawTitle = textOf(description != null ? description.getTitle() : null);
         String rawArtist = textOf(description != null ? description.getSubtitle() : null);
-        return QueueTracks.trackOf(rawTitle, rawArtist, 0, "");
+        return QueueTracks.trackOf(rawTitle, rawArtist);
     }
 
     /** The description strings arrive as any character sequence, or not at all. */

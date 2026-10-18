@@ -24,6 +24,7 @@ import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPrefere
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -105,8 +106,26 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide cast button.
 
-        if (is_21_35_or_greater) {
+        if (is_21_42_or_greater) {
             OverlayCastButtonVisibilityFingerprint.let {
+                // Media route button and mdx entry point button.
+                arrayOf(
+                    it.instructionMatches[3],
+                    it.instructionMatches[1]
+                ).forEach { match ->
+                    val register = match.getInstruction<FiveRegisterInstruction>().registerD
+
+                    it.method.addInstructions(
+                        match.index,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->hideCastButton(I)I
+                            move-result v$register
+                        """
+                    )
+                }
+            }
+        } else if (is_21_35_or_greater) {
+            OverlayCastButtonVisibilityLegacy2135Fingerprint.let {
                 it.method.apply {
                     var instructionIndex = it.instructionMatches.first().index
                     var instructionRegister = getInstruction<FiveRegisterInstruction>(

@@ -24,13 +24,12 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">ریسیٹ رنگ</string>
   <string name="morphe_settings_color_invalid">غلط رنگ</string>
   <string name="morphe_settings_restart_title">ری اسٹارٹ درکار ہے</string>
-  <string name="morphe_settings_restart_dialog_message">مطلوبہ تبدیلیوں کے اثرانداز ہونے کے لئے ایپ کو دوبارہ شروع ہونے کی ضرورت ہے۔</string>
   <string name="morphe_settings_restart">ری اسٹارٹ</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">امپورٹ</string>
   <string name="morphe_settings_import_copy">کاپی کریں</string>
   <string name="morphe_settings_import_reset">Morphe کی ترتیبات کو ریسیٹ کریں</string>
-  <string name="morphe_settings_import_success">امپورٹ کردہ %d ترتیبات</string>
+  <string name="morphe_settings_import_success">امپورٹ کردہ %s ترتیبات</string>
   <string name="morphe_settings_import_failure_parse">امپورٹ ناکام: %s</string>
   <string name="morphe_settings_search_hint">ترتیبات کو تلاش کریں</string>
   <string name="morphe_settings_search_no_results_title">\'%s\' کے متعلق کوئی نتیجہ نہیں ملا</string>
@@ -94,11 +93,6 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG کی بیٹری کے آپٹیمائزیشنز کو مسائل سے بچانے کے لیے بند کردیا جانا چاہیے۔
-
-MicroG کے لیے بیٹری کے آپٹیمائزیشنز کو بند کرنے سے بیٹری کے استعمال پر منفی اثر نہیں پڑے گا۔
-
-کন্টينيو بٹن پر ٹیپ کریں اور آپٹیمائزیشن تبدیلیاں کی اجازت دیں۔"</string>
   <string name="gms_core_dialog_continue_text">जारी रखें</string>
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->

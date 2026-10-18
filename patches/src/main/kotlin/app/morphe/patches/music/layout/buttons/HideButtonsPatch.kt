@@ -12,6 +12,7 @@ package app.morphe.patches.music.layout.buttons
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.resource.ResourceType
@@ -123,11 +124,17 @@ val hideButtonsPatch = bytecodePatch(
                 val insertIndex = targetIndex + 1
                 val freeRegister = findFreeRegister(insertIndex, targetRegister, p0Register)
 
-                addInstructions(
+                addInstructionsWithLabels(
                     insertIndex,
                     """
                         iget-object v$freeRegister, p0, $optionalField
-                        invoke-static { v$targetRegister, v$freeRegister }, $EXTENSION_CLASS->hideNotificationButton(Landroid/view/View;Ljava/lang/Object;)V
+                        if-eqz v$freeRegister, :not_notification_button
+                        invoke-virtual { v$freeRegister }, ${optionalField.type}->isPresent()Z
+                        move-result v$freeRegister
+                        if-eqz v$freeRegister, :not_notification_button
+                        invoke-static { v$targetRegister }, $EXTENSION_CLASS->hideNotificationButton(Landroid/view/View;)V
+                        :not_notification_button
+                        nop
                     """
                 )
             }

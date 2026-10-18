@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">Vis QR</string>
   <string name="morphe_music_jam_done">Færdig</string>
   <string name="morphe_music_jam_invite_title">Inviter til din Jam</string>
-  <string name="morphe_music_jam_invite_message">Scan for at deltage og redigere denne kø. Afslutning af Jam tilbagekalder invitationen.</string>
+  <string name="morphe_music_jam_invite_message">Scan for at deltage i og redigere denne kø. Afslutningen af Jam trækker invitationen tilbage</string>
   <string name="morphe_music_jam_copy_link">Kopier link</string>
   <string name="morphe_music_jam_invitation_clip">Jam-invitation</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam genopretter forbindelsen. Prøv igen om lidt</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">Opdaterer Jam…</string>
   <string name="morphe_music_jam_finding_host">Leder efter din vært på Wi-Fi…</string>
   <string name="morphe_music_jam_waiting_people">Venter på deltagere</string>
-  <string name="morphe_music_jam_one_connected">%d person forbundet</string>
-  <string name="morphe_music_jam_many_connected">%d personer forbundet</string>
-  <string name="morphe_music_jam_code_expires">Indtast denne kode på en enhed i nærheden. Wi-Fi Aware fungerer på tværs af separate LAN, når det understøttes. Udløber om %d minutter.</string>
+  <string name="morphe_music_jam_one_connected">%s person tilsluttet</string>
+  <string name="morphe_music_jam_many_connected">%s personer tilsluttet</string>
+  <string name="morphe_music_jam_code_expires">Indtast denne kode på en nearby enhed. Wi-Fi Aware fungerer på tværs af separate LAN\'er, når det understøttes. Udløber om %s minutter</string>
   <string name="morphe_music_jam_seek_to">Spol til %s?</string>
   <string name="morphe_music_jam_edits_open">Redigering er åben</string>
   <string name="morphe_music_jam_edits_locked">Redigering er låst</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Understøttes ikke under Jam</string>
   <string name="morphe_music_jam_cancelled">Deltagelse annulleret</string>
   <string name="morphe_music_jam_reconnecting_host">Genopretter forbindelse til din vært…</string>
-  <string name="morphe_music_jam_share_prompt">Del en kø. Lad alle tilføje sange.</string>
+  <string name="morphe_music_jam_share_prompt">Del en kø. Lad alle tilføje sange</string>
   <string name="morphe_music_jam_invite_people">Inviter folk</string>
   <string name="morphe_music_jam_guest_edits">Gæster kan redigere køen</string>
   <string name="morphe_music_jam_end_jam">Afslut Jam</string>
-  <string name="morphe_music_jam_participant_help">Værten afspiller musikken. Tilføj, flyt eller fjern sange direkte i YouTube Music-køen.</string>
-  <string name="morphe_music_jam_joining_help">Hold begge enheder tæt på hinanden. Du kan annullere, mens vi leder efter værten.</string>
+  <string name="morphe_music_jam_participant_help">Værten spiller musikken. Tilføj, flyt eller fjern sange direkte i YouTube Music-køen</string>
+  <string name="morphe_music_jam_joining_help">Hold begge enheder nær ved. Du kan annullere, mens vi leder efter værten</string>
   <string name="morphe_music_jam_cancel_joining">Annuller deltagelse</string>
   <string name="morphe_music_jam_leave_jam">Forlad Jam</string>
   <string name="morphe_music_jam_start_jam">Start en Jam</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Bruger din valgte eksterne downloader i stedet for standardflyout-menuen Download</string>
   <string name="morphe_music_in_app_downloads_title">Download i appen</string>
   <string name="morphe_music_in_app_downloads_summary">Downloader lyd inde i YouTube Music i stedet for at åbne den eksterne downloader-app</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Numre gemmes i appens private lager og slettes, hvis YouTube Music afinstalleres.
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Spor gemmes i programmets private lager og slettes, hvis YouTube Music deinstalleres.
 
-Mens dette er slået til, viser fanen Downloads disse numre i stedet for Music Premiums offline-bibliotek. Hvis du slår det fra, gendannes fanen, og Premium-downloads berøres aldrig."</string>
+Når denne funktion er slået til, viser fanen Downloads disse spor i stedet for Musik Premiums offline-bibliotek. Hvis du slår den fra, gendannes fanen, og Premium-download påvirkes ikke"</string>
   <string name="morphe_music_downloads_screen_title">Downloads</string>
   <string name="morphe_music_downloads_empty">"Ingen downloads\nDownloadede sange vises her"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
@@ -444,7 +444,7 @@ SABR-afspilning (spoofing af videostrømme slået fra)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Brugerdefineret regex-oprydning</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Indtast et brugerdefineret regulært udtryk for at fjerne yderligere tekst fra sangtitler, kunstnere eller albums. Eksempel: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Analyser kunstner og spor fra titel</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Udtræk kunstner- og spornavn fra videotitlen ved hjælp af \" - \" separator. Nyttigt til genoploaded indhold, hvor kanalnavnet kan bruges som kunstner.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Uddrag kunstner og sangtitel fra videtitle ved brug af \" - \" separator. Nytteværdigt for genuploaded indhold, hvor kanalnavnet kan bruges som kunstner</string>
   <string name="morphe_music_scrobbling_guess_album_title">Udfyld manglende album</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Når musikken ikke indeholder et album, slå det op på Last.fm, så din scrobble er komplet.</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -459,7 +459,8 @@ For at sikre, at scrobbling synkroniseres under afspilning i baggrunden, skal du
   <string name="morphe_music_lyrics_section_service_title">Sangteksttjeneste</string>
   <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronisering</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Alle udbydere er deaktiveret — indbyggede og integrerede tekster</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI-endepunkt</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Alle udbydere deaktiveret — indbyggede sange og indlejrede sange</string>
   <string name="morphe_music_lyrics_source_reset_title">Nulstil udbyderrækkefølgen?</string>
   <string name="morphe_music_lyrics_source_reset_message">Gendan udbyderne til standardprioriteten</string>
   <string name="morphe_music_token_dialog_get_token">Hent token</string>
@@ -472,7 +473,7 @@ Trin:
 3. Kopiér værdien af \"media-user-token\""</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token gemt</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token ryddet</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: ugyldigt media-user-token — kontrollér og prøv igen</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: ugyldigt media-brugertoken - tj venligst prøv igen</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Indsæt sp_dc-cookien fra Spotify.
 
@@ -482,7 +483,7 @@ Trin:
 3. Kopiér værdien af \"sp_dc\""</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Uden den bruges Lyrically som fallback.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc fjernet</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: ugyldig sp_dc — tjek venligst og prøv igen</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: ugyldigt sp_dc - tj venligst prøv igen</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music token er valgfrit. Uden det vil Lyrically blive brugt som fallback</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Kopier værdien af \"arl\"</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Indsæt arl-cookien fra Deezer.
@@ -493,21 +494,21 @@ Trin:
 3. Kopiér værdien af \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl gemt</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl ryddet</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ugyldig arl — tjek venligst og prøv igen</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ugyldigt arl - tj venligst prøv igen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopier værdien af brugerens token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Tilføj kun et token for at bruge din egen konto. Det skal komme fra Musixmatch Android-appen: tokens kopieret fra musixmatch.com tilhører den udgåede desktopklient, og API\'et afviser dem.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch fungerer uden et token, så dette felt kan forblive tomt.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Ugyldig bruger-token. Prøv igen.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: brugertoken gemt</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: brugertoken fjernet</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: ugyldigt brugertoken — tjek venligst og prøv igen</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: ugyldigt brugertoken - tj venligst prøv igen</string>
   <string name="morphe_music_youtube_cookies_title">YouTube-cookies</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Indsæt […] Kopier hele cookie-strengen (nøgle=værdi-par adskilt af semikolon)
 
 Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies gemt</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies ryddet</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ugyldige cookies — kontrollér og prøv igen</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ugyldige cookies - tj venligst prøv igen</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Tryk på en linje for at søge</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Ved at trykke på en linje springer du til det tidspunkt i sangen</string>
   <string name="morphe_music_lyrics_show_section_title">Vis sektionsmærker</string>
@@ -518,6 +519,12 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Tryk for at skifte oversættelse; langt tryk for kun oversættelse. Bruger udbyderens oversættelser, Google Translate eller et OpenAI-kompatibelt API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Vis Romaniser-knap</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tryk for at skifte romanisering; langt tryk for kun romanisering. Bruger udbyderens romanisering, Google Translate eller et OpenAI-kompatibelt API.</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Lokal romanisering</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Romaniser på enheden, når leverandøren, et OpenAI-kompatibelt endpoint og Google Translate alle har fejlet. Kun CJK, omkring 80 MB med læsninger skal downloades.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Læsning %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Læsninger klar (%1$d CJK-ord)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Download mislykkedes — sluk for dette, og tænd igen for at prøve igen</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vis opdateringsknap</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tryk for at skifte til næste sangtekstkandidat; tryk længe for at søge efter sangtekster på sangtitel og kunstner</string>
   <string name="morphe_music_lyrics_search_dialog_title">Søg efter sangtekster</string>
@@ -528,6 +535,8 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_saved">Gemt</string>
   <string name="morphe_music_lyrics_word_sync_title">Fremhæv synkroniserede ord eller stavelser</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritér ord-for-ord-tekster, når de er tilgængelige. Når teksterne har ord-timing, fremhæves hvert ord eller stavelse i takt med musikken.</string>
+  <string name="morphe_music_lyrics_split_background_title">Vis baggrundsvokaler separat</string>
+  <string name="morphe_music_lyrics_split_background_summary">Flytter en baggrundsvokal, der er skrevet i parenteser, som f.eks. \"(Oh) I want you\", ud af den sunge linje og over i en egen, svagere linje</string>
   <string name="morphe_music_lyrics_hide_played_title">Skjul […] linje</string>
   <string name="morphe_music_lyrics_hide_played_summary">Skjul sangtekstlinjer over den aktuelt afspillede linje</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Skjul ikke-afspillede tekster</string>
@@ -552,25 +561,47 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_sb_no_video">Dette nummer har intet video-id at indsende</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Kilde: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Langt tryk på kopiknappen for at gemme denne LRC; hvis du kan finjustere timingen og dele den med community-leverandørerne, ville vi være taknemmelige.</string>
   <string name="morphe_music_lyrics_translated_by_google">Oversat af Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Romaniseret af Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Oversat af %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romaniseret af %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Romaniseret af %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Oversat</string>
   <string name="morphe_music_lyrics_translation_language_title">Oversættelsessprog</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Romaniseringssprog</string>
   <string name="morphe_music_lyrics_translating">Oversætter…</string>
   <string name="morphe_music_lyrics_translate_failed">Kunne ikke oversætte teksten</string>
   <string name="morphe_music_lyrics_romanize_hide">Romaniseret</string>
+  <string name="morphe_romanize_language_DEFAULT">Automatisk</string>
   <string name="morphe_music_lyrics_romanizing">Romaniserer…</string>
   <string name="morphe_music_lyrics_romanize_failed">Kunne ikke romanisere sangteksten</string>
   <string name="morphe_music_lyrics_translate_only">Kun oversat</string>
   <string name="morphe_music_lyrics_romanize_only">Kun romaniseret</string>
+  <string name="morphe_music_lyrics_dual_only">Dualtilstand</string>
   <string name="morphe_music_lyrics_copied">Kopieret til udklipsholder</string>
   <string name="morphe_music_lyrics_refreshing">Opdaterer</string>
   <string name="morphe_music_lyrics_refreshed">Opdateret</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-nøgle</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transskriberer eller tidstilpasser teksterne for det aktuelle spor. En separat tjeneste, der ikke er relateret til det OpenAI-kompatible endpoint ovenfor.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-nøgle gemt. Brug justeringsknappen i dialogs vinduet til lyrics-søgning, eller panelet prompt, når et spor ingen tekster har.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API-nøgle gemt</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC accepterede ikke den nøgle</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API-nøgle ryddet</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC tiden lyriske, som ingen har, eller transskriberer dem fra sporet, til en pris af kreditpoint. Med en nøgle indstillet, tilbyder spor uden tekster transskription, og søgedialogvinduet får en justeringsknap.</string>
+  <string name="morphe_music_lyrics_transcribe_align">Anmod om QuickLRC-justerings</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Justerer</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Anvend justering</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Anmod om QuickLRC-transskription</string>
+  <string name="morphe_music_lyrics_transcribe_working">Transskriberer</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Transskription annulleret</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Kun spor, der afspilles fra YouTube, kan transskriberes</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Ingen tekster at justere — transskriberer i stedet</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC kunne ikke behandle dette spor</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-kreditpoint er brugt op for dette spor</string>
   <string name="morphe_music_lyrics_about_summary">"Sangtekster matcheres ud fra titel og kunstner; usædvanlige metadata kan resultere i ingen resultater eller den forkerte version. Brug Opdater til at skifte versioner. Udbydere markeret med * kræver et token. Alle aktiverede udbydere forespørges ikke altid i din rækkefølge, men svarer baseret på deres hastighed."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Aktivér kun de udbydere, du bruger, eller behold standarden — konstante forespørgsler kan overbelaste små community-sangtekstsider</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Slå kun udbyderne til, du bruger, eller behold standardindstillingerne - konstante anmodninger kan overvælde små fællesskabssangtekstwebsider</string>
   <string name="morphe_music_lyrics_hide_info_title">Skjul kreditlinje</string>
   <string name="morphe_music_lyrics_hide_info_summary">Skjul kreditlinjen, der vises under teksterne</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Byt om på oversættelse og romanisering</string>
@@ -583,17 +614,17 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI-sektion</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Bruges kun, når udbyderen ikke leverer sektionsmærkater som Chorus eller Verse, som din OpenAI-kompatible model derefter detekterer</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI-indstillinger</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurer det OpenAI-kompatible API-endepunkt for AI-drevet oversættelse af sangtekster, romanisering og sektioner.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurer det OpenAI-kompatible API-endpoint til AI-drevet oversættelse, romanisering og opdeling af tekster.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-slutpunkt-URL (f.eks. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-nøgle (lad den være tom for anonym adgang)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modelnavn (f.eks. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt-skabelon</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Pladsholdere: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">Prompt-skabelon</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt gemt</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt gemt, men AI-endpointet er endnu ikke brugbart. Konfigurer det under AI-indstillinger først.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt nulstillet</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI-indstillinger gemt</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Kunne ikke oprette forbindelse til AI-slutpunktet. Tjek dine indstillinger.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Kunne ikke oprette forbindelse til AI-endepunktet. Tjek venligst dine indstillinger</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI-indstillinger nulstillet</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">Model %1$s konfigureret</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Base-URL må ikke være tom</string>

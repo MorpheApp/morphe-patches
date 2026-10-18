@@ -12,21 +12,22 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 /**
- * What the user picked for one track: the lyric shown first, the order the remaining
- * candidates were left in, and the custom search terms that produced them.
+ * What the user picked for one track.
  *
  * @param queryTitle   custom title search terms, or null when the default terms were used
  * @param queryArtist  custom artist search terms, or null when the default terms were used
- * @param preferred    the lyric to show first on the next playback of the track
- * @param queue        fingerprints of the remaining candidates, in the order they were left in
- * @param fingerprint  fingerprint the preferred lyric had before it was written to disk, or
- *                     null when it was never computed. Writing the lines backdrops the raw
- *                     text the fingerprint was taken from, so it cannot be taken again.
+ * @param preferred    the lyric to show first next time
+ * @param queue        fingerprints of the rest, in order
+ * @param fingerprint  fingerprint before the lines were written, which drops the raw text it
+ *                     was taken from. Null when it was never computed.
+ * @param videoId      the video the lyric was picked for, or null when it was written without
+ *                     one, which is the case for the entries meant to answer any video.
  */
 public record LyricsPreference(@Nullable String queryTitle,
                         @Nullable String queryArtist,
                         Lyrics preferred,
                         List<String> queue,
                         @Nullable String fingerprint,
-                        @Nullable String trackKey) {
+                        @Nullable String trackKey,
+                        @Nullable String videoId) {
 }

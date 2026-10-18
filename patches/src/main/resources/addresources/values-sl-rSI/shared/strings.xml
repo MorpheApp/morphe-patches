@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Ponastavi barvo</string>
   <string name="morphe_settings_color_invalid">Neveljavna barva</string>
   <string name="morphe_settings_restart_title">Potreben je ponovni zagon</string>
-  <string name="morphe_settings_restart_dialog_message">Za uveljavitev te spremembe je treba znova zagnati aplikacijo.</string>
+  <string name="morphe_settings_restart_dialog_message">Ponovno zaženite aplikacijo, da bo ta sprememba začela veljati</string>
   <string name="morphe_settings_restart">Ponovni zagon</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Uvozi</string>
   <string name="morphe_settings_import_copy">Kopiraj</string>
   <string name="morphe_settings_import_reset">Nastavitve Morphe</string>
-  <string name="morphe_settings_import_success">Uvožene %d nastavitve</string>
+  <string name="morphe_settings_import_success">Uvožene %s nastavitve</string>
   <string name="morphe_settings_import_failure_parse">Uvoz je spodletel: %s</string>
   <string name="morphe_settings_navigate_up">Pomakni se nazaj</string>
   <string name="morphe_settings_search_hint">Iskanje nastavitev</string>
@@ -101,9 +101,9 @@ Za prevajanje novih jezikov ali izboljšanje že obstoječih prevodov obiščite
   <string name="morphe_debug_stacktrace_title">Sledi / sporočila o napakah</string>
   <string name="morphe_debug_stacktrace_summary">Vključuje sledove zlaganja v dnevnike zapisov napak za lažjo ugotovitev napak</string>
   <string name="morphe_debug_toast_on_error_title">Prikaži pojavno okno z napako Morphe</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Onemogočanje pojavnih oken z napakami skrije vsa obvestila o napakah Morphe.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Izklop napak toast skrije vsa obvestila o napakah Morphe.
 
-Pričakujete dogodke."</string>
+Ne boste obveščeni o nepredvidenih dogodkih"</string>
   <string name="morphe_debug_export_logs_title">Izvozi strežilnik za hrošče</string>
   <string name="morphe_debug_export_logs_summary">Izvozi strežilnik za hrošče Morphe</string>
   <string name="morphe_debug_export_logs_success">Strežilnik za hrošče je bil uspešno izvožen</string>
@@ -179,31 +179,31 @@ Vedenje je med iskanjem izginilo že prej, zato je lahko vpletenih več zastavic
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Odprite nastavitve MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG ni nameščen. Namestite ga.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG ni nameščen. Namestite ga</string>
   <string name="gms_core_dialog_title">Akcija potrebna</string>
-  <string name="gms_core_dialog_outdated_message">"Vaš MicroG v%1s je zastarel in lahko povzroča težave.
+  <string name="gms_core_dialog_outdated_message">"Vaša MicroG v%1s je zastarela in lahko povzroči težave.
 
-Prosimo, posodobite MicroG na najnovejšo različico v%2s."</string>
+Posodobite MicroG na najnovejšo različico v%2s"</string>
   <string name="gms_core_dialog_update_text">Posodobi</string>
   <string name="gms_core_dialog_ignore_text">Prezri</string>
-  <string name="gms_core_dialog_conflict_message">"Morphe ne priporoča nameščenega MicroG:
+  <string name="gms_core_dialog_conflict_message">"Nameščeni MicroG ni priporočljiv s strani Morphe:
 
 %1s
 
-Tapnite, da ga odstranite, nato znova odprite to aplikacijo in namestite MicroG RE."</string>
+Tapnite za odstranitev, nato znova odprite to aplikacijo in namestite MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Odstrani</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nima dovoljenja za delovanje v ozadju.
 
-Sledite navodilom \"Don't kill my app\" za vaš telefon in jih uporabite za namestitev MicroG.
+Sledite vodniku \"Don't kill my app\" za vaš telefon in uporabite navodila za svojo namestitev MicroG.
 
-To je potrebno za delovanje aplikacije."</string>
+To je potrebno, da aplikacija deluje"</string>
   <string name="gms_core_dialog_open_website_text">Odprite spletno mesto</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimizacije baterije za MicroG morajo biti onemogočene, da se preprečijo težave.
 
 Onemogočanje optimizacij baterije za MicroG ne bo negativno vplivalo na porabo baterije.
 
-Tapnite gumb Nadaljuj in dovolite spremembe optimizacij."</string>
+Tapnite gumba Nadaljuj in dovolite spremembe optimizacij"</string>
   <string name="gms_core_dialog_continue_text">Nadaljuj</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Pokaži pogovorno okno za optimizacijo baterije MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Onemogočanje tega bo skrile okno za optimizacijo baterije MicroG.

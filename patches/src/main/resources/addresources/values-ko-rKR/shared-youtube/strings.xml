@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">앱 패키지명을 입력하세요</string>
   <string name="morphe_external_downloader_other_item">기타</string>
   <string name="morphe_external_downloader_not_found_title">앱이 설치되지 않음</string>
-  <string name="morphe_external_downloader_not_installed_warning">\'%s\'가 설치되어 있지 않습니다. 설치해 주세요.</string>
+  <string name="morphe_external_downloader_not_installed_warning">\'%s\'가 설치되어 있지 않습니다. 설치하세요</string>
   <string name="morphe_external_downloader_package_not_found_warning">"패키지명이 '%s'로 설치된 앱을 찾을 수 없습니다
 
 패키지명이 올바른지 앱이 설치되어 있는지 확인하세요"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 알림</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">시청 기록이 저장되지 않습니다.&lt;br&gt;&lt;br&gt; DNS 광고 차단기 또는 네트워크 프록시로 인하여 발생한 문제일 가능성이 높습니다.&lt;br&gt;&lt;br&gt; 이 문제를 해결하려면 &lt;b&gt;s.youtube.com&lt;/b&gt;을 허용 목록에서 제외하거나 모든 DNS 차단기 및 프록시를 해제하세요.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">시청 기록이 저장되지 않습니다.&lt;br&gt;&lt;br&gt; DNS 광고 차단기 또는 네트워크 프록시로 인하여 발생한 문제일 가능성이 높습니다.&lt;br&gt;&lt;br&gt; 이 문제를 해결하려면 &lt;b&gt;s.youtube.com&lt;/b&gt;을 허용 목록에서 제외하거나 모든 DNS 차단기 및 프록시를 해제하세요</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">다시 보지 않기</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">동영상 스트림 속이기</string>
@@ -98,8 +98,8 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s는 연속으로 여러 번 작동하지 않았지만, %2$s는 작동하였습니다. 
 
 %2$s를 기본 클라이언트로 설정하시겠습니까?"</string>
-  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">스위치</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">이 설정을 비활성화하면 재생 문제가 발생할 수 있습니다.</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">전환</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">이 설정을 비활성화하면 재생 문제가 발생할 수 있습니다</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">다음을 활성화해 보세요: 동영상 스트림 속이기 &gt; Android VR에 로그인하기</string>
@@ -134,7 +134,7 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
 • Google 암호를 변경하거나 Google 설정에서 이 기기 등록을 해제하면 다시 로그인해야 합니다"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2를 일시적으로 사용할 수 없습니다 (API 시간 초과)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR 로그인이 만료되었습니다. VR에 다시 로그인하세요</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2를 일시적으로 사용할 수 없습니다 (상태 코드 %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2을 일시적으로 사용할 수 없습니다 (상태 코드: %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2를 일시적으로 사용할 수 없습니다</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR에 로그인할 수 없습니다. 웹사이트 인증이 승인되지 않았습니다</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR에 로그인할 수 없습니다: %s</string>
@@ -197,7 +197,7 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
 
 이 설정은 사용자 정의 필터를 만들 경우에 구성 요소를 식별하는 데 도움이 될 수 있습니다.
 
-그러나 이 설정을 활성화하면 IP 주소와 같은 일부 사용자 데이터도 기록됩니다."</string>
+그러나 이 설정을 활성화하면 IP 주소와 같은 일부 사용자 데이터도 기록됩니다"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">사용자 정의 필터</string>
   <string name="morphe_custom_filter_screen_summary">원하는 구성 요소를 숨기기 위한 사용자 정의 필터를 설정합니다</string>
@@ -229,7 +229,7 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_external_potoken_provider_about_summary">"이 기능은 현재 개발 중이며 작동하지 않을 수 있습니다
 
 PotHelper를 다운로드하려면 여기를 탭하세요"</string>
-  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper가 더 이상 작동하지 않음</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper가 더 이상 작동하지 않습니다</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"이 버전에 내장된 PotHelper 토큰이 더 이상 작동하지 않습니다
 
@@ -238,11 +238,11 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">앱 버전 속이기</string>
   <string name="morphe_spoof_app_version_summary">서버가 사용 중인 앱 버전을 더 오래된 버전으로 인식하도록 속여, 이전 레이아웃 기능을 다시 복원합니다</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"앱 버전이 이전 앱 버전으로 속여집니다.
+  <string name="morphe_spoof_app_version_user_dialog_message">"앱 버전이 이전 앱 버전으로 속여집니다
 
-이 경우 앱 레이아웃과 기능이 변경되지만 알려지지 않은 부작용이 발생할 수 있습니다.
+이 경우 앱 레이아웃과 기능이 변경되지만 알려지지 않은 부작용이 발생할 수 있습니다
 
-나중에 이 기능을 비활성화하면 앱 UI 버그를 방지하기 위해 앱 데이터를 지우는 것이 좋습니다."</string>
+나중에 이 기능을 비활성화하면 앱 UI 버그를 방지하기 위해 앱 데이터를 지우는 것이 좋습니다"</string>
   <string name="morphe_spoof_app_version_target_title">속이기에 사용될 앱 버전</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">앱 주사율</string>
@@ -265,7 +265,7 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">싫어요 수를 일시적으로 표시할 수 없습니다 (API 시간 초과)</string>
-  <string name="morphe_ryd_failure_connection_status_code">싫어요 수를 표시할 수 없습니다 (상태 코드: %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">싫어요 수를 표시할 수 없습니다 (상태 코드: %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">싫어요 수를 표시할 수 없습니다 (클라이언트 API 제한 도달)</string>
   <string name="morphe_ryd_failure_generic">싫어요 수를 표시할 수 없습니다 (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">싫어요 수를 일시적으로 표시할 수 없습니다 - 클라이언트 API 비율 제한 적용 중</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API 투표 가져오기, 호출 횟수</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">네트워크 호출한 적이 없습니다</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d 개의 네트워크 호출이 이루어졌습니다</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s 개의 네트워크 호출이 이루어졌습니다</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API 투표 가져오기, 시간 초과 횟수</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">네트워크 호출이 시간 초과된 적이 없습니다</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d 개의 네트워크 호출이 시간 초과되었습니다</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s 개의 네트워크 호출이 시간 초과되었습니다</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API 클라이언트 비율 제한</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">클라이언트 비율 제한이 발생하지 않았습니다</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">클라이언트 비율 제한이 %d 번 발생하였습니다</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d 밀리초</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">클라이언트 비율 제한이 %s 번 발생하였습니다</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s 밀리초</string>
 </resources>

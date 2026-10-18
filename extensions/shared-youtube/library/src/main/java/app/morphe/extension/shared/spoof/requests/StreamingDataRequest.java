@@ -41,7 +41,6 @@ import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.PreferredClientCheck;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
@@ -421,33 +420,6 @@ public class StreamingDataRequest {
                     return null;
                 }
                 responseBuilder.setStreamingData(deobfuscatedStreamingDataBuilder);
-            }
-
-            // 'Force AVC' only keeps the player from using VP9, its formats are still in the stream.
-            // A default quality that only VP9 formats reach then has no format the player can use,
-            // and with SABR the video restarts at 0:01 without end, each time with a new playback nonce.
-            // HDR formats are a different codec string ('vp09.02...') and are kept, as HDR videos
-            // do not use AVC. Without any AVC format nothing is removed, so the video still plays.
-            if (SpoofVideoStreamsPatch.getForceAVC()) {
-                List<Format> adaptiveFormats = responseBuilder.getStreamingData().getAdaptiveFormatsList();
-                List<Format> withoutVP9 = new ArrayList<>(adaptiveFormats.size());
-                boolean hasAVC = false;
-                for (Format format : adaptiveFormats) {
-                    String mimeType = format.getMimeType();
-                    if (mimeType.contains("codecs=\"vp9\"")) continue;
-
-                    if (mimeType.startsWith("video") && mimeType.contains("avc")) {
-                        hasAVC = true;
-                    }
-                    withoutVP9.add(format);
-                }
-
-                if (hasAVC && withoutVP9.size() < adaptiveFormats.size()) {
-                    Logger.printDebug(() -> "Removing VP9 formats, videoId: " + videoId);
-                    responseBuilder.setStreamingData(responseBuilder.getStreamingData().toBuilder()
-                            .clearAdaptiveFormats()
-                            .addAllAdaptiveFormats(withoutVP9));
-                }
             }
 
             byte[] streamingDataBuffer = responseBuilder.build().toByteArray();

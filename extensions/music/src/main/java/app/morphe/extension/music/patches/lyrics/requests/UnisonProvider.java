@@ -22,11 +22,11 @@ import java.security.KeyPairGenerator;
 import java.security.MessageDigest;
 import java.security.interfaces.ECPublicKey;
 import java.security.spec.ECGenParameterSpec;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
@@ -213,22 +213,6 @@ public final class UnisonProvider implements LyricsProvider {
     }
 
     private static Lyrics withSubmitter(@Nullable Lyrics lyrics, @Nullable String submitter) {
-        if (lyrics == null || submitter == null) {
-            return lyrics;
-        }
-        final String line = "Submitted by " + submitter;
-        final List<String> songwriters = new ArrayList<>();
-        final List<String> existing = lyrics.songwriters();
-        if (existing != null) {
-            songwriters.addAll(existing);
-        }
-        if (songwriters.contains(line)) {
-            return lyrics;
-        }
-        songwriters.add(line);
-        return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(),
-                lyrics.romanization(), lyrics.translations(), lyrics.romanizations(),
-                songwriters, lyrics.rawFormat(), lyrics.formatType(), lyrics.sourceUrl(),
-                lyrics.about());
+        return LyricsMerge.addSongwriter(lyrics, submitter == null ? null : "Submitted by " + submitter);
     }
 }

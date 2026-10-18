@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Athshocraigh dath</string>
   <string name="morphe_settings_color_invalid">Dath neamhbhailí</string>
   <string name="morphe_settings_restart_title">Atosú ag teastáil</string>
-  <string name="morphe_settings_restart_dialog_message">Atosaigh an aip chun go mbeidh an t-athrú seo i bhfeidhm.</string>
+  <string name="morphe_settings_restart_dialog_message">Atosaigh an aip chun go dtiocfaidh an t-athrú seo i bhfeidhm.</string>
   <string name="morphe_settings_restart">Atosaigh</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Iompórtáil</string>
   <string name="morphe_settings_import_copy">Cóipeáil</string>
   <string name="morphe_settings_import_reset">Athshocraigh socruithe Morphe go réamhshocrú</string>
-  <string name="morphe_settings_import_success">%d socruithe allmhairithe</string>
+  <string name="morphe_settings_import_success">Socruithe %s allmhairithe</string>
   <string name="morphe_settings_import_failure_parse">Theip ar allmhairiú: %s</string>
   <string name="morphe_settings_navigate_up">Nascleanúint suas</string>
   <string name="morphe_settings_search_hint">Socruithe cuardaigh</string>
@@ -101,9 +101,9 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_debug_stacktrace_title">Rian staice loga dífhabhtaithe</string>
   <string name="morphe_debug_stacktrace_summary">Áirítear rianta cruachta i logaí dífhabhtaithe chun cabhrú le hearráidí a aithint</string>
   <string name="morphe_debug_toast_on_error_title">Taispeáin tósta ar earráid Morphe</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Má mhúchtar tóstaí earráide, folaítear gach fógra earráide Morphe.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Má mhúchann tú fógraí earráide, cuirfear gach fógra earráide ó Morphe i bhfolach.
 
-Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
+Ní chuirfear in iúl duit faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_debug_export_logs_title">Easpórtáil logaí dífhabhtaithe</string>
   <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
   <string name="morphe_debug_export_logs_success">Easpórtáladh logaí dífhabhtaithe go rathúil</string>
@@ -181,29 +181,29 @@ D’imigh an t-iompar níos luaithe sa chuardach, mar sin d’fhéadfadh níos m
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">Níl MicroG suiteáilte. Suiteáil é.</string>
   <string name="gms_core_dialog_title">Gníomh ag teastáil</string>
-  <string name="gms_core_dialog_outdated_message">"Tá do MicroG v%1s as dáta agus d'fhéadfadh fadhbanna a bheith mar thoradh air.
+  <string name="gms_core_dialog_outdated_message">"Tá do MicroG v%1s as dáta agus d’fhéadfadh fadhbanna a bheith mar thoradh air.
 
-Nuashonraigh MicroG go dtí an leagan is déanaí v%2s le do thoil."</string>
+Déan MicroG a nuashonrú go dtí an leagan is déanaí, v%2s, le do thoil."</string>
   <string name="gms_core_dialog_update_text">NuashonrúNuashonrú</string>
   <string name="gms_core_dialog_ignore_text">Déan neamhaird</string>
-  <string name="gms_core_dialog_conflict_message">"Ní mhol Morphe an MicroG suiteáilte:
+  <string name="gms_core_dialog_conflict_message">"Ní mholann Morphe an MicroG atá suiteáilte:
 
 %1s
 
-Tapáil chun é a dhíshuiteáil, ansin athoscail an aip seo agus suiteáil MicroG RE."</string>
+Tapáil chun é a dhíshuiteáil, ansin athoscail an aip seo agus suiteáil MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Díshuiteáil</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"Níl cead ag MicroG rith sa chúlra.
 
-Lean an treoir \"Ná maraigh mo aip\" do do ghuthán, agus cuir na treoracha i bhfeidhm ar do shuiteáil MicroG.
+Lean an treoir \"Don't kill my app\" atá i gceist do d'fhón, agus cuir na treoracha i bhfeidhm ar an suiteáil MicroG atá agat.
 
-Is gá seo chun go n-oibreoidh an aip."</string>
+Tá sé seo riachtanach chun go n-oibreoidh an aip."</string>
   <string name="gms_core_dialog_open_website_text">Oscail an suíomh Gréasáin</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Ní mór uasmhéaduithe ceallraí MicroG a dhíchumasú chun fadhbanna a chosc.
 
-Ní bheidh aon tionchar diúltach ag uasmhéaduithe ceallraí do MicroG a dhíchumasú ar úsáid ceallraí.
+Ní bheidh aon tionchar diúltach ag uasmhéaduithe ceallraí a dhíchumasú do MicroG ar úsáid ceallraí.
 
-Tapáil an cnaipe lean ar aghaidh agus ceadaigh athruithe uasmhéadaithe."</string>
+Tapáil an cnaipe lean ar aghaidh agus ceadaigh athruithe uasmhéadaithe"</string>
   <string name="gms_core_dialog_continue_text">Lean ar aghaidh</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Taispeáin dialóg optamaithe ceallraí MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Má dhíchumasaítear é seo, folófar an leid um optamú ceallraí MicroG.

@@ -1,0 +1,405 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.innertube.feedcards;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+option java_outer_classname = "FeedCardLayoutOuterClass";
+
+// Bytes of the newElement of an elementRenderer.
+message Element {
+    ElementType type = 1;
+}
+
+message ElementType {
+    ComponentType componentType = 168777401;
+}
+
+message ComponentType {
+    TemplateConfig templateConfig = 3;
+    ElementModel model = 5;
+    SubscriptionConfig subscriptionConfig = 6;
+}
+
+message TemplateConfig {
+    UriTemplateConfig uriTemplateConfig = 172035250;
+}
+
+message UriTemplateConfig {
+    string uri = 1;
+}
+
+message ElementModel {
+    // Classic feed video (video_lockup_with_attachment.eml).
+    VideoWithContextModel videoWithContextModel = 232954548;
+    // Feed card video (lockup.eml).
+    LockupModel lockupModel = 413471385;
+    // Header of the shelves, such as the Shorts shelf (shelf_header.eml).
+    ShelfHeaderModel shelfHeaderModel = 229393850;
+    // Horizontal shelf of videos, with its header (horizontal_shelf.eml).
+    HorizontalShelfModel horizontalShelfModel = 312131490;
+    // Short of the Shorts shelf (shorts_video_cell.eml).
+    ShortsVideoCellModel shortsVideoCellModel = 519005951;
+    // Shelf of Shorts in a carousel, with its header (shorts_shelf.eml), such as in the search results.
+    ShortsShelfModel shortsShelfModel = 315733268;
+    // Video of the vertical shelves below a shelf header, such as in the channel home (grid_video_wrapper.eml).
+    GridVideoModel gridVideoModel = 234662488;
+}
+
+message GridVideoModel {
+    string accessibilityText = 19;
+}
+
+message ShortsShelfModel {
+    // Data of the shelf header, which shorts_shelf.eml shows with shelf_header.eml.
+    ShelfHeaderData header = 1;
+}
+
+message ShortsVideoCellModel {
+    ShortsVideoCellData data = 17;
+}
+
+message ShortsVideoCellData {
+    string accessibilityText = 4;
+}
+
+message HorizontalShelfModel {
+    HorizontalShelfData data = 20;
+}
+
+message HorizontalShelfData {
+    // Data of the shelf header, which horizontal_shelf_content.eml shows with shelf_header.eml.
+    ShelfHeaderData header = 1;
+}
+
+message ShelfHeaderModel {
+    ShelfHeaderData data = 1;
+}
+
+message ShelfHeaderData {
+    bytes icon = 1;
+    string title = 20;
+    string accessibilityText = 26;
+    ShelfHeaderStyle style = 57;
+}
+
+message ShelfHeaderStyle {
+    // Header of the card layout (modern_type_shelf_header_content.eml), with a bigger title and without the icon.
+    bool modernType = 1;
+}
+
+// Fills the theme and the capabilities of the model when the element is bound.
+message SubscriptionConfig {
+    ThemeSubscriptionConfig themeSubscriptionConfig = 386334485;
+    CapabilitiesSubscriptionConfig capabilitiesSubscriptionConfig = 386334486;
+}
+
+message ThemeSubscriptionConfig {
+    ThemeMapping mapping = 1;
+    int32 modelField = 2;
+}
+
+message ThemeMapping {
+    bytes identifier = 1;
+    int32 resultField = 2;
+}
+
+message CapabilitiesSubscriptionConfig {
+    CapabilitiesMapping mapping = 1;
+    int32 modelField = 2;
+}
+
+message CapabilitiesMapping {
+    string identifier = 1;
+    int32 resultField = 2;
+}
+
+message VideoWithContextModel {
+    bytes theme = 6;
+    bytes environment = 10;
+    VideoWithContextData data = 18;
+    ElementContext context = 26;
+}
+
+message VideoWithContextData {
+    VideoData videoData = 1;
+    string accessibilityText = 2;
+    string menuAccessibilityText = 3;
+    bytes onTap = 4;
+    bytes menuOnTap = 5;
+    bytes inlinePlayback = 6; // Commands that start and stop the inline playback (feed autoplay).
+    bool compact = 22; // Thumbnail beside the title, such as the videos of the playlists and the rows of the library.
+    bytes attachment = 43; // Content below the video, such as the description and the 'Buy or rent' button of the movies.
+    bool horizontal = 57; // Thumbnail beside the title and the metadata, such as the search results on tablets.
+}
+
+message VideoData {
+    VideoThumbnail thumbnail = 1;
+    ChannelAvatar avatar = 3;
+    LockupMetadata lockupMetadata = 21;
+    LockupImage decoratedAvatar = 23; // Avatar with a ring, such as the avatar of live channels.
+    LockupImage avatarStack = 24; // Avatars of the channels of a collaboration.
+}
+
+message VideoThumbnail {
+    bytes image = 1;
+    string timestampText = 2;
+    int32 badgeStyle = 4; // Same values of the badge style of the cards.
+    string videoCountText = 6; // Playlists.
+    string timestampAccessibilityText = 11;
+    string badgeIcon = 19; // Drawable name, such as the live icon.
+}
+
+message ChannelAvatar {
+    bytes image = 1;
+    string accessibilityText = 3;
+    int32 avatarImageSize = 4;
+    bytes endpoint = 5;
+}
+
+message LockupModel {
+    LockupViewModelHolder viewModel = 1;
+    ElementContext context = 3;
+    bytes theme = 4;
+    bytes environment = 5;
+    LockupPadding padding = 1376;
+}
+
+// Padding of the card, in dp. Without it the card has the default horizontal margins.
+message LockupPadding {
+    float start = 1;
+    float end = 2;
+    float top = 3;
+    float bottom = 4;
+}
+
+message LockupViewModelHolder {
+    LockupViewModel lockupViewModel = 8179;
+}
+
+message LockupViewModel {
+    ContentImage contentImage = 2;
+    LockupMetadata metadata = 3;
+    string contentId = 4;
+    int32 contentType = 5;
+    LockupInlinePlayback inlinePlayback = 6;
+    RendererContext rendererContext = 997;
+}
+
+// Inline playback of the thumbnail (feed autoplay), read by lockup_thumbnail.eml.
+message LockupInlinePlayback {
+    bytes inlinePlayback = 1; // Same message of the inline playback of the classic layout.
+}
+
+message ContentImage {
+    ThumbnailViewModel thumbnailViewModel = 1036;
+}
+
+message ThumbnailViewModel {
+    bytes image = 1;
+    repeated ThumbnailOverlay overlays = 2;
+}
+
+message ThumbnailOverlay {
+    ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
+}
+
+message ThumbnailBottomOverlayViewModel {
+    repeated ThumbnailBadge badges = 4;
+}
+
+message ThumbnailBadge {
+    ThumbnailBadgeViewModel thumbnailBadgeViewModel = 1128;
+}
+
+message ThumbnailBadgeViewModel {
+    ThumbnailBadgeIcon icon = 1;
+    string text = 2;
+    int32 badgeStyle = 3;
+    RendererContext rendererContext = 997;
+}
+
+message ThumbnailBadgeIcon {
+    repeated ThumbnailBadgeIconSource sources = 1;
+}
+
+message ThumbnailBadgeIconSource {
+    ClientResource clientResource = 3;
+}
+
+// Icon of the app, by its drawable name.
+message ClientResource {
+    string imageName = 2;
+}
+
+message RendererContext {
+    AccessibilityContext accessibilityContext = 2;
+    CommandContext commandContext = 3;
+}
+
+message AccessibilityContext {
+    string label = 1;
+}
+
+message CommandContext {
+    bytes onTap = 3;
+}
+
+message LockupMetadata {
+    LockupMetadataViewModel lockupMetadataViewModel = 8178;
+}
+
+message LockupMetadataViewModel {
+    bytes title = 1;
+    LockupImage image = 2;
+    ContentMetadata metadata = 3;
+    ButtonViewModelHolder menuButton = 4;
+    TextStyle titleStyle = 14;
+    repeated ActionButton actionButtons = 17;
+}
+
+message TextStyle {
+    int32 style = 1;
+}
+
+message LockupImage {
+    DecoratedAvatarViewModel decoratedAvatarViewModel = 1105;
+}
+
+message DecoratedAvatarViewModel {
+    AvatarViewModelHolder avatar = 1;
+    string a11yLabel = 6;
+    RendererContext rendererContext = 997;
+}
+
+message AvatarViewModelHolder {
+    AvatarViewModel avatarViewModel = 437811886;
+}
+
+message AvatarViewModel {
+    bytes image = 1;
+    int32 avatarImageSize = 4;
+}
+
+message ContentMetadata {
+    ContentMetadataViewModel contentMetadataViewModel = 514549827;
+}
+
+message ContentMetadataViewModel {
+    repeated MetadataRow metadataRows = 1;
+    string delimiter = 2;
+}
+
+message MetadataRow {
+    repeated MetadataPart metadataParts = 1;
+}
+
+message MetadataPart {
+    AttributedText text = 2;
+    string accessibilityLabel = 3;
+}
+
+message AttributedText {
+    string content = 1;
+    repeated AttachmentRun attachmentRuns = 8;
+}
+
+message AttachmentRun {
+    int32 startIndex = 1;
+    int32 length = 2;
+}
+
+message ActionButton {
+    oneof button {
+        ButtonViewModel buttonViewModel = 461054335;
+        LikeButtonViewModel likeButtonViewModel = 484585818;
+        AddToPlaylistButtonViewModel addToPlaylistButtonViewModel = 484598023;
+    }
+}
+
+message ButtonViewModelHolder {
+    ButtonViewModel buttonViewModel = 461054335;
+}
+
+message ButtonViewModel {
+    string iconName = 2;
+    string title = 3;
+    InnertubeCommandHolder onTap = 4;
+    string accessibilityText = 5;
+    int32 style = 7;
+    int32 type = 11;
+    int32 buttonSize = 13;
+    int32 state = 14;
+    string targetId = 17;
+}
+
+message ToggleButtonViewModelHolder {
+    ToggleButtonViewModel toggleButtonViewModel = 479644279;
+}
+
+message ToggleButtonViewModel {
+    ButtonViewModelHolder defaultButtonViewModel = 1;
+    ButtonViewModelHolder toggledButtonViewModel = 2;
+    string identifier = 4;
+}
+
+message LikeButtonViewModel {
+    ToggleButtonViewModelHolder toggleButtonViewModel = 1;
+    string likeStatusEntityKey = 3;
+    LikeStatusEntity likeStatusEntity = 6;
+    int32 likeCountEnabled = 7;
+}
+
+message LikeStatusEntity {
+    string key = 1;
+    int32 likeStatus = 2;
+}
+
+message AddToPlaylistButtonViewModel {
+    ToggleButtonViewModelHolder toggleButtonViewModel = 1;
+}
+
+message InnertubeCommandHolder {
+    InnertubeCommand innertubeCommand = 169495254;
+}
+
+message InnertubeCommand {
+    BrowseEndpoint browseEndpoint = 48687626;
+    LikeEndpoint likeEndpoint = 63158558;
+}
+
+message BrowseEndpoint {
+    string browseId = 2;
+}
+
+message LikeEndpoint {
+    int32 status = 1;
+    LikeTarget target = 2;
+}
+
+message LikeTarget {
+    string videoId = 1;
+}
+
+message LikeStatusEntityKey {
+    string videoId = 2;
+    int32 entityType = 4;
+    int32 version = 5;
+}
+
+// Context of the element models.
+message ElementContext {
+    ElementsExperiments elementsExperiments = 1022;
+}
+
+message ElementsExperiments {
+    CardLayoutExperiments cardLayoutExperiments = 5;
+}
+
+// Experiments read by lockup.eml.
+message CardLayoutExperiments {
+    // Background in the color sampled from the thumbnail.
+    bool enableColorSampledBackground = 491718;
+    // Background below the title and the metadata.
+    bool enableMetadataBackground = 489259;
+}

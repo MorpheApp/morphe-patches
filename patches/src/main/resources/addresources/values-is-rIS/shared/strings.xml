@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Endurstilla lit</string>
   <string name="morphe_settings_color_invalid">Ógildur litur</string>
   <string name="morphe_settings_restart_title">Endurræsing krafist</string>
-  <string name="morphe_settings_restart_dialog_message">Endurræstu appið til að breytingarnar taki gildi.</string>
+  <string name="morphe_settings_restart_dialog_message">Endur ræstu forritið til að breytingin taki gildi</string>
   <string name="morphe_settings_restart">Endurræsa</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Innfluta</string>
   <string name="morphe_settings_import_copy">Afrita</string>
   <string name="morphe_settings_import_reset">Morphe stillingar endurstillaðar að sjálfgefnu gildi</string>
-  <string name="morphe_settings_import_success">Innfluttar %d stillingar</string>
+  <string name="morphe_settings_import_success">Innfluttar stillingar %s</string>
   <string name="morphe_settings_import_failure_parse">Innflutning mistókst: %s</string>
   <string name="morphe_settings_navigate_up">Farðu upp</string>
   <string name="morphe_settings_search_hint">Leita í stillingum</string>
@@ -101,9 +101,9 @@ Til að þýða ný lönd eða bæta núverandi þýðingar skaltu heimsækja mo
   <string name="morphe_debug_stacktrace_title">Debug log staðsetja spor</string>
   <string name="morphe_debug_stacktrace_summary">Felur stöðusýningu debug log til að hjálpa til með að ákvarða villur</string>
   <string name="morphe_debug_toast_on_error_title">Sýna toast á Morphe villu</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Slökkt á villu toast felur öll Morphe villu tilkynninga.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Með því að slökkva á villuboðum eru öll Morphe villutilkynningar falin.
 
-Þú verður ekki varað við óvæntum atburðum."</string>
+Þú færð engar tilkynningar um óvænt atburði"</string>
   <string name="morphe_debug_export_logs_title">Útflutningur debug log</string>
   <string name="morphe_debug_export_logs_summary">Útflutningur Morphe debug log</string>
   <string name="morphe_debug_export_logs_success">Debug logs successfully exported</string>
@@ -179,31 +179,31 @@ Hegðunin hvarf fyrr í leitinni, svo mögulega er fleiri en eitt flagg í hlut 
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Opna MicroG stillingar</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG er ekki settur upp. Settu hann upp.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG er ekki uppsett. Uppsettu það</string>
   <string name="gms_core_dialog_title">Þarf að gera</string>
-  <string name="gms_core_dialog_outdated_message">"Þitt MicroG v%1s er úrelt og getur valdið vandamálum.
+  <string name="gms_core_dialog_outdated_message">"Útgáfa MicroG v%1s sem þú ert með er úrelt og gæti valdið vandamálum.
 
-Vinsamlegast uppfærðu MicroG í nýjustu útgáfuna v%2s."</string>
+Uppfærðu MicroG í nýjustu útgáfu v%2s"</string>
   <string name="gms_core_dialog_update_text">Uppfæra</string>
   <string name="gms_core_dialog_ignore_text">Hunsa</string>
-  <string name="gms_core_dialog_conflict_message">"Morphe mælir ekki með uppsetta MicroG:
+  <string name="gms_core_dialog_conflict_message">"Morphe mælir ekki með MicroG-inu sem uppsett er:
 
 %1s
 
-Ýttu til að fjarlægja það, opnaðu síðan þetta forrit aftur og settu upp MicroG RE."</string>
+Smelltu til að afþenkja það, opnaðu svo forritið aftur og settu upp MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Fjarlægja</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG hefur ekki leyfi til að keyra í bakgrunni.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG hefur ekki heimildir til að keyra á bakgrunni.
 
-Fylgdu \"Ekki drepa appið mitt\" leiðbeiningunum fyrir símann þinn og áttu þær á MicroG uppsetninguna þína.
+Fylgdu leiðbeiningunum „Don't kill my app“ fyrir símann þinn og beittu þeim við MicroG uppsetninguna þína.
 
-Þetta er nauðsynlegt til að appið virki."</string>
+Þetta er nauðsynlegt til að forritið virki"</string>
   <string name="gms_core_dialog_open_website_text">Opna vefsíðu</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG rafhlöðu bjargráðningar verða að vera óvirkar til að koma í veg fyrir vandamál.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Orkusparnaður MicroG verður að vera óvirkur til að koma í veg fyrir vandamál.
 
-Slökkt á rafhlöðu bjargráðningum fyrir MicroG hefur ekki neikvæð áhrif á rafhlöðuna.
+Að gera orkusparnað MicroG óvirkan mun ekki hafa neikvæð áhrif á rafhlöðu notkun.
 
-Ýttu á haltu hnappinn og leyfdu breytingum á bjargráðningum."</string>
+Smelltu á halda áfram takkann og leyfi breytingum á orkustillingum"</string>
   <string name="gms_core_dialog_continue_text">Halda áfram</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Sýna MicroG rafhlöðu bjargráðningaamtalið</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Slökkt á þessu mun fela MicroG rafhlöðu bjargráðningaamtalið.

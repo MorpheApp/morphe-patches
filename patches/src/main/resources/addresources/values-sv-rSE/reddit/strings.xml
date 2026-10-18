@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Kopiera text</string>
   <string name="morphe_copy_text_summary">Möjliggör att markera och kopiera text i inlägg och kommentarer. Inaktiverar komprimering av kommentarer</string>
-  <string name="morphe_copy_text_user_dialog_message">Att fälla ihop kommentarer slutar fungera medan Kopiera text är aktiverat.</string>
+  <string name="morphe_copy_text_user_dialog_message">Kommentarer som kollapsas kommer att sluta fungera medan textkopiering är aktiverad</string>
   <string name="morphe_custom_font_title">Eget typsnitt</string>
   <string name="morphe_custom_font_summary">Läs in en egen TTF- eller OTF-typsnittsfil från sökvägen nedan. Om du aktiverar den här inställningen inaktiveras även Framtvinga systemtypsnitt</string>
   <string name="morphe_custom_font_file_path_title">Egen typsnittsfil</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Döljer Trendande-hyllorna från flödet och sökförslagen</string>
   <string name="morphe_remove_notification_dialog_title">Ta bort dialogruta för aviseringsförslag</string>
   <string name="morphe_remove_notification_dialog_summary">Avfärdar dialogrutan för aviseringsförslag automatiskt när du besöker en subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Visa flairer i hemkanalen</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Visar postaflairer i hemkanalen</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Vissa inlägg kan visa en flair</string>
   <string name="morphe_show_view_count_title">Visa antalet visningar på inlägg</string>
   <string name="morphe_show_view_count_summary">Begränsning: Endast tillgängligt om antalet visningar ingår i API-svaret</string>
   <string name="morphe_flip_post_action_bar_title">Spegelvänd inläggsåtgärdsfältet</string>

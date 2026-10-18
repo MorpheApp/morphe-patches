@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">הזן שם חבילה</string>
   <string name="morphe_external_downloader_other_item">אחר</string>
   <string name="morphe_external_downloader_not_found_title">אפליקציה לא מותקנת</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s לא מותקן. נא להתקין אותו.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s אינו מותקן. נא להתקין אותו</string>
   <string name="morphe_external_downloader_package_not_found_warning">"לא נמצאה אפליקציה מותקנת עם שם החבילה: %s
 
 ודא ששם החבילה נכון והאפליקציה מותקנת"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">הודעת Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">היסטוריית הצפייה שלך לא נשמרת.&lt;br&gt;&lt;br&gt;סביר להניח שזה נגרם על ידי חוסם מודעות ברמת DNS או פרוקסי רשת.&lt;br&gt;&lt;br&gt;כדי לתקן זאת, רשום את &lt;b&gt;s.youtube.com&lt;/b&gt; ברשימת ההיתרים או כבה את כל חוסמי ה-DNS והפרוקסים.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">היסטוריית הצפייה שלך לא נשמרת.&lt;br&gt;&lt;br&gt;סביר להניח שזה נגרם על ידי חוסם מודעות ברמת DNS או פרוקסי רשת.&lt;br&gt;&lt;br&gt;כדי לתקן זאת, רשום את &lt;b&gt;s.youtube.com&lt;/b&gt; ברשימת ההיתרים או כבה את כל חוסמי ה-DNS והפרוקסים</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">אל תציג שוב</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">זיוף זרמי וידאו</string>
@@ -99,7 +99,7 @@ Second \"item\" text"</string>
 
 להפוך את %2$s ללקוח ברירת המחדל?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">החלף</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">כיבוי הגדרה זו עלול לגרום לבעיות השמעה.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">כיבוי הגדרה זו עלול לגרום לבעיות השמעה</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Попробуйте включить: Фальшивый поток > Войти в Android VR</string>
@@ -134,7 +134,7 @@ Second \"item\" text"</string>
 • Если вы измените пароль Google или снимете регистрацию этого устройства, вам придется войти снова"</string>
   <string name="morphe_oauth2_connection_failure_timeout">Очнення (способность  временно недоступен (время вышло)</string>
   <string name="morphe_oauth2_connection_failure_status_400">התחברות לאנדרואיד VR פגה, נסה להתחבר ל-VR שוב</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 временно недоступен (статус %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 אינו זמין זמנית (מצב %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Очнення временно недоступен</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">לא ניתן להתחבר ל-VR, אישור אימות אתר לא אושר</string>
   <string name="morphe_oauth2_connection_failure_auth_error">לא ניתן להתחבר ל-VR: %s</string>
@@ -197,7 +197,7 @@ Second \"item\" text"</string>
 
 זה יכול לעזור לזהות רכיבים בעת יצירת מסננים מותאמים אישית.
 
-עם זאת, הפעלת הגדרה זו תתעד גם כמה נתוני משתמש כמו כתובת ה-IP שלך."</string>
+עם זאת, הפעלת הגדרה זו תתעד גם כמה נתוני משתמש כמו כתובת ה-IP שלך"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">מסנן מותאם אישית</string>
   <string name="morphe_custom_filter_screen_summary">הגדר מסננים מותאמים אישית כדי להסתיר כל רכיב</string>
@@ -238,11 +238,11 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">זייף גרסת אפליקציה</string>
   <string name="morphe_spoof_app_version_summary">מרמה את השרת לחשוב שאתה משתמש בגרסת אפליקציה ישנה יותר כדי לשחזר תכונות ממשק משתמש מדור קודם</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"גרסת האפליקציה תזויף לגרסה ישנה יותר.
+  <string name="morphe_spoof_app_version_user_dialog_message">"גרסת היישום תזויף לגרסה ישנה יותר.
 
-זה ישנה את המראה והתכונות של האפליקציה, אך תופעות לוואי לא ידועות עלולות להתרחש.
+זה ישנה את המראה והתכונות של היישום, אך תופעות לוואי לא ידועות עלולות להתרחש.
 
-אם נכבה מאוחר יותר, מומלץ לנקות את נתוני האפליקציה כדי למנוע באגים בממשק המשתמש."</string>
+אם נכבה מאוחר יותר, מומלץ לנקות את נתוני היישום כדי למנוע באגים של ממשק המשתמש"</string>
   <string name="morphe_spoof_app_version_target_title">יעד גרסת יישום מזויפת</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">קצב רענון אפליקציה</string>
@@ -265,7 +265,7 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">דיסלייקים אינם זמינים באופן זמני (תם פסק הזמן של ה-API)</string>
-  <string name="morphe_ryd_failure_connection_status_code">דיסלייקים אינם זמינים (מצב %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">דיסלייקים אינם זמינים (מצב %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">דיסלייקים אינם זמינים (מגבלה של לקוח API)</string>
   <string name="morphe_ryd_failure_generic">דיסלייקים אינם זמינים (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">דיסלייקים אינם זמינים באופן זמני - מגבלת קצב לקוח API בתוקף</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">ממשק API להבאת הצבעות, מספר קריאות</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">לא נעשו קריאות רשת</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d קריאות רשת בוצעו</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s קריאות רשת בוצעו</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">ממשק API להבאת הצבעות, מספר פסק זמן</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">לא נעשו קריאות רשת שפג תוקפן</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d קריאות רשת פג תוקפן</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">פסק זמן לפניות הרשת: %s</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">מגבלות קצב לקוח API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">לא נתקלו במגבלות קצב לקוח</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">נתקלו במגבלת קצב לקוח %d פעמים</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d אלפיות שנייה</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">נפגש מגבלת הקצבה %s פעמים</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s אלפיות שנייה</string>
 </resources>

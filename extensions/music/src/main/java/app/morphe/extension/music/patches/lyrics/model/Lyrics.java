@@ -244,7 +244,7 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
             // The floor keeps the last word on screen, but it must not reach into the next
             // line: ranges crossing a line boundary chain the karaoke highlight over several
             // lines at once, and the single slot the panel keeps for one retiring highlight
-            // then loses an unfinished line that nothing clears afterwards.
+            // then loses an unfinished line that nothing clears afterward.
             long floor = lastWord.startMs() + 200;
             if (nextStart != LyricsLine.NO_TIME && nextStart > lastWord.startMs()) {
                 floor = Math.min(floor, nextStart);

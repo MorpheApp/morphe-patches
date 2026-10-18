@@ -12,18 +12,16 @@ import androidx.annotation.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Future;
 import java.util.function.BooleanSupplier;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -44,22 +42,29 @@ public final class ChannelUploadsRequest {
     public static final class Uploads {
         /** Uploads whose title has the search, newest first. */
         public final List<ChannelSearchResult> matches;
-        /** Position of every listed upload, from 0 for the newest one. */
+        /**
+         * Position of every listed upload, from 0 for the newest one. The largest channels
+         * have more uploads than are listed, which are all older.
+         */
         public final Map<String, Integer> positions;
-        /** Whether the channel has more uploads than are listed, which are all older. */
-        public final boolean isTruncated;
+        /**
+         * Rounded view count of the listed uploads, such as 8.5 million for "8.5M views".
+         * Used for uploads whose exact view count could not be fetched.
+         */
+        public final Map<String, Long> roundedViewCounts;
 
         /**
          * No uploads, until they are listed.
          */
         public Uploads() {
-            this(Collections.emptyList(), Collections.emptyMap(), false);
+            this(Collections.emptyList(), Collections.emptyMap(), Collections.emptyMap());
         }
 
-        private Uploads(List<ChannelSearchResult> matches, Map<String, Integer> positions, boolean isTruncated) {
+        private Uploads(List<ChannelSearchResult> matches, Map<String, Integer> positions,
+                        Map<String, Long> roundedViewCounts) {
             this.matches = matches;
             this.positions = positions;
-            this.isTruncated = isTruncated;
+            this.roundedViewCounts = roundedViewCounts;
         }
     }
 
@@ -73,16 +78,9 @@ public final class ChannelUploadsRequest {
     }
 
     /**
-     * A number with digit groups, which are separated by a dot, comma, apostrophe or space
-     * depending on the language, and are of two digits in some languages.
+     * Each page has 100 uploads, so only the largest channels are partly listed.
      */
-    private static final Pattern PATTERN_NUMBER = Pattern.compile(
-            "\\d{1,3}(?:[.,'’\\s\u00A0\u202F]\\d{2,3})+|\\d+");
-
-    /**
-     * Each page has 20 uploads, so only the largest channels are partly listed.
-     */
-    private static final int MAX_PAGES = 500;
+    private static final int MAX_PAGES = 200;
 
     private static final Map<String, Uploads> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(10));
@@ -104,7 +102,7 @@ public final class ChannelUploadsRequest {
         }
 
         Utils.runOnBackgroundThread(() -> {
-            Uploads uploads = fetchPlaylist(channelId, query, locale, isCancelled, callback);
+            Uploads uploads = fetchUploads(channelId, query, locale, isCancelled, callback);
             if (uploads == null) {
                 callback.onUploads(new Uploads(), true);
             } else if (!isCancelled.getAsBoolean()) {
@@ -114,70 +112,71 @@ public final class ChannelUploadsRequest {
         });
     }
 
+    /**
+     * Titles can be translated to the language of the app, and a search is often in English,
+     * so an upload matches if either its title in the language of the app or in English does.
+     * The view counts are parsed from the English uploads, as their format depends on the language.
+     */
     @Nullable
-    private static Uploads fetchPlaylist(String channelId, String query, Locale locale,
-                                         BooleanSupplier isCancelled, Callback callback) {
+    private static Uploads fetchUploads(String channelId, String query, Locale locale,
+                                        BooleanSupplier isCancelled, Callback callback) {
         Utils.verifyOffMainThread();
 
         final long startTime = System.currentTimeMillis();
         List<String> queryWords = normalizedWords(query);
+        List<ChannelSearchResult> uploads = new ArrayList<>();
         List<ChannelSearchResult> matches = new ArrayList<>();
         Map<String, Integer> positions = new HashMap<>();
 
+        Map<String, String> englishTitles = new ConcurrentHashMap<>();
+        Map<String, Long> roundedViewCounts = new ConcurrentHashMap<>();
+        final boolean isEnglish = "en".equals(locale.getLanguage());
+        Future<Boolean> englishFuture = isEnglish ? null
+                : Utils.submitOnBackgroundThread(() -> listUploads(channelId, Locale.US, roundedViewCounts,
+                        isCancelled, page -> {
+                            for (ChannelSearchResult upload : page) {
+                                englishTitles.put(upload.videoId, upload.title);
+                            }
+                        }));
+
         try {
-            // The uploads playlist of a channel is its id with the "UC" prefix replaced,
-            // and is browsed like a channel.
-            JSONObject page = browse(ChannelSearchRoutes.createChannelBody(
-                    "VLUU" + channelId.substring(2), locale));
-            JSONArray items = page == null ? null : playlistItems(page);
-            if (items == null) {
-                return null;
-            }
-
-            for (int pageNumber = 1; ; pageNumber++) {
-                if (isCancelled.getAsBoolean()) {
-                    return null;
-                }
-
-                String token = null;
+            final boolean isListed = listUploads(channelId, locale, isEnglish ? roundedViewCounts : null,
+                    isCancelled, page -> {
                 boolean foundMatches = false;
-                for (int i = 0, length = items.length(); i < length; i++) {
-                    JSONObject item = items.optJSONObject(i);
-                    if (item == null) continue;
+                for (ChannelSearchResult upload : page) {
+                    if (positions.containsKey(upload.videoId)) continue;
 
-                    JSONObject continuation = item.optJSONObject("continuationItemViewModel");
-                    if (continuation != null) {
-                        token = continuationToken(continuation);
-                        continue;
-                    }
-
-                    ChannelSearchResult result = parseLockup(item.optJSONObject("lockupViewModel"));
-                    if (result == null || positions.containsKey(result.videoId)) continue;
-
-                    positions.put(result.videoId, positions.size());
-                    if (matches(result.title, queryWords)) {
-                        matches.add(result);
+                    positions.put(upload.videoId, positions.size());
+                    uploads.add(upload);
+                    if (matches(upload, queryWords, englishTitles)) {
+                        matches.add(upload);
                         foundMatches = true;
                     }
                 }
-
-                if (token == null) {
-                    return new Uploads(matches, positions, false);
-                }
-                if (pageNumber == MAX_PAGES) {
-                    return new Uploads(matches, positions, true);
-                }
                 if (foundMatches) {
-                    callback.onUploads(new Uploads(new ArrayList<>(matches), new HashMap<>(positions), true), false);
+                    callback.onUploads(new Uploads(new ArrayList<>(matches), new HashMap<>(positions),
+                            new HashMap<>(roundedViewCounts)), false);
                 }
+            });
+            if (!isListed || isCancelled.getAsBoolean()) {
+                return null;
+            }
 
-                page = browse(ChannelSearchRoutes.createContinuationBody(token, locale));
-                items = page == null ? null : continuationItems(page);
-                if (items == null) {
-                    // A page that could not be fetched leaves the older uploads out.
-                    return new Uploads(matches, positions, true);
+            if (englishFuture != null) {
+                try {
+                    englishFuture.get();
+                } catch (Exception ex) {
+                    Logger.printInfo(() -> "English channel uploads failed", ex);
+                }
+                // Uploads listed before their English title can match it now.
+                matches.clear();
+                for (ChannelSearchResult upload : uploads) {
+                    if (matches(upload, queryWords, englishTitles)) {
+                        matches.add(upload);
+                    }
                 }
             }
+            return new Uploads(matches, positions, roundedViewCounts);
         } catch (Exception ex) {
             Logger.printException(() -> "Channel uploads failed", ex);
         } finally {
@@ -187,37 +186,75 @@ public final class ChannelUploadsRequest {
         return null;
     }
 
-    @Nullable
-    private static JSONObject browse(byte[] requestBody) {
-        try {
-            HttpURLConnection connection = ChannelSearchRoutes.getConnection(ChannelSearchRoutes.CHANNEL_SEARCH);
-            connection.setFixedLengthStreamingMode(requestBody.length);
-            connection.getOutputStream().write(requestBody);
+    private static boolean matches(ChannelSearchResult upload, List<String> queryWords,
+                                   Map<String, String> englishTitles) {
+        if (matches(upload.title, queryWords)) {
+            return true;
+        }
+        String englishTitle = englishTitles.get(upload.videoId);
+        return englishTitle != null && matches(englishTitle, queryWords);
+    }
 
-            final int responseCode = connection.getResponseCode();
-            if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
-                String error = Requester.parseErrorStringAndDisconnect(connection);
-                Logger.printDebug(() -> "Channel uploads failed with code: " + responseCode + " error: " + error);
-                return null;
+    /**
+     * @param roundedViewCounts Filled with the view count of each upload, if not null.
+     *                          Only English view counts can be parsed.
+     * @param onPage            Called with the uploads of each page, newest first.
+     * @return Whether the uploads could be listed. A page after the first one that could not
+     *         be fetched leaves the older uploads out.
+     */
+    private static boolean listUploads(String channelId, Locale locale,
+                                       @Nullable Map<String, Long> roundedViewCounts,
+                                       BooleanSupplier isCancelled, Consumer<List<ChannelSearchResult>> onPage) {
+        JSONObject json = ChannelSearchRoutes.fetch(ChannelSearchRoutes.CHANNEL_SEARCH,
+                ChannelSearchRoutes.createUploadsBody(channelId, locale));
+        JSONArray items = json == null ? null : playlistItems(json);
+        if (items == null) {
+            return false;
+        }
+
+        for (int pageNumber = 1; ; pageNumber++) {
+            if (isCancelled.getAsBoolean()) {
+                return false;
             }
 
-            return Requester.parseJSONObject(connection);
-        } catch (SocketTimeoutException ex) {
-            Logger.printInfo(() -> "Connection timeout", ex);
-        } catch (IOException ex) {
-            Logger.printInfo(() -> "Network error", ex);
-        } catch (Exception ex) {
-            Logger.printException(() -> "Channel uploads page failed", ex);
+            String token = null;
+            List<ChannelSearchResult> page = new ArrayList<>(items.length());
+            for (int i = 0, length = items.length(); i < length; i++) {
+                JSONObject item = items.optJSONObject(i);
+                if (item == null) continue;
+
+                JSONObject continuation = item.optJSONObject("continuationItemViewModel");
+                if (continuation != null) {
+                    token = continuationToken(continuation);
+                    continue;
+                }
+
+                ChannelSearchResult upload = parseLockup(item.optJSONObject("lockupViewModel"), roundedViewCounts);
+                if (upload != null) {
+                    page.add(upload);
+                }
+            }
+            onPage.accept(page);
+
+            if (token == null || pageNumber == MAX_PAGES) {
+                return true;
+            }
+
+            json = ChannelSearchRoutes.fetch(ChannelSearchRoutes.CHANNEL_SEARCH,
+                    ChannelSearchRoutes.createUploadsContinuationBody(token, locale));
+            items = json == null ? null : continuationItems(json);
+            if (items == null) {
+                return true;
+            }
         }
-        return null;
     }
 
     @Nullable
     private static JSONArray playlistItems(JSONObject json) {
         JSONObject contents = json.optJSONObject("contents");
-        JSONObject singleColumn = contents == null ? null
-                : contents.optJSONObject("singleColumnBrowseResultsRenderer");
-        JSONArray tabs = singleColumn == null ? null : singleColumn.optJSONArray("tabs");
+        JSONObject twoColumn = contents == null ? null
+                : contents.optJSONObject("twoColumnBrowseResultsRenderer");
+        JSONArray tabs = twoColumn == null ? null : twoColumn.optJSONArray("tabs");
         JSONObject tab = tabs == null ? null : tabs.optJSONObject(0);
         JSONObject tabRenderer = tab == null ? null : tab.optJSONObject("tabRenderer");
         JSONObject content = tabRenderer == null ? null : tabRenderer.optJSONObject("content");
@@ -266,7 +303,8 @@ public final class ChannelUploadsRequest {
     }
 
     @Nullable
-    private static ChannelSearchResult parseLockup(@Nullable JSONObject lockup) {
+    private static ChannelSearchResult parseLockup(@Nullable JSONObject lockup,
+                                                   @Nullable Map<String, Long> roundedViewCounts) {
         if (lockup == null) {
             return null;
         }
@@ -282,55 +320,12 @@ public final class ChannelUploadsRequest {
         JSONObject contentImage = lockup.optJSONObject("contentImage");
         JSONObject thumbnail = contentImage == null ? null : contentImage.optJSONObject("thumbnailViewModel");
         List<String> details = parseDetails(lockupMetadata);
+        if (roundedViewCounts != null && !details.isEmpty() && details.get(0).contains("view")) {
+            roundedViewCounts.put(videoId, ChannelSearchRequest.parseViewCount("", details.get(0)));
+        }
 
         return ChannelSearchRequest.createResult(videoId, title, parseThumbnail(thumbnail),
-                parseLength(thumbnail), details, parseViewCount(lockup, title, details));
-    }
-
-    /**
-     * The view count shown under the title is rounded, such as "6.9M views", but the label
-     * read aloud has the exact one. Both are localized and the label has other numbers too,
-     * so the exact count is the first number after the title that starts with the same digits
-     * as the rounded one.
-     *
-     * @return The exact view count, or -1 if it is not known.
-     */
-    private static long parseViewCount(JSONObject lockup, String title, List<String> details) {
-        if (details.isEmpty()) {
-            return -1;
-        }
-
-        Matcher roundedMatcher = PATTERN_NUMBER.matcher(details.get(0));
-        if (!roundedMatcher.find()) {
-            return -1;
-        }
-        String roundedDigits = digits(roundedMatcher.group());
-
-        JSONObject rendererContext = lockup.optJSONObject("rendererContext");
-        JSONObject accessibility = rendererContext == null ? null
-                : rendererContext.optJSONObject("accessibilityContext");
-        String label = accessibility == null ? "" : accessibility.optString("label");
-        final int titleIndex = label.indexOf(title);
-        if (titleIndex >= 0) {
-            label = label.substring(titleIndex + title.length());
-        }
-
-        Matcher matcher = PATTERN_NUMBER.matcher(label);
-        while (matcher.find()) {
-            String exactDigits = digits(matcher.group());
-            if (exactDigits.startsWith(roundedDigits)) {
-                try {
-                    return Long.parseLong(exactDigits);
-                } catch (NumberFormatException ex) {
-                    return -1;
-                }
-            }
-        }
-        return -1;
-    }
-
-    private static String digits(String number) {
-        return number.replaceAll("\\D", "");
+                parseLength(thumbnail), details);
     }
 
     private static String parseThumbnail(@Nullable JSONObject thumbnail) {
@@ -425,10 +420,30 @@ public final class ChannelUploadsRequest {
 
         String normalizedText = normalize(text);
         for (String word : queryWords) {
-            if (!normalizedText.contains(word)) {
+            if (!containsWordStart(normalizedText, word)) {
                 return false;
             }
         }
         return true;
+    }
+
+    /**
+     * A word of the search matches the start of a word, so that it matches plurals and longer
+     * forms of it, but not words that only contain it, such as "time" in "ultime".
+     * Languages written without spaces between words match anywhere.
+     */
+    private static boolean containsWordStart(String text, String word) {
+        switch (Character.UnicodeScript.of(word.codePointAt(0))) {
+            case HAN, HIRAGANA, KATAKANA, THAI, LAO, KHMER, MYANMAR -> {
+                return text.contains(word);
+            }
+        }
+
+        for (int index = text.indexOf(word); index >= 0; index = text.indexOf(word, index + 1)) {
+            if (index == 0 || !Character.isLetterOrDigit(text.codePointBefore(index))) {
+                return true;
+            }
+        }
+        return false;
     }
 }

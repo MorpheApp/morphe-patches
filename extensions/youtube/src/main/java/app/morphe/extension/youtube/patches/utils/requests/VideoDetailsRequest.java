@@ -12,9 +12,6 @@ import androidx.annotation.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.SocketTimeoutException;
 import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.Collections;
@@ -30,10 +27,9 @@ import java.util.function.BooleanSupplier;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.requests.Requester;
 
 /**
- * The exact publish date, view count, description and tags of videos, one request per video.
+ * The exact publish date, view count, length, description and tags of videos, one request per video.
  * Only used for search results that the uploads of the channel do not tell about.
  */
 public final class VideoDetailsRequest {
@@ -42,12 +38,14 @@ public final class VideoDetailsRequest {
         /** Seconds since the epoch. */
         public final long publishTimeSeconds;
         public final long viewCount;
+        public final long lengthSeconds;
         /** Description and tags. */
         public final String text;
 
-        private VideoDetails(long publishTimeSeconds, long viewCount, String text) {
+        private VideoDetails(long publishTimeSeconds, long viewCount, long lengthSeconds, String text) {
             this.publishTimeSeconds = publishTimeSeconds;
             this.viewCount = viewCount;
+            this.lengthSeconds = lengthSeconds;
             this.text = text;
         }
     }
@@ -148,19 +146,12 @@ public final class VideoDetailsRequest {
         Utils.verifyOffMainThread();
 
         try {
-            byte[] requestBody = ChannelSearchRoutes.createVideoBody(videoId, Locale.US);
-            HttpURLConnection connection = ChannelSearchRoutes.getConnection(ChannelSearchRoutes.GET_VIDEO_DETAILS);
-            connection.setFixedLengthStreamingMode(requestBody.length);
-            connection.getOutputStream().write(requestBody);
-
-            final int responseCode = connection.getResponseCode();
-            if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
-                Requester.parseErrorStringAndDisconnect(connection);
-                Logger.printDebug(() -> "Video details failed with code: " + responseCode + " videoId: " + videoId);
+            JSONObject json = ChannelSearchRoutes.fetch(ChannelSearchRoutes.GET_VIDEO_DETAILS,
+                    ChannelSearchRoutes.createVideoBody(videoId, Locale.US));
+            if (json == null) {
                 return null;
             }
 
-            JSONObject json = Requester.parseJSONObject(connection);
             JSONObject microformat = json.optJSONObject("microformat");
             JSONObject renderer = microformat == null ? null
                     : microformat.optJSONObject("playerMicroformatRenderer");
@@ -190,12 +181,9 @@ public final class VideoDetailsRequest {
             return new VideoDetails(
                     OffsetDateTime.parse(publishDate).toEpochSecond(),
                     videoDetails.optLong("viewCount"),
+                    videoDetails.optLong("lengthSeconds"),
                     text.toString()
             );
-        } catch (SocketTimeoutException ex) {
-            Logger.printInfo(() -> "Connection timeout", ex);
-        } catch (IOException ex) {
-            Logger.printInfo(() -> "Network error", ex);
         } catch (Exception ex) {
             Logger.printException(() -> "Video details failed: " + videoId, ex);
         }

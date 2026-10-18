@@ -51,7 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">הצג QR</string>
   <string name="morphe_music_jam_done">בוצע</string>
   <string name="morphe_music_jam_invite_title">הזמן ל-Jam שלך</string>
-  <string name="morphe_music_jam_invite_message">סרוק כדי להצטרף ולערוך את התור הזה. סיום ה-Jam מבטל את ההזמנה.</string>
+  <string name="morphe_music_jam_invite_message">סרוק כדי להצטרף וערוך את התור הזה. סיום הג\'אם מבטל את ההזמנה</string>
   <string name="morphe_music_jam_copy_link">העתק קישור</string>
   <string name="morphe_music_jam_invitation_clip">הזמנת Jam</string>
   <string name="morphe_music_jam_reconnecting_toast">החיבור ל-Jam מתחדש; נסה שוב בקרוב.</string>
@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">מעדכן את Jam…</string>
   <string name="morphe_music_jam_finding_host">מחפש את המארח שלך ב-Wi-Fi…</string>
   <string name="morphe_music_jam_waiting_people">ממתין למשתתפים</string>
-  <string name="morphe_music_jam_one_connected">%d משתתף מחובר</string>
-  <string name="morphe_music_jam_many_connected">%d משתתפים מחוברים</string>
-  <string name="morphe_music_jam_code_expires">הזן את הקוד הזה במכשיר סמוך. Wi-Fi Aware עובד בין רשתות LAN שונות אם הדבר נתמך. הקוד יפוג בעוד %d דקות.</string>
+  <string name="morphe_music_jam_one_connected">%s אדם מחובר</string>
+  <string name="morphe_music_jam_many_connected">%s אנשים מחוברים</string>
+  <string name="morphe_music_jam_code_expires">הזן קוד זה במכשיר סמוך. Wi-Fi Aware פועל בין LAN נפרדים כאשר נתמך. תפוגה בעוד %s דקות</string>
   <string name="morphe_music_jam_seek_to">לדלג אל %s?</string>
   <string name="morphe_music_jam_edits_open">העריכה פתוחה</string>
   <string name="morphe_music_jam_edits_locked">העריכה נעולה</string>
@@ -76,12 +76,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">לא נתמך במהלך Jam</string>
   <string name="morphe_music_jam_cancelled">ההצטרפות בוטלה</string>
   <string name="morphe_music_jam_reconnecting_host">מתחבר מחדש למארח שלך…</string>
-  <string name="morphe_music_jam_share_prompt">שתף תור. תן לכולם להוסיף שירים.</string>
+  <string name="morphe_music_jam_share_prompt">שתף תור. אפשר לכולם להוסיף שירים</string>
   <string name="morphe_music_jam_invite_people">הזמן אנשים</string>
   <string name="morphe_music_jam_guest_edits">אורחים יכולים לערוך את התור</string>
   <string name="morphe_music_jam_end_jam">סיים את ה-Jam</string>
-  <string name="morphe_music_jam_participant_help">המארח משמיע את המוזיקה. הוסף, העבר או הסר שירים ישירות בתור של YouTube Music.</string>
-  <string name="morphe_music_jam_joining_help">שמור את שני המכשירים בקרבת מקום. תוכל לבטל בזמן שאנחנו מחפשים את המארח.</string>
+  <string name="morphe_music_jam_participant_help">המארח מנגן את המוזיקה. הוסף, הזז או הסר שירים ישירות בתור של YouTube Music</string>
+  <string name="morphe_music_jam_joining_help">שמור על שני המכשירים בסמיכות. ניתן לבטל בזמן שאנחנו מחפשים את המארח</string>
   <string name="morphe_music_jam_cancel_joining">בטל הצטרפות</string>
   <string name="morphe_music_jam_leave_jam">צא מ-Jam</string>
   <string name="morphe_music_jam_start_jam">התחל Jam</string>
@@ -125,9 +125,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">משתמש במנגנון ההורדה החיצוני שבחרת במקום תפריט ההורדה הרגיל</string>
   <string name="morphe_music_in_app_downloads_title">הורדה באפליקציה</string>
   <string name="morphe_music_in_app_downloads_summary">מוריד אודיו בתוך YouTube Music במקום לפתוח את אפליקציית ההורדות החיצונית</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"הרצועות נשמרות באחסון הפרטי של האפליקציה ונמחקות אם YouTube Music יוסר.
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"הרצועות נשמרות באחסון הפרטי של האפליקציה וימחקו אם YouTube Music תוסר.
 
-בזמן שזה פעיל, לשונית ההורדות מציגה את הרצועות הללו במקום הספרייה הלא מקוונת של Music Premium. כיבוי זה מחזיר את הלשונית, והורדות Premium לעולם לא נפגעות."</string>
+במצב זה, הלשונית הורדות מציגה רצועות אלו במקום הספרייה המקוונת של Premium. כיבוי תכונה זו מחזירה את הלשונית, והורדות Premium לעולם לא יושפעו"</string>
   <string name="morphe_music_downloads_screen_title">הורדות</string>
   <string name="morphe_music_downloads_empty">"אין הורדות
 השירים שהורדו יופיעו כאן"</string>
@@ -445,7 +445,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">ניקוי רגולרי מותאם אישית</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">הזן ביטוי רגולרי מותאם אישית כדי להסיר טקסט נוסף משמות שירים, אמנים או אלבומים. דוגמה: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">ניתוח שם האמן והשיר מהכותרת</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">חילוץ שם האמן והשיר מהכותרת של הסרטון באמצעות מפריד \" - \". שימושי לתוכן שהועלה מחדש שבו שם הערוץ עשוי לשמש כאמן.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">חלץ את שם האמן ואת שם הרצועה מכותרת הוידאו באמצעות הפרדה \" - \". שימושי לתוכן שהועלה מחדש שבו שם הערוץ עשוי לשמש כשם האמן</string>
   <string name="morphe_music_scrobbling_guess_album_title">השלם אלבום חסר</string>
   <string name="morphe_music_scrobbling_guess_album_summary">כאשר המוזיקה אינה כוללת אלבום, חפש אותו ב-Last.fm כדי שה-scrobble שלך יהיה שלם</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -460,7 +460,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_section_service_title">שירות מילות שירים</string>
   <string name="morphe_music_lyrics_section_overlay_title">שכבת-על</string>
   <string name="morphe_music_lyrics_section_sync_title">סנכרון</string>
-  <string name="morphe_music_lyrics_source_all_disabled">כל הספקים מושבתים — מילות שיר מובנות ומילות שיר משובצות</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">נקודת קצה של בינה מלאכותית</string>
+  <string name="morphe_music_lyrics_source_all_disabled">כל הספקים מושבתים – שירים מובנים ושירים מוטמעים</string>
   <string name="morphe_music_lyrics_source_reset_title">לאפס את סדר הספקים?</string>
   <string name="morphe_music_lyrics_source_reset_message">שחזר את הספקים לסדר העדיפות המוגדר כברירת מחדל</string>
   <string name="morphe_music_token_dialog_get_token">קבל טוקן</string>
@@ -473,7 +474,7 @@ Second \"item\" text"</string>
 3. העתק את הערך של \"media-user-token\""</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token נשמר</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token נוקה</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token לא תקין — נא לבדוק ולנסות שוב</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: אסימון משתמש-מידע לא תקין - אנא בדוק ונסה שוב</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"הדבק את עוגיית sp_dc מ-Spotify.
 
@@ -483,7 +484,7 @@ Second \"item\" text"</string>
 3. העתק את הערך של \"sp_dc\""</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc נשמר</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc נוקה</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc לא תקין — נא לבדוק ולנסות שוב</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc לא תקין - אנא בדוק ונסה שוב</string>
   <string name="morphe_music_apple_token_optional_hint">טוקן Apple Music הוא אופציונלי. בלעדיו, Lyrically ישמש כגיבוי</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] העתק את הערך של \"arl\"</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"הדבק את עוגיית arl מ-Deezer.
@@ -494,14 +495,14 @@ Second \"item\" text"</string>
 3. העתק את הערך של \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl נשמר</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl לא תקין, נסה שוב</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl לא תקין — נא לבדוק ולנסות שוב</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl לא תקין - אנא בדוק ונסה שוב</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] העתק את הערך של טוקן המשתמש</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">הוסף טוקן רק כדי להשתמש בחשבון שלך. הוא חייב להגיע מאפליקציית Musixmatch לאנדרואיד: טוקנים שהועתקו מ-musixmatch.com שייכים ללקוח השולחני שהוצא משימוש וה-API דוחה אותם.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch עובד ללא טוקן, כך ששדה זה יכול להישאר ריק.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">טוקן המשתמש לא תקין, נסה שוב</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: אסימון המשתמש נשמר</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: אסימון המשתמש נוקה</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: אסימון משתמש לא תקין — נא לבדוק ולנסות שוב</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: אסימון משתמש לא תקין - אנא בדוק ונסה שוב</string>
   <string name="morphe_music_youtube_cookies_title">עוגיות YouTube</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"הדבק את עוגיות YouTube שלך כדי לשלוף מיוטיוב כיתובים וטקסט מתוזמן.
 
@@ -513,7 +514,7 @@ Second \"item\" text"</string>
 עוגיות נדרשות: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: העוגיות נשמרו</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: העוגיות נוקו</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: עוגיות לא תקינות — אנא בדוק ונסה שוב</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: עוגיות לא תקינות - אנא בדוק ונסה שוב</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">הקש על שורה כדי לדלג</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">הקשה על שורה מקפיצה לנקודה זו בשיר</string>
   <string name="morphe_music_lyrics_show_section_title">הצג תגיות קטעים</string>
@@ -524,6 +525,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">הקש כדי להפעיל או לכבות תרגום; לחיצה ארוכה לתרגום בלבד. משתמש בתרגומי הספק, ב-Google Translate או ב-API תואם OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">הצג את כפתור הרומניזציה</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">הקש כדי להפעיל או לכבות רומניזציה; לחיצה ארוכה לרומניזציה בלבד. משתמש ברומניזציה של הספק, ב-Google Translate או ב-API תואם OpenAI.</string>
+  <string name="morphe_music_lyrics_local_romanization_title">רומניזציה מקומית</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">לרנום על ההתקן כאשר הספק, נקודת קצה התואמת ל-OpenAI וגוגל תרגום כשלו כולם. רק CJK, כ-80 MB של קריאות להורדה.</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">קריאה %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">קריאות מוכנות (%1$d מילים ב-CJK)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">ההורדה נכשלה — כבה והדלק שוב כדי לנסות שוב</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">הצג את כפתור הרענון</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">הקש כדי לעבור למועמד המילים הבא; לחץ והחזק כדי לחפש מילים לפי שם השיר והאמן</string>
   <string name="morphe_music_lyrics_search_dialog_title">חפש מילים</string>
@@ -534,6 +541,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_saved">נשמר</string>
   <string name="morphe_music_lyrics_word_sync_title">הדגש מילים או הברות מסונכרנות</string>
   <string name="morphe_music_lyrics_word_sync_summary">תעדף מילים מילה-מילה כשהן זמינות. כשמילות השיר כוללות תזמון מילים, הדגש כל מילה או הברה בקצב המוזיקה</string>
+  <string name="morphe_music_lyrics_split_background_title">הצג ווקאלים ברקע בנפרד</string>
+  <string name="morphe_music_lyrics_split_background_summary">מעביר ווקאל רקע הכתוב בסוגריים, כמו \"(או) אני רוצה אותך\", מקו השיר לקו עצמאי בעוצמה נמוכה יותר</string>
   <string name="morphe_music_lyrics_hide_played_title">הסתר מילים שכבר נוגנו</string>
   <string name="morphe_music_lyrics_hide_played_summary">הסתר שורות מילים מעל השורה המושמעת כעת</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">הסתר מילים שטרם נוגנו</string>
@@ -558,25 +567,47 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_sb_no_video">לרצועה זו אין מזהה וידאו לשליחה</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">מקור: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">לחיצה ארוכה על כפתור ההעתקה לשמירת LRC זה; אם תוכל לכוונן את הזמנים ולשתף אותם עם ספקי הקהילה, נודה לך מאוד.</string>
   <string name="morphe_music_lyrics_translated_by_google">תורגם על ידי Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">רומניזציה על ידי Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">תורגם על ידי %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">רומניזציה על ידי %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">רומניזה על ידי %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">תרגום</string>
   <string name="morphe_music_lyrics_translation_language_title">שפת התרגום</string>
+  <string name="morphe_music_lyrics_romanize_language_title">שפת רומניזציה</string>
   <string name="morphe_music_lyrics_translating">מתרגם…</string>
   <string name="morphe_music_lyrics_translate_failed">לא ניתן לתרגם את המילים</string>
   <string name="morphe_music_lyrics_romanize_hide">רומניזציה</string>
+  <string name="morphe_romanize_language_DEFAULT">אוטומטי</string>
   <string name="morphe_music_lyrics_romanizing">מבצע רומניזציה…</string>
   <string name="morphe_music_lyrics_romanize_failed">לא ניתן היה לבצע רומניזציה למילות השיר</string>
   <string name="morphe_music_lyrics_translate_only">תרגום בלבד</string>
   <string name="morphe_music_lyrics_romanize_only">רומניזציה בלבד</string>
+  <string name="morphe_music_lyrics_dual_only">מצב דואלי</string>
   <string name="morphe_music_lyrics_copied">הועתק ללוח הגזירים</string>
   <string name="morphe_music_lyrics_refreshing">מרענן</string>
   <string name="morphe_music_lyrics_refreshed">רוענן</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">מפתח API של QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC מקריא או ממסגר זמן עבור המילים לשיר הנוכחי. שירות נפרד, שאינו קשור לנקודת הקצה התואמת ל-OpenAI לעיל.</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">מפתח QuickLRC נשמר. השתמש בכפתור היישור בתיבת החיפוש במילים, או בהתראת הפאנל כאשר לשיר אין מילים.</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">מפתח API של QuickLRC נשמר</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC לא קיבל את המפתח הזה</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">מפתח API של QuickLRC נוקה</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC מוסר טיימינג למילים שלא יש להן כלל, או מקריא אותן מהשיר, בעלות של קרדיטים. עם הגדרת מפתח, שירים ללא מילים מציעים הערות והתיבות לחיפוש מתווסף כפתור יישור.</string>
+  <string name="morphe_music_lyrics_transcribe_align">בקשת יישור QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">מיישר</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">יישור יישומים</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">בקשת הערה של QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_working">מערך הערות</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">הערות בוטלו</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">רק שירים המופעלים מ-Youtube ניתן להערותם</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">אין מילים ליישור — מערכת הערות במקום</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC לא הצפה לעבד את השיר הזה</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">קרדיטים של QuickLRC אזלו עבור השיר הזה</string>
   <string name="morphe_music_lyrics_about_summary">"מילות השיר מותאמות לפי שם השיר והאמן. מטא-דאטה חריג עלול לא למצוא דבר או למצוא גרסה שגויה. השתמש ברענון כדי לעבור בין גרסאות. ספקים המסומנים ב-* דורשים טוקן. לא כל הספקים המופעלים מתבקשים תמיד לפי הסדר שבחרת, אלא מגיבים לפי המהירות שלהם."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">הפעל רק את הספקים שבהם אתה משתמש, או השאר את ברירת המחדל — בקשות תכופות עלולות להציף אתרי מילים קהילתיים קטנים</string>
+  <string name="morphe_music_lyrics_source_advice_summary">הפעל רק את הספקים שבהם אתה משתמש, או שמור על ברירת המחדל - בקשות מתמשכות יכולות להעמיס על אתרי מילים לקהילות קטנות</string>
   <string name="morphe_music_lyrics_hide_info_title">הסתר שורת קרדיט</string>
   <string name="morphe_music_lyrics_hide_info_summary">הסתר את שורת הקרדיט המוצגת מתחת למילות השיר</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">החלף בין תרגום לרומניזציה</string>
@@ -589,17 +620,17 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">חלק AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">משמש רק כאשר הספק אינו מספק תוויות חלקים כגון פזמון או בית, אותן המודל התואם ל-OpenAI שלך יזהה</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">הגדרות AI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">הגדר את נקודת הקצה של ה-API התואם ל-OpenAI עבור תרגום מילים, תעתוק לטיני וזיהוי חלקים מונעים על ידי AI.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">הגדר את נקודת הקצה של ה-API התואם ל-OpenAI לתרגום, רומניזציה וחלקים באמצעות בינה מלאכותית.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">כתובת URL של נקודת קצה API (לדוגמה https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">מפתח API (השאר ריק לגישה אנונימית)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">שם המודל (לדוגמה openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">תבנית הנחיה</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ממלאי מקום: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">תבנית הנחיה</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">ההנחיה נשמרה</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ההודעה נשמרה, אך נקודת הקצה של הבינה המלאכותית אינה ניתנת לשימוש עדיין. הגדר אותה תחת הגדרות AI ראשון.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">ההנחיה אופסה</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">הגדרות ה-AI נשמרו</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">לא ניתן היה להתחבר לנקודת הקצה של AI. אנא בדוק את ההגדרות שלך.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">לא הצלחתי להתחבר לנקודת הקצה של הבינה המלאכותית. אנא בדוק את ההגדרות שלך</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">הגדרות ה-AI אופסו</string>
   <string name="morphe_music_lyrics_ai_config_summary_configured">מודל %1$s הוגדר</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">כתובת ה-URL הבסיסית לא יכולה להיות ריקה</string>

@@ -39,7 +39,7 @@ Second \"item\" text"</string>
     <string name="morphe_screen_layout_title">Layout</string>
     <string name="morphe_copy_text_title">Copy text</string>
     <string name="morphe_copy_text_summary">Allows selecting and copying text in posts and comments. Disables collapsing comments</string>
-    <string name="morphe_copy_text_user_dialog_message">Collapsing comments will stop working while Copy text is enabled.</string>
+    <string name="morphe_copy_text_user_dialog_message">Collapsing comments will stop working while Copy text is enabled</string>
     <string name="morphe_custom_font_title">Custom font</string>
     <string name="morphe_custom_font_summary">Load a custom TTF or OTF font file from the path below. Enabling this also turns off Force system font</string>
     <string name="morphe_custom_font_file_path_title">Custom font file</string>
@@ -61,6 +61,9 @@ Second \"item\" text"</string>
     <string name="morphe_hide_trending_shelves_summary">Hides the Trending shelves from feed and search suggestions</string>
     <string name="morphe_remove_notification_dialog_title">Remove notification suggestion dialog</string>
     <string name="morphe_remove_notification_dialog_summary">Automatically dismisses the notification suggestion dialog when visiting a subreddit</string>
+    <string name="morphe_show_flairs_in_home_feed_title">Show flairs in home feed</string>
+    <string name="morphe_show_flairs_in_home_feed_summary">Shows post flair badges in the home feed</string>
+    <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Some feed items may not show a flair</string>
     <string name="morphe_show_view_count_title">Show view count on posts</string>
     <string name="morphe_show_view_count_summary">Limitation: Only available if the API response includes the view count</string>
     <string name="morphe_flip_post_action_bar_title">Flip post action bar</string>

@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Tərtibat</string>
   <string name="morphe_copy_text_title">Mətni köçür</string>
   <string name="morphe_copy_text_summary">Postlarda və şərhlərdə mətni seçməyə və köçürməyə imkan verir. Şərhlərin yığılmasını qapadır</string>
-  <string name="morphe_copy_text_user_dialog_message">Şərhlərin yığılması mətni köçürmək aktiv olduqda dayandırılacaq.</string>
+  <string name="morphe_copy_text_user_dialog_message">Şərhlərin yığılması mətni köçürmək aktiv olduqda dayandırılacaq</string>
   <string name="morphe_custom_font_title">Fərdi şrift</string>
   <string name="morphe_custom_font_summary">Aşağıdakı yoldan xüsusi TTF və ya OTF şrift faylını yüklə. Bunu aktivləşdirmək sistem şriftini zorlanı da qapadır</string>
   <string name="morphe_custom_font_file_path_title">Fərdi şrift faylı</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Trend bölmələri axın və axtarış təkliflərindən gizlədir</string>
   <string name="morphe_remove_notification_dialog_title">Bildiriş təklifi dialoqunu sil</string>
   <string name="morphe_remove_notification_dialog_summary">Subreddit-i ziyarət etdikdə bildiriş təklifi dialoqun birbaşa ləğv edir</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Əsas lentdə fleyrləri göstər</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Əsas lentdə post fleyr nişanlarını göstərir</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Bəzi lent elementləri fleyr göstərməyə bilər</string>
   <string name="morphe_show_view_count_title">Elanlarda baxış sayını göstər</string>
   <string name="morphe_show_view_count_summary">Məhdudiyyət: Yalnız API cavabı baxış sayını yerləşdiribsə əlçatan olur</string>
   <string name="morphe_flip_post_action_bar_title">Post fəaliyyət panelini çevir</string>

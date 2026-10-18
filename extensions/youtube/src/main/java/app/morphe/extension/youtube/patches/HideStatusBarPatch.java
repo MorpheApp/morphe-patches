@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.Dialog;
 import android.graphics.Insets;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.DisplayCutout;
@@ -63,6 +64,84 @@ public final class HideStatusBarPatch {
     };
 
     private static boolean activityLifecycleCallbacksRegistered;
+
+    /**
+     * Value of the edge to edge top bar feature flag used by the whole app, or null if not read yet.
+     */
+    @Nullable
+    private static volatile Boolean edgeToEdgeTopBar;
+
+    /**
+     * Value of the edge to edge top bar feature flag first handed to the app, with or without
+     * the status bar layout fix, or null if not read yet. Kept for the whole session, so what
+     * depends on it never changes while the app runs.
+     */
+    @Nullable
+    private static volatile Boolean edgeToEdgeTopBarUsed;
+
+    /**
+     * @return If the window is drawn behind the system bars, or null if the app did not read
+     *         the edge to edge top bar feature flag yet.
+     */
+    @Nullable
+    static Boolean isEdgeToEdgeTopBar() {
+        return edgeToEdgeTopBarUsed;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The flag draws the window behind the status bar and gives the top bars the status bar inset.
+     * It is read by many classes, and on some devices they do not get the same value. The window
+     * is then laid out below the status bar while the top bars still make room for it, or the
+     * other way around (https://github.com/MorpheApp/morphe-patches/issues/2969).
+     * The first value read is used everywhere, so the app keeps its own value but uses it consistently.
+     * <p>
+     * With the status bar hidden, the edge to edge layout leaves an empty bar of the height of
+     * the status bar above the player, so the flag is turned off and the top bars are laid out
+     * with {@link #setSystemWindowInsetTop(Rect, View)}.
+     */
+    public static boolean useEdgeToEdgeTopBar(boolean original) {
+        if (!Settings.FIX_STATUS_BAR_LAYOUT.get()) {
+            if (edgeToEdgeTopBarUsed == null) {
+                edgeToEdgeTopBarUsed = original;
+            }
+            return original;
+        }
+
+        Boolean value = edgeToEdgeTopBar;
+        if (value == null) {
+            synchronized (HideStatusBarPatch.class) {
+                value = edgeToEdgeTopBar;
+                if (value == null) {
+                    final boolean used = original && !Settings.HIDE_STATUS_BAR.get();
+                    value = used;
+                    edgeToEdgeTopBar = value;
+                    Logger.printDebug(() -> "Edge to edge top bar: " + used + " (original: " + original + ")");
+                }
+            }
+        }
+        if (edgeToEdgeTopBarUsed == null) {
+            edgeToEdgeTopBarUsed = value;
+        }
+        return value;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The status bar color that follows the scrolling top bar only exists with the edge to edge
+     * top bar. Without it the status bar view is never set up, and the first scroll of the
+     * top bar crashes the app (https://github.com/MorpheApp/morphe-patches/issues/3805).
+     */
+    public static boolean useStatusBarScrollColor(boolean original) {
+        if (!Settings.FIX_STATUS_BAR_LAYOUT.get()) {
+            return original;
+        }
+
+        Boolean edgeToEdge = edgeToEdgeTopBar;
+        return original && (edgeToEdge == null || edgeToEdge);
+    }
 
     /**
      * Injection point.
@@ -142,6 +221,45 @@ public final class HideStatusBarPatch {
         if (Settings.HIDE_STATUS_BAR.get()) {
             view.setVisibility(View.INVISIBLE);
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Without the edge to edge top bar, the app lays out the top bars with the system window insets
+     * of a stable layout, which keep the height of the status bar when it is hidden and leave
+     * an empty bar above the top bars.
+     * The top inset is replaced by the inset of a display cutout at the top, so the top bars
+     * are still laid out below a front camera hole, the same as with the status bar inset.
+     */
+    public static void setSystemWindowInsetTop(Rect systemWindowInsets, @Nullable View view) {
+        if (view == null || !Settings.HIDE_STATUS_BAR.get()) {
+            return;
+        }
+
+        try {
+            View decorView = view.getRootView();
+            WindowInsets insets = decorView.getRootWindowInsets();
+            if (insets == null || isStatusBarVisible(decorView)) {
+                return;
+            }
+
+            systemWindowInsets.top = getDisplayCutoutInsetTop(insets);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setSystemWindowInsetTop failure", ex);
+        }
+    }
+
+    private static int getDisplayCutoutInsetTop(WindowInsets insets) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            return insets.getInsets(WindowInsets.Type.displayCutout()).top;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            DisplayCutout cutout = insets.getDisplayCutout();
+            return cutout == null ? 0 : cutout.getSafeInsetTop();
+        }
+        // Display cutouts have no API before Android 9.
+        return 0;
     }
 
     /**

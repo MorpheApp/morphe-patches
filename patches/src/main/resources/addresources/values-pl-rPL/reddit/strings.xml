@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Układ</string>
   <string name="morphe_copy_text_title">Kopiuj tekst</string>
   <string name="morphe_copy_text_summary">Pozwala zaznaczać i kopiować tekst w postach i komentarzach. Wyłącza zwijanie komentarzy</string>
-  <string name="morphe_copy_text_user_dialog_message">Zwijanie komentarzy przestanie działać, dopóki funkcja \"Kopiuj tekst\" jest włączona.</string>
+  <string name="morphe_copy_text_user_dialog_message">Zwijanie komentarzy przestanie działać, dopóki funkcja \"Kopiuj tekst\" jest włączona</string>
   <string name="morphe_custom_font_title">Własna czcionka</string>
   <string name="morphe_custom_font_summary">Wczytuje własny plik czcionki TTF lub OTF ze wskazanej ścieżki. Włączenie tej opcji wyłącza również wymuszanie czcionki systemowej</string>
   <string name="morphe_custom_font_file_path_title">Plik własnej czcionki</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Ukrywa sekcje \"Zyskujące popularność\" ze strony głównej i sugestii wyszukiwania</string>
   <string name="morphe_remove_notification_dialog_title">Usuń okno z sugestią powiadomień</string>
   <string name="morphe_remove_notification_dialog_summary">Automatycznie zamyka okno sugerujące włączenie powiadomień podczas odwiedzania subreddita</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Pokazuj wyróżniki na stronie głównej</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Wyświetla odznaki wyróżników postów na stronie głównej</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Niektóre elementy na stronie głównej mogą nie wyświetlać wyróżnika</string>
   <string name="morphe_show_view_count_title">Pokaż liczbę wyświetleń postów</string>
   <string name="morphe_show_view_count_summary">Ograniczenie: Dostępne tylko wtedy, gdy odpowiedź z API zawiera liczbę wyświetleń</string>
   <string name="morphe_flip_post_action_bar_title">Odwróć pasek akcji posta</string>

@@ -18,6 +18,17 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_screen_00_about_title">Acerca de</string>
+  <string name="morphe_settings_screen_01_ads_title">Anuncios</string>
+  <string name="morphe_settings_screen_03_feed_title">Fuente</string>
+  <string name="morphe_settings_screen_04_general_title">Xeneral</string>
+  <string name="morphe_settings_screen_05_player_title">Reprodutor</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Barra de reprodución</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">Controis por esvaros</string>
+  <string name="morphe_settings_screen_11_misc_title">Miscelánes</string>
+  <string name="morphe_settings_screen_12_video_title">Vídeo</string>
+  <string name="morphe_restore_old_settings_menus_title">Restaurar a antiga pantalla de configuración de YouTube</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_auto_pause_on_screen_lock_off">Off</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
@@ -58,6 +69,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -108,6 +120,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">Off</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
@@ -184,6 +197,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Off</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
@@ -229,4 +243,12 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_auto">Automático</string>
   <string name="morphe_player_icon_style_entry_default">Predefinido</string>
   <string name="morphe_player_icon_style_entry_custom">Personalizado</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_cancel">Cancelar</string>
+  <string name="morphe_series_tracker_ui_save">Gardar</string>
+  <string name="morphe_series_tracker_ui_history">Historial</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Subscripcións</string>
+  <string name="morphe_series_tracker_plan_caught_up">Ao día</string>
+  <string name="morphe_series_tracker_continue">Continuar</string>
+  <string name="morphe_series_tracker_undo">Anular</string>
 </resources>

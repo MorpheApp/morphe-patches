@@ -444,7 +444,7 @@ public final class LyricsFilter {
                     }
                 }
                 // Only the section label is carried over. The shorter constructors this replaces also reset
-                // the end time and the agent/duet/background flags, and keeping that behaviour means
+                // the end time and the agent/duet/background flags, and keeping that behavior means
                 // a text filter cannot change what an export reports for the line.
                 filtered.add(new LyricsLine(line.startTimeMs(), LyricsLine.NO_TIME, text,
                         words, null, false, false, line.songPart()));

@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">पैकेज का नाम दर्ज करें</string>
   <string name="morphe_external_downloader_other_item">अन्य</string>
   <string name="morphe_external_downloader_not_found_title">ऐप इंस्टॉल नहीं है</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s इंस्टॉल नहीं है। कृपया इसे इंस्टॉल करें।</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s इंस्टॉल नहीं है। कृपया इसे इंस्टॉल करें</string>
   <string name="morphe_external_downloader_package_not_found_warning">"इस पैकेज नाम वाला इंस्टॉल किया गया ऐप नहीं मिला: %s
 
 पुष्टि करें कि पैकेज नाम सही है और ऐप इंस्टॉल है"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe प्ले</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe नोटिस</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">आपकी वॉच हिस्ट्री सेव नहीं हो रही है।&lt;br&gt;&lt;br&gt;इसकी सबसे अधिक संभावना किसी DNS ऐड ब्लॉकर या नेटवर्क प्रॉक्सी के कारण है।&lt;br&gt;&lt;br&gt;इसे ठीक करने के लिए, &lt;b&gt;s.youtube.com&lt;/b&gt; को व्हाइटलिस्ट करें या सभी DNS ऐड ब्लॉकर्स और प्रॉक्सी को बंद कर दें।</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">आपकी वॉच हिस्ट्री सेव नहीं हो रही है।&lt;br&gt;&lt;br&gt;इसकी सबसे अधिक संभावना किसी DNS ऐड ब्लॉकर या नेटवर्क प्रॉक्सी के कारण है।&lt;br&gt;&lt;br&gt;इसे ठीक करने के लिए, &lt;b&gt;s.youtube.com&lt;/b&gt; को व्हाइटलिस्ट करें या सभी DNS ब्लॉकर्स और प्रॉक्सी को बंद कर दें।</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">दोबारा न दिखाएँ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम को स्पूफ़ करें</string>
@@ -99,7 +99,7 @@ Second \"item\" text"</string>
 
 क्या %2$s को डिफ़ॉल्ट क्लाइंट बनाया जाए?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">बदलें</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">इस सेटिंग को बंद करना प्लेबैक समस्याओं को उत्पन्न कर सकता है।</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">इस सेटिंग को बंद करने से प्लेबैक में समस्या उत्पन्न हो सकती है</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">सुझाव: वीडियो स्ट्रीम्स को फर्ज़ करें > एंड्रॉइड वीआर साइन इन करें</string>
@@ -134,7 +134,7 @@ Second \"item\" text"</string>
 • यदि आप अपनी गूगल पासवर्ड बदलते हैं या अपने गूगल सेटिंग्स में इस डिवाइस को डेरेजिस्टर करते हैं, तो आपको फिर से साइन इन करना पड़ेगा"</string>
   <string name="morphe_oauth2_connection_failure_timeout">ओएथेंटिकेशन अस्थायी रूप से उपलब्ध नहीं है (एपीआई टाइम आउट)</string>
   <string name="morphe_oauth2_connection_failure_status_400">एंड्रॉइड VR साइन इन की तारीख समाप्त हो गई है, VR में फिर से साइन इन करें</string>
-  <string name="morphe_oauth2_connection_failure_status">ओएथेंटिकेशन अस्थायी रूप से उपलब्ध नहीं है (स्टेटस %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 अस्थायी रूप से अनुपलब्ध है (स्थिति %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">ओएथेंटिकेशन अस्थायी रूप से उपलब्ध नहीं है</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR में साइन इन नहीं हो पा रहा है, वेबसाइट प्रमाणीकरण मंजूर नहीं किया गया था</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR में प्रवेश नहीं किया जा सकता: %s</string>
@@ -193,11 +193,11 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">डीबग लॉग प्रोटोकॉल बफर</string>
   <string name="morphe_debug_protobuffer_summary">डेवलपर्स को ऐप घटकों की पहचान करने के लिए अतिरिक्त लॉगिंग जानकारी जोड़ता है</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"इस सेटिंग को सक्षम करने से अतिरिक्त लेआउट डेटा रिकॉर्ड होगा, जिसमें कुछ यूआई घटकों के स्क्रीन पर पाठ शामिल होंगे।
+  <string name="morphe_debug_protobuffer_user_dialog_message">"इस सेटिंग को सक्षम करने से अतिरिक्त लेआउट डेटा रिकॉर्ड होगा, जिसमें कुछ यूआई घटकों के स्क्रीन पर पाठ शामिल होंगे。
 
-यह कस्टम फ़िल्टर बनाने के लिए घटकों को पहचानने में मदद करेगा।
+यह कस्टम फ़िल्टर बनाने के लिए घटकों को पहचानने में मदद करेगा。
 
-लेकिन, इसका सक्षम करना भी कुछ उपयोगकर्ता डेटा जैसे आपके आईपी पता को रिकॉर्ड करेगा।"</string>
+लेकिन, इसका सक्षम करना भी कुछ उपयोगकर्ता डेटा जैसे आपके आईपी पते को रिकॉर्ड करेगा"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">कस्टम फ़िल्टर</string>
   <string name="morphe_custom_filter_screen_summary">किसी भी घटक को छिपाने के लिए कस्टम फ़िल्टर कॉन्फ़िगर करें</string>
@@ -238,11 +238,11 @@ PotHelper डाउनलोड करने के लिए यहां ट�
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ऐप का स्पूफ संस्करण</string>
   <string name="morphe_spoof_app_version_summary">यह सर्वर को धोखा देता है कि आप पुराने ऐप संस्करण का उपयोग कर रहे हैं ताकि पुरानी यूआई सुविधाओं को बहाल किया जा सके।</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"ऐप का संस्करण एक पुराने संस्करण में स्पूफ किया जाएगा।
+  <string name="morphe_spoof_app_version_user_dialog_message">"ऐप का संस्करण एक पुराने संस्करण की तरह दिखाया जाएगा।
 
-इससे ऐप की दिखावट और सुविधाओं में बदलाव होगा, लेकिन अज्ञात दुष्प्रभाव हो सकते हैं।
+इससे ऐप का रूप और सुविधाएं बदल जाएंगी, लेकिन अज्ञात दुष्प्रभाव भी हो सकते हैं।
 
-यदि बाद में बंद कर दिया जाए, तो यूआई बग को रोकने के लिए ऐप डेटा साफ़ करने की अनुशंसा की जाती है।"</string>
+यदि बाद में इसे बंद किया जाता है, तो UI बग से बचने के लिए ऐप डेटा साफ़ करना सिफारिश किया जाता है"</string>
   <string name="morphe_spoof_app_version_target_title">ऐप संस्करण को स्पूफ करने का लक्ष्य</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">ऐप रिफ्रेश दर</string>
@@ -265,7 +265,7 @@ PotHelper डाउनलोड करने के लिए यहां ट�
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">अस्थायी रूप से डिसलाइक उपलब्ध नहीं हैं (एपीआई समय समाप्त)</string>
-  <string name="morphe_ryd_failure_connection_status_code">डिसलाइक उपलब्ध नहीं हैं (स्थिति %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">डिसलाइक्स अनुपलब्ध हैं (स्थिति %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">डिसलाइक उपलब्ध नहीं हैं (क्लाइंट एपीआई सीमा)</string>
   <string name="morphe_ryd_failure_generic">डिसलाइक उपलब्ध नहीं हैं (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -289,12 +289,12 @@ PotHelper डाउनलोड करने के लिए यहां ट�
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">डिसलाइक अस्थायी रूप से अनुपलब्ध हैं - क्लाइंट एपीआई दर सीमा लागू है</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">एपीआई फ़ेच वोट, कॉल की संख्या</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">कोई नेटवर्क कॉल नहीं किया गया</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d नेटवर्क कॉल किए गए</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s नेटवर्क कॉल्स की गईं</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">एपीआई फ़ेच वोट, टाइमआउट की संख्या</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">कोई नेटवर्क कॉल टाइमआउट नहीं हुआ</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d नेटवर्क कॉल टाइमआउट हो गए</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s नेटवर्क कॉल्स समय समाप्त हो गया</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">एपीआई क्लाइंट दर सीमाएं</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">कोई क्लाइंट दर सीमा नहीं मिली</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">क्लाइंट दर सीमा %d बार मिली</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d मिलीसेकंड</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">%s बार क्लाइंट रेट लिमिट का सामना किया गया</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s मिलिसेकंड</string>
 </resources>

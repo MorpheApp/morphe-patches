@@ -92,6 +92,11 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             ));
         }
 
+        addPreference(new BooleanSettingPreference(
+                context,
+                BaseSettings.DEBUG
+        ));
+
         // Include original privacy policy link that was changed to open Morphe settings.
         if (VersionCheckPatch.is_2026_25_or_greater) {
             URLLinkPreference preference = new URLLinkPreference(context);

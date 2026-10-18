@@ -37,18 +37,6 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Nûvekirinên qeydarê qûldar bike.</string>
   <string name="morphe_disable_layout_updates_summary">Server ji nûkirina sêwirana appê re pêşî digire</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Şêwa pêşdidaîmê bilêve ji pêşdidaîmê yê ku di dema avakirinê de hatî bikar anîn re vegere.
-
-Çend pêşdidaîmên sererver bêgiriya vegere.
-
-Guherînan têne xistine:
-• Komponen di menuya flyout-a lîstikvanê (anayê nêzîkê) şûn naobe.
-• Hejmarên rolî ne animasyon.
-• Tab-a Kelenge nîşandîn e.
-• Beşa muzîk a çavkaniya vîdyoyê şûn naobe.
-• Îtemên menuya flyout-a lîstikvanê nabe veşartin.
-• Butona guheztina hesabê nabe di tab-a Kelenge de.
-"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Filtira menuya flyout-a xurekê çêbike</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtira menuya flyout-a xurekê</string>
@@ -120,7 +108,6 @@ Guherînan têne xistine:
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles veşêrin</string>
   <string name="morphe_hide_youtube_doodles_summary">Anîmasyonên demî û bûyerên ser YouTube logo veşêrin</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">Nîşandina Doodlên YouTube dikare pêşî li serê sernivîsên xwerû bigire ku bên dîsplaykirin.</string>
   <string name="morphe_hide_channel_bar_title">Barê kanalê veşêrin</string>
   <string name="morphe_hide_channel_watermark_title">Avahiya kanalê veşêrin</string>
   <string name="morphe_hide_chapters_timeline_button_title">Veşartina bişkokên \'Beş\' û \'Di vî vîdyoyê de\'</string>
@@ -170,7 +157,6 @@ Guherînan têne xistine:
   <string name="morphe_hide_how_this_was_made_section_title">Beşa \'Çawa ev hatiye çêkirin\' veşêre</string>
   <string name="morphe_hide_hype_points_title">Zorîyên Heyecan ve nebînîne.</string>
   <string name="morphe_hide_info_cards_section_title">Bêjeya \'Dîtinên sereke\' veşêrin</string>
-  <string name="morphe_hide_key_concepts_section_title">Bêjeya Muzîk veşêrin</string>
   <string name="morphe_hide_quizzes_section_title">Bêjeya Transkrîpsiyon veşêrin</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Vê beşa \'Li vê vîdyoyê têkeve\' veşêrin</string>
   <string name="morphe_hide_subscribe_button_title">Bişîniya butona \'Subscribe\' veşêrin</string>
@@ -345,6 +331,7 @@ Sînorkirin:
   <string name="morphe_copy_video_link_with_timestamp_button_title">Copy timestamp by default</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Tevgera bikirinê û bikirin û girtinê ya bişêvekirina \'Girêdana vîdyoyê kopî bikin\' bişêvekirin</string>
   <!-- interaction.copytext.copyTextPatch -->
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'Nêzîk kirin li TV\'ê\' asteng bikin</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Devreyê \'Cihazên te pêvekirin\' pop-up\'ê neçalak bike</string>
@@ -406,7 +393,6 @@ Divê anahtara we ne were parve kirin. Kesê ku bigihe wê dikare bikar bîne kr
   <string name="morphe_vot_openrouter_open_website">Veke OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">Wergera OpenRouter çê bû (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Sînore rojane ya MyMemory gihîştiye</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Berdest dibe li %s.</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Hêj we bikar hînê kotaya wergerê ya belaş a MyMemory-yê ya roja îro (5,000 karakteran). Zêde bike e-maila we ya MyMemory-yê li ser mîhengên da zêde bike sînorê rojane berbi 50,000 karakteran, an guhêrîne dabînkerê wergerê din</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Hêj we bikar hînê kotaya wergerê ya MyMemory-yê (50,000 karakteran). Guhêrîne dabînkerê wergerê din an bicerîbîne dîsa yarîn</string>
   <string name="morphe_vot_mymemory_error">Wergera MyMemory çê bû (hewl %s)</string>
@@ -627,6 +613,7 @@ Info: May not work on live streams"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Qefalê otomatîk</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">Dabe</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Set caption cookies</string>
   <string name="morphe_set_caption_cookies_summary">"Pirsgirêka YouTube ya standard rast dike ku jêrnivîsên wergerandina otomatîk dibe ku ji ber kêmasiya kukiyan ne berdest bin
@@ -665,9 +652,6 @@ Divê 'kukiyên jêrnivîsan' bên peyda kirin."</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Ger guherîna vê mîhengî bandor neke, biceribîne ku veguhere moda Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Çavkaniyên butona naweşandinê</string>
   <string name="morphe_hide_navigation_bar_title">Navîgasûk veşêre</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ev tevahiya kêmbara navîgasyonê vedixwe, heta zimanê 'Hûn'.
-
-Ji bo ku derfetên sazkarî pêşero, rêzika 'Settings' zivirînin bi General → Toolbar → Show Settings."</string>
   <string name="morphe_narrow_navigation_buttons_title">Çavkaniyên rêznavî yên tir</string>
   <string name="morphe_narrow_navigation_buttons_summary">Rêbaza desteyê tevahiyê bi hêsanî kêş dibe</string>
   <string name="morphe_navigation_bar_animations_title">Animasyonên barê naweşandinê çalak bike</string>
@@ -933,6 +917,7 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_playback_in_feeds_entry_off">Dabe</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mîni-lîstikê vekirin qedexe kirin</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Mînîlîstê \'Devamkirina dîkirinê\' asteng dike, fektorek premîum a YouTube ku di destpêka sepanê de xuya dibe</string>
@@ -1023,7 +1008,6 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Çalak bikin dimensiyonên alavê</string>
   <string name="morphe_spoof_device_dimensions_summary">Enabling this can unlock higher video qualities</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Çalak kirinê dikare hebe hilweşandinê danesaziyê, bataryayê xerçerê, û efektên nesexne.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Gava jêbirinê</string>
   <string name="morphe_disable_haptic_feedback_summary">Hêrs kirina vegerêdana cîhazê hilbijêre</string>
@@ -1033,7 +1017,6 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Haptîka xistina li ser dane bin</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Jêbire gava jêbirina zoomê</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Dibe ku nûvekirina detalên login-a hesabê xwe kir, MicroG-yê saz bike û ji nûve saz bike.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Berbestkirina veguhastinên girêdanê</string>
   <string name="morphe_bypass_link_redirects_summary">Girêdana orjînal rasterast vekirin, veguhastina şopandinê dîtin (youtube.com/redirect)</string>
@@ -1106,9 +1089,6 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Destûr bide \'Android VR\' / visionOS AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Dema ku xerîdarê \'Android VR\' / visionOS tê bikaranîn, destûr dide deşîfrekirina AV1 bi nermalavê.</string>
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Çalak kirina vê sazkare dikare ji dekodkirina AV1 ya nermalê bikar bîne.
-
-Lêxistina video bi AV1 dikare kîzbirin an kêmuçêkî framean bike."</string>
   <string name="morphe_spoof_video_streams_about_title">Efectê spoofingê</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menûya \'Audio Track\' tune ye.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Kodeka vîdyoyê ya AV1 tune</string>
@@ -1127,4 +1107,5 @@ Lêxistina video bi AV1 dikare kîzbirin an kêmuçêkî framean bike."</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_entry_auto">Otomatîk</string>
   <string name="morphe_player_icon_style_entry_default">Bixweber</string>
+  <!-- video.series.seriesTrackerPatch -->
 </resources>

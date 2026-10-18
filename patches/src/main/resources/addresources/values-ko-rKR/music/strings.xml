@@ -64,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">잼을 업데이트하는 중…</string>
   <string name="morphe_music_jam_finding_host">Wi-Fi에서 호스트를 찾는 중…</string>
   <string name="morphe_music_jam_waiting_people">참여자를 기다리는 중</string>
-  <string name="morphe_music_jam_one_connected">%d 명 연결됨</string>
-  <string name="morphe_music_jam_many_connected">%d 명 연결됨</string>
-  <string name="morphe_music_jam_code_expires">이 코드를 근처 기기에 입력하세요. Wi-Fi Aware는 지원되는 경우 서로 다른 LAN에서도 작동합니다. %d 분 후에 만료됩니다</string>
+  <string name="morphe_music_jam_one_connected">%s 명 연결됨</string>
+  <string name="morphe_music_jam_many_connected">%s 명 연결됨</string>
+  <string name="morphe_music_jam_code_expires">이 코드를 근처 기기에 입력하세요. Wi-Fi Aware는 지원되는 경우 서로 다른 LAN에서도 작동합니다. %s 분 후에 만료됩니다</string>
   <string name="morphe_music_jam_seek_to">%s으로 이동할까요?</string>
   <string name="morphe_music_jam_edits_open">편집 열기</string>
   <string name="morphe_music_jam_edits_locked">편집 잠김</string>
@@ -81,7 +81,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_guest_edits">게스트는 재생목록을 편집할 수 있습니다</string>
   <string name="morphe_music_jam_end_jam">잼 종료</string>
   <string name="morphe_music_jam_participant_help">호스트가 음악을 재생합니다. YouTube Music 재생목록에서 노래를 직접 추가, 이동 또는 삭제할 수 있습니다</string>
-  <string name="morphe_music_jam_joining_help">두 기기를 가까이에 두세요. 호스트를 찾는 동안 취소할 수 있습니다.</string>
+  <string name="morphe_music_jam_joining_help">두 기기를 가까이에 두세요. 호스트를 찾는 동안 취소할 수 있습니다</string>
   <string name="morphe_music_jam_cancel_joining">참여 취소</string>
   <string name="morphe_music_jam_leave_jam">잼 나가기</string>
   <string name="morphe_music_jam_start_jam">잼 시작</string>
@@ -460,6 +460,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_lyrics_section_service_title">가사 서비스</string>
   <string name="morphe_music_lyrics_section_overlay_title">오버레이</string>
   <string name="morphe_music_lyrics_section_sync_title">동기화</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI 엔드포인트</string>
   <string name="morphe_music_lyrics_source_all_disabled">모든 제공자가 비활성화됨 - 내장 가사 및 삽입 가사</string>
   <string name="morphe_music_lyrics_source_reset_title">제공자 순서를 초기화하시겠습니까?</string>
   <string name="morphe_music_lyrics_source_reset_message">제공자를 기본 우선순위 순서로 복원합니다</string>
@@ -473,7 +474,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
 3. 'media-user-token' 값을 복사합니다"</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token이 저장됨</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token이 삭제됨</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: 잘못된 media-user-token — 확인 후 다시 시도하세요</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: 잘못된 media-user-token - 확인 후 다시 시도하세요</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Spotify에서 sp_dc 쿠키를 붙여넣으세요
 
@@ -483,7 +484,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
 3. 'sp_dc' 값을 복사합니다"</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc가 저장됨</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc가 삭제됨</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: 잘못된 sp_dc — 확인 후 다시 시도하세요</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: 잘못된 sp_dc - 확인 후 다시 시도하세요</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music 토큰은 선택 사항입니다. 토큰이 없으면 Lyrically가 대체 서비스로 사용됩니다</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer에서 arl 쿠키를 붙여넣으세요
@@ -494,14 +495,14 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
 3. 'arl' 값을 복사합니다"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl 저장됨</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl 삭제됨</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: 잘못된 arl — 확인 후 다시 시도하세요</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: 잘못된 arl - 확인 후 다시 시도하세요</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch 토큰</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">본인 계정을 사용하려는 경우에만 토큰을 입력하세요. 토큰은 반드시 Musixmatch Android 앱에서 가져온 것이어야 합니다: musixmatch.com에서 복사한 토큰은 더 이상 사용되지 않는 데스크톱 클라이언트용이므로 API에서 이를 거부합니다</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch는 토큰 없이도 작동하므로 이 필드는 비워 둘 수 있습니다</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">사용자 토큰</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: 사용자 토큰이 저장됨</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: 사용자 토큰이 삭제됨</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: 잘못된 사용자 토큰 — 확인 후 다시 시도하세요</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: 잘못된 사용자 토큰 - 확인 후 다시 시도하세요</string>
   <string name="morphe_music_youtube_cookies_title">YouTube 쿠키</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"YouTube에서 자막과 타임텍스트를 조회하려면 YouTube 쿠키를 붙여넣으세요
 
@@ -515,10 +516,10 @@ _ Secure-3PAPISID, _ Secure-1PAPISID,
 LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: 쿠키가 저장됨</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: 쿠키가 삭제됨</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: 잘못된 쿠키 — 확인 후 다시 시도하세요</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: 잘못된 쿠키 - 확인 후 다시 시도하세요</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">가사를 탭하여 구간 이동하기</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">가사의 한 줄을 탭하면 노래의 해당 부분으로 바로 이동합니다</string>
-  <string name="morphe_music_lyrics_show_section_title">섹션 태그 표시</string>
+  <string name="morphe_music_lyrics_show_section_title">섹션 태그 표시하기</string>
   <string name="morphe_music_lyrics_show_section_summary">가사의 각 새 섹션에 Verse 또는 Chorus와 같은 작은 태그를 표시합니다</string>
   <string name="morphe_music_lyrics_show_copy_button_title">복사 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">버튼을 탭하여 원본 가사를 일반 텍스트로 복사할 수 있고, 길게 탭하면 원본 가사 소스 파일을 다운로드에 저장할 수 있습니다</string>
@@ -526,6 +527,12 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">버튼을 탭하여 번역을 켜거나 끌 수 있고, 길게 탭하면 번역만 표시됩니다. 제공자 번역, Google 번역 또는 OpenAI 호환 API를 사용합니다</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">로마자 표기 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">버튼을 탭하여 로마자 표기를 켜거나 끌 수 있고, 길게 탭하면 로마자 표기만 표시됩니다. 제공자 로마자 표기, Google 번역 또는 OpenAI 호환 API를 사용합니다</string>
+  <string name="morphe_music_lyrics_local_romanization_title">로컬 로마자 표기</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">서비스 제공자, OpenAI 호환 엔드포인트, Google 번역이 모두 실패했을 경우 기기에서 직접 로마자 표기를 변환합니다. CJK(중국어·일본어·한국어)만 지원하며, 약 80MB의 발음 데이터를 다운로드해야 합니다</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s 읽는 중: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">읽기 준비 완료 (%1$d 개의 CJK 단어)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">다운로드 실패 - 다시 시도하려면 껐다가 다시 켜세요</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">새로고침 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">버튼을 탭하여 다음 우선순위의 가사 제공자로 전환할 수 있고, 길게 탭하면 노래 제목과 아티스트로 가사를 검색할 수 있습니다</string>
   <string name="morphe_music_lyrics_search_dialog_title">가사 검색</string>
@@ -536,6 +543,8 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_saved">저장됨</string>
   <string name="morphe_music_lyrics_word_sync_title">동기화된 단어 또는 음절 강조 표시하기</string>
   <string name="morphe_music_lyrics_word_sync_summary">가능한 경우 단어 단위로 표시되는 가사를 우선합니다. 가사에 단어별 타이밍 정보가 포함되어 있으면, 음악에 맞춰 각 단어 음절을 순서대로 강조 표시합니다</string>
+  <string name="morphe_music_lyrics_split_background_title">백그라운드 보컬 별도 표시하기</string>
+  <string name="morphe_music_lyrics_split_background_summary">\'(Oh) I want you\'와 같이 괄호로 작성된 백그라운드 보컬을 가사 줄에서 분리하여, 별도의 흐릿한 줄로 이동합니다</string>
   <string name="morphe_music_lyrics_hide_played_title">재생된 가사 숨기기</string>
   <string name="morphe_music_lyrics_hide_played_summary">현재 재생 중인 줄 위의 가사 줄을 숨깁니다</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">재생되지 않은 가사 숨기기</string>
@@ -560,25 +569,47 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_sb_no_video">이 트랙에는 제출할 동영상 ID가 없습니다</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">출처: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">LRC를 저장하려면 복사 버튼을 길게 누르세요. 타이밍을 미세 조정하여 커뮤니티 제공자와 공유하면 감사하겠습니다.</string>
   <string name="morphe_music_lyrics_translated_by_google">Google에 의해 번역됨</string>
   <string name="morphe_music_lyrics_romanized_by_google">Google에 의해 로마자 표기됨</string>
   <string name="morphe_music_lyrics_translated_by_ai">%s에 의해 번역됨</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s에 의해 로마자 표기됨</string>
+  <string name="morphe_music_lyrics_romanized_by_local">%s에 의해 로마자 표기됨</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">번역됨</string>
   <string name="morphe_music_lyrics_translation_language_title">번역 언어</string>
+  <string name="morphe_music_lyrics_romanize_language_title">로마자 변환 언어</string>
   <string name="morphe_music_lyrics_translating">번역하는 중…</string>
   <string name="morphe_music_lyrics_translate_failed">가사를 번역할 수 없습니다</string>
   <string name="morphe_music_lyrics_romanize_hide">로마자 표기됨</string>
+  <string name="morphe_romanize_language_DEFAULT">자동</string>
   <string name="morphe_music_lyrics_romanizing">로마자 표기 중…</string>
   <string name="morphe_music_lyrics_romanize_failed">가사를 로마자로 표기할 수 없습니다</string>
   <string name="morphe_music_lyrics_translate_only">번역만</string>
   <string name="morphe_music_lyrics_romanize_only">로마자 표기만</string>
+  <string name="morphe_music_lyrics_dual_only">듀얼 모드</string>
   <string name="morphe_music_lyrics_copied">클립보드에 복사하였습니다</string>
   <string name="morphe_music_lyrics_refreshing">새로고침 중</string>
   <string name="morphe_music_lyrics_refreshed">새로고침됨</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API 키</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC는 현재 재생 중인 트랙의 가사를 기록하거나 가사와 오디오의 타이밍을 맞춰 줍니다. 위의 OpenAI 호환 엔드포인트와는 관련이 없는 별도의 서비스입니다</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC 키가 저장되었습니다. 가사 검색 대화상자에서 정렬 버튼을 누르거나, 트랙에 가사가 없을 때 표시되는 패널의 프롬프트를 사용하세요</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API 키를 저장하였습니다</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC에서 해당 키를 수락하지 않았습니다</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API 키가 지워졌습니다</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC는 가사에 타임스탬프가 없는 경우 타이밍을 추가하거나, 트랙의 오디오를 바탕으로 가사를 기록합니다. 이 기능을 사용하면 크레딧이 소모됩니다. 키를 설정하면 가사가 없는 트랙에서 기록 기능을 사용할 수 있으며, 가사 검색 창에 정렬 버튼이 추가됩니다</string>
+  <string name="morphe_music_lyrics_transcribe_align">QuickLRC 정렬 요청</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">정렬하는 중</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">정렬 적용</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">QuickLRC 기록 요청</string>
+  <string name="morphe_music_lyrics_transcribe_working">기록하는 중</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">기록 취소됨</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">YouTube에서 재생된 트랙만 기록할 수 있습니다</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">정렬할 가사 없음 - 대신 기록합니다</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC에서 이 트랙을 처리할 수 없습니다</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">이 트랙에 대한 QuickLRC 크레딧이 모두 소진되었습니다</string>
   <string name="morphe_music_lyrics_about_summary">"가사는 제목과 아티스트를 기준으로 일치하는 항목을 찾습니다. 특이한 메타데이터가 있으면 아무것도 찾지 못하거나 다른 버전의 곡을 찾을 수 있습니다. 새로고침을 사용하면 다른 버전으로 전환할 수 있습니다. * 표시가 있는 제공자는 토큰이 필요합니다. 활성화된 모든 제공지가 설정한 순서대로 항상 요청되는 것은 아니며, 응답 속도에 따라 결과가 제공됩니다"</string>
-  <string name="morphe_music_lyrics_source_advice_summary">사용하는 제공자만 활성화하거나 기본값을 유지하세요. 지속적인 요청은 소규모 커뮤니티 가사 사이트에 과부하를 줄 수 있습니다</string>
+  <string name="morphe_music_lyrics_source_advice_summary">사용하는 제공자만 활성화하거나 기본값을 유지하세요 - 지속적인 요청은 소규모 커뮤니티 가사 사이트에 과부하를 줄 수 있습니다</string>
   <string name="morphe_music_lyrics_hide_info_title">크레딧 라인 숨기기</string>
   <string name="morphe_music_lyrics_hide_info_summary">가사 아래에 표시되는 크레딧 라인을 숨깁니다</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">번역과 로마자 표기 위치 바꾸기</string>
@@ -597,8 +628,8 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">모델 이름 (예시: openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">프롬프트 템플릿</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">자리 표시자: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
-  <string name="morphe_music_lyrics_ai_prompt_hint">프롬프트 템플릿</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">프롬프트 저장됨</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">프롬프트가 저장되었지만 AI 엔드포인트는 아직 사용할 수 없습니다. 먼저 AI 설정에서 구성하세요</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">프롬프트 초기화</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI 설정 저장됨</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">AI 엔드포인트에 연결할 수 없습니다. 설정을 확인하세요</string>

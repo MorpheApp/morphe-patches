@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">布局</string>
   <string name="morphe_copy_text_title">复制文本</string>
   <string name="morphe_copy_text_summary">允许在帖子和评论中选择和复制文本。禁用评论折叠功能</string>
-  <string name="morphe_copy_text_user_dialog_message">“复制文本”启用时，折叠评论将停止工作。</string>
+  <string name="morphe_copy_text_user_dialog_message">启用“复制文本”时，折叠评论功能将停止工作</string>
   <string name="morphe_custom_font_title">自定义字体</string>
   <string name="morphe_custom_font_summary">从以下路径加载自定义 TTF 或 OTF 字体文件。启用此选项也会关闭强制系统字体。</string>
   <string name="morphe_custom_font_file_path_title">自定义字体文件</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">从信息流和搜索建议中隐藏热门标签</string>
   <string name="morphe_remove_notification_dialog_title">移除通知建议对话框</string>
   <string name="morphe_remove_notification_dialog_summary">在访问subreddit时自动关闭通知建议对话框</string>
+  <string name="morphe_show_flairs_in_home_feed_title">在主页信息流中显示 flair</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">在主页信息流中显示帖子的 flair 徽章</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">部分信息流条目可能不显示 flair</string>
   <string name="morphe_show_view_count_title">在帖子中显示观看次数</string>
   <string name="morphe_show_view_count_summary">限制：仅当 API 响应包含观看次数时可用</string>
   <string name="morphe_flip_post_action_bar_title">翻转帖子操作栏</string>

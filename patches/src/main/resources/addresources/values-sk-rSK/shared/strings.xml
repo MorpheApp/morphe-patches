@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Pôvodná farba</string>
   <string name="morphe_settings_color_invalid">Neplatná farba</string>
   <string name="morphe_settings_restart_title">Vyžaduje sa reštart</string>
-  <string name="morphe_settings_restart_dialog_message">Restartujte aplikáciu, aby sa táto zmena prejavila.</string>
+  <string name="morphe_settings_restart_dialog_message">Restartujte aplikáciu, aby sa táto zmena prejavila</string>
   <string name="morphe_settings_restart">Reštartovať</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importovať</string>
   <string name="morphe_settings_import_copy">Kopírovať</string>
   <string name="morphe_settings_import_reset">Nastavenia Morphe boli obnovené na predvolené</string>
-  <string name="morphe_settings_import_success">Importovaných %d nastavení</string>
+  <string name="morphe_settings_import_success">Importovaných %s nastavení</string>
   <string name="morphe_settings_import_failure_parse">Importovanie zlyhalo: %s</string>
   <string name="morphe_settings_navigate_up">Nahor</string>
   <string name="morphe_settings_search_hint">Nastavenia vyhľadávania</string>
@@ -103,7 +103,7 @@ Ak chcete prekladať nové jazyky alebo vylepšiť existujúce preklady, navšt�
   <string name="morphe_debug_toast_on_error_title">Zobraziť oznámenie v prípade chyby Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Vypnutím chybových upozornení skryjete všetky notifikácie Morphe o chybách.
 
-Nebudete informovaný o žiadnych nečakaných udalostiach."</string>
+Nebudete informovaný o žiadnych nečakaných udalostiach"</string>
   <string name="morphe_debug_export_logs_title">Exportovať záznamy ladenia</string>
   <string name="morphe_debug_export_logs_summary">Exportovať záznamy ladenia Morphe</string>
   <string name="morphe_debug_export_logs_success">Záznamy ladenia boli exportované</string>
@@ -179,31 +179,31 @@ Správanie sa počas hľadania stratilo, takže môže byť zapojených viac pre
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvorte nastavenia microG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">microG nie je nainštalovaný. Nainštalujte ho.</string>
+  <string name="gms_core_toast_not_installed_message">microG nie je nainštalovaný. Nainštalujte ho</string>
   <string name="gms_core_dialog_title">Vyžaduje sa akcia</string>
-  <string name="gms_core_dialog_outdated_message">"Vaša MicroG v%1s je zastaraná a môže spôsobovať problémy.
+  <string name="gms_core_dialog_outdated_message">"Vaše MicroG v%1s je zastarané a môže spôsobovať problémy.
 
-Prosím, aktualizujte MicroG na najnovšiu verziu v%2s."</string>
+Prosím, aktualizujte MicroG na najnovšiu verziu v%2s"</string>
   <string name="gms_core_dialog_update_text">Aktualizovať</string>
   <string name="gms_core_dialog_ignore_text">Ignorovať</string>
-  <string name="gms_core_dialog_conflict_message">"Nainštalovaný MicroG nie je odporúčaný aplikáciou Morphe:
+  <string name="gms_core_dialog_conflict_message">"Nainštalované MicroG nie je Morphe odporúčané:
 
 %1s
 
-Klepnite na odinštalovanie, potom znova otvorte túto aplikáciu a nainštalujte MicroG RE.}}],"</string>
+Kliknutím ho odinštalujte, potom znova otvorte túto aplikáciu a nainštalujte MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Odinštalovať</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG nemá povolenie spúšťať sa na pozadí.
 
 Postupujte podľa návodu na 'Don't kill my app' pre váš telefón a aplikujte inštrukcie na vašu inštaláciu microG.
 
-Je to potrebné pre správnu funkciu aplikácie."</string>
+Je to potrebné pre správnu funkciu aplikácie"</string>
   <string name="gms_core_dialog_open_website_text">Prejsť na webovú stránku</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Aby sa predišlo problémom optimalizácie batérie pre microG musia byť vypnuté.
 
 Vypnutie optimalizácie batérie pre microG neovplyvní spotrebu batérie.
 
-Ťuknite na tlačidlo pokračovať a povoľte zmeny optimalizácie."</string>
+Ťuknite na tlačidlo pokračovať a povoľte zmeny optimalizácie"</string>
   <string name="gms_core_dialog_continue_text">Pokračovať</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Zobraziť dialóg pre optimalizáciu batérie pre MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Vypnutím sa skryje výzva MicroG na optimalizáciu batérie.

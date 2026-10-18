@@ -1,8 +1,10 @@
 package app.morphe.patches.youtube.misc.fix.verticalscroll
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -17,10 +19,8 @@ internal object CanScrollVerticallyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.MOVE_RESULT,
-        Opcode.RETURN,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT
+    filters = listOf(
+        methodCall(smali = "Landroid/view/View;->canScrollVertically(I)Z"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
     )
 )

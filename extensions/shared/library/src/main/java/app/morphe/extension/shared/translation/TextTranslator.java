@@ -19,6 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -35,19 +36,32 @@ public final class TextTranslator {
     private static final String GOOGLE_TRANSLATE_URL =
             "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&dt=t&tl=";
 
-    /**
-     * Romanization (transliteration to Latin script) of the source text. The target
-     * language is irrelevant to the {@code dt=rm} field, so a dummy target is used while
-     * {@code sl=auto} lets Google detect the script to romanize.
-     */
+/**
+ * Romanization (transliteration to Latin script). A concrete target code makes Google
+ * transcribe the translation, while the default leaves the source language in charge;
+ * {@code sl=auto} stays because naming the source makes some languages answer with nothing.
+ */
     private static final String GOOGLE_ROMANIZE_URL =
-            "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&dt=t&dt=rm&tl=en";
+            "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&dt=t&dt=rm&tl=";
 
+    /**
+     * {@code gtx} is rate limited by address in bursts that outlive a retry with backoff, and
+     * a limited address gets no answer at all until the burst passes. The client the web
+     * translator itself uses answers the same requests over the same host in that situation,
+     * so it is worth one try once the primary has spent its whole round. Both parse to the
+     * same response shape, which is the only part the caller depends on.
+     */
     private static final String GOOGLE_TRANSLATE_FALLBACK_URL =
             "https://translate.googleapis.com/translate_a/single?client=dict-chrome-ex&sl=auto&dt=t&tl=";
 
     private static final String GOOGLE_ROMANIZE_FALLBACK_URL =
-            "https://translate.googleapis.com/translate_a/single?client=dict-chrome-ex&sl=auto&dt=t&dt=rm&tl=en";
+            "https://translate.googleapis.com/translate_a/single?client=dict-chrome-ex&sl=auto&dt=t&dt=rm&tl=";
+
+    /** A translation nobody reads, so the source keeps its own script. */
+    private static final String DEFAULT_ROMANIZATION_TARGET = "en";
+
+    /** Japanese is the one language whose romanization arrives as one run, and a bar survives it. */
+    private static final String LINE_FALLBACK_SEPARATOR = " | ";
 
     private static final int CONNECT_TIMEOUT_MILLISECONDS = 10_000;
     private static final int READ_TIMEOUT_MILLISECONDS = 15_000;
@@ -123,33 +137,69 @@ public final class TextTranslator {
     public static List<String> translate(@NonNull List<String> lines, @NonNull String targetLanguage)
             throws Exception {
         return requestLines(lines, GOOGLE_TRANSLATE_URL + targetLanguage,
-                GOOGLE_TRANSLATE_FALLBACK_URL + targetLanguage, false);
+                GOOGLE_TRANSLATE_FALLBACK_URL + targetLanguage, false, false, "\n");
     }
 
-    /**
-     * Romanizes one batch of lines (transliterates the source script into Latin).
-     * Always call off the main thread.
-     *
-     * @return Romanized lines, in the order they were given.
-     */
+/**
+ * Romanizes one batch of lines. Always call off the main thread.
+ *
+ * @param targetLanguage Language code such as {@code yue}, or {@code DEFAULT} for the
+ *                       language the lyrics are written in.
+ */
     @NonNull
-    public static List<String> romanize(@NonNull List<String> lines) throws Exception {
-        return requestLines(lines, GOOGLE_ROMANIZE_URL, GOOGLE_ROMANIZE_FALLBACK_URL, true);
+    public static List<String> romanize(@NonNull List<String> lines,
+                                        @NonNull String targetLanguage) throws Exception {
+        final String url = GOOGLE_ROMANIZE_URL + targetCode(targetLanguage);
+        final String fallbackUrl = GOOGLE_ROMANIZE_FALLBACK_URL + targetCode(targetLanguage);
+        List<String> romanized = requestLines(lines, url, fallbackUrl, true,
+                preferTranslated(targetLanguage), "\n");
+        if (romanized.size() == lines.size() || containsSeparator(lines)) {
+            return romanized;
+        }
+
+        // A count that does not match leaves the caller nothing to map, so the bar is worth one more request.
+        List<String> split = requestLines(lines, url, fallbackUrl, true,
+                preferTranslated(targetLanguage), LINE_FALLBACK_SEPARATOR);
+        return split.size() == lines.size() ? split : romanized;
     }
 
-    /**
-     * Sends one batch to the public endpoint and returns the per-line result. Shared by
-     * {@link #translate} and {@link #romanize}; the only difference is which field of each
-     * sentence Google returns (the translation, or the romanization at index 3/2).
-     *
-     * <p>The primary is retried as a whole before the fallback is given a turn: a rate limit
-     * outlives a short backoff, so moving on is only worth trying once the retries are spent.
-     */
+    @NonNull
+    private static String targetCode(@NonNull String targetLanguage) {
+        return isDefault(targetLanguage)
+                ? DEFAULT_ROMANIZATION_TARGET
+                : targetLanguage.toLowerCase(Locale.ROOT);
+    }
+
+    /** A chosen language is transcribed in the translation, which Google keeps in the other field. */
+    private static boolean preferTranslated(@NonNull String targetLanguage) {
+        return !isDefault(targetLanguage);
+    }
+
+    private static boolean isDefault(@NonNull String targetLanguage) {
+        return "DEFAULT".equalsIgnoreCase(targetLanguage);
+    }
+
+    /** Whether a line already holds a bar, which would make the fallback split it wrongly. */
+    private static boolean containsSeparator(@NonNull List<String> lines) {
+        for (String line : lines) {
+            if (line.contains(LINE_FALLBACK_SEPARATOR) || line.contains("|")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+/**
+ * Sends one batch and returns the per-line result. A rate limit outlives a short backoff,
+ * so moving on to the other client is only worth trying once the retries are spent.
+ */
     @NonNull
     private static List<String> requestLines(@NonNull List<String> lines,
                                              @NonNull String url,
                                              @NonNull String fallbackUrl,
-                                             boolean romanize) throws Exception {
+                                             boolean romanize,
+                                             boolean preferTranslatedRomanization,
+                                             @NonNull String lineSeparator) throws Exception {
         Exception lastFailure = null;
         for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
             if (attempt > 0) {
@@ -157,7 +207,7 @@ public final class TextTranslator {
             }
 
             try {
-                return sendBatch(lines, url, romanize);
+                return sendBatch(lines, url, romanize, preferTranslatedRomanization, lineSeparator);
             } catch (TranslationHttpException ex) {
                 lastFailure = ex;
                 if (!isRetryable(ex.statusCode)) break;
@@ -167,7 +217,7 @@ public final class TextTranslator {
         }
 
         try {
-            return sendBatch(lines, fallbackUrl, romanize);
+            return sendBatch(lines, fallbackUrl, romanize, preferTranslatedRomanization, lineSeparator);
         } catch (Exception fallbackFailure) {
             Logger.printDebug(() -> "The fallback client failed as well", fallbackFailure);
         }
@@ -179,14 +229,16 @@ public final class TextTranslator {
     @NonNull
     private static List<String> sendBatch(@NonNull List<String> lines,
                                           @NonNull String url,
-                                          boolean romanize) throws Exception {
+                                          boolean romanize,
+                                          boolean preferTranslatedRomanization,
+                                          @NonNull String lineSeparator) throws Exception {
         Utils.verifyOffMainThread();
 
         StringBuilder joined = new StringBuilder(100 * lines.size());
         for (String line : lines) {
             //noinspection SizeReplaceableByIsEmpty
             if (joined.length() > 0) {
-                joined.append('\n');
+                joined.append(lineSeparator);
             }
             joined.append(line);
         }
@@ -212,24 +264,14 @@ public final class TextTranslator {
             final int code = connection.getResponseCode();
             if (code == 200) {
                 // Response: [[["translated","original",null,"romanized",...],...],...]
-                // The endpoint splits into sentences; concatenating restores the lines that were sent.
                 JSONArray sentences = new JSONArray(Requester.parseString(connection)).getJSONArray(0);
+                if (romanize) {
+                    return extractRomanizedLines(sentences, preferTranslatedRomanization, lineSeparator);
+                }
+
                 StringBuilder result = new StringBuilder();
                 for (int i = 0, length = sentences.length(); i < length; i++) {
-                    JSONArray sentence = sentences.getJSONArray(i);
-                    if (romanize) {
-                        // The romanization lives at index 3, falling back to index 2.
-                        String romanized = sentence.optString(3);
-                        if (romanized.isEmpty() || "null".equals(romanized)) {
-                            romanized = sentence.optString(2);
-                        }
-                        if ("null".equals(romanized)) {
-                            romanized = "";
-                        }
-                        result.append(romanized);
-                    } else {
-                        result.append(sentence.getString(0));
-                    }
+                    result.append(sentences.getJSONArray(i).getString(0));
                 }
 
                 return Arrays.asList(result.toString().split("\n", -1));
@@ -248,6 +290,40 @@ public final class TextTranslator {
                 connection.disconnect();
             }
         }
+    }
+
+    /**
+     * One romanization covers the whole batch and arrives after the per-line segments: index 3
+     * holds the source, index 2 the translation, and only one of them is ever asked for.
+     */
+    @NonNull
+    private static List<String> extractRomanizedLines(@NonNull JSONArray sentences,
+                                                      boolean preferTranslated,
+                                                      @NonNull String lineSeparator) {
+        final JSONArray last = sentences.optJSONArray(sentences.length() - 1);
+        final String source = last != null ? last.optString(3) : "";
+        final String translated = last != null ? last.optString(2) : "";
+        final String first = preferTranslated ? translated : source;
+        final String second = preferTranslated ? source : translated;
+        String romanized = first.isEmpty() ? second : first;
+        if ("null".equals(romanized)) {
+            romanized = "";
+        }
+        return splitRomanized(romanized, lineSeparator);
+    }
+
+    /** Cuts the batch romanization back into the lines that were sent. */
+    @NonNull
+    private static List<String> splitRomanized(@NonNull String romanized,
+                                              @NonNull String lineSeparator) {
+        if (LINE_FALLBACK_SEPARATOR.equals(lineSeparator)) {
+            List<String> lines = new ArrayList<>();
+            for (String line : romanized.split("\\|", -1)) {
+                lines.add(line.trim());
+            }
+            return lines;
+        }
+        return Arrays.asList(romanized.split("\n", -1));
     }
 
     private static boolean isRetryable(int code) {

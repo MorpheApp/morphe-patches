@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">أدخل اسم الحزمة</string>
   <string name="morphe_external_downloader_other_item">أخرى</string>
   <string name="morphe_external_downloader_not_found_title">التطبيق غير مثبت</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s لم يتم تثبيته. قم بتثبيته.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s لم يتم تثبيته. قم بتثبيته</string>
   <string name="morphe_external_downloader_package_not_found_warning">"تعذر العثور على تطبيق مثبت باسم الحزمة: %s
 
 تحقق من صحة اسم الحزمة وأن التطبيق مثبت"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">إشعار Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">لم يتم حفظ سجل المشاهدة الخاص بك.&lt;br&gt;&lt;br&gt;من المرجح أن يكون السبب في ذلك هو مانع إعلانات DNS أو وكيل الشبكة.&lt;br&gt;&lt;br&gt;لإصلاح هذه المشكلة، قم بإضافة &lt;b&gt;s.youtube.com&lt;/b&gt; إلى القائمة البيضاء أو قم بإيقاف تشغيل جميع أدوات حظر DNS ووكلاء البروكسي.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">لم يتم حفظ سجل المشاهدة الخاص بك.&lt;br&gt;&lt;br&gt;من المرجح أن يكون السبب في ذلك هو مانع إعلانات DNS أو وكيل الشبكة.&lt;br&gt;&lt;br&gt;لإصلاح هذه المشكلة، قم بإضافة &lt;b&gt;s.youtube.com&lt;/b&gt; إلى القائمة البيضاء أو قم بإيقاف تشغيل جميع أدوات حظر DNS ووكلاء البروكسي</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">لا تعرض مرة أخرى</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spoof Video Streams</string>
@@ -99,7 +99,7 @@ Second \"item\" text"</string>
 
 هل ترغب في جعل %2$s هو العميل الافتراضي؟"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">تبديل</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">قد يؤدي إيقاف تشغيل هذا الإعداد إلى مشكلات في التشغيل.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">قد يؤدي إيقاف تشغيل هذا الإعداد إلى مشكلات في التشغيل</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">جرب تمكين: Spoof Video Streams &gt; تسجيل الدخول إلى Android VR</string>
@@ -134,7 +134,7 @@ Second \"item\" text"</string>
 • ستحتاج إلى تسجيل الدخول مرة أخرى إذا قمت بتغيير كلمة مرور Google أو إلغاء تسجيل هذا الجهاز من إعدادات Google الخاصة بك"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 غير متاح مؤقتًا (انتهت مهلة API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">انتهت صلاحية تسجيل الدخول إلى Android VR، حاول تسجيل الدخول إلى VR مرة أخرى</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 غير متاح مؤقتًا (الحالة %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 غير متاح مؤقتًا (الحالة %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 غير متاح مؤقتًا</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">لا يمكن تسجيل الدخول إلى VR، لم تتم الموافقة على مصادقة الموقع الإلكتروني</string>
   <string name="morphe_oauth2_connection_failure_auth_error">فشل تسجيل الدخول إلى VR: %s</string>
@@ -197,7 +197,7 @@ Second \"item\" text"</string>
 
 يمكن أن يساعد ذلك في تحديد المكونات عند إنشاء عوامل تصفية مخصصة.
 
-ومع ذلك، سيؤدي تمكين هذا الخيار أيضًا إلى تسجيل بعض بيانات المستخدم مثل عنوان IP الخاص بك."</string>
+ومع ذلك، سيؤدي تمكين هذا الخيار أيضًا إلى تسجيل بعض بيانات المستخدم مثل عنوان IP الخاص بك"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">فلتر مخصص</string>
   <string name="morphe_custom_filter_screen_summary">تكوين فلاتر مخصصة لإخفاء أي مكون</string>
@@ -242,7 +242,7 @@ Second \"item\" text"</string>
 
 سيؤدي هذا إلى تغيير مظهر وميزات التطبيق، ولكن قد تحدث تأثيرات جانبية غير معروفة.
 
-إذا تم تعطيله لاحقًا، فمن المستحسن مسح بيانات التطبيق لمنع حدوث أخطاء في واجهة المستخدم."</string>
+إذا تم تعطيله لاحقًا، فمن المستحسن مسح بيانات التطبيق لمنع حدوث أخطاء في واجهة المستخدم"</string>
   <string name="morphe_spoof_app_version_target_title">الهدف من تغيير إصدار التطبيق</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">معدل تحديث التطبيق</string>
@@ -265,7 +265,7 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">لم يعجبني غير متاح مؤقتًا (انتهت مهلة API)</string>
-  <string name="morphe_ryd_failure_connection_status_code">لم يعجبني غير متاح (الحالة %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">لم يعجبني غير متاح (الحالة %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">عدد مرات لم يعجبني غير متوفر (حد API للعميل)</string>
   <string name="morphe_ryd_failure_generic">لم يعجبني غير متاح (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">لم يعجبني غير متاح مؤقتًا - حد معدل عميل API ساري المفعول</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API جلب الأصوات وعدد الاتصالات</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">لم يتم إجراء اتصالات الشبكة</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d اتصالات شبكية أجريت</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s اتصالات شبكية أجريت</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API جلب الأصوات، عدد مرات انتهاء المهلة</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">لم يتم تجاوز المهلة في أي من طلبات الشبكة</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d اتصالات شبكية انتهت مهلتها</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s اتصالات شبكية انتهت مهلتها</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">حدود معدل عميل API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">لم يتم مواجهة أي حدود لمعدل العميل</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">تم تجاوز حد معدل العميل %d مرة</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d جزء الثانية</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">تم تجاوز حد معدل العميل %s مرة</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s جزء الثانية</string>
 </resources>

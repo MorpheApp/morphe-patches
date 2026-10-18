@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Bố cục</string>
   <string name="morphe_copy_text_title">Sao chép văn bản</string>
   <string name="morphe_copy_text_summary">Cho phép chọn và sao chép văn bản trong bài đăng và bình luận. Vô hiệu hóa tính năng thu gọn bình luận</string>
-  <string name="morphe_copy_text_user_dialog_message">Thu gọn bình luận sẽ ngừng hoạt động khi bật Sao chép văn bản.</string>
+  <string name="morphe_copy_text_user_dialog_message">Bình luận co lại sẽ ngừng hoạt động khi \"Sao chép văn bản\" được bật</string>
   <string name="morphe_custom_font_title">Tùy chỉnh phông chữ</string>
   <string name="morphe_custom_font_summary">Nhập phông chữ TTF hoặc OTF tùy chỉnh từ đường dẫn bên dưới. Bật tùy chọn này cũng sẽ tắt cài đặt Luôn dùng phông chữ hệ thống</string>
   <string name="morphe_custom_font_file_path_title">Tệp phông chữ tùy chỉnh</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Ẩn các kệ Xu hướng khỏi bảng tin và gợi ý tìm kiếm</string>
   <string name="morphe_remove_notification_dialog_title">Xóa hộp thoại gợi ý thông báo</string>
   <string name="morphe_remove_notification_dialog_summary">Tự động tắt hộp thoại gợi ý thông báo khi vào subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Hiển thị biểu tượng trong nguồn tại trang chủ</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Hiển thị huy hiệu dán nhãn trong nguồn tại trang chủ</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Một số mục trong nguồn có thể không hiển thị dán nhãn</string>
   <string name="morphe_show_view_count_title">Hiện số lượt xem trên bài đăng</string>
   <string name="morphe_show_view_count_summary">Hạn chế: Chỉ khả dụng nếu API trả về số lượt xem</string>
   <string name="morphe_flip_post_action_bar_title">Đảo thanh hành động của bài đăng</string>

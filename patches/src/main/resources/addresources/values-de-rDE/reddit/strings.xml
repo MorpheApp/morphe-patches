@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Text kopieren</string>
   <string name="morphe_copy_text_summary">Ermöglicht das Auswählen und Kopieren von Text in Beiträgen und Kommentaren. Deaktiviert das Einklappen von Kommentaren</string>
-  <string name="morphe_copy_text_user_dialog_message">Das Einklappen von Kommentaren funktioniert nicht mehr, während „Text kopieren“ aktiviert ist.</string>
+  <string name="morphe_copy_text_user_dialog_message">Das Einklappen von Kommentaren funktioniert nicht mehr, wenn Text kopieren aktiviert ist</string>
   <string name="morphe_custom_font_title">Benutzerspezifische Schrift</string>
   <string name="morphe_custom_font_summary">Laden Sie eine benutzerdefinierte TTF- oder OTF-Schriftdatei vom folgenden Pfad. Durch Aktivieren dieser Option wird auch die Option \"Standardschriftart erzwingen\" deaktiviert.</string>
   <string name="morphe_custom_font_file_path_title">Benutzerspezifische Schriftdatei</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Verbirgt die Trending-Regale aus dem Feed und den Suchvorschlägen</string>
   <string name="morphe_remove_notification_dialog_title">Benachrichtigungs-Vorschlagsdialog entfernen</string>
   <string name="morphe_remove_notification_dialog_summary">Entfernt den Benachrichtigungsvorschlagsdialog automatisch beim Besuch eines Subreddits</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Flairs im Home-Feed anzeigen</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Zeigt Post-Flair-Badges im Home-Feed an</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Einige Feed-Einträge zeigen möglicherweise keinen Flair</string>
   <string name="morphe_show_view_count_title">Anzahl der Aufrufe anzeigen</string>
   <string name="morphe_show_view_count_summary">Einschränkung: Nur verfügbar, wenn die API-Antwort die Anzahl der Aufrufe enthält</string>
   <string name="morphe_flip_post_action_bar_title">Aktionsleiste der Beiträge umkehren</string>

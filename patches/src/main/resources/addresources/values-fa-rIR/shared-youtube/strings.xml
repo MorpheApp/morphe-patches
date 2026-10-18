@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">نام بسته را وارد کنید</string>
   <string name="morphe_external_downloader_other_item">دیگر</string>
   <string name="morphe_external_downloader_not_found_title">برنامه نصب نیست</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s نصب نیست. لطفاً آن را نصب کنید.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s نصب نیست. لطفاً آن را نصب کنید</string>
   <string name="morphe_external_downloader_package_not_found_warning">"برنامهٔ نصب‌شده‌ای با نام بستهٔ زیر پیدا نشد: %s
 
 درست‌بودن نام بسته و نصب‌بودن برنامه را بررسی کنید"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">اعلان Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">سابقهٔ تماشای شما ذخیره نمی‌شود.&lt;br&gt;&lt;br&gt;این مشکل به احتمال زیاد ناشی از مسدودکنندهٔ تبلیغات DNS یا پروکسی شبکه است.&lt;br&gt;&lt;br&gt;برای رفع آن، &lt;b&gt;s.youtube.com&lt;/b&gt; را در فهرست مجاز قرار دهید یا همهٔ مسدودکننده‌ها و پروکسی‌های DNS را خاموش کنید.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">سابقهٔ تماشای شما ذخیره نمی‌شود.&lt;br&gt;&lt;br&gt;این مشکل به احتمال زیاد ناشی از مسدودکنندهٔ تبلیغات DNS یا پروکسی شبکه است.&lt;br&gt;&lt;br&gt;برای رفع آن، &lt;b&gt;s.youtube.com&lt;/b&gt; را در فهرست مجاز قرار دهید یا همهٔ مسدودکننده‌ها و پروکسی‌های DNS را خاموش کنید</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">دوباره نمایش نده</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">جعل جریان‌های ویدئویی</string>
@@ -99,7 +99,7 @@ Second \"item\" text"</string>
 
 %2$s را کلاینت پیش‌فرض کنیم؟"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">تعویض</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">خاموش‌کردن این تنظیم ممکن است باعث مشکلات پخش شود.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">خاموش‌کردن این تنظیم ممکن است باعث مشکلات پخش شود</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">سعی کنید فعال کنید: جعل جریان‌های ویدئویی &gt; ورود به Android VR</string>
@@ -134,7 +134,7 @@ Second \"item\" text"</string>
 • اگر گذرواژهٔ Google خود را تغییر دهید یا این دستگاه را از تنظیمات Google لغو ثبت کنید، باید دوباره وارد شوید"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 موقتاً در دسترس نیست (مهلت API تمام شد)</string>
   <string name="morphe_oauth2_connection_failure_status_400">ورود به Android VR منقضی شده است؛ دوباره به VR وارد شوید</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 موقتاً در دسترس نیست (وضعیت %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 موقتاً در دسترس نیست (وضعیت %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 موقتاً در دسترس نیست</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">نمی‌توان به VR وارد شد؛ احراز هویت وب‌سایت تأیید نشد</string>
   <string name="morphe_oauth2_connection_failure_auth_error">نمی‌توان به VR وارد شد: %s</string>
@@ -197,7 +197,7 @@ Second \"item\" text"</string>
 
 این کار می‌تواند به شناسایی مؤلفه‌ها هنگام ایجاد فیلترهای سفارشی کمک کند.
 
-بااین‌حال، فعال‌کردن آن برخی داده‌های کاربر مانند نشانی IP شما را نیز ثبت می‌کند."</string>
+بااین‌حال، فعال‌کردن آن برخی داده‌های کاربر مانند نشانی IP شما را نیز ثبت می‌کند"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">فیلتر سفارشی</string>
   <string name="morphe_custom_filter_screen_summary">فیلترهای سفارشی را برای پنهان‌کردن هر مؤلفه‌ای پیکربندی کنید</string>
@@ -242,7 +242,7 @@ Second \"item\" text"</string>
 
 این کار ظاهر و قابلیت‌های برنامه را تغییر می‌دهد، اما ممکن است عوارض جانبی ناشناخته‌ای رخ دهد.
 
-اگر بعداً خاموش شد، برای جلوگیری از باگ‌های رابط کاربری توصیه می‌شود داده‌های برنامه را پاک کنید."</string>
+اگر بعداً خاموش شد، برای جلوگیری از باگ‌های رابط کاربری توصیه می‌شود داده‌های برنامه را پاک کنید"</string>
   <string name="morphe_spoof_app_version_target_title">هدف نسخهٔ جعلی برنامه</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">نرخ نوسازی برنامه</string>
@@ -265,7 +265,7 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">نپسندیدن‌ها موقتاً در دسترس نیستند (مهلت API تمام شد)</string>
-  <string name="morphe_ryd_failure_connection_status_code">نپسندیدن‌ها در دسترس نیستند (وضعیت %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">نپسندیدن‌ها در دسترس نیستند (وضعیت %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">نپسندیدن‌ها در دسترس نیستند (محدودیت API کلاینت)</string>
   <string name="morphe_ryd_failure_generic">نپسندیدن‌ها در دسترس نیستند (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">نپسندیدن‌ها موقتاً در دسترس نیستند — محدودیت نرخ API کلاینت فعال است</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">دریافت رأی‌های API، تعداد فراخوانی‌ها</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">هیچ فراخوانی شبکه‌ای انجام نشد</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d فراخوانی شبکه‌ای انجام شد</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s فراخوانی شبکه‌ای انجام شد</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">دریافت رأی‌های API، تعداد مهلت‌های تمام‌شده</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">هیچ فراخوانی شبکه‌ای با پایان مهلت مواجه نشد</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d فراخوانی شبکه‌ای با پایان مهلت مواجه شد</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s فراخوانی شبکه‌ای با پایان مهلت مواجه شد</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">محدودیت‌های نرخ کلاینت API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">با هیچ محدودیت نرخ کلاینتی مواجه نشد</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">با محدودیت نرخ کلاینت %d بار مواجه شد</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d میلی‌ثانیه</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">با محدودیت نرخ کلاینت %s بار مواجه شد</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s میلی‌ثانیه</string>
 </resources>

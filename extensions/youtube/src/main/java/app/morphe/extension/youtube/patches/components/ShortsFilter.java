@@ -33,6 +33,7 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.patches.components.StringFilterGroupList;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.patches.LayoutReloadObserverPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -488,7 +489,7 @@ public final class ShortsFilter extends Filter {
 
             // Nested components of the element have their own buffer.
             final boolean nestedComponent = Utils.indexOf(path, ".e", identifier.length()) >= 0;
-            return shouldHideShortsFeedItems(contextInterface, buffer, nestedComponent, !nestedComponent);
+            return shouldHideShortsFeedItems(identifier, contextInterface, buffer, nestedComponent, !nestedComponent);
         }
 
         if (contentType == FilterContentType.PATH) {
@@ -503,15 +504,16 @@ public final class ShortsFilter extends Filter {
             }
 
             if (matchedGroup == shortsCompactFeedVideo) {
-                return shouldHideShortsFeedItems(contextInterface, buffer, false, false)
-                        // When a video is autoplaying in the feed, no new components are drawn on the screen.
-                        // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
-                        && PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL
+                // When a video is autoplaying in the feed, no new components are drawn on the screen.
+                // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
+                return PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL
                         // The litho path of the feed video is 'video_lockup_with_attachment.e'.
                         // It appears [shortsCompactFeedVideoBuffer] is used after 20 seconds during autoplay in the feed in YouTube 20.44.38.
                         // If the Shorts shelf is hidden on the Home feed, the video in the feed will be hidden after 20 seconds have passed since autoplay began in the feed.
                         // See: https://github.com/MorpheApp/morphe-patches/issues/773.
-                        && shortsCompactFeedVideoBuffer.matches(buffer);
+                        && shortsCompactFeedVideoBuffer.matches(buffer)
+                        // Checked last, as only the Shorts are logged.
+                        && shouldHideShortsFeedItems(path, contextInterface, buffer, false, false);
             }
 
             if (matchedGroup == shelfHeaderPath) {
@@ -526,7 +528,7 @@ public final class ShortsFilter extends Filter {
                     return !NavigationBar.isSearchBarActive() && channelProfileShelfHeader.check(buffer).isFiltered();
                 }
 
-                return shouldHideShortsFeedItems(contextInterface, buffer, false, false);
+                return shouldHideShortsFeedItems(path, contextInterface, buffer, false, false);
             }
 
             // Video action buttons (comment, share, remix) have the same path.
@@ -560,10 +562,11 @@ public final class ShortsFilter extends Filter {
     }
 
     /**
+     * @param component       Identifier or path of the component, for the debug log.
      * @param nestedComponent If the component is nested in the element, such as the thumbnail of a Shorts shelf.
      * @param rootComponent   If the component is the element itself, or a part of it, such as the Shorts shelf header.
      */
-    private boolean shouldHideShortsFeedItems(ContextInterface contextInterface, byte[] buffer,
+    private boolean shouldHideShortsFeedItems(CharSequence component, ContextInterface contextInterface, byte[] buffer,
                                               boolean nestedComponent, boolean rootComponent) {
         // Known issue if hide home is on but at least one other hide is off:
         //
@@ -590,33 +593,35 @@ public final class ShortsFilter extends Filter {
             if (nestedComponent) {
                 // Nested components are loaded only if the element is shown, and their buffers do not always
                 // include the search page, so the element is hidden or shown as a whole.
-                return false;
+                return logDecision(component, false, "player: nested component");
             }
             if (EngagementPanel.isDescription()) {
-                return hideVideoDescription; // Player video description panel opened.
+                // Player video description panel opened.
+                return logDecision(component, hideVideoDescription, "player: description");
             }
             // The search results behind the player are also reloaded while the player is open,
             // such as when entering or exiting fullscreen.
             if (searchResultsBuffer.check(buffer).isFiltered()) {
-                return hideSearch;
+                return logDecision(component, hideSearch, "player: search results");
             }
             if (rootComponent) {
                 BooleanSetting feedSetting = shelfFeedSettings.get(getTextHash(buffer));
                 if (feedSetting != null) {
-                    return feedSetting.get();
+                    return logDecision(component, feedSetting.get(), "player: remembered " + feedSetting.key);
                 }
             }
-            return hideHome; // For now, consider Shorts under video player the same as the home feed.
+            // For now, consider Shorts under video player the same as the home feed.
+            return logDecision(component, hideHome, "player: home");
         }
 
         // Must check second, as search can be from any tab.
         if (NavigationBar.isSearchBarActive()) {
-            return hideShortsInFeed(Settings.HIDE_SHORTS_SEARCH, buffer, rootComponent);
+            return hideShortsInFeed(component, "search", Settings.HIDE_SHORTS_SEARCH, buffer, rootComponent);
         }
 
         // Avoid checking navigation button status if all other Shorts should show.
         if (!hideHome && !hideSubscriptions && !hideHistory) {
-            return hideShortsInFeed(Settings.HIDE_SHORTS_HOME, buffer, rootComponent);
+            return hideShortsInFeed(component, "others shown", Settings.HIDE_SHORTS_HOME, buffer, rootComponent);
         }
 
         // Check navigation absolutely last since the check may block this thread.
@@ -624,15 +629,16 @@ public final class ShortsFilter extends Filter {
                 NavigationBar.NavigationButton.getSelectedNavigationButton(contextInterface);
         if (selectedNavButton == null) {
             // Unknown tab, treat the same as home.
-            return hideShortsInFeed(Settings.HIDE_SHORTS_HOME, buffer, rootComponent);
+            return hideShortsInFeed(component, "unknown tab", Settings.HIDE_SHORTS_HOME, buffer, rootComponent);
         }
 
         return switch (selectedNavButton) {
-            case HOME -> hideShortsInFeed(Settings.HIDE_SHORTS_HOME, buffer, rootComponent);
-            case SEARCH -> hideShortsInFeed(Settings.HIDE_SHORTS_SEARCH, buffer, rootComponent);
-            case SUBSCRIPTIONS -> hideShortsInFeed(Settings.HIDE_SHORTS_SUBSCRIPTIONS, buffer, rootComponent);
-            case LIBRARY -> hideShortsInFeed(Settings.HIDE_SHORTS_HISTORY, buffer, rootComponent);
-            default -> false;
+            case HOME -> hideShortsInFeed(component, "home tab", Settings.HIDE_SHORTS_HOME, buffer, rootComponent);
+            case SEARCH -> hideShortsInFeed(component, "search tab", Settings.HIDE_SHORTS_SEARCH, buffer, rootComponent);
+            case SUBSCRIPTIONS -> hideShortsInFeed(component, "subscriptions tab",
+                    Settings.HIDE_SHORTS_SUBSCRIPTIONS, buffer, rootComponent);
+            case LIBRARY -> hideShortsInFeed(component, "library tab", Settings.HIDE_SHORTS_HISTORY, buffer, rootComponent);
+            default -> logDecision(component, false, "other tab: " + selectedNavButton);
         };
     }
 
@@ -641,14 +647,39 @@ public final class ShortsFilter extends Filter {
      *
      * @return If the Shorts of the feed are hidden.
      */
-    private static boolean hideShortsInFeed(BooleanSetting feedSetting, byte[] buffer, boolean rootComponent) {
+    private static boolean hideShortsInFeed(CharSequence component, String feed, BooleanSetting feedSetting,
+                                            byte[] buffer, boolean rootComponent) {
         if (rootComponent) {
             // A shelf loaded in different feeds is treated the same as Shorts under the player.
             shelfFeedSettings.merge(getTextHash(buffer), feedSetting,
                     (previous, current) -> previous == current ? previous : Settings.HIDE_SHORTS_HOME);
         }
-        return feedSetting.get();
+        return logDecision(component, feedSetting.get(), feed);
     }
+
+    /**
+     * Logs why the Shorts of a feed are hidden or shown, to find the feeds where they are not hidden as expected.
+     *
+     * @return The decision.
+     */
+    private static boolean logDecision(CharSequence component, boolean hide, String reason) {
+        if (BaseSettings.DEBUG.get()) {
+            String message = "Shorts " + (hide ? "hidden" : "shown") + " (" + reason + ") player: "
+                    + PlayerType.getCurrent() + " search bar: " + NavigationBar.isSearchBarActive()
+                    + " component: " + component;
+            // The same element is filtered again on every layout, which would fill the log.
+            if (!message.equals(lastDecisionLog)) {
+                lastDecisionLog = message;
+                Logger.printDebug(() -> message);
+            }
+        }
+        return hide;
+    }
+
+    /**
+     * Last message of {@link #logDecision(CharSequence, boolean, String)}.
+     */
+    private static volatile String lastDecisionLog = "";
 
     /**
      * @return Hash of the ASCII strings of the buffer, as found by {@link BufferAsciiStrings}.

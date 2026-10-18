@@ -36,6 +36,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -190,7 +191,8 @@ val miniplayerPatch = bytecodePatch(
 
         // region Disable resuming miniplayer (Continue watching)
 
-        ShowMiniplayerCommandFingerprint.let {
+        (if (is_21_42_or_greater) ShowMiniplayerCommandFingerprint
+        else ShowMiniplayerCommandLegacyFingerprint).let {
             it.method.apply {
                 val index = it.instructionMatches[1].index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA

@@ -31,6 +31,9 @@ internal object ExperimentFlagUtilFingerprint : Fingerprint(
                 ) || parametersMatch( // 21.35+
                     method.parameters,
                     listOf("J", "[B")
+                ) || parametersMatch( // 21.42+
+                    method.parameters,
+                    listOf("I", "J", "[B")
                 ))
     }
 )
@@ -50,6 +53,19 @@ internal object ExperimentalBooleanFeatureFlagFingerprint : Fingerprint(
     }
 )
 
+/**
+ * 21.42+ boolean accessor with an additional int parameter.
+ * The [ExperimentalBooleanFeatureFlagFingerprint] accessor still exists and is also used.
+ */
+internal object ExperimentalIndexedBooleanFeatureFlagFingerprint : Fingerprint(
+    classFingerprint = ExperimentFlagUtilFingerprint,
+    returnType = "Z",
+    parameters = listOf("I", "J", "Z"),
+    custom = { method, _ ->
+        AccessFlags.PUBLIC.isSet(method.accessFlags)
+    }
+)
+
 internal object ExperimentalDoubleFeatureFlagFingerprint : Fingerprint(
     classFingerprint = ExperimentFlagUtilFingerprint,
     returnType = "D",
@@ -61,6 +77,9 @@ internal object ExperimentalDoubleFeatureFlagFingerprint : Fingerprint(
                 ) || parametersMatch( // 21.35+
                     method.parameters,
                     listOf("J", "D")
+                ) || parametersMatch( // 21.42+
+                    method.parameters,
+                    listOf("I", "J", "D")
                 ))
     }
 )
@@ -76,6 +95,9 @@ internal object ExperimentalLongFeatureFlagFingerprint : Fingerprint(
                 ) || parametersMatch( // 21.35+
                     method.parameters,
                     listOf("J", "J"),
+                ) || parametersMatch( // 21.42+
+                    method.parameters,
+                    listOf("I", "J", "J"),
                 ))
     }
 )
@@ -91,6 +113,9 @@ internal object ExperimentalStringFeatureFlagFingerprint : Fingerprint(
                 ) || parametersMatch( // 21.35+
                     method.parameters,
                     listOf("J", "Ljava/lang/String;")
+                ) || parametersMatch( // 21.42+
+                    method.parameters,
+                    listOf("I", "J", "Ljava/lang/String;")
                 ))
     }
 )

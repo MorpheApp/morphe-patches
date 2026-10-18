@@ -17,6 +17,7 @@ val enableDebuggingPatch = enableDebuggingPatch(
 
         compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     },
+    hookIndexedBooleanFeatureFlag = { false },
     // String feature flag does not appear to be present with YT Music.
     hookStringFeatureFlag = { false },
     hookLongFeatureFlag = { true },

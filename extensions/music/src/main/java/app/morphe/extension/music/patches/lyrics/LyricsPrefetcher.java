@@ -7,14 +7,12 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.ThreadFactory;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
@@ -42,20 +40,17 @@ import app.morphe.extension.shared.Utils;
 final class LyricsPrefetcher {
 
     private static final ExecutorService executor = Executors.newSingleThreadExecutor(
-            new ThreadFactory() {
-                @Override
-                public Thread newThread(@NonNull Runnable runnable) {
-                    Thread thread = new Thread(runnable, "LyricsPrefetch");
-                    thread.setDaemon(true);
-                    thread.setPriority(Thread.MIN_PRIORITY);
-                    return thread;
-                }
+            runnable -> {
+                Thread thread = new Thread(runnable, "LyricsPrefetch");
+                thread.setDaemon(true);
+                thread.setPriority(Thread.MIN_PRIORITY);
+                return thread;
             });
 
     /**
      * The video whose successor is being fetched, which is also the generation of the
      * running task: a newer track replaces it, and the older task stops at its next
-     * checkpoint instead of fetching lyrics nobody asked for any more.
+     * checkpoint instead of fetching lyrics nobody asked for anymore.
      */
     private static volatile String prefetchingFor;
 
@@ -155,7 +150,7 @@ final class LyricsPrefetcher {
                 Lyrics lyrics = result.lyrics();
                 if (!LyricsManager.isValidLyrics(lyrics, track)) continue;
 
-                LyricsCache.put(track, LyricsManager.cacheSourceFor(lyrics), lyrics);
+                LyricsCache.put(track, LyricsManager.cacheSourceFor(lyrics), lyrics, null);
                 Logger.printDebug(() -> "Lyrics prefetched: " + track + " via " + provider.name());
                 return;
             } catch (InterruptedException ex) {
@@ -170,7 +165,7 @@ final class LyricsPrefetcher {
     /** Whether every provider that could answer already has an answer stored. */
     private static boolean allKnown(TrackInfo track, List<LyricsProvider> providers) {
         for (LyricsProvider provider : providers) {
-            if (LyricsCache.get(track, provider.name()) == null) return false;
+            if (LyricsCache.get(track, provider.name(), null) == null) return false;
         }
         return true;
     }

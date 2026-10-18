@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.misc.playercontrols
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
@@ -100,9 +101,30 @@ internal object PlayerControlsButtonStrokeFeatureFlagFingerprint : Fingerprint(
     )
 )
 
-internal object PlayerControlsModernAccessibilityFeatureFlagFingerprint : Fingerprint(
+/**
+ * Elevated player, which shows the video metadata in a player overlay.
+ */
+internal object ElevatedPlayerFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
-        literal(45757309) // Not completely clear what this flag does.
+        literal(45757309)
+    )
+)
+
+/**
+ * Inflates the video metadata panel with a dark theme, even when the elevated player is off.
+ */
+internal object MetapanelForceDarkThemeFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45813114L) // 21.29+
+    )
+)
+
+/**
+ * Sets a light background on the video metadata panel overlay.
+ */
+internal object MetapanelForceLightThemeFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45840190L) // 21.38+
     )
 )
 
@@ -136,5 +158,32 @@ internal object AutonavEndscreenOverlayFingerprint : Fingerprint(
 internal object PlayerSeekbarFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45698813)
+    )
+)
+
+/**
+ * Image component of the Elements templates.
+ */
+internal object ElementsImageComponentFingerprint : Fingerprint(
+    strings = listOf("Failed to find a valid source for the image")
+)
+
+/**
+ * Sets the tint of an image of the Elements templates, with the color given by the image.
+ */
+internal object ElementsImageTintFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/drawable/Drawable;", "L"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L"),
+            returnType = "I",
+            location = MatchFirst()
+        ),
+        methodCall(
+            smali = $$"Landroid/graphics/drawable/Drawable;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V"
+        )
     )
 )

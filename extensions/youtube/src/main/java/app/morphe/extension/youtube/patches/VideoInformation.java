@@ -122,7 +122,12 @@ public final class VideoInformation {
         String channelName = "";
         String videoTitle = "";
         String videoId = "";
+        String playlistId = "";
         long videoLength = 0;
+        /**
+         * If the video ID of the video started by the player controller has been set.
+         */
+        boolean videoIdSet;
     }
 
     private static final PlayerVideo regularPlayerVideo = new PlayerVideo();
@@ -207,6 +212,8 @@ public final class VideoInformation {
         playerVideo.channelId = "";
         playerVideo.channelName = "";
         playerVideo.videoTitle = "";
+        playerVideo.playlistId = "";
+        playerVideo.videoIdSet = false;
     }
 
     private static boolean isPatchIncluded() {
@@ -220,10 +227,6 @@ public final class VideoInformation {
     private static boolean isPlaybackAudioPitchLinked() {
         return isPlaybackAudioPitchEnabled() && !Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
     }
-
-    private static int desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
-
-    private static boolean qualityNeedsUpdating;
 
     @GuardedBy("itself")
     private static final NumberFormat speedFormatter = NumberFormat.getNumberInstance();
@@ -258,6 +261,12 @@ public final class VideoInformation {
      */
     @Nullable
     private static VideoQualityMenuInterface currentQualityMenuInterface;
+
+    /**
+     * ID of the video whose quality was selected by the user.
+     * The video ID is used, because a player restart starts the same video again.
+     */
+    private static String userSelectedQualityVideoId = "";
 
     /**
      * Callback for when the current quality changes.
@@ -314,7 +323,6 @@ public final class VideoInformation {
                 playbackAudioPitchNeedsApplying = true;
             }
             playbackAudioPitchFormattedString = "";
-            desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
             currentQualities = null;
             currentQualityMenuInterface = null;
             setCurrentQuality(null);
@@ -426,6 +434,12 @@ public final class VideoInformation {
      */
     public static void setVideoId(String newlyLoadedVideoId) {
         PlayerVideo playerVideo = getLoadingPlayerVideo();
+        playerVideo.videoIdSet = true;
+        // The playlist ID hook is called after the video ID hook of the same player response,
+        // and is skipped for Shorts.
+        if (!playerResponseVideoIdIsShort && newlyLoadedVideoId.equals(playerResponseVideoId)) {
+            playerVideo.playlistId = playerResponsePlaylistId;
+        }
         if (!playerVideo.videoId.equals(newlyLoadedVideoId)) {
             Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoId);
             playerVideo.videoId = newlyLoadedVideoId;
@@ -788,13 +802,32 @@ public final class VideoInformation {
     }
 
     /**
-     * This is the playlistId of the player response, but since Shorts does not support playlists,
-     * it is the same as the current playlistId.
+     * The player response video ID changes with any video loaded in the background,
+     * such as the feed videos loaded while scrolling with the miniplayer open,
+     * so it is used only while the video of the player in front has not started yet.
      *
-     * @return The playlist id of the video.
+     * @return The ID of the video of the player in front, or the ID of the last
+     *         player response if that video is still starting.
+     */
+    public static String getStartingOrPlayingVideoId() {
+        PlayerVideo playerVideo = getPlayerVideo();
+        return playerVideo.videoIdSet || playerResponseVideoIdIsShort
+                ? playerVideo.videoId // Player response may be a Short in the feed.
+                : playerResponseVideoId;
+    }
+
+    /**
+     * Like {@link #getStartingOrPlayingVideoId()}, the playlist ID of the player response is used
+     * only while the video of the player in front has not started yet.
+     *
+     * @return The playlist ID of the video of the player in front, or the playlist ID of the last
+     *         player response if that video is still starting.
      */
     public static String getPlaylistId() {
-        return playerResponsePlaylistId;
+        PlayerVideo playerVideo = getPlayerVideo();
+        return playerVideo.videoIdSet || playerResponseVideoIdIsShort
+                ? playerVideo.playlistId
+                : playerResponsePlaylistId;
     }
 
     /**
@@ -1054,13 +1087,19 @@ public final class VideoInformation {
     }
 
     /**
-     * @param resolution The desired video quality resolution to use.
+     * The quality selected by the user is kept when the player reloads the current video.
      */
-    public static void setDesiredVideoResolution(int resolution) {
+    public static void userSelectedQuality() {
         Utils.verifyOnMainThread();
-        Logger.printDebug(() -> "Setting desired video resolution: " + resolution);
-        desiredVideoResolution = resolution;
-        qualityNeedsUpdating = true;
+        userSelectedQualityVideoId = getVideoId();
+    }
+
+    /**
+     * @return If the user selected the quality of the current video.
+     */
+    public static boolean isQualitySelectedByUser() {
+        String videoId = getVideoId();
+        return !videoId.isEmpty() && videoId.equals(userSelectedQualityVideoId);
     }
 
     private static void setCurrentQuality(@Nullable VideoQualityInterface quality) {
@@ -1089,16 +1128,19 @@ public final class VideoInformation {
      * Injection point. Fixes bad data used by YouTube.
      * Issue can be reproduced by selecting 480p quality on any Short,
      * and occasionally with random regular videos.
+     * <p>
+     * Only the resolution returned by {@link VideoQualityInterface#patch_getResolution()} is fixed.
+     * The quality object keeps the YouTube resolution, because the player and the SABR requests
+     * use it to match the stream formats. With a fixed resolution in the quality object,
+     * some VP9 streams restart in a loop when the quality is set.
      */
-    public static int fixVideoQualityResolution(String name, int quality) {
+    public static int fixVideoQualityResolution(@Nullable String name, int quality) {
         try {
-            if (!name.startsWith(Integer.toString(quality))) {
+            if (name != null && quality != AUTOMATIC_VIDEO_QUALITY_VALUE
+                    && !name.startsWith(Integer.toString(quality))) {
                 final int suffixIndex = name.indexOf('p');
                 if (suffixIndex > 0) {
-                    final int fixedQuality = Integer.parseInt(name.substring(0, suffixIndex));
-                    Logger.printDebug(() -> "Fixing wrong quality resolution from: " +
-                            name + "(" + quality + ") to: " + name + "(" + fixedQuality + ")");
-                    return fixedQuality;
+                    return Integer.parseInt(name.substring(0, suffixIndex));
                 }
             }
         } catch (Exception ex) {
@@ -1110,6 +1152,9 @@ public final class VideoInformation {
 
     /**
      * Injection point.
+     * <p>
+     * The default quality is used as the initial quality of the video, so the quality
+     * chosen by YouTube is always used and this only keeps the current qualities.
      *
      * @param qualities Video qualities available, ordered from largest to smallest, with index 0 being the 'automatic' value of -2
      * @param originalQualityIndex quality index to use, as chosen by YouTube
@@ -1119,74 +1164,15 @@ public final class VideoInformation {
             Utils.verifyOnMainThread();
             currentQualityMenuInterface = menu;
 
-            final boolean availableQualitiesChanged = (currentQualities == null)
-                    || !Arrays.equals(currentQualities, qualities);
-            if (availableQualitiesChanged) {
+            if (currentQualities == null || !Arrays.equals(currentQualities, qualities)) {
                 currentQualities = qualities;
                 Logger.printDebug(() -> "VideoQualities: " + Arrays.toString(currentQualities));
             }
 
             // On extremely slow internet connections the index can initially be -1
-            originalQualityIndex = Math.max(0, originalQualityIndex);
-
-            VideoQualityInterface updatedCurrentQuality = qualities[originalQualityIndex];
-            if (updatedCurrentQuality.patch_getResolution() != AUTOMATIC_VIDEO_QUALITY_VALUE
-                    && (currentQuality == null || currentQuality != updatedCurrentQuality)) {
+            VideoQualityInterface updatedCurrentQuality = qualities[Math.max(0, originalQualityIndex)];
+            if (updatedCurrentQuality.patch_getResolution() != AUTOMATIC_VIDEO_QUALITY_VALUE) {
                 setCurrentQuality(updatedCurrentQuality);
-            }
-
-            final int preferredQuality = desiredVideoResolution;
-            if (preferredQuality == AUTOMATIC_VIDEO_QUALITY_VALUE) {
-                return originalQualityIndex; // Nothing to do.
-            }
-
-            // After changing videos the qualities can initially be for the prior video.
-            // If the qualities have changed and the default is not auto then an update is needed.
-            if (qualityNeedsUpdating) {
-                qualityNeedsUpdating = false;
-            } else if (!availableQualitiesChanged) {
-                return originalQualityIndex;
-            }
-
-            // Find the highest quality that is equal to or less than the preferred.
-            int i = 0;
-            final int lastQualityIndex = qualities.length - 1;
-            for (VideoQualityInterface quality : qualities) {
-                final int qualityResolution = quality.patch_getResolution();
-                if ((qualityResolution != AUTOMATIC_VIDEO_QUALITY_VALUE && qualityResolution <= preferredQuality)
-                        // Use the lowest video quality if the default is lower than all available.
-                        || i == lastQualityIndex) {
-                    final boolean qualityNeedsChange = (i != originalQualityIndex);
-                    Logger.printDebug(() -> qualityNeedsChange
-                            ? "Changing video quality from: " + updatedCurrentQuality + " to: " + quality
-                            : "Video is already the preferred quality: " + quality
-                    );
-
-                    // On first load of a new regular video, if the video is already the desired
-                    // quality then the quality flyout will show 'Auto' (ie: Auto (720p)).
-                    //
-                    // To prevent user confusion, set the video index even if the quality is already
-                    // correct so the UI picker will not display "Auto".
-                    //
-                    // Only change Shorts quality if the quality actually needs to change, because
-                    // the "Auto" option is not shown in the flyout and setting the same quality
-                    // again can cause the Short to restart.
-                    //
-                    // If a regular video is opened via a link inside a Short, the Shorts UI fragment
-                    // remains open during the transition. Forcing a changeQuality() restart during
-                    // this specific overlapping state causes an ExoPlayer codec deadlock.
-                    if (ShortsPlayerState.isOpen() && !PlayerType.getCurrent().isNoneOrHidden()) {
-                        return i;
-                    }
-
-                    if (qualityNeedsChange || !ShortsPlayerState.isOpen()) {
-                        changeQuality(quality);
-                        return i;
-                    }
-
-                    return originalQualityIndex;
-                }
-                i++;
             }
         } catch (Exception ex) {
             Logger.printException(() -> "setVideoQuality failure", ex);

@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -31,6 +32,74 @@ internal object NewFlyoutMenuFeatureFlagFingerprint : Fingerprint(
         literal(45712556)
     )
 )
+
+/**
+ * If this flag is off, the initial video quality of the playback start parameters is ignored
+ * and YouTube automatically chooses the quality when the video starts.
+ */
+internal object InitialVideoQualityFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45408049L)
+    )
+)
+
+/**
+ * If this flag is off, the minimum and maximum quality allowed by the player
+ * are not sent with the SABR requests. Not present in 20.21.
+ */
+internal object SabrQualityConstraintFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45738253L)
+    )
+)
+
+/**
+ * 'Video quality preferences' setting of YouTube settings
+ * (Auto, Higher picture quality, Data saver or Advanced).
+ */
+internal object VideoQualitySettingEnumFingerprint : Fingerprint(
+    name = "<clinit>",
+    filters = listOf(
+        string("VIDEO_QUALITY_SETTING_ADVANCED_MENU"),
+        fieldAccess( // VIDEO_QUALITY_SETTING_ADVANCED_MENU enum value.
+            opcode = Opcode.SPUT_OBJECT,
+            definingClass = "this",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * Video quality setting used for a video ID, sent with the SABR requests.
+ */
+internal fun getVideoQualitySettingFingerprint(
+    videoQualitySettingType: String
+) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = videoQualitySettingType,
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
+        methodCall(
+            definingClass = "Ljava/util/Map;",
+            name = "get"
+        ),
+        checkCast(videoQualitySettingType)
+    )
+) {}
+
+/**
+ * Chooses the qualities allowed by the player, when the video starts and again while it plays:
+ * the quality last selected in the quality menu, or an automatic quality.
+ */
+internal fun getVideoQualityConstraintFingerprint(
+    videoQualitySettingMethod: String
+) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Z", "L", "Ljava/lang/String;", "L"),
+    filters = listOf(
+        methodCall(smali = videoQualitySettingMethod)
+    )
+) {}
 
 internal object ShortsQualityChangeObserverPrimaryFeatureFlagFingerprint : Fingerprint(
     filters = listOf(

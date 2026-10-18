@@ -1,3 +1,76 @@
+## [1.48.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.10...v1.48.0-dev.11) (2026-10-17)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Captions:** Restore translations from original caption sources ([#3794](https://github.com/MorpheApp/morphe-patches/issues/3794)) ([46ab900](https://github.com/MorpheApp/morphe-patches/commit/46ab900bd9daa990a4d741a6e7f3dc5611173cdb))
+* **YouTube - Feed cards layout:** Cards sometimes lose spacing ([0658f00](https://github.com/MorpheApp/morphe-patches/commit/0658f0083bc5d143b379097b706d4114a845a08f))
+
+### ✨ New Features
+
+* **YouTube:** Add `Feed video actions` patch ([#3758](https://github.com/MorpheApp/morphe-patches/issues/3758)) ([b263c08](https://github.com/MorpheApp/morphe-patches/commit/b263c08af15eb0a72f6ea707bd49597d95209d29))
+
+## [1.48.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.9...v1.48.0-dev.10) (2026-10-17)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Default video quality:** Forcely disabled automatic stock quality selection and deprecated the code to handle both Stock/Morphe quality selections ([93e0c2b](https://github.com/MorpheApp/morphe-patches/commit/93e0c2b4db27760a22b1e48aef8b87dc330a92bf))
+* **YouTube - Feed cards layout:** Keep horizontal layout for search results on tablets ([0108028](https://github.com/MorpheApp/morphe-patches/commit/0108028df245e0664974d345c58a291f95a1245e))
+* **YouTube - Feed cards layout:** Make new style more consistent ([#3801](https://github.com/MorpheApp/morphe-patches/issues/3801)) ([5dc0d0c](https://github.com/MorpheApp/morphe-patches/commit/5dc0d0c71ef9c9c11709e62568eb9c1778e9a4c7))
+* **YouTube - Minimal miniplayer:** Apply minimized position based on commit [#9d8b0df43](https://github.com/MorpheApp/morphe-patches/issues/9d8b0df43) insets ([7f9fb1f](https://github.com/MorpheApp/morphe-patches/commit/7f9fb1f7df988afc7a21ffa4735227a404c06444))
+* **YouTube - Minimal miniplayer:** Show DeArrow title on type 1 style ([72f7b82](https://github.com/MorpheApp/morphe-patches/commit/72f7b82c8ac8d9032d7834abb10ae9f9b86c5ba1))
+* **YouTube - New feed cards layout:** Rounded edges and padding was wrong ([7d54662](https://github.com/MorpheApp/morphe-patches/commit/7d5466217e5dc7ea1ea323d4f9d7a6baf9f42f8a))
+* **YouTube:** Force show translucent navigation bar ([e5bb8bf](https://github.com/MorpheApp/morphe-patches/commit/e5bb8bfea55258a6926243fbfb7ed19fffea3925))
+* **YouTube:** Light/Dark theme colors are wrong ([93cf169](https://github.com/MorpheApp/morphe-patches/commit/93cf169e8fa7f96bef741fe5f02f5654b2ae70f6))
+* **YouTube:** Status bar becomes dark ([9d8b0df](https://github.com/MorpheApp/morphe-patches/commit/9d8b0df43ae3cd4dfc1a537311d4dfc6aa600ac5))
+
+### ✨ New Features
+
+* **Reddit:** Add `Show flairs in home feed` patch ([#3260](https://github.com/MorpheApp/morphe-patches/issues/3260)) ([93501dd](https://github.com/MorpheApp/morphe-patches/commit/93501dd4b31a103c37509b1c26f7644ca9082aff))
+* **YouTube - Player icon style:** Add Series tracker button icons ([179ff66](https://github.com/MorpheApp/morphe-patches/commit/179ff663d36806e11bd3869df8d1a66287072a7f))
+
+## [1.48.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.8...v1.48.0-dev.9) (2026-10-16)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Add to queue:** Fix Premium-style queue bugs ([#3752](https://github.com/MorpheApp/morphe-patches/issues/3752)) ([b07a6ac](https://github.com/MorpheApp/morphe-patches/commit/b07a6ac48bae7e6cd0336d4afdc12e368d5442d4))
+* **YouTube - Forced video codec:** Excluded VP9 stream with forced AVC superseeded by Shorts VP9 with SABR restarting fix ([2335a8f](https://github.com/MorpheApp/morphe-patches/commit/2335a8f22eed59d36f1c3c7f0cb8de9fa846207f))
+* **YouTube - Minimal comments button:** Hide page selector with new layout ([30a9dd1](https://github.com/MorpheApp/morphe-patches/commit/30a9dd17c87658ae405c6223661e478bce2a9629))
+* **YouTube - Reload video:** Videos playing in the feed replace the reloaded video ([92e41c4](https://github.com/MorpheApp/morphe-patches/commit/92e41c43d2a0deb766f081e5b36e1556675e4090))
+* **YouTube - Video quality:** Improved Shorts VP9 SABR loop restarting fix ([aeccfab](https://github.com/MorpheApp/morphe-patches/commit/aeccfabc5c4f256654ab209ff0741a3b5fada31c))
+* **YouTube:** Fixed some 21.42+ fingerprints ([7bf6e1f](https://github.com/MorpheApp/morphe-patches/commit/7bf6e1fe85a75f9fcac4869d5ef548b21e2e5534))
+
+### ✨ New Features
+
+* **YouTube - Captions:** Add additional automatic translation languages ([#3754](https://github.com/MorpheApp/morphe-patches/issues/3754)) ([c036e5f](https://github.com/MorpheApp/morphe-patches/commit/c036e5f2e30b467a7c2e3af3ae948c0715efec48))
+* **YouTube Music - Third-party lyrics:** Custom romanization target ([#3750](https://github.com/MorpheApp/morphe-patches/issues/3750)) ([0dfc834](https://github.com/MorpheApp/morphe-patches/commit/0dfc8347118bb9c10e8dd8275996d31afb5f5d37))
+* **YouTube:** Added new feed card layout ([#3768](https://github.com/MorpheApp/morphe-patches/issues/3768)) ([02a4c3d](https://github.com/MorpheApp/morphe-patches/commit/02a4c3d36745f133bfae4983aa615984970631a2))
+* **YouTube:** Added new feed cards layout without action buttons ([#3769](https://github.com/MorpheApp/morphe-patches/issues/3769)) ([096b0bb](https://github.com/MorpheApp/morphe-patches/commit/096b0bb3e7a98e00ba56ce3dc4260c0b7106e905))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.42.0` ([1302ae1](https://github.com/MorpheApp/morphe-patches/commit/1302ae1d890588d388b18d0c1cd54313689a2ea7))
+* **YouTube:** Add experimental support for `21.42.240` ([463a4ba](https://github.com/MorpheApp/morphe-patches/commit/463a4ba0a33cdc72111bf3a5d2d4698d1d3c6bf5))
+
+## [1.48.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.7...v1.48.0-dev.8) (2026-10-15)
+
+### 🐛 Bug Fixes
+
+* Export only filtered logs and stream file exports efficiently ([#3746](https://github.com/MorpheApp/morphe-patches/issues/3746)) ([e04c72d](https://github.com/MorpheApp/morphe-patches/commit/e04c72d8e068204c3a2178b75451fb8bfbb4d755))
+* **YouTube - Hide layout components:** Video titles being hidden on `20.21.37` ([fead993](https://github.com/MorpheApp/morphe-patches/commit/fead993a68706580163825403b3ffd60a6866333))
+* **YouTube - Hide preview comment:** Removed the timestamp from the Spanned String instead of disabling its tap logic ([cca6aca](https://github.com/MorpheApp/morphe-patches/commit/cca6aca240ef99e55740af20342a5d28deda6275))
+* **YouTube - Miniplayer:** Match minimal miniplayer icons by content description name instead of resource id ([4502949](https://github.com/MorpheApp/morphe-patches/commit/4502949a61f6d5d39f72e4052f083cbe1460bd09))
+* **YouTube - Open system share sheet:** Build link from share entity ([#3735](https://github.com/MorpheApp/morphe-patches/issues/3735)) ([92e9eb9](https://github.com/MorpheApp/morphe-patches/commit/92e9eb9d0fa941719c6cf7c048dae16ef163812c))
+* **YouTube - Restore original titles:** Do not reload the same video title once the player is opened ([1648848](https://github.com/MorpheApp/morphe-patches/commit/1648848f2b3b2215f0ed3e6a08ddc0877a9365de))
+* **YouTube - Video quality:** Fix VP9 Shorts restarting in a loop with spoofed SABR streams ([ef04cc3](https://github.com/MorpheApp/morphe-patches/commit/ef04cc3c12131d0667e598a935425143d1a6dcf1))
+* **YouTube - VideoInformation:** Videos loaded in the background replace the video and playlist IDs of the player ([0ed3595](https://github.com/MorpheApp/morphe-patches/commit/0ed35954b6db94a12956c98b8db620e09dc65dd5))
+* **YouTube:** Some external links can not be opened ([128b8d4](https://github.com/MorpheApp/morphe-patches/commit/128b8d4104e17a5b2527c3f951026f9ff79b4ea6))
+* **YouTube:** Watch page background turns black in light mode ([4667cb0](https://github.com/MorpheApp/morphe-patches/commit/4667cb0ef1d13ee756c87976801f366869d7144d))
+
+### ✨ New Features
+
+* **YouTube - Channel search:** Added loading animation during searching ([d3fc642](https://github.com/MorpheApp/morphe-patches/commit/d3fc6421ca3f8e7ac6cc162d1a51b24c4b087e6e))
+* **YouTube:** Add `Series tracking` patch ([#3114](https://github.com/MorpheApp/morphe-patches/issues/3114)) ([d98558f](https://github.com/MorpheApp/morphe-patches/commit/d98558fde76a7d2f49579a9f794423cd765211c9))
+
 ## [1.48.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.6...v1.48.0-dev.7) (2026-10-14)
 
 ### 🐛 Bug Fixes

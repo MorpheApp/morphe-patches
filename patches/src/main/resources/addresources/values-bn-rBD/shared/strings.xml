@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">রঙ রিসেট করুন</string>
   <string name="morphe_settings_color_invalid">অবৈধ রঙ</string>
   <string name="morphe_settings_restart_title">পুনরায় আরম্ভ করা আবশ্যক</string>
-  <string name="morphe_settings_restart_dialog_message">এই পরিবর্তন কার্যকর করার জন্য অ্যাপটি পুনরায় চালু করুন।</string>
+  <string name="morphe_settings_restart_dialog_message">এই পরিবর্তন কার্যকর করতে অ্যাপটি পুনরায় চালু করুন</string>
   <string name="morphe_settings_restart">আবার চালু করুন</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">আমদানি করুন</string>
   <string name="morphe_settings_import_copy">অনুলিপি করুন</string>
   <string name="morphe_settings_import_reset">Morphe সেটিং ডিফল্ট সেট করা হয়েছে</string>
-  <string name="morphe_settings_import_success">%d সেটিং আমদানি হয়েছে</string>
+  <string name="morphe_settings_import_success">%s সেটিং আমদানি হয়েছে</string>
   <string name="morphe_settings_import_failure_parse">আমদানি করা যায়নি: %s</string>
   <string name="morphe_settings_navigate_up">উপরে নেভিগেট করুন</string>
   <string name="morphe_settings_search_hint">অনুসন্ধান সেটিংস</string>
@@ -101,9 +101,9 @@ Second \"item\" text"</string>
   <string name="morphe_debug_stacktrace_title">ডিবাগ লগ স্ট্যাক ট্রেস</string>
   <string name="morphe_debug_stacktrace_summary">ত্রুটি সনাক্ত করতে ডিবাগ লগে স্ট্যাক ট্রেস অন্তর্ভুক্ত করে</string>
   <string name="morphe_debug_toast_on_error_title">Morphe এর ত্রুটির ক্ষেত্রে টোস্ট দেখান</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"ত্রুটি \"toast\" বন্ধ করে Morphe ত্রুটি বিজ্ঞপ্তিগুলি লুকানো হয়।
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"ত্রুটি টোস্ট বন্ধ করলে সমস্ত Morphe ত্রুটি বিজ্ঞপ্তি লুকিয়ে যাবে।
 
-আপনি কোনও অপ্রত্যাশিত ঘটনার বিষয়ে অবহিত হবেন না।"</string>
+আপনি কোনো অপ্রত্যাশিত ঘটনার বিষয়ে জানতে পারবেন না।"</string>
   <string name="morphe_debug_export_logs_title">ডিবাগ লগগুলি রফতানি করুন</string>
   <string name="morphe_debug_export_logs_summary">Morphe ডিবাগ লগগুলি রফতানি করুন</string>
   <string name="morphe_debug_export_logs_success">সেটিং সফলভাবে আমদানি করা হয়েছে</string>
@@ -179,31 +179,31 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG সেটিংস খুলুন।</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG គয় ইনস্টল না। ইনস্টল করুন।</string>
+  <string name="gms_core_toast_not_installed_message">MicroG ইনস্টল করা নেই। এটি ইনস্টল করুন।</string>
   <string name="gms_core_dialog_title">পদক্ষেপ প্রয়োজন</string>
-  <string name="gms_core_dialog_outdated_message">"আপনার MicroG v%1s সংস্করণটি পুরানো এবং সমস্যার কারণ হতে পারে।
+  <string name="gms_core_dialog_outdated_message">"আপনার MicroG v%1s সংস্করণ পুরনো এবং এটি সমস্যার সৃষ্টি করতে পারে।
 
-অনুগ্রহ করে MicroG-এর সর্বশেষ সংস্করণ v%2s-এ আপডেট করুন।"</string>
+দয়া করে MicroG-কে সর্বশেষ সংস্করণ v%2s-এ আপডেট করুন।"</string>
   <string name="gms_core_dialog_update_text">আপডেট করুন</string>
   <string name="gms_core_dialog_ignore_text">উপেক্ষা করুন</string>
-  <string name="gms_core_dialog_conflict_message">"ইনস্টল করা MicroG-টি Morphe-এর দ্বারা সুপারিশ করা হয় না:
+  <string name="gms_core_dialog_conflict_message">"Morphe ইনস্টল করা MicroG-এর ব্যবহারের সুপারিশ করে না:
 
 %1s
 
-এটি আনইনস্টল করতে আলতো চাপুন, তারপর এই অ্যাপটি আবার খুলুন এবং MicroG RE ইনস্টল করুন।"</string>
+এটি আনইনস্টল করতে ট্যাপ করুন, তারপর এই অ্যাপটি পুনরায় খুলুন এবং MicroG RE ইনস্টল করুন।"</string>
   <string name="gms_core_dialog_uninstall_text">আনইনস্টল করুন</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG-এর পটভূমিতে চালানোর অনুমতি নেই।
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"পটভূমিতে চলার জন্য MicroG-এর অনুমতি নেই।
 
-আপনার ফোনের জন্য \"Don't kill my app\" গাইড অনুসরণ করুন এবং MicroG ইনস্টলেশনের জন্য নির্দেশাবলী প্রয়োগ করুন।
+আপনার ফোনের জন্য \"Don't kill my app\" গাইড অনুসরণ করুন এবং নির্দেশাবলী আপনার MicroG ইনস্টলেশনে প্রয়োগ করুন।
 
-এটি অ্যাপ্লিকেশনটি কাজ করার জন্য প্রয়োজন।"</string>
+অ্যাপ্লিকেশনটি কাজ করার জন্য এটি প্রয়োজন।"</string>
   <string name="gms_core_dialog_open_website_text">ওয়েবসাইট খুলুন</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG GmsCore-এর ব্যাটারি অপ্টিমাইজেশন অক্ষম করতে হবে।
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"সমস্যা এড়াতে MicroG-এর ব্যাটারি অপ্টিমাইজেশন বন্ধ থাকতে হবে।
 
-MicroG-এর জন্য ব্যাটারি অপ্টিমাইজেন অক্ষম করা ব্যাটারি ব্যবহারকে নেতিবাচকভាឱে প্রভাবিত করবে না।
+MicroG-এর জন্য ব্যাটারি অপ্টিমাইজেশন বন্ধ করলে ব্যাটারির ব্যবহারে নেতিবাচক প্রভাব পড়বে না।
 
-চালিয়ে যান বোতামটি ট্যাপ করুন এবং অপ্টিমাইজেশন পরিবর্তনগুলি অনুমোদন করুন।"</string>
+চালিয়ে যান বোতামে ট্যাপ করুন এবং অপ্টিমাইজেশন পরিবর্তনের অনুমতি দিন।"</string>
   <string name="gms_core_dialog_continue_text">এগিয়ে যান</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG ব্যাটারি অপটিমাইজেশন ডায়ালগ দেখান</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"এটা নিষ্ক্রিয় করলে MicroG ব্যাটারি অপটিমাইজেশন প্রম্পট লুকানো হবে।

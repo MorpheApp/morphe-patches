@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Diseño</string>
   <string name="morphe_copy_text_title">Copiar texto</string>
   <string name="morphe_copy_text_summary">Permite seleccionar y copiar texto en publicaciones y comentarios. Desactiva el contraer comentarios</string>
-  <string name="morphe_copy_text_user_dialog_message">Contraer comentarios dejará de funcionar mientras \'Copiar texto\' esté activado.</string>
+  <string name="morphe_copy_text_user_dialog_message">Contraer comentarios dejará de funcionar mientras \'Copiar texto\' esté activado</string>
   <string name="morphe_custom_font_title">Fuente personalizada</string>
   <string name="morphe_custom_font_summary">Carga un archivo de fuente TTF u OTF personalizado desde la ruta de abajo. Activar esta opción también desactiva Forzar fuente del sistema</string>
   <string name="morphe_custom_font_file_path_title">Archivo de fuente personalizada</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Oculta las estanterías de tendencias del feed y de las sugerencias de búsqueda</string>
   <string name="morphe_remove_notification_dialog_title">Eliminar diálogo de sugerencia de notificaciones</string>
   <string name="morphe_remove_notification_dialog_summary">Descarta automáticamente el diálogo de sugerencia de notificaciones al visitar un subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Mostrar etiquetas en el feed principal</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Muestra insignias de etiquetas en el feed principal</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Algunos elementos del feed pueden no mostrar una etiqueta</string>
   <string name="morphe_show_view_count_title">Mostrar recuento de visualizaciones en las publicaciones</string>
   <string name="morphe_show_view_count_summary">Limitación: Solo disponible si la respuesta de la API incluye el recuento de visualizaciones</string>
   <string name="morphe_flip_post_action_bar_title">Invertir barra de acciones de publicaciones</string>

@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">طرح‌بندی</string>
   <string name="morphe_copy_text_title">کپی متن</string>
   <string name="morphe_copy_text_summary">امکان انتخاب و کپی کردن متن در پست‌ها و نظرات را فراهم می‌کند. جمع‌شدن نظرات را غیرفعال می‌کند</string>
-  <string name="morphe_copy_text_user_dialog_message">هنگامی که «کپی متن» فعال باشد، جمع‌کردن نظرات از کار می‌افتد.</string>
+  <string name="morphe_copy_text_user_dialog_message">نظرات جمع‌شونده تا زمان فعال بودن کپی متن کار نخواهند کرد</string>
   <string name="morphe_custom_font_title">قلم سفارشی</string>
   <string name="morphe_custom_font_summary">فایل قلم TTF یا OTF سفارشی را از مسیر زیر بارگیری کنید. فعال‌کردن این گزینه، «اجبار قلم سیستم» را نیز خاموش می‌کند</string>
   <string name="morphe_custom_font_file_path_title">فایل قلم سفارشی</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">قفسه‌های محبوب را از خوراک و پیشنهادهای جست‌وجو پنهان می‌کند</string>
   <string name="morphe_remove_notification_dialog_title">حذف گفت‌وگوی پیشنهاد اعلان</string>
   <string name="morphe_remove_notification_dialog_summary">هنگام بازدید از یک ساب‌ردیت، گفت‌وگوی پیشنهاد اعلان را به‌طور خودکار می‌بندد</string>
+  <string name="morphe_show_flairs_in_home_feed_title">نمایش برچسب‌ها در فید خانه</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">نمایش نشانگرهای برچسب پست‌ها در فید خانه</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">برخی موارد فید ممکن است برچسب نمایش ندهند</string>
   <string name="morphe_show_view_count_title">نمایش تعداد بازدید در پست‌ها</string>
   <string name="morphe_show_view_count_summary">محدودیت: فقط وقتی در پاسخ API تعداد بازدید وجود داشته باشد در دسترس است</string>
   <string name="morphe_flip_post_action_bar_title">برگرداندن نوار اقدامات پست</string>

@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">輸入套件名稱</string>
   <string name="morphe_external_downloader_other_item">其他</string>
   <string name="morphe_external_downloader_not_found_title">找不到應用程式</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s 未安裝。請安裝它。</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s 尚未安裝。請安裝它</string>
   <string name="morphe_external_downloader_package_not_found_warning">"找不到具有套件名稱 %s 的已安裝應用程式
 
 請確認套件名稱正確且應用程式已安裝"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe 遊戲</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">你的觀看記錄未被儲存。&lt;br&gt;&lt;br&gt;這很可能是由 DNS 廣告封鎖器或網路代理所導致。&lt;br&gt;&lt;br&gt;若要解決此問題，請將 &lt;b&gt;s.youtube.com&lt;/b&gt; 加入白名單，或關閉所有 DNS 封鎖器和代理。</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br&gt;&lt;br&gt;This most likely is caused by a DNS ad blocker or network proxy.&lt;br&gt;&lt;br&gt;To fix this, whitelist &lt;b&gt;s.youtube.com&lt;/b&gt; or turn off all DNS blockers and proxies</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">不再顯示</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">偽裝影片串流</string>
@@ -99,7 +99,7 @@ Second \"item\" text"</string>
 
 將 %2$s 設定為預設客戶端嗎？"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">切換</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">關閉此設定可能會導致播放問題。</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">關閉此設定可能會導致播放問題</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">試試啟用：偽裝視訊串流 &gt; Android VR 登入</string>
@@ -134,7 +134,7 @@ Second \"item\" text"</string>
 • 如果你變更 Google 密碼，或在 Google 設定中取消註冊這個裝置，則需要重新登入。"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暫時不可用（API 已逾時）</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR 登入逾期，請再次登入 VR</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 暫時不可用（狀態 %d）</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 暫時無法使用（狀態 %s）</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 暫時不可用</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">無法登入 VR，網站驗證未獲批准</string>
   <string name="morphe_oauth2_connection_failure_auth_error">無法登入 VR：%s</string>
@@ -193,11 +193,11 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">偵錯日誌協定緩衝區</string>
   <string name="morphe_debug_protobuffer_summary">為開發者新增額外的紀錄資訊，以便識別應用程式元件</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"啟用這項設定將會記錄額外的版面配置資料，包括部份使用者介面元件上的螢幕文字。
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Enabling this setting will log additional layout data, including on-screen text for some UI components.
 
-這有助於在建立自訂篩選器時識別元件。
+This can help identify components when creating custom filters.
 
-然而，啟用這項功能也會記錄部份使用者資料，例如你的 IP 位址。"</string>
+However, enabling this will also log some user data such as your IP address"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">自訂篩選器</string>
   <string name="morphe_custom_filter_screen_summary">設定自訂篩選器以隱藏任何元件</string>
@@ -238,11 +238,11 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">偽裝應用程式版本</string>
   <string name="morphe_spoof_app_version_summary">欺騙伺服器，使其認為您正在使用較舊的應用程式版本，以恢復舊版使用者介面功能</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"應用程式版本將被偽裝為舊版本。
+  <string name="morphe_spoof_app_version_user_dialog_message">"App version will be spoofed to an older version.
 
-這將改變應用程式的外觀和功能，但可能會發生未知的副作用。
+This will change the appearance and features of the app, but unknown side effects may occur.
 
-如果之後關閉此設定，建議清除應用程式資料以避免 UI 錯誤。"</string>
+If later turned off, it is recommended to clear the app data to prevent UI bugs"</string>
   <string name="morphe_spoof_app_version_target_title">應用程式偽裝目標版本</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">應用程式更新頻率</string>
@@ -265,7 +265,7 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">暫時無法顯示不喜歡人數（API 逾時）</string>
-  <string name="morphe_ryd_failure_connection_status_code">無法顯示不喜歡人數（狀態 %d）</string>
+  <string name="morphe_ryd_failure_connection_status_code">無法顯示不喜歡人數（狀態 %s）</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">無法顯示「不喜歡」數量（用戶端 API 限制）</string>
   <string name="morphe_ryd_failure_generic">無法顯示不喜歡人數 (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">暫時無法顯示不喜歡人數 - 客戶端 API 速率限制生效</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API 取得投票呼叫數</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">未進行網路呼叫</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">已發出 %d 個網路呼叫</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">已進行 %s 次網路呼叫</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API 取得投票呼叫數</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">未發生網路呼叫逾時</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d 個網路呼叫逾時</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">有 %s 次網路呼叫逾時</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API 客戶端速率限制</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">未遭遇客戶端速率限制</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">客戶端速率限制已遭遇 %d 次</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d 毫秒</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">遭遇用戶端速率限制 %s 次</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s 毫秒</string>
 </resources>

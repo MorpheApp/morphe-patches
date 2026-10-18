@@ -12,27 +12,22 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.hookVideoStarted
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.getReference
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.Reference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/PreferredCaptionLanguagePatch;"
@@ -40,26 +35,6 @@ private const val EXTENSION_SUBTITLE_MANAGER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/PreferredCaptionLanguagePatch$SubtitleManagerInterface;"
 private const val EXTENSION_CAPTION_TRACK_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/PreferredCaptionLanguagePatch$CaptionTrackInterface;"
-
-/**
- * Adds a public final method with no parameters.
- */
-private fun MutableClass.addHelperMethod(name: String, returnType: String, smali: String) {
-    methods.add(
-        ImmutableMethod(
-            type,
-            name,
-            listOf(),
-            returnType,
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-            null,
-            null,
-            MutableMethodImplementation(2),
-        ).toMutable().apply {
-            addInstructions(0, smali)
-        }
-    )
-}
 
 internal val preferredCaptionLanguagePatch = bytecodePatch(
     description = "Adds an option to automatically select captions in your preferred language " +
@@ -69,6 +44,7 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         startVideoInformerPatch,
+        versionCheckPatch,
         videoInformationPatch
     )
 
@@ -79,19 +55,29 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
         // Add interfaces and helper methods to allow extension code to call obfuscated code.
 
-        CaptionTrackIsDisableOptionFingerprint.classDef.apply {
+        val isDisableOptionFingerprint: Fingerprint
+        val isAutoTranslatedFingerprint: Fingerprint
+        if (is_21_02_or_greater) {
+            isDisableOptionFingerprint = CaptionTrackIsDisableOptionFingerprint
+            isAutoTranslatedFingerprint = CaptionTrackIsAutoTranslatedFingerprint
+        } else {
+            isDisableOptionFingerprint = CaptionTrackIsDisableOptionLegacyFingerprint
+            isAutoTranslatedFingerprint = CaptionTrackIsAutoTranslatedLegacyFingerprint
+        }
+
+        isDisableOptionFingerprint.classDef.apply {
             /**
              * Field access or getter call of the matched instruction.
              */
             fun getterSmali(fingerprint: Fingerprint, matchIndex: Int): String {
-                val instruction = fingerprint.instructionMatches[matchIndex].instruction
-                return when (val reference = instruction.getReference<Reference>()) {
-                    is FieldReference -> "iget-object v0, p0, $reference"
-                    is MethodReference -> """
+                val reference = fingerprint.instructionMatches[matchIndex].instruction.getReference<Reference>()
+                return if (is_21_02_or_greater) {
+                    "iget-object v0, p0, $reference"
+                } else {
+                    """
                         invoke-virtual { p0 }, $reference
                         move-result-object v0
                     """
-                    else -> throw PatchException("Unexpected reference: $reference")
                 }
             }
 
@@ -100,8 +86,8 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             addHelperMethod(
                 "patch_getLanguageCode",
                 "Ljava/lang/String;",
-                """
-                    ${getterSmali(CaptionTrackIsDisableOptionFingerprint, 1)}
+                smali = """
+                    ${getterSmali(isDisableOptionFingerprint, 1)}
                     return-object v0
                 """
             )
@@ -109,18 +95,17 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             addHelperMethod(
                 "patch_getVssId",
                 "Ljava/lang/String;",
-                """
-                    ${getterSmali(CaptionTrackIsAutoTranslatedFingerprint, 0)}
+                smali = """
+                    ${getterSmali(isAutoTranslatedFingerprint, 0)}
                     return-object v0
                 """
             )
         }
 
         DefaultCaptionTrackFingerprint.classDef.apply {
-            val tracksManagerType = CaptionTracksManagerDirectTracksFingerprint.classDef.type
-            val tracksManagerField = fields.single { field ->
-                field.type == tracksManagerType
-            }
+            val tracksManagerField = SubtitleManagerDirectTracksFingerprint(
+                CaptionTracksManagerDirectTracksFingerprint.method
+            ).instructionMatches[0].instruction.getReference<FieldReference>()!!
 
             interfaces.add(EXTENSION_SUBTITLE_MANAGER_INTERFACE)
 
@@ -128,7 +113,7 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
                 addHelperMethod(
                     name,
                     "Ljava/util/List;",
-                    """
+                    smali = """
                         iget-object v0, p0, $tracksManagerField
                         if-eqz v0, :null
                         invoke-virtual { v0 }, ${tracksFingerprint.method}
@@ -139,8 +124,24 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
                 )
             }
 
+            val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(
+                CaptionTrackBuilderBuildFingerprint.method.returnType
+            ).method
+
             addTracksGetter("patch_getDirectCaptionTracks", CaptionTracksManagerDirectTracksFingerprint)
             addTracksGetter("patch_getAutoTranslateCaptionTracks", CaptionTracksManagerAutoTranslateTracksFingerprint)
+            addHelperMethod(
+                "patch_getDefaultCaptionSource",
+                EXTENSION_CAPTION_TRACK_INTERFACE,
+                smali = """
+                    iget-object v0, p0, $tracksManagerField
+                    if-eqz v0, :null
+                    invoke-virtual { v0 }, $defaultSourceMethod
+                    move-result-object v0
+                    :null
+                    return-object v0
+                """
+            )
         }
 
         // Override the default caption track.

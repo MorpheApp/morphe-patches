@@ -37,17 +37,6 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Исклучи ги ажурирањата на изгледот</string>
   <string name="morphe_disable_layout_updates_summary">Спречува дека серверот ќе го ажурира изгледот на апликацијата</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"Изгледот на апликацијата ќе се врати на изгледот што се користеше при првата инсталација.
-
-Некои странични изгледи можеби нема да се вратат.
-
-Промените вклучуваат:
-• Компоненти во изворното мени на плеерот (или поврзани поставки) можеби нема да функционираат.
-• Бројките што се вртат не се анимирани.
-• Прикажана е картичката Библиотека.
-• Делот за музика од описот на видеото можеби нема да функционира.
-• Објектите од менито на плеерот не можат да бидат скриени.
-• Копчето за менување сметка можеби не се појавува на картичката Библиотека."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Вклучи филтер за менито Flyout</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Филтер на менито Flyout</string>
@@ -142,7 +131,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_videos_section_title">Прикриј дел „Препорачани видеа“</string>
   <string name="morphe_hide_hype_points_title">Скриј ги поените за поттик</string>
   <string name="morphe_hide_info_cards_section_title">Прикриј дел „Информациски картички“</string>
-  <string name="morphe_hide_key_concepts_section_title">Прикриј дел „Клучни концепти“</string>
   <string name="morphe_hide_quizzes_section_title">Прикриј дел „Квизови“</string>
   <string name="morphe_hide_subscribe_button_title">Скриј копче за претплатување</string>
   <string name="morphe_hide_transcript_section_title">Прикриј дел „Транскрипт“</string>
@@ -216,6 +204,7 @@ Second \"item\" text"</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_copy_video_link_with_timestamp_button_title">Копирајте го временскиот печат стандардно</string>
   <!-- interaction.copytext.copyTextPatch -->
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Исклучи прозорче за најава на ТВ</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -396,6 +385,7 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Скриј автоматски титри</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">Исклучено</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Поставете колачиња за натписи</string>
   <string name="morphe_caption_cookies_title">Колчиња за титри</string>
@@ -430,9 +420,6 @@ Second \"item\" text"</string>
   <string name="morphe_swap_create_with_notifications_button_title">Заменете го копчето „Креирај“ со копчето „Известувања“</string>
   <string name="morphe_hide_navigation_button_labels_title">Скриј ги ознаките на копчињата за навигација</string>
   <string name="morphe_hide_navigation_bar_title">Скриј лента за навигација</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ова целосно го скрива навигацискиот панел, вклучувајќи ја картичката „Вие“.
-
-За да пристапите до поставките, овозможете ја копчето Поставки преку Општо → Алatна лента → Прикажи поставки."</string>
   <string name="morphe_narrow_navigation_buttons_title">Вклучи тесни навигациски копчиња</string>
   <string name="morphe_narrow_navigation_buttons_summary">Намалување на хоризонталното растојание меѓу копчињата</string>
   <string name="morphe_navigation_bar_animations_title">Овозможете анимации на лентата за навигација</string>
@@ -659,6 +646,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Исклучено</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Исклучи продолжување на мини-плеер</string>
   <string name="morphe_miniplayer_screen_title">Мини-плеер</string>
@@ -727,7 +715,6 @@ Second \"item\" text"</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Спојување на димензии на уредот</string>
   <string name="morphe_spoof_device_dimensions_summary">Овозможувањето на ова може да отклучи повисоки квалитети на видеа</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Вклучувањето на ова може да предизвика прекинување на видео репродукцијата, пократок живот на батеријата и непознати несакани ефекти.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Хептична повратна врска</string>
   <string name="morphe_disable_haptic_feedback_summary">Изберете ги интеракциите што ја зачекуваат вибрацијата на уредот</string>
@@ -737,7 +724,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Исклучи хептична повратна врска при допир и задржување</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Исклучете хептична повратна врска за зумирање</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Ако неодамна ги променивте деталите за најава на вашиот акаунт, отстранете ја и повторно инсталирајте MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Отворете ги линковите во прегледувач</string>
@@ -790,9 +776,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_premium_video_quality_title">Скриј опции за квалитет на Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Вклучувањето на оваа поставка може да користи софтверско декодирање на AV1.
-
-Репродукцијата на видео со AV1 може да запие и да пропушти кадри."</string>
   <string name="morphe_spoof_video_streams_about_title">Несакани ефекти од спојување</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодек AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Недостапен имерзивен режим со 360° VR</string>
@@ -807,4 +790,7 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_auto">Автоматски</string>
   <string name="morphe_player_icon_style_entry_default">Стандардно</string>
   <string name="morphe_player_icon_style_entry_custom">По нарачка</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_cancel">Откажи</string>
+  <string name="morphe_series_tracker_undo">Врати</string>
 </resources>

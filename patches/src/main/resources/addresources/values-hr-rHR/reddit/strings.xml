@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Raspored</string>
   <string name="morphe_copy_text_title">Kopiraj tekst</string>
   <string name="morphe_copy_text_summary">Omogućuje odabir i kopiranje teksta u objavama i komentarima. Onemogućuje sažimanje komentara</string>
-  <string name="morphe_copy_text_user_dialog_message">Sažimanje komentara prestat će raditi dok je omogućeno kopiranje teksta.</string>
+  <string name="morphe_copy_text_user_dialog_message">Sakupljene komentare neće raditi dok je omogućena opcija Kopiranje teksta</string>
   <string name="morphe_custom_font_title">Prilagođeni font</string>
   <string name="morphe_custom_font_summary">Učitajte prilagođenu TTF ili OTF datoteku fonta s putanje ispod. Omogućavanjem ovoga također se isključuje Forsiraj sistemski font</string>
   <string name="morphe_custom_font_file_path_title">Datoteka prilagođenog fonta</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Skriva police Trendova iz feeda i prijedloga za pretraživanje</string>
   <string name="morphe_remove_notification_dialog_title">Uklanja  dijalog s prijedlozima obavijesti</string>
   <string name="morphe_remove_notification_dialog_summary">Automatski zatvara dijalog s prijedlogom obavijesti pri posjetu subredditu</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Prikaži oznake u početnom feedu</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Prikazuje značke oznaka objava u početnom feedu</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Neke stavke feeda možda neće prikazati oznaku</string>
   <string name="morphe_show_view_count_title">Pokaži broj pregleda na objavama</string>
   <string name="morphe_show_view_count_summary">Ograničenje: Dostupno samo ako API odgovor uključuje broj pregleda</string>
   <string name="morphe_flip_post_action_bar_title">Okreni traku s radnjama objave</string>

@@ -1,4 +1,4 @@
-import org.gradle.api.tasks.JavaExec
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 group = "app.morphe"
 
@@ -20,6 +20,20 @@ val patchListGeneratorClasspath = configurations.create("patchListGeneratorClass
 val jamApk = providers.gradleProperty("jamApk")
 val jamOutput = providers.gradleProperty("jamOutput")
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
+
 dependencies {
     // Required due to smali, or build fails. Can be removed once smali is bumped.
     implementation(libs.guava)
@@ -32,8 +46,8 @@ dependencies {
     compileOnly(project(":patches:stub"))
 
     testImplementation(kotlin("test"))
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
+    testImplementation(libs.kotlinx.coroutines.core)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 tasks {

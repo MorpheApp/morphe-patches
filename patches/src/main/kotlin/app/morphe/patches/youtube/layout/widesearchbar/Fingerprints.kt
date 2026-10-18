@@ -11,12 +11,42 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+/**
+ * 21.42+
+ */
 internal object ActionbarRingoViewFingerprint : Fingerprint(
+    classFingerprint = YouTubeDoodlesImageViewFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/widget/ImageView;->setContentDescription(Ljava/lang/CharSequence;)V",
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = $$"Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/widget/ImageView;->setClickable(Z)V",
+        ),
+        opcode(
+            opcode = Opcode.RETURN_OBJECT,
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * 21.41 and lower.
+ */
+internal object ActionbarRingoViewLegacyFingerprint : Fingerprint(
     classFingerprint = YouTubeDoodlesImageViewFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",

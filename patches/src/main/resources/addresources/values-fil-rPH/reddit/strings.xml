@@ -36,7 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Kopyahin ang teksto</string>
   <string name="morphe_copy_text_summary">Nagbibigay-daan sa pagpili at pagkopya ng teksto sa mga post at komento. Hindi pinapagana ang pag-collapse ng mga komento</string>
-  <string name="morphe_copy_text_user_dialog_message">Ang pag-collapse ng mga komento ay hihinto sa paggana habang naka-enable ang Copy text.</string>
+  <string name="morphe_copy_text_user_dialog_message">Magtatigil ang paggana ng mga collapsable na komento habang nakapag-enable ang Copy text</string>
   <string name="morphe_custom_font_title">Pasadyang font</string>
   <string name="morphe_custom_font_summary">Mag-load ng custom na TTF o OTF font file mula sa path sa ibaba. Ang pagpapagana nito ay nagpapahinto din sa Force system font.</string>
   <string name="morphe_custom_font_file_path_title">Pasadyang font file</string>
@@ -58,6 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Itinatago ang mga Trending na shelf mula sa feed at mga mungkahi sa paghahanap</string>
   <string name="morphe_remove_notification_dialog_title">Alisin ang notification suggestion dialog</string>
   <string name="morphe_remove_notification_dialog_summary">Awtomatikong itatanggal ang suhestiyon ng notipikasyon kapag binisita ang isang subreddit</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Ipakita ang mga flair sa feed ng bahay</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Ipinapakita ang mga badge ng post flair sa feed ng bahay</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Maaaring hindi ipakita ang flair sa ilang item sa feed</string>
   <string name="morphe_show_view_count_title">Ipakita ang bilang ng views sa mga post</string>
   <string name="morphe_show_view_count_summary">Limitasyon: Available lamang kung kasama sa tugon ng API ang bilang ng pagtingin</string>
   <string name="morphe_flip_post_action_bar_title">Baligtarin ang action bar ng post</string>

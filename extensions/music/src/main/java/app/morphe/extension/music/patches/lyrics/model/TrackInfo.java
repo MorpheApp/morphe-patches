@@ -20,10 +20,7 @@ import java.util.Objects;
  */
 public record TrackInfo(String title, String artist, String album, int durationSeconds) {
 
-    /**
-     * Key used for caching. Duration is left out so that a metadata update
-     * that only corrects the duration still hits the cache.
-     */
+    /** Cache key. Duration left out so correcting it alone still hits the cache. */
     public String cacheKey() {
         return artist.toLowerCase(Locale.ROOT) + " " + title.toLowerCase(Locale.ROOT);
     }
@@ -33,9 +30,8 @@ public record TrackInfo(String title, String artist, String album, int durationS
     }
 
     /**
-     * Only the title and the artist identify a track. The album and the duration
-     * are left out because the app reports them late, and a metadata update that
-     * fills them in must not read as a track change.
+     * Identity is title and artist only: the app reports the other two late, so filling
+     * them in must not read as a track change.
      */
     @Override
     public boolean equals(@Nullable Object other) {

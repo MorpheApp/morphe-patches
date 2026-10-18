@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">إعادة تعيين اللون</string>
   <string name="morphe_settings_color_invalid">لون غير صالح</string>
   <string name="morphe_settings_restart_title">إعادة التشغيل مطلوبة</string>
-  <string name="morphe_settings_restart_dialog_message">أعد تشغيل التطبيق لكي يسري هذا التغيير.</string>
+  <string name="morphe_settings_restart_dialog_message">أعد تشغيل التطبيق لكي يسري هذا التغيير</string>
   <string name="morphe_settings_restart">إعادة التشغيل</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">استيراد</string>
   <string name="morphe_settings_import_copy">نسخ</string>
   <string name="morphe_settings_import_reset">إعادة تعيين إعدادات Morphe إلى الوضع الافتراضي</string>
-  <string name="morphe_settings_import_success">تم استيراد %d إعدادات</string>
+  <string name="morphe_settings_import_success">تم استيراد %s إعدادات</string>
   <string name="morphe_settings_import_failure_parse">فشل الاستيراد: %s</string>
   <string name="morphe_settings_navigate_up">الانتقال لأعلى</string>
   <string name="morphe_settings_search_hint">بحث الإعدادات</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_title">عرض ملاحظة عند وجود خطأ في Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"يؤدي إيقاف تشغيل ملاحظات الأخطاء إلى إخفاء كافة إشعارات أخطاء Morphe.
 
-لن يتم إعلامك بأي أخطاء غير متوقعة."</string>
+لن يتم إعلامك بأي أخطاء غير متوقعة"</string>
   <string name="morphe_debug_export_logs_title">تصدير سجلات تصحيح الأخطاء</string>
   <string name="morphe_debug_export_logs_summary">تصدير سجلات تصحيح Morphe</string>
   <string name="morphe_debug_export_logs_success">تم تصدير سجلات التصحيح بنجاح</string>
@@ -179,31 +179,31 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">فتح إعدادات MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG لم يتم تثبيته. قم بتثبيته.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG لم يتم تثبيته. قم بتثبيته</string>
   <string name="gms_core_dialog_title">الإجراء مطلوب</string>
   <string name="gms_core_dialog_outdated_message">"إصدار MicroG v%1s لديك قديم وقد يسبب مشاكل.
 
-يرجى تحديث MicroG إلى أحدث إصدار v%2s."</string>
+يرجى تحديث MicroG إلى أحدث إصدار v%2s"</string>
   <string name="gms_core_dialog_update_text">تحديث</string>
   <string name="gms_core_dialog_ignore_text">تجاهل</string>
   <string name="gms_core_dialog_conflict_message">"MicroG الذي تم تثبيته غير موصّى به من قِبل Morphe:
 
 %1s
 
-انقر لإزالته، ثم أعد فتح هذا التطبيق وقم بتثبيت MicroG RE."</string>
+انقر لإزالته، ثم أعد فتح هذا التطبيق وقم بتثبيت MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">إلغاء التثبيت</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"لا يملك MicroG صلاحية التشغيل في الخلفية.
 
 اتبَع دليل \"Don't kill my app\" الخاص بجوالك، وطبّق التعليمات على تثبيت MicroG.
 
-هذا ضروري لعمل التطبيق."</string>
+هذا ضروري لعمل التطبيق"</string>
   <string name="gms_core_dialog_open_website_text">فتح الموقع</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">" تحسينات البطارية يجب تعطيلها لمنع المشكلات MicroG.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"يجب تعطيل تحسينات البطارية في MicroG لمنع حدوث مشكلات.
 
-تعطيل تحسينات البطارية لـ MicroG لا يضغظ على استهلاك البطارية.
+لا يؤثر تعطيل تحسينات البطارية لـ MicroG سلبًا على استخدام البطارية.
 
- انقر على زر متابعة و اسمح بتغييرات التحسين."</string>
+انقر فوق زر المتابعة واسمح بتغييرات التحسين"</string>
   <string name="gms_core_dialog_continue_text">متابعة</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">عرض نافذة تحسين بطارية MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"تعطيل هذا سيخفي مطالبة تحسين البطارية لـ MicroG.

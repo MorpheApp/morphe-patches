@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Réinitialiser la couleur</string>
   <string name="morphe_settings_color_invalid">Couleur invalide</string>
   <string name="morphe_settings_restart_title">Redémarrage nécessaire</string>
-  <string name="morphe_settings_restart_dialog_message">Redémarrez l\'application pour que cette modification prenne effet.</string>
+  <string name="morphe_settings_restart_dialog_message">Redémarrez l\'application pour que cette modification prenne effet</string>
   <string name="morphe_settings_restart">Redémarrer</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importer</string>
   <string name="morphe_settings_import_copy">Copier</string>
   <string name="morphe_settings_import_reset">Réinitialisation des paramètres de Morphe aux valeurs par défaut</string>
-  <string name="morphe_settings_import_success">%d paramètres importés</string>
+  <string name="morphe_settings_import_success">%s paramètres importés</string>
   <string name="morphe_settings_import_failure_parse">Importation échouée : %s</string>
   <string name="morphe_settings_navigate_up">Revenir en haut</string>
   <string name="morphe_settings_search_hint">Rechercher des paramètres</string>
@@ -104,7 +104,7 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_debug_toast_on_error_title">Afficher une notification en cas d\'erreur de Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Désactiver les notifications toast d'erreur masque toutes les notifications d'erreur de Morphe.
 
-Vous ne serez plus averti en cas d'événements inattendus."</string>
+Vous ne serez averti d'aucun événement inattendu"</string>
   <string name="morphe_debug_export_logs_title">Exporter les journaux de débogage</string>
   <string name="morphe_debug_export_logs_summary">Exporter les journaux de débogage de Morphe</string>
   <string name="morphe_debug_export_logs_success">Les journaux de débogage ont été exportés avec succès</string>
@@ -180,31 +180,31 @@ Le comportement a disparu plus tôt au cours de la recherche, donc plusieurs ind
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Ouvrir les paramètres de MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG n\'est pas installé. Installez-le.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG n\'est pas installé. Installez-le</string>
   <string name="gms_core_dialog_title">Action nécessaire</string>
   <string name="gms_core_dialog_outdated_message">"Votre version de MicroG v%1s est obsolète et peut entraîner des problèmes.
 
-Veuillez mettre à jour MicroG vers la dernière version v%2s."</string>
+Veuillez mettre à jour MicroG vers la dernière version v%2s"</string>
   <string name="gms_core_dialog_update_text">Mettre à jour</string>
   <string name="gms_core_dialog_ignore_text">Ignorer</string>
   <string name="gms_core_dialog_conflict_message">"Le MicroG installé n'est pas recommandé par Morphe :
 
 %1s
 
-Appuyez pour le désinstaller, puis rouvrez cette application et installez MicroG RE."</string>
+Appuyez pour le désinstaller, puis rouvrez cette application et installez MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Désinstaller</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG n'a pas l'autorisation de fonctionner en arrière-plan.
 
-Suivez le guide 'Don't kill my app' pour votre téléphone et appliquez les instructions à votre installation de MicroG.
+Suivez le guide \"Don't kill my app\" pour votre téléphone et appliquez les instructions à votre installation de MicroG.
 
-Cela est nécessaire pour que l'application fonctionne correctement."</string>
+Cela est nécessaire pour que l'application fonctionne correctement"</string>
   <string name="gms_core_dialog_open_website_text">Ouvrir le site web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Les optimisations de la batterie doivent être désactivées pour MicroG pour éviter des problèmes.
 
 Désactiver les optimisations de batterie pour MicroG n'aura pas d'impact négatif sur l'autonomie de la batterie.
 
-Appuyez sur le bouton 'Continuer' et autorisez la modification des optimisations."</string>
+Appuyez sur le bouton 'Continuer' et autorisez la modification des optimisations"</string>
   <string name="gms_core_dialog_continue_text">Continuer</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Afficher la boîte de dialogue d\'optimisation de la batterie pour MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Désactiver cela masquera l'invite d'optimisation de la batterie de MicroG.

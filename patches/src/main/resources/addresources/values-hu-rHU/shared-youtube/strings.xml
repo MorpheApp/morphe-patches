@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Csomag név beírása</string>
   <string name="morphe_external_downloader_other_item">Egyéb</string>
   <string name="morphe_external_downloader_not_found_title">Az alkalmazás nincs telepítve</string>
-  <string name="morphe_external_downloader_not_installed_warning">A(z) %s nincs telepítve. Kérjük, telepítse.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s nincs telepítve. Kérjük, telepítse</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Nem található telepített alkalmazás a megadott csomagnévvel: %s
 
 Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."</string>
@@ -84,7 +84,7 @@ Az ikon mindenhol történő megváltoztatásához futtasd újra a javítást, �
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe lejátszás</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Értesítés</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">A megtekintési előzmények mentése nem történik meg.&lt;br&gt;&lt;br&gt;Ezt valószínűleg egy DNS-hirdetésblokkoló vagy hálózati proxy okozza.&lt;br&gt;&lt;br&gt;A probléma megoldásához vegye fel az engedélyezőlistára az &lt;b&gt;s.youtube.com&lt;/b&gt; domaint vagy kapcsolja ki az összes DNS-blokkolót és proxyt.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">A megtekintési előzmények mentése nem történik meg.&lt;br&gt;&lt;br&gt;Ezt valószínűleg egy DNS-hirdetésblokkoló vagy hálózati proxy okozza.&lt;br&gt;&lt;br&gt;A probléma megoldásához vegye fel az engedélyezőlistára az &lt;b&gt;s.youtube.com&lt;/b&gt; domaint vagy kapcsolja ki az összes DNS-blokkolót és proxyt</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne jelenjen meg többet</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Videó streamek hamisítása</string>
@@ -99,7 +99,7 @@ Ha YouTube Premium-felhasználó vagy, ez a beállítás nem feltétlenül szük
 
 Legyen %2$s az alapértelmezett kliens?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Váltás</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Ennek a beállításnak a kikapcsolása lejátszási problémákat okozhat.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Ennek a beállításnak a kikapcsolása lejátszási problémákat okozhat</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Próbálja meg a következők engedélyezését: Spoof video streams &gt; Android VR bejelentkezés</string>
@@ -134,7 +134,7 @@ Belépéshez nyomd meg a folytatást alul"</string>
 • Ha megváltoztatja a Google jelszavát vagy eltávolítja ezt az eszközt a Google beállításairól, újra be kell jelentkeznie"</string>
   <string name="morphe_oauth2_connection_failure_timeout">Az OAuth2 átmenetileg nem elérhető (az API időtúllépés miatt)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR belépés lejárt, próbáld meg újra belépni a VR-ba</string>
-  <string name="morphe_oauth2_connection_failure_status">Az OAuth2 átmenetileg nem elérhető (állapot %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">Az OAuth2 átmenetileg nem érhető el (státusz: %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Az OAuth2 átmenetileg nem elérhető</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nem lehetséges a VR-ba belépni, a webhely hitelesítése nem lett jóváhagyva</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nem tud bejelentkezni a VR-ba: %s</string>
@@ -193,11 +193,11 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Naplózási protokoll puffer</string>
   <string name="morphe_debug_protobuffer_summary">További naplózási információkat ad a fejlesztőknek az alkalmazás komponenseinek azonosításához.</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"​A beállítás engedélyezése további elrendezési adatokat naplóz, beleértve egyes felületi elemek képernyőn megjelenő szövegeit is.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Ennek a beállításnak az engedélyezése további elrendezési adatokat fog naplózni, beleértve néhány felhasználói felületi komponens képernyőn megjelenő szövegét.
 
-​Ez segíthet az összetevők beazonosításában egyedi szűrők készítésekor.
+Ez segíthet azonosítani az összetevőket egyedi szűrők létrehozásakor.
 
-​Azonban a funkció bekapcsolása bizonyos felhasználói adatokat, például az IP-címedet is naplózni fogja."</string>
+Ez a funkció azonban néhány felhasználói adatot is naplóz, például az IP-címét"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Egyedi szűrő</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurálja az egyedi szűrőket a komponensek elrejtéséhez</string>
@@ -238,11 +238,11 @@ A lejátszás javításához kapcsold be a „Videostream-ek meghamisítása” 
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Alkalmazásverzió hamisítása</string>
   <string name="morphe_spoof_app_version_summary">A szervert tévedésbe vezeti, hogy egy régebbi alkalmazásverziót használ, ezzel helyreállítva a korábbi felhasználói felület funkcióit.</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Az alkalmazás verziója egy régebbi verzióvá lesz hamisítva.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Az alkalmazás verziója hamisítani lesz egy régebbi verzióra.
 
-Ez megváltoztatja az alkalmazás megjelenését és funkcióit, de előfordulhatnak nem várt mellékhatások.
+Ez megváltoztatja az alkalmazás megjelenését és funkcióit, de ismeretlen mellékhatások léphetnek fel.
 
-Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy megakadályozza a felhasználói felület hibáit."</string>
+Ha később kikapcsolja, ajánlott törölni az alkalmazás adatait a felhasználói felület hibáinak megelőzése érdekében"</string>
   <string name="morphe_spoof_app_version_target_title">Hamisított alkalmazásverzió célja</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Alkalmazás frissítési gyakorisága</string>
@@ -265,7 +265,7 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">A nem tetszések jelenleg nem elérhetők (az API időtúllépése miatt)</string>
-  <string name="morphe_ryd_failure_connection_status_code">A nem tetszik funkció nem elérhető (állapot: %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">A nem tetszik funkció nem elérhető (állapot: %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">A nem tetszések nem érhetők el (ügyfél API korlát)</string>
   <string name="morphe_ryd_failure_generic">A nem tetszik funkció nem elérhető (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ A megtekintett videó azonosítóját elküldjük a Return YouTube Dislike API-n
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">A nem tetszések jelenleg nem elérhetők – Az ügyfél API sebességkorlátja érvényben van</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API lekérési szavazatok, hívások száma</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nem kezdeményezett hálózati hívás</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d hálózati hívás indítva</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s hálózati hívás történt</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API lekérési szavazatok, időtúllépések száma</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Nincs időtúllépéssel végződött hálózati hívás</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d hálózati hívás időtúllépéssel végződött</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s hálózati hívás időtúllépést okozott</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API ügyfél sebességkorlátok</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nem találkozott ügyfél sebességkorlátozással</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Az ügyfél sebességkorlátja %d alkalommal volt elérve</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d ezredmásodperc</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">%s alkalommal lépett fel ügyfélszintű sebességkorlátozás</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s ezredmásodperc</string>
 </resources>
