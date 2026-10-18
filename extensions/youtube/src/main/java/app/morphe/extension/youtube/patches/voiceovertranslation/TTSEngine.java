@@ -56,10 +56,11 @@ final class TTSEngine {
 
     public static final TTSEngine INSTANCE = new TTSEngine();
 
-    private static final String WS_HOST            = "api.msedgeservices.com";
+    private static final String WS_HOST            = "speech.platform.bing.com";
     private static final int    WS_PORT            = 443;
     private static final String TOKEN              = "6A5AA1D4EAFF4E9FB37E23D68491D6F4";
     private static final String AUDIO_FORMAT       = "audio-24khz-48kbitrate-mono-mp3";
+    private static final String SEC_MS_GEC_VERSION = "2-143.0.3650.75";
 
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS    = 20_000;
@@ -535,10 +536,12 @@ final class TTSEngine {
             closeSocket();
         }
 
-        // The old readaloud/edge/v1 endpoint rejects V1 Sec-MS-GEC tokens with HTTP 403.
-        // The Edge services endpoint accepts the same speech.config and SSML messages.
-        String path = "/tts/cognitiveservices/websocket/v1"
-                + "?Ocp-Apim-Subscription-Key=" + TOKEN;
+        String secMsGec = EdgeTtsV2Token.generate(System.currentTimeMillis(), TOKEN);
+        String path = "/consumer/speech/synthesize/readaloud/edge/v1"
+                + "?TrustedClientToken=" + TOKEN
+                + "&ConnectionId=" + uuidHex()
+                + "&Sec-MS-GEC=" + secMsGec
+                + "&Sec-MS-GEC-Version=" + SEC_MS_GEC_VERSION;
 
         SSLSocket socket = (SSLSocket) SSLSocketFactory.getDefault().createSocket();
         try {
