@@ -263,12 +263,6 @@ public final class VideoInformation {
     private static VideoQualityMenuInterface currentQualityMenuInterface;
 
     /**
-     * ID of the video whose quality was selected by the user.
-     * The video ID is used, because a player restart starts the same video again.
-     */
-    private static String userSelectedQualityVideoId = "";
-
-    /**
      * Callback for when the current quality changes.
      */
     public static final Event<VideoQualityInterface> onQualityChange = new Event<>();
@@ -1084,22 +1078,6 @@ public final class VideoInformation {
             RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(playbackAudioPitch);
         }
         changePlaybackSpeed(playbackSpeed);
-    }
-
-    /**
-     * The quality selected by the user is kept when the player reloads the current video.
-     */
-    public static void userSelectedQuality() {
-        Utils.verifyOnMainThread();
-        userSelectedQualityVideoId = getVideoId();
-    }
-
-    /**
-     * @return If the user selected the quality of the current video.
-     */
-    public static boolean isQualitySelectedByUser() {
-        String videoId = getVideoId();
-        return !videoId.isEmpty() && videoId.equals(userSelectedQualityVideoId);
     }
 
     private static void setCurrentQuality(@Nullable VideoQualityInterface quality) {
