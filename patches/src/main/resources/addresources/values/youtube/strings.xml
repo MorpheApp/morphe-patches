@@ -1216,6 +1216,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_shorts_autoplay_summary">Advances to the next Short automatically instead of repeating the current one</string>
     <string name="morphe_shorts_autoplay_background_title">Autoplay in background</string>
     <string name="morphe_shorts_autoplay_background_summary">Advances to the next Short automatically during background playback</string>
+    <string name="morphe_skip_live_shorts_title">Skip live Shorts</string>
+    <string name="morphe_skip_live_shorts_summary">Skips live streams that appear in the Shorts feed</string>
 
     <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
     <string name="morphe_playback_in_feeds_title">Playback in feeds</string>
@@ -1449,6 +1451,7 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_remember_playback_speed_last_selected_toast_title">Speed change notifications</string>
     <string name="morphe_remember_playback_speed_last_selected_toast_summary">Shows a notification when a new default playback speed is saved</string>
     <string name="morphe_playback_speed_default_title">Default playback speed</string>
+    <string name="morphe_shorts_playback_speed_default_title">Default playback speed on Shorts</string>
     <string name="morphe_remember_playback_speed_toast">Changed default playback speed to: %s</string>
     <string name="morphe_disable_playback_speed_music_title">Use normal speed for music</string>
     <string name="morphe_disable_playback_speed_music_summary">Always play music videos at 1.0x speed</string>
