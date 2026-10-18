@@ -369,35 +369,33 @@ final class LyricsLineView extends TextView {
     }
 
     /**
-     * A small run takes the reading's colour so it reads as a line of its own, and a wrapped one would
-     * otherwise come out in two colours mid-word. What makes a run small is the main run beside it, not
-     * whether it holds the words: a dual line hands those to the reading wherever the swap puts it, so a
-     * main run without them still reads as the lyric, as does a line with nothing beside it.
-     */
-    /**
-     * Only one of the two ranges is set on a dual line, so this run is the reading's exactly when
-     * the reading's range is the one present.
-     */
-    /**
-     * Such a run has no word to light it, so it would sit in the unsung colour for the whole line
-     * and then jump white the moment the last word ends. Drawing it while the line is active gives
-     * it the sung colour for as long as the line is being sung, and keeping it once every word is
-     * past leaves it there instead of dropping back when the line stops being active.
+     * A main run holding none of the line's words has no word to light it, so it would sit in the
+     * unsung colour for the whole line and then jump white at the last word. Drawn while the line
+     * is active instead, and kept once the words are past so it does not fall back.
      *
-     * <p>The guards keep this to that one arrangement: a line with no words is not a dual line,
-     * and a plain line paints its own words on the main run, which is already lit word by word and
-     * would hold the whole run white for good.
+     * <p>A line with no words at all is not this case, and a plain line paints its own words on the
+     * main run — filling either would hold the whole run white for good.
      */
     private static boolean shouldFillMainRun(boolean hasWords, boolean anyWordOnMain,
             boolean activeLine, boolean allWordsDone) {
         return hasWords && !anyWordOnMain && (activeLine || allWordsDone);
     }
 
+    /**
+     * Only one of the two ranges is set on a dual line, so this run is the reading's exactly when
+     * the reading's range is the one present.
+     */
     private static boolean runHoldsWords(boolean smallRunHoldsWords, boolean romaPresent,
             boolean isRoma) {
         return smallRunHoldsWords ? isRoma == romaPresent : isRoma;
     }
 
+    /**
+     * A small run takes the reading's colour so it reads as a line of its own, and a wrapped one would
+     * otherwise come out in two colours mid-word. What makes a run small is the main run beside it, not
+     * whether it holds the words: a dual line hands those to the reading wherever the swap puts it, so a
+     * main run without them still reads as the lyric, as does a line with nothing beside it.
+     */
     private static int sungColorForLine(boolean smallRun, boolean anyMainLine,
             int readingColor, int lyricColor) {
         return smallRun && anyMainLine ? readingColor : lyricColor;
@@ -684,15 +682,10 @@ private static float trailOnLine(float lineLeft, float lineRight, float lead, fl
             }
             Arrays.fill(lineMaxSungX, 0, lineCount, Float.NaN);
             int firstSungLine = -1;
-            // A line without words is not the case the fill is for: it has no words on the small
-            // run either, so it must not be filled along with those.
+            // For the fill below: a line with no words at all is not its case, and a plain line
+            // paints its own words on the main run, so only the dual arrangement reaches it.
             final boolean hasWords = cachedWordCount > 0;
-            // The state machine only reports a line sung when the line carries no words at all,
-            // so a line whose words all live on one run beside another is never told.
             boolean allWordsDone = hasWords;
-            // What tells the two arrangements apart: a plain line paints its own words, so it
-            // never needs the fill below, while a dual line hands them all to the run beside the
-            // main one and leaves that main run with nothing to paint it.
             boolean anyWordOnMain = false;
 
             final boolean[] secondaryLine = new boolean[lineCount];

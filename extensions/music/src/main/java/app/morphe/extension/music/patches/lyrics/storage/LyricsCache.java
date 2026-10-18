@@ -7,8 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.storage;
 
-import android.content.Context;
-
 import androidx.annotation.Nullable;
 
 import java.io.File;
@@ -29,6 +27,7 @@ import java.util.function.Function;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
+import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
 import app.morphe.extension.music.patches.lyrics.model.LyricsPreference;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
@@ -36,11 +35,11 @@ import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 
 /**
- * Two level lyrics cache: an in memory map for the current session,
- * and a disk cache so that replaying a track needs no network.
+ * Two level lyrics store: an in memory map for the current session, and on disk so that replaying
+ * a track needs no network and works when there is none. The disk half is trimmed to a fixed
+ * number of entries.
  */
 public final class LyricsCache {
 
@@ -54,7 +53,6 @@ public final class LyricsCache {
 
     private static int writesSinceTrim;
 
-    private static final String DIRECTORY_NAME = "morphe_lyrics";
     private static final String HEADER_PROVIDER = "#provider=";
     private static final String HEADER_SYNCED = "#synced=";
     private static final String HEADER_SOURCE_URL = "#sourceUrl=";
@@ -557,7 +555,7 @@ public final class LyricsCache {
     @Nullable
     private static File derivedCacheFile(TrackInfo track, String source, String suffix,
             List<String> sourceLines) {
-        File directory = cacheDirectory();
+        File directory = offlineDirectory();
         if (directory == null) {
             return null;
         }
@@ -581,7 +579,7 @@ public final class LyricsCache {
 
     @Nullable
     private static File embeddedRomanizationFile(String key) {
-        File directory = cacheDirectory();
+        File directory = offlineDirectory();
         if (directory == null) {
             return null;
         }
@@ -590,7 +588,7 @@ public final class LyricsCache {
 
     @Nullable
     private static File embeddedTranslationsFile(String key, String language) {
-        File directory = cacheDirectory();
+        File directory = offlineDirectory();
         if (directory == null) {
             return null;
         }
@@ -634,7 +632,7 @@ public final class LyricsCache {
     }
 
     private static List<String> embeddedTranslationLanguages(String key) {
-        File directory = cacheDirectory();
+        File directory = offlineDirectory();
         if (directory == null) {
             return List.of();
         }
@@ -970,7 +968,7 @@ public final class LyricsCache {
     }
 
     private static synchronized void trimDiskCache() {
-        File directory = cacheDirectory();
+        File directory = offlineDirectory();
         if (directory == null) {
             return;
         }
@@ -1019,7 +1017,7 @@ public final class LyricsCache {
 
     @Nullable
     private static File cacheFile(String key) {
-        File directory = cacheDirectory();
+        File directory = offlineDirectory();
         if (directory == null) {
             return null;
         }
@@ -1034,7 +1032,7 @@ public final class LyricsCache {
      */
     @Nullable
     private static File preferenceFile(@Nullable String videoId, TrackInfo track) {
-        File directory = cacheDirectory();
+        File directory = offlineDirectory();
         if (directory == null) {
             return null;
         }
@@ -1058,20 +1056,7 @@ public final class LyricsCache {
     }
 
     @Nullable
-    private static File cacheDirectory() {
-        try {
-            Context context = Utils.getContext();
-            if (context == null) {
-                return null;
-            }
-            File directory = new File(context.getCacheDir(), DIRECTORY_NAME);
-            if (!directory.exists() && !directory.mkdirs()) {
-                return null;
-            }
-            return directory;
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not get cache directory", ex);
-            return null;
-        }
+    private static File offlineDirectory() {
+        return LyricsDirectories.directory(LyricsDirectories.OFFLINE);
     }
 }

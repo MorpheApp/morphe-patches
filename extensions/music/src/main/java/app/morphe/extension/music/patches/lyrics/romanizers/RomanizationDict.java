@@ -7,8 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
-import android.content.Context;
-
 import androidx.annotation.Nullable;
 
 import java.io.BufferedInputStream;
@@ -21,18 +19,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
+import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
 
 /**
- * What the two reading dictionaries have in common: where they are kept, how they are fetched,
- * and how the settings row hears about it. Nothing is built anywhere else, so a version moving
- * is all there is to a new dictionary, and the system may empty the cache at any time, so every
- * path here treats a missing file as ordinary.
+ * What the two reading dictionaries have in common: how they are fetched and how the settings row
+ * hears about it. Where they are kept is {@link LyricsDirectories}' business.
  */
 public final class RomanizationDict {
 
-    private static final String DIRECTORY_NAME = "morphe_lyrics_romandict";
     private static final String DOWNLOAD_SUFFIX = ".part";
     private static final int CONNECT_TIMEOUT_MS = 15000;
     private static final int READ_TIMEOUT_MS = 30000;
@@ -53,16 +47,7 @@ public final class RomanizationDict {
 
     @Nullable
     static File directory() {
-        try {
-            Context context = Utils.getContext();
-            if (context == null) return null;
-            File directory = new File(context.getCacheDir(), DIRECTORY_NAME);
-            if (!directory.exists() && !directory.mkdirs()) return null;
-            return directory;
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not reach the romanization dictionary directory", ex);
-            return null;
-        }
+        return LyricsDirectories.directory(LyricsDirectories.ROMAN_DICT);
     }
 
     /** Fetches a file under a name that says it is unfinished, so an interrupted
