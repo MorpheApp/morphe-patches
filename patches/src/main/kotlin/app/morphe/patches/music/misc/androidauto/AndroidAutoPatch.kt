@@ -21,6 +21,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.cloneMutable
@@ -40,7 +41,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -910,13 +910,10 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
 // region Android Auto browse results
 
 /**
- * Applies browse changes before delivery, then limits the result size when YTM has no native size guard.
+ * Applies browse changes before delivery, then limits the result size on 9.15.
  */
 private fun hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod: MutableMethod) {
-    val hasNativeSizeGuard = deliverAndroidAutoMediaItemsMethod.instructions.any {
-        it.getReference<StringReference>()?.string == " from first 10 items."
-    }
-    if (!hasNativeSizeGuard) {
+    if (!is_9_20_or_greater) {
         deliverAndroidAutoMediaItemsMethod.addInstructions(0, """
             invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->limitAndroidAutoBrowseItems(Ljava/util/List;)Ljava/util/List;
             move-result-object p1
