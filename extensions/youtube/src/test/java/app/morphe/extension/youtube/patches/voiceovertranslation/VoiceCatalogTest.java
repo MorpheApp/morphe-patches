@@ -1,14 +1,21 @@
 /*
- * Copyright 2026 Morphe contributors.
- * See the project NOTICE for GPLv3 Section 7 terms.
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3840
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 package app.morphe.extension.youtube.patches.voiceovertranslation;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThrows;
 
 import org.junit.After;
 import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.Assert.*;
 
 public class VoiceCatalogTest {
     @After

@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1685
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -56,11 +56,11 @@ final class TTSEngine {
 
     public static final TTSEngine INSTANCE = new TTSEngine();
 
-    private static final String WS_HOST            = "speech.platform.bing.com";
+    private static final String WS_HOST            = EdgeTtsConfig.HOST;
     private static final int    WS_PORT            = 443;
-    private static final String TOKEN              = EdgeTtsV2Token.TRUSTED_CLIENT_TOKEN;
+    private static final String TOKEN              = EdgeTtsConfig.TRUSTED_CLIENT_TOKEN;
     private static final String AUDIO_FORMAT       = "audio-24khz-48kbitrate-mono-mp3";
-    private static final String SEC_MS_GEC_VERSION = EdgeTtsV2Token.SEC_MS_GEC_VERSION;
+    private static final String SEC_MS_GEC_VERSION = EdgeTtsConfig.SEC_MS_GEC_VERSION;
 
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS    = 20_000;
@@ -589,7 +589,7 @@ final class TTSEngine {
                 + "Sec-WebSocket-Version: 13\r\n"
                 + "Origin: chrome-extension://jdiccldimpdaibmpdkjnbmckianbfold\r\n"
                 + "Accept-Language: en-US,en;q=0.9\r\n"
-                + "User-Agent: " + EdgeTtsV2Token.USER_AGENT + "\r\n"
+                + "User-Agent: " + EdgeTtsConfig.USER_AGENT + "\r\n"
                 + "Cookie: muid=" + muid + "\r\n"
                 + "\r\n";
         OutputStream out = socket.getOutputStream();

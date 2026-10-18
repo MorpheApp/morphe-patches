@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1685
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -309,7 +309,7 @@ public final class VOTBottomSheet {
     }
 
     private static void showEnginePicker(Context context, SheetBottomDialog.SlideDialog mainDialog) {
-        String lang = VoiceOverTranslationPatch.resolveTargetLang();
+        String lang = VoiceCatalog.getIso639(VoiceOverTranslationPatch.resolveTargetLang());
 
         final int fg = ThemeUtils.getAppForegroundColor();
 
@@ -338,7 +338,15 @@ public final class VOTBottomSheet {
         catalogStatus.setTextSize(12);
         catalogStatus.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
         TextView refreshButton = new TextView(context);
-        refreshButton.setText(str("morphe_vot_catalog_refresh"));
+        refreshButton.setTextSize(14);
+        refreshButton.setTypeface(null, Typeface.BOLD);
+        refreshButton.setMinHeight(Dim.dp40);
+        GradientDrawable refreshBackground = new GradientDrawable();
+        refreshBackground.setCornerRadius(Dim.dp8);
+        refreshBackground.setColor(Color.argb(20, Color.red(fg), Color.green(fg), Color.blue(fg)));
+        refreshButton.setBackground(new RippleDrawable(
+                ColorStateList.valueOf(Color.argb(60, Color.red(fg), Color.green(fg), Color.blue(fg))),
+                refreshBackground, null));
         refreshButton.setTextColor(fg);
         refreshButton.setGravity(Gravity.CENTER);
         refreshButton.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
@@ -347,8 +355,18 @@ public final class VOTBottomSheet {
             String source = str("morphe_vot_catalog_source_" + state.source.name().toLowerCase(java.util.Locale.ROOT));
             String details = str("morphe_vot_catalog_status", source,
                     state.totalVoices, state.added, state.removed);
-            if (state.error != null) details += " — " + str("morphe_vot_catalog_error", state.error);
+            if (state.lastUpdatedMs > 0) {
+                String updated = java.text.DateFormat.getDateTimeInstance(
+                        java.text.DateFormat.MEDIUM, java.text.DateFormat.SHORT)
+                        .format(new java.util.Date(state.lastUpdatedMs));
+                details += "\n" + str("morphe_vot_catalog_updated", updated);
+            }
+            if (state.error != null) {
+                details += "\n" + str("morphe_vot_catalog_error", state.error);
+            }
             catalogStatus.setText(details);
+            refreshButton.setText(str(state.refreshing
+                    ? "morphe_vot_catalog_refreshing" : "morphe_vot_catalog_refresh"));
             refreshButton.setEnabled(!state.refreshing);
             refreshButton.setAlpha(state.refreshing ? 0.5f : 1f);
         };
@@ -356,8 +374,10 @@ public final class VOTBottomSheet {
         refreshButton.setOnClickListener(v -> {
             EdgeTtsVoiceRepository.refreshNow(context, () -> {
                 if (pickerDialog.isShowing()) {
+                    int previousScrollY = scroll.getScrollY();
                     populateVoiceRows(context, listLayout, pickerDialog, lang,
                             fg, rippleColor, speakerRes);
+                    scroll.post(() -> scroll.scrollTo(0, previousScrollY));
                     showStatus.run();
                 }
             });
@@ -375,12 +395,15 @@ public final class VOTBottomSheet {
         // and disk-cached voices remain available until the refresh finishes.
         EdgeTtsVoiceRepository.refreshIfNeeded(context, () -> {
             if (pickerDialog.isShowing()
-                    && lang.equals(VoiceOverTranslationPatch.resolveTargetLang())) {
+                    && lang.equals(VoiceCatalog.getIso639(VoiceOverTranslationPatch.resolveTargetLang()))) {
+                int previousScrollY = scroll.getScrollY();
                 populateVoiceRows(context, listLayout, pickerDialog, lang,
                         fg, rippleColor, speakerRes);
+                scroll.post(() -> scroll.scrollTo(0, previousScrollY));
                 showStatus.run();
             }
         });
+        showStatus.run();
     }
 
     /** Rebuild the voice picker from the latest catalog without changing its language filter. */

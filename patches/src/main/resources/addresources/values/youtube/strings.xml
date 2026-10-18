@@ -521,6 +521,8 @@ Tap here to open OpenRouter.ai"</string>
     <string name="morphe_vot_cost_per_hour">%s per 100 video hours</string>
     <string name="morphe_vot_tts_voice_type">Voice</string>
     <string name="morphe_vot_tts_system">System</string>
+    <string name="morphe_vot_catalog_refreshing">Refreshing...</string>
+    <string name="morphe_vot_catalog_updated">Last updated: %s</string>
     <string name="morphe_vot_catalog_refresh">Refresh voice list</string>
     <string name="morphe_vot_catalog_source_online">Online</string>
     <string name="morphe_vot_catalog_source_cache">Cached</string>
