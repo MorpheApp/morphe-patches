@@ -530,17 +530,6 @@ Tap here to open OpenRouter.ai"</string>
     <string name="morphe_vot_cost_per_hour">%s per 100 video hours</string>
     <string name="morphe_vot_tts_voice_type">Voice</string>
     <string name="morphe_vot_tts_system">System</string>
-    <string name="morphe_vot_catalog_refreshing">Refreshing...</string>
-    <string name="morphe_vot_catalog_updated">Last updated: %s</string>
-    <string name="morphe_vot_catalog_refresh">Refresh voice list</string>
-    <string name="morphe_vot_catalog_unchanged">Voice list is up to date</string>
-    <string name="morphe_vot_catalog_changed">Voice list updated: +%1$d / -%2$d</string>
-    <string name="morphe_vot_catalog_refresh_failed">Could not refresh the voice list</string>
-    <string name="morphe_vot_catalog_source_online">Online</string>
-    <string name="morphe_vot_catalog_source_cache">Cached</string>
-    <string name="morphe_vot_catalog_source_fallback">Built-in</string>
-    <string name="morphe_vot_catalog_status">%1$s · %2$d voices · +%3$d / -%4$d</string>
-    <string name="morphe_vot_catalog_error">Update failed: %s</string>
     <string name="morphe_vot_voice_gender_male_multilingual">Multilingual male</string>
     <string name="morphe_vot_voice_gender_female_multilingual">Multilingual female</string>
     <string name="morphe_vot_voice_gender_male">Male</string>

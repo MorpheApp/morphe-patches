@@ -129,9 +129,6 @@ public class VoiceOverTranslationPatch {
     public static final String TTS_ENGINE_SYSTEM = "system";
     private static final String VOT_ID_PREFIX = "vot_";
     private static final String VOT_TEST_ID_PREFIX = "vot_test_";
-    private static final String TEST_VIDEO_ID = "test";
-    private static final int TEST_SEGMENT_INDEX = -1;
-    private static final long TEST_PREFETCH_WAIT = 500;
 
     static volatile long lastVideoTimeMs;
     // Tracks the latest known position even when paused, unlike lastVideoTimeMs which only
@@ -173,7 +170,6 @@ public class VoiceOverTranslationPatch {
 
     private static boolean isTestSpeaking;
     private static long currentTestId;
-    private static long currentPreloadId;
     private static String lastTestVoiceId = "";
 
     private static final TTSEngine ttsEngine = TTSEngine.INSTANCE;
@@ -240,11 +236,22 @@ public class VoiceOverTranslationPatch {
 
         if (!Settings.VOT_ENABLED.get() || !sessionEnabled) return;
         if (PlayerType.getCurrent() == PlayerType.INLINE_MINIMAL) return;
+        if (!Settings.VOT_USE_NATIVE_TTS.get()) {
+            final boolean missingVoices = VoiceCatalog.resolve(resolveTargetLang(), null) == null;
+            EdgeTtsVoiceRepository.load(Utils.getContext(), () -> {
+                if (missingVoices && videoId.equals(currentVideoId)
+                        && VoiceCatalog.resolve(resolveTargetLang(), null) != null) {
+                    TTSPrefetcher.triggerRescan();
+                }
+            });
+            if (missingVoices) ensureTts(); // System TTS can speak until Edge voices arrive.
+        }
         TTSPrefetcher.updateVideo(videoId, segments);
         loadTranscript(videoId);
 
         // Open the Edge socket in parallel so the first synthesis doesn't pay handshake cost.
-        if (!Settings.VOT_USE_NATIVE_TTS.get()) {
+        if (!Settings.VOT_USE_NATIVE_TTS.get()
+                && VoiceCatalog.resolve(resolveTargetLang(), null) != null) {
             Utils.runOnBackgroundThread(() -> {
                 try {
                     ttsEngine.warmConnection();
@@ -653,7 +660,10 @@ public class VoiceOverTranslationPatch {
         if (TTS_ENGINE_SYSTEM.equals(voice)) {
             ensureTts();
             if (!ttsReady) {
-                Logger.printDebug(() -> "Native TTS not ready, skipping segment");
+                // Retry this segment after Android initializes System TTS.
+                lastSpokenIndex = -1;
+                ttsEndVideoTimeMs = 0;
+                Logger.printDebug(() -> "Native TTS initializing, retry on next video tick");
                 return;
             }
             updateTtsLanguage();
@@ -830,7 +840,8 @@ public class VoiceOverTranslationPatch {
         }
 
         final String lang = resolveTargetLang();
-        byte[] cached = TTSCache.get(TEST_VIDEO_ID, TEST_SEGMENT_INDEX, voiceId, lang, getTestString());
+        final String sample = getTestString();
+        byte[] cached = TTSCache.getPreview(voiceId, lang, sample);
         if (cached != null) {
             PlayerVolumePatch.setDuckMultiplier(Settings.VOT_ORIGINAL_AUDIO_VOLUME.get() / 100.0f);
             final long id = ttsEngine.markBusy();
@@ -839,58 +850,12 @@ public class VoiceOverTranslationPatch {
         }
 
         PlayerVolumePatch.setDuckMultiplier(Settings.VOT_ORIGINAL_AUDIO_VOLUME.get() / 100.0f);
-        ttsEngine.speak(getTestString(), voiceId, resolveTargetLang(), volume, () -> updateIsTestSpeaking(testId));
+        ttsEngine.speak(sample, voiceId, lang, volume, () -> updateIsTestSpeaking(testId));
     }
 
     private static void updateIsTestSpeaking(long testId) {
         Utils.verifyOnMainThread();
         if (testId == currentTestId) isTestSpeaking = false;
-    }
-
-    /**
-     * Preloads test phrases for all Edge TTS voices in the current target language.
-     */
-    static void preloadTestVoices() {
-        Utils.verifyOnMainThread();
-        final long preloadId = ++currentPreloadId;
-
-        String lang = resolveTargetLang();
-        List<VoiceCatalog.Voice> voices = VoiceCatalog.getVoicesForLang(lang);
-        if (voices == null || voices.isEmpty()) return;
-
-        Utils.runOnBackgroundThread(() -> {
-            String testString = getTestString();
-            for (VoiceCatalog.Voice voice : voices) {
-                if (preloadId != currentPreloadId) {
-                    Logger.printDebug(() -> "Aborting stale preload request: " + preloadId);
-                    return;
-                }
-
-                if (TTSCache.get(TEST_VIDEO_ID, TEST_SEGMENT_INDEX, voice.id, lang, testString) != null) {
-                    continue;
-                }
-
-                byte[] diskData = TTSCache.getTestSampleFromDisk(voice.id, lang);
-                if (diskData != null) {
-                    TTSCache.put(TEST_VIDEO_ID, TEST_SEGMENT_INDEX, voice.id, lang, testString, diskData);
-                    continue;
-                }
-
-                try {
-                    Logger.printDebug(() -> "Prefetching test phrase for: " + voice.id);
-                    byte[] data = ttsEngine.prefetch(testString, voice.id, lang);
-                    if (data.length > 0) {
-                        TTSCache.put(TEST_VIDEO_ID, TEST_SEGMENT_INDEX, voice.id, lang, testString, data);
-                        TTSCache.putTestSampleToDisk(voice.id, lang, data);
-                    }
-                    Thread.sleep(TEST_PREFETCH_WAIT);
-
-                } catch (Exception ex) {
-                    logError(() -> "preloadTestVoices failure: " + voice, ex);
-                    return;
-                }
-            }
-        });
     }
 
     private static void stopTts() {
@@ -933,9 +898,10 @@ public class VoiceOverTranslationPatch {
      * @param lang ISO 639 (pt) or BCP 47 (pt-BR).
      */
     private static String resolveVoice(String lang) {
-        return Settings.VOT_USE_NATIVE_TTS.get()
-                ? TTS_ENGINE_SYSTEM
-                : VoiceCatalog.resolve(lang, Settings.VOT_TTS_VOICE_TYPE.get());
+        if (Settings.VOT_USE_NATIVE_TTS.get()) return TTS_ENGINE_SYSTEM;
+        String edgeVoice = VoiceCatalog.resolve(lang, Settings.VOT_TTS_VOICE_TYPE.get());
+        // Do not persist the temporary fallback: retain the user's Edge voice choice.
+        return edgeVoice != null ? edgeVoice : TTS_ENGINE_SYSTEM;
     }
 
     static void notifyHttpError(int statusCode) {
