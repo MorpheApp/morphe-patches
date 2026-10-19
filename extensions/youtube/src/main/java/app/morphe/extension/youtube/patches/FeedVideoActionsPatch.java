@@ -84,8 +84,11 @@ public final class FeedVideoActionsPatch {
     private static final boolean USE_EXPERIMENTAL_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
             && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00");
 
-    /** A video must be almost as wide as the screen. Shelves and grids are not changed. */
-    private static final float MIN_WIDTH_OF_SCREEN = 0.7f;
+    /**
+     * A video must be as wide as a video of a grid of up to three columns, such as the feed in landscape.
+     * Shelves are not changed.
+     */
+    private static final float MIN_WIDTH_OF_SCREEN = 0.3f;
     private static final float THUMBNAIL_RATIO = 9f / 16f;
     private static final int MIN_WIDTH_DP = 240;
     /** Minimum height of the video details below the thumbnail. */
