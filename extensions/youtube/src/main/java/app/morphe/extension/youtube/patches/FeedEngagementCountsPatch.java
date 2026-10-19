@@ -7,10 +7,12 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -48,8 +50,8 @@ import app.morphe.extension.youtube.settings.Settings;
  * Part of the Return YouTube Dislike patch.
  * <p>
  * Feed videos do not include their like count, so it's fetched from the Return YouTube Dislike API,
- * with the same cache as the player. A video is fetched only after its card stayed on the screen
- * for a moment, so scrolling quickly through the feed does not fetch every video.
+ * with the same cache as the player. A video is fetched when its card is laid out, and the counts
+ * fade in once the fetch completes.
  * The counts are not clickable, so tapping them opens the video.
  */
 @SuppressWarnings("unused")
@@ -60,12 +62,14 @@ public final class FeedEngagementCountsPatch {
     private static final boolean LIKE_RATIO = RYD_ENABLED && Settings.RYD_FEED_LIKE_RATIO.get();
     public static final boolean ENABLED = LIKE_COUNT || LIKE_RATIO;
 
-    /** Time a card must stay on the screen before its video is fetched. */
-    private static final long FETCH_DELAY_MS = 400;
     /** Longest wait for a fetch, which is done off the main thread. */
     private static final long FETCH_TIMEOUT_MS = 10_000;
+    /** Time between checks of a card that is not visible yet. */
+    private static final long HIDDEN_RETRY_DELAY_MS = 400;
     /** Checks of a card that is not visible, before its fetch waits for the next layout. */
     private static final int MAX_HIDDEN_RETRIES = 10;
+    /** Fade in of counts that were fetched. Counts already in the cache are shown at once. */
+    private static final long FADE_IN_MS = 100;
 
     private static final int MARGIN_DP = 10;
     /** Same as the duration badge and the Watch later button, so their right edges line up. */
@@ -201,7 +205,7 @@ public final class FeedEngagementCountsPatch {
     /**
      * Dark rounded badge with the like count and the like ratio, drawn on the overlay of the card.
      */
-    private static final class CountsBadge extends Drawable {
+    private static final class CountsBadge extends Drawable implements View.OnAttachStateChangeListener {
         private final Paint backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint countPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint ratioPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -221,9 +225,19 @@ public final class FeedEngagementCountsPatch {
         @Nullable
         private Runnable pendingFetch;
         private boolean fetching;
+        private int alpha = 255;
+        @Nullable
+        private ValueAnimator fadeIn;
+        /**
+         * False after the card was detached, such as when the feed reuses it for another video.
+         * Nothing is drawn until the card is checked again, so the counts of the previous video
+         * are not shown on the next one.
+         */
+        private boolean confirmed = true;
 
         CountsBadge(ComponentHost host) {
             hostRef = new WeakReference<>(host);
+            host.addOnAttachStateChangeListener(this);
             density = host.getResources().getDisplayMetrics().density;
             final float scaledDensity = density * host.getResources().getConfiguration().fontScale;
 
@@ -244,6 +258,7 @@ public final class FeedEngagementCountsPatch {
         }
 
         void bind(ComponentHost host, String newVideoId) {
+            confirmed = true;
             if (!newVideoId.equals(videoId)) {
                 videoId = newVideoId;
                 countText = null;
@@ -251,6 +266,7 @@ public final class FeedEngagementCountsPatch {
                 likeFraction = -1;
                 fetching = false;
                 cancelPendingFetch();
+                endFadeIn();
             }
 
             if (!hasContent()) {
@@ -261,36 +277,36 @@ public final class FeedEngagementCountsPatch {
                 } else {
                     // Also when the card is laid out again, such as after returning to the app,
                     // so a fetch that was skipped or failed is tried again.
-                    scheduleFetch(host, newVideoId, 0);
+                    requestFetch(host, newVideoId, 0);
                 }
             }
             place(host);
         }
 
         /**
-         * Fetched only if the card is still showing this video after a moment.
+         * Fetches the video now, or once the card is visible.
          */
-        private void scheduleFetch(ComponentHost host, String fetchVideoId, int attempt) {
+        private void requestFetch(ComponentHost host, String fetchVideoId, int attempt) {
             if (pendingFetch != null || fetching) {
                 return;
             }
-            Runnable fetch = () -> {
-                pendingFetch = null;
-                if (!fetchVideoId.equals(videoId) || !host.isAttachedToWindow()) {
-                    // A later layout of the card schedules it again.
-                    return;
-                }
-                if (!host.isShown()) {
-                    // The app is not visible yet, such as while it returns from the background.
-                    if (attempt < MAX_HIDDEN_RETRIES) {
-                        scheduleFetch(host, fetchVideoId, attempt + 1);
-                    }
-                    return;
-                }
+            if (host.isShown()) {
                 fetch(host, fetchVideoId);
+                return;
+            }
+            // The app is not visible yet, such as while it returns from the background.
+            if (attempt >= MAX_HIDDEN_RETRIES) {
+                // A later layout of the card requests it again.
+                return;
+            }
+            Runnable retry = () -> {
+                pendingFetch = null;
+                if (fetchVideoId.equals(videoId) && host.isAttachedToWindow()) {
+                    requestFetch(host, fetchVideoId, attempt + 1);
+                }
             };
-            pendingFetch = fetch;
-            handler.postDelayed(fetch, FETCH_DELAY_MS);
+            pendingFetch = retry;
+            handler.postDelayed(retry, HIDDEN_RETRY_DELAY_MS);
         }
 
         private void cancelPendingFetch() {
@@ -314,6 +330,7 @@ public final class FeedEngagementCountsPatch {
                         fetching = false;
                         if (data != null) {
                             setData(data);
+                            startFadeIn();
                             place(host);
                         }
                     } catch (Exception ex) {
@@ -321,6 +338,27 @@ public final class FeedEngagementCountsPatch {
                     }
                 });
             });
+        }
+
+        private void startFadeIn() {
+            endFadeIn();
+            ValueAnimator animator = ValueAnimator.ofInt(0, 255);
+            animator.setDuration(FADE_IN_MS);
+            animator.addUpdateListener(animation -> setAlpha((int) animation.getAnimatedValue()));
+            fadeIn = animator;
+            setAlpha(0);
+            animator.start();
+        }
+
+        /**
+         * Ends the fade in, so the counts are fully shown.
+         */
+        private void endFadeIn() {
+            if (fadeIn != null) {
+                ValueAnimator animator = fadeIn;
+                fadeIn = null;
+                animator.end();
+            }
         }
 
         private void setData(RYDVoteData data) {
@@ -337,12 +375,13 @@ public final class FeedEngagementCountsPatch {
             }
         }
 
+        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
         private boolean hasContent() {
             return countText != null || ratioText != null;
         }
 
         /**
-         * Places the badge at the right side of the thumbnail, centered on its height.
+         * Places the badge on the right side of the thumbnail, centered on its height.
          */
         void place(ComponentHost host) {
             if (!hasContent()) {
@@ -391,8 +430,27 @@ public final class FeedEngagementCountsPatch {
         }
 
         void detach(ComponentHost host) {
+            host.removeOnAttachStateChangeListener(this);
             cancelPendingFetch();
+            endFadeIn();
             removeFromOverlay(host);
+        }
+
+        @Override
+        public void onViewAttachedToWindow(@NonNull View view) {
+            try {
+                // A card that shows the same video may not be laid out again.
+                FeedVideoCardsPatch.requestUpdate((ComponentHost) view);
+            } catch (Exception ex) {
+                Logger.printException(() -> "onViewAttachedToWindow failure", ex);
+            }
+        }
+
+        @Override
+        public void onViewDetachedFromWindow(@NonNull View view) {
+            confirmed = false;
+            cancelPendingFetch();
+            endFadeIn();
         }
 
         private void removeFromOverlay(ComponentHost host) {
@@ -404,7 +462,7 @@ public final class FeedEngagementCountsPatch {
 
         @Override
         public void draw(@NonNull Canvas canvas) {
-            if (!hasContent()) {
+            if (!confirmed || !hasContent()) {
                 return;
             }
             ComponentHost host = hostRef.get();
@@ -414,6 +472,9 @@ public final class FeedEngagementCountsPatch {
             }
             Rect bounds = getBounds();
             final float radius = px(CORNER_RADIUS_DP);
+            backgroundPaint.setAlpha(Color.alpha(BACKGROUND_COLOR) * alpha / 255);
+            countPaint.setAlpha(alpha);
+            ratioPaint.setAlpha(alpha);
             rect.set(bounds);
             canvas.drawRoundRect(rect, radius, radius, backgroundPaint);
 
@@ -428,6 +489,8 @@ public final class FeedEngagementCountsPatch {
                 if (icon != null) {
                     final int left = Math.round(centerX - iconSize / 2f);
                     icon.setBounds(left, Math.round(y), left + iconSize, Math.round(y) + iconSize);
+                    // Shared by all badges, so the alpha is set for each draw.
+                    icon.setAlpha(alpha);
                     icon.draw(canvas);
                 }
                 y += iconSize + gap;
@@ -447,10 +510,12 @@ public final class FeedEngagementCountsPatch {
                 final float barRadius = barHeight / 2;
 
                 barPaint.setColor(DISLIKE_BAR_COLOR);
+                barPaint.setAlpha(alpha);
                 rect.set(barLeft, y, barRight, y + barHeight);
                 canvas.drawRoundRect(rect, barRadius, barRadius, barPaint);
                 if (split > barLeft) {
                     barPaint.setColor(LIKE_BAR_COLOR);
+                    barPaint.setAlpha(alpha);
                     rect.set(barLeft, y, split, y + barHeight);
                     canvas.drawRoundRect(rect, barRadius, barRadius, barPaint);
                 }
@@ -463,6 +528,8 @@ public final class FeedEngagementCountsPatch {
 
         @Override
         public void setAlpha(int alpha) {
+            this.alpha = alpha;
+            invalidateSelf();
         }
 
         @Override
