@@ -98,6 +98,11 @@ val lyricsPatch = bytecodePatch(
                         titleKey = null,
                         summaryKey = "morphe_music_lyrics_source_advice_summary",
                         dependency = "morphe_music_lyrics_enabled"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_clear_cache",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsClearCachePreference",
+                        dependency = "morphe_music_lyrics_enabled"
                     )
                 )
             ),

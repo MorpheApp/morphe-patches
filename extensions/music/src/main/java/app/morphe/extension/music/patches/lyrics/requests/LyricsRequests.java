@@ -907,7 +907,7 @@ public final class LyricsRequests {
 
     public static int syncRank(Lyrics lyrics) {
         for (LyricsLine line : lyrics.lines()) {
-            if (line.hasWords()) {
+            if (line.hasWordTimings()) {
                 return 2;
             }
         }

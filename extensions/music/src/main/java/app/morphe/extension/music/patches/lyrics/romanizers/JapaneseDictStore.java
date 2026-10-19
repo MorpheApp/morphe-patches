@@ -60,6 +60,8 @@ public final class JapaneseDictStore {
 
     private static final AtomicBoolean RUNNING = new AtomicBoolean();
 
+    private static final RomanizationDict.Channel CHANNEL = new RomanizationDict.Channel();
+
     private static volatile WordReadingTable table;
 
     private JapaneseDictStore() {
@@ -78,16 +80,18 @@ public final class JapaneseDictStore {
                 return;
             }
         }
+        CHANNEL.attach(listener, RUNNING.get());
         if (!RUNNING.compareAndSet(false, true)) return;
 
         WORKER.execute(() -> {
             try {
-                build(listener);
+                build(CHANNEL);
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Japanese dictionary build failed", ex);
-                listener.onFailed();
+                CHANNEL.onFailed();
             } finally {
                 RUNNING.set(false);
+                CHANNEL.detach();
             }
         });
     }

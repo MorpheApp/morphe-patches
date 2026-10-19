@@ -373,12 +373,13 @@ final class LyricsLineView extends TextView {
      * unsung colour for the whole line and then jump white at the last word. Drawn while the line
      * is active instead, and kept once the words are past so it does not fall back.
      *
-     * <p>A line with no words at all is not this case, and a plain line paints its own words on the
-     * main run — filling either would hold the whole run white for good.
+     * <p>Whether a run holds a word is a fact about the layout, not about how far the line has
+     * been sung: a seek lands before the first word opens, and reading that as an empty run
+     * fills it white for a moment.
      */
-    private static boolean shouldFillMainRun(boolean hasWords, boolean anyWordOnMain,
+    private static boolean shouldFillMainRun(boolean hasWords, boolean wordOnMainRun,
             boolean activeLine, boolean allWordsDone) {
-        return hasWords && !anyWordOnMain && (activeLine || allWordsDone);
+        return hasWords && !wordOnMainRun && (activeLine || allWordsDone);
     }
 
     /**
@@ -686,7 +687,7 @@ private static float trailOnLine(float lineLeft, float lineRight, float lead, fl
             // paints its own words on the main run, so only the dual arrangement reaches it.
             final boolean hasWords = cachedWordCount > 0;
             boolean allWordsDone = hasWords;
-            boolean anyWordOnMain = false;
+            boolean wordOnMainRun = false;
 
             final boolean[] secondaryLine = new boolean[lineCount];
             markSecondaryLines(layout, transStart, transEnd, secondaryLine);
@@ -706,6 +707,12 @@ private static float trailOnLine(float lineLeft, float lineRight, float lead, fl
                 if (s < 0 || s >= text.length() || s >= e) {
                     continue;
                 }
+                // Before the lit ones: a word not yet reached still counts
+                // as being on its run.
+                final int lineNum = cachedWordLine[i];
+                if (!secondaryLine[lineNum]) {
+                    wordOnMainRun = true;
+                }
                 float progress;
                 if (allSung) {
                     progress = 1f;
@@ -723,14 +730,10 @@ private static float trailOnLine(float lineLeft, float lineRight, float lead, fl
                 if (progress <= 0f) {
                     continue;
                 }
-                final int lineNum = cachedWordLine[i];
                 if (firstSungLine < 0) {
                     firstSungLine = lineNum;
                 }
 
-                if (!secondaryLine[lineNum]) {
-                    anyWordOnMain = true;
-                }
                 final float lead = cachedWordLeadX[i];
                 // A word that runs on below shares its progress with the lines it reaches, so
                 // its own line takes only the share that falls here. For a word that fits, this
@@ -804,7 +807,7 @@ private static float trailOnLine(float lineLeft, float lineRight, float lead, fl
             final int readingColor = (activeLine && secondaryActiveColor != 0
                     ? secondaryActiveColor : LyricsColors.secondaryTextColor()) | 0xFF000000;
             final int lyricColor = LyricsColors.lineTextColor() | 0xFF000000;
-            final boolean fillMainRun = shouldFillMainRun(hasWords, anyWordOnMain,
+            final boolean fillMainRun = shouldFillMainRun(hasWords, wordOnMainRun,
                     activeLine, allWordsDone && firstSungLine >= 0);
             if (fillMainRun) {
                 for (int ln = 0; ln < lineCount; ln++) {

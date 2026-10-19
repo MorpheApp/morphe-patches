@@ -119,8 +119,13 @@ record WordTiming(int start, int end, long startMs, long endMs,
     record Reading(@Nullable String text, @Nullable List<WordTiming> spans) {
     }
 
+    /**
+     * @param timings Null when the caller wants the reading's text alone: they are what a
+     *                whole-line reading is spread over.
+     */
     static Reading readingFor(LyricsLine line, int index,
-            @Nullable List<LyricsLine> romanizedLines, boolean perWordRomaji) {
+            @Nullable List<LyricsLine> romanizedLines, boolean perWordRomaji,
+            @Nullable List<WordTiming> timings) {
         if (perWordRomaji) {
             final List<Word> words = readingWords(line, index, romanizedLines);
             // A word shown as written stands in for a reading only where the line is really read per word.
@@ -155,7 +160,20 @@ record WordTiming(int start, int end, long startMs, long endMs,
                 }
             }
         }
-        return new Reading(lineRomanizationAt(line, index, romanizedLines), null);
+        return wholeLineReading(line, index, romanizedLines, timings);
+    }
+
+    /**
+     * The stored string stays the one drawn, so the words are measured against it and not
+     * against the original.
+     */
+    private static Reading wholeLineReading(LyricsLine line, int index,
+            @Nullable List<LyricsLine> romanizedLines, @Nullable List<WordTiming> timings) {
+        final String whole = lineRomanizationAt(line, index, romanizedLines);
+        if (whole == null || timings == null || timings.isEmpty()) {
+            return new Reading(whole, null);
+        }
+        return new Reading(whole, spreadOverWords(whole, line.text(), timings));
     }
 
     private static boolean anyReading(List<Word> words) {
@@ -221,7 +239,8 @@ record WordTiming(int start, int end, long startMs, long endMs,
         return closed;
     }
 
-    static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
+    static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index,
+            boolean splitWordlessLine) {
         final LyricsLine line = lines.get(index);
         if (isSingleWord(line.text())) {
             long rangeStart = line.startTimeMs();
@@ -244,11 +263,10 @@ record WordTiming(int start, int end, long startMs, long endMs,
                     return synthesized;
                 }
             }
-        } else if (!line.hasWords()) {
-            // The source timed the line but never its words, which is every LRC line and every
-            // plain timed line. Without this such a line carries no words at all: a plain mode
-            // paints it in one go, and an only or dual mode hands its main slot a line it has
-            // nothing to light. Splitting on words is what makes both of them per-word.
+        } else if (splitWordlessLine && !line.hasWords()) {
+            // An only or dual mode shows the translation or the reading in its main slot while
+            // the timings it lights by are still the original's, so a line carrying no word
+            // timings leaves that slot with nothing to light. Splitting it is what fills it.
             final long lineStart = line.startTimeMs();
             final long lineEnd = line.endTimeMs() > lineStart ? line.endTimeMs()
                     : index + 1 < lines.size() ? lines.get(index + 1).startTimeMs()
@@ -426,18 +444,8 @@ record WordTiming(int start, int end, long startMs, long endMs,
     }
 
     private static List<WordTiming> computeWordTimingsFromWords(LyricsLine line) {
-        if (!line.hasWords()) {
+        if (!line.hasWordTimings()) {
             return Collections.emptyList();
-        }
-
-        if (line.words().size() == 1) {
-            Word single = line.words().get(0);
-            if (isWholeLineWord(single.text(), line.text())) {
-                return Collections.emptyList();
-            }
-            if (single.endMs() <= single.startMs()) {
-                return Collections.emptyList();
-            }
         }
 
         List<WordTiming> timings = new ArrayList<>(line.words().size());
@@ -475,21 +483,6 @@ record WordTiming(int start, int end, long startMs, long endMs,
         return timings;
     }
 
-    private static boolean isWholeLineWord(String wordText, String lineText) {
-        return compactText(wordText).equalsIgnoreCase(compactText(lineText));
-    }
-
-    private static String compactText(String value) {
-        final StringBuilder builder = new StringBuilder(value.length());
-        for (int i = 0; i < value.length(); i++) {
-            final char c = value.charAt(i);
-            if (!Character.isWhitespace(c)) {
-                builder.append(c);
-            }
-        }
-        return builder.toString();
-    }
-
     /**
      * Builds the displayed text for a line, appending the translation (when shown) in a
      * smaller, dimmer style and coloring each word sung or unsung for the karaoke
@@ -511,7 +504,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
         // A reading drawn over each word sits where the word's own highlight is painted, so the
         // two land on top of each other. It goes on a line of its own instead, and takes its
         // progress from the same words rather than from a second set of marks.
-        final Reading reading = readingFor(line, index, romanizedLines, perWordRomaji);
+        final Reading reading = readingFor(line, index, romanizedLines, perWordRomaji, timings);
 
         final int lineHeight = baseFm.descent - baseFm.ascent;
         final int smallHeight = (int) (lineHeight * TRANSLATION_RELATIVE_SIZE + 0.5f);
@@ -757,7 +750,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
         if (whole != null) {
             return new Romanized(whole, spreadOverWords(whole, line.text(), lineTimings));
         }
-        final Reading reading = readingFor(line, index, romanizedLines, true);
+        final Reading reading = readingFor(line, index, romanizedLines, true, null);
         return new Romanized(reading.text(), reading.spans());
     }
 
@@ -788,12 +781,62 @@ record WordTiming(int start, int end, long startMs, long endMs,
         final List<WordTiming> spans = new ArrayList<>(tokens.length);
         for (int i = 0; i < words.size(); i++) {
             final Word word = words.get(i);
-            for (int at = spread[i][0]; at < spread[i][1]; at++) {
-                spans.add(new WordTiming(tokens[at][0], tokens[at][1],
-                        word.startMs(), word.endMs(), null));
+            final int from = spread[i][0];
+            final int to = Math.min(spread[i][1], tokens.length);
+            if (to <= from) {
+                continue;
             }
+            spreadWordWindow(spans, tokens, from, to, word.startMs(),
+                    windowEndFor(words, i, word.endMs()));
         }
         return spans.isEmpty() ? null : spans;
+    }
+
+    /**
+     * Runs to the next word's start: a silence is swept rather than stalled on, and two words
+     * whose timings overlap cannot light out of order.
+     */
+    private static long windowEndFor(List<Word> words, int index, long wordEndMs) {
+        if (index + 1 >= words.size()) {
+            return wordEndMs;
+        }
+        final Word word = words.get(index);
+        final long nextStart = words.get(index + 1).startMs();
+        if (nextStart > word.startMs() && nextStart != wordEndMs) {
+            return nextStart;
+        }
+        return wordEndMs;
+    }
+
+    /**
+     * Divided by how much each syllable spells: one window for all of them lights them at once,
+     * and the lit edge, being the furthest, jumps to the word's last syllable.
+     */
+    private static void spreadWordWindow(List<WordTiming> out, int[][] tokens,
+            int from, int to, long startMs, long endMs) {
+        int spelling = 0;
+        for (int at = from; at < to; at++) {
+            spelling += tokens[at][1] - tokens[at][0];
+        }
+        final long window = endMs - startMs;
+        if (spelling <= 0 || window <= 0) {
+            // Nothing to divide by, so the syllables share what there is.
+            final long end = Math.max(endMs, startMs + 1);
+            for (int at = from; at < to; at++) {
+                out.add(new WordTiming(tokens[at][0], tokens[at][1], startMs, end, null));
+            }
+            return;
+        }
+        int said = 0;
+        long cursor = startMs;
+        for (int at = from; at < to; at++) {
+            said += tokens[at][1] - tokens[at][0];
+            final long share = at + 1 == to
+                    ? Math.max(endMs, cursor + 1)
+                    : Math.max(startMs + window * said / spelling, cursor + 1);
+            out.add(new WordTiming(tokens[at][0], tokens[at][1], cursor, share, null));
+            cursor = share;
+        }
     }
 
     /** One word per timing, which is all the placement needs to know about the line. */
@@ -827,7 +870,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
     @Nullable
     static String lineReading(LyricsLine line, int index,
             @Nullable List<LyricsLine> romanizedLines, boolean perWordRomaji) {
-        return readingFor(line, index, romanizedLines, perWordRomaji).text();
+        return readingFor(line, index, romanizedLines, perWordRomaji, null).text();
     }
 
     @Nullable

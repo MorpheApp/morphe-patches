@@ -19,10 +19,8 @@ import app.morphe.extension.shared.Utils;
 /**
  * Where the lyrics feature keeps what it has fetched, under the app's own files rather than the
  * cache directory: a dictionary costs tens of megabytes and minutes to build, and lyrics that
- * vanish leave the song without them whenever there is no network to fetch them back.
- *
- * <p>The two are kept apart because they are not spent together — the dictionaries are large and
- * wanted by every track, the lyrics are many and trimmed to a fixed count.
+ * vanish leave the song without them when there is no network to fetch them back. The two sit in
+ * separate directories because they are not spent together.
  */
 public final class LyricsDirectories {
 
@@ -34,7 +32,6 @@ public final class LyricsDirectories {
     private LyricsDirectories() {
     }
 
-    /** The directory {@code name} under the root, created if it is not there yet. */
     @Nullable
     public static File directory(String name) {
         try {

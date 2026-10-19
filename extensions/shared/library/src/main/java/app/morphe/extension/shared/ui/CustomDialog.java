@@ -95,26 +95,10 @@ public class CustomDialog {
                                                     @Nullable Runnable onNeutralClick,
                                                     boolean dismissDialogOnNeutralClick,
                                                     boolean accentOkButton) {
-        return create(context, title, message, editText, okButtonText, onOkClick, onCancelClick,
-                neutralButtonText, onNeutralClick, dismissDialogOnNeutralClick, accentOkButton, true);
-    }
-
-    /**
-     * @param dismissDialogOnOkClick Pass false only where the OK action can refuse what it was given
-     *                               and the input must survive it; the action dismisses on accept.
-     */
-    public static Pair<Dialog, LinearLayout> create(Context context, CharSequence title, CharSequence message,
-                                                    @Nullable EditText editText, CharSequence okButtonText,
-                                                    Runnable onOkClick, Runnable onCancelClick,
-                                                    @Nullable CharSequence neutralButtonText,
-                                                    @Nullable Runnable onNeutralClick,
-                                                    boolean dismissDialogOnNeutralClick,
-                                                    boolean accentOkButton, boolean dismissDialogOnOkClick) {
         Logger.printDebug(() -> "Creating custom dialog with title: " + title);
         CustomDialog customDialog = new CustomDialog(context, title, message, editText,
                 okButtonText, onOkClick, onCancelClick,
-                neutralButtonText, onNeutralClick, dismissDialogOnNeutralClick, accentOkButton,
-                dismissDialogOnOkClick);
+                neutralButtonText, onNeutralClick, dismissDialogOnNeutralClick, accentOkButton);
         return new Pair<>(customDialog.dialog, customDialog.mainLayout);
     }
 
@@ -154,8 +138,7 @@ public class CustomDialog {
     private CustomDialog(Context context, CharSequence title, CharSequence message, @Nullable EditText editText,
                          CharSequence okButtonText, Runnable onOkClick, Runnable onCancelClick,
                          @Nullable CharSequence neutralButtonText, @Nullable Runnable onNeutralClick,
-                         boolean dismissDialogOnNeutralClick, boolean accentOkButton,
-                         boolean dismissDialogOnOkClick) {
+                         boolean dismissDialogOnNeutralClick, boolean accentOkButton) {
         this.context = context;
         this.dialog = new Dialog(context);
         this.dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // Remove default title bar.
@@ -165,7 +148,7 @@ public class CustomDialog {
         addTitle(title);
         addContent(message, editText);
         addButtons(okButtonText, onOkClick, onCancelClick, neutralButtonText,
-                onNeutralClick, dismissDialogOnNeutralClick, accentOkButton, dismissDialogOnOkClick);
+                onNeutralClick, dismissDialogOnNeutralClick, accentOkButton);
 
         // Set dialog content and window attributes.
         dialog.setContentView(mainLayout);
@@ -286,8 +269,7 @@ public class CustomDialog {
      */
     private void addButtons(CharSequence okButtonText, Runnable onOkClick, Runnable onCancelClick,
                             @Nullable CharSequence neutralButtonText, @Nullable Runnable onNeutralClick,
-                            boolean dismissDialogOnNeutralClick, boolean accentOkButton,
-                            boolean dismissDialogOnOkClick) {
+                            boolean dismissDialogOnNeutralClick, boolean accentOkButton) {
         // Button container.
         LinearLayout buttonContainer = new LinearLayout(context);
         buttonContainer.setOrientation(LinearLayout.VERTICAL);
@@ -320,7 +302,7 @@ public class CustomDialog {
                     : ResourceUtils.getSystemStringByLocale("ok",
                     BaseSettings.MORPHE_LANGUAGE.get().getLocale());
             Button okButton = createButton(context, dialog, localizedOkString,
-                    onOkClick, accentOkButton, dismissDialogOnOkClick);
+                    onOkClick, accentOkButton, true);
             buttons.add(okButton);
             buttonWidths.add(measureButtonWidth(okButton));
         }

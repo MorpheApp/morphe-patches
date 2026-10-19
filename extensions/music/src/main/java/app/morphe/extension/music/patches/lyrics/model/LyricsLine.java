@@ -58,6 +58,45 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
         return !words.isEmpty();
     }
 
+    /**
+     * Whether the words say more than the line itself does.
+     *
+     * <p>A lone word covering the whole line, or one that never ends, is the line's own timing
+     * written back out as a word. Counting it as word sync would have the line read as karaoke
+     * while it can only ever be sung in one go, and would rank it above lyrics that really do
+     * carry word timings.
+     */
+    public boolean hasWordTimings() {
+        if (words.isEmpty()) {
+            return false;
+        }
+        if (words.size() == 1) {
+            Word single = words.get(0);
+            if (isWholeLineWord(single.text(), text)) {
+                return false;
+            }
+            if (single.endMs() <= single.startMs()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean isWholeLineWord(String wordText, String lineText) {
+        return compactText(wordText).equalsIgnoreCase(compactText(lineText));
+    }
+
+    private static String compactText(String value) {
+        final StringBuilder builder = new StringBuilder(value.length());
+        for (int i = 0; i < value.length(); i++) {
+            final char c = value.charAt(i);
+            if (!Character.isWhitespace(c)) {
+                builder.append(c);
+            }
+        }
+        return builder.toString();
+    }
+
     @NonNull
     @Override
     public String toString() {

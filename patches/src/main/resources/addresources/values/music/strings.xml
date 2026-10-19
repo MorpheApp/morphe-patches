@@ -510,6 +510,9 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_lyrics_source_all_disabled">All providers disabled - built-in lyrics and embedded lyrics</string>
     <string name="morphe_music_lyrics_source_reset_title">Reset provider order?</string>
     <string name="morphe_music_lyrics_source_reset_message">Restore providers to the default priority order</string>
+    <string name="morphe_music_lyrics_clear_cache_title">Clear stored lyrics</string>
+    <string name="morphe_music_lyrics_clear_cache_summary">Delete the lyrics kept on this device</string>
+    <string name="morphe_music_lyrics_clear_cache_done">Cleared %1$s MB</string>
     <string name="morphe_music_token_dialog_get_token">Get token</string>
     <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
     <string name="morphe_music_apple_music_token_dialog_instruction">"Paste the media-user-token cookie from music.apple.com
@@ -576,11 +579,11 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_show_romanize_button_title">Show Romanize button</string>
     <string name="morphe_music_lyrics_show_romanize_button_summary">Tap to toggle romanization; long-press for romanization only. Uses provider romanization, Google Translate, or an OpenAI-compatible API</string>
     <string name="morphe_music_lyrics_local_romanization_title">Local Romanization and Alignment</string>
-    <string name="morphe_music_lyrics_local_romanization_summary">Romanize on the device when the provider, an OpenAI-compatible endpoint and Google Translate have all failed. Where the lyric carries word timings, the reading goes under each word and follows it, whichever source produced the reading; word sync must be on. Chinese, Cantonese, Japanese, Korean, Greek, Russian, Georgian and Armenian; about 90 MB of readings to download.</string>
-    <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+    <string name="morphe_music_lyrics_local_romanization_summary">Romanize on the device when the provider, an OpenAI-compatible endpoint and Google Translate have all failed. Where the lyric carries word timings, the reading goes under each word and follows it, whichever source produced the reading; word sync must be on. Chinese, Cantonese, Japanese, Korean, Greek, Russian, Georgian and Armenian; about 90 MB of readings to download</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_downloading" translatable="false">%1$s: %2$d%%</string>
     <string name="morphe_music_lyrics_local_romanization_dict_building">Reading %1$s: %2$d%%</string>
     <string name="morphe_music_lyrics_local_romanization_dict_ready">Readings ready (%1$d characters)</string>
-    <string name="morphe_music_lyrics_local_romanization_dict_failed">Download failed — turn this off and on again to retry</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_failed">Download failed - turn this off and on again to retry</string>
     <string name="morphe_music_lyrics_show_refresh_button_title">Show Refresh button</string>
     <string name="morphe_music_lyrics_show_refresh_button_summary">Tap to switch to next lyrics candidate; long-press to search lyrics by song title and artist</string>
     <string name="morphe_music_lyrics_search_dialog_title">Search lyrics</string>
@@ -682,7 +685,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt saved, but the AI endpoint is not usable yet. Configure it under AI Settings first</string>
     <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt reset</string>
     <string name="morphe_music_lyrics_ai_extra_body_hint">Extra request body (JSON, merged into every AI request)</string>
-    <string name="morphe_music_lyrics_ai_extra_body_invalid">Not valid JSON. Fix it or clear the field before saving.</string>
+    <string name="morphe_music_lyrics_ai_extra_body_invalid">Not valid JSON. Fix it or clear the field before saving</string>
     <string name="morphe_music_lyrics_ai_config_toast_saved">AI settings saved</string>
     <string name="morphe_music_lyrics_ai_config_toast_invalid">Could not connect to AI endpoint. Please check your settings</string>
     <string name="morphe_music_lyrics_ai_config_toast_reset">AI settings reset</string>

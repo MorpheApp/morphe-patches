@@ -1055,6 +1055,29 @@ public final class LyricsCache {
                 : "VID|" + videoId + "|PREF";
     }
 
+    /**
+     * Empties the stored lyrics.
+     *
+     * <p>The dictionaries sit beside them and cost tens of megabytes and a download apiece to have
+     * back, so they are left alone. A track asked for afterwards fetches as it did the first time.
+     *
+     * @return how many bytes were freed.
+     */
+    public static long clear() {
+        long freed = 0;
+        final File directory = offlineDirectory();
+        final File[] files = directory == null ? null : directory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                freed += file.isDirectory() ? 0 : file.length();
+                //noinspection ResultOfMethodCallIgnored
+                file.delete();
+            }
+        }
+        memoryCache.clear();
+        return freed;
+    }
+
     @Nullable
     private static File offlineDirectory() {
         return LyricsDirectories.directory(LyricsDirectories.OFFLINE);

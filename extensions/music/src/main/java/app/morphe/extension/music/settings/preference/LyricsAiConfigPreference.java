@@ -18,6 +18,7 @@ import android.util.AttributeSet;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -152,72 +153,76 @@ public class LyricsAiConfigPreference extends Preference {
         content.addView(extraBodyInput, extraBodyParams);
 
         final Dialog[] shown = new Dialog[1];
+
+        Runnable resetAction = () -> {
+            Settings.LYRICS_AI_BASE_URL.resetToDefault();
+            Settings.LYRICS_AI_API_TOKEN.resetToDefault();
+            Settings.LYRICS_AI_MODEL.resetToDefault();
+            Settings.LYRICS_AI_EXTRA_BODY.resetToDefault();
+            baseUrlInput.setText(Settings.LYRICS_AI_BASE_URL.get());
+            apiTokenInput.setText("");
+            modelInput.setText(Settings.LYRICS_AI_MODEL.get());
+            extraBodyInput.setText("");
+            updateSummary();
+            Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_reset"));
+        };
+
+        Runnable saveAction = () -> {
+            String baseUrl = baseUrlInput.getText().toString().trim();
+            String apiToken = apiTokenInput.getText().toString().trim();
+            String model = modelInput.getText().toString().trim();
+            String extraBody = extraBodyInput.getText().toString().trim();
+
+            if (baseUrl.isEmpty()) {
+                Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_empty_url"));
+                return;
+            }
+            if (!baseUrl.startsWith("http://") && !baseUrl.startsWith("https://")) {
+                Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
+                return;
+            }
+            if (model.isEmpty()) {
+                Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_empty_model"));
+                return;
+            }
+            // Nothing is sent until this parses, so a body that will not is refused here, not saved.
+            if (!OpenAIClient.isValidExtraBody(extraBody)) {
+                Utils.showToastShort(str("morphe_music_lyrics_ai_extra_body_invalid"));
+                return;
+            }
+            // Written before the endpoint is asked, so one that only takes what this body makes answers yes.
+            Settings.LYRICS_AI_EXTRA_BODY.save(extraBody);
+
+            Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
+            Utils.runOnBackgroundThread(() -> {
+                boolean valid = OpenAIClient.validateConfig(baseUrl, apiToken, model);
+                Utils.runOnMainThread(() -> {
+                    if (!valid) {
+                        Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_invalid"));
+                        return;
+                    }
+                    Settings.LYRICS_AI_BASE_URL.save(baseUrl);
+                    Settings.LYRICS_AI_API_TOKEN.save(apiToken);
+                    Settings.LYRICS_AI_MODEL.save(model);
+                    updateSummary();
+                    if (shown[0] != null) shown[0].dismiss();
+                    Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_saved"));
+                });
+            });
+        };
+
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
                 str("morphe_music_lyrics_use_ai_title"),
                 null,
                 null,
-                str("morphe_settings_save"),
-                () -> {
-                    String baseUrl = baseUrlInput.getText().toString().trim();
-                    String apiToken = apiTokenInput.getText().toString().trim();
-                    String model = modelInput.getText().toString().trim();
-                    String extraBody = extraBodyInput.getText().toString().trim();
-
-                    if (baseUrl.isEmpty()) {
-                        Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_empty_url"));
-                        return;
-                    }
-                    if (!baseUrl.startsWith("http://") && !baseUrl.startsWith("https://")) {
-                        Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
-                        return;
-                    }
-                    if (model.isEmpty()) {
-                        Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_empty_model"));
-                        return;
-                    }
-                    // Nothing is sent until this parses, so a body that will not is refused here, not saved.
-                    if (!OpenAIClient.isValidExtraBody(extraBody)) {
-                        Utils.showToastShort(str("morphe_music_lyrics_ai_extra_body_invalid"));
-                        return;
-                    }
-                    // Written before the endpoint is asked, so one that only takes what this body makes answers yes.
-                    Settings.LYRICS_AI_EXTRA_BODY.save(extraBody);
-
-                    Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
-                    Utils.runOnBackgroundThread(() -> {
-                        boolean valid = OpenAIClient.validateConfig(baseUrl, apiToken, model);
-                        Utils.runOnMainThread(() -> {
-                            if (!valid) {
-                                Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_invalid"));
-                                return;
-                            }
-                            Settings.LYRICS_AI_BASE_URL.save(baseUrl);
-                            Settings.LYRICS_AI_API_TOKEN.save(apiToken);
-                            Settings.LYRICS_AI_MODEL.save(model);
-                            updateSummary();
-                            if (shown[0] != null) shown[0].dismiss();
-                            Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_saved"));
-                        });
-                    });
-                },
                 null,
-                str("morphe_settings_reset"),
-                () -> {
-                    Settings.LYRICS_AI_BASE_URL.resetToDefault();
-                    Settings.LYRICS_AI_API_TOKEN.resetToDefault();
-                    Settings.LYRICS_AI_MODEL.resetToDefault();
-                    Settings.LYRICS_AI_EXTRA_BODY.resetToDefault();
-                    baseUrlInput.setText(Settings.LYRICS_AI_BASE_URL.get());
-                    apiTokenInput.setText("");
-                    modelInput.setText(Settings.LYRICS_AI_MODEL.get());
-                    extraBodyInput.setText("");
-                    updateSummary();
-                    Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_reset"));
-                },
+                null,
+                null,
+                null,
+                null,
                 false,
-                true,
-                false
+                true
         );
 
         Dialog dialog = dialogPair.first;
@@ -228,6 +233,16 @@ public class LyricsAiConfigPreference extends Preference {
                 new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        // Both buttons are built here instead of handed to create() because the save action can
+        // refuse what it was given, and the input has to survive that: create() dismisses on OK
+        // unconditionally, so a refusal would close the dialog and drop everything typed into it.
+        mainLayout.removeViewAt(mainLayout.getChildCount() - 1);
+        Button saveButton = CustomDialog.createButton(context, dialog,
+                str("morphe_settings_save"), saveAction, true, false);
+        Button resetButton = CustomDialog.createButton(context, dialog,
+                str("morphe_settings_reset"), resetAction, false, false);
+        mainLayout.addView(CustomDialog.createButtonRow(context, resetButton, saveButton));
 
         try {
             dialog.show();

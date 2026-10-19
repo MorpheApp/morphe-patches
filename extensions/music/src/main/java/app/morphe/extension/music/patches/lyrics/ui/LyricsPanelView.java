@@ -1350,7 +1350,8 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                     if (generation != buildGeneration.get() || lyrics != newLyrics) {
                         return;
                     }
-                    allTimings.add(LyricsSpanBuilder.computeWordTimings(newLyrics.lines(), i));
+                    allTimings.add(LyricsSpanBuilder.computeWordTimings(
+                            newLyrics.lines(), i, onlySnap != OnlyMode.NONE));
                     allOrigStarts.add(computeOriginalTextStart(newLyrics.lines().get(i), i,
                             onlySnap, romanizedSnap, translatedSnap, perWordRomajiSnap));
                 }

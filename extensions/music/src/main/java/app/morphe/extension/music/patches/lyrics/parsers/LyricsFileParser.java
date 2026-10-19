@@ -127,6 +127,7 @@ public final class LyricsFileParser {
         String text = textObject instanceof String ? (String) textObject : "";
 
         List<Word> words = new ArrayList<>();
+        boolean wordTimingsUsable = true;
         Object wordsObject = map.get("words");
         if (wordsObject instanceof List) {
             for (Object wordObject : (List<?>) wordsObject) {
@@ -136,6 +137,14 @@ public final class LyricsFileParser {
                 Object wordText = wordMap.get("text");
                 String wordString = wordText instanceof String ? (String) wordText : "";
                 long start = asLong(wordMap.get("start_ms"));
+                // A word with no start of its own has nothing to be lit by, and the ends its
+                // neighbours lend it would be counted off a number that is not a time. The
+                // line keeps its own timing and is sung in one go instead. The text is rebuilt
+                // from the words below, so the words are only given up after that has happened.
+                if (start < 0) {
+                    wordTimingsUsable = false;
+                    break;
+                }
                 long end = asLong(wordMap.get("end_ms"));
                 words.add(new Word(start, end, wordString));
             }
@@ -155,6 +164,10 @@ public final class LyricsFileParser {
                 builder.append(wordText);
             }
             text = builder.toString();
+        }
+
+        if (!wordTimingsUsable) {
+            words.clear();
         }
 
         LRCParser.inferMissingWordEnds(words, 800);

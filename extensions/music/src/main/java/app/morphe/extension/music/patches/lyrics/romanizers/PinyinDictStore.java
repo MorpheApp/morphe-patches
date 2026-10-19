@@ -80,6 +80,8 @@ public final class PinyinDictStore {
 
     private static final AtomicBoolean RUNNING = new AtomicBoolean();
 
+    private static final RomanizationDict.Channel CHANNEL = new RomanizationDict.Channel();
+
     private static volatile char[] keys;
     private static volatile String[] values;
     private static volatile WordReadingTable words;
@@ -157,16 +159,18 @@ public final class PinyinDictStore {
             listener.onReady(keys.length);
             if (word() != null) return;
         }
+        CHANNEL.attach(listener, RUNNING.get());
         if (!RUNNING.compareAndSet(false, true)) return;
 
         WORKER.execute(() -> {
             try {
-                build(listener);
+                build(CHANNEL);
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Pinyin dictionary build failed", ex);
-                listener.onFailed();
+                CHANNEL.onFailed();
             } finally {
                 RUNNING.set(false);
+                CHANNEL.detach();
             }
         });
     }

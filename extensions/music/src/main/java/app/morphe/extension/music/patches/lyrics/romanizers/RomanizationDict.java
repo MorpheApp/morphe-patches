@@ -45,6 +45,61 @@ public final class RomanizationDict {
     private RomanizationDict() {
     }
 
+    static final class Channel implements Listener {
+
+        private volatile Listener to;
+        private volatile String fileName;
+        private volatile int percent;
+        private volatile boolean building;
+
+        /** Takes over as the listener, and is told where the build is if one is going. */
+        void attach(Listener listener, boolean running) {
+            to = listener;
+            if (!running) return;
+            if (building) {
+                listener.onBuilding(percent);
+            } else if (fileName != null) {
+                listener.onDownload(fileName, percent);
+            }
+        }
+
+        /** Lets go, because holding the listener past the build would keep its page alive. */
+        void detach() {
+            to = null;
+            fileName = null;
+            building = false;
+        }
+
+        @Override
+        public void onDownload(String fileName, int percent) {
+            this.fileName = fileName;
+            this.percent = percent;
+            this.building = false;
+            Listener current = to;
+            if (current != null) current.onDownload(fileName, percent);
+        }
+
+        @Override
+        public void onBuilding(int percent) {
+            this.percent = percent;
+            this.building = true;
+            Listener current = to;
+            if (current != null) current.onBuilding(percent);
+        }
+
+        @Override
+        public void onReady(int entries) {
+            Listener current = to;
+            if (current != null) current.onReady(entries);
+        }
+
+        @Override
+        public void onFailed() {
+            Listener current = to;
+            if (current != null) current.onFailed();
+        }
+    }
+
     @Nullable
     static File directory() {
         return LyricsDirectories.directory(LyricsDirectories.ROMAN_DICT);
