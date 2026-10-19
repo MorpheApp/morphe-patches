@@ -442,27 +442,6 @@ val miniplayerPatch = bytecodePatch(
 
         // region Watch transition animation.
 
-        // The server can tell the app to skip the animation between the miniplayer and the
-        // maximized player, and then the player jumps between them.
-        AnimationMaybeAnimateFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches[1].index
-                val decisionRegister = getInstruction<OneRegisterInstruction>(index).registerA
-                val categoryField = AnimationDecisionForCategoryFingerprint.instructionMatches[1]
-                    .getInstruction<ReferenceInstruction>().reference
-                val free = findFreeRegister(index + 1, decisionRegister)
-
-                addInstructions(
-                    index + 1,
-                    """
-                        iget v$free, p1, $categoryField
-                        invoke-static { v$free, v$decisionRegister }, $EXTENSION_CLASS->getAnimationDecision(II)I
-                        move-result v$decisionRegister
-                    """
-                )
-            }
-        }
-
         // While the player is maximized, the home is laid out below the status bar instead of
         // behind it. The home is then laid out again when the minimize animation ends, and the
         // feed is black until it is drawn again. Without the animation the layout is never

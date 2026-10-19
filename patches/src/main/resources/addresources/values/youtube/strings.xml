@@ -1279,6 +1279,12 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
     <string name="morphe_back_button_always_exits_feed_summary">Pressing back always exits the app instead of scrolling to the top of the feed</string>
 
+    <!-- layout.animations.forceAnimationsPatch -->
+    <string name="morphe_force_animations_title">Force animations</string>
+    <string name="morphe_force_animations_entry_default">Default</string>
+    <string name="morphe_force_animations_entry_always_on">Always on</string>
+    <string name="morphe_force_animations_entry_always_off">Always off</string>
+
     <!-- layout.statusbar.hideStatusBarPatch -->
     <string name="morphe_hide_status_bar_title">Hide status bar</string>
     <string name="morphe_hide_status_bar_summary">Hides the system status bar. Swipe down from the top edge to show it for a moment</string>

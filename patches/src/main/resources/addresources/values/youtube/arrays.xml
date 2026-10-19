@@ -262,6 +262,18 @@
         <item>AUTOMOTIVE</item>
     </string-array>
 
+    <!-- layout.animations.forceAnimationsPatch -->
+    <string-array name="morphe_force_animations_entries">
+        <item>@string/morphe_force_animations_entry_default</item>
+        <item>@string/morphe_force_animations_entry_always_on</item>
+        <item>@string/morphe_force_animations_entry_always_off</item>
+    </string-array>
+    <string-array name="morphe_force_animations_entry_values">
+        <item>DEFAULT</item>
+        <item>ALWAYS_ON</item>
+        <item>ALWAYS_OFF</item>
+    </string-array>
+
     <!-- layout.theme.themePatch -->
     <string-array name="morphe_theme_color_light_entries">
         <item>@string/morphe_theme_color_entry_1</item>

@@ -86,36 +86,6 @@ internal object MiniplayerDragAndDropFingerprint : Fingerprint(
     )
 )
 
-/**
- * YouTube's adaptive animation helper, which looks up whether an animation category
- * is on, throttled or off in a map the server sends.
- */
-internal object AnimationDecisionForCategoryFingerprint : Fingerprint(
-    returnType = "L",
-    parameters = listOf("L"),
-    filters = listOf(
-        // Has-bits of the category hint.
-        fieldAccess(opcode = Opcode.IGET, type = "I"),
-        // The animation category.
-        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchAfterWithin(5)),
-        string("#getAnimationDecisionForCategory: no category provided")
-    )
-)
-
-/**
- * Runs the animation only if the decision of its category allows it.
- */
-internal object AnimationMaybeAnimateFingerprint : Fingerprint(
-    returnType = "I",
-    parameters = listOf("L", "L"),
-    filters = listOf(
-        // Ordinal of the animation decision.
-        methodCall(name = "ordinal", returnType = "I"),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-        string("#maybeAnimate: no animation run")
-    )
-)
-
 internal object MiniplayerAnimatedExpandFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

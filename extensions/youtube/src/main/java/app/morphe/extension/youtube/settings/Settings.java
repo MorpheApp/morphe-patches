@@ -37,6 +37,7 @@ import app.morphe.extension.youtube.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch.VideoCodec;
 import app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
 import app.morphe.extension.youtube.patches.FeedCardLayoutPatch.FeedCardLayout;
+import app.morphe.extension.youtube.patches.ForceAnimationsPatch.AnimationsMode;
 import app.morphe.extension.youtube.patches.ForceFullscreenLandscapePatch.LargeScreenAvailability;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RestoreOldPlayerButtonsAvailability;
@@ -525,6 +526,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting HIDE_STATUS_BAR = new BooleanSetting("morphe_hide_status_bar", FALSE, true);
     public static final BooleanSetting FIX_STATUS_BAR_LAYOUT = new BooleanSetting("morphe_fix_status_bar_layout", TRUE, true);
+    public static final EnumSetting<AnimationsMode> FORCE_ANIMATIONS = new EnumSetting<>("morphe_force_animations", AnimationsMode.DEFAULT);
 
     // Custom filter
     public static final BooleanSetting CUSTOM_FILTER = new BooleanSetting("morphe_custom_filter", FALSE);
