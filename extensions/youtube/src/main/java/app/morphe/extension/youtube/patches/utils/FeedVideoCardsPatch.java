@@ -516,11 +516,19 @@ public final class FeedVideoCardsPatch {
             if (root == null) {
                 return;
             }
-            // A new layout can show another video, which is checked again as many times.
-            retries.remove(root);
-            scheduleUpdate(root);
+            requestUpdate(root);
         } catch (Exception ex) {
             Logger.printException(() -> "onComponentHostLayout failure", ex);
         }
+    }
+
+    /**
+     * Checks the root host once the layout pass is done, such as after it was attached again.
+     * Must be called on the main thread.
+     */
+    public static void requestUpdate(ComponentHost root) {
+        // A new layout can show another video, which is checked again as many times.
+        retries.remove(root);
+        scheduleUpdate(root);
     }
 }
