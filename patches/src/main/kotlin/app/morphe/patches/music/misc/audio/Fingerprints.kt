@@ -14,13 +14,10 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object AllowExclusiveAudioPlaybackFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -56,24 +53,7 @@ internal object AllowExclusiveAudioPlaybackLegacyFingerprint : Fingerprint(
     )
 )
 
-internal object MediaSessionControllerFingerprint : Fingerprint(
-    name = "<clinit>",
-    filters = listOf(
-        string("com/google/android/apps/youtube/music/mediabrowser/MusicMediaSessionPlayerController")
-    )
-)
-
-internal object StopMediaSessionFingerprint : Fingerprint(
-    classFingerprint = MediaSessionControllerFingerprint,
-    parameters = emptyList(),
-    returnType = "L",
-    filters = listOf(
-        // STOPPAGE_STOP_MUSIC_MEDIA_SESSION.
-        literal(33)
-    )
-)
-
-internal fun externalAudioRestrictionFingerprint(stopMethod: MethodReference) = Fingerprint(
+internal object ExternalAudioRestrictionFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
@@ -96,7 +76,6 @@ internal fun externalAudioRestrictionFingerprint(stopMethod: MethodReference) = 
         methodCall(
             smali = "Lj$/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z",
             location = MatchAfterWithin(6)
-        ),
-        methodCall(reference = stopMethod, location = MatchAfterWithin(3))
+        )
     )
 )
