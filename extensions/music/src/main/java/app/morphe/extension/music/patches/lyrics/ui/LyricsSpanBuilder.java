@@ -15,15 +15,18 @@ import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.LineHeightSpan;
 import android.text.style.RelativeSizeSpan;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.settings.Settings;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 final class LyricsSpanBuilder {
     private static final float TRANSLATION_RELATIVE_SIZE = 0.7f;
@@ -648,7 +651,6 @@ record WordTiming(int start, int end, long startMs, long endMs,
      */
     record DualLine(String text, boolean mainIsRoma, boolean smallIsRoma, int smallStart, int smallEnd,
             @Nullable List<WordTiming> wordSpans, boolean wordsOnSmall) {
-
     }
 
     /** Both only-flags standing, so the original goes and the two swap-aware sides take over. */
@@ -661,7 +663,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
         final boolean mainIsRoma;
         final String main;
         // The main slot is what the reading would have held, so a line whose reading never arrived keeps
-        // the original rather than a hole — and the translation, spoken as a whole and lighting nothing,
+        // the original rather than a hole, and the translation, spoken as a whole and lighting nothing,
         // steps down to the small run instead of taking a line it could never light.
         final boolean swap = Settings.LYRICS_SWAP_TRANS_ROMA.get();
         final String small;

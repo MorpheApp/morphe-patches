@@ -582,7 +582,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_local_romanization_summary">Romanize on the device when the provider, an OpenAI-compatible endpoint and Google Translate have all failed. Where the lyric carries word timings, the reading goes under each word and follows it, whichever source produced the reading; word sync must be on. Chinese, Cantonese, Japanese, Korean, Greek, Russian, Georgian and Armenian; about 90 MB of readings to download</string>
     <string name="morphe_music_lyrics_local_romanization_dict_downloading" translatable="false">%1$s: %2$d%%</string>
     <string name="morphe_music_lyrics_local_romanization_dict_building">Reading %1$s: %2$d%%</string>
-    <string name="morphe_music_lyrics_local_romanization_dict_ready">Readings ready (%1$d characters)</string>
+    <string name="morphe_music_lyrics_local_romanization_dict_ready">Readings ready (%1$d entries)</string>
     <string name="morphe_music_lyrics_local_romanization_dict_failed">Download failed - turn this off and on again to retry</string>
     <string name="morphe_music_lyrics_show_refresh_button_title">Show Refresh button</string>
     <string name="morphe_music_lyrics_show_refresh_button_summary">Tap to switch to next lyrics candidate; long-press to search lyrics by song title and artist</string>

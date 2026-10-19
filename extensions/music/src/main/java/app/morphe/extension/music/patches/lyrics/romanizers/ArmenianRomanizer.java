@@ -7,7 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -16,8 +16,8 @@ import java.util.Map;
  */
 public final class ArmenianRomanizer {
 
-    private static final Map<String, String> LETTERS = new LinkedHashMap<>();
-    private static final Map<String, String> DIGRAPHS = new LinkedHashMap<>();
+    private static final Map<String, String> LETTERS = new HashMap<>();
+    private static final Map<String, String> DIGRAPHS = new HashMap<>();
 
     static {
         LETTERS.put("ա", "a");
@@ -62,57 +62,15 @@ public final class ArmenianRomanizer {
         LETTERS.put("և", "ev");
 
         DIGRAPHS.put("ու", "u");
-        DIGRAPHS.put("ՈՒ", "u");
     }
+
+    private static final AlphabetRomanizer READER = new AlphabetRomanizer(
+            ScriptDetector::isArmenian, LETTERS, DIGRAPHS, false);
 
     private ArmenianRomanizer() {
     }
 
     public static String romanize(String line) {
-        StringBuilder out = new StringBuilder(line.length() * 2);
-        StringBuilder word = new StringBuilder();
-        int i = 0;
-
-        while (i < line.length()) {
-            if (!ScriptDetector.isArmenian(line.charAt(i))) {
-                i += flush(out, word, line, i);
-                continue;
-            }
-            String pair = i + 1 < line.length() ? line.substring(i, i + 2) : "";
-            String reading = DIGRAPHS.get(pair);
-            if (reading == null) {
-                word.append(letter(line.charAt(i)));
-                i++;
-            } else {
-                word.append(reading);
-                i += 2;
-            }
-        }
-        append(out, word.toString());
-        return out.toString().trim();
-    }
-
-    private static String letter(char c) {
-        final String reading = LETTERS.get(String.valueOf(Character.toLowerCase(c)));
-        return reading != null ? reading : String.valueOf(c);
-    }
-
-    /** Everything that is not Armenian runs through whole, so a mixed line keeps its other half. */
-    private static int flush(StringBuilder out, StringBuilder word, String line, int at) {
-        append(out, word.toString());
-        word.setLength(0);
-        int end = at + 1;
-        while (end < line.length() && !ScriptDetector.isArmenian(line.charAt(end))) {
-            end++;
-        }
-        String rest = line.substring(at, end).trim();
-        if (!rest.isEmpty()) append(out, rest);
-        return end - at;
-    }
-
-    private static void append(StringBuilder out, String word) {
-        if (word.isEmpty()) return;
-        if (out.length() > 0) out.append(' ');
-        out.append(word);
+        return READER.romanize(line);
     }
 }

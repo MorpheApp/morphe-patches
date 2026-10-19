@@ -152,7 +152,27 @@ public class LyricsAiConfigPreference extends Preference {
         }
         content.addView(extraBodyInput, extraBodyParams);
 
-        final Dialog[] shown = new Dialog[1];
+        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                context,
+                str("morphe_music_lyrics_use_ai_title"),
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                false,
+                true
+        );
+
+        Dialog dialog = dialogPair.first;
+        LinearLayout mainLayout = dialogPair.second;
+
+        mainLayout.addView(content, mainLayout.getChildCount() - 1,
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
 
         Runnable resetAction = () -> {
             Settings.LYRICS_AI_BASE_URL.resetToDefault();
@@ -205,34 +225,11 @@ public class LyricsAiConfigPreference extends Preference {
                     Settings.LYRICS_AI_API_TOKEN.save(apiToken);
                     Settings.LYRICS_AI_MODEL.save(model);
                     updateSummary();
-                    if (shown[0] != null) shown[0].dismiss();
+                    dialog.dismiss();
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_saved"));
                 });
             });
         };
-
-        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                context,
-                str("morphe_music_lyrics_use_ai_title"),
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                false,
-                true
-        );
-
-        Dialog dialog = dialogPair.first;
-        LinearLayout mainLayout = dialogPair.second;
-        shown[0] = dialog;
-
-        mainLayout.addView(content, mainLayout.getChildCount() - 1,
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
 
         // Both buttons are built here instead of handed to create() because the save action can
         // refuse what it was given, and the input has to survive that: create() dismisses on OK

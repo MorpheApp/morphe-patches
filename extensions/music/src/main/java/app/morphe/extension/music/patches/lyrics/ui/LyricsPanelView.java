@@ -71,12 +71,10 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
-import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsFileSaver;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
@@ -1380,16 +1378,16 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                     }
                     try {
                         for (int i = 0; i < count; i++) {
-                                // A pass already under way when the next build began lays
-                                // its lines out against the new rows, so a word table built
-                                // for one song lands on another's text and is dropped as
-                                // out of range, leaving that line lit in one go.
-                                if (generation != buildGeneration.get() || lyrics != newLyrics
-                                        || i >= lineWordSpans.size()
-                                        || i >= lineViews.size()
-                                        || i >= lineOriginalStarts.size()) {
-                                    return;
-                                }
+                            // A pass already under way when the next build began lays
+                            // its lines out against the new rows, so a word table built
+                            // for one song lands on another's text and is dropped as
+                            // out of range, leaving that line lit in one go.
+                            if (generation != buildGeneration.get() || lyrics != newLyrics
+                                    || i >= lineWordSpans.size()
+                                    || i >= lineViews.size()
+                                    || i >= lineOriginalStarts.size()) {
+                                return;
+                            }
                             lineOriginalStarts.set(i, only ? 0 : allOrigStarts.get(i));
                             TextView tv = lineViews.get(i);
                             if (i < newLyrics.lines().size()) {
@@ -2530,8 +2528,10 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         buttonRow.setVisibility(VISIBLE);
     }
 
-    /** <p>The dual pill hides its own two on its own schedule, so restoring the row wholesale
-     * would undo that. */
+    /**
+     * Shows only what {@link #showOnlyRefreshButton()} hid: the dual pill hides its own two on its
+     * own schedule, so restoring the row wholesale would undo that.
+     */
     private void restoreToolbarButtons() {
         for (View button : hiddenToolbarButtons) {
             button.setVisibility(VISIBLE);
@@ -3687,7 +3687,6 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         }
         return 0;
     }
-
 
     private void applyWordColors(int index, long positionMs, boolean allSung) {
         if (index < 0 || index >= lineWordSpans.size() || index >= lineViews.size()) {

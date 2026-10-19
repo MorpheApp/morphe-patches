@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -48,7 +47,6 @@ public final class LyricsProviders {
     private LyricsProviders() {
     }
 
-    @NonNull
     public static List<LyricsProvider> providersInOrder(String order) {
         List<LyricsProvider> providers = new ArrayList<>(PROVIDER_ORDER.size());
         for (String id : enabledProviderIds(order)) {
@@ -79,7 +77,6 @@ public final class LyricsProviders {
         return enabledProviderIds(Settings.LYRICS_SOURCE.get()).contains(id);
     }
 
-    @NonNull
     private static List<String> enabledProviderIds(String order) {
         List<String> result = new ArrayList<>();
         if (order == null || !order.contains(",")) {

@@ -20,8 +20,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -41,7 +40,6 @@ import app.morphe.extension.shared.Logger;
  */
 public final class PinyinDictStore {
 
-
     public static final String VERSION = "18.0.0";
 
     private static final String URL =
@@ -58,15 +56,10 @@ public final class PinyinDictStore {
             "https://raw.githubusercontent.com/chinese-data/pinyin-pro-data/" + WORDS_REVISION
                     + "/data/complete.json";
     private static final String WORDS_ARCHIVE = "pinyin_words.json";
-    private static final String WORDS_TABLE_NAME = "pinyin_words_" + WORDS_REVISION + ".bin";
     private static final String WORDS_NOTICE_NAME = "pinyin_words.NOTICE.txt";
-
-    static final byte[] WORDS_MAGIC = {'M', 'P', 'Y', 'W', '0', '0', '0', '1'};
-
-    /** Room to spare, since streaming the source does not say how many entries there will be. */
-    static final int WORDS_SLOT_COUNT = 1 << 20;
-
-    private static final int WORDS_PROGRESS_EVERY = 20000;
+    private static final WordTableFile WORDS = new WordTableFile(
+            "pinyin_words_" + WORDS_REVISION + ".bin",
+            new byte[] {'M', 'P', 'Y', 'W', '0', '0', '0', '1'}, 1 << 20);
 
     /** How much a reading field is trusted, best first. */
     private static final String[] SOURCES =
@@ -82,25 +75,24 @@ public final class PinyinDictStore {
 
     private static final RomanizationDict.Channel CHANNEL = new RomanizationDict.Channel();
 
-    private static volatile char[] keys;
-    private static volatile String[] values;
-    private static volatile WordReadingTable words;
+    @Nullable
+    private static volatile CharReadingTable characters;
 
     private PinyinDictStore() {
     }
 
     /** Loads the table on first use, since only the settings row downloads it. */
     public static boolean isReady() {
-        if (keys != null) return true;
+        if (characters != null) return true;
         File table = tableFile();
         if (table == null || !table.isFile()) return false;
         try {
-            load(table);
+            characters = CharReadingTable.load(table);
         } catch (IOException ex) {
             Logger.printDebug(() -> "Could not read the pinyin table", ex);
             return false;
         }
-        return keys != null;
+        return true;
     }
 
     @Nullable
@@ -109,55 +101,24 @@ public final class PinyinDictStore {
         return directory == null ? null : new File(directory, TABLE_NAME);
     }
 
-    @Nullable
-    private static File wordsTableFile() {
-        File directory = RomanizationDict.directory();
-        return directory == null ? null : new File(directory, WORDS_TABLE_NAME);
-    }
-
     /** The reading of a character, or null when the database has none for it. */
     @Nullable
     public static String reading(char c) {
-        char[] table = keys;
-        if (table == null) return null;
-
-        int low = 0;
-        int high = table.length - 1;
-        while (low <= high) {
-            int middle = (low + high) >>> 1;
-            // Unsigned: half of the Han block is negative as a char, and the table is in code point order.
-            int here = Character.compare(table[middle], c);
-            if (here < 0) {
-                low = middle + 1;
-            } else if (here > 0) {
-                high = middle - 1;
-            } else {
-                return values[middle];
-            }
-        }
-        return null;
+        CharReadingTable table = characters;
+        return table == null ? null : table.reading(c);
     }
 
     /** Null leaves the line to be read a character at a time. */
     @Nullable
     public static WordReadingTable word() {
-        WordReadingTable open = words;
-        if (open != null) return open;
-
-        File table = wordsTableFile();
-        if (table == null) return null;
-        open = WordReadingTable.open(table.toPath(), WORDS_MAGIC);
-        if (open != null) {
-            words = open;
-        }
-        return open;
+        return WORDS.open();
     }
 
     /** Starts a fetch if the table is not loaded. Safe to call whenever the setting is on. */
     public static void ensure(RomanizationDict.Listener listener) {
-        if (isReady()) {
-            listener.onReady(keys.length);
-            if (word() != null) return;
+        if (isReady() && word() != null && CantoneseDictStore.word() != null) {
+            listener.onReady(entries());
+            return;
         }
         CHANNEL.attach(listener, RUNNING.get());
         if (!RUNNING.compareAndSet(false, true)) return;
@@ -196,11 +157,12 @@ public final class PinyinDictStore {
             archive.delete();
         }
 
-        load(table);
+        characters = CharReadingTable.load(table);
         RomanizationDict.writeNotice(directory, NOTICE_NAME, noticeText());
         CantoneseDictStore.writeNotice(directory);
 
-        if (!new File(directory, WORDS_TABLE_NAME).isFile()) buildWords(directory, listener);
+        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictStore::addWords, listener);
+        RomanizationDict.writeNotice(directory, WORDS_NOTICE_NAME, wordsNoticeText());
         CantoneseDictStore.buildWords(directory, listener);
         listener.onReady(entries());
     }
@@ -208,29 +170,9 @@ public final class PinyinDictStore {
     private static int entries() {
         WordReadingTable pinyinWords = word();
         WordReadingTable cantoneseWords = CantoneseDictStore.word();
-        return keys.length
+        return characters.size()
                 + (pinyinWords == null ? 0 : pinyinWords.size())
                 + (cantoneseWords == null ? 0 : cantoneseWords.size());
-    }
-
-    private static void buildWords(File directory, RomanizationDict.Listener listener)
-            throws IOException {
-        File archive = new File(directory, WORDS_ARCHIVE);
-        if (!archive.isFile()) {
-            RomanizationDict.download(WORDS_URL, archive, WORDS_ARCHIVE, listener);
-        }
-
-        File built = new File(directory, WORDS_TABLE_NAME + ".building");
-        WordReadingTable.Builder builder =
-                new WordReadingTable.Builder(built.toPath(), WORDS_MAGIC, WORDS_SLOT_COUNT);
-        addWords(archive, builder, listener);
-        builder.finish(0);
-        //noinspection ResultOfMethodCallIgnored
-        archive.delete();
-
-        RomanizationDict.commit(built, new File(directory, WORDS_TABLE_NAME));
-        RomanizationDict.writeNotice(directory, WORDS_NOTICE_NAME, wordsNoticeText());
-        words = null;
     }
 
     /**
@@ -259,8 +201,8 @@ public final class PinyinDictStore {
                 if (word == null || reading == null) continue;
 
                 builder.put(word, withErhua(reading));
-                if (++seen % WORDS_PROGRESS_EVERY == 0) {
-                    listener.onBuilding(Math.min(99, seen / WORDS_PROGRESS_EVERY));
+                if (++seen % WordTableFile.PROGRESS_EVERY == 0) {
+                    listener.onBuilding(Math.min(99, seen / WordTableFile.PROGRESS_EVERY));
                 }
                 word = null;
                 reading = null;
@@ -393,27 +335,9 @@ public final class PinyinDictStore {
             if (cut >= 0) reading = reading.substring(0, cut).trim();
             cut = reading.indexOf(' ');
             if (cut > 0) reading = reading.substring(0, cut);
-            if (reading.length() > 0) return reading.toLowerCase(java.util.Locale.ROOT);
+            if (reading.length() > 0) return reading.toLowerCase(Locale.ROOT);
         }
         return null;
-    }
-
-    /** Sorted like the database, which is what makes a lookup a binary search. Keys are
-     * published last, so a reader that sees one sees its values too. */
-    private static void load(File table) throws IOException {
-        List<String> lines = Files.readAllLines(table.toPath(), StandardCharsets.UTF_8);
-        char[] loadedKeys = new char[lines.size()];
-        String[] loadedValues = new String[lines.size()];
-
-        int at = 0;
-        for (String line : lines) {
-            if (line.length() < 3) continue;
-            loadedKeys[at] = line.charAt(0);
-            loadedValues[at] = line.substring(2);
-            at++;
-        }
-        values = loadedValues;
-        keys = loadedKeys;
     }
 
     private static String noticeText() {

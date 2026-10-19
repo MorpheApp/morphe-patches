@@ -130,7 +130,6 @@ final class LyricsLineView extends TextView {
         smallRunHoldsWords = holdsWords;
     }
 
-
     void setActiveLine(boolean active, int color) {
         if (activeLine == active && secondaryActiveColor == color) {
             return;
@@ -409,8 +408,7 @@ final class LyricsLineView extends TextView {
      * mirrors with it: read as left-to-right such a word goes to the right edge, where its sweep grows
      * the wrong way and shrinks the lit area as it is sung.
      */
-
-private static float trailOnLine(float lineLeft, float lineRight, float lead, float end,
+    private static float trailOnLine(float lineLeft, float lineRight, float lead, float end,
             boolean rightToLeft) {
         if (rightToLeft) {
             if (end >= lead) {

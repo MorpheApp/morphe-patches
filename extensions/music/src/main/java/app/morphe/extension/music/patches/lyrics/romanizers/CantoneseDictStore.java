@@ -16,8 +16,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 
@@ -38,46 +36,29 @@ public final class CantoneseDictStore {
             "https://raw.githubusercontent.com/rime/rime-cantonese/" + WORDS_REVISION
                     + "/jyut6ping3.words.dict.yaml";
     private static final String WORDS_ARCHIVE = "cantonese_words.yaml";
-    private static final String WORDS_TABLE_NAME = "cantonese_words_" + WORDS_REVISION + ".bin";
     private static final String WORDS_NOTICE_NAME = "cantonese_words.NOTICE.txt";
+    private static final WordTableFile WORDS = new WordTableFile(
+            "cantonese_words_" + WORDS_REVISION + ".bin",
+            new byte[] {'M', 'C', 'Y', 'W', '0', '0', '0', '1'}, 1 << 20);
 
-    static final byte[] WORDS_MAGIC = {'M', 'C', 'Y', 'W', '0', '0', '0', '1'};
-
-    /** Room to spare, since streaming the source does not say how many entries there will be. */
-    static final int WORDS_SLOT_COUNT = 1 << 20;
-
-    private static final int WORDS_PROGRESS_EVERY = 20000;
-
-    private static volatile char[] keys;
-    private static volatile String[] values;
-    private static volatile WordReadingTable words;
+    @Nullable
+    private static volatile CharReadingTable characters;
 
     private CantoneseDictStore() {
     }
 
     /** Loads the table on first use, since only the settings row downloads it. */
     public static boolean isReady() {
-        if (keys != null) return true;
+        if (characters != null) return true;
         File table = tableFile();
         if (table == null || !table.isFile()) return false;
         try {
-            List<String> lines = Files.readAllLines(table.toPath(), StandardCharsets.UTF_8);
-            char[] loadedKeys = new char[lines.size()];
-            String[] loadedValues = new String[lines.size()];
-            int at = 0;
-            for (String line : lines) {
-                if (line.length() < 3) continue;
-                loadedKeys[at] = line.charAt(0);
-                loadedValues[at] = line.substring(2);
-                at++;
-            }
-            values = loadedValues;
-            keys = loadedKeys;
+            characters = CharReadingTable.load(table);
         } catch (IOException ex) {
             Logger.printDebug(() -> "Could not read the Cantonese table", ex);
             return false;
         }
-        return keys != null;
+        return true;
     }
 
     @Nullable
@@ -88,24 +69,8 @@ public final class CantoneseDictStore {
 
     @Nullable
     public static String reading(char c) {
-        char[] table = keys;
-        if (table == null) return null;
-
-        int low = 0;
-        int high = table.length - 1;
-        while (low <= high) {
-            int middle = (low + high) >>> 1;
-            // Unsigned: half of the Han block is negative as a char, and the table is in code point order.
-            int here = Character.compare(table[middle], c);
-            if (here < 0) {
-                low = middle + 1;
-            } else if (here > 0) {
-                high = middle - 1;
-            } else {
-                return values[middle];
-            }
-        }
-        return null;
+        CharReadingTable table = characters;
+        return table == null ? null : table.reading(c);
     }
 
     static void writeNotice(File directory) throws IOException {
@@ -116,45 +81,13 @@ public final class CantoneseDictStore {
     /** Null leaves the line to be read a character at a time. */
     @Nullable
     public static WordReadingTable word() {
-        WordReadingTable open = words;
-        if (open != null) return open;
-
-        File table = wordsTableFile();
-        if (table == null) return null;
-        open = WordReadingTable.open(table.toPath(), WORDS_MAGIC);
-        if (open != null) {
-            words = open;
-        }
-        return open;
-    }
-
-    @Nullable
-    private static File wordsTableFile() {
-        File directory = RomanizationDict.directory();
-        return directory == null ? null : new File(directory, WORDS_TABLE_NAME);
+        return WORDS.open();
     }
 
     /** The dictionary lists no single characters, which is what the character table is for. */
     static void buildWords(File directory, RomanizationDict.Listener listener) throws IOException {
-        File target = new File(directory, WORDS_TABLE_NAME);
-        if (target.isFile()) return;
-
-        File archive = new File(directory, WORDS_ARCHIVE);
-        if (!archive.isFile()) {
-            RomanizationDict.download(WORDS_URL, archive, WORDS_ARCHIVE, listener);
-        }
-
-        File built = new File(directory, WORDS_TABLE_NAME + ".building");
-        WordReadingTable.Builder builder =
-                new WordReadingTable.Builder(built.toPath(), WORDS_MAGIC, WORDS_SLOT_COUNT);
-        addWords(archive, builder, listener);
-        builder.finish(0);
-        //noinspection ResultOfMethodCallIgnored
-        archive.delete();
-
-        RomanizationDict.commit(built, target);
+        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, CantoneseDictStore::addWords, listener);
         RomanizationDict.writeNotice(directory, WORDS_NOTICE_NAME, wordsNoticeText());
-        words = null;
     }
 
     /** A word may list the readings it shares with others in brackets; the first is the one
@@ -177,8 +110,8 @@ public final class CantoneseDictStore {
                 if (reading.isEmpty()) continue;
 
                 builder.put(line.substring(0, tab), reading);
-                if (++seen % WORDS_PROGRESS_EVERY == 0) {
-                    listener.onBuilding(Math.min(99, seen / WORDS_PROGRESS_EVERY));
+                if (++seen % WordTableFile.PROGRESS_EVERY == 0) {
+                    listener.onBuilding(Math.min(99, seen / WordTableFile.PROGRESS_EVERY));
                 }
             }
             listener.onBuilding(100);
@@ -206,6 +139,7 @@ public final class CantoneseDictStore {
                 : RomanizationDict.readNotice(directory, WORDS_NOTICE_NAME);
     }
 
+    @Nullable
     public static String notice() {
         File directory = RomanizationDict.directory();
         return directory == null ? null

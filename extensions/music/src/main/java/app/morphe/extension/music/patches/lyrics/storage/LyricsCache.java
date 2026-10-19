@@ -24,10 +24,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.function.Function;
 
+import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
-import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
 import app.morphe.extension.music.patches.lyrics.model.LyricsPreference;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;

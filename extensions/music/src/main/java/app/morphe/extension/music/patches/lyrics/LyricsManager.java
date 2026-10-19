@@ -1197,7 +1197,8 @@ private void reorderQueueByRemembered() {
         }
     }
     public boolean hasSearchProviders() {
-        return !LyricsProviders.searchableProviders(LyricsProviders.providersInOrder(Settings.LYRICS_SOURCE.get())).isEmpty();
+        return !LyricsProviders.searchableProviders(
+                LyricsProviders.providersInOrder(Settings.LYRICS_SOURCE.get())).isEmpty();
     }
 
     /** The custom search terms remembered for this track, or null when defaults were used. */

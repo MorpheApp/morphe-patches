@@ -66,14 +66,21 @@ public class LyricsClearCachePreference extends Preference {
             new AlertDialog.Builder(getContext())
                     .setTitle(str("morphe_music_lyrics_clear_cache_title"))
                     .setMessage(str("morphe_music_lyrics_clear_cache_summary"))
-                    .setPositiveButton(android.R.string.ok, (d, w) ->
-                            Utils.showToastShort(str("morphe_music_lyrics_clear_cache_done",
-                                    megabytes(LyricsCache.clear()))))
+                    .setPositiveButton(android.R.string.ok, (d, w) -> clear())
                     .setNegativeButton(android.R.string.cancel, null)
                     .show();
         } catch (WindowManager.BadTokenException ex) {
             Logger.printException(() -> "Could not show the clear cache dialog", ex);
         }
+    }
+
+    /** Thousands of files can be stored, so they are deleted off the main thread. */
+    private static void clear() {
+        Utils.runOnBackgroundThread(() -> {
+            final String freed = megabytes(LyricsCache.clear());
+            Utils.runOnMainThread(() -> Utils.showToastShort(
+                    str("morphe_music_lyrics_clear_cache_done", freed)));
+        });
     }
 
     /** A byte count too long to read at a glance. */

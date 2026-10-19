@@ -40,13 +40,14 @@ public final class JapaneseDictStore {
 
     private static final String[] SOURCES = {"small_lex.zip", "core_lex.zip", "notcore_lex.zip"};
 
-    /** Bumped when the record offsets changed, so a table built before that is not read. */
-    static final byte[] MAGIC = {'M', 'J', 'P', 'W', '0', '0', '0', '2'};
-
-    /** A table half full costs several probes for every miss, and a miss is what a lyric makes most. */
-    static final int SLOT_COUNT = 1 << 23;
-
-    private static final String TABLE_NAME = "japanese_readings_" + VERSION + ".bin";
+    /**
+     * The magic is bumped when the record offsets change, so a table built before that is not
+     * read. A table half full costs several probes for every miss, and a miss is what a lyric
+     * makes most, hence the slot count.
+     */
+    private static final WordTableFile TABLE = new WordTableFile(
+            "japanese_readings_" + VERSION + ".bin",
+            new byte[] {'M', 'J', 'P', 'W', '0', '0', '0', '2'}, 1 << 23);
     private static final String NOTICE_NAME = "japanese_readings.NOTICE.txt";
 
     /** How many entries go in before the row is worth moving. */
@@ -61,8 +62,6 @@ public final class JapaneseDictStore {
     private static final AtomicBoolean RUNNING = new AtomicBoolean();
 
     private static final RomanizationDict.Channel CHANNEL = new RomanizationDict.Channel();
-
-    private static volatile WordReadingTable table;
 
     private JapaneseDictStore() {
     }
@@ -99,16 +98,7 @@ public final class JapaneseDictStore {
     /** Null when the table has not been built. */
     @Nullable
     public static WordReadingTable table() {
-        WordReadingTable open = table;
-        if (open != null) return open;
-
-        File file = tableFile();
-        if (file == null) return null;
-        open = WordReadingTable.open(file.toPath(), MAGIC);
-        if (open != null) {
-            table = open;
-        }
-        return open;
+        return TABLE.open();
     }
 
     @Nullable
@@ -117,22 +107,16 @@ public final class JapaneseDictStore {
         return directory == null ? null : RomanizationDict.readNotice(directory, NOTICE_NAME);
     }
 
-    @Nullable
-    private static File tableFile() {
-        File directory = RomanizationDict.directory();
-        return directory == null ? null : new File(directory, TABLE_NAME);
-    }
-
     private static void build(RomanizationDict.Listener listener) throws IOException {
         File directory = RomanizationDict.directory();
         if (directory == null) throw new IOException("no cache directory");
 
-        File built = new File(directory, TABLE_NAME + ".building");
+        File target = TABLE.file();
+        File built = new File(target.getPath() + ".building");
         //noinspection ResultOfMethodCallIgnored
         built.delete();
 
-        WordReadingTable.Builder builder = new WordReadingTable.Builder(built.toPath(), MAGIC,
-                SLOT_COUNT);
+        WordReadingTable.Builder builder = TABLE.newBuilder(built);
         for (String source : SOURCES) {
             File archive = new File(directory, source);
             if (!archive.isFile()) {
@@ -145,7 +129,7 @@ public final class JapaneseDictStore {
         }
         builder.finish(Integer.parseInt(VERSION));
 
-        RomanizationDict.commit(built, tableFile());
+        RomanizationDict.commit(built, target);
         RomanizationDict.writeNotice(directory, NOTICE_NAME, noticeText());
         listener.onReady(builder.size());
     }

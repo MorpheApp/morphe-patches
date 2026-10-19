@@ -70,7 +70,7 @@ public final class ScriptDetector {
             } else if (isKana(c)) {
                 found[Script.JAPANESE.ordinal()]++;
                 if (isHiragana(c)) found[HIRAGANA]++;
-            } else if (c >= 0xAC00 && c <= 0xD7A3) {
+            } else if (isHangul(c)) {
                 found[Script.KOREAN.ordinal()]++;
             } else if (isCyrillic(c)) {
                 found[Script.CYRILLIC.ordinal()]++;
@@ -127,6 +127,10 @@ public final class ScriptDetector {
         return (c >= 0x3040 && c <= 0x309F)
                 || (c >= 0x30A0 && c <= 0x30FF)
                 || (c >= 0x31F0 && c <= 0x31FF);
+    }
+
+    static boolean isHangul(char c) {
+        return c >= 0xAC00 && c <= 0xD7A3;
     }
 
     static boolean isHiragana(char c) {

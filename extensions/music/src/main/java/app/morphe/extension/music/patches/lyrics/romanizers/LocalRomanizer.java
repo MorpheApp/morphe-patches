@@ -10,7 +10,10 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
@@ -35,23 +38,16 @@ public final class LocalRomanizer {
         public final List<String> lines;
 
         /** The name shown under the source. */
+        @Nullable
         public final String dictionary;
 
-        Result(List<String> lines, String dictionary) {
+        Result(List<String> lines, @Nullable String dictionary) {
             this.lines = lines;
             this.dictionary = dictionary;
         }
     }
 
-    private static final class Read {
-        private final String text;
-        @Nullable
-        private final String dictionary;
-
-        Read(String text, @Nullable String dictionary) {
-            this.text = text;
-            this.dictionary = dictionary;
-        }
+    private record Read(String text, @Nullable String dictionary) {
     }
 
     private static final String PINYIN = "UniDict, pinyin-pro";
@@ -63,11 +59,10 @@ public final class LocalRomanizer {
     private static final int[][] NO_TOKENS = new int[0][];
     private static final int[] NO_SYLLABLES = {0, 0};
 
-    /** 儿 where it is a word of its own rather than the erhua suffix. */
-    private static final String[] PLAIN_ERHUA = {
+    /** Words ending in the er character where it is a word of its own rather than the erhua suffix. */
+    private static final Set<String> PLAIN_ERHUA = new HashSet<>(Arrays.asList(
             "女儿", "男儿", "婴儿", "幼儿", "孤儿", "少儿", "胎儿", "健儿", "残儿", "弃儿",
-            "新生儿", "低能儿", "弱智儿", "托儿", "孕儿"
-    };
+            "新生儿", "低能儿", "弱智儿", "托儿", "孕儿"));
 
     private LocalRomanizer() {
     }
@@ -85,9 +80,9 @@ public final class LocalRomanizer {
 
         for (String line : lines) {
             final Read read = readAs(line, ScriptDetector.detect(line), cantonese);
-            if (read.dictionary != null) dictionary = read.dictionary;
-            if (!read.text.equals(line)) changed = true;
-            result.add(read.text);
+            if (read.dictionary() != null) dictionary = read.dictionary();
+            if (!read.text().equals(line)) changed = true;
+            result.add(read.text());
         }
 
         return changed ? new Result(result, dictionary) : null;
@@ -138,7 +133,7 @@ public final class LocalRomanizer {
         boolean any = false;
 
         for (Word word : words) {
-            final String reading = readAs(word.text(), script, cantonese).text;
+            final String reading = readAs(word.text(), script, cantonese).text();
             if (reading.equals(word.text())) {
                 read.add(word);
                 continue;
@@ -262,9 +257,9 @@ public final class LocalRomanizer {
             if (isOnePerSyllable(c)) characters++;
         }
         if (characters == 0) return letters > 0 ? 1 : 0;
-        // 儿化 rides on the syllable before it, so such a word is said one fewer than written, unless the
-        // 儿 is a word of its own: anything else beside it keeps its syllable, or the 儿 has none.
-        if (characters > 1 && letters > 0 && word.endsWith("儿") && !isPlainErhua(word)) {
+        // The erhua suffix rides on the syllable before it, so such a word is said one fewer than written,
+        // unless the er is a word of its own: anything else beside it keeps its syllable, or the er has none.
+        if (characters > 1 && letters > 0 && word.endsWith("儿") && !PLAIN_ERHUA.contains(word)) {
             characters--;
         }
         return characters;
@@ -272,14 +267,7 @@ public final class LocalRomanizer {
 
     private static boolean isOnePerSyllable(char c) {
         return ScriptDetector.isHan(c) || ScriptDetector.isKana(c)
-                || (c >= 0xAC00 && c <= 0xD7A3);
-    }
-
-    private static boolean isPlainErhua(String word) {
-        for (String plain : PLAIN_ERHUA) {
-            if (word.equals(plain)) return true;
-        }
-        return false;
+                || ScriptDetector.isHangul(c);
     }
 
     /** A word of nothing but punctuation has no reading of its own, so it rides on the one before. */

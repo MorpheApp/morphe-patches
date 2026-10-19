@@ -265,11 +265,7 @@ public final class LyricsPanelInstaller {
     private static void scheduleInstall(long deadlineUptimeMs, long delay) {
         Utils.runOnMainThreadDelayed(() -> {
             try {
-                if (install()) {
-                    installPending = false;
-                    return;
-                }
-                if (SystemClock.uptimeMillis() >= deadlineUptimeMs) {
+                if (install() || SystemClock.uptimeMillis() >= deadlineUptimeMs) {
                     installPending = false;
                     return;
                 }
@@ -355,7 +351,7 @@ public final class LyricsPanelInstaller {
      */
     public static boolean isLyricsPanelOpen() {
         // Asked first because it is answered by identity, which does not move with the language;
-//        // the heading is read only when there is no panel to go by.
+        // the heading is read only when there is no panel to go by.
         if (isCurrentPanelLyrics()) {
             return true;
         }

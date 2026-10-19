@@ -18,8 +18,10 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
+import app.morphe.extension.shared.Logger;
 
 /**
  * What the two reading dictionaries have in common: how they are fetched and how the settings row
@@ -178,9 +180,9 @@ public final class RomanizationDict {
         File file = new File(directory, fileName);
         if (!file.isFile()) return null;
         try {
-            return new String(java.nio.file.Files.readAllBytes(file.toPath()),
-                    StandardCharsets.UTF_8);
+            return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
         } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not read the notice " + fileName, ex);
             return null;
         }
     }

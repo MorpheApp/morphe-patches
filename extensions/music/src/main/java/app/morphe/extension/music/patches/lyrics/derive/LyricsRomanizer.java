@@ -24,6 +24,7 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.translation.TextTranslator;
 
@@ -118,7 +119,8 @@ public final class LyricsRomanizer {
                 final boolean fromGoogle = online && local == null && wholeLine != null;
                 publish(callback, lyrics, wholeLine, fromGoogle, false, null,
                         local != null ? local.dictionary : null);
-            } catch (Throwable ignored) {
+            } catch (Throwable ex) {
+                Logger.printException(() -> "romanize failure", ex);
                 Utils.runOnMainThread(
                         () -> callback.onRomanized(null, false, false, null, false, null));
             }

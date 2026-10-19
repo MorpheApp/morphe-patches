@@ -17,7 +17,6 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.TextTrim;
 
-
 public final class LyricsBracketSplitter {
 
     private static final LyricsLine BLANK = new LyricsLine(LyricsLine.NO_TIME, "");

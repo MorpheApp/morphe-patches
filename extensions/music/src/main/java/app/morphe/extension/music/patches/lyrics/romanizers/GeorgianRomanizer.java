@@ -7,7 +7,8 @@
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
-import java.util.LinkedHashMap;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Map;
  */
 public final class GeorgianRomanizer {
 
-    private static final Map<String, String> LETTERS = new LinkedHashMap<>();
+    private static final Map<String, String> LETTERS = new HashMap<>();
 
     static {
         LETTERS.put("ა", "a");
@@ -53,47 +54,13 @@ public final class GeorgianRomanizer {
         LETTERS.put("ჰ", "h");
     }
 
+    private static final AlphabetRomanizer READER = new AlphabetRomanizer(
+            ScriptDetector::isGeorgian, LETTERS, Collections.emptyMap(), false);
+
     private GeorgianRomanizer() {
     }
 
     public static String romanize(String line) {
-        StringBuilder out = new StringBuilder(line.length() * 2);
-        StringBuilder word = new StringBuilder();
-        int i = 0;
-
-        while (i < line.length()) {
-            if (!ScriptDetector.isGeorgian(line.charAt(i))) {
-                i += flush(out, word, line, i);
-                continue;
-            }
-            word.append(letter(line.charAt(i)));
-            i++;
-        }
-        append(out, word.toString());
-        return out.toString().trim();
-    }
-
-    private static String letter(char c) {
-        final String reading = LETTERS.get(String.valueOf(Character.toLowerCase(c)));
-        return reading != null ? reading : String.valueOf(c);
-    }
-
-    /** Everything that is not Georgian runs through whole, so a mixed line keeps its other half. */
-    private static int flush(StringBuilder out, StringBuilder word, String line, int at) {
-        append(out, word.toString());
-        word.setLength(0);
-        int end = at + 1;
-        while (end < line.length() && !ScriptDetector.isGeorgian(line.charAt(end))) {
-            end++;
-        }
-        String rest = line.substring(at, end).trim();
-        if (!rest.isEmpty()) append(out, rest);
-        return end - at;
-    }
-
-    private static void append(StringBuilder out, String word) {
-        if (word.isEmpty()) return;
-        if (out.length() > 0) out.append(' ');
-        out.append(word);
+        return READER.romanize(line);
     }
 }

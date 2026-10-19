@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
@@ -74,8 +73,7 @@ public final class LyricsMatch {
      * segments, so candidates written against it pass the duration filter. With
      * {@link Settings#LYRICS_SB_MATCHING} off none of that is requested or subtracted.
      */
-    @NonNull
-    static TrackInfo withEffectiveDuration(@NonNull TrackInfo track,
+    static TrackInfo withEffectiveDuration(TrackInfo track,
                                            @Nullable List<SkipSegments.Seg> segs) {
         if (!Settings.LYRICS_SB_MATCHING.get()) {
             return track;

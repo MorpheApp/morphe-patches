@@ -16,6 +16,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import app.morphe.extension.shared.Logger;
+
 /**
  * The reading of a word, held in a file rather than in the heap. There are hundreds of thousands
  * of them per language and a lyric touches a few hundred, so the table is a hash table on disk
@@ -78,10 +80,11 @@ public final class WordReadingTable implements AutoCloseable {
                     if (mapped.get(MAGIC_OFFSET + i) != magic[i]) return null;
                 }
                 int slots = mapped.getInt(SLOT_COUNT_OFFSET);
-                if (slots <= 0 || slots > MAX_SLOT_COUNT) return null;
+                if (slots <= 0 || slots > MAX_SLOT_COUNT || Integer.bitCount(slots) != 1) return null;
                 return new WordReadingTable(mapped, slots);
             }
         } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not open the reading table " + file, ex);
             return null;
         }
     }
@@ -91,7 +94,7 @@ public final class WordReadingTable implements AutoCloseable {
         byte[] query = surface.getBytes(StandardCharsets.UTF_8);
         int slot = hash(query) & slotMask;
 
-        for (int probe = 0; probe < MAX_SLOT_COUNT; probe++) {
+        for (int probe = 0; probe <= slotMask; probe++) {
             int offset = buffer.getInt(HEADER_BYTES + (slot << 2));
             if (offset == 0) return null;
 
@@ -196,7 +199,7 @@ public final class WordReadingTable implements AutoCloseable {
             }
 
             int slot = hash(key) & slotMask;
-            for (int probe = 0; probe < MAX_SLOT_COUNT; probe++) {
+            for (int probe = 0; probe <= slotMask; probe++) {
                 int offset = buffer.getInt(HEADER_BYTES + (slot << 2));
                 if (offset == 0) break;
                 int record = recordsOffset + offset - 1;
