@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
@@ -145,5 +146,20 @@ internal object DataSpecConstructorFingerprint : Fingerprint(
         "J",
         "Ljava/lang/String;",
         "I"
+    )
+)
+
+/**
+ * Video download, which is enqueued with the download manager.
+ */
+internal object DownloadVideoFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            definingClass = "Landroid/app/DownloadManager\$Request;",
+            name = "<init>"
+        ),
+        string("DownloadManager_not_available")
     )
 )
