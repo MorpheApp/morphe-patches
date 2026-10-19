@@ -35,6 +35,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 /** Switches between the complete native History page and the compact Series page. */
 @SuppressLint("ViewConstructor")
@@ -43,11 +44,11 @@ public final class HistoryUi extends LinearLayout {
     private static long openSeriesUntil;
     private static String openSeriesId = "";
     private final View watch;
-    private final FrameLayout pane;
+    private final FrameLayout pane, tabs;
     private final TextView watchTab, seriesTab;
     private final HistorySwitcher switcher;
     private LibraryDialog library;
-    private boolean series;
+    private boolean series, seriesOnly;
     private BackRegistration backRegistration;
     private ViewTreeObserver observer;
     // App-bar offsets can move the browse pane without causing a global layout pass.
@@ -162,7 +163,7 @@ public final class HistoryUi extends LinearLayout {
         watch = view;
         setOrientation(VERTICAL);
         setBackgroundColor(surface());
-        FrameLayout tabs = new FrameLayout(getContext());
+        tabs = new FrameLayout(getContext());
         tabs.setPadding(
                 dp(16), dp(4),
                 dp(16), dp(4));
@@ -181,7 +182,11 @@ public final class HistoryUi extends LinearLayout {
                     if (series && library != null && library.back()) return;
                     select(true);
                 });
-        select(android.os.SystemClock.uptimeMillis() < openSeriesUntil);
+        // Opened by a Series action, or as the page of the Series navigation button.
+        boolean seriesPage = android.os.SystemClock.uptimeMillis() < openSeriesUntil
+                || NavigationButton.getSelectedNavigationButton() == NavigationButton.SERIES;
+        setSeriesOnly(seriesPage);
+        select(seriesPage);
         openSeriesUntil = 0;
         if (library != null && !openSeriesId.isEmpty()) {
             library.openSeries(openSeriesId);
@@ -227,11 +232,19 @@ public final class HistoryUi extends LinearLayout {
         return t;
     }
 
+    /**
+     * The switcher shows only when History is opened normally and the Series navigation button is off.
+     */
+    private void setSeriesOnly(boolean value) {
+        seriesOnly = value;
+        tabs.setVisibility(value || SeriesTrackerPatch.NAVIGATION_BUTTON ? GONE : VISIBLE);
+    }
+
     private void select(boolean selected) {
         if (!selected && library != null) library.hideSearchKeyboard();
         series = selected;
         if (selected && library == null) {
-            library = LibraryDialog.embedded(activity(getContext()));
+            library = LibraryDialog.embedded(activity(getContext()), seriesOnly);
             pane.addView(library.view(), new FrameLayout.LayoutParams(-1, -1));
         }
         watch.setVisibility(selected ? GONE : VISIBLE);
@@ -320,6 +333,7 @@ public final class HistoryUi extends LinearLayout {
     protected android.os.Parcelable onSaveInstanceState() {
         Saved saved = new Saved(super.onSaveInstanceState());
         saved.series = series;
+        saved.seriesOnly = seriesOnly;
         if (library != null) {
             saved.selected = library.selected();
             saved.query = library.query();
@@ -336,6 +350,7 @@ public final class HistoryUi extends LinearLayout {
             return;
         }
         super.onRestoreInstanceState(saved.getSuperState());
+        setSeriesOnly(saved.seriesOnly);
         if (saved.series || !saved.selected.isEmpty()) {
             select(true);
             library.setQuery(saved.query);
@@ -345,7 +360,7 @@ public final class HistoryUi extends LinearLayout {
     }
 
     public static final class Saved extends View.BaseSavedState {
-        boolean series;
+        boolean series, seriesOnly;
         String selected = "", query = "";
         int page, scroll;
 
@@ -360,6 +375,7 @@ public final class HistoryUi extends LinearLayout {
             page = in.readInt();
             scroll = in.readInt();
             query = in.readString();
+            seriesOnly = in.readInt() != 0;
         }
 
         @Override
@@ -370,6 +386,7 @@ public final class HistoryUi extends LinearLayout {
             out.writeInt(page);
             out.writeInt(scroll);
             out.writeString(query);
+            out.writeInt(seriesOnly ? 1 : 0);
         }
 
         public static final android.os.Parcelable.Creator<Saved> CREATOR =
@@ -391,12 +408,19 @@ public final class HistoryUi extends LinearLayout {
                 || type.equals("WATCH_WHILE_MINIMIZED");
     }
 
+    // onBackPressed is deprecated in Android 13, but still runs the app back navigation.
+    @SuppressWarnings("deprecation")
+    static void navigateUp(Activity activity) {
+        if (!onBack()) activity.onBackPressed();
+    }
+
     public static boolean onBack() {
         if (!SeriesTrackerPatch.ENABLED) return false;
         if (!pageExposed()) return false;
         HistoryUi ui = current.get();
         if (ui == null || !ui.isShown() || !ui.series) return false;
         if (ui.library != null && ui.library.back()) return true;
+        if (ui.seriesOnly) return false;
         ui.select(false);
         return true;
     }

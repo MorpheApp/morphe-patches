@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Heldur straumnum í sömu stöðu eftir að færslu, mynd eða myndbandi er lokað, í stað þess að færa opnu færsluna efst</string>
   <string name="morphe_feed_media_max_height_title">Hámarkshæð straumsmiðla</string>
   <string name="morphe_feed_media_max_height_summary">Hámarkshæð mynda, myndbanda og gallería í straumnum, sem margfeldi af breidd þeirra. Hærri miðlar eru klipptir. 1,33 er sjálfgefið hjá Reddit</string>
+  <string name="morphe_redgifs_audio_title">Spila Redgifs með hljóði</string>
+  <string name="morphe_redgifs_audio_summary">Spilar upprunalega Redgifs myndbandið í stað afrits frá Reddit, sem er oft án hljóðs</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD gæði</string>
+  <string name="morphe_redgifs_hd_summary">Spilar HD Redgifs myndbandið. HD myndbönd eru stærri og geta biðið til að hlaða</string>
   <string name="morphe_hide_media_viewer_overlay_title">Fela yfirlag miðlaskoðarans</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Felur titilinn, hnappana og myndbandsstýringarnar við opnun myndar eða myndbands. Bankaðu á myndefnið til að sýna þau</string>
   <string name="morphe_hide_join_conversation_button_title">Fela hnappinn „Sjá samtalið“</string>

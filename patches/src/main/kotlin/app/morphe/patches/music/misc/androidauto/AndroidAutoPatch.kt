@@ -21,6 +21,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.cloneMutable
@@ -909,9 +910,16 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
 // region Android Auto browse results
 
 /**
- * Passes browse results through Java's `handleAndroidAutoBrowseResult` before YTM sends them to Android Auto.
+ * Applies browse changes before delivery, then limits the result size on 9.15.
  */
 private fun hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod: MutableMethod) {
+    if (!is_9_20_or_greater) {
+        deliverAndroidAutoMediaItemsMethod.addInstructions(0, """
+            invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->limitAndroidAutoBrowseItems(Ljava/util/List;)Ljava/util/List;
+            move-result-object p1
+        """)
+    }
+
     val handleAndroidAutoBrowseResultMethod = "$EXTENSION_CLASS->handleAndroidAutoBrowseResult(" +
             EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE +
             "Ljava/util/List;)Ljava/util/List;"

@@ -429,6 +429,11 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_copy_comments_title">Yorumları kopyala</string>
   <string name="morphe_copy_comments_summary">Bir yorumu kopyalamak için dokunup basılı tutun</string>
   <string name="morphe_copy_comments_success">Yorum panoya kopyalandı</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Video menüsünü açmak için dokunun ve basılı tutun</string>
+  <string name="morphe_feed_long_press_menu_summary">Akış video üzerinde herhangi bir yere dokunup basılı tutmak, menüyü açar</string>
+  <string name="morphe_feed_watch_later_button_title">Küçük resimlerde Daha Sonra İzle düğmesini göster</string>
+  <string name="morphe_feed_watch_later_button_summary">Akış videolarının küçük resimlerinde bir Daha Sonra İzle düğmesi gösterilir. Dokunulup basılı tutulduğunda Çalma listesine kaydet açılır</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV\'ye oturum aç\" penceresini devre dışı bırak</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Cihazlarınızı bağlayın\' açılır penceresini devre dışı bırak</string>
@@ -473,6 +478,17 @@ OpenRouter.ai'yi açmak için buraya dokunun"</string>
   <string name="morphe_vot_cost_per_hour">100 video saati başına %s</string>
   <string name="morphe_vot_tts_voice_type">Ses</string>
   <string name="morphe_vot_tts_system">Sistem</string>
+    <string name="morphe_vot_catalog_refreshing">Yenileniyor...</string>
+    <string name="morphe_vot_catalog_updated">Son güncelleme: %s</string>
+    <string name="morphe_vot_catalog_refresh">Ses listesini yenile</string>
+    <string name="morphe_vot_catalog_unchanged">Ses listesi güncel</string>
+    <string name="morphe_vot_catalog_changed">Ses listesi güncellendi: +%1$d / -%2$d</string>
+    <string name="morphe_vot_catalog_refresh_failed">Ses listesi yenilenemedi</string>
+    <string name="morphe_vot_catalog_source_online">Çevrimiçi</string>
+    <string name="morphe_vot_catalog_source_cache">Önbellek</string>
+    <string name="morphe_vot_catalog_source_fallback">Yerleşik</string>
+    <string name="morphe_vot_catalog_status">%1$s · %2$d ses · +%3$d / -%4$d</string>
+    <string name="morphe_vot_catalog_error">Güncelleme başarısız: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Çok dilli erkek</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Çok dilli kadın</string>
   <string name="morphe_vot_voice_gender_male">Erkek</string>
@@ -1156,6 +1172,8 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Durum çubuğunu gizle</string>
   <string name="morphe_hide_status_bar_summary">Sistem durum çubuğunu gizler. Bir anlığına göstermek için üst kenardan aşağı kaydırın</string>
+  <string name="morphe_fix_status_bar_layout_title">Durum çubuğunun üst barları kapatmasını düzelt</string>
+  <string name="morphe_fix_status_bar_layout_summary">Üst barları kapatmaması ve oynatıcının üzerinde boş alan bırakmaması için durum çubuğu düzenini tutarlı hale getirir. Uygulama çöktüğünde veya üst barlar yanlış göründüğünde bu özelliği kapatın</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Açık tema arka plan</string>
   <string name="morphe_theme_color_light_entry_2">Beyaz</string>

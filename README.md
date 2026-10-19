@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.48.0-dev.10](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.48.0-dev.10)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;182 patches total
+> **[v1.48.0-dev.12](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.48.0-dev.12)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;184 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;99 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;100 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -86,6 +86,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
 | [Exit fullscreen mode](#exit-fullscreen-mode) | Adds options to automatically exit fullscreen mode when a video reaches the end. |  |
 | [Feed card layout](#feed-card-layout) | Adds an option to show or hide the card layout of feed videos, which YouTube sends as an A/B test. |  |
+| [Feed video actions](#feed-video-actions) | Adds a Watch later button to video thumbnails in feeds, and opens the video menu by tapping and holding anywhere on a video. |  |
 | [Force fullscreen landscape](#force-fullscreen-landscape) | Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices. |  |
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode. |  |
@@ -213,7 +214,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;29 patches</summary>
+<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;30 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -246,6 +247,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Media viewer fade](#media-viewer-fade) | Adds an option to lower or remove the dark fade behind the caption when viewing images and videos. |  |
 | [Open links directly](#open-links-directly) | Adds an option to skip over redirection URLs in external links. |  |
 | [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app-browser. |  |
+| [Redgifs audio](#redgifs-audio) | Adds an option to play the original Redgifs video, which has audio, instead of Reddit's silent copy. |  |
 | [Remember collapsed comments](#remember-collapsed-comments) | Adds an option to keep comments you collapsed collapsed when reopening a post. |  |
 | [Remove subreddit dialog](#remove-subreddit-dialog) | Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Adds an option to sanitize sharing links by removing tracking query parameters. |  |

@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Beholder feedet på samme position, efter du lukker et opslag, et billede eller en video, i stedet for at flytte det åbnede opslag til toppen</string>
   <string name="morphe_feed_media_max_height_title">Maksimal højde for feed-medier</string>
   <string name="morphe_feed_media_max_height_summary">Maksimal højde for billeder, videoer og gallerier i feedet, som et multiplum af deres bredde. Højere medier beskæres. 1,33 er Reddits standard</string>
+  <string name="morphe_redgifs_audio_title">Afspil Redgifs med lyd</string>
+  <string name="morphe_redgifs_audio_summary">Afspiller den originale Redgifs-video i stedet for reddits kopiering, som ofte ikke har lyd</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD-kvalitet</string>
+  <string name="morphe_redgifs_hd_summary">Afspiller HD Redgifs-video. HD-videoer er større og kan pausere for at indlæse</string>
   <string name="morphe_hide_media_viewer_overlay_title">Skjul overlejringen i medievisningen</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Skjuler titlen, knapperne og videokontrollerne, når du åbner et billede eller en video. Tryk på mediet for at vise dem</string>
   <string name="morphe_hide_join_conversation_button_title">Skjul knappen Se samtalen</string>

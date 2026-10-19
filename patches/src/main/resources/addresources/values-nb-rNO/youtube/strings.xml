@@ -428,6 +428,11 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <string name="morphe_copy_comments_title">Kopier kommentarer</string>
   <string name="morphe_copy_comments_summary">Trykk og hold på en kommentar for å kopiere den</string>
   <string name="morphe_copy_comments_success">Kommentaren er kopiert til utklippstavlen</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Trykk og hold for å åpne videomenyen</string>
+  <string name="morphe_feed_long_press_menu_summary">Å trykke og holde nede hvor som helst på en feed-video åpner menyen for den</string>
+  <string name="morphe_feed_watch_later_button_title">Vis \"Se senere\"-knapp på miniatyrbilder</string>
+  <string name="morphe_feed_watch_later_button_summary">En \"Se senere\"-knapp vises på miniatyrbildene til feed-videene. Trykk og hold for å lagre i spilleliste</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiver \'Logg på TV\'-pop-up</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Deaktiver popup-vinduet \'Koble til enhetene dine\'</string>
@@ -1155,6 +1160,8 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skjul statuslinjen</string>
   <string name="morphe_hide_status_bar_summary">Skjuler systemstatuslinjen. Sveip ned fra toppkanten for å vise den et øyeblikk</string>
+  <string name="morphe_fix_status_bar_layout_title">Fiks at statuslinjen dekker toppbaren</string>
+  <string name="morphe_fix_status_bar_layout_summary">Holder utseendet til statuslinjen konsistent, slik at den ikke dekker topparene og etterlater ingen tom plass over avspilleren. Skru dette av hvis appen krasjer eller topparene ser feil ut</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Bakgrunn for lyst tema</string>
   <string name="morphe_theme_color_light_entry_2">Hvit</string>

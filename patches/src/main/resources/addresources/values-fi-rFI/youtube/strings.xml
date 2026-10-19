@@ -428,6 +428,11 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_copy_comments_title">Kopioi kommentit</string>
   <string name="morphe_copy_comments_summary">Pidä kommenttia painettuna kopioidaksesi sen</string>
   <string name="morphe_copy_comments_success">Kommentti kopioitu leikepöydälle</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Paina ja pidä pohjassa avataksesi videomenu</string>
+  <string name="morphe_feed_long_press_menu_summary">Kosketus ja pitopohjassa missä tahansa syötteiden videolla avaa sen valikon</string>
+  <string name="morphe_feed_watch_later_button_title">Näytä Katso myhemmin -painike pääkkeissä</string>
+  <string name="morphe_feed_watch_later_button_summary">Katso myöhemmin -painike näkyy syötteiden videoiden pienoiskuville. Kosketus ja pitopohjassa avaa Tallenna soittoluetteloon</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Poista käytöstä Kirjaudu televisioon -ponnahdusikkuna</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Poista \'Yhdistä laitteesi\' ponnahdusikkuna käytöstä</string>
@@ -1155,6 +1160,8 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Piilota tilapalkki</string>
   <string name="morphe_hide_status_bar_summary">Piilottaa järjestelmän tilapalkin. Pyyhkäise yläreunasta alaspäin, niin se näkyy hetkeksi</string>
+  <string name="morphe_fix_status_bar_layout_title">Korjaa tilapalkin peittämistä yläpalkkien kanssa</string>
+  <string name="morphe_fix_status_bar_layout_summary">Pysäyttää tilapalkin asettelun johdonmukaisuuden, joten se ei peitä yläpalkkeja ja jättää tyhjää tilaa soittimen yläpuolelle. Poista tämä käytöstä, jos sovellus kaatuu tai yläpalkit näyttävät vääriltä</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Vaalean teeman tausta</string>
   <string name="morphe_theme_color_light_entry_2">Valkoinen</string>

@@ -429,6 +429,11 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <string name="morphe_copy_comments_title">Kommentare kopieren</string>
   <string name="morphe_copy_comments_summary">Tippe und halte einen Kommentar, um ihn zu kopieren</string>
   <string name="morphe_copy_comments_success">Kommentar in die Zwischenablage kopiert</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Tippen und gedrückt halten, um das Videomenü zu öffnen</string>
+  <string name="morphe_feed_long_press_menu_summary">Das Tippen und Gedrückthalten irgendwo auf einem Feed-Video öffnet dessen Menü</string>
+  <string name="morphe_feed_watch_later_button_title">Schaltfläche \"Später ansehen\" auf Vorschaubildern anzeigen</string>
+  <string name="morphe_feed_watch_later_button_summary">Auf den Vorschaubildern von Feed-Videos wird eine Schaltfläche \"Später ansehen\" angezeigt. Durch Tippen und Gedrückthalten wird \"In Wiedergachelste speichern\" geöffnet</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Pop-up „Auf dem Fernseher anmelden“ deaktivieren</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Geräte verbinden\'-Pop-up deaktivieren</string>
@@ -473,6 +478,17 @@ Tippen Sie hier, um OpenRouter.ai zu öffnen"</string>
   <string name="morphe_vot_cost_per_hour">%s pro 100 Videostunden</string>
   <string name="morphe_vot_tts_voice_type">Sprache</string>
   <string name="morphe_vot_tts_system">System</string>
+    <string name="morphe_vot_catalog_refreshing">Wird aktualisiert...</string>
+    <string name="morphe_vot_catalog_updated">Zuletzt aktualisiert: %s</string>
+    <string name="morphe_vot_catalog_refresh">Stimmliste aktualisieren</string>
+    <string name="morphe_vot_catalog_unchanged">Die Stimmenliste ist aktuell</string>
+    <string name="morphe_vot_catalog_changed">Stimmenliste aktualisiert: +%1$d / -%2$d</string>
+    <string name="morphe_vot_catalog_refresh_failed">Stimmenliste konnte nicht aktualisiert werden</string>
+    <string name="morphe_vot_catalog_source_online">Online</string>
+    <string name="morphe_vot_catalog_source_cache">Zwischenspeicher</string>
+    <string name="morphe_vot_catalog_source_fallback">Integriert</string>
+    <string name="morphe_vot_catalog_status">%1$s · %2$d Stimmen · +%3$d / -%4$d</string>
+    <string name="morphe_vot_catalog_error">Aktualisierung fehlgeschlagen: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Mehrsprachig männlich</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Mehrsprachig weiblich</string>
   <string name="morphe_vot_voice_gender_male">Männlich</string>
@@ -1156,6 +1172,8 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Statusleiste ausblenden</string>
   <string name="morphe_hide_status_bar_summary">Blendet die Systemstatusleiste aus. Wischen Sie vom oberen Bildschirmrand nach unten, um sie kurz einzublenden</string>
+  <string name="morphe_fix_status_bar_layout_title">Statusleiste verhindert nicht das Überdecken der oberen Leisten</string>
+  <string name="morphe_fix_status_bar_layout_summary">Behält das Layout der Statusleiste bei, sodass sie die oberen Leisten nicht überdeckt und über dem Player kein leerer Raum entsteht. Schalten Sie diese Option aus, wenn die App abstürzt oder die oberen Leisten falsch aussehen</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Hintergrund des hellen Designs</string>
   <string name="morphe_theme_color_light_entry_2">Weiß</string>

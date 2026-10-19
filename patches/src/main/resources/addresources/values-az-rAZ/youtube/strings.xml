@@ -428,6 +428,11 @@ Məhdudiyyətlər:
   <string name="morphe_copy_comments_title">Şərhləri köçür</string>
   <string name="morphe_copy_comments_summary">Şərhi köçürmək üçün toxunub saxla</string>
   <string name="morphe_copy_comments_success">Şərh buferə köçürüldü</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Video menyusunu açmaq üçün toxunub saxla</string>
+  <string name="morphe_feed_long_press_menu_summary">Axında videonun istənilən yerinə toxunub saxlamaq onun menyusunu açır</string>
+  <string name="morphe_feed_watch_later_button_title">Miniatürlərdə Daha sonra izlə düyməsini göstər</string>
+  <string name="morphe_feed_watch_later_button_summary">Daha sonra izlə düyməsi axın videolarının miniatürlərində göstərilir. Ona toxunub saxlamaq Pleylistdə saxlanı açır</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV-yə daxil ol\" ani pəncərəsini qapat</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\"Cihazlarınızı qoşun\" açılan pəncərəsini qapat</string>
@@ -1155,6 +1160,8 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Status panelini gizlət</string>
   <string name="morphe_hide_status_bar_summary">Sistem status panelini gizlədir. Onu bir anlıq göstərmək üçün yuxarı kənardan aşağı sürüşdür</string>
+  <string name="morphe_fix_status_bar_layout_title">Üst cərgələri örtən status panelini düzəlt</string>
+  <string name="morphe_fix_status_bar_layout_summary">Status zolağının tərtibatını sabit saxlayır, beləliklə o, yuxarı zolaqları örtmür və oynadıcı yuxarısında boş yer saxlamır. Tətbiq çöksə və ya yuxarı zolaqlar yanlış görünsə, bunu qapat</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">İşıqlı kolorit fonu</string>
   <string name="morphe_theme_color_light_entry_2">Ağ</string>

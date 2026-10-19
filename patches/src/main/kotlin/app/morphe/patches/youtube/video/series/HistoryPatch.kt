@@ -35,7 +35,7 @@ private const val NAV = "Lapp/morphe/extension/youtube/patches/NavigationBarPatc
 private const val OUR_NAV = "${SERIES_TRACKER_EXTENSION_PREFIX}HistoryNavigation;"
 
 internal fun BytecodePatchContext.wireHistory() {
-    // Build native History pivot items from the same renderer factory YouTube uses.
+    // Build the Series navigation button from the same renderer factory YouTube uses.
     val factory = PivotBarRendererFingerprint.method
     val parseIndex = factory.indexOfFirstInstructionOrThrow(
         methodCall(name = "parseFrom", parameters = listOf("L", "[B"))
@@ -116,18 +116,6 @@ internal fun BytecodePatchContext.wireHistory() {
             """
         )
     }
-
-    NavigationTabCreatedFingerprint.method.addInstructions(
-        0,
-        """
-            invoke-static { p0 }, $OUR_NAV->keepButton(Ljava/lang/Enum;)Z
-            move-result v0
-            if-eqz v0, :native_visibility
-            return-void
-            :native_visibility
-            nop
-        """
-    )
 
     YouTubeMainActivityOnBackPressedFingerprint.method.addInstructions(
         0,

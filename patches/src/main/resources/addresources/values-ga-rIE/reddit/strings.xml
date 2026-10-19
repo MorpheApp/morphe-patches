@@ -58,9 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Folaíonn sé na seilfeanna Treochta ó mholtaí beatha agus cuardaigh</string>
   <string name="morphe_remove_notification_dialog_title">Bain an dialóg moladh fógra</string>
   <string name="morphe_remove_notification_dialog_summary">Diúltaíonn sé go huathoibríoch don chomhrá moladh fógra nuair a thugtar cuairt ar fho-reddit</string>
-  <string name="morphe_show_flairs_in_home_feed_title">Taispeáin aitheantóirí sa fhéide baile</string>
-  <string name="morphe_show_flairs_in_home_feed_summary">Taispeánann méid aitheantóirí tionscnaimh sa fhéide baile</string>
-  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">B\'fhéidir nach dtaispeánfaidh roinnt mír feidhme aitheantóir</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Taispeáin lipéid sa bhfotha baile</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Taispeánann sé suaitheantais lipéad postála sa bhfotha baile</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">D’fhéadfadh sé nach mbeadh lipéad le feiceáil ar mhíreanna áirithe sa bhfotha</string>
   <string name="morphe_show_view_count_title">Taispeáin líon na n-amharc ar phoist</string>
   <string name="morphe_show_view_count_summary">Teorainn: Ar fáil ach amháin má tá an líon radharcanna san áireamh sa fhreagra API</string>
   <string name="morphe_flip_post_action_bar_title">Smeach barra gníomhartha an phoist</string>
@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Coinníonn sé an fotha san áit chéanna tar éis post, íomhá nó físeán a dhúnadh, seachas an post a osclaíodh a bhogadh go barr</string>
   <string name="morphe_feed_media_max_height_title">Uasairde meáin an fhotha</string>
   <string name="morphe_feed_media_max_height_summary">Uasairde na n-íomhánna, na bhfíseán agus na ngailearaithe san fhotha, mar iolra dá leithead. Gearrtar meáin atá níos airde. Is é 1.33 réamhshocrú Reddit</string>
+  <string name="morphe_redgifs_audio_title">Cealla Redgifs le fuaime</string>
+  <string name="morphe_redgifs_audio_summary">Seinnfidh sé an bhídeo Redgifs bunaidh in ionn cóip Reddit, nach minic a bhfuil fuaime ann</string>
+  <string name="morphe_redgifs_hd_title">Ardaichd HD Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">Seinnfidh sé an bhídeo HD Redgifs. Is mó na víideoanna HD agus is féidir leo stad chun lódáil</string>
   <string name="morphe_hide_media_viewer_overlay_title">Folaigh forleagan an amharcóra meán</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Folaíonn sé an teideal, na cnaipí agus na rialtáin físeáin nuair a osclaíonn tú íomhá nó físeán. Cnag ar an meán chun iad a thaispeáint</string>
   <string name="morphe_hide_join_conversation_button_title">Folaigh an cnaipe Féach ar an gcomhrá</string>

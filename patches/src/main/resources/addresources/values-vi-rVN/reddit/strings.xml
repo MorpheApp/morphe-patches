@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Giữ bảng tin ở cùng vị trí sau khi đóng bài đăng, hình ảnh hoặc video, thay vì di chuyển bài đăng đã mở lên đầu trang</string>
   <string name="morphe_feed_media_max_height_title">Chiều cao tối đa của media trên bảng tin</string>
   <string name="morphe_feed_media_max_height_summary">Chiều cao tối đa của hình ảnh, video và thư viện ảnh trong bảng tin, tính theo bội số của chiều rộng. Media cao hơn sẽ bị cắt. 1.33 là mặc định của Reddit</string>
+  <string name="morphe_redgifs_audio_title">Phát Redgifs có âm thanh</string>
+  <string name="morphe_redgifs_audio_summary">Phát video Redgifs gốc thay vì bản sao từ Reddit, vốn thường không có âm thanh</string>
+  <string name="morphe_redgifs_hd_title">Chất lượng HD Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">Phát video HD Redgifs. Video HD có dung lượng lớn hơn và có thể tạm dừng để tải</string>
   <string name="morphe_hide_media_viewer_overlay_title">Ẩn lớp phủ trình xem media</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Ẩn tiêu đề, nút và điều khiển video khi mở hình ảnh hoặc video. Chạm vào nội dung để hiển thị chúng</string>
   <string name="morphe_hide_join_conversation_button_title">Ẩn nút Xem cuộc trò chuyện</string>

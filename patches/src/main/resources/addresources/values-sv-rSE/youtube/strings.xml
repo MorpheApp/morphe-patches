@@ -428,6 +428,11 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_copy_comments_title">Kopiera kommentarer</string>
   <string name="morphe_copy_comments_summary">Tryck och håll på en kommentar för att kopiera den</string>
   <string name="morphe_copy_comments_success">Kommentaren kopierad till urklipp</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Tryck länge för att öppna videomenyn</string>
+  <string name="morphe_feed_long_press_menu_summary">Genom att trycka och hålla någonstans på en flödesvideo öppnas dess meny</string>
+  <string name="morphe_feed_watch_later_button_title">Visa knappen \"Titta senare\" på miniatyrbilder</string>
+  <string name="morphe_feed_watch_later_button_summary">En \"Titta senare\"-knapp visas på miniatyrbilderna för flödesvideor. Genom att trycka och hålla öppnas Spara i spellista</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Inaktivera popup-fönster om att logga in på TV:n</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Inaktivera popup-fönstret \'Anslut dina enheter\'</string>
@@ -1155,6 +1160,8 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Dölj statusfältet</string>
   <string name="morphe_hide_status_bar_summary">Döljer systemets statusfält. Svep nedåt från överkanten för att visa det en stund</string>
+  <string name="morphe_fix_status_bar_layout_title">Fixa statusraden så att den inte täcker de övre fältens</string>
+  <string name="morphe_fix_status_bar_layout_summary">Behåller statusradens layout konsekvent, så att den inte täcker de övre fälten och lämnar inget tomt utrymme ovanför spelaren. Stäng av detta om appen kraschar eller om de övre fälten ser fel ut</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Bakgrundsfärg för ljust tema</string>
   <string name="morphe_theme_color_light_entry_2">Vit</string>

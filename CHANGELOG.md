@@ -1,3 +1,37 @@
+## [1.48.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.11...v1.48.0-dev.12) (2026-10-18)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Captions:** Restore all translation menu getter routes ([#3818](https://github.com/MorpheApp/morphe-patches/issues/3818)) ([3a6a5b3](https://github.com/MorpheApp/morphe-patches/commit/3a6a5b3ae1d934114668a68ebe56bd512baae18e))
+* **YouTube - Default video quality:** Video quality drops while the video plays ([9f7b7eb](https://github.com/MorpheApp/morphe-patches/commit/9f7b7ebb10c909f7d2bc480de9fdbd3dd6076e2f))
+* **YouTube - Feed card layout:** Remove the feed vertical spacing override, which can crash the app ([31a85c7](https://github.com/MorpheApp/morphe-patches/commit/31a85c7d1bfb99658c668444c37fd96e16500398))
+* **YouTube - Feed card layout:** Round the top outer corners of the Shorts shelves ([8effa2e](https://github.com/MorpheApp/morphe-patches/commit/8effa2e103947e57455e2b93629186a411c86f37))
+* **YouTube - Feed card layout:** Shorts shelves of the search results are not cards ([12ed02f](https://github.com/MorpheApp/morphe-patches/commit/12ed02f49d3059875435c6d8cdebe548c7e80dd3))
+* **YouTube - Feed card layout:** Vertical video shelves are not cards ([44564ee](https://github.com/MorpheApp/morphe-patches/commit/44564eeff5d617dab0b0210c149a9c190e9f0021))
+* **YouTube - Feed video actions:** Watch later button opens the share sheet ([6c94f32](https://github.com/MorpheApp/morphe-patches/commit/6c94f32df957beda5721729f12385eea3537c975))
+* **YouTube - Minimal miniplayer:** Bar is cut off by the display cutout in landscape ([01267da](https://github.com/MorpheApp/morphe-patches/commit/01267da0f015fb868edb6b59e1086778966c7900))
+* **YouTube - Navigation bar:** Navigation bar is raised and an empty bar is left at the bottom ([eca3334](https://github.com/MorpheApp/morphe-patches/commit/eca3334c07df995dbbb4f58ed425591883086554))
+* **YouTube:** App can crash when an observer removes itself while it is notified ([5ee5a72](https://github.com/MorpheApp/morphe-patches/commit/5ee5a724433d6b96b7847e98aaf39c096bd81d5f))
+* **YouTube:** Flyout menu text is cut when Morphe items are added ([f8b7669](https://github.com/MorpheApp/morphe-patches/commit/f8b7669dfd9b10ed68da3cfae4190cb0f2c7430a))
+* **YouTube:** Status bar is opaque, black bar above the player and crash on startup ([b5d9498](https://github.com/MorpheApp/morphe-patches/commit/b5d9498577ea285c8dd490bb823bbbd9c6674624))
+* **YouTube:** Video metadata panel text can not be read with the light theme ([332e18e](https://github.com/MorpheApp/morphe-patches/commit/332e18e82b73cc737fc6c84d1126e6fa915821fb))
+
+### ✨ New Features
+
+* **Reddit:** Add `Redgifs audio` patch ([#3714](https://github.com/MorpheApp/morphe-patches/issues/3714)) ([b664711](https://github.com/MorpheApp/morphe-patches/commit/b66471189b52974ead5666ac033b6b2ec867de2e))
+* **YouTube - Hide status bar:** Add "Fix status bar covering the top bars" setting ([caa1be0](https://github.com/MorpheApp/morphe-patches/commit/caa1be0fe5faf3351fa49a02667f03ef4946b34f))
+
+## [1.48.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.10...v1.48.0-dev.11) (2026-10-17)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Captions:** Restore translations from original caption sources ([#3794](https://github.com/MorpheApp/morphe-patches/issues/3794)) ([46ab900](https://github.com/MorpheApp/morphe-patches/commit/46ab900bd9daa990a4d741a6e7f3dc5611173cdb))
+* **YouTube - Feed cards layout:** Cards sometimes lose spacing ([0658f00](https://github.com/MorpheApp/morphe-patches/commit/0658f0083bc5d143b379097b706d4114a845a08f))
+
+### ✨ New Features
+
+* **YouTube:** Add `Feed video actions` patch ([#3758](https://github.com/MorpheApp/morphe-patches/issues/3758)) ([b263c08](https://github.com/MorpheApp/morphe-patches/commit/b263c08af15eb0a72f6ea707bd49597d95209d29))
+
 ## [1.48.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.9...v1.48.0-dev.10) (2026-10-17)
 
 ### 🐛 Bug Fixes

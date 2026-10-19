@@ -428,6 +428,11 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_copy_comments_title">Copiar comentarios</string>
   <string name="morphe_copy_comments_summary">Mantén pulsado un comentario para copiarlo</string>
   <string name="morphe_copy_comments_success">Comentario copiado al portapapeles</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Toca y mantén pulsado para abrir el menú de vídeo</string>
+  <string name="morphe_feed_long_press_menu_summary">Tocar y mantener pulsado en cualquier parte de un vídeo del feed abre su menú</string>
+  <string name="morphe_feed_watch_later_button_title">Mostrar botón \"Ver más tarde\" en las miniaturas</string>
+  <string name="morphe_feed_watch_later_button_summary">Se muestra un botón \"Ver más tarde\" en las miniaturas de los vídeos del feed. Tocar y mantener pulsado abre Guardar en lista</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desactivar ventana emergente \'Iniciar sesión en TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Desactivar ventana emergente \'Conecta tus dispositivos\'</string>
@@ -1155,6 +1160,8 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ocultar barra de estado</string>
   <string name="morphe_hide_status_bar_summary">Oculta la barra de estado del sistema. Desliza hacia abajo desde el borde superior para mostrarla un momento</string>
+  <string name="morphe_fix_status_bar_layout_title">Corregir barra de estado que cubre barras superiores</string>
+  <string name="morphe_fix_status_bar_layout_summary">Mantiene la uniformidad del diseño de la barra de estado, de modo que no cubra las barras superiores y no deje ningún espacio vacío encima del reproductor. Desactiva esta opción si la aplicación se bloquea o las barras superiores no se ven bien.</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Fondo del tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Blanco</string>

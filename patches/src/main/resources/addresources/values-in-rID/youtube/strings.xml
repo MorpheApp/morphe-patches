@@ -428,6 +428,11 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_copy_comments_title">Salin komentar</string>
   <string name="morphe_copy_comments_summary">Ketuk dan tahan komentar untuk menyalinnya</string>
   <string name="morphe_copy_comments_success">Komentar disalin ke papan klip</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Ketuk dan tahan untuk membuka menu video</string>
+  <string name="morphe_feed_long_press_menu_summary">Mengetuk dan menahan di mana saja pada video umpan membuka menunya</string>
+  <string name="morphe_feed_watch_later_button_title">Tampilkan tombol Tonton nanti pada thumbnail</string>
+  <string name="morphe_feed_watch_later_button_summary">Tombol Tonton nanti ditampilkan pada thumbnail video umpan. Mengetuk dan menekannya akan membuka Simpan ke daftar putar</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Nonaktifkan pesan timbul \'Masuk ke TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Nonaktifkan popup \'Hubungkan perangkat Anda\'</string>
@@ -1155,6 +1160,8 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sembunyikan bilah status</string>
   <string name="morphe_hide_status_bar_summary">Menyembunyikan bilah status sistem. Geser ke bawah dari tepi atas untuk menampilkannya sesaat</string>
+  <string name="morphe_fix_status_bar_layout_title">Perbaiki status bar yang menutupi bar atas</string>
+  <string name="morphe_fix_status_bar_layout_summary">Menjaga tata letak status bar konsisten, sehingga tidak menutupi bar atas dan tidak meninggalkan ruang kosong di atas pemutar. Matikan ini jika aplikasi mengalami crash atau bar atas terlihat salah</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Latar belakang tema terang</string>
   <string name="morphe_theme_color_light_entry_2">Putih</string>

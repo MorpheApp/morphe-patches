@@ -428,6 +428,11 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_copy_comments_title">Cóipeáil tráchtanna</string>
   <string name="morphe_copy_comments_summary">Tapaigh agus coinnigh trácht chun é a chóipeáil</string>
   <string name="morphe_copy_comments_success">Cóipeáladh trácht chuig an ngearrthaisce</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Beartaigh agus coinnigh chun roghchlár físe a oscailt</string>
+  <string name="morphe_feed_long_press_menu_summary">Má dhéanann tú sconadh agus coinneáil in áit ar bith ar fhíseán sa bhfotha, osclófar a roghchlár</string>
+  <string name="morphe_feed_watch_later_button_title">Taispeáin an cnaipe \'Féach níos déanaí\' ar mhionsamhla</string>
+  <string name="morphe_feed_watch_later_button_summary">Tá cnaipe \'Féach níos déanaí\' le feiceáil ar mhionsamhla físeán sa fhotha. Má dhéanann tú sconna air agus é a choinneáil brúite, osclófar an rogha \'Sábháil chuig seinmliosta\'</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Díchumasaigh aníos \'Sínigh isteach ar an Teilifís\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Díchumasaigh an preab ‘Ceangail do ghléasanna’</string>
@@ -571,12 +576,12 @@ Eolas: Ní thosaíonn an chéad fhíseán eile atá sa chiú ach amháin fad is 
   <string name="morphe_local_queue_empty_hint">Úsáid \'Seinn ina dhiaidh sin sa scuaine\' ar aon fhíseán</string>
   <string name="morphe_local_queue_now_playing">Ag seinm anois</string>
   <string name="morphe_local_queue_play_next">Seinn an chéad cheann eile sa scuaine</string>
-  <string name="morphe_local_queue_play_last">Seinn an ceann dheireanach sa scuaine</string>
+  <string name="morphe_local_queue_play_last">Seinn an ceann deireanach sa scuaine</string>
   <string name="morphe_local_queue_reorder">Athordú</string>
   <string name="morphe_local_queue_remove">Bain</string>
   <string name="morphe_local_queue_added">Cuireadh leis an scuaine</string>
   <string name="morphe_local_queue_unavailable">Níorbh fhéidir an físeán seo a chur leis an scuaine</string>
-  <string name="morphe_local_queue_playlist_unsupported">Ní féidir liostaí seinn a chur leis an scuaine</string>
+  <string name="morphe_local_queue_playlist_unsupported">Ní féidir seinmliostaí a chur leis an scuaine</string>
   <string name="morphe_local_queue_full">Tá an scuaine lán</string>
   <string name="morphe_local_queue_play_failed">Níorbh fhéidir an físeán a thosú</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Liosta bán fógraí sa roghchlár sleamhnáin</string>
@@ -766,8 +771,8 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
   <string name="morphe_preferred_caption_language_summary">Roghnaíonn sé fotheidil an tsoláthraí ar dtús, agus ansin aistríonn sé go huathoibríoch iad go dtí an teanga is fearr leat.</string>
   <string name="morphe_preferred_caption_language_entry_off">As</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
-  <string name="morphe_auto_translate_additional_languages_title">Cuir teangacha breise aistriúcháin uathoibríoch leis</string>
-  <string name="morphe_auto_translate_additional_languages_summary">Cuireann sé níos mó teangacha leis an roghchlár aistriúcháin uathoibríoch</string>
+  <string name="morphe_auto_translate_additional_languages_title">Cuir teangacha breise leis an aistriúchán uathoibríoch</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Cuireann sé tuilleadh teangacha leis an roghchlár uath-aistriúcháin</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Socraigh fianáin fotheidil</string>
   <string name="morphe_set_caption_cookies_summary">"Deisítear fabht stoic YouTube inar féidir nach mbíonn na fotheidil uathoibríoch-aistrithe ar fáil mar gheall ar fhianáin ar iarraidh.
@@ -1113,7 +1118,7 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_disable_auto_feed_refresh_title">Díchumasaigh athnuachan uathoibríoch fothaí</string>
   <string name="morphe_disable_auto_feed_refresh_summary">Cuireann sé cosc ar athnuachan uathoibríoch fothaí tar éis dóibh dul as dáta.</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
-  <string name="morphe_feed_card_layout_title">Treisiú cárta srutha</string>
+  <string name="morphe_feed_card_layout_title">Leagan amach an chárta fotha</string>
   <string name="morphe_feed_card_layout_entry_1">Clasaiceach</string>
   <string name="morphe_feed_card_layout_entry_2">Cártaí</string>
   <string name="morphe_feed_card_layout_entry_3">Cártaí le cnaipe líonta, trácht agus sábháil</string>
@@ -1155,6 +1160,8 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Folaigh an barra stádais</string>
   <string name="morphe_hide_status_bar_summary">Folaíonn sé barra stádais an chórais. Svaip anuas ón imeall uachtarach chun é a thaispeáint ar feadh tamaill</string>
+  <string name="morphe_fix_status_bar_layout_title">Ceartaigh an barra stáit ag clúdach na mbarrbharraí</string>
+  <string name="morphe_fix_status_bar_layout_summary">Coinníonn sé comhsheasmhacht leictreonacha an bharra stáit, ionas nach gclúdaíonn sé na barrbharraí agus nach fágann spás folamh os cionn an imreoir. Múch an rogha seo má chroiseann an app nó má fhéachann na barrbharraí mícheart</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Cúlra téama éadrom</string>
   <string name="morphe_theme_color_light_entry_2">Bán</string>

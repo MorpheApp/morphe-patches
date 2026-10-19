@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Копировать комментарии</string>
   <string name="morphe_copy_comments_summary">Нажмите и удерживайте комментарий, чтобы скопировать его</string>
   <string name="morphe_copy_comments_success">Комментарий скопирован в буфер обмена</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Нажмите и удерживайте, чтобы открыть меню видео</string>
+  <string name="morphe_feed_long_press_menu_summary">Нажатие и удержание в любом месте видео из ленты открывает его меню</string>
+  <string name="morphe_feed_watch_later_button_title">Показывать кнопку «Позже» на превью видео</string>
+  <string name="morphe_feed_watch_later_button_summary">На превью видео из ленты отображается кнопка «Позже». Нажатие и удержание открывает сохранение в плейлист</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Отключить всплывающее окно \"Вход на ТВ\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Отключить всплывающее окно «Подключите ваши устройства»</string>
@@ -1157,6 +1162,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Скрыть строку состояния</string>
   <string name="morphe_hide_status_bar_summary">Скрывает системную строку состояния. Проведите вниз от верхнего края, чтобы на мгновение показать её</string>
+  <string name="morphe_fix_status_bar_layout_title">Исправлена строка состояния, закрывающая верхние панели</string>
+  <string name="morphe_fix_status_bar_layout_summary">Сохраняет неизменным расположение строки состояния, поэтому она не закрывает верхние панели и не оставляет пустого пространства над проигрывателем. Отключите, если приложение выходит из строя или верхние панели выглядят неправильно.</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Фон светлой темы</string>
   <string name="morphe_theme_color_light_entry_2">Белый</string>

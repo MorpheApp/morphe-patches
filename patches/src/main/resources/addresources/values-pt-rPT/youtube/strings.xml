@@ -428,6 +428,11 @@ As denúncias são públicas e são analisadas antes de um canal ser adicionado 
   <string name="morphe_copy_comments_title">Copiar comentários</string>
   <string name="morphe_copy_comments_summary">Toque e segure um comentário para copiá-lo</string>
   <string name="morphe_copy_comments_success">Comentário copiado para a área de transferência</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Toque e segure para abrir o menu do vídeo</string>
+  <string name="morphe_feed_long_press_menu_summary">O toque e a segurança em qualquer parte de um vídeo do feed abrem seu menu</string>
+  <string name="morphe_feed_watch_later_button_title">Mostrar o botão Assistir mais tarde nas miniaturas</string>
+  <string name="morphe_feed_watch_later_button_summary">Um botão Assistir mais tarde é mostrado nas miniaturas dos vídeos do feed. Toque e segure-o para salvar na lista de reprodução</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desativar pop-up \'Entrar na TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Desativar popup \'Conecte seus dispositivos\'</string>
@@ -1155,6 +1160,8 @@ Limitação: Se 'Restaurar a barra de ação de vídeo antiga' estiver desativad
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ocultar barra de status</string>
   <string name="morphe_hide_status_bar_summary">Oculta a barra de status do sistema. Deslize para baixo a partir da borda superior para mostrá-la por um momento</string>
+  <string name="morphe_fix_status_bar_layout_title">Corrigir barra de status cobrindo as barras superiores</string>
+  <string name="morphe_fix_status_bar_layout_summary">Mantém o layout da barra de status consistente, para que não cubra as barras superiores e não deixe espaço vazio acima do player. Desative isso se o aplicativo travar ou se as barras superiores estiverem incorretas</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Cor de fundo do tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Branco</string>

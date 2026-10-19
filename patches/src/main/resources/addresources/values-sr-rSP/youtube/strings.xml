@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Копирај коментаре</string>
   <string name="morphe_copy_comments_summary">Додирни и задржи коментар да га копираш</string>
   <string name="morphe_copy_comments_success">Коментар је копиран у клипборд</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Додирните и задржите да отворите мени за видео</string>
+  <string name="morphe_feed_long_press_menu_summary">Дођување и држање било где на видео снимку у фејду отвара његово мени</string>
+  <string name="morphe_feed_watch_later_button_title">Прикажи дугме „Гледај касније“ на сличицима</string>
+  <string name="morphe_feed_watch_later_button_summary">Дугме Гледај касније се приказује на сличицама видео снимака у фејду. Дођување и држање отвара опчују Чувај у плејлист</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Онемогући искачући прозор „Пријава на ТВ”</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Онемогући искачући прозор \"Повежи своје уређаје\"</string>
@@ -1138,6 +1143,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Сакриј статусну траку</string>
   <string name="morphe_hide_status_bar_summary">Сакрива системску статусну траку. Превуците прстом надоле са горње ивице да бисте је накратко приказали</string>
+  <string name="morphe_fix_status_bar_layout_title">Поправи статусну траку која прекрива горње траке</string>
+  <string name="morphe_fix_status_bar_layout_summary">Одржава конзистентан распоред статусне траке, тако да не прекрива горње траке и не оставља празан простор изнад плејера. Исключи ово ако се апликација уруши или горње траке изгледају лоше</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Позадина светле теме</string>
   <string name="morphe_theme_color_light_entry_2">Бела</string>

@@ -418,6 +418,11 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <string name="morphe_copy_comments_title">Kopiraj komentare</string>
   <string name="morphe_copy_comments_summary">Dodirnite i držite komentar da biste ga kopirali</string>
   <string name="morphe_copy_comments_success">Komentar kopiran u međuspremnik</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Dodirnite i pritisnite dugo za otvaranje izbornika videa</string>
+  <string name="morphe_feed_long_press_menu_summary">Dodirivanjem i pritiskom bilo gdje na videu u pretoku otvara se njegov izbornik</string>
+  <string name="morphe_feed_watch_later_button_title">Prikaži gledaj kasnije tipku na minijaturama</string>
+  <string name="morphe_feed_watch_later_button_summary">Tipka gledaj kasnije prikazuje se na minijaturama videa u pretoku. Dodirivanje i pritiskanje otvara Spremi na popis</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogući \'Prijava na TV\' prozor</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Onemogući iskačući prozor \'Povežite svoje uređaje\'</string>
@@ -1143,6 +1148,8 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sakrij statusnu traku</string>
   <string name="morphe_hide_status_bar_summary">Skriva statusnu traku sustava. Povucite prstom prema dolje s gornjeg ruba da biste je na trenutak prikazali.</string>
+  <string name="morphe_fix_status_bar_layout_title">Ispravi statusnu traku koja prekriva gornje trake</string>
+  <string name="morphe_fix_status_bar_layout_summary">Održava dosljednost rasporeda statusne trake, tako da ne prekriva gornje trake i ne ostavlja prazan prostor iznad playera. Isključite ovo ako aplikacija zapne ili gornje trake izgledaju pogrešno</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Boja pozadine u svijetloj temi</string>
   <string name="morphe_theme_color_light_entry_2">Bijela</string>

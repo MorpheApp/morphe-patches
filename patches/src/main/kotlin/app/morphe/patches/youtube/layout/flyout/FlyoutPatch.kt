@@ -203,16 +203,17 @@ val flyoutPatch = bytecodePatch(
             val enumIntField = mainFingerprintMatches[6].getInstruction<ReferenceInstruction>().reference
             val enumMethodCall = mainFingerprintMatches[7].getInstruction<ReferenceInstruction>().reference
             val charCheckRegister = mainFingerprintMatches.last().getInstruction<OneRegisterInstruction>().registerA
+            val buttonTextRegister = mainFingerprintMatches[3].getInstruction<OneRegisterInstruction>().registerA
 
             mainFingerprint.method.apply {
-                val freeRegister = findFreeRegister(charCheckIndex, charCheckRegister, enumMethodRegister)
+                val freeRegister = findFreeRegister(charCheckIndex, charCheckRegister, enumMethodRegister, buttonTextRegister)
                 addInstructions(
                     charCheckIndex,
                     """
                         iget v$freeRegister, v$enumMethodRegister, $enumIntField
                         invoke-static { v$freeRegister }, $enumMethodCall
                         move-result-object v$freeRegister
-                        invoke-static { v$freeRegister, v$charCheckRegister }, $EXTENSION_UTILS_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;)V
+                        invoke-static { v$freeRegister, v$charCheckRegister, v$buttonTextRegister }, $EXTENSION_UTILS_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;Ljava/lang/CharSequence;)V
                     """
                 )
             }

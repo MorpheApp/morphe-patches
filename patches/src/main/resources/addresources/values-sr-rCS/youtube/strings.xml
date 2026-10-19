@@ -428,6 +428,11 @@ Prijave su javne i pregledaju se pre nego što kanal bude dodat na listu. Uklanj
   <string name="morphe_copy_comments_title">Kopiraj komentare</string>
   <string name="morphe_copy_comments_summary">Dodirnite i zadržite komentar da biste ga kopirali</string>
   <string name="morphe_copy_comments_success">Komentar je kopiran u privremenu memoriju</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Dodirnite i držite da biste otvorili meni za video</string>
+  <string name="morphe_feed_long_press_menu_summary">Dodirivanjem i držanjem bilo gde na videu u protoku otvara se njegov meni</string>
+  <string name="morphe_feed_watch_later_button_title">Prikaži dugme „Gledaj kasnije“ na sličicama</string>
+  <string name="morphe_feed_watch_later_button_summary">Dugme „Gledaj kasnije“ se prikazuje na sličicama videa u protoku. Dodirivanjem i držanjem njega otvara se opcija Sačuvaj u listu za reprodukciju</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogući iskačući prozor „Prijava na TV”</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Onemogućite skočni prozor \'Povežite svoje uređaje\'</string>
@@ -1155,6 +1160,8 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sakrij statusnu traku</string>
   <string name="morphe_hide_status_bar_summary">Sakriva sistemsku statusnu traku. Prevucite prstom nadole od gornje ivice da biste je na trenutak prikazali</string>
+  <string name="morphe_fix_status_bar_layout_title">Popravi statusnu traku koja prekriva gornje trake</string>
+  <string name="morphe_fix_status_bar_layout_summary">Održava dosledan izgled statusne trake, tako da ne prekrije gornje trake i ostavlja prazan prostor iznad plejera. Isključite ovo ako aplikacija padne ili gornje trake izgledaju pogrešno</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Pozadina svetle teme</string>
   <string name="morphe_theme_color_light_entry_2">Bela</string>

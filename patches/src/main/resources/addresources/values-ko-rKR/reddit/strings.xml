@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">게시물, 이미지 또는 동영상을 열었다가 닫아도 피드가 원래 위치에 그대로 유지됩니다. 열린 게시물이 피드 맨 위로 이동하지 않습니다</string>
   <string name="morphe_feed_media_max_height_title">피드 미디어 최대 높이</string>
   <string name="morphe_feed_media_max_height_summary">피드에 표시되는 이미지, 동영상 및 갤러리의 최대 높이를 너비의 배수로 설정할 수 있습니다. 설정한 높이보다 긴 미디어는 잘려서 표시됩니다. Reddit 기본값은 1.33입니다</string>
+  <string name="morphe_redgifs_audio_title">오디오가 포함된 Redgif 재생</string>
+  <string name="morphe_redgifs_audio_summary">Redgifs의 원본 동영상을 재생합니다. Reddit에 올라온 복사본은 소리가 없는 경우가 많습니다</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD 화질</string>
+  <string name="morphe_redgifs_hd_summary">HD Redgifs 동영상을 재생합니다. HD 동영상은 크기가 더 크며 로딩하는 동안 일시 정지될 수 있습니다</string>
   <string name="morphe_hide_media_viewer_overlay_title">미디어 뷰어 오버레이 숨기기</string>
   <string name="morphe_hide_media_viewer_overlay_summary">이미지나 동영상을 열었을 때 제목, 버튼 및 동영상 컨트롤을 숨깁니다. 미디어를 탭하면 다시 표시됩니다</string>
   <string name="morphe_hide_join_conversation_button_title">대화 보기 버튼 숨기기</string>

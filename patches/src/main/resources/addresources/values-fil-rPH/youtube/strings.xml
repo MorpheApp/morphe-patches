@@ -428,6 +428,11 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_copy_comments_title">Kopyahin ang mga komento</string>
   <string name="morphe_copy_comments_summary">Pindutin nang matagal ang isang komento upang kopyahin ito</string>
   <string name="morphe_copy_comments_success">Nakopya ang komento sa clipboard</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">I-tap at hawakan ng matagal upang buksan ang menu ng video</string>
+  <string name="morphe_feed_long_press_menu_summary">Ang pagtatakbo at paghawak ng matagal sa kahit saan sa isang feed video ay nagbubukas ng kanyang menu</string>
+  <string name="morphe_feed_watch_later_button_title">Ipakita ang Watch later button sa mga thumbnail</string>
+  <string name="morphe_feed_watch_later_button_summary">Isang Watch later button ay ipinapakita sa mga thumbnail ng feed videos. Ang pag-tap at paghawak nito ay nagbubukas ng Save to playlist</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Patayin ang popup na \'Mag-sign in sa TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Huwag paganahin ang popup na \'Ikonekta ang iyong mga device\'</string>
@@ -1153,6 +1158,8 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Itago ang status bar</string>
   <string name="morphe_hide_status_bar_summary">Itinatago ang system status bar. Mag-swipe pababa mula sa tuktok na gilid upang maipakita ito sandali</string>
+  <string name="morphe_fix_status_bar_layout_title">Ayusin ang layout ng status bar na sumasakop sa mga itaas na bar</string>
+  <string name="morphe_fix_status_bar_layout_summary">Pinapanatiling consistent ang layout ng status bar upang hindi ito sumakop sa mga itaas na bar at walang walang laman na espasyo sa itaas ng player. I-off ito kung crash ang app o magmukha nang mali ang mga itaas na bar</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Likuran ng maliwanag na tema</string>
   <string name="morphe_theme_color_light_entry_2">Puti</string>

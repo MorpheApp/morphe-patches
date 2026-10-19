@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Behou die voer op dieselfde posisie nadat \'n pos, beeld of video gesluit is, in plaas daarvan om die geopende pos na bo te skuif</string>
   <string name="morphe_feed_media_max_height_title">Maksimum hoogte vir voermedia</string>
   <string name="morphe_feed_media_max_height_summary">Maksimum hoogte van beelde, video\'s en galerye in die voer, as \'n veelvoud van hul breedte. Hoër media word afgesny. 1.33 is Reddit se verstek</string>
+  <string name="morphe_redgifs_audio_title">Speel Redgifs met klank</string>
+  <string name="morphe_redgifs_audio_summary">Speel die oorspronklike Redgifs-video af in plaas van Reddit se kopie, wat dikwels geen klank het nie</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD-kwaliteit</string>
+  <string name="morphe_redgifs_hd_summary">Speel die HD Redgifs-video af. HD-videos is groter en kan pouseer om te laai</string>
   <string name="morphe_hide_media_viewer_overlay_title">Versteek mediakieker-bedekking</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Versteek die titel, knoppies en videokontroles wanneer jy \'n beeld of video oopmaak. Tik op die media om hulle te wys</string>
   <string name="morphe_hide_join_conversation_button_title">Versteek die \"Sien die gesprek\"-knoppie</string>

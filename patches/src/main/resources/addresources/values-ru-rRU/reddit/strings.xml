@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Сохраняет позицию ленты после закрытия поста, изображения или видео, вместо перемещения открытого поста вверх</string>
   <string name="morphe_feed_media_max_height_title">Максимальная высота медиа в ленте</string>
   <string name="morphe_feed_media_max_height_summary">Максимальная высота изображений, видео и галерей в ленте как кратное их ширине. Более высокие медиа обрезаются. 1.33 — значение по умолчанию в Reddit</string>
+  <string name="morphe_redgifs_audio_title">Воспроизводить Redgifs со звуком</string>
+  <string name="morphe_redgifs_audio_summary">Воспроизводит исходное видео Redgifs вместо копии с Reddit, которая часто не содержит звука</string>
+  <string name="morphe_redgifs_hd_title">Качество Redgifs HD</string>
+  <string name="morphe_redgifs_hd_summary">Воспроизводит HD-видео Redgifs. HD-видео занимают больше места и могут приостанавливаться для загрузки</string>
   <string name="morphe_hide_media_viewer_overlay_title">Скрывать наложение просмотрщика медиа</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Скрывает заголовок, кнопки и элементы управления видео при открытии изображения или видео. Коснитесь медиафайла, чтобы показать их</string>
   <string name="morphe_hide_join_conversation_button_title">Скрыть кнопку «Смотреть обсуждение»</string>

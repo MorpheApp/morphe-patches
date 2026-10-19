@@ -428,6 +428,11 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_copy_comments_title">Sao chép bình luận</string>
   <string name="morphe_copy_comments_summary">Chạm và giữ một bình luận để sao chép</string>
   <string name="morphe_copy_comments_success">Đã sao chép bình luận vào bảng tạm</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Chạm và giữ để mở menu video</string>
+  <string name="morphe_feed_long_press_menu_summary">Chạm và giữ ở bất kỳ đâu trên video nguồn sẽ mở menu của video đó</string>
+  <string name="morphe_feed_watch_later_button_title">Hiển thị nút Xem sau trên hình thu nhỏ</string>
+  <string name="morphe_feed_watch_later_button_summary">Nút Xem sau được hiển thị trên hình thu nhỏ của các video nguồn. Chạm và giữ vào nút này để lưu vào danh sách phát</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Tắt cửa sổ \"Đăng nhập vào TV\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Tắt cửa sổ \"Kết nối thiết bị của bạn\"</string>
@@ -1155,6 +1160,8 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ẩn thanh trạng thái</string>
   <string name="morphe_hide_status_bar_summary">Ẩn thanh trạng thái hệ thống. Vuốt xuống từ mép trên để hiện thanh trạng thái trong giây lát</string>
+  <string name="morphe_fix_status_bar_layout_title">Sửa thanh trạng thái che các thanh trên cùng</string>
+  <string name="morphe_fix_status_bar_layout_summary">Giữ cho bố cục của thanh trạng nhất quán, để nó không che các thanh trên cùng và không để khoảng trống phía trên trình phát. Tắt tùy chọn này nếu ứng dụng bị đóng băng hoặc các thanh trên cùng trông sai</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Nền chủ đề sáng</string>
   <string name="morphe_theme_color_light_entry_2">Trắng</string>

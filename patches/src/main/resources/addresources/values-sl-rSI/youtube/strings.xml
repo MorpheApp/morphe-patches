@@ -428,6 +428,11 @@ Prijave so javne in so pregledane, preden je kanal dodan na seznam. Odstranitev 
   <string name="morphe_copy_comments_title">Kopiraj komentarje</string>
   <string name="morphe_copy_comments_summary">Tapnite in pridržite komentar, da ga kopirate</string>
   <string name="morphe_copy_comments_success">Komentar je kopiran v odložišče</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Dotaknite se in držite za odpiranje menija videa</string>
+  <string name="morphe_feed_long_press_menu_summary">Če povsod na videu v toku dotaknete se in držite, se odpre njegov meni</string>
+  <string name="morphe_feed_watch_later_button_title">Prikaži gumb »Ogled kasneje« na sličicah</string>
+  <string name="morphe_feed_watch_later_button_summary">Na sličicah video posnetkov v toku je prikazan gumb Ogled kasneje. Z dotikom in držanjem odprete Shrani v seznam predvajanja</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogoči pojavni gumb \'Prijava na TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Onemogoči pojavno okno \'Povečite svoje naprave\'</string>
@@ -1155,6 +1160,8 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skrij statusno vrstico</string>
   <string name="morphe_hide_status_bar_summary">Skrije sistemsko statusno vrstico. Povlecite navzdol z zgornjega roba, da se za trenutek prikaže</string>
+  <string name="morphe_fix_status_bar_layout_title">Odpravi pokritje zgornjih vrstic s strani vrstice stanja</string>
+  <string name="morphe_fix_status_bar_layout_summary">Ohranja dosledno zasnovo vrstice stanja, tako da ne prekriva zgornjih vrstic in ne pušča praznega prostora nad predvajalnikom. To funkcijo izklopite, če se aplikacija sesuje ali zgornje vrstice ne izgledajo pravilno</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Ozadje svetle teme</string>
   <string name="morphe_theme_color_light_entry_2">Bela</string>

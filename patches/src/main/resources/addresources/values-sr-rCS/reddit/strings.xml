@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Zadržava feed na istoj poziciji nakon zatvaranja objave, slike ili video zapisa, umesto da pomeri otvorenu objavu na vrh</string>
   <string name="morphe_feed_media_max_height_title">Maksimalna visina medijskog sadržaja u feedu</string>
   <string name="morphe_feed_media_max_height_summary">Maksimalna visina slika, video zapisa i galerija u feedu, kao umnožak njihove širine. Viši medijski sadržaj se iseca. 1,33 je Redditova podrazumevana vrednost</string>
+  <string name="morphe_redgifs_audio_title">Reprodukcija Redgifs sa zvukom</string>
+  <string name="morphe_redgifs_audio_summary">Reprodukuj originalni Redgifs video umesto Redditove kopije, koja često nema zvuk</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD kvalitet</string>
+  <string name="morphe_redgifs_hd_summary">Reprodukuj HD Redgifs video. HD videi su veći i mogu se pauzirati pri učitavanju</string>
   <string name="morphe_hide_media_viewer_overlay_title">Sakrij prekrivač pregledača medija</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Sakriva naslov, dugmad i kontrole video zapisa kada otvorite sliku ili video. Dodirnite medijski sadržaj da biste ih prikazali</string>
   <string name="morphe_hide_join_conversation_button_title">Sakrij dugme Pogledaj razgovor</string>

@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">टिप्पणियाँ कॉपी करें</string>
   <string name="morphe_copy_comments_summary">किसी टिप्पणी को कॉपी करने के लिए, उसे देर तक दबाकर रखें</string>
   <string name="morphe_copy_comments_success">टिप्पणी क्लिपबोर्ड पर कॉपी की गई</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">वीडियो मेनू खोलने के लिए टैप करें और दबाए रखें</string>
+  <string name="morphe_feed_long_press_menu_summary">फीड वीडियो पर कहीं भी टैप करके और दबाकर उसका मेनू खोला जा सकता है</string>
+  <string name="morphe_feed_watch_later_button_title">थंबनेल पर \'फिर से देखें\' बटन दिखाएं</string>
+  <string name="morphe_feed_watch_later_button_summary">फीड वीडियो की थंबनेल पर \'फिर से देखें\' बटन दिखाया जाता है। इसे टैप करके और दबाकर प्लेलिस्ट में सहेजें खोला जाता है</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीवी पर साइन इन करें\' पॉपअप बंद करें</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'कनेक्ट आपके डिवाइस\' पॉपअप अक्षम करें</string>
@@ -1155,6 +1160,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">स्टेटस बार छिपाएँ</string>
   <string name="morphe_hide_status_bar_summary">सिस्टम स्टेटस बार छिपाता है। इसे एक पल के लिए दिखाने के लिए ऊपरी किनारे से नीचे की ओर स्वाइप करें</string>
+  <string name="morphe_fix_status_bar_layout_title">स्टेटस बार को टॉप बार्स को कवर करना ठीक करें</string>
+  <string name="morphe_fix_status_bar_layout_summary">स्टेटस बार की लेआउट को स्थिर रखता है, ताकि यह टॉप बार्स को न कवर करे और प्लेयर के ऊपर खाली जगह न छोड़े। अगर ऐप क्रैश हो जाए या टॉप बार्स गलत दिखें तो इसे बंद करें</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">लाइट थीम की पृष्ठभूमि</string>
   <string name="morphe_theme_color_light_entry_2">सफेद</string>

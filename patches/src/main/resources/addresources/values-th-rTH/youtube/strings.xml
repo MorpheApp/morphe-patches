@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">คัดลอกความคิดเห็น</string>
   <string name="morphe_copy_comments_summary">แตะค้างที่ความคิดเห็นเพื่อคัดลอก</string>
   <string name="morphe_copy_comments_success">คัดลอกความคิดเห็นไปยังคลิปบอร์ดแล้ว</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">แตะค้างไว้เพื่อเปิดเมนูวิดีโอ</string>
+  <string name="morphe_feed_long_press_menu_summary">การแตะและค้างไว้ที่ใดก็ได้บนวิดีโอฟีดจะเปิดเมนูของวิดีโอนั้น</string>
+  <string name="morphe_feed_watch_later_button_title">แสดงปุ่มดูภายหลังบนภาพย่อ</string>
+  <string name="morphe_feed_watch_later_button_summary">จะแสดงปุ่มดูภายหลังบนภาพย่อของวิดีโอในฟีด การแตะและค้างไว้จะทำให้บันทึกไปยังเพลย์ลิสต์</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวี</string>
   <string name="morphe_disable_connect_your_devices_popup_title">ปิดหน้าต่างแจ้งเตือน \'เชื่อมต่ออุปกรณ์ของคุณ\'</string>
@@ -1155,6 +1160,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">ซ่อนแถบสถานะ</string>
   <string name="morphe_hide_status_bar_summary">ซ่อนแถบสถานะของระบบ ปัดลงจากขอบด้านบนเพื่อแสดงชั่วครู่</string>
+  <string name="morphe_fix_status_bar_layout_title">แก้ไขแถบสถานะไม่ให้บังแถบด้านบน</string>
+  <string name="morphe_fix_status_bar_layout_summary">คงรูปแบบของแถบสถานะให้สอดคล้องกัน เพื่อไม่ให้เกิดการบังแถบด้านบนและเหลือพื้นที่ว่างเปล่าเหนือตัวเล่น เปิดการใช้งานนี้หากแอปค้างหรือแถบด้านบนแสดงผลผิดปกติ</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">พื้นหลังธีมสว่าง</string>
   <string name="morphe_theme_color_light_entry_2">สีขาว</string>

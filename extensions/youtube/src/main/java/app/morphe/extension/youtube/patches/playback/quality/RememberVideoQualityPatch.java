@@ -111,6 +111,33 @@ public class RememberVideoQualityPatch {
 
     /**
      * Injection point.
+     * <p>
+     * YouTube chooses the quality again while the video plays, such as when it loads more of the video.
+     * Without a quality selected in the quality menu, the quality is then chosen automatically
+     * (such as 720p for the size of the player), as the initial video quality is only used
+     * when the video starts. The default quality is used as a fixed quality for these choices too,
+     * until the user selects a quality.
+     *
+     * @return The fixed video quality resolution, or -1 to use the qualities chosen by YouTube.
+     */
+    public static int getFixedVideoQuality() {
+        try {
+            if (VideoInformation.isQualitySelectedByUser()) {
+                return -1;
+            }
+
+            final int preferredQuality = getDefaultQualityResolution();
+            return preferredQuality == VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE
+                    ? -1
+                    : preferredQuality;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getFixedVideoQuality failure", ex);
+            return -1;
+        }
+    }
+
+    /**
+     * Injection point.
      * @param userSelectedQualityIndex Element index of {@link VideoInformation#getCurrentQualities()}.
      */
     public static void userChangedShortsQuality(int userSelectedQualityIndex) {

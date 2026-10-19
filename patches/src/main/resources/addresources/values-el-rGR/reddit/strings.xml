@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Διατηρεί τη ροή στην ίδια θέση μετά το κλείσιμο μιας ανάρτησης, εικόνας ή βίντεο, αντί να μετακινεί την ανοιχτή ανάρτηση στην κορυφή</string>
   <string name="morphe_feed_media_max_height_title">Μέγιστο ύψος πολυμέσων στη ροή</string>
   <string name="morphe_feed_media_max_height_summary">Μέγιστο ύψος εικόνων, βίντεο και συλλογών στη ροή, ως πολλαπλάσιο του πλάτους τους. Τα ψηλότερα μέσα περικόπτονται. Η προεπιλογή του Reddit είναι 1.33</string>
+  <string name="morphe_redgifs_audio_title">Αναπαραγωγή Redgifs με ήχο</string>
+  <string name="morphe_redgifs_audio_summary">Αναπαράγει το αρχικό βίντεο Redgifs αντί για την αντιγραφή του Reddit, η οποία συχνά δεν έχει ήχο</string>
+  <string name="morphe_redgifs_hd_title">Ποιότητα HD Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">Αναπαράγει τα βίντεο HD του Redgifs. Τα βίντεο HD έχουν μεγαλύτερο μέγεθος και μπορούν να σταματούν για φόρτωση</string>
   <string name="morphe_hide_media_viewer_overlay_title">Απόκρυψη επικάλυψης προβολέα πολυμέσων</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Αποκρύπτει τον τίτλο, τα κουμπιά και τα χειριστήρια βίντεο όταν ανοίγετε μια εικόνα ή ένα βίντεο. Πατήστε στο μέσο για να τα εμφανίσετε</string>
   <string name="morphe_hide_join_conversation_button_title">Απόκρυψη του κουμπιού «Δείτε τη συζήτηση»</string>

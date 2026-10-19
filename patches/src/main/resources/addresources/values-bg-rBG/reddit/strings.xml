@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Запазва позицията на потока след затваряне на публикация, изображение или видео, вместо да премества отворената публикация в началото</string>
   <string name="morphe_feed_media_max_height_title">Максимална височина на медиите в потока</string>
   <string name="morphe_feed_media_max_height_summary">Максимална височина на изображенията, видеоклиповете и галериите в потока, като кратно на тяхната ширина. По-високите медийни елементи се изрязват. 1,33 е стойността по подразбиране в Reddit</string>
+  <string name="morphe_redgifs_audio_title">Изключете звука на Redgifs</string>
+  <string name="morphe_redgifs_audio_summary">Възпроизвежда оригиналното видео от Redgifs вместо копие от Reddit, което често няма аудио</string>
+  <string name="morphe_redgifs_hd_title">HD качество в Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">Възпроизвежда HD видеа от Redgifs. HD видеата са по-големи и могат да паузират за зареждане</string>
   <string name="morphe_hide_media_viewer_overlay_title">Скриване на наслагването в прегледа на медии</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Скрива заглавието, бутоните и контролите за видео при отваряне на изображение или видео. Докоснете медията, за да ги покажете</string>
   <string name="morphe_hide_join_conversation_button_title">Скриване на бутона „Виж разговора“</string>

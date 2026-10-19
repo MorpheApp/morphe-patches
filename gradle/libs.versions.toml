@@ -17,8 +17,8 @@ hiddenapi = "6.1"
 protobuf = "0.10.0"
 protoc = "4.36.2"
 junit = "4.13.2"
-junit-jupiter = "5.10.1"
-kotlinx-coroutines = "1.10.2"
+junit-jupiter = "6.1.3"
+kotlinx-coroutines = "1.11.0"
 
 [libraries]
 morphe-patches-library = { module = "app.morphe:morphe-patches-library", version.ref = "morphe-patches-library" }

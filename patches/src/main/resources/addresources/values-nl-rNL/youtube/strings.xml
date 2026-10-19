@@ -428,6 +428,11 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_copy_comments_title">Reacties kopiëren</string>
   <string name="morphe_copy_comments_summary">Tik en houd een reactie ingedrukt om deze te kopiëren</string>
   <string name="morphe_copy_comments_success">Reactie gekopieerd naar klembord</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Tik en houd ingedrukt om het videoclipmenu te openen</string>
+  <string name="morphe_feed_long_press_menu_summary">Korte of lange aanraking ergens op een feedvideo opent het menu</string>
+  <string name="morphe_feed_watch_later_button_title">Button \"Later bekijken\" weergeven op miniatuurafbeeldingen</string>
+  <string name="morphe_feed_watch_later_button_summary">Er wordt een knop \"Later bekijken\" weergegeven op de miniatuurafbeeldingen van feedvideo\'s. Tikken en vasthouden opent Opslaan in afspeellijst</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Pop-up \'Inloggen op tv\' uitschakelen</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Schakel de pop-up \'Verbind je apparaten\' uit</string>
@@ -1153,6 +1158,8 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Statusbalk verbergen</string>
   <string name="morphe_hide_status_bar_summary">Verbergt de systeemstatusbalk. Veeg omlaag vanaf de bovenrand om hem even weer te tonen</string>
+  <string name="morphe_fix_status_bar_layout_title">Statusbalk oplossen die bovenste balken bedekt</string>
+  <string name="morphe_fix_status_bar_layout_summary">Houdt de lay-out van de statusbalk consistent, zodat deze de bovenste balken niet bedekt en er geen lege ruimte boven de speler overblijft. Schakel dit uit als de app crasht of als de bovenste balken verkeerd eruitzien</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Achtergrond van het lichtthema</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>

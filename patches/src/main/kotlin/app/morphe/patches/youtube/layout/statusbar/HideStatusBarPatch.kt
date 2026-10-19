@@ -36,18 +36,30 @@ val hideStatusBarPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_hide_status_bar", summary = true)
+            SwitchPreference("morphe_hide_status_bar", summary = true),
+            SwitchPreference("morphe_fix_status_bar_layout", summary = true)
         )
 
         // https://github.com/MorpheApp/morphe-patches/issues/2969
         // The flag is read by many classes, and on some devices they do not end up with the same value.
         // The window is then drawn behind the status bar, but the top bars are not given the status bar inset,
-        // so the status bar and its background view cover them. With the flag off, every class lays out
-        // the top bars below the status bar.
+        // so the status bar and its background view cover them. Every class uses the first value read,
+        // instead of always turning the flag off: the edge to edge layout is the stock layout of most accounts
+        // (transparent status bar over Shorts and the player). The flag is turned off only when the
+        // status bar is hidden, as it then leaves an empty bar above the player.
         EdgeToEdgeTopBarFeatureFlagFingerprint.matchAll().forEach {
+            // Overrides every read of the flag in the method.
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                false
+                "$EXTENSION_CLASS->useEdgeToEdgeTopBar(Z)Z"
+            )
+        }
+
+        // The status bar color that follows the scrolling top bar needs the edge to edge top bar.
+        StatusBarScrollColorFeatureFlagFingerprint.matchAllOrNull()?.forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->useStatusBarScrollColor(Z)Z"
             )
         }
 
@@ -70,7 +82,8 @@ val hideStatusBarPatch = bytecodePatch(
             }
         }
 
-        // The top bars are laid out with the stable insets, which keep the height of the hidden status bar.
+        // Without the edge to edge top bar, the top bars are laid out with the stable insets,
+        // which keep the height of the hidden status bar.
         SystemWindowInsetsChangedFingerprint.let {
             it.method.apply {
                 val insetsRegister = it.instructionMatches.first()

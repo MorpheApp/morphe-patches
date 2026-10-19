@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">نسخ التعليقات</string>
   <string name="morphe_copy_comments_summary">اضغط مع الاستمرار على تعليق لنسخه</string>
   <string name="morphe_copy_comments_success">تم نسخ التعليق إلى الحافظة</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">الضغط مع الاستمرار لفتح قائمة الفيديو</string>
+  <string name="morphe_feed_long_press_menu_summary">يؤدي الضغط مع الاستمرار في أي مكان على فيديو في الخلاصة إلى فتح قائمته</string>
+  <string name="morphe_feed_watch_later_button_title">عرض زر \"المشاهدة لاحقًا\" على المصغرات</string>
+  <string name="morphe_feed_watch_later_button_summary">يتم عرض زر المشاهدة لاحقًا على مصغرات فيديوهات الخلاصة. يؤدي الضغط مع الاستمرار عليه إلى فتح الحفظ في قوائم التشغيل</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">تعطيل نافذة \'تسجيل الدخول إلى التلفزيون\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">تعطيل نافذة \'توصيل أجهزتك\'</string>
@@ -1159,6 +1164,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">إخفاء شريط الحالة</string>
   <string name="morphe_hide_status_bar_summary">يخفي شريط حالة النظام. اسحب لأسفل من الحافة العلوية لإظهاره للحظة</string>
+  <string name="morphe_fix_status_bar_layout_title">إصلاح شريط الحالة بحيث لا يغطي الشريط العلوي</string>
+  <string name="morphe_fix_status_bar_layout_summary">يحافظ على تخطيط شريط الحالة بشكل متسق، بحيث لا يغطي الأشرطة العلوية ولا يترك مساحة فارغة فوق المشغل. قم بإيقاف تشغيل هذا إذا تعطل التطبيق أو ظهرت الأشرطة العلوية بشكل خاطئ</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">خلفية المظهر الفاتح</string>
   <string name="morphe_theme_color_light_entry_2">أبيض</string>

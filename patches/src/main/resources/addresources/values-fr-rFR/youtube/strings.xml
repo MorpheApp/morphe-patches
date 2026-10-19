@@ -428,6 +428,11 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_copy_comments_title">Copier les commentaires</string>
   <string name="morphe_copy_comments_summary">Appuyez longuement sur un commentaire pour le copier</string>
   <string name="morphe_copy_comments_success">Commentaire copié dans le presse-papiers</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Appuyez longuement pour ouvrir le menu vidéo</string>
+  <string name="morphe_feed_long_press_menu_summary">Un appui long n\'importe où sur une vidéo du flux ouvre son menu</string>
+  <string name="morphe_feed_watch_later_button_title">Afficher le bouton \'À regarder plus tard\' sur les miniatures</string>
+  <string name="morphe_feed_watch_later_button_summary">Un bouton \'À regarder plus tard\' est affiché sur les miniatures du flux. Un appui long dessus ouvre le menu \'Enregistrer dans une playlist\'</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Désactiver le pop-up \'Connectez-vous à la TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Désactiver le pop-up \'Associez vos appareils\'</string>
@@ -1156,6 +1161,8 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Masquer la barre d\'état</string>
   <string name="morphe_hide_status_bar_summary">Masque la barre d\'état du système. Balayez vers le bas depuis le bord supérieur pour l\'afficher momentanément</string>
+  <string name="morphe_fix_status_bar_layout_title">Corriger la barre d\'état qui recouvre les barres supérieures</string>
+  <string name="morphe_fix_status_bar_layout_summary">Maintient une mise en page cohérente de la barre d\'état, afin qu\'elle ne masque pas les barres supérieures et ne laisse aucun espace vide au-dessus du lecteur. Désactivez cette option si l\'application plante ou si les barres supérieures s\'affichent incorrectement</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Arrière-plan du thème clair</string>
   <string name="morphe_theme_color_light_entry_2">Blanc</string>

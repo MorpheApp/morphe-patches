@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">کپی کردن نظرات</string>
   <string name="morphe_copy_comments_summary">برای کپی کردن نظر، آن را لمس کنید و نگه دارید</string>
   <string name="morphe_copy_comments_success">نظر در کلیپ‌بورد کپی شد</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">ضربه بزنید و نگه دارید تا منوی ویدیو باز شود</string>
+  <string name="morphe_feed_long_press_menu_summary">ضربه زدن و نگه داشتن در هر جایی از یک ویدیوی فید، منوی آن را باز می‌کند</string>
+  <string name="morphe_feed_watch_later_button_title">نمایش دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی</string>
+  <string name="morphe_feed_watch_later_button_summary">یک دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی ویدیوهای فید نمایش داده می‌شود. ضربه زدن و نگه داشتن آن گزینه ذخیره در لیست پخش را باز می‌کند</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">غیرفعال‌کردن پنجرهٔ بازشوی «ورود به تلویزیون»</string>
   <string name="morphe_disable_connect_your_devices_popup_title">غیرفعال‌کردن پنجرهٔ بازشوی «اتصال دستگاه‌ها»</string>
@@ -1155,6 +1160,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">پنهان کردن نوار وضعیت</string>
   <string name="morphe_hide_status_bar_summary">نوار وضعیت سیستم را پنهان می‌کند. برای نمایش لحظه‌ای آن، از لبه بالایی به پایین بکشید</string>
+  <string name="morphe_fix_status_bar_layout_title">رفع مشکل پوشیدن نوار وضعیت بر روی نوارهای بالایی</string>
+  <string name="morphe_fix_status_bar_layout_summary">چیدمان نوار وضعیت را یکپارچه نگه می‌دارد، بنابراین بر نوارهای بالایی پوشانده نمی‌شود و فضای خالی در بالای پخش‌کننده باقی نمی‌گذارد. اگر برنامه کرش کرد یا نوارهای بالایی به درستی نمایش داده نشدند، این گزینه را غیرفعال کنید</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">پس‌زمینهٔ طرح روشن</string>
   <string name="morphe_theme_color_light_entry_2">سفید</string>

@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Menjaga posisi feed tetap sama setelah menutup postingan, gambar, atau video, alih-alih memindahkan postingan yang dibuka ke atas</string>
   <string name="morphe_feed_media_max_height_title">Tinggi maksimum media feed</string>
   <string name="morphe_feed_media_max_height_summary">Tinggi maksimum gambar, video, dan galeri di feed, sebagai kelipatan dari lebarnya. Media yang lebih tinggi akan dipotong. 1.33 adalah default Reddit</string>
+  <string name="morphe_redgifs_audio_title">Putar Redgifs dengan audio</string>
+  <string name="morphe_redgifs_audio_summary">Memutar video Redgifs asli alih-alin salinan Reddit, yang sering tidak memiliki audio</string>
+  <string name="morphe_redgifs_hd_title">Kualitas HD Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">Memutar video Redgifs HD. Video HD lebih besar dan mungkin jeda untuk memuat</string>
   <string name="morphe_hide_media_viewer_overlay_title">Sembunyikan overlay penampil media</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Menyembunyikan judul, tombol, dan kontrol video saat membuka gambar atau video. Ketuk media untuk menampilkannya</string>
   <string name="morphe_hide_join_conversation_button_title">Sembunyikan tombol Lihat percakapan</string>

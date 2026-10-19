@@ -18,6 +18,7 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Insets;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
@@ -27,10 +28,13 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.os.Build;
+import android.view.DisplayCutout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.WindowInsets;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -148,6 +152,7 @@ public final class MinimalMiniplayerPatch {
 
     private static final Rect clipBounds = new Rect();
     private static final Rect dockedBounds = new Rect();
+    private static final Rect horizontalSpan = new Rect();
     private static final int[] windowLocation = new int[2];
 
     private static final Rect morphFrom = new Rect();
@@ -408,7 +413,8 @@ public final class MinimalMiniplayerPatch {
      * bounds to full display width, making the transition to miniplayer smoother.
      */
     private static Rect fullWidthSpan(Rect original) {
-        dockedBounds.set(0, original.top, getWidthPixels(), original.bottom);
+        updateHorizontalSpan();
+        dockedBounds.set(horizontalSpan.left, original.top, horizontalSpan.right, original.bottom);
 
         return dockedBounds;
     }
@@ -416,15 +422,64 @@ public final class MinimalMiniplayerPatch {
     private static void barBoundsFor(Rect resting) {
         final int bottom = barBottomFor(resting) - BAR_MARGIN;
 
-        barBounds.set(BAR_MARGIN, bottom - BAR_HEIGHT, getWidthPixels() - BAR_MARGIN, bottom);
+        updateHorizontalSpan();
+        barBounds.set(horizontalSpan.left + BAR_MARGIN, bottom - BAR_HEIGHT,
+                horizontalSpan.right - BAR_MARGIN, bottom);
     }
 
     /**
-     * Not {@link Dim#getScreenWidth()}, which measures the display. A bar spans
-     * the window, and the two differ in split screen and on foldables.
+     * Where a bar can span, relative to the layout that holds the player. Not the display metrics,
+     * which measure the whole display. In landscape the window leaves out the display cutout,
+     * such as a front camera hole, and the system navigation buttons can sit beside the content,
+     * so a bar as wide as the display is cut off there. The window also differs from the display
+     * in split screen and on foldables.
      */
-    private static int getWidthPixels() {
-        return Dim.getMetrics().widthPixels;
+    private static void updateHorizontalSpan() {
+        horizontalSpan.set(0, 0, Dim.getMetrics().widthPixels, 0);
+
+        try {
+            spanWindow();
+        } catch (Exception ex) {
+            Logger.printException(() -> "updateHorizontalSpan failure", ex);
+        }
+    }
+
+    private static void spanWindow() {
+        View watchPlayer = watchPlayer();
+        if (watchPlayer == null || !(watchPlayer.getParent() instanceof View parent)) return;
+
+        final int parentWidth = parent.getWidth();
+        View root = parent.getRootView();
+        WindowInsets insets = parent.getRootWindowInsets();
+        if (parentWidth <= 0 || root == null || insets == null) return;
+
+        int insetLeft;
+        int insetRight;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            Insets sideInsets = insets.getInsets(
+                    WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout());
+            insetLeft = sideInsets.left;
+            insetRight = sideInsets.right;
+        } else {
+            insetLeft = insets.getSystemWindowInsetLeft();
+            insetRight = insets.getSystemWindowInsetRight();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                DisplayCutout cutout = insets.getDisplayCutout();
+                if (cutout != null) {
+                    insetLeft = Math.max(insetLeft, cutout.getSafeInsetLeft());
+                    insetRight = Math.max(insetRight, cutout.getSafeInsetRight());
+                }
+            }
+        }
+
+        // The insets are relative to the window, the bounds to the layout that holds the player.
+        parent.getLocationInWindow(windowLocation);
+        final int left = Math.max(0, insetLeft - windowLocation[0]);
+        final int right = Math.min(parentWidth, root.getWidth() - insetRight - windowLocation[0]);
+
+        if (right - left > 2 * BAR_MARGIN) {
+            horizontalSpan.set(left, 0, right, 0);
+        }
     }
 
     /**

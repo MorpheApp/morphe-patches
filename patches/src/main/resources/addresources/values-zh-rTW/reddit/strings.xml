@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">關閉貼文、圖片或影片後，會將動態消息保持在相同位置，而不是將已開啟的貼文移到頂端</string>
   <string name="morphe_feed_media_max_height_title">動態消息媒體最大高度</string>
   <string name="morphe_feed_media_max_height_summary">動態消息中圖片、影片和圖庫的最大高度，以寬度的倍數表示。超過此高度的媒體會被裁切。1.33 是 Reddit 的預設值</string>
+  <string name="morphe_redgifs_audio_title">以音效播放 Redgifs</string>
+  <string name="morphe_redgifs_audio_summary">播放原始 Redgifs 影片，而非 Reddit 的副本（通常沒有音效）</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD 畫質</string>
+  <string name="morphe_redgifs_hd_summary">播放 HD Redgifs 影片。HD 影片體積較大，可能會暫停以載入</string>
   <string name="morphe_hide_media_viewer_overlay_title">隱藏媒體檢視器覆蓋層</string>
   <string name="morphe_hide_media_viewer_overlay_summary">開啟圖片或影片時，隱藏標題、按鈕和影片控制項。輕觸媒體即可顯示</string>
   <string name="morphe_hide_join_conversation_button_title">隱藏「查看討論串」按鈕</string>

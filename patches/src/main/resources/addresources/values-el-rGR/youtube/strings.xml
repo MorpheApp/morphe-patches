@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Αντιγραφή σχολίων</string>
   <string name="morphe_copy_comments_summary">Πατήστε παρατεταμένα ένα σχόλιο για να το αντιγράψετε</string>
   <string name="morphe_copy_comments_success">Το σχόλιο αντιγράφηκε στο πρόχειρο</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Πατήστε και κρατήστε πατημένο για να ανοίξετε το μενού βίντεο</string>
+  <string name="morphe_feed_long_press_menu_summary">Το πάτημα και το κράτημα πατημένο οπουδήποτε σε ένα βίντεο feed ανοίγει το μενού του</string>
+  <string name="morphe_feed_watch_later_button_title">Εμφάνιση κουμπιού προβολής αργότερα στα μικρογραφίες</string>
+  <string name="morphe_feed_watch_later_button_summary">Ένα κουμπί προβολής αργότερα εμφανίζεται στις μικρογραφίες των βίντεο feed. Το πάτημα και το κράτημα πατημένο το ανοίγει την αποθήκευση στη λίστα αναπαραγωγής</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου σύνδεσης στην τηλεόραση</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Απενεργοποίηση αναδυτικού παραθύρου \'Συνδέστε τις συσκευές σας\'</string>
@@ -1140,6 +1145,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Απόκρυψη γραμμής κατάστασης</string>
   <string name="morphe_hide_status_bar_summary">Αποκρύπτει τη γραμμή κατάστασης του συστήματος. Σύρετε προς τα κάτω από το πάνω άκρο για να εμφανιστεί για μια στιγμή</string>
+  <string name="morphe_fix_status_bar_layout_title">Διόρθωση κατάστασης μπάρας να καλύπτει τις πάνω μπάρες</string>
+  <string name="morphe_fix_status_bar_layout_summary">Διατηρεί τη διάταξη της μπάρας κατάστασης συνεπή, ώστε να μην καλύπτει τις πάνω μπάρες και δεν αφήνει κενό χώρο πάνω από τον παίκτη. Απενεργοποιήστε αυτό αν η εφαρμογή καταρρεύσει ή οι πάνω μπάρες φαίνονται λάθος</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Φόντο φωτεινού θέματος</string>
   <string name="morphe_theme_color_light_entry_2">Λευκό</string>

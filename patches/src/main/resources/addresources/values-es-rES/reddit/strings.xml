@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Mantiene el feed en la misma posición después de cerrar una publicación, una imagen o un vídeo, en lugar de mover la publicación abierta a la parte superior</string>
   <string name="morphe_feed_media_max_height_title">Altura máxima de medios del feed</string>
   <string name="morphe_feed_media_max_height_summary">Altura máxima de las imágenes, los vídeos y las galerías en el feed, como múltiplo de su anchura. Los medios más altos se recortarán. 1,33 es el valor predeterminado de Reddit</string>
+  <string name="morphe_redgifs_audio_title">Reproducir Redgifs con audio</string>
+  <string name="morphe_redgifs_audio_summary">Reproduce el video original de Redgifs en lugar de la copia de Reddit, que a menudo no tiene audio</string>
+  <string name="morphe_redgifs_hd_title">Calidad HD de Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">Reproduce el video de Redgifs en HD. Los videos HD son más grandes y pueden pausarse para cargar</string>
   <string name="morphe_hide_media_viewer_overlay_title">Ocultar superposición del visor de medios</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Oculta el título, los botones y los controles de vídeo al abrir una imagen o un vídeo. Pulsa los medios para mostrarlos</string>
   <string name="morphe_hide_join_conversation_button_title">Ocultar botón de ver la conversación</string>

@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">A hírfolyamot ugyanazon a pozíción tartja egy bejegyzés, kép vagy videó bezárása után, ahelyett, hogy a megnyitott bejegyzést a tetejére mozgatná</string>
   <string name="morphe_feed_media_max_height_title">Hírfolyam médiatartalmainak maximális magassága</string>
   <string name="morphe_feed_media_max_height_summary">A képek, videók és galériák maximális magassága a hírfolyamban, a szélességük többszöröseként megadva. A magasabb médiatartalmak le vannak vágva. Az 1,33 a Reddit alapértelmezése</string>
+  <string name="morphe_redgifs_audio_title">RedGifok lejátszása hanggal</string>
+  <string name="morphe_redgifs_audio_summary">Az eredeti Redgifs videót játssza le, nem a Reddit másolatát, amelynek gyakran nincs hangja</string>
+  <string name="morphe_redgifs_hd_title">RedGifok HD minőségben</string>
+  <string name="morphe_redgifs_hd_summary">HD RedGif-videót játszik le. Az HD videók nagyobbak és szünetelhetnek a betöltéshez</string>
   <string name="morphe_hide_media_viewer_overlay_title">Médianézegető átfedés elrejtése</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Elrejti a címet, a gombokat és a videóvezérlőket, amikor képet vagy videót nyit meg. A média megérintésével jeleníthetők meg</string>
   <string name="morphe_hide_join_conversation_button_title">A „Beszélgetés megtekintése” gomb elrejtése</string>

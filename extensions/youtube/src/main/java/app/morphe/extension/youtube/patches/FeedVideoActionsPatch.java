@@ -50,6 +50,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCards;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
@@ -1022,23 +1023,34 @@ public final class FeedVideoActionsPatch {
                 return;
             }
 
-            final int itemIndex = pendingSaveToPlaylist ? findSaveToPlaylistItemIndex() : findWatchLaterItemIndex();
-            ViewGroup items = itemIndex < 0 ? null : findItemGroup(itemList, itemIndex);
-            if (items == null) {
-                // The items may not be bound yet. The fallback runs if they never are.
+            final Pair<String, Integer> button = pendingSaveToPlaylist ? findSaveToPlaylistButton() : findWatchLaterButton();
+            if (button == null) {
                 return;
+            }
+            // The item is found by its text, as the index of the buttons does not always match the items
+            // of the menu, such as when an item has no text or a button is not an item of the list.
+            View item = findItemByText(itemList, FlyoutUtils.getVisibleFlyoutButtonText(button.first));
+            final boolean foundByText = item != null;
+            if (item == null) {
+                final int itemIndex = button.second - 1;
+                ViewGroup items = findItemGroup(itemList, itemIndex);
+                if (items == null) {
+                    // The items may not be bound yet. The fallback runs if they never are.
+                    return;
+                }
+                item = items.getChildAt(itemIndex);
             }
 
             pendingItemClicked = true;
-            View item = items.getChildAt(itemIndex);
+            final View clickedItem = item;
             Logger.printDebug(() -> "Clicking the " + (pendingSaveToPlaylist ? "Save to playlist" : "Watch later")
-                    + " item of the hidden menu");
+                    + " item of the hidden menu, found by " + (foundByText ? "text" : "index"));
             final boolean saveToPlaylist = pendingSaveToPlaylist;
             // Watch later: the app saves the video, shows its own message and closes the menu.
             // Save to playlist: the app closes the menu and opens its own panel.
             handler.post(() -> {
                 try {
-                    item.performClick();
+                    clickedItem.performClick();
                 } catch (Exception ex) {
                     Logger.printException(() -> "Menu item click failure", ex);
                 }
@@ -1060,15 +1072,41 @@ public final class FeedVideoActionsPatch {
     /**
      * The items are known by the names of the enum of the app, which do not depend on the language.
      */
-    private static int findWatchLaterItemIndex() {
+    @Nullable
+    private static Pair<String, Integer> findWatchLaterButton() {
         for (Pair<String, Integer> button : FlyoutUtils.getVisibleFlyoutButtons()) {
             String name = button.first;
             if (name.contains("WATCH_LATER") && !name.contains("REMOVE")) {
-                return button.second - 1;
+                return button;
             }
         }
         Logger.printDebug(() -> "No Watch later item in: " + FlyoutUtils.getVisibleFlyoutButtons());
-        return -1;
+        return null;
+    }
+
+    /**
+     * @return The clickable item of the menu that shows the text, or null if it's not found.
+     */
+    @Nullable
+    private static View findItemByText(ViewGroup itemList, @Nullable String text) {
+        if (text == null || text.isEmpty()) {
+            return null;
+        }
+        TextView textView = Utils.getChildView(itemList, true, view ->
+                view instanceof TextView candidate && text.contentEquals(candidate.getText()));
+        if (textView == null) {
+            return null;
+        }
+
+        // The item is the clickable view that contains the text.
+        View item = textView;
+        while (!item.isClickable()) {
+            if (item == itemList || !(item.getParent() instanceof View parent)) {
+                return null;
+            }
+            item = parent;
+        }
+        return item == itemList ? null : item;
     }
 
     /**
@@ -1114,13 +1152,14 @@ public final class FeedVideoActionsPatch {
     private static final Pattern NOT_SAVE_ITEM_PATTERN =
             Pattern.compile("DOWNLOAD|OFFLINE|SHARE|QUEUE|NOT_INTERESTED|DISMISS|FLAG|REPORT|CAST");
 
-    private static int findSaveToPlaylistItemIndex() {
+    @Nullable
+    private static Pair<String, Integer> findSaveToPlaylistButton() {
         List<Pair<String, Integer>> buttons = FlyoutUtils.getVisibleFlyoutButtons();
         for (String iconName : SAVE_TO_PLAYLIST_ICON_NAMES) {
             for (Pair<String, Integer> button : buttons) {
                 String name = button.first;
                 if (name.contains(iconName) && !name.contains("WATCH_LATER") && !name.contains("REMOVE")) {
-                    return button.second - 1;
+                    return button;
                 }
             }
         }
@@ -1131,13 +1170,13 @@ public final class FeedVideoActionsPatch {
                 Pair<String, Integer> next = buttons.get(i + 1);
                 if (!NOT_SAVE_ITEM_PATTERN.matcher(next.first).find()) {
                     Logger.printDebug(() -> "Using the item after Watch later as Save to playlist: " + next.first);
-                    return next.second - 1;
+                    return next;
                 }
                 break;
             }
         }
         Logger.printDebug(() -> "No Save to playlist item in: " + buttons);
-        return -1;
+        return null;
     }
 
     /**

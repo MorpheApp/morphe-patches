@@ -21,6 +21,8 @@ import app.morphe.patches.youtube.layout.buttons.navigation.navigationBarPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
+import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -56,7 +58,7 @@ private val seriesTrackerResourcesPatch = resourcePatch {
     dependsOn(legacyPlayerControlsResourcePatch)
 
     execute {
-        copyPlayerButtonIcons("seriestracker", "morphe_series_tracker_button")
+        copyPlayerButtonIcons("seriestracker", "morphe_series_tracker_button", "morphe_series_tracker_button_fill")
         copyResources("seriestracker", ResourceGroup("layout", "morphe_series_tracker_history.xml"))
     }
 
@@ -81,6 +83,7 @@ val seriesTrackerPatch = bytecodePatch(
         versionCheckPatch,
         videoInformationPatch,
         navigationBarPatch,
+        navigationBarHookPatch,
         seriesTrackerResourcesPatch,
         legacyPlayerControlsPatch,
     )
@@ -100,7 +103,7 @@ val seriesTrackerPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_series_tracker", summary = true),
-                    SwitchPreference("morphe_series_tracker_show_history_tab", summary = true),
+                    SwitchPreference("morphe_series_tracker_show_navigation_button"),
                     SwitchPreference("morphe_series_tracker_show_button", summary = true),
                     SwitchPreference(
                         "morphe_series_tracker_record_followed_progress",
@@ -195,6 +198,7 @@ val seriesTrackerPatch = bytecodePatch(
         videoTimeHook(EXTENSION_CLASS, "videoTimeChanged")
         initializeTopControl(BUTTON)
         navigationIntentHook(EXTENSION_CLASS, "navigationIntent")
+        hookNavigationButtonCreated(EXTENSION_CLASS)
     }
 }
 

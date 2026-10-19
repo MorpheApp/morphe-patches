@@ -426,6 +426,11 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_copy_comments_title">Kopiér kommentarer</string>
   <string name="morphe_copy_comments_summary">Tryk og hold på en kommentar for at kopiere den</string>
   <string name="morphe_copy_comments_success">Kommentar kopieret til udklipsholderen</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Tryk og hold for at åbne video menu</string>
+  <string name="morphe_feed_long_press_menu_summary">At trykke og holde et vilkårligt sted på en feed-video åbner dens menu</string>
+  <string name="morphe_feed_watch_later_button_title">Vis \'Se senere\'-knap på miniaturebilleder</string>
+  <string name="morphe_feed_watch_later_button_summary">En \"Se senere\"-knap vises på miniaturebillederne for feed-videoer. Tryk og hold for at gemme i afspilningsliste</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiver \'Log ind på TV\' popup</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Deaktiver pop op-vinduet \'Tilslut dine enheder\'</string>
@@ -1151,6 +1156,8 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skjul statuslinjen</string>
   <string name="morphe_hide_status_bar_summary">Skjuler systemets statuslinje. Stryg ned fra den øverste kant for at vise den et øjeblik</string>
+  <string name="morphe_fix_status_bar_layout_title">Fixér statuslinjen, så den ikke dækker de øverste felter</string>
+  <string name="morphe_fix_status_bar_layout_summary">Gør layoutet af statuslinjen konsistent, så det ikke dækker de øverste felter og ikke efterlader tom plads over afspilleren. Slå fra, hvis appen krascher, eller de øverste felter ser forkerte ud</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Lyst tema baggrund</string>
   <string name="morphe_theme_color_light_entry_2">Hvid</string>

@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">댓글 복사</string>
   <string name="morphe_copy_comments_summary">댓글을 길게 탭하여 복사할 수 있도록 합니다</string>
   <string name="morphe_copy_comments_success">댓글이 클립보드에 복사되었습니다</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">동영상을 길게 누르면 메뉴가 열립니다</string>
+  <string name="morphe_feed_long_press_menu_summary">피드 동영상의 아무 곳이나 길게 누르면 해당 동영상의 메뉴가 열립니다</string>
+  <string name="morphe_feed_watch_later_button_title">썸네일에 \'나중에 볼 목록\' 버튼 표시</string>
+  <string name="morphe_feed_watch_later_button_summary">피드 동영상의 썸네일에 \'나중에 볼 목록\' 버튼이 표시됩니다. 버튼을 길게 누르면 플레이리스트에 저장됩니다</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'기기 연결\' 팝업 비활성화하기</string>
@@ -1157,6 +1162,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">상태바 숨기기</string>
   <string name="morphe_hide_status_bar_summary">시스템 상태바를 숨깁니다. 상단 가장자리에서 아래로 스와이프하면 잠시 표시됩니다</string>
+  <string name="morphe_fix_status_bar_layout_title">상단 막대가 상태 표시줄에 가려지는 것을 해결</string>
+  <string name="morphe_fix_status_bar_layout_summary">상태 표시줄 레이아웃을 일정하게 유지하여 상단 바가 덮이지 않도록 하고 플레이어 위에 빈 공간이 생기지 않습니다. 앱이 강제 종료되거나 상단 바가 잘못 보이는 경우 이 기능을 끄세요</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">밝은 테마 배경 색상</string>
   <string name="morphe_theme_color_light_entry_2">하얀색</string>

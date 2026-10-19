@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1685
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -11,18 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 
 /**
- * Static catalog of all Edge TTS voices known to this patch. Used both to populate the
- * voice picker UI and to resolve a voice id for a given language at TTS dispatch time.
- *
- * <p>Multilingual voices are also added to languages other than their native one, so a
- * user with an exotic caption language still has fallback options.
+ * Thread-safe snapshots of Edge TTS voices. The bundled list stays available while the
+ * online service is unreachable. Native-language and multilingual filtering is unchanged.
  */
 final class VoiceCatalog {
 
@@ -120,7 +119,7 @@ final class VoiceCatalog {
     }
 
     // First voice for each language is used for 'app language' TTS voice type.
-    private static final Voice[] ALL_VOICES = {
+    private static final Voice[] FALLBACK_VOICES = {
             new Voice(true, "af-ZA-WillemNeural"),
             new Voice(true, "am-ET-AmehaNeural"),
             new Voice(true, "ar-AE-HamdanNeural"),
@@ -447,80 +446,106 @@ final class VoiceCatalog {
             new Voice(false, "zu-ZA-ThandoNeural")
     };
 
-    private static final Map<String, Voice> VOICES_BY_ID;
-    private static final Map<String, List<Voice>> VOICES_BY_LANG;
+    // Readers on UI, synthesis, and prefetch threads all see one complete snapshot.
+    private static volatile Snapshot current = Snapshot.of(Arrays.asList(FALLBACK_VOICES));
 
-    static {
-        VOICES_BY_ID = new HashMap<>(2 * ALL_VOICES.length);
-        VOICES_BY_LANG = new HashMap<>(100, 0.5f);
+    /** Replace the complete catalog atomically; never publish a partially parsed response. */
+    static void setAvailableVoices(List<Voice> voices) {
+        if (voices == null || voices.isEmpty()) throw new IllegalArgumentException("Empty catalog");
+        current = Snapshot.of(voices);
+    }
 
-        List<Voice> multilingualVoices = new ArrayList<>();
+    /** Stable identity-based diff; ordering and gender labels do not count as new voices. */
+    static ChangeSummary compare(List<Voice> previous, List<Voice> next) {
+        java.util.Set<String> before = new java.util.HashSet<>();
+        java.util.Set<String> after = new java.util.HashSet<>();
+        for (Voice voice : previous) before.add(voice.id);
+        for (Voice voice : next) after.add(voice.id);
+        int added = 0, removed = 0;
+        for (String id : after) if (!before.contains(id)) added++;
+        for (String id : before) if (!after.contains(id)) removed++;
+        return new ChangeSummary(added, removed);
+    }
 
-        for (Voice v : ALL_VOICES) {
-            VOICES_BY_ID.put(v.id, v);
-            VOICES_BY_LANG.computeIfAbsent(v.languageTag, k -> new ArrayList<>()).add(v);
-            if (v.isMultilingual) {
-                multilingualVoices.add(v);
-            }
+    static List<Voice> getAvailableVoices() {
+        return new ArrayList<>(current.byId.values());
+    }
+
+    static final class ChangeSummary {
+        final int added;
+        final int removed;
+        ChangeSummary(int added, int removed) {
+            this.added = added;
+            this.removed = removed;
         }
+    }
 
-        for (Map.Entry<String, List<Voice>> entry : VOICES_BY_LANG.entrySet()) {
-            String lang = entry.getKey();
-            List<Voice> voices = entry.getValue();
-            for (Voice mv : multilingualVoices) {
-                if (!mv.languageTag.equals(lang)) {
-                    voices.add(mv);
-                }
-            }
-        }
+    /** Keep the bundled voices as a reliable offline fallback. */
+    static void useBundledVoices() {
+        current = Snapshot.of(Arrays.asList(FALLBACK_VOICES));
     }
 
     private VoiceCatalog() {}
 
     @Nullable
     static Voice getVoice(String id) {
-        return VOICES_BY_ID.get(id);
+        return current.byId.get(id);
     }
 
-    /**
-     * @param lang BCP 47 (pt-BR, en-US) or ISO 639 (pt, en)
-     */
+    /** Return native-language and multilingual voices for a BCP 47 or ISO 639 tag. */
     @Nullable
     static List<Voice> getVoicesForLang(String lang) {
-        return VOICES_BY_LANG.get(getIso639(lang));
+        return current.byLanguage.get(getIso639(lang));
     }
 
-    /**
-     * @param lang BCP 47 (pt-BR, en-US) or ISO 639 (pt, en)
-     * @return ISO 639 language.
-     */
     public static String getIso639(String lang) {
         final int separatorIndex = lang.indexOf('-');
-        if (separatorIndex > 0) {
-            lang = lang.substring(0, separatorIndex);
-        }
-        return lang;
+        return separatorIndex > 0 ? lang.substring(0, separatorIndex) : lang;
     }
 
-    /**
-     * @param lang ISO-639 (pt, en) or BCP 47 language (pt-BR, en-US).
-     */
+    /** Keep the saved selection if still available; otherwise fall back to the language default. */
     @Nullable
     static String resolve(String lang, @Nullable String preferredVoiceId) {
-        lang = getIso639(lang);
+        Snapshot snapshot = current;
+        List<Voice> voices = snapshot.byLanguage.get(getIso639(lang));
+        if (voices == null || voices.isEmpty()) voices = snapshot.byLanguage.get("en");
+        if (voices == null || voices.isEmpty()) return null;
 
-        List<Voice> voices = VOICES_BY_LANG.get(lang);
-        if (voices == null || voices.isEmpty()) {
-            voices = Objects.requireNonNull(VOICES_BY_LANG.get("en"));
-        }
         if (preferredVoiceId != null) {
-            Voice preferred = VOICES_BY_ID.get(preferredVoiceId);
-            if (preferred != null) {
-                for (Voice v : voices) {
-                    if (v.id.equals(preferredVoiceId)) return v.id;
-                }
+            for (Voice voice : voices) {
+                if (voice.id.equals(preferredVoiceId)) return voice.id;
             }
         }
         return voices.get(0).id;
+    }
+
+    private static final class Snapshot {
+        final Map<String, Voice> byId;
+        final Map<String, List<Voice>> byLanguage;
+
+        private Snapshot(Map<String, Voice> byId, Map<String, List<Voice>> byLanguage) {
+            this.byId = Collections.unmodifiableMap(byId);
+            this.byLanguage = Collections.unmodifiableMap(byLanguage);
+        }
+
+        static Snapshot of(List<Voice> voices) {
+            Map<String, Voice> byId = new LinkedHashMap<>();
+            Map<String, List<Voice>> byLanguage = new HashMap<>();
+            List<Voice> multilingual = new ArrayList<>();
+
+            for (Voice voice : voices) {
+                if (byId.putIfAbsent(voice.id, voice) != null) continue;
+                byLanguage.computeIfAbsent(voice.languageTag, key -> new ArrayList<>()).add(voice);
+                if (voice.isMultilingual) multilingual.add(voice);
+            }
+            for (Map.Entry<String, List<Voice>> entry : byLanguage.entrySet()) {
+                List<Voice> candidates = entry.getValue();
+                for (Voice voice : multilingual) {
+                    if (!voice.languageTag.equals(entry.getKey())) candidates.add(voice);
+                }
+                entry.setValue(Collections.unmodifiableList(candidates));
+            }
+            return new Snapshot(byId, byLanguage);
+        }
     }
 }

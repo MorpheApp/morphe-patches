@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">投稿、画像、または動画を閉じた後、開いた投稿を上部に移動する代わりに、フィードを同じ位置に維持します</string>
   <string name="morphe_feed_media_max_height_title">フィードメディアの最大高さ</string>
   <string name="morphe_feed_media_max_height_summary">フィード内の画像、動画、ギャラリーの最大の高さを、幅に対する倍数で指定します。これより高いメディアは切り抜かれます。1.33はRedditのデフォルトです</string>
+  <string name="morphe_redgifs_audio_title">音声付きでRedgifsを再生</string>
+  <string name="morphe_redgifs_audio_summary">Redditのコピーではなく元のRedgifs動画を表示します。Redditのコピーには音声がない場合が多くあります</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD画質</string>
+  <string name="morphe_redgifs_hd_summary">HD Redgifs動画を再生します。HD動画は容量が大きく、読み込み中に一時停止することがあります</string>
   <string name="morphe_hide_media_viewer_overlay_title">メディアビューアーのオーバーレイを非表示</string>
   <string name="morphe_hide_media_viewer_overlay_summary">画像や動画を開くと、タイトル、ボタン、動画コントロールが非表示になります。メディアをタップすると表示されます</string>
   <string name="morphe_hide_join_conversation_button_title">「会話を見る」ボタンを非表示にする</string>

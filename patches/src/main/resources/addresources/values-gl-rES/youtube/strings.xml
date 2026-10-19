@@ -18,18 +18,89 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_screen_00_about_title">Acerca de</string>
+  <string name="morphe_settings_screen_01_ads_title">Anuncios</string>
+  <string name="morphe_settings_screen_03_feed_title">Fuente</string>
+  <string name="morphe_settings_screen_04_general_title">Xeneral</string>
+  <string name="morphe_settings_screen_05_player_title">Reprodutor</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Barra de reprodución</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">Controis por esvaros</string>
+  <string name="morphe_settings_screen_11_misc_title">Miscelánes</string>
+  <string name="morphe_settings_screen_12_video_title">Vídeo</string>
+  <string name="morphe_restore_old_settings_menus_title">Restaurar a antiga pantalla de configuración de YouTube</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Eliminar as restricións de reprodución en segundo plano</string>
+  <string name="morphe_shorts_disable_background_playback_title">Desactivar a reprodución en segundo plano</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Pausa automática cando o dispositivo estea bloqueado</string>
   <string name="morphe_auto_pause_on_screen_lock_off">Off</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Fai sempre unha pausa cando estea bloqueado</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Pausa a menos que haxa son sen fíos conectado</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
+  <string name="morphe_disable_scrolling_speed_limit_title">Desactivar o límite de velocidade de desprazamento</string>
   <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Desactivar as actualizacións de deseño</string>
+  <string name="morphe_disable_layout_updates_summary">Impide que o servidor actualice o deseño da aplicación</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"A disposición da aplicación volve á que tiña no momento da instalación inicial.
+
+É posible que algunhas disposicións do lado do servidor non volvan ao estado orixinal.
+
+Os cambios inclúen:
+• É posible que os compoñentes do menú despregable do reprodutor (ou a súa configuración asociada) non funcionen.
+• Os números que cambian de forma continua non presentan animación.
+• Móstrase a lapela Biblioteca.
+• É posible que a sección de música na descrición do vídeo non funcione.
+• Non se poden ocultar os elementos do menú despregable do reprodutor.
+• É posible que o botón para cambiar de conta non apareza na lapela Biblioteca."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_feed_flyout_menu_title">Activar o filtro do menú despregable de fontes</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtro do menú despregable das fontes</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Introduce os nomes dos menús despregables polos que filtrar, separados por saltos de liña</string>
+  <string name="morphe_hide_account_menu_title">Activar o filtro do menú inferior Biblioteca / Ti</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">Filtro do menú inferior Biblioteca / Ti </string>
+  <string name="morphe_hide_account_menu_filter_strings_summary">Introduza os nomes do menú inferior Biblioteca / Ti para filtrar, separados por saltos de liña novas</string>
+  <string name="morphe_hide_album_cards_title">Ocultar tarxetas de álbums</string>
+  <string name="morphe_hide_album_cards_summary">Oculta as tarxetas de álbums baixo a descrición do artista</string>
+  <string name="morphe_hide_artist_cards_title">Ocultar as tarxetas de artista</string>
+  <string name="morphe_hide_artist_cards_summary">Oculta a tarxeta do artista na parte superior dos resultados de busca</string>
+  <string name="morphe_hide_channel_buttons_title">Ocultar os botóns de canle</string>
+  <string name="morphe_hide_channel_buttons_summary">Oculta botóns como «Subscribirse», «Ver canle», «Comunidade» e «YouTube Music» nos perfís de canle que aparecen nos resultados de busca</string>
+  <string name="morphe_hide_community_posts_title">Ocultar mensaxes da comunidade</string>
+  <string name="morphe_hide_compact_banner_title">Agochar banners compactos</string>
+  <string name="morphe_hide_compact_banner_summary">Agocha banners compactas e espazamento entre algúns compoñentes</string>
+  <string name="morphe_hide_expandable_card_title">Tarxetas expandibles baixo os vídeos</string>
+  <string name="morphe_hide_expandable_card_entry_1">Amosar todo</string>
+  <string name="morphe_hide_expandable_card_entry_2">Ocultar só a tarxeta de resumo</string>
+  <string name="morphe_hide_expandable_card_entry_3">Agochar todo</string>
+  <string name="morphe_hide_floating_microphone_button_title">Ocultar o botón flotante do micrófono</string>
+  <string name="morphe_hide_floating_microphone_button_summary">Oculta o botón flotante do micrófono na esquina inferior dereita da pantalla de suxestións de busca</string>
+  <string name="morphe_hide_get_premium_button_title">Agichar o botón «Obter Premium»</string>
+  <string name="morphe_hide_history_shelf_title">Agochar a balda do historial</string>
+  <string name="morphe_hide_horizontal_shelves_title">Ocultar baldas horizontais</string>
+  <string name="morphe_hide_horizontal_shelves_summary">Oculta baldas horizontais como Noticias de última hora, Publicacións da comunidade que che poden gustar, Continuar vendo, Explorar máis canles, Explorar máis temas, Para ti, Vídeos máis recentes, Máis relevantes, Publicacións da comunidade do creador, Compras e Volver ver</string>
+  <string name="morphe_hide_image_shelf_title">Ocultar balda de imaxes</string>
+  <string name="morphe_hide_image_shelf_summary">Agocha as baldas de imaxes nos resultados da busca</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
+  <string name="morphe_hide_invite_to_message_card_title">Ocultar tarxeta «Convidar a outras persoas a enviar mensaxes»</string>
+  <string name="morphe_hide_invite_to_message_card_summary">Agocha a tarxeta de invitación que se mostra na sección Mensaxes da lapela Notificacións</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Agochar o botón «Últimos vídeos»</string>
+  <string name="morphe_hide_latest_videos_button_summary">Oculta o banner azul de «Últimos vídeos» que aparece na parte superior do feed de inicio</string>
+  <string name="morphe_hide_live_streams_title">Ocultar transmisións en directo</string>
+  <string name="morphe_hide_live_streams_summary">Oculta os vídeos que están en directo agora mesmo no feed de inicio e nos resultados da busca</string>
+  <string name="morphe_hide_mix_playlists_title">Agochar listas de reprodución de mesturadas</string>
+  <string name="morphe_hide_movies_section_title">Ocultar a sección de películas</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Ocultar a cabeceira do menú de Notificacións</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Oculta a cabeceira do menú de Notificacións ao facer clic no botón da campá</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
+  <string name="morphe_hide_notify_me_button_title">Agochar o botón «Notificarme»</string>
+  <string name="morphe_hide_notify_me_button_summary">Oculta o botón de recordatorio para as emisións en directo programadas e as estreas</string>
+  <string name="morphe_hide_playables_title">Agochar Playables</string>
+  <string name="morphe_hide_playables_summary">Oculta a función que che permite xogar a xogos</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
@@ -58,6 +129,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->

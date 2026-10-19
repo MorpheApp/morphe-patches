@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">שומר על הפיד באותו מיקום לאחר סגירת פוסט, תמונה או סרטון, במקום להעביר את הפוסט שנפתח לראש</string>
   <string name="morphe_feed_media_max_height_title">גובה מרבי למדיה בפיד</string>
   <string name="morphe_feed_media_max_height_summary">הגובה המרבי של תמונות, סרטונים וגלריות בפיד, ככפולה של רוחבם. מדיה גבוהה יותר נחתכת. 1.33 הוא ברירת המחדל של Reddit</string>
+  <string name="morphe_redgifs_audio_title">הפעל סרטוני Redgifs עם שמע</string>
+  <string name="morphe_redgifs_audio_summary">מנגן בסרטון המקורי של Redgifs במקום העותק של Reddit, שלרוב אין לו שמע</string>
+  <string name="morphe_redgifs_hd_title">איכות HD לסרטוני Redgifs</string>
+  <string name="morphe_redgifs_hd_summary">מנגן בסרטוני Redgifs באיכות HD. סרטוני HD גדולים יותר ועשויים להמתין בטעינה</string>
   <string name="morphe_hide_media_viewer_overlay_title">הסתרת שכבת העל של מציג המדיה</string>
   <string name="morphe_hide_media_viewer_overlay_summary">מסתיר את הכותרת, הכפתורים ובקרות הסרטון בעת פתיחת תמונה או סרטון. הקש על המדיה כדי להציג אותם</string>
   <string name="morphe_hide_join_conversation_button_title">הסתר את כפתור \"ראה את השיחה\"</string>

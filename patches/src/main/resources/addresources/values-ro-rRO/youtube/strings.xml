@@ -428,6 +428,11 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_copy_comments_title">Copiază comentariile</string>
   <string name="morphe_copy_comments_summary">Atingeți și țineți apăsat pe un comentariu pentru a-l copia</string>
   <string name="morphe_copy_comments_success">Comentariul a fost copiat în clipboard</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Atinge și menține apăsat pentru a deschide meniul video</string>
+  <string name="morphe_feed_long_press_menu_summary">Atingerea și menținerea apăsării oriunde pe un video din feed deschide meniul acestuia</string>
+  <string name="morphe_feed_watch_later_button_title">Arată butonul „Vizionează mai târziu” pe miniaturi</string>
+  <string name="morphe_feed_watch_later_button_summary">Un buton Vizionează mai târziu este afișat pe miniaturile videoclipurilor din feed. Atingerea și menținerea apăsării asupra lui deschide Opțiuni salvare playlist</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Dezactivare pop-up Conectare la televizor</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Dezactivează fereastra pop-up \'Conectează-ți dispozitivele\'</string>
@@ -1155,6 +1160,8 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ascunde bara de stare</string>
   <string name="morphe_hide_status_bar_summary">Ascunde bara de stare a sistemului. Glisează în jos din partea de sus pentru a o afișa pentru o clipă</string>
+  <string name="morphe_fix_status_bar_layout_title">Corectează bara de stare pentru a nu acoperi barele superioare</string>
+  <string name="morphe_fix_status_bar_layout_summary">Păstrează aspectul fermei de stare constant, astfel încât să nu acopere barele superioare și să lase spațiu liber deasupra player-ului. Dezactivează această opțiune dacă aplicația se blochează sau dacă barele superioare arată incorect</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Fundalul temei luminoase</string>
   <string name="morphe_theme_color_light_entry_2">Alb</string>

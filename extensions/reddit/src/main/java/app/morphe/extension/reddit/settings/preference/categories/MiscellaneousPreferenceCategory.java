@@ -16,6 +16,7 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.AppIconPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
+import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.patches.VersionCheckPatch;
 import app.morphe.extension.reddit.settings.Settings;
@@ -40,6 +41,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         return AppIconPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
+                RedgifsAudioPatch.isPatchIncluded() ||
                 SanitizeSharingLinksPatch.isPatchIncluded();
     }
 
@@ -71,6 +73,16 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.OPEN_LINKS_EXTERNALLY
+            ));
+        }
+        if (RedgifsAudioPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.REDGIFS_AUDIO
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.REDGIFS_HD
             ));
         }
         if (SanitizeSharingLinksPatch.isPatchIncluded()) {

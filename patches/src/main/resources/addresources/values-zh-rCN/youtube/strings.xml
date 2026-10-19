@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">复制评论</string>
   <string name="morphe_copy_comments_summary">点按并按住评论即可复制</string>
   <string name="morphe_copy_comments_success">评论已复制到剪贴板</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">长按打开视频菜单</string>
+  <string name="morphe_feed_long_press_menu_summary">在信息流视频中任意位置长按可打开其菜单</string>
+  <string name="morphe_feed_watch_later_button_title">在缩略图上显示稍后观看按钮</string>
+  <string name="morphe_feed_watch_later_button_summary">信息流视频的缩略图上会显示“稍后观看”按钮，点击并长按该按钮可将其保存到播放列表</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">禁用登录电视弹出窗口</string>
   <string name="morphe_disable_connect_your_devices_popup_title">禁用“连接您的设备”弹出窗口</string>
@@ -1155,6 +1160,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">隐藏状态栏</string>
   <string name="morphe_hide_status_bar_summary">隐藏系统状态栏。从顶部边缘向下滑动可短暂显示它</string>
+  <string name="morphe_fix_status_bar_layout_title">修复状态栏覆盖顶部栏的问题</string>
+  <string name="morphe_fix_status_bar_layout_summary">保持状态栏布局一致，使其不覆盖顶部栏且播放器上方无空白区域。如果应用崩溃或顶部栏显示异常，请关闭此选项</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">浅色主题背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>

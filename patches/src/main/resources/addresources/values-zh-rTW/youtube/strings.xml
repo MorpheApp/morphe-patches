@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">複製留言</string>
   <string name="morphe_copy_comments_summary">長按留言即可複製</string>
   <string name="morphe_copy_comments_success">留言已複製到剪貼簿</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">輕觸並按住以開啟影片選單</string>
+  <string name="morphe_feed_long_press_menu_summary">在資訊流影片的任意位置輕觸並按住，即可開啟其選單</string>
+  <string name="morphe_feed_watch_later_button_title">在縮圖上顯示稍後觀看按鈕</string>
+  <string name="morphe_feed_watch_later_button_summary">資訊流影片的縮圖上會顯示「稍後觀看」按鈕。輕觸並按住該按鈕可進入「新增至播放清單」功能</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">停用「登入電視」彈出視窗</string>
   <string name="morphe_disable_connect_your_devices_popup_title">停用「連接您的裝置」快顯視窗</string>
@@ -1155,6 +1160,8 @@ Second \"item\" text"</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">隱藏狀態列</string>
   <string name="morphe_hide_status_bar_summary">隱藏系統狀態列。從頂端邊緣向下滑動可暫時顯示狀態列</string>
+  <string name="morphe_fix_status_bar_layout_title">修復狀態列遮蓋頂部工具列的問題</string>
+  <string name="morphe_fix_status_bar_layout_summary">保持狀態列的版面配置一致，使其不會遮蓋頂部工具列，且在播放器上方不會留有空白。如果應用程式發生當機或頂部工具列顯示異常，請停用此選項</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">淺色主題背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>

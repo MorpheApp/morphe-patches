@@ -428,6 +428,11 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_copy_comments_title">Kopiuj komentarze</string>
   <string name="morphe_copy_comments_summary">Przytrzymaj komentarz, aby go skopiować</string>
   <string name="morphe_copy_comments_success">Skopiowano komentarz do schowka</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Przytrzymaj, aby otworzyć menu filmu</string>
+  <string name="morphe_feed_long_press_menu_summary">Przytrzymanie filmu w dowolnym miejscu na liście otwiera jego menu</string>
+  <string name="morphe_feed_watch_later_button_title">Pokazuj przycisk \"Do obejrzenia\" na miniaturkach</string>
+  <string name="morphe_feed_watch_later_button_summary">Na miniaturkach filmów na liście wyświetlany jest przycisk \"Do obejrzenia\". Przytrzymanie go otwiera opcję \"Zapisz na playliście\"</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Wyłącz komunikat o zalogowaniu się do TV</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Wyłącz wyskakujące okienko \"Połącz swoje urządzenia\"</string>
@@ -1154,6 +1159,8 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ukryj pasek stanu</string>
   <string name="morphe_hide_status_bar_summary">Ukrywa systemowy pasek stanu. Przesuń w dół od górnej krawędzi, aby na chwilę go wyświetlić</string>
+  <string name="morphe_fix_status_bar_layout_title">Fix status bar covering the top bars</string>
+  <string name="morphe_fix_status_bar_layout_summary">Keeps the layout of the status bar consistent, so it does not cover the top bars and leaves no empty space above the player. Turn this off if the app crashes or the top bars look wrong</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Tło jasnego motywu</string>
   <string name="morphe_theme_color_light_entry_2">Białe</string>

@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">关闭帖子、图片或视频后，保持信息流位置不变，而不是将已打开的帖子移到顶部</string>
   <string name="morphe_feed_media_max_height_title">信息流媒体最大高度</string>
   <string name="morphe_feed_media_max_height_summary">信息流中图片、视频和图库的最大高度，为其宽度的倍数。超过该高度的媒体会被裁剪。1.33 是 Reddit 的默认值</string>
+  <string name="morphe_redgifs_audio_title">播放带有音频的Redgifs视频</string>
+  <string name="morphe_redgifs_audio_summary">播放原始的Redgifs视频，而不是Reddit的副本（通常没有音频）</string>
+  <string name="morphe_redgifs_hd_title">Redgifs高清画质</string>
+  <string name="morphe_redgifs_hd_summary">播放HD Redgifs视频。高清视频文件较大，加载时可能会暂停</string>
   <string name="morphe_hide_media_viewer_overlay_title">隐藏媒体查看器叠加层</string>
   <string name="morphe_hide_media_viewer_overlay_summary">打开图片或视频时隐藏标题、按钮和视频控件。点按媒体即可显示它们</string>
   <string name="morphe_hide_join_conversation_button_title">隐藏“查看讨论”按钮</string>

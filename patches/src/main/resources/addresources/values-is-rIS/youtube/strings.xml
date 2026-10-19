@@ -418,6 +418,11 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_copy_comments_title">Afrita athugasemdir</string>
   <string name="morphe_copy_comments_summary">Snertu athugasemd og haltu henni til að afrita hana</string>
   <string name="morphe_copy_comments_success">Athugasemd afrituð á klippiborð</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Smellstu og haltu til að opna myndbandsvalmynd</string>
+  <string name="morphe_feed_long_press_menu_summary">Þegar þú smeltir og heldur niður einhversstaðar á feed-myndbandi opnast valmynd þess</string>
+  <string name="morphe_feed_watch_later_button_title">Sýna hnappinn \"Skjáa síðar\" á þumabörðum</string>
+  <string name="morphe_feed_watch_later_button_summary">Hnappurinn \"Skjáa síðar\" birtist á þumabörðum feed-mynda. Þegar þú smeltir og heldur honum niður opnarðu Vista í spilunarlista</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Gerðu ekki birtu „Innskráningu á sjónvarpi“ á popup glugganum</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Gerðu \'Tengdu tækin þín\' kynningarglugga óvirkan</string>
@@ -1138,6 +1143,8 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Fela stöðustikuna</string>
   <string name="morphe_hide_status_bar_summary">Felur stöðustiku kerfisins. Strjúktu niður frá efri brúninni til að sýna hana í smá stund</string>
+  <string name="morphe_fix_status_bar_layout_title">Fixa stöðustiku sem þekur efri tækin</string>
+  <string name="morphe_fix_status_bar_layout_summary">Heldir útliti stöðustikunnar í samræmi, svo hún þeki ekki efri tækin og skilur eftir sig enginn tómarúm ofan við spilarann. Slökktu á þessu ef forritið brotnar eða efri tækin líta ranglega út</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Ljósþemabakgrunnur</string>
   <string name="morphe_theme_color_light_entry_2">Hvítur</string>

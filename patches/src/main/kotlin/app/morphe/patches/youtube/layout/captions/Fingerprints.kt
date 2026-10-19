@@ -198,6 +198,24 @@ internal object CaptionTracksManagerAutoTranslateTracksFingerprint : Fingerprint
     )
 )
 
+/** The track manager's default source, without subtitle preference or CC state overrides. */
+internal class CaptionTracksManagerDefaultSourceFingerprint(captionTrackType: String) : Fingerprint(
+    classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = captionTrackType,
+    parameters = listOf(),
+)
+
+/**
+ * Calls of the caption tracks manager auto-translate getter inside the subtitle manager.
+ */
+internal class AutoTranslateTracksCallFingerprint(autoTranslateTracksMethod: MethodReference) : Fingerprint(
+    classFingerprint = DefaultCaptionTrackFingerprint,
+    filters = listOf(
+        methodCall(reference = autoTranslateTracksMethod)
+    )
+)
+
 /**
  * Resolves to the caption track builder class.
  */
@@ -286,3 +304,20 @@ internal object SetSubtitleTrackFingerprint : Fingerprint(
     )
 )
 
+/** The final translation-count check before YouTube builds its own Auto-translate row. */
+internal object CaptionTracksManagerTranslationCountFingerprint : Fingerprint(
+    classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
+    parameters = listOf(),
+    returnType = "Ljava/util/List;",
+    filters = listOf(
+        methodCall(name = "size", parameters = listOf(), returnType = "I"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_LEZ, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, definingClass = "this", type = "Z",
+            location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        string("AUTO_TRANSLATE_CAPTIONS_OPTION", location = InstructionLocation.MatchAfterAnywhere()),
+        // Register holding the returned tracks list.
+        opcode(Opcode.RETURN_OBJECT, location = InstructionLocation.MatchAfterAnywhere())
+    )
+)

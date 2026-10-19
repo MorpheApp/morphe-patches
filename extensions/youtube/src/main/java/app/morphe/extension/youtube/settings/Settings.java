@@ -523,6 +523,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting CUSTOM_MUSIC_PACKAGE_NAME = new StringSetting("morphe_custom_music_package_name", "", true, parent(OVERRIDE_YOUTUBE_MUSIC_BUTTONS));
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting HIDE_STATUS_BAR = new BooleanSetting("morphe_hide_status_bar", FALSE, true);
+    public static final BooleanSetting FIX_STATUS_BAR_LAYOUT = new BooleanSetting("morphe_fix_status_bar_layout", TRUE, true);
 
     // Custom filter
     public static final BooleanSetting CUSTOM_FILTER = new BooleanSetting("morphe_custom_filter", FALSE);
@@ -693,7 +694,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // Series tracking. Consent is account-bound and excluded from settings import/export.
     public static final BooleanSetting SERIES_TRACKER = new BooleanSetting("morphe_series_tracker", FALSE, true);
-    public static final BooleanSetting SERIES_TRACKER_HISTORY_TAB = new BooleanSetting("morphe_series_tracker_show_history_tab", FALSE, true, parent(SERIES_TRACKER));
+    public static final BooleanSetting SERIES_TRACKER_NAVIGATION_BUTTON = new BooleanSetting("morphe_series_tracker_show_navigation_button", FALSE, true, parentsAll(parent(SERIES_TRACKER), parentNot(HIDE_NAVIGATION_BAR)));
     public static final BooleanSetting SERIES_TRACKER_BUTTON = new BooleanSetting("morphe_series_tracker_show_button", FALSE, true, parent(SERIES_TRACKER));
     public static final BooleanSetting SERIES_TRACKER_RECORD_PROGRESS = new BooleanSetting("morphe_series_tracker_record_followed_progress", FALSE, false, false, null, parent(SERIES_TRACKER));
     public static final BooleanSetting SERIES_TRACKER_YOUTUBE_PROGRESS = new BooleanSetting("morphe_series_tracker_youtube_progress", FALSE, false, false, null, parent(SERIES_TRACKER));

@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Задржава фид на истој позицији након затварања објаве, слике или видео записа, уместо да помера отворену објаву на врх</string>
   <string name="morphe_feed_media_max_height_title">Максимална висина медија у фиду</string>
   <string name="morphe_feed_media_max_height_summary">Максимална висина слика, видео записа и галерија у фиду, као умножак њихове ширине. Виши садржај се исеца. 1,33 је Редитова подразумевана вредност</string>
+  <string name="morphe_redgifs_audio_title">Пусти Редгифс са звуком</string>
+  <string name="morphe_redgifs_audio_summary">Пушта оригинални Редгифс видео уместо Редит копије, која често нема звук</string>
+  <string name="morphe_redgifs_hd_title">Редгифс ХД квалитет</string>
+  <string name="morphe_redgifs_hd_summary">Пушта ХД Редгифс видео. ХД видеи су већи и могу да паузирају за учитавање</string>
   <string name="morphe_hide_media_viewer_overlay_title">Сакриј преклоп прегледача медија</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Сакрива наслов, дугмад и контроле видеа при отварању слике или видеа. Додирните медиј да бисте их приказали</string>
   <string name="morphe_hide_join_conversation_button_title">Сакриј дугме „Погледај разговор“</string>

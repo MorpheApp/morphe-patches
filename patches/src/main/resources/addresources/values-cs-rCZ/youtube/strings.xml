@@ -428,6 +428,11 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_copy_comments_title">Zkopírovat komentáře</string>
   <string name="morphe_copy_comments_summary">Klepnutím a podržením komentáře jej zkopírujete</string>
   <string name="morphe_copy_comments_success">Komentář zkopírován do schránky</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Klepnutím a podržením otevřete nabídku videa</string>
+  <string name="morphe_feed_long_press_menu_summary">Klepnutí a podržení na libovolné místo ve videu v kanálu otevře jeho nabídku</string>
+  <string name="morphe_feed_watch_later_button_title">Zobrazit tlačítko Později na náhledy</string>
+  <string name="morphe_feed_watch_later_button_summary">Na náhledech videí v kanálu se zobrazuje tlačítko Později. Klepnutím a podržením se otevře Uložení do playlistu</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Zakázat vyskakovací okno Přihlásit se k televizi</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Zakázat vyskakovací okno \'Připojit vaše zařízení\'</string>
@@ -1153,6 +1158,8 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skrýt stavový řádek</string>
   <string name="morphe_hide_status_bar_summary">Skryje systémový stavový řádek. Přejetím prstem dolů z horního okraje jej na chvíli zobrazíte</string>
+  <string name="morphe_fix_status_bar_layout_title">Oprava stavového řádku zakrývajícího horní lišty</string>
+  <string name="morphe_fix_status_bar_layout_summary">Udržuje konzistentní rozvržení stavového řádku, takže nezakrývá horní lišty a nezanechává prázdný prostor nad přehrávačem. Toto vypněte, pokud aplikace havaruje nebo pokud horní lišty vypadají špatně</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Pozadí světlého motivu</string>
   <string name="morphe_theme_color_light_entry_2">Bílá</string>

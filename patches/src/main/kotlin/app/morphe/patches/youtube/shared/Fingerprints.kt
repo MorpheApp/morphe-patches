@@ -118,7 +118,7 @@ internal object RelateVideoOverlayLayoutParamFingerprint : Fingerprint(
     )
 )
 
-private object PlayerTypeEnumFingerprint : Fingerprint(
+internal object PlayerTypeEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
         "WATCH_WHILE_PICTURE_IN_PICTURE",

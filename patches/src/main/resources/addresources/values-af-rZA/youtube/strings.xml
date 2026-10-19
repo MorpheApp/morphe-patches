@@ -428,6 +428,11 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <string name="morphe_copy_comments_title">Kopieer kommentaar</string>
   <string name="morphe_copy_comments_summary">Raak \'n kommentaar aan en hou dit vas om dit te kopieer</string>
   <string name="morphe_copy_comments_success">Kommentaar na knipbord gekopieer</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Tik en hou om die videomenu oop te maak</string>
+  <string name="morphe_feed_long_press_menu_summary">Tik en hou enige plek op ’n voedingsvideo open sy menu</string>
+  <string name="morphe_feed_watch_later_button_title">Wys Kiek later-knoop by duimborde</string>
+  <string name="morphe_feed_watch_later_button_summary">\'n Koppeling \"Later kyk\" word op die kortprentjies van voedvideo\'s vertoon. Tik en hou dit in om \"Bewaar by afspeellys\" te open</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiveer \'Aanmeld by TV\'-pop-up</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Deaktiveer die \'Koppel jou toestelle\'-pop-up</string>
@@ -1155,6 +1160,8 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Versteek statusbalk</string>
   <string name="morphe_hide_status_bar_summary">Versteek die stelselstatusbalk. Vee af van die boonste rand om dit vir \'n oomblik te wys</string>
+  <string name="morphe_fix_status_bar_layout_title">Verander die statusbalk sodat dit nie die boonste barkies bedek nie</string>
+  <string name="morphe_fix_status_bar_layout_summary">Hou die uitleg van die statusbalk konsekwent, sodat dit nie die boonste barkies bedek en geen spasie bo die speler los nie. Skakel dit af as die app ineenstort of die boonste barkies verkeerd lyk</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Ligte tema-agtergrond</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>

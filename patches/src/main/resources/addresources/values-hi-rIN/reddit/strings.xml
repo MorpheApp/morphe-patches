@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">पोस्ट, छवि या वीडियो बंद करने के बाद फ़ीड को उसी स्थिति में रखता है, खोले गए पोस्ट को ऊपर ले जाने के बजाय</string>
   <string name="morphe_feed_media_max_height_title">फ़ीड मीडिया की अधिकतम ऊँचाई</string>
   <string name="morphe_feed_media_max_height_summary">फ़ीड में छवियों, वीडियो और गैलरी की अधिकतम ऊँचाई, उनकी चौड़ाई के गुणक के रूप में। अधिक लंबे मीडिया को क्रॉप किया जाता है। 1.33 Reddit का डिफ़ॉल्ट है</string>
+  <string name="morphe_redgifs_audio_title">ऑडियो के साथ Redgifs चलाएं</string>
+  <string name="morphe_redgifs_audio_summary">Redditt की कॉपी के बजाल मूल Redgifs वीडियो चलाता है, जिसमें अक्सर ऑडियो नहीं होता</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD गुणवत्ता</string>
+  <string name="morphe_redgifs_hd_summary">HD Redgifs वीडियो चलाता है। HD वीडियो बड़े होते हैं और लोड होने के लिए रुक सकते हैं</string>
   <string name="morphe_hide_media_viewer_overlay_title">मीडिया व्यूअर ओवरले छिपाएँ</string>
   <string name="morphe_hide_media_viewer_overlay_summary">छवि या वीडियो खोलने पर शीर्षक, बटन और वीडियो नियंत्रण छिपाता है। उन्हें दिखाने के लिए मीडिया पर टैप करें</string>
   <string name="morphe_hide_join_conversation_button_title">बातचीत देखें बटन छिपाएँ</string>

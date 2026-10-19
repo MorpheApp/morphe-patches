@@ -27,7 +27,10 @@ class Event<T> {
     }
 
     operator fun invoke(value: T) {
-        for (observer in eventListeners) {
+        // Observers can remove themselves or add other observers while they are notified,
+        // which would break the iteration of the set.
+        val observers = synchronized(eventListeners) { eventListeners.toList() }
+        for (observer in observers) {
             observer.invoke(value)
         }
     }

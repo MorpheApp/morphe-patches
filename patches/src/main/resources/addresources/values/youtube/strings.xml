@@ -526,6 +526,17 @@ Tap here to open OpenRouter.ai"</string>
     <string name="morphe_vot_cost_per_hour">%s per 100 video hours</string>
     <string name="morphe_vot_tts_voice_type">Voice</string>
     <string name="morphe_vot_tts_system">System</string>
+    <string name="morphe_vot_catalog_refreshing">Refreshing...</string>
+    <string name="morphe_vot_catalog_updated">Last updated: %s</string>
+    <string name="morphe_vot_catalog_refresh">Refresh voice list</string>
+    <string name="morphe_vot_catalog_unchanged">Voice list is up to date</string>
+    <string name="morphe_vot_catalog_changed">Voice list updated: +%1$d / -%2$d</string>
+    <string name="morphe_vot_catalog_refresh_failed">Could not refresh the voice list</string>
+    <string name="morphe_vot_catalog_source_online">Online</string>
+    <string name="morphe_vot_catalog_source_cache">Cached</string>
+    <string name="morphe_vot_catalog_source_fallback">Built-in</string>
+    <string name="morphe_vot_catalog_status">%1$s · %2$d voices · +%3$d / -%4$d</string>
+    <string name="morphe_vot_catalog_error">Update failed: %s</string>
     <string name="morphe_vot_voice_gender_male_multilingual">Multilingual male</string>
     <string name="morphe_vot_voice_gender_female_multilingual">Multilingual female</string>
     <string name="morphe_vot_voice_gender_male">Male</string>
@@ -1272,6 +1283,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <!-- layout.statusbar.hideStatusBarPatch -->
     <string name="morphe_hide_status_bar_title">Hide status bar</string>
     <string name="morphe_hide_status_bar_summary">Hides the system status bar. Swipe down from the top edge to show it for a moment</string>
+    <string name="morphe_fix_status_bar_layout_title">Fix status bar covering the top bars</string>
+    <string name="morphe_fix_status_bar_layout_summary">Keeps the layout of the status bar consistent, so it does not cover the top bars and leaves no empty space above the player. Turn this off if the app crashes or the top bars look wrong</string>
 
     <!-- layout.theme.themePatch -->
     <string name="morphe_theme_color_light_title">Light theme background</string>
@@ -1548,12 +1561,11 @@ Limitation: Reverts to old style \'More videos\' overlay"</string>
     <string name="morphe_series_tracker_screen_summary">Follow playlists as series and keep your place</string>
     <string name="morphe_series_tracker_title">Enable series tracking</string>
     <string name="morphe_series_tracker_summary">Adds a Series page to History and a Follow series option to playlists</string>
+    <string name="morphe_series_tracker_show_navigation_button_title">Show Series in navigation bar</string>
     <string name="morphe_series_tracker_show_button_title">Show Series Tracker button</string>
     <string name="morphe_series_tracker_show_button_summary">Adds a player button to follow or open the series of the current video</string>
     <string name="morphe_series_tracker_record_followed_progress_title">Record followed-series progress</string>
     <string name="morphe_series_tracker_record_followed_progress_summary">Record playback on this phone for saved series and bookmarks</string>
-    <string name="morphe_series_tracker_show_history_tab_title">Show History in navigation bar</string>
-    <string name="morphe_series_tracker_show_history_tab_summary">Home, Subscriptions, Notifications, History and You</string>
     <string name="morphe_series_tracker_ui_cancel">Cancel</string>
     <string name="morphe_series_tracker_ui_save">Save</string>
     <string name="morphe_series_tracker_ui_save_bookmark">Save bookmark</string>
@@ -1583,9 +1595,6 @@ Limitation: Reverts to old style \'More videos\' overlay"</string>
     <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Open History from You to view your series</string>
     <string name="morphe_series_tracker_ui_watch_history">Watch history</string>
     <string name="morphe_series_tracker_ui_series">Series</string>
-    <string name="morphe_series_tracker_ui_history">History</string>
-    <string name="morphe_series_tracker_ui_subscriptions">Subscriptions</string>
-    <string name="morphe_series_tracker_ui_notifications">Notifications</string>
     <string name="morphe_series_tracker_ui_loading_saved_series">Loading saved series…</string>
     <string name="morphe_series_tracker_empty_library">Follow a playlist to track its episodes</string>
     <string name="morphe_series_tracker_ui_playlist_bookmark">Playlist bookmark</string>

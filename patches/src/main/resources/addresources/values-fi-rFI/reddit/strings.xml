@@ -84,6 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Säilyttää syötteen samassa kohdassa, kun suljet julkaisun, kuvan tai videon, sen sijaan, että siirtäisi avatun julkaisun ylös</string>
   <string name="morphe_feed_media_max_height_title">Syötteen median enimmäiskorkeus</string>
   <string name="morphe_feed_media_max_height_summary">Kuvien, videoiden ja gallerioiden enimmäiskorkeus syötteessä on niiden leveyden kerrannainen. Tätä korkeampi media rajataan. 1.33 on Redditin oletusarvo</string>
+  <string name="morphe_redgifs_audio_title">Toista Redgifs-videot äänen kanssa</string>
+  <string name="morphe_redgifs_audio_summary">Toistaa Redgifs-alkuperäisen videon sen sijaan, että toistaisi Redditin versiota, jossa ei usein ole ääntä</string>
+  <string name="morphe_redgifs_hd_title">Redgifs HD-laatu</string>
+  <string name="morphe_redgifs_hd_summary">Toistaa Redgifs-HD-videon. HD-videot ovat suurempia ja voivat pysähtyä ladatakseen</string>
   <string name="morphe_hide_media_viewer_overlay_title">Piilota mediakatselimen peittokerros</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Piilottaa otsikon, painikkeet ja videosäätimet, kun avaat kuvan tai videon. Napauta mediaa näyttääksesi ne</string>
   <string name="morphe_hide_join_conversation_button_title">Piilota Katso keskustelua -painike</string>
