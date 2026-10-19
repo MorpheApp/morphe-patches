@@ -467,6 +467,10 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_feed_watch_later_button_title">Show Watch later button on thumbnails</string>
     <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos. Tapping and holding it opens Save to playlist</string>
 
+    <!-- layout.feedviews.feedViewCountPatch -->
+    <string name="morphe_feed_view_count_title">Show view count on thumbnails</string>
+    <string name="morphe_feed_view_count_summary">The view count of feed videos is shown at the bottom left of their thumbnails instead of below the title. Some videos, such as in shelves, may not show a view count</string>
+
     <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
     <string name="morphe_ryd_feed_like_count_title">Show feed thumbnail like count</string>
     <string name="morphe_ryd_feed_like_ratio_title">Show feed thumbnail like percentage</string>
