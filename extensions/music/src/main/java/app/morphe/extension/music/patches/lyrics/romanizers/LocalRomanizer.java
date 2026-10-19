@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3750
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -14,8 +14,8 @@ import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector.Script;
+import app.morphe.extension.music.settings.Settings;
 
 /**
  * Romanizes lyrics on the device, for the lines no service could romanize.

@@ -745,12 +745,9 @@ record WordTiming(int start, int end, long startMs, long endMs,
     private static Romanized romanizedWithTimings(LyricsLine line, int index,
             @Nullable List<LyricsLine> romanizedLines,
             @Nullable List<WordTiming> lineTimings) {
-        final String whole = lineRomanizationAt(line, index, romanizedLines);
-        // The stored string is what is shown, so its words are measured against it and not a join.
-        if (whole != null) {
-            return new Romanized(whole, spreadOverWords(whole, line.text(), lineTimings));
-        }
-        final Reading reading = readingFor(line, index, romanizedLines, true, null);
+        // The provider's own per-word reading comes first: it has already said which syllable
+        // belongs to which word, and only a reading left whole is spread by syllable count.
+        final Reading reading = readingFor(line, index, romanizedLines, true, lineTimings);
         return new Romanized(reading.text(), reading.spans());
     }
 

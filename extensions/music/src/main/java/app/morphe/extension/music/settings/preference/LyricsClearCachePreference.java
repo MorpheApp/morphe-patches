@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3851
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -25,6 +25,7 @@ import app.morphe.extension.shared.Utils;
  * The stored lyrics are in the app's own files, so a cache clear no longer reclaims them and this
  * is the only way to. Clearing app data would take the reading dictionaries with it.
  */
+@SuppressWarnings({"unused", "deprecation"})
 public class LyricsClearCachePreference extends Preference {
 
     public LyricsClearCachePreference(Context context, AttributeSet attrs, int defStyleAttr,
