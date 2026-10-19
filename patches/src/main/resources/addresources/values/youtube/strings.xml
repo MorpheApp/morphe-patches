@@ -486,6 +486,14 @@ Reports are public and are reviewed before a channel is added to a list. Removal
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download videos, podcasts, or songs with third-party downloading apps</string>
+    <string name="morphe_external_downloader_quick_menu_title">Quick download on tap</string>
+    <string name="morphe_external_downloader_quick_menu_summary">Tapping a download button opens a menu to download the video or its audio in the background. Tap and hold the player download button to open the downloader. When off, tap and hold the player download button for this menu. Works with YTDLnis and YTindir</string>
+    <string name="morphe_external_downloader_quick_video_quality">Full HD (1080p)</string>
+    <string name="morphe_external_downloader_quick_audio_quality">Medium (192 kbps)</string>
+    <string name="morphe_external_downloader_quick_menu_header">Quick download</string>
+    <string name="morphe_external_downloader_quick_video">Video</string>
+    <string name="morphe_external_downloader_quick_audio">Audio</string>
+    <string name="morphe_external_downloader_quick_options">All options</string>
     <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_external_downloader_action_button_title">Override Download button &amp; menu</string>
     <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of the stock download feature</string>

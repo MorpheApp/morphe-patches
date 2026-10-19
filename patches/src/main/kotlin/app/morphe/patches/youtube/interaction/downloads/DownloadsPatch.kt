@@ -31,6 +31,8 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import app.morphe.util.getReference
 import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -57,12 +59,23 @@ private val downloadsResourcePatch = resourcePatch {
                         "morphe_external_downloader_name",
                         tag = "app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference",
                     ),
+                    SwitchPreference("morphe_external_downloader_quick_menu", summary = true),
                     SwitchPreference("morphe_external_downloader_action_button", summary = true)
                 )
             )
         )
 
         copyPlayerButtonIcons("downloads", "morphe_yt_download_button")
+
+        copyResources(
+            "downloads",
+            ResourceGroup(
+                "drawable",
+                "morphe_external_downloader_quick_video.xml",
+                "morphe_external_downloader_quick_audio.xml",
+                "morphe_external_downloader_quick_options.xml"
+            )
+        )
     }
 
     finalize {
