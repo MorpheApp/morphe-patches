@@ -22,7 +22,6 @@ import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private const val SEARCH_PATCH_CLASS =
@@ -90,27 +89,12 @@ internal fun BytecodePatchContext.patchSearch() {
     val (queryField, paramsField) = PhoneSearchRequestFingerprint.instructionMatches.mapNotNull {
         it.instruction.getReference<FieldReference>()
     }
-    val requestClass = classDefBy(requestType)
     // The phone uses the same request builder for catalog and uploaded music searches.
-    val searchTypeMatches = requestClass.instanceFields.mapNotNull { field ->
-        val enumClass = classDefByOrNull(field.type) ?: return@mapNotNull null
-        val classInitializer = enumClass.methods.singleOrNull { it.name == "<clinit>" } ?: return@mapNotNull null
-        val instructions = classInitializer.instructions.toList()
-        val catalogTypeNameIndex = instructions.indexOfFirst {
-            it.getReference<StringReference>()?.string == "MUSIC_SEARCH_REQUEST_TYPE_CATALOG"
-        }
-        if (catalogTypeNameIndex < 0) return@mapNotNull null
-        val catalogSearchValueField = instructions.drop(catalogTypeNameIndex + 1).first { it.opcode == Opcode.SPUT_OBJECT }
-            .getReference<FieldReference>()!!
-        val uploadedTypeNameIndex = instructions.indexOfFirst {
-            it.getReference<StringReference>()?.string == "MUSIC_SEARCH_REQUEST_TYPE_UPLOADED"
-        }
-        if (uploadedTypeNameIndex < 0) return@mapNotNull null
-        val uploadedSearchValueField = instructions.drop(uploadedTypeNameIndex + 1).first { it.opcode == Opcode.SPUT_OBJECT }
-            .getReference<FieldReference>()!!
-        Triple(field, catalogSearchValueField, uploadedSearchValueField)
+    val searchType = SearchRequestTypeFingerprint.originalClassDef.type
+    val requestTypeField = classDefBy(requestType).instanceFields.single { it.type == searchType }
+    val (catalogSearchValueField, uploadedSearchValueField) = SearchRequestTypeFingerprint.instructionMatches.mapNotNull {
+        it.instruction.getReference<FieldReference>()
     }
-    val (requestTypeField, catalogSearchValueField, uploadedSearchValueField) = searchTypeMatches.single()
 
     clientClass.interfaces.add(PHONE_SEARCH_CLIENT)
     clientClass.addInterfaceMethod(
@@ -200,7 +184,6 @@ private fun BytecodePatchContext.hookSearchRequests() {
     val handleSearchRequestMethod = contentSupplierClass.methods.single {
         it.returnType == "V" && it.parameterTypes == listOf(searchRequestClass.type)
     }
-    // Keep YTM's local Library search and caller checks; replace the online search that follows.
     val instructions = handleSearchRequestMethod.instructions.toList()
     val callerContextReadIndex = instructions.indexOfFirst { instruction ->
         instruction.opcode == Opcode.IGET_OBJECT &&

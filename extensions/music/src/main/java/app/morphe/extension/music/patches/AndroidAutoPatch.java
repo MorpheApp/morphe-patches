@@ -52,7 +52,8 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
 /**
- * Supplies Home and Library from phone pages, and Podcasts from YTM's native Auto Home folders.
+ * Uses YTM's phone browse responses for music recommendations and Library content.
+ * Reuses podcast folders from YTM's Android Auto Home response in Home and the Podcasts tab.
  * Phone browse IDs identify server pages; Auto media IDs identify folders or carry playback commands.
  */
 @SuppressWarnings("unused")
@@ -81,7 +82,7 @@ public final class AndroidAutoPatch {
         @Nullable Iterable<?> patch_getSectionContents();
     }
 
-    /** Phone Library grid renderer, read before choosing the Android Auto layout. */
+    /** Bridge to YTM's phone Library grid, exposing its items and pagination commands. */
     public interface GridRenderer {
         /**
          * Includes artists and podcasts as well as playlists; filter before returning playlists to Android Auto.
@@ -176,7 +177,7 @@ public final class AndroidAutoPatch {
 
         // Keep the check, send, and update together so another load cannot send between them.
         private synchronized void deliver(long loadNumber, Runnable send) {
-            // A newer load still in progress does not prevent this one from returning its results.
+            // Skip this load only if a newer load has already delivered results.
             if (loadNumber < lastDeliveredLoadNumber) return;
             try {
                 send.run();
@@ -251,6 +252,8 @@ public final class AndroidAutoPatch {
 
     private static final int MAX_COMMAND_BYTES = 16 * 1024;
     static final int MAX_MEDIA_ID_LENGTH = 24 * 1024;
+    private static final int CONTENT_STYLE_LIST = 1;
+    private static final int CONTENT_STYLE_GRID = 2;
 
     private enum LibraryFolder {
         LAST_PLAYED("FEmusic_history", "morphe_music_android_auto_last_played", "history"),
@@ -368,8 +371,12 @@ public final class AndroidAutoPatch {
             if (browseClient == null) return false;
             String requestedMediaId = request.patch_getRequestedMediaId();
             if (requestedMediaId == null) return false;
-            if (requestedMediaId.equals(SPEED_DIAL_MEDIA_ID) || requestedMediaId.startsWith(HOME_SHELF_PREFIX)) {
-                new HomeLoad(request, null).start();
+            if (requestedMediaId.equals(SPEED_DIAL_MEDIA_ID)) {
+                HomeLoad.forSpeedDial(request).start();
+                return true;
+            }
+            if (requestedMediaId.startsWith(HOME_SHELF_PREFIX)) {
+                HomeLoad.forShelf(request, requestedMediaId).start();
                 return true;
             }
             if (requestedMediaId.equals(libraryMediaId)) {
@@ -384,8 +391,8 @@ public final class AndroidAutoPatch {
                 return true;
             }
             if (requestedMediaId.startsWith(PODCAST_COLLECTION_PREFIX)
-                    || requestedMediaId.startsWith(LIBRARY_PREFIX)
-                    && !requestedMediaId.equals(LibraryFolder.PLAYLISTS.mediaId())) {
+                    || (requestedMediaId.startsWith(LIBRARY_PREFIX)
+                            && !requestedMediaId.equals(LibraryFolder.PLAYLISTS.mediaId()))) {
                 new LibraryLoad(request, requestedMediaId).start();
                 return true;
             }
@@ -568,7 +575,7 @@ public final class AndroidAutoPatch {
      * Stops collection before sending so a concurrent completion cannot deliver twice.
      */
     private static void deliverPlaylists(BrowseRequest request,
-                                                    PlaylistsFolderLoad load, String logReason) {
+            PlaylistsFolderLoad load, String logReason) {
         List<MediaBrowserCompat.MediaItem> collectedPlaylists = load.takePlaylistsForDelivery();
         if (collectedPlaylists == null) return;
         load.folderDelivery.deliver(load.loadNumber, () -> {
@@ -599,10 +606,13 @@ public final class AndroidAutoPatch {
         // Auto's ordered WatchPlaylist action distinguishes catalog playlists from uploads.
         byte[] playbackOptions = {OPTION_VALUE_TAG, ORDERED_PLAYBACK};
         byte[] collectionOptions = {OPTION_VALUE_TAG, (byte) (uploaded ? UPLOADED_COLLECTION : CATALOG_COLLECTION)};
+        byte[] collectionConfig = message(PLAYLIST_COLLECTION_OPTIONS, collectionOptions);
+        byte[] musicConfig = message(PLAYLIST_MUSIC_CONFIG, collectionConfig);
+        byte[] supportedConfig = message(PLAYLIST_SUPPORTED_CONFIG, musicConfig);
         return message(WATCH_PLAYLIST,
                 message(PLAYLIST_ID, playlistId.getBytes(StandardCharsets.UTF_8)),
                 message(PLAYLIST_OPTIONS, playbackOptions),
-                message(PLAYLIST_SUPPORTED_CONFIG, message(PLAYLIST_MUSIC_CONFIG, message(PLAYLIST_COLLECTION_OPTIONS, collectionOptions))));
+                supportedConfig);
     }
 
     private static byte[] message(int field, byte[]... values) {
@@ -626,8 +636,7 @@ public final class AndroidAutoPatch {
     // Refresh after Library changes
 
     public static synchronized void rememberSubscription(FolderReload browserService,
-                                                                    @Nullable String parentMediaId,
-                                                                    Object connection) {
+            @Nullable String parentMediaId, Object connection) {
         if (parentMediaId == null) return;
         if (parentMediaId.startsWith(LIBRARY_PREFIX)
                 || parentMediaId.startsWith(PODCAST_COLLECTION_PREFIX)
@@ -664,7 +673,7 @@ public final class AndroidAutoPatch {
     /** Combines completed Library changes into one delayed refresh. */
     private static synchronized void scheduleLibraryRefresh() {
         if (librarySubscription == null && homeSubscription == null) return;
-        // Wait for updated playlist artwork before refreshing.
+        // Delay the refresh to give updated playlist artwork time to appear.
         mainHandler.removeCallbacks(REFRESH_LIBRARY);
         mainHandler.postDelayed(REFRESH_LIBRARY, LIBRARY_REFRESH_DELAY_MS);
     }
@@ -680,7 +689,7 @@ public final class AndroidAutoPatch {
         // Reloading needs YTM's lock; YTM's result delivery needs this class's lock.
         // Reload outside synchronized to avoid the two threads waiting for each other.
         if (library != null) library.reload(false);
-        // Force a new Home request to include show changes; its response refreshes Podcasts.
+        // Force an Android Auto Home refresh to update the Podcasts tab's cached folders.
         if (home != null) home.reload(true);
     }
 
@@ -721,8 +730,10 @@ public final class AndroidAutoPatch {
     }
 
     /**
-     * Injection point before YTM delivers browse results. Adds Podcasts using cached Home podcast folders.
-     * New Home results refresh Podcasts if it has been opened.
+     * Injection point for Android Auto browse results, including the root tabs and the Podcasts tab.
+     * For Home, the injected code passes this method's podcast folders to {@link #loadHome}.
+     * {@link HomeLoad} sends its combined {@link PreparedItems} through {@link BrowseRequest#patch_deliverBrowseItems}.
+     * On reentry, that marker skips podcast caching and another Home load; size checks and YTM's delivery still run.
      */
     @Nullable
     public static synchronized List<MediaBrowserCompat.MediaItem> handleBrowseResult(
@@ -739,13 +750,29 @@ public final class AndroidAutoPatch {
                     && ytmItems != null && !(ytmItems instanceof PreparedItems)) {
                 cachePodcastFolders(ytmItems);
                 refreshPodcastsAfterHomeLoad();
-                // Home also includes these podcast folders alongside the phone's music recommendations.
+                // Pass the podcast folders to loadHome(), which starts the phone recommendations request.
                 return new ArrayList<>(cachedPodcastFolders);
             }
         } catch (RuntimeException ex) {
             Logger.printException(() -> "handleBrowseResult failure", ex);
         }
         return ytmItems;
+    }
+
+    /**
+     * Injection point before YTM delivers Home results to Android Auto.
+     * Starts {@link HomeLoad} to combine phone recommendations with YTM's podcast folders.
+     *
+     * @return true if HomeLoad takes over delivery; false to continue YTM's delivery.
+     */
+    public static boolean loadHome(BrowseRequest request,
+            @Nullable List<MediaBrowserCompat.MediaItem> nativeItems) {
+        if (phoneBrowseClient == null
+                || nativeItems == null || !Objects.equals(request.patch_getRequestedMediaId(), homeMediaId)
+                || homeMediaId == null) return false;
+        if (nativeItems instanceof PreparedItems) return false;
+        HomeLoad.forHome(request, nativeItems).start();
+        return true;
     }
 
     @Nullable
@@ -809,34 +836,39 @@ public final class AndroidAutoPatch {
 
     // Home: recommendations, Speed dial, and expanded groups
 
-    /** Injection point. Loads phone Home before the native browse request completes. */
-    public static boolean loadHome(BrowseRequest request,
-                                               @Nullable List<MediaBrowserCompat.MediaItem> nativeItems) {
-        if (phoneBrowseClient == null
-                || nativeItems == null || !Objects.equals(request.patch_getRequestedMediaId(), homeMediaId)
-                || homeMediaId == null) return false;
-        // Sending Home results calls this method again; skip our completed list to avoid another load.
-        if (nativeItems instanceof PreparedItems) return false;
-        new HomeLoad(request, nativeItems).start();
-        return true;
-    }
-
     /** Home spans multiple phone responses; both its previews and expanded shelves need pagination. */
     private static final class HomeLoad extends Load {
+        private enum Mode { HOME, SHELF, SPEED_DIAL }
+
+        private final Mode mode;
         private final String browseId;
-        @Nullable private final String shelfTitle;
-        @Nullable private final List<MediaBrowserCompat.MediaItem> podcastFolders;
+        private final String shelfTitle;
+        private final List<MediaBrowserCompat.MediaItem> podcastFolders;
         @GuardedBy("this")
         private final List<BrowseItem> collected = new ArrayList<>();
         private final Set<String> continuations = new HashSet<>();
 
-        HomeLoad(BrowseRequest request, @Nullable List<MediaBrowserCompat.MediaItem> podcastFolders) {
+        private HomeLoad(BrowseRequest request, Mode mode, String shelfTitle,
+                         List<MediaBrowserCompat.MediaItem> podcastFolders) {
             super(request);
-            String mediaId = request.patch_getRequestedMediaId();
-            browseId = SPEED_DIAL_MEDIA_ID.equals(mediaId) ? SPEED_DIAL_BROWSE_ID : "FEmusic_home";
-            // Expanded groups store their title in the media ID; reread Home to find their current contents.
-            shelfTitle = mediaId.startsWith(HOME_SHELF_PREFIX) ? Uri.decode(mediaId.substring(HOME_SHELF_PREFIX.length())) : null;
-            this.podcastFolders = podcastFolders == null ? null : new ArrayList<>(podcastFolders);
+            this.mode = mode;
+            browseId = mode == Mode.SPEED_DIAL ? SPEED_DIAL_BROWSE_ID : "FEmusic_home";
+            this.shelfTitle = shelfTitle;
+            this.podcastFolders = podcastFolders;
+        }
+
+        static HomeLoad forHome(BrowseRequest request, List<MediaBrowserCompat.MediaItem> podcastFolders) {
+            return new HomeLoad(request, Mode.HOME, "", new ArrayList<>(podcastFolders));
+        }
+
+        static HomeLoad forShelf(BrowseRequest request, String mediaId) {
+            // An expanded shelf's media ID contains its title. Fetch phone Home again and select that shelf.
+            String shelfTitle = Uri.decode(mediaId.substring(HOME_SHELF_PREFIX.length()));
+            return new HomeLoad(request, Mode.SHELF, shelfTitle, Collections.emptyList());
+        }
+
+        static HomeLoad forSpeedDial(BrowseRequest request) {
+            return new HomeLoad(request, Mode.SPEED_DIAL, "", Collections.emptyList());
         }
 
         @Override void load() { requestPage(""); }
@@ -857,7 +889,10 @@ public final class AndroidAutoPatch {
             if (finished.get()) return;
             try {
                 List<BrowseItem> snapshot;
-                synchronized (this) { snapshot = new ArrayList<>(collected); }
+                synchronized (this) {
+                    snapshot = new ArrayList<>(collected);
+                }
+
                 finish(convert(snapshot));
             } catch (Exception ex) {
                 Logger.printException(() -> "Could not convert Android Auto Home items", ex);
@@ -865,18 +900,22 @@ public final class AndroidAutoPatch {
             }
         }
 
-        // A slow or failed continuation must not discard shelves already received.
+        // If a later page fails or times out, return the shelves collected so far.
         @Override void timedOut() { finishCollected(); }
 
         private List<MediaBrowserCompat.MediaItem> convert(List<BrowseItem> items) {
-            if (podcastFolders != null) return homeMediaItems(items);
-            if (shelfTitle != null) items.removeIf(item -> !shelfTitle.equals(item.shelfTitle()));
-            // Expanded Speed dial uses a list; expanded recommendation groups use an artwork grid.
-            return playableItems(items, shelfTitle == null ? 1 : 2, false);
+            return switch (mode) {
+                case HOME -> homeMediaItems(items);
+                case SHELF -> {
+                    items.removeIf(item -> !shelfTitle.equals(item.shelfTitle()));
+                    yield homePlayableItems(items, CONTENT_STYLE_GRID);
+                }
+                case SPEED_DIAL -> homePlayableItems(items, CONTENT_STYLE_LIST);
+            };
         }
 
         @Override void deliver(List<MediaBrowserCompat.MediaItem> items) {
-            if (podcastFolders == null) {
+            if (mode != Mode.HOME) {
                 super.deliver(items);
                 return;
             }
@@ -891,30 +930,34 @@ public final class AndroidAutoPatch {
     }
 
     private static PreparedItems homeMediaItems(List<BrowseItem> phoneItems) {
-        PreparedItems homeItems = new PreparedItems(2);
+        PreparedItems homeItems = new PreparedItems(CONTENT_STYLE_GRID);
         Map<String, List<BrowseItem>> shelves = new LinkedHashMap<>();
         for (var item : phoneItems) shelves.computeIfAbsent(item.shelfTitle(), ignored -> new ArrayList<>()).add(item);
         for (var shelf : shelves.entrySet()) {
             String shelfTitle = shelf.getKey();
             List<BrowseItem> shelfItems = shelf.getValue();
             if (shelfTitle.isEmpty()) {
-                homeItems.addAll(playableItems(shelfItems, 2, false));
+                homeItems.addAll(homePlayableItems(shelfItems, CONTENT_STYLE_GRID));
                 continue;
             }
             boolean speedDial = SPEED_DIAL_BROWSE_ID.equals(shelfItems.get(0).shelfBrowseId());
             String shelfMediaId = speedDial ? SPEED_DIAL_MEDIA_ID : HOME_SHELF_PREFIX + Uri.encode(shelfTitle);
             Bundle extras = new Bundle();
-            extras.putInt("android.media.browse.CONTENT_STYLE_SINGLE_ITEM_HINT", 1);
-            extras.putInt("android.media.browse.CONTENT_STYLE_BROWSABLE_HINT", 1);
-            extras.putInt("android.media.browse.CONTENT_STYLE_PLAYABLE_HINT", speedDial ? 1 : 2);
+            extras.putInt("android.media.browse.CONTENT_STYLE_SINGLE_ITEM_HINT", CONTENT_STYLE_LIST);
+            extras.putInt("android.media.browse.CONTENT_STYLE_BROWSABLE_HINT", CONTENT_STYLE_LIST);
+            extras.putInt("android.media.browse.CONTENT_STYLE_PLAYABLE_HINT", speedDial ? CONTENT_STYLE_LIST : CONTENT_STYLE_GRID);
             homeItems.add(new MediaBrowserCompat.MediaItem(new MediaDescriptionCompat(
                     shelfMediaId, shelfTitle, null, null, null, null, extras, null),
                     MediaBrowserCompat.MediaItem.FLAG_BROWSABLE));
-            // Native Home exposes playable previews for music shelves, including Quick picks and mixes.
-            var preview = playableItems(shelfItems, 2, false);
+            // Keep recommendations playable from Android Auto Home without opening each shelf.
+            var preview = homePlayableItems(shelfItems, CONTENT_STYLE_GRID);
             homeItems.addAll(preview.subList(0, Math.min(3, preview.size())));
         }
         return homeItems;
+    }
+
+    private static PreparedItems homePlayableItems(List<BrowseItem> phoneItems, int playableStyle) {
+        return playableItems(phoneItems, playableStyle, false);
     }
 
     // Library: categories (including Last played), uploads, and episodes from saved podcast shows
@@ -971,10 +1014,9 @@ public final class AndroidAutoPatch {
 
     /** Converted Auto results; delivery hooks recognize this type to avoid starting another load. */
     static final class PreparedItems extends ArrayList<MediaBrowserCompat.MediaItem> {
-        // Auto layout hint for playable items: 1 = list, 2 = grid.
         final int playableStyle;
 
-        PreparedItems() { this(1); }
+        PreparedItems() { this(CONTENT_STYLE_LIST); }
         PreparedItems(int playableStyle) { this.playableStyle = playableStyle; }
 
         void add(String mediaId, String title, String subtitle, String artworkUrl, boolean playable) {
@@ -984,10 +1026,11 @@ public final class AndroidAutoPatch {
         void add(String mediaId, String title, String subtitle, String artworkUrl, boolean playable, String groupTitle) {
             if (mediaId.length() > MAX_MEDIA_ID_LENGTH) return;
             Bundle extras = new Bundle();
-            extras.putInt("android.media.browse.CONTENT_STYLE_SINGLE_ITEM_HINT", playable ? playableStyle : 1);
+            extras.putInt("android.media.browse.CONTENT_STYLE_SINGLE_ITEM_HINT", playable ? playableStyle : CONTENT_STYLE_LIST);
             if (!groupTitle.isEmpty()) extras.putString("android.media.browse.CONTENT_STYLE_GROUP_TITLE_HINT", groupTitle);
-            add(new MediaBrowserCompat.MediaItem(new MediaDescriptionCompat(
-                    mediaId, title, subtitle, null, null, artworkUrl.isEmpty() ? null : Uri.parse(artworkUrl), extras, null),
+            MediaDescriptionCompat description = new MediaDescriptionCompat(
+                    mediaId, title, subtitle, null, null, artworkUrl.isEmpty() ? null : Uri.parse(artworkUrl), extras, null);
+            add(new MediaBrowserCompat.MediaItem(description,
                     playable ? MediaBrowserCompat.MediaItem.FLAG_PLAYABLE : MediaBrowserCompat.MediaItem.FLAG_BROWSABLE));
         }
     }
@@ -1011,13 +1054,18 @@ public final class AndroidAutoPatch {
             // Preserve YTM's "Start radio" action, which plays a generated mix.
             String browseId = new ProtoMessage(item.tapCommandBytes())
                     .messageField(BROWSE).stringField(BROWSE_ID);
+            boolean uploadedCollection = browseId.startsWith("FEmusic_library_privately_owned_release_detail")
+                    || browseId.startsWith("FEmusic_library_privately_owned_artist");
+
             String mediaId;
-            if ((browseId.startsWith("FEmusic_library_privately_owned_release_detail")
-                    || browseId.startsWith("FEmusic_library_privately_owned_artist")) && !playlistId.isEmpty()) {
+            if (uploadedCollection && !playlistId.isEmpty()) {
                 mediaId = encodeCommand(orderedPlaylistCommand(playlistId, true));
+            } else if (!item.tapStartsPlayback()
+                    && !playlistId.isEmpty()
+                    && !playlistId.startsWith("RD")) {
+                mediaId = createPlaylistMediaId(playlistId);
             } else {
-                mediaId = !item.tapStartsPlayback() && !playlistId.isEmpty() && !playlistId.startsWith("RD")
-                        ? createPlaylistMediaId(playlistId) : encodeCommand(playCommandBytes);
+                mediaId = encodeCommand(playCommandBytes);
             }
             if (mediaId == null || !seenMediaIds.add(mediaId)) continue;
             items.add(mediaId, item.title(), item.subtitle(), item.artworkUrl(), true, showShelfTitles ? item.shelfTitle() : "");
@@ -1068,16 +1116,25 @@ public final class AndroidAutoPatch {
         final void requestPage(String browseId, String continuation, Consumer<PhoneBrowseResponse> receive) {
             if (finished.get()) return;
             try {
-                if (!current(client)) { finish(Collections.emptyList()); return; }
+                if (!current(client)) {
+                    finish(Collections.emptyList());
+                    return;
+                }
                 var future = continuation.isEmpty()
                         ? client.patch_requestBrowse(browseId, BACKGROUND_EXECUTOR)
                         : client.patch_requestBrowseContinuation(continuation, BACKGROUND_EXECUTOR);
                 pending = future;
-                if (finished.get()) { future.cancel(true); return; }
+                if (finished.get()) {
+                    future.cancel(true);
+                    return;
+                }
+
                 future.addListener(() -> {
                     if (finished.get()) return;
-                    try { receive.accept(future.get()); }
-                    catch (Exception ex) {
+                    try {
+                        PhoneBrowseResponse response = future.get();
+                        receive.accept(response);
+                    } catch (Exception ex) {
                         Logger.printException(() -> "Could not read Android Auto page", ex);
                         timedOut();
                     }
@@ -1108,7 +1165,11 @@ public final class AndroidAutoPatch {
         PreparedItems playableResults = new PreparedItems(1);
         Map<ResultCategory, List<SearchResult>> resultsByCategory = new LinkedHashMap<>();
         // Order categories by their first result; keep each category together so Auto shows one heading.
-        for (var result : results) resultsByCategory.computeIfAbsent(result.category(), ignored -> new ArrayList<>()).add(result);
+        for (var result : results) {
+            resultsByCategory
+                    .computeIfAbsent(result.category(), ignored -> new ArrayList<>())
+                    .add(result);
+        }
         Set<String> seenMediaIds = new HashSet<>();
         for (var categoryResults : resultsByCategory.values()) {
             for (var searchResult : categoryResults) {
@@ -1119,8 +1180,14 @@ public final class AndroidAutoPatch {
                 String playlistId = playCommand.messageField(WATCH_PLAYLIST).stringField(PLAYLIST_ID);
                 // A menu's playlist action may shuffle; use ordered playback for albums and playlists.
                 // Preserve YTM's "Start radio" action, which plays a generated mix.
-                String mediaId = !searchResult.preservePlaybackCommand() && !playlistId.isEmpty() && !playlistId.startsWith("RD")
-                        ? createPlaylistMediaId(playlistId) : encodeCommand(playCommandBytes);
+                String mediaId;
+                if (!searchResult.preservePlaybackCommand()
+                        && !playlistId.isEmpty()
+                        && !playlistId.startsWith("RD")) {
+                    mediaId = createPlaylistMediaId(playlistId);
+                } else {
+                    mediaId = encodeCommand(playCommandBytes);
+                }
                 if (mediaId == null || !seenMediaIds.add(mediaId)) continue;
                 playableResults.add(mediaId, searchResult.title(), searchResult.subtitle(), searchResult.artworkUrl(),
                         true, ResourceUtils.getString(searchResult.category().titleResource));

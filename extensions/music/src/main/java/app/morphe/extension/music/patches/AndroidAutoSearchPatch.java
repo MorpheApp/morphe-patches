@@ -170,7 +170,10 @@ public final class AndroidAutoSearchPatch {
 
         void start() {
             if (finished.get()) return;
-            if (client != phoneSearchClient) { finish(Collections.emptyList()); return; }
+            if (client != phoneSearchClient) {
+                finish(Collections.emptyList());
+                return;
+            }
             CompletableFuture.allOf(catalog, uploads).whenComplete((ignored, error) -> finishAvailableResults());
             request(false, null, catalog);
             request(true, null, uploads);
@@ -178,8 +181,9 @@ public final class AndroidAutoSearchPatch {
 
         void finishAvailableResults() {
             if (finished.get()) return;
-            try { finish(availableResults()); }
-            catch (Exception ex) {
+            try {
+                finish(availableResults());
+            } catch (Exception ex) {
                 Logger.printException(() -> "Could not finish Android Auto search", ex);
                 finish(null);
             }
@@ -200,8 +204,11 @@ public final class AndroidAutoSearchPatch {
 
         void deliver(@Nullable List<MediaBrowserCompat.MediaItem> playableResults) {
             for (SearchRequest request : requests) {
-                try { request.patch_deliverSearchResults(playableResults); }
-                catch (Exception ex) { Logger.printException(() -> "Could not deliver Android Auto search results", ex); }
+                try {
+                    request.patch_deliverSearchResults(playableResults);
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not deliver Android Auto search results", ex);
+                }
             }
         }
 
@@ -210,9 +217,13 @@ public final class AndroidAutoSearchPatch {
             try {
                 var response = client.patch_search(query, uploaded, params, BACKGROUND_EXECUTOR);
                 synchronized (pendingResponses) {
-                    if (finished.get()) { response.cancel(true); return; }
+                    if (finished.get()) {
+                        response.cancel(true);
+                        return;
+                    }
                     pendingResponses.add(response);
                 }
+
                 response.addListener(() -> {
                     if (finished.get()) return;
                     try {
@@ -220,9 +231,14 @@ public final class AndroidAutoSearchPatch {
                         String uploadParams = uploaded && params == null
                                 ? AndroidAutoSearchResponseParser.uploadedSearchParams(bytes) : "";
                         // The first response supplies the Uploads tab; follow its parameters to load the results.
-                        if (!uploadParams.isEmpty()) request(true, uploadParams, results);
-                        else results.complete(AndroidAutoSearchResponseParser.parseSearchResults(bytes, uploaded));
-                    } catch (Exception ex) { results.completeExceptionally(ex); }
+                        if (!uploadParams.isEmpty()) {
+                            request(true, uploadParams, results);
+                        } else {
+                            results.complete(AndroidAutoSearchResponseParser.parseSearchResults(bytes, uploaded));
+                        }
+                    } catch (Exception ex) {
+                        results.completeExceptionally(ex);
+                    }
                 }, BACKGROUND_EXECUTOR);
             } catch (Exception ex) {
                 results.completeExceptionally(ex);

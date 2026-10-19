@@ -159,13 +159,18 @@ final class AndroidAutoBrowseResponseParser {
 
     record HomePage(List<BrowseItem> items, String continuation) {}
 
-    /** Home previews, expanded Speed dial, and expanded recommendation groups. */
+    /** Reads phone Home or Speed dial responses and returns playable items with the next continuation token. */
     static HomePage homePage(byte[] response) {
         ProtoMessage sectionList = sectionList(response);
         List<BrowseItem> items = new ArrayList<>();
         for (BrowseItem item : readSections(sectionList)) {
             String browseId = new ProtoMessage(item.tapCommandBytes()).messageField(BROWSE).stringField(BROWSE_ID);
-            if (!item.tapStartsPlayback() && !browseId.startsWith("UC") && !browseId.startsWith("MPRE") && !browseId.startsWith("VL")) continue;
+            if (!item.tapStartsPlayback()
+                    && !browseId.startsWith("UC")
+                    && !browseId.startsWith("MPRE")
+                    && !browseId.startsWith("VL")) {
+                continue;
+            }
             byte[] playCommandBytes = item.tapStartsPlayback() ? item.tapCommandBytes() : item.playCommandBytes();
             if (isPlayable(new ProtoMessage(playCommandBytes))) {
                 items.add(item);
@@ -180,8 +185,8 @@ final class AndroidAutoBrowseResponseParser {
     }
 
     /**
-     * Library categories, including Last played, and episodes from saved podcast shows.
-     * Playlists uses YTM's native grid loader instead.
+     * Reads responses for phone Library categories or podcast shows and returns their browse items.
+     * The Playlists folder uses YTM's native grid loader instead.
      */
     static List<BrowseItem> libraryItems(byte[] response) {
         return readSections(sectionList(response));
@@ -216,45 +221,64 @@ final class AndroidAutoBrowseResponseParser {
             for (ProtoMessage childRenderer : childRenderers) {
                 ProtoMessage model = childRenderer.messagePath(ELEMENT, NEW_ELEMENT, ELEMENT_TYPE, COMPONENT_TYPE, COMPONENT_MODEL);
                 int firstShelfItemIndex = items.size();
-                String shelfTitle = model.messagePath(SPEED_DIAL, SPEED_DIAL_CONTENT, SPEED_DIAL_HEADER).stringField(SHELF_HEADER_TITLE);
-                if (shelfTitle.isEmpty()) shelfTitle = model.messagePath(CARD_SHELF, CARD_SHELF_CONTENT, CARD_SHELF_HEADER).stringField(SHELF_HEADER_TITLE);
-                if (shelfTitle.isEmpty()) shelfTitle = model.messagePath(ROW_SHELF, ROW_SHELF_HEADER).stringField(SHELF_HEADER_TITLE);
+                String shelfTitle = model.messagePath(SPEED_DIAL, SPEED_DIAL_CONTENT, SPEED_DIAL_HEADER)
+                        .stringField(SHELF_HEADER_TITLE);
+                if (shelfTitle.isEmpty()) {
+                    shelfTitle = model.messagePath(CARD_SHELF, CARD_SHELF_CONTENT, CARD_SHELF_HEADER)
+                            .stringField(SHELF_HEADER_TITLE);
+                }
+                if (shelfTitle.isEmpty()) {
+                    shelfTitle = model.messagePath(ROW_SHELF, ROW_SHELF_HEADER).stringField(SHELF_HEADER_TITLE);
+                }
                 String shelfBrowseId = model.messagePath(SPEED_DIAL, SPEED_DIAL_CONTENT, SPEED_DIAL_HEADER,
                         SHELF_HEADER_TAP, INNERTUBE_COMMAND, BROWSE).stringField(BROWSE_ID);
-                // Phone Home uses a separate Speed dial card layout.
-                for (ProtoMessage card : model.messagePath(SPEED_DIAL, SPEED_DIAL_CONTENT).repeatedMessageField(SPEED_DIAL_ITEMS)) {
-                    ProtoMessage tapCommand = card.messagePath(SPEED_DIAL_TAP, INNERTUBE_COMMAND);
-                    boolean tapStartsPlayback = isPlayable(tapCommand);
-                    if ((!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty()) || card.stringField(SPEED_DIAL_TITLE).isEmpty()) continue;
-                    items.add(new BrowseItem(card.stringField(SPEED_DIAL_TITLE), menuSubtitle(card.messagePath(SPEED_DIAL_MENU, INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU)),
-                            artwork(card.messagePath(SPEED_DIAL_IMAGE, IMAGE_CONTENT)), tapCommand.serializedBytes(), tapStartsPlayback,
-                            card.messagePath(SPEED_DIAL_PLAY, INNERTUBE_COMMAND).serializedBytes()));
-                }
+                readSpeedDial(items, model.messagePath(SPEED_DIAL, SPEED_DIAL_CONTENT));
                 // Full collection pages use grid cards rather than Home's compact cards.
-                addBrowseItem(items, model.messagePath(GRID_ITEM, GRID_ITEM_CONTENT), RESULT_TAP,
-                        CARD_TITLE, CARD_SUBTITLE, CARD_IMAGE);
+                addGridCard(items, model.messagePath(GRID_ITEM, GRID_ITEM_CONTENT));
                 for (ProtoMessage row : model.messageField(RESULT_ROWS).repeatedMessageField(RESULT_ROWS_ITEMS)) {
-                    addBrowseItem(items, row, RESULT_TAP);
+                    addBrowseRow(items, row);
                 }
-                ProtoMessage topResult = model.messagePath(TOP_RESULT, TOP_RESULT_CONTENT);
-                addBrowseItem(items, topResult.messageField(TOP_RESULT_PRIMARY), TOP_RESULT_TAP);
-                for (ProtoMessage row : topResult.repeatedMessageField(TOP_RESULT_RELATED))
-                    addBrowseItem(items, row, RESULT_TAP);
+                readTopResult(items, model.messagePath(TOP_RESULT, TOP_RESULT_CONTENT));
                 for (ProtoMessage row : model.messageField(ROW_SHELF).repeatedMessageField(ROW_SHELF_ITEMS))
-                    addBrowseItem(items, row, RESULT_TAP);
+                    addBrowseRow(items, row);
                 for (ProtoMessage card : model.messagePath(CARD_SHELF, CARD_SHELF_CONTENT).repeatedMessageField(CARD_SHELF_ITEMS)) {
-                    addBrowseItem(items, card, RESULT_TAP, CARD_TITLE, CARD_SUBTITLE, CARD_IMAGE);
+                    addGridCard(items, card);
                 }
-                if (!shelfTitle.isEmpty()) {
-                    for (int i = firstShelfItemIndex; i < items.size(); i++) {
-                        BrowseItem item = items.get(i);
-                        items.set(i, new BrowseItem(item.title(), item.subtitle(), item.artworkUrl(), item.tapCommandBytes(),
-                                item.tapStartsPlayback(), item.playCommandBytes(), shelfTitle, shelfBrowseId));
-                    }
-                }
+                setShelfMetadata(items, firstShelfItemIndex, shelfTitle, shelfBrowseId);
             }
         }
         return Collections.unmodifiableList(items);
+    }
+
+    private static void readSpeedDial(List<BrowseItem> items, ProtoMessage speedDial) {
+        for (ProtoMessage card : speedDial.repeatedMessageField(SPEED_DIAL_ITEMS)) {
+            ProtoMessage tapCommand = card.messagePath(SPEED_DIAL_TAP, INNERTUBE_COMMAND);
+            boolean tapStartsPlayback = isPlayable(tapCommand);
+            if (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty()) continue;
+            String title = card.stringField(SPEED_DIAL_TITLE);
+            if (title.isEmpty()) continue;
+            ProtoMessage menu = card.messagePath(SPEED_DIAL_MENU, INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
+            String subtitle = menuSubtitle(menu);
+            String artworkUrl = artwork(card.messagePath(SPEED_DIAL_IMAGE, IMAGE_CONTENT));
+            byte[] tapCommandBytes = tapCommand.serializedBytes();
+            byte[] playCommandBytes = card.messagePath(SPEED_DIAL_PLAY, INNERTUBE_COMMAND).serializedBytes();
+            items.add(new BrowseItem(title, subtitle, artworkUrl, tapCommandBytes, tapStartsPlayback, playCommandBytes));
+        }
+    }
+
+    private static void readTopResult(List<BrowseItem> items, ProtoMessage topResult) {
+        addTopBrowseResult(items, topResult.messageField(TOP_RESULT_PRIMARY));
+        for (ProtoMessage row : topResult.repeatedMessageField(TOP_RESULT_RELATED))
+            addBrowseRow(items, row);
+    }
+
+    private static void setShelfMetadata(List<BrowseItem> items, int firstItemIndex, String shelfTitle, String shelfBrowseId) {
+        if (shelfTitle.isEmpty()) return;
+        for (int i = firstItemIndex; i < items.size(); i++) {
+            BrowseItem item = items.get(i);
+            items.set(i, new BrowseItem(item.title(), item.subtitle(), item.artworkUrl(), item.tapCommandBytes(),
+                    item.tapStartsPlayback(), item.playCommandBytes(), shelfTitle, shelfBrowseId));
+        }
     }
 
     private static void readShelf(List<BrowseItem> items, ProtoMessage shelf, int contentsField) {
@@ -271,25 +295,48 @@ final class AndroidAutoBrowseResponseParser {
         }
     }
 
-    private static void addBrowseItem(List<BrowseItem> items, ProtoMessage renderer, int tapField) {
-        addBrowseItem(items, renderer, tapField, RESULT_TITLE, RESULT_SUBTITLE, RESULT_IMAGE);
-    }
-
-    private static void addBrowseItem(List<BrowseItem> items, ProtoMessage renderer, int tapField,
-                                      int titleField, int subtitleField, int imageField) {
-        String title = renderer.stringField(titleField);
-        ProtoMessage tapCommand = renderer.messagePath(tapField, INNERTUBE_COMMAND);
+    private static void addGridCard(List<BrowseItem> items, ProtoMessage renderer) {
+        String title = renderer.stringField(CARD_TITLE);
+        ProtoMessage tapCommand = renderer.messagePath(RESULT_TAP, INNERTUBE_COMMAND);
         boolean tapStartsPlayback = isPlayable(tapCommand);
         if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
-        String artworkUrl = artwork(renderer.messagePath(imageField, IMAGE_CONTENT));
-        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(tapField == TOP_RESULT_TAP ? TOP_RESULT_MENU : RESULT_MENU,
+        String artworkUrl = artwork(renderer.messagePath(CARD_IMAGE, IMAGE_CONTENT));
+        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(RESULT_MENU,
                 INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
-        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, tapField == TOP_RESULT_TAP);
-        String subtitle = renderer.stringField(subtitleField);
+        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, false);
+        addBrowseItem(items, renderer, title, renderer.stringField(CARD_SUBTITLE), artworkUrl, tapCommand, playCommand);
+    }
+
+    private static void addBrowseRow(List<BrowseItem> items, ProtoMessage renderer) {
+        String title = renderer.stringField(RESULT_TITLE);
+        ProtoMessage tapCommand = renderer.messagePath(RESULT_TAP, INNERTUBE_COMMAND);
+        boolean tapStartsPlayback = isPlayable(tapCommand);
+        if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
+        String artworkUrl = artwork(renderer.messagePath(RESULT_IMAGE, IMAGE_CONTENT));
+        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(RESULT_MENU,
+                INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
+        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, false);
+        addBrowseItem(items, renderer, title, renderer.stringField(RESULT_SUBTITLE), artworkUrl, tapCommand, playCommand);
+    }
+
+    private static void addTopBrowseResult(List<BrowseItem> items, ProtoMessage renderer) {
+        String title = renderer.stringField(RESULT_TITLE);
+        ProtoMessage tapCommand = renderer.messagePath(TOP_RESULT_TAP, INNERTUBE_COMMAND);
+        boolean tapStartsPlayback = isPlayable(tapCommand);
+        if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
+        String artworkUrl = artwork(renderer.messagePath(RESULT_IMAGE, IMAGE_CONTENT));
+        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(TOP_RESULT_MENU,
+                INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
+        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, true);
+        addBrowseItem(items, renderer, title, renderer.stringField(RESULT_SUBTITLE), artworkUrl, tapCommand, playCommand);
+    }
+
+    private static void addBrowseItem(List<BrowseItem> items, ProtoMessage renderer, String title, String subtitle,
+                                      String artworkUrl, ProtoMessage tapCommand, ProtoMessage playCommand) {
         if (tapCommand.messageField(BROWSE).stringField(BROWSE_ID).startsWith("MPED")) {
             subtitle = episodeSubtitle(renderer, subtitle);
         }
-        items.add(new BrowseItem(title, subtitle, artworkUrl, tapCommand.serializedBytes(), tapStartsPlayback, playCommand.serializedBytes()));
+        items.add(new BrowseItem(title, subtitle, artworkUrl, tapCommand.serializedBytes(), isPlayable(tapCommand), playCommand.serializedBytes()));
     }
 
     // Text, artwork, and playback helpers also used by search.

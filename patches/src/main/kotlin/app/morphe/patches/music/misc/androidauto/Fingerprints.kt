@@ -240,6 +240,18 @@ internal fun phoneBrowseContinuationFingerprint(requestType: String) = Fingerpri
     )
 )
 
+internal object SearchRequestTypeFingerprint : Fingerprint(
+    name = "<clinit>",
+    returnType = "V",
+    parameters = emptyList(),
+    filters = listOf(
+        string("MUSIC_SEARCH_REQUEST_TYPE_CATALOG"),
+        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this"),
+        string("MUSIC_SEARCH_REQUEST_TYPE_UPLOADED"),
+        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this")
+    )
+)
+
 // Read the initial Library response; pagination has a separate parser.
 
 /** Returns TabRenderer wrappers for phone page content, such as Library collections or playlist songs. */

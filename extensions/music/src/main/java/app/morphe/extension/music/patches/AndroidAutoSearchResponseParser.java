@@ -93,7 +93,8 @@ final class AndroidAutoSearchResponseParser {
     }
 
     static String uploadedSearchParams(byte[] response) {
-        for (ProtoMessage tabWrapper : new ProtoMessage(response).messagePath(SEARCH_CONTENTS, TABBED_SEARCH).repeatedMessageField(SEARCH_TABS)) {
+        ProtoMessage tabbedSearch = new ProtoMessage(response).messagePath(SEARCH_CONTENTS, TABBED_SEARCH);
+        for (ProtoMessage tabWrapper : tabbedSearch.repeatedMessageField(SEARCH_TABS)) {
             ProtoMessage tab = tabWrapper.messageField(TAB);
             if (tab.stringField(TAB_ID).equals("music_search_upload")) {
                 return tab.messagePath(TAB_COMMAND, SEARCH).stringField(SEARCH_PARAMS);
@@ -106,53 +107,83 @@ final class AndroidAutoSearchResponseParser {
         List<SearchResult> results = new ArrayList<>();
         for (ProtoMessage sectionRenderer : sectionList.repeatedMessageField(SECTION_LIST_CONTENTS)) {
             for (ProtoMessage childRenderer : sectionRenderer.messageField(MUSIC_SHELF).repeatedMessageField(MUSIC_SHELF_CONTENTS))
-                addSearchResult(results, childRenderer.messageField(SHELF_ITEM), SHELF_ITEM_TAP, false);
+                addShelfSearchResult(results, childRenderer.messageField(SHELF_ITEM));
             for (ProtoMessage childRenderer : sectionRenderer.messageField(ITEM_SECTION).repeatedMessageField(ITEM_SECTION_CONTENTS)) {
                 ProtoMessage model = childRenderer.messagePath(ELEMENT, NEW_ELEMENT, ELEMENT_TYPE, COMPONENT_TYPE, COMPONENT_MODEL);
                 for (ProtoMessage row : model.messageField(RESULT_ROWS)
                         .repeatedMessageField(RESULT_ROWS_ITEMS)) {
-                    addSearchResult(results, row, RESULT_TAP, false);
+                    addRowSearchResult(results, row, false);
                 }
                 ProtoMessage topResult = model.messagePath(TOP_RESULT, TOP_RESULT_CONTENT);
-                addSearchResult(results, topResult.messageField(TOP_RESULT_PRIMARY), TOP_RESULT_TAP, true);
+                addTopSearchResult(results, topResult.messageField(TOP_RESULT_PRIMARY));
                 for (ProtoMessage row : topResult.repeatedMessageField(TOP_RESULT_RELATED))
-                    addSearchResult(results, row, RESULT_TAP, false);
-                // Some responses put the top match and related results in a nested list.
-                // Reading only the fields above would miss them.
+                    addRowSearchResult(results, row, false);
+                // Some responses carry top result cards and related rows in this component list.
                 for (ProtoMessage component : topResult.repeatedMessageField(TOP_RESULT_COMPONENTS)) {
-                    addSearchResult(results, component.messageField(TOP_RESULT_CARD), TOP_RESULT_TAP, true);
-                    addSearchResult(results, component.messageField(TOP_RESULT_RELATED_ROW), RESULT_TAP, false);
+                    addTopSearchResult(results, component.messageField(TOP_RESULT_CARD));
+                    addRowSearchResult(results, component.messageField(TOP_RESULT_RELATED_ROW), false);
                 }
-                // Compact cards also carry multi-row collections such as Listen again.
-                // Only untitled cards are top results; named collections retain each row's category.
+                // Compact cards also carry collections such as Listen again.
+                // An empty header groups the rows under Top result for display.
+                // A nonempty header keeps each row in its own category.
                 ProtoMessage card = model.messagePath(COMPACT_RESULT_CARD, COMPACT_RESULT_CONTENT);
                 boolean groupAsTopResult = card.messageField(COMPACT_RESULT_HEADER).stringField(TEXT_CONTENT).isEmpty();
                 for (ProtoMessage row : card.repeatedMessageField(COMPACT_RESULT_ROWS))
-                    addSearchResult(results, row, RESULT_TAP, groupAsTopResult);
+                    addRowSearchResult(results, row, groupAsTopResult);
             }
         }
         return Collections.unmodifiableList(results);
     }
 
-    private static void addSearchResult(List<SearchResult> results, ProtoMessage renderer,
-                                        int tapField, boolean groupAsTopResult) {
-        boolean shelfItem = tapField == SHELF_ITEM_TAP;
-        boolean topResultCard = tapField == TOP_RESULT_TAP;
-        String title = shelfItem ? textRuns(renderer.messageField(SHELF_ITEM_TITLE)) : renderer.stringField(RESULT_TITLE);
-        ProtoMessage tapCommand = shelfItem ? renderer.messageField(tapField) : renderer.messagePath(tapField, INNERTUBE_COMMAND);
+    private static void addShelfSearchResult(List<SearchResult> results, ProtoMessage renderer) {
+        String title = textRuns(renderer.messageField(SHELF_ITEM_TITLE));
+        ProtoMessage tapCommand = renderer.messageField(SHELF_ITEM_TAP);
         boolean tapStartsPlayback = isPlayable(tapCommand);
         if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
-        String artworkUrl = artwork(shelfItem ? renderer.messagePath(SHELF_ITEM_IMAGE, THUMBNAIL, THUMBNAIL_CONTENTS)
-                : renderer.messagePath(RESULT_IMAGE, IMAGE_CONTENT));
-        String subtitle = shelfItem ? textRuns(renderer.messageField(SHELF_ITEM_SUBTITLE)) : renderer.stringField(RESULT_SUBTITLE);
+        String artworkUrl = artwork(renderer.messagePath(SHELF_ITEM_IMAGE, THUMBNAIL, THUMBNAIL_CONTENTS));
+        String subtitle = textRuns(renderer.messageField(SHELF_ITEM_SUBTITLE));
         ResultCategory category = resultCategory(tapCommand);
-        ProtoMessage menu = ProtoMessage.EMPTY;
-        if (shelfItem) menu = renderer.messagePath(SHELF_ITEM_MENU, MENU);
-        else if (!tapStartsPlayback) menu = renderer.messagePath(topResultCard ? TOP_RESULT_MENU : RESULT_MENU,
+        ProtoMessage menu = renderer.messagePath(SHELF_ITEM_MENU, MENU);
+        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, false);
+        subtitle = podcastSubtitle(menu, category, subtitle);
+        addSearchResult(results, title, subtitle, artworkUrl, tapCommand, playCommand, category, false);
+    }
+
+    private static void addRowSearchResult(List<SearchResult> results, ProtoMessage renderer, boolean groupAsTopResult) {
+        String title = renderer.stringField(RESULT_TITLE);
+        ProtoMessage tapCommand = renderer.messagePath(RESULT_TAP, INNERTUBE_COMMAND);
+        boolean tapStartsPlayback = isPlayable(tapCommand);
+        if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
+        String artworkUrl = artwork(renderer.messagePath(RESULT_IMAGE, IMAGE_CONTENT));
+        String subtitle = renderer.stringField(RESULT_SUBTITLE);
+        ResultCategory category = resultCategory(tapCommand);
+        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(RESULT_MENU,
                 INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
-        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, topResultCard);
-        if (shelfItem || !tapStartsPlayback) subtitle = podcastSubtitle(menu, category, subtitle);
-        if (!shelfItem && category == ResultCategory.EPISODES) subtitle = episodeSubtitle(renderer, subtitle);
+        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, false);
+        if (!tapStartsPlayback) subtitle = podcastSubtitle(menu, category, subtitle);
+        if (category == ResultCategory.EPISODES) subtitle = episodeSubtitle(renderer, subtitle);
+        addSearchResult(results, title, subtitle, artworkUrl, tapCommand, playCommand, category, groupAsTopResult);
+    }
+
+    private static void addTopSearchResult(List<SearchResult> results, ProtoMessage renderer) {
+        String title = renderer.stringField(RESULT_TITLE);
+        ProtoMessage tapCommand = renderer.messagePath(TOP_RESULT_TAP, INNERTUBE_COMMAND);
+        boolean tapStartsPlayback = isPlayable(tapCommand);
+        if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
+        String artworkUrl = artwork(renderer.messagePath(RESULT_IMAGE, IMAGE_CONTENT));
+        String subtitle = renderer.stringField(RESULT_SUBTITLE);
+        ResultCategory category = resultCategory(tapCommand);
+        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(TOP_RESULT_MENU,
+                INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
+        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, true);
+        if (!tapStartsPlayback) subtitle = podcastSubtitle(menu, category, subtitle);
+        if (category == ResultCategory.EPISODES) subtitle = episodeSubtitle(renderer, subtitle);
+        addSearchResult(results, title, subtitle, artworkUrl, tapCommand, playCommand, category, true);
+    }
+
+    private static void addSearchResult(List<SearchResult> results, String title, String subtitle, String artworkUrl,
+                                      ProtoMessage tapCommand, ProtoMessage playCommand,
+                                      ResultCategory category, boolean groupAsTopResult) {
         boolean podcast = category == ResultCategory.PODCASTS;
         if (!isPlayable(playCommand) && podcast) {
             String browseId = tapCommand.messageField(BROWSE).stringField(BROWSE_ID);
@@ -163,7 +194,7 @@ final class AndroidAutoSearchResponseParser {
         if (uploadedCollection) playCommand = new ProtoMessage(AndroidAutoPatch.orderedPlaylistCommand(
                 playCommand.messageField(WATCH_PLAYLIST).stringField(PLAYLIST_ID), true));
         results.add(new SearchResult(title, subtitle, artworkUrl,
-                playCommand.serializedBytes(), tapStartsPlayback || podcast || uploadedCollection,
+                playCommand.serializedBytes(), isPlayable(tapCommand) || podcast || uploadedCollection,
                 groupAsTopResult ? ResultCategory.TOP_RESULT : category));
     }
 

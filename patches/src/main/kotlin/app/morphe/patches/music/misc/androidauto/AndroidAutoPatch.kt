@@ -175,8 +175,8 @@ private fun BytecodePatchContext.patchPhoneBrowseClient() {
 }
 
 /**
- * Fetches a phone page by its browse ID (YTM's page ID), or its next page by a continuation token.
- * YTM creates and sends the request; the returned future contains the response.
+ * Adds bridge methods to request phone pages by browse ID (YTM's page ID) or continuation token.
+ * Both use YTM to create and send the request, then return its response future.
  */
 private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
     phoneBrowseClientClass: MutableClass,
@@ -224,7 +224,7 @@ private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
 
 // Library pagination requests
 
-/** Requests the next Library page using the pagination command from the previous response. */
+/** Adds a bridge to request Library pages using pagination commands from YTM's responses. */
 private fun BytecodePatchContext.addLibraryPaginationRequestMethod(
     phoneBrowseClientClass: MutableClass,
     phoneBrowseRequestType: String,
@@ -888,12 +888,10 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
 /** Adds Podcasts and applies Home and Library layout changes before results reach Android Auto. */
 private fun hookBrowseResults(deliverItemsMethod: MutableMethod) {
     // YTM 9.15 lacks the size guard used by later versions; oversized results otherwise leave Auto loading.
-    if (!is_9_20_or_greater) {
-        deliverItemsMethod.addInstructions(0, """
+    val sizeLimitInstructions = if (is_9_20_or_greater) "" else """
             invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->limitBrowseItems(Ljava/util/List;)Ljava/util/List;
             move-result-object p1
-        """)
-    }
+        """
 
     val handleBrowseResultMethod = "$EXTENSION_CLASS->handleBrowseResult(" +
             BROWSE_REQUEST +
@@ -901,7 +899,8 @@ private fun hookBrowseResults(deliverItemsMethod: MutableMethod) {
 
     val loadHomeMethod = "$EXTENSION_CLASS->loadHome(" +
         BROWSE_REQUEST + "Ljava/util/List;)Z"
-    val scratch = deliverItemsMethod.findFreeRegister(0)
+    // The optional limiter still needs p1 after the Home hook returns.
+    val scratch = deliverItemsMethod.findFreeRegister(0, deliverItemsMethod.p0Register + 1)
     deliverItemsMethod.addInstructionsWithLabels(
         0,
         """
@@ -911,8 +910,10 @@ private fun hookBrowseResults(deliverItemsMethod: MutableMethod) {
             move-result v$scratch
             if-eqz v$scratch, :native_delivery
             return-void
-        """,
-        ExternalLabel("native_delivery", deliverItemsMethod.getInstruction(0))
+            :native_delivery
+            $sizeLimitInstructions
+            nop
+        """
     )
 }
 
@@ -958,7 +959,10 @@ private fun BytecodePatchContext.patchPlaylistMediaIdBuilder(encodeCommandMediaI
 
 // region Methods added to YTM classes
 
-/** Decodes command bytes with YTM's protobuf registry before using its Android Auto media ID encoder. */
+/**
+ * Connects the Java encodeCommand stub to YTM's command parser and Android Auto media ID encoder.
+ * Command parsing uses YTM's generated protobuf registry.
+ */
 private fun BytecodePatchContext.patchCommandEncoder(encoder: MethodReference) {
     val command = resolveProto(encoder.parameterTypes.single().toString(), "Android Auto playback command")
     val patchClass = mutableClassDefBy(EXTENSION_CLASS)
