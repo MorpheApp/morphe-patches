@@ -294,6 +294,50 @@ public final class FeedVideoCardsPatch {
     /** Height of the texts of a video below its thumbnail, at most. */
     private static final int MAX_BELOW_THUMBNAIL_DP = 300;
 
+    /** Depth of the views of a card that are searched for the thumbnail. */
+    private static final int MAX_THUMBNAIL_SEARCH_DEPTH = 4;
+
+    /**
+     * @return The bottom of the thumbnail of a card, relative to the root host.
+     *         Vertical videos show a taller thumbnail, so the height is not always 16:9.
+     *         The thumbnail is the smallest view at the top of the card that is as wide as
+     *         the card and at least as tall as a 16:9 thumbnail.
+     */
+    public static int getThumbnailBottom(ComponentHost root) {
+        final int width = root.getWidth();
+        final int minHeight = Math.round(width * THUMBNAIL_RATIO);
+        final int bottom = findThumbnailBottom(root, 0, 0, width, minHeight, MAX_THUMBNAIL_SEARCH_DEPTH);
+        return bottom == Integer.MAX_VALUE ? minHeight : bottom;
+    }
+
+    /**
+     * @return The smallest bottom of a thumbnail shaped child, or {@link Integer#MAX_VALUE}
+     *         if there is none.
+     */
+    private static int findThumbnailBottom(ViewGroup group, int left, int top,
+                                           int width, int minHeight, int depth) {
+        int best = Integer.MAX_VALUE;
+        for (int i = 0, count = group.getChildCount(); i < count; i++) {
+            View child = group.getChildAt(i);
+            if (child.getVisibility() != View.VISIBLE) {
+                continue;
+            }
+            final int childLeft = left + child.getLeft();
+            final int childTop = top + child.getTop();
+            if (childLeft != 0 || childTop != 0 || child.getWidth() != width) {
+                continue;
+            }
+            if (child.getHeight() >= minHeight) {
+                best = Math.min(best, child.getHeight());
+            }
+            if (depth > 1 && child instanceof ViewGroup childGroup) {
+                best = Math.min(best, findThumbnailBottom(childGroup, childLeft, childTop,
+                        width, minHeight, depth - 1));
+            }
+        }
+        return best;
+    }
+
     /**
      * Duration of a video, such as 4:05 or 1:02:33. Music videos show an icon before it,
      * which can be a character of the same text.

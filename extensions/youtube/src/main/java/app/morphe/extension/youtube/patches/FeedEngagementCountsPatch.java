@@ -71,11 +71,12 @@ public final class FeedEngagementCountsPatch {
     /** Fade in of counts that were fetched. Counts already in the cache are shown at once. */
     private static final long FADE_IN_MS = 100;
 
+    /** Top margin of a thumbnail that is too small to fit the badge above the duration. */
     private static final int MARGIN_DP = 10;
     /** Same as the duration badge and the Watch later button, so their right edges line up. */
     private static final int RIGHT_MARGIN_DP = 8;
-    /** Below the Watch later button of the Feed video actions patch. */
-    private static final int MIN_TOP_DP = 50;
+    /** Height of the duration badge, which is 20 dp and 8 dp above the bottom, plus a gap. */
+    private static final int ABOVE_DURATION_DP = 8 + 20 + 4;
     private static final int PADDING_DP = 6;
     private static final int CORNER_RADIUS_DP = 8;
     private static final int ICON_DP = 16;
@@ -381,7 +382,7 @@ public final class FeedEngagementCountsPatch {
         }
 
         /**
-         * Places the badge on the right side of the thumbnail, centered on its height.
+         * Places the badge on the right side of the thumbnail, just above the duration.
          */
         void place(ComponentHost host) {
             if (!hasContent()) {
@@ -412,14 +413,9 @@ public final class FeedEngagementCountsPatch {
             final int width = Math.max(px(MIN_WIDTH_DP), Math.round(contentWidth) + padding * 2);
             final int height = Math.round(contentHeight) + padding * 2;
 
-            final int thumbnailHeight = Math.round(host.getWidth() * FeedVideoCardsPatch.THUMBNAIL_RATIO);
+            final int thumbnailHeight = FeedVideoCardsPatch.getThumbnailBottom(host);
             final int right = host.getWidth() - px(RIGHT_MARGIN_DP);
-            int top = (thumbnailHeight - height) / 2;
-            top = Math.max(top, px(MIN_TOP_DP));
-            if (top + height > thumbnailHeight) {
-                // Small thumbnail. The top of the thumbnail is used instead.
-                top = Math.max(px(MARGIN_DP), thumbnailHeight - height - px(MARGIN_DP));
-            }
+            final int top = Math.max(px(MARGIN_DP), thumbnailHeight - px(ABOVE_DURATION_DP) - height);
 
             setBounds(right - width, top, right, top + height);
             if (!added) {
@@ -467,7 +463,7 @@ public final class FeedEngagementCountsPatch {
             }
             ComponentHost host = hostRef.get();
             if (host != null && FeedVideoCardsPatch.isCardPlayingInline(host)) {
-                // The captions button of the inline player is here.
+                // The inline player shows its own buttons over the thumbnail.
                 return;
             }
             Rect bounds = getBounds();
