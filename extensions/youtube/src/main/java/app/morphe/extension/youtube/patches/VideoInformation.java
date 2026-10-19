@@ -871,11 +871,9 @@ public final class VideoInformation {
      * @param isLive If the current video is an ongoing live stream.
      */
     public static void setLiveStream(boolean isLive) {
-        // The player response of the same video can be read more than once, and the value is
-        // remembered together with the video it was read for. Otherwise a live video would
-        // mark every following video as live too.
-        // The player response video ID is used because it is already updated for the new video
-        // at this point, while the video ID is still the ID of the previous video.
+        // Remember which video the value is for, so a live video does not mark the following
+        // videos as live. The player response video ID is used because the video ID is
+        // not yet updated for the new video at this point.
         final boolean wasLive = isLiveStream();
         liveStreamVideoId = playerResponseVideoId;
         liveStream = isLive;

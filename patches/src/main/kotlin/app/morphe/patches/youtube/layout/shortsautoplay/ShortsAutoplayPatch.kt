@@ -121,14 +121,10 @@ val shortsAutoplayPatch = bytecodePatch(
                         getReference<MethodReference>()?.definingClass == EXTENSION_CLASS
             } + 1
             val enumRegister = getInstruction<OneRegisterInstruction>(extensionReturnResultIndex).registerA
-            val getReelSequenceControllerIndex = indexOfFirstInstructionOrThrow {
-                val reference = getReference<FieldReference>()
-                opcode == Opcode.IGET_OBJECT &&
-                        reference?.definingClass == definingClass &&
-                        reference.type == reelSequenceControllerMethodReference.definingClass
-            }
-            val getReelSequenceControllerReference = getInstruction<ReferenceInstruction>(
-                getReelSequenceControllerIndex).reference
+            val getReelSequenceControllerReference = getInstanceFieldGetFingerprint(
+                reelSequenceControllerMethodReference.definingClass
+            ).match(ReelPlaybackRepeatFingerprint.originalMethod)
+                .instructionMatches.first().instruction.getReference<FieldReference>()!!
 
             // Add a helper method to avoid finding multiple free registers.
             // If enum is autoplay then method performs autoplay and returns null,

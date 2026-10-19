@@ -1106,8 +1106,6 @@ Automotive レイアウト
   <string name="morphe_shorts_autoplay_summary">ショート動画の再生方法を、一つの動画をくりかえし再生する「ループ再生」から、次々と動画を移動しながら再生する「自動再生」に変更します</string>
   <string name="morphe_shorts_autoplay_background_title">ショートの自動再生 (バックグラウンド)</string>
   <string name="morphe_shorts_autoplay_background_summary">バックグラウンドでのショート動画の再生方法を、一つの動画をくりかえし再生する「ループ再生」から、次々と動画を移動しながら再生する「自動再生」に変更します</string>
-  <string name="morphe_skip_live_shorts_title">ライブ配信のショートをスキップ</string>
-  <string name="morphe_skip_live_shorts_summary">ショートのフィードに流れてくるライブ配信を自動で飛ばします</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">フィードで再生</string>
   <string name="morphe_playback_in_feeds_entry_always_on">常に有効</string>
@@ -1306,7 +1304,6 @@ Automotive レイアウト
   <string name="morphe_remember_playback_speed_last_selected_toast_title">再生速度変更の通知</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">設定の [デフォルトの再生速度] に新しい値が保存されたときに通知を表示します</string>
   <string name="morphe_playback_speed_default_title">デフォルトの再生速度</string>
-  <string name="morphe_shorts_playback_speed_default_title">デフォルトの再生速度（ショート）</string>
   <string name="morphe_remember_playback_speed_toast">デフォルトの再生速度の変更: %s</string>
   <string name="morphe_disable_playback_speed_music_title">音楽動画を通常速度で再生</string>
   <string name="morphe_disable_playback_speed_music_summary">音楽動画を常に 1.0 倍速で再生します</string>

@@ -55,7 +55,6 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -497,37 +496,16 @@ val videoInformationPatch = bytecodePatch(
             val matches = it.matchAll(2 .. 3)
             val playerResponseType = matches.first().method.parameterTypes.first().toString()
 
-            val channelIdMethodCall = getChannelIdFingerprint(playerResponseType).instructionMatches.first()
-                .instruction.getReference<MethodReference>()!!
+            val (videoIsLiveMethodCall, channelIdMethodCall) =
+                with(getChannelIdFingerprint(playerResponseType)) {
+                    Pair(
+                        instructionMatches[0].instruction.getReference<MethodReference>()!!,
+                        instructionMatches[1].instruction.getReference<MethodReference>()!!
+                    )
+                }
 
             val channelNameMethodCall = getChannelNameFingerprint(playerResponseType).instructionMatches.last()
                 .instruction.getReference<MethodReference>()!!
-
-            // The player response model exposes the "is live stream" boolean next to the channel
-            // information, the same way the ReVanced Extended field is read.
-            // Not every supported target has it, so the hook is only added when it can be found.
-            // The player response model exposes the "is live stream" boolean next to the channel
-            // information. Only a getter declared on the player response model itself is used,
-            // the same way the ReVanced Extended field is read.
-            // The hook is skipped on targets that do not expose it.
-            val videoIsLiveMethodCall = runCatching {
-                val method = getChannelIdFingerprint(playerResponseType).method
-                val index = method.indexOfFirstInstructionOrThrow {
-                    val reference = getReference<MethodReference>()
-                    (opcode == Opcode.INVOKE_INTERFACE || opcode == Opcode.INVOKE_INTERFACE_RANGE) &&
-                            reference?.definingClass == playerResponseType &&
-                            reference.returnType == "Z"
-                }
-                method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
-            }.getOrNull()
-
-            val videoIsLiveInstructions = if (videoIsLiveMethodCall != null) {
-                """
-                    invoke-interface { p1 }, $videoIsLiveMethodCall
-                    move-result v0
-                    invoke-static { v0 }, $EXTENSION_CLASS->setLiveStream(Z)V
-                """
-            } else ""
 
             // The helper this resolves through only exists in later targets, and the title is
             // only used by the minimal miniplayer, which is only rebuilt for those.
@@ -570,7 +548,9 @@ val videoInformationPatch = bytecodePatch(
 
                             $videoTitleInstructions
 
-                            $videoIsLiveInstructions
+                            invoke-interface { p1 }, $videoIsLiveMethodCall
+                            move-result v0
+                            invoke-static { v0 }, $EXTENSION_CLASS->setLiveStream(Z)V
 
                             return-void
                         """.toInstructions(),

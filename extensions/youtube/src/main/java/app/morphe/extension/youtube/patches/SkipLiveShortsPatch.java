@@ -38,7 +38,7 @@ public class SkipLiveShortsPatch {
     }
 
     /**
-     * Injection point. Called when the app reports whether the current video is a live stream.
+     * Called by {@link VideoInformation} when the live stream state of the current video changes.
      */
     public static void onLiveStreamChanged(boolean isLive) {
         try {
