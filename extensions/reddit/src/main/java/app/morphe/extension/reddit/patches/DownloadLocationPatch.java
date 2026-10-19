@@ -33,7 +33,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.WeakHashMap;
 
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.utils.DocumentTree;
@@ -55,6 +54,20 @@ import app.morphe.extension.shared.settings.StringSetting;
  */
 @SuppressWarnings("unused")
 public final class DownloadLocationPatch {
+
+    /**
+     * Interface to use obfuscated methods of the image download parameters.
+     */
+    public interface ImageDownloadParams {
+        // Methods are added during patching.
+        String patch_getUrl();
+
+        @Nullable
+        String patch_getSubreddit();
+
+        @Nullable
+        String patch_getAuthor();
+    }
 
     public enum Option {
         FOLDER(Settings.DOWNLOAD_FOLDER, "folder"),
@@ -122,12 +135,6 @@ public final class DownloadLocationPatch {
     private static volatile Media pendingVideo;
 
     /**
-     * Image download parameters to the image.
-     * Several images can download at once, so each save looks up the parameters it's saving.
-     */
-    private static final Map<Object, Media> imageDownloads = Collections.synchronizedMap(new WeakHashMap<>());
-
-    /**
      * Reddit downloads and saves an image on one thread without suspending.
      */
     private static final ThreadLocal<Media> savingImage = new ThreadLocal<>();
@@ -136,6 +143,7 @@ public final class DownloadLocationPatch {
      * Where a download is saved. Null values are what Reddit chose.
      */
     private record Destination(@Nullable String folder, @Nullable String subfolder, @Nullable String fileName) {
+        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
         boolean isDefault() {
             return folder == null && subfolder == null && fileName == null;
         }
@@ -161,10 +169,21 @@ public final class DownloadLocationPatch {
     }
 
     /**
+     * @return If any download location option is set. If none is, the hooks do nothing.
+     */
+    private static boolean isEnabled() {
+        return !Settings.DOWNLOAD_FOLDER.get().isEmpty()
+                || !Settings.DOWNLOAD_PATH_PATTERN.get().isEmpty()
+                || !Settings.DOWNLOAD_ACCOUNTS.get().isEmpty();
+    }
+
+    /**
      * Injection point. Called when a post is created.
      */
     public static void onLinkCreated(Link link) {
         try {
+            if (!isEnabled()) return;
+
             // Posts are created soon after the app starts.
             PickedFolderVideos.resumePendingVideos();
 
@@ -180,26 +199,22 @@ public final class DownloadLocationPatch {
     }
 
     /**
-     * Injection point. Called when the parameters of an image download are created.
+     * Injection point. Called on the thread that downloads and saves an image.
      */
-    public static void onImageDownload(Object params, @Nullable String url,
-                                       @Nullable String subreddit, @Nullable String author) {
+    public static void onImageSave(ImageDownloadParams params) {
         try {
-            String path = url == null ? null : Uri.parse(url).getPath();
+            if (!isEnabled()) return;
+
+            String url = params.patch_getUrl();
+            String path = Uri.parse(url).getPath();
             String type = path != null && path.toLowerCase(Locale.ROOT).endsWith(".gif")
                     ? TYPE_GIF
                     : TYPE_IMAGE;
-            imageDownloads.put(params, new Media(new Source(subreddit, author), type, getImageName(url)));
+            Source source = new Source(params.patch_getSubreddit(), params.patch_getAuthor());
+            savingImage.set(new Media(source, type, getImageName(url)));
         } catch (Exception ex) {
-            Logger.printException(() -> "onImageDownload failure", ex);
+            Logger.printException(() -> "onImageSave failure", ex);
         }
-    }
-
-    /**
-     * Injection point. Called on the thread that downloads and saves an image.
-     */
-    public static void onImageSave(Object params) {
-        savingImage.set(imageDownloads.get(params));
     }
 
     /**
@@ -207,6 +222,8 @@ public final class DownloadLocationPatch {
      */
     public static void onVideoDownload(@Nullable Uri uri) {
         try {
+            if (!isEnabled()) return;
+
             String url = uri == null ? null : uri.toString();
             VideoPost post = url == null ? null : videoPosts.get(url);
             pendingVideo = new Media(
@@ -228,15 +245,17 @@ public final class DownloadLocationPatch {
         try {
             Media media = pendingVideo;
             pendingVideo = null;
+            if (!isEnabled()) {
+                return request.setDestinationInExternalPublicDir(dirType, subPath);
+            }
+
             Destination destination = getDestination(media, subPath);
+            String fileName = destination.fileName != null ? destination.fileName : subPath;
             if (destination.isTree()) {
-                return PickedFolderVideos.setDestination(request, destination.folder, destination.subfolder,
-                        destination.fileName != null ? destination.fileName : subPath);
+                return PickedFolderVideos.setDestination(request, destination.folder, destination.subfolder, fileName);
             }
             if (!destination.isDefault()) {
                 String folder = destination.getFolder(dirType);
-                String fileName = destination.fileName != null ? destination.fileName : subPath;
-
                 final int separatorIndex = folder.indexOf('/');
                 if (separatorIndex < 0) {
                     return request.setDestinationInExternalPublicDir(folder, fileName);
@@ -284,7 +303,7 @@ public final class DownloadLocationPatch {
     @Nullable
     private static Uri insert(ContentResolver resolver, Uri uri, ContentValues values, Media media) {
         // Relative paths require Android 10.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && isEnabled()) {
             try {
                 String displayName = values.getAsString(MediaStore.MediaColumns.DISPLAY_NAME);
                 Destination destination = getDestination(media, displayName);

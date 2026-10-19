@@ -19,13 +19,13 @@ import android.webkit.MimeTypeMap;
 import androidx.annotation.Nullable;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.Collection;
 import java.util.Locale;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
@@ -86,6 +86,7 @@ public final class DocumentTree {
             if (volume.equals(PRIMARY_VOLUME)) return path;
             return path.isEmpty() ? volume : volume + "/" + path;
         } catch (Exception ex) {
+            Logger.printException(() -> "getLabel failure: " + tree, ex);
             return tree;
         }
     }
@@ -113,14 +114,9 @@ public final class DocumentTree {
     }
 
     public static void copy(File source, Uri target) throws IOException {
-        try (InputStream input = new FileInputStream(source);
-             OutputStream output = getResolver().openOutputStream(target)) {
+        try (OutputStream output = getResolver().openOutputStream(target)) {
             if (output == null) throw new IOException("Could not open: " + target);
-            byte[] buffer = new byte[64 * 1024];
-            int read;
-            while ((read = input.read(buffer)) != -1) {
-                output.write(buffer, 0, read);
-            }
+            Files.copy(source.toPath(), output);
         }
     }
 

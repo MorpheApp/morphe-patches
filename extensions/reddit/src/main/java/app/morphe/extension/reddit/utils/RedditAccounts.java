@@ -14,12 +14,9 @@ import android.content.SharedPreferences;
 
 import androidx.annotation.Nullable;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +63,7 @@ public final class RedditAccounts {
             String name = null;
             File file = new File(context.getFilesDir(), "datastore/" + STORE_NAME + ".preferences_pb");
             if (file.exists()) {
-                name = readStringPreference(readFile(file), ACCOUNT_NAME_KEY);
+                name = readStringPreference(Files.readAllBytes(file.toPath()), ACCOUNT_NAME_KEY);
             }
             if (name == null) {
                 SharedPreferences preferences = context.getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
@@ -106,18 +103,6 @@ public final class RedditAccounts {
             Logger.printException(() -> "getLoggedIn failure", ex);
         }
         return names;
-    }
-
-    private static byte[] readFile(File file) throws IOException {
-        try (InputStream input = new FileInputStream(file)) {
-            ByteArrayOutputStream output = new ByteArrayOutputStream();
-            byte[] buffer = new byte[4096];
-            int read;
-            while ((read = input.read(buffer)) != -1) {
-                output.write(buffer, 0, read);
-            }
-            return output.toByteArray();
-        }
     }
 
     /**

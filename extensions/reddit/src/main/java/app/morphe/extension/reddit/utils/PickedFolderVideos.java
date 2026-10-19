@@ -9,6 +9,7 @@ package app.morphe.extension.reddit.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -29,6 +30,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Iterator;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -133,6 +135,8 @@ public final class PickedFolderVideos {
         });
     }
 
+    // The exported flag is only required on Android 13 and newer.
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     private static synchronized void registerDownloadCompleteReceiver() {
         if (downloadCompleteReceiver != null) return;
 
@@ -181,6 +185,13 @@ public final class PickedFolderVideos {
      * Saves to the downloads folder like Reddit does, if the picked folder was deleted or its permission was removed.
      */
     private static void saveToDownloadsFolder(Video video) throws IOException {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            // Reddit asks for the storage permission before it downloads a video on Android 9.
+            File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            Files.copy(video.file.toPath(), new File(folder, video.fileName).toPath());
+            return;
+        }
+
         ContentValues values = new ContentValues();
         values.put(MediaStore.MediaColumns.DISPLAY_NAME, video.fileName);
         values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);

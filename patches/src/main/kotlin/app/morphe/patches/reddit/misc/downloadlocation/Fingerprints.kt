@@ -17,23 +17,6 @@ import com.android.tools.smali.dexlib2.Opcode
 private const val CONTENT_RESOLVER_CLASS = "Landroid/content/ContentResolver;"
 
 /**
- * Main Link constructor, the only one that sets the url.
- */
-internal object LinkConstructorFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/domain/model/Link;",
-    name = "<init>",
-    returnType = "V",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            definingClass = "Lcom/reddit/domain/model/Link;",
-            name = "url",
-            type = "Ljava/lang/String;"
-        )
-    )
-)
-
-/**
  * Download model of a post, which is obfuscated in some app versions.
  */
 internal object LinkDownloadModelToStringFingerprint : Fingerprint(
@@ -66,17 +49,24 @@ private object ImageDownloadParamsToStringFingerprint : Fingerprint(
 )
 
 /**
- * The url is the only string parameter.
+ * Sets the image url, which is the only string field, and the download model of the post.
  */
-internal object ImageDownloadParamsConstructorFingerprint : Fingerprint(
+internal fun imageDownloadParamsConstructorFingerprint(modelType: String) = Fingerprint(
     classFingerprint = ImageDownloadParamsToStringFingerprint,
     name = "<init>",
     returnType = "V",
-    custom = { method, _ ->
-        method.parameterTypes.count { it == "Ljava/lang/String;" } == 1 &&
-                // Kotlin default arguments constructor, which calls the main constructor.
-                method.parameterTypes.none { it == "Lkotlin/jvm/internal/DefaultConstructorMarker;" }
-    }
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = modelType
+        )
+    )
 )
 
 internal object DownloadVideoFingerprint : Fingerprint(
@@ -108,6 +98,7 @@ internal object DownloadImageFingerprint : Fingerprint(
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
             name = "\$params"
         )
     )

@@ -153,7 +153,7 @@ public final class DownloadLocationPreference extends Preference {
 
     private void showLocationsDialog() {
         Context context = getContext();
-        List<Location> locations = new ArrayList<>(getLocations());
+        List<Location> locations = getLocations();
 
         BaseAdapter adapter = new BaseAdapter() {
             @Override
@@ -354,8 +354,9 @@ public final class DownloadLocationPreference extends Preference {
             }
             String imagePath = DownloadLocationPatch.getExamplePath(folder, pattern, exampleAccount, false);
             String videoPath = DownloadLocationPatch.getExamplePath(folder, pattern, exampleAccount, true);
+            // noinspection SetTextI18n
             example.setText(str("morphe_download_location_example_images", imagePath)
-                    + "\n" + str("morphe_download_location_example_videos", videoPath));
+                    + '\n' + str("morphe_download_location_example_videos", videoPath));
         };
 
         setFolder.accept(initialFolder);
@@ -549,8 +550,6 @@ public final class DownloadLocationPreference extends Preference {
         }
 
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
         intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, DocumentsContract.buildDocumentUri(
                 EXTERNAL_STORAGE_AUTHORITY, PRIMARY_VOLUME_PREFIX + initialFolder));
 
