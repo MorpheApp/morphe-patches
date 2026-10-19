@@ -12,10 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.util.findMutableMethodOf
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/TranslatedCaptionPensPatch;"
@@ -47,10 +44,7 @@ internal val translatedCaptionPensPatch = bytecodePatch(
         }
 
         // Every pen lookup of the timed text parser (<pen>, <p> and <s> elements) uses the same method.
-        val penLookupMethod = TimedTextSegmentElementFingerprint.instructionMatches[2]
-            .instruction.getReference<MethodReference>()!!
-
-        mutableClassDefBy(penLookupMethod.definingClass).findMutableMethodOf(penLookupMethod).addInstructions(
+        TimedTextSegmentElementFingerprint.instructionMatches[2].getMethodCalled().addInstructions(
             0,
             """
                 invoke-static { p1 }, $EXTENSION_CLASS->getPenId(I)I
