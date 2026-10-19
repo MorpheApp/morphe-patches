@@ -64,8 +64,6 @@ public final class FeedEngagementCountsPatch {
     private static final long HIDDEN_RETRY_DELAY_MS = 400;
     /** Checks of a card that is not visible, before its fetch waits for the next layout. */
     private static final int MAX_HIDDEN_RETRIES = 10;
-    /** Fade in of counts that were fetched. Counts already in the cache are shown at once. */
-    private static final long FADE_IN_MS = 100;
 
     /** Top margin of a thumbnail that is too small to fit the badge above the duration. */
     private static final int MARGIN_DP = 10;
@@ -297,7 +295,8 @@ public final class FeedEngagementCountsPatch {
         private void startFadeIn() {
             endFadeIn();
             ValueAnimator animator = ValueAnimator.ofInt(0, 255);
-            animator.setDuration(FADE_IN_MS);
+            // Counts already in the cache are shown at once.
+            animator.setDuration(FeedVideoCardsPatch.BADGE_FADE_IN_MS);
             animator.addUpdateListener(animation -> setAlpha((int) animation.getAnimatedValue()));
             fadeIn = animator;
             setAlpha(0);

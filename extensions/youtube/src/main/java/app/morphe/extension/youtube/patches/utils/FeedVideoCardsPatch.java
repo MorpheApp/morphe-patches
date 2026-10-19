@@ -63,6 +63,8 @@ public final class FeedVideoCardsPatch {
     /** A card must be almost as wide as the screen. Shelves and grids are not used. */
     private static final float MIN_WIDTH_OF_SCREEN = 0.7f;
     public static final float THUMBNAIL_RATIO = 9f / 16f;
+    /** Fade in of the badges drawn on the thumbnails. */
+    public static final long BADGE_FADE_IN_MS = 100;
     private static final int MIN_WIDTH_DP = 240;
 
     /** Shorter texts, such as a duration, are shown by too many videos. */

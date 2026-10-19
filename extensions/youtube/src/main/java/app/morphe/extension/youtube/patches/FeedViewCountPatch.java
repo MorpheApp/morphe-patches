@@ -7,7 +7,9 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.animation.ValueAnimator;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -895,6 +897,9 @@ public final class FeedViewCountPatch {
         @Nullable
         private String viewCount;
         private boolean added;
+        private int alpha = 255;
+        @Nullable
+        private ValueAnimator fadeIn;
 
         ViewCountBadge(ComponentHost host) {
             hostRef = new WeakReference<>(host);
@@ -919,6 +924,9 @@ public final class FeedViewCountPatch {
         }
 
         void bind(ComponentHost host, String newViewCount, @Nullable Rect duration, int thumbnailBottom) {
+            // Fades in when shown, or when the card shows another video.
+            // Not when the card is only laid out again.
+            final boolean changed = !newViewCount.equals(viewCount);
             viewCount = newViewCount;
 
             // Same height, bottom and margin as the duration badge.
@@ -949,10 +957,36 @@ public final class FeedViewCountPatch {
                 host.getOverlay().add(this);
                 added = true;
             }
-            invalidateSelf();
+            if (changed) {
+                startFadeIn();
+            } else {
+                invalidateSelf();
+            }
+        }
+
+        private void startFadeIn() {
+            endFadeIn();
+            ValueAnimator animator = ValueAnimator.ofInt(0, 255);
+            animator.setDuration(FeedVideoCardsPatch.BADGE_FADE_IN_MS);
+            animator.addUpdateListener(animation -> setAlpha((int) animation.getAnimatedValue()));
+            fadeIn = animator;
+            setAlpha(0);
+            animator.start();
+        }
+
+        /**
+         * Ends the fade in, so the badge is fully shown.
+         */
+        private void endFadeIn() {
+            if (fadeIn != null) {
+                ValueAnimator animator = fadeIn;
+                fadeIn = null;
+                animator.end();
+            }
         }
 
         void detach(ComponentHost host) {
+            endFadeIn();
             if (added) {
                 host.getOverlay().remove(this);
                 added = false;
@@ -969,6 +1003,10 @@ public final class FeedViewCountPatch {
                 // The inline player shows its own controls over the thumbnail.
                 return;
             }
+            backgroundPaint.setAlpha(Color.alpha(BACKGROUND_COLOR) * alpha / 255);
+            textPaint.setAlpha(alpha);
+            iconPaint.setAlpha(alpha);
+
             Rect bounds = getBounds();
             final float radius = px(RADIUS_DP);
             rect.set(bounds);
@@ -994,6 +1032,8 @@ public final class FeedViewCountPatch {
 
         @Override
         public void setAlpha(int alpha) {
+            this.alpha = alpha;
+            invalidateSelf();
         }
 
         @Override
