@@ -21,7 +21,7 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/utils/FeedVideoCards;"
+    "Lapp/morphe/extension/youtube/patches/utils/FeedVideoCardsPatch;"
 
 /**
  * Litho is not obfuscated, and the method overrides the framework,

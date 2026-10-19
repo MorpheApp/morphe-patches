@@ -50,20 +50,7 @@ import kotlin.Unit;
  * a channel, do not belong to any video.
  */
 @SuppressWarnings("unused")
-public final class FeedVideoCards {
-
-    /**
-     * Receives the video cards once they are laid out.
-     */
-    public interface Listener {
-        /**
-         * Called on the main thread after a root host is laid out.
-         *
-         * @param videoId The video of the card, or null if the host is not a video card
-         *                or its video is not known.
-         */
-        void onCardLaidOut(ComponentHost host, @Nullable String videoId);
-    }
+public final class FeedVideoCardsPatch {
 
     private static final boolean ENABLED = FeedEngagementCountsPatch.ENABLED
             || Settings.FEED_WATCH_LATER_BUTTON.get();
@@ -92,8 +79,8 @@ public final class FeedVideoCards {
 
     /**
      * Result of {@link #findVideoId(ComponentHost)} for a video card whose texts are not drawn yet,
-     * such as while the app returns from the background. The listeners are not called for it,
-     * so what they drew on the card is kept until its texts are drawn.
+     * such as while the app returns from the background. The card keeps its last known video
+     * until its texts are drawn.
      */
     private static final String NOT_READY = "not_ready";
 
@@ -118,16 +105,11 @@ public final class FeedVideoCards {
     private static final Map<String, String> textVideoIds = Utils
             .createSizeRestrictedMap(MAX_TEXTS, true);
 
-    private static final List<Listener> listeners = new ArrayList<>();
-
     /** Root host -> video of the card, of the cards laid out last. Used only on the main thread. */
     private static final Map<ComponentHost, String> cardVideoIds = Collections.synchronizedMap(
             new WeakHashMap<>());
 
     static {
-        if (FeedEngagementCountsPatch.ENABLED) {
-            listeners.add(FeedEngagementCountsPatch.LISTENER);
-        }
         if (ENABLED) {
             // The inline player shows its buttons over the thumbnail, so what is drawn
             // on the thumbnail is hidden while the video of the card plays in the feed.
@@ -197,7 +179,7 @@ public final class FeedVideoCards {
         }
     }
 
-    private FeedVideoCards() {
+    private FeedVideoCardsPatch() {
     }
 
     private static boolean contains(byte[] bytes, byte[] search) {
@@ -513,10 +495,8 @@ public final class FeedVideoCards {
                 } else {
                     cardVideoIds.put(root, videoId);
                 }
-                final String cardVideoId = PLAYLIST.equals(videoId) ? null : videoId;
-                for (Listener listener : listeners) {
-                    listener.onCardLaidOut(root, cardVideoId);
-                }
+                FeedEngagementCountsPatch.onCardLaidOut(root,
+                        PLAYLIST.equals(videoId) ? null : videoId);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "updateRoots failure", ex);

@@ -10,7 +10,6 @@ package app.morphe.extension.youtube.patches;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -41,11 +40,12 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.shared.returnyoutubedislike.requests.RYDVoteData;
-import app.morphe.extension.youtube.patches.utils.FeedVideoCards;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Shows the like count and the like ratio of feed videos at the right side of their thumbnails.
+ * Part of the Return YouTube Dislike patch.
  * <p>
  * Feed videos do not include their like count, so it's fetched from the Return YouTube Dislike API,
  * with the same cache as the player. A video is fetched only after its card stayed on the screen
@@ -55,8 +55,9 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class FeedEngagementCountsPatch {
 
-    private static final boolean LIKE_COUNT = Settings.FEED_LIKE_COUNT.get();
-    private static final boolean LIKE_RATIO = Settings.FEED_LIKE_RATIO.get();
+    private static final boolean RYD_ENABLED = Settings.RYD_ENABLED.get();
+    private static final boolean LIKE_COUNT = RYD_ENABLED && Settings.RYD_FEED_LIKE_COUNT.get();
+    private static final boolean LIKE_RATIO = RYD_ENABLED && Settings.RYD_FEED_LIKE_RATIO.get();
     public static final boolean ENABLED = LIKE_COUNT || LIKE_RATIO;
 
     /** Time a card must stay on the screen before its video is fetched. */
@@ -72,6 +73,7 @@ public final class FeedEngagementCountsPatch {
     /** Below the Watch later button of the Feed video actions patch. */
     private static final int MIN_TOP_DP = 50;
     private static final int PADDING_DP = 6;
+    private static final int CORNER_RADIUS_DP = 8;
     private static final int ICON_DP = 16;
     private static final int GAP_DP = 3;
     private static final int BAR_HEIGHT_DP = 3;
@@ -96,8 +98,6 @@ public final class FeedEngagementCountsPatch {
 
     @Nullable
     private static NumberFormat percentFormat;
-
-    public static final FeedVideoCards.Listener LISTENER = FeedEngagementCountsPatch::onCardLaidOut;
 
     private FeedEngagementCountsPatch() {
     }
@@ -160,22 +160,26 @@ public final class FeedEngagementCountsPatch {
         ViewParent parent = view.getParent();
         while (parent instanceof View parentView) {
             final int id = parentView.getId();
-            if (id != View.NO_ID) {
-                try {
-                    String name = parentView.getResources().getResourceEntryName(id);
-                    if (name.contains("bottom_sheet")) {
-                        return true;
-                    }
-                } catch (Resources.NotFoundException ignored) {
-                    // A generated id.
-                }
+            // Generated ids, which have no package, are not resources.
+            if (id != View.NO_ID && (id >>> 24) != 0
+                    && parentView.getResources().getResourceEntryName(id).contains("bottom_sheet")) {
+                return true;
             }
             parent = parentView.getParent();
         }
         return false;
     }
 
-    private static void onCardLaidOut(ComponentHost host, @Nullable String videoId) {
+    /**
+     * Called by {@link FeedVideoCardsPatch} on the main thread after a root host is laid out.
+     *
+     * @param videoId The video of the card, or null if the host is not a video card
+     *                or its video is not known.
+     */
+    public static void onCardLaidOut(ComponentHost host, @Nullable String videoId) {
+        if (!ENABLED) {
+            return;
+        }
         if (videoId != null && isInDialog(host)) {
             videoId = null;
         }
@@ -369,7 +373,7 @@ public final class FeedEngagementCountsPatch {
             final int width = Math.max(px(MIN_WIDTH_DP), Math.round(contentWidth) + padding * 2);
             final int height = Math.round(contentHeight) + padding * 2;
 
-            final int thumbnailHeight = Math.round(host.getWidth() * FeedVideoCards.THUMBNAIL_RATIO);
+            final int thumbnailHeight = Math.round(host.getWidth() * FeedVideoCardsPatch.THUMBNAIL_RATIO);
             final int right = host.getWidth() - px(RIGHT_MARGIN_DP);
             int top = (thumbnailHeight - height) / 2;
             top = Math.max(top, px(MIN_TOP_DP));
@@ -404,12 +408,12 @@ public final class FeedEngagementCountsPatch {
                 return;
             }
             ComponentHost host = hostRef.get();
-            if (host != null && FeedVideoCards.isCardPlayingInline(host)) {
+            if (host != null && FeedVideoCardsPatch.isCardPlayingInline(host)) {
                 // The captions button of the inline player is here.
                 return;
             }
             Rect bounds = getBounds();
-            final float radius = px(8);
+            final float radius = px(CORNER_RADIUS_DP);
             rect.set(bounds);
             canvas.drawRoundRect(rect, radius, radius, backgroundPaint);
 

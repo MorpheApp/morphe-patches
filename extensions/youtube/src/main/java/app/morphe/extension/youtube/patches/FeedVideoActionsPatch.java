@@ -52,7 +52,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
-import app.morphe.extension.youtube.patches.utils.FeedVideoCards;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -216,8 +216,8 @@ public final class FeedVideoActionsPatch {
         }
 
         boolean isBadgeHit(ComponentHost host, float x, float y) {
-            if (!badgeAdded || FeedVideoCards.isCardPlayingInline(host)
-                    || FeedVideoCards.isPlaylistCard(host)) {
+            if (!badgeAdded || FeedVideoCardsPatch.isCardPlayingInline(host)
+                    || FeedVideoCardsPatch.isPlaylistCard(host)) {
                 return false;
             }
             Rect bounds = badge.getBounds();
@@ -249,8 +249,8 @@ public final class FeedVideoActionsPatch {
         @Override
         public void draw(@NonNull Canvas canvas) {
             ComponentHost host = hostRef.get();
-            if (host != null && (FeedVideoCards.isCardPlayingInline(host)
-                    || FeedVideoCards.isPlaylistCard(host))) {
+            if (host != null && (FeedVideoCardsPatch.isCardPlayingInline(host)
+                    || FeedVideoCardsPatch.isPlaylistCard(host))) {
                 // The mute button of the inline player is here, or the card is a playlist or a mix.
                 return;
             }
