@@ -10,6 +10,7 @@ package app.morphe.extension.shared.settings.preference;
 import static app.morphe.extension.shared.StringRef.sf;
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -66,6 +67,13 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
             intent.setType("text/plain");
             intent.setPackage(downloaderPackageName);
             intent.putExtra("android.intent.extra.TEXT", url);
+            // Opening the downloader is not the user leaving the app.
+            // Without this flag a playing video enters picture-in-picture,
+            // and the downloader's window opens over the home screen instead of over the video.
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+            if (!(context instanceof Activity)) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
             context.startActivity(intent);
         } catch (Exception ex) {
             Logger.printException(() -> "launchExternalDownloader failure", ex);
