@@ -7,6 +7,9 @@
 
 package app.morphe.extension.youtube.patches.utils;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -352,6 +355,14 @@ public final class FeedVideoCardsPatch {
     private static final Pattern BADGE_PATTERN = Pattern.compile("^\\p{Lu}{2,12}$");
 
     /**
+     * @return If the text is a duration, such as 4:05, or a badge such as the live badge.
+     */
+    public static boolean isVideoBadgeText(String text) {
+        return (text.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(text).find())
+                || BADGE_PATTERN.matcher(text).matches();
+    }
+
+    /**
      * Videos show their duration, or a badge such as the live badge, on the thumbnail.
      * Mixes, playlists and Shorts do not.
      */
@@ -360,9 +371,7 @@ public final class FeedVideoCardsPatch {
         if (textContent != null) {
             for (CharSequence text : textContent.getTextItems()) {
                 if (text != null) {
-                    String item = text.toString().trim();
-                    if ((item.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(item).find())
-                            || BADGE_PATTERN.matcher(item).matches()) {
+                    if (isVideoBadgeText(text.toString().trim())) {
                         return true;
                     }
                 }
@@ -395,6 +404,49 @@ public final class FeedVideoCardsPatch {
         }
     }
 
+    @Nullable
+    private static Activity findActivity(Context context) {
+        while (context instanceof ContextWrapper wrapper) {
+            if (context instanceof Activity activity) {
+                return activity;
+            }
+            context = wrapper.getBaseContext();
+        }
+        return null;
+    }
+
+    /**
+     * The share sheet and other bottom sheets are dialogs that can show the thumbnail and the texts
+     * of the opened video, so they look like a card. Feeds are in the window of the activity.
+     */
+    public static boolean isInDialog(ComponentHost host) {
+        Activity activity = findActivity(host.getContext());
+        if (activity != null && activity.getWindow() != null) {
+            View decorView = activity.getWindow().peekDecorView();
+            if (decorView != null && host.getRootView() != decorView) {
+                return true;
+            }
+        }
+        return isInBottomSheet(host);
+    }
+
+    /**
+     * Bottom sheets that are shown in the window of the activity.
+     */
+    private static boolean isInBottomSheet(View view) {
+        ViewParent parent = view.getParent();
+        while (parent instanceof View parentView) {
+            final int id = parentView.getId();
+            // Generated ids, which have no package, are not resources.
+            if (id != View.NO_ID && (id >>> 24) != 0
+                    && parentView.getResources().getResourceEntryName(id).contains("bottom_sheet")) {
+                return true;
+            }
+            parent = parentView.getParent();
+        }
+        return false;
+    }
+
     /**
      * @return If the view is a list that scrolls sideways, such as a shelf of videos.
      */
@@ -412,7 +464,7 @@ public final class FeedVideoCardsPatch {
      * A shelf shows many videos, and is shaped like a single video. The texts of its first video
      * would decide the video of the whole shelf, and stay when the shelf is scrolled.
      */
-    private static boolean hasHorizontalList(ViewGroup group) {
+    public static boolean hasHorizontalList(ViewGroup group) {
         for (int i = 0, count = group.getChildCount(); i < count; i++) {
             View child = group.getChildAt(i);
             if (isHorizontalList(child)
@@ -505,11 +557,7 @@ public final class FeedVideoCardsPatch {
     /**
      * Checks the card again a little later, such as when what is drawn on it was not found yet.
      */
-    public static void checkAgainLater(ComponentHost root) {
-        scheduleRetry(root);
-    }
-
-    private static void scheduleRetry(ComponentHost root) {
+    public static void scheduleRetry(ComponentHost root) {
         Integer count = retries.get(root);
         final int attempt = count == null ? 0 : count;
         if (attempt >= MAX_RETRIES) {

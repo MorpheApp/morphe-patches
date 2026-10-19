@@ -8,9 +8,6 @@
 package app.morphe.extension.youtube.patches;
 
 import android.animation.ValueAnimator;
-import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -25,7 +22,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.view.ViewParent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -132,49 +128,6 @@ public final class FeedEngagementCountsPatch {
         return percentFormat.format(fraction);
     }
 
-    @Nullable
-    private static Activity findActivity(Context context) {
-        while (context instanceof ContextWrapper wrapper) {
-            if (context instanceof Activity activity) {
-                return activity;
-            }
-            context = wrapper.getBaseContext();
-        }
-        return null;
-    }
-
-    /**
-     * The share sheet and other bottom sheets are dialogs that can show the thumbnail and the texts
-     * of the opened video, so they look like a card. Feeds are in the window of the activity.
-     */
-    private static boolean isInDialog(ComponentHost host) {
-        Activity activity = findActivity(host.getContext());
-        if (activity != null && activity.getWindow() != null) {
-            View decorView = activity.getWindow().peekDecorView();
-            if (decorView != null && host.getRootView() != decorView) {
-                return true;
-            }
-        }
-        return isInBottomSheet(host);
-    }
-
-    /**
-     * Bottom sheets that are shown in the window of the activity.
-     */
-    private static boolean isInBottomSheet(View view) {
-        ViewParent parent = view.getParent();
-        while (parent instanceof View parentView) {
-            final int id = parentView.getId();
-            // Generated ids, which have no package, are not resources.
-            if (id != View.NO_ID && (id >>> 24) != 0
-                    && parentView.getResources().getResourceEntryName(id).contains("bottom_sheet")) {
-                return true;
-            }
-            parent = parentView.getParent();
-        }
-        return false;
-    }
-
     /**
      * Called by {@link FeedVideoCardsPatch} on the main thread after a root host is laid out.
      *
@@ -185,7 +138,7 @@ public final class FeedEngagementCountsPatch {
         if (!ENABLED) {
             return;
         }
-        if (videoId != null && isInDialog(host)) {
+        if (videoId != null && FeedVideoCardsPatch.isInDialog(host)) {
             videoId = null;
         }
         CountsBadge badge = badges.get(host);

@@ -7,10 +7,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -26,7 +22,6 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,6 +45,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -58,7 +54,7 @@ import app.morphe.extension.youtube.settings.Settings;
  * lined up with the duration badge at the bottom right.
  * <p>
  * The view count is the text YouTube shows below the title, such as
- * "Channel · 4.7M views · 2 days ago". When that text is created, the shortened view count
+ * "Channel - 4.7M views - 2 days ago". When that text is created, the shortened view count
  * is attached to it as a span, so the card that draws the text knows its view count.
  * The span is copied with the text, so it is kept when the Hide view count option
  * of the Hide layout components patch removes the view count from below the title.
@@ -76,7 +72,7 @@ public final class FeedViewCountPatch {
 
     /**
      * Delimiters of the texts below the title. Older layouts show a dot as text,
-     * such as "Channel · 4.7M views · 2 days ago". Newer layouts draw the dot as an icon
+     * such as "Channel (dot) 4.7M views (dot) 2 days ago". Newer layouts draw the dot as an icon
      * in place of spaces, such as "Channel      4.7M   2 days ago".
      * A no-break space is used inside a view count, such as "4.7 M", so it is not a delimiter.
      */
@@ -93,6 +89,12 @@ public final class FeedViewCountPatch {
 
     /** Different words of view counts that were seen, such as "views" and "watching". */
     private static final int MAX_VIEW_WORDS = 8;
+
+    /** Allowed difference of sizes and positions that are compared. */
+    private static final int TOLERANCE_DP = 4;
+    /** A thumbnail is almost as wide as the card, and at its top. */
+    private static final float MIN_THUMBNAIL_WIDTH_OF_CARD = 0.9f;
+    private static final int MAX_THUMBNAIL_TOP_DP = 16;
 
     private static final int FALLBACK_MARGIN_DP = 8;
     /** A little more space than the duration badge has, so the count is not at the very edge. */
@@ -111,15 +113,15 @@ public final class FeedViewCountPatch {
     private static final int RADIUS_DP = 4;
     private static final float TEXT_SP = 12f;
     private static final float ICON_STROKE_DP = 1.4f;
+    /** Text size of the badge, relative to its height. */
+    private static final float TEXT_SIZE_OF_HEIGHT = 0.62f;
+    /** Size of the play icon, relative to the text size. */
+    private static final float ICON_SIZE_OF_TEXT = 0.72f;
+    /** Width of the play icon, relative to its height. */
+    private static final float ICON_WIDTH_OF_HEIGHT = 0.88f;
 
     private static final int BACKGROUND_COLOR = 0xA6000000;
     private static final int TEXT_COLOR = 0xFFFFFFFF;
-
-    private static final Pattern DURATION_PATTERN =
-            Pattern.compile("(?:^|[^\\p{L}\\p{N}])\\d{1,2}(?:[:.]\\d{2}){1,2}$");
-    private static final int MAX_DURATION_TEXT_LENGTH = 12;
-    /** A short badge in capital letters at the same place, such as the live badge. */
-    private static final Pattern BADGE_PATTERN = Pattern.compile("^\\p{Lu}{2,12}$");
 
     /** Shortened number units of the language of the app, such as K and M, longest first. */
     @Nullable
@@ -182,6 +184,12 @@ public final class FeedViewCountPatch {
     private static final String PATH_SEPARATOR = "\n";
 
     static {
+        if (ENABLED) {
+            loadCardPaths();
+        }
+    }
+
+    private static void loadCardPaths() {
         try {
             for (String path : Settings.FEED_VIEW_COUNT_PATHS.get().split(PATH_SEPARATOR)) {
                 if (!path.isEmpty()) {
@@ -242,6 +250,7 @@ public final class FeedViewCountPatch {
             try {
                 CompactDecimalFormat format = CompactDecimalFormat.getInstance(
                         locale, CompactDecimalFormat.CompactStyle.SHORT);
+                // 1 thousand up to 1 quadrillion.
                 long value = 1_000;
                 for (int i = 0; i < 13; i++) {
                     String unit = format.format(value).replaceAll("[\\p{Nd}\\s\u00A0\u202F.,'\u2019]", "");
@@ -270,7 +279,7 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * Languages written without spaces show the unit attached to the word, such as 4.7万次观看.
+     * Languages written without spaces show the unit attached to the word, such as Chinese.
      */
     private static boolean isWrittenWithoutSpaces(char c) {
         Character.UnicodeScript script = Character.UnicodeScript.of(c);
@@ -380,6 +389,14 @@ public final class FeedViewCountPatch {
         }
     }
 
+    /**
+     * The view count found in the texts below the title.
+     *
+     * @param index Index of the segment of the view count.
+     */
+    private record ViewCountMatch(List<Segment> segments, int index, ParsedViewCount parsed) {
+    }
+
     private static List<Segment> splitSegments(String text) {
         List<Segment> segments = new ArrayList<>();
         Matcher matcher = SEGMENT_DELIMITER_PATTERN.matcher(text);
@@ -408,12 +425,17 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * @return The index of the view count of the texts below the title, or -1 if not found.
+     * @return The view count of the texts below the title, or null if not found.
      */
-    private static int findViewCountSegment(List<Segment> segments, ParsedViewCount[] result, Locale locale) {
+    @Nullable
+    private static ViewCountMatch findViewCount(String text, Locale locale) {
+        if (text.length() > MAX_SUBTITLE_LENGTH) {
+            return null;
+        }
+        List<Segment> segments = splitSegments(text);
         final int size = segments.size();
         if (size < 2 || size > 3) {
-            return -1;
+            return null;
         }
         ParsedViewCount[] parsed = new ParsedViewCount[size];
         for (int i = 0; i < size; i++) {
@@ -444,11 +466,10 @@ public final class FeedViewCountPatch {
             }
         }
         if (index < 0) {
-            return -1;
+            return null;
         }
         addViewWords(parsed[index].words);
-        result[0] = parsed[index];
-        return index;
+        return new ViewCountMatch(segments, index, parsed[index]);
     }
 
     /**
@@ -481,19 +502,13 @@ public final class FeedViewCountPatch {
      *         or null if the text has no view count.
      */
     @Nullable
-    private static SpannableString removeViewCount(CharSequence text, @Nullable ParsedViewCount[] result) {
-        String string = text.toString();
-        if (string.length() > MAX_SUBTITLE_LENGTH) {
+    private static SpannableString removeViewCount(CharSequence text) {
+        ViewCountMatch match = findViewCount(text.toString(), Locale.getDefault());
+        if (match == null) {
             return null;
         }
-        List<Segment> segments = splitSegments(string);
-        if (result == null) {
-            result = new ParsedViewCount[1];
-        }
-        final int index = findViewCountSegment(segments, result, Locale.getDefault());
-        if (index < 0 || segments.size() < 2) {
-            return null;
-        }
+        List<Segment> segments = match.segments;
+        final int index = match.index;
         // The view count and the delimiter after it, or before it if it is the last text.
         Segment segment = segments.get(index);
         int start;
@@ -520,6 +535,17 @@ public final class FeedViewCountPatch {
         return new SpannableString(builder);
     }
 
+    @Nullable
+    private static ViewCountSpan getViewCountSpan(CharSequence text) {
+        if (text instanceof Spanned spanned) {
+            ViewCountSpan[] spans = spanned.getSpans(0, spanned.length(), ViewCountSpan.class);
+            if (spans.length > 0) {
+                return spans[0];
+            }
+        }
+        return null;
+    }
+
     private static SpannableString withSpan(CharSequence text, ViewCountSpan span) {
         SpannableString spannable = new SpannableString(text);
         for (ViewCountSpan old : spannable.getSpans(0, spannable.length(), ViewCountSpan.class)) {
@@ -530,10 +556,9 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * Injection point.
-     * <p>
-     * Called when the text below the title of a video is created, such as
-     * "Channel · 4.7M views · 2 days ago". The view count is attached to the text as a span.
+     * Called by {@link LayoutComponentsFilter#modifyFeedSubtitleSpan} when the text below the title
+     * of a video is created, such as "Channel - 4.7M views - 2 days ago".
+     * The view count is attached to the text as a span.
      * The text still shows it, as the same text is used by lists that do not show the badge.
      */
     public static SpannableString onFeedSubtitleCreated(SpannableString text) {
@@ -541,11 +566,11 @@ public final class FeedViewCountPatch {
             return text;
         }
         try {
-            ParsedViewCount[] result = new ParsedViewCount[1];
-            if (removeViewCount(text, result) == null) {
+            ViewCountMatch match = findViewCount(text.toString(), Locale.getDefault());
+            if (match == null) {
                 return text;
             }
-            return withSpan(text, new ViewCountSpan(result[0].count, null, false));
+            return withSpan(text, new ViewCountSpan(match.parsed.count, null, false));
         } catch (Exception ex) {
             Logger.printException(() -> "onFeedSubtitleCreated failure", ex);
         }
@@ -559,21 +584,20 @@ public final class FeedViewCountPatch {
      * The view count is removed from the texts of the paths of the cards that show the badge.
      */
     public static CharSequence onLithoTextLoaded(ContextInterface contextInterface, CharSequence text) {
-        if (!ENABLED || !(text instanceof Spanned spanned)) {
+        if (!ENABLED || text == null) {
             return text;
         }
         try {
-            ViewCountSpan[] spans = spanned.getSpans(0, spanned.length(), ViewCountSpan.class);
-            if (spans.length == 0 || spans[0].removed) {
+            ViewCountSpan span = getViewCountSpan(text);
+            if (span == null || span.removed) {
                 return text;
             }
-            ViewCountSpan span = spans[0];
             String path = getElementPath(contextInterface);
             if (path == null) {
                 return text;
             }
             if (cardPaths.contains(path)) {
-                SpannableString removed = removeViewCount(text, null);
+                SpannableString removed = removeViewCount(text);
                 if (removed != null) {
                     return withSpan(removed, new ViewCountSpan(span.viewCount, path, true));
                 }
@@ -595,46 +619,6 @@ public final class FeedViewCountPatch {
 
     // region card
 
-    @Nullable
-    private static Activity findActivity(Context context) {
-        while (context instanceof ContextWrapper wrapper) {
-            if (context instanceof Activity activity) {
-                return activity;
-            }
-            context = wrapper.getBaseContext();
-        }
-        return null;
-    }
-
-    /**
-     * The share sheet and other bottom sheets can show the thumbnail and the texts
-     * of the opened video, so they look like a card. Feeds are in the window of the activity.
-     */
-    private static boolean isInDialog(ComponentHost host) {
-        Activity activity = findActivity(host.getContext());
-        if (activity != null && activity.getWindow() != null) {
-            View decorView = activity.getWindow().peekDecorView();
-            if (decorView != null && host.getRootView() != decorView) {
-                return true;
-            }
-        }
-        ViewParent parent = host.getParent();
-        while (parent instanceof View parentView) {
-            final int id = parentView.getId();
-            if (id != View.NO_ID) {
-                try {
-                    if (parentView.getResources().getResourceEntryName(id).contains("bottom_sheet")) {
-                        return true;
-                    }
-                } catch (Resources.NotFoundException ignored) {
-                    // A generated id.
-                }
-            }
-            parent = parentView.getParent();
-        }
-        return false;
-    }
-
     /**
      * What is found on a card: its view count, and where its duration badge is.
      */
@@ -652,6 +636,25 @@ public final class FeedViewCountPatch {
         int thumbnailBottom = -1;
         /** Texts below the thumbnail, with their top and left. */
         final List<PlacedText> texts = new ArrayList<>();
+        /** Texts above this are on the thumbnail, such as the duration. */
+        final int textsTop;
+
+        CardInfo(int textsTop) {
+            this.textsTop = textsTop;
+        }
+
+        void addText(CharSequence text, Rect rect) {
+            if (viewCount == null) {
+                span = getViewCountSpan(text);
+                if (span != null) {
+                    viewCount = span.viewCount;
+                }
+            }
+            String item = text.toString().trim();
+            if (!item.isEmpty() && rect.top >= textsTop && item.length() <= MAX_SUBTITLE_LENGTH) {
+                texts.add(new PlacedText(item, rect.top, rect.left));
+            }
+        }
     }
 
     private static final class PlacedText {
@@ -670,20 +673,9 @@ public final class FeedViewCountPatch {
         if (view instanceof TextView textView) {
             CharSequence text = textView.getText();
             if (text != null) {
-                if (info.viewCount == null && text instanceof Spanned spanned) {
-                    ViewCountSpan[] spans = spanned.getSpans(0, spanned.length(), ViewCountSpan.class);
-                    if (spans.length > 0) {
-                        info.viewCount = spans[0].viewCount;
-                        info.span = spans[0];
-                    }
-                }
-                String item = text.toString().trim();
                 rect.set(0, 0, view.getWidth(), view.getHeight());
                 root.offsetDescendantRectToMyCoords(view, rect);
-                if (!item.isEmpty() && rect.top >= thumbnailBottom(root)
-                        && item.length() <= MAX_SUBTITLE_LENGTH) {
-                    info.texts.add(new PlacedText(item, rect.top, rect.left));
-                }
+                info.addText(text, rect);
             }
         }
         if (view instanceof ComponentHost host) {
@@ -693,34 +685,21 @@ public final class FeedViewCountPatch {
                     if (text == null) {
                         continue;
                     }
-                    if (info.viewCount == null && text instanceof Spanned spanned) {
-                        ViewCountSpan[] spans = spanned.getSpans(0, spanned.length(), ViewCountSpan.class);
-                        if (spans.length > 0) {
-                            info.viewCount = spans[0].viewCount;
-                            info.span = spans[0];
-                        }
-                    }
-                    String item = text.toString().trim();
                     rect.set(0, 0, host.getWidth(), host.getHeight());
                     if (host != root) {
                         root.offsetDescendantRectToMyCoords(host, rect);
                     }
-                    if (!item.isEmpty() && rect.top >= thumbnailBottom(root)
-                            && item.length() <= MAX_SUBTITLE_LENGTH) {
-                        info.texts.add(new PlacedText(item, rect.top, rect.left));
+                    info.addText(text, rect);
+                    if (!FeedVideoCardsPatch.isVideoBadgeText(text.toString().trim())) {
+                        continue;
                     }
-                    final boolean durationText = isDurationText(item);
-                    if (durationText) {
-                        info.hasDuration = true;
-                    }
+                    info.hasDuration = true;
                     if (info.duration == null) {
-                        if (durationText) {
-                            if (isDurationBadgeShaped(root, rect)) {
-                                info.duration = new Rect(rect);
-                            } else if (info.thumbnailBottom < 0 && isThumbnailShaped(root, rect)) {
-                                // The duration is drawn by the host of the whole thumbnail.
-                                info.thumbnailBottom = rect.bottom;
-                            }
+                        if (isDurationBadgeShaped(root, rect)) {
+                            info.duration = new Rect(rect);
+                        } else if (info.thumbnailBottom < 0 && isThumbnailShaped(root, rect)) {
+                            // The duration is drawn by the host of the whole thumbnail.
+                            info.thumbnailBottom = rect.bottom;
                         }
                     }
                 }
@@ -736,63 +715,50 @@ public final class FeedViewCountPatch {
         }
     }
 
-    private static int thumbnailBottom(ComponentHost root) {
+    private static int getTextsTop(ComponentHost root) {
         final float density = root.getResources().getDisplayMetrics().density;
-        return Math.round(root.getWidth() * FeedVideoCardsPatch.THUMBNAIL_RATIO - 4 * density);
+        return Math.round(root.getWidth() * FeedVideoCardsPatch.THUMBNAIL_RATIO - TOLERANCE_DP * density);
     }
 
     /**
      * @return The view count of the texts below the thumbnail, such as
-     *         "Channel · 4.7M views · 2 days ago", or null if not found.
+     *         "Channel - 4.7M views - 2 days ago", or null if not found.
      *         Used when the text was not created with the view count span.
      */
     @Nullable
     private static String findViewCountInTexts(List<PlacedText> texts) {
         texts.sort((a, b) -> a.top != b.top ? a.top - b.top : a.left - b.left);
         Locale locale = Locale.getDefault();
-        ParsedViewCount[] result = new ParsedViewCount[1];
         // The texts below the title are below it, so they are checked first.
         // The title is the first text, and can have numbers and delimiters too.
         final int first = texts.size() > 1 ? 1 : 0;
         for (int i = texts.size() - 1; i >= first; i--) {
-            if (findViewCountSegment(splitSegments(texts.get(i).text), result, locale) >= 0) {
-                return result[0].count;
+            ViewCountMatch match = findViewCount(texts.get(i).text, locale);
+            if (match != null) {
+                return match.parsed.count;
             }
         }
         return null;
     }
 
-    /** Videos whose texts were logged, so each is logged once. */
+    /** Videos whose texts were logged, so each is logged once. Used only on the main thread. */
     private static final Set<String> loggedVideoIds = new LinkedHashSet<>();
+    private static final int MAX_LOGGED_VIDEOS = 200;
 
     private static void logTexts(String videoId, List<PlacedText> texts) {
         if (!loggedVideoIds.add(videoId)) {
             return;
         }
-        if (loggedVideoIds.size() > 200) {
+        if (loggedVideoIds.size() > MAX_LOGGED_VIDEOS) {
             loggedVideoIds.clear();
         }
-        StringBuilder builder = new StringBuilder();
-        for (PlacedText placed : texts) {
-            builder.append(" [").append(placed.text).append(']');
-        }
-        Logger.printDebug(() -> "View count not found: " + videoId + " texts:" + builder);
-    }
-
-    private static boolean isDurationText(String item) {
-        return (item.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(item).find())
-                || BADGE_PATTERN.matcher(item).matches();
-    }
-
-    private static boolean containsHorizontalList(ViewGroup group) {
-        for (int i = 0, count = group.getChildCount(); i < count; i++) {
-            View child = group.getChildAt(i);
-            if (FeedVideoCardsPatch.isHorizontalList(child)
-                    || (child instanceof ViewGroup childGroup && containsHorizontalList(childGroup))) {
-                return true;
+        Logger.printDebug(() -> {
+            StringBuilder builder = new StringBuilder();
+            for (PlacedText placed : texts) {
+                builder.append(" [").append(placed.text).append(']');
             }
-        }
-        return false;
+            return "View count not found: " + videoId + " texts:" + builder;
+        });
     }
 
     /**
@@ -803,7 +769,7 @@ public final class FeedViewCountPatch {
         final float density = root.getResources().getDisplayMetrics().density;
         int firstTextTop = Integer.MAX_VALUE;
         for (PlacedText placed : texts) {
-            if (!isDurationText(placed.text)) {
+            if (!FeedVideoCardsPatch.isVideoBadgeText(placed.text)) {
                 firstTextTop = Math.min(firstTextTop, placed.top);
             }
         }
@@ -820,10 +786,10 @@ public final class FeedViewCountPatch {
     private static boolean isThumbnailShaped(ComponentHost root, Rect rect) {
         final float density = root.getResources().getDisplayMetrics().density;
         final int width = root.getWidth();
-        return rect.width() >= width * 0.9f
-                && rect.top <= 16 * density
-                && rect.bottom >= width * FeedVideoCardsPatch.THUMBNAIL_RATIO - 4 * density
-                && rect.bottom <= width + 4 * density;
+        return rect.width() >= width * MIN_THUMBNAIL_WIDTH_OF_CARD
+                && rect.top <= MAX_THUMBNAIL_TOP_DP * density
+                && rect.bottom >= width * FeedVideoCardsPatch.THUMBNAIL_RATIO - TOLERANCE_DP * density
+                && rect.bottom <= width + TOLERANCE_DP * density;
     }
 
     /**
@@ -837,7 +803,7 @@ public final class FeedViewCountPatch {
                 && rect.height() >= MIN_DURATION_HEIGHT_DP * density
                 && rect.height() <= MAX_DURATION_HEIGHT_DP * density
                 && rect.centerX() > root.getWidth() / 2
-                && rect.bottom <= root.getWidth() + 4 * density;
+                && rect.bottom <= root.getWidth() + TOLERANCE_DP * density;
     }
 
     /**
@@ -858,9 +824,9 @@ public final class FeedViewCountPatch {
         // so it is shown on any card shaped like a video with a duration.
         final boolean checkCard = videoId != null
                 || (FeedVideoCardsPatch.isVideoShaped(host) && !FeedVideoCardsPatch.isPlaylistCard(host)
-                && !containsHorizontalList(host));
-        if (checkCard && !isInDialog(host)) {
-            CardInfo info = new CardInfo();
+                && !FeedVideoCardsPatch.hasHorizontalList(host));
+        if (checkCard && !FeedVideoCardsPatch.isInDialog(host)) {
+            CardInfo info = new CardInfo(getTextsTop(host));
             findCardInfo(host, host, info, new Rect());
             if (videoId != null || info.hasDuration) {
                 viewCount = info.viewCount;
@@ -881,7 +847,7 @@ public final class FeedViewCountPatch {
                 final String id = videoId == null ? "unknown" : videoId;
                 if (viewCount == null) {
                     // The texts can be drawn after the layout of the card.
-                    FeedVideoCardsPatch.checkAgainLater(host);
+                    FeedVideoCardsPatch.scheduleRetry(host);
                     logTexts(id, info.texts);
                 } else if (duration == null) {
                     final int bottom = thumbnailBottom;
@@ -973,8 +939,8 @@ public final class FeedViewCountPatch {
             }
             final int height = bottom - top;
 
-            textPaint.setTextSize(Math.min(maxTextSize, height * 0.62f));
-            final float iconSize = textPaint.getTextSize() * 0.72f;
+            textPaint.setTextSize(Math.min(maxTextSize, height * TEXT_SIZE_OF_HEIGHT));
+            final float iconSize = textPaint.getTextSize() * ICON_SIZE_OF_TEXT;
             final int width = Math.round(px(PADDING_DP) * 2 + iconSize + px(GAP_DP)
                     + textPaint.measureText(viewCount));
 
@@ -1009,10 +975,10 @@ public final class FeedViewCountPatch {
             canvas.drawRoundRect(rect, radius, radius, backgroundPaint);
 
             final float centerY = bounds.exactCenterY();
-            final float iconSize = textPaint.getTextSize() * 0.72f;
+            final float iconSize = textPaint.getTextSize() * ICON_SIZE_OF_TEXT;
             final float iconLeft = bounds.left + px(PADDING_DP) + iconPaint.getStrokeWidth() / 2;
             final float iconHeight = iconSize - iconPaint.getStrokeWidth();
-            final float iconWidth = iconHeight * 0.88f;
+            final float iconWidth = iconHeight * ICON_WIDTH_OF_HEIGHT;
             iconPath.reset();
             iconPath.moveTo(iconLeft, centerY - iconHeight / 2);
             iconPath.lineTo(iconLeft + iconWidth, centerY);
