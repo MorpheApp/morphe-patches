@@ -467,10 +467,8 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos. Tapping and holding it opens Save to playlist</string>
 
     <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
-    <string name="morphe_ryd_feed_like_count_title">Show like count on feed thumbnails</string>
-    <string name="morphe_ryd_feed_like_count_summary">The like count of feed videos is shown on the right side of their thumbnails</string>
-    <string name="morphe_ryd_feed_like_ratio_title">Show like ratio on feed thumbnails</string>
-    <string name="morphe_ryd_feed_like_ratio_summary">The ratio of likes to dislikes of feed videos is shown on the right side of their thumbnails</string>
+    <string name="morphe_ryd_feed_like_count_title">Show feed thumbnail like count</string>
+    <string name="morphe_ryd_feed_like_ratio_title">Show feed thumbnail like percentage</string>
 
     <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
     <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
