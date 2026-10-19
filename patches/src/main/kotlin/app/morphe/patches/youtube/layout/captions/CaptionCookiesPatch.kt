@@ -43,6 +43,7 @@ internal val captionCookiesPatch = bytecodePatch(
         ))
 
         TimedTextUrlFingerprint.let {
+            it.clearMatch() // Fingerprint is shared and indexes may no longer be correct.
             it.method.apply {
                 val helperMethod = ImmutableMethod(
                     definingClass,

@@ -36,6 +36,7 @@ internal val translatedCaptionPensPatch = bytecodePatch(
     execute {
         // Track whether the caption track that is about to be loaded is auto-translated.
         TimedTextUrlFingerprint.let {
+            it.clearMatch() // Fingerprint is shared and indexes may no longer be correct.
             val urlIndex = it.instructionMatches[0].index
             val urlRegister = it.method.getInstruction<FiveRegisterInstruction>(urlIndex).registerD
 

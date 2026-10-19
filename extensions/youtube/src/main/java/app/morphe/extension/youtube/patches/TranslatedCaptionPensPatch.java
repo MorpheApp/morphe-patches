@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.patches;
 
+import androidx.annotation.Nullable;
+
 import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings("unused")
@@ -23,7 +25,7 @@ public class TranslatedCaptionPensPatch {
     /**
      * Injection point.
      */
-    public static void setTimedTextUrl(String url) {
+    public static void setTimedTextUrl(@Nullable String url) {
         if (url == null || !url.contains("api/timedtext")) {
             return;
         }
