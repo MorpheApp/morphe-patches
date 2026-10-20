@@ -430,27 +430,6 @@ val videoInformationPatch = bytecodePatch(
                         )
                     }
                 )
-
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getYouTubeResolution",
-                        listOf(),
-                        "I",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(1),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget v0, p0, $resolutionField
-                                return v0
-                            """
-                        )
-                    }
-                )
             }
         }
 
