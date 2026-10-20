@@ -11,6 +11,8 @@
 package app.morphe.extension.youtube.patches;
 
 import android.icu.text.NumberFormat;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
@@ -278,12 +280,8 @@ public final class VideoInformation {
     /**
      * Lightweight enforcement tracking fields.
      */
-    private static final int MAX_QUALITY_CHANGES_PER_VIDEO = 5;
-    private static String qualityChangeVideoId = "";
-    private static int qualityChangeCount = 0;
     private static boolean changingToDefaultQuality = false;
     private static long lastQualityForceTime = 0;
-    private static int lastQualityForceTargetRes = -1;
 
     @Nullable
     public static VideoQualityInterface[] getCurrentQualities() {
@@ -307,8 +305,6 @@ public final class VideoInformation {
             // Clear enforcement state on new video load
             changingToDefaultQuality = false;
             lastQualityForceTime = 0;
-            lastQualityForceTargetRes = -1;
-            qualityChangeCount = 0;
 
             WeakReference<PlaybackController> playerControllerRef =
                     new WeakReference<>(Objects.requireNonNull(playerController));
@@ -1074,10 +1070,6 @@ public final class VideoInformation {
                 Utils.runOnMainThreadNowOrLater(() ->
                         setPlaybackParameters(newlyLoadedPlaybackSpeed, pitch));
             }
-
-            // Rest of the implementation added by patch.
-            // RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(newlyLoadedPlaybackSpeed);
-            // PlaybackSpeedDialogButton.videoSpeedChanged(newlyLoadedPlaybackSpeed);
         }
     }
 
@@ -1205,42 +1197,31 @@ public final class VideoInformation {
                 }
 
                 if (targetIndex != -1 && targetQuality != null) {
+                    final VideoQualityInterface targetQual = targetQuality;
+
                     if (targetIndex != originalQualityIndex) {
 
                         long now = System.currentTimeMillis();
-                        if (now - lastQualityForceTime < 2500 && lastQualityForceTargetRes == targetQuality.patch_getResolution()) {
-                            if (targetQuality.patch_getResolution() != AUTOMATIC_VIDEO_QUALITY_VALUE) {
-                                setCurrentQuality(targetQuality);
+                        if (now - lastQualityForceTime < 2500) {
+                            if (selectedQuality.patch_getResolution() != AUTOMATIC_VIDEO_QUALITY_VALUE) {
+                                setCurrentQuality(selectedQuality);
                             }
-                            return targetIndex;
+                            return originalQualityIndex;
                         }
 
                         lastQualityForceTime = now;
-                        lastQualityForceTargetRes = targetQuality.patch_getResolution();
 
-                        String videoId = getVideoId();
-                        if (!videoId.equals(qualityChangeVideoId)) {
-                            qualityChangeVideoId = videoId;
-                            qualityChangeCount = 0;
-                        }
-
-                        if (qualityChangeCount < MAX_QUALITY_CHANGES_PER_VIDEO) {
-                            qualityChangeCount++;
-
+                        new Handler(Looper.getMainLooper()).post(() -> {
                             changingToDefaultQuality = true;
                             try {
-                                changeQuality(targetQuality);
+                                changeQuality(targetQual);
                             } finally {
                                 changingToDefaultQuality = false;
                             }
+                            setCurrentQuality(targetQual);
+                        });
 
-                            setCurrentQuality(targetQuality);
-                            return targetIndex;
-                        }
-                    } else {
-                        lastQualityForceTime = 0;
-                        lastQualityForceTargetRes = -1;
-                        qualityChangeCount = 0;
+                        return originalQualityIndex;
                     }
                 }
             }
