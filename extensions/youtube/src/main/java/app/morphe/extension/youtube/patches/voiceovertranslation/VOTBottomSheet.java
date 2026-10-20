@@ -75,7 +75,6 @@ public final class VOTBottomSheet {
             ResourceType.DRAWABLE, "yt_outline_experimental_speaker_vd_theme_24");
 
     public static void show(Context context) {
-        VoiceOverTranslationPatch.preloadTestVoices();
         VoiceOverTranslationPatch.ensureTts();
 
         SheetBottomDialog.DraggableLinearLayout root = SheetBottomDialog
@@ -103,9 +102,9 @@ public final class VOTBottomSheet {
         final SheetBottomDialog.SlideDialog[] mainRef = {null};
 
         LinearLayout engineRow = makeValueRow(context, fg, str("morphe_vot_tts_voice_type"));
-        Runnable refreshEngine = () -> refreshEngineRow(engineRow);
         engineRow.setOnClickListener(v -> showEnginePicker(context, mainRef[0]));
-        refreshEngine.run();
+        EdgeTtsVoiceRepository.load(context, () -> refreshEngineRow(engineRow));
+        refreshEngineRow(engineRow);
 
         LinearLayout translationRow = makeValueRow(context, fg, str("morphe_vot_translation_service_title"));
         Runnable refreshTranslation = () -> ((TextView) translationRow.getTag())
@@ -201,19 +200,17 @@ public final class VOTBottomSheet {
         String voiceId = Settings.VOT_TTS_VOICE_TYPE.get();
         VoiceCatalog.Voice voice = VoiceCatalog.getVoice(voiceId);
 
-        if (Settings.VOT_USE_NATIVE_TTS.get() || (voice == null && VoiceCatalog.resolve(lang, null) == null)) {
+        if (Settings.VOT_USE_NATIVE_TTS.get()) {
             valueView.setText(str("morphe_vot_tts_system"));
         } else if (voice != null && (voice.languageTag.equalsIgnoreCase(VoiceCatalog.getIso639(lang)) || voice.isMultilingual)) {
             valueView.setText(voice.dialogDisplayName);
         } else {
             String defaultVoiceId = VoiceCatalog.resolve(lang, null);
             VoiceCatalog.Voice defaultVoice = VoiceCatalog.getVoice(defaultVoiceId);
-            valueView.setText(defaultVoice != null ? defaultVoice.dialogDisplayName : str("morphe_vot_tts_system"));
+            valueView.setText(defaultVoice != null ? defaultVoice.dialogDisplayName
+                    : str("morphe_vot_tts_system"));
         }
 
-        final boolean edgeAvailable = VoiceCatalog.resolve(lang, null) != null;
-        row.setAlpha(edgeAvailable ? 1f : 0.4f);
-        row.setClickable(edgeAvailable);
     }
 
     private static void showTranslationServicePicker(Context context, SheetBottomDialog.SlideDialog mainDialog) {
@@ -310,17 +307,13 @@ public final class VOTBottomSheet {
 
     private static void showEnginePicker(Context context, SheetBottomDialog.SlideDialog mainDialog) {
         String lang = VoiceCatalog.getIso639(VoiceOverTranslationPatch.resolveTargetLang());
-
         final int fg = ThemeUtils.getAppForegroundColor();
-
         SheetBottomDialog.DraggableLinearLayout pickerRoot =
                 SheetBottomDialog.createMainLayout(context, getDialogBackgroundColor());
         pickerRoot.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
         pickerRoot.addView(makeTitle(context, str("morphe_vot_tts_voice_type"), fg));
-
         SheetBottomDialog.SlideDialog pickerDialog =
                 SheetBottomDialog.createSlideDialog(context, pickerRoot, fadeInDuration);
-
         ScrollView scroll = new ScrollView(context);
         LinearLayout listLayout = new LinearLayout(context);
         listLayout.setOrientation(LinearLayout.VERTICAL);
@@ -328,104 +321,24 @@ public final class VOTBottomSheet {
 
         int speakerRes = Utils.appIsUsingBoldIcons() ? DRAWABLE_SPEAKER_BOLD : DRAWABLE_SPEAKER;
         final int rippleColor = Color.argb(60, Color.red(fg), Color.green(fg), Color.blue(fg));
-
         populateVoiceRows(context, listLayout, pickerDialog, lang, fg, rippleColor, speakerRes);
-
-        // Keep catalog diagnostics outside the scrollable voice list so refreshing
-        // remains accessible even with hundreds of voices.
-        TextView catalogStatus = new TextView(context);
-        catalogStatus.setTextColor(secondaryColor(fg));
-        catalogStatus.setTextSize(12);
-        catalogStatus.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
-        TextView refreshButton = new TextView(context);
-        refreshButton.setTextSize(14);
-        refreshButton.setTypeface(null, Typeface.BOLD);
-        refreshButton.setMinHeight(Dim.dp40);
-        GradientDrawable refreshBackground = new GradientDrawable();
-        refreshBackground.setCornerRadius(Dim.dp8);
-        refreshBackground.setColor(Color.argb(20, Color.red(fg), Color.green(fg), Color.blue(fg)));
-        refreshButton.setBackground(new RippleDrawable(
-                ColorStateList.valueOf(Color.argb(60, Color.red(fg), Color.green(fg), Color.blue(fg))),
-                refreshBackground, null));
-        refreshButton.setTextColor(fg);
-        refreshButton.setGravity(Gravity.CENTER);
-        refreshButton.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
-        TextView refreshFeedback = new TextView(context);
-        refreshFeedback.setTextSize(12);
-        refreshFeedback.setTextColor(secondaryColor(fg));
-        refreshFeedback.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp8);
-        refreshFeedback.setVisibility(View.GONE);
-
-        Runnable showStatus = () -> {
-            EdgeTtsVoiceRepository.Status state = EdgeTtsVoiceRepository.getStatus();
-            String source = str("morphe_vot_catalog_source_" + state.source.name().toLowerCase(java.util.Locale.ROOT));
-            String details = str("morphe_vot_catalog_status", source,
-                    state.totalVoices, state.added, state.removed);
-            if (state.lastUpdatedMs > 0) {
-                String updated = java.text.DateFormat.getDateTimeInstance(
-                        java.text.DateFormat.MEDIUM, java.text.DateFormat.SHORT)
-                        .format(new java.util.Date(state.lastUpdatedMs));
-                details += "\n" + str("morphe_vot_catalog_updated", updated);
-            }
-            if (state.error != null) {
-                details += "\n" + str("morphe_vot_catalog_error", state.error);
-            }
-            catalogStatus.setText(details);
-            refreshButton.setText(str(state.refreshing
-                    ? "morphe_vot_catalog_refreshing" : "morphe_vot_catalog_refresh"));
-            refreshButton.setEnabled(!state.refreshing);
-            refreshButton.setAlpha(state.refreshing ? 0.5f : 1f);
-        };
-        showStatus.run();
-        refreshButton.setOnClickListener(v -> {
-            refreshFeedback.setText(str("morphe_vot_catalog_refreshing"));
-            refreshFeedback.setVisibility(View.VISIBLE);
-            EdgeTtsVoiceRepository.refreshNow(context, () -> {
-                if (!pickerDialog.isShowing()) return;
-
-                EdgeTtsVoiceRepository.Status result = EdgeTtsVoiceRepository.getStatus();
-                if (result.error != null) {
-                    refreshFeedback.setText(str("morphe_vot_catalog_refresh_failed"));
-                } else if (result.added == 0 && result.removed == 0) {
-                    refreshFeedback.setText(str("morphe_vot_catalog_unchanged"));
-                } else {
-                    refreshFeedback.setText(str("morphe_vot_catalog_changed",
-                            result.added, result.removed));
-                }
-
-                int previousScrollY = scroll.getScrollY();
-                populateVoiceRows(context, listLayout, pickerDialog, lang,
-                        fg, rippleColor, speakerRes);
-                scroll.post(() -> scroll.scrollTo(0, previousScrollY));
-                showStatus.run();
-            });
-            showStatus.run();
-        });
-        pickerRoot.addView(catalogStatus);
-        pickerRoot.addView(refreshButton);
-        pickerRoot.addView(refreshFeedback);
         pickerRoot.addView(scroll);
         mainDialog.dismiss();
         pickerDialog.setOnCancelListener(d -> VOTBottomSheet.show(context));
         PipDismissHelper.dismissOnPip(pickerDialog);
         pickerDialog.show();
 
-        // Do not block the picker while a fresh catalog is fetched. The bundled
-        // and disk-cached voices remain available until the refresh finishes.
-        EdgeTtsVoiceRepository.refreshIfNeeded(context, () -> {
-            if (pickerDialog.isShowing()
-                    && lang.equals(VoiceCatalog.getIso639(VoiceOverTranslationPatch.resolveTargetLang()))) {
-                int previousScrollY = scroll.getScrollY();
-                populateVoiceRows(context, listLayout, pickerDialog, lang,
-                        fg, rippleColor, speakerRes);
-                scroll.post(() -> scroll.scrollTo(0, previousScrollY));
-                showStatus.run();
+        EdgeTtsVoiceRepository.load(context, () -> {
+            if (!pickerDialog.isShowing()
+                    || !lang.equals(VoiceCatalog.getIso639(VoiceOverTranslationPatch.resolveTargetLang()))) {
+                return;
             }
+            int scrollY = scroll.getScrollY();
+            populateVoiceRows(context, listLayout, pickerDialog, lang, fg, rippleColor, speakerRes);
+            scroll.post(() -> scroll.scrollTo(0, scrollY));
         });
-        showStatus.run();
     }
 
-    /** Rebuild the voice picker from the latest catalog without changing its language filter. */
     private static void populateVoiceRows(Context context, LinearLayout listLayout,
                                           SheetBottomDialog.SlideDialog pickerDialog,
                                           String lang, int fg, int rippleColor, int speakerRes) {
@@ -451,6 +364,8 @@ public final class VOTBottomSheet {
         String selectedValue = Settings.VOT_USE_NATIVE_TTS.get()
                 ? TTS_ENGINE_SYSTEM
                 : VoiceCatalog.resolve(lang, voiceId);
+        // With no cached/online voices, System TTS remains a usable option.
+        if (selectedValue == null) selectedValue = TTS_ENGINE_SYSTEM;
 
         int maleCount = 0;
         int femaleCount = 0;
@@ -494,6 +409,7 @@ public final class VOTBottomSheet {
                         selectedValue, fg, rippleColor, speakerRes, pickerDialog);
             }
         }
+
 
     }
 
@@ -649,7 +565,6 @@ public final class VOTBottomSheet {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Settings.VOT_CAPTION_LANGUAGE.save(langValues[position]);
             VoiceOverTranslationPatch.reloadTranscript();
-            VoiceOverTranslationPatch.preloadTestVoices();
             VOTBottomSheet.show(context);
             pickerDialog.dismiss();
         });

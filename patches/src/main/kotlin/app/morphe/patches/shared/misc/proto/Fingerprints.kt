@@ -10,9 +10,11 @@ package app.morphe.patches.shared.misc.proto
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object NewElementProtoParserFingerprint : Fingerprint(
     classFingerprint = ProtoStuffReflectionFingerprint,
@@ -40,5 +42,20 @@ private object ProtoStuffReflectionFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_VIRTUAL,
             name = "setAccessible"
         )
+    )
+)
+
+/**
+ * Bytes of an inline resource of a response, such as a template or a JavaScript module.
+ * When a server flag is on, the bytes are read with the element proto parser.
+ * Added in YouTube 21.40.
+ */
+internal fun resourceBytesFingerprint(elementProtoParser: MethodReference) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "[B",
+    parameters = listOf(elementProtoParser.parameterTypes.first().toString(), "Z"),
+    filters = listOf(
+        methodCall(reference = elementProtoParser),
+        opcode(Opcode.ARRAY_LENGTH)
     )
 )

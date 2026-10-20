@@ -7,7 +7,6 @@
 
 package app.morphe.patches.youtube.layout.theme
 
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
@@ -21,8 +20,8 @@ import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.fiveRegisters
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
@@ -58,11 +57,9 @@ val splashAnimationPatch = bytecodePatch {
                     name = setAnimationIntMethodName
                 )
             ).forEach { index ->
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
-
                 replaceInstruction(
                     index,
-                    "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
+                    "invoke-static { ${fiveRegisters(index)} }, " +
                         "$EXTENSION_CLASS->setSplashAnimationLottie(Lcom/airbnb/lottie/LottieAnimationView;I)V"
                 )
             }

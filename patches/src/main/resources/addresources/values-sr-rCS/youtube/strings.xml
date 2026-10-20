@@ -485,17 +485,6 @@ Prijave su javne i pregledaju se pre nego što kanal bude dodat na listu. Uklanj
   <string name="morphe_vot_cost_per_hour">%s по 100 сати видеа</string>
   <string name="morphe_vot_tts_voice_type">Глас</string>
   <string name="morphe_vot_tts_system">Sistem</string>
-  <string name="morphe_vot_catalog_refreshing">Osvežavanje...</string>
-  <string name="morphe_vot_catalog_updated">Poslednje ažuriranje: %s</string>
-  <string name="morphe_vot_catalog_refresh">Osveži spisak glasova</string>
-  <string name="morphe_vot_catalog_unchanged">Spisak glasova je ažuran</string>
-  <string name="morphe_vot_catalog_changed">Ažuriran spisak glasova: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Nemoguće osvežiti spisak glasova</string>
-  <string name="morphe_vot_catalog_source_online">Online</string>
-  <string name="morphe_vot_catalog_source_cache">Keširano</string>
-  <string name="morphe_vot_catalog_source_fallback">Ugrađeno</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d glasova · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Ažuriranje nije uspelo: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Мушки, мултилингвални</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Женски, мултилингвални</string>
   <string name="morphe_vot_voice_gender_male">Мушки</string>

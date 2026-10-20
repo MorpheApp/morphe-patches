@@ -14,7 +14,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
@@ -35,7 +34,7 @@ import app.morphe.patches.shared.misc.gms.Constants.PERMISSIONS
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.matchSingle
 import app.morphe.util.returnEarly
@@ -155,14 +154,8 @@ fun gmsCoreSupportPatch(
 
         fun transformPrimeMethod(packageName: String) {
             primeMethodFingerprint!!.method.apply {
-                var register = 2
-
-                val index = instructions.indexOfFirst {
-                    if (it.getReference<StringReference>()?.string != fromPackageName) return@indexOfFirst false
-
-                    register = (it as OneRegisterInstruction).registerA
-                    return@indexOfFirst true
-                }
+                val index = indexOfFirstStringInstructionOrThrow(fromPackageName)
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                 replaceInstruction(index, "const-string v$register, \"$packageName\"")
             }

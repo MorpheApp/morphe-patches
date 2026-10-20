@@ -28,6 +28,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversed
+import app.morphe.util.fiveRegisters
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
 import app.morphe.util.inputStreamFromBundledResource
@@ -339,7 +340,7 @@ private const val EXTENSION_PLAYER_BUTTON_ICONS =
 // The extension takes an ImageView, so only calls on these classes can be redirected to it.
 private val imageViewClasses = listOf(
     "Landroid/widget/ImageView;",
-    "Lcom/google/android/libraries/youtube/common/ui/TouchImageView;",
+    TOUCH_IMAGE_VIEW_CLASS,
 )
 
 private val drawableLoaderClasses = listOf(
@@ -363,10 +364,9 @@ private fun MutableClass.hookIconsSetFromCode() {
                         parameters = listOf("I")
                     )
                 ).forEach { index ->
-                    val call = getInstruction<FiveRegisterInstruction>(index)
                     replaceInstruction(
                         index,
-                        "invoke-static { v${call.registerC}, v${call.registerD} }, " +
+                        "invoke-static { ${fiveRegisters(index)} }, " +
                                 "$EXTENSION_PLAYER_BUTTON_ICONS->setImageResource(Landroid/widget/ImageView;I)V"
                     )
                 }
@@ -382,10 +382,9 @@ private fun MutableClass.hookIconsSetFromCode() {
                         parameters = listOf("I")
                     )
                 ).forEach { index ->
-                    val call = getInstruction<FiveRegisterInstruction>(index)
                     replaceInstruction(
                         index,
-                        "invoke-static { v${call.registerC}, v${call.registerD} }, $EXTENSION_PLAYER_BUTTON_ICONS->" +
+                        "invoke-static { ${fiveRegisters(index)} }, $EXTENSION_PLAYER_BUTTON_ICONS->" +
                                 "getDrawable(${loaderClass}I)Landroid/graphics/drawable/Drawable;"
                     )
                 }
@@ -465,7 +464,7 @@ private val playerButtonIconStylePatch = bytecodePatch {
                 // The app may use the drawable register again after this call, so it is left untouched.
                 replaceInstruction(
                     index,
-                    "invoke-static { v${call.registerC}, v${call.registerD} }, $EXTENSION_PLAY_PAUSE_ICONS->$hook" +
+                    "invoke-static { ${fiveRegisters(index)} }, $EXTENSION_PLAY_PAUSE_ICONS->$hook" +
                             "(Landroid/widget/ImageView;Landroid/graphics/drawable/Drawable;)V"
                 )
             }

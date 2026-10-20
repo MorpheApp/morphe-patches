@@ -127,12 +127,12 @@ val downloadLocationPatch = bytecodePatch(
         DownloadVideoFingerprint.let {
             it.replaceWithStaticCall(
                 3,
-                "enqueue(Landroid/app/DownloadManager;Landroid/app/DownloadManager\$Request;)J"
+                $$"enqueue(Landroid/app/DownloadManager;Landroid/app/DownloadManager$Request;)J"
             )
             it.replaceWithStaticCall(
                 1,
-                "setDestinationInExternalPublicDir(Landroid/app/DownloadManager\$Request;" +
-                        "Ljava/lang/String;Ljava/lang/String;)Landroid/app/DownloadManager\$Request;"
+                $$"setDestinationInExternalPublicDir(Landroid/app/DownloadManager$Request;" +
+                        $$"Ljava/lang/String;Ljava/lang/String;)Landroid/app/DownloadManager$Request;"
             )
 
             val requestMatch = it.instructionMatches[0]

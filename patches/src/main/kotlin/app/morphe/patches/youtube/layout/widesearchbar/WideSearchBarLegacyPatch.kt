@@ -10,41 +10,14 @@
 
 package app.morphe.patches.youtube.layout.widesearchbar
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.resource.ResourceType
-import app.morphe.patcher.resourceLiteral
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-
-private object SetWordmarkHeaderFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("Landroid/widget/ImageView;"),
-    filters = listOf(
-        methodCall(returnType = "Z"),
-        resourceLiteral(ResourceType.ATTR, "ytPremiumWordmarkHeader"),
-        resourceLiteral(ResourceType.ATTR, "ytWordmarkHeader")
-    )
-)
-
-/**
- * Matches the same method as [app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint].
- */
-private object WideSearchBarLayoutFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/view/View;",
-    parameters = listOf("L", "L"),
-    filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "action_bar_ringo")
-    )
-)
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchBarLegacyPatch;"
 

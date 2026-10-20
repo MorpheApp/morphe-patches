@@ -485,17 +485,6 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">%s به‌ازای هر ۱۰۰ ساعت ویدئو</string>
   <string name="morphe_vot_tts_voice_type">صدا</string>
   <string name="morphe_vot_tts_system">سیستم</string>
-  <string name="morphe_vot_catalog_refreshing">در حال تازه‌سازی...</string>
-  <string name="morphe_vot_catalog_updated">آخرین به‌روزرسانی: %s</string>
-  <string name="morphe_vot_catalog_refresh">بروزرسانی لیست صداها</string>
-  <string name="morphe_vot_catalog_unchanged">لیست صداها به‌روز است</string>
-  <string name="morphe_vot_catalog_changed">بروزرسانی لیست صداها: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">نمی‌توان لیست صداها را بروز کرد</string>
-  <string name="morphe_vot_catalog_source_online">آنلاین</string>
-  <string name="morphe_vot_catalog_source_cache">حافظه پنهان</string>
-  <string name="morphe_vot_catalog_source_fallback">داخلی</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d صدا · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">بروزرسانی ناموفق: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">مرد چندزبانه</string>
   <string name="morphe_vot_voice_gender_female_multilingual">زن چندزبانه</string>
   <string name="morphe_vot_voice_gender_male">مرد</string>

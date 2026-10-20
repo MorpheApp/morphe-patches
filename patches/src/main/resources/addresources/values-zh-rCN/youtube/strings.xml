@@ -485,17 +485,6 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">每 100 小时 %s</string>
   <string name="morphe_vot_tts_voice_type">语音</string>
   <string name="morphe_vot_tts_system">系统</string>
-  <string name="morphe_vot_catalog_refreshing">刷新中……</string>
-  <string name="morphe_vot_catalog_updated">最后更新：%s</string>
-  <string name="morphe_vot_catalog_refresh">刷新语音列表</string>
-  <string name="morphe_vot_catalog_unchanged">语音列表已是最新</string>
-  <string name="morphe_vot_catalog_changed">语音列表已更新：+%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">无法刷新语音列表</string>
-  <string name="morphe_vot_catalog_source_online">在线</string>
-  <string name="morphe_vot_catalog_source_cache">缓存</string>
-  <string name="morphe_vot_catalog_source_fallback">内置</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d 个语音 · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">更新失败：%s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">多语言男声</string>
   <string name="morphe_vot_voice_gender_female_multilingual">多语言女声</string>
   <string name="morphe_vot_voice_gender_male">男声</string>

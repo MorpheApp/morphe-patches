@@ -510,9 +510,8 @@ internal fun spoofVideoStreamsPatch(
                                 && it.parameterTypes.first() == "Ljava/nio/ByteBuffer;"
                     }
                 ) {
-                    val cuepointListType = $$"Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass$CuepointList;"
                     val cueField = fields.single {
-                        it.type == cuepointListType
+                        it.type == CUEPOINT_LIST_CLASS
                     }
                     val superClass = superclass!!
 
@@ -540,7 +539,7 @@ internal fun spoofVideoStreamsPatch(
                                     null
                                 )
                             ),
-                            cuepointListType,
+                            CUEPOINT_LIST_CLASS,
                             AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
                             null,
                             null,
@@ -552,7 +551,7 @@ internal fun spoofVideoStreamsPatch(
                                     sget-object v0, $cueField
                                     invoke-static { v0, p0, p1 }, $superClass->parseFrom(${superClass}Ljava/nio/ByteBuffer;Lcom/google/protobuf/ExtensionRegistryLite;)$superClass
                                     move-result-object p0
-                                    check-cast p0, $cuepointListType
+                                    check-cast p0, $CUEPOINT_LIST_CLASS
                                     return-object p0
                                 """
                             )

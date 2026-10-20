@@ -62,7 +62,7 @@ val hideSidebarComponentsPatch = bytecodePatch(
                         MutableMethodImplementation(2),
                     ).toMutable().apply {
                         val headerItemField = fields.single { field ->
-                            field.type == "Lcom/reddit/screens/drawer/community/HeaderItem;"
+                            field.type == HEADER_ITEM_CLASS
                         }
 
                         addInstructionsWithLabels(

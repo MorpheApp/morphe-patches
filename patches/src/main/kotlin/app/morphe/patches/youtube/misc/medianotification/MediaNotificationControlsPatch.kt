@@ -8,14 +8,13 @@
 package app.morphe.patches.youtube.misc.medianotification
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.medianotification.EXTENSION_CLASS
 import app.morphe.patches.shared.misc.medianotification.mediaNotificationControlsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.findFreeRegister
 
 @Suppress("unused")
 val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
@@ -32,15 +31,18 @@ val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
         // Android 12 and lower show the notification actions as the media buttons.
         // Don't add the previous/next actions, otherwise the buttons remain visible but do nothing.
         PlaybackNotificationAddActionFingerprint.method.apply {
+            val freeRegister = findFreeRegister(0)
+
             addInstructionsWithLabels(
                 0,
                 """
                     invoke-static { p3 }, $EXTENSION_CLASS->hideNotificationAction(I)Z
-                    move-result v0
-                    if-eqz v0, :add_action
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :add_action
                     return-void
-                """,
-                ExternalLabel("add_action", getInstruction(0))
+                    :add_action
+                    nop
+                """
             )
         }
     }

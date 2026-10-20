@@ -67,9 +67,7 @@ val musicSponsorBlockPatch = bytecodePatch(
         // Compact-player seekbar: hook onMeasure to capture the bounding Rect and draw() to paint
         // segment markers over the timeline.
         val rectField = MusicTimeBarOnMeasureFingerprint.method.run {
-            val rectIndex = indexOfFirstInstructionReversedOrThrow(
-                implementation!!.instructions.size - 1
-            ) {
+            val rectIndex = indexOfFirstInstructionReversedOrThrow {
                 opcode == Opcode.IGET_OBJECT &&
                         getReference<FieldReference>()?.type == "Landroid/graphics/Rect;"
             }

@@ -535,7 +535,7 @@ private fun Method.parameters(): List<String> = parameterTypes.map { it.toString
 private fun MethodReference.parameters(): List<String> = parameterTypes.map { it.toString() }
 
 private fun BytecodePatchContext.installAutoplayUi(abi: AutoplayUiAbi) {
-    val extension = "Lapp/morphe/extension/music/patches/jam/JamMirror;"
+    val extension = JAM_MIRROR
     val contract = $$"Lapp/morphe/extension/music/patches/jam/JamMirror$AutoplayUi;"
     val owner = mutableClassDefBy(abi.refresh.definingClass)
     owner.interfaces.add(contract)
@@ -552,8 +552,9 @@ private fun BytecodePatchContext.installAutoplayUi(abi: AutoplayUiAbi) {
           if-eqz v0, :local
           const/4 v${abi.headerIndexRegister}, 0x0
           goto :header
+          :local
+          nop
         """,
-        ExternalLabel("local", refresh.getInstruction(0)),
         ExternalLabel("header", refresh.getInstruction(abi.headerStart)),
     )
     owner.addBridge(

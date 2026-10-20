@@ -1,3 +1,21 @@
+## [1.48.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.14...v1.48.0-dev.15) (2026-10-20)
+
+### 🐛 Bug Fixes
+
+* Temporarily revert patches-library update to fix app startup crash ([fd8cc0f](https://github.com/MorpheApp/morphe-patches/commit/fd8cc0fb14540b1e0d6adec903a7c2720a80b2f7))
+
+## [1.48.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.13...v1.48.0-dev.14) (2026-10-20)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Feed view count:** Show on the grid of landscape, same corners and text size as the other badges ([#3874](https://github.com/MorpheApp/morphe-patches/issues/3874)) ([733b6d1](https://github.com/MorpheApp/morphe-patches/commit/733b6d108f09c23892fbe3201dee55e45224b9c3))
+* **YouTube:** Error toasts on app startup with YouTube 21.40+ ([2151a04](https://github.com/MorpheApp/morphe-patches/commit/2151a04d0dfcc7f54e28af645a0e304f9af2d265))
+
+### ✨ New Features
+
+* **YouTube - Force animations:** Expand the content below the player with its animation when it loads ([b0020b2](https://github.com/MorpheApp/morphe-patches/commit/b0020b2513fffb6954c5925af3213958b947f94f))
+* **YouTube Music - Third-party lyrics:** Local romanization and alignment ([#3851](https://github.com/MorpheApp/morphe-patches/issues/3851)) ([9adcefd](https://github.com/MorpheApp/morphe-patches/commit/9adcefda0e18fb08a5e70933f243cdbc1d99e502))
+
 ## [1.48.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.12...v1.48.0-dev.13) (2026-10-19)
 
 ### 🐛 Bug Fixes

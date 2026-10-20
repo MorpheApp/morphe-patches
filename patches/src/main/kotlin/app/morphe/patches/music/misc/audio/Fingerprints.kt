@@ -65,7 +65,7 @@ internal object ExternalAudioRestrictionFingerprint : Fingerprint(
             location = MatchAfterWithin(7)
         ),
         methodCall(
-            smali = "Lj$/util/Collection\$-EL;->stream(Ljava/util/Collection;)Lj$/util/stream/Stream;",
+            smali = $$"Lj$/util/Collection$-EL;->stream(Ljava/util/Collection;)Lj$/util/stream/Stream;",
             location = MatchAfterWithin(2)
         ),
         methodCall(

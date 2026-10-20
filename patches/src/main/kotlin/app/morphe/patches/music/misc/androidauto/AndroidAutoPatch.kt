@@ -19,7 +19,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -36,7 +35,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -741,8 +739,9 @@ private fun BytecodePatchContext.skipPodcastsMediaIdDecoding(requestedMediaIdFie
             if-eqz v$mediaIdRegister, :resume
             const/4 v$mediaIdRegister, 0x0
             return-object v$mediaIdRegister
-        """,
-        ExternalLabel("resume", decodedMediaIdMethod.getInstruction<Instruction>(0)),
+            :resume
+            nop
+        """
     )
 }
 

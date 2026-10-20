@@ -485,17 +485,6 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_vot_cost_per_hour">%s dollár 100 videóóra esetén</string>
   <string name="morphe_vot_tts_voice_type">Hang</string>
   <string name="morphe_vot_tts_system">Rendszer</string>
-  <string name="morphe_vot_catalog_refreshing">Frissítés...</string>
-  <string name="morphe_vot_catalog_updated">Utoljára frissítve: %s</string>
-  <string name="morphe_vot_catalog_refresh">Hanglisták frissítése</string>
-  <string name="morphe_vot_catalog_unchanged">A hanglista naprakész</string>
-  <string name="morphe_vot_catalog_changed">A hanglista frissítve: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Nem sikerült frissíteni a hanglistát</string>
-  <string name="morphe_vot_catalog_source_online">Online</string>
-  <string name="morphe_vot_catalog_source_cache">Gyorsítótárazott</string>
-  <string name="morphe_vot_catalog_source_fallback">Beépített</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d hang · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Sikertelen frissítés: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Többnyelvű férfi</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Többnyelvű női</string>
   <string name="morphe_vot_voice_gender_male">Férfi</string>

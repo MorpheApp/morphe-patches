@@ -485,17 +485,6 @@ I-tap dito upang buksan ang OpenRouter.ai"</string>
   <string name="morphe_vot_cost_per_hour">%s bawat 100 oras ng video</string>
   <string name="morphe_vot_tts_voice_type">Boses</string>
   <string name="morphe_vot_tts_system">Sistema</string>
-  <string name="morphe_vot_catalog_refreshing">Nag-refresh...</string>
-  <string name="morphe_vot_catalog_updated">Huling binago: %s</string>
-  <string name="morphe_vot_catalog_refresh">I-refresh ang listahan ng boses</string>
-  <string name="morphe_vot_catalog_unchanged">Kumpleto na ang listahan ng boses</string>
-  <string name="morphe_vot_catalog_changed">Na-update ang listahan ng boses: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Hindi ma-refresh ang listahan ng boses</string>
-  <string name="morphe_vot_catalog_source_online">Online</string>
-  <string name="morphe_vot_catalog_source_cache">Naka-cache</string>
-  <string name="morphe_vot_catalog_source_fallback">Built-in</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d na boses · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Nabigo ang pag-update: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Multilingual na lalaki</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Multilingual na babae</string>
   <string name="morphe_vot_voice_gender_male">Lalaki</string>

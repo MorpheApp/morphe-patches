@@ -12,11 +12,14 @@ import app.morphe.patcher.fieldAccess
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val PREFERENCE_CLASS = "Landroidx/preference/Preference;"
+internal const val PREFERENCE_GROUP_CLASS = "Landroidx/preference/PreferenceGroup;"
+
 /**
  * Preference.setTitle(CharSequence). setSummary shares the parameter type but is not final.
  */
 internal object PreferenceSetTitleFingerprint : Fingerprint(
-    definingClass = "Landroidx/preference/Preference;",
+    definingClass = PREFERENCE_CLASS,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Ljava/lang/CharSequence;"),
     returnType = "V",
@@ -26,7 +29,7 @@ internal object PreferenceSetTitleFingerprint : Fingerprint(
  * Preference.setVisible(boolean). Only (Z)V setter that stores + notifies via a listener field.
  */
 internal object PreferenceSetVisibleFingerprint : Fingerprint(
-    definingClass = "Landroidx/preference/Preference;",
+    definingClass = PREFERENCE_CLASS,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Z"),
     returnType = "V",
@@ -46,10 +49,10 @@ internal object PreferenceSetVisibleFingerprint : Fingerprint(
  * PreferenceGroup.getPreference(int). The captured iget yields the backing list field ref.
  */
 internal object PreferenceGroupGetPreferenceFingerprint : Fingerprint(
-    definingClass = "Landroidx/preference/PreferenceGroup;",
+    definingClass = PREFERENCE_GROUP_CLASS,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("I"),
-    returnType = "Landroidx/preference/Preference;",
+    returnType = PREFERENCE_CLASS,
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
@@ -63,8 +66,8 @@ internal object PreferenceGroupGetPreferenceFingerprint : Fingerprint(
  * PreferenceGroup.findPreference(CharSequence). The only method with this signature.
  */
 internal object PreferenceGroupFindPreferenceFingerprint : Fingerprint(
-    definingClass = "Landroidx/preference/PreferenceGroup;",
+    definingClass = PREFERENCE_GROUP_CLASS,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Ljava/lang/CharSequence;"),
-    returnType = "Landroidx/preference/Preference;"
+    returnType = PREFERENCE_CLASS
 )

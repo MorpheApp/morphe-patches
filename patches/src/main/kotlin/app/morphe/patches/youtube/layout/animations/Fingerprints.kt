@@ -28,6 +28,15 @@ internal const val PAGE_TRANSITION_ANIMATION_HINTS_FEATURE_FLAG = 45694309L
  */
 internal const val SHORTS_ANIMATION_HINTS_FEATURE_FLAG = 45728204L
 
+/**
+ * 20.49+
+ *
+ * A/B test: the list below the player uses the flow layout manager, with an item animator
+ * that does not animate its content when it loads.
+ * When off, the content expands with its animation when it loads.
+ */
+internal const val FLOW_LAYOUT_WATCH_PANEL_FEATURE_FLAG = 45744104L
+
 internal object PageTransitionAnimationHintsFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(PAGE_TRANSITION_ANIMATION_HINTS_FEATURE_FLAG)
@@ -37,6 +46,12 @@ internal object PageTransitionAnimationHintsFeatureFlagFingerprint : Fingerprint
 internal object ShortsAnimationHintsFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(SHORTS_ANIMATION_HINTS_FEATURE_FLAG)
+    )
+)
+
+internal object FlowLayoutWatchPanelFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(FLOW_LAYOUT_WATCH_PANEL_FEATURE_FLAG)
     )
 )
 

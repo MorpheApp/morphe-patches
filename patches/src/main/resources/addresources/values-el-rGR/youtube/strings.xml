@@ -485,17 +485,6 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">%s ανά 100 ώρες βίντεο</string>
   <string name="morphe_vot_tts_voice_type">Φωνή</string>
   <string name="morphe_vot_tts_system">Σύστημα</string>
-  <string name="morphe_vot_catalog_refreshing">Ανανέωση...</string>
-  <string name="morphe_vot_catalog_updated">Τελευταία ενημέρωση: %s</string>
-  <string name="morphe_vot_catalog_refresh">Ανανέωση λίστας φωνών</string>
-  <string name="morphe_vot_catalog_unchanged">Η λίστα φωνών είναι ενημερωμένη</string>
-  <string name="morphe_vot_catalog_changed">Ενημέρωση λίστας φωνών: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Δεν ήταν δυνατή η ανανέωση της λίστας φωνών</string>
-  <string name="morphe_vot_catalog_source_online">Διαδίκτυο</string>
-  <string name="morphe_vot_catalog_source_cache">Cache</string>
-  <string name="morphe_vot_catalog_source_fallback">Ενσωματωμένο</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d φωνές · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Η ενημέρωση απέτυχε: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Πολυγλωσσικός άνδρας</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Πολυγλωσσική γυναίκα</string>
   <string name="morphe_vot_voice_gender_male">Άνδρας</string>

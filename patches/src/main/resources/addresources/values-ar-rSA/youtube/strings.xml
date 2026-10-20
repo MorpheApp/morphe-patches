@@ -487,17 +487,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_vot_cost_per_hour">‎%s لكل 100 ساعة فيديو‎</string>
   <string name="morphe_vot_tts_voice_type">الصوت</string>
   <string name="morphe_vot_tts_system">النظام</string>
-  <string name="morphe_vot_catalog_refreshing">جارٍ التحديث...</string>
-  <string name="morphe_vot_catalog_updated">آخر تحديث: %s</string>
-  <string name="morphe_vot_catalog_refresh">تحديث قائمة الأصوات</string>
-  <string name="morphe_vot_catalog_unchanged">قائمة الأصوات محدّثة</string>
-  <string name="morphe_vot_catalog_changed">تم تحديث قائمة الأصوات: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">تعذر تحديث قائمة الأصوات</string>
-  <string name="morphe_vot_catalog_source_online">متصل</string>
-  <string name="morphe_vot_catalog_source_cache">مُخزّن</string>
-  <string name="morphe_vot_catalog_source_fallback">مدمج</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d صوتًا · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">فشل التحديث: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">ذكر متعدد اللغات</string>
   <string name="morphe_vot_voice_gender_female_multilingual">أنثى متعددة اللغات</string>
   <string name="morphe_vot_voice_gender_male">ذكر</string>

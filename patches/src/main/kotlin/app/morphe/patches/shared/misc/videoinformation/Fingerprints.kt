@@ -2,11 +2,17 @@ package app.morphe.patches.shared.misc.videoinformation
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
+import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
     filters = listOf(
@@ -61,3 +67,16 @@ internal object PlaybackParametersToStringFingerprint : Fingerprint(
         "PlaybackParameters(speed=%.2f, pitch=%.2f)"
     )
 )
+
+/**
+ * @return The SEEK_SOURCE_UNKNOWN constant of the seek source enum.
+ * The enum fields are obfuscated, but its static initializer keeps the constant names as strings.
+ */
+context(patchContext: BytecodePatchContext)
+internal fun seekSourceUnknownField(seekSourceEnumType: String): FieldReference {
+    val staticInitializer = patchContext.classDefBy(seekSourceEnumType).methods.first { it.name == "<clinit>" }
+    val nameIndex = staticInitializer.indexOfFirstStringInstructionOrThrow("SEEK_SOURCE_UNKNOWN")
+    val fieldIndex = staticInitializer.indexOfFirstInstructionOrThrow(nameIndex, Opcode.SPUT_OBJECT)
+
+    return staticInitializer.getInstruction(fieldIndex).getReference<FieldReference>()!!
+}

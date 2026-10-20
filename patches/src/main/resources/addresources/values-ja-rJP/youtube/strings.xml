@@ -486,17 +486,6 @@ OpenRouter.aiを開くには、ここをタップしてください"</string>
   <string name="morphe_vot_cost_per_hour">100ビデオ時間あたり%s</string>
   <string name="morphe_vot_tts_voice_type">音声</string>
   <string name="morphe_vot_tts_system">システム</string>
-  <string name="morphe_vot_catalog_refreshing">更新中...</string>
-  <string name="morphe_vot_catalog_updated">最終更新日: %s</string>
-  <string name="morphe_vot_catalog_refresh">音声リストを更新</string>
-  <string name="morphe_vot_catalog_unchanged">音声リストは最新です</string>
-  <string name="morphe_vot_catalog_changed">音声リスト更新済み: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">音声リストの更新に失敗しました</string>
-  <string name="morphe_vot_catalog_source_online">オンライン</string>
-  <string name="morphe_vot_catalog_source_cache">キャッシュ済み</string>
-  <string name="morphe_vot_catalog_source_fallback">内蔵</string>
-  <string name="morphe_vot_catalog_status">%1$s · 音声数 %2$d · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">更新に失敗: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">多言語男性</string>
   <string name="morphe_vot_voice_gender_female_multilingual">多言語女性</string>
   <string name="morphe_vot_voice_gender_male">男性</string>

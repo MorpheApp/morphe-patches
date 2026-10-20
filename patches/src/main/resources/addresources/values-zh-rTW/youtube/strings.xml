@@ -275,7 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">隱藏禮物按鈕</string>
   <string name="morphe_hide_comments_info_button_title">隱藏資訊按鈕</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">隱藏直播聊天捐款者欄</string>
-  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">隱藏直播對話方塊「捲動到底部」按鈕</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">隱藏直播聊天框「捲動到底部」按鈕</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">隱藏即時聊天工具提示</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">隱藏在聊天輸入列附近顯示的工具提示彈出視窗，例如僅限訂閱者聊天通知</string>
   <string name="morphe_hide_comments_menu_button_title">隱藏選單按鈕</string>
@@ -437,7 +437,7 @@ Second \"item\" text"</string>
   <string name="morphe_feed_watch_later_button_summary">資訊流影片的縮圖上會顯示「稍後觀看」按鈕。輕觸並按住該按鈕可進入「新增至播放清單」功能</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">在縮圖上顯示觀看次數</string>
-  <string name="morphe_feed_view_count_summary">動態影片的觀看次數顯示於縮圖左下角，而非標題下方。部分影片（例如在「分頁」中的影片）可能不會顯示觀看次數</string>
+  <string name="morphe_feed_view_count_summary">動態影片的觀看次數顯示於縮圖左下角，而非標題下方。部份影片(例如在「媒體列」中的影片)可能不會顯示觀看次數</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">顯示動態縮圖的按讚數</string>
   <string name="morphe_ryd_feed_like_ratio_title">顯示動態縮圖的按讚比例</string>
@@ -485,17 +485,6 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">每 100 小時影片 %s 元</string>
   <string name="morphe_vot_tts_voice_type">語音</string>
   <string name="morphe_vot_tts_system">系統</string>
-  <string name="morphe_vot_catalog_refreshing">重新整理中……</string>
-  <string name="morphe_vot_catalog_updated">最後更新：%s</string>
-  <string name="morphe_vot_catalog_refresh">重新整理語音列表</string>
-  <string name="morphe_vot_catalog_unchanged">語音列表已是最新</string>
-  <string name="morphe_vot_catalog_changed">已更新語音列表：+%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">無法重新整理語音列表</string>
-  <string name="morphe_vot_catalog_source_online">線上</string>
-  <string name="morphe_vot_catalog_source_cache">快取</string>
-  <string name="morphe_vot_catalog_source_fallback">內建</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d 個語音 · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">更新失敗：%s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">多語言男性</string>
   <string name="morphe_vot_voice_gender_female_multilingual">多語言女性</string>
   <string name="morphe_vot_voice_gender_male">男性</string>

@@ -106,17 +106,21 @@ public final class FeedViewCountPatch {
     /** Space between the thumbnail and the title. */
     private static final int THUMBNAIL_TEXT_GAP_DP = 12;
     private static final int FALLBACK_HEIGHT_DP = 20;
+    /** Cards of a grid of up to three columns, such as the feed in landscape. */
+    private static final float MIN_GRID_CARD_WIDTH_OF_SCREEN = 0.3f;
     /** A duration badge larger than this is not the badge itself, but a host around it. */
     private static final int MAX_DURATION_WIDTH_DP = 120;
     private static final int MAX_DURATION_HEIGHT_DP = 32;
     private static final int MIN_DURATION_HEIGHT_DP = 12;
     private static final int PADDING_DP = 5;
     private static final int GAP_DP = 3;
-    private static final int RADIUS_DP = 4;
-    private static final float TEXT_SP = 12f;
+    /** Same as the like count badge, close to the corners of the duration badge. */
+    private static final int RADIUS_DP = 8;
+    /** As large as the text of the duration badge. */
+    private static final float TEXT_SP = 12.5f;
     private static final float ICON_STROKE_DP = 1.4f;
     /** Text size of the badge, relative to its height. */
-    private static final float TEXT_SIZE_OF_HEIGHT = 0.62f;
+    private static final float TEXT_SIZE_OF_HEIGHT = 0.66f;
     /** Size of the play icon, relative to the text size. */
     private static final float ICON_SIZE_OF_TEXT = 0.72f;
     /** Width of the play icon, relative to its height. */
@@ -824,8 +828,10 @@ public final class FeedViewCountPatch {
         int thumbnailBottom = -1;
         // Videos of shelves are not known, but the view count is shown by the card itself,
         // so it is shown on any card shaped like a video with a duration.
+        // Cards of a grid, such as in landscape, are narrower than the screen and their video is not known.
         final boolean checkCard = videoId != null
-                || (FeedVideoCardsPatch.isVideoShaped(host) && !FeedVideoCardsPatch.isPlaylistCard(host)
+                || (FeedVideoCardsPatch.isVideoShaped(host, MIN_GRID_CARD_WIDTH_OF_SCREEN)
+                && !FeedVideoCardsPatch.isPlaylistCard(host)
                 && !FeedVideoCardsPatch.hasHorizontalList(host));
         if (checkCard && !FeedVideoCardsPatch.isInDialog(host)) {
             CardInfo info = new CardInfo(getTextsTop(host));

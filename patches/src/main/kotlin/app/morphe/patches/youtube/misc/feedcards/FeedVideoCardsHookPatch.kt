@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.misc.feedcards
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.litho.relayout.COMPONENT_HOST_CLASS
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
@@ -28,7 +29,7 @@ private const val EXTENSION_CLASS =
  * so this matches by name on every supported app version.
  */
 internal object FeedCardComponentHostLayoutFingerprint : Fingerprint(
-    definingClass = "Lcom/facebook/litho/ComponentHost;",
+    definingClass = COMPONENT_HOST_CLASS,
     name = "onLayout",
     returnType = "V",
     parameters = listOf("Z", "I", "I", "I", "I")

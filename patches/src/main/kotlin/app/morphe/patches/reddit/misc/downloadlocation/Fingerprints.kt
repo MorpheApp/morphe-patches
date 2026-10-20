@@ -74,11 +74,11 @@ internal object DownloadVideoFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_DIRECT,
-            definingClass = "Landroid/app/DownloadManager\$Request;",
+            definingClass = $$"Landroid/app/DownloadManager$Request;",
             name = "<init>"
         ),
         methodCall(
-            definingClass = "Landroid/app/DownloadManager\$Request;",
+            definingClass = $$"Landroid/app/DownloadManager$Request;",
             name = "setDestinationInExternalPublicDir"
         ),
         string("DownloadManager_not_available"),
@@ -93,13 +93,13 @@ internal object DownloadVideoFingerprint : Fingerprint(
  * Downloads and saves an image. The first read of the parameters is at the start of the download.
  */
 internal object DownloadImageFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/domain/media/usecase/RedditDownloadMediaUseCase\$downloadMediaFile\$2;",
+    definingClass = $$"Lcom/reddit/domain/media/usecase/RedditDownloadMediaUseCase$downloadMediaFile$2;",
     name = "invokeSuspend",
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             definingClass = "this",
-            name = "\$params"
+            name = $$"$params"
         )
     )
 )

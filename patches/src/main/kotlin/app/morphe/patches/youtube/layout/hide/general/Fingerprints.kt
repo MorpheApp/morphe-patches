@@ -119,11 +119,23 @@ private object PlayerOverlayFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Sets the visibility of the channel watermark from a boolean field of the overlay.
+ */
 internal object ShowWatermarkFingerprint : Fingerprint(
     classFingerprint = PlayerOverlayFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("L", "L")
+    parameters = listOf("Landroid/content/Context;", "Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, definingClass = "this"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Landroid/view/View;", "Z"),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        )
+    )
 )
 
 internal object YouTubeDoodlesImageViewFingerprint : Fingerprint(

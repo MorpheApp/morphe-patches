@@ -9,18 +9,28 @@ package app.morphe.extension.youtube.patches.voiceovertranslation;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThrows;
 
 import org.junit.After;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class VoiceCatalogTest {
     @After
-    public void restoreBundledCatalog() {
-        VoiceCatalog.useBundledVoices();
+    public void clearCatalog() {
+        VoiceCatalog.setAvailableVoices(Collections.emptyList());
+    }
+
+    @Test
+    public void emptyCatalogHasNoBuiltInVoices() {
+        VoiceCatalog.setAvailableVoices(Collections.emptyList());
+        assertNull(VoiceCatalog.getVoice("tr-TR-EmelNeural"));
+        assertNull(VoiceCatalog.getVoicesForLang("tr-TR"));
+        assertNull(VoiceCatalog.resolve("tr-TR", null));
     }
 
     @Test
@@ -43,7 +53,7 @@ public class VoiceCatalogTest {
     }
 
     @Test
-    public void savedVoiceSelectionAndFallbackRemainStable() {
+    public void selectedVoiceAndLanguageFallbackUseDownloadedVoices() {
         VoiceCatalog.setAvailableVoices(Arrays.asList(
                 new VoiceCatalog.Voice(true, "tr-TR-AhmetNeural"),
                 new VoiceCatalog.Voice(false, "de-DE-KatjaNeural"),
@@ -56,27 +66,12 @@ public class VoiceCatalogTest {
     }
 
     @Test
-    public void catalogDiffIgnoresOrderingAndTracksAdditionsAndRemovals() {
-        VoiceCatalog.Voice tr = new VoiceCatalog.Voice(true, "tr-TR-AhmetNeural");
-        VoiceCatalog.Voice de = new VoiceCatalog.Voice(false, "de-DE-KatjaNeural");
-        VoiceCatalog.Voice newVoice = new VoiceCatalog.Voice(false, "tr-TR-NewNeural");
-
-        VoiceCatalog.ChangeSummary same = VoiceCatalog.compare(
-                Arrays.asList(tr, de), Arrays.asList(de, tr));
-        assertEquals(0, same.added);
-        assertEquals(0, same.removed);
-
-        VoiceCatalog.ChangeSummary changed = VoiceCatalog.compare(
-                Arrays.asList(tr, de), Arrays.asList(tr, newVoice));
-        assertEquals(1, changed.added);
-        assertEquals(1, changed.removed);
-    }
-
-    @Test
-    public void bundledVoicesRemainAvailableOffline() {
-        VoiceCatalog.useBundledVoices();
-        assertNotNull(VoiceCatalog.getVoice("tr-TR-AhmetNeural"));
-        assertNotNull(VoiceCatalog.getVoice("tr-TR-EmelNeural"));
-        assertNotNull(VoiceCatalog.resolve("de-DE", null));
+    public void replacingSnapshotRemovesVoicesMissingFromNewCatalog() {
+        VoiceCatalog.setAvailableVoices(Collections.singletonList(
+                new VoiceCatalog.Voice(false, "tr-TR-EmelNeural")));
+        VoiceCatalog.setAvailableVoices(Collections.singletonList(
+                new VoiceCatalog.Voice(false, "en-US-EmmaMultilingualNeural")));
+        assertNull(VoiceCatalog.getVoice("tr-TR-EmelNeural"));
+        assertEquals("en-US-EmmaMultilingualNeural", VoiceCatalog.resolve("tr-TR", null));
     }
 }

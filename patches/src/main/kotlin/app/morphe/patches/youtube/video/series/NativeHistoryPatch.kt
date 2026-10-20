@@ -18,12 +18,12 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val TRANSPORT = "${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport;"
 private const val HISTORY_TICKET =
-    "${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport\$Ticket;"
+    $$"$${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport$Ticket;"
 private const val HISTORY_SOURCE =
-    "${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport\$Source;"
+    $$"$${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport$Source;"
 private const val HISTORY_REQUEST =
-    "${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport\$Request;"
-private const val IDENTITY = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy\$Identity;"
+    $$"$${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport$Request;"
+private const val IDENTITY = $$"$${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy$Identity;"
 
 /** Keep host changes limited to typed bridges; resolve every host member before mutation. */
 internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContract) {

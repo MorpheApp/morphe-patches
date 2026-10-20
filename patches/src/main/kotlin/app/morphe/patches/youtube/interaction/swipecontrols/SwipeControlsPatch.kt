@@ -13,7 +13,6 @@ package app.morphe.patches.youtube.interaction.swipecontrols
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -30,11 +29,11 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeMainActivityConstructorFingerprint
 import app.morphe.patches.youtube.video.audio.soundBoostPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.cloneMutable
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.transformMethods
 import app.morphe.util.traverseClassHierarchy
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/swipecontrols/SwipeControlsHostActivity;"
 
@@ -174,16 +173,7 @@ val swipeControlsPatch = bytecodePatch(
         traverseClassHierarchy(targetClass) {
             accessFlags = accessFlags and AccessFlags.FINAL.value.inv()
             transformMethods {
-                ImmutableMethod(
-                    definingClass,
-                    name,
-                    parameters,
-                    returnType,
-                    accessFlags and AccessFlags.FINAL.value.inv(),
-                    annotations,
-                    hiddenApiRestrictions,
-                    implementation,
-                ).toMutable()
+                cloneMutable(accessFlags = accessFlags and AccessFlags.FINAL.value.inv())
             }
         }
 

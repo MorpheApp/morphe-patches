@@ -54,18 +54,19 @@ import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversed
+import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.matchSingle
+import app.morphe.util.p0Register
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.util.MethodUtil
 import org.w3c.dom.Node
 import java.lang.ref.WeakReference
 
@@ -354,7 +355,7 @@ val legacyPlayerControlsPatch = bytecodePatch(
                         throw PatchException("Unexpected image component prepare methods: $methods")
                     }
                 }.first().apply {
-                    if (implementation!!.registerCount - parameterTypes.size - 1 < 3) {
+                    if (p0Register < 3) {
                         throw PatchException("Not enough registers: $this")
                     }
 
@@ -374,25 +375,23 @@ val legacyPlayerControlsPatch = bytecodePatch(
                 }
             }
 
-            mutableClassDefBy(tintColorReference.definingClass).methods
-                .single { MethodUtil.methodSignaturesMatch(it, tintColorReference) }
-                .apply {
-                    findInstructionIndicesReversed(Opcode.RETURN).forEach { index ->
-                        val register = getInstruction<OneRegisterInstruction>(index).registerA
-                        addInstructions(
-                            index,
-                            """
-                                invoke-static { v$register }, $EXTENSION_CLASS->getImageTintColor(I)I
-                                move-result v$register
-                            """
-                        )
-                    }
-                    // The image parameter can be reused after it's read, so the image is handed at the start.
-                    addInstruction(
-                        0,
-                        "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setTintImage(Ljava/lang/Object;)V"
+            tintColorReference.getMutableMethod().apply {
+                findInstructionIndicesReversed(Opcode.RETURN).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    addInstructions(
+                        index,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->getImageTintColor(I)I
+                            move-result v$register
+                        """
                     )
                 }
+                // The image parameter can be reused after it's read, so the image is handed at the start.
+                addInstruction(
+                    0,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setTintImage(Ljava/lang/Object;)V"
+                )
+            }
 
             // The page indicator of the comments button can also have the dark theme colors.
             lithoDrawableColorHook("$EXTENSION_CLASS->getBackgroundColor(Landroid/graphics/drawable/Drawable;I)I")

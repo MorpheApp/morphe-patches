@@ -287,11 +287,19 @@ public final class FeedVideoCardsPatch {
     }
 
     public static boolean isVideoShaped(ComponentHost host) {
+        return isVideoShaped(host, MIN_WIDTH_OF_SCREEN);
+    }
+
+    /**
+     * @param minWidthOfScreen Smallest width of the card, relative to the width of the screen.
+     *                         Cards of a grid, such as in landscape, are narrower than the screen.
+     */
+    public static boolean isVideoShaped(ComponentHost host, float minWidthOfScreen) {
         final int width = host.getWidth();
         final float density = host.getResources().getDisplayMetrics().density;
         final int screenWidth = host.getResources().getDisplayMetrics().widthPixels;
         return width >= MIN_WIDTH_DP * density
-                && width >= screenWidth * MIN_WIDTH_OF_SCREEN
+                && width >= screenWidth * minWidthOfScreen
                 && host.getHeight() >= width * THUMBNAIL_RATIO + 40 * density
                 // Not the Shorts shelf, or the Shorts player.
                 // Square thumbnails are used too, such as in the Music feed.

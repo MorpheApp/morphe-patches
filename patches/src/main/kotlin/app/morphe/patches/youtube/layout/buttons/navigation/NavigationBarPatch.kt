@@ -50,6 +50,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.containsLiteralInstruction
 import app.morphe.util.findElementByAttributeValueOrThrow
+import app.morphe.util.fiveRegisters
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
@@ -633,11 +634,10 @@ val navigationBarPatch = bytecodePatch(
         OldSearchButtonVisibilityFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.first().index
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
 
                 replaceInstruction(
                     index,
-                    "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
+                    "invoke-static { ${fiveRegisters(index)} }, " +
                             "$EXTENSION_CLASS->hideOldSearchButton(Landroid/view/MenuItem;I)V"
                 )
             }
@@ -647,11 +647,10 @@ val navigationBarPatch = bytecodePatch(
         SearchButtonsVisibilityFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches[2].index
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
 
                 replaceInstruction(
                     index,
-                    "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
+                    "invoke-static { ${fiveRegisters(index)} }, " +
                             "$EXTENSION_CLASS->hideMicrophoneButton(Landroid/view/View;I)V"
                 )
             }

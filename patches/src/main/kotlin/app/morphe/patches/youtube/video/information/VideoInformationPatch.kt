@@ -31,6 +31,7 @@ import app.morphe.patches.shared.misc.videoinformation.PlaybackParametersToStrin
 import app.morphe.patches.shared.misc.videoinformation.PlayerControllerSetTimeReferenceFingerprint
 import app.morphe.patches.shared.misc.videoinformation.getExoPlayerImplFingerprint
 import app.morphe.patches.shared.misc.videoinformation.getPlaybackParametersSetterFingerprint
+import app.morphe.patches.shared.misc.videoinformation.seekSourceUnknownField
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
@@ -49,6 +50,7 @@ import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.p0Register
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -299,8 +301,8 @@ val videoInformationPatch = bytecodePatch(
 
                     instanceFields.add(playerControllerField)
 
-                    val playerControllerClassRegister =
-                        implementation!!.registerCount - parameters.size + playerControllerClassIndex
+                    // p0 is 'this', so the parameter at index N is p(N + 1).
+                    val playerControllerClassRegister = p0Register + 1 + playerControllerClassIndex
 
                     addInstructions(
                         2,
@@ -655,6 +657,7 @@ internal fun addExoPlayerHooks(extensionClass: String) {
     }
 }
 
+context(patchContext: BytecodePatchContext)
 private fun addPlayerInterfaceMethods(
     targetClass: MutableClass,
     seekToMethod: Method,
@@ -669,8 +672,8 @@ private fun addPlayerInterfaceMethods(
         Triple(seekToRelativeMethod, "patch_seekToRelative", false),
     ).forEach { (method, name, returnsBoolean) ->
         // Add interface method.
-        // Get enum type for the seek helper method.
-        val seekSourceEnumType = method.parameterTypes[1].toString()
+        // The seek helper method takes the seek source enum as its second parameter.
+        val seekSourceUnknown = seekSourceUnknownField(method.parameterTypes[1].toString())
 
         val interfaceImplementation = ImmutableMethod(
             targetClass.type,
@@ -684,8 +687,7 @@ private fun addPlayerInterfaceMethods(
         ).toMutable()
 
         var instructions = """
-            # First enum (field a) is SEEK_SOURCE_UNKNOWN.
-            sget-object v0, $seekSourceEnumType->a:$seekSourceEnumType
+            sget-object v0, $seekSourceUnknown
             invoke-virtual { p0, p1, p2, v0 }, $method
         """
 

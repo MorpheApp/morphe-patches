@@ -8,11 +8,14 @@
 package app.morphe.patches.shared.misc.proto
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatch
+import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.util.cloneMutable
+import app.morphe.util.fiveRegisters
 import java.lang.ref.WeakReference
 
 private var elementprotoParserInsertIndexStep = 2
@@ -26,9 +29,15 @@ private lateinit var elementProtoParserMethodRef: WeakReference<MutableMethod>
  * the raw byte buffer of every parsed proto element.
  *
  * @param sharedExtensionPatchDep The app-specific `sharedExtensionPatch`.
+ * @param readsResourcesWithParser Whether the inline resources of the responses, such as the templates
+ *                                 and the JavaScript modules, can be read with the parser (YouTube 21.40+).
+ *                                 Evaluated lazily inside execute so version flags are already set.
+ * @param block Callback to add app-specific dependencies, such as versionCheckPatch.
  */
 internal fun createElementProtoParserHookPatch(
     sharedExtensionPatchDep: BytecodePatch,
+    readsResourcesWithParser: () -> Boolean = { false },
+    block: BytecodePatchBuilder.() -> Unit = {},
 ): BytecodePatch = bytecodePatch(
     description = "Hook to modify the proto message class, which can only be accessed through reflection.",
 ) {
@@ -36,6 +45,8 @@ internal fun createElementProtoParserHookPatch(
         sharedExtensionPatchDep,
         fixProtoLibraryPatch,
     )
+
+    block()
 
     execute {
         NewElementProtoParserFingerprint.let {
@@ -59,6 +70,22 @@ internal fun createElementProtoParserHookPatch(
                 )
 
                 elementProtoParserMethodRef = WeakReference(this)
+
+                if (readsResourcesWithParser()) {
+                    // When a server flag is on, the inline resources of the responses are read with
+                    // this parser. They are not elements, so they use the helper method,
+                    // which has no element hooks.
+                    resourceBytesFingerprint(this).let { resource ->
+                        resource.method.apply {
+                            val index = resource.instructionMatches.first().index
+
+                            replaceInstruction(
+                                index,
+                                "invoke-static { ${fiveRegisters(index)} }, $helperMethod"
+                            )
+                        }
+                    }
+                }
             }
         }
     }

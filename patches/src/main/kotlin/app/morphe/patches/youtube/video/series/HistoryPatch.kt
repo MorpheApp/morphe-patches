@@ -194,7 +194,7 @@ internal fun BytecodePatchContext.wireHistory() {
 
     // The playlist toolbar populates its own Menu, independently of the activity menu.
     ToolbarMenuFingerprint.let {
-        it.classDef.interfaces.add("${SERIES_TRACKER_EXTENSION_PREFIX}PlaylistMenu\$ToolbarSource;")
+        it.classDef.interfaces.add($$"$${SERIES_TRACKER_EXTENSION_PREFIX}PlaylistMenu$ToolbarSource;")
         it.classDef.methods.add(
             ImmutableMethod(
                 it.classDef.type,

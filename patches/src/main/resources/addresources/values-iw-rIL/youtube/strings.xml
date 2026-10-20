@@ -485,17 +485,6 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">%s לכל 100 שעות וידאו</string>
   <string name="morphe_vot_tts_voice_type">קול</string>
   <string name="morphe_vot_tts_system">מערכת</string>
-  <string name="morphe_vot_catalog_refreshing">מרענן...</string>
-  <string name="morphe_vot_catalog_updated">עודכן לאחרונה: %s</string>
-  <string name="morphe_vot_catalog_refresh">רענון רשימת קולות</string>
-  <string name="morphe_vot_catalog_unchanged">רשימת הקולות עדכנית</string>
-  <string name="morphe_vot_catalog_changed">רשימת הקולות עודכנה: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">לא הצליח לרענן את רשימת הקולות</string>
-  <string name="morphe_vot_catalog_source_online">מקוון</string>
-  <string name="morphe_vot_catalog_source_cache">באג\"ם</string>
-  <string name="morphe_vot_catalog_source_fallback">מובנה</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d קולות · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">העדכון נכשל: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">גבר רב לשוני</string>
   <string name="morphe_vot_voice_gender_female_multilingual">אישה רב לשונית</string>
   <string name="morphe_vot_voice_gender_male">גבר</string>

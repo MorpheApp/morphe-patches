@@ -9,10 +9,8 @@ package app.morphe.extension.youtube.patches.voiceovertranslation;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,184 +30,98 @@ import java.util.concurrent.Executors;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
-/**
- * Discovers available Edge TTS voices asynchronously.
- *
- * <p>The built-in voices always work offline. A validated server response becomes the
- * active catalog, and the last successful response is stored for subsequent launches.
- * Network errors never interrupt speech synthesis or replace a working catalog.
- */
+/** Microsoft's voice list plus the last successfully downloaded disk copy. */
 final class EdgeTtsVoiceRepository {
     private static final String PREFS = "morphe_vot_edge_voices";
     private static final String KEY_CATALOG = "catalog";
     private static final String KEY_FETCHED_AT = "fetched_at";
     private static final long CACHE_TTL_MS = 24L * 60 * 60 * 1_000;
-    private static final long AUTOMATIC_RETRY_MS = 30L * 60 * 1_000;
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 12_000;
     private static final int MAX_RESPONSE_LENGTH = 2_000_000;
     private static final int MIN_VALID_VOICES = 100;
 
+    private static final long RETRY_DELAY_MS = 30L * 60 * 1_000;
     private static final Object LOCK = new Object();
     private static final ExecutorService EXECUTOR = Executors.newSingleThreadExecutor(r -> {
         Thread thread = new Thread(r, "morphe-edge-voices");
         thread.setDaemon(true);
         return thread;
     });
-    private static final List<Runnable> listeners = new ArrayList<>();
-
-    private static boolean inFlight;
-    private static boolean diskLoaded;
+    private static final List<Runnable> callbacks = new ArrayList<>();
+    private static boolean loading;
+    // Only the dedicated executor accesses these fields.
+    private static boolean cacheLoaded;
     private static long lastAttemptMs;
-    private static volatile Status status = new Status(Source.FALLBACK,
-            VoiceCatalog.getAvailableVoices().size(), 0, 0, "", 0, false, null);
-
-    enum Source { ONLINE, CACHE, FALLBACK }
-
-    /** Immutable status read by the voice picker without locking. */
-    static final class Status {
-        final Source source;
-        final int totalVoices;
-        final int added;
-        final int removed;
-        final String comparison;
-        final long lastUpdatedMs;
-        final boolean refreshing;
-        final String error;
-
-        Status(Source source, int totalVoices, int added, int removed,
-               String comparison, long lastUpdatedMs, boolean refreshing, String error) {
-            this.source = source;
-            this.totalVoices = totalVoices;
-            this.added = added;
-            this.removed = removed;
-            this.comparison = comparison;
-            this.lastUpdatedMs = lastUpdatedMs;
-            this.refreshing = refreshing;
-            this.error = error;
-        }
-
-        Status withRefreshing(boolean refreshing) {
-            return new Status(source, totalVoices, added, removed, comparison,
-                    lastUpdatedMs, refreshing, error);
-        }
-
-        Status withError(String error) {
-            return new Status(source, totalVoices, added, removed, comparison,
-                    lastUpdatedMs, refreshing, error);
-        }
-    }
 
     private EdgeTtsVoiceRepository() {}
 
-    static Status getStatus() {
-        return status;
-    }
-
-    /** Refreshes at most once per day unless the cached data is stale or absent. */
-    static void refreshIfNeeded(Context context, Runnable onFinished) {
-        schedule(context, false, onFinished);
-    }
-
-    /** User-initiated refresh: bypass cache TTL and automatic retry delay. */
-    static void refreshNow(Context context, Runnable onFinished) {
-        schedule(context, true, onFinished);
-    }
-
-    private static void schedule(Context context, boolean force, Runnable onFinished) {
+    /** The cached voices stay usable while the online list is refreshed. */
+    static void load(Context context, Runnable onUpdate) {
+        if (context == null) return;
         synchronized (LOCK) {
-            listeners.add(onFinished);
-            if (inFlight) return;
-            inFlight = true;
-            status = status.withRefreshing(true);
+            if (onUpdate != null) callbacks.add(onUpdate);
+            if (loading) return;
+            loading = true;
         }
         Context appContext = context.getApplicationContext();
-        EXECUTOR.execute(() -> loadAndRefresh(appContext, force));
+        EXECUTOR.execute(() -> loadAndRefresh(appContext));
     }
 
-    private static void loadAndRefresh(Context context, boolean force) {
+    private static void loadAndRefresh(Context context) {
         try {
             SharedPreferences prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-            loadSavedCatalog(prefs);
+            if (!cacheLoaded) {
+                cacheLoaded = true;
+                String cached = prefs.getString(KEY_CATALOG, null);
+                if (cached != null) {
+                    try {
+                        VoiceCatalog.setAvailableVoices(parse(cached));
+                        notifyListeners(); // Do not wait for a potentially slow network refresh.
+                    } catch (Exception ex) {
+                        prefs.edit().remove(KEY_CATALOG).remove(KEY_FETCHED_AT).apply();
+                        Logger.printDebug(() -> "Ignoring invalid Edge voice cache: " + ex);
+                    }
+                }
+            }
 
             long now = System.currentTimeMillis();
-            long fetchedAt = prefs.getLong(KEY_FETCHED_AT, 0);
-            boolean fresh = status.source != Source.FALLBACK && fetchedAt > 0
-                    && now >= fetchedAt && now - fetchedAt < CACHE_TTL_MS;
-            if (!force && fresh) {
-                logStatus("using saved catalog", status);
-                return;
-            }
-            if (!force && now >= lastAttemptMs && now - lastAttemptMs < AUTOMATIC_RETRY_MS) {
-                logStatus("automatic retry deferred", status);
-                return;
-            }
+            long savedAt = prefs.getLong(KEY_FETCHED_AT, 0);
+            if (savedAt > 0 && now >= savedAt && now - savedAt < CACHE_TTL_MS) return;
+            if (lastAttemptMs > 0 && now >= lastAttemptMs
+                    && now - lastAttemptMs < RETRY_DELAY_MS) return;
+
             lastAttemptMs = now;
-
-            List<VoiceCatalog.Voice> previous = VoiceCatalog.getAvailableVoices();
-            String response = download();
-            List<VoiceCatalog.Voice> downloaded = parse(response);
-            VoiceCatalog.ChangeSummary changes = VoiceCatalog.compare(previous, downloaded);
-            String comparison = status.source == Source.FALLBACK ? "FALLBACK" : "PREVIOUS";
-
-            // Publish only after receiving and validating the complete response.
-            long updatedAt = System.currentTimeMillis();
-            VoiceCatalog.setAvailableVoices(downloaded);
-            prefs.edit().putString(KEY_CATALOG, response)
-                    .putLong(KEY_FETCHED_AT, updatedAt).apply();
-            status = new Status(Source.ONLINE, downloaded.size(), changes.added,
-                    changes.removed, comparison, updatedAt, true, null);
-            logStatus("HTTP 200", status);
-        } catch (Exception error) {
-            // Retain the last-good snapshot, including the bundled fallback.
-            String message = error.getMessage() != null
-                    ? error.getMessage() : error.getClass().getSimpleName();
-            status = status.withError(message);
-            logStatus("refresh failed", status);
-        } finally {
-            status = status.withRefreshing(false);
-            List<Runnable> callbacks;
-            synchronized (LOCK) {
-                callbacks = new ArrayList<>(listeners);
-                listeners.clear();
-                inFlight = false;
+            String json = download();
+            List<VoiceCatalog.Voice> voices = parse(json);
+            // Persist a fully validated response before publishing the new snapshot.
+            if (!prefs.edit().putString(KEY_CATALOG, json)
+                    .putLong(KEY_FETCHED_AT, System.currentTimeMillis()).commit()) {
+                Logger.printDebug(() -> "Could not persist Edge voice catalog");
             }
+            VoiceCatalog.setAvailableVoices(voices);
+            notifyListeners();
+        } catch (Exception ex) {
+            // Keep the last successfully cached snapshot (or an empty catalog on first run).
+            Logger.printDebug(() -> "Edge voice catalog download failed: " + ex);
+        } finally {
+            synchronized (LOCK) {
+                loading = false;
+                callbacks.clear();
+            }
+        }
+    }
+
+    private static void notifyListeners() {
+        List<Runnable> pending;
+        synchronized (LOCK) {
+            pending = new ArrayList<>(callbacks);
+        }
+        if (!pending.isEmpty()) {
             Utils.runOnMainThread(() -> {
-                for (Runnable callback : callbacks) callback.run();
+                for (Runnable callback : pending) callback.run();
             });
         }
-    }
-
-    private static void loadSavedCatalog(SharedPreferences prefs) {
-        if (diskLoaded) return;
-        diskLoaded = true;
-        String cached = prefs.getString(KEY_CATALOG, null);
-        if (cached == null) {
-            logStatus("bundled fallback", status);
-            return;
-        }
-        try {
-            List<VoiceCatalog.Voice> voices = parse(cached);
-            VoiceCatalog.setAvailableVoices(voices);
-            status = new Status(Source.CACHE, voices.size(), 0, 0, "",
-                    prefs.getLong(KEY_FETCHED_AT, 0), true, null);
-            logStatus("loaded disk cache", status);
-        } catch (Exception error) {
-            // A corrupted cache should not stop an online refresh.
-            prefs.edit().remove(KEY_CATALOG).remove(KEY_FETCHED_AT).apply();
-            logStatus("invalid disk cache: " + error.getMessage(), status);
-        }
-    }
-
-    private static void logStatus(String action, Status current) {
-        Logger.printDebug(() -> "EdgeTtsVoiceCatalog: " + action
-                + " source=" + current.source
-                + " total=" + current.totalVoices
-                + " added=" + current.added
-                + " removed=" + current.removed
-                + " comparedTo=" + current.comparison
-                + " fetchedAt=" + current.lastUpdatedMs
-                + (current.error != null ? " error=" + current.error : ""));
     }
 
     private static String download() throws IOException {
@@ -256,7 +168,7 @@ final class EdgeTtsVoiceRepository {
         }
     }
 
-    /** A partial or malformed catalog must not replace valid cached/bundled voices. */
+    /** Reject incomplete catalogs rather than replacing a working disk cache. */
     static List<VoiceCatalog.Voice> parse(String json) throws Exception {
         JSONArray rows = new JSONArray(json);
         Map<String, VoiceCatalog.Voice> unique = new LinkedHashMap<>();
@@ -267,6 +179,7 @@ final class EdgeTtsVoiceRepository {
             String locale = row.optString("Locale", "");
             String gender = row.optString("Gender", "");
             if (id.length() < 8 || id.length() > 100 || locale.isEmpty()
+                    || id.indexOf('-', id.indexOf('-') + 1) < 0
                     || !id.startsWith(locale + "-") || !id.matches("[A-Za-z0-9-]+")) {
                 continue;
             }
