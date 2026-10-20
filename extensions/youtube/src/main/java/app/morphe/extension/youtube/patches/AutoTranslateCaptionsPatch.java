@@ -94,11 +94,20 @@ public final class AutoTranslateCaptionsPatch {
 
         // All tracks are translations of the same source track.
         // Vss id is "t" + source vss id + "." + language code,
-        // and the url ends with "&tlang=" + language code.
+        // and the url contains "&tlang=" + language code.
         CaptionTrackInterface template = tracks.get(0);
-        final int templateCodeLength = template.patch_getLanguageCode().length();
-        String vssIdPrefix = removeSuffix(template.patch_getVssId(), templateCodeLength);
-        String urlPrefix = removeSuffix(template.patch_getUrl(), templateCodeLength);
+        String templateCode = template.patch_getLanguageCode();
+        String vssIdPrefix = removeSuffix(template.patch_getVssId(), templateCode.length());
+        String templateUrl = template.patch_getUrl();
+        String targetParameter = "&tlang=" + templateCode;
+        final int targetIndex = templateUrl.lastIndexOf(targetParameter);
+        if (targetIndex < 0) {
+            Logger.printDebug(() -> "Translation url has no target language: " + templateUrl);
+            return tracks;
+        }
+        // Keep everything around the target language unchanged, including the signature.
+        String urlPrefix = templateUrl.substring(0, targetIndex + targetParameter.length() - templateCode.length());
+        String urlSuffix = templateUrl.substring(targetIndex + targetParameter.length());
 
         Set<String> existingLanguages = new HashSet<>();
         for (CaptionTrackInterface track : tracks) {
@@ -110,7 +119,7 @@ public final class AutoTranslateCaptionsPatch {
             if (existingLanguages.add(getLanguageKey(code))) {
                 String name = Locale.forLanguageTag(code).getDisplayName(locale);
                 result.add(template.patch_copyTranslation(
-                        code, urlPrefix + code, vssIdPrefix + code, name));
+                        code, urlPrefix + code + urlSuffix, vssIdPrefix + code, name));
             }
         }
 
@@ -166,7 +175,10 @@ public final class AutoTranslateCaptionsPatch {
         return result.isEmpty() ? tracks : sortTranslationTracks(result, locale);
     }
 
-    /** Prefer the native default within this audio's originals, otherwise retain their order. */
+    /**
+     * Prefer the source YouTube uses for translations (or its default caption track)
+     * within this audio's originals, otherwise retain their order.
+     */
     static CaptionTrackInterface findFallbackSource(
             List<? extends PreferredCaptionLanguagePatch.CaptionTrackInterface> tracks,
             PreferredCaptionLanguagePatch.CaptionTrackInterface defaultSource) {

@@ -27,6 +27,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.Reference
 
 private const val EXTENSION_CLASS =
@@ -102,6 +103,60 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             )
         }
 
+        // Source YouTube uses to translate captions of the current audio track,
+        // or the default caption track of the current audio track.
+        val translationSourceMethod = CaptionTracksManagerTranslationSourceFingerprint.let {
+            val captionTrackType = CaptionTrackBuilderBuildFingerprint.method.returnType
+            val metadataField = it.instructionMatches[0].instruction.getReference<FieldReference>()!!
+            val audioTrackField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
+            val sourceIndicesField = it.instructionMatches[5].instruction.getReference<FieldReference>()!!
+            val audioCaptionIndicesField = it.instructionMatches[8].instruction.getReference<FieldReference>()!!
+            val captionTracksField = it.instructionMatches[10].instruction.getReference<FieldReference>()!!
+            val getMethod = it.instructionMatches[11].instruction.getReference<MethodReference>()!!
+            val convertMethod = it.instructionMatches[12].instruction.getReference<MethodReference>()!!
+            val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(captionTrackType).method
+
+            it.classDef.addHelperMethod(
+                "patch_getTranslationSource",
+                captionTrackType,
+                freeRegisters = 5,
+                smali = """
+                    iget-object v0, p0, $metadataField
+                    iget-object v1, p0, $audioTrackField
+                    if-eqz v1, :default
+                    iget-object v2, v0, $sourceIndicesField
+                    invoke-interface { v2 }, Ljava/util/List;->iterator()Ljava/util/Iterator;
+                    move-result-object v2
+                    :next
+                    invoke-interface { v2 }, Ljava/util/Iterator;->hasNext()Z
+                    move-result v3
+                    if-eqz v3, :default
+                    invoke-interface { v2 }, Ljava/util/Iterator;->next()Ljava/lang/Object;
+                    move-result-object v3
+                    iget-object v4, v1, $audioCaptionIndicesField
+                    invoke-interface { v4, v3 }, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+                    move-result v4
+                    if-eqz v4, :next
+                    check-cast v3, Ljava/lang/Integer;
+                    invoke-virtual { v3 }, Ljava/lang/Integer;->intValue()I
+                    move-result v3
+                    iget-object v4, v0, $captionTracksField
+                    invoke-interface { v4, v3 }, $getMethod
+                    move-result-object v4
+                    check-cast v4, ${convertMethod.parameterTypes.single()}
+                    invoke-direct { p0, v4 }, $convertMethod
+                    move-result-object v0
+                    return-object v0
+                    :default
+                    invoke-virtual { p0 }, $defaultSourceMethod
+                    move-result-object v0
+                    return-object v0
+                """
+            )
+
+            "${it.classDef.type}->patch_getTranslationSource()$captionTrackType"
+        }
+
         DefaultCaptionTrackFingerprint.classDef.apply {
             val tracksManagerField = SubtitleManagerDirectTracksFingerprint(
                 CaptionTracksManagerDirectTracksFingerprint.method
@@ -124,19 +179,15 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
                 )
             }
 
-            val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(
-                CaptionTrackBuilderBuildFingerprint.method.returnType
-            ).method
-
             addTracksGetter("patch_getDirectCaptionTracks", CaptionTracksManagerDirectTracksFingerprint)
             addTracksGetter("patch_getAutoTranslateCaptionTracks", CaptionTracksManagerAutoTranslateTracksFingerprint)
             addHelperMethod(
-                "patch_getDefaultCaptionSource",
+                "patch_getCaptionTranslationSource",
                 EXTENSION_CAPTION_TRACK_INTERFACE,
                 smali = """
                     iget-object v0, p0, $tracksManagerField
                     if-eqz v0, :null
-                    invoke-virtual { v0 }, $defaultSourceMethod
+                    invoke-virtual { v0 }, $translationSourceMethod
                     move-result-object v0
                     :null
                     return-object v0

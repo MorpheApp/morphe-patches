@@ -81,6 +81,13 @@ public class AutoTranslateCaptionsPatchTest {
         find(result, "zh-Hant");
     }
 
+    @Test public void replacesOnlyTheTargetLanguageOfTheUrl() {
+        Track german = new Track("de", URL + "&tlang=de&fmt=srv3#opaque", "ta.en.de", "German");
+        List<CaptionTrackInterface> result = add(List.of(german), Locale.ENGLISH);
+
+        assertEquals(URL + "&tlang=el&fmt=srv3#opaque", find(result, "el").patch_getUrl());
+    }
+
     @Test public void keepsBrazilianAndEuropeanPortugueseSeparate() {
         List<CaptionTrackInterface> result = add(List.of(new Track("pt", "Portuguese")), Locale.ENGLISH);
 
