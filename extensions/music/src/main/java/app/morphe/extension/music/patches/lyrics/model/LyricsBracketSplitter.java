@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.lyrics.TextTrim;
+
 public final class LyricsBracketSplitter {
 
     private static final LyricsLine BLANK = new LyricsLine(LyricsLine.NO_TIME, "");
@@ -71,7 +73,7 @@ public final class LyricsBracketSplitter {
     @Nullable
     private static Cut cut(List<LyricsLine> lines, int index) {
         final LyricsLine line = lines.get(index);
-        if (line.isBG() || line.text().isBlank()) {
+        if (line.isBG() || line.text().trim().isEmpty()) {
             return null;
         }
         if (index + 1 < lines.size() && lines.get(index + 1).isBG()) {
@@ -174,7 +176,7 @@ public final class LyricsBracketSplitter {
         final List<Word> trimmedBackground = trimBrackets(background);
         final String sungText = textOf(trimmed);
         final String backgroundText = textOf(trimmedBackground);
-        if (sungText.isBlank() || backgroundText.isBlank()) {
+        if (sungText.trim().isEmpty() || backgroundText.trim().isEmpty()) {
             return null;
         }
         return new Cut(plain(line, sungText, trimmed, false),
@@ -202,15 +204,15 @@ public final class LyricsBracketSplitter {
         for (int i = 0; i < words.size(); i++) {
             String body = words.get(i).text();
             if (i == 0) {
-                body = body.stripLeading();
+                body = TextTrim.stripLeading(body);
                 while (isOpen(body.charAt(0))) {
-                    body = body.substring(1).stripLeading();
+                    body = TextTrim.stripLeading(body.substring(1));
                 }
             }
             if (i == words.size() - 1) {
-                body = body.stripTrailing();
+                body = TextTrim.stripTrailing(body);
                 while (!body.isEmpty() && isClose(body.charAt(body.length() - 1))) {
-                    body = body.substring(0, body.length() - 1).stripTrailing();
+                    body = TextTrim.stripTrailing(body.substring(0, body.length() - 1));
                 }
             }
             if (body.isEmpty()) {

@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Sláðu inn pakkarnafn</string>
   <string name="morphe_external_downloader_other_item">Annað</string>
   <string name="morphe_external_downloader_not_found_title">App er ekki uppsett</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s er ekki uppsett. Vinsamlegast settu það upp.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s er ekki uppsett. Vinsamlegast settu það upp</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Gat ekki fundið uppsett forrit með pakkanafnið: %s
 
 Staðfestu að pakkanafnið er rétt og að forritið er uppsett"</string>
@@ -84,7 +84,7 @@ Til að breyta tákninu alls staðar skaltu keyra plástra aftur og breyta plás
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe spila</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe tilkynning</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Ekki er hægt að vista skoðunarhistórikuna þína.&lt;br&gt;&lt;br&gt;Þetta stafar líklega af DNS auglýsingablokkera eða nettengjum.&lt;br&gt;&lt;br&gt;Til að laga þetta skaltu bæta &lt;b&gt;s.youtube.com&lt;/b&gt; á hvítlista eða slökkva á öllum DNS blokkerum og tengjum.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Skjávarpsferillinn þinn er ekki vistuð.&lt;br&gt;&lt;br&gt;Þetta er líklega vegna DNS augnablokks eða netfars.&lt;br&gt;&lt;br&gt;Til að laga þetta, setjðu &lt;b&gt;s.youtube.com&lt;/b&gt; á hvítlista eða slökktu á öllum DNS-blockers og proxy-um</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ekki sýna aftur</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spofa myndstreymi</string>
@@ -99,7 +99,7 @@ Ef þú ert YouTube Premium notandi gæti þessi stilling verið óþarf"</strin
 
 Gera %2$s að sjálfgefnum biðlara?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Skipta</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Ef þú slökkvir á þessari stillingu gæti það valdið vandræðum við spilun.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Að slökkva á þessari stillingu gæti valdið spilunarvandamálum</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Reyndu að virkja: Spoof myndstreymi > Android VR innskráning</string>
@@ -134,7 +134,7 @@ Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
 • Þú þarft að skrá þig inn aftur ef þú breytir Google lykilorðinu þínu eða hættir þessu tæki úr Google stillingum þínum"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er tímabundið ekki í boði (API tímdi út)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR innskráning er runnin út, prófaðu að skrá þig inn á VR aftur</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 er tímabundið ekki í boði (staða %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 er tímabundið ekki tiltækt (staða %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 er tímabundið ekki í boði</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Ekki hægt að skrá inn á VR, vefsíðu staðfesting var ekki samþykkja</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ekki hægt að skrá inn á VR: %s</string>
@@ -197,7 +197,7 @@ Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
 
 Þetta getur hjálpað við að bera kennsl á hluta þegar sérsniðnar síur eru búnar til.
 
-Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-talan þín."</string>
+Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-talan þín"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Sérstakur síubreyting</string>
   <string name="morphe_custom_filter_screen_summary">Stilltu sérstakar síubreytingar til að fela þáttinn</string>
@@ -238,11 +238,11 @@ Kveiktu á 'Spoofa myndstrauma' til að laga spilun"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Gerðu app útgáfuna að breytast</string>
   <string name="morphe_spoof_app_version_summary">Blekkur netþjóninn til að láta það virðast eins og þú ert að nota eldri app útgáfu til að endurheimta eldri UI eiginleika</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"App útgáfa verður gerð að eldri útgáfu.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Útgáfa forritsins verður svíkjuð til eldri útgáfu.
 
-Þetta mun breyta útliti og eiginleikum appsins, en óþekktir aukaverkanir geta komið upp.
+Þetta mun breyta útliti og eiginleikum forritsins, en óþekkta aukaáhrif geta komið fram.
 
-Ef þú slökkvir þetta síðar er mælt með því að eyða gögnum appsins til að forðast UI villur."</string>
+Ef síðar slökkt, mælir með að hreina forritagögn til að koma í veg fyrir UI villa"</string>
   <string name="morphe_spoof_app_version_target_title">Markmið breyttrar app útgáfu</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Endurnýjunarhraði apps</string>
@@ -265,7 +265,7 @@ Ef þú slökkvir þetta síðar er mælt með því að eyða gögnum appsins t
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes eru tímabundið óþægilegt (API tímdi út)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Dislikes eru óþægilegt (staða %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Óhagsmunar eru ekki tiltækir (staða %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Dislikes eru óþægilegt (takmörk API fyrir notanda)</string>
   <string name="morphe_ryd_failure_generic">Dislikes eru óþægilegt (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Auðkenni myndbandsins sem þú horfir á er sent til Return YouTube Dislike API
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislikes eru tímabundið óþægilegt - Takmörk API fyrir notanda í gildi</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API sækir atkvæði, fjöldi kallanna</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Engar tengingar hafa verið gerðar</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d tengingar hafa verið gerðar</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Fjölda netkerfisfella %s gerð</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API sækir atkvæði, fjöldi tíma úts</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Engar tengingar hafa farið yfir tíma</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d tengingar hafa farið yfir tíma</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Fjölda netkerfisfella %s tíma út</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Takmörk API fyrir notanda</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Engin takmörk API fyrir notanda hefur komið fyrir</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Takmörk API fyrir notanda hefur komið fyrir %d sinnum</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d millisekúndur</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Viðskiptavinur lágmarks takmarkun lent %s sinnum</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s millisekúndur</string>
 </resources>

@@ -7,12 +7,21 @@
 
 package app.morphe.extension.youtube.series;
 
+import android.graphics.drawable.StateListDrawable;
+import android.util.StateSet;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.VideoState;
 
-/** Direct targets of Morphe's playback hooks. */
+/** Direct targets of Morphe's playback and navigation hooks. */
 @SuppressWarnings("unused")
 public final class SeriesTrackerPatch {
     /**
@@ -20,6 +29,13 @@ public final class SeriesTrackerPatch {
      * immediately and the app behaves as if the patch was not included.
      */
     static final boolean ENABLED = Settings.SERIES_TRACKER.get();
+
+    /**
+     * Off while the navigation bar is hidden.
+     */
+    static final boolean NAVIGATION_BUTTON = ENABLED
+            && Settings.SERIES_TRACKER_NAVIGATION_BUTTON.get()
+            && Settings.SERIES_TRACKER_NAVIGATION_BUTTON.isAvailable();
 
     static {
         if (ENABLED) {
@@ -71,6 +87,27 @@ public final class SeriesTrackerPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "navigationIntent failure", ex);
             return false;
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void navigationTabCreated(NavigationBar.NavigationButton button, View tabView) {
+        if (!NAVIGATION_BUTTON || button != NavigationBar.NavigationButton.SERIES) return;
+        try {
+            // Series player button icon, filled when selected like the other buttons.
+            final String suffix = Utils.appIsUsingBoldIcons() ? "_bold" : "";
+            StateListDrawable drawable = new StateListDrawable();
+            drawable.addState(new int[]{android.R.attr.state_selected},
+                    ResourceUtils.getDrawable("morphe_series_tracker_button_fill" + suffix));
+            drawable.addState(StateSet.WILD_CARD, ResourceUtils.getDrawable("morphe_series_tracker_button" + suffix));
+            ImageView icon = Utils.getChildViewByResourceName(tabView, "image");
+            TextView label = Utils.getChildViewByResourceName(tabView, "text");
+            icon.setImageDrawable(drawable);
+            icon.setImageTintList(label.getTextColors());
+        } catch (Exception ex) {
+            Logger.printException(() -> "navigationTabCreated failure", ex);
         }
     }
 

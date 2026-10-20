@@ -1,6 +1,22 @@
 package com.reddit.domain.model;
 
 public final class Link extends ILink {
+    public String getAuthor() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public LinkMedia getMedia() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public Preview getPreview() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public String getUrl() {
+      throw new UnsupportedOperationException("Stub");
+    }
+  
     public String getId() {
         throw new UnsupportedOperationException("Stub");
     }

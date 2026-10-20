@@ -21,6 +21,9 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val WATCH_WHILE_LAYOUT_CLASS =
+    "Lcom/google/android/apps/youtube/music/watchpage/ui/WatchWhileLayout;"
+
 /**
  * Matches the miniplayer constructor.
  * Identified by the play/pause button resource literal and a unique string in the method body.
@@ -102,7 +105,7 @@ internal object MinimizedPlayerFingerprint : Fingerprint(
  *   >= 9.x: WatchWhileLayout
  */
 internal object MppWatchWhileLayoutFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/apps/youtube/music/watchpage/ui/WatchWhileLayout;",
+    definingClass = WATCH_WHILE_LAYOUT_CLASS,
     returnType = "V",
     parameters = listOf(),
     filters = listOf(

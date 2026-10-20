@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">색상 초기화</string>
   <string name="morphe_settings_color_invalid">잘못된 색상입니다</string>
   <string name="morphe_settings_restart_title">다시 시작하세요</string>
-  <string name="morphe_settings_restart_dialog_message">이 변경 사항을 적용하려면 앱을 다시 시작하세요.</string>
+  <string name="morphe_settings_restart_dialog_message">이 변경 사항을 적용하려면 앱을 다시 시작하세요</string>
   <string name="morphe_settings_restart">다시 시작</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">가져오기</string>
   <string name="morphe_settings_import_copy">복사</string>
   <string name="morphe_settings_import_reset">Morphe 설정을 기본값으로 초기화합니다</string>
-  <string name="morphe_settings_import_success">%d 개의 설정을 가져왔습니다</string>
+  <string name="morphe_settings_import_success">%s 개의 설정을 가져왔습니다</string>
   <string name="morphe_settings_import_failure_parse">설정을 가져올 수 없습니다: %s</string>
   <string name="morphe_settings_navigate_up">위로 이동</string>
   <string name="morphe_settings_search_hint">설정 검색</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_title">Morphe 오류 메시지 표시하기</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"오류 메시지를 비활성화하면 모든 Morphe 오류 알림이 숨겨집니다.
 
-예상되지 않은 이벤트에 대한 알림을 받지 못할 수 있습니다."</string>
+예상되지 않은 이벤트에 대한 알림을 받지 못할 수 있습니다"</string>
   <string name="morphe_debug_export_logs_title">디버그 로그 내보내기</string>
   <string name="morphe_debug_export_logs_summary">Morphe 디버그 로그를 내보낼 수 있습니다</string>
   <string name="morphe_debug_export_logs_success">디버그 로그를 성공적으로 내보냈습니다</string>
@@ -179,31 +179,31 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG 설정을 실행할 수 있습니다</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG가 설치되어 있지 않습니다. 설치하세요.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG가 설치되어 있지 않습니다. 설치하세요</string>
   <string name="gms_core_dialog_title">필수 조치</string>
   <string name="gms_core_dialog_outdated_message">"MicroG %1s 버전은 오래되어 문제가 발생할 수 있습니다.
 
-MicroG를 최신 %2s 버전으로 업데이트하세요."</string>
+MicroG를 최신 %2s 버전으로 업데이트하세요"</string>
   <string name="gms_core_dialog_update_text">업데이트</string>
   <string name="gms_core_dialog_ignore_text">무시</string>
   <string name="gms_core_dialog_conflict_message">"설치된 MicroG는 Morphe가 권장하지 않습니다:
 
 %1s
 
-탭하여 제거한 다음 이 앱을 다시 열고 MicroG RE를 설치하세요."</string>
+탭하여 제거한 다음 이 앱을 다시 열고 MicroG RE를 설치하세요"</string>
   <string name="gms_core_dialog_uninstall_text">설치 제거</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG에는 백그라운드에서 실행할 수 있는 권한이 없습니다.
 
 본 기기의 \"Don't kill my app\" 가이드를 참고하여 MicroG 설치에 관한 지침을 적용하세요.
 
-이러한 조치 없이는 앱이 정상적으로 작동하지 않습니다."</string>
+이러한 조치 없이는 앱이 정상적으로 작동하지 않습니다"</string>
   <string name="gms_core_dialog_open_website_text">웹사이트 열기</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG 앱 배터리 최적화를 비활성화(제한 없음)하여 앱 문제를 방지할 수 있습니다.
 
 MicroG 앱 배터리 최적화를 비활성화(제한 없음)하더라도, 배터리 사용량에 부정적인 영향을 미치지 않습니다.
 
-앱 배터리 최적화를 비활성화(제한 없음)하려면 '계속' 버튼을 탭하세요."</string>
+앱 배터리 최적화를 비활성화(제한 없음)하려면 '계속' 버튼을 탭하세요"</string>
   <string name="gms_core_dialog_continue_text">계속</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG 배터리 최적화 대화 상자 표시하기</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"이 설정을 비활성화하면 MicroG 배터리 최적화 대화 상자가 숨겨집니다

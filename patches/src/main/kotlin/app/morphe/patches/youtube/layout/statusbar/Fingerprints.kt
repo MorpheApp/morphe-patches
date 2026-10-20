@@ -26,6 +26,16 @@ internal object EdgeToEdgeTopBarFeatureFlagFingerprint : Fingerprint(
 )
 
 /**
+ * Colors the status bar like the top bar while it scrolls. Needs the edge to edge top bar.
+ * Not present in older targets.
+ */
+internal object StatusBarScrollColorFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45830993L)
+    )
+)
+
+/**
  * Shows the view drawn behind the status bar and sets its color.
  */
 internal object StatusBarBackgroundShowFingerprint : Fingerprint(

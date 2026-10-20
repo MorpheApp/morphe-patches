@@ -24,10 +24,13 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_INTERFACE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findFreeRegister
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -115,7 +118,9 @@ val rememberVideoQualityPatch = bytecodePatch {
             val videoQualitySettingType = it.classDef.type
             val advancedMenuField = it.instructionMatches.last().instruction.getReference<FieldReference>()!!
 
-            getVideoQualitySettingFingerprint(videoQualitySettingType).method.apply {
+            val videoQualitySettingMethod = getVideoQualitySettingFingerprint(videoQualitySettingType).method
+
+            videoQualitySettingMethod.apply {
                 val register = findFreeRegister(0)
 
                 addInstructionsWithLabels(
@@ -130,6 +135,38 @@ val rememberVideoQualityPatch = bytecodePatch {
                         nop
                     """
                 )
+            }
+
+            // The initial video quality is only used when the video starts. YouTube chooses the quality
+            // again while the video plays, and without a quality selected in the quality menu it is
+            // then chosen automatically, such as 720p for the size of the player.
+            // The default quality is used as a fixed quality for these choices too.
+            getVideoQualityConstraintFingerprint(videoQualitySettingMethod.toString()).method.apply {
+                val constraintType = returnType
+                val fixedConstraintMethod = mutableClassDefBy(constraintType).methods.single { method ->
+                    method.returnType == constraintType && method.parameterTypes.map { it.toString() } == listOf("I")
+                }
+
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    // The returned register can be above v15, which a non range invoke can not use.
+                    val qualityRegister = findFreeRegister(index, register)
+                    val constraintRegister = findFreeRegister(index, register, qualityRegister)
+
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            invoke-static { }, $EXTENSION_CLASS->getFixedVideoQuality()I
+                            move-result v$qualityRegister
+                            if-ltz v$qualityRegister, :automatic_quality
+                            move-object/from16 v$constraintRegister, v$register
+                            invoke-virtual { v$constraintRegister, v$qualityRegister }, $fixedConstraintMethod
+                            move-result-object v$register
+                            :automatic_quality
+                            nop
+                        """
+                    )
+                }
             }
         }
 

@@ -1,3 +1,80 @@
+## [1.48.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.12...v1.48.0-dev.13) (2026-10-19)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Captions:** Show auto-translated captions of styled caption tracks ([#3837](https://github.com/MorpheApp/morphe-patches/issues/3837)) ([aedcf19](https://github.com/MorpheApp/morphe-patches/commit/aedcf198849b226d3b23638e5e810d9ea39999ba))
+* **YouTube - Feed card layout:** Sort buttons of the channel tabs have a card background ([328121e](https://github.com/MorpheApp/morphe-patches/commit/328121e9a5b6552075db00327c12ecf39feda762))
+* **YouTube - Miniplayer:** Watch transition animation is missing ([779d81c](https://github.com/MorpheApp/morphe-patches/commit/779d81c856133efc0e59a83e81f9628cd05a581f))
+* **YouTube - Navigation bar:** Navigation bar is raised and an empty bar is left at the bottom on Android 11 and lower ([e91d606](https://github.com/MorpheApp/morphe-patches/commit/e91d60686bbc66182eab43e510c04d247e5fb323))
+* **YouTube Music - Android Auto:** Fix large collections not loading on 9.15 ([#3849](https://github.com/MorpheApp/morphe-patches/issues/3849)) ([1c18d6a](https://github.com/MorpheApp/morphe-patches/commit/1c18d6a02a119d0147593d3615c46dce3a65ff19))
+* **YouTube Music - Enable exclusive audio playback:** Prevent podcasts stopping in Android Auto ([#3850](https://github.com/MorpheApp/morphe-patches/issues/3850)) ([7a2b926](https://github.com/MorpheApp/morphe-patches/commit/7a2b926302f34d1309fb3896ed6720d0db5ab8a5))
+* **YouTube:** "Play next/last in queue" does nothing from feeds when no video is playing ([c770414](https://github.com/MorpheApp/morphe-patches/commit/c770414fb0ed43ac8f2af7519f7f9222cae8f780))
+* **YouTube:** Comments button page indicator is invisible with the light theme ([0f7f6d8](https://github.com/MorpheApp/morphe-patches/commit/0f7f6d8f6625d73941e211c51167097288f8682d))
+* **YouTube:** Restore Edge TTS and add voice catalog refresh ([#3840](https://github.com/MorpheApp/morphe-patches/issues/3840)) ([4aa4deb](https://github.com/MorpheApp/morphe-patches/commit/4aa4deb6cd6ad4bf01a0f199e984dd3b33449fab))
+
+### ✨ New Features
+
+* **Reddit:** Add `Download location` patch ([#3870](https://github.com/MorpheApp/morphe-patches/issues/3870)) ([7d0f9b6](https://github.com/MorpheApp/morphe-patches/commit/7d0f9b67193372a92e7065f5fa4f4e366b2ba41c))
+* **YouTube - Hide layout components:** Add "Hide 'No comments yet' message" setting ([#3819](https://github.com/MorpheApp/morphe-patches/issues/3819)) ([32168f9](https://github.com/MorpheApp/morphe-patches/commit/32168f9ebff2269c98ea5d9adedda07394342ab9))
+* **YouTube - Hide layout components:** Add "Hide live chat scroll to bottom button" setting ([#3826](https://github.com/MorpheApp/morphe-patches/issues/3826)) ([1956988](https://github.com/MorpheApp/morphe-patches/commit/19569880caabbaed642ce9c48e829d22141405dd))
+* **YouTube - Return YouTube Dislike:** Add "Show feed thumbnail like count" setting ([#3786](https://github.com/MorpheApp/morphe-patches/issues/3786)) ([7b2fd85](https://github.com/MorpheApp/morphe-patches/commit/7b2fd85413a12a955dfcd8ff9928790c2ac993e8))
+* **YouTube - Series tracking:** Add "Show Series in navigation bar" setting ([#3814](https://github.com/MorpheApp/morphe-patches/issues/3814)) ([abaca95](https://github.com/MorpheApp/morphe-patches/commit/abaca951b67eeae3dd9f1a9bc8f9c09e72b7c20b))
+* **YouTube:** Add "Force animations" patch, superseding the Miniplayer watch transition fix ([#3872](https://github.com/MorpheApp/morphe-patches/issues/3872)) ([591ad8b](https://github.com/MorpheApp/morphe-patches/commit/591ad8bd917bc168b0144014022438e395624bef))
+* **YouTube:** Add `Feed view count` patch ([#3862](https://github.com/MorpheApp/morphe-patches/issues/3862)) ([cf0ce16](https://github.com/MorpheApp/morphe-patches/commit/cf0ce16d8304c31ca7a89e730c09debe07a67390))
+
+## [1.48.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.11...v1.48.0-dev.12) (2026-10-18)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Captions:** Restore all translation menu getter routes ([#3818](https://github.com/MorpheApp/morphe-patches/issues/3818)) ([3a6a5b3](https://github.com/MorpheApp/morphe-patches/commit/3a6a5b3ae1d934114668a68ebe56bd512baae18e))
+* **YouTube - Default video quality:** Video quality drops while the video plays ([9f7b7eb](https://github.com/MorpheApp/morphe-patches/commit/9f7b7ebb10c909f7d2bc480de9fdbd3dd6076e2f))
+* **YouTube - Feed card layout:** Remove the feed vertical spacing override, which can crash the app ([31a85c7](https://github.com/MorpheApp/morphe-patches/commit/31a85c7d1bfb99658c668444c37fd96e16500398))
+* **YouTube - Feed card layout:** Round the top outer corners of the Shorts shelves ([8effa2e](https://github.com/MorpheApp/morphe-patches/commit/8effa2e103947e57455e2b93629186a411c86f37))
+* **YouTube - Feed card layout:** Shorts shelves of the search results are not cards ([12ed02f](https://github.com/MorpheApp/morphe-patches/commit/12ed02f49d3059875435c6d8cdebe548c7e80dd3))
+* **YouTube - Feed card layout:** Vertical video shelves are not cards ([44564ee](https://github.com/MorpheApp/morphe-patches/commit/44564eeff5d617dab0b0210c149a9c190e9f0021))
+* **YouTube - Feed video actions:** Watch later button opens the share sheet ([6c94f32](https://github.com/MorpheApp/morphe-patches/commit/6c94f32df957beda5721729f12385eea3537c975))
+* **YouTube - Minimal miniplayer:** Bar is cut off by the display cutout in landscape ([01267da](https://github.com/MorpheApp/morphe-patches/commit/01267da0f015fb868edb6b59e1086778966c7900))
+* **YouTube - Navigation bar:** Navigation bar is raised and an empty bar is left at the bottom ([eca3334](https://github.com/MorpheApp/morphe-patches/commit/eca3334c07df995dbbb4f58ed425591883086554))
+* **YouTube:** App can crash when an observer removes itself while it is notified ([5ee5a72](https://github.com/MorpheApp/morphe-patches/commit/5ee5a724433d6b96b7847e98aaf39c096bd81d5f))
+* **YouTube:** Flyout menu text is cut when Morphe items are added ([f8b7669](https://github.com/MorpheApp/morphe-patches/commit/f8b7669dfd9b10ed68da3cfae4190cb0f2c7430a))
+* **YouTube:** Status bar is opaque, black bar above the player and crash on startup ([b5d9498](https://github.com/MorpheApp/morphe-patches/commit/b5d9498577ea285c8dd490bb823bbbd9c6674624))
+* **YouTube:** Video metadata panel text can not be read with the light theme ([332e18e](https://github.com/MorpheApp/morphe-patches/commit/332e18e82b73cc737fc6c84d1126e6fa915821fb))
+
+### ✨ New Features
+
+* **Reddit:** Add `Redgifs audio` patch ([#3714](https://github.com/MorpheApp/morphe-patches/issues/3714)) ([b664711](https://github.com/MorpheApp/morphe-patches/commit/b66471189b52974ead5666ac033b6b2ec867de2e))
+* **YouTube - Hide status bar:** Add "Fix status bar covering the top bars" setting ([caa1be0](https://github.com/MorpheApp/morphe-patches/commit/caa1be0fe5faf3351fa49a02667f03ef4946b34f))
+
+## [1.48.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.10...v1.48.0-dev.11) (2026-10-17)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Captions:** Restore translations from original caption sources ([#3794](https://github.com/MorpheApp/morphe-patches/issues/3794)) ([46ab900](https://github.com/MorpheApp/morphe-patches/commit/46ab900bd9daa990a4d741a6e7f3dc5611173cdb))
+* **YouTube - Feed cards layout:** Cards sometimes lose spacing ([0658f00](https://github.com/MorpheApp/morphe-patches/commit/0658f0083bc5d143b379097b706d4114a845a08f))
+
+### ✨ New Features
+
+* **YouTube:** Add `Feed video actions` patch ([#3758](https://github.com/MorpheApp/morphe-patches/issues/3758)) ([b263c08](https://github.com/MorpheApp/morphe-patches/commit/b263c08af15eb0a72f6ea707bd49597d95209d29))
+
+## [1.48.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.9...v1.48.0-dev.10) (2026-10-17)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Default video quality:** Forcely disabled automatic stock quality selection and deprecated the code to handle both Stock/Morphe quality selections ([93e0c2b](https://github.com/MorpheApp/morphe-patches/commit/93e0c2b4db27760a22b1e48aef8b87dc330a92bf))
+* **YouTube - Feed cards layout:** Keep horizontal layout for search results on tablets ([0108028](https://github.com/MorpheApp/morphe-patches/commit/0108028df245e0664974d345c58a291f95a1245e))
+* **YouTube - Feed cards layout:** Make new style more consistent ([#3801](https://github.com/MorpheApp/morphe-patches/issues/3801)) ([5dc0d0c](https://github.com/MorpheApp/morphe-patches/commit/5dc0d0c71ef9c9c11709e62568eb9c1778e9a4c7))
+* **YouTube - Minimal miniplayer:** Apply minimized position based on commit [#9d8b0df43](https://github.com/MorpheApp/morphe-patches/issues/9d8b0df43) insets ([7f9fb1f](https://github.com/MorpheApp/morphe-patches/commit/7f9fb1f7df988afc7a21ffa4735227a404c06444))
+* **YouTube - Minimal miniplayer:** Show DeArrow title on type 1 style ([72f7b82](https://github.com/MorpheApp/morphe-patches/commit/72f7b82c8ac8d9032d7834abb10ae9f9b86c5ba1))
+* **YouTube - New feed cards layout:** Rounded edges and padding was wrong ([7d54662](https://github.com/MorpheApp/morphe-patches/commit/7d5466217e5dc7ea1ea323d4f9d7a6baf9f42f8a))
+* **YouTube:** Force show translucent navigation bar ([e5bb8bf](https://github.com/MorpheApp/morphe-patches/commit/e5bb8bfea55258a6926243fbfb7ed19fffea3925))
+* **YouTube:** Light/Dark theme colors are wrong ([93cf169](https://github.com/MorpheApp/morphe-patches/commit/93cf169e8fa7f96bef741fe5f02f5654b2ae70f6))
+* **YouTube:** Status bar becomes dark ([9d8b0df](https://github.com/MorpheApp/morphe-patches/commit/9d8b0df43ae3cd4dfc1a537311d4dfc6aa600ac5))
+
+### ✨ New Features
+
+* **Reddit:** Add `Show flairs in home feed` patch ([#3260](https://github.com/MorpheApp/morphe-patches/issues/3260)) ([93501dd](https://github.com/MorpheApp/morphe-patches/commit/93501dd4b31a103c37509b1c26f7644ca9082aff))
+* **YouTube - Player icon style:** Add Series tracker button icons ([179ff66](https://github.com/MorpheApp/morphe-patches/commit/179ff663d36806e11bd3869df8d1a66287072a7f))
+
 ## [1.48.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.8...v1.48.0-dev.9) (2026-10-16)
 
 ### 🐛 Bug Fixes

@@ -24,6 +24,7 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.translation.TextTranslator;
 
@@ -83,8 +84,7 @@ public final class LyricsRomanizer {
                     List<LyricsLine> aiCached = LyricsCache.getRomanizationAI(
                             track, source, lines);
                     if (aiCached != null) {
-                        Utils.runOnMainThread(() -> callback.onRomanized(
-                                aiCached, false, true, model, false, null));
+                        publish(callback, lyrics, aiCached, false, true, model, null);
                         return;
                     }
 
@@ -93,8 +93,7 @@ public final class LyricsRomanizer {
                     if (aiResult != null) {
                         List<LyricsLine> aiLines = toLines(aiResult);
                         LyricsCache.putRomanizationAI(track, source, lines, aiLines);
-                        Utils.runOnMainThread(() -> callback.onRomanized(
-                                aiLines, false, true, model, false, null));
+                        publish(callback, lyrics, aiLines, false, true, model, null);
                         return;
                     }
                 }
@@ -116,16 +115,31 @@ public final class LyricsRomanizer {
                         && Settings.LYRICS_LOCAL_ROMANIZATION.get()
                         ? LocalRomanizer.romanize(lines) : null;
 
-                List<LyricsLine> result = local != null ? toLines(local.lines) : romanized;
-                final boolean fromGoogle = online && local == null && result != null;
-                Utils.runOnMainThread(() -> callback.onRomanized(
-                        result, fromGoogle, false, null, false,
-                        local != null ? local.dictionary : null));
-            } catch (Throwable ignored) {
+                final List<LyricsLine> wholeLine = local != null ? toLines(local.lines) : romanized;
+                final boolean fromGoogle = online && local == null && wholeLine != null;
+                publish(callback, lyrics, wholeLine, fromGoogle, false, null,
+                        local != null ? local.dictionary : null);
+            } catch (Throwable ex) {
+                Logger.printException(() -> "romanize failure", ex);
                 Utils.runOnMainThread(
                         () -> callback.onRomanized(null, false, false, null, false, null));
             }
         });
+    }
+
+    /**
+     * The one place a reading leaves, so every source is offered word alignment alike: the word
+     * timings are the source's either way, leaving the reading as the only part to be matched.
+     */
+    private static void publish(Callback callback, Lyrics lyrics,
+            @Nullable List<LyricsLine> readings, boolean fromGoogle, boolean fromAI,
+            @Nullable String aiModel, @Nullable String localDictionary) {
+        final List<LyricsLine> aligned = readings != null
+                && Settings.LYRICS_LOCAL_ROMANIZATION.get() && Settings.LYRICS_WORD_SYNC.get()
+                ? LocalRomanizer.alignWords(lyrics.lines(), readings) : null;
+        final List<LyricsLine> result = aligned != null ? aligned : readings;
+        Utils.runOnMainThread(() -> callback.onRomanized(result, fromGoogle, fromAI, aiModel,
+                aligned != null, localDictionary));
     }
 
     @Nullable

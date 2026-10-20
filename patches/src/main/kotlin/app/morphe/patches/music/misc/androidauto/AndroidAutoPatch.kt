@@ -18,7 +18,6 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.implementsType
@@ -40,7 +39,6 @@ import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -725,8 +723,9 @@ private fun BytecodePatchContext.skipCustomMediaIdDecoding(requestedMediaIdField
             if-eqz v$mediaIdRegister, :resume
             const/4 v$mediaIdRegister, 0x0
             return-object v$mediaIdRegister
-        """,
-        ExternalLabel("resume", decodedMediaIdMethod.getInstruction<Instruction>(0)),
+            :resume
+            nop
+        """
     )
 }
 

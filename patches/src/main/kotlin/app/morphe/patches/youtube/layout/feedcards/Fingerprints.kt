@@ -97,39 +97,3 @@ internal object ElementItemConstructorFingerprint : Fingerprint(
     )
 )
 
-internal const val FLOW_LAYOUT_MANAGER_CLASS =
-    "Lcom/google/android/libraries/elements/converters/layout/FlowLayoutManager;"
-
-/**
- * Layout manager of the lists of elements, with the horizontal and the vertical spacing between the items,
- * converted from dp to pixels.
- */
-internal object FlowLayoutManagerConstructorFingerprint : Fingerprint(
-    definingClass = FLOW_LAYOUT_MANAGER_CLASS,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("F", "Landroid/util/DisplayMetrics;"),
-            returnType = "I"
-        ),
-        // Horizontal spacing.
-        fieldAccess(
-            opcode = Opcode.IPUT,
-            type = "I",
-            location = MatchAfterWithin(2)
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            parameters = listOf("F", "Landroid/util/DisplayMetrics;"),
-            returnType = "I",
-            location = MatchAfterWithin(2)
-        ),
-        // Vertical spacing.
-        fieldAccess(
-            opcode = Opcode.IPUT,
-            type = "I",
-            location = MatchAfterWithin(2)
-        )
-    )
-)

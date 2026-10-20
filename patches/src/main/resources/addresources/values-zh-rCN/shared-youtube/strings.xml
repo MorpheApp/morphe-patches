@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">输入包名</string>
   <string name="morphe_external_downloader_other_item">其他</string>
   <string name="morphe_external_downloader_not_found_title">应用未安装</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s未安装。请安装它。</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s 未安装。请安装它</string>
   <string name="morphe_external_downloader_package_not_found_warning">"无法找到具有包名的已安装应用：%s
 
 请验证包名是否正确以及该应用是否已安装。"</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe 玩乐</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">您的观看历史记录未保存。&lt;br&gt;&lt;br&gt;这很可能是由 DNS 广告拦截器或网络代理造成的。&lt;br&gt;&lt;br&gt;要解决此问题，请将 &lt;b&gt;s.youtube.com&lt;/b&gt; 添加到白名单或关闭所有 DNS 广告拦截器和代理。</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">您的观看历史记录未保存。&lt;br&gt;&lt;br&gt;这很可能是由 DNS 广告拦截器或网络代理造成的。&lt;br&gt;&lt;br&gt;要解决此问题，请将 &lt;b&gt;s.youtube.com&lt;/b&gt; 添加到白名单或关闭所有 DNS 广告拦截器和代理</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">不再显示</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">欺骗视频流</string>
@@ -99,7 +99,7 @@ Second \"item\" text"</string>
 
 要将 %2$s 设为默认客户端吗？"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">切换</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">关闭此设置可能会导致播放问题。</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">关闭此设置可能会导致播放问题</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">请尝试启用：欺骗视频流 &gt; 登录 Android VR</string>
@@ -134,7 +134,7 @@ Second \"item\" text"</string>
 • 更改 Google 密码或在 Google 设置中注销本设备后，需重新登录"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 暂时不可用（API 超时）</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR登录已过期，请重新登录VR</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 暂时不可用（状态：%d）</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 暂时不可用 (状态 %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 暂时不可用</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">无法登录VR，网站认证未批准</string>
   <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
@@ -197,7 +197,7 @@ Second \"item\" text"</string>
 
 这有助于在创建自定义过滤器时识别组件。
 
-但是，启用此设置也会记录一些用户数据，例如您的 IP 地址。"</string>
+但是，启用此设置也会记录一些用户数据，例如您的 IP 地址"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">自定义过滤器</string>
   <string name="morphe_custom_filter_screen_summary">配置自定义过滤器以隐藏任何组件</string>
@@ -238,11 +238,11 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">伪装应用版本</string>
   <string name="morphe_spoof_app_version_summary">欺骗服务器，使其认为您使用的是较旧的应用版本，以恢复遗留的 UI 功能</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"应用版本将被欺骗为旧版本。
+  <string name="morphe_spoof_app_version_user_dialog_message">"应用版本将被伪装为旧版本。
 
 这会改变应用程序的外观和功能，但可能会出现未知的副作用。
 
-如果稍后关闭，建议清除应用程序数据以防止 UI 错误。"</string>
+如果稍后关闭，建议清除应用程序数据以防止 UI 错误"</string>
   <string name="morphe_spoof_app_version_target_title">伪装应用程序版本为</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">应用刷新率</string>
@@ -265,7 +265,7 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">点踩数暂时不可用 (API 连接超时)</string>
-  <string name="morphe_ryd_failure_connection_status_code">点踩数不可用 (状态 %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">点踩数不可用 (状态 %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">无法使用“不喜欢”（客户端 API 限制）</string>
   <string name="morphe_ryd_failure_generic">点踩数不可用 (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">点踩数暂时不可用 - 客户端 API 速率限制生效</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API 获取投票，调用次数</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">没有进行网络调用</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">进行了 %d 次网络调用</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">已进行 %s 次网络调用</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API 获取投票，超时次数</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">没有网络调用超时</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d 次网络调用超时</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s 次网络调用超时</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API 客户端速率限制</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">未遇到客户端速率限制</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">客户端速率限制已遇到 %d 次</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d 毫秒</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">遇到客户端速率限制 %s 次</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s 毫秒</string>
 </resources>

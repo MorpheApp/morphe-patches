@@ -29,6 +29,8 @@ public class LyricsLocalRomanizationPreference extends SwitchPreference {
     private final Progress[] progress = {new Progress(), new Progress()};
 
     private boolean failed;
+    private boolean seenProgress;
+    private boolean announced;
 
     private static final class Progress {
         String label;
@@ -78,6 +80,8 @@ public class LyricsLocalRomanizationPreference extends SwitchPreference {
 
     private void start() {
         failed = false;
+        seenProgress = false;
+        announced = false;
         PinyinDictStore.ensure(listener(0));
         JapaneseDictStore.ensure(listener(1));
     }
@@ -90,6 +94,7 @@ public class LyricsLocalRomanizationPreference extends SwitchPreference {
                 slot.label = fileName;
                 slot.percent = percent;
                 slot.building = false;
+                seenProgress = true;
                 updateSummary();
             }
 
@@ -97,6 +102,7 @@ public class LyricsLocalRomanizationPreference extends SwitchPreference {
             public void onBuilding(int percent) {
                 slot.percent = percent;
                 slot.building = true;
+                seenProgress = true;
                 updateSummary();
             }
 
@@ -116,7 +122,23 @@ public class LyricsLocalRomanizationPreference extends SwitchPreference {
     }
 
     private void updateSummary() {
-        Utils.runOnMainThread(() -> setSummary(summary()));
+        Utils.runOnMainThread(() -> {
+            setSummary(summary());
+            announce();
+        });
+    }
+
+    private void announce() {
+        if (announced) return;
+        if (failed) {
+            announced = true;
+            Utils.showToastShort(str("morphe_music_lyrics_local_romanization_dict_failed"));
+            return;
+        }
+        if (!seenProgress || !progress[0].done || !progress[1].done) return;
+        announced = true;
+        Utils.showToastShort(str("morphe_music_lyrics_local_romanization_dict_ready",
+                progress[0].entries + progress[1].entries));
     }
 
     private CharSequence summary() {

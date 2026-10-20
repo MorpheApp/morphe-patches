@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Setel ulang warna</string>
   <string name="morphe_settings_color_invalid">Warna tidak sah</string>
   <string name="morphe_settings_restart_title">Memerlukan mulai ulang</string>
-  <string name="morphe_settings_restart_dialog_message">Mulai ulang aplikasi agar perubahan ini dapat diterapkan.</string>
+  <string name="morphe_settings_restart_dialog_message">Mulai ulang aplikasi agar perubahan ini dapat diterapkan</string>
   <string name="morphe_settings_restart">Mulai ulang</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Impor</string>
   <string name="morphe_settings_import_copy">Salin</string>
   <string name="morphe_settings_import_reset">Setelan Morphe diatur ke bawaan</string>
-  <string name="morphe_settings_import_success">%d Setelan diimpor</string>
+  <string name="morphe_settings_import_success">%s Setelan diimpor</string>
   <string name="morphe_settings_import_failure_parse">Impor gagal: %s</string>
   <string name="morphe_settings_navigate_up">Navigasi ke atas</string>
   <string name="morphe_settings_search_hint">Cari setelan</string>
@@ -101,9 +101,9 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_debug_stacktrace_title">Jejak stack catatan debug</string>
   <string name="morphe_debug_stacktrace_summary">Menyertakan jejak stack dalam catatan debug untuk membantu mengidentifikasi kesalahan</string>
   <string name="morphe_debug_toast_on_error_title">Tampilkan pesan timbul pada kesalahan Morphe</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan notifikasi kesalahan menyembunyikan semua notifikasi kesalahan Morphe.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan pesan timbul kesalahan menyembunyikan semua pemberitahuan kesalahan Morphe.
 
-Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
+Anda tidak akan diberi tahu tentang kejadian yang tidak terduga"</string>
   <string name="morphe_debug_export_logs_title">Ekspor pencatatan debug</string>
   <string name="morphe_debug_export_logs_summary">Ekspor pencatatan debug Morphe</string>
   <string name="morphe_debug_export_logs_success">Pencatatan debug berhasil diekspor</string>
@@ -179,31 +179,31 @@ Perilaku tersebut menghilang lebih awal pada saat pencarian, sehingga kemungkina
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Buka setelan MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG belum dipasang. Pasang dulu.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG belum dipasang. Pasang dulu</string>
   <string name="gms_core_dialog_title">Diperlukan tindakan</string>
   <string name="gms_core_dialog_outdated_message">"MicroG v%1s Anda sudah usang dan dapat menyebabkan masalah.
 
-Harap perbarui MicroG ke versi terbaru v%2s."</string>
+Harap perbarui MicroG ke versi terbaru v%2s"</string>
   <string name="gms_core_dialog_update_text">Perbarui</string>
   <string name="gms_core_dialog_ignore_text">Abaikan</string>
   <string name="gms_core_dialog_conflict_message">"MicroG yang terpasang tidak direkomendasikan oleh Morphe:
 
 %1s
 
-Ketuk untuk mencopot, lalu buka kembali aplikasi ini dan pasang MicroG RE."</string>
+Ketuk untuk mencopot, lalu buka kembali aplikasi ini dan pasang MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Copot</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG tidak memiliki izin untuk berjalan di latar belakang.
 
 Ikuti panduan \"Don't kill my app\" untuk ponsel Anda dan terapkan instruksi ke pemasangan MicroG Anda.
 
-Ini diperlukan agar aplikasi berfungsi."</string>
+Ini diperlukan agar aplikasi berfungsi"</string>
   <string name="gms_core_dialog_open_website_text">Buka situs web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Pengoptimalan baterai MicroG harus dinonaktifkan untuk mencegah masalah.
 
 Menonaktifkan pengoptimalan MicroG tidak akan berdampak buruk pada penggunaan baterai.
 
-Ketuk tombol lanjutkan dan izinkan perubahan pengoptimalan."</string>
+Ketuk tombol lanjutkan dan izinkan perubahan pengoptimalan"</string>
   <string name="gms_core_dialog_continue_text">Lanjutkan</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Tampilkan dialog optimalisasi baterai MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Menonaktifkan ini akan menyembunyikan prompt optimasi baterai MicroG.

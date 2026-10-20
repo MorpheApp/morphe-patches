@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Kleur opnieuw instellen</string>
   <string name="morphe_settings_color_invalid">Ongeldige kleur</string>
   <string name="morphe_settings_restart_title">Opnieuw opstarten vereist</string>
-  <string name="morphe_settings_restart_dialog_message">Start de app opnieuw op om deze wijziging door te voeren.</string>
+  <string name="morphe_settings_restart_dialog_message">Start de app opnieuw op om deze wijziging door te voeren</string>
   <string name="morphe_settings_restart">Opnieuw starten</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importeren</string>
   <string name="morphe_settings_import_copy">Kopiëren</string>
   <string name="morphe_settings_import_reset">Morphe-instellingen zijn teruggezet naar de standaardinstellingen</string>
-  <string name="morphe_settings_import_success">%d instellingen geïmporteerd</string>
+  <string name="morphe_settings_import_success">%s instellingen geïmporteerd</string>
   <string name="morphe_settings_import_failure_parse">Importeren mislukt: %s</string>
   <string name="morphe_settings_navigate_up">Omhoog navigeren</string>
   <string name="morphe_settings_search_hint">Zoekinstellingen</string>
@@ -103,7 +103,7 @@ Om nieuwe talen te vertalen of bestaande vertalingen te verbeteren, bezoek morph
   <string name="morphe_debug_toast_on_error_title">Toon toastmelding bij Morphe error</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Het uitschakelen van foutmeldingen verbergt alle Morphe-foutmeldingen.
 
-U wordt niet op de hoogte gesteld van onverwachte gebeurtenissen."</string>
+U wordt niet op de hoogte gesteld van onverwachte gebeurtenissen"</string>
   <string name="morphe_debug_export_logs_title">Foutopsporingslogboeken exporteren</string>
   <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
   <string name="morphe_debug_export_logs_success">Debuglogboeken succesvol geëxporteerd</string>
@@ -179,31 +179,31 @@ Het gedrag verdween eerder in de zoektocht, dus er kan meer dan één flag bij b
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Open de MicroG-instellingen</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG is niet geïnstalleerd. Installeer het.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG is niet geïnstalleerd. Installeer het</string>
   <string name="gms_core_dialog_title">Actie vereist</string>
   <string name="gms_core_dialog_outdated_message">"Je MicroG v%1s is verouderd en kan problemen veroorzaken.
 
-Update MicroG naar de nieuwste versie v%2s."</string>
+Werk MicroG bij naar de nieuwste versie v%2s"</string>
   <string name="gms_core_dialog_update_text">Update</string>
   <string name="gms_core_dialog_ignore_text">Negeren</string>
   <string name="gms_core_dialog_conflict_message">"De geïnstalleerde MicroG wordt niet aanbevolen door Morphe:
 
 %1s
 
-Tik om het te deïnstalleren en open daarna deze app opnieuw om MicroG RE te installeren."</string>
+Tik om het te verwijderen, open deze app opnieuw en installeer MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Uninstall</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG heeft geen toestemming om op de achtergrond te draaien.
 
-Volg de \"Don't kill my app\"-handleiding voor uw telefoon en pas de instructies toe op uw MicroG-instelling.
+Volg de \"Don't kill my app\"-handleiding voor je telefoon en pas de instructies toe op je MicroG-installatie.
 
-Dit is vereist om de app te laten werken."</string>
+Dit is vereist om de app te laten werken"</string>
   <string name="gms_core_dialog_open_website_text">Website openen</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Batterijoptimalisaties voor MicroG moeten worden uitgeschakeld om problemen te voorkomen.
 
-Uitzchakelen van batterijoptimalisaties voor MicroG heeft geen negatieve invloed op de batterijgebruik.
+Door batterijoptimalisaties voor MicroG uit te schakelen, wordt het batterijgebruik niet negatief beïnvloed.
 
-Druk op de knop Door en ga akkoord met wijzigingen in de optimalisatie."</string>
+Tik op de knop Doorgaan en sta wijzigingen in de optimalisatie toe"</string>
   <string name="gms_core_dialog_continue_text">Doorgaan</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Toon MicroG dialoog voor batterijoptimalisatie</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Het uitschakelen hiervan verbergt het MicroG-prompt voor batterijoptimalisatie.

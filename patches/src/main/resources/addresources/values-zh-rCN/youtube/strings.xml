@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">禁用布局更新</string>
   <string name="morphe_disable_layout_updates_summary">阻止服务器更新应用布局</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"应用布局恢复到首次安装时使用的布局。
+  <string name="morphe_disable_layout_updates_user_dialog_message">"应用布局恢复为首次安装时使用的布局。
 
-某些服务器端布局可能无法恢复。
+某些服务器端布局可能不会恢复。
 
 更改包括：
-• 播放器飞出菜单（或相关设置）中的组件可能无法工作。
-• 滚动数字没有动画。
-• 显示库标签。
-• 视频描述中的音乐部分可能无法工作。
-• 播放器飞出菜单项无法隐藏。
-• 帐户切换按钮可能不会出现在库标签上。"</string>
+• 播放器弹出菜单（或相关设置）中的组件可能无法正常工作
+• 滚动数字不显示动画
+• 显示库标签页
+• 视频描述的音乐部分可能无法正常工作
+• 播放器弹出菜单项无法隐藏
+• 账户切换按钮可能不会出现在库标签页上"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">启用信息流弹出菜单过滤器</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">信息流弹出菜单过滤器</string>
@@ -121,7 +121,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_thumbnail_title">隐藏视频缩略图</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">隐藏视频标签</string>
-  <string name="morphe_hide_video_labels_summary">隐藏“自动配音”/“配音”、“赚取佣金”、“热门”、“大家还看了”、“商品<b>(</b>s)”和“你可能还喜欢”等标签</string>
+  <string name="morphe_hide_video_labels_summary">隐藏“自动配音”/“配音”、“赚取佣金”、“热门”、“大家还看了”、“商品”和“你可能还喜欢”等标签</string>
   <string name="morphe_hide_view_count_title">隐藏观看次数</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"限制：
@@ -132,8 +132,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_title">隐藏“您可能喜欢”的部分</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">隐藏 YouTube 涂鸦</string>
-  <string name="morphe_hide_youtube_doodles_summary">隐藏 YouTube logo上的季节性和活动相关的动画</string>
-  <string name="morphe_hide_youtube_doodles_user_dialog_message">显示 YouTube 短视频可能会阻止自定义标题显示。</string>
+  <string name="morphe_hide_youtube_doodles_summary">隐藏 YouTube logo 上的季节性和活动相关的动画</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">显示 YouTube Doodles 可能会阻止自定义标题的显示</string>
   <string name="morphe_hide_channel_bar_title">隐藏频道栏</string>
   <string name="morphe_hide_channel_watermark_title">隐藏频道水印</string>
   <string name="morphe_hide_chapters_timeline_button_title">隐藏章节和“本视频”按钮</string>
@@ -161,14 +161,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_title">隐藏限时反应</string>
   <string name="morphe_hide_timed_reactions_summary">隐藏评论区和直播聊天中用表情符号互动的功能</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">隐藏“帮助 &amp; 反馈”菜单</string>
-  <string name="morphe_hide_help_feedback_menu_summary">使用三点按钮时，例如在搜索结果中，隐藏“帮助 &amp; 反馈”菜单</string>
-  <string name="morphe_hide_handle_title">隐藏句柄</string>
-  <string name="morphe_hide_handle_summary">在“You”标签页中隐藏你的频道句柄</string>
+  <string name="morphe_hide_help_feedback_menu_title">隐藏“帮助和反馈”菜单</string>
+  <string name="morphe_hide_help_feedback_menu_summary">使用三点按钮时，例如在搜索结果中，隐藏“帮助和反馈”菜单</string>
+  <string name="morphe_hide_handle_title">隐藏标识名</string>
+  <string name="morphe_hide_handle_summary">在“我”标签页中隐藏你的频道标识名</string>
   <string name="morphe_hide_video_title_title">隐藏视频标题</string>
   <string name="morphe_hide_video_title_summary">隐藏全屏模式下的视频标题</string>
   <string name="morphe_sanitize_video_subtitle_title">清理视频字幕</string>
-  <string name="morphe_sanitize_video_subtitle_summary">清除视频副标题中的“#”、“筹款活动”、“商品<b>(</b>s)”和“商店”等短语</string>
+  <string name="morphe_sanitize_video_subtitle_summary">清除视频副标题中的“#”、“筹款活动”、“商品”和“商店”等短语</string>
   <string name="morphe_hide_ask_gemini_button_title">隐藏“Ask Gemini”按钮</string>
   <string name="morphe_hide_ask_gemini_button_summary">隐藏“就此视频提问”面板底部的“Ask Gemini”按钮</string>
   <string name="morphe_hide_description_components_screen_title">视频说明</string>
@@ -275,19 +275,21 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">隐藏礼物按钮</string>
   <string name="morphe_hide_comments_info_button_title">隐藏信息按钮</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">隐藏直播捐赠者栏</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">隐藏直播聊天滚动到底部按钮</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Hide live chat tooltips</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Hides tooltip popups shown near the chat input bar, such as the subscriber-only chat notice</string>
   <string name="morphe_hide_comments_menu_button_title">隐藏菜单按钮</string>
   <string name="morphe_hide_comments_menu_button_summary">隐藏每条评论的三点菜单按钮</string>
   <string name="morphe_hide_comments_preview_comment_title">隐藏评论预览</string>
   <string name="morphe_hide_comments_preview_comment_summary">隐藏在打开完整评论部分之前，视频下方的评论预览</string>
-  <string name="morphe_hide_comments_preview_comment_hidden">评论已被Morphe隐藏...</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">评论已被 Morphe 隐藏……</string>
   <string name="morphe_minimal_comments_button_title">启用极简评论按钮</string>
   <string name="morphe_minimal_comments_button_summary">隐藏评论按钮上显示的滑动卡片及其页面选择器</string>
   <string name="morphe_hide_comments_thanks_button_title">隐藏感谢按钮</string>
   <string name="morphe_hide_comments_timestamp_button_title">隐藏时间戳按钮</string>
   <string name="morphe_hide_comments_top_fans_button_title">隐藏“Top fans”按钮</string>
   <string name="morphe_hide_comments_translate_button_title">隐藏翻译按钮</string>
+  <string name="morphe_hide_comments_zero_state_title">隐藏“暂无评论”提示</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">清理高亮显示的搜索链接</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">清理高亮显示的搜索链接，仅保留原始纯文本</string>
   <string name="morphe_hide_keyword_content_screen_title">关键词过滤</string>
@@ -428,6 +430,17 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">复制评论</string>
   <string name="morphe_copy_comments_summary">点按并按住评论即可复制</string>
   <string name="morphe_copy_comments_success">评论已复制到剪贴板</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">长按打开视频菜单</string>
+  <string name="morphe_feed_long_press_menu_summary">在信息流视频中任意位置长按可打开其菜单</string>
+  <string name="morphe_feed_watch_later_button_title">在缩略图上显示稍后观看按钮</string>
+  <string name="morphe_feed_watch_later_button_summary">信息流视频的缩略图上会显示“稍后观看”按钮，点击并长按该按钮可将其保存到播放列表</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">在缩略图上显示播放量</string>
+  <string name="morphe_feed_view_count_summary">Feed 视频的播放量显示在缩略图左下角，而不是标题下方。部分视频（例如位于架中的视频）可能不显示播放量</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">显示帖子缩略图点赞数</string>
+  <string name="morphe_ryd_feed_like_ratio_title">显示帖子缩略图点赞比例</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">禁用登录电视弹出窗口</string>
   <string name="morphe_disable_connect_your_devices_popup_title">禁用“连接您的设备”弹出窗口</string>
@@ -439,7 +452,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_title">显示外部下载按钮</string>
   <string name="morphe_external_downloader_summary">在视频播放器中显示一个浮动按钮，用于打开您的外部下载器</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">覆盖「下载」按钮和菜单</string>
+  <string name="morphe_external_downloader_action_button_title">覆盖下载按钮和菜单</string>
   <string name="morphe_external_downloader_action_button_summary">使用您选择的外部下载器，而不是自带的下载功能。</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">语音旁白翻译</string>
@@ -472,6 +485,17 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">每 100 小时 %s</string>
   <string name="morphe_vot_tts_voice_type">语音</string>
   <string name="morphe_vot_tts_system">系统</string>
+  <string name="morphe_vot_catalog_refreshing">刷新中……</string>
+  <string name="morphe_vot_catalog_updated">最后更新：%s</string>
+  <string name="morphe_vot_catalog_refresh">刷新语音列表</string>
+  <string name="morphe_vot_catalog_unchanged">语音列表已是最新</string>
+  <string name="morphe_vot_catalog_changed">语音列表已更新：+%1$d / -%2$d</string>
+  <string name="morphe_vot_catalog_refresh_failed">无法刷新语音列表</string>
+  <string name="morphe_vot_catalog_source_online">在线</string>
+  <string name="morphe_vot_catalog_source_cache">缓存</string>
+  <string name="morphe_vot_catalog_source_fallback">内置</string>
+  <string name="morphe_vot_catalog_status">%1$s · %2$d 个语音 · +%3$d / -%4$d</string>
+  <string name="morphe_vot_catalog_error">更新失败：%s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">多语言男声</string>
   <string name="morphe_vot_voice_gender_female_multilingual">多语言女声</string>
   <string name="morphe_vot_voice_gender_male">男声</string>
@@ -490,7 +514,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_openrouter_open_website">打开 OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">OpenRouter 翻译失败 (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">MyMemory 每日限制已达到</string>
-  <string name="morphe_vot_mymemory_quota_next_available">下次可用时间为 %s。</string>
+  <string name="morphe_vot_mymemory_quota_next_available">%s 后再次可用</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">您已使用今天的免费 MyMemory 翻译配额（5,000 个字符）。在设置中添加 MyMemory 邮箱以将每日限制提高到 50,000 个字符，或切换到其他翻译服务</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">您已使用今天的 MyMemory 翻译配额（50,000 个字符）。切换到其他翻译服务或明天再试</string>
   <string name="morphe_vot_mymemory_error">MyMemory 翻译失败 (状态 %s)</string>
@@ -565,21 +589,24 @@ Second \"item\" text"</string>
 
 提示：仅当 YouTube 在屏幕上时，下一个队列视频才会开始播放"</string>
   <string name="morphe_local_queue_sheet_title">队列</string>
-  <string name="morphe_local_queue_open">队列（%d）</string>
+  <string name="morphe_local_queue_open">队列 (%s)</string>
   <string name="morphe_local_queue_clear">全部清除</string>
   <string name="morphe_local_queue_empty">队列中无内容</string>
   <string name="morphe_local_queue_empty_hint">在任何视频上使用“在队列中播放下一项”</string>
   <string name="morphe_local_queue_now_playing">正在播放</string>
   <string name="morphe_local_queue_play_next">在队列中播放下一项</string>
+  <string name="morphe_local_queue_play_last">在队列末尾播放</string>
   <string name="morphe_local_queue_reorder">重新排序</string>
   <string name="morphe_local_queue_remove">移除</string>
   <string name="morphe_local_queue_added">已添加到队列</string>
+  <string name="morphe_local_queue_unavailable">无法将此视频添加到队列</string>
+  <string name="morphe_local_queue_playlist_unsupported">无法将播放列表添加到队列</string>
   <string name="morphe_local_queue_full">队列已满</string>
   <string name="morphe_local_queue_play_failed">无法启动视频</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">弹出菜单中的广告白名单</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">添加一个弹出菜单项，让广告可以在该视频所属的频道上播放</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">此功能可能需要使用 PotHelper，或将“Spoof video streams”更改为 TV 或 Android VR 登录。</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">此功能可能需要使用 PotHelper 或将“伪造视频流”更改为 TV 或 Android VR 登录</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">弹出菜单中的播放速度白名单</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">添加一个弹出菜单项，让该视频所属的频道始终以 1.0 倍速播放</string>
   <string name="morphe_queue_manager_check_failed_auth">未登录</string>
@@ -635,11 +662,11 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">启用点按进度条</string>
   <string name="morphe_tap_to_seek_summary">只需点击进度条即可跳转到该位置，而无需拖动</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
-  <string name="morphe_swipe_right_zone_title">Right swipe gesture</string>
-  <string name="morphe_swipe_top_zone_title">Top swipe gesture</string>
-  <string name="morphe_swipe_zone_width_title">Left/Right zone width</string>
-  <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for left and right swipe gestures (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">左侧滑动手势</string>
+  <string name="morphe_swipe_right_zone_title">右侧滑动手势</string>
+  <string name="morphe_swipe_top_zone_title">顶部滑动手势</string>
+  <string name="morphe_swipe_zone_width_title">左/右区域宽度</string>
+  <string name="morphe_swipe_zone_width_summary">屏幕左右边缘留给左侧和右侧滑动手势的百分比 (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">亮度</string>
   <string name="morphe_swipe_zone_label_volume">音量</string>
   <string name="morphe_swipe_zone_label_native">原生</string>
@@ -762,6 +789,9 @@ Second \"item\" text"</string>
   <string name="morphe_preferred_caption_language_title">首选字幕语言</string>
   <string name="morphe_preferred_caption_language_summary">先选择提供方字幕，然后自动翻译为首选语言</string>
   <string name="morphe_preferred_caption_language_entry_off">关闭</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">添加更多自动翻译语言</string>
+  <string name="morphe_auto_translate_additional_languages_summary">在自动翻译菜单中添加更多语言</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">设置字幕 Cookie</string>
   <string name="morphe_set_caption_cookies_summary">"修复了 YouTube 自带的 bug，该 bug 可能导致自动翻译字幕因缺少 Cookie 而不可用
@@ -801,9 +831,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_button_labels_title">隐藏导航栏按钮标签</string>
   <string name="morphe_hide_navigation_new_content_dot_title">隐藏新内容圆点</string>
   <string name="morphe_hide_navigation_bar_title">隐藏导航栏</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"这会完全隐藏导航栏，包括“您”标签。
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"这将完全隐藏导航栏，包括“我”标签页。
 
-要访问设置，请通过“常规”→“工具栏”→“显示设置”启用“设置”按钮。"</string>
+要访问设置，请通过 常规 → 工具栏 → 显示设置 启用设置按钮"</string>
   <string name="morphe_narrow_navigation_buttons_title">启用狭窄导航按钮</string>
   <string name="morphe_narrow_navigation_buttons_summary">减少按钮之间的水平间距</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">禁用无标签的导航按钮</string>
@@ -1041,7 +1071,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"恢复旧版播放器布局
 
 限制：如果关闭“恢复旧版视频操作栏”选项，则“更多视频”叠加层可能不可用"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">启用此功能可能会破坏某些播放器布局功能，例如播放器下方显示的评论部分或“更多视频”。</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">启用此选项可能会破坏某些播放器布局功能，例如播放器下方的评论区或“更多视频”</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 恢复旧版字幕行为</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢复旧的保存到播放列表</string>
@@ -1106,6 +1136,12 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">关闭信息流自动刷新</string>
   <string name="morphe_disable_auto_feed_refresh_summary">防止信息流在过期后自动刷新</string>
+  <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">动态卡片布局</string>
+  <string name="morphe_feed_card_layout_entry_1">经典</string>
+  <string name="morphe_feed_card_layout_entry_2">卡片</string>
+  <string name="morphe_feed_card_layout_entry_3">带有点赞、评论和收藏按钮的卡片</string>
+  <string name="morphe_feed_card_layout_comments">评论</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">禁用恢复迷你播放器</string>
   <string name="morphe_miniplayer_disable_resuming_summary">禁用“继续观看”迷你播放器，这是 YouTube Premium 的一项功能，该功能会在应用启动时显示</string>
@@ -1140,9 +1176,16 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">返回按钮退出信息流</string>
   <string name="morphe_back_button_always_exits_feed_summary">按返回键总是退出应用，而不是滚动到信息流顶部</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">强制动画</string>
+  <string name="morphe_force_animations_entry_default">默认</string>
+  <string name="morphe_force_animations_entry_always_on">始终开启</string>
+  <string name="morphe_force_animations_entry_always_off">始终关闭</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">隐藏状态栏</string>
   <string name="morphe_hide_status_bar_summary">隐藏系统状态栏。从顶部边缘向下滑动可短暂显示它</string>
+  <string name="morphe_fix_status_bar_layout_title">修复状态栏覆盖顶部栏的问题</string>
+  <string name="morphe_fix_status_bar_layout_summary">保持状态栏布局一致，使其不覆盖顶部栏且播放器上方无空白区域。如果应用崩溃或顶部栏显示异常，请关闭此选项</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">浅色主题背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>
@@ -1183,7 +1226,7 @@ Second \"item\" text"</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_dearrow_titles_subscription_title">订阅标签页</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_titles_library_title">「我」标签</string>
+  <string name="morphe_dearrow_titles_library_title">“我”标签</string>
   <string name="morphe_dearrow_titles_player_title">播放器播放列表&amp;推荐</string>
   <string name="morphe_dearrow_titles_search_title">搜索结果</string>
   <string name="morphe_dearrow_titles_icon_title">显示DeArrow图标</string>
@@ -1220,7 +1263,7 @@ Second \"item\" text"</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">伪装设备尺寸</string>
   <string name="morphe_spoof_device_dimensions_summary">启用此功能可以解锁更高的视频质量</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">启用此选项可能会导致视频播放卡顿、电池续航时间减少以及其他未知的副作用</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">启用此选项可能会导致视频播放卡顿、电池续航时间变短以及未知的副作用</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">触感反馈</string>
   <string name="morphe_disable_haptic_feedback_summary">选择触发设备震动的交互</string>
@@ -1230,7 +1273,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">禁用长按触觉反馈</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">禁用缩放触觉反馈</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">如果您最近更改了帐户登录详细信息，请卸载并重新安装 MicroG。</string>
+  <string name="microg_offline_account_login_error">如果您最近更改了账户登录信息，请卸载并重新安装 MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">绕过链接重定向</string>
   <string name="morphe_bypass_link_redirects_summary">直接打开原始链接，绕过跟踪链接 (youtube.com/redirect)</string>
@@ -1292,10 +1335,10 @@ Second \"item\" text"</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_add">将频道添加到播放速度白名单</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_remove">从播放速度白名单中移除频道</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">启用音频音高控制</string>
-  <string name="morphe_playback_audio_pitch_default_title">Default playback audio pitch</string>
-  <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
-  <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
-  <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
+  <string name="morphe_playback_audio_pitch_default_title">默认播放音频音高</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">已将默认音频音高更改为: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">音频时间拉伸</string>
+  <string name="morphe_playback_audio_time_stretching_summary">支持独立调节速度和音高，可能会造成音频失真</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <string name="morphe_remember_live_stream_position_title">记住直播播放位置</string>
   <string name="morphe_remember_live_stream_position_summary">对于正在进行的直播，会记住并恢复您的播放位置，而不是跳转到当前的直播位置。</string>
@@ -1339,7 +1382,7 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_av1_summary">使用“Android VR”/ visionOS 客户端时允许软件 AV1 解码</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"启用此设置可能会使用软件 AV1 解码。
 
-使用 AV1 播放视频可能会卡顿或丢帧。"</string>
+使用 AV1 播放视频可能会卡顿或丢帧"</string>
   <string name="morphe_spoof_video_streams_about_title">欺骗的副作用</string>
   <string name="morphe_spoof_video_streams_about_failure">• 播放可能会在 1 分钟时失败</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• “音轨”菜单缺失</string>
@@ -1373,12 +1416,11 @@ AVC (H.264)
   <string name="morphe_series_tracker_screen_summary">将播放列表作为系列跟随并保留您的位置</string>
   <string name="morphe_series_tracker_title">启用系列跟踪</string>
   <string name="morphe_series_tracker_summary">在历史记录中添加系列页面，并在播放列表中提供跟随系列选项</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">在导航栏显示系列</string>
   <string name="morphe_series_tracker_show_button_title">显示剧集追踪器按钮</string>
   <string name="morphe_series_tracker_show_button_summary">添加播放器按钮以跟进或打开当前视频的剧集</string>
   <string name="morphe_series_tracker_record_followed_progress_title">记录已跟踪剧集的进度</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">在此手机上为已保存的剧集和书签记录播放情况</string>
-  <string name="morphe_series_tracker_show_history_tab_title">在导航栏中显示历史记录</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">主页、订阅、通知、历史和我</string>
   <string name="morphe_series_tracker_ui_cancel">取消</string>
   <string name="morphe_series_tracker_ui_save">保存</string>
   <string name="morphe_series_tracker_ui_save_bookmark">保存书签</string>
@@ -1393,7 +1435,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_clear_all_local_progress">清除所有本地进度</string>
   <string name="morphe_series_tracker_ui_clear_history">清除历史</string>
   <string name="morphe_series_tracker_clear_progress_title">清除所有本地进度？</string>
-  <string name="morphe_series_tracker_clear_progress_message">这将清除每个视频的位置、观看覆盖和续播选择。已保存的剧集及其目录将保留。如果启用了记录功能，新播放将被记录。</string>
+  <string name="morphe_series_tracker_clear_progress_message">这将清除所有视频的位置、观看覆盖和继续播放选择。已保存的系列及其目录保持不变。如果启用了记录，将记录新的播放进度</string>
   <string name="morphe_series_tracker_ui_mark_watched">标记为已观看</string>
   <string name="morphe_series_tracker_ui_mark_unwatched">标记为未观看</string>
   <string name="morphe_series_tracker_ui_use_automatic_status">使用自动状态</string>
@@ -1408,40 +1450,35 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">从“我”进入历史以查看您的剧集</string>
   <string name="morphe_series_tracker_ui_watch_history">观看历史</string>
   <string name="morphe_series_tracker_ui_series">剧集</string>
-  <string name="morphe_series_tracker_ui_history">历史记录</string>
-  <string name="morphe_series_tracker_ui_subscriptions">订阅</string>
-  <string name="morphe_series_tracker_ui_notifications">通知</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">正在加载已保存的剧集……</string>
-  <string name="morphe_series_tracker_empty_library">关注播放列表以跟踪其剧集。</string>
+  <string name="morphe_series_tracker_empty_library">关注播放列表以跟踪其剧集</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">播放列表书签</string>
   <string name="morphe_series_tracker_ui_refreshing_episodes">正在刷新剧集……</string>
   <string name="morphe_series_tracker_ui_all_series">所有剧集</string>
   <string name="morphe_series_tracker_watched">已观看</string>
   <string name="morphe_series_tracker_ui_loading_episodes">正在加载剧集……</string>
   <string name="morphe_series_tracker_ui_more_options">更多选项</string>
-  <string name="morphe_series_tracker_record_consent">"仅记录您已保存的剧集和书签视频的进度。
+  <string name="morphe_series_tracker_record_consent">"仅为您保存的系列和收藏的视频记录进度。
 
-此资料库存储在此设备上，并与 YouTube 账号共享。YouTube 的暂停和清除历史记录控制不会更改它。使用“剧集 -> 更多 -> 清除本地进度”将其擦除。
+该库存储在此设备上，并在 YouTube 账户之间共享。YouTube 的暂停和清除历史记录控制不会更改它。请使用 系列 → 更多 → 清除本地进度 来擦除它。
 
-隐身模式下、不可用账号身份时或切换到不同账号时，自动记录会停止。重新启用跟踪即可在该账号下使用它。"</string>
-  <string name="morphe_series_tracker_identity_unavailable">无法在隐身模式下或 YouTube 尚未加载当前账号状态时启用跟踪。返回首页并重试。无需登录。</string>
+在隐身模式下、当账户身份不可用或切换至不同账户时，自动记录将停止。启用跟踪功能即可在该账户下使用"</string>
+  <string name="morphe_series_tracker_identity_unavailable">在隐身模式或 YouTube 加载当前账户状态之前，无法启用跟踪。请返回首页并重试。无需登录</string>
   <string name="morphe_series_tracker_enable">启用本地跟踪</string>
   <string name="morphe_series_tracker_tracking_paused">进度记录已关闭</string>
   <string name="morphe_series_tracker_resume_at">在 %1$s 续播</string>
-  <string name="morphe_series_tracker_watched_count">已观看 %1$d / %2$d 集</string>
-  <string name="morphe_series_tracker_episode_position">第 %1$d 集 · %2$s</string>
-  <string name="morphe_series_tracker_episode_range">第 %1$d–%2$d 集，共 %3$d 集</string>
-  <string name="morphe_series_tracker_catalog_unavailable">刷新以尝试加载剧集。私密播放列表需要账号访问权限；其书签仍会在 YouTube 中打开。</string>
-  <string name="morphe_series_tracker_open_failed">YouTube 无法打开此剧集。</string>
-  <string name="morphe_series_tracker_playlist_failed">YouTube 无法打开此播放列表。</string>
-  <string name="morphe_series_tracker_plan_open">播放列表书签</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s 集已观看</string>
+  <string name="morphe_series_tracker_episode_position">第 %1$s 集 · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">%3$s 集中的第 %1$s-%2$s 集</string>
+  <string name="morphe_series_tracker_catalog_unavailable">刷新以尝试加载剧集。私人播放列表需要账户访问权限；其书签仍会在 YouTube 中打开</string>
+  <string name="morphe_series_tracker_open_failed">YouTube 无法打开此剧集</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube 无法打开此播放列表</string>
   <string name="morphe_series_tracker_plan_changed">选择一集</string>
   <string name="morphe_series_tracker_plan_caught_up">追更完毕</string>
   <string name="morphe_series_tracker_plan_none">无可播放剧集</string>
   <string name="morphe_series_tracker_saved_position">已保存视频 · %1$s</string>
   <string name="morphe_series_tracker_follow">跟踪剧集</string>
   <string name="morphe_series_tracker_view_series">查看剧集</string>
-  <string name="morphe_series_tracker_add_icon">跟踪剧集</string>
   <string name="morphe_series_tracker_continue">继续</string>
   <string name="morphe_series_tracker_start_here">从此处开始</string>
   <string name="morphe_series_tracker_start_saved">起始点已保存</string>
@@ -1450,29 +1487,29 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">撤销</string>
   <string name="morphe_series_tracker_enable_short">启用</string>
   <string name="morphe_series_tracker_new_episode">1 个新剧集</string>
-  <string name="morphe_series_tracker_new_episodes">%1$d 个新剧集</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s 个新剧集</string>
   <string name="morphe_series_tracker_record_short">在此设备记录进度</string>
-  <string name="morphe_series_tracker_follow_consent">"您的剧集和进度保留在此设备上，并在 YouTube 账号间共享。YouTube 历史记录控制不会更改它们。从剧集菜单清除进度。
+  <string name="morphe_series_tracker_follow_consent">"您的系列和进度保留在此设备上，并在 YouTube 账户间共享。YouTube 历史记录控制不会更改它们。从系列菜单中清除进度。
 
-自动记录是可选的。它在隐身模式下或账号变更时会停止。"</string>
-  <string name="morphe_series_tracker_follow_unavailable">无法加载剧集。您可以将播放列表保存为书签。</string>
-  <string name="morphe_series_tracker_error_pending_full">未保存的更改过多。请先重试保存。</string>
-  <string name="morphe_series_tracker_error_storage_busy">保存忙。请重试。</string>
-  <string name="morphe_series_tracker_error_catalog_busy">剧集加载忙。请重试。</string>
-  <string name="morphe_series_tracker_error_storage_unavailable">存储空间不可用。您的已保存数据已保留。</string>
-  <string name="morphe_series_tracker_error_storage_save">更改无法保存。在关闭 YouTube 之前重试保存。</string>
-  <string name="morphe_series_tracker_error_conflict">此剧集已保存，或其播放列表已更改。请重新打开它。</string>
-  <string name="morphe_series_tracker_error_series_changed">此剧集已更改或被移除。请重新打开资料库。</string>
-  <string name="morphe_series_tracker_error_playlist_changed">播放列表已更改。请再次选择剧集。</string>
-  <string name="morphe_series_tracker_error_episode_unavailable">此剧集不可用。请选择其他剧集。</string>
-  <string name="morphe_series_tracker_error_name_required">请输入剧集名称。</string>
-  <string name="morphe_series_tracker_error_playlist_input">请输入 YouTube 播放列表链接或播放列表 ID。</string>
-  <string name="morphe_series_tracker_error_retry_later">请稍候再刷新。</string>
-  <string name="morphe_series_tracker_error_catalog_unavailable">无法加载剧集。请稍后重试。</string>
-  <string name="morphe_series_tracker_error_operation">更改无法完成。请重试。</string>
-  <string name="morphe_series_tracker_error_resume">无法确认续播位置。请检查播放器并重试。</string>
+自动记录是可选的。它在隐身模式下或账户变更时停止"</string>
+  <string name="morphe_series_tracker_follow_unavailable">无法加载剧集。您可以将播放列表保存为书签</string>
+  <string name="morphe_series_tracker_error_pending_full">未保存的更改过多。请先重试保存</string>
+  <string name="morphe_series_tracker_error_storage_busy">正在保存。请稍后重试</string>
+  <string name="morphe_series_tracker_error_catalog_busy">正在加载剧集。请稍后重试</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">存储不可用。您的已保存数据已保留</string>
+  <string name="morphe_series_tracker_error_storage_save">更改未能保存。请在关闭 YouTube 前重试保存</string>
+  <string name="morphe_series_tracker_error_conflict">该系列已保存，或其播放列表已更改。请重新打开它</string>
+  <string name="morphe_series_tracker_error_series_changed">该系列已更改或被移除。请重新打开库</string>
+  <string name="morphe_series_tracker_error_playlist_changed">播放列表已更改。请重新选择剧集</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">此剧集不可用。请选择另一个</string>
+  <string name="morphe_series_tracker_error_name_required">请输入系列名称</string>
+  <string name="morphe_series_tracker_error_playlist_input">请输入 YouTube 播放列表链接或播放列表 ID</string>
+  <string name="morphe_series_tracker_error_retry_later">请稍等再刷新</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">无法加载剧集。请稍后重试</string>
+  <string name="morphe_series_tracker_error_operation">更改未完成。请稍后重试</string>
+  <string name="morphe_series_tracker_error_resume">无法确认继续播放。请检查播放器并重试</string>
   <string name="morphe_series_tracker_followed">正在跟踪剧集</string>
-  <string name="morphe_series_tracker_video_not_in_playlist">此视频不在该播放列表中。</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">此视频不在该播放列表中</string>
   <string name="morphe_series_tracker_finding_playlists">正在查找播放列表……</string>
   <string name="morphe_series_tracker_paste_playlist">粘贴播放列表链接</string>
   <string name="morphe_series_tracker_discovery_unavailable">未找到播放列表</string>
@@ -1483,38 +1520,36 @@ AVC (H.264)
   <string name="morphe_series_tracker_episode_order">剧集顺序</string>
   <string name="morphe_series_tracker_playlist_order">播放列表顺序</string>
   <string name="morphe_series_tracker_reverse_order">反转播放列表顺序</string>
-  <string name="morphe_series_tracker_view_count_large">%1$s 次观看</string>
   <string name="morphe_series_tracker_view_count">%1$s 次观看</string>
   <string name="morphe_series_tracker_view_count_one">%1$s 次观看</string>
   <string name="morphe_series_tracker_completion_title">标记剧集为已观看</string>
-  <string name="morphe_series_tracker_completion_summary">至少观看 %1$d%%且剩余时间不超过 90 秒，或剩余 %2$d 秒</string>
-  <string name="morphe_series_tracker_completion_explanation">达到任一阈值后自动将剧集标记为已观看。百分比规则还要求剩余时间不超过 90 秒，因此长剧集的结尾不会被跳过。剩余时间规则适用于超过一分钟的视频；设置为 0 可禁用它。更改将应用于未来的进度更新。手动标记的已观看/未观看选择将保留。</string>
-  <string name="morphe_series_tracker_completion_percent">已观看百分比（1–100）</string>
-  <string name="morphe_series_tracker_completion_seconds">剩余秒数（0–300；0 表示禁用）</string>
-  <string name="morphe_series_tracker_completion_save">保存</string>
-  <string name="morphe_series_tracker_completion_range">请输入 %1$d 到 %2$d 之间的值。</string>
+  <string name="morphe_series_tracker_completion_summary">观看率至少达到 %1$s%% 且剩余不超过 90 秒，或剩余 %2$s 秒</string>
+  <string name="morphe_series_tracker_completion_explanation">满足任一阈值后自动标记剧集为已观看。百分比规则还要求剩余不超过 90 秒，因此不会跳过长剧集的结尾。剩余时间规则适用于时长超过一分钟的视频；将其设置为 0 可禁用该规则。更改仅对未来的进度更新生效。手动选择的已观看/未观看状态将被保留</string>
+  <string name="morphe_series_tracker_completion_percent">观看百分比 (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">剩余秒数 (0-300；0 表示禁用)</string>
+  <string name="morphe_series_tracker_completion_range">请输入 %1$s 到 %2$s 之间的值</string>
   <string name="morphe_series_tracker_youtube_progress_title">使用 YouTube 进度</string>
   <string name="morphe_series_tracker_youtube_progress_summary">在其他设备上观看后接续跟踪的剧集</string>
-  <string name="morphe_series_tracker_sync_consent">从当前 YouTube 账号读取已跟踪剧集的观看状态和续播位置。仅在此手机上保存匹配的剧集。检查系列资料库打开期间及继续操作前进行。您的其他设备上必须启用 YouTube 历史记录。</string>
+  <string name="morphe_series_tracker_sync_consent">从当前 YouTube 账户读取您关注的系列的观看状态和继续播放位置。仅在此手机上保存匹配的剧集。检查在系列库打开时及在“继续”之前运行。您的其他设备必须启用 YouTube 历史记录</string>
   <string name="morphe_series_tracker_sync_checking">正在检查 YouTube 进度……</string>
-  <string name="morphe_series_tracker_sync_failed">YouTube 进度不可用。使用已保存的进度。</string>
-  <string name="morphe_series_tracker_sync_partial">部分 YouTube 进度不可用。已保存的位置已保留。</string>
+  <string name="morphe_series_tracker_sync_failed">YouTube 进度不可用。使用已保存的进度</string>
+  <string name="morphe_series_tracker_sync_partial">部分 YouTube 进度不可用。已保存的位置已保留</string>
   <string name="morphe_series_tracker_backup_title">备份和还原</string>
   <string name="morphe_series_tracker_backup_summary">将您的剧集资料库保存到文件或恢复备份</string>
-  <string name="morphe_series_tracker_backup_explanation">保存已跟踪的剧集、剧集位置和观看选择。不包括记录和 YouTube 进度权限。</string>
+  <string name="morphe_series_tracker_backup_explanation">保存关注的系列、剧集位置和观看选择。不包含记录和 YouTube 进度的权限</string>
   <string name="morphe_series_tracker_backup_save">保存备份</string>
   <string name="morphe_series_tracker_backup_restore">还原备份</string>
-  <string name="morphe_series_tracker_backup_preview">添加 %1$d 个剧集。资料库中已有的 %2$d 个剧集将保留。现有的视频进度已保留。</string>
+  <string name="morphe_series_tracker_backup_preview">添加 %1$s 个系列。库中已存在的 %2$s 个系列将被保留。现有视频进度将被保留</string>
   <string name="morphe_series_tracker_backup_saved">剧集备份已保存</string>
-  <string name="morphe_series_tracker_backup_restored">已还原 %1$d 个剧集</string>
-  <string name="morphe_series_tracker_error_backup_invalid">此文件不是受支持的剧集备份，或文件过大。您的资料库未更改。</string>
-  <string name="morphe_series_tracker_error_backup_write">无法保存备份。请尝试其他位置。</string>
+  <string name="morphe_series_tracker_backup_restored">已恢复 %1$s 个系列</string>
+  <string name="morphe_series_tracker_error_backup_invalid">此文件不是支持的系列备份，或文件过大。您的库未更改</string>
+  <string name="morphe_series_tracker_error_backup_write">无法保存备份。请尝试其他位置</string>
   <string name="morphe_series_tracker_removed">剧集已移除</string>
-  <string name="morphe_series_tracker_recovery_duplicate">此剧集现在出现多次。请选择从哪一集继续。</string>
-  <string name="morphe_series_tracker_recovery_missing">您保存的剧集不再在此播放列表中。您保存的位置已保留。</string>
-  <string name="morphe_series_tracker_recovery_continue">继续第 %1$d 集 · %2$s</string>
-  <string name="morphe_series_tracker_recovery_choose">您还可以选择下方的任意剧集。较早的剧集不会更改。</string>
-  <string name="morphe_series_tracker_playback_changed">播放列表已更改。打开剧集以选择从何处继续。</string>
+  <string name="morphe_series_tracker_recovery_duplicate">此剧集现在出现多次。请选择从哪里继续</string>
+  <string name="morphe_series_tracker_recovery_missing">您保存的剧集不再位于该播放列表中。已保留您的保存位置</string>
+  <string name="morphe_series_tracker_recovery_continue">从第 %1$s 集 · %2$s 继续</string>
+  <string name="morphe_series_tracker_recovery_choose">您也可以在下方的任意剧集中选择。早期剧集不会更改</string>
+  <string name="morphe_series_tracker_playback_changed">播放列表已更改。打开系列以选择从何处继续</string>
   <string name="morphe_series_tracker_playback_boundary">此方向没有更多剧集</string>
   <string name="morphe_series_tracker_continue_series">继续 %1$s</string>
   <string name="morphe_series_tracker_search_series">搜索剧集</string>

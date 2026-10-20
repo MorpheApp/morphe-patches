@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Syötä paketin nimi</string>
   <string name="morphe_external_downloader_other_item">Muu</string>
   <string name="morphe_external_downloader_not_found_title">Sovellusta ei ole asennettu</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s ei ole asennettu. Asenna se.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s ei ole asennettuna. Asenna se</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Asennettua sovellusta paketin nimellä %s ei löydy.
 
 Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
@@ -84,7 +84,7 @@ Vaihtaaksesi kuvakkeen kaikkialla, paikkaa uudelleen ja muuta 'Sovelluskuvake'-p
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe musta</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-huomautus</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Katseluhistoriaasi ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä johtuu todennäköisesti DNS-mainostenestosta tai verkkovälityspalvelimesta.&lt;br&gt;&lt;br&gt;Korjaa ongelma lisäämällä &lt;b&gt;s.youtube.com&lt;/b&gt; sallittujen listalle tai kytke kaikki DNS-estot ja välityspalvelimet pois päältä.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Katseluhistoriaasi ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä johtuu todennäköisesti DNS-mainostenestosta tai verkkovälityspalvelimesta.&lt;br&gt;&lt;br&gt;Korjaa ongelma lisäämällä &lt;b&gt;s.youtube.com&lt;/b&gt; sallittujen listalle tai kytke kaikki DNS-estot ja välityspalvelimet pois päältä</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Älä näytä uudelleen</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Naamioi videovirrat</string>
@@ -99,7 +99,7 @@ Jos olet YouTube Premium -käyttäjä, tämä asetus ei välttämättä ole tarp
 
 Asetetaanko %2$s oletusasiakkaaksi?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Vaihda</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Tämän asetuksen poistaminen käytöstä voi aiheuttaa toisto-ongelmia.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Tämän asetuksen poistaminen käytöstä voi aiheuttaa toisto-ongelmia</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Kokeile ottaa käyttöön: Naamioi videovirrat &gt; Android VR -kirjautuminen</string>
@@ -134,7 +134,7 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
 • Sinun on kirjauduttava uudelleen sisään, jos vaihdat Google-salasanasi tai poistat tämän laitteen rekisteröinnin Google-asetuksistasi"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ei ole tilapäisesti käytettävissä (API-aikakatkaisu)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR -kirjautuminen vanhentui, yritä kirjautua uudelleen VR-tilaan</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 ei ole tilapäisesti käytettävissä (tila: %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 ei ole tilapäisesti käytettävissä (tila: %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 ei ole tilapäisesti käytettävissä</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Kirjautuminen VR-tilaan epäonnistui, verkkosivuston tunnistautumista ei hyväksytty</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kirjautuminen VR-tilaan epäonnistui: %s</string>
@@ -197,7 +197,7 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
 
 Tämä voi auttaa komponenttien tunnistamisessa, kun luot mukautettuja suodattimia.
 
-Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoitteesi."</string>
+Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoitteesi"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Mukautettu suodatin</string>
   <string name="morphe_custom_filter_screen_summary">Määritä mukautetut suodattimet piilottaaksesi minkä tahansa komponentin</string>
@@ -238,11 +238,11 @@ Ota 'Videovirtojen huijaus' käyttöön korjataksesi toiston"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Sovellusversio naamioidaan</string>
   <string name="morphe_spoof_app_version_summary">Huijaa palvelinta luulemaan, että käytät vanhempaa sovellusversiota palauttaaksesi vanhat käyttöliittymäelementit.</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Sovellusversio naamioidaan vanhemmaksi versioksi.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Sovelluksen versio huijataan vanhemmaksi versioksi.
 
-Tämä muuttaa sovelluksen ulkoasua ja ominaisuuksia, mutta tuntemattomia sivuvaikutuksia saattaa esiintyä.
+Tämä muuttaa sovelluksen ulkoasua ja ominaisuuksia, mutta tuntemattomia sivuvaikutuksia voi ilmetä.
 
-Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovelluksen tiedot käyttöliittymävirheiden välttämiseksi."</string>
+Jos myöhemmin poistetaan käytöstä, on suositeltavaa tyhjentää sovelluksen tiedot käyttöliittymävian välttämiseksi"</string>
   <string name="morphe_spoof_app_version_target_title">Naamioitava kohdeversio</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Sovelluksen virkistystaajuus</string>
@@ -265,7 +265,7 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ei-tykkäykset eivät ole tilapäisesti käytettävissä (API-aikakatkaisu)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Ei-tykkäykset eivät ole saatavilla (tila %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Ei-tykkäykset eivät ole saatavilla (tila %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Ei-tykkäykset eivät ole saatavilla (asiakkaan API-raja)</string>
   <string name="morphe_ryd_failure_generic">Ei-tykkäykset eivät ole saatavilla (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Katsomasi videon tunnus lähetetään Return YouTube Dislike -rajapintaan, ja ty
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Ei-tykkäykset eivät ole tilapäisesti käytettävissä – asiakkaan API-nopeusrajoitus on voimassa</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API noutaa äänet, puhelujen määrä</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Verkkokutsuja ei ole tehty</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d verkkopyyntöä tehty</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s verkkokutsua tehty</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API noutaa äänet, aikakatkaisujen määrä</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Verkkopyyntöjä ei ole aikakatkaistu</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d verkkopyyntöä aikakatkaistu</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s verkkokutsua ajautui aikakatkaisuun</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Asiakkaan API-nopeusrajoitukset</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Asiakkaan nopeusrajoituksia ei havaittu</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Asiakkaan nopeusrajoitus havaittu %d kertaa</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d millisekuntia</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Asiakkaan nopeusrajoitus kohtattu %s kertaa</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s millisekuntia</string>
 </resources>

@@ -89,7 +89,7 @@ Kabilang dito ang iyong pribadong user ID. Siguraduhing ibahagi ito nang may pag
   <string name="morphe_sb_settings_export_failed">Nabigong i-export: %s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Ang iyong mga setting ay naglalaman ng pribadong SponsorBlock user ID.
 
-Ang iyong user ID ay tulad ng isang password, at hindi ito dapat ibahagi."</string>
+Ang iyong user ID ay tulad ng isang password, at hindi ito dapat ibahagi"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Huwag nang ipakita muli</string>
   <string name="morphe_sb_diff_segments_title">Baguhin ang pag-uugali ng segment</string>
   <string name="morphe_sb_segments_sponsor">Sponsor</string>
@@ -152,7 +152,7 @@ Ang iyong user ID ay tulad ng isang password, at hindi ito dapat ibahagi."</stri
   <string name="morphe_sb_skip_ignore">Patayin</string>
   <string name="morphe_sb_submit_failed_invalid">Hindi ma-sumite ang segment: %s</string>
   <string name="morphe_sb_submit_failed_timeout">Pansamantalang hindi magagamit ang SponsorBlock</string>
-  <string name="morphe_sb_submit_failed_unknown_error">Hindi ma-sumite ang segment (status: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Hindi ma-sumite ang segment (status: %1$s %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Hindi ma-sumite ang segment. Limitado ang dami (masyadong marami mula sa parehong gumagamit o IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Hindi ma-submit ang segment: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Hindi ma-submit ang segment.
@@ -160,10 +160,10 @@ Na umiiral na"</string>
   <string name="morphe_sb_submit_succeeded">Matagumpay na na-sumite ang segment</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">Pansamantalang hindi magagamit ang SponsorBlock (Nag-time out ang API)</string>
-  <string name="morphe_sb_sponsorblock_connection_failure_status">Pansamantalang hindi magagamit ang SponsorBlock (kapalaran %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">Pansamantalang hindi magagamit ang SponsorBlock (kapalaran %s)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">Pansamantalang hindi magagamit ang SponsorBlock</string>
   <string name="morphe_sb_vote_failed_timeout">Hindi ma-boto para sa segment (Nag-time out ang API)</string>
-  <string name="morphe_sb_vote_failed_unknown_error">Hindi ma-boto para sa segment (status: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Hindi ma-boto para sa segment (status: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Hindi ma-boto para sa segment: %s</string>
   <string name="morphe_sb_vote_upvote">Itaas ang boto</string>
   <string name="morphe_sb_vote_downvote">Ibaba ang boto</string>
@@ -172,7 +172,7 @@ Na umiiral na"</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s hanggang %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">Pumili ng kategorya para sa segment</string>
-  <string name="morphe_sb_new_segment_disabled_category">Ang kategorya ay hindi pinagana sa settings. Paganahin ang categoria upang magsumite.</string>
+  <string name="morphe_sb_new_segment_disabled_category">Ang kategorya ay hindi pinagana sa settings. Paganahin ang categoria upang magsumite</string>
   <string name="morphe_sb_new_segment_title">Bagong segment ng SponsorBlock</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Itakda ang %s bilang simula o dulo ng bagong segment?</string>
   <string name="morphe_sb_new_segment_mark_start">Simula</string>
@@ -211,7 +211,7 @@ Kung hindi ka nagsumite ng highlight, pindutin ang Kanselahin at markahan ang pa
   <string name="morphe_sb_stats_sb_disabled">Ang SponsorBlock ay hindi gumagana</string>
   <string name="morphe_sb_stats_username">Ang iyong username: <b>%s</b></string>
   <string name="morphe_sb_stats_username_change">I-tap dito para baguhin ang iyong username</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Hindi maaring baguhin ang username: Status: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Hindi maaring baguhin ang username: Status: %1$s %2$s</string>
   <string name="morphe_sb_stats_username_changed">Matagumpay na nabago ang username</string>
   <string name="morphe_sb_stats_reputation">Ang iyong reputasyon ay <b>%.2f</b></string>
   <string name="morphe_sb_stats_submissions">Gumawa ka na ng <b>%s</b> segments</string>

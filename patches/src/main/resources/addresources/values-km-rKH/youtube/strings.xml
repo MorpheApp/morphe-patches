@@ -69,6 +69,9 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -119,6 +122,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">បិទ</string>
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
@@ -192,8 +196,10 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">បិទ</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
@@ -239,5 +245,4 @@ Second \"item\" text"</string>
   <string name="morphe_series_tracker_ui_save">រក្សាទុក</string>
   <string name="morphe_series_tracker_ui_rename">ប្ដូរឈ្មោះ</string>
   <string name="morphe_series_tracker_undo">អាន់ឌូ</string>
-  <string name="morphe_series_tracker_completion_save">រក្សាទុក</string>
 </resources>

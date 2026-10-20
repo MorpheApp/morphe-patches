@@ -15,6 +15,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.instructionsOrNull
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
@@ -22,7 +23,13 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
+import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
+import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
+import app.morphe.patches.shared.misc.litho.context.conversionContextPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.spans.addSpanFilter
+import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.addon.LEGACY_BUTTON_SLOTS_RESOURCE_DIRECTORY
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -35,6 +42,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_38_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
@@ -46,11 +54,19 @@ import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversed
+import app.morphe.util.getMutableMethod
+import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.matchSingle
+import app.morphe.util.p0Register
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import org.w3c.dom.Node
 import java.lang.ref.WeakReference
 
@@ -271,6 +287,9 @@ fun initializeLegacyBottomControl(descriptor: String) {
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LegacyPlayerControlsPatch;"
 
+private const val METAPANEL_TEXT_COLOR_FILTER =
+    "Lapp/morphe/extension/youtube/patches/spans/MetapanelTextColorFilter;"
+
 private lateinit var inflateTopControlMethodRef : WeakReference<MutableMethod>
 private var inflateTopControlInsertIndex = -1
 private var inflateTopControlRegister = -1
@@ -287,7 +306,10 @@ val legacyPlayerControlsPatch = bytecodePatch(
         sharedExtensionPatch,
         playerControlsOverlayVisibilityPatch,
         versionCheckPatch,
-        settingsPatch
+        settingsPatch,
+        inclusiveSpanPatch,
+        conversionContextPatch,
+        lithoColorHookPatch { is_21_30_or_greater }
     )
 
     execute {
@@ -302,23 +324,100 @@ val legacyPlayerControlsPatch = bytecodePatch(
         }
 
         if (is_21_08_or_greater) {
+            // The text of the video metadata panel can have the dark theme colors
+            // of the elevated player, when the elevated player is turned off.
+            addSpanFilter(METAPANEL_TEXT_COLOR_FILTER)
+
+            // The icons can also have the dark theme tint. The tint is read when the image is loaded,
+            // without the conversion context, so the image component registers its images
+            // with their conversion context when it prepares them.
+            val tintColorReference = ElementsImageTintFingerprint.instructionMatches.first()
+                .getInstruction<ReferenceInstruction>().getReference<MethodReference>()!!
+            val imageType = tintColorReference.parameterTypes.single().toString()
+
+            ElementsImageComponentFingerprint.classDef.apply {
+                val conversionContextField = fields.single { it.type == conversionContextClassDef.type }
+                val imageFields = fields.filter { it.type == imageType }
+                if (imageFields.isEmpty()) {
+                    throw PatchException("No image fields in image component: $type")
+                }
+
+                methods.filter { method ->
+                    method.returnType == "V" && method.parameterTypes.size == 3
+                            && !AccessFlags.STATIC.isSet(method.accessFlags)
+                            && method.instructionsOrNull?.any { instruction ->
+                        instruction.opcode == Opcode.INVOKE_STATIC_RANGE
+                                && instruction.getReference<MethodReference>()!!.parameterTypes
+                            .contains("Landroid/content/Context;")
+                    } == true
+                }.also { methods ->
+                    if (methods.size != 1) {
+                        throw PatchException("Unexpected image component prepare methods: $methods")
+                    }
+                }.first().apply {
+                    if (p0Register < 3) {
+                        throw PatchException("Not enough registers: $this")
+                    }
+
+                    // The registers are not used yet at the start of the method.
+                    addInstructions(
+                        0,
+                        """
+                            move-object/from16 v0, p0
+                            iget-object v1, v0, $conversionContextField
+                        """ + imageFields.joinToString("") { field ->
+                            """
+                                iget-object v2, v0, $field
+                                invoke-static { v1, v2 }, $EXTENSION_CLASS->registerImage(Ljava/lang/Object;Ljava/lang/Object;)V
+                            """
+                        }
+                    )
+                }
+            }
+
+            tintColorReference.getMutableMethod().apply {
+                findInstructionIndicesReversed(Opcode.RETURN).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    addInstructions(
+                        index,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->getImageTintColor(I)I
+                            move-result v$register
+                        """
+                    )
+                }
+                // The image parameter can be reused after it's read, so the image is handed at the start.
+                addInstruction(
+                    0,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setTintImage(Ljava/lang/Object;)V"
+                )
+            }
+
+            // The page indicator of the comments button can also have the dark theme colors.
+            lithoDrawableColorHook("$EXTENSION_CLASS->getBackgroundColor(Landroid/graphics/drawable/Drawable;I)I")
+
             // The elevated player shows the video metadata without a background over the
             // ambient mode colors, so the light theme text can not be read.
             // The metadata panel also has its own forced dark and light themes, which do not depend
             // on the elevated player. With the forced dark theme and the elevated player off, the
             // white text is drawn on the light background of the watch page, so turn all of them off
             // and the metadata panel uses the app theme.
+            ElevatedPlayerFeatureFlagFingerprint.matchAll().forEach {
+                // Overrides every read of the flag in the method.
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useElevatedPlayer(Z)Z"
+                )
+            }
+
             arrayOf(
-                ElevatedPlayerFeatureFlagFingerprint to true,
                 MetapanelForceDarkThemeFeatureFlagFingerprint to is_21_29_or_greater,
                 MetapanelForceLightThemeFeatureFlagFingerprint to is_21_38_or_greater
             ).forEach { (fingerprint, applyChanges) ->
                 if (applyChanges) {
-                    fingerprint.matchAll().forEach {
-                        it.method.insertLiteralOverride(
-                            it.instructionMatches.first().index,
-                            false
-                        )
+                    // A constant override only replaces the read at its index, so every read is overridden.
+                    fingerprint.matchAllMethodIndicesForEach { index ->
+                        insertLiteralOverride(index, false)
                     }
                 }
             }

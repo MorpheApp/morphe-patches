@@ -70,7 +70,6 @@ private const val VIDEO_TOGGLE_INTERFACE =
 private const val DELEGATE_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/CrossfadePatch$DelegateAccess;"
 
-private const val EXO_PLAYER_TYPE = "Landroidx/media3/exoplayer/ExoPlayer;"
 
 private fun MutableClass.addBridge(
     name: String,

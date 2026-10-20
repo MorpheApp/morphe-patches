@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.48.0-dev.9](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.48.0-dev.9)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;181 patches total
+> **[v1.48.0-dev.13](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.48.0-dev.13)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;187 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;99 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;102 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -86,6 +86,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
 | [Exit fullscreen mode](#exit-fullscreen-mode) | Adds options to automatically exit fullscreen mode when a video reaches the end. |  |
 | [Feed card layout](#feed-card-layout) | Adds an option to show or hide the card layout of feed videos, which YouTube sends as an A/B test. |  |
+| [Feed video actions](#feed-video-actions) | Adds a Watch later button to video thumbnails in feeds, and opens the video menu by tapping and holding anywhere on a video. |  |
+| [Feed view count](#feed-view-count) | Adds the view count to the bottom left of the thumbnails of feed videos. |  |
+| [Force animations](#force-animations) | Adds an option to always turn on or off the app animations that YouTube can turn off, such as the player transitions. |  |
 | [Force fullscreen landscape](#force-fullscreen-landscape) | Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices. |  |
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode. |  |
@@ -128,7 +131,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
 | [Remove viewer discretion dialog](#remove-viewer-discretion-dialog) | Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction. |  |
 | [Restore original titles](#restore-original-titles) | Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones. |  |
-| [Return YouTube Dislike](#return-youtube-dislike) | Adds an option to show the dislike count of videos with Return YouTube Dislike. |  |
+| [Return YouTube Dislike](#return-youtube-dislike) | Adds an option to show the dislike count of videos with Return YouTube Dislike, and the like count and like ratio on the thumbnails of feed videos. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
 | [Save to Watch later](#save-to-watch-later) | Adds an option to display save to Watch later button in the video player. |  |
 | [Seekbar](#seekbar) | Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in live streams, and expanding the live stream DVR duration. |  |
@@ -213,7 +216,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;28 patches</summary>
+<summary>📦 Reddit&nbsp;&nbsp;•&nbsp;&nbsp;31 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -230,6 +233,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Customize post layout](#customize-post-layout) | Adds options to show the view count of posts, to move the vote and comment buttons of posts to the right side, and to swap the vote and comment buttons. Moving and swapping the buttons works with Reddit 2026.39.0 and newer. |  |
 | [Disable modern home](#disable-modern-home) | Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier. |  |
 | [Disable screenshot popup](#disable-screenshot-popup) | Adds an option to disable the popup that appears when taking a screenshot. |  |
+| [Download location](#download-location) | Adds options to choose the folder and file name of downloaded images and videos, which can use the subreddit, author and account, and can be set per account. |  |
 | [Feed media max height](#feed-media-max-height) | Adds an option to change the maximum height of images, videos and galleries in the feed. |  |
 | [Force system font](#force-system-font) | Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto. |  |
 | [Full width feed media](#full-width-feed-media) | Adds an option to show images and videos edge to edge in the feed and post details, without side padding and rounded corners. |  |
@@ -246,9 +250,11 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Media viewer fade](#media-viewer-fade) | Adds an option to lower or remove the dark fade behind the caption when viewing images and videos. |  |
 | [Open links directly](#open-links-directly) | Adds an option to skip over redirection URLs in external links. |  |
 | [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app-browser. |  |
+| [Redgifs audio](#redgifs-audio) | Adds an option to play the original Redgifs video, which has audio, instead of Reddit's silent copy. |  |
 | [Remember collapsed comments](#remember-collapsed-comments) | Adds an option to keep comments you collapsed collapsed when reopening a post. |  |
 | [Remove subreddit dialog](#remove-subreddit-dialog) | Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Adds an option to sanitize sharing links by removing tracking query parameters. |  |
+| [Show flairs in home feed](#show-flairs-in-home-feed) | Adds an option to show post flair badges in the home feed. This patch works with Reddit 2026.24.0 and newer. |  |
 | [Spoof signature](#spoof-signature) | Spoofs the signature of the app to fix notification issues. |  |
 | [Start as guest](#start-as-guest) | Skips the forced startup login screen using Reddit's native guest browsing mode. |  |
 

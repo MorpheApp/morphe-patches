@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 group = "app.morphe"
 
 patches {
@@ -17,6 +19,20 @@ patches {
 val patchListGeneratorClasspath = configurations.create("patchListGeneratorClasspath")
 val jamApk = providers.gradleProperty("jamApk")
 val jamOutput = providers.gradleProperty("jamOutput")
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
 
 dependencies {
     // Required due to smali, or build fails. Can be removed once smali is bumped.

@@ -23,11 +23,14 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val CUEPOINT_LIST_CLASS =
+    $$"Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass$CuepointList;"
+
 private const val STREAMING_DATA_OUTER_CLASS =
     $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
 
 internal object CuepointListFingerprint : Fingerprint(
-    definingClass = $$"Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass$CuepointList;",
+    definingClass = CUEPOINT_LIST_CLASS,
     name = "<clinit>",
     filters = listOf(
         methodCall(name = "registerDefaultInstance")

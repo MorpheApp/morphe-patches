@@ -13,6 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
@@ -31,7 +32,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.hookVideoIntentCommand
 import app.morphe.patches.youtube.shared.openVideoIntentPatch
 import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -45,15 +45,48 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FeedCardLayoutPatch;"
 
 private const val EXTENSION_ELEMENT_ITEM_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/FeedCardLayoutPatch\$ElementItemInterface;"
-
-private const val EXTENSION_RECYCLER_VIEW_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/FeedCardLayoutPatch\$RecyclerViewInterface;"
-
-private const val EXTENSION_FLOW_LAYOUT_MANAGER_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/FeedCardLayoutPatch\$FlowLayoutManagerInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/FeedCardLayoutPatch$ElementItemInterface;"
 
 private const val RECYCLER_VIEW_CLASS = "Landroid/support/v7/widget/RecyclerView;"
+
+/**
+ * Calls the extension method with the list and the parameter at the start of a method of the list,
+ * which overrides a method of ViewGroup. If the list doesn't override the method, the method is added
+ * and calls the method of ViewGroup first.
+ */
+private fun MutableClass.hookViewGroupMethod(name: String, parameterType: String, extensionMethodName: String) {
+    val extensionMethod = "$EXTENSION_CLASS->$extensionMethodName($RECYCLER_VIEW_CLASS$parameterType)V"
+    val method = methods.firstOrNull { method ->
+        method.name == name && method.returnType == "V" && method.parameterTypes == listOf(parameterType)
+    }
+
+    if (method != null) {
+        method.addInstruction(0, "invoke-static/range { p0 .. p1 }, $extensionMethod")
+        return
+    }
+
+    methods.add(
+        ImmutableMethod(
+            type,
+            name,
+            listOf(ImmutableMethodParameter(parameterType, null, null)),
+            "V",
+            AccessFlags.PUBLIC.value,
+            null,
+            null,
+            MutableMethodImplementation(2),
+        ).toMutable().apply {
+            addInstructions(
+                0,
+                """
+                    invoke-super { p0, p1 }, Landroid/view/ViewGroup;->$name($parameterType)V
+                    invoke-static { p0, p1 }, $extensionMethod
+                    return-void
+                """
+            )
+        }
+    )
+}
 
 @Suppress("unused")
 val feedCardLayoutPatch = bytecodePatch(
@@ -125,130 +158,13 @@ val feedCardLayoutPatch = bytecodePatch(
             }
         }
 
-        // The cards have rounded corners, which are not part of the element.
-        mutableClassDefBy(RECYCLER_VIEW_CLASS).methods.add(
-            ImmutableMethod(
-                RECYCLER_VIEW_CLASS,
-                "onViewAdded",
-                listOf(ImmutableMethodParameter("Landroid/view/View;", null, null)),
-                "V",
-                AccessFlags.PUBLIC.value,
-                null,
-                null,
-                MutableMethodImplementation(2),
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        invoke-super { p0, p1 }, Landroid/view/ViewGroup;->onViewAdded(Landroid/view/View;)V
-                        invoke-static { p0, p1 }, $EXTENSION_CLASS->onChildAdded(${RECYCLER_VIEW_CLASS}Landroid/view/View;)V
-                        return-void
-                    """
-                )
-            }
-        )
-
-        // The Shorts shelf and the horizontal shelves have the background of the cards, which the list draws
-        // below its items, because the views of the elements reset their own background.
         mutableClassDefBy(RECYCLER_VIEW_CLASS).apply {
-            val onListDraw = "$EXTENSION_CLASS->onListDraw(${RECYCLER_VIEW_CLASS}Landroid/graphics/Canvas;)V"
-            val onDrawMethod = methods.firstOrNull { method ->
-                method.name == "onDraw" && method.parameterTypes == listOf("Landroid/graphics/Canvas;")
-            }
+            // The cards have rounded corners, which are not part of the element.
+            hookViewGroupMethod("onViewAdded", "Landroid/view/View;", "onChildAdded")
 
-            if (onDrawMethod != null) {
-                onDrawMethod.addInstruction(0, "invoke-static { p0, p1 }, $onListDraw")
-            } else {
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "onDraw",
-                        listOf(ImmutableMethodParameter("Landroid/graphics/Canvas;", null, null)),
-                        "V",
-                        AccessFlags.PUBLIC.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-super { p0, p1 }, Landroid/view/ViewGroup;->onDraw(Landroid/graphics/Canvas;)V
-                                invoke-static { p0, p1 }, $onListDraw
-                                return-void
-                            """
-                        )
-                    }
-                )
-            }
-        }
-
-        // Some lists, such as the Subscriptions feed, add a vertical spacing between all the items,
-        // also around the hidden items.
-        FlowLayoutManagerConstructorFingerprint.matchOrNull()?.let {
-            val verticalSpacingField = it.instructionMatches.last().getFieldAccessed()
-            // Older app versions set the spacing only in the constructor.
-            val setVerticalSpacingMethod = it.classDef.methods.firstOrNull { method ->
-                method.parameterTypes == listOf("I") && method.returnType == "V" &&
-                        method.indexOfFirstInstruction {
-                            opcode == Opcode.IPUT && getReference<FieldReference>() == verticalSpacingField
-                        } >= 0
-            } ?: return@let
-
-            it.classDef.apply {
-                interfaces.add(EXTENSION_FLOW_LAYOUT_MANAGER_INTERFACE)
-
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_removeVerticalSpacing",
-                        listOf(),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                const/4 v0, 0x0
-                                invoke-virtual { p0, v0 }, $setVerticalSpacingMethod
-                                return-void
-                            """
-                        )
-                    }
-                )
-            }
-
-            mutableClassDefBy(RECYCLER_VIEW_CLASS).apply {
-                val layoutManagerField = fields.single { field ->
-                    !AccessFlags.STATIC.isSet(field.accessFlags) && field.type == it.classDef.superclass
-                }
-
-                interfaces.add(EXTENSION_RECYCLER_VIEW_INTERFACE)
-
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getLayoutManager",
-                        listOf(),
-                        "Ljava/lang/Object;",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $layoutManagerField
-                                return-object v0
-                            """
-                        )
-                    }
-                )
-            }
+            // The Shorts shelf and the horizontal shelves have the background of the cards, which the list draws
+            // below its items, because the views of the elements reset their own background.
+            hookViewGroupMethod("onDraw", "Landroid/graphics/Canvas;", "onListDraw")
         }
 
         // The comment button opens the video, and the comments are opened when the watch page is ready.

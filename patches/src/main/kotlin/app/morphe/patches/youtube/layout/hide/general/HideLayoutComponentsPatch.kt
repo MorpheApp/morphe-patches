@@ -67,6 +67,7 @@ import app.morphe.patches.youtube.video.speed.custom.TapAndHoldSpeedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.fiveRegisters
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -183,9 +184,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_gift_button"),
                     SwitchPreference("morphe_hide_comments_info_button"),
                     SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
+                    SwitchPreference("morphe_hide_comments_live_chat_scroll_to_bottom_button"),
                     SwitchPreference("morphe_hide_comments_live_chat_tooltips", summary = true),
                     SwitchPreference("morphe_hide_comments_menu_button", summary = true),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
+                    SwitchPreference("morphe_hide_comments_zero_state"),
                     SwitchPreference("morphe_minimal_comments_button", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
                     SwitchPreference("morphe_hide_comments_timestamp_button"),
@@ -440,17 +443,20 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide watermark (legacy code for old versions of YouTube)
 
-        ShowWatermarkFingerprint.method.apply {
-            val index = implementation!!.instructions.size - 5
+        ShowWatermarkFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-            removeInstruction(index)
-            addInstructions(
-                index,
-                """
-                    invoke-static {}, $LAYOUT_COMPONENTS_FILTER->showWatermark()Z
-                    move-result p2
-                """
-            )
+                removeInstruction(index)
+                addInstructions(
+                    index,
+                    """
+                        invoke-static {}, $LAYOUT_COMPONENTS_FILTER->showWatermark()Z
+                        move-result v$register
+                    """
+                )
+            }
         }
 
         // endregion
@@ -1040,11 +1046,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
             val addAllIndex = indexOfFirstInstructionOrThrow(
                 methodCall(smali = "Ljava/util/List;->addAll(Ljava/util/Collection;)Z")
             )
-            val addAllInstruction = getInstruction<FiveRegisterInstruction>(addAllIndex)
-
             addInstruction(
                 addAllIndex,
-                "invoke-static { v${addAllInstruction.registerC}, v${addAllInstruction.registerD} }, " +
+                "invoke-static { ${fiveRegisters(addAllIndex)} }, " +
                         "$LAYOUT_COMPONENTS_FILTER->setChannelTabs(Ljava/util/List;Ljava/util/List;)V"
             )
         }
@@ -1114,6 +1118,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 it.instructionMatches.last().index,
                 COMMENTS_FILTER,
                 "hideLiveChatThanksButton"
+            )
+        }
+
+        // endregion
+
+        // region hide live chat scroll to bottom button
+
+        MoreCommentsIconFingerprint.matchAll().forEach {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                COMMENTS_FILTER,
+                "hideLiveChatScrollToBottomButton"
             )
         }
 

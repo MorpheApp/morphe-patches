@@ -661,6 +661,10 @@ public final class NavigationBar {
          * Only shown when 'Show Settings' is turned on.
          */
         SETTINGS("SETTINGS", "SETTINGS_CAIRO"),
+        /**
+         * Only shown when 'Show Series in navigation bar' is turned on.
+         */
+        SERIES("PLAYLISTS"),
         SUBSCRIPTIONS("PIVOT_SUBSCRIPTIONS", "TAB_SUBSCRIPTIONS_CAIRO"),
         /**
          * Notifications tab.  Only present when
@@ -696,7 +700,7 @@ public final class NavigationBar {
          */
         boolean closesSearch() {
             return this == HOME || this == SHORTS || this == SUBSCRIPTIONS
-                    || this == NOTIFICATIONS || this == LIBRARY;
+                    || this == NOTIFICATIONS || this == SERIES || this == LIBRARY;
         }
 
         /**

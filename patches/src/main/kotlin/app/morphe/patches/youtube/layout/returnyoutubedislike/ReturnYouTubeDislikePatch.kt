@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3862
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -27,6 +27,7 @@ import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
 import app.morphe.patches.shared.misc.textcomponent.lithoSpannableStringPatch
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.feedcards.feedVideoCardsHookPatch
 import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -45,7 +46,8 @@ private const val EXTENSION_CLASS =
 
 val returnYouTubeDislikePatch = bytecodePatch(
     name = "Return YouTube Dislike",
-    description = "Adds an option to show the dislike count of videos with Return YouTube Dislike."
+    description = "Adds an option to show the dislike count of videos with Return YouTube Dislike, " +
+            "and the like count and like ratio on the thumbnails of feed videos."
 ) {
     dependsOn(
         settingsPatch,
@@ -54,7 +56,9 @@ val returnYouTubeDislikePatch = bytecodePatch(
         lithoSpannableStringPatch,
         videoIdPatch,
         playerTypeHookPatch,
-        restoreOldVideoActionBarPatch
+        restoreOldVideoActionBarPatch,
+        // Finds the feed video cards for the like counts on their thumbnails.
+        feedVideoCardsHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -63,6 +67,8 @@ val returnYouTubeDislikePatch = bytecodePatch(
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
             SwitchPreference("morphe_ryd_enabled"),
             SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
+            SwitchPreference("morphe_ryd_feed_like_count"),
+            SwitchPreference("morphe_ryd_feed_like_ratio"),
             SwitchPreference("morphe_ryd_estimated_like", summary = true),
             SwitchPreference("morphe_ryd_toast_on_connection_error", summary = true),
             screenInfoPreferenceCategory(

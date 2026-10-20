@@ -137,11 +137,6 @@ public final class SkipSegments {
      */
     @Nullable
     public static List<Seg> await(@Nullable String videoId, long durationMs) {
-        return await(videoId, durationMs, AWAIT_TIMEOUT_MS);
-    }
-
-    @Nullable
-    public static List<Seg> await(@Nullable String videoId, long durationMs, long timeoutMs) {
         if (videoId == null || videoId.isEmpty() || !Settings.LYRICS_SB_MATCHING.get()) {
             return null;
         }
@@ -159,7 +154,7 @@ public final class SkipSegments {
         List<Seg> segs = null;
         if (task != null) {
             try {
-                segs = task.get(timeoutMs, TimeUnit.MILLISECONDS);
+                segs = task.get(AWAIT_TIMEOUT_MS, TimeUnit.MILLISECONDS);
             } catch (TimeoutException ignored) {
                 // Still running; the next await picks it up.
             } catch (InterruptedException ex) {

@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Masukkan nama paket</string>
   <string name="morphe_external_downloader_other_item">Lainnya</string>
   <string name="morphe_external_downloader_not_found_title">Aplikasi tidak terpasang</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s belum dipasang. Pasang dulu.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s belum terpasang. Harap pasang</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Tidak dapat menemukan aplikasi terpasang dengan nama paket: %s
 
 Pastikan nama paket benar dan aplikasi sudah terpasang"</string>
@@ -84,7 +84,7 @@ Untuk mengubah ikon di semua tempat, lakukan tambal lagi dan ubah opsi tambal 'I
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Pemberitahuan Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Riwayat tontonan Anda tidak sedang disimpan.&lt;br&gt;&lt;br&gt;Hal ini kemungkinan besar disebabkan oleh pemblokir iklan DNS atau proksi jaringan.&lt;br&gt;&lt;br&gt;Untuk memperbaikinya, masukkan daftar putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua pemblokir DNS dan proksi.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Riwayat tontonan Anda tidak sedang disimpan.&lt;br&gt;&lt;br&gt;Hal ini kemungkinan besar disebabkan oleh pemblokir iklan DNS atau proksi jaringan.&lt;br&gt;&lt;br&gt;Untuk memperbaikinya, masukkan daftar putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua pemblokir DNS dan proksi</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Jangan tampilkan lagi</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Palsukan aliran video</string>
@@ -99,7 +99,7 @@ Jika Anda pengguna YouTube Premium, setelan ini mungkin tidak diperlukan"</strin
 
 Jadikan %2$s sebagai klien default?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Ganti</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan setelan ini dapat menyebabkan masalah pemutaran.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan setelan ini dapat menyebabkan masalah pemutaran</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cobalah mengaktifkan: Palsukan aliran video &gt; Masuk Android VR</string>
@@ -134,7 +134,7 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 • Anda perlu masuk kembali jika Anda mengubah kata sandi Google Anda atau menghapus pendaftaran perangkat ini dari setelan Google Anda"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 sementara tidak tersedia (API kehabisan waktu)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Masuk ke Android VR telah kadaluwarsa, coba masuk ke VR lagi</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 sementara tidak tersedia (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 untuk sementara tidak tersedia (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 sementara tidak tersedia</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Tidak dapat masuk ke VR, autentikasi situs web tidak disetujui</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
@@ -197,7 +197,7 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 
 Ini dapat membantu mengidentifikasi komponen saat membuat penyaring khusus.
 
-Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat IP Anda."</string>
+Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat IP Anda"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Penyaring khusus</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurasikan penyaring khusus untuk menyembunyikan komponen apa pun</string>
@@ -231,9 +231,9 @@ Untuk menggunakan fitur ini, matikan 'Palsukan aliran video'"</string>
 Ketuk di sini untuk mengunduh PotHelper"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper tidak berfungsi lagi</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
-  <string name="morphe_external_potoken_provider_expired_dialog_message">"Token bawaan dalam versi PotHelper ini tidak berfungsi lagi
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Token yang dibuat di dalam versi PotHelper ini sudah tidak berfungsi
 
-Aktifkan 'Tiru streaming video' untuk memperbaiki pemutaran"</string>
+Aktifkan 'Palsukan aliran video' untuk memperbaiki pemutaran"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Aktifkan</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Palsukan versi aplikasi</string>
@@ -242,7 +242,7 @@ Aktifkan 'Tiru streaming video' untuk memperbaiki pemutaran"</string>
 
 Ini akan mengubah tampilan dan fitur aplikasi, tetapi efek samping yang tidak diketahui dapat terjadi.
 
-Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah kerusakan UI."</string>
+Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah kerusakan UI"</string>
   <string name="morphe_spoof_app_version_target_title">Target versi aplikasi yang dipalsukan</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Penyegaran layar aplikasi</string>
@@ -265,7 +265,7 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislike sementara tidak tersedia (waktu API habis)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Dislike tidak tersedia (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Dislike tidak tersedia (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Dislike tidak tersedia (pembatasan API klien)</string>
   <string name="morphe_ryd_failure_generic">Dislike tidak tersedia (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ ID video yang Anda tonton dikirim ke API Return YouTube Dislike, dan suka dan ti
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislike sementara tidak tersedia - Batas kuota API klien berlaku</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API mengambil vote, jumlah dari panggilan</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Tidak ada panggilan jaringan yang terjadi</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d panggilan jaringan dilakukan</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s panggilan jaringan dilakukan</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API mengambil vote, jumlah kegagalan</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Tidak ada panggilan jaringan yang gagal</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d panggilan jaringan gagal</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s panggilan jaringan habis waktu</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Batas kuota klien API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Tidak ada batas kuota klien yang terdeteksi</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Batas kuota klien terdeteksi %d kali</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d milidetik</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Batas kuota klien terdeteksi %s kali</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milidetik</string>
 </resources>

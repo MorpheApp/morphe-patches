@@ -39,9 +39,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
 
     private static final String WEB_REMIX_VERSION = "1.20260914.01.00";
     private static final String ANDROID_MUSIC_VERSION = "7.21.50";
-    private static final String INNERTUBE_USER_AGENT =
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                    + "(KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36";
+    private static final String INNERTUBE_USER_AGENT = LyricsRequests.CHROME_DESKTOP_USER_AGENT;
 
     @Override
     public String name() {

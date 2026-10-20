@@ -118,7 +118,7 @@ internal object RelateVideoOverlayLayoutParamFingerprint : Fingerprint(
     )
 )
 
-private object PlayerTypeEnumFingerprint : Fingerprint(
+internal object PlayerTypeEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
         "WATCH_WHILE_PICTURE_IN_PICTURE",
@@ -349,7 +349,7 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
     )
 )
 
-internal val VideoPlaybackIntentFingerprint = Fingerprint(
+internal object VideoPlaybackIntentFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("L", "Ljava/util/Map;"),

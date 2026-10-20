@@ -73,6 +73,17 @@ public final class LyricsRequests {
 
     public static final String SIMPLIFIED_CHINESE = "zh-Hans";
 
+    /**
+     * For the endpoints that turn away an unrecognised client. Providers that answer only
+     * to a mobile agent keep one of their own.
+     */
+    public static final String CHROME_DESKTOP_USER_AGENT =
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                    + "(KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36";
+
+    /** Open to anyone, in need of no token. */
+    public static final String ITUNES_SEARCH_URL = "https://itunes.apple.com/search";
+
     public static String deviceLanguage() {
         return Locale.getDefault().getLanguage();
     }
@@ -896,7 +907,7 @@ public final class LyricsRequests {
 
     public static int syncRank(Lyrics lyrics) {
         for (LyricsLine line : lyrics.lines()) {
-            if (line.hasWords()) {
+            if (line.hasWordTimings()) {
                 return 2;
             }
         }

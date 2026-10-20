@@ -87,6 +87,20 @@ internal fun getVideoQualitySettingFingerprint(
     )
 ) {}
 
+/**
+ * Chooses the qualities allowed by the player, when the video starts and again while it plays:
+ * the quality last selected in the quality menu, or an automatic quality.
+ */
+internal fun getVideoQualityConstraintFingerprint(
+    videoQualitySettingMethod: String
+) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Z", "L", "Ljava/lang/String;", "L"),
+    filters = listOf(
+        methodCall(smali = videoQualitySettingMethod)
+    )
+) {}
+
 internal object ShortsQualityChangeObserverPrimaryFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45387052)

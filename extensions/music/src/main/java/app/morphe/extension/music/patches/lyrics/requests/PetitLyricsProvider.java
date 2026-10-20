@@ -427,13 +427,6 @@ public final class PetitLyricsProvider implements LyricsProvider {
                                         current.durationMs = 0;
                                     }
                                 }
-                                case "lyricsType" -> {
-                                    try {
-                                        current.lyricsType = Integer.parseInt(value.trim());
-                                    } catch (NumberFormatException ignored) {
-                                        current.lyricsType = 0;
-                                    }
-                                }
                                 case "lyricsData" -> current.lyricsData = value.trim();
                                 default -> { }
                             }
@@ -784,7 +777,6 @@ public final class PetitLyricsProvider implements LyricsProvider {
         String writer;
         String composer;
         long durationMs;
-        int lyricsType;
         String lyricsData;
     }
 }

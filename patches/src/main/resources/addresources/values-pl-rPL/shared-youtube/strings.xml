@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Wprowadź nazwę pakietu</string>
   <string name="morphe_external_downloader_other_item">Inna</string>
   <string name="morphe_external_downloader_not_found_title">Aplikacja nie jest zainstalowana</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s nie jest zainstalowany. Zainstaluj go.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s nie jest zainstalowany. Zainstaluj go</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Nie można znaleźć zainstalowanej aplikacji o nazwie pakietu: %s
 
 Upewnij się, że nazwa pakietu jest poprawna i czy aplikacja jest zainstalowana"</string>
@@ -84,7 +84,7 @@ Aby zmienić ikonę wszędzie, zmodyfikuj ponownie i zmień opcję modyfikacji \
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Powiadomienie Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Twoja historia oglądania nie jest zapisywana.&lt;br&gt;&lt;br&gt;Najprawdopodobniej jest to spowodowane przez bloker reklam DNS lub serwer proxy.&lt;br&gt;&lt;br&gt;Aby to naprawić, dodaj do białej listy &lt;b&gt;s.youtube.com&lt;/b&gt; lub wyłącz wszystkie blokery DNS i serwery proxy.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Twoja historia oglądania nie jest zapisywana.&lt;br&gt;&lt;br&gt;Najprawdopodobniej jest to spowodowane przez blokadę reklam DNS lub serwer proxy.&lt;br&gt;&lt;br&gt;Aby to naprawić, dodaj do białej listy &lt;b&gt;s.youtube.com&lt;/b&gt; lub wyłącz wszystkie blokady DNS i serwery proxy</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nie pokazuj ponownie</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Fałszowanie strumieni filmów</string>
@@ -98,7 +98,7 @@ Jeśli masz YouTube Premium, to ustawienie może nie być wymagane"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s nie zadziałał(o) kilka razy z rzędu, ale %2$s już tak.
 Ustawić %2$s jako domyślnego klienta?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Przełącz</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Wyłączenie tego ustawienia może spowodować problemy z odtwarzaniem.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Wyłączenie tego ustawienia może powodować problemy z odtwarzaniem</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Fałszuj strumienie filmów i Logowanie Android VR</string>
@@ -133,7 +133,7 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
 • W przypadku zmiany hasła lub wyrejestrowania urządzenia w ustawieniach konta Google konieczne będzie ponowne zalogowanie się"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 jest tymczasowo niedostępny (API nie reaguje)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Sesja logowania Android VR wygasła, spróbuj zalogować się ponownie</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 jest tymczasowo niedostępny (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 jest tymczasowo niedostępny (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 jest tymczasowo niedostępny</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nie można zalogować się do VR, autoryzacja na stronie nie została zatwierdzona</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie można zalogować się do VR: %s</string>
@@ -192,11 +192,11 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Logi debugowania buforów protokołu</string>
   <string name="morphe_debug_protobuffer_summary">Dodaje szczegółowe informacje do logów, aby ułatwić programistom identyfikację elementów aplikacji</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Włączenie tej opcji spowoduje rejestrowanie dodatkowych informacji o układzie, w tym tekstu wyświetlanego w niektórych elementach interfejsu.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Włączenie tej opcji spowoduje rejestrowanie dodatkowych danych układu, w tym tekst wyświetlany na ekranie dla niektórych elementów interfejsu.
 
 Może to pomóc w identyfikacji elementów podczas tworzenia własnych filtrów.
 
-Pamiętaj jednak, że rejestrowane będą również niektóre dane użytkownika, takie jak adres IP."</string>
+​Włączenie tej opcji spowoduje jednak również zapisywanie niektórych danych użytkownika, takich jak adres IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Własny filtr</string>
   <string name="morphe_custom_filter_screen_summary">Skonfiguruj własne filtry, aby ukryć dowolny element</string>
@@ -239,9 +239,9 @@ Włącz \"Fałszowanie strumieni filmów\", aby naprawić odtwarzanie"</string>
   <string name="morphe_spoof_app_version_summary">Oszukuje serwer, że używasz starszej wersji aplikacji, aby przywrócić klasyczne elementy interfejsu</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"Aplikacja będzie przedstawiać się serwerom jako starsza wersja.
 
-Może to zmienić wygląd i funkcje, ale też powodować nieznane błędy.
+Zmieni to wygląd i dostępne funkcje aplikacji, ale mogą wystąpić nieprzewidziane skutki uboczne.
 
-Jeśli później zostanie to wyłączone, zalecane jest usunięcie danych aplikacji, aby zapobiec błędom interfejsu."</string>
+​Jeśli później wyłączysz tę opcję, zaleca się wyczyszczenie danych aplikacji, aby uniknąć błędów interfejsu"</string>
   <string name="morphe_spoof_app_version_target_title">Docelowa wersja aplikacji</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Częstotliwość odświeżania aplikacji</string>
@@ -264,7 +264,7 @@ Jeśli później zostanie to wyłączone, zalecane jest usunięcie danych aplika
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Łapki w dół są niedostępne (API nie reaguje)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Łapki w dół są niedostępne (status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Łapki w dół są niedostępne (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Łapki w dół są niedostępne (limit żądań API)</string>
   <string name="morphe_ryd_failure_generic">Łapki w dół są niedostępne (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -290,12 +290,12 @@ Identyfikator oglądanego filmu jest wysyłany do API Return YouTube Dislike, a 
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Łapki w dół są niedostępne - Limit żądań API aktywny</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Liczba żądań do API o łapki</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nie wykonano żadnych połączeń sieciowych</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Wykonano %d połączeń sieciowych</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Wykonano %s połączeń sieciowych</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Liczba nieudanych żądań do API w celu pobrania łapek</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Brak połączeń, które przekroczyły limit czasu</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d połączeń przekroczyło limit czasu</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s połączeń przekroczyło limit czasu</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Limity żądań API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nie przekroczono limitu żądań</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limit żądań klienta przekroczony %d razy</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d ms</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limit żądań klienta przekroczony %s razy</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s ms</string>
 </resources>

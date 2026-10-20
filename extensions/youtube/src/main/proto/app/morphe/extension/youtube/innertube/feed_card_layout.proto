@@ -40,6 +40,19 @@ message ElementModel {
     HorizontalShelfModel horizontalShelfModel = 312131490;
     // Short of the Shorts shelf (shorts_video_cell.eml).
     ShortsVideoCellModel shortsVideoCellModel = 519005951;
+    // Shelf of Shorts in a carousel, with its header (shorts_shelf.eml), such as in the search results.
+    ShortsShelfModel shortsShelfModel = 315733268;
+    // Video of the vertical shelves below a shelf header, such as in the channel home (grid_video_wrapper.eml).
+    GridVideoModel gridVideoModel = 234662488;
+}
+
+message GridVideoModel {
+    string accessibilityText = 19;
+}
+
+message ShortsShelfModel {
+    // Data of the shelf header, which shorts_shelf.eml shows with shelf_header.eml.
+    ShelfHeaderData header = 1;
 }
 
 message ShortsVideoCellModel {

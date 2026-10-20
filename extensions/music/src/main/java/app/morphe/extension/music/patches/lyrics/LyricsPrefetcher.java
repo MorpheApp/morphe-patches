@@ -120,8 +120,8 @@ final class LyricsPrefetcher {
 
         // The providers keyed by the video of the playing track only know that track,
         // so the successor is asked with the ones that search by title and artist.
-        final List<LyricsProvider> providers = LyricsManager.searchableProviders(
-                LyricsManager.providersInOrder(Settings.LYRICS_SOURCE.get()));
+        final List<LyricsProvider> providers = LyricsProviders.searchableProviders(
+                LyricsProviders.providersInOrder(Settings.LYRICS_SOURCE.get()));
         if (providers.isEmpty()) return;
         if (allKnown(track, providers)) return;
 
@@ -148,9 +148,9 @@ final class LyricsPrefetcher {
                     continue;
                 }
                 Lyrics lyrics = result.lyrics();
-                if (!LyricsManager.isValidLyrics(lyrics, track)) continue;
+                if (!LyricsMatch.isValidLyrics(lyrics, track)) continue;
 
-                LyricsCache.put(track, LyricsManager.cacheSourceFor(lyrics), lyrics, null);
+                LyricsCache.put(track, LyricsMatch.cacheSourceFor(lyrics), lyrics, null);
                 Logger.printDebug(() -> "Lyrics prefetched: " + track + " via " + provider.name());
                 return;
             } catch (InterruptedException ex) {

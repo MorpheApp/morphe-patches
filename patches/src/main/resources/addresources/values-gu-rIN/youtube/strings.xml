@@ -56,6 +56,9 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -100,6 +103,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.captionsPatch -->
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
@@ -170,8 +174,11 @@ Second \"item\" text"</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_entry_default">ડિફૉલ્ટ</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->

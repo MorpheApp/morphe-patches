@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Rəngi sıfırla</string>
   <string name="morphe_settings_color_invalid">Yanlış rəng</string>
   <string name="morphe_settings_restart_title">Yenidən başlatma tələb olundu</string>
-  <string name="morphe_settings_restart_dialog_message">Bu dəyişikliyin təsir etməsi üçün tətbiqi yenidən başlat.</string>
+  <string name="morphe_settings_restart_dialog_message">Bu dəyişikliyin təsir etməsi üçün tətbiqi yenidən başlat</string>
   <string name="morphe_settings_restart">Yenidən başlat</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">İdxal et</string>
   <string name="morphe_settings_import_copy">Köçür</string>
   <string name="morphe_settings_import_reset">Morphe tənzimləmələr standarta təyin olundu</string>
-  <string name="morphe_settings_import_success">%d tənzimləmə idxal olundu</string>
+  <string name="morphe_settings_import_success">%s tənzimləmə idxal olundu</string>
   <string name="morphe_settings_import_failure_parse">İdxal uğursuz oldu: %s</string>
   <string name="morphe_settings_navigate_up">Yuxarı keç</string>
   <string name="morphe_settings_search_hint">Tənzimləmələri axtar</string>
@@ -103,7 +103,7 @@ Yeni dilləri tərcümə etmək və ya mövcud tərcümələri təkmilləşdirm�
   <string name="morphe_debug_toast_on_error_title">Morphe xətasında ani bildiriş göstər</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Xəta ani bildirişlərin qapatmaq, bütün Morphe xəta bildirişlərin gizlədir.
 
-Gözlənilməz hallardan xəbərdar olmayacaqsınız."</string>
+Gözlənilməz hallardan xəbərdar olmayacaqsınız"</string>
   <string name="morphe_debug_export_logs_title">Sazlama qeydlərini köçür</string>
   <string name="morphe_debug_export_logs_summary">Morphe sazlama qeydlərini köçür</string>
   <string name="morphe_debug_export_logs_success">Sazlama qeydləri uğurla köçürüldü</string>
@@ -179,25 +179,25 @@ Davranış axtarışın əvvəlində itdi, buna görə də birdən çox nişanç
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG tənzimləmələrin aç</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG quraşdırılmayıb. Onu quraşdır.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG quraşdırılmayıb. Onu quraşdır</string>
   <string name="gms_core_dialog_title">Fəaliyyət lazımdır</string>
   <string name="gms_core_dialog_outdated_message">"MicroG v%1s köhnəlib və problemlərə səbəb ola bilər.
 
-Xahiş olunur, MicroG-ni ən son v%2s versiyasına yeniləyin."</string>
+Xahiş olunur, MicroG-ni ən son v%2s versiyasına yeniləyin"</string>
   <string name="gms_core_dialog_update_text">Yenilə</string>
   <string name="gms_core_dialog_ignore_text">Məhəl qoyma</string>
   <string name="gms_core_dialog_conflict_message">"Quraşdırılmış MicroG Morphe tərəfindən tövsiyə edilmir:
 
 %1s
 
-Onu silmək üçün toxun, sonra bu tətbiqi yenidən aç və MicroG RE-ni quraşdır."</string>
+Onu silmək üçün toxun, sonra bu tətbiqi yenidən aç və MicroG RE-ni quraşdır"</string>
   <string name="gms_core_dialog_uninstall_text">Quraşdırmanı sil</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG-nin fonda işləmək icazəsi yoxdur.
 
 Telefonunuz üçün \"Tətbiqimi söndürməyin\" təlimatını izləyin və MicroG quraşdırmanıza təlimatları tətbiq edin.
 
-Bu, tətbiqin işləməsi üçün tələb olunur."</string>
+Bu, tətbiqin işləməsi üçün tələb olunur"</string>
   <string name="gms_core_dialog_open_website_text">Veb saytı aç</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Problemlərə mane olmaq üçün MicroG batareya optimallaşdırmaları qeyri-aktiv edilməlidir.
 

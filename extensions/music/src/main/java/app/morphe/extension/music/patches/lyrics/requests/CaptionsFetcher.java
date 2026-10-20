@@ -59,9 +59,7 @@ public final class CaptionsFetcher {
  */
     private static final String ASR_PROVIDER_NAME = Lyrics.CAPTIONS_PROVIDER + " (ASR)";
 
-    private static final String CAPTION_USER_AGENT =
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                    + "(KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36";
+    private static final String CAPTION_USER_AGENT = LyricsRequests.CHROME_DESKTOP_USER_AGENT;
 
     private static final String SW_COOKIE_URL = "https://www.youtube.com/sw.js";
     private static final List<String> COOKIE_KEYS = Arrays.asList(
@@ -267,7 +265,7 @@ public final class CaptionsFetcher {
                 }
             }
 
-            Lyrics timed = fetchViaTimedtext(videoId, captions.poToken(), null);
+            Lyrics timed = fetchViaTimedtext(videoId, captions.poToken());
             if (timed != null && !timed.isEmpty()) {
                 lastFetchedVideoId = videoId;
                 return CaptionsOutcome.captions(timed, captions.innertubeTrack());
@@ -310,7 +308,7 @@ public final class CaptionsFetcher {
 
     private static CaptionsOutcome tryTimedtext(String videoId, @Nullable String poToken,
                                                  @Nullable TrackInfo innertubeTrack) {
-        Lyrics timed = fetchViaTimedtext(videoId, poToken, null);
+        Lyrics timed = fetchViaTimedtext(videoId, poToken);
         if (timed != null && !timed.isEmpty()) {
             lastFetchedVideoId = videoId;
             return CaptionsOutcome.captions(timed, innertubeTrack);
@@ -1057,15 +1055,9 @@ public final class CaptionsFetcher {
         return body.toString();
     }
 
-    /**
-     * @param preferredLangs Languages to try before the defaults. Nothing asks for a
-     *                       preference yet, so the branch it drives is dormant.
-     */
     @Nullable
-    @SuppressWarnings("SameParameterValue")
-    private static Lyrics fetchViaTimedtext(String videoId, @Nullable String poToken,
-                                           @Nullable List<String> preferredLangs) {
-        List<String> langs = timedtextLanguages(preferredLangs);
+    private static Lyrics fetchViaTimedtext(String videoId, @Nullable String poToken) {
+        List<String> langs = timedtextLanguages();
 
         String pot = (poToken != null && !poToken.isEmpty()) ? "&pot=" + poToken : "";
         for (String lang : langs) {
@@ -1084,15 +1076,8 @@ public final class CaptionsFetcher {
         return null;
     }
 
-    private static List<String> timedtextLanguages(@Nullable List<String> preferredLangs) {
+    private static List<String> timedtextLanguages() {
         List<String> langs = new ArrayList<>();
-        if (preferredLangs != null) {
-            for (String lang : preferredLangs) {
-                if (!langs.contains(lang)) {
-                    langs.add(lang);
-                }
-            }
-        }
         Locale sys = Locale.getDefault();
         String sysLang = sys.getLanguage();
         if (!sysLang.isEmpty() && !langs.contains(sysLang)) {

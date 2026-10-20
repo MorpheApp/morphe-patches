@@ -224,6 +224,39 @@ internal object NextGenWatchLayoutOnInterceptTouchEventFingerprint : Fingerprint
     parameters = listOf("Landroid/view/MotionEvent;")
 )
 
+private object TopBarControllerFingerprint : Fingerprint(
+    returnType = "Landroid/os/Parcelable;",
+    parameters = listOf(),
+    filters = listOf(
+        string("instance-offset")
+    )
+)
+
+/**
+ * If the top bars of the home and other pages can be laid out behind the status bar.
+ * Returns false while the player is maximized, in fullscreen or sliding between them.
+ */
+internal fun getTopBarBehindStatusBarFingerprint(
+    playerTypeEnumType: String
+) = object : Fingerprint(
+    classFingerprint = TopBarControllerFingerprint,
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall( // Player is sliding.
+            definingClass = playerTypeEnumType,
+            returnType = "Z"
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall( // Player is maximized or in fullscreen.
+            definingClass = playerTypeEnumType,
+            returnType = "Z",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+) {}
+
 private object MiniplayerDimensionsCalculatorParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -374,6 +407,8 @@ internal object MiniplayerSetIconsLegacyFingerprint : Fingerprint(
 
 /**
  * 21.42+
+ *
+ * Matches the resume (Continue watching) flag check of the show miniplayer command.
  */
 internal object ShowMiniplayerCommandFingerprint: Fingerprint(
     classFingerprint = Fingerprint(
@@ -382,11 +417,14 @@ internal object ShowMiniplayerCommandFingerprint: Fingerprint(
             literal(121253L)
         )
     ),
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "Z",
-    parameters = listOf("L", "L"),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "L", "Ljava/util/Map;"),
     filters = listOf(
-        opcode(Opcode.IF_NEZ),
+        fieldAccess(
+            opcode = Opcode.IGET_BOOLEAN,
+            type = "Z"
+        ),
         opcode(
             opcode = Opcode.IF_EQZ,
             location = MatchAfterImmediately()
@@ -396,6 +434,8 @@ internal object ShowMiniplayerCommandFingerprint: Fingerprint(
 
 /**
  * 21.41 and lower.
+ *
+ * Matches the resume (Continue watching) flag check of the show miniplayer command.
  */
 internal object ShowMiniplayerCommandLegacyFingerprint: Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -403,6 +443,15 @@ internal object ShowMiniplayerCommandLegacyFingerprint: Fingerprint(
     parameters = listOf("L", "Ljava/util/Map;"),
     filters = listOf(
         opcode(Opcode.IF_NEZ),
+        opcode(
+            opcode = Opcode.IF_EQZ,
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_BOOLEAN,
+            type = "Z",
+            location = MatchAfterWithin(5)
+        ),
         opcode(
             opcode = Opcode.IF_EQZ,
             location = MatchAfterImmediately()

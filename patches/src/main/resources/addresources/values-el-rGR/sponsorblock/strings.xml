@@ -89,7 +89,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_export_failed">Η εξαγωγή απέτυχε: %s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Οι ρυθμίσεις σας περιέχουν ένα ιδιωτικό αναγνωριστικό χρήστη SponsorBlock.
 
-Το αναγνωριστικό χρήστη σου είναι σαν κωδικός πρόσβασης και δεν πρέπει ποτέ να μοιράζεται."</string>
+Το αναγνωριστικό χρήστη σου είναι σαν κωδικός πρόσβασης και δεν πρέπει ποτέ να μοιράζεται"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Να μην εμφανιστεί ξανά</string>
   <string name="morphe_sb_diff_segments_title">Αλλαγή συμπεριφοράς τμημάτων</string>
   <string name="morphe_sb_segments_sponsor">Χορηγός</string>
@@ -152,7 +152,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_ignore">Απενεργοποίηση</string>
   <string name="morphe_sb_submit_failed_invalid">Αδυναμία υποβολής τμήματος: %s</string>
   <string name="morphe_sb_submit_failed_timeout">Το SponsorBlock είναι προσωρινά εκτός λειτουργίας</string>
-  <string name="morphe_sb_submit_failed_unknown_error">Αδυναμία υποβολής τμήματος (κατάσταση: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Αδυναμία υποβολής τμήματος (κατάσταση: %1$s %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Αδυναμία υποβολής τμήματος. Όριο Συχνότητας (πάρα πολλά από τον ίδιο χρήστη ή την IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Αδυναμία υποβολής του τμήματος: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Δεν είναι δυνατή η υποβολή του τμήματος.
@@ -160,10 +160,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_succeeded">Το τμήμα υποβλήθηκε επιτυχώς</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock προσωρινά μη διαθέσιμο (καθυστέρηση API)</string>
-  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock προσωρινά μη διαθέσιμο (κατάσταση %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock προσωρινά μη διαθέσιμο (κατάσταση %s)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock προσωρινά μη διαθέσιμο</string>
   <string name="morphe_sb_vote_failed_timeout">Αδυναμία ψηφοφορίας για το τμήμα (χρονοκαθυστέρηση API)</string>
-  <string name="morphe_sb_vote_failed_unknown_error">Αδυναμία ψηφοφορίας για το τμήμα (κατάσταση: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Αδυναμία ψηφοφορίας για το τμήμα (κατάσταση: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Αδυναμία ψηφοφορίας για το τμήμα: %s</string>
   <string name="morphe_sb_vote_upvote">Θετική ψήφος</string>
   <string name="morphe_sb_vote_downvote">Αρνητική ψήφος</string>
@@ -172,7 +172,7 @@ Second \"item\" text"</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s έως %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">Επιλέξτε την κατηγορία του τμήματος</string>
-  <string name="morphe_sb_new_segment_disabled_category">Η κατηγορία είναι απενεργοποιημένη στις ρυθμίσεις. Ενεργοποιήστε την κατηγορία για υποβολή.</string>
+  <string name="morphe_sb_new_segment_disabled_category">Η κατηγορία είναι απενεργοποιημένη στις ρυθμίσεις. Ενεργοποιήστε την κατηγορία για υποβολή</string>
   <string name="morphe_sb_new_segment_title">Νέο τμήμα SponsorBlock</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Ορισμός %s ως αρχή ή τέλος ενός νέου τμήματος;</string>
   <string name="morphe_sb_new_segment_mark_start">Αρχή</string>
@@ -211,7 +211,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_sb_disabled">Το SponsorBlock είναι απενεργοποιημένο</string>
   <string name="morphe_sb_stats_username">Το όνομα χρήστη σας: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Πατήστε για να αλλάξετε το όνομα χρήστη σας</string>
-  <string name="morphe_sb_stats_username_change_unknown_error">Αδυναμία αλλαγής ονόματος χρήστη: Κατάσταση: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Αδυναμία αλλαγής ονόματος χρήστη: Κατάσταση: %1$s %2$s</string>
   <string name="morphe_sb_stats_username_changed">Το όνομα χρήστη άλλαξε επιτυχώς</string>
   <string name="morphe_sb_stats_reputation">Η φήμη σας είναι &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Δημιουργήσατε &lt;b&gt;%s&lt;/b&gt; τμήματα</string>

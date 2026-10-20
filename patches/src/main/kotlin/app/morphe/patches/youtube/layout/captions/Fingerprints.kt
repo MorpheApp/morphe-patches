@@ -74,6 +74,31 @@ internal object TimedTextUrlFingerprint : Fingerprint(
 )
 
 /**
+ * Timed text (srv3) `<s>` segment element handler. Resolves to the pen lookup method.
+ */
+internal object TimedTextSegmentElementFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/util/Deque;", "Lorg/xml/sax/Attributes;", "Ljava/lang/String;"),
+    filters = listOf(
+        string("p"),
+        methodCall(
+            smali = "Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+        // Pen lookup by id.
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("I"),
+            returnType = "L",
+            location = MatchAfterWithin(5)
+        ),
+        string("t"),
+        string("ac"),
+        string("<br/>")
+    )
+)
+
+/**
  * Resolves to the caption track class. 21.02+
  */
 internal object CaptionTrackIsDisableOptionFingerprint : Fingerprint(
@@ -198,6 +223,24 @@ internal object CaptionTracksManagerAutoTranslateTracksFingerprint : Fingerprint
     )
 )
 
+/** The track manager's default source, without subtitle preference or CC state overrides. */
+internal class CaptionTracksManagerDefaultSourceFingerprint(captionTrackType: String) : Fingerprint(
+    classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = captionTrackType,
+    parameters = listOf(),
+)
+
+/**
+ * Calls of the caption tracks manager auto-translate getter inside the subtitle manager.
+ */
+internal class AutoTranslateTracksCallFingerprint(autoTranslateTracksMethod: MethodReference) : Fingerprint(
+    classFingerprint = DefaultCaptionTrackFingerprint,
+    filters = listOf(
+        methodCall(reference = autoTranslateTracksMethod)
+    )
+)
+
 /**
  * Resolves to the caption track builder class.
  */
@@ -286,3 +329,20 @@ internal object SetSubtitleTrackFingerprint : Fingerprint(
     )
 )
 
+/** The final translation-count check before YouTube builds its own Auto-translate row. */
+internal object CaptionTracksManagerTranslationCountFingerprint : Fingerprint(
+    classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
+    parameters = listOf(),
+    returnType = "Ljava/util/List;",
+    filters = listOf(
+        methodCall(name = "size", parameters = listOf(), returnType = "I"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_LEZ, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, definingClass = "this", type = "Z",
+            location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        string("AUTO_TRANSLATE_CAPTIONS_OPTION", location = InstructionLocation.MatchAfterAnywhere()),
+        // Register holding the returned tracks list.
+        opcode(Opcode.RETURN_OBJECT, location = InstructionLocation.MatchAfterAnywhere())
+    )
+)

@@ -45,7 +45,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Известување на Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Вашата историја на гледање не се зачувува.&lt;br&gt;&lt;br&gt;Ова најверојатно е предизвикано од DNS блокирање на реклами или прокси мрежа.&lt;br&gt;&lt;br&gt;За да го решите ова, додајте &lt;b&gt;s.youtube.com&lt;/b&gt; на белата листа или исклучете ги сите DNS блокирања и прокси-а.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не покажувај повторно</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Лажирај видео стримови</string>
@@ -55,7 +54,6 @@ Second \"item\" text"</string>
 Ако сте корисник на YouTube Premium, можеби нема да ви треба оваа поставка."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не може да се преземат клиенти за стриминг</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_user_dialog_message">Исклучувањето на оваа поставка може да предизвика проблеми со репродукцијата.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Обидете се да го овозможите: Лажирај видео стримови &gt; Пријава во Android VR</string>
@@ -90,7 +88,6 @@ Second \"item\" text"</string>
 • Ќе треба повторно да се најавите ако ја промените вашата Google лозинка или го откажете овој уред од вашите поставки на Google."</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 е привремено недостапен (истекот на рокот на API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Истечен пријава во Android VR, обидете се да се најавите во VR повторно</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 е привремено недостапен (статус %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 е привремено недостапен</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Не може да се најавите во VR, одобрувањето на веб-страницата не е одобрено</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се најавите во VR: %s</string>

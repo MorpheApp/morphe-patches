@@ -63,6 +63,8 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
 
         if (requestCode == CustomFontFilePreference.READ_FONT_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             CustomFontFilePreference.handleActivityResult(getContext(), resultCode, data);
+        } else if (requestCode == DownloadLocationPreference.PICK_FOLDER_REQUEST_CODE) {
+            DownloadLocationPreference.handleActivityResult(resultCode, data);
         }
     }
 }

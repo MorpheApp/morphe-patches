@@ -13,8 +13,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
 import android.preference.Preference;
 import android.text.InputType;
@@ -115,7 +113,7 @@ public class LyricsTranscribeKeyPreference extends Preference {
         instructionParams.bottomMargin = Dim.dp12;
         content.addView(instruction, instructionParams);
 
-        final EditText keyInput = createThemedEditText(context);
+        final EditText keyInput = ThemedInput.create(context);
         keyInput.setHint("qlrc_...");
         keyInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         if (configured) {
@@ -202,19 +200,5 @@ public class LyricsTranscribeKeyPreference extends Preference {
             activeDialog = null;
             Logger.printDebug(() -> "Transcribe key dialog could not be shown", ex);
         }
-    }
-
-    private static EditText createThemedEditText(Context context) {
-        EditText editText = new EditText(context);
-        editText.setSingleLine(true);
-        editText.setTextSize(16);
-        editText.setTextColor(ThemeUtils.getAppForegroundColor());
-        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(10), null, null));
-        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
-        editText.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
-        editText.setBackground(background);
-        editText.setClipToOutline(true);
-        return editText;
     }
 }

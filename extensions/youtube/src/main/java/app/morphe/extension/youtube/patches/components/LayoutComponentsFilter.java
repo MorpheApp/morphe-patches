@@ -42,6 +42,7 @@ import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.FilterGroup.FilterGroupResult;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
+import app.morphe.extension.youtube.patches.FeedViewCountPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -1060,7 +1061,9 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static SpannableString modifyFeedSubtitleSpan(SpannableString original, float truncationDimension) {
+    public static SpannableString modifyFeedSubtitleSpan(SpannableString subtitle, float truncationDimension) {
+        // Before the view count is hidden, so the Feed view count patch can still find it.
+        SpannableString original = FeedViewCountPatch.onFeedSubtitleCreated(subtitle);
         try {
             final boolean hideViewCount = Settings.HIDE_VIEW_COUNT.get();
             final boolean hideUploadTime = Settings.HIDE_UPLOAD_TIME.get();

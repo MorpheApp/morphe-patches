@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Въведете име на пакет</string>
   <string name="morphe_external_downloader_other_item">Други</string>
   <string name="morphe_external_downloader_not_found_title">Приложението не е инсталирано</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s не е инсталиран. Моля, инсталирайте го.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s не е инсталиран. Моля, инсталирайте го</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Не може да бъде намерено инсталирано приложение с име на пакет: %s
 
 Проверете дали името на пакета е правилно и приложението е инсталирано"</string>
@@ -76,7 +76,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Историята ви на гледане не се запазва.&lt;br&gt;&lt;br&gt;Това най-вероятно е причинено от DNS блокиращ реклами или мрежов прокси.&lt;br&gt;&lt;br&gt;За да коригирате това, поставете &lt;b&gt;s.youtube в белия списък.com&lt;/b&gt; или изключете всички DNS блокери и проксита.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Историята ви на гледане не се запазва.&lt;br&gt;&lt;br&gt;Това най-вероятно е причинено от DNS блокиращ реклами или мрежов прокси.&lt;br&gt;&lt;br&gt;За да коригирате това, поставете &lt;b&gt;s.youtube в белия списък.com&lt;/b&gt; или изключете всички DNS блокери и проксита</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не показвай отново</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Подправяне на видео потоци</string>
@@ -91,7 +91,7 @@ Second \"item\" text"</string>
 
 Да направим ли %2$s клиент по подразбиране?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Превключване</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Изключването на тази настройка може да причини проблеми при възпроизвеждане.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Изключването на тази настройка може да причини проблеми при възпроизвеждане</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Пробвайте да вкл. Подправяне на видеопотокове &gt; Вход в Android VR</string>
@@ -126,7 +126,7 @@ Second \"item\" text"</string>
 • Ще трябва да се впишете отново, ако промените своя Google парола или изключите това устройство от Google настройки"</string>
   <string name="morphe_oauth2_connection_failure_timeout">Временно не е възможно OAuth2 (изтекло време на API).</string>
   <string name="morphe_oauth2_connection_failure_status_400">Входът за Android VR е изтекъл, опитайте се да влезете в VR отново</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 временно не е достъпен (статус %d).</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 временно не е достъпен (статус %s).</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 временно не е достъпен</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Не може да се впишете в VR, защото идентификацията на уебсайта не е одобрена</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се впишете в VR: %s</string>
@@ -189,7 +189,7 @@ Second \"item\" text"</string>
 
 Това може да помогне за идентифициране на компоненти при създаване на персонализирани филтри.
 
-Активирането на тази настройка обаче ще регистрира и някои потребителски данни, като например вашия IP адрес."</string>
+Активирането на тази настройка обаче ще регистрира и някои потребителски данни, като например вашия IP адрес"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Персонализиран филтър</string>
   <string name="morphe_custom_filter_screen_summary">Конфигурирайте персонализирани филтри, за да скриете всеки компонент</string>
@@ -230,11 +230,11 @@ Second \"item\" text"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Подменя версия на приложението</string>
   <string name="morphe_spoof_app_version_summary">Заблуждава сървъра, карайки го да мисли, че използвате по-стара версия на приложението, за да възстанови стари функции на потребителския интерфейс.</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Версията на приложението ще бъде подменена със стара версия.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Версията на приложението ще бъде пресметната като по-старa версия.
 
-Това ще промени външния вид и функциите на приложението, но могат да възникнат непредвидени странични ефекти.
+Това ще промени външния вид и функциите на приложението, но може да възникнат неизвестни странични ефекти.
 
-Ако по-късно бъде изключено, се препоръчва изчистване на данните на приложението, за да се предотвратят грешки в потребителския интерфейс."</string>
+Ако по-късно се изключи, препоръчително е да изчистите данните на приложението, за да предотвратите грешки в потребителския интерфейс"</string>
   <string name="morphe_spoof_app_version_target_title">Цел за подмяна на версията на приложението</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Честота на опресняване на приложението</string>
@@ -257,7 +257,7 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Временно недостъпни нехаресвания (изтече времето за отговор на API)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Нехаресванията не са достъпни (статус %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Дислајковете не са налични (статус %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Нехаресванията не са достъпни (лимит на клиентския API)</string>
   <string name="morphe_ryd_failure_generic">Нехаресванията не са достъпни (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -283,12 +283,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Нехаресванията са временно недостъпни – приложен клиентски лимит на API</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Извиквания на API за получаване на гласувания</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Не са направени извиквания към мрежата</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Направени са %d извиквания към мрежата</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Извършени са %s мрежови заявки</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Извиквания на API за получаване на гласувания, брой на неуспешните опити</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Не са отчетени неуспешни извиквания към мрежата</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d извиквания към мрежата завършиха неуспешно</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Време за изчакване на %s мрежови заявки</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Лимити на клиентския API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Не са отчетени лимити на клиентския API</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Лимитът на клиентския API беше достигнат %d пъти</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d милисекунди</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Срещнати са %s пъти ограничения за честота на клиента</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s милисекунди</string>
 </resources>

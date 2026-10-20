@@ -1,13 +1,11 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3750
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
-
-import android.content.Context;
 
 import androidx.annotation.Nullable;
 
@@ -20,19 +18,17 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
+import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 
 /**
- * What the two reading dictionaries have in common: where they are kept, how they are fetched,
- * and how the settings row hears about it. Nothing is built anywhere else, so a version moving
- * is all there is to a new dictionary, and the system may empty the cache at any time, so every
- * path here treats a missing file as ordinary.
+ * What the two reading dictionaries have in common: how they are fetched and how the settings row
+ * hears about it. Where they are kept is {@link LyricsDirectories}' business.
  */
 public final class RomanizationDict {
 
-    private static final String DIRECTORY_NAME = "morphe_lyrics_cjkromadict";
     private static final String DOWNLOAD_SUFFIX = ".part";
     private static final int CONNECT_TIMEOUT_MS = 15000;
     private static final int READ_TIMEOUT_MS = 30000;
@@ -51,18 +47,64 @@ public final class RomanizationDict {
     private RomanizationDict() {
     }
 
+    static final class Channel implements Listener {
+
+        private volatile Listener to;
+        private volatile String fileName;
+        private volatile int percent;
+        private volatile boolean building;
+
+        /** Takes over as the listener, and is told where the build is if one is going. */
+        void attach(Listener listener, boolean running) {
+            to = listener;
+            if (!running) return;
+            if (building) {
+                listener.onBuilding(percent);
+            } else if (fileName != null) {
+                listener.onDownload(fileName, percent);
+            }
+        }
+
+        /** Lets go, because holding the listener past the build would keep its page alive. */
+        void detach() {
+            to = null;
+            fileName = null;
+            building = false;
+        }
+
+        @Override
+        public void onDownload(String fileName, int percent) {
+            this.fileName = fileName;
+            this.percent = percent;
+            this.building = false;
+            Listener current = to;
+            if (current != null) current.onDownload(fileName, percent);
+        }
+
+        @Override
+        public void onBuilding(int percent) {
+            this.percent = percent;
+            this.building = true;
+            Listener current = to;
+            if (current != null) current.onBuilding(percent);
+        }
+
+        @Override
+        public void onReady(int entries) {
+            Listener current = to;
+            if (current != null) current.onReady(entries);
+        }
+
+        @Override
+        public void onFailed() {
+            Listener current = to;
+            if (current != null) current.onFailed();
+        }
+    }
+
     @Nullable
     static File directory() {
-        try {
-            Context context = Utils.getContext();
-            if (context == null) return null;
-            File directory = new File(context.getCacheDir(), DIRECTORY_NAME);
-            if (!directory.exists() && !directory.mkdirs()) return null;
-            return directory;
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not reach the romanization dictionary directory", ex);
-            return null;
-        }
+        return LyricsDirectories.directory(LyricsDirectories.ROMAN_DICT);
     }
 
     /** Fetches a file under a name that says it is unfinished, so an interrupted
@@ -85,6 +127,9 @@ public final class RomanizationDict {
             long expected = connection.getContentLength();
             long written = 0;
             int lastPercent = -1;
+
+            // A compressed response reports no length, so the file is named before the wait starts.
+            if (expected <= 0) listener.onDownload(reportedName, 0);
 
             try (InputStream in = new BufferedInputStream(connection.getInputStream(),
                     BUFFER_BYTES);
@@ -135,9 +180,9 @@ public final class RomanizationDict {
         File file = new File(directory, fileName);
         if (!file.isFile()) return null;
         try {
-            return new String(java.nio.file.Files.readAllBytes(file.toPath()),
-                    StandardCharsets.UTF_8);
+            return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
         } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not read the notice " + fileName, ex);
             return null;
         }
     }

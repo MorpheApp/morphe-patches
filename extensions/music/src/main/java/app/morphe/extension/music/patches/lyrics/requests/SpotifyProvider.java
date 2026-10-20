@@ -55,9 +55,7 @@ public final class SpotifyProvider implements LyricsProvider {
 
     private static final long MAX_RETRY_AFTER_MS = 30_000;
 
-    private static final String USER_AGENT =
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                    + "(KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36";
+    private static final String USER_AGENT = LyricsRequests.CHROME_DESKTOP_USER_AGENT;
 
     @Nullable
     private static volatile String cachedAccessToken;

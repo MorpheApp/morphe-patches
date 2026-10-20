@@ -34,7 +34,6 @@ public final class AppleMusicProvider implements LyricsProvider {
     private static final String BROWSE_URL = "https://music.apple.com";
     private static final String API_BASE = "https://amp-api.music.apple.com/v1/catalog/";
     private static final String LYRICALLY_BASE = "https://lyrics.paxsenix.org";
-    private static final String ITUNES_SEARCH = "https://itunes.apple.com/search";
 
     private static final String BROWSER_USER_AGENT =
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -683,7 +682,7 @@ public final class AppleMusicProvider implements LyricsProvider {
         HttpURLConnection connection = null;
         try {
             String term = LyricsRequests.encode(track.title() + " " + track.artist());
-            String url = ITUNES_SEARCH + "?term=" + term + "&entity=song&limit=5";
+            String url = LyricsRequests.ITUNES_SEARCH_URL + "?term=" + term + "&entity=song&limit=5";
             connection = LyricsRequests.openConnection(url);
             final int code = connection.getResponseCode();
             if (code != 200) {

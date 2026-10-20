@@ -19,6 +19,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_46_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.util.p0Register
 import java.lang.ref.WeakReference
 
 private val hooks = mutableSetOf<Hook>()
@@ -67,8 +68,8 @@ val playerResponseMethodHookPatch = bytecodePatch {
 
         // On some app targets the method has too many registers pushing the parameters past v15.
         // If needed, move the parameters to 4-bit registers, so they can be passed to the extension.
-        playerResponseMethodCopyRegisters = playerResponseMethod.implementation!!.registerCount -
-            playerResponseMethod.parameterTypes.size + parameterIsShortAndOpeningOrPlaying > 15
+        playerResponseMethodCopyRegisters =
+            playerResponseMethod.p0Register + parameterIsShortAndOpeningOrPlaying > 15
 
         if (playerResponseMethodCopyRegisters) {
             registerVideoId = "v0"

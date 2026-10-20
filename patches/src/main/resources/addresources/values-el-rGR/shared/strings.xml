@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Επαναφορά χρώματος</string>
   <string name="morphe_settings_color_invalid">Μη έγκυρο χρώμα</string>
   <string name="morphe_settings_restart_title">Απαιτείται επανεκκίνηση</string>
-  <string name="morphe_settings_restart_dialog_message">Επανεκκινήστε την εφαρμογή για να εφαρμοστεί αυτή η αλλαγή.</string>
+  <string name="morphe_settings_restart_dialog_message">Επανεκκινήστε την εφαρμογή για να εφαρμοστεί αυτή η αλλαγή</string>
   <string name="morphe_settings_restart">Επανεκκίνηση</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Εισαγωγή</string>
   <string name="morphe_settings_import_copy">Αντιγραφή</string>
   <string name="morphe_settings_import_reset">Επαναφέρθηκαν οι προεπιλεγμένες ρυθμίσεις του Morphe</string>
-  <string name="morphe_settings_import_success">Έγινε εισαγωγή %d ρυθμίσεων</string>
+  <string name="morphe_settings_import_success">Έγινε εισαγωγή %s ρυθμίσεων</string>
   <string name="morphe_settings_import_failure_parse">Η εισαγωγή απέτυχε: %s</string>
   <string name="morphe_settings_navigate_up">Μετάβαση προς τα πάνω</string>
   <string name="morphe_settings_search_hint">Ρυθμίσεις αναζήτησης</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_title">Εμφάνιση μηνυμάτων σφαλμάτων του Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Η απενεργοποίηση των μηνυμάτων σφαλμάτων κρύβει όλες τις ειδοποιήσεις σφαλμάτων που αφορούν το Morphe.
 
-Δε θα ειδοποιηθείτε για τυχόν απρόβλεπτα γεγονότα."</string>
+Δε θα ειδοποιηθείτε για τυχόν απρόβλεπτα γεγονότα"</string>
   <string name="morphe_debug_export_logs_title">Εξαγωγή αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
   <string name="morphe_debug_export_logs_summary">Εξαγωγή αρχείων καταγραφής εντοπισμού σφαλμάτων του Morphe</string>
   <string name="morphe_debug_export_logs_success">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων εξήχθησαν επιτυχώς</string>
@@ -179,31 +179,31 @@ Second \"item\" text"</string>
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Άνοιγμα των ρυθμίσεων MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">Το MicroG δεν είναι εγκατεστημένο. Εγκαταστήστε το.</string>
+  <string name="gms_core_toast_not_installed_message">Το MicroG δεν είναι εγκατεστημένο. Εγκαταστήστε το</string>
   <string name="gms_core_dialog_title">Απαιτείται ενέργεια</string>
-  <string name="gms_core_dialog_outdated_message">"Το MicroG v%1s σας είναι ξεπερασμένο και μπορεί να προκαλέσει προβλήματα.
+  <string name="gms_core_dialog_outdated_message">"Το MicroG v%1s είναι ξεπερασμένο και μπορεί να προκαλέσει προβλήματα.
 
-Παρακαλούμε ενημερώστε το MicroG στην τελευταία έκδοση v%2s."</string>
+Παρακαλώ ενημερώστε το MicroG στην τελευταία έκδοση v%2s"</string>
   <string name="gms_core_dialog_update_text">Ενημέρωση</string>
   <string name="gms_core_dialog_ignore_text">Αγνόηση</string>
   <string name="gms_core_dialog_conflict_message">"Το εγκατεστημένο MicroG δεν συνιστάται από το Morphe:
 
 %1s
 
-Πατήστε για να το απεγκαταστήσετε, στη συνέχεια ανοίξτε ξανά αυτήν την εφαρμογή και εγκαταστήστε το MicroG RE."</string>
+Πατήστε για απεγκατάσταση, στη συνέχεια επανεκκινήστε αυτή την εφαρμογή και εγκαταστήστε το MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Απεγκατάσταση</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"Το MicroG δεν έχει άδεια να εκτελείται στο παρασκήνιο.
 
 Ακολουθήστε τον οδηγό \"Don't kill my app\" για το τηλέφωνό σας και εφαρμόστε τις οδηγίες στο MicroG.
 
-Αυτό είναι απαραίτητο για τη λειτουργία της εφαρμογής."</string>
+Αυτό είναι απαραίτητο για τη λειτουργία της εφαρμογής"</string>
   <string name="gms_core_dialog_open_website_text">Άνοιγμα ιστοσελίδας</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Η απενεργοποίηση των βελτιστοποιήσεων μπαταρίας για το MicroG είναι απαραίτητη για να αποφευχθούν προβλήματα.
 
 Η απενεργοποίηση των βελτιστοποιήσεων μπαταρίας για το MicroG δε θα επηρεάσει αρνητικά την κατανάλωση ενέργειας.
 
-Πατήστε το κουμπί \"Συνέχεια\" και επιτρέψτε τις αλλαγές βελτιστοποίησης."</string>
+Πατήστε το κουμπί \"Συνέχεια\" και επιτρέψτε τις αλλαγές βελτιστοποίησης"</string>
   <string name="gms_core_dialog_continue_text">Συνέχεια</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Εμφανίζεται ο διάλογος βελτιστοποίησης μπαταρίας του MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Απενεργοποιώντας αυτό, θα αποκρυφτεί η προτροπή βελτιστοποίησης μπαταρίας MicroG.

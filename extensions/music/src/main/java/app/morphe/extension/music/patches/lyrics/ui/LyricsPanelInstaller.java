@@ -9,6 +9,7 @@
 package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.SystemClock;
@@ -59,9 +60,6 @@ public final class LyricsPanelInstaller {
 
     /** Collapses the many component callbacks of one panel opening into one attempt. */
     private static boolean installPending;
-
-    @Nullable
-    private static String lyricsTitle;
 
     private static WeakReference<LyricsPanelView> panelReference = new WeakReference<>(null);
 
@@ -352,15 +350,17 @@ public final class LyricsPanelInstaller {
      * @return Whether the engagement panel currently on screen is the lyrics panel.
      */
     public static boolean isLyricsPanelOpen() {
+        // Asked first because it is answered by identity, which does not move with the language;
+        // the heading is read only when there is no panel to go by.
+        if (isCurrentPanelLyrics()) {
+            return true;
+        }
         Activity activity = Utils.getActivity();
         if (activity == null) {
             return false;
         }
         TextView title = findForegroundTitle(activity.getWindow().getDecorView());
-        if (title != null) {
-            return isLyricsTitle(title);
-        }
-        return isCurrentPanelLyrics();
+        return title != null && isLyricsTitle(title);
     }
 
     public static boolean isOtherPanelForeground() {
@@ -383,14 +383,15 @@ public final class LyricsPanelInstaller {
     @Nullable
     private static ViewGroup findLyricsPanelContent(View root) {
         TextView title = findVisibleTitle(root);
-        if (title != null) {
+        if (title != null && isLyricsTitle(title)) {
             // Heading and content share a panel, so the container comes from the heading's
             // own panel rather than a global lookup.
-            return isLyricsTitle(title) ? findPanelContent(title) : null;
+            return findPanelContent(title);
         }
 
-        // Without a heading there is nothing to look up, so the container on screen is
-        // taken as is, once the app agrees the lyrics panel is the one in it.
+        // A heading that did not match says nothing about which panel this is, so it must not end
+        // the search: the app's own bookkeeping still says which panel it put in the container,
+        // and that answer is by identity rather than by text, so it holds in any language.
         if (!isCurrentPanelLyrics()) {
             return null;
         }
@@ -410,7 +411,7 @@ public final class LyricsPanelInstaller {
         if (title == null) {
             return false;
         }
-        String expectedTitle = lyricsTitle();
+        String expectedTitle = lyricsTitle(title.getContext());
         return expectedTitle != null
                 && expectedTitle.equalsIgnoreCase(String.valueOf(title.getText()));
     }
@@ -500,16 +501,30 @@ public final class LyricsPanelInstaller {
         return result;
     }
 
+    /**
+     * The heading the app gives the lyrics panel, in the language on screen.
+     *
+     * <p>Read through the resources that drew it rather than through {@link ResourceUtils}: the app
+     * can be set to a language of its own, and a string then comes back in whichever language its
+     * context was configured with, which is not always the one being drawn in. Not cached across
+     * calls either, since a language change would leave a stale answer behind.
+     */
     @Nullable
-    private static String lyricsTitle() {
-        if (lyricsTitle == null) {
-            if (ResourceUtils.getStringIdentifier(LYRICS_TITLE_RESOURCE) == 0) {
-                Logger.printException(() -> "App is missing: " + LYRICS_TITLE_RESOURCE);
-                return null;
-            }
-            lyricsTitle = ResourceUtils.getString(LYRICS_TITLE_RESOURCE);
+    private static String lyricsTitle(@Nullable Context context) {
+        final int id = ResourceUtils.getStringIdentifier(LYRICS_TITLE_RESOURCE);
+        if (id == 0) {
+            Logger.printException(() -> "App is missing: " + LYRICS_TITLE_RESOURCE);
+            return null;
         }
-        return lyricsTitle;
+        if (context == null) {
+            return ResourceUtils.getString(LYRICS_TITLE_RESOURCE);
+        }
+        try {
+            return context.getResources().getString(id);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not read " + LYRICS_TITLE_RESOURCE, ex);
+            return null;
+        }
     }
 
     private static final long[] ENABLE_BUTTON_DELAYS_MS = {0, 150, 500, 1000, 2000};
@@ -540,7 +555,7 @@ public final class LyricsPanelInstaller {
         if (activity == null) {
             return;
         }
-        String title = lyricsTitle();
+        String title = lyricsTitle(activity);
         if (title == null) {
             return;
         }

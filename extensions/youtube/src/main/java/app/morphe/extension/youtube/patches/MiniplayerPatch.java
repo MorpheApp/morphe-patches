@@ -315,8 +315,8 @@ public final class MiniplayerPatch {
     /**
      * Injection point.
      */
-    public static boolean disableResumingStartupMiniPlayer(boolean original) {
-        return !Settings.MINIPLAYER_DISABLE_RESUMING.get() && original;
+    public static boolean disableResumingStartupMiniPlayer() {
+        return Settings.MINIPLAYER_DISABLE_RESUMING.get();
     }
 
     /**

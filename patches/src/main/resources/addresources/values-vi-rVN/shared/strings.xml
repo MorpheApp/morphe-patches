@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Đặt lại màu</string>
   <string name="morphe_settings_color_invalid">Màu không hợp lệ</string>
   <string name="morphe_settings_restart_title">Yêu cầu khởi động lại</string>
-  <string name="morphe_settings_restart_dialog_message">Khởi động lại ứng dụng để thay đổi này có hiệu lực.</string>
+  <string name="morphe_settings_restart_dialog_message">Khởi động lại ứng dụng để thay đổi này có hiệu lực</string>
   <string name="morphe_settings_restart">Khởi động lại</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Nhập</string>
   <string name="morphe_settings_import_copy">Sao chép</string>
   <string name="morphe_settings_import_reset">Đặt lại cài đặt Morphe về mặc định</string>
-  <string name="morphe_settings_import_success">Đã nhập %d cài đặt</string>
+  <string name="morphe_settings_import_success">Đã nhập %s cài đặt</string>
   <string name="morphe_settings_import_failure_parse">Không thể nhập: %s</string>
   <string name="morphe_settings_navigate_up">Điều hướng lên</string>
   <string name="morphe_settings_search_hint">Tìm kiếm cài đặt</string>
@@ -103,7 +103,7 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_debug_toast_on_error_title">Hiện thông báo ngắn về lỗi Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Tắt thông báo lỗi sẽ ẩn mọi thông báo lỗi từ Morphe.
 
-Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
+Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ"</string>
   <string name="morphe_debug_export_logs_title">Nhật ký gỡ lỗi</string>
   <string name="morphe_debug_export_logs_summary">Xuất nhật ký gỡ lỗi của Morphe</string>
   <string name="morphe_debug_export_logs_success">Xuất bản nhật ký gỡ lỗi thành công</string>
@@ -179,23 +179,23 @@ Hành vi đã biến mất trước đó trong quá trình tìm kiếm, vì vậ
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Mở cài đặt microG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">microG chưa được cài đặt. Hãy cài đặt nó đi.</string>
+  <string name="gms_core_toast_not_installed_message">microG chưa được cài đặt. Hãy cài đặt nó đi</string>
   <string name="gms_core_dialog_title">Yêu cầu thực hiện</string>
   <string name="gms_core_dialog_outdated_message">"MicroG v%1s của bạn đã lỗi thời và có thể gây ra sự cố.
 
-Vui lòng cập nhật MicroG lên phiên bản mới nhất v%2s."</string>
+Vui lòng cập nhật MicroG lên phiên bản mới nhất v%2s"</string>
   <string name="gms_core_dialog_update_text">Cập nhật</string>
   <string name="gms_core_dialog_ignore_text">Bỏ qua</string>
   <string name="gms_core_dialog_conflict_message">"MicroG đã cài đặt không được Morphe khuyến nghị:
 
-<b>%1s</b>
+%1s
 
-Nhấn để gỡ cài đặt nó, sau đó mở lại ứng dụng này và cài đặt MicroG RE."</string>
+Nhấn để gỡ cài đặt, sau đó mở lại ứng dụng này và cài đặt MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Gỡ</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG không có quyền chạy nền.\n\nHãy làm theo hướng dẫn \"Don\"t kill my app\" dành cho điện thoại của bạn và áp dụng các bước đó cho cài đặt microG.\n\nĐiều này cần thiết cho ứng dụng hoạt động."</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG không có quyền chạy nền.\n\nHãy làm theo hướng dẫn \"Don\"t kill my app\" dành cho điện thoại của bạn và áp dụng các bước đó cho cài đặt microG.\n\nĐiều này cần thiết cho ứng dụng hoạt động"</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa."</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa"</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Hiện hộp thoại tối ưu hóa pin MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tắt tùy chọn này sẽ ẩn thông báo tối ưu hoá pin cho MicroG.

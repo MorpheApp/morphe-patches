@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Cuir isteach ainm an phacáiste</string>
   <string name="morphe_external_downloader_other_item">Eile</string>
   <string name="morphe_external_downloader_not_found_title">Níl an aip suiteáilte</string>
-  <string name="morphe_external_downloader_not_installed_warning">Níl %s suiteáilte. Suiteáil é le do thoil.</string>
+  <string name="morphe_external_downloader_not_installed_warning">Níl %s suiteáilte. Suiteáil é, le do thoil.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Ní féidir an aip suiteáilte a aimsiú le hainm pacáiste: %s
 
 Seiceáil go bhfuil an t-ainm pacáiste ceart agus go bhfuil an aip suiteáilte"</string>
@@ -84,7 +84,7 @@ Chun an deilbhín a athrú i ngach áit, déan an paisteáil arís agus athraigh
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Fógra Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is dóichí gur bacadóir fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt;Chun seo a shocrú, cuir &lt;b&gt;s.youtube.com&lt;/b&gt; ar an liosta bán nó múch gach bacadóir agus seachfhreastalaí DNS.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair féachana á sábháil.&lt;br&gt;&lt;br&gt;Is dócha gurb é bacaire fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt;Chun é seo a réiteach, cuir &lt;b&gt;s.youtube.com&lt;/b&gt; ar an liosta bán, nó díchumasaigh gach bacaire DNS agus seachfhreastalaí.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ná taispeáin arís</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Sruthanna físe bréige</string>
@@ -134,7 +134,7 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
 • Beidh ort síniú isteach arís má athraíonn tú do phasfhocal Google nó má dhíchláraíonn tú an gléas seo ó do shocruithe Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">Níl OAuth2 ar fáil go sealadach (tá an t-am caite ag an API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Tá an síniú isteach i Android VR imithe in éag, déan iarracht síniú isteach i VR arís</string>
-  <string name="morphe_oauth2_connection_failure_status">Níl OAuth2 ar fáil go sealadach (stádas %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">Níl OAuth2 ar fáil go sealadach (stádas %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Níl OAuth2 ar fáil go sealadach</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Ní féidir síniú isteach i VR, níor ceadaíodh fíordheimhniú an tsuímh ghréasáin</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ní féidir síniú isteach i VR: %s</string>
@@ -238,11 +238,11 @@ Cuir 'Sruthanna físeáin a aithris' ar siúl chun athsheinm a dheisiú"</string
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Leagan aip bréige</string>
   <string name="morphe_spoof_app_version_summary">Meallann sé an freastalaí le go gceapfá go bhfuil tú ag úsáid seanleagan den aip chun gnéithe oidhreachta den chomhéadan úsáideora a athbhunú.</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Déanfar leagan den aip a fhalsú go leagan níos sine.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Déanfar leagan an aip a bhréagshocrú chun leagan níos sine a thaispeáint.
 
-Athróidh sé seo cuma agus gnéithe na haipe, ach d'fhéadfadh fo-iarsmaí anaithnide tarlú.
+Athróidh sé seo cuma agus gnéithe an aip, ach d’fhéadfadh fo-iarmhairtí anaithnide teacht chun cinn.
 
-Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtanna comhéadain úsáideora a chosc."</string>
+Má dhéantar é a mhúchadh níos déanaí, moltar sonraí an aip a ghlanadh chun fadhbanna leis an gcomhéadan úsáideora a sheachaint."</string>
   <string name="morphe_spoof_app_version_target_title">Sprioc leagan aip bréige</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Ráta athnuachana aipeanna</string>
@@ -265,7 +265,7 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Níl na \"dí-mhaith\" ar fáil go sealadach (tá an t-am caite ag an API)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Níl na rudaí nach maith liom ar fáil (stádas %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Níl an rogha \'ní maith liom\' ar fáil (stádas %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Níl na \"dí-mhaith\" ar fáil (teorainn API an chliaint)</string>
   <string name="morphe_ryd_failure_generic">Níl na \"dí-mhaith\" ar fáil (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Seoltar ID an fhíseáin a fhéachann tú chuig API Return YouTube Dislike, agus
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Níl na \"dí-mhaith\" ar fáil faoi láthair - Teorainn ráta API Cliant i bhfeidhm</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Vótaí aisghabhála API, líon na nglaonna</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Níor rinneadh aon ghlaonna líonra</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d glaonna líonra déanta</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Rinneadh %s glao líonra</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Vótaí aisghabhála API, líon na sosanna ama</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Níl aon ghlaonna líonra imithe in éag</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d glaonna líonra imithe thar an am</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Rith an t-am amach do ghlaonna líonra %s</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Teorainneacha ráta cliant API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Níor aimsíodh aon teorainneacha ráta cliant</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Teorainn ráta cliant a bhíonn le fáil %d uair</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d milleasoicind</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Sroicheadh ​​an teorainn ráta don chliant %s uair</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milleasoicind</string>
 </resources>

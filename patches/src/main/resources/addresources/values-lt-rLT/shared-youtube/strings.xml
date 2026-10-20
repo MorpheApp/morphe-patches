@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Įveskite paketo pavadinimą</string>
   <string name="morphe_external_downloader_other_item">Kita</string>
   <string name="morphe_external_downloader_not_found_title">Programa neįdiegta</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s neįdiegta. Įdiekite ją.</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s nėra įdiegta. Prašome ją įdiegti</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Nepavyko rasti įdiegtos programos su paketo pavadinimu: %s
 
 Patikrinkite, ar paketo pavadinimas teisingas ir ar programa įdiegta"</string>
@@ -84,7 +84,7 @@ Norėdami pakeisti piktogramą visur, įdiekite pataisą iš naujo ir pakeiskite
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe paleisti</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe pranešimas</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Jūsų žiūrėjimo istorija nėra išsaugoma.&lt;br&gt;&lt;br&gt;Tai greičiausiai sukelia DNS reklamų blokavimo priemonė arba tinklo įgaliotinis.&lt;br&gt;&lt;br&gt;Norėdami tai ištaisyti, įtraukite &lt;b&gt;s.youtube.com&lt;/b&gt; į baltąjį sąrašą arba išjunkite visas DNS blokavimo priemones ir įgaliotinius.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Jūsų žiūrėjimo istorija nesaugoma.&lt;br&gt;&lt;br&gt;Tai greičiausiai sukelta DNS reklamų blokatoriaus arba tinklo proxy.&lt;br&gt;&lt;br&gt;Norėdami tai sutvarkyti, pridėkite &lt;b&gt;s.youtube.com&lt;/b&gt; į baltąjį sąrašą arba išjunkite visus DNS blokatorius ir proxy</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Daugiau nerodyti</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Maskuoti vaizdo įrašų srautus</string>
@@ -99,7 +99,7 @@ Jei esate „YouTube Premium“ vartotojas, šis nustatymas gali būti nereikali
 
 Padaryti %2$s numatytuoju klientu?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Perjungti</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Išjungus šį nustatymą gali kilti atkūrimo problemų.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Šio nustatymo išjungimas gali cause atkūrimo problemų</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bandykite įjungti: Maskuoti vaizdo įrašų srautus &gt; Prisijungti prie Android VR</string>
@@ -134,7 +134,7 @@ Norėdami prisijungti, žemiau bakstelėkite „Tęsti“"</string>
 • Turėsite prisijungti iš naujo, jei pakeisite „Google“ slaptažodį arba išregistruosite šį įrenginį „Google“ nustatymuose"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 laikinai nepasiekiamas (API laikas baigėsi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR prisijungimas baigė galioti. Bandykite prisijungti prie VR dar kartą</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 laikinai nepasiekiamas (būsena %d)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 laikinai nepasiekiamas (būsena %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 laikinai nepasiekiamas</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nepavyko prisijungti prie VR, nes svetainės autentifikavimas nebuvo patvirtintas</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nepavyksta prisijungti prie VR: %s</string>
@@ -193,11 +193,11 @@ Norėdami prisijungti, žemiau bakstelėkite „Tęsti“"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Derinimo žurnalo protobuf</string>
   <string name="morphe_debug_protobuffer_summary">Prideda papildomos registravimo informacijos, kad kūrėjai galėtų nustatyti programos komponentus</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Įjungus šį nustatymą, bus registruojami papildomi maketo duomenys, įskaitant kai kurių sąsajos komponentų tekstą ekrane.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Įgalinus šį nustatymą bus fiksuojami papildomi išdėstymo duomenys, įskaitant ekrane rodomą tekstą kai kuriems UI komponentams.
 
-Tai gali padėti nustatyti komponentus kuriant tinkintus filtrus.
+Tai gali padėti identifikuoti komponentus kuriant individualius filtrus.
 
-Tačiau įjungus tai taip pat bus registruojami kai kurie vartotojo duomenys, pvz., jūsų IP adresas."</string>
+Tačiau įgalinus šį nustatymą taip pat bus fiksuojami kai kurie vartotojo duomenys, pvz., jūsų IP adresas"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Tinkintas filtras</string>
   <string name="morphe_custom_filter_screen_summary">Konfigūruokite tinkintus filtrus, kad paslėptumėte bet kurį komponentą</string>
@@ -238,11 +238,11 @@ Bakstelėkite čia, kad atsisiųstumėte PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Maskuoti programos versiją</string>
   <string name="morphe_spoof_app_version_summary">Apgauna serverį, kad jis manytų, jog naudojate senesnę programos versiją, siekiant atkurti senosios sąsajos funkcijas</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Programos versija bus maskuojama į senesnę versiją.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Programos versija bus apgaunama kaip senesnė versija.
 
-Tai pakeis programos išvaizdą ir funkcijas, tačiau gali pasireikšti nežinomų šalutinių poveikių.
+Tai pakeis programos išvaizdą ir funkcijas, tačiau gali atsirasti nežinomų šalutinių poveikių.
 
-Jei vėliau tai išjungsite, rekomenduojama išvalyti programos duomenis, kad būtų išvengta sąsajos klaidų."</string>
+Jei vėliau išjungiate, rekomenduojama išvalyti programos duomenis, kad būtų išvengta UI klaidų"</string>
   <string name="morphe_spoof_app_version_target_title">Programos versijos maskavimo taikinys</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Programos atnaujinimo dažnis</string>
@@ -265,7 +265,7 @@ Jei vėliau tai išjungsite, rekomenduojama išvalyti programos duomenis, kad b�
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">„Nepatinka“ laikinai nepasiekiami (API laikas baigėsi)</string>
-  <string name="morphe_ryd_failure_connection_status_code">„Nepatinka“ nepasiekiami (būsena %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Nepatinka nėra pasiekiami (būsena %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">„Nepatinka“ nepasiekiami (kliento API riba)</string>
   <string name="morphe_ryd_failure_generic">„Nepatinka“ nepasiekiami (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -291,12 +291,12 @@ Jei vėliau tai išjungsite, rekomenduojama išvalyti programos duomenis, kad b�
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">„Nepatinka“ laikinai nepasiekiami – galioja kliento API užklausų limitas</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API balsų gavimo užklausų skaičius</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Neatlikta jokių tinklo užklausų</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Tinklo užklausų skaičius: %d</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Atlikta %s tinklo užklausų</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API balsų gavimo laiko pabaigų skaičius</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Nė vienos tinklo užklausos laikas nesibaigė</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Tinklo užklausų, kurių laikas baigėsi: %d</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s tinklo užklausų baigėsi laiko limitas</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Kliento API užklausų limitai</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nepasitaikė jokių kliento užklausų limitų</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Pasitaikė kliento užklausų limitų: %d</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d ms</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Susidurta su kliento ribotimo apribojimu %s kartus</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milisekundžių</string>
 </resources>

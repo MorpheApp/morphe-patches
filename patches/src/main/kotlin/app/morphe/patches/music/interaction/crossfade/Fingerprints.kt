@@ -13,6 +13,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val EXO_PLAYER_TYPE = "Landroidx/media3/exoplayer/ExoPlayer;"
+
 internal object StopVideoFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf("stopVideo", "MedialibPlayer.stopVideo")
@@ -47,7 +49,7 @@ internal object PlayVideoFingerprint : Fingerprint(
 internal object ExoPlayerImplFingerprint : Fingerprint(
     strings = listOf("ExoPlayerImpl"),
     custom = { _, classDef ->
-        classDef.interfaces.contains("Landroidx/media3/exoplayer/ExoPlayer;")
+        classDef.interfaces.contains(EXO_PLAYER_TYPE)
     }
 )
 

@@ -21,6 +21,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -49,6 +50,8 @@ public final class OpenAIClient {
             body.put("messages", new JSONArray().put(
                     new JSONObject().put("role", "user").put("content", "hi")));
             body.put("max_tokens", 1);
+            // Asked what the feature will ask it, so a body the feature needs is one the endpoint accepts.
+            applyExtraBody(body);
 
             conn = (HttpURLConnection) new URL(baseUrl.trim()).openConnection();
             conn.setRequestMethod("POST");
@@ -217,6 +220,44 @@ public final class OpenAIClient {
         return "";
     }
 
+    /** An array or a bare value has no keys to lay over a body, so neither counts as one. */
+    public static boolean isValidExtraBody(@Nullable String body) {
+        if (body == null) return true;
+        final String trimmed = body.trim();
+        if (trimmed.isEmpty()) return true;
+        try {
+            new JSONObject(trimmed);
+            return true;
+        } catch (JSONException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Two keys stay ours: the model, which has a setting the endpoint was validated against, and the
+     * messages, whose length decides where the answer is cut into lines.
+     */
+    private static void applyExtraBody(JSONObject body) {
+        final String extra = Settings.LYRICS_AI_EXTRA_BODY.get();
+        if (extra == null) return;
+        final String trimmed = extra.trim();
+        if (trimmed.isEmpty()) return;
+
+        try {
+            final JSONObject overlay = new JSONObject(trimmed);
+            final Iterator<String> keys = overlay.keys();
+            while (keys.hasNext()) {
+                final String key = keys.next();
+                if (key.equals("model") || key.equals("messages")) continue;
+                // get rather than opt, so an explicit null is sent as the null it was written as.
+                body.put(key, overlay.get(key));
+            }
+        } catch (JSONException e) {
+            // A body that will not parse is left out rather than allowed to take the feature down with it.
+            Logger.printDebug(() -> "The stored extra request body is not valid JSON");
+        }
+    }
+
     private OpenAIClient() {
     }
 
@@ -236,6 +277,9 @@ public final class OpenAIClient {
                     .put("role", "user")
                     .put("content", userPrompt));
             body.put("messages", messages);
+
+            // Laid over last, so what the user wrote wins even where it disagrees with the effort.
+            applyExtraBody(body);
 
             byte[] payload = body.toString().getBytes(StandardCharsets.UTF_8);
 

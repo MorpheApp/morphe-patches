@@ -24,13 +24,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Resetuj boju</string>
   <string name="morphe_settings_color_invalid">Nevažeća boja</string>
   <string name="morphe_settings_restart_title">Potrebno je restartovanje</string>
-  <string name="morphe_settings_restart_dialog_message">Restartujte aplikaciju da bi ova promena stupila na snagu.</string>
+  <string name="morphe_settings_restart_dialog_message">Restartujte aplikaciju da bi ova promena stupila na snagu</string>
   <string name="morphe_settings_restart">Restartuj</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Uvoz</string>
   <string name="morphe_settings_import_copy">Kopiraj</string>
   <string name="morphe_settings_import_reset">Podešavanja Morphea su vraćena na podrazumevane vrednosti</string>
-  <string name="morphe_settings_import_success">Uvezeno %d podešavanja</string>
+  <string name="morphe_settings_import_success">Uvezeno %s podešavanja</string>
   <string name="morphe_settings_import_failure_parse">Neuspešan uvoz: %s</string>
   <string name="morphe_settings_navigate_up">Idi gore</string>
   <string name="morphe_settings_search_hint">Pretraži podešavanja</string>
@@ -103,7 +103,7 @@ Da biste preveli nove jezike ili poboljšali postojeće prevode, posetite morphe
   <string name="morphe_debug_toast_on_error_title">Prikaži iskačuće obaveštenje pri grešci s Morpheom</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Isključivanje iskačućih obaveštenja o greškama sakriva sve obaveštenja o greškama u Morpheu.
 
-Nećete biti obavešteni ni o kakvim neočekivanim događajima."</string>
+Nećete biti obavešteni ni o kakvim neočekivanim događajima"</string>
   <string name="morphe_debug_export_logs_title">Izvezi evidencije otklanjanja grešaka</string>
   <string name="morphe_debug_export_logs_summary">Izvezi beleške o ispravljanju grešaka Morphe</string>
   <string name="morphe_debug_export_logs_success">Beleške o ispravljanju grešaka uspešno izvežene</string>
@@ -179,31 +179,31 @@ Ponašanje je nestalo ranije tokom pretrage, pa možda postoji više zastavica i
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvori postavke MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG nije instalirana. Instalirajte je.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG nije instaliran. Instalirajte ga</string>
   <string name="gms_core_dialog_title">Neophodna radnja</string>
-  <string name="gms_core_dialog_outdated_message">"Vaš MicroG v%1s je zastareo i može da izazove probleme.
+  <string name="gms_core_dialog_outdated_message">"Vaš MicroG v%1s je zastareo i može izazvati probleme.
 
-Ažurirajte MicroG na najnoviju verziju v%2s."</string>
+Molimo vas ažurirajte MicroG na najnoviju verziju v%2s"</string>
   <string name="gms_core_dialog_update_text">Ažuriraj</string>
   <string name="gms_core_dialog_ignore_text">Ignoriši</string>
-  <string name="gms_core_dialog_conflict_message">"Instalirani MicroG ne preporučuje Morphe:
+  <string name="gms_core_dialog_conflict_message">"Instalirani MicroG nije preporučen od strane Morphe:
 
 %1s
 
-Dodirnite da ga deinstalirate, zatim ponovo otvorite ovu aplikaciju i instalirajte MicroG RE."</string>
+Dodirnite da ga uklonite, zatim ponovo otvorite ovu aplikaciju i instalirajte MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Deinstaliraj</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nema dozvolu za rad u pozadini.
 
-Pratite uputstvo \"Don't kill my app\" za va⁤ va⁤ telefon i primenite uputstva na va⁤ va⁤ MicroG instalaciju.
+Pratite vodič „Don't kill my app” za vaš telefon i primenite uputstva na vašu MicroG instalaciju.
 
-Ovo je neophodno za rad aplikacije."</string>
+Ovo je neophodno da bi aplikacija radila"</string>
   <string name="gms_core_dialog_open_website_text">Otvori veb-sajt</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimizacije baterije za MicroG moraju biti onemogućene da bi se sprečili problemi.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimizacije baterije za MicroG moraju biti onemogućene kako bi se sprečili problemi.
 
 Onemogućavanje optimizacije baterije za MicroG neće negativno uticati na potrošnju baterije.
 
-Dodirnite dugme \"Nastavi\" i dozvolite promene optimizacije."</string>
+Dodirnite dugme „Nastavi” i dozvolite promene optimizacije"</string>
   <string name="gms_core_dialog_continue_text">Nastavi</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Prikaži dijalog za optimizaciju baterije za MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеослабљивање ове опције ће скрити промпт за оптимизацију батерије за MicroG.

@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3750
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -16,28 +16,28 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import app.morphe.extension.shared.Logger;
+
 /**
- * The reading of a Japanese word, held in a file rather than in the heap. There are well over a
- * million of them and a lyric touches a few hundred, so the table is a hash table on disk and
- * opening it maps the file, leaving the paging to the kernel.
+ * The reading of a word, held in a file rather than in the heap. There are hundreds of thousands
+ * of them per language and a lyric touches a few hundred, so the table is a hash table on disk
+ * and opening it maps the file, leaving the paging to the kernel.
  *
  * <p>A reading is stored as one byte per kana, with an escape for anything outside the katakana
  * block; three bytes per kana would have cost twenty megabytes more.
  * <p>The file layout, all integers little endian:
  * <pre>
- *   0   magic, eight bytes, "MJPW0001"
+ *   0   magic, eight bytes, which say what dictionary wrote the file
  *   8   the dictionary release the table was built from
  *   12  slot count
  *   16  entry count
  *   20  the offset the records start at
  *   24  how many bytes of records there are
- *   32  slots: one int per slot, an offset plus one, or zero when the slot is empty
+ *   32  slots: one int per slot, the offset of a record plus one, or zero when the slot is empty
  *   ..  records: surface length, surface bytes, reading length, reading bytes
  * </pre>
  */
-public final class JapaneseReadingTable implements AutoCloseable {
-
-    static final byte[] MAGIC = {'M', 'J', 'P', 'W', '0', '0', '0', '1'};
+public final class WordReadingTable implements AutoCloseable {
 
     static final int MAGIC_OFFSET = 0;
     static final int VERSION_OFFSET = 8;
@@ -47,42 +47,44 @@ public final class JapaneseReadingTable implements AutoCloseable {
     static final int RECORDS_LENGTH_FIELD = 24;
     static final int HEADER_BYTES = 32;
 
-    /** Room to spare, since streaming the source does not say how many entries there
-     * will be. */
-    static final int SLOT_COUNT = 1 << 22;
-    private static final int SLOT_MASK = SLOT_COUNT - 1;
-
-    static final int MAX_FILE_BYTES = 96 << 20;
+    // Clearing what the largest table asks for, since passing either ceiling drops the entries
+    // that no longer fit rather than failing, and they would only be missed later.
+    static final int MAX_FILE_BYTES = 128 << 20;
+    private static final int MAX_SLOT_COUNT = 1 << 23;
 
     public static final int MAX_WORD_LENGTH = 12;
 
     private final MappedByteBuffer buffer;
     private final int recordsOffset;
     private final int entryCount;
+    private final int slotMask;
 
-    private JapaneseReadingTable(MappedByteBuffer buffer) {
+    private WordReadingTable(MappedByteBuffer buffer, int slotCount) {
         this.buffer = buffer;
         this.recordsOffset = buffer.getInt(RECORDS_OFFSET_FIELD);
         this.entryCount = buffer.getInt(ENTRY_COUNT_OFFSET);
+        this.slotMask = slotCount - 1;
     }
 
-    /** Returns null when the file is missing or is not a table this build can read. */
-    public static JapaneseReadingTable open(Path file) {
+    /** Null when the file is missing, oversized, or is not a table this build can read. */
+    public static WordReadingTable open(Path file, byte[] magic) {
         try {
             long size = Files.size(file);
-            if (size < HEADER_BYTES) return null;
+            if (size < HEADER_BYTES || size > MAX_FILE_BYTES) return null;
 
             try (RandomAccessFile handle = new RandomAccessFile(file.toFile(), "r");
                  FileChannel channel = handle.getChannel()) {
                 MappedByteBuffer mapped = channel.map(FileChannel.MapMode.READ_ONLY, 0, size);
                 mapped.order(ByteOrder.LITTLE_ENDIAN);
-                for (int i = 0; i < MAGIC.length; i++) {
-                    if (mapped.get(MAGIC_OFFSET + i) != MAGIC[i]) return null;
+                for (int i = 0; i < magic.length; i++) {
+                    if (mapped.get(MAGIC_OFFSET + i) != magic[i]) return null;
                 }
-                if (mapped.getInt(SLOT_COUNT_OFFSET) != SLOT_COUNT) return null;
-                return new JapaneseReadingTable(mapped);
+                int slots = mapped.getInt(SLOT_COUNT_OFFSET);
+                if (slots <= 0 || slots > MAX_SLOT_COUNT || Integer.bitCount(slots) != 1) return null;
+                return new WordReadingTable(mapped, slots);
             }
         } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not open the reading table " + file, ex);
             return null;
         }
     }
@@ -90,9 +92,9 @@ public final class JapaneseReadingTable implements AutoCloseable {
     /** The reading in katakana, empty for a word listed in kana, or null when absent. */
     public String reading(String surface) {
         byte[] query = surface.getBytes(StandardCharsets.UTF_8);
-        int slot = hash(query) & SLOT_MASK;
+        int slot = hash(query) & slotMask;
 
-        for (int probe = 0; probe < SLOT_COUNT; probe++) {
+        for (int probe = 0; probe <= slotMask; probe++) {
             int offset = buffer.getInt(HEADER_BYTES + (slot << 2));
             if (offset == 0) return null;
 
@@ -102,7 +104,7 @@ public final class JapaneseReadingTable implements AutoCloseable {
                 int readingLength = buffer.get(record + 1 + surfaceLength) & 0xFF;
                 return decode(record + 2 + surfaceLength, readingLength);
             }
-            slot = (slot + 1) & SLOT_MASK;
+            slot = (slot + 1) & slotMask;
         }
         return null;
     }
@@ -157,23 +159,29 @@ public final class JapaneseReadingTable implements AutoCloseable {
         private final Path file;
         private final MappedByteBuffer buffer;
         private final int recordsOffset;
+        private final int maxFileBytes;
+        private final int slotMask;
         private int recordsLength;
         private int entryCount;
 
-        public Builder(Path file) throws IOException {
+        public Builder(Path file, byte[] magic, int slotCount) throws IOException {
             this.file = file;
+            // Room to spare, since streaming the source does not say how many entries there will be.
+            this.maxFileBytes = Math.min(MAX_FILE_BYTES,
+                    WordReadingTable.HEADER_BYTES + (slotCount << 2) + (96 << 20));
             Files.deleteIfExists(file);
             try (RandomAccessFile handle = new RandomAccessFile(file.toFile(), "rw");
                  FileChannel channel = handle.getChannel()) {
-                channel.truncate(MAX_FILE_BYTES);
-                buffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, MAX_FILE_BYTES);
+                channel.truncate(maxFileBytes);
+                buffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, maxFileBytes);
                 buffer.order(ByteOrder.LITTLE_ENDIAN);
             }
-            recordsOffset = HEADER_BYTES + (SLOT_COUNT << 2);
-            for (int i = 0; i < MAGIC.length; i++) {
-                buffer.put(MAGIC_OFFSET + i, MAGIC[i]);
+            slotMask = slotCount - 1;
+            recordsOffset = HEADER_BYTES + (slotCount << 2);
+            for (int i = 0; i < magic.length; i++) {
+                buffer.put(MAGIC_OFFSET + i, magic[i]);
             }
-            buffer.putInt(SLOT_COUNT_OFFSET, SLOT_COUNT);
+            buffer.putInt(SLOT_COUNT_OFFSET, slotCount);
             buffer.putInt(RECORDS_OFFSET_FIELD, recordsOffset);
         }
 
@@ -186,12 +194,12 @@ public final class JapaneseReadingTable implements AutoCloseable {
             if (key.length == 0 || key.length > 0xFF) return;
             byte[] value = pack(reading);
             if (value.length > 0xFF) return;
-            if (recordsOffset + recordsLength + 2 + key.length + value.length > MAX_FILE_BYTES) {
+            if (recordsOffset + recordsLength + 2 + key.length + value.length > maxFileBytes) {
                 return;
             }
 
-            int slot = hash(key) & SLOT_MASK;
-            for (int probe = 0; probe < SLOT_COUNT; probe++) {
+            int slot = hash(key) & slotMask;
+            for (int probe = 0; probe <= slotMask; probe++) {
                 int offset = buffer.getInt(HEADER_BYTES + (slot << 2));
                 if (offset == 0) break;
                 int record = recordsOffset + offset - 1;
@@ -199,11 +207,12 @@ public final class JapaneseReadingTable implements AutoCloseable {
                 if (surfaceLength == key.length && matches(record + 1, key, key.length)) {
                     return;
                 }
-                slot = (slot + 1) & SLOT_MASK;
+                slot = (slot + 1) & slotMask;
             }
 
-            int at = recordsOffset + recordsLength;
-            int end = at + 2 + key.length + value.length;
+            int start = recordsOffset + recordsLength;
+            int end = start + 2 + key.length + value.length;
+            int at = start;
             buffer.put(at++, (byte) key.length);
             for (byte b : key) {
                 buffer.put(at++, b);
@@ -213,7 +222,7 @@ public final class JapaneseReadingTable implements AutoCloseable {
                 buffer.put(at++, b);
             }
             recordsLength = end - recordsOffset;
-            buffer.putInt(HEADER_BYTES + (slot << 2), at - recordsOffset + 1);
+            buffer.putInt(HEADER_BYTES + (slot << 2), start - recordsOffset + 1);
             entryCount++;
         }
 
@@ -233,9 +242,10 @@ public final class JapaneseReadingTable implements AutoCloseable {
                     out[length++] = KanaRomanizer.pack(c);
                 } else {
                     if (length + 3 > out.length) break;
+                    // Low byte first, which is the order a character is read back in.
                     out[length++] = 0;
-                    out[length++] = (byte) (c >>> 8);
                     out[length++] = (byte) c;
+                    out[length++] = (byte) (c >>> 8);
                 }
             }
             byte[] packed = new byte[length];
