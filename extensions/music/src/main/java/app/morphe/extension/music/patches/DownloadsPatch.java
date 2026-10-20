@@ -24,9 +24,9 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.settings.BaseActivityHook;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
 
 @SuppressWarnings("unused")
@@ -60,7 +60,7 @@ public final class DownloadsPatch {
      */
     public static void onLithoTextLoaded(ContextInterface conversionContext, CharSequence original) {
         try {
-            if (SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
+            if (isActionButtonOverridden()
                     && downloadButtonLabel.isEmpty()
                     && Utils.contains(conversionContext.patch_getPathBuilder(),
                     "music_download_button.")) {
@@ -73,11 +73,23 @@ public final class DownloadsPatch {
     }
 
     /**
-     * In app downloads reuse the download button hooks, so the override switch gates both targets.
+     * In app downloads always replace the Download button,
+     * the external downloader only replaces it if the override is on.
      */
+    private static boolean isActionButtonOverridden() {
+        DownloadMode mode = Settings.DOWNLOAD_MODE.get();
+        return mode == DownloadMode.IN_APP
+                || (mode == DownloadMode.EXTERNAL && Settings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get());
+    }
+
+    private static boolean isFlyoutMenuOverridden() {
+        DownloadMode mode = Settings.DOWNLOAD_MODE.get();
+        return mode == DownloadMode.IN_APP
+                || (mode == DownloadMode.EXTERNAL && Settings.EXTERNAL_DOWNLOADER_FLYOUT_MENU.get());
+    }
+
     private static boolean inAppDownloads() {
-        return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
-                && Settings.IN_APP_DOWNLOADS.get();
+        return Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP;
     }
 
     private static void startDownload() {
@@ -88,7 +100,7 @@ public final class DownloadsPatch {
         cachedFlyoutVideoId = "";
         // Do not clear download button label.
 
-        if (Settings.IN_APP_DOWNLOADS.get()) {
+        if (inAppDownloads()) {
             LocalDownloadManager.enqueue(videoId);
             return;
         }
@@ -217,7 +229,7 @@ public final class DownloadsPatch {
     public static boolean offlineVideoEndpointOnClick(ProtocolBufferFieldInterface endpoint,
                                                        @Nullable Map<Object, Object> map) {
         try {
-            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()) {
+            if (!isActionButtonOverridden()) {
                 return false;
             }
             Utils.verifyOnMainThread();
@@ -257,7 +269,7 @@ public final class DownloadsPatch {
 
     public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
         try {
-            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
+            if (!isActionButtonOverridden()
                     || downloadButtonLabel.isEmpty() || map == null) {
                 return false;
             }
@@ -284,7 +296,7 @@ public final class DownloadsPatch {
      */
     public static boolean commandResolverOnClick(ProtocolBufferFieldInterface p1, Map<Object, Object> map) {
         try {
-            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
+            if (!isActionButtonOverridden()
                     || p1 == null || map == null) {
                 return false;
             }
@@ -307,7 +319,7 @@ public final class DownloadsPatch {
                 return true;
             }
 
-            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_FLYOUT_MENU.get()) {
+            if (!isFlyoutMenuOverridden()) {
                 return false;
             }
 

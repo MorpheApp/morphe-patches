@@ -134,11 +134,6 @@ Second \"item\" text"</string>
     <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of the stock Download action button</string>
     <string name="morphe_external_downloader_flyout_menu_title">Override Download menu</string>
     <string name="morphe_external_downloader_flyout_menu_summary">Uses your chosen external downloader instead of the stock Download flyout menu</string>
-    <string name="morphe_music_in_app_downloads_title">Download in app</string>
-    <string name="morphe_music_in_app_downloads_summary">Downloads audio inside YouTube Music instead of opening the external downloader app</string>
-    <string name="morphe_music_in_app_downloads_user_dialog_message">"Tracks are saved to the private storage of the app and are deleted if YouTube Music is uninstalled.
-
-While this is on, the Downloads tab lists these tracks instead of the Music Premium offline library. Turning it off restores the tab, and Premium downloads are never touched"</string>
     <string name="morphe_music_downloads_screen_title">Downloads</string>
     <string name="morphe_music_downloads_empty">"No downloads
 Downloaded tracks appear here"</string>
