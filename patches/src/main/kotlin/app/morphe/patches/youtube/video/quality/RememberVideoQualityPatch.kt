@@ -29,7 +29,7 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findFreeRegister
-import app.morphe.util.getFreeRegisterProvider
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -80,7 +80,7 @@ val rememberVideoQualityPatch = bytecodePatch {
         ))
 
         val initialResolutionField = PlaybackStartParametersToStringFingerprint.method
-                .findFieldFromToString(FIXED_RESOLUTION_STRING)
+            .findFieldFromToString(FIXED_RESOLUTION_STRING)
 
         // Inject a call to override initial video quality.
         getPlaybackStartParametersConstructorFingerprint(initialResolutionField).let {
@@ -133,24 +133,16 @@ val rememberVideoQualityPatch = bytecodePatch {
         // the player and the SABR requests use the quality last selected in the quality menu,
         // and without one the quality is chosen automatically, such as 720p for the size of the player.
         // The default quality is used as the quality last selected, as if the user just selected it.
-        val videoIdField = LastSelectedVideoQualityConstructorFingerprint.let {
+        LastSelectedVideoQualityConstructorFingerprint.let {
             val videoIdField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
+            val selectedTimeField = it.instructionMatches[0].instruction.getReference<FieldReference>()!!
+            val playbackStartTimeField = it.instructionMatches[3].instruction.getReference<FieldReference>()!!
+            val directionField = it.instructionMatches[5].instruction.getReference<FieldReference>()!!
 
             it.method.apply {
-                val selectedTimeField = it.instructionMatches[0].instruction.getReference<FieldReference>()!!
-                val playbackStartTimeField = it.instructionMatches[3].instruction.getReference<FieldReference>()!!
-                val resolutionField = it.instructionMatches[4].instruction.getReference<FieldReference>()!!
-                val directionField = it.instructionMatches[5].instruction.getReference<FieldReference>()!!
-
-                // All fields are set, so the registers are free before the return.
                 addInstructionsAtControlFlowLabel(
                     indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID),
                     """
-                        invoke-static { }, $EXTENSION_CLASS->getLastSelectedVideoQuality()I
-                        move-result v0
-                        if-ltz v0, :original
-                        iput v0, p0, $resolutionField
-
                         # The video starts with the default quality, so the direction is the one
                         # saved when the user selects the quality that is playing (no change).
                         const/4 v0, 0x0
@@ -171,39 +163,42 @@ val rememberVideoQualityPatch = bytecodePatch {
                     """
                 )
             }
-
-            videoIdField
         }
 
         // With some accounts, the quality selected in the quality menu is used only for the video
         // it was selected for, and the player of other videos chooses the quality automatically.
         // The default quality is used as if the user selected it for the current video.
+        // NOTE: We do NOT use iput to overwrite final fields here to avoid IllegalAccessError.
+        // Intercepting the return value of fixedConstraintMethod safely forces the resolution.
         getVideoQualityConstraintFingerprint(
             LastSelectedVideoQualityConstructorFingerprint.classDef.type,
             videoQualitySettingMethod.toString()
         ).let {
             it.method.apply {
-                val moveResultIndex = it.instructionMatches.first().index + 1
-                val lastSelectedRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
-                val insertIndex = moveResultIndex + 1
-                // The field is set with an instruction that can only use registers v0-v15.
-                val registerProvider = getFreeRegisterProvider(insertIndex, 2, lastSelectedRegister)
-                val videoIdRegister = registerProvider.getFreeRegister4Bit()
-                val lastSelectedFreeRegister = registerProvider.getFreeRegister4Bit()
+                val constraintType = returnType
+                val fixedConstraintMethod = mutableClassDefBy(constraintType).methods.single { method ->
+                    method.returnType == constraintType && method.parameterTypes.map { p -> p.toString() } == listOf("I")
+                }
 
-                addInstructionsWithLabels(
-                    insertIndex,
-                    """
-                        invoke-static { }, $EXTENSION_CLASS->getLastSelectedVideoQuality()I
-                        move-result v$videoIdRegister
-                        if-ltz v$videoIdRegister, :original
-                        move-object/from16 v$videoIdRegister, p3
-                        move-object/from16 v$lastSelectedFreeRegister, v$lastSelectedRegister
-                        iput-object v$videoIdRegister, v$lastSelectedFreeRegister, $videoIdField
-                        :original
-                        nop
-                    """
-                )
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    val qualityRegister = findFreeRegister(index, register)
+                    val constraintRegister = findFreeRegister(index, register, qualityRegister)
+
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            invoke-static { }, $EXTENSION_CLASS->getFixedVideoQuality()I
+                            move-result v$qualityRegister
+                            if-ltz v$qualityRegister, :automatic_quality
+                            move-object/from16 v$constraintRegister, v$register
+                            invoke-virtual { v$constraintRegister, v$qualityRegister }, $fixedConstraintMethod
+                            move-result-object v$register
+                            :automatic_quality
+                            nop
+                        """
+                    )
+                }
             }
         }
 

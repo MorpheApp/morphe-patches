@@ -134,25 +134,20 @@ public class RememberVideoQualityPatch {
      * 1080p is used as an initial video quality.
      */
     public static Optional getInitialVideoQuality(Optional optional) {
-        // YouTube can reload the video after the user selects a quality, such as when
-        // the selected quality needs another codec. The reload has no initial quality,
-        // or a copy of the default quality used when the video started.
-        // The video ID of the player is updated only once the video starts, so the selected
-        // quality is not used once the player response of another video is received,
-        // such as the next video of the autoplay.
-        if (isQualitySelectedByUser() && VideoInformation.getPlayerResponseVideoId()
-                .equals(VideoInformation.getVideoId())) {
+        final String currentVideo = VideoInformation.getVideoId();
+        final String responseVideo = VideoInformation.getPlayerResponseVideoId();
+        final boolean userSelected = isQualitySelectedByUser();
+        final int preferredQuality = getDefaultQualityResolution();
+
+        if (userSelected && responseVideo.equals(currentVideo)) {
             final int selectedResolution = userSelectedQualityResolution;
-            Logger.printDebug(() -> "initialVideoQuality selected by the user: " + selectedResolution);
             // With 'Auto' selected, YouTube chooses the quality.
             return selectedResolution > 0
                     ? Optional.of(selectedResolution)
                     : Optional.empty();
         }
 
-        int preferredQuality = getDefaultQualityResolution();
         if (preferredQuality != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
-            Logger.printDebug(() -> "initialVideoQuality: " + preferredQuality);
             return Optional.of(preferredQuality);
         }
         return optional;
@@ -173,14 +168,20 @@ public class RememberVideoQualityPatch {
      */
     public static int getLastSelectedVideoQuality() {
         try {
+            int preferredQuality;
+
+            // Forces exact resolution constraint mapping to the SABR engine.
             if (isQualitySelectedByUser()) {
+                preferredQuality = userSelectedQualityResolution;
+            } else {
+                preferredQuality = getDefaultQualityResolution();
+            }
+
+            if (preferredQuality == VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
                 return -1;
             }
 
-            final int preferredQuality = getDefaultQualityResolution();
-            return preferredQuality == VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE
-                    ? -1
-                    : getAvailableQualityResolution(preferredQuality);
+            return getAvailableQualityResolution(preferredQuality);
         } catch (Exception ex) {
             Logger.printException(() -> "getLastSelectedVideoQuality failure", ex);
             return -1;
@@ -198,13 +199,15 @@ public class RememberVideoQualityPatch {
      */
     private static int getAvailableQualityResolution(int preferredQuality) {
         VideoQualityInterface[] qualities = VideoInformation.getCurrentQualities();
-        if (qualities != null) {
-            // Ordered from largest to smallest, with index 0 being 'Auto'.
-            for (VideoQualityInterface quality : qualities) {
-                final int resolution = quality.patch_getResolution();
-                if (resolution != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= preferredQuality) {
-                    return resolution;
-                }
+        if (qualities == null) {
+            return preferredQuality;
+        }
+
+        // Ordered from largest to smallest, with index 0 being 'Auto'.
+        for (VideoQualityInterface quality : qualities) {
+            final int resolution = quality.patch_getResolution();
+            if (resolution != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= preferredQuality) {
+                return resolution;
             }
         }
 
@@ -213,6 +216,17 @@ public class RememberVideoQualityPatch {
 
     /**
      * Injection point.
+     * <p>
+     * Used by getVideoQualityConstraintFingerprint to lock the min/max quality constraint
+     * returned to the player and SABR requests.
+     */
+    public static int getFixedVideoQuality() {
+        return getLastSelectedVideoQuality();
+    }
+
+    /**
+     * Injection point.
+     *
      * @param userSelectedQualityIndex Element index of {@link VideoInformation#getCurrentQualities()}.
      */
     public static void userChangedShortsQuality(int userSelectedQualityIndex) {
@@ -236,7 +250,8 @@ public class RememberVideoQualityPatch {
     }
 
     /**
-     * Injection point.  Regular videos.
+     * Injection point. Regular videos.
+     *
      * @param quality Quality selected by the user.
      */
     public static void userChangedQuality(VideoQualityInterface quality) {
@@ -248,7 +263,6 @@ public class RememberVideoQualityPatch {
      */
     public static void userChangedQuality(int videoResolution) {
         Utils.verifyOnMainThread();
-        Logger.printDebug(() -> "User changed quality to: " + videoResolution);
         setUserSelectedQuality(videoResolution);
 
         if (shouldRememberVideoQuality()) {

@@ -444,6 +444,7 @@ public final class MinimalMiniplayerPatch {
         }
     }
 
+    @SuppressWarnings("deprecation")
     private static void spanWindow() {
         View watchPlayer = watchPlayer();
         if (watchPlayer == null || !(watchPlayer.getParent() instanceof View parent)) return;
