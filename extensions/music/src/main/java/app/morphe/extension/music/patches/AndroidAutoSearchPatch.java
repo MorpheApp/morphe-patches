@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3852
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -11,8 +11,6 @@ import static app.morphe.extension.music.patches.AndroidAutoPatch.BACKGROUND_EXE
 import static app.morphe.extension.music.patches.AndroidAutoPatch.DEADLINE_MS;
 import static app.morphe.extension.music.patches.AndroidAutoPatch.createPlayableSearchResults;
 import static app.morphe.extension.music.patches.AndroidAutoPatch.mainHandler;
-
-import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.SearchResult;
 
 import android.support.v4.media.MediaBrowserCompat;
 
@@ -30,6 +28,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import app.morphe.extension.music.patches.AndroidAutoSearchResponseParser.SearchResult;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 

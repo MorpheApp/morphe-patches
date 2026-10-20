@@ -1,13 +1,63 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3852
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches;
 
-import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.*;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.BROWSE;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.BROWSE_ID;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.COMPONENT_MODEL;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.COMPONENT_TYPE;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.ELEMENT;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.ELEMENT_TYPE;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.IMAGE_CONTENT;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.INNERTUBE_COMMAND;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.ITEM_SECTION;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.ITEM_SECTION_CONTENTS;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.MENU;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.MENU_CONTENT;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.MENU_ENDPOINT;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.MUSIC_SHELF;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.MUSIC_SHELF_CONTENTS;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.NEW_ELEMENT;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.PLAYLIST_ID;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_IMAGE;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_MENU;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_ROWS;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_ROWS_ITEMS;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_SUBTITLE;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_TAP;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.RESULT_TITLE;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SECTION_LIST;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SECTION_LIST_CONTENTS;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM_IMAGE;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM_MENU;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM_SUBTITLE;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM_TAP;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.SHELF_ITEM_TITLE;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TAB;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TAB_CONTENTS;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TEXT_CONTENT;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.THUMBNAIL;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.THUMBNAIL_CONTENTS;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TOP_RESULT;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TOP_RESULT_CONTENT;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TOP_RESULT_MENU;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TOP_RESULT_PRIMARY;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TOP_RESULT_RELATED;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.TOP_RESULT_TAP;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.WATCH;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.WATCH_PLAYLIST;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.artwork;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.episodeSubtitle;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.isPlayable;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.menuSubtitle;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.playCommand;
+import static app.morphe.extension.music.patches.AndroidAutoBrowseResponseParser.textRuns;
 
 import java.util.ArrayList;
 import java.util.Collections;
