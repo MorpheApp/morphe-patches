@@ -485,17 +485,6 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">%s ต่อวิดีโอ 100 ชั่วโมง</string>
   <string name="morphe_vot_tts_voice_type">เสียง</string>
   <string name="morphe_vot_tts_system">ระบบ</string>
-  <string name="morphe_vot_catalog_refreshing">กำลังรีเฟรช...</string>
-  <string name="morphe_vot_catalog_updated">อัปเดตล่าสุด: %s</string>
-  <string name="morphe_vot_catalog_refresh">รีเฟรชรายการเสียง</string>
-  <string name="morphe_vot_catalog_unchanged">รายการเสียงยังตรงกัน</string>
-  <string name="morphe_vot_catalog_changed">อัปเดตรายการเสียง: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">ไม่สามารถรีเฟรชรายการเสียงได้</string>
-  <string name="morphe_vot_catalog_source_online">ออนไลน์</string>
-  <string name="morphe_vot_catalog_source_cache">แคช</string>
-  <string name="morphe_vot_catalog_source_fallback">ในเครื่อง</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d เสียง · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">การอัปเดตล้มเหลว: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">ชายหลายภาษา</string>
   <string name="morphe_vot_voice_gender_female_multilingual">หญิงหลายภาษา</string>
   <string name="morphe_vot_voice_gender_male">ชาย</string>

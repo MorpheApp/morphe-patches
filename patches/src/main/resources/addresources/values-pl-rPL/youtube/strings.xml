@@ -275,7 +275,7 @@ Zmiany obejmują:
   <string name="morphe_hide_comments_gift_button_title">Ukryj przycisk Prezent</string>
   <string name="morphe_hide_comments_info_button_title">Ukryj przycisk Informacje</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ukryj pasek wspierających w czacie</string>
-  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Ukryj przycisk przewijania czatu na żywo do dołu</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Ukryj przycisk przewijania w dół na czacie na żywo</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Ukryj podpowiedzi czatu na żywo</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Ukrywa dymki z podpowiedziami wyświetlane obok pola wprowadzania czatu, takie jak powiadomienie o czacie tylko dla subskrybentów</string>
   <string name="morphe_hide_comments_menu_button_title">Ukryj przycisk Menu</string>
@@ -289,7 +289,7 @@ Zmiany obejmują:
   <string name="morphe_hide_comments_timestamp_button_title">Ukryj przycisk Znacznik czasu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ukryj przycisk \"Najlepsi odbiorcy\"</string>
   <string name="morphe_hide_comments_translate_button_title">Ukryj przycisk Przetłumacz</string>
-  <string name="morphe_hide_comments_zero_state_title">Ukryj komunikat „Brak komentarzy”</string>
+  <string name="morphe_hide_comments_zero_state_title">Ukryj komunikat \"Nie ma jeszcze komentarzy\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Oczyść wyróżnione frazy wyszukiwania</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Oczyszcza linkowanie z wyróżnionych fraz wyszukiwania, zostawiając tylko oryginalny, zwykły tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtry słów</string>
@@ -433,14 +433,14 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Przytrzymaj, aby otworzyć menu filmu</string>
   <string name="morphe_feed_long_press_menu_summary">Przytrzymanie filmu w dowolnym miejscu na liście otwiera jego menu</string>
-  <string name="morphe_feed_watch_later_button_title">Pokazuj przycisk \"Do obejrzenia\" na miniaturkach</string>
+  <string name="morphe_feed_watch_later_button_title">Pokaż przycisk \"Do obejrzenia\" na miniaturkach</string>
   <string name="morphe_feed_watch_later_button_summary">Na miniaturkach filmów na liście wyświetlany jest przycisk \"Do obejrzenia\". Przytrzymanie go otwiera opcję \"Zapisz na playliście\"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
-  <string name="morphe_feed_view_count_title">Pokaż liczbę wyświetleń na miniaturach</string>
-  <string name="morphe_feed_view_count_summary">Liczba wyświetleń filmów z kanału jest wyświetlana w lewym dolnym rogu ich miniatur zamiast poniżej tytułu. Niektóre filmy, takie jak w półkach, mogą nie wyświetlać liczby wyświetleń</string>
+  <string name="morphe_feed_view_count_title">Pokaż liczbę wyświetleń na miniaturkach</string>
+  <string name="morphe_feed_view_count_summary">Liczba wyświetleń filmów na liście jest wyświetlana w lewym dolnym rogu miniaturki zamiast pod tytułem. Niektóre filmy, np. w sekcjach, mogą nie wyświetlać liczby wyświetleń</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
-  <string name="morphe_ryd_feed_like_count_title">Pokaż liczbę polubień na miniaturze w kanale</string>
-  <string name="morphe_ryd_feed_like_ratio_title">Pokaż procent polubień na miniaturze w kanale</string>
+  <string name="morphe_ryd_feed_like_count_title">Pokaż liczbę polubień na miniaturkach na liście</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Pokaż procent polubień na miniaturkach na liście</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Wyłącz komunikat o zalogowaniu się do TV</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Wyłącz wyskakujące okienko \"Połącz swoje urządzenia\"</string>
@@ -485,17 +485,6 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_vot_cost_per_hour">%s za 100 godzin filmu</string>
   <string name="morphe_vot_tts_voice_type">Głos</string>
   <string name="morphe_vot_tts_system">Systemowy</string>
-  <string name="morphe_vot_catalog_refreshing">Odświeżanie...</string>
-  <string name="morphe_vot_catalog_updated">Ostatnia aktualizacja: %s</string>
-  <string name="morphe_vot_catalog_refresh">Odśwież listę głosów</string>
-  <string name="morphe_vot_catalog_unchanged">Lista głosów jest aktualna</string>
-  <string name="morphe_vot_catalog_changed">Zaktualizowano listę głosów: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Nie udało się odświeżyć listy głosów</string>
-  <string name="morphe_vot_catalog_source_online">Online</string>
-  <string name="morphe_vot_catalog_source_cache">Z pamięci podręcznej</string>
-  <string name="morphe_vot_catalog_source_fallback">Wbudowany</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d głosów · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Aktualizacja nie powiodła się: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Męski wielojęzyczny</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Żeński wielojęzyczny</string>
   <string name="morphe_vot_voice_gender_male">Męski</string>
@@ -1177,7 +1166,7 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_back_button_always_exits_feed_summary">Naciśnięcie wstecz zawsze zamyka aplikację, zamiast przewijać na górę kanału</string>
   <!-- layout.animations.forceAnimationsPatch -->
   <string name="morphe_force_animations_title">Wymuś animacje</string>
-  <string name="morphe_force_animations_entry_default">Domyślna</string>
+  <string name="morphe_force_animations_entry_default">Domyślnie</string>
   <string name="morphe_force_animations_entry_always_on">Zawsze włączone</string>
   <string name="morphe_force_animations_entry_always_off">Zawsze wyłączone</string>
   <!-- layout.statusbar.hideStatusBarPatch -->

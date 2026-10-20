@@ -485,17 +485,6 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_vot_cost_per_hour">%s za 100 hodín videa</string>
   <string name="morphe_vot_tts_voice_type">Hlas</string>
   <string name="morphe_vot_tts_system">Systém</string>
-  <string name="morphe_vot_catalog_refreshing">Obnovovanie...</string>
-  <string name="morphe_vot_catalog_updated">Naposledy aktualizované: %s</string>
-  <string name="morphe_vot_catalog_refresh">Aktualizovať zoznam hlasov</string>
-  <string name="morphe_vot_catalog_unchanged">Zoznam hlasov je aktuálny</string>
-  <string name="morphe_vot_catalog_changed">Zoznam hlasov aktualizovaný: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Nepodarilo sa obnoviť zoznam hlasov</string>
-  <string name="morphe_vot_catalog_source_online">Online</string>
-  <string name="morphe_vot_catalog_source_cache">Vystavané</string>
-  <string name="morphe_vot_catalog_source_fallback">Vstavané</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d hlasov · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Aktualizácia zlyhala: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Viacjazyčný mužský</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Viacjazyčná ženská</string>
   <string name="morphe_vot_voice_gender_male">Mužský</string>

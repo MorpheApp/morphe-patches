@@ -485,17 +485,6 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">%s за 100 часов видео</string>
   <string name="morphe_vot_tts_voice_type">Голос</string>
   <string name="morphe_vot_tts_system">Системная</string>
-  <string name="morphe_vot_catalog_refreshing">Обновление...</string>
-  <string name="morphe_vot_catalog_updated">Последнее обновление: %s</string>
-  <string name="morphe_vot_catalog_refresh">Обновить список голосов</string>
-  <string name="morphe_vot_catalog_unchanged">Список голосов актуален</string>
-  <string name="morphe_vot_catalog_changed">Список голосов обновлён: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Не удалось обновить список голосов</string>
-  <string name="morphe_vot_catalog_source_online">В сети</string>
-  <string name="morphe_vot_catalog_source_cache">Кэшировано</string>
-  <string name="morphe_vot_catalog_source_fallback">Встроенный</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d голосов · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Ошибка обновления: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Мультиязычный мужской</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Мультиязычный женский</string>
   <string name="morphe_vot_voice_gender_male">Мужской</string>

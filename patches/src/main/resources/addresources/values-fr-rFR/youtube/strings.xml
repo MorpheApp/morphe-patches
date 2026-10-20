@@ -275,7 +275,7 @@ Les changements incluent :
   <string name="morphe_hide_comments_gift_button_title">Masquer le bouton \'Cadeau\'</string>
   <string name="morphe_hide_comments_info_button_title">Masquer le bouton \'Info\'</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Masquer la barre des donateurs du chat en direct</string>
-  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Masquer le bouton \"Défiler vers le bas\" du chat en direct</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Masquer le bouton permettant de revenir en bas du chat en direct</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Masquer les info-bulles du chat en direct</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Masque les info-bulles affichées près de la barre de saisie du chat, comme l\'avis indiquant que le chat est réservé aux abonnés</string>
   <string name="morphe_hide_comments_menu_button_title">Masquer le bouton \'Menu\'</string>
@@ -289,7 +289,7 @@ Les changements incluent :
   <string name="morphe_hide_comments_timestamp_button_title">Masquer le bouton \'Horodatage\'</string>
   <string name="morphe_hide_comments_top_fans_button_title">Masquer le bouton \'Top fans\'</string>
   <string name="morphe_hide_comments_translate_button_title">Masquer le bouton \'Traduire\'</string>
-  <string name="morphe_hide_comments_zero_state_title">Masquer le message « Aucun commentaire »</string>
+  <string name="morphe_hide_comments_zero_state_title">Masquer le message \'Aucun commentaire\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Nettoyer les liens de recherche en surbrillance</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Nettoie les liens de recherche en surbrillance, en laissant uniquement le texte brut d\'origine</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtre par mots clés</string>
@@ -436,11 +436,11 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_feed_watch_later_button_title">Afficher le bouton \'À regarder plus tard\' sur les miniatures</string>
   <string name="morphe_feed_watch_later_button_summary">Un bouton \'À regarder plus tard\' est affiché sur les miniatures du flux. Un appui long dessus ouvre le menu \'Enregistrer dans une playlist\'</string>
   <!-- layout.feedviews.feedViewCountPatch -->
-  <string name="morphe_feed_view_count_title">Afficher le nombre de vues sur les vignettes</string>
-  <string name="morphe_feed_view_count_summary">Le nombre de vues des vidéos du fil d\'actualités est affiché en bas à gauche de leurs vignettes au lieu d\'être sous le titre. Certaines vidéos, comme celles dans les étagères, peuvent ne pas afficher un nombre de vues</string>
+  <string name="morphe_feed_view_count_title">Afficher le nombre de vues sur les miniatures</string>
+  <string name="morphe_feed_view_count_summary">Le nombre de vues des vidéos du flux s\'affiche en bas à gauche de leurs miniatures au lieu d\'apparaître sous le titre. Certaines vidéos, notamment celles des étagères, peuvent ne pas afficher le nombre de vues</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
-  <string name="morphe_ryd_feed_like_count_title">Afficher le nombre d\'aimés sur la vignette du flux</string>
-  <string name="morphe_ryd_feed_like_ratio_title">Afficher le pourcentage d\'aimés sur la vignette du flux</string>
+  <string name="morphe_ryd_feed_like_count_title">Afficher le nombre j\'aime sur les miniatures du flux</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Afficher le pourcentage de j\'aime sur les miniatures du flux</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Désactiver le pop-up \'Connectez-vous à la TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Désactiver le pop-up \'Associez vos appareils\'</string>
@@ -485,17 +485,6 @@ Appuyez ici pour ouvrir OpenRouter.ai"</string>
   <string name="morphe_vot_cost_per_hour">%s pour 100 heures de vidéo</string>
   <string name="morphe_vot_tts_voice_type">Voix</string>
   <string name="morphe_vot_tts_system">Système</string>
-  <string name="morphe_vot_catalog_refreshing">Actualisation...</string>
-  <string name="morphe_vot_catalog_updated">Dernière mise à jour : %s</string>
-  <string name="morphe_vot_catalog_refresh">Actualiser la liste des voix</string>
-  <string name="morphe_vot_catalog_unchanged">La liste des voix est à jour</string>
-  <string name="morphe_vot_catalog_changed">Liste des voix mise à jour : +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Impossible d\'actualiser la liste des voix</string>
-  <string name="morphe_vot_catalog_source_online">En ligne</string>
-  <string name="morphe_vot_catalog_source_cache">En cache</string>
-  <string name="morphe_vot_catalog_source_fallback">Intégré</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d voix · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Échec de la mise à jour : %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Homme multilingue</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Femme multilingue</string>
   <string name="morphe_vot_voice_gender_male">Homme</string>

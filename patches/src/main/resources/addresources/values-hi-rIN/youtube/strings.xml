@@ -485,17 +485,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_vot_cost_per_hour">प्रति 100 वीडियो घंटे %s</string>
   <string name="morphe_vot_tts_voice_type">आवाज</string>
   <string name="morphe_vot_tts_system">सिस्टम</string>
-  <string name="morphe_vot_catalog_refreshing">रीफ़्रेश हो रहा है...</string>
-  <string name="morphe_vot_catalog_updated">अंतिम अद्यतन: %s</string>
-  <string name="morphe_vot_catalog_refresh">वॉइस सूची रीफ़्रेश करें</string>
-  <string name="morphe_vot_catalog_unchanged">वॉइस सूची अद्यतित है</string>
-  <string name="morphe_vot_catalog_changed">वॉइस सूची अद्यतित: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">वॉइस सूची रीफ़्रेश नहीं की जा सकी</string>
-  <string name="morphe_vot_catalog_source_online">ऑनलाइन</string>
-  <string name="morphe_vot_catalog_source_cache">कैश की गई</string>
-  <string name="morphe_vot_catalog_source_fallback">बिल्ट-इन</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d वॉइसें · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">अपडेट विफल: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">बहुभाषी पुरुष</string>
   <string name="morphe_vot_voice_gender_female_multilingual">बहुभाषी महिला</string>
   <string name="morphe_vot_voice_gender_male">पुरुष</string>

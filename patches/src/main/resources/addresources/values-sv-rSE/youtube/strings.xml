@@ -485,17 +485,6 @@ Tryck här för att öppna OpenRouter.ai"</string>
   <string name="morphe_vot_cost_per_hour">%s per 100 videotimmar</string>
   <string name="morphe_vot_tts_voice_type">Röst</string>
   <string name="morphe_vot_tts_system">System</string>
-  <string name="morphe_vot_catalog_refreshing">Uppdaterar...</string>
-  <string name="morphe_vot_catalog_updated">Senast uppdaterade: %s</string>
-  <string name="morphe_vot_catalog_refresh">Uppdatera röstlistan</string>
-  <string name="morphe_vot_catalog_unchanged">Röstlistan är uppdaterad</string>
-  <string name="morphe_vot_catalog_changed">Röstlistan uppdaterad: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Kunde inte uppdatera röstlistan</string>
-  <string name="morphe_vot_catalog_source_online">Online</string>
-  <string name="morphe_vot_catalog_source_cache">Cachelagrad</string>
-  <string name="morphe_vot_catalog_source_fallback">Inbyggd</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d röster · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Uppdatering misslyckades: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Flerspråkig man</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Flerspråkig kvinna</string>
   <string name="morphe_vot_voice_gender_male">Man</string>

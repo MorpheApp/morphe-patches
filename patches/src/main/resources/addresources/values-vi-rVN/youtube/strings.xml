@@ -485,17 +485,6 @@ Bấm vào đây để truy cập OpenRouter.ai"</string>
   <string name="morphe_vot_cost_per_hour">%s cho mỗi 100 giờ video</string>
   <string name="morphe_vot_tts_voice_type">Giọng đọc</string>
   <string name="morphe_vot_tts_system">Hệ thống</string>
-  <string name="morphe_vot_catalog_refreshing">Đang làm mới...</string>
-  <string name="morphe_vot_catalog_updated">Cập nhật lần cuối: %s</string>
-  <string name="morphe_vot_catalog_refresh">Làm mới danh sách giọng nói</string>
-  <string name="morphe_vot_catalog_unchanged">Danh sách giọng nói đã cập nhật</string>
-  <string name="morphe_vot_catalog_changed">Đã cập nhật danh sách giọng nói: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Không thể làm mới danh sách giọng nói</string>
-  <string name="morphe_vot_catalog_source_online">Trực tuyến</string>
-  <string name="morphe_vot_catalog_source_cache">Đã lưu trữ</string>
-  <string name="morphe_vot_catalog_source_fallback">Tích hợp sẵn</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d giọng nói · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Cập nhật thất bại: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Giọng nam đa ngôn ngữ</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Giọng nữ đa ngôn ngữ</string>
   <string name="morphe_vot_voice_gender_male">Nam</string>

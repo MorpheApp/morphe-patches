@@ -485,17 +485,6 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">동영상 100 시간당 %s</string>
   <string name="morphe_vot_tts_voice_type">음성</string>
   <string name="morphe_vot_tts_system">시스템</string>
-  <string name="morphe_vot_catalog_refreshing">새로고침 중...</string>
-  <string name="morphe_vot_catalog_updated">마지막 업데이트: %s</string>
-  <string name="morphe_vot_catalog_refresh">음성 목록 새로고침</string>
-  <string name="morphe_vot_catalog_unchanged">음성 목록이 최신 상태입니다</string>
-  <string name="morphe_vot_catalog_changed">음성 목록 업데이트됨: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">음성 목록을 새로고침할 수 없습니다</string>
-  <string name="morphe_vot_catalog_source_online">온라인</string>
-  <string name="morphe_vot_catalog_source_cache">캐시됨</string>
-  <string name="morphe_vot_catalog_source_fallback">내장형</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d 개의 음성 · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">업데이트 실패: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">다국어 남성</string>
   <string name="morphe_vot_voice_gender_female_multilingual">다국어 여성</string>
   <string name="morphe_vot_voice_gender_male">남성</string>

@@ -485,17 +485,6 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">%s на 100 сати видео записа</string>
   <string name="morphe_vot_tts_voice_type">Глас</string>
   <string name="morphe_vot_tts_system">Систем</string>
-  <string name="morphe_vot_catalog_refreshing">Освежава се...</string>
-  <string name="morphe_vot_catalog_updated">Последње ажурирање: %s</string>
-  <string name="morphe_vot_catalog_refresh">Освежи списак гласова</string>
-  <string name="morphe_vot_catalog_unchanged">Списак гласова је актуелан</string>
-  <string name="morphe_vot_catalog_changed">Списак гласова ажуриран: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Није могуће освежити списак гласова</string>
-  <string name="morphe_vot_catalog_source_online">Онлајн</string>
-  <string name="morphe_vot_catalog_source_cache">Кеширано</string>
-  <string name="morphe_vot_catalog_source_fallback">Уграђено</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d гласова · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Ажурирање није успело: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Вишејезични мушки</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Вишејезични женски</string>
   <string name="morphe_vot_voice_gender_male">Мушки</string>

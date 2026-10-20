@@ -485,17 +485,6 @@ Trykk her for å åpne OpenRouter.ai"</string>
   <string name="morphe_vot_cost_per_hour">%s per 100 videotimer</string>
   <string name="morphe_vot_tts_voice_type">Stemme</string>
   <string name="morphe_vot_tts_system">System</string>
-  <string name="morphe_vot_catalog_refreshing">Oppfrisker...</string>
-  <string name="morphe_vot_catalog_updated">Sist oppdatert: %s</string>
-  <string name="morphe_vot_catalog_refresh">Oppfrisch stemmeliste</string>
-  <string name="morphe_vot_catalog_unchanged">Stemmelisten er oppdatert</string>
-  <string name="morphe_vot_catalog_changed">Stemmeliste oppdatert: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Kunne ikke oppfriske stemmelisten</string>
-  <string name="morphe_vot_catalog_source_online">Online</string>
-  <string name="morphe_vot_catalog_source_cache">Lagret</string>
-  <string name="morphe_vot_catalog_source_fallback">Innebygd</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d stemmer · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Oppdatering feilet: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Flerstemt mannlig</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Flerstemt kvinnelig</string>
   <string name="morphe_vot_voice_gender_male">Mannlig</string>

@@ -485,17 +485,6 @@ Napauta tästä avataksesi OpenRouter.ai"</string>
   <string name="morphe_vot_cost_per_hour">%s per 100 videotuntia</string>
   <string name="morphe_vot_tts_voice_type">Ääni</string>
   <string name="morphe_vot_tts_system">Järjestelmä</string>
-  <string name="morphe_vot_catalog_refreshing">Päivitetään...</string>
-  <string name="morphe_vot_catalog_updated">Viimeksi päivitetty: %s</string>
-  <string name="morphe_vot_catalog_refresh">Päivitä ääniluettelo</string>
-  <string name="morphe_vot_catalog_unchanged">Ääniluettelo on ajan tasalla</string>
-  <string name="morphe_vot_catalog_changed">Ääniluettelo päivitetty: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Ääniluettelon päivitys epäonnistui</string>
-  <string name="morphe_vot_catalog_source_online">Yhteydessä</string>
-  <string name="morphe_vot_catalog_source_cache">Välimuistissa</string>
-  <string name="morphe_vot_catalog_source_fallback">Sisäänrakennettu</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d ääntä · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Päivitys epäonnistui: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Monikielinen mies</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Monikielinen nainen</string>
   <string name="morphe_vot_voice_gender_male">Mies</string>

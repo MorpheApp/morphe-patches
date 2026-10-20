@@ -485,17 +485,6 @@ Ketuk di sini untuk membuka OpenRouter.ai"</string>
   <string name="morphe_vot_cost_per_hour">%s per 100 jam video</string>
   <string name="morphe_vot_tts_voice_type">Suara</string>
   <string name="morphe_vot_tts_system">Sistem</string>
-  <string name="morphe_vot_catalog_refreshing">Menyegarkan...</string>
-  <string name="morphe_vot_catalog_updated">Terakhir diperbarui: %s</string>
-  <string name="morphe_vot_catalog_refresh">Segarkan daftar suara</string>
-  <string name="morphe_vot_catalog_unchanged">Daftar suara sudah terbaru</string>
-  <string name="morphe_vot_catalog_changed">Daftar suara diperbarui: +%1$d / -%2$d</string>
-  <string name="morphe_vot_catalog_refresh_failed">Tidak dapat menyegarkan daftar suara</string>
-  <string name="morphe_vot_catalog_source_online">Daring</string>
-  <string name="morphe_vot_catalog_source_cache">Tersimpan dalam cache</string>
-  <string name="morphe_vot_catalog_source_fallback">Bawaan</string>
-  <string name="morphe_vot_catalog_status">%1$s · %2$d suara · +%3$d / -%4$d</string>
-  <string name="morphe_vot_catalog_error">Pembaruan gagal: %s</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Pria multibahasa</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Wanita multibahasa</string>
   <string name="morphe_vot_voice_gender_male">Pria</string>
