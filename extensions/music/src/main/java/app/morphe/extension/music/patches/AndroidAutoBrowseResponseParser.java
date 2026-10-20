@@ -253,6 +253,10 @@ final class AndroidAutoBrowseResponseParser {
     private static void readSpeedDial(List<BrowseItem> items, ProtoMessage speedDial) {
         for (ProtoMessage card : speedDial.repeatedMessageField(SPEED_DIAL_ITEMS)) {
             ProtoMessage tapCommand = card.messagePath(SPEED_DIAL_TAP, INNERTUBE_COMMAND);
+            if (card.messageField(SPEED_DIAL_TAP).isEmpty()) {
+                ProtoMessage playCommand = card.messagePath(SPEED_DIAL_PLAY, INNERTUBE_COMMAND);
+                if (isPlayable(playCommand)) tapCommand = playCommand;
+            }
             boolean tapStartsPlayback = isPlayable(tapCommand);
             if (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty()) continue;
             String title = card.stringField(SPEED_DIAL_TITLE);
