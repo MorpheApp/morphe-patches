@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -19,13 +20,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.ClassDef
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.Reference
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
 private object SubtitleManagerFingerprintClassFingerprint : Fingerprint(
     returnType = "Z",
@@ -79,6 +74,83 @@ internal object TimedTextUrlFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Timed text (srv3) `<s>` segment element handler. Resolves to the pen lookup method.
+ */
+internal object TimedTextSegmentElementFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/util/Deque;", "Lorg/xml/sax/Attributes;", "Ljava/lang/String;"),
+    filters = listOf(
+        string("p"),
+        methodCall(
+            smali = "Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+        // Pen lookup by id.
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("I"),
+            returnType = "L",
+            location = MatchAfterWithin(5)
+        ),
+        string("t"),
+        string("ac"),
+        string("<br/>")
+    )
+)
+
+/**
+ * Parses a cached caption track file.
+ */
+internal object CaptionFileParserFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;", "L"),
+    filters = listOf(
+        // Caption request.
+        opcode(Opcode.CHECK_CAST, location = MatchFirst()),
+        // Caption track of the request.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(2)),
+        methodCall(smali = "Ljava/io/File;->exists()Z"),
+        methodCall(smali = "Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("Ljava/io/InputStream;", "L"),
+            returnType = "Ljava/lang/Object;"
+        )
+    )
+)
+
+/**
+ * Parses the response of a request. Used for caption tracks and other requests.
+ */
+internal object RequestResponseParserFingerprint : Fingerprint(
+    name = "run",
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        // Response parser.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "Ljava/lang/Object;"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // Request.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/Object;",
+            location = MatchAfterWithin(1)
+        ),
+        // Response callback.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        )
+    )
+)
 
 /**
  * Resolves to the caption track class. 21.02+
@@ -205,6 +277,69 @@ internal object CaptionTracksManagerAutoTranslateTracksFingerprint : Fingerprint
     )
 )
 
+/** The track manager's default source, without subtitle preference or CC state overrides. */
+internal class CaptionTracksManagerDefaultSourceFingerprint(captionTrackType: String) : Fingerprint(
+    classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = captionTrackType,
+    parameters = listOf(),
+)
+
+/**
+ * Calls of the caption tracks manager auto-translate getter inside the subtitle manager.
+ */
+internal class AutoTranslateTracksCallFingerprint(autoTranslateTracksMethod: MethodReference) : Fingerprint(
+    classFingerprint = DefaultCaptionTrackFingerprint,
+    filters = listOf(
+        methodCall(reference = autoTranslateTracksMethod)
+    )
+)
+
+/**
+ * Resolves to the caption track builder class.
+ */
+internal object CaptionTrackBuilderBuildFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        // Display name.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/CharSequence;"
+        ),
+        string(" languageCode"),
+        string(" vssId"),
+        string(" url")
+    )
+)
+
+internal object CaptionTrackBuilderCopyConstructorFingerprint : Fingerprint(
+    classFingerprint = CaptionTrackBuilderBuildFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/CharSequence;"
+        )
+    )
+)
+
+/**
+ * @param nullValueMessage Exception message of the setter, such as "Null url".
+ */
+internal class CaptionTrackBuilderSetterFingerprint(nullValueMessage: String) : Fingerprint(
+    classFingerprint = CaptionTrackBuilderBuildFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
+        string(nullValueMessage)
+    )
+)
 
 /**
  * Subtitle manager method that returns the direct caption tracks.
@@ -248,58 +383,20 @@ internal object SetSubtitleTrackFingerprint : Fingerprint(
     )
 )
 
-
-
-internal data class CaptionTranslationModel(
-    val track: ClassDef,
-    val translated: Method,
-    val direct: Method,
-    val language: Reference,
-    val vss: Reference,
+/** The final translation-count check before YouTube builds its own Auto-translate row. */
+internal object CaptionTracksManagerTranslationCountFingerprint : Fingerprint(
+    classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
+    parameters = listOf(),
+    returnType = "Ljava/util/List;",
+    filters = listOf(
+        methodCall(name = "size", parameters = listOf(), returnType = "I"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_LEZ, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, definingClass = "this", type = "Z",
+            location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        string("AUTO_TRANSLATE_CAPTIONS_OPTION", location = InstructionLocation.MatchAfterAnywhere()),
+        // Register holding the returned tracks list.
+        opcode(Opcode.RETURN_OBJECT, location = InstructionLocation.MatchAfterAnywhere())
+    )
 )
-
-private fun Method.code() = implementation?.instructions?.toList().orEmpty()
-private fun Method.hasText(text: String) = code().any {
-    ((it as? ReferenceInstruction)?.reference as? StringReference)?.string == text
-}
-private fun <T> Iterable<T>.unique(role: String): T = toList().let {
-    check(it.size == 1) { "Universal Captions: $role expected once, found ${it.size}: $it" }
-    it.single()
-}
-
-/** Resolve only the native translation model. Never identify or intercept caption policy methods. */
-internal fun resolveCaptionTranslationModel(classes: Iterable<ClassDef>): CaptionTranslationModel {
-    val all = classes.distinctBy { it.type }
-    fun Method.booleanWith(text: String) = returnType == "Z" && parameterTypes.isEmpty() && hasText(text)
-    val track = all.filter { type -> type.methods.any { it.booleanWith("DISABLE_CAPTIONS_OPTION") } }
-        .unique("caption track model")
-    val languageMethod = track.methods.filter { it.booleanWith("DISABLE_CAPTIONS_OPTION") }
-        .unique("language sentinel")
-    val vssMethod = track.methods.filter { method ->
-        method.booleanWith("t") && method.code().any {
-            val ref = (it as? ReferenceInstruction)?.reference as? MethodReference
-            ref?.definingClass == "Ljava/lang/String;" && ref.name == "startsWith"
-        }
-    }.unique("translated track identity")
-
-    fun accessor(method: Method, role: String): Reference = method.code().mapNotNull { instruction ->
-        val ref = (instruction as? ReferenceInstruction)?.reference
-        when {
-            instruction.opcode == Opcode.IGET_OBJECT && ref is FieldReference &&
-                    ref.definingClass == track.type && ref.type == "Ljava/lang/String;" -> ref
-            instruction.opcode in setOf(Opcode.INVOKE_VIRTUAL, Opcode.INVOKE_VIRTUAL_RANGE) &&
-                    ref is MethodReference && ref.definingClass == track.type &&
-                    ref.parameterTypes.isEmpty() && ref.returnType == "Ljava/lang/String;" -> ref
-            else -> null
-        }
-    }.distinct().unique(role)
-
-    fun Method.listWith(text: String) = returnType == "Ljava/util/List;" && parameterTypes.isEmpty() && hasText(text)
-    val model = all.filter { type -> type.methods.any { it.listWith("AUTO_TRANSLATE_CAPTIONS_OPTION") } }
-        .filter { type -> type.methods.any { it.listWith("&tlang=") } }.unique("caption list model")
-    val translated = model.methods.filter { it.listWith("&tlang=") }.unique("translation list")
-    return CaptionTranslationModel(track, translated,
-        model.methods.filter { it.listWith("AUTO_TRANSLATE_CAPTIONS_OPTION") }.unique("direct list"),
-        accessor(languageMethod, "language accessor"),
-        accessor(vssMethod, "vss accessor"))
-}
