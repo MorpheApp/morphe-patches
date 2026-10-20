@@ -845,6 +845,43 @@ public final class FeedViewCountPatch {
     }
 
     /**
+     * Where the duration badge and the thumbnail of a card are, relative to the card.
+     */
+    public static final class ThumbnailFrame {
+        /** The duration badge, or null if not found. */
+        @Nullable
+        public final Rect duration;
+        /** The thumbnail, or null if not found. */
+        @Nullable
+        public final Rect thumbnail;
+
+        ThumbnailFrame(@Nullable Rect duration, @Nullable Rect thumbnail) {
+            this.duration = duration;
+            this.thumbnail = thumbnail;
+        }
+    }
+
+    /**
+     * Finds the duration badge and the thumbnail of a card, the same way as for the view count badge.
+     * Also used by the like count badge of the Return YouTube Dislike patch, so both badges are placed
+     * on cards whose thumbnail is inset from their edges, such as the shelves of a channel,
+     * or is below other content, such as the video of a channel post.
+     * Must be called on the main thread.
+     */
+    public static ThumbnailFrame findThumbnailFrame(ComponentHost host) {
+        CardInfo info = new CardInfo(getTextsTop(host));
+        findCardInfo(host, host, info, new Rect());
+        Rect thumbnail = info.thumbnail;
+        if (info.duration == null && thumbnail == null) {
+            final int squareBottom = findSquareThumbnailBottom(host, info.texts);
+            if (squareBottom > 0) {
+                thumbnail = new Rect(0, 0, host.getWidth(), squareBottom);
+            }
+        }
+        return new ThumbnailFrame(info.duration, thumbnail);
+    }
+
+    /**
      * Called on the main thread after a root host is laid out.
      *
      * @param videoId The video of the card, or null if the host is not a video card
