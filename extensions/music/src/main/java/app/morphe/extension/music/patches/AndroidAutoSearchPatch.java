@@ -51,7 +51,7 @@ public final class AndroidAutoSearchPatch {
 
     /** Added to YTM's Auto search request to read the query and return results. */
     public interface SearchRequest {
-        String patch_query();
+        @Nullable String patch_query();
         /** YTM reports null as a failed search; an empty list means success with no matches. */
         void patch_deliverSearchResults(@Nullable List<MediaBrowserCompat.MediaItem> playableResults);
     }
@@ -60,6 +60,7 @@ public final class AndroidAutoSearchPatch {
     @Nullable
     private static SearchLoad pendingSearch;
     private static final Map<SearchRequest, SearchCompletion> searchCompletions = new WeakHashMap<>();
+    @Nullable
     private static volatile PhoneSearchClient phoneSearchClient;
 
     private AndroidAutoSearchPatch() {}
@@ -107,6 +108,7 @@ public final class AndroidAutoSearchPatch {
 
     private static final class SearchCompletion {
         boolean delivered;
+        @Nullable
         Runnable timeout;
 
         void cancelDeadline() {

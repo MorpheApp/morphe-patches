@@ -15,6 +15,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+    <!-- misc.androidauto.androidAutoPatch -->
     <string name="morphe_music_android_auto_last_played">Last played</string>
     <string name="morphe_music_android_auto_subscriptions">Subscriptions</string>
     <string name="morphe_music_android_auto_videos">Videos</string>
@@ -22,6 +23,7 @@ Second \"item\" text"</string>
     <string name="morphe_music_android_auto_uploaded_songs">Uploaded songs</string>
     <string name="morphe_music_android_auto_uploaded_albums">Uploaded albums</string>
     <string name="morphe_music_android_auto_uploaded_artists">Uploaded artists</string>
+
     <!-- app.morphe.patches.music.interaction.jam -->
     <string name="morphe_music_jam_update_host_controls">Update the host’s Jam patch to use pause and resume</string>
     <string name="morphe_music_jam_probe_title">Jam queue sharing</string>

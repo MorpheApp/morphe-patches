@@ -55,9 +55,7 @@ internal object IsGoogleSignedFingerprint : Fingerprint(
     parameters = listOf("Ljava/lang/String;")
 )
 
-// endregion
-
-// region Android Auto browse requests, media items, and folder refresh
+// Android Auto browse requests, media items, and folder refresh
 
 private const val SINGLE_COLUMN_BROWSE = 58_173_949L
 private const val GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG = 0x40000L
@@ -237,18 +235,6 @@ internal fun phoneBrowseContinuationFingerprint(requestType: String) = Fingerpri
             type = "Ljava/lang/String;",
             location = MatchAfterWithin(2)
         )
-    )
-)
-
-internal object SearchRequestTypeFingerprint : Fingerprint(
-    name = "<clinit>",
-    returnType = "V",
-    parameters = emptyList(),
-    filters = listOf(
-        string("MUSIC_SEARCH_REQUEST_TYPE_CATALOG"),
-        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this"),
-        string("MUSIC_SEARCH_REQUEST_TYPE_UPLOADED"),
-        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this")
     )
 )
 
@@ -507,4 +493,49 @@ internal fun mediaBrowserReloadFingerprint(baseServiceType: String) = Fingerprin
     )
 )
 
-// endregion
+// Android Auto search
+
+/** Identifies the query and parameter fields in a phone search request. */
+internal object PhoneSearchRequestFingerprint : Fingerprint(
+    returnType = "Ljava/lang/String;",
+    parameters = emptyList(),
+    strings = listOf("query", "params", "musicSearchRequestType"),
+    filters = listOf(
+        string("query"),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;", location = MatchAfterWithin(2)),
+        string("params"),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;", location = MatchAfterWithin(2)),
+    ),
+)
+
+/** Finds the calls YTM uses to create and send a phone search. */
+internal object PhoneSearchSubmissionFingerprint : Fingerprint(
+    returnType = "V",
+    strings = listOf("executeInnerTubeSearch", "Could not parse searchbox stats"),
+)
+
+/** Reads the catalog and uploaded search types assigned to a phone search request. */
+internal object SearchRequestTypeFingerprint : Fingerprint(
+    name = "<clinit>",
+    returnType = "V",
+    parameters = emptyList(),
+    filters = listOf(
+        string("MUSIC_SEARCH_REQUEST_TYPE_CATALOG"),
+        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this"),
+        string("MUSIC_SEARCH_REQUEST_TYPE_UPLOADED"),
+        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this")
+    )
+)
+
+/** Returns a completed list of search results to Android Auto. */
+internal object SearchResultDeliveryFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/util/List;"),
+    strings = listOf("MBS: SearchResult.sendResult() called multiple times.")
+)
+
+/** YTM's ContentSupplier handles requests for folder contents and search results in Android Auto. */
+internal object ContentSupplierFingerprint : Fingerprint(
+    name = "<clinit>",
+    strings = listOf("com/google/android/apps/youtube/music/mediabrowser/content/ContentSupplier"),
+)

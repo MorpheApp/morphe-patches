@@ -300,47 +300,34 @@ final class AndroidAutoBrowseResponseParser {
     }
 
     private static void addGridCard(List<BrowseItem> items, ProtoMessage renderer) {
-        String title = renderer.stringField(CARD_TITLE);
-        ProtoMessage tapCommand = renderer.messagePath(RESULT_TAP, INNERTUBE_COMMAND);
-        boolean tapStartsPlayback = isPlayable(tapCommand);
-        if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
-        String artworkUrl = artwork(renderer.messagePath(CARD_IMAGE, IMAGE_CONTENT));
-        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(RESULT_MENU,
-                INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
-        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, false);
-        addBrowseItem(items, renderer, title, renderer.stringField(CARD_SUBTITLE), artworkUrl, tapCommand, playCommand);
+        addRenderer(items, renderer, CARD_TITLE, CARD_SUBTITLE, CARD_IMAGE, RESULT_TAP, RESULT_MENU, false);
     }
 
     private static void addBrowseRow(List<BrowseItem> items, ProtoMessage renderer) {
-        String title = renderer.stringField(RESULT_TITLE);
-        ProtoMessage tapCommand = renderer.messagePath(RESULT_TAP, INNERTUBE_COMMAND);
-        boolean tapStartsPlayback = isPlayable(tapCommand);
-        if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
-        String artworkUrl = artwork(renderer.messagePath(RESULT_IMAGE, IMAGE_CONTENT));
-        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(RESULT_MENU,
-                INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
-        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, false);
-        addBrowseItem(items, renderer, title, renderer.stringField(RESULT_SUBTITLE), artworkUrl, tapCommand, playCommand);
+        addRenderer(items, renderer, RESULT_TITLE, RESULT_SUBTITLE, RESULT_IMAGE, RESULT_TAP, RESULT_MENU, false);
     }
 
     private static void addTopBrowseResult(List<BrowseItem> items, ProtoMessage renderer) {
-        String title = renderer.stringField(RESULT_TITLE);
-        ProtoMessage tapCommand = renderer.messagePath(TOP_RESULT_TAP, INNERTUBE_COMMAND);
-        boolean tapStartsPlayback = isPlayable(tapCommand);
-        if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
-        String artworkUrl = artwork(renderer.messagePath(RESULT_IMAGE, IMAGE_CONTENT));
-        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(TOP_RESULT_MENU,
-                INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
-        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, true);
-        addBrowseItem(items, renderer, title, renderer.stringField(RESULT_SUBTITLE), artworkUrl, tapCommand, playCommand);
+        addRenderer(items, renderer, RESULT_TITLE, RESULT_SUBTITLE, RESULT_IMAGE, TOP_RESULT_TAP, TOP_RESULT_MENU, true);
     }
 
-    private static void addBrowseItem(List<BrowseItem> items, ProtoMessage renderer, String title, String subtitle,
-                                      String artworkUrl, ProtoMessage tapCommand, ProtoMessage playCommand) {
+    /** Grid cards, result rows, and top results differ only in the field numbers of their contents. */
+    private static void addRenderer(List<BrowseItem> items, ProtoMessage renderer, int titleField, int subtitleField,
+                                    int imageField, int tapField, int menuField, boolean topResultCard) {
+        String title = renderer.stringField(titleField);
+        ProtoMessage tapCommand = renderer.messagePath(tapField, INNERTUBE_COMMAND);
+        boolean tapStartsPlayback = isPlayable(tapCommand);
+        if (title.isEmpty() || (!tapStartsPlayback && tapCommand.messageField(BROWSE).isEmpty())) return;
+        String artworkUrl = artwork(renderer.messagePath(imageField, IMAGE_CONTENT));
+        ProtoMessage menu = tapStartsPlayback ? ProtoMessage.EMPTY : renderer.messagePath(menuField,
+                INNERTUBE_COMMAND, MENU_ENDPOINT, MENU_CONTENT, MENU);
+        ProtoMessage playCommand = playCommand(tapCommand, menu, renderer, topResultCard);
+        String subtitle = renderer.stringField(subtitleField);
         if (tapCommand.messageField(BROWSE).stringField(BROWSE_ID).startsWith("MPED")) {
             subtitle = episodeSubtitle(renderer, subtitle);
         }
-        items.add(new BrowseItem(title, subtitle, artworkUrl, tapCommand.serializedBytes(), isPlayable(tapCommand), playCommand.serializedBytes()));
+        items.add(new BrowseItem(title, subtitle, artworkUrl, tapCommand.serializedBytes(), tapStartsPlayback,
+                playCommand.serializedBytes()));
     }
 
     // Text, artwork, and playback helpers also used by search.
@@ -397,6 +384,12 @@ final class AndroidAutoBrowseResponseParser {
         if (duration.isEmpty()) duration = progress.stringField(PROGRESS_FALLBACK_DURATION);
         if (duration.isEmpty() || subtitle.contains(duration)) return subtitle;
         return subtitle.isEmpty() ? duration : subtitle + " • " + duration;
+    }
+
+    /** Uploaded albums and artists need an ordered playlist command that marks the playlist as uploaded. */
+    static boolean isUploadedCollection(String browseId) {
+        return browseId.startsWith("FEmusic_library_privately_owned_release_detail")
+                || browseId.startsWith("FEmusic_library_privately_owned_artist");
     }
 
     static boolean isPlayable(ProtoMessage command) {

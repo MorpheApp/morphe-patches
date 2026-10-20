@@ -7,13 +7,9 @@
 
 package app.morphe.patches.music.misc.androidauto
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.string
 import app.morphe.patches.music.interaction.jam.addReferenceGetter
 import app.morphe.patches.music.interaction.jam.implementsType
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -30,29 +26,12 @@ private const val PHONE_SEARCH_CLIENT =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoSearchPatch$PhoneSearchClient;"
 private const val PHONE_SEARCH_RESPONSE =
     $$"Lapp/morphe/extension/music/patches/AndroidAutoSearchPatch$PhoneSearchResponse;"
+private const val SEARCH_REQUEST =
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoSearchPatch$SearchRequest;"
 private const val FUTURE = "Lcom/google/common/util/concurrent/ListenableFuture;"
 private const val EXECUTOR = "Ljava/util/concurrent/Executor;"
 
 // region Phone search client and responses
-
-/** Identifies the query and parameter fields in a phone search request. */
-private object PhoneSearchRequestFingerprint : Fingerprint(
-    returnType = "Ljava/lang/String;",
-    parameters = emptyList(),
-    strings = listOf("query", "params", "musicSearchRequestType"),
-    filters = listOf(
-        string("query"),
-        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;", location = MatchAfterWithin(2)),
-        string("params"),
-        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;", location = MatchAfterWithin(2)),
-    ),
-)
-
-/** Finds the calls YTM uses to create and send a phone search. */
-private object PhoneSearchSubmissionFingerprint : Fingerprint(
-    returnType = "V",
-    strings = listOf("executeInnerTubeSearch", "Could not parse searchbox stats"),
-)
 
 /** Uses YTM's phone search client for Android Auto's online searches. */
 internal fun BytecodePatchContext.patchSearch() {
@@ -156,27 +135,14 @@ internal fun BytecodePatchContext.patchSearch() {
 
 // region Android Auto search requests
 
-/** Returns a completed list of search results to Android Auto. */
-private object SearchResultDeliveryFingerprint : Fingerprint(
-    parameters = listOf("Ljava/util/List;"), returnType = "V",
-    strings = listOf("MBS: SearchResult.sendResult() called multiple times."),
-)
-
-/** YTM's ContentSupplier handles requests for folder contents and search results in Android Auto. */
-private object ContentSupplierFingerprint : Fingerprint(
-    name = "<clinit>",
-    strings = listOf("com/google/android/apps/youtube/music/mediabrowser/content/ContentSupplier"),
-)
-
 /** Replaces Android Auto's online search while preserving YTM's caller checks and local Library search. */
 private fun BytecodePatchContext.hookSearchRequests() {
     val deliverSearchResultsMethod = SearchResultDeliveryFingerprint.method
     val searchRequestClass = mutableClassDefBy(deliverSearchResultsMethod.definingClass)
-    val searchRequestInterface = $$"Lapp/morphe/extension/music/patches/AndroidAutoSearchPatch$SearchRequest;"
     val queryField = searchRequestClass.instanceFields.single { it.type == "Ljava/lang/String;" }
-    searchRequestClass.interfaces.add(searchRequestInterface)
+    searchRequestClass.interfaces.add(SEARCH_REQUEST)
     searchRequestClass.addReferenceGetter("patch_query", queryField)
-    searchRequestClass.addInterfaceMethod(findInterfaceMethod(searchRequestInterface, "patch_deliverSearchResults"), 2, """
+    searchRequestClass.addInterfaceMethod(findInterfaceMethod(SEARCH_REQUEST, "patch_deliverSearchResults"), 2, """
         invoke-virtual { p0, p1 }, $deliverSearchResultsMethod
         return-void
     """)
@@ -199,7 +165,7 @@ private fun BytecodePatchContext.hookSearchRequests() {
     // Existing jumps to this instruction must also run the hook before YTM sends the request.
     val hookResultRegister = handleSearchRequestMethod.findFreeRegister(networkSearchStartIndex)
     handleSearchRequestMethod.addInstructionsAtControlFlowLabel(networkSearchStartIndex, """
-        invoke-static { p1 }, $SEARCH_PATCH_CLASS->handleSearch($searchRequestInterface)Z
+        invoke-static { p1 }, $SEARCH_PATCH_CLASS->handleSearch($SEARCH_REQUEST)Z
         move-result v$hookResultRegister
         if-eqz v$hookResultRegister, :native_search
         return-void
@@ -209,11 +175,11 @@ private fun BytecodePatchContext.hookSearchRequests() {
     // Offline Library searches can bypass the online hook entirely.
     // Start the deadline before either path and ignore callbacks arriving after completion.
     handleSearchRequestMethod.addInstructions(0, """
-        invoke-static { p1 }, $SEARCH_PATCH_CLASS->onSearchRequest($searchRequestInterface)V
+        invoke-static { p1 }, $SEARCH_PATCH_CLASS->onSearchRequest($SEARCH_REQUEST)V
     """)
     val completionRegister = deliverSearchResultsMethod.findFreeRegister(0)
     deliverSearchResultsMethod.addInstructions(0, """
-        invoke-static { p0 }, $SEARCH_PATCH_CLASS->onSearchResult($searchRequestInterface)Z
+        invoke-static { p0 }, $SEARCH_PATCH_CLASS->onSearchResult($SEARCH_REQUEST)Z
         move-result v$completionRegister
         if-nez v$completionRegister, :deliver_results
         return-void
