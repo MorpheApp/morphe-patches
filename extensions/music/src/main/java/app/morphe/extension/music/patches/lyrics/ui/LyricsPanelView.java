@@ -66,7 +66,7 @@ import java.util.function.IntConsumer;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsTranslator;
-import app.morphe.extension.music.patches.lyrics.derive.QuickLrcClient;
+import app.morphe.extension.music.patches.lyrics.derive.QuickLRCClient;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
@@ -158,7 +158,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private TextView dualPillView;
     private boolean dualPillActive;
     // Loaded once per pill and kept, because only their order ever changes. Loading them again
-    // would drop whatever tint the button colours put on them, and a lookup that came back empty
+    // would drop whatever tint the button colors put on them, and a lookup that came back empty
     // would set that side of the pill to nothing.
     private Drawable dualPillTranslateIcon;
     private Drawable dualPillRomanizeIcon;
@@ -190,7 +190,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private String romanizedAiModel;
     @Nullable
     private String romanizedLocalDictionary;
-    /** The lyric carries a reading on its words, whether or not a whole-line one came back too. */
+    /** The lyric carries a reading on its words, whether a whole-line one came back too. */
     private boolean perWordRomaji;
     /** URL to the song page on the provider's platform, opened when the source label is clicked. */
     @Nullable
@@ -803,7 +803,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
             // A transcription in flight belongs to the track that just left.
             transcribeRequestId++;
             transcribeBusy = false;
-            QuickLrcClient.cancel();
+            QuickLRCClient.cancel();
             pendingAlignment = null;
             pendingAlignmentTrack = null;
             updateTranscribeAffordances();
@@ -1502,7 +1502,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         String about = newLyrics.about();
         boolean hasAbout = about != null && !about.isEmpty();
         boolean invitesContribution = newLyrics.synced()
-                && QuickLrcClient.PROVIDER_NAME.equals(newLyrics.providerName());
+                && QuickLRCClient.PROVIDER_NAME.equals(newLyrics.providerName());
         if ((songwriters != null && !songwriters.isEmpty()) || hasAbout || invitesContribution) {
             StringBuilder sb = new StringBuilder();
             if (songwriters != null) {
@@ -1937,7 +1937,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
             Settings.LYRICS_TRANSLATE_ONLY.save(true);
             Settings.LYRICS_ROMANIZE_ONLY.save(true);
         } else {
-            // A side that never arrived leaves nothing to promote: an only mode would drop the
+            // A side that never arrived leaves anything to promote: an only mode would drop the
             // original and give the survivor the whole line, a claim the user never made.
             onlyMode = OnlyMode.NONE;
         }
@@ -2495,7 +2495,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
      * app's own lyrics showing through - rather than offering something that cannot run.
      */
     private boolean showTranscribePrompt() {
-        if (!QuickLrcClient.isConfigured()) {
+        if (!QuickLRCClient.isConfigured()) {
             return false;
         }
         final TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
@@ -2543,7 +2543,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
     // stops. The search dialog's button runs through here too, which is what keeps the two
     // affordances from disagreeing about what is in flight.
     private void onTranscribePromptClicked() {
-        if (QuickLrcClient.isRunning()) {
+        if (QuickLRCClient.isRunning()) {
             cancelTranscription(true);
             return;
         }
@@ -2553,7 +2553,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
     private void cancelTranscription(boolean announce) {
         transcribeRequestId++;
         transcribeBusy = false;
-        QuickLrcClient.cancel();
+        QuickLRCClient.cancel();
         pendingAlignment = null;
         pendingAlignmentTrack = null;
         if (announce) {
@@ -2562,6 +2562,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         updateTranscribeAffordances();
     }
 
+    @SuppressWarnings("ConstantValue")
     private void startTranscription(@Nullable String lyrics) {
         final TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
         final String videoId = VideoInformation.getVideoId();
@@ -2569,7 +2570,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
             Utils.showToastShort(str("morphe_music_lyrics_transcribe_local_unsupported"));
             return;
         }
-        if (!QuickLrcClient.isConfigured()) {
+        if (!QuickLRCClient.isConfigured()) {
             return;
         }
 
@@ -2577,7 +2578,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         transcribeBusy = true;
         updateTranscribeAffordances();
 
-        QuickLrcClient.transcribe(videoId, lyrics == null ? "" : lyrics.trim(),
+        QuickLRCClient.transcribe(videoId, lyrics == null ? "" : lyrics.trim(),
                 () -> requestId == transcribeRequestId,
                 (result, failure) -> {
                     if (requestId != transcribeRequestId) {
@@ -2585,8 +2586,8 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                     }
                     transcribeBusy = false;
                     if (failure != null) {
-                        if (failure != QuickLrcClient.Failure.CANCELLED) {
-                            Utils.showToastShort(str(failure == QuickLrcClient.Failure.OUT_OF_CREDITS
+                        if (failure != QuickLRCClient.Failure.CANCELLED) {
+                            Utils.showToastShort(str(failure == QuickLRCClient.Failure.OUT_OF_CREDITS
                                     ? "morphe_music_lyrics_transcribe_out_of_credits"
                                     : "morphe_music_lyrics_transcribe_failed"));
                         }
@@ -2640,7 +2641,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
     }
 
     private void updateTranscribeAffordances() {
-        final boolean running = transcribeBusy || QuickLrcClient.isRunning();
+        final boolean running = transcribeBusy || QuickLRCClient.isRunning();
         if (transcribePromptView.getVisibility() == VISIBLE) {
             transcribePromptView.setText(str(running
                     ? "morphe_music_lyrics_transcribe_working"
@@ -2725,7 +2726,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         // Sits with the terms rather than in the button row, which this dialog leaves empty: it
         // reuses the same two fields rather than searching on its own. Read at open time, so the
         // button follows the key on disk rather than whatever was there when the class loaded.
-        if (QuickLrcClient.isConfigured()) {
+        if (QuickLRCClient.isConfigured()) {
             TextView transcribeButton = new TextView(context);
             applyButtonStyle(transcribeButton, null);
             LinearLayout.LayoutParams transcribeParams = new LinearLayout.LayoutParams(
@@ -2736,7 +2737,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
 
             transcribeButton.setText(pendingAlignment != null
                     ? str("morphe_music_lyrics_transcribe_apply_align")
-                    : QuickLrcClient.isRunning()
+                    : QuickLRCClient.isRunning()
                             ? str("morphe_music_lyrics_transcribe_aligning")
                             : str("morphe_music_lyrics_transcribe_align"));
             dialogAlignButton = transcribeButton;
@@ -2746,27 +2747,14 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 applyPendingAlignment();
                 return;
             }
-            if (QuickLrcClient.isRunning()) {
+            if (QuickLRCClient.isRunning()) {
                 cancelTranscription(true);
                 return;
             }
             final Lyrics current = lyrics;
             String text = null;
             if (current != null && !current.isEmpty() && current != Lyrics.NOT_FOUND) {
-                final StringBuilder joined = new StringBuilder();
-                int sentLines = 0;
-                int skippedBg = 0;
-                for (LyricsLine line : current.lines()) {
-                    if (line.isBG()) {
-                        skippedBg++;
-                        continue;
-                    }
-                    final String lineText = line.text();
-                    if (lineText != null && !lineText.trim().isEmpty()) {
-                        joined.append(lineText).append('\n');
-                        sentLines++;
-                    }
-                }
+                final StringBuilder joined = createJoined(current);
                 text = joined.toString();
             }
             if (text == null || text.trim().isEmpty()) {
@@ -2775,8 +2763,8 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
             }
             startTranscription(text);
             });
-        } else {
         }
+
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
@@ -2809,7 +2797,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         // result already back is kept, since reopening the dialog still offers it.
         dialog.setOnDismissListener(d -> {
             dialogAlignButton = null;
-            if (transcribeBusy || QuickLrcClient.isRunning()) {
+            if (transcribeBusy || QuickLRCClient.isRunning()) {
                 cancelTranscription(false);
             }
         });
@@ -2845,6 +2833,26 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 }
             });
         });
+    }
+
+    @SuppressWarnings("unused")
+    @NonNull
+    private static StringBuilder createJoined(Lyrics current) {
+        final StringBuilder joined = new StringBuilder();
+        int sentLines = 0;
+        int skippedBg = 0;
+        for (LyricsLine line : current.lines()) {
+            if (line.isBG()) {
+                skippedBg++;
+                continue;
+            }
+            final String lineText = line.text();
+            if (lineText != null && !lineText.trim().isEmpty()) {
+                joined.append(lineText).append('\n');
+                sentLines++;
+            }
+        }
+        return joined;
     }
 
     private void updateRefreshLabel() {
@@ -3611,20 +3619,20 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
             case CLEAR -> clearWordHighlight(action.line());
             case CLEAR_FADE -> {
                 clearWordHighlight(action.line());
-                fadeLineAndBg(action.line(), INACTIVE_LINE_ALPHA);
+                fadeLineAndBg(action.line());
             }
-            case FADE -> fadeLineAndBg(action.line(), INACTIVE_LINE_ALPHA);
+            case FADE -> fadeLineAndBg(action.line());
             case RESET_ACTIVE -> resetLineForWordSyncOff(action.line(), true);
             case RESET_INACTIVE -> resetLineForWordSyncOff(action.line(), false);
         }
     }
 
-    private void fadeLineAndBg(int line, float target) {
+    private void fadeLineAndBg(int line) {
         if (line < 0 || line >= lineViews.size() || lyrics == null) {
             return;
         }
-        LyricsViewSupport.fadeTo(lineViews.get(line), target);
-        forEachBgLine(line, lyrics, i -> LyricsViewSupport.fadeTo(lineViews.get(i), target));
+        LyricsViewSupport.fadeTo(lineViews.get(line), LyricsPanelView.INACTIVE_LINE_ALPHA);
+        forEachBgLine(line, lyrics, i -> LyricsViewSupport.fadeTo(lineViews.get(i), LyricsPanelView.INACTIVE_LINE_ALPHA));
     }
 
     private void resetLineForWordSyncOff(int line, boolean activeLine) {
@@ -3901,6 +3909,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
      * the label is up there is nothing to reorder; settleDualPill reads the new setting when it
      * brings the icons back.
      */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private void refreshDualPillIcons() {
         final TextView pill = dualPillView;
         if (!dualPillActive || pill == null || pill.getText().length() > 0) {
@@ -4036,7 +4045,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         final TextView pill = createDualPill();
         dualPillView = pill;
         dualPillActive = true;
-        // The slot the translate button holds, which is where the pill ends up: the gap of the
+        // The slot the translation button holds, which is where the pill ends up: the gap of the
         // button it stands in for, or it would sit flush against the copy button.
         final int at = buttonRow.indexOfChild(translate);
 

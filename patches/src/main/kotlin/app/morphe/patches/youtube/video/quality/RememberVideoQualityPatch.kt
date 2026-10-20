@@ -121,16 +121,14 @@ val rememberVideoQualityPatch = bytecodePatch {
             val videoQualitySettingMethod = getVideoQualitySettingFingerprint(videoQualitySettingType).method
 
             videoQualitySettingMethod.apply {
-                val register = findFreeRegister(0)
-
                 addInstructionsWithLabels(
                     0,
                     """
                         invoke-static { }, $EXTENSION_CLASS->useAdvancedVideoQualitySetting()Z
-                        move-result v$register
-                        if-eqz v$register, :original
-                        sget-object v$register, $advancedMenuField
-                        return-object v$register
+                        move-result v0
+                        if-eqz v0, :original
+                        sget-object v0, $advancedMenuField
+                        return-object v0
                         :original
                         nop
                     """

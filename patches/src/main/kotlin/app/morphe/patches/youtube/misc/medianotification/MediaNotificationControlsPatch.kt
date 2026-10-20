@@ -14,7 +14,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findFreeRegister
 
 @Suppress("unused")
 val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
@@ -31,14 +30,12 @@ val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
         // Android 12 and lower show the notification actions as the media buttons.
         // Don't add the previous/next actions, otherwise the buttons remain visible but do nothing.
         PlaybackNotificationAddActionFingerprint.method.apply {
-            val freeRegister = findFreeRegister(0)
-
             addInstructionsWithLabels(
                 0,
                 """
                     invoke-static { p3 }, $EXTENSION_CLASS->hideNotificationAction(I)Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :add_action
+                    move-result v0
+                    if-eqz v0, :add_action
                     return-void
                     :add_action
                     nop

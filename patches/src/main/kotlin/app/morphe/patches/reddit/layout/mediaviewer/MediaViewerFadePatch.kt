@@ -52,13 +52,12 @@ val mediaViewerFadePatch = bytecodePatch(
             MediaViewerChromeFingerprint.method.apply {
                 // The method is static and has no wide parameters before the style.
                 val styleRegister = p0Register + parameterTypes.indexOfFirst { it.toString() == SCRIM_STYLE_CLASS }
-                val freeRegister = findFreeRegister(0)
                 addInstructionsWithLabels(
                     0,
                     """
                         invoke-static { }, $EXTENSION_CLASS->useLegacyFadeStyle()Z
-                        move-result v$freeRegister
-                        if-eqz v$freeRegister, :keep_fade_style
+                        move-result v0
+                        if-eqz v0, :keep_fade_style
                         sget-object v$styleRegister, $SCRIM_STYLE_CLASS->LEGACY_GRADIENT:$SCRIM_STYLE_CLASS
                         :keep_fade_style
                         nop

@@ -713,16 +713,15 @@ private fun BytecodePatchContext.addBrowseRequestInterface(
  */
 private fun BytecodePatchContext.skipCustomMediaIdDecoding(requestedMediaIdField: FieldReference) {
     val decodedMediaIdMethod = decodedMediaIdFingerprint(requestedMediaIdField.definingClass).method
-    val mediaIdRegister = decodedMediaIdMethod.findFreeRegister(0)
     decodedMediaIdMethod.addInstructionsWithLabels(
         0,
         """
-            iget-object v$mediaIdRegister, p0, $requestedMediaIdField
-            invoke-static/range { v$mediaIdRegister .. v$mediaIdRegister }, $EXTENSION_CLASS->isCustomMediaId(Ljava/lang/String;)Z
-            move-result v$mediaIdRegister
-            if-eqz v$mediaIdRegister, :resume
-            const/4 v$mediaIdRegister, 0x0
-            return-object v$mediaIdRegister
+            iget-object v0, p0, $requestedMediaIdField
+            invoke-static { v0 }, $EXTENSION_CLASS->isCustomMediaId(Ljava/lang/String;)Z
+            move-result v0
+            if-eqz v0, :resume
+            const/4 v0, 0x0
+            return-object v0
             :resume
             nop
         """
@@ -868,13 +867,12 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
         // Read the endpoint field used to build the request URL, rather than its obfuscated name.
         val endpointField = requestUrlFingerprint(requestDataClass.type, endpointOwnerType)
             .instructionMatches.first().instruction.getReference<FieldReference>()!!
-        val requestRegister = completionMethod.findFreeRegister(0)
         completionMethod.addInstructions(
             0,
             """
-                iget-object v$requestRegister, p0, $requestField
-                iget-object v$requestRegister, v$requestRegister, $endpointField
-                invoke-static/range { v$requestRegister .. v$requestRegister }, $EXTENSION_CLASS->onRequestSucceeded(Ljava/lang/String;)V
+                iget-object v0, p0, $requestField
+                iget-object v0, v0, $endpointField
+                invoke-static { v0 }, $EXTENSION_CLASS->onRequestSucceeded(Ljava/lang/String;)V
             """
         )
     }
