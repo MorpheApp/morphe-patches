@@ -195,6 +195,10 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting AISLIST_SUBMIT_FLYOUT_MENU = new BooleanSetting("morphe_aislist_submit_flyout_menu", FALSE);
     public static final StringSetting AISLIST_SUBMIT_USERNAME = new StringSetting("morphe_aislist_submit_username", "", parent(AISLIST_SUBMIT_FLYOUT_MENU));
 
+    // Ask flyout menu
+    public static final BooleanSetting ASK_SUMMARIZE_FLYOUT_MENU = new BooleanSetting("morphe_ask_summarize_flyout_menu", FALSE, "morphe_ask_summarize_flyout_menu_user_dialog_message");
+    public static final StringSetting ASK_PANEL_TEMPLATE = new StringSetting("morphe_ask_panel_template", "", false, false);
+
     // DeArrow
     public static final BooleanSetting DEARROW_TITLES_HOME = new BooleanSetting("morphe_dearrow_titles_home", FALSE, true);
     public static final BooleanSetting DEARROW_TITLES_SUBSCRIPTIONS = new BooleanSetting("morphe_dearrow_titles_subscription", FALSE, true);

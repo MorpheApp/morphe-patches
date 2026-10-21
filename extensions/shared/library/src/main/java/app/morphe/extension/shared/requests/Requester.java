@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -161,6 +162,22 @@ public class Requester {
         String result = parseString(connection);
         connection.disconnect();
         return result;
+    }
+
+    /**
+     * Parse the {@link HttpURLConnection} response as bytes, such as a protobuf response.
+     * This does not close the url connection.
+     */
+    public static byte[] parseBytes(HttpURLConnection connection) throws IOException {
+        try (InputStream inputStream = connection.getInputStream()) {
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            byte[] buffer = new byte[8192];
+            int read;
+            while ((read = inputStream.read(buffer)) > 0) {
+                bytes.write(buffer, 0, read);
+            }
+            return bytes.toByteArray();
+        }
     }
 
     /**

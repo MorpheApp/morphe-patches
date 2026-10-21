@@ -97,6 +97,20 @@ public final class ChannelSearchRoutes {
                     ",videoDetails.shortDescription,videoDetails.keywords"
     ).compile();
 
+    /**
+     * If the video is live now or upcoming, for the body of {@link #createWebVideoBody(String, Locale)}.
+     * The unauthenticated player response usually asks to sign in instead of telling it.
+     * The response leaves out isLive if it is false, and has the video id if the server answered.
+     */
+    public static final Route.CompiledRoute GET_LIVE_STATUS = new Route(
+            Route.Method.POST,
+            "next" +
+                    "?prettyPrint=false" +
+                    "&fields=currentVideoEndpoint.watchEndpoint.videoId" +
+                    ",contents.twoColumnWatchNextResults.results.results.contents" +
+                    ".videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.isLive"
+    ).compile();
+
     private static final String SEARCH_RESULT_VIDEO_FIELD =
             "contents.sectionListRenderer.contents.itemSectionRenderer.contents.videoWithContextRenderer";
 
@@ -147,6 +161,24 @@ public final class ChannelSearchRoutes {
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {
             Logger.printException(() -> "createVideoSearchBody failed", ex);
+        }
+        return new byte[0];
+    }
+
+    /**
+     * Like {@link #createVideoBody(String, Locale)}, but as the web client, whose watch page response
+     * has the layout of {@link #GET_LIVE_STATUS}, with the language without the country, and with
+     * the country of the locale instead of the default country.
+     */
+    public static byte[] createWebVideoBody(String videoId, Locale locale) {
+        try {
+            JSONObject body = new JSONObject();
+            body.put("context", createContext(UPLOADS_CLIENT_NAME, locale));
+            body.put("videoId", videoId);
+
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "createWebVideoBody failed", ex);
         }
         return new byte[0];
     }

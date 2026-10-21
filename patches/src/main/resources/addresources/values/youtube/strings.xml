@@ -468,6 +468,21 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_feed_watch_later_button_title">Show Watch later button on thumbnails</string>
     <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos. Tapping and holding it opens Save to playlist</string>
 
+    <!-- interaction.ask.askFlyoutMenuPatch -->
+    <string name="morphe_ask_summarize_flyout_menu_title">Add Ask item to flyout menu</string>
+    <string name="morphe_ask_summarize_flyout_menu_summary">Adds a video summarize item to the feed flyout menu</string>
+    <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+    <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask initially requires a signed-in account in a country where Ask is available.
+
+After a video with the Ask button is opened once, the feature works with all videos even if the current country does not have Ask feature."</string>
+
+    <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+    <string name="morphe_ask_summarize_title">Summarize the video</string>
+    <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+    <string name="morphe_ask_summarize_failed">Could not open Ask for this video</string>
+    <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+    <string name="morphe_ask_summarize_unavailable">Ask is not available for your account or current country</string>
+
     <!-- layout.feedviews.feedViewCountPatch -->
     <string name="morphe_feed_view_count_title">Show view count on thumbnails</string>
     <string name="morphe_feed_view_count_summary">The view count of feed videos is shown at the bottom left of their thumbnails instead of below the title. Some videos, such as in shelves, may not show a view count</string>
