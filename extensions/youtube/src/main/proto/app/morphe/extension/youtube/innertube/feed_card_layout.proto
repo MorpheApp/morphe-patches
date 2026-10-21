@@ -9,31 +9,10 @@ option java_outer_classname = "FeedCardLayoutOuterClass";
 // Bytes of the newElement of an elementRenderer.
 message Element {
     ElementType type = 1;
-    ElementStyle style = 2;
 }
 
 message ElementType {
     ComponentType componentType = 168777401;
-}
-
-message ElementStyle {
-    ElementLayout layout = 168772996;
-}
-
-message ElementLayout {
-    ElementEdges edges = 1;
-    ElementDimension height = 2;
-    ElementDimension width = 3;
-    int32 position = 17; // 2: absolute.
-}
-
-message ElementEdges {
-    ElementDimension bottom = 3;
-}
-
-message ElementDimension {
-    optional float value = 1;
-    int32 unit = 2; // 0: dp, 2: fraction of the parent.
 }
 
 message ComponentType {
@@ -55,8 +34,6 @@ message ElementModel {
     VideoWithContextModel videoWithContextModel = 232954548;
     // Feed card video (lockup.eml).
     LockupModel lockupModel = 413471385;
-    // Thumbnail (thumbnail.eml).
-    ThumbnailModel thumbnailModel = 188824243;
     // Header of the shelves, such as the Shorts shelf (shelf_header.eml).
     ShelfHeaderModel shelfHeaderModel = 229393850;
     // Horizontal shelf of videos, with its header (horizontal_shelf.eml).
@@ -164,11 +141,6 @@ message VideoData {
     LockupImage avatarStack = 24; // Avatars of the channels of a collaboration.
 }
 
-message ThumbnailModel {
-    VideoThumbnail data = 1;
-    ElementContext context = 18;
-}
-
 message VideoThumbnail {
     bytes image = 1;
     string timestampText = 2;
@@ -177,7 +149,6 @@ message VideoThumbnail {
     string videoCountText = 6; // Playlists.
     string timestampAccessibilityText = 11;
     string badgeIcon = 19; // Drawable name, such as the live icon.
-    optional uint32 backgroundColor = 26; // Unset uses the placeholder color.
 }
 
 message ChannelAvatar {
@@ -203,8 +174,11 @@ message LockupPadding {
     float bottom = 4;
 }
 
+// View model of the elements with the model of lockupModel, such as the cards.
 message LockupViewModelHolder {
     LockupViewModel lockupViewModel = 8179;
+    // Model of thumbnail_bottom_overlay.eml.
+    ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
 }
 
 message LockupViewModel {
@@ -231,16 +205,29 @@ message ThumbnailViewModel {
 }
 
 message ThumbnailOverlay {
+    // Only the badges are shown by lockup_thumbnail.eml.
     ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
     ThumbnailElementOverlay thumbnailElementOverlay = 36905;
 }
 
+// Element drawn over the thumbnail.
+message ThumbnailElementOverlay {
+    Element element = 1;
+}
+
 message ThumbnailBottomOverlayViewModel {
+    ThumbnailOverlayProgressBar progressBar = 2;
     repeated ThumbnailBadge badges = 4;
 }
 
-message ThumbnailElementOverlay {
-    Element element = 1;
+// Watch progress bar at the bottom of the thumbnail (thumbnail_overlay_progress_bar.eml).
+message ThumbnailOverlayProgressBar {
+    ThumbnailOverlayProgressBarViewModel thumbnailOverlayProgressBarViewModel = 1222;
+}
+
+message ThumbnailOverlayProgressBarViewModel {
+    float progress = 1; // Watched fraction, from 0 to 1.
+    int32 style = 6; // 3: at the bottom edge of the thumbnail, without the space below.
 }
 
 message ThumbnailBadge {
