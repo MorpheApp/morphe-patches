@@ -52,7 +52,8 @@ internal fun MutableClass.addHelperMethod(
 val captionsPatch = bytecodePatch(
     name = "Captions",
     description = "Adds options to disable captions from being automatically enabled, " +
-            "select a preferred caption language, and add more auto-translate languages.",
+            "select a preferred caption language, add more auto-translate languages, " +
+            "and show captions in picture-in-picture.",
 ) {
     dependsOn(
         autoCaptionsPatch,
@@ -61,6 +62,7 @@ val captionsPatch = bytecodePatch(
         captionCookiesPatch,
         transcriptPatch,
         translatedCaptionPensPatch,
+        captionsInPipPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

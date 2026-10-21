@@ -36,7 +36,7 @@ internal object EndpointServiceNameFingerprint : Fingerprint(
 )
 
 internal object DislikeFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    name = "<init>", // Public or protected constructor depending on the app version.
     returnType = "V",
     filters = listOf(
         string("like/dislike")
