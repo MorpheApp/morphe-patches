@@ -88,6 +88,46 @@ public class AutoTranslateCaptionsPatchTest {
         assertEquals(URL + "&tlang=el&fmt=srv3#opaque", find(result, "el").patch_getUrl());
     }
 
+    @Test public void nativeTranslationsMustShareSourceBeforeExpansion() {
+        Track english = new Track("de", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&sig=x%2By&tlang=de",
+                "ta.en.de", "German");
+        Track french = new Track("fr", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=fr&sig=x%2By&tlang=fr",
+                "ta.fr.fr", "French");
+        Track otherVideo = new Track("fr", "https://www.youtube.com/api/timedtext?v=zyxwvutsrqp&lang=en&sig=x%2By&tlang=fr",
+                "ta.en.fr", "French");
+        for (Track other : List.of(french, otherVideo)) {
+            List<CaptionTrackInterface> nativeList = List.of(english, other);
+            assertSame(nativeList, add(nativeList, Locale.ENGLISH));
+        }
+        assertSame(english, find(add(List.of(english), Locale.ENGLISH), "de"));
+        find(add(List.of(english), Locale.ENGLISH), "tr");
+    }
+
+    @Test public void nativeTranslationTargetMustBeUnambiguousAndInTheActualQuery() {
+        String base = "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&sig=a%2Bb";
+        for (String unsafe : List.of(
+                base + "&tlang=de&tlang=de",
+                base + "&%74lang=de&tlang=de",
+                base + "&tlang=de-DE",
+                base + "#opaque&tlang=de",
+                base + "&tlang=de&tlang=fr",
+                base.replace("youtube.com", "youtube.com.evil.test") + "&tlang=de"
+        )) {
+            List<CaptionTrackInterface> nativeList =
+                    List.of(new Track("de", unsafe, "ta.en.de", "German"));
+            assertSame(unsafe, nativeList, add(nativeList, Locale.ENGLISH));
+        }
+        Track valid = new Track("de", base + "&tlang=de&fmt=srv3#opaque", "ta.en.de", "German");
+        assertEquals(base + "&tlang=tr&fmt=srv3#opaque",
+                find(add(List.of(valid), Locale.ENGLISH), "tr").patch_getUrl());
+    }
+
+    @Test public void originalLanguageIsNotAddedAsItsOwnTranslation() {
+        Track german = new Track("de", "German");
+        List<CaptionTrackInterface> translated = add(List.of(german), Locale.ENGLISH);
+        assertFalse(translated.stream().anyMatch(t -> "en".equals(t.patch_getLanguageCode())));
+    }
+
     @Test public void keepsBrazilianAndEuropeanPortugueseSeparate() {
         List<CaptionTrackInterface> result = add(List.of(new Track("pt", "Portuguese")), Locale.ENGLISH);
 
@@ -191,18 +231,19 @@ public class AutoTranslateCaptionsPatchTest {
         org.junit.Assert.assertNull(PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(source), List.of(), null, "qaa", Locale.ENGLISH));
     }
 
-    @Test public void multipleSourcesKeepCurrentAudioOrderWhenNoDefaultExists() {
+    @Test public void ambiguousOriginalsRequireAVerifiedCurrentAudioSource() {
         Track english = new Track("en", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&name=English&sig=a%2Bb", ".en.named", "English");
         Track french = new Track("fr", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=fr&kind=asr", "a.fr", "French");
         List<CaptionTrackInterface> direct = List.of(english, french);
-        assertSame(english, AutoTranslateCaptionsPatch.findFallbackSource(direct, null));
-        var menu = AutoTranslateCaptionsPatch.restoreTranslationTracks(List.of(), direct, null, Locale.ENGLISH);
-        assertEquals("https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&name=English&sig=a%2Bb&tlang=bn", find(menu, "bn").patch_getUrl());
-        var preferred = PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.copyOf(direct), List.of(), null, "bn", Locale.ENGLISH);
-        assertEquals("t.en.named.bn", preferred.patch_getVssId());
-        assertEquals(find(menu, "bn").patch_getUrl(), ((CaptionTrackInterface) preferred).patch_getUrl());
-        // A new audio's direct list must be evaluated independently, without a cached source.
-        assertSame(french, AutoTranslateCaptionsPatch.findFallbackSource(List.of(french, english), null));
+        org.junit.Assert.assertNull(AutoTranslateCaptionsPatch.findFallbackSource(direct, null));
+        assertSame(french, AutoTranslateCaptionsPatch.findFallbackSource(direct, french));
+        assertSame(english, AutoTranslateCaptionsPatch.findFallbackSource(List.of(english, english), null));
+        List<CaptionTrackInterface> empty = List.of();
+        assertSame(empty, AutoTranslateCaptionsPatch.restoreTranslationTracks(empty, direct, null, Locale.ENGLISH));
+        org.junit.Assert.assertNull(PreferredCaptionLanguagePatch.findAutoTranslatedTrack(
+                List.copyOf(direct), List.of(), null, "bn", Locale.ENGLISH));
+        // Each audio's independently validated single-source list still works.
+        assertSame(french, AutoTranslateCaptionsPatch.findFallbackSource(List.of(french), null));
     }
 
     @Test public void mixedVideoAndMalformedSourceListsCannotProduceFallbacks() {
@@ -240,10 +281,10 @@ public class AutoTranslateCaptionsPatchTest {
                 new Track("fr", french.url + "&name=other", french.vss, "Different URL"),
                 new Track("fr", french.url, ".fr.other", "Different VSS"),
                 new Track("de", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=de", ".de", "Other audio"))) {
-            assertSame(english, AutoTranslateCaptionsPatch.findFallbackSource(direct, absentDefault));
+            org.junit.Assert.assertNull(AutoTranslateCaptionsPatch.findFallbackSource(direct, absentDefault));
         }
-        assertSame(french, AutoTranslateCaptionsPatch.findFallbackSource(List.of(french, english), null));
-        assertSame(english, AutoTranslateCaptionsPatch.findFallbackSource(direct, null));
+        org.junit.Assert.assertNull(AutoTranslateCaptionsPatch.findFallbackSource(List.of(french, english), null));
+        org.junit.Assert.assertNull(AutoTranslateCaptionsPatch.findFallbackSource(direct, null));
     }
 
     @Test public void defaultCannotBypassValidationOfTheRestOfTheSourceList() {

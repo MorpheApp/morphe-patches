@@ -48,16 +48,19 @@ public class TranslatedCaptionPensPatch {
      * @param request Caption request, or any other request handled by the same code.
      */
     public static void setParsedRequest(@Nullable Object request) {
+        boolean translated = false;
         try {
-            final boolean translated = request instanceof CaptionRequestInterface captionRequest
+            translated = request instanceof CaptionRequestInterface captionRequest
                     && captionRequest.patch_getCaptionTrack() instanceof PreferredCaptionLanguagePatch.CaptionTrackInterface track
                     // Auto-translated vss ids are "t" + source vss id + "." + language code.
                     && track.patch_getVssId().startsWith("t");
-
-            isAutoTranslatedTrack.set(translated);
-        } catch (Exception ex) {
+        } catch (RuntimeException ex) {
             Logger.printException(() -> "setParsedRequest failure", ex);
+        } catch (LinkageError ignored) {
+            // Unknown native layouts must not retain the previous decoder's styling.
         }
+        // A failed native getter must not leave the previous translated state enabled.
+        isAutoTranslatedTrack.set(translated);
     }
 
     /**

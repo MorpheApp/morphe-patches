@@ -92,22 +92,21 @@ public final class AutoTranslateCaptionsPatch {
             return tracks;
         }
 
-        // All tracks are translations of the same source track.
-        // Vss id is "t" + source vss id + "." + language code,
-        // and the url contains "&tlang=" + language code.
+        // Native translations can use different originals for different targets.
+        // Only clone them when their signed URL and original VSS agree.
         CaptionTrackInterface template = tracks.get(0);
-        String templateCode = template.patch_getLanguageCode();
-        String vssIdPrefix = removeSuffix(template.patch_getVssId(), templateCode.length());
-        String templateUrl = template.patch_getUrl();
-        String targetParameter = "&tlang=" + templateCode;
-        final int targetIndex = templateUrl.lastIndexOf(targetParameter);
-        if (targetIndex < 0) {
-            Logger.printDebug(() -> "Translation url has no target language: " + templateUrl);
-            return tracks;
+        String identity = translationSourceIdentity(template);
+        if (identity == null) return tracks;
+        for (CaptionTrackInterface track : tracks) {
+            if (!identity.equals(translationSourceIdentity(track))) return tracks;
         }
-        // Keep everything around the target language unchanged, including the signature.
-        String urlPrefix = templateUrl.substring(0, targetIndex + targetParameter.length() - templateCode.length());
-        String urlSuffix = templateUrl.substring(targetIndex + targetParameter.length());
+        String templateCode = template.patch_getLanguageCode();
+        String templateUrl = template.patch_getUrl();
+        int targetAt = targetValueOffset(templateUrl, templateCode);
+        String vssIdPrefix = removeSuffix(template.patch_getVssId(), templateCode.length());
+        String urlPrefix = templateUrl.substring(0, targetAt);
+        String urlSuffix = templateUrl.substring(targetAt + templateCode.length());
+        String sourceLanguage = captionParameters(templateUrl).get("lang");
 
         Set<String> existingLanguages = new HashSet<>();
         for (CaptionTrackInterface track : tracks) {
@@ -116,13 +115,16 @@ public final class AutoTranslateCaptionsPatch {
 
         List<CaptionTrackInterface> result = new ArrayList<>(tracks);
         for (String code : TRANSLATION_LANGUAGES) {
+            // Never ask YouTube to auto-translate a source into itself.
+            if (getLanguageKey(code).equals(getLanguageKey(sourceLanguage))) continue;
             if (existingLanguages.add(getLanguageKey(code))) {
                 String name = Locale.forLanguageTag(code).getDisplayName(locale);
                 result.add(template.patch_copyTranslation(
                         code, urlPrefix + code + urlSuffix, vssIdPrefix + code, name));
             }
         }
-
+        return result.size() == tracks.size() ? tracks : sortTranslationTracks(result, locale);
+    }
         return sortTranslationTracks(result, locale);
     }
 
@@ -185,6 +187,7 @@ public final class AutoTranslateCaptionsPatch {
         if (tracks == null) return null;
         CaptionTrackInterface first = null, preferred = null;
         String video = null;
+        boolean mixedSources = false;
         for (PreferredCaptionLanguagePatch.CaptionTrackInterface track : tracks) {
             if (track == null) return null;
             String code = track.patch_getLanguageCode();
@@ -195,11 +198,13 @@ public final class AutoTranslateCaptionsPatch {
             if (identity == null || video != null && !video.equals(identity)) return null;
             video = identity;
             if (first == null) first = candidate;
+            else if (!first.patch_getVssId().equals(candidate.patch_getVssId())
+                    || !first.patch_getUrl().equals(candidate.patch_getUrl())) mixedSources = true;
             if (defaultSource instanceof CaptionTrackInterface nativeDefault
                     && candidate.patch_getVssId().equals(nativeDefault.patch_getVssId())
                     && candidate.patch_getUrl().equals(nativeDefault.patch_getUrl())) preferred = candidate;
         }
-        return preferred != null ? preferred : first;
+        return preferred != null ? preferred : mixedSources ? null : first;
     }
 
     static String translationLanguage(String language) {
@@ -226,41 +231,97 @@ public final class AutoTranslateCaptionsPatch {
                 "t" + source.patch_getVssId() + "." + language, name.isEmpty() ? language : name);
     }
 
-    /** Validate identity without decoding/re-encoding signed URL bytes. */
-    private static String originalVideoId(CaptionTrackInterface source) {
-        String language = source.patch_getLanguageCode();
-        if (language == null || !LANGUAGE_CODE_PATTERN.matcher(language).matches()) return null;
-        String vss = source.patch_getVssId();
-        boolean asr = originalVss(vss, "a." + language);
-        if (!asr && !originalVss(vss, "." + language)) return null;
+    /** Keep YouTube URL validation shared by original and native translated tracks. */
+    private static Map<String, String> captionParameters(String url) {
+        if (url == null) return null;
         try {
-            URI uri = URI.create(source.patch_getUrl());
+            URI uri = URI.create(url);
             String host = uri.getHost();
             if (!"https".equalsIgnoreCase(uri.getScheme()) || host == null
-                    || !("youtube.com".equalsIgnoreCase(host) || host.toLowerCase(Locale.ROOT).endsWith(".youtube.com"))
+                    || !("youtube.com".equalsIgnoreCase(host)
+                    || host.toLowerCase(Locale.ROOT).endsWith(".youtube.com"))
                     || uri.getUserInfo() != null || (uri.getPort() != -1 && uri.getPort() != 443)
                     || !"/api/timedtext".equals(uri.getRawPath()) || uri.getRawQuery() == null) return null;
-            Map<String, String> parameters = new HashMap<>();
+            Map<String, String> fields = new HashMap<>();
             for (String part : uri.getRawQuery().split("&", -1)) {
                 int split = part.indexOf('=');
                 String rawKey = split < 0 ? part : part.substring(0, split);
                 String key = URLDecoder.decode(rawKey, "UTF-8");
                 if (!List.of("v", "lang", "kind", "name", "tlang").contains(key)) continue;
-                if (!key.equals(rawKey) || parameters.containsKey(key) || key.equals("tlang")) return null;
-                parameters.put(key, URLDecoder.decode(split < 0 ? "" : part.substring(split + 1), "UTF-8"));
+                if (!key.equals(rawKey) || fields.containsKey(key)) return null;
+                fields.put(key, URLDecoder.decode(split < 0 ? "" : part.substring(split + 1), "UTF-8"));
             }
-            String video = parameters.get("v");
-            String sourceLanguage = parameters.get("lang");
-            String kind = parameters.get("kind");
-            if (video == null || !VIDEO_ID_PATTERN.matcher(video).matches() || sourceLanguage == null
-                    || !LANGUAGE_CODE_PATTERN.matcher(sourceLanguage).matches()
-                    || !getLanguageKey(language).equals(getLanguageKey(sourceLanguage))
-                    || (asr ? !"asr".equals(kind) : kind != null && !kind.isEmpty())) return null;
-            return video;
-        } catch (IllegalArgumentException | UnsupportedEncodingException ex) {
-            Logger.printDebug(() -> "originalVideoId rejected track url", ex);
+            return fields;
+        } catch (IllegalArgumentException | UnsupportedEncodingException ignored) {
             return null;
         }
+    }
+
+    /** Native target-specific source identity, ignoring only the target value itself. */
+    private static String translationSourceIdentity(CaptionTrackInterface track) {
+        if (track == null) return null;
+        String code = track.patch_getLanguageCode();
+        String vss = track.patch_getVssId();
+        if (code == null || !LANGUAGE_CODE_PATTERN.matcher(code).matches()
+                || vss == null || !vss.startsWith("t") || !vss.endsWith("." + code)) return null;
+        String url = track.patch_getUrl();
+        Map<String, String> fields = captionParameters(url);
+        if (fields == null || !code.equals(fields.get("tlang"))) return null;
+        String sourceLanguage = fields.get("lang"), video = fields.get("v");
+        if (sourceLanguage == null || !LANGUAGE_CODE_PATTERN.matcher(sourceLanguage).matches()
+                || video != null && !video.matches("[A-Za-z0-9_-]{1,128}")) return null;
+        String sourceVss = vss.substring(1, vss.length() - code.length() - 1);
+        if (!originalVss(sourceVss, "a." + sourceLanguage)
+                && !originalVss(sourceVss, "." + sourceLanguage)) return null;
+        int target = targetValueOffset(url, code);
+        return target < 0 ? null : sourceVss + "|" + url.substring(0, target)
+                + '\0' + url.substring(target + code.length());
+    }
+
+    /** Reject duplicate, encoded or fragment-only target fields before replacing signed URLs. */
+    private static int targetValueOffset(String url, String language) {
+        if (url == null || language == null) return -1;
+        int question = url.indexOf('?');
+        if (question < 0) return -1;
+        int fragment = url.indexOf('#', question + 1);
+        int end = fragment < 0 ? url.length() : fragment, found = -1;
+        for (int offset = question + 1; offset < end;) {
+            int next = url.indexOf('&', offset);
+            if (next < 0 || next > end) next = end;
+            String parameter = url.substring(offset, next);
+            int equal = parameter.indexOf('=');
+            String rawKey = equal < 0 ? parameter : parameter.substring(0, equal);
+            try {
+                if ("tlang".equals(URLDecoder.decode(rawKey, "UTF-8"))) {
+                    if (found >= 0 || !rawKey.equals("tlang")
+                            || !parameter.equals("tlang=" + language)) return -1;
+                    found = offset + "tlang=".length();
+                }
+            } catch (IllegalArgumentException | UnsupportedEncodingException ignored) {
+                return -1;
+            }
+            offset = next + 1;
+        }
+        return found;
+    }
+
+    /** Validate identity without decoding or re-encoding signed URL bytes. */
+    private static String originalVideoId(CaptionTrackInterface source) {
+        if (source == null) return null;
+        String language = source.patch_getLanguageCode();
+        if (language == null || !LANGUAGE_CODE_PATTERN.matcher(language).matches()) return null;
+        String vss = source.patch_getVssId();
+        boolean asr = originalVss(vss, "a." + language);
+        if (!asr && !originalVss(vss, "." + language)) return null;
+        Map<String, String> parameters = captionParameters(source.patch_getUrl());
+        if (parameters == null || parameters.containsKey("tlang")) return null;
+        String video = parameters.get("v"), sourceLanguage = parameters.get("lang");
+        String kind = parameters.get("kind");
+        return video != null && VIDEO_ID_PATTERN.matcher(video).matches()
+                && sourceLanguage != null && LANGUAGE_CODE_PATTERN.matcher(sourceLanguage).matches()
+                && getLanguageKey(language).equals(getLanguageKey(sourceLanguage))
+                && (asr ? "asr".equals(kind) : kind == null || kind.isEmpty())
+                ? video : null;
     }
 
     private static boolean originalVss(String value, String prefix) {

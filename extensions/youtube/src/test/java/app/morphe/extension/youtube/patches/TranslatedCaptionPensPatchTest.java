@@ -60,6 +60,19 @@ public class TranslatedCaptionPensPatchTest {
         assertEquals(7, TranslatedCaptionPensPatch.getPenId(7));
     }
 
+    @Test public void failedNativeGetterClearsPreviousTranslationState() {
+        TranslatedCaptionPensPatch.setParsedRequest(TRANSLATED);
+        TranslatedCaptionPensPatch.setParsedRequest((TranslatedCaptionPensPatch.CaptionRequestInterface) () -> {
+            throw new IllegalStateException("getter unavailable");
+        });
+        assertEquals(7, TranslatedCaptionPensPatch.getPenId(7));
+        TranslatedCaptionPensPatch.setParsedRequest(TRANSLATED);
+        TranslatedCaptionPensPatch.setParsedRequest((TranslatedCaptionPensPatch.CaptionRequestInterface) () -> {
+            throw new NoSuchMethodError("native ABI changed");
+        });
+        assertEquals(7, TranslatedCaptionPensPatch.getPenId(7));
+    }
+
     @Test public void concurrentParsersDoNotShareState() throws Exception {
         CountDownLatch bothSet = new CountDownLatch(2);
         AtomicInteger translatedPen = new AtomicInteger();
