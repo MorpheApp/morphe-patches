@@ -221,6 +221,35 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
+        // The blurred background of the translucent navigation bar draws a copy of the watch layout,
+        // so the player surface is drawn twice in every frame, at two positions. Android 12 and 13
+        // send the two positions to the surface from two threads at the same time, and the app
+        // crashes while the player moves, such as when it is slowly dragged down to the miniplayer
+        // (https://github.com/MorpheApp/morphe-patches/pull/3684#issuecomment-6322984709).
+        // Android 14 sends them one after the other. On older versions the copy is not drawn,
+        // so the bar keeps its translucent color, without the blur.
+        NavigationBarBlurDrawFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val hardwareAcceleratedRegister = getInstruction<OneRegisterInstruction>(index).registerA
+                val freeRegisters = getFreeRegisterProvider(index + 1, 2)
+                val sdkRegister = freeRegisters.getFreeRegister4Bit()
+                val minSdkRegister = freeRegisters.getFreeRegister4Bit()
+
+                addInstructionsWithLabels(
+                    index + 1,
+                    $$"""
+                        sget v$$sdkRegister, Landroid/os/Build$VERSION;->SDK_INT:I
+                        const/16 v$$minSdkRegister, 0x22
+                        if-ge v$$sdkRegister, v$$minSdkRegister, :draw_blur
+                        const/4 v$$hardwareAcceleratedRegister, 0x0
+                        :draw_blur
+                        nop
+                    """
+                )
+            }
+        }
+
         // With the translucent navigation bar, the navigation bar makes room for the system
         // navigation buttons. If the navigation bar is hidden in the Shorts player, nothing makes
         // that room, so the Shorts player makes it itself. The first parameter is the layout
@@ -301,32 +330,31 @@ val navigationBarPatch = bytecodePatch(
 
                     addInstructionsWithLabels(
                         index,
-                        """
-                            sget v$insetsRegister, Landroid/os/Build${'$'}VERSION;->SDK_INT:I
-                            const/16 v$imeRegister, 0x1e
-                            if-lt v$insetsRegister, v$imeRegister, :keep_padding
-                            invoke-virtual { v$listRegister }, Landroid/view/View;->getRootWindowInsets()Landroid/view/WindowInsets;
-                            move-result-object v$insetsRegister
-                            if-eqz v$insetsRegister, :keep_padding
-                            invoke-static { }, Landroid/view/WindowInsets${'$'}Type;->ime()I
-                            move-result v$imeRegister
-                            invoke-virtual { v$insetsRegister, v$imeRegister }, Landroid/view/WindowInsets;->isVisible(I)Z
-                            move-result v$systemBarsRegister
-                            if-eqz v$systemBarsRegister, :keep_padding
-                            invoke-virtual { v$insetsRegister, v$imeRegister }, Landroid/view/WindowInsets;->getInsets(I)Landroid/graphics/Insets;
-                            move-result-object v$imeRegister
-                            iget v$imeRegister, v$imeRegister, Landroid/graphics/Insets;->bottom:I
-                            invoke-static { }, Landroid/view/WindowInsets${'$'}Type;->systemBars()I
-                            move-result v$systemBarsRegister
-                            invoke-virtual { v$insetsRegister, v$systemBarsRegister }, Landroid/view/WindowInsets;->getInsets(I)Landroid/graphics/Insets;
-                            move-result-object v$systemBarsRegister
-                            iget v$systemBarsRegister, v$systemBarsRegister, Landroid/graphics/Insets;->bottom:I
-                            # Keyboard height above the system bars.
-                            sub-int v$insetsRegister, v$imeRegister, v$systemBarsRegister
-                            if-lez v$insetsRegister, :keep_padding
+                        $$"""
+                            # The inset types are only on Android 11 and later.
+                            sget v$$imeRegister, Landroid/os/Build$VERSION;->SDK_INT:I
+                            const/16 v$$systemBarsRegister, 0x1e
+                            if-lt v$$imeRegister, v$$systemBarsRegister, :keep_padding
+                            invoke-virtual { v$$listRegister }, Landroid/view/View;->getRootWindowInsets()Landroid/view/WindowInsets;
+                            move-result-object v$$insetsRegister
+                            if-eqz v$$insetsRegister, :keep_padding
+                            # The keyboard inset is empty when the keyboard is hidden.
+                            invoke-static { }, Landroid/view/WindowInsets$Type;->ime()I
+                            move-result v$$imeRegister
+                            invoke-virtual { v$$insetsRegister, v$$imeRegister }, Landroid/view/WindowInsets;->getInsets(I)Landroid/graphics/Insets;
+                            move-result-object v$$imeRegister
+                            iget v$$imeRegister, v$$imeRegister, Landroid/graphics/Insets;->bottom:I
                             # The padding does not hold the bottom inset, as when the feed is not behind the navigation bar.
-                            if-lt v$bottomPaddingRegister, v$imeRegister, :keep_padding
-                            sub-int v$bottomPaddingRegister, v$bottomPaddingRegister, v$insetsRegister
+                            if-lt v$$bottomPaddingRegister, v$$imeRegister, :keep_padding
+                            invoke-static { }, Landroid/view/WindowInsets$Type;->systemBars()I
+                            move-result v$$systemBarsRegister
+                            invoke-virtual { v$$insetsRegister, v$$systemBarsRegister }, Landroid/view/WindowInsets;->getInsets(I)Landroid/graphics/Insets;
+                            move-result-object v$$systemBarsRegister
+                            iget v$$systemBarsRegister, v$$systemBarsRegister, Landroid/graphics/Insets;->bottom:I
+                            # Keyboard height above the system bars.
+                            sub-int/2addr v$$imeRegister, v$$systemBarsRegister
+                            if-lez v$$imeRegister, :keep_padding
+                            sub-int/2addr v$$bottomPaddingRegister, v$$imeRegister
                             :keep_padding
                             nop
                         """

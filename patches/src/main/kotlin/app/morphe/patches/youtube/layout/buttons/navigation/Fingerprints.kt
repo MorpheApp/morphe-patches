@@ -208,6 +208,27 @@ internal object FeedListPaddingFingerprint : Fingerprint(
 )
 
 /**
+ * Draws the blurred background of the translucent navigation bar. If the canvas is hardware
+ * accelerated, a copy of the watch layout, with the player, is drawn into a blurred render node,
+ * then the bar color is drawn over it.
+ */
+internal object NavigationBarBlurDrawFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        filters = listOf(
+            string("frostedGlassRenderNode")
+        )
+    ),
+    name = "draw",
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Canvas;"),
+    filters = listOf(
+        methodCall(smali = "Landroid/graphics/Canvas;->isHardwareAccelerated()Z"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(smali = "Landroid/view/View;->draw(Landroid/graphics/Canvas;)V")
+    )
+)
+
+/**
  * Applies the system navigation bar color of the app theme to the window.
  */
 internal object SystemNavigationBarColorFingerprint : Fingerprint(
