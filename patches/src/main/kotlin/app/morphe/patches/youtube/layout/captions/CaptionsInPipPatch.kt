@@ -43,7 +43,7 @@ internal val captionsInPipPatch = bytecodePatch(
 
     execute {
         settingsMenuCaptionGroup.add(
-            SwitchPreference("morphe_captions_in_pip", summary = true)
+            SwitchPreference("morphe_captions_in_pip")
         )
 
         val overlayNameMethodName = CaptionsOverlayNameFingerprint.originalMethod.name
