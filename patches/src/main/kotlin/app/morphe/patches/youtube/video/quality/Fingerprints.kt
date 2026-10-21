@@ -77,6 +77,24 @@ internal fun getVideoQualitySettingFingerprint(
     )
 ) {}
 
+internal const val CLIENT_ABR_STATE_CLASS =
+    "Lcom/google/android/apps/youtube/proto/ClientAbrStateOuterClass\$ClientAbrState;"
+
+/**
+ * Client ABR state of the SABR requests sent while the video plays.
+ */
+internal object ClientAbrStateFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = CLIENT_ABR_STATE_CLASS,
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = CLIENT_ABR_STATE_CLASS,
+            type = "Lcom/google/android/apps/youtube/proto/streaming/MediaCapabilitiesOuterClass\$MediaCapabilities;"
+        )
+    )
+)
+
 /**
  * Quality last selected in the quality menu, kept by YouTube for the next videos.
  * The player uses it as a fixed quality, and it is sent with the SABR requests.

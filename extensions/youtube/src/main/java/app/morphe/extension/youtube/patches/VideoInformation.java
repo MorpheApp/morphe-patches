@@ -11,8 +11,6 @@
 package app.morphe.extension.youtube.patches;
 
 import android.icu.text.NumberFormat;
-import android.os.Handler;
-import android.os.Looper;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
@@ -29,7 +27,6 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.ExoPlayerInterface;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
-import app.morphe.extension.youtube.patches.playback.quality.RememberVideoQualityPatch;
 import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -40,7 +37,6 @@ import app.morphe.extension.youtube.shared.VideoState;
 
 /**
  * Hooking class for the current playing video.
- *
  * @noinspection unused
  */
 public final class VideoInformation {
@@ -95,7 +91,6 @@ public final class VideoInformation {
     private static final Pattern PLAYBACK_SPEED_PATTERN = Pattern.compile("\\d+\\.\\d{2}x");
     /**
      * Maximum playback speed, inclusive.  Custom speeds must be this or less.
-     *
      * <p>
      * Going over 8x does not increase the actual playback speed any higher,
      * and the UI selector starts flickering and acting weird.
@@ -104,7 +99,7 @@ public final class VideoInformation {
     public static final float PLAYBACK_SPEED_MAXIMUM = 8;
 
     private static final float DEFAULT_PLAYBACK_AUDIO_PITCH = 1.0f;
-
+    
     /**
      * Maximum playback audio pitch, inclusive.
      */
@@ -277,12 +272,6 @@ public final class VideoInformation {
      */
     public static final Event<String> onChannelIdChange = new Event<>();
 
-    /**
-     * Lightweight enforcement tracking fields.
-     */
-    private static boolean changingToDefaultQuality = false;
-    private static long lastQualityForceTime = 0;
-
     @Nullable
     public static VideoQualityInterface[] getCurrentQualities() {
         return currentQualities;
@@ -302,10 +291,6 @@ public final class VideoInformation {
         try {
             Logger.printDebug(() -> "newVideoStarted");
 
-            // Clear enforcement state on new video load
-            changingToDefaultQuality = false;
-            lastQualityForceTime = 0;
-
             WeakReference<PlaybackController> playerControllerRef =
                     new WeakReference<>(Objects.requireNonNull(playerController));
             if (ShortsPlayerState.isOpen()) {
@@ -320,10 +305,12 @@ public final class VideoInformation {
             final PlayerType playerType = PlayerType.getCurrent();
             final boolean noWatchWhilePlayerActive = playerType.isNoneOrHidden() ||
                     playerType == PlayerType.INLINE_MINIMAL;
-            final float newPlaybackAudioPitch = audioPitchOverride > 0.0f
-                    && isPlaybackAudioPitchEnabled() && Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()
-                    ? audioPitchOverride : !isPlaybackAudioPitchEnabled() || noWatchWhilePlayerActive
-                    ? DEFAULT_PLAYBACK_AUDIO_PITCH : playbackAudioPitch;
+            final float newPlaybackAudioPitch = audioPitchOverride > 0.0f &&
+                    isPlaybackAudioPitchEnabled() && Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()
+                    ? audioPitchOverride
+                    : !isPlaybackAudioPitchEnabled() || noWatchWhilePlayerActive
+                            ? DEFAULT_PLAYBACK_AUDIO_PITCH
+                            : playbackAudioPitch;
             if (playbackAudioPitch != newPlaybackAudioPitch ||
                     (noWatchWhilePlayerActive && newPlaybackAudioPitch != DEFAULT_PLAYBACK_AUDIO_PITCH)) {
                 playbackAudioPitch = newPlaybackAudioPitch;
@@ -987,7 +974,7 @@ public final class VideoInformation {
      */
     public static void setPlaybackParameters(float speed, float pitch) {
         Utils.verifyOnMainThread();
-
+        
         if (speed <= 0 || speed > PLAYBACK_SPEED_MAXIMUM) {
             Logger.printException(() -> "Invalid playback speed: " + speed);
             return;
@@ -1045,7 +1032,6 @@ public final class VideoInformation {
 
     /**
      * Called when the native playback speed panel is opened.
-     *
      * @param newlyLoadedPlaybackSpeedFormattedString The current formatted playback speed string.
      */
     private static void setPlaybackSpeedFormattedString(
@@ -1070,13 +1056,16 @@ public final class VideoInformation {
                 Utils.runOnMainThreadNowOrLater(() ->
                         setPlaybackParameters(newlyLoadedPlaybackSpeed, pitch));
             }
+
+            // Rest of the implementation added by patch.
+            // RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(newlyLoadedPlaybackSpeed);
+            // PlaybackSpeedDialogButton.videoSpeedChanged(newlyLoadedPlaybackSpeed);
         }
     }
 
     /**
      * Injection point.
      * CustomPlaybackInterface sets video speed through this.
-     *
      * @param newlyLoadedPlaybackSpeed The current playback speed.
      */
     public static void setPlaybackSpeed(float newlyLoadedPlaybackSpeed) {
@@ -1094,8 +1083,7 @@ public final class VideoInformation {
     private static void setCurrentQuality(@Nullable VideoQualityInterface quality) {
         Utils.verifyOnMainThread();
         if (currentQuality != quality) {
-            Logger.printDebug(() -> "Current quality changed to: " +
-                    (quality != null ? quality.patch_getQualityName() : "null"));
+            Logger.printDebug(() -> "Current quality changed to: " + quality);
             currentQuality = quality;
             onQualityChange.invoke(quality);
         }
@@ -1125,38 +1113,31 @@ public final class VideoInformation {
      * some VP9 streams restart in a loop when the quality is set.
      */
     public static int fixVideoQualityResolution(@Nullable String name, int quality) {
-        int fixed = quality;
         try {
             if (name != null && quality != AUTOMATIC_VIDEO_QUALITY_VALUE
                     && !name.startsWith(Integer.toString(quality))) {
                 final int suffixIndex = name.indexOf('p');
                 if (suffixIndex > 0) {
-                    fixed = Integer.parseInt(name.substring(0, suffixIndex));
+                    return Integer.parseInt(name.substring(0, suffixIndex));
                 }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "fixVideoQualityResolution failed", ex);
         }
-        return fixed;
+
+        return quality;
     }
 
     /**
      * Injection point.
-     *
      * <p>
-     * The default quality is used as the initial quality of the video, so normally the quality
-     * chosen by YouTube is kept. If YouTube later chooses a different quality without the user
-     * selecting it (such as 720p for the size of the player), the default quality is set again
-     * through the quality menu, the same way as if the user selected it.
+     * The default quality is used as the initial quality of the video, so the quality
+     * chosen by YouTube is always used and this only keeps the current qualities.
      *
      * @param qualities Video qualities available, ordered from largest to smallest, with index 0 being the 'automatic' value of -2
      * @param originalQualityIndex quality index to use, as chosen by YouTube
      */
-    public static int setVideoQuality(
-            VideoQualityInterface[] qualities,
-            VideoQualityMenuInterface menu,
-            int originalQualityIndex
-    ) {
+    public static int setVideoQuality(VideoQualityInterface[] qualities, VideoQualityMenuInterface menu, int originalQualityIndex) {
         try {
             Utils.verifyOnMainThread();
             currentQualityMenuInterface = menu;
@@ -1166,75 +1147,15 @@ public final class VideoInformation {
                 Logger.printDebug(() -> "VideoQualities: " + Arrays.toString(currentQualities));
             }
 
-            originalQualityIndex = Math.max(0, originalQualityIndex);
-            final VideoQualityInterface selectedQuality = qualities[originalQualityIndex];
-
-            if (changingToDefaultQuality) {
-                if (selectedQuality.patch_getResolution() != AUTOMATIC_VIDEO_QUALITY_VALUE) {
-                    setCurrentQuality(selectedQuality);
-                }
-                return originalQualityIndex;
+            // On extremely slow internet connections the index can initially be -1
+            VideoQualityInterface updatedCurrentQuality = qualities[Math.max(0, originalQualityIndex)];
+            if (updatedCurrentQuality.patch_getResolution() != AUTOMATIC_VIDEO_QUALITY_VALUE) {
+                setCurrentQuality(updatedCurrentQuality);
             }
-
-            int preferredQuality = RememberVideoQualityPatch.getLastSelectedVideoQuality();
-
-            if (preferredQuality > 0 && !(ShortsPlayerState.isOpen() && !PlayerType.getCurrent().isNoneOrHidden())) {
-                int targetIndex = -1;
-                VideoQualityInterface targetQuality = null;
-
-                for (int i = 0; i < qualities.length; i++) {
-                    int res = qualities[i].patch_getResolution();
-                    if (res != AUTOMATIC_VIDEO_QUALITY_VALUE && res <= preferredQuality) {
-                        targetIndex = i;
-                        targetQuality = qualities[i];
-                        break;
-                    }
-                }
-
-                if (targetIndex == -1 && qualities.length > 1) {
-                    targetIndex = 1;
-                    targetQuality = qualities[1];
-                }
-
-                if (targetIndex != -1 && targetQuality != null) {
-                    final VideoQualityInterface targetQual = targetQuality;
-
-                    if (targetIndex != originalQualityIndex) {
-
-                        long now = System.currentTimeMillis();
-                        if (now - lastQualityForceTime < 2500) {
-                            if (selectedQuality.patch_getResolution() != AUTOMATIC_VIDEO_QUALITY_VALUE) {
-                                setCurrentQuality(selectedQuality);
-                            }
-                            return originalQualityIndex;
-                        }
-
-                        lastQualityForceTime = now;
-
-                        new Handler(Looper.getMainLooper()).post(() -> {
-                            changingToDefaultQuality = true;
-                            try {
-                                changeQuality(targetQual);
-                            } finally {
-                                changingToDefaultQuality = false;
-                            }
-                            setCurrentQuality(targetQual);
-                        });
-
-                        return originalQualityIndex;
-                    }
-                }
-            }
-
-            if (selectedQuality.patch_getResolution() != AUTOMATIC_VIDEO_QUALITY_VALUE) {
-                setCurrentQuality(selectedQuality);
-            }
-            return originalQualityIndex;
-
         } catch (Exception ex) {
             Logger.printException(() -> "setVideoQuality failure", ex);
         }
-        return Math.max(0, originalQualityIndex);
+        return originalQualityIndex;
     }
 
     public static boolean isPremiumVideoQuality(VideoQualityInterface quality) {
