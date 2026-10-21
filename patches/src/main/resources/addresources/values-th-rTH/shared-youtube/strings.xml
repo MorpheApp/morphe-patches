@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (สีที่สาม)</string>
   <string name="morphe_theme_color_custom_entry">กำหนดเอง</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">การดาวน์โหลดภายนอก</string>
+  <string name="morphe_external_downloader_screen_title">ดาวน์โหลด</string>
+  <string name="morphe_download_mode_title">โหมดดาวน์โหลด</string>
+  <string name="morphe_download_mode_entry_default">ค่าเริ่มต้นThe</string>
+  <string name="morphe_download_mode_entry_in_app">ดาวน์โหลดในแอป</string>
+  <string name="morphe_download_mode_entry_external">ตัวดาวน์โหลดภายนอก</string>
   <string name="morphe_external_downloader_name_title">ชื่อแพ็คเกจโปรแกรมดาวน์โหลด</string>
   <string name="morphe_external_downloader_name_summary">ชื่อแพ็คเกจของแอปดาวน์โหลดภายนอกที่คุณติดตั้งไว้</string>
   <string name="morphe_external_downloader_other_item_hint">ใส่ชื่อแพ็คเกจ</string>

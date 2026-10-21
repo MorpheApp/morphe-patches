@@ -123,11 +123,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">使用您选择的外部下载器代替系统默认的「下载」操作按钮</string>
   <string name="morphe_external_downloader_flyout_menu_title">覆盖「下载」菜单</string>
   <string name="morphe_external_downloader_flyout_menu_summary">使用您选择的外部下载器代替系统默认的「下载」弹出菜单</string>
-  <string name="morphe_music_in_app_downloads_title">在应用内下载</string>
-  <string name="morphe_music_in_app_downloads_summary">在 YouTube Music 内下载音频，而不是打开外部下载应用</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"曲目保存于应用的私有存储中，如果卸载 YouTube Music，这些曲目将被删除。
-
-开启此功能后，下载标签页将列出这些曲目，而不是 Music Premium 离线库。关闭它将恢复该标签页，且绝不会触碰 Premium 下载内容"</string>
   <string name="morphe_music_downloads_screen_title">下载</string>
   <string name="morphe_music_downloads_empty">"没有下载
 下载的曲目将显示在此处"</string>

@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-20T12:46:06",
-  "description": "## [1.48.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.14...v1.48.0-dev.15) (2026-10-20)\n\n### 🐛 Bug Fixes\n\n* Temporarily revert patches-library update to fix app startup crash ([fd8cc0f](https://github.com/MorpheApp/morphe-patches/commit/fd8cc0fb14540b1e0d6adec903a7c2720a80b2f7))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.48.0-dev.15/patches-1.48.0-dev.15.mpp",
+  "created_at": "2026-10-20T23:44:35",
+  "description": "## [1.48.0-dev.16](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.15...v1.48.0-dev.16) (2026-10-20)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Ambient mode:** Force Ambient mode when the server turns it off ([0eda16c](https://github.com/MorpheApp/morphe-patches/commit/0eda16c28e7ca4842a9087bba0fb47d146feddfa))\n* **YouTube - Feed view count:** Keep the badge away from the edges of inset thumbnails, show lakh and crore units ([544013a](https://github.com/MorpheApp/morphe-patches/commit/544013adcc8881104c003d8d5e3280f725fc676e))\n* **YouTube - Force animations:** Animate page transitions when the server turns them off ([79979bc](https://github.com/MorpheApp/morphe-patches/commit/79979bcae286d7bbb11b6ccc06558e812b07637f))\n* **YouTube - Return YouTube Dislike:** Place the feed thumbnail like count on inset thumbnails and channel posts ([#3902](https://github.com/MorpheApp/morphe-patches/issues/3902)) ([de420c2](https://github.com/MorpheApp/morphe-patches/commit/de420c275ea33a3664e5ab6424903ff54c2359c4))\n\n### ✨ New Features\n\n* **YouTube - Downloads:** Add \"Download in-app\" setting ([#3905](https://github.com/MorpheApp/morphe-patches/issues/3905)) ([ef266aa](https://github.com/MorpheApp/morphe-patches/commit/ef266aa4bf94bf63e5b85a31673c297bf0ef81ef))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.48.0-dev.16/patches-1.48.0-dev.16.mpp",
   "signature_download_url": "",
-  "version": "1.48.0-dev.15"
+  "version": "1.48.0-dev.16"
 }

@@ -69,8 +69,10 @@ public final class FeedEngagementCountsPatch {
     private static final int MARGIN_DP = 10;
     /** Same as the duration badge and the Watch later button, so their right edges line up. */
     private static final int RIGHT_MARGIN_DP = 8;
+    /** Space between the badge and the duration badge below it. */
+    private static final int DURATION_GAP_DP = 4;
     /** Height of the duration badge, which is 20 dp and 8 dp above the bottom, plus a gap. */
-    private static final int ABOVE_DURATION_DP = 8 + 20 + 4;
+    private static final int ABOVE_DURATION_DP = 8 + 20 + DURATION_GAP_DP;
     private static final int PADDING_DP = 6;
     private static final int CORNER_RADIUS_DP = 8;
     private static final int ICON_DP = 16;
@@ -365,9 +367,37 @@ public final class FeedEngagementCountsPatch {
             final int width = Math.max(px(MIN_WIDTH_DP), Math.round(contentWidth) + padding * 2);
             final int height = Math.round(contentHeight) + padding * 2;
 
-            final int thumbnailHeight = FeedVideoCardsPatch.getThumbnailBottom(host);
-            final int right = host.getWidth() - px(RIGHT_MARGIN_DP);
-            final int top = Math.max(px(MARGIN_DP), thumbnailHeight - px(ABOVE_DURATION_DP) - height);
+            // Cards of some layouts show the thumbnail inset from their edges, such as the shelves
+            // of a channel, or below other content, such as the video of a channel post.
+            // So the badge is placed from the duration badge, or else from the thumbnail.
+            FeedViewCountPatch.ThumbnailFrame frame = FeedViewCountPatch.findThumbnailFrame(host);
+            final Rect duration = frame.duration;
+            final Rect thumbnail = frame.thumbnail;
+            final int right;
+            final int bottom;
+            final int thumbnailTop;
+            if (duration != null) {
+                right = duration.right;
+                bottom = duration.top - px(DURATION_GAP_DP);
+                if (thumbnail != null && thumbnail.top < duration.top) {
+                    thumbnailTop = thumbnail.top;
+                } else {
+                    // Thumbnails are centered on the card, and at least 16:9.
+                    final int thumbnailRight = duration.right + px(RIGHT_MARGIN_DP);
+                    final int thumbnailWidth = thumbnailRight - Math.max(0, host.getWidth() - thumbnailRight);
+                    thumbnailTop = duration.bottom + px(RIGHT_MARGIN_DP)
+                            - Math.round(thumbnailWidth * FeedVideoCardsPatch.THUMBNAIL_RATIO);
+                }
+            } else if (thumbnail != null) {
+                right = thumbnail.right - px(RIGHT_MARGIN_DP);
+                bottom = thumbnail.bottom - px(ABOVE_DURATION_DP);
+                thumbnailTop = thumbnail.top;
+            } else {
+                right = host.getWidth() - px(RIGHT_MARGIN_DP);
+                bottom = FeedVideoCardsPatch.getThumbnailBottom(host) - px(ABOVE_DURATION_DP);
+                thumbnailTop = 0;
+            }
+            final int top = Math.max(thumbnailTop + px(MARGIN_DP), bottom - height);
 
             setBounds(right - width, top, right, top + height);
             if (!added) {

@@ -449,8 +449,6 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_disable_chapter_skip_double_tap_summary">Inaktiverar tvåfingrets dubbeltrycksgest som hoppar över kapitel, vilket kan aktiveras av misstag med ett finger</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Ladda ner videor, poddar eller låtar med nedladdningsappar från tredje part</string>
-  <string name="morphe_external_downloader_title">Visa knapp för extern nedladdning</string>
-  <string name="morphe_external_downloader_summary">Visar en överlagringsknapp i videospelaren som öppnar din externa nedladdare</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Åsidosätt knappen Ladda ned &amp; menyn</string>
   <string name="morphe_external_downloader_action_button_summary">Använder din valda externa nedladdare istället för den inbyggda nedladdningsfunktionen</string>

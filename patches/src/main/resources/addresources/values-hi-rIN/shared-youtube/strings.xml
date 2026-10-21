@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">मटेरियल यू (तृतीयक)</string>
   <string name="morphe_theme_color_custom_entry">कस्टम</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">बाहरी डाउनलोड</string>
+  <string name="morphe_external_downloader_screen_title">डाउनलोड</string>
+  <string name="morphe_download_mode_title">डाउनलोड मोड</string>
+  <string name="morphe_download_mode_entry_default">डिफ़ॉल्ट</string>
+  <string name="morphe_download_mode_entry_in_app">इन-ऐप डाउनलोड</string>
+  <string name="morphe_download_mode_entry_external">बाहरी डाउनलोडर</string>
   <string name="morphe_external_downloader_name_title">डाउनलोडर पैकेज नाम</string>
   <string name="morphe_external_downloader_name_summary">आपके इंस्टॉल किए गए बाहरी डाउनलोडर ऐप का पैकेज नाम</string>
   <string name="morphe_external_downloader_other_item_hint">पैकेज का नाम दर्ज करें</string>

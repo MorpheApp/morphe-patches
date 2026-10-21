@@ -68,6 +68,12 @@ public class SpoofVideoStreamsPatch {
     private static volatile ClientType preferredClient = ClientType.VISIONOS_1_02;
 
     /**
+     * If the streams of the player responses created on this thread are kept.
+     * Used for videos that are saved, which use streams that the app can save instead of the playback streams.
+     */
+    private static final ThreadLocal<Boolean> keepStreamsOnThread = ThreadLocal.withInitial(() -> false);
+
+    /**
      * @return If this patch was included during patching.
      */
     public static boolean isPatchIncluded() {
@@ -101,6 +107,13 @@ public class SpoofVideoStreamsPatch {
 
     public static ClientType getPreferredClient() {
         return preferredClient;
+    }
+
+    /**
+     * @param keepStreams If the streams of the player responses created on the current thread are not overridden.
+     */
+    public static void setKeepStreamsOnThread(boolean keepStreams) {
+        keepStreamsOnThread.set(keepStreams);
     }
 
     public static boolean spoofingToClientWithNoMultiAudioStreams() {
@@ -334,6 +347,18 @@ public class SpoofVideoStreamsPatch {
     @Nullable
     public static byte[] getStreamingData(String videoId) {
         if (SPOOF_VIDEO_STREAMS) {
+            if (Boolean.TRUE.equals(keepStreamsOnThread.get())) {
+                Logger.printDebug(() -> "Keeping the streams of the player response: " + videoId);
+                return null;
+            }
+
+            // Without a connection the replacement streams cannot load,
+            // and a video that is saved plays with the streams of its own player response.
+            if (!Utils.isNetworkConnected()) {
+                Logger.printDebug(() -> "Not overriding streaming data (network is not connected): " + videoId);
+                return null;
+            }
+
             try {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
                 if (request != null) {

@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Tertiar)</string>
   <string name="morphe_theme_color_custom_entry">Personalizat</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Descărcări externe</string>
+  <string name="morphe_external_downloader_screen_title">Descărcări</string>
+  <string name="morphe_download_mode_title">Modul de descărcare</string>
+  <string name="morphe_download_mode_entry_default">Implicit</string>
+  <string name="morphe_download_mode_entry_in_app">Descărcare în aplicație</string>
+  <string name="morphe_download_mode_entry_external">Descărcător extern</string>
   <string name="morphe_external_downloader_name_title">Numele pachetului aplicației de descărcare</string>
   <string name="morphe_external_downloader_name_summary">Numele pachetului aplicației externe de descărcare instalate</string>
   <string name="morphe_external_downloader_other_item_hint">Introduceţi numele pachetului</string>

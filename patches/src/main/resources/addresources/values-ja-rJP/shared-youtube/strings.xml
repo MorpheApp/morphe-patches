@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You（第三色）</string>
   <string name="morphe_theme_color_custom_entry">カスタム</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">外部ダウンロード</string>
+  <string name="morphe_external_downloader_screen_title">ダウンロード一覧</string>
+  <string name="morphe_download_mode_title">ダウンロードモード</string>
+  <string name="morphe_download_mode_entry_default">デフォルト</string>
+  <string name="morphe_download_mode_entry_in_app">アプリ内ダウンロード</string>
+  <string name="morphe_download_mode_entry_external">外部ダウンローダー</string>
   <string name="morphe_external_downloader_name_title">外部ダウンローダーのパッケージ名</string>
   <string name="morphe_external_downloader_name_summary">インストール済みの外部ダウンロード アプリのパッケージ名</string>
   <string name="morphe_external_downloader_other_item_hint">パッケージ名を入力してください</string>

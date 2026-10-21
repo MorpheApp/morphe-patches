@@ -123,11 +123,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">Bruger din valgte eksterne downloader i stedet for standardknappen Download-handling</string>
   <string name="morphe_external_downloader_flyout_menu_title">Overskriv download-flyout-menu</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Bruger din valgte eksterne downloader i stedet for standardflyout-menuen Download</string>
-  <string name="morphe_music_in_app_downloads_title">Download i appen</string>
-  <string name="morphe_music_in_app_downloads_summary">Downloader lyd inde i YouTube Music i stedet for at åbne den eksterne downloader-app</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Spor gemmes i programmets private lager og slettes, hvis YouTube Music deinstalleres.
-
-Når denne funktion er slået til, viser fanen Downloads disse spor i stedet for Musik Premiums offline-bibliotek. Hvis du slår den fra, gendannes fanen, og Premium-download påvirkes ikke"</string>
   <string name="morphe_music_downloads_screen_title">Downloads</string>
   <string name="morphe_music_downloads_empty">"Ingen downloads\nDownloadede sange vises her"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>

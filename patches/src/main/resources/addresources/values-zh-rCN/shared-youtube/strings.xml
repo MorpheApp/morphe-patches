@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (第三)</string>
   <string name="morphe_theme_color_custom_entry">自定义</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">外部下载</string>
+  <string name="morphe_external_downloader_screen_title">下载</string>
+  <string name="morphe_download_mode_title">下载模式</string>
+  <string name="morphe_download_mode_entry_default">默认</string>
+  <string name="morphe_download_mode_entry_in_app">应用内下载</string>
+  <string name="morphe_download_mode_entry_external">外部下载器</string>
   <string name="morphe_external_downloader_name_title">下载器的应用包名</string>
   <string name="morphe_external_downloader_name_summary">您已安装的外部下载器应用的包名</string>
   <string name="morphe_external_downloader_other_item_hint">输入包名</string>

@@ -437,10 +437,10 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_feed_watch_later_button_summary">Tá cnaipe \'Féach níos déanaí\' le feiceáil ar mhionsamhla físeán sa fhotha. Má dhéanann tú sconna air agus é a choinneáil brúite, osclófar an rogha \'Sábháil chuig seinmliosta\'</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Taispeáin líon na n-amharc ar mhionsamhlacha</string>
-  <string name="morphe_feed_view_count_summary">Taispeánann líon na n-amharc ar físeáin an fhreastailín ag an gcloiche chlé ar a mbunaidh in ionad faoi bharr an teidil. B’fhéidir nach dtaispeánfaidh roinnt físeán, mar shampla i scroinn, líon amhairc</string>
+  <string name="morphe_feed_view_count_summary">Taispeántar líon na n-amharc ar fhíseáin sa fhotha ag bun na láimhe clé dá mionsamhla, seachas faoin teideal. I gcás físeáin áirithe, ar nós iad siúd atá i seilfeanna, d’fhéadfadh sé nach dtaispeánfar líon na n-amharc.</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
-  <string name="morphe_ryd_feed_like_count_title">Taispeáin an comhaireamh cailíní ar shampla feed</string>
-  <string name="morphe_ryd_feed_like_ratio_title">Taispeáin an cóimheas cailíní ar shampla feed</string>
+  <string name="morphe_ryd_feed_like_count_title">Taispeáin líon na n-aonán ar mhionsamhail sa bhfotha</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Taispeáin mionsamhail beatha cosúil le céatadán</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Díchumasaigh aníos \'Sínigh isteach ar an Teilifís\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Díchumasaigh an preab ‘Ceangail do ghléasanna’</string>
@@ -449,8 +449,6 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_disable_chapter_skip_double_tap_summary">Díchumasaíonn sé an ghluaiseacht sconna dúbailte dhá mhéar a scipeálann caibidlí, a d\'fhéadfaí a spreagadh de thaisme le méar amháin.</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
-  <string name="morphe_external_downloader_title">Taispeáin cnaipe íoslódála seachtrach</string>
-  <string name="morphe_external_downloader_summary">Taispeánann sé cnaipe forleagan sa seinnteoir físe a osclaíonn d’íoslódálaí seachtrach</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Sáraigh an cnaipe Íoslódála &amp; roghchlár</string>
   <string name="morphe_external_downloader_action_button_summary">Úsáideann sé an íoslódáileoir seachtrach roghnaithe agat in ionad an ghné íoslódála stoic</string>
@@ -1166,7 +1164,7 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_back_button_always_exits_feed_title">Fágann an cnaipe cúil as an bhfotha</string>
   <string name="morphe_back_button_always_exits_feed_summary">Má bhrúnn tú ar ais, fágtar an aip i gcónaí seachas scrollaigh go barr an fhotha</string>
   <!-- layout.animations.forceAnimationsPatch -->
-  <string name="morphe_force_animations_title">Cumhacht anadaí</string>
+  <string name="morphe_force_animations_title">Beochana fórsaithe</string>
   <string name="morphe_force_animations_entry_default">Réamhshocrú</string>
   <string name="morphe_force_animations_entry_always_on">I gcónaí ar siúl</string>
   <string name="morphe_force_animations_entry_always_off">I gcónaí as</string>

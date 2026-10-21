@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Tertiair)</string>
   <string name="morphe_theme_color_custom_entry">Aangepast</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Externe downloads</string>
+  <string name="morphe_external_downloader_screen_title">Downloads</string>
+  <string name="morphe_download_mode_title">Downloadmodus</string>
+  <string name="morphe_download_mode_entry_default">Standaard</string>
+  <string name="morphe_download_mode_entry_in_app">Downloaden in-app</string>
+  <string name="morphe_download_mode_entry_external">Externe downloader</string>
   <string name="morphe_external_downloader_name_title">Downloader pakketnaam</string>
   <string name="morphe_external_downloader_name_summary">Pakketnaam van uw geïnstalleerde externe download-app</string>
   <string name="morphe_external_downloader_other_item_hint">Voer pakketnaam in</string>

@@ -123,11 +123,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">使用您選擇的外部下載器取代內建的下載動作按鈕</string>
   <string name="morphe_external_downloader_flyout_menu_title">覆蓋下載選單</string>
   <string name="morphe_external_downloader_flyout_menu_summary">使用您選擇的外部下載器取代內建的下載飛出選單</string>
-  <string name="morphe_music_in_app_downloads_title">在應用程式內下載</string>
-  <string name="morphe_music_in_app_downloads_summary">不開啟外部下載器應用程式，改在 YouTube Music 中下載音訊。</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"歌曲會儲存到應用程式的專用儲存區域中，如果解除安裝 YouTube Music，歌曲也會被刪除。
-
-啟用此功能後，「下載」頁籤會列出這些歌曲，而非 Music Premium 離線庫。關閉此功能將會恢復該頁籤，而且Premium下載永遠不會受到影響。"</string>
   <string name="morphe_music_downloads_screen_title">已下載的音樂</string>
   <string name="morphe_music_downloads_empty">"沒有已下載的音樂
 下載的歌曲會顯示在這裡"</string>

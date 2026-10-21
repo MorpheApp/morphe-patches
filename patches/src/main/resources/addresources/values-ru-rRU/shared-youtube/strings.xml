@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (дополнительный)</string>
   <string name="morphe_theme_color_custom_entry">Пользовательское</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Внешние загрузки</string>
+  <string name="morphe_external_downloader_screen_title">Загрузки</string>
+  <string name="morphe_download_mode_title">Режим загрузки</string>
+  <string name="morphe_download_mode_entry_default">По умолчанию</string>
+  <string name="morphe_download_mode_entry_in_app">Загрузка в приложении</string>
+  <string name="morphe_download_mode_entry_external">Внешний загрузчик</string>
   <string name="morphe_external_downloader_name_title">Имя пакета загрузчика</string>
   <string name="morphe_external_downloader_name_summary">Имя пакета вашего установленного внешнего приложения для загрузки</string>
   <string name="morphe_external_downloader_other_item_hint">Введите имя пакета</string>
