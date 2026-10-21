@@ -96,30 +96,26 @@ private const val ACCESSIBILITY_STATE_CHANGE_LISTENER =
  * Adds a reason that blocks playback in feeds.
  */
 internal object BlockInlinePlaybackFingerprint : Fingerprint(
+    interfaces = listOf(ACCESSIBILITY_STATE_CHANGE_LISTENER),
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I"),
     filters = listOf(
         methodCall(smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;"),
         methodCall(smali = "Ljava/util/Set;->add(Ljava/lang/Object;)Z")
-    ),
-    custom = { _, classDef ->
-        classDef.interfaces.contains(ACCESSIBILITY_STATE_CHANGE_LISTENER)
-    }
+    )
 )
 
 /**
  * Removes a reason that blocks playback in feeds.
  */
 internal object UnblockInlinePlaybackFingerprint : Fingerprint(
+    interfaces = listOf(ACCESSIBILITY_STATE_CHANGE_LISTENER),
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I"),
     filters = listOf(
         methodCall(smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;"),
         methodCall(smali = "Ljava/util/Set;->remove(Ljava/lang/Object;)Z")
-    ),
-    custom = { _, classDef ->
-        classDef.interfaces.contains(ACCESSIBILITY_STATE_CHANGE_LISTENER)
-    }
+    )
 )

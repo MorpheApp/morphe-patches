@@ -322,6 +322,7 @@ internal object ReelItemWatchResponseFeatureFlagFingerprint : Fingerprint(
  * Builds a Cronet url request, which every network request of the app is made with.
  */
 internal object CronetUrlRequestBuildFingerprint : Fingerprint(
+    superclass = "Lorg/chromium/net/ExperimentalUrlRequest\$Builder;",
     name = "build",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Lorg/chromium/net/ExperimentalUrlRequest;",
@@ -329,11 +330,7 @@ internal object CronetUrlRequestBuildFingerprint : Fingerprint(
     filters = listOf(
         // Creates the request with the url and the other values of the builder.
         methodCall(returnType = "Lorg/chromium/net/ExperimentalUrlRequest;")
-    ),
-    custom = { _, classDef ->
-        // TODO: change to 2.0 superclass check.
-        classDef.superclass == "Lorg/chromium/net/ExperimentalUrlRequest\$Builder;"
-    }
+    )
 )
 
 internal object CronetUrlRequestSetHttpMethodFingerprint : Fingerprint(
@@ -424,15 +421,12 @@ internal object CronetDataSourceReadBufferFingerprint : Fingerprint(
  * A saved video continues from the last byte it got, after it is paused.
  */
 internal object PriorityTooLowExceptionFingerprint : Fingerprint(
+    superclass = "Ljava/io/IOException;",
     name = "<init>",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     parameters = listOf("I", "I"),
     filters = listOf(
         string("Priority too low [priority=")
-    ),
-    custom = { _, classDef ->
-        // FIXME: change to patcher 2.0 superclass check.
-        classDef.superclass == "Ljava/io/IOException;"
-    }
+    )
 )
