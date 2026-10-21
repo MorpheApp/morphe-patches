@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.patches;
 
+import androidx.annotation.Nullable;
+
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -22,19 +24,19 @@ public class CaptionsInPipPatch {
     }
 
     /**
-     * Injection point. Used by versions that give overlays the player type instead.
+     * Injection point. Used by versions before 21.05 that also give overlays the player type.
      *
      * @return If the overlay must be shown, even though the player type hides it.
      */
     public static boolean showInPip(String overlayName, Enum<?> playerType) {
-        return "WATCH_WHILE_PICTURE_IN_PICTURE".equals(playerType.name()) && !isPipActive(overlayName);
+        return !isPipActive(overlayName) && "WATCH_WHILE_PICTURE_IN_PICTURE".equals(playerType.name());
     }
 
     /**
-     * Injection point. Older versions can set the current caption track again when entering or leaving
+     * Injection point. The current caption track can be set again when entering or leaving
      * picture-in-picture, which clears the caption on screen until the next one.
      */
-    public static boolean isCurrentTrack(Object track, Object currentTrack) {
+    public static boolean isCurrentTrack(@Nullable Object track, @Nullable Object currentTrack) {
         return Settings.CAPTIONS_IN_PIP.get() && track != null && track.equals(currentTrack);
     }
 }

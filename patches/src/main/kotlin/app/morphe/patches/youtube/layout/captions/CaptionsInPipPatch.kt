@@ -14,28 +14,23 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.PlayerTypeEnumFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
+import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CaptionsInPipPatch;"
-
-private fun Instruction.argumentRegister(argument: Int) = when (this) {
-    is FiveRegisterInstruction -> listOf(registerC, registerD, registerE, registerF, registerG)[argument]
-    is RegisterRangeInstruction -> startRegister + argument
-    else -> throw PatchException("Not a method call: $this")
-}
 
 internal val captionsInPipPatch = bytecodePatch(
     description = "Adds an option to show captions in picture-in-picture mode.",
@@ -52,84 +47,77 @@ internal val captionsInPipPatch = bytecodePatch(
         )
 
         val overlayNameMethodName = CaptionsOverlayNameFingerprint.originalMethod.name
-        var hooked = false
 
-        // Overlays are given a player state that includes whether picture-in-picture is active.
+        // 20.29+ gives overlays a player state that includes whether picture-in-picture is active.
         // Report it as inactive to the captions overlay.
-        PlayerOverlayStateToStringFingerprint.instructionMatchesOrNull?.let { matches ->
+        if (is_20_29_or_greater) {
             val stateType = PlayerOverlayStateToStringFingerprint.originalClassDef.type
-            val fieldNames = matches.first().instruction.getReference<StringReference>()!!.string.split(';')
+            val fieldNames = PlayerOverlayStateToStringFingerprint.instructionMatches.first()
+                .instruction.getReference<StringReference>()!!.string.split(';')
             // Argument position of isPipActive when creating the player state, after the state itself.
             val pipArgument = fieldNames.indexOf("isPipActive") + 1
             if (pipArgument == 0) throw PatchException("Unexpected player state fields: $fieldNames")
 
-            getPlayerOverlayVisibilityFingerprint(stateType).matchAllOrNull()
-                // Last first, so a hook does not move the other matches in the same method.
-                ?.sortedByDescending { it.instructionMatches.first().index }
-                ?.forEach {
-                    it.method.apply {
-                        val stateIndex = it.instructionMatches.first().index
-                        val pipRegister = getInstruction(stateIndex).argumentRegister(pipArgument)
-                        val overlayCall = getInstruction<FiveRegisterInstruction>(stateIndex + 1)
-                        val overlayType = overlayCall.getReference<MethodReference>()!!.definingClass
-
-                        // Placed on the branch target where isPipActive is set, so it runs for both values.
-                        // Reuses the isPipActive register because some of these methods have no free registers.
-                        addInstructionsAtControlFlowLabel(
-                            stateIndex,
-                            """
-                                if-eqz v$pipRegister, :not_pip
-                                invoke-interface { v${overlayCall.registerC} }, $overlayType->$overlayNameMethodName()Ljava/lang/String;
-                                move-result-object v$pipRegister
-                                invoke-static/range { v$pipRegister .. v$pipRegister }, $EXTENSION_CLASS->isPipActive(Ljava/lang/String;)Z
-                                move-result v$pipRegister
-                                :not_pip
-                                nop
-                            """
-                        )
-                    }
-                    hooked = true
-                }
-        }
-
-        // Older versions give overlays the player type instead, which can be picture-in-picture.
-        // Show the captions overlay anyway.
-        getPlayerTypeOverlayVisibilityFingerprint(PlayerTypeEnumFingerprint.originalClassDef.type)
-            .matchAllOrNull()
-            ?.sortedByDescending { it.instructionMatches.first().index }
-            ?.forEach {
+            getPlayerOverlayVisibilityFingerprint(stateType).matchAll().forEach {
                 it.method.apply {
-                    val callIndex = it.instructionMatches.first().index
-                    val overlayCall = getInstruction<FiveRegisterInstruction>(callIndex)
+                    val stateIndex = it.instructionMatches.first().index
+                    val pipRegister = getInstruction(stateIndex).registersUsed[pipArgument]
+                    val overlayCall = getInstruction<FiveRegisterInstruction>(stateIndex + 1)
                     val overlayType = overlayCall.getReference<MethodReference>()!!.definingClass
-                    val resultRegister = getInstruction<OneRegisterInstruction>(callIndex + 1).registerA
-                    val showRegister = findFreeRegister(callIndex, overlayCall.registerC, overlayCall.registerD)
 
-                    addInstruction(callIndex + 2, "or-int/2addr v$resultRegister, v$showRegister")
+                    // Placed on the branch target where isPipActive is set, so it runs for both values.
+                    // Reuses the isPipActive register because some of these methods have no free registers.
                     addInstructionsAtControlFlowLabel(
-                        callIndex,
+                        stateIndex,
                         """
+                            if-eqz v$pipRegister, :not_pip
                             invoke-interface { v${overlayCall.registerC} }, $overlayType->$overlayNameMethodName()Ljava/lang/String;
-                            move-result-object v$showRegister
-                            invoke-static { v$showRegister, v${overlayCall.registerD} }, $EXTENSION_CLASS->showInPip(Ljava/lang/String;Ljava/lang/Enum;)Z
-                            move-result v$showRegister
+                            move-result-object v$pipRegister
+                            invoke-static/range { v$pipRegister .. v$pipRegister }, $EXTENSION_CLASS->isPipActive(Ljava/lang/String;)Z
+                            move-result v$pipRegister
+                            :not_pip
+                            nop
                         """
                     )
                 }
-                hooked = true
             }
+        }
 
-        if (!hooked) throw PatchException("Could not find the player overlay visibility checks")
+        // Before 21.05, overlays are also given the player type, which can be picture-in-picture.
+        // Show the captions overlay anyway.
+        if (!is_21_05_or_greater) {
+            getPlayerTypeOverlayVisibilityFingerprint(PlayerTypeEnumFingerprint.originalClassDef.type)
+                .matchAll()
+                .forEach {
+                    it.method.apply {
+                        val callIndex = it.instructionMatches.first().index
+                        val overlayCall = getInstruction<FiveRegisterInstruction>(callIndex)
+                        val overlayType = overlayCall.getReference<MethodReference>()!!.definingClass
+                        val resultRegister = getInstruction<OneRegisterInstruction>(callIndex + 1).registerA
+                        val showRegister = findFreeRegister(callIndex, overlayCall.registerC, overlayCall.registerD)
 
-        // Older versions can set the current caption track again when entering or leaving picture-in-picture,
+                        addInstruction(callIndex + 2, "or-int/2addr v$resultRegister, v$showRegister")
+                        addInstructionsAtControlFlowLabel(
+                            callIndex,
+                            """
+                                invoke-interface { v${overlayCall.registerC} }, $overlayType->$overlayNameMethodName()Ljava/lang/String;
+                                move-result-object v$showRegister
+                                invoke-static { v$showRegister, v${overlayCall.registerD} }, $EXTENSION_CLASS->showInPip(Ljava/lang/String;Ljava/lang/Enum;)Z
+                                move-result v$showRegister
+                            """
+                        )
+                    }
+                }
+        }
+
+        // The current caption track can be set again when entering or leaving picture-in-picture,
         // which clears the caption on screen until the next one. Only set the track if it changed.
-        // Not needed by newer versions, so this does not fail the patch if it is not found.
         val trackType = (
             if (is_21_02_or_greater) CaptionTrackIsDisableOptionFingerprint
             else CaptionTrackIsDisableOptionLegacyFingerprint
         ).originalClassDef.type
 
-        getCaptionTrackEventFingerprint(trackType).matchOrNull()?.let {
+        getCaptionTrackEventFingerprint(trackType).match().let {
             val presenterType = it.classDef.type
             val setTrackIndex = it.instructionMatches.last().index
             val setTrackCall = it.method.getInstruction<FiveRegisterInstruction>(setTrackIndex)
