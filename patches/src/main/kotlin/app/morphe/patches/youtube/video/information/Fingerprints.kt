@@ -65,9 +65,16 @@ internal fun getChannelIdFingerprint(playerResponseType: String) = object : Fing
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
+        // Is live stream.
         methodCall(
             definingClass = playerResponseType,
-            returnType = "Ljava/lang/String;"
+            returnType = "Z"
+        ),
+        // Channel id.
+        methodCall(
+            definingClass = playerResponseType,
+            returnType = "Ljava/lang/String;",
+            location = MatchAfterWithin(30)
         ),
         string(
             string = "com.google.android.apps.youtube.mdx.watch.LAST_MEALBAR_PROMOTED_LIVE_FEED_CHANNELS",
@@ -240,6 +247,7 @@ internal object PlaybackSpeedMenuSpeedChangedFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("L"),
     filters = listOf(
+        opcode(Opcode.IF_EQZ),
         fieldAccess(opcode = Opcode.IGET, type = "F")
     )
 )

@@ -449,9 +449,8 @@ Prijave so javne in so pregledane, preden je kanal dodan na seznam. Odstranitev 
   <string name="morphe_disable_chapter_skip_double_tap_summary">Onemogoči gesto dvojnega tapkanja s prstom, ki preskoči poglavja, ki bi se jo lahko pomotoma sprožila s prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Prenesite videoposnetke, podkaste ali pesmi z aplikacijami za prenos tretje osebe</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Prepiši gumb za prenos &amp; meni</string>
-  <string name="morphe_external_downloader_action_button_summary">Uporabi vaš izbrani zunanji prenosnik namesto vgrajene funkcije prenosa</string>
+  <string name="morphe_external_downloader_overlay_button_title">Prikaži gumb za prenos predvajalnika v prepletu</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Prikaže gumb v video predvajalniku, ki odpre vaš zunanji program za prenos</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Prevajanje z glasom</string>
   <string name="morphe_vot_screen_summary">Prebiranje napisov videoposnetka v glas z uporabo pretvorbe besedila v govor v napravi, sinhronizirano s predvajanjem</string>

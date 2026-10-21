@@ -53,8 +53,9 @@ internal val videoTitlesHookPatch = bytecodePatch(
 
         // The title of the media notification.
         MediaSessionSetMetadataFingerprint.let {
+            it.clearMatch()
             it.method.apply {
-                val index = it.instructionMatches.first().index
+                val index = it.instructionMatches.last().index
                 val instruction = getInstruction<FiveRegisterInstruction>(index)
                 val sessionRegister = instruction.registerC
                 val metadataRegister = instruction.registerD

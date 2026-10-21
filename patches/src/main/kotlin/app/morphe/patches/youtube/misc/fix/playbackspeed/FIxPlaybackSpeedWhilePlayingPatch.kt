@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.misc.fix.playbackspeed
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -13,8 +23,7 @@ import app.morphe.util.indexOfFirstInstructionReversed
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/FixPlaybackSpeedWhilePlayingPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/FixPlaybackSpeedWhilePlayingPatch;"
 
 /**
  * Fixes a bug in YouTube 19.34+ where the playback speed
@@ -36,24 +45,26 @@ val fixPlaybackSpeedWhilePlayingPatch = bytecodePatch{
     )
 
     execute {
-        PlaybackSpeedInFeedsFingerprint.method.apply {
-            val playbackSpeedIndex = indexOfFirstInstructionReversed(
-                filter = fieldAccess(opcode = Opcode.IGET, type = "F")
-            )
-            val playbackSpeedRegister = getInstruction<TwoRegisterInstruction>(playbackSpeedIndex).registerA
-            val returnIndex = indexOfFirstInstructionOrThrow(playbackSpeedIndex, Opcode.RETURN_VOID)
-            val insertIndex = playbackSpeedIndex + 1
-            val freeRegister = findFreeRegister(insertIndex, playbackSpeedRegister)
+        PlaybackSpeedInFeedsFingerprint.let {
+            it.method.apply {
+                val playbackSpeedIndex = indexOfFirstInstructionReversed(
+                    filter = fieldAccess(opcode = Opcode.IGET, type = "F")
+                )
+                val playbackSpeedRegister = getInstruction<TwoRegisterInstruction>(playbackSpeedIndex).registerA
+                val returnIndex = indexOfFirstInstructionOrThrow(playbackSpeedIndex, Opcode.RETURN_VOID)
+                val insertIndex = playbackSpeedIndex + 1
+                val freeRegister = findFreeRegister(insertIndex, playbackSpeedRegister)
 
-            addInstructionsWithLabels(
-                insertIndex,
-                """
-                    invoke-static { v$playbackSpeedRegister }, $EXTENSION_CLASS->playbackSpeedChanged(F)Z
-                    move-result v$freeRegister
-                    if-nez v$freeRegister, :do_not_change
-                """,
-                ExternalLabel("do_not_change", getInstruction(returnIndex))
-            )
+                addInstructionsWithLabels(
+                    insertIndex,
+                    """
+                        invoke-static { v$playbackSpeedRegister }, $EXTENSION_CLASS->playbackSpeedChanged(F)Z
+                        move-result v$freeRegister
+                        if-nez v$freeRegister, :do_not_change
+                    """,
+                    ExternalLabel("do_not_change", getInstruction(returnIndex))
+                )
+            }
         }
     }
 }

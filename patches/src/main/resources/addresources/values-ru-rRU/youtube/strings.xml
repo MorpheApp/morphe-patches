@@ -449,9 +449,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Отключает жест двойного нажатия двумя пальцами, который пропускает главы, который может быть случайно вызван одним пальцем</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Скачивайте видео, подкасты или песни с помощью сторонних приложений для скачивания</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Переопределить кнопку и меню \"Скачать\"</string>
-  <string name="morphe_external_downloader_action_button_summary">Использует выбранный вами внешний загрузчик вместо стандартной функции загрузки</string>
+  <string name="morphe_external_downloader_overlay_button_title">Показать кнопку загрузки оверлея плеера</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Показывает кнопку в видеоплеере, которая открывает ваше внешнее приложение для загрузки</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Перевод озвучивания</string>
   <string name="morphe_vot_screen_summary">Читайте субтитры видео вслух с помощью встроенного преобразования текста в речь, синхронизированного с воспроизведением</string>

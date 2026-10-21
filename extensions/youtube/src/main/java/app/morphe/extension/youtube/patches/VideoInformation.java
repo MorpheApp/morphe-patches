@@ -144,6 +144,8 @@ public final class VideoInformation {
     private static volatile String playerResponseVideoId = "";
     private static volatile boolean playerResponseVideoIdIsShort;
     private static volatile boolean videoIdIsShort;
+    private static volatile boolean liveStream;
+    private static volatile String liveStreamVideoId = "";
 
     /**
      * The current playback speed.
@@ -263,12 +265,6 @@ public final class VideoInformation {
     private static VideoQualityMenuInterface currentQualityMenuInterface;
 
     /**
-     * ID of the video whose quality was selected by the user.
-     * The video ID is used, because a player restart starts the same video again.
-     */
-    private static String userSelectedQualityVideoId = "";
-
-    /**
      * Callback for when the current quality changes.
      */
     public static final Event<VideoQualityInterface> onQualityChange = new Event<>();
@@ -364,7 +360,8 @@ public final class VideoInformation {
      * @return Playback speed to use.
      */
     public static float overridePlaybackSpeed(float speed) {
-        return speed;
+        // Shorts ignore changePlaybackSpeed(), so their speed is forced here instead.
+        return RememberPlaybackSpeedPatch.getPlaybackSpeedInShorts(speed);
     }
 
     /**
@@ -862,6 +859,37 @@ public final class VideoInformation {
     }
 
     /**
+     * Injection point.
+     * Called when the player response of the current video is read.
+     *
+     * @param isLive If the current video is an ongoing live stream.
+     */
+    public static void setLiveStream(boolean isLive) {
+        // Remember which video the value is for, so a live video does not mark the following
+        // videos as live. The player response video ID is used because the video ID is
+        // not yet updated for the new video at this point.
+        final boolean wasLive = isLiveStream();
+        liveStreamVideoId = playerResponseVideoId;
+        liveStream = isLive;
+
+        final boolean nowLive = isLiveStream();
+        if (wasLive == nowLive) {
+            return;
+        }
+
+        Logger.printDebug(() -> "isLiveStream: " + nowLive);
+        RememberPlaybackSpeedPatch.onLiveStreamChanged(nowLive);
+        SkipLiveShortsPatch.onLiveStreamChanged(nowLive);
+    }
+
+    /**
+     * @return If the video that is currently loading is an ongoing live stream.
+     */
+    public static boolean isLiveStream() {
+        return liveStream && liveStreamVideoId.equals(playerResponseVideoId);
+    }
+
+    /**
      * @return The current playback speed.
      */
     public static float getPlaybackSpeed() {
@@ -1084,22 +1112,6 @@ public final class VideoInformation {
             RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(playbackAudioPitch);
         }
         changePlaybackSpeed(playbackSpeed);
-    }
-
-    /**
-     * The quality selected by the user is kept when the player reloads the current video.
-     */
-    public static void userSelectedQuality() {
-        Utils.verifyOnMainThread();
-        userSelectedQualityVideoId = getVideoId();
-    }
-
-    /**
-     * @return If the user selected the quality of the current video.
-     */
-    public static boolean isQualitySelectedByUser() {
-        String videoId = getVideoId();
-        return !videoId.isEmpty() && videoId.equals(userSelectedQualityVideoId);
     }
 
     private static void setCurrentQuality(@Nullable VideoQualityInterface quality) {

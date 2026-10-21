@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">上次播放</string>
+  <string name="morphe_music_android_auto_subscriptions">订阅</string>
+  <string name="morphe_music_android_auto_videos">视频</string>
+  <string name="morphe_music_android_auto_other_results">其他结果</string>
+  <string name="morphe_music_android_auto_uploaded_songs">已上传歌曲</string>
+  <string name="morphe_music_android_auto_uploaded_albums">已上传专辑</string>
+  <string name="morphe_music_android_auto_uploaded_artists">已上传艺术家</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">更新主机的 Jam 补丁以使用暂停和恢复</string>
   <string name="morphe_music_jam_probe_title">Jam 队列共享</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">尝试切换音轨版本和官方音乐视频</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">使用第三方下载应用下载音乐视频、播客或歌曲</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">覆盖下载按钮</string>
-  <string name="morphe_external_downloader_action_button_summary">使用您选择的外部下载器代替系统默认的「下载」操作按钮</string>
-  <string name="morphe_external_downloader_flyout_menu_title">覆盖「下载」菜单</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">使用您选择的外部下载器代替系统默认的「下载」弹出菜单</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">在“下载”菜单中使用外部下载器</string>
+  <string name="morphe_external_downloader_menu_summary">菜单中的下载选项将打开你的外部下载器</string>
   <string name="morphe_music_downloads_screen_title">下载</string>
   <string name="morphe_music_downloads_empty">"没有下载
 下载的曲目将显示在此处"</string>

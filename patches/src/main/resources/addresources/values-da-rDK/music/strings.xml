@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Sidst afspillet</string>
+  <string name="morphe_music_android_auto_subscriptions">Abonnementer</string>
+  <string name="morphe_music_android_auto_videos">Videoer</string>
+  <string name="morphe_music_android_auto_other_results">Andre resultater</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Uploadede sange</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Uploadede albums</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Uploadede kunstnere</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Opdater værtens Jam-patch til at bruge pause og genoptag</string>
   <string name="morphe_music_jam_probe_title">Deling af Jam-kø</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Prøv at skifte mellem lydsporversion og officiel musikvideo</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Download musikvideoer, podcasts eller sange med tredjeparts download-apps</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Overskriv Download-handling</string>
-  <string name="morphe_external_downloader_action_button_summary">Bruger din valgte eksterne downloader i stedet for standardknappen Download-handling</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Overskriv download-flyout-menu</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Bruger din valgte eksterne downloader i stedet for standardflyout-menuen Download</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Brug ekstern downloader til Download-menu</string>
+  <string name="morphe_external_downloader_menu_summary">Indstillingerne i menuen åbner din eksterne downloader i stedet for</string>
   <string name="morphe_music_downloads_screen_title">Downloads</string>
   <string name="morphe_music_downloads_empty">"Ingen downloads\nDownloadede sange vises her"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>

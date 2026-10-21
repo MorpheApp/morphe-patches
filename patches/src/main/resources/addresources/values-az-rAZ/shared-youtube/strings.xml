@@ -47,7 +47,10 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_custom_entry">Fərdi</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Yükləmələr</string>
-  <string name="morphe_download_mode_entry_default">Varsayılan</string>
+  <string name="morphe_download_mode_title">Yükləmə rejimi</string>
+  <string name="morphe_download_mode_entry_default">İlkin</string>
+  <string name="morphe_download_mode_entry_in_app">Tətbiqdə yüklə</string>
+  <string name="morphe_download_mode_entry_external">Xarici yükləyici</string>
   <string name="morphe_external_downloader_name_title">Yükləyici paketi adı</string>
   <string name="morphe_external_downloader_name_summary">Quraşdırılan xarici yükləyici tətbiqinizin paket adı</string>
   <string name="morphe_external_downloader_other_item_hint">Paket adını qeyd et</string>

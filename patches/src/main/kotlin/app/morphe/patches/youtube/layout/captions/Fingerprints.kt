@@ -11,11 +11,14 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -95,6 +98,59 @@ internal object TimedTextSegmentElementFingerprint : Fingerprint(
         string("t"),
         string("ac"),
         string("<br/>")
+    )
+)
+
+/**
+ * Parses a cached caption track file.
+ */
+internal object CaptionFileParserFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;", "L"),
+    filters = listOf(
+        // Caption request.
+        opcode(Opcode.CHECK_CAST, location = MatchFirst()),
+        // Caption track of the request.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(2)),
+        methodCall(smali = "Ljava/io/File;->exists()Z"),
+        methodCall(smali = "Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("Ljava/io/InputStream;", "L"),
+            returnType = "Ljava/lang/Object;"
+        )
+    )
+)
+
+/**
+ * Parses the response of a request. Used for caption tracks and other requests.
+ */
+internal object RequestResponseParserFingerprint : Fingerprint(
+    name = "run",
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        // Response parser.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "Ljava/lang/Object;"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // Request.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/Object;",
+            location = MatchAfterWithin(1)
+        ),
+        // Response callback.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        )
     )
 )
 
@@ -232,6 +288,41 @@ internal class CaptionTracksManagerDefaultSourceFingerprint(captionTrackType: St
 )
 
 /**
+ * Auto-translate tracks method, matched at the general translation source fallback that is used
+ * if a translation language has no source of its own.
+ */
+internal object CaptionTracksManagerTranslationSourceFingerprint : Fingerprint(
+    classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/util/List;",
+    parameters = listOf(),
+    filters = listOf(
+        // Caption metadata.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this"),
+        // Current audio track.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this"),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        // Source of the translation language.
+        methodCall(opcode = Opcode.INVOKE_DIRECT, definingClass = "this", parameters = listOf("L")),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        // Indices of the general translation sources.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(1)),
+        methodCall(smali = "Ljava/util/List;->iterator()Ljava/util/Iterator;", location = MatchAfterImmediately()),
+        methodCall(smali = "Ljava/lang/Integer;->intValue()I", location = MatchAfterWithin(7)),
+        // Caption track indices of the current audio track.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(1)),
+        methodCall(smali = "Ljava/util/List;->contains(Ljava/lang/Object;)Z", location = MatchAfterImmediately()),
+        // Caption tracks.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(2)),
+        methodCall(name = "get", parameters = listOf("I"), returnType = "Ljava/lang/Object;",
+            location = MatchAfterImmediately()),
+        // Converts the caption track metadata to a caption track.
+        methodCall(opcode = Opcode.INVOKE_DIRECT, definingClass = "this", parameters = listOf("L"),
+            location = MatchAfterWithin(2))
+    )
+)
+
+/**
  * Calls of the caption tracks manager auto-translate getter inside the subtitle manager.
  */
 internal class AutoTranslateTracksCallFingerprint(autoTranslateTracksMethod: MethodReference) : Fingerprint(
@@ -318,6 +409,17 @@ internal object DefaultCaptionTrackFingerprint : Fingerprint(
     )
 )
 
+context(patchContext: BytecodePatchContext)
+internal fun preferredCaptionsTrackFingerprint() = Fingerprint(
+    classFingerprint = DefaultCaptionTrackFingerprint,
+    // 21.23+ also has a method without parameters that calls the default track method.
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        methodCall(reference = DefaultCaptionTrackFingerprint.method),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
 internal object SetSubtitleTrackFingerprint : Fingerprint(
     classFingerprint = SubtitleManagerFingerprintClassFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -346,3 +448,80 @@ internal object CaptionTracksManagerTranslationCountFingerprint : Fingerprint(
         opcode(Opcode.RETURN_OBJECT, location = InstructionLocation.MatchAfterAnywhere())
     )
 )
+
+/**
+ * Player state given to each player overlay to decide if it is shown.
+ * Its fields are listed in toString(), such as "watchDynamicLayoutState;isVrActive;isInlineActive;isPipActive".
+ */
+internal object PlayerOverlayStateToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("isPipActive", StringComparisonType.CONTAINS)
+    )
+)
+
+/**
+ * Creates the player state and asks an overlay if it is shown. More than one overlay layout does this.
+ */
+internal fun getPlayerOverlayVisibilityFingerprint(stateType: String) = object : Fingerprint(
+    filters = listOf(
+        methodCall(definingClass = stateType, name = "<init>"),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(stateType),
+            returnType = "Z",
+            location = MatchAfterImmediately()
+        )
+    )
+) {}
+
+/**
+ * Asks an overlay if it is shown for the player type, which can be picture-in-picture.
+ * Used instead of the player state by older versions.
+ */
+internal fun getPlayerTypeOverlayVisibilityFingerprint(playerType: String) = object : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;",
+    returnType = "Z",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(playerType),
+            returnType = "Z"
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+) {}
+
+/**
+ * Name of the captions overlay.
+ */
+internal object CaptionsOverlayNameFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("player_overlay_caption")
+    )
+)
+
+/**
+ * Sets the caption track of a caption track event.
+ */
+internal fun getCaptionTrackEventFingerprint(trackType: String) = object : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = trackType
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "this",
+            parameters = listOf(trackType),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        )
+    )
+) {}

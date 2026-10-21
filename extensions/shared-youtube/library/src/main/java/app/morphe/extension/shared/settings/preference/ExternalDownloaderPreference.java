@@ -36,6 +36,8 @@ import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -83,6 +85,25 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
 
     private static String getDownloaderPackageName() {
         return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get().trim();
+    }
+
+    /**
+     * The external downloader is used by the download mode, the player overlay button, or the Download menu.
+     */
+    public static final class ExternalDownloaderAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return SharedYouTubeSettings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL
+                    || SharedYouTubeSettings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON.get()
+                    || SharedYouTubeSettings.EXTERNAL_DOWNLOADER_MENU.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(SharedYouTubeSettings.DOWNLOAD_MODE,
+                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON,
+                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER_MENU);
+        }
     }
 
     public static void launchExternalDownloader(String videoId, @Nullable Context context, String url) {

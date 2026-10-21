@@ -15,7 +15,6 @@ import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
-import app.morphe.util.matchSingle
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import java.util.logging.Logger
 
@@ -60,7 +59,7 @@ internal fun skipSilencePatch(
             )
         }
 
-        SetSkipSilenceEnabledFingerprint.matchSingle().method.addInstructions(
+        SetSkipSilenceEnabledFingerprint.method.addInstructions(
             0,
             """
                 invoke-static { p1 }, $EXTENSION_CLASS->isSkipSilenceEnabled(Z)Z
@@ -81,7 +80,7 @@ internal fun skipSilencePatch(
         )
 
         // Lower the silence threshold for quiet audio.
-        SilenceSkippingProcessorQueueInputFingerprint.matchSingle().method.addInstruction(
+        SilenceSkippingProcessorQueueInputFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->updateSilenceThresholdLevel(Ljava/nio/ByteBuffer;)V"
         )

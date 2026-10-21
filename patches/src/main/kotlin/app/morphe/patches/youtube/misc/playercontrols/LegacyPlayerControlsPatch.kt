@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/954
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -59,7 +59,6 @@ import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.matchAllMethodIndicesForEach
-import app.morphe.util.matchSingle
 import app.morphe.util.p0Register
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -229,7 +228,7 @@ internal fun disableNewPlayerControlsFeatureFlag() {
     }
 
     if (is_21_04_or_greater && !is_21_41_or_greater) {
-        val flagMethod = NewPlayerOverlaysFeatureFlagFingerprint.matchSingle().let {
+        val flagMethod = NewPlayerOverlaysFeatureFlagFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->disableNewPlayerOverlays(Z)Z"

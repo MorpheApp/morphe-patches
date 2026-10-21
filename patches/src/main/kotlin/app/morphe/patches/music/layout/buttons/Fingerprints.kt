@@ -46,7 +46,7 @@ internal object HistoryMenuItemFingerprint : Fingerprint(
         opcode(Opcode.RETURN_VOID, MatchAfterImmediately()),
     ),
     custom = { _, classDef ->
-        classDef.methods.count() == 5 || classDef.methods.count() == 4
+        classDef.methods.count() == 4 || classDef.methods.count() == 5
     }
 )
 

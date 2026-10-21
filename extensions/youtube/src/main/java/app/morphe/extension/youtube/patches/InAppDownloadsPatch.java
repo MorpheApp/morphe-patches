@@ -7,7 +7,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import android.net.Uri;
 
 import androidx.annotation.Nullable;
 
@@ -83,20 +82,6 @@ public final class InAppDownloadsPatch {
      * Opus audio is not saved, the other audio and all video formats are.
      */
     private static final String UNSAVABLE_AUDIO_MIME_TYPE_PREFIX = "audio/webm";
-
-    private static final String STREAM_URL_PATH = "/videoplayback";
-
-    private static final String STREAM_URL_HOST_SUFFIX = ".googlevideo.com";
-
-    /**
-     * Client name of the app itself, whose stream requests are left as they are.
-     */
-    private static final String APP_CLIENT_NAME = "ANDROID";
-
-    /**
-     * Largest byte range of a plain stream request. The server sends larger ranges at about playback speed.
-     */
-    private static final long MAX_STREAM_RANGE_LENGTH = 10 * 1024 * 1024;
 
     /**
      * Injection point.
@@ -279,99 +264,6 @@ public final class InAppDownloadsPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "replaceDeclinedOfflinePlayerResponse failure", ex);
             return null;
-        }
-    }
-
-    /**
-     * Injection point.
-     * <p>
-     * Called for every network request the app makes, before the request is built.
-     * The app requests streams with a POST body made for its own client. The plain stream urls of the
-     * other clients do not accept that body, and the server answers with an error or sends the stream slowly.
-     *
-     * @param url Url of the request.
-     * @return If the request is for a plain stream url of another client, and must be sent as a GET request without a body.
-     */
-    public static boolean isPlainStreamRequest(@Nullable String url) {
-        try {
-            if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP
-                    || url == null || !url.contains(STREAM_URL_PATH)) {
-                return false;
-            }
-
-            Uri uri = Uri.parse(url);
-            String host = uri.getHost();
-            if (host == null || !host.endsWith(STREAM_URL_HOST_SUFFIX) || !STREAM_URL_PATH.equals(uri.getPath())
-                    // Streams of server side adaptive bitrate (SABR) clients are not plain urls.
-                    || uri.getQueryParameter("sabr") != null) {
-                return false;
-            }
-
-            String clientName = uri.getQueryParameter("c");
-            if (clientName == null || APP_CLIENT_NAME.equals(clientName)) {
-                return false;
-            }
-            for (ClientType client : ClientType.values()) {
-                if (!client.requireSABR && client.clientName.equals(clientName)) {
-                    return true;
-                }
-            }
-            return false;
-        } catch (Exception ex) {
-            Logger.printException(() -> "isPlainStreamRequest failure", ex);
-            return false;
-        }
-    }
-
-    /**
-     * Injection point.
-     * <p>
-     * Called for every network request the app makes, when the request is built.
-     * The app requests the rest of a stream with a single range, but the server sends a large range at
-     * about playback speed. The range is shortened, and the app requests the following range after this one ends.
-     *
-     * @param url Url of the request.
-     * @return The url to request.
-     */
-    @Nullable
-    public static String limitPlainStreamRange(@Nullable String url) {
-        try {
-            if (url == null || !isPlainStreamRequest(url)) {
-                return url;
-            }
-
-            String range = Uri.parse(url).getQueryParameter("range");
-            if (range == null) {
-                return url;
-            }
-            final int separatorIndex = range.indexOf('-');
-            if (separatorIndex <= 0) {
-                return url;
-            }
-
-            final long start = Long.parseLong(range.substring(0, separatorIndex));
-            String endText = range.substring(separatorIndex + 1);
-            final long end = endText.isEmpty() ? Long.MAX_VALUE : Long.parseLong(endText);
-            final long limitedEnd = start + MAX_STREAM_RANGE_LENGTH - 1;
-            if (end <= limitedEnd) {
-                return url;
-            }
-
-            String rangeParameter = "range=" + range;
-            final int rangeIndex = url.indexOf(rangeParameter);
-            final int rangeEndIndex = rangeIndex + rangeParameter.length();
-            if (rangeIndex <= 0 || (url.charAt(rangeIndex - 1) != '&' && url.charAt(rangeIndex - 1) != '?')
-                    || (rangeEndIndex < url.length() && url.charAt(rangeEndIndex) != '&')) {
-                return url;
-            }
-
-            String limitedRange = start + "-" + limitedEnd;
-            Logger.printDebug(() -> "Limiting stream range: " + range + " to: " + limitedRange);
-            return url.substring(0, rangeIndex) + "range=" + limitedRange
-                    + url.substring(rangeEndIndex);
-        } catch (Exception ex) {
-            Logger.printException(() -> "limitPlainStreamRange failure", ex);
-            return url;
         }
     }
 

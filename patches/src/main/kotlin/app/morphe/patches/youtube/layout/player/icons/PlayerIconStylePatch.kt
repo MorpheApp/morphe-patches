@@ -22,6 +22,8 @@ import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -414,17 +416,19 @@ private fun MutableClass.hookIconsSetFromCode() {
  * Applies the style to the app's player buttons that get their icons from code.
  */
 private val playerButtonIconStylePatch = bytecodePatch {
-    dependsOn(sharedExtensionPatch)
+    dependsOn(sharedExtensionPatch, versionCheckPatch)
 
     execute {
         // The same icons are on screens outside the player, so only these classes are changed.
-        // Any can be missing on a target, which then keeps the app icons of that button.
-        PlayerOverlayControlsFingerprint.classDefOrNull?.hookIconsSetFromCode()
-        PlayerControlIconLoaderFingerprint.classDefOrNull?.hookIconsSetFromCode()
-        PlayerCaptionsButtonFingerprint.classDefOrNull?.hookIconsSetFromCode()
-        mutableClassDefByOrNull(MDX_ENTRY_POINT_BUTTON_CLASS)?.hookIconsSetFromCode()
+        PlayerOverlayControlsFingerprint.classDef.hookIconsSetFromCode()
+        // Older targets do not have this loader.
+        if (is_20_49_or_greater) {
+            PlayerControlIconLoaderFingerprint.classDef.hookIconsSetFromCode()
+        }
+        PlayerCaptionsButtonFingerprint.classDef.hookIconsSetFromCode()
+        mutableClassDefBy(MDX_ENTRY_POINT_BUTTON_CLASS).hookIconsSetFromCode()
 
-        PlayPauseButtonStateFingerprint.methodOrNull?.apply {
+        PlayPauseButtonStateFingerprint.method.apply {
             val play = resourceId(ResourceType.STRING, "accessibility_play")
             val pause = resourceId(ResourceType.STRING, "accessibility_pause")
             val replay = resourceId(ResourceType.STRING, "accessibility_replay")

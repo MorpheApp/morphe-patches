@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Zuletzt gespielt</string>
+  <string name="morphe_music_android_auto_subscriptions">Abonnements</string>
+  <string name="morphe_music_android_auto_videos">Videos</string>
+  <string name="morphe_music_android_auto_other_results">Andere Ergebnisse</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Hochgeladene Songs</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Hochgeladene Alben</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Hochgeladene Künstler</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Aktualisiere den Jam-Patch des Hosts, um Pause und Fortsetzen zu verwenden</string>
   <string name="morphe_music_jam_probe_title">Jam-Warteschlangenfreigabe</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Es wird versucht, zwischen Audio-Track-Version und offiziellem Musikvideo umzuschalten</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Lade Musikvideos, Podcasts oder Songs mit Anwendungen von Drittanbietern herunter</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">„Herunterladen“-Schaltfläche überschreiben</string>
-  <string name="morphe_external_downloader_action_button_summary">Verwendet den von dir gewählten externen Downloader anstelle des standardmäßigen Download-Aktionsbuttons.</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Download-Menü überschreiben</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Verwendet den von dir gewählten externen Downloader anstelle des standardmäßigen Download-Flyout-Menüs.</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Externen Downloader für das Download-Menü verwenden</string>
+  <string name="morphe_external_downloader_menu_summary">Die Download-Option in Menüs öffnet stattdessen Ihren externen Downloader</string>
   <string name="morphe_music_downloads_screen_title">Downloads</string>
   <string name="morphe_music_downloads_empty">"Keine Downloads
 Heruntergeladene Titel erscheinen hier"</string>

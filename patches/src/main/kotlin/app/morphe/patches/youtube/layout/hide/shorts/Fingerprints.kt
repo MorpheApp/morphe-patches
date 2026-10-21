@@ -17,9 +17,9 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -57,6 +57,21 @@ private object SetPivotBarVisibilityParentFingerprint : Fingerprint(
 )
 
 internal object SetPivotBarVisibilityFingerprint : Fingerprint(
+    classFingerprint = SetPivotBarVisibilityParentFingerprint,
+    returnType = "V",
+    parameters = listOf("Z"),
+    filters = listOf(
+        // Needs additional check to be unique.
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = $$"Lj$/util/Optional;->isPresent()Z",
+            location = MatchAfterWithin(20) // Near start of the method.
+        ),
+        checkCast("Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;")
+    )
+)
+
+internal object SetPivotBarVisibilityLegacyFingerprint : Fingerprint(
     classFingerprint = SetPivotBarVisibilityParentFingerprint,
     returnType = "V",
     parameters = listOf("Z"),

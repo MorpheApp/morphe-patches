@@ -304,7 +304,7 @@ val lyricsPatch = bytecodePatch(
         MediaSessionSetMetadataFingerprint.let {
             it.clearMatch()
             val method = it.method
-            val index = it.instructionMatches.first().index
+            val index = it.instructionMatches.last().index
             val instruction = method.getInstruction<FiveRegisterInstruction>(index)
             val sessionRegister = instruction.registerC
             val metadataRegister = instruction.registerD

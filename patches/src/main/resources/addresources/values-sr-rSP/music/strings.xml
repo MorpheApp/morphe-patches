@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Последње пуштено</string>
+  <string name="morphe_music_android_auto_subscriptions">Праћења</string>
+  <string name="morphe_music_android_auto_videos">Видео</string>
+  <string name="morphe_music_android_auto_other_results">Други резултати</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Отпремљене песме</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Отпремљени албуми</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Отпремљени извођачи</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Ажурирај Jam патч хоста да користи паузу и наставак</string>
   <string name="morphe_music_jam_probe_title">Дељење Jam реда</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Покушај да пребациш аудио верзију и званични музички видео</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Преузмите музичке спотове, подкасте или песме помоћу апликација за преузимање података од трећих страна</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Замени дугме „Преузми”</string>
-  <string name="morphe_external_downloader_action_button_summary">Користи ваш изабрани спољни преузимач уместо стандардног дугмета за преузимање</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Замени мени „Преузми”</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Користи ваш изабрани спољни преузимач уместо стандардног менија за преузимање</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Користите спољни преузимач за мени Преузимање</string>
+  <string name="morphe_external_downloader_menu_summary">Опција Преузимање у менијима отвара ваш спољни преузимач</string>
   <string name="morphe_music_downloads_screen_title">Преузимања</string>
   <string name="morphe_music_downloads_empty">"Нема преузимања
 Преузете нумере се појављују овде"</string>

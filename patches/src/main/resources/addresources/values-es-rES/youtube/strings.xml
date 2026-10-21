@@ -449,9 +449,8 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_disable_chapter_skip_double_tap_summary">Desactiva el gesto de doble toque con dos dedos que omite capítulos, lo que podría activarse accidentalmente con un dedo</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descarga vídeos, podcasts o canciones con aplicaciones de descarga de terceros</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Reemplazar botón y menú de descarga</string>
-  <string name="morphe_external_downloader_action_button_summary">Utiliza el descargador externo seleccionado en lugar de la función de descarga original</string>
+  <string name="morphe_external_downloader_overlay_button_title">Mostrar botón de descarga de la superposición del reproductor</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Muestra un botón en el reproductor de vídeo que abre tu descargador externo</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducción con voz</string>
   <string name="morphe_vot_screen_summary">Lee en voz alta los subtítulos del vídeo mediante la síntesis de texto a voz del dispositivo, sincronizada con la reproducción</string>

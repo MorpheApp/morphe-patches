@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Son çalındı</string>
+  <string name="morphe_music_android_auto_subscriptions">Abonelikler</string>
+  <string name="morphe_music_android_auto_videos">Videolar</string>
+  <string name="morphe_music_android_auto_other_results">Diğer sonuçlar</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Yüklenen şarkılar</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Yüklenen albümler</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Yüklenen sanatçılar</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Duraklatma ve devam ettirme işlevlerini kullanmak için oturum sahibinin Jam yamasını güncelleyin</string>
   <string name="morphe_music_jam_probe_title">Jam sırası paylaşımı</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Ses Parçası Sürümü ile Resmi Müzik Videosu arasında geçiş yapmayı deneyin.</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla müzik videoları, podcast\'ler veya şarkılar indirin</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">İndir düğmesini kullan</string>
-  <string name="morphe_external_downloader_action_button_summary">Varsayılan İndir eylem düğmesi yerine, seçtiğiniz harici indiriciyi kullanır.</string>
-  <string name="morphe_external_downloader_flyout_menu_title">İndir menüsünü kullan</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Varsayılan İndir açılır menüsü yerine, seçtiğiniz harici indiriciyi kullanır.</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">\'İndir\' menüsü için harici indirici kullan</string>
+  <string name="morphe_external_downloader_menu_summary">Menülerdeki İndir seçeneği yerine harici indiricinizi açar</string>
   <string name="morphe_music_downloads_screen_title">İndirilenler</string>
   <string name="morphe_music_downloads_empty">"İndirilen yok
 İndirilen parçalar burada görünür"</string>

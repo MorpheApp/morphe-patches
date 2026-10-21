@@ -449,9 +449,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">अध्याय को छोड़ने के लिए दो उंगली के डबल-टैप जेस्चर को निष्क्रिय करता है, जो एक उंगली के साथ गलती से ट्रिगर हो सकता है</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ऐप्स के साथ वीडियो, पॉडकास्ट या गाने डाउनलोड करें</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">डाउनलोड बटन और मेनू को ओवरराइड करें</string>
-  <string name="morphe_external_downloader_action_button_summary">आपके द्वारा चुने गए बाहरी डाउनलोडर का उपयोग करता है, डिफ़ॉल्ट डाउनलोड सुविधा के बजाय</string>
+  <string name="morphe_external_downloader_overlay_button_title">प्लेयर ओवरले डाउनलोड बटन दिखाएं</string>
+  <string name="morphe_external_downloader_overlay_button_summary">वीडियो प्लेयर में एक बटन दिखाता है जो बाहरी डाउनलोडर खोलता है</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">वॉइस ओवर अनुवाद</string>
   <string name="morphe_vot_screen_summary">डिवाइस पर टेक्स्ट-टू-स्पीच का उपयोग करके वीडियो कैप्शन को ज़ोर से पढ़ें, जो प्लेबैक के साथ सिंक्रनाइज़ किया गया है।</string>

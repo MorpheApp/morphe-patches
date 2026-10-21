@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Ultima redare</string>
+  <string name="morphe_music_android_auto_subscriptions">Abonamente</string>
+  <string name="morphe_music_android_auto_videos">Videoclipuri</string>
+  <string name="morphe_music_android_auto_other_results">Alte rezultate</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Piese încărcate</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Albume încărcate</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Artiști încărcati</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Actualizează patch-ul Jam al gazdei pentru a folosi pauza și reluarea</string>
   <string name="morphe_music_jam_probe_title">Partajarea cozii Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Încearcă să comute între versiunea audio și videoclipul muzical oficial</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descarcă videoclipuri muzicale, podcasturi sau melodii folosind aplicații de descărcare terțe</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Suprascrie butonul de descărcare</string>
-  <string name="morphe_external_downloader_action_button_summary">Folosește descărcătorul extern ales în locul butonului implicit de acțiune Descarcă</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Suprascrie meniul Descarcă</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Folosește descărcătorul extern ales în locul meniului implicit flyout Descarcă</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Folosește descărcător extern pentru meniul Descărcări</string>
+  <string name="morphe_external_downloader_menu_summary">Opțiunea Descărcare din meniuri deschide descărcătorul extern al tău</string>
   <string name="morphe_music_downloads_screen_title">Descărcări</string>
   <string name="morphe_music_downloads_empty">"Nicio descărcare
 Melodiile descărcate apar aici"</string>

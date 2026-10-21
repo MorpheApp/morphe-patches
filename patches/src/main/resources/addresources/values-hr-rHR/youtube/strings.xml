@@ -439,9 +439,8 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <string name="morphe_disable_chapter_skip_double_tap_summary">Omogućuje povremeni potez dva prsta za preskakivanje poglavlja, koji se možda slučajno pokreće jednim prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Preuzmite videozapise, podcaste ili pjesme pomoću aplikacija za preuzimanje trećih strana</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Nadjačaj gumb &amp; izbornik Preuzmi</string>
-  <string name="morphe_external_downloader_action_button_summary">Koristi vaš odabrani vanjski downloader umjesto standardne značajke preuzimanja</string>
+  <string name="morphe_external_downloader_overlay_button_title">Prikaži gumb za preuzimanje preklopa glazbenog playera</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Prikazuje gumb u video playeru koji otvara vaš vanjski downloader</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Prevođenje glasom</string>
   <string name="morphe_vot_screen_summary">Čitaj titlove videozapisa naglas koristeći uređajni text-to-speech, sinkronizirano s reprodukcijom</string>

@@ -28,7 +28,6 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -69,7 +68,7 @@ public class ExternalDownloadButton {
     }
 
     private static boolean isEnabled() {
-        return Settings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL;
+        return Settings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON.get();
     }
 
     private static String getVideoUrl(String videoId) {
@@ -115,7 +114,8 @@ public class ExternalDownloadButton {
 
     /**
      * Shows the quick download menu for a video.
-     * Also used by the YouTube download button and the feed 'Download' menu item.
+     * Also used by the YouTube download button and the feed 'Download' menu item
+     * in External downloader mode.
      *
      * @param videoId The video to download. Captured by the caller, the player may move on
      *                while the menu is open, and feed menus are not for the playing video.

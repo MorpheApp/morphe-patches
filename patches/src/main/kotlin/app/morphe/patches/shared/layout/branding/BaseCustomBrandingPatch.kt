@@ -31,6 +31,9 @@ import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.util.resource.StringResourceSanitizer
+import app.morphe.patches.util.resource.editText
+import app.morphe.patches.util.resource.removeStringResource
+import app.morphe.patches.util.resource.setStringResource
 import app.morphe.util.ResourceGroup
 import app.morphe.util.asSequence
 import app.morphe.util.copyResources
@@ -824,16 +827,9 @@ private fun ResourcePatchContext.setAppNameResource(resourceName: String, appNam
     resourceDirectories("values").forEach { valuesDirectory ->
         if (!valuesDirectory.resolve("strings.xml").exists()) return@forEach
 
-        document("res/${valuesDirectory.name}/strings.xml").use { document ->
-            val resources = document.getElementsByTagName("resources").item(0) ?: return@use
-            val declarations = resources.childNodes.asSequence()
-                .filterIsInstance<Element>()
-                .filter { it.tagName == "string" && it.getAttribute("name") == resourceName }
-                .toList()
-
+        this["res/${valuesDirectory.name}/strings.xml"].editText { text ->
             if (valuesDirectory.name != "values") {
-                declarations.forEach { it.removeFromParent() }
-                return@use
+                return@editText text.removeStringResource(resourceName)
             }
 
             val sanitizedAppName = StringResourceSanitizer.sanitizeAndroidResourceString(
@@ -841,16 +837,8 @@ private fun ResourcePatchContext.setAppNameResource(resourceName: String, appNam
                 appName
             )
 
-            if (declarations.isEmpty()) {
-                val declaration = document.createElement("string")
-                declaration.setAttribute("name", resourceName)
-                declaration.textContent = sanitizedAppName
-                resources.appendChild(declaration)
-            } else {
-                declarations.forEach { it.textContent = sanitizedAppName }
-            }
-
             defaultAppNameSet = true
+            text.setStringResource(resourceName, sanitizedAppName)
         }
     }
 

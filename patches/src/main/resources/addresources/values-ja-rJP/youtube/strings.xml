@@ -450,9 +450,8 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_disable_chapter_skip_double_tap_summary">チャプターをスキップする、二本指でのダブルタップ ジェスチャーを無効にします。このジェスチャーが有効の場合、一本指でのダブルタップ ジェスチャーが二本指だと誤認識され、意図せずチャプターをスキップしてしまう場合があります</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">サードパーティ製ダウンロード アプリで、動画、ポッドキャスト、楽曲をダウンロードします</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">オフライン ボタンと「オフラインへの動画の保存」の動作を上書き</string>
-  <string name="morphe_external_downloader_action_button_summary">オフライン ボタンと、フライアウト メニューの「オフラインへの動画の保存」の呼び出し先を、「純正アプリ内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
+  <string name="morphe_external_downloader_overlay_button_title">プレーヤー オーバーレイに外部ダウンローダーを呼び出すボタンを表示します</string>
+  <string name="morphe_external_downloader_overlay_button_summary">ビデオ プレーヤーに、外部ダウンローダーを開くボタンを表示します</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">吹き替え翻訳</string>
   <string name="morphe_vot_screen_summary">動画字幕を翻訳し、デバイス上のテキスト読み上げ機能で字幕の翻訳を字幕に同期しながら読み上げます</string>

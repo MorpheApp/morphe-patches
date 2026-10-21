@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_subscriptions">Obunalar</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
@@ -29,11 +31,7 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Uchinchi tomon yuklab olish ilovalari yordamida musiqa videolari, podkastlar yoki qo‘shiqlarni yuklab oling</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Yuklab olish tugmasini almashtirish</string>
-  <string name="morphe_external_downloader_action_button_summary">Standart Yuklab olish tugmasi o‘rniga tanlangan tashqi yuklab olish ilovasidan foydalanadi</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Yuklab olish menyusini almashtirish</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Standart Yuklab olish ochiladigan menyusi o‘rniga tanlangan tashqi yuklab olish ilovasidan foydalanadi</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Biz haqimizda</string>

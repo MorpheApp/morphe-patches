@@ -32,7 +32,6 @@ import app.morphe.util.cloneMutable
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
-import app.morphe.util.matchSingle
 import app.morphe.util.p0Register
 import app.morphe.util.returnEarly
 import app.morphe.util.toPublicAccessFlags
@@ -738,7 +737,7 @@ private fun BytecodePatchContext.hookBrowseRequest(
         returnType = "V",
         parameters = listOf(requestType),
         strings = listOf("MBS: Fetching MBFE root for mediaId: `%s`")
-    ).matchSingle().method.addInstructionsWithLabels(
+    ).method.addInstructionsWithLabels(
         0,
         """
             invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->handleBrowseRequest($BROWSE_REQUEST)Z

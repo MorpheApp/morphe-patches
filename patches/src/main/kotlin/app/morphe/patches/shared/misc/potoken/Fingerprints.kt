@@ -16,6 +16,8 @@ import com.android.tools.smali.dexlib2.Opcode
 
 internal object ServiceBindIntentUtilsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("Ljava/lang/String;", "Ljava/util/concurrent/Executor;"),
     filters = listOf(
         string("ServiceBindIntentUtils"),
         string("serviceActionBundleKey"),

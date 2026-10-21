@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.layout.buttons.overlay
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -106,7 +107,7 @@ internal object FullscreenButtonFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         resourceLiteral(ResourceType.ID, "fullscreen_button"),
-        opcode(Opcode.CHECK_CAST)
+        opcode(Opcode.CHECK_CAST, MatchAfterWithin(10))
     )
 )
 

@@ -447,9 +447,8 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiverer double-tap-gestussen med to fingre, der springer kapitler over, hvilket utilsigtet kan udløses med én finger</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Download videoer, podcasts eller sange med tredjeparts download-apps</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Overskriv Download knappen &amp; menu</string>
-  <string name="morphe_external_downloader_action_button_summary">Bruger din valgte eksterne downloader i stedet for den indbyggede download-funktion</string>
+  <string name="morphe_external_downloader_overlay_button_title">Vis knappen til download af spilleroverlejring</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Viser en knap i videoafspilleren, der åbner din eksterne downloadprogram</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tekstlæsning</string>
   <string name="morphe_vot_screen_summary">Læs videoundertitler højt ved hjælp af tekst-til-tale på enheden, synkroniseret med afspilningen</string>

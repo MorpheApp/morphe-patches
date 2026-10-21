@@ -22,7 +22,7 @@ internal val buildRequestPatch = bytecodePatch(
     description = "buildRequestPatch",
 ) {
     execute {
-        getBuildRequestFingerprint().let {
+        BuildRequestFingerprint.let {
             it.method.apply {
                 val builderMatch = it.instructionMatches.first()
                 builderIndex = builderMatch.index

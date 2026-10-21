@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Последний раз</string>
+  <string name="morphe_music_android_auto_subscriptions">Подписки</string>
+  <string name="morphe_music_android_auto_videos">Видео</string>
+  <string name="morphe_music_android_auto_other_results">Другие результаты</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Загруженные треки</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Загруженные альбомы</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Загруженные исполнители</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Обновите Jam-патч хоста, чтобы использовать паузу и возобновление</string>
   <string name="morphe_music_jam_probe_title">Общий доступ к очереди Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Пытаться переключать версию аудиодорожки и официальное музыкальное видео</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Скачивайте музыкальные видео, подкасты или песни с помощью сторонних приложений для загрузки</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Переопределить кнопку \"Скачать\"</string>
-  <string name="morphe_external_downloader_action_button_summary">Использует выбранный внешний загрузчик вместо стандартной кнопки \"Скачать\"</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Переопределить меню загрузки</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Использует выбранный вами внешний загрузчик вместо стандартного выпадающего меню загрузки</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Использовать внешний загрузчик для меню «Скачать»</string>
+  <string name="morphe_external_downloader_menu_summary">Параметр Скачивание в меню открывает ваш внешний загрузчик вместо этого</string>
   <string name="morphe_music_downloads_screen_title">Загрузки</string>
   <string name="morphe_music_downloads_empty">"Нет загрузок
 Загруженные треки появятся здесь"</string>

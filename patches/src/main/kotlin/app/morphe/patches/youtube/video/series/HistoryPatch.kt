@@ -139,11 +139,9 @@ internal fun BytecodePatchContext.wireHistory() {
             fieldAccess(definingClass = "this", type = "L"),
         )
         val endpointField = create.getInstruction(endpointIndex).getReference<FieldReference>()!!
+        // Fingerprint can match two different methods, but both are valid.
         val routeMethod = BrowseRouteFingerprint(endpointField.type)
-            .match(browse.originalClassDef)
-            .instructionMatches
-            .single()
-            .getMethodCalled()
+            .matchAll(1..2).first().instructionMatches.first().getMethodCalled()
 
         fragment.methods.add(
             ImmutableMethod(

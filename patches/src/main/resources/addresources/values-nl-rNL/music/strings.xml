@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Laatst gespeeld</string>
+  <string name="morphe_music_android_auto_subscriptions">Abonnementen</string>
+  <string name="morphe_music_android_auto_videos">Video\'s</string>
+  <string name="morphe_music_android_auto_other_results">Andere resultaten</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Geüploade nummers</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Geüploade albums</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Geüploade artiesten</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Werk de Jam-patch van de host bij om pauze en hervatten te gebruiken</string>
   <string name="morphe_music_jam_probe_title">Jam-wachtrij delen</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Probeer over te schakelen tussen audiotrackversie en officiële muziekvideo</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Download muziekvideo\'s, podcasts of nummers met apps van derden</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Downloadactieknop overschrijven</string>
-  <string name="morphe_external_downloader_action_button_summary">Gebruikt je gekozen externe downloader in plaats van de standaard Download-actieknop</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Overschrijf \'Download\' menu</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Gebruikt je gekozen externe downloader in plaats van het standaard Download-uitklapmenu</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Externe downloader gebruiken voor menu \'Downloads\'</string>
+  <string name="morphe_external_downloader_menu_summary">De optie Download in menu\'s opent je externe downloader</string>
   <string name="morphe_music_downloads_screen_title">Downloads</string>
   <string name="morphe_music_downloads_empty">"Geen downloads
 Gedownloade nummers verschijnen hier"</string>

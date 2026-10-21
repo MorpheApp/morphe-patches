@@ -27,6 +27,7 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.observer.layoutReloadObserverPatch
 import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -217,9 +218,13 @@ val hideShortsComponentsPatch = bytecodePatch(
         )
 
         // Set the pivotBar view.
-        SetPivotBarVisibilityFingerprint.let { result ->
+        if (is_21_02_or_greater) {
+            SetPivotBarVisibilityFingerprint
+        } else {
+            SetPivotBarVisibilityLegacyFingerprint
+        }.let { result ->
             result.method.apply {
-                val index = result.instructionMatches.first().index
+                val index = result.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                 addInstruction(

@@ -66,13 +66,13 @@ internal fun removeViewerDiscretionDialogPatch(
                     smali = "Ljava/lang/Boolean;->booleanValue()Z"
                 ),
                 opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-                opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(2)),
+                opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(4)),
                 opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
                 methodCall(
                     opcode = Opcode.INVOKE_DIRECT,
                     name = "<init>",
                     definingClass = AdultContentRunnableFingerprint.method.definingClass,
-                    location = MatchAfterWithin(3)
+                    location = MatchAfterWithin(5)
                 )
             )
         )

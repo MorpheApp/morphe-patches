@@ -19,6 +19,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val SEARCH_PATCH_CLASS =
     "Lapp/morphe/extension/music/patches/AndroidAutoSearchPatch;"
@@ -54,7 +55,9 @@ internal fun BytecodePatchContext.patchSearch() {
         implementsType(it.type, submitSearchMethodReference.definingClass)
     }
     val requestSenderClass = classDefBy(submitSearchMethodReference.definingClass)
-    val submitSearchMethod = navigate(submitSearchMethodReference).original()
+    val submitSearchMethod = requestSenderClass.methods.single {
+        MethodUtil.methodSignaturesMatch(it, submitSearchMethodReference)
+    }
     val responseConverterField = submitSearchMethod.instructions.mapNotNull {
         if (it.opcode == Opcode.SGET_OBJECT) it.getReference<FieldReference>() else null
     }.single()

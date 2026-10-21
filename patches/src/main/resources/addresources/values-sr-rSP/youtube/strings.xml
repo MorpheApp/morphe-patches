@@ -449,9 +449,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Онемогућава гест двоструког додира са два прста који прескаче поглавља, који се може случајно покренути са једним прстом</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Преузмите видео-снимке, подкасте или песме помоћу апликација за преузимање од трећих страна</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Замените дугме „Преузми” и мени</string>
-  <string name="morphe_external_downloader_action_button_summary">Користи ваш изабрани екстерни преузимач уместо стандардне функције преузимања</string>
+  <string name="morphe_external_downloader_overlay_button_title">Прикажи дугме за преузимање прегледача играча</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Приказује дугме у видео плејеру које отвара ваш спољни преузимач</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод гласовног надзора</string>
   <string name="morphe_vot_screen_summary">Учитавајте титлове видео записа наглас користећи текст у говор на уређају, синхронизовано са репродукцијом</string>

@@ -60,8 +60,11 @@ public final class FeedVideoCardsPatch {
             || FeedViewCountPatch.ENABLED
             || Settings.FEED_WATCH_LATER_BUTTON.get();
 
-    /** A card must be almost as wide as the screen. Shelves and grids are not used. */
-    private static final float MIN_WIDTH_OF_SCREEN = 0.7f;
+    /**
+     * A card must be as wide as a card of a grid of up to three columns, such as the feed in landscape.
+     * Shelves are not used, as they are horizontal lists.
+     */
+    private static final float MIN_WIDTH_OF_SCREEN = 0.3f;
     public static final float THUMBNAIL_RATIO = 9f / 16f;
     /** Fade in of the badges drawn on the thumbnails. */
     public static final long BADGE_FADE_IN_MS = 100;

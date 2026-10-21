@@ -24,7 +24,6 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findFreeRegister
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.p0Register
 import com.android.tools.smali.dexlib2.Opcode
@@ -75,19 +74,19 @@ val hideButtonsPatch = bytecodePatch(
             }
         }
 
-        HistoryMenuItemOfflineTabFingerprint.method.apply {
-            val index = indexOfFirstInstructionReversedOrThrow(
-                HistoryMenuItemOfflineTabFingerprint.filters!!.last()
-            )
-            val register = getInstruction<FiveRegisterInstruction>(index).registerD
+        HistoryMenuItemOfflineTabFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<FiveRegisterInstruction>(index).registerD
 
-            addInstructions(
-                index,
-                """
-                    invoke-static { v$register }, $EXTENSION_CLASS->hideHistoryButton(Z)Z
-                    move-result v$register
-                """
-            )
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->hideHistoryButton(Z)Z
+                        move-result v$register
+                    """
+                )
+            }
         }
 
         // Region for hide cast and search buttons in the top bar.

@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
@@ -124,37 +134,4 @@ internal fun playerResponseGetterFingerprint(playerResponseModelClass: String, p
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = playerResponse,
     parameters = listOf()
-)
-
-/**
- * Builds a Cronet url request, which every network request of the app is made with.
- */
-internal object CronetUrlRequestBuildFingerprint : Fingerprint(
-    name = "build",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Lorg/chromium/net/ExperimentalUrlRequest;",
-    parameters = listOf(),
-    filters = listOf(
-        // Creates the request with the url and the other values of the builder.
-        methodCall(returnType = "Lorg/chromium/net/ExperimentalUrlRequest;")
-    ),
-    custom = { _, classDef ->
-        // TODO: change to 2.0 superclass check.
-        classDef.superclass == "Lorg/chromium/net/ExperimentalUrlRequest\$Builder;"
-    }
-)
-
-internal object CronetUrlRequestSetHttpMethodFingerprint : Fingerprint(
-    classFingerprint = CronetUrlRequestBuildFingerprint,
-    name = "setHttpMethod",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Lorg/chromium/net/ExperimentalUrlRequest\$Builder;",
-    parameters = listOf("Ljava/lang/String;"),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            definingClass = "this",
-            type = "Ljava/lang/String;"
-        )
-    )
 )
