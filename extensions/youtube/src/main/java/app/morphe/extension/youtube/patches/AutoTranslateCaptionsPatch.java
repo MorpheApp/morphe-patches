@@ -125,8 +125,6 @@ public final class AutoTranslateCaptionsPatch {
         }
         return result.size() == tracks.size() ? tracks : sortTranslationTracks(result, locale);
     }
-        return sortTranslationTracks(result, locale);
-    }
 
     private static List<CaptionTrackInterface> sortTranslationTracks(List<CaptionTrackInterface> result, Locale locale) {
         Collator collator = Collator.getInstance(locale);
