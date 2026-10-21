@@ -10,7 +10,6 @@ package app.morphe.extension.youtube.patches;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings("unused")
 public class TranslatedCaptionPensPatch {
@@ -54,9 +53,7 @@ public class TranslatedCaptionPensPatch {
                     && captionRequest.patch_getCaptionTrack() instanceof PreferredCaptionLanguagePatch.CaptionTrackInterface track
                     // Auto-translated vss ids are "t" + source vss id + "." + language code.
                     && track.patch_getVssId().startsWith("t");
-        } catch (RuntimeException ex) {
-            Logger.printException(() -> "setParsedRequest failure", ex);
-        } catch (LinkageError ignored) {
+        } catch (RuntimeException | LinkageError ignored) {
             // Unknown native layouts must not retain the previous decoder's styling.
         }
         // A failed native getter must not leave the previous translated state enabled.
