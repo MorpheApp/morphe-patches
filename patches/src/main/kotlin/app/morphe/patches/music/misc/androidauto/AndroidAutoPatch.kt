@@ -736,7 +736,8 @@ private fun BytecodePatchContext.hookBrowseRequest(
     Fingerprint(
         definingClass = requestHandlerType,
         returnType = "V",
-        parameters = listOf(requestType)
+        parameters = listOf(requestType),
+        strings = listOf("MBS: Fetching MBFE root for mediaId: `%s`")
     ).matchSingle().method.addInstructionsWithLabels(
         0,
         """
