@@ -7,14 +7,11 @@
 
 package app.morphe.extension.music.patches.lyrics.derive;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -37,9 +34,9 @@ public final class DeepLClient {
     }
 
     @Nullable
-    public static List<String> translate(@NonNull List<String> lines,
-                                         @NonNull String targetLang,
-                                         @NonNull String apiKey) {
+    static List<String> translate(List<String> lines,
+                                         String targetLang,
+                                         String apiKey) {
         if (apiKey.isEmpty() || lines.isEmpty()) {
             return null;
         }
@@ -78,16 +75,7 @@ public final class DeepLClient {
                     return null;
                 }
 
-                StringBuilder sb = new StringBuilder(512);
-                try (BufferedReader br = new BufferedReader(
-                        new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
-                    String line;
-                    while ((line = br.readLine()) != null) {
-                        sb.append(line);
-                    }
-                }
-
-                JSONObject resp = new JSONObject(sb.toString());
+                JSONObject resp = new JSONObject(OpenAIClient.readResponse(conn));
                 JSONArray translations = resp.optJSONArray("translations");
                 if (translations == null) {
                     return null;
@@ -108,8 +96,7 @@ public final class DeepLClient {
         }
     }
 
-    @NonNull
-    public static String normalizeDeepLLanguage(@NonNull String lang) {
+    private static String normalizeDeepLLanguage(String lang) {
         String clean = lang.trim().toUpperCase(Locale.ROOT);
         if (clean.equals("EN") || clean.startsWith("EN-")) {
             return "EN-US";
@@ -129,7 +116,7 @@ public final class DeepLClient {
         if (clean.equals("IN") || clean.equals("ID")) {
             return "ID";
         }
-        // standard 2-letter code like JA KO DE FR etc
+        // Other languages use the plain two letter code, such as JA, KO or DE.
         int hyphen = clean.indexOf('-');
         return hyphen > 0 ? clean.substring(0, hyphen) : clean;
     }

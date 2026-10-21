@@ -7,9 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-import static app.morphe.extension.shared.StringRef.str;
-
-import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.net.Uri;
@@ -20,13 +17,8 @@ import android.view.Choreographer;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.Locale;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -56,7 +48,6 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
-import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
@@ -205,88 +196,84 @@ public final class LyricsManager {
      */
     private final AtomicInteger requestId = new AtomicInteger();
 
-    private boolean overrideNative;
-
-    private long positionMs;
-    private long positionUpdatedAtUptimeMs;
     private long lastVideoTimeSample = -1;
-    private long lastPlaybackSampleUptimeMs;
     private float playbackSpeed = 1f;
     private boolean playing;
 
-    private long lastSamplePosition = -1L;
-    private long lastSampleTimeMs = 0L;
-    private long lastCorrectedSampleTimeMs = 0L;
-    private long lastFrameTimeUptimeMs = -1L;
-    private double estimate = 0.0;
-    private long smoothPosition = 0L;
-    private boolean frameCallbackScheduled = false;
+    /**
+     * A sample further than this from the estimate is a seek, which the estimate jumps to
+     * instead of catching up with.
+     */
+    private static final long SEEK_THRESHOLD_MS = 1000;
+    /** A longer frame gap, such as after the app was in the background, is not extrapolated over. */
+    private static final long MAX_FRAME_STEP_MS = 100;
 
-    private final Choreographer.FrameCallback frameCallback = new Choreographer.FrameCallback() {
-        @Override
-        public void doFrame(long frameTimeNanos) {
-            frameCallbackScheduled = false;
-            final long now = SystemClock.uptimeMillis();
-            final long videoTime = VideoInformation.getVideoTime();
-            if (videoTime >= 0 && videoTime != lastVideoTimeSample) {
-                updateSample(videoTime, now);
-            }
+    // The position is sampled a few times a second, and estimated in between on every frame
+    // so the highlight moves smoothly. The estimate only ever moves forward while playing.
+    private long lastSamplePosition = -1;
+    private long lastSampleTimeMs;
+    private long lastCorrectedSampleTimeMs;
+    private long lastFrameTimeUptimeMs = -1;
+    private double estimate;
+    private long smoothPosition;
+    private boolean frameCallbackScheduled;
+    /** Frames are only followed while something reads the position, such as an open lyrics panel. */
+    private boolean positionReadSinceFrame;
 
-            if (!playing || lastSamplePosition < 0) {
-                if (Math.abs(lastSamplePosition - smoothPosition) > 1000L) {
-                    smoothPosition = Math.max(0L, lastSamplePosition);
-                }
-                return;
-            }
+    private final Choreographer.FrameCallback frameCallback = this::onFrame;
 
-            final long frameTimeMs = frameTimeNanos / 1_000_000L;
-            if (lastFrameTimeUptimeMs == -1L) {
-                lastFrameTimeUptimeMs = frameTimeMs;
-                estimate = (double) lastSamplePosition;
-            }
-
-            final long dtMs = Math.max(0L, Math.min(100L, frameTimeMs - lastFrameTimeUptimeMs));
-            lastFrameTimeUptimeMs = frameTimeMs;
-
-            final float speed = Math.max(0.1f, playbackSpeed);
-            estimate += dtMs * speed;
-
-            if (lastSampleTimeMs != lastCorrectedSampleTimeMs) {
-                lastCorrectedSampleTimeMs = lastSampleTimeMs;
-                final double error = (double) lastSamplePosition - estimate;
-                final double absError = Math.abs(error);
-                if (absError > 1000.0) {
-                    estimate = (double) lastSamplePosition;
-                } else if (error > 0.0) {
-                    if (absError > 500.0) {
-                        estimate += error * 0.8;
-                    } else if (absError > 100.0) {
-                        estimate += error * 0.5;
-                    } else {
-                        estimate += error * 0.3;
-                    }
-                }
-            }
-
-            if (playing && estimate < (double) smoothPosition) {
-                estimate = (double) smoothPosition;
-            }
-            smoothPosition = Math.round(estimate);
-
-            ensureFrameCallback();
+    private void onFrame(long frameTimeNanos) {
+        frameCallbackScheduled = false;
+        final long videoTime = VideoInformation.getVideoTime();
+        if (videoTime >= 0 && videoTime != lastVideoTimeSample) {
+            updateSample(videoTime, SystemClock.uptimeMillis());
         }
-    };
+
+        if (!playing || lastSamplePosition < 0 || !positionReadSinceFrame) {
+            lastFrameTimeUptimeMs = -1;
+            return;
+        }
+        positionReadSinceFrame = false;
+
+        final long frameTimeMs = frameTimeNanos / 1_000_000L;
+        final float speed = Math.max(0.1f, playbackSpeed);
+        if (lastFrameTimeUptimeMs == -1) {
+            // Starting or resuming: carry the last sample forward by the time since it was taken.
+            lastFrameTimeUptimeMs = frameTimeMs;
+            estimate = Math.max(estimate, lastSamplePosition
+                    + (SystemClock.uptimeMillis() - lastSampleTimeMs) * speed);
+        }
+        final long stepMs = Math.max(0, Math.min(MAX_FRAME_STEP_MS, frameTimeMs - lastFrameTimeUptimeMs));
+        lastFrameTimeUptimeMs = frameTimeMs;
+        estimate += stepMs * speed;
+
+        // A new sample pulls a lagging estimate towards it, harder the further behind it is.
+        if (lastSampleTimeMs != lastCorrectedSampleTimeMs) {
+            lastCorrectedSampleTimeMs = lastSampleTimeMs;
+            final double error = lastSamplePosition - estimate;
+            if (Math.abs(error) > SEEK_THRESHOLD_MS) {
+                estimate = lastSamplePosition;
+            } else if (error > 500) {
+                estimate += error * 0.8;
+            } else if (error > 100) {
+                estimate += error * 0.5;
+            } else if (error > 0) {
+                estimate += error * 0.3;
+            }
+        }
+
+        estimate = Math.max(estimate, smoothPosition);
+        smoothPosition = Math.round(estimate);
+        ensureFrameCallback();
+    }
 
     private void ensureFrameCallback() {
         if (!playing || frameCallbackScheduled) {
             return;
         }
         if (Looper.myLooper() == Looper.getMainLooper()) {
-            try {
-                Choreographer.getInstance().postFrameCallback(frameCallback);
-                frameCallbackScheduled = true;
-            } catch (Exception ignored) {
-            }
+            Choreographer.getInstance().postFrameCallback(frameCallback);
+            frameCallbackScheduled = true;
         } else {
             Utils.runOnMainThread(this::ensureFrameCallback);
         }
@@ -295,17 +282,11 @@ public final class LyricsManager {
     private void stopFrameCallback() {
         frameCallbackScheduled = false;
         if (Looper.myLooper() == Looper.getMainLooper()) {
-            try {
-                Choreographer.getInstance().removeFrameCallback(frameCallback);
-            } catch (Exception ignored) {
-            }
+            Choreographer.getInstance().removeFrameCallback(frameCallback);
         } else {
             Utils.runOnMainThread(this::stopFrameCallback);
         }
     }
-
-    private static final long VIDEO_REANCHOR_BEHIND_MS = 1000;
-    private static final long PLAYBACK_STALE_MS = 500;
 
     private int lastHighlightedIndex = -1;
 
@@ -438,29 +419,23 @@ public final class LyricsManager {
     }
     private void resetPosition() {
         stopFrameCallback();
-        positionMs = 0;
-        positionUpdatedAtUptimeMs = SystemClock.uptimeMillis();
         lastVideoTimeSample = -1;
-        lastSamplePosition = -1L;
-        lastSampleTimeMs = 0L;
-        lastCorrectedSampleTimeMs = 0L;
-        lastFrameTimeUptimeMs = -1L;
-        estimate = 0.0;
-        smoothPosition = 0L;
-        lastPlaybackSampleUptimeMs = 0;
+        lastSamplePosition = -1;
+        lastSampleTimeMs = 0;
+        lastCorrectedSampleTimeMs = 0;
+        lastFrameTimeUptimeMs = -1;
+        estimate = 0;
+        smoothPosition = 0;
         lastHighlightedIndex = -1;
     }
 
     private void updateSample(long newPosition, long now) {
-        if (newPosition < 0) return;
         final long prevSample = lastSamplePosition;
         lastSamplePosition = newPosition;
         lastSampleTimeMs = now;
         lastVideoTimeSample = newPosition;
-        positionMs = newPosition;
-        positionUpdatedAtUptimeMs = now;
-        if (prevSample < 0 || Math.abs(newPosition - prevSample) > 1000L) {
-            estimate = (double) newPosition;
+        if (prevSample < 0 || Math.abs(newPosition - prevSample) > SEEK_THRESHOLD_MS) {
+            estimate = newPosition;
             smoothPosition = newPosition;
         }
     }
@@ -488,19 +463,19 @@ public final class LyricsManager {
         }
 
         if (!playing || lastSamplePosition < 0) {
-            long pos = smoothPosition > 0 ? smoothPosition : (lastSamplePosition >= 0 ? lastSamplePosition : 0L);
-            return Math.max(0L, pos);
+            return smoothPosition > 0 ? smoothPosition : Math.max(0, lastSamplePosition);
         }
 
+        positionReadSinceFrame = true;
         ensureFrameCallback();
-        return Math.max(0L, smoothPosition);
+        return Math.max(0, smoothPosition);
     }
 
     public int getTemporaryOffsetMs() { return temporaryOffsetMs; }
 
     public void setTemporaryOffsetMs(int ms) {
         temporaryOffsetMs = ms;
-        lastFrameTimeUptimeMs = -1L;
+        lastFrameTimeUptimeMs = -1;
     }
 
     /** Called from the panel when the track is about to change or to go away, not per drag frame. */
@@ -511,32 +486,6 @@ public final class LyricsManager {
         }
         final int ms = temporaryOffsetMs;
         runOnLookupThread(() -> TrackOffsetStore.put(track, ms));
-    }
-
-    public void resetTemporaryOffsetMs() {
-        temporaryOffsetMs = 0;
-        lastFrameTimeUptimeMs = -1L;
-    }
-
-    public boolean isPlaying() { return playing; }
-
-    public float getPlaybackSpeed() { return playbackSpeed; }
-
-    @Nullable
-    public Bitmap getCurrentArtworkBitmap() {
-        MediaMetadata metadata = currentMetadata;
-        if (metadata != null) {
-            try {
-                Bitmap bmp = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
-                if (bmp == null) bmp = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
-                if (bmp == null) bmp = metadata.getBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON);
-                if (bmp != null && !bmp.isRecycled()) {
-                    return bmp;
-                }
-            } catch (Exception ignored) {
-            }
-        }
-        return null;
     }
 
     /** Only reached on a real track change, so a loop cannot discard the offset it comes round for again. */
@@ -735,7 +684,6 @@ public final class LyricsManager {
         currentRawArtist = rawArtist;
         currentMediaUri = mediaUri;
         currentTrack = track;
-        overrideNative = false;
         currentVideoId = videoId;
         loadTemporaryOffsetMs(track);
         // A rebinding keeps the previous track's lyric, which is what makes it worth
@@ -745,23 +693,6 @@ public final class LyricsManager {
         }
         resetPosition();
         load(track, sameTrack);
-    }
-
-    /**
-     * turn off custom lyrics temporarily so native lyrics panel can show
-     */
-    public void setOverrideNative(boolean override) {
-        Utils.verifyOnMainThread();
-        overrideNative = override;
-        if (override) {
-            setState(State.IDLE, null);
-        } else if (currentTrack != null) {
-            load(currentTrack, false);
-        }
-    }
-
-    public boolean isOverrideNative() {
-        return overrideNative;
     }
 
     private void setPendingTrack(TrackInfo track, String rawTitle, String rawArtist,
@@ -806,20 +737,12 @@ public final class LyricsManager {
             return;
         }
 
-        final int state = playbackState.getState();
-        final boolean isPausedOrStopped = (state == PlaybackState.STATE_PAUSED
-                || state == PlaybackState.STATE_STOPPED
-                || state == PlaybackState.STATE_NONE
-                || state == PlaybackState.STATE_ERROR);
-        playing = !isPausedOrStopped;
+        playing = playbackState.getState() == PlaybackState.STATE_PLAYING;
 
         final long newPosition = playbackState.getPosition();
         if (newPosition >= 0) {
             updateSample(newPosition, SystemClock.uptimeMillis());
         }
-        positionMs = playbackState.getPosition();
-        positionUpdatedAtUptimeMs = SystemClock.uptimeMillis();
-        lastPlaybackSampleUptimeMs = positionUpdatedAtUptimeMs;
 
         final float speed = playbackState.getPlaybackSpeed();
         // A paused state reports speed zero, which would freeze the extrapolation even
@@ -829,12 +752,11 @@ public final class LyricsManager {
         }
 
         if (playing) {
-            lastFrameTimeUptimeMs = -1L;
-            ensureFrameCallback();
+            lastFrameTimeUptimeMs = -1;
         } else {
             stopFrameCallback();
-            if (Math.abs(lastSamplePosition - smoothPosition) > 1000L) {
-                smoothPosition = Math.max(0L, lastSamplePosition);
+            if (Math.abs(lastSamplePosition - smoothPosition) > SEEK_THRESHOLD_MS) {
+                smoothPosition = Math.max(0, lastSamplePosition);
             }
         }
         ensureLoadedForCurrentVideo();
@@ -2393,15 +2315,6 @@ private void reorderQueueByRemembered() {
         return lyrics != null && lyrics.synced() && !lyrics.isEmpty();
     }
 
-    @NonNull
-    public static List<LyricsProvider> providersInOrder(String order) {
-        return LyricsProviders.providersInOrder(order);
-    }
-
-    public static boolean isProviderEnabled(String id) {
-        return LyricsProviders.isProviderEnabled(id);
-    }
-
     private static Lyrics sanitizeDegradedRomaji(Lyrics lyrics) {
         if (lyrics == null || lyrics == Lyrics.NOT_FOUND || lyrics.isEmpty()) {
             return lyrics;
@@ -2438,346 +2351,5 @@ private void reorderQueueByRemembered() {
         return new Lyrics(cleanedLines, lyrics.providerName(), lyrics.synced(),
                 null, lyrics.translations(), null,
                 lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(), lyrics.sourceUrl());
-    }
-
-    public static final int STATUS_ACTIVE = 0;
-    public static final int STATUS_AVAILABLE = 1;
-    public static final int STATUS_FETCHABLE = 2;
-
-    public static final int SYNC_TYPE_WORD = 2;
-    public static final int SYNC_TYPE_LINE = 1;
-    public static final int SYNC_TYPE_PLAIN = 0;
-
-    public record ProviderInfo(
-            String id,
-            String name,
-            int syncType,
-            int statusCode,
-            boolean isCurrent,
-            boolean isEnabled) {}
-
-    /**
-     * get list of all available providers and their status
-     */
-    @NonNull
-    public List<ProviderInfo> getAvailableProvidersForCurrentTrack() {
-        TrackInfo track = currentTrack;
-        List<ProviderInfo> result = new ArrayList<>(LyricsProviders.PROVIDER_ORDER.size());
-        if (track == null) {
-            return result;
-        }
-
-        String curProviderName = (currentLyrics != null && currentLyrics != Lyrics.NOT_FOUND)
-                ? currentLyrics.providerName() : "";
-
-        Map<String, Lyrics> known = new HashMap<>();
-        if (currentLyrics != null && currentLyrics != Lyrics.NOT_FOUND) {
-            known.put(currentLyrics.providerName().toLowerCase(Locale.ROOT), currentLyrics);
-        }
-        synchronized (candidateQueue) {
-            for (ScoredCandidate sc : candidateQueue) {
-                String p = sc.lyrics().providerName().toLowerCase(Locale.ROOT);
-                if (!known.containsKey(p)) {
-                    known.put(p, sc.lyrics());
-                }
-            }
-        }
-
-        List<TrackInfo> searchVariants = getSearchTrackVariants(track, currentRawTitle);
-        List<String> enabledList = LyricsProviders.enabledProviderIds(Settings.LYRICS_SOURCE.get());
-
-        for (String id : LyricsProviders.PROVIDER_ORDER) {
-            LyricsProvider p = LyricsProviders.providerFor(id);
-            if (p == null) continue;
-            String name = p.name();
-            String nameLower = name.toLowerCase(Locale.ROOT);
-            Lyrics lyr = known.get(nameLower);
-            if (lyr == null) {
-                lyr = LyricsCache.get(track, name, preferenceVideoId);
-                if (lyr == null || lyr == Lyrics.NOT_FOUND) {
-                    for (TrackInfo v : searchVariants) {
-                        Lyrics c = LyricsCache.get(v, name, preferenceVideoId);
-                        if (c != null && c != Lyrics.NOT_FOUND) {
-                            lyr = c;
-                            break;
-                        }
-                    }
-                }
-                if (lyr == Lyrics.NOT_FOUND) lyr = null;
-            }
-
-            boolean isCurrent = !curProviderName.isEmpty() && (name.equalsIgnoreCase(curProviderName)
-                    || id.equalsIgnoreCase(curProviderName));
-            boolean isEnabled = enabledList.contains(id);
-
-            int syncType;
-            int statusCode;
-            if (lyr != null) {
-                if (LyricsRequests.syncRank(lyr) == 2) {
-                    syncType = SYNC_TYPE_WORD;
-                } else if (lyr.synced()) {
-                    syncType = SYNC_TYPE_LINE;
-                } else {
-                    syncType = SYNC_TYPE_PLAIN;
-                }
-                statusCode = isCurrent ? STATUS_ACTIVE : STATUS_AVAILABLE;
-            } else {
-                if (isWordSyncCapable(id)) {
-                    syncType = SYNC_TYPE_WORD;
-                } else if (isLineSyncCapable(id)) {
-                    syncType = SYNC_TYPE_LINE;
-                } else {
-                    syncType = SYNC_TYPE_PLAIN;
-                }
-                statusCode = STATUS_FETCHABLE;
-            }
-
-            result.add(new ProviderInfo(id, name, syncType, statusCode, isCurrent, isEnabled));
-        }
-
-        return result;
-    }
-
-    public static boolean isWordSyncCapable(String id) {
-        return "QQ".equalsIgnoreCase(id) || "KuGou".equalsIgnoreCase(id)
-                || "NetEase".equalsIgnoreCase(id) || "AMLL".equalsIgnoreCase(id)
-                || "LunaBeat".equalsIgnoreCase(id) || "Lyricify".equalsIgnoreCase(id)
-                || "Apple".equalsIgnoreCase(id) || "Spotify".equalsIgnoreCase(id)
-                || "Musixmatch".equalsIgnoreCase(id) || "LrcRed".equalsIgnoreCase(id);
-    }
-
-    public static boolean isLineSyncCapable(String id) {
-        return "LRCLIB".equalsIgnoreCase(id) || "YTMusic".equalsIgnoreCase(id)
-                || "Captions".equalsIgnoreCase(id) || "SimpMusic".equalsIgnoreCase(id)
-                || "Luna".equalsIgnoreCase(id) || "bLyrics".equalsIgnoreCase(id)
-                || "BiniLyrics".equalsIgnoreCase(id) || "Unison".equalsIgnoreCase(id)
-                || "Deezer".equalsIgnoreCase(id) || "LrcRed".equalsIgnoreCase(id);
-    }
-
-    /**
-     * pull out bracket text and clean title from song name
-     */
-    private static void extractBracketVariants(String text, List<String> candidates) {
-        if (text == null || text.isEmpty()) return;
-        extractOuterAndInner(text, '(', ')', candidates);
-        extractOuterAndInner(text, '（', '）', candidates);
-        extractOuterAndInner(text, '[', ']', candidates);
-        extractOuterAndInner(text, '【', '】', candidates);
-        extractOuterAndInner(text, '「', '」', candidates);
-        extractOuterAndInner(text, '『', '』', candidates);
-    }
-
-    private static void extractOuterAndInner(String text, char open, char close, List<String> candidates) {
-        int s = text.indexOf(open);
-        int e = text.lastIndexOf(close);
-        if (s >= 0 && e > s) {
-            String outer = (text.substring(0, s) + text.substring(e + 1)).trim();
-            String inner = text.substring(s + 1, e).trim();
-            if (!outer.isEmpty() && !candidates.contains(outer)) {
-                candidates.add(outer);
-            }
-            if (!inner.isEmpty() && !candidates.contains(inner)) {
-                candidates.add(inner);
-            }
-        }
-    }
-
-    /**
-     * generate title artist search variants so we can find lyrics on netease qq amll etc
-     */
-    @NonNull
-    public static List<TrackInfo> getSearchTrackVariants(@NonNull TrackInfo track, @Nullable String rawTitle) {
-        Set<TrackInfo> variants = new LinkedHashSet<>();
-        variants.add(track);
-        variants.addAll(CharactersConverter.variants(track));
-
-        String title = track.title();
-        String artist = track.artist();
-
-        List<String> titleCandidates = new ArrayList<>();
-        titleCandidates.add(title);
-
-        // split title by dash or slash for localized names
-        String[] splitDelims = title.split("\\s+(?:[-/／–—~]|//)\\s+");
-        if (splitDelims.length > 1) {
-            for (String part : splitDelims) {
-                String p = part.trim();
-                if (!p.isEmpty() && !titleCandidates.contains(p)) {
-                    titleCandidates.add(p);
-                }
-            }
-        }
-
-        // extract text in brackets
-        extractBracketVariants(title, titleCandidates);
-
-        if (rawTitle != null && !rawTitle.equals(title)) {
-            if (!titleCandidates.contains(rawTitle)) {
-                titleCandidates.add(rawTitle);
-            }
-            String[] splitRaw = rawTitle.split("\\s+(?:[-/／–—~]|//)\\s+");
-            if (splitRaw.length > 1) {
-                for (String part : splitRaw) {
-                    String p = part.trim();
-                    if (!p.isEmpty() && !titleCandidates.contains(p)) {
-                        titleCandidates.add(p);
-                    }
-                }
-            }
-            extractBracketVariants(rawTitle, titleCandidates);
-        }
-
-        // clean title using metadata cleaner
-        List<String> allTitles = new ArrayList<>(titleCandidates);
-        for (String tc : titleCandidates) {
-            String cleaned = MetadataCleaner.cleanTitle(tc);
-            if (!cleaned.isEmpty() && !allTitles.contains(cleaned)) {
-                allTitles.add(cleaned);
-            }
-        }
-
-        // get artist candidates
-        List<String> artistCandidates = new ArrayList<>();
-        artistCandidates.add(artist);
-        String[] splitArtists = MetadataCleaner.splitArtists(artist);
-        for (String a : splitArtists) {
-            String ca = a.trim();
-            if (!ca.isEmpty() && !artistCandidates.contains(ca)) {
-                artistCandidates.add(ca);
-            }
-        }
-        String cleanedArtist = MetadataCleaner.cleanArtist(artist);
-        if (!cleanedArtist.isEmpty() && !artistCandidates.contains(cleanedArtist)) {
-            artistCandidates.add(cleanedArtist);
-        }
-
-        // build track info variations
-        for (String t : allTitles) {
-            for (String a : artistCandidates) {
-                TrackInfo ti = new TrackInfo(t, a, track.album(), track.durationSeconds());
-                variants.add(ti);
-                variants.addAll(CharactersConverter.variants(ti));
-            }
-        }
-
-        // try swap artist and title
-        TrackInfo swapped = MetadataCleaner.swapTitleAndArtist(track, rawTitle);
-        if (swapped != null) {
-            variants.add(swapped);
-            variants.addAll(CharactersConverter.variants(swapped));
-        }
-
-        return new ArrayList<>(variants);
-    }
-
-    /**
-     * force load lyrics from chosen provider
-     */
-    public void fetchExplicitProvider(String providerId) {
-        Utils.verifyOnMainThread();
-        TrackInfo track = currentTrack;
-        if (track == null) {
-            return;
-        }
-
-        final Lyrics previousLyrics = currentLyrics;
-        final int id = requestId.incrementAndGet();
-
-        // keep old lyrics on screen while loading new one so no black screen
-        if (previousLyrics == null || previousLyrics.isEmpty()) {
-            setState(State.LOADING, null);
-        } else {
-            state = State.LOADING;
-            for (Listener listener : new ArrayList<>(listeners)) {
-                listener.onLyricsChanged(State.LOADING, previousLyrics);
-            }
-        }
-
-        runOnLookupThread(() -> {
-            List<TrackInfo> searchVariants = getSearchTrackVariants(track, currentRawTitle);
-
-            // check if already cached
-            for (TrackInfo variant : searchVariants) {
-                Lyrics cached = LyricsCache.get(variant, providerId, preferenceVideoId);
-                if (cached != null && cached != Lyrics.NOT_FOUND && LyricsMatch.isValidLyrics(cached, track)) {
-                    LyricsCache.put(track, providerId, cached, preferenceVideoId);
-                    publishFromLookup(id, cached);
-                    return;
-                }
-            }
-
-            // check in candidate queue
-            synchronized (candidateQueue) {
-                for (ScoredCandidate sc : candidateQueue) {
-                    if (providerId.equalsIgnoreCase(sc.lyrics().providerName())
-                            && LyricsMatch.isValidLyrics(sc.lyrics(), track)) {
-                        LyricsCache.put(track, providerId, sc.lyrics(), preferenceVideoId);
-                        publishFromLookup(id, sc.lyrics());
-                        return;
-                    }
-                }
-            }
-
-            // try fetch from provider using variants
-            LyricsProvider provider = LyricsProviders.providerFor(providerId);
-            if (provider == null) {
-                restoreOrNotFound(id, previousLyrics, providerId);
-                return;
-            }
-
-            for (TrackInfo variant : searchVariants) {
-                try {
-                    LyricsProvider.FetchResult res = provider.fetch(variant);
-                    Lyrics fetched = res != null ? res.lyrics() : null;
-                    if (fetched != null && LyricsMatch.isValidLyrics(fetched, track)) {
-                        LyricsCache.put(track, provider.name(), fetched, preferenceVideoId);
-                        publishFromLookup(id, fetched);
-                        return;
-                    }
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "Explicit provider fetch failed: " + providerId + " for " + variant.title(), ex);
-                }
-            }
-
-            // try candidate search if normal fetch fail
-            if (provider.hasCandidates()) {
-                for (TrackInfo variant : searchVariants) {
-                    try {
-                        List<Lyrics.ScoredLyrics> candidates = provider.fetchCandidates(variant);
-                        if (candidates != null && !candidates.isEmpty()) {
-                            for (Lyrics.ScoredLyrics c : candidates) {
-                                Lyrics cLyr = c != null ? c.lyrics() : null;
-                                if (cLyr != null && LyricsMatch.isValidLyrics(cLyr, track)) {
-                                    LyricsCache.put(track, provider.name(), cLyr, preferenceVideoId);
-                                    publishFromLookup(id, cLyr);
-                                    return;
-                                }
-                            }
-                        }
-                    } catch (Exception ex) {
-                        Logger.printDebug(() -> "Explicit candidate fetch failed: " + providerId + " for " + variant.title(), ex);
-                    }
-                }
-            }
-
-            // restore old lyrics if provider gave nothing
-            restoreOrNotFound(id, previousLyrics, providerId);
-        });
-    }
-
-    private void restoreOrNotFound(int id, @Nullable Lyrics previousLyrics, String providerId) {
-        Utils.runOnMainThread(() -> {
-            if (id != requestId.get()) return;
-            if (previousLyrics != null && !previousLyrics.isEmpty()) {
-                currentLyrics = previousLyrics;
-                state = State.LOADED;
-                Utils.showToastShort(str("morphe_music_lyrics_not_available_on_provider", providerId));
-                for (Listener listener : new ArrayList<>(listeners)) {
-                    listener.onLyricsChanged(State.LOADED, previousLyrics);
-                }
-            } else {
-                setState(State.NOT_FOUND, null);
-            }
-        });
     }
 }

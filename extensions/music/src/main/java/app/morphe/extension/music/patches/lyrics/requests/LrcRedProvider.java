@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -29,7 +28,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 /**
- * fetch lyrics from lrc.red api with syllable sync ttml or lrc
+ * Lyrics from lrc.red, as word synced TTML or as LRC.
  */
 public final class LrcRedProvider implements LyricsProvider {
 
@@ -132,7 +131,6 @@ public final class LrcRedProvider implements LyricsProvider {
         return Lyrics.sortScoredByScore(scored);
     }
 
-    @NonNull
     private List<JSONObject> queryCandidates(TrackInfo track) {
         String mainQuery = (track.title() + " " + track.artist()).trim();
         List<JSONObject> results = searchApi(mainQuery, track);
@@ -229,7 +227,7 @@ public final class LrcRedProvider implements LyricsProvider {
 
         int score = 0;
 
-        // check title match
+        // Title.
         if (!targetFullTitle.isEmpty() && targetFullTitle.equals(itemFullTitle)) {
             score += 50;
         } else if (!targetBaseTitle.isEmpty() && !itemBaseTitle.isEmpty()) {
@@ -242,7 +240,7 @@ public final class LrcRedProvider implements LyricsProvider {
             }
         }
 
-        // check artist match
+        // Artist.
         if (!targetArtist.isEmpty() && !itemArtist.isEmpty()) {
             if (targetArtist.equals(itemArtist)) {
                 score += 30;
@@ -271,7 +269,7 @@ public final class LrcRedProvider implements LyricsProvider {
             }
         }
 
-        // check album match
+        // Album.
         if (!targetAlbum.isEmpty() && !itemAlbum.isEmpty()) {
             if (targetAlbum.equals(itemAlbum)) {
                 score += 35;
@@ -288,7 +286,7 @@ public final class LrcRedProvider implements LyricsProvider {
             }
         }
 
-        // compare song duration
+        // Duration.
         if (targetDuration > 0 && itemDuration > 0) {
             int diff = Math.abs(itemDuration - targetDuration);
             if (diff == 0) {
@@ -304,7 +302,7 @@ public final class LrcRedProvider implements LyricsProvider {
             }
         }
 
-        // give bonus point if word synced
+        // Word sync is preferred over line sync.
         if ("word".equalsIgnoreCase(itemTimingType)) {
             score += 15;
         } else if ("line".equalsIgnoreCase(itemTimingType)) {
@@ -313,7 +311,7 @@ public final class LrcRedProvider implements LyricsProvider {
             score -= 10;
         }
 
-        // minus points if instrument or remix
+        // A remix, cover or other variant the track is not.
         String trackLower = (track.title() + " " + track.album()).toLowerCase(Locale.ROOT);
         String itemLower = (itemTrackName + " " + itemAlbumName).toLowerCase(Locale.ROOT);
         for (String kw : MODIFIER_KEYWORDS) {

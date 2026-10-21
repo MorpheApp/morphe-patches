@@ -27,9 +27,10 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 
 public final class PetitLyricsProvider implements LyricsProvider {
 
@@ -551,26 +552,6 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return true;
     }
 
-    private static boolean hasCjk(@Nullable CharSequence s) {
-        if (s == null) return false;
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
-            if (block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
-                    || block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
-                    || block == Character.UnicodeBlock.HIRAGANA
-                    || block == Character.UnicodeBlock.KATAKANA
-                    || block == Character.UnicodeBlock.HANGUL_SYLLABLES
-                    || block == Character.UnicodeBlock.HANGUL_JAMO
-                    || block == Character.UnicodeBlock.HANGUL_COMPATIBILITY_JAMO) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private static boolean hasOpen(@Nullable String s) {
         return s != null && (s.contains("(") || s.contains("（") || s.contains("["));
     }
@@ -718,7 +699,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                                 boolean canMerge = false;
                                 if (!mergedWords.isEmpty()) {
                                     Word prev = mergedWords.get(mergedWords.size() - 1);
-                                    if (!prev.endsWithSpace() && !hasCjk(s) && !hasCjk(prev.text())) {
+                                    if (!prev.endsWithSpace() && !ScriptDetector.containsCjk(s) && !ScriptDetector.containsCjk(prev.text())) {
                                         canMerge = true;
                                     }
                                 }
@@ -769,7 +750,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                     continue;
                 }
 
-                // see if open bracket split into multiple lines
+                // A bracket opened on one line and closed on the next is one background vocal.
                 if (hasOpen(text) && !hasClose(text) && i + 1 < rawCount) {
                     RawWsyLine nxt = rawLines.get(i + 1);
                     List<Word> nxtWords = new ArrayList<>(nxt.words);
@@ -808,7 +789,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                     }
                 }
 
-                // check if there is inline duet or second vocal on same line
+                // A bracketed part at the start or the end of a line is a second vocal.
                 int pOpen = indexOfAny(text, "(（[");
                 int pClose = lastIndexOfAny(text, ")）]");
                 if (pOpen > 0 && pClose > pOpen && pClose >= text.length() - 2) {
@@ -861,21 +842,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
             }
 
             lines.sort(Comparator.comparingLong(LyricsLine::startTimeMs));
-            for (int k = 1; k < lines.size(); k++) {
-                LyricsLine prev = lines.get(k - 1);
-                LyricsLine curr = lines.get(k);
-                if (!curr.isBG()) {
-                    long gap = curr.startTimeMs() - prev.startTimeMs();
-                    if (gap >= 0 && gap <= 3500L) {
-                        String cleanCurr = LRCParser.cleanTextForComparison(curr.text());
-                        String cleanPrev = LRCParser.cleanTextForComparison(prev.text());
-                        if (!cleanCurr.isEmpty() && cleanCurr.equals(cleanPrev)) {
-                            lines.set(k, new LyricsLine(curr.startTimeMs(), curr.endTimeMs(), curr.text(),
-                                    curr.words(), curr.agentId(), curr.isDuet(), true, curr.songPart()));
-                        }
-                    }
-                }
-            }
+            LRCParser.markEchoesAsBackground(lines);
             return lines;
         } catch (Exception ex) {
             Logger.printDebug(() -> "PetitLyrics WSY parse failed", ex);
@@ -979,21 +946,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
             }
             lines.add(new LyricsLine(startMs, endMs, lineText, List.of(), null, false, isBg, null));
         }
-        for (int i = 1; i < lines.size(); i++) {
-            LyricsLine prev = lines.get(i - 1);
-            LyricsLine curr = lines.get(i);
-            if (!curr.isBG()) {
-                long gap = curr.startTimeMs() - prev.startTimeMs();
-                if (gap >= 0 && gap <= 3500L) {
-                    String cleanCurr = LRCParser.cleanTextForComparison(curr.text());
-                    String cleanPrev = LRCParser.cleanTextForComparison(prev.text());
-                    if (!cleanCurr.isEmpty() && cleanCurr.equals(cleanPrev)) {
-                        lines.set(i, new LyricsLine(curr.startTimeMs(), curr.endTimeMs(), curr.text(),
-                                curr.words(), curr.agentId(), curr.isDuet(), true, curr.songPart()));
-                    }
-                }
-            }
-        }
+        LRCParser.markEchoesAsBackground(lines);
         return lines;
     }
 

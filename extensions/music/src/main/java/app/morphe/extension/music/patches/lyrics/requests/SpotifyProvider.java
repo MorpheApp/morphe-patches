@@ -30,6 +30,7 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -388,23 +389,7 @@ public final class SpotifyProvider implements LyricsProvider {
             return null;
         }
 
-        for (int i = 0; i < lines.size(); i++) {
-            LyricsLine cur = lines.get(i);
-            long endMs;
-            if (i + 1 < lines.size()) {
-                long nextStart = lines.get(i + 1).startTimeMs();
-                long gap = nextStart - cur.startTimeMs();
-                if (gap < 11000L) {
-                    endMs = nextStart;
-                } else {
-                    long vocalHold = Math.max(5000L, cur.text().length() * 180L);
-                    endMs = Math.min(cur.startTimeMs() + vocalHold, nextStart - 7000L);
-                }
-            } else {
-                endMs = cur.startTimeMs() + Math.max(5000L, cur.text().length() * 180L);
-            }
-            lines.set(i, new LyricsLine(cur.startTimeMs(), endMs, cur.text(), cur.words(), cur.agentId(), cur.isDuet(), cur.isBG(), cur.songPart()));
-        }
+        LRCParser.fillEstimatedEnds(lines);
 
         return new Lyrics(lines, providerName, true, null, null, null, null, rawJson, "sp.json", sourceUrl);
     }
@@ -441,23 +426,7 @@ public final class SpotifyProvider implements LyricsProvider {
             return null;
         }
 
-        for (int i = 0; i < lines.size(); i++) {
-            LyricsLine cur = lines.get(i);
-            long endMs;
-            if (i + 1 < lines.size()) {
-                long nextStart = lines.get(i + 1).startTimeMs();
-                long gap = nextStart - cur.startTimeMs();
-                if (gap < 11000L) {
-                    endMs = nextStart;
-                } else {
-                    long vocalHold = Math.max(5000L, cur.text().length() * 180L);
-                    endMs = Math.min(cur.startTimeMs() + vocalHold, nextStart - 7000L);
-                }
-            } else {
-                endMs = cur.startTimeMs() + Math.max(5000L, cur.text().length() * 180L);
-            }
-            lines.set(i, new LyricsLine(cur.startTimeMs(), endMs, cur.text(), cur.words(), cur.agentId(), cur.isDuet(), cur.isBG(), cur.songPart()));
-        }
+        LRCParser.fillEstimatedEnds(lines);
 
         return new Lyrics(lines, providerName, true, null, null, null, null, rawJson, "sp.json", sourceUrl);
     }
@@ -479,7 +448,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 continue;
             }
 
-            // skip spaces before this syllable
+            // Spaces before the syllable are not part of it.
             while (charOffset < lineText.length() && Character.isWhitespace(lineText.charAt(charOffset))) {
                 charOffset++;
             }

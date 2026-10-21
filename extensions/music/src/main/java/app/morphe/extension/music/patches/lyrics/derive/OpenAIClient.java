@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.derive;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -82,9 +81,47 @@ public final class OpenAIClient {
     }
 
     public static String[] fetchReasoningEfforts(String baseUrl, String apiToken, String model) {
+        final String models = listModels(baseUrl, apiToken);
+        if (models == null) {
+            return new String[0];
+        }
+        try {
+            return parseSupportedEfforts(models, model);
+        } catch (JSONException e) {
+            Logger.printDebug(() -> "Could not read supported reasoning efforts", e);
+            return new String[0];
+        }
+    }
+
+    /** The ids of the models the endpoint lists, empty when it lists none. */
+    public static List<String> fetchModels(String baseUrl, @Nullable String apiToken) {
+        List<String> ids = new ArrayList<>();
+        final String models = listModels(baseUrl, apiToken);
+        if (models == null) {
+            return ids;
+        }
+        try {
+            JSONArray data = new JSONObject(models).optJSONArray("data");
+            if (data != null) {
+                for (int i = 0; i < data.length(); i++) {
+                    String id = data.getJSONObject(i).optString("id", "");
+                    if (!id.isEmpty()) {
+                        ids.add(id);
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            Logger.printDebug(() -> "Could not read the model list", e);
+        }
+        return ids;
+    }
+
+    /** The raw response of the endpoint's model list, or null if it has none. */
+    @Nullable
+    private static String listModels(String baseUrl, @Nullable String apiToken) {
         final String url = modelsUrl(baseUrl);
         if (url == null) {
-            return new String[0];
+            return null;
         }
         try {
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -96,15 +133,15 @@ public final class OpenAIClient {
                     conn.setRequestProperty("Authorization", "Bearer " + apiToken);
                 }
                 if (conn.getResponseCode() != 200) {
-                    return new String[0];
+                    return null;
                 }
-                return parseSupportedEfforts(readResponse(conn), model);
+                return readResponse(conn);
             } finally {
                 conn.disconnect();
             }
         } catch (Exception e) {
-            Logger.printDebug(() -> "Could not read supported reasoning efforts", e);
-            return new String[0];
+            Logger.printDebug(() -> "Could not list the models of " + url, e);
+            return null;
         }
     }
 
@@ -265,12 +302,6 @@ public final class OpenAIClient {
     @Nullable
     static String request(String baseUrl, String apiToken, String model,
                           String userPrompt) {
-        return request(baseUrl, apiToken, model, userPrompt, null);
-    }
-
-    @Nullable
-    static String request(String baseUrl, String apiToken, String model,
-                          String userPrompt, @Nullable String systemPrompt) {
         try {
             JSONObject body = new JSONObject();
             body.put("model", model);
@@ -280,11 +311,6 @@ public final class OpenAIClient {
             }
 
             JSONArray messages = new JSONArray();
-            if (systemPrompt != null && !systemPrompt.isEmpty()) {
-                messages.put(new JSONObject()
-                        .put("role", "system")
-                        .put("content", systemPrompt));
-            }
             messages.put(new JSONObject()
                     .put("role", "user")
                     .put("content", userPrompt));
@@ -327,7 +353,7 @@ public final class OpenAIClient {
         }
     }
 
-    private static String readResponse(HttpURLConnection conn) throws IOException {
+    static String readResponse(HttpURLConnection conn) throws IOException {
         StringBuilder sb = new StringBuilder(512);
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
@@ -413,8 +439,85 @@ public final class OpenAIClient {
         return sb;
     }
 
-    private static String stripLineNumber(String line) {
-        return line.replaceFirst("^\\d+\\.\\s*", "");
+    public static boolean isSkipToken(@Nullable String s) {
+        if (s == null) return true;
+        String t = s.trim();
+        return t.isEmpty() || t.equalsIgnoreCase("SKIP") || t.equalsIgnoreCase("[SKIP]")
+                || t.equalsIgnoreCase("<SKIP>") || t.equalsIgnoreCase("(SKIP)")
+                || t.equalsIgnoreCase("SKIP.");
+    }
+
+    private static final Pattern NUMBERED_LINE_PATTERN =
+            Pattern.compile("^(?:Line\\s+)?(\\d{1,4})[.)\\]:\\-]\\s*(.*)$", Pattern.CASE_INSENSITIVE);
+
+    @Nullable
+    private static List<String> parseNumberedLines(String text, int expectedCount) {
+        if (text == null || expectedCount <= 0) return null;
+        String[] raw = text.split("\n", -1);
+        int end = raw.length;
+        while (end > 0 && raw[end - 1].trim().isEmpty()) {
+            end--;
+        }
+        if (end == 0) return null;
+
+        String[] byIndex = new String[expectedCount];
+        int matchedNumberedCount = 0;
+        boolean anyIndexedNonEmpty = false;
+
+        for (int i = 0; i < end; i++) {
+            String line = raw[i].trim();
+            if (line.isEmpty()) continue;
+            Matcher m = NUMBERED_LINE_PATTERN.matcher(line);
+            if (m.matches()) {
+                int idx = Integer.parseInt(m.group(1)) - 1;
+                if (idx >= 0 && idx < expectedCount) {
+                    matchedNumberedCount++;
+                    String val = m.group(2).trim();
+                    if (isSkipToken(val)) {
+                        byIndex[idx] = "";
+                    } else {
+                        byIndex[idx] = val;
+                        if (!val.isEmpty()) {
+                            anyIndexedNonEmpty = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (matchedNumberedCount >= Math.max(1, expectedCount / 2)) {
+            if (!anyIndexedNonEmpty) {
+                return null;
+            }
+            List<String> indexedList = new ArrayList<>(expectedCount);
+            for (int i = 0; i < expectedCount; i++) {
+                indexedList.add(byIndex[i] != null ? byIndex[i] : "");
+            }
+            return indexedList;
+        }
+
+        List<String> list = new ArrayList<>(expectedCount);
+        boolean anyNonEmpty = false;
+        for (int i = 0; i < end && list.size() < expectedCount; i++) {
+            String line = raw[i].trim();
+            if (line.isEmpty()) continue;
+            line = line.replaceFirst("^\\d+[.)\\]:\\-]\\s*", "").trim();
+            if (isSkipToken(line)) {
+                line = "";
+            } else {
+                anyNonEmpty = true;
+            }
+            list.add(line);
+        }
+
+        if (!anyNonEmpty) {
+            return null;
+        }
+
+        while (list.size() < expectedCount) {
+            list.add("");
+        }
+        return list;
     }
 
     private static boolean isNoteOrEmptyLine(String text) {
@@ -424,93 +527,42 @@ public final class OpenAIClient {
         return !trimmed.matches(".*\\p{L}.*");
     }
 
-    @NonNull
-    public static List<String> fetchModels(String baseUrl, String apiToken) {
-        List<String> models = new ArrayList<>();
-        if (baseUrl == null || baseUrl.isEmpty()) {
-            return models;
-        }
-        try {
-            String modelsUrl = baseUrl;
-            if (modelsUrl.endsWith("/chat/completions")) {
-                modelsUrl = modelsUrl.substring(0, modelsUrl.length() - "/chat/completions".length()) + "/models";
-            } else if (modelsUrl.endsWith("/")) {
-                modelsUrl = modelsUrl + "models";
-            } else {
-                modelsUrl = modelsUrl + "/models";
-            }
-
-            URL url = new URL(modelsUrl);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            try {
-                conn.setRequestMethod("GET");
-                conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
-                conn.setReadTimeout(READ_TIMEOUT_MS);
-                if (apiToken != null && !apiToken.isEmpty()) {
-                    conn.setRequestProperty("Authorization", "Bearer " + apiToken);
-                }
-
-                int code = conn.getResponseCode();
-                if (code != 200) {
-                    return models;
-                }
-
-                String responseStr = readResponse(conn);
-                JSONObject json = new JSONObject(responseStr);
-                JSONArray data = json.optJSONArray("data");
-                if (data != null) {
-                    for (int i = 0; i < data.length(); i++) {
-                        JSONObject m = data.getJSONObject(i);
-                        String id = m.optString("id", "");
-                        if (!id.isEmpty()) {
-                            models.add(id);
-                        }
-                    }
-                }
-            } finally {
-                conn.disconnect();
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "OpenAI fetchModels failed", ex);
-        }
-        return models;
-    }
-
     @Nullable
     static List<String> mapLines(String baseUrl, String apiToken, String model,
                                  String prompt, List<String> sourceLines) {
-        return mapLines(baseUrl, apiToken, model, prompt, null, sourceLines);
+        if (!fitsOneRequest(sourceLines)) {
+            return null;
+        }
+        return mapResponse(request(baseUrl, apiToken, model, prompt), sourceLines);
     }
 
-    @Nullable
-    static List<String> mapLines(String baseUrl, String apiToken, String model,
-                                 String prompt, @Nullable String systemPrompt, List<String> sourceLines) {
+    static boolean fitsOneRequest(List<String> sourceLines) {
         int totalChars = 0;
         for (String line : sourceLines) {
             totalChars += line.length() + 1;
         }
-        if (totalChars > MAX_CHARS) {
-            return null;
-        }
-        String response = request(baseUrl, apiToken, model, prompt, systemPrompt);
+        return totalChars <= MAX_CHARS;
+    }
+
+    /** Lines up a numbered model response with the source lines, or null if it says nothing. */
+    @Nullable
+    static List<String> mapResponse(@Nullable String response, List<String> sourceLines) {
         if (response == null) {
             return null;
         }
-        List<String> parsed = GeminiClient.parseNumberedLines(response, sourceLines.size());
+        List<String> parsed = parseNumberedLines(response, sourceLines.size());
         if (parsed == null) {
             return null;
         }
         List<String> out = new ArrayList<>(sourceLines.size());
         boolean anyValid = false;
         for (int i = 0; i < sourceLines.size(); i++) {
-            String trimmed = (i < parsed.size() && parsed.get(i) != null) ? parsed.get(i).trim() : "";
-            if (GeminiClient.isSkipToken(trimmed) || isNoteOrEmptyLine(sourceLines.get(i))) {
+            String trimmed = parsed.get(i).trim();
+            if (isSkipToken(trimmed) || isNoteOrEmptyLine(sourceLines.get(i))) {
                 out.add("");
             } else {
                 out.add(trimmed);
-                if (!trimmed.isEmpty()) {
-                    anyValid = true;
-                }
+                anyValid = true;
             }
         }
         return anyValid ? out : null;

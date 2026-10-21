@@ -10,8 +10,11 @@ package app.morphe.extension.music.patches.lyrics.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 
 /**
  * A single lyrics line.
@@ -35,7 +38,8 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
     public LyricsLine {
         words = words == null ? List.of() : words;
         text = text == null ? "" : text;
-        if (words.size() > 1 && !hasCjk(text)) {
+        if (words.size() > 1 && !ScriptDetector.contains(text, Character.UnicodeScript.HAN,
+                Character.UnicodeScript.HIRAGANA, Character.UnicodeScript.KATAKANA)) {
             boolean hasEndedWithSpace = false;
             for (Word w : words) {
                 if (w.endsWithSpace()) {
@@ -55,7 +59,7 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
                     }
                     text = sb.toString();
                 } else {
-                    List<Word> updated = new java.util.ArrayList<>(words.size());
+                    List<Word> updated = new ArrayList<>(words.size());
                     StringBuilder sb = new StringBuilder();
                     for (int i = 0; i < words.size(); i++) {
                         Word w = words.get(i);
@@ -68,7 +72,7 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
                     text = sb.toString();
                 }
             } else if (!hasEndedWithSpace) {
-                List<Word> updated = new java.util.ArrayList<>(words.size());
+                List<Word> updated = new ArrayList<>(words.size());
                 int cursor = 0;
                 for (int i = 0; i < words.size(); i++) {
                     Word w = words.get(i);
@@ -87,23 +91,6 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
             }
         }
         words = Collections.unmodifiableList(words);
-    }
-
-    private static boolean hasCjk(@Nullable CharSequence s) {
-        if (s == null) return false;
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
-            if (block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
-                    || block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
-                    || block == Character.UnicodeBlock.HIRAGANA
-                    || block == Character.UnicodeBlock.KATAKANA) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public LyricsLine(long startTimeMs, String text, List<Word> words,

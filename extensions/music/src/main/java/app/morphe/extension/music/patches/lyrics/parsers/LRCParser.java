@@ -124,25 +124,8 @@ public final class LRCParser {
             return Collections.emptyList();
         }
 
-        final class RawEntry {
-            final long timeMs;
-            final String text;
-            final List<Word> words;
-            final String agentId;
-            final boolean isDuet;
-            final boolean isBg;
-            @Nullable
-            final String songPart;
-
-            RawEntry(long timeMs, String text, List<Word> words, String agentId, boolean isDuet, boolean isBg, @Nullable String songPart) {
-                this.timeMs = timeMs;
-                this.text = text;
-                this.words = words;
-                this.agentId = agentId;
-                this.isDuet = isDuet;
-                this.isBg = isBg;
-                this.songPart = songPart;
-            }
+        record RawEntry(long timeMs, String text, List<Word> words, @Nullable String agentId,
+                        boolean isDuet, boolean isBg, @Nullable String songPart) {
         }
 
         List<RawEntry> rawEntries = new ArrayList<>();
@@ -243,31 +226,31 @@ public final class LRCParser {
             return Collections.emptyList();
         }
 
-        rawEntries.sort(Comparator.comparingLong(e -> e.timeMs));
+        rawEntries.sort(Comparator.comparingLong(RawEntry::timeMs));
 
         List<LyricsLine> lines = new ArrayList<>();
         final int entryCount = rawEntries.size();
 
         for (int i = 0; i < entryCount; i++) {
             RawEntry current = rawEntries.get(i);
-            String text = current.text.trim();
-            if (text.isEmpty() || "♪".equals(text) || "♪♪".equals(text)) {
+            String text = current.text().trim();
+            if (isBreakMarker(text)) {
                 continue;
             }
 
-            long startMs = current.timeMs;
+            long startMs = current.timeMs();
             long endMs = LyricsLine.NO_TIME;
 
-            if (!current.words.isEmpty()) {
-                endMs = current.words.get(current.words.size() - 1).endMs();
+            if (!current.words().isEmpty()) {
+                endMs = current.words().get(current.words().size() - 1).endMs();
             }
 
             if (endMs == LyricsLine.NO_TIME) {
                 RawEntry next = null;
                 for (int j = i + 1; j < entryCount; j++) {
                     RawEntry candidate = rawEntries.get(j);
-                    if (candidate.timeMs > startMs) {
-                        if (!current.isBg && candidate.isBg) {
+                    if (candidate.timeMs() > startMs) {
+                        if (!current.isBg() && candidate.isBg()) {
                             continue;
                         }
                         next = candidate;
@@ -275,51 +258,82 @@ public final class LRCParser {
                     }
                 }
 
-                if (next != null) {
-                    String nextText = next.text.trim();
-                    boolean nextIsBreakMarker = nextText.isEmpty() || "♪".equals(nextText) || "♪♪".equals(nextText);
-                    if (nextIsBreakMarker) {
-                        endMs = next.timeMs;
-                    } else {
-                        long gap = next.timeMs - startMs;
-                        if (gap < 11000L) {
-                            endMs = next.timeMs;
-                        } else {
-                            long vocalHold = Math.max(5000L, text.length() * 180L);
-                            endMs = Math.min(startMs + vocalHold, next.timeMs - 7000L);
-                        }
-                    }
+                if (next != null && isBreakMarker(next.text())) {
+                    endMs = next.timeMs();
                 } else {
-                    endMs = startMs + Math.max(5000L, text.length() * 180L);
+                    endMs = estimateEndMs(startMs, next != null ? next.timeMs() : LyricsLine.NO_TIME, text);
                 }
             }
 
-            lines.add(new LyricsLine(startMs, endMs, text, current.words,
-                    current.agentId, current.isDuet, current.isBg, current.songPart));
+            lines.add(new LyricsLine(startMs, endMs, text, current.words(),
+                    current.agentId(), current.isDuet(), current.isBg(), current.songPart()));
         }
 
         if (lines.isEmpty()) {
             return Collections.emptyList();
         }
 
+        markEchoesAsBackground(lines);
+        resolveDuet(lines);
+        return lines;
+    }
+
+    /** An empty line or a lone note marks where singing stops. */
+    private static boolean isBreakMarker(String text) {
+        String trimmed = text.trim();
+        return trimmed.isEmpty() || "♪".equals(trimmed) || "♪♪".equals(trimmed);
+    }
+
+    /** A line repeated right after itself is a backing vocal echoing the lead. */
+    private static final long ECHO_WINDOW_MS = 3500;
+    /** A gap shorter than this is sung through, so the line lasts until the next one starts. */
+    private static final long HELD_GAP_MS = 11_000;
+    private static final long MIN_HOLD_MS = 5000;
+    private static final long HOLD_PER_CHAR_MS = 180;
+    /** How long before the next line a long instrumental gap is shown as such. */
+    private static final long GAP_LEAD_IN_MS = 7000;
+
+    /**
+     * When a line that has no end of its own stops being sung: at the next line if that follows
+     * soon, otherwise after a hold that grows with the text, so a long instrumental gap shows as one.
+     *
+     * @param nextStartMs Start of the next line, or {@link LyricsLine#NO_TIME} for the last line.
+     */
+    public static long estimateEndMs(long startMs, long nextStartMs, String text) {
+        final long hold = Math.max(MIN_HOLD_MS, text.length() * HOLD_PER_CHAR_MS);
+        if (nextStartMs == LyricsLine.NO_TIME) {
+            return startMs + hold;
+        }
+        if (nextStartMs - startMs < HELD_GAP_MS) {
+            return nextStartMs;
+        }
+        return Math.min(startMs + hold, nextStartMs - GAP_LEAD_IN_MS);
+    }
+
+    /** Gives every line of a line synced lyric an end, from where the line after it starts. */
+    public static void fillEstimatedEnds(List<LyricsLine> lines) {
+        for (int i = 0; i < lines.size(); i++) {
+            LyricsLine cur = lines.get(i);
+            long nextStart = i + 1 < lines.size() ? lines.get(i + 1).startTimeMs() : LyricsLine.NO_TIME;
+            lines.set(i, new LyricsLine(cur.startTimeMs(), estimateEndMs(cur.startTimeMs(), nextStart, cur.text()),
+                    cur.text(), cur.words(), cur.agentId(), cur.isDuet(), cur.isBG(), cur.songPart()));
+        }
+    }
+
+    /** Marks a line that repeats the one just before it as a background vocal. */
+    public static void markEchoesAsBackground(List<LyricsLine> lines) {
         for (int i = 1; i < lines.size(); i++) {
             LyricsLine prev = lines.get(i - 1);
             LyricsLine curr = lines.get(i);
-            if (!curr.isBG()) {
-                long gap = curr.startTimeMs() - prev.startTimeMs();
-                if (gap >= 0 && gap <= 3500L) {
-                    String cleanCurr = cleanTextForComparison(curr.text());
-                    String cleanPrev = cleanTextForComparison(prev.text());
-                    if (!cleanCurr.isEmpty() && cleanCurr.equals(cleanPrev)) {
-                        lines.set(i, new LyricsLine(curr.startTimeMs(), curr.endTimeMs(), curr.text(),
-                                curr.words(), curr.agentId(), curr.isDuet(), true, curr.songPart()));
-                    }
-                }
+            if (curr.isBG()) continue;
+            long gap = curr.startTimeMs() - prev.startTimeMs();
+            if (gap < 0 || gap > ECHO_WINDOW_MS) continue;
+            String cleanCurr = cleanTextForComparison(curr.text());
+            if (!cleanCurr.isEmpty() && cleanCurr.equals(cleanTextForComparison(prev.text()))) {
+                lines.set(i, new LyricsLine(curr.startTimeMs(), curr.endTimeMs(), curr.text(),
+                        curr.words(), curr.agentId(), curr.isDuet(), true, curr.songPart()));
             }
         }
-
-        resolveDuet(lines);
-        return lines;
     }
 
     private static void resolveDuet(List<LyricsLine> lines) {

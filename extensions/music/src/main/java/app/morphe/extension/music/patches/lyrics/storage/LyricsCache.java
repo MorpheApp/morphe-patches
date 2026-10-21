@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
+import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
@@ -32,9 +33,9 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsPreference;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
-import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 
@@ -89,11 +90,6 @@ public final class LyricsCache {
     }
 
     @Nullable
-    public static Lyrics get(TrackInfo track, String source) {
-        return get(track, source, null);
-    }
-
-    @Nullable
     public static Lyrics get(TrackInfo track, String source, @Nullable String videoId) {
         final String key = key(track, source);
         Lyrics lyrics = memoryCache.get(key);
@@ -104,10 +100,6 @@ public final class LyricsCache {
             }
         }
         return sameVideo(videoIdByKey.get(key), videoId) ? lyrics : null;
-    }
-
-    public static void put(TrackInfo track, String source, Lyrics lyrics) {
-        put(track, source, lyrics, null);
     }
 
     public static void put(TrackInfo track, String source, Lyrics lyrics,
@@ -374,21 +366,13 @@ public final class LyricsCache {
         return file == null ? "null" : file.getName();
     }
 
-    public static boolean isSkipTranslation(@Nullable String s) {
-        if (s == null) return true;
-        String t = s.trim();
-        return t.isEmpty() || t.equalsIgnoreCase("SKIP") || t.equalsIgnoreCase("[SKIP]")
-                || t.equalsIgnoreCase("<SKIP>") || t.equalsIgnoreCase("(SKIP)")
-                || t.equalsIgnoreCase("SKIP.");
-    }
-
     @Nullable
     private static List<String> sanitizeTranslationList(@Nullable List<String> list, @Nullable File file) {
         if (list == null) return null;
         boolean anyMeaningful = false;
         List<String> sanitized = new ArrayList<>(list.size());
         for (String s : list) {
-            if (isSkipTranslation(s)) {
+            if (OpenAIClient.isSkipToken(s)) {
                 sanitized.add("");
             } else {
                 sanitized.add(s);
@@ -810,9 +794,7 @@ public final class LyricsCache {
                     if (wt != null && !wt.isEmpty()) {
                         totalTokens++;
                         if (wt.length() == 1 && Character.isLetter(wt.charAt(0))
-                                && !LyricsRomanizer.containsJapanese(wt)
-                                && !LyricsRomanizer.containsHanzi(wt)
-                                && !LyricsRomanizer.containsHangul(wt)) {
+                                && !ScriptDetector.containsCjk(wt)) {
                             singleLetterTokens++;
                         }
                     }

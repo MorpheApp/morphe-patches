@@ -25,10 +25,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
 
 final class LyricsSpanBuilder {
@@ -150,6 +150,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
                     // unplaced word keeps the gap.
                     final String own = word.text().trim();
                     final int found = own.isEmpty() ? -1 : original.indexOf(own, at);
+                    //noinspection SizeReplaceableByIsEmpty
                     if (text.length() > 0 && !sameWrittenWord(at, found, previous, own)) {
                         text.append(' ');
                     }
@@ -653,9 +654,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
-    /** The line's own translation, null when it has none or it only repeats the original. */
-    /**
+    /** The line's own translation, null when it has none or it only repeats the original
      * One line of the dual mode: the text to show and where the small run sits in it. The copy
      * button reads the same call, so the two cannot disagree about which side is the main line.
      *
@@ -948,7 +947,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
         if (text == null || text.length() == 0) {
             return false;
         }
-        return LyricsRomanizer.containsArabic(text) || LyricsRomanizer.containsHebrew(text);
+        return ScriptDetector.containsRtl(text);
     }
 
     public static Layout.Alignment resolveAlignment(boolean isRtl, boolean isRightAligned) {

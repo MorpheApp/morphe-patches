@@ -25,11 +25,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.TextTrim;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.Word;
-import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.shared.Logger;
 
 /**
@@ -1133,7 +1133,7 @@ public final class TTMLParser {
             lineText = reconstructed.toString();
         }
 
-        // flush last background vocal if still open
+        // A background vocal that is still open ends with its line.
         if (inBg) {
             flushBgLine(bgLines, bgWords, bgFullText, bgBeginMs, bgEndMs, pBegin, pEnd);
             inBg = false;
@@ -1143,7 +1143,7 @@ public final class TTMLParser {
             return null;
         }
 
-        // infer time range from words or expand end so syllable not cut off
+        // The words give the line its range, so a syllable sung past the line's own end is not cut off.
         long effectiveBegin = pBegin;
         long effectiveEnd = pEnd;
         if (!words.isEmpty()) {

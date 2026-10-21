@@ -75,6 +75,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsFileSaver;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
@@ -1169,29 +1170,22 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 gapAnchors[anchor] = true;
             }
         }
-        final boolean isDuetSong = newLyrics.lines() != null
-                && newLyrics.lines().stream().anyMatch(LyricsLine::isDuet);
+        // A duet puts its second singer on the far side, which for a right to left song is the left.
+        boolean isDuetSong = false;
         boolean songHasRtl = false;
-        if (newLyrics.lines() != null) {
-            for (LyricsLine l : newLyrics.lines()) {
-                if (LyricsRomanizer.containsArabic(l.text()) || LyricsRomanizer.containsHebrew(l.text())) {
-                    songHasRtl = true;
-                    break;
-                }
-            }
+        for (LyricsLine l : newLyrics.lines()) {
+            isDuetSong |= l.isDuet();
+            songHasRtl |= ScriptDetector.containsRtl(l.text());
         }
-
-        final int totalLineCount = newLyrics.lines().size();
-        final boolean[] lineRightAligned = new boolean[totalLineCount];
-        for (int i = 0; i < totalLineCount; i++) {
+        final boolean[] lineRightAligned = new boolean[newLyrics.lines().size()];
+        for (int i = 0; i < lineRightAligned.length; i++) {
             LyricsLine l = newLyrics.lines().get(i);
-            final boolean isLineRtl = LyricsRomanizer.containsArabic(l.text()) || LyricsRomanizer.containsHebrew(l.text());
-            if (isDuetSong) {
-                lineRightAligned[i] = songHasRtl ? !l.isDuet() : l.isDuet();
-            } else {
-                lineRightAligned[i] = isLineRtl;
-            }
+            lineRightAligned[i] = isDuetSong
+                    ? songHasRtl != l.isDuet()
+                    : ScriptDetector.containsRtl(l.text());
         }
+        final int duetSideInset = Math.max(Dim.dp(48),
+                (int) (context.getResources().getDisplayMetrics().widthPixels * 0.18f));
 
         for (int i = 0; i < newLyrics.lines().size(); i++) {
             LyricsLine line = newLyrics.lines().get(i);
@@ -1233,7 +1227,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 gapOrigStart = prevView.originalTextStart;
             } else {
                 String rawText = line.text().isEmpty() ? "♪" : line.text();
-                boolean isRtl = LyricsRomanizer.containsArabic(rawText) || LyricsRomanizer.containsHebrew(rawText);
+                boolean isRtl = ScriptDetector.containsRtl(rawText);
                 SpannableString initialText = new SpannableString(rawText);
                 initialText.setSpan(new AlignmentSpan.Standard(LyricsSpanBuilder.resolveAlignment(isRtl, isRightAligned)),
                         0, initialText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -1315,7 +1309,6 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
             LinearLayout lineRow = new LinearLayout(context);
             lineRow.setOrientation(LinearLayout.VERTICAL);
 
-            final int duetSideInset = Math.max(Dim.dp(48), (int) (context.getResources().getDisplayMetrics().widthPixels * 0.18f));
             if (isDuetSong) {
                 if (isRightAligned) {
                     lineRow.setPadding(duetSideInset, Dim.dp(2), 0, Dim.dp(2));
@@ -3768,23 +3761,15 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
     }
 
     /**
-     * Where the label sits inside its row: flush to the line's left edge, so the text it draws lands
+     * Where the label sits inside its row: flush to the line's edge, so the text it draws lands
      * {@link #SECTION_TAG_PADDING_HORIZONTAL_FACTOR} of the lyrics text size in, a little further
      * in than the dot row below it starts.
      */
-    private static FrameLayout.LayoutParams tagLayoutParams() {
-        return tagLayoutParams(false);
-    }
-
     private static FrameLayout.LayoutParams tagLayoutParams(boolean isRightAligned) {
         return new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 (isRightAligned ? Gravity.END : Gravity.START) | Gravity.CENTER_VERTICAL);
-    }
-
-    private static FrameLayout.LayoutParams dotsLayoutParams(@NonNull Context context) {
-        return dotsLayoutParams(context, false);
     }
 
     /** The row sits near the line's edge, unlike the pill whose padding holds its text further in. */

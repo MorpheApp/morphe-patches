@@ -49,7 +49,7 @@ public final class BinimumProvider implements LyricsProvider {
             return null;
         }
 
-        // try bini v2 first with good sources
+        // The v2 API is asked first, for the sources it merges.
         try {
             Lyrics lyrics = fetchFromApi(track);
             if (lyrics != null && !lyrics.lines().isEmpty()) {
@@ -59,7 +59,7 @@ public final class BinimumProvider implements LyricsProvider {
             Logger.printDebug(() -> "BiniLyrics v2 fetch failed", ex);
         }
 
-        // try again with clean title maybe got video tags
+        // A title with a video tag is asked again without it.
         final String cleanTitle = track.title()
                 .replace("(Official Video)", "")
                 .replace("(Official Music Video)", "")
@@ -72,11 +72,12 @@ public final class BinimumProvider implements LyricsProvider {
                 if (lyrics != null && !lyrics.lines().isEmpty()) {
                     return FetchResult.of(lyrics, cleanTrack);
                 }
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "BiniLyrics v2 fetch failed for the cleaned title", ex);
             }
         }
 
-        // if fail fallback to old lrcred resolver
+        // The legacy API is the last resort.
         try {
             String lyricsUrl = resolveLyricsUrl(track);
             if (lyricsUrl != null) {
@@ -234,7 +235,7 @@ public final class BinimumProvider implements LyricsProvider {
                     if (!bgLine.words().isEmpty()) hasAnyWordSync = true;
                 }
             } else {
-                // only line sync no word timing here
+                // Line synced only, with no word timing.
                 String text = rawLineText.trim();
                 boolean isBg = false;
                 if ((text.startsWith("(") && text.endsWith(")")) || (text.startsWith("（") && text.endsWith("）"))) {
@@ -246,7 +247,7 @@ public final class BinimumProvider implements LyricsProvider {
                 }
             }
 
-            // match translit and romanization
+            // The transliteration and translation of the line, if any.
             if (transliterationText != null && !transliterationText.trim().isEmpty()) {
                 romanization.add(new LyricsLine(LyricsLine.NO_TIME, transliterationText.trim()));
             }
@@ -314,8 +315,8 @@ public final class BinimumProvider implements LyricsProvider {
 
         String fullText = textBuf.toString().trim();
 
-        // add space if word dont have space and not cjk language
-        if (fullText.indexOf(' ') < 0 && words.size() > 1 && !isContinuousCjk(words.get(0).text())) {
+        // Words with no spaces between them in a spaced script are joined with spaces.
+        if (fullText.indexOf(' ') < 0 && words.size() > 1 && !TTMLParser.isContinuousCjk(words.get(0).text())) {
             StringBuilder reconstructed = new StringBuilder();
             for (int i = 0; i < words.size(); i++) {
                 Word word = words.get(i);
@@ -329,7 +330,7 @@ public final class BinimumProvider implements LyricsProvider {
             fullText = reconstructed.toString();
         }
 
-        // make sure last word dont end with space
+        // The last word ends the line, so it has no space after it.
         if (!words.isEmpty()) {
             Word lastWord = words.get(words.size() - 1);
             if (lastWord.endsWithSpace()) {
@@ -355,28 +356,11 @@ public final class BinimumProvider implements LyricsProvider {
     }
 
     private static boolean isAgentDuet(@Nullable String agentId) {
-        if (agentId == null || !agentId.startsWith("v")) {
+        if (agentId == null || !agentId.matches("v\\d{1,6}")) {
             return false;
         }
-        try {
-            int num = Integer.parseInt(agentId.substring(1));
-            return num > 0 && num % 2 == 0;
-        } catch (NumberFormatException ignored) {
-            return false;
-        }
-    }
-
-    private static boolean isContinuousCjk(@Nullable String s) {
-        if (s == null || s.isEmpty()) return false;
-        int cp = s.codePointBefore(s.length());
-        Character.UnicodeBlock b = Character.UnicodeBlock.of(cp);
-        return b == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
-                || b == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
-                || b == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
-                || b == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
-                || b == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
-                || b == Character.UnicodeBlock.HIRAGANA
-                || b == Character.UnicodeBlock.KATAKANA;
+        int num = Integer.parseInt(agentId.substring(1));
+        return num > 0 && num % 2 == 0;
     }
 
     private static class WordCandidate {

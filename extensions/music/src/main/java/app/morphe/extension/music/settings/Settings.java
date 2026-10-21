@@ -15,6 +15,7 @@ import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadePatch.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadePatch.FadeCurve;
 import app.morphe.extension.music.patches.PlaylistTrackTapPatch.TapAction;
+import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.sponsorblock.MusicSponsorBlockConfig;
@@ -206,14 +207,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_SHOW_COPY_BUTTON = new BooleanSetting("morphe_music_lyrics_show_copy_button", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_SECTION = new BooleanSetting("morphe_music_lyrics_show_section", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_TRANSLATE_BUTTON = new BooleanSetting("morphe_music_lyrics_show_translate_button", TRUE, false, parent(LYRICS_ENABLED));
-    public static final StringSetting LYRICS_TRANSLATION_PROVIDER = new StringSetting("morphe_music_lyrics_translation_provider", "google", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_TRANSLATE_BUTTON)));
+    public static final StringSetting LYRICS_TRANSLATION_PROVIDER = new StringSetting("morphe_music_lyrics_translation_provider", AiProviders.GOOGLE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_TRANSLATE_BUTTON)));
     public static final StringSetting LYRICS_TRANSLATION_LANGUAGE = new StringSetting("morphe_music_lyrics_translation_language", "DEFAULT", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_TRANSLATE_BUTTON)));
-    public static final BooleanSetting LYRICS_USE_AI_TRANSLATION = new BooleanSetting("morphe_music_lyrics_use_ai_translation", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_TRANSLATE_BUTTON)));
 
     public static final BooleanSetting LYRICS_SHOW_ROMANIZE_BUTTON = new BooleanSetting("morphe_music_lyrics_show_romanize_button", TRUE, false, parent(LYRICS_ENABLED));
-    public static final StringSetting LYRICS_ROMANIZATION_PROVIDER = new StringSetting("morphe_music_lyrics_romanization_provider", "google", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
+    public static final StringSetting LYRICS_ROMANIZATION_PROVIDER = new StringSetting("morphe_music_lyrics_romanization_provider", AiProviders.GOOGLE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
     public static final StringSetting LYRICS_ROMANIZE_LANGUAGE = new StringSetting("morphe_music_lyrics_romanize_language", "DEFAULT", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
-    public static final BooleanSetting LYRICS_USE_AI_ROMANIZATION = new BooleanSetting("morphe_music_lyrics_use_ai_romanization", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
 
     public static final StringSetting LYRICS_GEMINI_API_KEY = new StringSetting("morphe_music_lyrics_gemini_api_key", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_GEMINI_MODEL = new StringSetting("morphe_music_lyrics_gemini_model", "gemini-2.0-flash", false, parent(LYRICS_ENABLED));
@@ -235,9 +234,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LYRICS_AI_MODEL = new StringSetting("morphe_music_lyrics_ai_model", "openai-fast", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_AI_REASONING_EFFORT = new StringSetting("morphe_music_lyrics_ai_reasoning_effort", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_AI_EXTRA_BODY = new StringSetting("morphe_music_lyrics_ai_extra_body", "", false, parent(LYRICS_ENABLED));
-    public static final StringSetting LYRICS_AI_TRANSLATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_prompt", OpenAIClient.DEFAULT_PROMPT, false, parent(LYRICS_USE_AI_TRANSLATION));
-    public static final StringSetting LYRICS_AI_PROMPT = LYRICS_AI_TRANSLATION_PROMPT;
-    public static final StringSetting LYRICS_AI_ROMANIZATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_romanization_prompt", OpenAIClient.DEFAULT_PROMPT, false, parent(LYRICS_USE_AI_ROMANIZATION));
+    public static final StringSetting LYRICS_AI_TRANSLATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_prompt", OpenAIClient.DEFAULT_PROMPT, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_TRANSLATE_BUTTON)));
+    public static final StringSetting LYRICS_AI_ROMANIZATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_romanization_prompt", OpenAIClient.DEFAULT_PROMPT, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
     public static final StringSetting LYRICS_AI_SECTION_PROMPT = new StringSetting("morphe_music_lyrics_ai_section_prompt", OpenAIClient.SECTION_PROMPT, false, parent(LYRICS_USE_AI_SECTION));
     public static final StringSetting LYRICS_TRANSCRIBE_KEY = new StringSetting("morphe_music_lyrics_transcribe_key", "", false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_INFO = new BooleanSetting("morphe_music_lyrics_hide_info", FALSE, false, parent(LYRICS_ENABLED));
@@ -248,7 +246,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_HIDE_PLAYED = new BooleanSetting("morphe_music_lyrics_hide_played", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SPLIT_BACKGROUND = new BooleanSetting("morphe_music_lyrics_split_background", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_UNPLAYED = new BooleanSetting("morphe_music_lyrics_hide_unplayed", FALSE, false, parent(LYRICS_ENABLED));
-    public static final BooleanSetting LYRICS_BLUR_INACTIVE = new BooleanSetting("morphe_music_lyrics_blur_inactive", TRUE, false, parent(LYRICS_ENABLED));
     public static final IntegerSetting LYRICS_TEXT_SIZE = new IntegerSetting("morphe_music_lyrics_text_size", 30, false, parent(LYRICS_ENABLED));
     public static final IntegerSetting LYRICS_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_offset_ms", 0, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SB_MATCHING = new BooleanSetting("morphe_music_lyrics_sb_matching", TRUE, false, parent(LYRICS_ENABLED));
@@ -298,6 +295,8 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_HIDE_CATEGORY_BAR = new BooleanSetting("morphe_music_hide_category_bar", FALSE, true);
     private static final BooleanSetting DEPRECATED_MUSIC_IN_APP_DOWNLOADS = new BooleanSetting("morphe_music_in_app_downloads", FALSE);
     private static final BooleanSetting DEPRECATED_PERMANENT_REPEAT = new BooleanSetting("morphe_music_permanent_repeat", FALSE, true);
+    private static final BooleanSetting DEPRECATED_LYRICS_USE_AI_TRANSLATION = new BooleanSetting("morphe_music_lyrics_use_ai_translation", FALSE, false);
+    private static final BooleanSetting DEPRECATED_LYRICS_USE_AI_ROMANIZATION = new BooleanSetting("morphe_music_lyrics_use_ai_romanization", FALSE, false);
 
     static {
         migrateOldSettingToNew(DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON, DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_MENU);
@@ -305,6 +304,8 @@ public class Settings extends SharedYouTubeSettings {
         migrateOldSettingToNew(DEPRECATED_PERMANENT_REPEAT, REMEMBER_REPEAT_STATE);
         migrateInAppDownloadsToDownloadMode();
         migrateDownloadButtonOverride();
+        migrateLyricsAiSwitchToProvider(DEPRECATED_LYRICS_USE_AI_TRANSLATION, LYRICS_TRANSLATION_PROVIDER);
+        migrateLyricsAiSwitchToProvider(DEPRECATED_LYRICS_USE_AI_ROMANIZATION, LYRICS_ROMANIZATION_PROVIDER);
     }
 
     static {
@@ -357,6 +358,14 @@ public class Settings extends SharedYouTubeSettings {
      * The menu overrides are not migrated to the new menu switch, which also applies to in-app downloads.
      * The External downloader mode is still in use, so a marker is the only way to tell this already ran.
      */
+    /** The AI switch used the OpenAI-compatible endpoint, which is now one of the providers to pick. */
+    private static void migrateLyricsAiSwitchToProvider(BooleanSetting oldSwitch, StringSetting provider) {
+        if (oldSwitch.get() && provider.isSetToDefault()) {
+            provider.save(AiProviders.OPENAI_COMPATIBLE);
+        }
+        oldSwitch.resetToDefault();
+    }
+
     private static void migrateDownloadButtonOverride() {
         if (DOWNLOAD_BUTTON_OVERRIDE_MIGRATED.get()) {
             return;

@@ -64,10 +64,6 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         String key = getKey();
         if (key == null) return null;
         switch (key) {
-            case "morphe_music_lyrics_use_ai_translation":
-                return Settings.LYRICS_USE_AI_TRANSLATION;
-            case "morphe_music_lyrics_use_ai_romanization":
-                return Settings.LYRICS_USE_AI_ROMANIZATION;
             case "morphe_music_lyrics_use_ai_section":
                 return Settings.LYRICS_USE_AI_SECTION;
             default:
@@ -79,10 +75,6 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         String key = getKey();
         if (key == null) return null;
         switch (key) {
-            case "morphe_music_lyrics_use_ai_translation":
-                return Settings.LYRICS_AI_TRANSLATION_PROMPT;
-            case "morphe_music_lyrics_use_ai_romanization":
-                return Settings.LYRICS_AI_ROMANIZATION_PROMPT;
             case "morphe_music_lyrics_use_ai_section":
                 return Settings.LYRICS_AI_SECTION_PROMPT;
             default:

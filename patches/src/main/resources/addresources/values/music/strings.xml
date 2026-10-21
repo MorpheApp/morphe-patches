@@ -507,7 +507,6 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_lyrics_section_display_title">Display</string>
     <string name="morphe_music_lyrics_section_sync_title">Synchronisation</string>
     <string name="morphe_music_lyrics_section_panel_title">Panel</string>
-    <string name="morphe_music_lyrics_section_languages_title">Languages</string>
 <string name="morphe_music_lyrics_section_ai_endpoint_title">AI endpoint</string>
     <string name="morphe_music_lyrics_source_all_disabled">All providers disabled - built-in lyrics and embedded lyrics</string>
     <string name="morphe_music_lyrics_source_reset_title">Reset provider order?</string>
@@ -589,7 +588,6 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_show_refresh_button_title">Show Refresh button</string>
     <string name="morphe_music_lyrics_show_refresh_button_summary">Tap to switch to next lyrics candidate; long-press to search lyrics by song title and artist</string>
     <string name="morphe_music_lyrics_search_dialog_title">Search lyrics</string>
-    <string name="morphe_music_lyrics_search_dialog_desc">Search lyrics manually by song title and artist</string>
     <string name="morphe_music_lyrics_search_title_hint">Song title</string>
     <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
     <string name="morphe_music_lyrics_search_empty">Enter a song title and an artist</string>
@@ -686,35 +684,20 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_romanization_provider_openrouter" translatable="false">OpenRouter</string>
     <string name="morphe_music_lyrics_romanization_provider_openai" translatable="false">OpenAI API</string>
     <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI Compatible (Custom)</string>
-    <string name="morphe_music_lyrics_use_ai_title">OpenAI-compatible API</string>
-    <string name="morphe_music_lyrics_use_ai_translation_title">AI Translation</string>
-    <string name="morphe_music_lyrics_use_ai_translation_summary">Prefers the translation the provider ships with, then your OpenAI-compatible model, and Google Translate last</string>
-    <string name="morphe_music_lyrics_use_ai_romanization_title">AI Romanization</string>
-    <string name="morphe_music_lyrics_use_ai_romanization_summary">Prefers the romanization the provider ships with, then your OpenAI-compatible model, and Google Translate last</string>
     <string name="morphe_music_lyrics_use_ai_section_title">AI Section</string>
     <string name="morphe_music_lyrics_use_ai_section_summary">Only used when the provider ships no section labels such as Chorus or Verse, which your OpenAI-compatible model then detects</string>
     <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; Cloud Endpoints</string>
     <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configure translation and romanization providers (Google, Gemini, OpenRouter, OpenAI, Custom API, or DeepL).</string>
     <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://text.pollinations.ai/openai)</string>
-    <string name="morphe_music_lyrics_ai_config_api_token_hint">API key (leave empty for anonymous access)</string>
-    <string name="morphe_music_lyrics_ai_config_model_hint">Model name (e.g. openai-fast, gpt-4o-mini)</string>
-    <string name="morphe_music_lyrics_ai_config_prompt_hint">Prompt template (variables: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
     <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt Template</string>
     <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
     <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt saved</string>
     <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt saved, but the AI endpoint is not usable yet. Configure it under AI Settings first</string>
     <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt reset</string>
-    <string name="morphe_music_lyrics_ai_extra_body_hint">Extra request body (JSON, merged into every AI request)</string>
     <string name="morphe_music_lyrics_ai_extra_body_invalid">Not valid JSON. Fix it or clear the field before saving</string>
     <string name="morphe_music_lyrics_ai_config_toast_saved">Translation &amp; Romanization settings saved</string>
-    <string name="morphe_music_lyrics_ai_config_toast_invalid">Could not connect to AI endpoint. Please check your settings.</string>
     <string name="morphe_music_lyrics_ai_config_toast_reset">Settings reset to default</string>
-    <string name="morphe_music_lyrics_ai_config_summary_configured">Model %1$s configured</string>
-    <string name="morphe_music_lyrics_ai_config_status_configured">Configured</string>
-    <string name="morphe_music_lyrics_ai_config_status_not_configured">Tap to configure</string>
-    <string name="morphe_music_lyrics_ai_config_status_empty_url">Base URL cannot be empty</string>
     <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL must start with http:// or https://</string>
-    <string name="morphe_music_lyrics_ai_config_status_empty_model">Model name cannot be empty</string>
     <string name="morphe_music_lyrics_ai_config_status_validating">Validating connection…</string>
     <string name="morphe_music_lyrics_ai_config_translation_provider_label">Translation Provider</string>
     <string name="morphe_music_lyrics_ai_config_romanization_provider_label">Romanization Provider</string>
@@ -727,35 +710,14 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_ai_config_openai_section">OpenAI API Settings</string>
     <string name="morphe_music_lyrics_ai_config_openai_compat_section">OpenAI Compatible (Custom Endpoint)</string>
     <string name="morphe_music_lyrics_ai_config_deepl_section">DeepL API Settings</string>
-    <string name="morphe_music_lyrics_offline_dict_section">Offline Japanese Dictionary (Kuromoji)</string>
-    <string name="morphe_music_lyrics_offline_dict_desc">Morphological analyzer dictionary (~17 MB) for accurate Japanese pronunciation. Stored locally on device.</string>
-    <string name="morphe_music_lyrics_offline_dict_installed">Installed (%s MB)</string>
-    <string name="morphe_music_lyrics_offline_dict_not_installed">Not Installed</string>
-    <string name="morphe_music_lyrics_offline_dict_download">Download Dictionary (~17 MB)</string>
-    <string name="morphe_music_lyrics_offline_dict_downloading">Downloading dictionary (%d%%)…</string>
-    <string name="morphe_music_lyrics_offline_dict_download_success">Kuromoji dictionary downloaded successfully</string>
-    <string name="morphe_music_lyrics_offline_dict_download_failed">Failed to download Kuromoji dictionary</string>
-    <string name="morphe_music_lyrics_offline_dict_delete">Delete Dictionary</string>
-    <string name="morphe_music_lyrics_offline_dict_deleted">Kuromoji dictionary deleted</string>
-    <string name="morphe_music_lyrics_offline_dict_confirm_title">Download Offline Dictionary?</string>
-    <string name="morphe_music_lyrics_offline_dict_confirm_message">Are you sure you want to download the offline dictionary (%s)?</string>
-    <string name="morphe_music_lyrics_offline_dict_download_title">Downloading Offline Dictionary</string>
-    <string name="morphe_music_lyrics_offline_dict_applying">Applying dictionary…</string>
-    <string name="morphe_music_lyrics_offline_dict_restart_notice">Dictionary installed. Restarting app…</string>
-
-    <string name="morphe_music_lyrics_provider_dialog_title">Lyrics Provider</string>
-    <string name="morphe_music_lyrics_provider_no_providers">No lyrics providers available</string>
-    <string name="morphe_music_lyrics_provider_on">ON</string>
-    <string name="morphe_music_lyrics_provider_off">OFF</string>
-    <string name="morphe_music_lyrics_provider_status_active">Currently active</string>
-    <string name="morphe_music_lyrics_provider_status_available">Lyrics ready • Tap to use</string>
-    <string name="morphe_music_lyrics_provider_status_fetch">Tap to fetch lyrics</string>
-    <string name="morphe_music_lyrics_provider_status_disabled">Disabled in settings</string>
-    <string name="morphe_music_lyrics_sync_word">Word Synced</string>
-    <string name="morphe_music_lyrics_sync_line">Line Synced</string>
-    <string name="morphe_music_lyrics_sync_plain">Plain Text</string>
-    <string name="morphe_music_lyrics_no_other_candidates">No other lyrics versions available</string>
-    <string name="morphe_music_lyrics_not_available_on_provider">Lyrics not available on %s</string>
+    <string name="morphe_music_lyrics_ai_config_api_key_label">API key</string>
+    <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
+    <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
+    <string name="morphe_music_lyrics_ai_config_api_token_label">API key (optional)</string>
+    <string name="morphe_music_lyrics_ai_config_prompt_label">Translation prompt</string>
+    <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra request body (optional JSON)</string>
+    <string name="morphe_music_lyrics_ai_config_deepl_key_label">Authentication key (Free or Pro)</string>
+    <string name="morphe_music_lyrics_ai_config_summary">Translation: %1$s\nRomanization: %2$s</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>
