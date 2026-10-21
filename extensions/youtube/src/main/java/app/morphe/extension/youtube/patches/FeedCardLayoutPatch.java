@@ -77,7 +77,12 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ContentMe
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.DecoratedAvatarViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Element;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementContext;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementDimension;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementEdges;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementLayout;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementStyle;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementType;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementsExperiments;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.HorizontalShelfData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.HorizontalShelfModel;
@@ -114,6 +119,8 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Thumbnail
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailBadgeIconSource;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailBadgeViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailBottomOverlayViewModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailElementOverlay;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailOverlay;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModel;
@@ -123,6 +130,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoData
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoThumbnail;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWithContextData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWithContextModel;
+import app.morphe.extension.youtube.patches.theme.SeekbarColorPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -159,6 +167,7 @@ public class FeedCardLayoutPatch {
      */
     private static final String CLASSIC_TEMPLATE = "video_lockup_with_attachment.eml";
     private static final String CARD_TEMPLATE = "lockup.eml";
+    private static final String THUMBNAIL_TEMPLATE = "thumbnail.eml";
     private static final String SHELF_HEADER_TEMPLATE = "shelf_header.eml";
     private static final String HORIZONTAL_SHELF_TEMPLATE = "horizontal_shelf.eml";
     private static final String SHORTS_VIDEO_CELL_TEMPLATE = "shorts_video_cell.eml";
@@ -178,6 +187,7 @@ public class FeedCardLayoutPatch {
      */
     private static final VideoTemplate CLASSIC = new VideoTemplate(CLASSIC_TEMPLATE, 232954548, 6, 29);
     private static final VideoTemplate CARD = new VideoTemplate(CARD_TEMPLATE, 413471385, 4, 6);
+    private static final VideoTemplate THUMBNAIL = new VideoTemplate(THUMBNAIL_TEMPLATE, 188824243, 5, 21);
     /**
      * Suffix of the template names of newer app versions, before "|hash", such as "-fe".
      */
@@ -1457,6 +1467,33 @@ public class FeedCardLayoutPatch {
                             .addBadges(ThumbnailBadge.newBuilder().setThumbnailBadgeViewModel(badge))));
         }
 
+        ElementContext cardContext = setCardExperiments(classic.getContext(), true);
+        if (SeekbarColorPatch.showWatchHistoryProgressDrawable(thumbnail.getProgress() > 0)) {
+            String thumbnailUri = THUMBNAIL.getUri();
+            if (thumbnailUri == null) {
+                return null;
+            }
+            // The card template copies only badges from bottom overlays.
+            ComponentType progress = ComponentType.newBuilder()
+                    .setTemplateConfig(templateConfig(thumbnailUri))
+                    .setModel(ElementModel.newBuilder().setThumbnailModel(ThumbnailModel.newBuilder()
+                            .setData(VideoThumbnail.newBuilder().setProgress(thumbnail.getProgress())
+                                    .setBackgroundColor(Color.TRANSPARENT))
+                            .setContext(cardContext)))
+                    .setSubscriptionConfig(subscriptionConfig(componentType.getSubscriptionConfig(), THUMBNAIL))
+                    .build();
+            thumbnailViewModel.addOverlays(ThumbnailOverlay.newBuilder()
+                    .setThumbnailElementOverlay(ThumbnailElementOverlay.newBuilder()
+                            .setElement(Element.newBuilder()
+                                    .setType(ElementType.newBuilder().setComponentType(progress))
+                                    .setStyle(ElementStyle.newBuilder().setLayout(ElementLayout.newBuilder()
+                                            .setPosition(2)
+                                            .setEdges(ElementEdges.newBuilder()
+                                                    .setBottom(ElementDimension.newBuilder().setValue(0)))
+                                            .setWidth(ElementDimension.newBuilder().setValue(1).setUnit(2))
+                                            .setHeight(ElementDimension.newBuilder().setValue(3)))))));
+        }
+
         LockupMetadataViewModel.Builder metadata = videoData.getLockupMetadata()
                 .getLockupMetadataViewModel().toBuilder()
                 .setTitleStyle(TextStyle.newBuilder().setStyle(CARD_TITLE_STYLE));
@@ -1506,7 +1543,7 @@ public class FeedCardLayoutPatch {
 
         LockupModel card = LockupModel.newBuilder()
                 .setViewModel(LockupViewModelHolder.newBuilder().setLockupViewModel(lockupViewModel))
-                .setContext(setCardExperiments(classic.getContext(), true))
+                .setContext(cardContext)
                 .setEnvironment(classic.getEnvironment())
                 .setPadding(LockupPadding.newBuilder()
                         .setStart(CARD_HORIZONTAL_PADDING_DP)
