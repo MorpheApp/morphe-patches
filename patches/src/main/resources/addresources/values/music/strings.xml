@@ -672,17 +672,17 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_section_romanization_title">Romanization</string>
     <string name="morphe_music_lyrics_translation_provider_title">Translation provider</string>
     <string name="morphe_music_lyrics_translation_provider_google">Google (Default, Free)</string>
-    <string name="morphe_music_lyrics_translation_provider_gemini">Gemini API</string>
-    <string name="morphe_music_lyrics_translation_provider_openrouter">OpenRouter</string>
-    <string name="morphe_music_lyrics_translation_provider_openai">OpenAI API</string>
+    <string name="morphe_music_lyrics_translation_provider_gemini" translatable="false">Gemini API</string>
+    <string name="morphe_music_lyrics_translation_provider_openrouter" translatable="false">OpenRouter</string>
+    <string name="morphe_music_lyrics_translation_provider_openai" translatable="false">OpenAI API</string>
     <string name="morphe_music_lyrics_translation_provider_openai_compatible">OpenAI Compatible (Custom)</string>
-    <string name="morphe_music_lyrics_translation_provider_deepl">DeepL API</string>
+    <string name="morphe_music_lyrics_translation_provider_deepl" translatable="false">DeepL API</string>
     <string name="morphe_music_lyrics_romanization_provider_title">Romanization provider</string>
     <string name="morphe_music_lyrics_romanization_provider_google">Google (Default)</string>
     <string name="morphe_music_lyrics_romanization_provider_local">Local / Offline Dictionary</string>
-    <string name="morphe_music_lyrics_romanization_provider_gemini">Gemini API</string>
-    <string name="morphe_music_lyrics_romanization_provider_openrouter">OpenRouter</string>
-    <string name="morphe_music_lyrics_romanization_provider_openai">OpenAI API</string>
+    <string name="morphe_music_lyrics_romanization_provider_gemini" translatable="false">Gemini API</string>
+    <string name="morphe_music_lyrics_romanization_provider_openrouter" translatable="false">OpenRouter</string>
+    <string name="morphe_music_lyrics_romanization_provider_openai" translatable="false">OpenAI API</string>
     <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI Compatible (Custom)</string>
     <string name="morphe_music_lyrics_use_ai_title">OpenAI-compatible API</string>
     <string name="morphe_music_lyrics_use_ai_translation_title">AI Translation</string>

@@ -1,14 +1,21 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3877
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.music.patches.lyrics.model;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+ import androidx.annotation.NonNull;
+ import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+ import java.util.ArrayList;
+ import java.util.Collections;
+ import java.util.List;
+ import java.util.Set;
 
-/**
+ /**
  * fix timing gap so lyrics highlight dont flicker or drop when there is small gap between lines.
  */
 public final class LyricsRetiming {

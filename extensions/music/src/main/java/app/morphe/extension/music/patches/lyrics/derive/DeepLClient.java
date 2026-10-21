@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3877
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -129,7 +129,7 @@ public final class DeepLClient {
         if (clean.equals("IN") || clean.equals("ID")) {
             return "ID";
         }
-        // standard 2 letter code like JA KO DE FR etc
+        // standard 2-letter code like JA KO DE FR etc
         int hyphen = clean.indexOf('-');
         return hyphen > 0 ? clean.substring(0, hyphen) : clean;
     }
