@@ -449,9 +449,8 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_disable_chapter_skip_double_tap_summary">Poistaa käytöstä kaksoisnapautusliikkeen, joka ohittaa luvut, mikä voi vahingossa laukaistua yhdellä sormella</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Lataa videoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Korvaa Lataa-painike ja valikko</string>
-  <string name="morphe_external_downloader_action_button_summary">Käyttää valitsemaasi ulkoista lataussovellusta oletuslatausominaisuuden sijaan.</string>
+  <string name="morphe_external_downloader_overlay_button_title">Näytä pelaajan peitteen latauspainike</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Näyttää paineen videonsoittimessa, joka avaa ulkoisen lataussovelluksen</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ääniratateksti</string>
   <string name="morphe_vot_screen_summary">Lue videon tekstitykset ääneen laitteen tekstistä puheeksi -toiminnolla, synkronoitu toiston kanssa</string>

@@ -449,9 +449,8 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_disable_chapter_skip_double_tap_summary">Zakáže gestá dvojitého ťuknutia dvoma prstami, ktoré preskakujú kapitoly, ktoré sa môžu neúmyselne spustiť jedným prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Stiahnite si videá, podcasty alebo piesne pomocou aplikácií na sťahovanie tretích strán</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Nahradiť tlačidlo &amp; menu na stiahnutie</string>
-  <string name="morphe_external_downloader_action_button_summary">Používa vami zvolený externý sťahovač namiesto vstavanej funkcie sťahovania</string>
+  <string name="morphe_external_downloader_overlay_button_title">Zobraziť tlačidlo na stiahnutie preklapiačnej obrazovky prehrávača</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Zobrazí tlačidlo v videoprehrávači, ktoré otvorí vašu externú aplikáciu na sťahovanie</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Preklad hlasového komentára</string>
   <string name="morphe_vot_screen_summary">Nahlas prečítajte titulky videa pomocou text-to-speech priamo v zariadení, synchronizovane s prehrávaním</string>

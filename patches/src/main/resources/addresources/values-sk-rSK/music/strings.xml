@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Naposledy prehrávané</string>
+  <string name="morphe_music_android_auto_subscriptions">Odbery</string>
+  <string name="morphe_music_android_auto_videos">Videá</string>
+  <string name="morphe_music_android_auto_other_results">Ostatné výsledky</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Nahrané piesne</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Nahrané albumy</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Nahraní umelci</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Aktualizujte Jam patch hostiteľa, aby používal pozastavenie a pokračovanie</string>
   <string name="morphe_music_jam_probe_title">Zdieľanie frontu Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Pokúsiť sa prepnúť verziu zvukovej stopy a oficiálne hudobné video</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Stiahnite si hudobné videá, podcasty alebo piesne pomocou sťahovacích aplikácií tretích strán</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Prepísať tlačidlo Načítiť</string>
-  <string name="morphe_external_downloader_action_button_summary">Používa vami vybraný externý sťahovač namiesto štandardného tlačidla akcie Sťahovanie</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Nahradiť ponuku sťahovania</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Používa vami vybraný externý sťahovač namiesto štandardnej rozbaľovacej ponuky Sťahovanie</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Použiť externý sťahovač pre menu Sťahovanie</string>
+  <string name="morphe_external_downloader_menu_summary">Možnosť stiahnuť v menu otvorí váš externý sťahovač</string>
   <string name="morphe_music_downloads_screen_title">Sťahovania</string>
   <string name="morphe_music_downloads_empty">"Žiadne sťahovania
 Stiahnuté skladby sa zobrazia tu"</string>

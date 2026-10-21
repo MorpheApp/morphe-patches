@@ -449,9 +449,8 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_disable_chapter_skip_double_tap_summary">Tắt cử chỉ chạm bằng hai ngón để chuyển chương, tránh vô tình kích hoạt bằng một ngón</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Tải video, podcast hoặc nhạc bằng ứng dụng tải xuống của bên thứ ba</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Ghi đè nút &amp; menu Tải xuống</string>
-  <string name="morphe_external_downloader_action_button_summary">Dùng trình tải xuống bên ngoài đã chọn thay cho tính năng Tải xuống mặc định</string>
+  <string name="morphe_external_downloader_overlay_button_title">Hiển thị nút tải xuống lớp phủ người chơi</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Hiển thị một nút trong trình phát video mở ứng dụng tải xuống bên ngoài của bạn</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Dịch giọng nói</string>
   <string name="morphe_vot_screen_summary">Đọc to phụ đề video bằng tính năng chuyển văn bản thành giọng nói trên thiết bị, đồng bộ với video</string>

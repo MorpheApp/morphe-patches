@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">সর্বশেষ চালানো হয়েছে</string>
+  <string name="morphe_music_android_auto_subscriptions">সদস্যতা</string>
+  <string name="morphe_music_android_auto_videos">ভিডিও</string>
+  <string name="morphe_music_android_auto_other_results">অন্যান্য ফলাফল</string>
+  <string name="morphe_music_android_auto_uploaded_songs">আপলোড করা গান</string>
+  <string name="morphe_music_android_auto_uploaded_albums">আপলোড করা অ্যালবাম</string>
+  <string name="morphe_music_android_auto_uploaded_artists">আপলোড করা শিল্পী</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">পজ এবং রিজিউম ব্যবহার করতে হোস্টের জ্যাম প্যাচ আপডেট করুন</string>
   <string name="morphe_music_jam_probe_title">Jam কিউ শেয়ারিং</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">অডিও ট্র্যাক সংস্করণ এবং অফিসিয়াল মিউজিক ভিডিও স্যুইচ করার চেষ্টা করুন</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">থার্ড-পার্টি ডাউনলোড করার অ্যাপের মাধ্যমে মিউজিক ভিডিও, পডকাস্ট বা গান ডাউনলোড করুন</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">ডাউনলোড বোতামটি প্রতিস্থাপন করুন</string>
-  <string name="morphe_external_downloader_action_button_summary">আপনার নির্বাচিত বাহ্যিক ডাউনলোডারটি স্টক ডাউনলোড অ্যাকশন বোতামের পরিবর্তে ব্যবহার করে।</string>
-  <string name="morphe_external_downloader_flyout_menu_title">ডাউনলোড মেনু ওভাররাইড করুন</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">আপনার নির্বাচিত বাহ্যিক ডাউনলোডারটি স্টক ডাউনলোড ফ্লাইআউট মেনুর পরিবর্তে ব্যবহার করে।</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">ডাউনলোই মেনুর জন্য বহিঃস্থ ডাউনলোডার ব্যবহার করুন</string>
+  <string name="morphe_external_downloader_menu_summary">মেনুগুলোর ডাউনলোই অপশন আপনার বহিঃস্থ ডাউনলোডার খুলবে</string>
   <string name="morphe_music_downloads_screen_title">ডাউনলোড</string>
   <string name="morphe_music_downloads_empty">"কোনো ডাউনলোড নেই
 ডাউনলোড করা ট্র্যাকগুলো এখানে দেখা যাবে"</string>

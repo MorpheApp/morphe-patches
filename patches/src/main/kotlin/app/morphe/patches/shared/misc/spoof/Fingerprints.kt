@@ -350,3 +350,89 @@ internal object CronetUrlRequestSetHttpMethodFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Reads the response of a Cronet data source.
+ * If the response is finished, the remaining byte count is cleared and the end of the data is returned.
+ */
+internal object CronetDataSourceReadFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "I",
+    parameters = listOf("[B", "I", "I"),
+    filters = listOf(
+        methodCall(definingClass = "Ljava/nio/ByteBuffer;", name = "clear"),
+        // Reads the next part of the response.
+        methodCall(
+            definingClass = "this",
+            parameters = listOf("Ljava/nio/ByteBuffer;", "L"),
+            returnType = "V"
+        ),
+        // If the response is finished.
+        fieldAccess(
+            opcode = Opcode.IGET_BOOLEAN,
+            definingClass = "this",
+            type = "Z",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        // Remaining byte count of the request.
+        fieldAccess(
+            opcode = Opcode.IPUT_WIDE,
+            definingClass = "this",
+            type = "J",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Reads the response of a Cronet data source into a buffer.
+ * If the response is finished, the remaining byte count is cleared and the end of the data is returned.
+ */
+internal object CronetDataSourceReadBufferFingerprint : Fingerprint(
+    classFingerprint = CronetDataSourceReadFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "I",
+    parameters = listOf("Ljava/nio/ByteBuffer;"),
+    filters = listOf(
+        // Reads the next part of the response.
+        methodCall(
+            definingClass = "this",
+            parameters = listOf("Ljava/nio/ByteBuffer;", "L"),
+            returnType = "V"
+        ),
+        // If the response is finished.
+        fieldAccess(
+            opcode = Opcode.IGET_BOOLEAN,
+            definingClass = "this",
+            type = "Z",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        // Remaining byte count of the request.
+        fieldAccess(
+            opcode = Opcode.IPUT_WIDE,
+            definingClass = "this",
+            type = "J",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Exception that pauses a transfer for a task of a higher priority.
+ * A saved video continues from the last byte it got, after it is paused.
+ */
+internal object PriorityTooLowExceptionFingerprint : Fingerprint(
+    name = "<init>",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("I", "I"),
+    filters = listOf(
+        string("Priority too low [priority=")
+    ),
+    custom = { _, classDef ->
+        // FIXME: change to patcher 2.0 superclass check.
+        classDef.superclass == "Ljava/io/IOException;"
+    }
+)

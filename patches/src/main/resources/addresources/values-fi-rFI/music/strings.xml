@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Viimeksi soitettu</string>
+  <string name="morphe_music_android_auto_subscriptions">Tilaukset</string>
+  <string name="morphe_music_android_auto_videos">Videot</string>
+  <string name="morphe_music_android_auto_other_results">Muut tulokset</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Ladatut kappaleet</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Ladatut albumit</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Ladatut artistit</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Päivitä isännän Jam-patch käyttämään tauko- ja jatkotoimintoja</string>
   <string name="morphe_music_jam_probe_title">Jam-jonon jakaminen</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Yritä vaihtaa ääniraidan versiota ja virallista musiikkivideota</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Lataa musiikkivideoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Korvaa Lataa-painike</string>
-  <string name="morphe_external_downloader_action_button_summary">Käyttää valitsemaasi ulkoista lataajaa tavallisen Lataa-painikkeen sijaan</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Korvaa Lataa-valikko</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Käyttää valitsemaasi ulkoista latausohjelmaa tavallisen Lataa-pikavalikon sijaan</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Käytä ulkoista lataussovellusta Lataukset-valikossa</string>
+  <string name="morphe_external_downloader_menu_summary">Valikoiden Lataus-vaihtoehto avaa ulkoisen lataussovelluksen sen sijaan</string>
   <string name="morphe_music_downloads_screen_title">Lataukset</string>
   <string name="morphe_music_downloads_empty">"Ei latauksia
 Ladatut kappaleet näkyvät tässä"</string>

@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">آخر تشغيل</string>
+  <string name="morphe_music_android_auto_subscriptions">الاشتراكات</string>
+  <string name="morphe_music_android_auto_videos">مقاطع الفيديو</string>
+  <string name="morphe_music_android_auto_other_results">نتائج أخرى</string>
+  <string name="morphe_music_android_auto_uploaded_songs">الأغاني المرفوعة</string>
+  <string name="morphe_music_android_auto_uploaded_albums">الألبومات المرفوعة</string>
+  <string name="morphe_music_android_auto_uploaded_artists">الفنانين المرفوعين</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">قم بتحديث تصحيح Jam الخاص بالمضيف لاستخدام الإيقاف المؤقت والاستئناف</string>
   <string name="morphe_music_jam_probe_title">مشاركة قائمة انتظار Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">محاولة التبديل بين إصدار المسار الصوتي والفيديو الموسيقي الرسمي</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">تنزيل مقاطع الفيديو الموسيقية أو البودكاست أو الأغاني باستخدام تطبيقات تنزيل خارجية</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">استبدال زر التنزيل</string>
-  <string name="morphe_external_downloader_action_button_summary">يستخدم أداة التنزيل الخارجية التي اخترتها بدلاً من زر التنزيل الافتراضي</string>
-  <string name="morphe_external_downloader_flyout_menu_title">تجاوز قائمة التنزيل</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">يستخدم أداة التنزيل الخارجية التي اخترتها بدلاً من قائمة التنزيل الافتراضية</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">استخدم مُحمِّل الخارجية لقائمة \"التنزيل\"</string>
+  <string name="morphe_external_downloader_menu_summary">تُفتح خيار التنزيل في القوائم المُحمِّل الخارجي الخاص بك بدلاً من ذلك</string>
   <string name="morphe_music_downloads_screen_title">التنزيلات</string>
   <string name="morphe_music_downloads_empty">"لا توجد تنزيلات
 tظهر المسارات التي تم تنزيلها هنا"</string>

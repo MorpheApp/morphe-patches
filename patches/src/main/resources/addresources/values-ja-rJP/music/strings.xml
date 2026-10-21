@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">再生済</string>
+  <string name="morphe_music_android_auto_subscriptions">登録チャンネル</string>
+  <string name="morphe_music_android_auto_videos">動画</string>
+  <string name="morphe_music_android_auto_other_results">その他の結果</string>
+  <string name="morphe_music_android_auto_uploaded_songs">アップロードされた曲</string>
+  <string name="morphe_music_android_auto_uploaded_albums">アップロードされたアルバム</string>
+  <string name="morphe_music_android_auto_uploaded_artists">アップロードされたアーティスト</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">一時停止 / 再開を使用するには、ホスト側の Jam パッチを更新してください</string>
   <string name="morphe_music_jam_probe_title">Jam キューの共有</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">音声トラックのバージョンと公式ミュージックビデオの切り替えを試みます</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">サードパーティ製のダウンロード アプリで、ミュージック ビデオ、ポッドキャスト、楽曲をダウンロードします</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">「オフラインに一時保存」ボタンの動作を上書き</string>
-  <string name="morphe_external_downloader_action_button_summary">「オフラインに一時保存」ボタンの呼び出し先を、「純正アプリ内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
-  <string name="morphe_external_downloader_flyout_menu_title">「オフラインに一時保存」の動作を上書き</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">フライアウト メニューの「オフラインに一時保存」の呼び出し先を、「純正アプリ内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">「ダウンロード」メニューで外部ダウンローダーを使用する</string>
+  <string name="morphe_external_downloader_menu_summary">メニューの[ダウンロード]オプションは、代わりに外部ダウンローダーを開きます</string>
   <string name="morphe_music_downloads_screen_title">ダウンロード一覧</string>
   <string name="morphe_music_downloads_empty">"まだダウンロードしていません
 ダウンロードした楽曲がここに表示されます"</string>

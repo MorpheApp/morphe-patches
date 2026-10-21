@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Τελευταία αναπαραγωγή</string>
+  <string name="morphe_music_android_auto_subscriptions">Συνδρομές</string>
+  <string name="morphe_music_android_auto_videos">Βίντεο</string>
+  <string name="morphe_music_android_auto_other_results">Άλλα αποτελέσματα</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Τραγούδια που ανεβάστηκαν</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Albums που ανεβάστηκαν</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Καλλιτέχνες που ανεβάστηκαν</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Ενημερώστε το Jam patch του οικοδεσπότη ώστε να χρησιμοποιεί παύση και συνέχιση</string>
   <string name="morphe_music_jam_probe_title">Κοινή χρήση ουράς Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Προσπαθήστε να εναλλάξετε την έκδοση ηχητικού κομματιού και το επίσημο μουσικό βίντεο</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Λήψη μουσικών βίντεο, podcast ή τραγουδιών με εφαρμογές λήψης τρίτων</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Αντικατάσταση κουμπιού λήψης</string>
-  <string name="morphe_external_downloader_action_button_summary">Χρησιμοποιεί τον επιλεγμένο εξωτερικό λήπτη αντί για το προεπιλεγμένο κουμπί ενέργειας «Λήψη»</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Αντικατάσταση μενού «Λήψη»</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Χρησιμοποιεί τον επιλεγμένο εξωτερικό λήπτη αντί για το προεπιλεγμένο μενού «Λήψη»</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Χρησιμοποιήστε εξωτερικό ληπτή για το μενού Λήψης</string>
+  <string name="morphe_external_downloader_menu_summary">Η επιλογή Λήψη στα μενού ανοίγει τον εξωτερικό σας ληπτή αντί</string>
   <string name="morphe_music_downloads_screen_title">Λήψεις</string>
   <string name="morphe_music_downloads_empty">"Δεν υπάρχουν λήψεις
 Τα κομμάτια που έχετε κατεβάσει εμφανίζονται εδώ"</string>

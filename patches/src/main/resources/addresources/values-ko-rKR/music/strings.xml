@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">마지막 재생</string>
+  <string name="morphe_music_android_auto_subscriptions">구독</string>
+  <string name="morphe_music_android_auto_videos">동영상</string>
+  <string name="morphe_music_android_auto_other_results">기타 결과</string>
+  <string name="morphe_music_android_auto_uploaded_songs">업로드된 노래</string>
+  <string name="morphe_music_android_auto_uploaded_albums">업로드된 앨범</string>
+  <string name="morphe_music_android_auto_uploaded_artists">업로드된 아티스트</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">호스트의 잼 패치를 일시정지 및 재개 기능을 사용하도록 업데이트하세요</string>
   <string name="morphe_music_jam_probe_title">잼 재생목록 공유</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">오디오 트랙 버전과 공식 뮤직비디오를 서로 전환할 수 있습니다</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱을 사용하여 뮤직비디오, 팟캐스트 또는 노래를 다운로드할 수 있습니다</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">오프라인 저장 버튼 재정의하기</string>
-  <string name="morphe_external_downloader_action_button_summary">오프라인 저장 작업 버튼으로 기본 다운로더 대신 사용자가 선택한 외부 다운로더를 사용합니다</string>
-  <string name="morphe_external_downloader_flyout_menu_title">동영상 오프라인 저장 메뉴 재정의하기</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">피드 \'동영상 오프라인 저장\' 메뉴로 기본 다운로더 대신 사용자가 선택한 외부 다운로더를 사용합니다</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">다운로드 메뉴에 외부 다운로더 사용하기</string>
+  <string name="morphe_external_downloader_menu_summary">메뉴에서 다운로드 옵션을 탭하면 외부 다운로더를 실행합니다</string>
   <string name="morphe_music_downloads_screen_title">다운로드</string>
   <string name="morphe_music_downloads_empty">"다운로드가 없습니다
 다운로드한 트랙이 여기에 표시됩니다"</string>

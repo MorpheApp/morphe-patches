@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.shortsautoplay
 
 import app.morphe.patcher.Fingerprint
@@ -41,7 +51,33 @@ internal object ReelPlaybackRepeatFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.42+
+ */
 internal object ReelPlaybackFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("J"),
+    filters = listOf(
+        fieldAccess(
+            definingClass = "Ljava/util/concurrent/TimeUnit;",
+            name = "MILLISECONDS"
+        ),
+        methodCall(
+            name = "<init>",
+            parameters = listOf("I", "L", "L", "Z"),
+            location = MatchAfterWithin(15)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("L"),
+            returnType = "I",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+internal object ReelPlaybackLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("J"),
@@ -63,3 +99,17 @@ internal object ReelPlaybackFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Finds a read of a field of the method's own class by field type.
+ * Match it against a specific method.
+ */
+internal fun getInstanceFieldGetFingerprint(fieldType: String) = object : Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = fieldType
+        )
+    )
+) {}

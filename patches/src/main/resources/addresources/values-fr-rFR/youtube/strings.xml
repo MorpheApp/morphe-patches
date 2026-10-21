@@ -449,9 +449,8 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_disable_chapter_skip_double_tap_summary">Désactive le geste de double appui à deux doigts permettant de passer des chapitres, qui peut être déclenché accidentellement avec un seul doigt</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Téléchargez des vidéos, des podcasts ou des chansons avec des applications de téléchargement tierces</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Remplacer le bouton &amp; le menu de téléchargement</string>
-  <string name="morphe_external_downloader_action_button_summary">Utilise le téléchargeur externe de votre choix au lieu de la fonctionnalité de téléchargement par défaut</string>
+  <string name="morphe_external_downloader_overlay_button_title">Afficher le bouton de téléchargement du lecteur superposé</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Affiche un bouton dans le lecteur vidéo qui ouvre votre téléchargeur externe</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduction en voix off</string>
   <string name="morphe_vot_screen_summary">Lisez les sous-titres de la vidéo à voix haute à l\'aide de la synthèse vocale sur l\'appareil, synchronisée avec la lecture</string>

@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Última reproducción</string>
+  <string name="morphe_music_android_auto_subscriptions">Suscripciones</string>
+  <string name="morphe_music_android_auto_videos">Vídeos</string>
+  <string name="morphe_music_android_auto_other_results">Otros resultados</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Canciones subidas</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Álbumes subidos</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Artistas subidos</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Actualiza el parche de Jam del host para usar pausa y reanudación</string>
   <string name="morphe_music_jam_probe_title">Uso compartido de la cola de Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Intenta cambiar entre la versión de pista de audio y el vídeo musical oficial</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descarga vídeos musicales, podcasts o canciones con aplicaciones de descarga de terceros</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Reemplazar botón Descargar</string>
-  <string name="morphe_external_downloader_action_button_summary">Utiliza el descargador externo seleccionado en lugar del botón de acción de descarga original</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Reemplazar menú Descargar</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Utiliza el descargador externo seleccionado en lugar del menú flotante de descarga original</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Usa el descargador externo para el menú de Descargas</string>
+  <string name="morphe_external_downloader_menu_summary">La opción de descarga de los menús abre tu descargador externo en su lugar</string>
   <string name="morphe_music_downloads_screen_title">Descargas</string>
   <string name="morphe_music_downloads_empty">"No hay descargas
 Las pistas descargadas aparecen aquí"</string>

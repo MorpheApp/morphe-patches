@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Zadnje predvajano</string>
+  <string name="morphe_music_android_auto_subscriptions">Naročnine</string>
+  <string name="morphe_music_android_auto_videos">Videa</string>
+  <string name="morphe_music_android_auto_other_results">Drugi rezultati</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Naložene skladbe</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Naloženi albumi</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Naloženi izvajalci</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Posodobite gostiteljev Jam popravek, da uporablja premor in nadaljevanje</string>
   <string name="morphe_music_jam_probe_title">Deljenje čakalne vrste Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Poskusi preklopiti med zvočno različico in uradnim glasbenim videom</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Prenesite videe, podkaste ali pesmi z aplikacijami za prenašanje tretje osebe</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Prekrij gumb za prenos</string>
-  <string name="morphe_external_downloader_action_button_summary">Uporabi izbrani zunanji prenašalnik namesto privzetega gumba za dejanje Prenos</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Prepiši meni Prenos</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Uporabi izbrani zunanji prenašalnik namesto privzetega pojavnega menija Prenos</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Uporabi zunanji prejemnik za meni Prenosa</string>
+  <string name="morphe_external_downloader_menu_summary">Možnost Prenosa v menijih odpre namesto tega tvoj zunanji prejemnik</string>
   <string name="morphe_music_downloads_screen_title">Prenosi</string>
   <string name="morphe_music_downloads_empty">"Ni prenosov
 Prenesene skladbe se prikažejo tukaj"</string>

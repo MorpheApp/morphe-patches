@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Utoljára lejátszva</string>
+  <string name="morphe_music_android_auto_subscriptions">Feliratkozások</string>
+  <string name="morphe_music_android_auto_videos">Videók</string>
+  <string name="morphe_music_android_auto_other_results">Egyéb eredmények</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Feltöltött dalok</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Feltöltött albumok</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Feltöltött előadók</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">A gazdaalkalmazás Jam patch-jének frissítése a szüneteltetés és a folytatás használatához</string>
   <string name="morphe_music_jam_probe_title">Jam-várólista-megosztás</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Próbálja meg átváltani az audioverzió és a hivatalos videóklip között</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Töltsön le zenei videókat, podcastokat vagy dalokat külső letöltő alkalmazásokkal</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">A Letöltés gomb felülírása</string>
-  <string name="morphe_external_downloader_action_button_summary">A kiválasztott külső letöltőt használja a beépített Letöltés művelet gomb helyett</string>
-  <string name="morphe_external_downloader_flyout_menu_title">A Letöltés menü felülírása</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">A kiválasztott külső letöltőt használja a beépített Letöltés felugró menü helyett</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Külső letöltő használata a Letöltés menüben</string>
+  <string name="morphe_external_downloader_menu_summary">A menük Letöltés lehetősége a külső letöltőt nyitja meg</string>
   <string name="morphe_music_downloads_screen_title">Letöltések</string>
   <string name="morphe_music_downloads_empty">"Nincs letöltés
 A letöltött számok itt jelennek meg"</string>

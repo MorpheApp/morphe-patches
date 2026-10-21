@@ -10,6 +10,7 @@ package app.morphe.extension.shared.settings.preference;
 import static app.morphe.extension.shared.StringRef.sf;
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -35,6 +36,8 @@ import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -44,6 +47,25 @@ import app.morphe.extension.shared.ui.Dim;
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class ExternalDownloaderPreference extends CustomDialogListPreference {
+
+    /**
+     * The external downloader is used by the download mode, the player overlay button, or the Download menu.
+     */
+    public static final class ExternalDownloaderAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return SharedYouTubeSettings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL
+                    || SharedYouTubeSettings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON.get()
+                    || SharedYouTubeSettings.EXTERNAL_DOWNLOADER_MENU.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(SharedYouTubeSettings.DOWNLOAD_MODE,
+                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON,
+                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER_MENU);
+        }
+    }
 
     public static void launchExternalDownloader(String videoId, @Nullable Context context, String url) {
         try {
@@ -66,6 +88,13 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
             intent.setType("text/plain");
             intent.setPackage(downloaderPackageName);
             intent.putExtra("android.intent.extra.TEXT", url);
+            // Opening the downloader is not the user leaving the app.
+            // Without this flag a playing video enters picture-in-picture,
+            // and the downloader's window opens over the home screen instead of over the video.
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+            if (!(context instanceof Activity)) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
             context.startActivity(intent);
         } catch (Exception ex) {
             Logger.printException(() -> "launchExternalDownloader failure", ex);

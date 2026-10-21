@@ -449,9 +449,8 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_disable_chapter_skip_double_tap_summary">Zakáže dvojité klepnutí dvěma prsty, které přeskočí kapitoly, což může být neúmyslně spuštěno jedním prstem</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Stahujte videa, podcasty nebo písně pomocí aplikací pro stahování třetích stran</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Přepsat tlačítko a menu Stahování</string>
-  <string name="morphe_external_downloader_action_button_summary">Používá vámi zvolený externí stahovač místo výchozí funkce stahování</string>
+  <string name="morphe_external_downloader_overlay_button_title">Zobrazí tlačítko pro stahování v přehrávači playeru</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Zobrazí v přehrávači videí tlačítko, které otevře váš externí downloader</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hlasový překlad</string>
   <string name="morphe_vot_screen_summary">Přečte titulky videa nahlas pomocí text-to-speech v zařízení, synchronizovaně s přehráváním</string>

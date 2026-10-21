@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Sist spilt</string>
+  <string name="morphe_music_android_auto_subscriptions">Abonnement</string>
+  <string name="morphe_music_android_auto_videos">Videoer</string>
+  <string name="morphe_music_android_auto_other_results">Andre resultater</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Lastet opp sanger</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Lastet opp album</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Lastet opp artister</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Oppdater vertens Jam-patch for å bruke pause og fortsett</string>
   <string name="morphe_music_jam_probe_title">Jam-kødeling</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Prøv å bytte lydsporversjon og offisiell musikkvideo</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Last ned musikkvideoer, podkaster eller sanger med nedlastingsapper fra tredjeparter</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Overskriv Nedlastingsknapp</string>
-  <string name="morphe_external_downloader_action_button_summary">Bruker din valgte eksterne nedlaster i stedet for standard nedlastingshandlingsknappen</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Overstyr nedlastingsmenyen</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Bruker din valgte eksterne nedlaster i stedet for standard nedlastingsuttrekksmenyen</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Bruk ekstern nedlastingsprogram for Nedlastingsmeny</string>
+  <string name="morphe_external_downloader_menu_summary">Alternativet Nedlasting i menyene åpner det eksterne nedlastingsprogrammet ditt istedenfor</string>
   <string name="morphe_music_downloads_screen_title">Nedlastinger</string>
   <string name="morphe_music_downloads_empty">"Ingen nedlastinger
 Nedlastede spor vises her"</string>

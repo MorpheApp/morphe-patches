@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Последно възпроизвеждане</string>
+  <string name="morphe_music_android_auto_subscriptions">Сабскрипции</string>
+  <string name="morphe_music_android_auto_videos">Видеа</string>
+  <string name="morphe_music_android_auto_other_results">Други резултати</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Качени песни</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Качени албуми</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Качени изпълнители</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Актуализирайте Jam пача на хоста, за да използва пауза и възобновяване</string>
   <string name="morphe_music_jam_probe_title">Споделяне на опашката на Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Опит за превключване между версията на аудио записа и официалното музикално видео</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Изтеглете музикални видеа, подкасти или песни с помощта на приложения за изтегляне от трети страни</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Заместване на бутона за изтегляне</string>
-  <string name="morphe_external_downloader_action_button_summary">Използва избрания от вас външен изтеглящ инструмент вместо стандартния бутон за действие „Изтегляне“</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Заменяне на менюто за изтегляне</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Използва избрания от вас външен изтеглящ инструмент вместо стандартното флайout меню за изтегляне</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Използвайте външен изтегляч за менюто Изтегляне</string>
+  <string name="morphe_external_downloader_menu_summary">Опцията Изтегляне в менютата отваря вашия външен изтегляч вместо него</string>
   <string name="morphe_music_downloads_screen_title">Изтегляния</string>
   <string name="morphe_music_downloads_empty">"Няма изтегляния
 Изтеглените песни се появяват тук"</string>

@@ -449,9 +449,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">禁用双指双击跳过章节的势势，这可能会在使用单根手指时被意外触发</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">使用第三方下载应用程序下载视频、播客或歌曲</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">覆盖下载按钮和菜单</string>
-  <string name="morphe_external_downloader_action_button_summary">使用您选择的外部下载器，而不是自带的下载功能。</string>
+  <string name="morphe_external_downloader_overlay_button_title">显示播放器覆盖层下载按钮</string>
+  <string name="morphe_external_downloader_overlay_button_summary">在视频播放器中显示一个打开外部下载器的按钮</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">语音旁白翻译</string>
   <string name="morphe_vot_screen_summary">使用设备上的文本转语音功能朗读视频字幕，并与播放同步</string>

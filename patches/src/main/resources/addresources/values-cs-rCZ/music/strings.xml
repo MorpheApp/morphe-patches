@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Naposledy hrané</string>
+  <string name="morphe_music_android_auto_subscriptions">Odběry</string>
+  <string name="morphe_music_android_auto_videos">Videa</string>
+  <string name="morphe_music_android_auto_other_results">Ostatní výsledky</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Nahrané skladby</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Nahráná alba</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Nahraní umělci</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Aktualizujte Jam patch hostitele, aby používal pozastavení a obnovení</string>
   <string name="morphe_music_jam_probe_title">Sdílení fronty Jamu</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Pokusit se přepínat mezi verzí zvukové stopy a oficiálním hudebním videem</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Stahujte hudební videa, podcasty nebo písně pomocí externích aplikací pro stahování</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Přepsat tlačítko Stahování</string>
-  <string name="morphe_external_downloader_action_button_summary">Používá vámi zvolený externí downloader místo výchozího tlačítka Stáhnout</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Přepsat nabídku Stahování</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Používá vámi zvolený externí downloader místo výchozí nabídky Stáhnout</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Použít externí stahovač pro nabídku Stahování</string>
+  <string name="morphe_external_downloader_menu_summary">Možnost Stahování v nabídkách otevře váš externí stahovač místo</string>
   <string name="morphe_music_downloads_screen_title">Stahování</string>
   <string name="morphe_music_downloads_empty">"Žádné stažené skladby
 Stažené skladby se zobrazí zde"</string>

@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">अंतिम बार चलाया गया</string>
+  <string name="morphe_music_android_auto_subscriptions">सदस्यताएँ</string>
+  <string name="morphe_music_android_auto_videos">वीडियो</string>
+  <string name="morphe_music_android_auto_other_results">अन्य परिणाम</string>
+  <string name="morphe_music_android_auto_uploaded_songs">अपलोड किए गए गाने</string>
+  <string name="morphe_music_android_auto_uploaded_albums">अपलोड किए गए अल्बम</string>
+  <string name="morphe_music_android_auto_uploaded_artists">अपलोड किए गए कलाकार</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">पॉज़ और रिज़्यूम करने के लिए होस्ट का Jam पैच अपडेट करें</string>
   <string name="morphe_music_jam_probe_title">Jam कतार शेयरिंग</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">ऑडियो ट्रैक और ऑफ़िशियल म्यूज़िक वीडियो के बीच स्विच करने की कोशिश करें</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">थर्ड-पार्टी डाउनलोडर ऐप्स से म्यूज़िक वीडियो, पॉडकास्ट या गाने डाउनलोड करें</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">डाउनलोड बटन को ओवरराइड करें</string>
-  <string name="morphe_external_downloader_action_button_summary">डिफ़ॉल्ट डाउनलोड बटन की जगह आपके चुने हुए बाहरी डाउनलोडर का उपयोग करता है</string>
-  <string name="morphe_external_downloader_flyout_menu_title">डाउनलोड मेनू ओवरराइड करें</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">डिफ़ॉल्ट डाउनलोड फ्लाईआउट मेनू की जगह आपके चुने हुए बाहरी डाउनलोडर का उपयोग करता है</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">डाउनलो मेनू के लिए बाहरी डाउनलोडर का उपयोग करें</string>
+  <string name="morphe_external_downloader_menu_summary">मेनू का डाउनलोड विकल्प आपके बाहरी डाउनलोडर को खोलता है</string>
   <string name="morphe_music_downloads_screen_title">डाउनलोड</string>
   <string name="morphe_music_downloads_empty">"कोई डाउनलोड नहीं
 डाउनलोड किए गए ट्रैक यहाँ दिखाई देंगे"</string>

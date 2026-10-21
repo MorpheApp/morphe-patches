@@ -101,8 +101,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SAVED_SHUFFLE_STATE = new BooleanSetting("morphe_music_saved_shuffle_state", FALSE, parent(REMEMBER_SHUFFLE_STATE));
 
     // Downloads
-    public static final BooleanSetting EXTERNAL_DOWNLOADER_ACTION_BUTTON = new BooleanSetting("morphe_external_downloader_action_button", FALSE, DOWNLOAD_MODE.availability(DownloadMode.EXTERNAL));
-    public static final BooleanSetting EXTERNAL_DOWNLOADER_FLYOUT_MENU = new BooleanSetting("morphe_external_downloader_flyout_menu", FALSE, parentsAll(DOWNLOAD_MODE.availability(DownloadMode.EXTERNAL), parent(EXTERNAL_DOWNLOADER_ACTION_BUTTON)));
     public static final StringSetting DOWNLOADS_SORT = new StringSetting("morphe_music_downloads_sort", "ARTIST", false, false);
 
     // Action buttons
@@ -280,16 +278,20 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("morphe_sb_music_offtopic_color", "#FFFF9900", parent(SB_ENABLED));
 
     // Migration
+    private static final BooleanSetting DOWNLOAD_BUTTON_OVERRIDE_MIGRATED = new BooleanSetting("morphe_download_button_override_migrated", FALSE, false, false);
+    private static final BooleanSetting DEPRECATED_EXTERNAL_DOWNLOADER_ACTION_BUTTON = new BooleanSetting("morphe_external_downloader_action_button", FALSE);
     private static final BooleanSetting DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON = new BooleanSetting("morphe_external_downloader_flyout_button", FALSE);
+    private static final BooleanSetting DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_MENU = new BooleanSetting("morphe_external_downloader_flyout_menu", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_CATEGORY_BAR = new BooleanSetting("morphe_music_hide_category_bar", FALSE, true);
     private static final BooleanSetting DEPRECATED_MUSIC_IN_APP_DOWNLOADS = new BooleanSetting("morphe_music_in_app_downloads", FALSE);
     private static final BooleanSetting DEPRECATED_PERMANENT_REPEAT = new BooleanSetting("morphe_music_permanent_repeat", FALSE, true);
 
     static {
-        migrateOldSettingToNew(DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON, EXTERNAL_DOWNLOADER_FLYOUT_MENU);
+        migrateOldSettingToNew(DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON, DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_MENU);
         migrateOldSettingToNew(DEPRECATED_HIDE_CATEGORY_BAR, HIDE_FILTER_BAR);
         migrateOldSettingToNew(DEPRECATED_PERMANENT_REPEAT, REMEMBER_REPEAT_STATE);
         migrateInAppDownloadsToDownloadMode();
+        migrateDownloadButtonOverride();
     }
 
     static {
@@ -330,9 +332,32 @@ public class Settings extends SharedYouTubeSettings {
             return;
         }
         // The switch was only used together with the Download button override.
-        if (DOWNLOAD_MODE.isSetToDefault() && EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()) {
+        if (DOWNLOAD_MODE.isSetToDefault() && DEPRECATED_EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()) {
             DOWNLOAD_MODE.save(DownloadMode.IN_APP);
         }
         DEPRECATED_MUSIC_IN_APP_DOWNLOADS.resetToDefault();
+    }
+
+    /**
+     * The External downloader mode now always replaces the Download button and menu, and the overrides
+     * were removed. Before, the Download button and menu were only replaced if their override was on.
+     * The menu overrides are not migrated to the new menu switch, which also applies to in-app downloads.
+     * The External downloader mode is still in use, so a marker is the only way to tell this already ran.
+     */
+    private static void migrateDownloadButtonOverride() {
+        if (DOWNLOAD_BUTTON_OVERRIDE_MIGRATED.get()) {
+            return;
+        }
+        final boolean override = DEPRECATED_EXTERNAL_DOWNLOADER_ACTION_BUTTON.get();
+        DownloadMode mode = DOWNLOAD_MODE.get();
+        if (mode == DownloadMode.DEFAULT && override) {
+            DOWNLOAD_MODE.save(DownloadMode.EXTERNAL);
+        } else if (mode == DownloadMode.EXTERNAL && !override) {
+            // Nothing was replaced.
+            DOWNLOAD_MODE.save(DownloadMode.DEFAULT);
+        }
+        DEPRECATED_EXTERNAL_DOWNLOADER_ACTION_BUTTON.resetToDefault();
+        DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_MENU.resetToDefault();
+        DOWNLOAD_BUTTON_OVERRIDE_MIGRATED.save(true);
     }
 }

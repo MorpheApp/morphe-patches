@@ -439,9 +439,8 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_disable_chapter_skip_double_tap_summary">Gerir óvirkt tví fingurgestina tví breytilegu sem hoppar um kafla, sem gæti verið sýnt með einni fingri</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Niðurhalaðu myndbönd, hlaðvarpa eða lög með niðurhalssforritum frá þriðja aðila.</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Yfirskrifa niðhalningshnapp &amp; valmynd</string>
-  <string name="morphe_external_downloader_action_button_summary">Notar ytra niðurhalsforrit sem þú hefur valið í stað innbyggða niðurhalseiginleikans</string>
+  <string name="morphe_external_downloader_overlay_button_title">Sýna takka fyrir niðurhald ofanborðs spilara</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Sýnir takka í myndbands-spilara sem opnar ytri niðurhalara</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Þýðing á raddsegulmagni</string>
   <string name="morphe_vot_screen_summary">Les upp undirtitla myndbandsins með texta-til-tala á tækinu, samhæmt með endursendingu</string>

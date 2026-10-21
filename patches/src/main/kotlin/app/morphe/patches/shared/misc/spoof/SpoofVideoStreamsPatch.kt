@@ -404,6 +404,56 @@ internal fun spoofVideoStreamsPatch(
             )
         }
 
+        // A response with a shortened range ends before the requested range does. The app takes that
+        // as the end of the stream, and a saved video would end there. Instead, the transfer is paused
+        // like for a task of a higher priority, and the saved video continues from the last byte it got.
+        // The response ends when its remaining byte count is zero, or when it is finished.
+        CronetDataSourceReadFingerprint.let {
+            val remainingBytesField = it.instructionMatches.last().getFieldAccessed()
+            val exceptionType = PriorityTooLowExceptionFingerprint.method.definingClass
+
+            val helperMethod = ImmutableMethod(
+                it.classDef.type,
+                "patch_pauseIfStreamRangeLimited",
+                listOf(ImmutableMethodParameter(it.classDef.type, null, null)),
+                "V",
+                AccessFlags.PRIVATE.value or AccessFlags.STATIC.value,
+                null,
+                null,
+                MutableMethodImplementation(4),
+            ).toMutable().apply {
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        iget-wide v0, p0, $remainingBytesField
+                        invoke-static { v0, v1 }, $EXTENSION_CLASS->isLimitedStreamRangeFinished(J)Z
+                        move-result v0
+                        if-eqz v0, :keep_reading
+                        new-instance v0, $exceptionType
+                        const/4 v1, 0x0
+                        invoke-direct { v0, v1, v1 }, $exceptionType-><init>(II)V
+                        throw v0
+                        :keep_reading
+                        return-void
+                    """
+                )
+            }
+            it.classDef.methods.add(helperMethod)
+
+            // The response is read into a byte array or a buffer.
+            listOf(it, CronetDataSourceReadBufferFingerprint).forEach { read ->
+                // Insert after the remaining byte count is cleared, before the hook at the start of the method.
+                read.method.addInstruction(
+                    read.instructionMatches.last().index + 1,
+                    "invoke-static/range { p0 .. p0 }, $helperMethod"
+                )
+                read.method.addInstruction(
+                    0,
+                    "invoke-static/range { p0 .. p0 }, $helperMethod"
+                )
+            }
+        }
+
         // endregion
 
         // region Append spoof info.

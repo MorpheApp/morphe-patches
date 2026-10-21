@@ -449,9 +449,8 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_disable_chapter_skip_double_tap_summary">Dezactivează gestul de dublă atingere cu două degete care sare peste capitole, care poate fi declanșat accidental cu un singur deget</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descărcă videoclipuri, podcasturi sau melodii folosind aplicaţii de descărcare terţe</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Suprascrie butonul de descărcare și meniul</string>
-  <string name="morphe_external_downloader_action_button_summary">Folosește descărcătorul extern ales în locul funcției standard de descărcare</string>
+  <string name="morphe_external_downloader_overlay_button_title">Arată butonul de descărcare al suprapunerii playerului</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Afișează un buton în playerul video care deschide descărcătorul extern</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
   <string name="morphe_vot_screen_summary">Citește cu voce tare subtitrările video folosind text-to-speech pe dispozitiv, sincronizat cu redarea</string>

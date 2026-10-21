@@ -449,9 +449,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">يعطّل إيماءة النقر المزدوج بإصبعين التي تتخطى الفصول، والتي قد يتم تشغيلها عن طريق الخطأ بإصبع واحد</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">تنزيل الفيديوهات، البودكاست، أو الأغاني باستخدام تطبيقات تنزيل خارجية</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">تجاوز زر التنزيل &amp; القائمة</string>
-  <string name="morphe_external_downloader_action_button_summary">يستخدم أداة التنزيل الخارجية التي اخترتها بدلًا من ميزة التنزيل الافتراضية</string>
+  <string name="morphe_external_downloader_overlay_button_title">عرض زر تنزيل طبقة المشغل</string>
+  <string name="morphe_external_downloader_overlay_button_summary">يظهر زرًا في مشغل الفيديو يفتح أداة التنزيل الخارجية الخاصة بك</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">الترجمة الصوتية</string>
   <string name="morphe_vot_screen_summary">قراءة نصوص ترجمة الفيديو بصوت عالٍ باستخدام تحويل النص إلى كلام على الجهاز، بالتزامن مع التشغيل</string>

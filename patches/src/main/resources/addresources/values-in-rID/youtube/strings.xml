@@ -449,9 +449,8 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_disable_chapter_skip_double_tap_summary">Menonaktifkan gerakan ketuk dua jari yang melewati bab, yang mungkin terpicu secara tidak sengaja dengan satu jari</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Unduh video, podcast, atau lagu menggunakan aplikasi pihak ketiga</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Gantikan tombol &amp; menu Unduh</string>
-  <string name="morphe_external_downloader_action_button_summary">Menggunakan aplikasi pengunduh eksternal pilihan Anda daripada fitur pengunduhan bawaan</string>
+  <string name="morphe_external_downloader_overlay_button_title">Tampilkan tombol unduh tumpang tindih pemutar</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Menampilkan tombol di pemutar video yang membuka pengunduh eksternal Anda</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Terjemahan sulih suara</string>
   <string name="morphe_vot_screen_summary">Baca teks keterangan video dengan suara keras menggunakan fitur text-to-speech bawaan perangkat, yang disinkronkan dengan pemutaran video</string>

@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">آخرین پخش</string>
+  <string name="morphe_music_android_auto_subscriptions">عضویت‌ها</string>
+  <string name="morphe_music_android_auto_videos">ویدئوها</string>
+  <string name="morphe_music_android_auto_other_results">نتایج دیگر</string>
+  <string name="morphe_music_android_auto_uploaded_songs">آهنگ‌های آپلود شده</string>
+  <string name="morphe_music_android_auto_uploaded_albums">آلبوم‌های آپلود شده</string>
+  <string name="morphe_music_android_auto_uploaded_artists">هنرمندان آپلود شده</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">پچ Jam میزبان را به‌روزرسانی کنید تا از توقف موقت و ازسرگیری استفاده کند</string>
   <string name="morphe_music_jam_probe_title">اشتراک‌گذاری صف Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">تلاش برای جابه‌جایی بین نسخهٔ ترک صوتی و موزیک‌ویدئوی رسمی</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">دانلود موزیک‌ویدئوها، پادکست‌ها یا آهنگ‌ها با برنامه‌های دانلودکنندهٔ شخص ثالث</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">جایگزینی دکمهٔ دانلود</string>
-  <string name="morphe_external_downloader_action_button_summary">به‌جای دکمهٔ دانلود اصلی، از دانلودکنندهٔ خارجی انتخاب‌شدهٔ شما استفاده می‌کند</string>
-  <string name="morphe_external_downloader_flyout_menu_title">جایگزینی منوی دانلود</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">به‌جای منوی دانلود اصلی، از دانلودکنندهٔ خارجی انتخاب‌شدهٔ شما استفاده می‌کند</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">استفاده از دانلودر خارجی برای منوی دانلود</string>
+  <string name="morphe_external_downloader_menu_summary">گزینه دانلود در منوها، دانلودر خارجی شما را باز می‌کند</string>
   <string name="morphe_music_downloads_screen_title">دانلودها</string>
   <string name="morphe_music_downloads_empty">"دانلودی وجود ندارد
 آهنگ‌های دانلودشده اینجا ظاهر می‌شوند"</string>

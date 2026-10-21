@@ -450,9 +450,8 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiviert die Zwei-Finger-Doppeltipp-Geste, die Kapitel überspringt, die versehentlich mit einem Finger ausgelöst werden kann</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Videos, Podcasts oder Songs mit externen Download-Apps herunterladen</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Download-Aktionsschaltfläche &amp; Menü überschreiben</string>
-  <string name="morphe_external_downloader_action_button_summary">Verwendet den von dir gewählten externen Downloader anstelle der integrierten Download-Funktion</string>
+  <string name="morphe_external_downloader_overlay_button_title">Schaltfläche zum Herunterladen der Player-Overlay anzeigen</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Zeigt eine Schaltfläche im Videoplayer, die Ihren externen Downloader öffnet</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Sprachausgabe-Übersetzung</string>
   <string name="morphe_vot_screen_summary">Lies die Videountertitel laut mithilfe der Text-to-Speech-Funktion des Geräts, synchronisiert mit der Wiedergabe.</string>

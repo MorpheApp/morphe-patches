@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Huling hinintong</string>
+  <string name="morphe_music_android_auto_subscriptions">Subkripsyon</string>
+  <string name="morphe_music_android_auto_videos">Mga Video</string>
+  <string name="morphe_music_android_auto_other_results">Ibang resulta</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Mga na-upload na kanta</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Mga na-upload na album</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Mga na-upload na artist</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">I-update ang Jam patch ng host para gamitin ang pause at resume</string>
   <string name="morphe_music_jam_probe_title">Pagbabahagi ng queue ng Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Subukang lumipat sa Audio Track Version at Official Music Video</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">I-download ang mga music video, podcast, o kanta gamit ang mga app sa pag-download mula sa third-party</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Palitan ang Download na button</string>
-  <string name="morphe_external_downloader_action_button_summary">Ginagamit nito ang iyong napiling panlabas na downloader sa halip na ang karaniwang pindutan ng aksyon ng Download</string>
-  <string name="morphe_external_downloader_flyout_menu_title">I-override ang menu ng Download</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Ginagamit nito ang iyong napiling panlabas na downloader sa halip na ang karaniwang flyout menu ng Download</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Gumamit ng panlabas na downloader para sa Download menu</string>
+  <string name="morphe_external_downloader_menu_summary">Ibinubuksan ang Download option ng menus ang iyong panlabas na downloader instead</string>
   <string name="morphe_music_downloads_screen_title">Mga Download</string>
   <string name="morphe_music_downloads_empty">"Walang download
 Lalabas dito ang mga na-download na track"</string>

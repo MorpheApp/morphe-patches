@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">הושמע לאחרונה</string>
+  <string name="morphe_music_android_auto_subscriptions">מינויים</string>
+  <string name="morphe_music_android_auto_videos">סרטונים</string>
+  <string name="morphe_music_android_auto_other_results">תוצאות אחרות</string>
+  <string name="morphe_music_android_auto_uploaded_songs">שירים שהועלו</string>
+  <string name="morphe_music_android_auto_uploaded_albums">אלבומים שהועלו</string>
+  <string name="morphe_music_android_auto_uploaded_artists">אמנים שהועלו</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">עדכן את תיקון הג\'אם של המארח כדי להשתמש בהשהיה ובחידוש</string>
   <string name="morphe_music_jam_probe_title">שיתוף תור Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">נסה להחליף בין גרסת רצועת האודיו לבין הקליפ המוזיקלי הרשמי</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">הורד קליפי מוזיקה, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">עקוף את פעולת הורדה</string>
-  <string name="morphe_external_downloader_action_button_summary">משתמש במנגנון ההורדה החיצוני שבחרת במקום לחצן הפעולה הרגיל להורדה</string>
-  <string name="morphe_external_downloader_flyout_menu_title">עקוף את תפריט ההורדה</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">משתמש במנגנון ההורדה החיצוני שבחרת במקום תפריט ההורדה הרגיל</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">השתמש במוריד חיצוני לתפריט ההורדות</string>
+  <string name="morphe_external_downloader_menu_summary">אפשרות ההורדה בתפריטים תפתח את המוריד החיצוני שלך במקום</string>
   <string name="morphe_music_downloads_screen_title">הורדות</string>
   <string name="morphe_music_downloads_empty">"אין הורדות
 השירים שהורדו יופיעו כאן"</string>

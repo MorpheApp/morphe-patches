@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Laaste gespeel</string>
+  <string name="morphe_music_android_auto_subscriptions">Abonnemente</string>
+  <string name="morphe_music_android_auto_videos">Video\'s</string>
+  <string name="morphe_music_android_auto_other_results">Ander resultate</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Opgelaaide liedjies</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Opgelaaide albums</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Opgelaaide kunstenaars</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Werk die gasheer se Jam-patch by om onderbreek en hervat te gebruik</string>
   <string name="morphe_music_jam_probe_title">Jam-tou-deling</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Probeer om tussen die oudiosnitweergawe en die amptelike musiekvideo te wissel</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Laai musiekvideo\'s, podcasts of liedjies af met derdeparty-aflaai-programme</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Oorskryf Aflaai-knoppie</string>
-  <string name="morphe_external_downloader_action_button_summary">Gebruik jou gekose eksterne aflaaier in plaas van die standaard Download-aksieknoppie</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Oorskryf aflaai-kieslys</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Gebruik jou gekose eksterne aflaaier in plaas van die standaard Download-vliegmenu</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Gebruik eksterne afwerker vir Afwerk-kieslys</string>
+  <string name="morphe_external_downloader_menu_summary">Die Afwerkeropsie in kieslyse open jou eksterne afwerker eerder</string>
   <string name="morphe_music_downloads_screen_title">Aflaaie</string>
   <string name="morphe_music_downloads_empty">"Geen aflaaie nie
 Afgelaaide snitte verskyn hier"</string>

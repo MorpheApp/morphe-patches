@@ -13,7 +13,6 @@ package app.morphe.extension.youtube.videoplayer;
 import android.view.View;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
@@ -50,7 +49,7 @@ public class ExternalDownloadButton {
     }
 
     private static boolean isEnabled() {
-        return Settings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL;
+        return Settings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON.get();
     }
 
     private static void onDownloadClick(View view) {

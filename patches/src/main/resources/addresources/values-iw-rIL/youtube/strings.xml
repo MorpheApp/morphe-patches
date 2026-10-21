@@ -449,9 +449,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">משבית את מחוות ההקשה הכפולה בשתי אצבעות שמדלגת על פרקים, שעשויה להיות מופעלת בטעות עם אצבע אחת</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">הורד סרטונים, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">עקוף את לחצן ואת תפריט ההורדה</string>
-  <string name="morphe_external_downloader_action_button_summary">משתמש במנהל ההורדות החיצוני שבחרת במקום תכונת ההורדות הרגילה</string>
+  <string name="morphe_external_downloader_overlay_button_title">הצג כפתור הורדה לשכבת הביצוען</string>
+  <string name="morphe_external_downloader_overlay_button_summary">מציג כפתור בעתני הוידאו שפותח את מנהל ההורדות החיצוני שלך</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">תרגום דיבוב</string>
   <string name="morphe_vot_screen_summary">קריאת כתוביות הסרטון בקול רם באמצעות טקסט לדיבור מקומי, בסנכרון עם ההפעלה</string>

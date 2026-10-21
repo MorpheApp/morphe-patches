@@ -1,5 +1,6 @@
 /*
  * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3566
  * https://github.com/MorpheApp/morphe-patches/pull/3754
  * Adapted from https://github.com/itolkien/morphe-universal-captions
  *
@@ -95,9 +96,9 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
 
         val directTracks = CaptionTracksManagerDirectTracksFingerprint.method
         val autoTracks = CaptionTracksManagerAutoTranslateTracksFingerprint.method
-        val defaultSource = CaptionTracksManagerDefaultSourceFingerprint(
-            CaptionTrackBuilderBuildFingerprint.method.returnType
-        ).method
+        // Added by the preferred caption language patch.
+        val translationSource = "${directTracks.definingClass}->patch_getTranslationSource()" +
+                CaptionTrackBuilderBuildFingerprint.method.returnType
         // Keep both original getters intact. The adapter calls them once and cannot call itself.
         CaptionTracksManagerDirectTracksFingerprint.classDef.addHelperMethod(
             "patch_getAutoTranslateTracks", "Ljava/util/List;", freeRegisters = 3,
@@ -106,7 +107,7 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
                 move-result-object v0
                 invoke-virtual { p0 }, $directTracks
                 move-result-object v1
-                invoke-virtual { p0 }, $defaultSource
+                invoke-virtual { p0 }, $translationSource
                 move-result-object v2
                 invoke-static { v0, v1, v2 }, $EXTENSION_CLASS->restoreTranslationTracks(Ljava/util/List;Ljava/util/List;$PREFERRED_CAPTION_TRACK_INTERFACE)Ljava/util/List;
                 move-result-object v0

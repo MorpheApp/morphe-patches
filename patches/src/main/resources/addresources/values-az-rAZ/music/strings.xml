@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Son oynadılan</string>
+  <string name="morphe_music_android_auto_subscriptions">Abunəliklər</string>
+  <string name="morphe_music_android_auto_videos">Videolar</string>
+  <string name="morphe_music_android_auto_other_results">Digər nəticələr</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Yüklənmiş mahnılar</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Yüklənmiş albomlar</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Yüklənmiş sənətçilər</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Fasilə veri və davam eti istifadə etmək üçün ev sahibinin Jam yamağını yenilə</string>
   <string name="morphe_music_jam_probe_title">Jam növbəsinin paylaşılması</string>
@@ -118,11 +126,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Səs Treki Versiyasını və Rəsmi Musiqi Videosunu dəyişdirməyə çalış</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Üçüncü tərəf yükləmə tətbiqləri ilə musiqi videolarını, podkastları və ya mahnıları yüklə</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Yükləmə düyməsin əvəzlə</string>
-  <string name="morphe_external_downloader_action_button_summary">Əsas Yükləmə fəaliyyəti düyməsinin əvəzinə seçdiyiniz xarici yükləyicini istifadə edir</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Yükləmə seçimin əvəzlə</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Açılan əsas Yükləmə menyusunun əvəzinə seçdiyiniz xarici yükləyicini istifadə edir</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_music_downloads_screen_title">Yükləmələr</string>
   <string name="morphe_music_downloads_empty">"Yükləmə yoxdur
 Yüklənilmiş treklər burada görünür"</string>

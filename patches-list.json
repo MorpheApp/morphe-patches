@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.48.0-dev.16",
+  "version": "1.48.0-dev.18",
   "patches": [
     {
       "name": "AI channel filter",
@@ -238,7 +238,7 @@
     },
     {
       "name": "Android Auto",
-      "description": "Bypasses certificate checks and restores YouTube Music playlists and podcasts in Android Auto.",
+      "description": "Bypasses certificate checks and restores YouTube Music Home recommendations, Library collections, and podcasts in Android Auto.",
       "default": true,
       "category": null,
       "compatiblePackages": [

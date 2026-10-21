@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Seo caite is déanaí</string>
+  <string name="morphe_music_android_auto_subscriptions">Síntiúis</string>
+  <string name="morphe_music_android_auto_videos">Físeáin</string>
+  <string name="morphe_music_android_auto_other_results">Torthaí eile</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Amhráin uaslódáilte</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Albúmaí uaslódáilte</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Ceoltóirí uaslódáilte</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Nuashonraigh paiste Jam an óstaigh chun sos agus atosú a úsáid</string>
   <string name="morphe_music_jam_probe_title">Comhroinnt cioróil Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Féach le haistriú idir Leagan an Rian Fuaime agus an Físeán Ceoil Oifigiúil</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin ceoil, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Sáraigh an cnaipe Íoslódála</string>
-  <string name="morphe_external_downloader_action_button_summary">Úsáideann sé an íoslódálaí seachtrach roghnaithe agat in ionad an chnaipe gnímh Íoslódála stoic</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Sáraigh an roghchlár Íoslódála</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Úsáideann sé an íoslódálaí seachtrach roghnaithe agat in ionad an roghchláir Íoslódála stoic</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Úsáid íoslódálóir seachtrach do roghchlár Íoslódála</string>
+  <string name="morphe_external_downloader_menu_summary">Socraíonn an rogha Íoslódáil sna roghchláir d\'íoslódálaí seachtrach ina ionad sin</string>
   <string name="morphe_music_downloads_screen_title">Íoslódálacha</string>
   <string name="morphe_music_downloads_empty">"Gan aon íoslódálacha
 Feictear rianta íoslódáilte anseo"</string>

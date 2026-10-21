@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Diputar terakhir</string>
+  <string name="morphe_music_android_auto_subscriptions">Subscription</string>
+  <string name="morphe_music_android_auto_videos">Video</string>
+  <string name="morphe_music_android_auto_other_results">Hasil lainnya</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Lagu yang diunggah</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Album yang diunggah</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Artis yang diunggah</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Perbarui patch Jam host untuk menggunakan jeda dan lanjutkan</string>
   <string name="morphe_music_jam_probe_title">Berbagi antrean Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Coba alihkan Versi Trek Audio dan Video Musik Resmi</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Unduh video musik, podcast, atau lagu dengan aplikasi pengunduh pihak ketiga</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Gantikan tombol Unduh</string>
-  <string name="morphe_external_downloader_action_button_summary">Menggunakan pengunduh eksternal pilihan Anda daripada tombol tindakan Unduh bawaan</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Gantikan menu Unduh</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Menggunakan pengunduh eksternal pilihan Anda daripada menu flyout Unduh bawaan</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Gunakan pengunduh eksternal untuk menu Unduh</string>
+  <string name="morphe_external_downloader_menu_summary">Opsi Unduh pada menu akan membuka pengunduh eksternal Anda</string>
   <string name="morphe_music_downloads_screen_title">Unduhan</string>
   <string name="morphe_music_downloads_empty">"Tidak ada unduhan
 Lagu yang diunduh akan muncul di sini"</string>

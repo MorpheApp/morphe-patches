@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Lần cuối phát</string>
+  <string name="morphe_music_android_auto_subscriptions">Kênh đăng ký</string>
+  <string name="morphe_music_android_auto_videos">Video</string>
+  <string name="morphe_music_android_auto_other_results">Kết quả khác</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Bài hát đã tải lên</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Album đã tải lên</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Nghệ sĩ đã tải lên</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Cập nhật bản vá Jam của máy chủ để sử dụng tạm dừng và tiếp tục</string>
   <string name="morphe_music_jam_probe_title">Chia sẻ hàng đợi Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Thử chuyển đổi giữa Phiên bản âm thanh và Video âm nhạc chính thức</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Tải xuống video nhạc, podcast hoặc bài hát bằng các ứng dụng tải xuống của bên thứ ba</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Ghi đè nút Tải xuống</string>
-  <string name="morphe_external_downloader_action_button_summary">Dùng trình tải xuống bên ngoài đã chọn thay cho nút Tải xuống mặc định</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Ghi đè menu Tải xuống</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Dùng trình tải xuống bên ngoài đã chọn thay cho menu Tải xuống mặc định</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Sử dụng trình tải xuống bên ngoài cho menu Tải xuống</string>
+  <string name="morphe_external_downloader_menu_summary">Tùy chọn Tải xuống trong các menu sẽ mở trình tải xuống bên ngoài của bạn thay vì</string>
   <string name="morphe_music_downloads_screen_title">Tải xuống</string>
   <string name="morphe_music_downloads_empty">"Không có bản tải xuống
 Các bài hát đã tải sẽ xuất hiện ở đây"</string>

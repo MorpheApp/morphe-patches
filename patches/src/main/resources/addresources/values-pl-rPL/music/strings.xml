@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Ostatnio odtwarzane</string>
+  <string name="morphe_music_android_auto_subscriptions">Subskrypcje</string>
+  <string name="morphe_music_android_auto_videos">Filmy</string>
+  <string name="morphe_music_android_auto_other_results">Inne wyniki</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Przesłane piosenki</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Przesłane albumy</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Przesłani artyści</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Zaktualizuj modyfikację gospodarza Jam, aby używać wstrzymywania i wznawiania</string>
   <string name="morphe_music_jam_probe_title">Udostępnianie kolejki Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Próbuje przełączać między utworem a oficjalnym teledyskiem</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Pobieraj teledyski, podcasty lub utwory za pomocą zewnętrznych aplikacji do pobierania</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Zastąp przycisk Pobierz</string>
-  <string name="morphe_external_downloader_action_button_summary">Używa wybranej zewnętrznej aplikacji do pobierania zamiast domyślnego przycisku akcji Pobierz</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Zastąp menu Pobierz</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Używa wybranej zewnętrznej aplikacji do pobierania zamiast domyślnego wysuwanego menu Pobierz</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Użyj zewnętrznego programu pobierania dla menu Pobieranie</string>
+  <string name="morphe_external_downloader_menu_summary">Opcja Pobieranie w menu otwiera zamiast tego Twój zewnętrzny program pobierania</string>
   <string name="morphe_music_downloads_screen_title">Pobrane</string>
   <string name="morphe_music_downloads_empty">"Brak pobranych
 Tutaj pojawią się pobrane utwory"</string>

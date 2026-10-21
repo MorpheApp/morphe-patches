@@ -60,7 +60,7 @@ public final class DownloadsPatch {
      */
     public static void onLithoTextLoaded(ContextInterface conversionContext, CharSequence original) {
         try {
-            if (isActionButtonOverridden()
+            if (isFlyoutMenuOverridden()
                     && downloadButtonLabel.isEmpty()
                     && Utils.contains(conversionContext.patch_getPathBuilder(),
                     "music_download_button.")) {
@@ -73,34 +73,43 @@ public final class DownloadsPatch {
     }
 
     /**
-     * In app downloads always replace the Download button,
-     * the external downloader only replaces it if the override is on.
+     * In app downloads and the external downloader always replace the Download button.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isActionButtonOverridden() {
-        DownloadMode mode = Settings.DOWNLOAD_MODE.get();
-        return mode == DownloadMode.IN_APP
-                || (mode == DownloadMode.EXTERNAL && Settings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get());
+        return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT;
     }
 
+    /**
+     * The download mode replaces the Download menu, and the external downloader
+     * can replace it in the other modes too.
+     */
     private static boolean isFlyoutMenuOverridden() {
-        DownloadMode mode = Settings.DOWNLOAD_MODE.get();
-        return mode == DownloadMode.IN_APP
-                || (mode == DownloadMode.EXTERNAL && Settings.EXTERNAL_DOWNLOADER_FLYOUT_MENU.get());
+        return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT
+                || Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
 
     private static boolean inAppDownloads() {
         return Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP;
     }
 
-    private static void startDownload() {
-        startDownload(VideoInformation.getVideoId());
+    private static boolean flyoutMenuUsesExternalDownloader() {
+        return Settings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL
+                || Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
 
-    private static void startDownload(String videoId) {
+    /**
+     * Downloads the track that is playing.
+     */
+    private static void startDownload(boolean externalDownloader) {
+        startDownload(VideoInformation.getVideoId(), externalDownloader);
+    }
+
+    private static void startDownload(String videoId, boolean externalDownloader) {
         cachedFlyoutVideoId = "";
         // Do not clear download button label.
 
-        if (inAppDownloads()) {
+        if (!externalDownloader) {
             LocalDownloadManager.enqueue(videoId);
             return;
         }
@@ -243,7 +252,7 @@ public final class DownloadsPatch {
             long now = System.currentTimeMillis();
             if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return true;
             lastMainPlayerDownloadTime = now;
-            startDownload(videoId);
+            startDownload(videoId, !inAppDownloads());
             return true;
         } catch (Exception ex) {
             Logger.printException(() -> "offlineVideoEndpointOnClick failure", ex);
@@ -282,7 +291,7 @@ public final class DownloadsPatch {
                 }
                 lastMainPlayerDownloadTime = now;
 
-                startDownload();
+                startDownload(!inAppDownloads());
                 return true;
             }
         } catch (Exception ex) {
@@ -296,7 +305,7 @@ public final class DownloadsPatch {
      */
     public static boolean commandResolverOnClick(ProtocolBufferFieldInterface p1, Map<Object, Object> map) {
         try {
-            if (!isActionButtonOverridden()
+            if (!isFlyoutMenuOverridden()
                     || p1 == null || map == null) {
                 return false;
             }
@@ -317,10 +326,6 @@ public final class DownloadsPatch {
                 Logger.printDebug(() -> "inAppDownloadButtonOnClicked");
                 cachedFlyoutVideoId = "";
                 return true;
-            }
-
-            if (!isFlyoutMenuOverridden()) {
-                return false;
             }
 
             String p1String = p1.toString();
@@ -369,6 +374,11 @@ public final class DownloadsPatch {
                 }
 
                 final boolean inDialog = isViewInsideDialog(viewObj);
+                if (!inDialog && !isActionButtonOverridden() && isDownloadSender(map)) {
+                    // The Download button of the player, which only the download mode replaces.
+                    return false;
+                }
+
                 String targetId = extractVideoIdFromCommand(p1);
 
                 if (targetId == null && inDialog) {
@@ -381,7 +391,7 @@ public final class DownloadsPatch {
                     final String flyoutId = targetId;
                     Logger.printDebug(() -> "Flyout download of " + flyoutId
                             + " inDialog=" + inDialog);
-                    startDownload(targetId);
+                    startDownload(targetId, flyoutMenuUsesExternalDownloader());
                     return true;
 
                 } else if (inDialog) {
@@ -389,7 +399,7 @@ public final class DownloadsPatch {
                     // The flyout of a queue row carries no id either, so this can only be
                     // the track that is playing.
                     Logger.printDebug(() -> "Now Playing Download Intercepted via Window Check.");
-                    startDownload();
+                    startDownload(flyoutMenuUsesExternalDownloader());
                     return true;
 
                 } else {

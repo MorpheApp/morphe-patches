@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Zadnje igrano</string>
+  <string name="morphe_music_android_auto_subscriptions">Pretplate</string>
+  <string name="morphe_music_android_auto_videos">Videozapisi</string>
+  <string name="morphe_music_android_auto_other_results">Ostali rezultati</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Poslane pjesme</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Poslane albumi</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Poslani izvođači</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Ažuriraj hostov Jam patch da koristi pauzu i nastavak</string>
   <string name="morphe_music_jam_probe_title">Dijeljenje reda čekanja za Jam</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Pokušaj prebaciti inačicu audio zapisa i službeni glazbeni spot</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Preuzmite glazbene videozapise, podcastove ili pjesme pomoću aplikacija za preuzimanje trećih strana</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Zamijeni tipku za preuzimanje</string>
-  <string name="morphe_external_downloader_action_button_summary">Koristi odabrani vanjski program za preuzimanje umjesto ugrađene tipke za preuzimanje</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Zamijeni izbornik preuzimanja</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Koristi odabrani vanjski program za preuzimanje umjesto ugrađenog kontekstnog izbornika za preuzimanje</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Koristi vanjski downloader za izbornik Preuzimanja</string>
+  <string name="morphe_external_downloader_menu_summary">Opcija Preuzimanja u izbornicima otvara vaš vanjski downloader umjesto toga</string>
   <string name="morphe_music_downloads_screen_title">Preuzimanja</string>
   <string name="morphe_music_downloads_empty">"Nema preuzimanja
 Ovdje se prikazuju preuzete pjesme"</string>

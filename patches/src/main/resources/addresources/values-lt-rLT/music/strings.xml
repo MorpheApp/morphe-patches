@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Paskutinį kartą paleista</string>
+  <string name="morphe_music_android_auto_subscriptions">Prenumeratos</string>
+  <string name="morphe_music_android_auto_videos">Vaizdo įrašai</string>
+  <string name="morphe_music_android_auto_other_results">Kiti rezultatai</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Įkeltos dainos</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Įkelti albumai</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Įkelti atlikėjai</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Atnaujinkite pagrindinio įrenginio „Jam“ pataisą, kad būtų galima naudoti pristabdymą ir tęsimą</string>
   <string name="morphe_music_jam_probe_title">„Jam“ eilės bendrinimas</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Bandyti perjungti garso takelio versiją ir oficialų muzikinį vaizdo įrašą</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Atsisiųskite muzikos vaizdo įrašus, tinklalaides ar dainas trečiųjų šalių atsisiuntimo programėlėmis</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Pakeisti atsisiuntimo mygtuką</string>
-  <string name="morphe_external_downloader_action_button_summary">Naudoja jūsų pasirinktą išorinę atsisiuntimo programėlę vietoj standartinio atsisiuntimo veiksmų mygtuko</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Pakeisti atsisiuntimo meniu</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Naudoja jūsų pasirinktą išorinę atsisiuntimo programėlę vietoj standartinio atsisiuntimo išskleidžiamojo meniu</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Naudoti išorinę atsisiuntimo programą meniu „Atsisiųsti“</string>
+  <string name="morphe_external_downloader_menu_summary">Meniu parinktis „Atsisiųsti“ atveria jūsų išorinę atsisiuntimo programą vietoje</string>
   <string name="morphe_music_downloads_screen_title">Atsisiuntimai</string>
   <string name="morphe_music_downloads_empty">"Atsisiuntimų nėra
 Atsisiųsti kūriniai rodomi čia"</string>

@@ -109,9 +109,9 @@ val shortsAutoplayPatch = bytecodePatch(
         // As of YouTube 20.09, Google has removed the code for 'Autoplay' and 'Pause' from this method.
         // Manually restore the removed 'Autoplay' code.
         // Variable names are only a rough guess of what these methods do.
-        val userActionMethodReference = ReelPlaybackFingerprint.instructionMatches[1]
+        val userActionMethodReference = ReelPlaybackLegacyFingerprint.instructionMatches[1]
             .getInstruction<ReferenceInstruction>().reference as MethodReference
-        val reelSequenceControllerMethodReference = ReelPlaybackFingerprint.instructionMatches[2]
+        val reelSequenceControllerMethodReference = ReelPlaybackLegacyFingerprint.instructionMatches[2]
             .getInstruction<ReferenceInstruction>().reference as MethodReference
 
         ReelPlaybackRepeatFingerprint.method.apply {
@@ -121,14 +121,10 @@ val shortsAutoplayPatch = bytecodePatch(
                         getReference<MethodReference>()?.definingClass == EXTENSION_CLASS
             } + 1
             val enumRegister = getInstruction<OneRegisterInstruction>(extensionReturnResultIndex).registerA
-            val getReelSequenceControllerIndex = indexOfFirstInstructionOrThrow {
-                val reference = getReference<FieldReference>()
-                opcode == Opcode.IGET_OBJECT &&
-                        reference?.definingClass == definingClass &&
-                        reference.type == reelSequenceControllerMethodReference.definingClass
-            }
-            val getReelSequenceControllerReference = getInstruction<ReferenceInstruction>(
-                getReelSequenceControllerIndex).reference
+            val getReelSequenceControllerReference = getInstanceFieldGetFingerprint(
+                reelSequenceControllerMethodReference.definingClass
+            ).match(ReelPlaybackRepeatFingerprint.originalMethod)
+                .instructionMatches.first().instruction.getReference<FieldReference>()!!
 
             // Add a helper method to avoid finding multiple free registers.
             // If enum is autoplay then method performs autoplay and returns null,

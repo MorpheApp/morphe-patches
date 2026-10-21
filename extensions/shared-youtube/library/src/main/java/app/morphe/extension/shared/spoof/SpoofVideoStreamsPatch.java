@@ -85,6 +85,11 @@ public class SpoofVideoStreamsPatch {
     private static final long MAX_STREAM_RANGE_LENGTH = 10 * 1024 * 1024;
 
     /**
+     * If the last request built on the thread is of a shortened stream range.
+     */
+    private static final ThreadLocal<Boolean> streamRangeLimitedOnThread = ThreadLocal.withInitial(() -> false);
+
+    /**
      * If the streams of the player responses created on this thread are kept.
      * Used for videos that are saved, which use streams that the app can save instead of the playback streams.
      */
@@ -518,7 +523,8 @@ public class SpoofVideoStreamsPatch {
      * <p>
      * Called for every network request the app makes, when the request is built.
      * Saving a video requests the rest of a stream with a single range, but the server sends a large range
-     * at about playback speed. The range is shortened, and the app requests the following range after this one ends.
+     * at about playback speed. The range is shortened, and {@link #isLimitedStreamRangeFinished(long)}
+     * makes the app request the following range after this one ends.
      * Ranges without an end are left as they are, because the app reads those until the stream ends.
      *
      * @param url Url of the request.
@@ -527,6 +533,8 @@ public class SpoofVideoStreamsPatch {
     @Nullable
     public static String limitPlainStreamRange(@Nullable String url) {
         try {
+            // A request is built and read on the same thread.
+            streamRangeLimitedOnThread.set(false);
             if (url == null || !isPlainStreamRequest(url)) {
                 return url;
             }
@@ -557,11 +565,33 @@ public class SpoofVideoStreamsPatch {
 
             String limitedRange = start + "-" + limitedEnd;
             Logger.printDebug(() -> "Limiting stream range: " + range + " to: " + limitedRange);
+            streamRangeLimitedOnThread.set(true);
             return url.substring(0, rangeIndex) + "range=" + limitedRange + url.substring(rangeEndIndex);
         } catch (Exception ex) {
             Logger.printException(() -> "limitPlainStreamRange failure", ex);
             return url;
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the response of a network request is read.
+     * A response of a shortened range ends before the requested range does, and the app takes that
+     * as the end of the stream. If this is true, the app pauses the transfer instead, and continues it
+     * from the last byte it got.
+     *
+     * @param remainingBytes Bytes of the response that are not read yet.
+     * @return If the response of a shortened range has ended, and the rest of the range must be requested.
+     */
+    public static boolean isLimitedStreamRangeFinished(long remainingBytes) {
+        if (remainingBytes != 0 || !streamRangeLimitedOnThread.get()) {
+            return false;
+        }
+
+        streamRangeLimitedOnThread.set(false);
+        Logger.printDebug(() -> "Requesting the rest of the shortened stream range");
+        return true;
     }
 
     /**

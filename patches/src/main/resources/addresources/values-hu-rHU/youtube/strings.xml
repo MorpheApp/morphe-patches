@@ -449,9 +449,8 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_disable_chapter_skip_double_tap_summary">Letiltja a dupla koppintást ujjakkal való felemeléssel történő fejezetszkenálást, ami egy ujjal véletlenül aktiválódhat</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Töltsön le videókat, podcastokat vagy dalokat harmadik féles alkalmazásokkal</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">A Letöltés gomb &amp; menü felülírása</string>
-  <string name="morphe_external_downloader_action_button_summary">A kiválasztott külső letöltőt használja az alapértelmezett letöltési funkció helyett</string>
+  <string name="morphe_external_downloader_overlay_button_title">Klejítőpanel letöltés gomb mutatása a lejátszóban</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Gomb megjelenítése a videolejátszón, amely megnyitja a külső letöltőt</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hangfelirat hangos felolvasása</string>
   <string name="morphe_vot_screen_summary">Olvassa fel a videó feliratait hangosan a készüléken található szöveg-beszéddé alakító segítségével, szinkronban a lejátszással.</string>

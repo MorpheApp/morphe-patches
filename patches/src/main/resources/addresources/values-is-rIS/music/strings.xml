@@ -16,6 +16,14 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Síðast spilað</string>
+  <string name="morphe_music_android_auto_subscriptions">Áskriftir</string>
+  <string name="morphe_music_android_auto_videos">Myndbönd</string>
+  <string name="morphe_music_android_auto_other_results">Aðrar niðurstöður</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Hlaðnar lög</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Hlaðnar platnur</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Hlaðnir listamenn</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Uppfæra Jam-plástur gestgjafans til að nota hlé og halda áfram</string>
   <string name="morphe_music_jam_probe_title">Deiling Jam-biðraðar</string>
@@ -118,11 +126,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Reyna að skipta á milli hljóðútgáfu og opinbers tónlistarmyndbands</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Sæktu niður tónlistarmyndbönd, þætti eða lög með þriðja aðila niðurhal forrit</string>
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Yfirskrifa niðurhalstakkann</string>
-  <string name="morphe_external_downloader_action_button_summary">Notar valið ytri niðurhalsforrit í stað venjulega niðurhalshnappsins</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Hnekkja niðurhalsvalmynd</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Notar valið ytri niðurhalsforrit í stað venjulegu niðurhalsvalmyndarinnar</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Nota utana komandi niðurhaldara fyrir niðurhalssvalmynd</string>
+  <string name="morphe_external_downloader_menu_summary">Valkostur í valmyndum til að hlaða niður opnar utana komandi niðurhalara í staðinn</string>
   <string name="morphe_music_downloads_screen_title">Niðurhal</string>
   <string name="morphe_music_downloads_empty">"Engin niðurhal
 Niðurhlaðin lög birtast hér"</string>
