@@ -123,11 +123,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">Bruker din valgte eksterne nedlaster i stedet for standard nedlastingshandlingsknappen</string>
   <string name="morphe_external_downloader_flyout_menu_title">Overstyr nedlastingsmenyen</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Bruker din valgte eksterne nedlaster i stedet for standard nedlastingsuttrekksmenyen</string>
-  <string name="morphe_music_in_app_downloads_title">Last ned i appen</string>
-  <string name="morphe_music_in_app_downloads_summary">Laster ned lyd i YouTube Music i stedet for å åpne den eksterne nedlastingsappen</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Spor lagres i programmets private lagring og slettes hvis YouTube Music avinstalleres.
-
-Når dette er påslått, viser fanen Nedlastinger disse sporene i stedet for det offline Premium-biblioteket. Hvis du slår av det, gjenopprettes fanen, og Premium-nedlastinger berøres aldri"</string>
   <string name="morphe_music_downloads_screen_title">Nedlastinger</string>
   <string name="morphe_music_downloads_empty">"Ingen nedlastinger
 Nedlastede spor vises her"</string>
@@ -456,12 +451,17 @@ For å sikre at scrobbling synkroniseres under avspilling i bakgrunnen, må du s
   <string name="morphe_music_lyrics_keep_screen_on_title">Hold skjermen på mens du ser på sangtekster</string>
   <string name="morphe_music_lyrics_keep_screen_on_summary">Forhindrer at skjermen slår seg av mens sangtekstpanelet er åpent</string>
   <string name="morphe_music_lyrics_section_service_title">Sangteksttjeneste</string>
-  <string name="morphe_music_lyrics_section_overlay_title">Overlegg</string>
+  <string name="morphe_music_lyrics_section_display_title">Visning</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronisering</string>
+  <string name="morphe_music_lyrics_section_panel_title">Panel</string>
+  <string name="morphe_music_lyrics_section_languages_title">Språk</string>
   <string name="morphe_music_lyrics_section_ai_endpoint_title">AI-endepunkt</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Alle leverandører er deaktivert — innebygde sangtekster og innkapslede sangtekster</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Alle leverandører deaktivert - innebygde tekster og innebygde tekster</string>
   <string name="morphe_music_lyrics_source_reset_title">Tilbakestill leverandørrekkefølgen?</string>
   <string name="morphe_music_lyrics_source_reset_message">Tilbakestill leverandørene til standard prioritetsrekkefølge</string>
+  <string name="morphe_music_lyrics_clear_cache_title">Tøm lagrede tekster</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Slett tekstene som er lagret på denne enheten</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Fjernet %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">Hent token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-brukertoken</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Lim inn informasjonskapselen for media-user-token fra music.apple.com
@@ -513,24 +513,23 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: informasjonskapsler lagret</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: informasjonskapsler slettet</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ugyldige informasjonskapsler – vennligst sjekk og prøv igjen</string>
-  <string name="morphe_music_lyrics_tap_to_seek_title">Trykk på en linje for å søke</string>
-  <string name="morphe_music_lyrics_tap_to_seek_summary">Å trykke på en linje hopper til det tidspunktet i sangen</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Trykk og hold en linje</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Trykk på en linje for å hoppe til det tidspunktet i sangen, lang-trykk den for å kopiere ordet under fingeren din, eller hele linjen når trykket ikke er på et ord. Av tar begge gestene bort</string>
   <string name="morphe_music_lyrics_show_section_title">Vis seksjonstagger</string>
   <string name="morphe_music_lyrics_show_section_summary">Merk hver ny seksjon av sangteksten med en liten tag, for eksempel Vers eller Refreng</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Vis kopier-knapp</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Deezer: ugyldig ARL-informasjonskapsel. Kopier en fersk ARL-informasjonskapsel fra nettleseren.</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Trykk for å kopiere originale tekster som ren tekst; lang-trykk for å lagre råtekst-kildefilen til Nedlastinger</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Vis oversettelsesknapp</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Trykk for å slå oversettelsen av/på; trykk og hold for kun oversettelse. Bruker oversettelser fra leverandøren, Google Translate eller et OpenAI-kompatibelt API.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Trykk for å bytte oversettelse; lang-trykk for bare oversettelse. Bruker leverandørens oversettelser, Google Translate, eller en OpenAI-kompatibel API</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Vis romaniseringsknappen</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Trykk for å slå romaniseringen av/på; trykk og hold for kun romanisering. Bruker romanisering fra leverandøren, Google Translate eller et OpenAI-kompatibelt API.</string>
-  <string name="morphe_music_lyrics_local_romanization_title">Lokal romanisering</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">Romaniser på enheten når leverandøren, et OpenAI-kompatibelt endepunkt og Google Translate alle har mislykket. Bare CJK, omtrent 80 MB med lesninger må lastes ned.</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Trykk for å bytte romanisering; lang-trykk for bare romanisering. Bruker leverandørens romanisering, Google Translate, eller en OpenAI-kompatibel API</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Lokal romanisering og synkronisering</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Romansiser på enheten når leverandøren, modellen din og Google Translate feiler. Lesningen følger hvert ord i en tidsstemt tekst; ordsynkronisering må være på. Kinesisk, kantonesisk, japansk, koreansk, gresk, russisk, georgisk, armensk; omtrent 120 MB</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Lesning %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lesninger klare (%1$d CJK-ord)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_failed">Nedlasting mislyktes — slå dette av og på igjen for å prøve på nytt</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lesninger klare (%1$d oppføringer)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Nedlastingen mislyktes - skru dette av og på igjen for å prøve på nytt</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vis oppdater-knappen</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Trykk for å bytte til neste tekstkandidat; trykk og hold for å søke etter tekst ved hjelp av sangtittel og artist</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Trykk for å bytte til neste kandidat til tekst; lang-trykk for å søke etter tekst basert på sangtittel og artist</string>
   <string name="morphe_music_lyrics_search_dialog_title">Søk etter sangtekst</string>
   <string name="morphe_music_lyrics_search_title_hint">Sangtittel</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artistnavn</string>
@@ -546,7 +545,9 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_hide_unplayed_title">Skjul ikke-avspilte tekster</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Skjul tekstlinjer under gjeldende avspilling […] skjerm</string>
   <string name="morphe_music_lyrics_mediasession_title">Vis MediaSession-sangtekster på låseskjermen</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Viser gjeldende linje på låsskjerm, Android Auto og Bluetooth. Krever Android 11 eller nyere</string>
   <string name="morphe_music_lyrics_miniplayer_title">Vis minispillertekster</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">Viser gjeldende linje i miniavspilleren, med spor flyttet til underteksten</string>
   <string name="morphe_music_lyrics_display_artist_first_title">Visningsrekkefølge for Artist og Tittel</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">Bytt visningsrekkefølgen til Artist og Tittel i Minispilleren og MediaSession. PÅ «Artist – Tittel» og AV «Tittel – Artist». Påvirker ikke tekstsøk</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtre</string>
@@ -565,7 +566,7 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_sb_no_video">Dette sporet har ingen video-id å sende inn</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Kilde: %s</string>
-  <string name="morphe_music_lyrics_contribute_credit">Langt trykk på kopiknappen for å lagre denne LRC-filen; hvis du kan finjustere timingen og dele den med samfunnsleverandørene, vil vi sette pris på det.</string>
+  <string name="morphe_music_lyrics_contribute_credit">Trykk og hold lenge på knappen for å lagre denne LRC-filen; hvis du kan finjustere tidspunktene og dele dem med samfunnsleverandørene, vil vi være takknemlige</string>
   <string name="morphe_music_lyrics_translated_by_google">Oversatt av Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Romanisert av Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Oversatt av %s</string>
@@ -588,12 +589,12 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_refreshing">Oppdaterer</string>
   <string name="morphe_music_lyrics_refreshed">Oppdatert</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC-API-nøkkel</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkriberer eller tidsjusterer sangtekstene for den nåvarende spor. En egen tjeneste, upåvirket av det ovennevnte OpenAI-kompatible endepunktet.</string>
-  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-nøkkel lagret. Bruk justeringsknappen i dialogboksen for søkning etter sangtekster, eller paneloppfordringen når et spor ikke har noen sangtekster.</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkriberer eller tidsjusterer sangtekstene for sporet som spilles for øyeblikket. En egen tjeneste, uten sammenheng med det nevnte OpenAI-kompatible endepunktet ovenfor</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-nøkkel lagret. Bruk justeringsknappen i dialogen for sangerettsøk, eller panelmeldingen når et spor ingen sangtekster</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC-API-nøkkel lagret</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC godtok ikke den nøkkelen</string>
   <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC-API-nøkkel slettet</string>
-  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC angir tid for sangtekster som ingen har, eller transkriberer dem fra sporet, mot en kostnad for kreditter. Med en nøkkel innstilt, tilbyr spor uten sangtekster transkripsjon, og søkedialogen får en justeringsknapp.</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC tidsinnstiller sangtekster som mangler slike, eller transkriberer dem fra sporet, til en kostnad for kreditter. Med en nøkkel innstilt, tilbyr spor uten sangtekster transkripsjon, og søkedialogen får en justeringsknapp</string>
   <string name="morphe_music_lyrics_transcribe_align">Be om QuickLRC-justering</string>
   <string name="morphe_music_lyrics_transcribe_aligning">Justerer</string>
   <string name="morphe_music_lyrics_transcribe_apply_align">Bruk justering</string>
@@ -601,10 +602,12 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_transcribe_working">Transkriberer</string>
   <string name="morphe_music_lyrics_transcribe_cancelled">Transkripsjon kansellert</string>
   <string name="morphe_music_lyrics_transcribe_local_unsupported">Kun spor spilt fra YouTube kan transkriberes</string>
-  <string name="morphe_music_lyrics_transcribe_no_text">Ingen sangtekster å justere — transkriberer i stedet</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Ingen sangtekster å justere - transkriberer i stedet</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC kunne ikke behandle dette sporet</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-kredittene er oppbrukt for dette sporet</string>
-  <string name="morphe_music_lyrics_about_summary">"Sangtekster matches etter tittel og artist, uvanlig metadata kan finne ingenting eller feil versjon. Bruk oppdater for å bytte versjoner. Tilbydere merket * krever en token. Ikke alle aktiverte tilbydere blir alltid spurt i din rekkefølge, men svarer basert på hastigheten deres."</string>
+  <string name="morphe_music_lyrics_about_summary">"Tekster blir matchet basert på tittel og artist, uvanlig metadata kan gi ingen resultater eller feil versjon. Bruk oppdater for å bytte versjon. Leverandører markert * krever en token. Alle aktiverte leverandører spres ikke alltid i den rekkefølgen du har angitt, men svarer basert på deres hastighet.
+
+Tekstene kommer fra tredjepartstjenester som ikke er tilknyttet, sponset eller godkjent av Morphe. Hver brukes slik den er: tekstene, deres tilgjengelighet og lisensiering beholder eierskapet hos disse tjenestene og deres lisensgivere, og bruken kan være underlagt deres vilkår for bruk. Det som sendes til en aktivert tjeneste er bare søket du ba om - tittelen, artisten og, der tjenesten trenger det, video-ID-en. Den valgfrie AI-endepunktet og QuickLRC-transkripsjonen kjører kun etter at du har konfigurert dem, og mottar teksten til sangen eller video-URL-en."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Aktiver kun leverandørene du bruker, eller behold standardverdien – kontinuerlige forespørsler kan overveldet små samfunnsbaserte lyrics-nettsider</string>
   <string name="morphe_music_lyrics_hide_info_title">Skjul krediteringslinjen</string>
   <string name="morphe_music_lyrics_hide_info_summary">Skjul krediteringslinjen som vises under teksten</string>
@@ -618,15 +621,17 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_use_ai_section_title">AI-seksjon</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Brukes kun når leverandøren ikke sender med seksjonsmerker som Refreng eller Vers, som din OpenAI-kompatible modell deretter detekterer</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI-innstillinger</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurer OpenAI-kompatibelt API-endepunkt for AI-drevet sangtekstoversettelse, romanisering og inndeling.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurer OpenAI-kompatibelt API-endepunkt for AI-drevet oversettelse av sangtekster, romanisering og seksjonsinndeling</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-endepunkt-URL (f.eks. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-nøkkel (la stå tom for anonym tilgang)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modellnavn (f.eks. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Malskjema for ledetekst</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Plassholdere: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Ledetekst lagret</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Spørsmål lagret, men AI-endepunktet er ikke brukbart ennå. Konfigurer det først under AI-innstillinger.</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Oppfordring lagret, men AI-endepunktet er ikke brukbart ennå. Konfigurer det først under AI-innstillinger</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Ledetekst tilbakestilt</string>
+  <string name="morphe_music_lyrics_ai_extra_body_hint">Ekstra forespørselsbror (JSON, sammenslått inn i hver AI-forespørsel)</string>
+  <string name="morphe_music_lyrics_ai_extra_body_invalid">Ikke gyldig JSON. Rett det eller fjern feltet før lagring</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI-innstillinger lagret</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Kunne ikke koble til AI-endepunktet. Vennligst sjekk innstillingene dine</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI-innstillinger tilbakestilt</string>

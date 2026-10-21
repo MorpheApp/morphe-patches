@@ -275,6 +275,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_gift_button_title">Verberg cadeauknop</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knop</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Verberg de donateur balk van live chat</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Knop \'Naar beneden scrollen\' voor livechat verbergen</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Verberg live chat-tooltips</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Verbergt tooltippop-ups die verschijnen bij de chat-invoerbalk, zoals de melding voor alleen abonnees</string>
   <string name="morphe_hide_comments_menu_button_title">Menu-knop verbergen</string>
@@ -288,6 +289,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_timestamp_button_title">Tijdstempelknop verbergen</string>
   <string name="morphe_hide_comments_top_fans_button_title">Verberg de knop \'Top fans\'</string>
   <string name="morphe_hide_comments_translate_button_title">Verberg de vertaalknop</string>
+  <string name="morphe_hide_comments_zero_state_title">Verberg bericht \'Nog geen reacties\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Schoon gehighlighte search URL\'s op</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Schoont gehighlighte search URL\'s op, zodat alleen de originele tekst overblijft</string>
   <string name="morphe_hide_keyword_content_screen_title">Trefwoordfilter</string>
@@ -433,6 +435,12 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_feed_long_press_menu_summary">Korte of lange aanraking ergens op een feedvideo opent het menu</string>
   <string name="morphe_feed_watch_later_button_title">Button \"Later bekijken\" weergeven op miniatuurafbeeldingen</string>
   <string name="morphe_feed_watch_later_button_summary">Er wordt een knop \"Later bekijken\" weergegeven op de miniatuurafbeeldingen van feedvideo\'s. Tikken en vasthouden opent Opslaan in afspeellijst</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Weergavenaantal tonen op miniaturen</string>
+  <string name="morphe_feed_view_count_summary">Het weergavenaantal van feedvideo\'s wordt links onder op de miniatuurweergave getoond in plaats van onder de titel. Sommige video\'s, zoals in vakken, worden mogelijk niet met een weergavenaantal getoond</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Aantal likes van feed-miniatuur weergeven</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Procentage likes van feed-miniatuur weergeven</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Pop-up \'Inloggen op tv\' uitschakelen</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Schakel de pop-up \'Verbind je apparaten\' uit</string>
@@ -441,8 +449,6 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_disable_chapter_skip_double_tap_summary">Schakelt de dubbele tik met twee vingers uit die hoofdstukken overslaat, wat per ongeluk met één vinger kan worden geactiveerd</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Download video\'s, podcasts of liedjes met apps van derden</string>
-  <string name="morphe_external_downloader_title">Externe downloadknop weergeven</string>
-  <string name="morphe_external_downloader_summary">Toont een overlay-knop in de videospeler die je externe downloader opent</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Downloadknop &amp; menu overschrijven</string>
   <string name="morphe_external_downloader_action_button_summary">Gebruikt je gekozen externe downloader in plaats van de standaard downloadfunctie</string>
@@ -1155,6 +1161,11 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">De terugknop verlaat de feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">De terugknop sluit altijd de app af in plaats van naar de bovenkant van de feed te scrollen</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Forceer animaties</string>
+  <string name="morphe_force_animations_entry_default">Standaard</string>
+  <string name="morphe_force_animations_entry_always_on">Altijd aan</string>
+  <string name="morphe_force_animations_entry_always_off">Altijd uit</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Statusbalk verbergen</string>
   <string name="morphe_hide_status_bar_summary">Verbergt de systeemstatusbalk. Veeg omlaag vanaf de bovenrand om hem even weer te tonen</string>
@@ -1390,12 +1401,11 @@ Beperking: keert terug naar de oude stijl van de overlay 'Meer video's'."</strin
   <string name="morphe_series_tracker_screen_summary">Volg afspeellijsten als serie en houd je plek bij</string>
   <string name="morphe_series_tracker_title">Schakel serievolging in</string>
   <string name="morphe_series_tracker_summary">Voegt een Pagina Serie toe aan Geschiedenis en een Volgt-serieoptie toe aan playlists</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Series in navigatiebalk tonen</string>
   <string name="morphe_series_tracker_show_button_title">Volg-series-tracker-knop weergeven</string>
   <string name="morphe_series_tracker_show_button_summary">Voegt een spelerknop toe om de serie van de huidige video te volgen of openen</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Vordering van gevolgde series bijhouden</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Afspeelvordering op deze telefoon registreren voor opgeslagen series en bladwijzers</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Geschiedenis in navigatiebalk weergeven</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Home, Abonnementen, Meldingen, Geschiedenis en Jij</string>
   <string name="morphe_series_tracker_ui_cancel">Annuleren</string>
   <string name="morphe_series_tracker_ui_save">Opslaan</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Bladwijzer opslaan</string>
@@ -1425,9 +1435,6 @@ Beperking: keert terug naar de oude stijl van de overlay 'Meer video's'."</strin
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Open Geschiedenis bij Jou om je series te bekijken</string>
   <string name="morphe_series_tracker_ui_watch_history">Kijkgeschiedenis</string>
   <string name="morphe_series_tracker_ui_series">Series</string>
-  <string name="morphe_series_tracker_ui_history">Geschiedenis</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Abonnementen</string>
-  <string name="morphe_series_tracker_ui_notifications">Meldingen</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Opgeslagen series laden…</string>
   <string name="morphe_series_tracker_empty_library">Volg een afspeellijst om de afleveringen bij te houden</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Afspeellijstbladwijzer</string>

@@ -130,6 +130,11 @@ public class CommentsFilter extends Filter {
                 CHIP_BAR_PATH_PREFIX
         );
 
+        var commentsZeroState = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_ZERO_STATE,
+                "comment_zero_state"
+        );
+
         var communityGuidelines = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_COMMUNITY_GUIDELINES,
                 "community_guidelines",
@@ -203,6 +208,7 @@ public class CommentsFilter extends Filter {
                 commentsByMembers,
                 commentsContexts,
                 commentsFilterBar,
+                commentsZeroState,
                 communityGuidelines,
                 createAShortButton,
                 dislikeButton,
@@ -405,6 +411,22 @@ public class CommentsFilter extends Filter {
      */
     public static void hideLiveChatThanksButton(View view) {
         if (Settings.HIDE_COMMENTS_THANKS_BUTTON.get() && view != null) {
+            ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.width = 0;
+                lp.height = 0;
+                view.setLayoutParams(lp);
+            }
+
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatScrollToBottomButton(View view) {
+        if (Settings.HIDE_COMMENTS_LIVE_CHAT_SCROLL_TO_BOTTOM_BUTTON.get() && view != null) {
             ViewGroup.LayoutParams lp = view.getLayoutParams();
             if (lp != null) {
                 lp.width = 0;

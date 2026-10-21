@@ -15,6 +15,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -180,9 +181,6 @@ internal val loadVideoHookPatch = bytecodePatch(
 
         BackButtonFinishActivityOnNewVideoIntentFingerprint(
             AppWatchDescriptorToStringFingerprint.originalClassDef.type
-        ).method.addInstruction(
-            0,
-            "return-void"
-        )
+        ).method.returnEarly()
     }
 }

@@ -18,6 +18,9 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val NEXT_GEN_WATCH_LAYOUT_CLASS =
+    "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;"
+
 /**
  * 19.46+
  */
@@ -66,7 +69,7 @@ internal object PlayerDragGestureInitFingerprint : Fingerprint(
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            type = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;"
+            type = NEXT_GEN_WATCH_LAYOUT_CLASS
         )
     )
 )

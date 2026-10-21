@@ -275,6 +275,7 @@ Pakeitimai apima:
   <string name="morphe_hide_comments_gift_button_title">Slėpti dovanų mygtuką</string>
   <string name="morphe_hide_comments_info_button_title">Slėpti informacijos mygtuką</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Slėpti tiesioginio pokalbio rėmėjų juostą</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Slėpti tiesioginio pokalio slinkimo į apačią mygtuką</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Slėpti tiesioginio pokalbio užuominas</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Paslepia užuominų iššokančiuosius langus, rodomus šalia pokalbio įvesties juostos, pvz., pranešimą apie pokalbį tik prenumeratoriams</string>
   <string name="morphe_hide_comments_menu_button_title">Slėpti meniu mygtuką</string>
@@ -288,6 +289,7 @@ Pakeitimai apima:
   <string name="morphe_hide_comments_timestamp_button_title">Slėpti laiko žymos mygtuką</string>
   <string name="morphe_hide_comments_top_fans_button_title">Slėpti mygtuką „Aktyviausi gerbėjai“</string>
   <string name="morphe_hide_comments_translate_button_title">Slėpti vertimo mygtuką</string>
+  <string name="morphe_hide_comments_zero_state_title">Slėpti pranešimą „Šiuo metu nėra komentarų\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Valyti paryškintas paieškos nuorodas</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Išvalo paryškintas paieškos nuorodas ir palieka tik pradinį paprastąjį tekstą</string>
   <string name="morphe_hide_keyword_content_screen_title">Raktinių žodžių filtras</string>
@@ -433,6 +435,12 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_feed_long_press_menu_summary">Paspaudus ir palaikius bet kuria feed video vieta, atidaromas jo meniu</string>
   <string name="morphe_feed_watch_later_button_title">Rodyti „Pažiūrėti vėliau“ mygtuką prie miniatiūrų</string>
   <string name="morphe_feed_watch_later_button_summary">Ant nuotykų srauto vaizdo įrašų miniatiūrų rodomas mygtukas „Pažiūrėti vėliau“. Paspaudus ir laikant jį, atidaroma parinktis „Įtraukti į grojaraštį“</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Rodyti peržiūrų skaičių miniatiūrose</string>
+  <string name="morphe_feed_view_count_summary">Rodyti peržiūrų skaičių vaizdo įrašų srauto vaizdo įrašuose rodomas miniatiūros kairiajame apatiniame kampe, o ne po pavadinimu. Kai kuriuose vaizdo įrašuose, pavyzdžiui, lentynose, peržiūrų skaičius gali būti nerodomas</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Rodyti kanalų turinio miniatiūrų like skaičių</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Rodyti kanalų turinio miniatiūrų like santykį procentais</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Išjungti iššokantįjį langą „Prisijungti prie TV“</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Išjungti iššokantįjį langą „Prijunkite savo įrenginius“</string>
@@ -441,8 +449,6 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_disable_chapter_skip_double_tap_summary">Išjungia dviejų pirštų dvigubo bakstelėjimo gestą, kuris praleidžia skyrius ir gali būti netyčia suaktyvintas vienu pirštu</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Atsisiųskite vaizdo įrašus, tinklalaides ar dainas trečiųjų šalių atsisiuntimo programėlėmis</string>
-  <string name="morphe_external_downloader_title">Rodyti išorinį atsisiuntimo mygtuką</string>
-  <string name="morphe_external_downloader_summary">Rodo perdangos mygtuką vaizdo grotuve, kuris atidaro jūsų išorinį atsisiuntimo įrankį</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Perrašyti „Atsisiųsti“ mygtuką &amp; meniu</string>
   <string name="morphe_external_downloader_action_button_summary">Naudoja jūsų pasirinktą išorinę atsisiuntimo programėlę vietoj standartinės atsisiuntimo funkcijos</string>
@@ -1157,6 +1163,11 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Grįžimo mygtukas išeina iš sklaidos kanalo</string>
   <string name="morphe_back_button_always_exits_feed_summary">Paspaudus grįžimo mygtuką programa visada uždaroma, o ne slenkama į sklaidos kanalo viršų</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Priverstinė animacija</string>
+  <string name="morphe_force_animations_entry_default">Numatytasis</string>
+  <string name="morphe_force_animations_entry_always_on">Visada</string>
+  <string name="morphe_force_animations_entry_always_off">Niekada</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Slėpti būsenos juostą</string>
   <string name="morphe_hide_status_bar_summary">Paslepia sistemos būsenos juostą. Braukite žemyn nuo viršutinio krašto, kad ją trumpam parodytumėte</string>
@@ -1392,12 +1403,11 @@ Ribojimas: grąžina prie senosios stiliaus „Daugiau vaizdo įrašų“ perdan
   <string name="morphe_series_tracker_screen_summary">Sekite grojaraščius kaip serijas ir išsaugokite savo vietą</string>
   <string name="morphe_series_tracker_title">Įgalinti serijų stebėjimą</string>
   <string name="morphe_series_tracker_summary">Pridedamas serijų puslapis istorijoje ir „Stebėti serijas“ parinktis grojaraščiams</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Rodyti serijas naršymo juostoje</string>
   <string name="morphe_series_tracker_show_button_title">Rodyti serijų sekikio mygtuką</string>
   <string name="morphe_series_tracker_show_button_summary">Prideda valdiklio mygtuką, kad būtų galima sekti arba atidaryti dabartinio vaizdo įrašo seriją</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Fiksuoti stebimų serijų eigą</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Fiksuoti grojimą šiame telefone išsaugotoms serijoms ir žymoms</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Istorija naršymo juostoje</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">„Pradžia“, „Prenumeratos“, „Pranešimai“, „Istorija“ ir „Jūs“</string>
   <string name="morphe_series_tracker_ui_cancel">Atšaukti</string>
   <string name="morphe_series_tracker_ui_save">Išsaugoti</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Įtraukti žymę</string>
@@ -1427,9 +1437,6 @@ Ribojimas: grąžina prie senosios stiliaus „Daugiau vaizdo įrašų“ perdan
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Atidarykite „Istoriją“ skiltyje „Jūs“, kad peržiūrėtumėte savo serijas</string>
   <string name="morphe_series_tracker_ui_watch_history">Peržiūros istorija</string>
   <string name="morphe_series_tracker_ui_series">Serijos</string>
-  <string name="morphe_series_tracker_ui_history">Istorija</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Prenumeratos</string>
-  <string name="morphe_series_tracker_ui_notifications">Pranešimai</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Kraunamos išsaugotos serijos…</string>
   <string name="morphe_series_tracker_empty_library">Sekite sąrašą, kad stebėtumėte jo epizodus</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Grojaraščio žymė</string>

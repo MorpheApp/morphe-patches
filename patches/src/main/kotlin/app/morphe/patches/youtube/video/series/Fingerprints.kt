@@ -84,16 +84,6 @@ internal object HistoryNavigationBuilderFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
 )
 
-internal object NavigationTabCreatedFingerprint : Fingerprint(
-    definingClass = "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;",
-    name = "navigationTabCreated",
-    parameters = listOf(
-        "Lapp/morphe/extension/youtube/shared/NavigationBar\$NavigationButton;",
-        "Landroid/view/View;"
-    ),
-    returnType = "V",
-)
-
 internal class BrowseRouteFingerprint(endpointType: String) : Fingerprint(
     classFingerprint = BrowseFragmentFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),

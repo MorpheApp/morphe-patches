@@ -101,7 +101,7 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
 
         // Pass the fullscreen interface object to extension code.
         Fingerprint(
-            definingClass = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;",
+            definingClass = NEXT_GEN_WATCH_LAYOUT_CLASS,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
             filters = listOf(
                 checkCast(fullScreenDefiningClass)

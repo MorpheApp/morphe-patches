@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">기프트 버튼 숨기기</string>
   <string name="morphe_hide_comments_info_button_title">정보 버튼 숨기기</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">실시간 채팅 후원자 섹션 숨기기</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">라이브 채팅 맨 아래로 스크롤 버튼 숨기기</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">실시간 채팅 도구 설명 숨기기</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">구독자 전용 채팅 안내와 같이 채팅 입력창 주변에 표시되는 도구 설명 팝업을 숨깁니다</string>
   <string name="morphe_hide_comments_menu_button_title">메뉴 버튼 숨기기</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">타임스탬프 버튼 숨기기</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'탑 팬\' 버튼 숨기기</string>
   <string name="morphe_hide_comments_translate_button_title">번역 버튼 숨기기</string>
+  <string name="morphe_hide_comments_zero_state_title">\'아직 댓글이 없습니다\' 메시지 숨기기</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">강조 표시된 검색 링크 정리하기</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">강조 표시된 검색 링크를 정리하고, 원본 일반 텍스트만 남깁니다</string>
   <string name="morphe_hide_keyword_content_screen_title">키워드 필터</string>
@@ -433,6 +435,12 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">피드 동영상의 아무 곳이나 길게 누르면 해당 동영상의 메뉴가 열립니다</string>
   <string name="morphe_feed_watch_later_button_title">썸네일에 \'나중에 볼 목록\' 버튼 표시</string>
   <string name="morphe_feed_watch_later_button_summary">피드 동영상의 썸네일에 \'나중에 볼 목록\' 버튼이 표시됩니다. 버튼을 길게 누르면 플레이리스트에 저장됩니다</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">썸네일에 조회수 표시</string>
+  <string name="morphe_feed_view_count_summary">피드 동영상의 조회수는 제목 아래가 아니라 썸네일 왼쪽 하단에 표시됩니다. Shelf 등 일부 동영상에서는 조회수가 표시되지 않을 수 있습니다</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">피드 썸네일 좋아요 수 표시하기</string>
+  <string name="morphe_ryd_feed_like_ratio_title">피드 썸네일 좋아요 비율 표시하기</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'기기 연결\' 팝업 비활성화하기</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">두 손가락으로 두 번 탭하여 챕터를 건너뛰는 제스처를 비활성화하여, 한 손가락으로 실수로 작동되는 것을 방지할 수 있습니다</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱을 사용하여 동영상, 팟캐스트 또는 노래를 다운로드할 수 있습니다</string>
-  <string name="morphe_external_downloader_title">외부 다운로드 버튼 표시하기</string>
-  <string name="morphe_external_downloader_summary">외부 다운로드 앱을 실행할 수 있는 오버레이 버튼을 동영상 플레이어에 표시합니다</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">오프라인 저장 버튼 및 메뉴 재정의하기</string>
   <string name="morphe_external_downloader_action_button_summary">기본 오프라인 저장 기능 대신 사용자가 선택한 외부 다운로더를 사용합니다</string>
@@ -1159,6 +1165,11 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">뒤로가기 버튼으로 피드 나가기</string>
   <string name="morphe_back_button_always_exits_feed_summary">뒤로가기 버튼을 탭하면 피드 상단으로 이동하지 않고 항상 앱이 종료됩니다</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">애니메이션 강제 적용</string>
+  <string name="morphe_force_animations_entry_default">기본값</string>
+  <string name="morphe_force_animations_entry_always_on">항상 사용</string>
+  <string name="morphe_force_animations_entry_always_off">항상 꺼짐</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">상태바 숨기기</string>
   <string name="morphe_hide_status_bar_summary">시스템 상태바를 숨깁니다. 상단 가장자리에서 아래로 스와이프하면 잠시 표시됩니다</string>
@@ -1394,12 +1405,11 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_screen_summary">재생목록을 시리즈처럼 이어서 시청하고, 보던 부분부터 계속 감상할 수 있습니다</string>
   <string name="morphe_series_tracker_title">시리즈 추적기 활성화하기</string>
   <string name="morphe_series_tracker_summary">기록에 ‘시리즈’ 페이지가 추가되고, 재생목록에 ‘시리즈 팔로우’ 옵션이 추가됩니다</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">하단바 메뉴에 시리즈 표시하기</string>
   <string name="morphe_series_tracker_show_button_title">시리즈 추적기 버튼 표시하기</string>
   <string name="morphe_series_tracker_show_button_summary">현재 동영상의 시리즈를 팔로우하거나 열 수 있는 플레이어 버튼을 추가합니다</string>
   <string name="morphe_series_tracker_record_followed_progress_title">팔로우한 시리즈 시청 진행 상황 기록하기</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">저장된 시리즈와 북마크의 재생 기록을 이 기기에 저장합니다</string>
-  <string name="morphe_series_tracker_show_history_tab_title">하단바 메뉴에 기록 표시하기</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">홈, 구독, 알림, 기록 및 내 페이지</string>
   <string name="morphe_series_tracker_ui_cancel">취소</string>
   <string name="morphe_series_tracker_ui_save">저장</string>
   <string name="morphe_series_tracker_ui_save_bookmark">북마크 저장</string>
@@ -1429,9 +1439,6 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">\'내 페이지’에서 ‘기록’을 열어 시리즈를 확인하세요</string>
   <string name="morphe_series_tracker_ui_watch_history">시청 기록</string>
   <string name="morphe_series_tracker_ui_series">시리즈</string>
-  <string name="morphe_series_tracker_ui_history">기록</string>
-  <string name="morphe_series_tracker_ui_subscriptions">구독</string>
-  <string name="morphe_series_tracker_ui_notifications">알림</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">저장된 시리즈 불러오는 중…</string>
   <string name="morphe_series_tracker_empty_library">재생목록을 팔로우하여 에피소드별 시청 진행 상황을 추적하세요</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">재생목록 북마크</string>

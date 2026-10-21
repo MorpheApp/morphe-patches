@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">Απόκρυψη κουμπιού δώρου</string>
   <string name="morphe_hide_comments_info_button_title">Κουμπί Απόκρυψης Πληροφοριών</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Απόκρυψη γραμμής δωρητών ζωντανής συνομιλίας</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Απόκρυψη κουμπιού κύλισης στη βάση ζωντανού chat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Απόκρυψη πληροφοριών ζωντανής συνομιλίας</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Απόκρυψη αναδυόμενων πληροφοριών που εμφανίζονται κοντά στη γραμμή εισαγωγής συνομιλίας, όπως η ειδοποίηση για συνομιλία μόνο για εγγραφέντες</string>
   <string name="morphe_hide_comments_menu_button_title">Απόκρυψη κουμπιού μενού</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">Απόκρυψη κουμπιού ώρας</string>
   <string name="morphe_hide_comments_top_fans_button_title">Απόκρυψη κουμπιού \'Κορυφαίοι θαυμαστές\'</string>
   <string name="morphe_hide_comments_translate_button_title">Απόκρυψη κουμπιού Μετάφρασης</string>
+  <string name="morphe_hide_comments_zero_state_title">Απόκρυψη μηνύματος «Δεν υπάρχουν σχόλια ακόμη»</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Απολυμαίνετε τις διασυνδεδεμένες αναζητήσεις</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Απολυμαίνει τις διασυνδεδεμένες αναζητήσεις, αφήνοντας μόνο το αρχικό απλό κείμενο</string>
   <string name="morphe_hide_keyword_content_screen_title">Φίλτρο λέξεων-κλειδιών</string>
@@ -433,6 +435,12 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Το πάτημα και το κράτημα πατημένο οπουδήποτε σε ένα βίντεο feed ανοίγει το μενού του</string>
   <string name="morphe_feed_watch_later_button_title">Εμφάνιση κουμπιού προβολής αργότερα στα μικρογραφίες</string>
   <string name="morphe_feed_watch_later_button_summary">Ένα κουμπί προβολής αργότερα εμφανίζεται στις μικρογραφίες των βίντεο feed. Το πάτημα και το κράτημα πατημένο το ανοίγει την αποθήκευση στη λίστα αναπαραγωγής</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Εμφάνιση αριθμού προβολών στις μικρογραφίες</string>
+  <string name="morphe_feed_view_count_summary">Ο αριθμός προβολών των βίντεο της σύντομης γραμμής εμφανίζεται στα αριστερά κάτω μέρος της μικρογραφίας αντί για κάτω από τον τίτλο. Κάποια βίντεο, όπως σε ράφια, ενδέχεται να μην εμφανίζουν αριθμό προβολών</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Εμφάνιση μετρητή likes για το thumbnail της feed</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Εμφάνιση ποσοστού likes για το thumbnail της feed</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου σύνδεσης στην τηλεόραση</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Απενεργοποίηση αναδυτικού παραθύρου \'Συνδέστε τις συσκευές σας\'</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Απενεργοποιεί τη χειρονομία διπλού αγγίγματος με δύο δάχτυλα που παραλείπει κεφάλαια, η οποία μπορεί να ενεργοποιηθεί κατά λάθος με ένα δάχτυλο</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Κάντε λήψη βίντεο, podcast ή τραγούδια με εφαρμογές λήψης τρίτων</string>
-  <string name="morphe_external_downloader_title">Εμφάνιση κουμπιού εξωτερικής λήψης</string>
-  <string name="morphe_external_downloader_summary">Εμφανίζει ένα κουμπί επικάλυψης στον πρόγραμμα αναπαραγωγής βίντεο που ανοίγει την εφαρμογή λήψης τρίτων</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Αντικατάσταση κουμπιού &amp; μενού «Λήψη»</string>
   <string name="morphe_external_downloader_action_button_summary">Χρησιμοποιεί τον επιλεγμένο εξωτερικό λήπτη αντί για τη βασική λειτουργία λήψης</string>
@@ -1142,6 +1148,11 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Το κουμπί πίσω βγαίνει από τη ροή</string>
   <string name="morphe_back_button_always_exits_feed_summary">Πατώντας πίσω βγαίνετε πάντα από την εφαρμογή αντί να μεταφέρεστε στην κορυφή της ροής.</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Ανάγκη κινούμενων σχεδίων</string>
+  <string name="morphe_force_animations_entry_default">Προεπιλεγμένη</string>
+  <string name="morphe_force_animations_entry_always_on">Πάντα ενεργό</string>
+  <string name="morphe_force_animations_entry_always_off">Πάντα ανενεργό</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Απόκρυψη γραμμής κατάστασης</string>
   <string name="morphe_hide_status_bar_summary">Αποκρύπτει τη γραμμή κατάστασης του συστήματος. Σύρετε προς τα κάτω από το πάνω άκρο για να εμφανιστεί για μια στιγμή</string>
@@ -1377,12 +1388,11 @@ AVC (H.264)
   <string name="morphe_series_tracker_screen_summary">Ακολουθήστε λίστες αναπαραγωγής ως σειρές και διατηρήστε τη θέση σας</string>
   <string name="morphe_series_tracker_title">Ενεργοποίηση παρακολούθησης σειρών</string>
   <string name="morphe_series_tracker_summary">Προσθέτει σελίδα Σειρά στην Ιστορία και επιλογή Παρακολούθηση σειράς στις λίστες αναπαραγωγής</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Εμφάνιση σειράς στη γραμμή πλοήγησης</string>
   <string name="morphe_series_tracker_show_button_title">Εμφάνιση κουμπιού Ιχνηλάτη Σειρών</string>
   <string name="morphe_series_tracker_show_button_summary">Προσθήκη κουμπιού αναπαραγωγής για παρακολούθηση ή άνοιγμα της σειράς του τρέχοντος βίντεο</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Καταγραφή προόδου ακολουθούμενων σειρών</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Καταγραφή αναπαραγωγής σε αυτή την τηλεόραση για αποθηκευμένες σειρές και σελιδοδείκτες</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Εμφάνιση ιστορικού στη γραμμή πλοήγησης</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Αρχική, Εγγραφές, Ειδοποιήσεις, Ιστορικό και Εσύ</string>
   <string name="morphe_series_tracker_ui_cancel">Ακύρωση</string>
   <string name="morphe_series_tracker_ui_save">Αποθήκευση</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Αποθήκευση σελιδοδείκτη</string>
@@ -1412,9 +1422,6 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Άνοιγμα Ιστορικού από Εσύ για προβολή των σειρών σας</string>
   <string name="morphe_series_tracker_ui_watch_history">Ιστορικό παρακολούθησης</string>
   <string name="morphe_series_tracker_ui_series">Σειρές</string>
-  <string name="morphe_series_tracker_ui_history">Ιστορικό</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Συνδρομές</string>
-  <string name="morphe_series_tracker_ui_notifications">Ειδοποιήσεις</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Φόρτωση αποθηκευμένων σειρών…</string>
   <string name="morphe_series_tracker_empty_library">Ακολουθήστε μια λίστα αναπαραγωγής για να παρακολουθείτε τα επεισόδιά της</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Σελιδοδείκτης λίστας αναπαραγωγής</string>

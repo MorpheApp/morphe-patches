@@ -19,6 +19,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.lyrics.TextTrim;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
@@ -222,10 +223,7 @@ public final class LRCParser {
                     if (pendingStart == LyricsLine.NO_TIME) {
                         prefix = pending.toString();
                     } else {
-                        String word = pending.toString();
-                        if (!word.trim().isEmpty()) {
-                            words.add(new Word(pendingStart, LyricsLine.NO_TIME, word));
-                        }
+                        addWord(words, pendingStart, pending.toString());
                     }
                     pendingStart = time;
                     hasToken = true;
@@ -247,10 +245,7 @@ public final class LRCParser {
             return new BodyParse(body, List.of());
         }
 
-        String word = pending.toString();
-        if (!word.trim().isEmpty()) {
-            words.add(new Word(pendingStart, LyricsLine.NO_TIME, word));
-        }
+        addWord(words, pendingStart, pending.toString());
 
         if (!prefix.trim().isEmpty()) {
             words.add(0, new Word(lineStartMs, LyricsLine.NO_TIME, prefix.trim()));
@@ -262,6 +257,35 @@ public final class LRCParser {
 
         inferMissingWordEnds(words, 800);
         return new BodyParse(full.toString().trim(), words);
+    }
+
+    /**
+     * A word that is nothing but a space is the flag on the word before it rather than a word of
+     * its own, which is how a source that writes one word per character spells the boundary
+     * between two of them. Dropped, it would be gone from the next write.
+     */
+    private static void addWord(List<Word> words, long startMs, String written) {
+        final String body = written.trim();
+        if (body.isEmpty()) {
+            markSpaceAfter(words);
+            return;
+        }
+        if (Character.isWhitespace(written.charAt(0))) {
+            markSpaceAfter(words);
+        }
+        words.add(new Word(startMs, LyricsLine.NO_TIME, body, null,
+                Character.isWhitespace(written.charAt(written.length() - 1))));
+    }
+
+    private static void markSpaceAfter(List<Word> words) {
+        if (words.isEmpty()) {
+            return;
+        }
+        final Word previous = words.get(words.size() - 1);
+        if (!previous.endsWithSpace()) {
+            words.set(words.size() - 1, new Word(previous.startMs(), previous.endMs(),
+                    previous.text(), previous.romaji(), true));
+        }
     }
 
     @Nullable
@@ -287,7 +311,8 @@ public final class LRCParser {
         if (!first.text().startsWith(agentMarker)) {
             return words;
         }
-        String remainder = first.text().substring(agentMarker.length()).stripLeading();
+        String remainder = TextTrim.stripLeading(
+                first.text().substring(agentMarker.length()));
         List<Word> stripped = new ArrayList<>(words);
         if (remainder.isEmpty()) {
             stripped.remove(0);
@@ -318,12 +343,15 @@ public final class LRCParser {
             builder.append(agentMarker);
         }
         if (line.hasWords()) {
-            for (Word word : line.words()) {
+            final List<Word> words = line.words();
+            final String marks = spacesAfter(line.text(), words);
+            for (int i = 0; i < words.size(); i++) {
+                final Word word = words.get(i);
                 builder.append('<')
                         .append(formatWordTimestamp(word.startMs()))
                         .append('>')
                         .append(word.text());
-                if (word.endsWithSpace()) {
+                if (marks.charAt(i) == SEPARATED) {
                     builder.append(' ');
                 }
             }
@@ -331,6 +359,54 @@ public final class LRCParser {
             builder.append(line.text());
         }
         return builder.toString();
+    }
+
+    /** {@code '1'} where the line text puts a space after that word, {@code '0'} where it does not. */
+    private static final char SEPARATED = '1';
+
+    /**
+     * A cached line is written as its words and the text is rebuilt from them when it is read
+     * back, so a space only the text carries would not survive the round trip. The text decides
+     * where it can be placed; a word it does not hold keeps the flag it came in with.
+     */
+    private static String spacesAfter(String text, List<Word> words) {
+        final StringBuilder marks = new StringBuilder(words.size());
+        int at = 0;
+        for (int i = 0; i < words.size(); i++) {
+            final Word word = words.get(i);
+            final String body = word.text();
+            if (body.isEmpty()) {
+                marks.append(word.endsWithSpace() ? SEPARATED : '0');
+                continue;
+            }
+            final int found = text.indexOf(body, at);
+            if (found < 0) {
+                marks.append(word.endsWithSpace() ? SEPARATED : '0');
+                continue;
+            }
+            final int after = found + body.length();
+            marks.append(after < text.length() && text.charAt(after) == ' '
+                    && !carriesOwnSpace(words, i) ? SEPARATED : '0');
+            at = after;
+        }
+        return marks.toString();
+    }
+
+    /**
+     * A source that writes every character as a word of its own gives the space a word too, and
+     * one whose chunks arrive with their trailing space attached holds it the same way, so
+     * writing the space again would double it.
+     */
+    private static boolean carriesOwnSpace(List<Word> words, int index) {
+        final String body = words.get(index).text();
+        if (Character.isWhitespace(body.charAt(body.length() - 1))) {
+            return true;
+        }
+        if (index + 1 >= words.size()) {
+            return false;
+        }
+        final String next = words.get(index + 1).text();
+        return !next.isEmpty() && Character.isWhitespace(next.charAt(0));
     }
 
     /**
@@ -515,7 +591,10 @@ public final class LRCParser {
         for (int i = 0; i < words.size() - 1; i++) {
             Word word = words.get(i);
             if (word.endMs() == LyricsLine.NO_TIME) {
-                words.set(i, new Word(word.startMs(), words.get(i + 1).startMs(), word.text()));
+                // Only the end time is filled in, so the reading and the trailing space stay as
+                // they were: losing either costs a word boundary at the next write.
+                words.set(i, new Word(word.startMs(), words.get(i + 1).startMs(),
+                        word.text(), word.romaji(), word.endsWithSpace()));
             }
         }
         if (!words.isEmpty()) {
@@ -523,7 +602,8 @@ public final class LRCParser {
             Word lastWord = words.get(last);
             if (lastWord.endMs() == LyricsLine.NO_TIME) {
                 words.set(last, new Word(lastWord.startMs(),
-                        lastWord.startMs() + lastFallbackMs, lastWord.text()));
+                        lastWord.startMs() + lastFallbackMs,
+                        lastWord.text(), lastWord.romaji(), lastWord.endsWithSpace()));
             }
         }
     }

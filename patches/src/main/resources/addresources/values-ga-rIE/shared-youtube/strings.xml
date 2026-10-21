@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Ábhar Tusa (Treách)</string>
   <string name="morphe_theme_color_custom_entry">Saincheaptha</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Íoslódálacha seachtracha</string>
+  <string name="morphe_external_downloader_screen_title">Íoslódálacha</string>
+  <string name="morphe_download_mode_title">Mód íosluchtaithe</string>
+  <string name="morphe_download_mode_entry_default">Réamhshocrú</string>
+  <string name="morphe_download_mode_entry_in_app">Íosluchtú istigh sa aip</string>
+  <string name="morphe_download_mode_entry_external">Íosluchtaí seachtracha</string>
   <string name="morphe_external_downloader_name_title">Ainm pacáiste íoslódáil</string>
   <string name="morphe_external_downloader_name_summary">Ainm pacáiste d\'aip íoslódálaí seachtrach suiteáilte</string>
   <string name="morphe_external_downloader_other_item_hint">Cuir isteach ainm an phacáiste</string>

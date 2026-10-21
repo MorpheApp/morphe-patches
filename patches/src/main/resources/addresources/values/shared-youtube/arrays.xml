@@ -1,5 +1,17 @@
 <!-- Shared with YouTube and YT Music -->
 <resources>
+    <!-- interaction.downloads.downloadsPatch -->
+    <string-array name="morphe_download_mode_entries">
+        <item>@string/morphe_download_mode_entry_default</item>
+        <item>@string/morphe_download_mode_entry_in_app</item>
+        <item>@string/morphe_download_mode_entry_external</item>
+    </string-array>
+    <string-array name="morphe_download_mode_entry_values">
+        <item>DEFAULT</item>
+        <item>IN_APP</item>
+        <item>EXTERNAL</item>
+    </string-array>
+
     <!-- Since the 30fps looks bad, and the 2/5 second styles are not useful
          (YouTube closes the animation as soon as the feed is loaded),
          only the 60fps 1 second styles are exposed in the settings.

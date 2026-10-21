@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (tretinė)</string>
   <string name="morphe_theme_color_custom_entry">Savo</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Išoriniai atsisiuntimai</string>
+  <string name="morphe_external_downloader_screen_title">Atsisiuntimai</string>
+  <string name="morphe_download_mode_title">Atsisiuntimo režimas</string>
+  <string name="morphe_download_mode_entry_default">Numatytasis</string>
+  <string name="morphe_download_mode_entry_in_app">Atsisiųsti programėlėje</string>
+  <string name="morphe_download_mode_entry_external">Išorinė atsisiuntimo programinė įranga</string>
   <string name="morphe_external_downloader_name_title">Atsisiuntimo programos paketo pavadinimas</string>
   <string name="morphe_external_downloader_name_summary">Jūsų įdiegtos išorinės atsisiuntimo programos paketo pavadinimas</string>
   <string name="morphe_external_downloader_other_item_hint">Įveskite paketo pavadinimą</string>

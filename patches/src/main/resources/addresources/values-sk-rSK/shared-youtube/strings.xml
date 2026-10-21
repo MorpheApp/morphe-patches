@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Ternárne)</string>
   <string name="morphe_theme_color_custom_entry">Vlastná</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Externé sťahovanie</string>
+  <string name="morphe_external_downloader_screen_title">Sťahovania</string>
+  <string name="morphe_download_mode_title">Režim sťahovania</string>
+  <string name="morphe_download_mode_entry_default">Predvolený</string>
+  <string name="morphe_download_mode_entry_in_app">Sťahovanie v aplikácii</string>
+  <string name="morphe_download_mode_entry_external">Externý sťahovač</string>
   <string name="morphe_external_downloader_name_title">Názov balíka programu na stiahovanie</string>
   <string name="morphe_external_downloader_name_summary">Názov balíka nainštalovanej aplikácie na externé stiahnutie</string>
   <string name="morphe_external_downloader_other_item_hint">Zadajte názov balíka</string>

@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You（第三色）</string>
   <string name="morphe_theme_color_custom_entry">カスタム</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">外部ダウンロード</string>
+  <string name="morphe_external_downloader_screen_title">ダウンロード一覧</string>
+  <string name="morphe_download_mode_title">ダウンロードモード</string>
+  <string name="morphe_download_mode_entry_default">デフォルト</string>
+  <string name="morphe_download_mode_entry_in_app">アプリ内ダウンロード</string>
+  <string name="morphe_download_mode_entry_external">外部ダウンローダー</string>
   <string name="morphe_external_downloader_name_title">外部ダウンローダーのパッケージ名</string>
   <string name="morphe_external_downloader_name_summary">インストール済みの外部ダウンロード アプリのパッケージ名</string>
   <string name="morphe_external_downloader_other_item_hint">パッケージ名を入力してください</string>
@@ -84,6 +88,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からの通知</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これは、DNS 広告ブロッカーまたはネットワーク プロキシが原因である可能性があります。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">今後表示しない</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">動画ストリームを偽装</string>

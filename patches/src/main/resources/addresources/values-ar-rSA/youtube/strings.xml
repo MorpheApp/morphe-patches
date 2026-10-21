@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">إخفاء زر الهدايا</string>
   <string name="morphe_hide_comments_info_button_title">إخفاء زر المعلومات</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">إخفاء شريط مُتبرِّعي المحادثة المباشرة</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">إخفاء زر التمرير لأسفل في المحادثة المباشرة</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">إخفاء تلميحات المحادثة المباشرة</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">يُخفي نوافذ التلميحات المنبثقة التي تظهر بجوار شريط كتابة المحادثة، مثل إشعار المحادثة مخصصة للمشتركين فقط</string>
   <string name="morphe_hide_comments_menu_button_title">إخفاء زر القائمة</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">إخفاء زر الطابع الزمني</string>
   <string name="morphe_hide_comments_top_fans_button_title">إخفاء زر \'أهم المعجبين\'</string>
   <string name="morphe_hide_comments_translate_button_title">إخفاء زر الترجمة</string>
+  <string name="morphe_hide_comments_zero_state_title">إخفاء رسالة \'ليس هناك أي تعليقات حتى الآن\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">تنظيف روابط البحث المميزة</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">ينظف روابط البحث المميزة، ويترك فقط النص الأصلي العادي</string>
   <string name="morphe_hide_keyword_content_screen_title">تصفية الكلمات المفتاحية</string>
@@ -433,6 +435,12 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">يؤدي الضغط مع الاستمرار في أي مكان على فيديو في الخلاصة إلى فتح قائمته</string>
   <string name="morphe_feed_watch_later_button_title">عرض زر \"المشاهدة لاحقًا\" على المصغرات</string>
   <string name="morphe_feed_watch_later_button_summary">يتم عرض زر المشاهدة لاحقًا على مصغرات فيديوهات الخلاصة. يؤدي الضغط مع الاستمرار عليه إلى فتح الحفظ في قوائم التشغيل</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">عرض عدد المشاهدات على الصور المصغرة</string>
+  <string name="morphe_feed_view_count_summary">يتم عرض عدد مشاهدات فيديوهات الخلاصة في أسفل يسار الصورة المصغرة بدلًا من أسفل العنوان. بعض الفيديوهات، مثل تلك الموجودة في الرفوف، قد لا تعرض عدد المشاهدات</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">عرض عدد الإعجابات في الصورة المصغرة بالخلاصة</string>
+  <string name="morphe_ryd_feed_like_ratio_title">عرض نسبة الإعجابات في الصورة المصغرة بالخلاصة</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">تعطيل نافذة \'تسجيل الدخول إلى التلفزيون\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">تعطيل نافذة \'توصيل أجهزتك\'</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">يعطّل إيماءة النقر المزدوج بإصبعين التي تتخطى الفصول، والتي قد يتم تشغيلها عن طريق الخطأ بإصبع واحد</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">تنزيل الفيديوهات، البودكاست، أو الأغاني باستخدام تطبيقات تنزيل خارجية</string>
-  <string name="morphe_external_downloader_title">عرض زر التنزيل الخارجي</string>
-  <string name="morphe_external_downloader_summary">يعرض زرًا على مشغل الفيديو يفتح أداة التنزيل الخارجية الخاصة بك</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">تجاوز زر التنزيل &amp; القائمة</string>
   <string name="morphe_external_downloader_action_button_summary">يستخدم أداة التنزيل الخارجية التي اخترتها بدلًا من ميزة التنزيل الافتراضية</string>
@@ -1161,6 +1167,11 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">زر الرجوع يخرج من الخلاصة</string>
   <string name="morphe_back_button_always_exits_feed_summary">الضغط على زر الرجوع يؤدي دائمًا إلى الخروج من التطبيق بدلًا من التمرير إلى أعلى الخلاصة</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">فرض تأثيرات الحركة</string>
+  <string name="morphe_force_animations_entry_default">الافتراضي</string>
+  <string name="morphe_force_animations_entry_always_on">تشغيل دائمًا</string>
+  <string name="morphe_force_animations_entry_always_off">إيقاف دائم</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">إخفاء شريط الحالة</string>
   <string name="morphe_hide_status_bar_summary">يخفي شريط حالة النظام. اسحب لأسفل من الحافة العلوية لإظهاره للحظة</string>
@@ -1396,12 +1407,11 @@ AVC (H.264)
   <string name="morphe_series_tracker_screen_summary">تابع قوائم التشغيل كسلسلة وكمّل من حيث توقفت</string>
   <string name="morphe_series_tracker_title">تمكين تتبع السلسلات</string>
   <string name="morphe_series_tracker_summary">يضيف صفحة السلسلات إلى السجلّ وخيار متابعة السلسلة إلى قوائم التشغيل</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">عرض السلسلات في شريط التنقل</string>
   <string name="morphe_series_tracker_show_button_title">عرض زر تتبع السلسلات</string>
   <string name="morphe_series_tracker_show_button_summary">يضيف زر بالمشغل لمتابعة أو فتح سلسلة الفيديو الحالي</string>
   <string name="morphe_series_tracker_record_followed_progress_title">تسجيل تقدم متابعة السلسلة</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">تسجيل التشغيل على هذا الهاتف للسلسلات المحفوظة والعلامات المرجعية</string>
-  <string name="morphe_series_tracker_show_history_tab_title">عرض السجلّ في شريط التنقل</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">الصفحة الرئيسية، الاشتراكات، الإشعارات، السجلّ، وأنت</string>
   <string name="morphe_series_tracker_ui_cancel">إلغاء</string>
   <string name="morphe_series_tracker_ui_save">حفظ</string>
   <string name="morphe_series_tracker_ui_save_bookmark">حفظ العلامة المرجعية</string>
@@ -1431,9 +1441,6 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">افتح السجل من قسم \"أنت\" لعرض سلاسلك</string>
   <string name="morphe_series_tracker_ui_watch_history">سجل المشاهدة</string>
   <string name="morphe_series_tracker_ui_series">السلسلة</string>
-  <string name="morphe_series_tracker_ui_history">السجلّ</string>
-  <string name="morphe_series_tracker_ui_subscriptions">الاشتراكات</string>
-  <string name="morphe_series_tracker_ui_notifications">الإشعارات</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">جارٍ تحميل السلسلات المحفوظة...</string>
   <string name="morphe_series_tracker_empty_library">تابع قائمة تشغيل لتتبع حلقاتها</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">علامة مرجعية لقائمة التشغيل</string>

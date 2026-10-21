@@ -5,7 +5,15 @@ public final class RedditVideo {
         throw new UnsupportedOperationException("Stub");
     }
 
+    public String getDownloadUrl() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
     public String getFallBackUrl() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
+    public boolean isGif() {
         throw new UnsupportedOperationException("Stub");
     }
 

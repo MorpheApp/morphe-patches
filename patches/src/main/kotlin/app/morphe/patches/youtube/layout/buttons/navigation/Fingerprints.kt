@@ -146,6 +146,26 @@ internal object TranslucentNavigationBarFeatureFlagsFingerprint : Fingerprint(
 )
 
 /**
+ * Sets the bottom padding of the navigation bar to the bottom window inset, the room for
+ * the system navigation buttons when the bar is drawn behind them. The bar height also grows
+ * by the same value, which is first stored in a field of the bar.
+ */
+internal object NavigationBarBottomPaddingFingerprint : Fingerprint(
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT,
+            definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+            type = "I"
+        ),
+        methodCall(
+            definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+            name = "setPadding",
+            location = MatchAfterWithin(10)
+        )
+    )
+)
+
+/**
  * Applies the system navigation bar color of the app theme to the window.
  */
 internal object SystemNavigationBarColorFingerprint : Fingerprint(

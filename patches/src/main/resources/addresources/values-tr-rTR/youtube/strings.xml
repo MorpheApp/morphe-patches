@@ -276,6 +276,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_gift_button_title">Hediye düğmesini gizle</string>
   <string name="morphe_hide_comments_info_button_title">Bilgi düğmesini gizle</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Canlı sohbet bağışçıları çubuğunu gizle</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Canlı sohbet en aşağı kaydırma düğmesini gizle</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Canlı sohbet araç ipuçlarını gizle</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Sadece abonelere özel sohbet bildirimi gibi sohbet giriş çubuğunun yanında gösterilen araç ipucu pencerelerini gizler</string>
   <string name="morphe_hide_comments_menu_button_title">Menü düğmesini gizle</string>
@@ -289,6 +290,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_timestamp_button_title">Zaman damgası düğmesini gizle</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'En iyi hayranlar\' düğmesini gizle</string>
   <string name="morphe_hide_comments_translate_button_title">Çevir düğmesini gizle</string>
+  <string name="morphe_hide_comments_zero_state_title">\'Henüz yorum yok\' mesajını gizle</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Öne çıkan arama bağlantılarını temizle</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Öne çıkan arama bağlantılarını temizler, yalnızca orijinal düz metni bırakır</string>
   <string name="morphe_hide_keyword_content_screen_title">Anahtar kelime filtresi</string>
@@ -434,6 +436,12 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_feed_long_press_menu_summary">Akış video üzerinde herhangi bir yere dokunup basılı tutmak, menüyü açar</string>
   <string name="morphe_feed_watch_later_button_title">Küçük resimlerde Daha Sonra İzle düğmesini göster</string>
   <string name="morphe_feed_watch_later_button_summary">Akış videolarının küçük resimlerinde bir Daha Sonra İzle düğmesi gösterilir. Dokunulup basılı tutulduğunda Çalma listesine kaydet açılır</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">İzlenme sayısını kapak resimlerinde göster</string>
+  <string name="morphe_feed_view_count_summary">Akış videolarının izlenme sayısı başlığın altı yerine kapak resminin sol altında gösterilir. Raflardaki gibi bazı videolar izlenme sayısı göstermeyebilir</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Akış kapak fotoğrafı beğeni sayısını göster</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Akış kapak fotoğrafı beğeni oranını göster</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV\'ye oturum aç\" penceresini devre dışı bırak</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Cihazlarınızı bağlayın\' açılır penceresini devre dışı bırak</string>
@@ -442,8 +450,6 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_disable_chapter_skip_double_tap_summary">Bölümleri atlayan ve tek parmakla yanlışlıkla tetiklenebilecek iki parmakla çift dokunma hareketini devre dışı bırakır</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla videolar, podcast\'ler veya şarkılar indirin</string>
-  <string name="morphe_external_downloader_title">Harici indirme düğmesini göster</string>
-  <string name="morphe_external_downloader_summary">Video oynatıcınızda harici indiricinizi açan bir katman düğmesi gösterir</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">İndir düğmesi &amp; menüsünü değiştir</string>
   <string name="morphe_external_downloader_action_button_summary">Seçtiğiniz harici indiriciyi, yerleşik indirme özelliği yerine kullanır</string>
@@ -1107,7 +1113,7 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_shorts_autoplay_background_title">Arka planda otomatik oynatma</string>
   <string name="morphe_shorts_autoplay_background_summary">Arka planda oynatma sırasında otomatik olarak bir sonraki Short\'a geçer</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
-  <string name="morphe_playback_in_feeds_title">Beslemelerde oynatma</string>
+  <string name="morphe_playback_in_feeds_title">Akışlarda oynatma</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Her zaman açık</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Yalnızca Wi-Fi üzerinde</string>
   <string name="morphe_playback_in_feeds_entry_off">Kapalı</string>
@@ -1158,6 +1164,11 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Geri düğmesi akıştan çıkar</string>
   <string name="morphe_back_button_always_exits_feed_summary">Geri tuşuna basmak, akışın en üstüne kaydırmak yerine her zaman uygulamadan çıkar.  This is a placeholder to ensure validity.</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Animasyonları zorla</string>
+  <string name="morphe_force_animations_entry_default">Varsayılan</string>
+  <string name="morphe_force_animations_entry_always_on">Her zaman açık</string>
+  <string name="morphe_force_animations_entry_always_off">Her zaman kapalı</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Durum çubuğunu gizle</string>
   <string name="morphe_hide_status_bar_summary">Sistem durum çubuğunu gizler. Bir anlığına göstermek için üst kenardan aşağı kaydırın</string>
@@ -1394,12 +1405,11 @@ Sınırlama: Eski stil 'Diğer videolar' katmanına geri döner"</string>
   <string name="morphe_series_tracker_screen_summary">Çalma listelerini dizi olarak takip edin ve konumunuzu koruyun</string>
   <string name="morphe_series_tracker_title">Dizi takibini etkinleştir</string>
   <string name="morphe_series_tracker_summary">Geçmişe bir Dizi sayfası ekler ve çalma listelerine Bir Diziyi Takip Et seçeneği ekler</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Gezinti çubuğunda Diziler\'i göster</string>
   <string name="morphe_series_tracker_show_button_title">Dizi Takipçisi düğmesini göster</string>
   <string name="morphe_series_tracker_show_button_summary">Mevcut videonun serisini takip etmek veya açmak için bir oynatıcı düğmesi ekler.</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Seri takibi ilerlemesini kaydet</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Bu telefonda, kaydedilmiş dizilerin ve yer imlerinin kaydını oynatın.</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Gezinti çubuğunda geçmişi göster</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Anasayfa, Abonelikler, Bildirimler, Geçmiş ve Siz</string>
   <string name="morphe_series_tracker_ui_cancel">İptal</string>
   <string name="morphe_series_tracker_ui_save">Kaydet</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Yer imini kaydet</string>
@@ -1429,9 +1439,6 @@ Sınırlama: Eski stil 'Diğer videolar' katmanına geri döner"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Serilerinizi görüntülemek için \"Siz\" bölümünden Geçmiş\'i açın.</string>
   <string name="morphe_series_tracker_ui_watch_history">Geçmişi izle</string>
   <string name="morphe_series_tracker_ui_series">Diziler</string>
-  <string name="morphe_series_tracker_ui_history">Geçmiş</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Abonelikler</string>
-  <string name="morphe_series_tracker_ui_notifications">Bildirimler</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Kaydedilmiş seriler yükleniyor…</string>
   <string name="morphe_series_tracker_empty_library">Bölümlerini takip etmek için bir oynatma listesini izlemeye alın</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Çalma listesi yer imi</string>

@@ -14,6 +14,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.AppIconPatch;
+import app.morphe.extension.reddit.patches.DownloadLocationPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
@@ -21,6 +22,7 @@ import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.patches.VersionCheckPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
+import app.morphe.extension.reddit.settings.preference.DownloadLocationPreference;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
@@ -39,6 +41,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     @Override
     public boolean getSettingsStatus() {
         return AppIconPatch.isPatchIncluded() ||
+                DownloadLocationPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
                 RedgifsAudioPatch.isPatchIncluded() ||
@@ -62,6 +65,9 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
         if (AppIconPatch.isPatchIncluded()) {
             addPreference(AppIconPatch.getIconPreference(context));
+        }
+        if (DownloadLocationPatch.isPatchIncluded()) {
+            addPreference(new DownloadLocationPreference(context));
         }
         if (OpenLinksDirectlyPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(

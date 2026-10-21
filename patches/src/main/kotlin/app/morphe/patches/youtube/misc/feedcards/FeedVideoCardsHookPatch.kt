@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.misc.feedcards
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.litho.relayout.COMPONENT_HOST_CLASS
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
@@ -21,14 +22,14 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/utils/FeedVideoCards;"
+    "Lapp/morphe/extension/youtube/patches/utils/FeedVideoCardsPatch;"
 
 /**
  * Litho is not obfuscated, and the method overrides the framework,
  * so this matches by name on every supported app version.
  */
 internal object FeedCardComponentHostLayoutFingerprint : Fingerprint(
-    definingClass = "Lcom/facebook/litho/ComponentHost;",
+    definingClass = COMPONENT_HOST_CLASS,
     name = "onLayout",
     returnType = "V",
     parameters = listOf("Z", "I", "I", "I", "I")

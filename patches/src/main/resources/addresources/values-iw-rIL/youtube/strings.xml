@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">הסתר כפתור מתנה</string>
   <string name="morphe_hide_comments_info_button_title">הסתר לחצן מידע</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">הסתר את סרגל תורמי הצ\'אט החי</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">הסתר את כפתור גלילה לתחתון בצ\'אט חי</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">הסתרת בועיות הסבר של הצ\'אט בשידור חי</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">מסתירה בועיות הסבר המופיעות ליד שורת קלט הצ\'אט, כגון הודעת צ\'אט למנויים בלבד</string>
   <string name="morphe_hide_comments_menu_button_title">הסתר כפתור תפריט</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">הסתר לחצן חותמת זמן</string>
   <string name="morphe_hide_comments_top_fans_button_title">הסתר כפתור \'המעריצים המובילים\'</string>
   <string name="morphe_hide_comments_translate_button_title">הסתר את כפתור התרגום</string>
+  <string name="morphe_hide_comments_zero_state_title">הסתר את ההודעה \'אין תגובות עדיין\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">ניקוי קישורים בחיפוש מודגשים</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">מנקה קישורים בחיפוש מודגשים, ומשאיר רק את הטקסט המקורי</string>
   <string name="morphe_hide_keyword_content_screen_title">מסנן מילות מפתח</string>
@@ -433,6 +435,12 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">חיפוש ועורך בכל מקום בודק המשיר פתחם את מהשיר שלו</string>
   <string name="morphe_feed_watch_later_button_title">הצג את בטו׳דת \"הצג בידוע חור\" בתויערות</string>
   <string name="morphe_feed_watch_later_button_summary">בטו׳דת \"הצג בידוע חור\" תציע בתויערות של וידועי המשיר. חיפוש ועורך הו מזמן חסון לכריזה</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">הצג את ספירת הצפיות בהדמיות</string>
+  <string name="morphe_feed_view_count_summary">ספירת הצפיות של סרטונים בעלון מוצגת בפינה השמאלית התחתונה של ההדמיות במקום מתחת לכותרת. בסרטונים מסוימים, כמו אלו במדפים, ייתכן שלא תוצג ספירת צפיות.</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">הצג מניין לייקים בתמונה מוקטנת של הזרם</string>
+  <string name="morphe_ryd_feed_like_ratio_title">הצג אחוז לייקים בתמונה מוקטנת של הזרם</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">השבת חלון קופץ של כניסה לטלוויזיה</string>
   <string name="morphe_disable_connect_your_devices_popup_title">השבת את ה-popup של \'חבר את המכשירים שלך\'</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">משבית את מחוות ההקשה הכפולה בשתי אצבעות שמדלגת על פרקים, שעשויה להיות מופעלת בטעות עם אצבע אחת</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">הורד סרטונים, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
-  <string name="morphe_external_downloader_title">הצג לחצן הורדה חיצונית</string>
-  <string name="morphe_external_downloader_summary">מציג כפתור שכבה בנגן הווידאו שפותח את הורדת הצד השלישי שלך</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">עקוף את לחצן ואת תפריט ההורדה</string>
   <string name="morphe_external_downloader_action_button_summary">משתמש במנהל ההורדות החיצוני שבחרת במקום תכונת ההורדות הרגילה</string>
@@ -1157,6 +1163,11 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">כפתור חזרה יוצא מהפיד</string>
   <string name="morphe_back_button_always_exits_feed_summary">לחיצה על כפתור חזרה תמיד יוצאת מהאפליקציה במקום לגלול לראש הפיד</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">כריכת אנימציות</string>
+  <string name="morphe_force_animations_entry_default">ברירת מחדל</string>
+  <string name="morphe_force_animations_entry_always_on">תמיד מופעל</string>
+  <string name="morphe_force_animations_entry_always_off">תמיד כבוי</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">הסתר את שורת הסטטוס</string>
   <string name="morphe_hide_status_bar_summary">מסתיר את שורת הסטטוס של המערכת. החלק מטה מהקצה העליון כדי להציג אותה לרגע</string>
@@ -1392,12 +1403,11 @@ AVC (H.264)
   <string name="morphe_series_tracker_screen_summary">עקוב אחר רשימות השמעה כסדרות ושמור את המקום שלך</string>
   <string name="morphe_series_tracker_title">הפעל מעקב סדרות</string>
   <string name="morphe_series_tracker_summary">מוסיף עמוד סדרות להיסטוריה ואפשרות לעקיבת סדרות לרשימות ההשמעה</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">הצג סדרות בשורת הניווט</string>
   <string name="morphe_series_tracker_show_button_title">הצג כפתור מעקב אחר סדרות</string>
   <string name="morphe_series_tracker_show_button_summary">מוסיף כפתור נגן כדי לעקוב או לפתוח את הסדרה של הווידאו הנוכחי</string>
   <string name="morphe_series_tracker_record_followed_progress_title">תעד התקדמות בסדרות שעוקבים אחריהן</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">תעד הפעלה בטלפון זה עבור סדרות שמורות וסימניות</string>
-  <string name="morphe_series_tracker_show_history_tab_title">הצג היסטוריה בשורת הניווט</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">בית, מנויים, התראות, היסטוריה ואתה</string>
   <string name="morphe_series_tracker_ui_cancel">בטל</string>
   <string name="morphe_series_tracker_ui_save">שמור</string>
   <string name="morphe_series_tracker_ui_save_bookmark">שמור סימניה</string>
@@ -1427,9 +1437,6 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">פתח היסטוריה מתפריט \'אתה\' כדי לצפות בסדרות שלך</string>
   <string name="morphe_series_tracker_ui_watch_history">היסטוריית צפייה</string>
   <string name="morphe_series_tracker_ui_series">סדרות</string>
-  <string name="morphe_series_tracker_ui_history">היסטוריה</string>
-  <string name="morphe_series_tracker_ui_subscriptions">מינויים</string>
-  <string name="morphe_series_tracker_ui_notifications">עדכונים</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">טוען סדרות שמורות…</string>
   <string name="morphe_series_tracker_empty_library">עקוב אחר רשימת השמעה כדי לעקוב אחר הפרקים</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">סימניית רשימת השמעה</string>

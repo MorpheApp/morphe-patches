@@ -123,11 +123,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">Gebruik jou gekose eksterne aflaaier in plaas van die standaard Download-aksieknoppie</string>
   <string name="morphe_external_downloader_flyout_menu_title">Oorskryf aflaai-kieslys</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Gebruik jou gekose eksterne aflaaier in plaas van die standaard Download-vliegmenu</string>
-  <string name="morphe_music_in_app_downloads_title">Laai in die app af</string>
-  <string name="morphe_music_in_app_downloads_summary">Laai oudio binne YouTube Music af in plaas van om die eksterne aflaaier-toepassing oop te maak</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Snare word na die privaat berging van die toepassing gestoor en word uitgevee as YouTube Music oninstallēr is.
-
-Terwyl dit geaktiveer is, lys die Aflaai-oortjie hierdie snare in plaas van die Premium-aflyfbiblioteek. Deaktivering herstel die oortjie, en Premium-aflaaie raak nooit beschadig nie"</string>
   <string name="morphe_music_downloads_screen_title">Aflaaie</string>
   <string name="morphe_music_downloads_empty">"Geen aflaaie nie
 Afgelaaide snitte verskyn hier"</string>
@@ -458,12 +453,17 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
   <string name="morphe_music_lyrics_keep_screen_on_title">Hou skerm aan terwyl jy lirieke bekyk</string>
   <string name="morphe_music_lyrics_keep_screen_on_summary">Voorkom dat die skerm afskakel terwyl die lirieke-paneel oop is</string>
   <string name="morphe_music_lyrics_section_service_title">Lirieke-diens</string>
-  <string name="morphe_music_lyrics_section_overlay_title">Oorleg</string>
+  <string name="morphe_music_lyrics_section_display_title">Vertoon</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinchronisasie</string>
+  <string name="morphe_music_lyrics_section_panel_title">Paneel</string>
+  <string name="morphe_music_lyrics_section_languages_title">Tale</string>
   <string name="morphe_music_lyrics_section_ai_endpoint_title">AI-eindpunt</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Alle verskaffers gedeaktiveer — ingeboude lirika en ingebedde lirika</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Alle verskaffers gedeaktiveer - ingeboude lirieke en ingeslote lirieke</string>
   <string name="morphe_music_lyrics_source_reset_title">Verskaffervolgorde terugstel?</string>
   <string name="morphe_music_lyrics_source_reset_message">Herstel verskaffers na die standaardprioriteitsorde</string>
+  <string name="morphe_music_lyrics_clear_cache_title">Skoon gestoorde lirieke</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Verwyder die lirieke wat op hierdie toestel behou is</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Maak %1$s MB skoon</string>
   <string name="morphe_music_token_dialog_get_token">Kry token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music-mediagebruikerstoken</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Plak die media-user-token-koekie van music.apple.com
@@ -510,24 +510,23 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: koekies gestoor</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: koekies skoongemaak</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ongeldige koekies - neem asseblief kennis en probeer weer</string>
-  <string name="morphe_music_lyrics_tap_to_seek_title">Tik \'n reël om te soek</string>
-  <string name="morphe_music_lyrics_tap_to_seek_summary">Tik op \'n reël spring na daardie oomblik in die liedjie</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Klik en hou ’n lyn vas</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Tik \'n lyn om na daardie oomblik in die liedjie te spring, hou dit lank ingedruk om die woord onder jou vinger te kopieer, of die hele lyn as die druk nie op \'n woord is nie. Afname skakel albei gebare af</string>
   <string name="morphe_music_lyrics_show_section_title">Wys afdeling-etikette</string>
   <string name="morphe_music_lyrics_show_section_summary">Etiketteer elke nuwe afdeling van die lirieke met \'n klein etiket, soos Vers of Refrein</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Wys Kopièer knoppie</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Raak om oorspronklike lirieke as gewone teks te kopieer; druk lank om rou lirieke-bronlêer na Downloads te stoor</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Klik om oorspronklike lirieke as plat teks te kopieer; hou ingedruk om ruwe lirieke-bronlêer na Aflaais te stuur</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Wys Vertaal knoppie</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling te wissel; druk lank vir slegs vertaling. Gebruik die verskaffer se vertalings, Google Translate, of \'n OpenAI-versoenbare API.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Klik om vertaling te wissel; hou ingedruk vir slegs vertaling. Gebruik verskaffer se vertalings, Google Vertaling, of ’n OpenAI-kompatabele API</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Wys romaniseer-knoppie</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om romanisering te wissel; druk lank vir slegs romanisering. Gebruik die verskaffer se romanisering, Google Translate, of \'n OpenAI-versoenbare API.</string>
-  <string name="morphe_music_lyrics_local_romanization_title">Lokale romanisering</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">Romaniseer op die toestel wanneer die verskaffer, \'n OpenAI-kompatibele eindpunt en Google Vertaal almal misluk. Slegs CJK, ongeveer 80 MB om te aflaai.</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Klik om romanisering te wissel; hou ingedruk vir slegs romanisering. Gebruik verskaffer se romanisering, Google Vertaling, of ’n OpenAI-kompatabele API</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Plaaslike Romanisering en Uitleg</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Romaniseer op die toestel wanneer die verskaffer, jou model en Google Vertaling misluk. Die lees volg elke woord van ’n tydsgebaseerde liriekspoor; woordsinchronisering moet aan wees. Chinees, Kantonis, Japannese, Koreaans, Grieks, Russies, Georgies, Armeens; ongeveer 120 MB</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Lees %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lesings gereed (%1$d CJK-woorde)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_failed">Aflaai misluk — skakel dit af en aan weer om te probeer</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lees gereed (%1$d inskrywings)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Laai misluk - skakel dit af en aan weer om te herprobeer</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Wys verfris-knoppie</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Tik om na die volgende lirieke-kandidaat oor te skakel; langdruk om lirieke volgens liedjietitel en kunstenaar te soek</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Klik om na die volgende liriekkandidaat te skakel; hou ingedruk om lirieke deur titel en kunstenaar soek</string>
   <string name="morphe_music_lyrics_search_dialog_title">Soek lirieke</string>
   <string name="morphe_music_lyrics_search_title_hint">Liedtitel</string>
   <string name="morphe_music_lyrics_search_artist_hint">Kunstenaar</string>
@@ -543,7 +542,9 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_hide_unplayed_title">Versteek ongespeelde lirieke</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Herstel verskaffers na die standaard prioriteitsorde.</string>
   <string name="morphe_music_lyrics_mediasession_title">Wys MediaSession-lirieke op die sluitskerm</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Wys die huidige lyn op die sluitingsskerm, Android Auto en Bluetooth. Benodig Android 11 of nuwer</string>
   <string name="morphe_music_lyrics_miniplayer_title">Wys romaniseer-knoppie</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">Wys die huidige lyn in die minispeler, met die snit na die onderskrif verskuif</string>
   <string name="morphe_music_lyrics_display_artist_first_title">Wys romaniseer-knoppie</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">Wissel die vertoonorde van Kunstenaar en Titel in die Mini-speler en MediaSession. AAN \"Kunstenaar - Titel\" en AF \"Titel - Kunstenaar\". Dit raak nie die soektog na lirieke nie.</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Lirieke-bron?</string>
@@ -562,7 +563,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_sb_no_video">Hierdie snit het geen video-id om in te dien nie</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Bron: %s</string>
-  <string name="morphe_music_lyrics_contribute_credit">Druk lank op die kopieerknoppie om hierdie LRC te stoor; as jy die tydsduur kan verfyn en dit met die gemeenskaplike verskaffers kan deel, sal ons dankbaar wees.</string>
+  <string name="morphe_music_lyrics_contribute_credit">Druk lank op die kopieerknoop om hierdie LRC te stoor; as jy tydstippe kan fynafstem en dit met die gemeenskapsverskaffers kan deel, sou ons baie dankbaar wees</string>
   <string name="morphe_music_lyrics_translated_by_google">Gereedskapsafdelings?</string>
   <string name="morphe_music_lyrics_romanized_by_google">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_translated_by_ai">Vertaal deur %s</string>
@@ -585,12 +586,12 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_refreshing">Besig om te verfris</string>
   <string name="morphe_music_lyrics_refreshed">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-sleutel</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkribeer of bely die sangteks vir die huidige snit. \'n Afsonderlike diens, ongebonde aan die OpenAI-kompatibele eindpunt hierbo.</string>
-  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-sleutel gestoor. Gebruik die belynknoppie in die soekdialoog vir sangtekste, of die paneelaanwysing wanneer \'n snit geen sangteks het nie.</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkribeer of tyd-alyneer die liedtekste vir die huidige snit. \'n Afsonderlike diens, unrelated tot die OpenAI-kompatibele eindpunt hierbo</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-sleutel gestoor. Gebruik die alynknoppie in die liedsoekdialoog, of die paneelaansporing wanneer \'n snit geen liedtekste het nie</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API-sleutel gestoor</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC het daardie sleutel nie aanvaar nie</string>
   <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API-sleutel gewis</string>
-  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC gee tydsduur aan sangtekste wat nie een het nie, of transkribeer dit van die snit, teen \'n koste van krediete. Met \'n ingestelde sleutel, bied snitte sonder sangtekste transkripsie aan en die soekdialoog kry \'n belynknoppie.</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC gee tyd aan liedtekste wat niks het nie, of transkribeer dit van die snit, teen die koste van krediete. Met \'n sleutel ingestel, bied snitte sonder liedtekste transkripsie en die soekdialoog kry \'n alynknoppie</string>
   <string name="morphe_music_lyrics_transcribe_align">Vra QuickLRC-belyning aan</string>
   <string name="morphe_music_lyrics_transcribe_aligning">Belyn tans</string>
   <string name="morphe_music_lyrics_transcribe_apply_align">Pas belyning toe</string>
@@ -598,10 +599,12 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_transcribe_working">Transkribeer tans</string>
   <string name="morphe_music_lyrics_transcribe_cancelled">Transkripsie gekanselleer</string>
   <string name="morphe_music_lyrics_transcribe_local_unsupported">Slegs snitte wat van YouTube gespeel word, kan getranskribeer word</string>
-  <string name="morphe_music_lyrics_transcribe_no_text">Geen sangteks om te bely nie — tans wel getranskribeer</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Geen liedtekste om te alyn nie - transkribeer eerder</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC kon nie hierdie snit verwerk nie</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-krediete is vir hierdie snit gebruik</string>
-  <string name="morphe_music_lyrics_about_summary">"Lirieke word volgens titel en kunstenaar gekoppel, ongewone metadata mag niks of die verkeerde weergawe vind nie. Gebruik verfris om van weergawe te wissel. Verskaffers wat met * gemerk is, vereis 'n token. Nie alle geaktiveerde verskaffers word altyd in jou volgorde aangevra nie, maar hulle reageer op grond van hul spoed."</string>
+  <string name="morphe_music_lyrics_about_summary">"Lirieke word ooreengestem volgens titel en kunstenaar; ongewone metadata kan dalk niks vind of die verkeerde weergawe oplewer. Gebruik verfris om wisselweergawes te omskakel. Verskaffers wat met * gemerk is, vereis 'n tokken. Nie alle geaktiveerde verskaffers word altyd in jou volgorde versoek nie, maar hulle reageer volgens hul spoed.
+
+Lirieke kom van diensverskaffers van derde partye wat nie aan Morphe gelink, deur Morphe gesponsor of deur Morphe goedgekeur is nie. Elke een word soos dit is gebruik: die lirieke, hul beskikbaarheid en hul lisensiëring bly by daardie diensverskaffers en hul licentiehouers, en die gebruik daarvan kan onderhewig wees aan hulle diensvoorwaardes. Wat aan 'n geaktiveerde diensverskaffer oorgedra word, is slegs die soektogwaarde wat jy versoek het - naamlik die titel, die kunstenaar en, waar diensverskaffer dit nodig het, die video-ID. Die opsionele AI-eindpunt en QuickLRC-transkripsie werk slegs nadat jy dit gekonfigureer het, en ontvang die liriecteks of die snit se video-URL."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Aktiveer slegs die verskaffers wat u gebruik, of behou die verstek – konstante versoekings kan klein gemeenskapsliedjie-bladsye oorweldig</string>
   <string name="morphe_music_lyrics_hide_info_title">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_hide_info_summary">Lirieke word gesoek volgens kunstenaar en titel, […] Jy kan ook die verfris-knoppie probeer om handmatig van weergawe te wissel. […] Alle verskaffers word nie altyd in die bestelling versoek nie, maar reageer op grond van hul spoed</string>
@@ -615,15 +618,17 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_use_ai_section_title">Kunsmatige Intelligensie-afdeling</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Word slegs gebruik wanneer die verskaffer geen afdelinglabels soos Koors of Vers stuur nie, wat jou OpenAI-versoenbare model dan opspoor</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">KI-instellings</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Stel die OpenAI-kompatibele API-eindpunt vir AI-gestuurde sangteksvertaling, romanisering en afdeling in.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Stel die OpenAI-kompatibele API-eindpunt in vir AI-aangedrewe liedteksvertaling, romanisering en sektor</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt URL (bv. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-sleutel (los leeg vir anonieme toegang)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modelnaam (bv. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Aanwysingtemplaat</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Kiesers: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Aanwysing gestoor</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Plein gestoor, maar die AI-eindpunt is nog nie bruikbaar nie. Stel dit eerstens onder AI-instellings in.</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Aansporing gestoor, maar die AI-eindpunt is nog nie bruikbaar nie. Stel dit eers onder AI-instellings in</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Aanwysing teruggestel</string>
+  <string name="morphe_music_lyrics_ai_extra_body_hint">Ekstra aanvraagliggaam (JSON, saamgevoeg in elke AI-aanvraag)</string>
+  <string name="morphe_music_lyrics_ai_extra_body_invalid">Nie geldige JSON nie. Reg dit of maak die veld skoon voor saving</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">KI-instellings gestoor</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Konnie nie met die AI-eindpunt verbind nie. Neem asseblief kennis van jou instellings</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">KI-instellings teruggestel</string>

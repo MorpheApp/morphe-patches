@@ -265,6 +265,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">Fela gjafaknappinn</string>
   <string name="morphe_hide_comments_info_button_title">Fela Info hnapp</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Hylja „Paramert í lausnir“ ummerki</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Fela hnapp til að skrolla niður í beint spjall</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Fela upplýsingaglugga í beinu spjalli</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Felur upplýsingaglugga sem birtast nálægt spjallstikunni, eins og tilkynningu um spjall eingöngu fyrir áskrifendur</string>
   <string name="morphe_hide_comments_menu_button_title">Fela valmyndarhnapp</string>
@@ -278,6 +279,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">Fela Tímalínu hnapp</string>
   <string name="morphe_hide_comments_top_fans_button_title">Fela \'Topp aðdáendur\' hnappinn</string>
   <string name="morphe_hide_comments_translate_button_title">Fela þýðingarhnappinn</string>
+  <string name="morphe_hide_comments_zero_state_title">Fela skilaboðana \'Engin ummæli ennþá\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Hreinsa lýst tengla í leit</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Hreinsar lýsta leittengla og skilur eftir aðeins upprunalega textann</string>
   <string name="morphe_hide_keyword_content_screen_title">Hraðvæðir</string>
@@ -423,6 +425,12 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_feed_long_press_menu_summary">Þegar þú smeltir og heldur niður einhversstaðar á feed-myndbandi opnast valmynd þess</string>
   <string name="morphe_feed_watch_later_button_title">Sýna hnappinn \"Skjáa síðar\" á þumabörðum</string>
   <string name="morphe_feed_watch_later_button_summary">Hnappurinn \"Skjáa síðar\" birtist á þumabörðum feed-mynda. Þegar þú smeltir og heldur honum niður opnarðu Vista í spilunarlista</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Sýna fjölda sýna á þumalbirgðum</string>
+  <string name="morphe_feed_view_count_summary">Fjöldi sýna fyrir feed myndbönd er sýndur neðst til vinstri á þumalbirgðum þeirra í stað undir titlinum. Sum myndbönd, svo sem í hillum, kann ekki að sýna fjölda sýna</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Sýna einkunn einskorðunar viðmyndar fæðis</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Sýna hlutfall einskorðunar viðmyndar fæðis</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Gerðu ekki birtu „Innskráningu á sjónvarpi“ á popup glugganum</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Gerðu \'Tengdu tækin þín\' kynningarglugga óvirkan</string>
@@ -431,8 +439,6 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_disable_chapter_skip_double_tap_summary">Gerir óvirkt tví fingurgestina tví breytilegu sem hoppar um kafla, sem gæti verið sýnt með einni fingri</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Niðurhalaðu myndbönd, hlaðvarpa eða lög með niðurhalssforritum frá þriðja aðila.</string>
-  <string name="morphe_external_downloader_title">Sýna utanaðkomandi niðurhalshnapp</string>
-  <string name="morphe_external_downloader_summary">Sýnir hlutfalls hnatta á myndavörpun sem opnar þinn þriðja aðila niðurhal</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Yfirskrifa niðhalningshnapp &amp; valmynd</string>
   <string name="morphe_external_downloader_action_button_summary">Notar ytra niðurhalsforrit sem þú hefur valið í stað innbyggða niðurhalseiginleikans</string>
@@ -1140,6 +1146,11 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Til baka-hnappur fer út úr straumnum</string>
   <string name="morphe_back_button_always_exits_feed_summary">Að ýta á til baka fer alltaf út úr appinu í stað þess að skrilla upp efst í strauminn</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Tvinga hreyfingar</string>
+  <string name="morphe_force_animations_entry_default">Sjálfgefið</string>
+  <string name="morphe_force_animations_entry_always_on">Alltaf virkt</string>
+  <string name="morphe_force_animations_entry_always_off">Alltaf óvirkt</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Fela stöðustikuna</string>
   <string name="morphe_hide_status_bar_summary">Felur stöðustiku kerfisins. Strjúktu niður frá efri brúninni til að sýna hana í smá stund</string>
@@ -1375,12 +1386,11 @@ Takmörkun: Snýr aftur í gamla 'Fleiri myndbönd' yfirlagsstílinn"</string>
   <string name="morphe_series_tracker_screen_summary">Eftir spilahlöt sem þætti og haltu staðnum</string>
   <string name="morphe_series_tracker_title">Virkja röðunarmynd</string>
   <string name="morphe_series_tracker_summary">Bætir við síðu fyrir þætti í ferli og kost til að fylgja þáttum í spilahlutum</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Sýna þáttaröð í vaðlistanum</string>
   <string name="morphe_series_tracker_show_button_title">Sýna hnapp fyrir röðaskjal</string>
   <string name="morphe_series_tracker_show_button_summary">Bætir spilarahnappi til að fylgjast með eða opna röð núverandi myndbands</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Taka upp framvindu í fylgdum röðum</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Taka upp afspilun á þessu síma fyrir vistaðar röðir og bókamerki</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Sýna feril í flakstiku</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Heim, Áskriftir, Tilkynningar, Ferill og Þú</string>
   <string name="morphe_series_tracker_ui_cancel">Hætta við</string>
   <string name="morphe_series_tracker_ui_save">Vista</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Vista bókamerki</string>
@@ -1410,9 +1420,6 @@ Takmörkun: Snýr aftur í gamla 'Fleiri myndbönd' yfirlagsstílinn"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Opna feril undir Þú til að skoða röðina þína</string>
   <string name="morphe_series_tracker_ui_watch_history">Skámatferill</string>
   <string name="morphe_series_tracker_ui_series">Röðir</string>
-  <string name="morphe_series_tracker_ui_history">Ferill</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Áskriftir</string>
-  <string name="morphe_series_tracker_ui_notifications">Tilkynningar</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Hleður vistaðar röðir…</string>
   <string name="morphe_series_tracker_empty_library">Eftirfylgi safnvísun til að fylgjast með episódum</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Bókamerki spilunarlista</string>

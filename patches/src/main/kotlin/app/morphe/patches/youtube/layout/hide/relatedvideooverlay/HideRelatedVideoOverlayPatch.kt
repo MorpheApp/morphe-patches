@@ -1,9 +1,7 @@
 package app.morphe.patches.youtube.layout.hide.relatedvideooverlay
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -38,8 +36,9 @@ val hideRelatedVideoOverlayPatch = bytecodePatch(
                     move-result v0
                     if-eqz v0, :show
                     return-void
-                """,
-                ExternalLabel("show", getInstruction(0))
+                    :show
+                    nop
+                """
             )
         }
     }

@@ -275,6 +275,7 @@ Modificările includ:
   <string name="morphe_hide_comments_gift_button_title">Ascunde butonul Cadou</string>
   <string name="morphe_hide_comments_info_button_title">Ascunde butonul Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ascunde bara cu donatori în chat-ul live</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Ascunde butonul „Derulare până la final” pentru chat-ul live</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Ascunde sugestiile din chatul live</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Ascunde ferestrele de sugestii afișate lângă bara de introducere a chat-ului, cum ar fi notificarea pentru chat-ul rezervat abonaților</string>
   <string name="morphe_hide_comments_menu_button_title">Ascunde butonul de meniu</string>
@@ -288,6 +289,7 @@ Modificările includ:
   <string name="morphe_hide_comments_timestamp_button_title">Ascunde butonul Timestamp</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ascunde butonul \'Top fani\'</string>
   <string name="morphe_hide_comments_translate_button_title">Ascunde butonul de traducere</string>
+  <string name="morphe_hide_comments_zero_state_title">Ascunde mesajul „Nu sunt încă comentarii”</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Dezactivează legăturile de căutare evidențiate</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Dezactivează legăturile de căutare evidențiate, afișând doar textul original simplu</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtru de cuvinte-cheie</string>
@@ -433,6 +435,12 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_feed_long_press_menu_summary">Atingerea și menținerea apăsării oriunde pe un video din feed deschide meniul acestuia</string>
   <string name="morphe_feed_watch_later_button_title">Arată butonul „Vizionează mai târziu” pe miniaturi</string>
   <string name="morphe_feed_watch_later_button_summary">Un buton Vizionează mai târziu este afișat pe miniaturile videoclipurilor din feed. Atingerea și menținerea apăsării asupra lui deschide Opțiuni salvare playlist</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Afișează numărul de vizualizări pe miniaturi</string>
+  <string name="morphe_feed_view_count_summary">Numărul de vizualizări ale videoclipurilor din flux este afișat în colțul stânga-jos al miniaturilor acestora, în loc să fie afișat sub titlu. Unele videoclipuri, cum ar fi cele din rafturi, pot să nu afișeze un număr de vizualizări</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Afișare număr like pentru miniatura feed-ului</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Afișare procentaj like pentru miniatura feed-ului</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Dezactivare pop-up Conectare la televizor</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Dezactivează fereastra pop-up \'Conectează-ți dispozitivele\'</string>
@@ -441,8 +449,6 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_disable_chapter_skip_double_tap_summary">Dezactivează gestul de dublă atingere cu două degete care sare peste capitole, care poate fi declanșat accidental cu un singur deget</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descărcă videoclipuri, podcasturi sau melodii folosind aplicaţii de descărcare terţe</string>
-  <string name="morphe_external_downloader_title">Arată butonul extern de descărcare</string>
-  <string name="morphe_external_downloader_summary">Afișează un buton de suprapunere în playerul video care deschide aplicația ta de descărcare externă</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Suprascrie butonul de descărcare și meniul</string>
   <string name="morphe_external_downloader_action_button_summary">Folosește descărcătorul extern ales în locul funcției standard de descărcare</string>
@@ -1157,6 +1163,11 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Butonul Înapoi iese din feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Apăsarea butonului Înapoi închide întotdeauna aplicația, în loc să deruleze la începutul feedului</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Forțează animațiile</string>
+  <string name="morphe_force_animations_entry_default">Implicit</string>
+  <string name="morphe_force_animations_entry_always_on">Întotdeauna activat</string>
+  <string name="morphe_force_animations_entry_always_off">Întotdeauna dezactivat</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ascunde bara de stare</string>
   <string name="morphe_hide_status_bar_summary">Ascunde bara de stare a sistemului. Glisează în jos din partea de sus pentru a o afișa pentru o clipă</string>
@@ -1392,12 +1403,11 @@ Limitare: Revenire la suprapunerea de stil vechi 'Mai multe videoclipuri'"</stri
   <string name="morphe_series_tracker_screen_summary">Urmărește playlist-urile ca seriale și îți păstrezi locu-ul</string>
   <string name="morphe_series_tracker_title">Activează urmărirea seriilor</string>
   <string name="morphe_series_tracker_summary">Adaugă o pagină Seriale în Istoric și o opțiune de Urmărire a seriilor la playlist-uri</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Afișează seria în bara de navigare</string>
   <string name="morphe_series_tracker_show_button_title">Arată butonul Tracker de seriale</string>
   <string name="morphe_series_tracker_show_button_summary">Adaugă un buton de redare pentru a urmări sau deschide serialele videoclipului curent</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Înregistrează progresul serialelor urmărite</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Înregistrează redarea pe acest telefon pentru serialele salvate și marcajele</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Arată Istoric în bara de navigare</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Acasă, Abonamente, Notificări, Istoric și Tu</string>
   <string name="morphe_series_tracker_ui_cancel">Anulează</string>
   <string name="morphe_series_tracker_ui_save">Salvează</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Salvează marcajul</string>
@@ -1427,9 +1437,6 @@ Limitare: Revenire la suprapunerea de stil vechi 'Mai multe videoclipuri'"</stri
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Deschide Istoricul din secțiunea „Tu” pentru a vedea serialele tale</string>
   <string name="morphe_series_tracker_ui_watch_history">Istoric vizionări</string>
   <string name="morphe_series_tracker_ui_series">Seriale</string>
-  <string name="morphe_series_tracker_ui_history">Istoric</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Abonamente</string>
-  <string name="morphe_series_tracker_ui_notifications">Notificări</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Se încarcă serialele salvate…</string>
   <string name="morphe_series_tracker_empty_library">Urmăriți o listă de redare pentru a urmări episoadele acesteia</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Marcaj listă redare</string>

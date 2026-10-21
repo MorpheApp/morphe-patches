@@ -156,6 +156,8 @@ Second \"item\" text"</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -447,6 +449,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_opacity_title">شفافی پشتخاڵ</string>
   <string name="morphe_miniplayer_opacity_summary">ءيجست سير رنغدي - (0 ري رنحانًح, 100 ري دواق)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_entry_default">بنەڕەت</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">سکرینی بارکردنێکی فڕکێنەرەوە سازشە</string>
@@ -531,8 +535,6 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_custom">باو</string>
   <!-- video.series.seriesTrackerPatch -->
   <string name="morphe_series_tracker_ui_cancel">پاشگەز</string>
-  <string name="morphe_series_tracker_ui_history">مێژوو</string>
-  <string name="morphe_series_tracker_ui_subscriptions">بەشداربوون</string>
   <string name="morphe_series_tracker_continue">بەردەوامبوون</string>
   <string name="morphe_series_tracker_undo">گەڕانەوە</string>
 </resources>

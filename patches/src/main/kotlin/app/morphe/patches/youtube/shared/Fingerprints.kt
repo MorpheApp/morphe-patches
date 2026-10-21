@@ -352,7 +352,7 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
     )
 )
 
-internal val VideoPlaybackIntentFingerprint = Fingerprint(
+internal object VideoPlaybackIntentFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("L", "Ljava/util/Map;"),

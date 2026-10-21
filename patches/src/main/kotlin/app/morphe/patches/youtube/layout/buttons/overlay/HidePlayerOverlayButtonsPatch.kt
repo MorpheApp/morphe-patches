@@ -233,8 +233,9 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                         move-result-object v$insertRegister
                         if-nez v$insertRegister, :show
                         return-void
-                    """,
-                    ExternalLabel("show", getInstruction(insertIndex))
+                        :show
+                        nop
+                    """
                 )
             }
         }

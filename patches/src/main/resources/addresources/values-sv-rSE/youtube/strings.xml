@@ -275,6 +275,7 @@ Vissa serverbaserade layouts kanske inte återgår.
   <string name="morphe_hide_comments_gift_button_title">Dölj knappen Present</string>
   <string name="morphe_hide_comments_info_button_title">Dölj knappen Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Dölj fält för donatorer i livechatt</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Dölj knappen Scrolla till botten i livechatt</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Dölj verktygstips för livechatt</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Döljer verktygstips som visas nära chattinmatningsfältet, till exempel meddelandet om endast prenumeranter</string>
   <string name="morphe_hide_comments_menu_button_title">Dölj menyknappen</string>
@@ -288,6 +289,7 @@ Vissa serverbaserade layouts kanske inte återgår.
   <string name="morphe_hide_comments_timestamp_button_title">Dölj tidsstämpelknappen</string>
   <string name="morphe_hide_comments_top_fans_button_title">Dölj knappen \'Toppfans\'</string>
   <string name="morphe_hide_comments_translate_button_title">Dölj översättningsknappen</string>
+  <string name="morphe_hide_comments_zero_state_title">Dölj meddelandet \'Inga kommentarer ännu\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Rensa markerade söklänkar</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Rensar markerade söklänkar och lämnar bara den ursprungliga vanliga texten</string>
   <string name="morphe_hide_keyword_content_screen_title">Nyckelordsfilter</string>
@@ -433,6 +435,12 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_feed_long_press_menu_summary">Genom att trycka och hålla någonstans på en flödesvideo öppnas dess meny</string>
   <string name="morphe_feed_watch_later_button_title">Visa knappen \"Titta senare\" på miniatyrbilder</string>
   <string name="morphe_feed_watch_later_button_summary">En \"Titta senare\"-knapp visas på miniatyrbilderna för flödesvideor. Genom att trycka och hålla öppnas Spara i spellista</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Visa antal visningar på miniatyrbilder</string>
+  <string name="morphe_feed_view_count_summary">Antalet visningar för flodvideor visas längst ner till vänster på deras miniatyrbilder istället för under titeln. Vissa videor, som i hyllor, kan inte visa ett visningsantal</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Visa antal gillningar för matlårstumnai</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Visa procentandel för gillningar i matlårstumnai</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Inaktivera popup-fönster om att logga in på TV:n</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Inaktivera popup-fönstret \'Anslut dina enheter\'</string>
@@ -441,8 +449,6 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_disable_chapter_skip_double_tap_summary">Inaktiverar tvåfingrets dubbeltrycksgest som hoppar över kapitel, vilket kan aktiveras av misstag med ett finger</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Ladda ner videor, poddar eller låtar med nedladdningsappar från tredje part</string>
-  <string name="morphe_external_downloader_title">Visa knapp för extern nedladdning</string>
-  <string name="morphe_external_downloader_summary">Visar en överlagringsknapp i videospelaren som öppnar din externa nedladdare</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Åsidosätt knappen Ladda ned &amp; menyn</string>
   <string name="morphe_external_downloader_action_button_summary">Använder din valda externa nedladdare istället för den inbyggda nedladdningsfunktionen</string>
@@ -1157,6 +1163,11 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tillbaka-knappen avslutar flödet</string>
   <string name="morphe_back_button_always_exits_feed_summary">Att trycka på Tillbaka avslutar alltid appen istället för att rulla till toppen av flödet</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Tvinga animationer</string>
+  <string name="morphe_force_animations_entry_default">Standard</string>
+  <string name="morphe_force_animations_entry_always_on">Alltid på</string>
+  <string name="morphe_force_animations_entry_always_off">Alltid av</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Dölj statusfältet</string>
   <string name="morphe_hide_status_bar_summary">Döljer systemets statusfält. Svep nedåt från överkanten för att visa det en stund</string>
@@ -1392,12 +1403,11 @@ Begränsning: Återgår till gammal stil för 'Fler videor'-överlägget"</strin
   <string name="morphe_series_tracker_screen_summary">Följ spellistor som serier och behåll din plats</string>
   <string name="morphe_series_tracker_title">Aktivera serietrackning</string>
   <string name="morphe_series_tracker_summary">Lägger till en Seriesida i Historik och ett Följa serie-alternativ för spellistor</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Visa serier i navigeringsfältet</string>
   <string name="morphe_series_tracker_show_button_title">Visa knappen för Seriespårare</string>
   <string name="morphe_series_tracker_show_button_summary">Lägger till en spelarknapp för att följa eller öppna serien med den aktuella videon</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Registrera framsteg för följda serier</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Registrera uppspelning på den här telefonen för sparade serier och bokmärken</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Visa Historik i navigeringsfältet</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Hem, Prenumerationer, Notifieringar, Historik och Du</string>
   <string name="morphe_series_tracker_ui_cancel">Avbryt</string>
   <string name="morphe_series_tracker_ui_save">Spara</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Spara bokmärke</string>
@@ -1427,9 +1437,6 @@ Begränsning: Återgår till gammal stil för 'Fler videor'-överlägget"</strin
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Öppna Historik från Dig för att visa dina serier</string>
   <string name="morphe_series_tracker_ui_watch_history">Tittathistorik</string>
   <string name="morphe_series_tracker_ui_series">Serier</string>
-  <string name="morphe_series_tracker_ui_history">Historik</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Prenumerationer</string>
-  <string name="morphe_series_tracker_ui_notifications">Aviseringar</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Läser in sparade serier…</string>
   <string name="morphe_series_tracker_empty_library">Följ en spellista för att hålla koll på dess avsnitt</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Spellistans bokmärke</string>

@@ -18,8 +18,8 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val PRIVACY = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy;"
-private const val SOURCE = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy\$Source;"
-private const val IDENTITY = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy\$Identity;"
+private const val SOURCE = $$"$${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy$Source;"
+private const val IDENTITY = $$"$${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy$Identity;"
 
 /** Resolve the current-account providers, never an arbitrary identity getter or request header. */
 internal data class NativeAccountContract(val type: String, val id: String, val incognito: String)

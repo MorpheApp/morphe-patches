@@ -82,7 +82,7 @@ val disableVideoCodecsPatch = bytecodePatch(
             replaceInstruction(
                 index,
                 "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->" +
-                        "overrideSupportedHdrTypes(Landroid/view/Display\$HdrCapabilities;)[I"
+                        $$"overrideSupportedHdrTypes(Landroid/view/Display$HdrCapabilities;)[I"
             )
         }
     }

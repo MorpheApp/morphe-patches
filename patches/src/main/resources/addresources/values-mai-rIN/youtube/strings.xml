@@ -151,11 +151,12 @@ Second \"item\" text"</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीव्ही में साइन इन करी\' पॉपअप अक्षम करी</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_title">बाहरी डाउनलोड बटन दिखाएं</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
@@ -441,6 +442,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">पिक्सेल आकार %1$s और %2$s के बीच होखे के चाहिए</string>
   <string name="morphe_miniplayer_opacity_title">ओवरले अपारदर्शिता</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">सक्षम ग्रेडियेंट लोडिंग स्क्रीन</string>

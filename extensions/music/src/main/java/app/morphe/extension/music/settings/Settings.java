@@ -19,6 +19,7 @@ import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.sponsorblock.MusicSponsorBlockConfig;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
@@ -100,7 +101,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SAVED_SHUFFLE_STATE = new BooleanSetting("morphe_music_saved_shuffle_state", FALSE, parent(REMEMBER_SHUFFLE_STATE));
 
     // Downloads
-    public static final BooleanSetting IN_APP_DOWNLOADS = new BooleanSetting("morphe_music_in_app_downloads", FALSE, false, "morphe_music_in_app_downloads_user_dialog_message", parent(EXTERNAL_DOWNLOADER_ACTION_BUTTON));
+    public static final BooleanSetting EXTERNAL_DOWNLOADER_ACTION_BUTTON = new BooleanSetting("morphe_external_downloader_action_button", FALSE, DOWNLOAD_MODE.availability(DownloadMode.EXTERNAL));
+    public static final BooleanSetting EXTERNAL_DOWNLOADER_FLYOUT_MENU = new BooleanSetting("morphe_external_downloader_flyout_menu", FALSE, parentsAll(DOWNLOAD_MODE.availability(DownloadMode.EXTERNAL), parent(EXTERNAL_DOWNLOADER_ACTION_BUTTON)));
     public static final StringSetting DOWNLOADS_SORT = new StringSetting("morphe_music_downloads_sort", "ARTIST", false, false);
 
     // Action buttons
@@ -223,6 +225,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LYRICS_AI_API_TOKEN = new StringSetting("morphe_music_lyrics_ai_api_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_AI_MODEL = new StringSetting("morphe_music_lyrics_ai_model", "openai-fast", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_AI_REASONING_EFFORT = new StringSetting("morphe_music_lyrics_ai_reasoning_effort", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting LYRICS_AI_EXTRA_BODY = new StringSetting("morphe_music_lyrics_ai_extra_body", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_AI_TRANSLATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_prompt", OpenAIClient.DEFAULT_PROMPT, false, parent(LYRICS_USE_AI_TRANSLATION));
     public static final StringSetting LYRICS_AI_ROMANIZATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_romanization_prompt", OpenAIClient.DEFAULT_PROMPT, false, parent(LYRICS_USE_AI_ROMANIZATION));
     public static final StringSetting LYRICS_AI_SECTION_PROMPT = new StringSetting("morphe_music_lyrics_ai_section_prompt", OpenAIClient.SECTION_PROMPT, false, parent(LYRICS_USE_AI_SECTION));
@@ -277,12 +280,16 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("morphe_sb_music_offtopic_color", "#FFFF9900", parent(SB_ENABLED));
 
     // Migration
+    private static final BooleanSetting DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON = new BooleanSetting("morphe_external_downloader_flyout_button", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_CATEGORY_BAR = new BooleanSetting("morphe_music_hide_category_bar", FALSE, true);
+    private static final BooleanSetting DEPRECATED_MUSIC_IN_APP_DOWNLOADS = new BooleanSetting("morphe_music_in_app_downloads", FALSE);
     private static final BooleanSetting DEPRECATED_PERMANENT_REPEAT = new BooleanSetting("morphe_music_permanent_repeat", FALSE, true);
 
     static {
+        migrateOldSettingToNew(DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON, EXTERNAL_DOWNLOADER_FLYOUT_MENU);
         migrateOldSettingToNew(DEPRECATED_HIDE_CATEGORY_BAR, HIDE_FILTER_BAR);
         migrateOldSettingToNew(DEPRECATED_PERMANENT_REPEAT, REMEMBER_REPEAT_STATE);
+        migrateInAppDownloadsToDownloadMode();
     }
 
     static {
@@ -313,5 +320,19 @@ public class Settings extends SharedYouTubeSettings {
 
         // Must run before any code reads a SegmentCategory setting.
         MusicSponsorBlockConfig.install();
+    }
+
+    /**
+     * The in-app downloads switch was replaced with the download mode.
+     */
+    private static void migrateInAppDownloadsToDownloadMode() {
+        if (DEPRECATED_MUSIC_IN_APP_DOWNLOADS.isSetToDefault()) {
+            return;
+        }
+        // The switch was only used together with the Download button override.
+        if (DOWNLOAD_MODE.isSetToDefault() && EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()) {
+            DOWNLOAD_MODE.save(DownloadMode.IN_APP);
+        }
+        DEPRECATED_MUSIC_IN_APP_DOWNLOADS.resetToDefault();
     }
 }

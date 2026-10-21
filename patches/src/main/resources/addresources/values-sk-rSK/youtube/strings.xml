@@ -275,6 +275,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_comments_gift_button_title">Skryť tlačidlo Darovať</string>
   <string name="morphe_hide_comments_info_button_title">Skryť tlačidlo Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skryť panel donátorov živého chatu</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Skryť tlačidlo posunu na koniec živého chatu</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Skryť nápovedy živého chatu</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Skryje vyskakovacie nápovedy zobrazené pri prideľovacom poli chatu, napríklad upozornenie na chat len pre odberateľov</string>
   <string name="morphe_hide_comments_menu_button_title">Skryť tlačidlo ponuky</string>
@@ -288,6 +289,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_comments_timestamp_button_title">Skryť tlačidlo Časové značky</string>
   <string name="morphe_hide_comments_top_fans_button_title">Skryť tlačidlo \'Top fans\'</string>
   <string name="morphe_hide_comments_translate_button_title">Skryť tlačidlo Preložiť</string>
+  <string name="morphe_hide_comments_zero_state_title">Skryť správu „Zatiaľ žiadne komentáre</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Vyčistí zvýraznené odkazy vo vyhľadávaní</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Vyčistí zvýraznené odkazy vo vyhľadávaní, ponechajúc iba pôvodný jednoduchý text</string>
   <string name="morphe_hide_keyword_content_screen_title">Filter kľúčových slov</string>
@@ -433,6 +435,12 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_feed_long_press_menu_summary">Klepnutím a podrž kdekoľvek na videu v feedi sa otvorí jeho ponuka</string>
   <string name="morphe_feed_watch_later_button_title">Zobraziť tlačidlo „Pozrieť neskôr“ na miniatúrach</string>
   <string name="morphe_feed_watch_later_button_summary">Na miniatúrach videí vo feedi sa zobrazuje tlačidlo Pozrieť neskôr. Klepnutím a podrž ho otvoríš Uloženie do playlistu</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Zobraziť počet zobrazení na miniatúrach</string>
+  <string name="morphe_feed_view_count_summary">Počet zobrazení videí v kanáli sa zobrazuje vľavo dole pri ich miniaturách namiesto pod nadpisom. Niektoré videá, napríklad v poličkách, nemusia zobrazovať počet zobrazení</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Zobraziť počítadlo lajkov pre náhľad feedu</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Zobraziť percento lajkov pre náhľad feedu</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Zakázať vyskakovacie okno \'Prihlásiť sa do TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Zakázať kontextové okno \'Pripojte svoje zariadenia\'</string>
@@ -441,8 +449,6 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_disable_chapter_skip_double_tap_summary">Zakáže gestá dvojitého ťuknutia dvoma prstami, ktoré preskakujú kapitoly, ktoré sa môžu neúmyselne spustiť jedným prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Stiahnite si videá, podcasty alebo piesne pomocou aplikácií na sťahovanie tretích strán</string>
-  <string name="morphe_external_downloader_title">Zobraziť tlačidlo na externé stiahnutie</string>
-  <string name="morphe_external_downloader_summary">Zobrazuje prekryvné tlačidlo v prehrávači videa, ktoré otvorí vaše sťahovanie tretích strán</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Nahradiť tlačidlo &amp; menu na stiahnutie</string>
   <string name="morphe_external_downloader_action_button_summary">Používa vami zvolený externý sťahovač namiesto vstavanej funkcie sťahovania</string>
@@ -1156,6 +1162,11 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tlačidlo späť ukončí informačný kanál</string>
   <string name="morphe_back_button_always_exits_feed_summary">Stlačením tlačidla späť sa vždy ukončí aplikácia namiesto posúvania na začiatok informačného kanála</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Vynútiť animácie</string>
+  <string name="morphe_force_animations_entry_default">Predvolená</string>
+  <string name="morphe_force_animations_entry_always_on">Vždy zapnuté</string>
+  <string name="morphe_force_animations_entry_always_off">Vždy vypnuté</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skryť stavový riadok</string>
   <string name="morphe_hide_status_bar_summary">Skryje systémový stavový riadok. Potiahnite prstom nadol z horného okraja, aby sa na chvíľu zobrazil</string>
@@ -1391,12 +1402,11 @@ Obmedzenie: Vracia sa k starému štýlu prekrytia 'Ďalšie videá'"</string>
   <string name="morphe_series_tracker_screen_summary">Sledujte playlisty ako seriály a udržiavajte svoje miesto</string>
   <string name="morphe_series_tracker_title">Povoliť sledovanie seriálov</string>
   <string name="morphe_series_tracker_summary">Pridáva stránku Seriály do histórie a možnosť Sledovať seriály do playlistov</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Zobraziť sériu v navigačnom paneli</string>
   <string name="morphe_series_tracker_show_button_title">Zobraziť tlačidlá Sledovanie seriálov</string>
   <string name="morphe_series_tracker_show_button_summary">Pridá tlačidlo prehrávača na sledovanie alebo otvorenie seriálu aktuálneho videa</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Zaznamenávať postup sledovaných seriálov</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Zaznamenávať prehrávanie v tomto telefóne pre uložené seriály a záložky</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Zobraziť históriu v navigačnej lište</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Domov, Odber, Upozornenia, História a Vy</string>
   <string name="morphe_series_tracker_ui_cancel">Zrušiť</string>
   <string name="morphe_series_tracker_ui_save">Uložiť</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Uložiť záložku</string>
@@ -1426,9 +1436,6 @@ Obmedzenie: Vracia sa k starému štýlu prekrytia 'Ďalšie videá'"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Otvorte Historiu v časti Vy, aby ste si pozreli svoje seriály</string>
   <string name="morphe_series_tracker_ui_watch_history">História prehliadania</string>
   <string name="morphe_series_tracker_ui_series">Seriály</string>
-  <string name="morphe_series_tracker_ui_history">História</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Odbery</string>
-  <string name="morphe_series_tracker_ui_notifications">Upozornenia</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Načítavanie uložených seriálov...</string>
   <string name="morphe_series_tracker_empty_library">Sledujte playlist, aby ste sledovali jeho epizódy</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Záložka playlistu</string>

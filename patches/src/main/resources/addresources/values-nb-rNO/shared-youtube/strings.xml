@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Tertiær) </string>
   <string name="morphe_theme_color_custom_entry">Tilpasset</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Eksterne nedlastinger</string>
+  <string name="morphe_external_downloader_screen_title">Nedlastinger</string>
+  <string name="morphe_download_mode_title">Nedlastingmodus</string>
+  <string name="morphe_download_mode_entry_default">Standard</string>
+  <string name="morphe_download_mode_entry_in_app">Nedlasting i appen</string>
+  <string name="morphe_download_mode_entry_external">Ekstern nedlaster</string>
   <string name="morphe_external_downloader_name_title">Nedlastingspakkenavn</string>
   <string name="morphe_external_downloader_name_summary">Pakkens navn til din installerte eksterne nedlastingsapp</string>
   <string name="morphe_external_downloader_other_item_hint">Angi pakkenavn</string>

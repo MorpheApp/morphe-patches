@@ -161,11 +161,15 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
 
             long prevEnd = lineStart != LyricsLine.NO_TIME ? lineStart : 0;
             boolean changed = false;
+            boolean unsalvageable = false;
             Word[] fixed = new Word[count];
 
             for (int j = 0; j < count; j++) {
                 Word w = words.get(j);
-                final boolean anomalous = (w.startMs() == 0 && lineStart > 0)
+                // A negative time is not a small time, it is the absence of one.
+                final boolean untimed = w.startMs() < 0 || w.endMs() < 0;
+                final boolean anomalous = untimed
+                        || (w.startMs() == 0 && lineStart > 0)
                         || (w.endMs() == 0 && w.startMs() > 0)
                         || (w.startMs() > 0 && w.startMs() == w.endMs())
                         || (w.startMs() > 0 && w.startMs() < lineStart - 500);
@@ -174,6 +178,13 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
                     prevEnd = Math.max(w.endMs(), w.startMs());
                     fixed[j] = w;
                     continue;
+                }
+
+                // Repairing off a line that is not timed either would build the timings out of
+                // numbers that were never times, so the words go and the line is sung in one go.
+                if (untimed && lineStart <= 0) {
+                    unsalvageable = true;
+                    break;
                 }
 
                 long nextStart = Long.MAX_VALUE;
@@ -205,7 +216,11 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
                 changed = true;
             }
 
-            if (changed) {
+            if (unsalvageable) {
+                out.set(i, new LyricsLine(line.startTimeMs(), line.endTimeMs(),
+                        line.text(), List.of(), line.agentId(), line.isDuet(),
+                        line.isBG(), line.songPart()));
+            } else if (changed) {
                 out.set(i, new LyricsLine(line.startTimeMs(), line.endTimeMs(),
                         line.text(), List.of(fixed), line.agentId(), line.isDuet(),
                         line.isBG(), line.songPart()));

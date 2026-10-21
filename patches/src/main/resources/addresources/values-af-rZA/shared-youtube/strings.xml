@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Tersiêre)</string>
   <string name="morphe_theme_color_custom_entry">Pasgemaak</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Eksterne aflaaie</string>
+  <string name="morphe_external_downloader_screen_title">Aflaai</string>
+  <string name="morphe_download_mode_title">Aflaaimodus</string>
+  <string name="morphe_download_mode_entry_default">Verstek</string>
+  <string name="morphe_download_mode_entry_in_app">Aflynlaai in-toepassing</string>
+  <string name="morphe_download_mode_entry_external">Eksterne aflaaier</string>
   <string name="morphe_external_downloader_name_title">Aflaai pakket naam</string>
   <string name="morphe_external_downloader_name_summary">Pakketnaam van jou geïnstalleerde eksterne downloader app</string>
   <string name="morphe_external_downloader_other_item_hint">Voer pakketnaam in</string>

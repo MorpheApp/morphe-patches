@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">उपहार बटन छिपाएं</string>
   <string name="morphe_hide_comments_info_button_title">छुपाएं जानकारी बटन</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">लाइव चैट दानदाताओं की बार छुपाएं</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">लाइव चैट स्क्रॉल टू बाटम बटन छुपाएँ</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">लाइव चैट टूलटिप्स छुपाएं</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">चैट इनपुट बार के पास दिखाए जाने वाले टूलटिप पॉपअप छुपाता है, जैसे कि सब्सक्राइबर-ओनली चैट सूचना</string>
   <string name="morphe_hide_comments_menu_button_title">मेनू बटन छिपाएँ</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">टाइमस्टैम्प बटन छुपाएं</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'टॉप फैंस\' बटन छिपाएँ</string>
   <string name="morphe_hide_comments_translate_button_title">अनुवाद बटन छिपाएँ</string>
+  <string name="morphe_hide_comments_zero_state_title">\'\' अभी तक कोई टिप्पणी नहीं है\' संदेश छुपाएँ</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करें</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करता है, केवल मूल सादे पाठ को छोड़ देता है</string>
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फ़िल्टर</string>
@@ -433,6 +435,12 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">फीड वीडियो पर कहीं भी टैप करके और दबाकर उसका मेनू खोला जा सकता है</string>
   <string name="morphe_feed_watch_later_button_title">थंबनेल पर \'फिर से देखें\' बटन दिखाएं</string>
   <string name="morphe_feed_watch_later_button_summary">फीड वीडियो की थंबनेल पर \'फिर से देखें\' बटन दिखाया जाता है। इसे टैप करके और दबाकर प्लेलिस्ट में सहेजें खोला जाता है</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">थंबनेल पर व्यू काउंट दिखाएँ</string>
+  <string name="morphe_feed_view_count_summary">फीड वीडियो का व्यू काउंट शीर्षक के नीचे के बजाय उनके थंबनेल के बाएं नiche दिखाया जाता है। शेल्फ जैसे कुछ वीडियो में व्यू काउंट नहीं दिख सकता</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">फ़ीड थंबनेल लाइक count दिखाएं</string>
+  <string name="morphe_ryd_feed_like_ratio_title">फ़ीड थंबनेल लाइक प्रतिशत दिखाएं</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीवी पर साइन इन करें\' पॉपअप बंद करें</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'कनेक्ट आपके डिवाइस\' पॉपअप अक्षम करें</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">अध्याय को छोड़ने के लिए दो उंगली के डबल-टैप जेस्चर को निष्क्रिय करता है, जो एक उंगली के साथ गलती से ट्रिगर हो सकता है</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ऐप्स के साथ वीडियो, पॉडकास्ट या गाने डाउनलोड करें</string>
-  <string name="morphe_external_downloader_title">प्रदर्शित बाहरी डाउनलोड बटन</string>
-  <string name="morphe_external_downloader_summary">आपके बाहरी डाउनलोडर को खोलने वाला वीडियो प्लेयर में एक ओवरले बटन दिखाता है</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">डाउनलोड बटन और मेनू को ओवरराइड करें</string>
   <string name="morphe_external_downloader_action_button_summary">आपके द्वारा चुने गए बाहरी डाउनलोडर का उपयोग करता है, डिफ़ॉल्ट डाउनलोड सुविधा के बजाय</string>
@@ -1157,6 +1163,11 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">बैक बटन फ़ीड से बाहर निकलता है</string>
   <string name="morphe_back_button_always_exits_feed_summary">बैक दबाने से हमेशा ऐप से बाहर निकलता है, फ़ीड के शीर्ष पर स्क्रॉल करने के बजाय</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">एनिमेशन को बलपूर्वक लागू करें</string>
+  <string name="morphe_force_animations_entry_default">डिफ़ॉल्ट</string>
+  <string name="morphe_force_animations_entry_always_on">सदैव सक्रिय</string>
+  <string name="morphe_force_animations_entry_always_off">सदैव निष्क्रिय</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">स्टेटस बार छिपाएँ</string>
   <string name="morphe_hide_status_bar_summary">सिस्टम स्टेटस बार छिपाता है। इसे एक पल के लिए दिखाने के लिए ऊपरी किनारे से नीचे की ओर स्वाइप करें</string>
@@ -1392,12 +1403,11 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_series_tracker_screen_summary">प्लेलिस्ट को सीरीज़ के रूप में फॉलो करें और अपनी स्थिति बनाए रखें</string>
   <string name="morphe_series_tracker_title">सीरीज़ ट्रैकिंग सक्षम करें</string>
   <string name="morphe_series_tracker_summary">इतिहास में एक सीरीज़ पेज जोड़ता है और प्लेलिस्ट में सीरीज़ फॉलो करने का विकल्प देता है</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">नेविगेशन बार में श्रृंखला दिखाएं</string>
   <string name="morphe_series_tracker_show_button_title">सिरीज ट्रैकर बटन दिखाएं</string>
   <string name="morphe_series_tracker_show_button_summary">वर्तमान वीडियो की श्रृंखला का अनुसरण करने या खोलने के लिए प्लेयर बटन जोड़ता है</string>
   <string name="morphe_series_tracker_record_followed_progress_title">अनुसरित-श्रृंखला प्रगति रिकॉर्ड करें</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">बचती श्रृंखला और बुकमार्क के लिए इस फोन पर प्लेबैक रिकॉर्ड करें</string>
-  <string name="morphe_series_tracker_show_history_tab_title">नेविगेशन बार में इतिहास दिखाएं</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">होम, सदस्यताएं, सूचनाएं, इतिहास और आप</string>
   <string name="morphe_series_tracker_ui_cancel">रद्द करें</string>
   <string name="morphe_series_tracker_ui_save">सेव करें</string>
   <string name="morphe_series_tracker_ui_save_bookmark">बुकमार्क सहेजें</string>
@@ -1427,9 +1437,6 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">आपकी श्रृंखला देखने के लिए \'आप\' से इतिहास खोलें</string>
   <string name="morphe_series_tracker_ui_watch_history">देखने का इतिहास</string>
   <string name="morphe_series_tracker_ui_series">श्रृंखलाएं</string>
-  <string name="morphe_series_tracker_ui_history">इतिहास</string>
-  <string name="morphe_series_tracker_ui_subscriptions">सदस्यताएं</string>
-  <string name="morphe_series_tracker_ui_notifications">सूचनाएं</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">संरक्षित श्रृंखलाएं लोड हो रही हैं…</string>
   <string name="morphe_series_tracker_empty_library">अपनी सीरीज की एपिसोड को ट्रैक करने के लिए प्लेलिस्ट का अनुसरण करें</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">प्लेलिस्ट बुकमार्क</string>

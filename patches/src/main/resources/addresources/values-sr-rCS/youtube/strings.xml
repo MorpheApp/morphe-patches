@@ -275,6 +275,7 @@ Promene uključuju:
   <string name="morphe_hide_comments_gift_button_title">Sakrij dugme „Poklon”</string>
   <string name="morphe_hide_comments_info_button_title">Sakrij dugme Инфо</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Sakrij traku donatora uživo</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Сакриј дугме за скроловање живог чата до дна</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Sakrij alatne savete za čet uživo</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Sakriva iskačuće prozore sa alatnim savetima koji se prikazuju pored trake za unos četa, kao što je obaveštenje o četu samo za pretplatnike</string>
   <string name="morphe_hide_comments_menu_button_title">Sakrij dugme menija</string>
@@ -288,6 +289,7 @@ Promene uključuju:
   <string name="morphe_hide_comments_timestamp_button_title">Sakrij dugme za vremensku oznaku</string>
   <string name="morphe_hide_comments_top_fans_button_title">Sakrij dugme \'Top fanovi\'</string>
   <string name="morphe_hide_comments_translate_button_title">Sakrij dugme za prevod</string>
+  <string name="morphe_hide_comments_zero_state_title">Sakrij poruku „Nema komentara“</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Dezinfikuje naglašene linkove za pretragu</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Dezinfikuje naglašene linkove za pretragu, ostavljajući samo originalni tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtriranje po ključnim rečima</string>
@@ -433,6 +435,12 @@ Prijave su javne i pregledaju se pre nego što kanal bude dodat na listu. Uklanj
   <string name="morphe_feed_long_press_menu_summary">Dodirivanjem i držanjem bilo gde na videu u protoku otvara se njegov meni</string>
   <string name="morphe_feed_watch_later_button_title">Prikaži dugme „Gledaj kasnije“ na sličicama</string>
   <string name="morphe_feed_watch_later_button_summary">Dugme „Gledaj kasnije“ se prikazuje na sličicama videa u protoku. Dodirivanjem i držanjem njega otvara se opcija Sačuvaj u listu za reprodukciju</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Прикажи број прегледа на минијатурама</string>
+  <string name="morphe_feed_view_count_summary">Број прегледа видео записа у протоку приказује се у доњем левом углу њихових минијатура, а не испод наслова. Неки видео записи, попут оних у полицама, можда неће приказивати број прегледа</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Prikaži broj lajkova na smanjenoj slici feed-a</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Prikaži procenat lajkova na smanjenoj slici feed-a</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogući iskačući prozor „Prijava na TV”</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Onemogućite skočni prozor \'Povežite svoje uređaje\'</string>
@@ -441,8 +449,6 @@ Prijave su javne i pregledaju se pre nego što kanal bude dodat na listu. Uklanj
   <string name="morphe_disable_chapter_skip_double_tap_summary">Onemogućava dvostruki dodir sa dva prsta koji preskače poglavlja, što se može slučajno aktivirati jednim prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Preuzmite video snimke, podkaste ili pesme pomoću aplikacija za preuzimanje trećih strana</string>
-  <string name="morphe_external_downloader_title">Prikaži dugme za spoljno preuzimanje</string>
-  <string name="morphe_external_downloader_summary">Prikazuje preklapajući dugme u plejeru videa koje otvara tvoju aplikaciju za preuzimanje</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Prepiši dugme za preuzimanje &amp; meni</string>
   <string name="morphe_external_downloader_action_button_summary">Koristi vaš izabrani eksterni downloader umesto standardne funkcije za preuzimanje</string>
@@ -1157,6 +1163,11 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Dugme za nazad izlazi iz feed-a</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pritiskanje nazad uvek izlazi iz aplikacije umesto da skrolujete do vrha feed-a</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Prinudne animacije</string>
+  <string name="morphe_force_animations_entry_default">Подразумеван</string>
+  <string name="morphe_force_animations_entry_always_on">Увек укључено</string>
+  <string name="morphe_force_animations_entry_always_off">Увек искључено</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sakrij statusnu traku</string>
   <string name="morphe_hide_status_bar_summary">Sakriva sistemsku statusnu traku. Prevucite prstom nadole od gornje ivice da biste je na trenutak prikazali</string>
@@ -1392,12 +1403,11 @@ Ograničenje: Vraća se na stari stil 'More videos' preklopa"</string>
   <string name="morphe_series_tracker_screen_summary">Prati plejliste kao serije i čuvaj svoje mesto</string>
   <string name="morphe_series_tracker_title">Omogući praćenje serija</string>
   <string name="morphe_series_tracker_summary">Dodaje stranicu Serije u Istoriju i opciju Prati serije za plejliste</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Prikaži serije u navigacionoj traci</string>
   <string name="morphe_series_tracker_show_button_title">Prikaži dugme za Praćenje serija</string>
   <string name="morphe_series_tracker_show_button_summary">Dodaje dugme plejera za praćenje ili otvaranje serije trenutnog videa</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Zabeleži napredak praćenih serija</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Zabeležite reprodukciju na ovom telefonu za sačuvane serije i obeleživače</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Prikaži istoriju u navigacionoj traci</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Početna, Pretplate, Obaveštenja, Istorija i Vi</string>
   <string name="morphe_series_tracker_ui_cancel">Otkaži</string>
   <string name="morphe_series_tracker_ui_save">Sačuvaj</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Sačuvaj obeleživač</string>
@@ -1427,9 +1437,6 @@ Ograničenje: Vraća se na stari stil 'More videos' preklopa"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Otvori istoriju od Vas da biste videli svoje serije</string>
   <string name="morphe_series_tracker_ui_watch_history">Istorija gledanja</string>
   <string name="morphe_series_tracker_ui_series">Serije</string>
-  <string name="morphe_series_tracker_ui_history">Istorija</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Praćenja</string>
-  <string name="morphe_series_tracker_ui_notifications">Obaveštenja</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Učitavanje sačuvanih serija…</string>
   <string name="morphe_series_tracker_empty_library">Pratite plejlistu da pratite njene epizode</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Obeleživač plejliste</string>

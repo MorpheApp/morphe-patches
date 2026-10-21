@@ -20,6 +20,7 @@ import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
+import android.view.WindowInsets;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -88,6 +89,15 @@ public final class NavigationBarPatch {
     private static final boolean DISABLE_AUTO_HIDE_NAVIGATION_BAR = Settings.DISABLE_AUTO_HIDE_NAVIGATION_BAR.get();
 
     private static final boolean HIDE_NAVIGATION_BAR = Settings.HIDE_NAVIGATION_BAR.get();
+
+    private static final boolean HIDE_SHORTS_NAVIGATION_BAR = Settings.HIDE_SHORTS_NAVIGATION_BAR.get();
+
+    /**
+     * The view the Shorts player is in, inside the layout of the Shorts player fragment.
+     */
+    private static final int shortsPlayerContainerId = HIDE_SHORTS_NAVIGATION_BAR
+            ? ResourceUtils.getIdentifier(ResourceType.ID, "fragment_container_view")
+            : 0;
 
     private static final boolean HIDE_NAVIGATION_NEW_CONTENT_DOT = Settings.HIDE_NAVIGATION_NEW_CONTENT_DOT.get();
 
@@ -194,6 +204,12 @@ public final class NavigationBarPatch {
     }
 
     /**
+     * If the translucent navigation bar is turned on, the window is drawn behind
+     * the system navigation buttons.
+     */
+    private static volatile boolean translucentNavigationBar;
+
+    /**
      * Injection point.
      * <p>
      * The translucent navigation bar comes from feature flags that not every account gets, so they
@@ -202,23 +218,101 @@ public final class NavigationBarPatch {
      * the window is drawn behind them. That comes from the edge to edge top bar feature flag,
      * so without it the room is added twice: the navigation bar is raised and an empty bar is left
      * at the bottom (https://github.com/MorpheApp/morphe-patches/issues/3825).
+     * <p>
+     * The app draws the window behind the system navigation buttons only on Android 12 and later,
+     * so on older versions the flags are always turned off, or the room is added twice
+     * (https://github.com/MorpheApp/morphe-patches/issues/3864).
      */
     public static boolean useTranslucentNavigationBar(boolean original) {
         try {
-            Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
-            if (edgeToEdge == null) {
-                // Not read yet, or the Hide status bar patch is not included.
-                return original;
-            }
-            if (!edgeToEdge) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
                 return false;
             }
 
-            // Forcing it on Android 11 and lower can hang the app.
-            return original || Build.VERSION.SDK_INT >= Build.VERSION_CODES.S;
+            Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
+            // Null if not read yet, or the Hide status bar patch is not included.
+            translucentNavigationBar = edgeToEdge == null ? original : edgeToEdge;
+            return translucentNavigationBar;
         } catch (Exception ex) {
             Logger.printException(() -> "useTranslucentNavigationBar failure", ex);
             return original;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * When the navigation bar covers the system navigation buttons, the bottom window inset is
+     * added to its height and bottom padding. With the keyboard open, that inset also holds
+     * the keyboard, so the bar grows as tall as the keyboard and covers the page
+     * (https://github.com/MorpheApp/morphe-patches/issues/3909). The page above then ends
+     * the height of the system bars below the top of the keyboard, so only that much room is left.
+     */
+    public static int getNavigationBarBottomPadding(View navigationBar, int original) {
+        try {
+            if (original != 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                WindowInsets insets = navigationBar.getRootWindowInsets();
+                if (insets != null && insets.isVisible(WindowInsets.Type.ime())) {
+                    return Math.min(original, insets.getInsets(WindowInsets.Type.systemBars()).bottom);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getNavigationBarBottomPadding failure", ex);
+        }
+        return original;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * With the translucent navigation bar turned on, the window is drawn behind the system
+     * navigation buttons, the navigation bar makes room for them, and the pages end above
+     * the navigation bar. With the navigation bar hidden in the Shorts player, nothing makes that
+     * room, so the Shorts player is drawn behind the system navigation buttons
+     * (https://github.com/MorpheApp/morphe-patches/issues/3908). The Shorts player then makes
+     * the room itself, only for the part it overlaps the buttons.
+     * <p>
+     * The translucent navigation bar is only turned on from Android 12, so on older versions
+     * the window ends above the system navigation buttons and nothing has to be done.
+     *
+     * @param shortsFragmentLayout The layout of the Shorts player fragment.
+     */
+    public static void setShortsPlayerBottomInset(View shortsFragmentLayout) {
+        if (!HIDE_SHORTS_NAVIGATION_BAR || Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            return;
+        }
+
+        try {
+            shortsFragmentLayout.addOnLayoutChangeListener((view, left, top, right, bottom,
+                                                            oldLeft, oldTop, oldRight, oldBottom) -> {
+                try {
+                    WindowInsets insets = view.getRootWindowInsets();
+                    View shortsPlayerContainer = view.findViewById(shortsPlayerContainerId);
+                    if (insets == null || shortsPlayerContainer == null) return;
+
+                    // The Shorts player can already leave some room below itself, such as when
+                    // it's opened from the search results, so only the room still missing
+                    // is added. The padding added here is left out, or the room would be counted twice.
+                    final int navigationButtonsHeight = insets.getInsets(WindowInsets.Type.navigationBars()).bottom;
+                    int[] location = new int[2];
+                    shortsPlayerContainer.getLocationInWindow(location);
+                    final int roomBelow = view.getRootView().getHeight()
+                            - (location[1] + shortsPlayerContainer.getHeight())
+                            - view.getPaddingBottom();
+                    final int padding = translucentNavigationBar
+                            ? Math.max(0, navigationButtonsHeight - roomBelow)
+                            : 0;
+
+                    if (view.getPaddingBottom() != padding) {
+                        view.post(() -> view.setPadding(view.getPaddingLeft(), view.getPaddingTop(),
+                                view.getPaddingRight(), padding));
+                    }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "setShortsPlayerBottomInset layout failure", ex);
+                }
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "setShortsPlayerBottomInset failure", ex);
         }
     }
 

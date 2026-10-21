@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (ثالثیه)</string>
   <string name="morphe_theme_color_custom_entry">سفارشی</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">دانلودهای خارجی</string>
+  <string name="morphe_external_downloader_screen_title">دانلودها</string>
+  <string name="morphe_download_mode_title">حالت دانلود</string>
+  <string name="morphe_download_mode_entry_default">پیش‌فرض</string>
+  <string name="morphe_download_mode_entry_in_app">دانلود درون‌برنامه‌ای</string>
+  <string name="morphe_download_mode_entry_external">دانلودگر خارجی</string>
   <string name="morphe_external_downloader_name_title">نام بستهٔ دانلودکننده</string>
   <string name="morphe_external_downloader_name_summary">نام بستهٔ برنامهٔ دانلودکنندهٔ خارجی نصب‌شدهٔ شما</string>
   <string name="morphe_external_downloader_other_item_hint">نام بسته را وارد کنید</string>

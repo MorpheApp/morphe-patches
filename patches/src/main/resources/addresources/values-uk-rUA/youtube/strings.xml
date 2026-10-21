@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">Приховати кнопку \"Подарунок\"</string>
   <string name="morphe_hide_comments_info_button_title">Приховати кнопку \"Інфо\"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Приховати панель спонсорів у живому чаті</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Сховати кнопку прокрутки до низу чату в прямому ефірі</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Приховати підказки живого чату</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Приховує спливні підказки біля панелі вводу чату, наприклад повідомлення про чат лише для підписників</string>
   <string name="morphe_hide_comments_menu_button_title">Приховати кнопку \"Меню\"</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">Приховати кнопку позначки часу</string>
   <string name="morphe_hide_comments_top_fans_button_title">Приховати кнопку \"Топ фанати\"</string>
   <string name="morphe_hide_comments_translate_button_title">Приховати кнопку \"Перекласти\"</string>
+  <string name="morphe_hide_comments_zero_state_title">Сховати повідомлення \"Немає коментарів\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Очищувати виділені пошукові посилання</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Очищує виділені пошукові посилання, залишаючи лише оригінальний звичайний текст</string>
   <string name="morphe_hide_keyword_content_screen_title">Фільтр ключових слів</string>
@@ -429,10 +431,16 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_summary">Натисніть і утримуйте коментар, щоб скопіювати його</string>
   <string name="morphe_copy_comments_success">Коментар скопійовано в буфер обміну</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
-  <string name="morphe_feed_long_press_menu_title">Натисніть і утримуйте, щоб відкрити меню відео</string>
-  <string name="morphe_feed_long_press_menu_summary">Натискання й утримування будь-де на відео в стрічці відкриває його меню</string>
-  <string name="morphe_feed_watch_later_button_title">Показувати кнопку «Переглянути пізніше» на мініатюрах</string>
-  <string name="morphe_feed_watch_later_button_summary">На мініатюрах відео у стрічці показується кнопка «Переглянути пізніше». Натискання й утримування відкриває «Зберегти до плейлиста»</string>
+  <string name="morphe_feed_long_press_menu_title">Натисніть та утримуйте, щоб відкрити меню відео</string>
+  <string name="morphe_feed_long_press_menu_summary">Натискання та утримування будь-де на відео в стрічці відкриває його меню</string>
+  <string name="morphe_feed_watch_later_button_title">Показувати кнопку \"Дивитися пізніше\" на мініатюрах</string>
+  <string name="morphe_feed_watch_later_button_summary">Кнопка \"Дивитися пізніше\" показується на мініатюрах відео в стрічці. Натискання та утримування її відкриває \"Зберегти в список відтворення\"</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Показувати кількість переглядів на мініатюрах</string>
+  <string name="morphe_feed_view_count_summary">Кількість переглядів відео у стрічці відображається у лівому нижньому куті їхніх мініатюр замість того, щоб розташовуватися під заголовком. Для деяких відео, таких як ті, що знаходяться на полицях, кількість переглядів може не відображатися</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Показувати кількість лайків на мініатюрі стрічки</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Показувати відсоток лайків на мініатюрі стрічки</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Вимкнути вікно \"Увійти на телевізорі\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Вимкнути вікно \"Підключіть свої пристрої\"</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Вимикає жест подвійного натискання двома пальцями для пропуску розділів, який може випадково спрацювати одним пальцем</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Завантажувати відео, подкасти або пісні за допомогою сторонніх застосунків для завантаження</string>
-  <string name="morphe_external_downloader_title">Показувати кнопку зовнішнього завантажувача</string>
-  <string name="morphe_external_downloader_summary">Показує кнопку у відеоплеєрі, яка відкриває ваш зовнішній завантажувач</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Замінити кнопку \"Завантажити\" та меню</string>
   <string name="morphe_external_downloader_action_button_summary">Використовує вибраний зовнішній завантажувач замість вбудованої функції завантаження</string>
@@ -1156,11 +1162,16 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Кнопка \"Назад\" виходить зі стрічки</string>
   <string name="morphe_back_button_always_exits_feed_summary">Натискання кнопки \"Назад\" завжди закриває застосунок замість прокручування до початку стрічки</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Примусова анімація</string>
+  <string name="morphe_force_animations_entry_default">Типовий</string>
+  <string name="morphe_force_animations_entry_always_on">Завжди ввімкнено</string>
+  <string name="morphe_force_animations_entry_always_off">Завжди вимкнено</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Приховати панель стану</string>
   <string name="morphe_hide_status_bar_summary">Приховує системну панель стану. Проведіть донизу від верхнього краю, щоб показати її на мить</string>
-  <string name="morphe_fix_status_bar_layout_title">Виправити положення панелі статусу, щоб вона не перекривала верхні панелі</string>
-  <string name="morphe_fix_status_bar_layout_summary">Зберігає узгоджене оформлення панелі статусу, щоб вона не перекривала верхні панелі та не залишало порожнього простору над плеєром. Вимкніть цю опцію, якщо додаток зависає або верхні панелі виглядають неправильно</string>
+  <string name="morphe_fix_status_bar_layout_title">Виправити перекриття верхніх панелей рядком стану</string>
+  <string name="morphe_fix_status_bar_layout_summary">Підтримує сталий макет рядка стану, щоб він не перекривав верхні панелі та не залишав порожнього місця над плеєром. Вимкніть це, якщо застосунок аварійно завершує роботу або верхні панелі виглядають неправильно</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Фон світлої теми</string>
   <string name="morphe_theme_color_light_entry_2">Білий</string>
@@ -1391,12 +1402,11 @@ AVC (H.264)
   <string name="morphe_series_tracker_screen_summary">Стежте за списками відтворення як за серіалами та зберігайте місце перегляду</string>
   <string name="morphe_series_tracker_title">Увімкнути відстеження серіалів</string>
   <string name="morphe_series_tracker_summary">Додає сторінку \"Серіали\" до історії та опцію \"Стежити за серіалом\" до списків відтворення</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Показувати \"Серіали\" на панелі навігації</string>
   <string name="morphe_series_tracker_show_button_title">Показувати кнопку \"Відстеження серіалів\"</string>
   <string name="morphe_series_tracker_show_button_summary">Додає кнопку в плеєрі, щоб стежити за серіалом поточного відео або відкрити його</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Записувати прогрес відстежуваних серіалів</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Записувати відтворення на цьому телефоні для збережених серіалів і закладок</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Показувати \"Історію\" на панелі навігації</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Головна, Підписки, Сповіщення, Історія та Ви</string>
   <string name="morphe_series_tracker_ui_cancel">Скасувати</string>
   <string name="morphe_series_tracker_ui_save">Зберегти</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Зберегти закладку</string>
@@ -1426,9 +1436,6 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Відкрийте \"Історію\" на вкладці \"Ви\", щоб переглянути свої серіали</string>
   <string name="morphe_series_tracker_ui_watch_history">Історія переглядів</string>
   <string name="morphe_series_tracker_ui_series">Серіали</string>
-  <string name="morphe_series_tracker_ui_history">Історія</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Підписки</string>
-  <string name="morphe_series_tracker_ui_notifications">Сповіщення</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Завантаження збережених серіалів…</string>
   <string name="morphe_series_tracker_empty_library">Стежте за списком відтворення, щоб відстежувати його епізоди</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Закладка списку відтворення</string>

@@ -275,6 +275,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_comments_gift_button_title">Hədiyyə düyməsini gizlət</string>
   <string name="morphe_hide_comments_info_button_title">Məlumat düyməsini gizlət</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Canlı söhbət ianəçiləri cərgəsin gizlət</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Canlı söhbətin aşağıya sürüşdürmə düyməsini gizlət</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Canlı söhbət tövsiyələrini gizlət</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Söhbətin giriş zolağının yaxınlığında göstərilən tövsiyə pəncərələrini, məsələn, yalnız abunəçi söhbət bildirişini gizlədir</string>
   <string name="morphe_hide_comments_menu_button_title">Menyu düyməsini gizlət</string>
@@ -288,6 +289,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_comments_timestamp_button_title">Vaxt möhürü düyməsini gizlət</string>
   <string name="morphe_hide_comments_top_fans_button_title">\"Ən aktiv fanatlar\" düyməsini gizlət</string>
   <string name="morphe_hide_comments_translate_button_title">Tərcümə et düyməsini gizlət</string>
+  <string name="morphe_hide_comments_zero_state_title">​\'Hələ ki şərh yoxdur\' bildirişini gizlət</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Vurğulanmış axtarış linklərini təmizlə</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Yalnız orijinal adi mətni saxlayaraq vurğulanmış axtarış linklərini təmizləyir</string>
   <string name="morphe_hide_keyword_content_screen_title">Açar söz çeşidləyici</string>
@@ -433,6 +435,12 @@ Məhdudiyyətlər:
   <string name="morphe_feed_long_press_menu_summary">Axında videonun istənilən yerinə toxunub saxlamaq onun menyusunu açır</string>
   <string name="morphe_feed_watch_later_button_title">Miniatürlərdə Daha sonra izlə düyməsini göstər</string>
   <string name="morphe_feed_watch_later_button_summary">Daha sonra izlə düyməsi axın videolarının miniatürlərində göstərilir. Ona toxunub saxlamaq Pleylistdə saxlanı açır</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Miniatürlərdə baxış sayını göstər</string>
+  <string name="morphe_feed_view_count_summary">Axın videolarının baxış sayı başlığın altında deyil, miniatürlərinin aşağı sol küncündə göstərilir. Bölmələrdəki kimi bəzi videolar baxış sayını göstərməyə bilər</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Axının miniatürünün bəyənmə sayını göstər</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Axının miniatürünün bəyənmə faiz nisbətini göstər</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV-yə daxil ol\" ani pəncərəsini qapat</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\"Cihazlarınızı qoşun\" açılan pəncərəsini qapat</string>
@@ -441,8 +449,6 @@ Məhdudiyyətlər:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Tək barmaqla bilmədən aktivləşə bilən, fəsilləri ötürən iki barmaqla cüt toxunma jestini qapadır</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Üçüncü tərəf yükləmə tətbiqləri ilə videoları, podkastları və ya mahnıları yüklə</string>
-  <string name="morphe_external_downloader_title">Xarici yükləmə düyməsini göstər</string>
-  <string name="morphe_external_downloader_summary">Video oynadıcıda xarici yükləyicinizi açan örtük düyməsini göstərir</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Endirin düyməsini &amp; seçimini əvəzlə</string>
   <string name="morphe_external_downloader_action_button_summary">Əsas yükləmə xüsusiyyəti əvəzinə seçdiyiniz xarici yükləyicini istifadə edir</string>
@@ -1157,6 +1163,11 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Geri düyməsi axından çıxarır</string>
   <string name="morphe_back_button_always_exits_feed_summary">Geriyə basmaq, axının yuxarısına sürüşdürmək əvəzinə, həmişə tətbiqdən çıxır</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Animasiyaları məcbur et</string>
+  <string name="morphe_force_animations_entry_default">İlkin</string>
+  <string name="morphe_force_animations_entry_always_on">Həmişə aktiv</string>
+  <string name="morphe_force_animations_entry_always_off">Həmişə bağlı</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Status panelini gizlət</string>
   <string name="morphe_hide_status_bar_summary">Sistem status panelini gizlədir. Onu bir anlıq göstərmək üçün yuxarı kənardan aşağı sürüşdür</string>
@@ -1392,12 +1403,11 @@ Məhdudiyyət: Köhnə üslub üçün \"Daha çox video\" örtüyünə qayıdır
   <string name="morphe_series_tracker_screen_summary">Pleylistləri seriya kimi izləyin və yeri saxlayın</string>
   <string name="morphe_series_tracker_title">Seriya izləməsini aktivləşdir</string>
   <string name="morphe_series_tracker_summary">Tarixçəyə Seriya səhifəsi və pleylistlərə Seriyanı izlə seçimini əlavə edir</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Fəaliyyət cərgəsində Seriyaları göstər</string>
   <string name="morphe_series_tracker_show_button_title">Seriya İzləyicisi düyməsini göstər</string>
   <string name="morphe_series_tracker_show_button_summary">Cari videonun seriyasını izləmək və ya açmaq üçün oynadıcı düyməsi əlavə edir</string>
   <string name="morphe_series_tracker_record_followed_progress_title">İzlənilən seriyaların gedişatını qeydə al</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Bu telefonda saxlanılan seriyalar və əlfəcinlər üçün oynatmanı qeydə al</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Fəaliyyət cərgəsində Tarixçəni göstər</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Ev, Abunəliklər, Bildirişlər, Tarixçə və Siz</string>
   <string name="morphe_series_tracker_ui_cancel">Ləğv et</string>
   <string name="morphe_series_tracker_ui_save">Saxla</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Əlfəcini saxla</string>
@@ -1427,9 +1437,6 @@ Məhdudiyyət: Köhnə üslub üçün \"Daha çox video\" örtüyünə qayıdır
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Seriyanıza baxmaq üçün \"Siz\"-dən Tarixçəni açın</string>
   <string name="morphe_series_tracker_ui_watch_history">Baxış tarixçəsi</string>
   <string name="morphe_series_tracker_ui_series">Seriyalar</string>
-  <string name="morphe_series_tracker_ui_history">Tarixçə</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Abunəliklər</string>
-  <string name="morphe_series_tracker_ui_notifications">Bildirişlər</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Saxlanılan seriyalar yüklənilir…</string>
   <string name="morphe_series_tracker_empty_library">Epizodu izləmək üçün pleylisti izlə</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Pleylist əlfəcini</string>

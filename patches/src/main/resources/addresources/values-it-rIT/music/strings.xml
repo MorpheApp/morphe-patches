@@ -123,11 +123,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">Utilizza il downloader esterno scelto invece del pulsante di azione Scarica predefinito</string>
   <string name="morphe_external_downloader_flyout_menu_title">Sostituisci il menu Scarica</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Utilizza il downloader esterno scelto invece del menu flyout Scarica</string>
-  <string name="morphe_music_in_app_downloads_title">Download nell\'app</string>
-  <string name="morphe_music_in_app_downloads_summary">Scarica audio all\'interno di YouTube Music invece di aprire l\'app di download esterna</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"I brani vengono salvati nello storage privato dell'app e vengono eliminati se YouTube Music viene disinstallato.
-
-Quando questa opzione è attiva, la scheda Download elenca questi brani invece della libreria offline di Music Premium. Disattivandola la scheda viene ripristinata e i download Premium non vengono mai toccati"</string>
   <string name="morphe_music_downloads_screen_title">Download</string>
   <string name="morphe_music_downloads_empty">"Nessun download\nLe tracce scaricate appaiono qui"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
@@ -457,12 +452,17 @@ Per garantire che lo scrobbling sia sincronizzato durante la riproduzione in bac
   <string name="morphe_music_lyrics_keep_screen_on_title">Mantieni lo schermo acceso durante la visualizzazione dei testi</string>
   <string name="morphe_music_lyrics_keep_screen_on_summary">Impedisce che lo schermo si spenga mentre il pannello dei testi è aperto</string>
   <string name="morphe_music_lyrics_section_service_title">Servizio di testi</string>
-  <string name="morphe_music_lyrics_section_overlay_title">Sovrapposizione</string>
+  <string name="morphe_music_lyrics_section_display_title">Visualizza</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronizzazione</string>
+  <string name="morphe_music_lyrics_section_panel_title">Pannello</string>
+  <string name="morphe_music_lyrics_section_languages_title">Lingue</string>
   <string name="morphe_music_lyrics_section_ai_endpoint_title">Endpoint AI</string>
-  <string name="morphe_music_lyrics_source_all_disabled">Tutti i provider disabilitati — testi integrati e testi incorporati</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Tutti i provider disabilitati - testi integrati e testi incorporati</string>
   <string name="morphe_music_lyrics_source_reset_title">Reimpostare l\'ordine dei provider?</string>
   <string name="morphe_music_lyrics_source_reset_message">Ripristina i provider all\'ordine di priorità predefinito</string>
+  <string name="morphe_music_lyrics_clear_cache_title">Elimina testi salvati</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Elimina i testi memorizzati su questo dispositivo</string>
+  <string name="morphe_music_lyrics_clear_cache_done">%1$s MB eliminati</string>
   <string name="morphe_music_token_dialog_get_token">Ottieni token</string>
   <string name="morphe_music_apple_music_token_title">Token utente multimediale di Apple Music</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"Incolla il cookie media-user-token di music.apple.com
@@ -509,24 +509,23 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie salvati</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookie cancellati</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookie non validi — controlla e riprova</string>
-  <string name="morphe_music_lyrics_tap_to_seek_title">Tocca una riga per cercare</string>
-  <string name="morphe_music_lyrics_tap_to_seek_summary">Toccando una riga si salta a quel momento della canzone</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Tocca e tieni premuto una riga</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Tocca una riga per saltare a quel momento nella canzone, tieni premuto per copiare la parola sotto il dito o l\'intera riga se la pressione non è su una parola. Disattiva entrambi i gesti</string>
   <string name="morphe_music_lyrics_show_section_title">Mostra etichette delle sezioni</string>
   <string name="morphe_music_lyrics_show_section_summary">Etichetta ogni nuova sezione del testo con una piccola etichetta, come Strofa o Ritornello</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Mostra il pulsante di copia</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Tocca per copiare i testi originali come testo normale; tieni premuto per salvare il file sorgente dei testi non elaborati in Download</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Tocca per copiare i testi originali come testo semplice; tieni premuto per salvare il file sorgente dei testi grezzi in Download</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Mostra il pulsante Traduci</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Tocca per attivare/disattivare la traduzione; pressione lunga per la sola traduzione. Usa le traduzioni del fornitore, Google Translate o un\'API compatibile con OpenAI.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Tocca per attivare/disattivare la traduzione; tieni premuto per solo traduzione. Usa le traduzioni del provider, Google Translate o un\'API compatibile con OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Mostra il pulsante Romanizza</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Tocca per attivare/disattivare la romanizzazione; pressione lunga per la sola romanizzazione. Usa la romanizzazione del fornitore, Google Translate o un\'API compatibile con OpenAI.</string>
-  <string name="morphe_music_lyrics_local_romanization_title">Romanizzazione locale</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">RomaniZZare sul dispositivo quando il provider, un endpoint compatibile con OpenAI e Google Translate hanno tutti fallito. Solo CJK, circa 80 MB di letture da scaricare.</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_downloading">%1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Tocca per attivare/disattivare la romanizzazione; tieni premuto per solo romanizzazione. Usa la romanizzazione del provider, Google Translate o un\'API compatibile con OpenAI</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Romanizzazione e allineamento locale</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Romanizza sul dispositivo quando il provider, il tuo modello e Google Translate falliscono. La lettura segue ogni parola di un testo sincronizzato; la sincronizzazione delle parole deve essere attiva. Cinese, Cantonese, Giapponese, Coreano, Greco, Russo, Georgiano, Armeno; circa 120 MB</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Lettura %1$s: %2$d%%</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Letture pronte (%1$d parole CJK)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_failed">Download non riuscito: disattivare e riattivare per riprovare</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Letture pronte (%1$d voci)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Scaricamento non riuscito: disattiva e riattiva per riprovare</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostra il pulsante Aggiorna</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Tocca per passare al testo candidato successivo; tieni premuto per cercare i testi per titolo del brano e artista</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Tocca per passare al candidato di testo successivo; tieni premuto per cercare i testi per titolo del brano e artista</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cerca testi</string>
   <string name="morphe_music_lyrics_search_title_hint">Titolo del brano</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artista</string>
@@ -542,7 +541,9 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_hide_unplayed_title">Copia i testi</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Salva il file sorgente dei testi</string>
   <string name="morphe_music_lyrics_mediasession_title">Mostra i testi di MediaSession sulla schermata di blocco</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Mostra la riga corrente sullo schermo di blocco, Android Auto e Bluetooth. Richiede Android 11 o versioni successive</string>
   <string name="morphe_music_lyrics_miniplayer_title">Mostra i testi nel mini-player</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">Mostra la riga corrente nel miniplayer, con il brano spostato nei sottotitoli</string>
   <string name="morphe_music_lyrics_display_artist_first_title">Visualizzazione di artista e titolo su MediaSession. ON \"Artista - Titolo\" e OFF \"Titolo - Artista\". Non influisce sulla ricerca dei testi.</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">Alterna l\'ordine di visualizzazione di Artista e Titolo nel Miniplayer e in MediaSession. ON \"Artista - Titolo\" e OFF \"Titolo - Artista\" Non influisce sulla ricerca dei testi</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtri</string>
@@ -561,7 +562,7 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_sb_no_video">Questa traccia non ha alcun id video da inviare</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Fonte: %s</string>
-  <string name="morphe_music_lyrics_contribute_credit">Premere a lungo il pulsante copia per salvare questo LRC; se riesci a perfezionare i tempi e condividerli con i fornitori della comunità, te ne saremmo grati.</string>
+  <string name="morphe_music_lyrics_contribute_credit">Premi a lungo il pulsante copia per salvare questo LRC; se riesci a ottimizzare i tempi e condividerli con i provider della community, te ne saremmo grati</string>
   <string name="morphe_music_lyrics_translated_by_google">Tradotto da Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Romanizzato da Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Tradotto da %s</string>
@@ -584,12 +585,12 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_refreshing">Aggiornamento in corso</string>
   <string name="morphe_music_lyrics_refreshed">Aggiornato</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Chiave API QuickLRC</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC trascrive o allinea temporalmente i testi per la traccia corrente. Un servizio separato, non correlato all\'endpoint compatibile con OpenAI sopra indicato.</string>
-  <string name="morphe_music_lyrics_transcribe_key_set_summary">Chiave QuickLRC salvata. Utilizzare il pulsante di allineamento nella finestra di ricerca dei testi o il prompt del pannello quando una traccia non ha testi.</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC trascrive o allinea temporalmente i testi per la traccia corrente. Un servizio separato, non correlato all\'endpoint compatibile con OpenAI sopra indicato</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">Chiave QuickLRC salvata. Usa il pulsante di allineamento nella finestra di dialogo di ricerca dei testi o il prompt del pannello quando una traccia non ha testi</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Chiave API QuickLRC salvata</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC non ha accettato quella chiave</string>
   <string name="morphe_music_lyrics_transcribe_key_cleared">Chiave API QuickLRC cancellata</string>
-  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC indicizza temporalmente i testi privi di timestamp o li trascrive dalla traccia, a fronte di un costo di crediti. Con una chiave impostata, le tracce senza testi offrono la trascrizione e la finestra di ricerca ottiene un pulsante di allineamento.</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC inserisce le tempistiche nei testi che non ce l\'hanno, oppure li trascrive dalla traccia, a costo di crediti. Con una chiave impostata, le tracce senza testi offrono la trascrizione e la finestra di dialogo di ricerca aggiunge un pulsante di allineamento</string>
   <string name="morphe_music_lyrics_transcribe_align">Richiedi allineamento QuickLRC</string>
   <string name="morphe_music_lyrics_transcribe_aligning">Allineamento in corso</string>
   <string name="morphe_music_lyrics_transcribe_apply_align">Applica allineamento</string>
@@ -597,10 +598,12 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_transcribe_working">Trascrizione in corso</string>
   <string name="morphe_music_lyrics_transcribe_cancelled">Trascrizione annullata</string>
   <string name="morphe_music_lyrics_transcribe_local_unsupported">Solo le tracce riprodotte da YouTube possono essere trascritte</string>
-  <string name="morphe_music_lyrics_transcribe_no_text">Nessun testo da allineare: trascrizione al suo posto</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Nessun testo da allineare - trascrizione al suo posto</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC non ha elaborato questa traccia</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">I crediti QuickLRC sono esauriti per questa traccia</string>
-  <string name="morphe_music_lyrics_about_summary">"I testi vengono abbinati in base al titolo e all'artista; metadati insoliti potrebbero non trovare nulla o la versione sbagliata. Usa Aggiorna per cambiare versione. I provider contrassegnati con * richiedono un token. Non tutti i provider abilitati vengono sempre interrogati nell'ordine che hai impostato, ma rispondono in base alla loro velocità."</string>
+  <string name="morphe_music_lyrics_about_summary">"I testi vengono abbinati per titolo e artista; metadati insoliti potrebbero non trovare nulla o la versione sbagliata. Usa Aggiorna per cambiare versione. I provider contrassegnati con * richiedono un token. Non tutti i provider abilitati vengono sempre richiesti nel tuo ordine, ma rispondono in base alla loro velocità.
+
+I testi provengono da servizi di terze parti che non sono affiliati, sponsorizzati o approvati da Morphe. Ognuno viene utilizzato così com'è: i testi, la loro disponibilità e la loro licenza rimangono a quei servizi e ai loro licenzianti, e il loro utilizzo può essere soggetto ai loro termini di servizio. Ciò che raggiunge un servizio abilitato è solo la ricerca che hai richiesto - il titolo, l'artista e, dove il servizio ne ha bisogno, l'ID video. L'endpoint AI opzionale e la trascrizione QuickLRC vengono eseguiti solo dopo che li hai configurati, e ricevono il testo dei testi o l'URL video del brano."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Abilita solo i provider che utilizzi, oppure mantieni le impostazioni predefinite — richieste costanti possono sovraccaricare i siti di testi della community</string>
   <string name="morphe_music_lyrics_hide_info_title">Nascondi la riga dei crediti</string>
   <string name="morphe_music_lyrics_hide_info_summary">Caricamento testi...</string>
@@ -614,15 +617,17 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_use_ai_section_title">Sezione AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilizzato solo quando il provider non fornisce etichette di sezione come Ritornello o Strofa, che vengono quindi rilevate dal modello compatibile con OpenAI</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">Impostazioni AI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configurare l\'endpoint API compatibile con OpenAI per la traduzione dei testi basata su AI, la romanizzazione e la suddivisione delle sezioni.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configura l\'endpoint API compatibile con OpenAI per la traduzione dei testi, la romanizzazione e le sezioni basate sull\'IA</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL dell\'endpoint API (es. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Chiave API (lasciare vuota per accesso anonimo)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nome del modello (es. openai-fast, gpt-4o-mini)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Modello di prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Segnaposti: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt salvato</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt salvato, ma l\'endpoint AI non è ancora utilizzabile. Configuralo prima nelle Impostazioni AI.</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt salvato, ma l\'endpoint AI non è ancora utilizzabile. Configurarlo prima nelle Impostazioni AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt ripristinato</string>
+  <string name="morphe_music_lyrics_ai_extra_body_hint">Corpo della richiesta aggiuntivo (JSON, unito a ogni richiesta AI)</string>
+  <string name="morphe_music_lyrics_ai_extra_body_invalid">JSON non valido. Correggilo o svuota il campo prima di salvare</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Impostazioni AI salvate</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Impossibile connettersi all\'endpoint AI. Controlla le tue impostazioni</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Impostazioni AI ripristinate</string>

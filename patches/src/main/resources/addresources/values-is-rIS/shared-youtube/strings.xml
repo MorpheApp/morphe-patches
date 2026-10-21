@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Þriðja)</string>
   <string name="morphe_theme_color_custom_entry">Sérsniðið</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Niðurhaldið</string>
+  <string name="morphe_external_downloader_screen_title">Niðurstöður</string>
+  <string name="morphe_download_mode_title">Sniðmát niðurhals</string>
+  <string name="morphe_download_mode_entry_default">Sjálfgefið</string>
+  <string name="morphe_download_mode_entry_in_app">Niðurhal í forriti</string>
+  <string name="morphe_download_mode_entry_external">Ytri niðurhalstjóri</string>
   <string name="morphe_external_downloader_name_title">Nafn pakkans fyrir niðurhal</string>
   <string name="morphe_external_downloader_name_summary">Nafn pakkans á uppsettu niðurhalasforritinu þínu</string>
   <string name="morphe_external_downloader_other_item_hint">Sláðu inn pakkarnafn</string>

@@ -144,7 +144,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
                 opcode(Opcode.IF_NE),
                 fieldAccess(
                     opcode = Opcode.IGET_OBJECT,
-                    type = "Lcom/google/android/apps/youtube/music/watchpage/ui/WatchWhileLayout;",
+                    type = WATCH_WHILE_LAYOUT_CLASS,
                     location = MatchAfterImmediately()
                 ),
                 methodCall(

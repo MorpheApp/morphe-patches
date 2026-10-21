@@ -15,6 +15,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
+import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+
 /**
  * Small bounded wire editor; preserves unknown renderer fields and uses the host protobuf runtime.
  */
@@ -123,31 +126,20 @@ final class NavigationProto {
     static String kind(byte[] item) {
         String id = string(item).toLowerCase(Locale.ROOT);
         int icon = icon(item);
-        if (id.contains("history")) return "history";
         if (icon == 406 || icon == 1154) return "home";
-        if (id.contains("subscription") || icon == 408) return "subscriptions";
-        if (id.contains("activity") || id.contains("notification") || icon == 355 || icon == 1156)
-            return "notifications";
         if (id.contains("library") || id.contains("account") || id.contains("you"))
             return "profile";
         return "other";
     }
 
-    static byte[] history(byte[] home, String title) {
-        return destination(home, "FEhistory", title, 2);
-    }
-
-    static byte[] destination(byte[] home, String browseId, String title, int icon) {
-        byte[] item = replace(home, 1, browseId.getBytes(StandardCharsets.UTF_8));
-        item = replace(item, 2, field(BROWSE, text(2, browseId)));
+    static byte[] series(byte[] home, String title) {
+        // With the History identifier, the app opens every History page in this tab.
+        byte[] item = replace(home, 1, "morphe_series_tracker".getBytes(StandardCharsets.UTF_8));
+        item = replace(item, 2, field(BROWSE, text(2, "FEhistory")));
         item = replace(item, 3, field(1, text(1, title)));
         item = replace(item, 4, field(75730170, text(2, title)));
-        ByteArrayOutputStream value = new ByteArrayOutputStream();
-        writeVarint(value, icon);
-        item = replace(
-                item,
-                5,
-                encode(Collections.singletonList(new Field(1, 0, value.toByteArray()))));
+        // NavigationBar.NavigationButton.SERIES recognizes this icon type.
+        item = replace(item, 5, Icon.newBuilder().setYtIconType(YTIconType.PLAYLISTS).build().toByteArray());
         // Tracking and target IDs belong to the original Home tab and must not be copied.
         List<Field> fields = read(item);
         fields.removeIf(f -> f.number() == 10);

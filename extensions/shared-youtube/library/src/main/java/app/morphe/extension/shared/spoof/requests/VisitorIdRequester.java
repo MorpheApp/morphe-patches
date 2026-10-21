@@ -186,7 +186,8 @@ public final class VisitorIdRequester {
             final int connectionTimeoutMillis = 5000;
             String url = String.format(YT_API_URL_FORMAT,
                     // TVHTML5 does not support the '/visitor_id' endpoint.
-                    clientType == ClientType.TV_SABR || clientType == ClientType.TV_SABR_WII_U ? "guide" : "visitor_id"
+                    clientType == ClientType.TV_SABR || clientType == ClientType.TV_SABR_WII_U
+                            || clientType == ClientType.TV_DASH ? "guide" : "visitor_id"
             );
             HttpURLConnection connection = Requester.openConnection(url);
             connection.setRequestMethod("POST");
@@ -225,7 +226,7 @@ public final class VisitorIdRequester {
             if (BaseSettings.DEBUG.get()) {
                 String responseMessage = connection.getResponseMessage();
                 Logger.LogMessage logMessage = () -> "Debug: Unexpected visitorId response code: "
-                        + responseCode + " message: " + responseMessage;
+                        + responseCode + " message: " + responseMessage + " client: " + clientType;
                 if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
                     Logger.printException(logMessage);
                 } else {

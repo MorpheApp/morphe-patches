@@ -205,14 +205,14 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Копирајте го временскиот печат стандардно</string>
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Исклучи прозорче за најава на ТВ</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Изберете ја надворешната апликација што ќе ги обработува вашите преземања</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Ја исклучува двојната допренска гестикулација со два прста што ги прескокнува поглавјата, која може случајно да се активира со еден прст</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_title">Прикажи копче за преземање од надворешен извор</string>
-  <string name="morphe_external_downloader_summary">Покажува копче на преклоп во видео плеер што ја отвора вашата апликација за преземање од трета страна</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">По нарачка</string>
@@ -667,6 +667,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_opacity_title">Непровидност на наслагата</string>
   <string name="morphe_miniplayer_opacity_summary">Прилагодете ја транспарентноста (0 е транспарентно, 100 е непровидно)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_entry_default">Стандардно</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Вклучи анимиран екран за вчитување</string>

@@ -7,6 +7,9 @@
 
 package app.morphe.extension.youtube.patches.utils;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -30,6 +33,8 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.FeedEngagementCountsPatch;
+import app.morphe.extension.youtube.patches.FeedViewCountPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -49,13 +54,17 @@ import kotlin.Unit;
  * a channel, do not belong to any video.
  */
 @SuppressWarnings("unused")
-public final class FeedVideoCards {
+public final class FeedVideoCardsPatch {
 
-    private static final boolean ENABLED = Settings.FEED_WATCH_LATER_BUTTON.get();
+    private static final boolean ENABLED = FeedEngagementCountsPatch.ENABLED
+            || FeedViewCountPatch.ENABLED
+            || Settings.FEED_WATCH_LATER_BUTTON.get();
 
     /** A card must be almost as wide as the screen. Shelves and grids are not used. */
     private static final float MIN_WIDTH_OF_SCREEN = 0.7f;
     public static final float THUMBNAIL_RATIO = 9f / 16f;
+    /** Fade in of the badges drawn on the thumbnails. */
+    public static final long BADGE_FADE_IN_MS = 100;
     private static final int MIN_WIDTH_DP = 240;
 
     /** Shorter texts, such as a duration, are shown by too many videos. */
@@ -177,7 +186,7 @@ public final class FeedVideoCards {
         }
     }
 
-    private FeedVideoCards() {
+    private FeedVideoCardsPatch() {
     }
 
     private static boolean contains(byte[] bytes, byte[] search) {
@@ -278,11 +287,19 @@ public final class FeedVideoCards {
     }
 
     public static boolean isVideoShaped(ComponentHost host) {
+        return isVideoShaped(host, MIN_WIDTH_OF_SCREEN);
+    }
+
+    /**
+     * @param minWidthOfScreen Smallest width of the card, relative to the width of the screen.
+     *                         Cards of a grid, such as in landscape, are narrower than the screen.
+     */
+    public static boolean isVideoShaped(ComponentHost host, float minWidthOfScreen) {
         final int width = host.getWidth();
         final float density = host.getResources().getDisplayMetrics().density;
         final int screenWidth = host.getResources().getDisplayMetrics().widthPixels;
         return width >= MIN_WIDTH_DP * density
-                && width >= screenWidth * MIN_WIDTH_OF_SCREEN
+                && width >= screenWidth * minWidthOfScreen
                 && host.getHeight() >= width * THUMBNAIL_RATIO + 40 * density
                 // Not the Shorts shelf, or the Shorts player.
                 // Square thumbnails are used too, such as in the Music feed.
@@ -291,6 +308,50 @@ public final class FeedVideoCards {
 
     /** Height of the texts of a video below its thumbnail, at most. */
     private static final int MAX_BELOW_THUMBNAIL_DP = 300;
+
+    /** Depth of the views of a card that are searched for the thumbnail. */
+    private static final int MAX_THUMBNAIL_SEARCH_DEPTH = 4;
+
+    /**
+     * @return The bottom of the thumbnail of a card, relative to the root host.
+     *         Vertical videos show a taller thumbnail, so the height is not always 16:9.
+     *         The thumbnail is the smallest view at the top of the card that is as wide as
+     *         the card and at least as tall as a 16:9 thumbnail.
+     */
+    public static int getThumbnailBottom(ComponentHost root) {
+        final int width = root.getWidth();
+        final int minHeight = Math.round(width * THUMBNAIL_RATIO);
+        final int bottom = findThumbnailBottom(root, 0, 0, width, minHeight, MAX_THUMBNAIL_SEARCH_DEPTH);
+        return bottom == Integer.MAX_VALUE ? minHeight : bottom;
+    }
+
+    /**
+     * @return The smallest bottom of a thumbnail shaped child, or {@link Integer#MAX_VALUE}
+     *         if there is none.
+     */
+    private static int findThumbnailBottom(ViewGroup group, int left, int top,
+                                           int width, int minHeight, int depth) {
+        int best = Integer.MAX_VALUE;
+        for (int i = 0, count = group.getChildCount(); i < count; i++) {
+            View child = group.getChildAt(i);
+            if (child.getVisibility() != View.VISIBLE) {
+                continue;
+            }
+            final int childLeft = left + child.getLeft();
+            final int childTop = top + child.getTop();
+            if (childLeft != 0 || childTop != 0 || child.getWidth() != width) {
+                continue;
+            }
+            if (child.getHeight() >= minHeight) {
+                best = Math.min(best, child.getHeight());
+            }
+            if (depth > 1 && child instanceof ViewGroup childGroup) {
+                best = Math.min(best, findThumbnailBottom(childGroup, childLeft, childTop,
+                        width, minHeight, depth - 1));
+            }
+        }
+        return best;
+    }
 
     /**
      * Duration of a video, such as 4:05 or 1:02:33. Music videos show an icon before it,
@@ -304,6 +365,14 @@ public final class FeedVideoCards {
     private static final Pattern BADGE_PATTERN = Pattern.compile("^\\p{Lu}{2,12}$");
 
     /**
+     * @return If the text is a duration, such as 4:05, or a badge such as the live badge.
+     */
+    public static boolean isVideoBadgeText(String text) {
+        return (text.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(text).find())
+                || BADGE_PATTERN.matcher(text).matches();
+    }
+
+    /**
      * Videos show their duration, or a badge such as the live badge, on the thumbnail.
      * Mixes, playlists and Shorts do not.
      */
@@ -312,9 +381,7 @@ public final class FeedVideoCards {
         if (textContent != null) {
             for (CharSequence text : textContent.getTextItems()) {
                 if (text != null) {
-                    String item = text.toString().trim();
-                    if ((item.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(item).find())
-                            || BADGE_PATTERN.matcher(item).matches()) {
+                    if (isVideoBadgeText(text.toString().trim())) {
                         return true;
                     }
                 }
@@ -347,6 +414,49 @@ public final class FeedVideoCards {
         }
     }
 
+    @Nullable
+    private static Activity findActivity(Context context) {
+        while (context instanceof ContextWrapper wrapper) {
+            if (context instanceof Activity activity) {
+                return activity;
+            }
+            context = wrapper.getBaseContext();
+        }
+        return null;
+    }
+
+    /**
+     * The share sheet and other bottom sheets are dialogs that can show the thumbnail and the texts
+     * of the opened video, so they look like a card. Feeds are in the window of the activity.
+     */
+    public static boolean isInDialog(ComponentHost host) {
+        Activity activity = findActivity(host.getContext());
+        if (activity != null && activity.getWindow() != null) {
+            View decorView = activity.getWindow().peekDecorView();
+            if (decorView != null && host.getRootView() != decorView) {
+                return true;
+            }
+        }
+        return isInBottomSheet(host);
+    }
+
+    /**
+     * Bottom sheets that are shown in the window of the activity.
+     */
+    private static boolean isInBottomSheet(View view) {
+        ViewParent parent = view.getParent();
+        while (parent instanceof View parentView) {
+            final int id = parentView.getId();
+            // Generated ids, which have no package, are not resources.
+            if (id != View.NO_ID && (id >>> 24) != 0
+                    && parentView.getResources().getResourceEntryName(id).contains("bottom_sheet")) {
+                return true;
+            }
+            parent = parentView.getParent();
+        }
+        return false;
+    }
+
     /**
      * @return If the view is a list that scrolls sideways, such as a shelf of videos.
      */
@@ -364,7 +474,7 @@ public final class FeedVideoCards {
      * A shelf shows many videos, and is shaped like a single video. The texts of its first video
      * would decide the video of the whole shelf, and stay when the shelf is scrolled.
      */
-    private static boolean hasHorizontalList(ViewGroup group) {
+    public static boolean hasHorizontalList(ViewGroup group) {
         for (int i = 0, count = group.getChildCount(); i < count; i++) {
             View child = group.getChildAt(i);
             if (isHorizontalList(child)
@@ -454,7 +564,10 @@ public final class FeedVideoCards {
         }
     }
 
-    private static void scheduleRetry(ComponentHost root) {
+    /**
+     * Checks the card again a little later, such as when what is drawn on it was not found yet.
+     */
+    public static void scheduleRetry(ComponentHost root) {
         Integer count = retries.get(root);
         final int attempt = count == null ? 0 : count;
         if (attempt >= MAX_RETRIES) {
@@ -493,6 +606,9 @@ public final class FeedVideoCards {
                 } else {
                     cardVideoIds.put(root, videoId);
                 }
+                final String cardVideoId = PLAYLIST.equals(videoId) ? null : videoId;
+                FeedEngagementCountsPatch.onCardLaidOut(root, cardVideoId);
+                FeedViewCountPatch.onCardLaidOut(root, cardVideoId);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "updateRoots failure", ex);
@@ -512,11 +628,19 @@ public final class FeedVideoCards {
             if (root == null) {
                 return;
             }
-            // A new layout can show another video, which is checked again as many times.
-            retries.remove(root);
-            scheduleUpdate(root);
+            requestUpdate(root);
         } catch (Exception ex) {
             Logger.printException(() -> "onComponentHostLayout failure", ex);
         }
+    }
+
+    /**
+     * Checks the root host once the layout pass is done, such as after it was attached again.
+     * Must be called on the main thread.
+     */
+    public static void requestUpdate(ComponentHost root) {
+        // A new layout can show another video, which is checked again as many times.
+        retries.remove(root);
+        scheduleUpdate(root);
     }
 }

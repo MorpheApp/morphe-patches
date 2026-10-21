@@ -63,6 +63,8 @@ Second \"item\" text"</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -182,6 +184,8 @@ Second \"item\" text"</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_entry_default">The </string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->

@@ -12,7 +12,9 @@ import androidx.annotation.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -30,7 +32,7 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
-public final class QuickLrcClient {
+public final class QuickLRCClient {
 
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
@@ -109,9 +111,10 @@ public final class QuickLrcClient {
         void onTranscribed(@Nullable Lyrics lyrics, @Nullable Failure failure);
     }
 
-    private QuickLrcClient() {
+    private QuickLRCClient() {
     }
 
+    @SuppressWarnings("ConstantValue")
     public static boolean isConfigured() {
         final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
         return key != null && !key.trim().isEmpty();
@@ -127,12 +130,12 @@ public final class QuickLrcClient {
         running = null;
         if (current != null) {
             current.cancel(true);
-        } else {
         }
     }
 
+    @SuppressWarnings("ConstantValue")
     public static void transcribe(String videoId, @Nullable String lyrics,
-            BooleanSupplier stillWanted, Callback callback) {
+                                  BooleanSupplier stillWanted, Callback callback) {
         final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
         if (key == null || key.trim().isEmpty()) {
             Utils.runOnMainThread(() -> callback.onTranscribed(null, Failure.NO_KEY));
@@ -146,10 +149,9 @@ public final class QuickLrcClient {
         final String text = lyrics == null ? "" : lyrics.trim();
 
         cancel();
-        final Future<?> task = executor.submit(() -> {
+        running = executor.submit(() -> {
             Failure failure = null;
             Lyrics result = null;
-            final long startedAt = System.currentTimeMillis();
             try {
                 if (stillWanted.getAsBoolean()) {
                     final String ttml = post(source, text, key.trim());
@@ -161,7 +163,6 @@ public final class QuickLrcClient {
                             failure = Failure.FAILED;
                         }
                     }
-                } else {
                 }
             } catch (OutOfCreditsException ex) {
                 failure = Failure.OUT_OF_CREDITS;
@@ -180,7 +181,6 @@ public final class QuickLrcClient {
             final Failure reason = failure;
             Utils.runOnMainThread(() -> callback.onTranscribed(deliver, reason));
         });
-        running = task;
     }
 
     private static final class OutOfCreditsException extends IOException {
@@ -204,10 +204,10 @@ public final class QuickLrcClient {
         String target = ENDPOINT;
         for (int hop = 0; hop <= MAX_REDIRECTS; hop++) {
             final Attempt attempt = sendOnce(target, json, apiKey);
-            final int code = attempt.code;
+            final int code = attempt.code();
 
             if (code == 307 || code == 308 || code == 301 || code == 302) {
-                final String location = attempt.location;
+                final String location = attempt.location();
                 if (location == null || location.isEmpty()) {
                     return null;
                 }
@@ -234,29 +234,15 @@ public final class QuickLrcClient {
                 Logger.printDebug(() -> "QuickLRC returned HTTP " + code);
                 return null;
             }
-            return attempt.body;
+            return attempt.body();
         }
         return null;
     }
 
-    private static final class Attempt {
-        final int code;
-        final String message;
-        final String contentType;
-        final int contentLength;
-        final String location;
-        final String body;
-        final String errorBody;
-
-        Attempt(int code, String message, String contentType, int contentLength,
-                String location, String body, String errorBody) {
-            this.code = code;
-            this.message = message == null ? "" : message;
-            this.contentType = contentType;
-            this.contentLength = contentLength;
-            this.location = location;
-            this.body = body;
-            this.errorBody = errorBody;
+    private record Attempt(int code, String message, String contentType, int contentLength,
+                           String location, String body, String errorBody) {
+        public Attempt {
+            if (message == null) message = "";
         }
     }
 
@@ -282,7 +268,7 @@ public final class QuickLrcClient {
             final String location = conn.getHeaderField("Location");
             if (code == 200) {
                 try (java.io.InputStream in = conn.getInputStream()) {
-                    final String body = new String(in.readAllBytes(), StandardCharsets.UTF_8);
+                    final String body = new String(readAllBytes(in), StandardCharsets.UTF_8);
                     return new Attempt(code, conn.getResponseMessage(), conn.getContentType(),
                             conn.getContentLength(), location, body, null);
                 }
@@ -307,13 +293,23 @@ public final class QuickLrcClient {
         }
     }
 
+    private static byte[] readAllBytes(InputStream in) throws IOException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buffer = new byte[8192];
+        int read;
+        while ((read = in.read(buffer, 0, buffer.length)) != -1) {
+            out.write(buffer, 0, read);
+        }
+        return out.toByteArray();
+    }
+
     @Nullable
     private static String readAll(@Nullable java.io.InputStream in) {
         if (in == null) {
             return null;
         }
         try (java.io.InputStream stream = in) {
-            return new String(stream.readAllBytes(), StandardCharsets.UTF_8);
+            return new String(readAllBytes(stream), StandardCharsets.UTF_8);
         } catch (IOException ex) {
             return null;
         }
@@ -328,20 +324,15 @@ public final class QuickLrcClient {
      */
     private static String dropCjkSeparators(String lrc) {
         final StringBuilder out = new StringBuilder(lrc.length());
-        int removed = 0;
         for (int i = 0; i < lrc.length(); ) {
             if (isWhitespaceAt(lrc, i) && isCjkGap(lrc, i)) {
-                removed += skipWhitespace(lrc, i);
                 i = skipWhitespace(lrc, i);
                 continue;
             }
             out.append(lrc.charAt(i));
             i++;
         }
-        final String cleaned = out.toString();
-        if (removed > 0) {
-        }
-        return cleaned;
+        return out.toString();
     }
 
     /**
@@ -361,7 +352,7 @@ public final class QuickLrcClient {
         return isCjk(lrc.charAt(before)) && isCjk(lrc.charAt(after))
                 || lrc.charAt(before) == '>' && isCjk(lrc.charAt(after))
                 || lrc.charAt(after) == '<' && isCjk(lrc.charAt(before))
-                        && isCjk(charAfterTag(lrc, after));
+                && isCjk(charAfterTag(lrc, after));
     }
 
     /**
@@ -404,15 +395,16 @@ public final class QuickLrcClient {
     // Punctuation included: {@code ，} is U+FF0C, script COMMON, so a script-based check calls
     // it non-CJK and every character after it would keep its gap.
     private static boolean isCjk(char c) {
-        return (c >= '\u3000' && c <= '\u303F')   // CJK symbols and punctuation 、。〈〉「」
-                || (c >= '\u3040' && c <= '\u30FF')   // Kana
-                || (c >= '\u31F0' && c <= '\u31FF')
-                || (c >= '\u4E00' && c <= '\u9FFF')   // Han
-                || (c >= '\uAC00' && c <= '\uD7A3')   // Hangul
-                || (c >= '\uFF01' && c <= '\uFF5E')   // fullwidth ，！？：；（）
-                || (c >= '\uFFE0' && c <= '\uFFE6');
+        return (c >= '\u3000' && c <= '〿')   // CJK symbols and punctuation 、。〈〉「」
+                || (c >= '\u3040' && c <= 'ヿ')   // Kana
+                || (c >= 'ㇰ' && c <= 'ㇿ')
+                || (c >= '一' && c <= '鿿')   // Han
+                || (c >= '가' && c <= '힣')   // Hangul
+                || (c >= '！' && c <= '～')   // fullwidth ，！？：；（）
+                || (c >= '￠' && c <= '￦');
     }
 
+    @SuppressWarnings("ConstantValue")
     @Nullable
     private static Lyrics toLyrics(String lrc) {
         try {
@@ -422,43 +414,15 @@ public final class QuickLrcClient {
             if (lines == null || lines.isEmpty()) {
                 return null;
             }
-            int bgLines = 0;
-            int wordLines = 0;
-            int totalWords = 0;
-            int inverted = 0;
             long firstBegin = Long.MAX_VALUE;
             long lastEnd = Long.MIN_VALUE;
             for (LyricsLine line : lines) {
-                if (line.isBG()) {
-                    bgLines++;
-                }
                 if (line.startTimeMs() < firstBegin) {
                     firstBegin = line.startTimeMs();
                 }
                 if (line.endTimeMs() > lastEnd) {
                     lastEnd = line.endTimeMs();
                 }
-                if (line.endTimeMs() < line.startTimeMs()) {
-                    inverted++;
-                }
-                if (line.hasWords()) {
-                    wordLines++;
-                    for (Word word : line.words()) {
-                        if (word.startMs() > 0 && word.endMs() > 0
-                                && word.endMs() < word.startMs()) {
-                            inverted++;
-                        }
-                    }
-                    totalWords += line.words().size();
-                }
-            }
-            if (wordLines == 0) {
-                // isWordLevel was asked for, so the response was a shape we cannot read.
-            }
-            if (inverted > 0) {
-            }
-            for (int i = 0; i < Math.min(lines.size(), 5); i++) {
-                final LyricsLine line = lines.get(i);
             }
             for (LyricsLine line : lines) {
                 if (!line.hasWords() || line.words().size() > 6) {

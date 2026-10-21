@@ -26,8 +26,8 @@ import java.util.List;
  * <p>Keyed by the track alone: a different provider or a refreshed cache must not silently drop a
  * value the user dialled in, and one that no longer fits is corrected by dragging as before.
  *
- * <p>SharedPreferences, not the lyric cache directory, which sits in {@code getCacheDir} and is
- * reclaimed under storage pressure.
+ * <p>Kept apart from the lyrics on purpose: those are trimmed to a fixed number of entries, and an
+ * offset the user dialled in should not be one of the ones that goes.
  */
 public final class TrackOffsetStore {
 

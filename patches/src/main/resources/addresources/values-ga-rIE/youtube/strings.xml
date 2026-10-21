@@ -275,6 +275,7 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_gift_button_title">Folaigh cnaipe Bronntanais</string>
   <string name="morphe_hide_comments_info_button_title">Cnaipe Folaigh Faisnéise</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Folaigh barra síntiúsóirí comhrá beo</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Folaigh cnaipe scrollú go bun cómhartha beo</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Folaigh leideanna uirlisí comhrá beo</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Folaíonn sé seo na fuinneoga aníos a thaispeántar in aice leis an mbarra ionchuir comhrá, amhail an fógra comhrá do shíntiúsóirí amháin</string>
   <string name="morphe_hide_comments_menu_button_title">Folaigh an cnaipe roghchláir</string>
@@ -288,6 +289,7 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_timestamp_button_title">Cnaipe Folaigh an Stampa Ama</string>
   <string name="morphe_hide_comments_top_fans_button_title">Folaigh cnaipe \'Top fans\'</string>
   <string name="morphe_hide_comments_translate_button_title">Folaigh an cnaipe Aistrigh</string>
+  <string name="morphe_hide_comments_zero_state_title">Folaigh teachtaireacht \'Gan aon trácht go fóill\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Glanadh naisc chuardaigh aibhsithe</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Glanann sé naisc chuardaigh aibhsithe, ag fágáil an téacs simplí bunaidh amháin</string>
   <string name="morphe_hide_keyword_content_screen_title">Scagaire eochairfhocal</string>
@@ -433,6 +435,12 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_feed_long_press_menu_summary">Má dhéanann tú sconadh agus coinneáil in áit ar bith ar fhíseán sa bhfotha, osclófar a roghchlár</string>
   <string name="morphe_feed_watch_later_button_title">Taispeáin an cnaipe \'Féach níos déanaí\' ar mhionsamhla</string>
   <string name="morphe_feed_watch_later_button_summary">Tá cnaipe \'Féach níos déanaí\' le feiceáil ar mhionsamhla físeán sa fhotha. Má dhéanann tú sconna air agus é a choinneáil brúite, osclófar an rogha \'Sábháil chuig seinmliosta\'</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Taispeáin líon na n-amharc ar mhionsamhlacha</string>
+  <string name="morphe_feed_view_count_summary">Taispeántar líon na n-amharc ar fhíseáin sa fhotha ag bun na láimhe clé dá mionsamhla, seachas faoin teideal. I gcás físeáin áirithe, ar nós iad siúd atá i seilfeanna, d’fhéadfadh sé nach dtaispeánfar líon na n-amharc.</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Taispeáin líon na n-aonán ar mhionsamhail sa bhfotha</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Taispeáin mionsamhail beatha cosúil le céatadán</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Díchumasaigh aníos \'Sínigh isteach ar an Teilifís\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Díchumasaigh an preab ‘Ceangail do ghléasanna’</string>
@@ -441,8 +449,6 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_disable_chapter_skip_double_tap_summary">Díchumasaíonn sé an ghluaiseacht sconna dúbailte dhá mhéar a scipeálann caibidlí, a d\'fhéadfaí a spreagadh de thaisme le méar amháin.</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
-  <string name="morphe_external_downloader_title">Taispeáin cnaipe íoslódála seachtrach</string>
-  <string name="morphe_external_downloader_summary">Taispeánann sé cnaipe forleagan sa seinnteoir físe a osclaíonn d’íoslódálaí seachtrach</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Sáraigh an cnaipe Íoslódála &amp; roghchlár</string>
   <string name="morphe_external_downloader_action_button_summary">Úsáideann sé an íoslódáileoir seachtrach roghnaithe agat in ionad an ghné íoslódála stoic</string>
@@ -1157,11 +1163,16 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Fágann an cnaipe cúil as an bhfotha</string>
   <string name="morphe_back_button_always_exits_feed_summary">Má bhrúnn tú ar ais, fágtar an aip i gcónaí seachas scrollaigh go barr an fhotha</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Beochana fórsaithe</string>
+  <string name="morphe_force_animations_entry_default">Réamhshocrú</string>
+  <string name="morphe_force_animations_entry_always_on">I gcónaí ar siúl</string>
+  <string name="morphe_force_animations_entry_always_off">I gcónaí as</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Folaigh an barra stádais</string>
   <string name="morphe_hide_status_bar_summary">Folaíonn sé barra stádais an chórais. Svaip anuas ón imeall uachtarach chun é a thaispeáint ar feadh tamaill</string>
-  <string name="morphe_fix_status_bar_layout_title">Ceartaigh an barra stáit ag clúdach na mbarrbharraí</string>
-  <string name="morphe_fix_status_bar_layout_summary">Coinníonn sé comhsheasmhacht leictreonacha an bharra stáit, ionas nach gclúdaíonn sé na barrbharraí agus nach fágann spás folamh os cionn an imreoir. Múch an rogha seo má chroiseann an app nó má fhéachann na barrbharraí mícheart</string>
+  <string name="morphe_fix_status_bar_layout_title">Ceartaigh an barra stádais a bhíonn ag clúdach na mbarraí uachtaracha</string>
+  <string name="morphe_fix_status_bar_layout_summary">Coinníonn sé leagan amach an bharra stádais comhsheasmhach, ionas nach gclúdaíonn sé na barraí uachtaracha agus nach bhfágann sé spás folamh os cionn an imreora. Múch an rogha seo má thuairteálann an aip nó má bhíonn cuma mhícheart ar na barraí uachtaracha.</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Cúlra téama éadrom</string>
   <string name="morphe_theme_color_light_entry_2">Bán</string>
@@ -1392,12 +1403,11 @@ Teorannú: Filleann sé ar an leagan sean-stíle den fhorleagan 'Tuilleadh físe
   <string name="morphe_series_tracker_screen_summary">Lean seinmliostaí mar shraitheanna agus coinnigh do láthair</string>
   <string name="morphe_series_tracker_title">Cumasaigh rianú sraitheanna</string>
   <string name="morphe_series_tracker_summary">Cuireann sé leathanach Sraithe leis an Stair, agus rogha chun sraith a leanúint le seinmliostaí.</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Taispeáin Sraith sa barra nascleanúna</string>
   <string name="morphe_series_tracker_show_button_title">Taispeáin an cnaipe Rianaitheora Sraitheanna</string>
   <string name="morphe_series_tracker_show_button_summary">Cuireann sé cnaipe imreora leis chun an tsraith a bhaineann leis an bhfíseán reatha a leanúint nó a oscailt</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Taifead dul chun cinn na sraitheanna leanúnacha</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Taifead athsheinm ar an bhfón seo le haghaidh sraitheanna sábháilte agus leabharmharcanna</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Taispeáin Stair sa barra nascleanúna</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Baile, Síntiúis, Fógraí, Stair agus Tusa</string>
   <string name="morphe_series_tracker_ui_cancel">Cealaigh</string>
   <string name="morphe_series_tracker_ui_save">Sábháil</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Sábháil leabharmharc</string>
@@ -1427,9 +1437,6 @@ Teorannú: Filleann sé ar an leagan sean-stíle den fhorleagan 'Tuilleadh físe
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Oscail an Stair ó \'Tú\' chun do shraith a fheiceáil</string>
   <string name="morphe_series_tracker_ui_watch_history">Stair faire</string>
   <string name="morphe_series_tracker_ui_series">Sraith</string>
-  <string name="morphe_series_tracker_ui_history">Stair</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Síntiúis</string>
-  <string name="morphe_series_tracker_ui_notifications">Fógraí</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Á luchtú sraithithe sábháilte…</string>
   <string name="morphe_series_tracker_empty_library">Lean seinmliosta chun súil a choinneáil ar a chuid eipeasóidí</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Leabharmharc seinmliosta</string>

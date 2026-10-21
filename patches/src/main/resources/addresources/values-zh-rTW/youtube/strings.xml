@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">隱藏禮物按鈕</string>
   <string name="morphe_hide_comments_info_button_title">隱藏資訊按鈕</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">隱藏直播聊天捐款者欄</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">隱藏直播聊天框「捲動到底部」按鈕</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">隱藏即時聊天工具提示</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">隱藏在聊天輸入列附近顯示的工具提示彈出視窗，例如僅限訂閱者聊天通知</string>
   <string name="morphe_hide_comments_menu_button_title">隱藏選單按鈕</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">隱藏時間戳按鈕</string>
   <string name="morphe_hide_comments_top_fans_button_title">隱藏「Top fans」按鈕</string>
   <string name="morphe_hide_comments_translate_button_title">隱藏翻譯按鈕</string>
+  <string name="morphe_hide_comments_zero_state_title">隱藏「尚無評論」訊息</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">修飾醒目搜尋連結</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">修飾醒目搜尋連結，僅保留原始純文字</string>
   <string name="morphe_hide_keyword_content_screen_title">關鍵字篩選</string>
@@ -433,6 +435,12 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">在資訊流影片的任意位置輕觸並按住，即可開啟其選單</string>
   <string name="morphe_feed_watch_later_button_title">在縮圖上顯示稍後觀看按鈕</string>
   <string name="morphe_feed_watch_later_button_summary">資訊流影片的縮圖上會顯示「稍後觀看」按鈕。輕觸並按住該按鈕可進入「新增至播放清單」功能</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">在縮圖上顯示觀看次數</string>
+  <string name="morphe_feed_view_count_summary">動態影片的觀看次數顯示於縮圖左下角，而非標題下方。部份影片(例如在「媒體列」中的影片)可能不會顯示觀看次數</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">顯示動態縮圖的按讚數</string>
+  <string name="morphe_ryd_feed_like_ratio_title">顯示動態縮圖的按讚比例</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">停用「登入電視」彈出視窗</string>
   <string name="morphe_disable_connect_your_devices_popup_title">停用「連接您的裝置」快顯視窗</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">停用雙指輕點跳過章節的動作，這可能會因為單指操作而意外觸發</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">使用第三方下載應用程式下載影片、播客或歌曲</string>
-  <string name="morphe_external_downloader_title">顯示外部下載按鈕</string>
-  <string name="morphe_external_downloader_summary">顯示影片播放器中的疊加按鈕，以開啟您的外部下載程式</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">覆蓋「下載」按鈕與選單</string>
   <string name="morphe_external_downloader_action_button_summary">使用您選擇的外部下載程式，而非內建的下載功能</string>
@@ -1157,6 +1163,11 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">返回按鈕會結束動態消息</string>
   <string name="morphe_back_button_always_exits_feed_summary">按返回鍵一律結束應用程式，而不是捲動到動態消息頂端</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">強制啟用動畫</string>
+  <string name="morphe_force_animations_entry_default">預設</string>
+  <string name="morphe_force_animations_entry_always_on">始終顯示</string>
+  <string name="morphe_force_animations_entry_always_off">始終隱藏</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">隱藏狀態列</string>
   <string name="morphe_hide_status_bar_summary">隱藏系統狀態列。從頂端邊緣向下滑動可暫時顯示狀態列</string>
@@ -1391,12 +1402,11 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_screen_summary">將播放清單視為系列並保留位置</string>
   <string name="morphe_series_tracker_title">啟用系列追蹤</string>
   <string name="morphe_series_tracker_summary">在「歷史記錄」中加入系列頁面，並將「追隨系列」選項新增至播放清單</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">在導覽列顯示系列</string>
   <string name="morphe_series_tracker_show_button_title">顯示系列追蹤器按鈕</string>
   <string name="morphe_series_tracker_show_button_summary">新增一個播放器按鈕，以追蹤或開啟目前影片的系列</string>
   <string name="morphe_series_tracker_record_followed_progress_title">記錄已追蹤系列的進度</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">在此手機上記錄已儲存系列和書籤的播放進度</string>
-  <string name="morphe_series_tracker_show_history_tab_title">在導覽列中顯示歷史記錄</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">首頁、訂閱內容、通知、歷史記錄與您</string>
   <string name="morphe_series_tracker_ui_cancel">取消</string>
   <string name="morphe_series_tracker_ui_save">儲存</string>
   <string name="morphe_series_tracker_ui_save_bookmark">儲存書籤</string>
@@ -1426,9 +1436,6 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">前往「您」頁面的歷史記錄以檢視您的系列</string>
   <string name="morphe_series_tracker_ui_watch_history">觀看歷史記錄</string>
   <string name="morphe_series_tracker_ui_series">系列</string>
-  <string name="morphe_series_tracker_ui_history">歷史記錄</string>
-  <string name="morphe_series_tracker_ui_subscriptions">訂閱內容</string>
-  <string name="morphe_series_tracker_ui_notifications">通知</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">正在載入已儲存的系列……</string>
   <string name="morphe_series_tracker_empty_library">追蹤播放清單以跟蹤其劇集</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">播放清單書籤</string>

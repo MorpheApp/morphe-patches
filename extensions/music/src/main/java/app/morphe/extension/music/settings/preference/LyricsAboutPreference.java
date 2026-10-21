@@ -14,6 +14,7 @@ import android.preference.Preference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
+import app.morphe.extension.music.patches.lyrics.romanizers.CantoneseDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.PinyinDictStore;
 
@@ -49,17 +50,22 @@ public class LyricsAboutPreference extends Preference {
      * when the layout is built. */
     private void init() {
         setPersistent(false);
-        setSummary(TextUtils.concat(str("morphe_music_lyrics_about_summary"), notices()));
+        CharSequence notices = notices();
+        setSummary(notices.length() > 0
+                ? TextUtils.concat(str("morphe_music_lyrics_about_summary"), "\n\n", notices)
+                : str("morphe_music_lyrics_about_summary"));
     }
 
     private static CharSequence notices() {
-        String chinese = PinyinDictStore.notice();
-        String japanese = JapaneseDictStore.notice();
-        if (chinese == null && japanese == null) return "";
-
-        return TextUtils.concat("\n\n",
-                chinese != null ? chinese : "",
-                chinese != null && japanese != null ? "\n\n" : "",
-                japanese != null ? japanese : "");
+        StringBuilder joined = new StringBuilder();
+        for (String notice : new String[] {
+                PinyinDictStore.notice(), CantoneseDictStore.notice(), JapaneseDictStore.notice(),
+                PinyinDictStore.wordsNotice(), CantoneseDictStore.wordsNotice()
+        }) {
+            if (notice == null) continue;
+            if (joined.length() > 0) joined.append("\n\n");
+            joined.append(notice);
+        }
+        return joined;
     }
 }

@@ -8,23 +8,25 @@
 package app.morphe.patches.music.video.information
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patcher.util.smali.toInstructions
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.videoinformation.PlayerControllerSetTimeReferenceFingerprint
+import app.morphe.patches.shared.misc.videoinformation.seekSourceUnknownField
+import app.morphe.util.addInstructionsToEnd
 import app.morphe.util.addStaticFieldToExtension
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.lang.ref.WeakReference
 
@@ -72,22 +74,25 @@ val musicVideoInformationPatch = bytecodePatch(
         // Add seekTo(J)Z to the player class so the extension can call it.
         playerClass.methods.add(
             ImmutableMethod(
-                playerType, "seekTo",
+                playerType,
+                "seekTo",
                 listOf(ImmutableMethodParameter("J", emptySet(), "time")),
                 "Z",
                 AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                emptySet(), null,
-                ImmutableMethodImplementation(
-                    4,
+                emptySet(),
+                null,
+                MutableMethodImplementation(4),
+            ).toMutable().apply {
+                addInstructions(
+                    0,
                     """
-                        sget-object v0, $seekSourceEnumType->a:$seekSourceEnumType
+                        sget-object v0, ${seekSourceUnknownField(seekSourceEnumType)}
                         invoke-virtual { p0, p1, p2, v0 }, $playerType->$seekSourceMethodName(J$seekSourceEnumType)Z
                         move-result p1
                         return p1
-                    """.toInstructions(),
-                    null, null,
-                ),
-            ).toMutable()
+                    """
+                )
+            }
         )
 
         // Wire static field + overrideVideoTime() in extension via addStaticFieldToExtension.
@@ -182,9 +187,12 @@ val musicVideoInformationPatch = bytecodePatch(
                 listOf(ImmutableMethodParameter(playerResponseModelClass, emptySet(), null)),
                 "V",
                 AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
-                emptySet(), null,
-                ImmutableMethodImplementation(
-                    REG_PLAYER_RESPONSE + 1,
+                emptySet(),
+                null,
+                MutableMethodImplementation(REG_PLAYER_RESPONSE + 1),
+            ).toMutable().apply {
+                addInstructions(
+                    0,
                     """
                         $videoIdCall
                         move-result-object v$REG_VIDEO_ID
@@ -193,10 +201,9 @@ val musicVideoInformationPatch = bytecodePatch(
                         move-result-wide v$REG_VIDEO_LENGTH
                         invoke-static { v$REG_VIDEO_LENGTH, v$REG_VIDEO_LENGTH_DUMMY }, $EXTENSION_CLASS->setVideoLength(J)V
                         return-void
-                    """.toInstructions(),
-                    null, null,
-                ),
-            ).toMutable()
+                    """
+                )
+            }
             videoIdClass.methods.add(videoInformationMethod)
             videoInformationMethodRef = WeakReference(videoInformationMethod)
 
@@ -225,9 +232,6 @@ fun musicVideoTimeHook(targetClass: String, targetMethod: String) =
 
 /** Hook called with the new video ID when a track changes. */
 fun musicVideoIdHook(descriptor: String) =
-    videoInformationMethodRef.get()!!.apply {
-        addInstruction(
-            implementation!!.instructions.size - 1,
-            "invoke-static { v$REG_VIDEO_ID }, $descriptor"
-        )
-    }
+    videoInformationMethodRef.get()!!.addInstructionsToEnd(
+        "invoke-static { v$REG_VIDEO_ID }, $descriptor"
+    )

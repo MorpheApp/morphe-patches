@@ -74,6 +74,31 @@ internal object TimedTextUrlFingerprint : Fingerprint(
 )
 
 /**
+ * Timed text (srv3) `<s>` segment element handler. Resolves to the pen lookup method.
+ */
+internal object TimedTextSegmentElementFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/util/Deque;", "Lorg/xml/sax/Attributes;", "Ljava/lang/String;"),
+    filters = listOf(
+        string("p"),
+        methodCall(
+            smali = "Lorg/xml/sax/Attributes;->getValue(Ljava/lang/String;)Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+        // Pen lookup by id.
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("I"),
+            returnType = "L",
+            location = MatchAfterWithin(5)
+        ),
+        string("t"),
+        string("ac"),
+        string("<br/>")
+    )
+)
+
+/**
  * Resolves to the caption track class. 21.02+
  */
 internal object CaptionTrackIsDisableOptionFingerprint : Fingerprint(

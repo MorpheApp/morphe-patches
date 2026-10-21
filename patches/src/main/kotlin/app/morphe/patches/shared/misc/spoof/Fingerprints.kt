@@ -23,11 +23,14 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val CUEPOINT_LIST_CLASS =
+    $$"Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass$CuepointList;"
+
 private const val STREAMING_DATA_OUTER_CLASS =
     $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
 
 internal object CuepointListFingerprint : Fingerprint(
-    definingClass = $$"Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass$CuepointList;",
+    definingClass = CUEPOINT_LIST_CLASS,
     name = "<clinit>",
     filters = listOf(
         methodCall(name = "registerDefaultInstance")
@@ -312,5 +315,38 @@ internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
 internal object ReelItemWatchResponseFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45638126L)
+    )
+)
+
+/**
+ * Builds a Cronet url request, which every network request of the app is made with.
+ */
+internal object CronetUrlRequestBuildFingerprint : Fingerprint(
+    name = "build",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Lorg/chromium/net/ExperimentalUrlRequest;",
+    parameters = listOf(),
+    filters = listOf(
+        // Creates the request with the url and the other values of the builder.
+        methodCall(returnType = "Lorg/chromium/net/ExperimentalUrlRequest;")
+    ),
+    custom = { _, classDef ->
+        // TODO: change to 2.0 superclass check.
+        classDef.superclass == "Lorg/chromium/net/ExperimentalUrlRequest\$Builder;"
+    }
+)
+
+internal object CronetUrlRequestSetHttpMethodFingerprint : Fingerprint(
+    classFingerprint = CronetUrlRequestBuildFingerprint,
+    name = "setHttpMethod",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Lorg/chromium/net/ExperimentalUrlRequest\$Builder;",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        )
     )
 )

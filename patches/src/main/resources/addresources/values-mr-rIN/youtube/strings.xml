@@ -310,6 +310,8 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">\'कॉपी व्हिडिओ लिंक\' बटणाच्या टॅप आणि टॅप-अँड-होल्ड क्रिया उलटवते</string>
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीव्हीवर साइन इन करा\' पॉपअप अक्षम करा</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'कनेक्ट युवर डिव्हाइसेस\' पॉपअप अक्षम करा</string>
@@ -318,8 +320,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">अध्याय वगळण्यासाठी दोन-बोटांच्या डबल-टॅप जेस्चर अक्षम करा, जे एका बोटाने चुकून ट्रिगर होऊ शकते</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ॲप्स वापरून व्हिडिओ, पॉडकास्ट किंवा गाणी डाउनलोड करा</string>
-  <string name="morphe_external_downloader_title">डाउनलोड बटण दाखवा</string>
-  <string name="morphe_external_downloader_summary">तुमचे बाह्य डाउनलोडर उघडणारे व्हिडिओ प्लेयरमध्ये ओव्हरले बटण दर्शवते</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">डाऊनलोड बटण आणि मेनू ओव्हरराइड करा</string>
   <string name="morphe_external_downloader_action_button_summary">तुमच्या निवडलेल्या बाह्य डाउनलोडरचा वापर करते, स्टॉक डाउनलोड वैशिष्ट्याऐवजी</string>
@@ -892,6 +892,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_miniplayer_opacity_title">ओव्हरले अपारदर्शकता</string>
   <string name="morphe_miniplayer_opacity_summary">ओव्हरले (Overlay) पातळी समायोजित (Adjust) करा (0 म्हणजे पारदर्शक, 100 म्हणजे अपारदर्शक)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">लाइट थीम पार्श्वभूमी</string>

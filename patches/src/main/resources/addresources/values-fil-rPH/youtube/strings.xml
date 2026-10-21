@@ -275,6 +275,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_gift_button_title">Itago ang button ng Regalo</string>
   <string name="morphe_hide_comments_info_button_title">Itago ang button na Impormasyon</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Itago ang live chat donators bar</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Itago ang pindutan para mag-scroll sa ibaba ng live chat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Itago ang mga tooltip ng live chat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Itinatago ang mga tooltip popup na ipinapakita malapit sa bar ng input ng chat, tulad ng abiso ng chat na para sa mga subscriber lamang</string>
   <string name="morphe_hide_comments_menu_button_title">Itago ang pindutan ng Menu</string>
@@ -288,6 +289,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_timestamp_button_title">Itago ang Timestamp button</string>
   <string name="morphe_hide_comments_top_fans_button_title">Itago ang button na \'Top fans\'</string>
   <string name="morphe_hide_comments_translate_button_title">Itago ang button na Isalin</string>
+  <string name="morphe_hide_comments_zero_state_title">Itago ang mensahe na \'Walang komento pa\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Linisin ang mga naka-highlight na link sa paghahanap</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Nililinis ang mga naka-highlight na link sa paghahanap, at iniiwan lamang ang orihinal na simpleng teksto</string>
   <string name="morphe_hide_keyword_content_screen_title">Filter ng keyword</string>
@@ -433,6 +435,12 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_feed_long_press_menu_summary">Ang pagtatakbo at paghawak ng matagal sa kahit saan sa isang feed video ay nagbubukas ng kanyang menu</string>
   <string name="morphe_feed_watch_later_button_title">Ipakita ang Watch later button sa mga thumbnail</string>
   <string name="morphe_feed_watch_later_button_summary">Isang Watch later button ay ipinapakita sa mga thumbnail ng feed videos. Ang pag-tap at paghawak nito ay nagbubukas ng Save to playlist</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Ipakita ang bilang ng pagtingin sa mga thumbnail</string>
+  <string name="morphe_feed_view_count_summary">Ipinapakit ang bilang ng mga panonood ng mga bidyo sa feed sa kaliwang ibaba ng kanilang mga thumbnail imbes na sa ilalim ng pamagat. Maaaring hindi ipakita ang bilang ng mga panonood sa ilang mga bidyo, tulad nasa mga shelf</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Ipakita ang bilang ng like sa thumbnail ng feed</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Ipakita ang porsyento ng like sa thumbnail ng feed</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Patayin ang popup na \'Mag-sign in sa TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Huwag paganahin ang popup na \'Ikonekta ang iyong mga device\'</string>
@@ -441,8 +449,6 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_disable_chapter_skip_double_tap_summary">Hindi pinapagana ang double-tap gesture gamit ang dalawang daliri na lumalaktaw sa mga chapter, na maaaring hindi sinasadyang ma-trigger gamit ang isang daliri</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Mag-download ng mga video, podcast, o kanta gamit ang mga app na pang-download ng third-party</string>
-  <string name="morphe_external_downloader_title">Ipakita ang button ng panlabas na pag-download</string>
-  <string name="morphe_external_downloader_summary">Nagpapakita ng overlay button sa video player na nagbubukas ng iyong external downloader</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Palitan ang pindutan at menu ng Pag-download &amp;</string>
   <string name="morphe_external_downloader_action_button_summary">Ginagamit ang iyong napiling external downloader sa halip na ang default na feature sa pag-download</string>
@@ -1155,6 +1161,11 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pressing back always exits the app instead of scrolling to the top of the feed</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Pilitin ang animasyon</string>
+  <string name="morphe_force_animations_entry_default">Awtomatiko</string>
+  <string name="morphe_force_animations_entry_always_on">Laging bukas</string>
+  <string name="morphe_force_animations_entry_always_off">Laging sarado</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Itago ang status bar</string>
   <string name="morphe_hide_status_bar_summary">Itinatago ang system status bar. Mag-swipe pababa mula sa tuktok na gilid upang maipakita ito sandali</string>
@@ -1390,12 +1401,11 @@ Limitasyon: Bumabalik sa lumang istilo ng overlay na 'Higit pang mga video'"</st
   <string name="morphe_series_tracker_screen_summary">Sumunod sa mga playlist bilang series at panatilihin ang iyong posisyon</string>
   <string name="morphe_series_tracker_title">Paganahin ang pagsubaybay ng serye</string>
   <string name="morphe_series_tracker_summary">Idinadagdag ang pahina ng Serye sa Kasaysayan at isang Opsyon na Sumunod sa Serye para sa mga playlist</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Ipakita ang Serye sa navigation bar</string>
   <string name="morphe_series_tracker_show_button_title">Ipakita ang button ng Tracker ng Serye</string>
   <string name="morphe_series_tracker_show_button_summary">Idinadagdag ang player button para sundan o buksan ang serye ng kasalukuyang video</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Ire-record ang progreso sa sumusunod na serye</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Ire-record ang playback sa teleponong ito para sa mga naka-save na serye at bookmark</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Ipakita ang History sa navigation bar</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Home, Subscriptions, Notifications, History at You</string>
   <string name="morphe_series_tracker_ui_cancel">Ikansela</string>
   <string name="morphe_series_tracker_ui_save">I-save</string>
   <string name="morphe_series_tracker_ui_save_bookmark">I-save ang bookmark</string>
@@ -1425,9 +1435,6 @@ Limitasyon: Bumabalik sa lumang istilo ng overlay na 'Higit pang mga video'"</st
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Buksan ang History from You upang makita ang iyong mga serye</string>
   <string name="morphe_series_tracker_ui_watch_history">History ng pagmanonood</string>
   <string name="morphe_series_tracker_ui_series">Serye</string>
-  <string name="morphe_series_tracker_ui_history">Kasaysayan</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Subkripsyon</string>
-  <string name="morphe_series_tracker_ui_notifications">Mga Abiso</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Inilo-load ang mga naka-save na serye…</string>
   <string name="morphe_series_tracker_empty_library">Sundan ang playlist upang mapagtuluran ang mga episode nito</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Bookmark ng playlist</string>

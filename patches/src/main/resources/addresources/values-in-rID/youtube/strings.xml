@@ -275,6 +275,7 @@ Perubahan mencakup:
   <string name="morphe_hide_comments_gift_button_title">Sembunyikan tombol Hadiah</string>
   <string name="morphe_hide_comments_info_button_title">Sembunyikan tombol Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Sembunyikan bilah donatur live chat</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Sembunyikan tombol gulir ke bawah obrolan langsung</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Sembunyikan tooltip live chat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Menyembunyikan pop-up tooltip yang muncul di dekat bilah input chat, seperti pemberitahuan chat khusus subscriber</string>
   <string name="morphe_hide_comments_menu_button_title">Sembunyikan tombol Menu</string>
@@ -288,6 +289,7 @@ Perubahan mencakup:
   <string name="morphe_hide_comments_timestamp_button_title">Sembunyikan tombol Stempel Waktu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Sembunyikan tombol \'Penggemar teratas\'</string>
   <string name="morphe_hide_comments_translate_button_title">Sembunyikan tombol Terjemahkan</string>
+  <string name="morphe_hide_comments_zero_state_title">Sembunyikan pesan \'Belum ada komentar\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Bersihkan tautan pencarian yang disorot</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Membersihkan tautan pencarian yang disorot, sehingga hanya menyisakan teks biasa aslinya</string>
   <string name="morphe_hide_keyword_content_screen_title">Penyaring kata kunci</string>
@@ -433,6 +435,12 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_feed_long_press_menu_summary">Mengetuk dan menahan di mana saja pada video umpan membuka menunya</string>
   <string name="morphe_feed_watch_later_button_title">Tampilkan tombol Tonton nanti pada thumbnail</string>
   <string name="morphe_feed_watch_later_button_summary">Tombol Tonton nanti ditampilkan pada thumbnail video umpan. Mengetuk dan menekannya akan membuka Simpan ke daftar putar</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Tampilkan jumlah tayangan pada thumbnail</string>
+  <string name="morphe_feed_view_count_summary">Jumlah tayangan video feed ditampilkan di sudut kiri bawah thumbnail mereka, bukan di bawah judul. Beberapa video, seperti di rak, mungkin tidak menampilkan jumlah tayangan</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Tampilkan jumlah suka pada thumbnail feed</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Tampilkan persentase suka pada thumbnail feed</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Nonaktifkan pesan timbul \'Masuk ke TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Nonaktifkan popup \'Hubungkan perangkat Anda\'</string>
@@ -441,8 +449,6 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_disable_chapter_skip_double_tap_summary">Menonaktifkan gerakan ketuk dua jari yang melewati bab, yang mungkin terpicu secara tidak sengaja dengan satu jari</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Unduh video, podcast, atau lagu menggunakan aplikasi pihak ketiga</string>
-  <string name="morphe_external_downloader_title">Tampilkan tombol unduhan eksternal</string>
-  <string name="morphe_external_downloader_summary">Menampilkan tombol hamparan di pemutar video yang membuka pengunduh eksternal Anda</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Gantikan tombol &amp; menu Unduh</string>
   <string name="morphe_external_downloader_action_button_summary">Menggunakan aplikasi pengunduh eksternal pilihan Anda daripada fitur pengunduhan bawaan</string>
@@ -1157,6 +1163,11 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tombol kembali menutup feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Menekan tombol kembali akan selalu menutup aplikasi bukannya menggulir feed ke atas</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Paksa animasi</string>
+  <string name="morphe_force_animations_entry_default">Bawaan</string>
+  <string name="morphe_force_animations_entry_always_on">Selalu aktif</string>
+  <string name="morphe_force_animations_entry_always_off">Selalu nonaktif</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sembunyikan bilah status</string>
   <string name="morphe_hide_status_bar_summary">Menyembunyikan bilah status sistem. Geser ke bawah dari tepi atas untuk menampilkannya sesaat</string>
@@ -1392,12 +1403,11 @@ Batasan: Mengembalikan tampilan hamparan 'Video lainnya' ke gaya lama"</string>
   <string name="morphe_series_tracker_screen_summary">Ikuti playlist sebagai serial dan simpan posisi Anda</string>
   <string name="morphe_series_tracker_title">Aktifkan pelacakan serial</string>
   <string name="morphe_series_tracker_summary">Menambahkan halaman Serial ke Riwayat dan opsi Ikuti seri ke playlist</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Tampilkan Seri di bilah navigasi</string>
   <string name="morphe_series_tracker_show_button_title">Tampilkan tombol Pelacak Seri</string>
   <string name="morphe_series_tracker_show_button_summary">Menambahkan tombol pemutar untuk mengikuti atau membuka seri dari video saat ini</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Catat kemajuan seri yang diikuti</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Catat pemutaran pada ponsel ini untuk seri dan penanda buku yang disimpan</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Tampilkan Riwayat di bilah navigasi</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Beranda, Subscription, Notifikasi, Riwayat, dan Anda</string>
   <string name="morphe_series_tracker_ui_cancel">Batalkan</string>
   <string name="morphe_series_tracker_ui_save">Simpan</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Simpan penanda buku</string>
@@ -1427,9 +1437,6 @@ Batasan: Mengembalikan tampilan hamparan 'Video lainnya' ke gaya lama"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Buka Riwayat dari Menu Anda untuk melihat seri Anda</string>
   <string name="morphe_series_tracker_ui_watch_history">Riwayat tontonan</string>
   <string name="morphe_series_tracker_ui_series">Seri</string>
-  <string name="morphe_series_tracker_ui_history">Riwayat</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Subscription</string>
-  <string name="morphe_series_tracker_ui_notifications">Notifikasi</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Memuat seri yang disimpan…</string>
   <string name="morphe_series_tracker_empty_library">Ikuti daftar putar untuk melacak episode-episode-nya</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Penanda buku daftar putar</string>

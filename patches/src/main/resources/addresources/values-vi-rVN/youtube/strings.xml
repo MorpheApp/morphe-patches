@@ -275,6 +275,7 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_comments_gift_button_title">Ẩn nút Quà tặng</string>
   <string name="morphe_hide_comments_info_button_title">Ẩn nút Thông tin</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ẩn thanh người quyên góp trong cuộc trò chuyện trực tiếp</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Ẩn nút cuộn xuống cuối hộp thoại trực tiếp</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Ẩn chú thích cuộc trò chuyện trực tiếp</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Ẩn cửa sổ hiện lên gần thanh chat, chẳng hạn như thông báo chat chỉ dành cho người đăng ký</string>
   <string name="morphe_hide_comments_menu_button_title">Ẩn nút Menu</string>
@@ -288,6 +289,7 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_comments_timestamp_button_title">Ẩn nút Dấu thời gian</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ẩn nút \'Người hâm mộ hàng đầu\'</string>
   <string name="morphe_hide_comments_translate_button_title">Ẩn nút Dịch lời nhạc</string>
+  <string name="morphe_hide_comments_zero_state_title">Ẩn thông báo \'Chưa có bình luận\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Loại bỏ chữ xanh</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Loại bỏ chữ xanh, chỉ giữ lại văn bản gốc</string>
   <string name="morphe_hide_keyword_content_screen_title">Bộ lọc từ khóa</string>
@@ -433,6 +435,12 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_feed_long_press_menu_summary">Chạm và giữ ở bất kỳ đâu trên video nguồn sẽ mở menu của video đó</string>
   <string name="morphe_feed_watch_later_button_title">Hiển thị nút Xem sau trên hình thu nhỏ</string>
   <string name="morphe_feed_watch_later_button_summary">Nút Xem sau được hiển thị trên hình thu nhỏ của các video nguồn. Chạm và giữ vào nút này để lưu vào danh sách phát</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Hiển thị số lượt xem trên ảnh thu nhỏ</string>
+  <string name="morphe_feed_view_count_summary">Số lượt xem của video nguồn được hiển thị ở góc dưới bên trái ảnh thu nhỏ thay vì bên dưới tiêu đề. Một số video, chẳng hạn như trong ngăn xếp, có thể không hiển thị số lượt xem</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Hiển thị số lượng thích của ảnh bìa nguồn cấp</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Hiển thị tỷ lệ phần trăm thích của ảnh bìa nguồn cấp</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Tắt cửa sổ \"Đăng nhập vào TV\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Tắt cửa sổ \"Kết nối thiết bị của bạn\"</string>
@@ -441,8 +449,6 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_disable_chapter_skip_double_tap_summary">Tắt cử chỉ chạm bằng hai ngón để chuyển chương, tránh vô tình kích hoạt bằng một ngón</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Tải video, podcast hoặc nhạc bằng ứng dụng tải xuống của bên thứ ba</string>
-  <string name="morphe_external_downloader_title">Hiện nút tải xuống bên ngoài</string>
-  <string name="morphe_external_downloader_summary">Hiện nút mở ứng dụng trình tải xuống bên ngoài trong trình phát video</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Ghi đè nút &amp; menu Tải xuống</string>
   <string name="morphe_external_downloader_action_button_summary">Dùng trình tải xuống bên ngoài đã chọn thay cho tính năng Tải xuống mặc định</string>
@@ -1157,6 +1163,11 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Bấm quay lại để thoát trang video</string>
   <string name="morphe_back_button_always_exits_feed_summary">Bấm nút quay lại sẽ luôn luôn thoát ứng dụng thay vì lướt lên đầu trang video</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Bắt buộc hoạt hình</string>
+  <string name="morphe_force_animations_entry_default">Mặc định</string>
+  <string name="morphe_force_animations_entry_always_on">Luôn bật</string>
+  <string name="morphe_force_animations_entry_always_off">Luôn tắt</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ẩn thanh trạng thái</string>
   <string name="morphe_hide_status_bar_summary">Ẩn thanh trạng thái hệ thống. Vuốt xuống từ mép trên để hiện thanh trạng thái trong giây lát</string>
@@ -1392,12 +1403,11 @@ Hạn chế: Trở về lớp phủ 'Xem thêm video' kiểu cũ"</string>
   <string name="morphe_series_tracker_screen_summary">Theo dõi danh sách phát như các loạt phim và giữ vị trí hiện tại</string>
   <string name="morphe_series_tracker_title">Bật theo dõi loạt phim</string>
   <string name="morphe_series_tracker_summary">Thêm trang Loạt phim vào Lịch sử và tùy chọn Theo dõi loạt phim cho danh sách phát</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Hiển thị Chuỗi trong thanh điều hướng</string>
   <string name="morphe_series_tracker_show_button_title">Hiện nút Theo dõi Loạt tập</string>
   <string name="morphe_series_tracker_show_button_summary">Thêm một nút trình phát để theo dõi hoặc mở loạt tập của video hiện tại</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Ghi lại tiến độ của loạt tập đang theo dõi</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Ghi lại việc phát trên thiết bị này cho các loạt tập đã lưu và dấu trang</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Hiển thị Lịch sử trong thanh điều hướng</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Trang chủ, Đăng ký, Thông báo, Lịch sử và Bạn</string>
   <string name="morphe_series_tracker_ui_cancel">Thôi</string>
   <string name="morphe_series_tracker_ui_save">Lưu</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Lưu dấu trang</string>
@@ -1427,9 +1437,6 @@ Hạn chế: Trở về lớp phủ 'Xem thêm video' kiểu cũ"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Mở Lịch sử từ Bạn để xem loạt tập của bạn</string>
   <string name="morphe_series_tracker_ui_watch_history">Lịch sử đã xem</string>
   <string name="morphe_series_tracker_ui_series">Loạt tập</string>
-  <string name="morphe_series_tracker_ui_history">Lịch sử</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Kênh đăng ký</string>
-  <string name="morphe_series_tracker_ui_notifications">Thông báo</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Đang tải loạt tập đã lưu…</string>
   <string name="morphe_series_tracker_empty_library">Theo dõi playlist để giám sát các tập phim của nó</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Dấu trang danh sách phát</string>

@@ -101,18 +101,59 @@ Os cambios inclúen:
   <string name="morphe_hide_notify_me_button_summary">Oculta o botón de recordatorio para as emisións en directo programadas e as estreas</string>
   <string name="morphe_hide_playables_title">Agochar Playables</string>
   <string name="morphe_hide_playables_summary">Oculta a función que che permite xogar a xogos</string>
+  <string name="morphe_hide_search_term_thumbnails_title">Agochar as miniaturas dos termos de busca</string>
+  <string name="morphe_hide_search_term_thumbnails_summary">Agocha as previsualizacións en miniatura na lista de autocompletado da busca</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
+  <string name="morphe_hide_show_more_button_title">Agochar o botón \"Mostrar máis\"</string>
+  <string name="morphe_hide_show_more_button_summary">Agocha o botón de expandir debaixo dos vídeos nos resultados de busca</string>
+  <string name="morphe_hide_subscribed_channels_bar_title">Agochar a barra das canles subscritas</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Agochar os nomes das canles subscritas</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_summary">Agocha os nomes das canles na barra de canles subscritas</string>
+  <string name="morphe_hide_surveys_title">Agochar enquisas</string>
+  <string name="morphe_hide_surveys_summary">Agochar enquisas e suxestións sobre a precisión das recomendacións no feed</string>
+  <string name="morphe_hide_ticket_shelf_title">Agochar estante de etiquetas</string>
+  <string name="morphe_hide_upload_time_title">Agochar a hora da subida</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Limitacións:
+• As estanterías de Shorts, as páxinas de canles e os resultados de busca poden seguir amosando as horas da subida
+• Non funciona co deseño para automóbiles"</string>
+  <string name="morphe_hide_video_thumbnail_title">Agochar miniatura de vídeo</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_labels_title">Agochar etiquetas de vídeo</string>
+  <string name="morphe_hide_video_labels_summary">Agocha etiquetas como «Dobrado automaticamente» / «Dobrado», «Xera comisión», «Moi comentado», «A xente tamén viu», «produto(s)» e «Tamén che podería gustar»</string>
+  <string name="morphe_hide_view_count_title">Ocultar o reconto de visualizacións</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Limitacións:
+• As estanterías de Shorts, as páxinas de canle e os resultados de busca poden seguir mostrando o reconto de visualizacións
+• Non funciona co deseño para automóbiles"</string>
+  <string name="morphe_hide_web_search_results_title">Ocultar resultados da busca web</string>
+  <string name="morphe_hide_web_search_results_summary">Agocha a sección «Resultado da web» dos resultados de busca</string>
+  <string name="morphe_hide_you_may_like_section_title">Agochar a sección «Pode que che guste»</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
+  <string name="morphe_hide_youtube_doodles_title">Agocha os Doodles de YouTube</string>
+  <string name="morphe_hide_youtube_doodles_summary">Oculta as animacións estacionais e as baseadas en eventos no logotipo de YouTube</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Amosar os Doodles de YouTube pode impedir que se mostren as cabeceiras personalizadas</string>
+  <string name="morphe_hide_channel_bar_title">Agochar a barra de canles</string>
+  <string name="morphe_hide_channel_watermark_title">Ocultar a marca de auga da canle</string>
+  <string name="morphe_hide_chapters_timeline_button_title">Agochar os capítulos e o botón «Neste vídeo»</string>
+  <string name="morphe_hide_crowdfunding_box_title">Agochar a caixa de financiamento colectivo</string>
+  <string name="morphe_hide_emergency_box_title">Agochar as caixas de emerxencia</string>
+  <string name="morphe_hide_info_panels_title">Agochar paneis de información</string>
+  <string name="morphe_hide_info_panels_summary">Agocha os paneis de contexto informativo, como información médica</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
+  <string name="morphe_hide_join_membership_button_title">Ocultar o botón Unirse</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">Agochar o botón «Reprodución do chat en directo»</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">Agocha o botón de reprodución do chat no modo de pantalla completa</string>
+  <string name="morphe_hide_medical_panels_title">Ocultar paneis médicos</string>
+  <string name="morphe_hide_player_gesture_hints_title">Ocultar as suxestións dos xestos do reprodutor</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Agocha as suxestións que aparecen durante os xestos do usuario, como «Arrastra cara arriba para unha busca precisa», «Solta para cancelar» e «2x».</string>
+  <string name="morphe_hide_snackbar_title">Agochar a barra de mensaxes</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
@@ -130,6 +171,8 @@ Os cambios inclúen:
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -260,6 +303,8 @@ Os cambios inclúen:
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_entry_default">Predefinido</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
@@ -306,8 +351,6 @@ Os cambios inclúen:
   <!-- video.series.seriesTrackerPatch -->
   <string name="morphe_series_tracker_ui_cancel">Cancelar</string>
   <string name="morphe_series_tracker_ui_save">Gardar</string>
-  <string name="morphe_series_tracker_ui_history">Historial</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Subscripcións</string>
   <string name="morphe_series_tracker_plan_caught_up">Ao día</string>
   <string name="morphe_series_tracker_continue">Continuar</string>
   <string name="morphe_series_tracker_undo">Anular</string>

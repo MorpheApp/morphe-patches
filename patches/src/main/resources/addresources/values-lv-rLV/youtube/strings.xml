@@ -76,6 +76,8 @@ Second \"item\" text"</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -216,6 +218,7 @@ Second \"item\" text"</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_type_entry_0">Atspējots</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
@@ -257,8 +260,5 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_auto">Automātiski</string>
   <!-- video.series.seriesTrackerPatch -->
   <string name="morphe_series_tracker_ui_cancel">Atcelt</string>
-  <string name="morphe_series_tracker_ui_history">Skatīšanās vēsture</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Abonementi</string>
-  <string name="morphe_series_tracker_ui_notifications">Paziņojumi</string>
   <string name="morphe_series_tracker_undo">Atsaukt</string>
 </resources>

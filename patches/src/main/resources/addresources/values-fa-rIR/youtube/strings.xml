@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">پنهان‌کردن دکمهٔ هدیه</string>
   <string name="morphe_hide_comments_info_button_title">پنهان‌کردن دکمهٔ اطلاعات</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">پنهان‌کردن نوار اهداکنندگان گفت‌وگوی زنده</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">دکمه اسکرول به پایین چت زنده را پنهان کن</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">پنهان‌کردن راهنماهای گفت‌وگوی زنده</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">پنجره‌های راهنمای نزدیک نوار ورودی گفت‌وگو، مانند اعلان گفت‌وگوی فقط مشترکان، را پنهان می‌کند</string>
   <string name="morphe_hide_comments_menu_button_title">پنهان کردن دکمه منو</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">پنهان‌کردن دکمهٔ زمان‌نما</string>
   <string name="morphe_hide_comments_top_fans_button_title">پنهان‌کردن دکمهٔ «طرفداران برتر»</string>
   <string name="morphe_hide_comments_translate_button_title">پنهان‌کردن دکمهٔ ترجمه</string>
+  <string name="morphe_hide_comments_zero_state_title">پنهان کردن پیام «هنوز نظری ثبت نشده است»</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">پاک‌سازی پیوندهای جست‌وجوی برجسته</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">پیوندهای جست‌وجوی برجسته را پاک‌سازی می‌کند و فقط متن سادهٔ اصلی را نگه می‌دارد</string>
   <string name="morphe_hide_keyword_content_screen_title">فیلتر کلمهٔ کلیدی</string>
@@ -433,6 +435,12 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">ضربه زدن و نگه داشتن در هر جایی از یک ویدیوی فید، منوی آن را باز می‌کند</string>
   <string name="morphe_feed_watch_later_button_title">نمایش دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی</string>
   <string name="morphe_feed_watch_later_button_summary">یک دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی ویدیوهای فید نمایش داده می‌شود. ضربه زدن و نگه داشتن آن گزینه ذخیره در لیست پخش را باز می‌کند</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">نمایش تعداد بازدید روی تصاویر کوچک</string>
+  <string name="morphe_feed_view_count_summary">تعداد بازدید ویدیوهای فید در گوشه پایین سمت چپ تصاویر کوچک آن‌ها نمایش داده می‌شود، به جای زیر عنوان. برخی از ویدیوها، مانند those در قفسه‌ها، ممکن است تعداد بازدید را نشان ندهند</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">نمایش تعداد لایک‌های بندانگشتی فید</string>
+  <string name="morphe_ryd_feed_like_ratio_title">نمایش درصد لایک‌های بندانگشتی فید</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">غیرفعال‌کردن پنجرهٔ بازشوی «ورود به تلویزیون»</string>
   <string name="morphe_disable_connect_your_devices_popup_title">غیرفعال‌کردن پنجرهٔ بازشوی «اتصال دستگاه‌ها»</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">حرکت دوضربه‌ای با دو انگشت برای ردکردن فصل‌ها را غیرفعال می‌کند؛ این حرکت ممکن است تصادفاً با یک انگشت فعال شود</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">دانلود موزیک‌ویدئوها، پادکست‌ها یا آهنگ‌ها با برنامه‌های دانلودکنندهٔ شخص ثالث</string>
-  <string name="morphe_external_downloader_title">نمایش دکمهٔ دانلود خارجی</string>
-  <string name="morphe_external_downloader_summary">یک دکمهٔ روی‌هم‌افتاده در پخش‌کنندهٔ ویدئو نشان می‌دهد که دانلودکنندهٔ خارجی شما را باز می‌کند</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">جایگزینی دکمهٔ دانلود</string>
   <string name="morphe_external_downloader_action_button_summary">به‌جای دکمهٔ دانلود اصلی، از دانلودکنندهٔ خارجی انتخاب‌شدهٔ شما استفاده می‌کند</string>
@@ -1157,6 +1163,11 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">دکمهٔ برگشت از خوراک خارج می‌شود</string>
   <string name="morphe_back_button_always_exits_feed_summary">فشردن دکمهٔ برگشت همیشه از برنامه خارج می‌شود، نه اینکه به بالای خوراک پیمایش کند</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">اجرای انیمیشن‌ها</string>
+  <string name="morphe_force_animations_entry_default">پیش‌فرض</string>
+  <string name="morphe_force_animations_entry_always_on">همیشه روشن</string>
+  <string name="morphe_force_animations_entry_always_off">همیشه خاموش</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">پنهان کردن نوار وضعیت</string>
   <string name="morphe_hide_status_bar_summary">نوار وضعیت سیستم را پنهان می‌کند. برای نمایش لحظه‌ای آن، از لبه بالایی به پایین بکشید</string>
@@ -1392,12 +1403,11 @@ AVC (H.264)
   <string name="morphe_series_tracker_screen_summary">پلی‌لیست‌ها را به عنوان سریال دنبال کنید و جایگاه خود را حفظ کنید</string>
   <string name="morphe_series_tracker_title">فعال‌سازی ردیابی سریال</string>
   <string name="morphe_series_tracker_summary">افزودن صفحه سریال به تاریخچه و گزینه دنبال کردن سریال به پلی‌لیست‌ها</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">نمایش سری در نوار ناوبری</string>
   <string name="morphe_series_tracker_show_button_title">نمایش دکمه ردیاب سریال</string>
   <string name="morphe_series_tracker_show_button_summary">دکمه پخش‌کننده را برای دنبال کردن یا باز کردن سریال ویدئوی فعلی اضافه می‌کند</string>
   <string name="morphe_series_tracker_record_followed_progress_title">ثبت پیشرفت سریال‌های دنبال‌شده</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">پخش این گوشی را برای سریال‌های ذخیره‌شده و نشانک‌ها ثبت کنید</string>
-  <string name="morphe_series_tracker_show_history_tab_title">نمایش تاریخچه در نوار ناوبری</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">خانه، اشتراک‌ها، اعلان‌ها، تاریخچه و شما</string>
   <string name="morphe_series_tracker_ui_cancel">لغو</string>
   <string name="morphe_series_tracker_ui_save">ذخیره</string>
   <string name="morphe_series_tracker_ui_save_bookmark">ذخیره نشانک</string>
@@ -1427,9 +1437,6 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">برای مشاهده سریال‌های خود از «شما» وارد تاریخچه شوید</string>
   <string name="morphe_series_tracker_ui_watch_history">تاریخچه تماشا</string>
   <string name="morphe_series_tracker_ui_series">سریال</string>
-  <string name="morphe_series_tracker_ui_history">سابقه</string>
-  <string name="morphe_series_tracker_ui_subscriptions">عضویت‌ها</string>
-  <string name="morphe_series_tracker_ui_notifications">اعلان‌ها</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">در حال بارگذاری سریال‌های ذخیره‌شده…</string>
   <string name="morphe_series_tracker_empty_library">یک فهرست پخش را دنبال کنید تا قسمت‌های آن را پیگیری کنید</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">نشانک فهرست پخش</string>

@@ -287,6 +287,7 @@ Changes include:
     <string name="morphe_hide_comments_gift_button_title">Hide Gift button</string>
     <string name="morphe_hide_comments_info_button_title">Hide Info button</string>
     <string name="morphe_hide_comments_live_chat_donators_bar_title">Hide live chat donators bar</string>
+    <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Hide live chat scroll to bottom button</string>
     <string name="morphe_hide_comments_live_chat_tooltips_title">Hide live chat tooltips</string>
     <string name="morphe_hide_comments_live_chat_tooltips_summary">Hides tooltip popups shown near the chat input bar, such as the subscriber-only chat notice</string>
     <string name="morphe_hide_comments_menu_button_title">Hide Menu button</string>
@@ -300,6 +301,7 @@ Changes include:
     <string name="morphe_hide_comments_timestamp_button_title">Hide Timestamp button</string>
     <string name="morphe_hide_comments_top_fans_button_title">Hide \'Top fans\' button</string>
     <string name="morphe_hide_comments_translate_button_title">Hide Translate button</string>
+    <string name="morphe_hide_comments_zero_state_title">Hide \'No comments yet\' message</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitize highlighted search links</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_summary">Sanitizes highlighted search links, leaving only the original plain text</string>
 
@@ -466,6 +468,13 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_feed_watch_later_button_title">Show Watch later button on thumbnails</string>
     <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos. Tapping and holding it opens Save to playlist</string>
 
+    <!-- layout.feedviews.feedViewCountPatch -->
+    <string name="morphe_feed_view_count_title">Show view count on thumbnails</string>
+    <string name="morphe_feed_view_count_summary">The view count of feed videos is shown at the bottom left of their thumbnails instead of below the title. Some videos, such as in shelves, may not show a view count</string>
+
+    <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+    <string name="morphe_ryd_feed_like_count_title">Show feed thumbnail like count</string>
+    <string name="morphe_ryd_feed_like_ratio_title">Show feed thumbnail like percentage</string>
 
     <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
     <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
@@ -477,8 +486,6 @@ Reports are public and are reviewed before a channel is added to a list. Removal
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download videos, podcasts, or songs with third-party downloading apps</string>
-    <string name="morphe_external_downloader_title">Show external download button</string>
-    <string name="morphe_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
     <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_external_downloader_action_button_title">Override Download button &amp; menu</string>
     <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of the stock download feature</string>
@@ -1264,6 +1271,12 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
     <string name="morphe_back_button_always_exits_feed_summary">Pressing back always exits the app instead of scrolling to the top of the feed</string>
 
+    <!-- layout.animations.forceAnimationsPatch -->
+    <string name="morphe_force_animations_title">Force animations</string>
+    <string name="morphe_force_animations_entry_default">Default</string>
+    <string name="morphe_force_animations_entry_always_on">Always on</string>
+    <string name="morphe_force_animations_entry_always_off">Always off</string>
+
     <!-- layout.statusbar.hideStatusBarPatch -->
     <string name="morphe_hide_status_bar_title">Hide status bar</string>
     <string name="morphe_hide_status_bar_summary">Hides the system status bar. Swipe down from the top edge to show it for a moment</string>
@@ -1545,12 +1558,11 @@ Limitation: Reverts to old style \'More videos\' overlay"</string>
     <string name="morphe_series_tracker_screen_summary">Follow playlists as series and keep your place</string>
     <string name="morphe_series_tracker_title">Enable series tracking</string>
     <string name="morphe_series_tracker_summary">Adds a Series page to History and a Follow series option to playlists</string>
+    <string name="morphe_series_tracker_show_navigation_button_title">Show Series in navigation bar</string>
     <string name="morphe_series_tracker_show_button_title">Show Series Tracker button</string>
     <string name="morphe_series_tracker_show_button_summary">Adds a player button to follow or open the series of the current video</string>
     <string name="morphe_series_tracker_record_followed_progress_title">Record followed-series progress</string>
     <string name="morphe_series_tracker_record_followed_progress_summary">Record playback on this phone for saved series and bookmarks</string>
-    <string name="morphe_series_tracker_show_history_tab_title">Show History in navigation bar</string>
-    <string name="morphe_series_tracker_show_history_tab_summary">Home, Subscriptions, Notifications, History and You</string>
     <string name="morphe_series_tracker_ui_cancel">Cancel</string>
     <string name="morphe_series_tracker_ui_save">Save</string>
     <string name="morphe_series_tracker_ui_save_bookmark">Save bookmark</string>
@@ -1580,9 +1592,6 @@ Limitation: Reverts to old style \'More videos\' overlay"</string>
     <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Open History from You to view your series</string>
     <string name="morphe_series_tracker_ui_watch_history">Watch history</string>
     <string name="morphe_series_tracker_ui_series">Series</string>
-    <string name="morphe_series_tracker_ui_history">History</string>
-    <string name="morphe_series_tracker_ui_subscriptions">Subscriptions</string>
-    <string name="morphe_series_tracker_ui_notifications">Notifications</string>
     <string name="morphe_series_tracker_ui_loading_saved_series">Loading saved series…</string>
     <string name="morphe_series_tracker_empty_library">Follow a playlist to track its episodes</string>
     <string name="morphe_series_tracker_ui_playlist_bookmark">Playlist bookmark</string>

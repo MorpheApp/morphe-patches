@@ -37,9 +37,7 @@ public final class LyricifyProvider implements LyricsProvider {
     private static final String API_BASE =
             "https://api.lyricify.app/lyrics/get/mobile/new";
 
-    private static final String USER_AGENT =
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                    + "(KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36";
+    private static final String USER_AGENT = LyricsRequests.CHROME_DESKTOP_USER_AGENT;
 
     private static final long REQUEST_THROTTLE_MS = 500;
 

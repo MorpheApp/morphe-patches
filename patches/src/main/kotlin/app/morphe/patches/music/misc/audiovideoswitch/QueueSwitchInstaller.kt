@@ -21,7 +21,7 @@ import com.android.tools.smali.dexlib2.Opcode
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/EnableAudioVideoSwitchPatch;"
 private const val ACCESS =
-    "Lapp/morphe/extension/music/patches/EnableAudioVideoSwitchPatch\$QueueAccess;"
+    $$"Lapp/morphe/extension/music/patches/EnableAudioVideoSwitchPatch$QueueAccess;"
 
 /**
  * Every bridge is named patch_atv* and the original queue operations are never renamed here, so

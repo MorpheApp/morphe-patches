@@ -324,6 +324,8 @@ Cheklovlar:
   <string name="morphe_copy_video_link_with_timestamp_button_summary">\'Video havolasini nuqul qilish\' tugmasining harakatlarini teskari tartibda o\'zgartiradi</string>
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">“Televizorga kirish”ni o\'chirish</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Connect your devices\' oynatish xabarini o\'chirish</string>
@@ -332,8 +334,6 @@ Cheklovlar:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Boblarni o\'tkazib yuboradigan ikki barmoqli ikki marta bosish harakatini o\'chirish, bu bir barmoq bilan tasodifan ishga tushirilishi mumkin</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Uchinchi tomon ilovalari yordamida videolar, podkastlar yoki qo\'shiqlarni yuklab oling</string>
-  <string name="morphe_external_downloader_title">Tashqi yuklab olish tugmasini ko\'rsatish</string>
-  <string name="morphe_external_downloader_summary">Video pleerda tashqi yuklab olishni ochadigan ustki qatlam tugmasini ko\'rsatish</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Yuklash tugmasi &amp; menyuni ustidan o\'tkazish</string>
   <string name="morphe_external_downloader_action_button_summary">Tanlagan tashqi yuklab olish ilovangizdan standart yuklab olish funksiyasi o\'rniga foydalanadi</string>
@@ -936,6 +936,8 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Orqaga tugmasi lentadan chiqadi</string>
   <string name="morphe_back_button_always_exits_feed_summary">Orqaga qaytarish tugmasini bosganda lenta tepasiga qaytarish o\'rniga har doim ilovadan chiqib ketiladi</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_entry_default">Standart</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Yorug\' mavzu foni</string>
@@ -1100,6 +1102,4 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_player_icon_style_entry_default">Standart</string>
   <string name="morphe_player_icon_style_entry_custom">Maxsus</string>
   <!-- video.series.seriesTrackerPatch -->
-  <string name="morphe_series_tracker_ui_history">Tarix</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Obunalar</string>
 </resources>

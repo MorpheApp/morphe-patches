@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">ギフトボタンを非表示</string>
   <string name="morphe_hide_comments_info_button_title">情報ボタン (i アイコン) を非表示</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">チャット欄の投げ銭表示を無効化</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">ライブチャットの下部へスクロールボタンを非表示</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">チャット入力欄の吹き出しを非表示</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">チャット入力欄付近に吹き出し形式のポップアップで表示される、チャンネル登録者のみモードのライブ配信にチャットを送信する際の注意事項などの、チャットに関するヒントを非表示にします</string>
   <string name="morphe_hide_comments_menu_button_title">メニューボタンを非表示</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">タイムスタンプ ボタンを非表示</string>
   <string name="morphe_hide_comments_top_fans_button_title">「トップファン」ボタンを非表示</string>
   <string name="morphe_hide_comments_translate_button_title">翻訳 / 原文ボタンを非表示</string>
+  <string name="morphe_hide_comments_zero_state_title">「まだコメントがありません」メッセージを非表示にする</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">テキスト内の検索リンクを除去</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">テキスト内の単語やフレーズに埋め込まれた虫眼鏡アイコン付きの検索リンクを取り除き、通常のテキストに戻します</string>
   <string name="morphe_hide_keyword_content_screen_title">キーワード フィルタ</string>
@@ -434,6 +436,12 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_feed_long_press_menu_summary">フィード動画の任意の場所をタップして長押しすると、その動画のメニューが開きます</string>
   <string name="morphe_feed_watch_later_button_title">サムネイルに「後で見る」ボタンを表示する</string>
   <string name="morphe_feed_watch_later_button_summary">フィード動画のサムネイルに「後で見る」ボタンが表示され、それをタップして長押しすると「プレイリストに保存」が開きます</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">サムネイルに再生回数を表示</string>
+  <string name="morphe_feed_view_count_summary">フィード動画の再生回数は、タイトルの下ではなく、サムネイルの左下に表示されます。シェルフ内の動画など、一部の動画は再生回数が表示されない場合があります</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">フィードのサムネイルのいいね数を表示</string>
+  <string name="morphe_ryd_feed_like_ratio_title">フィードのサムネイルのいいね比率を表示</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">「テレビでログイン」ポップアップを無効化</string>
   <string name="morphe_disable_connect_your_devices_popup_title">「デバイスの接続」ポップアップを無効化</string>
@@ -442,8 +450,6 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_disable_chapter_skip_double_tap_summary">チャプターをスキップする、二本指でのダブルタップ ジェスチャーを無効にします。このジェスチャーが有効の場合、一本指でのダブルタップ ジェスチャーが二本指だと誤認識され、意図せずチャプターをスキップしてしまう場合があります</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">サードパーティ製ダウンロード アプリで、動画、ポッドキャスト、楽曲をダウンロードします</string>
-  <string name="morphe_external_downloader_title">外部ダウンロード ボタンを表示</string>
-  <string name="morphe_external_downloader_summary">プレーヤー オーバーレイに外部ダウンローダーを呼び出すボタンを表示します</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">オフライン ボタンと「オフラインへの動画の保存」の動作を上書き</string>
   <string name="morphe_external_downloader_action_button_summary">オフライン ボタンと、フライアウト メニューの「オフラインへの動画の保存」の呼び出し先を、「純正アプリ内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
@@ -1158,6 +1164,11 @@ Automotive レイアウト
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">「戻る」ボタンでアプリを終了</string>
   <string name="morphe_back_button_always_exits_feed_summary">ホームタブで「戻る」ボタンをタップしたときに、ホームフィードのスクロール位置が最上部ではない場合でも、最上部にスクロールせずに常にアプリを終了します</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">アニメーションを強制</string>
+  <string name="morphe_force_animations_entry_default">デフォルト</string>
+  <string name="morphe_force_animations_entry_always_on">常に有効</string>
+  <string name="morphe_force_animations_entry_always_off">常にオフ</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">ステータスバーを非表示</string>
   <string name="morphe_hide_status_bar_summary">システムのステータスバーを非表示にします。上端から下にスワイプすると、一時的に表示できます</string>
@@ -1393,12 +1404,11 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_screen_summary">プレイリストをシリーズとして追跡し、現在地を維持します</string>
   <string name="morphe_series_tracker_title">シリーズ追跡を有効化</string>
   <string name="morphe_series_tracker_summary">履歴にシリーズページを追加し、プレイリストにシリーズフォローオプションを追加します</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">ナビゲーションバーでシリーズを表示</string>
   <string name="morphe_series_tracker_show_button_title">シリーズトラッカーボタンを表示</string>
   <string name="morphe_series_tracker_show_button_summary">現在の動画のシリーズを追跡または開くためのプレイヤーボタンを追加します</string>
   <string name="morphe_series_tracker_record_followed_progress_title">フォロー中のシリーズの進捗を記録する</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">保存されたシリーズとブックマークに対して、この電話での再生を記録します</string>
-  <string name="morphe_series_tracker_show_history_tab_title">ナビゲーションバーに履歴を表示する</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">ホーム、登録チャンネル、通知、履歴、あなた</string>
   <string name="morphe_series_tracker_ui_cancel">キャンセル</string>
   <string name="morphe_series_tracker_ui_save">適用</string>
   <string name="morphe_series_tracker_ui_save_bookmark">ブックマークを保存</string>
@@ -1428,9 +1438,6 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">「あなた」から「履歴」を開いてシリーズを表示</string>
   <string name="morphe_series_tracker_ui_watch_history">視聴履歴</string>
   <string name="morphe_series_tracker_ui_series">シリーズ</string>
-  <string name="morphe_series_tracker_ui_history">履歴</string>
-  <string name="morphe_series_tracker_ui_subscriptions">登録チャンネル</string>
-  <string name="morphe_series_tracker_ui_notifications">通知</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">保存されたシリーズを読み込み中…</string>
   <string name="morphe_series_tracker_empty_library">エピソードを追跡するにはプレイリストをフォローしてください</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">プレイリストのブックマーク</string>

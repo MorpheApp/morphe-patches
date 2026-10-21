@@ -275,6 +275,7 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_comments_gift_button_title">Piilota lahjapainike</string>
   <string name="morphe_hide_comments_info_button_title">Piilota Tietoja-painike</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Piilota lahjoittajien palkki suorassa chatissa</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Piilota suorana lähetyksen chatin vierityspainike alas</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Piilota live-chatin vihjeet</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Piilottaa chat-syöttöpalkin lähellä näytettävät työkaluvihjeet, kuten vain tilaajille suunnatun chat-huomautuksen</string>
   <string name="morphe_hide_comments_menu_button_title">Piilota Menu-painike</string>
@@ -288,6 +289,7 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_comments_timestamp_button_title">Piilota aikaleima-painike</string>
   <string name="morphe_hide_comments_top_fans_button_title">Piilota \'Top-fanit\' -painike</string>
   <string name="morphe_hide_comments_translate_button_title">Piilota Käännä-painike</string>
+  <string name="morphe_hide_comments_zero_state_title">Piilota viesti \"Ei vielä kommentteja\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Puhdistaa korostettujen hakulinkkien koodin</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Puhdistaa korostettujen hakulinkkien koodin jättäen jäljelle vain alkuperäisen tekstin</string>
   <string name="morphe_hide_keyword_content_screen_title">Avainsanasuodatin</string>
@@ -433,6 +435,12 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_feed_long_press_menu_summary">Kosketus ja pitopohjassa missä tahansa syötteiden videolla avaa sen valikon</string>
   <string name="morphe_feed_watch_later_button_title">Näytä Katso myhemmin -painike pääkkeissä</string>
   <string name="morphe_feed_watch_later_button_summary">Katso myöhemmin -painike näkyy syötteiden videoiden pienoiskuville. Kosketus ja pitopohjassa avaa Tallenna soittoluetteloon</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Näytä katselukerrat pikkukuvissa</string>
+  <string name="morphe_feed_view_count_summary">Syötteen videoiden katselukerrat näytetään niiden pikkukuvan vasemmassa alareunassa eikä otsikon alapuolella. Jotkin videot, kuten hyllyissä olevat, eivät välttämättä näytä katselukertaa</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Näytä syötteen pikkukuvan tykkäysmäärä</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Näytä syötteen pikkukuvan tykkäysprosentti</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Poista käytöstä Kirjaudu televisioon -ponnahdusikkuna</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Poista \'Yhdistä laitteesi\' ponnahdusikkuna käytöstä</string>
@@ -441,8 +449,6 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_disable_chapter_skip_double_tap_summary">Poistaa käytöstä kaksoisnapautusliikkeen, joka ohittaa luvut, mikä voi vahingossa laukaistua yhdellä sormella</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Lataa videoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
-  <string name="morphe_external_downloader_title">Näytä ulkoinen lataus -painike</string>
-  <string name="morphe_external_downloader_summary">Näyttää päällekkäisen painikkeen videotoistimessa, joka avaa ulkoisen lataussovelluksesi</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Korvaa Lataa-painike ja valikko</string>
   <string name="morphe_external_downloader_action_button_summary">Käyttää valitsemaasi ulkoista lataussovellusta oletuslatausominaisuuden sijaan.</string>
@@ -1157,6 +1163,11 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Takaisin-painike sulkee syötteen</string>
   <string name="morphe_back_button_always_exits_feed_summary">Takaisin-painikkeen painaminen sulkee aina sovelluksen sen sijaan, että se vierittäisi syötteen alkuun</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Pakota animaatiot</string>
+  <string name="morphe_force_animations_entry_default">Oletus</string>
+  <string name="morphe_force_animations_entry_always_on">Aina päällä</string>
+  <string name="morphe_force_animations_entry_always_off">Aina pois päältä</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Piilota tilapalkki</string>
   <string name="morphe_hide_status_bar_summary">Piilottaa järjestelmän tilapalkin. Pyyhkäise yläreunasta alaspäin, niin se näkyy hetkeksi</string>
@@ -1392,12 +1403,11 @@ Rajoitus: Palauttaa vanhan tyylin 'Lisää videoita' -peittokuvan"</string>
   <string name="morphe_series_tracker_screen_summary">Seuraa soittolistia sarjoina ja säilytä paikkasi</string>
   <string name="morphe_series_tracker_title">Ota sarjaseuranta käyttöön</string>
   <string name="morphe_series_tracker_summary">Lisää historian Sarjat-sivun ja soittolistojen Seuraa sarja -vaihtoehdon</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Näytä sarjat navigointipalkissa</string>
   <string name="morphe_series_tracker_show_button_title">Näytä sarjaseurannan painike</string>
   <string name="morphe_series_tracker_show_button_summary">Lisää soittopainikkeen, jolla voi seurata tai avata nykyisen videon sarjan</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Tallenna seurattavien sarjojen edistyminen</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Kirjaa tämän puhelimen toistohistoria tallennetuille sarjoille ja kirjanmerkeille</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Näytä Historia-sivu navigointipalkissa</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Koti, Tilaukset, Ilmoitukset, Historia ja Sinä</string>
   <string name="morphe_series_tracker_ui_cancel">Peruuta</string>
   <string name="morphe_series_tracker_ui_save">Tallenna</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Tallenna kirjanmerkki</string>
@@ -1427,9 +1437,6 @@ Rajoitus: Palauttaa vanhan tyylin 'Lisää videoita' -peittokuvan"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Avaa Historiasta kohdasta Sinä nähdäksesi sarjasi</string>
   <string name="morphe_series_tracker_ui_watch_history">Katsohistoria</string>
   <string name="morphe_series_tracker_ui_series">Sarjat</string>
-  <string name="morphe_series_tracker_ui_history">Historia</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Tilaukset</string>
-  <string name="morphe_series_tracker_ui_notifications">Ilmoitukset</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Ladataan tallennettuja sarjoja…</string>
   <string name="morphe_series_tracker_empty_library">Seuraa soittolistaa seurataksesi sen jaksoja</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Soittolistan kirjanmerkki</string>

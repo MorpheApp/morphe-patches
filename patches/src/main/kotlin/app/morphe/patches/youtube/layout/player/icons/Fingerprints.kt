@@ -14,6 +14,9 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 
+internal const val TOUCH_IMAGE_VIEW_CLASS =
+    "Lcom/google/android/libraries/youtube/common/ui/TouchImageView;"
+
 /**
  * Sets the icon of the play, pause and replay button for a new player state.
  */
@@ -45,7 +48,7 @@ internal object PlayerOverlayControlsFingerprint : Fingerprint(
 internal object PlayerControlIconLoaderFingerprint : Fingerprint(
     returnType = "Landroid/graphics/drawable/Drawable;",
     parameters = listOf(
-        "Lcom/google/android/libraries/youtube/common/ui/TouchImageView;",
+        TOUCH_IMAGE_VIEW_CLASS,
         "I",
         "Landroid/graphics/drawable/Drawable;",
         "I",

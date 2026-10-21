@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">ซ่อนปุ่มของขวัญ</string>
   <string name="morphe_hide_comments_info_button_title">ซ่อนปุ่มข้อมูล</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">ซ่อนแถบผู้บริจาคแชทสด</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">ซ่อนปุ่มเลื่อนไปยังด้านล่างของการแชทสด</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">ซ่อนคำแนะนำเครื่องมือแชทสด</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">ซ่อนป๊อปอัปคำแนะนำเครื่องมือที่แสดงใกล้กับแถบป้อนข้อมูลแชท เช่น ประกาศแชทสำหรับสมาชิกเท่านั้น</string>
   <string name="morphe_hide_comments_menu_button_title">ซ่อนปุ่มเมนู</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">ซ่อนปุ่มตราประทับเวลา</string>
   <string name="morphe_hide_comments_top_fans_button_title">ซ่อนปุ่ม \'Top fans\'</string>
   <string name="morphe_hide_comments_translate_button_title">ซ่อนปุ่มแปลภาษา</string>
+  <string name="morphe_hide_comments_zero_state_title">ซ่อนข้อความ \"ไม่มีความคิดเห็น\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">ทำให้ลิงก์การค้นหาที่ไฮไลต์เป็นรูปแบบปกติ</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">เปลี่ยนลิงก์การค้นหาที่ไฮไลต์เป็นข้อความธรรมดา</string>
   <string name="morphe_hide_keyword_content_screen_title">ตัวกรองคำหลัก</string>
@@ -433,6 +435,12 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">การแตะและค้างไว้ที่ใดก็ได้บนวิดีโอฟีดจะเปิดเมนูของวิดีโอนั้น</string>
   <string name="morphe_feed_watch_later_button_title">แสดงปุ่มดูภายหลังบนภาพย่อ</string>
   <string name="morphe_feed_watch_later_button_summary">จะแสดงปุ่มดูภายหลังบนภาพย่อของวิดีโอในฟีด การแตะและค้างไว้จะทำให้บันทึกไปยังเพลย์ลิสต์</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">แสดงจำนวนวิวบนภาพขนาดย่อ</string>
+  <string name="morphe_feed_view_count_summary">จำนวนวิวของวิดีโอในฟีดจะถูกแสดงที่มุมซ้ายล่างของภาพขนาดย่อแทนที่จะอยู่ด้านล่างชื่อวิดีโอ วิดีโอบางรายการเช่นในชั้นอาจไม่แสดงจำนวนวิว</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">แสดงจำนวนคนกดถูกใจของรูปภาพขนาดย่อในฟีด</string>
+  <string name="morphe_ryd_feed_like_ratio_title">แสดงอัตราส่วนการกดถูกใจของรูปภาพขนาดย่อในฟีด</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวี</string>
   <string name="morphe_disable_connect_your_devices_popup_title">ปิดหน้าต่างแจ้งเตือน \'เชื่อมต่ออุปกรณ์ของคุณ\'</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">ปิดใช้งานท่าทางแตะสองครั้งด้วยสองนิ้วที่ข้ามส่วนเนื้อหา ซึ่งอาจถูกเรียกใช้งานโดยไม่ได้ตั้งใจด้วยนิ้วเดียว</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">ดาวน์โหลดวิดีโอ พอดแคสต์ หรือเพลงด้วยแอปดาวน์โหลดของบุคคลที่สาม</string>
-  <string name="morphe_external_downloader_title">แสดงปุ่มดาวน์โหลดภายนอก</string>
-  <string name="morphe_external_downloader_summary">แสดงปุ่มซ้อนทับในเครื่องเล่นวิดีโอที่เปิดแอปดาวน์โหลดภายนอกของคุณ</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">แทนที่ปุ่ม \'ดาวน์โหลด\' &amp; เมนู</string>
   <string name="morphe_external_downloader_action_button_summary">ใช้ตัวดาวน์โหลดภายนอกที่คุณเลือกแทนคุณสมบัติการดาวน์โหลดเริ่มต้น</string>
@@ -1157,6 +1163,11 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">ปุ่มกลับออกจากฟีด</string>
   <string name="morphe_back_button_always_exits_feed_summary">การกดปุ่มกลับจะออกจากแอปเสมอ แทนที่จะเลื่อนไปที่ด้านบนของฟีด</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">บังคับให้ใช้ภาพเคลื่อนไหว</string>
+  <string name="morphe_force_animations_entry_default">ค่าเริ่มต้น</string>
+  <string name="morphe_force_animations_entry_always_on">เปิดตลอด</string>
+  <string name="morphe_force_animations_entry_always_off">ปิดตลอด</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">ซ่อนแถบสถานะ</string>
   <string name="morphe_hide_status_bar_summary">ซ่อนแถบสถานะของระบบ ปัดลงจากขอบด้านบนเพื่อแสดงชั่วครู่</string>
@@ -1392,12 +1403,11 @@ AVC (H.264)
   <string name="morphe_series_tracker_screen_summary">ติดตามเพลย์ลิสต์แบบซีรีย์และบันทึกตำแหน่งของคุณ</string>
   <string name="morphe_series_tracker_title">เปิดใช้งานการติดตามซีรีย์</string>
   <string name="morphe_series_tracker_summary">เพิ่มหน้าซีรีย์ในประวัติและตัวเลือกติดตามซีรีย์ลงในเพลย์ลิสต์</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">แสดงซีรีส์ในแถบนำทาง</string>
   <string name="morphe_series_tracker_show_button_title">แสดงปุ่มติดตามซีรี่ส์</string>
   <string name="morphe_series_tracker_show_button_summary">เพิ่มปุ่มตัวเล่นเพื่อติดตามหรือเปิดซีรี่ส์ของวิดีโอปัจจุบัน</string>
   <string name="morphe_series_tracker_record_followed_progress_title">บันทึกความคืบหน้าของซีรี่ส์ที่ติดตาม</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">บันทึกการเล่นบนโทรศัพท์นี้สำหรับซีรี่ส์ที่บันทึกและบุ๊กมาร์ก</string>
-  <string name="morphe_series_tracker_show_history_tab_title">แสดงประวัติในแถบนำทาง</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">โฮม, การติดตาม, การแจ้งเตือน, ประวัติ และคุณ</string>
   <string name="morphe_series_tracker_ui_cancel">ยกเลิก</string>
   <string name="morphe_series_tracker_ui_save">บันทึก</string>
   <string name="morphe_series_tracker_ui_save_bookmark">บันทึกบุ๊กมาร์ก</string>
@@ -1427,9 +1437,6 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">เปิดประวัติจาก คุณ เพื่อดูซีรี่ส์ของคุณ</string>
   <string name="morphe_series_tracker_ui_watch_history">ประวัติการดู</string>
   <string name="morphe_series_tracker_ui_series">ซีรี่ส์</string>
-  <string name="morphe_series_tracker_ui_history">ประวัติ</string>
-  <string name="morphe_series_tracker_ui_subscriptions">การติดตาม</string>
-  <string name="morphe_series_tracker_ui_notifications">การแจ้งเตือน</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">กำลังโหลดซีรี่ส์ที่บันทึก...</string>
   <string name="morphe_series_tracker_empty_library">ติดตามเพลย์ลิสต์เพื่อติดตามตอนต่างๆ ของมัน</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">บุ๊กมาร์กเพลย์ลิสต์</string>

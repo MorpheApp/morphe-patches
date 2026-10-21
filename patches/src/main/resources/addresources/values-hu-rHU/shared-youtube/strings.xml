@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Harmadlagos)</string>
   <string name="morphe_theme_color_custom_entry">Egyedi</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Külső letöltések</string>
+  <string name="morphe_external_downloader_screen_title">Letöltések</string>
+  <string name="morphe_download_mode_title">Letöltési mód</string>
+  <string name="morphe_download_mode_entry_default">Alapértelmezett</string>
+  <string name="morphe_download_mode_entry_in_app">Alkalmazáson belüli letöltés</string>
+  <string name="morphe_download_mode_entry_external">Külső letöltőprogram</string>
   <string name="morphe_external_downloader_name_title">Letöltő csomagneve</string>
   <string name="morphe_external_downloader_name_summary">A telepített külső letöltőalkalmazás csomagneve</string>
   <string name="morphe_external_downloader_other_item_hint">Csomag név beírása</string>

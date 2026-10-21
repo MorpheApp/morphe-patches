@@ -275,6 +275,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_comments_gift_button_title">Ajándék gomb elrejtése</string>
   <string name="morphe_hide_comments_info_button_title">Információ gomb elrejtése</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Élő csevegés támogatói sávjának elrejtése</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Élő chat görgetés gomb elrejtése az aljára</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Élő csevegés tooltippjeinek elrejtése</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Elrejti a csevegési beviteli sáv közelében megjelenő tooltipp popupokat, például a csak feliratkozottakra vonatkozó csevegési értesítést</string>
   <string name="morphe_hide_comments_menu_button_title">Menü gomb elrejtése</string>
@@ -288,6 +289,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_comments_timestamp_button_title">Időbélyeg gomb elrejtése</string>
   <string name="morphe_hide_comments_top_fans_button_title">A \'Top fans\' gomb elrejtése</string>
   <string name="morphe_hide_comments_translate_button_title">Fordítás gomb elrejtése</string>
+  <string name="morphe_hide_comments_zero_state_title">A \'Nincsenek még megjegyzések\' üzenet elrejtése</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">A kiemelt keresési hivatkozások higiénikusabbá tétele</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">A kiemelt keresési hivatkozások higiénikusabbá tétele, csak az eredeti szöveget hagyva</string>
   <string name="morphe_hide_keyword_content_screen_title">Kulcsszószűrő</string>
@@ -433,6 +435,12 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_feed_long_press_menu_summary">A posztfolyamat videóján bárhol koppintás és hosszú nyomás nyitja meg annak menüt</string>
   <string name="morphe_feed_watch_later_button_title">Mutassa a Néssebb később gombot a képkockákon</string>
   <string name="morphe_feed_watch_later_button_summary">A Néssebb később gomb megjelenik a posztfolyamati videók képkockáján. Koppintás és hosszú nyomása esetén Megnyitás listában lehetőséget nyújt</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Megtekintésszám megjelenítése a bélyegképeken</string>
+  <string name="morphe_feed_view_count_summary">Az adathordozó videók megtekintési száma a bélyegkép bal alsó sarkában jelenik meg, nem pedig a cím alatt. Egyes videók, például a polcokon lévők, esetleg nem mutatnak megtekintési számot</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Videóelképzelés kedvelési száma megjelenítése</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Videóelképzelés kedvelési arányának százalékos megjelenítése</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">TV-bejelentkezési előugró ablak letiltása</string>
   <string name="morphe_disable_connect_your_devices_popup_title">A \"Csatlakoztassa eszközeit\" felugró ablak letiltása</string>
@@ -441,8 +449,6 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_disable_chapter_skip_double_tap_summary">Letiltja a dupla koppintást ujjakkal való felemeléssel történő fejezetszkenálást, ami egy ujjal véletlenül aktiválódhat</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Töltsön le videókat, podcastokat vagy dalokat harmadik féles alkalmazásokkal</string>
-  <string name="morphe_external_downloader_title">Külső letöltés gomb megjelenítése</string>
-  <string name="morphe_external_downloader_summary">Megjelenít egy átfedő gombot a videólejátszóban, amely megnyitja a külső letöltőalkalmazást</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">A Letöltés gomb &amp; menü felülírása</string>
   <string name="morphe_external_downloader_action_button_summary">A kiválasztott külső letöltőt használja az alapértelmezett letöltési funkció helyett</string>
@@ -1157,6 +1163,11 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Kilépés a kezdőoldalról a vissza gombbal</string>
   <string name="morphe_back_button_always_exits_feed_summary">A vissza gomb megnyomása esetén kilép az alkalmazásból a kezdőoldal tetejére görgetés helyett</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Animációk kényszerítése</string>
+  <string name="morphe_force_animations_entry_default">Alapértelmezett</string>
+  <string name="morphe_force_animations_entry_always_on">Mindig bekapcsolva</string>
+  <string name="morphe_force_animations_entry_always_off">Mindig kikapcsolva</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Állapotsor elrejtése</string>
   <string name="morphe_hide_status_bar_summary">Elrejti a rendszer állapotsorát. Húzza le az ujját a felső szélétől, hogy egy pillanatra megjelenjen</string>
@@ -1392,12 +1403,11 @@ Korlátozás: Visszaáll a régi stílusú 'További videók' átfedésre"</stri
   <string name="morphe_series_tracker_screen_summary">Kövesd a lejátszási listákat sorozatként és tartsd a helyedet</string>
   <string name="morphe_series_tracker_title">Sorozatok követésének engedélyezése</string>
   <string name="morphe_series_tracker_summary">Sorozatoldalt ad a előzményekhez és Követés opciót a lejátszási listákhoz</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Sorozat megjelenítése a navigációs sávban</string>
   <string name="morphe_series_tracker_show_button_title">Sorozatok követése gomb megjelenítése</string>
   <string name="morphe_series_tracker_show_button_summary">Lejátszó gomb hozzáadása a jelenlegi videó sorozatának követéséhez vagy megnyitásához</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Követett sorozatok előrehaladásának rögzítése</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Jelenlegi telefonon történő lejátszás rögzítése a mentett sorozatok és könyvjelzők esetén</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Előzmények megjelenítése a navigációs sávban</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Kezdőlap, Feliratkozások, Értesítések, Előzmények és Te</string>
   <string name="morphe_series_tracker_ui_cancel">Mégse</string>
   <string name="morphe_series_tracker_ui_save">Mentés</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Könyvjelző mentése</string>
@@ -1427,9 +1437,6 @@ Korlátozás: Visszaáll a régi stílusú 'További videók' átfedésre"</stri
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Sorozatok megtekintéséhez nyissa meg az Előzményeket a Te menüből</string>
   <string name="morphe_series_tracker_ui_watch_history">Nézési előzmények</string>
   <string name="morphe_series_tracker_ui_series">Sorozatok</string>
-  <string name="morphe_series_tracker_ui_history">Előzmények</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Feliratkozások</string>
-  <string name="morphe_series_tracker_ui_notifications">Értesítések</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Mentett sorozatok betöltése…</string>
   <string name="morphe_series_tracker_empty_library">Kövessen lejátszási listát epizódjai nyomon követéséhez</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Lejátszási lista könyvjelző</string>

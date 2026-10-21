@@ -19,23 +19,6 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 internal const val DOMAIN_VIDEO_URLS_CLASS = "Lcom/reddit/domain/model/VideoUrls;"
 
 /**
- * Main Link constructor, the only one that sets the url.
- */
-internal object LinkConstructorFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/domain/model/Link;",
-    name = "<init>",
-    returnType = "V",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            definingClass = "Lcom/reddit/domain/model/Link;",
-            name = "url",
-            type = "Ljava/lang/String;"
-        )
-    )
-)
-
-/**
  * Feed post header.
  */
 internal object MetadataCellToStringFingerprint : Fingerprint(

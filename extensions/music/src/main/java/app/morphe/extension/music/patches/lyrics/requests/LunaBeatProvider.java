@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.LyricsProviders;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
@@ -52,7 +52,7 @@ public final class LunaBeatProvider extends ScoredSongProvider {
     }
 
     public static void preloadIndex() {
-        if (!Settings.LYRICS_ENABLED.get() || !LyricsManager.isProviderEnabled("LunaBeat")) {
+        if (!Settings.LYRICS_ENABLED.get() || !LyricsProviders.isProviderEnabled("LunaBeat")) {
             return;
         }
         startIndexLoad();

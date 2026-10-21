@@ -275,6 +275,7 @@ As alterações incluem:
   <string name="morphe_hide_comments_gift_button_title">Ocultar botão de Presente</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar botão de Informação</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de doadores do chat ao vivo</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Ocultar botão de rolagem para baixo do chat ao vivo</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Ocultar dicas do chat ao vivo</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Oculta os pop-ups de dicas exibidos perto da barra de entrada do chat, como o aviso de chat exclusivo para subscritores</string>
   <string name="morphe_hide_comments_menu_button_title">Ocultar botão de menu</string>
@@ -288,6 +289,7 @@ As alterações incluem:
   <string name="morphe_hide_comments_timestamp_button_title">Ocultar botão de timestamp</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ocultar botão \'Top fãs\'</string>
   <string name="morphe_hide_comments_translate_button_title">Ocultar o botão Traduzir</string>
+  <string name="morphe_hide_comments_zero_state_title">Ocultar mensagem \'Nenhum comentário ainda\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Higieniza links de pesquisa destacados</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Higieniza links de pesquisa destacados, deixando apenas o texto simples original</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtro de palavra-chave</string>
@@ -433,6 +435,12 @@ As denúncias são públicas e são analisadas antes de um canal ser adicionado 
   <string name="morphe_feed_long_press_menu_summary">O toque e a segurança em qualquer parte de um vídeo do feed abrem seu menu</string>
   <string name="morphe_feed_watch_later_button_title">Mostrar o botão Assistir mais tarde nas miniaturas</string>
   <string name="morphe_feed_watch_later_button_summary">Um botão Assistir mais tarde é mostrado nas miniaturas dos vídeos do feed. Toque e segure-o para salvar na lista de reprodução</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Mostrar contagem de visualizações nas miniaturas</string>
+  <string name="morphe_feed_view_count_summary">A contagem de visualizações dos vídeos do feed é exibida no canto inferior esquerdo das miniaturas, em vez de abaixo do título. Alguns vídeos, como os em prateleiras, podem não mostrar a contagem de visualizações</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Mostrar contagem de curtidas na miniatura do feed</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Mostrar porcentagem de curtidas na miniatura do feed</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desativar pop-up \'Entrar na TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Desativar popup \'Conecte seus dispositivos\'</string>
@@ -441,8 +449,6 @@ As denúncias são públicas e são analisadas antes de um canal ser adicionado 
   <string name="morphe_disable_chapter_skip_double_tap_summary">Desativa o gesto de toque duplo com dois dedos que pula capítulos, o que pode ser acionado acidentalmente com um dedo</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Baixe vídeos, podcasts ou músicas com aplicativos de download de terceiros</string>
-  <string name="morphe_external_downloader_title">Mostrar botão externo de transferir</string>
-  <string name="morphe_external_downloader_summary">Mostra um botão de sobreposição no reprodutor de vídeo que abre seu downloader externo</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Substituir botão de ação de download e menu</string>
   <string name="morphe_external_downloader_action_button_summary">Usa o downloader externo escolhido em vez do recurso de download padrão</string>
@@ -1157,6 +1163,11 @@ Limitação: Se 'Restaurar a barra de ação de vídeo antiga' estiver desativad
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">O botão Voltar sai do feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pressionar o botão Voltar sempre sai do aplicativo em vez de rolar até o topo do feed</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Forçar animações</string>
+  <string name="morphe_force_animations_entry_default">Padrão</string>
+  <string name="morphe_force_animations_entry_always_on">Sempre ativado</string>
+  <string name="morphe_force_animations_entry_always_off">Sempre desativado</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ocultar barra de status</string>
   <string name="morphe_hide_status_bar_summary">Oculta a barra de status do sistema. Deslize para baixo a partir da borda superior para mostrá-la por um momento</string>
@@ -1392,12 +1403,11 @@ Limitação: Reverte para a sobreposição antiga 'Mais vídeos'"</string>
   <string name="morphe_series_tracker_screen_summary">Acompanhe playlists como séries e mantenha seu lugar</string>
   <string name="morphe_series_tracker_title">Ativar rastreamento de séries</string>
   <string name="morphe_series_tracker_summary">Adiciona uma página de Série ao Histórico e uma opção de Acompanhar série às playlists</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Mostrar séries na barra de navegação</string>
   <string name="morphe_series_tracker_show_button_title">Mostrar botão do Rastreador de Séries</string>
   <string name="morphe_series_tracker_show_button_summary">Adiciona um botão ao player para seguir ou abrir a série do vídeo atual</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Registrar progresso das séries seguidas</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Registrar a reprodução neste telefone para séries salvas e marcadores</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Mostrar Histórico na barra de navegação</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Início, Inscrições, Notificações, Histórico e Você</string>
   <string name="morphe_series_tracker_ui_cancel">Cancelar</string>
   <string name="morphe_series_tracker_ui_save">Guardar</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Salvar marcador</string>
@@ -1427,9 +1437,6 @@ Limitação: Reverte para a sobreposição antiga 'Mais vídeos'"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Abra Histórico em Você para ver suas séries</string>
   <string name="morphe_series_tracker_ui_watch_history">Histórico de visualizações</string>
   <string name="morphe_series_tracker_ui_series">Séries</string>
-  <string name="morphe_series_tracker_ui_history">Histórico</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Inscrições</string>
-  <string name="morphe_series_tracker_ui_notifications">Notificações</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Carregando séries salvas…</string>
   <string name="morphe_series_tracker_empty_library">Siga uma playlist para acompanhar seus episódios</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Marcador da playlist</string>

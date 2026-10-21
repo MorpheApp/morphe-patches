@@ -275,6 +275,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">Скрыть кнопку \"Подарок\"</string>
   <string name="morphe_hide_comments_info_button_title">Скрыть кнопку \"Инфо\"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Скрыть панель донатеров в прямом чате</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Скрыть кнопку прокрутки живого чата вниз</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Скрыть подсказки в живом чате</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Скрывает всплывающие подсказки рядом с полем ввода чата, например, уведомление о чате только для подписчиков</string>
   <string name="morphe_hide_comments_menu_button_title">Скрыть кнопку меню</string>
@@ -288,6 +289,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_timestamp_button_title">Скрыть кнопку метки времени</string>
   <string name="morphe_hide_comments_top_fans_button_title">Скрыть кнопку «Лучшие фанаты»</string>
   <string name="morphe_hide_comments_translate_button_title">Скрыть кнопку \"Перевести\"</string>
+  <string name="morphe_hide_comments_zero_state_title">Скрыть сообщение «Нет комментариев»</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Очистить выделенные ссылки поиска</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Очищает выделенные ссылки поиска, оставляя только исходный простой текст</string>
   <string name="morphe_hide_keyword_content_screen_title">Фильтр по ключевым словам</string>
@@ -433,6 +435,12 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Нажатие и удержание в любом месте видео из ленты открывает его меню</string>
   <string name="morphe_feed_watch_later_button_title">Показывать кнопку «Позже» на превью видео</string>
   <string name="morphe_feed_watch_later_button_summary">На превью видео из ленты отображается кнопка «Позже». Нажатие и удержание открывает сохранение в плейлист</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Показывать количество просмотров на миниатюрах</string>
+  <string name="morphe_feed_view_count_summary">Количество просмотров видео в ленте отображается в левом нижнем углу их миниатюр, а не под заголовком. Некоторые видео, например в полках, могут не показывать количество просмотров</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Показывать количество лайков под миниатюрой в ленте</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Показывать процент лайков под миниатюрой в ленте</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Отключить всплывающее окно \"Вход на ТВ\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Отключить всплывающее окно «Подключите ваши устройства»</string>
@@ -441,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Отключает жест двойного нажатия двумя пальцами, который пропускает главы, который может быть случайно вызван одним пальцем</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Скачивайте видео, подкасты или песни с помощью сторонних приложений для скачивания</string>
-  <string name="morphe_external_downloader_title">Показать кнопку внешнего загрузчика</string>
-  <string name="morphe_external_downloader_summary">Отображает кнопку наложения в видеоплеере, которая открывает ваш внешний загрузчик</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Переопределить кнопку и меню \"Скачать\"</string>
   <string name="morphe_external_downloader_action_button_summary">Использует выбранный вами внешний загрузчик вместо стандартной функции загрузки</string>
@@ -1159,6 +1165,11 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Кнопка «Назад» выходит из ленты</string>
   <string name="morphe_back_button_always_exits_feed_summary">Нажатие кнопки «Назад» всегда выходит из приложения вместо прокрутки к началу ленты</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Принудительное воспроизведение анимаций</string>
+  <string name="morphe_force_animations_entry_default">По умолчанию</string>
+  <string name="morphe_force_animations_entry_always_on">Всегда</string>
+  <string name="morphe_force_animations_entry_always_off">Выключено</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Скрыть строку состояния</string>
   <string name="morphe_hide_status_bar_summary">Скрывает системную строку состояния. Проведите вниз от верхнего края, чтобы на мгновение показать её</string>
@@ -1394,12 +1405,11 @@ AVC (H.264)
   <string name="morphe_series_tracker_screen_summary">Подписывайтесь на плейлисты как на сериалы и сохраняйте прогресс просмотра</string>
   <string name="morphe_series_tracker_title">Включить трекинг сериалов</string>
   <string name="morphe_series_tracker_summary">Добавляет страницу «Сериалы» в историю и опцию «Подписаться» для плейлистов</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Показывать сериалы в навигационной панели</string>
   <string name="morphe_series_tracker_show_button_title">Показать кнопку \"Трекер сериалов\"</string>
   <string name="morphe_series_tracker_show_button_summary">Добавляет кнопку плеера для отслеживания или открытия сериала текущего видео</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Записывать прогресс отслеживаемых сериалов</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Записывать воспроизведение на этом телефоне для сохраненных сериалов и закладок</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Показывать историю в панели навигации</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Главная, Подписки, Уведомления, История и Вы</string>
   <string name="morphe_series_tracker_ui_cancel">Отмена</string>
   <string name="morphe_series_tracker_ui_save">Сохранить</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Сохранить закладку</string>
@@ -1429,9 +1439,6 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Откройте «Историю» в разделе «Вы», чтобы просмотреть свои сериалы</string>
   <string name="morphe_series_tracker_ui_watch_history">История просмотров</string>
   <string name="morphe_series_tracker_ui_series">Сериалы</string>
-  <string name="morphe_series_tracker_ui_history">История просмотров</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Подписки</string>
-  <string name="morphe_series_tracker_ui_notifications">Уведомления</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Загрузка сохраненных сериалов…</string>
   <string name="morphe_series_tracker_empty_library">Подпишитесь на плейлист, чтобы отслеживать его эпизоды</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Закладка плейлиста</string>

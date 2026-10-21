@@ -275,6 +275,7 @@ Veranderinge sluit in:
   <string name="morphe_hide_comments_gift_button_title">Verberg Geskenk-knoppie</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knoppie</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Verberg lewendige geselsdonateursbalk</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Versteek knoppie om na die bodem te rol in lewendige praatjie</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Versteek lewendige klets-wenke</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Versteek wenk-opsies wat naby die kletsinvoerbalk vertoon word, soos die kennisgewing vir intekenaars-alleen-klets</string>
   <string name="morphe_hide_comments_menu_button_title">Versteek Menu-knoppie</string>
@@ -288,6 +289,7 @@ Veranderinge sluit in:
   <string name="morphe_hide_comments_timestamp_button_title">Verberg Tydstempel-knoppie</string>
   <string name="morphe_hide_comments_top_fans_button_title">Versteek die \'Top fans\'-knoppie</string>
   <string name="morphe_hide_comments_translate_button_title">Versteek vertaalknoppie</string>
+  <string name="morphe_hide_comments_zero_state_title">Versteek boodskap \'Nog geen kommentaar nie\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Saniteer uitgeligte soekskakels</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Saniteer uitgeligte soekskakels en laat slegs die oorspronklike platte teks oor</string>
   <string name="morphe_hide_keyword_content_screen_title">Sleutelwoord filter</string>
@@ -433,6 +435,12 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <string name="morphe_feed_long_press_menu_summary">Tik en hou enige plek op ’n voedingsvideo open sy menu</string>
   <string name="morphe_feed_watch_later_button_title">Wys Kiek later-knoop by duimborde</string>
   <string name="morphe_feed_watch_later_button_summary">\'n Koppeling \"Later kyk\" word op die kortprentjies van voedvideo\'s vertoon. Tik en hou dit in om \"Bewaar by afspeellys\" te open</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Wys aansienlikheidsgetal op duimprente</string>
+  <string name="morphe_feed_view_count_summary">Die aansienlikheidsgetal van voer-video\'s word links onder op hul duimprente vertoon, in plaas daarvan onder die titel. Sommige video\'s, soos in rakke, mag dalk nie \'n aansienlikheidsgetal wys nie</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Wys voer-seunbeeldtelling</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Wys voer-seunbeeldkoers</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiveer \'Aanmeld by TV\'-pop-up</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Deaktiveer die \'Koppel jou toestelle\'-pop-up</string>
@@ -441,8 +449,6 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiveer die dubbeltik gebaar met twee vinger wat hoofstukke oorslaan, wat per ongeluk met een vinger geaktiveer kan word</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Laai video\'s, podkaste of liedjies af met derdeparty-aflaai-programme</string>
-  <string name="morphe_external_downloader_title">Wys eksterne aflaaiknoppie</string>
-  <string name="morphe_external_downloader_summary">Wys \'n oorvleiknoppie in video-speler wat jou eksterne aflaaier oopmaak</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Oorskryf die Aflaai-knoppie &amp; spyskaart</string>
   <string name="morphe_external_downloader_action_button_summary">Gebruik jou gekose eksterne aflaaier in plaas van die standaard aflaai-funksie</string>
@@ -1157,6 +1163,11 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Terugknoppie verlaat die voer</string>
   <string name="morphe_back_button_always_exits_feed_summary">Wanneer jy terug druk, verlaat jy altyd die toepassing in plaas daarvan om na die bokant van die voer te blaai</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Dwing animasies af</string>
+  <string name="morphe_force_animations_entry_default">Verstek</string>
+  <string name="morphe_force_animations_entry_always_on">Altyd aan</string>
+  <string name="morphe_force_animations_entry_always_off">Altyd af</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Versteek statusbalk</string>
   <string name="morphe_hide_status_bar_summary">Versteek die stelselstatusbalk. Vee af van die boonste rand om dit vir \'n oomblik te wys</string>
@@ -1392,12 +1403,11 @@ Beperking: Keer terug na ou-styl 'Meer video's'-oorleg"</string>
   <string name="morphe_series_tracker_screen_summary">Volg afspeellyste as reekse en hou jou plek</string>
   <string name="morphe_series_tracker_title">Aktiveer reeks opsporing</string>
   <string name="morphe_series_tracker_summary">Voeg \'n Reeks-blad by Geskiedenis en \'n Volg reeks opsie by afspeellyste</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Wys reeks in navigasiebalk</string>
   <string name="morphe_series_tracker_show_button_title">Wys reeksaanwyserknoppie</string>
   <string name="morphe_series_tracker_show_button_summary">Voeg \'n spelerknoop by om die reeks van die huidige video te volg of oop te maak</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Volg reeksvordering aan te teken</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Teeken afspeelaktiwiteit op hierdie foon op vir gestoor reekse en blaaikruise</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Wys geskiedenis in navigasiebalk</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Tuis, Subskripsies, Kennisgewings, Geskiedenis en Jy</string>
   <string name="morphe_series_tracker_ui_cancel">Kanselleer</string>
   <string name="morphe_series_tracker_ui_save">Stoor</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Stoor blaaikruis</string>
@@ -1427,9 +1437,6 @@ Beperking: Keer terug na ou-styl 'Meer video's'-oorleg"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Maak Geskiedenis vanuit Jou oop om jou reekse te sien</string>
   <string name="morphe_series_tracker_ui_watch_history">Bekykgeskiedenis</string>
   <string name="morphe_series_tracker_ui_series">Reekse</string>
-  <string name="morphe_series_tracker_ui_history">Geskiedenis</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Voorskryfings</string>
-  <string name="morphe_series_tracker_ui_notifications">Kennisgewings</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Laai gestoor reekse tans…</string>
   <string name="morphe_series_tracker_empty_library">Volg \'n spellys om sy episode volg</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Afspeellys blaaikruis</string>

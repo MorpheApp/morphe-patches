@@ -8,8 +8,6 @@
 package app.morphe.patches.youtube.misc.medianotification
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.medianotification.EXTENSION_CLASS
 import app.morphe.patches.shared.misc.medianotification.mediaNotificationControlsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -39,8 +37,9 @@ val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
                     move-result v0
                     if-eqz v0, :add_action
                     return-void
-                """,
-                ExternalLabel("add_action", getInstruction(0))
+                    :add_action
+                    nop
+                """
             )
         }
     }

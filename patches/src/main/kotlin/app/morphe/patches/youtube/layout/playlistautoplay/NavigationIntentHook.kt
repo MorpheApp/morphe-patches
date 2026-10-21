@@ -11,7 +11,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.util.cloneParameters
-import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
@@ -45,15 +44,14 @@ internal fun navigationIntentHook(extensionClass: String, extensionMethod: Strin
             method = method.cloneParameters()
         }
 
-        val freeRegister = method.findFreeRegister(0)
         method.addInstructionsWithLabels(
             0,
             """
-                move-object/from16 v$freeRegister, p1
-                iget-object v$freeRegister, v$freeRegister, $enumField
-                invoke-static { v$freeRegister }, $extensionClass->$extensionMethod(Ljava/lang/Enum;)Z
-                move-result v$freeRegister
-                if-eqz v$freeRegister, :continue
+                move-object/from16 v0, p1
+                iget-object v0, v0, $enumField
+                invoke-static { v0 }, $extensionClass->$extensionMethod(Ljava/lang/Enum;)Z
+                move-result v0
+                if-eqz v0, :continue
                 return-void
                 :continue
                 nop

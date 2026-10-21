@@ -15,6 +15,8 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val EXO_PLAYER_TYPE = "Landroidx/media3/exoplayer/ExoPlayer;"
+
 internal object StopVideoFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf(
@@ -51,7 +53,7 @@ internal object PlayVideoFingerprint : Fingerprint(
  * A synthetic Runnable also logs with the "ExoPlayerImpl" tag, so the interface check is required.
  */
 internal object ExoPlayerImplFingerprint : Fingerprint(
-    interfaces = listOf("Landroidx/media3/exoplayer/ExoPlayer;"),
+    interfaces = listOf(EXO_PLAYER_TYPE),
     strings = listOf("ExoPlayerImpl")
 )
 

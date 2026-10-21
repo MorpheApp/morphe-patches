@@ -332,6 +332,8 @@ Sînorkirin:
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Tevgera bikirinê û bikirin û girtinê ya bişêvekirina \'Girêdana vîdyoyê kopî bikin\' bişêvekirin</string>
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'Nêzîk kirin li TV\'ê\' asteng bikin</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Devreyê \'Cihazên te pêvekirin\' pop-up\'ê neçalak bike</string>
@@ -340,8 +342,6 @@ Sînorkirin:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Disables the two-finger double-tap gesture that skips chapters, which may be accidentally triggered with one finger</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Vîdyoyê, podcastan, an stranê bi rêya sepanên downloadkirina sêjê dakêşîne.</string>
-  <string name="morphe_external_downloader_title">Nîşan bide lê gava serîna bikêrkaran</string>
-  <string name="morphe_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Dagirbêjkirina bişko û menuya Dakêşê &amp;</string>
   <string name="morphe_external_downloader_action_button_summary">Li şûna taybetmendiya dakêşana standard, dakêşana derveyî ya ku we hilbijartiye bikar tîne.</string>
@@ -948,6 +948,8 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_miniplayer_opacity_title">Astê dorpelê</string>
   <string name="morphe_miniplayer_opacity_summary">Rengê têkildar ê Sebarê</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_entry_default">Bixweber</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Paşxaneya temaya ronî</string>

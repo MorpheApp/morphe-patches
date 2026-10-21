@@ -275,6 +275,7 @@ Nogle server-side layouts kan måske ikke gå tilbage.
   <string name="morphe_hide_comments_gift_button_title">Skjul gave-knap</string>
   <string name="morphe_hide_comments_info_button_title">Skjul Info-knap</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skjul live chat donatorbjælken</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Skjul knap til at rulle livechatten ned</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Skjul tooltips til live-chat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Skjuler tooltip-popups, der vises nær chat-indtastningsfeltet, såsom meddelelsen om chat kun for abonnenter</string>
   <string name="morphe_hide_comments_menu_button_title">Skjul menuknap</string>
@@ -288,6 +289,7 @@ Nogle server-side layouts kan måske ikke gå tilbage.
   <string name="morphe_hide_comments_timestamp_button_title">Skjul Tidsstempel-knap</string>
   <string name="morphe_hide_comments_top_fans_button_title">Skjul \'Top fans\'-knappen</string>
   <string name="morphe_hide_comments_translate_button_title">Skjul oversæt-knappen</string>
+  <string name="morphe_hide_comments_zero_state_title">Skjul besked om, at der endnu ikke er nogen kommentarer</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Renser fremhævede søgelinks</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Renser fremhævede søgelinks og efterlader kun den originale tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Nøgleordsfilter</string>
@@ -431,6 +433,12 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_feed_long_press_menu_summary">At trykke og holde et vilkårligt sted på en feed-video åbner dens menu</string>
   <string name="morphe_feed_watch_later_button_title">Vis \'Se senere\'-knap på miniaturebilleder</string>
   <string name="morphe_feed_watch_later_button_summary">En \"Se senere\"-knap vises på miniaturebillederne for feed-videoer. Tryk og hold for at gemme i afspilningsliste</string>
+  <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Vis visningstal på thumbnails</string>
+  <string name="morphe_feed_view_count_summary">Visningstallet for feed-videoer vises nederst til venstre på deres thumbnails i stedet for under titlen. Nogle videoer, f.eks. i hylder, viser måske ikke et visningstal</string>
+  <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Vis antal likes på feed-tommbilledet</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Vis like-procent for feed-tommbilledet</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiver \'Log ind på TV\' popup</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Deaktiver pop op-vinduet \'Tilslut dine enheder\'</string>
@@ -439,8 +447,6 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiverer double-tap-gestussen med to fingre, der springer kapitler over, hvilket utilsigtet kan udløses med én finger</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Download videoer, podcasts eller sange med tredjeparts download-apps</string>
-  <string name="morphe_external_downloader_title">Vis ekstern download-knap</string>
-  <string name="morphe_external_downloader_summary">Viser en overlay-knap i videoplayeren, der åbner din eksterne downloader</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Overskriv Download knappen &amp; menu</string>
   <string name="morphe_external_downloader_action_button_summary">Bruger din valgte eksterne downloader i stedet for den indbyggede download-funktion</string>
@@ -1153,6 +1159,11 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tilbageknappen forlader feedet</string>
   <string name="morphe_back_button_always_exits_feed_summary">Tryk på tilbage afslutter altid appen i stedet for at rulle til toppen af feedet</string>
+  <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Tving animationer</string>
+  <string name="morphe_force_animations_entry_default">Standard</string>
+  <string name="morphe_force_animations_entry_always_on">Aldrig slukket</string>
+  <string name="morphe_force_animations_entry_always_off">Aldrig tændt</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skjul statuslinjen</string>
   <string name="morphe_hide_status_bar_summary">Skjuler systemets statuslinje. Stryg ned fra den øverste kant for at vise den et øjeblik</string>
@@ -1388,12 +1399,11 @@ Begrænsning: Vender tilbage til gammeldags 'Flere videoer'-overlay"</string>
   <string name="morphe_series_tracker_screen_summary">Følg afspilningslister som serier, og hold styr på din plads</string>
   <string name="morphe_series_tracker_title">Aktiver seriessporing</string>
   <string name="morphe_series_tracker_summary">Tilføjer en serieside til Historik og et muligheden for at følge serier i afspilningslister</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Vis serie i navigationslinjen</string>
   <string name="morphe_series_tracker_show_button_title">Vis knap til Serier-sporing</string>
   <string name="morphe_series_tracker_show_button_summary">Tilføjer en afspillerknap til at følge eller åbne serien for den aktuelle video</string>
   <string name="morphe_series_tracker_record_followed_progress_title">Optal fremskridt for fulgte serier</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">Optal afspilning på denne telefon for gemte serier og bogmærker</string>
-  <string name="morphe_series_tracker_show_history_tab_title">Vis Historik i navigationslinjen</string>
-  <string name="morphe_series_tracker_show_history_tab_summary">Hjem, Abonnementer, Notifikationer, Historik og Dig</string>
   <string name="morphe_series_tracker_ui_cancel">Annuller</string>
   <string name="morphe_series_tracker_ui_save">Gem</string>
   <string name="morphe_series_tracker_ui_save_bookmark">Gem bogmærke</string>
@@ -1423,9 +1433,6 @@ Begrænsning: Vender tilbage til gammeldags 'Flere videoer'-overlay"</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Åbn Historik via Dig for at se dine serier</string>
   <string name="morphe_series_tracker_ui_watch_history">Afsøtningshistorik</string>
   <string name="morphe_series_tracker_ui_series">Serier</string>
-  <string name="morphe_series_tracker_ui_history">Historik</string>
-  <string name="morphe_series_tracker_ui_subscriptions">Abonnementer</string>
-  <string name="morphe_series_tracker_ui_notifications">Notifikationer</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">Indlæser gemte serier…</string>
   <string name="morphe_series_tracker_empty_library">Følg en playliste for at spore sine episoder</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">Bogmærke for afspillingsliste</string>
