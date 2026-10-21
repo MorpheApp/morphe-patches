@@ -195,7 +195,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_ENABLED = new BooleanSetting("morphe_music_lyrics_enabled", TRUE, false);
     public static final BooleanSetting LYRICS_KEEP_SCREEN_ON = new BooleanSetting("morphe_music_lyrics_keep_screen_on", FALSE, false, parent(LYRICS_ENABLED));
     public static final String DEFAULT_LYRICS_ORDER =
-            "Apple,BiniLyrics,LrcRed,bLyrics,Lyricify,Unison,PetitLyrics,AMLL,QQ,SimpMusic,KuGou,Musixmatch,YTMusic,LRCLIB,NetEase,Luna,LunaBeat,-Captions,-Spotify,-Deezer,-RMM,-Genius,";
+            "YTMusic,-Captions,Apple,LRCLIB,LrcRed,BiniLyrics,QQ,NetEase,KuGou,Luna,-RMM,-PetitLyrics,-bLyrics,-Unison,-SimpMusic,-AMLL,-LunaBeat,-Lyricify,-Musixmatch,-Spotify,-Deezer,-Genius,";
     public static final StringSetting LYRICS_SOURCE = new StringSetting("morphe_music_lyrics_source", DEFAULT_LYRICS_ORDER, false, parent(LYRICS_ENABLED));
     public static final StringSetting APPLE_MUSIC_TOKEN = new StringSetting("morphe_music_apple_music_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting SPOTIFY_TOKEN = new StringSetting("morphe_music_spotify_token", "", false, parent(LYRICS_ENABLED));

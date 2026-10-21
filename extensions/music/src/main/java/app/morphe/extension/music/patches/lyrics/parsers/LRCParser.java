@@ -327,7 +327,8 @@ public final class LRCParser {
             LyricsLine curr = lines.get(i);
             if (curr.isBG()) continue;
             long gap = curr.startTimeMs() - prev.startTimeMs();
-            if (gap < 0 || gap > ECHO_WINDOW_MS) continue;
+            boolean overlaps = prev.endTimeMs() != LyricsLine.NO_TIME && prev.endTimeMs() > curr.startTimeMs();
+            if (!overlaps && (gap < 0 || gap > 1200L)) continue;
             String cleanCurr = cleanTextForComparison(curr.text());
             if (!cleanCurr.isEmpty() && cleanCurr.equals(cleanTextForComparison(prev.text()))) {
                 lines.set(i, new LyricsLine(curr.startTimeMs(), curr.endTimeMs(), curr.text(),

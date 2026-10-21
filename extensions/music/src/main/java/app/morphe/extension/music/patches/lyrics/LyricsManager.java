@@ -463,7 +463,11 @@ public final class LyricsManager {
         }
 
         if (!playing || lastSamplePosition < 0) {
-            return smoothPosition > 0 ? smoothPosition : Math.max(0, lastSamplePosition);
+            if (lastSamplePosition >= 0) {
+                smoothPosition = lastSamplePosition;
+                estimate = lastSamplePosition;
+            }
+            return Math.max(0, lastSamplePosition);
         }
 
         positionReadSinceFrame = true;
@@ -755,8 +759,9 @@ public final class LyricsManager {
             lastFrameTimeUptimeMs = -1;
         } else {
             stopFrameCallback();
-            if (Math.abs(lastSamplePosition - smoothPosition) > SEEK_THRESHOLD_MS) {
-                smoothPosition = Math.max(0, lastSamplePosition);
+            if (lastSamplePosition >= 0) {
+                smoothPosition = lastSamplePosition;
+                estimate = lastSamplePosition;
             }
         }
         ensureLoadedForCurrentVideo();
