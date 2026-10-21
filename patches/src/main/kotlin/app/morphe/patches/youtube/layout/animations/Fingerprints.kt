@@ -8,11 +8,17 @@
 package app.morphe.patches.youtube.layout.animations
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /**
  * A/B test: the page transitions ask for the animation decision.
@@ -36,6 +42,13 @@ internal const val SHORTS_ANIMATION_HINTS_FEATURE_FLAG = 45728204L
  * When off, the content expands with its animation when it loads.
  */
 internal const val FLOW_LAYOUT_WATCH_PANEL_FEATURE_FLAG = 45744104L
+
+/**
+ * Page animation types of [pageAnimationTypeFingerprint] (the proto enum value + 1).
+ * Unspecified uses the default animation, a horizontal slide.
+ */
+internal const val PAGE_ANIMATION_TYPE_UNSPECIFIED = 1
+internal const val PAGE_ANIMATION_TYPE_NONE = 2
 
 internal object PageTransitionAnimationHintsFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
@@ -69,5 +82,44 @@ internal object AnimationDecisionForCategoryFingerprint : Fingerprint(
         // The animation category.
         fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchAfterWithin(5)),
         string("#getAnimationDecisionForCategory: no category provided")
+    )
+)
+
+/**
+ * Picks the enter animation of a page transition (slide, zoom or none)
+ * from the page animation type of the navigation command.
+ * 20.21 inlines it in the method that shows the new page.
+ */
+internal object PageTransitionEnterAnimationFingerprint : Fingerprint(
+    filters = listOf(
+        // Page animation type of the navigation command.
+        methodCall(opcode = Opcode.INVOKE_STATIC, returnType = "I", parameters = listOf("L")),
+        resourceLiteral(ResourceType.ANIM, "horizontal_enter_fragment_animation"),
+        resourceLiteral(ResourceType.ANIM, "horizontal_reverse_enter_fragment_animation"),
+    )
+)
+
+/**
+ * Reads the page animation type that the server sets in the endpoint of a navigation command.
+ * The page transitions are not animated if it is [PAGE_ANIMATION_TYPE_NONE].
+ *
+ * @param method The method that [PageTransitionEnterAnimationFingerprint] calls.
+ */
+internal fun pageAnimationTypeFingerprint(method: MethodReference) = Fingerprint(
+    definingClass = method.definingClass,
+    name = method.name,
+    returnType = "I",
+    parameters = method.parameterTypes.map { it.toString() },
+    filters = listOf(
+        // Page animation type of the endpoint.
+        fieldAccess(opcode = Opcode.IGET, type = "I"),
+        // Converts the proto value to the page animation type.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "I",
+            parameters = listOf("I"),
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.RETURN),
     )
 )

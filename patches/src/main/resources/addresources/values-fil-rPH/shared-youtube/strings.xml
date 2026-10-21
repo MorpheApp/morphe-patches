@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Pangatlo)</string>
   <string name="morphe_theme_color_custom_entry">Pasadya</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Mga panlabas na pag-download</string>
+  <string name="morphe_external_downloader_screen_title">Mga Download</string>
+  <string name="morphe_download_mode_title">Mode ng pag-download</string>
+  <string name="morphe_download_mode_entry_default">Awtomatiko</string>
+  <string name="morphe_download_mode_entry_in_app">Mag-download sa loob ng app</string>
+  <string name="morphe_download_mode_entry_external">Panlabas na downloader</string>
   <string name="morphe_external_downloader_name_title">Pangalan ng pakete ng tagapag-download</string>
   <string name="morphe_external_downloader_name_summary">Pangalan ng pakete ng iyong naka-install na panlabas na app ng tagapag-download</string>
   <string name="morphe_external_downloader_other_item_hint">Ipasok ang pangalan ng pakete</string>

@@ -17,6 +17,7 @@ import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.reddit.shared.LinkConstructorFingerprint
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.registersUsed
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -111,6 +112,20 @@ val redgifsAudioPatch = bytecodePatch(
                     """
                 )
             }
+        }
+
+        // Video downloads use Reddit's video url of the post, which the player hooks don't change.
+        // The url is replaced where the download is enqueued, so other patches still see Reddit's url.
+        DownloadVideoFingerprint.let {
+            val requestMatch = it.instructionMatches[0]
+            val uriRegister = requestMatch.instruction.registersUsed[1]
+            it.method.addInstructions(
+                requestMatch.index,
+                """
+                    invoke-static/range { v$uriRegister .. v$uriRegister }, $EXTENSION_CLASS->getDownloadUri(Landroid/net/Uri;)Landroid/net/Uri;
+                    move-result-object v$uriRegister
+                """
+            )
         }
 
         // Resolve placeholder urls when the player loads them.

@@ -31,6 +31,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.hide.shorts.ShortsBottomBarContainerFingerprint
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
@@ -214,6 +215,36 @@ val navigationBarPatch = bytecodePatch(
                         insertLiteralOverride(flag, "$EXTENSION_CLASS->useTranslucentNavigationBar(Z)Z")
                     }
                 }
+            }
+        }
+
+        // With the translucent navigation bar, the navigation bar makes room for the system
+        // navigation buttons. If the navigation bar is hidden in the Shorts player, nothing makes
+        // that room, so the Shorts player makes it itself. The first parameter is the layout
+        // of the Shorts player fragment.
+        ShortsBottomBarContainerFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p1 }, $EXTENSION_CLASS->setShortsPlayerBottomInset(Landroid/view/View;)V"
+        )
+
+        // With the keyboard open, the bottom inset also holds the keyboard, so the bar covering
+        // the system navigation buttons grows as tall as the keyboard and covers the page.
+        // The padding is first stored in a field of the bar, and the same register is then passed
+        // to setPadding. Some targets set it in two places.
+        NavigationBarBottomPaddingFingerprint.matchAll().forEach { match ->
+            match.method.apply {
+                val fieldIndex = match.instructionMatches.first().index
+                val fieldInstruction = getInstruction<TwoRegisterInstruction>(fieldIndex)
+                val paddingRegister = fieldInstruction.registerA
+                val navigationBarRegister = fieldInstruction.registerB
+
+                addInstructionsAtControlFlowLabel(
+                    fieldIndex,
+                    """
+                        invoke-static { v$navigationBarRegister, v$paddingRegister }, $EXTENSION_CLASS->getNavigationBarBottomPadding(Landroid/view/View;I)I
+                        move-result v$paddingRegister
+                    """
+                )
             }
         }
 

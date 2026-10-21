@@ -13,6 +13,7 @@ import android.util.Base64;
 import androidx.annotation.Nullable;
 
 import com.reddit.domain.model.Link;
+import com.reddit.domain.model.LinkMedia;
 import com.reddit.domain.model.Preview;
 import com.reddit.domain.model.RedditVideo;
 
@@ -69,6 +70,7 @@ public final class RedgifsAudioPatch {
      * How long the player waits for the Redgifs video url, before playing Reddit's video.
      */
     private static final long PLAYER_WAIT_MS = 8_000;
+    private static final long DOWNLOAD_WAIT_MS = 5_000;
     private static final long FAILED_LOOKUP_RETRY_MS = 30_000;
     private static final int TIMEOUT_MS = 5_000;
     private static final int MAX_CACHE_SIZE = 500;
@@ -151,12 +153,14 @@ public final class RedgifsAudioPatch {
             if (id == null) return;
 
             Preview preview = link.getPreview();
-            RedditVideo video = preview == null ? null : preview.getRedditVideoPreview();
-            if (video == null) return;
+            RedditVideo previewVideo = preview == null ? null : preview.getRedditVideoPreview();
+            // Downloads use the media video instead of the preview video.
+            LinkMedia media = link.getMedia();
+            RedditVideo mediaVideo = media == null ? null : media.getRedditVideo();
+            if (previewVideo == null && mediaVideo == null) return;
 
-            recordRedditVideo(video.getDashUrl(), id);
-            recordRedditVideo(video.getHlsUrl(), id);
-            recordRedditVideo(video.getFallBackUrl(), id);
+            recordRedditVideo(previewVideo, id);
+            recordRedditVideo(mediaVideo, id);
             getLookup(id);
         } catch (Exception ex) {
             Logger.printException(() -> "onLinkCreated failure", ex);
@@ -278,6 +282,49 @@ public final class RedgifsAudioPatch {
     }
 
     /**
+     * Injection point. Called when a video download is enqueued.
+     *
+     * @return The HD Redgifs video uri, or the original uri if it's not known.
+     */
+    public static Uri getDownloadUri(Uri uri) {
+        String url = getDownloadUrl(uri.toString());
+        return url.equals(uri.toString()) ? uri : Uri.parse(url);
+    }
+
+    private static String getDownloadUrl(String url) {
+        try {
+            if (!Settings.REDGIFS_AUDIO.get()) return url;
+
+            String redditVideoId = getRedditVideoId(url);
+            String id = redditVideoId == null ? null : redditVideoIdToRedgifsId.get(redditVideoId);
+            if (id == null) return url;
+
+            Lookup lookup = getLookup(id);
+            // Downloads are usually enqueued on the main thread, where the lookup can't be awaited.
+            // It started when the post was loaded, so it's usually done by now.
+            if (!Utils.isCurrentlyOnMainThread()) {
+                lookup.done.await(DOWNLOAD_WAIT_MS, TimeUnit.MILLISECONDS);
+            }
+
+            // Downloads aren't streamed, so the HD quality setting doesn't apply.
+            String hd = lookup.hdUrl;
+            String redgifsUrl = hd != null ? hd : lookup.sdUrl;
+            if (redgifsUrl == null) {
+                Logger.printDebug(() -> "Redgifs video url not found, downloading Reddit's video: " + id);
+                return url;
+            }
+
+            return redgifsUrl;
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        } catch (Exception ex) {
+            Logger.printException(() -> "getDownloadUrl failure", ex);
+        }
+
+        return url;
+    }
+
+    /**
      * @return The Redgifs id of a Redgifs video url, or null if it's not one.
      */
     @Nullable
@@ -317,6 +364,15 @@ public final class RedgifsAudioPatch {
 
         List<String> segments = uri.getPathSegments();
         return segments.isEmpty() ? null : segments.get(0);
+    }
+
+    private static void recordRedditVideo(@Nullable RedditVideo video, String id) {
+        if (video == null) return;
+
+        recordRedditVideo(video.getDashUrl(), id);
+        recordRedditVideo(video.getHlsUrl(), id);
+        recordRedditVideo(video.getFallBackUrl(), id);
+        recordRedditVideo(video.getDownloadUrl(), id);
     }
 
     private static void recordRedditVideo(@Nullable String url, String id) {

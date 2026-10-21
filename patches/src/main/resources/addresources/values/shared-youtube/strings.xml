@@ -51,7 +51,11 @@ Second \"item\" text"</string>
     <string name="morphe_theme_color_custom_entry">Custom</string>
 
     <!-- interaction.downloads.downloadsPatch -->
-    <string name="morphe_external_downloader_screen_title">External downloads</string>
+    <string name="morphe_external_downloader_screen_title">Downloads</string>
+    <string name="morphe_download_mode_title">Download mode</string>
+    <string name="morphe_download_mode_entry_default">Default</string>
+    <string name="morphe_download_mode_entry_in_app">Download in-app</string>
+    <string name="morphe_download_mode_entry_external">External downloader</string>
     <string name="morphe_external_downloader_name_title">Downloader package name</string>
     <string name="morphe_external_downloader_name_summary">Package name of your installed external downloader app</string>
     <string name="morphe_external_downloader_other_item_hint">Enter package name</string>

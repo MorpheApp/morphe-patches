@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (3차)</string>
   <string name="morphe_theme_color_custom_entry">사용자 정의</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">외부 다운로드</string>
+  <string name="morphe_external_downloader_screen_title">다운로드</string>
+  <string name="morphe_download_mode_title">오프라인 저장 모드</string>
+  <string name="morphe_download_mode_entry_default">기본값</string>
+  <string name="morphe_download_mode_entry_in_app">내부 다운로드</string>
+  <string name="morphe_download_mode_entry_external">외부 다운로더</string>
   <string name="morphe_external_downloader_name_title">다운로더 앱 패키지명</string>
   <string name="morphe_external_downloader_name_summary">설치된 외부 다운로더 앱 패키지명을 설정하세요</string>
   <string name="morphe_external_downloader_other_item_hint">앱 패키지명을 입력하세요</string>

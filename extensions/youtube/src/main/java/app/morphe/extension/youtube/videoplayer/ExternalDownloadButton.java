@@ -13,15 +13,16 @@ package app.morphe.extension.youtube.videoplayer;
 import android.view.View;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.ButtonVisibility;
 
 @SuppressWarnings("unused")
 public class ExternalDownloadButton {
 
     static {
-        if (SharedYouTubeSettings.EXTERNAL_DOWNLOADER.get()) {
+        if (isEnabled()) {
             LegacyPlayerControlButton.incrementUpperButtonCount();
         }
     }
@@ -36,13 +37,19 @@ public class ExternalDownloadButton {
                     "morphe_external_download_button",
                     null,
                     "morphe_yt_download_button",
-                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER,
+                    () -> isEnabled()
+                            ? ButtonVisibility.ENABLED
+                            : ButtonVisibility.DISABLED,
                     ExternalDownloadButton::onDownloadClick,
                     null
             );
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
+    }
+
+    private static boolean isEnabled() {
+        return Settings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON.get();
     }
 
     private static void onDownloadClick(View view) {

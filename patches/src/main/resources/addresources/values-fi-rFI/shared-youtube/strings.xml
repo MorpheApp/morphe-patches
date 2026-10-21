@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Tertiääri)</string>
   <string name="morphe_theme_color_custom_entry">Mukautettu</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Ulkoiset lataukset</string>
+  <string name="morphe_external_downloader_screen_title">Lataukset</string>
+  <string name="morphe_download_mode_title">Lataustila</string>
+  <string name="morphe_download_mode_entry_default">Oletus</string>
+  <string name="morphe_download_mode_entry_in_app">Sovelluksen sisäinen lataus</string>
+  <string name="morphe_download_mode_entry_external">Ulkoisin lataussovellus</string>
   <string name="morphe_external_downloader_name_title">Lataussovelluksen paketin nimi</string>
   <string name="morphe_external_downloader_name_summary">Asennetun ulkoisen lataussovelluksen paketin nimi</string>
   <string name="morphe_external_downloader_other_item_hint">Syötä paketin nimi</string>

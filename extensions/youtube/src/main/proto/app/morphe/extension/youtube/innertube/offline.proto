@@ -1,0 +1,139 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+
+// Messages used by the in-app downloads (offline videos).
+// Only the fields that are read or changed are declared, all other fields are kept as unknown fields.
+
+message OfflineCommand {
+    optional OfflineVideoEndpoint offlineVideoEndpoint = 73080600;
+}
+
+message OfflineVideoEndpoint {
+    optional string videoId = 1;
+    optional OfflineVideoAction action = 2;
+    optional OfflineabilityContainer offlineability = 4;
+}
+
+enum OfflineVideoAction {
+    OFFLINE_VIDEO_ACTION_UNKNOWN = 0;
+    OFFLINE_VIDEO_ACTION_ADD = 1;
+}
+
+message OfflineabilityContainer {
+    optional OfflineabilityRenderer offlineabilityRenderer = 60572968;
+}
+
+message OfflineabilityRenderer {
+    optional bool offlineable = 1;
+    // Upsell or other dialog that is shown instead of saving the video, if the video is not offlineable.
+    optional bytes notOfflineableDialog = 2;
+    repeated OfflineFormat formats = 3;
+}
+
+message OfflineFormat {
+    optional OfflineFormatLabel name = 1;
+    optional OfflineFormatType formatType = 3;
+    optional OfflineFormatAvailability availability = 4;
+}
+
+message OfflineFormatLabel {
+    optional string simpleText = 4;
+}
+
+enum OfflineFormatType {
+    OFFLINE_FORMAT_TYPE_UNKNOWN = 0;
+    OFFLINE_FORMAT_TYPE_SD = 1; // 360p
+    OFFLINE_FORMAT_TYPE_HD = 2; // 720p
+    OFFLINE_FORMAT_TYPE_AUDIO_ONLY = 3;
+    OFFLINE_FORMAT_TYPE_LD = 4; // 144p
+    OFFLINE_FORMAT_TYPE_LD_240 = 5;
+    OFFLINE_FORMAT_TYPE_SD_480 = 6;
+    OFFLINE_FORMAT_TYPE_HD_1080 = 7;
+}
+
+enum OfflineFormatAvailability {
+    OFFLINE_FORMAT_AVAILABILITY_UNKNOWN = 0;
+    OFFLINE_FORMAT_AVAILABILITY_FREE = 1;
+    OFFLINE_FORMAT_AVAILABILITY_PREMIUM_LOCKED = 2;
+    OFFLINE_FORMAT_AVAILABILITY_PREMIUM_UNLOCKED = 3;
+}
+
+// Command of the 'offline/get_download_action' endpoint, which the Download button uses.
+message OfflineDownloadActionCommand {
+    optional OfflineDownloadAction downloadAction = 382320942;
+}
+
+message OfflineDownloadAction {
+    optional string videoId = 1;
+    optional string playlistId = 2;
+}
+
+// Command of the 'ypc/get_offline_upsell' endpoint.
+message OfflineUpsellCommand {
+    optional OfflineUpsellEndpoint offlineUpsellEndpoint = 133724106;
+}
+
+message OfflineUpsellEndpoint {
+    optional string videoId = 1;
+}
+
+message OfflineUpsellResponse {
+    optional OfflineUpsellContent content = 3;
+    // Command that runs if the response has no content.
+    optional OfflineCommand command = 6;
+}
+
+message OfflineUpsellContent {
+    optional OfflineUpsellRenderer offlineUpsellRenderer = 131899791;
+}
+
+message OfflineUpsellRenderer {
+    repeated OfflineFormat formats = 11;
+}
+
+// Player response of a video that is saved.
+message OfflinePlayerResponse {
+    optional OfflineStreamingData streamingData = 4;
+    optional OfflineVideoDetails videoDetails = 11;
+    optional OfflineState offlineState = 14;
+    optional OfflinePlayerConfig playerConfig = 15;
+}
+
+message OfflinePlayerConfig {
+    optional OfflineExoPlayerConfig exoPlayerConfig = 57825011;
+}
+
+message OfflineExoPlayerConfig {
+    // Streams are only selected from the adaptive formats if this is set.
+    optional bool useExoPlayer = 1;
+}
+
+message OfflineVideoDetails {
+    optional string videoId = 1;
+}
+
+message OfflineStreamingData {
+    repeated OfflineStreamFormat adaptiveFormats = 3;
+}
+
+message OfflineStreamFormat {
+    optional string mimeType = 5;
+    // Only formats with this flag are saved.
+    optional bool offlineEligible = 58;
+}
+
+message OfflineState {
+    optional string token = 1;
+    // Seconds until the saved video must be refreshed with the server.
+    optional uint32 policyLifetimeSeconds = 3;
+    optional OfflineStateAction action = 5;
+}
+
+enum OfflineStateAction {
+    OFFLINE_STATE_ACTION_UNKNOWN = 0;
+    OFFLINE_STATE_ACTION_OK = 1;
+}

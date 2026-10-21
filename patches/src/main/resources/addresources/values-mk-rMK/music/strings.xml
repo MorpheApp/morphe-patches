@@ -16,6 +16,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_cancel">Откажи</string>
   <string name="morphe_music_jam_done">Готово</string>
@@ -29,7 +30,7 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_music_downloads_next">Следно</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->

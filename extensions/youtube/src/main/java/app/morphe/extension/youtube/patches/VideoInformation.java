@@ -144,6 +144,8 @@ public final class VideoInformation {
     private static volatile String playerResponseVideoId = "";
     private static volatile boolean playerResponseVideoIdIsShort;
     private static volatile boolean videoIdIsShort;
+    private static volatile boolean liveStream;
+    private static volatile String liveStreamVideoId = "";
 
     /**
      * The current playback speed.
@@ -364,7 +366,8 @@ public final class VideoInformation {
      * @return Playback speed to use.
      */
     public static float overridePlaybackSpeed(float speed) {
-        return speed;
+        // Shorts ignore changePlaybackSpeed(), so their speed is forced here instead.
+        return RememberPlaybackSpeedPatch.getPlaybackSpeedInShorts(speed);
     }
 
     /**
@@ -859,6 +862,37 @@ public final class VideoInformation {
      */
     public static boolean lastVideoIdIsShort() {
         return videoIdIsShort;
+    }
+
+    /**
+     * Injection point.
+     * Called when the player response of the current video is read.
+     *
+     * @param isLive If the current video is an ongoing live stream.
+     */
+    public static void setLiveStream(boolean isLive) {
+        // Remember which video the value is for, so a live video does not mark the following
+        // videos as live. The player response video ID is used because the video ID is
+        // not yet updated for the new video at this point.
+        final boolean wasLive = isLiveStream();
+        liveStreamVideoId = playerResponseVideoId;
+        liveStream = isLive;
+
+        final boolean nowLive = isLiveStream();
+        if (wasLive == nowLive) {
+            return;
+        }
+
+        Logger.printDebug(() -> "isLiveStream: " + nowLive);
+        RememberPlaybackSpeedPatch.onLiveStreamChanged(nowLive);
+        SkipLiveShortsPatch.onLiveStreamChanged(nowLive);
+    }
+
+    /**
+     * @return If the video that is currently loading is an ongoing live stream.
+     */
+    public static boolean isLiveStream() {
+        return liveStream && liveStreamVideoId.equals(playerResponseVideoId);
     }
 
     /**

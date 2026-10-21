@@ -11,7 +11,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -38,28 +37,26 @@ internal fun BytecodePatchContext.injectSettingsMenuFilterHook(extensionClass: S
     }
 
     PreferenceSetTitleFingerprint.method.apply {
-        val freeRegister = findFreeRegister(0)
-
         addInstructionsWithLabels(
             0,
             """
                 invoke-static { p0, p1 }, $SETTINGS_MENU_FILTER_CLASS->scopedCapture(Ljava/lang/Object;Ljava/lang/CharSequence;)V
 
                 invoke-static { }, $extensionClass->getNeedles()[Ljava/lang/String;
-                move-result-object v$freeRegister
-                if-eqz v$freeRegister, :original
+                move-result-object v0
+                if-eqz v0, :original
 
-                invoke-static { p1, v$freeRegister }, $SETTINGS_MENU_FILTER_CLASS->equalsAny(Ljava/lang/CharSequence;[Ljava/lang/String;)Z
-                move-result v$freeRegister
-                if-eqz v$freeRegister, :original
+                invoke-static { p1, v0 }, $SETTINGS_MENU_FILTER_CLASS->equalsAny(Ljava/lang/CharSequence;[Ljava/lang/String;)Z
+                move-result v0
+                if-eqz v0, :original
 
-                iget-boolean v$freeRegister, p0, $visibleField
-                if-eqz v$freeRegister, :original
+                iget-boolean v0, p0, $visibleField
+                if-eqz v0, :original
 
                 invoke-static { p1 }, $SETTINGS_MENU_FILTER_CLASS->logHidden(Ljava/lang/CharSequence;)V
 
-                const/4 v$freeRegister, 0x0
-                invoke-virtual { p0, v$freeRegister }, $setVisible
+                const/4 v0, 0x0
+                invoke-virtual { p0, v0 }, $setVisible
 
                 :original
                 nop

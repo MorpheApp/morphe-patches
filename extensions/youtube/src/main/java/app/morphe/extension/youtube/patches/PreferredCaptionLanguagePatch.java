@@ -40,9 +40,12 @@ public class PreferredCaptionLanguagePatch {
         @Nullable
         List<CaptionTrackInterface> patch_getAutoTranslateCaptionTracks();
 
-        /** @return YouTube's default original caption source for the current audio, if available. */
+        /**
+         * @return Original caption track YouTube translates captions of the current audio track from,
+         *         otherwise the default caption track of the current audio track. Null if not available.
+         */
         @Nullable
-        CaptionTrackInterface patch_getDefaultCaptionSource();
+        CaptionTrackInterface patch_getCaptionTranslationSource();
     }
 
     /**
@@ -149,7 +152,7 @@ public class PreferredCaptionLanguagePatch {
             // A missing menu row does not mean the backend cannot translate the source.
             CaptionTrackInterface translated = findAutoTranslatedTrack(directTracks,
                     subtitleManager.patch_getAutoTranslateCaptionTracks(),
-                    subtitleManager.patch_getDefaultCaptionSource(), targetLang, Requester.getAppLocale());
+                    subtitleManager.patch_getCaptionTranslationSource(), targetLang, Requester.getAppLocale());
             if (translated != null) return recordProgrammaticSelection(translated);
 
             // Priority 3: Fallback to the original YouTube selection.

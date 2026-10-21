@@ -486,11 +486,8 @@ Reports are public and are reviewed before a channel is added to a list. Removal
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download videos, podcasts, or songs with third-party downloading apps</string>
-    <string name="morphe_external_downloader_title">Show external download button</string>
-    <string name="morphe_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
-    <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-    <string name="morphe_external_downloader_action_button_title">Override Download button &amp; menu</string>
-    <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of the stock download feature</string>
+    <string name="morphe_external_downloader_overlay_button_title">Show player overlay download button</string>
+    <string name="morphe_external_downloader_overlay_button_summary">Shows a button in the video player that opens your external downloader</string>
 
     <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
     <string name="morphe_vot_screen_title">Voice over translation</string>
@@ -1214,6 +1211,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_shorts_autoplay_summary">Advances to the next Short automatically instead of repeating the current one</string>
     <string name="morphe_shorts_autoplay_background_title">Autoplay in background</string>
     <string name="morphe_shorts_autoplay_background_summary">Advances to the next Short automatically during background playback</string>
+    <string name="morphe_skip_live_shorts_title">Skip live Shorts</string>
+    <string name="morphe_skip_live_shorts_summary">Skips live streams that appear in the Shorts feed</string>
 
     <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
     <string name="morphe_playback_in_feeds_title">Playback in feeds</string>
@@ -1408,6 +1407,16 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_playback_buffer_size_entry_medium">Medium</string>
     <string name="morphe_playback_buffer_size_entry_maximum">Maximum</string>
 
+    <!-- video.delay.videoDelayPatch -->
+    <string name="morphe_video_delay_title">Video delay</string>
+    <string name="morphe_video_delay_summary">Delays the video to keep it in sync with laggy audio, such as Bluetooth headphones (0-5000 ms)</string>
+    <string name="morphe_video_delay_bluetooth_only_title">Only delay with Bluetooth audio</string>
+    <string name="morphe_video_delay_bluetooth_only_summary">Only delays the video while Bluetooth audio is connected, so the phone speaker stays in sync</string>
+    <string name="morphe_video_delay_button_overlay_title">Show Video delay button</string>
+    <string name="morphe_video_delay_button_overlay_summary">Tap and hold to reset the delay to 0 ms</string>
+    <string name="morphe_video_delay_button_flyout_title">Show Video delay menu</string>
+    <string name="morphe_video_delay_dialog_input_hint">Delay in milliseconds</string>
+
     <!-- video.quality.rememberVideoQualityPatch -->
     <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
     <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -1453,6 +1462,7 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_remember_playback_speed_last_selected_toast_title">Speed change notifications</string>
     <string name="morphe_remember_playback_speed_last_selected_toast_summary">Shows a notification when a new default playback speed is saved</string>
     <string name="morphe_playback_speed_default_title">Default playback speed</string>
+    <string name="morphe_shorts_playback_speed_default_title">Default playback speed on Shorts</string>
     <string name="morphe_remember_playback_speed_toast">Changed default playback speed to: %s</string>
     <string name="morphe_disable_playback_speed_music_title">Use normal speed for music</string>
     <string name="morphe_disable_playback_speed_music_summary">Always play music videos at 1.0x speed</string>

@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (שלישי)</string>
   <string name="morphe_theme_color_custom_entry">מותאם אישית</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">הורדות חיצוניות</string>
+  <string name="morphe_external_downloader_screen_title">הורדות</string>
+  <string name="morphe_download_mode_title">מצב הורדה</string>
+  <string name="morphe_download_mode_entry_default">ברירת מחדל</string>
+  <string name="morphe_download_mode_entry_in_app">הורדה בתוך האפליקציה</string>
+  <string name="morphe_download_mode_entry_external">מוריד חיצוני</string>
   <string name="morphe_external_downloader_name_title">שם חבילת מוריד</string>
   <string name="morphe_external_downloader_name_summary">שם החבילה של אפליקציית המוריד החיצונית שלך</string>
   <string name="morphe_external_downloader_other_item_hint">הזן שם חבילה</string>

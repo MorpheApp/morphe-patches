@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (টারশিয়ারি)</string>
   <string name="morphe_theme_color_custom_entry">কাস্টম</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">বাহিরে ডাউনলোড</string>
+  <string name="morphe_external_downloader_screen_title">ডাউনলোড</string>
+  <string name="morphe_download_mode_title">ডাউনলোড মোড</string>
+  <string name="morphe_download_mode_entry_default">ডিফল্ট</string>
+  <string name="morphe_download_mode_entry_in_app">অ্যাপ-ভিত্তিক ডাউনলোড</string>
+  <string name="morphe_download_mode_entry_external">বাহিরে ডাউনলোড</string>
   <string name="morphe_external_downloader_name_title">ডাউনলোডারের প্যাকেজ নাম</string>
   <string name="morphe_external_downloader_name_summary">আপনার ইনস্টল করা বাহ্যিক ডাউনলোডার অ্যাপের প্যাকেজ নাম</string>
   <string name="morphe_external_downloader_other_item_hint">প্যাকেজের নাম লিখুন</string>

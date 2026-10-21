@@ -7,7 +7,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findFreeRegister
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideRelatedVideoOverlayPatch;"
@@ -30,14 +29,12 @@ val hideRelatedVideoOverlayPatch = bytecodePatch(
         )
 
         RelatedEndScreenResultsFingerprint.method.apply {
-            val freeRegister = findFreeRegister(0)
-
             addInstructionsWithLabels(
                 0,
                 """
                     invoke-static {}, $EXTENSION_CLASS->hideRelatedVideoOverlay()Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :show
+                    move-result v0
+                    if-eqz v0, :show
                     return-void
                     :show
                     nop

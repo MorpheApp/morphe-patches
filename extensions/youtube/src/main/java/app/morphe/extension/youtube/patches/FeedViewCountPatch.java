@@ -24,6 +24,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -94,10 +95,13 @@ public final class FeedViewCountPatch {
 
     /** Allowed difference of sizes and positions that are compared. */
     private static final int TOLERANCE_DP = 4;
-    /** A thumbnail is almost as wide as the card, and at its top. */
-    private static final float MIN_THUMBNAIL_WIDTH_OF_CARD = 0.9f;
-    private static final int MAX_THUMBNAIL_TOP_DP = 16;
+    /**
+     * Largest space between the thumbnail and the left, top and right edges of the card.
+     * Cards of some layouts show the thumbnail inset from their edges, such as by 12 dp.
+     */
+    private static final int MAX_THUMBNAIL_INSET_DP = 16;
 
+    /** Space between the duration badge and the edges of the thumbnail, if the badge is not found. */
     private static final int FALLBACK_MARGIN_DP = 8;
     /** A little more space than the duration badge has, so the count is not at the very edge. */
     private static final int EXTRA_LEFT_MARGIN_DP = 2;
@@ -253,25 +257,32 @@ public final class FeedViewCountPatch {
     private static synchronized List<String> getUnits(Locale locale) {
         if (units == null || !locale.equals(unitsLocale)) {
             Set<String> found = new LinkedHashSet<>();
-            try {
-                CompactDecimalFormat format = CompactDecimalFormat.getInstance(
-                        locale, CompactDecimalFormat.CompactStyle.SHORT);
-                // 1 thousand up to 1 quadrillion.
-                long value = 1_000;
-                for (int i = 0; i < 13; i++) {
-                    String unit = format.format(value).replaceAll("[\\p{Nd}\\s\u00A0\u202F.,'\u2019]", "");
-                    if (!unit.isEmpty()) {
-                        found.add(unit);
+            // Short units, such as M, and long units, such as million.
+            for (CompactDecimalFormat.CompactStyle style : CompactDecimalFormat.CompactStyle.values()) {
+                try {
+                    CompactDecimalFormat format = CompactDecimalFormat.getInstance(locale, style);
+                    // 1 thousand up to 1 quadrillion.
+                    long value = 1_000;
+                    for (int i = 0; i < 13; i++) {
+                        // Units of more words keep the space between them, such as thousand crore.
+                        String unit = format.format(value).replaceAll("[\\p{Nd}.,'\u2019]", "")
+                                .replaceAll("[\\s\u00A0\u202F]+", " ").trim();
+                        if (!unit.isEmpty()) {
+                            found.add(unit);
+                        }
+                        value *= 10;
                     }
-                    value *= 10;
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Units failure", ex);
                 }
-            } catch (Exception ex) {
-                Logger.printException(() -> "Units failure", ex);
             }
             // The app can be in another language than its locale.
             found.add("K");
             found.add("M");
             found.add("B");
+            // English (India) shows lakh and crore, but its short units are L and Cr.
+            found.add("lakh");
+            found.add("crore");
             List<String> list = new ArrayList<>(found);
             list.sort((a, b) -> b.length() - a.length());
             units = list;
@@ -638,8 +649,14 @@ public final class FeedViewCountPatch {
         Rect duration;
         /** If the card shows a duration or a live badge, which videos do. */
         boolean hasDuration;
-        /** Bottom of the thumbnail, if a host of the size of the thumbnail shows the duration. */
-        int thumbnailBottom = -1;
+        /**
+         * The thumbnail, if a host of its size shows the duration, or else its image.
+         * Cards of some layouts show it inset from their edges.
+         */
+        @Nullable
+        Rect thumbnail;
+        /** If the thumbnail is the host that shows the duration, not only the image. */
+        boolean thumbnailShowsDuration;
         /** Texts below the thumbnail, with their top and left. */
         final List<PlacedText> texts = new ArrayList<>();
         /** Texts above this are on the thumbnail, such as the duration. */
@@ -676,6 +693,15 @@ public final class FeedViewCountPatch {
     }
 
     private static void findCardInfo(ComponentHost root, View view, CardInfo info, Rect rect) {
+        if (!info.thumbnailShowsDuration && view instanceof ImageView) {
+            rect.set(0, 0, view.getWidth(), view.getHeight());
+            root.offsetDescendantRectToMyCoords(view, rect);
+            // The smallest, as a background can be as large as the card.
+            if (isThumbnailShaped(root, rect)
+                    && (info.thumbnail == null || rect.height() < info.thumbnail.height())) {
+                info.thumbnail = new Rect(rect);
+            }
+        }
         if (view instanceof TextView textView) {
             CharSequence text = textView.getText();
             if (text != null) {
@@ -703,9 +729,10 @@ public final class FeedViewCountPatch {
                     if (info.duration == null) {
                         if (isDurationBadgeShaped(root, rect)) {
                             info.duration = new Rect(rect);
-                        } else if (info.thumbnailBottom < 0 && isThumbnailShaped(root, rect)) {
+                        } else if (!info.thumbnailShowsDuration && isThumbnailShaped(root, rect)) {
                             // The duration is drawn by the host of the whole thumbnail.
-                            info.thumbnailBottom = rect.bottom;
+                            info.thumbnail = new Rect(rect);
+                            info.thumbnailShowsDuration = true;
                         }
                     }
                 }
@@ -787,15 +814,20 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * A host as wide as the card at its top, such as a 16:9 or a square thumbnail.
+     * A view almost as wide as the card at its top, such as a 16:9 or a square thumbnail.
+     * Cards of some layouts show the thumbnail inset from their edges, so its shape is
+     * checked with its own width.
      */
     private static boolean isThumbnailShaped(ComponentHost root, Rect rect) {
         final float density = root.getResources().getDisplayMetrics().density;
-        final int width = root.getWidth();
-        return rect.width() >= width * MIN_THUMBNAIL_WIDTH_OF_CARD
-                && rect.top <= MAX_THUMBNAIL_TOP_DP * density
-                && rect.bottom >= width * FeedVideoCardsPatch.THUMBNAIL_RATIO - TOLERANCE_DP * density
-                && rect.bottom <= width + TOLERANCE_DP * density;
+        final int maxInset = Math.round(MAX_THUMBNAIL_INSET_DP * density);
+        final int width = rect.width();
+        return width > 0
+                && rect.left <= maxInset
+                && root.getWidth() - rect.right <= maxInset
+                && rect.top <= maxInset
+                && rect.height() >= width * FeedVideoCardsPatch.THUMBNAIL_RATIO - TOLERANCE_DP * density
+                && rect.height() <= width + TOLERANCE_DP * density;
     }
 
     /**
@@ -813,6 +845,43 @@ public final class FeedViewCountPatch {
     }
 
     /**
+     * Where the duration badge and the thumbnail of a card are, relative to the card.
+     */
+    public static final class ThumbnailFrame {
+        /** The duration badge, or null if not found. */
+        @Nullable
+        public final Rect duration;
+        /** The thumbnail, or null if not found. */
+        @Nullable
+        public final Rect thumbnail;
+
+        ThumbnailFrame(@Nullable Rect duration, @Nullable Rect thumbnail) {
+            this.duration = duration;
+            this.thumbnail = thumbnail;
+        }
+    }
+
+    /**
+     * Finds the duration badge and the thumbnail of a card, the same way as for the view count badge.
+     * Also used by the like count badge of the Return YouTube Dislike patch, so both badges are placed
+     * on cards whose thumbnail is inset from their edges, such as the shelves of a channel,
+     * or is below other content, such as the video of a channel post.
+     * Must be called on the main thread.
+     */
+    public static ThumbnailFrame findThumbnailFrame(ComponentHost host) {
+        CardInfo info = new CardInfo(getTextsTop(host));
+        findCardInfo(host, host, info, new Rect());
+        Rect thumbnail = info.thumbnail;
+        if (info.duration == null && thumbnail == null) {
+            final int squareBottom = findSquareThumbnailBottom(host, info.texts);
+            if (squareBottom > 0) {
+                thumbnail = new Rect(0, 0, host.getWidth(), squareBottom);
+            }
+        }
+        return new ThumbnailFrame(info.duration, thumbnail);
+    }
+
+    /**
      * Called on the main thread after a root host is laid out.
      *
      * @param videoId The video of the card, or null if the host is not a video card
@@ -825,7 +894,7 @@ public final class FeedViewCountPatch {
         String viewCount = null;
         ViewCountSpan span = null;
         Rect duration = null;
-        int thumbnailBottom = -1;
+        Rect thumbnail = null;
         // Videos of shelves are not known, but the view count is shown by the card itself,
         // so it is shown on any card shaped like a video with a duration.
         // Cards of a grid, such as in landscape, are narrower than the screen and their video is not known.
@@ -840,12 +909,17 @@ public final class FeedViewCountPatch {
                 viewCount = info.viewCount;
                 span = info.span;
                 duration = info.duration;
-                thumbnailBottom = info.thumbnailBottom;
-                if (duration == null && thumbnailBottom < 0) {
-                    thumbnailBottom = findSquareThumbnailBottom(host, info.texts);
+                thumbnail = info.thumbnail;
+                if (duration == null && thumbnail == null) {
+                    final int squareBottom = findSquareThumbnailBottom(host, info.texts);
+                    if (squareBottom > 0) {
+                        thumbnail = new Rect(0, 0, host.getWidth(), squareBottom);
+                    }
                 }
                 if (viewCount == null) {
-                    final int textsTop = duration != null ? duration.bottom : thumbnailBottom;
+                    final int textsTop = duration != null
+                            ? duration.bottom
+                            : thumbnail != null ? thumbnail.bottom : -1;
                     if (textsTop > 0) {
                         // Texts on a square thumbnail are not texts of the video.
                         info.texts.removeIf(placed -> placed.top < textsTop);
@@ -858,8 +932,8 @@ public final class FeedViewCountPatch {
                     FeedVideoCardsPatch.scheduleRetry(host);
                     logTexts(id, info.texts);
                 } else if (duration == null) {
-                    final int bottom = thumbnailBottom;
-                    Logger.printDebug(() -> "Duration badge not found: " + id + " thumbnail bottom: " + bottom);
+                    final Rect found = thumbnail;
+                    Logger.printDebug(() -> "Duration badge not found: " + id + " thumbnail: " + found);
                 }
             }
         }
@@ -876,7 +950,7 @@ public final class FeedViewCountPatch {
             badge = new ViewCountBadge(host);
             badges.put(host, badge);
         }
-        badge.bind(host, viewCount, duration, thumbnailBottom);
+        badge.bind(host, viewCount, duration, thumbnail);
 
         if (span != null && !span.removed && span.path != null) {
             // The badge is shown, but the text below the title still shows the view count,
@@ -929,11 +1003,22 @@ public final class FeedViewCountPatch {
             return Math.round(dp * density);
         }
 
-        void bind(ComponentHost host, String newViewCount, @Nullable Rect duration, int thumbnailBottom) {
+        /**
+         * @param thumbnail The thumbnail, or null if not found.
+         *                  Then a 16:9 thumbnail as wide as the card is used.
+         */
+        void bind(ComponentHost host, String newViewCount, @Nullable Rect duration, @Nullable Rect thumbnail) {
             // Fades in when shown, or when the card shows another video.
             // Not when the card is only laid out again.
             final boolean changed = !newViewCount.equals(viewCount);
             viewCount = newViewCount;
+
+            // Cards of some layouts show the thumbnail inset from their edges,
+            // so the margins are from the edges of the thumbnail, not of the card.
+            final Rect frame = thumbnail != null
+                    ? thumbnail
+                    : new Rect(0, 0, host.getWidth(),
+                    Math.round(host.getWidth() * FeedVideoCardsPatch.THUMBNAIL_RATIO));
 
             // Same height, bottom and margin as the duration badge.
             final int top;
@@ -942,14 +1027,11 @@ public final class FeedViewCountPatch {
             if (duration != null) {
                 top = duration.top;
                 bottom = duration.bottom;
-                left = Math.max(0, host.getWidth() - duration.right) + px(EXTRA_LEFT_MARGIN_DP);
+                left = frame.left + Math.max(0, frame.right - duration.right) + px(EXTRA_LEFT_MARGIN_DP);
             } else {
-                final int thumbnailHeight = thumbnailBottom > 0
-                        ? thumbnailBottom
-                        : Math.round(host.getWidth() * FeedVideoCardsPatch.THUMBNAIL_RATIO);
-                bottom = thumbnailHeight - px(FALLBACK_MARGIN_DP);
+                bottom = frame.bottom - px(FALLBACK_MARGIN_DP);
                 top = bottom - px(FALLBACK_HEIGHT_DP);
-                left = px(FALLBACK_MARGIN_DP + EXTRA_LEFT_MARGIN_DP);
+                left = frame.left + px(FALLBACK_MARGIN_DP + EXTRA_LEFT_MARGIN_DP);
             }
             final int height = bottom - top;
 

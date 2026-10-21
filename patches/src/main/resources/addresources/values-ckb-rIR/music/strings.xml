@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_subscriptions">بەشداربوون</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_cancel">پاشگەز</string>
   <string name="morphe_music_jam_details">وردەکاری</string>
@@ -29,7 +31,7 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
-  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">دربارە</string>

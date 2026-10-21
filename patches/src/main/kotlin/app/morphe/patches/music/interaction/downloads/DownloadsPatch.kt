@@ -14,6 +14,7 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -41,9 +42,8 @@ private val downloadsResourcePatch = resourcePatch {
                 key = "morphe_external_downloader_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_external_downloader_action_button", summary = true),
-                    SwitchPreference("morphe_external_downloader_flyout_menu", summary = true),
-                    SwitchPreference("morphe_music_in_app_downloads", summary = true),
+                    ListPreference("morphe_download_mode"),
+                    SwitchPreference("morphe_external_downloader_menu", summary = true),
                     TextPreference(
                         "morphe_external_downloader_name",
                         tag = "app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference"

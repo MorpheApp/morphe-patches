@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.layout.animations
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -34,6 +35,36 @@ private const val EXTENSION_ANIMATIONS_MODE_CLASS =
     $$"Lapp/morphe/extension/youtube/patches/ForceAnimationsPatch$AnimationsMode;"
 private const val EXTENSION_SETTINGS_CLASS = "Lapp/morphe/extension/youtube/settings/Settings;"
 private const val EXTENSION_ENUM_SETTING_CLASS = "Lapp/morphe/extension/shared/settings/EnumSetting;"
+
+/**
+ * Adds a static method to the extension class that takes one value of [type] and returns it,
+ * or another value for the "Force animations" setting.
+ *
+ * @param smali Code that runs after `v0` is set to the setting value. `v1` is free and `p0` is the value.
+ */
+private fun BytecodePatchContext.addForceAnimationsMethod(name: String, type: String, smali: String) {
+    mutableClassDefBy(EXTENSION_CLASS).methods.add(
+        ImmutableMethod(
+            EXTENSION_CLASS,
+            name,
+            listOf(ImmutableMethodParameter(type, null, null)),
+            type,
+            AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+            null,
+            null,
+            MutableMethodImplementation(3),
+        ).toMutable().apply {
+            addInstructionsWithLabels(
+                0,
+                """
+                    sget-object v0, $EXTENSION_SETTINGS_CLASS->FORCE_ANIMATIONS:$EXTENSION_ENUM_SETTING_CLASS
+                    invoke-virtual { v0 }, $EXTENSION_ENUM_SETTING_CLASS->get()Ljava/lang/Enum;
+                    move-result-object v0
+                """ + smali
+            )
+        }
+    )
+}
 
 @Suppress("unused")
 val forceAnimationsPatch = bytecodePatch(
@@ -90,41 +121,65 @@ val forceAnimationsPatch = bytecodePatch(
             }
         }
 
+        // The server can set the page animation type of a navigation command to none,
+        // and then the page transition is not animated even when the decision above is on.
+        // When the animations are always on, the default animation is used instead.
+        val pageAnimationTypeMethodName = "patch_getPageAnimationType"
+
+        addForceAnimationsMethod(
+            pageAnimationTypeMethodName,
+            "I",
+            """
+                sget-object v1, $EXTENSION_ANIMATIONS_MODE_CLASS->ALWAYS_ON:$EXTENSION_ANIMATIONS_MODE_CLASS
+                if-ne v0, v1, :server_value
+                const/4 v1, $PAGE_ANIMATION_TYPE_NONE
+                if-ne p0, v1, :server_value
+                const/4 p0, $PAGE_ANIMATION_TYPE_UNSPECIFIED
+                :server_value
+                nop
+                return p0
+            """
+        )
+
+        val pageAnimationTypeMethod =
+            PageTransitionEnterAnimationFingerprint.instructionMatches.first().getMethodCalled()
+
+        pageAnimationTypeFingerprint(pageAnimationTypeMethod).method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->$pageAnimationTypeMethodName(I)I
+                        move-result v$register
+                    """
+                )
+            }
+        }
+
         // A/B test: the list below the player stops animating its content when it loads.
         // The flag is turned off when the animations are always on, and on when they are always off.
         if (is_20_49_or_greater) {
             val overrideMethodName = "patch_useFlowLayoutWatchPanel"
 
-            mutableClassDefBy(EXTENSION_CLASS).methods.add(
-                ImmutableMethod(
-                    EXTENSION_CLASS,
-                    overrideMethodName,
-                    listOf(ImmutableMethodParameter("Z", null, null)),
-                    "Z",
-                    AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(3),
-                ).toMutable().apply {
-                    addInstructionsWithLabels(
-                        0,
-                        """
-                            sget-object v0, $EXTENSION_SETTINGS_CLASS->FORCE_ANIMATIONS:$EXTENSION_ENUM_SETTING_CLASS
-                            invoke-virtual { v0 }, $EXTENSION_ENUM_SETTING_CLASS->get()Ljava/lang/Enum;
-                            move-result-object v0
-                            sget-object v1, $EXTENSION_ANIMATIONS_MODE_CLASS->ALWAYS_ON:$EXTENSION_ANIMATIONS_MODE_CLASS
-                            if-ne v0, v1, :not_always_on
-                            const/4 p0, 0x0
-                            return p0
-                            :not_always_on
-                            sget-object v1, $EXTENSION_ANIMATIONS_MODE_CLASS->ALWAYS_OFF:$EXTENSION_ANIMATIONS_MODE_CLASS
-                            if-ne v0, v1, :server_value
-                            const/4 p0, 0x1
-                            :server_value
-                            return p0
-                        """
-                    )
-                }
+            addForceAnimationsMethod(
+                overrideMethodName,
+                "Z",
+                """
+                    sget-object v1, $EXTENSION_ANIMATIONS_MODE_CLASS->ALWAYS_ON:$EXTENSION_ANIMATIONS_MODE_CLASS
+                    if-ne v0, v1, :not_always_on
+                    const/4 p0, 0x0
+                    return p0
+                    :not_always_on
+                    nop
+                    sget-object v1, $EXTENSION_ANIMATIONS_MODE_CLASS->ALWAYS_OFF:$EXTENSION_ANIMATIONS_MODE_CLASS
+                    if-ne v0, v1, :server_value
+                    const/4 p0, 0x1
+                    :server_value
+                    nop
+                    return p0
+                """
             )
 
             FlowLayoutWatchPanelFeatureFlagFingerprint.matchAll().forEach {

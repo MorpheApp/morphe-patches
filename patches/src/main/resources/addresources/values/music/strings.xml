@@ -15,6 +15,15 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+    <!-- misc.androidauto.androidAutoPatch -->
+    <string name="morphe_music_android_auto_last_played">Last played</string>
+    <string name="morphe_music_android_auto_subscriptions">Subscriptions</string>
+    <string name="morphe_music_android_auto_videos">Videos</string>
+    <string name="morphe_music_android_auto_other_results">Other results</string>
+    <string name="morphe_music_android_auto_uploaded_songs">Uploaded songs</string>
+    <string name="morphe_music_android_auto_uploaded_albums">Uploaded albums</string>
+    <string name="morphe_music_android_auto_uploaded_artists">Uploaded artists</string>
+
     <!-- app.morphe.patches.music.interaction.jam -->
     <string name="morphe_music_jam_update_host_controls">Update the host’s Jam patch to use pause and resume</string>
     <string name="morphe_music_jam_probe_title">Jam queue sharing</string>
@@ -129,16 +138,9 @@ Second \"item\" text"</string>
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
-    <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-    <string name="morphe_external_downloader_action_button_title">Override Download button</string>
-    <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of the stock Download action button</string>
-    <string name="morphe_external_downloader_flyout_menu_title">Override Download menu</string>
-    <string name="morphe_external_downloader_flyout_menu_summary">Uses your chosen external downloader instead of the stock Download flyout menu</string>
-    <string name="morphe_music_in_app_downloads_title">Download in app</string>
-    <string name="morphe_music_in_app_downloads_summary">Downloads audio inside YouTube Music instead of opening the external downloader app</string>
-    <string name="morphe_music_in_app_downloads_user_dialog_message">"Tracks are saved to the private storage of the app and are deleted if YouTube Music is uninstalled.
-
-While this is on, the Downloads tab lists these tracks instead of the Music Premium offline library. Turning it off restores the tab, and Premium downloads are never touched"</string>
+    <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+    <string name="morphe_external_downloader_menu_title">Use external downloader for Download menu</string>
+    <string name="morphe_external_downloader_menu_summary">The Download option of menus opens your external downloader instead</string>
     <string name="morphe_music_downloads_screen_title">Downloads</string>
     <string name="morphe_music_downloads_empty">"No downloads
 Downloaded tracks appear here"</string>

@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (terciarna)</string>
   <string name="morphe_theme_color_custom_entry">Prilagoditve</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Zunanji prenosi</string>
+  <string name="morphe_external_downloader_screen_title">Prenosi</string>
+  <string name="morphe_download_mode_title">Način prenosa</string>
+  <string name="morphe_download_mode_entry_default">Privzeto</string>
+  <string name="morphe_download_mode_entry_in_app">Prenos v aplikaciji</string>
+  <string name="morphe_download_mode_entry_external">Zunanji prejemnik</string>
   <string name="morphe_external_downloader_name_title">Ime paketa programa za prenos</string>
   <string name="morphe_external_downloader_name_summary">Ime paketa vaše nameščene zunanje aplikacije za prenos</string>
   <string name="morphe_external_downloader_other_item_hint">Vnesite ime paketa</string>

@@ -46,7 +46,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Tersier)</string>
   <string name="morphe_theme_color_custom_entry">Kustom</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Unduhan eksternal</string>
+  <string name="morphe_external_downloader_screen_title">Download</string>
+  <string name="morphe_download_mode_title">Mode unduh</string>
+  <string name="morphe_download_mode_entry_default">Bawaan</string>
+  <string name="morphe_download_mode_entry_in_app">Unduh dalam aplikasi</string>
+  <string name="morphe_download_mode_entry_external">Pengunduh eksternal</string>
   <string name="morphe_external_downloader_name_title">Nama paket pengunduh</string>
   <string name="morphe_external_downloader_name_summary">Nama paket aplikasi pengunduh eksternal yang terpasang</string>
   <string name="morphe_external_downloader_other_item_hint">Masukkan nama paket</string>

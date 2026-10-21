@@ -498,8 +498,13 @@ val videoInformationPatch = bytecodePatch(
             val matches = it.matchAll(2 .. 3)
             val playerResponseType = matches.first().method.parameterTypes.first().toString()
 
-            val channelIdMethodCall = getChannelIdFingerprint(playerResponseType).instructionMatches.first()
-                .instruction.getReference<MethodReference>()!!
+            val (videoIsLiveMethodCall, channelIdMethodCall) =
+                with(getChannelIdFingerprint(playerResponseType)) {
+                    Pair(
+                        instructionMatches[0].instruction.getReference<MethodReference>()!!,
+                        instructionMatches[1].instruction.getReference<MethodReference>()!!
+                    )
+                }
 
             val channelNameMethodCall = getChannelNameFingerprint(playerResponseType).instructionMatches.last()
                 .instruction.getReference<MethodReference>()!!
@@ -544,6 +549,10 @@ val videoInformationPatch = bytecodePatch(
                             invoke-static { v0 }, $EXTENSION_CLASS->setChannelName(Ljava/lang/String;)V
 
                             $videoTitleInstructions
+
+                            invoke-interface { p1 }, $videoIsLiveMethodCall
+                            move-result v0
+                            invoke-static { v0 }, $EXTENSION_CLASS->setLiveStream(Z)V
 
                             return-void
                         """.toInstructions(),

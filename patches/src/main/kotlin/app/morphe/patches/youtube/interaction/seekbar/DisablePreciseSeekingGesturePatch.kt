@@ -6,7 +6,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.util.findFreeRegister
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisablePreciseSeekingGesturePatch;"
@@ -25,14 +24,12 @@ val disablePreciseSeekingGesturePatch = bytecodePatch(
         )
 
         AllowSwipingUpGestureFingerprint.method.apply {
-            val freeRegister = findFreeRegister(0)
-
             addInstructionsWithLabels(
                 0,
                 """
                     invoke-static { }, $EXTENSION_CLASS->isGestureDisabled()Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :disabled
+                    move-result v0
+                    if-eqz v0, :disabled
                     return-void
                     :disabled
                     nop
@@ -41,16 +38,14 @@ val disablePreciseSeekingGesturePatch = bytecodePatch(
         }
 
         ShowSwipingUpGuideFingerprint.method.apply {
-            val freeRegister = findFreeRegister(0)
-
             addInstructionsWithLabels(
                 0,
                 """
                     invoke-static { }, $EXTENSION_CLASS->isGestureDisabled()Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :disabled
-                    const/4 v$freeRegister, 0x0
-                    return v$freeRegister
+                    move-result v0
+                    if-eqz v0, :disabled
+                    const/4 v0, 0x0
+                    return v0
                     :disabled
                     nop
                 """

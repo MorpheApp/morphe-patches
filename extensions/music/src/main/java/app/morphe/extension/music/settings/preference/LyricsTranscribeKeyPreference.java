@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.patches.lyrics.derive.QuickLrcClient;
+import app.morphe.extension.music.patches.lyrics.derive.QuickLRCClient;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -75,6 +75,7 @@ public class LyricsTranscribeKeyPreference extends Preference {
         updateSummary();
     }
 
+    @SuppressWarnings("ConstantValue")
     private void updateSummary() {
         final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
         setSummary(key == null || key.trim().isEmpty()
@@ -87,6 +88,7 @@ public class LyricsTranscribeKeyPreference extends Preference {
         showDialog();
     }
 
+    @SuppressWarnings("ConstantValue")
     private void showDialog() {
         final Context context = getContext();
         if (!(context instanceof Activity activity)
@@ -159,8 +161,8 @@ public class LyricsTranscribeKeyPreference extends Preference {
                     }
                     // Checked before storing: a key that the service refuses is worth learning
                     // about now rather than at the next track, and the check costs no credit.
-                    QuickLrcClient.checkKey(key, result -> {
-                        if (result == QuickLrcClient.KeyCheck.REJECTED) {
+                    QuickLRCClient.checkKey(key, result -> {
+                        if (result == QuickLRCClient.KeyCheck.REJECTED) {
                             Utils.showToastShort(
                                     str("morphe_music_lyrics_transcribe_key_rejected"));
                             return;
