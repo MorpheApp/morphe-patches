@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterLast
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.StringComparisonType
@@ -479,6 +480,7 @@ internal object ContextualMenuItemBuilderOnClickFingerprint : Fingerprint(
 
 // 21.25+
 internal object ChannelTabBuilderFingerprint : Fingerprint(
+    isStatic = false,
     returnType = "Landroid/view/View;",
     parameters = listOf(
         "Ljava/lang/CharSequence;",
@@ -493,10 +495,7 @@ internal object ChannelTabBuilderFingerprint : Fingerprint(
             definingClass = "this",
             type = "Lcom/google/android/libraries/youtube/rendering/ui/tabs/DefaultTabsBar;",
         )
-    ),
-    custom = { method, _ ->
-        !AccessFlags.STATIC.isSet(method.accessFlags)
-    }
+    )
 )
 
 // 21.24 and older
@@ -870,7 +869,12 @@ internal object PanelSubheaderFingerprint : Fingerprint(
         resourceLiteral(ResourceType.ID, "panel_subheader"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            name = "removeAllViews"
+            name = "removeAllViews",
+            location = MatchAfterLast()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "setVisibility"
         )
     )
 )

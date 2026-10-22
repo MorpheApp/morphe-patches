@@ -372,12 +372,10 @@ private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
 
     val getLibraryPaginationResponseProtoMethod = Fingerprint(
         definingClass = getTabsMethod.definingClass,
+        isStatic = false,
         returnType = decodePaginatedLibraryGridMethod
             .parameterTypes.single().toString(),
-        parameters = listOf(),
-        custom = { method, _ ->
-            !AccessFlags.STATIC.isSet(method.accessFlags)
-        }
+        parameters = listOf()
     ).method
 
     val paginatedLibraryGridDecoderMethod = addPaginatedLibraryGridDecoder(

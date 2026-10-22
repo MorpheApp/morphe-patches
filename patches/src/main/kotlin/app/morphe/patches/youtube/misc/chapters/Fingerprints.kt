@@ -8,6 +8,7 @@ package app.morphe.patches.youtube.misc.chapters
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterLast
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -31,7 +32,8 @@ internal fun getTimelineMarkersArrayFingerprint(timelineMarkerClassName: String)
     returnType = "[$timelineMarkerClassName",
     parameters = listOf("L"),
     filters = listOf(
-        checkCast("[$timelineMarkerClassName")
+        checkCast("[$timelineMarkerClassName"),
+        opcode(Opcode.RETURN_OBJECT, location = MatchAfterLast())
     )
 ) {}
 

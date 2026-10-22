@@ -25,15 +25,13 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private object SubtitleManagerFingerprintClassFingerprint : Fingerprint(
+    isStatic = true,
     returnType = "Z",
     parameters = listOf("L", "Landroid/view/accessibility/CaptioningManager;"),
     filters = listOf(
         fieldAccess("Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;"),
         methodCall("Landroid/view/accessibility/CaptioningManager;->isEnabled()Z"),
-    ),
-    custom = { method, _ ->
-        AccessFlags.STATIC.isSet(method.accessFlags)
-    }
+    )
 )
 
 internal object SubtitleManagerFingerprint : Fingerprint(

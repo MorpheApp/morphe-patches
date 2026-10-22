@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.misc.fix.playbackspeed
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterLast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.opcode
@@ -42,7 +43,8 @@ internal object PlaybackSpeedInFeedsFingerprint : Fingerprint(
         opcode(Opcode.SUB_LONG_2ADDR, MatchAfterImmediately()),
         fieldAccess(
             opcode = Opcode.IGET,
-            type = "F"
+            type = "F",
+            location = MatchAfterLast()
         )
     )
 )

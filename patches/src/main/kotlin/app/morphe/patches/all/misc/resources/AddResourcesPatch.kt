@@ -32,21 +32,6 @@ import java.util.Locale
 import java.util.concurrent.Executors
 import java.util.logging.Logger
 
-/**
- * If any added string resources replace existing strings in the target app.
- * If this is not enabled then ARSCLib still replaces the existing strings without any issues,
- * but it's not clear if the behavior is intentional or coincidentally works even though the
- * modified XML is not valid. Apktool crashes if duplicates are present and this must be enabled.
- */
-private var patchStringsReplaceExisting = false
-
-/**
- * Set patchStringsReplaceExisting
- */
-fun setPatchStringsReplaceExisting(replaceExisting: Boolean) {
-    patchStringsReplaceExisting = replaceExisting
-}
-
 internal val localesYouTube = listOf(
     AppLocale("", ""), // Default English locale. Must be first.
     AppLocale("af-rZA", "af"),
@@ -290,33 +275,13 @@ internal fun addAppResources(appId: String) {
     appsToInclude.add(appId)
 }
 
-internal fun createResourceDestinationDirectoryIfNeeded(
-    locale: AppLocale,
-    logger: Logger,
-    destSubPath: String,
-    destFile: File
-) {
-    if (!destFile.exists()) {
-        if (locale.isBuiltInLanguage) {
-            // Either the user provided a bad APKM that doesn't have all languages,
-            // or something changed and YouTube removed a language from the universal APK releases.
-            logger.warning {
-                "!!! Provided app does not contain all region localizations. " +
-                        "Locale: $locale does not exist in provided app file: $destSubPath"
-            }
-        }
-
-        destFile.parentFile?.mkdirs()
-        if (!destFile.createNewFile()) throw IllegalStateException()
-        destFile.writeText(
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>"
-        )
-    }
-}
-
 /**
  * A destination resource file that is edited as raw text. Multiple apps add resources to the
  * same file, and appending the text of all of them writes each file only once.
+ *
+ * A file no other patch decoded is not decoded here either. It is written with only the added
+ * resources, which the patcher adds to the resources of the app, replacing the ones of the same
+ * name. Decoding every strings file of the app only to append to it is most of the time of this patch.
  */
 private class DestinationFile(
     val file: File,
@@ -329,14 +294,7 @@ private const val ADD_RESOURCES_THREAD_COUNT = 4
 
 private const val RESOURCES_CLOSING_TAG = "</resources>"
 
-/**
- * Matches a named resource element (such as string or string-array) and not
- * the unnamed child elements nested inside it. Groups: tag, name, inner text.
- */
-private val RESOURCE_ELEMENT = Regex(
-    "<([\\w-]+)\\s[^>]*?name=\"([^\"]*)\"[^>]*?(?:/>|>(.*?)</\\1>)",
-    RegexOption.DOT_MATCHES_ALL
-)
+private const val EMPTY_RESOURCES_FILE = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>"
 
 internal val addResourcesPatch = resourcePatch(
     description = "Add resources such as strings or arrays to the app."
@@ -350,17 +308,25 @@ internal val addResourcesPatch = resourcePatch(
         // Default resources added by each app and by the apps before it.
         val appDefaultResources = mutableMapOf<String, Set<String>>()
 
+        // Strings files of the app, listed without decoding them.
+        val appStringsFiles = listDecodableFiles("res/values*/strings.xml").toHashSet()
+
         fun openDestinationFile(
             destinationFiles: MutableMap<String, DestinationFile>,
-            locale: AppLocale,
             destSubPath: String
         ): DestinationFile {
             destinationFiles[destSubPath]?.let { return it }
 
-            val destFile = this@finalize[destSubPath]
-            createResourceDestinationDirectoryIfNeeded(locale, logger, destSubPath, destFile)
+            // Not decoded, unless another patch already did.
+            val destFile = this@finalize.get(destSubPath, copy = false)
+            val text = if (destFile.exists()) {
+                destFile.readText()
+            } else {
+                destFile.parentFile?.mkdirs()
+                EMPTY_RESOURCES_FILE
+            }
 
-            return DestinationFile(destFile, destFile.readText()).also {
+            return DestinationFile(destFile, text).also {
                 destinationFiles[destSubPath] = it
             }
         }
@@ -368,35 +334,21 @@ internal val addResourcesPatch = resourcePatch(
         fun writeDestinationFile(destSubPath: String, destination: DestinationFile) {
             if (destination.added.isEmpty()) return
 
-            var text = destination.text
+            val text = destination.text
             val closingIndex = text.lastIndexOf(RESOURCES_CLOSING_TAG)
             if (closingIndex < 0) throw IllegalStateException("$destSubPath has no closing resources tag")
 
-            var head = text.substring(0, closingIndex)
-            val tail = text.substring(closingIndex)
-
-            val added = if (patchStringsReplaceExisting) {
-                // Keep only the last added resource of each name (resources of the next apps
-                // replace earlier ones), and remove the existing resources with the same name.
-                // ARSCLib doesn't check for duplicates and uses the last added,
-                // but Apktool crashes if duplicates exist.
-                val latest = LinkedHashMap<Pair<String, String>, String>()
-                destination.added.forEach { (key, element) ->
-                    latest.remove(key)
-                    latest[key] = element
-                }
-                head = RESOURCE_ELEMENT.replace(head) { match ->
-                    val key = match.groupValues[1] to match.groupValues[2]
-                    if (latest.containsKey(key)) "" else match.value
-                }
-                latest.values.toList()
-            } else {
-                destination.added.map { it.second }
+            // Keep only the last added resource of each name, as resources of the next apps
+            // replace earlier ones.
+            val latest = LinkedHashMap<Pair<String, String>, String>()
+            destination.added.forEach { (key, element) ->
+                latest.remove(key)
+                latest[key] = element
             }
 
-            val builder = StringBuilder(head.trimEnd()).append('\n')
-            added.forEach { builder.append("    ").append(it).append('\n') }
-            builder.append(tail)
+            val builder = StringBuilder(text.substring(0, closingIndex).trimEnd()).append('\n')
+            latest.values.forEach { builder.append("    ").append(it).append('\n') }
+            builder.append(text.substring(closingIndex))
 
             destination.file.writeText(builder.toString())
         }
@@ -425,7 +377,7 @@ internal val addResourcesPatch = resourcePatch(
             }
 
             val srcText = srcStream.use { it.readBytes().toString(Charsets.UTF_8) }
-            val destination = openDestinationFile(destinationFiles, locale, destSubPath)
+            val destination = openDestinationFile(destinationFiles, destSubPath)
             val defaultResources = appDefaultResources[appId]
             val localeStringsAdded = mutableSetOf<String>()
 
@@ -471,6 +423,16 @@ internal val addResourcesPatch = resourcePatch(
         }
 
         fun addLocaleResources(locale: AppLocale) {
+            val stringsSubPath = "res/${locale.getDestLocaleFolderName()}/strings.xml"
+            if (locale.isBuiltInLanguage && stringsSubPath !in appStringsFiles) {
+                // Either the user provided a bad APKM that doesn't have all languages,
+                // or something changed and YouTube removed a language from the universal APK releases.
+                logger.warning {
+                    "!!! Provided app does not contain all region localizations. " +
+                            "Locale: $locale does not exist in provided app file: $stringsSubPath"
+                }
+            }
+
             // Destination files of the locale. Multiple apps add resources to the same files.
             val destinationFiles = mutableMapOf<String, DestinationFile>()
 

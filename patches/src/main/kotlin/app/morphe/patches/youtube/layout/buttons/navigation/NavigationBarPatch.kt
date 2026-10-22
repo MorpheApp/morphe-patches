@@ -574,11 +574,9 @@ val navigationBarPatch = bytecodePatch(
                     // Enum constant names are obfuscated, so the icon type is found by its value.
                     val iconTypeLookupMethod = Fingerprint(
                         definingClass = iconType,
+                        isStatic = true,
                         returnType = iconType,
-                        parameters = listOf("I"),
-                        custom = { method, _ ->
-                            AccessFlags.STATIC.isSet(method.accessFlags)
-                        }
+                        parameters = listOf("I")
                     ).originalMethod
 
                     val pivotBarItemOptionalType = PivotBarRendererFingerprint.method.returnType

@@ -52,14 +52,11 @@ internal object RecyclerViewTopScrollingCallingMethodFingerprint : Fingerprint(
 //        is called by different code even though the called methods are 100% the same.
 //        Fingerprint also matches a nearly identical third or fourth method in the same class
 //        but has slightly different behavior.
-internal fun BytecodePatchContext.recyclerViewTopScrollingFingerprint(): Fingerprint {
-    val calledMethod = RecyclerViewTopScrollingCallingMethodFingerprint.instructionMatches.first().getMethodCalled()
-
-    return recyclerViewTopScrollingFingerprint(calledMethod.definingClass, calledMethod.name)
-}
-
-private fun recyclerViewTopScrollingFingerprint(interfaceType: String, methodName: String) = Fingerprint(
-    name = methodName,
+internal fun BytecodePatchContext.recyclerViewTopScrollingFingerprint() = object : Fingerprint(
+    name = RecyclerViewTopScrollingCallingMethodFingerprint.instructionMatches.first().getMethodCalled().name,
+    interfaces = listOf(
+        RecyclerViewTopScrollingCallingMethodFingerprint.instructionMatches.first().getMethodCalled().definingClass
+    ),
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -70,11 +67,8 @@ private fun recyclerViewTopScrollingFingerprint(interfaceType: String, methodNam
         literal(0, location = MatchAfterImmediately()),
         methodCall(definingClass = "Landroid/support/v7/widget/RecyclerView;", location = MatchAfterImmediately()),
         opcode(Opcode.GOTO, MatchAfterImmediately())
-    ),
-    custom = { _, classDef ->
-        classDef.interfaces.contains(interfaceType)
-    }
-)
+    )
+) {}
 
 internal object BackToRefreshFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
