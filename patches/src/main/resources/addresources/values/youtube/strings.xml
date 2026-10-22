@@ -491,6 +491,16 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_ryd_feed_like_count_title">Show feed thumbnail like count</string>
     <string name="morphe_ryd_feed_like_ratio_title">Show feed thumbnail like percentage</string>
 
+    <!-- interaction.searchcomments.searchCommentsPatch -->
+    <string name="morphe_search_comments_title">Search comments</string>
+    <string name="morphe_search_comments_summary">Tap the search button in the comments to show only the loaded comments that contain the searched words</string>
+    <string name="morphe_search_comments_dialog_title">Search comments</string>
+    <string name="morphe_search_comments_hint">Words to search for</string>
+    <string name="morphe_search_comments_search">Search</string>
+    <string name="morphe_search_comments_clear">Clear</string>
+    <string name="morphe_search_comments_applied">Change the sort order or open the comments again to search them</string>
+    <string name="morphe_search_comments_cleared">Search cleared. Change the sort order or open the comments again to show all comments</string>
+
     <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
     <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
     <string name="morphe_disable_connect_your_devices_popup_title">Disable \'Connect your devices\' popup</string>

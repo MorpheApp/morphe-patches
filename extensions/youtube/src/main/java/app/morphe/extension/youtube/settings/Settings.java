@@ -341,6 +341,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting CHANNEL_SEARCH = new BooleanSetting("morphe_channel_search", TRUE);
     public static final BooleanSetting COPY_VIDEO_TITLE = new BooleanSetting("morphe_copy_video_title", TRUE);
     public static final BooleanSetting COPY_COMMENTS = new BooleanSetting("morphe_copy_comments", TRUE);
+    public static final BooleanSetting SEARCH_COMMENTS = new BooleanSetting("morphe_search_comments", TRUE);
 
     // Feed video actions
     public static final BooleanSetting FEED_LONG_PRESS_MENU = new BooleanSetting("morphe_feed_long_press_menu", FALSE);
