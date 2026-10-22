@@ -13,9 +13,7 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
-import app.morphe.extension.shared.settings.preference.SharedPrefCategory;
 
 public class Settings extends BaseSettings {
     // Ads
@@ -76,11 +74,6 @@ public class Settings extends BaseSettings {
 
     static {
         // region Migration
-
-        SharedPrefCategory oldPrefs = new SharedPrefCategory("reddit_morphe");
-        for (Setting<?> setting : Setting.allLoadedSettings()) {
-            Setting.migrateFromOldPreferences(oldPrefs, setting);
-        }
 
         migrateOldSettingToNew(DEPRECATED_HIDE_RECOMMENDED_COMMUNITIES_SHELF, HIDE_COMMUNITIES_SHELF);
         migrateOldSettingToNew(DEPRECATED_HIDE_TRENDING_TODAY_SHELF, HIDE_TRENDING_SHELVES);

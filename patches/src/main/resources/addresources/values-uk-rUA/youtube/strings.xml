@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Натискання та утримування будь-де на відео в стрічці відкриває його меню</string>
   <string name="morphe_feed_watch_later_button_title">Показувати кнопку \"Дивитися пізніше\" на мініатюрах</string>
   <string name="morphe_feed_watch_later_button_summary">Кнопка \"Дивитися пізніше\" показується на мініатюрах відео в стрічці. Натискання та утримування її відкриває \"Зберегти в список відтворення\"</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Додати елемент «Ask» до спадного меню</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Додати елемент узагальнення відео в стрічкове спадне меню</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Спочатку для використання функції «Ask» потрібен обліковий запис із підпискою та країна, де ця функція доступна.
+
+Якщо хоча б один раз відкрити відео з кнопкою «Ask», функція стане доступною для всіх відео, навіть якщо у поточній країні вона недоступна."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Узагальнити відео</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Не вдалося відкрити функцію «Ask» для цього відео</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Функція «Ask» недоступна для вашого облікового запису або в поточній країні</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Показувати кількість переглядів на мініатюрах</string>
   <string name="morphe_feed_view_count_summary">Кількість переглядів відео в стрічці показується внизу ліворуч на їхніх мініатюрах, а не під назвою. Для деяких відео, наприклад у полицях, кількість переглядів може не показуватися</string>
@@ -793,6 +806,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Виправити транскрипцію</string>
   <string name="morphe_fix_transcript_summary">Усуває помилку перевірки передумов, яка може перешкоджати завантаженню транскрипції</string>
+  <string name="morphe_captions_in_pip_title">Показувати субтитри в режимі \"Картинка в картинці\"</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Кнопки панелі навігації</string>
   <string name="morphe_navigation_buttons_screen_summary">Виберіть, які кнопки будуть показуватися на нижній панелі навігації</string>
@@ -1109,6 +1123,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Автоматично переходить до наступного Short замість повторення поточного</string>
   <string name="morphe_shorts_autoplay_background_title">Автоматичне відтворення у фоновому режимі</string>
   <string name="morphe_shorts_autoplay_background_summary">Автоматично переходить до наступного Short під час фонового відтворення</string>
+  <string name="morphe_skip_live_shorts_title">Пропустити Shorts наживо</string>
+  <string name="morphe_skip_live_shorts_summary">Пропускає потоки наживо, які з\'являються в стрічці Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Відтворення в стрічках</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Завжди ввімкнено</string>
@@ -1271,6 +1287,15 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_low">Низький</string>
   <string name="morphe_playback_buffer_size_entry_medium">Середній</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Максимальний</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Затримка відео</string>
+  <string name="morphe_video_delay_summary">Затримує відео, щоб воно було синхронізовано з затриманим звуком, наприклад, через Bluetooth-навушники (0–5000 мс)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Тільки затримка при використанні звуку по Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Затримує відео лише під час підключення звуку по Bluetooth, тож динамік телефону залишається синхронізованим</string>
+  <string name="morphe_video_delay_button_overlay_title">Показати кнопку затримки відео</string>
+  <string name="morphe_video_delay_button_overlay_summary">Натисніть і утримуйте для скидання затримки до 0 мс</string>
+  <string name="morphe_video_delay_button_flyout_title">Показати меню затримки відео</string>
+  <string name="morphe_video_delay_dialog_input_hint">Затримка в мілісекундах</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
@@ -1312,6 +1337,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Сповіщення про зміну швидкості</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Показує сповіщення при збереженні нової типової швидкості відтворення</string>
   <string name="morphe_playback_speed_default_title">Типова швидкість відтворення</string>
+  <string name="morphe_shorts_playback_speed_default_title">Типова швидкість відтворення для Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Типову швидкість відтворення змінено на %s</string>
   <string name="morphe_disable_playback_speed_music_title">Використовувати звичайну швидкість для музики</string>
   <string name="morphe_disable_playback_speed_music_summary">Завжди відтворювати музичні відео зі швидкістю 1.0x</string>

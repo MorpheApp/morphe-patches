@@ -435,6 +435,19 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_feed_long_press_menu_summary">Ang pagtatakbo at paghawak ng matagal sa kahit saan sa isang feed video ay nagbubukas ng kanyang menu</string>
   <string name="morphe_feed_watch_later_button_title">Ipakita ang Watch later button sa mga thumbnail</string>
   <string name="morphe_feed_watch_later_button_summary">Isang Watch later button ay ipinapakita sa mga thumbnail ng feed videos. Ang pag-tap at paghawak nito ay nagbubukas ng Save to playlist</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Idagdag ang Ask item sa flyout menu</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Idinadagdag ang video summarize item sa feed flyout menu</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ang Ask ay nangangailangan ng signed-in account sa isang bansa kung saan available ang Ask.
+
+Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat ng videos kahit na hindi available ang Ask feature sa kasalukuyang bansa."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Buodihin ang video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Hindi ma-buksan ang Ask para sa vidyong ito</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Hindi available ang Ask para sa iyong account o kasalukuyang bansa</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Ipakita ang bilang ng pagtingin sa mga thumbnail</string>
   <string name="morphe_feed_view_count_summary">Ipinapakit ang bilang ng mga panonood ng mga bidyo sa feed sa kaliwang ibaba ng kanilang mga thumbnail imbes na sa ilalim ng pamagat. Maaaring hindi ipakita ang bilang ng mga panonood sa ilang mga bidyo, tulad nasa mga shelf</string>
@@ -793,6 +806,7 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Ayusin ang transcript</string>
   <string name="morphe_fix_transcript_summary">Nilulutas ang isang failure ng precondition check na maaaring pumigil sa pag-load ng transcript</string>
+  <string name="morphe_captions_in_pip_title">Ipakita ang mga caption sa picture-in-picture</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Mga pindutan ng nabigasyon</string>
   <string name="morphe_navigation_buttons_screen_summary">Pumili kung aling mga component ang lilitaw sa toolbar</string>
@@ -1108,6 +1122,8 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_shorts_autoplay_summary">Awtomatikong umuusad sa susunod na Short sa halip na ulitin ang kasalukuyang isa</string>
   <string name="morphe_shorts_autoplay_background_title">Autoplay sa background</string>
   <string name="morphe_shorts_autoplay_background_summary">Awtomatikong umuusad sa susunod na Short habang nagpe-playback sa background</string>
+  <string name="morphe_skip_live_shorts_title">Laktawan ang live na Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Lilaktawan ang mga live stream na lumalabas sa Shorts feed</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Pagpapalabas sa mga feed</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Palaging naka-on</string>
@@ -1270,6 +1286,15 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <string name="morphe_playback_buffer_size_entry_low">Mababa</string>
   <string name="morphe_playback_buffer_size_entry_medium">Katamtaman</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Pinakamataas</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Pag-antala ng video</string>
+  <string name="morphe_video_delay_summary">Pinapagantala ang video upang manatiling sinkronizado sa kasing-tigil na audio, tulad ng mga Bluetooth headphone (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Ilang antala lamang kapag gamit ang Bluetooth audio</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Pipagantalahin lang ang video habang nakakonekta ang Bluetooth audio, upang manatiling sinkronizado ang speaker ng telepono</string>
+  <string name="morphe_video_delay_button_overlay_title">Ipakita ang pindutan para sa pag-antala ng video</string>
+  <string name="morphe_video_delay_button_overlay_summary">Itapak at hawakan nang matagal upang i-reset ang pag-antala sa 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Ipakita ang menu para sa pag-antala ng video</string>
+  <string name="morphe_video_delay_dialog_input_hint">Antala sa milisegundo</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -1311,6 +1336,7 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Mga notification ng pagbabago ng bilis</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Nagpapakita ng notification kapag nai-save ang isang bagong default na bilis ng pag-playback</string>
   <string name="morphe_playback_speed_default_title">Default na bilis ng pag-playback</string>
+  <string name="morphe_shorts_playback_speed_default_title">Default na bilis ng playback sa Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Binago ang default playback speed sa: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Gamitin ang normal na bilis para sa musika</string>
   <string name="morphe_disable_playback_speed_music_summary">Laging patugtugin ang mga music video sa bilis na 1.0x</string>

@@ -435,6 +435,19 @@ Prijave so javne in so pregledane, preden je kanal dodan na seznam. Odstranitev 
   <string name="morphe_feed_long_press_menu_summary">Če povsod na videu v toku dotaknete se in držite, se odpre njegov meni</string>
   <string name="morphe_feed_watch_later_button_title">Prikaži gumb »Ogled kasneje« na sličicah</string>
   <string name="morphe_feed_watch_later_button_summary">Na sličicah video posnetkov v toku je prikazan gumb Ogled kasneje. Z dotikom in držanjem odprete Shrani v seznam predvajanja</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Dodaj element Zastavi v meni za hitro klicanje</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">V meni za hitro klicanje glavnega toka dodajte element za povzetek videa</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Funkcija Zastavi je na voljo le v državah, kjer je ta funkcija omogočena, in jo lahko uporabljate le z uporabo prijavljenega računa.
+
+Ko enkrat odprete video s gumbom Zastavi, bo funkcija delovala za vse videe, tudi če trenutna država ne podpira te funkcije."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Povzamite video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Ni bilo mogoče odpreti funkcije Zastavi za ta video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Funkcija Zastavi ni na voljo za vaš račun ali trenutno državo</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Prikaži število ogledov na sličicah</string>
   <string name="morphe_feed_view_count_summary">Število ogledov videoposnetkov v viru je prikazano spodaj levo na njihovih sličicah namesto pod naslovom. Nekateri videoposnetki, na primer v policah, morda ne bodo prikazali števila ogledov</string>
@@ -793,6 +806,7 @@ Info: Naslednji videoposnetek v čakalni vrsti se začne le, ko je YouTube na za
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Popravi prepis</string>
   <string name="morphe_fix_transcript_summary">Odpravlja preverjanje pogojev, ki lahko prepreči nalaganje transkripcije</string>
+  <string name="morphe_captions_in_pip_title">Prikaži podnapise v načinu slika v sliki</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Nadzorni gumbi</string>
   <string name="morphe_navigation_buttons_screen_summary">Izberite, kateri elementi se pojavljajo v orodni vrstici</string>
@@ -1110,6 +1124,8 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_shorts_autoplay_summary">Samodejno napreduje k naslednjemu Shortu namesto, da bi ponavljal trenutnega</string>
   <string name="morphe_shorts_autoplay_background_title">Samodejno predvajanje v ozadju</string>
   <string name="morphe_shorts_autoplay_background_summary">Samodejno napreduje k naslednjemu Shortu med predvajanjem v ozadju</string>
+  <string name="morphe_skip_live_shorts_title">Preskoči neposredne kratke videoposnetke</string>
+  <string name="morphe_skip_live_shorts_summary">Preskoči neposredne prenose, ki se pojavijo v viru kratkih videoposnetkov</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Predvajanje v časovnicah</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Vedno vklopljeno</string>
@@ -1272,6 +1288,14 @@ Videoposnetki so zahtevani s kratko predpono zgoščenega ID-ja videoposnetka, t
   <string name="morphe_playback_buffer_size_entry_low">Nizka</string>
   <string name="morphe_playback_buffer_size_entry_medium">Srednja</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Največja</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Zakasnitev videa</string>
+  <string name="morphe_video_delay_summary">Zakasni video, da bo sinhroniziran s kasnejočim zvokom, npr. pri brezžičnih slušalkah (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Zakasni le z Bluetooth zvokom</string>
+  <string name="morphe_video_delay_button_overlay_title">Prikaži gumb za zakasnitev videa</string>
+  <string name="morphe_video_delay_button_overlay_summary">Dolgo pritisnite za ponastavitev zakasnitve na 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Prikaži meni za zakasnitev videa</string>
+  <string name="morphe_video_delay_dialog_input_hint">Zakasnitev v milisekundah</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Samodejno</string>
@@ -1313,6 +1337,7 @@ Videoposnetki so zahtevani s kratko predpono zgoščenega ID-ja videoposnetka, t
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Obvestila o spremembi hitrosti</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Prikaže obvestilo, ko se shrani nova privzeta hitrost predvajanja</string>
   <string name="morphe_playback_speed_default_title">Privzeta hitrost predvajanja</string>
+  <string name="morphe_shorts_playback_speed_default_title">Privzeta hitrost predvajanja pri kratkih videoposnetkih</string>
   <string name="morphe_remember_playback_speed_toast">Spremenjena privzeta hitrost predvajanja na: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Uporabi normalno hitrost za glasbo</string>
   <string name="morphe_disable_playback_speed_music_summary">Vedno predvajaj glasbene videospote s hitrostjo 1,0x</string>

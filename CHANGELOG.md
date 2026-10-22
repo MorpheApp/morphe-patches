@@ -1,3 +1,24 @@
+## [1.48.0-dev.19](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.18...v1.48.0-dev.19) (2026-10-22)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Default video quality:** SABR video quality drops while the video plays ([#3853](https://github.com/MorpheApp/morphe-patches/issues/3853)) ([0488bda](https://github.com/MorpheApp/morphe-patches/commit/0488bda28d4d5844a2a739d3eefd00c28afd43fa))
+* **YouTube - Downloads:** Playing video enters picture-in-picture when the external downloader opens ([#3882](https://github.com/MorpheApp/morphe-patches/issues/3882)) ([cf43209](https://github.com/MorpheApp/morphe-patches/commit/cf43209679dbba198e963aa381ce25110a6aa8fb))
+* **YouTube - Feed card layout:** Show missing watch progress on feed cards ([#3926](https://github.com/MorpheApp/morphe-patches/issues/3926)) ([096798f](https://github.com/MorpheApp/morphe-patches/commit/096798f5877ffce88bac17adef5a9477931071b0))
+* **YouTube - Feed video actions:** Show on the grid of landscape ([#3875](https://github.com/MorpheApp/morphe-patches/issues/3875)) ([db5e7d0](https://github.com/MorpheApp/morphe-patches/commit/db5e7d0f97d44032212e7a4451ab38466fd67506))
+* **YouTube - Navigation bar:** App crashes on Android 12-13 when the player is dragged down to the miniplayer ([#3937](https://github.com/MorpheApp/morphe-patches/issues/3937)) ([a6db8d7](https://github.com/MorpheApp/morphe-patches/commit/a6db8d7aba965471d9a51f27ad7324513e2eb40b))
+* **YouTube - Navigation bar:** Increased the spacing between Shorts player and navigation bar when this latter is hidden ([a6fdc2f](https://github.com/MorpheApp/morphe-patches/commit/a6fdc2f1331f5d2fe14da2abb89dfe4b8799ce7f))
+* **YouTube:** History items are hidden when the keyboard is open ([3f38b2d](https://github.com/MorpheApp/morphe-patches/commit/3f38b2ded7f857a0240126388686234d3c786892))
+
+### ✨ New Features
+
+* **Reddit - Redgifs audio:** Download Redgifs videos with audio ([#3869](https://github.com/MorpheApp/morphe-patches/issues/3869)) ([f2ed85e](https://github.com/MorpheApp/morphe-patches/commit/f2ed85e67e518ec9115d51d7d6eb0d208232b646))
+* **YouTube - Captions:** Add "Show captions in picture-in-picture" setting ([#3907](https://github.com/MorpheApp/morphe-patches/issues/3907)) ([6c817e7](https://github.com/MorpheApp/morphe-patches/commit/6c817e7daa49a1b0bf007f31fc7eece9ff3af566))
+* **YouTube - Restore original titles:** Restore titles of watch history and fullscreen suggested videos ([f55e541](https://github.com/MorpheApp/morphe-patches/commit/f55e54163bd04b7b6fdd3e015951ad6bf4f8d42f))
+* **YouTube:** Add `Ask flyout menu` patch ([#3897](https://github.com/MorpheApp/morphe-patches/issues/3897)) ([04c76d0](https://github.com/MorpheApp/morphe-patches/commit/04c76d0ace8e3e5c6d4e4d015e7bc231199b9c02))
+* **YouTube:** Add `Video delay` patch ([#3867](https://github.com/MorpheApp/morphe-patches/issues/3867)) ([ec246e2](https://github.com/MorpheApp/morphe-patches/commit/ec246e292e6c7c18373bb486a53c3db205efb83f))
+* **YouTube:** Add playback speed for Shorts and skip live Shorts ([#3847](https://github.com/MorpheApp/morphe-patches/issues/3847)) ([3731d97](https://github.com/MorpheApp/morphe-patches/commit/3731d97f6ec4eaedbccaa7b7e8d4775c8cf9d587))
+
 ## [1.48.0-dev.18](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.17...v1.48.0-dev.18) (2026-10-21)
 
 ### 🐛 Bug Fixes

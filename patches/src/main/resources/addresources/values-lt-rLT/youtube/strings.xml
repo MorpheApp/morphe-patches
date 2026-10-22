@@ -435,6 +435,19 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_feed_long_press_menu_summary">Paspaudus ir palaikius bet kuria feed video vieta, atidaromas jo meniu</string>
   <string name="morphe_feed_watch_later_button_title">Rodyti „Pažiūrėti vėliau“ mygtuką prie miniatiūrų</string>
   <string name="morphe_feed_watch_later_button_summary">Ant nuotykų srauto vaizdo įrašų miniatiūrų rodomas mygtukas „Pažiūrėti vėliau“. Paspaudus ir laikant jį, atidaroma parinktis „Įtraukti į grojaraštį“</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Pridėti „Ask“ elementą į iškylančiąjį meniu</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Pridėti vaizdo įrašo apibendrinimo elementą į feed\'o iškylančiąjį meniu</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"„Ask“ iš pradžių reikalauja prisijungusios paskyros šalyje, kurioje „Ask“ paslauga prieinama.
+
+Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais vaizdo įrašais, net jei dabartinėje šalyje nėra „Ask“ funkcijos."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Apibendrinti vaizdo įrašą</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Nepavyko atidaryti „Ask“ šiam vaizdo įrašui</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">„Ask“ nepasiekiama jūsų paskyrai arba dabartinei šaliai</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Rodyti peržiūrų skaičių miniatiūrose</string>
   <string name="morphe_feed_view_count_summary">Rodyti peržiūrų skaičių vaizdo įrašų srauto vaizdo įrašuose rodomas miniatiūros kairiajame apatiniame kampe, o ne po pavadinimu. Kai kuriuose vaizdo įrašuose, pavyzdžiui, lentynose, peržiūrų skaičius gali būti nerodomas</string>
@@ -793,6 +806,7 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Pataisyti transkripciją</string>
   <string name="morphe_fix_transcript_summary">Išsprendžia išankstinės sąlygos patikros gedimą, kuris gali neleisti įkelti transkripcijos</string>
+  <string name="morphe_captions_in_pip_title">Rodyti antraštes vaizdo režime „vaizdas už vaizdo“</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Naršymo mygtukai</string>
   <string name="morphe_navigation_buttons_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
@@ -1110,6 +1124,8 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <string name="morphe_shorts_autoplay_summary">Automatiškai pereina prie kito „Short“ įrašo, o ne kartojamas dabartinis</string>
   <string name="morphe_shorts_autoplay_background_title">Automatinis atkūrimas fone</string>
   <string name="morphe_shorts_autoplay_background_summary">Automatiškai pereina prie kito „Short“ įrašo foninio atkūrimo metu</string>
+  <string name="morphe_skip_live_shorts_title">Nutraukti gyvus \"Shorts\"</string>
+  <string name="morphe_skip_live_shorts_summary">Nutraukia gyvų srautų rodymą „Shorts“ skenyje</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Atkūrimas sklaidos kanaluose</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Visada</string>
@@ -1272,6 +1288,15 @@ Vaizdo įrašai užklausiami pagal trumpą maišyto vaizdo įrašo ID priešdėl
   <string name="morphe_playback_buffer_size_entry_low">Mažas</string>
   <string name="morphe_playback_buffer_size_entry_medium">Vidutinis</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maksimalus</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Vaizdo delsimas</string>
+  <string name="morphe_video_delay_summary">Lėtina vaizdą, kad jis derėtų su vėluojančiu garsu, pvz., Bluetooth ausiniais (0–5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Delsi tik su Bluetooth garsu</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Vaizdas delsiamas tik prisijungus Bluetooth garsui, todėl telefono garsiakalbis lieka sinchronizuotas</string>
+  <string name="morphe_video_delay_button_overlay_title">Rodyti „Vaizdo delsimo“ mygtuką</string>
+  <string name="morphe_video_delay_button_overlay_summary">Paspauskite ir laikykite, kad nustatytumėte delsimą į 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Rodyti „Vaizdo delsimas“ meniu</string>
+  <string name="morphe_video_delay_dialog_input_hint">Delsimas milisekundėmis</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatiškai</string>
@@ -1313,6 +1338,7 @@ Vaizdo įrašai užklausiami pagal trumpą maišyto vaizdo įrašo ID priešdėl
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Greičio pakeitimų pranešimai</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Rodo pranešimą, kai išsaugomas naujas numatytasis atkūrimo greitis</string>
   <string name="morphe_playback_speed_default_title">Numatytasis atkūrimo greitis</string>
+  <string name="morphe_shorts_playback_speed_default_title">Numatytoji „Shorts“ vaizdo įrašo atkūrimo sparta</string>
   <string name="morphe_remember_playback_speed_toast">Numatytasis atkūrimo greitis pakeistas į: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Muzikai naudoti įprastą greitį</string>
   <string name="morphe_disable_playback_speed_music_summary">Muzikos vaizdo įrašus visada leisti 1,0x greičiu</string>

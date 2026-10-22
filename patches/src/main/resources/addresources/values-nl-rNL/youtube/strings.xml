@@ -435,6 +435,19 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_feed_long_press_menu_summary">Korte of lange aanraking ergens op een feedvideo opent het menu</string>
   <string name="morphe_feed_watch_later_button_title">Button \"Later bekijken\" weergeven op miniatuurafbeeldingen</string>
   <string name="morphe_feed_watch_later_button_summary">Er wordt een knop \"Later bekijken\" weergegeven op de miniatuurafbeeldingen van feedvideo\'s. Tikken en vasthouden opent Opslaan in afspeellijst</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Ask-item aan uitklapmenu toevoegen</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Videofatsummarisatie-item toevoegen aan het feed-uitklapmenu</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask vereist aanvankelijk een ingelogd account in een land waar Ask beschikbaar is.
+
+Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle video's, zelfs als Ask niet beschikbaar is in het huidige land."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Video samenvatten</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Kon Ask voor deze video niet openen</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask is niet beschikbaar voor uw account of huidige land</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Weergavenaantal tonen op miniaturen</string>
   <string name="morphe_feed_view_count_summary">Het weergavenaantal van feedvideo\'s wordt links onder op de miniatuurweergave getoond in plaats van onder de titel. Sommige video\'s, zoals in vakken, worden mogelijk niet met een weergavenaantal getoond</string>
@@ -791,6 +804,7 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Transcriptie corrigeren</string>
   <string name="morphe_fix_transcript_summary">Lost een voorwaarde-controlefout op die kan voorkomen dat het transcript wordt geladen</string>
+  <string name="morphe_captions_in_pip_title">Bijschriften weergeven in picture-in-picture</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigatieknoppen</string>
   <string name="morphe_navigation_buttons_screen_summary">Kies welke componenten er in de werkbalk verschijnen</string>
@@ -1108,6 +1122,8 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_shorts_autoplay_summary">Schakelt automatisch naar de volgende Short in plaats van de huidige te herhalen</string>
   <string name="morphe_shorts_autoplay_background_title">Automatisch afspelen op de achtergrond</string>
   <string name="morphe_shorts_autoplay_background_summary">Schakelt automatisch naar de volgende Short in tijdens het afspelen op de achtergrond</string>
+  <string name="morphe_skip_live_shorts_title">Live-Shorts overslaan</string>
+  <string name="morphe_skip_live_shorts_summary">Slaat live streams over die in de Shorts-feed verschijnen</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Weergave in feeds</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Altijd aan</string>
@@ -1270,6 +1286,15 @@ Video's worden opgevraagd via een kort voorvoegsel van de gehashte video-ID, zod
   <string name="morphe_playback_buffer_size_entry_low">Laag</string>
   <string name="morphe_playback_buffer_size_entry_medium">Gemiddeld</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maximaal</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Videoverschuiving</string>
+  <string name="morphe_video_delay_summary">Vertraagt de video om hem synchroniseren met vertraging audio, zoals Bluetooth-headsets (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Alleen bij Bluetooth-audio verslepen</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Vertraging van video alleen wanneer Bluetooth-audio is aangesloten, zodat de luidspreker van de telefoon gesynchroniseerd blijft</string>
+  <string name="morphe_video_delay_button_overlay_title">Videoverschuiifknop tonen</string>
+  <string name="morphe_video_delay_button_overlay_summary">Kort en houd ingedrukt om de vertraging terug te zetten naar 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Videoverschuivingsmenu tonen</string>
+  <string name="morphe_video_delay_dialog_input_hint">Vertraging in milliseconden</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatisch</string>
@@ -1311,6 +1336,7 @@ Video's worden opgevraagd via een kort voorvoegsel van de gehashte video-ID, zod
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Snelheid verandering meldingen</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Toont een melding wanneer een nieuwe standaard afspeelsnelheid is opgeslagen</string>
   <string name="morphe_playback_speed_default_title">Standaard afspeelsnelheid</string>
+  <string name="morphe_shorts_playback_speed_default_title">Standaard afspeelsnelheid op Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Standaard afspeelsnelheid gewijzigd naar: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Gebruik normale snelheid voor muziek</string>
   <string name="morphe_disable_playback_speed_music_summary">Speel muziekvideo\'s altijd af op 1.0x snelheid</string>

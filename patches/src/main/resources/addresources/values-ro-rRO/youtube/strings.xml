@@ -435,6 +435,19 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_feed_long_press_menu_summary">Atingerea și menținerea apăsării oriunde pe un video din feed deschide meniul acestuia</string>
   <string name="morphe_feed_watch_later_button_title">Arată butonul „Vizionează mai târziu” pe miniaturi</string>
   <string name="morphe_feed_watch_later_button_summary">Un buton Vizionează mai târziu este afișat pe miniaturile videoclipurilor din feed. Atingerea și menținerea apăsării asupra lui deschide Opțiuni salvare playlist</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Adăugarea elementului Ask la meniul flyout</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Adaugă un element de sumarizare video în meniul flyout al șirului de alimentare</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"În mod inițial, Ask necesită un cont autentificat într-o țară în care Ask este disponibil.
+
+După ce un videoclip cu butonul Ask este deschis o dată, funcția funcționează cu toate videoclipurile, chiar dacă țara curentă nu are funcția Ask."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Rezumatul videoclipului</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Nu s-a putut deschide Ask pentru acest videoclip</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask nu este disponibil pentru contul sau țara ta curentă</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Afișează numărul de vizualizări pe miniaturi</string>
   <string name="morphe_feed_view_count_summary">Numărul de vizualizări ale videoclipurilor din flux este afișat în colțul stânga-jos al miniaturilor acestora, în loc să fie afișat sub titlu. Unele videoclipuri, cum ar fi cele din rafturi, pot să nu afișeze un număr de vizualizări</string>
@@ -793,6 +806,7 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Corectează transcriere</string>
   <string name="morphe_fix_transcript_summary">Elimină o eroare de verificare a precondițiilor care poate împiedica încărcarea transcrierii</string>
+  <string name="morphe_captions_in_pip_title">Arată subtitrările în picture-in-picture</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Butoane de navigare</string>
   <string name="morphe_navigation_buttons_screen_summary">Ascunde subsolul meniului Pista audio</string>
@@ -1110,6 +1124,8 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_shorts_autoplay_summary">Avansază la următorul Shorts automat în loc să repete pe cel curent</string>
   <string name="morphe_shorts_autoplay_background_title">Redare automată în fundal</string>
   <string name="morphe_shorts_autoplay_background_summary">Avansază la următorul Shorts automat în timpul redării în fundal</string>
+  <string name="morphe_skip_live_shorts_title">Sari peste Shorts live</string>
+  <string name="morphe_skip_live_shorts_summary">Ocolește fluxurile live care apar în feed-ul Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Redare în fluxuri</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Mereu activat</string>
@@ -1272,6 +1288,15 @@ Videoclipurile sunt solicitate printr-un prefix scurt al ID-ului video cu hash, 
   <string name="morphe_playback_buffer_size_entry_low">Scăzut</string>
   <string name="morphe_playback_buffer_size_entry_medium">Mediu</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maxim</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Întârziere video</string>
+  <string name="morphe_video_delay_summary">Întârziază video-ul pentru a îl menține sincronizat cu sunetul întârziat, cum ar fi căștile Bluetooth (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Doar întârziere cu audio Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Întârzie video-ul doar când audio-ul Bluetooth este conectat, astfel încât difuzorul telefonului rămâne sincronizat</string>
+  <string name="morphe_video_delay_button_overlay_title">Afișați butonul de întârziere video</string>
+  <string name="morphe_video_delay_button_overlay_summary">Atingeți și țineți apăsat pentru a reseta întârzierea la 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Afișați meniul de întârziere video</string>
+  <string name="morphe_video_delay_dialog_input_hint">Întârziere în milisecunde</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automat</string>
@@ -1313,6 +1338,7 @@ Videoclipurile sunt solicitate printr-un prefix scurt al ID-ului video cu hash, 
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Notificări de schimbare a vitezei</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Afișează o notificare când se salvează o viteză de redare implicită nouă</string>
   <string name="morphe_playback_speed_default_title">Viteza de redare implicită</string>
+  <string name="morphe_shorts_playback_speed_default_title">Viteza de redare implicită pe Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Viteza de redare implicită a fost modificată la: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Utilizaţi viteza normală pentru muzică</string>
   <string name="morphe_disable_playback_speed_music_summary">Reda înviteza videoclipurile muzicale în mod constant la 1.0x</string>
