@@ -2178,7 +2178,6 @@ private void reorderQueueByRemembered() {
             if (splitBackground) {
                 lyrics = LyricsBracketSplitter.apply(lyrics);
             }
-            lyrics = sanitizeDegradedRomaji(lyrics);
             if (cacheKey != null) {
                 filteredCache.put(cacheKey, lyrics);
             }
@@ -2320,41 +2319,5 @@ private void reorderQueueByRemembered() {
         return lyrics != null && lyrics.synced() && !lyrics.isEmpty();
     }
 
-    private static Lyrics sanitizeDegradedRomaji(Lyrics lyrics) {
-        if (lyrics == null || lyrics == Lyrics.NOT_FOUND || lyrics.isEmpty()) {
-            return lyrics;
-        }
 
-        List<LyricsLine> embedded = LyricsRomanizer.getEmbeddedRomanization(lyrics);
-        boolean perWord = LyricsMerge.anyWordHasRomaji(lyrics.lines());
-        if (!perWord && (embedded == null || embedded.isEmpty())) {
-            return lyrics;
-        }
-
-        boolean degraded = LyricsRomanizer.isProviderRomajiDegraded(embedded, lyrics.lines(), perWord);
-        if (!degraded) {
-            return lyrics;
-        }
-
-        Logger.printDebug(() -> "Sanitizing degraded provider romaji (mora fragments) to force Google Translate fallback.");
-
-        List<LyricsLine> origLines = lyrics.lines();
-        List<LyricsLine> cleanedLines = new ArrayList<>(origLines.size());
-        for (LyricsLine line : origLines) {
-            if (line.hasWords()) {
-                List<Word> words = new ArrayList<>(line.words().size());
-                for (Word w : line.words()) {
-                    words.add(new Word(w.startMs(), w.endMs(), w.text(), null, w.endsWithSpace()));
-                }
-                cleanedLines.add(new LyricsLine(line.startTimeMs(), line.endTimeMs(), line.text(), words,
-                        line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
-            } else {
-                cleanedLines.add(line);
-            }
-        }
-
-        return new Lyrics(cleanedLines, lyrics.providerName(), lyrics.synced(),
-                null, lyrics.translations(), null,
-                lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(), lyrics.sourceUrl());
-    }
 }
