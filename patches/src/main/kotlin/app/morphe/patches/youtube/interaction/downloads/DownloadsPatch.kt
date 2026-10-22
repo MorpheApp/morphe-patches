@@ -23,6 +23,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
+import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -60,7 +61,8 @@ private val downloadsResourcePatch = resourcePatch {
                         "morphe_external_downloader_name",
                         tag = "app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference",
                     ),
-                    SwitchPreference("morphe_external_downloader_quick_menu", summary = true)
+                    SwitchPreference("morphe_external_downloader_quick_menu", summary = true),
+                    SwitchPreference("morphe_external_downloader_mark_watched", summary = true)
                 )
             )
         )
@@ -105,6 +107,7 @@ val downloadsPatch = bytecodePatch(
 ) {
     dependsOn(
         downloadsResourcePatch,
+        authHookPatch,
         videoInformationPatch,
         legacyPlayerControlsPatch,
         fixProtoLibraryPatch,

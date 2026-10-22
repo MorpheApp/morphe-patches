@@ -67,6 +67,13 @@ public final class PlaylistRoutes {
                     "&prettyPrint=false"
     ).compile();
 
+    /**
+     * The urls that report the playback of a video, which add the video to the watch history.
+     */
+    public static final Route.CompiledRoute GET_PLAYBACK_TRACKING = new Route(
+            Route.Method.POST, "player?fields=playbackTracking&prettyPrint=false"
+    ).compile();
+
     private PlaylistRoutes() {
     }
 
@@ -158,6 +165,17 @@ public final class PlaylistRoutes {
         return new byte[0];
     }
 
+    public static byte[] playbackTrackingBody(String videoId) {
+        try {
+            JSONObject body = getBaseContentJson();
+            body.put("videoId", videoId);
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "playbackTrackingBody failed", ex);
+        }
+        return new byte[0];
+    }
+
     public static byte[] getMixPlaylistBody(String videoId) {
         try {
             JSONObject body = getBaseContentJson();
@@ -200,15 +218,17 @@ public final class PlaylistRoutes {
         return new byte[0];
     }
 
-    public static HttpURLConnection getConnection(Route.CompiledRoute route, Map<String, String> authHeaders) throws IOException {
-        String userAgent = String.format(Locale.US,
+    public static String getUserAgent() {
+        return String.format(Locale.US,
                 "%s/%s (Linux; U; Android %s; %s; %s Build/%s)",
                 PACKAGE_NAME, CLIENT_VERSION, Build.VERSION.RELEASE,
                 Locale.getDefault(), Build.MODEL, Build.ID);
+    }
 
+    public static HttpURLConnection getConnection(Route.CompiledRoute route, Map<String, String> authHeaders) throws IOException {
         HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(YT_API_URL, route);
         connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("User-Agent", userAgent);
+        connection.setRequestProperty("User-Agent", getUserAgent());
         connection.setRequestProperty("X-YouTube-Client-Name", String.valueOf(CLIENT_ID));
         connection.setRequestProperty("X-YouTube-Client-Version", CLIENT_VERSION);
         connection.setRequestProperty("X-GOOG-API-FORMAT-VERSION", "2");

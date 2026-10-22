@@ -33,6 +33,7 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.utils.requests.MarkWatchedRequest;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.ButtonVisibility;
@@ -83,9 +84,22 @@ public class ExternalDownloadButton {
                 && ExternalDownloaderPreference.supportsQuickDownload();
     }
 
+    /**
+     * Opens the external downloader, and marks the video as watched if that is on.
+     *
+     * @param quickDownloadType See {@link ExternalDownloaderPreference#launchExternalDownloader(String, Context, String, String)}.
+     */
+    public static void launchDownloader(@Nullable Context context, String videoId,
+                                        @Nullable String quickDownloadType) {
+        if (ExternalDownloaderPreference.launchExternalDownloader(
+                videoId, context, getVideoUrl(videoId), quickDownloadType)
+                && Settings.EXTERNAL_DOWNLOADER_MARK_WATCHED.get()) {
+            MarkWatchedRequest.markWatched(videoId);
+        }
+    }
+
     private static void openDownloader(Context context) {
-        final String videoId = VideoInformation.getVideoId();
-        ExternalDownloaderPreference.launchExternalDownloader(videoId, context, getVideoUrl(videoId));
+        launchDownloader(context, VideoInformation.getVideoId(), null);
     }
 
     private static void onDownloadClick(View view) {
@@ -122,7 +136,6 @@ public class ExternalDownloadButton {
      */
     public static void showQuickDownloadMenu(Context context, String videoId) {
         try {
-            final String url = getVideoUrl(videoId);
             final boolean showQuality = ExternalDownloaderPreference.supportsQuickDownloadQuality();
             final int foregroundColor = ThemeUtils.getAppForegroundColor();
 
@@ -147,7 +160,7 @@ public class ExternalDownloadButton {
                     showQuality ? str("morphe_external_downloader_quick_video_quality") : null,
                     () -> {
                         dialog.dismiss();
-                        ExternalDownloaderPreference.launchExternalDownloader(videoId, context, url, "video");
+                        launchDownloader(context, videoId, "video");
                     }));
             mainLayout.addView(createItem(context,
                     "morphe_external_downloader_quick_audio",
@@ -155,7 +168,7 @@ public class ExternalDownloadButton {
                     showQuality ? str("morphe_external_downloader_quick_audio_quality") : null,
                     () -> {
                         dialog.dismiss();
-                        ExternalDownloaderPreference.launchExternalDownloader(videoId, context, url, "audio");
+                        launchDownloader(context, videoId, "audio");
                     }));
 
             View divider = new View(context);
@@ -171,7 +184,7 @@ public class ExternalDownloadButton {
                     null,
                     () -> {
                         dialog.dismiss();
-                        ExternalDownloaderPreference.launchExternalDownloader(videoId, context, url);
+                        launchDownloader(context, videoId, null);
                     }));
 
             PipDismissHelper.dismissOnPip(dialog);

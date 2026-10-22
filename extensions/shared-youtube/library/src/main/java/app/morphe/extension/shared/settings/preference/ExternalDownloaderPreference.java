@@ -106,8 +106,11 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
         }
     }
 
-    public static void launchExternalDownloader(String videoId, @Nullable Context context, String url) {
-        launchExternalDownloader(videoId, context, url, null);
+    /**
+     * @return If the downloader was opened.
+     */
+    public static boolean launchExternalDownloader(String videoId, @Nullable Context context, String url) {
+        return launchExternalDownloader(videoId, context, url, null);
     }
 
     /**
@@ -115,9 +118,10 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
      *                          as this type ("audio" or "video") using its default settings,
      *                          capped at {@link #QUICK_DOWNLOAD_VIDEO_HEIGHT} / {@link #QUICK_DOWNLOAD_AUDIO_KBPS}
      *                          if the downloader supports it.
+     * @return If the downloader was opened.
      */
-    public static void launchExternalDownloader(String videoId, @Nullable Context context, String url,
-                                                @Nullable String quickDownloadType) {
+    public static boolean launchExternalDownloader(String videoId, @Nullable Context context, String url,
+                                                   @Nullable String quickDownloadType) {
         try {
             Objects.requireNonNull(videoId);
             if (context == null) {
@@ -131,7 +135,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
 
             // If the package is not installed, show a dialog.
             if (showDialogIfAppIsNotInstalled(context, downloaderPackageName)) {
-                return;
+                return false;
             }
 
             Intent intent = new Intent("android.intent.action.SEND");
@@ -152,9 +156,11 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
             context.startActivity(intent);
+            return true;
         } catch (Exception ex) {
             Logger.printException(() -> "launchExternalDownloader failure", ex);
         }
+        return false;
     }
 
     /**
