@@ -73,22 +73,50 @@ public final class CommentsSearchFilter extends Filter {
      */
     private static volatile String searchVideoId = "";
 
-    /**
-     * The buffer of a comment is the same for each of its components,
-     * so the result of the last buffer searched by each thread is reused.
-     */
-    private static final ThreadLocal<SearchResult> lastResult = new ThreadLocal<>();
+    private static final String COMMENT_THREAD_PATH = "comment_thread.eml";
 
-    private record SearchResult(byte[] buffer, List<String> words, boolean matches) {
+    /**
+     * The comment of each thread is laid out from its outermost component to its innermost.
+     * Each component has a buffer of its own, and only the buffer of the outermost component
+     * holds all of the comment, such as its author and its text. The comment is shown or hidden
+     * as a whole by the outermost component, and its inner components are never hidden alone.
+     * <p>
+     * Litho lays out on more than one thread, so each thread keeps its own comment.
+     */
+    private static final ThreadLocal<CommentDecision> lastComment = new ThreadLocal<>();
+
+    private static final class CommentDecision {
+        final String path;
+        final List<String> words;
+        final boolean hidden;
+        /**
+         * If the replies of the hidden comment, which are laid out after it, are not yet hidden.
+         */
+        boolean hideReplies;
+
+        CommentDecision(String path, List<String> words, boolean hidden) {
+            this.path = path;
+            this.words = words;
+            this.hidden = hidden;
+            this.hideReplies = hidden;
+        }
     }
 
     private final StringFilterGroup commentThread = new StringFilterGroup(
             Settings.SEARCH_COMMENTS,
-            "comment_thread.eml"
+            COMMENT_THREAD_PATH
+    );
+
+    /**
+     * The button that shows the replies of a comment is not inside the comment.
+     */
+    private final StringFilterGroup commentReplies = new StringFilterGroup(
+            Settings.SEARCH_COMMENTS,
+            "repl"
     );
 
     public CommentsSearchFilter() {
-        addPathCallbacks(commentThread);
+        addPathCallbacks(commentThread, commentReplies);
     }
 
     @Override
@@ -102,19 +130,41 @@ public final class CommentsSearchFilter extends Filter {
                               FilterContentType contentType,
                               int contentIndex) {
         List<String> words = searchWords;
-        if (words.isEmpty() || buffer.length == 0 || !isSearchForCurrentVideo()) {
+        if (words.isEmpty() || !isSearchForCurrentVideo()) {
             return false;
         }
 
-        SearchResult result = lastResult.get();
-        if (result == null || result.buffer != buffer || result.words != words) {
-            // The buffer is not text, but the text of the comment is in it as UTF-8.
-            String text = new String(buffer, StandardCharsets.UTF_8).toLowerCase(Locale.getDefault());
-            result = new SearchResult(buffer, words, containsAllWords(text, words));
-            lastResult.set(result);
+        CommentDecision last = lastComment.get();
+        final boolean isCommentThread = Utils.contains(path, COMMENT_THREAD_PATH);
+
+        if (matchedGroup == commentReplies) {
+            if (isCommentThread || last == null || last.words != words || !last.hideReplies) {
+                return false;
+            }
+            // The replies are a single component, and its inner components are not laid out once it's hidden.
+            last.hideReplies = false;
+            String repliesPath = path.toString();
+            Logger.printDebug(() -> "Hiding replies of hidden comment: " + repliesPath);
+            return true;
         }
 
-        return !result.matches;
+        if (last != null && last.words == words
+                && path.length() > last.path.length() && Utils.startsWith(path, last.path)) {
+            // Inner component of the comment that was already searched.
+            return last.hidden;
+        }
+
+        if (buffer.length == 0) {
+            return false; // Nothing to search, so the comment is left for its inner components.
+        }
+
+        // The buffer is not text, but the text of the comment is in it as UTF-8.
+        String text = new String(buffer, StandardCharsets.UTF_8).toLowerCase(Locale.getDefault());
+        final boolean hidden = !containsAllWords(text, words);
+        String commentPath = path.toString();
+        lastComment.set(new CommentDecision(commentPath, words, hidden));
+        Logger.printDebug(() -> (hidden ? "Hiding comment: " : "Showing comment: ") + commentPath);
+        return hidden;
     }
 
     private static boolean containsAllWords(String text, List<String> words) {
