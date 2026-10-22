@@ -9,7 +9,9 @@ package app.morphe.patches.youtube.misc.medianotification
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
 
 /**
  * Adds one button action to the playback notification.
@@ -25,4 +27,64 @@ internal object PlaybackNotificationAddActionFingerprint : Fingerprint(
             smali = "Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;"
         )
     )
+)
+
+/**
+ * Media session callback methods. Each one logs its own name, which is used to find it.
+ * The previous/next methods are in the same class as the fast forward/rewind methods.
+ */
+internal object MediaSessionSkipToNextFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("onSkipToNext()")
+    )
+)
+
+internal object MediaSessionSkipToPreviousFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("onSkipToPrevious()")
+    )
+)
+
+internal object MediaSessionFastForwardFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("onFastForward()")
+    )
+)
+
+internal object MediaSessionRewindFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("onRewind()")
+    )
+)
+
+/**
+ * The player's media session callback, which does the actual relative seek of the
+ * fast forward and rewind actions. It extends the same callback class as the class of
+ * [MediaSessionFastForwardFingerprint], overrides the same fast forward/rewind method,
+ * and passes the seek length as a long constant.
+ */
+internal class MediaSessionSeekRelativeFingerprint(
+    callbackClass: String,
+    methodName: String,
+) : Fingerprint(
+    name = methodName,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    custom = { method, classDef ->
+        classDef.superclass == callbackClass &&
+                method.implementation?.instructions?.any { it is WideLiteralInstruction } == true
+    }
 )
