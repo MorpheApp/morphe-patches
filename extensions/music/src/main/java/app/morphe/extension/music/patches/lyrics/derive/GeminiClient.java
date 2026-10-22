@@ -39,7 +39,7 @@ public final class GeminiClient {
     }
 
     @Nullable
-    static List<String> mapLines(String apiKey, String model, String prompt, List<String> sourceLines) {
+    public static List<String> mapLines(String apiKey, String model, String prompt, List<String> sourceLines) {
         if (!OpenAIClient.fitsOneRequest(sourceLines)) {
             return null;
         }

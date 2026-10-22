@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
+import app.morphe.extension.music.patches.lyrics.derive.DeepLClient;
 import app.morphe.extension.music.patches.lyrics.derive.GeminiClient;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
@@ -163,12 +164,36 @@ public class LyricsAiConfigPreference extends Preference
         Button romanizationButton = createButton(context, str(ROMANIZATION_LABEL_PREFIX + selectedRomanization[0]));
         content.addView(romanizationButton);
 
+        final String[] endpointFilter = {"all"};
+        content.addView(createLabel(context, "morphe_music_lyrics_ai_config_endpoint_label"));
+        Button endpointFilterButton = createButton(context, str("morphe_music_lyrics_ai_config_show_all"));
+        content.addView(endpointFilterButton);
+
         // Gemini.
         LinearLayout geminiSection = createSection(context, "morphe_music_lyrics_ai_config_gemini_section");
         EditText geminiKeyInput = addInput(geminiSection, "morphe_music_lyrics_ai_config_api_key_label",
                 Settings.LYRICS_GEMINI_API_KEY.get(), true);
         EditText geminiModelInput = addModelInput(geminiSection, Settings.LYRICS_GEMINI_MODEL.get(),
                 () -> GeminiClient.fetchModels(geminiKeyInput.getText().toString().trim()));
+        addTestButton(geminiSection, () -> {
+            String key = geminiKeyInput.getText().toString().trim();
+            String model = geminiModelInput.getText().toString().trim();
+            if (key.isEmpty()) {
+                Utils.showToastShort("Enter Gemini API key first");
+                return;
+            }
+            Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
+            Utils.runOnBackgroundThread(() -> {
+                List<String> res = GeminiClient.mapLines(key, model, "Translate to Japanese:\n1. hello", java.util.Collections.singletonList("hello"));
+                Utils.runOnMainThread(() -> {
+                    if (res != null && !res.isEmpty()) {
+                        Utils.showToastShort("Gemini: Connected! (" + res.get(0) + ")");
+                    } else {
+                        Utils.showToastShort("Gemini: Connection failed. Check API key and model.");
+                    }
+                });
+            });
+        });
         content.addView(geminiSection);
 
         // OpenRouter.
@@ -178,6 +203,25 @@ public class LyricsAiConfigPreference extends Preference
         EditText openRouterModelInput = addModelInput(openRouterSection, Settings.LYRICS_OPENROUTER_MODEL.get(),
                 () -> OpenAIClient.fetchModels(AiProviders.OPENROUTER_URL,
                         openRouterKeyInput.getText().toString().trim()));
+        addTestButton(openRouterSection, () -> {
+            String key = openRouterKeyInput.getText().toString().trim();
+            String model = openRouterModelInput.getText().toString().trim();
+            if (key.isEmpty()) {
+                Utils.showToastShort("Enter OpenRouter API key first");
+                return;
+            }
+            Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
+            Utils.runOnBackgroundThread(() -> {
+                List<String> res = OpenAIClient.mapLines(AiProviders.OPENROUTER_URL, key, model, "Translate to Japanese:\n1. hello", java.util.Collections.singletonList("hello"));
+                Utils.runOnMainThread(() -> {
+                    if (res != null && !res.isEmpty()) {
+                        Utils.showToastShort("OpenRouter: Connected! (" + res.get(0) + ")");
+                    } else {
+                        Utils.showToastShort("OpenRouter: Connection failed. Check API key and model.");
+                    }
+                });
+            });
+        });
         content.addView(openRouterSection);
 
         // OpenAI.
@@ -187,6 +231,25 @@ public class LyricsAiConfigPreference extends Preference
         EditText openAiModelInput = addModelInput(openAiSection, Settings.LYRICS_OPENAI_MODEL.get(),
                 () -> OpenAIClient.fetchModels(AiProviders.OPENAI_URL,
                         openAiKeyInput.getText().toString().trim()));
+        addTestButton(openAiSection, () -> {
+            String key = openAiKeyInput.getText().toString().trim();
+            String model = openAiModelInput.getText().toString().trim();
+            if (key.isEmpty()) {
+                Utils.showToastShort("Enter OpenAI API key first");
+                return;
+            }
+            Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
+            Utils.runOnBackgroundThread(() -> {
+                List<String> res = OpenAIClient.mapLines(AiProviders.OPENAI_URL, key, model, "Translate to Japanese:\n1. hello", java.util.Collections.singletonList("hello"));
+                Utils.runOnMainThread(() -> {
+                    if (res != null && !res.isEmpty()) {
+                        Utils.showToastShort("OpenAI: Connected! (" + res.get(0) + ")");
+                    } else {
+                        Utils.showToastShort("OpenAI: Connection failed. Check API key and model.");
+                    }
+                });
+            });
+        });
         content.addView(openAiSection);
 
         // A custom OpenAI-compatible endpoint.
@@ -208,22 +271,92 @@ public class LyricsAiConfigPreference extends Preference
         EditText extraBodyInput = addInput(compatibleSection, "morphe_music_lyrics_ai_config_extra_body_label",
                 Settings.LYRICS_AI_EXTRA_BODY.get(), false);
         makeMultiLine(extraBodyInput, 2, 5);
+        addTestButton(compatibleSection, () -> {
+            String url = compatibleUrlInput.getText().toString().trim();
+            String token = compatibleTokenInput.getText().toString().trim();
+            String model = compatibleModelInput.getText().toString().trim();
+            if (url.isEmpty()) {
+                Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
+                return;
+            }
+            Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
+            Utils.runOnBackgroundThread(() -> {
+                boolean ok = OpenAIClient.validateConfig(url, token, model);
+                Utils.runOnMainThread(() -> {
+                    if (ok) {
+                        Utils.showToastShort("OpenAI-Compatible: Connected successfully!");
+                    } else {
+                        Utils.showToastShort("OpenAI-Compatible: Connection failed. Check URL, token, and model.");
+                    }
+                });
+            });
+        });
         content.addView(compatibleSection);
 
         // DeepL.
         LinearLayout deepLSection = createSection(context, "morphe_music_lyrics_ai_config_deepl_section");
         EditText deepLKeyInput = addInput(deepLSection, "morphe_music_lyrics_ai_config_deepl_key_label",
                 Settings.LYRICS_DEEPL_API_KEY.get(), true);
+        addTestButton(deepLSection, () -> {
+            String key = deepLKeyInput.getText().toString().trim();
+            if (key.isEmpty()) {
+                Utils.showToastShort("Enter DeepL authentication key first");
+                return;
+            }
+            Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
+            Utils.runOnBackgroundThread(() -> {
+                List<String> res = DeepLClient.translate(java.util.Collections.singletonList("hello"), "JA", key);
+                Utils.runOnMainThread(() -> {
+                    if (res != null && !res.isEmpty()) {
+                        Utils.showToastShort("DeepL: Connected! (" + res.get(0) + ")");
+                    } else {
+                        Utils.showToastShort("DeepL: Connection failed. Check authentication key.");
+                    }
+                });
+            });
+        });
         content.addView(deepLSection);
 
         Runnable updateVisibility = () -> {
-            setShown(geminiSection, AiProviders.GEMINI, selectedTranslation[0], selectedRomanization[0]);
-            setShown(openRouterSection, AiProviders.OPENROUTER, selectedTranslation[0], selectedRomanization[0]);
-            setShown(openAiSection, AiProviders.OPENAI, selectedTranslation[0], selectedRomanization[0]);
-            setShown(compatibleSection, AiProviders.OPENAI_COMPATIBLE, selectedTranslation[0], selectedRomanization[0]);
-            setShown(deepLSection, AiProviders.DEEPL, selectedTranslation[0], selectedRomanization[0]);
+            boolean showAll = "all".equals(endpointFilter[0]);
+            geminiSection.setVisibility(showAll || AiProviders.GEMINI.equals(endpointFilter[0])
+                    || isUsed(AiProviders.GEMINI, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
+            openRouterSection.setVisibility(showAll || AiProviders.OPENROUTER.equals(endpointFilter[0])
+                    || isUsed(AiProviders.OPENROUTER, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
+            openAiSection.setVisibility(showAll || AiProviders.OPENAI.equals(endpointFilter[0])
+                    || isUsed(AiProviders.OPENAI, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
+            compatibleSection.setVisibility(showAll || AiProviders.OPENAI_COMPATIBLE.equals(endpointFilter[0])
+                    || isUsed(AiProviders.OPENAI_COMPATIBLE, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
+            deepLSection.setVisibility(showAll || AiProviders.DEEPL.equals(endpointFilter[0])
+                    || isUsed(AiProviders.DEEPL, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
         };
         updateVisibility.run();
+
+        endpointFilterButton.setOnClickListener(v -> {
+            String[] filterValues = {
+                    "all",
+                    AiProviders.GEMINI,
+                    AiProviders.OPENROUTER,
+                    AiProviders.OPENAI,
+                    AiProviders.OPENAI_COMPATIBLE,
+                    AiProviders.DEEPL
+            };
+            String[] filterLabels = {
+                    str("morphe_music_lyrics_ai_config_show_all"),
+                    str(TRANSLATION_LABEL_PREFIX + AiProviders.GEMINI),
+                    str(TRANSLATION_LABEL_PREFIX + AiProviders.OPENROUTER),
+                    str(TRANSLATION_LABEL_PREFIX + AiProviders.OPENAI),
+                    str(TRANSLATION_LABEL_PREFIX + AiProviders.OPENAI_COMPATIBLE),
+                    str(TRANSLATION_LABEL_PREFIX + AiProviders.DEEPL)
+            };
+            CustomDialogListPreference.createListDialog(context,
+                    str("morphe_music_lyrics_ai_config_endpoint_label"),
+                    filterLabels, filterValues, endpointFilter[0], index -> {
+                        endpointFilter[0] = filterValues[index];
+                        endpointFilterButton.setText(filterLabels[index]);
+                        updateVisibility.run();
+                    }).show();
+        });
 
         translationButton.setOnClickListener(v -> showProviderPicker(context,
                 "morphe_music_lyrics_ai_config_translation_provider_label",
@@ -446,5 +579,16 @@ public class LyricsAiConfigPreference extends Preference
                     target.setText(items[index]);
                     target.setSelection(items[index].length());
                 }).show();
+    }
+
+    private static void addTestButton(LinearLayout section, Runnable onTest) {
+        Context context = section.getContext();
+        Button testButton = createButton(context, str("morphe_music_lyrics_ai_config_test_connection"));
+        testButton.setOnClickListener(v -> onTest.run());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.topMargin = Dim.dp8;
+        params.bottomMargin = Dim.dp4;
+        section.addView(testButton, params);
     }
 }

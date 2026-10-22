@@ -528,7 +528,7 @@ public final class OpenAIClient {
     }
 
     @Nullable
-    static List<String> mapLines(String baseUrl, String apiToken, String model,
+    public static List<String> mapLines(String baseUrl, String apiToken, String model,
                                  String prompt, List<String> sourceLines) {
         if (!fitsOneRequest(sourceLines)) {
             return null;

@@ -698,6 +698,9 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_ai_config_toast_saved">Translation &amp; Romanization settings saved</string>
     <string name="morphe_music_lyrics_ai_config_toast_reset">Settings reset to default</string>
     <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL must start with http:// or https://</string>
+    <string name="morphe_music_lyrics_ai_config_test_connection">Test Connection</string>
+    <string name="morphe_music_lyrics_ai_config_endpoint_label">Configure Endpoints</string>
+    <string name="morphe_music_lyrics_ai_config_show_all">Show All Endpoints</string>
     <string name="morphe_music_lyrics_ai_config_status_validating">Validating connection…</string>
     <string name="morphe_music_lyrics_ai_config_translation_provider_label">Translation Provider</string>
     <string name="morphe_music_lyrics_ai_config_romanization_provider_label">Romanization Provider</string>

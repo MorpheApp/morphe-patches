@@ -34,7 +34,7 @@ public final class DeepLClient {
     }
 
     @Nullable
-    static List<String> translate(List<String> lines,
+    public static List<String> translate(List<String> lines,
                                          String targetLang,
                                          String apiKey) {
         if (apiKey.isEmpty() || lines.isEmpty()) {
