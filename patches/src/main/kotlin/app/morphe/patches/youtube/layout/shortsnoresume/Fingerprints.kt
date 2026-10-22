@@ -18,12 +18,18 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
  * 21.41+
  */
 internal object UserWasInShortsEvaluateFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
+        "Ljava/util/function/Supplier;", "L", "Ljava/lang/String;"
+    ),
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_DIRECT_RANGE,
@@ -43,6 +49,11 @@ internal object UserWasInShortsEvaluateFingerprint : Fingerprint(
  * 21.30 - 21.40
  */
 internal object UserWasInShortsEvaluateLegacy2130Fingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
+        "Ljava/util/function/Supplier;", "L"
+    ),
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_DIRECT_RANGE,
@@ -62,6 +73,9 @@ internal object UserWasInShortsEvaluateLegacy2130Fingerprint : Fingerprint(
  * 21.03 - 21.29
  */
 internal object UserWasInShortsEvaluateLegacy2103Fingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("Ljava/util/function/Supplier;", "L"),
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_DIRECT_RANGE,
@@ -76,7 +90,6 @@ internal object UserWasInShortsEvaluateLegacy2103Fingerprint : Fingerprint(
         )
     )
 )
-
 
 /**
  * 20.02+

@@ -10,8 +10,6 @@ package app.morphe.patches.shared.misc.refreshrate
 import app.morphe.patcher.Fingerprint
 
 internal object ActivityOnCreateFingerprint : Fingerprint(
-    name = "onCreate",
-    custom = { _, classDef ->
-        classDef.superclass == "Landroid/app/Activity;"
-    }
+    superclass = "Landroid/app/Activity;",
+    name = "onCreate"
 )

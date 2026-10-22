@@ -10,10 +10,8 @@ package app.morphe.patches.reddit.misc.fix.signature
 import app.morphe.patcher.Fingerprint
 
 internal object ApplicationFingerprint : Fingerprint(
+    superclass = "Landroid/app/Application;",
     name = "attachBaseContext",
     returnType = "V",
-    parameters = listOf("Landroid/content/Context;"),
-    custom = { _, classDef ->
-        classDef.superclass == "Landroid/app/Application;"
-    }
+    parameters = listOf("Landroid/content/Context;")
 )

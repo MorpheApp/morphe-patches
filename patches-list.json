@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.48.0-dev.18",
+  "version": "1.48.0",
   "patches": [
     {
       "name": "AI channel filter",
@@ -18,6 +18,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -96,6 +97,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -174,6 +176,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -252,6 +255,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -308,6 +312,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -365,6 +370,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -422,6 +428,86 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "21.42.241",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.41.525",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.28.208",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.23.492",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "21.20.405",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "21.16.256",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.21.37",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Ask flyout menu",
+      "description": "Adds a video menu entry that opens Ask for the video and summarizes the video. This patch works with YouTube 21.16.256 and newer.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -500,6 +586,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -578,6 +665,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -642,7 +730,7 @@
     },
     {
       "name": "Captions",
-      "description": "Adds options to disable captions from being automatically enabled, select a preferred caption language, and add more auto-translate languages.",
+      "description": "Adds options to disable captions from being automatically enabled, select a preferred caption language, add more auto-translate languages, and show captions in picture-in-picture.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -656,6 +744,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -734,6 +823,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -812,6 +902,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -879,6 +970,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -991,6 +1083,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -1048,6 +1141,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -1105,6 +1199,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -1183,6 +1278,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -1261,6 +1357,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -1339,6 +1436,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -1396,6 +1494,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -1511,6 +1610,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -1568,6 +1668,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -1646,6 +1747,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -1724,6 +1826,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -1781,6 +1884,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -1875,6 +1979,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -1989,6 +2094,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -2058,6 +2164,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -2114,6 +2221,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -2171,6 +2279,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -2249,6 +2358,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -2326,6 +2436,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -2383,6 +2494,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -2461,6 +2573,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -2518,6 +2631,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -2604,6 +2718,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -2661,6 +2776,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -2739,6 +2855,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -2817,6 +2934,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -2895,6 +3013,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -2973,6 +3092,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -3030,6 +3150,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3108,6 +3229,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3186,6 +3308,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3264,6 +3387,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3341,6 +3465,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -3398,6 +3523,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3476,6 +3602,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3554,6 +3681,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3631,6 +3759,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -3688,6 +3817,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3766,6 +3896,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3844,6 +3975,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3922,6 +4054,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -3999,6 +4132,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -4056,6 +4190,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -4113,6 +4248,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -4191,6 +4327,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -4248,6 +4385,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -4305,6 +4443,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -4383,6 +4522,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -4440,6 +4580,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -4497,6 +4638,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -4554,6 +4696,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -4632,6 +4775,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -4709,6 +4853,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -4766,6 +4911,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -4844,6 +4990,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -4922,6 +5069,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -5000,6 +5148,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -5078,6 +5227,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -5135,6 +5285,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -5213,6 +5364,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -5269,6 +5421,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -5325,6 +5478,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -5382,6 +5536,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -5460,6 +5615,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -5517,6 +5673,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -5594,6 +5751,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -5650,6 +5808,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -5707,6 +5866,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -5803,6 +5963,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -5860,6 +6021,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -5916,6 +6078,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -5973,6 +6136,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -6051,6 +6215,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -6129,6 +6294,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -6185,6 +6351,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -6242,6 +6409,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -6320,6 +6488,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -6398,6 +6567,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -6455,6 +6625,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -6533,6 +6704,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -6590,6 +6762,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -6667,6 +6840,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -6724,6 +6898,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -6780,6 +6955,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -6837,6 +7013,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -6915,6 +7092,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -6993,6 +7171,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -7071,6 +7250,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -7148,6 +7328,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -7205,6 +7386,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -7283,6 +7465,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -7361,6 +7544,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -7439,6 +7623,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -7495,6 +7680,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -7552,6 +7738,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -7630,6 +7817,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -7687,6 +7875,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -7764,6 +7953,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -7820,6 +8010,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -7877,6 +8068,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -7955,6 +8147,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -8012,6 +8205,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -8090,6 +8284,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -8147,6 +8342,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -8244,6 +8440,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -8301,6 +8498,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -8379,6 +8577,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -8457,6 +8656,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -8534,6 +8734,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -8590,6 +8791,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -8647,6 +8849,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -8725,6 +8928,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -8803,6 +9007,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -8881,6 +9086,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -8967,6 +9173,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -9045,6 +9252,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -9102,6 +9310,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -9180,6 +9389,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -9258,6 +9468,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -9336,6 +9547,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -9393,6 +9605,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -9471,6 +9684,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -9559,6 +9773,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -9616,6 +9831,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -9673,6 +9889,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -9750,6 +9967,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -9807,6 +10025,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -9884,6 +10103,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -9941,6 +10161,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -10019,6 +10240,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -10076,6 +10298,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -10133,6 +10356,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -10190,6 +10414,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -10267,6 +10492,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -10324,6 +10550,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -10381,6 +10608,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -10459,6 +10687,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -10537,6 +10766,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -10594,6 +10824,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -10672,6 +10903,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -10728,6 +10960,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -10785,6 +11018,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -10863,6 +11097,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -10941,6 +11176,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -10998,6 +11234,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -11076,6 +11313,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -11154,6 +11392,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -11211,6 +11450,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -11289,6 +11529,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -11367,6 +11608,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -11454,6 +11696,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -11496,6 +11739,85 @@
       "options": []
     },
     {
+      "name": "Skip live Shorts",
+      "description": "Automatically skips live streams that appear in the Shorts feed.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "21.42.241",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.41.525",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.28.208",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.23.492",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "21.20.405",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "21.16.256",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.21.37",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Skip silence",
       "description": "Adds an option to automatically skip silent pauses in audio playback.",
       "default": true,
@@ -11511,6 +11833,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -11568,6 +11891,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -11646,6 +11970,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -11703,6 +12028,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -11781,6 +12107,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -11838,6 +12165,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -11916,6 +12244,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -12001,6 +12330,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -12065,6 +12395,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -12122,6 +12453,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -12199,6 +12531,7 @@
           "signatures": [
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "2026.42.0",
@@ -12256,6 +12589,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -12334,6 +12668,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -12417,6 +12752,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -12544,6 +12880,7 @@
             "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
             "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "9.42.52",
@@ -12586,6 +12923,85 @@
       "options": []
     },
     {
+      "name": "Video delay",
+      "description": "Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "21.42.241",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.41.525",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.28.208",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.23.492",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "21.20.405",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "21.16.256",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.21.37",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Video quality",
       "description": "Adds options to set default video qualities and always use the advanced video quality menu.",
       "default": true,
@@ -12601,6 +13017,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -12679,6 +13096,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",
@@ -12757,6 +13175,7 @@
             "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
             "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
           ],
+          "formFactor": "MOBILE",
           "targets": [
             {
               "version": "21.42.241",

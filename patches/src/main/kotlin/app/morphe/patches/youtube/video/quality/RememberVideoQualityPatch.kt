@@ -15,6 +15,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -22,18 +25,26 @@ import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
+import app.morphe.patches.youtube.shared.hookVideoIntent
+import app.morphe.patches.youtube.shared.openVideoIntentPatch
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_INTERFACE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/RememberVideoQualityPatch;"
@@ -45,6 +56,8 @@ val rememberVideoQualityPatch = bytecodePatch {
         playerTypeHookPatch,
         settingsPatch,
         versionCheckPatch,
+        openVideoIntentPatch,
+        fixProtoLibraryPatch,
     )
 
     execute {
@@ -103,24 +116,13 @@ val rememberVideoQualityPatch = bytecodePatch {
             )
         }
 
-        // Send the minimum and maximum quality with the SABR requests,
-        // so the server cannot choose a quality outside the quality of the player.
-        SabrQualityConstraintFeatureFlagFingerprint.matchAllOrNull()?.forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->sendQualityConstraintToServer(Z)Z"
-            )
-        }
-
         // Use the 'Advanced' video quality setting instead of the 'Video quality preferences'
         // (Auto, Higher picture quality, Data saver), both on the device and with the SABR requests.
-        VideoQualitySettingEnumFingerprint.let {
+        val videoQualitySettingMethod = VideoQualitySettingEnumFingerprint.let {
             val videoQualitySettingType = it.classDef.type
             val advancedMenuField = it.instructionMatches.last().instruction.getReference<FieldReference>()!!
 
-            val videoQualitySettingMethod = getVideoQualitySettingFingerprint(videoQualitySettingType).method
-
-            videoQualitySettingMethod.apply {
+            getVideoQualitySettingFingerprint(videoQualitySettingType).method.apply {
                 addInstructionsWithLabels(
                     0,
                     """
@@ -134,39 +136,138 @@ val rememberVideoQualityPatch = bytecodePatch {
                     """
                 )
             }
+        }
 
-            // The initial video quality is only used when the video starts. YouTube chooses the quality
-            // again while the video plays, and without a quality selected in the quality menu it is
-            // then chosen automatically, such as 720p for the size of the player.
-            // The default quality is used as a fixed quality for these choices too.
-            getVideoQualityConstraintFingerprint(videoQualitySettingMethod.toString()).method.apply {
-                val constraintType = returnType
-                val fixedConstraintMethod = mutableClassDefBy(constraintType).methods.single { method ->
-                    method.returnType == constraintType && method.parameterTypes.map { it.toString() } == listOf("I")
-                }
+        // The server chooses the quality of SABR streams from the client ABR state sent with each request.
+        // The first request of a video sends the initial video quality as the sticky resolution,
+        // but the requests sent while the video plays have none, so the server can switch to another quality.
+        // The quality is sent as if the user just selected it, in every request.
+        ClientAbrStateFingerprint.let {
+            val overrideClientAbrStateMethod = ImmutableMethod(
+                it.classDef.type,
+                "patch_overrideClientAbrState",
+                listOf(ImmutableMethodParameter(CLIENT_ABR_STATE_CLASS, null, null)),
+                CLIENT_ABR_STATE_CLASS,
+                AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+                null,
+                null,
+                MutableMethodImplementation(3),
+            ).toMutable().apply {
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        invoke-static { p0 }, $EXTENSION_CLASS->overrideClientAbrState(Lcom/google/protobuf/MessageLite;)[B
+                        move-result-object v0
+                        if-eqz v0, :keep
+                        invoke-static { }, $CLIENT_ABR_STATE_CLASS->getDefaultInstance()$CLIENT_ABR_STATE_CLASS
+                        move-result-object v1
+                        invoke-static { v1, v0 }, ${parseByteArrayMethodRef.get()!!}
+                        move-result-object v0
+                        check-cast v0, $CLIENT_ABR_STATE_CLASS
+                        return-object v0
+                        :keep
+                        return-object p0
+                    """
+                )
+            }
+            it.classDef.methods.add(overrideClientAbrStateMethod)
 
+            it.method.apply {
                 findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                     val register = getInstruction<OneRegisterInstruction>(index).registerA
-                    // The returned register can be above v15, which a non range invoke can not use.
-                    val qualityRegister = findFreeRegister(index, register)
-                    val constraintRegister = findFreeRegister(index, register, qualityRegister)
 
                     addInstructionsAtControlFlowLabel(
                         index,
                         """
-                            invoke-static { }, $EXTENSION_CLASS->getFixedVideoQuality()I
-                            move-result v$qualityRegister
-                            if-ltz v$qualityRegister, :automatic_quality
-                            move-object/from16 v$constraintRegister, v$register
-                            invoke-virtual { v$constraintRegister, v$qualityRegister }, $fixedConstraintMethod
+                            invoke-static/range { v$register .. v$register }, $overrideClientAbrStateMethod
                             move-result-object v$register
-                            :automatic_quality
-                            nop
                         """
                     )
                 }
             }
         }
+
+        // The initial video quality is only used when the video starts. While the video plays,
+        // the player and the SABR requests use the quality last selected in the quality menu,
+        // and without one the quality is chosen automatically, such as 720p for the size of the player.
+        // The default quality is used as the quality last selected, as if the user just selected it.
+        val videoIdField = LastSelectedVideoQualityConstructorFingerprint.let {
+            val videoIdField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
+
+            it.method.apply {
+                val selectedTimeField = it.instructionMatches[0].instruction.getReference<FieldReference>()!!
+                val playbackStartTimeField = it.instructionMatches[3].instruction.getReference<FieldReference>()!!
+                val resolutionField = it.instructionMatches[4].instruction.getReference<FieldReference>()!!
+                val directionField = it.instructionMatches[5].instruction.getReference<FieldReference>()!!
+
+                // All fields are set, so the registers are free before the return.
+                addInstructionsAtControlFlowLabel(
+                    indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID),
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->getLastSelectedVideoQuality()I
+                        move-result v0
+                        if-ltz v0, :original
+                        iput v0, p0, $resolutionField
+
+                        # The video starts with the default quality, so the direction is the one
+                        # saved when the user selects the quality that is playing (no change).
+                        const/4 v0, 0x0
+                        iput v0, p0, $directionField
+
+                        invoke-static { }, Ljava/lang/System;->currentTimeMillis()J
+                        move-result-wide v0
+                        iput-wide v0, p0, $selectedTimeField
+                        iput-wide v0, p0, $playbackStartTimeField
+
+                        # Without a video ID, YouTube saves the quality as the quality last selected.
+                        iget-object v0, p0, $videoIdField
+                        if-nez v0, :original
+                        const-string v0, ""
+                        iput-object v0, p0, $videoIdField
+                        :original
+                        nop
+                    """
+                )
+            }
+
+            videoIdField
+        }
+
+        // With some accounts, the quality selected in the quality menu is used only for the video
+        // it was selected for, and the player of other videos chooses the quality automatically.
+        // The default quality is used as if the user selected it for the current video.
+        getVideoQualityConstraintFingerprint(
+            LastSelectedVideoQualityConstructorFingerprint.classDef.type,
+            videoQualitySettingMethod.toString()
+        ).let {
+            it.method.apply {
+                val moveResultIndex = it.instructionMatches.first().index + 1
+                val lastSelectedRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+                val insertIndex = moveResultIndex + 1
+                // The field is set with an instruction that can only use registers v0-v15.
+                val registerProvider = getFreeRegisterProvider(insertIndex, 2, lastSelectedRegister)
+                val videoIdRegister = registerProvider.getFreeRegister4Bit()
+                val lastSelectedFreeRegister = registerProvider.getFreeRegister4Bit()
+
+                addInstructionsWithLabels(
+                    insertIndex,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->getLastSelectedVideoQuality()I
+                        move-result v$videoIdRegister
+                        if-ltz v$videoIdRegister, :original
+                        move-object/from16 v$videoIdRegister, p3
+                        move-object/from16 v$lastSelectedFreeRegister, v$lastSelectedRegister
+                        iput-object v$videoIdRegister, v$lastSelectedFreeRegister, $videoIdField
+                        :original
+                        nop
+                    """
+                )
+            }
+        }
+
+        // A quality selected by the user is used again if YouTube reloads the video,
+        // until another video is opened.
+        hookVideoIntent(EXTENSION_CLASS, detectVideo = true, detectShorts = true)
 
         // Inject a call to remember the selected quality for Shorts.
         VideoQualityItemOnClickFingerprint.method.addInstruction(

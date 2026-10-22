@@ -435,6 +435,19 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_feed_long_press_menu_summary">Kosketus ja pitopohjassa missä tahansa syötteiden videolla avaa sen valikon</string>
   <string name="morphe_feed_watch_later_button_title">Näytä Katso myhemmin -painike pääkkeissä</string>
   <string name="morphe_feed_watch_later_button_summary">Katso myöhemmin -painike näkyy syötteiden videoiden pienoiskuville. Kosketus ja pitopohjassa avaa Tallenna soittoluetteloon</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Lisää \"Kysy\"-kohde ponnahdusvalikkoon</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Lisää videon tiivistäminen-sivunne kohteen syötteen ponnahdusvalikossa</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"\"Kysy\" vaatii kirjautumisen maahan, jossa \"Kysy\" on saatavilla.
+
+Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien videoiden kanssa riippumatta siitä, onko nykyisessä maassa \"Kysy\"-ominaisuutta."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Tiivistä video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">\"Kysyä\" ei voitu avata tälle videolle</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">\"Kysy\" ei ole saatavilla tilillesi tai nykyiseen maahan</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Näytä katselukerrat pikkukuvissa</string>
   <string name="morphe_feed_view_count_summary">Syötteen videoiden katselukerrat näytetään niiden pikkukuvan vasemmassa alareunassa eikä otsikon alapuolella. Jotkin videot, kuten hyllyissä olevat, eivät välttämättä näytä katselukertaa</string>
@@ -793,6 +806,7 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Korjaa transkriptio</string>
   <string name="morphe_fix_transcript_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
+  <string name="morphe_captions_in_pip_title">Näytä tekstitykset kuvan-kuvassa</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigointipainikkeet</string>
   <string name="morphe_navigation_buttons_screen_summary">Piilota Luo-painike</string>
@@ -1110,6 +1124,8 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_shorts_autoplay_summary">Siirtyy automaattisesti seuraavaan Shortsiin sen sijaan, että toistaisi nykyistä Shortsia</string>
   <string name="morphe_shorts_autoplay_background_title">Automaattinen toisto taustalla</string>
   <string name="morphe_shorts_autoplay_background_summary">Siirtyy automaattisesti seuraavaan Shortsiin taustatoistossa</string>
+  <string name="morphe_skip_live_shorts_title">Ohita live-Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Ohittaa Shorts-syötteessä näkyvät lähetykset</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Toisto syötteissä</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Aina päällä</string>
@@ -1272,6 +1288,15 @@ Videoita pyydetään lyhyellä etuliitteellä hajautetusta video-ID:stä, joten 
   <string name="morphe_playback_buffer_size_entry_low">Matala</string>
   <string name="morphe_playback_buffer_size_entry_medium">Keskitaso</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maksimi</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Videon viive</string>
+  <string name="morphe_video_delay_summary">Viivyttää videota pitääkseen sen synkronoituna hidastuneen äänen kanssa, kuten Bluetooth-kuulokkeissa (0–5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Vain Bluetooth-äänellä aiheutuvan viiveen käytössä</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Viivyttää videota vain, kun Bluetooth-äänilaitte on yhdistetty, jolloin puhelimen kaiutin pysyy synkronoituna</string>
+  <string name="morphe_video_delay_button_overlay_title">Näytä videoviiven painike</string>
+  <string name="morphe_video_delay_button_overlay_summary">Napauta ja pidä pohjassa asettaaksesi viiveen arvoksi 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Näytä videoviiven valikko</string>
+  <string name="morphe_video_delay_dialog_input_hint">Viive millisekunneissa</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automaattinen</string>
@@ -1313,6 +1338,7 @@ Videoita pyydetään lyhyellä etuliitteellä hajautetusta video-ID:stä, joten 
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Nopeuden muutosilmoitukset</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Näyttää ilmoituksen, kun uusi oletustoistonopeus on tallennettu</string>
   <string name="morphe_playback_speed_default_title">Toiston oletusnopeus</string>
+  <string name="morphe_shorts_playback_speed_default_title">Shortsien oletustoistojnopeus</string>
   <string name="morphe_remember_playback_speed_toast">Oletusarvoinen toistonopeus muutettu: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Käytä normaalinopeutta musiikille</string>
   <string name="morphe_disable_playback_speed_music_summary">Toista musiikkivideot aina 1.0x nopeudella</string>

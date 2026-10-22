@@ -24,6 +24,7 @@ import android.view.WindowInsets;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -44,6 +45,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
@@ -98,6 +100,14 @@ public final class NavigationBarPatch {
     private static final int shortsPlayerContainerId = HIDE_SHORTS_NAVIGATION_BAR
             ? ResourceUtils.getIdentifier(ResourceType.ID, "fragment_container_view")
             : 0;
+
+    /**
+     * If the room below the Shorts player is set by {@link #setShortsPlayerBottomInset(View)}.
+     * The system navigation buttons are read from the window insets, available from Android 11.
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.R)
+    private static final boolean SETS_SHORTS_PLAYER_BOTTOM_ROOM = HIDE_SHORTS_NAVIGATION_BAR
+            && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R;
 
     private static final boolean HIDE_NAVIGATION_NEW_CONTENT_DOT = Settings.HIDE_NAVIGATION_NEW_CONTENT_DOT.get();
 
@@ -204,12 +214,6 @@ public final class NavigationBarPatch {
     }
 
     /**
-     * If the translucent navigation bar is turned on, the window is drawn behind
-     * the system navigation buttons.
-     */
-    private static volatile boolean translucentNavigationBar;
-
-    /**
      * Injection point.
      * <p>
      * The translucent navigation bar comes from feature flags that not every account gets, so they
@@ -230,9 +234,11 @@ public final class NavigationBarPatch {
             }
 
             Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
-            // Null if not read yet, or the Hide status bar patch is not included.
-            translucentNavigationBar = edgeToEdge == null ? original : edgeToEdge;
-            return translucentNavigationBar;
+            if (edgeToEdge == null) {
+                // Not read yet, or the Hide status bar patch is not included.
+                return original;
+            }
+            return edgeToEdge;
         } catch (Exception ex) {
             Logger.printException(() -> "useTranslucentNavigationBar failure", ex);
             return original;
@@ -270,15 +276,17 @@ public final class NavigationBarPatch {
      * the navigation bar. With the navigation bar hidden in the Shorts player, nothing makes that
      * room, so the Shorts player is drawn behind the system navigation buttons
      * (https://github.com/MorpheApp/morphe-patches/issues/3908). The Shorts player then makes
-     * the room itself, only for the part it overlaps the buttons.
+     * the room itself.
      * <p>
-     * The translucent navigation bar is only turned on from Android 12, so on older versions
-     * the window ends above the system navigation buttons and nothing has to be done.
+     * The room the Shorts player reserves for the navigation bar depends on how it's opened,
+     * so with the navigation bar hidden that room is left out ({@link #getShortsPlayerBottomRoom(int)}),
+     * and the Shorts player always ends a slight room above the system navigation buttons,
+     * or the seekbar thumb at the bottom of the Shorts player overlaps them.
      *
      * @param shortsFragmentLayout The layout of the Shorts player fragment.
      */
     public static void setShortsPlayerBottomInset(View shortsFragmentLayout) {
-        if (!HIDE_SHORTS_NAVIGATION_BAR || Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+        if (!SETS_SHORTS_PLAYER_BOTTOM_ROOM) {
             return;
         }
 
@@ -290,8 +298,8 @@ public final class NavigationBarPatch {
                     View shortsPlayerContainer = view.findViewById(shortsPlayerContainerId);
                     if (insets == null || shortsPlayerContainer == null) return;
 
-                    // The Shorts player can already leave some room below itself, such as when
-                    // it's opened from the search results, so only the room still missing
+                    // The window can already end above the system navigation buttons, such as
+                    // without the translucent navigation bar, so only the room still missing
                     // is added. The padding added here is left out, or the room would be counted twice.
                     final int navigationButtonsHeight = insets.getInsets(WindowInsets.Type.navigationBars()).bottom;
                     int[] location = new int[2];
@@ -299,9 +307,7 @@ public final class NavigationBarPatch {
                     final int roomBelow = view.getRootView().getHeight()
                             - (location[1] + shortsPlayerContainer.getHeight())
                             - view.getPaddingBottom();
-                    final int padding = translucentNavigationBar
-                            ? Math.max(0, navigationButtonsHeight - roomBelow)
-                            : 0;
+                    final int padding = Math.max(0, navigationButtonsHeight + Dim.dp12 - roomBelow);
 
                     if (view.getPaddingBottom() != padding) {
                         view.post(() -> view.setPadding(view.getPaddingLeft(), view.getPaddingTop(),
@@ -314,6 +320,15 @@ public final class NavigationBarPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "setShortsPlayerBottomInset failure", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param original The room the Shorts player reserves below itself for the navigation bar.
+     */
+    public static int getShortsPlayerBottomRoom(int original) {
+        return SETS_SHORTS_PLAYER_BOTTOM_ROOM ? 0 : original;
     }
 
     /**

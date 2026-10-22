@@ -435,6 +435,19 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_feed_long_press_menu_summary">Tocar y mantener pulsado en cualquier parte de un vídeo del feed abre su menú</string>
   <string name="morphe_feed_watch_later_button_title">Mostrar botón \"Ver más tarde\" en las miniaturas</string>
   <string name="morphe_feed_watch_later_button_summary">Se muestra un botón \"Ver más tarde\" en las miniaturas de los vídeos del feed. Tocar y mantener pulsado abre Guardar en lista</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Añadir elemento «Preguntar» al menú desplegable</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Añade un elemento de resumen de vídeo al menú desplegable del feed</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Inicialmente, «Preguntar» requiere una cuenta con sesión iniciada en un país donde «Preguntar» esté disponible.
+
+Después de abrir por primera vez un vídeo con el botón «Preguntar», la función funciona con todos los vídeos, incluso si el país actual no dispone de la función «Preguntar»."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Resumir el vídeo</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">No se ha podido abrir «Preguntar» para este vídeo</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">«Preguntar» no está disponible para tu cuenta o tu país actual</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Mostrar recuento de vistas en las miniaturas</string>
   <string name="morphe_feed_view_count_summary">El recuento de vistas de los vídeos del feed se muestra en la esquina inferior izquierda de sus miniaturas en lugar de debajo del título. Algunos vídeos, como los de las estanterías, pueden no mostrar un recuento de vistas</string>
@@ -793,6 +806,7 @@ Se deben proporcionar 'cookies de subtítulos'"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Corregir transcripción</string>
   <string name="morphe_fix_transcript_summary">Soluciona un fallo de la comprobación de un requisito previo que puede impedir la carga de la transcripción</string>
+  <string name="morphe_captions_in_pip_title">Mostrar subtítulos en «imagen en imagen»</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botones de navegación</string>
   <string name="morphe_navigation_buttons_screen_summary">Elige qué botones aparecen en la barra de navegación inferior</string>
@@ -1110,6 +1124,8 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <string name="morphe_shorts_autoplay_summary">Avanza al siguiente Short automáticamente en lugar de repetir el actual</string>
   <string name="morphe_shorts_autoplay_background_title">Reproducción automática en segundo plano</string>
   <string name="morphe_shorts_autoplay_background_summary">Avanza al siguiente Short automáticamente durante la reproducción en segundo plano</string>
+  <string name="morphe_skip_live_shorts_title">Omitir Shorts en directo</string>
+  <string name="morphe_skip_live_shorts_summary">Omite los directos que aparecen en el feed de Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Reproducción en feeds</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Siempre activada</string>
@@ -1272,6 +1288,15 @@ Los videos se solicitan mediante un prefijo corto del ID de video con hash, por 
   <string name="morphe_playback_buffer_size_entry_low">Bajo</string>
   <string name="morphe_playback_buffer_size_entry_medium">Medio</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Máximo</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Demora del vídeo</string>
+  <string name="morphe_video_delay_summary">Demora el vídeo para mantenerlo sincronizado con el audio que va con demora, como el de los auriculares Bluetooth (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Solo demorar con audio Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Solo demora el vídeo mientras el audio Bluetooth está conectado, para que el altavoz del teléfono se mantenga sincronizado</string>
+  <string name="morphe_video_delay_button_overlay_title">Mostrar botón de demora del vídeo</string>
+  <string name="morphe_video_delay_button_overlay_summary">Mantén pulsado para restablecer la demora a 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Mostrar menú de demora del vídeo</string>
+  <string name="morphe_video_delay_dialog_input_hint">Demora en milisegundos</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automático</string>
@@ -1313,6 +1338,7 @@ Los videos se solicitan mediante un prefijo corto del ID de video con hash, por 
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Notificaciones de cambio de velocidad</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Muestra una notificación cuando se guarda una nueva velocidad de reproducción predeterminada</string>
   <string name="morphe_playback_speed_default_title">Velocidad predeterminada de reproducción</string>
+  <string name="morphe_shorts_playback_speed_default_title">Velocidad de reproducción predeterminada en Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Se ha cambiado la velocidad de reproducción predeterminada a: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Usar velocidad normal para la música</string>
   <string name="morphe_disable_playback_speed_music_summary">Reproduce siempre los vídeos musicales a una velocidad de 1.0x</string>

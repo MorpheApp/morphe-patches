@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/285
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -8,6 +8,7 @@
 package app.morphe.patches.shared.misc.fix.proto
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -17,23 +18,30 @@ internal object EmptyRegistryFingerprint : Fingerprint(
     definingClass = "Lcom/google/protobuf/ExtensionRegistryLite;",
     name ="getGeneratedRegistry",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    parameters = listOf(),
-    returnType = "Lcom/google/protobuf/ExtensionRegistryLite;"
+    returnType = "Lcom/google/protobuf/ExtensionRegistryLite;",
+    parameters = listOf()
 )
 
 internal object MessageLiteWriteToFingerprint : Fingerprint(
     definingClass = "Lcom/google/protobuf/MessageLite;",
     name = "writeTo",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.ABSTRACT),
-    parameters = listOf("L"),
-    returnType = "V"
+    returnType = "V",
+    parameters = listOf("L")
 )
 
 internal object ProtobufClassParseByteArrayFingerprint : Fingerprint(
     name = "parseFrom",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "L",
-    parameters = listOf("L", "[B")
+    parameters = listOf("L", "[B"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            definingClass = "Lcom/google/protobuf/ExtensionRegistryLite;",
+            type = "Lcom/google/protobuf/ExtensionRegistryLite;"
+        )
+    )
 )
 
 internal object ProtobufClassParseByteArrayWithRegistryFingerprint : Fingerprint(

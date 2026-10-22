@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2640
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.shared
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterLast
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
@@ -120,18 +121,19 @@ internal object RelateVideoOverlayLayoutParamFingerprint : Fingerprint(
 
 internal object PlayerTypeEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
-    strings = listOf(
-        "WATCH_WHILE_PICTURE_IN_PICTURE",
-        "NONE",
-        "HIDDEN",
-        "WATCH_WHILE_MINIMIZED",
-        "WATCH_WHILE_MAXIMIZED",
-        "WATCH_WHILE_FULLSCREEN",
-        "WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN",
-        "WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED",
-        "WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED",
-        "INLINE_MINIMAL",
-        "VIRTUAL_REALITY_FULLSCREEN",
+    filters = listOf(
+        string("NONE"),
+        string("HIDDEN"),
+        string("WATCH_WHILE_MINIMIZED"),
+        string("WATCH_WHILE_MAXIMIZED"),
+        string("WATCH_WHILE_FULLSCREEN"),
+        string("WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN"),
+        string("WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED"),
+        string("WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED"),
+        string("INLINE_MINIMAL"),
+        string("VIRTUAL_REALITY_FULLSCREEN"),
+        string("WATCH_WHILE_PICTURE_IN_PICTURE"),
+        opcode(Opcode.APUT_OBJECT),
     )
 )
 
@@ -187,7 +189,8 @@ internal object SeekbarOnDrawFingerprint : Fingerprint(
     name = "onDraw",
     filters = listOf(
         methodCall(smali = "Ljava/lang/Math;->round(F)I"),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(name = "drawCircle", location = MatchAfterLast())
     )
 )
 

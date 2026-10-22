@@ -109,9 +109,9 @@ val shortsAutoplayPatch = bytecodePatch(
         // As of YouTube 20.09, Google has removed the code for 'Autoplay' and 'Pause' from this method.
         // Manually restore the removed 'Autoplay' code.
         // Variable names are only a rough guess of what these methods do.
-        val userActionMethodReference = ReelPlaybackFingerprint.instructionMatches[1]
+        val userActionMethodReference = ReelPlaybackLegacyFingerprint.instructionMatches[1]
             .getInstruction<ReferenceInstruction>().reference as MethodReference
-        val reelSequenceControllerMethodReference = ReelPlaybackFingerprint.instructionMatches[2]
+        val reelSequenceControllerMethodReference = ReelPlaybackLegacyFingerprint.instructionMatches[2]
             .getInstruction<ReferenceInstruction>().reference as MethodReference
 
         ReelPlaybackRepeatFingerprint.method.apply {

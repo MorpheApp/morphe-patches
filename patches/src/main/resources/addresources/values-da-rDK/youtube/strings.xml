@@ -433,6 +433,19 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_feed_long_press_menu_summary">At trykke og holde et vilkårligt sted på en feed-video åbner dens menu</string>
   <string name="morphe_feed_watch_later_button_title">Vis \'Se senere\'-knap på miniaturebilleder</string>
   <string name="morphe_feed_watch_later_button_summary">En \"Se senere\"-knap vises på miniaturebillederne for feed-videoer. Tryk og hold for at gemme i afspilningsliste</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Tilføj \"Ask\"-emne til flyout-menuen</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Tilføjer et emne til videofeed-sammenfatning i feedets flyout-menu</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask kræver initialt en logget-in-konto i et land, hvor Ask er tilgængelig.
+
+Efter at en video med Ask-knappen er åbnet én gang, fungerer funktionen med alle videoer, selv hvis det aktuelle land ikke har Ask-funktionen."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Sammenfat videoen</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Kunne ikke åbne Ask for denne video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask er ikke tilgængelig for din konto eller dit nuværende land</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Vis visningstal på thumbnails</string>
   <string name="morphe_feed_view_count_summary">Visningstallet for feed-videoer vises nederst til venstre på deres thumbnails i stedet for under titlen. Nogle videoer, f.eks. i hylder, viser måske ikke et visningstal</string>
@@ -789,6 +802,7 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Ret transkription</string>
   <string name="morphe_fix_transcript_summary">Skjul Settings knap</string>
+  <string name="morphe_captions_in_pip_title">Vis undertekster i billede-i-billede</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigationsknapper</string>
   <string name="morphe_navigation_buttons_screen_summary">Administrer Ambient mode synlighed og strømbegrænsninger</string>
@@ -1106,6 +1120,8 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_shorts_autoplay_summary">Går automatisk til den næste Short i stedet for at gentage den aktuelle</string>
   <string name="morphe_shorts_autoplay_background_title">Automatisk afspilning i baggrunden</string>
   <string name="morphe_shorts_autoplay_background_summary">Går automatisk til den næste Short under afspilning i baggrunden</string>
+  <string name="morphe_skip_live_shorts_title">Spring live Shorts over</string>
+  <string name="morphe_skip_live_shorts_summary">Spring live-strømme over, der vises i Shorts-feedet</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Afspilning i feeds</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Altid tændt</string>
@@ -1268,6 +1284,15 @@ Videoer anmodes ved hjælp af et kort præfiks af den hashede video-ID, så serv
   <string name="morphe_playback_buffer_size_entry_low">Lav</string>
   <string name="morphe_playback_buffer_size_entry_medium">Middel</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maksimum</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Videoforsinkelse</string>
+  <string name="morphe_video_delay_summary">Forsinker videoen for at holde den synkroniseret med lydforsinkelse, f.eks. Bluetooth-høretelefoner (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Kun forsink med Bluetooth-lyd</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Forsinker kun videoen, mens Bluetooth-lyd er tilsluttet, så telefonhøjttaleren bliver synkroniseret</string>
+  <string name="morphe_video_delay_button_overlay_title">Vis videoforsinkelses-knap</string>
+  <string name="morphe_video_delay_button_overlay_summary">Tryk og hold for at nulstille forsinkelsen til 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Vis videoforsinkelses-menu</string>
+  <string name="morphe_video_delay_dialog_input_hint">Forsinkelse i millisekunder</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatisk</string>
@@ -1309,6 +1334,7 @@ Videoer anmodes ved hjælp af et kort præfiks af den hashede video-ID, så serv
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Hastighedsændringsmeddelelser</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Viser en notifikation, når en ny standardafspilningshastighed gemmes</string>
   <string name="morphe_playback_speed_default_title">Standard afspilningshastighed</string>
+  <string name="morphe_shorts_playback_speed_default_title">Standardafspilningshastighed på Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Ændrede standard afspilningshastighed til: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Brug normal hastighed til musik</string>
   <string name="morphe_disable_playback_speed_music_summary">Afspil altid musikvideoer med 1,0x hastighed</string>

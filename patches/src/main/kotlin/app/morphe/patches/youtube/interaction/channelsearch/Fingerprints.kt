@@ -8,7 +8,9 @@
 package app.morphe.patches.youtube.interaction.channelsearch
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchBeforeAnywhere
 import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.parametersMatch
@@ -30,7 +32,13 @@ internal object BrowseFragmentOnCreateViewFingerprint : Fingerprint(
         "Landroid/os/Bundle;"
     ),
     filters = listOf(
-        string("Browse Fragment was given a navigation endpoint without browse data.")
+        string("Browse Fragment was given a navigation endpoint without browse data."),
+        // The endpoint of the page is read before it is checked for browse data.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchBeforeAnywhere()
+        )
     )
 )
 

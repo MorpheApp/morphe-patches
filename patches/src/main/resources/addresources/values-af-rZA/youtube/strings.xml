@@ -435,6 +435,19 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <string name="morphe_feed_long_press_menu_summary">Tik en hou enige plek op ’n voedingsvideo open sy menu</string>
   <string name="morphe_feed_watch_later_button_title">Wys Kiek later-knoop by duimborde</string>
   <string name="morphe_feed_watch_later_button_summary">\'n Koppeling \"Later kyk\" word op die kortprentjies van voedvideo\'s vertoon. Tik en hou dit in om \"Bewaar by afspeellys\" te open</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Voeg Ask-item by vlieëmenu</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Voeg \'n video-opvattingsitem by die voervaartuig-vlieëmenu</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask vereis aanvanklik 'n aangemelde rekening in 'n land waar Ask beskikbaar is.
+
+Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met alle videos selfs al het die huidige land nie die Ask-funksie nie."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Vat die video saam</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Kon nie Ask vir hierdie video open nie</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask is nie beskikbaar vir jou rekening of huidige land nie</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Wys aansienlikheidsgetal op duimprente</string>
   <string name="morphe_feed_view_count_summary">Die aansienlikheidsgetal van voer-video\'s word links onder op hul duimprente vertoon, in plaas daarvan onder die titel. Sommige video\'s, soos in rakke, mag dalk nie \'n aansienlikheidsgetal wys nie</string>
@@ -793,6 +806,7 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Regstel transkripsie</string>
   <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
+  <string name="morphe_captions_in_pip_title">Wys onderskrifte in prent-in-prent</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigasieknoppies</string>
   <string name="morphe_navigation_buttons_screen_summary">Choose which components appear in the toolbar</string>
@@ -1110,6 +1124,8 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_shorts_autoplay_summary">Gaan outomaties voort na die volgende Short in plaas daarvan om die huidige te herhaal</string>
   <string name="morphe_shorts_autoplay_background_title">Outoplay in agtergrond</string>
   <string name="morphe_shorts_autoplay_background_summary">Gaan outomaties voort na die volgende Short tydens agtergrondweergawe</string>
+  <string name="morphe_skip_live_shorts_title">Slaan lewende Shorts oor</string>
+  <string name="morphe_skip_live_shorts_summary">Slaan lewendaadstrome wat in die Shorts-kooklys voorkom, oor</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Weergawe in feeds</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Altyd aan</string>
@@ -1272,6 +1288,14 @@ Video's word met 'n kort voorvoegsel van die gehashte video-ID aangevra, sodat d
   <string name="morphe_playback_buffer_size_entry_low">Laag</string>
   <string name="morphe_playback_buffer_size_entry_medium">Medium</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maksimum</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Videovertraging</string>
+  <string name="morphe_video_delay_summary">Vertrag die video sodat dit gesinkroniseer bly met vertraagde klank, soos Bluetooth-koptelefone (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Sleutel slegs video terwyl Bluetooth-klank aangeskakel is, sodat die foonluidspreker in pas bly</string>
+  <string name="morphe_video_delay_button_overlay_title">Wys Videovertraging-knoppie</string>
+  <string name="morphe_video_delay_button_overlay_summary">Tik en hou om die vertraging na 0 ms te herstel</string>
+  <string name="morphe_video_delay_button_flyout_title">Wys Videovertraging-spel menu</string>
+  <string name="morphe_video_delay_dialog_input_hint">Vertraaging in millisekondes</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Onthou video kwaliteit veranderings</string>
@@ -1313,6 +1337,7 @@ Video's word met 'n kort voorvoegsel van die gehashte video-ID aangevra, sodat d
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Spoedveranderingskennisgewings</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Wys \'n kennisgewing wanneer \'n nuwe verstek speel snelheid gered word</string>
   <string name="morphe_playback_speed_default_title">Verstek speel spoed</string>
+  <string name="morphe_shorts_playback_speed_default_title">Verstek spelspoed vir Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Veranderde verstek speelkspoed na: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Gebruik normale spoed vir musiek</string>
   <string name="morphe_disable_playback_speed_music_summary">Speel musiekvideo\'s altyd teen 1.0x spoed</string>

@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Το πάτημα και το κράτημα πατημένο οπουδήποτε σε ένα βίντεο feed ανοίγει το μενού του</string>
   <string name="morphe_feed_watch_later_button_title">Εμφάνιση κουμπιού προβολής αργότερα στα μικρογραφίες</string>
   <string name="morphe_feed_watch_later_button_summary">Ένα κουμπί προβολής αργότερα εμφανίζεται στις μικρογραφίες των βίντεο feed. Το πάτημα και το κράτημα πατημένο το ανοίγει την αποθήκευση στη λίστα αναπαραγωγής</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Προσθήκη στοιχείου Ask στο μενού flyout</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Προσθέτει στοιχείο σύνοψης βίντεο στο μενού flyout της ροής</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Η Ask απαιτεί αρχικά έναν συνδεδεμένο λογαριασμό σε χώρα όπου η Ask είναι διαθέσιμη.
+
+Μόλις ανοίξει ένα βίντεο με το κουμπί Ask μία φορά, η λειτουργία λειτουργεί με όλα τα βίντεο ακόμη και αν η τρέχουσα χώρα δεν έχει τη δυνατότητα Ask."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Σύνοψη του βίντεο</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Δεν ήταν δυνατόν να ανοιχτεί η Ask για αυτό το βίντεο</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Η Ask δεν είναι διαθέσιμη για τον λογαριασμό ή την τρέχουσα χώρα σας</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Εμφάνιση αριθμού προβολών στις μικρογραφίες</string>
   <string name="morphe_feed_view_count_summary">Ο αριθμός προβολών των βίντεο της σύντομης γραμμής εμφανίζεται στα αριστερά κάτω μέρος της μικρογραφίας αντί για κάτω από τον τίτλο. Κάποια βίντεο, όπως σε ράφια, ενδέχεται να μην εμφανίζουν αριθμό προβολών</string>
@@ -793,6 +806,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Επљеφρώσε τη μεταγραφή</string>
   <string name="morphe_fix_transcript_summary">Απόκρυψη κουμπιού Ειδοποιήσεων</string>
+  <string name="morphe_captions_in_pip_title">Εμφάνιση υποτίτλων σε εικόνα μέσα σε εικόνα</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Κουμπιά γραμμής πλοήγησης</string>
   <string name="morphe_navigation_buttons_screen_summary">Απόκρυψη κουμπιού Αναζήτησης</string>
@@ -1095,6 +1109,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Προχωρά αυτόματα στο επόμενο Short αντί να επαναλαμβάνει το τρέχον</string>
   <string name="morphe_shorts_autoplay_background_title">Αυτόματη αναπαραγωγή στο παρασκήνιο</string>
   <string name="morphe_shorts_autoplay_background_summary">Προχωρά αυτόματα στο επόμενο Short κατά την αναπαραγωγή στο παρασκήνιο</string>
+  <string name="morphe_skip_live_shorts_title">Παράλειψη ζωντανών Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Παραλείπει τα ζωντανά stream που εμφανίζονται στην ενότητα Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Αναπαραγωγή στις ροές</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Πάντα ενεργό</string>
@@ -1257,6 +1273,15 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_low">Χαμηλό</string>
   <string name="morphe_playback_buffer_size_entry_medium">Μεσαίο</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Μέγιστο</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Καθυστέρηση βίντεο</string>
+  <string name="morphe_video_delay_summary">Καθυστερεί το βίντεο για να το διατηρήσει συγχρονισμένο με τον καθυστερημένο ήχο, όπως σε Bluetooth ακουστικά (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Μόνο καθυστέρηση με ήχο Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Καθυστερεί μόνο το βίντεο ενώ ο ήχος Bluetooth είναι συνδεδεμένος, ώστε το ηχείο του τηλεφώνου να παραμένει συγχρονισμένο</string>
+  <string name="morphe_video_delay_button_overlay_title">Εμφάνιση κουμπιού καθυστέρησης βίντεο</string>
+  <string name="morphe_video_delay_button_overlay_summary">Πατήστε και κρατήστε πατημένο για επαναφορά της καθυστέρησης στα 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Εμφάνιση μενού καθυστέρησης βίντεο</string>
+  <string name="morphe_video_delay_dialog_input_hint">Καθυστέρηση σε χιλιοστά του δευτερολέπτου</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Αυτόματη</string>
@@ -1298,6 +1323,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Ειδοποιήσεις αλλαγής ταχύτητας</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Εμφανίζει μια ειδοποίηση όταν αποθηκεύεται μια νέα προεπιλεγμένη ταχύτητα αναπαραγωγής</string>
   <string name="morphe_playback_speed_default_title">Προεπιλεγμένη ταχύτητα αναπαραγωγής</string>
+  <string name="morphe_shorts_playback_speed_default_title">Ταχύτητα αναπαραγωγής ως προεπιλογή στα Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Η προεπιλεγμένη ταχύτητα αναπαραγωγής άλλαξε σε: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Χρήση κανονικής ταχύτητας για μουσική</string>
   <string name="morphe_disable_playback_speed_music_summary">Αναπαραγωγή μουσικών βίντεο πάντα σε ταχύτητα 1.0x</string>

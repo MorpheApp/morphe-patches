@@ -425,6 +425,19 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_feed_long_press_menu_summary">Þegar þú smeltir og heldur niður einhversstaðar á feed-myndbandi opnast valmynd þess</string>
   <string name="morphe_feed_watch_later_button_title">Sýna hnappinn \"Skjáa síðar\" á þumabörðum</string>
   <string name="morphe_feed_watch_later_button_summary">Hnappurinn \"Skjáa síðar\" birtist á þumabörðum feed-mynda. Þegar þú smeltir og heldur honum niður opnarðu Vista í spilunarlista</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Bæta Ask hlut í útflytvalmynd</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Bætir myndbandssamantektarefni í færiborðsútflytvalynduna</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask krefst upplýsinga um aðgang að reikningi og löndum þar sem Ask er tiltækt.
+
+Eftir að myndband með Ask hnappi hefur verið opnað einu sinni, virkar eiginleikinn með öllum myndböndum jafnvel ef núverandi land hefur ekki Ask eiginleika."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Samantekt á myndbandinu</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Gat ekki opnað Ask fyrir þetta myndband</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask er ekki tiltækt fyrir þinn reikning eða núverandi land</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Sýna fjölda sýna á þumalbirgðum</string>
   <string name="morphe_feed_view_count_summary">Fjöldi sýna fyrir feed myndbönd er sýndur neðst til vinstri á þumalbirgðum þeirra í stað undir titlinum. Sum myndbönd, svo sem í hillum, kann ekki að sýna fjölda sýna</string>
@@ -781,6 +794,7 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Lagfæra afrit</string>
   <string name="morphe_fix_transcript_summary">Leysir vandamál með forskotaskilyrði sem getur komið í veg fyrir að afritirinn hlaðist</string>
+  <string name="morphe_captions_in_pip_title">Sýna texta í mynd-mi mynd-tilstandi</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Stýrihnappar</string>
   <string name="morphe_navigation_buttons_screen_summary">Veldu hvaða hnappa þú vilt sýna í neðri stjórnarborðinu</string>
@@ -1093,6 +1107,8 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_shorts_autoplay_summary">Spilar sjálfkrafa á næsta Short í stað þess að endurtaka það sem er núna</string>
   <string name="morphe_shorts_autoplay_background_title">Sjálfvirk spilun í bakgrunni</string>
   <string name="morphe_shorts_autoplay_background_summary">Spilar sjálfkrafa á næsta Short á meðan á bakgrunnaspilun stendur</string>
+  <string name="morphe_skip_live_shorts_title">Hoppa yfir live Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Skeytir live streymum sem birtast í Shorts feedinu</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Spilun í straumum</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Alltaf ákveikt</string>
@@ -1255,6 +1271,15 @@ Myndbönd eru beðin um með stuttu forskeyti af dulkóðaða myndbandskenni, sv
   <string name="morphe_playback_buffer_size_entry_low">Lág</string>
   <string name="morphe_playback_buffer_size_entry_medium">Miðlungs</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Hámark</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Töfun á myndbandi</string>
+  <string name="morphe_video_delay_summary">Dregur úr töfum á myndbandi til að halda því í takt við hljóð sem seinkar, eins og Bluetooth heyrnartól (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Aðeins með töfum fyrir Bluetooth-hljóð</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Dregur eingöngu úr töfum á myndbandi á meðan Bluetooth-hljóð er tengt, svo hægt er að halda hljóði símans í takt</string>
+  <string name="morphe_video_delay_button_overlay_title">Sýna hnappinn Töfun á myndbandi</string>
+  <string name="morphe_video_delay_button_overlay_summary">Smelltu og haltu niður til að endurstilla töfina í 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Sýna valmyndina Töfun á myndbandi</string>
+  <string name="morphe_video_delay_dialog_input_hint">Töf í millisekúndum</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Sjálfvirkt</string>
@@ -1296,6 +1321,7 @@ Myndbönd eru beðin um með stuttu forskeyti af dulkóðaða myndbandskenni, sv
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Tilkynningum um breytingu hraða</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Sýnir tilkynningu þegar nýja sjálfgild hraða er vistað</string>
   <string name="morphe_playback_speed_default_title">Sjálfgefin hríf</string>
+  <string name="morphe_shorts_playback_speed_default_title">Grunn-spilunartíðni á Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Breytt sjálfvirka hraða í: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Notaðu venjulegan hraða fyrir tónlist</string>
   <string name="morphe_disable_playback_speed_music_summary">Spila alltaf tónlistarmyndbönd á 1,0x hraða</string>

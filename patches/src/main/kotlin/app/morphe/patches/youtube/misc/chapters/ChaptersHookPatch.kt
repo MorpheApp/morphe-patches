@@ -16,9 +16,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.findFieldFromToString
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -36,14 +34,16 @@ val chaptersHookPatch = bytecodePatch {
 
         getTimelineMarkersArrayFingerprint(
             TimelineMarkerFingerprint.classDef.type
-        ).method.apply {
-            val index = indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_OBJECT)
-            val register = getInstruction<OneRegisterInstruction>(index).registerA
-            addInstruction(
-                index,
-                "invoke-static { v$register }, $EXTENSION_CLASS->" +
-                        "setTimelineMarkers([$EXTENSION_TIMELINE_MARKER_INTERFACE)V"
-            )
+        ).let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+                addInstruction(
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->" +
+                            "setTimelineMarkers([$EXTENSION_TIMELINE_MARKER_INTERFACE)V"
+                )
+            }
         }
 
         TimelineMarkerFingerprint.let {

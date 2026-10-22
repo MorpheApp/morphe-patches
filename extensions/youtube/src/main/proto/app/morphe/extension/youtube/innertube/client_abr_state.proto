@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+
+// Client ABR state sent with the SABR requests. Only the fields related to the video quality.
+message ClientAbrState {
+    optional int64 timeSinceLastManualFormatSelectionMs = 13;
+    optional sint32 lastManualDirection = 14;
+    optional int32 lastManualSelectedResolution = 16;
+    optional int32 clientViewportWidth = 18;
+    optional int32 clientViewportHeight = 19;
+    optional int32 stickyResolution = 21;
+    optional int32 videoQualitySetting = 26;
+    optional bool powerSaveMode = 30;
+}

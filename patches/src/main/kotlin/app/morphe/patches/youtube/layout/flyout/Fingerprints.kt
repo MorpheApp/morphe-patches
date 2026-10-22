@@ -14,9 +14,9 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -58,6 +58,7 @@ internal object FeedFlyoutBufferObjectFingerprint : Fingerprint(
 )
 
 internal object FullHistoryFlyoutBufferObjectFingerprint : Fingerprint(
+    name = "onClick",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;"),
@@ -66,10 +67,7 @@ internal object FullHistoryFlyoutBufferObjectFingerprint : Fingerprint(
         resourceLiteral(ResourceType.ID, "innertube_menu_anchor_tag"),
         opcode(Opcode.MOVE_RESULT_OBJECT),
         resourceLiteral(ResourceType.ID, "innertube_menu_anchor_interaction_logger"),
-    ),
-    custom = { method, _ ->
-        method.name == "onClick"
-    }
+    )
 )
 
 internal object FeedFlyoutButtonsInitializerFingerprint : Fingerprint(

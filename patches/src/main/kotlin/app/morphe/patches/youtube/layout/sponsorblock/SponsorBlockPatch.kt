@@ -48,13 +48,10 @@ import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val SB_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.sponsorblock.preferences"
 private const val YOUTUBE_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.settings.preference"
@@ -253,17 +250,8 @@ val sponsorBlockPatch = bytecodePatch(
         )
 
         // Set seekbar draw rectangle.
-        val rectangleFieldName: FieldReference
-        RectangleFieldInvalidatorFingerprint.let {
-            it.method.apply {
-                val rectangleIndex = indexOfFirstInstructionReversedOrThrow(
-                    it.instructionMatches.first().index
-                ) {
-                    getReference<FieldReference>()?.type == "Landroid/graphics/Rect;"
-                }
-                rectangleFieldName = getInstruction<ReferenceInstruction>(rectangleIndex).reference as FieldReference
-            }
-        }
+        val rectangleFieldName = RectangleFieldInvalidatorFingerprint.instructionMatches.last()
+            .getInstruction<ReferenceInstruction>().reference as FieldReference
 
         // Seekbar drawing.
 
@@ -273,19 +261,9 @@ val sponsorBlockPatch = bytecodePatch(
         // class may have been modified by other patches
         SeekbarOnDrawFingerprint.let {
             it.method.apply {
-                // Set seekbar thickness.
-                val thicknessIndex = it.instructionMatches.last().index
-                val thicknessRegister = getInstruction<OneRegisterInstruction>(thicknessIndex).registerA
-                addInstruction(
-                    thicknessIndex + 1,
-                    "invoke-static { v$thicknessRegister }, " +
-                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setSeekbarThickness(I)V"
-                )
-
-                // Find the drawCircle call and draw the segment before it.
-                val drawCircleIndex = indexOfFirstInstructionReversedOrThrow {
-                    getReference<MethodReference>()?.name == "drawCircle"
-                }
+                // Draw the segment before the last drawCircle call. This is done before setting the
+                // thickness, because adding the thickness instruction changes the drawCircle index.
+                val drawCircleIndex = it.instructionMatches[2].index
                 val drawCircleInstruction = getInstruction<FiveRegisterInstruction>(drawCircleIndex)
                 val canvasInstanceRegister = drawCircleInstruction.registerC
                 val centerYRegister = drawCircleInstruction.registerE
@@ -295,6 +273,15 @@ val sponsorBlockPatch = bytecodePatch(
                     "invoke-static { v$canvasInstanceRegister, v$centerYRegister }, " +
                             "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->" +
                             "drawSegmentTimeBars(Landroid/graphics/Canvas;F)V"
+                )
+
+                // Set seekbar thickness.
+                val thicknessIndex = it.instructionMatches[1].index
+                val thicknessRegister = getInstruction<OneRegisterInstruction>(thicknessIndex).registerA
+                addInstruction(
+                    thicknessIndex + 1,
+                    "invoke-static { v$thicknessRegister }, " +
+                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setSeekbarThickness(I)V"
                 )
 
                 // Set seekbar bounds.

@@ -12,11 +12,13 @@ package app.morphe.patches.youtube.layout.hide.signintotvpopup
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -37,8 +39,8 @@ internal object HandoffPromoCommandResolverFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),
     strings = listOf(
-        "Unsupported RunCase: ",
-        "Unspecified PlaceholderType."
+        string("Unsupported RunCase: ", StringComparisonType.STARTS_WITH),
+        string("Unspecified PlaceholderType.")
     )
 )
 

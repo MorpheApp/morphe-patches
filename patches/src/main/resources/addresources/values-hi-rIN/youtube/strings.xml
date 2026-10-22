@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">फीड वीडियो पर कहीं भी टैप करके और दबाकर उसका मेनू खोला जा सकता है</string>
   <string name="morphe_feed_watch_later_button_title">थंबनेल पर \'फिर से देखें\' बटन दिखाएं</string>
   <string name="morphe_feed_watch_later_button_summary">फीड वीडियो की थंबनेल पर \'फिर से देखें\' बटन दिखाया जाता है। इसे टैप करके और दबाकर प्लेलिस्ट में सहेजें खोला जाता है</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Ask आइटम को फ्लाउट मेनू में जोड़ें</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">फीड फ्लाउट मेनू में वीडियो सारांश आइटम जोड़ता है</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask के लिए प्रारंभ में एक साइन-इन खाते की आवश्यकता होती है, जिस देश में Ask उपलब्ध है।
+
+एक बार जब 'Ask' बटन वाले वीडियो को खोला जाता है, तो यह सुविधा सभी वीडियोओं के साथ काम करती है, भले ही वर्तमान देश में Ask सुविधा न हो।"</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">वीडियो का सारांश दें</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">इस वीडियो के लिए Ask नहीं खोला जा सका</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask आपके खाते या वर्तमान देश के लिए उपलब्ध नहीं है</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">थंबनेल पर व्यू काउंट दिखाएँ</string>
   <string name="morphe_feed_view_count_summary">फीड वीडियो का व्यू काउंट शीर्षक के नीचे के बजाय उनके थंबनेल के बाएं नiche दिखाया जाता है। शेल्फ जैसे कुछ वीडियो में व्यू काउंट नहीं दिख सकता</string>
@@ -793,6 +806,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">ट्रांसक्रिप्ट को ठीक करें</string>
   <string name="morphe_fix_transcript_summary">एक पूर्व शर्त जांच विफलता को हल करता है जो ट्रांसक्रिप्ट को लोड होने से रोक सकता है</string>
+  <string name="morphe_captions_in_pip_title">पिक्चर-इन-पिक्चर में सबटाइटल्स दिखाएं</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">नविगेशन बटन</string>
   <string name="morphe_navigation_buttons_screen_summary">टूलबार में प्रदर्शित होने वाले घटकों को चुनें</string>
@@ -1110,6 +1124,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_shorts_autoplay_summary">स्वचालित रूप से अगले शॉर्ट पर आगे बढ़ता है, वर्तमान को दोहराने के बजाय</string>
   <string name="morphe_shorts_autoplay_background_title">बैकग्राउंड में ऑटोप्ले</string>
   <string name="morphe_shorts_autoplay_background_summary">बैकग्राउंड प्लेबैक के दौरान स्वचालित रूप से अगले शॉर्ट पर आगे बढ़ता है</string>
+  <string name="morphe_skip_live_shorts_title">लाइव शॉर्ट्स छोड़ें</string>
+  <string name="morphe_skip_live_shorts_summary">शॉर्ट्स फ़ीड में आने वाले लाइव स्ट्रीम को छोड़ता है</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">फ़ीड में प्लेबैक</string>
   <string name="morphe_playback_in_feeds_entry_always_on">हमेशा चालू</string>
@@ -1272,6 +1288,15 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_playback_buffer_size_entry_low">कम</string>
   <string name="morphe_playback_buffer_size_entry_medium">मध्यम</string>
   <string name="morphe_playback_buffer_size_entry_maximum">अधिकतम</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">वीडियो विलंब</string>
+  <string name="morphe_video_delay_summary">लेग अवाचक ऑडियो जैसे ब्लूटूथ हेडफोन के साथ वीडियो को सिंक में रखने के लिए वीडियो को विलंबित करता है (0-5000 एमएस)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">केवल ब्लूटूथ ऑडियो के साथ विलंब</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">केवल जब ब्लूटूथ ऑडियो कनेक्ट होता है तो वीडियो में विलंब करते हैं, इसलिए फोन स्पीकर सिंक में रहता है</string>
+  <string name="morphe_video_delay_button_overlay_title">वीडियो विलंब बटन दिखाएं</string>
+  <string name="morphe_video_delay_button_overlay_summary">विलंब को 0 एमएस पर रीसेट करने के लिए टैप और होल्ड करें</string>
+  <string name="morphe_video_delay_button_flyout_title">वीडियो विलंब मेनू दिखाएं</string>
+  <string name="morphe_video_delay_dialog_input_hint">मिलीसेकंड में विलंब</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">स्वचालित</string>
@@ -1313,6 +1338,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_remember_playback_speed_last_selected_toast_title">गति परिवर्तन सूचनाएं</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">जब एक नई डिफ़ॉल्ट प्लेबैक गति सहेजी जाती है तो एक सूचना दिखाता है</string>
   <string name="morphe_playback_speed_default_title">डिफ़ॉल्ट प्लेबैक स्पीड</string>
+  <string name="morphe_shorts_playback_speed_default_title">शॉर्ट्स पर डिफ़ॉल्ट प्लेबैक गति</string>
   <string name="morphe_remember_playback_speed_toast">डिफ़ॉल्ट प्लेबैक गति बदलकर: %s</string>
   <string name="morphe_disable_playback_speed_music_title">संगीत के लिए सामान्य गति का उपयोग करें</string>
   <string name="morphe_disable_playback_speed_music_summary">संगीत वीडियो हमेशा 1.0x की गति से चलाएं</string>

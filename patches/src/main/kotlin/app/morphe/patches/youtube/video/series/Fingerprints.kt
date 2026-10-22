@@ -22,6 +22,9 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object MediaSessionFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
     filters = listOf(
         methodCall(smali = "Landroid/media/session/MediaSession;->setMetadata(Landroid/media/MediaMetadata;)V")
     )
@@ -83,8 +86,11 @@ internal object HistoryNavigationBuilderFingerprint : Fingerprint(
 
 internal class BrowseRouteFingerprint(endpointType: String) : Fingerprint(
     classFingerprint = BrowseFragmentFingerprint,
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    parameters = listOf("L", "L"),
     filters = listOf(
         methodCall(
+
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf(endpointType),
             returnType = "Ljava/lang/String;",

@@ -12,26 +12,26 @@ import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private object SubtitleManagerFingerprintClassFingerprint : Fingerprint(
+    isStatic = true,
     returnType = "Z",
     parameters = listOf("L", "Landroid/view/accessibility/CaptioningManager;"),
     filters = listOf(
         fieldAccess("Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;"),
         methodCall("Landroid/view/accessibility/CaptioningManager;->isEnabled()Z"),
-    ),
-    custom = { method, _ ->
-        AccessFlags.STATIC.isSet(method.accessFlags)
-    }
+    )
 )
 
 internal object SubtitleManagerFingerprint : Fingerprint(
@@ -407,6 +407,17 @@ internal object DefaultCaptionTrackFingerprint : Fingerprint(
     )
 )
 
+context(patchContext: BytecodePatchContext)
+internal fun preferredCaptionsTrackFingerprint() = Fingerprint(
+    classFingerprint = DefaultCaptionTrackFingerprint,
+    // 21.23+ also has a method without parameters that calls the default track method.
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        methodCall(reference = DefaultCaptionTrackFingerprint.method),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
 internal object SetSubtitleTrackFingerprint : Fingerprint(
     classFingerprint = SubtitleManagerFingerprintClassFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -435,3 +446,80 @@ internal object CaptionTracksManagerTranslationCountFingerprint : Fingerprint(
         opcode(Opcode.RETURN_OBJECT, location = InstructionLocation.MatchAfterAnywhere())
     )
 )
+
+/**
+ * Player state given to each player overlay to decide if it is shown.
+ * Its fields are listed in toString(), such as "watchDynamicLayoutState;isVrActive;isInlineActive;isPipActive".
+ */
+internal object PlayerOverlayStateToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("isPipActive", StringComparisonType.CONTAINS)
+    )
+)
+
+/**
+ * Creates the player state and asks an overlay if it is shown. More than one overlay layout does this.
+ */
+internal fun getPlayerOverlayVisibilityFingerprint(stateType: String) = object : Fingerprint(
+    filters = listOf(
+        methodCall(definingClass = stateType, name = "<init>"),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(stateType),
+            returnType = "Z",
+            location = MatchAfterImmediately()
+        )
+    )
+) {}
+
+/**
+ * Asks an overlay if it is shown for the player type, which can be picture-in-picture.
+ * Used instead of the player state by older versions.
+ */
+internal fun getPlayerTypeOverlayVisibilityFingerprint(playerType: String) = object : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;",
+    returnType = "Z",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(playerType),
+            returnType = "Z"
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+) {}
+
+/**
+ * Name of the captions overlay.
+ */
+internal object CaptionsOverlayNameFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("player_overlay_caption")
+    )
+)
+
+/**
+ * Sets the caption track of a caption track event.
+ */
+internal fun getCaptionTrackEventFingerprint(trackType: String) = object : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = trackType
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "this",
+            parameters = listOf(trackType),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        )
+    )
+) {}

@@ -12,10 +12,12 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.shortsautoplay.ReelPlaybackFingerprint
+import app.morphe.patches.youtube.layout.shortsautoplay.ReelPlaybackLegacyFingerprint
 import app.morphe.patches.youtube.layout.shortsautoplay.ReelPlaybackRepeatFingerprint
 import app.morphe.patches.youtube.layout.shortsautoplay.getInstanceFieldGetFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_24_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -54,17 +56,22 @@ val skipLiveShortsPatch = bytecodePatch(
             SwitchPreference("morphe_skip_live_shorts", summary = true)
         )
 
+        val reelPlaybackFingerprint = if (is_21_42_or_greater) ReelPlaybackFingerprint
+            else ReelPlaybackLegacyFingerprint
+
         // Skip to the next Short with the same user action the app uses for autoplay.
-        val userActionMethodReference = ReelPlaybackFingerprint.instructionMatches[1]
+        val userActionMethodReference = reelPlaybackFingerprint.instructionMatches[1]
             .instruction.getReference<MethodReference>()!!
-        val reelSequenceControllerMethodReference = ReelPlaybackFingerprint.instructionMatches[2]
+        val reelSequenceControllerMethodReference = reelPlaybackFingerprint.instructionMatches[2]
             .instruction.getReference<MethodReference>()!!
+        // 21.42+ has an additional boolean parameter, which the app sets to false.
+        val userActionParameterRegisters = if (is_21_42_or_greater) "v1, v2, v2, v2" else "v1, v2, v2"
 
         val getReelSequenceControllerInstruction = if (is_21_24_or_greater) {
             // The reel sequence controller is a field of the Shorts player.
             val reelSequenceControllerField = getInstanceFieldGetFingerprint(
                 reelSequenceControllerMethodReference.definingClass
-            ).match(ReelPlaybackFingerprint.originalMethod)
+            ).match(reelPlaybackFingerprint.originalMethod)
                 .instructionMatches.first().instruction.getReference<FieldReference>()!!
 
             "iget-object v1, p0, $reelSequenceControllerField"
@@ -74,7 +81,7 @@ val skipLiveShortsPatch = bytecodePatch(
         }
 
         // Add the interface and the helper method to the Shorts player.
-        ReelPlaybackFingerprint.classDef.apply {
+        reelPlaybackFingerprint.classDef.apply {
             interfaces.add(EXTENSION_CONTROLLER_INTERFACE)
 
             methods.add(
@@ -94,7 +101,7 @@ val skipLiveShortsPatch = bytecodePatch(
                             new-instance v0, ${userActionMethodReference.definingClass}
                             const/4 v1, 0x3
                             const/4 v2, 0x0
-                            invoke-direct { v0, v1, v2, v2 }, $userActionMethodReference
+                            invoke-direct { v0, $userActionParameterRegisters }, $userActionMethodReference
                             $getReelSequenceControllerInstruction
                             invoke-virtual { v1, v0 }, $reelSequenceControllerMethodReference
                             return-void
@@ -105,7 +112,7 @@ val skipLiveShortsPatch = bytecodePatch(
         }
 
         // Hand the Shorts player to extension code.
-        val reelPlayerField = getInstanceFieldGetFingerprint(ReelPlaybackFingerprint.classDef.type)
+        val reelPlayerField = getInstanceFieldGetFingerprint(reelPlaybackFingerprint.classDef.type)
             .match(ReelPlaybackRepeatFingerprint.originalMethod)
             .instructionMatches.first().instruction.getReference<FieldReference>()!!
 

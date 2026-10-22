@@ -51,7 +51,33 @@ internal object ReelPlaybackRepeatFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.42+
+ */
 internal object ReelPlaybackFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("J"),
+    filters = listOf(
+        fieldAccess(
+            definingClass = "Ljava/util/concurrent/TimeUnit;",
+            name = "MILLISECONDS"
+        ),
+        methodCall(
+            name = "<init>",
+            parameters = listOf("I", "L", "L", "Z"),
+            location = MatchAfterWithin(15)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("L"),
+            returnType = "I",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+internal object ReelPlaybackLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("J"),

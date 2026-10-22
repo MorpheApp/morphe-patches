@@ -10,12 +10,21 @@ package app.morphe.patches.shared.misc.spans
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.instanceOf
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object CustomCharacterStyleFingerprint : Fingerprint(
     returnType = "Landroid/graphics/Path;",
-    parameters = listOf("Landroid/text/Layout;")
+    parameters = listOf("Landroid/text/Layout;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/text/Layout;->getLineCount()I"
+        ),
+        string("IOOBDiagnostics: line:%s tl:%s lc:%s so:%s eo:%s fl:%s ll:%s rtl:%s sp:%s isp:%s esp:%s")
+    )
 )
 
 internal object InclusiveSpanFilterFingerprint : Fingerprint(

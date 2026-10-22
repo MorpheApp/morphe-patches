@@ -13,7 +13,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.icons.CustomIcons
 import app.morphe.patches.youtube.layout.player.icons.copyIconStyles
 import app.morphe.patches.youtube.layout.player.icons.customIconsOptionDescription
-import app.morphe.patches.youtube.layout.player.icons.wrapAppBitmapIcon
+import app.morphe.patches.youtube.layout.player.icons.wrapAppBitmapIcons
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -107,9 +107,7 @@ val shortsIconStylePatch = resourcePatch(
 
         // The buttons are Litho components that load these by resource id, so the resource itself is replaced.
         // The original is kept under a new name for the default style.
-        shortsIcons.forEach { (appName, wrapperClass) ->
-            wrapAppBitmapIcon(appName, wrapperClass, originalName = "morphe_$appName")
-        }
+        wrapAppBitmapIcons(shortsIcons, originalNamePrefix = "morphe_")
     }
 
     finalize {

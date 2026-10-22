@@ -22,7 +22,6 @@ import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import app.morphe.util.matchSingle
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
@@ -154,18 +153,18 @@ internal data class QueueMutationAbi(
  * instead of silently selecting an arbitrary host member.
  */
 internal fun BytecodePatchContext.resolveJamQueueAbi(): JamQueueAbi {
-    val queueMatch = QueueEnqueueFingerprint.matchSingle()
+    val queueMatch = QueueEnqueueFingerprint.match()
     val manager = queueMatch.originalClassDef
     val enqueue = queueMatch.originalMethod
     val command = resolveProto(enqueue.parameters().singleOrNull(), "queue command")
     val managerConstructor =
-        queueManagerConstructorFingerprint(manager.type).matchSingle().originalMethod
+        queueManagerConstructorFingerprint(manager.type).originalMethod
     val executor =
         manager.fields.singleOrNull { it.type == EXECUTOR }
             ?: error("Missing or ambiguous â€“ Jam queue executor")
     val storage = resolveStorage(manager, enqueue)
     val displays = resolveDisplays(manager, managerConstructor, storage)
-    val remove = queueRemovalFingerprint(manager.type, displays).matchSingle().originalMethod
+    val remove = queueRemovalFingerprint(manager.type, displays).originalMethod
     val item = resolveItem(manager, remove, command)
     val callback = resolveCallback(enqueue, manager.type)
     val menu = resolveMenu(manager, enqueue, command)
@@ -196,7 +195,6 @@ internal fun BytecodePatchContext.resolveProto(type: String?, concept: String): 
     val message = classDefByOrNull(type) ?: error("Unable to resolve Jam $concept protobuf class")
     val defaultInstance =
         protoDefaultInstanceFingerprint(message.type)
-            .matchSingle()
             .instructionMatches[0]
             .getFieldAccessed()
     require(
@@ -205,7 +203,7 @@ internal fun BytecodePatchContext.resolveProto(type: String?, concept: String): 
     ) {
         "Jam $concept protobuf default instance must be public and static"
     }
-    val parser = protoParserFingerprint(interfaceClosure(message.type)).matchSingle().originalMethod
+    val parser = protoParserFingerprint(interfaceClosure(message.type)).originalMethod
     return ProtoAbi(type, defaultInstance, parser)
 }
 
@@ -238,10 +236,10 @@ internal fun BytecodePatchContext.resolveStorage(
     val items = snapshot.originalMethod
     val lane = lanes.singleOrNull() ?: error("Missing or ambiguous Jam queue lane accessor")
     val laneClass = classDefBy(lane.returnType)
-    val laneMove = queueLaneMoveFingerprint(laneClass.type).matchSingle().originalMethod
+    val laneMove = queueLaneMoveFingerprint(laneClass.type).originalMethod
     val currentIndex =
-        queueStateAccessorFingerprint(storage.type, false).matchSingle().originalMethod
-    val mode = queueStateAccessorFingerprint(storage.type, true).matchSingle().originalMethod
+        queueStateAccessorFingerprint(storage.type, false).originalMethod
+    val mode = queueStateAccessorFingerprint(storage.type, true).originalMethod
     val localMode = resolveLocalMode(mode)
 
     val listenerTypes =
@@ -301,7 +299,6 @@ private fun BytecodePatchContext.resolveLocalMode(mode: MethodReference): FieldR
     val enum = classDefBy(mode.returnType)
     require(AccessFlags.ENUM.isSet(enum.accessFlags)) { "Jam queue mode is not an enum" }
     return localQueueModeFingerprint(enum.type)
-        .matchSingle()
         .instructionMatches[2]
         .getFieldAccessed()
 }
@@ -394,12 +391,10 @@ private fun BytecodePatchContext.resolveDisplay(
         display.fields.singleOrNull { it.type == HANDLER }
             ?: error("Missing or ambiguous â€“ Jam displayed queue UI handler")
     val current =
-        displayedQueueCurrentFingerprint(display.type, storage.currentIndex)
-            .matchSingle()
-            .originalMethod
-    val refresh = displayedQueueRefreshFingerprint(display.type).matchSingle().originalMethod
+        displayedQueueCurrentFingerprint(display.type, storage.currentIndex).originalMethod
+    val refresh = displayedQueueRefreshFingerprint(display.type).originalMethod
     val move =
-        displayedQueueMoveFingerprint(display.type, storage.laneMove).matchSingle().originalMethod
+        displayedQueueMoveFingerprint(display.type, storage.laneMove).originalMethod
     val pending =
         move
             .findInstructionIndicesReversedOrThrow(
@@ -463,17 +458,14 @@ private fun BytecodePatchContext.resolveItem(
             .singleOrNull() ?: error("Missing or ambiguous Jam queue metadata contract")
     val textMethods =
         queueTextAccessorFingerprint(metadata.type).matchAll(2..2).map { it.originalMethod }
-    val nowPlayingTextBinding =
-        nowPlayingMetadataBindingFingerprint(textMethods).matchSingle().originalMethod
-    val title =
-        textMethods.singleOrNull { accessor ->
-            nowPlayingTextBinding
-                .findInstructionIndicesReversedOrThrow(methodCall(reference = accessor))
-                .size >= 2
-        } ?: error("Missing or ambiguous â€“ Jam queue title metadata accessor")
-    val artist =
-        (textMethods - title).singleOrNull()
-            ?: error("Missing or ambiguous â€“ Jam queue artist metadata accessor")
+    val nowPlayingTextBinding = nowPlayingMetadataBindingFingerprint(textMethods).originalMethod
+    val title = textMethods.singleOrNull { accessor ->
+        nowPlayingTextBinding
+            .findInstructionIndicesReversedOrThrow(methodCall(reference = accessor))
+            .size >= 2
+    } ?: error("Missing or ambiguous â€“ Jam queue title metadata accessor")
+    val artist = (textMethods - title).singleOrNull()
+        ?: error("Missing or ambiguous â€“ Jam queue artist metadata accessor")
     val artworkCandidates =
         queueArtworkAccessorFingerprint(metadata.type).matchAll().flatMap { match ->
             val method = match.originalMethod
@@ -509,7 +501,6 @@ private fun BytecodePatchContext.resolveItem(
                 implementationCandidates.map { it.type }.toSet(),
                 manager.fields.map { it.type }.toSet(),
             )
-            .matchSingle()
             .originalMethod
     val createItem = QueueItemImplementationAbi(constructor.definingClass) to constructor
     val itemProto = resolveProto(createItem.second.parameters()[1], "queue item")
@@ -554,13 +545,12 @@ private fun BytecodePatchContext.resolveCallback(
     enqueue: Method,
     managerType: String,
 ): QueueCallbackAbi {
-    val capture = queueCallbackCaptureFingerprint(enqueue, managerType).matchSingle()
+    val capture = queueCallbackCaptureFingerprint(enqueue, managerType).match()
     val callback = capture.originalClassDef
     val constructor = capture.originalMethod
-    val manager =
-        callback.fields.singleOrNull { it.type == managerType }
-            ?: error("Missing or ambiguous â€“ Jam queue callback manager field")
-    val success = queueSuccessCallbackFingerprint(callback.type).matchSingle().originalMethod
+    val manager = callback.fields.singleOrNull { it.type == managerType }
+        ?: error("Missing or ambiguous â€“ Jam queue callback manager field")
+    val success = queueSuccessCallbackFingerprint(callback.type).originalMethod
     val responseType =
         success
             .typeReferences().singleOrNull { type ->
@@ -572,7 +562,7 @@ private fun BytecodePatchContext.resolveCallback(
         classDefBy(responseType)
             .fields.singleOrNull { it.type == LIST || implementsType(it.type, LIST) } ?: error("Missing or ambiguous â€“ Jam queue completion item list")
     val failure =
-        queueFailureCallbackFingerprint(callback.type, success).matchSingle().originalMethod
+        queueFailureCallbackFingerprint(callback.type, success).originalMethod
     return QueueCallbackAbi(
         callback.type,
         constructor,
@@ -591,7 +581,6 @@ private fun BytecodePatchContext.resolveMenu(
 ): QueueMenuAbi {
     val dispatch =
         queueMenuDispatcherFingerprint(manager.fields.map { it.type }.toSet(), command.type)
-            .matchSingle()
             .originalMethod
     // Class merging can give unrelated manager fields the same type. Use the native enqueue path.
     val dispatcher =
@@ -634,7 +623,7 @@ private fun BytecodePatchContext.resolveSelection(
     itemType: String,
     persistentId: MethodReference,
 ): MethodReference =
-    queueItemSelectionFingerprint(itemType, persistentId).matchSingle().originalMethod
+    queueItemSelectionFingerprint(itemType, persistentId).originalMethod
 
 private fun BytecodePatchContext.resolveMutation(
     manager: ClassDef,
@@ -648,33 +637,27 @@ private fun BytecodePatchContext.resolveMutation(
                 .map { methodCall(parameters = listOf(it, "Z"), returnType = "V") }
                 .toTypedArray()
         )
-    val removalNotifier =
-        remove
-            .findInstructionIndicesReversedOrThrow(removalCalls)
-            .map { remove.getInstruction(it).getReference<MethodReference>()!! }
-            .distinct()
-            .singleOrNull() ?: error("Missing or ambiguous â€“ Jam native queue removal notifier")
+    val removalNotifier = remove
+        .findInstructionIndicesReversedOrThrow(removalCalls)
+        .map { remove.getInstruction(it).getReference<MethodReference>()!! }
+        .distinct()
+        .singleOrNull() ?: error("Missing or ambiguous â€“ Jam native queue removal notifier")
     val commitMove = display.commitMove.getMutableMethod()
     val move =
-        queueMoveNotifierFingerprint(removalNotifier.definingClass, commitMove)
-            .matchSingle()
-            .originalMethod
-    val instructions =
-        remove.instructionsOrNull?.toList()
+        queueMoveNotifierFingerprint(removalNotifier.definingClass, commitMove).originalMethod
+    val instructions = remove.instructionsOrNull?.toList()
             ?: error("Unable to inspect Jam queue removal operation")
     val notifierIndices =
         remove.findInstructionIndicesReversedOrThrow(methodCall(reference = removalNotifier))
-    val providers =
-        notifierIndices
-            .map { index ->
-                resolveMutationProvider(manager, remove, instructions, index, removalNotifier)
-            }
-            .distinctBy { (provider, method) ->
-                "${provider.definingClass}->${provider.name}:${provider.type}:$method"
-            }
-    val (provider, providerMethod) =
-        providers.singleOrNull()
-            ?: error("Missing or ambiguous â€“ Jam native queue mutation provider")
+    val providers = notifierIndices
+        .map { index ->
+            resolveMutationProvider(manager, remove, instructions, index, removalNotifier)
+        }
+        .distinctBy { (provider, method) ->
+            "${provider.definingClass}->${provider.name}:${provider.type}:$method"
+        }
+    val (provider, providerMethod) = providers.singleOrNull()
+        ?: error("Missing or ambiguous â€“ Jam native queue mutation provider")
     return QueueMutationAbi(provider, providerMethod, removalNotifier.definingClass, move)
 }
 

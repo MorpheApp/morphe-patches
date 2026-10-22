@@ -53,10 +53,10 @@ internal fun mediaInsetGetterFingerprint(definingClass: String, insetField: Fiel
  * which all extend the same base class.
  */
 internal fun feedPostStyleMediaInsetFingerprint(baseClassType: String, getterName: String) = Fingerprint(
+    superclass = baseClassType,
     name = getterName,
     returnType = "Z",
-    parameters = listOf(),
-    custom = { _, classDef -> classDef.superclass == baseClassType }
+    parameters = listOf()
 )
 
 /**

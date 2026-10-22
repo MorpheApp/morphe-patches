@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">在信息流视频中任意位置长按可打开其菜单</string>
   <string name="morphe_feed_watch_later_button_title">在缩略图上显示稍后观看按钮</string>
   <string name="morphe_feed_watch_later_button_summary">信息流视频的缩略图上会显示“稍后观看”按钮，点击并长按该按钮可将其保存到播放列表</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">将Ask项目添加到弹出菜单</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">在动态推送弹出菜单中添加视频摘要项目</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask功能最初要求用户在支持该功能的国家/地区登录账号。
+
+首次打开带有Ask按钮的视频后，即使当前国家/地区不支持Ask功能，该功能也可用于所有视频。"</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">摘要视频</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">无法为此视频打开Ask</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">您的账号或所在国家/地区暂不支持Ask功能</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">在缩略图上显示播放量</string>
   <string name="morphe_feed_view_count_summary">Feed 视频的播放量显示在缩略图左下角，而不是标题下方。部分视频（例如位于架中的视频）可能不显示播放量</string>
@@ -793,6 +806,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">修复文本</string>
   <string name="morphe_fix_transcript_summary">保持导航栏在滚动时可见</string>
+  <string name="morphe_captions_in_pip_title">在画中画模式下显示字幕</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">导航栏按钮</string>
   <string name="morphe_navigation_buttons_screen_summary">使状态栏完全不透明</string>
@@ -1110,6 +1124,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">自动前进到下一个 Shorts，而不是重复当前的 Shorts</string>
   <string name="morphe_shorts_autoplay_background_title">后台自动播放</string>
   <string name="morphe_shorts_autoplay_background_summary">在后台播放时自动前进到下一个 Shorts</string>
+  <string name="morphe_skip_live_shorts_title">跳过直播 Short</string>
+  <string name="morphe_skip_live_shorts_summary">跳过出现在 Short 信息流中的直播</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">在信息流中播放</string>
   <string name="morphe_playback_in_feeds_entry_always_on">始终开启</string>
@@ -1272,6 +1288,15 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_low">低</string>
   <string name="morphe_playback_buffer_size_entry_medium">中等</string>
   <string name="morphe_playback_buffer_size_entry_maximum">最大</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">视频延迟</string>
+  <string name="morphe_video_delay_summary">延迟视频以保持与滞后的音频同步，例如蓝牙耳机（0-5000 毫秒）</string>
+  <string name="morphe_video_delay_bluetooth_only_title">仅在蓝牙音频时延迟</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">仅在连接蓝牙音频时延迟视频，以便手机扬声器保持同步</string>
+  <string name="morphe_video_delay_button_overlay_title">显示视频延迟按钮</string>
+  <string name="morphe_video_delay_button_overlay_summary">点按并按住可将延迟重置为 0 毫秒</string>
+  <string name="morphe_video_delay_button_flyout_title">显示视频延迟菜单</string>
+  <string name="morphe_video_delay_dialog_input_hint">以毫秒为单位的延迟</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自动</string>
@@ -1313,6 +1338,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">速度更改通知</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">保存新的默认播放速度时显示通知</string>
   <string name="morphe_playback_speed_default_title">默认播放速度</string>
+  <string name="morphe_shorts_playback_speed_default_title">Short 默认播放速度</string>
   <string name="morphe_remember_playback_speed_toast">已将默认播放速度更改为：%s</string>
   <string name="morphe_disable_playback_speed_music_title">使用正常速度播放音乐</string>
   <string name="morphe_disable_playback_speed_music_summary">始终以1.0倍速播放音乐视频</string>

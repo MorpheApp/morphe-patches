@@ -45,23 +45,23 @@ internal val fixLikeButtonPatch = bytecodePatch{
 
                 Pair(
                     Fingerprint(
+                        interfaces = listOf(abstractClass),
                         name = lottieAnimationUrlMethodName,
                         accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
                         returnType = "Ljava/lang/String;",
                         parameters = listOf(),
-                        custom = { method, classDef ->
-                            method.implementation!!.instructions.count() > 7 &&
-                                classDef.interfaces.contains(abstractClass)
+                        custom = { method, _ ->
+                            method.implementation!!.instructions.count() > 7
                         }
                     ),
                     Fingerprint(
+                        interfaces = listOf(abstractClass),
                         name = lottieAnimationUrlMethodName,
                         accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
                         returnType = "Ljava/lang/String;",
                         parameters = listOf(),
-                        custom = { method, classDef ->
-                            method.implementation!!.instructions.count() < 7 &&
-                                    classDef.interfaces.contains(abstractClass)
+                        custom = { method, _ ->
+                            method.implementation!!.instructions.count() < 7
                         }
                     )
                 )

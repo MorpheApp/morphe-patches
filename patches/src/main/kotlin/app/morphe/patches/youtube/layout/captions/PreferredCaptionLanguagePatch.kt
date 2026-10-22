@@ -8,10 +8,7 @@
 package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -23,7 +20,6 @@ import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.getReference
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -201,13 +197,7 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
         // so the subtitle manager instance is available.
         val trackType = DefaultCaptionTrackFingerprint.method.returnType
 
-        Fingerprint(
-            definingClass = DefaultCaptionTrackFingerprint.classDef.type,
-            filters = listOf(
-                methodCall(reference = DefaultCaptionTrackFingerprint.method),
-                opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
-            )
-        ).match(DefaultCaptionTrackFingerprint.classDef).let {
+        preferredCaptionsTrackFingerprint().let {
             val subtitleManagerRegister = it.instructionMatches[0]
                 .getInstruction<FiveRegisterInstruction>().registerC
             val moveResultIndex = it.instructionMatches[1].index

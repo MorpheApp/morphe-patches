@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3347
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -73,12 +73,14 @@ internal object RenderNextEnablementCheckFingerprint : Fingerprint(
  * The first boolean they read is the RenderNext field of the element config, set by the server.
  */
 internal fun getRenderNextConfigFieldFingerprint(enablementCheck: MethodReference) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_BOOLEAN,
             type = "Z"
         ),
-        methodCall(reference = enablementCheck)
+        methodCall(reference = enablementCheck),
+        methodCall(name = "toBuilder")
     )
 ) {}
 

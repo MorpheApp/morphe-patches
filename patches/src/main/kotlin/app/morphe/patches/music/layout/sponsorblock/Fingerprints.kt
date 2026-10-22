@@ -8,6 +8,9 @@
 package app.morphe.patches.music.layout.sponsorblock
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterLast
+import app.morphe.patcher.fieldAccess
+import com.android.tools.smali.dexlib2.Opcode
 
 /**
  * Matches {@code MusicPlaybackControlsTimeBar.draw(Canvas)}.
@@ -26,5 +29,12 @@ internal object MusicTimeBarDrawFingerprint : Fingerprint(
 internal object MusicTimeBarOnMeasureFingerprint : Fingerprint(
     definingClass = "Lcom/google/android/apps/youtube/music/watchpage/MusicPlaybackControlsTimeBar;",
     name = "onMeasure",
-    returnType = "V"
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroid/graphics/Rect;",
+            location = MatchAfterLast()
+        )
+    )
 )
