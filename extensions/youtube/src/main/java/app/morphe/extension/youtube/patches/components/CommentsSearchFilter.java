@@ -193,44 +193,58 @@ public final class CommentsSearchFilter extends Filter {
 
     private static boolean isRepliesHidden(CharSequence path, byte[] buffer,
                                            List<String> terms, @Nullable CommentDecision last) {
-        boolean foundHiddenComment = false;
+        CommentDecision comment = findCommentOfReplies(buffer, terms);
+        if (comment == null) {
+            // No id is shared with a comment, so the replies are of the comment laid out before them.
+            if (last == null || last.terms != terms || !last.hideReplies) {
+                return false;
+            }
+            comment = last;
+        } else if (!comment.hidden) {
+            return false;
+        }
+
+        comment.hideReplies = false;
+        String repliesPath = path.toString();
+        Logger.printDebug(() -> "Hiding replies of hidden comment: " + repliesPath);
+        return true;
+    }
+
+    /**
+     * @return The comment that shares an id with the replies, preferring a shown comment
+     *         so the replies of a shown comment are never hidden, or null if none is found.
+     */
+    @Nullable
+    private static CommentDecision findCommentOfReplies(byte[] buffer, List<String> terms) {
+        CommentDecision hiddenComment = null;
         for (String id : findIds(buffer)) {
             CommentDecision decision = commentIds.get(id);
             if (decision == null || decision == AMBIGUOUS_ID || decision.terms != terms) {
                 continue;
             }
             if (!decision.hidden) {
-                // Replies of a shown comment are never hidden by an id shared with another comment.
-                return false;
+                return decision;
             }
-            foundHiddenComment = true;
+            hiddenComment = decision;
         }
-
-        if (foundHiddenComment) {
-            if (last != null && last.hideReplies) {
-                last.hideReplies = false;
-            }
-        } else if (last != null && last.terms == terms && last.hideReplies) {
-            // No id is shared with a comment, so the replies are of the comment laid out before them.
-            last.hideReplies = false;
-        } else {
-            return false;
-        }
-
-        String repliesPath = path.toString();
-        Logger.printDebug(() -> "Hiding replies of hidden comment: " + repliesPath);
-        return true;
+        return hiddenComment;
     }
 
     private static void rememberIds(byte[] buffer, CommentDecision decision) {
-        for (String id : findIds(buffer)) {
-            CommentDecision existing = commentIds.get(id);
-            if (existing == null || existing.terms != decision.terms
-                    // The same comment, such as when scrolled back to, or a comment of the same result.
-                    || (existing != AMBIGUOUS_ID && existing.hidden == decision.hidden)) {
-                commentIds.put(id, decision);
-            } else {
-                commentIds.put(id, AMBIGUOUS_ID);
+        List<String> ids = findIds(buffer);
+        synchronized (commentIds) {
+            for (String id : ids) {
+                CommentDecision existing = commentIds.get(id);
+                if (existing == AMBIGUOUS_ID) {
+                    continue; // Stays ambiguous until the search changes.
+                }
+                if (existing == null || existing.terms != decision.terms
+                        // The same comment, such as when scrolled back to, or a comment of the same result.
+                        || existing.hidden == decision.hidden) {
+                    commentIds.put(id, decision);
+                } else {
+                    commentIds.put(id, AMBIGUOUS_ID);
+                }
             }
         }
     }
@@ -279,8 +293,8 @@ public final class CommentsSearchFilter extends Filter {
      */
     private static String foldCase(String text) {
         return text.toLowerCase(Locale.ROOT)
-                .replace("\u0307", "") // Dot of 'İ' as lowercase.
-                .replace('\u0131', 'i'); // Dotless 'ı'.
+                .replace("̇", "") // Combining dot above, left by lowercasing the dotted capital I.
+                .replace('ı', 'i'); // Dotless small i.
     }
 
     /**
@@ -318,6 +332,7 @@ public final class CommentsSearchFilter extends Filter {
         searchVideoId = VideoInformation.getVideoId();
         searchText = text;
         searchTerms = Collections.unmodifiableList(terms);
+        commentIds.clear();
         Logger.printDebug(() -> "Comments search: " + terms);
     }
 
@@ -457,7 +472,8 @@ public final class CommentsSearchFilter extends Filter {
                         String newText = editText.getText().toString();
                         setSearch(newText);
                         updateSearchButtonIcon(searchButton);
-                        Utils.showToastLong(str(newText.isBlank()
+                        // Such as only quotes, which are not a search.
+                        Utils.showToastLong(str(!isSearching()
                                 ? "morphe_search_comments_cleared"
                                 : "morphe_search_comments_applied"));
                     },
