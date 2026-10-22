@@ -198,8 +198,7 @@ val lyricsPatch = bytecodePatch(
                     ),
                     SwitchPreference(
                         key = "morphe_music_lyrics_use_ai_section",
-                        summary = true,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsAiPromptPreference"
+                        summary = true
                     ),
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_transcribe_key",

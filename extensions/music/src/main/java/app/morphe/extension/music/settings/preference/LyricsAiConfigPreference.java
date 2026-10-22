@@ -160,62 +160,6 @@ public class LyricsAiConfigPreference extends Preference
         });
         content.addView(geminiSection);
 
-        // OpenRouter.
-        LinearLayout openRouterSection = createSection(context, "morphe_music_lyrics_ai_config_openrouter_section");
-        EditText openRouterKeyInput = addInput(openRouterSection, "morphe_music_lyrics_ai_config_api_key_label",
-                Settings.LYRICS_OPENROUTER_API_KEY.get(), true);
-        EditText openRouterModelInput = addModelInput(openRouterSection, Settings.LYRICS_OPENROUTER_MODEL.get(),
-                () -> OpenAIClient.fetchModels(AiProviders.OPENROUTER_URL,
-                        openRouterKeyInput.getText().toString().trim()));
-        addTestButton(openRouterSection, () -> {
-            String key = openRouterKeyInput.getText().toString().trim();
-            String model = openRouterModelInput.getText().toString().trim();
-            if (key.isEmpty()) {
-                Utils.showToastShort("Enter OpenRouter API key first");
-                return;
-            }
-            Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
-            Utils.runOnBackgroundThread(() -> {
-                List<String> res = OpenAIClient.mapLines(AiProviders.OPENROUTER_URL, key, model, "Translate to Japanese:\n1. hello", Collections.singletonList("hello"));
-                Utils.runOnMainThread(() -> {
-                    if (res != null && !res.isEmpty()) {
-                        Utils.showToastShort("OpenRouter: Connected! (" + res.get(0) + ")");
-                    } else {
-                        Utils.showToastShort("OpenRouter: Connection failed. Check API key and model.");
-                    }
-                });
-            });
-        });
-        content.addView(openRouterSection);
-
-        // OpenAI.
-        LinearLayout openAiSection = createSection(context, "morphe_music_lyrics_ai_config_openai_section");
-        EditText openAiKeyInput = addInput(openAiSection, "morphe_music_lyrics_ai_config_api_key_label",
-                Settings.LYRICS_OPENAI_API_KEY.get(), true);
-        EditText openAiModelInput = addModelInput(openAiSection, Settings.LYRICS_OPENAI_MODEL.get(),
-                () -> OpenAIClient.fetchModels(AiProviders.OPENAI_URL,
-                        openAiKeyInput.getText().toString().trim()));
-        addTestButton(openAiSection, () -> {
-            String key = openAiKeyInput.getText().toString().trim();
-            String model = openAiModelInput.getText().toString().trim();
-            if (key.isEmpty()) {
-                Utils.showToastShort("Enter OpenAI API key first");
-                return;
-            }
-            Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
-            Utils.runOnBackgroundThread(() -> {
-                List<String> res = OpenAIClient.mapLines(AiProviders.OPENAI_URL, key, model, "Translate to Japanese:\n1. hello", Collections.singletonList("hello"));
-                Utils.runOnMainThread(() -> {
-                    if (res != null && !res.isEmpty()) {
-                        Utils.showToastShort("OpenAI: Connected! (" + res.get(0) + ")");
-                    } else {
-                        Utils.showToastShort("OpenAI: Connection failed. Check API key and model.");
-                    }
-                });
-            });
-        });
-        content.addView(openAiSection);
-
         // A custom OpenAI-compatible endpoint.
         LinearLayout compatibleSection = createSection(context, "morphe_music_lyrics_ai_config_openai_compat_section");
         EditText compatibleUrlInput = addInput(compatibleSection, "morphe_music_lyrics_ai_config_base_url_label",
@@ -283,13 +227,14 @@ public class LyricsAiConfigPreference extends Preference
         EditText promptRomajiInput = addInput(promptSection, "morphe_music_lyrics_ai_config_prompt_romaji_label",
                 Settings.LYRICS_AI_ROMANIZATION_PROMPT.get(), false);
         makeMultiLine(promptRomajiInput, 3, 6);
+        EditText promptSectionInput = addInput(promptSection, "morphe_music_lyrics_ai_config_prompt_section_label",
+                Settings.LYRICS_AI_SECTION_PROMPT.get(), false);
+        makeMultiLine(promptSectionInput, 3, 6);
         content.addView(promptSection);
 
         Runnable updateVisibility = () -> {
             boolean showAll = "all".equals(endpointFilter[0]);
             geminiSection.setVisibility(showAll || AiProviders.GEMINI.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
-            openRouterSection.setVisibility(showAll || AiProviders.OPENROUTER.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
-            openAiSection.setVisibility(showAll || AiProviders.OPENAI.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
             compatibleSection.setVisibility(showAll || AiProviders.OPENAI_COMPATIBLE.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
             deepLSection.setVisibility(showAll || AiProviders.DEEPL.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
             promptSection.setVisibility(showAll || "prompts".equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
@@ -300,8 +245,6 @@ public class LyricsAiConfigPreference extends Preference
             String[] filterValues = {
                     "all",
                     AiProviders.GEMINI,
-                    AiProviders.OPENROUTER,
-                    AiProviders.OPENAI,
                     AiProviders.OPENAI_COMPATIBLE,
                     AiProviders.DEEPL,
                     "prompts"
@@ -309,8 +252,6 @@ public class LyricsAiConfigPreference extends Preference
             String[] filterLabels = {
                     str("morphe_music_lyrics_ai_config_show_all"),
                     str(TRANSLATION_LABEL_PREFIX + AiProviders.GEMINI),
-                    str(TRANSLATION_LABEL_PREFIX + AiProviders.OPENROUTER),
-                    str(TRANSLATION_LABEL_PREFIX + AiProviders.OPENAI),
                     str(TRANSLATION_LABEL_PREFIX + AiProviders.OPENAI_COMPATIBLE),
                     str(TRANSLATION_LABEL_PREFIX + AiProviders.DEEPL),
                     str("morphe_music_lyrics_ai_prompt_dialog_title")
@@ -344,15 +285,12 @@ public class LyricsAiConfigPreference extends Preference
                     Settings.LYRICS_AI_EXTRA_BODY.save(extraBody);
                     Settings.LYRICS_GEMINI_API_KEY.save(geminiKeyInput.getText().toString().trim());
                     Settings.LYRICS_GEMINI_MODEL.save(geminiModelInput.getText().toString().trim());
-                    Settings.LYRICS_OPENROUTER_API_KEY.save(openRouterKeyInput.getText().toString().trim());
-                    Settings.LYRICS_OPENROUTER_MODEL.save(openRouterModelInput.getText().toString().trim());
-                    Settings.LYRICS_OPENAI_API_KEY.save(openAiKeyInput.getText().toString().trim());
-                    Settings.LYRICS_OPENAI_MODEL.save(openAiModelInput.getText().toString().trim());
                     Settings.LYRICS_AI_BASE_URL.save(baseUrl);
                     Settings.LYRICS_AI_API_TOKEN.save(compatibleTokenInput.getText().toString().trim());
                     Settings.LYRICS_AI_MODEL.save(compatibleModelInput.getText().toString().trim());
                     Settings.LYRICS_AI_TRANSLATION_PROMPT.save(promptInput.getText().toString().trim());
                     Settings.LYRICS_AI_ROMANIZATION_PROMPT.save(promptRomajiInput.getText().toString().trim());
+                    Settings.LYRICS_AI_SECTION_PROMPT.save(promptSectionInput.getText().toString().trim());
                     Settings.LYRICS_DEEPL_API_KEY.save(deepLKeyInput.getText().toString().trim());
 
                     updateSummary();
@@ -363,15 +301,12 @@ public class LyricsAiConfigPreference extends Preference
                 () -> {
                     Settings.LYRICS_GEMINI_API_KEY.resetToDefault();
                     Settings.LYRICS_GEMINI_MODEL.resetToDefault();
-                    Settings.LYRICS_OPENROUTER_API_KEY.resetToDefault();
-                    Settings.LYRICS_OPENROUTER_MODEL.resetToDefault();
-                    Settings.LYRICS_OPENAI_API_KEY.resetToDefault();
-                    Settings.LYRICS_OPENAI_MODEL.resetToDefault();
                     Settings.LYRICS_AI_BASE_URL.resetToDefault();
                     Settings.LYRICS_AI_API_TOKEN.resetToDefault();
                     Settings.LYRICS_AI_MODEL.resetToDefault();
                     Settings.LYRICS_AI_TRANSLATION_PROMPT.resetToDefault();
                     Settings.LYRICS_AI_ROMANIZATION_PROMPT.resetToDefault();
+                    Settings.LYRICS_AI_SECTION_PROMPT.resetToDefault();
                     Settings.LYRICS_AI_EXTRA_BODY.resetToDefault();
                     Settings.LYRICS_DEEPL_API_KEY.resetToDefault();
                     updateSummary();

@@ -22,13 +22,8 @@ public final class AiProviders {
     public static final String GOOGLE = "google";
     public static final String LOCAL = "local";
     public static final String GEMINI = "gemini";
-    public static final String OPENROUTER = "openrouter";
-    public static final String OPENAI = "openai";
     public static final String OPENAI_COMPATIBLE = "openai_compatible";
     public static final String DEEPL = "deepl";
-
-    public static final String OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
-    public static final String OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
     /** What a model answered, and the model that answered it. */
     record Result(List<String> lines, String model) {
@@ -38,8 +33,7 @@ public final class AiProviders {
     }
 
     public static boolean isAi(@Nullable String provider) {
-        return GEMINI.equals(provider) || OPENROUTER.equals(provider)
-                || OPENAI.equals(provider) || OPENAI_COMPATIBLE.equals(provider);
+        return GEMINI.equals(provider) || OPENAI_COMPATIBLE.equals(provider);
     }
 
     /**
@@ -56,18 +50,6 @@ public final class AiProviders {
                 if (apiKey.isEmpty()) return null;
                 model = Settings.LYRICS_GEMINI_MODEL.get();
                 mapped = GeminiClient.mapLines(apiKey, model, prompt, lines);
-            }
-            case OPENROUTER -> {
-                String apiKey = Settings.LYRICS_OPENROUTER_API_KEY.get();
-                if (apiKey.isEmpty()) return null;
-                model = Settings.LYRICS_OPENROUTER_MODEL.get();
-                mapped = OpenAIClient.mapLines(OPENROUTER_URL, apiKey, model, prompt, lines);
-            }
-            case OPENAI -> {
-                String apiKey = Settings.LYRICS_OPENAI_API_KEY.get();
-                if (apiKey.isEmpty()) return null;
-                model = Settings.LYRICS_OPENAI_MODEL.get();
-                mapped = OpenAIClient.mapLines(OPENAI_URL, apiKey, model, prompt, lines);
             }
             case OPENAI_COMPATIBLE -> {
                 model = Settings.LYRICS_AI_MODEL.get();

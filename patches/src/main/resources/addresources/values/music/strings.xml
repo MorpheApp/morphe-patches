@@ -673,22 +673,18 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_translation_provider_title">Translation provider</string>
     <string name="morphe_music_lyrics_translation_provider_google">Google (Default, Free)</string>
     <string name="morphe_music_lyrics_translation_provider_gemini" translatable="false">Gemini API</string>
-    <string name="morphe_music_lyrics_translation_provider_openrouter" translatable="false">OpenRouter</string>
-    <string name="morphe_music_lyrics_translation_provider_openai" translatable="false">OpenAI API</string>
     <string name="morphe_music_lyrics_translation_provider_openai_compatible">OpenAI Compatible (Custom)</string>
     <string name="morphe_music_lyrics_translation_provider_deepl" translatable="false">DeepL API</string>
     <string name="morphe_music_lyrics_romanization_provider_title">Romanization provider</string>
     <string name="morphe_music_lyrics_romanization_provider_google">Google (Default)</string>
     <string name="morphe_music_lyrics_romanization_provider_local">Local / Offline Dictionary</string>
     <string name="morphe_music_lyrics_romanization_provider_gemini" translatable="false">Gemini API</string>
-    <string name="morphe_music_lyrics_romanization_provider_openrouter" translatable="false">OpenRouter</string>
-    <string name="morphe_music_lyrics_romanization_provider_openai" translatable="false">OpenAI API</string>
     <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI Compatible (Custom)</string>
     <string name="morphe_music_lyrics_use_ai_section_title">AI Section</string>
     <string name="morphe_music_lyrics_use_ai_section_summary">Only used when the provider ships no section labels such as Chorus or Verse, which your OpenAI-compatible model then detects</string>
     <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; Cloud Endpoints</string>
     <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configure API keys, models, endpoints, and prompt templates for AI providers.</string>
-    <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://text.pollinations.ai/openai)</string>
+    <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://api.openai.com/v1/chat/completions)</string>
     <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt Template</string>
     <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
     <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt saved</string>
@@ -709,8 +705,6 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_ai_config_fetch_models_success">Select a Model</string>
     <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Failed to fetch models. Check API key or connection.</string>
     <string name="morphe_music_lyrics_ai_config_gemini_section">Gemini API Settings</string>
-    <string name="morphe_music_lyrics_ai_config_openrouter_section">OpenRouter API Settings</string>
-    <string name="morphe_music_lyrics_ai_config_openai_section">OpenAI API Settings</string>
     <string name="morphe_music_lyrics_ai_config_openai_compat_section">OpenAI Compatible (Custom Endpoint)</string>
     <string name="morphe_music_lyrics_ai_config_deepl_section">DeepL API Settings</string>
     <string name="morphe_music_lyrics_ai_config_api_key_label">API key</string>
@@ -719,6 +713,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_ai_config_api_token_label">API key (optional)</string>
     <string name="morphe_music_lyrics_ai_config_prompt_label">Translation prompt</string>
     <string name="morphe_music_lyrics_ai_config_prompt_romaji_label" translatable="false">Romanization prompt</string>
+    <string name="morphe_music_lyrics_ai_config_prompt_section_label" translatable="false">AI Section prompt</string>
     <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra request body (optional JSON)</string>
     <string name="morphe_music_lyrics_ai_config_deepl_key_label">Authentication key (Free or Pro)</string>
     <string name="morphe_music_lyrics_ai_config_summary">Configure API keys, models, endpoints, and prompts</string>

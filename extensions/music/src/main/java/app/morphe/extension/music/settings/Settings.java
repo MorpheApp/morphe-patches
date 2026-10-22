@@ -216,10 +216,6 @@ public class Settings extends SharedYouTubeSettings {
 
     public static final StringSetting LYRICS_GEMINI_API_KEY = new StringSetting("morphe_music_lyrics_gemini_api_key", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_GEMINI_MODEL = new StringSetting("morphe_music_lyrics_gemini_model", "gemini-2.0-flash", false, parent(LYRICS_ENABLED));
-    public static final StringSetting LYRICS_OPENROUTER_API_KEY = new StringSetting("morphe_music_lyrics_openrouter_api_key", "", false, parent(LYRICS_ENABLED));
-    public static final StringSetting LYRICS_OPENROUTER_MODEL = new StringSetting("morphe_music_lyrics_openrouter_model", "openai/gpt-4o-mini", false, parent(LYRICS_ENABLED));
-    public static final StringSetting LYRICS_OPENAI_API_KEY = new StringSetting("morphe_music_lyrics_openai_api_key", "", false, parent(LYRICS_ENABLED));
-    public static final StringSetting LYRICS_OPENAI_MODEL = new StringSetting("morphe_music_lyrics_openai_model", "gpt-4o-mini", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_DEEPL_API_KEY = new StringSetting("morphe_music_lyrics_deepl_api_key", "", false, parent(LYRICS_ENABLED));
     /**
      * Romanizes on the device when the provider, an OpenAI-compatible endpoint and Google
@@ -229,14 +225,14 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_LOCAL_ROMANIZATION = new BooleanSetting("morphe_music_lyrics_local_romanization", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
     public static final BooleanSetting LYRICS_SHOW_REFRESH_BUTTON = new BooleanSetting("morphe_music_lyrics_show_refresh_button", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_USE_AI_SECTION = new BooleanSetting("morphe_music_lyrics_use_ai_section", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_SECTION)));
-    public static final StringSetting LYRICS_AI_BASE_URL = new StringSetting("morphe_music_lyrics_ai_base_url", "https://text.pollinations.ai/openai", false, parent(LYRICS_ENABLED));
+    public static final StringSetting LYRICS_AI_BASE_URL = new StringSetting("morphe_music_lyrics_ai_base_url", "https://api.openai.com/v1/chat/completions", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_AI_API_TOKEN = new StringSetting("morphe_music_lyrics_ai_api_token", "", false, parent(LYRICS_ENABLED));
-    public static final StringSetting LYRICS_AI_MODEL = new StringSetting("morphe_music_lyrics_ai_model", "openai-fast", false, parent(LYRICS_ENABLED));
+    public static final StringSetting LYRICS_AI_MODEL = new StringSetting("morphe_music_lyrics_ai_model", "gpt-4o-mini", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_AI_REASONING_EFFORT = new StringSetting("morphe_music_lyrics_ai_reasoning_effort", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_AI_EXTRA_BODY = new StringSetting("morphe_music_lyrics_ai_extra_body", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_AI_TRANSLATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_prompt", OpenAIClient.DEFAULT_PROMPT, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_TRANSLATE_BUTTON)));
     public static final StringSetting LYRICS_AI_ROMANIZATION_PROMPT = new StringSetting("morphe_music_lyrics_ai_romanization_prompt", OpenAIClient.DEFAULT_PROMPT, false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
-    public static final StringSetting LYRICS_AI_SECTION_PROMPT = new StringSetting("morphe_music_lyrics_ai_section_prompt", OpenAIClient.SECTION_PROMPT, false, parent(LYRICS_USE_AI_SECTION));
+    public static final StringSetting LYRICS_AI_SECTION_PROMPT = new StringSetting("morphe_music_lyrics_ai_section_prompt", OpenAIClient.SECTION_PROMPT, false, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_TRANSCRIBE_KEY = new StringSetting("morphe_music_lyrics_transcribe_key", "", false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_INFO = new BooleanSetting("morphe_music_lyrics_hide_info", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SWAP_TRANS_ROMA = new BooleanSetting("morphe_music_lyrics_swap_trans_roma", FALSE, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_SHOW_TRANSLATE_BUTTON, LYRICS_SHOW_ROMANIZE_BUTTON)));
@@ -306,6 +302,12 @@ public class Settings extends SharedYouTubeSettings {
         migrateDownloadButtonOverride();
         migrateLyricsAiSwitchToProvider(DEPRECATED_LYRICS_USE_AI_TRANSLATION, LYRICS_TRANSLATION_PROVIDER);
         migrateLyricsAiSwitchToProvider(DEPRECATED_LYRICS_USE_AI_ROMANIZATION, LYRICS_ROMANIZATION_PROVIDER);
+        if ("openrouter".equals(LYRICS_TRANSLATION_PROVIDER.get()) || "openai".equals(LYRICS_TRANSLATION_PROVIDER.get())) {
+            LYRICS_TRANSLATION_PROVIDER.save(AiProviders.OPENAI_COMPATIBLE);
+        }
+        if ("openrouter".equals(LYRICS_ROMANIZATION_PROVIDER.get()) || "openai".equals(LYRICS_ROMANIZATION_PROVIDER.get())) {
+            LYRICS_ROMANIZATION_PROVIDER.save(AiProviders.OPENAI_COMPATIBLE);
+        }
     }
 
     static {
