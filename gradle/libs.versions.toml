@@ -1,8 +1,8 @@
 # Dependencies must also be addded to LicensesDialog.java
 
 [versions]
-morphe-patcher = "2.0.0-dev.24"
-morphe-patches-library = "1.9.0-dev.11"
+morphe-patcher = "2.0.0"
+morphe-patches-library = "2.0.0"
 smali = "4220ae75f7"
 agp = "9.1.0"
 annotation = "1.10.0"
