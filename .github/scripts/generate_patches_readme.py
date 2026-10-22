@@ -37,14 +37,30 @@ with open(json_path, encoding="utf-8") as f:
     data = json.load(f)
 
 
-def pkg_emoji(pkg):
-    """Return a standard package emoji regardless of the package name."""
-    return "📦"
+# Emoji and label suffix for each form factor. Mobile and unspecified use no suffix.
+FORM_FACTORS = {
+    "TV":         ("📺", "Android TV"),
+    "WEARABLE":   ("⌚", "Wear OS"),
+    "AUTOMOTIVE": ("🚗", "Android Automotive"),
+}
 
-# Group patches by package; patches with no compatiblePackages are universal.
+
+def pkg_emoji(form_factor):
+    """Return the emoji for a form factor, or a standard package emoji."""
+    return FORM_FACTORS.get(form_factor, ("📦", None))[0]
+
+
+def pkg_label(name, form_factor):
+    """Return the app name, with the form factor appended if it is not mobile."""
+    suffix = FORM_FACTORS.get(form_factor, (None, None))[1]
+    return f"{name} ({suffix})" if suffix else name
+
+
+# Group patches by package and form factor; patches with no compatiblePackages are universal.
+# The same package name can be used by different apps for each form factor.
 # JSON structure: compatiblePackages is a list of objects with
-# { packageName, name, targets: [{ version, isExperimental, description }] }
-by_pkg = {}   # packageName -> { name, emoji, patches, targets }
+# { packageName, name, formFactor, targets: [{ version, isExperimental, description }] }
+by_pkg = {}   # (packageName, formFactor) -> { name, emoji, patches, targets }
 universal = {}
 
 for patch in data["patches"]:
@@ -57,16 +73,18 @@ for patch in data["patches"]:
     for pkg_entry in cp:
         pkg  = pkg_entry["packageName"]
         name = pkg_entry.get("name") or pkg  # fall back to package name if no label
-        if pkg not in by_pkg:
-            by_pkg[pkg] = {
-                "name":    name,
-                "emoji":   pkg_emoji(pkg),
+        form_factor = pkg_entry.get("formFactor")
+        key  = (pkg, form_factor)
+        if key not in by_pkg:
+            by_pkg[key] = {
+                "name":    pkg_label(name, form_factor),
+                "emoji":   pkg_emoji(form_factor),
                 "patches": {},
                 "targets": pkg_entry.get("targets", []),
             }
         # Deduplicate patches that appear across multiple packages
-        if patch["name"] not in by_pkg[pkg]["patches"]:
-            by_pkg[pkg]["patches"][patch["name"]] = patch
+        if patch["name"] not in by_pkg[key]["patches"]:
+            by_pkg[key]["patches"][patch["name"]] = patch
 
 
 def anchor(name):
@@ -151,7 +169,7 @@ def build_content(expanded=False):
     ]
 
     # One spoiler per app, in the order they appear in the JSON
-    for pkg, entry in by_pkg.items():
+    for entry in by_pkg.values():
         patches = list(entry["patches"].values())
         label   = f"{entry['emoji']} {entry['name']}"
         lines.append(spoiler(label, len(patches), entry["targets"], patches_table(patches), expanded))
