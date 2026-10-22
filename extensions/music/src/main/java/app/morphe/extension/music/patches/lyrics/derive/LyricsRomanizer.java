@@ -168,12 +168,14 @@ public final class LyricsRomanizer {
                             "romanization", LyricsRequests.romanizationLanguage(),
                             track.title(), track.artist(), lines);
                     AiProviders.Result ai = AiProviders.mapLines(provider, prompt, lines);
-                    if (ai != null) {
+                    if (ai != null && ai.lines() != null && !ai.lines().isEmpty()) {
                         List<LyricsLine> aiLines = alignIfWordSynced(lyrics, toLines(ai.lines()), isWordSynced);
-                        LyricsCache.putRomanizationAI(track, source, lines, aiLines);
-                        final boolean hasWordRomaji = isWordSynced && aiLines != null && LyricsMerge.anyWordHasRomaji(aiLines);
-                        Utils.runOnMainThread(() -> callback.onRomanized(aiLines, false, true, ai.model(), hasWordRomaji, null));
-                        return;
+                        if (LyricsMerge.hasText(aiLines)) {
+                            LyricsCache.putRomanizationAI(track, source, lines, aiLines);
+                            final boolean hasWordRomaji = isWordSynced && LyricsMerge.anyWordHasRomaji(aiLines);
+                            Utils.runOnMainThread(() -> callback.onRomanized(aiLines, false, true, ai.model(), hasWordRomaji, null));
+                            return;
+                        }
                     }
                 }
 

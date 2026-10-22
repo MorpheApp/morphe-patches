@@ -12,10 +12,8 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -52,8 +50,7 @@ import app.morphe.extension.shared.ui.Dim;
  * Translation and Romanization provider selection happens in their respective settings sections.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public class LyricsAiConfigPreference extends Preference
-        implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class LyricsAiConfigPreference extends Preference {
 
     private static final String TRANSLATION_LABEL_PREFIX = "morphe_music_lyrics_translation_provider_";
 
@@ -83,21 +80,6 @@ public class LyricsAiConfigPreference extends Preference
         setSummary(str("morphe_music_lyrics_ai_config_summary"));
     }
 
-    @Override
-    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
-        super.onAttachedToHierarchy(preferenceManager);
-        preferenceManager.getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-    }
-
-    @Override
-    protected void onPrepareForRemoval() {
-        super.onPrepareForRemoval();
-        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
-    }
 
     @Override
     protected void onClick() {
