@@ -102,6 +102,15 @@ public final class LyricsTranslator {
         return out;
     }
 
+    private static List<LyricsLine> toLyricsLines(List<String> textLines) {
+        if (textLines == null) return java.util.Collections.emptyList();
+        List<LyricsLine> lines = new ArrayList<>(textLines.size());
+        for (String t : textLines) {
+            lines.add(new LyricsLine(LyricsLine.NO_TIME, t));
+        }
+        return lines;
+    }
+
     public static void translate(TrackInfo track, Lyrics lyrics, String source, Callback callback) {
         Utils.verifyOnMainThread();
 
@@ -134,11 +143,12 @@ public final class LyricsTranslator {
                             : AiProviders.mapLines(provider, OpenAIClient.renderPrompt(
                                     Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), "translation",
                                     language, track.title(), track.artist(), lines), lines);
-                    if (ai != null) {
+                    if (ai != null && ai.lines() != null && !ai.lines().isEmpty() && LyricsMerge.hasText(toLyricsLines(ai.lines()))) {
                         LyricsCache.putTranslationAI(track, source, language, lines, ai.lines());
                         Utils.runOnMainThread(() -> callback.onTranslated(ai.lines(), false, true, ai.model()));
                         return;
                     }
+                    // AI / DeepL request failed or returned empty; gracefully fall through to Google Translate.
                 }
 
                 List<String> translated = LyricsCache.getTranslation(

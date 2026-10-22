@@ -715,6 +715,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
     <string name="morphe_music_lyrics_ai_config_api_token_label">API key (optional)</string>
     <string name="morphe_music_lyrics_ai_config_prompt_label">Translation prompt</string>
+    <string name="morphe_music_lyrics_ai_config_prompt_romaji_label" translatable="false">Romanization prompt</string>
     <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra request body (optional JSON)</string>
     <string name="morphe_music_lyrics_ai_config_deepl_key_label">Authentication key (Free or Pro)</string>
     <string name="morphe_music_lyrics_ai_config_summary">Translation: %1$s\nRomanization: %2$s</string>

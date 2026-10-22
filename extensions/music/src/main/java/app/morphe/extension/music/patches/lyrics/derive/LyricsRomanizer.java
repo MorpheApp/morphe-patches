@@ -144,12 +144,15 @@ public final class LyricsRomanizer {
                         result = ruleBased(lines);
                         dictionary = result != null ? RULE_BASED_DICTIONARY : null;
                     }
-                    final List<LyricsLine> finalResult = alignIfWordSynced(lyrics, result, isWordSynced);
-                    final String finalDictionary = dictionary;
-                    final boolean hasWordRomaji = isWordSynced && finalResult != null && LyricsMerge.anyWordHasRomaji(finalResult);
-                    Utils.runOnMainThread(() -> callback.onRomanized(
-                            finalResult, false, false, null, hasWordRomaji, finalDictionary));
-                    return;
+                    if (LyricsMerge.hasText(result)) {
+                        final List<LyricsLine> finalResult = alignIfWordSynced(lyrics, result, isWordSynced);
+                        final String finalDictionary = dictionary;
+                        final boolean hasWordRomaji = isWordSynced && finalResult != null && LyricsMerge.anyWordHasRomaji(finalResult);
+                        Utils.runOnMainThread(() -> callback.onRomanized(
+                                finalResult, false, false, null, hasWordRomaji, finalDictionary));
+                        return;
+                    }
+                    // Local romanization yielded no text; fall through to Google/online fallback.
                 }
 
                 if (AiProviders.isAi(provider)) {
@@ -194,7 +197,7 @@ public final class LyricsRomanizer {
                 // The last resort. Its reading is not stored, so an online one is used again
                 // as soon as there is one.
                 LocalRomanizer.Result local = !LyricsMerge.hasText(romanized)
-                        && Settings.LYRICS_LOCAL_ROMANIZATION.get()
+                        && (Settings.LYRICS_LOCAL_ROMANIZATION.get() || AiProviders.LOCAL.equals(provider) || AiProviders.isAi(provider))
                         ? LocalRomanizer.romanize(lines) : null;
 
                 List<LyricsLine> result = romanized;

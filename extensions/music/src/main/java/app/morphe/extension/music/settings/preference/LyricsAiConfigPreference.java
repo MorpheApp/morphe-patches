@@ -202,6 +202,9 @@ public class LyricsAiConfigPreference extends Preference
         EditText promptInput = addInput(compatibleSection, "morphe_music_lyrics_ai_config_prompt_label",
                 Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), false);
         makeMultiLine(promptInput, 3, 6);
+        EditText promptRomajiInput = addInput(compatibleSection, "morphe_music_lyrics_ai_config_prompt_romaji_label",
+                Settings.LYRICS_AI_ROMANIZATION_PROMPT.get(), false);
+        makeMultiLine(promptRomajiInput, 3, 6);
         EditText extraBodyInput = addInput(compatibleSection, "morphe_music_lyrics_ai_config_extra_body_label",
                 Settings.LYRICS_AI_EXTRA_BODY.get(), false);
         makeMultiLine(extraBodyInput, 2, 5);
@@ -269,6 +272,7 @@ public class LyricsAiConfigPreference extends Preference
                     Settings.LYRICS_AI_API_TOKEN.save(compatibleTokenInput.getText().toString().trim());
                     Settings.LYRICS_AI_MODEL.save(compatibleModelInput.getText().toString().trim());
                     Settings.LYRICS_AI_TRANSLATION_PROMPT.save(promptInput.getText().toString().trim());
+                    Settings.LYRICS_AI_ROMANIZATION_PROMPT.save(promptRomajiInput.getText().toString().trim());
                     Settings.LYRICS_DEEPL_API_KEY.save(deepLKeyInput.getText().toString().trim());
 
                     if (AiProviders.LOCAL.equals(selectedRomanization[0])) {
