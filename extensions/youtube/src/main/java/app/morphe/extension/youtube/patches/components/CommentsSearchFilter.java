@@ -26,12 +26,14 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.WeakHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,12 +56,26 @@ import app.morphe.extension.youtube.shared.EngagementPanel;
  * Shows only the comments that contain the searched words.
  * <p>
  * YouTube has no search of comments, so only the comments that are loaded are searched.
- * Comments are filtered when they are loaded, so a search applies to the comments loaded after it,
- * such as after changing the sort order or opening the comments again.
+ * Comments are filtered when they are loaded, so after a search the comments are reloaded,
+ * as when the sort order is changed.
  * As the hidden comments do not fill the list, scrolling loads the next comments sooner.
  */
 @SuppressWarnings("unused")
 public final class CommentsSearchFilter extends Filter {
+
+    /**
+     * Added during patching to the controller of section lists, such as the list of the comments panel.
+     */
+    public interface SectionListAccess {
+        View patch_getListView();
+
+        /**
+         * Reloads the list as when its sort order is changed, if the list can be reloaded.
+         *
+         * @return If the list is reloaded.
+         */
+        boolean patch_reload();
+    }
 
     private static final String SEARCH_BUTTON_TAG = "morphe_search_comments_button";
 
@@ -105,6 +121,12 @@ public final class CommentsSearchFilter extends Filter {
      */
     private static final Map<String, CommentDecision> commentIds = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(MAX_IDS));
+
+    /**
+     * Section lists by their list view, to reload the comments of the panel that is searched.
+     */
+    private static final Map<View, WeakReference<SectionListAccess>> sectionLists =
+            Collections.synchronizedMap(new WeakHashMap<>());
 
     /**
      * Marks an id found in comments that are shown and in comments that are hidden,
@@ -338,6 +360,75 @@ public final class CommentsSearchFilter extends Filter {
 
     /**
      * Injection point.
+     * Called when the controller of a section list is created.
+     */
+    public static void onSectionListCreated(SectionListAccess sectionList) {
+        if (!Settings.SEARCH_COMMENTS.get()) {
+            return;
+        }
+
+        try {
+            View listView = sectionList.patch_getListView();
+            if (listView != null) {
+                sectionLists.put(listView, new WeakReference<>(sectionList));
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onSectionListCreated failure", ex);
+        }
+    }
+
+    /**
+     * Reloads the list of the panel of the search button, as when its sort order is changed,
+     * so the search applies to all of its comments.
+     *
+     * @return If the list is reloaded.
+     */
+    private static boolean reloadPanelList(View searchButton) {
+        SectionListAccess sectionList = findPanelList(searchButton);
+        if (sectionList == null) {
+            Logger.printDebug(() -> "Panel list not found");
+            return false;
+        }
+        return sectionList.patch_reload();
+    }
+
+    /**
+     * @return The shown section list closest to the view, which is the list of the panel of the view.
+     */
+    @Nullable
+    private static SectionListAccess findPanelList(View view) {
+        List<ViewParent> ancestors = new ArrayList<>();
+        for (ViewParent parent = view.getParent(); parent != null; parent = parent.getParent()) {
+            ancestors.add(parent);
+        }
+
+        SectionListAccess closestList = null;
+        int closestDistance = Integer.MAX_VALUE;
+        synchronized (sectionLists) {
+            for (Map.Entry<View, WeakReference<SectionListAccess>> entry : sectionLists.entrySet()) {
+                View listView = entry.getKey();
+                SectionListAccess sectionList = entry.getValue().get();
+                if (sectionList == null || !listView.isShown()) {
+                    continue;
+                }
+                // The distance to the first ancestor of the view that is also an ancestor of the list.
+                for (ViewParent parent = listView.getParent(); parent != null; parent = parent.getParent()) {
+                    final int distance = ancestors.indexOf(parent);
+                    if (distance >= 0) {
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestList = sectionList;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        return closestList;
+    }
+
+    /**
+     * Injection point.
      * Called on the main thread when the header of an engagement panel is shown.
      */
     public static void onPanelSubheaderShown(View subheader) {
@@ -472,17 +563,21 @@ public final class CommentsSearchFilter extends Filter {
                         String newText = editText.getText().toString();
                         setSearch(newText);
                         updateSearchButtonIcon(searchButton);
-                        // Such as only quotes, which are not a search.
-                        Utils.showToastLong(str(!isSearching()
-                                ? "morphe_search_comments_cleared"
-                                : "morphe_search_comments_applied"));
+                        if (!reloadPanelList(searchButton)) {
+                            // Such as only quotes, which are not a search.
+                            Utils.showToastLong(str(!isSearching()
+                                    ? "morphe_search_comments_cleared"
+                                    : "morphe_search_comments_applied"));
+                        }
                     },
                     () -> {},
                     str("morphe_search_comments_clear"),
                     () -> {
                         setSearch("");
                         updateSearchButtonIcon(searchButton);
-                        Utils.showToastLong(str("morphe_search_comments_cleared"));
+                        if (!reloadPanelList(searchButton)) {
+                            Utils.showToastLong(str("morphe_search_comments_cleared"));
+                        }
                     },
                     true
             );
