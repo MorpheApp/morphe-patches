@@ -161,6 +161,13 @@ To sign in, press continue below"</string>
     <string name="morphe_hide_notification_media_prev_next_summary">Hides Previous and Next buttons in media notification, lock screen, and headphone controls</string>
     <string name="morphe_disable_notification_media_seekbar_title">Disable seekbar</string>
     <string name="morphe_disable_notification_media_seekbar_summary">Prevents dragging the seekbar on the lock screen and notification panel</string>
+    <string name="morphe_seek_notification_media_prev_next_title">Seek with Previous &amp; Next buttons</string>
+    <string name="morphe_seek_notification_media_prev_next_summary">Rewinds and fast forwards with Previous and Next buttons in media notification, lock screen, and headphone controls, instead of changing videos</string>
+    <string name="morphe_seek_notification_media_rewind_length_title">Rewind length</string>
+    <string name="morphe_seek_notification_media_rewind_length_summary">Seconds to rewind with the Previous button</string>
+    <string name="morphe_seek_notification_media_fast_forward_length_title">Fast forward length</string>
+    <string name="morphe_seek_notification_media_fast_forward_length_summary">Seconds to fast forward with the Next button</string>
+    <string name="morphe_seek_notification_media_length_invalid">Seek length must be between 1 and %d seconds. Using default</string>
 
     <!-- misc.quic.disableQUICProtocolPatch -->
     <string name="morphe_disable_quic_protocol_title">Disable QUIC protocol</string>
