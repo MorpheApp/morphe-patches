@@ -506,7 +506,7 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_external_downloader_quick_menu_title">Quick download on tap</string>
     <string name="morphe_external_downloader_quick_menu_summary">Tapping a download button opens a menu to download the video or audio in the background, tap and hold opens the downloader. Works with YTDLnis and YTindir</string>
     <string name="morphe_external_downloader_mark_watched_title">Mark downloads as watched</string>
-    <string name="morphe_external_downloader_mark_watched_summary">Videos sent to the external downloader are added to your watch history</string>
+    <string name="morphe_external_downloader_mark_watched_summary">Videos sent to the external downloader without opening them, such as from the feed Download menu, are added to your watch history</string>
     <string name="morphe_external_downloader_quick_video_quality">Full HD (1080p)</string>
     <string name="morphe_external_downloader_quick_audio_quality">Medium (192 kbps)</string>
     <string name="morphe_external_downloader_quick_menu_header">Quick download</string>

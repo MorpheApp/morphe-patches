@@ -36,6 +36,7 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.requests.MarkWatchedRequest;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
+import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.ButtonVisibility;
 
 @SuppressWarnings("unused")
@@ -86,6 +87,7 @@ public class ExternalDownloadButton {
 
     /**
      * Opens the external downloader, and marks the video as watched if that is on.
+     * The video of the open player is not marked, the app adds it to the watch history itself.
      *
      * @param quickDownloadType See {@link ExternalDownloaderPreference#launchExternalDownloader(String, Context, String, String)}.
      */
@@ -93,9 +95,15 @@ public class ExternalDownloadButton {
                                         @Nullable String quickDownloadType) {
         if (ExternalDownloaderPreference.launchExternalDownloader(
                 videoId, context, getVideoUrl(videoId), quickDownloadType)
-                && Settings.EXTERNAL_DOWNLOADER_MARK_WATCHED.get()) {
+                && Settings.EXTERNAL_DOWNLOADER_MARK_WATCHED.get()
+                && !isOpenInPlayer(videoId)) {
             MarkWatchedRequest.markWatched(videoId);
         }
+    }
+
+    private static boolean isOpenInPlayer(String videoId) {
+        return !PlayerType.getCurrent().isNoneOrHidden()
+                && videoId.equals(VideoInformation.getVideoId());
     }
 
     private static void openDownloader(Context context) {
