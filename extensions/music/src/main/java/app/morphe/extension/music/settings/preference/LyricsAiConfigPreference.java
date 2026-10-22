@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -38,8 +39,6 @@ import app.morphe.extension.music.patches.lyrics.derive.AiProviders;
 import app.morphe.extension.music.patches.lyrics.derive.DeepLClient;
 import app.morphe.extension.music.patches.lyrics.derive.GeminiClient;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
-import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
-import app.morphe.extension.music.patches.lyrics.romanizers.PinyinDictStore;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -49,33 +48,14 @@ import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
- * Picks the translation and romanization providers, and holds the keys and models of the ones
- * that need them. Only the sections of the picked providers are shown.
+ * Holds the API keys, models, custom endpoints, and prompt templates for all AI and cloud providers.
+ * Translation and Romanization provider selection happens in their respective settings sections.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class LyricsAiConfigPreference extends Preference
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private static final String[] TRANSLATION_PROVIDERS = {
-            AiProviders.GOOGLE,
-            AiProviders.GEMINI,
-            AiProviders.OPENROUTER,
-            AiProviders.OPENAI,
-            AiProviders.OPENAI_COMPATIBLE,
-            AiProviders.DEEPL
-    };
-
-    private static final String[] ROMANIZATION_PROVIDERS = {
-            AiProviders.GOOGLE,
-            AiProviders.LOCAL,
-            AiProviders.GEMINI,
-            AiProviders.OPENROUTER,
-            AiProviders.OPENAI,
-            AiProviders.OPENAI_COMPATIBLE
-    };
-
     private static final String TRANSLATION_LABEL_PREFIX = "morphe_music_lyrics_translation_provider_";
-    private static final String ROMANIZATION_LABEL_PREFIX = "morphe_music_lyrics_romanization_provider_";
 
     private boolean dialogShowing = false;
 
@@ -100,9 +80,7 @@ public class LyricsAiConfigPreference extends Preference
     }
 
     private void updateSummary() {
-        setSummary(str("morphe_music_lyrics_ai_config_summary",
-                str(TRANSLATION_LABEL_PREFIX + Settings.LYRICS_TRANSLATION_PROVIDER.get()),
-                str(ROMANIZATION_LABEL_PREFIX + Settings.LYRICS_ROMANIZATION_PROVIDER.get())));
+        setSummary(str("morphe_music_lyrics_ai_config_summary"));
     }
 
     @Override
@@ -117,13 +95,8 @@ public class LyricsAiConfigPreference extends Preference
         getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
     }
 
-    /** The providers can also be picked from their own list preferences. */
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
-        if (Settings.LYRICS_TRANSLATION_PROVIDER.key.equals(key)
-                || Settings.LYRICS_ROMANIZATION_PROVIDER.key.equals(key)) {
-            updateSummary();
-        }
     }
 
     @Override
@@ -155,15 +128,6 @@ public class LyricsAiConfigPreference extends Preference
         instructionParams.bottomMargin = Dim.dp12;
         content.addView(instruction, instructionParams);
 
-        final String[] selectedTranslation = {Settings.LYRICS_TRANSLATION_PROVIDER.get()};
-        final String[] selectedRomanization = {Settings.LYRICS_ROMANIZATION_PROVIDER.get()};
-        content.addView(createLabel(context, "morphe_music_lyrics_ai_config_translation_provider_label"));
-        Button translationButton = createButton(context, str(TRANSLATION_LABEL_PREFIX + selectedTranslation[0]));
-        content.addView(translationButton);
-        content.addView(createLabel(context, "morphe_music_lyrics_ai_config_romanization_provider_label"));
-        Button romanizationButton = createButton(context, str(ROMANIZATION_LABEL_PREFIX + selectedRomanization[0]));
-        content.addView(romanizationButton);
-
         final String[] endpointFilter = {"all"};
         content.addView(createLabel(context, "morphe_music_lyrics_ai_config_endpoint_label"));
         Button endpointFilterButton = createButton(context, str("morphe_music_lyrics_ai_config_show_all"));
@@ -184,7 +148,7 @@ public class LyricsAiConfigPreference extends Preference
             }
             Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
             Utils.runOnBackgroundThread(() -> {
-                List<String> res = GeminiClient.mapLines(key, model, "Translate to Japanese:\n1. hello", java.util.Collections.singletonList("hello"));
+                List<String> res = GeminiClient.mapLines(key, model, "Translate to Japanese:\n1. hello", Collections.singletonList("hello"));
                 Utils.runOnMainThread(() -> {
                     if (res != null && !res.isEmpty()) {
                         Utils.showToastShort("Gemini: Connected! (" + res.get(0) + ")");
@@ -212,7 +176,7 @@ public class LyricsAiConfigPreference extends Preference
             }
             Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
             Utils.runOnBackgroundThread(() -> {
-                List<String> res = OpenAIClient.mapLines(AiProviders.OPENROUTER_URL, key, model, "Translate to Japanese:\n1. hello", java.util.Collections.singletonList("hello"));
+                List<String> res = OpenAIClient.mapLines(AiProviders.OPENROUTER_URL, key, model, "Translate to Japanese:\n1. hello", Collections.singletonList("hello"));
                 Utils.runOnMainThread(() -> {
                     if (res != null && !res.isEmpty()) {
                         Utils.showToastShort("OpenRouter: Connected! (" + res.get(0) + ")");
@@ -240,7 +204,7 @@ public class LyricsAiConfigPreference extends Preference
             }
             Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
             Utils.runOnBackgroundThread(() -> {
-                List<String> res = OpenAIClient.mapLines(AiProviders.OPENAI_URL, key, model, "Translate to Japanese:\n1. hello", java.util.Collections.singletonList("hello"));
+                List<String> res = OpenAIClient.mapLines(AiProviders.OPENAI_URL, key, model, "Translate to Japanese:\n1. hello", Collections.singletonList("hello"));
                 Utils.runOnMainThread(() -> {
                     if (res != null && !res.isEmpty()) {
                         Utils.showToastShort("OpenAI: Connected! (" + res.get(0) + ")");
@@ -262,12 +226,6 @@ public class LyricsAiConfigPreference extends Preference
         EditText compatibleModelInput = addModelInput(compatibleSection, Settings.LYRICS_AI_MODEL.get(),
                 () -> OpenAIClient.fetchModels(compatibleUrlInput.getText().toString().trim(),
                         compatibleTokenInput.getText().toString().trim()));
-        EditText promptInput = addInput(compatibleSection, "morphe_music_lyrics_ai_config_prompt_label",
-                Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), false);
-        makeMultiLine(promptInput, 3, 6);
-        EditText promptRomajiInput = addInput(compatibleSection, "morphe_music_lyrics_ai_config_prompt_romaji_label",
-                Settings.LYRICS_AI_ROMANIZATION_PROMPT.get(), false);
-        makeMultiLine(promptRomajiInput, 3, 6);
         EditText extraBodyInput = addInput(compatibleSection, "morphe_music_lyrics_ai_config_extra_body_label",
                 Settings.LYRICS_AI_EXTRA_BODY.get(), false);
         makeMultiLine(extraBodyInput, 2, 5);
@@ -305,7 +263,7 @@ public class LyricsAiConfigPreference extends Preference
             }
             Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
             Utils.runOnBackgroundThread(() -> {
-                List<String> res = DeepLClient.translate(java.util.Collections.singletonList("hello"), "JA", key);
+                List<String> res = DeepLClient.translate(Collections.singletonList("hello"), "JA", key);
                 Utils.runOnMainThread(() -> {
                     if (res != null && !res.isEmpty()) {
                         Utils.showToastShort("DeepL: Connected! (" + res.get(0) + ")");
@@ -317,18 +275,24 @@ public class LyricsAiConfigPreference extends Preference
         });
         content.addView(deepLSection);
 
+        // AI Prompt Templates.
+        LinearLayout promptSection = createSection(context, "morphe_music_lyrics_ai_prompt_dialog_title");
+        EditText promptInput = addInput(promptSection, "morphe_music_lyrics_ai_config_prompt_label",
+                Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), false);
+        makeMultiLine(promptInput, 3, 6);
+        EditText promptRomajiInput = addInput(promptSection, "morphe_music_lyrics_ai_config_prompt_romaji_label",
+                Settings.LYRICS_AI_ROMANIZATION_PROMPT.get(), false);
+        makeMultiLine(promptRomajiInput, 3, 6);
+        content.addView(promptSection);
+
         Runnable updateVisibility = () -> {
             boolean showAll = "all".equals(endpointFilter[0]);
-            geminiSection.setVisibility(showAll || AiProviders.GEMINI.equals(endpointFilter[0])
-                    || isUsed(AiProviders.GEMINI, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
-            openRouterSection.setVisibility(showAll || AiProviders.OPENROUTER.equals(endpointFilter[0])
-                    || isUsed(AiProviders.OPENROUTER, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
-            openAiSection.setVisibility(showAll || AiProviders.OPENAI.equals(endpointFilter[0])
-                    || isUsed(AiProviders.OPENAI, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
-            compatibleSection.setVisibility(showAll || AiProviders.OPENAI_COMPATIBLE.equals(endpointFilter[0])
-                    || isUsed(AiProviders.OPENAI_COMPATIBLE, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
-            deepLSection.setVisibility(showAll || AiProviders.DEEPL.equals(endpointFilter[0])
-                    || isUsed(AiProviders.DEEPL, selectedTranslation[0], selectedRomanization[0]) ? View.VISIBLE : View.GONE);
+            geminiSection.setVisibility(showAll || AiProviders.GEMINI.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
+            openRouterSection.setVisibility(showAll || AiProviders.OPENROUTER.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
+            openAiSection.setVisibility(showAll || AiProviders.OPENAI.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
+            compatibleSection.setVisibility(showAll || AiProviders.OPENAI_COMPATIBLE.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
+            deepLSection.setVisibility(showAll || AiProviders.DEEPL.equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
+            promptSection.setVisibility(showAll || "prompts".equals(endpointFilter[0]) ? View.VISIBLE : View.GONE);
         };
         updateVisibility.run();
 
@@ -339,7 +303,8 @@ public class LyricsAiConfigPreference extends Preference
                     AiProviders.OPENROUTER,
                     AiProviders.OPENAI,
                     AiProviders.OPENAI_COMPATIBLE,
-                    AiProviders.DEEPL
+                    AiProviders.DEEPL,
+                    "prompts"
             };
             String[] filterLabels = {
                     str("morphe_music_lyrics_ai_config_show_all"),
@@ -347,7 +312,8 @@ public class LyricsAiConfigPreference extends Preference
                     str(TRANSLATION_LABEL_PREFIX + AiProviders.OPENROUTER),
                     str(TRANSLATION_LABEL_PREFIX + AiProviders.OPENAI),
                     str(TRANSLATION_LABEL_PREFIX + AiProviders.OPENAI_COMPATIBLE),
-                    str(TRANSLATION_LABEL_PREFIX + AiProviders.DEEPL)
+                    str(TRANSLATION_LABEL_PREFIX + AiProviders.DEEPL),
+                    str("morphe_music_lyrics_ai_prompt_dialog_title")
             };
             CustomDialogListPreference.createListDialog(context,
                     str("morphe_music_lyrics_ai_config_endpoint_label"),
@@ -358,21 +324,6 @@ public class LyricsAiConfigPreference extends Preference
                     }).show();
         });
 
-        translationButton.setOnClickListener(v -> showProviderPicker(context,
-                "morphe_music_lyrics_ai_config_translation_provider_label",
-                TRANSLATION_PROVIDERS, TRANSLATION_LABEL_PREFIX, selectedTranslation[0], provider -> {
-                    selectedTranslation[0] = provider;
-                    translationButton.setText(str(TRANSLATION_LABEL_PREFIX + provider));
-                    updateVisibility.run();
-                }));
-        romanizationButton.setOnClickListener(v -> showProviderPicker(context,
-                "morphe_music_lyrics_ai_config_romanization_provider_label",
-                ROMANIZATION_PROVIDERS, ROMANIZATION_LABEL_PREFIX, selectedRomanization[0], provider -> {
-                    selectedRomanization[0] = provider;
-                    romanizationButton.setText(str(ROMANIZATION_LABEL_PREFIX + provider));
-                    updateVisibility.run();
-                }));
-
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
                 str("morphe_music_lyrics_ai_config_dialog_title"),
@@ -381,20 +332,16 @@ public class LyricsAiConfigPreference extends Preference
                 str("morphe_settings_save"),
                 () -> {
                     String extraBody = extraBodyInput.getText().toString().trim();
-                    // Nothing is sent until this parses, so a body that will not is refused here, not saved.
                     if (!OpenAIClient.isValidExtraBody(extraBody)) {
                         Utils.showToastShort(str("morphe_music_lyrics_ai_extra_body_invalid"));
                         return;
                     }
                     String baseUrl = compatibleUrlInput.getText().toString().trim();
-                    if (isUsed(AiProviders.OPENAI_COMPATIBLE, selectedTranslation[0], selectedRomanization[0])
-                            && !baseUrl.startsWith("http://") && !baseUrl.startsWith("https://")) {
+                    if (!baseUrl.isEmpty() && !baseUrl.startsWith("http://") && !baseUrl.startsWith("https://")) {
                         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
                         return;
                     }
                     Settings.LYRICS_AI_EXTRA_BODY.save(extraBody);
-                    Settings.LYRICS_TRANSLATION_PROVIDER.save(selectedTranslation[0]);
-                    Settings.LYRICS_ROMANIZATION_PROVIDER.save(selectedRomanization[0]);
                     Settings.LYRICS_GEMINI_API_KEY.save(geminiKeyInput.getText().toString().trim());
                     Settings.LYRICS_GEMINI_MODEL.save(geminiModelInput.getText().toString().trim());
                     Settings.LYRICS_OPENROUTER_API_KEY.save(openRouterKeyInput.getText().toString().trim());
@@ -408,19 +355,12 @@ public class LyricsAiConfigPreference extends Preference
                     Settings.LYRICS_AI_ROMANIZATION_PROMPT.save(promptRomajiInput.getText().toString().trim());
                     Settings.LYRICS_DEEPL_API_KEY.save(deepLKeyInput.getText().toString().trim());
 
-                    if (AiProviders.LOCAL.equals(selectedRomanization[0])) {
-                        if (!JapaneseDictStore.isReady()) JapaneseDictStore.ensure(null);
-                        if (!PinyinDictStore.isReady()) PinyinDictStore.ensure(null);
-                    }
-
                     updateSummary();
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_saved"));
                 },
                 null,
                 str("morphe_settings_reset"),
                 () -> {
-                    Settings.LYRICS_TRANSLATION_PROVIDER.resetToDefault();
-                    Settings.LYRICS_ROMANIZATION_PROVIDER.resetToDefault();
                     Settings.LYRICS_GEMINI_API_KEY.resetToDefault();
                     Settings.LYRICS_GEMINI_MODEL.resetToDefault();
                     Settings.LYRICS_OPENROUTER_API_KEY.resetToDefault();
@@ -431,6 +371,7 @@ public class LyricsAiConfigPreference extends Preference
                     Settings.LYRICS_AI_API_TOKEN.resetToDefault();
                     Settings.LYRICS_AI_MODEL.resetToDefault();
                     Settings.LYRICS_AI_TRANSLATION_PROMPT.resetToDefault();
+                    Settings.LYRICS_AI_ROMANIZATION_PROMPT.resetToDefault();
                     Settings.LYRICS_AI_EXTRA_BODY.resetToDefault();
                     Settings.LYRICS_DEEPL_API_KEY.resetToDefault();
                     updateSummary();
@@ -455,28 +396,6 @@ public class LyricsAiConfigPreference extends Preference
             dialogShowing = false;
             Logger.printException(() -> "Could not show the AI settings dialog", ex);
         }
-    }
-
-    private static boolean isUsed(String provider, String translation, String romanization) {
-        return provider.equals(translation) || provider.equals(romanization);
-    }
-
-    private static void setShown(View section, String provider, String translation, String romanization) {
-        section.setVisibility(isUsed(provider, translation, romanization) ? View.VISIBLE : View.GONE);
-    }
-
-    private interface OnProviderSelected {
-        void onSelected(String provider);
-    }
-
-    private static void showProviderPicker(Context context, String titleKey, String[] providers,
-                                           String labelPrefix, String selected, OnProviderSelected onSelected) {
-        String[] labels = new String[providers.length];
-        for (int i = 0; i < providers.length; i++) {
-            labels[i] = str(labelPrefix + providers[i]);
-        }
-        CustomDialogListPreference.createListDialog(context, str(titleKey), labels, providers,
-                selected, index -> onSelected.onSelected(providers[index])).show();
     }
 
     private static LinearLayout createSection(Context context, String titleKey) {

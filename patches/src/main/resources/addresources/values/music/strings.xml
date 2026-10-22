@@ -687,7 +687,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_use_ai_section_title">AI Section</string>
     <string name="morphe_music_lyrics_use_ai_section_summary">Only used when the provider ships no section labels such as Chorus or Verse, which your OpenAI-compatible model then detects</string>
     <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; Cloud Endpoints</string>
-    <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configure translation and romanization providers (Google, Gemini, OpenRouter, OpenAI, Custom API, or DeepL).</string>
+    <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configure API keys, models, endpoints, and prompt templates for AI providers.</string>
     <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://text.pollinations.ai/openai)</string>
     <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt Template</string>
     <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
@@ -721,7 +721,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_ai_config_prompt_romaji_label" translatable="false">Romanization prompt</string>
     <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra request body (optional JSON)</string>
     <string name="morphe_music_lyrics_ai_config_deepl_key_label">Authentication key (Free or Pro)</string>
-    <string name="morphe_music_lyrics_ai_config_summary">Translation: %1$s\nRomanization: %2$s</string>
+    <string name="morphe_music_lyrics_ai_config_summary">Configure API keys, models, endpoints, and prompts</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>
