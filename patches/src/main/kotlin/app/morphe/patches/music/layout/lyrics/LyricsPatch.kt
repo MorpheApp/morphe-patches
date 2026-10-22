@@ -132,14 +132,15 @@ val lyricsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
                     SwitchPreference("morphe_music_lyrics_keep_screen_on", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true)
+                    SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true)
                 )
             ),
             PreferenceCategory(
                 key = "morphe_music_lyrics_section_translation",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
                     ListPreference(
                         key = "morphe_music_lyrics_translation_provider"
                     ),
@@ -154,7 +155,6 @@ val lyricsPatch = bytecodePatch(
                 key = "morphe_music_lyrics_section_romanization",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
                     ListPreference(
                         key = "morphe_music_lyrics_romanization_provider"
                     ),

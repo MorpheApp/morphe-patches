@@ -1170,22 +1170,24 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 gapAnchors[anchor] = true;
             }
         }
-        // A duet puts its second singer on the far side, which for a right to left song is the left.
+        // A duet puts its second singer on the opposite side of each line's natural direction.
         boolean isDuetSong = false;
-        boolean songHasRtl = false;
         for (LyricsLine l : newLyrics.lines()) {
-            isDuetSong |= l.isDuet();
-            songHasRtl |= ScriptDetector.containsRtl(l.text());
+            if (l.isDuet()) {
+                isDuetSong = true;
+                break;
+            }
         }
         final boolean[] lineRightAligned = new boolean[newLyrics.lines().size()];
         for (int i = 0; i < lineRightAligned.length; i++) {
             LyricsLine l = newLyrics.lines().get(i);
+            boolean lineRtl = ScriptDetector.isLineRtl(l.text());
             lineRightAligned[i] = isDuetSong
-                    ? songHasRtl != l.isDuet()
-                    : ScriptDetector.containsRtl(l.text());
+                    ? (lineRtl ? !l.isDuet() : l.isDuet())
+                    : lineRtl;
         }
-        final int duetSideInset = Math.max(Dim.dp(48),
-                (int) (context.getResources().getDisplayMetrics().widthPixels * 0.18f));
+        final int duetSideInset = Math.max(Dim.dp(24),
+                (int) (context.getResources().getDisplayMetrics().widthPixels * 0.09f));
 
         for (int i = 0; i < newLyrics.lines().size(); i++) {
             LyricsLine line = newLyrics.lines().get(i);
@@ -1227,7 +1229,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 gapOrigStart = prevView.originalTextStart;
             } else {
                 String rawText = line.text().isEmpty() ? "♪" : line.text();
-                boolean isRtl = ScriptDetector.containsRtl(rawText);
+                boolean isRtl = ScriptDetector.isLineRtl(rawText);
                 SpannableString initialText = new SpannableString(rawText);
                 initialText.setSpan(new AlignmentSpan.Standard(LyricsSpanBuilder.resolveAlignment(isRtl, isRightAligned)),
                         0, initialText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

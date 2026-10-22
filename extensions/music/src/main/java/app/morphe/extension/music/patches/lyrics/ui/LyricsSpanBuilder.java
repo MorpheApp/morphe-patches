@@ -947,7 +947,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
         if (text == null || text.length() == 0) {
             return false;
         }
-        return ScriptDetector.containsRtl(text);
+        return ScriptDetector.isLineRtl(text);
     }
 
     public static Layout.Alignment resolveAlignment(boolean isRtl, boolean isRightAligned) {
