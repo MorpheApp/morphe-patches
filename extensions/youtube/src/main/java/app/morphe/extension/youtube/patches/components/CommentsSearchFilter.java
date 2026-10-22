@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3942
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -31,6 +31,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -64,9 +67,9 @@ public final class CommentsSearchFilter extends Filter {
             ResourceUtils.getIdentifier(ResourceType.ID, "close_button");
 
     /**
-     * Words of the search, all of which a comment must contain, or empty if not searching.
+     * Words and phrases of the search, all of which a comment must contain, or empty if not searching.
      */
-    private static volatile List<String> searchWords = Collections.emptyList();
+    private static volatile List<String> searchTerms = Collections.emptyList();
     private static volatile String searchText = "";
     /**
      * The search applies only to the comments of the video it was made for.
@@ -74,6 +77,16 @@ public final class CommentsSearchFilter extends Filter {
     private static volatile String searchVideoId = "";
 
     private static final String COMMENT_THREAD_PATH = "comment_thread.eml";
+
+    /**
+     * Shortest text of a buffer that is taken as an id, such as the id of a comment
+     * or the token that loads its replies.
+     */
+    private static final int MIN_ID_LENGTH = 24;
+    private static final int MAX_IDS_PER_COMMENT = 40;
+    private static final int MAX_IDS = 4000;
+
+    private static final Pattern SEARCH_TERM_PATTERN = Pattern.compile("\"([^\"]*)\"|(\\S+)");
 
     /**
      * The comment of each thread is laid out from its outermost component to its innermost.
@@ -85,18 +98,32 @@ public final class CommentsSearchFilter extends Filter {
      */
     private static final ThreadLocal<CommentDecision> lastComment = new ThreadLocal<>();
 
+    /**
+     * Comments of the ids found in their buffers. The button that shows the replies of a comment
+     * is not inside the comment, and it's found by the ids it shares with its comment,
+     * as it can be laid out apart from its comment, such as when scrolling back to it.
+     */
+    private static final Map<String, CommentDecision> commentIds = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(MAX_IDS));
+
+    /**
+     * Marks an id found in comments that are shown and in comments that are hidden,
+     * such as an id of the layout, which tells nothing of the comment.
+     */
+    private static final CommentDecision AMBIGUOUS_ID = new CommentDecision("", Collections.emptyList(), false);
+
     private static final class CommentDecision {
         final String path;
-        final List<String> words;
+        final List<String> terms;
         final boolean hidden;
         /**
          * If the replies of the hidden comment, which are laid out after it, are not yet hidden.
          */
         boolean hideReplies;
 
-        CommentDecision(String path, List<String> words, boolean hidden) {
+        CommentDecision(String path, List<String> terms, boolean hidden) {
             this.path = path;
-            this.words = words;
+            this.terms = terms;
             this.hidden = hidden;
             this.hideReplies = hidden;
         }
@@ -129,26 +156,21 @@ public final class CommentsSearchFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        List<String> words = searchWords;
-        if (words.isEmpty() || !isSearchForCurrentVideo()) {
+        List<String> terms = searchTerms;
+        if (terms.isEmpty() || !isSearchForCurrentVideo()) {
             return false;
         }
 
         CommentDecision last = lastComment.get();
-        final boolean isCommentThread = Utils.contains(path, COMMENT_THREAD_PATH);
 
         if (matchedGroup == commentReplies) {
-            if (isCommentThread || last == null || last.words != words || !last.hideReplies) {
-                return false;
+            if (Utils.contains(path, COMMENT_THREAD_PATH)) {
+                return false; // Part of a comment.
             }
-            // The replies are a single component, and its inner components are not laid out once it's hidden.
-            last.hideReplies = false;
-            String repliesPath = path.toString();
-            Logger.printDebug(() -> "Hiding replies of hidden comment: " + repliesPath);
-            return true;
+            return isRepliesHidden(path, buffer, terms, last);
         }
 
-        if (last != null && last.words == words
+        if (last != null && last.terms == terms
                 && path.length() > last.path.length() && Utils.startsWith(path, last.path)) {
             // Inner component of the comment that was already searched.
             return last.hidden;
@@ -159,21 +181,125 @@ public final class CommentsSearchFilter extends Filter {
         }
 
         // The buffer is not text, but the text of the comment is in it as UTF-8.
-        String text = new String(buffer, StandardCharsets.UTF_8).toLowerCase(Locale.getDefault());
-        final boolean hidden = !containsAllWords(text, words);
+        String text = foldCase(new String(buffer, StandardCharsets.UTF_8));
+        final boolean hidden = !containsAllTerms(text, terms);
         String commentPath = path.toString();
-        lastComment.set(new CommentDecision(commentPath, words, hidden));
+        CommentDecision decision = new CommentDecision(commentPath, terms, hidden);
+        lastComment.set(decision);
+        rememberIds(buffer, decision);
         Logger.printDebug(() -> (hidden ? "Hiding comment: " : "Showing comment: ") + commentPath);
         return hidden;
     }
 
-    private static boolean containsAllWords(String text, List<String> words) {
-        for (String word : words) {
-            if (!text.contains(word)) {
+    private static boolean isRepliesHidden(CharSequence path, byte[] buffer,
+                                           List<String> terms, @Nullable CommentDecision last) {
+        boolean foundHiddenComment = false;
+        for (String id : findIds(buffer)) {
+            CommentDecision decision = commentIds.get(id);
+            if (decision == null || decision == AMBIGUOUS_ID || decision.terms != terms) {
+                continue;
+            }
+            if (!decision.hidden) {
+                // Replies of a shown comment are never hidden by an id shared with another comment.
+                return false;
+            }
+            foundHiddenComment = true;
+        }
+
+        if (foundHiddenComment) {
+            if (last != null && last.hideReplies) {
+                last.hideReplies = false;
+            }
+        } else if (last != null && last.terms == terms && last.hideReplies) {
+            // No id is shared with a comment, so the replies are of the comment laid out before them.
+            last.hideReplies = false;
+        } else {
+            return false;
+        }
+
+        String repliesPath = path.toString();
+        Logger.printDebug(() -> "Hiding replies of hidden comment: " + repliesPath);
+        return true;
+    }
+
+    private static void rememberIds(byte[] buffer, CommentDecision decision) {
+        for (String id : findIds(buffer)) {
+            CommentDecision existing = commentIds.get(id);
+            if (existing == null || existing.terms != decision.terms
+                    // The same comment, such as when scrolled back to, or a comment of the same result.
+                    || (existing != AMBIGUOUS_ID && existing.hidden == decision.hidden)) {
+                commentIds.put(id, decision);
+            } else {
+                commentIds.put(id, AMBIGUOUS_ID);
+            }
+        }
+    }
+
+    /**
+     * @return Texts of the buffer that look like ids, such as the id of the comment.
+     */
+    private static List<String> findIds(byte[] buffer) {
+        List<String> ids = new ArrayList<>();
+        int start = -1;
+        for (int i = 0, length = buffer.length; i <= length; i++) {
+            if (i < length && isIdCharacter(buffer[i])) {
+                if (start < 0) start = i;
+                continue;
+            }
+            if (start >= 0) {
+                if (i - start >= MIN_ID_LENGTH) {
+                    ids.add(new String(buffer, start, i - start, StandardCharsets.US_ASCII));
+                    if (ids.size() >= MAX_IDS_PER_COMMENT) break;
+                }
+                start = -1;
+            }
+        }
+        return ids;
+    }
+
+    private static boolean isIdCharacter(byte b) {
+        return (b >= 'A' && b <= 'Z')
+                || (b >= 'a' && b <= 'z')
+                || (b >= '0' && b <= '9')
+                || b == '-' || b == '_';
+    }
+
+    private static boolean containsAllTerms(String text, List<String> terms) {
+        for (String term : terms) {
+            if (!text.contains(term)) {
                 return false;
             }
         }
         return true;
+    }
+
+    /**
+     * Ignores the case, and the dotted and dotless i of Turkish, whatever the language of the device.
+     * Otherwise, with a Turkish device "IPHONE" is not found when searching "iphone".
+     */
+    private static String foldCase(String text) {
+        return text.toLowerCase(Locale.ROOT)
+                .replace("\u0307", "") // Dot of 'İ' as lowercase.
+                .replace('\u0131', 'i'); // Dotless 'ı'.
+    }
+
+    /**
+     * @return Words and quoted phrases of the search, all of which a comment must contain.
+     */
+    private static List<String> parseSearch(String text) {
+        List<String> terms = new ArrayList<>();
+        Matcher matcher = SEARCH_TERM_PATTERN.matcher(foldCase(text));
+        while (matcher.find()) {
+            String phrase = matcher.group(1);
+            String term = phrase != null
+                    ? phrase.trim().replaceAll("\\s+", " ")
+                    // An unclosed quote is ignored.
+                    : matcher.group(2).replace("\"", "");
+            if (!term.isEmpty()) {
+                terms.add(term);
+            }
+        }
+        return terms;
     }
 
     private static boolean isSearchForCurrentVideo() {
@@ -181,23 +307,18 @@ public final class CommentsSearchFilter extends Filter {
     }
 
     private static boolean isSearching() {
-        return !searchWords.isEmpty() && isSearchForCurrentVideo();
+        return !searchTerms.isEmpty() && isSearchForCurrentVideo();
     }
 
     private static void setSearch(String text) {
         text = text.trim();
-        List<String> words = new ArrayList<>();
-        for (String word : text.toLowerCase(Locale.getDefault()).split("\\s+")) {
-            if (!word.isEmpty()) {
-                words.add(word);
-            }
-        }
+        List<String> terms = parseSearch(text);
 
-        // Set the video first, so a filter thread does not apply the words to another video.
+        // Set the video first, so a filter thread does not apply the terms to another video.
         searchVideoId = VideoInformation.getVideoId();
         searchText = text;
-        searchWords = Collections.unmodifiableList(words);
-        Logger.printDebug(() -> "Comments search: " + words);
+        searchTerms = Collections.unmodifiableList(terms);
+        Logger.printDebug(() -> "Comments search: " + terms);
     }
 
     /**
