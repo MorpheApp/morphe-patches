@@ -31,9 +31,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.matchSingle
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -308,19 +306,19 @@ val ambientModePatch = bytecodePatch(
         //
         // Disable fullscreen ambient mode.
         //
-        SetFullScreenBackgroundColorFingerprint.method.apply {
-            val insertIndex = indexOfFirstInstructionReversedOrThrow {
-                getReference<MethodReference>()?.name == "setBackgroundColor"
-            }
-            val register = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
+        SetFullScreenBackgroundColorFingerprint.let {
+            it.method.apply {
+                val insertIndex = it.instructionMatches.first().index
+                val register = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
 
-            addInstructions(
-                insertIndex,
-                """
-                    invoke-static { v$register }, $EXTENSION_CLASS->getFullScreenBackgroundColor(I)I
-                    move-result v$register
-                """,
-            )
+                addInstructions(
+                    insertIndex,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->getFullScreenBackgroundColor(I)I
+                        move-result v$register
+                    """
+                )
+            }
         }
     }
 }

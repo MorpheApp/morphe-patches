@@ -16,17 +16,12 @@ public final class Optional<T> {
     }
 
     /**
-     * @return {@code true} if a value is present, otherwise {@code false}
+     * Returns an empty {@code Optional} instance.
+     *
+     * @param <T> the type of the non-existent value
+     * @return an empty {@code Optional}
      */
-    public boolean isPresent() {
-        return false;
-    }
-
-    /**
-     * @return the non-{@code null} value described by this {@code Optional}
-     * @throws java.util.NoSuchElementException if no value is present
-     */
-    public T get() {
+    public static <T> Optional<T> empty() {
         return null;
     }
 

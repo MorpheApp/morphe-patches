@@ -139,13 +139,13 @@ internal object FullscreenGestureZoomFingerprint : Fingerprint (
  * it implements only OnScaleGestureListener and has both ScaleGestureDetector and GestureDetector fields.
  */
 internal object VideoZoomScaleBeginFingerprint : Fingerprint(
+    interfaces = listOf($$"Landroid/view/ScaleGestureDetector$OnScaleGestureListener;"),
     name = "onScaleBegin",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf("Landroid/view/ScaleGestureDetector;"),
     custom = { _, classDef ->
         classDef.interfaces.size == 1 &&
-            classDef.interfaces.contains($$"Landroid/view/ScaleGestureDetector$OnScaleGestureListener;") &&
             classDef.fields.any { it.type == "Landroid/view/ScaleGestureDetector;" } &&
             classDef.fields.any { it.type == "Landroid/view/GestureDetector;" }
     }

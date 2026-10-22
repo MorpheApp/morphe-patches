@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">การแตะและค้างไว้ที่ใดก็ได้บนวิดีโอฟีดจะเปิดเมนูของวิดีโอนั้น</string>
   <string name="morphe_feed_watch_later_button_title">แสดงปุ่มดูภายหลังบนภาพย่อ</string>
   <string name="morphe_feed_watch_later_button_summary">จะแสดงปุ่มดูภายหลังบนภาพย่อของวิดีโอในฟีด การแตะและค้างไว้จะทำให้บันทึกไปยังเพลย์ลิสต์</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">เพิ่มรายการ Ask ไปยังเมนูลอย</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">เพิ่มรายการสรุปวิดีโอไปยังเมนูลอยฟีด</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask จำเป็นต้องมีการเข้าสู่บัญชีในประเทศที่ Ask มีให้บริการ
+
+หลังจากเปิดวิดีโอที่มีปุ่ม Ask หนึ่งครั้ง ฟีเจอร์นี้จะใช้งานได้กับทุกวิดีโอ แม้ประเทศปัจจุบันไม่มีฟีเจอร์ Ask"</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">สรุปวิดีโอ</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">ไม่สามารถเปิด Ask สำหรับวิดีโอนี้ได้</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask ไม่พร้อมใช้งานสำหรับบัญชีหรือประเทศปัจจุบันของคุณ</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">แสดงจำนวนวิวบนภาพขนาดย่อ</string>
   <string name="morphe_feed_view_count_summary">จำนวนวิวของวิดีโอในฟีดจะถูกแสดงที่มุมซ้ายล่างของภาพขนาดย่อแทนที่จะอยู่ด้านล่างชื่อวิดีโอ วิดีโอบางรายการเช่นในชั้นอาจไม่แสดงจำนวนวิว</string>
@@ -793,6 +806,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">แก้ไขข้อความถอดเสียง</string>
   <string name="morphe_fix_transcript_summary">แก้ไขข้อผิดพลาดในการตรวจสอบเงื่อนไขเบื้องต้นที่อาจทำให้การโหลดข้อความถอดเสียงไม่สำเร็จ</string>
+  <string name="morphe_captions_in_pip_title">แสดงคำบรรยายในภาพซ้อนภาพ</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ปุ่มนำทาง</string>
   <string name="morphe_navigation_buttons_screen_summary">เลือกปุ่มที่จะปรากฏในแถบนำทางด้านล่าง</string>
@@ -1110,6 +1124,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">เล่น Shorts ถัดไปโดยอัตโนมัติแทนที่จะเล่นซ้ำ Shorts ปัจจุบัน</string>
   <string name="morphe_shorts_autoplay_background_title">เล่นอัตโนมัติในเบื้องหลัง</string>
   <string name="morphe_shorts_autoplay_background_summary">เล่น Shorts ถัดไปโดยอัตโนมัติระหว่างการเล่นในเบื้องหลัง</string>
+  <string name="morphe_skip_live_shorts_title">ข้าม Shorts แบบไลฟ์</string>
+  <string name="morphe_skip_live_shorts_summary">ข้ามสตรีมแบบไลฟ์ที่ปรากฏในฟีด Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">การเล่นในฟีด</string>
   <string name="morphe_playback_in_feeds_entry_always_on">เปิดตลอดเวลา</string>
@@ -1272,6 +1288,15 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_low">ต่ำ</string>
   <string name="morphe_playback_buffer_size_entry_medium">ปานกลาง</string>
   <string name="morphe_playback_buffer_size_entry_maximum">สูงสุด</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">ความล่าช้าของวิดีโอ</string>
+  <string name="morphe_video_delay_summary">ช่วยชะลอวิดีโอให้ซิงค์กับเสียงที่มีความล่าช้า เช่น หูฟังบลูทูธ (0-5000 มิลลิวินาที)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">ชะลอเฉพาะเมื่อใช้เสียงบลูทูธ</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">จะชะลอวิดีโอเฉพาะตอนเชื่อมต่อบลูทูธเท่านั้น ทำให้ลำโพงโทรศัพท์ยังคงซิงค์กัน</string>
+  <string name="morphe_video_delay_button_overlay_title">แสดงปุ่มความล่าช้าของวิดีโอ</string>
+  <string name="morphe_video_delay_button_overlay_summary">แตะค้างไว้เพื่อรีเซ็ตการชะลอเป็น 0 มิลลิวินาที</string>
+  <string name="morphe_video_delay_button_flyout_title">แสดงเมนูความล่าช้าของวิดีโอ</string>
+  <string name="morphe_video_delay_dialog_input_hint">ค่าการชะลอเป็นมิลลิวินาที</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">อัตโนมัติ</string>
@@ -1313,6 +1338,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">การแจ้งเตือนการเปลี่ยนแปลงความเร็ว</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">แสดงการแจ้งเตือนเมื่อบันทึกความเร็วในการเล่นเริ่มต้นใหม่</string>
   <string name="morphe_playback_speed_default_title">ความเร็วในการเล่นเริ่มต้น</string>
+  <string name="morphe_shorts_playback_speed_default_title">ความเร็วในการเล่นเริ่มต้นบน Shorts</string>
   <string name="morphe_remember_playback_speed_toast">เปลี่ยนความเร็วในการเล่นเริ่มต้นเป็น: %s</string>
   <string name="morphe_disable_playback_speed_music_title">ใช้ความเร็วปกติสำหรับเพลง</string>
   <string name="morphe_disable_playback_speed_music_summary">เล่นวิดีโอเพลงด้วยความเร็ว 1.0x เสมอ</string>

@@ -47,7 +47,9 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
             SwitchPreference("morphe_back_button_always_exits_feed", summary = true)
         )
 
-        RecyclerViewTopScrollingFingerprint.let {
+        // FIXME? Originally this only changed the first match, but for a while this has matched
+        //        2 or more nearly identical methods in different classes.
+        recyclerViewTopScrollingFingerprint().matchAll(1..2).forEach {
             it.method.addInstructionsAtControlFlowLabel(
                 it.instructionMatches.last().index + 1,
                 "invoke-static { }, $EXTENSION_CLASS->onTopView()V"

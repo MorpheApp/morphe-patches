@@ -15,11 +15,9 @@ import com.android.tools.smali.dexlib2.AccessFlags
  * built-in 'Don't play music videos' setting can be reported as off from.
  */
 internal object SharedPreferencesGetBooleanFingerprint : Fingerprint(
+    interfaces = listOf("Landroid/content/SharedPreferences;"),
     name = "getBoolean",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
-    parameters = listOf("Ljava/lang/String;", "Z"),
-    custom = { _, classDef ->
-        classDef.interfaces.contains("Landroid/content/SharedPreferences;")
-    }
+    parameters = listOf("Ljava/lang/String;", "Z")
 )

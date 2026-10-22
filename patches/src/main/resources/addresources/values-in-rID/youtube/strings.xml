@@ -48,10 +48,10 @@ Beberapa tata letak sisi server mungkin tidak kembali.
 Perubahan mencakup:
 • Komponen di menu flyout pemutar (atau setelan terkait) mungkin tidak berfungsi
 • Angka bergulir tidak dianimasi
-• Tab perpustakaan ditampilkan
+• Tab Koleksi ditampilkan
 • Bagian musik dari deskripsi video mungkin tidak berfungsi
 • Item menu flyout pemutar tidak dapat disembunyikan
-• Tombol beralih akun mungkin tidak muncul di tab Perpustakaan"</string>
+• Tombol beralih akun mungkin tidak muncul di tab Koleksi"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Aktifkan penyaring menu feed flyout</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Penyaring menu feed flyout</string>
@@ -435,6 +435,19 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_feed_long_press_menu_summary">Mengetuk dan menahan di mana saja pada video umpan membuka menunya</string>
   <string name="morphe_feed_watch_later_button_title">Tampilkan tombol Tonton nanti pada thumbnail</string>
   <string name="morphe_feed_watch_later_button_summary">Tombol Tonton nanti ditampilkan pada thumbnail video umpan. Mengetuk dan menekannya akan membuka Simpan ke daftar putar</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Tambahkan item Ask ke menu flyout</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Menambahkan item ringkasan video ke menu flyout umpan</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask awalnya memerlukan akun yang sudah masuk di negara tempat Ask tersedia.
+
+Setelah video dengan tombol Ask dibuka satu kali, fitur ini berfungsi untuk semua video, bahkan jika negara saat ini tidak memiliki fitur Ask."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Ringkas video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Tidak dapat membuka Ask untuk video ini</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask tidak tersedia untuk akun atau negara Anda saat ini</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Tampilkan jumlah tayangan pada thumbnail</string>
   <string name="morphe_feed_view_count_summary">Jumlah tayangan video feed ditampilkan di sudut kiri bawah thumbnail mereka, bukan di bawah judul. Beberapa video, seperti di rak, mungkin tidak menampilkan jumlah tayangan</string>
@@ -793,6 +806,7 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Perbaiki transkrip</string>
   <string name="morphe_fix_transcript_summary">Memperbaiki prasyarat kegagalan pemeriksaan yang dapat menghalangi pemuatan transkrip</string>
+  <string name="morphe_captions_in_pip_title">Tampilkan teks bantuan dalam picture-in-picture</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Tombol navigasi</string>
   <string name="morphe_navigation_buttons_screen_summary">Pilih tombol mana yang akan ditampilkan di bilah navigasi bawah</string>
@@ -1110,6 +1124,8 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_shorts_autoplay_summary">Maju ke Short berikutnya secara otomatis daripada mengulang yang saat ini</string>
   <string name="morphe_shorts_autoplay_background_title">Putar otomatis di latar belakang</string>
   <string name="morphe_shorts_autoplay_background_summary">Beralih ke Short berikutnya secara otomatis saat pemutaran di latar belakang</string>
+  <string name="morphe_skip_live_shorts_title">Lewati Shorts langsung</string>
+  <string name="morphe_skip_live_shorts_summary">Melewati siaran langsung yang muncul di umpan Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Pemutaran di feed</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Selalu aktif</string>
@@ -1272,6 +1288,15 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <string name="morphe_playback_buffer_size_entry_low">Rendah</string>
   <string name="morphe_playback_buffer_size_entry_medium">Sedang</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maksimum</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Penundaan video</string>
+  <string name="morphe_video_delay_summary">Menunda video agar tetap sinkron dengan audio yang lambat, seperti headphone Bluetooth (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Hanya menunda dengan audio Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Hanya menunda video saat audio Bluetooth terhubung, sehingga speaker ponsel tetap sinkron</string>
+  <string name="morphe_video_delay_button_overlay_title">Tampilkan tombol penundaan video</string>
+  <string name="morphe_video_delay_button_overlay_summary">Ketuk dan tahan untuk mereset penundaan ke 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Tampilkan menu penundaan video</string>
+  <string name="morphe_video_delay_dialog_input_hint">Penundaan dalam milidetik</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Otomatis</string>
@@ -1313,6 +1338,7 @@ Video diminta dengan awalan pendek dari ID video yang di-hash, sehingga server t
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Notifikasi perubahan kecepatan</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Menampilkan notifikasi saat kecepatan pemutaran bawaan baru disimpan</string>
   <string name="morphe_playback_speed_default_title">Kecepatan pemutaran bawaan</string>
+  <string name="morphe_shorts_playback_speed_default_title">Kecepatan pemutaran default di Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Mengubah kecepatan bawaan menjadi: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Gunakan kecepatan normal untuk musik</string>
   <string name="morphe_disable_playback_speed_music_summary">Selalu putar video musik dengan kecepatan 1.0x</string>

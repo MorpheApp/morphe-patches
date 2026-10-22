@@ -160,9 +160,9 @@ internal class NativeRequestIdentityFingerprint(accountType: String) : Fingerpri
 
 // Stable protobuf extension number, scoped to the Parcelable response adapter.
 internal object NativeBrowseResponseFingerprint : Fingerprint(
+    interfaces = listOf("Landroid/os/Parcelable;"),
     parameters = listOf(),
-    filters = listOf(literal(58173949)),
-    custom = { _, classDef -> "Landroid/os/Parcelable;" in classDef.interfaces }
+    filters = listOf(literal(58173949))
 )
 
 /**

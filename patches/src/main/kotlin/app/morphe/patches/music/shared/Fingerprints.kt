@@ -38,7 +38,7 @@ internal fun Fingerprint.hookMediaSessionArgument(extensionMethod: String) {
     clearMatch()
 
     method.apply {
-        val index = instructionMatches.first().index
+        val index = instructionMatches.last().index
         val register = getInstruction<FiveRegisterInstruction>(index).registerD
         addInstruction(index, "invoke-static { v$register }, $extensionMethod")
     }

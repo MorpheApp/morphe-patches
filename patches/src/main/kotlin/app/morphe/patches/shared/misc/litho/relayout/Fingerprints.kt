@@ -24,6 +24,7 @@ internal const val COMPONENT_TEXT_CONTENT = "Lcom/facebook/litho/TextContent;"
  * and passed to the component tree that calculates the layout again if set.
  */
 internal object LithoViewOnMeasureFingerprint : Fingerprint(
+    superclass = COMPONENT_HOST_CLASS,
     name = "onMeasure",
     returnType = "V",
     parameters = listOf("I", "I"),
@@ -45,10 +46,7 @@ internal object LithoViewOnMeasureFingerprint : Fingerprint(
             parameters = listOf("I", "I", "[I", "Z"),
             location = MatchAfterWithin(20)
         )
-    ),
-    custom = { _, classDef ->
-        classDef.superclass == COMPONENT_HOST_CLASS
-    }
+    )
 )
 
 /**

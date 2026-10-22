@@ -435,6 +435,19 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_feed_long_press_menu_summary">Genom att trycka och hålla någonstans på en flödesvideo öppnas dess meny</string>
   <string name="morphe_feed_watch_later_button_title">Visa knappen \"Titta senare\" på miniatyrbilder</string>
   <string name="morphe_feed_watch_later_button_summary">En \"Titta senare\"-knapp visas på miniatyrbilderna för flödesvideor. Genom att trycka och hålla öppnas Spara i spellista</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Lägg till Ask-objekt i flygutmatningsmenyn</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Lägger till ett objekt för sammanfattning av video i flödesflygutmatningsmenyn</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask kräver initialt att du är inloggad med ett konto från ett land där Ask finns tillgängligt.
+
+När en video med Ask-knappen har öppnats en gång fungerar funktionen med alla videor, även om ditt nuvarande land inte har Ask-funktionen."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Sammanfatta videon</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Det gick inte att öppna Ask för denna video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask finns inte tillgängligt för ditt konto eller för ditt nuvarande land</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Visa antal visningar på miniatyrbilder</string>
   <string name="morphe_feed_view_count_summary">Antalet visningar för flodvideor visas längst ner till vänster på deras miniatyrbilder istället för under titeln. Vissa videor, som i hyllor, kan inte visa ett visningsantal</string>
@@ -793,6 +806,7 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Åtgärda transkription</string>
   <string name="morphe_fix_transcript_summary">Åtgärdar ett fel i en villkorskontroll som kan förhindra att transkriptionen läses in</string>
+  <string name="morphe_captions_in_pip_title">Visa bild-i-bild-undertexter</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigeringsknappar</string>
   <string name="morphe_navigation_buttons_screen_summary">Välj vilka knappar som visas i navigeringsfältet längst ned</string>
@@ -1110,6 +1124,8 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_shorts_autoplay_summary">Fortsätter till nästa Shorts-video automatiskt istället för att upprepa den aktuella</string>
   <string name="morphe_shorts_autoplay_background_title">Automatisk uppspelning i bakgrunden</string>
   <string name="morphe_shorts_autoplay_background_summary">Fortsätter till nästa Shorts-video automatiskt under uppspelning i bakgrunden</string>
+  <string name="morphe_skip_live_shorts_title">Hoppa över live-Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Hoppa över live-sändningar som visas i Shorts-feeden</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Uppspelning i flöden</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Alltid på</string>
@@ -1272,6 +1288,15 @@ Videor begärs med ett kort prefix av den hashade videons ID, så servern kan in
   <string name="morphe_playback_buffer_size_entry_low">Låg</string>
   <string name="morphe_playback_buffer_size_entry_medium">Medel</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maximal</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Fördröjning av video</string>
+  <string name="morphe_video_delay_summary">Fördröjer videon för att hålla den synkron med laggig ljud, till exempel Bluetooth-hörlurar (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Endast fördröjning med Bluetooth-ljud</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Fördröjer endast videon när Bluetooth-ljud är anslutet, så telefonhögtalaren stannar i fas</string>
+  <string name="morphe_video_delay_button_overlay_title">Visa knapp för videofördröjning</string>
+  <string name="morphe_video_delay_button_overlay_summary">Tryck och håll för att återställa fördröjningen till 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Visa meny för videofördröjning</string>
+  <string name="morphe_video_delay_dialog_input_hint">Fördröjning i millisekunder</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatiskt</string>
@@ -1313,6 +1338,7 @@ Videor begärs med ett kort prefix av den hashade videons ID, så servern kan in
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Meddelanden om hastighetsändringar</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Visar ett meddelande när en ny standarduppspelningshastighet sparas</string>
   <string name="morphe_playback_speed_default_title">Standarduppspelningshastighet</string>
+  <string name="morphe_shorts_playback_speed_default_title">Standarduppspelningshastighet för Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Ändrade standardhastigheten till: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Använd normal hastighet för musik</string>
   <string name="morphe_disable_playback_speed_music_summary">Spela alltid musikvideor i 1,0x hastighet</string>

@@ -247,6 +247,7 @@ internal object PlaybackSpeedMenuSpeedChangedFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("L"),
     filters = listOf(
+        opcode(Opcode.IF_EQZ),
         fieldAccess(opcode = Opcode.IGET, type = "F")
     )
 )

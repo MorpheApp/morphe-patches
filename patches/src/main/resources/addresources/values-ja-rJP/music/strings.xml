@@ -17,13 +17,13 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.androidauto.androidAutoPatch -->
-  <string name="morphe_music_android_auto_last_played">再生済</string>
+  <string name="morphe_music_android_auto_last_played">最近再生した曲</string>
   <string name="morphe_music_android_auto_subscriptions">登録チャンネル</string>
   <string name="morphe_music_android_auto_videos">動画</string>
   <string name="morphe_music_android_auto_other_results">その他の結果</string>
-  <string name="morphe_music_android_auto_uploaded_songs">アップロードされた曲</string>
-  <string name="morphe_music_android_auto_uploaded_albums">アップロードされたアルバム</string>
-  <string name="morphe_music_android_auto_uploaded_artists">アップロードされたアーティスト</string>
+  <string name="morphe_music_android_auto_uploaded_songs">アップロードした曲</string>
+  <string name="morphe_music_android_auto_uploaded_albums">アップロードしたアルバム</string>
+  <string name="morphe_music_android_auto_uploaded_artists">アップロードしたアーティスト</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">一時停止 / 再開を使用するには、ホスト側の Jam パッチを更新してください</string>
   <string name="morphe_music_jam_probe_title">Jam キューの共有</string>
@@ -541,20 +541,20 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_word_sync_summary">利用可能な場合は単語ごとの歌詞を優先します。歌詞に単語タイミングがある場合、音楽に合わせて各単語または音節をハイライトします</string>
   <string name="morphe_music_lyrics_split_background_title">バックコーラスを分離して表示</string>
   <string name="morphe_music_lyrics_split_background_summary">「(Oh) I want you」のように括弧で囲まれたバックコーラスを、歌詞の行から分離し、専用の独立した行に薄く表示します</string>
-  <string name="morphe_music_lyrics_hide_played_title">再生済み […] 行を非表示</string>
-  <string name="morphe_music_lyrics_hide_played_summary">現在再生中の行より上の歌詞行を非表示にする</string>
+  <string name="morphe_music_lyrics_hide_played_title">再生済みの歌詞を非表示</string>
+  <string name="morphe_music_lyrics_hide_played_summary">現在再生中の行より上に表示される歌詞を非表示にします</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">未再生の歌詞を非表示</string>
-  <string name="morphe_music_lyrics_hide_unplayed_summary">現在再生中の […] 画面より下の歌詞行を非表示</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">現在再生中の行より下に表示される歌詞を非表示にします</string>
   <string name="morphe_music_lyrics_mediasession_title">ロック画面に MediaSession の歌詞を表示する</string>
   <string name="morphe_music_lyrics_mediasession_summary">ロック画面、Android Auto、Bluetooth で現在の行を表示。Android 11 以降が必要</string>
   <string name="morphe_music_lyrics_miniplayer_title">ミニプレイヤーの歌詞を表示</string>
   <string name="morphe_music_lyrics_miniplayer_summary">ミニプレイヤーで現在行を表示し、トラックをサブタイトルに移動</string>
   <string name="morphe_music_lyrics_display_artist_first_title">メディアセッションでアーティスト名とタイトルを表示[…] ON = \"アーティスト - タイトル\"、OFF = \"タイトル - アーティスト\" この設定は歌詞検索には影響しません</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">Miniplayer と MediaSession で、アーティスト名とタイトルの表示順を切り替えます。ON「アーティスト - タイトル」、OFF「タイトル - アーティスト」。歌詞検索には影響しません。</string>
-  <string name="morphe_settings_music_lyrics_metadata_title">フィルター</string>
-  <string name="morphe_music_lyrics_custom_regex_title">歌詞フィルターの正規表現</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">フィルタ</string>
+  <string name="morphe_music_lyrics_custom_regex_title">メタデータの正規表現</string>
   <string name="morphe_music_lyrics_custom_regex_summary">曲名、アーティスト、アルバムに適用される正規表現です。歌詞の検索前と、2つの曲名が一致するかどうかの判定時に使用されます。空にすると両方が無効になります。デフォルトでは、\"Official Video\"、\"Remaster\"、\"【插曲】\"、\"- Topic\" などのよくある不要な部分を除去します。</string>
-  <string name="morphe_music_lyrics_text_filter_title">歌詞フィルターの正規表現</string>
+  <string name="morphe_music_lyrics_text_filter_title">歌詞フィルタの正規表現</string>
   <string name="morphe_music_lyrics_text_filter_summary">歌詞フィルターで正規表現を使用する</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">歌詞フィルターで正規表現を使用する</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">歌詞フィルターの正規表現</string>

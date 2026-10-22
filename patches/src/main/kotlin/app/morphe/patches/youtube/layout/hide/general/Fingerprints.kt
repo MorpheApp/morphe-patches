@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.layout.hide.general
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterLast
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.StringComparisonType
@@ -206,7 +207,24 @@ internal object FilterBarHeightFingerprint : Fingerprint(
             name = "getDimensionPixelSize",
             returnType = "I",
         ),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        literal(45724688L)
+    )
+)
+
+// Fingerprint is not unique
+internal object FilterBarHeightLegacyFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.DIMEN, "filter_bar_height"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "getDimensionPixelSize",
+            returnType = "I",
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        literal(0)
     )
 )
 
@@ -264,7 +282,8 @@ internal object SearchResultsChipBarFingerprint : Fingerprint(
             name = "getDimensionPixelSize",
             returnType = "I",
         ),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        resourceLiteral(ResourceType.DIMEN, "bar_separator_height")
     )
 )
 
@@ -322,10 +341,12 @@ internal object ShowFloatingMicrophoneButtonLegacyFingerprint : Fingerprint(
     )
 )
 
+// FIXME? This originally matched two different very similar methods. Both may need to be modified
 internal object HideViewCountFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Ljava/lang/CharSequence;",
     filters = listOf(
+        string("Font fetching future task failed."), // Unique string in only one method.
         string("Has attachmentRuns but drawableRequester is missing."),
         methodCall(smali = "Landroid/util/TypedValue;->applyDimension(IFLandroid/util/DisplayMetrics;)F"),
         methodCall( // Sets the span of the returned string.
@@ -459,6 +480,7 @@ internal object ContextualMenuItemBuilderOnClickFingerprint : Fingerprint(
 
 // 21.25+
 internal object ChannelTabBuilderFingerprint : Fingerprint(
+    isStatic = false,
     returnType = "Landroid/view/View;",
     parameters = listOf(
         "Ljava/lang/CharSequence;",
@@ -467,9 +489,13 @@ internal object ChannelTabBuilderFingerprint : Fingerprint(
         "L",
         "Z"
     ),
-    custom = { method, _ ->
-        !AccessFlags.STATIC.isSet(method.accessFlags)
-    }
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Lcom/google/android/libraries/youtube/rendering/ui/tabs/DefaultTabsBar;",
+        )
+    )
 )
 
 // 21.24 and older
@@ -481,6 +507,18 @@ internal object ChannelTabBuilderLegacyFingerprint : Fingerprint(
         "Ljava/lang/CharSequence;",
         "Z",
         "L"
+    ),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Lcom/google/android/libraries/youtube/rendering/ui/tabs/DefaultTabsBar;",
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/tabs/DefaultTabsBar;",
+            returnType = "Landroid/view/View;"
+        )
     )
 )
 
@@ -831,7 +869,12 @@ internal object PanelSubheaderFingerprint : Fingerprint(
         resourceLiteral(ResourceType.ID, "panel_subheader"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            name = "removeAllViews"
+            name = "removeAllViews",
+            location = MatchAfterLast()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "setVisibility"
         )
     )
 )
@@ -877,6 +920,7 @@ internal object ListMenuItemViewOnMeasureFingerprint : Fingerprint(
 internal object HideTimeBarChapterTitleFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
+        resourceLiteral(ResourceType.ID, "youtube_controls_bottom_ui_container"),
         resourceLiteral(ResourceType.ID, "time_bar_chapter_title"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,

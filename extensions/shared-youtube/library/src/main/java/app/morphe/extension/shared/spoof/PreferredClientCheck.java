@@ -74,6 +74,9 @@ public final class PreferredClientCheck {
 
     @SuppressWarnings("unchecked")
     private static void showDialogIfDue(ClientType workingClient) {
+        if (!SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_CLIENT_FAILING_DIALOG.get()) {
+            return;
+        }
         LongSetting lastShown = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_CLIENT_FAILING_DIALOG_LAST_SHOWN;
         Activity activity = Utils.getActivity();
         if (activity == null || !ReminderDialog.isDue(lastShown)

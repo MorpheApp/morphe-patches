@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">يؤدي الضغط مع الاستمرار في أي مكان على فيديو في الخلاصة إلى فتح قائمته</string>
   <string name="morphe_feed_watch_later_button_title">عرض زر \"المشاهدة لاحقًا\" على المصغرات</string>
   <string name="morphe_feed_watch_later_button_summary">يتم عرض زر المشاهدة لاحقًا على مصغرات فيديوهات الخلاصة. يؤدي الضغط مع الاستمرار عليه إلى فتح الحفظ في قوائم التشغيل</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">إضافة عنصر اسأل إلى القائمة المنبثقة</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">إضافة عنصر تلخيص الفيديو إلى قائمة الخلاصة المنبثقة</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"يتطلب اسأل في البداية حسابًا مسجّلًا الدخول إليه في بلد متوفر فيه اسأل.
+
+بعد فتح فيديو يحتوي على زر اسأل مرة واحدة، تعمل الميزة مع كل الفيديوهات حتى لو لم يكن البلد الحالي يدعم ميزة اسأل."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">تلخيص الفيديو</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">تعذر فتح اسأل لهذا الفيديو</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">اسأل غير متوفر لحسابك أو للبلد الحالي</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">عرض عدد المشاهدات على الصور المصغرة</string>
   <string name="morphe_feed_view_count_summary">يتم عرض عدد مشاهدات فيديوهات الخلاصة في أسفل يسار الصورة المصغرة بدلًا من أسفل العنوان. بعض الفيديوهات، مثل تلك الموجودة في الرفوف، قد لا تعرض عدد المشاهدات</string>
@@ -449,8 +462,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">يعطّل إيماءة النقر المزدوج بإصبعين التي تتخطى الفصول، والتي قد يتم تشغيلها عن طريق الخطأ بإصبع واحد</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">تنزيل الفيديوهات، البودكاست، أو الأغاني باستخدام تطبيقات تنزيل خارجية</string>
-  <string name="morphe_external_downloader_overlay_button_title">عرض زر تنزيل طبقة المشغل</string>
-  <string name="morphe_external_downloader_overlay_button_summary">يظهر زرًا في مشغل الفيديو يفتح أداة التنزيل الخارجية الخاصة بك</string>
+  <string name="morphe_external_downloader_overlay_button_title">عرض زر تنزيل بواجهة المشغل</string>
+  <string name="morphe_external_downloader_overlay_button_summary">يعرض زرًا في مشغل الفيديو يفتح أداة التنزيل الخارجية الخاصة بك</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">الترجمة الصوتية</string>
   <string name="morphe_vot_screen_summary">قراءة نصوص ترجمة الفيديو بصوت عالٍ باستخدام تحويل النص إلى كلام على الجهاز، بالتزامن مع التشغيل</string>
@@ -797,6 +810,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">إصلاح النصوص</string>
   <string name="morphe_fix_transcript_summary">يحل مشكلة فشل التحقق من شرط مسبق قد يمنع تحميل النص</string>
+  <string name="morphe_captions_in_pip_title">عرض الترجمة في وضع صورة داخل صورة</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">أزرار التنقل</string>
   <string name="morphe_navigation_buttons_screen_summary">اختر الأزرار التي تظهر في شريط التنقل السفلي</string>
@@ -1114,6 +1128,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_shorts_autoplay_summary">ينتقل إلى Short التالي تلقائيًا بدلًا من تكرار Short الحالي</string>
   <string name="morphe_shorts_autoplay_background_title">التشغيل التلقائي في الخلفية</string>
   <string name="morphe_shorts_autoplay_background_summary">ينتقل إلى Short التالي تلقائيًا أثناء التشغيل في الخلفية</string>
+  <string name="morphe_skip_live_shorts_title">تخطي بث Shorts المباشر</string>
+  <string name="morphe_skip_live_shorts_summary">يتخطى البثوث المباشرة التي تظهر في خلاصة Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">التشغيل في الخلاصات</string>
   <string name="morphe_playback_in_feeds_entry_always_on">مفعّل دائمًا</string>
@@ -1276,6 +1292,15 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_playback_buffer_size_entry_low">منخفض</string>
   <string name="morphe_playback_buffer_size_entry_medium">متوسط</string>
   <string name="morphe_playback_buffer_size_entry_maximum">الحد الأقصى</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">تأخير الفيديو</string>
+  <string name="morphe_video_delay_summary">يؤخر الفيديو للحفاظ على تزامنه مع الصوت المتأخر، مثل سماعات البلوتوث (0-5000 جزء الثانية)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">تأخير فقط مع صوت البلوتوث</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">يؤخر الفيديو فقط أثناء توصيل الصوت عبر البلوتوث، بحيث يظل مكبر صوت الهاتف متزامنًا</string>
+  <string name="morphe_video_delay_button_overlay_title">عرض زر تأخير الفيديو</string>
+  <string name="morphe_video_delay_button_overlay_summary">اضغط مع الاستمرار لإعادة تعيين التأخير إلى 0 جزء ثانية</string>
+  <string name="morphe_video_delay_button_flyout_title">عرض قائمة تأخير الفيديو</string>
+  <string name="morphe_video_delay_dialog_input_hint">التأخير بجزء الثانية</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">تلقائي</string>
@@ -1317,6 +1342,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_remember_playback_speed_last_selected_toast_title">إشعارات تغيير السرعة</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">يعرض إشعارًا عند حفظ سرعة تشغيل افتراضية جديدة</string>
   <string name="morphe_playback_speed_default_title">سرعة التشغيل الافتراضية</string>
+  <string name="morphe_shorts_playback_speed_default_title">سرعة التشغيل الافتراضية على فيديوهات Shorts</string>
   <string name="morphe_remember_playback_speed_toast">تم تغيير سرعة التشغيل الافتراضية إلى: %s</string>
   <string name="morphe_disable_playback_speed_music_title">استخدام السرعة العادية للموسيقى</string>
   <string name="morphe_disable_playback_speed_music_summary">تشغيل فيديوهات الموسيقى دائمًا بسرعة 1.0x</string>

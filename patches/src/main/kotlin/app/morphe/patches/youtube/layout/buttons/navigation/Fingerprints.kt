@@ -166,6 +166,69 @@ internal object NavigationBarBottomPaddingFingerprint : Fingerprint(
 )
 
 /**
+ * Sets the bottom margin of the layout that holds the page and the navigation bar.
+ * With the keyboard open and a text field focused, the margin is the keyboard height,
+ * otherwise the bottom of the window insets.
+ */
+internal object PageBottomMarginFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Rect;"),
+    filters = listOf(
+        methodCall(smali = "Landroid/view/View;->findFocus()Landroid/view/View;"),
+        methodCall(
+            smali = "Landroid/view/View;->onCheckIsTextEditor()Z",
+            location = MatchAfterWithin(5)
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            definingClass = "Landroid/graphics/Rect;",
+            name = "bottom"
+        )
+    )
+)
+
+/**
+ * Sets the padding of a feed list. When the feed is laid out behind the navigation bar,
+ * the bottom padding holds the navigation bar height and the bottom window inset.
+ */
+internal object FeedListPaddingFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(
+            definingClass = "Landroid/support/v7/widget/RecyclerView;",
+            name = "setClipToPadding"
+        ),
+        methodCall(
+            definingClass = "Landroid/support/v7/widget/RecyclerView;",
+            name = "setPadding",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Draws the blurred background of the translucent navigation bar. If the canvas is hardware
+ * accelerated, a copy of the watch layout, with the player, is drawn into a blurred render node,
+ * then the bar color is drawn over it.
+ */
+internal object NavigationBarBlurDrawFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        filters = listOf(
+            string("frostedGlassRenderNode")
+        )
+    ),
+    name = "draw",
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Canvas;"),
+    filters = listOf(
+        methodCall(smali = "Landroid/graphics/Canvas;->isHardwareAccelerated()Z"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(smali = "Landroid/view/View;->draw(Landroid/graphics/Canvas;)V")
+    )
+)
+
+/**
  * Applies the system navigation bar color of the app theme to the window.
  */
 internal object SystemNavigationBarColorFingerprint : Fingerprint(
@@ -286,6 +349,7 @@ internal object PivotBarRendererListFingerprint : Fingerprint(
  * The tab protos are converted to tab items, that are cached in a field of the class.
  */
 internal object BrowseResponseTabsFingerprint : Fingerprint(
+    interfaces = listOf("Landroid/os/Parcelable;"),
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.DECLARED_SYNCHRONIZED),
     returnType = "L",
     parameters = listOf(),
@@ -296,10 +360,7 @@ internal object BrowseResponseTabsFingerprint : Fingerprint(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this"
         )
-    ),
-    custom = { _, classDef ->
-        classDef.interfaces.contains("Landroid/os/Parcelable;")
-    }
+    )
 )
 
 /**

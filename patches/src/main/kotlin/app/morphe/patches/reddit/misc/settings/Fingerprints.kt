@@ -15,9 +15,9 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -30,6 +30,7 @@ internal object RedditActivityFingerprint : Fingerprint(
 )
 
 internal object GoogleSignInFunctionFingerprint : Fingerprint(
+    isStatic = true,
     filters = listOf(
         resourceLiteral(ResourceType.STRING, "continue_with_google"),
         methodCall(
@@ -50,14 +51,12 @@ internal object GoogleSignInFunctionFingerprint : Fingerprint(
             ),
             location = MatchAfterWithin(20)
         )
-    ),
-    custom = { method, _ ->
-        AccessFlags.STATIC.isSet(method.accessFlags)
-    }
+    )
 )
 
 // 2026.25.0+
 internal object StartUrlActivityFingerprint : Fingerprint(
+    isStatic = true,
     parameters = listOf(
         "L",
         "Landroid/app/Activity;",
@@ -79,10 +78,7 @@ internal object StartUrlActivityFingerprint : Fingerprint(
                 "Z"
             )
         )
-    ),
-    custom = { method, _ ->
-        AccessFlags.STATIC.isSet(method.accessFlags)
-    }
+    )
 )
 
 internal object PreferenceDestinationLegacyFingerprint : Fingerprint(

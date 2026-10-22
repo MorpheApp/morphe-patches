@@ -98,6 +98,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final LongSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_SAVED_MILLISECONDS = new LongSetting("morphe_spoof_video_streams_player_js_saved_milliseconds", -1L, false, false);
     public static final StringSetting OAUTH2_REFRESH_TOKEN = new StringSetting("morphe_oauth2_refresh_token", "", false, false);
     public static final StringSetting SPOOF_VIDEO_STREAMS_CLIENT_IDS = new StringSetting("morphe_spoof_video_streams_clent_id", "", false, false);
+    public static final BooleanSetting SPOOF_VIDEO_STREAMS_CLIENT_FAILING_DIALOG = new BooleanSetting("morphe_spoof_video_streams_client_failing_dialog", FALSE, false, false);
     public static final LongSetting SPOOF_VIDEO_STREAMS_CLIENT_FAILING_DIALOG_LAST_SHOWN = new LongSetting("morphe_spoof_video_streams_client_failing_dialog_last_shown", 0L, false, false);
 
     // PoToken provider

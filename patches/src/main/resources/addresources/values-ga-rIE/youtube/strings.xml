@@ -435,6 +435,19 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_feed_long_press_menu_summary">Má dhéanann tú sconadh agus coinneáil in áit ar bith ar fhíseán sa bhfotha, osclófar a roghchlár</string>
   <string name="morphe_feed_watch_later_button_title">Taispeáin an cnaipe \'Féach níos déanaí\' ar mhionsamhla</string>
   <string name="morphe_feed_watch_later_button_summary">Tá cnaipe \'Féach níos déanaí\' le feiceáil ar mhionsamhla físeán sa fhotha. Má dhéanann tú sconna air agus é a choinneáil brúite, osclófar an rogha \'Sábháil chuig seinmliosta\'</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Cuir mír Iarrtas sa roghchlár taobh</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Cuireann sé mír achoimre físeáin leis an roghchlár taobh feidsiúil</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Gan ach cuntas logáilte istigh i dtír ina bhfuil Iarrtas ar fáil is gá chun Iarrtas a úsáid.
+
+Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné oiriúnach do gach físeán eile fiú má tá an tíre reatha gan an ghné Iarrtas."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Achoimre ar an bhfíseán</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Níorbh fhéidir Iarrtas a oscoinnt don fhíseán seo</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Níl Iarrtras ar fáil d’do chuntas nó d’do thír reatha</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Taispeáin líon na n-amharc ar mhionsamhlacha</string>
   <string name="morphe_feed_view_count_summary">Taispeántar líon na n-amharc ar fhíseáin sa fhotha ag bun na láimhe clé dá mionsamhla, seachas faoin teideal. I gcás físeáin áirithe, ar nós iad siúd atá i seilfeanna, d’fhéadfadh sé nach dtaispeánfar líon na n-amharc.</string>
@@ -449,8 +462,8 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_disable_chapter_skip_double_tap_summary">Díchumasaíonn sé an ghluaiseacht sconna dúbailte dhá mhéar a scipeálann caibidlí, a d\'fhéadfaí a spreagadh de thaisme le méar amháin.</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
-  <string name="morphe_external_downloader_overlay_button_title">Taispeáin cnaipe íosluchtuithe forleagain an chluicheara</string>
-  <string name="morphe_external_downloader_overlay_button_summary">Taispeánann sé cnaipe forleagan sa seinnteoir físe a osclaíonn d’íoslódálaí seachtrach</string>
+  <string name="morphe_external_downloader_overlay_button_title">Taispeáin cnaipe íoslódála ar fhorleagan an imreora</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Taispeánann sé cnaipe sa seinnteoir físe a osclaíonn d’uirlis íoslódála sheachtrach</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Aistriúchán gutha</string>
   <string name="morphe_vot_screen_summary">Léigh fotheidil físe os ard ag baint úsáide as téacs-go-hurlabhra ar an ngléas, sioncrónaithe le hathsheinm</string>
@@ -793,6 +806,7 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Deisigh an tras-scríbhinn</string>
   <string name="morphe_fix_transcript_summary">Réitíonn sé teip seiceála réamhchoinníoll a d’fhéadfadh cosc ​​a chur ar an trascríbhinn ó lódáil</string>
+  <string name="morphe_captions_in_pip_title">Taispeáin fotheistí i bpirseal pictiúr-i-bpictiúr</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Cnaipí nascleanúna</string>
   <string name="morphe_navigation_buttons_screen_summary">Roghnaigh cé na cnaipí a thaispeántar sa bharra nascleanúna bun</string>
@@ -1110,6 +1124,8 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_shorts_autoplay_summary">Téann sé ar aghaidh go dtí an chéad Ghearrscannán eile go huathoibríoch in ionad an ceann reatha a athdhéanamh</string>
   <string name="morphe_shorts_autoplay_background_title">Uathsheinm sa chúlra</string>
   <string name="morphe_shorts_autoplay_background_summary">Téann sé ar aghaidh go huathoibríoch go dtí an chéad Ghearrscannán eile le linn athsheinm sa chúlra</string>
+  <string name="morphe_skip_live_shorts_title">Scipeáil Shorts beo</string>
+  <string name="morphe_skip_live_shorts_summary">Scipeann sé sruthanna beo a thaispeántar sa bheatha Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Athsheinm i bhfothaí</string>
   <string name="morphe_playback_in_feeds_entry_always_on">I gcónaí ar siúl</string>
@@ -1272,6 +1288,15 @@ Iarrtar físeáin le réimír ghearr den aitheantóir físeáin hasáilte, mar s
   <string name="morphe_playback_buffer_size_entry_low">Íseal</string>
   <string name="morphe_playback_buffer_size_entry_medium">Meánach</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Uasmhéid</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Moill físe</string>
+  <string name="morphe_video_delay_summary">Cuireann sé moill ar an bhfíseán chun é a choinneáil sioncronaithe le fuaim a bhfuil moill uirthi, mar shampla i gcás cluasán Bluetooth (0–5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Moill amháin le fuaim Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Ní dhéanann sé ach an físeán a chur ar moill fad is atá fuaim Bluetooth ceangailte, ionas go bhfanann cainteoir an ghutháin sioncronaithe.</string>
+  <string name="morphe_video_delay_button_overlay_title">Taispeáin an cnaipe moille físe</string>
+  <string name="morphe_video_delay_button_overlay_summary">Beartaigh agus coinnigh chun an mhoill a athshocrú go 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Taispeáin roghchlár moill físe</string>
+  <string name="morphe_video_delay_dialog_input_hint">Moill i milleasoicindí</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Uathoibríoch</string>
@@ -1313,6 +1338,7 @@ Iarrtar físeáin le réimír ghearr den aitheantóir físeáin hasáilte, mar s
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Fógraí athrú luais</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Taispeánann sé fógra nuair a shábháiltear luas athsheinm réamhshocraithe nua</string>
   <string name="morphe_playback_speed_default_title">Luas athsheinm réamhshocraithe</string>
+  <string name="morphe_shorts_playback_speed_default_title">Luas athsheinm réamhshocraithe ar Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Athraíodh an luas athsheinm réamhshocraithe go: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Úsáid gnáthluas don cheol</string>
   <string name="morphe_disable_playback_speed_music_summary">Seinn físeáin cheoil i gcónaí ag luas 1.0x</string>

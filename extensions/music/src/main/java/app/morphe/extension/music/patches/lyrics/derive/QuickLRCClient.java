@@ -12,9 +12,7 @@ import androidx.annotation.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -31,6 +29,7 @@ import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 
 public final class QuickLRCClient {
 
@@ -267,14 +266,12 @@ public final class QuickLRCClient {
             final int code = conn.getResponseCode();
             final String location = conn.getHeaderField("Location");
             if (code == 200) {
-                try (java.io.InputStream in = conn.getInputStream()) {
-                    final String body = new String(readAllBytes(in), StandardCharsets.UTF_8);
-                    return new Attempt(code, conn.getResponseMessage(), conn.getContentType(),
-                            conn.getContentLength(), location, body, null);
-                }
+                final String body = Requester.parseString(conn);
+                return new Attempt(code, conn.getResponseMessage(), conn.getContentType(),
+                        conn.getContentLength(), location, body, null);
             }
             return new Attempt(code, conn.getResponseMessage(), conn.getContentType(),
-                    conn.getContentLength(), location, null, readAll(conn.getErrorStream()));
+                    conn.getContentLength(), location, null, Requester.parseErrorString(conn));
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -289,28 +286,6 @@ public final class QuickLRCClient {
             return resolved.getProtocol() + "://" + resolved.getAuthority() + resolved.getPath()
                     + (resolved.getQuery() == null ? "" : "?" + resolved.getQuery());
         } catch (java.net.MalformedURLException ex) {
-            return null;
-        }
-    }
-
-    private static byte[] readAllBytes(InputStream in) throws IOException {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        byte[] buffer = new byte[8192];
-        int read;
-        while ((read = in.read(buffer, 0, buffer.length)) != -1) {
-            out.write(buffer, 0, read);
-        }
-        return out.toByteArray();
-    }
-
-    @Nullable
-    private static String readAll(@Nullable java.io.InputStream in) {
-        if (in == null) {
-            return null;
-        }
-        try (java.io.InputStream stream = in) {
-            return new String(readAllBytes(stream), StandardCharsets.UTF_8);
-        } catch (IOException ex) {
             return null;
         }
     }

@@ -36,6 +36,10 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.util.resource.appendResourceElements
+import app.morphe.patches.util.resource.editText
+import app.morphe.patches.util.resource.forEachRawResourceElement
+import app.morphe.patches.util.resource.transformRawResourceElements
 import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
@@ -55,7 +59,6 @@ import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
@@ -218,6 +221,47 @@ private val FOREGROUND_COLOR_CALLS = listOf(
     ) to 1
 )
 
+private const val LAUNCHER_THEME_NAME = "Theme.YouTube.Home"
+private const val LAUNCHER_THEME_PARENT = "@style/Base.V27.Theme.YouTube.Home"
+private const val LIGHT_STATUS_BAR_ITEM_NAME = "android:windowLightStatusBar"
+
+/**
+ * Sets a light status bar in the launcher theme, and declares the theme if missing.
+ */
+private fun String.setLauncherThemeLightStatusBar(): String {
+    var launcherThemeStart = -1
+    forEachRawResourceElement(this) {
+        if (it.tag == "style" && it.name == LAUNCHER_THEME_NAME) launcherThemeStart = it.start
+    }
+
+    val lightStatusBarItem = "<item name=\"$LIGHT_STATUS_BAR_ITEM_NAME\">true</item>"
+
+    if (launcherThemeStart < 0) {
+        return appendResourceElements(
+            "    <style name=\"$LAUNCHER_THEME_NAME\" parent=\"$LAUNCHER_THEME_PARENT\">\n" +
+                    "        $lightStatusBarItem\n" +
+                    "    </style>\n"
+        )
+    }
+
+    return transformRawResourceElements { style ->
+        if (style.start != launcherThemeStart) return@transformRawResourceElements null
+
+        val inner = style.inner!!
+        var hasLightStatusBar = false
+        val updated = inner.transformRawResourceElements { item ->
+            if (item.tag == "item" && item.name == LIGHT_STATUS_BAR_ITEM_NAME) {
+                hasLightStatusBar = true
+                "true"
+            } else {
+                null
+            }
+        }
+
+        if (hasLightStatusBar) updated else "${inner.trimEnd()}\n        $lightStatusBarItem\n    "
+    }
+}
+
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
     includeLightColor = true,
@@ -233,33 +277,31 @@ val themePatch = baseThemePatch(
                     colorName: String,
                     colorValue: String,
                 ) {
-                    document(resourceFile).use { document ->
-                        val resourcesNode = document.getElementsByTagName("resources").item(0) as Element
-
-                        resourcesNode.appendChild(
-                            document.createElement("color").apply {
-                                setAttribute("name", colorName)
-                                setAttribute("category", "color")
-                                textContent = colorValue
-                            }
+                    this[resourceFile].editText {
+                        it.appendResourceElements(
+                            "    <color name=\"$colorName\" category=\"color\">$colorValue</color>\n"
                         )
                     }
                 }
 
                 // Replacing the resource repaints both of its uses, because the resource system
                 // cannot tell them apart, so these attributes keep the value the app gives them.
-                document("res/values/styles.xml").use { document ->
-                    val resourcesNode = document.getElementsByTagName("resources").item(0) as Element
+                // The launcher theme also needs a light status bar.
+                this["res/values/styles.xml"].editText { text ->
+                    text.transformRawResourceElements { style ->
+                        if (style.tag != "style") return@transformRawResourceElements null
 
-                    resourcesNode.forEachChildElement { style ->
-                        style.forEachChildElement { item ->
-                            if (item.textContent == "@color/$STATIC_WHITE_COLOR_NAME"
-                                && item.getAttribute("name") in STATIC_WHITE_ATTRIBUTE_NAMES
+                        style.inner!!.transformRawResourceElements { item ->
+                            if (item.tag == "item"
+                                && item.inner == "@color/$STATIC_WHITE_COLOR_NAME"
+                                && item.name in STATIC_WHITE_ATTRIBUTE_NAMES
                             ) {
-                                item.textContent = "@android:color/white"
+                                "@android:color/white"
+                            } else {
+                                null
                             }
                         }
-                    }
+                    }.setLauncherThemeLightStatusBar()
                 }
 
                 // Add a dynamic background color to the colors.xml file. Without a patch option
@@ -299,73 +341,36 @@ val themePatch = baseThemePatch(
 
                 // Fix the splash screen dark mode background color.
                 // In 19.32+ the dark mode splash screen is white and fades to black.
-                document("res/values-night/styles.xml").use { document ->
-                    // Create a night mode specific override for the splash screen background.
-                    val style = document.createElement("style")
-                    style.setAttribute("name", "Theme.YouTube.Home")
-                    style.setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
+                // Create a night mode specific override for the splash screen background.
+                // Fix status and navigation bar showing white on some Android devices,
+                // such as SDK 28 Android 10 medium tablet.
+                val colorSplashBackgroundColor = "@color/$splashBackgroundColorKey"
+                val nightStyle = StringBuilder()
+                nightStyle.appendLine(
+                    "    <style name=\"$LAUNCHER_THEME_NAME\" parent=\"$LAUNCHER_THEME_PARENT\">"
+                )
+                arrayOf(
+                    "android:navigationBarColor" to colorSplashBackgroundColor,
+                    "android:windowBackground" to colorSplashBackgroundColor,
+                    "android:colorBackground" to colorSplashBackgroundColor,
+                    "colorPrimaryDark" to colorSplashBackgroundColor,
+                    "android:windowLightStatusBar" to "false",
+                ).forEach { (name, value) ->
+                    nightStyle.appendLine("        <item name=\"$name\">$value</item>")
+                }
+                nightStyle.appendLine("    </style>")
 
-                    // Fix status and navigation bar showing white on some Android devices,
-                    // such as SDK 28 Android 10 medium tablet.
-                    val colorSplashBackgroundColor = "@color/$splashBackgroundColorKey"
-                    arrayOf(
-                        "android:navigationBarColor" to colorSplashBackgroundColor,
-                        "android:windowBackground" to colorSplashBackgroundColor,
-                        "android:colorBackground" to colorSplashBackgroundColor,
-                        "colorPrimaryDark" to colorSplashBackgroundColor,
-                        "android:windowLightStatusBar" to "false",
-                    ).forEach { (name, value) ->
-                        val styleItem = document.createElement("item")
-                        styleItem.setAttribute("name", name)
-                        styleItem.textContent = value
-                        style.appendChild(styleItem)
-                    }
-
-                    val resourcesNode = document.getElementsByTagName("resources").item(0) as Element
-                    resourcesNode.appendChild(style)
+                this["res/values-night/styles.xml"].editText {
+                    it.appendResourceElements(nightStyle.toString())
                 }
 
                 arrayOf(
-                    "res/values/styles.xml",
                     "res/values-v27/styles.xml",
                     "res/values-v31/styles.xml"
                 ).forEach { stylesPath ->
-                    try {
-                        document(stylesPath).use { document ->
-                            val resourcesNode = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
-                            var themeNode: Element? = null
-
-                            resourcesNode.forEachChildElement { node ->
-                                if (node.nodeName == "style" && node.getAttribute("name") == "Theme.YouTube.Home") {
-                                    themeNode = node
-                                }
-                            }
-
-                            if (themeNode == null) {
-                                themeNode = document.createElement("style").apply {
-                                    setAttribute("name", "Theme.YouTube.Home")
-                                    setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
-                                    resourcesNode.appendChild(this)
-                                }
-                            }
-
-                            var hasLightStatusBar = false
-                            themeNode!!.forEachChildElement { node ->
-                                if (node.nodeName == "item" && node.getAttribute("name") == "android:windowLightStatusBar") {
-                                    node.textContent = "true"
-                                    hasLightStatusBar = true
-                                }
-                            }
-
-                            if (!hasLightStatusBar) {
-                                val styleItem = document.createElement("item")
-                                styleItem.setAttribute("name", "android:windowLightStatusBar")
-                                styleItem.textContent = "true"
-                                themeNode.appendChild(styleItem)
-                            }
-                        }
-                    } catch (_: Exception) {
-                        // Ignore?
+                    val stylesFile = this[stylesPath]
+                    if (stylesFile.exists()) {
+                        stylesFile.editText { it.setLauncherThemeLightStatusBar() }
                     }
                 }
             }

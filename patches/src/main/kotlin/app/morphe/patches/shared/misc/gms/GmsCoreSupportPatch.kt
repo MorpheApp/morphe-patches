@@ -36,7 +36,6 @@ import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import app.morphe.util.matchAllMethodIndicesForEach
-import app.morphe.util.matchSingle
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
@@ -212,7 +211,7 @@ fun gmsCoreSupportPatch(
         )
 
         // GNP expects the original Google package even when the installed app is renamed.
-        GnpRegistrationTargetFingerprint.matchSingle().let { match ->
+        GnpRegistrationTargetFingerprint.let { match ->
             val result = match.instructionMatches[1]
             match.method.replaceInstruction(
                 result.index,

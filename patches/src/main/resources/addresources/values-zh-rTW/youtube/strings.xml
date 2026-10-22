@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">在資訊流影片的任意位置輕觸並按住，即可開啟其選單</string>
   <string name="morphe_feed_watch_later_button_title">在縮圖上顯示稍後觀看按鈕</string>
   <string name="morphe_feed_watch_later_button_summary">資訊流影片的縮圖上會顯示「稍後觀看」按鈕。輕觸並按住該按鈕可進入「新增至播放清單」功能</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">在彈出式選單中加入「Ask」項目</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">在資訊流彈出式選單中加入影片摘要項目</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"「Ask」功能需要已登入帳戶，且帳戶所在國家/地區須開放「Ask」功能。
+
+一旦開啟含有「Ask」按鈕的影片一次，即使目前所在國家/地區未開放「Ask」功能，也能在所有影片中適用此功能。"</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">摘要影片內容</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">無法為此影片開啟「Ask」</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">您的帳戶或目前所在國家/地區不支援「Ask」功能</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">在縮圖上顯示觀看次數</string>
   <string name="morphe_feed_view_count_summary">動態影片的觀看次數顯示於縮圖左下角，而非標題下方。部份影片(例如在「媒體列」中的影片)可能不會顯示觀看次數</string>
@@ -449,7 +462,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">停用雙指輕點跳過章節的動作，這可能會因為單指操作而意外觸發</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">使用第三方下載應用程式下載影片、播客或歌曲</string>
-  <string name="morphe_external_downloader_overlay_button_title">顯示播放員覆蓋層下載按鈕</string>
+  <string name="morphe_external_downloader_overlay_button_title">顯示播放器覆蓋層下載按鈕</string>
   <string name="morphe_external_downloader_overlay_button_summary">在影片播放器中顯示一個按鈕，該按鈕可開啟您的外部下載器</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">語音轉錄翻譯</string>
@@ -793,6 +806,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">修正轉錄稿</string>
   <string name="morphe_fix_transcript_summary">解決可能阻止載入字幕的預先檢查失敗問題</string>
+  <string name="morphe_captions_in_pip_title">在畫中畫模式下顯示字幕</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">導覽列按鈕</string>
   <string name="morphe_navigation_buttons_screen_summary">選擇要在工具列中顯示哪些元件</string>
@@ -1110,6 +1124,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">自動進到下一個 Shorts</string>
   <string name="morphe_shorts_autoplay_background_title">背景自動播放</string>
   <string name="morphe_shorts_autoplay_background_summary">在背景播放期間自動到 Shorts</string>
+  <string name="morphe_skip_live_shorts_title">跳過直播 Short</string>
+  <string name="morphe_skip_live_shorts_summary">跳過出現在 Shorts 資訊流中的直播</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">feeds 中的播放</string>
   <string name="morphe_playback_in_feeds_entry_always_on">持續開啟</string>
@@ -1272,6 +1288,15 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_low">低</string>
   <string name="morphe_playback_buffer_size_entry_medium">中</string>
   <string name="morphe_playback_buffer_size_entry_maximum">最大</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">影片延遲</string>
+  <string name="morphe_video_delay_summary">延遲影片以使其與有延遲的音訊（如藍牙耳機）保持同步（0-5000 毫秒）</string>
+  <string name="morphe_video_delay_bluetooth_only_title">僅在藍牙音訊時延遲</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">當藍牙音訊連接時，僅延遲影片，因此手機揚聲器可保持同步</string>
+  <string name="morphe_video_delay_button_overlay_title">顯示影片延遲按鈕</string>
+  <string name="morphe_video_delay_button_overlay_summary">輕觸並按住可將延遲重置為 0 毫秒</string>
+  <string name="morphe_video_delay_button_flyout_title">顯示影片延遲選單</string>
+  <string name="morphe_video_delay_dialog_input_hint">以毫秒為單位的延遲時間</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自動</string>
@@ -1313,6 +1338,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">在變更預設播放速度時顯示通知</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">變更預設播放速度時會顯示提示</string>
   <string name="morphe_playback_speed_default_title">預設播放速度</string>
+  <string name="morphe_shorts_playback_speed_default_title">Shorts 的預設播放速度</string>
   <string name="morphe_remember_playback_speed_toast">已將預設播放速度變更為：%s</string>
   <string name="morphe_disable_playback_speed_music_title">使用正常速度播放音樂</string>
   <string name="morphe_disable_playback_speed_music_summary">總是使用 1.0 倍速播放音樂影片</string>

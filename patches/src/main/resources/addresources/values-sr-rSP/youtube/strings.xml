@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Дођување и држање било где на видео снимку у фејду отвара његово мени</string>
   <string name="morphe_feed_watch_later_button_title">Прикажи дугме „Гледај касније“ на сличицима</string>
   <string name="morphe_feed_watch_later_button_summary">Дугме Гледај касније се приказује на сличицама видео снимака у фејду. Дођување и држање отвара опчују Чувај у плејлист</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Додај ставку Питај у изборни мени</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Додаје ставку за сумирање видеа у изборни мени канала</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Функција Питај првобитно захтева налог који је пријављен у земљи где је Питај доступан.
+
+Након што се једном отвори видео са дугметом Питај, функција ради за све видео снимке, чак и ако тренутна земља не нуди функцију Питај."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Резимирај видео</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Није могуће отворити питања за овај видео</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Питај није доступан за ваш налог или тренутну земљу</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Прикажи број прегледа на минијатурама</string>
   <string name="morphe_feed_view_count_summary">Број прегледа видео записа у призиву приказује се у доњем левом углу њихових минијатура, уместо испод наслова. Код неких видео записа, као они у полици, можда неће бити приказан број прегледа</string>
@@ -791,6 +804,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Popravi transkript</string>
   <string name="morphe_fix_transcript_summary">Решава проблем са претпоставком која може да спречи учитавање транскрипта.</string>
+  <string name="morphe_captions_in_pip_title">Прикажи титлове унутар слике-у-слици</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Дугмад навигације</string>
   <string name="morphe_navigation_buttons_screen_summary">Одаберите који дугмићи ће се појавити на доњој навигационој траци.</string>
@@ -1093,6 +1107,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Аутоматски прелази на следећи Short уместо да понавља тренутни</string>
   <string name="morphe_shorts_autoplay_background_title">Аутоплеј у позадини</string>
   <string name="morphe_shorts_autoplay_background_summary">Аутоматски прелази на следећи Short током репродукције у позадини</string>
+  <string name="morphe_skip_live_shorts_title">Прескочи живе Short-ове</string>
+  <string name="morphe_skip_live_shorts_summary">Прескаче животне стримове који се појављују у Shorts фиду</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Репродукција у фидовима</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Увек укључено</string>
@@ -1255,6 +1271,15 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_low">Ниска</string>
   <string name="morphe_playback_buffer_size_entry_medium">Средња</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Максимална</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Кашњење видеа</string>
+  <string name="morphe_video_delay_summary">Кашњи видео да би остао синхронизован са кашњењем у звуку, на пример код Bluetooth слушалица (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Само кашњење са Bluetooth звуком</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Само кашни видео док је повезан Bluetooth звук, тако да говорник телефона остаје синхронизован</string>
+  <string name="morphe_video_delay_button_overlay_title">Прикажи дугме за кашњење видеа</string>
+  <string name="morphe_video_delay_button_overlay_summary">Притисните и држите да ресетујете кашњење на 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Прикажи мени за кашњење видеа</string>
+  <string name="morphe_video_delay_dialog_input_hint">Кашњење у милисекундама</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Аутоматски</string>
@@ -1296,6 +1321,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Обавештења о промени брзине</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Приказује обавештење када се сачува нова подразумевана брзина репродукције</string>
   <string name="morphe_playback_speed_default_title">Подразумевана брзина репродукције</string>
+  <string name="morphe_shorts_playback_speed_default_title">Подразумевана брзина репродукције на Short-овима</string>
   <string name="morphe_remember_playback_speed_toast">Брзина репродукције је промењена на: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Koristite normalnu brzinu za muziku</string>
   <string name="morphe_disable_playback_speed_music_summary">Uvek puštajte muzičke spotove brzinom 1.0x</string>

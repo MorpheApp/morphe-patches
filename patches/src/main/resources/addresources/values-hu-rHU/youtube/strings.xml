@@ -435,6 +435,19 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_feed_long_press_menu_summary">A posztfolyamat videóján bárhol koppintás és hosszú nyomás nyitja meg annak menüt</string>
   <string name="morphe_feed_watch_later_button_title">Mutassa a Néssebb később gombot a képkockákon</string>
   <string name="morphe_feed_watch_later_button_summary">A Néssebb később gomb megjelenik a posztfolyamati videók képkockáján. Koppintás és hosszú nyomása esetén Megnyitás listában lehetőséget nyújt</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Ask elem hozzáadása a kizúgó menühez</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Video-összefoglaló elem hozzáadása az adatfolyam kizúgó menüjéhez</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Az Ask kezdeti használatához bejelentkezett fiók szükséges abban az országban, ahol az Ask elérhető.
+
+Egy alkalommal megnyitott, Ask gombbal ellátott videó esetén a funkció minden videónál működik, még akkor is, ha a jelenlegi ország nem támogatja az Ask funkciót."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">A videó összefoglalása</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Nem sikerült megnyitni az Ask funkciót ehhez a videóhoz</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Az Ask nem elérhető a fiókodhoz vagy a jelenlegi országodhoz</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Megtekintésszám megjelenítése a bélyegképeken</string>
   <string name="morphe_feed_view_count_summary">Az adathordozó videók megtekintési száma a bélyegkép bal alsó sarkában jelenik meg, nem pedig a cím alatt. Egyes videók, például a polcokon lévők, esetleg nem mutatnak megtekintési számot</string>
@@ -793,6 +806,7 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Átirat javítása</string>
   <string name="morphe_fix_transcript_summary">Megoldja egy előfeltétel-ellenőrzési hibát, amely megakadályozhatja az átirat betöltését</string>
+  <string name="morphe_captions_in_pip_title">Képekben a feliratok megjelenítése pip-ben</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigációs gombok</string>
   <string name="morphe_navigation_buttons_screen_summary">Válassza ki, mely gombok jelenjenek meg a felső eszköztáron</string>
@@ -1110,6 +1124,8 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_shorts_autoplay_summary">Automatikus továbbhaladás a következő Shortsra ahelyett, hogy az aktuális Shortsot ismételné </string>
   <string name="morphe_shorts_autoplay_background_title">Automatikus lejátszás háttérben</string>
   <string name="morphe_shorts_autoplay_background_summary">A következő Shorts automatikus lejátszása háttérlejátszás közben</string>
+  <string name="morphe_skip_live_shorts_title">Élő Shorts átugrása</string>
+  <string name="morphe_skip_live_shorts_summary">Átugorja a Shorts hírfolyamban megjelenő élő közvetítéseket</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Lejátszás a hírekben</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Mindig bekapcsolva</string>
@@ -1272,6 +1288,15 @@ A videókat a hash-elt videóazonosító rövid előtagjával kérik le, így a 
   <string name="morphe_playback_buffer_size_entry_low">Alacsony</string>
   <string name="morphe_playback_buffer_size_entry_medium">Közepes</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maximális</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Videókésleltetés</string>
+  <string name="morphe_video_delay_summary">Késlelteti a videót a szinkron megőrzése érdekében a késedelmes hanggal (például Bluetooth fülhallgatóval), hogy az ne legyen elmaradásban.</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Csak Bluetooth audio esetén alkalmazzon késleltetést</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">A telefon hangszórójának szinkronban tartása érdekében csak akkor késlelteti a videót, amikor Bluetooth audio eszköz csatlakoztatva van</string>
+  <string name="morphe_video_delay_button_overlay_title">Videó késleltetés gomb megjelenítése</string>
+  <string name="morphe_video_delay_button_overlay_summary">Érintse meg és tartsa lenyomva a késleltetés 0 ms-ra való visszaállításához</string>
+  <string name="morphe_video_delay_button_flyout_title">Videó késleltetés menü megjelenítése</string>
+  <string name="morphe_video_delay_dialog_input_hint">Késleltetés ezredmásodpercben</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatikus</string>
@@ -1313,6 +1338,7 @@ A videókat a hash-elt videóazonosító rövid előtagjával kérik le, így a 
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Értesítést jelenít meg a lejátszási sebesség megváltozása esetén</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Értesítést jelenít meg, amikor egy új alapértelmezett lejátszási sebesség kerül mentésre</string>
   <string name="morphe_playback_speed_default_title">Alapértelmezett lejátszási sebesség</string>
+  <string name="morphe_shorts_playback_speed_default_title">Alapértelmezett lejátszási sebesség Shorts-on</string>
   <string name="morphe_remember_playback_speed_toast">A lejátszási sebesség alapértelmezett értékre módosítva: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Használj normál sebességet a zenéhez</string>
   <string name="morphe_disable_playback_speed_music_summary">A zenei videók mindig 1,0-s sebességgel legyenek lejátszva</string>

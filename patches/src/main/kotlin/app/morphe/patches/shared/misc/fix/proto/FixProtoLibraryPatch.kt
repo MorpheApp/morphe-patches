@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/285
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -61,34 +61,34 @@ internal val fixProtoLibraryPatch = bytecodePatch(
             }
         }
 
-        MessageLiteWriteToFingerprint.let {
-            it.method.apply {
-                it.classDef.methods.add(
-                    cloneMutable(
-                        parameters = listOf(
-                            ImmutableMethodParameter(
-                                "Lcom/google/protobuf/CodedOutputStream;",
-                                null,
-                                null
-                            )
+        // Use matchAll to pass --validation because both matches are for same class which is ok.
+        MessageLiteWriteToFingerprint.matchAll(2.. 2).first().let {
+            it.classDef.methods.add(
+                it.method.cloneMutable(
+                    parameters = listOf(
+                        ImmutableMethodParameter(
+                            "Lcom/google/protobuf/CodedOutputStream;",
+                            null,
+                            null
                         )
                     )
                 )
-            }
+            )
         }
 
         parseByteArrayMethodRef = WeakReference(ProtobufClassParseByteArrayFingerprint.method)
         parseByteArrayWithRegistryMethodRef = WeakReference(ProtobufClassParseByteArrayWithRegistryFingerprint.method)
 
-        StreamingDataOuterClassFingerprint.let {
+        // Matches two methods in same class, but both are identical.
+        StreamingDataOuterClassFingerprint.matchAll(2..2).first().let {
             it.method.apply {
                 val immutableMethodIndex = it.instructionMatches.first().index
                 val mutableCopyMethodIndex = it.instructionMatches.last().index
 
-                val immutableMethodReference =
-                    getInstruction<ReferenceInstruction>(immutableMethodIndex).reference as MethodReference
-                val mutableCopyMethodReference =
-                    getInstruction<ReferenceInstruction>(mutableCopyMethodIndex).reference as MethodReference
+                val immutableMethodReference = getInstruction<ReferenceInstruction>(
+                    immutableMethodIndex).reference as MethodReference
+                val mutableCopyMethodReference = getInstruction<ReferenceInstruction>(
+                    mutableCopyMethodIndex).reference as MethodReference
 
                 immutableMethodRef = WeakReference(immutableMethodReference)
                 mutableCopyMethodRef = WeakReference(mutableCopyMethodReference)

@@ -61,7 +61,7 @@ val overrideCertificatePinningPatch = resourcePatch(
             }
         }
 
-        if (resXmlDirectory.resolve(networkSecurityFileName).exists()) {
+        if (get("res/xml/$networkSecurityFileName").exists()) {
             document("res/xml/$networkSecurityFileName").use { document ->
                 arrayOf(
                     "base-config",

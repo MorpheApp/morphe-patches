@@ -12,12 +12,14 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
 import app.morphe.patches.youtube.layout.sponsorblock.ControlsOverlayFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -165,7 +167,9 @@ internal object PlayerSeekbarFeatureFlagFingerprint : Fingerprint(
  * Image component of the Elements templates.
  */
 internal object ElementsImageComponentFingerprint : Fingerprint(
-    strings = listOf("Failed to find a valid source for the image")
+    strings = listOf(
+        string("Failed to find a valid source for the image", StringComparisonType.STARTS_WITH)
+    )
 )
 
 /**

@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">חיפוש ועורך בכל מקום בודק המשיר פתחם את מהשיר שלו</string>
   <string name="morphe_feed_watch_later_button_title">הצג את בטו׳דת \"הצג בידוע חור\" בתויערות</string>
   <string name="morphe_feed_watch_later_button_summary">בטו׳דת \"הצג בידוע חור\" תציע בתויערות של וידועי המשיר. חיפוש ועורך הו מזמן חסון לכריזה</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">הוספת פריט שאל לתפריט קיבול</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">מוסיף פריט סיכום וידאו לתפריט קיבול הזרם</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"שירות Ask דורש תחילה חשבון מחובר במדינה בה שירות Ask זמין.
+
+לאחר פתיחת סרטון אחד עם כפתור Ask, הפונקציה עובדת עם כל הסרטונים גם אם המדינה הנוכחית אינה כוללת את שירות Ask."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">לסכם את הסרטון</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">לא הצליחה לפתוח את Ask עבור סרטון זה</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask אינו זמין לחשבון שלך או למדינה הנוכחית שלך</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">הצג את ספירת הצפיות בהדמיות</string>
   <string name="morphe_feed_view_count_summary">ספירת הצפיות של סרטונים בעלון מוצגת בפינה השמאלית התחתונה של ההדמיות במקום מתחת לכותרת. בסרטונים מסוימים, כמו אלו במדפים, ייתכן שלא תוצג ספירת צפיות.</string>
@@ -793,6 +806,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">תיקון תמליל</string>
   <string name="morphe_fix_transcript_summary">פותר כשל בבדיקת תנאי מוקדם שעלול למנוע טעינה של התמלול</string>
+  <string name="morphe_captions_in_pip_title">הצג כתוביות במופע בתוך תמונה</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">לחצני ניווט</string>
   <string name="morphe_navigation_buttons_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
@@ -1110,6 +1124,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">מתקדם ל-Short הבא באופן אוטומטי במקום לחזור על הנוכחי</string>
   <string name="morphe_shorts_autoplay_background_title">הפעלה אוטומטית ברקע</string>
   <string name="morphe_shorts_autoplay_background_summary">מתקדם ל-Short הבא באופן אוטומטי במהלך השמעה ברקע</string>
+  <string name="morphe_skip_live_shorts_title">דלג על Shorts חיים</string>
+  <string name="morphe_skip_live_shorts_summary">מדלג על שידורים חיים המופיעים ב-Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">השמעה בפידים</string>
   <string name="morphe_playback_in_feeds_entry_always_on">תמיד מופעל</string>
@@ -1272,6 +1288,15 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_low">נמוך</string>
   <string name="morphe_playback_buffer_size_entry_medium">בינוני</string>
   <string name="morphe_playback_buffer_size_entry_maximum">מקסימלי</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">עיכוב וידאו</string>
+  <string name="morphe_video_delay_summary">מעכב את הווידאו כדי לשמור על סינכרון עם אודיו מתעכב, כגון אוזניות בלוטות\' (0-5000 מ\"ש)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">עיכוב רק עם אודיו בלוטות\'</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">מעכב את הווידאו רק כאשר אודיו בלוטות\' מחובר, כך שהרמקול בטלפון נשאר בסנכרון</string>
+  <string name="morphe_video_delay_button_overlay_title">הצג לחצן עיכוב וידאו</string>
+  <string name="morphe_video_delay_button_overlay_summary">גע והחזק לאיפוס העיכוב ל-0 מ\"ש</string>
+  <string name="morphe_video_delay_button_flyout_title">הצג תפריט עיכוב וידאו</string>
+  <string name="morphe_video_delay_dialog_input_hint">עיכוב במילישניות</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">אוטומטי</string>
@@ -1313,6 +1338,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">התראות על שינוי מהירות</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">מציג הודעה כאשר נשמרת מהירות הפעלה ברירת מחדל</string>
   <string name="morphe_playback_speed_default_title">מהירות הפעלה ברירת מחדל</string>
+  <string name="morphe_shorts_playback_speed_default_title">מהירות הפעלה ברירת מחדל ב-Shorts</string>
   <string name="morphe_remember_playback_speed_toast">מהירות ההשמעה המוגדרת כברירת מחדל שונתה ל: %s</string>
   <string name="morphe_disable_playback_speed_music_title">השתמש במהירות רגילה למוזיקה</string>
   <string name="morphe_disable_playback_speed_music_summary">נגן תמיד סרטוני מוזיקה במהירות 1.0x</string>

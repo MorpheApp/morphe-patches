@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.layout.buttons.overlay
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -61,6 +62,7 @@ internal object OverlayCastButtonVisibilityLegacy2135Fingerprint : Fingerprint(
  * 21.34 and lower.
  */
 internal object OverlayCastButtonVisibilityLegacyFingerprint : Fingerprint(
+    isStatic = false,
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -72,10 +74,7 @@ internal object OverlayCastButtonVisibilityLegacyFingerprint : Fingerprint(
             methodCall(name = "setVisibility")
         ),
         literal(11208L)
-    ),
-    custom = { method, _ ->
-        !AccessFlags.STATIC.isSet(method.accessFlags)
-    }
+    )
 )
 
 internal object CastButtonPlayerFeatureFlagFingerprint : Fingerprint(
@@ -106,7 +105,7 @@ internal object FullscreenButtonFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         resourceLiteral(ResourceType.ID, "fullscreen_button"),
-        opcode(Opcode.CHECK_CAST)
+        opcode(Opcode.CHECK_CAST, MatchAfterWithin(10))
     )
 )
 

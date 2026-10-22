@@ -36,7 +36,6 @@ private fun audioRendererClassFingerprint(logTag: String) = Fingerprint(
         string(logTag)
     ),
     custom = { _, classDef ->
-        // TODO: Change to patcher 2.0 superclass check
         classDef.superclass != "Ljava/lang/Object;"
     }
 )

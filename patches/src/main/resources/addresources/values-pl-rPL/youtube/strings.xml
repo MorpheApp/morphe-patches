@@ -435,6 +435,19 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_feed_long_press_menu_summary">Przytrzymanie filmu w dowolnym miejscu na liście otwiera jego menu</string>
   <string name="morphe_feed_watch_later_button_title">Pokaż przycisk \"Do obejrzenia\" na miniaturkach</string>
   <string name="morphe_feed_watch_later_button_summary">Na miniaturkach filmów na liście wyświetlany jest przycisk \"Do obejrzenia\". Przytrzymanie go otwiera opcję \"Zapisz na playliście\"</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Dodaj element Ask do menu flyout</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje element podsumowania wideo do menu feed flyout</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Polecana na początku wymaga zalogowanego konta w kraju, w którym dostępna jest usługa Ask.
+
+Po jednorazowym otwarciu filmu z przyciskiem Ask funkcja działa ze wszystkimi filmami, nawet jeśli aktualny kraj nie udostępnia usługi Ask."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Podsumuj wideo</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Nie udało się otworzyć Ask dla tego filmu</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask nie jest dostępny dla Twojego konta lub bieżącego kraju</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Pokaż liczbę wyświetleń na miniaturkach</string>
   <string name="morphe_feed_view_count_summary">Liczba wyświetleń filmów na liście jest wyświetlana w lewym dolnym rogu miniaturki zamiast pod tytułem. Niektóre filmy, np. w sekcjach, mogą nie wyświetlać liczby wyświetleń</string>
@@ -449,7 +462,7 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_disable_chapter_skip_double_tap_summary">Wyłącza gest podwójnego dotknięcia dwoma palcami do pomijania rozdziałów, który bywa przypadkowo wywoływany jednym palcem</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Pobieraj filmy, podcasty lub utwory za pomocą zewnętrznych aplikacji do pobierania</string>
-  <string name="morphe_external_downloader_overlay_button_title">Pokaż przycisk pobierania nakładki gracza</string>
+  <string name="morphe_external_downloader_overlay_button_title">Pokaż przycisk pobierania na nakładce odtwarzacza</string>
   <string name="morphe_external_downloader_overlay_button_summary">Wyświetla w odtwarzaczu przycisk otwierający zewnętrzną aplikację do pobierania</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tłumaczenie głosowe</string>
@@ -793,6 +806,7 @@ Uwaga: Następny film w kolejce uruchamia się tylko wtedy, gdy YouTube jest wid
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Napraw transkrypcję</string>
   <string name="morphe_fix_transcript_summary">Rozwiązuje błąd weryfikacji warunków wstępnych, który może uniemożliwiać wczytanie transkrypcji</string>
+  <string name="morphe_captions_in_pip_title">Pokaż napisy w trybie \"Obraz w obrazie\"</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Przyciski nawigacji</string>
   <string name="morphe_navigation_buttons_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
@@ -1109,6 +1123,8 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_shorts_autoplay_summary">Automatycznie przechodzi do następnego filmu Short, zamiast powtarzać bieżący</string>
   <string name="morphe_shorts_autoplay_background_title">Włącz autoodtwarzanie w tle</string>
   <string name="morphe_shorts_autoplay_background_summary">Automatycznie przechodzi do następnego filmu Short podczas odtwarzania w tle</string>
+  <string name="morphe_skip_live_shorts_title">Pomiń transmisje na żywo w Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Pomija transmisje na żywo pojawiające się w zakładce Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Odtwarzanie w kanałach</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Zawsze włączone</string>
@@ -1271,6 +1287,15 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_playback_buffer_size_entry_low">Mały</string>
   <string name="morphe_playback_buffer_size_entry_medium">Średni</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maksymalny</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Opóźnienie filmu</string>
+  <string name="morphe_video_delay_summary">Opóźnia film, aby zachować synchronizację z opóźnionym dźwiękiem, np. na słuchawkach Bluetooth (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Opóźniaj tylko przy dźwięku Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Opóźnia film tylko wtedy, gdy podłączone jest urządzenie dźwiękowe Bluetooth, dzięki czemu głośnik telefonu zachowuje synchronizację</string>
+  <string name="morphe_video_delay_button_overlay_title">Pokaż przycisk opóźnienia filmu</string>
+  <string name="morphe_video_delay_button_overlay_summary">Przytrzymaj, aby zresetować opóźnienie do 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Pokaż menu opóźnienia filmu</string>
+  <string name="morphe_video_delay_dialog_input_hint">Opóźnienie w milisekundach</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatyczna</string>
@@ -1312,6 +1337,7 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Powiadomienia o zmianie prędkości</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Wyświetla powiadomienie po zapisaniu nowej domyślnej prędkości odtwarzania</string>
   <string name="morphe_playback_speed_default_title">Domyślna prędkość odtwarzania</string>
+  <string name="morphe_shorts_playback_speed_default_title">Domyślna prędkość odtwarzania w filmach Short</string>
   <string name="morphe_remember_playback_speed_toast">Zmieniono domyślną prędkość na: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Odtwarzaj muzykę z normalną prędkością</string>
   <string name="morphe_disable_playback_speed_music_summary">Zawsze odtwarzaj teledyski z prędkością 1x</string>

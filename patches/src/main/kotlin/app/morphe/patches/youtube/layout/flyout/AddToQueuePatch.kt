@@ -99,7 +99,7 @@ val addToQueuePatch = bytecodePatch(
                 val enumMethodParameterClassName = it.instructionMatches[1]
                     .getInstruction<ReferenceInstruction>().reference
 
-                it.method.addInstructions(
+                it.method.addInstructionsWithLabels(
                     0,
                     """
                         iget-object v0, p0, $enumMethodParameterClassReference

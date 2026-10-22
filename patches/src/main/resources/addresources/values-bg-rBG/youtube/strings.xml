@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">Докасването и задържането навсякъде по видео в лентата отваря неговото меню</string>
   <string name="morphe_feed_watch_later_button_title">Показване на бутона \"Изглеждане по-късно\" върху миниатюрите</string>
   <string name="morphe_feed_watch_later_button_summary">Бутонът \"Изглеждане по-късно\" се показва върху миниатюрите на видеата в лентата. Докосването и задържането му отваря \"Записване към плейлист\"</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Добавяне на елемент Ask в изплъзгащото се меню</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Добавяне на елемент за обобщение на видео към изплъзгащото се меню на емисията</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Първоначално Ask изисква влязъл в системата акаунт в държава, където Ask е наличен.
+
+След като веднъж бъде отворено видео с бутон Ask, функцията работи с всички видеа, дори ако текущата държава няма функция Ask."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Обобщи видеото</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Не може да се отвори Ask за това видео</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask не е наличен за вашия акаунт или текуща държава</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Показване на брой гледания в миниатюрите</string>
   <string name="morphe_feed_view_count_summary">Броят гледания на видеоклиповете във водещия поток се показва в долния ляв ъгъл на техните миниатюри, а не под заглавието. При някои видеоклипове, като тези в секции, може да не се показва брой гледания</string>
@@ -793,6 +806,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Изправи препис</string>
   <string name="morphe_fix_transcript_summary">Отстранява грешка при проверка на предварително условие, която може да попречи на зареждането на транскрипцията</string>
+  <string name="morphe_captions_in_pip_title">Показване на надписи в режим \"карта върху карта\"</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Думиращи бутони</string>
   <string name="morphe_navigation_buttons_screen_summary">Скрий футъра на менюто „Аудио писта“</string>
@@ -1110,6 +1124,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Автоматично преминава към следващото Short, вместо да повтаря текущото</string>
   <string name="morphe_shorts_autoplay_background_title">Автоматично възпроизвеждане във фонов режим</string>
   <string name="morphe_shorts_autoplay_background_summary">Автоматично преминава към следващото Short по време на възпроизвеждане във фонов режим</string>
+  <string name="morphe_skip_live_shorts_title">Пропускане на предстоящи Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Пропуска предстоящи потоци, които се появяват във филтъра за Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Възпроизвеждане в емисии</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Винаги включено</string>
@@ -1272,6 +1288,15 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_low">Малък</string>
   <string name="morphe_playback_buffer_size_entry_medium">Среден</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Максимален</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Забавяне на видеото</string>
+  <string name="morphe_video_delay_summary">Забавя видеото, за да го синхронизира със забавен звук, например при Bluetooth слушалки (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Само забавяне с Bluetooth аудио</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Забавя видеото само докато Bluetooth аудиото е свързано, така че вграденият говорител на телефона остава синхронизиран</string>
+  <string name="morphe_video_delay_button_overlay_title">Показване на бутона за забавяне на видеото</string>
+  <string name="morphe_video_delay_button_overlay_summary">Натиснете и задръжте, за да нулирате забавянето до 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Показване на менюто за забавяне на видеото</string>
+  <string name="morphe_video_delay_dialog_input_hint">Забавяне в милисекунди</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -1313,6 +1338,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Известия за промяна на скоростта</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Показва известие, когато бъде запазена нова скорост на възпроизвеждане по подразбиране</string>
   <string name="morphe_playback_speed_default_title">Надписите са показани</string>
+  <string name="morphe_shorts_playback_speed_default_title">Скорост по подразбиране за възпроизвеждане в Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Променена подразбираема скорост на възпроизвеждане на: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Използвайте нормална скорост за музика</string>
   <string name="morphe_disable_playback_speed_music_summary">Винаги пускайте музикални видеа на скорост 1.0x</string>

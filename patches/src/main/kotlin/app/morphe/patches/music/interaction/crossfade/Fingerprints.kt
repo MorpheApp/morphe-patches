@@ -9,15 +9,19 @@
 package app.morphe.patches.music.interaction.crossfade
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
 internal const val EXO_PLAYER_TYPE = "Landroidx/media3/exoplayer/ExoPlayer;"
 
 internal object StopVideoFingerprint : Fingerprint(
     returnType = "V",
-    strings = listOf("stopVideo", "MedialibPlayer.stopVideo")
+    strings = listOf(
+        string("MedialibPlayer.stopVideo()", StringComparisonType.STARTS_WITH)
+    )
 )
 
 internal object PlayNextInQueueFingerprint : Fingerprint(
@@ -35,7 +39,9 @@ internal object AudioVideoToggleFingerprint : Fingerprint(
 
 internal object PauseVideoFingerprint : Fingerprint(
     returnType = "V",
-    strings = listOf("pauseVideo", "MedialibPlayer.pauseVideo()")
+    strings = listOf(
+        string("MedialibPlayer.pauseVideo()", StringComparisonType.STARTS_WITH)
+    )
 )
 
 internal object PlayVideoFingerprint : Fingerprint(
@@ -47,16 +53,16 @@ internal object PlayVideoFingerprint : Fingerprint(
  * A synthetic Runnable also logs with the "ExoPlayerImpl" tag, so the interface check is required.
  */
 internal object ExoPlayerImplFingerprint : Fingerprint(
-    strings = listOf("ExoPlayerImpl"),
-    custom = { _, classDef ->
-        classDef.interfaces.contains(EXO_PLAYER_TYPE)
-    }
+    interfaces = listOf(EXO_PLAYER_TYPE),
+    strings = listOf("ExoPlayerImpl")
 )
 
 internal object LoadVideoFingerprint : Fingerprint(
     classFingerprint = StopVideoFingerprint,
     returnType = "V",
-    strings = listOf("MedialibPlayer.loadVideo(")
+    filters = listOf(
+        string("MedialibPlayer.loadVideo(", StringComparisonType.STARTS_WITH)
+    )
 )
 
 /**
@@ -66,7 +72,9 @@ internal object LoadVideoFingerprint : Fingerprint(
 internal object LoopStateAdapterFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),
-    strings = listOf("attempted to update repeat mode but media session was null")
+    filters = listOf(
+        string("attempted to update repeat mode but media session was null", StringComparisonType.STARTS_WITH)
+    )
 )
 
 /**
