@@ -248,16 +248,15 @@ public final class DownloadsPatch {
                 }
 
                 Logger.printDebug(() -> "Flyout isDownloadClick");
-                final long now = System.currentTimeMillis();
-                if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
-                    return true;
-                }
-
                 // A queue-row menu can select a different song from the current player.
                 String targetId = new ProtoMessage(Base64.decode(
                         Uri.decode(downloadParams), Base64.URL_SAFE)).stringField(4);
 
                 if (!targetId.isEmpty()) {
+                    final long now = System.currentTimeMillis();
+                    if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
+                        return true;
+                    }
                     lastFlyoutDownloadTime = now;
                     final String flyoutId = targetId;
                     Logger.printDebug(() -> "Flyout download of " + flyoutId
