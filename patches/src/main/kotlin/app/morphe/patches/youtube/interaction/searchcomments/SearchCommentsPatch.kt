@@ -121,11 +121,13 @@ val searchCommentsPatch = bytecodePatch(
             )
         }
 
-        SectionListControllerConstructorFingerprint.method.apply {
-            addInstruction(
-                indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID),
-                "invoke-static/range { p0 .. p0 }, $EXTENSION_FILTER->onSectionListCreated($SECTION_LIST_ACCESS_INTERFACE)V"
-            )
+        SectionListControllerConstructorFingerprint.let {
+            it.method.apply {
+                addInstruction(
+                    it.instructionMatches.last().index,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_FILTER->onSectionListCreated($SECTION_LIST_ACCESS_INTERFACE)V"
+                )
+            }
         }
     }
 }

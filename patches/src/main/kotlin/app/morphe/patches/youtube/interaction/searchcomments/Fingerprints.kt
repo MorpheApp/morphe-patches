@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.interaction.searchcomments
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterLast
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
@@ -52,7 +53,8 @@ internal object SectionListControllerConstructorFingerprint : Fingerprint(
     classFingerprint = SectionListControllerFingerprint,
     name = "<init>",
     filters = listOf(
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Landroid/view/View;")
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Landroid/view/View;"),
+        opcode(Opcode.RETURN_VOID, MatchAfterLast())
     )
 )
 
