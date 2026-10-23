@@ -120,6 +120,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final FloatSetting PLAYBACK_SPEED_DEFAULT = new FloatSetting("morphe_playback_speed_default", -2.0f);
     // -2.0f is YouTube's "auto" entry and disables the Shorts override.
     public static final FloatSetting SHORTS_PLAYBACK_SPEED_DEFAULT = new FloatSetting("morphe_shorts_playback_speed_default", -2.0f);
+    public static final BooleanSetting SHORTS_REMEMBER_PLAYBACK_SPEED = new BooleanSetting("morphe_shorts_remember_playback_speed", FALSE);
+    public static final BooleanSetting SHORTS_PLAYBACK_SPEED_FLYOUT_BUTTON = new BooleanSetting("morphe_shorts_playback_speed_flyout_button", TRUE);
     public static final FloatSetting PLAYBACK_AUDIO_PITCH_DEFAULT = new FloatSetting("morphe_playback_audio_pitch_default", -2.0f);
     public static final BooleanSetting CUSTOM_SPEED_MENU = new BooleanSetting("morphe_custom_speed_menu", TRUE);
     public static final BooleanSetting DISABLE_PLAYBACK_SPEED_MUSIC = new BooleanSetting("morphe_disable_playback_speed_music", FALSE, true);
