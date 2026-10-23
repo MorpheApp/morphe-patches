@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.shared
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
@@ -18,7 +19,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.getFreeRegisterProvider
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.lang.ref.WeakReference
 

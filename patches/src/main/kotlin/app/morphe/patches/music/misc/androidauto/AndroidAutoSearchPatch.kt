@@ -10,11 +10,11 @@ package app.morphe.patches.music.misc.androidauto
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.music.interaction.jam.addReferenceGetter
 import app.morphe.patches.music.interaction.jam.implementsType
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findFreeRegister
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference

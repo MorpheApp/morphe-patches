@@ -14,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -22,7 +23,6 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod

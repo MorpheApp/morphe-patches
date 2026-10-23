@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
@@ -24,7 +25,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode

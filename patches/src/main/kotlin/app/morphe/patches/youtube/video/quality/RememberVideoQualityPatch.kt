@@ -31,10 +31,10 @@ import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_INTE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
-import app.morphe.util.findFreeRegister
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getFreeRegisterProvider
-import app.morphe.util.getReference
+import app.morphe.patcher.util.getFreeRegisterProvider
+import app.morphe.patcher.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags

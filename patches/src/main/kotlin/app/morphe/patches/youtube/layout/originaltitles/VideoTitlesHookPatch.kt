@@ -11,6 +11,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.MediaSessionSetMetadataFingerprint
 import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
 import app.morphe.patches.shared.misc.proto.hookElement
@@ -20,8 +22,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
-import app.morphe.util.findFreeRegister
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction

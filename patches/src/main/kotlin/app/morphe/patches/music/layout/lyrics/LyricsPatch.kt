@@ -12,6 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -33,7 +34,6 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode

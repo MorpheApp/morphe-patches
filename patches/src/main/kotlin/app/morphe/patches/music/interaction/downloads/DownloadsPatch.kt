@@ -10,6 +10,7 @@ package app.morphe.patches.music.interaction.downloads
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -21,7 +22,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
-import app.morphe.util.cloneParameters
 
 private val OFFLINE_PLAYBACK_PERMISSIONS = listOf(
     "android.permission.WAKE_LOCK",

@@ -14,12 +14,12 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_46_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.util.p0Register
 import java.lang.ref.WeakReference
 
 private val hooks = mutableSetOf<Hook>()

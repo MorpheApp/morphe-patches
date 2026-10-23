@@ -15,6 +15,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_36_0_or_greater
@@ -22,7 +23,6 @@ import app.morphe.patches.reddit.misc.version.is_2026_38_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.registersUsed
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction

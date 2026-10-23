@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
@@ -18,7 +19,6 @@ import app.morphe.patches.reddit.misc.version.is_2026_16_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_21_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.util.findFreeRegister
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation

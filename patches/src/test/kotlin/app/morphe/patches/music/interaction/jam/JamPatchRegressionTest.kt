@@ -12,9 +12,9 @@ import app.morphe.patcher.PatcherConfig
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.util.getMutableMethod
-import app.morphe.util.matchSingle
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import kotlinx.coroutines.runBlocking

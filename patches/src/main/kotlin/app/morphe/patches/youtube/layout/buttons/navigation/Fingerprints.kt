@@ -135,9 +135,15 @@ internal object PivotBarChangedFingerprint : Fingerprint(
  */
 internal val TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS = listOf(
     45630927L, // Blurred, translucent background of the navigation bar.
-    45632194L, // Navigation bar also covers the system navigation buttons.
+    NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG,
     45631257L  // Feed laid out behind the navigation bar instead of above it.
 )
+
+/**
+ * Navigation bar also covers the system navigation buttons, the only one of
+ * [TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS] that changes the room left for them.
+ */
+internal const val NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG = 45632194L
 
 internal object TranslucentNavigationBarFeatureFlagsFingerprint : Fingerprint(
     filters = listOf(
@@ -203,6 +209,32 @@ internal object FeedListPaddingFingerprint : Fingerprint(
             definingClass = "Landroid/support/v7/widget/RecyclerView;",
             name = "setPadding",
             location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Sets the bottom padding of the list of a browse page laid out behind the navigation bar,
+ * to the navigation bar height plus the bottom window inset, once the window insets are known.
+ */
+internal object BrowseListBottomPaddingFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(
+            definingClass = "Landroid/support/v7/widget/RecyclerView;",
+            name = "getPaddingRight"
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            definingClass = "Landroid/graphics/Rect;",
+            name = "bottom",
+            location = MatchAfterWithin(6)
+        ),
+        methodCall(
+            definingClass = "Landroid/support/v7/widget/RecyclerView;",
+            name = "setPadding",
+            location = MatchAfterWithin(3)
         )
     )
 )

@@ -146,8 +146,21 @@ public final class NavigationBarPatch {
             return;
         }
 
-        if (HIDE_NAVIGATION_NEW_CONTENT_DOT) {
-            hideNewContentDot(tabView);
+        // The dot is a stub that is inflated when the tab has new content, and the app shows and
+        // hides it again later. It is hidden right before every draw, so no frame shows it. The
+        // theme patch keeps the color of the dot the same way.
+        if (HIDE_NAVIGATION_NEW_CONTENT_DOT && newContentDotId != 0) {
+            try {
+                tabView.getViewTreeObserver().addOnPreDrawListener(() -> {
+                    View dot = tabView.findViewById(newContentDotId);
+                    if (dot != null && !(dot instanceof ViewStub) && dot.getVisibility() == View.VISIBLE) {
+                        dot.setVisibility(View.INVISIBLE);
+                    }
+                    return true;
+                });
+            } catch (Exception ex) {
+                Logger.printException(() -> "navigationTabCreated new content dot failure", ex);
+            }
         }
 
         if (Boolean.TRUE.equals(shouldHideMap.get(button))) {
@@ -160,29 +173,6 @@ public final class NavigationBarPatch {
      */
     public static void hideNavigationButtonLabels(TextView navigationLabelsView) {
         Utils.hideViewUnderCondition(Settings.HIDE_NAVIGATION_BUTTON_LABELS, navigationLabelsView);
-    }
-
-    /**
-     * The dot is a stub that is inflated when the tab has new content, and the app shows and
-     * hides it again later. It is hidden right before every draw, so no frame shows it. The
-     * theme patch keeps the color of the dot the same way.
-     */
-    private static void hideNewContentDot(View tabView) {
-        try {
-            if (newContentDotId == 0) {
-                return;
-            }
-
-            tabView.getViewTreeObserver().addOnPreDrawListener(() -> {
-                View dot = tabView.findViewById(newContentDotId);
-                if (dot != null && !(dot instanceof ViewStub) && dot.getVisibility() == View.VISIBLE) {
-                    dot.setVisibility(View.INVISIBLE);
-                }
-                return true;
-            });
-        } catch (Exception ex) {
-            Logger.printException(() -> "hideNewContentDot failure", ex);
-        }
     }
 
     /**
@@ -228,21 +218,89 @@ public final class NavigationBarPatch {
      * (https://github.com/MorpheApp/morphe-patches/issues/3864).
      */
     public static boolean useTranslucentNavigationBar(boolean original) {
+        boolean translucent = original;
         try {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-                return false;
+                translucent = false;
+            } else {
+                Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
+                // Null if not read yet, or the Hide status bar patch is not included.
+                if (edgeToEdge != null) {
+                    translucent = edgeToEdge;
+                }
             }
-
-            Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
-            if (edgeToEdge == null) {
-                // Not read yet, or the Hide status bar patch is not included.
-                return original;
-            }
-            return edgeToEdge;
         } catch (Exception ex) {
             Logger.printException(() -> "useTranslucentNavigationBar failure", ex);
-            return original;
         }
+
+        translucentNavigationBarForced = translucent;
+        return translucent;
+    }
+
+    /**
+     * If {@link #useTranslucentNavigationBar(boolean)} turned the translucent navigation bar on.
+     * The fixes for what its feature flags break are only needed then, and stay off if the flags
+     * are no longer turned on by this patch.
+     */
+    private static volatile boolean translucentNavigationBarForced;
+
+    /**
+     * Injection point.
+     */
+    public static boolean isTranslucentNavigationBarForced() {
+        return translucentNavigationBarForced;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The blurred, translucent background of the navigation bar and the feed laid out behind it
+     * only change how the bar looks, not the room left for the system navigation buttons, so they
+     * are turned on from Android 12 also when the window is not drawn edge to edge. If
+     * the translucent navigation bar is turned off, they follow
+     * {@link #useTranslucentNavigationBar(boolean)} instead.
+     */
+    public static boolean useTranslucentNavigationBarBackground(boolean original) {
+        final boolean translucent;
+        if (!DISABLE_TRANSLUCENT_NAVIGATION && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            translucent = true;
+        } else {
+            translucent = useTranslucentNavigationBar(original);
+        }
+
+        translucentNavigationBarBackgroundForced = translucent;
+        return translucent;
+    }
+
+    /**
+     * If {@link #useTranslucentNavigationBarBackground(boolean)} turned the translucent background
+     * of the navigation bar on. The fixes for what the blur and the feed behind the navigation bar
+     * break are only needed then.
+     */
+    private static volatile boolean translucentNavigationBarBackgroundForced;
+
+    /**
+     * Injection point.
+     */
+    public static boolean isTranslucentNavigationBarBackgroundForced() {
+        return translucentNavigationBarBackgroundForced;
+    }
+
+    /**
+     * If the keyboard height was ever removed from the bottom margin of the layout that holds
+     * the page, the player and the navigation bar, so the keyboard covers them.
+     */
+    private static volatile boolean keyboardMarginRemoved;
+
+    /**
+     * Injection point.
+     */
+    public static void setKeyboardMarginRemoved() {
+        keyboardMarginRemoved = true;
+    }
+
+    static boolean isKeyboardMarginRemoved() {
+        return keyboardMarginRemoved;
     }
 
     /**
@@ -253,10 +311,12 @@ public final class NavigationBarPatch {
      * the keyboard, so the bar grows as tall as the keyboard and covers the page
      * (https://github.com/MorpheApp/morphe-patches/issues/3909). The page above then ends
      * the height of the system bars below the top of the keyboard, so only that much room is left.
+     * Only with the feature flags turned on by {@link #useTranslucentNavigationBar(boolean)}.
      */
     public static int getNavigationBarBottomPadding(View navigationBar, int original) {
         try {
-            if (original != 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (translucentNavigationBarForced && original != 0
+                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 WindowInsets insets = navigationBar.getRootWindowInsets();
                 if (insets != null && insets.isVisible(WindowInsets.Type.ime())) {
                     return Math.min(original, insets.getInsets(WindowInsets.Type.systemBars()).bottom);
@@ -686,12 +746,64 @@ public final class NavigationBarPatch {
                     continue;
                 }
 
-                ButtonRenderer createButton = openUploadInCreationModes(buttons.getButtonRenderer());
-                if (createButton == null) {
+                // The upload buttons of the create button open the upload endpoint in the creation modes.
+                // Nothing is changed if the create button has no upload button.
+                ButtonRenderer createButton = buttons.getButtonRenderer();
+                NavigationEndpoint endpoint = createButton.getNavigationEndpoint();
+                if (!endpoint.hasCreationEntrySheetEndpoint()) {
                     return;
                 }
+                CreationEntrySheetEndpoint sheetEndpoint = endpoint.getCreationEntrySheetEndpoint();
+                ButtonSheetRenderer sheet = sheetEndpoint.getButtonSheetSupportedRenderers().getButtonSheetRenderer();
+                ButtonSheetRenderer.Builder sheetBuilder = sheet.toBuilder();
+                boolean replaced = false;
+
+                for (int j = 0, count = sheet.getButtonsCount(); j < count; j++) {
+                    Buttons button = sheet.getButtons(j);
+                    ButtonRenderer buttonRenderer = button.getButtonRenderer();
+                    NavigationEndpoint uploadEndpoint = buttonRenderer.getNavigationEndpoint();
+                    if (!button.hasButtonRenderer() || !uploadEndpoint.hasShortsCreationEndpoint()) {
+                        continue;
+                    }
+
+                    // The only mode button of the creation modes opens the upload endpoint.
+                    ButtonRenderer modeButton = buttonRenderer.toBuilder()
+                            .clearNavigationEndpoint()
+                            .setCommand(uploadEndpoint)
+                            .build();
+                    CreationModesSwitcherRenderer switcher = CreationModesSwitcherRenderer.newBuilder()
+                            .addModeButtons(Buttons.newBuilder().setButtonRenderer(modeButton))
+                            .addModes(CreationMode.CREATION_MODE_UPLOADS)
+                            .setDefaultMode(CreationMode.CREATION_MODE_UPLOADS)
+                            .build();
+                    CreationModesCommand creationModesCommand = CreationModesCommand.newBuilder()
+                            .setCreationModesControlsRenderer(CreationModesControlsRendererHolder.newBuilder()
+                                    .setCreationModesControlsRenderer(CreationModesControlsRenderer.newBuilder()
+                                            .setCreationModesSwitcherRenderer(CreationModesSwitcherRendererHolder.newBuilder()
+                                                    .setCreationModesSwitcherRenderer(switcher))))
+                            .build();
+
+                    NavigationEndpoint creationModesEndpoint = uploadEndpoint.toBuilder()
+                            .clearShortsCreationEndpoint()
+                            .setCreationModesCommand(creationModesCommand)
+                            .build();
+                    sheetBuilder.setButtons(j, button.toBuilder().setButtonRenderer(
+                            buttonRenderer.toBuilder().setNavigationEndpoint(creationModesEndpoint)));
+                    replaced = true;
+                }
+                if (!replaced) {
+                    return;
+                }
+
+                CreationEntrySheetEndpoint creationModesSheetEndpoint = sheetEndpoint.toBuilder()
+                        .setButtonSheetSupportedRenderers(sheetEndpoint.getButtonSheetSupportedRenderers().toBuilder()
+                                .setButtonSheetRenderer(sheetBuilder))
+                        .build();
+                ButtonRenderer creationModesCreateButton = createButton.toBuilder()
+                        .setNavigationEndpoint(endpoint.toBuilder().setCreationEntrySheetEndpoint(creationModesSheetEndpoint))
+                        .build();
                 rawButtonList.set(i, parseWithRegistry(rawButtons,
-                        buttons.toBuilder().setButtonRenderer(createButton).build().toByteArray(),
+                        buttons.toBuilder().setButtonRenderer(creationModesCreateButton).build().toByteArray(),
                         getGeneratedRegistry()));
                 Logger.printDebug(() -> "Toolbar create button opens the upload in the creation modes");
                 return;
@@ -716,67 +828,6 @@ public final class NavigationBarPatch {
      */
     private static ExtensionRegistryLite getGeneratedRegistry() {
         return null; // Modified during patching.
-    }
-
-    /**
-     * @return The create button whose upload buttons open the upload endpoint in the creation modes,
-     *         or null if the create button has no upload button.
-     */
-    @Nullable
-    private static ButtonRenderer openUploadInCreationModes(ButtonRenderer createButton) {
-        NavigationEndpoint endpoint = createButton.getNavigationEndpoint();
-        if (!endpoint.hasCreationEntrySheetEndpoint()) {
-            return null;
-        }
-        CreationEntrySheetEndpoint sheetEndpoint = endpoint.getCreationEntrySheetEndpoint();
-        ButtonSheetRenderer sheet = sheetEndpoint.getButtonSheetSupportedRenderers().getButtonSheetRenderer();
-        ButtonSheetRenderer.Builder sheetBuilder = sheet.toBuilder();
-        boolean replaced = false;
-
-        for (int i = 0, count = sheet.getButtonsCount(); i < count; i++) {
-            Buttons button = sheet.getButtons(i);
-            ButtonRenderer buttonRenderer = button.getButtonRenderer();
-            NavigationEndpoint uploadEndpoint = buttonRenderer.getNavigationEndpoint();
-            if (!button.hasButtonRenderer() || !uploadEndpoint.hasShortsCreationEndpoint()) {
-                continue;
-            }
-
-            // The only mode button of the creation modes opens the upload endpoint.
-            ButtonRenderer modeButton = buttonRenderer.toBuilder()
-                    .clearNavigationEndpoint()
-                    .setCommand(uploadEndpoint)
-                    .build();
-            CreationModesSwitcherRenderer switcher = CreationModesSwitcherRenderer.newBuilder()
-                    .addModeButtons(Buttons.newBuilder().setButtonRenderer(modeButton))
-                    .addModes(CreationMode.CREATION_MODE_UPLOADS)
-                    .setDefaultMode(CreationMode.CREATION_MODE_UPLOADS)
-                    .build();
-            CreationModesCommand creationModesCommand = CreationModesCommand.newBuilder()
-                    .setCreationModesControlsRenderer(CreationModesControlsRendererHolder.newBuilder()
-                            .setCreationModesControlsRenderer(CreationModesControlsRenderer.newBuilder()
-                                    .setCreationModesSwitcherRenderer(CreationModesSwitcherRendererHolder.newBuilder()
-                                            .setCreationModesSwitcherRenderer(switcher))))
-                    .build();
-
-            NavigationEndpoint creationModesEndpoint = uploadEndpoint.toBuilder()
-                    .clearShortsCreationEndpoint()
-                    .setCreationModesCommand(creationModesCommand)
-                    .build();
-            sheetBuilder.setButtons(i, button.toBuilder().setButtonRenderer(
-                    buttonRenderer.toBuilder().setNavigationEndpoint(creationModesEndpoint)));
-            replaced = true;
-        }
-        if (!replaced) {
-            return null;
-        }
-
-        CreationEntrySheetEndpoint creationModesSheetEndpoint = sheetEndpoint.toBuilder()
-                .setButtonSheetSupportedRenderers(sheetEndpoint.getButtonSheetSupportedRenderers().toBuilder()
-                        .setButtonSheetRenderer(sheetBuilder))
-                .build();
-        return createButton.toBuilder()
-                .setNavigationEndpoint(endpoint.toBuilder().setCreationEntrySheetEndpoint(creationModesSheetEndpoint))
-                .build();
     }
 
     /**

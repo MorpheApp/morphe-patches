@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.backgesture.addBackPressedHook
 import app.morphe.patches.youtube.misc.backgesture.addPredictiveBackGestureHook
@@ -22,7 +23,6 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode

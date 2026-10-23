@@ -17,12 +17,12 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.Document
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.shared.layout.branding.header.CUSTOM_HEADER_RESOURCE_NAME
 import app.morphe.patches.shared.layout.branding.header.baseChangeHeaderPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findElementByAttributeValueOrThrow
-import app.morphe.util.matchAllMethodIndicesForEach
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 

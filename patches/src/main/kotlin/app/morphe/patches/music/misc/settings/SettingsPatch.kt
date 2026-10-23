@@ -11,6 +11,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.getFreeRegisterProvider
+import app.morphe.patcher.util.getReference
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.crashlog.crashLogPatch
 import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
@@ -47,8 +49,6 @@ import app.morphe.patches.youtube.misc.settings.modifyActivityForSettingsInjecti
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.copyXmlNode
-import app.morphe.util.getFreeRegisterProvider
-import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction

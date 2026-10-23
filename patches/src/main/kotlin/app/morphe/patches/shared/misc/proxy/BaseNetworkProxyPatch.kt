@@ -12,13 +12,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.util.logging.Logger

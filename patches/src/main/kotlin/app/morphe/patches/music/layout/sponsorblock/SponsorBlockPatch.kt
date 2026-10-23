@@ -9,6 +9,7 @@ package app.morphe.patches.music.layout.sponsorblock
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -26,7 +27,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.youtube.layout.sponsorblock.categoryPreference
-import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 

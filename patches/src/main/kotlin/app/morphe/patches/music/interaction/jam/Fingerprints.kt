@@ -19,8 +19,8 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patcher.util.getReference
 import app.morphe.util.findInstructionIndicesReversed
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
