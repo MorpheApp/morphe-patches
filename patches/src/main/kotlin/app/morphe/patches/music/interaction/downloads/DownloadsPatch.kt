@@ -10,7 +10,6 @@ package app.morphe.patches.music.interaction.downloads
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.util.addFreeRegisters
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -128,15 +127,14 @@ val downloadsPatch = bytecodePatch(
 
         OfflineVideoEndpointFingerprint.method.apply {
             val videoIdRegister = (downloadCall.instruction as FiveRegisterInstruction).registerD
-            val resultRegister = implementation!!.registerCount
-            val (method, addedInstructions) = addFreeRegisters(1)
             // Reuse the ID YTM resolved for its single-video download action.
-            method.addInstructionsAtControlFlowLabel(
-                downloadCall.index + addedInstructions,
+            // v1 is unused by the download call, which is followed by return-void.
+            addInstructionsAtControlFlowLabel(
+                downloadCall.index,
                 """
                     invoke-static/range { v$videoIdRegister .. v$videoIdRegister }, $EXTENSION_CLASS->offlineVideoEndpointOnClick(Ljava/lang/String;)Z
-                    move-result v$resultRegister
-                    if-eqz v$resultRegister, :show_native_downloader
+                    move-result v1
+                    if-eqz v1, :show_native_downloader
                     return-void
                     :show_native_downloader
                     nop
