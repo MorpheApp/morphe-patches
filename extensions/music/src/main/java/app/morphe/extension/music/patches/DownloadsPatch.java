@@ -48,6 +48,8 @@ public final class DownloadsPatch {
 
     private static volatile String downloadButtonLabel = "";
 
+    // Download leaves the menu open, so repeated taps can repeat the request or reopen the external downloader.
+    // Separate timers let a player download and a different menu selection both go through.
     private static volatile long lastFlyoutDownloadTime;
     private static volatile long lastMainPlayerDownloadTime;
     private static volatile long lastLocalDownloadsOpenTime;
@@ -224,6 +226,8 @@ public final class DownloadsPatch {
 
             Object viewObj = map.get(ELEMENTS_SENDER_VIEW);
             final boolean inDialog = isViewInsideDialog(viewObj);
+            // Popup menus can share the Download label but refer to a different song.
+            // Only the player action bar should use the playing song's ID.
             if (!inDialog && isPlayerDownloadButton(map)) {
                 if (!isActionButtonOverridden()) return false;
 
@@ -242,17 +246,19 @@ public final class DownloadsPatch {
             String downloadParams = new ProtoMessage(commandBytes)
                     .messageField(133724106).stringField(1);
             if (!downloadParams.isEmpty()) {
+                // Native commands also run without a tap; only replace downloads from a UI control.
                 if (viewObj == null) {
                     Logger.printDebug(() -> "Ignored programmatic download click (no sender_view).");
                     return false;
                 }
 
                 Logger.printDebug(() -> "Flyout isDownloadClick");
-                // A queue-row menu can select a different song from the current player.
+                // Use the song ID in the Download parameters; menu context can refer to a previous selection.
                 String targetId = new ProtoMessage(Base64.decode(
                         Uri.decode(downloadParams), Base64.URL_SAFE)).stringField(4);
 
                 if (!targetId.isEmpty()) {
+                    // Only debounce song downloads; collections must still reach YTM.
                     final long now = System.currentTimeMillis();
                     if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
                         return true;
@@ -265,7 +271,8 @@ public final class DownloadsPatch {
                     return true;
 
                 } else {
-                    // Leave collection downloads and commands without a selected video to YTM.
+                    // Album and playlist downloads can reach here without a song ID.
+                    // Don't substitute the playing song; let YouTube Music handle the action.
                     return false;
                 }
             }
