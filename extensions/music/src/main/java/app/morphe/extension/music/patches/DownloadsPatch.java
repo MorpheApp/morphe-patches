@@ -229,14 +229,29 @@ public final class DownloadsPatch {
                 }
             }
 
+            Object viewObj = map.get(ELEMENTS_SENDER_VIEW);
+            final boolean inDialog = isViewInsideDialog(viewObj);
+            if (!inDialog && isPlayerDownloadButton(map)) {
+                if (!isActionButtonOverridden()) return false;
+
+                String videoId = VideoInformation.getVideoId();
+                if (videoId == null || videoId.isEmpty()) return false;
+
+                final long now = System.currentTimeMillis();
+                if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
+                    return true;
+                }
+                lastMainPlayerDownloadTime = now;
+                startDownload(videoId, !inAppDownloads());
+                return true;
+            }
+
             String p1String = p1.toString();
             Logger.printDebug(() -> "commandResolverOnClick: " + p1String);
 
             final boolean isDownloadClick = Utils.containsAny(p1String,
                     "[133724106]", "[443434441]");
             if (isDownloadClick) {
-                Object viewObj = map.get(ELEMENTS_SENDER_VIEW);
-
                 if (viewObj == null) {
                     Logger.printDebug(() -> "Ignored programmatic download click (no sender_view).");
                     return false;
@@ -261,24 +276,15 @@ public final class DownloadsPatch {
                     return true;
                 }
 
-                final boolean inDialog = isViewInsideDialog(viewObj);
-                final boolean isPlayerButton = !inDialog && isPlayerDownloadButton(map);
-                if (isPlayerButton && !isActionButtonOverridden()) {
-                    // The Download button of the player, which only the download mode replaces.
-                    return false;
-                }
-
                 // A queue-row menu can select a different song from the current player.
-                String targetId = isPlayerButton ? VideoInformation.getVideoId()
-                        : getVideoId(map.get(ENDPOINT_TAG));
+                String targetId = getVideoId(map.get(ENDPOINT_TAG));
 
                 if (targetId != null && !targetId.isEmpty()) {
                     lastFlyoutDownloadTime = now;
                     final String flyoutId = targetId;
                     Logger.printDebug(() -> "Flyout download of " + flyoutId
                             + " inDialog=" + inDialog);
-                    startDownload(targetId, isPlayerButton
-                            ? !inAppDownloads() : flyoutMenuUsesExternalDownloader());
+                    startDownload(targetId, flyoutMenuUsesExternalDownloader());
                     return true;
 
                 } else {
