@@ -9,8 +9,6 @@ package app.morphe.patches.music.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.anyInstruction
-import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.instanceOf
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -43,25 +41,5 @@ internal object OfflineVideoEndpointFingerprint : Fingerprint(
             parameters = listOf("Ljava/lang/String;", "L", "L", "L"),
             returnType = "V"
         )
-    )
-)
-
-internal fun selectedVideoIdFingerprint(endpointUtilsType: String) = Fingerprint(
-    definingClass = endpointUtilsType,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    parameters = listOf("Ljava/lang/Object;"),
-    returnType = "Ljava/lang/String;",
-    filters = listOf(
-        instanceOf("L"),
-        // The video getter accepts a plain ID as well as a row; the playlist getter does not.
-        instanceOf("Ljava/lang/String;")
-    )
-)
-
-internal fun playerMenuItemFingerprint(rendererType: String) = Fingerprint(
-    name = "<init>",
-    parameters = listOf("J", rendererType, "Z"),
-    filters = listOf(
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = rendererType)
     )
 )

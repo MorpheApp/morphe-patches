@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -43,8 +44,6 @@ public final class DownloadsPatch {
 
     private static final String ELEMENTS_SENDER_VIEW =
             "com.google.android.libraries.youtube.rendering.elements.sender_view";
-    private static final String ENDPOINT_TAG =
-            "com.google.android.libraries.youtube.innertube.endpoint.tag";
     private static final int IGNORE_DOUBLE_CLICK_DURATION_MS = 1000;
 
     private static volatile String downloadButtonLabel = "";
@@ -137,12 +136,6 @@ public final class DownloadsPatch {
             return true;
         }
         return false;
-    }
-
-    /** Replaced during patching with YTM's selected-video getter. */
-    @Nullable
-    private static String getVideoId(@Nullable Object endpointTag) {
-        return null;
     }
 
     /**
@@ -261,9 +254,10 @@ public final class DownloadsPatch {
                 }
 
                 // A queue-row menu can select a different song from the current player.
-                String targetId = getVideoId(map.get(ENDPOINT_TAG));
+                String targetId = new ProtoMessage(Base64.decode(
+                        Uri.decode(downloadParams), Base64.URL_SAFE)).stringField(4);
 
-                if (targetId != null && !targetId.isEmpty()) {
+                if (!targetId.isEmpty()) {
                     lastFlyoutDownloadTime = now;
                     final String flyoutId = targetId;
                     Logger.printDebug(() -> "Flyout download of " + flyoutId
