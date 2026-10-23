@@ -15,7 +15,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.InitializePlaybackSpeedValuesFingerprint
 import app.morphe.patches.youtube.video.information.EXTENSION_PLAYBACK_SPEED_MENU_INTERFACE
@@ -23,6 +22,7 @@ import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
+import app.morphe.patches.youtube.video.speed.settingsMenuShortsSpeedGroup
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
@@ -63,13 +63,16 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
         )
 
         // The Shorts speed belongs with the other Shorts settings.
-        PreferenceScreen.SHORTS.addPreferences(
-            ListPreference(
-                key = "morphe_shorts_playback_speed_default",
-                // Entries and values are set by the extension code based on the actual speeds available.
-                entriesKey = null,
-                entryValuesKey = null,
-                tag = "app.morphe.extension.youtube.settings.preference.CustomVideoSpeedListPreference"
+        settingsMenuShortsSpeedGroup.addAll(
+            listOf(
+                ListPreference(
+                    key = "morphe_shorts_playback_speed_default",
+                    // Entries and values are set by the extension code based on the actual speeds available.
+                    entriesKey = null,
+                    entryValuesKey = null,
+                    tag = "app.morphe.extension.youtube.settings.preference.CustomVideoSpeedListPreference"
+                ),
+                SwitchPreference("morphe_shorts_remember_playback_speed", summary = true)
             )
         )
 

@@ -542,7 +542,12 @@ public final class VideoInformation {
     /**
      * Injection point.
      */
-    public static void videoSpeedChanged(float currentVideoSpeed) {
+    public static void videoSpeedChanged(float videoSpeed) {
+        // The Shorts player reports its own speed when a Short loads,
+        // even though the speed of the Shorts session is used instead.
+        final float currentVideoSpeed = ShortsPlayerState.isOpen()
+                ? RememberPlaybackSpeedPatch.getPlaybackSpeedInShorts(videoSpeed)
+                : videoSpeed;
         Logger.printDebug(() -> "Video speed changed: " + currentVideoSpeed);
         // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
         // Update the formatted string value to avoid the exception.
@@ -568,7 +573,7 @@ public final class VideoInformation {
         RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(playbackAudioPitch);
         if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && previousPlaybackSpeed != playbackSpeed) {
             RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(playbackSpeed);
-            changePlaybackSpeed(playbackSpeed);
+            applyUserSelectedPlaybackSpeed(playbackSpeed);
         } else {
             setPlaybackParameters(playbackSpeed, playbackAudioPitch);
         }
@@ -1104,6 +1109,11 @@ public final class VideoInformation {
      */
     public static void setPlaybackSpeed(float newlyLoadedPlaybackSpeed) {
         if (!updatePlaybackSpeedValue(newlyLoadedPlaybackSpeed)) {
+            // The Shorts player can play at another speed than the one last recorded,
+            // such as when it reopens, so the selected speed is always applied.
+            if (ShortsPlayerState.isOpen()) {
+                applyUserSelectedPlaybackSpeed(newlyLoadedPlaybackSpeed);
+            }
             return;
         }
 
@@ -1111,7 +1121,30 @@ public final class VideoInformation {
         if (isPlaybackAudioPitchLinked()) {
             RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(playbackAudioPitch);
         }
-        changePlaybackSpeed(playbackSpeed);
+        applyUserSelectedPlaybackSpeed(playbackSpeed);
+    }
+
+    /**
+     * Applies a speed the user selected in a Morphe speed menu.
+     * The Shorts player has no playback speed menu interface and ignores
+     * {@link #changePlaybackSpeed(float)}, so the speed is set on the player directly
+     * and kept for the following Shorts.
+     */
+    /**
+     * Sets the speed of the Shorts player, which has no playback speed menu interface.
+     */
+    public static void setShortsPlaybackSpeed(float speed) {
+        updatePlaybackSpeedValue(speed);
+        setPlaybackParameters(speed, playbackAudioPitch);
+    }
+
+    private static void applyUserSelectedPlaybackSpeed(float speed) {
+        if (ShortsPlayerState.isOpen()) {
+            RememberPlaybackSpeedPatch.setShortsSelectedPlaybackSpeed(speed);
+            setPlaybackParameters(speed, playbackAudioPitch);
+            return;
+        }
+        changePlaybackSpeed(speed);
     }
 
     private static void setCurrentQuality(@Nullable VideoQualityInterface quality) {

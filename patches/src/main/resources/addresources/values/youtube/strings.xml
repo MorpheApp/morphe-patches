@@ -1491,6 +1491,11 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_remember_playback_speed_last_selected_toast_summary">Shows a notification when a new default playback speed is saved</string>
     <string name="morphe_playback_speed_default_title">Default playback speed</string>
     <string name="morphe_shorts_playback_speed_default_title">Default playback speed on Shorts</string>
+    <string name="morphe_shorts_remember_playback_speed_title">Remember playback speed on Shorts</string>
+    <string name="morphe_shorts_remember_playback_speed_summary">Applies your manual speed selection on Shorts to all future Shorts. When off, the speed returns to the default after leaving Shorts</string>
+    <string name="morphe_shorts_playback_speed_flyout_button_title">Show Playback speed in the Shorts menu</string>
+    <string name="morphe_shorts_playback_speed_flyout_button_summary">Adds a Playback speed item to the Shorts player menu</string>
+    <string name="morphe_shorts_playback_speed_flyout_title">Playback speed · %s</string>
     <string name="morphe_remember_playback_speed_toast">Changed default playback speed to: %s</string>
     <string name="morphe_disable_playback_speed_music_title">Use normal speed for music</string>
     <string name="morphe_disable_playback_speed_music_summary">Always play music videos at 1.0x speed</string>
