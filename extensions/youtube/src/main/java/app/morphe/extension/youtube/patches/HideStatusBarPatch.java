@@ -29,6 +29,8 @@ import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PlayerType;
+import kotlin.Unit;
 
 @SuppressWarnings({"unused", "deprecation"})
 public final class HideStatusBarPatch {
@@ -64,6 +66,14 @@ public final class HideStatusBarPatch {
     };
 
     private static boolean activityLifecycleCallbacksRegistered;
+
+    /**
+     * If a video is watched in the player that fills the screen in portrait, not in fullscreen.
+     * The display cutout inset is then left out, so the video is laid out at the top of the screen
+     * instead of below the cutout. It is added back in the miniplayer, in fullscreen and without
+     * a video.
+     */
+    private static volatile boolean isWatchingVideo;
 
     /**
      * Value of the edge to edge top bar feature flag used by the whole app, or null if not read yet.
@@ -157,6 +167,19 @@ public final class HideStatusBarPatch {
             if (!activityLifecycleCallbacksRegistered) {
                 activityLifecycleCallbacksRegistered = true;
                 activity.getApplication().registerActivityLifecycleCallbacks(ACTIVITY_LIFECYCLE_CALLBACKS);
+
+                // The display cutout inset depends on the player, so it is applied again
+                // when the player fills the screen or leaves it.
+                PlayerType.getOnChange().addObserver((PlayerType type) -> {
+                    final boolean watchingVideo = type == PlayerType.WATCH_WHILE_MAXIMIZED;
+                    if (watchingVideo != isWatchingVideo) {
+                        isWatchingVideo = watchingVideo;
+                        for (Activity hiddenStatusBarActivity : activities) {
+                            hiddenStatusBarActivity.getWindow().getDecorView().requestApplyInsets();
+                        }
+                    }
+                    return Unit.INSTANCE;
+                });
             }
             hideStatusBar(activity);
         } catch (Exception ex) {
@@ -244,7 +267,7 @@ public final class HideStatusBarPatch {
                 return;
             }
 
-            systemWindowInsets.top = getDisplayCutoutInsetTop(insets);
+            systemWindowInsets.top = isWatchingVideo ? 0 : getDisplayCutoutInsetTop(insets);
         } catch (Exception ex) {
             Logger.printException(() -> "setSystemWindowInsetTop failure", ex);
         }

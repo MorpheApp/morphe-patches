@@ -21,16 +21,15 @@ import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.colorOption
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.util.resource.appendResourceElements
 import app.morphe.patches.util.resource.editText
 import app.morphe.patches.util.resource.forEachRawResourceElement
 import app.morphe.patches.util.resource.transformRawResourceElements
 import app.morphe.util.inputStreamFromBundledResource
-import app.morphe.util.matchAllMethodIndicesForEach
-import app.morphe.util.returnEarly
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import java.util.Locale
 import kotlin.math.PI
@@ -343,10 +342,8 @@ private val themeColorContextHookPatch = bytecodePatch {
     execute {
         Fingerprint(
             name = "attachBaseContext",
-            parameters = listOf("Landroid/content/Context;"),
-            custom = { method, _ ->
-                !AccessFlags.STATIC.isSet(method.accessFlags)
-            }
+            isStatic = false,
+            parameters = listOf("Landroid/content/Context;")
         ).matchAll().forEach {
             it.method.addInstructions(
                 0,
@@ -526,37 +523,11 @@ private fun ResourcePatchContext.originalColors(colorNames: List<String>): Map<S
     return originalColors
 }
 
-private fun ResourcePatchContext.colorFiles(): List<String> {
-    val colorFiles = mutableListOf<String>()
-    val resDir = get("res")
-    if (!resDir.exists()) return colorFiles
+private fun ResourcePatchContext.colorFiles(): List<String> =
+    decode("res/values*/colors.xml")
 
-    resDir.listFiles()?.forEach { dir ->
-        if (dir.isDirectory && dir.name.startsWith("values")) {
-            val colorsFile = dir.resolve("colors.xml")
-            if (colorsFile.exists()) {
-                colorFiles.add("res/${dir.name}/colors.xml")
-            }
-        }
-    }
-    return colorFiles
-}
-
-private fun ResourcePatchContext.styleFiles(): List<String> {
-    val styleFiles = mutableListOf<String>()
-    val resDir = get("res")
-    if (!resDir.exists()) return styleFiles
-
-    resDir.listFiles()?.forEach { dir ->
-        if (dir.isDirectory && dir.name.startsWith("values")) {
-            val stylesFile = dir.resolve("styles.xml")
-            if (stylesFile.exists()) {
-                styleFiles.add("res/${dir.name}/styles.xml")
-            }
-        }
-    }
-    return styleFiles
-}
+private fun ResourcePatchContext.styleFiles(): List<String> =
+    decode("res/values*/styles.xml")
 
 /**
  * @param colorValues All colors the app declares.
@@ -827,7 +798,7 @@ private fun ResourcePatchContext.declareOverlayableColors(colorNames: List<Strin
     }
 
     // The app can declare overlayables of its own, and those must be kept.
-    val overlayableFile = get("res").resolve("values/overlayable.xml")
+    val overlayableFile = get("res/values/overlayable.xml")
     if (overlayableFile.exists()) {
         overlayableFile.writeText(
             overlayableFile.readText().replaceFirst("</resources>", "$overlayable</resources>")

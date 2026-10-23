@@ -58,6 +58,9 @@ public final class ClassicSubscriptionsLayoutPatch {
     private static final boolean DISABLE_ICON_ONLY_NAVIGATION_BUTTONS =
             Settings.DISABLE_ICON_ONLY_NAVIGATION_BUTTONS.get();
 
+    private static final boolean DISABLE_TOOLBAR_NAVIGATION_TABS =
+            Settings.DISABLE_TOOLBAR_NAVIGATION_TABS.get();
+
     /**
      * Icon of the Subscriptions navigation button, with the same style of the Home button.
      */
@@ -78,7 +81,7 @@ public final class ClassicSubscriptionsLayoutPatch {
      * @return Only the selected tab, if the tabs are the Home and Subscriptions feeds.
      */
     public static List<Object> filterBrowseTabs(List<Object> tabs) {
-        if (tabs == null || tabs.size() <= 1) return tabs;
+        if (!DISABLE_TOOLBAR_NAVIGATION_TABS || tabs == null || tabs.size() <= 1) return tabs;
 
         try {
             int selectedIndex = 0;
@@ -182,7 +185,7 @@ public final class ClassicSubscriptionsLayoutPatch {
      * @return If the Subscriptions button is missing.
      */
     public static boolean needsSubscriptionsPivotBarItem(List<Object> list) {
-        if (list == null || list.isEmpty()) return false;
+        if (!DISABLE_TOOLBAR_NAVIGATION_TABS || list == null || list.isEmpty()) return false;
 
         PivotBarItemRenderer homeRenderer = null;
         for (Object item : list) {
@@ -250,6 +253,6 @@ public final class ClassicSubscriptionsLayoutPatch {
      * Navigation bar used before the guide response is loaded.
      */
     public static boolean hideOfflineSubscriptionsButton(boolean original) {
-        return false;
+        return !DISABLE_TOOLBAR_NAVIGATION_TABS && original;
     }
 }

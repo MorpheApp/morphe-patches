@@ -24,6 +24,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.folderOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
+import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -40,7 +41,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.removeFromParent
-import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
@@ -750,9 +750,14 @@ private fun hasMountedNotificationIcon(iconStyle: String, customIcon: String?): 
 }
 
 /**
- * The resource directories of a type, such as 'drawable' and every 'drawable-<qualifier>'.
+ * The resource directories of a type, such as 'drawable' and every 'drawable-<qualifier>',
+ * with the files of the name in them decoded.
+ *
+ * @param fileName The name of the files to decode, which can use wildcards.
  */
-private fun ResourcePatchContext.resourceDirectories(resourceType: String): List<File> {
+private fun ResourcePatchContext.resourceDirectories(resourceType: String, fileName: String): List<File> {
+    decode("res/$resourceType/$fileName", "res/$resourceType-*/$fileName")
+
     val directories = get("res").listFiles { file ->
         file.isDirectory && (file.name == resourceType || file.name.startsWith("$resourceType-"))
     } ?: throw PatchException("Could not find the app resources")
@@ -824,7 +829,7 @@ private fun Element.isLauncherEntry(): Boolean =
 private fun ResourcePatchContext.setAppNameResource(resourceName: String, appName: String): Boolean {
     var defaultAppNameSet = false
 
-    resourceDirectories("values").forEach { valuesDirectory ->
+    resourceDirectories("values", "strings.xml").forEach { valuesDirectory ->
         if (!valuesDirectory.resolve("strings.xml").exists()) return@forEach
 
         this["res/${valuesDirectory.name}/strings.xml"].editText { text ->
@@ -885,7 +890,7 @@ private fun ResourcePatchContext.setNotificationIconResource(
 
     var removedIcons = 0
 
-    resourceDirectories("drawable").forEach { drawableDirectory ->
+    resourceDirectories("drawable", "$originalNotificationIconName.*").forEach { drawableDirectory ->
         drawableDirectory.listFiles { file ->
             file.isFile && file.nameWithoutExtension == originalNotificationIconName
         }?.forEach { iconFile ->
@@ -955,7 +960,7 @@ private fun ResourcePatchContext.setLauncherIconResource(
     var replacedIcons = 0
 
     iconReferences.forEach { (resourceType, resourceName) ->
-        resourceDirectories(resourceType).forEach { typeDirectory ->
+        resourceDirectories(resourceType, "$resourceName.xml").forEach { typeDirectory ->
             // Only the adaptive icon is replaced. A raster icon of the same name is used by
             // Android 7 and older, which the target apps no longer support.
             val iconFile = typeDirectory.resolve("$resourceName.xml")

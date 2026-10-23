@@ -435,6 +435,19 @@ Məhdudiyyətlər:
   <string name="morphe_feed_long_press_menu_summary">Axında videonun istənilən yerinə toxunub saxlamaq onun menyusunu açır</string>
   <string name="morphe_feed_watch_later_button_title">Miniatürlərdə Daha sonra izlə düyməsini göstər</string>
   <string name="morphe_feed_watch_later_button_summary">Daha sonra izlə düyməsi axın videolarının miniatürlərində göstərilir. Ona toxunub saxlamaq Pleylistdə saxlanı açır</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Soruş elementini açılan menyuya əlavə et</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Axın açılan menyusuna video xülasəsi elementi əlavə edir</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"​\"Sorğu\" ilkin olaraq onun əlçatan olduğu ölkədə daxil olunmuş hesab tələb edir.
+
+\"Soruş\" düyməsi olan video bir dəfə açıldıqdan sonra, cari ölkənin \"Soruş\" xüsusiyyəti olmasa belə, bu xüsusiyyət bütün videolar ilə işləyir."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Videonu xülasə et</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Bu video üçün soruş açıla bilmədi</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Soruş hesabınız və ya hazırkı ölkəniz üçün əlçatan deyil</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Miniatürlərdə baxış sayını göstər</string>
   <string name="morphe_feed_view_count_summary">Axın videolarının baxış sayı başlığın altında deyil, miniatürlərinin aşağı sol küncündə göstərilir. Bölmələrdəki kimi bəzi videolar baxış sayını göstərməyə bilər</string>
@@ -449,6 +462,8 @@ Məhdudiyyətlər:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Tək barmaqla bilmədən aktivləşə bilən, fəsilləri ötürən iki barmaqla cüt toxunma jestini qapadır</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Üçüncü tərəf yükləmə tətbiqləri ilə videoları, podkastları və ya mahnıları yüklə</string>
+  <string name="morphe_external_downloader_overlay_button_title">Oynadıcı örtüyü yükləmə düyməsini göstər</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Video oynadıcıda xarici yükləyicinizi açan düyməni göstərir</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Səs üstələyici tərcümə</string>
   <string name="morphe_vot_screen_summary">Cihazdakı mətni nitqə çevirməni istifadə edərək video titrlərini oynatma ilə sinxronlaşdırıb ucadan oxu</string>
@@ -791,6 +806,7 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Transkripti düzəlt</string>
   <string name="morphe_fix_transcript_summary">Transkripti yükləməyə mane ola biləcək ilkin status yoxlanılması uğursuzluğun həll edir</string>
+  <string name="morphe_captions_in_pip_title">Şəkil içində şəkildə titrləri göstər</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Fəaliyyət düymələri</string>
   <string name="morphe_navigation_buttons_screen_summary">Aşağı fəaliyyət cərgəsində hansı düymələr görünür seç</string>
@@ -1108,6 +1124,8 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_shorts_autoplay_summary">Hazırkın təkrarlamaq əvəzinə, avtomatik olaraq növbəti Shorts-a keçir</string>
   <string name="morphe_shorts_autoplay_background_title">Fonda avtomatik oynatma</string>
   <string name="morphe_shorts_autoplay_background_summary">Fonda səsləndirmə ərzində avtomatik olaraq növbəti Shorts-a keçir</string>
+  <string name="morphe_skip_live_shorts_title">Canlı Shorts-ları Ötür</string>
+  <string name="morphe_skip_live_shorts_summary">Shorts lentində görünən canlı yayımları ötürür</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Axınlarda oynatma</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Həmişə aktiv</string>
@@ -1270,6 +1288,15 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_playback_buffer_size_entry_low">Aşağı</string>
   <string name="morphe_playback_buffer_size_entry_medium">Orta</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Ən yüksək</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Video gecikməsi</string>
+  <string name="morphe_video_delay_summary">Gecikən səs ilə məsələn, Bluetooth qulaqlıqları sinxronlaşdırmaq üçün videonu ləngidir (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Yalnız Bluetooth səs ilə gecikmə</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Videonu yalnız Bluetooth səsi qoşulduqda ləngidir, beləliklə telefon dinamiki sinxron qalır</string>
+  <string name="morphe_video_delay_button_overlay_title">Video gecikməsi düyməsini göstər</string>
+  <string name="morphe_video_delay_button_overlay_summary">Gecikməni 0 ms-ə sıfırlamaq üçün toxunub saxla</string>
+  <string name="morphe_video_delay_button_flyout_title">Video gecikməsi menyusunu göstər</string>
+  <string name="morphe_video_delay_dialog_input_hint">Millisaniyə ilə gecikmə</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Avtomatik</string>
@@ -1311,6 +1338,7 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Sürət dəyişikliyi bildirişləri</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Yeni ilkin oynatma sürəti saxlanıldıqda bildiriş göstərir</string>
   <string name="morphe_playback_speed_default_title">İlkin oynatma sürəti</string>
+  <string name="morphe_shorts_playback_speed_default_title">Shorts-da ilkin oynatma sürəti</string>
   <string name="morphe_remember_playback_speed_toast">İlkin oynatma sürəti %s kimi dəyişdirildi</string>
   <string name="morphe_disable_playback_speed_music_title">Musiqi üçün normal sürət istifadə et</string>
   <string name="morphe_disable_playback_speed_music_summary">Musiqi videolarını həmişə 1.0x sürətlə oynat</string>

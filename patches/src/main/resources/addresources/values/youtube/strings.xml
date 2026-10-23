@@ -917,6 +917,8 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_narrow_navigation_buttons_summary">Reduces the horizontal spacing between buttons</string>
     <string name="morphe_disable_icon_only_navigation_buttons_title">Disable navigation buttons without labels</string>
     <string name="morphe_disable_icon_only_navigation_buttons_summary">Shows the navigation buttons with labels, if YouTube sends them without labels</string>
+    <string name="morphe_disable_toolbar_navigation_tabs_title">Disable toolbar navigation tabs</string>
+    <string name="morphe_disable_toolbar_navigation_tabs_summary">Shows Subscriptions in the navigation bar, if YouTube moves it to a tab at the top of Home</string>
     <string name="morphe_navigation_bar_animations_title">Enable navigation bar animations</string>
     <string name="morphe_navigation_bar_animations_summary">Animates transitions when switching between tabs</string>
     <string name="morphe_disable_auto_hide_navigation_bar_title">Disable auto-hiding navigation bar</string>

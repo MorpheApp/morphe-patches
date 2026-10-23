@@ -19,6 +19,7 @@ import app.morphe.patcher.patch.filePathOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
+import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -31,7 +32,6 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.fiveRegisters
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
 import app.morphe.util.inputStreamFromBundledResource
 import com.android.tools.smali.dexlib2.Opcode
@@ -254,38 +254,36 @@ private val appSkipSelectors = listOf(
     "player_prev" to "SkipPrevious",
 )
 
-// Every configuration of a resource type, such as drawable-xxhdpi for drawable.
-private fun ResourcePatchContext.resourceDirectories(type: String) =
-    get("res", false).listFiles { file ->
-        file.isDirectory && file.name.startsWith(type)
-    }.orEmpty()
-
 /**
- * Replaces an app icon that exists only as density specific bitmaps with a wrapper.
+ * Replaces app icons that exist only as density specific bitmaps with wrappers.
  * A density specific bitmap wins over a default drawable, so every bitmap is removed.
+ * An icon the app does not have is left out.
  *
- * @param originalName Name to keep the original bitmaps under, or null to drop them.
- * @return false if the app has no such icon.
+ * @param icons The app icon names, each with its wrapper class.
+ * @param originalNamePrefix Prefix of the name to keep the original bitmaps under, or null to drop them.
  */
-internal fun ResourcePatchContext.wrapAppBitmapIcon(
-    appName: String,
-    wrapperClass: String,
-    originalName: String? = null,
-): Boolean {
-    val bitmaps = resourceDirectories("drawable").flatMap { directory ->
-        listOf("png", "webp").map { extension -> directory.resolve("$appName.$extension") }
-    }.filter { it.exists() }
-    if (bitmaps.isEmpty()) return false
+internal fun ResourcePatchContext.wrapAppBitmapIcons(
+    icons: List<Pair<String, String>>,
+    originalNamePrefix: String? = null,
+) {
+    // Decoded together, since each decode searches every drawable of the app.
+    val bitmapsByName = decode(*icons.map { (appName, _) -> "res/drawable*/$appName.*" }.toTypedArray())
+        .map { path -> get(path, false) }
+        .groupBy { it.name }
 
-    bitmaps.forEach { bitmap ->
-        val directory = bitmap.parentFile.name
-        if (originalName != null) {
-            bitmap.copyTo(get("res/$directory/$originalName.${bitmap.extension}"), overwrite = true)
+    icons.forEach { (appName, wrapperClass) ->
+        val bitmaps = listOf("png", "webp").flatMap { extension -> bitmapsByName["$appName.$extension"].orEmpty() }
+        if (bitmaps.isEmpty()) return@forEach
+
+        bitmaps.forEach { bitmap ->
+            val directory = bitmap.parentFile.name
+            if (originalNamePrefix != null) {
+                bitmap.copyTo(get("res/$directory/$originalNamePrefix$appName.${bitmap.extension}"), overwrite = true)
+            }
+            delete("res/$directory/${bitmap.name}")
         }
-        delete("res/$directory/${bitmap.name}")
+        get("res/drawable/$appName.xml").writeText(appPlayerIconWrapper(wrapperClass))
     }
-    get("res/drawable/$appName.xml").writeText(appPlayerIconWrapper(wrapperClass))
-    return true
 }
 
 /**
@@ -303,10 +301,12 @@ private fun appPlayerIconWrapper(wrapperClass: String, appIcon: String? = null):
 /**
  * Puts a wrapper around every icon of an app selector, which keeps its states.
  * The wrapper gets the app icon as android:drawable, since the icon differs per screen size.
+ *
+ * @param selectorPaths The paths of the selector in each configuration.
  */
-private fun ResourcePatchContext.wrapAppSelectorIcons(selectorName: String, wrapperClass: String) {
-    resourceDirectories("drawable").filter { it.resolve("$selectorName.xml").exists() }.forEach { directory ->
-        document("res/${directory.name}/$selectorName.xml").use { document ->
+private fun ResourcePatchContext.wrapAppSelectorIcons(selectorPaths: List<String>, wrapperClass: String) {
+    selectorPaths.forEach { path ->
+        document(path).use { document ->
             val items = document.getElementsByTagName("item")
             for (i in 0 until items.length) {
                 val item = items.item(i) as Element
@@ -328,6 +328,16 @@ private fun ResourcePatchContext.wrapAppSelectorIcons(selectorName: String, wrap
         }
     }
 }
+
+// Layouts with the player settings button. Decoding every layout to find them is slow.
+// Newer targets have only some of them.
+private val playerOverflowButtonLayouts = listOf(
+    "youtube_controls_layout",
+    "youtube_controls_overlay_subtitle_button",
+    "youtube_cf_minimal_impact_controls_layout",
+    "youtube_cf_navigation_improvement_controls_layout",
+    "youtube_portrait_fullscreen_only_controls_layout",
+)
 
 private const val EXTENSION_PLAY_PAUSE_ICONS =
     "Lapp/morphe/extension/youtube/videoplayer/PlayPauseIcons;"
@@ -533,8 +543,7 @@ val playerIconStylePatch = resourcePatch(
         }.map { it.third }
 
         // A bitmap wrapper falls back to the vector copy, so it is only safe where that copy exists.
-        appPlayerBitmapIcons.filter { (_, wrapperClass) -> wrapperClass in wrapped }
-            .forEach { (appName, wrapperClass) -> wrapAppBitmapIcon(appName, wrapperClass) }
+        wrapAppBitmapIcons(appPlayerBitmapIcons.filter { (_, wrapperClass) -> wrapperClass in wrapped })
 
         // The app has its own icons for these in every style, so only the style variants are copied.
         copyPlayerIconStyles(
@@ -553,18 +562,19 @@ val playerIconStylePatch = resourcePatch(
         )
 
         // Older players show these selectors from the layout, the bold player sets its icons from code.
+        val selectorPaths = decode(
+            *appSkipSelectors.map { (selectorName, _) -> "res/drawable*/$selectorName.xml" }.toTypedArray()
+        )
         appSkipSelectors.forEach { (selectorName, wrapperClass) ->
-            wrapAppSelectorIcons(selectorName, wrapperClass)
+            wrapAppSelectorIcons(selectorPaths.filter { it.endsWith("/$selectorName.xml") }, wrapperClass)
         }
 
         // Without the bold player the settings button keeps the gear of its layout, which other screens share,
         // so only the button points to a wrapper. The wrapper keeps whatever icon the layout had.
         var settingsIcon: String? = null
-        resourceDirectories("layout")
-            .flatMap { it.listFiles().orEmpty().toList() }
-            .filter { it.readText().contains("\"@id/player_overflow_button\"") }
-            .forEach { layout ->
-                document("res/${layout.parentFile.name}/${layout.name}").use { document ->
+        decode(*playerOverflowButtonLayouts.map { "res/layout*/$it.xml" }.toTypedArray())
+            .forEach { path ->
+                document(path).use { document ->
                     val elements = document.getElementsByTagName("*")
                     for (i in 0 until elements.length) {
                         val element = elements.item(i) as Element

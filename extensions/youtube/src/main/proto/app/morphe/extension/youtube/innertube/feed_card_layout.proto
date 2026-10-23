@@ -145,6 +145,7 @@ message VideoThumbnail {
     bytes image = 1;
     string timestampText = 2;
     int32 badgeStyle = 4; // Same values of the badge style of the cards.
+    float progress = 5; // Watched fraction, from 0 to 1.
     string videoCountText = 6; // Playlists.
     string timestampAccessibilityText = 11;
     string badgeIcon = 19; // Drawable name, such as the live icon.
@@ -173,8 +174,11 @@ message LockupPadding {
     float bottom = 4;
 }
 
+// View model of the elements with the model of lockupModel, such as the cards.
 message LockupViewModelHolder {
     LockupViewModel lockupViewModel = 8179;
+    // Model of thumbnail_bottom_overlay.eml.
+    ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
 }
 
 message LockupViewModel {
@@ -201,11 +205,29 @@ message ThumbnailViewModel {
 }
 
 message ThumbnailOverlay {
+    // Only the badges are shown by lockup_thumbnail.eml.
     ThumbnailBottomOverlayViewModel thumbnailBottomOverlayViewModel = 1214;
+    ThumbnailElementOverlay thumbnailElementOverlay = 36905;
+}
+
+// Element drawn over the thumbnail.
+message ThumbnailElementOverlay {
+    Element element = 1;
 }
 
 message ThumbnailBottomOverlayViewModel {
+    ThumbnailOverlayProgressBar progressBar = 2;
     repeated ThumbnailBadge badges = 4;
+}
+
+// Watch progress bar at the bottom of the thumbnail (thumbnail_overlay_progress_bar.eml).
+message ThumbnailOverlayProgressBar {
+    ThumbnailOverlayProgressBarViewModel thumbnailOverlayProgressBarViewModel = 1222;
+}
+
+message ThumbnailOverlayProgressBarViewModel {
+    float progress = 1; // Watched fraction, from 0 to 1.
+    int32 style = 6; // 3: at the bottom edge of the thumbnail, without the space below.
 }
 
 message ThumbnailBadge {

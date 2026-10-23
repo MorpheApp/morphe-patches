@@ -9,12 +9,12 @@ package app.morphe.patches.music.misc.audiovideoswitch
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.addReferenceGetter
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.installNativeAccessor
 import app.morphe.patches.music.interaction.jam.invokeKind
-import app.morphe.util.cloneParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 

@@ -1,10 +1,9 @@
 # Dependencies must also be addded to LicensesDialog.java
 
 [versions]
-morphe-patcher = "1.15.1"
-morphe-patches-library = "1.9.0-dev.11"
-# Tracking https://github.com/google/smali/issues/100.
-smali = "d92701d947"
+morphe-patcher = "2.0.0"
+morphe-patches-library = "2.0.1-dev.1"
+smali = "4220ae75f7"
 agp = "9.1.0"
 annotation = "1.10.0"
 androidx-core = "1.18.0"    # 1.19.0+ requires upgrading android compile sdk

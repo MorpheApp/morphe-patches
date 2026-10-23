@@ -42,11 +42,12 @@ internal const val HTTP_REQUEST_CLASS_TYPE = "${MEDIA_INTERFACES}HttpRequest;"
  * The app's own implementation of the media request interface, which native code calls to start a request.
  */
 internal object NetFetchStartFetchTaskFingerprint : Fingerprint(
+    superclass = "${MEDIA_INTERFACES}NetFetch;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "${MEDIA_INTERFACES}NetFetchTask;",
     parameters = listOf(HTTP_REQUEST_CLASS_TYPE, "${MEDIA_INTERFACES}NetFetchCallbacks;"),
     custom = { _, classDef ->
-        classDef.superclass == "${MEDIA_INTERFACES}NetFetch;" && !classDef.type.endsWith($$"$CppProxy;")
+        !classDef.type.endsWith($$"$CppProxy;")
     }
 )
 

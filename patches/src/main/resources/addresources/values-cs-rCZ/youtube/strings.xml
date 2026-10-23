@@ -435,6 +435,19 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_feed_long_press_menu_summary">Klepnutí a podržení na libovolné místo ve videu v kanálu otevře jeho nabídku</string>
   <string name="morphe_feed_watch_later_button_title">Zobrazit tlačítko Později na náhledy</string>
   <string name="morphe_feed_watch_later_button_summary">Na náhledech videí v kanálu se zobrazuje tlačítko Později. Klepnutím a podržením se otevře Uložení do playlistu</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Přidat položku Ask do rozbalovací nabídky</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Přidá položku shrnutí videa do rozbalovací nabídky v kanálu</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Služba Ask vyžaduje pro účelovou zemi, kde je služba k dispozici, přihlášený účet.
+
+Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i když ve vaší aktuální zemi služba Ask není k dispozici."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Shrnutí videa</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Označení pro toto video nelze otevřít</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Označení není pro váš účet nebo aktuální zemi dostupné</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Zobrazit počet zhlédnutí u náhledů</string>
   <string name="morphe_feed_view_count_summary">Počet zhlédnutí videí v kanálu se zobrazuje vlevo dole na jejich náhledech místo pod názvem. U některých videí, jako jsou například v policech, se počet zhlédnutí nemusí zobrazovat</string>
@@ -791,6 +804,7 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Opravte přepis</string>
   <string name="morphe_fix_transcript_summary">Vyřeší problém se selháním kontroly předpokladů, který může zabránit načtení přepisu</string>
+  <string name="morphe_captions_in_pip_title">Zobrazovat titulky v režimu obraz v obraze</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigační tlačítka</string>
   <string name="morphe_navigation_buttons_screen_summary">Vyberte, které komponenty se zobrazí v panelu nástrojů</string>
@@ -1108,6 +1122,8 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <string name="morphe_shorts_autoplay_summary">Automaticky přechází na další Shorts místo opakování aktuálního</string>
   <string name="morphe_shorts_autoplay_background_title">Automatické přehrávání na pozadí</string>
   <string name="morphe_shorts_autoplay_background_summary">Automaticky přechází na další Shorts během přehrávání na pozadí</string>
+  <string name="morphe_skip_live_shorts_title">Přeskočit živé Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Přeskakuje živé streamy, které se zobrazují v feedu Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Přehrávání v kanálech</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Vždy zapnuto</string>
@@ -1270,6 +1286,15 @@ Videa jsou vyžádána krátkou předponou hashovaného ID videa, takže server 
   <string name="morphe_playback_buffer_size_entry_low">Nízká</string>
   <string name="morphe_playback_buffer_size_entry_medium">Střední</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maximální</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Zpoždění videa</string>
+  <string name="morphe_video_delay_summary">Zpožďuje video, aby bylo synchronizováno s pozadí zvukem, například Bluetooth sluchátky (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Pouze zpoždění při použití Bluetooth zvuku</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Zpomalí video pouze při připojeném Bluetooth zvuku, takže reproduktor telefonu zůstane v sincroni</string>
+  <string name="morphe_video_delay_button_overlay_title">Zobrazit tlačítko zpoždění videa</string>
+  <string name="morphe_video_delay_button_overlay_summary">Klepněte a podržte pro resetování zpoždění na 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Zobrazit nabídku zpoždění videa</string>
+  <string name="morphe_video_delay_dialog_input_hint">Zpoždění v milisekundách</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automaticky</string>
@@ -1311,6 +1336,7 @@ Videa jsou vyžádána krátkou předponou hashovaného ID videa, takže server 
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Upozornění na změnu rychlosti</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Zobrazí oznámení, když je uložena nová výchozí rychlost přehrávání</string>
   <string name="morphe_playback_speed_default_title">Výchozí rychlost přehrávání</string>
+  <string name="morphe_shorts_playback_speed_default_title">Výchozí rychlost přehrávání na Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Výchozí rychlost přehrávání byla změněna na: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Použijte normální rychlost pro hudbu</string>
   <string name="morphe_disable_playback_speed_music_summary">Přehrávejte hudební videa vždy rychlostí 1,0x</string>

@@ -7,7 +7,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
-import app.morphe.util.getReference
+import app.morphe.patcher.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -31,13 +31,10 @@ internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
  * @param playbackParametersType The PlaybackParameters type, obtained from [PlaybackParametersToStringFingerprint].
  */
 internal fun getPlaybackParametersSetterFingerprint(playbackParametersType: String) = object : Fingerprint(
+    interfaces = listOf("Landroidx/media3/exoplayer/ExoPlayer;"),
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(playbackParametersType),
-    custom = { methodDef, classDef ->
-        methodDef.implementation != null
-            && classDef.interfaces.contains("Landroidx/media3/exoplayer/ExoPlayer;")
-    }
+    parameters = listOf(playbackParametersType)
 ) {}
 
 internal fun getExoPlayerImplFingerprint(playbackParametersType: String) = object : Fingerprint(

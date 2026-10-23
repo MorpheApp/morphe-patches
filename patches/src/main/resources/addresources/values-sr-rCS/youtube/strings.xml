@@ -435,6 +435,19 @@ Prijave su javne i pregledaju se pre nego što kanal bude dodat na listu. Uklanj
   <string name="morphe_feed_long_press_menu_summary">Dodirivanjem i držanjem bilo gde na videu u protoku otvara se njegov meni</string>
   <string name="morphe_feed_watch_later_button_title">Prikaži dugme „Gledaj kasnije“ na sličicama</string>
   <string name="morphe_feed_watch_later_button_summary">Dugme „Gledaj kasnije“ se prikazuje na sličicama videa u protoku. Dodirivanjem i držanjem njega otvara se opcija Sačuvaj u listu za reprodukciju</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Dodajte stavku Ask u flyout meni</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje stavku za brzo pregledavanje videa u feed flyout meniju</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Funkcija Ask početno zahteva nalog koji je prijavljen u državi gde je Ask dostupan.
+
+Nakon što se jednom otupi video sa dugmetom Ask, funkcija radi sa svim videima, čak i ako trenutna država nema funkciju Ask."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Sažmite video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Nije bilo moguće otvoriti Ask za ovaj video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask nije dostupan za vaš nalog ili trenutnu državu</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Прикажи број прегледа на минијатурама</string>
   <string name="morphe_feed_view_count_summary">Број прегледа видео записа у протоку приказује се у доњем левом углу њихових минијатура, а не испод наслова. Неки видео записи, попут оних у полицама, можда неће приказивати број прегледа</string>
@@ -793,6 +806,7 @@ Da biste to popravili, uključite 'Spoof video strimovi' i promenite 'Podrazumev
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Popravi transkript</string>
   <string name="morphe_fix_transcript_summary">Rešava grešku u proveri preduslova koja može sprečiti učitavanje transkripta</string>
+  <string name="morphe_captions_in_pip_title">Prikaži titlove u slici-u-slici</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Dugmad navigacije</string>
   <string name="morphe_navigation_buttons_screen_summary">Izaberite koja komponenta se pojavljuje u traci sa alatkama</string>
@@ -1110,6 +1124,8 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_shorts_autoplay_summary">Automatski prelazi na sledeći Shorts video umesto da ponavlja trenutni</string>
   <string name="morphe_shorts_autoplay_background_title">Automatska reprodukcija u pozadini</string>
   <string name="morphe_shorts_autoplay_background_summary">Automatski prelazi na sledeći Shorts video tokom reprodukcije u pozadini</string>
+  <string name="morphe_skip_live_shorts_title">Preskoči uživo Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Preskače uživo tokove koji se pojavljuju u Shorts feedu</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Reprodukcija u izvorima</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Uvek uključen</string>
@@ -1272,6 +1288,15 @@ Video snimci se zahtevaju kratkim prefiksom hešovanog ID-ja, tako da server ne 
   <string name="morphe_playback_buffer_size_entry_low">Nizak</string>
   <string name="morphe_playback_buffer_size_entry_medium">Srednji</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maksimalan</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Kašnjenje videa</string>
+  <string name="morphe_video_delay_summary">Kažnjava video kako bi ostao sinhronizovan sa kašnjim zvukom, kao što su Bluetooth slušalice (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Samo kašnjenje sa Bluetooth zvukom</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Samo kažnjava video kada je Bluetooth zvuk povezan, tako da zvučnik telefona ostaje sinhronizovan</string>
+  <string name="morphe_video_delay_button_overlay_title">Prikaži dugme za kašnjenje videa</string>
+  <string name="morphe_video_delay_button_overlay_summary">Dodirnite i držite pritisnuto da resetujete kašnjenje na 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Prikaži meni za kašnjenje videa</string>
+  <string name="morphe_video_delay_dialog_input_hint">Kašnjenje u milisekundama</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatski</string>
@@ -1313,6 +1338,7 @@ Video snimci se zahtevaju kratkim prefiksom hešovanog ID-ja, tako da server ne 
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Obaveštenja o promeni brzine</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Prikazuje obaveštenje kada je sačuvana nova podrazumevana brzina reprodukcije</string>
   <string name="morphe_playback_speed_default_title">Podrazumevana brzina reprodukcije</string>
+  <string name="morphe_shorts_playback_speed_default_title">Podrazumevana brzina reprodukcije na Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Podrazumevana brzina reprodukcije je promenjena u: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Koristite normalnu brzinu za muziku</string>
   <string name="morphe_disable_playback_speed_music_summary">Uvek puštajte muzičke spotove brzinom 1.0x</string>

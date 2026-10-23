@@ -436,6 +436,19 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_feed_long_press_menu_summary">フィード動画の任意の場所をタップして長押しすると、その動画のメニューが開きます</string>
   <string name="morphe_feed_watch_later_button_title">サムネイルに「後で見る」ボタンを表示する</string>
   <string name="morphe_feed_watch_later_button_summary">フィード動画のサムネイルに「後で見る」ボタンが表示され、それをタップして長押しすると「プレイリストに保存」が開きます</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Ask アイテムをフライアウト メニューに追加</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">フィードのフライアウト メニューに動画要約アイテムを追加</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask は、利用可能な国でサインイン済みのアカウントが必要です。
+
+「Ask」ボタン付きの動画を一度開くと、現在の国に Ask 機能がなくても、すべての動画で機能します。"</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">動画を要約</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">この動画の Ask を開けませんでした</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">お使いのアカウントまたは現在地では Ask が利用できません</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">サムネイルに再生回数を表示</string>
   <string name="morphe_feed_view_count_summary">フィード動画の再生回数は、タイトルの下ではなく、サムネイルの左下に表示されます。シェルフ内の動画など、一部の動画は再生回数が表示されない場合があります</string>
@@ -794,6 +807,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">文字起こしの不具合を修正</string>
   <string name="morphe_fix_transcript_summary">文字起こしの読み込み失敗の原因となる前提条件チェックのエラーを修正します</string>
+  <string name="morphe_captions_in_pip_title">ピクチャーインピクチャーで字幕を表示</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ナビゲーション ボタン</string>
   <string name="morphe_navigation_buttons_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
@@ -1111,6 +1125,8 @@ Automotive レイアウト
   <string name="morphe_shorts_autoplay_summary">ショート動画の再生方法を、一つの動画をくりかえし再生する「ループ再生」から、次々と動画を移動しながら再生する「自動再生」に変更します</string>
   <string name="morphe_shorts_autoplay_background_title">ショートの自動再生 (バックグラウンド)</string>
   <string name="morphe_shorts_autoplay_background_summary">バックグラウンドでのショート動画の再生方法を、一つの動画をくりかえし再生する「ループ再生」から、次々と動画を移動しながら再生する「自動再生」に変更します</string>
+  <string name="morphe_skip_live_shorts_title">ショートライブをスキップ</string>
+  <string name="morphe_skip_live_shorts_summary">ショートのフィードに表示されるライブ配信をスキップします</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">フィードで再生</string>
   <string name="morphe_playback_in_feeds_entry_always_on">常に有効</string>
@@ -1273,6 +1289,15 @@ Automotive レイアウト
   <string name="morphe_playback_buffer_size_entry_low">低</string>
   <string name="morphe_playback_buffer_size_entry_medium">中</string>
   <string name="morphe_playback_buffer_size_entry_maximum">最大</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">ビデオ遅延</string>
+  <string name="morphe_video_delay_summary">Bluetoothヘッドセットなど、ラグのある音声に合わせて映像を同期させるために映像を遅延させます（0〜5000 ms）</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Bluetoothオーディオでのみ遅延させる</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Bluetoothオーディオが接続されている間のみ映像を遅延させるため、電話のスピーカーは同期されたままになります</string>
+  <string name="morphe_video_delay_button_overlay_title">ビデオ遅延ボタンを表示</string>
+  <string name="morphe_video_delay_button_overlay_summary">長押しして遅延を0 msにリセット</string>
+  <string name="morphe_video_delay_button_flyout_title">ビデオ遅延メニューを表示</string>
+  <string name="morphe_video_delay_dialog_input_hint">ミリ秒単位の遅延</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自動</string>
@@ -1314,6 +1339,7 @@ Automotive レイアウト
   <string name="morphe_remember_playback_speed_last_selected_toast_title">再生速度変更の通知</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">設定の [デフォルトの再生速度] に新しい値が保存されたときに通知を表示します</string>
   <string name="morphe_playback_speed_default_title">デフォルトの再生速度</string>
+  <string name="morphe_shorts_playback_speed_default_title">ショートの再生速度のデフォルト値</string>
   <string name="morphe_remember_playback_speed_toast">デフォルトの再生速度の変更: %s</string>
   <string name="morphe_disable_playback_speed_music_title">音楽動画を通常速度で再生</string>
   <string name="morphe_disable_playback_speed_music_summary">音楽動画を常に 1.0 倍速で再生します</string>

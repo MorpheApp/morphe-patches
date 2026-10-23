@@ -435,6 +435,19 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_feed_long_press_menu_summary">Chạm và giữ ở bất kỳ đâu trên video nguồn sẽ mở menu của video đó</string>
   <string name="morphe_feed_watch_later_button_title">Hiển thị nút Xem sau trên hình thu nhỏ</string>
   <string name="morphe_feed_watch_later_button_summary">Nút Xem sau được hiển thị trên hình thu nhỏ của các video nguồn. Chạm và giữ vào nút này để lưu vào danh sách phát</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Thêm mục Hỏi vào menu bay ra</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Thêm mục tóm tắt video vào menu bay ra của nguồn cấp dữ liệu</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Yêu cầu Ask ban đầu yêu cầu tài khoản đã đăng nhập tại quốc gia nơi Ask khả dụng.
+
+Sau khi mở một video có nút Ask một lần, tính năng này hoạt động với tất cả video ngay cả khi quốc gia hiện tại không có tính năng Ask."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Tóm tắt video</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Không thể mở Ask cho video này</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask không khả dụng cho tài khoản hoặc quốc gia hiện tại của bạn</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Hiển thị số lượt xem trên ảnh thu nhỏ</string>
   <string name="morphe_feed_view_count_summary">Số lượt xem của video nguồn được hiển thị ở góc dưới bên trái ảnh thu nhỏ thay vì bên dưới tiêu đề. Một số video, chẳng hạn như trong ngăn xếp, có thể không hiển thị số lượt xem</string>
@@ -793,6 +806,7 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Sửa bản chép lời</string>
   <string name="morphe_fix_transcript_summary">Khắc phục lỗi kiểm tra tiên quyết có thể ngăn tải bản chép lời</string>
+  <string name="morphe_captions_in_pip_title">Hiển thị phụ đề trong chế độ hình ảnh trong hình</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Nút điều hướng</string>
   <string name="morphe_navigation_buttons_screen_summary">Chọn các nút sẽ hiển thị trong thanh điều hướng dưới cùng</string>
@@ -1110,6 +1124,8 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <string name="morphe_shorts_autoplay_summary">Tự động lướt xuống Short tiếp theo thay vì lặp lại Short hiện tại</string>
   <string name="morphe_shorts_autoplay_background_title">Tự động phát trong nền</string>
   <string name="morphe_shorts_autoplay_background_summary">Tự động lướt tiếp Short kể cả khi phát nền</string>
+  <string name="morphe_skip_live_shorts_title">Bỏ qua Shorts trực tiếp</string>
+  <string name="morphe_skip_live_shorts_summary">Bỏ qua các luồng phát trực tiếp xuất hiện trong nguồn cấp dữ liệu Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Phát trong trang video</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Luôn bật</string>
@@ -1272,6 +1288,15 @@ Video được yêu cầu bằng một tiền tố ngắn của ID video đã b�
   <string name="morphe_playback_buffer_size_entry_low">Thấp</string>
   <string name="morphe_playback_buffer_size_entry_medium">Trung bình</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Tối đa</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Trì hoãn video</string>
+  <string name="morphe_video_delay_summary">Làm chậm video để giữ đồng bộ với âm thanh bị trễ, chẳng hạn như tai nghe Bluetooth (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Chỉ trì hoãn với âm thanh Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Chỉ làm chậm video khi âm thanh Bluetooth được kết nối, vì vậy loa điện thoại vẫn được đồng bộ</string>
+  <string name="morphe_video_delay_button_overlay_title">Hiện nút Trì hoãn video</string>
+  <string name="morphe_video_delay_button_overlay_summary">Nhấn và giữ để đặt lại độ trễ về 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Hiện menu Trì hoãn video</string>
+  <string name="morphe_video_delay_dialog_input_hint">Độ trễ tính bằng mili giây</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Tự động</string>
@@ -1313,6 +1338,7 @@ Video được yêu cầu bằng một tiền tố ngắn của ID video đã b�
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Thông báo thay đổi tốc độ</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Hiển thị thông báo khi lưu tốc độ phát mặc định mới</string>
   <string name="morphe_playback_speed_default_title">Tốc độ phát mặc định</string>
+  <string name="morphe_shorts_playback_speed_default_title">Tốc độ phát mặc định trên Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Đã đổi tốc độ phát mặc định thành: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Sử dụng tốc độ phát bình thường đối với nhạc</string>
   <string name="morphe_disable_playback_speed_music_summary">Luôn phát video nhạc với tốc độ 1.0x</string>

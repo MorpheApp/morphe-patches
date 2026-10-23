@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">피드 동영상의 아무 곳이나 길게 누르면 해당 동영상의 메뉴가 열립니다</string>
   <string name="morphe_feed_watch_later_button_title">썸네일에 \'나중에 볼 목록\' 버튼 표시</string>
   <string name="morphe_feed_watch_later_button_summary">피드 동영상의 썸네일에 \'나중에 볼 목록\' 버튼이 표시됩니다. 버튼을 길게 누르면 플레이리스트에 저장됩니다</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">메뉴 구성요소에 \'질문하기\' 항목 추가하기</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">피드 메뉴 구성요소에 동영상 요약 항목을 추가합니다</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"'질문하기' 기능을 사용하려면 그 기능을 사용할 수 있는 국가에서 로그인된 계정이 필요합니다
+
+'질문하기' 버튼이 있는 동영상을 한 번 열고 나면,  '질문하기' 기능을 사용할 수 없는 국가에 있더라도 모든 동영상에서 그 기능을 사용할 수 있습니다"</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">동영상 요약</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">이  동영상에서 \'질문하기\'를 열 수 없습니다</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">\'질문하기\'는 사용자 계정 또는 현재 국가에서 사용할 수 없습니다</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">썸네일에 조회수 표시</string>
   <string name="morphe_feed_view_count_summary">피드 동영상의 조회수는 제목 아래가 아니라 썸네일 왼쪽 하단에 표시됩니다. Shelf 등 일부 동영상에서는 조회수가 표시되지 않을 수 있습니다</string>
@@ -795,6 +808,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">스크립트 고치기</string>
   <string name="morphe_fix_transcript_summary">스크립트가 불러오지 않을 수 있는 사전 조건 검사 실패 문제를 해결할 수 있습니다</string>
+  <string name="morphe_captions_in_pip_title">PIP 모드에서 자막 표시하기</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">하단바 버튼</string>
   <string name="morphe_navigation_buttons_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
@@ -1112,6 +1126,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_shorts_autoplay_summary">현재 Shorts를 반복 재생하는 대신 다음 Shorts로 자동으로 넘어갑니다</string>
   <string name="morphe_shorts_autoplay_background_title">백그라운드에서 자동재생</string>
   <string name="morphe_shorts_autoplay_background_summary">백그라운드 재생 중에 다음 Shorts로 자동으로 넘어갑니다</string>
+  <string name="morphe_skip_live_shorts_title">실시간 Shorts 건너뛰기</string>
+  <string name="morphe_skip_live_shorts_summary">Shorts 피드에 표시되는 라이브 스트림을 건너뜁니다</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">피드에서 재생</string>
   <string name="morphe_playback_in_feeds_entry_always_on">항상 사용</string>
@@ -1274,6 +1290,15 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_playback_buffer_size_entry_low">낮음</string>
   <string name="morphe_playback_buffer_size_entry_medium">중간</string>
   <string name="morphe_playback_buffer_size_entry_maximum">최대</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">동영상 딜레이</string>
+  <string name="morphe_video_delay_summary">블루투스 이어폰처럼 오디오가 늦게 재생되는 경우, 소리와 동영상의 싱크를 맞추기 위해 동영상에 딜레이를 줍니다 (0-5000ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">블루투스 오디오에서만 딜레이</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">블루투스 오디오가 연결된 경우에만 동영상에 딜레이를 적용하므로, 휴대폰 스피커로 재생할 때는 싱크가 유지됩니다</string>
+  <string name="morphe_video_delay_button_overlay_title">동영상 딜레이 버튼 표시하기</string>
+  <string name="morphe_video_delay_button_overlay_summary">길게 탭하여 딜레이 시간을 0ms로 초기화합니다</string>
+  <string name="morphe_video_delay_button_flyout_title">동영상 딜레이 메뉴 표시하기</string>
+  <string name="morphe_video_delay_dialog_input_hint">딜레이 시간을 설정하세요 (밀리초)</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">자동</string>
@@ -1315,6 +1340,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_remember_playback_speed_last_selected_toast_title">동영상 재생 속도 변경 알림</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">기본 동영상 재생 속도 값이 변경될 때마다 알림을 표시합니다</string>
   <string name="morphe_playback_speed_default_title">기본 동영상 재생 속도</string>
+  <string name="morphe_shorts_playback_speed_default_title">기본 Shorts 재생 속도</string>
   <string name="morphe_remember_playback_speed_toast">기본 동영상 재생 속도 값을 %s로 변경하였습니다</string>
   <string name="morphe_disable_playback_speed_music_title">음악 일반 동영상 재생 속도 사용하기</string>
   <string name="morphe_disable_playback_speed_music_summary">음악 동영상을 항상 1.0 배속으로 재생합니다</string>

@@ -62,6 +62,7 @@ internal object OverlayCastButtonVisibilityLegacy2135Fingerprint : Fingerprint(
  * 21.34 and lower.
  */
 internal object OverlayCastButtonVisibilityLegacyFingerprint : Fingerprint(
+    isStatic = false,
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -73,10 +74,7 @@ internal object OverlayCastButtonVisibilityLegacyFingerprint : Fingerprint(
             methodCall(name = "setVisibility")
         ),
         literal(11208L)
-    ),
-    custom = { method, _ ->
-        !AccessFlags.STATIC.isSet(method.accessFlags)
-    }
+    )
 )
 
 internal object CastButtonPlayerFeatureFlagFingerprint : Fingerprint(

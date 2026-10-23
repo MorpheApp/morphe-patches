@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.layout.playlistautoplay
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.util.cloneParameters
+import app.morphe.patcher.util.cloneParameters
 import com.android.tools.smali.dexlib2.AccessFlags
 
 /**

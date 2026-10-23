@@ -36,14 +36,12 @@ internal object LithoDialogBuilderFingerprint : Fingerprint(
 )
 
 private object CustomDialogOnBackPressedParentFingerprint : Fingerprint(
+    superclass = "Landroid/app/Dialog;",
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
         methodCall("Landroid/app/Dialog;->onBackPressed()V")
-    ),
-    custom = { _, classDef ->
-        classDef.superclass == "Landroid/app/Dialog;"
-    }
+    )
 )
 
 internal object CustomDialogOnBackPressedFingerprint : Fingerprint(

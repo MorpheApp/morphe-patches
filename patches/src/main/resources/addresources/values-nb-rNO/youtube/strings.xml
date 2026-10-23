@@ -435,6 +435,19 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <string name="morphe_feed_long_press_menu_summary">Å trykke og holde nede hvor som helst på en feed-video åpner menyen for den</string>
   <string name="morphe_feed_watch_later_button_title">Vis \"Se senere\"-knapp på miniatyrbilder</string>
   <string name="morphe_feed_watch_later_button_summary">En \"Se senere\"-knapp vises på miniatyrbildene til feed-videene. Trykk og hold for å lagre i spilleliste</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Legg til Ask-objekt i uttrekksmenyen</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Legger til et videooppsummeringsobjekt i strømmens uttrekksmeny</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask krever innlogget konto i et land der Ask er tilgjengelig.
+
+Etter at en video med Ask-knappen er åpnet én gang, fungerer funksjonen med alle videoer selv hvis det gjeldende landet ikke har Ask-funksjonen."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Oppsummer videoen</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">Kunne ikke åpne Ask for denne videoen</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask er ikke tilgjengelig for kontoen din eller landet ditt</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Vis visningstall på miniatyrbilder</string>
   <string name="morphe_feed_view_count_summary">Visningstall for feed-videoer vises nederst til venstre på miniatyrbildene i stedet for under tittelen. Noen videoer, for eksempel i hyller, kan ikke vise et visningstall</string>
@@ -793,6 +806,7 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Fiks transkripsjon</string>
   <string name="morphe_fix_transcript_summary">Løser en forhåndsvilkårsjekkfeil som kan hindre transkripsjonen i å lastes inn</string>
+  <string name="morphe_captions_in_pip_title">Vis undertekster i bilde-ibilde</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigasjonsknapper</string>
   <string name="morphe_navigation_buttons_screen_summary">Velg hvilke komponenter som vises i verktøylinjen</string>
@@ -1110,6 +1124,8 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_shorts_autoplay_summary">Går automatisk til neste Short i stedet for å gjenta den gjeldende</string>
   <string name="morphe_shorts_autoplay_background_title">Automatisk avspilling i bakgrunnen</string>
   <string name="morphe_shorts_autoplay_background_summary">Går automatisk til neste Short under bakgrunnsavspilling</string>
+  <string name="morphe_skip_live_shorts_title">Hopp over live-Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Hopper over direktesendinger som vises i Shorts-strømmen</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Avspilling i feeds</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Alltid på</string>
@@ -1272,6 +1288,15 @@ Videoer blir forespurt med et kort prefiks av den hashet video-ID-en, så server
   <string name="morphe_playback_buffer_size_entry_low">Lav</string>
   <string name="morphe_playback_buffer_size_entry_medium">Middels</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Maksimum</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Forsinkelse for video</string>
+  <string name="morphe_video_delay_summary">Forsinker videoen for å holde den i synk med tregg lyd, for eksempel Bluetooth-hodesett (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Bare forsink med Bluetooth-lyd</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Forsinker kun videoen mens Bluetooth-lyden er tilkoblet, slik at telefonhøyttaleren holder seg i synk</string>
+  <string name="morphe_video_delay_button_overlay_title">Vis knapp for videotforsinkelse</string>
+  <string name="morphe_video_delay_button_overlay_summary">Trykk og hold for å tilbakestille forsinkelsen til 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Vis meny for videotforsinkelse</string>
+  <string name="morphe_video_delay_dialog_input_hint">Forsinkelse i millisekunder</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -1313,6 +1338,7 @@ Videoer blir forespurt med et kort prefiks av den hashet video-ID-en, så server
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Hastighetsendrings-varsler</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Viser et varsel når en ny standard avspillingshastighet er lagret</string>
   <string name="morphe_playback_speed_default_title">Standard avspillingshastighet</string>
+  <string name="morphe_shorts_playback_speed_default_title">Standard avspillingshastighet for Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Endret standard avspillingshastighet til: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Bruk normal hastighet for musikk</string>
   <string name="morphe_disable_playback_speed_music_summary">Spill alltid av musikkvideoer med 1,0x hastighet</string>

@@ -332,6 +332,11 @@ Sînorkirin:
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Tevgera bikirinê û bikirin û girtinê ya bişêvekirina \'Girêdana vîdyoyê kopî bikin\' bişêvekirin</string>
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -1024,6 +1029,7 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_external_browser_summary">Opens links in an external browser instead of the in-app browser</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_entry_default">Bixweber</string>
+  <!-- video.delay.videoDelayPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Otomatîk</string>

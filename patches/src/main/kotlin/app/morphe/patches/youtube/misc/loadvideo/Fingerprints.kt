@@ -29,6 +29,7 @@ internal object MiniAppOpenYtContentCommandEndpointFingerprint : Fingerprint(
             )
         )
     ),
+    isStatic = false,
     returnType = "V",
     filters = listOf(
         opcode(Opcode.CHECK_CAST),
@@ -41,11 +42,10 @@ internal object MiniAppOpenYtContentCommandEndpointFingerprint : Fingerprint(
     ),
     strings = listOf("no error message"),
     custom = { method, _ ->
-        !AccessFlags.STATIC.isSet(method.accessFlags) &&
-                parametersMatch(
-                    method.parameters,
-                    listOf("L")
-                ) || parametersMatch(
+        parametersMatch(
+            method.parameters,
+            listOf("L")
+        ) || parametersMatch(
             method.parameters,
             listOf("L", "Ljava/util/Map;") // 21.30+
         )
@@ -96,30 +96,26 @@ private const val ACCESSIBILITY_STATE_CHANGE_LISTENER =
  * Adds a reason that blocks playback in feeds.
  */
 internal object BlockInlinePlaybackFingerprint : Fingerprint(
+    interfaces = listOf(ACCESSIBILITY_STATE_CHANGE_LISTENER),
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I"),
     filters = listOf(
         methodCall(smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;"),
         methodCall(smali = "Ljava/util/Set;->add(Ljava/lang/Object;)Z")
-    ),
-    custom = { _, classDef ->
-        classDef.interfaces.contains(ACCESSIBILITY_STATE_CHANGE_LISTENER)
-    }
+    )
 )
 
 /**
  * Removes a reason that blocks playback in feeds.
  */
 internal object UnblockInlinePlaybackFingerprint : Fingerprint(
+    interfaces = listOf(ACCESSIBILITY_STATE_CHANGE_LISTENER),
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I"),
     filters = listOf(
         methodCall(smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;"),
         methodCall(smali = "Ljava/util/Set;->remove(Ljava/lang/Object;)Z")
-    ),
-    custom = { _, classDef ->
-        classDef.interfaces.contains(ACCESSIBILITY_STATE_CHANGE_LISTENER)
-    }
+    )
 )

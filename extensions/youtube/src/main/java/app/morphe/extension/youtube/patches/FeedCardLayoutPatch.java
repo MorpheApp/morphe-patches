@@ -78,6 +78,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Decorated
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Element;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementContext;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementType;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ElementsExperiments;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.HorizontalShelfData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.HorizontalShelfModel;
@@ -114,7 +115,10 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Thumbnail
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailBadgeIconSource;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailBadgeViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailBottomOverlayViewModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailElementOverlay;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailOverlay;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailOverlayProgressBar;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailOverlayProgressBarViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModelHolder;
@@ -123,6 +127,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoData
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoThumbnail;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWithContextData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWithContextModel;
+import app.morphe.extension.youtube.patches.theme.SeekbarColorPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -159,6 +164,7 @@ public class FeedCardLayoutPatch {
      */
     private static final String CLASSIC_TEMPLATE = "video_lockup_with_attachment.eml";
     private static final String CARD_TEMPLATE = "lockup.eml";
+    private static final String THUMBNAIL_BOTTOM_OVERLAY_TEMPLATE = "thumbnail_bottom_overlay.eml";
     private static final String SHELF_HEADER_TEMPLATE = "shelf_header.eml";
     private static final String HORIZONTAL_SHELF_TEMPLATE = "horizontal_shelf.eml";
     private static final String SHORTS_VIDEO_CELL_TEMPLATE = "shorts_video_cell.eml";
@@ -178,6 +184,11 @@ public class FeedCardLayoutPatch {
      */
     private static final VideoTemplate CLASSIC = new VideoTemplate(CLASSIC_TEMPLATE, 232954548, 6, 29);
     private static final VideoTemplate CARD = new VideoTemplate(CARD_TEMPLATE, 413471385, 4, 6);
+    /**
+     * Bottom overlay of the thumbnails, with the same model of the cards.
+     */
+    private static final VideoTemplate THUMBNAIL_BOTTOM_OVERLAY = new VideoTemplate(
+            THUMBNAIL_BOTTOM_OVERLAY_TEMPLATE, 413471385, 4, 6);
     /**
      * Suffix of the template names of newer app versions, before "|hash", such as "-fe".
      */
@@ -227,6 +238,7 @@ public class FeedCardLayoutPatch {
     private static final int BUTTON_SIZE_COMPACT = 2;
     private static final int THUMBNAIL_BADGE_STYLE_DEFAULT = 1;
     private static final int THUMBNAIL_BADGE_STYLE_LIVE = 2;
+    private static final int THUMBNAIL_PROGRESS_BAR_STYLE_EDGE = 3;
 
     private static final int LIKE_STATUS_LIKE = 0;
     private static final int LIKE_STATUS_INDIFFERENT = 2;
@@ -333,13 +345,33 @@ public class FeedCardLayoutPatch {
      */
     private static final Object ITEM_WITHOUT_DIVIDER = new Object();
     /**
-     * Clips of the Shorts of the Shorts shelves, by the screen bounds of the Shorts.
+     * Clips of the Shorts of the Shorts shelves, by the screen bounds of the Shorts and of their thumbnails.
      */
     private static final Map<String, ViewOutlineProvider> shortsCellOutlines = new HashMap<>();
     @Nullable
     private static WeakReference<View> inlinePlayerContainer;
     private static long inlinePlayerSearchTime;
     private static final long INLINE_PLAYER_SEARCH_INTERVAL_MILLIS = 500;
+    /**
+     * Container of the inline player of the videos (feed autoplay), outside the list.
+     * Its outline rounds the top corners of the player over the thumbnail of a card.
+     */
+    @Nullable
+    private static WeakReference<View> cardInlinePlayerContainer;
+    private static long cardInlinePlayerSearchTime;
+    /**
+     * Clip of the container before the outline of the cards was set.
+     */
+    private static boolean cardInlinePlayerClipToOutline;
+    private static final ViewOutlineProvider CARD_INLINE_PLAYER_OUTLINE = new ViewOutlineProvider() {
+        /**
+         * The bottom of the rounded rectangle is moved out of the view, which keeps the bottom corners square.
+         */
+        @Override
+        public void getOutline(View view, Outline outline) {
+            outline.setRoundRect(0, 0, view.getWidth(), view.getHeight() + CARD_CORNER_RADIUS, CARD_CORNER_RADIUS);
+        }
+    };
     /**
      * Lists that update the clips of the Shorts before every frame.
      */
@@ -778,6 +810,7 @@ public class FeedCardLayoutPatch {
                             updateUnmountedItemBackgrounds();
                             updateLateCardOutlines(current);
                             updateShortsCellOutlines(current);
+                            updateCardInlinePlayerOutline(current);
                         }
                     } catch (Exception ex) {
                         Logger.printException(() -> "onPreDraw failure", ex);
@@ -942,10 +975,10 @@ public class FeedCardLayoutPatch {
         shortsCardLeft = left;
         shortsCardRight = right;
 
-        // The outer Shorts have the outer corners of the card: the bottom corners in the last row,
-        // and the top corners in the first row if the shelf has no header above the Shorts.
+        // The outer Shorts have rounded outer corners: the top corners in the first row,
+        // also below the header, and the bottom corners of the card in the last row.
         for (int i = 0; i < rows.size(); i++) {
-            final boolean topRow = i == 0 && header == null;
+            final boolean topRow = i == 0;
             final boolean bottomRow = i == rows.size() - 1;
             rows.get(i).getLocationOnScreen(rowLocation);
             for (View cell : rowCells.get(i)) {
@@ -1052,6 +1085,96 @@ public class FeedCardLayoutPatch {
         return null;
     }
 
+    /**
+     * The autoplay of a video shows the player in a container below the list, outside the list,
+     * and the card shows it through its thumbnail. The container has square corners,
+     * so it gets the rounded top corners of the card while it's over the thumbnail of a card.
+     */
+    private static void updateCardInlinePlayerOutline(RecyclerView list) {
+        if (list.getId() != getFeedId()) {
+            return;
+        }
+
+        View container = cardInlinePlayerContainer == null ? null : cardInlinePlayerContainer.get();
+        if (container == null || !container.isAttachedToWindow()) {
+            final long now = System.currentTimeMillis();
+            if (now - cardInlinePlayerSearchTime < INLINE_PLAYER_SEARCH_INTERVAL_MILLIS) {
+                return;
+            }
+            cardInlinePlayerSearchTime = now;
+            container = findCardInlinePlayerContainer(list.getRootView(), list, 0);
+            cardInlinePlayerContainer = container == null ? null : new WeakReference<>(container);
+            if (container == null) {
+                return;
+            }
+        }
+
+        if (isOverCardThumbnail(list, container)) {
+            if (container.getOutlineProvider() != CARD_INLINE_PLAYER_OUTLINE) {
+                cardInlinePlayerClipToOutline = container.getClipToOutline();
+                container.setOutlineProvider(CARD_INLINE_PLAYER_OUTLINE);
+                container.setClipToOutline(true);
+            }
+        } else if (container.getOutlineProvider() == CARD_INLINE_PLAYER_OUTLINE) {
+            container.setOutlineProvider(ViewOutlineProvider.BACKGROUND);
+            // Over a Short, the container keeps its clip, which gets the outline of the Short.
+            container.setClipToOutline(cardInlinePlayerClipToOutline
+                    || shortsCellOutlines.containsKey(getScreenBounds(container)));
+        }
+    }
+
+    /**
+     * @return The highest view with the bounds of the inline player (a SurfaceView or a TextureView)
+     *         over the thumbnail of a card, outside the feed.
+     */
+    @Nullable
+    private static View findCardInlinePlayerContainer(View view, RecyclerView feed, int depth) {
+        if (view == feed || depth > 40) {
+            return null;
+        }
+        if (view instanceof SurfaceView || view instanceof TextureView) {
+            View container = null;
+            final String bounds = getScreenBounds(view);
+            for (ViewParent parent = view.getParent(); parent instanceof View parentView
+                    && bounds.equals(getScreenBounds(parentView)); parent = parentView.getParent()) {
+                container = parentView;
+            }
+            return container != null && isOverCardThumbnail(feed, container) ? container : null;
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                View container = findCardInlinePlayerContainer(group.getChildAt(i), feed, depth + 1);
+                if (container != null) {
+                    return container;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @return If the view starts at the top of a card, inside the padding of the card, with the width of the card.
+     */
+    private static boolean isOverCardThumbnail(RecyclerView list, View view) {
+        int[] viewLocation = new int[2];
+        view.getLocationOnScreen(viewLocation);
+        int[] itemLocation = new int[2];
+        for (int i = 0, count = list.getChildCount(); i < count; i++) {
+            View item = list.getChildAt(i);
+            if (item.getOutlineProvider() != CARD_OUTLINE || item.getHeight() <= 0) {
+                continue;
+            }
+            item.getLocationOnScreen(itemLocation);
+            // The padding of the card is laid out from dp with rounding, so it can differ by a pixel on each side.
+            if (Math.abs(viewLocation[0] - itemLocation[0] - CARD_OUTLINE.horizontalPadding) <= 1
+                    && Math.abs(viewLocation[1] - itemLocation[1] - CARD_OUTLINE.verticalPadding) <= 1
+                    && Math.abs(view.getWidth() - item.getWidth() + 2 * CARD_OUTLINE.horizontalPadding) <= 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static boolean isShortsRow(View item) {
         return hasLabelMarker(item, SHORTS_CELL_LABEL_MARKER, 0);
     }
@@ -1090,9 +1213,13 @@ public class FeedCardLayoutPatch {
      * as wide as the Short.
      */
     private static void setShortsCellOutline(View view, int cellWidth, ViewOutlineProvider outline, int depth) {
-        if (depth > 0 && view.getClipToOutline() && view.getWidth() == cellWidth
-                && view.getOutlineProvider() != outline) {
-            view.setOutlineProvider(outline);
+        if (depth > 0 && view.getClipToOutline() && view.getWidth() == cellWidth) {
+            if (view.getOutlineProvider() != outline) {
+                view.setOutlineProvider(outline);
+            }
+            // The screen bounds of the clipped thumbnail, for the inline player above it.
+            // The Shorts of the grids have the title below the thumbnail, so the player is shorter than the Short.
+            shortsCellOutlines.put(getScreenBounds(view), outline);
         }
         if (depth < 4 && view instanceof ViewGroup group) {
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
@@ -1455,6 +1582,33 @@ public class FeedCardLayoutPatch {
             thumbnailViewModel.addOverlays(ThumbnailOverlay.newBuilder()
                     .setThumbnailBottomOverlayViewModel(ThumbnailBottomOverlayViewModel.newBuilder()
                             .addBadges(ThumbnailBadge.newBuilder().setThumbnailBadgeViewModel(badge))));
+        }
+
+        // The card thumbnail shows only the badges of the bottom overlays,
+        // so the watch progress is drawn by the bottom overlay template in an element over the thumbnail.
+        final float progress = thumbnail.getProgress();
+        if (SeekbarColorPatch.showWatchHistoryProgressDrawable(progress > 0)) {
+            String bottomOverlayUri = THUMBNAIL_BOTTOM_OVERLAY.getUri();
+            if (bottomOverlayUri != null) {
+                ThumbnailBottomOverlayViewModel progressBar = ThumbnailBottomOverlayViewModel.newBuilder()
+                        .setProgressBar(ThumbnailOverlayProgressBar.newBuilder()
+                                .setThumbnailOverlayProgressBarViewModel(ThumbnailOverlayProgressBarViewModel.newBuilder()
+                                        .setProgress(progress)
+                                        .setStyle(THUMBNAIL_PROGRESS_BAR_STYLE_EDGE)))
+                        .build();
+                ComponentType progressComponent = ComponentType.newBuilder()
+                        .setTemplateConfig(templateConfig(bottomOverlayUri))
+                        .setModel(ElementModel.newBuilder().setLockupModel(LockupModel.newBuilder()
+                                .setViewModel(LockupViewModelHolder.newBuilder()
+                                        .setThumbnailBottomOverlayViewModel(progressBar))
+                                .setContext(classic.getContext())))
+                        .setSubscriptionConfig(subscriptionConfig(componentType.getSubscriptionConfig(), THUMBNAIL_BOTTOM_OVERLAY))
+                        .build();
+                thumbnailViewModel.addOverlays(ThumbnailOverlay.newBuilder()
+                        .setThumbnailElementOverlay(ThumbnailElementOverlay.newBuilder()
+                                .setElement(Element.newBuilder()
+                                        .setType(ElementType.newBuilder().setComponentType(progressComponent)))));
+            }
         }
 
         LockupMetadataViewModel.Builder metadata = videoData.getLockupMetadata()

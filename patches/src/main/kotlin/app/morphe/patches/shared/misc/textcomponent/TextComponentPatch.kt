@@ -14,6 +14,9 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.LithoSpannableStringCreationFingerprint
 import app.morphe.patches.shared.SpannableStringBuilderFingerprint
@@ -25,11 +28,8 @@ import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
 import app.morphe.patches.shared.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.layout.returnyoutubedislike.TextComponentDataFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.cloneParameters
-import app.morphe.util.findFreeRegister
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.numberOfParameterRegistersLogical
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Field
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction

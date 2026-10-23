@@ -21,9 +21,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_android_auto_subscriptions">Subskrypcje</string>
   <string name="morphe_music_android_auto_videos">Filmy</string>
   <string name="morphe_music_android_auto_other_results">Inne wyniki</string>
-  <string name="morphe_music_android_auto_uploaded_songs">Przesłane piosenki</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Przesłane utwory</string>
   <string name="morphe_music_android_auto_uploaded_albums">Przesłane albumy</string>
-  <string name="morphe_music_android_auto_uploaded_artists">Przesłani artyści</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Przesłani wykonawcy</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">Zaktualizuj modyfikację gospodarza Jam, aby używać wstrzymywania i wznawiania</string>
   <string name="morphe_music_jam_probe_title">Udostępnianie kolejki Jam</string>
@@ -127,8 +127,8 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Pobieraj teledyski, podcasty lub utwory za pomocą zewnętrznych aplikacji do pobierania</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
-  <string name="morphe_external_downloader_menu_title">Użyj zewnętrznego programu pobierania dla menu Pobieranie</string>
-  <string name="morphe_external_downloader_menu_summary">Opcja Pobieranie w menu otwiera zamiast tego Twój zewnętrzny program pobierania</string>
+  <string name="morphe_external_downloader_menu_title">Użyj zewnętrznej aplikacji dla opcji \"Pobierz\" w menu</string>
+  <string name="morphe_external_downloader_menu_summary">Opcja \"Pobierz\" w menu otwiera zamiast tego zewnętrzną aplikację do pobierania</string>
   <string name="morphe_music_downloads_screen_title">Pobrane</string>
   <string name="morphe_music_downloads_empty">"Brak pobranych
 Tutaj pojawią się pobrane utwory"</string>

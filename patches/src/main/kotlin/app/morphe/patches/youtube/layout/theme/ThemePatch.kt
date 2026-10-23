@@ -20,6 +20,8 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
@@ -55,8 +57,6 @@ import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.matchAllMethodIndicesForEach
-import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 

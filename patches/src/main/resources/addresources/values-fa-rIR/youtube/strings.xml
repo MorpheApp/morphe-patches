@@ -435,6 +435,19 @@ Second \"item\" text"</string>
   <string name="morphe_feed_long_press_menu_summary">ضربه زدن و نگه داشتن در هر جایی از یک ویدیوی فید، منوی آن را باز می‌کند</string>
   <string name="morphe_feed_watch_later_button_title">نمایش دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی</string>
   <string name="morphe_feed_watch_later_button_summary">یک دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی ویدیوهای فید نمایش داده می‌شود. ضربه زدن و نگه داشتن آن گزینه ذخیره در لیست پخش را باز می‌کند</string>
+  <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">افزودن آیتم Ask به منوی پرواز</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">افزودن آیتم خلاصه‌سازی ویدیو به منوی پرواز فید</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask در ابتدا به یک حساب کاربری ورود‌کرده در کشوری که Ask در آن موجود است نیاز دارد.
+
+پس از باز شدن یک ویدیو با دکمه Ask برای اولین بار، این ویژگی با تمام ویدیوها کار می‌کند حتی اگر کشور فعلی دارای ویژگی Ask نباشد."</string>
+  <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">خلاصه کردن ویدیو</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">عدم امکان باز کردن Ask برای این ویدیو</string>
+  <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask برای حساب کاربری یا کشور فعلی شما در دسترس نیست</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">نمایش تعداد بازدید روی تصاویر کوچک</string>
   <string name="morphe_feed_view_count_summary">تعداد بازدید ویدیوهای فید در گوشه پایین سمت چپ تصاویر کوچک آن‌ها نمایش داده می‌شود، به جای زیر عنوان. برخی از ویدیوها، مانند those در قفسه‌ها، ممکن است تعداد بازدید را نشان ندهند</string>
@@ -793,6 +806,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">رفع متن پیاده‌شده</string>
   <string name="morphe_fix_transcript_summary">شکست بررسی پیش‌شرطی را که می‌تواند مانع بارگذاری متن پیاده‌شده شود رفع می‌کند</string>
+  <string name="morphe_captions_in_pip_title">نمایش زیرنویس‌ها در تصویر در تصویر</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">دکمه‌های پیمایش</string>
   <string name="morphe_navigation_buttons_screen_summary">انتخاب کنید کدام دکمه‌ها در نوار پیمایش پایین نمایش داده شوند</string>
@@ -1110,6 +1124,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">به‌جای تکرار مورد فعلی، به‌صورت خودکار به Short بعدی می‌رود</string>
   <string name="morphe_shorts_autoplay_background_title">پخش خودکار در پس‌زمینه</string>
   <string name="morphe_shorts_autoplay_background_summary">هنگام پخش در پس‌زمینه، به‌صورت خودکار به Short بعدی می‌رود</string>
+  <string name="morphe_skip_live_shorts_title">رد Shorts زنده</string>
+  <string name="morphe_skip_live_shorts_summary">پخش زنده‌هایی را که در فید Shorts ظاهر می‌شوند رد می‌کند</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">پخش در خوراک‌ها</string>
   <string name="morphe_playback_in_feeds_entry_always_on">همیشه روشن</string>
@@ -1272,6 +1288,15 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_low">کم</string>
   <string name="morphe_playback_buffer_size_entry_medium">متوسط</string>
   <string name="morphe_playback_buffer_size_entry_maximum">حداکثر</string>
+  <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">تأخیر ویدئو</string>
+  <string name="morphe_video_delay_summary">ویدئو را با تأخیر پخش می‌کند تا همگام با صدای لگ‌دار، مانند هدفون بلوتوثی، باشد (۰-۵۰۰۰ میلی‌ثانیه)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">تنها در صورت استفاده از صوت بلوتوث تأخیر ایجاد شود</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">فقط در صورت متصل بودن صوت بلوتوث، ویدئو را تأخیر می‌اندازد تا بلندگوی تلفن همراه همگام بماند</string>
+  <string name="morphe_video_delay_button_overlay_title">نمایش دکمهٔ تأخیر ویدئو</string>
+  <string name="morphe_video_delay_button_overlay_summary">برای بازنشانی تأخیر به ۰ میلی‌ثانیه ضربه زده و نگه دارید</string>
+  <string name="morphe_video_delay_button_flyout_title">نمایش منوی تأخیر ویدئو</string>
+  <string name="morphe_video_delay_dialog_input_hint">تأخیر بر حسب میلی‌ثانیه</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">خودکار</string>
@@ -1313,6 +1338,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">اعلان‌های تغییر سرعت</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">وقتی سرعت پخش پیش‌فرض جدیدی ذخیره شود، اعلانی نمایش می‌دهد</string>
   <string name="morphe_playback_speed_default_title">سرعت پخش پیش‌فرض</string>
+  <string name="morphe_shorts_playback_speed_default_title">سرعت پخش پیش‌فرض در Shorts</string>
   <string name="morphe_remember_playback_speed_toast">سرعت پخش پیش‌فرض به این مقدار تغییر کرد: %s</string>
   <string name="morphe_disable_playback_speed_music_title">استفاده از سرعت معمولی برای موسیقی</string>
   <string name="morphe_disable_playback_speed_music_summary">ویدئوهای موسیقی را همیشه با سرعت 1.0x پخش می‌کند</string>

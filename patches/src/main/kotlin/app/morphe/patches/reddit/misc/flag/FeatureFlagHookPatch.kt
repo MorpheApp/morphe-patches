@@ -51,6 +51,11 @@ val featureFlagHookPatch = bytecodePatch(
     }
 }
 
+/**
+ * ## Important
+ * Hooked code must check if context is set or not, as this hook can be called before
+ * the main activity has launched.
+ */
 internal fun hookFeatureFlag(descriptor: String) = featureFlagMethod.get()!!.addInstructions(
     2,
     """

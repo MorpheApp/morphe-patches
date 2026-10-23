@@ -19,8 +19,8 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patcher.util.getReference
 import app.morphe.util.findInstructionIndicesReversed
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -587,14 +587,14 @@ internal fun protoDefaultInstanceFingerprint(messageType: String) = Fingerprint(
 /** Generic protobuf parser inherited by the already resolved native message type. */
 internal fun protoParserFingerprint(messageHierarchy: Set<String>) = Fingerprint(
     name = "parseFrom",
+    isStatic = true,
     parameters = listOf("L", "[B", "Lcom/google/protobuf/ExtensionRegistryLite;"),
     returnType = "L",
     custom = { method, owner ->
         owner.type in messageHierarchy &&
                 method.returnType == owner.type &&
-                method.parameterTypes[0].toString() == owner.type &&
-                AccessFlags.STATIC.isSet(method.accessFlags)
-    },
+                method.parameterTypes[0].toString() == owner.type
+    }
 )
 
 /** A palette source owns an extractor producing the same type its local apply method consumes. */
