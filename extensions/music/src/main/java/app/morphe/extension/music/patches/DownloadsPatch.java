@@ -218,8 +218,8 @@ public final class DownloadsPatch {
             }
             Utils.verifyOnMainThread();
 
+            byte[] commandBytes = p1.toByteArray();
             if (inAppDownloads()) {
-                byte[] commandBytes = p1.toByteArray();
                 if (commandBytes != null && isOfflineBrowseCommand(commandBytes)) {
                     openLocalDownloads();
                     // The local screen is opened on top of the stock one rather than in place of
@@ -246,28 +246,12 @@ public final class DownloadsPatch {
                 return true;
             }
 
-            String p1String = p1.toString();
-            Logger.printDebug(() -> "commandResolverOnClick: " + p1String);
-
-            final boolean isDownloadClick = Utils.containsAny(p1String,
-                    "[133724106]", "[443434441]");
-            if (isDownloadClick) {
+            String downloadParams = new ProtoMessage(commandBytes)
+                    .messageField(133724106).stringField(1);
+            if (!downloadParams.isEmpty()) {
                 if (viewObj == null) {
                     Logger.printDebug(() -> "Ignored programmatic download click (no sender_view).");
                     return false;
-                }
-
-                if (viewObj instanceof ViewGroup senderViewGroup) {
-                    CharSequence cd = senderViewGroup.getContentDescription();
-                    if (cd != null && !downloadButtonLabel.isEmpty()) {
-                        String cdLower = cd.toString().toLowerCase(Locale.ROOT);
-                        String labelLower = downloadButtonLabel.toLowerCase(Locale.ROOT);
-
-                        if (!cdLower.contains(labelLower) && !labelLower.contains(cdLower)) {
-                            Logger.printDebug(() -> "Ignored false positive UI click (Content description mismatch).");
-                            return false;
-                        }
-                    }
                 }
 
                 Logger.printDebug(() -> "Flyout isDownloadClick");
