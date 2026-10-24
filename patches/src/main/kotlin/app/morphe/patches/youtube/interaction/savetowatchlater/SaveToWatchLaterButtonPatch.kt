@@ -7,9 +7,11 @@
 
 package app.morphe.patches.youtube.interaction.savetowatchlater
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
@@ -43,7 +45,8 @@ private const val EXTENSION_CLASS =
 @Suppress("unused")
 val saveToWatchLaterButtonPatch = bytecodePatch(
     name = "Save to Watch later",
-    description = "Adds an option to display save to Watch later button in the video player.",
+    description = "Adds an option to display save to Watch later button in the video player, " +
+        "and adds a setting to redirect Watch later saves to a playlist of your choice.",
 ) {
     dependsOn(
         saveToWatchLaterButtonResourcePatch,
@@ -79,7 +82,8 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
 
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_save_to_watch_later_flyout_button", summary = true),
-            SwitchPreference("morphe_save_to_watch_later_kids_flyout_button", summary = true)
+            SwitchPreference("morphe_save_to_watch_later_kids_flyout_button", summary = true),
+            TextPreference("morphe_save_to_watch_later_redirect_playlist_id")
         )
 
         PreferenceScreen.SHORTS.addPreferences(
@@ -89,5 +93,22 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         initializeTopControl(EXTENSION_BUTTON)
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
+
+        // Rewrite the playlist id of any edit request that targets the stock Watch later
+        // playlist, using the user configured redirect playlist. All 'Save to Watch later'
+        // entry points that use the stock request path go through this single builder.
+        val buildMethod = EditPlaylistBuildMethodFingerprint.method
+        val playlistIdField = EditPlaylistBuildMethodFingerprint
+            .instructionMatches.first().getFieldAccessed()
+
+        buildMethod.addInstructions(
+            0,
+            """
+                iget-object v0, p0, $playlistIdField
+                invoke-static {v0}, $EXTENSION_CLASS->getRedirectPlaylistId(Ljava/lang/String;)Ljava/lang/String;
+                move-result-object v0
+                iput-object v0, p0, $playlistIdField
+            """,
+        )
     }
 }
