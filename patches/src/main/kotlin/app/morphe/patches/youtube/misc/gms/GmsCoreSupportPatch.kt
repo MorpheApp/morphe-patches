@@ -29,7 +29,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     fromPackageName = YOUTUBE_PACKAGE_NAME,
     toPackageNameDefault = MORPHE_YOUTUBE_PACKAGE_NAME,
     primeMethodFingerprint = PrimeMethodFingerprint,
-    earlyReturnFingerprints = setOf(
+    castFingerprints = setOf(
         CastContextFetchFingerprint,
     ),
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,

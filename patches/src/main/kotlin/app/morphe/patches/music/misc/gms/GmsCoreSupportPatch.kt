@@ -18,12 +18,17 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     fromPackageName = MUSIC_PACKAGE_NAME,
     toPackageNameDefault = MORPHE_MUSIC_PACKAGE_NAME,
     primeMethodFingerprint = PrimeMethodFingerprint,
-    earlyReturnFingerprints = setOf(
+    castFingerprints = setOf(
         CastContextFetchFingerprint,
     ),
     mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
+    castExecuteBlock = {
+        hidePlayServicesCastRoutes()
+        sendQueueMovesToReceiver()
+        skipQueueRestorationWhileCasting()
+    },
 ) {
     dependsOn(spoofVideoStreamsPatch)
 
