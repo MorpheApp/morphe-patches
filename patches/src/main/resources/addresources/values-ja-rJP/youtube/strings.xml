@@ -457,13 +457,13 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_ryd_feed_like_ratio_title">フィードのサムネイルのいいね比率を表示</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">コメントを検索</string>
-  <string name="morphe_search_comments_summary">コメントにある検索ボタンをタップすると、検索ワードをすべて含む読み込み済みのコメントのみが表示されます。フレーズを検索するには、単語を引用符で囲んでください</string>
+  <string name="morphe_search_comments_summary">コメント欄に検索ボタンを表示します。タップすると、読み込まれているコメントのみを対象に、すべての検索ワードを含むコメントのみを表示するフィルタを適用するためのメニューを開きます。複数の単語を引用符で囲んだ場合は、フレーズとして検索します</string>
   <string name="morphe_search_comments_dialog_title">コメントを検索</string>
-  <string name="morphe_search_comments_hint">検索する単語</string>
+  <string name="morphe_search_comments_hint">検索ワード</string>
   <string name="morphe_search_comments_search">検索</string>
   <string name="morphe_search_comments_clear">解除</string>
-  <string name="morphe_search_comments_applied">並べ替え順序を変更するか、再度コメントを開いて検索してください</string>
-  <string name="morphe_search_comments_cleared">検索をクリアしました。すべてのコメントを表示するには、並べ替え順序を変更するか、再度コメントを開いてください</string>
+  <string name="morphe_search_comments_applied">検索によるフィルタを適用するには、コメントの並び順 (フィルタ) を変更するかコメント欄を開き直してください</string>
+  <string name="morphe_search_comments_cleared">検索によるフィルタを解除しました。コメントの並び順 (フィルタ) を変更するかコメント欄を開き直すと、すべてのコメントを表示します</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">「テレビでログイン」ポップアップを無効化</string>
   <string name="morphe_disable_connect_your_devices_popup_title">「デバイスの接続」ポップアップを無効化</string>
@@ -1259,7 +1259,7 @@ Automotive レイアウト
 動画はハッシュ化された動画IDの短いプレフィックスによってリクエストされるため、サーバーはあなたが見ている動画を正確に特定できません。動画にDeArrowのサムネイルがない場合、オリジナルまたは静止画が表示されます"</string>
   <string name="morphe_dearrow_connection_toast_title">接続エラーの通知を表示</string>
   <string name="morphe_dearrow_connection_toast_summary">DeArrow サーバーが利用できない場合に通知を表示します</string>
-  <string name="morphe_dearrow_api_url_title">APIエンドポイント</string>
+  <string name="morphe_dearrow_api_url_title">API エンドポイント</string>
   <string name="morphe_dearrow_api_url_summary">DeArrow がサムネイルのキャッシュを取得するエンドポイントの URL</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">静止画サムネイル</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">静止画は各動画の序盤 / 中盤 / 終盤から取得されます。これらの画像は YouTube に組み込まれており、外部 API は使用されません</string>

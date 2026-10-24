@@ -456,12 +456,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_feed_like_ratio_title">Показувати відсоток лайків на мініатюрах стрічки</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Пошук у коментарях</string>
-  <string name="morphe_search_comments_summary">Натисніть кнопку пошуку в коментарях, щоб показати лише завантажені коментарі, які містять усі шукані слова. Щоб знайти фразу, візьміть слова в лапки</string>
+  <string name="morphe_search_comments_summary">Натисніть кнопку пошуку в коментарях, щоб показати лише завантажені коментарі, які містять усі шукані слова. Візьміть слова в лапки, щоб шукати фразу</string>
   <string name="morphe_search_comments_dialog_title">Пошук у коментарях</string>
   <string name="morphe_search_comments_hint">Слова для пошуку</string>
   <string name="morphe_search_comments_search">Пошук</string>
   <string name="morphe_search_comments_clear">Очистити</string>
-  <string name="morphe_search_comments_applied">Змініть порядок сортування або відкрийте коментарі знову, щоб здійснити пошук</string>
+  <string name="morphe_search_comments_applied">Змініть порядок сортування або відкрийте коментарі знову, щоб здійснити в них пошук</string>
   <string name="morphe_search_comments_cleared">Пошук очищено. Змініть порядок сортування або відкрийте коментарі знову, щоб показати всі коментарі</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Вимкнути вікно \"Увійти на телевізорі\"</string>
@@ -848,7 +848,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Вимкнути кнопки навігації без підписів</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Показує кнопки навігації з підписами, якщо YouTube надсилає їх без підписів</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">Вимкнути вкладки навігації на панелі інструментів</string>
-  <string name="morphe_disable_toolbar_navigation_tabs_summary">Показує «Підписки» на навігаційній панелі, якщо YouTube перенесе їх у вкладку у верхній частині Головної сторінки</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Показує \"Підписки\" на панелі навігації, якщо YouTube переносить їх на вкладку вгорі \"Головної\"</string>
   <string name="morphe_navigation_bar_animations_title">Увімкнути анімації панелі навігації</string>
   <string name="morphe_navigation_bar_animations_summary">Анімує переходи між вкладками</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Вимкнути автоприховування панелі навігації</string>

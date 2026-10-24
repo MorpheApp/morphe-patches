@@ -456,13 +456,13 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_ryd_feed_like_ratio_title">Pokaż procent polubień na miniaturkach na liście</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Szukaj w komentarzach</string>
-  <string name="morphe_search_comments_summary">Dotknij przycisku wyszukiwania w komentarzach, aby wyświetlić tylko załadowane komentarze zawierające wszystkie wyszukiwane słowa. Użyj cudzysłowu, aby wyszukać konkretną frazę</string>
+  <string name="morphe_search_comments_summary">Dotknij przycisku wyszukiwania w sekcji komentarzy, aby wyświetlić tylko te wczytane komentarze, które zawierają wszystkie szukane słowa. Ujmij słowa w cudzysłów, aby wyszukać dokładną frazę</string>
   <string name="morphe_search_comments_dialog_title">Szukaj w komentarzach</string>
-  <string name="morphe_search_comments_hint">Słowa do wyszukiwania</string>
+  <string name="morphe_search_comments_hint">Szukane słowa</string>
   <string name="morphe_search_comments_search">Szukaj</string>
   <string name="morphe_search_comments_clear">Wyczyść</string>
   <string name="morphe_search_comments_applied">Zmień kolejność sortowania lub otwórz komentarze ponownie, aby je przeszukać</string>
-  <string name="morphe_search_comments_cleared">Wyszukiwanie wyczyszczone. Zmień kolejność sortowania lub otwórz komentarze ponownie, aby wyświetlić wszystkie komentarze</string>
+  <string name="morphe_search_comments_cleared">Wyczyszczono wyszukiwanie. Zmień kolejność sortowania lub otwórz komentarze ponownie, aby wyświetlić wszystkie komentarze</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Wyłącz komunikat o zalogowaniu się do TV</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Wyłącz wyskakujące okienko \"Połącz swoje urządzenia\"</string>
@@ -1257,8 +1257,8 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
 ​Filmy są pobierane za pomocą krótkiego prefiksu zakodowanego identyfikatora filmu, dzięki czemu serwer nie wie dokładnie, jaki film oglądasz. Jeśli film nie ma miniaturki DeArrow, wyświetlana jest oryginalna lub nieruchoma klatka"</string>
   <string name="morphe_dearrow_connection_toast_title">Pokaż powiadomienia o błędach połączenia</string>
   <string name="morphe_dearrow_connection_toast_summary">Wyświetla powiadomienie, gdy serwer DeArrow jest niedostępny</string>
-  <string name="morphe_dearrow_api_url_title">Punkt końcowy API</string>
-  <string name="morphe_dearrow_api_url_summary">Adres punktu końcowego do miniaturek DeArrow</string>
+  <string name="morphe_dearrow_api_url_title">Adres API</string>
+  <string name="morphe_dearrow_api_url_summary">Adres API do miniaturek DeArrow</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">Kadry z filmu</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">Statyczne kadry są pobierane z początku, środka lub końca każdego filmu. Obrazy te są wbudowane w YouTube i nie korzystają z zewnętrznych API</string>
   <string name="morphe_dearrow_thumbnail_stills_time_title">Wyodrębnij klatkę filmu z</string>
