@@ -444,17 +444,10 @@ public final class VideoInformation {
     }
 
     /**
-     * @return If the player parameters are for a Short.
-     */
-    public static boolean playerParametersAreShort(String parameters) {
-        return parameters.startsWith(SHORTS_PLAYER_PARAMETERS);
-    }
-
-    /**
      * Injection point.
      */
     public static String newPlayerResponseSignature(String signature, String videoId, boolean isShortAndOpeningOrPlaying) {
-        final boolean isShort = playerParametersAreShort(signature);
+        final boolean isShort = signature.startsWith(SHORTS_PLAYER_PARAMETERS);
         playerResponseVideoIdIsShort = isShort;
         if (!isShort || isShortAndOpeningOrPlaying) {
             if (videoIdIsShort != isShort) {
@@ -925,16 +918,6 @@ public final class VideoInformation {
     }
 
     /**
-     * @return The current casting player time. Value is zero if not casting.
-     */
-    private static long getMdxVideoTime() {
-        PlaybackController controller = mdxPlayerDirectorRef.get();
-        return controller != null
-                ? controller.patch_getVideoTime()
-                : -1;
-    }
-
-    /**
      * Playback time of the current video playing. Includes Shorts.
      * If casting then the time is always rounded down to the nearest whole second.
      *
@@ -947,7 +930,11 @@ public final class VideoInformation {
             return playerTime;
         }
 
-        final long mdxTime = getMdxVideoTime();
+        // The casting player time.
+        PlaybackController controller = mdxPlayerDirectorRef.get();
+        final long mdxTime = controller != null
+                ? controller.patch_getVideoTime()
+                : -1;
         return mdxTime >= 0
                 ? mdxTime
                 : playerTime;

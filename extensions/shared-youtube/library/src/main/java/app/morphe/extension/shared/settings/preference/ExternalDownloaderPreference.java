@@ -179,10 +179,6 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
             this.downloadUrl = downloadUrl;
             this.isPreferred = isPreferred;
         }
-
-        public boolean isInstalled() {
-            return packageName != null && isAppInstalledAndEnabled(packageName);
-        }
     }
 
     private static boolean isAppInstalledAndEnabled(String packageName) {
@@ -229,7 +225,8 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
         List<CharSequence> entryValues = new ArrayList<>();
 
         for (Downloader downloader : Downloader.values()) {
-            if (downloader.isPreferred || downloader.isInstalled()) {
+            if (downloader.isPreferred || (downloader.packageName != null
+                    && isAppInstalledAndEnabled(downloader.packageName))) {
                 String packageName = downloader.packageName;
 
                 entries.add(downloader.name);

@@ -203,7 +203,11 @@ public final class TextTranslator {
         Exception lastFailure = null;
         for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
             if (attempt > 0) {
-                sleepQuietly(INITIAL_BACKOFF_MILLISECONDS * attempt);
+                try {
+                    Thread.sleep(INITIAL_BACKOFF_MILLISECONDS * attempt);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
             }
 
             try {
@@ -328,13 +332,5 @@ public final class TextTranslator {
 
     private static boolean isRetryable(int code) {
         return code == 403 || code == 404 || code == 429 || (code >= 500 && code <= 599);
-    }
-
-    private static void sleepQuietly(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
     }
 }

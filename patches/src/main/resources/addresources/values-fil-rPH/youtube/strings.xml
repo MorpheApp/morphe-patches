@@ -454,6 +454,15 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Ipakita ang bilang ng like sa thumbnail ng feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Ipakita ang porsyento ng like sa thumbnail ng feed</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Maghanap ng mga komento</string>
+  <string name="morphe_search_comments_summary">Pindutin ang search button sa mga komento para ipakita lamang ang mga naiload na komento na naglalaman ng lahat ng mga hinahanap na salita. Maglagay ng mga salita sa quotes para maghanap ng isang parirala</string>
+  <string name="morphe_search_comments_dialog_title">Maghanap ng mga komento</string>
+  <string name="morphe_search_comments_hint">Mga salitang hahanapin</string>
+  <string name="morphe_search_comments_search">Hanapin</string>
+  <string name="morphe_search_comments_clear">Alisin</string>
+  <string name="morphe_search_comments_applied">Baguhin ang pagkakasunod-sunod ng sort o buksan muli ang mga komento para hanapin ang mga ito</string>
+  <string name="morphe_search_comments_cleared">Nalinis na ang search. Baguhin ang pagkakasunod-sunod ng sort o buksan muli ang mga komento para ipakita ang lahat ng mga komento</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Patayin ang popup na \'Mag-sign in sa TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Huwag paganahin ang popup na \'Ikonekta ang iyong mga device\'</string>
@@ -838,6 +847,8 @@ Para i-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gener
   <string name="morphe_narrow_navigation_buttons_summary">Binabawasan ang pahalang na espasyo sa pagitan ng mga button</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">I-disable ang mga navigation button na walang mga label</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Ipinapakita ang mga navigation button na may mga label, kung ipinapadala ng YouTube ang mga ito nang walang mga label</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">I-disable ang mga navigation tab ng toolbar</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Ipinapakita ang mga Subscriptions sa navigation bar, kung ililipat ito ng YouTube sa isang tab sa itaas ng Home</string>
   <string name="morphe_navigation_bar_animations_title">I-enable ang mga animasyon ng navigation bar</string>
   <string name="morphe_navigation_bar_animations_summary">Inaanimate ang mga transisyon kapag lumilipat sa pagitan ng mga tab</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">I-disable ang auto-hiding navigation bar</string>

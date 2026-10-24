@@ -454,6 +454,15 @@ Depois que um vídeo com o botão Ask for aberto uma vez, o recurso funciona com
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Mostrar contagem de curtidas da miniatura do feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Mostrar porcentagem de curtidas da miniatura do feed</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Pesquisar comentários</string>
+  <string name="morphe_search_comments_summary">Toque no botão de pesquisa nos comentários para mostrar apenas os comentários carregados que contenham todas as palavras pesquisadas. Coloque as palavras entre aspas para pesquisar uma frase</string>
+  <string name="morphe_search_comments_dialog_title">Pesquisar comentários</string>
+  <string name="morphe_search_comments_hint">Palavras para pesquisar</string>
+  <string name="morphe_search_comments_search">Procurar</string>
+  <string name="morphe_search_comments_clear">Limpar</string>
+  <string name="morphe_search_comments_applied">Altere a ordem de classificação ou abra os comentários novamente para pesquisá-los</string>
+  <string name="morphe_search_comments_cleared">Pesquisa limpa. Altere a ordem de classificação ou abra os comentários novamente para mostrar todos os comentários</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desativar pop-up \'Fazer login na TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Desativar pop-up \'Conecte seus dispositivos\'</string>
@@ -806,7 +815,7 @@ Os 'cookies de legenda' devem ser fornecidos"</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Corrigir transcrição</string>
   <string name="morphe_fix_transcript_summary">Resolve uma falha na verificação de pré-condições que pode impedir o carregamento da transcrição</string>
-  <string name="morphe_captions_in_pip_title">Mostrar legendas na imagem em imagem</string>
+  <string name="morphe_captions_in_pip_title">Mostrar legendas em modo picture-in-picture</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botões de navegação</string>
   <string name="morphe_navigation_buttons_screen_summary">Escolha quais botões aparecem na barra de navegação inferior</string>
@@ -838,6 +847,8 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_narrow_navigation_buttons_summary">Reduz o espaçamento horizontal entre os botões</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Desativar botões de navegação sem rótulos</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Mostra os botões de navegação com rótulos, se o YouTube os enviar sem rótulos</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Desativar guias de navegação da barra de ferramentas</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Exibe Inscrições na barra de navegação, caso o YouTube as mova para uma guia no topo da Página inicial</string>
   <string name="morphe_navigation_bar_animations_title">Ativar animações da barra de navegação</string>
   <string name="morphe_navigation_bar_animations_summary">Anima as transições ao alternar entre as abas</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Desativar ocultação automática da barra de navegação</string>

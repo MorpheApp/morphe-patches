@@ -10,8 +10,11 @@ package app.morphe.extension.music.patches.lyrics.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 
 /**
  * A single lyrics line.
@@ -33,8 +36,61 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
     public static final long NO_TIME = -1;
 
     public LyricsLine {
-        words = words == null ? List.of() : Collections.unmodifiableList(words);
+        words = words == null ? List.of() : words;
         text = text == null ? "" : text;
+        if (words.size() > 1 && !ScriptDetector.contains(text, Character.UnicodeScript.HAN,
+                Character.UnicodeScript.HIRAGANA, Character.UnicodeScript.KATAKANA)) {
+            boolean hasEndedWithSpace = false;
+            for (Word w : words) {
+                if (w.endsWithSpace()) {
+                    hasEndedWithSpace = true;
+                    break;
+                }
+            }
+            if (text.indexOf(' ') < 0) {
+                if (hasEndedWithSpace) {
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < words.size(); i++) {
+                        Word w = words.get(i);
+                        sb.append(w.text());
+                        if (w.endsWithSpace() && i < words.size() - 1) {
+                            sb.append(' ');
+                        }
+                    }
+                    text = sb.toString();
+                } else {
+                    List<Word> updated = new ArrayList<>(words.size());
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < words.size(); i++) {
+                        Word w = words.get(i);
+                        if (i > 0) sb.append(' ');
+                        sb.append(w.text());
+                        boolean sp = (i < words.size() - 1);
+                        updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp));
+                    }
+                    words = updated;
+                    text = sb.toString();
+                }
+            } else if (!hasEndedWithSpace) {
+                List<Word> updated = new ArrayList<>(words.size());
+                int cursor = 0;
+                for (int i = 0; i < words.size(); i++) {
+                    Word w = words.get(i);
+                    int idx = text.indexOf(w.text(), cursor);
+                    boolean sp = false;
+                    if (idx >= 0) {
+                        int end = idx + w.text().length();
+                        sp = (end < text.length() && Character.isWhitespace(text.charAt(end)));
+                        cursor = end;
+                    } else {
+                        sp = (i < words.size() - 1);
+                    }
+                    updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp));
+                }
+                words = updated;
+            }
+        }
+        words = Collections.unmodifiableList(words);
     }
 
     public LyricsLine(long startTimeMs, String text, List<Word> words,
@@ -72,7 +128,7 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
         }
         if (words.size() == 1) {
             Word single = words.get(0);
-            if (isWholeLineWord(single.text(), text)) {
+            if (compactText(single.text()).equalsIgnoreCase(compactText(text))) {
                 return false;
             }
             if (single.endMs() <= single.startMs()) {
@@ -80,10 +136,6 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
             }
         }
         return true;
-    }
-
-    private static boolean isWholeLineWord(String wordText, String lineText) {
-        return compactText(wordText).equalsIgnoreCase(compactText(lineText));
     }
 
     private static String compactText(String value) {

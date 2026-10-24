@@ -21,16 +21,11 @@ public class OverrideYouTubeMusicButtonsPatch {
     private static final String MORPHE_MUSIC_PACKAGE_NAME = "app.morphe.android.apps.youtube.music";
     private static final String HIJACK_FLAG = "morphe_hijacked";
 
-    private static String getTargetPackage() {
-        String customTarget = Settings.CUSTOM_MUSIC_PACKAGE_NAME.get().trim();
-        if (customTarget.isEmpty()) {
-            return MORPHE_MUSIC_PACKAGE_NAME;
-        }
-        return customTarget;
-    }
-
     private static Intent hijackIntent(Intent intent) {
-        String target = getTargetPackage();
+        String target = Settings.CUSTOM_MUSIC_PACKAGE_NAME.get().trim();
+        if (target.isEmpty()) {
+            target = MORPHE_MUSIC_PACKAGE_NAME;
+        }
         PackageManager pm = Utils.getContext().getPackageManager();
         Intent launchIntent = pm.getLaunchIntentForPackage(target);
 

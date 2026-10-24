@@ -436,24 +436,33 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_feed_watch_later_button_title">Afficher le bouton \'À regarder plus tard\' sur les miniatures</string>
   <string name="morphe_feed_watch_later_button_summary">Un bouton \'À regarder plus tard\' est affiché sur les miniatures du flux. Un appui long dessus ouvre le menu \'Enregistrer dans une playlist\'</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
-  <string name="morphe_ask_summarize_flyout_menu_title">Ajouter l\'élément \'Demander\' au menu déroulant</string>
+  <string name="morphe_ask_summarize_flyout_menu_title">Ajouter l\'élément \'Posez une question\' au menu déroulant</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Ajoute un élément de résumé vidéo au menu déroulant du flux</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"'Demander' nécessite initialement un compte connecté dans un pays où 'Demander' est disponible.
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"'Posez une question' nécessite initialement un compte connecté dans un pays où 'Posez une question' est disponible.
 
-Après avoir ouvert une fois une vidéo avec le bouton 'Demander', la fonctionnalité fonctionne avec toutes les vidéos, même si le pays actuel ne dispose pas de la fonctionnalité 'Demander'."</string>
+Après avoir ouvert une fois une vidéo avec le bouton 'Posez une question', la fonctionnalité fonctionne avec toutes les vidéos, même si le pays actuel ne dispose pas de la fonctionnalité 'Posez une question'."</string>
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
   <string name="morphe_ask_summarize_title">Résumer la vidéo</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_failed">Impossible d\'ouvrir \'Demander\' pour cette vidéo</string>
+  <string name="morphe_ask_summarize_failed">Impossible d\'ouvrir \'Posez une question\' pour cette vidéo</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_unavailable">\'Demander\' n\'est pas disponible pour votre compte ou dans votre pays actuel</string>
+  <string name="morphe_ask_summarize_unavailable">\'Posez une question\' n\'est pas disponible pour votre compte ou dans votre pays actuel</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Afficher le nombre de vues sur les miniatures</string>
   <string name="morphe_feed_view_count_summary">Le nombre de vues des vidéos du flux s\'affiche en bas à gauche de leurs miniatures au lieu d\'apparaître sous le titre. Certaines vidéos, notamment celles des étagères, peuvent ne pas afficher le nombre de vues</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Afficher le nombre j\'aime sur les miniatures du flux</string>
   <string name="morphe_ryd_feed_like_ratio_title">Afficher le pourcentage de j\'aime sur les miniatures du flux</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Rechercher des commentaires</string>
+  <string name="morphe_search_comments_summary">Appuyez sur le bouton de recherche dans les commentaires pour afficher uniquement les commentaires déjà chargés qui contiennent tous les mots recherchés. Placez les mots entre guillemets pour rechercher une expression exacte</string>
+  <string name="morphe_search_comments_dialog_title">Rechercher des commentaires</string>
+  <string name="morphe_search_comments_hint">Mots à rechercher</string>
+  <string name="morphe_search_comments_search">Rechercher</string>
+  <string name="morphe_search_comments_clear">Effacer</string>
+  <string name="morphe_search_comments_applied">Changez l\'ordre de tri ou rouvrez les commentaires pour effectuer une recherche</string>
+  <string name="morphe_search_comments_cleared">Recherche effacée. Changez l\"ordre de tri ou rouvrez les commentaires pour afficher tous les commentaires</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Désactiver le pop-up \'Connectez-vous à la TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Désactiver le pop-up \'Associez vos appareils\'</string>
@@ -838,6 +847,8 @@ Pour accéder aux paramètres, activez le bouton 'Paramètres' via Général →
   <string name="morphe_narrow_navigation_buttons_summary">Réduit l\'espacement horizontal entre les boutons</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Désactiver les boutons de navigation sans libellés</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Affiche les boutons de navigation avec leurs libellés, si YouTube les envoie sans libellés</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Désactiver les onglets de navigation de la barre d\'outils</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Affiche \'Abonnements\' dans la barre de navigation, si YouTube les déplace vers un onglet en haut de \'Accueil\'</string>
   <string name="morphe_navigation_bar_animations_title">Activer les animations de la barre de navigation</string>
   <string name="morphe_navigation_bar_animations_summary">Anime les transitions lors du passage d\'un onglet à un autre</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Désactiver le masquage automatique de la barre de navigation</string>

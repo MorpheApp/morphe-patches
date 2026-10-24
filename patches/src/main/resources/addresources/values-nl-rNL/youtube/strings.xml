@@ -454,6 +454,15 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Aantal likes van feed-miniatuur weergeven</string>
   <string name="morphe_ryd_feed_like_ratio_title">Procentage likes van feed-miniatuur weergeven</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Reacties zoeken</string>
+  <string name="morphe_search_comments_summary">Tik op de zoekknop in de reacties om alleen de geladen reacties te tonen die alle gezochte woorden bevatten. Zet woorden tussen aanhalingstekens om op een zin te zoeken</string>
+  <string name="morphe_search_comments_dialog_title">Reacties zoeken</string>
+  <string name="morphe_search_comments_hint">Woorden om op te zoeken</string>
+  <string name="morphe_search_comments_search">Zoeken</string>
+  <string name="morphe_search_comments_clear">Wissen</string>
+  <string name="morphe_search_comments_applied">Wijzig de sorteervolgorde of open de reacties opnieuw om erin te zoeken</string>
+  <string name="morphe_search_comments_cleared">Zoekopdracht gewist. Wijzig de sorteervolgorde of open de reacties opnieuw om alle reacties te tonen</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Pop-up \'Inloggen op tv\' uitschakelen</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Schakel de pop-up \'Verbind je apparaten\' uit</string>
@@ -836,6 +845,8 @@ Om Instellingen te openen, schakel je de knop Instellingen in via Algemeen → G
   <string name="morphe_narrow_navigation_buttons_summary">Vermindert de horizontale ruimte tussen knoppen</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Navigatieknoppen zonder labels uitschakelen</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Toont de navigatieknoppen met labels, als YouTube ze zonder labels verzendt</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Navigatietabs in werkbalk uitschakelen</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Toont Abonnementen in de navigatiebalk, als YouTube deze verplaatst naar een tabblad bovenaan Home</string>
   <string name="morphe_navigation_bar_animations_title">Navigatiebalkanimaties inschakelen</string>
   <string name="morphe_navigation_bar_animations_summary">Maakt de navigatiebalk volledig ondoorzichtig in de lichte modus</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Automatisch verbergen van navigatiebalk uitschakelen</string>

@@ -10,6 +10,7 @@ package app.morphe.patches.music.interaction.downloads
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -21,7 +22,8 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
-import app.morphe.util.cloneParameters
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private val OFFLINE_PLAYBACK_PERMISSIONS = listOf(
     "android.permission.WAKE_LOCK",
@@ -103,6 +105,8 @@ val downloadsPatch = bytecodePatch(
     execute {
         hookSpannableString(EXTENSION_CLASS)
 
+        val (_, downloadCall) = OfflineVideoEndpointFingerprint.instructionMatches
+
         CommandResolverFingerprint.method.cloneParameters().apply {
             // Add interface to get buffer.
             mutableClassDefBy(parameterTypes[1].toString())
@@ -121,17 +125,16 @@ val downloadsPatch = bytecodePatch(
             )
         }
 
-        OfflineVideoEndpointFingerprint.method.cloneParameters().apply {
-            mutableClassDefBy(parameterTypes[0].toString()).interfaces.apply {
-                if (!contains(EXTENSION_PROTOCOL_BUFFER_INTERFACE)) add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
-            }
-
-            addInstructionsWithLabels(
-                0,
+        OfflineVideoEndpointFingerprint.method.apply {
+            val videoIdRegister = (downloadCall.instruction as FiveRegisterInstruction).registerD
+            // Reuse the ID YTM resolved for its single-video download action.
+            // v1 is unused by the download call, which is followed by return-void.
+            addInstructionsAtControlFlowLabel(
+                downloadCall.index,
                 """
-                    invoke-static { p1, p2 }, $EXTENSION_CLASS->offlineVideoEndpointOnClick(${EXTENSION_PROTOCOL_BUFFER_INTERFACE}Ljava/util/Map;)Z
-                    move-result v0
-                    if-eqz v0, :show_native_downloader
+                    invoke-static/range { v$videoIdRegister .. v$videoIdRegister }, $EXTENSION_CLASS->offlineVideoEndpointOnClick(Ljava/lang/String;)Z
+                    move-result v1
+                    if-eqz v1, :show_native_downloader
                     return-void
                     :show_native_downloader
                     nop

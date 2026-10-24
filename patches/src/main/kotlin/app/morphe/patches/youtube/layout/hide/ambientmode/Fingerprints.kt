@@ -17,19 +17,12 @@ private const val GET_ACTION_METHOD_CALL = "Landroid/content/Intent;->getAction(
 internal const val IS_POWER_SAVE_MODE_METHOD_CALL = "Landroid/os/PowerManager;->isPowerSaveMode()Z"
 private const val POWER_SAVE_MODE_CHANGED = "android.os.action.POWER_SAVE_MODE_CHANGED"
 
-/**
- * The ambient mode controllers (flyout menu item and background) are created if any flag is on.
- */
-internal val AMBIENT_MODE_FEATURE_FLAGS = listOf(
-    45376186L,
-    45372814L,
-)
-
 internal object AmbientModeFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         anyInstruction(
-            *AMBIENT_MODE_FEATURE_FLAGS.map { literal(it) }.toTypedArray()
-        ),
+            literal(45376186L),
+            literal(45372814L)
+        )
     )
 )
 
@@ -200,9 +193,23 @@ internal object IntentActionSyntheticFingerprint : Fingerprint(
 )
 
 /**
- * YT 21.03+
+ * 21.43+
  */
 internal object IntentActionSyntheticAlternativeFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        checkCast("Landroid/os/PowerManager;"),
+        methodCall(smali = IS_POWER_SAVE_MODE_METHOD_CALL),
+        string(POWER_SAVE_MODE_CHANGED),
+    )
+)
+
+/**
+ * YT 21.03 - 21.42
+ */
+internal object IntentActionSyntheticAlternativeLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),

@@ -106,13 +106,9 @@ public final class PlayerVolumePatch {
     private static void scheduleEnforce() {
         if (enforceScheduled) return;
         enforceScheduled = true;
-        Utils.runOnMainThreadDelayed(PlayerVolumePatch::enforceTick, enforceIntervalMs());
-    }
-
-    private static long enforceIntervalMs() {
-        return duckMultiplier == 1.0f
+        Utils.runOnMainThreadDelayed(PlayerVolumePatch::enforceTick, duckMultiplier == 1.0f
                 ? MUTE_ENFORCE_INTERVAL_MS
-                : DUCK_ENFORCE_INTERVAL_MS;
+                : DUCK_ENFORCE_INTERVAL_MS);
     }
 
     private static void enforceTick() {

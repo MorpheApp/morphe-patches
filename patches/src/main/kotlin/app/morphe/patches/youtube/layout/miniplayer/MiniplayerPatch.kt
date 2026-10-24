@@ -17,6 +17,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
@@ -37,6 +41,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -48,14 +53,10 @@ import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.cloneParameters
-import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.numberOfParameterRegisters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -194,11 +195,13 @@ val miniplayerPatch = bytecodePatch(
 
         // Only skip the resume branch of the command. Other show miniplayer commands,
         // such as "Play next in queue" from the feed when no video is open, still work.
-        if (is_21_42_or_greater) {
-            ShowMiniplayerCommandFingerprint to 1
+        (if (is_21_43_or_greater) {
+            ShowMiniplayerCommandFingerprint to 2
+        } else if (is_21_42_or_greater) {
+            ShowMiniplayerCommandLegacy2142Fingerprint to 1
         } else {
             ShowMiniplayerCommandLegacyFingerprint to 3
-        }.let { (fingerprint, matchIndex) ->
+        }).let { (fingerprint, matchIndex) ->
             fingerprint.method.apply {
                 val index = fingerprint.instructionMatches[matchIndex].index + 1
                 val free = findFreeRegister(index)

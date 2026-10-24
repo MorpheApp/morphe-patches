@@ -454,6 +454,15 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Mostra il conteggio dei mi piace nella miniature del feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Mostra la percentuale di mi piace nella miniature del feed</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Cerca nei commenti</string>
+  <string name="morphe_search_comments_summary">Tocca il pulsante di ricerca nei commenti per mostrare solo i commenti caricati che contengono tutte le parole cercate. Inserisci le parole tra virgolette per cercare una frase</string>
+  <string name="morphe_search_comments_dialog_title">Cerca nei commenti</string>
+  <string name="morphe_search_comments_hint">Parole da cercare</string>
+  <string name="morphe_search_comments_search">Cerca</string>
+  <string name="morphe_search_comments_clear">Disattiva</string>
+  <string name="morphe_search_comments_applied">Cambia l\'ordine di ordinamento o apri nuovamente i commenti per cercarli</string>
+  <string name="morphe_search_comments_cleared">Ricerca cancellata. Cambia l\'ordine di ordinamento o apri nuovamente i commenti per mostrare tutti i commenti</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Disabilita il popup \"Accedi alla TV\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Disattiva il popup \"Connetti i tuoi dispositivi\"</string>
@@ -838,6 +847,8 @@ Per accedere alle Impostazioni, abilita il pulsante delle Impostazioni tramite G
   <string name="morphe_narrow_navigation_buttons_summary">Riduce lo spazio orizzontale tra i pulsanti</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Disattiva i pulsanti di navigazione senza etichette</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Mostra i pulsanti di navigazione con etichette, se YouTube li invia senza etichette</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Disabilita le schede di navigazione della barra degli strumenti</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Mostra gli Iscritti nella barra di navigazione, se YouTube li sposta in una scheda nella parte superiore della Home</string>
   <string name="morphe_navigation_bar_animations_title">Abilita animazioni della barra di navigazione</string>
   <string name="morphe_navigation_bar_animations_summary">Anima le transizioni quando si passa tra le schede</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Disabilita la barra di navigazione a scomparsa automatica</string>

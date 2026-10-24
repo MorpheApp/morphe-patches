@@ -211,13 +211,6 @@ public final class FeedVideoActionsPatch {
             }
         }
 
-        void removeBadge(ComponentHost host) {
-            if (badgeAdded) {
-                host.getOverlay().remove(badge);
-                badgeAdded = false;
-            }
-        }
-
         boolean isBadgeHit(ComponentHost host, float x, float y) {
             if (!badgeAdded || FeedVideoCardsPatch.isCardPlayingInline(host)
                     || FeedVideoCardsPatch.isPlaylistCard(host)) {
@@ -527,7 +520,10 @@ public final class FeedVideoActionsPatch {
 
         if (menuButton == null) {
             if (card != null) {
-                card.removeBadge(host);
+                if (card.badgeAdded) {
+                    host.getOverlay().remove(card.badge);
+                    card.badgeAdded = false;
+                }
                 cards.remove(host);
             }
             return null;
@@ -622,9 +618,12 @@ public final class FeedVideoActionsPatch {
                     if (gestureEnded) {
                         if (card != null) {
                             card.badge.setPressed(false);
+                            // Saves the video to Watch later.
                             if (action == MotionEvent.ACTION_UP
-                                    && card.isBadgeHit(host, event.getX(), event.getY())) {
-                                saveToWatchLater(host, card);
+                                    && card.isBadgeHit(host, event.getX(), event.getY())
+                                    && card.getMenuButton() != null) {
+                                vibrate(host, false);
+                                openMenuItem(card, false);
                             }
                         }
                         resetGesture();
@@ -798,14 +797,6 @@ public final class FeedVideoActionsPatch {
                         ? HapticFeedbackConstants.LONG_PRESS
                         : HapticFeedbackConstants.VIRTUAL_KEY,
                 HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
-    }
-
-    private static void saveToWatchLater(ComponentHost host, VideoCard card) {
-        if (card.getMenuButton() == null) {
-            return;
-        }
-        vibrate(host, false);
-        openMenuItem(card, false);
     }
 
     /**

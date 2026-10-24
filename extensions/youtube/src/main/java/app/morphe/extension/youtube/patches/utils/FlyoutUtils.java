@@ -555,7 +555,7 @@ public final class FlyoutUtils {
         }
 
         if (nextButtonIndex > 0) {
-            addDivider(flyoutPanel, nextButtonIndex);
+            addFlyoutMenuItem(flyoutPanel, null, null, null, nextButtonIndex, true);
         }
 
         // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
@@ -639,11 +639,6 @@ public final class FlyoutUtils {
             int index
     ) {
         return addFlyoutMenuItem(flyoutPanel, icon, text, clickListener, index, false);
-    }
-
-    @SuppressWarnings("UnusedReturnValue")
-    private static int addDivider(Object flyoutPanel, int index) {
-        return addFlyoutMenuItem(flyoutPanel, null, null, null, index, true);
     }
 
     private static int addFlyoutMenuItem(
@@ -796,12 +791,7 @@ public final class FlyoutUtils {
 
         if (flyoutPanel instanceof PopupWindow checkedPopupWindow) {
             popupWindow = checkedPopupWindow;
-            if (checkedPopupWindow.getContentView() instanceof FrameLayout frameLayout) {
-                if (frameLayout.getChildAt(0) instanceof ViewGroup viewGroup &&
-                        viewGroup.getChildAt(0) instanceof LinearLayout checkedMenuContainer) {
-                    menuContainer = checkedMenuContainer;
-                }
-            }
+            menuContainer = getPopupMenuContainer(checkedPopupWindow.getContentView());
         } else if (flyoutPanel instanceof Dialog checkedDialog) {
             Window window = checkedDialog.getWindow();
             if (window != null) {
@@ -830,6 +820,27 @@ public final class FlyoutUtils {
         }
 
         return new FlyoutMenuInfo(menuContainer, adjustedIndex, popupWindow);
+    }
+
+    /**
+     * The menu container of a popup menu is the first LinearLayout found by following the first child
+     * of the content view. Depending on the app version, the device and A/B tests, the content view is:
+     * the container itself, a view that places the container next to its anchor (also wrapped
+     * in a frame on phones), or a frame that sizes the popup window to the container.
+     *
+     * @return The menu container, or null if the content view is not a popup menu.
+     */
+    @Nullable
+    private static LinearLayout getPopupMenuContainer(@Nullable View contentView) {
+        View view = contentView;
+        // The deepest container is in a frame, inside the view that places it.
+        for (int depth = 0; depth < 3 && view != null; depth++) {
+            if (view instanceof LinearLayout linearLayout) {
+                return linearLayout;
+            }
+            view = view instanceof ViewGroup viewGroup ? viewGroup.getChildAt(0) : null;
+        }
+        return null;
     }
 
     @SuppressLint("ResourceType")
@@ -942,7 +953,9 @@ public final class FlyoutUtils {
             return;
         }
 
-        byte[] flyoutBuffer = getFlyoutBuffer(bufferObject);
+        byte[] flyoutBuffer = bufferObject instanceof ProtocolBufferFieldInterface bufferInterface
+                ? bufferInterface.patch_getBuffer()
+                : null;
         if (flyoutBuffer == null) {
             return;
         }
@@ -1031,13 +1044,6 @@ public final class FlyoutUtils {
                 parent = parent.getParent();
             }
         }
-    }
-
-    private static byte[] getFlyoutBuffer(@Nullable Object bufferObject) {
-        if (!(bufferObject instanceof ProtocolBufferFieldInterface bufferInterface)) {
-            return null;
-        }
-        return bufferInterface.patch_getBuffer();
     }
 
     public static void setFlyoutVideoId(byte[] buffer, String rawDescription) {

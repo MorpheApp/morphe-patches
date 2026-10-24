@@ -444,6 +444,15 @@ Nakon što se jednom otvori video s gumbom Ask, funkcija radi sa svim videima, �
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Prikaži broj lajkova na minijaturi feeda</string>
   <string name="morphe_ryd_feed_like_ratio_title">Prikaži omjer lajkova na minijaturi feeda</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Pretraži komentare</string>
+  <string name="morphe_search_comments_summary">Dodirnite gumb za pretraživanje u komentarima kako biste prikazali samo učitane komentare koji sadrže sve pretraživane riječi. Riječi stavite pod navodnike kako biste pretražili frazu</string>
+  <string name="morphe_search_comments_dialog_title">Pretraži komentare</string>
+  <string name="morphe_search_comments_hint">Riječi za pretraživanje</string>
+  <string name="morphe_search_comments_search">Traži</string>
+  <string name="morphe_search_comments_clear">Izbriši</string>
+  <string name="morphe_search_comments_applied">Promijenite redoslijed sortiranja ili ponovno otvorite komentare kako biste ih pretražili</string>
+  <string name="morphe_search_comments_cleared">Pretraživanje je obrisano. Promijenite redoslijed sortiranja ili ponovno otvorite komentare kako biste prikazali sve komentare</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogući \'Prijava na TV\' prozor</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Onemogući iskačući prozor \'Povežite svoje uređaje\'</string>
@@ -826,6 +835,8 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_narrow_navigation_buttons_summary">Smanjuje vodoravni razmak između gumba</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Onemogući navigacijske gumbe bez natpisa</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Prikazuje navigacijske gumbe s natpisima ako ih YouTube šalje bez natpisa</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Onemogući navigacijske kartice u alatnoj traci</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Prikazuje Preplate u navigacijskoj traci ako YouTube pomakne taj odjeljak u karticu na vrhu Početne stranice</string>
   <string name="morphe_navigation_bar_animations_title">Animacije na navigacijskoj traci su animirane</string>
   <string name="morphe_navigation_bar_animations_summary">Animira prijelaze pri prebacivanju između kartica</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Onemogući automatsko skrivanje navigacijske trake</string>

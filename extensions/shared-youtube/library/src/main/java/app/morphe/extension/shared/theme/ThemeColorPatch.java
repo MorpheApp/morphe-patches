@@ -863,9 +863,6 @@ public class ThemeColorPatch {
         return (float) Math.sqrt(dl * dl + da * da + db * db);
     }
 
-    private static boolean useOverlay(boolean dark) {
-        return dark ? useDarkOverlay : useLightOverlay;
-    }
 
     /**
      * Registers, updates or removes the overlay of both themes.
@@ -894,7 +891,7 @@ public class ThemeColorPatch {
     private static void updateOverlay(Context context, boolean dark, String[] resourceNames,
                                       StringSetting customColorSetting) {
         try {
-            if (!useOverlay(dark)) {
+            if (!(dark ? useDarkOverlay : useLightOverlay)) {
                 ThemeColorOverlay.unregisterIfRegistered(context, dark);
                 return;
             }
@@ -971,7 +968,9 @@ public class ThemeColorPatch {
                             ? (!dark ? configValue : lightConfigValue)
                             : LIGHT_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
 
-            String resourceName = themeColorResourceName(dark);
+            // The first name is the color the app uses for the color itself.
+            final String[] resourceNames = colorResourceNames(dark);
+            String resourceName = resourceNames.length > 0 ? resourceNames[0] : "";
             if (resourceName.isEmpty()) {
                 // The app has no theme of this kind, and no color of it to show.
                 return ThemeUtils.getAppBackgroundColor();
@@ -1069,7 +1068,10 @@ public class ThemeColorPatch {
 
         // The count is a text view, and its text must stay readable on the new color.
         if (view instanceof TextView count) {
-            final int textColor = getIndicatorTextColor(view.getContext());
+            // Never black in practice, an indicator color exists only with a Material You color.
+            final int textColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                    ? view.getContext().getColor(android.R.color.system_neutral1_900)
+                    : Color.BLACK;
 
             if (count.getCurrentTextColor() != textColor) {
                 count.setTextColor(textColor);
@@ -1122,19 +1124,6 @@ public class ThemeColorPatch {
         ).usesMaterialYouAccent();
     }
 
-    /**
-     * The color of the text of the new content count, which must be readable
-     * on {@link #getIndicatorColor(Context)}.
-     */
-    public static int getIndicatorTextColor(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            return context.getColor(android.R.color.system_neutral1_900);
-        }
-
-        // Never reached, an indicator color exists only with a Material You color.
-        return Color.BLACK;
-    }
-
     private static int customColor(boolean dark) {
         return customColor(dark
                 ? SharedYouTubeSettings.THEME_COLOR_DARK_CUSTOM
@@ -1157,14 +1146,6 @@ public class ThemeColorPatch {
             Logger.printException(() -> "Invalid custom color: " + colorString);
             return Color.parseColor(setting.resetToDefault()) | 0xFF000000;
         }
-    }
-
-    /**
-     * The first name is the color the app uses for the color itself.
-     */
-    private static String themeColorResourceName(boolean dark) {
-        final String[] resourceNames = colorResourceNames(dark);
-        return resourceNames.length > 0 ? resourceNames[0] : "";
     }
 
     private static String[] colorResourceNames(boolean dark) {

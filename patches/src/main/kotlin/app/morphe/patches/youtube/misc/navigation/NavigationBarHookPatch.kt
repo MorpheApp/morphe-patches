@@ -17,6 +17,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.backgesture.addBackPressedHook
@@ -25,12 +27,11 @@ import app.morphe.patches.youtube.misc.backgesture.backGesturePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
-import app.morphe.util.findFreeRegister
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -128,12 +129,14 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
             }
 
             // Hook the creation of navigation tab views.
-            val drawableTabMethod = PivotBarButtonsCreateDrawableViewFingerprint.method
-            addHook(NavigationHook.NAVIGATION_TAB_LOADED) predicate@{
-                MethodUtil.methodSignaturesMatch(
-                    getReference<MethodReference>() ?: return@predicate false,
-                    drawableTabMethod,
-                )
+            if (!is_21_43_or_greater) {
+                val drawableTabMethod = PivotBarButtonsCreateDrawableViewFingerprint.method
+                addHook(NavigationHook.NAVIGATION_TAB_LOADED) predicate@{
+                    MethodUtil.methodSignaturesMatch(
+                        getReference<MethodReference>() ?: return@predicate false,
+                        drawableTabMethod,
+                    )
+                }
             }
 
             if (!is_20_28_or_greater) {

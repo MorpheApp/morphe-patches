@@ -207,7 +207,7 @@ public class StreamingDataRequest {
     }
 
     /**
-     * Resolves a video that the app never opened, using the latest player headers.
+     * Uses headers captured during playback so a song can be downloaded without first playing it.
      * Deliberately not cached, so downloads cannot evict the streams of videos being watched.
      * <p>
      * The clients are given by the caller instead of taken from the playback order, which stays at
@@ -542,11 +542,6 @@ public class StreamingDataRequest {
         return null;
     }
 
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public boolean fetchIsDone() {
-        return future.isDone();
-    }
-
     @Nullable
     public StreamData getStream() {
         try {
@@ -555,7 +550,7 @@ public class StreamingDataRequest {
             // This is not a concern, since the fetch will always be finished
             // and never block the main thread.
             // But if debugging, then still verify this is the situation.
-            if (BaseSettings.DEBUG.get() && !fetchIsDone() && Utils.isCurrentlyOnMainThread()) {
+            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
                 Logger.printException(() -> "Debug: Blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);

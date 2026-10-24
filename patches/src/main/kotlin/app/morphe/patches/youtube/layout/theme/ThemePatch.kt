@@ -20,6 +20,8 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
@@ -55,8 +57,6 @@ import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.matchAllMethodIndicesForEach
-import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -88,7 +88,15 @@ private val youTubeColorNamesDark = {
             "yt_sys_color_baseline_dark_raised_background",
             "yt_sys_color_baseline_dark_base_background",
             "yt_sys_color_baseline_light_inverted_background",
-            "yt_sys_color_baseline_light_static_black"
+            "yt_sys_color_baseline_light_static_black",
+            // 21.43+ names of 'black3', 'black1' and the menu background.
+            "yt_ref_color_constants_default_grey5",
+            "yt_ref_color_constants_default_grey20",
+            "yt_sys_color_baseline_dark_default_menu_background",
+            // The mainstage color theme of 21.43+, which the app applies over the default one.
+            "yt_ref_color_constants_colors_mainstage_grey5",
+            "yt_ref_color_constants_colors_mainstage_grey20",
+            "yt_ref_color_constants_colors_mainstage_grey25"
         ) else emptySet()
 }
 
@@ -106,9 +114,13 @@ private val youTubeColorNamesLight = {
 //            "yt_ref_color_constants_default_baseline_white_white2",
 //            "yt_ref_color_constants_default_baseline_white_white4",
             "yt_ref_color_constants_default_baseline_white_white3",
+            // 21.43+ name of 'white3'.
+            "yt_ref_color_constants_default_grey95",
             "yt_ref_color_constants_cooler_baseline_white_white3",
 
             "yt_sys_color_baseline_light_menu_background",
+            // 21.43+ name of the menu background.
+            "yt_sys_color_baseline_light_default_menu_background",
 //            "yt_sys_color_baseline_light_static_white",
 //            "yt_sys_color_baseline_light_static_white_background",
 //            "yt_sys_color_baseline_dark_inverted_background",

@@ -36,7 +36,10 @@ public class ExternalPoTokenProviderAboutPreference extends Preference {
 
         public void onActivityResumed(@NonNull Activity activity) {
             Logger.printDebug(() -> "onActivityResumed");
-            updateUI();
+            String summaryKey = isAvailable()
+                    ? "morphe_external_potoken_provider_settings_summary"
+                    : "morphe_external_potoken_provider_about_summary";
+            setSummary(str(summaryKey));
         }
 
         public void onActivityCreated(@NonNull Activity a, @Nullable Bundle b) {}
@@ -51,35 +54,20 @@ public class ExternalPoTokenProviderAboutPreference extends Preference {
         return SharedYouTubeSettings.EXTERNAL_POTOKEN_PROVIDER.isAvailable();
     }
 
-    private void registerApplicationOnResumeCallback() {
+    @Override
+    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
+        super.onAttachedToHierarchy(preferenceManager);
         ((Application) getContext().getApplicationContext()).registerActivityLifecycleCallbacks(
                 ACTIVITY_LIFECYCLE_CALLBACKS
         );
     }
 
-    private void unregisterApplicationOnResumeCallback() {
-        ((Application) getContext().getApplicationContext()).unregisterActivityLifecycleCallbacks(
-                ACTIVITY_LIFECYCLE_CALLBACKS
-        );
-    }
-
-    @Override
-    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
-        super.onAttachedToHierarchy(preferenceManager);
-        registerApplicationOnResumeCallback();
-    }
-
     @Override
     protected void onPrepareForRemoval() {
         super.onPrepareForRemoval();
-        unregisterApplicationOnResumeCallback();
-    }
-
-    private void updateUI() {
-        String summaryKey = isAvailable()
-                ? "morphe_external_potoken_provider_settings_summary"
-                : "morphe_external_potoken_provider_about_summary";
-        setSummary(str(summaryKey));
+        ((Application) getContext().getApplicationContext()).unregisterActivityLifecycleCallbacks(
+                ACTIVITY_LIFECYCLE_CALLBACKS
+        );
     }
 
     @Override

@@ -436,24 +436,33 @@ Second \"item\" text"</string>
   <string name="morphe_feed_watch_later_button_title">Показувати кнопку \"Дивитися пізніше\" на мініатюрах</string>
   <string name="morphe_feed_watch_later_button_summary">Кнопка \"Дивитися пізніше\" показується на мініатюрах відео в стрічці. Натискання та утримування її відкриває \"Зберегти в список відтворення\"</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
-  <string name="morphe_ask_summarize_flyout_menu_title">Додати елемент «Ask» до спадного меню</string>
-  <string name="morphe_ask_summarize_flyout_menu_summary">Додати елемент узагальнення відео в стрічкове спадне меню</string>
+  <string name="morphe_ask_summarize_flyout_menu_title">Додати пункт \"Запитати\" у спливне меню</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Додає пункт підсумовування відео до спливного меню стрічки</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Спочатку для використання функції «Ask» потрібен обліковий запис із підпискою та країна, де ця функція доступна.
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Для початку роботи функції \"Запитати\" потрібен обліковий запис, у який виконано вхід, у країні, де вона доступна.
 
-Якщо хоча б один раз відкрити відео з кнопкою «Ask», функція стане доступною для всіх відео, навіть якщо у поточній країні вона недоступна."</string>
+Після того як ви один раз відкриєте відео з кнопкою \"Запитати\", функція працюватиме з усіма відео, навіть якщо в поточній країні вона недоступна."</string>
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
-  <string name="morphe_ask_summarize_title">Узагальнити відео</string>
+  <string name="morphe_ask_summarize_title">Підсумувати відео</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_failed">Не вдалося відкрити функцію «Ask» для цього відео</string>
+  <string name="morphe_ask_summarize_failed">Не вдалося відкрити \"Запитати\" для цього відео</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_unavailable">Функція «Ask» недоступна для вашого облікового запису або в поточній країні</string>
+  <string name="morphe_ask_summarize_unavailable">\"Запитати\" недоступне для вашого облікового запису або поточної країни</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Показувати кількість переглядів на мініатюрах</string>
   <string name="morphe_feed_view_count_summary">Кількість переглядів відео в стрічці показується внизу ліворуч на їхніх мініатюрах, а не під назвою. Для деяких відео, наприклад у полицях, кількість переглядів може не показуватися</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Показувати кількість лайків на мініатюрах стрічки</string>
   <string name="morphe_ryd_feed_like_ratio_title">Показувати відсоток лайків на мініатюрах стрічки</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Пошук у коментарях</string>
+  <string name="morphe_search_comments_summary">Натисніть кнопку пошуку в коментарях, щоб показати лише завантажені коментарі, які містять усі шукані слова. Візьміть слова в лапки, щоб шукати фразу</string>
+  <string name="morphe_search_comments_dialog_title">Пошук у коментарях</string>
+  <string name="morphe_search_comments_hint">Слова для пошуку</string>
+  <string name="morphe_search_comments_search">Пошук</string>
+  <string name="morphe_search_comments_clear">Очистити</string>
+  <string name="morphe_search_comments_applied">Змініть порядок сортування або відкрийте коментарі знову, щоб здійснити в них пошук</string>
+  <string name="morphe_search_comments_cleared">Пошук очищено. Змініть порядок сортування або відкрийте коментарі знову, щоб показати всі коментарі</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Вимкнути вікно \"Увійти на телевізорі\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Вимкнути вікно \"Підключіть свої пристрої\"</string>
@@ -462,7 +471,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Вимикає жест подвійного натискання двома пальцями для пропуску розділів, який може випадково спрацювати одним пальцем</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Завантажувати відео, подкасти або пісні за допомогою сторонніх застосунків для завантаження</string>
-  <string name="morphe_external_downloader_overlay_button_title">Показати кнопку завантаження в накладці плеєра</string>
+  <string name="morphe_external_downloader_overlay_button_title">Показувати кнопку завантаження в оверлеї плеєра</string>
   <string name="morphe_external_downloader_overlay_button_summary">Показує кнопку у відеоплеєрі, яка відкриває ваш зовнішній завантажувач</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Голосовий переклад</string>
@@ -838,6 +847,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary">Зменшує горизонтальні відступи між кнопками</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Вимкнути кнопки навігації без підписів</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Показує кнопки навігації з підписами, якщо YouTube надсилає їх без підписів</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Вимкнути вкладки навігації на панелі інструментів</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Показує \"Підписки\" на панелі навігації, якщо YouTube переносить їх на вкладку вгорі \"Головної\"</string>
   <string name="morphe_navigation_bar_animations_title">Увімкнути анімації панелі навігації</string>
   <string name="morphe_navigation_bar_animations_summary">Анімує переходи між вкладками</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Вимкнути автоприховування панелі навігації</string>
@@ -1123,8 +1134,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Автоматично переходить до наступного Short замість повторення поточного</string>
   <string name="morphe_shorts_autoplay_background_title">Автоматичне відтворення у фоновому режимі</string>
   <string name="morphe_shorts_autoplay_background_summary">Автоматично переходить до наступного Short під час фонового відтворення</string>
-  <string name="morphe_skip_live_shorts_title">Пропустити Shorts наживо</string>
-  <string name="morphe_skip_live_shorts_summary">Пропускає потоки наживо, які з\'являються в стрічці Shorts</string>
+  <string name="morphe_skip_live_shorts_title">Пропустити прямі трансляції Shorts</string>
+  <string name="morphe_skip_live_shorts_summary">Пропускає прямі трансляції, що з\'являються в стрічці Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Відтворення в стрічках</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Завжди ввімкнено</string>
@@ -1289,12 +1300,12 @@ Second \"item\" text"</string>
   <string name="morphe_playback_buffer_size_entry_maximum">Максимальний</string>
   <!-- video.delay.videoDelayPatch -->
   <string name="morphe_video_delay_title">Затримка відео</string>
-  <string name="morphe_video_delay_summary">Затримує відео, щоб воно було синхронізовано з затриманим звуком, наприклад, через Bluetooth-навушники (0–5000 мс)</string>
-  <string name="morphe_video_delay_bluetooth_only_title">Тільки затримка при використанні звуку по Bluetooth</string>
-  <string name="morphe_video_delay_bluetooth_only_summary">Затримує відео лише під час підключення звуку по Bluetooth, тож динамік телефону залишається синхронізованим</string>
-  <string name="morphe_video_delay_button_overlay_title">Показати кнопку затримки відео</string>
-  <string name="morphe_video_delay_button_overlay_summary">Натисніть і утримуйте для скидання затримки до 0 мс</string>
-  <string name="morphe_video_delay_button_flyout_title">Показати меню затримки відео</string>
+  <string name="morphe_video_delay_summary">Затримує відео, щоб воно залишалося синхронізованим із запізнілим звуком, наприклад у Bluetooth-навушниках (0-5000 мс)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Затримувати лише за використання звуку через Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Затримує відео лише тоді, коли підключено звук через Bluetooth, тож звук із динаміка телефона залишається синхронізованим</string>
+  <string name="morphe_video_delay_button_overlay_title">Показувати кнопку \"Затримка відео\"</string>
+  <string name="morphe_video_delay_button_overlay_summary">Натисніть і утримуйте, щоб скинути затримку до 0 мс</string>
+  <string name="morphe_video_delay_button_flyout_title">Показувати меню \"Затримка відео\"</string>
   <string name="morphe_video_delay_dialog_input_hint">Затримка в мілісекундах</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
@@ -1337,7 +1348,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Сповіщення про зміну швидкості</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Показує сповіщення при збереженні нової типової швидкості відтворення</string>
   <string name="morphe_playback_speed_default_title">Типова швидкість відтворення</string>
-  <string name="morphe_shorts_playback_speed_default_title">Типова швидкість відтворення для Shorts</string>
+  <string name="morphe_shorts_playback_speed_default_title">Типова швидкість відтворення в Shorts</string>
   <string name="morphe_remember_playback_speed_toast">Типову швидкість відтворення змінено на %s</string>
   <string name="morphe_disable_playback_speed_music_title">Використовувати звичайну швидкість для музики</string>
   <string name="morphe_disable_playback_speed_music_summary">Завжди відтворювати музичні відео зі швидкістю 1.0x</string>

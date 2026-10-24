@@ -1785,7 +1785,7 @@ public final class RestoreOriginalTitlesPatch {
                 return false;
             }
             final boolean layoutTitle = findLayoutTitle != null && candidate.equals(findLayoutTitle.get());
-            if (requestCandidateTitle(videoId, texts, candidate) || titles == null) {
+            if (requestCandidateTitle(videoId, texts, candidate, 0) || titles == null) {
                 if (titles != null) {
                     addPendingTitleTexts(texts, videoId, component);
                 }
@@ -1979,15 +1979,9 @@ public final class RestoreOriginalTitlesPatch {
      * The titles of each text found as the title of the video are fetched once, or again if they
      * failed to fetch because of network errors.
      *
-     * @param texts Texts of the element.
-     * @return If the other titles of the text are being fetched.
-     */
-    private static boolean requestCandidateTitle(String videoId, Set<String> texts, String candidate) {
-        return requestCandidateTitle(videoId, texts, candidate, 0);
-    }
-
-    /**
+     * @param texts   Texts of the element.
      * @param retries Number of times the titles were fetched again after failing to fetch.
+     * @return If the other titles of the text are being fetched.
      */
     private static boolean requestCandidateTitle(String videoId, Set<String> texts, String candidate,
                                                  int retries) {

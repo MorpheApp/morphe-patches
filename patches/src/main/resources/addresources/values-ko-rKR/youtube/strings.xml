@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">피드 썸네일 좋아요 수 표시하기</string>
   <string name="morphe_ryd_feed_like_ratio_title">피드 썸네일 좋아요 비율 표시하기</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">댓글 검색</string>
+  <string name="morphe_search_comments_summary">댓글의 검색 버튼을 탭하면 검색어의 모든 단어가 포함된 로드된 댓글만 표시됩니다. 구문 검색을 하려면 단어를 큰따옴표로 묶으세요</string>
+  <string name="morphe_search_comments_dialog_title">댓글 검색</string>
+  <string name="morphe_search_comments_hint">검색할 단어</string>
+  <string name="morphe_search_comments_search">검색</string>
+  <string name="morphe_search_comments_clear">지우기</string>
+  <string name="morphe_search_comments_applied">정렬 순서를 변경하거나 댓글을 다시 열어 검색하세요</string>
+  <string name="morphe_search_comments_cleared">검색이 지워졌습니다. 정렬 순서를 변경하거나 댓글을 다시 열어 모든 댓글을 표시하세요</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'기기 연결\' 팝업 비활성화하기</string>
@@ -840,6 +849,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_narrow_navigation_buttons_summary">하단바 버튼 사이의 간격을 줄입니다</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">라벨이 없는 하단바 버튼 비활성화하기</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube에서 라벨 없이 하단바 버튼을 보내는 경우 라벨이 있는 하단바 버튼을 표시합니다</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">툴바 탐색 탭 비활성화하기</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">YouTube에서 구독 탭이 홈 화면 상단으로 이동한 경우, 구독 탭을 하단바에 표시합니다</string>
   <string name="morphe_navigation_bar_animations_title">하단바 애니메이션 활성화하기</string>
   <string name="morphe_navigation_bar_animations_summary">하단바에서 탭 전환 시 애니메이션을 표시합니다</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">하단바 자동 숨기기 비활성화하기</string>

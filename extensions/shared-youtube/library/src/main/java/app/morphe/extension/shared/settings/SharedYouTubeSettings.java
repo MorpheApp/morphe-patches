@@ -103,6 +103,7 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     // PoToken provider
     public static final BooleanSetting EXTERNAL_POTOKEN_PROVIDER = new BooleanSetting("morphe_external_potoken_provider", FALSE, true, "morphe_external_potoken_provider_user_dialog_message", new PoTokenProviderAvailability());
+    public static final BooleanSetting EXTERNAL_POTOKEN_PROVIDER_EXPIRED_DIALOG = new BooleanSetting("morphe_external_potoken_provider_expired_dialog", FALSE, false, false);
     public static final LongSetting EXTERNAL_POTOKEN_PROVIDER_EXPIRED_DIALOG_LAST_SHOWN = new LongSetting("morphe_external_potoken_provider_expired_dialog_last_shown", 0L, false, false);
 
     // Downloads

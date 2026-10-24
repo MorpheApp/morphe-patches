@@ -74,6 +74,7 @@ public final class PreferredClientCheck {
 
     @SuppressWarnings("unchecked")
     private static void showDialogIfDue(ClientType workingClient) {
+        Logger.printDebug(() -> "Default client keeps failing, working client: " + workingClient);
         if (!SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_CLIENT_FAILING_DIALOG.get()) {
             return;
         }
@@ -91,8 +92,6 @@ public final class PreferredClientCheck {
         if (names.length != values.size() || currentIndex < 0 || workingIndex < 0 || currentIndex == workingIndex) {
             return;
         }
-        Logger.printDebug(() -> "Default client keeps failing, suggesting: " + workingClient);
-
         ReminderDialog.show(
                 activity,
                 lastShown,

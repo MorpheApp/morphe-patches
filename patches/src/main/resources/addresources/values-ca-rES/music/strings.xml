@@ -18,6 +18,8 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.androidauto.androidAutoPatch -->
   <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_cancel">Cancel·lar</string>
+  <string name="morphe_music_jam_open">Obrir</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- misc.album.albumMusicVideoPatch -->
@@ -25,6 +27,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_music_downloads_close">Tanca</string>
+  <string name="morphe_music_downloads_delete">Eliminar</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_2_feed_title">Canal</string>
@@ -80,5 +84,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_empty">Introdueix un títol de la cançó i un artista</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_romanize_language_DEFAULT">Automàtic</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

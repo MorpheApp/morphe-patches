@@ -300,7 +300,7 @@ public final class QuickLRCClient {
     private static String dropCjkSeparators(String lrc) {
         final StringBuilder out = new StringBuilder(lrc.length());
         for (int i = 0; i < lrc.length(); ) {
-            if (isWhitespaceAt(lrc, i) && isCjkGap(lrc, i)) {
+            if (Character.isWhitespace(lrc.charAt(i)) && isCjkGap(lrc, i)) {
                 i = skipWhitespace(lrc, i);
                 continue;
             }
@@ -341,10 +341,6 @@ public final class QuickLRCClient {
         }
         final int token = firstNonSpaceAfter(lrc, close + 1);
         return token < lrc.length() ? lrc.charAt(token) : '\0';
-    }
-
-    private static boolean isWhitespaceAt(String text, int index) {
-        return Character.isWhitespace(text.charAt(index));
     }
 
     private static int skipWhitespace(String text, int index) {

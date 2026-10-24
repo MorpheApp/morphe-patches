@@ -64,10 +64,6 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         String key = getKey();
         if (key == null) return null;
         switch (key) {
-            case "morphe_music_lyrics_use_ai_translation":
-                return Settings.LYRICS_USE_AI_TRANSLATION;
-            case "morphe_music_lyrics_use_ai_romanization":
-                return Settings.LYRICS_USE_AI_ROMANIZATION;
             case "morphe_music_lyrics_use_ai_section":
                 return Settings.LYRICS_USE_AI_SECTION;
             default:
@@ -79,10 +75,6 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         String key = getKey();
         if (key == null) return null;
         switch (key) {
-            case "morphe_music_lyrics_use_ai_translation":
-                return Settings.LYRICS_AI_TRANSLATION_PROMPT;
-            case "morphe_music_lyrics_use_ai_romanization":
-                return Settings.LYRICS_AI_ROMANIZATION_PROMPT;
             case "morphe_music_lyrics_use_ai_section":
                 return Settings.LYRICS_AI_SECTION_PROMPT;
             default:
@@ -158,7 +150,11 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         captionParams.topMargin = Dim.dp8;
         content.addView(caption, captionParams);
 
-        content.addView(createReasoningRow(context), reasoningRowParams());
+        LinearLayout.LayoutParams reasoningParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        reasoningParams.topMargin = Dim.dp16;
+        content.addView(createReasoningRow(context), reasoningParams);
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
@@ -310,12 +306,4 @@ public class LyricsAiPromptPreference extends SwitchPreference {
                 thread.setDaemon(true);
                 return thread;
             });
-
-    private static LinearLayout.LayoutParams reasoningRowParams() {
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.topMargin = Dim.dp16;
-        return params;
-    }
 }

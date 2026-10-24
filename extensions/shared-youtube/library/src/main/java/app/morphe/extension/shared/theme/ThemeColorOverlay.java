@@ -121,11 +121,6 @@ final class ThemeColorOverlay {
     @Nullable
     private static ResourcesLoader lightResourcesLoader;
 
-    @Nullable
-    private static ResourcesLoader resourcesLoader(boolean dark) {
-        return dark ? darkResourcesLoader : lightResourcesLoader;
-    }
-
     private static void setResourcesLoader(boolean dark, @Nullable ResourcesLoader loader) {
         if (dark) {
             darkResourcesLoader = loader;
@@ -153,7 +148,7 @@ final class ThemeColorOverlay {
     }
 
     private static void applyTo(Context context, boolean dark) throws Exception {
-        ResourcesLoader loader = resourcesLoader(dark);
+        ResourcesLoader loader = dark ? darkResourcesLoader : lightResourcesLoader;
         if (loader == null) {
             OverlayInfo overlayInfo = findOverlay(context, dark);
             if (overlayInfo == null) {

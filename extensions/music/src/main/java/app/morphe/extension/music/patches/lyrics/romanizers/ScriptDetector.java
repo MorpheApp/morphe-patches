@@ -116,6 +116,56 @@ public final class ScriptDetector {
         return greek > 0 ? Script.GREEK : Script.OTHER;
     }
 
+    public static boolean contains(@Nullable CharSequence text, Character.UnicodeScript... scripts) {
+        if (text == null) return false;
+        for (int i = 0; i < text.length(); ) {
+            final int cp = Character.codePointAt(text, i);
+            i += Character.charCount(cp);
+            final Character.UnicodeScript script = Character.UnicodeScript.of(cp);
+            for (Character.UnicodeScript wanted : scripts) {
+                if (script == wanted) return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean containsKana(@Nullable CharSequence text) {
+        return contains(text, Character.UnicodeScript.HIRAGANA, Character.UnicodeScript.KATAKANA);
+    }
+
+    public static boolean containsCjk(@Nullable CharSequence text) {
+        return contains(text, Character.UnicodeScript.HAN, Character.UnicodeScript.HIRAGANA,
+                Character.UnicodeScript.KATAKANA, Character.UnicodeScript.HANGUL);
+    }
+
+    public static boolean containsRtl(@Nullable CharSequence text) {
+        return contains(text, Character.UnicodeScript.ARABIC, Character.UnicodeScript.HEBREW);
+    }
+
+    /**
+     * Checks if a line predominantly consists of RTL characters (Arabic, Hebrew, Persian, etc.).
+     * Requires RTL characters to meet or exceed LTR characters, avoiding false positives from stray symbols.
+     */
+    public static boolean isLineRtl(@Nullable CharSequence text) {
+        if (text == null || text.length() == 0) {
+            return false;
+        }
+        int rtlCount = 0;
+        int ltrCount = 0;
+        final int len = text.length();
+        for (int i = 0; i < len; ) {
+            int cp = Character.codePointAt(text, i);
+            i += Character.charCount(cp);
+            byte dir = Character.getDirectionality(cp);
+            if (dir == Character.DIRECTIONALITY_RIGHT_TO_LEFT || dir == Character.DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC) {
+                rtlCount++;
+            } else if (dir == Character.DIRECTIONALITY_LEFT_TO_RIGHT) {
+                ltrCount++;
+            }
+        }
+        return rtlCount > 0 && rtlCount >= ltrCount;
+    }
+
     /** The blocks a modern lyric line is written with. */
     static boolean isHan(char c) {
         return (c >= 0x4E00 && c <= 0x9FFF)

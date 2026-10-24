@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">הצג מניין לייקים בתמונה מוקטנת של הזרם</string>
   <string name="morphe_ryd_feed_like_ratio_title">הצג אחוז לייקים בתמונה מוקטנת של הזרם</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">חיפוש תגובות</string>
+  <string name="morphe_search_comments_summary">הקישו על כפתור החיפוש בתגובות כדי להציג רק את התגובות שנטענו ומכילות את כל המילים שחפשתם. הקיפו מילים במרכאות כדי לחפש ביטוי</string>
+  <string name="morphe_search_comments_dialog_title">חיפוש תגובות</string>
+  <string name="morphe_search_comments_hint">מילים לחיפוש</string>
+  <string name="morphe_search_comments_search">חיפוש</string>
+  <string name="morphe_search_comments_clear">נקה</string>
+  <string name="morphe_search_comments_applied">שנו את סדר המיון או פתחו שוב את התגובות כדי לחפש בהן</string>
+  <string name="morphe_search_comments_cleared">החיפוש נוקה. שנו את סדר המיון או פתחו שוב את התגובות כדי להציג את כל התגובות</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">השבת חלון קופץ של כניסה לטלוויזיה</string>
   <string name="morphe_disable_connect_your_devices_popup_title">השבת את ה-popup של \'חבר את המכשירים שלך\'</string>
@@ -838,6 +847,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary">מצמצם את המרווח האופקי בין הכפתורים</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">השבת לחצני ניווט ללא תוויות</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">מציג את לחצני הניווט עם תוויות, אם YouTube שולח אותם ללא תוויות</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">בטל לשוניות ניווט בסרגל הכלים</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">מציג את \"מנויים\" בסרגל הניווט, אם YouTube מעביר זאת ללשונית בחלק העליון של דף הבית</string>
   <string name="morphe_navigation_bar_animations_title">הפעלת אנימציות של שורת הניווט</string>
   <string name="morphe_navigation_bar_animations_summary">מבצע אנימציות מעברים בעת מעבר בין כרטיסיות</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">השבת הסתרת אוטומטית של סרגל הניווט</string>

@@ -65,7 +65,13 @@ public class SwipeVolumeStepsPreference extends CustomDialogListPreference {
 
         for (int i = 0, length = entryValues.length; i < length; i++) {
             String value = entryValues[i].toString();
-            int steps = stepsForValue(value);
+            // The number of steps of the entry value, 0 for the device default, or -1 if unknown.
+            int steps;
+            try {
+                steps = SwipeVolumeSteps.valueOf(value).getSteps();
+            } catch (IllegalArgumentException ex) {
+                steps = -1;
+            }
 
             // A step of a single volume index is what the device already does,
             // so such an entry would silently change nothing if it was shown.
@@ -81,16 +87,5 @@ public class SwipeVolumeStepsPreference extends CustomDialogListPreference {
 
         setEntries(shownEntries.toArray(new CharSequence[0]));
         setEntryValues(shownValues.toArray(new CharSequence[0]));
-    }
-
-    /**
-     * @return The number of steps of an entry value, 0 for the device default, or -1 if unknown.
-     */
-    private static int stepsForValue(String value) {
-        try {
-            return SwipeVolumeSteps.valueOf(value).getSteps();
-        } catch (IllegalArgumentException ex) {
-            return -1;
-        }
     }
 }

@@ -22,6 +22,7 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.translation.TextTranslator;
 
@@ -101,6 +102,15 @@ public final class LyricsTranslator {
         return out;
     }
 
+    private static List<LyricsLine> toLyricsLines(List<String> textLines) {
+        if (textLines == null) return java.util.Collections.emptyList();
+        List<LyricsLine> lines = new ArrayList<>(textLines.size());
+        for (String t : textLines) {
+            lines.add(new LyricsLine(LyricsLine.NO_TIME, t));
+        }
+        return lines;
+    }
+
     public static void translate(TrackInfo track, Lyrics lyrics, String source, Callback callback) {
         Utils.verifyOnMainThread();
 
@@ -119,27 +129,26 @@ public final class LyricsTranslator {
 
         executor.execute(() -> {
             try {
-                if (Settings.LYRICS_USE_AI_TRANSLATION.get()) {
-                    String baseUrl = Settings.LYRICS_AI_BASE_URL.get();
-                    String apiToken = Settings.LYRICS_AI_API_TOKEN.get();
-                    String model = Settings.LYRICS_AI_MODEL.get();
-
+                String provider = Settings.LYRICS_TRANSLATION_PROVIDER.get();
+                if (!AiProviders.GOOGLE.equals(provider)) {
                     List<String> aiCached = LyricsCache.getTranslationAI(
                             track, source, language, lines);
                     if (aiCached != null) {
-                        Utils.runOnMainThread(
-                                () -> callback.onTranslated(aiCached, false, true, model));
+                        Utils.runOnMainThread(() -> callback.onTranslated(aiCached, false, true, provider));
                         return;
                     }
 
-                    List<String> aiResult = aiTranslate(lines, language, track.title(),
-                            track.artist(), baseUrl, apiToken, model);
-                    if (aiResult != null) {
-                        LyricsCache.putTranslationAI(track, source, language, lines, aiResult);
-                        Utils.runOnMainThread(
-                                () -> callback.onTranslated(aiResult, false, true, model));
+                    AiProviders.Result ai = AiProviders.DEEPL.equals(provider)
+                            ? deepLTranslate(lines, language)
+                            : AiProviders.mapLines(provider, OpenAIClient.renderPrompt(
+                                    Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), "translation",
+                                    language, track.title(), track.artist(), lines), lines);
+                    if (ai != null && ai.lines() != null && !ai.lines().isEmpty() && LyricsMerge.hasText(toLyricsLines(ai.lines()))) {
+                        LyricsCache.putTranslationAI(track, source, language, lines, ai.lines());
+                        Utils.runOnMainThread(() -> callback.onTranslated(ai.lines(), false, true, ai.model()));
                         return;
                     }
+                    // AI / DeepL request failed or returned empty; gracefully fall through to Google Translate.
                 }
 
                 List<String> translated = LyricsCache.getTranslation(
@@ -154,18 +163,21 @@ public final class LyricsTranslator {
                 List<String> result = translated;
                 Utils.runOnMainThread(
                         () -> callback.onTranslated(result, result != null, false, null));
-            } catch (Throwable ignored) {
+            } catch (Exception ex) {
+                Logger.printException(() -> "translate failure", ex);
                 Utils.runOnMainThread(() -> callback.onTranslated(null, false, false, null));
             }
         });
     }
 
     @Nullable
-    private static List<String> aiTranslate(List<String> lines, String language,
-            String title, String artist, String baseUrl, String apiToken, String model) {
-        String prompt = OpenAIClient.renderPrompt(Settings.LYRICS_AI_TRANSLATION_PROMPT.get(),
-                "translation", language, title, artist, lines);
-        return OpenAIClient.mapLines(baseUrl, apiToken, model, prompt, lines);
+    private static AiProviders.Result deepLTranslate(List<String> lines, String language) {
+        String apiKey = Settings.LYRICS_DEEPL_API_KEY.get();
+        if (apiKey.isEmpty()) {
+            return null;
+        }
+        List<String> translated = DeepLClient.translate(lines, language, apiKey);
+        return translated == null ? null : new AiProviders.Result(translated, "DeepL");
     }
 
     @Nullable

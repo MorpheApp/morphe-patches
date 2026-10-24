@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">显示帖子缩略图点赞数</string>
   <string name="morphe_ryd_feed_like_ratio_title">显示帖子缩略图点赞比例</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">搜索评论</string>
+  <string name="morphe_search_comments_summary">点击评论中的搜索按钮，仅显示包含所有搜索词的已加载评论。将词组放在引号中可搜索特定短语</string>
+  <string name="morphe_search_comments_dialog_title">搜索评论</string>
+  <string name="morphe_search_comments_hint">要搜索的词语</string>
+  <string name="morphe_search_comments_search">搜索</string>
+  <string name="morphe_search_comments_clear">清除</string>
+  <string name="morphe_search_comments_applied">更改排序顺序或重新打开评论以进行搜索</string>
+  <string name="morphe_search_comments_cleared">搜索已清除。更改排序顺序或重新打开评论以显示所有评论</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">禁用登录电视弹出窗口</string>
   <string name="morphe_disable_connect_your_devices_popup_title">禁用“连接您的设备”弹出窗口</string>
@@ -838,6 +847,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary">减少按钮之间的水平间距</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">禁用无标签的导航按钮</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">如果 YouTube 发送的导航按钮没有标签，则显示带标签的导航按钮</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">禁用工具栏导航标签</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">如果 YouTube 将“订阅”移至主页顶部的标签页，则在导航栏中显示“订阅”</string>
   <string name="morphe_navigation_bar_animations_title">启用导航栏动画</string>
   <string name="morphe_navigation_bar_animations_summary">软光上子检查些“通过”软光浩通的新闻</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">禁用自动隐藏导航栏</string>

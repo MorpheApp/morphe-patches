@@ -454,6 +454,15 @@ După ce un videoclip cu butonul Ask este deschis o dată, funcția funcționeaz
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Afișare număr like pentru miniatura feed-ului</string>
   <string name="morphe_ryd_feed_like_ratio_title">Afișare procentaj like pentru miniatura feed-ului</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Căutare în comentarii</string>
+  <string name="morphe_search_comments_summary">Apasă butonul de căutare din comentarii pentru a afișa doar comentariile încărcate care conțin toate cuvintele căutate. Pune cuvintele între ghilimele pentru a căuta o frază</string>
+  <string name="morphe_search_comments_dialog_title">Căutare în comentarii</string>
+  <string name="morphe_search_comments_hint">Cuvinte de căutat</string>
+  <string name="morphe_search_comments_search">Caută</string>
+  <string name="morphe_search_comments_clear">Golește</string>
+  <string name="morphe_search_comments_applied">Schimbă ordinea sortării sau redeschide comentariile pentru a le căuta</string>
+  <string name="morphe_search_comments_cleared">Căutarea a fost ștearsă. Schimbă ordinea sortării sau redeschide comentariile pentru a afișa toate comentariile</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Dezactivare pop-up Conectare la televizor</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Dezactivează fereastra pop-up \'Conectează-ți dispozitivele\'</string>
@@ -838,6 +847,8 @@ Pentru a accesa Setările, activați butonul Setări prin General → Bara de in
   <string name="morphe_narrow_navigation_buttons_summary">Ascunde meniul Blocare ecran</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Dezactivează butoanele de navigare fără etichete</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Afișează butoanele de navigare cu etichete, dacă YouTube le trimite fără etichete</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Dezactivează tab-urile de navigare din bara de instrumente</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Afișează Abonările în bara de navigare, dacă YouTube le mută într-un tab în partea superioară a paginii Home</string>
   <string name="morphe_navigation_bar_animations_title">Activare animații bară de navigare</string>
   <string name="morphe_navigation_bar_animations_summary">Ascunde meniul Ascultă cu YouTube Music</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Dezactivează ascunderea automată a barei de navigare</string>

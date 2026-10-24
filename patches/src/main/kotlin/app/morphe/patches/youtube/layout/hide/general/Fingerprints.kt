@@ -930,18 +930,6 @@ internal object HideTimeBarChapterTitleFingerprint : Fingerprint(
     )
 )
 
-internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45752241)
-    )
-)
-
-internal object IncognitoSearchPaddingFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45724388)
-    )
-)
-
 /**
  * Called while the fullscreen "More videos" panel is dragged.
  * Shows the player controls when the drag goes up while the panel is peeking.

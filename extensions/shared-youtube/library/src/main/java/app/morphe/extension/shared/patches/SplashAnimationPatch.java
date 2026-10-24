@@ -81,11 +81,6 @@ public class SplashAnimationPatch {
     private static final String BRAND_SECONDARY_COLOR = "[0,0.686275,0.682353,1]";
     private static final String BRAND_GRADIENT = "[0,0.117647,0.352941,0.658824,1,0,0.686275,0.682353]";
 
-    public static boolean isDisabled() {
-        return SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get()
-                == SplashScreenAnimationStyle.DISABLED;
-    }
-
     public static boolean isMonochrome() {
         SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get();
         return style == SplashScreenAnimationStyle.FPS_30_BLACK_AND_WHITE

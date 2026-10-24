@@ -45,28 +45,20 @@ public class ExternalPoTokenProviderPreference extends SwitchPreference {
         public void onActivityDestroyed(@NonNull Activity a) {}
     };
 
-    private void registerApplicationOnResumeCallback() {
+    @Override
+    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
+        super.onAttachedToHierarchy(preferenceManager);
         ((Application) getContext().getApplicationContext()).registerActivityLifecycleCallbacks(
                 ACTIVITY_LIFECYCLE_CALLBACKS
         );
     }
 
-    private void unregisterApplicationOnResumeCallback() {
-        ((Application) getContext().getApplicationContext()).unregisterActivityLifecycleCallbacks(
-                ACTIVITY_LIFECYCLE_CALLBACKS
-        );
-    }
-
-    @Override
-    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
-        super.onAttachedToHierarchy(preferenceManager);
-        registerApplicationOnResumeCallback();
-    }
-
     @Override
     protected void onPrepareForRemoval() {
         super.onPrepareForRemoval();
-        unregisterApplicationOnResumeCallback();
+        ((Application) getContext().getApplicationContext()).unregisterActivityLifecycleCallbacks(
+                ACTIVITY_LIFECYCLE_CALLBACKS
+        );
     }
 
     @Override

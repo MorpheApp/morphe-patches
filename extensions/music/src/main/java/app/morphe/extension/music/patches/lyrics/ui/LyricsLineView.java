@@ -334,17 +334,25 @@ final class LyricsLineView extends TextView {
                     layout.getLineRight(line));
             final float lead = Math.min(
                     Math.max(layout.getPrimaryHorizontal(snappedStart), lineLeft), lineRight);
+            final boolean isRtl = isRightToLeftLine(layout, line) || layout.isRtlCharAt(s);
             final float trail;
             if (endLine != line) {
                 // measureText reads the raw text, so a smaller size span is worth nothing to
                 // it and the word measures wider than it is drawn.
                 final float width = paint.measureText(text, s, e);
-                final float measured = layout.isRtlCharAt(s) ? lead - width : lead + width;
+                final float measured = isRtl ? lead - width : lead + width;
                 trail = Math.min(Math.max(measured, lineLeft), lineRight);
             } else {
-                trail = trailOnLine(lineLeft, lineRight, lead,
-                        layout.getPrimaryHorizontal(snappedEnd),
-                        isRightToLeftLine(layout, line));
+                final float end = layout.getPrimaryHorizontal(snappedEnd);
+                if (isRtl) {
+                    // In RTL, text runs right-to-left, so end < lead.
+                    // If end >= lead, the offset wrapped to the start of the next line,
+                    // so the word ends at the line's left boundary.
+                    trail = end >= lead ? lineLeft : Math.min(Math.max(end, lineLeft), lineRight);
+                } else {
+                    // That offset reports where the next line starts; a word ending its line ends at its right.
+                    trail = end <= lead ? lineRight : Math.min(Math.max(end, lineLeft), lineRight);
+                }
             }
             cachedWordLeadX[i] = lead;
             cachedWordTrailX[i] = trail;
@@ -362,43 +370,9 @@ final class LyricsLineView extends TextView {
         for (int ln = 0; ln < lineCount; ln++) {
             cachedLineTop[ln] = layout.getLineTop(ln);
             cachedLineBottom[ln] = layout.getLineBottom(ln);
-            cachedLineLeft[ln] = layout.getLineLeft(ln);
-            cachedLineRight[ln] = layout.getLineRight(ln);
+            cachedLineLeft[ln] = Math.min(layout.getLineLeft(ln), layout.getLineRight(ln));
+            cachedLineRight[ln] = Math.max(layout.getLineLeft(ln), layout.getLineRight(ln));
         }
-    }
-
-    /**
-     * A main run holding none of the line's words has no word to light it, so it would sit in the
-     * unsung colour for the whole line and then jump white at the last word. Drawn while the line
-     * is active instead, and kept once the words are past so it does not fall back.
-     *
-     * <p>Whether a run holds a word is a fact about the layout, not about how far the line has
-     * been sung: a seek lands before the first word opens, and reading that as an empty run
-     * fills it white for a moment.
-     */
-    private static boolean shouldFillMainRun(boolean hasWords, boolean wordOnMainRun,
-            boolean activeLine, boolean allWordsDone) {
-        return hasWords && !wordOnMainRun && (activeLine || allWordsDone);
-    }
-
-    /**
-     * Only one of the two ranges is set on a dual line, so this run is the reading's exactly when
-     * the reading's range is the one present.
-     */
-    private static boolean runHoldsWords(boolean smallRunHoldsWords, boolean romaPresent,
-            boolean isRoma) {
-        return smallRunHoldsWords ? isRoma == romaPresent : isRoma;
-    }
-
-    /**
-     * A small run takes the reading's colour so it reads as a line of its own, and a wrapped one would
-     * otherwise come out in two colours mid-word. What makes a run small is the main run beside it, not
-     * whether it holds the words: a dual line hands those to the reading wherever the swap puts it, so a
-     * main run without them still reads as the lyric, as does a line with nothing beside it.
-     */
-    private static int sungColorForLine(boolean smallRun, boolean anyMainLine,
-            int readingColor, int lyricColor) {
-        return smallRun && anyMainLine ? readingColor : lyricColor;
     }
 
     /**
@@ -424,9 +398,7 @@ final class LyricsLineView extends TextView {
         final int length = text.length();
         final int[] boundaries = new int[length + 1];
         final BreakIterator iterator = BreakIterator.getCharacterInstance();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            iterator.setText(text);
-        }
+        iterator.setText(text.toString());
         int clusterStart = iterator.first();
         while (clusterStart != BreakIterator.DONE && clusterStart <= length) {
             final int next = iterator.next();
@@ -604,8 +576,9 @@ final class LyricsLineView extends TextView {
                 if (runSecondary) {
                     final boolean isRoma = romaFirst >= 0
                             && runStart >= romaFirst && runLast <= romaLast;
-                    final boolean runHoldsWords = runHoldsWords(
-                            smallRunHoldsWords, romaFirst >= 0, isRoma);
+                    // Only one of the two ranges is set on a dual line, so this run is the reading's
+                    // exactly when the reading's range is the one present.
+                    final boolean runHoldsWords = smallRunHoldsWords ? isRoma == (romaFirst >= 0) : isRoma;
                     final float reveal = isRoma ? romaReveal : transReveal;
                     drawTextRun(canvas, layout, runStart, runLast,
                             Math.round((runHoldsWords ? romaAlpha : secondaryAlpha) * reveal),
@@ -758,13 +731,21 @@ final class LyricsLineView extends TextView {
                     // scaled against the whole line, which lit the rest of the line with it.
                     final float lineLeft = layout.getLineLeft(ln);
                     final float lineRight = Math.max(lineLeft, layout.getLineRight(ln));
-                    final float reach = ln == wrappedEnd
-                            ? Math.min(Math.max(layout.getPrimaryHorizontal(e), lineLeft),
-                                    lineRight)
-                            : lineRight;
-                    final float lineEdge = lineLeft + (reach - lineLeft) * lineProgress;
-                    lineMaxSungX[ln] = extendSung(lineMaxSungX[ln], lineEdge,
-                            isRightToLeftLine(layout, ln));
+                    final boolean isLnRtl = isRightToLeftLine(layout, ln);
+                    final float reach;
+                    final float lineEdge;
+                    if (isLnRtl) {
+                        reach = ln == wrappedEnd
+                                ? Math.min(Math.max(layout.getPrimaryHorizontal(e), lineLeft), lineRight)
+                                : lineLeft;
+                        lineEdge = lineRight + (reach - lineRight) * lineProgress;
+                    } else {
+                        reach = ln == wrappedEnd
+                                ? Math.min(Math.max(layout.getPrimaryHorizontal(e), lineLeft), lineRight)
+                                : lineRight;
+                        lineEdge = lineLeft + (reach - lineLeft) * lineProgress;
+                    }
+                    lineMaxSungX[ln] = extendSung(lineMaxSungX[ln], lineEdge, isLnRtl);
                 }
             }
 
@@ -805,8 +786,14 @@ final class LyricsLineView extends TextView {
             final int readingColor = (activeLine && secondaryActiveColor != 0
                     ? secondaryActiveColor : LyricsColors.secondaryTextColor()) | 0xFF000000;
             final int lyricColor = LyricsColors.lineTextColor() | 0xFF000000;
-            final boolean fillMainRun = shouldFillMainRun(hasWords, wordOnMainRun,
-                    activeLine, allWordsDone && firstSungLine >= 0);
+            // A main run holding none of the line's words has no word to light it, so it would sit in
+            // the unsung colour for the whole line and then jump white at the last word. Drawn while the
+            // line is active instead, and kept once the words are past so it does not fall back.
+            // Whether a run holds a word is a fact about the layout, not about how far the line has
+            // been sung: a seek lands before the first word opens, and reading that as an empty run
+            // fills it white for a moment.
+            final boolean fillMainRun = hasWords && !wordOnMainRun
+                    && (activeLine || (allWordsDone && firstSungLine >= 0));
             if (fillMainRun) {
                 for (int ln = 0; ln < lineCount; ln++) {
                     if (!Float.isNaN(lineMaxSungX[ln])
@@ -832,8 +819,12 @@ final class LyricsLineView extends TextView {
                 if (Float.isNaN(edge)) {
                     continue;
                 }
-                final int color = sungColorForLine(secondaryLine[ln],
-                        anyMainLine, readingColor, lyricColor);
+                // A small run takes the reading's colour so it reads as a line of its own, and a
+                // wrapped one would otherwise come out in two colours mid-word. What makes a run small
+                // is the main run beside it, not whether it holds the words: a dual line hands those to
+                // the reading wherever the swap puts it, so a main run without them still reads as the
+                // lyric, as does a line with nothing beside it.
+                final int color = secondaryLine[ln] && anyMainLine ? readingColor : lyricColor;
                 if (color != appliedColor) {
                     tp.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
                     appliedColor = color;
@@ -841,11 +832,13 @@ final class LyricsLineView extends TextView {
                 canvas.save();
                 final int clipTop = ln == 0 ? -textOriginY() : cachedLineTop[ln];
                 if (isRightToLeftLine(layout, ln)) {
-                    canvas.clipRect(edge, clipTop,
+                    final float clipLeft = Math.min(edge, cachedLineRight[ln]);
+                    canvas.clipRect(clipLeft, clipTop,
                             cachedLineRight[ln], cachedLineBottom[ln]);
                 } else {
+                    final float clipRight = Math.max(edge, cachedLineLeft[ln]);
                     canvas.clipRect(cachedLineLeft[ln], clipTop,
-                            edge, cachedLineBottom[ln]);
+                            clipRight, cachedLineBottom[ln]);
                 }
                 layout.draw(canvas);
                 canvas.restore();
@@ -875,7 +868,24 @@ final class LyricsLineView extends TextView {
     }
 
     private static boolean isRightToLeftLine(Layout layout, int line) {
-        return layout.getParagraphDirection(line) == Layout.DIR_RIGHT_TO_LEFT;
+        if (layout.getParagraphDirection(line) == Layout.DIR_RIGHT_TO_LEFT) {
+            return true;
+        }
+        if (line >= 0 && line < layout.getLineCount()) {
+            final int start = layout.getLineStart(line);
+            final int end = layout.getLineEnd(line);
+            final CharSequence text = layout.getText();
+            for (int i = start; i < end && i < text.length(); i++) {
+                byte dir = Character.getDirectionality(text.charAt(i));
+                if (dir == Character.DIRECTIONALITY_RIGHT_TO_LEFT
+                        || dir == Character.DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC) {
+                    return true;
+                } else if (dir == Character.DIRECTIONALITY_LEFT_TO_RIGHT) {
+                    return false;
+                }
+            }
+        }
+        return false;
     }
 
     /** Right to left lines fill leftwards, so their furthest point is the smallest one. */

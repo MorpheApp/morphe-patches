@@ -25,6 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.TextTrim;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
@@ -198,9 +199,9 @@ public final class TTMLParser {
 
             final List<String> songwriters;
             if (!hm.songwriters().isEmpty()) {
-                StringBuilder sb = new StringBuilder("Written by ");
+                StringBuilder sb = new StringBuilder("Written by: ");
                 for (int i = 0; i < hm.songwriters().size(); i++) {
-                    if (i > 0) sb.append(" · ");
+                    if (i > 0) sb.append(", ");
                     sb.append(hm.songwriters().get(i));
                 }
                 songwriters = List.of(sb.toString());
@@ -253,7 +254,7 @@ public final class TTMLParser {
 
                         final ParsedLine pl = processPElement(p, pBegin, pEnd);
 
-                        if (pl != null && !pl.text().trim().isEmpty()) {
+                        if (pl != null && (!pl.text().trim().isEmpty() || !pl.bgLines().isEmpty())) {
                             final List<RomajiSyllable> lineSidecar =
                                     findSidecarRoman(lineId, sidecarRoman);
                             // Read off the sidecar before the words carry a reading, or the
@@ -264,10 +265,12 @@ public final class TTMLParser {
                                 alignRomajiToWords(pl.words(), lineSidecar);
                             }
 
-                            final LyricsLine line = new LyricsLine(
-                                    pl.begin(), pl.end(), pl.text(), pl.words(),
-                                    agentId, false, false, divSongPart);
-                            lines.add(line);
+                            if (!pl.text().trim().isEmpty()) {
+                                final LyricsLine line = new LyricsLine(
+                                        pl.begin(), pl.end(), pl.text(), pl.words(),
+                                        agentId, false, false, divSongPart);
+                                lines.add(line);
+                            }
                             mainLineCount = lines.size();
 
                             final String bgAgent = pl.bgAgentId() != null ? pl.bgAgentId() : agentId;
@@ -279,8 +282,10 @@ public final class TTMLParser {
                                 lines.add(bgLine);
                             }
 
-                            romanization.add(new LyricsLine(
-                                    LyricsLine.NO_TIME, romaText));
+                            if (!pl.text().trim().isEmpty()) {
+                                romanization.add(new LyricsLine(
+                                        LyricsLine.NO_TIME, romaText));
+                            }
                             for (int i = 0; i < pl.bgLines().size(); i++) {
                                 romanization.add(new LyricsLine(LyricsLine.NO_TIME, ""));
                             }
@@ -959,6 +964,11 @@ public final class TTMLParser {
                             bgWords.add(new Word(bgWordBegin, bgWordEnd, text, null,
                                     endsWithSpace));
                         }
+                    } else if (inBg && bgWrapperDepth > 0) {
+                        bgWrapperDepth--;
+                    } else if (inBg) {
+                        flushBgLine(bgLines, bgWords, bgFullText, bgBeginMs, bgEndMs, pBegin, pEnd);
+                        inBg = false;
                     } else if (inRubyText && inRubyContainer) {
                         inRubyText = false;
                         final String text = normalizeText(rubyTextBuf.toString());
@@ -1046,8 +1056,8 @@ public final class TTMLParser {
             } else if (event == XmlPullParser.TEXT) {
                 final String raw = p.getText();
                 if (raw == null || raw.isEmpty()) continue;
-                final boolean formattingNewline = raw.contains("\n") && raw.trim().isEmpty();
-                final boolean spaceBetweenWords = !raw.contains("\n") && raw.trim().isEmpty();
+                final boolean isWhitespace = raw.trim().isEmpty();
+                final boolean hasNewline = raw.contains("\n");
 
                 if (inBgTranslation) {
                     bgTransBuf.append(raw);
@@ -1060,52 +1070,83 @@ public final class TTMLParser {
                 } else if (inRubyText && inRubyContainer) {
                     rubyTextBuf.append(raw);
                 } else if (inBg && bgWrapperDepth == 0) {
-                    // Formatting newlines (whitespace + \n) between BG word spans
-                    if (!formattingNewline) {
-                        bgFullText.append(raw);
-                    }
-                    // Whitespace-only (non-newline) between BG word spans
-                    if (spaceBetweenWords && !bgWords.isEmpty()) {
-                        final Word prev = bgWords.get(bgWords.size() - 1);
-                        if (!prev.endsWithSpace()) {
-                            bgWords.set(bgWords.size() - 1, new Word(
-                                    prev.startMs(), prev.endMs(),
-                                    prev.text(), prev.romaji(), true));
+                    if (isWhitespace) {
+                        if (!bgWords.isEmpty()) {
+                            final Word prev = bgWords.get(bgWords.size() - 1);
+                            final boolean cjk = isContinuousCjk(prev.text());
+                            if (!hasNewline || !cjk) {
+                                if (bgFullText.length() > 0 && bgFullText.charAt(bgFullText.length() - 1) != ' ') {
+                                    bgFullText.append(' ');
+                                }
+                                if (!prev.endsWithSpace()) {
+                                    bgWords.set(bgWords.size() - 1, new Word(
+                                            prev.startMs(), prev.endMs(),
+                                            prev.text(), prev.romaji(), true));
+                                }
+                            }
                         }
+                    } else {
+                        bgFullText.append(raw);
                     }
                 } else if (inTranslation) {
                     transBuf.append(raw);
                 } else if (inRoman) {
                     romanBuf.append(raw);
-                } else if (inWord) {
+                } else if (inWord && !inRubyContainer) {
                     wordBuf.append(raw);
-                } else if (!inBg) {
-                    // Formatting newlines (whitespace + \n) between word spans - skip entirely
-                    if (!formattingNewline) {
-                        fullText.append(raw);
-                        // Whitespace-only (non-newline) between word spans -> trailing space
-                        if (spaceBetweenWords && !words.isEmpty()) {
+                } else if (!inBg && !inRubyContainer) {
+                    if (isWhitespace) {
+                        if (!words.isEmpty()) {
                             final Word prev = words.get(words.size() - 1);
-                            if (!prev.endsWithSpace()) {
-                                words.set(words.size() - 1, new Word(
-                                        prev.startMs(), prev.endMs(),
-                                        prev.text(), prev.romaji(), true));
+                            final boolean cjk = isContinuousCjk(prev.text());
+                            if (!hasNewline || !cjk) {
+                                if (fullText.length() > 0 && fullText.charAt(fullText.length() - 1) != ' ') {
+                                    fullText.append(' ');
+                                }
+                                if (!prev.endsWithSpace()) {
+                                    words.set(words.size() - 1, new Word(
+                                            prev.startMs(), prev.endMs(),
+                                            prev.text(), prev.romaji(), true));
+                                }
                             }
                         }
+                    } else {
+                        fullText.append(raw);
                     }
                 }
             }
         }
 
-        final String lineText = normalizeText(fullText.toString());
-        if (lineText.trim().isEmpty()) {
+        final String rawLineText = normalizeText(fullText.toString());
+        String lineText = rawLineText;
+        if (lineText.indexOf(' ') < 0 && words.size() > 1 && !isContinuousCjk(words.get(0).text())) {
+            StringBuilder reconstructed = new StringBuilder();
+            for (int i = 0; i < words.size(); i++) {
+                final Word w = words.get(i);
+                if (i > 0) reconstructed.append(' ');
+                reconstructed.append(w.text());
+                final boolean shouldEndWithSpace = (i < words.size() - 1);
+                if (w.endsWithSpace() != shouldEndWithSpace) {
+                    words.set(i, new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), shouldEndWithSpace));
+                }
+            }
+            lineText = reconstructed.toString();
+        }
+
+        // A background vocal that is still open ends with its line.
+        if (inBg) {
+            flushBgLine(bgLines, bgWords, bgFullText, bgBeginMs, bgEndMs, pBegin, pEnd);
+            inBg = false;
+        }
+
+        if (lineText.trim().isEmpty() && bgLines.isEmpty()) {
             return null;
         }
 
-        // Infer time range from children when <p> has no timing
+        // The words give the line its range, so a syllable sung past the line's own end is not cut off.
         long effectiveBegin = pBegin;
         long effectiveEnd = pEnd;
-        if ((effectiveBegin == 0 || effectiveEnd == 0) && !words.isEmpty()) {
+        if (!words.isEmpty()) {
             long minStart = Long.MAX_VALUE;
             long maxEnd = 0;
             for (Word w : words) {
@@ -1120,9 +1161,12 @@ public final class TTMLParser {
                     effectiveEnd = maxEnd;
                 }
             }
+        } else if ((effectiveBegin == 0 || effectiveEnd == 0) && !bgLines.isEmpty()) {
+            effectiveBegin = bgLines.get(0).startTimeMs();
+            effectiveEnd = bgLines.get(bgLines.size() - 1).endTimeMs();
         }
 
-        if (effectiveBegin == 0 && effectiveEnd == 0 && words.isEmpty()) {
+        if (effectiveBegin == 0 && effectiveEnd == 0 && words.isEmpty() && bgLines.isEmpty()) {
             effectiveBegin = LyricsLine.NO_TIME;
             effectiveEnd = LyricsLine.NO_TIME;
         }
@@ -1145,6 +1189,11 @@ public final class TTMLParser {
             // Defensive: only reachable if an x-bg span was never closed.
             flushBgLine(bgLines, bgWords, bgFullText, bgBeginMs, bgEndMs, pBegin, pEnd);
         }
+        for (LyricsLine bg : bgLines) {
+            if (bg.endTimeMs() > effectiveEnd && effectiveEnd > 0) {
+                effectiveEnd = bg.endTimeMs();
+            }
+        }
 
         return new ParsedLine(effectiveBegin, effectiveEnd, lineText, words, bgLines,
                 bgAgentId,
@@ -1154,36 +1203,42 @@ public final class TTMLParser {
                 bgInlineRoma.isEmpty() ? null : bgInlineRoma);
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
-    private static void flushBgLine(List<LyricsLine> bgLines, List<Word> bgWords,
-                                    StringBuilder bgFullText, long bgBeginMs,
-                                    long bgEndMs, long pBegin, long pEnd) {
+    private static void flushBgLine(
+            List<LyricsLine> bgLines,
+            List<Word> bgWords,
+            StringBuilder bgFullText,
+            long bgBeginMs,
+            long bgEndMs,
+            long pBegin,
+            long pEnd) {
         if (bgWords.isEmpty() && bgFullText.length() == 0) {
             return;
         }
         String bgText = normalizeText(bgFullText.toString());
-        if (bgText.trim().isEmpty()) {
-            return;
-        }
-        bgText = bgText.replaceAll("^[(（]+", "").replaceAll("[)）]+$", "").trim();
-        if (bgText.isEmpty()) {
-            return;
-        }
-        stripBgWordParens(bgWords);
-
-        long bgStart = bgBeginMs > 0 ? bgBeginMs : pBegin;
-        long bgEnd = bgEndMs > 0 ? bgEndMs : pEnd;
-        if (bgBeginMs <= 0 && bgEndMs <= 0 && !bgWords.isEmpty()) {
-            long minStart = Long.MAX_VALUE;
-            long maxEnd = 0;
-            for (Word w : bgWords) {
-                if (w.startMs() > 0 && w.startMs() < minStart) minStart = w.startMs();
-                if (w.endMs() > 0 && w.endMs() > maxEnd) maxEnd = w.endMs();
+        if (!bgText.trim().isEmpty()) {
+            String cleanBgText = bgText.replaceAll("^[(（]+", "").replaceAll("[)）]+$", "").trim();
+            stripBgWordParens(bgWords);
+            if (cleanBgText.indexOf(' ') < 0 && bgWords.size() > 1 && !isContinuousCjk(bgWords.get(0).text())) {
+                StringBuilder reconstructed = new StringBuilder();
+                for (int i = 0; i < bgWords.size(); i++) {
+                    final Word w = bgWords.get(i);
+                    if (i > 0) reconstructed.append(' ');
+                    reconstructed.append(w.text());
+                    final boolean shouldEndWithSpace = (i < bgWords.size() - 1);
+                    if (w.endsWithSpace() != shouldEndWithSpace) {
+                        bgWords.set(i, new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), shouldEndWithSpace));
+                    }
+                }
+                cleanBgText = reconstructed.toString();
             }
-            if (minStart < Long.MAX_VALUE) bgStart = minStart;
-            if (maxEnd > 0) bgEnd = maxEnd;
+            if (!cleanBgText.isEmpty()) {
+                final long bgStart = bgBeginMs > 0 ? bgBeginMs : (bgWords.isEmpty() ? pBegin : bgWords.get(0).startMs());
+                final long bgEnd = bgEndMs > 0 ? bgEndMs : (bgWords.isEmpty() ? pEnd : bgWords.get(bgWords.size() - 1).endMs());
+                bgLines.add(new LyricsLine(bgStart, bgEnd, cleanBgText, new ArrayList<>(bgWords)));
+            }
         }
-        bgLines.add(new LyricsLine(bgStart, bgEnd, bgText, new ArrayList<>(bgWords)));
+        bgWords.clear();
+        bgFullText.setLength(0);
     }
 
     private static void stripBgWordParens(List<Word> bgWords) {
@@ -1203,6 +1258,19 @@ public final class TTMLParser {
             bgWords.set(lastIdx, new Word(last.startMs(), last.endMs(),
                     strippedLast, last.romaji(), false));
         }
+    }
+
+    public static boolean isContinuousCjk(@Nullable String s) {
+        if (s == null || s.isEmpty()) return false;
+        int cp = s.codePointBefore(s.length());
+        Character.UnicodeBlock b = Character.UnicodeBlock.of(cp);
+        return b == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+                || b == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+                || b == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
+                || b == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+                || b == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
+                || b == Character.UnicodeBlock.HIRAGANA
+                || b == Character.UnicodeBlock.KATAKANA;
     }
 
     private static void alignRomajiToWords(List<Word> words,
@@ -1279,10 +1347,22 @@ public final class TTMLParser {
 
     private static String buildLineRomaji(List<Word> words,
                                           @Nullable List<RomajiSyllable> sidecar) {
+        if (sidecar != null && !sidecar.isEmpty()) {
+            final StringBuilder sb = new StringBuilder();
+            for (RomajiSyllable s : sidecar) {
+                if (s.text().isEmpty()) continue;
+                sb.append(s.text());
+            }
+            final String result = sb.toString().trim();
+            if (!result.isEmpty() && LyricsRomanizer.isPurelyLatinScript(result)) {
+                return result;
+            }
+        }
+
         final StringBuilder perWord = new StringBuilder();
         boolean hasPerWord = false;
         for (Word w : words) {
-            if (w.romaji() != null && !w.romaji().isEmpty()) {
+            if (w.romaji() != null && !w.romaji().isEmpty() && LyricsRomanizer.isPurelyLatinScript(w.romaji())) {
                 hasPerWord = true;
                 break;
             }
@@ -1290,29 +1370,15 @@ public final class TTMLParser {
         if (hasPerWord) {
             for (Word w : words) {
                 String r = w.romaji();
-                if (r != null && !r.isEmpty()) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (perWord.length() > 0) perWord.append(' ');
+                if (r != null && !r.isEmpty() && LyricsRomanizer.isPurelyLatinScript(r)) {
                     perWord.append(r);
+                    if (w.endsWithSpace() && !r.endsWith(" ")) {
+                        perWord.append(' ');
+                    }
                 }
             }
-            //noinspection SizeReplaceableByIsEmpty
             if (perWord.length() > 0) {
-                return perWord.toString();
-            }
-        }
-
-        if (sidecar != null && !sidecar.isEmpty()) {
-            final StringBuilder sb = new StringBuilder();
-            for (RomajiSyllable s : sidecar) {
-                if (s.text().isEmpty()) continue;
-                //noinspection SizeReplaceableByIsEmpty
-                if (sb.length() > 0) sb.append(' ');
-                sb.append(s.text());
-            }
-            final String result = sb.toString().trim();
-            if (!result.isEmpty()) {
-                return result;
+                return perWord.toString().trim();
             }
         }
 
@@ -1354,9 +1420,10 @@ public final class TTMLParser {
             final StringBuilder sb = new StringBuilder();
             for (Word w : alignedWords) {
                 if (w.romaji() != null && !w.romaji().isEmpty()) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (sb.length() > 0) sb.append(' ');
                     sb.append(w.romaji());
+                    if (w.endsWithSpace() && !w.romaji().endsWith(" ")) {
+                        sb.append(' ');
+                    }
                 }
             }
             final String text = sb.toString().trim();
@@ -1367,7 +1434,8 @@ public final class TTMLParser {
                 langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
             }
             if (langLines.size() == mainIndex) {
-                langLines.add(new LyricsLine(LyricsLine.NO_TIME, text));
+                String lineContent = (!text.isEmpty() && LyricsRomanizer.isPurelyLatinScript(text)) ? text : "";
+                langLines.add(new LyricsLine(LyricsLine.NO_TIME, lineContent));
             }
         }
         padDerivedTo(romanizations, mainIndex + 1 + bgCount);

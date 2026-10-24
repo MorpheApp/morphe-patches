@@ -255,7 +255,10 @@ public class SponsorBlockViewController {
             canShowViewElements = (isWatchFullScreen || playerType == PlayerType.WATCH_WHILE_MAXIMIZED);
 
             NewSegmentLayout newSegmentLayout = newSegmentLayoutRef.get();
-            setNewSegmentLayoutMargins(newSegmentLayout, isWatchFullScreen);
+            if (newSegmentLayout != null) {
+                setLayoutMargins(newSegmentLayout, isWatchFullScreen,
+                        newSegmentLayout.defaultBottomMargin, newSegmentLayout.ctaBottomMargin);
+            }
             setViewVisibility(newSegmentLayout, newSegmentLayoutVisible);
 
             SkipSponsorButton skipHighlightButton = skipHighlightButtonRef.get();
@@ -270,11 +273,6 @@ public class SponsorBlockViewController {
         }
     }
 
-    private static void setNewSegmentLayoutMargins(@Nullable NewSegmentLayout layout, boolean fullScreen) {
-         if (layout != null) {
-            setLayoutMargins(layout, fullScreen, layout.defaultBottomMargin, layout.ctaBottomMargin);
-        }
-    }
     private static void setSkipButtonMargins(@Nullable SkipSponsorButton button, boolean fullScreen) {
         if (button != null) {
             setLayoutMargins(button, fullScreen, button.defaultBottomMargin, button.ctaBottomMargin);

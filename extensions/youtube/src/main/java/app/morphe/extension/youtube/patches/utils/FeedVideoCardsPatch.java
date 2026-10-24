@@ -131,15 +131,6 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
-     * @return The video of a card that was laid out, or null if it is not known.
-     */
-    @Nullable
-    public static String getCardVideoId(ComponentHost host) {
-        String videoId = cardVideoIds.get(host);
-        return PLAYLIST.equals(videoId) ? null : videoId;
-    }
-
-    /**
      * @return If the video plays in the feed, where the inline player shows its own buttons
      *         over the thumbnail, such as the mute and the captions buttons.
      */
@@ -155,7 +146,9 @@ public final class FeedVideoCardsPatch {
      * @return If what is drawn on the thumbnail of the card is hidden now.
      */
     public static boolean isCardPlayingInline(ComponentHost host) {
-        return isPlayingInline(getCardVideoId(host));
+        // The video of the card that was laid out, or null if it is not known.
+        String videoId = cardVideoIds.get(host);
+        return isPlayingInline(PLAYLIST.equals(videoId) ? null : videoId);
     }
 
     /**

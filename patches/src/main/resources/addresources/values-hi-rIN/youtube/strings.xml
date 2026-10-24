@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">फ़ीड थंबनेल लाइक count दिखाएं</string>
   <string name="morphe_ryd_feed_like_ratio_title">फ़ीड थंबनेल लाइक प्रतिशत दिखाएं</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">कमेंट्स खोजें</string>
+  <string name="morphe_search_comments_summary">केवल उन लोड किए गए कमेंट्स को दिखाने के लिए कमेंट्स में सर्च बटन पर टैप करें जिनमें खोजे गए सभी शब्द हों। किसी वाक्यांश को खोजने के लिए शब्दों को उद्धरण चिह्नों में रखें</string>
+  <string name="morphe_search_comments_dialog_title">कमेंट्स खोजें</string>
+  <string name="morphe_search_comments_hint">खोजने के लिए शब्द</string>
+  <string name="morphe_search_comments_search">खोजें</string>
+  <string name="morphe_search_comments_clear">साफ़ करें</string>
+  <string name="morphe_search_comments_applied">सॉर्ट क्रम बदलें या उन्हें खोजने के लिए कमेंट्स को फिर से खोलें</string>
+  <string name="morphe_search_comments_cleared">खोज हटा दी गई है। सभी कमेंट्स दिखाने के लिए सॉर्ट क्रम बदलें या कमेंट्स को फिर से खोलें</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीवी पर साइन इन करें\' पॉपअप बंद करें</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'कनेक्ट आपके डिवाइस\' पॉपअप अक्षम करें</string>
@@ -838,6 +847,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_narrow_navigation_buttons_summary">स्क्रॉल करते समय नेविगेशन बार को दृश्यमान रखता है</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">बिना लेबल वाले नेविगेशन बटनों को अक्षम करें</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">यदि YouTube उन्हें बिना लेबल भेजता है, तो नेविगेशन बटनों को लेबल के साथ दिखाता है</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">टूलबार नेविगेशन टैब अक्षम करें</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">यदि YouTube इसे होम के शीर्ष पर एक टैब में ले जाता है, तो नेविगेशन बार में सब्सक्रिप्शन दिखाएं</string>
   <string name="morphe_navigation_bar_animations_title">नेविगेशन बार एनिमेशन सक्षम करें</string>
   <string name="morphe_navigation_bar_animations_summary">स्टेटस बार को पूरी तरह से अपारदर्शी बनाता है</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ऑटो-हाइडिंग नेविगेशन बार को निष्क्रिय करें</string>

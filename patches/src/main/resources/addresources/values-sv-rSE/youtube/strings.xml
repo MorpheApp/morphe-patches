@@ -454,6 +454,15 @@ När en video med Ask-knappen har öppnats en gång fungerar funktionen med alla
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Visa antal gillningar för matlårstumnai</string>
   <string name="morphe_ryd_feed_like_ratio_title">Visa procentandel för gillningar i matlårstumnai</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Sök i kommentarer</string>
+  <string name="morphe_search_comments_summary">Tryck på sökknappen i kommentarerna för att endast visa de laddade kommentarerna som innehåller alla sökord. Sätt ord inom citattecken för att söka efter en fras</string>
+  <string name="morphe_search_comments_dialog_title">Sök i kommentarer</string>
+  <string name="morphe_search_comments_hint">Ord att söka efter</string>
+  <string name="morphe_search_comments_search">Sök</string>
+  <string name="morphe_search_comments_clear">Rensa</string>
+  <string name="morphe_search_comments_applied">Ändra sorteringsordningen eller öppna kommentarerna igen för att söka i dem</string>
+  <string name="morphe_search_comments_cleared">Sökningen har rensats. Ändra sorteringsordningen eller öppna kommentarerna igen för att visa alla kommentarer</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Inaktivera popup-fönster om att logga in på TV:n</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Inaktivera popup-fönstret \'Anslut dina enheter\'</string>
@@ -838,6 +847,8 @@ För att komma åt Inställningar aktiverar du Inställningsknappen via Allmänt
   <string name="morphe_narrow_navigation_buttons_summary">Minskar det horisontella avståndet mellan knappar</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Inaktivera navigeringsknappar utan etiketter</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Visar navigeringsknapparna med etiketter, om YouTube skickar dem utan etiketter</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Inaktivera navigeringsflikar i verktygsfältet</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Visar Prenumerationer i navigeringsfältet om YouTube flyttar det till en flik högst upp på Hem</string>
   <string name="morphe_navigation_bar_animations_title">Aktivera animeringar för navigeringsfältet</string>
   <string name="morphe_navigation_bar_animations_summary">Animerar övergångarna när du byter mellan flikar</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Inaktivera att navigeringsfältet döljs automatiskt</string>

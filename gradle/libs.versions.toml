@@ -2,15 +2,14 @@
 
 [versions]
 morphe-patcher = "2.0.0"
-morphe-patches-library = "2.0.0"
+morphe-patches-library = "2.0.2-dev.1"
 smali = "4220ae75f7"
 agp = "9.1.0"
-annotation = "1.10.0"
+annotation = "1.11.0"
 androidx-core = "1.18.0"    # 1.19.0+ requires upgrading android compile sdk
-androidx-javascriptengine = "1.1.0"
+androidx-javascriptengine = "1.1.1"
 collections4 = "4.6.0"
-gson = "2.14.0"
-lang3 = "3.20.0"
+gson = "2.15.0"
 guava = "33.6.0-jre"
 hiddenapi = "6.1"
 protobuf = "0.10.0"
@@ -27,7 +26,6 @@ androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 androidx-javascriptengine = { module = "androidx.javascriptengine:javascriptengine", version.ref = "androidx-javascriptengine" }
 collections4 = { module = "org.apache.commons:commons-collections4", version.ref = "collections4" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "lang3" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hiddenapi = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapi" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protoc" }

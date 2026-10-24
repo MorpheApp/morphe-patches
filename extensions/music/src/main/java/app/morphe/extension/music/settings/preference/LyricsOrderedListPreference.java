@@ -50,11 +50,11 @@ import app.morphe.extension.shared.ui.Dim;
 @SuppressWarnings({"unused", "deprecation"})
 public final class LyricsOrderedListPreference extends Preference {
 
-    /** Canonical provider ids, in the default priority order, shown in the list. */
     private static final List<String> PROVIDER_ORDER = Arrays.asList(
-            "YTMusic", "Captions", "LRCLIB", "QQ", "NetEase", "KuGou", "Luna",
-            "RMM", "PetitLyrics", "bLyrics", "BiniLyrics", "Unison", "SimpMusic", "AMLL",
-            "LunaBeat", "Lyricify", "Apple", "Musixmatch", "Spotify", "Deezer", "Genius");
+            "Apple", "BiniLyrics", "LrcRed", "bLyrics", "Lyricify", "Unison",
+            "PetitLyrics", "AMLL", "QQ", "SimpMusic", "KuGou", "Musixmatch",
+            "YTMusic", "LRCLIB", "NetEase", "Luna", "LunaBeat",
+            "Captions", "Spotify", "Deezer", "RMM", "Genius");
 
     /** Friendlier labels for display; ids not present here are shown verbatim. */
     private static final Map<String, String> PROVIDER_LABELS = new HashMap<>();
@@ -70,6 +70,7 @@ public final class LyricsOrderedListPreference extends Preference {
         PROVIDER_LABELS.put("Spotify", "Spotify *");
         PROVIDER_LABELS.put("Deezer", "Deezer *");
         PROVIDER_LABELS.put("Genius", "Genius");
+        PROVIDER_LABELS.put("LrcRed", "lrc.red");
     }
 
     private static final Map<String, String> PROVIDER_URLS = new HashMap<>();
@@ -89,6 +90,7 @@ public final class LyricsOrderedListPreference extends Preference {
         PROVIDER_URLS.put("Lyricify", "https://lyricify.app/");
         PROVIDER_URLS.put("RMM", "https://rmmreviv.al/");
         PROVIDER_URLS.put("Genius", "https://genius.com/");
+        PROVIDER_URLS.put("LrcRed", "https://lrc.red/");
     }
 
     private static String providerLabel(String id) {

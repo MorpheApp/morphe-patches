@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,6 +24,7 @@ import app.morphe.extension.music.patches.downloads.LocalDownloadManager;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -44,7 +46,6 @@ public final class DownloadsPatch {
             "com.google.android.libraries.youtube.rendering.elements.sender_view";
     private static final int IGNORE_DOUBLE_CLICK_DURATION_MS = 1000;
 
-    private static volatile String cachedFlyoutVideoId = "";
     private static volatile String downloadButtonLabel = "";
 
     private static volatile long lastFlyoutDownloadTime;
@@ -98,17 +99,7 @@ public final class DownloadsPatch {
                 || Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
 
-    /**
-     * Downloads the track that is playing.
-     */
-    private static void startDownload(boolean externalDownloader) {
-        startDownload(VideoInformation.getVideoId(), externalDownloader);
-    }
-
     private static void startDownload(String videoId, boolean externalDownloader) {
-        cachedFlyoutVideoId = "";
-        // Do not clear download button label.
-
         if (!externalDownloader) {
             LocalDownloadManager.enqueue(videoId);
             return;
@@ -148,74 +139,6 @@ public final class DownloadsPatch {
     }
 
     /**
-     * Scans the raw bytes of the Command object looking for the specific
-     * Protobuf binary signature of an 11-byte String field.
-     */
-    private static String extractVideoIdFromCommand(ProtocolBufferFieldInterface commandObj) {
-        byte[] bytes = commandObj.toByteArray();
-        if (bytes == null) {
-            return null;
-        }
-
-        for (int i = 1, lastIndex = bytes.length - 11; i < lastIndex; i++) {
-            // Protobuf: field tag (wire type 2, length-delimited) followed by length 11
-            if (bytes[i] == 11 && (bytes[i - 1] & 0b00000111) == 2) {
-                if (isLikelyVideoId(bytes, i + 1) && !isBlacklisted(bytes, i + 1)) {
-                    return new String(bytes, i + 1, 11, StandardCharsets.US_ASCII);
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Checks if the 11 bytes at the given offset are a valid YouTube video ID character set.
-     */
-    private static boolean isLikelyVideoId(byte[] bytes, int offset) {
-        for (int i = 0; i < 11; i++) {
-            byte b = bytes[offset + i];
-            // YouTube video IDs consist of [A-Za-z0-9_-]
-            if (!((b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z')
-                    || (b >= '0' && b <= '9') || b == '_' || b == '-')) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Checks if the potential ID is blacklisted such as common Protobuf keys.
-     */
-    private static boolean isBlacklisted(byte[] bytes, int offset) {
-        return matchesIgnoreCase(bytes, offset, "yt_") ||
-                matchesIgnoreCase(bytes, offset, "video_") ||
-                containsIgnoreCase(bytes, offset, 11, "download") ||
-                containsIgnoreCase(bytes, offset, 11, "list_item") ||
-                containsIgnoreCase(bytes, offset, 11, "button");
-    }
-
-    private static boolean matchesIgnoreCase(byte[] bytes, int offset, String target) {
-        for (int i = 0, length = target.length(); i < length; i++) {
-            byte b = bytes[offset + i];
-            int lowerB = (b >= 'A' && b <= 'Z') ? (b + 32) : b;
-            if (lowerB != target.charAt(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    private static boolean containsIgnoreCase(byte[] bytes, int offset, int len, String target) {
-        for (int i = 0, lastIndex = len - target.length(); i <= lastIndex; i++) {
-            if (matchesIgnoreCase(bytes, offset + i, target)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Determines if the clicked view is inside a Dialog/BottomSheet by comparing
      * its Window root to the main Activity's Window root.
      */
@@ -235,19 +158,12 @@ public final class DownloadsPatch {
     /**
      * Injection point.
      */
-    public static boolean offlineVideoEndpointOnClick(ProtocolBufferFieldInterface endpoint,
-                                                       @Nullable Map<Object, Object> map) {
+    public static boolean offlineVideoEndpointOnClick(String videoId) {
         try {
             if (!isActionButtonOverridden()) {
                 return false;
             }
             Utils.verifyOnMainThread();
-
-            String videoId = endpoint == null ? null : extractVideoIdFromCommand(endpoint);
-            if (videoId == null || videoId.isEmpty()) {
-                videoId = VideoInformation.getVideoId();
-            }
-            if (videoId.isEmpty()) return false;
 
             long now = System.currentTimeMillis();
             if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return true;
@@ -263,39 +179,23 @@ public final class DownloadsPatch {
     /**
      * The label is the localized download text litho gave us, so no hard coded language is needed.
      */
-    private static boolean isDownloadSender(@Nullable Map<Object, Object> map) {
+    private static boolean isPlayerDownloadButton(@Nullable Map<Object, Object> map) {
         if (map == null || downloadButtonLabel.isEmpty()
                 || !(map.get(ELEMENTS_SENDER_VIEW) instanceof ViewGroup senderViewGroup)) {
             return false;
         }
         CharSequence description = senderViewGroup.getContentDescription();
-        if (description == null) return false;
+        if (description == null || description.length() == 0) return false;
 
         String value = description.toString().toLowerCase(Locale.ROOT);
         String label = downloadButtonLabel.toLowerCase(Locale.ROOT);
-        return value.contains(label) || label.contains(value);
-    }
+        if (!value.contains(label) && !label.contains(value)) return false;
 
-    public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
-        try {
-            if (!isActionButtonOverridden()
-                    || downloadButtonLabel.isEmpty() || map == null) {
-                return false;
-            }
-            Utils.verifyOnMainThread();
-
-            if (isDownloadSender(map)) {
-                final long now = System.currentTimeMillis();
-                if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
-                    return true;
-                }
-                lastMainPlayerDownloadTime = now;
-
-                startDownload(!inAppDownloads());
-                return true;
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "inAppDownloadButtonOnClick failure", ex);
+        int actionBarId = ResourceUtils.getIdIdentifier("video_action_bar");
+        View view = senderViewGroup;
+        while (view.getParent() instanceof View parent) {
+            if (parent.getId() == actionBarId) return true;
+            view = parent;
         }
         return false;
     }
@@ -311,8 +211,8 @@ public final class DownloadsPatch {
             }
             Utils.verifyOnMainThread();
 
+            byte[] commandBytes = p1.toByteArray();
             if (inAppDownloads()) {
-                byte[] commandBytes = p1.toByteArray();
                 if (commandBytes != null && isOfflineBrowseCommand(commandBytes)) {
                     openLocalDownloads();
                     // The local screen is opened on top of the stock one rather than in place of
@@ -322,71 +222,46 @@ public final class DownloadsPatch {
                 }
             }
 
-            if (inAppDownloadButtonOnClick(map)) {
-                Logger.printDebug(() -> "inAppDownloadButtonOnClicked");
-                cachedFlyoutVideoId = "";
+            Object viewObj = map.get(ELEMENTS_SENDER_VIEW);
+            final boolean inDialog = isViewInsideDialog(viewObj);
+            // Song menus in search results, playlists and the queue share the player's Download label.
+            // Only the player action bar button should use the playing song's ID.
+            if (!inDialog && isPlayerDownloadButton(map)) {
+                if (!isActionButtonOverridden()) return false;
+
+                String videoId = VideoInformation.getVideoId();
+                if (videoId == null || videoId.isEmpty()) return false;
+
+                final long now = System.currentTimeMillis();
+                if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
+                    return true;
+                }
+                lastMainPlayerDownloadTime = now;
+                startDownload(videoId, !inAppDownloads());
                 return true;
             }
 
-            String p1String = p1.toString();
-            Logger.printDebug(() -> "commandResolverOnClick: " + p1String);
-
-            final boolean isMenuOpen = p1String.contains("[98150882]");
-            if (isMenuOpen) {
-                Logger.printDebug(() -> "Flyout isMenuOpen");
-                String extractedId = extractVideoIdFromCommand(p1);
-                if (extractedId != null) {
-                    cachedFlyoutVideoId = extractedId;
-                    Logger.printDebug(() -> "Found flyout isMenuOpen videoId: " + extractedId);
-                } else {
-                    cachedFlyoutVideoId = "";
-                }
-                return false;
-            }
-
-            final boolean isDownloadClick = Utils.containsAny(p1String,
-                    "[133724106]", "[443434441]");
-            if (isDownloadClick) {
-                Object viewObj = map.get(ELEMENTS_SENDER_VIEW);
-
+            String downloadParams = new ProtoMessage(commandBytes)
+                    .messageField(133724106).stringField(1);
+            if (!downloadParams.isEmpty()) {
                 if (viewObj == null) {
                     Logger.printDebug(() -> "Ignored programmatic download click (no sender_view).");
                     return false;
                 }
 
-                if (viewObj instanceof ViewGroup senderViewGroup) {
-                    CharSequence cd = senderViewGroup.getContentDescription();
-                    if (cd != null && !downloadButtonLabel.isEmpty()) {
-                        String cdLower = cd.toString().toLowerCase(Locale.ROOT);
-                        String labelLower = downloadButtonLabel.toLowerCase(Locale.ROOT);
-
-                        if (!cdLower.contains(labelLower) && !labelLower.contains(cdLower)) {
-                            Logger.printDebug(() -> "Ignored false positive UI click (Content description mismatch).");
-                            return false;
-                        }
-                    }
-                }
-
                 Logger.printDebug(() -> "Flyout isDownloadClick");
-                final long now = System.currentTimeMillis();
-                if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
-                    return true;
-                }
+                // Field 4 contains the video ID selected by this Download command.
+                // The map's endpoint.tag entry can still refer to a previously opened player menu.
+                String targetId = new ProtoMessage(Base64.decode(
+                        Uri.decode(downloadParams), Base64.URL_SAFE)).stringField(4);
 
-                final boolean inDialog = isViewInsideDialog(viewObj);
-                if (!inDialog && !isActionButtonOverridden() && isDownloadSender(map)) {
-                    // The Download button of the player, which only the download mode replaces.
-                    return false;
-                }
-
-                String targetId = extractVideoIdFromCommand(p1);
-
-                if (targetId == null && inDialog) {
-                    targetId = cachedFlyoutVideoId;
-                    Logger.printDebug(() -> "Using flyout isDownloadClick videoId: " + cachedFlyoutVideoId);
-                }
-
-                if (targetId != null && !targetId.isEmpty()) {
+                if (!targetId.isEmpty()) {
+                    // The song menu stays open after Download, so repeated taps can repeat the request.
+                    // Keep this timer separate from the player button so a menu download of another song is not blocked.
+                    final long now = System.currentTimeMillis();
+                    if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
+                        return true;
+                    }
                     lastFlyoutDownloadTime = now;
                     final String flyoutId = targetId;
                     Logger.printDebug(() -> "Flyout download of " + flyoutId
@@ -394,18 +269,9 @@ public final class DownloadsPatch {
                     startDownload(targetId, flyoutMenuUsesExternalDownloader());
                     return true;
 
-                } else if (inDialog) {
-                    lastFlyoutDownloadTime = now;
-                    // The flyout of a queue row carries no id either, so this can only be
-                    // the track that is playing.
-                    Logger.printDebug(() -> "Now Playing Download Intercepted via Window Check.");
-                    startDownload(flyoutMenuUsesExternalDownloader());
-                    return true;
-
                 } else {
-                    // A download click with no video id is a whole album or playlist, which the
-                    // app only offers with Premium, so the stock UI handles it.
-                    Logger.printDebug(() -> "Playlist Download detected via Window Check. Falling back to native UI");
+                    // Album and playlist commands have no video ID in field 4.
+                    // Let YouTube Music handle them without consuming the song download timer.
                     return false;
                 }
             }

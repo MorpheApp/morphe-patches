@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -92,7 +93,8 @@ public final class DeezerProvider extends ScoredSongProvider {
                 Lyrics lyrics = fetchLyricsByTrackId(trackId, arl);
                 if (lyrics != null) {
                     String title = item.optString("title", "");
-                    String artist = artistName(item);
+                    JSONObject artistObj = item.optJSONObject("artist");
+                    String artist = artistObj != null ? artistObj.optString("name", "") : "";
                     long durationSec = item.optInt("duration", 0);
                     int score = LyricsRequests.scoreLyricsCandidate(
                             title, artist, durationSec, lyrics, track);
@@ -105,11 +107,6 @@ public final class DeezerProvider extends ScoredSongProvider {
 
         scored.sort((a, b) -> Integer.compare(b.score(), a.score()));
         return scored;
-    }
-
-    private static String artistName(JSONObject item) {
-        JSONObject artistObj = item.optJSONObject("artist");
-        return artistObj != null ? artistObj.optString("name", "") : "";
     }
 
     private static int scoreCandidate(JSONObject item, TrackInfo track) {
@@ -353,6 +350,8 @@ public final class DeezerProvider extends ScoredSongProvider {
         }
 
         if (lines.isEmpty()) return null;
+
+        LRCParser.fillEstimatedEnds(lines);
 
         String sourceUrl = "https://www.deezer.com/track/" + trackId;
         return new Lyrics(lines, name(), true, null, null, null, creditLines,

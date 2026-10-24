@@ -454,6 +454,15 @@ Sau khi mở một video có nút Ask một lần, tính năng này hoạt độ
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Hiển thị số lượng thích của ảnh bìa nguồn cấp</string>
   <string name="morphe_ryd_feed_like_ratio_title">Hiển thị tỷ lệ phần trăm thích của ảnh bìa nguồn cấp</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Tìm kiếm bình luận</string>
+  <string name="morphe_search_comments_summary">Nhấn nút tìm kiếm trong phần bình luận để chỉ hiển thị các bình luận đã tải có chứa tất cả các từ tìm kiếm. Đặt các từ trong dấu ngoặc kép để tìm kiếm một cụm từ</string>
+  <string name="morphe_search_comments_dialog_title">Tìm kiếm bình luận</string>
+  <string name="morphe_search_comments_hint">Từ cần tìm kiếm</string>
+  <string name="morphe_search_comments_search">Tìm kiếm</string>
+  <string name="morphe_search_comments_clear">Xóa</string>
+  <string name="morphe_search_comments_applied">Thay đổi thứ tự sắp xếp hoặc mở lại phần bình luận để tìm kiếm chúng</string>
+  <string name="morphe_search_comments_cleared">Đã xóa tìm kiếm. Thay đổi thứ tự sắp xếp hoặc mở lại phần bình luận để hiển thị tất cả bình luận</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Tắt cửa sổ \"Đăng nhập vào TV\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Tắt cửa sổ \"Kết nối thiết bị của bạn\"</string>
@@ -838,6 +847,8 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_narrow_navigation_buttons_summary">Giảm khoảng cách ngang giữa các nút</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Tắt các nút điều hướng không có nhãn</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Hiển thị các nút điều hướng có nhãn, nếu YouTube gửi chúng không có nhãn</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Vô hiệu hóa các tab điều hướng trên thanh công cụ</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Hiển thị Mục đăng ký trong thanh điều hướng, nếu YouTube chuyển nó thành một tab ở đầu Trang chủ</string>
   <string name="morphe_navigation_bar_animations_title">Bật hiệu ứng thanh điều hướng</string>
   <string name="morphe_navigation_bar_animations_summary">Tạo hoạt ảnh khi chuyển tab</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Tắt tự động ẩn thanh điều hướng</string>

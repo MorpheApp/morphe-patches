@@ -47,10 +47,6 @@ public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
             this.id = id;
             this.isBrowseId = isBrowseId;
         }
-
-        private boolean isBrowseId() {
-            return TRUE.equals(isBrowseId);
-        }
     }
 
     private static final String SETTINGS_CLASS = "com.google.android.apps.youtube.music.settings.SettingsCompatActivity";
@@ -102,7 +98,7 @@ public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
         }
 
         StartPage startPage = Settings.CHANGE_START_PAGE.get();
-        return processBrowseId(original, startPage.isBrowseId(), startPage.id, startPage.name());
+        return processBrowseId(original, TRUE.equals(startPage.isBrowseId), startPage.id, startPage.name());
     }
 
     public static void overrideIntentActionOnCreate(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {

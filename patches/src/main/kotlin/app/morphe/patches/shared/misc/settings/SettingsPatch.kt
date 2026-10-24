@@ -4,6 +4,7 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.layout.branding.addLicensePatch
@@ -16,7 +17,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.insertFirst
-import app.morphe.util.returnEarly
 import org.w3c.dom.Node
 
 const val MORPHE_SETTINGS_INTENT = "morphe_settings_intent"

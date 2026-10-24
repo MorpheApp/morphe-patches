@@ -14,11 +14,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getMutableMethod
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.matchAllMethodIndicesForEach
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method

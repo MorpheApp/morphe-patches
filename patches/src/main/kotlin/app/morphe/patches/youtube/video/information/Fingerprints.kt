@@ -70,11 +70,10 @@ internal fun getChannelIdFingerprint(playerResponseType: String) = object : Fing
             definingClass = playerResponseType,
             returnType = "Z"
         ),
-        // Channel id.
+        // Channel id. 21.17 places the live stream check far before it.
         methodCall(
             definingClass = playerResponseType,
-            returnType = "Ljava/lang/String;",
-            location = MatchAfterWithin(30)
+            returnType = "Ljava/lang/String;"
         ),
         string(
             string = "com.google.android.apps.youtube.mdx.watch.LAST_MEALBAR_PROMOTED_LIVE_FEED_CHANNELS",

@@ -86,15 +86,28 @@ internal object MiniplayerDragAndDropFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.38+ also read the animated expand feature flag here, 21.30 to 21.35 do not.
+ */
 internal object MiniplayerAnimatedExpandFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I"),
     filters = listOf(
         opcode(opcode = Opcode.IF_NE),
-        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "L",
+            location = MatchAfterImmediately()
+        ),
         opcode(opcode = Opcode.MOVE, location = MatchAfterWithin(7)),
-        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately())
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "L",
+            location = MatchAfterWithin(7)
+        )
     )
 )
 
@@ -406,11 +419,43 @@ internal object MiniplayerSetIconsLegacyFingerprint : Fingerprint(
 )
 
 /**
- * 21.42+
+ * 21.43+
+ *
+ * Matches the resume (Continue watching) check of the show miniplayer command.
+ */
+internal object ShowMiniplayerCommandFingerprint: Fingerprint(
+    classFingerprint = Fingerprint(
+        filters = listOf(
+            literal(164817L),
+            literal(121253L)
+        )
+    ),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "L", "Ljava/util/Map;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            definingClass = "this",
+            returnType = "Z"
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT,
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.IF_EQZ,
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * 21.42.
  *
  * Matches the resume (Continue watching) flag check of the show miniplayer command.
  */
-internal object ShowMiniplayerCommandFingerprint: Fingerprint(
+internal object ShowMiniplayerCommandLegacy2142Fingerprint: Fingerprint(
     classFingerprint = Fingerprint(
         filters = listOf(
             literal(164817L),

@@ -452,6 +452,15 @@ Efter at en video med Ask-knappen er åbnet én gang, fungerer funktionen med al
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Vis antal likes på feed-tommbilledet</string>
   <string name="morphe_ryd_feed_like_ratio_title">Vis like-procent for feed-tommbilledet</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Søg i kommentarer</string>
+  <string name="morphe_search_comments_summary">Tryk på søgeknappen i kommentarerne for kun at vise de indlæste kommentarer, der indeholder alle de søgte ord. Sæt ord i citationstegn for at søge efter en frase</string>
+  <string name="morphe_search_comments_dialog_title">Søg i kommentarer</string>
+  <string name="morphe_search_comments_hint">Ord der skal søges efter</string>
+  <string name="morphe_search_comments_search">Søg</string>
+  <string name="morphe_search_comments_clear">Ryd</string>
+  <string name="morphe_search_comments_applied">Skift sorteringsrækkefølgen eller åbn kommentarerne igen for at søge i dem</string>
+  <string name="morphe_search_comments_cleared">Søgning ryddet. Skift sorteringsrækkefølgen eller åbn kommentarerne igen for at vise alle kommentarer</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiver \'Log ind på TV\' popup</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Deaktiver pop op-vinduet \'Tilslut dine enheder\'</string>
@@ -834,6 +843,8 @@ For at få adgang til Indstillinger skal du aktivere indstillingsknappen via Gen
   <string name="morphe_narrow_navigation_buttons_summary">Reducerer den vandrette afstand mellem knapperne</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Deaktiver navigationsknapper uden etiketter</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Viser navigationsknapperne med etiketter, hvis YouTube sender dem uden etiketter</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Deaktiver navigationstabs i værktøjslinjen</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Viser abonnementer i navigationslinjen, hvis YouTube flytter dem til en fane øverst på Hjem</string>
   <string name="morphe_navigation_bar_animations_title">Aktivér animationer i navigationslinjen</string>
   <string name="morphe_navigation_bar_animations_summary">Animerer overgange, når der skiftes mellem faner</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjuling af navigationslinjen</string>

@@ -600,7 +600,11 @@ public final class LyricsPanelInstaller {
                     || descLower.contains(titleLower)
                     || descLower.contains("lyric");
             if (matches) {
-                enableAndClick(view, desc);
+                view.setEnabled(true);
+                view.setClickable(true);
+                view.setAlpha(1.0f);
+                Logger.printDebug(() -> "Enabling lyrics button: " + view.getClass().getSimpleName()
+                        + " content description: '" + desc + "'");
                 matched = true;
             }
         }
@@ -612,13 +616,5 @@ public final class LyricsPanelInstaller {
             }
         }
         return matched;
-    }
-
-    private static void enableAndClick(View view, String desc) {
-        view.setEnabled(true);
-        view.setClickable(true);
-        view.setAlpha(1.0f);
-        Logger.printDebug(() -> "Enabling lyrics button: " + view.getClass().getSimpleName()
-                + " content description: '" + desc + "'");
     }
 }

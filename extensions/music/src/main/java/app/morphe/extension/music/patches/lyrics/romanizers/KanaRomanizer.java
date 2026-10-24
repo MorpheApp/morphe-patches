@@ -70,13 +70,15 @@ public final class KanaRomanizer {
         while (i < kana.length()) {
             char c = katakana(kana.charAt(i));
 
-            if (isSokuon(c)) {
+            // Small tsu (sokuon).
+            if (c == 0x3063 || c == 0x30C3) {
 
                 geminate = true;
                 i++;
                 continue;
             }
-            if (isProlonged(c)) {
+            // Prolonged sound mark.
+            if (c == 0x30FC || c == 0x2014) {
                 repeatVowel(out);
                 i++;
                 continue;
@@ -187,14 +189,6 @@ public final class KanaRomanizer {
             default:
                 return "o";
         }
-    }
-
-    private static boolean isSokuon(char c) {
-        return c == 0x3063 || c == 0x30C3;
-    }
-
-    private static boolean isProlonged(char c) {
-        return c == 0x30FC || c == 0x2014;
     }
 
     private static boolean isN(char c) {

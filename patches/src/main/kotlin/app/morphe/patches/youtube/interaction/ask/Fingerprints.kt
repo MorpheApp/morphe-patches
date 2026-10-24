@@ -79,10 +79,10 @@ internal object MenuBottomSheetFragmentFactoryFingerprint : Fingerprint(
 
 /**
  * Creates the row of a menu item of the menu bottom sheet. The parameter is the menu item.
+ * It is protected in some targets, such as 21.21 and 21.30.
  */
 internal object MenuBottomSheetCreateRowFingerprint : Fingerprint(
     classFingerprint = MenuBottomSheetFragmentFactoryFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Lj\$/util/Optional;",
     parameters = listOf("L")
 )

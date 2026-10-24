@@ -276,7 +276,7 @@ public class IconListPreference extends CustomDialogListPreference {
                         setSummary(originalEntries[position]);
                     }
                 }
-                adapter.setSelectedValue(selected);
+                adapter.selectedValue = selected;
                 adapter.notifyDataSetChanged();
             }
             clearHighlightedEntriesForDialog();
@@ -372,10 +372,6 @@ public class IconListPreference extends CustomDialogListPreference {
             }
 
             return view;
-        }
-
-        public void setSelectedValue(String value) {
-            this.selectedValue = value;
         }
     }
 }

@@ -454,6 +454,15 @@ Nakon što se jednom otupi video sa dugmetom Ask, funkcija radi sa svim videima,
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Prikaži broj lajkova na smanjenoj slici feed-a</string>
   <string name="morphe_ryd_feed_like_ratio_title">Prikaži procenat lajkova na smanjenoj slici feed-a</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Pretraži komentare</string>
+  <string name="morphe_search_comments_summary">Dodirnite dugme za pretragu u komentarima da biste prikazali samo učitane komentare koji sadrže sve pretražene reči. Stavite reči pod navodnike da biste pretražili frazu</string>
+  <string name="morphe_search_comments_dialog_title">Pretraži komentare</string>
+  <string name="morphe_search_comments_hint">Reči za pretragu</string>
+  <string name="morphe_search_comments_search">Pretraži</string>
+  <string name="morphe_search_comments_clear">Obriši</string>
+  <string name="morphe_search_comments_applied">Promenite redosled sortiranja ili ponovo otvorite komentare da biste ih pretražili</string>
+  <string name="morphe_search_comments_cleared">Pretraga je obrisana. Promenite redosled sortiranja ili ponovo otvorite komentare da biste prikazali sve komentare</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogući iskačući prozor „Prijava na TV”</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Onemogućite skočni prozor \'Povežite svoje uređaje\'</string>
@@ -838,6 +847,8 @@ Da biste pristupili Podešavanjima, omogućite dugme Podešavanja putem General 
   <string name="morphe_narrow_navigation_buttons_summary">Smanji horizontalni razmak između dugmadi</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Onemogući navigaciona dugmad bez oznaka</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Prikazuje navigaciona dugmad sa oznakama, ako ih YouTube pošalje bez oznaka</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Onemogući navigacione kartice u alatnoj traci</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Prikazuje Preplate u navigacionoj traci, ako YouTube to premesti u karticu na vrhu Početne stranice</string>
   <string name="morphe_navigation_bar_animations_title">Omogući animacije navigacione trake</string>
   <string name="morphe_navigation_bar_animations_summary">Animira prelaz prilikom prelaska između kartica</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Onemogući automatsko skrivanje navigacione trake</string>

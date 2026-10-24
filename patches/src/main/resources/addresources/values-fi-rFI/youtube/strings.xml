@@ -454,6 +454,15 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Näytä syötteen pikkukuvan tykkäysmäärä</string>
   <string name="morphe_ryd_feed_like_ratio_title">Näytä syötteen pikkukuvan tykkäysprosentti</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Hae kommenteista</string>
+  <string name="morphe_search_comments_summary">Napauta kommenttien haku-painiketta näyttääksesi vain ladatut kommentit, jotka sisältävät kaikki hakusanat. Merkitse sanat lainausmerkeillä hakeaksesi tiettyä fraasia</string>
+  <string name="morphe_search_comments_dialog_title">Hae kommenteista</string>
+  <string name="morphe_search_comments_hint">Hakusanat</string>
+  <string name="morphe_search_comments_search">Haku</string>
+  <string name="morphe_search_comments_clear">Tyhjennä</string>
+  <string name="morphe_search_comments_applied">Muuta järjestys tai avaa kommentit uudelleen hakeaksesi niistä</string>
+  <string name="morphe_search_comments_cleared">Haku tyhjennetty. Muuta järjestys tai avaa kommentit uudelleen näyttääksesi kaikki kommentit</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Poista käytöstä Kirjaudu televisioon -ponnahdusikkuna</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Poista \'Yhdistä laitteesi\' ponnahdusikkuna käytöstä</string>
@@ -838,6 +847,8 @@ Avataksesi asetukset, ota käyttöön Asetukset-painike kohdasta Yleiset → Ty�
   <string name="morphe_narrow_navigation_buttons_summary">Kapeuttaa pystysuoraa väliä painikkeiden välillä</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Poista käytöstä navigointipainikkeet ilman tekstejä</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Näyttää navigointipainikkeet teksteillä, jos YouTube lähettää ne ilman tekstejä</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Poista työkalupalkin navigointivälilehdet käytöstä</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Näyttää Tilaukset navigointipalkissa, jos YouTube siirtää sen Etusivun yläreunan välilehdeen</string>
   <string name="morphe_navigation_bar_animations_title">Ota käyttöön navigaatiopalkin animaatiot</string>
   <string name="morphe_navigation_bar_animations_summary">Animoi siirtymät välilehtien välillä</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Poista automaattisen piilottamisen käytöstä navigointipalkissa</string>

@@ -47,14 +47,6 @@ class MorpheCreditsDialog extends AboutWebViewDialog {
 
     static boolean showVancedAsPastContributor = true;
 
-    private static List<MorpheAboutPreference.WebLink> getWorksLinksPrior() {
-        List<MorpheAboutPreference.WebLink> prior = new ArrayList<>(WORKS_LINKS_PRIOR);
-        if (showVancedAsPastContributor) {
-            prior.add(WORKS_VANCED);
-        }
-        return prior;
-    }
-
     private static String createDialogHtml() {
         StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart());
 
@@ -63,7 +55,11 @@ class MorpheCreditsDialog extends AboutWebViewDialog {
                 .append("</div></div>");
 
         appendContributors(html, str("morphe_settings_about_contributors_current"), WORKS_LINKS_CURRENT);
-        appendContributors(html, str("morphe_settings_about_contributors_prior"), getWorksLinksPrior());
+        List<MorpheAboutPreference.WebLink> prior = new ArrayList<>(WORKS_LINKS_PRIOR);
+        if (showVancedAsPastContributor) {
+            prior.add(WORKS_VANCED);
+        }
+        appendContributors(html, str("morphe_settings_about_contributors_prior"), prior);
 
         // In-app user-facing attribution of licenses and notices (Apache 2.0 criteria).
         html.append("<div class=\"section\"><div class=\"settings-group\">")

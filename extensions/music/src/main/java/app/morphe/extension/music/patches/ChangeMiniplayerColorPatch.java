@@ -63,7 +63,7 @@ public class ChangeMiniplayerColorPatch {
         }
 
         lastMiniplayerColor = color;
-        applyToNavigationBar(color);
+        if (Settings.CHANGE_NAVIGATION_BAR_COLOR.get()) postNavigationBarColor(color);
     }
 
     /**
@@ -94,11 +94,6 @@ public class ChangeMiniplayerColorPatch {
         dismissWindowUntilMs = SystemClock.uptimeMillis() + DISMISS_WINDOW_MS;
         final Integer defaultColor = defaultNavigationBarColor;
         if (defaultColor != null) postNavigationBarColor(defaultColor);
-    }
-
-    private static void applyToNavigationBar(int color) {
-        if (!Settings.CHANGE_NAVIGATION_BAR_COLOR.get()) return;
-        postNavigationBarColor(color);
     }
 
     private static void postNavigationBarColor(int color) {

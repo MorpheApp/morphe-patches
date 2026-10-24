@@ -436,8 +436,8 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_feed_watch_later_button_title">Taispeáin an cnaipe \'Féach níos déanaí\' ar mhionsamhla</string>
   <string name="morphe_feed_watch_later_button_summary">Tá cnaipe \'Féach níos déanaí\' le feiceáil ar mhionsamhla físeán sa fhotha. Má dhéanann tú sconna air agus é a choinneáil brúite, osclófar an rogha \'Sábháil chuig seinmliosta\'</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
-  <string name="morphe_ask_summarize_flyout_menu_title">Cuir mír Iarrtas sa roghchlár taobh</string>
-  <string name="morphe_ask_summarize_flyout_menu_summary">Cuireann sé mír achoimre físeáin leis an roghchlár taobh feidsiúil</string>
+  <string name="morphe_ask_summarize_flyout_menu_title">Cuir an mhír Fiafraigh leis an roghchlár aníos</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Cuireann sé mír achoimrithe físe leis an roghchlár aníos sa bhfotha</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Gan ach cuntas logáilte istigh i dtír ina bhfuil Iarrtas ar fáil is gá chun Iarrtas a úsáid.
 
@@ -447,13 +447,22 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <string name="morphe_ask_summarize_failed">Níorbh fhéidir Iarrtas a oscoinnt don fhíseán seo</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_unavailable">Níl Iarrtras ar fáil d’do chuntas nó d’do thír reatha</string>
+  <string name="morphe_ask_summarize_unavailable">Níl Ask ar fáil do do chuntas nó don tír ina bhfuil tú faoi láthair.</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Taispeáin líon na n-amharc ar mhionsamhlacha</string>
   <string name="morphe_feed_view_count_summary">Taispeántar líon na n-amharc ar fhíseáin sa fhotha ag bun na láimhe clé dá mionsamhla, seachas faoin teideal. I gcás físeáin áirithe, ar nós iad siúd atá i seilfeanna, d’fhéadfadh sé nach dtaispeánfar líon na n-amharc.</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Taispeáin líon na n-aonán ar mhionsamhail sa bhfotha</string>
   <string name="morphe_ryd_feed_like_ratio_title">Taispeáin mionsamhail beatha cosúil le céatadán</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Cuardaigh tráchtanna</string>
+  <string name="morphe_search_comments_summary">Tapáil ar an gcnaipe cuardaigh sna tráchtanna chun na tráchtanna luchtaithe atá ann ar féidir leo gach focal cuardaithe a bheith ann a thaispeáint. Cuir focail i gcomhrátaí chun frása a chuardach</string>
+  <string name="morphe_search_comments_dialog_title">Cuardaigh tráchtanna</string>
+  <string name="morphe_search_comments_hint">Focail le cuardach</string>
+  <string name="morphe_search_comments_search">Cuardaigh</string>
+  <string name="morphe_search_comments_clear">Glan</string>
+  <string name="morphe_search_comments_applied">Athraigh ord na sórtála nó oscail na tráchtanna arís chun iad a chuardach</string>
+  <string name="morphe_search_comments_cleared">Slánaitheadh an cuardaigh. Athraigh ord na sórtála nó oscail na tráchtanna arís chun gach trácht a thaispeáint</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Díchumasaigh aníos \'Sínigh isteach ar an Teilifís\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Díchumasaigh an preab ‘Ceangail do ghléasanna’</string>
@@ -838,6 +847,8 @@ Chun rochtain a fháil ar na Socruithe, cuir an cnaipe Socruithe ar chumas trí 
   <string name="morphe_narrow_navigation_buttons_summary">Laghdaíonn an spásáil chothrománach idir cnaipí</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Díchumasaigh cnaipí nascleanúna gan lipéid</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Taispeánann sé na cnaipí nascleanúna le lipéid, má sheolann YouTube iad gan lipéid</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Díchumasaigh tabanna nascleanúna toolbar</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Taispeánann Liostraí in ionad an barra nascleanúna, má bhogann YouTube é go tab ag barr an Phoist</string>
   <string name="morphe_navigation_bar_animations_title">Cumasaigh beochana barra nascleanúna</string>
   <string name="morphe_navigation_bar_animations_summary">Beochan aistrithe agus tú ag aistriú idir cluaisíní</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Díchumasaigh barra nascleanúna uathoibríoch-fholaigh</string>

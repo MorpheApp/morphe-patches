@@ -210,13 +210,10 @@ public final class CatalogParser {
         StringBuilder result = new StringBuilder();
         JSONArray runs = text.optJSONArray("runs");
         if (runs != null)
-            for (int i = 0; i < runs.length(); i++)
-                result.append(objectAt(runs, i).optString("text"));
+            for (int i = 0; i < runs.length(); i++) {
+                JSONObject run = runs.optJSONObject(i);
+                result.append(run == null ? "" : run.optString("text"));
+            }
         return result.toString();
-    }
-
-    private static JSONObject objectAt(JSONArray array, int index) {
-        JSONObject v = array.optJSONObject(index);
-        return v == null ? new JSONObject() : v;
     }
 }
