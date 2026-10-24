@@ -30,6 +30,7 @@ import java.util.function.Consumer;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -80,7 +81,9 @@ public final class LocalQueuePatch {
     private static volatile Consumer<String> metadataListener;
 
     public static boolean isEnabled() {
-        return Settings.LOCAL_QUEUE.get();
+        // Playback hooks are installed by Add to queue. A retained setting must not
+        // enable this queue when that patch is not included.
+        return AddToQueuePatch.isPatchIncluded() && Settings.QUEUE_TYPE.get() == QueueType.LOCAL;
     }
 
     public static void setListeners(Runnable onChange, Consumer<String> onMetadata) {

@@ -32,6 +32,7 @@ public class ChannelIdRequest {
     // Must be less than 5 seconds to ensure Android "App not responding" dialog does not show.
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 3 * 1000;
     private final Future<Pair<String, String>> future;
+    private volatile String videoTitle = "";
 
     private static final Map<String, ChannelIdRequest> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(50));
@@ -68,6 +69,12 @@ public class ChannelIdRequest {
                 videoId,
                 ChannelIdRequest::new
         );
+    }
+
+    /** Reuses an existing response without starting a request or waiting for it. */
+    public static String getVideoTitleIfAvailable(String videoId) {
+        ChannelIdRequest request = cache.get(videoId);
+        return request == null ? "" : request.videoTitle;
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
@@ -117,9 +124,13 @@ public class ChannelIdRequest {
     }
 
     @Nullable
-    private static Pair<String, String> fetch(String videoId) {
+    private Pair<String, String> fetch(String videoId) {
         JSONObject json = sendRequest(videoId);
         if (json != null) {
+            JSONObject videoDetails = json.optJSONObject("videoDetails");
+            if (videoDetails != null && videoId.equals(videoDetails.optString("videoId"))) {
+                videoTitle = videoDetails.optString("title");
+            }
             return parseResponse(json);
         }
         return null;

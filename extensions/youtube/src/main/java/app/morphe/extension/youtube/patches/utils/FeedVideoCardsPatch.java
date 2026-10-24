@@ -13,6 +13,7 @@ import android.content.ContextWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.TextView;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
@@ -371,8 +372,58 @@ public final class FeedVideoCardsPatch {
      * @return If the text is a duration, such as 4:05, or a badge such as the live badge.
      */
     public static boolean isVideoBadgeText(String text) {
-        return (text.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(text).find())
+        return isDurationText(text)
                 || BADGE_PATTERN.matcher(text).matches();
+    }
+
+    private static boolean isDurationText(String text) {
+        return text.length() <= MAX_DURATION_TEXT_LENGTH && DURATION_PATTERN.matcher(text).find();
+    }
+
+    /**
+     * Classify the actual tapped card without the optional text-to-video cache.
+     * Music-video cards have a duration even when their watch command starts a Mix.
+     * An intentional Mix/playlist card has no duration. Unknown layouts are left alone.
+     * Must be called on the main thread while the tap's source view is still mounted.
+     */
+    public static boolean isIndividualVideoTap(View sender) {
+        ViewParent parent = sender instanceof ComponentHost host ? host : sender.getParent();
+        while (parent instanceof View view && !(parent instanceof ComponentHost)) {
+            parent = view.getParent();
+        }
+        if (!(parent instanceof ComponentHost host)) {
+            return false;
+        }
+        ComponentHost root = findRootHost(host);
+        return isVideoShaped(root) && !hasHorizontalList(root) && !isInDialog(root)
+                && hasDuration(root);
+    }
+
+    private static boolean hasDuration(View view) {
+        if (view instanceof ComponentHost host) {
+            TextContent content = host.getTextContent();
+            if (content != null) {
+                for (CharSequence text : content.getTextItems()) {
+                    if (text != null && isDurationText(text.toString().trim())) {
+                        return true;
+                    }
+                }
+            }
+        } else if (view instanceof TextView textView) {
+            CharSequence text = textView.getText();
+            if (text != null && isDurationText(text.toString().trim())) {
+                return true;
+            }
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                View child = group.getChildAt(i);
+                if (child.getVisibility() == View.VISIBLE && hasDuration(child)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**

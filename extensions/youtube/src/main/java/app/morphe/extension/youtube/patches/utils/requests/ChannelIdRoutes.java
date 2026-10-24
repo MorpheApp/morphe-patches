@@ -63,6 +63,14 @@ public final class ChannelIdRoutes {
     }
 
     public static byte[] createBody(String videoId) {
+        return createBody("videoId", videoId);
+    }
+
+    public static byte[] createSearchBody(String query) {
+        return createBody("query", query);
+    }
+
+    private static byte[] createBody(String parameter, String value) {
         try {
             JSONObject context = getJsonObject();
 
@@ -71,7 +79,7 @@ public final class ChannelIdRoutes {
 
             innerTubeBody.put("contentCheckOk", true);
             innerTubeBody.put("racyCheckOk", true);
-            innerTubeBody.put("videoId", videoId);
+            innerTubeBody.put(parameter, value);
 
             return innerTubeBody.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {

@@ -1,0 +1,77 @@
+syntax = "proto2";
+
+package app.morphe.extension.youtube.innertube.queue;
+
+option java_package = "app.morphe.extension.youtube.innertube.queue";
+option java_outer_classname = "QueueCardRenderer";
+option optimize_for = LITE_RUNTIME;
+
+// Read-only subset of the existing video card model in YouTube 21.20.405.
+message Element {
+    optional ElementType type = 1;
+}
+
+message ElementType {
+    optional ComponentType component_type = 168777401;
+}
+
+message ComponentType {
+    optional CardModel model = 5;
+}
+
+message CardModel {
+    optional VideoWithContextModel video_with_context_model = 232954548;
+}
+
+message VideoWithContextModel {
+    optional VideoWithContextData video_with_context_data = 18;
+}
+
+message VideoWithContextData {
+    optional VideoData video_data = 1;
+    optional string accessibility_text = 2;
+}
+
+message VideoData {
+    optional CardThumbnail thumbnail = 1;
+    optional Avatar avatar = 3;
+    optional string drag_and_drop_url = 6;
+    optional LockupMetadata lockup_metadata = 21;
+}
+
+message CardThumbnail {
+    optional string timestamp_text = 2;
+}
+
+message Avatar {
+    optional string accessibility_text = 3;
+}
+
+message LockupMetadata {
+    optional LockupMetadataViewModel lockup_metadata_view_model = 8178;
+}
+
+message LockupMetadataViewModel {
+    optional AttributedText title = 1;
+    optional ContentMetadata metadata = 3;
+}
+
+message AttributedText {
+    optional string content = 1;
+}
+
+message ContentMetadata {
+    optional ContentMetadataViewModel content_metadata_view_model = 514549827;
+}
+
+message ContentMetadataViewModel {
+    repeated MetadataRow metadata_rows = 1;
+}
+
+message MetadataRow {
+    repeated MetadataPart metadata_parts = 1;
+}
+
+message MetadataPart {
+    optional AttributedText text = 2;
+}

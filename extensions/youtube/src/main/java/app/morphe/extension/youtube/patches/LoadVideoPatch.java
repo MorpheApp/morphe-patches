@@ -24,6 +24,7 @@ import java.util.Objects;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
+import app.morphe.extension.youtube.patches.queue.NativePlaylistQueuePatch;
 import app.morphe.extension.youtube.shared.PlayerType;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -103,12 +104,15 @@ public final class LoadVideoPatch {
      * Once the player is dismissed, the video of the feed below it can start playing in the feed.
      * The player opened next then plays that video instead, with a black screen and a page that never loads.
      * Playback in feeds is blocked until the player opens again.
+     * Opens that finish minimized can release the returned token once their player is accepted.
+     *
+     * @return the block generation, or zero if feed playback has not initialized.
      */
-    private static void blockInlinePlaybackUntilPlayerOpens() {
+    public static int blockInlinePlaybackUntilPlayerOpens() {
         InlinePlaybackInterface inlinePlaybackInterface = inlinePlaybackInterfaceRef.get();
         if (inlinePlaybackInterface == null) {
             Logger.printDebug(() -> "Cannot block playback in feeds, interface is not set");
-            return;
+            return 0;
         }
 
         if (!inlinePlaybackBlocked) {
@@ -124,6 +128,14 @@ public final class LoadVideoPatch {
                 unblockInlinePlayback();
             }
         }, INLINE_PLAYBACK_BLOCK_TIMEOUT_MILLISECONDS);
+        return blockId;
+    }
+
+    /** A completed or cancelled open must not release a newer operation's protection. */
+    public static void releaseInlinePlaybackBlock(int blockId) {
+        if (blockId != 0 && blockId == inlinePlaybackBlockId) {
+            unblockInlinePlayback();
+        }
     }
 
     private static void unblockInlinePlayback() {
@@ -162,6 +174,13 @@ public final class LoadVideoPatch {
             String videoId = VideoInformation.getStartingOrPlayingVideoId();
             String playlistId = VideoInformation.getPlaylistId();
             final long videoTime = VideoInformation.getVideoTime();
+            Runnable queueReload = NativePlaylistQueuePatch.isPatchIncluded()
+                    ? NativePlaylistQueuePatch.prepareVideoReload(videoId) : null;
+            if (queueReload != null) {
+                // A converted queue can retain its source playlist in the playing
+                // response. Reload only this video, not that replaced playlist.
+                playlistId = "";
+            }
             String parameterSeparator = "&";
             StringBuilder builder = new StringBuilder(videoId);
             if (!playlistId.isEmpty()) {
@@ -178,7 +197,7 @@ public final class LoadVideoPatch {
             String builderString = "https://www.youtube.com/watch?v=" + builder;
             Logger.printDebug(() -> "Opening: " + builderString);
 
-            openVideoIntent(builderString, true);
+            openVideoIntent(builderString, true, queueReload);
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to reload video", ex);
         }
@@ -194,6 +213,10 @@ public final class LoadVideoPatch {
     }
 
     public static void openVideoIntent(String url, boolean closeCurrentPlayerInstance) {
+        openVideoIntent(url, closeCurrentPlayerInstance, null);
+    }
+
+    private static void openVideoIntent(String url, boolean closeCurrentPlayerInstance, Runnable onDispatch) {
         int loadVideoDelay = 0;
 
         // Close the current player instance.
@@ -219,6 +242,7 @@ public final class LoadVideoPatch {
             Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(url));
             intent.setPackage(context.getPackageName());
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            if (onDispatch != null) onDispatch.run();
             context.startActivity(intent);
         }, loadVideoDelay);
     }

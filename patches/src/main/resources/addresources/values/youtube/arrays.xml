@@ -342,6 +342,31 @@
         <item>CARDS_WITH_ACTION_BUTTONS</item>
     </string-array>
 
+    <!-- layout.flyout.addToQueuePatch -->
+    <string-array name="morphe_queue_type_entries">
+        <item>@string/morphe_queue_type_entry_1</item>
+        <item>@string/morphe_queue_type_entry_2</item>
+        <item>@string/morphe_queue_type_entry_3</item>
+        <item>@string/morphe_queue_type_entry_4</item>
+    </string-array>
+    <string-array name="morphe_queue_type_entry_values">
+        <item>DEFAULT</item>
+        <item>NATIVE</item>
+        <item>MORPHE</item>
+        <item>LOCAL</item>
+    </string-array>
+    <!-- The native queue requires 21.16+. -->
+    <string-array name="morphe_queue_type_legacy_entries">
+        <item>@string/morphe_queue_type_entry_1</item>
+        <item>@string/morphe_queue_type_entry_3</item>
+        <item>@string/morphe_queue_type_entry_4</item>
+    </string-array>
+    <string-array name="morphe_queue_type_legacy_entry_values">
+        <item>DEFAULT</item>
+        <item>MORPHE</item>
+        <item>LOCAL</item>
+    </string-array>
+
     <!-- layout.captions.autoCaptionsPatch -->
     <string-array name="morphe_auto_captions_style_entries">
         <item>@string/morphe_auto_captions_style_entry_1</item>

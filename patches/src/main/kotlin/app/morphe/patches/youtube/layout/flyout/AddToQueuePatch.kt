@@ -11,14 +11,17 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.youtube.interaction.nativeplaylistqueue.nativePlaylistQueuePatch
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.loadvideo.loadVideoHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -38,7 +41,8 @@ private const val EXTENSION_LOCAL_QUEUE_CLASS =
 @Suppress("unused")
 val addToQueuePatch = bytecodePatch(
     name = "Add to queue",
-    description = "Overrides the feed flyout 'Play next in queue' with the Morphe video queue."
+    description = "Adds a video queue to the feed flyout menu, using either the Morphe queue " +
+            "or a native queue that uses YouTube's playlist interface."
 ) {
     dependsOn(
         flyoutPatch,
@@ -47,7 +51,8 @@ val addToQueuePatch = bytecodePatch(
         elementProtoParserHookPatch,
         authHookPatch,
         loadVideoHookPatch,
-        videoInformationPatch
+        videoInformationPatch,
+        nativePlaylistQueuePatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -55,8 +60,16 @@ val addToQueuePatch = bytecodePatch(
     execute {
         PreferenceScreen.FEED.addPreferences(
             noTitleUnsortedPreferenceCategory(
-                SwitchPreference("morphe_local_queue", summary = true),
-                SwitchPreference("morphe_queue_override_flyout_menu", summary = true),
+                // The native queue requires 21.16+.
+                if (is_21_15_or_greater) {
+                    ListPreference("morphe_queue_type")
+                } else {
+                    ListPreference(
+                        key = "morphe_queue_type",
+                        entriesKey = "morphe_queue_type_legacy_entries",
+                        entryValuesKey = "morphe_queue_type_legacy_entry_values"
+                    )
+                },
                 SwitchPreference("morphe_queue_add_flyout_menu", summary = true)
             )
         )

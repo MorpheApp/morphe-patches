@@ -642,14 +642,14 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_restore_summary">Queue is kept after restarting the app</string>
     <string name="morphe_swap_save_and_queue_actions_title">Swap Save and Queue actions</string>
     <string name="morphe_swap_save_and_queue_actions_summary">Tap for queue options, tap and hold to save to Watch later</string>
-    <string name="morphe_queue_override_flyout_menu_title">Override feed flyout queue button</string>
-    <string name="morphe_queue_override_flyout_menu_summary">Opens the Morphe queue instead of the YouTube queue</string>
+    <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
+    <string name="morphe_queue_type_title">Play next in queue type</string>
+    <string name="morphe_queue_type_entry_1">Default</string>
+    <string name="morphe_queue_type_entry_2">Native queue</string>
+    <string name="morphe_queue_type_entry_3">Morphe queue</string>
+    <string name="morphe_queue_type_entry_4">Morphe queue client side</string>
     <string name="morphe_queue_add_flyout_menu_title">Add feed flyout queue menu item</string>
     <string name="morphe_queue_add_flyout_menu_summary">Adds an additional flyout item. Enable this if \"Add to queue\" is not shown</string>
-    <string name="morphe_local_queue_title">Premium-style queue</string>
-    <string name="morphe_local_queue_summary">"Replaces the Morphe queue with one that lives on the device, plays through on its own, and can be reordered by dragging
-
-Info: The next queued video only starts while YouTube is on screen"</string>
     <string name="morphe_local_queue_sheet_title">Queue</string>
     <string name="morphe_local_queue_open">Queue (%s)</string>
     <string name="morphe_local_queue_clear">Clear all</string>
@@ -694,6 +694,17 @@ Info: The next queued video only starts while YouTube is on screen"</string>
     <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Remove and reload video</string>
     <string name="morphe_queue_manager_open_queue">Open queue</string>
     <string name="morphe_queue_manager_save_queue">Save queue to playlist</string>
+
+    <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+    <string name="morphe_native_playlist_queue_saved">Playlist saved</string>
+    <string name="morphe_native_playlist_queue_saved_to">Saved to %s</string>
+    <string name="morphe_native_playlist_queue_clear">Clear queue</string>
+    <string name="morphe_native_playlist_queue_cleared">Queue cleared</string>
+    <string name="morphe_native_playlist_queue_title">Queue</string>
+    <string name="morphe_native_playlist_queue_last">Play last in queue</string>
+    <string name="morphe_native_playlist_queue_next">Play next in queue</string>
+    <string name="morphe_native_playlist_queue_unavailable">YouTube could not display the queue.</string>
+    <string name="morphe_native_playlist_queue_not_ready">The queue is not ready for this video. Open the video player and try again.</string>
 
     <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
     <string name="morphe_open_channel_of_live_avatar_title">Open channel from live avatar</string>

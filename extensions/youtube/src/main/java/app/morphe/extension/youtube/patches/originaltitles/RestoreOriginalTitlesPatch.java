@@ -528,6 +528,8 @@ public final class RestoreOriginalTitlesPatch {
         if (!REPLACE_TITLES || videoId.isEmpty()) {
             return title;
         }
+        // A title reused from a parsed element can carry this patch's internal marker.
+        title = removeTitleMarker(title);
 
         // The title and the video id can be of different videos while the video changes.
         if (!isTranslatedTitle(title.trim(), videoId)) {
