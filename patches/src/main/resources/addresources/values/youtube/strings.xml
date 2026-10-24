@@ -468,6 +468,18 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_feed_watch_later_button_title">Show Watch later button on thumbnails</string>
     <string name="morphe_feed_watch_later_button_summary">A Watch later button is shown on the thumbnails of feed videos. Tapping and holding it opens Save to playlist</string>
 
+    <!-- interaction.postimages.postImageDownloadPatch -->
+    <string name="morphe_post_image_download_title">Download post images</string>
+    <string name="morphe_post_image_download_summary">A download button is shown next to the Share button of posts with images or GIFs, and a download item is added to their menu</string>
+    <string name="morphe_post_image_download_flyout">Download images</string>
+    <string name="morphe_post_image_download_flyout_single">Download image</string>
+    <string name="morphe_post_image_download_started">Downloading %d images…</string>
+    <string name="morphe_post_image_download_started_single">Downloading image…</string>
+    <string name="morphe_post_image_download_saved">%1$d images saved to Pictures/%2$s</string>
+    <string name="morphe_post_image_download_saved_single">Image saved to Pictures/%s</string>
+    <string name="morphe_post_image_download_failed">Could not download the image</string>
+    <string name="morphe_post_image_download_not_found">No image found in this post</string>
+
     <!-- interaction.ask.askFlyoutMenuPatch -->
     <string name="morphe_ask_summarize_flyout_menu_title">Add Ask item to flyout menu</string>
     <string name="morphe_ask_summarize_flyout_menu_summary">Adds a video summarize item to the feed flyout menu</string>
