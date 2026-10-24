@@ -19,7 +19,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.PlayerTypeEnumFingerprint
@@ -83,9 +83,10 @@ internal val captionsInPipPatch = bytecodePatch(
             }
         }
 
-        // Before 21.05, overlays are also given the player type, which can be picture-in-picture.
+        // Before 21.41, overlays are also given the player type, which can be picture-in-picture.
+        // 21.05+ only uses it depending on a server flag.
         // Show the captions overlay anyway.
-        if (!is_21_05_or_greater) {
+        if (!is_21_41_or_greater) {
             getPlayerTypeOverlayVisibilityFingerprint(PlayerTypeEnumFingerprint.originalClassDef.type)
                 .matchAll()
                 .forEach {
