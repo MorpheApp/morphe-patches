@@ -24,7 +24,8 @@ val lithoFilterPatch = sharedLithoFilterPatch(
     hookNonNativeBuffer = { !is_20_22_or_greater },
     // Flag was removed in 21.15+.
     overrideUpbFeatureFlag = { !is_21_15_or_greater },
-    useLegacyLithoFiltering = { !is_20_22_or_greater }
+    useLegacyLithoFiltering = { !is_20_22_or_greater },
+    removeFilteredListItems = true
 ) {
     dependsOn(
         sharedExtensionPatch,

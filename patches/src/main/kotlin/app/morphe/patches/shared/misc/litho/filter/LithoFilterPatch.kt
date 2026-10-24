@@ -17,6 +17,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -29,8 +30,11 @@ import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.returnEarly
+import app.morphe.patches.shared.misc.litho.context.ConversionContextToStringFingerprint
 import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
+import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findFieldFromToString
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -43,6 +47,11 @@ import java.lang.ref.WeakReference
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/components/LithoFilterPatch;"
 
 internal const val EXTENSION_FILTER = "[Lapp/morphe/extension/shared/patches/components/Filter;"
+
+private const val EXTENSION_LIST_ITEM_DECORATOR_INTERFACE =
+    $$"Lapp/morphe/extension/shared/patches/components/LithoFilterPatch$ListItemDecoratorInterface;"
+
+private const val COMMAND_EVENT_DATA_DECORATORS_PROPERTY = ", globalCommandEventDataDecoratorsInternal="
 
 // Registers used in extension helperMethod.
 private const val REGISTER_FILTER_CLASS = 0
@@ -108,6 +117,9 @@ fun addLithoFilter(classDescriptor: String) {
  *                            Evaluated lazily inside execute so version flags are already set.
  * @param overrideUpbFeatureFlag Whether to override the A/B feature flag that enables Upb-native
  *                               protobuf parsing (only present on older YouTube; absent in Music).
+ * @param removeFilteredListItems Whether to remove the items of the lists (such as the feed) whose
+ *                                whole element is filtered. Otherwise the grids, such as the feed
+ *                                of the tablet layout, show an empty cell in their place.
  * @param block Callback to add app-specific dependencies (sharedExtensionPatch, conversionContextPatch,
  *              versionCheckPatch, and any app-specific fixes).
  */
@@ -115,6 +127,7 @@ internal fun sharedLithoFilterPatch(
     hookNonNativeBuffer: () -> Boolean,
     overrideUpbFeatureFlag: () -> Boolean,
     useLegacyLithoFiltering: () -> Boolean,
+    removeFilteredListItems: Boolean,
     block: BytecodePatchBuilder.() -> Unit,
 ): BytecodePatch = bytecodePatch(
     description = "Hooks the method which parses the bytes into a ComponentContext to filter components."
@@ -306,6 +319,90 @@ internal fun sharedLithoFilterPatch(
                         const-string v$accessibilityIdRegister, ""
                         const-string v$accessibilityTextRegister, ""
                     """
+                )
+            }
+        }
+
+        // endregion
+
+
+        // region Remove the items of the lists whose whole element is filtered.
+
+        if (removeFilteredListItems) {
+            // Give the extension the decorators of the conversion context.
+            val decoratorsMethod = commandEventDataDecoratorsFingerprint(
+                ConversionContextToStringFingerprint.method
+                    .findFieldFromToString(COMMAND_EVENT_DATA_DECORATORS_PROPERTY)
+            ).method
+
+            conversionContextClassDef.methods.add(
+                ImmutableMethod(
+                    conversionContextClassDef.type,
+                    "patch_getCommandEventDataDecorators",
+                    listOf(),
+                    "Ljava/util/List;",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(2),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            invoke-virtual { p0 }, $decoratorsMethod
+                            move-result-object v0
+                            return-object v0
+                        """
+                    )
+                }
+            )
+
+            // Give the extension the item that the decorator holds.
+            CommandEventDataDecoratorFingerprint.let {
+                val dataType = it.instructionMatches.first()
+                    .instruction.getReference<MethodReference>()!!.definingClass
+                val itemField = mutableClassDefBy(dataType).fields.single { field ->
+                    field.type == "Ljava/lang/Object;"
+                }
+
+                mutableClassDefBy(
+                    it.instructionMatches.last().instruction.getReference<MethodReference>()!!.definingClass
+                ).apply {
+                    val dataField = fields.single { field -> field.type == dataType }
+
+                    interfaces.add(EXTENSION_LIST_ITEM_DECORATOR_INTERFACE)
+
+                    methods.add(
+                        ImmutableMethod(
+                            type,
+                            "patch_getListItem",
+                            listOf(),
+                            "Ljava/lang/Object;",
+                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                            null,
+                            null,
+                            MutableMethodImplementation(2),
+                        ).toMutable().apply {
+                            addInstructionsWithLabels(
+                                0,
+                                """
+                                    iget-object v0, p0, $dataField
+                                    if-eqz v0, :no_data
+                                    iget-object v0, v0, $itemField
+                                    :no_data
+                                    return-object v0
+                                """
+                            )
+                        }
+                    )
+                }
+            }
+
+            // Keep the observable lists, to remove the items from them.
+            ObservableListConstructorFingerprint.method.apply {
+                addInstruction(
+                    implementation!!.instructions.lastIndex,
+                    "invoke-static { p0 }, $EXTENSION_CLASS->addObservableList(Ljava/util/List;)V"
                 )
             }
         }

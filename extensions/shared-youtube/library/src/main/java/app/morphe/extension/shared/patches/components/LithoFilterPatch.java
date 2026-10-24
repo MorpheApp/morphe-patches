@@ -13,11 +13,15 @@ package app.morphe.extension.shared.patches.components;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
@@ -57,6 +61,14 @@ public final class LithoFilterPatch {
     }
 
     /**
+     * Interface added to the decorator that holds the item of a list, such as the feed.
+     */
+    public interface ListItemDecoratorInterface {
+        @Nullable
+        Object patch_getListItem();
+    }
+
+    /**
      * Placeholder for actual filters.
      */
     private static final class DummyFilter extends Filter { }
@@ -89,6 +101,17 @@ public final class LithoFilterPatch {
      * Used for 20.21 and lower.
      */
     private static final ThreadLocal<byte[]> bufferThreadLocal = new ThreadLocal<>();
+
+    /**
+     * Observable lists that hold the items of the lists, such as the feed.
+     * The lists use the equality of their content, so they are kept by reference instead of in a set.
+     */
+    private static final List<WeakReference<List<?>>> observableLists = new ArrayList<>();
+
+    /**
+     * Conversion context of the element that the calling thread is parsing.
+     */
+    private static final ThreadLocal<WeakReference<ContextInterface>> parsedElementContext = new ThreadLocal<>();
 
     private static final StringTrieSearch contextSearchTree = new StringTrieSearch();
     private static final StringTrieSearch pathSearchTree = new StringTrieSearch();
@@ -198,13 +221,110 @@ public final class LithoFilterPatch {
                     buffer, new BufferAsciiStrings(buffer));
             Logger.printDebug(() -> "Searching " + parameter);
 
-            return identifierSearchTree.matches(identifier, parameter)
-                    || pathSearchTree.matches(pathBuilder, parameter);
+            if (identifierSearchTree.matches(identifier, parameter)
+                    || pathSearchTree.matches(pathBuilder, parameter)) {
+                // The root component of the element, such as 'identifier|CellType|',
+                // means that the whole element is hidden.
+                final int identifierLength = identifier.length();
+                if (pathBuilder.length() > identifierLength + 1
+                        && pathBuilder.charAt(identifierLength) == '|'
+                        && pathBuilder.indexOf("|", identifierLength + 1) == pathBuilder.length() - 1
+                        && pathBuilder.indexOf(identifier) == 0) {
+                    removeListItem(contextInterface);
+                }
+                return true;
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "isFiltered failure", ex);
         }
 
         return false;
+    }
+
+    /**
+     * Injection point.
+     * Called when an observable list, which can hold the items of a list such as the feed, is created.
+     */
+    public static void addObservableList(List<?> list) {
+        synchronized (observableLists) {
+            // Remove the lists that no longer exist.
+            observableLists.removeIf(reference -> reference.get() == null);
+            observableLists.add(new WeakReference<>(list));
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called when the parsing of an element starts.
+     */
+    public static void setParsedElementContext(@Nullable ContextInterface contextInterface) {
+        parsedElementContext.set(contextInterface == null ? null : new WeakReference<>(contextInterface));
+    }
+
+    /**
+     * Injection point.
+     * Called when the element that is being parsed is hidden.
+     */
+    public static void removeParsedElementListItem() {
+        WeakReference<ContextInterface> reference = parsedElementContext.get();
+        ContextInterface contextInterface = reference == null ? null : reference.get();
+        if (contextInterface != null) {
+            removeListItem(contextInterface);
+        }
+    }
+
+    /**
+     * Called when the whole element is hidden.
+     * <p>
+     * Hiding an element replaces it with an empty component, but the item of the element stays
+     * in its list. The grids, such as the feed of the tablet layout, then show an empty cell
+     * in its place. To prevent this, the item is removed from the list.
+     */
+    private static void removeListItem(ContextInterface contextInterface) {
+        try {
+            List<?> decorators = contextInterface.patch_getCommandEventDataDecorators();
+            if (decorators == null) {
+                return;
+            }
+
+            for (Object decorator : decorators) {
+                if (!(decorator instanceof ListItemDecoratorInterface listItemDecorator)) {
+                    continue;
+                }
+
+                Object item = listItemDecorator.patch_getListItem();
+                if (item == null) {
+                    continue;
+                }
+
+                // The lists can only be changed on the main thread.
+                Utils.runOnMainThread(() -> {
+                    try {
+                        synchronized (observableLists) {
+                            Iterator<WeakReference<List<?>>> iterator = observableLists.iterator();
+                            while (iterator.hasNext()) {
+                                List<?> list = iterator.next().get();
+                                if (list == null) {
+                                    iterator.remove();
+                                    continue;
+                                }
+
+                                final int index = list.indexOf(item);
+                                if (index >= 0) {
+                                    list.remove(index);
+                                    Logger.printDebug(() -> "Removed list item of filtered element: " + item);
+                                    return;
+                                }
+                            }
+                        }
+                    } catch (Exception ex) {
+                        Logger.printException(() -> "removeListItem failure", ex);
+                    }
+                });
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "removeListItem failure", ex);
+        }
     }
 
     private static boolean useLegacyLithoFiltering() {

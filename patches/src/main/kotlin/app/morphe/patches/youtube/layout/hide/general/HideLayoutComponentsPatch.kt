@@ -25,6 +25,8 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
+import app.morphe.patches.shared.misc.litho.filter.EXTENSION_CLASS as LITHO_FILTER_EXTENSION_CLASS
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.shared.misc.proto.hookElement
@@ -425,14 +427,22 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     insertIndex,
                     """
                         invoke-static { $byteArrayParameter }, $LAYOUT_COMPONENTS_FILTER->filterMixPlaylists([B)Z
-                        move-result v$freeRegister 
+                        move-result v$freeRegister
                         if-eqz v$freeRegister, :show
+                        # The whole element is hidden, so its item is removed from the list (such as the feed).
+                        invoke-static { }, $LITHO_FILTER_EXTENSION_CLASS->removeParsedElementListItem()V
                         move-object v$returnEmptyComponentRegister, p1   # Required for 19.47
                         goto :return_empty_component
                         :show
                         nop
                     """,
                     ExternalLabel("return_empty_component", returnEmptyComponentInstruction),
+                )
+
+                // The conversion context parameter is reused before the filter is called.
+                addInstruction(
+                    0,
+                    "invoke-static/range { p2 .. p2 }, $LITHO_FILTER_EXTENSION_CLASS->setParsedElementContext($EXTENSION_CONTEXT_INTERFACE)V"
                 )
             }
         }

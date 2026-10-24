@@ -18,7 +18,8 @@ val lithoFilterPatch = sharedLithoFilterPatch(
     hookNonNativeBuffer = { false },
     // YT Music does not ship the Upb feature flag.
     overrideUpbFeatureFlag = { false },
-    useLegacyLithoFiltering = { false }
+    useLegacyLithoFiltering = { false },
+    removeFilteredListItems = false
 ) {
     dependsOn(
         sharedExtensionPatch,
