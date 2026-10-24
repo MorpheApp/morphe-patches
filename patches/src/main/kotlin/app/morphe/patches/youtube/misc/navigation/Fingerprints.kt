@@ -95,6 +95,19 @@ internal object PivotBarButtonsCreateDrawableViewFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.42 and lower.
+ */
+internal object PivotBarButtonsCreateDrawableViewLegacyFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    custom = { method, _ ->
+        // Only one view creation method has a Drawable parameter.
+        method.parameterTypes.firstOrNull() == "Landroid/graphics/drawable/Drawable;"
+    }
+)
+
 internal object PivotBarButtonsCreateResourceStyledViewFingerprint : Fingerprint(
     definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

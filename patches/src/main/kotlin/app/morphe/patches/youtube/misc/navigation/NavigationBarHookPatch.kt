@@ -27,6 +27,7 @@ import app.morphe.patches.youtube.misc.backgesture.backGesturePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.util.ResourceGroup
@@ -128,7 +129,11 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
             }
 
             // Hook the creation of navigation tab views.
-            val drawableTabMethod = PivotBarButtonsCreateDrawableViewFingerprint.method
+            val drawableTabMethod = if (is_21_43_or_greater) {
+                PivotBarButtonsCreateDrawableViewFingerprint
+            } else {
+                PivotBarButtonsCreateDrawableViewLegacyFingerprint
+            }.method
             addHook(NavigationHook.NAVIGATION_TAB_LOADED) predicate@{
                 MethodUtil.methodSignaturesMatch(
                     getReference<MethodReference>() ?: return@predicate false,
