@@ -25,6 +25,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
+import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -33,6 +34,8 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -57,12 +60,24 @@ private val downloadsResourcePatch = resourcePatch {
                     TextPreference(
                         "morphe_external_downloader_name",
                         tag = "app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference",
-                    )
+                    ),
+                    SwitchPreference("morphe_external_downloader_quick_menu", summary = true),
+                    SwitchPreference("morphe_external_downloader_mark_watched", summary = true)
                 )
             )
         )
 
         copyPlayerButtonIcons("downloads", "morphe_yt_download_button")
+
+        copyResources(
+            "downloads",
+            ResourceGroup(
+                "drawable",
+                "morphe_external_downloader_quick_video.xml",
+                "morphe_external_downloader_quick_audio.xml",
+                "morphe_external_downloader_quick_options.xml"
+            )
+        )
     }
 
     finalize {
@@ -92,6 +107,7 @@ val downloadsPatch = bytecodePatch(
 ) {
     dependsOn(
         downloadsResourcePatch,
+        authHookPatch,
         videoInformationPatch,
         legacyPlayerControlsPatch,
         fixProtoLibraryPatch,

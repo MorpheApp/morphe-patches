@@ -13,8 +13,8 @@ package app.morphe.extension.youtube.patches;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.DownloadMode;
-import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.videoplayer.ExternalDownloadButton;
 
 @SuppressWarnings("unused")
 public final class DownloadsPatch {
@@ -34,8 +34,12 @@ public final class DownloadsPatch {
                 return false;
             }
 
-            ExternalDownloaderPreference.launchExternalDownloader(
-                    videoId, Utils.getActivity(), "https://youtu.be/" + videoId);
+            if (ExternalDownloadButton.quickMenuOnTap()) {
+                ExternalDownloadButton.showQuickDownloadMenu(Utils.getActivity(), videoId);
+                return true;
+            }
+
+            ExternalDownloadButton.launchDownloader(Utils.getActivity(), videoId, null);
             return true;
         } catch (Exception ex) {
             Logger.printException(() -> "inAppDownloadButtonOnClick failure", ex);
