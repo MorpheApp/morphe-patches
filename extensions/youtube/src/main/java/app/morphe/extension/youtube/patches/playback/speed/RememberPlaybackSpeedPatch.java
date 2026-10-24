@@ -51,12 +51,26 @@ public final class RememberPlaybackSpeedPatch {
      */
     private static volatile float shortsPlaybackSpeed = -2.0f;
 
+    /**
+     * Speed the user selected while the Shorts player is open, or a negative value if none.
+     * Kept for every following Short until the Shorts player closes.
+     */
+    private static volatile float shortsSelectedPlaybackSpeed = -1.0f;
+
+    /**
+     * If the user changed the speed in the Shorts player.
+     * The player keeps that speed when it opens again, so it must be reset.
+     */
+    private static volatile boolean shortsPlaybackSpeedChanged;
+
     static {
         // The Shorts player does not set a playback speed when a Short starts,
         // so the Shorts speed is set once when the Shorts player opens.
         ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
             if (isOpen) {
                 applyShortsPlaybackSpeed(true);
+            } else {
+                shortsSelectedPlaybackSpeed = -1.0f;
             }
             return Unit.INSTANCE;
         });
@@ -73,13 +87,33 @@ public final class RememberPlaybackSpeedPatch {
     }
 
     /**
-     * @return The speed of the current Short: 1.0x if its channel is whitelisted,
-     *         otherwise the Shorts default speed.
+     * Called by {@link VideoInformation} when the user selects a speed in the Shorts player.
      */
-    private static float getShortsPlaybackSpeed(float shortsDefaultSpeed) {
+    public static void setShortsSelectedPlaybackSpeed(float playbackSpeed) {
+        shortsSelectedPlaybackSpeed = playbackSpeed;
+        shortsPlaybackSpeedChanged = true;
+        shortsPlaybackSpeed = playbackSpeed;
+    }
+
+    /**
+     * @return The speed selected in the Shorts player, otherwise the Shorts default speed,
+     *         or a negative value if the Shorts speed is not changed.
+     */
+    private static float getShortsSessionSpeed() {
+        final float selectedSpeed = shortsSelectedPlaybackSpeed;
+        return selectedSpeed > 0
+                ? selectedSpeed
+                : Settings.SHORTS_PLAYBACK_SPEED_DEFAULT.get();
+    }
+
+    /**
+     * @return The speed of the current Short: 1.0x if its channel is whitelisted,
+     *         otherwise the speed of the Shorts session.
+     */
+    private static float getShortsPlaybackSpeed(float sessionSpeed) {
         return ChannelWhitelist.isCurrentChannelWhitelisted(WhitelistType.PLAYBACK_SPEED)
                 ? 1.0f
-                : shortsDefaultSpeed;
+                : sessionSpeed;
     }
 
     /**
@@ -94,23 +128,37 @@ public final class RememberPlaybackSpeedPatch {
      */
     private static void applyShortsPlaybackSpeed(boolean playerOpened) {
         try {
-            final float shortsDefaultSpeed = Settings.SHORTS_PLAYBACK_SPEED_DEFAULT.get();
-            if (shortsDefaultSpeed <= 0 || VideoInformation.isLiveStream()) {
-                return;
+            final float speed;
+            if (playerOpened) {
+                final float shortsDefaultSpeed = Settings.SHORTS_PLAYBACK_SPEED_DEFAULT.get();
+                if (shortsDefaultSpeed > 0) {
+                    speed = shortsDefaultSpeed;
+                } else if (shortsPlaybackSpeedChanged) {
+                    // The speed selected last time is not remembered.
+                    speed = 1.0f;
+                } else {
+                    return;
+                }
+                shortsPlaybackSpeedChanged = false;
+            } else {
+                final float sessionSpeed = getShortsSessionSpeed();
+                if (sessionSpeed <= 0) {
+                    return;
+                }
+                speed = getShortsPlaybackSpeed(sessionSpeed);
+                if (speed == shortsPlaybackSpeed) {
+                    return;
+                }
             }
 
-            final float speed = playerOpened
-                    ? shortsDefaultSpeed
-                    : getShortsPlaybackSpeed(shortsDefaultSpeed);
-            if (!playerOpened && speed == shortsPlaybackSpeed) {
+            if (VideoInformation.isLiveStream()) {
                 return;
             }
             shortsPlaybackSpeed = speed;
 
             Utils.runOnMainThreadNowOrLater(() -> {
                 Logger.printDebug(() -> "Shorts speed: applying " + speed);
-                VideoInformation.setPlaybackParameters(
-                        speed, VideoInformation.getPlaybackAudioPitch());
+                VideoInformation.setShortsPlaybackSpeed(speed);
             });
         } catch (Exception ex) {
             Logger.printException(() -> "applyShortsPlaybackSpeed failure", ex);
@@ -123,7 +171,7 @@ public final class RememberPlaybackSpeedPatch {
      */
     public static void onLiveStreamChanged(boolean isLive) {
         try {
-            if (!isLive || Settings.SHORTS_PLAYBACK_SPEED_DEFAULT.get() <= 0 || !ShortsPlayerState.isOpen()) {
+            if (!isLive || getShortsSessionSpeed() <= 0 || !ShortsPlayerState.isOpen()) {
                 return;
             }
 
@@ -161,7 +209,11 @@ public final class RememberPlaybackSpeedPatch {
      */
     public static void userSelectedPlaybackSpeed(float playbackSpeed) {
         try {
-            if (!Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED.get()) {
+            // Speed changes in the Shorts player are remembered separately.
+            final boolean isShorts = ShortsPlayerState.isOpen();
+            if (!(isShorts
+                    ? Settings.SHORTS_REMEMBER_PLAYBACK_SPEED.get()
+                    : Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED.get())) {
                 return;
             }
             // With the 0.05x menu, if the speed is set by a patch to higher than 2.0x
@@ -169,8 +221,7 @@ public final class RememberPlaybackSpeedPatch {
             // still capped to 8.0x.
             playbackSpeed = Math.min(playbackSpeed, VideoInformation.PLAYBACK_SPEED_MAXIMUM);
 
-            // Speed changes in the Shorts player are remembered separately.
-            final FloatSetting defaultSpeedSetting = ShortsPlayerState.isOpen()
+            final FloatSetting defaultSpeedSetting = isShorts
                     ? Settings.SHORTS_PLAYBACK_SPEED_DEFAULT
                     : Settings.PLAYBACK_SPEED_DEFAULT;
 
@@ -254,12 +305,15 @@ public final class RememberPlaybackSpeedPatch {
      */
     public static float getPlaybackSpeedInShorts(float playbackSpeed) {
         try {
-            final float shortsDefaultSpeed = Settings.SHORTS_PLAYBACK_SPEED_DEFAULT.get();
-            if (shortsDefaultSpeed <= 0 || !ShortsPlayerState.isOpen() || VideoInformation.isLiveStream()) {
+            if (!ShortsPlayerState.isOpen() || VideoInformation.isLiveStream()) {
+                return playbackSpeed;
+            }
+            final float sessionSpeed = getShortsSessionSpeed();
+            if (sessionSpeed <= 0) {
                 return playbackSpeed;
             }
 
-            final float speed = getShortsPlaybackSpeed(shortsDefaultSpeed);
+            final float speed = getShortsPlaybackSpeed(sessionSpeed);
             shortsPlaybackSpeed = speed;
 
             Logger.printDebug(() -> "Shorts speed: overriding " + playbackSpeed + " to " + speed);
