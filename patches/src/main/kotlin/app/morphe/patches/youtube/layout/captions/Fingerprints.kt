@@ -523,3 +523,56 @@ internal fun getCaptionTrackEventFingerprint(trackType: String) = object : Finge
         )
     )
 ) {}
+
+/**
+ * Cue range manager seek. Its class also adds and removes cue ranges.
+ */
+internal object CueRangeManagerSeekFingerprint : Fingerprint(
+    returnType = "J",
+    parameters = listOf("J", "J", "Z"),
+    filters = listOf(
+        string("CueRangeManager", StringComparisonType.CONTAINS)
+    )
+)
+
+/**
+ * Server flag to start cue ranges that are added while the video time is inside them.
+ */
+internal object EnterCueRangeOnAddFeatureFlagFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45415907L)
+    )
+)
+
+/**
+ * Caption cue, a cue range with the caption windows it shows when it starts.
+ */
+internal fun getCaptionCueConstructorFingerprint(cueRangeType: String) = object : Fingerprint(
+    returnType = "V",
+    parameters = listOf("J", "J", "Ljava/util/List;", "L"),
+    filters = listOf(
+        methodCall(
+            definingClass = cueRangeType,
+            name = "<init>"
+        )
+    ),
+    custom = { method, classDef ->
+        AccessFlags.CONSTRUCTOR.isSet(method.accessFlags) && classDef.superclass == cueRangeType
+    }
+) {}
+
+/**
+ * Loads the caption cues that start in the chunk of a video time, from a caption track that is fully loaded.
+ */
+internal object CaptionChunkLoaderFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("J"),
+    filters = listOf(
+        methodCall(smali = "Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V")
+    ),
+    custom = { _, classDef ->
+        classDef.fields.any { it.type == "Ljava/util/TreeMap;" }
+    }
+)
