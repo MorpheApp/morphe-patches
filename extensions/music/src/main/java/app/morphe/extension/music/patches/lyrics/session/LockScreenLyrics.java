@@ -18,6 +18,7 @@ import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
@@ -92,6 +93,11 @@ public final class LockScreenLyrics {
     private static final long MAX_NUDGE_RECEIPT_AGE_MS = 6 * 60 * 60 * 1000L;
 
     private LockScreenLyrics() {
+    }
+
+    public static void onSettingsChanged() {
+        needsRepush = true;
+        tick();
     }
 
     /**
@@ -203,6 +209,7 @@ public final class LockScreenLyrics {
         }
 
         session.setMetadata(metadata);
+        LyricNotificationRefresh.refresh(session);
         lastPushedTitle = newTitle;
         needsRepush = false;
         nudgePlaybackState(session);
@@ -251,6 +258,7 @@ public final class LockScreenLyrics {
         MediaMetadata original = originalMetadata;
         if (session != null && original != null) {
             session.setMetadata(original);
+            LyricNotificationRefresh.refresh(session);
             nudgePlaybackState(session);
         }
         lastPushedTitle = null;
@@ -275,8 +283,8 @@ public final class LockScreenLyrics {
     }
 
     private static String getCurrentLine() {
-        String line = LyricsManager.getInstance().getCurrentLineText();
-        if (line.isEmpty()) {
+        String line = LyricsManager.getInstance().getCurrentMiniLineText();
+        if (line == null) {
             String rt = realTitle;
             return rt == null ? "" : rt;
         }
@@ -295,8 +303,7 @@ public final class LockScreenLyrics {
 
         String rt = realTitle;
         if (rt != null && !rt.isEmpty()) {
-            display = new TrackInfo(rt, artist, "", 0)
-                    .displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
+            display = LyricsPresentation.trackLabel(rt, artist);
         }
 
         builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);

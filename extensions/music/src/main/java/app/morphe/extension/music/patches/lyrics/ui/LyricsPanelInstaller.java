@@ -26,6 +26,7 @@ import java.util.Locale;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
+import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -93,6 +94,15 @@ public final class LyricsPanelInstaller {
 
     private static void onLyricsSettingChanged(String key) {
         try {
+            if (Settings.LYRICS_FORCE_CAPITALIZE.key.equals(key)
+                    || Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.key.equals(key)
+                    || key.startsWith("morphe_music_lyrics_mini_")) {
+                MiniplayerLyrics.onSettingsChanged();
+                LockScreenLyrics.onSettingsChanged();
+                final LyricsPanelView view = panelReference.get();
+                if (view != null) view.applyLyricLayoutSettings();
+                return;
+            }
             if (Settings.LYRICS_ENABLED.key.equals(key)) {
                 if (Settings.LYRICS_ENABLED.get()) {
                     if (isLyricsPanelOpen()) {
@@ -118,8 +128,9 @@ public final class LyricsPanelInstaller {
                 return;
             }
             if (Settings.LYRICS_MINIPLAYER.key.equals(key)
-                    || Settings.LYRICS_DISPLAY_ARTIST_FIRST.key.equals(key)) {
+                    || Settings.LYRICS_MEDIASESSION.key.equals(key)) {
                 MiniplayerLyrics.onSettingsChanged();
+                LockScreenLyrics.onSettingsChanged();
                 return;
             }
             final LyricsPanelView panelView = panelReference.get();

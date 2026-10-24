@@ -122,7 +122,17 @@ val lyricsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lyrics_show_section", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_played", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_unplayed", summary = true),
-                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true)
+                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
+                    TextPreference("morphe_music_lyrics_mini_track_format",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference"),
+                    TextPreference("morphe_music_lyrics_mini_encapsulation",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference"),
+                    TextPreference("morphe_music_lyrics_mini_char_limit", inputType = InputType.NUMBER,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference"),
+                    TextPreference("morphe_music_lyrics_mini_instrumental", inputType = InputType.TEXT_MULTI_LINE,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference"),
+                    TextPreference("morphe_music_lyrics_mini_next_offset_ms", inputType = InputType.TEXT,
+                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference")
                 )
             ),
             PreferenceCategory(
@@ -180,8 +190,7 @@ val lyricsPatch = bytecodePatch(
                     ),
                     SwitchPreference("morphe_music_lyrics_sb_matching", summary = true),
                     SwitchPreference("morphe_music_lyrics_miniplayer", summary = true),
-                    SwitchPreference("morphe_music_lyrics_mediasession", summary = true),
-                    SwitchPreference("morphe_music_lyrics_display_artist_first", summary = true)
+                    SwitchPreference("morphe_music_lyrics_mediasession", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -225,7 +234,9 @@ val lyricsPatch = bytecodePatch(
                     TextPreference(
                         key = "morphe_music_lyrics_credit_line_regex",
                         inputType = InputType.TEXT_MULTI_LINE
-                    )
+                    ),
+                    SwitchPreference("morphe_music_lyrics_force_capitalize", summary = true),
+                    SwitchPreference("morphe_music_lyrics_strip_trailing_punctuation", summary = true)
                 )
             ),
             screenInfoPreferenceCategory(

@@ -1,6 +1,7 @@
 import com.android.build.api.dsl.ApplicationExtension
 
 dependencies {
+    testImplementation(libs.junit)
     compileOnly(libs.morphe.extensions.library)
     compileOnly(project(":extensions:shared-youtube:library"))
     compileOnly(project(":extensions:shared-youtube:stub"))
