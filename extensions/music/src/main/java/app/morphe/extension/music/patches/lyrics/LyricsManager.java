@@ -2315,5 +2315,16 @@ private void reorderQueueByRemembered() {
         return lyrics != null && lyrics.synced() && !lyrics.isEmpty();
     }
 
+    /** One timed Mini presentation shared by the in-app and system media surfaces. */
+    @Nullable
+    public String getCurrentMiniLineText() {
+        final Lyrics lyrics = currentLyrics;
+        if (lyrics == null || !lyrics.synced() || lyrics.isEmpty()) return null;
+        final long position = getPositionMs();
+        final long duration = currentTrack == null ? 0 : currentTrack.durationSeconds() * 1000L;
+        return LyricsPresentation.miniFrame(lyrics, lyrics.lines(), duration, position,
+                currentVideoId, currentRawTitle, currentRawArtist);
+    }
+
 
 }

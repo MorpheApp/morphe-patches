@@ -26,6 +26,8 @@ import java.util.Collections;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsTextFormatter;
+import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
@@ -56,6 +58,33 @@ record WordTiming(int start, int end, long startMs, long endMs,
     }
 
     private record Spacing(int mainClear, int smallClear, int boundaryClear) {
+    }
+
+    record PresentedLine(BuildResult display, List<WordTiming> words, int originalStart) { }
+
+    /** Last display pass: remap text, Android spans, and karaoke offsets together. */
+    static PresentedLine present(BuildResult raw, List<WordTiming> words, int originalStart) {
+        final LyricsTextFormatter.Result formatted = LyricsPresentation.format(raw.text().toString());
+        if (formatted.text().contentEquals(raw.text())) {
+            return new PresentedLine(raw, words, originalStart);
+        }
+        final SpannableString text = new SpannableString(formatted.text());
+        for (Object span : raw.text().getSpans(0, raw.text().length(), Object.class)) {
+            final int start = formatted.offset(raw.text().getSpanStart(span));
+            final int end = formatted.offset(raw.text().getSpanEnd(span));
+            if (end > start) text.setSpan(span, start, end, raw.text().getSpanFlags(span));
+        }
+        final int base = formatted.offset(originalStart);
+        final List<WordTiming> mapped = new ArrayList<>(words.size());
+        for (WordTiming word : words) {
+            final int start = formatted.offset(word.start() + originalStart) - base;
+            final int end = formatted.offset(word.end() + originalStart) - base;
+            if (end > start) mapped.add(new WordTiming(start, end, word.startMs(), word.endMs(), word.romaji()));
+        }
+        return new PresentedLine(new BuildResult(text, raw.unsungSpan(),
+                formatted.offset(raw.transStart()), formatted.offset(raw.transEnd()),
+                formatted.offset(raw.romaStart()), formatted.offset(raw.romaEnd()),
+                raw.readingSpans(), raw.smallRunHoldsWords()), mapped, base);
     }
 
     private static final class UniformLineSpacingSpan implements LineHeightSpan {

@@ -29,7 +29,7 @@ jobs:
       - name: Test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew :patches:test :extensions:youtube:testDebugUnitTest --no-daemon
+        run: ./gradlew :patches:test :extensions:youtube:testDebugUnitTest :extensions:music:testDebugUnitTest --no-daemon
 
       # buildAndroid adds DEX to the jar in place. A later JVM task can recreate
       # that same archive without DEX, so Android packaging must run last.

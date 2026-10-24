@@ -19,6 +19,7 @@ import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
@@ -215,8 +216,8 @@ public final class MiniplayerLyrics {
                 && Objects.equals(track.artist(), displayArtist);
 
         if (synced) {
-            String line = manager.getCurrentLineText();
-            String newTitle = line.isEmpty() ? displayTitleOr(track) : line;
+            String line = manager.getCurrentMiniLineText();
+            String newTitle = line == null ? displayTitleOr(track) : line;
             if (cachedSubtitle == null) {
                 cachedSubtitle = buildSubtitle(track);
             }
@@ -280,10 +281,9 @@ public final class MiniplayerLyrics {
         final String rawArtist = rawDisplayArtist;
         if (rawTitle == null || rawTitle.trim().isEmpty()
                 || rawArtist == null || rawArtist.trim().isEmpty()) {
-            return track.displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
+            return LyricsPresentation.trackLabel(track.title(), track.artist());
         }
-        return new TrackInfo(rawTitle, rawArtist, "", 0)
-                .displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
+        return LyricsPresentation.trackLabel(rawTitle, rawArtist);
     }
 
     private static void restoreField(TextView view, @Nullable String lastMirrored,
