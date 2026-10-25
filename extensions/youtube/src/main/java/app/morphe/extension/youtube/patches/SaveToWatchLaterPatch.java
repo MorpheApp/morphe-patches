@@ -13,12 +13,16 @@ import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.MessageLite;
+
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.utils.AuthUtils;
+import app.morphe.extension.youtube.innertube.PlaylistEdit.PlaylistEditAction;
 import app.morphe.extension.youtube.patches.utils.requests.SaveToWatchLaterRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -48,10 +52,13 @@ public final class SaveToWatchLaterPatch {
      * redirect playlist configured in {@link Settings#SAVE_TO_WATCH_LATER_REDIRECT_PLAYLIST_ID}.
      * Otherwise returns the id untouched.
      *
-     * Called from code injected into the stock edit playlist request builder, and by
-     * {@link SaveToWatchLaterRequest} since the extension makes its own edit playlist requests.
+     * Used by {@link SaveToWatchLaterRequest}, which only adds videos.
      */
     public static String getRedirectPlaylistId(String playlistId) {
+        return getRedirectPlaylistId(playlistId, null);
+    }
+
+    public static String getRedirectPlaylistId(String playlistId, @Nullable List<MessageLite> actions) {
         try {
             if (!"WL".equals(playlistId)) {
                 // Only redirect saves into the stock Watch later playlist.
@@ -61,6 +68,13 @@ public final class SaveToWatchLaterPatch {
             final String redirectId = extractPlaylistId(
                     Settings.SAVE_TO_WATCH_LATER_REDIRECT_PLAYLIST_ID.get());
             if (redirectId != null) {
+                if (actions != null) {
+                    if (actions.isEmpty()) return playlistId;
+                    for (MessageLite action : actions) {
+                        // ACTION_ADD_VIDEO is 1; other edits must retain their destination.
+                        if (PlaylistEditAction.parseFrom(action.toByteArray()).getAction() != 1) return playlistId;
+                    }
+                }
                 return redirectId;
             }
         } catch (Exception ex) {

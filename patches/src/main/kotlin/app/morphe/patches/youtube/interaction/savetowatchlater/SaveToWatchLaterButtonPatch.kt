@@ -98,18 +98,19 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
-        // Rewrite the playlist id of any edit request that targets the stock Watch later
-        // playlist, using the user configured redirect playlist. All 'Save to Watch later'
-        // entry points that use the stock request path go through this single builder.
+        // Redirect only video additions; this builder also handles removals and other edits.
         val buildMethod = EditPlaylistBuildMethodFingerprint.method
         val playlistIdField = EditPlaylistBuildMethodFingerprint
             .instructionMatches.first().getFieldAccessed()
+        val actionsField = EditPlaylistBuildMethodFingerprint
+            .instructionMatches.last().getFieldAccessed()
 
         buildMethod.addInstructions(
             0,
             """
                 iget-object v0, p0, $playlistIdField
-                invoke-static {v0}, $EXTENSION_CLASS->getRedirectPlaylistId(Ljava/lang/String;)Ljava/lang/String;
+                iget-object v1, p0, $actionsField
+                invoke-static {v0, v1}, $EXTENSION_CLASS->getRedirectPlaylistId(Ljava/lang/String;Ljava/util/List;)Ljava/lang/String;
                 move-result-object v0
                 iput-object v0, p0, $playlistIdField
             """,

@@ -38,5 +38,10 @@ internal object EditPlaylistBuildMethodFingerprint : Fingerprint(
             definingClass = "this",
             type = "Ljava/lang/String;",
         ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/util/List;",
+        ),
     ),
 )
