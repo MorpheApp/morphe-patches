@@ -16,6 +16,7 @@ import java.util.Collections;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.requests.GetMixPlaylistRequest;
@@ -52,16 +53,10 @@ public final class RememberPlaybackSpeedPatch {
     private static volatile float shortsPlaybackSpeed = -2.0f;
 
     /**
-     * Speed the user selected while the Shorts player is open, or a negative value if none.
-     * Kept for every following Short until the Shorts player closes.
+     * The speed the user selected in the Shorts player, or a negative value if none.
+     * Used for every following Short until the Shorts player closes.
      */
-    private static volatile float shortsSelectedPlaybackSpeed = -1.0f;
-
-    /**
-     * If the user changed the speed in the Shorts player.
-     * The player keeps that speed when it opens again, so it must be reset.
-     */
-    private static volatile boolean shortsPlaybackSpeedChanged;
+    private static volatile float shortsSelectedPlaybackSpeed = -2.0f;
 
     static {
         // The Shorts player does not set a playback speed when a Short starts,
@@ -70,7 +65,7 @@ public final class RememberPlaybackSpeedPatch {
             if (isOpen) {
                 applyShortsPlaybackSpeed(true);
             } else {
-                shortsSelectedPlaybackSpeed = -1.0f;
+                shortsSelectedPlaybackSpeed = -2.0f;
             }
             return Unit.INSTANCE;
         });
@@ -91,13 +86,12 @@ public final class RememberPlaybackSpeedPatch {
      */
     public static void setShortsSelectedPlaybackSpeed(float playbackSpeed) {
         shortsSelectedPlaybackSpeed = playbackSpeed;
-        shortsPlaybackSpeedChanged = true;
         shortsPlaybackSpeed = playbackSpeed;
     }
 
     /**
      * @return The speed selected in the Shorts player, otherwise the Shorts default speed,
-     *         or a negative value if the Shorts speed is not changed.
+     *         or a negative value if neither is set.
      */
     private static float getShortsSessionSpeed() {
         final float selectedSpeed = shortsSelectedPlaybackSpeed;
@@ -133,13 +127,13 @@ public final class RememberPlaybackSpeedPatch {
                 final float shortsDefaultSpeed = Settings.SHORTS_PLAYBACK_SPEED_DEFAULT.get();
                 if (shortsDefaultSpeed > 0) {
                     speed = shortsDefaultSpeed;
-                } else if (shortsPlaybackSpeedChanged) {
-                    // The speed selected last time is not remembered.
+                } else if (shortsPlaybackSpeed > 0 && shortsPlaybackSpeed != 1.0f) {
+                    // The player keeps the speed it last played at, such as a speed the user
+                    // selected the last time, which is not used anymore.
                     speed = 1.0f;
                 } else {
                     return;
                 }
-                shortsPlaybackSpeedChanged = false;
             } else {
                 final float sessionSpeed = getShortsSessionSpeed();
                 if (sessionSpeed <= 0) {
@@ -211,9 +205,10 @@ public final class RememberPlaybackSpeedPatch {
         try {
             // Speed changes in the Shorts player are remembered separately.
             final boolean isShorts = ShortsPlayerState.isOpen();
-            if (!(isShorts
-                    ? Settings.SHORTS_REMEMBER_PLAYBACK_SPEED.get()
-                    : Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED.get())) {
+            final BooleanSetting rememberSetting = isShorts
+                    ? Settings.SHORTS_REMEMBER_PLAYBACK_SPEED
+                    : Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED;
+            if (!rememberSetting.get()) {
                 return;
             }
             // With the 0.05x menu, if the speed is set by a patch to higher than 2.0x

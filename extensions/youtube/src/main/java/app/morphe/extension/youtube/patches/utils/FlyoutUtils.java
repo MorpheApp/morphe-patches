@@ -17,6 +17,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.Window;
+import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -61,7 +63,6 @@ import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponent
 import app.morphe.extension.youtube.patches.playback.speed.ShortsPlaybackSpeedFlyoutPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.videoplayer.PictureinPictureButton;
 import app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton;
 import app.morphe.extension.youtube.videoplayer.VideoDelayDialogButton;
@@ -325,6 +326,11 @@ public final class FlyoutUtils {
     private static boolean videoMarkedAsForKids;
     private static boolean isMyTabHistoryFlyout;
     private static boolean isShortFlyout;
+    /**
+     * If the open menu is the menu of the Shorts player, which has another layout
+     * and only gets the playback speed item.
+     */
+    private static boolean isShortsPlayerFlyout;
     private static ChannelIdRequest flyoutChannelIdRequest;
 
     public static byte[] getAsciiBytes(String string) {
@@ -376,7 +382,6 @@ public final class FlyoutUtils {
         if (dialog == null) {
             return;
         }
-        Logger.printDebug(() -> "Flyout bottom sheet: " + dialog.getClass().getName());
         FeedVideoActionsPatch.onBottomSheetFlyout(dialog);
         flyoutDialog = dialog;
 
@@ -390,7 +395,6 @@ public final class FlyoutUtils {
         if (popupWindow == null) {
             return;
         }
-        Logger.printDebug(() -> "Flyout popup window: " + popupWindow.getClass().getName());
         FeedVideoActionsPatch.onPopupWindowFlyout(popupWindow);
         flyoutPopupWindow = popupWindow;
 
@@ -490,6 +494,7 @@ public final class FlyoutUtils {
         flyoutPlaylistId = "";
         flyoutChannelId = "";
         flyoutChannelName = "";
+        isShortsPlayerFlyout = false;
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
@@ -499,6 +504,24 @@ public final class FlyoutUtils {
         // onto whatever this call adds instead.
         customItemTextRefs.clear();
 
+        isShortsPlayerFlyout = ShortsPlaybackSpeedFlyoutPatch.isPatchIncluded()
+                && ShortsPlaybackSpeedFlyoutPatch.showFlyoutButton(isShortFlyout);
+        if (isShortsPlayerFlyout) {
+            nextButtonIndex = ShortsPlaybackSpeedFlyoutPatch.addFlyoutButton(flyoutPanel, nextButtonIndex);
+        } else {
+            nextButtonIndex = addVideoFlyoutButtons(flyoutPanel, nextButtonIndex);
+        }
+
+        if (nextButtonIndex > 0) {
+            addFlyoutMenuItem(flyoutPanel, null, null, null, nextButtonIndex, true);
+        }
+
+        // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
+        // overlay settings, to prevent them from also being added into nested menus.
+        PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
+    }
+
+    private static int addVideoFlyoutButtons(Object flyoutPanel, int nextButtonIndex) {
         final String flyoutVideoId = getFlyoutVideoId();
 
         // Only added to the menus of posts with images.
@@ -560,15 +583,6 @@ public final class FlyoutUtils {
             );
         }
 
-        if (ShortsPlaybackSpeedFlyoutPatch.isPatchIncluded()) {
-            nextButtonIndex = ShortsPlaybackSpeedFlyoutPatch.addFlyoutButton(
-                    flyoutPanel,
-                    nextButtonIndex,
-                    PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible(),
-                    isShortFlyout
-            );
-        }
-
         if (VideoDelayPatch.isPatchIncluded()) {
             nextButtonIndex = VideoDelayDialogButton.addFlyoutButton(
                     flyoutPanel,
@@ -577,13 +591,7 @@ public final class FlyoutUtils {
             );
         }
 
-        if (nextButtonIndex > 0) {
-            addFlyoutMenuItem(flyoutPanel, null, null, null, nextButtonIndex, true);
-        }
-
-        // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
-        // overlay settings, to prevent them from also being added into nested menus.
-        PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
+        return nextButtonIndex;
     }
 
     /**
@@ -840,42 +848,37 @@ public final class FlyoutUtils {
         }
 
         if (menuContainer == null) {
-            if (!ShortsPlayerState.isOpen()) {
-                return null;
-            }
-
-            // The menu of the Shorts player has a different layout.
-            // Find the list of the menu and use the vertical layout that holds it.
-            View root = getFlyoutRootView(flyoutPanel);
-            ViewGroup list = findMenuList(root, 0);
-            if (list != null) {
-                View child = list;
-                ViewParent parent = list.getParent();
-                while (parent instanceof ViewGroup parentGroup && child != root) {
-                    if (parentGroup instanceof LinearLayout linearLayout
-                            && linearLayout.getOrientation() == LinearLayout.VERTICAL) {
-                        menuContainer = linearLayout;
-                        // Above the list, so after the bottom sheet handle.
-                        adjustedIndex = linearLayout.indexOfChild(child);
-                        break;
-                    }
-                    child = parentGroup;
-                    parent = parentGroup.getParent();
-                }
-            }
-
-            if (menuContainer == null) {
-                if (Settings.DEBUG.get()) {
-                    StringBuilder builder = new StringBuilder();
-                    logViewTree(root, 0, builder);
-                    Logger.printDebug(() -> "Flyout menu container not found: " + builder);
-                }
-                return null;
-            }
-            Logger.printDebug(() -> "Flyout menu container found by its list");
+            return isShortsPlayerFlyout
+                    ? getShortsPlayerMenuInfo(flyoutPanel, popupWindow)
+                    : null;
         }
 
         return new FlyoutMenuInfo(menuContainer, adjustedIndex, popupWindow);
+    }
+
+    /**
+     * The menu container of the Shorts player menu is the vertical layout that holds the list of the menu.
+     * The items are injected above the list, so after the bottom sheet handle.
+     */
+    @Nullable
+    private static FlyoutMenuInfo getShortsPlayerMenuInfo(Object flyoutPanel, @Nullable PopupWindow popupWindow) {
+        View root = getFlyoutRootView(flyoutPanel);
+        if (root instanceof ViewGroup rootGroup) {
+            View child = Utils.getChildView(rootGroup, true,
+                    view -> view instanceof RecyclerView || view instanceof AbsListView);
+            ViewParent parent = child == null ? null : child.getParent();
+            while (parent instanceof ViewGroup parentGroup && child != root) {
+                if (parentGroup instanceof LinearLayout linearLayout
+                        && linearLayout.getOrientation() == LinearLayout.VERTICAL) {
+                    return new FlyoutMenuInfo(linearLayout, linearLayout.indexOfChild(child), popupWindow);
+                }
+                child = parentGroup;
+                parent = parentGroup.getParent();
+            }
+        }
+
+        Logger.printDebug(() -> "Shorts player menu container not found");
+        return null;
     }
 
     /**
@@ -909,44 +912,6 @@ public final class FlyoutUtils {
             return window == null ? null : window.getDecorView();
         }
         return null;
-    }
-
-    /**
-     * @return The first scrolling list of the menu items.
-     */
-    @Nullable
-    private static ViewGroup findMenuList(@Nullable View view, int depth) {
-        if (!(view instanceof ViewGroup group) || depth > 20) {
-            return null;
-        }
-        String className = group.getClass().getName();
-        if (group instanceof android.widget.AbsListView || className.endsWith("RecyclerView")) {
-            return group;
-        }
-        for (int i = 0, count = group.getChildCount(); i < count; i++) {
-            ViewGroup found = findMenuList(group.getChildAt(i), depth + 1);
-            if (found != null) {
-                return found;
-            }
-        }
-        return null;
-    }
-
-    private static void logViewTree(@Nullable View view, int depth, StringBuilder builder) {
-        if (view == null || depth > 12) {
-            return;
-        }
-        builder.append('\n');
-        for (int i = 0; i < depth; i++) builder.append("  ");
-        builder.append(view.getClass().getName());
-        if (view instanceof LinearLayout linearLayout) {
-            builder.append(linearLayout.getOrientation() == LinearLayout.VERTICAL ? " (vertical)" : " (horizontal)");
-        }
-        if (view instanceof ViewGroup group) {
-            for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                logViewTree(group.getChildAt(i), depth + 1, builder);
-            }
-        }
     }
 
     @SuppressLint("ResourceType")

@@ -537,10 +537,8 @@ public final class VideoInformation {
      */
     public static void videoSpeedChanged(float videoSpeed) {
         // The Shorts player reports its own speed when a Short loads,
-        // even though the speed of the Shorts session is used instead.
-        final float currentVideoSpeed = ShortsPlayerState.isOpen()
-                ? RememberPlaybackSpeedPatch.getPlaybackSpeedInShorts(videoSpeed)
-                : videoSpeed;
+        // but plays at the overridden Shorts speed.
+        final float currentVideoSpeed = RememberPlaybackSpeedPatch.getPlaybackSpeedInShorts(videoSpeed);
         Logger.printDebug(() -> "Video speed changed: " + currentVideoSpeed);
         // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
         // Update the formatted string value to avoid the exception.
@@ -1112,12 +1110,6 @@ public final class VideoInformation {
     }
 
     /**
-     * Applies a speed the user selected in a Morphe speed menu.
-     * The Shorts player has no playback speed menu interface and ignores
-     * {@link #changePlaybackSpeed(float)}, so the speed is set on the player directly
-     * and kept for the following Shorts.
-     */
-    /**
      * Sets the speed of the Shorts player, which has no playback speed menu interface.
      */
     public static void setShortsPlaybackSpeed(float speed) {
@@ -1125,6 +1117,11 @@ public final class VideoInformation {
         setPlaybackParameters(speed, playbackAudioPitch);
     }
 
+    /**
+     * Applies a speed the user selected in a Morphe speed menu.
+     * The Shorts player ignores {@link #changePlaybackSpeed(float)}, so the speed
+     * is set on the player directly and kept for the following Shorts.
+     */
     private static void applyUserSelectedPlaybackSpeed(float speed) {
         if (ShortsPlayerState.isOpen()) {
             RememberPlaybackSpeedPatch.setShortsSelectedPlaybackSpeed(speed);
