@@ -29,7 +29,6 @@ import app.morphe.extension.youtube.patches.VideoFormat.FormatInterface;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
-import kotlin.Unit;
 
 /**
  * Maps the playing video onto the full display with a compositor transform.
@@ -91,7 +90,6 @@ public class FullscreenVideoScalePatch {
     static {
         PlayerType.getOnChange().addObserver((PlayerType type) -> {
             applyScale();
-            return Unit.INSTANCE;
         });
     }
 

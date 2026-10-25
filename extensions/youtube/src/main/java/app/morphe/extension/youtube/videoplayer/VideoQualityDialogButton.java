@@ -48,7 +48,6 @@ import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterfa
 import app.morphe.extension.youtube.patches.playback.quality.RememberVideoQualityPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
-import kotlin.Unit;
 
 @SuppressWarnings("unused")
 public class VideoQualityDialogButton {
@@ -64,7 +63,6 @@ public class VideoQualityDialogButton {
     static {
         VideoInformation.onQualityChange.addObserver((@Nullable VideoQualityInterface quality) -> {
             updateButtonText(quality);
-            return Unit.INSTANCE;
         });
     }
 

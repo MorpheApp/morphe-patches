@@ -8,14 +8,17 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-package app.morphe.extension.youtube.shared
+package app.morphe.extension.youtube.shared;
 
-import app.morphe.extension.shared.Logger
+import java.util.HashMap;
+import java.util.Map;
+
+import app.morphe.extension.shared.Logger;
 
 /**
  * Regular player type.
  */
-enum class PlayerType {
+public enum PlayerType {
     /**
      * Either no video, or a Short is playing.
      */
@@ -37,7 +40,7 @@ enum class PlayerType {
     WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED,
 
     /**
-     * Player is either sliding to [HIDDEN] state because a Short was opened while a regular video is on screen.
+     * Player is either sliding to {@link #HIDDEN} state because a Short was opened while a regular video is on screen.
      * OR
      * The user has swiped a minimized player away to be closed (and no Short is being opened).
      */
@@ -49,91 +52,95 @@ enum class PlayerType {
      */
     INLINE_MINIMAL,
     VIRTUAL_REALITY_FULLSCREEN,
-    WATCH_WHILE_PICTURE_IN_PICTURE,
-    ;
+    WATCH_WHILE_PICTURE_IN_PICTURE;
 
-    companion object {
+    private static final Map<String, PlayerType> nameToPlayerType = new HashMap<>();
 
-        private val nameToPlayerType = PlayerType.entries.associateBy { it.name }
-
-        @JvmStatic
-        fun setFromString(enumName: String) {
-            val newType = nameToPlayerType[enumName]
-            if (newType == null) {
-                Logger.printException { "Unknown PlayerType encountered: $enumName" }
-            } else {
-                current = newType
-            }
+    static {
+        for (PlayerType type : values()) {
+            nameToPlayerType.put(type.name(), type);
         }
-
-        /**
-         * The current player type.
-         */
-        @JvmStatic
-        var current
-            get() = currentPlayerType
-            private set(type) {
-                if (currentPlayerType != type) {
-                    Logger.printDebug { "Changed to: $type" }
-
-                    currentPlayerType = type
-                    onChange(type)
-                }
-            }
-
-        @Volatile // Read/write from different threads.
-        private var currentPlayerType = NONE
-
-        /**
-         * player type change listener
-         */
-        @JvmStatic
-        val onChange = Event<PlayerType>()
     }
 
     /**
-     * Check if the current player type is [NONE] or [HIDDEN].
+     * player type change listener
+     */
+    private static final Event<PlayerType> onChange = new Event<>();
+
+    private static volatile PlayerType currentPlayerType = NONE; // Read/write from different threads.
+
+    public static Event<PlayerType> getOnChange() {
+        return onChange;
+    }
+
+    public static void setFromString(String enumName) {
+        PlayerType newType = nameToPlayerType.get(enumName);
+        if (newType == null) {
+            Logger.printException(() -> "Unknown PlayerType encountered: " + enumName);
+        } else {
+            setCurrent(newType);
+        }
+    }
+
+    /**
+     * The current player type.
+     */
+    public static PlayerType getCurrent() {
+        return currentPlayerType;
+    }
+
+    private static void setCurrent(PlayerType type) {
+        if (currentPlayerType != type) {
+            Logger.printDebug(() -> "Changed to: " + type);
+
+            currentPlayerType = type;
+            onChange.invoke(type);
+        }
+    }
+
+    /**
+     * Check if the current player type is {@link #NONE} or {@link #HIDDEN}.
      * Useful to check if a short is currently playing.
-     *
+     * <p>
      * Does not include the first moment after a short is opened when a regular video is minimized on screen,
      * or while watching a short with a regular video present on a spoofed 16.x version of YouTube.
-     * To include those situations instead use [isNoneHiddenOrMinimized].
+     * To include those situations instead use {@link #isNoneHiddenOrMinimized()}.
      */
-    fun isNoneOrHidden(): Boolean {
-        return this == NONE || this == HIDDEN
+    public boolean isNoneOrHidden() {
+        return this == NONE || this == HIDDEN;
     }
 
     /**
      * Check if the current player type is
-     * [NONE], [HIDDEN], [WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED].
-     *
+     * {@link #NONE}, {@link #HIDDEN}, {@link #WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED}.
+     * <p>
      * Useful to check if a Short is being played or opened.
-     *
+     * <p>
      * Usually covers all use cases with no false positives, except if called from some hooks
      * when spoofing to an old version this will return false even
-     * though a Short is being opened or is on screen (see [isNoneHiddenOrMinimized]).
-     *
+     * though a Short is being opened or is on screen (see {@link #isNoneHiddenOrMinimized()}).
+     * <p>
      * Instead of this method, consider using {@link ShortsPlayerState}
      * which may work better for some situations.
      *
      * @return If nothing, a Short, or a regular video is sliding off-screen to a dismissed or hidden state.
      * @see ShortsPlayerState
      */
-    fun isNoneHiddenOrSlidingMinimized(): Boolean {
-        return isNoneOrHidden() || this == WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED
+    public boolean isNoneHiddenOrSlidingMinimized() {
+        return isNoneOrHidden() || this == WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED;
     }
 
     /**
      * Check if the current player type is
-     * [NONE], [HIDDEN], [WATCH_WHILE_MINIMIZED], [WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED].
-     *
+     * {@link #NONE}, {@link #HIDDEN}, {@link #WATCH_WHILE_MINIMIZED}, {@link #WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED}.
+     * <p>
      * Useful to check if a Short is being played,
      * although it will return false positive if a regular video is
      * opened and minimized (and a Short is not playing or being opened).
-     *
+     * <p>
      * Typically used to detect if a Short is playing when the player cannot be in a minimized state,
      * such as the user interacting with a button or element of the player.
-     *
+     * <p>
      * Instead of this method, consider using {@link ShortsPlayerState}
      * which may work better for some situations.
      *
@@ -141,12 +148,12 @@ enum class PlayerType {
      *         a regular video is minimized (and a new video is not being opened).
      * @see ShortsPlayerState
      */
-    fun isNoneHiddenOrMinimized(): Boolean {
-        return isNoneHiddenOrSlidingMinimized() || this == WATCH_WHILE_MINIMIZED
+    public boolean isNoneHiddenOrMinimized() {
+        return isNoneHiddenOrSlidingMinimized() || this == WATCH_WHILE_MINIMIZED;
     }
 
-    fun isMaximizedOrFullscreen(): Boolean {
+    public boolean isMaximizedOrFullscreen() {
         return this == WATCH_WHILE_MAXIMIZED || this == WATCH_WHILE_FULLSCREEN
-                || this == WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN
+                || this == WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN;
     }
 }

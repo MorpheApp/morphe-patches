@@ -60,7 +60,6 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.videoplayer.PlayPauseIcons;
 import app.morphe.extension.youtube.videoplayer.PlayerIcons;
-import kotlin.Unit;
 
 /**
  * Rebuilds the legacy 'Minimal' miniplayer, which YouTube dropped the code for in 21.29.
@@ -406,7 +405,6 @@ public final class MinimalMiniplayerPatch {
 
                         updateVideoClip();
                     });
-                    return Unit.INSTANCE;
                 });
             }
 

@@ -188,7 +188,6 @@ public class VoiceOverTranslationPatch {
                     TTSPrefetcher.clear();
                 }
             }
-            return kotlin.Unit.INSTANCE;
         });
 
         VideoState.getOnChange().addObserver(state -> {
@@ -211,7 +210,6 @@ public class VoiceOverTranslationPatch {
                 PlayerVolumePatch.clearDuckMultiplier();
                 TTSPrefetcher.clear();
             }
-            return kotlin.Unit.INSTANCE;
         });
     }
 

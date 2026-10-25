@@ -35,7 +35,6 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
-import kotlin.Unit;
 
 @SuppressWarnings({"unused", "deprecation"})
 public final class HideStatusBarPatch {
@@ -248,7 +247,6 @@ public final class HideStatusBarPatch {
                             hiddenStatusBarActivity.getWindow().getDecorView().requestApplyInsets();
                         }
                     }
-                    return Unit.INSTANCE;
                 });
             }
             hideStatusBar(activity);

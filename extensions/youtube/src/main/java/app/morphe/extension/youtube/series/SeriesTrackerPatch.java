@@ -39,10 +39,7 @@ public final class SeriesTrackerPatch {
 
     static {
         if (ENABLED) {
-            VideoState.getOnChange().addObserver(state -> {
-                videoStateChanged(state);
-                return kotlin.Unit.INSTANCE;
-            });
+            VideoState.getOnChange().addObserver(SeriesTrackerPatch::videoStateChanged);
         }
     }
 

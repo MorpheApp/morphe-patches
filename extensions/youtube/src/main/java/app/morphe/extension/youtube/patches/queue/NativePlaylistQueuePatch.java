@@ -391,12 +391,10 @@ public final class NativePlaylistQueuePatch {
             observingPlayer = true;
             PlayerType.getOnChange().addObserver(type -> {
                 onPlaybackContextChanged();
-                return kotlin.Unit.INSTANCE;
             });
 
             ShortsPlayerState.getOnChange().addObserver(open -> {
                 onPlaybackContextChanged();
-                return kotlin.Unit.INSTANCE;
             });
         }
 

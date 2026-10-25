@@ -24,7 +24,6 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
 import app.morphe.extension.youtube.whitelist.WhitelistType;
-import kotlin.Unit;
 
 @SuppressWarnings("unused")
 public final class RememberPlaybackSpeedPatch {
@@ -67,7 +66,6 @@ public final class RememberPlaybackSpeedPatch {
             } else {
                 shortsSelectedPlaybackSpeed = -2.0f;
             }
-            return Unit.INSTANCE;
         });
 
         // The app only sets the speed of a Short if it differs from the speed it uses,
@@ -77,7 +75,6 @@ public final class RememberPlaybackSpeedPatch {
             if (ShortsPlayerState.isOpen()) {
                 applyShortsPlaybackSpeed(false);
             }
-            return Unit.INSTANCE;
         });
     }
 

@@ -72,7 +72,6 @@ public class BackgroundPlaybackPatch {
 
             VideoState.getOnChange().addObserver(state -> {
                 onVideoStateChanged(state);
-                return kotlin.Unit.INSTANCE;
             });
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);

@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -48,7 +49,6 @@ import app.morphe.extension.youtube.patches.utils.requests.SavePlaylistRequest;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.PlayerType;
-import kotlin.Pair;
 
 @SuppressWarnings({"unused", "StaticFieldLeak"})
 public class PlaylistPatch {
@@ -210,8 +210,8 @@ public class PlaylistPatch {
                     if (request != null) {
                         Pair<String, String> playlistIds = request.getPlaylistId();
                         if (playlistIds != null) {
-                            String createdPlaylistId = playlistIds.getFirst();
-                            String setVideoId = playlistIds.getSecond();
+                            String createdPlaylistId = playlistIds.first;
+                            String setVideoId = playlistIds.second;
                             if (createdPlaylistId != null && setVideoId != null) {
                                 playlistId = createdPlaylistId;
                                 if (Settings.QUEUE_RESTORE.get()) {
@@ -302,8 +302,8 @@ public class PlaylistPatch {
                     listContainer.setOrientation(LinearLayout.VERTICAL);
 
                     for (Pair<String, String> playlist : playlists) {
-                        String listId = playlist.getFirst();
-                        String title = playlist.getSecond();
+                        String listId = playlist.first;
+                        String title = playlist.second;
                         Runnable action = () -> saveToPlaylist(listId, title);
                         View itemLayout = createItemLayout(context, title, libraryIconId);
                         actionsMap.put(itemLayout, action);

@@ -40,7 +40,6 @@ import app.morphe.extension.youtube.patches.PostImageDownloadPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
-import kotlin.Unit;
 
 /**
  * Finds the full width video cards of the feeds, and the video id of each card.
@@ -128,7 +127,6 @@ public final class FeedVideoCardsPatch {
             // on the thumbnail is hidden while the video of the card plays in the feed.
             PlayerType.getOnChange().addObserver(type -> {
                 redrawCards();
-                return Unit.INSTANCE;
             });
         }
     }

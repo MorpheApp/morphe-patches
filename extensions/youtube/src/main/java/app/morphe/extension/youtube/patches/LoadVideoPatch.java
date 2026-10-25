@@ -21,14 +21,13 @@ import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
 import app.morphe.extension.youtube.patches.queue.NativePlaylistQueuePatch;
 import app.morphe.extension.youtube.shared.PlayerType;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 
 @SuppressWarnings("unused")
 public final class LoadVideoPatch {
@@ -80,11 +79,10 @@ public final class LoadVideoPatch {
      */
     private static int inlinePlaybackBlockId;
 
-    private static final Function1<PlayerType, Unit> unblockInlinePlaybackOnPlayerOpen = type -> {
+    private static final Consumer<PlayerType> unblockInlinePlaybackOnPlayerOpen = type -> {
         if (type.isMaximizedOrFullscreen()) {
             unblockInlinePlayback();
         }
-        return Unit.INSTANCE;
     };
 
     /**

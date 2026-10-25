@@ -40,7 +40,6 @@ import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockViewController;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
 import app.morphe.extension.youtube.whitelist.WhitelistType;
-import kotlin.Unit;
 
 /**
  * YouTube-side stub class for the SponsorBlock injection points and {@link Configuration}.
@@ -64,12 +63,10 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
 
             PlayerType.getOnChange().addObserver((PlayerType type) -> {
                 SegmentPlaybackController.onPlayerTypeChanged();
-                return Unit.INSTANCE;
             });
 
             VideoInformation.onChannelIdChange.addObserver((String channelId) -> {
                 SegmentPlaybackController.onChannelIdChange(channelId);
-                return Unit.INSTANCE;
             });
 
             // Mirrors the side effects the legacy SponsorBlockPreferenceGroup applied from its

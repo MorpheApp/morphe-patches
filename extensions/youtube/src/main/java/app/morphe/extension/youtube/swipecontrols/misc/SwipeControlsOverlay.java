@@ -1,34 +1,34 @@
-package app.morphe.extension.youtube.swipecontrols.misc
+package app.morphe.extension.youtube.swipecontrols.misc;
 
 /**
  * Interface for all overlays for swipe controls.
  */
-interface SwipeControlsOverlay {
+public interface SwipeControlsOverlay {
     /**
      * Called when the currently set volume level was changed.
      *
-     * @param newVolume The new volume level.
+     * @param newVolume     The new volume level.
      * @param maximumVolume The maximum volume index.
-     * @param boostStep The volume boost above the maximum volume, in steps.
+     * @param boostStep     The volume boost above the maximum volume, in steps.
      */
-    fun onVolumeChanged(newVolume: Int, maximumVolume: Int, boostStep: Int = 0)
+    void onVolumeChanged(int newVolume, int maximumVolume, int boostStep);
 
     /**
      * Called when the currently set screen brightness was changed.
      *
-     * @param brightness The new screen brightness, in percent (range 0.0–100.0).
+     * @param brightness The new screen brightness, in percent (range 0.0-100.0).
      */
-    fun onBrightnessChanged(brightness: Double)
+    void onBrightnessChanged(double brightness);
 
     /**
      * Called when the playback speed was changed via swipe gesture.
      *
      * @param speed The new playback speed multiplier.
      */
-    fun onSpeedChanged(speed: Float)
+    void onSpeedChanged(float speed);
 
     /**
      * Called when a new swipe session has started.
      */
-    fun onEnterSwipeSession()
+    void onEnterSwipeSession();
 }
