@@ -20,6 +20,7 @@ import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -56,6 +57,12 @@ private val downloadsResourcePatch = resourcePatch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
+                    NonInteractivePreference(
+                        key = "morphe_offline_queue_open",
+                        tag = "app.morphe.extension.youtube.settings.preference.OfflineQueuePreference",
+                        selectable = true
+                    ),
+                    ListPreference("morphe_offline_queue_target_hours"),
                     SwitchPreference("morphe_external_downloader_overlay_button", summary = true),
                     TextPreference(
                         "morphe_external_downloader_name",
@@ -139,6 +146,45 @@ val downloadsPatch = bytecodePatch(
         // Save the video instead of asking the server for the download action, which answers with the Premium upsell.
         ResolveCommandFingerprint.method.apply {
             val commandType = parameterTypes.first().toString()
+
+            // Keep a resolver owned by the current activity, so the extension can enqueue the
+            // same native offline command from its batch queue without synthesizing UI taps.
+            addInstructions(
+                0,
+                "invoke-static { p0 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->setCommandResolver(Ljava/lang/Object;)V"
+            )
+
+            val resolveQueuedCommand = ImmutableMethod(
+                definingClass,
+                "patch_resolveQueuedOfflineCommand",
+                listOf(
+                    ImmutableMethodParameter("Ljava/lang/Object;", null, null),
+                    ImmutableMethodParameter("[B", null, null)
+                ),
+                "V",
+                AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+                null,
+                null,
+                MutableMethodImplementation(4),
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        check-cast p0, $definingClass
+                        sget-object v0, $commandType->a:$commandType
+                        invoke-static { }, $GET_GENERATED_REGISTRY
+                        move-result-object v1
+                        invoke-static { v0, p1, v1 }, ${parseByteArrayWithRegistryMethodRef.get()!!}
+                        move-result-object v0
+                        check-cast v0, $commandType
+                        invoke-static { }, Ljava/util/Collections;->emptyMap()Ljava/util/Map;
+                        move-result-object v1
+                        invoke-virtual { p0, v0, v1 }, $this
+                        return-void
+                    """
+                )
+            }
+            classDef.methods.add(resolveQueuedCommand)
 
             addInstructionsWithLabels(
                 0,

@@ -14,9 +14,12 @@ import com.google.protobuf.MessageLite;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
@@ -44,6 +47,13 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class InAppDownloadsPatch {
+
+    private static final String QUEUED_COMMAND_RESOLVER_METHOD = "patch_resolveQueuedOfflineCommand";
+
+    private static volatile WeakReference<Object> commandResolver = new WeakReference<>(null);
+
+    @Nullable
+    private static volatile Method queuedCommandResolverMethod;
 
     /**
      * Qualities offered when the server does not list any, highest first.
@@ -282,6 +292,52 @@ public final class InAppDownloadsPatch {
                         .setOfflineabilityRenderer(renderer))
                 .build();
         return OfflineCommand.newBuilder().setOfflineVideoEndpoint(endpoint).build();
+    }
+
+    /**
+     * Injection point. Captures the command resolver owned by the current YouTube activity.
+     */
+    public static void setCommandResolver(@Nullable Object resolver) {
+        if (resolver == null) return;
+        Object current = commandResolver.get();
+        if (current != null && current.getClass() == resolver.getClass()) {
+            commandResolver = new WeakReference<>(resolver);
+            return;
+        }
+        try {
+            Method method = resolver.getClass().getDeclaredMethod(
+                    QUEUED_COMMAND_RESOLVER_METHOD, Object.class, byte[].class);
+            method.setAccessible(true);
+            queuedCommandResolverMethod = method;
+            commandResolver = new WeakReference<>(resolver);
+        } catch (Exception ex) {
+            queuedCommandResolverMethod = null;
+            Logger.printException(() -> "Could not capture queued download command resolver", ex);
+        }
+    }
+
+    /**
+     * Queues a video through YouTube's own offline command resolver.
+     *
+     * @return whether a live resolver accepted the request for dispatch
+     */
+    public static boolean enqueueVideo(String videoId) {
+        if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP || videoId == null || videoId.isEmpty()) {
+            return false;
+        }
+        Object resolver = commandResolver.get();
+        Method method = queuedCommandResolverMethod;
+        if (resolver == null || method == null) return false;
+
+        byte[] bytes = saveVideoCommand(videoId, List.of()).toByteArray();
+        Utils.runOnMainThread(() -> {
+            try {
+                method.invoke(null, resolver, bytes);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not dispatch queued offline command for: " + videoId, ex);
+            }
+        });
+        return true;
     }
 
     private static boolean hasLockedFormat(List<OfflineFormat> formats) {

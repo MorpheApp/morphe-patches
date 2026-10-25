@@ -11,6 +11,20 @@
         <item>IN_APP</item>
         <item>EXTERNAL</item>
     </string-array>
+    <string-array name="morphe_offline_queue_target_hours_entries">
+        <item>@string/morphe_offline_queue_target_hours_entry_1</item>
+        <item>@string/morphe_offline_queue_target_hours_entry_3</item>
+        <item>@string/morphe_offline_queue_target_hours_entry_5</item>
+        <item>@string/morphe_offline_queue_target_hours_entry_8</item>
+        <item>@string/morphe_offline_queue_target_hours_entry_10</item>
+    </string-array>
+    <string-array name="morphe_offline_queue_target_hours_entry_values">
+        <item>1</item>
+        <item>3</item>
+        <item>5</item>
+        <item>8</item>
+        <item>10</item>
+    </string-array>
 
     <!-- Since the 30fps looks bad, and the 2/5 second styles are not useful
          (YouTube closes the animation as soon as the feed is loaded),
