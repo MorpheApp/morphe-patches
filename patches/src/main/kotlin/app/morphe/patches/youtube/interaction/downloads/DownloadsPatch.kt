@@ -76,9 +76,7 @@ private val downloadsResourcePatch = resourcePatch {
                 "morphe_external_downloader_quick_video.xml",
                 "morphe_external_downloader_quick_video_bold.xml",
                 "morphe_external_downloader_quick_audio.xml",
-                "morphe_external_downloader_quick_audio_bold.xml",
-                "morphe_external_downloader_quick_options.xml",
-                "morphe_external_downloader_quick_options_bold.xml"
+                "morphe_external_downloader_quick_audio_bold.xml"
             )
         )
     }

@@ -188,7 +188,7 @@ public class ExternalDownloadButton {
             mainLayout.addView(divider, dividerParams);
 
             mainLayout.addView(createItem(context,
-                    "morphe_external_downloader_quick_options",
+                    "morphe_settings_screen_05_player",
                     str("morphe_external_downloader_quick_options"),
                     null,
                     () -> {
