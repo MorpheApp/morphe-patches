@@ -28,11 +28,12 @@ internal object NavigationIntentEnumFingerprint : Fingerprint(
     },
 )
 
-// The player publishes previous/next availability, repeat mode, and shuffle state together.
 internal object NativeNavigationStateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    // Previous video available, next video available, repeat mode, shuffle enabled
     parameters = listOf("Z", "Z", "I", "Z"),
     custom = { _, classDef ->
+        // Narrow the match to the state object: four fields and only a constructor
         classDef.fields.count() == 4 && classDef.methods.count() == 1
     },
 )

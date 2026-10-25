@@ -35,6 +35,7 @@ val disablePlaylistAutoplayPatch = bytecodePatch(
             SwitchPreference("morphe_disable_playlist_autoplay", summary = true)
         )
 
+        // Capture repeat mode for the autoplay check
         NativeNavigationStateFingerprint.method.addInstructions(
             0,
             "invoke-static { p3 }, $EXTENSION_CLASS->setRepeatMode(I)V"
