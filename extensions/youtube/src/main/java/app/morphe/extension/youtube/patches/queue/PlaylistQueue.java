@@ -66,7 +66,7 @@ public final class PlaylistQueue {
 
     public PlaylistQueue select(int index) {
         if (index < 0 || index >= entries.size()) {
-            throw new IndexOutOfBoundsException(index);
+            throw new IndexOutOfBoundsException("Index out of range: " + index);
         }
         return new PlaylistQueue(entries, index, repeatMode);
     }
@@ -103,7 +103,7 @@ public final class PlaylistQueue {
 
     public PlaylistQueue remove(int index) {
         if (index < 0 || index >= entries.size()) {
-            throw new IndexOutOfBoundsException(index);
+            throw new IndexOutOfBoundsException("Index out of range: " + index);
         }
         if (index == selectedIndex) {
             return this;
@@ -116,10 +116,10 @@ public final class PlaylistQueue {
     /** Move an entry with the native adapter's remove-then-insert semantics. */
     public PlaylistQueue move(int from, int to) {
         if (from < 0 || from >= entries.size()) {
-            throw new IndexOutOfBoundsException(from);
+            throw new IndexOutOfBoundsException("Index out of range: " + from);
         }
         if (to < 0 || to >= entries.size()) {
-            throw new IndexOutOfBoundsException(to);
+            throw new IndexOutOfBoundsException("Index out of range: " + to);
         }
         if (from == to) {
             return this;
