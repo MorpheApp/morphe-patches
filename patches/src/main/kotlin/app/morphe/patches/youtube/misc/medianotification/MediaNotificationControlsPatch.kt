@@ -17,6 +17,7 @@ import app.morphe.patches.shared.misc.medianotification.mediaNotificationControl
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -34,9 +35,11 @@ val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
     },
     preferenceScreen = PreferenceScreen.PLAYER,
     additionalPreferences = setOf(
-        SwitchPreference("morphe_seek_notification_media_prev_next", summary = true),
-        TextPreference("morphe_seek_notification_media_rewind_length", inputType = InputType.NUMBER),
-        TextPreference("morphe_seek_notification_media_fast_forward_length", inputType = InputType.NUMBER),
+        noTitleUnsortedPreferenceCategory(
+            SwitchPreference("morphe_seek_notification_media_prev_next", summary = true),
+            TextPreference("morphe_seek_notification_media_rewind_length", inputType = InputType.NUMBER),
+            TextPreference("morphe_seek_notification_media_fast_forward_length", inputType = InputType.NUMBER)
+        )
     ),
     executeBlock = {
         // Android 12 and lower show the notification actions as the media buttons.
