@@ -475,8 +475,8 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_post_image_download_flyout_single">Download image</string>
     <string name="morphe_post_image_download_started">Downloading %s images…</string>
     <string name="morphe_post_image_download_started_single">Downloading image…</string>
-    <string name="morphe_post_image_download_saved">%1$s images saved to Pictures/%2$s</string>
-    <string name="morphe_post_image_download_saved_single">Image saved to Pictures/%s</string>
+    <string name="morphe_post_image_download_saved">%1$s images saved to %2$s</string>
+    <string name="morphe_post_image_download_saved_single">Image saved to %s</string>
     <string name="morphe_post_image_download_failed">Could not download the image</string>
     <string name="morphe_post_image_download_not_found">No image found in this post</string>
 

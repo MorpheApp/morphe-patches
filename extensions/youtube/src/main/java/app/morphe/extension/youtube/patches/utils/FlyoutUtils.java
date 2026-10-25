@@ -497,7 +497,7 @@ public final class FlyoutUtils {
 
         final String flyoutVideoId = getFlyoutVideoId();
 
-        // Only the menus of posts with images.
+        // Only added to the menus of posts with images.
         if (PostImageDownloadPatch.ENABLED) {
             nextButtonIndex = PostImageDownloadPatch.addFlyoutButton(
                     flyoutPanel,

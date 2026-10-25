@@ -24,11 +24,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.widget.RecyclerView;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
@@ -56,11 +56,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
@@ -86,6 +86,20 @@ public final class PostImageDownloadPatch {
     private static final boolean USE_EXPERIMENTAL_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
             && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00");
 
+    private static final String DOWNLOAD_ICON = USE_EXPERIMENTAL_ICONS
+            ? "yt_outline_experimental_download_vd_theme_24"
+            : "yt_outline_download_black_24";
+
+    /**
+     * App texts of the Share button. The Share button of a post is described by a text
+     * of the server, which is the same in the language of the app.
+     */
+    private static final String[] SHARE_LABEL_NAMES = {
+            "reel_footer_share",
+            "accessibility_send_share",
+            "offline_share_button_text"
+    };
+
     /** Folder of the saved images, inside the Pictures folder. */
     private static final String FOLDER = "YouTube";
 
@@ -95,11 +109,18 @@ public final class PostImageDownloadPatch {
     private static final int MAX_BUTTON_DP = 48;
     /** Share buttons are small, which keeps other described views of the post apart. */
     private static final int MAX_SHARE_BUTTON_DP = 160;
+    /** A button that ends this close to the Share button is left of it. */
+    private static final int LEFT_NEIGHBOR_TOLERANCE_DP = 2;
+    /** Space kept after the button, when it is placed after the last button of the row. */
+    private static final int ROW_END_MARGIN_DP = 4;
     private static final int PRESSED_ALPHA = 0x1F;
 
     /** Smaller images of a post element are avatars, emojis and badges. */
     private static final int MIN_IMAGE_SIZE = 200;
+    /** Options of an image url that ask for the image in its original size. */
+    private static final String ORIGINAL_SIZE_OPTIONS = "=s0";
     private static final int MAX_DOWNLOAD_BYTES = 50 * 1024 * 1024;
+    private static final int DOWNLOAD_BUFFER_SIZE = 16 * 1024;
     private static final int TIMEOUT_MS = 15_000;
 
     private static final int MIN_TEXT_LENGTH = 4;
@@ -110,8 +131,11 @@ public final class PostImageDownloadPatch {
     /** Value of a text shown by more than one post. */
     private static final String AMBIGUOUS = "";
 
-    /** Value of a text of a post that is not used, such as a poll. */
-    private static final String NOT_IMAGE_POST = "\u0000";
+    /**
+     * Value of a text of a post that is not used, such as a poll.
+     * Never a key of post images, which are urls.
+     */
+    private static final String NOT_IMAGE_POST = "not_image_post";
 
     private static final byte[] POST_BYTES = "post".getBytes(StandardCharsets.US_ASCII);
     private static final byte[] GGPHT_BYTES = "ggpht.com/".getBytes(StandardCharsets.US_ASCII);
@@ -121,7 +145,11 @@ public final class PostImageDownloadPatch {
     private static final Pattern IMAGE_URL_PATTERN = Pattern.compile(
             "(?:https?:)?//(?:yt\\d\\.ggpht\\.com|[a-z0-9]+\\.googleusercontent\\.com)/[^\\s\"'<>]+");
     /** Size of an image url, such as =s1080 or =w640-h480. */
-    private static final Pattern IMAGE_SIZE_PATTERN = Pattern.compile("(?:^|-)[swh](\\d+)(?=-|$)");
+    private static final Pattern IMAGE_SIZE_PATTERN = Pattern.compile("(?:^|-)[swh](\\d{1,5})(?=-|$)");
+    /** Thumbnail of a video, which an embedded video shows. */
+    private static final Pattern VIDEO_THUMBNAIL_PATTERN = Pattern.compile("/vi(?:_webp)?/[A-Za-z0-9_-]{11}/");
+    /** The shown text can join the lines of the post text, or show invisible format characters. */
+    private static final Pattern WHITESPACE_PATTERN = Pattern.compile("[\\s\\p{Cf}]+");
 
     /** Text -> key of the post images, or {@link #AMBIGUOUS}. Oldest texts are removed first. */
     @GuardedBy("itself")
@@ -140,13 +168,35 @@ public final class PostImageDownloadPatch {
     private static Drawable downloadIcon;
     @Nullable
     private static List<String> shareLabels;
-
-    private static final int MAX_SHARE_LABEL_LENGTH = 40;
-
     @Nullable
     private static PostCard pressedCard;
 
-    private record PostImage(String originalUrl, String shownUrl) {
+    /**
+     * @param shownSize Size of the shown image, from the options of its url.
+     */
+    private record PostImage(String originalUrl, String shownUrl, int shownSize) {
+    }
+
+    private enum UrlKind {
+        NONE,
+        /** An avatar or an emoji. */
+        AVATAR,
+        IMAGE
+    }
+
+    private enum ImageType {
+        GIF("gif", "image/gif"),
+        WEBP("webp", "image/webp"),
+        PNG("png", "image/png"),
+        JPEG("jpg", "image/jpeg");
+
+        final String extension;
+        final String mimeType;
+
+        ImageType(String extension, String mimeType) {
+            this.extension = extension;
+            this.mimeType = mimeType;
+        }
     }
 
     public static boolean isPatchIncluded() {
@@ -158,29 +208,14 @@ public final class PostImageDownloadPatch {
 
     // region Elements
 
-    private static boolean contains(byte[] bytes, byte[] search) {
-        final int last = bytes.length - search.length;
-        outer:
-        for (int i = 0; i <= last; i++) {
-            for (int j = 0; j < search.length; j++) {
-                if (bytes[i + j] != search[j]) {
-                    continue outer;
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
     private static boolean isPostText(String text) {
         return text.length() >= MIN_TEXT_LENGTH
                 && !text.contains(".eml")
                 && !text.startsWith("http");
     }
 
-    /** Collapses the whitespace, as the shown text can join the lines of the post text. */
     private static String normalize(String text) {
-        return text.replaceAll("[\\s\u200B]+", " ").trim();
+        return WHITESPACE_PATTERN.matcher(text).replaceAll(" ").trim();
     }
 
     /**
@@ -191,7 +226,7 @@ public final class PostImageDownloadPatch {
     private static String getCutOffStart(String text) {
         int index = text.indexOf("...");
         if (index < 0) {
-            index = text.indexOf('\u2026');
+            index = text.indexOf('…');
         }
         return index >= LONG_TEXT_LENGTH ? normalize(text.substring(0, index)) : null;
     }
@@ -208,15 +243,32 @@ public final class PostImageDownloadPatch {
         int size = Integer.MAX_VALUE;
         Matcher matcher = IMAGE_SIZE_PATTERN.matcher(options);
         while (matcher.find()) {
-            try {
-                final int value = Integer.parseInt(matcher.group(1));
-                if (value > 0) {
-                    size = Math.min(size, value);
-                }
-            } catch (NumberFormatException ignored) {
+            //noinspection ConstantConditions
+            final int value = Integer.parseInt(matcher.group(1));
+            if (value > 0) {
+                size = Math.min(size, value);
             }
         }
         return size;
+    }
+
+    /** Avatars and emojis are cropped to a circle or to a square without a border. */
+    private static boolean isAvatarOptions(String options) {
+        return options.contains("-k-") || options.contains("no-rj");
+    }
+
+    private static UrlKind getUrlKind(String text) {
+        UrlKind kind = UrlKind.NONE;
+        Matcher matcher = IMAGE_URL_PATTERN.matcher(text);
+        while (matcher.find()) {
+            String options = getOptions(matcher.group());
+            if (isAvatarOptions(options)) {
+                kind = UrlKind.AVATAR;
+            } else if (getImageSize(options) >= MIN_IMAGE_SIZE) {
+                return UrlKind.IMAGE;
+            }
+        }
+        return kind;
     }
 
     /**
@@ -225,8 +277,9 @@ public final class PostImageDownloadPatch {
      * Called when an element is parsed. The element is not changed.
      */
     public static byte[] onElementLoaded(byte[] bytes) {
-        if (!ENABLED || bytes == null || !contains(bytes, POST_BYTES)
-                || !(contains(bytes, GGPHT_BYTES) || contains(bytes, GOOGLE_USER_CONTENT_BYTES))) {
+        if (!ENABLED || bytes == null || !FeedVideoCardsPatch.contains(bytes, POST_BYTES)
+                || !(FeedVideoCardsPatch.contains(bytes, GGPHT_BYTES)
+                || FeedVideoCardsPatch.contains(bytes, GOOGLE_USER_CONTENT_BYTES))) {
             return bytes;
         }
         try {
@@ -248,52 +301,38 @@ public final class PostImageDownloadPatch {
                 return bytes;
             }
 
-            getShareLabels();
+            if (!elementIdentifier.contains("shelf")) {
+                registerPost(textNodes, elementIdentifier, isImagePost(textNodes, elementIdentifier));
+                return bytes;
+            }
 
-            if (elementIdentifier.contains("shelf")) {
-                // A shelf of many posts. Each post starts with the avatar of its channel.
-                List<List<ProtoNode>> posts = new ArrayList<>();
-                List<ProtoNode> current = new ArrayList<>();
-                boolean currentHasImage = false;
-                for (ProtoNode node : textNodes) {
-                    final int kind = getUrlKind(node.getText());
-                    if (kind == URL_AVATAR && currentHasImage) {
-                        posts.add(current);
-                        current = new ArrayList<>();
-                        currentHasImage = false;
-                    }
-                    if (kind == URL_IMAGE) {
-                        currentHasImage = true;
-                    }
-                    current.add(node);
-                }
-                if (currentHasImage) {
+            // A shelf of many posts. Each post starts with the avatar of its channel.
+            List<List<ProtoNode>> posts = new ArrayList<>();
+            List<ProtoNode> current = new ArrayList<>();
+            boolean currentHasImage = false;
+            for (ProtoNode node : textNodes) {
+                final UrlKind kind = getUrlKind(node.getText());
+                if (kind == UrlKind.AVATAR && currentHasImage) {
                     posts.add(current);
+                    current = new ArrayList<>();
+                    currentHasImage = false;
+                } else if (kind == UrlKind.IMAGE) {
+                    currentHasImage = true;
                 }
-                Logger.printDebug(() -> "Post shelf " + elementIdentifier + " with " + posts.size() + " posts");
-                for (List<ProtoNode> post : posts) {
-                    if (isImagePost(post, null)) {
-                        registerPost(post, elementIdentifier);
-                    } else {
-                        registerNotImagePost(post);
-                    }
-                }
-                return bytes;
+                current.add(node);
             }
-
-            if (!isImagePost(textNodes, elementIdentifier)) {
-                registerNotImagePost(textNodes);
-                return bytes;
+            if (currentHasImage) {
+                posts.add(current);
             }
-            registerPost(textNodes, elementIdentifier);
+            Logger.printDebug(() -> "Post shelf " + elementIdentifier + " with " + posts.size() + " posts");
+            for (List<ProtoNode> post : posts) {
+                registerPost(post, elementIdentifier, isImagePost(post, null));
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "onElementLoaded failure", ex);
         }
         return bytes;
     }
-
-    /** Thumbnail of a video, which an embedded video shows. */
-    private static final Pattern VIDEO_THUMBNAIL_PATTERN = Pattern.compile("/vi(?:_webp)?/[A-Za-z0-9_-]{11}/");
 
     /**
      * Only posts of images. Polls with images and posts with an embedded video are not used,
@@ -321,91 +360,27 @@ public final class PostImageDownloadPatch {
         return true;
     }
 
-    private static final int URL_NONE = 0;
-    private static final int URL_AVATAR = 1;
-    private static final int URL_IMAGE = 2;
-
     /**
-     * @return If the text has the url of an avatar or an emoji, of a post image, or none.
+     * Maps the texts of a post to its images. The texts of a post that is not used, such as
+     * a poll, are mapped too, so its card is not matched to another post that shares some
+     * of its texts.
      */
-    private static int getUrlKind(String text) {
-        int kind = URL_NONE;
-        Matcher matcher = IMAGE_URL_PATTERN.matcher(text);
-        while (matcher.find()) {
-            String options = getOptions(matcher.group());
-            if (isAvatarOptions(options)) {
-                if (kind == URL_NONE) {
-                    kind = URL_AVATAR;
-                }
-            } else if (getImageSize(options) >= MIN_IMAGE_SIZE) {
-                return URL_IMAGE;
+    private static void registerPost(List<ProtoNode> textNodes, String elementIdentifier,
+                                     boolean isImagePost) {
+        String key = NOT_IMAGE_POST;
+        if (isImagePost) {
+            Map<String, PostImage> images = findImages(textNodes);
+            if (images.isEmpty()) {
+                return;
             }
-        }
-        return kind;
-    }
-
-    /** Avatars and emojis are cropped to a circle or to a square without a border. */
-    private static boolean isAvatarOptions(String options) {
-        return options.contains("-k-") || options.contains("no-rj");
-    }
-
-    /**
-     * Maps the texts of a post that is not used, such as a poll, so its card
-     * is not matched to another post that shares some of its texts.
-     */
-    private static void registerNotImagePost(List<ProtoNode> textNodes) {
-        synchronized (textPostKeys) {
-            for (ProtoNode node : textNodes) {
-                String text = normalize(node.getText());
-                if (!isPostText(text)) {
-                    continue;
-                }
-                String previous = textPostKeys.get(text);
-                if (previous == null) {
-                    textPostKeys.put(text, NOT_IMAGE_POST);
-                } else if (!previous.equals(NOT_IMAGE_POST)) {
-                    textPostKeys.put(text, AMBIGUOUS);
-                }
+            key = String.join("\n", images.keySet());
+            synchronized (postImages) {
+                postImages.put(key, new ArrayList<>(images.values()));
             }
-        }
-    }
-
-    /**
-     * Maps the texts of a post to its images.
-     */
-    private static void registerPost(List<ProtoNode> textNodes, String elementIdentifier) {
-        // Base url -> image, in the order of the post.
-        Map<String, PostImage> images = new LinkedHashMap<>();
-        for (ProtoNode node : textNodes) {
-            Matcher matcher = IMAGE_URL_PATTERN.matcher(node.getText());
-            while (matcher.find()) {
-                String url = matcher.group();
-                if (url.startsWith("//")) {
-                    url = "https:" + url;
-                }
-                final int optionsIndex = url.indexOf('=');
-                String base = optionsIndex < 0 ? url : url.substring(0, optionsIndex);
-                String options = getOptions(url);
-                if (isAvatarOptions(options) || getImageSize(options) < MIN_IMAGE_SIZE) {
-                    continue;
-                }
-                PostImage previous = images.get(base);
-                if (previous == null || getImageSize(options)
-                        > getImageSize(getOptions(previous.shownUrl()))) {
-                    images.put(base, new PostImage(base + "=s0", url));
-                }
-            }
+            final int imageCount = images.size();
+            Logger.printDebug(() -> "Post element " + elementIdentifier + " with " + imageCount + " images");
         }
 
-        if (images.isEmpty()) {
-            return;
-        }
-
-        String key = String.join("\n", images.keySet());
-        synchronized (postImages) {
-            postImages.put(key, new ArrayList<>(images.values()));
-        }
-        int mappedTexts = 0;
         synchronized (textPostKeys) {
             for (ProtoNode node : textNodes) {
                 String text = normalize(node.getText());
@@ -418,43 +393,52 @@ public final class PostImageDownloadPatch {
                 } else if (!previous.equals(key)) {
                     textPostKeys.put(text, AMBIGUOUS);
                 }
-                mappedTexts++;
             }
         }
-        final int texts = mappedTexts;
-        Logger.printDebug(() -> "Post element " + elementIdentifier + " with "
-                + images.size() + " images and " + texts + " texts");
+    }
+
+    /**
+     * @return Base url -> image, in the order of the post.
+     */
+    private static Map<String, PostImage> findImages(List<ProtoNode> textNodes) {
+        Map<String, PostImage> images = new LinkedHashMap<>();
+        for (ProtoNode node : textNodes) {
+            Matcher matcher = IMAGE_URL_PATTERN.matcher(node.getText());
+            while (matcher.find()) {
+                String url = matcher.group();
+                if (url.startsWith("//")) {
+                    url = "https:" + url;
+                }
+                final int optionsIndex = url.indexOf('=');
+                String base = optionsIndex < 0 ? url : url.substring(0, optionsIndex);
+                String options = optionsIndex < 0 ? "" : url.substring(optionsIndex + 1);
+                if (isAvatarOptions(options)) {
+                    continue;
+                }
+                final int size = getImageSize(options);
+                if (size < MIN_IMAGE_SIZE) {
+                    continue;
+                }
+                // The largest shown size of each image.
+                PostImage previous = images.get(base);
+                if (previous == null || size > previous.shownSize()) {
+                    images.put(base, new PostImage(base + ORIGINAL_SIZE_OPTIONS, url, size));
+                }
+            }
+        }
+        return images;
     }
 
     // endregion
 
     // region Cards
 
-    private static int dp(View view, int dp) {
-        return Math.round(dp * view.getResources().getDisplayMetrics().density);
-    }
-
-    @Nullable
-    private static ComponentHost findRootHost(@Nullable View view) {
-        ComponentHost root = null;
-        ViewParent parent = view instanceof ComponentHost ? (ViewParent) view
-                : view == null ? null : view.getParent();
-        while (parent instanceof ComponentHost host) {
-            root = host;
-            parent = host.getParent();
-        }
-        return root;
-    }
-
     private static void collectTexts(ComponentHost host, List<String> texts) {
         TextContent textContent = host.getTextContent();
         if (textContent != null) {
             for (CharSequence text : textContent.getTextItems()) {
                 if (text != null) {
-                    String item = text.toString().trim();
-                    if (isPostText(item) && !texts.contains(item)) {
-                        texts.add(item);
-                    }
+                    addPostText(texts, text);
                 }
             }
         }
@@ -462,14 +446,18 @@ public final class PostImageDownloadPatch {
             View view = host.getChildAt(i);
             CharSequence description = view.getContentDescription();
             if (description != null) {
-                String item = description.toString().trim();
-                if (isPostText(item) && !texts.contains(item)) {
-                    texts.add(item);
-                }
+                addPostText(texts, description);
             }
             if (view instanceof ComponentHost child) {
                 collectTexts(child, texts);
             }
+        }
+    }
+
+    private static void addPostText(List<String> texts, CharSequence text) {
+        String item = text.toString().trim();
+        if (isPostText(item) && !texts.contains(item)) {
+            texts.add(item);
         }
     }
 
@@ -499,7 +487,7 @@ public final class PostImageDownloadPatch {
                         key = findKeyByStart(text);
                     }
                 }
-                if (key != null && key.equals(NOT_IMAGE_POST)) {
+                if (NOT_IMAGE_POST.equals(key)) {
                     if (text.length() >= LONG_TEXT_LENGTH) {
                         // The card shows a post that is not used, such as a poll.
                         return null;
@@ -513,25 +501,12 @@ public final class PostImageDownloadPatch {
                 scores.merge(key, score, Integer::sum);
             }
         }
-
-        String best = null;
-        int bestScore = 0;
-        boolean tie = false;
-        for (Map.Entry<String, Integer> entry : scores.entrySet()) {
-            final int score = entry.getValue();
-            if (score > bestScore) {
-                best = entry.getKey();
-                bestScore = score;
-                tie = false;
-            } else if (score == bestScore) {
-                tie = true;
-            }
-        }
-        return tie || bestScore < 2 ? null : best;
+        return FeedVideoCardsPatch.findBestMatch(scores);
     }
 
     /**
-     * @return The key of the post with a text that starts with the text, or null if none or many.
+     * @return The key of the post with a text that starts with the text,
+     *         {@link #AMBIGUOUS} if many posts do, or null if none.
      */
     @GuardedBy("textPostKeys")
     @Nullable
@@ -563,83 +538,31 @@ public final class PostImageDownloadPatch {
         }
     }
 
-    /**
-     * @return The texts of the app whose resource names include share, such as Share
-     *         in the language of the app. The names of the texts are not known.
-     */
-    private static List<String> findShareTexts() {
-        List<String> texts = new ArrayList<>();
-        try {
-            android.content.res.Resources resources = Utils.getContext().getResources();
-            // Any text of the app gives the package and the type of the texts.
-            final int knownId = ResourceUtils.getIdentifier(ResourceType.STRING, "morphe_post_image_download_title");
-            if (knownId == 0) {
-                return texts;
-            }
-            final int typeBase = knownId & 0xFFFF0000;
-            int misses = 0;
-            for (int entry = 0; entry <= 0xFFFF && misses < 1000; entry++) {
-                final int id = typeBase | entry;
-                String name;
-                try {
-                    name = resources.getResourceEntryName(id);
-                } catch (android.content.res.Resources.NotFoundException ex) {
-                    misses++;
-                    continue;
-                }
-                misses = 0;
-                if (!name.contains("share") || name.startsWith("morphe")) {
-                    continue;
-                }
-                try {
-                    String text = resources.getString(id).trim();
-                    if (!text.isEmpty() && text.length() <= MAX_SHARE_LABEL_LENGTH && !texts.contains(text)) {
-                        texts.add(text);
-                    }
-                } catch (Exception ignored) {
-                    // A plural or a text with format arguments.
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "findShareTexts failure", ex);
-        }
-        return texts;
-    }
-
-    private static synchronized List<String> getShareLabels() {
+    private static List<String> getShareLabels() {
         if (shareLabels == null) {
-            List<String> labels = new ArrayList<>(findShareTexts());
-            for (String name : new String[]{"share", "menu_share", "menu_item_share", "share_button", "accessibility_share", "accessibility_share_button"}) {
-                try {
-                    if (ResourceUtils.getIdentifier(ResourceType.STRING, name) != 0) {
-                        String label = ResourceUtils.getString(name).trim();
-                        if (!label.isEmpty() && !labels.contains(label)) {
-                            labels.add(label);
-                        }
-                    }
-                } catch (Exception ignored) {
-                }
+            List<String> labels = new ArrayList<>();
+            for (String name : SHARE_LABEL_NAMES) {
+                addShareLabel(labels, ResourceUtils.getString(name));
             }
-            try {
-                android.content.res.Resources system = android.content.res.Resources.getSystem();
-                final int id = system.getIdentifier("share", "string", "android");
-                if (id != 0) {
-                    // Framework texts are given in the language of the app.
-                    String label = Utils.getContext().getResources().getString(id).trim();
-                    if (!label.isEmpty() && !labels.contains(label)) {
-                        labels.add(label);
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Could not get the share text of the system: " + ex);
+            // Framework texts are given in the language of the app.
+            final int systemShareId = ResourceUtils.getSystemStringIdentifier("share");
+            if (systemShareId != 0) {
+                addShareLabel(labels, Utils.getContext().getString(systemShareId));
             }
-            if (!labels.contains("Share")) {
-                labels.add("Share");
-            }
-            Logger.printDebug(() -> "Share button labels: " + labels.size());
+            Logger.printDebug(() -> "Share button labels: " + labels);
             shareLabels = labels;
         }
         return shareLabels;
+    }
+
+    private static void addShareLabel(List<String> labels, @Nullable String label) {
+        if (label == null) {
+            return;
+        }
+        label = label.trim();
+        if (!label.isEmpty() && !labels.contains(label)) {
+            labels.add(label);
+        }
     }
 
     private static boolean isShareDescription(CharSequence description) {
@@ -666,7 +589,7 @@ public final class PostImageDownloadPatch {
             if (description != null && isShareDescription(description)) {
                 rect.set(0, 0, child.getWidth(), child.getHeight());
                 root.offsetDescendantRectToMyCoords(child, rect);
-                if (rect.width() > 0 && rect.width() <= dp(root, MAX_SHARE_BUTTON_DP)) {
+                if (rect.width() > 0 && rect.width() <= Dim.dp(MAX_SHARE_BUTTON_DP)) {
                     return child;
                 }
             }
@@ -715,14 +638,18 @@ public final class PostImageDownloadPatch {
         }
         try {
             PostCard card = cards.get(root);
-            String key = FeedVideoCardsPatch.isInDialog(root) ? null : findPostKey(root);
+            // Most root hosts are not posts and have no Share button,
+            // so the texts are only looked up for the ones that do.
+            Rect shareRect = new Rect();
+            View share = FeedVideoCardsPatch.isInDialog(root) ? null : findShareButton(root, root, shareRect);
+            String key = share == null ? null : findPostKey(root);
             if (key == null) {
                 if (card != null) {
                     card.removeButton(root);
                     cards.remove(root);
                 }
-                // The element of the post can be parsed after the post was laid out.
-                if (findShareButton(root, root, new Rect()) != null) {
+                if (share != null) {
+                    // The element of the post can be parsed after the post was laid out.
                     FeedVideoCardsPatch.scheduleRetry(root);
                 }
                 return;
@@ -732,14 +659,6 @@ public final class PostImageDownloadPatch {
                 cards.put(root, card);
             }
             card.key = key;
-
-            Rect shareRect = new Rect();
-            View share = findShareButton(root, root, shareRect);
-            if (share == null) {
-                card.removeButton(root);
-                FeedVideoCardsPatch.scheduleRetry(root);
-                return;
-            }
             if (!card.placeButton(root, share, shareRect)) {
                 card.removeButton(root);
             }
@@ -751,7 +670,6 @@ public final class PostImageDownloadPatch {
     private static final class PostCard {
         String key;
         final DownloadButton button = new DownloadButton();
-        final Rect touchBounds = new Rect();
         boolean buttonAdded;
 
         /**
@@ -761,16 +679,14 @@ public final class PostImageDownloadPatch {
          * @return If the button was placed.
          */
         boolean placeButton(ComponentHost root, View shareView, Rect share) {
-            final int size = Math.max(dp(root, MIN_BUTTON_DP),
-                    Math.min(dp(root, MAX_BUTTON_DP), share.height()));
-            final int centerY = share.centerY();
+            final int size = Math.max(Dim.dp(MIN_BUTTON_DP), Math.min(Dim.dp(MAX_BUTTON_DP), share.height()));
 
             List<Rect> row = new ArrayList<>();
             collectRowButtons(root, root, shareView, share, row);
             int leftNeighbor = 0;
             int rowRight = share.right;
             for (Rect rect : row) {
-                if (rect.right <= share.left + dp(root, 2)) {
+                if (rect.right <= share.left + Dim.dp(LEFT_NEIGHBOR_TOLERANCE_DP)) {
                     leftNeighbor = Math.max(leftNeighbor, rect.right);
                 }
                 rowRight = Math.max(rowRight, rect.right);
@@ -779,14 +695,14 @@ public final class PostImageDownloadPatch {
             final int left;
             if (share.left - leftNeighbor >= size) {
                 left = share.left - size;
-            } else if (root.getWidth() - rowRight >= size + dp(root, 4)) {
+            } else if (root.getWidth() - rowRight >= size + Dim.dp(ROW_END_MARGIN_DP)) {
                 left = rowRight;
             } else {
                 Logger.printDebug(() -> "No room for the download button");
                 return false;
             }
-            touchBounds.set(left, centerY - size / 2, left + size, centerY - size / 2 + size);
-            button.setBounds(touchBounds);
+            final int top = share.centerY() - size / 2;
+            button.setBounds(left, top, left + size, top + size);
             if (!buttonAdded) {
                 root.getOverlay().add(button);
                 buttonAdded = true;
@@ -803,7 +719,7 @@ public final class PostImageDownloadPatch {
         }
 
         boolean isHit(float x, float y) {
-            return buttonAdded && touchBounds.contains(Math.round(x), Math.round(y));
+            return buttonAdded && button.getBounds().contains(Math.round(x), Math.round(y));
         }
     }
 
@@ -831,13 +747,11 @@ public final class PostImageDownloadPatch {
                 canvas.drawCircle(bounds.exactCenterX(), bounds.exactCenterY(),
                         bounds.width() / 2f, pressedPaint);
             }
-            Drawable icon = getDownloadIcon();
+            Drawable icon = getDownloadIcon(color);
             if (icon != null) {
-                final float density = Utils.getContext().getResources().getDisplayMetrics().density;
-                final int iconSize = Math.round(ICON_SIZE_DP * density);
+                final int iconSize = Dim.dp(ICON_SIZE_DP);
                 final int left = bounds.centerX() - iconSize / 2;
                 final int top = bounds.centerY() - iconSize / 2;
-                icon.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
                 icon.setBounds(left, top, left + iconSize, top + iconSize);
                 icon.draw(canvas);
             }
@@ -857,26 +771,24 @@ public final class PostImageDownloadPatch {
         }
     }
 
+    private static int downloadIconColor;
+
+    /**
+     * @return The download icon of the buttons drawn on posts, in the color.
+     */
     @Nullable
-    private static Drawable getDownloadIcon() {
+    private static Drawable getDownloadIcon(int color) {
         if (downloadIcon == null) {
-            Drawable icon = null;
-            String[] names = USE_EXPERIMENTAL_ICONS
-                    ? new String[]{"yt_outline_experimental_download_vd_theme_24",
-                    "yt_outline_download_black_24", "morphe_post_image_download"}
-                    : new String[]{"yt_outline_download_black_24", "morphe_post_image_download"};
-            for (String name : names) {
-                if (ResourceUtils.getIdentifier(ResourceType.DRAWABLE, name) != 0) {
-                    icon = ResourceUtils.getDrawable(name);
-                    if (icon != null) {
-                        break;
-                    }
-                }
+            Drawable icon = ResourceUtils.getDrawable(DOWNLOAD_ICON);
+            if (icon == null) {
+                return null;
             }
-            if (icon != null) {
-                icon = icon.mutate();
-            }
-            downloadIcon = icon;
+            downloadIcon = icon.mutate();
+            downloadIconColor = ~color;
+        }
+        if (downloadIconColor != color) {
+            downloadIconColor = color;
+            downloadIcon.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
         }
         return downloadIcon;
     }
@@ -927,6 +839,13 @@ public final class PostImageDownloadPatch {
         return false;
     }
 
+    private static void clearPressed() {
+        if (pressedCard != null) {
+            pressedCard.button.setPressed(false);
+            pressedCard = null;
+        }
+    }
+
     /**
      * @return The image the post shows now, or all images if it is not known.
      */
@@ -935,17 +854,10 @@ public final class PostImageDownloadPatch {
         if (images == null || images.size() < 2) {
             return images;
         }
-        try {
-            ViewGroup carousel = findImageCarousel(root, null);
-            final int index = carousel == null ? -1 : getShownIndex(carousel);
-            Logger.printDebug(() -> "Shown image " + index + " of " + images.size());
-            if (index >= 0 && index < images.size()) {
-                return List.of(images.get(index));
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "getShownImages failure", ex);
-        }
-        return images;
+        View carousel = findImageCarousel(root, null);
+        final int index = carousel instanceof RecyclerView list ? getShownIndex(list) : -1;
+        Logger.printDebug(() -> "Shown image " + index + " of " + images.size());
+        return index >= 0 && index < images.size() ? List.of(images.get(index)) : images;
     }
 
     /**
@@ -953,7 +865,7 @@ public final class PostImageDownloadPatch {
      *         and not the carousel of its comments.
      */
     @Nullable
-    private static ViewGroup findImageCarousel(ViewGroup group, @Nullable ViewGroup best) {
+    private static View findImageCarousel(ViewGroup group, @Nullable View best) {
         for (int i = 0, count = group.getChildCount(); i < count; i++) {
             View child = group.getChildAt(i);
             if (child.getVisibility() != View.VISIBLE || !(child instanceof ViewGroup childGroup)) {
@@ -962,7 +874,7 @@ public final class PostImageDownloadPatch {
             if (FeedVideoCardsPatch.isHorizontalList(child)) {
                 if (childGroup.getChildCount() > 0
                         && (best == null || child.getHeight() > best.getHeight())) {
-                    best = childGroup;
+                    best = child;
                 }
             } else {
                 best = findImageCarousel(childGroup, best);
@@ -972,9 +884,9 @@ public final class PostImageDownloadPatch {
     }
 
     /**
-     * @return The position of the item of the carousel that is shown the most.
+     * @return The position of the item of the carousel that is shown the most, or -1 if none.
      */
-    private static int getShownIndex(ViewGroup carousel) throws Exception {
+    private static int getShownIndex(RecyclerView carousel) {
         View shown = null;
         int shownWidth = 0;
         int firstLeft = Integer.MAX_VALUE;
@@ -1003,18 +915,9 @@ public final class PostImageDownloadPatch {
 
         // The scroll offset is the distance of the start of the list to its first item,
         // and is the same for any adapter.
-        java.lang.reflect.Method method = View.class.getDeclaredMethod("computeHorizontalScrollOffset");
-        method.setAccessible(true);
-        final int offset = (int) method.invoke(carousel);
-        final int position = offset + shown.getLeft() - carousel.getPaddingLeft();
+        final int position = carousel.computeHorizontalScrollOffset() + shown.getLeft()
+                - carousel.getPaddingLeft();
         return Math.max(0, Math.round(position / (float) pitch));
-    }
-
-    private static void clearPressed() {
-        if (pressedCard != null) {
-            pressedCard.button.setPressed(false);
-            pressedCard = null;
-        }
     }
 
     // endregion
@@ -1027,27 +930,24 @@ public final class PostImageDownloadPatch {
      * @param sender The view that opened the menu.
      */
     public static int addFlyoutButton(Object flyoutPanel, int index, @Nullable View sender) {
-        if (!ENABLED) {
+        if (!ENABLED || sender == null) {
             return index;
         }
         try {
-            ComponentHost root = findRootHost(sender);
+            ComponentHost root = FeedVideoCardsPatch.findTappedRootHost(sender);
             if (root == null) {
                 Logger.printDebug(() -> "Menu sender has no root host: " + sender);
                 return index;
             }
             PostCard card = cards.get(root);
-            String key = card != null ? card.key : findPostKey(root);
-            List<PostImage> images = getImages(key);
+            List<PostImage> images = getImages(card != null ? card.key : findPostKey(root));
             if (images == null) {
                 return index;
             }
 
-            Drawable icon = getDownloadIcon();
             final int nextIndex = FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
-                    icon == null ? null : icon.getConstantState() == null
-                            ? icon : icon.getConstantState().newDrawable().mutate(),
+                    ResourceUtils.getDrawable(DOWNLOAD_ICON),
                     str(images.size() == 1
                             ? "morphe_post_image_download_flyout_single"
                             : "morphe_post_image_download_flyout"),
@@ -1102,14 +1002,17 @@ public final class PostImageDownloadPatch {
             }
 
             final int savedCount = saved;
+            final String folder = getSaveFolderName();
             Utils.runOnMainThread(() -> {
+                String toast;
                 if (savedCount == 0) {
-                    Utils.showToastShort(str("morphe_post_image_download_failed"));
+                    toast = str("morphe_post_image_download_failed");
                 } else if (savedCount == 1) {
-                    Utils.showToastShort(str("morphe_post_image_download_saved_single", FOLDER));
+                    toast = str("morphe_post_image_download_saved_single", folder);
                 } else {
-                    Utils.showToastShort(str("morphe_post_image_download_saved", savedCount, FOLDER));
+                    toast = str("morphe_post_image_download_saved", savedCount, folder);
                 }
+                Utils.showToastShort(toast);
             });
         });
     }
@@ -1129,18 +1032,19 @@ public final class PostImageDownloadPatch {
             }
             try (InputStream input = connection.getInputStream()) {
                 ByteArrayOutputStream output = new ByteArrayOutputStream();
-                byte[] buffer = new byte[16 * 1024];
+                byte[] buffer = new byte[DOWNLOAD_BUFFER_SIZE];
                 int read;
                 while ((read = input.read(buffer)) != -1) {
                     output.write(buffer, 0, read);
                     if (output.size() > MAX_DOWNLOAD_BYTES) {
+                        Logger.printDebug(() -> "Post image is too large: " + url);
                         return null;
                     }
                 }
                 return output.size() == 0 ? null : output.toByteArray();
             }
         } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not fetch post image: " + url + " " + ex);
+            Logger.printInfo(() -> "Could not fetch post image: " + url, ex);
             return null;
         } finally {
             if (connection != null) {
@@ -1150,63 +1054,79 @@ public final class PostImageDownloadPatch {
     }
 
     /**
-     * @return The file type of the image, found from its first bytes.
+     * @return The type of the image, found from its first bytes.
      */
-    private static String[] getType(byte[] data) {
+    private static ImageType getType(byte[] data) {
         if (data.length >= 6 && data[0] == 'G' && data[1] == 'I' && data[2] == 'F') {
-            return new String[]{"gif", "image/gif"};
+            return ImageType.GIF;
         }
         if (data.length >= 12 && data[0] == 'R' && data[1] == 'I' && data[2] == 'F' && data[3] == 'F'
                 && data[8] == 'W' && data[9] == 'E' && data[10] == 'B' && data[11] == 'P') {
-            return new String[]{"webp", "image/webp"};
+            return ImageType.WEBP;
         }
         if (data.length >= 8 && (data[0] & 0xFF) == 0x89 && data[1] == 'P' && data[2] == 'N' && data[3] == 'G') {
-            return new String[]{"png", "image/png"};
+            return ImageType.PNG;
         }
-        return new String[]{"jpg", "image/jpeg"};
+        return ImageType.JPEG;
+    }
+
+    /**
+     * Before Android 10, the shared Pictures folder needs a storage permission,
+     * so the images are saved to the Pictures folder of the app instead.
+     */
+    private static File getLegacySaveFolder() {
+        return new File(Utils.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), FOLDER);
+    }
+
+    /**
+     * @return The folder the images are saved to, as shown to the user.
+     */
+    private static String getSaveFolderName() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                ? Environment.DIRECTORY_PICTURES + File.separator + FOLDER
+                : getLegacySaveFolder().getPath();
     }
 
     private static boolean save(byte[] data, String name) throws Exception {
-        Context context = Utils.getContext();
-        String[] type = getType(data);
-        String fileName = name + "." + type[0];
+        ImageType type = getType(data);
+        String fileName = name + '.' + type.extension;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            ContentResolver resolver = context.getContentResolver();
-            ContentValues values = new ContentValues();
-            values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
-            values.put(MediaStore.Images.Media.MIME_TYPE, type[1]);
-            values.put(MediaStore.Images.Media.RELATIVE_PATH,
-                    Environment.DIRECTORY_PICTURES + File.separator + FOLDER);
-            values.put(MediaStore.Images.Media.IS_PENDING, 1);
-            Uri uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-            if (uri == null) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            File folder = getLegacySaveFolder();
+            if (!folder.exists() && !folder.mkdirs()) {
+                Logger.printInfo(() -> "Could not create folder: " + folder);
                 return false;
             }
-            try (OutputStream output = resolver.openOutputStream(uri)) {
-                if (output == null) {
-                    resolver.delete(uri, null, null);
-                    return false;
-                }
+            try (OutputStream output = new FileOutputStream(new File(folder, fileName))) {
                 output.write(data);
-            } catch (Exception ex) {
-                resolver.delete(uri, null, null);
-                throw ex;
             }
-            values.clear();
-            values.put(MediaStore.Images.Media.IS_PENDING, 0);
-            resolver.update(uri, values, null, null);
             return true;
         }
 
-        // Older versions need a storage permission for the shared Pictures folder.
-        File folder = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), FOLDER);
-        if (!folder.exists() && !folder.mkdirs()) {
+        Context context = Utils.getContext();
+        ContentResolver resolver = context.getContentResolver();
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);
+        values.put(MediaStore.Images.Media.MIME_TYPE, type.mimeType);
+        values.put(MediaStore.Images.Media.RELATIVE_PATH, getSaveFolderName());
+        values.put(MediaStore.Images.Media.IS_PENDING, 1);
+        Uri uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+        if (uri == null) {
+            Logger.printInfo(() -> "Could not create the image: " + fileName);
             return false;
         }
-        try (OutputStream output = new FileOutputStream(new File(folder, fileName))) {
+        try (OutputStream output = resolver.openOutputStream(uri)) {
+            if (output == null) {
+                throw new IllegalStateException("No output stream for: " + uri);
+            }
             output.write(data);
+        } catch (Exception ex) {
+            resolver.delete(uri, null, null);
+            throw ex;
         }
+        values.clear();
+        values.put(MediaStore.Images.Media.IS_PENDING, 0);
+        resolver.update(uri, values, null, null);
         return true;
     }
 

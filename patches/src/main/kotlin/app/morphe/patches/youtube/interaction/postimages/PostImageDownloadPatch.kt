@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.interaction.postimages
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -21,8 +20,6 @@ import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
@@ -42,14 +39,6 @@ val postImageDownloadPatch = bytecodePatch(
         flyoutPatch,
         // Finds the root host of each post when it is laid out.
         feedVideoCardsHookPatch,
-        resourcePatch {
-            execute {
-                copyResources(
-                    "postimagedownload",
-                    ResourceGroup("drawable", "morphe_post_image_download.xml")
-                )
-            }
-        }
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
