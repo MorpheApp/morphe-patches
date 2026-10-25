@@ -8,6 +8,8 @@
 package app.morphe.patches.youtube.layout.playlistautoplay
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -32,8 +34,11 @@ internal object NativeNavigationStateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     // Previous video available, next video available, repeat mode, shuffle enabled
     parameters = listOf("Z", "Z", "I", "Z"),
-    custom = { _, classDef ->
-        // Narrow the match to the state object: four fields and only a constructor
-        classDef.fields.count() == 4 && classDef.methods.count() == 1
-    },
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IPUT_BOOLEAN, definingClass = "this"),
+        fieldAccess(opcode = Opcode.IPUT_BOOLEAN, definingClass = "this", location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IPUT, definingClass = "this", location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IPUT_BOOLEAN, definingClass = "this", location = MatchAfterImmediately()),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately()),
+    ),
 )
