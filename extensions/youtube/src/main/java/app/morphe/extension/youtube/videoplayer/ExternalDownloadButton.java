@@ -28,6 +28,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -252,7 +253,8 @@ public class ExternalDownloadButton {
     }
 
     @Nullable
-    private static Drawable getIcon(Context context, String name) {
+    private static Drawable getIcon(Context context, String baseName) {
+        final String name = Utils.appIsUsingBoldIcons() ? baseName + "_bold" : baseName;
         try {
             final int id = ResourceUtils.getDrawableIdentifier(name);
             if (id == 0) return null;
