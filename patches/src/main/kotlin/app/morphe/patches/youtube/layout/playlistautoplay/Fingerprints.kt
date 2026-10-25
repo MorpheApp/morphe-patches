@@ -27,3 +27,12 @@ internal object NavigationIntentEnumFingerprint : Fingerprint(
         classDef.methods.any { it.name == "<init>" && it.parameterTypes.size > 2 }
     },
 )
+
+// The player publishes previous/next availability, repeat mode, and shuffle state together.
+internal object NativeNavigationStateFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Z", "Z", "I", "Z"),
+    custom = { _, classDef ->
+        classDef.fields.count() == 4 && classDef.methods.count() == 1
+    },
+)
