@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
@@ -83,7 +83,11 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_save_to_watch_later_flyout_button", summary = true),
             SwitchPreference("morphe_save_to_watch_later_kids_flyout_button", summary = true),
-            TextPreference("morphe_save_to_watch_later_redirect_playlist_id")
+            NonInteractivePreference(
+                "morphe_save_to_watch_later_redirect_playlist_id",
+                tag = "app.morphe.extension.youtube.settings.preference.WatchLaterPlaylistPreference",
+                selectable = true
+            )
         )
 
         PreferenceScreen.SHORTS.addPreferences(

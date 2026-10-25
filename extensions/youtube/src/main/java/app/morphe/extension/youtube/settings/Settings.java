@@ -344,6 +344,7 @@ public class Settings extends SharedYouTubeSettings {
      * or a full playlist URL. Empty to keep the stock Watch later playlist.
      */
     public static final StringSetting SAVE_TO_WATCH_LATER_REDIRECT_PLAYLIST_ID = new StringSetting("morphe_save_to_watch_later_redirect_playlist_id", "", false);
+    public static final StringSetting SAVE_TO_WATCH_LATER_REDIRECT_PLAYLIST_TITLE = new StringSetting("morphe_save_to_watch_later_redirect_playlist_title", "", false);
     public static final EnumSetting<QueueType> QUEUE_TYPE = new EnumSetting<>("morphe_queue_type", QueueType.MORPHE);
     public static final StringSetting LOCAL_QUEUE_ITEMS = new StringSetting("morphe_local_queue_items", "", false, false);
     public static final BooleanSetting QUEUE_RESTORE = new BooleanSetting("morphe_queue_restore", FALSE, parentsAll(parent(SAVE_TO_WATCH_LATER_OVERLAY_BUTTON), new NotLocalQueueAvailability()));
