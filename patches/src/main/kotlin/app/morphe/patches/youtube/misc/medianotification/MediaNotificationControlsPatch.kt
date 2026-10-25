@@ -10,8 +10,8 @@ package app.morphe.patches.youtube.misc.medianotification
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.medianotification.EXTENSION_CLASS
 import app.morphe.patches.shared.misc.medianotification.mediaNotificationControlsPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -21,9 +21,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.indexOfFirstInstructionOrThrow
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
 
 @Suppress("unused")
 val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
@@ -69,27 +66,28 @@ private fun BytecodePatchContext.seekInsteadOfSkip(
     skipFingerprint: Fingerprint,
     seekFingerprint: Fingerprint,
 ) {
-    val skipMethod = skipFingerprint.method
-    val seekMethod = seekFingerprint.match(skipFingerprint.classDef).originalMethod
+    val seekMethod = seekFingerprint.originalMethod
 
     // The player callback seeks a fixed amount. Use the seek length setting instead.
     MediaSessionSeekRelativeFingerprint(
-        skipFingerprint.classDef.superclass!!,
+        seekFingerprint.originalClassDef.superclass!!,
         seekMethod.name
-    ).method.apply {
-        val index = indexOfFirstInstructionOrThrow { this is WideLiteralInstruction }
-        val register = getInstruction<OneRegisterInstruction>(index).registerA
+    ).let {
+        it.method.apply {
+            val match = it.instructionMatches.first()
+            val register = match.instruction.registersUsed[1]
 
-        addInstructions(
-            index + 1,
-            """
-                invoke-static { v$register, v${register + 1} }, $EXTENSION_CLASS->getSeekLength(J)J
-                move-result-wide v$register
-            """
-        )
+            addInstructions(
+                match.index,
+                """
+                    invoke-static { v$register, v${register + 1} }, $EXTENSION_CLASS->getSeekLength(J)J
+                    move-result-wide v$register
+                """
+            )
+        }
     }
 
-    skipMethod.addInstructionsWithLabels(
+    skipFingerprint.method.addInstructionsWithLabels(
         0,
         """
             invoke-static { }, $EXTENSION_CLASS->seekInsteadOfSkip()Z
