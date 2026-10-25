@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ফিড থাম্বনেইলের লাইক কাউন্ট দেখান</string>
   <string name="morphe_ryd_feed_like_ratio_title">ফিড থাম্বনেইলের লাইক শতাংশ দেখান</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">মন্তব্য অনুসন্ধান করুন</string>
+  <string name="morphe_search_comments_summary">শুধুমাত্র লোড হওয়া সেই মন্তব্যগুলো দেখানোর জন্য মন্তব্যের সার্চ বাটনে ট্যাপ করুন যেগুলোতে অনুসন্ধান করা সমস্ত শব্দ রয়েছে। কোনো নির্দিষ্ট শব্দগুচ্ছ অনুসন্ধান করতে শব্দগুলোকে উদ্ধৃতি চিহ্নের মধ্যে রাখুন</string>
+  <string name="morphe_search_comments_dialog_title">মন্তব্য অনুসন্ধান করুন</string>
+  <string name="morphe_search_comments_hint">অনুসন্ধান করার শব্দ</string>
+  <string name="morphe_search_comments_search">অনুসন্ধান</string>
+  <string name="morphe_search_comments_clear">মুছে ফেলুন</string>
+  <string name="morphe_search_comments_applied">সর্টিং অর্ডার পরিবর্তন করুন অথবা অনুসন্ধান করার জন্য পুনরায় মন্তব্যগুলো খুলুন</string>
+  <string name="morphe_search_comments_cleared">অনুসন্ধান মুছে ফেলা হয়েছে। সব মন্তব্য দেখাতে সর্টিং অর্ডার পরিবর্তন করুন অথবা মন্তব্যগুলি আবার খুলুন</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">টিভিতে সাইন ইন পপআপ অক্ষম করুন</string>
   <string name="morphe_disable_connect_your_devices_popup_title">ডিভাইস সংযোগের পপআপ নিষ্ক্রিয় করুন</string>
@@ -838,6 +847,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_narrow_navigation_buttons_summary">বাটনগুলির মধ্যে অনুভূমিক ব্যবধান কমিয়ে দেয়</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">লেবেল ছাড়া নেভিগেশন বাটন নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube যদি নেভিগেশন বাটনগুলো লেবেল ছাড়া পাঠায়, তাহলে সেগুলো লেবেলসহ দেখায়</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">টুলবার নেভিগেশন ট্যাব নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">যদি YouTube এটিকে হোমের উপরের একটি ট্যাবে সরিয়ে নেয়, তবে এটি নেভিগেশন বারে সাবস্ক্রিপশনগুলো দেখাবে</string>
   <string name="morphe_navigation_bar_animations_title">নেভিগেশন বার অ্যানিমেশন সক্ষম করুন</string>
   <string name="morphe_navigation_bar_animations_summary">ট্যাবের মধ্যে পরিবর্তন করার সময় অ্যানিমেশন তৈরি করে</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">স্বয়ংক্রিয়ভাবে নেভিগেশন বার লুকানো নিষ্ক্রিয় করুন</string>

@@ -454,6 +454,15 @@ Egy alkalommal megnyitott, Ask gombbal ellátott videó esetén a funkció minde
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Videóelképzelés kedvelési száma megjelenítése</string>
   <string name="morphe_ryd_feed_like_ratio_title">Videóelképzelés kedvelési arányának százalékos megjelenítése</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Hozzászólások keresése</string>
+  <string name="morphe_search_comments_summary">Koppintson a kereső gombra a hozzászólások között, hogy csak a betöltött, és az összes keresett szót tartalmazó hozzászólások jelenjenek meg. A pontos kifejezések kereséséhez tegye a szavakat idézőjelek közé</string>
+  <string name="morphe_search_comments_dialog_title">Hozzászólások keresése</string>
+  <string name="morphe_search_comments_hint">Keresett szavak</string>
+  <string name="morphe_search_comments_search">Keresés</string>
+  <string name="morphe_search_comments_clear">Törlés</string>
+  <string name="morphe_search_comments_applied">Módosítsa a rendezési sorrendet, vagy nyissa újra a hozzászólásokat a kereséshez</string>
+  <string name="morphe_search_comments_cleared">Keresés törölve. Módosítsa a rendezési sorrendet, vagy nyissa újra a hozzászólásokat az összes hozzászólás megjelenítéséhez</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">TV-bejelentkezési előugró ablak letiltása</string>
   <string name="morphe_disable_connect_your_devices_popup_title">A \"Csatlakoztassa eszközeit\" felugró ablak letiltása</string>
@@ -838,6 +847,8 @@ A Beállítások eléréséhez engedélyezze a Beállítások gombot az Általá
   <string name="morphe_narrow_navigation_buttons_summary">Csökkenti a gombok közötti vízszintes távolságot</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Címkék nélküli navigációs gombok letiltása</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Megjeleníti a navigációs gombokat címkékkel, ha a YouTube címkék nélkül küldi azokat</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Toolbar navigációs lapok kikapcsolása</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Megjeleníti az Előfizetéseket a navigációs sávban, ha a YouTube lapra przenti őket a Kezdőlap tetejére</string>
   <string name="morphe_navigation_bar_animations_title">Navigációs sáv animációinak engedélyezése</string>
   <string name="morphe_navigation_bar_animations_summary">Animálja az átmeneteket a lapok között váltáskor</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Kapcsold ki az automatikus elrejtést a navigációs sávra</string>

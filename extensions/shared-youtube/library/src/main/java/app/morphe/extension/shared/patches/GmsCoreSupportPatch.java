@@ -278,7 +278,7 @@ public class GmsCoreSupportPatch {
             }
 
             // Check if GmsCore is whitelisted from battery optimizations.
-            if (isAndroidAutomotive(context)) {
+            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
                 // Ignore Android Automotive devices (Google built-in),
                 // as there is no way to disable battery optimizations.
                 Logger.printDebug(() -> "Device is Android Automotive");
@@ -374,7 +374,8 @@ public class GmsCoreSupportPatch {
             if (info == null) continue;
 
             final boolean officialMicroG = packageName.equals(GMS_CORE_PACKAGE_NAME)
-                    && isOfficialMicroG(info);
+                    // Signed by the official MicroG-RE signing key.
+                    && matchesSigningCert(info);
 
             variants.add(new VariantPackage(packageName, userId, info.versionName, officialMicroG));
         }
@@ -502,13 +503,6 @@ public class GmsCoreSupportPatch {
             return PackageManager.GET_SIGNING_CERTIFICATES;
         }
         return PackageManager.GET_SIGNATURES;
-    }
-
-    /**
-     * @return If the package is signed by the official MicroG-RE signing key.
-     */
-    private static boolean isOfficialMicroG(PackageInfo packageInfo) {
-        return matchesSigningCert(packageInfo);
     }
 
     /**
@@ -854,10 +848,6 @@ public class GmsCoreSupportPatch {
         }
         var powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         return !powerManager.isIgnoringBatteryOptimizations(GMS_CORE_PACKAGE_NAME);
-    }
-
-    private static boolean isAndroidAutomotive(Context context) {
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
     }
 
     private static String getGmsCoreDownload() {

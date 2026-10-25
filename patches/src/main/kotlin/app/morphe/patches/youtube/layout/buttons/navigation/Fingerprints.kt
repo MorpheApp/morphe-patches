@@ -27,6 +27,8 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val PIVOT_BAR_CLASS = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;"
+
 private val SET_VISIBILITY_METHOD_CALL = methodCall(
     opcode = Opcode.INVOKE_VIRTUAL,
     smali = "Landroid/view/View;->setVisibility(I)V"
@@ -35,7 +37,7 @@ private val SET_VISIBILITY_METHOD_CALL = methodCall(
 internal object CreatePivotBarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf(
-        "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+        PIVOT_BAR_CLASS,
         "Landroid/widget/TextView;",
         "Ljava/lang/CharSequence;",
     ),
@@ -108,7 +110,7 @@ internal object AutoHideNavigationBarOnDismissMiniplayerFingerprint : Fingerprin
 )
 
 internal object PivotBarStyleFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+    definingClass = PIVOT_BAR_CLASS,
     returnType = "V",
     parameters = listOf("L"),
     filters = OpcodesFilter.opcodesToFilters(
@@ -119,12 +121,34 @@ internal object PivotBarStyleFingerprint : Fingerprint(
 )
 
 internal object PivotBarChangedFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+    definingClass = PIVOT_BAR_CLASS,
     name = "onConfigurationChanged",
     returnType = "V",
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT
+    )
+)
+
+/**
+ * Adds the navigation bar height to the bottom room of the bar fixed at the bottom of some pages,
+ * such as the reply bar of the comment replies. Only read when the navigation bar covers
+ * the system navigation buttons. Not present in older targets.
+ */
+internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45752241L)
+    )
+)
+
+/**
+ * Changes how the height of the navigation bar and the miniplayer is given to the pages,
+ * which leaves wrong padding in some pages, such as the incognito search.
+ * 21.29 and older read it with a single accessor method.
+ */
+internal object IncognitoSearchPaddingFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45724388L)
     )
 )
 
@@ -154,17 +178,25 @@ internal object TranslucentNavigationBarFeatureFlagsFingerprint : Fingerprint(
 /**
  * Sets the bottom padding of the navigation bar to the bottom window inset, the room for
  * the system navigation buttons when the bar is drawn behind them. The bar height also grows
- * by the same value, which is first stored in a field of the bar.
+ * by the same value, which is first stored in a field of the bar and then added to its height.
  */
 internal object NavigationBarBottomPaddingFingerprint : Fingerprint(
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IPUT,
-            definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+            definingClass = PIVOT_BAR_CLASS,
             type = "I"
         ),
+        // Sets the bar height to its content height and the room in the field.
         methodCall(
-            definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = PIVOT_BAR_CLASS,
+            parameters = listOf(),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            definingClass = PIVOT_BAR_CLASS,
             name = "setPadding",
             location = MatchAfterWithin(10)
         )

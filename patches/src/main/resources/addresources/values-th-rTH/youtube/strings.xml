@@ -41,17 +41,17 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">ปิดการอัปเดตรูปแบบ</string>
   <string name="morphe_disable_layout_updates_summary">ป้องกันไม่ให้เซิร์ฟเวอร์อัปเดตเลย์เอาต์ของแอป</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"เลย์เอาต์แอปพลิเคชันกลับไปใช้เลย์เอาต์ที่ใช้เมื่อติดตั้งครั้งแรก
+  <string name="morphe_disable_layout_updates_user_dialog_message">"เลย์เอาต์ของแอปกลับไปใช้เลย์เอาต์ที่ใช้เมื่อติดตั้งครั้งแรก
 
 เลย์เอาต์ด้านเซิร์ฟเวอร์บางส่วนอาจไม่กลับคืน
 
 การเปลี่ยนแปลง ได้แก่:
-• ส่วนประกอบในเมนูฟลายเอาท์ของตัวเล่น (หรือการตั้งค่าที่เกี่ยวข้อง) อาจไม่ทำงาน
+• ส่วนประกอบในเมนูแบบเลื่อนออกของเครื่องเล่น (หรือการตั้งค่าที่เกี่ยวข้อง) อาจไม่ทำงาน
 • ตัวเลขหมุนไม่มีการเคลื่อนไหว
-• แท็บไลบรารีจะแสดง
+• แท็บคลังจะแสดง
 • ส่วนเพลงของคำอธิบายวิดีโออาจไม่ทำงาน
-•ไอเท็มเมนูฟลายเอาท์ของตัวเล่นไม่สามารถซ่อนได้
-• ปุ่มสลับบัญชีอาจไม่ปรากฏบนแท็บไลบรารี"</string>
+• รายการเมนูแบบเลื่อนออกของเครื่องเล่นไม่สามารถซ่อนได้
+• ปุ่มสลับบัญชีอาจไม่ปรากฏบนแท็บคลัง"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">เปิดตัวกรองเมนูแบบเลื่อนออกของฟีด</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">ตัวกรองเมนูแบบเลื่อนออกของฟีด</string>
@@ -388,7 +388,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_general_ads_title">ซ่อนโฆษณาโดยทั่วไป</string>
   <string name="morphe_hide_merchandise_banners_title">ซ่อนแบนเนอร์สินค้า</string>
   <string name="morphe_hide_paid_promotion_labels_title">ซ่อนป้ายโปรโมตแบบเสียเงิน</string>
-  <string name="morphe_hide_player_popup_ads_title">ซ่อนป๊อปอัพของตัวเล่น</string>
+  <string name="morphe_hide_player_popup_ads_title">ซ่อนป๊อปอัพของเครื่องเล่น</string>
   <string name="morphe_hide_self_sponsor_ads_title">ซ่อนการ์ดที่สนับสนุนตัวเอง</string>
   <string name="morphe_hide_shopping_links_title">ซ่อนลิงก์ร้านค้า</string>
   <string name="morphe_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
@@ -436,8 +436,8 @@ Second \"item\" text"</string>
   <string name="morphe_feed_watch_later_button_title">แสดงปุ่มดูภายหลังบนภาพย่อ</string>
   <string name="morphe_feed_watch_later_button_summary">จะแสดงปุ่มดูภายหลังบนภาพย่อของวิดีโอในฟีด การแตะและค้างไว้จะทำให้บันทึกไปยังเพลย์ลิสต์</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
-  <string name="morphe_ask_summarize_flyout_menu_title">เพิ่มรายการ Ask ไปยังเมนูลอย</string>
-  <string name="morphe_ask_summarize_flyout_menu_summary">เพิ่มรายการสรุปวิดีโอไปยังเมนูลอยฟีด</string>
+  <string name="morphe_ask_summarize_flyout_menu_title">เพิ่มรายการ Ask ไปยังเมนูแบบเลื่อนออก</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">เพิ่มรายการสรุปวิดีโอไปยังเมนูแบบเลื่อนออกของฟีด</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask จำเป็นต้องมีการเข้าสู่บัญชีในประเทศที่ Ask มีให้บริการ
 
@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">แสดงจำนวนคนกดถูกใจของรูปภาพขนาดย่อในฟีด</string>
   <string name="morphe_ryd_feed_like_ratio_title">แสดงอัตราส่วนการกดถูกใจของรูปภาพขนาดย่อในฟีด</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">ค้นหาความคิดเห็น</string>
+  <string name="morphe_search_comments_summary">แตะปุ่มค้นหาในความคิดเห็นเพื่อแสดงเฉพาะความคิดเห็นที่โหลดแล้วซึ่งมีคำที่ค้นหาครบทุกคำ ใส่คำในเครื่องหมายคำพูดเพื่อค้นหาเป็นวลี</string>
+  <string name="morphe_search_comments_dialog_title">ค้นหาความคิดเห็น</string>
+  <string name="morphe_search_comments_hint">คำที่ต้องการค้นหา</string>
+  <string name="morphe_search_comments_search">ค้นหา</string>
+  <string name="morphe_search_comments_clear">ล้าง</string>
+  <string name="morphe_search_comments_applied">เปลี่ยนลำดับการจัดเรียงหรือเปิดความคิดเห็นอีกครั้งเพื่อค้นหา</string>
+  <string name="morphe_search_comments_cleared">ล้างการค้นหาแล้ว เปลี่ยนลำดับการจัดเรียงหรือเปิดความคิดเห็นอีกครั้งเพื่อแสดงความคิดเห็นทั้งหมด</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวี</string>
   <string name="morphe_disable_connect_your_devices_popup_title">ปิดหน้าต่างแจ้งเตือน \'เชื่อมต่ออุปกรณ์ของคุณ\'</string>
@@ -462,7 +471,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">ปิดใช้งานท่าทางแตะสองครั้งด้วยสองนิ้วที่ข้ามส่วนเนื้อหา ซึ่งอาจถูกเรียกใช้งานโดยไม่ได้ตั้งใจด้วยนิ้วเดียว</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">ดาวน์โหลดวิดีโอ พอดแคสต์ หรือเพลงด้วยแอปดาวน์โหลดของบุคคลที่สาม</string>
-  <string name="morphe_external_downloader_overlay_button_title">แสดงปุ่มดาวน์โหลด overlay ของผู้เล่น</string>
+  <string name="morphe_external_downloader_overlay_button_title">แสดงปุ่มดาวน์โหลดซ้อนทับของเครื่องเล่น</string>
   <string name="morphe_external_downloader_overlay_button_summary">แสดงปุ่มในเครื่องเล่นวิดีโอที่จะเปิดตัวดาวน์โหลดภายนอกของคุณ</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">การแปลเสียงบรรยาย</string>
@@ -681,17 +690,17 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">เปิดใช้งานท่าทางความสว่างอัตโนมัติ</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary">การปัดความสว่างไปยังค่าต่ำสุดจะเปิดใช้งานความสว่างอัตโนมัติของระบบ</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">อัตโนมัติ</string>
-  <string name="morphe_swipe_overlay_timeout_title">เวลาหมดอายุของการแสดงทับการปัด</string>
-  <string name="morphe_swipe_overlay_timeout_summary">จำนวนมิลลิวินาทีที่การแสดงทับจะมองเห็น</string>
-  <string name="morphe_swipe_overlay_background_opacity_title">ความทึบแสงพื้นหลังของสไลด์โอเวอร์เลย์</string>
+  <string name="morphe_swipe_overlay_timeout_title">เวลาหมดอายุของภาพซ้อนทับการปัด</string>
+  <string name="morphe_swipe_overlay_timeout_summary">จำนวนมิลลิวินาทีที่ภาพซ้อนทับจะมองเห็น</string>
+  <string name="morphe_swipe_overlay_background_opacity_title">ความทึบแสงพื้นหลังของภาพซ้อนทับการปัด</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">ปรับระดับความโปร่งใสของภาพซ้อนทับ (0 คือโปร่งใส 100 คือทึบแสง)</string>
-  <string name="morphe_swipe_overlay_progress_brightness_color_title">สีความสว่างของการซ้อนทับการปัด</string>
+  <string name="morphe_swipe_overlay_progress_brightness_color_title">สีความสว่างของภาพซ้อนทับการปัด</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">ตั้งค่าสีของแถบความคืบหน้าของการควบคุมความสว่าง</string>
-  <string name="morphe_swipe_overlay_progress_volume_color_title">สีระดับเสียงของการซ้อนทับการปัด</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_title">สีระดับเสียงของภาพซ้อนทับการปัด</string>
   <string name="morphe_swipe_overlay_progress_volume_color_summary">ตั้งค่าสีของแถบความคืบหน้าของการควบคุมระดับเสียง</string>
-  <string name="morphe_swipe_overlay_progress_speed_color_title">สีของการซ้อนทับการปัดเปลี่ยนความเร็วในการเล่น</string>
+  <string name="morphe_swipe_overlay_progress_speed_color_title">สีความเร็วของภาพซ้อนทับการปัด</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">ตั้งค่าสีของแถบแสดงความคืบหน้าของการควบคุมความเร็วในการเล่น</string>
-  <string name="morphe_swipe_text_overlay_size_title">ขนาดข้อความของการปัด</string>
+  <string name="morphe_swipe_text_overlay_size_title">ขนาดข้อความของภาพซ้อนทับการปัด</string>
   <string name="morphe_swipe_text_overlay_size_summary">ปรับขนาดตัวอักษรบนหน้าจอ (1-30)</string>
   <string name="morphe_swipe_threshold_title">เกณฑ์ขนาดของการปัด</string>
   <string name="morphe_swipe_threshold_summary">ตั้งค่าระยะการปัดที่จำเป็นก่อนที่จะเกิดการปรับ</string>
@@ -707,16 +716,16 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_speed_sensitivity_summary">ค่าที่สูงขึ้นต้องมีการปัดมากขึ้นต่อการปรับความเร็วแต่ละครั้ง</string>
   <string name="morphe_swipe_speed_step_title">ขั้นตอนความเร็ว</string>
   <string name="morphe_swipe_speed_zone_height_title">ความสูงของโซนท่าทางความเร็ว</string>
-  <string name="morphe_swipe_speed_zone_height_summary">ความสูงของโซนท่าทางความเร็วคิดเป็นเปอร์เซ็นต์ของความสูงของตัวเล่น (5-75)</string>
+  <string name="morphe_swipe_speed_zone_height_summary">ความสูงของโซนท่าทางความเร็วคิดเป็นเปอร์เซ็นต์ของความสูงของเครื่องเล่น (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">ความเร็ว</string>
-  <string name="morphe_swipe_overlay_style_title">รูปแบบโอเวอร์เลย์การปัด</string>
-  <string name="morphe_swipe_overlay_style_entry_1">โอเวอร์เลย์แนวนอน</string>
-  <string name="morphe_swipe_overlay_style_entry_2">โอเวอร์เลย์แนวนอน (มินิมอล - ด้านบน)</string>
-  <string name="morphe_swipe_overlay_style_entry_3">โอเวอร์เลย์แนวนอน (มินิมอล - ตรงกลาง)</string>
-  <string name="morphe_swipe_overlay_style_entry_4">โอเวอร์เลย์แบบวงกลม</string>
-  <string name="morphe_swipe_overlay_style_entry_5">โอเวอร์เลย์แบบวงกลม (มินิมอล)</string>
-  <string name="morphe_swipe_overlay_style_entry_6">โอเวอร์เลย์แนวตั้ง</string>
-  <string name="morphe_swipe_overlay_style_entry_7">โอเวอร์เลย์แนวตั้ง (มินิมอล)</string>
+  <string name="morphe_swipe_overlay_style_title">รูปแบบของภาพซ้อนทับการปัด</string>
+  <string name="morphe_swipe_overlay_style_entry_1">ภาพซ้อนทับแนวนอน</string>
+  <string name="morphe_swipe_overlay_style_entry_2">ภาพซ้อนทับแนวนอน (มินิมอล - ด้านบน)</string>
+  <string name="morphe_swipe_overlay_style_entry_3">ภาพซ้อนทับแนวนอน (มินิมอล - ตรงกลาง)</string>
+  <string name="morphe_swipe_overlay_style_entry_4">ภาพซ้อนทับแบบวงกลม</string>
+  <string name="morphe_swipe_overlay_style_entry_5">ภาพซ้อนทับแบบวงกลม (มินิมอล)</string>
+  <string name="morphe_swipe_overlay_style_entry_6">ภาพซ้อนทับแนวตั้ง</string>
+  <string name="morphe_swipe_overlay_style_entry_7">ภาพซ้อนทับแนวตั้ง (มินิมอล)</string>
   <string name="morphe_swipe_change_video_title">เปิดใช้การปัดเพื่อเปลี่ยนวิดีโอ</string>
   <string name="morphe_swipe_change_video_summary">ปัดในโหมดเต็มหน้าจอเพื่อข้ามไปยังวิดีโอถัดไปหรือก่อนหน้า</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
@@ -838,6 +847,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary">ทำให้แถบนำทางทึบแสงอย่างสมบูรณ์ในโหมดสว่าง</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">ปิดใช้งานปุ่มนำทางที่ไม่มีป้ายกำกับ</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">แสดงปุ่มนำทางพร้อมป้ายกำกับ หาก YouTube ส่งมาโดยไม่มีป้ายกำกับ</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">ปิดใช้งานแท็บการนำทางบนแถบเครื่องมือ</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">แสดงการติดตามในแถบนำทาง หาก YouTube ย้ายไปไว้ในแท็บที่ด้านบนของหน้าหลัก</string>
   <string name="morphe_navigation_bar_animations_title">เปิดใช้งานภาพเคลื่อนไหวแถบนำทาง</string>
   <string name="morphe_navigation_bar_animations_summary">เคลื่อนไหวการเปลี่ยนภาพเมื่อสลับระหว่างแท็บ</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ปิดใช้งานการซ่อนแถบนำทางอัตโนมัติ</string>
@@ -857,7 +868,7 @@ Second \"item\" text"</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">ซ่อนเมนู \'การตั้งค่าเพิ่มเติม\' / เพิ่มเติม</string>
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">ซ่อนเมนู \'โหมดแอมเบี้ยนท์\'</string>
+  <string name="morphe_hide_player_flyout_ambient_mode_title">ซ่อนเมนู \'โหมดแอมเบียนท์\'</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"เมนู 'แทร็กเสียง' ถูกซ่อน
@@ -896,7 +907,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_title">ซ่อนตัวอย่างเล่นอัตโนมัติ</string>
   <string name="morphe_hide_autoplay_preview_summary">ซ่อนภาพตัวอย่างวิดีโอที่จะเล่นถัดไปขณะเล่นเต็มหน้าจอก่อนเริ่มเล่นอัตโนมัติ</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_overlay_buttons_screen_title">ปุ่มโอเวอร์เลย์</string>
+  <string name="morphe_overlay_buttons_screen_title">ปุ่มซ้อนทับ</string>
   <string name="morphe_overlay_buttons_screen_summary">เลือกปุ่มที่จะแสดงบนเครื่องเล่นวิดีโอ</string>
   <string name="morphe_hide_autoplay_button_title">ซ่อนปุ่มเล่นอัตโนมัติ</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
@@ -913,12 +924,12 @@ Second \"item\" text"</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">ซ่อนการ์ดหน้าจอสิ้นสุด</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
-  <string name="morphe_ambient_mode_screen_title">โหมดแอมเบี้ยนท์</string>
-  <string name="morphe_ambient_mode_screen_summary">จัดการการแสดงผลและข้อจำกัดด้านพลังงานของโหมดแอมเบี้ยนท์</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">เลี่ยงข้อจำกัดของโหมดแอมเบี้ยนท์</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary">อนุญาตให้โหมดแอมเบี้ยนท์ยังคงทำงานอยู่ในโหมดประหยัดพลังงาน</string>
-  <string name="morphe_disable_ambient_mode_title">ปิดการใช้งานโหมดพักผ่อน</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_title">ปิดใช้งานโหมดแอมเบี้ยนท์ในโหมดเต็มหน้าจอ</string>
+  <string name="morphe_ambient_mode_screen_title">โหมดแอมเบียนท์</string>
+  <string name="morphe_ambient_mode_screen_summary">จัดการการแสดงผลและข้อจำกัดด้านพลังงานของโหมดแอมเบียนท์</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">เลี่ยงข้อจำกัดของโหมดแอมเบียนท์</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary">อนุญาตให้โหมดแอมเบียนท์ยังคงทำงานอยู่ในโหมดประหยัดพลังงาน</string>
+  <string name="morphe_disable_ambient_mode_title">ปิดใช้งานโหมดแอมเบียนท์</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_title">ปิดใช้งานโหมดแอมเบียนท์ในโหมดเต็มหน้าจอ</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">ซ่อนการ์ดข้อมูล</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -990,12 +1001,12 @@ Second \"item\" text"</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">ซ่อนวิดีโอที่เกี่ยวข้อง</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_player_related_videos_overlay_title">ซ่อนภาพซ้อน \'วิดีโอเพิ่มเติม\'</string>
-  <string name="morphe_hide_player_related_videos_overlay_summary">ซ่อนภาพซ้อน \'วิดีโอเพิ่มเติม\' ที่แสดงเมื่อปัดขึ้นในโหมดเต็มหน้าจอ</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">ซ่อนภาพซ้อนทับ \'วิดีโอเพิ่มเติม\'</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary">ซ่อนภาพซ้อนทับ \'วิดีโอเพิ่มเติม\' ที่แสดงเมื่อปัดขึ้นในโหมดเต็มหน้าจอ</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">ซ่อนเวลาของวิดีโอ</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
-  <string name="morphe_disable_player_popup_panels_title">ปิดใช้งานป๊อปอัพของตัวเล่น</string>
+  <string name="morphe_disable_player_popup_panels_title">ปิดใช้งานป๊อปอัพของเครื่องเล่น</string>
   <string name="morphe_disable_player_popup_panels_summary">ปิดใช้งานแผงเพลย์ลิสต์และแชทสดไม่ให้เปิดโดยอัตโนมัติ</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">ปิดการเล่นอัตโนมัติของเพลย์ลิสต์</string>
@@ -1013,7 +1024,7 @@ Second \"item\" text"</string>
   <string name="morphe_force_fullscreen_landscape_summary">หมุนเครื่องเล่นเป็นแนวนอนเมื่อเข้าสู่โหมดเต็มหน้าจอ ใช้ไม่ได้บนหน้าจอขนาดเล็ก ซึ่งเปิดเต็มหน้าจอในแนวนอนอยู่แล้ว</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">ท่าทางแบบเต็มหน้าจอ</string>
-  <string name="morphe_disable_fullscreen_gestures_summary">ท่าทางของตัวเล่นในโหมดเต็มหน้าจอ</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">ท่าทางของเครื่องเล่นในโหมดเต็มหน้าจอ</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">ปิดใช้งานท่าทางปัดขึ้นในโหมดแนวตั้ง</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">ปิดการใช้งานท่าทางปัดลงในโหมดแนวตั้ง</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">ปิดการใช้งานท่าทางปัดลงในโหมดแนวนอน</string>
@@ -1036,7 +1047,7 @@ Second \"item\" text"</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">แสดงปุ่มปิดเสียง</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
-  <string name="morphe_player_overlay_opacity_title">ความโปร่งใสของการซ้อนทับของเครื่องเล่น</string>
+  <string name="morphe_player_overlay_opacity_title">ความโปร่งใสของภาพซ้อนทับของเครื่องเล่น</string>
   <string name="morphe_player_overlay_opacity_summary">ปรับระดับความโปร่งใส (0 คือโปร่งใส, 100 คือทึบแสง)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">แถบค้นหา</string>
@@ -1056,22 +1067,22 @@ Second \"item\" text"</string>
 • โพสต์จากชุมชนจะถูกซ่อนไว้
 • จะไม่มีตัวเลือกการเล่นในฟีด
 • จะไม่มีปุ่มรีมิกซ์และปุ่มเสียงใน Shorts
-• อาจไม่สามารถใช้งานโอเวอร์เลย์ 'วิดีโอเพิ่มเติม' ได้
+• อาจไม่สามารถใช้งานภาพซ้อนทับ 'วิดีโอเพิ่มเติม' ได้
 • แถบการทำงานของวิดีโอแบบเดิมที่ไม่ยุบจะแสดงขึ้น
 
 เลย์เอาต์สำหรับรถยนต์
 • ฟีดจะถูกจัดระเบียบตามหัวข้อและช่อง
 • จะไม่มีตัวเลือกการเล่นในฟีด
 • จะไม่มีปุ่มรีมิกซ์และปุ่มเสียงใน Shorts
-• อาจไม่สามารถใช้งานโอเวอร์เลย์ 'วิดีโอเพิ่มเติม' ได้
+• อาจไม่สามารถใช้งานภาพซ้อนทับ 'วิดีโอเพิ่มเติม' ได้
 • Shorts จะเปิดในเครื่องเล่นปกติ
 • แถบการทำงานของวิดีโอแบบเดิมที่ไม่ยุบจะแสดงขึ้น"</string>
   <string name="morphe_tablet_layout_in_player_title">เปิดใช้งานรูปแบบแท็บเล็ตในเครื่องเล่น</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"คืนรูปแบบตัวเล่นแบบเก่า
+  <string name="morphe_tablet_layout_in_player_summary">"คืนรูปแบบเครื่องเล่นแบบเก่า
 
-ข้อจำกัด: หากปิด 'คืนแถบการทำงานของวิดีโอแบบเก่า' การแสดงผล 'วิดีโอเพิ่มเติม' อาจใช้งานไม่ได้"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">การเปิดใช้นี้อาจทำให้บางฟีเจอร์เลย์เอาต์ของตัวเล่นเสีย เช่น ส่วนความคิดเห็นหรือ \'วิดีโอเพิ่มเติม\' ที่แสดงด้านล่างตัวเล่น</string>
+ข้อจำกัด: หากปิด 'คืนแถบการทำงานของวิดีโอแบบเก่า' ภาพซ้อนทับ 'วิดีโอเพิ่มเติม' อาจใช้งานไม่ได้"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">การเปิดใช้นี้อาจทำให้บางฟีเจอร์เลย์เอาต์ของเครื่องเล่นเสีย เช่น ส่วนความคิดเห็นหรือ \'วิดีโอเพิ่มเติม\' ที่แสดงด้านล่างเครื่องเล่น</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - กู้คืนพฤติกรรมคำบรรยายแบบเดิม</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
@@ -1169,11 +1180,11 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">การเล่นจะหยุดชั่วคราวเมื่อลากมินิเพลเยอร์ออกจากหน้าจอ</string>
   <string name="morphe_miniplayer_disable_horizontal_reposition_title">จดจำตำแหน่งการลาก</string>
   <string name="morphe_miniplayer_disable_horizontal_reposition_summary">การลากมินิเพลเยอร์ออกนอกหน้าจอจะรักษา UI สถานะเดิมไว้</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_title">ซ่อนปุ่มโอเวอร์เลย์</string>
+  <string name="morphe_miniplayer_hide_overlay_buttons_title">ซ่อนปุ่มซ้อนทับ</string>
   <string name="morphe_miniplayer_width_dip_title">ขนาดเริ่มต้น</string>
   <string name="morphe_miniplayer_width_dip_summary">ตั้งค่าขนาดเริ่มต้นบนหน้าจอเป็นพิกเซล</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">ขนาดพิกเซลต้องอยู่ระหว่าง %1$s ถึง %2$s</string>
-  <string name="morphe_miniplayer_opacity_title">ความทึบแสงของโอเวอร์เลย์</string>
+  <string name="morphe_miniplayer_opacity_title">ความทึบแสงของภาพซ้อนทับ</string>
   <string name="morphe_miniplayer_opacity_summary">ปรับระดับความโปร่งใส (0 คือโปร่งใส, 100 คือทึบแสง)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">ปุ่มกลับออกจากฟีด</string>
@@ -1187,7 +1198,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_status_bar_title">ซ่อนแถบสถานะ</string>
   <string name="morphe_hide_status_bar_summary">ซ่อนแถบสถานะของระบบ ปัดลงจากขอบด้านบนเพื่อแสดงชั่วครู่</string>
   <string name="morphe_fix_status_bar_layout_title">แก้ไขแถบสถานะไม่ให้บังแถบด้านบน</string>
-  <string name="morphe_fix_status_bar_layout_summary">คงรูปแบบของแถบสถานะให้สอดคล้องกัน เพื่อไม่ให้เกิดการบังแถบด้านบนและเหลือพื้นที่ว่างเปล่าเหนือตัวเล่น เปิดการใช้งานนี้หากแอปค้างหรือแถบด้านบนแสดงผลผิดปกติ</string>
+  <string name="morphe_fix_status_bar_layout_summary">คงรูปแบบของแถบสถานะให้สอดคล้องกัน เพื่อไม่ให้เกิดการบังแถบด้านบนและเหลือพื้นที่ว่างเปล่าเหนือเครื่องเล่น เปิดการใช้งานนี้หากแอปค้างหรือแถบด้านบนแสดงผลผิดปกติ</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">พื้นหลังธีมสว่าง</string>
   <string name="morphe_theme_color_light_entry_2">สีขาว</string>
@@ -1260,7 +1271,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_error_generic">DeArrow ไม่พร้อมใช้งานชั่วคราว</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
-  <string name="morphe_restore_old_player_buttons_title">คืนค่าสไตล์ปุ่มของตัวเล่นแบบเก่า</string>
+  <string name="morphe_restore_old_player_buttons_title">คืนค่าสไตล์ปุ่มของเครื่องเล่นแบบเก่า</string>
   <string name="morphe_restore_old_player_buttons_summary">คืนค่ารูปลักษณ์ตัวควบคุมเครื่องเล่นวิดีโอแบบหนาให้เป็นสไตล์ที่เก่ากว่าและบางกว่า</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">ปลอมแปลงมิติของอุปกรณ์</string>
@@ -1414,7 +1425,7 @@ AVC (H.264)
   <string name="morphe_restore_old_video_action_bar_title">กู้คืนแถบการทำงานของวิดีโอแบบเดิม</string>
   <string name="morphe_restore_old_video_action_bar_summary">"แก้ไขปัญหาที่ปุ่มการทำงานของวิดีโอไม่สามารถซ่อนได้
 
-ข้อจำกัด: ย้อนกลับไปใช้รูปแบบโอเวอร์เลย์ 'วิดีโอเพิ่มเติม' แบบเก่า"</string>
+ข้อจำกัด: ย้อนกลับไปใช้รูปแบบภาพซ้อนทับ 'วิดีโอเพิ่มเติม' แบบเก่า"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">สไตล์ไอคอนเครื่องเล่น</string>
   <string name="morphe_player_icon_style_entry_auto">อัตโนมัติ</string>
@@ -1430,7 +1441,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_summary">เพิ่มหน้าซีรีย์ในประวัติและตัวเลือกติดตามซีรีย์ลงในเพลย์ลิสต์</string>
   <string name="morphe_series_tracker_show_navigation_button_title">แสดงซีรีส์ในแถบนำทาง</string>
   <string name="morphe_series_tracker_show_button_title">แสดงปุ่มติดตามซีรี่ส์</string>
-  <string name="morphe_series_tracker_show_button_summary">เพิ่มปุ่มตัวเล่นเพื่อติดตามหรือเปิดซีรี่ส์ของวิดีโอปัจจุบัน</string>
+  <string name="morphe_series_tracker_show_button_summary">เพิ่มปุ่มเครื่องเล่นเพื่อติดตามหรือเปิดซีรี่ส์ของวิดีโอปัจจุบัน</string>
   <string name="morphe_series_tracker_record_followed_progress_title">บันทึกความคืบหน้าของซีรี่ส์ที่ติดตาม</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">บันทึกการเล่นบนโทรศัพท์นี้สำหรับซีรี่ส์ที่บันทึกและบุ๊กมาร์ก</string>
   <string name="morphe_series_tracker_ui_cancel">ยกเลิก</string>
@@ -1519,7 +1530,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_error_retry_later">กรุณารอก่อนรีเฟรชอีกครั้ง</string>
   <string name="morphe_series_tracker_error_catalog_unavailable">ไม่สามารถโหลดตอน ลองอีกครั้งภายหลัง</string>
   <string name="morphe_series_tracker_error_operation">ไม่สามารถเสร็จสิ้นการเปลี่ยนแปลง ลองอีกครั้ง</string>
-  <string name="morphe_series_tracker_error_resume">ไม่สามารถยืนยันการรับชมต่อได้ โปรดตรวจสอบตัวเล่นและลองใหม่อีกครั้ง</string>
+  <string name="morphe_series_tracker_error_resume">ไม่สามารถยืนยันการรับชมต่อได้ โปรดตรวจสอบเครื่องเล่นและลองใหม่อีกครั้ง</string>
   <string name="morphe_series_tracker_followed">ติดตามซีรี่ส์</string>
   <string name="morphe_series_tracker_video_not_in_playlist">วิดีโอนี้ไม่มีอยู่ในเพลย์ลิสต์นี้</string>
   <string name="morphe_series_tracker_finding_playlists">กำลังค้นหาเพลย์ลิสต์...</string>

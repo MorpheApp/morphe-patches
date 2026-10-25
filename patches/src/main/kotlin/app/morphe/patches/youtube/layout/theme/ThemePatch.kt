@@ -88,7 +88,15 @@ private val youTubeColorNamesDark = {
             "yt_sys_color_baseline_dark_raised_background",
             "yt_sys_color_baseline_dark_base_background",
             "yt_sys_color_baseline_light_inverted_background",
-            "yt_sys_color_baseline_light_static_black"
+            "yt_sys_color_baseline_light_static_black",
+            // 21.43+ names of 'black3', 'black1' and the menu background.
+            "yt_ref_color_constants_default_grey5",
+            "yt_ref_color_constants_default_grey20",
+            "yt_sys_color_baseline_dark_default_menu_background",
+            // The mainstage color theme of 21.43+, which the app applies over the default one.
+            "yt_ref_color_constants_colors_mainstage_grey5",
+            "yt_ref_color_constants_colors_mainstage_grey20",
+            "yt_ref_color_constants_colors_mainstage_grey25"
         ) else emptySet()
 }
 
@@ -106,9 +114,13 @@ private val youTubeColorNamesLight = {
 //            "yt_ref_color_constants_default_baseline_white_white2",
 //            "yt_ref_color_constants_default_baseline_white_white4",
             "yt_ref_color_constants_default_baseline_white_white3",
+            // 21.43+ name of 'white3'.
+            "yt_ref_color_constants_default_grey95",
             "yt_ref_color_constants_cooler_baseline_white_white3",
 
             "yt_sys_color_baseline_light_menu_background",
+            // 21.43+ name of the menu background.
+            "yt_sys_color_baseline_light_default_menu_background",
 //            "yt_sys_color_baseline_light_static_white",
 //            "yt_sys_color_baseline_light_static_white_background",
 //            "yt_sys_color_baseline_dark_inverted_background",

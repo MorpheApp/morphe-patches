@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">نمایش تعداد لایک‌های بندانگشتی فید</string>
   <string name="morphe_ryd_feed_like_ratio_title">نمایش درصد لایک‌های بندانگشتی فید</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">جست‌وجوی نظرات</string>
+  <string name="morphe_search_comments_summary">برای نمایش نظرات بارگذاری‌شده‌ای که شامل تمام کلمات جست‌وجو شده هستند، روی دکمه جست‌وجو در نظرات ضربه بزنید. برای جست‌وجوی یک عبارت، کلمات را داخل علامت نقل‌قول قرار دهید</string>
+  <string name="morphe_search_comments_dialog_title">جست‌وجوی نظرات</string>
+  <string name="morphe_search_comments_hint">کلمات مورد نظر برای جست‌وجو</string>
+  <string name="morphe_search_comments_search">جست‌وجو</string>
+  <string name="morphe_search_comments_clear">پاک‌کردن</string>
+  <string name="morphe_search_comments_applied">ترتیب مرتب‌سازی را تغییر دهید یا برای جست‌وجوی مجدد، نظرات را دوباره باز کنید</string>
+  <string name="morphe_search_comments_cleared">جست‌وجو پاک شد. برای نمایش تمام نظرات، ترتیب مرتب‌سازی را تغییر دهید یا نظرات را دوباره باز کنید</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">غیرفعال‌کردن پنجرهٔ بازشوی «ورود به تلویزیون»</string>
   <string name="morphe_disable_connect_your_devices_popup_title">غیرفعال‌کردن پنجرهٔ بازشوی «اتصال دستگاه‌ها»</string>
@@ -838,6 +847,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary">فاصلهٔ افقی بین دکمه‌ها را کاهش می‌دهد</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">غیرفعال کردن دکمه‌های ناوبری بدون برچسب</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">اگر YouTube دکمه‌های ناوبری را بدون برچسب ارسال کند، آن‌ها را با برچسب نشان می‌دهد</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">غیرفعال‌کردن تب‌های پیمایش نوار ابزار</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">اگر YouTube بخش اشتراکات را به تبی در بالای صفحه اصلی منتقل کرد، این گزینه آن را در نوار پیمایش نمایش می‌دهد</string>
   <string name="morphe_navigation_bar_animations_title">فعال‌کردن انیمیشن‌های نوار پیمایش</string>
   <string name="morphe_navigation_bar_animations_summary">هنگام جابه‌جایی بین برگه‌ها، انتقال‌ها را متحرک می‌کند</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">غیرفعال‌کردن پنهان‌شدن خودکار نوار پیمایش</string>

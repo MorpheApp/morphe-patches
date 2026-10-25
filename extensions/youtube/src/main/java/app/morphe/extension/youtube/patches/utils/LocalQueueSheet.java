@@ -203,7 +203,7 @@ public final class LocalQueueSheet {
 
         String nowPlayingId = VideoInformation.getVideoId();
         if (!PlayerType.getCurrent().isNoneOrHidden() && !nowPlayingId.isEmpty()) {
-            nowPlayingRow = createNowPlayingRow(nowPlayingId);
+            nowPlayingRow = buildRow(nowPlayingId, -1, null);
             list.addView(nowPlayingRow.root);
         }
 
@@ -212,7 +212,8 @@ public final class LocalQueueSheet {
         }
 
         for (int i = 0, size = items.size(); i < size; i++) {
-            Row row = createRow(items.get(i), i);
+            LocalQueuePatch.Item item = items.get(i);
+            Row row = buildRow(item.videoId, i, item);
             rows.add(row);
             list.addView(row.root);
         }
@@ -287,14 +288,6 @@ public final class LocalQueueSheet {
             channelView.setVisibility(hasChannel ? View.VISIBLE : View.GONE);
             channelBar.setVisibility(hasChannel ? View.GONE : View.VISIBLE);
         }
-    }
-
-    private Row createRow(LocalQueuePatch.Item item, int index) {
-        return buildRow(item.videoId, index, item);
-    }
-
-    private Row createNowPlayingRow(String videoId) {
-        return buildRow(videoId, -1, null);
     }
 
     private Row buildRow(String videoId, int index, @Nullable LocalQueuePatch.Item item) {

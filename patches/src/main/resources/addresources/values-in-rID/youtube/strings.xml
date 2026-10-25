@@ -169,9 +169,9 @@ Perubahan mencakup:
   <string name="morphe_hide_video_title_summary">Menyembunyikan judul video dalam mode layar penuh</string>
   <string name="morphe_sanitize_video_subtitle_title">Bersihkan teks subtitel video</string>
   <string name="morphe_sanitize_video_subtitle_summary">Membersihkan frasa seperti \'#\', \'Penggalangan dana\', \'produk(s)\', dan \'Toko\' dari subjudul video</string>
-  <string name="morphe_hide_ask_gemini_button_title">Sembunyikan tombol \'Ask Gemini\'</string>
-  <string name="morphe_hide_ask_gemini_button_summary">Menyembunyikan tombol \'Ask Gemini\' di bagian bawah panel \'Ask about this video\'</string>
-  <string name="morphe_hide_description_components_screen_title">Keterangan video</string>
+  <string name="morphe_hide_ask_gemini_button_title">Sembunyikan tombol \'Tanyakan Gemini\'</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Menyembunyikan tombol \'Tanyakan Gemini\' di bagian bawah panel \'Tanyakan tentang video ini\'</string>
+  <string name="morphe_hide_description_components_screen_title">Deskripsi video</string>
   <string name="morphe_hide_description_components_screen_summary">Pilih komponen mana yang akan ditampilkan dalam deskripsi video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Sembunyikan \'Ringkasan video yang dibuat AI\'</string>
   <string name="morphe_hide_ask_section_title">Sembunyikan bagian Tanya</string>
@@ -454,6 +454,15 @@ Setelah video dengan tombol Ask dibuka satu kali, fitur ini berfungsi untuk semu
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Tampilkan jumlah suka pada thumbnail feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Tampilkan persentase suka pada thumbnail feed</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Cari komentar</string>
+  <string name="morphe_search_comments_summary">Ketuk tombol cari di komentar untuk menampilkan hanya komentar yang dimuat yang mengandung semua kata yang dicari. Letakkan kata dalam tanda kutip untuk mencari frasa</string>
+  <string name="morphe_search_comments_dialog_title">Cari komentar</string>
+  <string name="morphe_search_comments_hint">Kata yang ingin dicari</string>
+  <string name="morphe_search_comments_search">Telusuri</string>
+  <string name="morphe_search_comments_clear">Hapus</string>
+  <string name="morphe_search_comments_applied">Ubah urutan pengurutan atau buka kembali komentar untuk mencarinya</string>
+  <string name="morphe_search_comments_cleared">Pencarian dihapus. Ubah urutan pengurutan atau buka kembali komentar untuk menampilkan semua komentar</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Nonaktifkan pesan timbul \'Masuk ke TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Nonaktifkan popup \'Hubungkan perangkat Anda\'</string>
@@ -838,6 +847,8 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_narrow_navigation_buttons_summary">Mengurangi jarak horizontal antara tombol</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Nonaktifkan tombol navigasi tanpa label</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Menampilkan tombol navigasi dengan label, jika YouTube mengirimkannya tanpa label</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Nonaktifkan tab navigasi toolbar</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Menampilkan Subscription di bilah navigasi, jika YouTube memindahkannya ke tab di bagian atas Beranda</string>
   <string name="morphe_navigation_bar_animations_title">Aktifkan animasi bilah navigasi</string>
   <string name="morphe_navigation_bar_animations_summary">Menganimasikan transisi saat beralih antar tab</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Nonaktifkan otomatis menyembunyikan bilah navigasi</string>

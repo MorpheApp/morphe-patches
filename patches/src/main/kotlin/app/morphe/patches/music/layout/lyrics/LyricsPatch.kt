@@ -132,19 +132,31 @@ val lyricsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
                     SwitchPreference("morphe_music_lyrics_keep_screen_on", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true)
+                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true)
                 )
             ),
             PreferenceCategory(
-                key = "morphe_music_lyrics_section_languages",
+                key = "morphe_music_lyrics_section_translation",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
+                    ListPreference(
+                        key = "morphe_music_lyrics_translation_provider"
+                    ),
                     ListPreference(
                         key = "morphe_music_lyrics_translation_language",
                         entriesKey = "morphe_language_entries",
                         entryValuesKey = "morphe_language_entry_values"
+                    )
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_music_lyrics_section_romanization",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    ListPreference(
+                        key = "morphe_music_lyrics_romanization_provider"
                     ),
                     ListPreference(key = "morphe_music_lyrics_romanize_language"),
                     SwitchPreference(
@@ -178,26 +190,15 @@ val lyricsPatch = bytecodePatch(
                 preferences = setOf(
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_ai_config",
-                        titleKey = "morphe_music_lyrics_use_ai_title",
+                        titleKey = "morphe_music_lyrics_ai_config_dialog_title",
                         summaryKey = null,
                         tag = "app.morphe.extension.music.settings.preference.LyricsAiConfigPreference",
                         selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
                     ),
                     SwitchPreference(
-                        key = "morphe_music_lyrics_use_ai_translation",
-                        summary = true,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsAiPromptPreference"
-                    ),
-                    SwitchPreference(
-                        key = "morphe_music_lyrics_use_ai_romanization",
-                        summary = true,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsAiPromptPreference"
-                    ),
-                    SwitchPreference(
                         key = "morphe_music_lyrics_use_ai_section",
-                        summary = true,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsAiPromptPreference"
+                        summary = true
                     ),
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_transcribe_key",

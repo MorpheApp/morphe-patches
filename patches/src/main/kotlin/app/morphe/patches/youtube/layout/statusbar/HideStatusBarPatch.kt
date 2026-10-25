@@ -18,6 +18,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -64,6 +65,8 @@ val hideStatusBarPatch = bytecodePatch(
                 "$EXTENSION_CLASS->useStatusBarScrollColor(Z)Z"
             )
         }
+
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,

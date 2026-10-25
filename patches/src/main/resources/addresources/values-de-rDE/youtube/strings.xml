@@ -455,6 +455,15 @@ Nachdem ein Video mit der Ask-Schaltfläche einmal geöffnet wurde, funktioniert
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Like-Anzahl in Feed-Vorschaubildern anzeigen</string>
   <string name="morphe_ryd_feed_like_ratio_title">Like-Verhältnis in Feed-Vorschaubildern anzeigen</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Kommentare durchsuchen</string>
+  <string name="morphe_search_comments_summary">Tippen Sie in den Kommentaren auf die Suchschaltfläche, um nur die geladenen Kommentare anzuzeigen, die alle gesuchten Wörter enthalten. Setzen Sie Wörter in Anführungszeichen, um nach einer Phrase zu suchen</string>
+  <string name="morphe_search_comments_dialog_title">Kommentare durchsuchen</string>
+  <string name="morphe_search_comments_hint">Zu suchende Wörter</string>
+  <string name="morphe_search_comments_search">Suchen</string>
+  <string name="morphe_search_comments_clear">Löschen</string>
+  <string name="morphe_search_comments_applied">Ändern Sie die Sortierreihenfolge oder öffnen Sie die Kommentare erneut, um sie zu durchsuchen</string>
+  <string name="morphe_search_comments_cleared">Suche gelöscht. Ändern Sie die Sortierreihenfolge oder öffnen Sie die Kommentare erneut, um alle Kommentare anzuzeigen</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Pop-up „Auf dem Fernseher anmelden“ deaktivieren</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Geräte verbinden\'-Pop-up deaktivieren</string>
@@ -839,6 +848,8 @@ Um auf Einstellungen zuzugreifen, aktivieren Sie die Schaltfläche „Einstellun
   <string name="morphe_narrow_navigation_buttons_summary">Verringert den horizontalen Abstand zwischen den Schaltflächen</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Navigationsschaltflächen ohne Beschriftungen deaktivieren</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Zeigt die Navigationsschaltflächen mit Beschriftungen an, wenn YouTube sie ohne Beschriftungen sendet</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Navigations-Tabs in der Symbolleiste deaktivieren</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Zeigt Abonnements in der Navigationsleiste an, falls YouTube diese in einen Tab oben auf der Startseite verschiebt</string>
   <string name="morphe_navigation_bar_animations_title">Navigation bar animations aktivieren</string>
   <string name="morphe_navigation_bar_animations_summary">Audio Track-Menü-Fußzeile ausblenden</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Auto-Ausblenden der Navigationsleiste deaktivieren</string>

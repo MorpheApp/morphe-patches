@@ -103,7 +103,8 @@ public final class AutoTranslateCaptionsPatch {
         String templateCode = template.patch_getLanguageCode();
         String templateUrl = template.patch_getUrl();
         int targetAt = targetValueOffset(templateUrl, templateCode);
-        String vssIdPrefix = removeSuffix(template.patch_getVssId(), templateCode.length());
+        String vssId = template.patch_getVssId();
+        String vssIdPrefix = vssId.substring(0, vssId.length() - templateCode.length());
         String urlPrefix = templateUrl.substring(0, targetAt);
         String urlSuffix = templateUrl.substring(targetAt + templateCode.length());
         String sourceLanguage = captionParameters(templateUrl).get("lang");
@@ -325,10 +326,6 @@ public final class AutoTranslateCaptionsPatch {
     private static boolean originalVss(String value, String prefix) {
         return value != null && (value.equals(prefix) || value.startsWith(prefix + ".")
                 && VSS_ID_SUFFIX_PATTERN.matcher(value.substring(prefix.length() + 1)).matches());
-    }
-
-    private static String removeSuffix(String value, int suffixLength) {
-        return value.substring(0, value.length() - suffixLength);
     }
 
     /**

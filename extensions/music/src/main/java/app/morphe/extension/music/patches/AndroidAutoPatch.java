@@ -387,11 +387,13 @@ public final class AndroidAutoPatch {
             String requestedMediaId = request.patch_getRequestedMediaId();
             if (requestedMediaId == null) return false;
             if (requestedMediaId.equals(SPEED_DIAL_MEDIA_ID)) {
-                HomeLoad.forSpeedDial(request).start();
+                new HomeLoad(request, HomeLoad.Mode.SPEED_DIAL, "", Collections.emptyList()).start();
                 return true;
             }
             if (requestedMediaId.startsWith(HOME_SHELF_PREFIX)) {
-                HomeLoad.forShelf(request, requestedMediaId).start();
+                // An expanded shelf's media ID contains its title. Fetch phone Home again and select that shelf.
+                String shelfTitle = Uri.decode(requestedMediaId.substring(HOME_SHELF_PREFIX.length()));
+                new HomeLoad(request, HomeLoad.Mode.SHELF, shelfTitle, Collections.emptyList()).start();
                 return true;
             }
             if (requestedMediaId.equals(libraryMediaId)) {
@@ -793,7 +795,7 @@ public final class AndroidAutoPatch {
             if (phoneBrowseClient == null || homeMediaId == null || nativeItems == null
                     || nativeItems instanceof PreparedItems
                     || !homeMediaId.equals(request.patch_getRequestedMediaId())) return false;
-            HomeLoad.forHome(request, nativeItems).start();
+            new HomeLoad(request, HomeLoad.Mode.HOME, "", new ArrayList<>(nativeItems)).start();
             return true;
         } catch (RuntimeException ex) {
             Logger.printException(() -> "loadHome failure", ex);
@@ -881,20 +883,6 @@ public final class AndroidAutoPatch {
             browseId = mode == Mode.SPEED_DIAL ? SPEED_DIAL_BROWSE_ID : "FEmusic_home";
             this.shelfTitle = shelfTitle;
             this.podcastFolders = podcastFolders;
-        }
-
-        static HomeLoad forHome(BrowseRequest request, List<MediaBrowserCompat.MediaItem> podcastFolders) {
-            return new HomeLoad(request, Mode.HOME, "", new ArrayList<>(podcastFolders));
-        }
-
-        static HomeLoad forShelf(BrowseRequest request, String mediaId) {
-            // An expanded shelf's media ID contains its title. Fetch phone Home again and select that shelf.
-            String shelfTitle = Uri.decode(mediaId.substring(HOME_SHELF_PREFIX.length()));
-            return new HomeLoad(request, Mode.SHELF, shelfTitle, Collections.emptyList());
-        }
-
-        static HomeLoad forSpeedDial(BrowseRequest request) {
-            return new HomeLoad(request, Mode.SPEED_DIAL, "", Collections.emptyList());
         }
 
         @Override void load() { requestPage(""); }

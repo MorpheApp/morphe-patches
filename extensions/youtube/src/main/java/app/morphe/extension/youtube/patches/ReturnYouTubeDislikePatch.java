@@ -47,14 +47,6 @@ public class ReturnYouTubeDislikePatch {
     @Nullable
     private static volatile String lastPrefetchedVideoId;
 
-    private static void clearData() {
-        currentVideoData = null;
-
-        // Rolling number text should not be cleared,
-        // as it's used if incognito Short is opened/closed
-        // while a regular video is on screen.
-    }
-
     //
     // Litho player for both regular videos and Shorts.
     //
@@ -184,7 +176,10 @@ public class ReturnYouTubeDislikePatch {
             PlayerType currentPlayerType = PlayerType.getCurrent();
             if (currentPlayerType.isNoneHiddenOrSlidingMinimized()) {
                 // Must clear here, otherwise the wrong data can be used for a minimized regular video.
-                clearData();
+                // Rolling number text should not be cleared,
+                // as it's used if incognito Short is opened/closed
+                // while a regular video is on screen.
+                currentVideoData = null;
                 return;
             }
 

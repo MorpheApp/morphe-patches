@@ -491,6 +491,16 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_ryd_feed_like_count_title">Show feed thumbnail like count</string>
     <string name="morphe_ryd_feed_like_ratio_title">Show feed thumbnail like percentage</string>
 
+    <!-- interaction.searchcomments.searchCommentsPatch -->
+    <string name="morphe_search_comments_title">Search comments</string>
+    <string name="morphe_search_comments_summary">Tap the search button in the comments to show only the loaded comments that contain all of the searched words. Put words in quotes to search for a phrase</string>
+    <string name="morphe_search_comments_dialog_title">Search comments</string>
+    <string name="morphe_search_comments_hint">Words to search for</string>
+    <string name="morphe_search_comments_search">Search</string>
+    <string name="morphe_search_comments_clear">Clear</string>
+    <string name="morphe_search_comments_applied">Change the sort order or open the comments again to search them</string>
+    <string name="morphe_search_comments_cleared">Search cleared. Change the sort order or open the comments again to show all comments</string>
+
     <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
     <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
     <string name="morphe_disable_connect_your_devices_popup_title">Disable \'Connect your devices\' popup</string>
@@ -923,8 +933,11 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_animations_summary">Animates transitions when switching between tabs</string>
     <string name="morphe_disable_auto_hide_navigation_bar_title">Disable auto-hiding navigation bar</string>
     <string name="morphe_disable_auto_hide_navigation_bar_summary">Keeps the navigation bar visible while scrolling</string>
-    <string name="morphe_disable_translucent_navigation_title">Disable translucent navigation bar</string>
-    <string name="morphe_disable_translucent_navigation_summary">Makes the navigation and status bar fully opaque</string>
+    <string name="morphe_navigation_bar_style_title">Navigation bar style</string>
+    <string name="morphe_navigation_bar_style_entry_1">Default</string>
+    <string name="morphe_navigation_bar_style_entry_2">Translucent</string>
+    <string name="morphe_navigation_bar_style_entry_3">Transparent</string>
+    <string name="morphe_navigation_bar_style_entry_4">Opaque</string>
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Choose which components appear in the toolbar</string>

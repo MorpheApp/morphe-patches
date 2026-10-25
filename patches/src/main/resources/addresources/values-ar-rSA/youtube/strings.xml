@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">عرض عدد الإعجابات في الصورة المصغرة بالخلاصة</string>
   <string name="morphe_ryd_feed_like_ratio_title">عرض نسبة الإعجابات في الصورة المصغرة بالخلاصة</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">البحث في التعليقات</string>
+  <string name="morphe_search_comments_summary">انقر على زر البحث في التعليقات لعرض التعليقات المحمَّلة فقط التي تحتوي على كل الكلمات التي تم البحث عنها. ضع الكلمات بين علامات الاقتباس للبحث عن عبارة محددة</string>
+  <string name="morphe_search_comments_dialog_title">البحث في التعليقات</string>
+  <string name="morphe_search_comments_hint">كلمات للبحث عنها</string>
+  <string name="morphe_search_comments_search">البحث</string>
+  <string name="morphe_search_comments_clear">مسح</string>
+  <string name="morphe_search_comments_applied">قم بتغيير ترتيب الفرز أو أعد فتح التعليقات للبحث فيها</string>
+  <string name="morphe_search_comments_cleared">تم مسح البحث. قم بتغيير ترتيب الفرز أو افتح التعليقات مرة أخرى لعرض كل التعليقات</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">تعطيل نافذة \'تسجيل الدخول إلى التلفزيون\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">تعطيل نافذة \'توصيل أجهزتك\'</string>
@@ -842,6 +851,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_narrow_navigation_buttons_summary">يقلل المسافة الأفقية بين الأزرار</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">تعطيل أزرار التنقل بدون تسميات</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">يعرض أزرار التنقل مع تسميات، إذا أرسلها YouTube بدون تسميات</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">تعطيل علامات تبويب التنقل في شريط الأدوات</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">يعرض الاشتراكات في شريط التنقل، إذا قام YouTube بنقلها إلى علامة تبويب في أعلى الصفحة الرئيسية</string>
   <string name="morphe_navigation_bar_animations_title">تمكين تأثير حركة التنقل في شريط التنقل</string>
   <string name="morphe_navigation_bar_animations_summary">يُفعّل الانتقالات المتحركة عند التبديل بين علامات التبويب</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">تعطيل إخفاء شريط التنقل تلقائيًا</string>

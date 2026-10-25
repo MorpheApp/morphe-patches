@@ -30,6 +30,7 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -387,6 +388,9 @@ public final class SpotifyProvider implements LyricsProvider {
         if (lines.isEmpty()) {
             return null;
         }
+
+        LRCParser.fillEstimatedEnds(lines);
+
         return new Lyrics(lines, providerName, true, null, null, null, null, rawJson, "sp.json", sourceUrl);
     }
 
@@ -421,6 +425,9 @@ public final class SpotifyProvider implements LyricsProvider {
         if (lines.isEmpty()) {
             return null;
         }
+
+        LRCParser.fillEstimatedEnds(lines);
+
         return new Lyrics(lines, providerName, true, null, null, null, null, rawJson, "sp.json", sourceUrl);
     }
 
@@ -437,13 +444,21 @@ public final class SpotifyProvider implements LyricsProvider {
             final long startMs = parseStartTimeMs(syllable);
             final long endMs = syllable.optLong("endTimeMs", startMs);
             final int numChars = syllable.optInt("numChars", 0);
-            if (numChars <= 0 || charOffset >= lineText.length()) {
+            if (numChars <= 0) {
                 continue;
+            }
+
+            // Spaces before the syllable are not part of it.
+            while (charOffset < lineText.length() && Character.isWhitespace(lineText.charAt(charOffset))) {
+                charOffset++;
+            }
+            if (charOffset >= lineText.length()) {
+                break;
             }
 
             final int end = Math.min(charOffset + numChars, lineText.length());
             final String wordText = lineText.substring(charOffset, end);
-            final boolean spaceAfter = end < lineText.length();
+            final boolean spaceAfter = (end < lineText.length() && Character.isWhitespace(lineText.charAt(end)));
             words.add(new Word(startMs, endMs, wordText, null, spaceAfter));
             charOffset = end;
         }

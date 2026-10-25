@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Прикажи број лајкова на сличици садржаја</string>
   <string name="morphe_ryd_feed_like_ratio_title">Прикажи проценат лајкова на сличици садржаја</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Претрага коментара</string>
+  <string name="morphe_search_comments_summary">Додирните дугме за претрагу у коментарима да бисте приказали само учитане коментаре који садрже све претраживане речи. Ставите речи под наводнике да бисте претражили фразу</string>
+  <string name="morphe_search_comments_dialog_title">Претрага коментара</string>
+  <string name="morphe_search_comments_hint">Речи за претрагу</string>
+  <string name="morphe_search_comments_search">Претрага</string>
+  <string name="morphe_search_comments_clear">Очисти</string>
+  <string name="morphe_search_comments_applied">Промените редослед сортирања или поново отворите коментаре да бисте их претражили</string>
+  <string name="morphe_search_comments_cleared">Претрага је очишћена. Промените редослед сортирања или поново отворите коментаре да бисте приказали све коментаре</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Онемогући искачући прозор „Пријава на ТВ”</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Онемогући искачући прозор \"Повежи своје уређаје\"</string>
@@ -836,6 +845,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary">Смањује хоризонтални размак између дугмади.</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Онемогући навигационе дугмиће без натписа</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Приказује навигационе дугмиће са натписима, ако их YouTube шаље без натписа</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Онемогући навигационе картице у alatnoj traci</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Приказује Претплате у навигационој траци, ако YouTube их пребаци у картицу на врху Почетне стране</string>
   <string name="morphe_navigation_bar_animations_title">Омогући анимације траке за навигацију</string>
   <string name="morphe_navigation_bar_animations_summary">Анимира прелазе приликом пребацивања између картица.</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Онемогућите аутоматско скривање траке навигације</string>

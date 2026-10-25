@@ -73,7 +73,8 @@ public final class LyricifyProvider implements LyricsProvider {
         final String isrc = resolved.isrc();
 
         final String username = generateUsername();
-        final String isrcParam = base64NoWrap(isrc);
+        final String isrcParam = Base64.encodeToString(
+                isrc.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
         final String isrcEncoded = LyricsRequests.encode(isrcParam);
 
         final String url = API_BASE
@@ -249,10 +250,5 @@ public final class LyricifyProvider implements LyricsProvider {
             sb.append((char) ('a' + RNG.nextInt(26)));
         }
         return sb.toString();
-    }
-
-    private static String base64NoWrap(String input) {
-        return Base64.encodeToString(
-                input.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
     }
 }

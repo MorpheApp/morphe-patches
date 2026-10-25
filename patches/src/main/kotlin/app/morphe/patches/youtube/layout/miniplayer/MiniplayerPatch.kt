@@ -41,6 +41,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -194,11 +195,13 @@ val miniplayerPatch = bytecodePatch(
 
         // Only skip the resume branch of the command. Other show miniplayer commands,
         // such as "Play next in queue" from the feed when no video is open, still work.
-        if (is_21_42_or_greater) {
-            ShowMiniplayerCommandFingerprint to 1
+        (if (is_21_43_or_greater) {
+            ShowMiniplayerCommandFingerprint to 2
+        } else if (is_21_42_or_greater) {
+            ShowMiniplayerCommandLegacy2142Fingerprint to 1
         } else {
             ShowMiniplayerCommandLegacyFingerprint to 3
-        }.let { (fingerprint, matchIndex) ->
+        }).let { (fingerprint, matchIndex) ->
             fingerprint.method.apply {
                 val index = fingerprint.instructionMatches[matchIndex].index + 1
                 val free = findFreeRegister(index)

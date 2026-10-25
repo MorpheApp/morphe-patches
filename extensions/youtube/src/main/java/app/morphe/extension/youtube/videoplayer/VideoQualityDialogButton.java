@@ -297,7 +297,8 @@ public class VideoQualityDialogButton {
             // Create ListView for quality selection.
             ListView listView = new ListView(context);
             CustomQualityAdapter adapter = new CustomQualityAdapter(context, qualityLabels);
-            adapter.setSelectedPosition(listViewSelectedIndex);
+            adapter.selectedPosition = listViewSelectedIndex;
+            adapter.notifyDataSetChanged();
             listView.setAdapter(adapter);
             listView.setDivider(null);
 
@@ -347,11 +348,6 @@ public class VideoQualityDialogButton {
 
         public CustomQualityAdapter(@NonNull Context context, @NonNull List<String> objects) {
             super(context, 0, objects);
-        }
-
-        private void setSelectedPosition(int position) {
-            this.selectedPosition = position;
-            notifyDataSetChanged();
         }
 
         @NonNull

@@ -84,13 +84,15 @@ internal object HistoryNavigationBuilderFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
 )
 
+/**
+ * Every private method of the fragment that reads the route calls the same method,
+ * and their parameters change between targets.
+ */
 internal class BrowseRouteFingerprint(endpointType: String) : Fingerprint(
     classFingerprint = BrowseFragmentFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
-    parameters = listOf("L", "L"),
     filters = listOf(
         methodCall(
-
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf(endpointType),
             returnType = "Ljava/lang/String;",

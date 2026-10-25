@@ -15,10 +15,13 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.WindowInsets;
 import android.widget.ImageView;
@@ -67,6 +70,7 @@ import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
+import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public final class NavigationBarPatch {
@@ -84,7 +88,24 @@ public final class NavigationBarPatch {
 
     private static final boolean SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
 
-    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION = Settings.DISABLE_TRANSLUCENT_NAVIGATION.get();
+    public enum NavigationBarStyle {
+        /**
+         * The feature flags of the translucent navigation bar are left to the account,
+         * and the fixes for what they break are off.
+         */
+        DEFAULT,
+        TRANSLUCENT,
+        /**
+         * Translucent, without the blurred background.
+         */
+        TRANSPARENT,
+        /**
+         * Transparent, painted over with the app background.
+         */
+        OPAQUE
+    }
+
+    private static final NavigationBarStyle NAVIGATION_BAR_STYLE = Settings.NAVIGATION_BAR_STYLE.get();
 
     private static final boolean NARROW_NAVIGATION_BUTTONS = Settings.NARROW_NAVIGATION_BUTTONS.get();
 
@@ -216,15 +237,21 @@ public final class NavigationBarPatch {
      * The app draws the window behind the system navigation buttons only on Android 12 and later,
      * so on older versions the flags are always turned off, or the room is added twice
      * (https://github.com/MorpheApp/morphe-patches/issues/3864).
+     * <p>
+     * With {@link NavigationBarStyle#DEFAULT} the flags are left to the account.
      */
     public static boolean useTranslucentNavigationBar(boolean original) {
+        if (NAVIGATION_BAR_STYLE == NavigationBarStyle.DEFAULT) {
+            return original;
+        }
+
         boolean translucent = original;
         try {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
                 translucent = false;
             } else {
                 Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
-                // Null if not read yet, or the Hide status bar patch is not included.
+                // Null if not known yet, or the Hide status bar patch is not included.
                 if (edgeToEdge != null) {
                     translucent = edgeToEdge;
                 }
@@ -254,15 +281,31 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      * <p>
+     * With the navigation bar covering the system navigation buttons, the room below the bar fixed
+     * at the bottom of some pages, such as the reply bar of the comment replies, already holds
+     * the system navigation buttons. The flag adds the navigation bar height to it as well, so an
+     * empty band is left between the two bars (https://github.com/MorpheApp/morphe-patches/issues/2300).
+     */
+    public static boolean useFixedBottomBarRoom(boolean original) {
+        return original && !translucentNavigationBarForced;
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * The blurred, translucent background of the navigation bar and the feed laid out behind it
      * only change how the bar looks, not the room left for the system navigation buttons, so they
-     * are turned on from Android 12 also when the window is not drawn edge to edge. If
-     * the translucent navigation bar is turned off, they follow
-     * {@link #useTranslucentNavigationBar(boolean)} instead.
+     * are turned on from Android 12 also when the window is not drawn edge to edge. With
+     * {@link NavigationBarStyle#OPAQUE}, they follow {@link #useTranslucentNavigationBar(boolean)}
+     * instead. With {@link NavigationBarStyle#DEFAULT} they are left to the account.
      */
     public static boolean useTranslucentNavigationBarBackground(boolean original) {
+        if (NAVIGATION_BAR_STYLE == NavigationBarStyle.DEFAULT) {
+            return original;
+        }
+
         final boolean translucent;
-        if (!DISABLE_TRANSLUCENT_NAVIGATION && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (NAVIGATION_BAR_STYLE != NavigationBarStyle.OPAQUE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             translucent = true;
         } else {
             translucent = useTranslucentNavigationBar(original);
@@ -287,6 +330,25 @@ public final class NavigationBarPatch {
     }
 
     /**
+     * Injection point.
+     * <p>
+     * The blurred background of the navigation bar draws a copy of the watch layout, so the player
+     * surface is drawn twice in every frame, at two positions. Android 12 and 13 send the two
+     * positions to the surface from two threads at the same time, and the app crashes while
+     * the player moves, such as when it is slowly dragged down to the miniplayer
+     * (https://github.com/MorpheApp/morphe-patches/pull/3684#issuecomment-6322984709).
+     * With {@link NavigationBarStyle#TRANSPARENT} and {@link NavigationBarStyle#OPAQUE} the copy
+     * is not drawn, so the bar keeps its translucent color, without the blur.
+     *
+     * @param hardwareAccelerated If the canvas is hardware accelerated, which the blur is drawn for.
+     */
+    public static boolean useNavigationBarBlur(boolean hardwareAccelerated) {
+        return hardwareAccelerated && !(translucentNavigationBarBackgroundForced
+                && (NAVIGATION_BAR_STYLE == NavigationBarStyle.TRANSPARENT
+                || NAVIGATION_BAR_STYLE == NavigationBarStyle.OPAQUE));
+    }
+
+    /**
      * If the keyboard height was ever removed from the bottom margin of the layout that holds
      * the page, the player and the navigation bar, so the keyboard covers them.
      */
@@ -294,9 +356,44 @@ public final class NavigationBarPatch {
 
     /**
      * Injection point.
+     * <p>
+     * The bottom margin of the layout that holds the page, the player and the navigation bar while
+     * the keyboard is open. With the feature flags turned on by
+     * {@link #useTranslucentNavigationBar(boolean)}, the keyboard height is removed from it, so
+     * the keyboard covers them again.
+     * <p>
+     * The legacy miniplayer, such as the minimal type before 21.29, rests at the bottom of that
+     * layout, so while it is shown the layout ends at the top of the keyboard instead
+     * (https://github.com/MorpheApp/morphe-patches/issues/4003). The margin of the app leaves
+     * the height of the system navigation buttons for the navigation bar, which is hidden while
+     * the keyboard is open, so the full keyboard height is used. The other miniplayers are moved
+     * above the keyboard by {@link MinimalMiniplayerPatch}.
+     *
+     * @param original The keyboard height the app uses as the margin.
      */
-    public static void setKeyboardMarginRemoved() {
+    public static int getKeyboardMargin(int original) {
+        if (!translucentNavigationBarForced) {
+            return original;
+        }
+
+        try {
+            if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED
+                    && !MiniplayerPatch.getCurrentMiniplayerType().isModern()
+                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                Activity activity = Utils.getActivity();
+                WindowInsets insets = activity == null
+                        ? null
+                        : activity.getWindow().getDecorView().getRootWindowInsets();
+                if (insets != null) {
+                    return Math.max(original, insets.getInsets(WindowInsets.Type.ime()).bottom);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getKeyboardMargin failure", ex);
+        }
+
         keyboardMarginRemoved = true;
+        return 0;
     }
 
     static boolean isKeyboardMarginRemoved() {
@@ -314,18 +411,121 @@ public final class NavigationBarPatch {
      * Only with the feature flags turned on by {@link #useTranslucentNavigationBar(boolean)}.
      */
     public static int getNavigationBarBottomPadding(View navigationBar, int original) {
+        int padding = original;
         try {
             if (translucentNavigationBarForced && original != 0
                     && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 WindowInsets insets = navigationBar.getRootWindowInsets();
                 if (insets != null && insets.isVisible(WindowInsets.Type.ime())) {
-                    return Math.min(original, insets.getInsets(WindowInsets.Type.systemBars()).bottom);
+                    padding = Math.min(original, insets.getInsets(WindowInsets.Type.systemBars()).bottom);
                 }
             }
+
+            padding = setSlimStatusBarRoom(navigationBar, padding);
         } catch (Exception ex) {
             Logger.printException(() -> "getNavigationBarBottomPadding failure", ex);
         }
-        return original;
+        return padding;
+    }
+
+    /**
+     * The bar shown below the navigation bar when the connection is lost or comes back
+     * ("No connection", "Back online").
+     */
+    private static final int SLIM_STATUS_BAR = ResourceUtils.getIdentifier(
+            ResourceType.ID, "slim_status_bar");
+
+    private static final int PIVOT_BAR = ResourceUtils.getIdentifier(
+            ResourceType.ID, "pivot_bar");
+
+    /**
+     * The navigation bar, with a method added during patching.
+     */
+    public interface PivotBarAccess {
+        /**
+         * Sets the room the navigation bar leaves below itself for the system navigation buttons,
+         * which is added to its height.
+         */
+        void patch_setSystemButtonsRoom(int room);
+    }
+
+    /**
+     * If the slim status bar is shown below the navigation bar.
+     */
+    private static volatile boolean slimStatusBarShown;
+
+    /**
+     * The room for the system navigation buttons the app last gave the navigation bar.
+     */
+    private static volatile int systemButtonsRoom;
+
+    /**
+     * When the navigation bar covers the system navigation buttons, the slim status bar is laid out
+     * below it, behind the buttons, which cover it. While the slim status bar is shown, the room for
+     * the buttons is left below the slim status bar instead of below the navigation bar.
+     * Only with the feature flags turned on by {@link #useTranslucentNavigationBar(boolean)}.
+     *
+     * @return The room the navigation bar leaves for the system navigation buttons.
+     */
+    private static int setSlimStatusBarRoom(View navigationBar, int room) {
+        if (!translucentNavigationBarForced || !(navigationBar instanceof PivotBarAccess)) {
+            return room;
+        }
+
+        systemButtonsRoom = room;
+        View slimStatusBar = navigationBar.getParent() instanceof ViewGroup container
+                ? container.findViewById(SLIM_STATUS_BAR)
+                : null;
+        final boolean moveRoom = slimStatusBarShown && slimStatusBar != null && room > 0;
+        if (slimStatusBar != null) {
+            // The top padding is the padding of the slim status bar itself.
+            final int bottomPadding = slimStatusBar.getPaddingTop() + (moveRoom ? room : 0);
+            if (slimStatusBar.getPaddingBottom() != bottomPadding) {
+                slimStatusBar.setPadding(slimStatusBar.getPaddingLeft(), slimStatusBar.getPaddingTop(),
+                        slimStatusBar.getPaddingRight(), bottomPadding);
+            }
+        }
+        return moveRoom ? 0 : room;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The window insets are not sent again when the slim status bar is shown or hidden,
+     * so the room for the system navigation buttons is moved whenever that happens.
+     *
+     * @param bottomBarContainer The container of the navigation bar and the slim status bar.
+     */
+    public static void watchSlimStatusBar(View bottomBarContainer) {
+        if (SLIM_STATUS_BAR == 0 || PIVOT_BAR == 0) return;
+
+        try {
+            bottomBarContainer.addOnLayoutChangeListener((view, left, top, right, bottom,
+                                                          oldLeft, oldTop, oldRight, oldBottom) -> {
+                try {
+                    View slimStatusBar = view.findViewById(SLIM_STATUS_BAR);
+                    final boolean shown = slimStatusBar != null && slimStatusBar.getVisibility() == View.VISIBLE;
+                    if (shown == slimStatusBarShown) return;
+                    slimStatusBarShown = shown;
+
+                    if (translucentNavigationBarForced
+                            && view.findViewById(PIVOT_BAR) instanceof PivotBarAccess access) {
+                        View navigationBar = (View) access;
+                        final int room = systemButtonsRoom;
+                        view.post(() -> {
+                            final int navigationBarRoom = setSlimStatusBarRoom(navigationBar, room);
+                            access.patch_setSystemButtonsRoom(navigationBarRoom);
+                            navigationBar.setPadding(navigationBar.getPaddingLeft(), navigationBar.getPaddingTop(),
+                                    navigationBar.getPaddingRight(), navigationBarRoom);
+                        });
+                    }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "watchSlimStatusBar layout failure", ex);
+                }
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "watchSlimStatusBar failure", ex);
+        }
     }
 
     /**
@@ -373,6 +573,14 @@ public final class NavigationBarPatch {
                         view.post(() -> view.setPadding(view.getPaddingLeft(), view.getPaddingTop(),
                                 view.getPaddingRight(), padding));
                     }
+
+                    // The room is drawn with the background of the layout, which follows the app theme.
+                    // The system navigation buttons over the Shorts player are light in both themes,
+                    // so with the light theme they cannot be seen. The room is black like the Shorts player.
+                    if (!(view.getBackground() instanceof ColorDrawable background)
+                            || background.getColor() != Color.BLACK) {
+                        view.setBackgroundColor(Color.BLACK);
+                    }
                 } catch (Exception ex) {
                     Logger.printException(() -> "setShortsPlayerBottomInset layout failure", ex);
                 }
@@ -398,7 +606,7 @@ public final class NavigationBarPatch {
      *                           behind the system navigation buttons or gesture handle.
      */
     public static void setNavigationBarOpaque(View bottomBarContainer) {
-        if (!DISABLE_TRANSLUCENT_NAVIGATION) return;
+        if (NAVIGATION_BAR_STYLE != NavigationBarStyle.OPAQUE) return;
 
         try {
             OpaqueSystemBars.apply(bottomBarContainer);
@@ -413,7 +621,7 @@ public final class NavigationBarPatch {
      * @param original The color the app theme gives the system navigation buttons.
      */
     public static int getSystemNavigationBarColor(int original) {
-        if (!DISABLE_TRANSLUCENT_NAVIGATION) return original;
+        if (NAVIGATION_BAR_STYLE != NavigationBarStyle.OPAQUE) return original;
 
         try {
             return OpaqueSystemBars.systemNavigationBarColor(original);

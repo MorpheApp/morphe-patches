@@ -150,17 +150,13 @@ public final class ShowFlairsInHomeFeedPatch {
         }
 
         if (WAITING_POSTS.size() > WAITING_POSTS_CLEANUP_SIZE) {
-            removeCollectedPosts();
+            WAITING_POSTS.values().removeIf(references -> {
+                references.removeIf(reference -> reference.get() == null);
+                return references.isEmpty();
+            });
         }
         WAITING_POSTS.computeIfAbsent(fullId, id -> new CopyOnWriteArrayList<>())
                 .add(new WeakReference<>(post));
-    }
-
-    private static void removeCollectedPosts() {
-        WAITING_POSTS.values().removeIf(references -> {
-            references.removeIf(reference -> reference.get() == null);
-            return references.isEmpty();
-        });
     }
 
     /**

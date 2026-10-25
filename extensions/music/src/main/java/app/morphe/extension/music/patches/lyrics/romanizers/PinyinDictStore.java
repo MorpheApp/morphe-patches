@@ -158,7 +158,7 @@ public final class PinyinDictStore {
         }
 
         characters = CharReadingTable.load(table);
-        RomanizationDict.writeNotice(directory, NOTICE_NAME, noticeText());
+        RomanizationDict.writeNotice(directory, NOTICE_NAME, noticeTextFor("kMandarin"));
         CantoneseDictStore.writeNotice(directory);
 
         WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictStore::addWords, listener);
@@ -338,10 +338,6 @@ public final class PinyinDictStore {
             if (reading.length() > 0) return reading.toLowerCase(Locale.ROOT);
         }
         return null;
-    }
-
-    private static String noticeText() {
-        return noticeTextFor("kMandarin");
     }
 
     static String noticeTextFor(String field) {

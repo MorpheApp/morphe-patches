@@ -454,6 +454,15 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Zobrazit počet líbků u miniatury kanálu</string>
   <string name="morphe_ryd_feed_like_ratio_title">Zobrazit procento líbků u miniatury kanálu</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Hledat v komentářích</string>
+  <string name="morphe_search_comments_summary">Klepnutím na tlačítko vyhledávání v komentářích zobrazíte pouze načtené komentáře, které obsahují všechna hledaná slova. Pro hledání konkrétní fráze uveďte slova do uvozovek</string>
+  <string name="morphe_search_comments_dialog_title">Hledat v komentářích</string>
+  <string name="morphe_search_comments_hint">Slova k vyhledání</string>
+  <string name="morphe_search_comments_search">Hledat</string>
+  <string name="morphe_search_comments_clear">Vymazat</string>
+  <string name="morphe_search_comments_applied">Změňte pořadí řazení nebo komentáře znovu otevřete, abyste v nich mohli vyhledávat</string>
+  <string name="morphe_search_comments_cleared">Vyhledávání bylo vymazáno. Změňte pořadí řazení nebo komentáře znovu otevřete, abyste zobrazili všechny komentáře</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Zakázat vyskakovací okno Přihlásit se k televizi</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Zakázat vyskakovací okno \'Připojit vaše zařízení\'</string>
@@ -836,6 +845,8 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_narrow_navigation_buttons_summary">Zmenší vodorovné mezery mezi tlačítky</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Zakázat navigační tlačítka bez popisků</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Zobrazí navigační tlačítka s popisky, pokud je YouTube dodává bez popisků</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Zakázat navigační karty v nástrojovém panelu</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Zobrazí Odběry v navigační liště, pokud YouTube přesune tuto sekci do karty v horní části Domovské stránky</string>
   <string name="morphe_navigation_bar_animations_title">Povolit animace navigační lišty</string>
   <string name="morphe_navigation_bar_animations_summary">Animuje přechody při přepínání mezi kartami</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Vypnout automatické skrývání navigační lišty</string>

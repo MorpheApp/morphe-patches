@@ -52,7 +52,6 @@ import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
@@ -1206,17 +1205,21 @@ val hideLayoutComponentsPatch = bytecodePatch(
             }
         }
 
-        BottomUIContainerFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static {}, $LAYOUT_COMPONENTS_FILTER->hideSnackbar()Z
-                move-result v0
-                if-eqz v0, :show
-                return-void
-                :show
-                nop
-            """
-        )
+        SnackbarDisplayFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index + 1
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                // Let YouTube skip displaying the snackbar while still running its callbacks.
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideSnackbar(Z)Z
+                        move-result v$register
+                    """
+                )
+            }
+        }
 
         arrayOf(
             QuantumSnackbarFingerprint,
@@ -1344,24 +1347,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 move-result p2
             """
         )
-
-        // endregion
-
-        // region disable UI padding feature flags
-
-        if (is_21_07_or_greater) {
-            listOf(
-                CommentReplyPaddingFeatureFlagFingerprint,
-                IncognitoSearchPaddingFeatureFlagFingerprint
-            ).forEach { fingerprint ->
-                fingerprint.matchAll().forEach {
-                    it.method.insertLiteralOverride(
-                        it.instructionMatches.first().index,
-                        "$LAYOUT_COMPONENTS_FILTER->disableUIPaddingFeatureFlags(Z)Z"
-                    )
-                }
-            }
-        }
 
         // endregion
     }

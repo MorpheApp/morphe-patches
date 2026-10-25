@@ -42,7 +42,7 @@ public class FullscreenVideoScaleButton {
 
             ImageView added = PlayerOverlayButton.addButton(
                     controlsView,
-                    getIconName(Settings.FULLSCREEN_VIDEO_SCALE.get()),
+                    PlayerIcons.name(Settings.FULLSCREEN_VIDEO_SCALE.get().iconBaseName),
                     FullscreenVideoScaleButton::isOverlayButtonEnabled,
                     view -> cycleScaleMode(),
                     null
@@ -119,9 +119,5 @@ public class FullscreenVideoScaleButton {
         if (legacy != null) {
             legacy.setIcon(icon);
         }
-    }
-
-    private static String getIconName(VideoScaleMode mode) {
-        return PlayerIcons.name(mode.iconBaseName);
     }
 }

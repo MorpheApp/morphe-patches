@@ -62,7 +62,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_album_cards_title">隱藏專輯資訊卡</string>
   <string name="morphe_hide_album_cards_summary">隱藏藝術家描述下方的專輯卡片</string>
   <string name="morphe_hide_artist_cards_title">隱藏藝人資訊卡</string>
-  <string name="morphe_hide_artist_cards_summary">隱藏搜尋結果頂部的藝術家卡片</string>
+  <string name="morphe_hide_artist_cards_summary">隱藏搜尋結果頂部的藝人卡片</string>
   <string name="morphe_hide_channel_buttons_title">隱藏頻道按鈕</string>
   <string name="morphe_hide_channel_buttons_summary">隱藏搜尋結果中頻道個人檔案中的訂閱、查看頻道、社群和 YouTube Music 等按鈕</string>
   <string name="morphe_hide_community_posts_title">隱藏社群貼文</string>
@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">顯示動態縮圖的按讚數</string>
   <string name="morphe_ryd_feed_like_ratio_title">顯示動態縮圖的按讚比例</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">搜尋評論</string>
+  <string name="morphe_search_comments_summary">點擊評論中的搜尋按鈕，僅顯示包含所有搜尋字詞的已載入評論。將字詞放入引號中以搜尋特定短語</string>
+  <string name="morphe_search_comments_dialog_title">搜尋評論</string>
+  <string name="morphe_search_comments_hint">要搜尋的字詞</string>
+  <string name="morphe_search_comments_search">搜尋</string>
+  <string name="morphe_search_comments_clear">清除</string>
+  <string name="morphe_search_comments_applied">更改排序順序或重新開啟評論以進行搜尋</string>
+  <string name="morphe_search_comments_cleared">搜尋已清除。更改排序順序或重新開啟評論以顯示所有評論</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">停用「登入電視」彈出視窗</string>
   <string name="morphe_disable_connect_your_devices_popup_title">停用「連接您的裝置」快顯視窗</string>
@@ -838,6 +847,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary">減少按鈕之間的水平間距</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">停用沒有標籤的導覽按鈕</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">如果 YouTube 傳送的導覽按鈕沒有標籤，則顯示帶有標籤的導覽按鈕</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">停用工具列導覽分頁</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">如果 YouTube 將「訂閱」移至首頁頂端的分頁，則在導覽列中顯示訂閱</string>
   <string name="morphe_navigation_bar_animations_title">啟用導覽列動畫</string>
   <string name="morphe_navigation_bar_animations_summary">在切換分頁時，讓轉換效果更生動</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">停用自動隱藏導航欄</string>

@@ -16,6 +16,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.DisplayCutout;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
@@ -28,6 +30,9 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import kotlin.Unit;
@@ -68,6 +73,45 @@ public final class HideStatusBarPatch {
     private static boolean activityLifecycleCallbacksRegistered;
 
     /**
+     * The layout that holds the toolbar of the pages. With the edge to edge top bar, its top padding
+     * is the room left for the status bar.
+     */
+    private static final int TOOLBAR_CONTAINER = ResourceUtils.getIdentifier(
+            ResourceType.ID, "toolbar_container");
+
+    /**
+     * Main activities whose top bars are kept below the status bar once they are started.
+     */
+    private static final Set<Activity> topBarActivities = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
+     * Callback when an activity is started. The window of the main activity is not created
+     * when it is initialized, so the top bars are watched once it is started.
+     */
+    private static final Application.ActivityLifecycleCallbacks TOP_BAR_LIFECYCLE_CALLBACKS
+            = new Application.ActivityLifecycleCallbacks() {
+
+        public void onActivityStarted(@NonNull Activity activity) {
+            try {
+                if (topBarActivities.remove(activity)) {
+                    keepTopBarsBelowStatusBar(activity.getWindow().getDecorView());
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "onActivityStarted top bar failure", ex);
+            }
+        }
+
+        public void onActivityCreated(@NonNull Activity a, @Nullable Bundle b) {}
+        public void onActivityResumed(@NonNull Activity a) {}
+        public void onActivityPaused(@NonNull Activity a) {}
+        public void onActivityStopped(@NonNull Activity a) {}
+        public void onActivitySaveInstanceState(@NonNull Activity a, @NonNull Bundle b) {}
+        public void onActivityDestroyed(@NonNull Activity a) {}
+    };
+
+    private static boolean topBarLifecycleCallbacksRegistered;
+
+    /**
      * If a video is watched in the player that fills the screen in portrait, not in fullscreen.
      * The display cutout inset is then left out, so the video is laid out at the top of the screen
      * instead of below the cutout. It is added back in the miniplayer, in fullscreen and without
@@ -90,12 +134,32 @@ public final class HideStatusBarPatch {
     private static volatile Boolean edgeToEdgeTopBarUsed;
 
     /**
+     * Changed during patching since this class is also
+     * used by {@link NavigationBarPatch}.
+     */
+    private static boolean isPatchIncluded() {
+        return false;  // Modified during patching.
+    }
+
+    /**
+     * @return If the edge to edge top bar feature flag is turned off for the whole session
+     *         even if it is not read yet: with the status bar layout fix and the status bar hidden.
+     */
+    private static boolean isEdgeToEdgeTopBarTurnedOff() {
+        return Settings.FIX_STATUS_BAR_LAYOUT.get() && Settings.HIDE_STATUS_BAR.get();
+    }
+
+    /**
      * @return If the window is drawn behind the system bars, or null if the app did not read
-     *         the edge to edge top bar feature flag yet.
+     *         the edge to edge top bar feature flag yet and its value is not known.
      */
     @Nullable
     static Boolean isEdgeToEdgeTopBar() {
-        return edgeToEdgeTopBarUsed;
+        Boolean edgeToEdge = edgeToEdgeTopBarUsed;
+        if (edgeToEdge == null && isPatchIncluded() && isEdgeToEdgeTopBarTurnedOff()) {
+            return false;
+        }
+        return edgeToEdge;
     }
 
     /**
@@ -143,6 +207,8 @@ public final class HideStatusBarPatch {
      * The status bar color that follows the scrolling top bar only exists with the edge to edge
      * top bar. Without it the status bar view is never set up, and the first scroll of the
      * top bar crashes the app (https://github.com/MorpheApp/morphe-patches/issues/3805).
+     * This flag can be read before the edge to edge top bar flag, which is then turned off later
+     * if the status bar is hidden.
      */
     public static boolean useStatusBarScrollColor(boolean original) {
         if (!Settings.FIX_STATUS_BAR_LAYOUT.get()) {
@@ -150,7 +216,10 @@ public final class HideStatusBarPatch {
         }
 
         Boolean edgeToEdge = edgeToEdgeTopBar;
-        return original && (edgeToEdge == null || edgeToEdge);
+        if (edgeToEdge == null) {
+            edgeToEdge = !isEdgeToEdgeTopBarTurnedOff();
+        }
+        return original && edgeToEdge;
     }
 
     /**
@@ -160,6 +229,7 @@ public final class HideStatusBarPatch {
      */
     public static void initialize(Activity activity) {
         if (!Settings.HIDE_STATUS_BAR.get()) {
+            watchTopBars(activity);
             return;
         }
 
@@ -185,6 +255,112 @@ public final class HideStatusBarPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         }
+    }
+
+    /**
+     * Keeps the top bars of the main activity below the status bar, with the status bar layout fix
+     * and the status bar not hidden. With the status bar hidden, the top bars are laid out
+     * by {@link #setSystemWindowInsetTop(Rect, View)} instead.
+     */
+    private static void watchTopBars(Activity activity) {
+        if (!Settings.FIX_STATUS_BAR_LAYOUT.get() || TOOLBAR_CONTAINER == 0) {
+            return;
+        }
+
+        try {
+            if (!topBarLifecycleCallbacksRegistered) {
+                topBarLifecycleCallbacksRegistered = true;
+                activity.getApplication().registerActivityLifecycleCallbacks(TOP_BAR_LIFECYCLE_CALLBACKS);
+            }
+            topBarActivities.add(activity);
+        } catch (Exception ex) {
+            Logger.printException(() -> "watchTopBars failure", ex);
+        }
+    }
+
+    /**
+     * The room for the status bar above the toolbar comes from many classes, and on some devices
+     * they do not agree on the edge to edge top bar (https://github.com/MorpheApp/morphe-patches/issues/2969).
+     * The room is then left out, so the status bar view covers the toolbar and its buttons,
+     * or it is added twice, leaving an empty bar above the toolbar.
+     * Whenever the window is laid out with the status bar visible, the top padding of the toolbar
+     * container is set so that the room above the toolbar is the height of the status bar once.
+     */
+    private static void keepTopBarsBelowStatusBar(View decorView) {
+        decorView.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            try {
+                // Only with the edge to edge top bar flag handed to the app by this patch.
+                if (!Settings.FIX_STATUS_BAR_LAYOUT.get() || Settings.HIDE_STATUS_BAR.get()
+                        || edgeToEdgeTopBarUsed == null) {
+                    return;
+                }
+
+                WindowInsets insets = decorView.getRootWindowInsets();
+                if (insets == null || !isStatusBarVisible(decorView)) {
+                    return;
+                }
+
+                final int statusBarHeight = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
+                        ? insets.getInsets(WindowInsets.Type.statusBars()).top
+                        : insets.getSystemWindowInsetTop();
+                if (statusBarHeight <= 0) {
+                    return;
+                }
+
+                // With the edge to edge top bar, the app lays out its whole layout behind the status bar.
+                // If the layout still makes room for the status bar, it is drawn as a dark bar over
+                // the top bars, so the layout is drawn behind the status bar the same as the app does.
+                View content = decorView.findViewById(android.R.id.content);
+                View layout = content instanceof ViewGroup group && group.getChildCount() > 0
+                        ? group.getChildAt(0)
+                        : null;
+                if (layout != null && layout.getPaddingTop() > 0 && edgeToEdgeTopBarUsed) {
+                    Logger.printDebug(() -> "Layout room for the status bar: " + layout.getPaddingTop());
+                    layout.setFitsSystemWindows(false);
+                    layout.setPadding(layout.getPaddingLeft(), 0, layout.getPaddingRight(), layout.getPaddingBottom());
+                    layout.requestApplyInsets();
+                    return;
+                }
+
+                View toolbarContainer = decorView instanceof ViewGroup decorGroup
+                        ? Utils.getChildView(decorGroup, true,
+                                view -> view.getId() == TOOLBAR_CONTAINER && view.isShown())
+                        : null;
+                if (toolbarContainer != null) {
+                    setStatusBarRoom(decorView, toolbarContainer, statusBarHeight);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "keepTopBarsBelowStatusBar failure", ex);
+            }
+        });
+    }
+
+    private static void setStatusBarRoom(View decorView, View toolbarContainer, int statusBarHeight) {
+        // The room above the toolbar: the top padding and margin of the toolbar container
+        // and of every layout that holds it. Scrolling the top bars away only moves them.
+        int room = toolbarContainer.getPaddingTop();
+        for (View view = toolbarContainer; view != decorView; ) {
+            if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams params) {
+                room += params.topMargin;
+            }
+            ViewParent parent = view.getParent();
+            if (!(parent instanceof View)) {
+                break;
+            }
+            view = (View) parent;
+            room += view.getPaddingTop();
+        }
+
+        final int roomAbove = room;
+        final int difference = statusBarHeight - roomAbove;
+        final int paddingTop = toolbarContainer.getPaddingTop() + difference;
+        if (difference == 0 || paddingTop < 0) {
+            return;
+        }
+
+        Logger.printDebug(() -> "Toolbar room above: " + roomAbove + " status bar: " + statusBarHeight);
+        toolbarContainer.setPadding(toolbarContainer.getPaddingLeft(), paddingTop,
+                toolbarContainer.getPaddingRight(), toolbarContainer.getPaddingBottom());
     }
 
     private static void hideStatusBar(Activity activity) {

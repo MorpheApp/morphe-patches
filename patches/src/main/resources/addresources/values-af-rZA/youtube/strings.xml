@@ -454,6 +454,15 @@ Nadat 'n video met die Ask-knoppie een keer oopgemaak is, werk die funksie met a
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Wys voer-seunbeeldtelling</string>
   <string name="morphe_ryd_feed_like_ratio_title">Wys voer-seunbeeldkoers</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Soek kommentaar</string>
+  <string name="morphe_search_comments_summary">Tik op die soekknoppie in die kommentaar om slegs die gelaaide kommentaar te wys wat al die gesoekte woorde bevat. Sit woorde in aanhalingstekens om vir \'n frase te soek</string>
+  <string name="morphe_search_comments_dialog_title">Soek kommentaar</string>
+  <string name="morphe_search_comments_hint">Woorde om te soek</string>
+  <string name="morphe_search_comments_search">Soek</string>
+  <string name="morphe_search_comments_clear">Klar</string>
+  <string name="morphe_search_comments_applied">Verander die sorteervolgorde of maak die kommentaar weer oop om dit te soek</string>
+  <string name="morphe_search_comments_cleared">Soektog gewysig. Verander die sorteervolgorde of maak die kommentaar weer oop om alle kommentaar te wys</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiveer \'Aanmeld by TV\'-pop-up</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Deaktiveer die \'Koppel jou toestelle\'-pop-up</string>
@@ -838,6 +847,8 @@ Om Instellings toe te gaan, skakel die Instelling-knoppie in via Algemeen → We
   <string name="morphe_narrow_navigation_buttons_summary">Keeps the navigation bar visible while scrolling</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Deaktiveer navigasieknoppies sonder etikette</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Wys die navigasieknoppies met etikette as YouTube hulle sonder etikette stuur</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Deaktiveer werkbalk-navigasie-oortjies</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Wys Inskrywings in die navigasiebalk, indien YouTube dit na \'n oortjie bo-aan Tuis skuif</string>
   <string name="morphe_navigation_bar_animations_title">Aktiveer navigasiebalkanimasies</string>
   <string name="morphe_navigation_bar_animations_summary">Makes the status bar fully opaque</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiveer outomatiese verberg van navigasiebalk</string>
@@ -1291,6 +1302,7 @@ Video's word met 'n kort voorvoegsel van die gehashte video-ID aangevra, sodat d
   <!-- video.delay.videoDelayPatch -->
   <string name="morphe_video_delay_title">Videovertraging</string>
   <string name="morphe_video_delay_summary">Vertrag die video sodat dit gesinkroniseer bly met vertraagde klank, soos Bluetooth-koptelefone (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Slegs vertraag met Bluetooth-oudio</string>
   <string name="morphe_video_delay_bluetooth_only_summary">Sleutel slegs video terwyl Bluetooth-klank aangeskakel is, sodat die foonluidspreker in pas bly</string>
   <string name="morphe_video_delay_button_overlay_title">Wys Videovertraging-knoppie</string>
   <string name="morphe_video_delay_button_overlay_summary">Tik en hou om die vertraging na 0 ms te herstel</string>

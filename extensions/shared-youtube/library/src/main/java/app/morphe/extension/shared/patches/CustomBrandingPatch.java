@@ -176,7 +176,8 @@ public class CustomBrandingPatch {
      * Injection point.
      */
     public static View getLottieViewOrNull(View lottieStartupView) {
-        if (SplashAnimationPatch.isDisabled()) {
+        if (SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get()
+                == SplashAnimationPatch.SplashScreenAnimationStyle.DISABLED) {
             return null;
         }
 

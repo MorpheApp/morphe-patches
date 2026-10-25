@@ -19,6 +19,7 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
@@ -573,6 +574,19 @@ val videoInformationPatch = bytecodePatch(
                         0,
                         "invoke-direct { p0, p1 }, $helperMethod"
                     )
+                }
+
+                // A preloaded playback, such as the next Short, becomes the current one without loadVideo().
+                currentPlaybackFingerprint(playerResponseType).matchSingle().let { currentPlayback ->
+                    currentPlayback.method.apply {
+                        val index = currentPlayback.instructionMatches.last().index
+                        val playerResponseRegister = getInstruction<FiveRegisterInstruction>(index).registerC
+
+                        addInstruction(
+                            index,
+                            "invoke-direct { p0, v$playerResponseRegister }, $helperMethod"
+                        )
+                    }
                 }
             }
         }

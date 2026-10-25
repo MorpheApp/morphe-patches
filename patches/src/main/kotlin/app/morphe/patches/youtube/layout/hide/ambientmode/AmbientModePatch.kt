@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.layout.hide.ambientmode
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -27,6 +28,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_03_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -115,10 +117,12 @@ val ambientModePatch = bytecodePatch(
             }
         }
 
-        val intentActionFingerprints = mutableListOf(
-            IntentActionBroadcastReceiverFingerprint,
-            IntentActionSyntheticFingerprint
+        val intentActionFingerprints = mutableListOf<Fingerprint>(
+            IntentActionBroadcastReceiverFingerprint
         )
+        if (!is_21_43_or_greater) {
+            intentActionFingerprints += IntentActionSyntheticFingerprint
+        }
         if (is_21_02_or_greater) {
             intentActionFingerprints += IntentActionBroadcastReceiverAlternativeFingerprint
         }
@@ -139,8 +143,11 @@ val ambientModePatch = bytecodePatch(
                 }
             }
         }
-        if (is_21_03_or_greater) {
+
+        if (is_21_43_or_greater) {
             IntentActionSyntheticAlternativeFingerprint.method.hook()
+        } else if (is_21_03_or_greater) {
+            IntentActionSyntheticAlternativeLegacyFingerprint.method.hook()
         }
 
         //
@@ -150,7 +157,7 @@ val ambientModePatch = bytecodePatch(
 
         // Feature flags. 21.30+ inlines the flag lookups and must patch 4 places for each flag.
         // Each flag is on if ambient mode is not disabled.
-        AmbientModeFeatureFlagFingerprint.matchAllMethodIndicesForEach { index ->
+        if (!is_21_43_or_greater) AmbientModeFeatureFlagFingerprint.matchAllMethodIndicesForEach { index ->
             val moveResultIndex = indexOfFirstInstructionOrThrow(index, Opcode.MOVE_RESULT)
             val register = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
@@ -218,8 +225,15 @@ val ambientModePatch = bytecodePatch(
                         const/4 v0, 0x1
                         invoke-static { v0 }, $EXTENSION_IS_AMBIENT_MODE_ENABLED
                         move-result v0
-                        if-eqz v0, :keep
+                        if-nez v0, :enabled
 
+                        # Ambient mode is disabled, so the renderer of the server is not used either.
+                        # 21.43+ has no feature flags that turn ambient mode off.
+                        invoke-static { }, $optionalType->empty()$optionalType
+                        move-result-object p1
+                        return-object p1
+
+                        :enabled
                         # No /next response yet.
                         sget-object v0, $waitingStateField
                         if-eq p0, v0, :keep

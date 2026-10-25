@@ -139,8 +139,8 @@ public final class MetadataCleaner {
         if (value == null) {
             return "";
         }
-        return collapseWhitespace(
-                applyRegex(value, resolveSetting(LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.get())));
+        return WHITESPACE.matcher(applyRegex(value, resolveSetting(LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.get())))
+                .replaceAll(" ").trim();
     }
 
     static String applyRegex(String input, String regex) {
@@ -307,10 +307,6 @@ public final class MetadataCleaner {
     }
 
     private static final Pattern WHITESPACE = Pattern.compile("\\s+");
-
-    private static String collapseWhitespace(String value) {
-        return WHITESPACE.matcher(value).replaceAll(" ").trim();
-    }
 
     @NonNull
     private static String download(String urlStr) throws Exception {

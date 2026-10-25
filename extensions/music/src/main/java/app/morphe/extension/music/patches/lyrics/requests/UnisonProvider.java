@@ -86,7 +86,8 @@ public final class UnisonProvider implements LyricsProvider {
                 url.append("&album=").append(LyricsRequests.encode(album));
             }
 
-            connection = openUnisonConnection(url.toString());
+            connection = LyricsRequests.openConnection(url.toString());
+            connection.setRequestProperty("X-Key-ID", getKeyId());
             final int code = connection.getResponseCode();
             if (code == 404) {
                 connection.disconnect();
@@ -119,12 +120,6 @@ public final class UnisonProvider implements LyricsProvider {
                 connection.disconnect();
             }
         }
-    }
-
-    private static HttpURLConnection openUnisonConnection(String url) throws IOException {
-        final HttpURLConnection connection = LyricsRequests.openConnection(url);
-        connection.setRequestProperty("X-Key-ID", getKeyId());
-        return connection;
     }
 
     private static String getKeyId() {

@@ -36,8 +36,8 @@ import app.morphe.extension.youtube.settings.search.YouTubeSearchViewController;
 @SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class YouTubeActivityHook extends BaseActivityHook {
 
-    public static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
-            && VersionCheckPatch.IS_20_31_OR_GREATER
+    public static final boolean USE_BOLD_ICONS = (VersionCheckPatch.IS_21_36_OR_GREATER ||
+            (Settings.SETTINGS_INITIALIZED.get() && VersionCheckPatch.IS_20_31_OR_GREATER))
             && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00")
             && !Settings.RESTORE_OLD_SETTINGS_MENUS.get();
 

@@ -454,6 +454,15 @@ Ko enkrat odprete video s gumbom Zastavi, bo funkcija delovala za vse videe, tud
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Prikaži število všečkov za sličico predvajalne vrstice</string>
   <string name="morphe_ryd_feed_like_ratio_title">Prikaži odstotek všečkov za sličico predvajalne vrstice</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Iskanje komentarjev</string>
+  <string name="morphe_search_comments_summary">Tapnite gumb za iskanje v komentarjih, da izprikažete samo naložene komentarje, ki vsebujejo vse iskane besede. Besede vzemite v narekovaje za iskanje besedne skupine</string>
+  <string name="morphe_search_comments_dialog_title">Iskanje komentarjev</string>
+  <string name="morphe_search_comments_hint">Besede za iskanje</string>
+  <string name="morphe_search_comments_search">Išči</string>
+  <string name="morphe_search_comments_clear">Počisti</string>
+  <string name="morphe_search_comments_applied">Spremenite vrstni red ali ponovno odprite komentarje za njihovo iskanje</string>
+  <string name="morphe_search_comments_cleared">Iskanje počiščeno. Spremenite vrstni red ali ponovno odprite komentarje za prikaz vseh komentarjev</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogoči pojavni gumb \'Prijava na TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Onemogoči pojavno okno \'Povečite svoje naprave\'</string>
@@ -838,6 +847,8 @@ Za dostop do Nastavitev omogočajte gumb Nastavitve prek Splošno → Orodna vrs
   <string name="morphe_narrow_navigation_buttons_summary">Naredi vrstico stanja popolnoma neprozorno</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Onemogoči navigacijske gumbe brez oznak</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Prikaže navigacijske gumbe z oznakami, če jih YouTube pošlje brez oznak</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Onemogoči navigacijske zavihke v vrstici z orodji</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Prikaže Naročnine v navigacijski vrstici, če YouTube jih premakne v zavihek na vrhu Domov</string>
   <string name="morphe_navigation_bar_animations_title">Omogoči animacije navigacijske vrstice</string>
   <string name="morphe_navigation_bar_animations_summary">Naredi vrstico za navigacijo popolnoma neprozorno v svetlem načinu</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Onemogoči samodejno skrivanje navigacijske vrstice</string>
@@ -1292,6 +1303,7 @@ Videoposnetki so zahtevani s kratko predpono zgoščenega ID-ja videoposnetka, t
   <string name="morphe_video_delay_title">Zakasnitev videa</string>
   <string name="morphe_video_delay_summary">Zakasni video, da bo sinhroniziran s kasnejočim zvokom, npr. pri brezžičnih slušalkah (0-5000 ms)</string>
   <string name="morphe_video_delay_bluetooth_only_title">Zakasni le z Bluetooth zvokom</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Zasni video le, ko je povezan Bluetooth zvok, tako da ostane v sinhronizaciji z zvočnikom telefona</string>
   <string name="morphe_video_delay_button_overlay_title">Prikaži gumb za zakasnitev videa</string>
   <string name="morphe_video_delay_button_overlay_summary">Dolgo pritisnite za ponastavitev zakasnitve na 0 ms</string>
   <string name="morphe_video_delay_button_flyout_title">Prikaži meni za zakasnitev videa</string>

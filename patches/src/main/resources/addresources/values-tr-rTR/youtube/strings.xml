@@ -437,24 +437,33 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_feed_watch_later_button_title">Küçük resimlerde Daha Sonra İzle düğmesini göster</string>
   <string name="morphe_feed_watch_later_button_summary">Akış videolarının küçük resimlerinde bir Daha Sonra İzle düğmesi gösterilir. Dokunulup basılı tutulduğunda Çalma listesine kaydet açılır</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
-  <string name="morphe_ask_summarize_flyout_menu_title">Ask ögesini açılır menüye ekle</string>
-  <string name="morphe_ask_summarize_flyout_menu_summary">Akışın açılır menüsüne bir video özeti öğesi eklenir</string>
+  <string name="morphe_ask_summarize_flyout_menu_title">Soru ögesini açılır menüye ekle</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Akış açılır menüsüne bir video özetlendirme ögesi ekler</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask'ın kullanılabilmesi için öncelikle Ask'ın mevcut olduğu bir ülkede oturum açmış olmanız gerekir.
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Soru, ilk başta Soru'nun kullanılabilir olduğu bir ülkeden oturum açılmış bir hesap gerektirir.
 
-Ask düğmesi olan bir video ilk kez açıldığında, özellik geçerli ülke Ask özelliğini sunmasa bile tüm videolarda çalışır."</string>
+Soru düğmesine sahip olan bir video bir kez açıldıktan sonra bu özellik, mevcut ülke Soru özelliğine sahip olmasa dahi tüm videolarda çalışmaya başlar."</string>
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
   <string name="morphe_ask_summarize_title">Videoyu özetle</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_failed">Bu video için Ask kullanılamadı</string>
+  <string name="morphe_ask_summarize_failed">Bu video için Soru açılamadı</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_unavailable">Ask hesabınız veya bulunduğunuz ülke için mevcut değil</string>
+  <string name="morphe_ask_summarize_unavailable">Soru, hesabınız veya bulunduğunuz ülke için mevcut değil</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">İzlenme sayısını kapak resimlerinde göster</string>
   <string name="morphe_feed_view_count_summary">Akış videolarının izlenme sayısı başlığın altı yerine kapak resminin sol altında gösterilir. Raflardaki gibi bazı videolar izlenme sayısı göstermeyebilir</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Akış kapak fotoğrafı beğeni sayısını göster</string>
   <string name="morphe_ryd_feed_like_ratio_title">Akış kapak fotoğrafı beğeni oranını göster</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Yorumları ara</string>
+  <string name="morphe_search_comments_summary">Yalnızca yüklü yorumlarda aranan tüm kelimeleri içeren yorumları görüntülemek için yorumlardaki arama düğmesine dokunun. Bir ifadeyi aramak için kelimeleri tırnak içine alın</string>
+  <string name="morphe_search_comments_dialog_title">Yorumları ara</string>
+  <string name="morphe_search_comments_hint">Aranacak kelimeler</string>
+  <string name="morphe_search_comments_search">Ara</string>
+  <string name="morphe_search_comments_clear">Temizle</string>
+  <string name="morphe_search_comments_applied">Yorumları aramak için sıralamayı değiştirin veya yorumları tekrar açın</string>
+  <string name="morphe_search_comments_cleared">Arama temizlendi. Tüm yorumları görüntülemek için sıralamayı değiştirin veya yorumları tekrar açın</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV\'ye oturum aç\" penceresini devre dışı bırak</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Cihazlarınızı bağlayın\' açılır penceresini devre dışı bırak</string>
@@ -839,6 +848,8 @@ Ayarlar'a erişmek için Ayarlar düğmesini Genel → Araç Çubuğu → Ayarla
   <string name="morphe_narrow_navigation_buttons_summary">Düğmeler arasındaki yatay boşluğu azaltır</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Etiketsiz gezinme düğmelerini devre dışı bırak</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube bunları etiketsiz gönderirse, gezinme düğmelerini etiketlerle gösterir</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Araç çubuğu gezinti sekmelerini devre dışı bırak</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">YouTube, Abonelikler\'i Ana Sayfa\'nın üstündeki bir sekmeye taşırsa, onu gezinti çubuğunda gösterir</string>
   <string name="morphe_navigation_bar_animations_title">Gezinme çubuğu animasyonlarını etkinleştir</string>
   <string name="morphe_navigation_bar_animations_summary">Sekmeler arasında animasyonlu geçişler yapar</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Gezinme çubuğunun otomatik gizlenmesini devre dışı bırak</string>

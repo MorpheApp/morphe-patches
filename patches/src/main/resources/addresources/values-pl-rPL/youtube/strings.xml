@@ -436,24 +436,33 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_feed_watch_later_button_title">Pokaż przycisk \"Do obejrzenia\" na miniaturkach</string>
   <string name="morphe_feed_watch_later_button_summary">Na miniaturkach filmów na liście wyświetlany jest przycisk \"Do obejrzenia\". Przytrzymanie go otwiera opcję \"Zapisz na playliście\"</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
-  <string name="morphe_ask_summarize_flyout_menu_title">Dodaj element Ask do menu flyout</string>
-  <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje element podsumowania wideo do menu feed flyout</string>
+  <string name="morphe_ask_summarize_flyout_menu_title">Dodaj opcję \"Zapytaj\" do menu</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje opcję podsumowania filmu do menu na liście</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Polecana na początku wymaga zalogowanego konta w kraju, w którym dostępna jest usługa Ask.
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Funkcja \"Zapytaj\" wymaga początkowo zalogowania na konto w kraju, w którym jest ona dostępna.
 
-Po jednorazowym otwarciu filmu z przyciskiem Ask funkcja działa ze wszystkimi filmami, nawet jeśli aktualny kraj nie udostępnia usługi Ask."</string>
+​Po jednokrotnym otwarciu filmu z przyciskiem \"Zapytaj\" funkcja ta działa we wszystkich filmach, nawet jeśli nie jest dostępna w bieżącym kraju."</string>
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
-  <string name="morphe_ask_summarize_title">Podsumuj wideo</string>
+  <string name="morphe_ask_summarize_title">Podsumuj ten film</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_failed">Nie udało się otworzyć Ask dla tego filmu</string>
+  <string name="morphe_ask_summarize_failed">Nie udało się otworzyć funkcji \"Zapytaj\" dla tego filmu</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_unavailable">Ask nie jest dostępny dla Twojego konta lub bieżącego kraju</string>
+  <string name="morphe_ask_summarize_unavailable">Funkcja \"Zapytaj\" nie jest dostępna dla Twojego konta lub bieżącego kraju</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Pokaż liczbę wyświetleń na miniaturkach</string>
   <string name="morphe_feed_view_count_summary">Liczba wyświetleń filmów na liście jest wyświetlana w lewym dolnym rogu miniaturki zamiast pod tytułem. Niektóre filmy, np. w sekcjach, mogą nie wyświetlać liczby wyświetleń</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Pokaż liczbę polubień na miniaturkach na liście</string>
   <string name="morphe_ryd_feed_like_ratio_title">Pokaż procent polubień na miniaturkach na liście</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Szukaj w komentarzach</string>
+  <string name="morphe_search_comments_summary">Dotknij przycisku wyszukiwania w sekcji komentarzy, aby wyświetlić tylko te wczytane komentarze, które zawierają wszystkie szukane słowa. Ujmij słowa w cudzysłów, aby wyszukać dokładną frazę</string>
+  <string name="morphe_search_comments_dialog_title">Szukaj w komentarzach</string>
+  <string name="morphe_search_comments_hint">Szukane słowa</string>
+  <string name="morphe_search_comments_search">Szukaj</string>
+  <string name="morphe_search_comments_clear">Wyczyść</string>
+  <string name="morphe_search_comments_applied">Zmień kolejność sortowania lub otwórz komentarze ponownie, aby je przeszukać</string>
+  <string name="morphe_search_comments_cleared">Wyczyszczono wyszukiwanie. Zmień kolejność sortowania lub otwórz komentarze ponownie, aby wyświetlić wszystkie komentarze</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Wyłącz komunikat o zalogowaniu się do TV</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Wyłącz wyskakujące okienko \"Połącz swoje urządzenia\"</string>
@@ -838,6 +847,8 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_narrow_navigation_buttons_summary">Zmniejsza poziome odstępy między przyciskami</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Wyłącz przyciski nawigacji bez etykiet</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Wyświetla przyciski nawigacji z etykietami, jeśli YouTube przesyła je bez nich</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Wyłącz karty nawigacji na pasku narzędzi</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Wyświetla Subskrypcje na pasku nawigacji, jeśli YouTube przeniesie je do karty na górze strony głównej</string>
   <string name="morphe_navigation_bar_animations_title">Włącz animacje paska nawigacji</string>
   <string name="morphe_navigation_bar_animations_summary">Animuje przejścia podczas przełączania między kartami</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Wyłącz automatyczne ukrywanie paska nawigacji</string>
@@ -1246,8 +1257,8 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
 ​Filmy są pobierane za pomocą krótkiego prefiksu zakodowanego identyfikatora filmu, dzięki czemu serwer nie wie dokładnie, jaki film oglądasz. Jeśli film nie ma miniaturki DeArrow, wyświetlana jest oryginalna lub nieruchoma klatka"</string>
   <string name="morphe_dearrow_connection_toast_title">Pokaż powiadomienia o błędach połączenia</string>
   <string name="morphe_dearrow_connection_toast_summary">Wyświetla powiadomienie, gdy serwer DeArrow jest niedostępny</string>
-  <string name="morphe_dearrow_api_url_title">Punkt końcowy API</string>
-  <string name="morphe_dearrow_api_url_summary">Adres punktu końcowego do miniaturek DeArrow</string>
+  <string name="morphe_dearrow_api_url_title">Adres API</string>
+  <string name="morphe_dearrow_api_url_summary">Adres API do miniaturek DeArrow</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">Kadry z filmu</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">Statyczne kadry są pobierane z początku, środka lub końca każdego filmu. Obrazy te są wbudowane w YouTube i nie korzystają z zewnętrznych API</string>
   <string name="morphe_dearrow_thumbnail_stills_time_title">Wyodrębnij klatkę filmu z</string>

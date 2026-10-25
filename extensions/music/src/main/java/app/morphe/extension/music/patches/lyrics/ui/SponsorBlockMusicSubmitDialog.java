@@ -102,12 +102,12 @@ final class SponsorBlockMusicSubmitDialog {
 
         final OffsetSliderView offsetSlider = new OffsetSliderView(context);
         offsetSlider.setValue(manager.getTemporaryOffsetMs());
-        offsetSlider.setOnOffsetChanged(ms -> {
+        offsetSlider.listener = ms -> {
             manager.setTemporaryOffsetMs(ms);
             // Same offset the panel drags, so it saves it the same way.
             manager.persistTemporaryOffsetMs();
             onOffsetSync.accept(ms);
-        });
+        };
 
         final Runnable refreshTimes = () -> {
             startView.setText(formatTimeMs(times[0]));
@@ -235,7 +235,7 @@ final class SponsorBlockMusicSubmitDialog {
         if (stored) {
             scheduleSegmentRefresh(videoId, manager);
         } else {
-            dropDialogPreview(manager, videoId, startMs, endMs);
+            Utils.runOnMainThread(() -> manager.clearDialogSegment(videoId, startMs, endMs));
         }
     }
 
@@ -246,11 +246,6 @@ final class SponsorBlockMusicSubmitDialog {
                 SkipSegments.prefetch(videoId);
             }
         }, REFRESH_DELAY_MS);
-    }
-
-    private static void dropDialogPreview(LyricsManager manager, String videoId,
-                                          long startMs, long endMs) {
-        Utils.runOnMainThread(() -> manager.clearDialogSegment(videoId, startMs, endMs));
     }
 
     private static void copySpan(Context context, String videoId, long[] times) {
@@ -383,10 +378,6 @@ final class SponsorBlockMusicSubmitDialog {
             touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
             setBackground(CustomDialog.createRoundedBackground(20,
                     ThemeUtils.getCancelOrNeutralButtonBackgroundColor()));
-        }
-
-        void setOnOffsetChanged(IntConsumer listener) {
-            this.listener = listener;
         }
 
         void setValue(int ms) {

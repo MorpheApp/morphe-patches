@@ -207,7 +207,7 @@ public final class RememberLiveStreamPositionPatch {
                 return;
             }
 
-            SavedPosition saved = loadPlaybackPosition(videoId);
+            SavedPosition saved = getSavedPositions().get(videoId);
             if (saved == null) {
                 // Nothing remembered for this video. Allow saving again.
                 restorePending = false;
@@ -352,10 +352,6 @@ public final class RememberLiveStreamPositionPatch {
 
         trimSavedPositions();
         saveSavedPositions();
-    }
-
-    private static SavedPosition loadPlaybackPosition(String videoId) {
-        return getSavedPositions().get(videoId);
     }
 
     private static void deletePlaybackPosition(String videoId) {

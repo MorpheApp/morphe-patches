@@ -74,14 +74,6 @@ final class AboutDialogStyle {
         return '\u2066' + text + '\u2069';
     }
 
-    /**
-     * @return The accent used for icons and highlights, picked from the logo gradient so it stays
-     *         legible against the current dialog background.
-     */
-    private static String accentColor() {
-        return Utils.isDarkModeEnabled() ? MORPHE_TEAL : MORPHE_BLUE;
-    }
-
     private static String materialIcon(String path) {
         return "<svg viewBox='0 -960 960 960'><path d='" + path + "'/></svg>";
     }
@@ -117,15 +109,6 @@ final class AboutDialogStyle {
     }
 
     /**
-     * @return The escaped text with any urls in it turned into links, so the addresses named inside
-     *         a license can be opened.
-     */
-    static String linkifyHtml(String text) {
-        return escapeHtml(text)
-                .replaceAll("(https?://[^\\s<>\"]+)", "<a href='$1'>$1</a>");
-    }
-
-    /**
      * @return A heading for the group of rows that follows it.
      */
     static String sectionTitle(String text) {
@@ -143,7 +126,9 @@ final class AboutDialogStyle {
                         BaseSettings.MORPHE_LANGUAGE.get().getLocale()) ? "rtl" : "ltr")
                 .replace("{bg}", Utils.getColorHexString(ThemeUtils.getDialogBackgroundColor()))
                 .replace("{fg}", Utils.getColorHexString(ThemeUtils.getAppForegroundColor()))
-                .replace("{accent}", accentColor())
+                // Accent of icons and highlights, picked from the logo gradient so it stays
+                // legible against the current dialog background.
+                .replace("{accent}", Utils.isDarkModeEnabled() ? MORPHE_TEAL : MORPHE_BLUE)
                 .replace("{blue}", MORPHE_BLUE)
                 .replace("{teal}", MORPHE_TEAL);
     }

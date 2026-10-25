@@ -225,4 +225,31 @@
         <item>ZH</item>
         <item>YUE</item>
     </string-array>
+
+    <!-- layout.lyrics.lyricsPatch - Translation & Romanization Providers -->
+    <string-array name="morphe_music_lyrics_translation_provider_entries">
+        <item>@string/morphe_music_lyrics_translation_provider_google</item>
+        <item>@string/morphe_music_lyrics_translation_provider_gemini</item>
+        <item>@string/morphe_music_lyrics_translation_provider_openai_compatible</item>
+        <item>@string/morphe_music_lyrics_translation_provider_deepl</item>
+    </string-array>
+    <string-array name="morphe_music_lyrics_translation_provider_entry_values">
+        <item>google</item>
+        <item>gemini</item>
+        <item>openai_compatible</item>
+        <item>deepl</item>
+    </string-array>
+
+    <string-array name="morphe_music_lyrics_romanization_provider_entries">
+        <item>@string/morphe_music_lyrics_romanization_provider_google</item>
+        <item>@string/morphe_music_lyrics_romanization_provider_local</item>
+        <item>@string/morphe_music_lyrics_romanization_provider_gemini</item>
+        <item>@string/morphe_music_lyrics_romanization_provider_openai_compatible</item>
+    </string-array>
+    <string-array name="morphe_music_lyrics_romanization_provider_entry_values">
+        <item>google</item>
+        <item>local</item>
+        <item>gemini</item>
+        <item>openai_compatible</item>
+    </string-array>
 </resources>

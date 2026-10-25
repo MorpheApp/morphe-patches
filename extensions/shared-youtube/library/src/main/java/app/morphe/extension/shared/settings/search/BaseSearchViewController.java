@@ -140,7 +140,10 @@ public abstract class BaseSearchViewController {
         // Initialize components
         initializeSearchView();
         initializeOverlayContainer();
-        initializeSearchHistoryManager();
+        searchHistoryManager = new SearchHistoryManager(activity, overlayContainer, query -> {
+            searchView.setQuery(query, true);
+            hideSearchHistory();
+        });
         setupToolbarMenu();
         setupListeners();
     }
@@ -236,16 +239,6 @@ public abstract class BaseSearchViewController {
             overlayParams.gravity = Gravity.TOP;
             mainContainer.addView(overlayContainer, overlayParams);
         }
-    }
-
-    /**
-     * Initializes the search history manager with the specified overlay container and listener.
-     */
-    private void initializeSearchHistoryManager() {
-        searchHistoryManager = new SearchHistoryManager(activity, overlayContainer, query -> {
-            searchView.setQuery(query, true);
-            hideSearchHistory();
-        });
     }
 
     // Abstract interface for preference fragments.

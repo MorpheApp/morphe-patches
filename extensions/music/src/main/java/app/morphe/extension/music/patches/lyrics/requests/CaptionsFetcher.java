@@ -934,11 +934,6 @@ public final class CaptionsFetcher {
     }
 
     @Nullable
-    private static String postInnertubePlayer(String bodyJson, @Nullable String cookies) throws Exception {
-        return postInnertubePlayer(bodyJson, cookies, CONNECT_TIMEOUT_MS, READ_TIMEOUT_MS);
-    }
-
-    @Nullable
     private static String postInnertubePlayer(String bodyJson, @Nullable String cookies,
                                               int connectTimeoutMs, int readTimeoutMs) throws Exception {
         HttpURLConnection conn = Requester.openConnection(INNERTUBE_PLAYER_URL);
@@ -1026,7 +1021,7 @@ public final class CaptionsFetcher {
     private static String fetchInnertubePlayer(String videoId) {
         try {
             String bodyStr = buildPlayerRequestBody(videoId);
-            return postInnertubePlayer(bodyStr, getCookies());
+            return postInnertubePlayer(bodyStr, getCookies(), CONNECT_TIMEOUT_MS, READ_TIMEOUT_MS);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not fetch InnerTube player", ex);
             return null;

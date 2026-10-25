@@ -454,6 +454,15 @@ Después de abrir por primera vez un vídeo con el botón «Preguntar», la func
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Mostrar miniatura del feed como recuento</string>
   <string name="morphe_ryd_feed_like_ratio_title">Mostrar miniatura del feed como porcentaje</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Buscar comentarios</string>
+  <string name="morphe_search_comments_summary">Toca el botón de búsqueda en los comentarios para mostrar solo los comentarios cargados que contengan todas las palabras buscadas. Pon las palabras entre comillas para buscar una frase</string>
+  <string name="morphe_search_comments_dialog_title">Buscar comentarios</string>
+  <string name="morphe_search_comments_hint">Palabras a buscar</string>
+  <string name="morphe_search_comments_search">Buscar</string>
+  <string name="morphe_search_comments_clear">Limpiar</string>
+  <string name="morphe_search_comments_applied">Cambia el orden de clasificación o abre los comentarios de nuevo para buscarlos</string>
+  <string name="morphe_search_comments_cleared">Búsqueda borrada. Cambia el orden de clasificación o abre los comentarios de nuevo para mostrar todos los comentarios</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desactivar ventana emergente \'Iniciar sesión en TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Desactivar ventana emergente \'Conecta tus dispositivos\'</string>
@@ -838,6 +847,8 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_narrow_navigation_buttons_summary">Reduce el espacio horizontal entre los botones</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Desactivar botones de navegación sin etiquetas</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Muestra los botones de navegación con etiquetas, si YouTube los envía sin etiquetas</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Desactivar pestañas de navegación de la barra de herramientas</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Muestra las Suscripciones en la barra de navegación, si YouTube las mueve a una pestaña en la parte superior de Inicio</string>
   <string name="morphe_navigation_bar_animations_title">Activar animaciones de barra de navegación</string>
   <string name="morphe_navigation_bar_animations_summary">Anima las transiciones al cambiar entre pestañas</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Desactivar ocultación automática de la barra de navegación</string>

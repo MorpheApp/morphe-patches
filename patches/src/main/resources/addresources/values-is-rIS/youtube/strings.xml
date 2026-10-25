@@ -444,6 +444,15 @@ Eftir að myndband með Ask hnappi hefur verið opnað einu sinni, virkar eiginl
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Sýna einkunn einskorðunar viðmyndar fæðis</string>
   <string name="morphe_ryd_feed_like_ratio_title">Sýna hlutfall einskorðunar viðmyndar fæðis</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Leita í athugasmdum</string>
+  <string name="morphe_search_comments_summary">Ýttu á leitunarhnappinn í athugasemdum til að sýna aðeins hlaðnar athugasemdir sem innihalda öll leitarlitin. Settu orð í gegnsemi til að leita að setningu</string>
+  <string name="morphe_search_comments_dialog_title">Leita í athugasmdum</string>
+  <string name="morphe_search_comments_hint">Leitaorð</string>
+  <string name="morphe_search_comments_search">Leita</string>
+  <string name="morphe_search_comments_clear">Hreinsa</string>
+  <string name="morphe_search_comments_applied">Breyttu raðgreiningu eða opnaðu athugasemdirnar aftur til að leita í þeim</string>
+  <string name="morphe_search_comments_cleared">Leit hreinsuð. Breyttu raðgreiningu eða opnaðu athugasemdirnar aftur til að sýna allar athugasemdir</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Gerðu ekki birtu „Innskráningu á sjónvarpi“ á popup glugganum</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Gerðu \'Tengdu tækin þín\' kynningarglugga óvirkan</string>
@@ -824,6 +833,8 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_narrow_navigation_buttons_summary">Minnkar horna fjarlægð milli hnappa</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Slökkva á flakkhnöppum án merkimiða</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Sýnir flakkhnappana með merkimiðum, ef YouTube sendir þá án merkimiða</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Óvirkja vísbendingar í tólbúnaðstængslum</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Sýnir áskriftir í vistræðisstængslum ef YouTube færir þær í flipa efst á heimasíðu</string>
   <string name="morphe_navigation_bar_animations_title">Virkja stýrihnappa hreyfingu</string>
   <string name="morphe_navigation_bar_animations_summary">Hreyfir umhverfi þegar skipt er á milli flipa</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Lokað sjálfvirkum hópum</string>

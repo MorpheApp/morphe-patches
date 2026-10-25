@@ -36,6 +36,7 @@ import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -119,13 +120,34 @@ val feedCardLayoutPatch = bytecodePatch(
         // Some lists, such as the Home feed, add a spacing between the items, and the cards have their own spacing.
         // The item is replaced by an item without spacing.
         DividerInfoToStringFingerprint.originalClassDefOrNull?.let { dividerInfoClass ->
-            DividerInfoLookupFingerprint(dividerInfoClass.type).methodOrNull?.addInstructions(
-                0,
-                """
-                    invoke-static { p1 }, $EXTENSION_CLASS->getDividerItem(Ljava/lang/Object;)Ljava/lang/Object;
-                    move-result-object p1
-                """
-            )
+            DividerInfoLookupFingerprint(dividerInfoClass.type).methodOrNull?.let { dividerInfoLookupMethod ->
+                dividerInfoLookupMethod.addInstructions(
+                    0,
+                    """
+                        invoke-static { p1 }, $EXTENSION_CLASS->getDividerItem(Ljava/lang/Object;)Ljava/lang/Object;
+                        move-result-object p1
+                    """
+                )
+
+                // The header of a horizontal shelf has the label that finds the shelf in the list, and it is
+                // not mounted while it is scrolled out of the list. The shelves are also found by their element,
+                // which the list looks up with the view of the item when it sets the spacing of the item.
+                DividerItemOffsetsFingerprint(dividerInfoLookupMethod).let {
+                    it.methodOrNull?.apply {
+                        val lookupIndex = it.instructionMatches.first().index
+                        val itemRegister = getInstruction<FiveRegisterInstruction>(lookupIndex).registerD
+
+                        addInstruction(
+                            lookupIndex,
+                            "invoke-static/range { v$itemRegister .. v$itemRegister }, $EXTENSION_CLASS->setDividerItem(Ljava/lang/Object;)V"
+                        )
+                        addInstruction(
+                            0,
+                            "invoke-static/range { p2 .. p2 }, $EXTENSION_CLASS->setDividerItemView(Landroid/view/View;)V"
+                        )
+                    }
+                }
+            }
 
             // The cards are found by the bytes of their element.
             ElementItemConstructorFingerprint.let {

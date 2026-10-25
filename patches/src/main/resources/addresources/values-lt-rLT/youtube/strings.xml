@@ -454,6 +454,15 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Rodyti kanalų turinio miniatiūrų like skaičių</string>
   <string name="morphe_ryd_feed_like_ratio_title">Rodyti kanalų turinio miniatiūrų like santykį procentais</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Ieškoti komentaruose</string>
+  <string name="morphe_search_comments_summary">Bakstelėkite paieškos mygtuką komentaruose, kad parodytumėte tik įkeltus komentarus, kuriuose yra visi ieškomi žodžiai. Norėdami ieškoti frazės, žodžius apibrėžkite citatomis</string>
+  <string name="morphe_search_comments_dialog_title">Ieškoti komentaruose</string>
+  <string name="morphe_search_comments_hint">Žodžiai paieškai</string>
+  <string name="morphe_search_comments_search">Ieškoti</string>
+  <string name="morphe_search_comments_clear">Valyti</string>
+  <string name="morphe_search_comments_applied">Pakeiskite rūšiavimo tvarką arba dar kartą atidarykite komentarus, kad ieškotumėte jų</string>
+  <string name="morphe_search_comments_cleared">Paieška išvalyta. Pakeiskite rūšiavimo tvarką arba dar kartą atidarykite komentarus, kad pamatytumėte visus komentarus</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Išjungti iššokantįjį langą „Prisijungti prie TV“</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Išjungti iššokantįjį langą „Prijunkite savo įrenginius“</string>
@@ -838,6 +847,8 @@ Norėdami gauti prieigą prie nustatymų, įgalinkite Nustatymų mygtuką: Bendr
   <string name="morphe_narrow_navigation_buttons_summary">Sumažina horizontalų tarpą tarp mygtukų</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Išjungti navigacijos mygtukus be etikečių</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Rodo navigacijos mygtukus su etiketėmis, jei YouTube juos atsiunčia be etikečių</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Išjungti įrankių juostos navigacijos skirtukėlius</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Rodo prenumeratas navigacijos juostoje, jei \"YouTube\" perkels jas į skirtukėlį virš pagrindinio puslapio</string>
   <string name="morphe_navigation_bar_animations_title">Įjungti naršymo juostos animacijas</string>
   <string name="morphe_navigation_bar_animations_summary">Animuoja perėjimus keičiant skirtukus</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Išjungti automatinį naršymo juostos slėpimą</string>

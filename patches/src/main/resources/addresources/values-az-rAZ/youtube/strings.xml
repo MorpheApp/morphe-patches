@@ -454,6 +454,15 @@ Məhdudiyyətlər:
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Axının miniatürünün bəyənmə sayını göstər</string>
   <string name="morphe_ryd_feed_like_ratio_title">Axının miniatürünün bəyənmə faiz nisbətini göstər</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Şərhləri axtar</string>
+  <string name="morphe_search_comments_summary">Yalnız axtarılan sözlərin hamısını ehtiva edən yüklənilmiş şərhləri göstərmək üçün şərhlərdəki axtarış düyməsinə toxun. İfadəni axtarmaq üçün sözləri dırnaq arasında yaz</string>
+  <string name="morphe_search_comments_dialog_title">Şərhləri axtar</string>
+  <string name="morphe_search_comments_hint">Axtarılacaq sözlər</string>
+  <string name="morphe_search_comments_search">Axtarış</string>
+  <string name="morphe_search_comments_clear">Təmizlə</string>
+  <string name="morphe_search_comments_applied">Onları axtarmaq üçün çeşidləmə sırasını dəyişin və ya şərhləri təkrar açın</string>
+  <string name="morphe_search_comments_cleared">Axtarış təmizləndi. Bütün şərhləri göstərmək üçün çeşidləmə sırasını dəyişdir və ya şərhləri təkrar aç</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV-yə daxil ol\" ani pəncərəsini qapat</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\"Cihazlarınızı qoşun\" açılan pəncərəsini qapat</string>
@@ -838,6 +847,8 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_narrow_navigation_buttons_summary">Düymələr arasında üfüqi boşluğu azaldır</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Etiketsiz fəaliyyət düymələrini qapat</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube etiketsiz göndərirsə, fəaliyyət düymələrini etiketlərlə göstərir</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Alət cərgəsi fəaliyyət səhifələrini qapat</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">YouTube onu Əsas Səhifənin yuxarısındakı vərəqə köçürərsə, fəaliyyət cərgəsində Abunəlikləri göstərir</string>
   <string name="morphe_navigation_bar_animations_title">Fəaliyyət cərgəsi animasiyalarını aktivləşdir</string>
   <string name="morphe_navigation_bar_animations_summary">Tabellər arasında keçərkən keçidləri canlandırır</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Fəaliyyət cərgəsin avtomatik gizlətməsini qapat</string>

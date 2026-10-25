@@ -60,6 +60,35 @@ internal object ChannelInformationFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Makes a playback the current one, such as a preloaded Short when it's scrolled to,
+ * which is not loaded again with loadVideo().
+ */
+internal fun currentPlaybackFingerprint(playerResponseType: String) = Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this"
+        ),
+        // The player response of the playback.
+        methodCall(
+            returnType = playerResponseType,
+            parameters = listOf()
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf(playerResponseType, "L"),
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
 internal fun getChannelIdFingerprint(playerResponseType: String) = object : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -70,11 +99,10 @@ internal fun getChannelIdFingerprint(playerResponseType: String) = object : Fing
             definingClass = playerResponseType,
             returnType = "Z"
         ),
-        // Channel id.
+        // Channel id. 21.17 places the live stream check far before it.
         methodCall(
             definingClass = playerResponseType,
-            returnType = "Ljava/lang/String;",
-            location = MatchAfterWithin(30)
+            returnType = "Ljava/lang/String;"
         ),
         string(
             string = "com.google.android.apps.youtube.mdx.watch.LAST_MEALBAR_PROMOTED_LIVE_FEED_CHANNELS",

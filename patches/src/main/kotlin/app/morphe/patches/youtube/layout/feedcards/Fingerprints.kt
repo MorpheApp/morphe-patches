@@ -75,6 +75,24 @@ internal class DividerInfoLookupFingerprint(dividerInfoType: String) : Fingerpri
 )
 
 /**
+ * Sets the spacing above and below the view of a list item, which is looked up with the item of the view.
+ *
+ * @param dividerInfoLookupMethod Method of [DividerInfoLookupFingerprint].
+ */
+internal class DividerItemOffsetsFingerprint(dividerInfoLookupMethod: MethodReference) : Fingerprint(
+    returnType = "V",
+    parameters = listOf(
+        "Landroid/graphics/Rect;",
+        "Landroid/view/View;",
+        "Landroid/support/v7/widget/RecyclerView;",
+        "L"
+    ),
+    filters = listOf(
+        methodCall(reference = dividerInfoLookupMethod)
+    )
+)
+
+/**
  * List item of an element, which keeps the bytes of the element.
  */
 internal object ElementItemConstructorFingerprint : Fingerprint(

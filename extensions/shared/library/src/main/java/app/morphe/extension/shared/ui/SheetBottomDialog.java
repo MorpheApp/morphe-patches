@@ -75,7 +75,7 @@ public class SheetBottomDialog {
         // Drag container.
         DraggableLinearLayout dragContainer = new DraggableLinearLayout(context, animationDuration);
         dragContainer.setOrientation(LinearLayout.VERTICAL);
-        dragContainer.setDialog(dialog);
+        dragContainer.dialog = dialog;
 
         // Top spacer - drag handle and tap-to-dismiss area above the sheet content.
         View spacer = new View(context);
@@ -98,8 +98,8 @@ public class SheetBottomDialog {
             Utils.setDialogWindowParameters(window, Gravity.BOTTOM, 0, 100, false);
         }
 
-        dialog.setAnimView(dragContainer);
-        dialog.setAnimationDuration(animationDuration);
+        dialog.animView = dragContainer;
+        dialog.duration = animationDuration;
 
         return dialog;
     }
@@ -235,13 +235,6 @@ public class SheetBottomDialog {
             // Enable drag only after slide-in animation finishes.
             isDragEnabled = false;
             postDelayed(() -> isDragEnabled = true, animationDuration + 50);
-        }
-
-        /**
-         * Sets the {@link SlideDialog} associated with this layout for dismissal.
-         */
-        public void setDialog(@NonNull SlideDialog dialog) {
-            this.dialog = dialog;
         }
 
         /**
@@ -404,20 +397,6 @@ public class SheetBottomDialog {
         public SlideDialog(@NonNull Context context) {
             super(context);
             screenHeight = context.getResources().getDisplayMetrics().heightPixels;
-        }
-
-        /**
-         * Sets the view to animate during show and dismiss operations.
-         */
-        public void setAnimView(@NonNull View view) {
-            this.animView = view;
-        }
-
-        /**
-         * Sets the duration of the slide-in and slide-out animations.
-         */
-        public void setAnimationDuration(int duration) {
-            this.duration = duration;
         }
 
         /**

@@ -432,21 +432,21 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_copy_comments_summary">コメントを長押しするとコピーできます</string>
   <string name="morphe_copy_comments_success">コメントをクリップボードにコピーしました</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
-  <string name="morphe_feed_long_press_menu_title">長押ししてビデオメニューを開きます</string>
-  <string name="morphe_feed_long_press_menu_summary">フィード動画の任意の場所をタップして長押しすると、その動画のメニューが開きます</string>
-  <string name="morphe_feed_watch_later_button_title">サムネイルに「後で見る」ボタンを表示する</string>
+  <string name="morphe_feed_long_press_menu_title">長押しで動画のメニューを開く</string>
+  <string name="morphe_feed_long_press_menu_summary">フィードの動画をどこでもよいので長押しすると、フライアウト メニューを開きます</string>
+  <string name="morphe_feed_watch_later_button_title">サムネイルに「後で見る」ボタンを表示</string>
   <string name="morphe_feed_watch_later_button_summary">フィード動画のサムネイルに「後で見る」ボタンが表示され、それをタップして長押しすると「プレイリストに保存」が開きます</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
-  <string name="morphe_ask_summarize_flyout_menu_title">Ask アイテムをフライアウト メニューに追加</string>
-  <string name="morphe_ask_summarize_flyout_menu_summary">フィードのフライアウト メニューに動画要約アイテムを追加</string>
+  <string name="morphe_ask_summarize_flyout_menu_title">「動画を要約して」をフライアウト メニューに追加</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">「この動画について質問する」欄を、欄内の「動画を要約して」がタップされた状態で開く項目を、フィードのフライアウト メニューに追加します</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask は、利用可能な国でサインイン済みのアカウントが必要です。
 
 「Ask」ボタン付きの動画を一度開くと、現在の国に Ask 機能がなくても、すべての動画で機能します。"</string>
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
-  <string name="morphe_ask_summarize_title">動画を要約</string>
+  <string name="morphe_ask_summarize_title">動画を要約して</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_failed">この動画の Ask を開けませんでした</string>
+  <string name="morphe_ask_summarize_failed">「この動画について質問する」欄を開けませんでした</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <string name="morphe_ask_summarize_unavailable">お使いのアカウントまたは現在地では Ask が利用できません</string>
   <!-- layout.feedviews.feedViewCountPatch -->
@@ -455,6 +455,15 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">フィードのサムネイルのいいね数を表示</string>
   <string name="morphe_ryd_feed_like_ratio_title">フィードのサムネイルのいいね比率を表示</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">コメントを検索</string>
+  <string name="morphe_search_comments_summary">コメント欄に検索ボタンを表示します。タップすると、読み込まれているコメントのみを対象に、すべての検索ワードを含むコメントのみを表示するフィルタを適用するためのメニューを開きます。複数の単語を引用符で囲んだ場合は、フレーズとして検索します</string>
+  <string name="morphe_search_comments_dialog_title">コメントを検索</string>
+  <string name="morphe_search_comments_hint">検索ワード</string>
+  <string name="morphe_search_comments_search">検索</string>
+  <string name="morphe_search_comments_clear">解除</string>
+  <string name="morphe_search_comments_applied">検索によるフィルタを適用するには、コメントの並び順 (フィルタ) を変更するかコメント欄を開き直してください</string>
+  <string name="morphe_search_comments_cleared">検索によるフィルタを解除しました。コメントの並び順 (フィルタ) を変更するかコメント欄を開き直すと、すべてのコメントを表示します</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">「テレビでログイン」ポップアップを無効化</string>
   <string name="morphe_disable_connect_your_devices_popup_title">「デバイスの接続」ポップアップを無効化</string>
@@ -807,7 +816,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">文字起こしの不具合を修正</string>
   <string name="morphe_fix_transcript_summary">文字起こしの読み込み失敗の原因となる前提条件チェックのエラーを修正します</string>
-  <string name="morphe_captions_in_pip_title">ピクチャーインピクチャーで字幕を表示</string>
+  <string name="morphe_captions_in_pip_title">ピクチャー イン ピクチャーで字幕を表示</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ナビゲーション ボタン</string>
   <string name="morphe_navigation_buttons_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
@@ -839,6 +848,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_narrow_navigation_buttons_summary">ナビゲーション ボタンの間隔を詰めて表示します</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">ラベルのないナビゲーションボタンを無効にする</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTubeがラベルなしで送信する場合、ナビゲーションボタンをラベル付きで表示します</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">ナビゲーション ボタンの最上部への移動を無効化</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">YouTube が「登録チャンネル」ボタンをホームの最上部に移動するレイアウトを有効にした場合に、このレイアウトを無効にし、最下部のナビゲーション バーに戻します</string>
   <string name="morphe_navigation_bar_animations_title">ナビゲーション バーのアニメーションを有効化</string>
   <string name="morphe_navigation_bar_animations_summary">タブの切り替えをアニメーションで表現します</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ナビゲーション バーの自動非表示を無効化</string>
@@ -1248,7 +1259,7 @@ Automotive レイアウト
 動画はハッシュ化された動画IDの短いプレフィックスによってリクエストされるため、サーバーはあなたが見ている動画を正確に特定できません。動画にDeArrowのサムネイルがない場合、オリジナルまたは静止画が表示されます"</string>
   <string name="morphe_dearrow_connection_toast_title">接続エラーの通知を表示</string>
   <string name="morphe_dearrow_connection_toast_summary">DeArrow サーバーが利用できない場合に通知を表示します</string>
-  <string name="morphe_dearrow_api_url_title">APIエンドポイント</string>
+  <string name="morphe_dearrow_api_url_title">API エンドポイント</string>
   <string name="morphe_dearrow_api_url_summary">DeArrow がサムネイルのキャッシュを取得するエンドポイントの URL</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">静止画サムネイル</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">静止画は各動画の序盤 / 中盤 / 終盤から取得されます。これらの画像は YouTube に組み込まれており、外部 API は使用されません</string>

@@ -59,25 +59,17 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
         super(context);
     }
 
-    private void addChangeListener() {
-        Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(listener);
-    }
-
-    private void removeChangeListener() {
-        Setting.preferences.preferences.unregisterOnSharedPreferenceChangeListener(listener);
-    }
-
     @Override
     protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
         super.onAttachedToHierarchy(preferenceManager);
         updateUI();
-        addChangeListener();
+        Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(listener);
     }
 
     @Override
     protected void onPrepareForRemoval() {
         super.onPrepareForRemoval();
-        removeChangeListener();
+        Setting.preferences.preferences.unregisterOnSharedPreferenceChangeListener(listener);
     }
 
     private void updateUI() {

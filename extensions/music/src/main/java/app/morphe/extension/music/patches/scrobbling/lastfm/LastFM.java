@@ -54,10 +54,6 @@ public class LastFM {
             this.album = nullAlbum ? null : album;
             this.expiry = System.currentTimeMillis() + (nullAlbum ? CACHE_MISS_TTL : CACHE_HIT_TTL);
         }
-
-        boolean isValid() {
-            return System.currentTimeMillis() < expiry;
-        }
     }
 
     public static class Session {
@@ -162,7 +158,7 @@ public class LastFM {
         String key = artist.toLowerCase(Locale.ROOT) + "\u0000" + track.toLowerCase(Locale.ROOT);
 
         CacheEntry cached = albumCache.get(key);
-        if (cached != null && cached.isValid()) {
+        if (cached != null && System.currentTimeMillis() < cached.expiry) {
             return cached.album;
         }
 

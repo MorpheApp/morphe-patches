@@ -172,7 +172,7 @@ public final class RedgifsAudioPatch {
      * <p>
      * The feed is not created from posts, and only the post header has the post url.
      *
-     * @param cellId    Base64 of "MetadataCell-" and the post id.
+     * @param cellId    "MetadataCell-" and the post id, or Base64 of it in older versions.
      * @param mediaPath Post url.
      */
     public static void onFeedMetadataCellCreated(@Nullable String cellId, @Nullable String mediaPath) {
@@ -183,13 +183,24 @@ public final class RedgifsAudioPatch {
             String id = getRedgifsId(mediaPath);
             if (id == null) return;
 
-            String decodedCellId = new String(Base64.decode(cellId, Base64.DEFAULT), StandardCharsets.UTF_8);
-            if (!decodedCellId.startsWith(METADATA_CELL_ID_PREFIX)) return;
+            String decodedCellId = cellId.startsWith(METADATA_CELL_ID_PREFIX)
+                    ? cellId
+                    : decodeBase64CellId(cellId);
+            if (decodedCellId == null || !decodedCellId.startsWith(METADATA_CELL_ID_PREFIX)) return;
 
             postIdToRedgifsId.put(decodedCellId.substring(METADATA_CELL_ID_PREFIX.length()), id);
             getLookup(id);
         } catch (Exception ex) {
             Logger.printException(() -> "onFeedMetadataCellCreated failure", ex);
+        }
+    }
+
+    @Nullable
+    private static String decodeBase64CellId(String cellId) {
+        try {
+            return new String(Base64.decode(cellId, Base64.DEFAULT), StandardCharsets.UTF_8);
+        } catch (IllegalArgumentException ex) {
+            return null;
         }
     }
 

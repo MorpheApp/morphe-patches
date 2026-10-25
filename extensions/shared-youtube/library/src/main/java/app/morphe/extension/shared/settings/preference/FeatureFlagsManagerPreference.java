@@ -331,7 +331,8 @@ public class FeatureFlagsManagerPreference extends Preference {
     private EditText createSearchBox(Context context) {
         EditText search = CustomDialog.createSearchBar(context,
                 str("morphe_debug_feature_flags_manager_search_hint"), query -> {
-            adapter.setSearchQuery(query);
+            adapter.searchQuery = query == null ? "" : query.trim();
+            adapter.refresh();
             listView.clearChoices();
             updateChips();
             updateBottomBar();
@@ -1023,11 +1024,6 @@ public class FeatureFlagsManagerPreference extends Preference {
 
         FlagAdapter(Context context) {
             this.context = context;
-        }
-
-        void setSearchQuery(String query) {
-            searchQuery = query == null ? "" : query.trim();
-            refresh();
         }
 
         void refresh() {

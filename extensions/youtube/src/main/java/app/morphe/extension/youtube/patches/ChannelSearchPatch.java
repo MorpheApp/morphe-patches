@@ -89,20 +89,6 @@ public final class ChannelSearchPatch {
         }
 
         /**
-         * @return Whether this sort needs the exact view count of every result.
-         */
-        boolean usesViewCount() {
-            return this == MOST_VIEWED || this == LEAST_VIEWED;
-        }
-
-        /**
-         * @return Whether this sort needs the length of every result.
-         */
-        boolean usesLength() {
-            return this == SHORTEST || this == LONGEST;
-        }
-
-        /**
          * @param uploads Uploads of the channel, which tell the age of most results exactly.
          */
         public List<ChannelSearchResult> sort(List<ChannelSearchResult> results,
@@ -465,13 +451,6 @@ public final class ChannelSearchPatch {
             });
         }
 
-        public void setSort(SortOption selectedOption) {
-            this.activeSort = selectedOption;
-            scrollView.scrollTo(0, 0);
-            completeResults();
-            refreshResults();
-        }
-
         /**
          * Sorts other than relevance need every matching upload, and the view count sorts
          * their exact view count. Called on main thread.
@@ -499,8 +478,13 @@ public final class ChannelSearchPatch {
             final boolean searchesDescriptions = uploadsComplete && titleMatches().isEmpty();
             List<String> videoIds = new ArrayList<>();
             for (ChannelSearchResult result : searchesDescriptions ? lastResponse.results : allResults()) {
-                if (searchesDescriptions || (activeSort.usesViewCount() && result.viewCount < 0)
-                        || (activeSort.usesLength() && result.lengthSeconds <= 0)) {
+                // The view count sorts need the exact view count of every result,
+                // and the length sorts the length of every result.
+                if (searchesDescriptions
+                        || ((activeSort == SortOption.MOST_VIEWED || activeSort == SortOption.LEAST_VIEWED)
+                                && result.viewCount < 0)
+                        || ((activeSort == SortOption.SHORTEST || activeSort == SortOption.LONGEST)
+                                && result.lengthSeconds <= 0)) {
                     videoIds.add(result.videoId);
                 }
             }
@@ -735,7 +719,10 @@ public final class ChannelSearchPatch {
                     if (controller.getActiveSort() == selectedOption) {
                         return true;
                     }
-                    controller.setSort(selectedOption);
+                    controller.activeSort = selectedOption;
+                    controller.scrollView.scrollTo(0, 0);
+                    controller.completeResults();
+                    controller.refreshResults();
                     updateButtonText();
                     return true;
                 });

@@ -197,12 +197,16 @@ public class PoTokenProviderPatch {
      * Playback stops once the buffered media runs out, so offer to turn on 'Spoof video streams'.
      */
     private static synchronized void onTokenRejected(String reason) {
+        Logger.printDebug(() -> "YouTube no longer accepts the token made by the helper: " + reason);
+        // Log only until the check stops firing while the token still works.
+        if (!SharedYouTubeSettings.EXTERNAL_POTOKEN_PROVIDER_EXPIRED_DIALOG.get()) {
+            return;
+        }
         LongSetting lastShown = SharedYouTubeSettings.EXTERNAL_POTOKEN_PROVIDER_EXPIRED_DIALOG_LAST_SHOWN;
         Activity activity = Utils.getActivity();
         if (activity == null || !ReminderDialog.isDue(lastShown)) {
             return;
         }
-        Logger.printDebug(() -> "YouTube no longer accepts the token made by the helper: " + reason);
         ReminderDialog.show(
                 activity,
                 lastShown,

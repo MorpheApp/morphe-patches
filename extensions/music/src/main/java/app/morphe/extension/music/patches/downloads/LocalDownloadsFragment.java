@@ -733,7 +733,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private ImageView artworkView(@Nullable Bitmap bitmap) {
         ImageView view = new ImageView(getActivity());
-        view.setBackgroundColor(artworkPlaceholder());
+        view.setBackgroundColor(Utils.adjustColorBrightness(foreground(), 0.2f));
         roundCorners(view);
 
         if (bitmap != null) {
@@ -799,10 +799,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private static int background() {
         return ThemeUtils.getAppBackgroundColor();
-    }
-
-    private static int artworkPlaceholder() {
-        return Utils.adjustColorBrightness(foreground(), 0.2f);
     }
 
     private int dp(int value) {

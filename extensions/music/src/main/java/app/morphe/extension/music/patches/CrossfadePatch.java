@@ -524,7 +524,10 @@ public class CrossfadePatch {
             // change. The old song falls silent within about a second, whatever its buffer reports (#2748).
             if (isSabrStream()) {
                 logDebug(() -> "stopVideo(5): skip, SABR stream");
-                showSabrToastOnce();
+                if (!sabrToastShown) {
+                    sabrToastShown = true;
+                    Utils.showToastShort(str("morphe_music_crossfade_sabr_toast"));
+                }
                 return false;
             }
 
@@ -754,12 +757,6 @@ public class CrossfadePatch {
     }
 
     private static volatile boolean sabrToastShown = false;
-
-    private static void showSabrToastOnce() {
-        if (sabrToastShown) return;
-        sabrToastShown = true;
-        Utils.showToastShort(str("morphe_music_crossfade_sabr_toast"));
-    }
 
     private static ExoPlayerAccess createNewPlayer(PlayerCoordinatorAccess coordinator) {
         try {

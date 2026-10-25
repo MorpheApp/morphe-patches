@@ -454,6 +454,15 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Εμφάνιση μετρητή likes για το thumbnail της feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Εμφάνιση ποσοστού likes για το thumbnail της feed</string>
+  <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Αναζήτηση σχολίων</string>
+  <string name="morphe_search_comments_summary">Πατήστε το κουμπί αναζήτησης στα σχόλια για να εμφανίσετε μόνο τα φορτωμένα σχόλια που περιέχουν όλες τις λέξεις αναζήτησης. Τοποθετήστε τις λέξεις σε εισαγωγικά για να αναζητήσετε μια φράση</string>
+  <string name="morphe_search_comments_dialog_title">Αναζήτηση σχολίων</string>
+  <string name="morphe_search_comments_hint">Λέξεις προς αναζήτηση</string>
+  <string name="morphe_search_comments_search">Αναζήτηση</string>
+  <string name="morphe_search_comments_clear">Καθαρισμός</string>
+  <string name="morphe_search_comments_applied">Αλλάξτε τη σειρά ταξινόμησης ή ανοίξτε ξανά τα σχόλια για να τα αναζητήσετε</string>
+  <string name="morphe_search_comments_cleared">Η αναζήτηση εκκαθαρίστηκε. Αλλάξτε τη σειρά ταξινόμησης ή ανοίξτε ξανά τα σχόλια για να εμφανίσετε όλα τα σχόλια</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου σύνδεσης στην τηλεόραση</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Απενεργοποίηση αναδυτικού παραθύρου \'Συνδέστε τις συσκευές σας\'</string>
@@ -838,6 +847,8 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_summary">Απόκρυψη κουμπιού Σύμπτυξης</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Απενεργοποίηση κουμπιών πλοήγησης χωρίς ετικέτες</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Εμφανίζει τα κουμπιά πλοήγησης με ετικέτες, εάν το YouTube τα στέλνει χωρίς ετικέτες</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Απενεργοποίηση καρτελών πλοήγησης στη γραμμή εργαλείων</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Εμφανίζει τις Συνδρομές στη γραμμή πλοήγησης, εάν το YouTube τις μεταφέρει σε μια καρτέλα στο πάνω μέρος της Αρχικής</string>
   <string name="morphe_navigation_bar_animations_title">Ενεργοποίηση κινούμενων εικόνων στη γραμμή πλοήγησης</string>
   <string name="morphe_navigation_bar_animations_summary">Απόκρυψη κουμπιού Πλήρης οθόνη</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Απενεργοποίηση αυτόματης απόκρυψης της γραμμής πλοήγησης</string>

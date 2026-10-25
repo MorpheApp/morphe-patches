@@ -46,34 +46,71 @@ public final class RememberPlaybackSpeedPatch {
 
     private static long lastTimePitchChanged;
 
+    /**
+     * The speed last set in the Shorts player.
+     */
+    private static volatile float shortsPlaybackSpeed = -2.0f;
+
     static {
         // The Shorts player does not set a playback speed when a Short starts,
         // so the Shorts speed is set once when the Shorts player opens.
         ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
             if (isOpen) {
-                applyShortsPlaybackSpeed();
+                applyShortsPlaybackSpeed(true);
+            }
+            return Unit.INSTANCE;
+        });
+
+        // The app only sets the speed of a Short if it differs from the speed it uses,
+        // so after a Short of a whitelisted channel the next Short would stay at 1.0x.
+        // The speed is set again once the channel of the Short is known.
+        VideoInformation.onChannelIdChange.addObserver((String channelId) -> {
+            if (ShortsPlayerState.isOpen()) {
+                applyShortsPlaybackSpeed(false);
             }
             return Unit.INSTANCE;
         });
     }
 
     /**
-     * Sets the Shorts default speed on the player.
+     * @return The speed of the current Short: 1.0x if its channel is whitelisted,
+     *         otherwise the Shorts default speed.
+     */
+    private static float getShortsPlaybackSpeed(float shortsDefaultSpeed) {
+        return ChannelWhitelist.isCurrentChannelWhitelisted(WhitelistType.PLAYBACK_SPEED)
+                ? 1.0f
+                : shortsDefaultSpeed;
+    }
+
+    /**
+     * Sets the Shorts speed on the player.
      * The Shorts player has no playback speed menu interface, so
      * {@link VideoInformation#changePlaybackSpeed(float)} cannot be used.
      * The speed set here is kept for every following Short.
+     *
+     * @param playerOpened If the Shorts player just opened. The channel is then still the one
+     *                     of the last Short played, so the default speed is used, and the
+     *                     speed is set again once the channel of the Short is known.
      */
-    private static void applyShortsPlaybackSpeed() {
+    private static void applyShortsPlaybackSpeed(boolean playerOpened) {
         try {
             final float shortsDefaultSpeed = Settings.SHORTS_PLAYBACK_SPEED_DEFAULT.get();
             if (shortsDefaultSpeed <= 0 || VideoInformation.isLiveStream()) {
                 return;
             }
 
+            final float speed = playerOpened
+                    ? shortsDefaultSpeed
+                    : getShortsPlaybackSpeed(shortsDefaultSpeed);
+            if (!playerOpened && speed == shortsPlaybackSpeed) {
+                return;
+            }
+            shortsPlaybackSpeed = speed;
+
             Utils.runOnMainThreadNowOrLater(() -> {
-                Logger.printDebug(() -> "Shorts speed: applying " + shortsDefaultSpeed);
+                Logger.printDebug(() -> "Shorts speed: applying " + speed);
                 VideoInformation.setPlaybackParameters(
-                        shortsDefaultSpeed, VideoInformation.getPlaybackAudioPitch());
+                        speed, VideoInformation.getPlaybackAudioPitch());
             });
         } catch (Exception ex) {
             Logger.printException(() -> "applyShortsPlaybackSpeed failure", ex);
@@ -89,6 +126,8 @@ public final class RememberPlaybackSpeedPatch {
             if (!isLive || Settings.SHORTS_PLAYBACK_SPEED_DEFAULT.get() <= 0 || !ShortsPlayerState.isOpen()) {
                 return;
             }
+
+            shortsPlaybackSpeed = 1.0f;
 
             Utils.runOnMainThreadNowOrLater(() -> {
                 Logger.printDebug(() -> "Shorts speed: live stream detected, restoring 1.0x");
@@ -220,8 +259,11 @@ public final class RememberPlaybackSpeedPatch {
                 return playbackSpeed;
             }
 
-            Logger.printDebug(() -> "Shorts speed: overriding " + playbackSpeed + " to " + shortsDefaultSpeed);
-            return shortsDefaultSpeed;
+            final float speed = getShortsPlaybackSpeed(shortsDefaultSpeed);
+            shortsPlaybackSpeed = speed;
+
+            Logger.printDebug(() -> "Shorts speed: overriding " + playbackSpeed + " to " + speed);
+            return speed;
         } catch (Exception ex) {
             Logger.printException(() -> "getPlaybackSpeedInShorts failure", ex);
             return playbackSpeed;

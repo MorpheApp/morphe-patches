@@ -22,7 +22,9 @@ public record OfflineTrack(String videoId, String title, String artist, String a
                            int durationSeconds, File audioFile, File artworkFile) {
 
     public static OfflineTrack load(File audioFile) {
-        String videoId = stripExtension(audioFile.getName());
+        String fileName = audioFile.getName();
+        int dot = fileName.lastIndexOf('.');
+        String videoId = dot > 0 ? fileName.substring(0, dot) : fileName;
         File metadata = new File(audioFile.getParentFile(), videoId + ".json");
         File artwork = new File(audioFile.getParentFile(), videoId + ".jpg");
 
@@ -73,11 +75,6 @@ public record OfflineTrack(String videoId, String title, String artist, String a
 
     public String displayArtist() {
         return artist.isBlank() ? "YouTube Music" : artist;
-    }
-
-    private static String stripExtension(String name) {
-        int dot = name.lastIndexOf('.');
-        return dot > 0 ? name.substring(0, dot) : name;
     }
 
     private static String emptyFallback(String value, String fallback) {

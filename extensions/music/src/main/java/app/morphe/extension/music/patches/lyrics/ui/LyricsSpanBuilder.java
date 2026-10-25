@@ -9,9 +9,11 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.graphics.Paint;
 import android.icu.text.BreakIterator;
+import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.style.AlignmentSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.LineHeightSpan;
 import android.text.style.RelativeSizeSpan;
@@ -26,6 +28,7 @@ import java.util.List;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
 
 final class LyricsSpanBuilder {
@@ -147,6 +150,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
                     // unplaced word keeps the gap.
                     final String own = word.text().trim();
                     final int found = own.isEmpty() ? -1 : original.indexOf(own, at);
+                    //noinspection SizeReplaceableByIsEmpty
                     if (text.length() > 0 && !sameWrittenWord(at, found, previous, own)) {
                         text.append(' ');
                     }
@@ -245,7 +249,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
     static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index,
             boolean splitWordlessLine) {
         final LyricsLine line = lines.get(index);
-        if (isSingleWord(line.text())) {
+        if (countWords(line.text()) == 1) {
             long rangeStart = line.startTimeMs();
             if (rangeStart < 0 && line.hasWords()) {
                 rangeStart = line.words().get(0).startMs();
@@ -407,10 +411,6 @@ record WordTiming(int start, int end, long startMs, long endMs,
         return result;
     }
 
-    private static boolean isSingleWord(String text) {
-        return countWords(text) == 1;
-    }
-
     private static int countWords(String text) {
         int words = 0;
         boolean inWord = false;
@@ -499,7 +499,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
      */
     static BuildResult buildLineText(LyricsLine line, List<WordTiming> timings, int index,
             boolean perWordRomaji, List<LyricsLine> romanizedLines, List<String> translatedLines,
-            LyricsPanelView.OnlyMode onlyMode, Paint basePaint) {
+            LyricsPanelView.OnlyMode onlyMode, Paint basePaint, boolean isRightAligned) {
         final Paint.FontMetricsInt baseFm = new Paint.FontMetricsInt();
         basePaint.getFontMetricsInt(baseFm);
         String original = line.text();
@@ -529,6 +529,10 @@ record WordTiming(int start, int end, long startMs, long endMs,
             final int transStart = content.isEmpty() ? -1 : 0;
             final int transEnd = content.isEmpty() ? -1 : content.length();
             attachUniformSpacing(text, spacing);
+            if (!content.isEmpty()) {
+                text.setSpan(new AlignmentSpan.Standard(resolveAlignment(isRtlText(content), isRightAligned)),
+                        0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
             return new BuildResult(text, null, transStart, transEnd, -1, -1);
         }
 
@@ -541,6 +545,8 @@ record WordTiming(int start, int end, long startMs, long endMs,
             if (content.isEmpty()) {
                 return new BuildResult(text, null, -1, -1, -1, -1);
             }
+            text.setSpan(new AlignmentSpan.Standard(resolveAlignment(isRtlText(content), isRightAligned)),
+                    0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             // No bounds reported paints the whole line the lyric colour, and none of the reading's fade.
             final List<WordTiming> spans = readsNothing ? timings : roma.spans();
             return new BuildResult(text, null, -1, -1, -1, -1, spans);
@@ -564,7 +570,12 @@ record WordTiming(int start, int end, long startMs, long endMs,
                 // are told apart only by where they sit.
                 applySpans(dual, Collections.emptyList(), 0, smallStart - 1,
                         smallIsRoma ? -1 : smallStart, smallIsRoma ? -1 : smallEnd,
-                        smallIsRoma ? smallStart : -1, smallIsRoma ? smallEnd : -1);
+                        smallIsRoma ? smallStart : -1, smallIsRoma ? smallEnd : -1,
+                        isRightAligned);
+            } else {
+                boolean isRtl = isRtlText(dual);
+                dual.setSpan(new AlignmentSpan.Standard(resolveAlignment(isRtl, isRightAligned)),
+                        0, dual.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             // A small run carrying the word timings is what is sung, and keeps the reading's
             // colour, which is what tells it apart: the lyric's colour would leave the two lines
@@ -603,7 +614,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
             SpannableString text = new SpannableString(builder.toString());
             attachUniformSpacing(text, spacing);
             ForegroundColorSpan unsungSpan = applySpans(text, timings, originalStart, originalEnd,
-                    romaStart, romaEnd, transStart, transEnd);
+                    romaStart, romaEnd, transStart, transEnd, isRightAligned);
             return new BuildResult(text, unsungSpan, transStart, transEnd, romaStart, romaEnd,
                     reading.spans());
         }
@@ -626,7 +637,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
         SpannableString text = new SpannableString(builder.toString());
         attachUniformSpacing(text, spacing);
         ForegroundColorSpan unsungSpan = applySpans(text, timings, originalStart, originalEnd,
-                romaStart, romaEnd, transStart, transEnd);
+                romaStart, romaEnd, transStart, transEnd, isRightAligned);
         return new BuildResult(text, unsungSpan, transStart, transEnd, romaStart, romaEnd,
                 reading.spans());
     }
@@ -639,9 +650,7 @@ record WordTiming(int start, int end, long startMs, long endMs,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
-    /** The line's own translation, null when it has none or it only repeats the original. */
-    /**
+    /** The line's own translation, null when it has none or it only repeats the original
      * One line of the dual mode: the text to show and where the small run sits in it. The copy
      * button reads the same call, so the two cannot disagree about which side is the main line.
      *
@@ -875,7 +884,8 @@ record WordTiming(int start, int end, long startMs, long endMs,
     @Nullable
     private static ForegroundColorSpan applySpans(SpannableString text, List<WordTiming> timings,
             int originalStart, int originalEnd,
-            int romaStart, int romaEnd, int transStart, int transEnd) {
+            int romaStart, int romaEnd, int transStart, int transEnd,
+            boolean isRightAligned) {
         ForegroundColorSpan unsungSpan = null;
         if (romaStart >= 0) {
             text.setSpan(new RelativeSizeSpan(TRANSLATION_RELATIVE_SIZE), romaStart, romaEnd,
@@ -897,6 +907,50 @@ record WordTiming(int start, int end, long startMs, long endMs,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
+        final boolean swap = Settings.LYRICS_SWAP_TRANS_ROMA.get();
+        if (romaStart >= 0 && romaEnd > romaStart) {
+            int spanEnd = (swap && romaEnd == text.length()) ? romaEnd
+                    : (romaEnd < text.length() && text.charAt(romaEnd - 1) == '\n' ? romaEnd
+                    : Math.min(text.length(), romaEnd + 1));
+            text.setSpan(new AlignmentSpan.Standard(resolveAlignment(false, isRightAligned)),
+                    romaStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        if (originalStart >= 0 && originalEnd > originalStart) {
+            int spanEnd = originalEnd;
+            if (!swap && transStart > originalEnd) {
+                spanEnd = transStart;
+            } else if (swap && romaStart > originalEnd) {
+                spanEnd = romaStart;
+            }
+            boolean isOrigRtl = isRtlText(text.subSequence(originalStart, originalEnd));
+            text.setSpan(new AlignmentSpan.Standard(resolveAlignment(isOrigRtl, isRightAligned)),
+                    originalStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        if (transStart >= 0 && transEnd > transStart) {
+            int spanEnd = (swap && transEnd < text.length() && text.charAt(transEnd - 1) == '\n') ? transEnd : transEnd;
+            if (!swap && transEnd < text.length() && text.charAt(transEnd - 1) != '\n') {
+                spanEnd = Math.min(text.length(), transEnd + 1);
+            }
+            boolean isTransRtl = isRtlText(text.subSequence(transStart, transEnd));
+            text.setSpan(new AlignmentSpan.Standard(resolveAlignment(isTransRtl, isRightAligned)),
+                    transStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
         return unsungSpan;
+    }
+
+    static boolean isRtlText(@Nullable CharSequence text) {
+        if (text == null || text.length() == 0) {
+            return false;
+        }
+        return ScriptDetector.isLineRtl(text);
+    }
+
+    public static Layout.Alignment resolveAlignment(boolean isRtl, boolean isRightAligned) {
+        if (isRightAligned) {
+            return isRtl ? Layout.Alignment.ALIGN_NORMAL : Layout.Alignment.ALIGN_OPPOSITE;
+        } else {
+            return isRtl ? Layout.Alignment.ALIGN_OPPOSITE : Layout.Alignment.ALIGN_NORMAL;
+        }
     }
 }

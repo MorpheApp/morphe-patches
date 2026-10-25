@@ -272,7 +272,10 @@ public class FullscreenVideoScalePatch {
     }
 
     private static float getVideoAspectRatio(View view, int viewW, int viewH) {
-        View child = getVideoView(view);
+        // The video view is sized to the video when the renderer does not letterbox the video itself.
+        View child = view instanceof PlayerViewInterface player
+                ? player.patch_getVideoView()
+                : null;
         if (child != null && child != view && child.getWidth() > 8 && child.getHeight() > 8) {
             float childAR = child.getWidth() / (float) child.getHeight();
             float parentAR = viewW / (float) viewH;
@@ -521,16 +524,6 @@ public class FullscreenVideoScalePatch {
             }
         }
         return null;
-    }
-
-    /**
-     * The video view is sized to the video when the renderer does not letterbox the video itself.
-     */
-    @Nullable
-    private static View getVideoView(View playerView) {
-        return playerView instanceof PlayerViewInterface player
-                ? player.patch_getVideoView()
-                : null;
     }
 
     private static final class SavedClipState {

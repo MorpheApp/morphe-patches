@@ -175,8 +175,8 @@ public final class LunaBeatProvider extends ScoredSongProvider {
             }
             Lyrics lyrics = fetchLunabeatLyrics(song);
             if (lyrics != null && !lyrics.isEmpty()) {
-                int score = scoreLunabeatCandidate(
-                        song.title(), artist, lyrics, track);
+                int score = LyricsRequests.scoreTrackCandidate(song.title(), artist, 0, track)
+                        + LyricsRequests.syncRank(lyrics);
                 scored.add(new ScoredSong(score, lyrics, song.title(), artist, 0L));
             }
         }
@@ -257,11 +257,5 @@ public final class LunaBeatProvider extends ScoredSongProvider {
         } finally {
             if (conn != null) conn.disconnect();
         }
-    }
-
-    private static int scoreLunabeatCandidate(String title, String artist,
-                                              Lyrics lyrics, TrackInfo track) {
-        int trackScore = LyricsRequests.scoreTrackCandidate(title, artist, 0, track);
-        return trackScore + LyricsRequests.syncRank(lyrics);
     }
 }

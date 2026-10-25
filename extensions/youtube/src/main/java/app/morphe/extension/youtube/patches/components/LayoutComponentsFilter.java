@@ -680,16 +680,6 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Injection point.
-     */
-    public static boolean disableUIPaddingFeatureFlags(boolean original) {
-        if (Settings.HIDE_COMPACT_BANNER.get()) {
-            return false;
-        }
-        return original;
-    }
-
-    /**
-     * Injection point.
      * Called from a different place then the other filters.
      */
     public static boolean filterMixPlaylists(@Nullable byte[] buffer) {
@@ -1415,8 +1405,8 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static boolean hideSnackbar() {
-        return Settings.HIDE_SNACKBAR.get();
+    public static boolean hideSnackbar(boolean skipDisplay) {
+        return skipDisplay || Settings.HIDE_SNACKBAR.get();
     }
 
     /**
