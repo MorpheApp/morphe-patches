@@ -16,7 +16,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
@@ -25,11 +27,41 @@ import app.morphe.extension.shared.requests.Requester;
 
 public class GetPlaylistItemsRequest {
 
+    /**
+     * Metadata available directly in a playlist browse response.
+     *
+     * @param durationSeconds zero when YouTube does not provide a parseable duration
+     */
+    public record PlaylistItem(
+            String videoId,
+            String setVideoId,
+            String title,
+            String channel,
+            long durationSeconds
+    ) {
+    }
+
     private GetPlaylistItemsRequest() {
     }
 
     @Nullable
     public static Map<String, String> fetch(String playlistId, Map<String, String> requestHeader) {
+        List<PlaylistItem> items = fetchItems(playlistId, requestHeader);
+        if (items == null) return null;
+
+        Map<String, String> result = new HashMap<>();
+        for (PlaylistItem item : items) {
+            if (!item.setVideoId().isEmpty()) result.put(item.videoId(), item.setVideoId());
+        }
+        return result.isEmpty() ? null : result;
+    }
+
+    /**
+     * Fetches ordered playlist items with the metadata needed by queue pickers.
+     * Passing {@code WL} requests the signed-in account's Watch Later playlist ({@code VLWL}).
+     */
+    @Nullable
+    public static List<PlaylistItem> fetchItems(String playlistId, Map<String, String> requestHeader) {
         Utils.verifyOffMainThread();
         final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching playlist items for: " + playlistId);
@@ -42,7 +74,7 @@ public class GetPlaylistItemsRequest {
             final int responseCode = connection.getResponseCode();
             if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 JSONObject json = Requester.parseJSONObject(connection);
-                return parseResponse(json);
+                return parseItems(json);
             }
             Logger.printInfo(() -> "Browse playlist failed with code: " + responseCode);
         } catch (SocketTimeoutException ex) {
@@ -78,7 +110,7 @@ public class GetPlaylistItemsRequest {
     }
 
     @Nullable
-    private static Map<String, String> parseResponse(JSONObject json) {
+    static List<PlaylistItem> parseItems(JSONObject json) {
         try {
             if (!json.has("contents")) {
                 Logger.printDebug(() -> "JSON contents are missing, cannot parse response");
@@ -106,7 +138,7 @@ public class GetPlaylistItemsRequest {
                 return null;
             }
 
-            Map<String, String> result = new HashMap<>();
+            List<PlaylistItem> result = new ArrayList<>();
             for (int i = 0, length = playlistContents.length(); i < length; i++) {
                 JSONObject element = playlistContents.optJSONObject(i);
                 if (element == null) {
@@ -118,8 +150,14 @@ public class GetPlaylistItemsRequest {
                 }
                 String videoId = renderer.optString("videoId");
                 String setVideoId = renderer.optString("setVideoId");
-                if (!videoId.isEmpty() && !setVideoId.isEmpty()) {
-                    result.put(videoId, setVideoId);
+                if (!videoId.isEmpty()) {
+                    result.add(new PlaylistItem(
+                            videoId,
+                            setVideoId,
+                            text(renderer.optJSONObject("title")),
+                            text(renderer.optJSONObject("shortBylineText")),
+                            durationSeconds(renderer)
+                    ));
                 }
             }
 
@@ -128,5 +166,36 @@ public class GetPlaylistItemsRequest {
             Logger.printException(() -> "parseResponse failed", e);
         }
         return null;
+    }
+
+    private static String text(@Nullable JSONObject value) {
+        if (value == null) return "";
+        String simple = value.optString("simpleText");
+        if (!simple.isEmpty()) return simple;
+
+        JSONArray runs = value.optJSONArray("runs");
+        if (runs == null) return "";
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < runs.length(); i++) {
+            JSONObject run = runs.optJSONObject(i);
+            if (run != null) result.append(run.optString("text"));
+        }
+        return result.toString();
+    }
+
+    private static long durationSeconds(JSONObject renderer) {
+        long numeric = renderer.optLong("lengthSeconds", 0);
+        if (numeric > 0) return numeric;
+
+        String formatted = text(renderer.optJSONObject("lengthText"));
+        if (formatted.isEmpty()) return 0;
+        long total = 0;
+        String[] parts = formatted.split(":");
+        try {
+            for (String part : parts) total = Math.addExact(Math.multiplyExact(total, 60), Long.parseLong(part));
+            return total;
+        } catch (ArithmeticException | NumberFormatException ignored) {
+            return 0;
+        }
     }
 }
