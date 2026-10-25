@@ -1405,8 +1405,8 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static boolean hideSnackbar() {
-        return Settings.HIDE_SNACKBAR.get();
+    public static boolean hideSnackbar(boolean skipDisplay) {
+        return skipDisplay || Settings.HIDE_SNACKBAR.get();
     }
 
     /**

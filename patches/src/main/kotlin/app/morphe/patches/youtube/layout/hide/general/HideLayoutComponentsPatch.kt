@@ -1205,17 +1205,21 @@ val hideLayoutComponentsPatch = bytecodePatch(
             }
         }
 
-        BottomUIContainerFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static {}, $LAYOUT_COMPONENTS_FILTER->hideSnackbar()Z
-                move-result v0
-                if-eqz v0, :show
-                return-void
-                :show
-                nop
-            """
-        )
+        SnackbarDisplayFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index + 1
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                // Let YouTube skip displaying the snackbar while still running its callbacks.
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideSnackbar(Z)Z
+                        move-result v$register
+                    """
+                )
+            }
+        }
 
         arrayOf(
             QuantumSnackbarFingerprint,
