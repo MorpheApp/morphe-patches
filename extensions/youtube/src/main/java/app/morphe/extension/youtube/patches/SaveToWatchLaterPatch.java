@@ -16,8 +16,6 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.MessageLite;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -28,12 +26,6 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class SaveToWatchLaterPatch {
-
-    /**
-     * Matches the playlist id of a full playlist URL,
-     * such as https://youtube.com/playlist?list=PLxxxxxxxx or a share link.
-     */
-    private static final Pattern PLAYLIST_URL_ID_PATTERN = Pattern.compile("[?&]list=([A-Za-z0-9_-]+)");
 
     /**
      * If the player is not active, the layout may break.
@@ -65,9 +57,8 @@ public final class SaveToWatchLaterPatch {
                 return playlistId;
             }
 
-            final String redirectId = extractPlaylistId(
-                    Settings.SAVE_TO_WATCH_LATER_REDIRECT_PLAYLIST_ID.get());
-            if (redirectId != null) {
+            final String redirectId = Settings.SAVE_TO_WATCH_LATER_REDIRECT_PLAYLIST_ID.get();
+            if (!redirectId.isEmpty()) {
                 if (actions != null) {
                     if (actions.isEmpty()) return playlistId;
                     for (MessageLite action : actions) {
@@ -82,31 +73,6 @@ public final class SaveToWatchLaterPatch {
         }
 
         return playlistId;
-    }
-
-    /**
-     * @return The playlist id of the input, which may be a raw playlist id
-     * or a full playlist URL such as youtube.com/playlist?list=PLxxxxxxxx.
-     * Null if the input is empty or has no usable playlist id.
-     */
-    @Nullable
-    private static String extractPlaylistId(@Nullable String input) {
-        if (input == null) {
-            return null;
-        }
-
-        String value = input.trim();
-        if (value.isEmpty() || "WL".equals(value)) {
-            return null;
-        }
-
-        Matcher matcher = PLAYLIST_URL_ID_PATTERN.matcher(value);
-        if (matcher.find()) {
-            return matcher.group(1);
-        }
-
-        // Assume the input is already a playlist id, such as a playlist id starting with PL.
-        return value;
     }
 
     public static void saveVideo(String videoId) {
