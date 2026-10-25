@@ -30,6 +30,8 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBar
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
+import app.morphe.extension.youtube.patches.CaptionStylePatch.CaptionEdgeType;
+import app.morphe.extension.youtube.patches.CaptionStylePatch.CaptionFontFamily;
 import app.morphe.extension.youtube.patches.BackgroundPlaybackPatch.AutoPauseOnLockMode;
 import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
 import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.TabletLayoutInPlayerAvailability;
@@ -385,6 +387,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
     public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", TRUE, true);
     public static final BooleanSetting CAPTIONS_IN_PIP = new BooleanSetting("morphe_captions_in_pip", TRUE);
+    public static final BooleanSetting CAPTION_STYLE_ENABLED = new BooleanSetting("morphe_caption_style_enabled", FALSE);
+    public static final IntegerSetting CAPTION_FONT_SCALE = new IntegerSetting("morphe_caption_font_scale", 100, false, parent(CAPTION_STYLE_ENABLED));
+    public static final EnumSetting<CaptionFontFamily> CAPTION_FONT_FAMILY = new EnumSetting<>("morphe_caption_font_family", CaptionFontFamily.DEFAULT, false, parent(CAPTION_STYLE_ENABLED));
+    public static final StringSetting CAPTION_TEXT_COLOR = new StringSetting("morphe_caption_text_color", "#FFFFFFFF", false, parent(CAPTION_STYLE_ENABLED));
+    public static final StringSetting CAPTION_BACKGROUND_COLOR = new StringSetting("morphe_caption_background_color", "#BF000000", false, parent(CAPTION_STYLE_ENABLED));
+    public static final StringSetting CAPTION_WINDOW_COLOR = new StringSetting("morphe_caption_window_color", "#00000000", false, parent(CAPTION_STYLE_ENABLED));
+    public static final EnumSetting<CaptionEdgeType> CAPTION_EDGE_TYPE = new EnumSetting<>("morphe_caption_edge_type", CaptionEdgeType.NONE, false, parent(CAPTION_STYLE_ENABLED));
+    public static final StringSetting CAPTION_EDGE_COLOR = new StringSetting("morphe_caption_edge_color", "#FF000000", false, parent(CAPTION_STYLE_ENABLED));
+    public static final BooleanSetting CAPTION_IGNORE_CREATOR_STYLE = new BooleanSetting("morphe_caption_ignore_creator_style", FALSE);
 
     // Miniplayer
     public static final BooleanSetting MINIPLAYER_DISABLE_RESUMING = new BooleanSetting("morphe_miniplayer_disable_resuming", FALSE, true);
@@ -1148,5 +1159,7 @@ public class Settings extends SharedYouTubeSettings {
                 10, 25, 1, "x", 10));
         SeekBarPreference.register(new SeekBarConfig(VIDEO_DELAY,
                 0, 5000, 25, "ms"));
+        SeekBarPreference.register(new SeekBarConfig(CAPTION_FONT_SCALE,
+                25, 400, 5, "%"));
     }
 }

@@ -53,7 +53,7 @@ val captionsPatch = bytecodePatch(
     name = "Captions",
     description = "Adds options to disable captions from being automatically enabled, " +
             "select a preferred caption language, add more auto-translate languages, " +
-            "and show captions in picture-in-picture.",
+            "show captions in picture-in-picture, and change the caption style.",
 ) {
     dependsOn(
         autoCaptionsPatch,
@@ -63,6 +63,7 @@ val captionsPatch = bytecodePatch(
         transcriptPatch,
         translatedCaptionPensPatch,
         captionsInPipPatch,
+        captionStylePatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

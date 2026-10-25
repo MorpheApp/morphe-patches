@@ -364,6 +364,44 @@
         <item>BOTH_DISABLED</item>
     </string-array>
 
+    <!-- layout.captions.captionStylePatch -->
+    <string-array name="morphe_caption_font_family_entries">
+        <item>@string/morphe_caption_font_family_entry_0</item>
+        <item>@string/morphe_caption_font_family_entry_1</item>
+        <item>@string/morphe_caption_font_family_entry_2</item>
+        <item>@string/morphe_caption_font_family_entry_3</item>
+        <item>@string/morphe_caption_font_family_entry_4</item>
+        <item>@string/morphe_caption_font_family_entry_5</item>
+        <item>@string/morphe_caption_font_family_entry_6</item>
+        <item>@string/morphe_caption_font_family_entry_7</item>
+        <item>@string/morphe_caption_font_family_entry_8</item>
+    </string-array>
+    <string-array name="morphe_caption_font_family_entry_values">
+        <item>DEFAULT</item>
+        <item>SANS_SERIF</item>
+        <item>SANS_SERIF_CONDENSED</item>
+        <item>SANS_SERIF_MEDIUM</item>
+        <item>SERIF</item>
+        <item>MONOSPACE</item>
+        <item>CASUAL</item>
+        <item>CURSIVE</item>
+        <item>SMALL_CAPS</item>
+    </string-array>
+    <string-array name="morphe_caption_edge_type_entries">
+        <item>@string/morphe_caption_edge_type_entry_0</item>
+        <item>@string/morphe_caption_edge_type_entry_1</item>
+        <item>@string/morphe_caption_edge_type_entry_2</item>
+        <item>@string/morphe_caption_edge_type_entry_3</item>
+        <item>@string/morphe_caption_edge_type_entry_4</item>
+    </string-array>
+    <string-array name="morphe_caption_edge_type_entry_values">
+        <item>NONE</item>
+        <item>OUTLINE</item>
+        <item>DROP_SHADOW</item>
+        <item>RAISED</item>
+        <item>DEPRESSED</item>
+    </string-array>
+
     <!-- layout.captions.preferredCaptionLanguagePatch -->
     <string-array name="morphe_preferred_caption_language_entries">
         <item>@string/morphe_preferred_caption_language_entry_off</item>

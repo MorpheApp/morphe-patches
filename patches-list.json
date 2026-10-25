@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.48.0",
+  "version": "1.49.0",
   "patches": [
     {
       "name": "AI channel filter",
@@ -730,7 +730,7 @@
     },
     {
       "name": "Captions",
-      "description": "Adds options to disable captions from being automatically enabled, select a preferred caption language, add more auto-translate languages, and show captions in picture-in-picture.",
+      "description": "Adds options to disable captions from being automatically enabled, select a preferred caption language, add more auto-translate languages, show captions in picture-in-picture, and change the caption style.",
       "default": true,
       "category": null,
       "compatiblePackages": [

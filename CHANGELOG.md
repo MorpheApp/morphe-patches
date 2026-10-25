@@ -1,3 +1,9 @@
+## [1.49.0](https://github.com/Glassto/morphe-patches-tests/compare/v1.48.0...v1.49.0) (2026-10-25)
+
+### ✨ New Features
+
+* **YouTube - Captions:** Add caption style settings ([ce9965d](https://github.com/Glassto/morphe-patches-tests/commit/ce9965d5e6baf47095c92eb2ea3dbcd506531754))
+
 ## [1.48.0](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0...v1.48.0) (2026-10-22)
 
 ### 🐛 Bug Fixes

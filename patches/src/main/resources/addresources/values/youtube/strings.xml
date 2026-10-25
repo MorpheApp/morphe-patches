@@ -903,6 +903,39 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_hide_navigation_bar_user_dialog_message">"This completely hides the navigation bar, including the \'You\' tab.
 
 To access Settings, enable the Settings button via General → Toolbar → Show Settings"</string>
+    <!-- layout.captions.captionStylePatch -->
+    <string name="morphe_caption_style_preview_title" translatable="false"> </string>
+    <string name="morphe_caption_style_preview_text">Sample caption text</string>
+    <string name="morphe_caption_style_enabled_title">Custom caption style</string>
+    <string name="morphe_caption_style_enabled_summary">Override the caption appearance with the options below</string>
+    <string name="morphe_caption_font_scale_title">Caption size</string>
+    <string name="morphe_caption_font_scale_summary">Scales the caption text relative to the normal caption size (25-400)</string>
+    <string name="morphe_caption_font_family_title">Caption font</string>
+    <string name="morphe_caption_font_family_entry_0">Default</string>
+    <string name="morphe_caption_font_family_entry_1">Sans serif</string>
+    <string name="morphe_caption_font_family_entry_2">Sans serif condensed</string>
+    <string name="morphe_caption_font_family_entry_3">Sans serif medium</string>
+    <string name="morphe_caption_font_family_entry_4">Serif</string>
+    <string name="morphe_caption_font_family_entry_5">Monospace</string>
+    <string name="morphe_caption_font_family_entry_6">Casual</string>
+    <string name="morphe_caption_font_family_entry_7">Cursive</string>
+    <string name="morphe_caption_font_family_entry_8">Small caps</string>
+    <string name="morphe_caption_text_color_title">Text color</string>
+    <string name="morphe_caption_text_color_summary">Color and opacity of the caption text</string>
+    <string name="morphe_caption_background_color_title">Background color</string>
+    <string name="morphe_caption_background_color_summary">Color and opacity of the box behind each caption line</string>
+    <string name="morphe_caption_window_color_title">Window color</string>
+    <string name="morphe_caption_window_color_summary">Color and opacity of the area behind all caption lines</string>
+    <string name="morphe_caption_edge_type_title">Edge style</string>
+    <string name="morphe_caption_edge_type_entry_0">None</string>
+    <string name="morphe_caption_edge_type_entry_1">Outline</string>
+    <string name="morphe_caption_edge_type_entry_2">Drop shadow</string>
+    <string name="morphe_caption_edge_type_entry_3">Raised</string>
+    <string name="morphe_caption_edge_type_entry_4">Depressed</string>
+    <string name="morphe_caption_edge_color_title">Edge color</string>
+    <string name="morphe_caption_edge_color_summary">Color of the caption text edge</string>
+    <string name="morphe_caption_ignore_creator_style_title">Ignore video caption styles</string>
+    <string name="morphe_caption_ignore_creator_style_summary">Ignores the colors and backgrounds a video defines for its own captions, so all captions look the same</string>
     <string name="morphe_narrow_navigation_buttons_title">Enable narrow navigation buttons</string>
     <string name="morphe_narrow_navigation_buttons_summary">Reduces the horizontal spacing between buttons</string>
     <string name="morphe_disable_icon_only_navigation_buttons_title">Disable navigation buttons without labels</string>
