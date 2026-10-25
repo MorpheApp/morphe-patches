@@ -13,23 +13,24 @@ import java.util.List;
 import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings("unused")
-public final class CaptionsAfterSeekPatch {
-
-    private CaptionsAfterSeekPatch() {
-    }
+public class CaptionsAfterSeekPatch {
 
     /**
      * Injection point.
      *
      * @param captionTimes Sorted times the captions change at.
-     * @return Start time of the caption at the video time.
+     * @return Start time of the caption at the video time,
+     *         or the video time if it is before the first caption.
      */
-    @SuppressWarnings("unchecked")
-    public static long getCaptionStartTime(List<?> captionTimes, long time) {
+    public static long getCaptionStartTime(List<Long> captionTimes, long time) {
         try {
-            int index = Collections.binarySearch((List<Long>) captionTimes, time);
-            if (index < 0) index = -index - 2;
-            return index < 0 ? time : (Long) captionTimes.get(index);
+            int index = Collections.binarySearch(captionTimes, time);
+            if (index < 0) {
+                // Not an exact match. Use the caption time before the insertion point.
+                index = -index - 2;
+                if (index < 0) return time;
+            }
+            return captionTimes.get(index);
         } catch (Exception ex) {
             Logger.printException(() -> "getCaptionStartTime failure", ex);
             return time;

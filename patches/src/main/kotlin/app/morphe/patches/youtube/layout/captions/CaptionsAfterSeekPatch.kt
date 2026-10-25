@@ -8,21 +8,15 @@
 package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutable
-import app.morphe.util.indexOfFirstInstruction
-import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private const val EXTENSION_CLASS =
@@ -42,61 +36,53 @@ internal val captionsAfterSeekPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch)
 
     execute {
-        CaptionChunkLoaderFingerprint.method.apply {
-            val loaderClass = CaptionChunkLoaderFingerprint.classDef
-            val loadChunkMethod = cloneMutable(name = "patch_loadCaptionChunk")
-            loaderClass.methods.add(loadChunkMethod)
+        val captionTimesField = CaptionWindowsConstructorFingerprint.instructionMatches.last()
+            .instruction.getReference<FieldReference>()!!
+        val loaderConstructorFingerprint =
+            getCaptionChunkLoaderConstructorFingerprint(captionTimesField.definingClass)
+        val captionWindowsField = loaderConstructorFingerprint.instructionMatches.last()
+            .instruction.getReference<FieldReference>()!!
 
-            // The caption track has the times the captions change at, which are derived and transient.
-            fun captionTimesField(trackType: String) = classDefByOrNull(trackType)?.fields?.singleOrNull {
-                it.type == "Ljava/util/List;" && AccessFlags.TRANSIENT.isSet(it.accessFlags)
+        getCaptionChunkLoaderFingerprint(loaderConstructorFingerprint.originalClassDef.type).let {
+            it.method.apply {
+                val loadChunkMethod = cloneMutable(name = "patch_loadCaptionChunk")
+                it.classDef.methods.add(loadChunkMethod)
+                val register = findFreeRegister(0)
+
+                addInstructions(
+                    0,
+                    """
+                        invoke-virtual { p0, p1, p2 }, $loadChunkMethod
+                        iget-object v$register, p0, $captionWindowsField
+                        iget-object v$register, v$register, $captionTimesField
+                        invoke-static { v$register, p1, p2 }, $EXTENSION_CLASS->getCaptionStartTime(Ljava/util/List;J)J
+                        move-result-wide p1
+                        invoke-virtual { p0, p1, p2 }, $loadChunkMethod
+                        return-void
+                    """
+                )
             }
-            val trackField = loaderClass.fields.single { captionTimesField(it.type) != null }
-            val captionTimesField = captionTimesField(trackField.type)!!
-            val register = findFreeRegister(0)
-
-            addInstructions(
-                0,
-                """
-                    invoke-virtual { p0, p1, p2 }, $loadChunkMethod
-                    iget-object v$register, p0, ${loaderClass.type}->${trackField.name}:${trackField.type}
-                    iget-object v$register, v$register, ${trackField.type}->${captionTimesField.name}:Ljava/util/List;
-                    invoke-static { v$register, p1, p2 }, $EXTENSION_CLASS->getCaptionStartTime(Ljava/util/List;J)J
-                    move-result-wide p1
-                    invoke-virtual { p0, p1, p2 }, $loadChunkMethod
-                    return-void
-                """
-            )
         }
 
-        val flagMethod = EnterCueRangeOnAddFeatureFlagFingerprint.originalMethod
+        getAddCueRangesFingerprint(EnterCueRangeOnAddFeatureFlagFingerprint.originalMethod).let {
+            it.method.apply {
+                val castInstruction = it.instructionMatches[1].getInstruction<OneRegisterInstruction>()
+                val cueRangeType = castInstruction.getReference<TypeReference>()!!.type
+                val captionCueType = getCaptionCueConstructorFingerprint(cueRangeType).originalClassDef.type
 
-        fun Instruction.isFlagCall() = getReference<MethodReference>() == flagMethod
+                val flagResultIndex = it.instructionMatches.last().index
+                val flagRegister = getInstruction<OneRegisterInstruction>(flagResultIndex).registerA
 
-        // Method that adds a list of cue ranges.
-        val addCueRangesMethod = CueRangeManagerSeekFingerprint.classDef.methods.single { method ->
-            method.parameterTypes.map { it.toString() } == listOf("Ljava/util/List;") &&
-                    method.indexOfFirstInstruction { isFlagCall() } >= 0
+                addInstructionsWithLabels(
+                    flagResultIndex + 1,
+                    """
+                        if-nez v$flagRegister, :enabled
+                        instance-of v$flagRegister, v${castInstruction.registerA}, $captionCueType
+                        :enabled
+                        nop
+                    """
+                )
+            }
         }
-
-        val flagIndex = addCueRangesMethod.indexOfFirstInstructionOrThrow { isFlagCall() }
-        val flagRegister = addCueRangesMethod.getInstruction<OneRegisterInstruction>(flagIndex + 1).registerA
-
-        // Cast of the added cue range.
-        val castInstruction = addCueRangesMethod.getInstruction<OneRegisterInstruction>(
-            addCueRangesMethod.indexOfFirstInstructionReversedOrThrow(flagIndex, Opcode.CHECK_CAST)
-        )
-        val cueRangeType = castInstruction.getReference<TypeReference>()!!.type
-        val captionCueType = getCaptionCueConstructorFingerprint(cueRangeType).originalClassDef.type
-
-        addCueRangesMethod.addInstructionsAtControlFlowLabel(
-            flagIndex + 2,
-            """
-                if-nez v$flagRegister, :enabled
-                instance-of v$flagRegister, v${castInstruction.registerA}, $captionCueType
-                :enabled
-                nop
-            """
-        )
     }
 }
