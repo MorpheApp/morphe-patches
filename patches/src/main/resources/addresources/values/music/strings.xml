@@ -605,8 +605,17 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_mediasession_summary">Shows the current line on the lock screen, Android Auto and Bluetooth. Needs Android 11 or newer</string>
     <string name="morphe_music_lyrics_miniplayer_title">Show Miniplayer Lyrics</string>
     <string name="morphe_music_lyrics_miniplayer_summary">Shows the current line in the miniplayer, with the track moved to the subtitle</string>
-    <string name="morphe_music_lyrics_display_artist_first_title">Artist and Title display order</string>
-    <string name="morphe_music_lyrics_display_artist_first_summary">Toggle the display order of Artist and Title in the Miniplayer and MediaSession. ON \"Artist - Title\" and OFF \"Title - Artist\" Does not affect lyrics search</string>
+    <string name="morphe_music_lyrics_mini_track_format_title">Track format</string>
+    <string name="morphe_music_lyrics_mini_track_format_summary">Format of the track shown with the lyrics in the Miniplayer and MediaSession. {t} is the title and {a} is the artist</string>
+    <string name="morphe_music_lyrics_mini_encapsulation_title">Line format</string>
+    <string name="morphe_music_lyrics_mini_encapsulation_summary">Format of the lyrics line in the Miniplayer and MediaSession. {lrc} is the line and {n} is how many times in a row it is sung. Text between colons is only shown when the line repeats. Use \\: for a colon</string>
+    <string name="morphe_music_lyrics_mini_encapsulation_invalid">The format must contain {lrc}</string>
+    <string name="morphe_music_lyrics_mini_char_limit_title">Split long lines</string>
+    <string name="morphe_music_lyrics_mini_char_limit_summary">Lines with more characters than this are shown in two halves in the Miniplayer and MediaSession. 0 does not split lines</string>
+    <string name="morphe_music_lyrics_mini_instrumental_title">Instrumental break</string>
+    <string name="morphe_music_lyrics_mini_instrumental_summary">Shown in the Miniplayer and MediaSession during an instrumental break. Each line is one animation frame. {t} is the title, {a} is the artist and {lrc} is the last lyrics line</string>
+    <string name="morphe_music_lyrics_mini_next_offset_ms_title">Miniplayer and MediaSession timing offset</string>
+    <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Shifts when the next line is shown in the Miniplayer and MediaSession. Use a negative value if lines show up late, for example on the lock screen</string>
     <string name="morphe_settings_music_lyrics_metadata_title">Filters</string>
     <string name="morphe_music_lyrics_custom_regex_title">Metadata regex</string>
     <string name="morphe_music_lyrics_custom_regex_summary">Regular expression applied to titles, artists, and albums before looking up lyrics and when scoring whether two titles match. Leave empty to disable both. The default removes common clutter like \"Official Video\", \"Remaster\", \"【插曲】\", and \"- Topic\"</string>
@@ -614,6 +623,10 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_text_filter_summary">Regular expression applied to the original lyrics text only (not translations or romanizations). Leave empty to disable</string>
     <string name="morphe_music_lyrics_credit_line_regex_title">Info line markers</string>
     <string name="morphe_music_lyrics_credit_line_regex_summary">If lyrics are incorrectly filtered to the bottom, adjust or clear this. Comma-separated markers: lines containing a marker followed by a colon are shown as credit info at the bottom. Leave empty to disable</string>
+    <string name="morphe_music_lyrics_force_capitalize_title">Capitalize first letter</string>
+    <string name="morphe_music_lyrics_force_capitalize_summary">Capitalizes the first letter of each lyrics line</string>
+    <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Remove trailing punctuation</string>
+    <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Removes full stops, commas, colons and semicolons at the end of lyrics lines. Question marks, exclamation marks, ellipses, quotes and brackets are kept</string>
     <string name="morphe_music_lyrics_text_size_title">Text size</string>
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
     <string name="morphe_music_lyrics_offset_ms_title">Global timing offset</string>
@@ -721,21 +734,4 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>
     <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restore Player Up next, Lyrics, and Related tabs</string>
-    <string name="morphe_music_lyrics_force_capitalize_title">Force-capitalize first letter</string>
-    <string name="morphe_music_lyrics_force_capitalize_summary">Capitalize the first letter of each lyric line after all other lyric formatting. Applies to every lyric display</string>
-    <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Strip trailing punctuation</string>
-    <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">[Supports ALL languages] Omits redundant trailing punctuation. \"Hello, how are you?\" is unchanged, but \"I\'m fine.\" becomes \"I\'m fine\". Questions, exclamations, ellipses, quotes and parentheses are preserved, including paired endings</string>
-    <string name="morphe_music_lyrics_mini_track_format_title">[Mini] Format ‘Title - Artist’ label</string>
-    <string name="morphe_music_lyrics_mini_track_format_summary">[ONLY for MiniPlayer, MediaSession, etc.] Customize the track identity below the lyrics. Use {t} for the original title and {a} for the original artist. Default: {t} - {a}</string>
-    <string name="morphe_music_lyrics_mini_encapsulation_title">[Mini] Encapsulate lyrics</string>
-    <string name="morphe_music_lyrics_mini_encapsulation_summary">[ONLY for MiniPlayer, MediaSession, etc.] Surround each line with symbols or text. For example, ♪ {lrc} ♪ becomes ♪ I was walking down the street ♪. Must contain {lrc}. Default: {lrc}</string>
-    <string name="morphe_music_lyrics_mini_encapsulation_invalid">The format must contain {lrc}</string>
-    <string name="morphe_music_lyrics_mini_char_limit_title">[Mini] Char limit per line</string>
-    <string name="morphe_music_lyrics_mini_char_limit_summary">[ONLY for MiniPlayer, MediaSession, etc.] When a line exceeds this many lyric characters, split it into two balanced halves. The first half gets the extra word (or character for unspaced text). Halves advance with playback using word timing when available. Surrounding text does not count. 0 means no splitting</string>
-    <string name="morphe_music_lyrics_mini_char_limit_invalid">Enter a whole number from 0 to 10000. 0 means unlimited</string>
-    <string name="morphe_music_lyrics_mini_instrumental_title">[Mini] Fill in instrumental gaps</string>
-    <string name="morphe_music_lyrics_mini_next_offset_ms_title">[Mini] Next-line offset (ms)</string>
-    <string name="morphe_music_lyrics_mini_next_offset_ms_summary">[ONLY for MiniPlayer, MediaSession, etc.] Shifts when the next line appears. 0 means no shift. Negative values such as -600 send the line early, which helps when MediaSession updates late.</string>
-    <string name="morphe_music_lyrics_mini_next_offset_invalid">Enter a whole number from -10000 to 10000 ms</string>
-    <string name="morphe_music_lyrics_mini_instrumental_summary">[ONLY for MiniPlayer, MediaSession, etc.] Text shown between sung lyrics, replacing music-note markers too. Use {t} for title, {a} for artist, and {lrc} for the last displayed lyric. Each input line is one animation frame, sharing the gap duration equally. {lrc} alone holds the previous lyric unchanged. Decoration and the character limit do not apply to gap frames</string>
 </resources>

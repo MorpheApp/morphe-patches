@@ -34,18 +34,15 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.derive.SectionDetector;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsPreference;
 import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
-import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
@@ -288,8 +285,6 @@ public final class LyricsManager {
         }
     }
 
-    private int lastHighlightedIndex = -1;
-
     private int temporaryOffsetMs = 0;
 
     private LyricsManager() {
@@ -426,7 +421,6 @@ public final class LyricsManager {
         lastFrameTimeUptimeMs = -1;
         estimate = 0;
         smoothPosition = 0;
-        lastHighlightedIndex = -1;
     }
 
     private void updateSample(long newPosition, long now) {
@@ -835,7 +829,6 @@ public final class LyricsManager {
         }
         shownFingerprints.clear();
         filteredCache.clear();
-        lastHighlightedIndex = -1;
         suppressForRequest = -1;
         staleLyricsDropped = false;
         preferredFingerprint = null;
@@ -2295,36 +2288,25 @@ private void reorderQueueByRemembered() {
         });
     }
 
-    @NonNull
-    public String getCurrentLineText() {
-        Lyrics lyrics = currentLyrics;
-        if (lyrics == null || !lyrics.synced() || lyrics.isEmpty()) {
-            return "";
-        }
-        final int index = lyrics.indexForPosition(getPositionMs(), lastHighlightedIndex);
-        lastHighlightedIndex = index;
-        if (index < 0) {
-            return "";
-        }
-        String text = lyrics.lines().get(index).text();
-        return text == null ? "" : text;
-    }
-
     public boolean areLyricsSynced() {
         Lyrics lyrics = currentLyrics;
         return lyrics != null && lyrics.synced() && !lyrics.isEmpty();
     }
 
-    /** One timed Mini presentation shared by the in-app and system media surfaces. */
+    /**
+     * The text the miniplayer and the media session show for the current position.
+     * See {@link LyricsPresentation#miniLine}.
+     */
     @Nullable
-    public String getCurrentMiniLineText() {
-        final Lyrics lyrics = currentLyrics;
-        if (lyrics == null || !lyrics.synced() || lyrics.isEmpty()) return null;
-        final long position = getPositionMs();
-        final long duration = currentTrack == null ? 0 : currentTrack.durationSeconds() * 1000L;
-        return LyricsPresentation.miniFrame(lyrics, lyrics.lines(), duration, position,
-                currentVideoId, currentRawTitle, currentRawArtist);
+    public String getCurrentLineText() {
+        Lyrics lyrics = currentLyrics;
+        if (lyrics == null || !lyrics.synced() || lyrics.isEmpty()) {
+            return null;
+        }
+        TrackInfo track = currentTrack;
+        final long durationMs = track == null ? 0 : track.durationSeconds() * 1000L;
+        return LyricsPresentation.miniLine(lyrics, durationMs, getPositionMs(),
+                currentRawTitle, currentRawArtist);
     }
-
 
 }

@@ -7,7 +7,9 @@
 
 package app.morphe.extension.music.patches.lyrics.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -21,18 +23,11 @@ public class LyricsPresentationTest {
     @Test public void defaultsPreserveText() {
         assertEquals("hello.", LyricsTextFormatter.format("hello.", false, false).text());
         assertEquals("Title - Artist", MiniLyricsFormatter.trackLabel(null, "Title", "Artist"));
-        assertEquals("hello.", MiniLyricsFormatter.encapsulate("{lrc}", "hello."));
+        assertEquals("hello.", MiniLyricsFormatter.encapsulate("{lrc}", "hello.", 1));
         assertEquals(1, MiniLyricsFormatter.chunks(new LyricsLine(0, "a long original line."),
                 5000, 0, false, false).size());
     }
 
-    @Test public void artistOrderMigrationPreservesExplicitTemplates() {
-        assertEquals("{a} - {t}", MiniLyricsFormatter.migratedTrackFormat(null, true));
-        assertEquals("{t} - {a}", MiniLyricsFormatter.migratedTrackFormat(null, false));
-        assertEquals("{t} / {a}", MiniLyricsFormatter.migratedTrackFormat("{t} / {a}", true));
-        assertEquals("{t} - {a}", MiniLyricsFormatter.migratedTrackFormat("{t} - {a}", true));
-        assertEquals("", MiniLyricsFormatter.migratedTrackFormat("", true));
-    }
 
     @Test public void redundantPunctuationOnlyAtTheEnd() {
         assertEquals("I'm fine", clean("I'm fine."));
@@ -89,11 +84,11 @@ public class LyricsPresentationTest {
         assertEquals("{a} • X", MiniLyricsFormatter.trackLabel("{t} • {a}", "{a}", "X"));
         assertEquals("A / T", MiniLyricsFormatter.trackLabel("{a} / {t}", "T", "A"));
         assertEquals("{unknown} T", MiniLyricsFormatter.trackLabel("{unknown} {t}", "T", "A"));
-        assertEquals("♪ hello ♪", MiniLyricsFormatter.encapsulate("♪ {lrc} ♪", "hello"));
-        assertEquals("hello ", MiniLyricsFormatter.encapsulate("invalid", "hello"));
+        assertEquals("♪ hello ♪", MiniLyricsFormatter.encapsulate("♪ {lrc} ♪", "hello", 1));
+        assertEquals("hello ", MiniLyricsFormatter.encapsulate("invalid", "hello", 1));
         assertFalse(MiniLyricsFormatter.validEncapsulation("invalid"));
         assertTrue(MiniLyricsFormatter.validEncapsulation("{lrc} / {lrc}"));
-        assertEquals("hello / hello", MiniLyricsFormatter.encapsulate("{lrc} / {lrc}", "hello"));
+        assertEquals("hello / hello", MiniLyricsFormatter.encapsulate("{lrc} / {lrc}", "hello", 1));
     }
 
     @Test public void limitTriggersTwoWordBalancedHalves() {
@@ -126,23 +121,23 @@ public class LyricsPresentationTest {
                 new Word(1000, 2000, "one"), new Word(2000, 3000, "two"),
                 new Word(4500, 5000, "three"), new Word(5000, 6000, "four")));
         List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(line, 7000, 7, false, false);
-        assertEquals("one two", MiniLyricsFormatter.current(chunks, 4499, "{lrc}"));
-        assertEquals("three four", MiniLyricsFormatter.current(chunks, 4500, "{lrc}"));
-        assertEquals("three four", MiniLyricsFormatter.current(chunks, 5000, "{lrc}"));
-        assertEquals("one two", MiniLyricsFormatter.current(chunks, 1500, "{lrc}"));
+        assertEquals("one two", MiniLyricsFormatter.current(chunks, 4499, "{lrc}", 1));
+        assertEquals("three four", MiniLyricsFormatter.current(chunks, 4500, "{lrc}", 1));
+        assertEquals("three four", MiniLyricsFormatter.current(chunks, 5000, "{lrc}", 1));
+        assertEquals("one two", MiniLyricsFormatter.current(chunks, 1500, "{lrc}", 1));
     }
 
     @Test public void wrapperDoesNotConsumeBodyBudget() {
         List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(
                 new LyricsLine(0, "hello world"), 5000, 5, false, false);
-        assertEquals("♪ hello ♪", MiniLyricsFormatter.current(chunks, 0, "♪ {lrc} ♪"));
-        assertEquals("♪ world ♪", MiniLyricsFormatter.current(chunks, 4999, "♪ {lrc} ♪"));
+        assertEquals("♪ hello ♪", MiniLyricsFormatter.current(chunks, 0, "♪ {lrc} ♪", 1));
+        assertEquals("♪ world ♪", MiniLyricsFormatter.current(chunks, 4999, "♪ {lrc} ♪", 1));
     }
 
     @Test public void unknownEndDoesNotInventTiming() {
         List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(
                 new LyricsLine(0, "hello world"), -1, 5, false, false);
-        assertEquals("hello", MiniLyricsFormatter.current(chunks, 999999, "{lrc}"));
+        assertEquals("hello", MiniLyricsFormatter.current(chunks, 999999, "{lrc}", 1));
     }
 
     @Test public void originalModelIsNotMutated() {
@@ -169,8 +164,8 @@ public class LyricsPresentationTest {
     @Test public void formattingIsAfterSplittingButBeforeDecoration() {
         List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(
                 new LyricsLine(0, "hello there."), 5000, 5, true, true);
-        assertEquals("♪ Hello. ♪", MiniLyricsFormatter.current(chunks, 0, "♪ {lrc}. ♪"));
-        assertEquals("♪ There. ♪", MiniLyricsFormatter.current(chunks, 4999, "♪ {lrc}. ♪"));
+        assertEquals("♪ Hello. ♪", MiniLyricsFormatter.current(chunks, 0, "♪ {lrc}. ♪", 1));
+        assertEquals("♪ There. ♪", MiniLyricsFormatter.current(chunks, 4999, "♪ {lrc}. ♪", 1));
     }
 
     @Test public void punctuationAtANewChunkBoundaryIsAlsoTrailing() {

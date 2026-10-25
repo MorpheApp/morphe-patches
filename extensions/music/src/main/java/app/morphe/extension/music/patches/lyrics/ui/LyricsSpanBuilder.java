@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsTextFormatter;
-import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
@@ -60,10 +60,19 @@ record WordTiming(int start, int end, long startMs, long endMs,
     private record Spacing(int mainClear, int smallClear, int boundaryClear) {
     }
 
-    record PresentedLine(BuildResult display, List<WordTiming> words, int originalStart) { }
+    record PresentedLine(BuildResult display, List<WordTiming> words, int originalStart) {
+    }
 
-    /** Last display pass: remap text, Android spans, and karaoke offsets together. */
+    /**
+     * Applies the lyrics text filters to a built line, and moves its spans and word offsets to
+     * where they are in the filtered text.
+     *
+     * @param words Word offsets relative to originalStart.
+     */
     static PresentedLine present(BuildResult raw, List<WordTiming> words, int originalStart) {
+        if (!LyricsPresentation.isFormattingEnabled()) {
+            return new PresentedLine(raw, words, originalStart);
+        }
         final LyricsTextFormatter.Result formatted = LyricsPresentation.format(raw.text().toString());
         if (formatted.text().contentEquals(raw.text())) {
             return new PresentedLine(raw, words, originalStart);
@@ -159,8 +168,8 @@ record WordTiming(int start, int end, long startMs, long endMs,
      *                whole-line reading is spread over.
      */
     static Reading readingFor(LyricsLine line, int index,
-            @Nullable List<LyricsLine> romanizedLines, boolean perWordRomaji,
-            @Nullable List<WordTiming> timings) {
+                              @Nullable List<LyricsLine> romanizedLines, boolean perWordRomaji,
+                              @Nullable List<WordTiming> timings) {
         if (perWordRomaji) {
             final List<Word> words = readingWords(line, index, romanizedLines);
             // A word shown as written stands in for a reading only where the line is really read per word.

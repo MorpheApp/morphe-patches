@@ -25,10 +25,6 @@ public record TrackInfo(String title, String artist, String album, int durationS
         return artist.toLowerCase(Locale.ROOT) + " " + title.toLowerCase(Locale.ROOT);
     }
 
-    public String displayWith(boolean artistFirst) {
-        return artistFirst ? artist + " - " + title : title + " - " + artist;
-    }
-
     /**
      * Identity is title and artist only: the app reports the other two late, so filling
      * them in must not read as a track change.

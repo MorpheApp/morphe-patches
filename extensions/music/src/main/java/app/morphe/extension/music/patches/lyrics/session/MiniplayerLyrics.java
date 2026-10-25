@@ -216,7 +216,7 @@ public final class MiniplayerLyrics {
                 && Objects.equals(track.artist(), displayArtist);
 
         if (synced) {
-            String line = manager.getCurrentMiniLineText();
+            String line = manager.getCurrentLineText();
             String newTitle = line == null ? displayTitleOr(track) : line;
             if (cachedSubtitle == null) {
                 cachedSubtitle = buildSubtitle(track);

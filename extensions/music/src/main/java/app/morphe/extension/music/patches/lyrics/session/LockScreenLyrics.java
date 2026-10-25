@@ -95,6 +95,7 @@ public final class LockScreenLyrics {
     private LockScreenLyrics() {
     }
 
+    /** Pushes the current line again, as a lyrics setting changed how it is shown. */
     public static void onSettingsChanged() {
         needsRepush = true;
         tick();
@@ -209,7 +210,8 @@ public final class LockScreenLyrics {
         }
 
         session.setMetadata(metadata);
-        LyricNotificationRefresh.refresh(session);
+        LyricNotificationRefresh.refresh(session, newTitle,
+                metadata.getString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE));
         lastPushedTitle = newTitle;
         needsRepush = false;
         nudgePlaybackState(session);
@@ -258,7 +260,11 @@ public final class LockScreenLyrics {
         MediaMetadata original = originalMetadata;
         if (session != null && original != null) {
             session.setMetadata(original);
-            LyricNotificationRefresh.refresh(session);
+            String title = original.getString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE);
+            String text = original.getString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE);
+            LyricNotificationRefresh.refresh(session,
+                    title != null ? title : original.getString(MediaMetadata.METADATA_KEY_TITLE),
+                    text != null ? text : original.getString(MediaMetadata.METADATA_KEY_ARTIST));
             nudgePlaybackState(session);
         }
         lastPushedTitle = null;
@@ -283,7 +289,7 @@ public final class LockScreenLyrics {
     }
 
     private static String getCurrentLine() {
-        String line = LyricsManager.getInstance().getCurrentMiniLineText();
+        String line = LyricsManager.getInstance().getCurrentLineText();
         if (line == null) {
             String rt = realTitle;
             return rt == null ? "" : rt;

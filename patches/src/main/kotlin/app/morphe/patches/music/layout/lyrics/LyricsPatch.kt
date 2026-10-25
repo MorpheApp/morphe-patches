@@ -122,17 +122,7 @@ val lyricsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lyrics_show_section", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_played", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_unplayed", summary = true),
-                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
-                    TextPreference("morphe_music_lyrics_mini_track_format",
-                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference"),
-                    TextPreference("morphe_music_lyrics_mini_encapsulation",
-                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference"),
-                    TextPreference("morphe_music_lyrics_mini_char_limit", inputType = InputType.NUMBER,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference"),
-                    TextPreference("morphe_music_lyrics_mini_instrumental", inputType = InputType.TEXT_MULTI_LINE,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference"),
-                    TextPreference("morphe_music_lyrics_mini_next_offset_ms", inputType = InputType.TEXT,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsPresentationPreference")
+                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -190,7 +180,30 @@ val lyricsPatch = bytecodePatch(
                     ),
                     SwitchPreference("morphe_music_lyrics_sb_matching", summary = true),
                     SwitchPreference("morphe_music_lyrics_miniplayer", summary = true),
-                    SwitchPreference("morphe_music_lyrics_mediasession", summary = true)
+                    SwitchPreference("morphe_music_lyrics_mediasession", summary = true),
+                    TextPreference("morphe_music_lyrics_mini_track_format"),
+                    TextPreference(
+                        key = "morphe_music_lyrics_mini_encapsulation",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsEncapsulationPreference"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_mini_char_limit",
+                        summaryKey = "morphe_music_lyrics_mini_char_limit_summary",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true,
+                        dependency = "morphe_music_lyrics_enabled"
+                    ),
+                    TextPreference(
+                        key = "morphe_music_lyrics_mini_instrumental",
+                        inputType = InputType.TEXT_MULTI_LINE
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_mini_next_offset_ms",
+                        summaryKey = "morphe_music_lyrics_mini_next_offset_ms_summary",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true,
+                        dependency = "morphe_music_lyrics_enabled"
+                    )
                 )
             ),
             PreferenceCategory(

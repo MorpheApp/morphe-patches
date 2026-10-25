@@ -7,7 +7,11 @@
 
 package app.morphe.extension.music.patches.lyrics.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -113,6 +117,12 @@ public class MiniLyricsGapTest {
     @Test public void shortPausesBetweenLinesNeverShowInstrumentalText() {
         MiniLyricsTimeline t=new MiniLyricsTimeline(List.of(line(0,5000,"one"),line(6500,9000,"two"),line(10000,12000,"three")),20000);
         assertNull(t.at(5200).gap());assertNull(t.at(9500).gap());
+        assertEquals("one",t.at(5200).previous().line().text());
+        assertEquals("two",t.at(9500).previous().line().text());
+    }
+    @Test public void nothingIsPreviousBeforeTheFirstLine() {
+        MiniLyricsTimeline t=new MiniLyricsTimeline(List.of(line(2000,5000,"one")),20000);
+        assertNull(t.at(1000).vocal());assertNull(t.at(1000).gap());assertNull(t.at(1000).previous());
     }
     @Test public void panelGapClassifierIsAuthoritative() {
         var words = List.of(new Word(0,1000,"one"),new Word(1000,2000,"two"));

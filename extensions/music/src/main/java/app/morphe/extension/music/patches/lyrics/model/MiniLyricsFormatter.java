@@ -7,55 +7,69 @@
 
 package app.morphe.extension.music.patches.lyrics.model;
 
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/** Shared MiniPlayer/MediaSession text selection. Does not alter source lyrics or timing. */
+/** Text of the miniplayer and the media session. The lyrics themselves are never changed. */
 public final class MiniLyricsFormatter {
     public static final String DEFAULT_TRACK_FORMAT = "{t} - {a}";
+    public static final String ARTIST_FIRST_TRACK_FORMAT = "{a} - {t}";
     public static final String DEFAULT_ENCAPSULATION = "{lrc} :(x{n}):";
     public static final String DEFAULT_INSTRUMENTAL = "♪\n♪♪\n♪♪♪";
-    // Android's ICU regex engine (API 26+) and the host JVM both implement extended graphemes.
+    private static final String LYRIC_PLACEHOLDER = "{lrc}";
+    /** An extended grapheme cluster, so a character with combining marks or an emoji is not split. */
     private static final Pattern GRAPHEME = Pattern.compile("\\X");
 
-    public record Chunk(String text, long startMs) { }
-    private record Unit(int start, int end, long timeMs) { }
-
-    private MiniLyricsFormatter() { }
-
-    public static String migratedTrackFormat(String explicitFormat, boolean artistFirst) {
-        return explicitFormat != null ? explicitFormat : artistFirst ? "{a} - {t}" : DEFAULT_TRACK_FORMAT;
+    public record Chunk(String text, long startMs) {
     }
 
-    public static boolean validEncapsulation(String template) {
-        return template != null && template.contains("{lrc}");
+    private record Unit(int start, int end, long timeMs) {
     }
 
-    /** Single-pass substitution: placeholders inside song names are never interpreted. */
-    public static String trackLabel(String template, String title, String artist) {
-        final String pattern = template == null ? DEFAULT_TRACK_FORMAT : template;
+    private MiniLyricsFormatter() {
+    }
+
+    public static boolean validEncapsulation(@Nullable String template) {
+        return template != null && template.contains(LYRIC_PLACEHOLDER);
+    }
+
+    public static String trackLabel(@Nullable String template, @Nullable String title, @Nullable String artist) {
+        return replacePlaceholders(template == null ? DEFAULT_TRACK_FORMAT : template, title, artist, null);
+    }
+
+    /**
+     * Replaces {t} with the title, {a} with the artist and {lrc} with the lyric if one is given.
+     * This is done in one pass, so a placeholder in a song title is kept as is.
+     */
+    private static String replacePlaceholders(String template, @Nullable String title,
+                                              @Nullable String artist, @Nullable String lyric) {
         final StringBuilder out = new StringBuilder();
-        for (int i = 0; i < pattern.length();) {
-            if (pattern.startsWith("{t}", i)) {
-                out.append(title == null ? "" : title); i += 3;
-            } else if (pattern.startsWith("{a}", i)) {
-                out.append(artist == null ? "" : artist); i += 3;
-            } else out.append(pattern.charAt(i++));
+        for (int i = 0, length = template.length(); i < length; ) {
+            if (template.startsWith("{t}", i)) {
+                out.append(title == null ? "" : title);
+                i += 3;
+            } else if (template.startsWith("{a}", i)) {
+                out.append(artist == null ? "" : artist);
+                i += 3;
+            } else if (lyric != null && template.startsWith(LYRIC_PLACEHOLDER, i)) {
+                out.append(lyric);
+                i += LYRIC_PLACEHOLDER.length();
+            } else {
+                out.append(template.charAt(i++));
+            }
         }
         return out.toString();
-    }
-
-    public static String encapsulate(String template, String lyric) {
-        return encapsulate(template, lyric, 1);
     }
 
     /**
      * {lrc} is the lyric and {n} its repeat count. Text between unescaped colons appears only when
      * the count is above 1; a backslash before a colon keeps it literal.
      */
-    public static String encapsulate(String template, String lyric, int repeat) {
+    public static String encapsulate(@Nullable String template, String lyric, int repeat) {
         final String source = validEncapsulation(template) ? template : DEFAULT_ENCAPSULATION;
         final StringBuilder out = new StringBuilder();
         final StringBuilder segment = new StringBuilder();
@@ -74,17 +88,14 @@ public final class MiniLyricsFormatter {
             }
         }
         if (!inside || repeat > 1) out.append(segment);
-        return out.toString().replace("{n}", String.valueOf(repeat)).replace("{lrc}", lyric);
+        return out.toString().replace("{n}", String.valueOf(repeat)).replace(LYRIC_PLACEHOLDER, lyric);
     }
 
-    /** Consecutive identical lyric lines ending at index; the first line of a run is 1. */
+    /** How many times in a row the line at the index is sung, counting up to and including it. */
     public static int repeatCount(List<LyricsLine> lines, int index) {
-        if (lines == null || index < 0 || index >= lines.size() || lines.get(index) == null) return 1;
         final String text = lines.get(index).text();
         int count = 1;
-        for (int j = index - 1; j >= 0; j--) {
-            final LyricsLine previous = lines.get(j);
-            if (previous == null || previous.text() == null || !previous.text().equals(text)) break;
+        for (int i = index - 1; i >= 0 && lines.get(i).text().equals(text); i--) {
             count++;
         }
         return count;
@@ -97,11 +108,8 @@ public final class MiniLyricsFormatter {
         return count;
     }
 
-    public static String current(List<Chunk> chunks, long positionMs, String wrapper) {
-        return current(chunks, positionMs, wrapper, 1);
-    }
-
-    public static String current(List<Chunk> chunks, long positionMs, String wrapper, int repeat) {
+    /** The chunk of a line at the position, put into the encapsulation template. */
+    public static String current(List<Chunk> chunks, long positionMs, @Nullable String wrapper, int repeat) {
         if (chunks.isEmpty()) return "";
         Chunk selected = chunks.get(0);
         for (int i = 1; i < chunks.size(); i++) {
@@ -112,6 +120,11 @@ public final class MiniLyricsFormatter {
         return selected.text().isEmpty() ? "" : encapsulate(wrapper, selected.text(), repeat);
     }
 
+    /**
+     * Splits a line longer than the limit into two halves of about equal length, by words or by
+     * characters if the line has no spaces. A half starts at the time its first word is sung, or
+     * at a time in proportion to its position in the line if the words have no times.
+     */
     public static List<Chunk> chunks(LyricsLine line, long intervalEndMs, int limit,
                                      boolean capitalize, boolean strip) {
         final LyricsTextFormatter.Result cleaned = LyricsTextFormatter.format(line.text(), false, strip);
@@ -124,8 +137,13 @@ public final class MiniLyricsFormatter {
         final List<Unit> units = timed.isEmpty() ? untimedUnits(text) : timed;
         final List<Unit> groups = new ArrayList<>(2);
         final int middle = (units.size() + 1) / 2;
-        if (middle > 0) groups.add(new Unit(units.get(0).start(), units.get(middle - 1).end(), units.get(0).timeMs()));
-        if (middle < units.size()) groups.add(new Unit(units.get(middle).start(), units.get(units.size() - 1).end(), units.get(middle).timeMs()));
+        if (middle > 0) {
+            groups.add(new Unit(units.get(0).start(), units.get(middle - 1).end(), units.get(0).timeMs()));
+        }
+        if (middle < units.size()) {
+            groups.add(new Unit(units.get(middle).start(), units.get(units.size() - 1).end(),
+                    units.get(middle).timeMs()));
+        }
         final List<Chunk> result = new ArrayList<>(groups.size());
         final int total = Math.max(1, characterCount(text));
         long previousTime = line.startTimeMs();
@@ -147,28 +165,23 @@ public final class MiniLyricsFormatter {
         return List.copyOf(result);
     }
 
-    /** Negative offsets look ahead, so e.g. -600 sends the next line early. */
+    /** A negative offset looks ahead, so -600 shows the next line 600 ms early. */
     public static long selectionPosition(long playbackMs, int offsetMs) {
         return Math.max(0, playbackMs - (long) offsetMs);
     }
 
-    // no extra timer: seeking and pause use the same playback position.
-    public static String instrumental(String template, long startMs, long endMs, long positionMs,
-                                      String title, String artist, String lastLyric) {
+    /**
+     * The frame of the instrumental template at the position. Each line of the template is one
+     * frame, and the frames share the gap duration equally.
+     */
+    public static String instrumental(@Nullable String template, long startMs, long endMs, long positionMs,
+                                      @Nullable String title, @Nullable String artist, @Nullable String lastLyric) {
         final String[] frames = (template == null ? DEFAULT_INSTRUMENTAL : template).split("\\R", -1);
         final long duration = endMs - startMs;
         final int index = endMs == Long.MAX_VALUE || duration <= 0 ? 0
                 : (int) Math.min(frames.length - 1,
                         Math.max(0, positionMs - startMs) / (double) duration * frames.length);
-        final String pattern = frames[index];
-        final StringBuilder text = new StringBuilder();
-        for (int i = 0; i < pattern.length();) {
-            if (pattern.startsWith("{t}", i)) { text.append(title == null ? "" : title); i += 3; }
-            else if (pattern.startsWith("{a}", i)) { text.append(artist == null ? "" : artist); i += 3; }
-            else if (pattern.startsWith("{lrc}", i)) { text.append(lastLyric == null ? "" : lastLyric); i += 5; }
-            else text.append(pattern.charAt(i++));
-        }
-        return text.toString();
+        return replacePlaceholders(frames[index], title, artist, lastLyric == null ? "" : lastLyric);
     }
 
     private static List<Unit> timedUnits(LyricsLine line, LyricsTextFormatter.Result cleaned) {
@@ -182,7 +195,7 @@ public final class MiniLyricsFormatter {
             final int start = line.text().indexOf(own, cursor);
             if (start < 0 || word.startMs() < 0) return List.of();
             // Unrepresented punctuation belongs to the previous unit; missing words require fallback.
-            if (line.text().substring(cursor, start).codePoints().anyMatch(Character::isLetterOrDigit)) {
+            if (hasLetterOrDigit(line.text().substring(cursor, start))) {
                 return List.of();
             }
             final int end = start + own.length();
@@ -190,13 +203,15 @@ public final class MiniLyricsFormatter {
             if (!units.isEmpty() && spaced && !hasWhitespace(line.text().substring(cursor, start))) {
                 Unit previous = units.remove(units.size() - 1);
                 units.add(new Unit(previous.start(), next.end(), previous.timeMs()));
-            } else if (next.end() > next.start()) units.add(next);
+            } else if (next.end() > next.start()) {
+                units.add(next);
+            }
             cursor = end;
         }
         // A partially aligned word list must not silently discard any lyric content.
         if (units.isEmpty()) return List.of();
-        if (cleaned.text().substring(0, units.get(0).start()).codePoints().anyMatch(Character::isLetterOrDigit)
-                || cleaned.text().substring(units.get(units.size() - 1).end()).codePoints().anyMatch(Character::isLetterOrDigit)) {
+        if (hasLetterOrDigit(cleaned.text().substring(0, units.get(0).start()))
+                || hasLetterOrDigit(cleaned.text().substring(units.get(units.size() - 1).end()))) {
             return List.of();
         }
         final List<Unit> covering = new ArrayList<>(units.size());
@@ -211,6 +226,10 @@ public final class MiniLyricsFormatter {
             covering.add(new Unit(i == 0 ? 0 : unit.start(), end, unit.timeMs()));
         }
         return covering;
+    }
+
+    private static boolean hasLetterOrDigit(String text) {
+        return text.codePoints().anyMatch(Character::isLetterOrDigit);
     }
 
     private static boolean hasWhitespace(String text) {
@@ -230,7 +249,8 @@ public final class MiniLyricsFormatter {
             final boolean whitespace = Character.isWhitespace(cp) || Character.isSpaceChar(cp);
             if (!whitespace && start < 0) start = at;
             if (whitespace && start >= 0) {
-                units.add(new Unit(start, at, -1)); start = -1;
+                units.add(new Unit(start, at, -1));
+                start = -1;
             }
             at += Character.charCount(cp);
         }
