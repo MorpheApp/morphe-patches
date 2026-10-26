@@ -87,7 +87,7 @@ public class SaveToWatchLaterRequest {
 
         try {
             byte[] requestBody = PlaylistRoutes.editPlaylistBody(
-                    videoId, SaveToWatchLaterPatch.getRedirectPlaylistId("WL"), null);
+                    videoId, SaveToWatchLaterPatch.getWatchLaterPlaylistId(), null);
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.EDIT_PLAYLIST, requestHeader);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);

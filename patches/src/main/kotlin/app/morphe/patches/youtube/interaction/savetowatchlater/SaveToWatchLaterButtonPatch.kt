@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1274
+ * https://github.com/MorpheApp/morphe-patches/pull/4016
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -10,8 +11,8 @@ package app.morphe.patches.youtube.interaction.savetowatchlater
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
@@ -98,22 +99,20 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
-        // Redirect only video additions; this builder also handles removals and other edits.
-        val buildMethod = EditPlaylistBuildMethodFingerprint.method
-        val playlistIdField = EditPlaylistBuildMethodFingerprint
-            .instructionMatches.first().getFieldAccessed()
-        val actionsField = EditPlaylistBuildMethodFingerprint
-            .instructionMatches.last().getFieldAccessed()
+        EditPlaylistRequestBuildFingerprint.let {
+            val playlistIdField = it.instructionMatches[0].getFieldAccessed()
+            val actionsField = it.instructionMatches[1].getFieldAccessed()
 
-        buildMethod.addInstructions(
-            0,
-            """
-                iget-object v0, p0, $playlistIdField
-                iget-object v1, p0, $actionsField
-                invoke-static {v0, v1}, $EXTENSION_CLASS->getRedirectPlaylistId(Ljava/lang/String;Ljava/util/List;)Ljava/lang/String;
-                move-result-object v0
-                iput-object v0, p0, $playlistIdField
-            """,
-        )
+            it.method.addInstructions(
+                0,
+                """
+                    iget-object v0, p0, $playlistIdField
+                    iget-object v1, p0, $actionsField
+                    invoke-static { v0, v1 }, $EXTENSION_CLASS->getEditPlaylistId(Ljava/lang/String;Ljava/util/List;)Ljava/lang/String;
+                    move-result-object v0
+                    iput-object v0, p0, $playlistIdField
+                """
+            )
+        }
     }
 }

@@ -12,12 +12,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
-/**
- * Finds the constructor of the edit playlist request class, identified by the hardcoded
- * request URL. Saves to Watch later use a playlist id of `WL`, and all entry points
- * that save to a playlist funnel through this single request builder.
- */
-internal object EditPlaylistRequestClassFingerprint : Fingerprint(
+internal object EditPlaylistRequestConstructorFingerprint : Fingerprint(
     name = "<init>",
     filters = listOf(
         string("browse/edit_playlist"),
@@ -25,19 +20,21 @@ internal object EditPlaylistRequestClassFingerprint : Fingerprint(
 )
 
 /**
- * Finds the method that builds the edit playlist request, and the playlist id field
- * that is read to build it. The method in the stock app is obfuscated.
+ * Builds the edit playlist request proto. All playlist edits of the app go through this method,
+ * including adding to and removing from Watch later (playlist id `WL`).
  */
-internal object EditPlaylistBuildMethodFingerprint : Fingerprint(
-    classFingerprint = EditPlaylistRequestClassFingerprint,
-    name = "a",
+internal object EditPlaylistRequestBuildFingerprint : Fingerprint(
+    classFingerprint = EditPlaylistRequestConstructorFingerprint,
     returnType = "L",
+    parameters = listOf(),
     filters = listOf(
+        // Playlist id.
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             definingClass = "this",
             type = "Ljava/lang/String;",
         ),
+        // Edit actions.
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             definingClass = "this",

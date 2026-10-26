@@ -295,8 +295,10 @@ public class PlaylistPatch {
             if (request == null) {
                 return;
             }
-            Utils.runOnBackgroundThread(() ->  {
+            Utils.runOnBackgroundThread(() -> {
                 Pair<String, String>[] playlists = request.getPlaylists();
+                // Fetch again next time, so a failed request can be retried.
+                GetPlaylistsRequest.clear();
                 if (playlists == null || playlists.length == 0) return;
                 Utils.runOnMainThread(() -> {
                     SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
@@ -331,11 +333,10 @@ public class PlaylistPatch {
                         });
                     }
                     dialog.show();
-                    GetPlaylistsRequest.clear();
                 });
             });
         } catch (Exception ex) {
-            Logger.printException(() -> "saveToPlaylist failure", ex);
+            Logger.printException(() -> "showPlaylistPicker failure", ex);
         }
     }
 
