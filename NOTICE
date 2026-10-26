@@ -27,3 +27,11 @@ GPLv3 Section 7e: Declining Grant of Trademark Rights
 This License does not grant any rights or permission under trademark law
 to use the name "Morphe" or any of the Program's trade names, trademarks,
 service marks, or logos.
+
+Niconico YT Comments
+-------------------
+
+The Niconico-style live/replay comments implementation is adapted from
+david419kr/niconico-yt-morphe-patches, bundle 1.3.3 (GPLv3):
+https://github.com/david419kr/niconico-yt-morphe-patches
+The feature design is based on david419kr/niconico-yt (MIT License).
