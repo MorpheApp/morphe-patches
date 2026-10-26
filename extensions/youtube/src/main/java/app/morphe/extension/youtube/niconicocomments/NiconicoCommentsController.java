@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -68,9 +69,11 @@ public final class NiconicoCommentsController {
         public void onComments(String videoId, List<NiconicoComment> comments, long liveSpreadWindowMs) {
             NiconicoCommentsOverlayView view = overlayViewRef.get();
             if (view != null && isAcceptingComments(videoId, liveSpreadWindowMs)) {
+                List<NiconicoComment> shownComments = removeLongComments(comments,
+                        SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_MAX_LENGTH));
                 view.post(() -> {
                     if (isAcceptingComments(videoId, liveSpreadWindowMs)) {
-                        view.addComments(comments, liveSpreadWindowMs);
+                        view.addComments(shownComments, liveSpreadWindowMs);
                     }
                 });
             }
@@ -96,6 +99,19 @@ public final class NiconicoCommentsController {
     static boolean shouldAcceptComments(long liveSpreadWindowMs, boolean playing, boolean visible) {
         // Replay uses zero and must keep its lookahead even while paused or minimized.
         return liveSpreadWindowMs <= 0 || (playing && visible);
+    }
+
+    static List<NiconicoComment> removeLongComments(List<NiconicoComment> comments, int maxLength) {
+        if (maxLength >= Settings.NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT) {
+            return comments;
+        }
+        List<NiconicoComment> shortComments = new ArrayList<>(comments.size());
+        for (NiconicoComment comment : comments) {
+            if (comment.length() <= maxLength) {
+                shortComments.add(comment);
+            }
+        }
+        return shortComments;
     }
 
     /**
@@ -299,6 +315,7 @@ public final class NiconicoCommentsController {
     private static void applyViewState(NiconicoCommentsOverlayView view) {
         view.setCommentFontSizeSp(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_FONT_SIZE));
         view.setCommentOpacityPercent(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY));
+        view.setTravelDurationSeconds(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_TRAVEL_DURATION));
         view.setOverlayActive(Settings.NICONICO_COMMENTS_SHOWN.get()
                 && playerVisible && !currentVideoId.isEmpty());
         view.setVideoPlaying(videoPlaying);

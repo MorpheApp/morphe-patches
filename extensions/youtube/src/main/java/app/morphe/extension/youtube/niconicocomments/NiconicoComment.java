@@ -58,6 +58,17 @@ final class NiconicoComment {
         this.videoOffsetMs = videoOffsetMs;
     }
 
+    /**
+     * Number of characters shown, counting each emoji image as one character.
+     */
+    int length() {
+        int length = 0;
+        for (Segment segment : segments) {
+            length += segment.isEmoji() ? 1 : segment.text.codePointCount(0, segment.text.length());
+        }
+        return length;
+    }
+
     static final class Segment {
         final String text;
         final String imageUrl;

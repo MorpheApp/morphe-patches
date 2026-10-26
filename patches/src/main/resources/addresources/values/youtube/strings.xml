@@ -1799,4 +1799,9 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_font_size_summary">Text size of the comments (12-40 sp)</string>
     <string name="morphe_niconico_comments_opacity_title">Comment opacity</string>
     <string name="morphe_niconico_comments_opacity_summary">Opacity of the comment text and backgrounds</string>
+    <string name="morphe_niconico_comments_travel_duration_title">Travel duration</string>
+    <string name="morphe_niconico_comments_travel_duration_summary">How many seconds comments take to cross the screen. Lower values move faster</string>
+    <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
+    <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
+    <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
 </resources>

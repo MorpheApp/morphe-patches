@@ -18,6 +18,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import java.util.List;
+
+import app.morphe.extension.youtube.settings.Settings;
+
 public class NiconicoCommentsControllerTest {
     @Test
     public void dropsInactiveLiveBatchesButPreservesReplayLookahead() {
@@ -28,6 +32,27 @@ public class NiconicoCommentsControllerTest {
         assertTrue(NiconicoCommentsController.shouldAcceptComments(0, false, true));
         assertTrue(NiconicoCommentsController.shouldAcceptComments(0, true, false));
         assertTrue(NiconicoCommentsController.shouldAcceptComments(0, false, false));
+    }
+
+    @Test
+    public void removesCommentsLongerThanTheMaxLength() {
+        NiconicoComment shortComment = new NiconicoComment("short", "12345", false, 0, 0);
+        NiconicoComment longComment = new NiconicoComment("long", "123456", false, 0, 0);
+        List<NiconicoComment> comments = List.of(shortComment, longComment);
+
+        assertEquals(List.of(shortComment), NiconicoCommentsController.removeLongComments(comments, 5));
+        assertEquals(comments, NiconicoCommentsController.removeLongComments(
+                comments, Settings.NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT));
+    }
+
+    @Test
+    public void countsEachEmojiAsOneCharacter() {
+        NiconicoComment comment = new NiconicoComment("emoji", "hi:face-blue-smiling:", List.of(
+                NiconicoComment.Segment.text("hi"),
+                NiconicoComment.Segment.emoji(":face-blue-smiling:", "https://example.com/emoji.png")
+        ), false, 0, 0);
+
+        assertEquals(3, comment.length());
     }
 
     @Test

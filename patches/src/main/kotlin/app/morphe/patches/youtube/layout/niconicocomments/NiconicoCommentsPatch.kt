@@ -94,6 +94,16 @@ val niconicoCommentsPatch = bytecodePatch(
                         "morphe_niconico_comments_opacity",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
+                    ),
+                    NonInteractivePreference(
+                        "morphe_niconico_comments_travel_duration",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
+                    ),
+                    NonInteractivePreference(
+                        "morphe_niconico_comments_max_length",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
                     )
                 )
             )

@@ -91,6 +91,7 @@ final class NiconicoCommentsOverlayView extends View {
         strokePaint.setTypeface(Typeface.DEFAULT_BOLD);
 
         applyFontSize();
+        setTravelDurationSeconds(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_TRAVEL_DURATION));
         setWillNotDraw(false);
         setVisibility(GONE);
     }
@@ -139,6 +140,15 @@ final class NiconicoCommentsOverlayView extends View {
             return;
         }
         opacityPercent = nextOpacityPercent;
+        invalidate();
+    }
+
+    void setTravelDurationSeconds(int seconds) {
+        final long durationMs = seconds * 1000L;
+        if (schedule.getCommentDurationMs() == durationMs) {
+            return;
+        }
+        schedule.setCommentDurationMs(durationMs);
         invalidate();
     }
 
@@ -209,7 +219,7 @@ final class NiconicoCommentsOverlayView extends View {
             hasVisibleComment = true;
             NiconicoComment comment = scheduled.comment;
             float commentWidth = measureCommentWidth(comment);
-            float progress = (float) elapsedMs / CommentSchedule.COMMENT_DURATION_MS;
+            float progress = (float) elapsedMs / schedule.getCommentDurationMs();
             float x = getWidth() - (progress * (getWidth() + commentWidth));
             float y = firstBaseline + (Math.floorMod(scheduled.lane, laneCount) * laneHeight);
 
