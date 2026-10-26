@@ -8,7 +8,6 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
-import app.morphe.extension.music.settings.Settings;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -27,6 +26,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.LyricsFileParser;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
@@ -39,32 +39,32 @@ public final class LRCLIBProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://lrclib.net/api/";
 
-    // TODO(maintainer): the App ID is not set yet. Register an application in the LRCLIB
-    // developer portal, then fill in APP_ID and uncomment the Lrclib-App-Id header below.
-    // The App ID is public and safe to ship in the client.
-    // private static final String APP_ID = "";
+    // TODO: Register an application with LRCLIB and send its public App ID
+    //  in a Lrclib-App-Id header.
 
-    /** Request headers include the user's optional key, independently of the pending App ID. */
-    static Map<String, String> headers() {
+    /** Request headers with the user's optional API key. */
+    private static Map<String, String> headers() {
         return headersFor(Settings.LRCLIB_API_KEY.get());
     }
 
-    static Map<String, String> headersFor(@Nullable String apiKey) {
+    private static Map<String, String> headersFor(@Nullable String apiKey) {
         Map<String, String> headers = new HashMap<>();
-        // if (!APP_ID.isEmpty()) headers.put("Lrclib-App-Id", APP_ID); // TODO(maintainer): see APP_ID
         if (apiKey != null && !apiKey.isBlank()) headers.put("Lrclib-Api-Key", apiKey.trim());
         return headers;
     }
 
-    /** Validate a supplied key with a public request before saving it. */
+    /** Checks a key with a search request before it is saved. An invalid key is rejected with 401. */
     public static boolean validateKey(String apiKey) {
         try {
             HttpURLConnection connection = LyricsRequests.openConnection(
                     BASE_URL + "search?track_name=test", headersFor(apiKey));
-            final int code = connection.getResponseCode();
-            connection.disconnect();
-            return code == Requester.HTTP_STATUS_CODE_SUCCESS;
-        } catch (Exception ex) {
+            try {
+                return connection.getResponseCode() == Requester.HTTP_STATUS_CODE_SUCCESS;
+            } finally {
+                connection.disconnect();
+            }
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "LRCLIB API key validation failed", ex);
             return false;
         }
     }

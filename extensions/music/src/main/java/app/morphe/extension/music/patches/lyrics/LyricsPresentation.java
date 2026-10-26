@@ -7,17 +7,19 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-import androidx.annotation.Nullable;
 import android.os.SystemClock;
-import app.morphe.extension.music.patches.lyrics.model.ArtistLineCycle;
+
+import androidx.annotation.Nullable;
 
 import java.util.List;
 
+import app.morphe.extension.music.patches.lyrics.model.ArtistLineCycle;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsTextFormatter;
 import app.morphe.extension.music.patches.lyrics.model.MiniLyricsFormatter;
 import app.morphe.extension.music.patches.lyrics.model.MiniLyricsTimeline;
+import app.morphe.extension.music.patches.lyrics.model.TrackVersion;
 import app.morphe.extension.music.settings.Settings;
 
 /**
@@ -38,10 +40,14 @@ public final class LyricsPresentation {
     private static int chunksLimit;
     private static boolean chunksCapitalize;
     private static boolean chunksStrip;
-    private static double chunksMultiplier = 1;
+    private static float chunksMultiplier = 1;
     private static List<MiniLyricsFormatter.Chunk> chunks = List.of();
+
     private static final ArtistLineCycle artistCycle = new ArtistLineCycle();
-    private record FrameKey(LyricsLine line, String text) {}
+
+    /** The lyric shown with a track format frame. The line tells apart repeats of the same text. */
+    private record FrameKey(@Nullable LyricsLine line, @Nullable String text) {
+    }
 
     private LyricsPresentation() {
     }
@@ -60,33 +66,37 @@ public final class LyricsPresentation {
         return isFormattingEnabled() ? format(text).text() : text;
     }
 
-    public static List<String> trackFrames(String title, String artist) {
+    /**
+     * The frames of the track format. A version the backend reported replaces the title with
+     * the backend's title without the version, which {v} then shows.
+     */
+    private static List<String> trackFrames(@Nullable String title, @Nullable String artist) {
+        TrackVersion version = LyricsManager.getInstance().getCurrentVersion();
         return MiniLyricsFormatter.trackFrames(Settings.LYRICS_MINI_TRACK_FORMAT.get(),
-                LyricsManager.getInstance().getCurrentVersionTitle(title), artist,
-                LyricsManager.getInstance().getCurrentVariant(),
-                Settings.LYRICS_MINI_ARTIST_CHAR_LIMIT.get(), fullWidthMultiplier());
+                version == null ? title : version.title(), artist,
+                version == null ? null : version.variant(),
+                Settings.LYRICS_MINI_ARTIST_CHAR_LIMIT.get(),
+                Settings.LYRICS_MINI_FULL_WIDTH_MULTIPLIER.get());
     }
 
-    /** The artist-line frame currently shown. */
-    public static String trackLabel(String title, String artist) {
-        final List<String> frames = trackFrames(title, artist);
-        return artistCycle.current(frames);
+    /** The track format frame currently shown. */
+    public static String trackLabel(@Nullable String title, @Nullable String artist) {
+        return artistCycle.current(trackFrames(title, artist));
     }
 
+    /** Starts the track format frames over, as the track changed. */
     public static void resetTrackCycle() {
         artistCycle.reset();
     }
 
-    private static String present(String text, LyricsLine line, String title, String artist) {
+    /** Advances the track format frames along with the lyric, and returns the lyric. */
+    @Nullable
+    private static String present(@Nullable String text, @Nullable LyricsLine line,
+                                  @Nullable String title, @Nullable String artist) {
         artistCycle.update(trackFrames(title, artist), new FrameKey(line, text),
                 SystemClock.elapsedRealtime(), Settings.LYRICS_MINI_ARTIST_MIN_MS.get(),
                 Settings.LYRICS_MINI_ARTIST_MAX_MS.get());
         return text;
-    }
-
-    public static double fullWidthMultiplier() {
-        final float value = Settings.LYRICS_MINI_FULL_WIDTH_MULTIPLIER.get();
-        return Float.isFinite(value) && value > 0 ? value : 1;
     }
 
     /**
@@ -133,17 +143,17 @@ public final class LyricsPresentation {
         final int limit = Settings.LYRICS_MINI_CHAR_LIMIT.get();
         final boolean capitalize = Settings.LYRICS_FORCE_CAPITALIZE.get();
         final boolean strip = Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get();
+        final float multiplier = Settings.LYRICS_MINI_FULL_WIDTH_MULTIPLIER.get();
         if (line != chunksLine || vocal.endMs() != chunksEndMs || limit != chunksLimit
                 || capitalize != chunksCapitalize || strip != chunksStrip
-                || fullWidthMultiplier() != chunksMultiplier) {
-            chunks = MiniLyricsFormatter.chunks(line, vocal.endMs(), limit, capitalize, strip,
-                    fullWidthMultiplier());
+                || multiplier != chunksMultiplier) {
+            chunks = MiniLyricsFormatter.chunks(line, vocal.endMs(), limit, capitalize, strip, multiplier);
             chunksLine = line;
             chunksEndMs = vocal.endMs();
             chunksLimit = limit;
             chunksCapitalize = capitalize;
             chunksStrip = strip;
-            chunksMultiplier = fullWidthMultiplier();
+            chunksMultiplier = multiplier;
         }
 
         return MiniLyricsFormatter.current(chunks, positionMs, Settings.LYRICS_MINI_ENCAPSULATION.get(),

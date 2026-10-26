@@ -50,15 +50,14 @@
 
 package app.morphe.extension.music.patches.lyrics.model;
 
-import java.text.BreakIterator;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
 import androidx.annotation.Nullable;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -69,12 +68,17 @@ public final class MiniLyricsFormatter {
     public static final String DEFAULT_ENCAPSULATION = "{lrc} :(x{n}):";
     public static final String DEFAULT_INSTRUMENTAL = "♪\n♪♪\n♪♪♪";
     private static final String LYRIC_PLACEHOLDER = "{lrc}";
-    /** Placeholder names inside braces. {lrc} is checked first so it is not read as another one. */
+    private static final String VARIANT_PLACEHOLDER = "{v}";
+    /** Placeholder names, written inside braces in a template. */
     private static final String[] PLACEHOLDERS = {"lrc", "t", "a", "v", "n"};
     /** Marks where a line without spaces was split. */
     public static final String SPLIT_ELLIPSIS = "…";
+    /** How many times a track format line is halved at most. */
+    private static final int MAX_FRAME_SPLIT_DEPTH = 6;
     /** An extended grapheme cluster, so a character with combining marks or an emoji is not split. */
     private static final Pattern GRAPHEME = Pattern.compile("\\X");
+    private static final Pattern LINE_BREAK = Pattern.compile("\\R");
+    private static final Pattern REPEATED_SPACES = Pattern.compile("[ \\t\\u00A0]{2,}");
 
     public record Chunk(String text, long startMs) {
     }
@@ -87,6 +91,11 @@ public final class MiniLyricsFormatter {
 
     public static boolean validEncapsulation(@Nullable String template) {
         return template != null && template.contains(LYRIC_PLACEHOLDER);
+    }
+
+    /** If the track format shows the version, which then has to be looked up. */
+    public static boolean usesVariant(@Nullable String template) {
+        return (template == null ? DEFAULT_TRACK_FORMAT : template).contains(VARIANT_PLACEHOLDER);
     }
 
     public static String trackLabel(@Nullable String template, @Nullable String title, @Nullable String artist) {
@@ -107,9 +116,9 @@ public final class MiniLyricsFormatter {
         values.put("v", variant == null ? "" : variant.trim());
         final String rendered = render(template == null ? DEFAULT_TRACK_FORMAT : template, values, true);
         final StringBuilder out = new StringBuilder();
-        for (String line : rendered.split("\\R", -1)) {
+        for (String line : LINE_BREAK.split(rendered, -1)) {
             // A hidden section leaves the spaces around it behind.
-            final String tidy = line.replaceAll("[ \\t\\u00A0]{2,}", " ").trim();
+            final String tidy = REPEATED_SPACES.matcher(line).replaceAll(" ").trim();
             if (tidy.isEmpty()) continue;
             if (out.length() > 0) out.append('\n');
             out.append(tidy);
@@ -142,7 +151,7 @@ public final class MiniLyricsFormatter {
     /** Halves a frame the way a long lyric is halved, again and again until every part fits. */
     private static void splitFrame(String frame, int limit, double fullWidthMultiplier,
                                    List<String> frames, int depth) {
-        if (depth >= 6 || width(frame, fullWidthMultiplier) <= limit) {
+        if (depth >= MAX_FRAME_SPLIT_DEPTH || width(frame, fullWidthMultiplier) <= limit) {
             frames.add(frame);
             return;
         }
@@ -166,7 +175,8 @@ public final class MiniLyricsFormatter {
             splitFrame(bare, limit, fullWidthMultiplier, frames, depth + 1);
             if (!bare.equals(text) && frames.size() > before) {
                 final int last = frames.size() - 1;
-                if (!frames.get(last).endsWith(SPLIT_ELLIPSIS)) frames.set(last, frames.get(last) + SPLIT_ELLIPSIS);
+                final String lastFrame = frames.get(last);
+                if (!lastFrame.endsWith(SPLIT_ELLIPSIS)) frames.set(last, lastFrame + SPLIT_ELLIPSIS);
             }
         }
     }
@@ -281,7 +291,8 @@ public final class MiniLyricsFormatter {
      * ideograph or kana, counts as the multiplier and any other character as 1.
      */
     public static double width(String text, double fullWidthMultiplier) {
-        final double wide = fullWidthMultiplier > 0 ? fullWidthMultiplier : 1;
+        final double wide = Double.isFinite(fullWidthMultiplier) && fullWidthMultiplier > 0
+                ? fullWidthMultiplier : 1;
         final Matcher matcher = GRAPHEME.matcher(text);
         double total = 0;
         while (matcher.find()) total += isFullWidth(text.codePointAt(matcher.start())) ? wide : 1;
@@ -425,7 +436,7 @@ public final class MiniLyricsFormatter {
      */
     public static String instrumental(@Nullable String template, long startMs, long endMs, long positionMs,
                                       @Nullable String title, @Nullable String artist, @Nullable String lastLyric) {
-        final String[] frames = (template == null ? DEFAULT_INSTRUMENTAL : template).split("\\R", -1);
+        final String[] frames = LINE_BREAK.split(template == null ? DEFAULT_INSTRUMENTAL : template, -1);
         final long duration = endMs - startMs;
         final int index = endMs == Long.MAX_VALUE || duration <= 0 ? 0
                 : (int) Math.min(frames.length - 1,
@@ -469,7 +480,7 @@ public final class MiniLyricsFormatter {
             int end = i + 1 < units.size() ? units.get(i + 1).start() : cleaned.text().length();
             while (end > unit.end()) {
                 final int cp = cleaned.text().codePointBefore(end);
-                if (!Character.isWhitespace(cp) && !Character.isSpaceChar(cp)) break;
+                if (!isWhitespace(cp)) break;
                 end -= Character.charCount(cp);
             }
             covering.add(new Unit(i == 0 ? 0 : unit.start(), end, unit.timeMs()));
@@ -482,7 +493,7 @@ public final class MiniLyricsFormatter {
     }
 
     private static boolean hasWhitespace(String text) {
-        return text.codePoints().anyMatch(cp -> Character.isWhitespace(cp) || Character.isSpaceChar(cp));
+        return text.codePoints().anyMatch(MiniLyricsFormatter::isWhitespace);
     }
 
     /**

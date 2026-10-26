@@ -6,18 +6,27 @@
  */
 package app.morphe.extension.music.patches.lyrics.model;
 
+import androidx.annotation.Nullable;
+
 import java.util.List;
 import java.util.Objects;
 
-/** Shared by both surfaces, so polling either one never advances a frame twice. */
+/**
+ * The frames of the track format line, shown in turn. A frame stays for at least the minimum
+ * time and moves on when the lyric changes, or after the maximum time when it does not.
+ * The miniplayer and the media session share one cycle, so polling both never advances a
+ * frame twice.
+ */
 public final class ArtistLineCycle {
     private List<String> frames = List.of();
+    /** Identifies the lyric shown with the frame. */
+    @Nullable
     private Object token;
     private int index;
     private long shownAt;
     private boolean pending;
 
-    public String update(List<String> nextFrames, Object nextToken, long now, int minimum, int maximum) {
+    public String update(List<String> nextFrames, @Nullable Object nextToken, long now, int minimum, int maximum) {
         if (!frames.equals(nextFrames)) {
             frames = List.copyOf(nextFrames);
             index = 0;
@@ -38,6 +47,7 @@ public final class ArtistLineCycle {
         return current(nextFrames);
     }
 
+    /** The frame shown, or the first of the frames if they are not the ones being cycled. */
     public String current(List<String> fallback) {
         return frames.equals(fallback) && !frames.isEmpty() ? frames.get(index) : fallback.get(0);
     }

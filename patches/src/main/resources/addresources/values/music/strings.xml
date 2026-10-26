@@ -562,7 +562,6 @@ Steps:
     <string name="morphe_music_lrclib_api_key_optional_hint">LRCLIB works without a key, so this field can stay empty</string>
     <string name="morphe_music_lrclib_api_key_toast_saved">LRCLIB: API key saved</string>
     <string name="morphe_music_lrclib_api_key_toast_cleared">LRCLIB: API key cleared</string>
-    <string name="morphe_music_lyrics_variant_error">Lyrics: couldn\'t look up the track version on Deezer</string>
     <string name="morphe_music_lrclib_api_key_toast_invalid">LRCLIB: invalid API key - please check and try again</string>
     <string name="morphe_music_youtube_cookies_title">YouTube Cookies</string>
     <string name="morphe_music_youtube_cookies_dialog_instruction">"Paste your YouTube cookies to query captions and timetext from YouTube.
@@ -623,21 +622,15 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_mini_artist_max_label">Maximum screen time (ms)</string>
     <string name="morphe_music_lyrics_mini_artist_timing_explanation">For multiline animations only. Keep each frame for at least the minimum time. At the maximum, advance the artist line even when the lyric stays the same.</string>
     <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimum must be 0 or greater. Maximum must be greater than 0 and at least the minimum.</string>
-    <string name="morphe_music_lyrics_mini_line_limits_title">Line char-length limits</string>
+    <string name="morphe_music_lyrics_mini_line_limits_title">Line length limits</string>
     <string name="morphe_music_lyrics_mini_line_limits_summary">Lyric and artist line limits, and full-width character weight</string>
     <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Lyric line limit
 Split longer lyrics into balanced halves. 0 disables splitting."</string>
     <string name="morphe_music_lyrics_mini_line_limits_artist">"Artist line limit
 Split the populated track format into cycling frames. 0 disables splitting."</string>
     <string name="morphe_music_lyrics_mini_line_limits_weight">"Full-width character weight
-Applies to both limits. At 1.8, six full-width characters count as 10.8."</string>
+Applies to both limits. At 1.75, four full-width characters count as 7."</string>
     <string name="morphe_music_lyrics_mini_line_limits_invalid">Enter whole-number limits from 0 to 10000 and a character weight greater than 0</string>
-    <string name="morphe_music_lyrics_mini_char_limit_title">Split long lines</string>
-    <string name="morphe_music_lyrics_mini_char_limit_summary">Lines with more characters than this are shown in two halves in the Miniplayer and MediaSession. 0 does not split lines</string>
-    <string name="morphe_music_lyrics_mini_artist_char_limit_title">Split long track lines</string>
-    <string name="morphe_music_lyrics_mini_artist_char_limit_summary">Track format lines with more characters than this are split into parts that are shown in turn. 0 does not split them</string>
-    <string name="morphe_music_lyrics_mini_full_width_multiplier_title">Full-width character weight</string>
-    <string name="morphe_music_lyrics_mini_full_width_multiplier_summary">How many characters a full-width character, such as Chinese or Japanese, counts as for the split limits. 1.0 counts it as one</string>
     <string name="morphe_music_lyrics_mini_instrumental_title">Instrumental break</string>
     <string name="morphe_music_lyrics_mini_instrumental_summary">Shown in the Miniplayer and MediaSession during an instrumental break. Each line is one animation frame. {t} is the title, {a} is the artist and {lrc} is the last lyrics line</string>
     <string name="morphe_music_lyrics_mini_next_offset_ms_title">Miniplayer and MediaSession timing offset</string>

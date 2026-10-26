@@ -64,7 +64,7 @@ public final class LockScreenLyrics {
     @Nullable
     private static String cachedCleanedArtist;
 
-    /** Title pushed on the last tick, to avoid redundant {@code setMetadata} calls. */
+    /** Title and artist pushed on the last tick, to avoid redundant {@code setMetadata} calls. */
     @Nullable
     private static volatile String lastPushedTitle;
     @Nullable
@@ -203,13 +203,13 @@ public final class LockScreenLyrics {
         }
 
         String newTitle = getCurrentLine();
-        String artist = LyricsPresentation.trackLabel(realTitle, realArtist);
-        if (!needsRepush && newTitle.equals(lastPushedTitle) && Objects.equals(artist, lastPushedArtist)) {
+        String artist = getTrackLine();
+        if (!needsRepush && newTitle.equals(lastPushedTitle) && artist.equals(lastPushedArtist)) {
             ticker.schedule();
             return;
         }
 
-        MediaMetadata metadata = buildMetadata(newTitle);
+        MediaMetadata metadata = buildMetadata(newTitle, artist);
         if (metadata == null) {
             ticker.schedule();
             return;
@@ -304,25 +304,25 @@ public final class LockScreenLyrics {
         return line;
     }
 
-    private static MediaMetadata buildMetadata(String title) {
+    /** The track format shown as the artist, or the plain artist if the title is unknown. */
+    private static String getTrackLine() {
+        String ra = realArtist;
+        String artist = ra == null ? "" : ra;
+        String rt = realTitle;
+        return rt == null || rt.isEmpty() ? artist : LyricsPresentation.trackLabel(rt, artist);
+    }
+
+    @Nullable
+    private static MediaMetadata buildMetadata(String title, String artist) {
         MediaMetadata.Builder builder = metadataBuilder;
         if (builder == null) {
             return null;
         }
 
-        String ra = realArtist;
-        String artist = ra == null ? "" : ra;
-        String display = artist;
-
-        String rt = realTitle;
-        if (rt != null && !rt.isEmpty()) {
-            display = LyricsPresentation.trackLabel(rt, artist);
-        }
-
         builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
         builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE, title);
-        builder.putString(MediaMetadata.METADATA_KEY_ARTIST, display);
-        builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE, display);
+        builder.putString(MediaMetadata.METADATA_KEY_ARTIST, artist);
+        builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE, artist);
         return builder.build();
     }
 }

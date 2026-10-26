@@ -60,9 +60,6 @@ public final class MiniplayerLyrics {
     @Nullable
     private static String rawDisplayArtist;
 
-    @Nullable
-    private static String cachedSubtitle;
-
     private static boolean mirrored;
 
     @Nullable
@@ -102,7 +99,6 @@ public final class MiniplayerLyrics {
      * without recreating the miniplayer.
      */
     public static void onSettingsChanged() {
-        cachedSubtitle = null;
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MINIPLAYER.get()
                 || titleRef.get() == null || subtitleRef.get() == null) {
             disableFeature();
@@ -128,7 +124,6 @@ public final class MiniplayerLyrics {
             displayArtist = parsed[0];
             rawDisplayTitle = title;
             rawDisplayArtist = artist;
-            cachedSubtitle = null; // invalidate on track change
 
             android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
             LyricsManager.getInstance().onDisplayedTrackChanged(title, artist, mediaUri);
@@ -218,7 +213,8 @@ public final class MiniplayerLyrics {
         if (synced) {
             String line = manager.getCurrentLineText();
             String newTitle = line == null ? displayTitleOr(track) : line;
-            cachedSubtitle = buildSubtitle(track);
+            // Built on every tick, as the track format frames take turns.
+            String newSubtitle = buildSubtitle(track);
             if (!mirrored) {
                 preMirrorTitle = title.getText();
                 preMirrorSubtitle = subtitle.getText();
@@ -228,10 +224,10 @@ public final class MiniplayerLyrics {
                 title.setText(newTitle);
             }
             lastMirrorTitle = newTitle;
-            if (!TextUtils.equals(cachedSubtitle, subtitle.getText())) {
-                subtitle.setText(cachedSubtitle);
+            if (!TextUtils.equals(newSubtitle, subtitle.getText())) {
+                subtitle.setText(newSubtitle);
             }
-            lastMirrorSubtitle = cachedSubtitle;
+            lastMirrorSubtitle = newSubtitle;
             mirrored = true;
         } else {
             restoreIfMirrored();

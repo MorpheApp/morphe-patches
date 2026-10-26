@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -31,6 +30,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
@@ -78,12 +78,8 @@ public final class SkipSegments {
     private static final Object LOCK = new Object();
 
     /** Video id to merged segments; empty when the fetch found none. */
-    private static final Map<String, List<Seg>> CACHE = new LinkedHashMap<>(16, 0.75f, true) {
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<String, List<Seg>> eldest) {
-            return size() > CACHE_MAX_ENTRIES;
-        }
-    };
+    private static final Map<String, List<Seg>> CACHE = Utils
+            .createSizeRestrictedMap(CACHE_MAX_ENTRIES, true);
 
     private static final Map<String, FutureTask<List<Seg>>> TASKS = new HashMap<>();
 
