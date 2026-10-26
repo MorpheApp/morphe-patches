@@ -1790,4 +1790,11 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_series_tracker_no_search_results">No series found</string>
     <string name="morphe_series_tracker_untitled_episode">Untitled episode</string>
     <string name="morphe_series_tracker_unavailable_episode">Unavailable episode</string>
+    <!-- layout.niconicocomments.niconicoCommentsPatch -->
+    <string name="morphe_niconico_quick_settings_title">Danmaku quick settings</string>
+    <string name="morphe_niconico_font_size_value">Font size: %1$dsp</string>
+    <string name="morphe_niconico_opacity_value">Opacity: %1$d%%</string>
+    <string name="morphe_niconico_save">Save</string>
+    <string name="morphe_niconico_button_on">Niconico comments on</string>
+    <string name="morphe_niconico_button_off">Niconico comments off</string>
 </resources>

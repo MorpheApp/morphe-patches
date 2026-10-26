@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.View;
 
 import java.io.InputStream;
@@ -21,9 +20,10 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import app.morphe.extension.shared.Logger;
+
 /** Draws live and replay chat comments on the YouTube playback timeline. */
 final class NiconicoCommentsOverlayView extends View {
-    private static final String LOG_TAG = "NiconicoComments";
     private static final long IDLE_FRAME_DELAY_MS = 250;
     private static final int MEMBERSHIP_COLOR = Color.rgb(43, 166, 64);
     private static final int MAX_EMOJI_CACHE_ENTRIES = 128;
@@ -324,7 +324,7 @@ final class NiconicoCommentsOverlayView extends View {
                 }
             }
         } catch (Exception exception) {
-            Log.w(LOG_TAG, "Could not load YouTube emoji", exception);
+            Logger.printDebug(() -> "Could not load YouTube emoji", exception);
         } finally {
             if (connection != null) {
                 connection.disconnect();

@@ -1,24 +1,24 @@
 package app.morphe.extension.youtube.niconicocomments;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import app.morphe.extension.youtube.videoplayer.PlayerOverlayButton;
-
 import java.lang.ref.WeakReference;
-import java.util.Locale;
+
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.videoplayer.PlayerOverlayButton;
 
 /** Adds a persistent on/off control beside Morphe's lower-right player buttons. */
 public final class NiconicoCommentsToggleButton {
-    private static final String LOG_TAG = "NiconicoComments";
     private static final int ENABLED_COLOR = 0xffffffff;
     private static final int DISABLED_COLOR = 0x66ffffff;
 
@@ -65,7 +65,7 @@ public final class NiconicoCommentsToggleButton {
             sourceButtonRef = new WeakReference<>(sourceButton);
             buttonRef = new WeakReference<>(button);
         } catch (Exception exception) {
-            Log.e(LOG_TAG, "Toggle button initialization failed", exception);
+            Logger.printException(() -> "Niconico toggle button initialization failed", exception);
         }
     }
 
@@ -81,8 +81,6 @@ public final class NiconicoCommentsToggleButton {
     @SuppressLint("SetTextI18n")
     private static void showSettingsDialog(View anchor) {
         Context context = anchor.getContext();
-        Locale locale = context.getResources().getConfiguration().getLocales().get(0);
-        QuickSettingsStrings strings = QuickSettingsStrings.forLocale(locale);
         int currentSize = NiconicoCommentsController.getCommentFontSizeSp(context);
         int currentOpacity = NiconicoCommentsController.getCommentOpacityPercent(context);
         int[] selectedSize = {currentSize};
@@ -95,7 +93,7 @@ public final class NiconicoCommentsToggleButton {
 
         TextView value = new TextView(context);
         value.setTextSize(16);
-        value.setText(strings.formatFontSize(currentSize));
+        value.setText(str("morphe_niconico_font_size_value", currentSize));
         content.addView(value);
 
         SeekBar slider = new SeekBar(context);
@@ -108,7 +106,7 @@ public final class NiconicoCommentsToggleButton {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 selectedSize[0] = NiconicoCommentsController.MIN_FONT_SIZE_SP + progress;
-                value.setText(strings.formatFontSize(selectedSize[0]));
+                value.setText(str("morphe_niconico_font_size_value", selectedSize[0]));
             }
 
             @Override
@@ -123,7 +121,7 @@ public final class NiconicoCommentsToggleButton {
 
         TextView opacityValue = new TextView(context);
         opacityValue.setTextSize(16);
-        opacityValue.setText(strings.formatOpacity(currentOpacity));
+        opacityValue.setText(str("morphe_niconico_opacity_value", currentOpacity));
         content.addView(opacityValue);
 
         SeekBar opacitySlider = new SeekBar(context);
@@ -138,7 +136,7 @@ public final class NiconicoCommentsToggleButton {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 selectedOpacity[0] = NiconicoCommentsController.MIN_OPACITY_PERCENT + progress;
-                opacityValue.setText(strings.formatOpacity(selectedOpacity[0]));
+                opacityValue.setText(str("morphe_niconico_opacity_value", selectedOpacity[0]));
             }
 
             @Override
@@ -152,11 +150,11 @@ public final class NiconicoCommentsToggleButton {
         content.addView(opacitySlider);
 
         new AlertDialog.Builder(context)
-                .setTitle(strings.title)
+                .setTitle(str("morphe_niconico_quick_settings_title"))
                 .setView(content)
-                .setNegativeButton(strings.cancel, null)
+                .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(
-                        strings.save,
+                        str("morphe_niconico_save"),
                         (dialog, which) -> {
                             NiconicoCommentsController.setCommentFontSizeSp(
                                     context,
@@ -174,8 +172,13 @@ public final class NiconicoCommentsToggleButton {
     private static void updateState(TextView button) {
         boolean enabled = NiconicoCommentsController.isCommentsEnabled();
         button.setTextColor(enabled ? ENABLED_COLOR : DISABLED_COLOR);
-        String state = enabled ? "on" : "off";
-        button.setContentDescription("Niconico comments " + state);
-        button.setTooltipText("Niconico comments: " + state);
+        String state = str(enabled ? "morphe_niconico_button_on" : "morphe_niconico_button_off");
+        button.setContentDescription(state);
+        button.setTooltipText(state);
+    }
+
+    static void refreshState() {
+        TextView button = buttonRef.get();
+        if (button != null) button.post(() -> updateState(button));
     }
 }

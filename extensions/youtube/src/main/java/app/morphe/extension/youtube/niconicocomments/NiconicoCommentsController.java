@@ -1,25 +1,29 @@
 package app.morphe.extension.youtube.niconicocomments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.Map;
+
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.VideoState;
 
-import java.lang.ref.WeakReference;
-import java.util.List;
-
 /** Bridge between Morphe's shared player hooks, chat networking, and the overlay. */
 public final class NiconicoCommentsController {
-    private static final String LOG_TAG = "NiconicoComments";
     private static final String PREFERENCES_NAME = "niconico_comments";
     private static final String ENABLED_KEY = "overlay_enabled";
     private static final String FONT_SIZE_KEY = "font_size_sp";
     private static final String OPACITY_KEY = "opacity_percent";
+    private static final String MIGRATED_KEY = "morphe_niconico_settings_migrated";
     private static final long SEEK_THRESHOLD_MS = 12_000;
     private static final Object SOURCE_LOCK = new Object();
     private static final Object VIDEO_CLOCK_LOCK = new Object();
@@ -111,7 +115,7 @@ public final class NiconicoCommentsController {
                 attachToOverlay(overlayRoot);
                 maybeStartChatSource();
             } catch (Exception exception) {
-                Log.e(LOG_TAG, "Overlay initialization failed", exception);
+                Logger.printException(() -> "Niconico overlay initialization failed", exception);
             }
         });
     }
@@ -249,33 +253,8 @@ public final class NiconicoCommentsController {
     static boolean toggleCommentsEnabled(Context context) {
         loadPreference(context);
         boolean enabled = !commentsEnabled;
-        commentsEnabled = enabled;
-        context.getApplicationContext()
-                .getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
-                .edit()
-                .putBoolean(ENABLED_KEY, enabled)
-                .apply();
-
-        NiconicoCommentsOverlayView view = overlayViewRef.get();
-        if (view != null) {
-            view.post(() -> {
-                if (!enabled) {
-                    view.clearComments();
-                }
-                applyViewState(view);
-            });
-        }
-
-        synchronized (SOURCE_LOCK) {
-            if (enabled) {
-                completedSourceVideoId = "";
-            } else {
-                stopChatSourceLocked();
-            }
-        }
-        if (enabled) {
-            maybeStartChatSource();
-        }
+        Settings.NICONICO_COMMENTS_ENABLED.save(enabled);
+        readPreferences();
         return enabled;
     }
 
@@ -287,17 +266,8 @@ public final class NiconicoCommentsController {
     static void setCommentFontSizeSp(Context context, int fontSizeSp) {
         loadPreference(context);
         int clampedSize = clampFontSizeSp(fontSizeSp);
-        commentFontSizeSp = clampedSize;
-        context.getApplicationContext()
-                .getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
-                .edit()
-                .putInt(FONT_SIZE_KEY, clampedSize)
-                .apply();
-
-        NiconicoCommentsOverlayView view = overlayViewRef.get();
-        if (view != null) {
-            view.post(() -> view.setCommentFontSizeSp(clampedSize));
-        }
+        Settings.NICONICO_COMMENTS_FONT_SIZE.save(clampedSize);
+        readPreferences();
     }
 
     static int clampFontSizeSp(int fontSizeSp) {
@@ -312,17 +282,8 @@ public final class NiconicoCommentsController {
     static void setCommentOpacityPercent(Context context, int opacityPercent) {
         loadPreference(context);
         int clampedOpacity = clampOpacityPercent(opacityPercent);
-        commentOpacityPercent = clampedOpacity;
-        context.getApplicationContext()
-                .getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
-                .edit()
-                .putInt(OPACITY_KEY, clampedOpacity)
-                .apply();
-
-        NiconicoCommentsOverlayView view = overlayViewRef.get();
-        if (view != null) {
-            view.post(() -> view.setCommentOpacityPercent(clampedOpacity));
-        }
+        Settings.NICONICO_COMMENTS_OPACITY.save(clampedOpacity);
+        readPreferences();
     }
 
     static int clampOpacityPercent(int opacityPercent) {
@@ -332,7 +293,8 @@ public final class NiconicoCommentsController {
         );
     }
 
-    static void loadPreference(Context context) {
+    /** Injection point: migrate settings before the settings UI or player is opened. */
+    public static void loadPreference(Context context) {
         if (preferenceLoaded || context == null) {
             return;
         }
@@ -342,15 +304,79 @@ public final class NiconicoCommentsController {
             }
             SharedPreferences preferences = context.getApplicationContext()
                     .getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
-            commentsEnabled = preferences.getBoolean(ENABLED_KEY, true);
-            commentFontSizeSp = clampFontSizeSp(
-                    preferences.getInt(FONT_SIZE_KEY, DEFAULT_FONT_SIZE_SP)
-            );
-            commentOpacityPercent = clampOpacityPercent(
-                    preferences.getInt(OPACITY_KEY, DEFAULT_OPACITY_PERCENT)
-            );
+            if (migratePreferences(preferences, Setting.preferences.preferences)) {
+                // Settings may already be loaded; refresh their cached values after migrating.
+                Settings.NICONICO_COMMENTS_ENABLED.save(Setting.preferences.getBoolean(
+                        Settings.NICONICO_COMMENTS_ENABLED.key, Settings.NICONICO_COMMENTS_ENABLED.get()));
+                Settings.NICONICO_COMMENTS_FONT_SIZE.save(Setting.preferences.getIntegerString(
+                        Settings.NICONICO_COMMENTS_FONT_SIZE.key, Settings.NICONICO_COMMENTS_FONT_SIZE.get()));
+                Settings.NICONICO_COMMENTS_OPACITY.save(Setting.preferences.getIntegerString(
+                        Settings.NICONICO_COMMENTS_OPACITY.key, Settings.NICONICO_COMMENTS_OPACITY.get()));
+            }
+            Setting.addImportExportCallback(new Setting.ImportExportCallback() {
+                @Override
+                public void settingsImported(Activity activity) {
+                    readPreferences();
+                }
+
+                @Override
+                public void settingsExported(Activity activity) {
+                }
+            });
             preferenceLoaded = true;
+            readPreferences();
         }
+    }
+
+    static boolean migratePreferences(SharedPreferences legacy, SharedPreferences current) {
+        if (current.getBoolean(MIGRATED_KEY, false)) return false;
+
+        Map<String, ?> values = legacy.getAll();
+        SharedPreferences.Editor editor = current.edit();
+        String enabledKey = "morphe_niconico_comments_enabled";
+        String fontSizeKey = "morphe_niconico_comments_font_size";
+        String opacityKey = "morphe_niconico_comments_opacity";
+        if (!current.contains(enabledKey) && values.get(ENABLED_KEY) instanceof Boolean value) {
+            editor.putBoolean(enabledKey, value);
+        }
+        // IntegerSetting stores integers as strings in the common preference file.
+        if (!current.contains(fontSizeKey) && values.get(FONT_SIZE_KEY) instanceof Integer value) {
+            editor.putString(fontSizeKey, Integer.toString(clampFontSizeSp(value)));
+        }
+        if (!current.contains(opacityKey) && values.get(OPACITY_KEY) instanceof Integer value) {
+            editor.putString(opacityKey, Integer.toString(clampOpacityPercent(value)));
+        }
+        // Write the marker with the migrated values; leave legacy data available for downgrades.
+        editor.putBoolean(MIGRATED_KEY, true).apply();
+        return true;
+    }
+
+    private static void readPreferences() {
+        boolean wasEnabled = commentsEnabled;
+        commentsEnabled = Settings.NICONICO_COMMENTS_ENABLED.get();
+        commentFontSizeSp = clampFontSizeSp(Settings.NICONICO_COMMENTS_FONT_SIZE.get());
+        commentOpacityPercent = clampOpacityPercent(Settings.NICONICO_COMMENTS_OPACITY.get());
+        if (commentFontSizeSp != Settings.NICONICO_COMMENTS_FONT_SIZE.get()) {
+            Settings.NICONICO_COMMENTS_FONT_SIZE.save(commentFontSizeSp);
+        }
+        if (commentOpacityPercent != Settings.NICONICO_COMMENTS_OPACITY.get()) {
+            Settings.NICONICO_COMMENTS_OPACITY.save(commentOpacityPercent);
+        }
+        NiconicoCommentsOverlayView view = overlayViewRef.get();
+        if (view != null) {
+            view.post(() -> {
+                if (!commentsEnabled) view.clearComments();
+                applyViewState(view);
+            });
+        }
+        NiconicoCommentsToggleButton.refreshState();
+        synchronized (SOURCE_LOCK) {
+            if (wasEnabled != commentsEnabled) {
+                if (commentsEnabled) completedSourceVideoId = "";
+                else stopChatSourceLocked();
+            }
+        }
+        if (commentsEnabled) maybeStartChatSource();
     }
 
     private static void attachToOverlay(ViewGroup overlayRoot) {

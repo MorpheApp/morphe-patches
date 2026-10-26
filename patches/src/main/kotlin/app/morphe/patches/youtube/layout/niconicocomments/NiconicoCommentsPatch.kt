@@ -7,8 +7,10 @@ import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHook
 import app.morphe.patches.youtube.layout.sponsorblock.ControlsOverlayFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
+import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoSpeedChangedHook
@@ -28,15 +30,16 @@ val niconicoCommentsPatch = bytecodePatch(
     description = "Adds public live/replay chat overlays and a player on/off button.",
     default = false,
 ) {
-    // Expand the initial integration target after validating the other official APK versions.
+    // Keep compatibility limited to APK versions with patching or device validation.
     compatibleWith(COMPATIBILITY_YOUTUBE.excluding(
         *COMPATIBILITY_YOUTUBE.targets
-            .filter { it.version != "21.20.405" }
+            .filter { it.version !in setOf("21.20.405", "21.23.492") }
             .map { it.version }
             .toTypedArray(),
     ))
     dependsOn(
         sharedExtensionPatch,
+        settingsPatch,
         playerTypeHookPatch,
         videoIdPatch,
         videoInformationPatch,
@@ -44,6 +47,11 @@ val niconicoCommentsPatch = bytecodePatch(
     )
 
     execute {
+        // Migrate settings before the user can import a backup or open the player.
+        YouTubeActivityOnCreateFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CONTROLLER->loadPreference(Landroid/content/Context;)V",
+        )
         hookVideoId("$EXTENSION_CONTROLLER->onVideoIdChanged(Ljava/lang/String;)V")
         videoTimeHook(EXTENSION_CONTROLLER, "setVideoTime")
         videoSpeedChangedHook(EXTENSION_CONTROLLER, "setPlaybackRate")

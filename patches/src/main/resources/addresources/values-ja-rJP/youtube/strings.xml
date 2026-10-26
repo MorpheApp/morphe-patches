@@ -1627,4 +1627,11 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_no_search_results">シリーズが見つかりません</string>
   <string name="morphe_series_tracker_untitled_episode">タイトルなしのエピソード</string>
   <string name="morphe_series_tracker_unavailable_episode">利用不可なエピソード</string>
+    <!-- layout.niconicocomments.niconicoCommentsPatch -->
+    <string name="morphe_niconico_quick_settings_title">弾幕簡易設定</string>
+    <string name="morphe_niconico_font_size_value">フォントサイズ: %1$dsp</string>
+    <string name="morphe_niconico_opacity_value">不透明度: %1$d%%</string>
+    <string name="morphe_niconico_save">保存</string>
+    <string name="morphe_niconico_button_on">ニコニココメント オン</string>
+    <string name="morphe_niconico_button_off">ニコニココメント オフ</string>
 </resources>

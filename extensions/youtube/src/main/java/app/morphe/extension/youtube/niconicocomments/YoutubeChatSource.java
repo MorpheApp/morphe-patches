@@ -1,7 +1,5 @@
 package app.morphe.extension.youtube.niconicocomments;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,6 +20,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import app.morphe.extension.shared.Logger;
+
 /** Fetches public YouTube live and replay chat without another Morphe patch bundle. */
 final class YoutubeChatSource implements Runnable {
     interface Listener {
@@ -36,7 +36,6 @@ final class YoutubeChatSource implements Runnable {
         void onReplayReset(String videoId);
     }
 
-    private static final String LOG_TAG = "NiconicoComments";
     private static final String YOUTUBE_ORIGIN = "https://www.youtube.com";
     private static final String USER_AGENT =
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -80,7 +79,7 @@ final class YoutubeChatSource implements Runnable {
 
     @Override
     public void run() {
-        Log.i(LOG_TAG, "Starting public live/replay chat source for " + videoId);
+        Logger.printDebug(() -> "Starting public live/replay chat source for " + videoId);
 
         PageState state = null;
         for (int attempt = 1; attempt <= 3 && !stopped; attempt++) {
@@ -88,7 +87,8 @@ final class YoutubeChatSource implements Runnable {
                 state = fetchPageState();
                 break;
             } catch (Exception exception) {
-                Log.w(LOG_TAG, "Chat initialization attempt " + attempt + " failed", exception);
+                String message = "Chat initialization attempt " + attempt + " failed";
+                Logger.printInfo(() -> message, exception);
                 sleepBeforeRetry(attempt);
             }
         }
@@ -97,7 +97,7 @@ final class YoutubeChatSource implements Runnable {
             return;
         }
         if (state == null || state.continuation == null) {
-            Log.i(LOG_TAG, "No public live/replay continuation found for " + videoId);
+            Logger.printDebug(() -> "No public live/replay continuation found for " + videoId);
             return;
         }
 
@@ -133,12 +133,13 @@ final class YoutubeChatSource implements Runnable {
                                     : nextContinuation.timeoutMs
                     );
                     listener.onComments(videoId, comments, spreadWindowMs);
-                    Log.d(LOG_TAG, "Received " + comments.size() + " live-chat comments");
+                    int commentCount = comments.size();
+                    Logger.printDebug(() -> "Received " + commentCount + " live-chat comments");
                 }
 
                 continuation = nextContinuation;
                 if (continuation == null) {
-                    Log.i(LOG_TAG, "Live-chat continuation ended for " + videoId);
+                    Logger.printDebug(() -> "Live-chat continuation ended for " + videoId);
                     break;
                 }
                 sleep(getLivePollDelayMs(continuation.timeoutMs));
@@ -147,11 +148,8 @@ final class YoutubeChatSource implements Runnable {
                     return;
                 }
                 consecutiveFailures++;
-                Log.w(
-                        LOG_TAG,
-                        "Live-chat request failed (" + consecutiveFailures + "/3)",
-                        exception
-                );
+                String message = "Live-chat request failed (" + consecutiveFailures + "/3)";
+                Logger.printInfo(() -> message, exception);
                 if (consecutiveFailures >= 3) {
                     break;
                 }
@@ -161,7 +159,7 @@ final class YoutubeChatSource implements Runnable {
     }
 
     private void runReplay(PageState state) {
-        Log.i(LOG_TAG, "Replay-chat source selected for " + videoId);
+        Logger.printDebug(() -> "Replay-chat source selected for " + videoId);
         Continuation initialContinuation = state.continuation;
         Continuation continuation = initialContinuation;
         long loadedUntilMs = -1;
@@ -193,7 +191,7 @@ final class YoutubeChatSource implements Runnable {
                 consecutiveFailures = 0;
                 clearSeenIds();
                 listener.onReplayReset(videoId);
-                Log.d(LOG_TAG, "Replay-chat window reset at " + videoTimeMs + " ms");
+                Logger.printDebug(() -> "Replay-chat window reset at " + videoTimeMs + " ms");
             }
             if (loadedUntilMs < 0) {
                 windowStartMs = Math.max(0, videoTimeMs - REPLAY_START_MARGIN_MS);
@@ -227,7 +225,7 @@ final class YoutubeChatSource implements Runnable {
                     List<NiconicoComment> comments = deduplicate(page.comments);
                     if (!comments.isEmpty() && !stopped) {
                         listener.onComments(videoId, comments, 0);
-                        Log.d(LOG_TAG, "Received " + comments.size() + " replay-chat comments");
+                        Logger.printDebug(() -> "Received " + comments.size() + " replay-chat comments");
                     }
                     if (page.maxVideoOffsetMs >= 0) {
                         loadedUntilMs = Math.max(loadedUntilMs, page.maxVideoOffsetMs);
@@ -247,11 +245,8 @@ final class YoutubeChatSource implements Runnable {
                         return;
                     }
                     consecutiveFailures++;
-                    Log.w(
-                            LOG_TAG,
-                            "Replay-chat request failed (" + consecutiveFailures + "/3)",
-                            exception
-                    );
+                    String message = "Replay-chat request failed (" + consecutiveFailures + "/3)";
+                    Logger.printInfo(() -> message, exception);
                     if (consecutiveFailures >= 3) {
                         done = true;
                     } else {
@@ -347,7 +342,7 @@ final class YoutubeChatSource implements Runnable {
                     replayContinuation = allMessages;
                 }
             } catch (Exception exception) {
-                Log.w(LOG_TAG, "Could not select the all-messages replay filter", exception);
+                Logger.printInfo(() -> "Could not select the all-messages replay filter", exception);
             }
 
             return new PageState(
