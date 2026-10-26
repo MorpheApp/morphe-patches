@@ -1366,12 +1366,12 @@ Automotive レイアウト
   <string name="morphe_live_chat_danmaku_superchat_highlight_summary">スーパーチャットやメンバーシップを色付き背景で表示します</string>
   <string name="morphe_live_chat_danmaku_fullscreen_only_title">フルスクリーンのみ</string>
   <string name="morphe_live_chat_danmaku_fullscreen_only_summary">横向きフルスクリーンで視聴しているときだけ弾幕を表示します</string>
-  <string name="morphe_live_chat_danmaku_speed_title">弾幕の速度</string>
-    <string name="morphe_live_chat_danmaku_speed_summary">弾幕が画面を横切る速さ</string>
+  <string name="morphe_live_chat_danmaku_crossing_seconds_title">弾幕の横断時間（秒）</string>
+    <string name="morphe_live_chat_danmaku_crossing_seconds_summary">1つのコメントが画面を横切る秒数。長いコメントほど速く流れ、全コメントが同じ時間で横切ります</string>
   <string name="morphe_live_chat_danmaku_opacity_title">弾幕の不透明度</string>
     <string name="morphe_live_chat_danmaku_opacity_summary">弾幕の不透明度（低いほど透けて見えます）</string>
-  <string name="morphe_live_chat_danmaku_font_size_title">弾幕の文字サイズ</string>
-    <string name="morphe_live_chat_danmaku_font_size_summary">弾幕の文字の大きさ</string>
+  <string name="morphe_live_chat_danmaku_columns_title">弾幕の列数</string>
+    <string name="morphe_live_chat_danmaku_columns_summary">画面の横幅に収まる文字数。文字サイズは画面幅に比例するので、縦画面でもフルスクリーンでも同じ比率になります</string>
   <string name="morphe_live_chat_danmaku_max_rows_title">弾幕の行数</string>
     <string name="morphe_live_chat_danmaku_max_rows_summary">弾幕に使う最大の行数</string>
 

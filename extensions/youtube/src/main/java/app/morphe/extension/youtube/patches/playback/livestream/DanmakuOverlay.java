@@ -206,9 +206,10 @@ public final class DanmakuOverlay extends FrameLayout {
      */
     private boolean trySpawnInternal(DanmakuMessage message) {
         int containerWidth = getWidth();
-        int speed = DanmakuLaneAllocator.clampSpeedPercent(Settings.LIVE_CHAT_DANMAKU_SPEED.get());
+        int crossingSeconds = DanmakuLaneAllocator.clampCrossingSeconds(
+                Settings.LIVE_CHAT_DANMAKU_CROSSING_SECONDS.get());
         int opacity = DanmakuLaneAllocator.clampOpacityPercent(Settings.LIVE_CHAT_DANMAKU_OPACITY.get());
-        int fontSizeSp = DanmakuLaneAllocator.clampFontSizeSp(Settings.LIVE_CHAT_DANMAKU_FONT_SIZE.get());
+        int columns = DanmakuLaneAllocator.clampColumns(Settings.LIVE_CHAT_DANMAKU_COLUMNS.get());
         allocator.setMaxRows(Settings.LIVE_CHAT_DANMAKU_MAX_ROWS.get());
 
         // Fullscreen-only is approximated by landscape: in portrait the
@@ -226,7 +227,10 @@ public final class DanmakuOverlay extends FrameLayout {
         Context context = getContext();
         TextView view = new TextView(context);
         view.setText(text);
-        view.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSizeSp);
+        // Text size is managed by column count: this many full-width
+        // characters fit across the container width, so the size scales
+        // proportionally between portrait and fullscreen widths.
+        view.setTextSize(TypedValue.COMPLEX_UNIT_PX, (float) containerWidth / columns);
         view.setTypeface(Typeface.DEFAULT_BOLD);
         view.setTextColor(Color.WHITE);
         view.setShadowLayer(3f, 1f, 1f, Color.BLACK);
@@ -253,7 +257,7 @@ public final class DanmakuOverlay extends FrameLayout {
                 TypedValue.COMPLEX_UNIT_DIP, MIN_GAP_DP,
                 context.getResources().getDisplayMetrics());
         int lane = allocator.chooseLane(
-                textWidth, containerWidth, speed, minGapPx, System.currentTimeMillis());
+                textWidth, containerWidth, crossingSeconds, minGapPx, System.currentTimeMillis());
         if (lane < 0) {
             return false; // No lane qualifies yet: the caller lets it wait.
         }
@@ -266,7 +270,7 @@ public final class DanmakuOverlay extends FrameLayout {
         params.topMargin = lane * lineHeight;
         addView(view, params);
 
-        long duration = DanmakuLaneAllocator.travelTimeMs(containerWidth, textWidth, speed);
+        long duration = DanmakuLaneAllocator.travelTimeMs(containerWidth, textWidth, crossingSeconds);
         ObjectAnimator animator = ObjectAnimator.ofFloat(
                 view, "translationX", containerWidth, -textWidth);
         animator.setDuration(duration);

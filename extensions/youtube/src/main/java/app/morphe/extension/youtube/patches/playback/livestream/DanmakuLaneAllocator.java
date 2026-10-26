@@ -12,7 +12,8 @@ package app.morphe.extension.youtube.patches.playback.livestream;
  *
  * Niconico-style model: every comment takes the SAME time to cross the
  * screen, measured from its head entering at the right edge to its tail
- * leaving at the left edge. A longer comment therefore moves FASTER:
+ * leaving at the left edge. The crossing time is set directly in seconds
+ * by the user. A longer comment therefore moves FASTER:
  * velocity = (container width + text width) / crossing duration.
  *
  * To keep comments in the same lane from overlapping, each lane remembers
@@ -37,13 +38,13 @@ package app.morphe.extension.youtube.patches.playback.livestream;
 public final class DanmakuLaneAllocator {
 
     /**
-     * Time for one comment to cross the screen (head in at the right
-     * edge to tail out at the left edge) at speed 100. The same for
-     * every comment, whatever its length.
+     * Default time for one comment to cross the screen (head in at the
+     * right edge to tail out at the left edge). The same for every
+     * comment, whatever its length.
      */
     public static final long BASE_CROSSING_MS = 10_000L;
 
-    private static final int MAX_LANES = 12;
+    private static final int MAX_LANES = 24;
 
     /** Start time of the last comment placed in each lane, 0 if none. */
     private final long[] laneStartMs = new long[MAX_LANES];
@@ -63,44 +64,49 @@ public final class DanmakuLaneAllocator {
         return Math.max(1, Math.min(MAX_LANES, rows));
     }
 
-    public static int clampSpeedPercent(int speedPercent) {
-        return Math.max(50, Math.min(200, speedPercent));
+    public static int clampCrossingSeconds(int crossingSeconds) {
+        return Math.max(4, Math.min(20, crossingSeconds));
     }
 
     public static int clampOpacityPercent(int opacityPercent) {
         return Math.max(20, Math.min(100, opacityPercent));
     }
 
-    public static int clampFontSizeSp(int fontSizeSp) {
-        return Math.max(12, Math.min(32, fontSizeSp));
+    /**
+     * Clamp the columns setting: how many characters fit across the
+     * screen width. The text size is derived from this, so it scales
+     * proportionally with the screen width (portrait vs fullscreen).
+     */
+    public static int clampColumns(int columns) {
+        return Math.max(10, Math.min(100, columns));
     }
 
-    /** Crossing duration for every comment at the given speed setting. */
-    public static long crossingDurationMs(int speedPercent) {
-        return BASE_CROSSING_MS * 100L / clampSpeedPercent(speedPercent);
+    /** Crossing duration for every comment, in the user-set seconds. */
+    public static long crossingDurationMs(int crossingSeconds) {
+        return clampCrossingSeconds(crossingSeconds) * 1000L;
     }
 
     /**
      * Pixels per millisecond for one comment. Longer comments are faster,
      * because every comment crosses in {@link #crossingDurationMs}.
      */
-    public static double velocityPxPerMs(int containerWidthPx, int textWidthPx, int speedPercent) {
+    public static double velocityPxPerMs(int containerWidthPx, int textWidthPx, int crossingSeconds) {
         if (containerWidthPx <= 0) {
             return 0;
         }
         return (double) (containerWidthPx + Math.max(0, textWidthPx))
-                / crossingDurationMs(speedPercent);
+                / crossingDurationMs(crossingSeconds);
     }
 
     /**
      * Total time for a comment to travel from the right edge to
-     * off-screen left. The same for every comment at a given speed.
+     * off-screen left. The same for every comment at a given setting.
      */
-    public static long travelTimeMs(int containerWidthPx, int textWidthPx, int speedPercent) {
+    public static long travelTimeMs(int containerWidthPx, int textWidthPx, int crossingSeconds) {
         if (containerWidthPx <= 0) {
             return BASE_CROSSING_MS;
         }
-        return crossingDurationMs(speedPercent);
+        return crossingDurationMs(crossingSeconds);
     }
 
     public void setMaxRows(int maxRows) {
@@ -139,9 +145,9 @@ public final class DanmakuLaneAllocator {
      * @return the lane to use, or -1 if no lane qualifies yet and the
      * comment should wait
      */
-    public int chooseLane(int textWidthPx, int containerWidthPx, int speedPercent,
+    public int chooseLane(int textWidthPx, int containerWidthPx, int crossingSeconds,
                           int minGapPx, long nowMs) {
-        double velocity = velocityPxPerMs(containerWidthPx, textWidthPx, speedPercent);
+        double velocity = velocityPxPerMs(containerWidthPx, textWidthPx, crossingSeconds);
         if (velocity <= 0) {
             return -1;
         }

@@ -1506,12 +1506,12 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_live_chat_danmaku_superchat_highlight_summary">Show Super Chats and memberships with a coloured background</string>
     <string name="morphe_live_chat_danmaku_fullscreen_only_title">Fullscreen only</string>
     <string name="morphe_live_chat_danmaku_fullscreen_only_summary">Only show danmaku when watching in landscape fullscreen</string>
-    <string name="morphe_live_chat_danmaku_speed_title">Danmaku speed</string>
-    <string name="morphe_live_chat_danmaku_speed_summary">Speed at which danmaku comments scroll across the screen</string>
+    <string name="morphe_live_chat_danmaku_crossing_seconds_title">Danmaku crossing time</string>
+    <string name="morphe_live_chat_danmaku_crossing_seconds_summary">Seconds each comment takes to cross the screen. Longer comments move faster, so every comment takes the same time</string>
     <string name="morphe_live_chat_danmaku_opacity_title">Danmaku opacity</string>
     <string name="morphe_live_chat_danmaku_opacity_summary">Opacity of danmaku comments, where a lower value is more transparent</string>
-    <string name="morphe_live_chat_danmaku_font_size_title">Danmaku font size</string>
-    <string name="morphe_live_chat_danmaku_font_size_summary">Text size of danmaku comments</string>
+    <string name="morphe_live_chat_danmaku_columns_title">Danmaku columns</string>
+    <string name="morphe_live_chat_danmaku_columns_summary">Number of characters that fit across the screen. Text size scales with the screen width, keeping the same proportion in portrait and fullscreen</string>
     <string name="morphe_live_chat_danmaku_max_rows_title">Danmaku rows</string>
     <string name="morphe_live_chat_danmaku_max_rows_summary">Maximum number of rows that danmaku comments can use</string>
 

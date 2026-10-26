@@ -111,9 +111,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LIVE_CHAT_DANMAKU_SHOW_AUTHOR = new BooleanSetting("morphe_live_chat_danmaku_show_author", FALSE);
     public static final BooleanSetting LIVE_CHAT_DANMAKU_SUPERCHAT_HIGHLIGHT = new BooleanSetting("morphe_live_chat_danmaku_superchat_highlight", TRUE);
     public static final BooleanSetting LIVE_CHAT_DANMAKU_FULLSCREEN_ONLY = new BooleanSetting("morphe_live_chat_danmaku_fullscreen_only", FALSE);
-    public static final IntegerSetting LIVE_CHAT_DANMAKU_SPEED = new IntegerSetting("morphe_live_chat_danmaku_speed", 100);
+    public static final IntegerSetting LIVE_CHAT_DANMAKU_CROSSING_SECONDS = new IntegerSetting("morphe_live_chat_danmaku_crossing_seconds", 10);
     public static final IntegerSetting LIVE_CHAT_DANMAKU_OPACITY = new IntegerSetting("morphe_live_chat_danmaku_opacity", 100);
-    public static final IntegerSetting LIVE_CHAT_DANMAKU_FONT_SIZE = new IntegerSetting("morphe_live_chat_danmaku_font_size", 18);
+    public static final IntegerSetting LIVE_CHAT_DANMAKU_COLUMNS = new IntegerSetting("morphe_live_chat_danmaku_columns", 40);
     public static final IntegerSetting LIVE_CHAT_DANMAKU_MAX_ROWS = new IntegerSetting("morphe_live_chat_danmaku_max_rows", 6);
     public static final BooleanSetting REMEMBER_VIDEO_QUALITY_LAST_SELECTED_TOAST = new BooleanSetting("morphe_remember_video_quality_last_selected_toast", TRUE, false, parentsAny(REMEMBER_VIDEO_QUALITY_LAST_SELECTED, REMEMBER_SHORTS_QUALITY_LAST_SELECTED));
 
@@ -1159,13 +1159,13 @@ public class Settings extends SharedYouTubeSettings {
                 10, 25, 1, "x", 10));
         SeekBarPreference.register(new SeekBarConfig(VIDEO_DELAY,
                 0, 5000, 25, "ms"));
-        SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_DANMAKU_SPEED,
-                50, 200, 10, "%"));
+        SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_DANMAKU_CROSSING_SECONDS,
+                4, 20, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_DANMAKU_OPACITY,
                 20, 100, 5, "%"));
-        SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_DANMAKU_FONT_SIZE,
-                12, 32, 1, "sp"));
+        SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_DANMAKU_COLUMNS,
+                10, 100, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_DANMAKU_MAX_ROWS,
-                1, 12, 1, ""));
+                1, 24, 1, ""));
     }
 }

@@ -85,7 +85,7 @@ val liveChatDanmakuPatch = bytecodePatch(
                 SwitchPreference("morphe_live_chat_danmaku_fullscreen_only", summary = true),
             ),
             NonInteractivePreference(
-                key = "morphe_live_chat_danmaku_speed",
+                key = "morphe_live_chat_danmaku_crossing_seconds",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             NonInteractivePreference(
@@ -93,7 +93,7 @@ val liveChatDanmakuPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             NonInteractivePreference(
-                key = "morphe_live_chat_danmaku_font_size",
+                key = "morphe_live_chat_danmaku_columns",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             NonInteractivePreference(
