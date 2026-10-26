@@ -23,6 +23,9 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.Typeface;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.view.Gravity;
@@ -37,11 +40,18 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Scroller;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.function.IntConsumer;
+
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.theme.ThemeUtils;
 
 /**
@@ -181,6 +191,90 @@ public class SheetBottomDialog {
         scrollView.setVerticalScrollBarEnabled(false);
 
         return scrollView;
+    }
+
+    /**
+     * Creates a centered bold title for a sheet.
+     */
+    public static TextView createTitle(Context context, String text, int fgColor) {
+        TextView tv = new TextView(context);
+        tv.setText(text);
+        tv.setTextSize(18);
+        tv.setTypeface(Typeface.DEFAULT_BOLD);
+        tv.setTextColor(fgColor);
+        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, Dim.dp8, 0, Dim.dp16);
+        tv.setLayoutParams(params);
+        return tv;
+    }
+
+    /**
+     * Creates a labeled slider for a setting with a registered {@link SeekBarConfig}.
+     *
+     * @param onChanged Called with each value the user selects. It must save the setting.
+     */
+    public static LinearLayout createSliderRow(Context context, String label, IntegerSetting setting,
+                                               int fgColor, IntConsumer onChanged) {
+        final SeekBarConfig config = SeekBarPreference.configFor(setting);
+        if (config == null) throw new IllegalStateException("No SeekBarConfig registered for " + setting.key);
+        final int initialValue = setting.get();
+
+        LinearLayout outer = new LinearLayout(context);
+        outer.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams outerParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        outerParams.setMargins(0, Dim.dp16, 0, 0);
+        outer.setLayoutParams(outerParams);
+
+        TextView labelView = new TextView(context);
+        labelView.setText(label);
+        labelView.setTextColor(fgColor);
+        labelView.setTextSize(16);
+        labelView.setTypeface(Typeface.DEFAULT_BOLD);
+        outer.addView(labelView);
+
+        LinearLayout seekRow = new LinearLayout(context);
+        seekRow.setOrientation(LinearLayout.HORIZONTAL);
+        seekRow.setGravity(Gravity.CENTER_VERTICAL);
+        LinearLayout.LayoutParams seekRowParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        seekRowParams.topMargin = Dim.dp16;
+        seekRow.setLayoutParams(seekRowParams);
+
+        SeekBar seekBar = new SeekBar(context);
+        seekBar.setMax((config.max() - config.min()) / config.step());
+        seekBar.setProgress(SeekBarPreference.valueToProgress(config, initialValue));
+        seekBar.getProgressDrawable().setColorFilter(new PorterDuffColorFilter(fgColor, PorterDuff.Mode.SRC_IN));
+        seekBar.getThumb().setColorFilter(new PorterDuffColorFilter(fgColor, PorterDuff.Mode.SRC_IN));
+        seekRow.addView(seekBar, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
+
+        TextView valueView = new TextView(context);
+        valueView.setText(SeekBarPreference.formatLabel(initialValue, config));
+        valueView.setTextColor(fgColor);
+        valueView.setTextSize(14);
+        valueView.setMinWidth(Dim.dp40);
+        valueView.setGravity(Gravity.END);
+        seekRow.addView(valueView, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        outer.addView(seekRow);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    final int value = SeekBarPreference.progressToValue(config, progress);
+                    valueView.setText(SeekBarPreference.formatLabel(value, config));
+                    onChanged.accept(value);
+                }
+            }
+            @Override public void onStartTrackingTouch(SeekBar bar) { }
+            @Override public void onStopTrackingTouch(SeekBar bar) { }
+        });
+
+        return outer;
     }
 
     /**

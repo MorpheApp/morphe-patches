@@ -12,6 +12,8 @@
 
 package app.morphe.extension.youtube.niconicocomments;
 
+import androidx.annotation.Nullable;
+
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -36,10 +38,15 @@ final class EmojiImageCache<T> {
                 });
     }
 
+    @Nullable
     Entry<T> get(String url) {
         return entries.get(url);
     }
 
+    /**
+     * @return The existing or new entry, or null if the cache is full of entries that are still needed.
+     */
+    @Nullable
     Entry<T> beginLoad(String url, Set<String> neededUrls) {
         Entry<T> existing = entries.get(url);
         if (existing != null) return existing;
@@ -60,7 +67,7 @@ final class EmojiImageCache<T> {
         return entry;
     }
 
-    boolean complete(String url, Entry<T> entry, T value) {
+    boolean complete(String url, Entry<T> entry, @Nullable T value) {
         if (entries.get(url) != entry) return false;
         entry.value = value;
         entry.failed = value == null;
@@ -68,15 +75,12 @@ final class EmojiImageCache<T> {
         return true;
     }
 
-    void discard(String url, Entry<T> entry) {
-        if (entries.get(url) == entry) entries.remove(url);
-    }
-
     void clear() {
         entries.clear();
     }
 
     static final class Entry<T> {
+        @Nullable
         T value;
         boolean loading = true;
         boolean failed;

@@ -90,17 +90,14 @@ public class EmojiImageCacheTest {
     }
 
     @Test
-    public void ignoresResultsFromAnOldVideoAndCanRetryRejectedTasks() {
+    public void ignoresResultsFromAnOldVideo() {
         EmojiImageCache<String> cache = new EmojiImageCache<>();
         EmojiImageCache.Entry<String> old = cache.beginLoad("emoji", Set.of());
         cache.clear();
         EmojiImageCache.Entry<String> current = cache.beginLoad("emoji", Set.of());
         assertFalse(cache.complete("emoji", old, "old bitmap"));
-        cache.discard("emoji", old);
         assertSame(current, cache.get("emoji"));
-        cache.discard("emoji", current);
-        assertNull(cache.get("emoji"));
-        assertNotNull(cache.beginLoad("emoji", Set.of()));
+        assertNull(current.value);
     }
 
     @Test

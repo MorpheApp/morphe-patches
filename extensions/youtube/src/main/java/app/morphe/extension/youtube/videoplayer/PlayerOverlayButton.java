@@ -20,8 +20,10 @@ import android.graphics.drawable.DrawableWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +31,7 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BooleanSupplier;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -625,6 +628,24 @@ public class PlayerOverlayButton {
         buttonControllers.add(new PlayerOverlayButtonController(textOverlay, isEnabled, textOverlay::setBackground));
 
         return textOverlay;
+    }
+
+    /**
+     * Exposes a button to accessibility services as a toggle,
+     * so screen readers announce whether its feature is on or off.
+     */
+    public static void setToggleAccessibilityDelegate(View button, BooleanSupplier isChecked) {
+        button.setAccessibilityDelegate(new View.AccessibilityDelegate() {
+            @Override
+            @SuppressWarnings("deprecation")
+            public void onInitializeAccessibilityNodeInfo(@NonNull View host, @NonNull AccessibilityNodeInfo info) {
+                super.onInitializeAccessibilityNodeInfo(host, info);
+                info.setClassName(ToggleButton.class.getName());
+                info.setCheckable(true);
+                // setChecked(int) is API 36 only, the boolean version still works on every version.
+                info.setChecked(isChecked.getAsBoolean());
+            }
+        });
     }
 
     private static int getNumberOfEnabledButtons() {

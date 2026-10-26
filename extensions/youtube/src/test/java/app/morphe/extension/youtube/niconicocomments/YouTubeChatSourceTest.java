@@ -23,7 +23,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class YoutubeChatSourceTest {
+public class YouTubeChatSourceTest {
     @Test
     public void parsesWatchPageConfigAndBalancedJson() throws Exception {
         String html = "<script>ytcfg.set({\"INNERTUBE_API_KEY\":\"key\"});"

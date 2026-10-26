@@ -1790,11 +1790,13 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_series_tracker_no_search_results">No series found</string>
     <string name="morphe_series_tracker_untitled_episode">Untitled episode</string>
     <string name="morphe_series_tracker_unavailable_episode">Unavailable episode</string>
+
     <!-- layout.niconicocomments.niconicoCommentsPatch -->
-    <string name="morphe_niconico_quick_settings_title">Danmaku quick settings</string>
-    <string name="morphe_niconico_font_size_value">Font size: %1$dsp</string>
-    <string name="morphe_niconico_opacity_value">Opacity: %1$d%%</string>
-    <string name="morphe_niconico_save">Save</string>
-    <string name="morphe_niconico_button_on">Niconico comments on</string>
-    <string name="morphe_niconico_button_off">Niconico comments off</string>
+    <string name="morphe_niconico_comments_screen_title">Niconico comments</string>
+    <string name="morphe_niconico_comments_screen_summary">Show live chat and chat replay as comments that scroll across the video</string>
+    <string name="morphe_niconico_comments_summary">Shows an overlay button in the video player. Tap to show or hide the comments, tap and hold for quick settings</string>
+    <string name="morphe_niconico_comments_font_size_title">Comment font size</string>
+    <string name="morphe_niconico_comments_font_size_summary">Text size of the comments (12-40 sp)</string>
+    <string name="morphe_niconico_comments_opacity_title">Comment opacity</string>
+    <string name="morphe_niconico_comments_opacity_summary">Opacity of the comment text and backgrounds</string>
 </resources>

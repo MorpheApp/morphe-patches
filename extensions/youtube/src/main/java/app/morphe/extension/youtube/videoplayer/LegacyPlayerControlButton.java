@@ -299,6 +299,18 @@ public class LegacyPlayerControlButton {
         }
     }
 
+    /**
+     * Sets the alpha of the text overlay color (0-255).
+     */
+    public void setTextOverlayAlpha(int alpha) {
+        Utils.verifyOnMainThread();
+
+        TextView textOverlay = textOverlayRef.get();
+        if (textOverlay != null) {
+            textOverlay.setTextColor(textOverlay.getTextColors().withAlpha(alpha));
+        }
+    }
+
     public void setVisibility(int visiblity) {
         Utils.verifyOnMainThread();
         View button = buttonRef.get();

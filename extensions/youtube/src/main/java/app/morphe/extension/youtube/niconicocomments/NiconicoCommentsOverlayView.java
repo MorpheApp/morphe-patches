@@ -22,22 +22,29 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.youtube.settings.Settings;
 
-/** Draws live and replay chat comments on the YouTube playback timeline. */
+/**
+ * Draws live and replay chat comments scrolling across the video.
+ */
 final class NiconicoCommentsOverlayView extends View {
     private static final long IDLE_FRAME_DELAY_MS = 250;
     private static final int MEMBERSHIP_COLOR = Color.rgb(43, 166, 64);
     private static final long EMOJI_PREFETCH_MS = 1_000;
+    private static final int EMOJI_CONNECT_TIMEOUT_MS = 5_000;
+    private static final int EMOJI_READ_TIMEOUT_MS = 10_000;
     private static final String EMOJI_USER_AGENT =
             "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/138 Mobile";
     private static final ThreadPoolExecutor EMOJI_EXECUTOR = EmojiImageCache.createExecutor();
@@ -50,17 +57,17 @@ final class NiconicoCommentsOverlayView extends View {
     private final CommentSchedule schedule = new CommentSchedule();
     private final EmojiImageCache<Bitmap> emojiImageCache = new EmojiImageCache<>();
     private final Set<String> neededEmojiUrls = new HashSet<>();
-    private volatile int emojiGeneration;
     private final float density;
     private final float scaledDensity;
     private final float backgroundPadding;
     private final float backgroundRadius;
 
+    private volatile int emojiGeneration;
     private String videoId = "";
     private boolean overlayActive;
     private boolean videoPlaying;
-    private int fontSizeSp = NiconicoCommentsController.DEFAULT_FONT_SIZE_SP;
-    private int opacityPercent = NiconicoCommentsController.DEFAULT_OPACITY_PERCENT;
+    private int fontSizeSp = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_FONT_SIZE);
+    private int opacityPercent = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY);
     private float laneHeight;
     private float firstBaseline;
 
@@ -114,11 +121,10 @@ final class NiconicoCommentsOverlayView extends View {
     }
 
     void setCommentFontSizeSp(int nextFontSizeSp) {
-        int clampedSize = NiconicoCommentsController.clampFontSizeSp(nextFontSizeSp);
-        if (fontSizeSp == clampedSize) {
+        if (fontSizeSp == nextFontSizeSp) {
             return;
         }
-        fontSizeSp = clampedSize;
+        fontSizeSp = nextFontSizeSp;
         applyFontSize();
         if (getHeight() > 0) {
             schedule.redistributeLanes(getLaneCount());
@@ -127,13 +133,10 @@ final class NiconicoCommentsOverlayView extends View {
     }
 
     void setCommentOpacityPercent(int nextOpacityPercent) {
-        int clampedOpacity = NiconicoCommentsController.clampOpacityPercent(
-                nextOpacityPercent
-        );
-        if (opacityPercent == clampedOpacity) {
+        if (opacityPercent == nextOpacityPercent) {
             return;
         }
-        opacityPercent = clampedOpacity;
+        opacityPercent = nextOpacityPercent;
         invalidate();
     }
 
@@ -305,20 +308,17 @@ final class NiconicoCommentsOverlayView extends View {
         for (String url : neededEmojiUrls) ensureEmojiImage(url);
     }
 
+    @Nullable
     private EmojiImageCache.Entry<Bitmap> ensureEmojiImage(String imageUrl) {
         EmojiImageCache.Entry<Bitmap> existing = emojiImageCache.get(imageUrl);
         if (existing != null) return existing;
+        // Loads are only queued from the main thread, so the queue cannot fill up after this check.
         if (!overlayActive || !videoPlaying || EMOJI_EXECUTOR.getQueue().remainingCapacity() == 0) return null;
 
         EmojiImageCache.Entry<Bitmap> state = emojiImageCache.beginLoad(imageUrl, neededEmojiUrls);
         if (state == null) return null;
-        int generation = emojiGeneration;
-        try {
-            EMOJI_EXECUTOR.execute(() -> loadEmojiImage(imageUrl, state, generation));
-        } catch (RejectedExecutionException exception) {
-            emojiImageCache.discard(imageUrl, state);
-            return null;
-        }
+        final int generation = emojiGeneration;
+        EMOJI_EXECUTOR.execute(() -> loadEmojiImage(imageUrl, state, generation));
         return state;
     }
 
@@ -327,9 +327,9 @@ final class NiconicoCommentsOverlayView extends View {
         HttpURLConnection connection = null;
         Bitmap bitmap = null;
         try {
-            connection = (HttpURLConnection) new URL(imageUrl).openConnection();
-            connection.setConnectTimeout(5_000);
-            connection.setReadTimeout(10_000);
+            connection = Requester.openConnection(imageUrl);
+            connection.setConnectTimeout(EMOJI_CONNECT_TIMEOUT_MS);
+            connection.setReadTimeout(EMOJI_READ_TIMEOUT_MS);
             connection.setInstanceFollowRedirects(true);
             connection.setRequestProperty("User-Agent", EMOJI_USER_AGENT);
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -337,8 +337,8 @@ final class NiconicoCommentsOverlayView extends View {
                     bitmap = BitmapFactory.decodeStream(input);
                 }
             }
-        } catch (Exception exception) {
-            Logger.printDebug(() -> "Could not load YouTube emoji", exception);
+        } catch (Exception ex) {
+            Logger.printInfo(() -> "Could not load emoji: " + imageUrl, ex);
         } finally {
             if (connection != null) {
                 connection.disconnect();
@@ -358,5 +358,4 @@ final class NiconicoCommentsOverlayView extends View {
             postInvalidateOnAnimation();
         }
     }
-
 }
