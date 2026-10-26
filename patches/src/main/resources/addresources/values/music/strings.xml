@@ -556,13 +556,6 @@ Steps:
     <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token saved</string>
     <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token cleared</string>
     <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: invalid user token - please check and try again</string>
-    <string name="morphe_music_lrclib_api_key_title">LRCLIB API key</string>
-    <string name="morphe_music_lrclib_api_key_dialog_instruction">Optional. Paste your own LRCLIB API key to get higher rate limits. The app already identifies itself to LRCLIB, so this can stay empty. Keep the key private.</string>
-    <string name="morphe_music_lrclib_api_key_dialog_hint">API key</string>
-    <string name="morphe_music_lrclib_api_key_optional_hint">LRCLIB works without a key, so this field can stay empty</string>
-    <string name="morphe_music_lrclib_api_key_toast_saved">LRCLIB: API key saved</string>
-    <string name="morphe_music_lrclib_api_key_toast_cleared">LRCLIB: API key cleared</string>
-    <string name="morphe_music_lrclib_api_key_toast_invalid">LRCLIB: invalid API key - please check and try again</string>
     <string name="morphe_music_youtube_cookies_title">YouTube Cookies</string>
     <string name="morphe_music_youtube_cookies_dialog_instruction">"Paste your YouTube cookies to query captions and timetext from YouTube.
 

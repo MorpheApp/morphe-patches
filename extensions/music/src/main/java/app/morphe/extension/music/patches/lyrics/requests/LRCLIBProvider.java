@@ -25,7 +25,6 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.LyricsFileParser;
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
@@ -46,36 +45,7 @@ public final class LRCLIBProvider implements LyricsProvider {
      */
     private static final String APP_ID = "HLyf7QYkIJfl4wcObeD-caHjBZPnGhv0Vuvx2UiIFKk";
 
-    private static Map<String, String> headers() {
-        return headersFor(Settings.LRCLIB_API_KEY.get());
-    }
-
-    /**
-     * The user's own API key, or else the App ID. A key belongs to the user's own application,
-     * so LRCLIB rejects it when it is sent with a different App ID.
-     */
-    private static Map<String, String> headersFor(@Nullable String apiKey) {
-        if (apiKey != null && !apiKey.isBlank()) {
-            return Map.of("Lrclib-Api-Key", apiKey.trim());
-        }
-        return Map.of("Lrclib-App-Id", APP_ID);
-    }
-
-    /** Checks a key with a search request before it is saved. An invalid key is rejected with 401. */
-    public static boolean validateKey(String apiKey) {
-        try {
-            HttpURLConnection connection = LyricsRequests.openConnection(
-                    BASE_URL + "search?track_name=test", headersFor(apiKey));
-            try {
-                return connection.getResponseCode() == Requester.HTTP_STATUS_CODE_SUCCESS;
-            } finally {
-                connection.disconnect();
-            }
-        } catch (IOException ex) {
-            Logger.printInfo(() -> "LRCLIB API key validation failed", ex);
-            return false;
-        }
-    }
+    private static final Map<String, String> HEADERS = Map.of("Lrclib-App-Id", APP_ID);
 
     @Override
     public String name() {
@@ -123,7 +93,7 @@ public final class LRCLIBProvider implements LyricsProvider {
 
         String url = BASE_URL + "search?track_name=" + LyricsRequests.encode(track.title())
                 + "&artist_name=" + LyricsRequests.encode(track.artist());
-        HttpURLConnection connection = LyricsRequests.openConnection(url, headers());
+        HttpURLConnection connection = LyricsRequests.openConnection(url, HEADERS);
         if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
             return Lyrics.sortScoredByScore(scored);
         }
@@ -232,7 +202,7 @@ public final class LRCLIBProvider implements LyricsProvider {
         String url = BASE_URL + "search?track_name=" + LyricsRequests.encode(track.title())
                 + "&artist_name=" + LyricsRequests.encode(track.artist());
 
-        HttpURLConnection connection = LyricsRequests.openConnection(url, headers());
+        HttpURLConnection connection = LyricsRequests.openConnection(url, HEADERS);
         if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
             LyricsRequests.logFailure(name(), connection);
             return null;
@@ -325,7 +295,7 @@ public final class LRCLIBProvider implements LyricsProvider {
 
     @Nullable
     private JSONObject getJsonObject(String url) throws IOException, JSONException {
-        HttpURLConnection connection = LyricsRequests.openConnection(url, headers());
+        HttpURLConnection connection = LyricsRequests.openConnection(url, HEADERS);
         final int responseCode = connection.getResponseCode();
         if (responseCode == 404) {
             connection.disconnect();

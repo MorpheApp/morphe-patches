@@ -29,7 +29,6 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.music.patches.lyrics.requests.AppleMusicProvider;
 import app.morphe.extension.music.patches.lyrics.requests.CaptionsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
-import app.morphe.extension.music.patches.lyrics.requests.LRCLIBProvider;
 import app.morphe.extension.music.patches.lyrics.requests.MusixmatchProvider;
 import app.morphe.extension.music.patches.lyrics.requests.SpotifyProvider;
 import app.morphe.extension.music.settings.Settings;
@@ -159,21 +158,6 @@ public class LyricsTokenDialogPreference extends Preference {
                 false,
                 DeezerProvider::validateArl,
                 null);
-    }
-
-    public static LyricsTokenDialogPreference lrclib(Context context) {
-        return new LyricsTokenDialogPreference(context,
-                "morphe_music_lrclib_api_key_title",
-                "morphe_music_lrclib_api_key_dialog_instruction",
-                "morphe_music_lrclib_api_key_dialog_hint",
-                "morphe_music_lrclib_api_key_toast_saved",
-                "morphe_music_lrclib_api_key_toast_cleared",
-                "morphe_music_lrclib_api_key_toast_invalid",
-                Settings.LRCLIB_API_KEY,
-                "https://lrclib.net",
-                false,
-                LRCLIBProvider::validateKey,
-                "morphe_music_lrclib_api_key_optional_hint");
     }
 
     public static LyricsTokenDialogPreference musixmatch(Context context) {

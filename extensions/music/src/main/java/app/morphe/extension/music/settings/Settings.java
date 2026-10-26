@@ -202,7 +202,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting APPLE_MUSIC_TOKEN = new StringSetting("morphe_music_apple_music_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting SPOTIFY_TOKEN = new StringSetting("morphe_music_spotify_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting DEEZER_ARL = new StringSetting("morphe_music_deezer_arl", "", false, parent(LYRICS_ENABLED));
-    public static final StringSetting LRCLIB_API_KEY = new StringSetting("morphe_music_lrclib_api_key", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting MUSIXMATCH_TOKEN = new StringSetting("morphe_music_musixmatch_token", "", false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE = new BooleanSetting("morphe_music_lyrics_translate", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE_ONLY = new BooleanSetting("morphe_music_lyrics_translate_only", FALSE, false, parent(LYRICS_ENABLED));
