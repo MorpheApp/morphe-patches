@@ -73,6 +73,7 @@ public final class DanmakuOverlay extends FrameLayout {
     };
 
     private ViewGroup attachedParent;
+    private final TextView settingsButton;
 
     public DanmakuOverlay(Context context) {
         super(context);
@@ -82,6 +83,39 @@ public final class DanmakuOverlay extends FrameLayout {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         allocator = new DanmakuLaneAllocator(Settings.LIVE_CHAT_DANMAKU_MAX_ROWS.get());
+
+        // Small gear button in a corner of the player, opening the
+        // danmaku settings without leaving the watch screen.
+        settingsButton = new TextView(context);
+        settingsButton.setText("⚙");
+        settingsButton.setTextColor(Color.WHITE);
+        settingsButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        settingsButton.setGravity(android.view.Gravity.CENTER);
+        android.graphics.drawable.GradientDrawable background =
+                new android.graphics.drawable.GradientDrawable();
+        background.setShape(android.graphics.drawable.GradientDrawable.OVAL);
+        background.setColor(0x66000000);
+        settingsButton.setBackground(background);
+        settingsButton.setAlpha(0.75f);
+        settingsButton.setContentDescription("Danmaku settings");
+        settingsButton.setOnClickListener(view -> DanmakuSettingsDialog.show(getContext()));
+        int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 34,
+                context.getResources().getDisplayMetrics());
+        FrameLayout.LayoutParams buttonParams = new FrameLayout.LayoutParams(size, size,
+                android.view.Gravity.TOP | android.view.Gravity.END);
+        buttonParams.topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 52,
+                context.getResources().getDisplayMetrics());
+        buttonParams.setMarginEnd((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10,
+                context.getResources().getDisplayMetrics()));
+        addView(settingsButton, buttonParams);
+        settingsButton.setVisibility(GONE);
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        // The button only makes sense while danmaku is enabled.
+        settingsButton.setVisibility(Settings.LIVE_CHAT_DANMAKU.get() ? VISIBLE : GONE);
     }
 
     /** Attach this layer to a player container, moving it if it was elsewhere. */
@@ -269,6 +303,7 @@ public final class DanmakuOverlay extends FrameLayout {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         params.topMargin = lane * lineHeight;
         addView(view, params);
+        settingsButton.bringToFront(); // Keep the gear above the comments.
 
         long duration = DanmakuLaneAllocator.travelTimeMs(containerWidth, textWidth, crossingSeconds);
         ObjectAnimator animator = ObjectAnimator.ofFloat(

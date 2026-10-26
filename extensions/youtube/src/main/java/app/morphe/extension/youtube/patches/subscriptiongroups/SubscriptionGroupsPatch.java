@@ -83,6 +83,11 @@ public final class SubscriptionGroupsPatch {
      */
     public static void navigationTabCreated(NavigationBar.NavigationButton button, View tabView) {
         try {
+            // The channel-page "add to group" watcher runs regardless of
+            // the tab; it checks the feature setting itself on each scan.
+            if (tabView != null) {
+                ChannelPageGroupButton.start(tabView.getContext());
+            }
             if (!Settings.SUBSCRIPTION_GROUPS.get()) {
                 return;
             }
