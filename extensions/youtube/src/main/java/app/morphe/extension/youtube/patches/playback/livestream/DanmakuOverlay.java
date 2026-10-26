@@ -73,7 +73,6 @@ public final class DanmakuOverlay extends FrameLayout {
     };
 
     private ViewGroup attachedParent;
-    private final TextView settingsButton;
 
     public DanmakuOverlay(Context context) {
         super(context);
@@ -83,39 +82,6 @@ public final class DanmakuOverlay extends FrameLayout {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         allocator = new DanmakuLaneAllocator(Settings.LIVE_CHAT_DANMAKU_MAX_ROWS.get());
-
-        // Small gear button in a corner of the player, opening the
-        // danmaku settings without leaving the watch screen.
-        settingsButton = new TextView(context);
-        settingsButton.setText("⚙");
-        settingsButton.setTextColor(Color.WHITE);
-        settingsButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-        settingsButton.setGravity(android.view.Gravity.CENTER);
-        android.graphics.drawable.GradientDrawable background =
-                new android.graphics.drawable.GradientDrawable();
-        background.setShape(android.graphics.drawable.GradientDrawable.OVAL);
-        background.setColor(0x66000000);
-        settingsButton.setBackground(background);
-        settingsButton.setAlpha(0.75f);
-        settingsButton.setContentDescription("Danmaku settings");
-        settingsButton.setOnClickListener(view -> DanmakuSettingsDialog.show(getContext()));
-        int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 34,
-                context.getResources().getDisplayMetrics());
-        FrameLayout.LayoutParams buttonParams = new FrameLayout.LayoutParams(size, size,
-                android.view.Gravity.TOP | android.view.Gravity.END);
-        buttonParams.topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 52,
-                context.getResources().getDisplayMetrics());
-        buttonParams.setMarginEnd((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10,
-                context.getResources().getDisplayMetrics()));
-        addView(settingsButton, buttonParams);
-        settingsButton.setVisibility(GONE);
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        // The button only makes sense while danmaku is enabled.
-        settingsButton.setVisibility(Settings.LIVE_CHAT_DANMAKU.get() ? VISIBLE : GONE);
     }
 
     /** Attach this layer to a player container, moving it if it was elsewhere. */
@@ -243,7 +209,7 @@ public final class DanmakuOverlay extends FrameLayout {
         int crossingSeconds = DanmakuLaneAllocator.clampCrossingSeconds(
                 Settings.LIVE_CHAT_DANMAKU_CROSSING_SECONDS.get());
         int opacity = DanmakuLaneAllocator.clampOpacityPercent(Settings.LIVE_CHAT_DANMAKU_OPACITY.get());
-        int columns = DanmakuLaneAllocator.clampColumns(Settings.LIVE_CHAT_DANMAKU_COLUMNS.get());
+        int rows = DanmakuLaneAllocator.clampRows(Settings.LIVE_CHAT_DANMAKU_MAX_ROWS.get());
         allocator.setMaxRows(Settings.LIVE_CHAT_DANMAKU_MAX_ROWS.get());
 
         // Fullscreen-only is approximated by landscape: in portrait the
@@ -261,10 +227,12 @@ public final class DanmakuOverlay extends FrameLayout {
         Context context = getContext();
         TextView view = new TextView(context);
         view.setText(text);
-        // Text size is managed by column count: this many full-width
-        // characters fit across the container width, so the size scales
-        // proportionally between portrait and fullscreen widths.
-        view.setTextSize(TypedValue.COMPLEX_UNIT_PX, (float) containerWidth / columns);
+        // Text size is managed by row count: the player height divided
+        // by the row count, so the size keeps the same proportion of
+        // the player height in portrait and in fullscreen. The row
+        // count is also the maximum number of danmaku lanes.
+        view.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                (float) Math.max(1, getHeight()) / rows);
         view.setTypeface(Typeface.DEFAULT_BOLD);
         view.setTextColor(Color.WHITE);
         view.setShadowLayer(3f, 1f, 1f, Color.BLACK);
@@ -303,7 +271,6 @@ public final class DanmakuOverlay extends FrameLayout {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         params.topMargin = lane * lineHeight;
         addView(view, params);
-        settingsButton.bringToFront(); // Keep the gear above the comments.
 
         long duration = DanmakuLaneAllocator.travelTimeMs(containerWidth, textWidth, crossingSeconds);
         ObjectAnimator animator = ObjectAnimator.ofFloat(

@@ -1360,7 +1360,10 @@ Automotive レイアウト
   <!-- video.livestream.liveChatDanmakuPatch -->
   <string name="morphe_live_chat_danmaku_title">ライブチャット弾幕</string>
   <string name="morphe_live_chat_danmaku_summary">ライブ配信のコメントを、ニコニコ風の弾幕として動画プレイヤー上に流して表示します</string>
-  <string name="morphe_live_chat_danmaku_show_author_title">弾幕に投稿者名を表示</string>
+  <string name="morphe_live_chat_danmaku_button_title">弾幕ボタンを表示</string>
+    <string name="morphe_live_chat_danmaku_button_toast_on">弾幕をオンにしました</string>
+    <string name="morphe_live_chat_danmaku_button_toast_off">弾幕をオフにしました</string>
+    <string name="morphe_live_chat_danmaku_show_author_title">弾幕に投稿者名を表示</string>
   <string name="morphe_live_chat_danmaku_show_author_summary">各弾幕コメントの前に投稿者名を付けます</string>
   <string name="morphe_live_chat_danmaku_superchat_highlight_title">スーパーチャットを目立たせる</string>
   <string name="morphe_live_chat_danmaku_superchat_highlight_summary">スーパーチャットやメンバーシップを色付き背景で表示します</string>
@@ -1370,10 +1373,8 @@ Automotive レイアウト
     <string name="morphe_live_chat_danmaku_crossing_seconds_summary">1つのコメントが画面を横切る秒数。長いコメントほど速く流れ、全コメントが同じ時間で横切ります</string>
   <string name="morphe_live_chat_danmaku_opacity_title">弾幕の不透明度</string>
     <string name="morphe_live_chat_danmaku_opacity_summary">弾幕の不透明度（低いほど透けて見えます）</string>
-  <string name="morphe_live_chat_danmaku_columns_title">弾幕の列数</string>
-    <string name="morphe_live_chat_danmaku_columns_summary">画面の横幅に収まる文字数。文字サイズは画面幅に比例するので、縦画面でもフルスクリーンでも同じ比率になります</string>
-  <string name="morphe_live_chat_danmaku_max_rows_title">弾幕の行数</string>
-    <string name="morphe_live_chat_danmaku_max_rows_summary">弾幕に使う最大の行数</string>
+  <string name="morphe_live_chat_danmaku_max_rows_title">弾幕の列数</string>
+    <string name="morphe_live_chat_danmaku_max_rows_summary">プレイヤーの高さ÷列数で文字サイズが決まります。縦画面でもフルスクリーンでも高さに対する比率は同じです。弾幕の最大行数も兼ねます</string>
 
   <!-- layout.subscriptiongroups.subscriptionChannelGroupsPatch -->
   <string name="morphe_subscription_groups_title">登録チャンネルのグループ分類</string>
@@ -1383,6 +1384,7 @@ Automotive レイアウト
   <string name="morphe_subscription_groups_all">すべて</string>
   <string name="morphe_subscription_groups_chip_manage">グループ管理</string>
     <string name="morphe_subscription_groups_add_to_group">グループに追加</string>
+    <string name="morphe_subscription_groups_pick_known">既知のチャンネルから選ぶ</string>
   <string name="morphe_subscription_groups_dialog_title">登録チャンネルのグループ</string>
   <string name="morphe_subscription_groups_dialog_empty">グループはまだありません。グループを作成して、チャンネル名を追加してください。</string>
   <string name="morphe_subscription_groups_create">グループを作成</string>

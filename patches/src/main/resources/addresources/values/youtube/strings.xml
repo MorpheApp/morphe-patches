@@ -1500,6 +1500,9 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <!-- video.livestream.liveChatDanmakuPatch -->
     <string name="morphe_live_chat_danmaku_title">Live chat danmaku</string>
     <string name="morphe_live_chat_danmaku_summary">Show live stream comments as Niconico-style danmaku scrolling across the video player</string>
+    <string name="morphe_live_chat_danmaku_button_title">Show danmaku button</string>
+    <string name="morphe_live_chat_danmaku_button_toast_on">Danmaku is on</string>
+    <string name="morphe_live_chat_danmaku_button_toast_off">Danmaku is off</string>
     <string name="morphe_live_chat_danmaku_show_author_title">Show author names in danmaku</string>
     <string name="morphe_live_chat_danmaku_show_author_summary">Prefix each danmaku comment with its author name</string>
     <string name="morphe_live_chat_danmaku_superchat_highlight_title">Highlight Super Chats</string>
@@ -1510,10 +1513,8 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_live_chat_danmaku_crossing_seconds_summary">Seconds each comment takes to cross the screen. Longer comments move faster, so every comment takes the same time</string>
     <string name="morphe_live_chat_danmaku_opacity_title">Danmaku opacity</string>
     <string name="morphe_live_chat_danmaku_opacity_summary">Opacity of danmaku comments, where a lower value is more transparent</string>
-    <string name="morphe_live_chat_danmaku_columns_title">Danmaku columns</string>
-    <string name="morphe_live_chat_danmaku_columns_summary">Number of characters that fit across the screen. Text size scales with the screen width, keeping the same proportion in portrait and fullscreen</string>
     <string name="morphe_live_chat_danmaku_max_rows_title">Danmaku rows</string>
-    <string name="morphe_live_chat_danmaku_max_rows_summary">Maximum number of rows that danmaku comments can use</string>
+    <string name="morphe_live_chat_danmaku_max_rows_summary">Text size is the player height divided by this number, keeping the same proportion in portrait and fullscreen. Also the maximum number of danmaku rows</string>
 
     <!-- layout.subscriptiongroups.subscriptionChannelGroupsPatch -->
     <string name="morphe_subscription_groups_title">Subscription channel groups</string>
@@ -1523,6 +1524,7 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_subscription_groups_all">All</string>
     <string name="morphe_subscription_groups_chip_manage">Manage groups</string>
     <string name="morphe_subscription_groups_add_to_group">Add to group</string>
+    <string name="morphe_subscription_groups_pick_known">Choose from known channels</string>
     <string name="morphe_subscription_groups_dialog_title">Subscription groups</string>
     <string name="morphe_subscription_groups_dialog_empty">No groups yet. Create a group, then add channel names to it.</string>
     <string name="morphe_subscription_groups_create">Create group</string>

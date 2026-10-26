@@ -58,7 +58,9 @@ public final class ChannelPageGroupButton {
     private static boolean started;
     private static Button injectedButton;
     private static String injectedChannelName;
+    private static String injectedHandle;
     private static String lastLoggedCandidate;
+    private static String lastRecordedKey;
 
     private ChannelPageGroupButton() {
     }
@@ -116,7 +118,16 @@ public final class ChannelPageGroupButton {
             final String name = channelName;
             Logger.printDebug(() -> "Channel page candidate: " + name);
         }
-        injectButton(anchor, channelName);
+        String handle = extractHandle(anchor);
+        // Remember this channel (handle + name) for the group's
+        // member picker in the management dialog.
+        String recordKey = channelName + "|" + (handle == null ? "" : handle);
+        if (!recordKey.equals(lastRecordedKey)) {
+            lastRecordedKey = recordKey;
+            SubscriptionGroups.recordKnownChannel(
+                    new ChannelEntry("", handle == null ? "" : handle, channelName));
+        }
+        injectButton(anchor, channelName, handle);
     }
 
     private static Activity findActivity(Context context) {
@@ -238,14 +249,43 @@ public final class ChannelPageGroupButton {
         }
     }
 
-    private static void injectButton(View anchor, String channelName) {
+    /** The @handle shown in the channel header near the subscribe button, or null. */
+    private static String extractHandle(View anchor) {
+        View current = anchor;
+        for (int level = 0; level < 5; level++) {
+            if (!(current.getParent() instanceof View parent)) {
+                return null;
+            }
+            current = parent;
+            List<TextView> texts = new ArrayList<>();
+            collectTextViews(current, texts, new int[]{0});
+            for (TextView textView : texts) {
+                if (!textView.isShown()) {
+                    continue;
+                }
+                CharSequence raw = textView.getText();
+                if (raw == null) {
+                    continue;
+                }
+                String text = raw.toString().trim();
+                if (text.startsWith("@") && text.length() > 1 && !text.contains(" ")) {
+                    return text;
+                }
+            }
+        }
+        return null;
+    }
+
+    private static void injectButton(View anchor, String channelName, String handle) {
         if (!(anchor.getParent() instanceof ViewGroup parent)) {
             return;
         }
         if (injectedButton != null && injectedButton.getParent() == parent
                 && channelName.equals(injectedChannelName)) {
+            injectedHandle = handle;
             return; // Already in place for this channel.
         }
+        injectedHandle = handle;
         // Reuse a button left in this container by an earlier scan.
         for (int i = 0; i < parent.getChildCount(); i++) {
             View child = parent.getChildAt(i);
@@ -277,7 +317,7 @@ public final class ChannelPageGroupButton {
 
     private static void showGroupPicker(Context context, String channelName) {
         try {
-            LinkedHashMap<String, LinkedHashSet<String>> groups = SubscriptionGroups.loadGroups();
+            LinkedHashMap<String, LinkedHashSet<ChannelEntry>> groups = SubscriptionGroups.loadGroups();
             if (groups.isEmpty()) {
                 Toast.makeText(context, str("morphe_subscription_groups_dialog_empty"),
                         Toast.LENGTH_LONG).show();
@@ -294,13 +334,14 @@ public final class ChannelPageGroupButton {
                             SubscriptionGroupsDialog.show(context);
                             return;
                         }
-                        LinkedHashMap<String, LinkedHashSet<String>> current =
+                        LinkedHashMap<String, LinkedHashSet<ChannelEntry>> current =
                                 SubscriptionGroups.loadGroups();
-                        LinkedHashSet<String> members = current.get(groupNames.get(which));
+                        LinkedHashSet<ChannelEntry> members = current.get(groupNames.get(which));
                         if (members == null) {
                             return;
                         }
-                        members.add(channelName);
+                        members.add(new ChannelEntry("",
+                                injectedHandle == null ? "" : injectedHandle, channelName));
                         SubscriptionGroups.saveGroups(current);
                         Toast.makeText(context, str("morphe_subscription_groups_saved"),
                                 Toast.LENGTH_SHORT).show();

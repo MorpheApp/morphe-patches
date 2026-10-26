@@ -108,13 +108,13 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting REMEMBER_LIVE_STREAM_POSITION_TIMES = new StringSetting("morphe_remember_live_stream_position_times", "", false, false);
     // Live chat danmaku (see LiveChatDanmakuPatch).
     public static final BooleanSetting LIVE_CHAT_DANMAKU = new BooleanSetting("morphe_live_chat_danmaku", FALSE);
+    public static final BooleanSetting LIVE_CHAT_DANMAKU_BUTTON = new BooleanSetting("morphe_live_chat_danmaku_button", TRUE);
     public static final BooleanSetting LIVE_CHAT_DANMAKU_SHOW_AUTHOR = new BooleanSetting("morphe_live_chat_danmaku_show_author", FALSE);
     public static final BooleanSetting LIVE_CHAT_DANMAKU_SUPERCHAT_HIGHLIGHT = new BooleanSetting("morphe_live_chat_danmaku_superchat_highlight", TRUE);
     public static final BooleanSetting LIVE_CHAT_DANMAKU_FULLSCREEN_ONLY = new BooleanSetting("morphe_live_chat_danmaku_fullscreen_only", FALSE);
     public static final IntegerSetting LIVE_CHAT_DANMAKU_CROSSING_SECONDS = new IntegerSetting("morphe_live_chat_danmaku_crossing_seconds", 10);
     public static final IntegerSetting LIVE_CHAT_DANMAKU_OPACITY = new IntegerSetting("morphe_live_chat_danmaku_opacity", 100);
-    public static final IntegerSetting LIVE_CHAT_DANMAKU_COLUMNS = new IntegerSetting("morphe_live_chat_danmaku_columns", 40);
-    public static final IntegerSetting LIVE_CHAT_DANMAKU_MAX_ROWS = new IntegerSetting("morphe_live_chat_danmaku_max_rows", 6);
+    public static final IntegerSetting LIVE_CHAT_DANMAKU_MAX_ROWS = new IntegerSetting("morphe_live_chat_danmaku_max_rows", 12);
     public static final BooleanSetting REMEMBER_VIDEO_QUALITY_LAST_SELECTED_TOAST = new BooleanSetting("morphe_remember_video_quality_last_selected_toast", TRUE, false, parentsAny(REMEMBER_VIDEO_QUALITY_LAST_SELECTED, REMEMBER_SHORTS_QUALITY_LAST_SELECTED));
 
     // Speed
@@ -178,6 +178,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SUBSCRIBED_CHANNELS_BAR_NAMES = new BooleanSetting("morphe_hide_subscribed_channels_bar_names", FALSE, parentNot(HIDE_SUBSCRIBED_CHANNELS_BAR));
     public static final BooleanSetting SUBSCRIPTION_GROUPS = new BooleanSetting("morphe_subscription_groups", FALSE);
     public static final StringSetting SUBSCRIPTION_GROUPS_DATA = new StringSetting("morphe_subscription_groups_data", "", false, false);
+    public static final StringSetting SUBSCRIPTION_GROUPS_SELECTED = new StringSetting("morphe_subscription_groups_selected", "", false, false);
+    public static final StringSetting SUBSCRIPTION_GROUPS_KNOWN = new StringSetting("morphe_subscription_groups_known", "", false, false);
     public static final BooleanSetting HIDE_SURVEYS = new BooleanSetting("morphe_hide_surveys", TRUE);
     public static final BooleanSetting HIDE_TICKET_SHELF = new BooleanSetting("morphe_hide_ticket_shelf", FALSE);
     public static final BooleanSetting HIDE_UPLOAD_TIME = new BooleanSetting("morphe_hide_upload_time", FALSE);
@@ -1163,9 +1165,7 @@ public class Settings extends SharedYouTubeSettings {
                 4, 20, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_DANMAKU_OPACITY,
                 20, 100, 5, "%"));
-        SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_DANMAKU_COLUMNS,
-                10, 100, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(LIVE_CHAT_DANMAKU_MAX_ROWS,
-                1, 24, 1, ""));
+                3, 30, 1, ""));
     }
 }

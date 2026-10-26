@@ -213,6 +213,13 @@ public final class SubscriptionGroupsPatch {
     // region Chip bar
 
     private static void attachChipBar(ViewGroup root) {
+        if (currentSelection == null) {
+            // Restore the selection picked in a previous session.
+            String savedSelection = Settings.SUBSCRIPTION_GROUPS_SELECTED.get();
+            if (savedSelection != null && !savedSelection.isEmpty()) {
+                currentSelection = savedSelection;
+            }
+        }
         ViewGroup feedList = findFeedList(root);
         if (feedList == null) {
             return; // Feed not loaded yet; a later retry (or tab creation) tries again.
@@ -260,7 +267,7 @@ public final class SubscriptionGroupsPatch {
         LinearLayout row = (LinearLayout) bar.getChildAt(0);
         row.removeAllViews();
 
-        LinkedHashMap<String, LinkedHashSet<String>> groups = SubscriptionGroups.loadGroups();
+        LinkedHashMap<String, LinkedHashSet<ChannelEntry>> groups = SubscriptionGroups.loadGroups();
         row.addView(createChip(bar, str("morphe_subscription_groups_all"), null, root));
         for (String groupName : groups.keySet()) {
             row.addView(createChip(bar, groupName, groupName, root));
@@ -296,6 +303,7 @@ public final class SubscriptionGroupsPatch {
                 return;
             }
             currentSelection = groupName;
+            Settings.SUBSCRIPTION_GROUPS_SELECTED.save(groupName == null ? "" : groupName);
             if (parent instanceof HorizontalScrollView
                     && ((HorizontalScrollView) parent).getChildAt(0) instanceof LinearLayout) {
                 updateChipStyles((LinearLayout) ((HorizontalScrollView) parent).getChildAt(0));
@@ -342,7 +350,7 @@ public final class SubscriptionGroupsPatch {
             if (feedList == null) {
                 return;
             }
-            LinkedHashMap<String, LinkedHashSet<String>> groups = SubscriptionGroups.loadGroups();
+            LinkedHashMap<String, LinkedHashSet<ChannelEntry>> groups = SubscriptionGroups.loadGroups();
             LinkedHashSet<String> knownNames = SubscriptionGroupFilter.knownChannelNames(groups);
 
             for (int i = 0; i < feedList.getChildCount(); i++) {

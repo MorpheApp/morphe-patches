@@ -33,16 +33,27 @@ your own groups and filter the subscriptions screen by group.
    contain, **one channel per line**.
 5. Save. In the same editor you can also **Delete group**.
 
-Channels are added **by channel display name, exactly as the name is
-shown in the subscriptions feed** — including capitalization and
-spacing as displayed (matching itself trims extra whitespace and
-ignores latin letter case, but the name must otherwise be the same
-text). There is no channel picker in v1: names are typed by hand.
+Channels can be added three ways:
 
-Groups are stored in a single string setting
-(`morphe_subscription_groups_data`) in the line-based format
-documented in `SubscriptionGroupFilter.java`, following the same
-one-StringSetting persistence pattern as the channel whitelist.
+- **From a channel page**: open the channel and tap **Add to group**
+  next to the subscribe button. The channel is stored with its
+  @handle, not just its name.
+- **By name**: type channel names in the group editor, one per line,
+  exactly as shown in the subscriptions feed (matching trims extra
+  whitespace and ignores latin letter case).
+- **From known channels**: channels you visit are remembered
+  (handle + name) in a known-channels list, and the management
+  dialog can pick group members from that list with checkboxes
+  ("Choose from known channels").
+
+Since v2, each channel is a `ChannelEntry` identified by channel id
+if known, else @handle, else display name. Groups are stored in a
+single string setting (`morphe_subscription_groups_data`) as JSON,
+following the same one-StringSetting persistence pattern as the
+channel whitelist; v1 line-based data is migrated automatically.
+The selected group is remembered across restarts
+(`morphe_subscription_groups_selected`). Feed filtering itself still
+matches by the name/handle visible on each item.
 
 ## How filtering works
 

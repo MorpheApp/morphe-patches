@@ -21,9 +21,10 @@ import java.util.Set;
  * No Android imports, so this class can be reasoned about (and unit
  * tested) without a device.
  *
- * Model: an ordered map of group name -> ordered set of channel names.
- * Channel names are the display names exactly as shown in the
- * subscriptions feed.
+ * Model: an ordered map of group name -> ordered set of
+ * {@link ChannelEntry}. A channel is identified by id / @handle /
+ * display name, strongest first; feed items are matched by the
+ * display name (or handle) visible on them.
  *
  * Serialization format (line based, one entry per line):
  * <pre>
@@ -112,12 +113,22 @@ public final class SubscriptionGroupFilter {
         return groups;
     }
 
-    /** Every channel name mentioned by any group, in first-seen order. */
+    /**
+     * Every channel name (and handle) mentioned by any group, in
+     * first-seen order. Used to identify channels in feed items.
+     */
     public static LinkedHashSet<String> knownChannelNames(
-            Map<String, LinkedHashSet<String>> groups) {
+            Map<String, LinkedHashSet<ChannelEntry>> groups) {
         LinkedHashSet<String> names = new LinkedHashSet<>();
-        for (LinkedHashSet<String> members : groups.values()) {
-            names.addAll(members);
+        for (LinkedHashSet<ChannelEntry> members : groups.values()) {
+            for (ChannelEntry entry : members) {
+                if (!entry.name.isEmpty()) {
+                    names.add(entry.name);
+                }
+                if (!entry.handle.isEmpty()) {
+                    names.add(entry.handle);
+                }
+            }
         }
         return names;
     }
@@ -133,7 +144,7 @@ public final class SubscriptionGroupFilter {
      * not be identified (channelName == null) are NEVER hidden.
      */
     public static boolean shouldShow(String selectedGroup, String channelName,
-                                     Map<String, LinkedHashSet<String>> groups) {
+                                     Map<String, LinkedHashSet<ChannelEntry>> groups) {
         if (selectedGroup == null || selectedGroup.trim().isEmpty()
                 || ALL.equals(normalizeChannelName(selectedGroup))) {
             return true;
@@ -142,13 +153,20 @@ public final class SubscriptionGroupFilter {
             // Unidentified channel: never hide.
             return true;
         }
-        LinkedHashSet<String> members = findGroup(groups, selectedGroup);
+        LinkedHashSet<ChannelEntry> members = findGroup(groups, selectedGroup);
         if (members == null) {
             return true;
         }
         String normalizedChannel = normalizeChannelName(channelName);
-        for (String member : members) {
-            if (normalizeChannelName(member).equals(normalizedChannel)) {
+        String normalizedHandle = normalizeChannelName(channelName.replaceFirst("^@", ""));
+        for (ChannelEntry member : members) {
+            if (!member.name.isEmpty()
+                    && normalizeChannelName(member.name).equals(normalizedChannel)) {
+                return true;
+            }
+            if (!member.handle.isEmpty()
+                    && normalizeChannelName(member.handle.replaceFirst("^@", ""))
+                    .equals(normalizedHandle)) {
                 return true;
             }
         }
@@ -156,12 +174,12 @@ public final class SubscriptionGroupFilter {
     }
 
     /** Finds a group's member set by (normalized) name, or null. */
-    public static LinkedHashSet<String> findGroup(
-            Map<String, LinkedHashSet<String>> groups, String groupName) {
+    public static LinkedHashSet<ChannelEntry> findGroup(
+            Map<String, LinkedHashSet<ChannelEntry>> groups, String groupName) {
         if (groupName == null) {
             return null;
         }
-        for (Map.Entry<String, LinkedHashSet<String>> group : groups.entrySet()) {
+        for (Map.Entry<String, LinkedHashSet<ChannelEntry>> group : groups.entrySet()) {
             if (normalizeChannelName(group.getKey()).equals(normalizeChannelName(groupName))) {
                 return group.getValue();
             }
@@ -212,9 +230,12 @@ public final class SubscriptionGroupFilter {
         return members;
     }
 
-    /** Joins member names for the multiline editor field. */
-    public static String joinMemberLines(Collection<String> members) {
-        List<String> names = new ArrayList<>(members);
+    /** Joins member display names for the multiline editor field. */
+    public static String joinMemberLines(Collection<ChannelEntry> members) {
+        List<String> names = new ArrayList<>();
+        for (ChannelEntry entry : members) {
+            names.add(entry.displayName());
+        }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < names.size(); i++) {
             if (i > 0) {
@@ -225,7 +246,55 @@ public final class SubscriptionGroupFilter {
         return sb.toString();
     }
 
-    public static Set<String> groupNames(Map<String, LinkedHashSet<String>> groups) {
+    /**
+     * Resolves the member editor's text lines back to entries. A line
+     * is matched first against the group's current entries, then
+     * against the known-channels list, so an entry that already has a
+     * handle (or id) keeps it instead of degrading to a name-only
+     * entry. Lines starting with '@' are treated as handles. Unknown
+     * lines become name-only entries.
+     */
+    public static LinkedHashSet<ChannelEntry> resolveMemberLines(
+            String text, Collection<ChannelEntry> currentMembers,
+            List<ChannelEntry> knownChannels) {
+        LinkedHashSet<ChannelEntry> resolved = new LinkedHashSet<>();
+        for (String line : parseMemberLines(text)) {
+            ChannelEntry match = findEntry(currentMembers, line);
+            if (match == null) {
+                match = findEntry(knownChannels, line);
+            }
+            if (match != null) {
+                resolved.add(match);
+            } else if (line.startsWith("@")) {
+                resolved.add(new ChannelEntry("", line, ""));
+            } else {
+                resolved.add(ChannelEntry.nameOnly(line));
+            }
+        }
+        return resolved;
+    }
+
+    private static ChannelEntry findEntry(Collection<ChannelEntry> entries, String line) {
+        if (entries == null) {
+            return null;
+        }
+        String normalizedLine = normalizeChannelName(line);
+        String normalizedHandle = normalizeChannelName(line.replaceFirst("^@", ""));
+        for (ChannelEntry entry : entries) {
+            if (!entry.name.isEmpty()
+                    && normalizeChannelName(entry.name).equals(normalizedLine)) {
+                return entry;
+            }
+            if (!entry.handle.isEmpty()
+                    && normalizeChannelName(entry.handle.replaceFirst("^@", ""))
+                    .equals(normalizedHandle)) {
+                return entry;
+            }
+        }
+        return null;
+    }
+
+    public static Set<String> groupNames(Map<String, LinkedHashSet<ChannelEntry>> groups) {
         return groups.keySet();
     }
 }

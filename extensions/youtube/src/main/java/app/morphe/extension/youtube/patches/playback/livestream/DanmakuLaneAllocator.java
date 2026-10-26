@@ -44,7 +44,7 @@ public final class DanmakuLaneAllocator {
      */
     public static final long BASE_CROSSING_MS = 10_000L;
 
-    private static final int MAX_LANES = 24;
+    private static final int MAX_LANES = 30;
 
     /** Start time of the last comment placed in each lane, 0 if none. */
     private final long[] laneStartMs = new long[MAX_LANES];
@@ -70,15 +70,6 @@ public final class DanmakuLaneAllocator {
 
     public static int clampOpacityPercent(int opacityPercent) {
         return Math.max(20, Math.min(100, opacityPercent));
-    }
-
-    /**
-     * Clamp the columns setting: how many characters fit across the
-     * screen width. The text size is derived from this, so it scales
-     * proportionally with the screen width (portrait vs fullscreen).
-     */
-    public static int clampColumns(int columns) {
-        return Math.max(10, Math.min(100, columns));
     }
 
     /** Crossing duration for every comment, in the user-set seconds. */

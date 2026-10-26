@@ -24,10 +24,10 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * In-player danmaku settings, opened from the gear button that
- * {@link DanmakuOverlay} shows on the video, so the main values can be
- * adjusted while watching a live stream instead of leaving for the
- * app settings. Every change is written to the same settings the
+ * In-player danmaku settings, opened from the danmaku player button
+ * (see DanmakuButton in the videoplayer package), so the main values
+ * can be adjusted while watching a live stream instead of leaving
+ * for the app settings. Every change is written to the same settings the
  * Morphe settings screen edits, and takes effect from the next
  * comment that is spawned.
  */
@@ -57,11 +57,6 @@ public final class DanmakuSettingsDialog {
                     4, 20, "s",
                     value -> Settings.LIVE_CHAT_DANMAKU_CROSSING_SECONDS.save(value));
             addSeekBarRow(context, layout,
-                    "morphe_live_chat_danmaku_columns_title",
-                    DanmakuLaneAllocator.clampColumns(Settings.LIVE_CHAT_DANMAKU_COLUMNS.get()),
-                    10, 100, "",
-                    value -> Settings.LIVE_CHAT_DANMAKU_COLUMNS.save(value));
-            addSeekBarRow(context, layout,
                     "morphe_live_chat_danmaku_opacity_title",
                     DanmakuLaneAllocator.clampOpacityPercent(Settings.LIVE_CHAT_DANMAKU_OPACITY.get()),
                     20, 100, "%",
@@ -69,7 +64,7 @@ public final class DanmakuSettingsDialog {
             addSeekBarRow(context, layout,
                     "morphe_live_chat_danmaku_max_rows_title",
                     DanmakuLaneAllocator.clampRows(Settings.LIVE_CHAT_DANMAKU_MAX_ROWS.get()),
-                    1, 24, "",
+                    3, 30, "",
                     value -> Settings.LIVE_CHAT_DANMAKU_MAX_ROWS.save(value));
 
             new AlertDialog.Builder(context)

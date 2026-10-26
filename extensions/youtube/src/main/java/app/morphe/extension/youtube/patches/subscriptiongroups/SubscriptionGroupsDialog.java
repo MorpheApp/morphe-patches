@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -42,7 +43,7 @@ public final class SubscriptionGroupsDialog {
     public static void show(Context context) {
         try {
             Utils.verifyOnMainThread();
-            LinkedHashMap<String, LinkedHashSet<String>> groups = SubscriptionGroups.loadGroups();
+            LinkedHashMap<String, LinkedHashSet<ChannelEntry>> groups = SubscriptionGroups.loadGroups();
             String[] groupNames = groups.keySet().toArray(new String[0]);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -55,6 +56,10 @@ public final class SubscriptionGroupsDialog {
             }
             builder.setPositiveButton(str("morphe_subscription_groups_create"),
                     (dialog, which) -> showCreateGroup(context));
+            if (groupNames.length > 0 && !SubscriptionGroups.loadKnownChannels().isEmpty()) {
+                builder.setNeutralButton(str("morphe_subscription_groups_pick_known"),
+                        (dialog, which) -> showKnownPickerGroups(context));
+            }
             builder.setNegativeButton(str("morphe_subscription_groups_close"), null);
             builder.show();
         } catch (Exception ex) {
@@ -85,8 +90,8 @@ public final class SubscriptionGroupsDialog {
     }
 
     private static void showEditGroup(Context context, String groupName) {
-        LinkedHashMap<String, LinkedHashSet<String>> groups = SubscriptionGroups.loadGroups();
-        LinkedHashSet<String> members = SubscriptionGroupFilter.findGroup(groups, groupName);
+        LinkedHashMap<String, LinkedHashSet<ChannelEntry>> groups = SubscriptionGroups.loadGroups();
+        LinkedHashSet<ChannelEntry> members = SubscriptionGroupFilter.findGroup(groups, groupName);
         if (members == null) {
             show(context);
             return;
@@ -105,12 +110,69 @@ public final class SubscriptionGroupsDialog {
                 .setView(wrapWithPadding(context, membersInput))
                 .setPositiveButton(str("morphe_subscription_groups_save"), (dialog, which) -> {
                     SubscriptionGroups.setGroupMembers(groupName,
-                            SubscriptionGroupFilter.parseMemberLines(
-                                    membersInput.getText().toString()));
+                            SubscriptionGroupFilter.resolveMemberLines(
+                                    membersInput.getText().toString(),
+                                    members,
+                                    SubscriptionGroups.loadKnownChannels()));
                     Utils.showToastShort(str("morphe_subscription_groups_saved"));
                 })
                 .setNeutralButton(str("morphe_subscription_groups_delete"), (dialog, which) -> {
                     SubscriptionGroups.deleteGroup(groupName);
+                    Utils.showToastShort(str("morphe_subscription_groups_saved"));
+                })
+                .setNegativeButton(str("morphe_subscription_groups_cancel"), null)
+                .show();
+    }
+
+    /** First step of the known-channels picker: choose which group to edit. */
+    private static void showKnownPickerGroups(Context context) {
+        LinkedHashMap<String, LinkedHashSet<ChannelEntry>> groups = SubscriptionGroups.loadGroups();
+        String[] groupNames = groups.keySet().toArray(new String[0]);
+        new AlertDialog.Builder(context)
+                .setTitle(str("morphe_subscription_groups_pick_known"))
+                .setItems(groupNames, (dialog, which) ->
+                        showKnownPicker(context, groupNames[which]))
+                .setNegativeButton(str("morphe_subscription_groups_cancel"), null)
+                .show();
+    }
+
+    /**
+     * Multi-choice list of the channels recorded from channel pages.
+     * Checked channels become the group's members; members that are
+     * not in the known list are kept as they are.
+     */
+    private static void showKnownPicker(Context context, String groupName) {
+        LinkedHashMap<String, LinkedHashSet<ChannelEntry>> groups = SubscriptionGroups.loadGroups();
+        LinkedHashSet<ChannelEntry> members = SubscriptionGroupFilter.findGroup(groups, groupName);
+        if (members == null) {
+            show(context);
+            return;
+        }
+        List<ChannelEntry> known = SubscriptionGroups.loadKnownChannels();
+        String[] labels = new String[known.size()];
+        boolean[] checked = new boolean[known.size()];
+        for (int i = 0; i < known.size(); i++) {
+            labels[i] = known.get(i).displayName();
+            checked[i] = members.contains(known.get(i));
+        }
+        new AlertDialog.Builder(context)
+                .setTitle(groupName)
+                .setMultiChoiceItems(labels, checked,
+                        (dialog, which, isChecked) -> checked[which] = isChecked)
+                .setPositiveButton(str("morphe_subscription_groups_save"), (dialog, which) -> {
+                    LinkedHashSet<ChannelEntry> updated = new LinkedHashSet<>();
+                    // Keep members the known list does not know about.
+                    for (ChannelEntry member : members) {
+                        if (!known.contains(member)) {
+                            updated.add(member);
+                        }
+                    }
+                    for (int i = 0; i < known.size(); i++) {
+                        if (checked[i]) {
+                            updated.add(known.get(i));
+                        }
+                    }
+                    SubscriptionGroups.setGroupMembers(groupName, updated);
                     Utils.showToastShort(str("morphe_subscription_groups_saved"));
                 })
                 .setNegativeButton(str("morphe_subscription_groups_cancel"), null)

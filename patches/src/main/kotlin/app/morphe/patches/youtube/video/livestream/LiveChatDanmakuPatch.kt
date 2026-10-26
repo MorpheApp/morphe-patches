@@ -14,10 +14,19 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
+import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playercontrols.addTopControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsResourcePatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -29,6 +38,36 @@ import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/livestream/LiveChatDanmakuPatch;"
+
+private const val EXTENSION_BUTTON =
+    "Lapp/morphe/extension/youtube/videoplayer/DanmakuButton;"
+
+/**
+ * Resources for the danmaku player button, mirroring the Reload video
+ * button: icon variants plus the top-control layout entry. The button
+ * itself is a legacy player control, so it fades in and out together
+ * with the other player controls.
+ */
+private val danmakuButtonResourcePatch = resourcePatch {
+    dependsOn(
+        legacyPlayerControlsResourcePatch
+    )
+
+    execute {
+        copyPlayerButtonIcons(
+            "danmakubutton",
+            "morphe_live_chat_danmaku_button"
+        )
+    }
+
+    finalize {
+        addTopControl(
+            "danmakubutton",
+            "@+id/morphe_live_chat_danmaku_button",
+            "@+id/morphe_live_chat_danmaku_button"
+        )
+    }
+}
 
 /**
  * Player overlay container, following the same pattern as the swipe-controls
@@ -71,11 +110,22 @@ val liveChatDanmakuPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         videoInformationPatch,
+        danmakuButtonResourcePatch,
+        playerOverlayButtonsSettingsPatch,
+        legacyPlayerControlsPatch,
+        playerOverlayButtonsHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        // Player button visibility toggle, in the player overlay
+        // buttons settings screen (same place as Loop/Reload buttons).
+        addPlayerOverlayPreferences(
+            SwitchPreference("morphe_live_chat_danmaku_button")
+        )
+        initializeTopControl(EXTENSION_BUTTON)
+
         PreferenceScreen.VIDEO.addPreferences(
             // Keep the preferences organized together.
             noTitleUnsortedPreferenceCategory(
@@ -90,10 +140,6 @@ val liveChatDanmakuPatch = bytecodePatch(
             ),
             NonInteractivePreference(
                 key = "morphe_live_chat_danmaku_opacity",
-                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
-            ),
-            NonInteractivePreference(
-                key = "morphe_live_chat_danmaku_columns",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             NonInteractivePreference(
