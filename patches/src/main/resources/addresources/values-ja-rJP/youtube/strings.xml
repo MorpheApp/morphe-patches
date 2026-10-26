@@ -1367,9 +1367,13 @@ Automotive レイアウト
   <string name="morphe_live_chat_danmaku_fullscreen_only_title">フルスクリーンのみ</string>
   <string name="morphe_live_chat_danmaku_fullscreen_only_summary">横向きフルスクリーンで視聴しているときだけ弾幕を表示します</string>
   <string name="morphe_live_chat_danmaku_speed_title">弾幕の速度</string>
+    <string name="morphe_live_chat_danmaku_speed_summary">弾幕が画面を横切る速さ</string>
   <string name="morphe_live_chat_danmaku_opacity_title">弾幕の不透明度</string>
+    <string name="morphe_live_chat_danmaku_opacity_summary">弾幕の不透明度（低いほど透けて見えます）</string>
   <string name="morphe_live_chat_danmaku_font_size_title">弾幕の文字サイズ</string>
+    <string name="morphe_live_chat_danmaku_font_size_summary">弾幕の文字の大きさ</string>
   <string name="morphe_live_chat_danmaku_max_rows_title">弾幕の行数</string>
+    <string name="morphe_live_chat_danmaku_max_rows_summary">弾幕に使う最大の行数</string>
 
   <!-- layout.subscriptiongroups.subscriptionChannelGroupsPatch -->
   <string name="morphe_subscription_groups_title">登録チャンネルのグループ分類</string>

@@ -1507,9 +1507,13 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_live_chat_danmaku_fullscreen_only_title">Fullscreen only</string>
     <string name="morphe_live_chat_danmaku_fullscreen_only_summary">Only show danmaku when watching in landscape fullscreen</string>
     <string name="morphe_live_chat_danmaku_speed_title">Danmaku speed</string>
+    <string name="morphe_live_chat_danmaku_speed_summary">Speed at which danmaku comments scroll across the screen</string>
     <string name="morphe_live_chat_danmaku_opacity_title">Danmaku opacity</string>
+    <string name="morphe_live_chat_danmaku_opacity_summary">Opacity of danmaku comments, where a lower value is more transparent</string>
     <string name="morphe_live_chat_danmaku_font_size_title">Danmaku font size</string>
+    <string name="morphe_live_chat_danmaku_font_size_summary">Text size of danmaku comments</string>
     <string name="morphe_live_chat_danmaku_max_rows_title">Danmaku rows</string>
+    <string name="morphe_live_chat_danmaku_max_rows_summary">Maximum number of rows that danmaku comments can use</string>
 
     <!-- layout.subscriptiongroups.subscriptionChannelGroupsPatch -->
     <string name="morphe_subscription_groups_title">Subscription channel groups</string>
