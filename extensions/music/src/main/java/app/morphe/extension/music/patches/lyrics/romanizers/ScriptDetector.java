@@ -147,6 +147,7 @@ public final class ScriptDetector {
      * Requires RTL characters to meet or exceed LTR characters, avoiding false positives from stray symbols.
      */
     public static boolean isLineRtl(@Nullable CharSequence text) {
+        //noinspection SizeReplaceableByIsEmpty
         if (text == null || text.length() == 0) {
             return false;
         }

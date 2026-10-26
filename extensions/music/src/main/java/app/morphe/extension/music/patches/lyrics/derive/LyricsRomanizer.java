@@ -774,6 +774,7 @@ public final class LyricsRomanizer {
     }
 
     public static boolean isPurelyLatinScript(@Nullable CharSequence text) {
+        //noinspection SizeReplaceableByIsEmpty
         if (text == null || text.length() == 0) return true;
         for (int i = 0; i < text.length(); ) {
             int cp = Character.codePointAt(text, i);
