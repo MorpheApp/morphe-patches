@@ -21,6 +21,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.layout.sponsorblock.ControlsOverlayFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
@@ -46,6 +47,11 @@ private val niconicoCommentsResourcePatch = resourcePatch {
     dependsOn(legacyPlayerControlsPatch)
 
     execute {
+        copyPlayerButtonIcons(
+            "niconicocommentsbutton",
+            "morphe_niconico_comments_button_on",
+            "morphe_niconico_comments_button_off"
+        )
         addLegacyBottomControl("niconicocommentsbutton")
     }
 }

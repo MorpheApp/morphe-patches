@@ -46,6 +46,8 @@ named after the icon it replaces. Any icon left out keeps the **Automatic** styl
 | `morphe_loop_video_button_range.xml` | Loop video button, loop a range |
 | `morphe_mute_video_button_off.xml` | Mute button, sound on |
 | `morphe_mute_video_button_on.xml` | Mute button, muted |
+| `morphe_niconico_comments_button_off.xml` | Niconico comments button, hidden |
+| `morphe_niconico_comments_button_on.xml` | Niconico comments button, shown |
 | `morphe_pip_button.xml` | Picture in picture button |
 | `morphe_play_all_button.xml` | Play all button |
 | `morphe_player_captions_off.xml` | Player captions button, off |

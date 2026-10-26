@@ -16,8 +16,8 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -32,6 +32,7 @@ import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
+import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 import app.morphe.extension.youtube.videoplayer.PlayerOverlayButton;
 
 /**
@@ -39,17 +40,11 @@ import app.morphe.extension.youtube.videoplayer.PlayerOverlayButton;
  */
 @SuppressWarnings("unused")
 public final class NiconicoCommentsToggleButton {
-    /**
-     * Danmaku, the name of comments that scroll across the video.
-     */
-    private static final String BUTTON_TEXT = "弾";
-    private static final int SHOWN_TEXT_ALPHA = 255;
-    private static final int HIDDEN_TEXT_ALPHA = 102;
 
     @Nullable
     private static LegacyPlayerControlButton legacy;
 
-    private static WeakReference<TextView> overlayTextRef = new WeakReference<>(null);
+    private static WeakReference<ImageView> overlayButtonRef = new WeakReference<>(null);
 
     private NiconicoCommentsToggleButton() {
     }
@@ -63,20 +58,18 @@ public final class NiconicoCommentsToggleButton {
                 return;
             }
 
-            TextView overlay = PlayerOverlayButton.addButtonWithTextOverlay(
+            ImageView button = PlayerOverlayButton.addButton(
                     controlsView,
+                    PlayerIcons.name(getIconBaseName()),
                     getOnClickListener(),
                     getOnLongClickListener()
             );
-            if (overlay != null) {
-                overlay.setText(BUTTON_TEXT);
-                overlay.setContentDescription(str("morphe_niconico_comments_screen_title"));
+            if (button != null) {
+                button.setContentDescription(str("morphe_niconico_comments_screen_title"));
                 PlayerOverlayButton.setToggleAccessibilityDelegate(
-                        overlay, Settings.NICONICO_COMMENTS_SHOWN::get);
+                        button, Settings.NICONICO_COMMENTS_SHOWN::get);
             }
-            overlayTextRef = new WeakReference<>(overlay);
-
-            updateButtonAppearance();
+            overlayButtonRef = new WeakReference<>(button);
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
@@ -93,20 +86,16 @@ public final class NiconicoCommentsToggleButton {
 
             legacy = new LegacyPlayerControlButton(
                     controlsView,
-                    "morphe_niconico_comments_button_container",
                     "morphe_niconico_comments_button",
-                    "morphe_niconico_comments_button_text",
                     null,
+                    PlayerIcons.name(getIconBaseName()),
                     Settings.NICONICO_COMMENTS,
                     getOnClickListener(),
                     getOnLongClickListener()
             );
-            legacy.setTextOverlay(BUTTON_TEXT);
             View legacyButton = Utils.getChildViewByResourceName(controlsView, "morphe_niconico_comments_button");
             PlayerOverlayButton.setToggleAccessibilityDelegate(
                     legacyButton, Settings.NICONICO_COMMENTS_SHOWN::get);
-
-            updateButtonAppearance();
         } catch (Exception ex) {
             Logger.printException(() -> "initializeLegacyButton failure", ex);
         }
@@ -115,7 +104,7 @@ public final class NiconicoCommentsToggleButton {
     private static View.OnClickListener getOnClickListener() {
         return view -> {
             NiconicoCommentsController.toggleCommentsShown();
-            updateButtonAppearance();
+            updateButtonIcon();
         };
     }
 
@@ -126,21 +115,25 @@ public final class NiconicoCommentsToggleButton {
         };
     }
 
-    /**
-     * Dims the button text while the comments are hidden.
-     */
-    private static void updateButtonAppearance() {
+    private static void updateButtonIcon() {
         Utils.verifyOnMainThread();
 
-        final int alpha = Settings.NICONICO_COMMENTS_SHOWN.get() ? SHOWN_TEXT_ALPHA : HIDDEN_TEXT_ALPHA;
-        if (legacy != null) {
-            legacy.setTextOverlayAlpha(alpha);
+        final int icon = PlayerIcons.id(getIconBaseName());
+
+        ImageView overlayButton = overlayButtonRef.get();
+        if (overlayButton != null) {
+            overlayButton.setImageResource(icon);
         }
 
-        TextView overlay = overlayTextRef.get();
-        if (overlay != null) {
-            overlay.setTextColor(overlay.getTextColors().withAlpha(alpha));
+        if (legacy != null) {
+            legacy.setIcon(icon);
         }
+    }
+
+    private static String getIconBaseName() {
+        return Settings.NICONICO_COMMENTS_SHOWN.get()
+                ? "morphe_niconico_comments_button_on"
+                : "morphe_niconico_comments_button_off";
     }
 
     /**
