@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4080
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.niconicocomments;
 
 import static org.junit.Assert.assertEquals;
@@ -71,6 +78,36 @@ public class CommentScheduleTest {
             resizedLanes.add(comment.lane);
         }
         assertEquals(2, resizedLanes.size());
+    }
+
+    @Test
+    public void boundsLiveCommentsWhenThePlaybackClockIsFrozen() {
+        CommentSchedule schedule = new CommentSchedule(new Random(4));
+        for (int round = 0; round < 200; round++) {
+            List<NiconicoComment> incoming = new ArrayList<>();
+            for (int index = 0; index < 50; index++) {
+                incoming.add(comment(round + ":" + index, -1));
+            }
+            schedule.addComments(incoming, 10_000, 250, 12);
+            assertTrue(schedule.comments().size() <= CommentSchedule.MAX_LIVE_COMMENTS);
+        }
+        assertEquals(CommentSchedule.MAX_LIVE_COMMENTS, schedule.comments().size());
+    }
+
+    @Test
+    public void liveOverflowDoesNotDiscardFetchedReplayLookahead() {
+        CommentSchedule schedule = new CommentSchedule(new Random(5));
+        List<NiconicoComment> replay = new ArrayList<>();
+        for (int index = 0; index < 1_001; index++) replay.add(comment("replay-" + index, 20_000 + index));
+        schedule.addComments(replay, 10_000, 0, 12);
+        List<NiconicoComment> live = new ArrayList<>();
+        for (int index = 0; index < 2_000; index++) live.add(comment("live-" + index, -1));
+        schedule.addComments(live, 10_000, 250, 12);
+
+        assertEquals(1_001, schedule.comments().stream()
+                .filter(scheduled -> scheduled.comment.videoOffsetMs >= 0).count());
+        assertEquals(CommentSchedule.MAX_LIVE_COMMENTS, schedule.comments().stream()
+                .filter(scheduled -> scheduled.comment.videoOffsetMs < 0).count());
     }
 
     private static NiconicoComment comment(String id, long videoOffsetMs) {

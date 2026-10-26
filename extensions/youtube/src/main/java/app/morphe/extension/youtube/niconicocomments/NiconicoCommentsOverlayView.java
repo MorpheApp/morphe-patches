@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4080
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.niconicocomments;
 
 import android.content.Context;
@@ -13,12 +20,11 @@ import android.view.View;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.Set;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import app.morphe.extension.shared.Logger;
 
@@ -26,17 +32,10 @@ import app.morphe.extension.shared.Logger;
 final class NiconicoCommentsOverlayView extends View {
     private static final long IDLE_FRAME_DELAY_MS = 250;
     private static final int MEMBERSHIP_COLOR = Color.rgb(43, 166, 64);
-    private static final int MAX_EMOJI_CACHE_ENTRIES = 128;
+    private static final long EMOJI_PREFETCH_MS = 1_000;
     private static final String EMOJI_USER_AGENT =
             "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/138 Mobile";
-    private static final ExecutorService EMOJI_EXECUTOR = Executors.newFixedThreadPool(
-            2,
-            runnable -> {
-                Thread thread = new Thread(runnable, "NiconicoEmoji");
-                thread.setDaemon(true);
-                return thread;
-            }
-    );
+    private static final ThreadPoolExecutor EMOJI_EXECUTOR = EmojiImageCache.createExecutor();
 
     private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.SUBPIXEL_TEXT_FLAG);
     private final Paint strokePaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.SUBPIXEL_TEXT_FLAG);
@@ -44,8 +43,9 @@ final class NiconicoCommentsOverlayView extends View {
     private final Paint.FontMetrics fontMetrics = new Paint.FontMetrics();
     private final RectF emojiDestination = new RectF();
     private final CommentSchedule schedule = new CommentSchedule();
-    private final Map<String, EmojiImageState> emojiImageCache =
-            new LinkedHashMap<>(16, 0.75f, true);
+    private final EmojiImageCache<Bitmap> emojiImageCache = new EmojiImageCache<>();
+    private final Set<String> neededEmojiUrls = new HashSet<>();
+    private volatile int emojiGeneration;
     private final float density;
     private final float scaledDensity;
     private final float backgroundPadding;
@@ -86,6 +86,8 @@ final class NiconicoCommentsOverlayView extends View {
             return;
         }
         videoId = nextVideoId;
+        emojiGeneration++;
+        emojiImageCache.clear();
         clearComments();
     }
 
@@ -145,14 +147,13 @@ final class NiconicoCommentsOverlayView extends View {
                 liveSpreadWindowMs,
                 getLaneCount()
         );
-        for (NiconicoComment comment : incoming) {
-            prefetchEmojiImages(comment);
-        }
+        updateEmojiDemand(videoTimeMs);
         requestNextFrame();
     }
 
     void clearComments() {
         schedule.clear();
+        neededEmojiUrls.clear();
         invalidate();
     }
 
@@ -181,6 +182,7 @@ final class NiconicoCommentsOverlayView extends View {
         }
 
         schedule.removeExpired(videoTimeMs);
+        updateEmojiDemand(videoTimeMs);
         int laneCount = getLaneCount();
         boolean hasActiveOrUpcomingComment = false;
         for (CommentSchedule.ScheduledComment scheduled : schedule.comments()) {
@@ -269,8 +271,8 @@ final class NiconicoCommentsOverlayView extends View {
             }
 
             float emojiSize = fillPaint.getTextSize();
-            EmojiImageState state = ensureEmojiImage(segment.imageUrl);
-            if (state.bitmap != null) {
+            EmojiImageCache.Entry<Bitmap> state = ensureEmojiImage(segment.imageUrl);
+            if (state != null && state.value != null) {
                 float centerY = baseline + ((fontMetrics.ascent + fontMetrics.descent) / 2);
                 emojiDestination.set(
                         x,
@@ -278,8 +280,8 @@ final class NiconicoCommentsOverlayView extends View {
                         x + emojiSize,
                         centerY + (emojiSize / 2)
                 );
-                canvas.drawBitmap(state.bitmap, null, emojiDestination, fillPaint);
-            } else if (state.failed) {
+                canvas.drawBitmap(state.value, null, emojiDestination, fillPaint);
+            } else if (state == null || state.failed) {
                 canvas.drawText("□", x, baseline, strokePaint);
                 canvas.drawText("□", x, baseline, fillPaint);
             }
@@ -287,29 +289,36 @@ final class NiconicoCommentsOverlayView extends View {
         }
     }
 
-    private void prefetchEmojiImages(NiconicoComment comment) {
-        for (NiconicoComment.Segment segment : comment.segments) {
-            if (segment.isEmoji()) {
-                ensureEmojiImage(segment.imageUrl);
+    private void updateEmojiDemand(long videoTimeMs) {
+        neededEmojiUrls.clear();
+        for (CommentSchedule.ScheduledComment scheduled : schedule.comments()) {
+            if (scheduled.startTimeMs > videoTimeMs + EMOJI_PREFETCH_MS) continue;
+            for (NiconicoComment.Segment segment : scheduled.comment.segments) {
+                if (segment.isEmoji()) neededEmojiUrls.add(segment.imageUrl);
             }
         }
+        for (String url : neededEmojiUrls) ensureEmojiImage(url);
     }
 
-    private EmojiImageState ensureEmojiImage(String imageUrl) {
-        EmojiImageState state = emojiImageCache.get(imageUrl);
-        if (state != null) {
-            return state;
-        }
+    private EmojiImageCache.Entry<Bitmap> ensureEmojiImage(String imageUrl) {
+        EmojiImageCache.Entry<Bitmap> existing = emojiImageCache.get(imageUrl);
+        if (existing != null) return existing;
+        if (!overlayActive || !videoPlaying || EMOJI_EXECUTOR.getQueue().remainingCapacity() == 0) return null;
 
-        state = new EmojiImageState();
-        emojiImageCache.put(imageUrl, state);
-        EmojiImageState requestedState = state;
-        EMOJI_EXECUTOR.execute(() -> loadEmojiImage(imageUrl, requestedState));
-        trimEmojiCache();
+        EmojiImageCache.Entry<Bitmap> state = emojiImageCache.beginLoad(imageUrl, neededEmojiUrls);
+        if (state == null) return null;
+        int generation = emojiGeneration;
+        try {
+            EMOJI_EXECUTOR.execute(() -> loadEmojiImage(imageUrl, state, generation));
+        } catch (RejectedExecutionException exception) {
+            emojiImageCache.discard(imageUrl, state);
+            return null;
+        }
         return state;
     }
 
-    private void loadEmojiImage(String imageUrl, EmojiImageState state) {
+    private void loadEmojiImage(String imageUrl, EmojiImageCache.Entry<Bitmap> state, int generation) {
+        if (generation != emojiGeneration) return;
         HttpURLConnection connection = null;
         Bitmap bitmap = null;
         try {
@@ -333,23 +342,10 @@ final class NiconicoCommentsOverlayView extends View {
 
         Bitmap loadedBitmap = bitmap;
         post(() -> {
-            state.bitmap = loadedBitmap;
-            state.failed = loadedBitmap == null;
-            trimEmojiCache();
-            requestNextFrame();
+            if (generation == emojiGeneration && emojiImageCache.complete(imageUrl, state, loadedBitmap)) {
+                requestNextFrame();
+            }
         });
-    }
-
-    private void trimEmojiCache() {
-        if (emojiImageCache.size() <= MAX_EMOJI_CACHE_ENTRIES) {
-            return;
-        }
-        Iterator<Map.Entry<String, EmojiImageState>> iterator =
-                emojiImageCache.entrySet().iterator();
-        while (emojiImageCache.size() > MAX_EMOJI_CACHE_ENTRIES && iterator.hasNext()) {
-            iterator.next();
-            iterator.remove();
-        }
     }
 
     private void requestNextFrame() {
@@ -358,8 +354,4 @@ final class NiconicoCommentsOverlayView extends View {
         }
     }
 
-    private static final class EmojiImageState {
-        Bitmap bitmap;
-        boolean failed;
-    }
 }

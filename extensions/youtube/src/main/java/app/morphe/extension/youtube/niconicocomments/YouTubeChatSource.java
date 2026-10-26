@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4080
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.niconicocomments;
 
 import org.json.JSONArray;
@@ -23,10 +30,11 @@ import java.util.Set;
 import app.morphe.extension.shared.Logger;
 
 /** Fetches public YouTube live and replay chat without another Morphe patch bundle. */
-final class YoutubeChatSource implements Runnable {
+final class YouTubeChatSource implements Runnable {
     interface Listener {
         long getVideoTimeMs();
 
+        /** Positive spread for live batches; zero for replay lookahead. */
         void onComments(
                 String videoId,
                 List<NiconicoComment> comments,
@@ -64,7 +72,7 @@ final class YoutubeChatSource implements Runnable {
     private volatile boolean stopped;
     private volatile HttpURLConnection activeConnection;
 
-    YoutubeChatSource(String videoId, Listener listener) {
+    YouTubeChatSource(String videoId, Listener listener) {
         this.videoId = videoId;
         this.listener = listener;
     }

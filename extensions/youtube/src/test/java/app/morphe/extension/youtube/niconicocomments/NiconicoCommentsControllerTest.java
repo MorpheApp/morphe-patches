@@ -1,10 +1,30 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4080
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.niconicocomments;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 public class NiconicoCommentsControllerTest {
+    @Test
+    public void dropsInactiveLiveBatchesButPreservesReplayLookahead() {
+        assertTrue(NiconicoCommentsController.shouldAcceptComments(250, true, true));
+        assertFalse(NiconicoCommentsController.shouldAcceptComments(250, false, true));
+        assertFalse(NiconicoCommentsController.shouldAcceptComments(250, true, false));
+        assertFalse(NiconicoCommentsController.shouldAcceptComments(250, false, false));
+        assertTrue(NiconicoCommentsController.shouldAcceptComments(0, false, true));
+        assertTrue(NiconicoCommentsController.shouldAcceptComments(0, true, false));
+        assertTrue(NiconicoCommentsController.shouldAcceptComments(0, false, false));
+    }
+
     @Test
     public void interpolatesAtVerySlowPlaybackRate() {
         assertEquals(

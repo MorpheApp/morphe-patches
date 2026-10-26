@@ -1,14 +1,25 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4080
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.niconicocomments;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 /** Pure-Java comment scheduler shared by the Android view and JVM unit tests. */
 final class CommentSchedule {
     static final long COMMENT_DURATION_MS = 7_000;
+    static final int MAX_LIVE_COMMENTS = 512;
 
     private static final long LIVE_SPREAD_MIN_STEP_MS = 35;
     private static final long LIVE_SPREAD_MAX_STEP_MS = 160;
@@ -65,8 +76,27 @@ final class CommentSchedule {
 
         if (liveCount > 0) {
             nextLiveStartTimeMs = liveCursorMs;
+            trimLiveOverflow(videoTimeMs);
         }
         recalculateLiveCursor(videoTimeMs, liveStepMs);
+    }
+
+    private void trimLiveOverflow(long videoTimeMs) {
+        List<ScheduledComment> live = new ArrayList<>();
+        for (ScheduledComment scheduled : comments) {
+            if (scheduled.comment.videoOffsetMs < 0) live.add(scheduled);
+        }
+        if (live.size() <= MAX_LIVE_COMMENTS) return;
+
+        // Keep recent visible comments, then the nearest upcoming live comments.
+        live.sort(Comparator
+                .comparingInt((ScheduledComment comment) -> comment.startTimeMs > videoTimeMs ? 1 : 0)
+                .thenComparing((left, right) -> left.startTimeMs > videoTimeMs
+                        ? Long.compare(left.startTimeMs, right.startTimeMs)
+                        : Long.compare(right.startTimeMs, left.startTimeMs)));
+        Set<ScheduledComment> dropped = new HashSet<>(live.subList(MAX_LIVE_COMMENTS, live.size()));
+        // Replay lookahead is not disposable: its continuation has already advanced.
+        comments.removeIf(dropped::contains);
     }
 
     void removeExpired(long videoTimeMs) {

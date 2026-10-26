@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4080
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.niconicocomments;
 
 import android.app.Activity;
@@ -52,12 +59,12 @@ public final class NiconicoCommentsController {
     private static volatile long sampleElapsedRealtimeMs;
     private static volatile double playbackRate = 1.0;
 
-    private static YoutubeChatSource activeSource;
+    private static YouTubeChatSource activeSource;
     private static Thread activeSourceThread;
     private static String completedSourceVideoId = "";
 
-    private static final YoutubeChatSource.Listener CHAT_LISTENER =
-            new YoutubeChatSource.Listener() {
+    private static final YouTubeChatSource.Listener CHAT_LISTENER =
+            new YouTubeChatSource.Listener() {
                 @Override
                 public long getVideoTimeMs() {
                     return getVideoTime();
@@ -69,13 +76,15 @@ public final class NiconicoCommentsController {
                         List<NiconicoComment> comments,
                         long liveSpreadWindowMs
                 ) {
-                    if (!commentsEnabled || !videoId.equals(currentVideoId)) {
+                    if (!commentsEnabled || !videoId.equals(currentVideoId)
+                            || !shouldAcceptComments(liveSpreadWindowMs, videoPlaying, playerVisible)) {
                         return;
                     }
                     NiconicoCommentsOverlayView view = overlayViewRef.get();
                     if (view != null) {
                         view.post(() -> {
-                            if (commentsEnabled && videoId.equals(currentVideoId)) {
+                            if (commentsEnabled && videoId.equals(currentVideoId)
+                                    && shouldAcceptComments(liveSpreadWindowMs, videoPlaying, playerVisible)) {
                                 view.addComments(comments, liveSpreadWindowMs);
                             }
                         });
@@ -95,6 +104,11 @@ public final class NiconicoCommentsController {
             };
 
     private NiconicoCommentsController() {
+    }
+
+    static boolean shouldAcceptComments(long liveSpreadWindowMs, boolean playing, boolean visible) {
+        // Replay uses zero and must retain lookahead even while paused or minimized.
+        return liveSpreadWindowMs <= 0 || (playing && visible);
     }
 
     /** Injection point called when YouTube creates its player overlay. */
@@ -429,7 +443,7 @@ public final class NiconicoCommentsController {
             }
 
             String sourceVideoId = currentVideoId;
-            YoutubeChatSource source = new YoutubeChatSource(sourceVideoId, CHAT_LISTENER);
+            YouTubeChatSource source = new YouTubeChatSource(sourceVideoId, CHAT_LISTENER);
             Thread thread = new Thread(() -> {
                 try {
                     source.run();
@@ -451,7 +465,7 @@ public final class NiconicoCommentsController {
     }
 
     private static void stopChatSourceLocked() {
-        YoutubeChatSource source = activeSource;
+        YouTubeChatSource source = activeSource;
         Thread thread = activeSourceThread;
         activeSource = null;
         activeSourceThread = null;
