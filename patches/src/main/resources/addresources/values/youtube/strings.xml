@@ -1497,6 +1497,39 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_remember_live_stream_position_summary">For ongoing live streams, remembers and resumes your playback position instead of seeking to the current live position</string>
     <string name="morphe_remember_live_stream_position_user_dialog_message">This feature does not work with 24/7 live streams and other streams that are \'always on\'</string>
 
+    <!-- video.livestream.liveChatDanmakuPatch -->
+    <string name="morphe_live_chat_danmaku_title">Live chat danmaku</string>
+    <string name="morphe_live_chat_danmaku_summary">Show live stream comments as Niconico-style danmaku scrolling across the video player</string>
+    <string name="morphe_live_chat_danmaku_show_author_title">Show author names in danmaku</string>
+    <string name="morphe_live_chat_danmaku_show_author_summary">Prefix each danmaku comment with its author name</string>
+    <string name="morphe_live_chat_danmaku_superchat_highlight_title">Highlight Super Chats</string>
+    <string name="morphe_live_chat_danmaku_superchat_highlight_summary">Show Super Chats and memberships with a coloured background</string>
+    <string name="morphe_live_chat_danmaku_fullscreen_only_title">Fullscreen only</string>
+    <string name="morphe_live_chat_danmaku_fullscreen_only_summary">Only show danmaku when watching in landscape fullscreen</string>
+    <string name="morphe_live_chat_danmaku_speed_title">Danmaku speed</string>
+    <string name="morphe_live_chat_danmaku_opacity_title">Danmaku opacity</string>
+    <string name="morphe_live_chat_danmaku_font_size_title">Danmaku font size</string>
+    <string name="morphe_live_chat_danmaku_max_rows_title">Danmaku rows</string>
+
+    <!-- layout.subscriptiongroups.subscriptionChannelGroupsPatch -->
+    <string name="morphe_subscription_groups_title">Subscription channel groups</string>
+    <string name="morphe_subscription_groups_summary">Show group chips at the top of the subscriptions screen and filter the feed by group</string>
+    <string name="morphe_subscription_groups_manage_title">Manage subscription groups</string>
+    <string name="morphe_subscription_groups_manage_summary">Create groups and add channels to them by name</string>
+    <string name="morphe_subscription_groups_all">All</string>
+    <string name="morphe_subscription_groups_chip_manage">Manage groups</string>
+    <string name="morphe_subscription_groups_dialog_title">Subscription groups</string>
+    <string name="morphe_subscription_groups_dialog_empty">No groups yet. Create a group, then add channel names to it.</string>
+    <string name="morphe_subscription_groups_create">Create group</string>
+    <string name="morphe_subscription_groups_group_name_hint">Group name, e.g. Music</string>
+    <string name="morphe_subscription_groups_members_hint">Channel names, one per line, exactly as shown in the feed</string>
+    <string name="morphe_subscription_groups_save">Save</string>
+    <string name="morphe_subscription_groups_cancel">Cancel</string>
+    <string name="morphe_subscription_groups_close">Close</string>
+    <string name="morphe_subscription_groups_delete">Delete group</string>
+    <string name="morphe_subscription_groups_group_exists">A group with that name already exists, or the name is empty</string>
+    <string name="morphe_subscription_groups_saved">Subscription groups saved</string>
+
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>
     <string name="morphe_force_hdr_video_title">Force HDR video</string>

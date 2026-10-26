@@ -1356,6 +1356,39 @@ Automotive レイアウト
   <string name="morphe_remember_live_stream_position_title">ライブ配信の再生位置を記憶</string>
   <string name="morphe_remember_live_stream_position_summary">生放送中のライブ配信を再度開いた際の再生方法を、「ライブ再生」から「前回の再生位置からの追っかけ再生」に変更します</string>
   <string name="morphe_remember_live_stream_position_user_dialog_message">この機能は、垂れ流しのライブ配信などの半永久的に稼働し続けるコンテンツでは正常に動作しません</string>
+
+  <!-- video.livestream.liveChatDanmakuPatch -->
+  <string name="morphe_live_chat_danmaku_title">ライブチャット弾幕</string>
+  <string name="morphe_live_chat_danmaku_summary">ライブ配信のコメントを、ニコニコ風の弾幕として動画プレイヤー上に流して表示します</string>
+  <string name="morphe_live_chat_danmaku_show_author_title">弾幕に投稿者名を表示</string>
+  <string name="morphe_live_chat_danmaku_show_author_summary">各弾幕コメントの前に投稿者名を付けます</string>
+  <string name="morphe_live_chat_danmaku_superchat_highlight_title">スーパーチャットを目立たせる</string>
+  <string name="morphe_live_chat_danmaku_superchat_highlight_summary">スーパーチャットやメンバーシップを色付き背景で表示します</string>
+  <string name="morphe_live_chat_danmaku_fullscreen_only_title">フルスクリーンのみ</string>
+  <string name="morphe_live_chat_danmaku_fullscreen_only_summary">横向きフルスクリーンで視聴しているときだけ弾幕を表示します</string>
+  <string name="morphe_live_chat_danmaku_speed_title">弾幕の速度</string>
+  <string name="morphe_live_chat_danmaku_opacity_title">弾幕の不透明度</string>
+  <string name="morphe_live_chat_danmaku_font_size_title">弾幕の文字サイズ</string>
+  <string name="morphe_live_chat_danmaku_max_rows_title">弾幕の行数</string>
+
+  <!-- layout.subscriptiongroups.subscriptionChannelGroupsPatch -->
+  <string name="morphe_subscription_groups_title">登録チャンネルのグループ分類</string>
+  <string name="morphe_subscription_groups_summary">登録チャンネル画面の上部にグループのボタンを表示し、グループごとにフィードを絞り込みます</string>
+  <string name="morphe_subscription_groups_manage_title">グループを管理</string>
+  <string name="morphe_subscription_groups_manage_summary">グループを作成し、チャンネル名でチャンネルを追加します</string>
+  <string name="morphe_subscription_groups_all">すべて</string>
+  <string name="morphe_subscription_groups_chip_manage">グループ管理</string>
+  <string name="morphe_subscription_groups_dialog_title">登録チャンネルのグループ</string>
+  <string name="morphe_subscription_groups_dialog_empty">グループはまだありません。グループを作成して、チャンネル名を追加してください。</string>
+  <string name="morphe_subscription_groups_create">グループを作成</string>
+  <string name="morphe_subscription_groups_group_name_hint">グループ名（例：音楽）</string>
+  <string name="morphe_subscription_groups_members_hint">チャンネル名を1行に1つ、フィードに表示される表記のまま入力してください</string>
+  <string name="morphe_subscription_groups_save">保存</string>
+  <string name="morphe_subscription_groups_cancel">キャンセル</string>
+  <string name="morphe_subscription_groups_close">閉じる</string>
+  <string name="morphe_subscription_groups_delete">グループを削除</string>
+  <string name="morphe_subscription_groups_group_exists">その名前のグループは既にあります。または名前が空です</string>
+  <string name="morphe_subscription_groups_saved">グループを保存しました</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 動画を無効化</string>
   <string name="morphe_force_hdr_video_title">HDR 動画を強制的に使用</string>
