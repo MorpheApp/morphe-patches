@@ -9,6 +9,9 @@ package app.morphe.extension.youtube.patches.subscriptiongroups;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,6 +23,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -70,6 +74,12 @@ public final class SubscriptionGroupsPatch {
     /** Currently selected group name, or null for "All". In-memory only. */
     private static volatile String currentSelection;
 
+    private static WeakReference<Activity> activityRef = new WeakReference<>(null);
+    private static boolean watcherStarted;
+    private static boolean listenerRegistered;
+    private static HorizontalScrollView attachedBar;
+    private static String lastBuiltGroupsRaw;
+
     private SubscriptionGroupsPatch() {
     }
 
@@ -87,7 +97,12 @@ public final class SubscriptionGroupsPatch {
             // the tab; it checks the feature setting itself on each scan.
             if (tabView != null) {
                 ChannelPageGroupButton.start(tabView.getContext());
+                Activity activity = findActivity(tabView.getContext());
+                if (activity != null) {
+                    activityRef = new WeakReference<>(activity);
+                }
             }
+            ensureWatcherStarted();
             if (!Settings.SUBSCRIPTION_GROUPS.get()) {
                 return;
             }
@@ -102,6 +117,74 @@ public final class SubscriptionGroupsPatch {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Subscription groups navigationTabCreated failure", ex);
+        }
+    }
+
+    private static Activity findActivity(Context context) {
+        Context ctx = context;
+        while (ctx instanceof ContextWrapper) {
+            if (ctx instanceof Activity) {
+                return (Activity) ctx;
+            }
+            ctx = ((ContextWrapper) ctx).getBaseContext();
+        }
+        return ctx instanceof Activity ? (Activity) ctx : null;
+    }
+
+    /**
+     * Tab views are created once at app start, long before the
+     * subscriptions feed exists, so creation-time retries alone miss
+     * it. A selection listener plus a slow watcher keep trying while
+     * the subscriptions tab is actually on screen.
+     */
+    private static void ensureWatcherStarted() {
+        if (!listenerRegistered) {
+            listenerRegistered = true;
+            NavigationBar.addOnNavigationButtonChangedListener(activeButton -> {
+                if (activeButton == NavigationBar.NavigationButton.SUBSCRIPTIONS) {
+                    scheduleAttachRetries();
+                }
+            });
+        }
+        if (!watcherStarted) {
+            watcherStarted = true;
+            MAIN.postDelayed(WATCHER_RUNNABLE, 2000);
+        }
+    }
+
+    private static final Runnable WATCHER_RUNNABLE = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (Settings.SUBSCRIPTION_GROUPS.get()
+                        && NavigationBar.NavigationButton.getSelectedNavigationButton()
+                        == NavigationBar.NavigationButton.SUBSCRIPTIONS) {
+                    Activity activity = activityRef.get();
+                    if (activity != null && !activity.isFinishing()
+                            && activity.getWindow() != null) {
+                        View root = activity.getWindow().getDecorView();
+                        if (root instanceof ViewGroup) {
+                            onScreenRootAvailable(root);
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "Subscription groups watcher failure", ex);
+            }
+            MAIN.postDelayed(this, 2000);
+        }
+    };
+
+    private static void scheduleAttachRetries() {
+        Activity activity = activityRef.get();
+        if (activity == null || activity.getWindow() == null) {
+            return;
+        }
+        View root = activity.getWindow().getDecorView();
+        if (root instanceof ViewGroup) {
+            for (long delay : ATTACH_RETRY_DELAYS_MS) {
+                MAIN.postDelayed(() -> onScreenRootAvailable(root), delay);
+            }
         }
     }
 
@@ -196,7 +279,9 @@ public final class SubscriptionGroupsPatch {
         long bestArea = -1;
         for (ViewGroup group : groups) {
             if (!group.getClass().getName().contains("RecyclerView")
-                    || group.getChildCount() == 0) {
+                    || group.getChildCount() == 0
+                    || !group.isShown()
+                    || group.getWidth() <= 0 || group.getHeight() <= 0) {
                 continue;
             }
             long area = (long) group.getWidth() * group.getHeight();
@@ -230,20 +315,37 @@ public final class SubscriptionGroupsPatch {
         }
         ViewGroup container = (ViewGroup) parent;
 
+        // A bar left under a previous screen's list (e.g. the home feed,
+        // whose list is also in the tree at app start) must move, or it
+        // stays invisible with that screen.
+        if (attachedBar != null && attachedBar.getParent() != container
+                && attachedBar.getParent() instanceof ViewGroup oldParent) {
+            oldParent.removeView(attachedBar);
+            attachedBar = null;
+        }
+
         HorizontalScrollView existing = findAttachedBar(container);
         if (existing != null) {
-            // Groups may have been edited in settings since the bar was built.
-            rebuildChips(existing, root);
+            attachedBar = existing;
+            // Rebuild only when the groups actually changed (the watcher
+            // calls this every few seconds while the tab is open).
+            String groupsRaw = Settings.SUBSCRIPTION_GROUPS_DATA.get();
+            if (!groupsRaw.equals(lastBuiltGroupsRaw)) {
+                lastBuiltGroupsRaw = groupsRaw;
+                rebuildChips(existing, root);
+            }
             applyFiltering(root);
             return;
         }
 
         HorizontalScrollView bar = new HorizontalScrollView(root.getContext());
+        attachedBar = bar;
         bar.setTag(BAR_TAG);
         bar.setHorizontalScrollBarEnabled(false);
         LinearLayout row = new LinearLayout(root.getContext());
         row.setOrientation(LinearLayout.HORIZONTAL);
         bar.addView(row);
+        lastBuiltGroupsRaw = Settings.SUBSCRIPTION_GROUPS_DATA.get();
         rebuildChips(bar, root);
 
         int index = container.indexOfChild(feedList);
