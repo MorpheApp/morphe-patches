@@ -36,7 +36,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.music.patches.lyrics.derive.SectionDetector;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
-import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -2182,13 +2181,9 @@ private void reorderQueueByRemembered() {
      * of synced lyrics, consulting the short-lived cache of already filtered results.
      */
     private Lyrics prepareForDisplay(Lyrics lyrics) {
-        final boolean splitBackground = Settings.LYRICS_SPLIT_BACKGROUND.get();
         String cacheKey = null;
         if (lyrics != null && lyrics != Lyrics.NOT_FOUND && !lyrics.isEmpty()) {
-            // The split changes the lines, so it belongs in the key or toggling it hands back
-            // the other result.
-            StringBuilder sb = new StringBuilder(lyrics.providerName())
-                    .append(splitBackground ? "|bg" : "|");
+            StringBuilder sb = new StringBuilder(lyrics.providerName()).append('|');
             List<LyricsLine> lines = lyrics.lines();
             int limit = Math.min(3, lines.size());
             for (int i = 0; i < limit; i++) {
@@ -2204,10 +2199,6 @@ private void reorderQueueByRemembered() {
         if (cacheKey == null || lyrics != filteredCache.get(cacheKey)) {
             lyrics = LyricsFilter.filterCreditLines(lyrics, currentTrack);
             lyrics = LyricsFilter.filterLyricsText(lyrics);
-            // After both filters, so a pattern the user wrote sees the lines as they arrived.
-            if (splitBackground) {
-                lyrics = LyricsBracketSplitter.apply(lyrics);
-            }
             if (cacheKey != null) {
                 filteredCache.put(cacheKey, lyrics);
             }

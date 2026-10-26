@@ -107,7 +107,6 @@ public final class LyricsPanelInstaller {
                 return;
             }
             if (Settings.LYRICS_SOURCE.key.equals(key)
-                    || Settings.LYRICS_SPLIT_BACKGROUND.key.equals(key)
                     || LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.key.equals(key)
                     || LyricsFilterDefaults.LYRICS_TEXT_FILTER.key.equals(key)
                     || LyricsFilterDefaults.LYRICS_CREDIT_LINE_REGEX.key.equals(key)) {

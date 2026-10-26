@@ -595,8 +595,6 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_saved">Saved</string>
     <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
     <string name="morphe_music_lyrics_word_sync_summary">Prioritize word-by-word lyrics when available. When lyrics carry word timing, highlights each word or syllable in time with the music</string>
-    <string name="morphe_music_lyrics_split_background_title">Show background vocals separately</string>
-    <string name="morphe_music_lyrics_split_background_summary">Moves a background vocal written in brackets, such as \"(Oh) I want you\", out of the sung line into a dimmer line of its own</string>
     <string name="morphe_music_lyrics_hide_played_title">Hide played lyrics</string>
     <string name="morphe_music_lyrics_hide_played_summary">Hide lyrics lines above the currently playing line</string>
     <string name="morphe_music_lyrics_hide_unplayed_title">Hide unplayed lyrics</string>
