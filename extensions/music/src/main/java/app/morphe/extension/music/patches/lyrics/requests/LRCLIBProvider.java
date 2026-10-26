@@ -17,7 +17,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,18 +38,27 @@ public final class LRCLIBProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://lrclib.net/api/";
 
-    // TODO: Register an application with LRCLIB and send its public App ID
-    //  in a Lrclib-App-Id header.
+    /**
+     * Public ID of the registered client application, which gets higher rate limits.
+     * It is not a secret.
+     *
+     * @see <a href="https://lrclib.net/developers/authorizations/HLyf7QYkIJfl4wcObeD-caHjBZPnGhv0Vuvx2UiIFKk">API authorization</a>
+     */
+    private static final String APP_ID = "HLyf7QYkIJfl4wcObeD-caHjBZPnGhv0Vuvx2UiIFKk";
 
-    /** Request headers with the user's optional API key. */
     private static Map<String, String> headers() {
         return headersFor(Settings.LRCLIB_API_KEY.get());
     }
 
+    /**
+     * The user's own API key, or else the App ID. A key belongs to the user's own application,
+     * so LRCLIB rejects it when it is sent with a different App ID.
+     */
     private static Map<String, String> headersFor(@Nullable String apiKey) {
-        Map<String, String> headers = new HashMap<>();
-        if (apiKey != null && !apiKey.isBlank()) headers.put("Lrclib-Api-Key", apiKey.trim());
-        return headers;
+        if (apiKey != null && !apiKey.isBlank()) {
+            return Map.of("Lrclib-Api-Key", apiKey.trim());
+        }
+        return Map.of("Lrclib-App-Id", APP_ID);
     }
 
     /** Checks a key with a search request before it is saved. An invalid key is rejected with 401. */
