@@ -33,7 +33,7 @@ private const val EXTENSION_TOGGLE_BUTTON =
 
 @Suppress("unused")
 val niconicoCommentsPatch = bytecodePatch(
-    name = "Niconico-style live/replay comments (Experimental)",
+    name = "Niconico-style live/replay comments",
     description = "Adds public live/replay chat overlays and a player on/off button.",
     default = false,
 ) {
