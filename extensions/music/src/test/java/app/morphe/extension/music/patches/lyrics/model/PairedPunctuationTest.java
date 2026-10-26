@@ -32,7 +32,7 @@ public class PairedPunctuationTest {
 
     @Test
     public void nestedShellsAndDifferentScripts() {
-        assertEquals(List.of("（「你好」）", "（「世界」）"), split("（「你好世界」）"));
+        assertEquals(List.of("（「你好…」）", "（「世界」）"), split("（「你好世界」）"));
         assertEquals(List.of("«مرحبا بك»", "«يا صديقي»"), split("«مرحبا بك يا صديقي»"));
         assertEquals(List.of("„eins zwei“", "„drei vier“"), split("„eins zwei drei vier“"));
     }

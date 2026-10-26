@@ -8,6 +8,8 @@
 package app.morphe.extension.music.patches.lyrics;
 
 import androidx.annotation.Nullable;
+import android.os.SystemClock;
+import app.morphe.extension.music.patches.lyrics.model.ArtistLineCycle;
 
 import java.util.List;
 
@@ -36,7 +38,10 @@ public final class LyricsPresentation {
     private static int chunksLimit;
     private static boolean chunksCapitalize;
     private static boolean chunksStrip;
+    private static double chunksMultiplier = 1;
     private static List<MiniLyricsFormatter.Chunk> chunks = List.of();
+    private static final ArtistLineCycle artistCycle = new ArtistLineCycle();
+    private record FrameKey(LyricsLine line, String text) {}
 
     private LyricsPresentation() {
     }
@@ -55,8 +60,33 @@ public final class LyricsPresentation {
         return isFormattingEnabled() ? format(text).text() : text;
     }
 
+    public static List<String> trackFrames(String title, String artist) {
+        return MiniLyricsFormatter.trackFrames(Settings.LYRICS_MINI_TRACK_FORMAT.get(),
+                LyricsManager.getInstance().getCurrentVersionTitle(title), artist,
+                LyricsManager.getInstance().getCurrentVariant(),
+                Settings.LYRICS_MINI_ARTIST_CHAR_LIMIT.get(), fullWidthMultiplier());
+    }
+
+    /** The artist-line frame currently shown. */
     public static String trackLabel(String title, String artist) {
-        return MiniLyricsFormatter.trackLabel(Settings.LYRICS_MINI_TRACK_FORMAT.get(), title, artist);
+        final List<String> frames = trackFrames(title, artist);
+        return artistCycle.current(frames);
+    }
+
+    public static void resetTrackCycle() {
+        artistCycle.reset();
+    }
+
+    private static String present(String text, LyricsLine line, String title, String artist) {
+        artistCycle.update(trackFrames(title, artist), new FrameKey(line, text),
+                SystemClock.elapsedRealtime(), Settings.LYRICS_MINI_ARTIST_MIN_MS.get(),
+                Settings.LYRICS_MINI_ARTIST_MAX_MS.get());
+        return text;
+    }
+
+    public static double fullWidthMultiplier() {
+        final float value = Settings.LYRICS_MINI_FULL_WIDTH_MULTIPLIER.get();
+        return Float.isFinite(value) && value > 0 ? value : 1;
     }
 
     /**
@@ -81,7 +111,7 @@ public final class LyricsPresentation {
 
         MiniLyricsTimeline.Vocal vocal = selection.vocal();
         if (vocal != null) {
-            return vocalText(lines, vocal, position);
+            return present(vocalText(lines, vocal, position), vocal.line(), title, artist);
         }
 
         MiniLyricsTimeline.Gap gap = selection.gap();
@@ -90,12 +120,12 @@ public final class LyricsPresentation {
         String previousText = previous == null ? null : vocalText(lines, previous, previous.endMs() - 1);
         if (gap == null) {
             // A pause between lines keeps the previous line.
-            return previousText;
+            return present(previousText, previous == null ? null : previous.line(), title, artist);
         }
 
-        return MiniLyricsFormatter.instrumental(Settings.LYRICS_MINI_INSTRUMENTAL.get(),
+        return present(MiniLyricsFormatter.instrumental(Settings.LYRICS_MINI_INSTRUMENTAL.get(),
                 gap.startMs(), gap.endMs(), position, title, artist,
-                previousText == null ? title : previousText);
+                previousText == null ? title : previousText), null, title, artist);
     }
 
     private static String vocalText(List<LyricsLine> lines, MiniLyricsTimeline.Vocal vocal, long positionMs) {
@@ -104,13 +134,16 @@ public final class LyricsPresentation {
         final boolean capitalize = Settings.LYRICS_FORCE_CAPITALIZE.get();
         final boolean strip = Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get();
         if (line != chunksLine || vocal.endMs() != chunksEndMs || limit != chunksLimit
-                || capitalize != chunksCapitalize || strip != chunksStrip) {
-            chunks = MiniLyricsFormatter.chunks(line, vocal.endMs(), limit, capitalize, strip);
+                || capitalize != chunksCapitalize || strip != chunksStrip
+                || fullWidthMultiplier() != chunksMultiplier) {
+            chunks = MiniLyricsFormatter.chunks(line, vocal.endMs(), limit, capitalize, strip,
+                    fullWidthMultiplier());
             chunksLine = line;
             chunksEndMs = vocal.endMs();
             chunksLimit = limit;
             chunksCapitalize = capitalize;
             chunksStrip = strip;
+            chunksMultiplier = fullWidthMultiplier();
         }
 
         return MiniLyricsFormatter.current(chunks, positionMs, Settings.LYRICS_MINI_ENCAPSULATION.get(),

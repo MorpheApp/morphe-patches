@@ -29,7 +29,7 @@ public class MiniLyricsGapTest {
         assertEquals(List.of("one two three","four five"),MiniLyricsFormatter.chunks(
                 new LyricsLine(0,"one two three four five"),10000,3,false,false)
                 .stream().map(MiniLyricsFormatter.Chunk::text).toList());
-        assertEquals(List.of("你好世界","再见你"),MiniLyricsFormatter.chunks(
+        assertEquals(List.of("你好世界" + MiniLyricsFormatter.SPLIT_ELLIPSIS,"再见你"),MiniLyricsFormatter.chunks(
                 new LyricsLine(0,"你好世界再见你"),10000,3,false,false)
                 .stream().map(MiniLyricsFormatter.Chunk::text).toList());
     }

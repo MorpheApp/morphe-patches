@@ -24,6 +24,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
+import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
@@ -201,6 +202,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting APPLE_MUSIC_TOKEN = new StringSetting("morphe_music_apple_music_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting SPOTIFY_TOKEN = new StringSetting("morphe_music_spotify_token", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting DEEZER_ARL = new StringSetting("morphe_music_deezer_arl", "", false, parent(LYRICS_ENABLED));
+    public static final StringSetting LRCLIB_API_KEY = new StringSetting("morphe_music_lrclib_api_key", "", false, parent(LYRICS_ENABLED));
     public static final StringSetting MUSIXMATCH_TOKEN = new StringSetting("morphe_music_musixmatch_token", "", false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE = new BooleanSetting("morphe_music_lyrics_translate", FALSE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE_ONLY = new BooleanSetting("morphe_music_lyrics_translate_only", FALSE, false, parent(LYRICS_ENABLED));
@@ -253,8 +255,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LYRICS_MINI_TRACK_FORMAT = new StringSetting("morphe_music_lyrics_mini_track_format", MiniLyricsFormatter.DEFAULT_TRACK_FORMAT, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final StringSetting LYRICS_MINI_ENCAPSULATION = new StringSetting("morphe_music_lyrics_mini_encapsulation", MiniLyricsFormatter.DEFAULT_ENCAPSULATION, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final IntegerSetting LYRICS_MINI_CHAR_LIMIT = new IntegerSetting("morphe_music_lyrics_mini_char_limit", 0, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
+    public static final IntegerSetting LYRICS_MINI_ARTIST_CHAR_LIMIT = new IntegerSetting("morphe_music_lyrics_mini_artist_char_limit", 0, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
+    public static final IntegerSetting LYRICS_MINI_ARTIST_MIN_MS = new IntegerSetting("morphe_music_lyrics_mini_artist_min_ms", 1500, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
+    public static final IntegerSetting LYRICS_MINI_ARTIST_MAX_MS = new IntegerSetting("morphe_music_lyrics_mini_artist_max_ms", 3000, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
+    public static final FloatSetting LYRICS_MINI_FULL_WIDTH_MULTIPLIER = new FloatSetting("morphe_music_lyrics_mini_full_width_multiplier", 1.75f, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final StringSetting LYRICS_MINI_INSTRUMENTAL = new StringSetting("morphe_music_lyrics_mini_instrumental", MiniLyricsFormatter.DEFAULT_INSTRUMENTAL, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
-    public static final IntegerSetting LYRICS_MINI_NEXT_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_mini_next_offset_ms", 0, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
+    public static final IntegerSetting LYRICS_MINI_NEXT_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_mini_next_offset_ms", -800, false, parentsAll(parent(LYRICS_ENABLED), parentsAny(LYRICS_MINIPLAYER, LYRICS_MEDIASESSION)));
     public static final BooleanSetting LYRICS_USE_EMBEDDED = new BooleanSetting("morphe_music_lyrics_use_embedded", TRUE, true, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_CAPTION_COOKIES = new StringSetting("morphe_music_lyrics_caption_cookies", "", false, parent(LYRICS_ENABLED));
 
@@ -342,8 +348,6 @@ public class Settings extends SharedYouTubeSettings {
                 18, 36, 2, "sp"));
         SeekBarPreference.register(new SeekBarConfig(LYRICS_OFFSET_MS,
                 -2000, 2000, 100, "ms"));
-        SeekBarPreference.register(new SeekBarConfig(LYRICS_MINI_CHAR_LIMIT,
-                0, 100, 5, ""));
         SeekBarPreference.register(new SeekBarConfig(LYRICS_MINI_NEXT_OFFSET_MS,
                 -2000, 2000, 100, "ms"));
         SeekBarPreference.register(new SeekBarConfig(PLAYBACK_SPEED,

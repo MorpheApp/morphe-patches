@@ -103,7 +103,7 @@ public class LyricsPresentationTest {
         assertEquals(List.of("one extraordinarilylong", "end"), MiniLyricsFormatter.chunks(
                 new LyricsLine(0, "one extraordinarilylong end"), 5000, 5, false, false)
                 .stream().map(MiniLyricsFormatter.Chunk::text).toList());
-        assertEquals(List.of("你好世", "界再见"), MiniLyricsFormatter.chunks(
+        assertEquals(List.of("你好世" + MiniLyricsFormatter.SPLIT_ELLIPSIS, "界再见"), MiniLyricsFormatter.chunks(
                 new LyricsLine(0, "你好世界再见"), 5000, 3, false, false)
                 .stream().map(MiniLyricsFormatter.Chunk::text).toList());
     }

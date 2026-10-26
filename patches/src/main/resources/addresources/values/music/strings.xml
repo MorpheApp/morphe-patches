@@ -556,6 +556,14 @@ Steps:
     <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token saved</string>
     <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token cleared</string>
     <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: invalid user token - please check and try again</string>
+    <string name="morphe_music_lrclib_api_key_title">LRCLIB API key</string>
+    <string name="morphe_music_lrclib_api_key_dialog_instruction">Optional. Paste your own LRCLIB API key to get higher rate limits. The app already identifies itself to LRCLIB, so this can stay empty. Keep the key private.</string>
+    <string name="morphe_music_lrclib_api_key_dialog_hint">API key</string>
+    <string name="morphe_music_lrclib_api_key_optional_hint">LRCLIB works without a key, so this field can stay empty</string>
+    <string name="morphe_music_lrclib_api_key_toast_saved">LRCLIB: API key saved</string>
+    <string name="morphe_music_lrclib_api_key_toast_cleared">LRCLIB: API key cleared</string>
+    <string name="morphe_music_lyrics_variant_error">Lyrics: couldn\'t look up the track version on Deezer</string>
+    <string name="morphe_music_lrclib_api_key_toast_invalid">LRCLIB: invalid API key - please check and try again</string>
     <string name="morphe_music_youtube_cookies_title">YouTube Cookies</string>
     <string name="morphe_music_youtube_cookies_dialog_instruction">"Paste your YouTube cookies to query captions and timetext from YouTube.
 
@@ -605,13 +613,31 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_mediasession_summary">Shows the current line on the lock screen, Android Auto and Bluetooth. Needs Android 11 or newer</string>
     <string name="morphe_music_lyrics_miniplayer_title">Show Miniplayer Lyrics</string>
     <string name="morphe_music_lyrics_miniplayer_summary">Shows the current line in the miniplayer, with the track moved to the subtitle</string>
-    <string name="morphe_music_lyrics_mini_track_format_title">Track format</string>
-    <string name="morphe_music_lyrics_mini_track_format_summary">Format of the track shown with the lyrics in the Miniplayer and MediaSession. {t} is the title and {a} is the artist</string>
-    <string name="morphe_music_lyrics_mini_encapsulation_title">Line format</string>
+    <string name="morphe_music_lyrics_mini_track_format_title">Song title/artist format</string>
+    <string name="morphe_music_lyrics_mini_track_format_summary">Format of the track shown with the lyrics in the Miniplayer and MediaSession. {t} is the title, {a} is the artist and {v} is the version, such as Acoustic, when the lyrics source provides one. Text between two colons is only shown when every variable inside it has a value; write \\: for a plain colon. Each line is shown in turn, moving on whenever the lyric changes</string>
+    <string name="morphe_music_lyrics_mini_encapsulation_title">Lyric line format</string>
     <string name="morphe_music_lyrics_mini_encapsulation_summary">Format of the lyrics line in the Miniplayer and MediaSession. {lrc} is the line and {n} is how many times in a row it is sung. Text between colons is only shown when the line repeats. Use \\: for a colon</string>
     <string name="morphe_music_lyrics_mini_encapsulation_invalid">The format must contain {lrc}</string>
+    <string name="morphe_music_lyrics_mini_track_format_menu_summary">Artist-line template and animation timing</string>
+    <string name="morphe_music_lyrics_mini_artist_min_label">Minimum screen time (ms)</string>
+    <string name="morphe_music_lyrics_mini_artist_max_label">Maximum screen time (ms)</string>
+    <string name="morphe_music_lyrics_mini_artist_timing_explanation">For multiline animations only. Keep each frame for at least the minimum time. At the maximum, advance the artist line even when the lyric stays the same.</string>
+    <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimum must be 0 or greater. Maximum must be greater than 0 and at least the minimum.</string>
+    <string name="morphe_music_lyrics_mini_line_limits_title">Line char-length limits</string>
+    <string name="morphe_music_lyrics_mini_line_limits_summary">Lyric and artist line limits, and full-width character weight</string>
+    <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Lyric line limit
+Split longer lyrics into balanced halves. 0 disables splitting."</string>
+    <string name="morphe_music_lyrics_mini_line_limits_artist">"Artist line limit
+Split the populated track format into cycling frames. 0 disables splitting."</string>
+    <string name="morphe_music_lyrics_mini_line_limits_weight">"Full-width character weight
+Applies to both limits. At 1.8, six full-width characters count as 10.8."</string>
+    <string name="morphe_music_lyrics_mini_line_limits_invalid">Enter whole-number limits from 0 to 10000 and a character weight greater than 0</string>
     <string name="morphe_music_lyrics_mini_char_limit_title">Split long lines</string>
     <string name="morphe_music_lyrics_mini_char_limit_summary">Lines with more characters than this are shown in two halves in the Miniplayer and MediaSession. 0 does not split lines</string>
+    <string name="morphe_music_lyrics_mini_artist_char_limit_title">Split long track lines</string>
+    <string name="morphe_music_lyrics_mini_artist_char_limit_summary">Track format lines with more characters than this are split into parts that are shown in turn. 0 does not split them</string>
+    <string name="morphe_music_lyrics_mini_full_width_multiplier_title">Full-width character weight</string>
+    <string name="morphe_music_lyrics_mini_full_width_multiplier_summary">How many characters a full-width character, such as Chinese or Japanese, counts as for the split limits. 1.0 counts it as one</string>
     <string name="morphe_music_lyrics_mini_instrumental_title">Instrumental break</string>
     <string name="morphe_music_lyrics_mini_instrumental_summary">Shown in the Miniplayer and MediaSession during an instrumental break. Each line is one animation frame. {t} is the title, {a} is the artist and {lrc} is the last lyrics line</string>
     <string name="morphe_music_lyrics_mini_next_offset_ms_title">Miniplayer and MediaSession timing offset</string>

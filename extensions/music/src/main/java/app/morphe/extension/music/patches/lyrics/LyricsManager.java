@@ -7,6 +7,8 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
+import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
+import static app.morphe.extension.shared.StringRef.str;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.net.Uri;
@@ -154,6 +156,16 @@ public final class LyricsManager {
     @Nullable
     private volatile Uri currentMediaUri;
 
+    /**
+     * Version of the current track (for example "Acoustic") as reported by a backend that
+     * carries it as its own field. Never parsed out of the title: "Rockstar (Olympia)" is a
+     * title, not a variant. Empty when no backend has supplied one.
+     */
+    @NonNull
+    private volatile String currentVariant = "";
+    @Nullable
+    private volatile String currentVersionTitle;
+
     /** Raw (un-cleaned) title/artist of the current track, used for the MediaStore lookup. */
     @Nullable
     private String currentRawTitle;
@@ -298,6 +310,32 @@ public final class LyricsManager {
         });
     }
 
+    /**
+     * Looks up the track's version on Deezer for {v}. Runs only when a miniplayer or lock screen
+     * line can show it. A failed request is reported with a toast, and the title shows without {v}.
+     */
+    private void requestVariant(TrackInfo track) {
+        if (!Settings.LYRICS_ENABLED.get()
+                || !(Settings.LYRICS_MINIPLAYER.get() || Settings.LYRICS_MEDIASESSION.get())) {
+            return;
+        }
+        final TrackInfo query = DeezerProvider.versionQuery(track, currentRawTitle, currentRawArtist);
+        runOnLookupThread(() -> {
+            DeezerProvider.TrackVersion version;
+            try {
+                version = DeezerProvider.fetchVersion(query);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Deezer variant lookup failed", ex);
+                Utils.runOnMainThread(() -> Utils.showToastShort(str("morphe_music_lyrics_variant_error")));
+                return;
+            }
+            if (track.equals(currentTrack)) {
+                currentVersionTitle = version.title();
+                currentVariant = version.variant();
+            }
+        });
+    }
+
     private void runOnLookupThread(Runnable body) {
         lookupExecutor.execute(() -> runContained(body));
     }
@@ -394,6 +432,17 @@ public final class LyricsManager {
     @Nullable
     public TrackInfo getCurrentTrack() {
         return currentTrack;
+    }
+
+    /** The current track's backend-supplied variant, or an empty string. */
+    @NonNull
+    public String getCurrentVariant() {
+        return currentVariant;
+    }
+
+    public String getCurrentVersionTitle(String fallback) {
+        final String title = currentVersionTitle;
+        return title == null ? fallback : title;
     }
 
     @Nullable
@@ -678,6 +727,11 @@ public final class LyricsManager {
         currentMediaUri = mediaUri;
         currentTrack = track;
         currentVideoId = videoId;
+        if (!sameTrack) {
+            currentVariant = "";
+            currentVersionTitle = null;
+            requestVariant(track);
+        }
         // Only reached on a real track change, so a loop cannot discard the offset it comes round for again.
         temporaryOffsetMs = TrackOffsetStore.get(track);
         // A rebinding keeps the previous track's lyric, which is what makes it worth

@@ -67,6 +67,8 @@ public final class LockScreenLyrics {
     /** Title pushed on the last tick, to avoid redundant {@code setMetadata} calls. */
     @Nullable
     private static volatile String lastPushedTitle;
+    @Nullable
+    private static String lastPushedArtist;
 
     /** Set when the app pushes fresh metadata, so the next tick pushes it again. */
     private static volatile boolean needsRepush;
@@ -117,6 +119,9 @@ public final class LockScreenLyrics {
 
             String rt = original.getString(MediaMetadata.METADATA_KEY_TITLE);
             String ra = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
+            if (!Objects.equals(rt, realTitle) || !Objects.equals(ra, realArtist)) {
+                LyricsPresentation.resetTrackCycle();
+            }
             realTitle = rt;
             realArtist = ra;
 
@@ -198,7 +203,8 @@ public final class LockScreenLyrics {
         }
 
         String newTitle = getCurrentLine();
-        if (!needsRepush && newTitle.equals(lastPushedTitle)) {
+        String artist = LyricsPresentation.trackLabel(realTitle, realArtist);
+        if (!needsRepush && newTitle.equals(lastPushedTitle) && Objects.equals(artist, lastPushedArtist)) {
             ticker.schedule();
             return;
         }
@@ -213,6 +219,7 @@ public final class LockScreenLyrics {
         LyricNotificationRefresh.refresh(session, newTitle,
                 metadata.getString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE));
         lastPushedTitle = newTitle;
+        lastPushedArtist = artist;
         needsRepush = false;
         nudgePlaybackState(session);
 

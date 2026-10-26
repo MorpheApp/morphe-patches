@@ -129,6 +129,10 @@ public final class LyricsPanelInstaller {
                     || Settings.LYRICS_MINI_TRACK_FORMAT.key.equals(key)
                     || Settings.LYRICS_MINI_ENCAPSULATION.key.equals(key)
                     || Settings.LYRICS_MINI_CHAR_LIMIT.key.equals(key)
+                    || Settings.LYRICS_MINI_ARTIST_CHAR_LIMIT.key.equals(key)
+                    || Settings.LYRICS_MINI_ARTIST_MIN_MS.key.equals(key)
+                    || Settings.LYRICS_MINI_ARTIST_MAX_MS.key.equals(key)
+                    || Settings.LYRICS_MINI_FULL_WIDTH_MULTIPLIER.key.equals(key)
                     || Settings.LYRICS_MINI_INSTRUMENTAL.key.equals(key)
                     || Settings.LYRICS_MINI_NEXT_OFFSET_MS.key.equals(key)) {
                 MiniplayerLyrics.onSettingsChanged();

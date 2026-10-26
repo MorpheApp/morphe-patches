@@ -18,10 +18,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.PairedPunctuation;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
@@ -190,7 +193,154 @@ public final class DeezerProvider extends ScoredSongProvider {
         jwtExpiryMs = 0;
     }
 
-    @Nullable
+    /**
+     * The version of the matched track, such as "Acoustic", from Deezer's own title_version field.
+     * Empty when Deezer has no exact match or the track has no version. Throws when a request
+     * fails, so the caller can report it.
+     */
+    public record TrackVersion(String title, String variant) {}
+
+    /** Variant matching needs untouched metadata, rather than the transliterated lyric query. */
+    public static TrackInfo versionQuery(TrackInfo track, @Nullable String rawTitle, @Nullable String rawArtist) {
+        return new TrackInfo(rawTitle == null || rawTitle.isBlank() ? track.title() : rawTitle,
+                rawArtist == null || rawArtist.isBlank() ? track.artist() : rawArtist,
+                track.album(), track.durationSeconds());
+    }
+
+    // Successful results, including tracks without a version, survive track changes. Failed
+    // requests are not cached, so a temporary network error can be retried on the next play.
+    private static final Map<TrackInfo, TrackVersion> versions = new LinkedHashMap<>(64, 0.75f, true) {
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<TrackInfo, TrackVersion> eldest) {
+            return size() > 64;
+        }
+    };
+
+    public static synchronized TrackVersion fetchVersion(TrackInfo track) throws Exception {
+        TrackVersion cached = versions.get(track);
+        if (cached != null) return cached;
+        TrackVersion result = lookupVersion(track);
+        versions.put(track, result);
+        return result;
+    }
+
+    private static TrackVersion lookupVersion(TrackInfo track) throws Exception {
+        LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
+        String url = SEARCH_URL
+                + "?q=" + LyricsRequests.encode(track.artist() + " - " + track.title())
+                + "&limit=10&output=json";
+        JSONArray data = getJson(url).optJSONArray("data");
+        if (data == null) throw new IOException("Deezer search has no results array");
+
+        final String wantedTitle = normalize(track.title());
+        final String wantedArtist = normalize(track.artist());
+        // Prefer the full backend title. Short-title equality alone would confuse the original
+        // recording with a remix or acoustic version of that same song.
+        for (int pass = 0; pass < 2; pass++) for (int i = 0; i < data.length(); i++) {
+            JSONObject item = data.optJSONObject(i);
+            if (item == null) continue;
+            JSONObject artist = item.optJSONObject("artist");
+            if (artist == null || !wantedArtist.equals(normalize(artist.optString("name", "")))) continue;
+            final String full = item.optString("title", "");
+            final String shortTitle = item.optString("title_short", "");
+            if (pass == 0 ? !wantedTitle.equals(normalize(full))
+                    : !matchesStructuredTitle(track.title(), full, shortTitle, item.optString("title_version", ""))) continue;
+            final long id = item.optLong("id", 0);
+            if (id <= 0) continue;
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
+            final JSONObject detail = getJson("https://api.deezer.com/track/" + id);
+            final String title = detail.optString("title_short", "");
+            if (title.isBlank()) throw new IOException("Deezer track has no short title");
+            return new TrackVersion(title, cleanVersion(detail.optString("title_version", "")));
+        }
+        return new TrackVersion(track.title(), "");
+    }
+
+    /**
+     * Strips punctuation from both ends of the version, but only punctuation with no partner left
+     * in the rest of the version. "(Acoustic)" becomes "Acoustic", "Acoustic (Deluxe)" keeps its
+     * brackets, and "Acoustic (Deluxe)," loses only the comma.
+     */
+    static String cleanVersion(String version) {
+        String s = version.strip();
+        boolean changed = true;
+        while (changed && !s.isEmpty()) {
+            changed = false;
+            final String core = core(s);
+            final int first = s.codePointAt(0);
+            if (edgePunctuation(first) && !hasPartner(first, core)) {
+                s = s.substring(Character.charCount(first)).strip();
+                changed = true;
+                continue;
+            }
+            final int last = s.codePointBefore(s.length());
+            if (edgePunctuation(last) && !hasPartner(last, core)) {
+                s = s.substring(0, s.length() - Character.charCount(last)).strip();
+                changed = true;
+            }
+        }
+        return s;
+    }
+
+    /** The version without the punctuation at either end. */
+    private static String core(String s) {
+        int start = 0;
+        int end = s.length();
+        while (start < end && (edgePunctuation(s.codePointAt(start)) || Character.isWhitespace(s.codePointAt(start))))
+            start += Character.charCount(s.codePointAt(start));
+        while (end > start && (edgePunctuation(s.codePointBefore(end)) || Character.isWhitespace(s.codePointBefore(end))))
+            end -= Character.charCount(s.codePointBefore(end));
+        return s.substring(start, end);
+    }
+
+    private static boolean edgePunctuation(int cp) {
+        return switch (Character.getType(cp)) {
+            case Character.CONNECTOR_PUNCTUATION, Character.DASH_PUNCTUATION,
+                    Character.START_PUNCTUATION, Character.END_PUNCTUATION,
+                    Character.INITIAL_QUOTE_PUNCTUATION, Character.FINAL_QUOTE_PUNCTUATION,
+                    Character.OTHER_PUNCTUATION -> true;
+            default -> false;
+        };
+    }
+
+    private static boolean hasPartner(int cp, String core) {
+        final String symbol = new String(Character.toChars(cp));
+        for (PairedPunctuation.Pair pair : PairedPunctuation.PAIRS) {
+            if (pair.opening().equals(symbol) && core.contains(pair.closing())
+                    || pair.closing().equals(symbol) && core.contains(pair.opening())) return true;
+        }
+        return false;
+    }
+
+    /** Compare complete titles composed from structured fields, never parse the user's title. */
+    static boolean matchesStructuredTitle(String displayed, String full, String shortTitle, String version) {
+        if (shortTitle.isBlank()) return false;
+        final String wanted = normalize(displayed);
+        final String variant = cleanVersion(version);
+        if (variant.isEmpty()) {
+            return wanted.equals(normalize(shortTitle)) && normalize(full).equals(normalize(shortTitle));
+        }
+        return wanted.equals(normalize(shortTitle + " (" + variant + ")"));
+    }
+
+    static String normalize(String text) {
+        return text.trim().toLowerCase(Locale.ROOT);
+    }
+
+    /** A Deezer error comes back as a 200 with an error object, so that counts as a failure too. */
+    private static JSONObject getJson(String url) throws Exception {
+        HttpURLConnection connection = LyricsRequests.openConnection(url, Map.of("Accept", "application/json"));
+        try {
+            final int httpCode = connection.getResponseCode();
+            if (httpCode != Requester.HTTP_STATUS_CODE_SUCCESS) throw new IOException("Deezer HTTP " + httpCode);
+            JSONObject json = Requester.parseJSONObject(connection);
+            if (json.has("error")) throw new IOException("Deezer error: " + json.optString("error"));
+            return json;
+        } finally {
+            connection.disconnect();
+        }
+    }
+
     private JSONArray searchTracks(TrackInfo track) throws Exception {
         LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
 

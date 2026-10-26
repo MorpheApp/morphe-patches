@@ -218,9 +218,7 @@ public final class MiniplayerLyrics {
         if (synced) {
             String line = manager.getCurrentLineText();
             String newTitle = line == null ? displayTitleOr(track) : line;
-            if (cachedSubtitle == null) {
-                cachedSubtitle = buildSubtitle(track);
-            }
+            cachedSubtitle = buildSubtitle(track);
             if (!mirrored) {
                 preMirrorTitle = title.getText();
                 preMirrorSubtitle = subtitle.getText();

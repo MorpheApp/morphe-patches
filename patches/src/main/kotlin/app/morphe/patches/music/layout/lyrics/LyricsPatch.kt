@@ -181,15 +181,21 @@ val lyricsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lyrics_sb_matching", summary = true),
                     SwitchPreference("morphe_music_lyrics_miniplayer", summary = true),
                     SwitchPreference("morphe_music_lyrics_mediasession", summary = true),
-                    TextPreference("morphe_music_lyrics_mini_track_format"),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_mini_track_format",
+                        summaryKey = "morphe_music_lyrics_mini_track_format_menu_summary",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsTrackFormatPreference",
+                        selectable = true,
+                        dependency = "morphe_music_lyrics_enabled"
+                    ),
                     TextPreference(
                         key = "morphe_music_lyrics_mini_encapsulation",
                         tag = "app.morphe.extension.music.settings.preference.LyricsEncapsulationPreference"
                     ),
                     NonInteractivePreference(
-                        key = "morphe_music_lyrics_mini_char_limit",
-                        summaryKey = "morphe_music_lyrics_mini_char_limit_summary",
-                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        key = "morphe_music_lyrics_mini_line_limits",
+                        summaryKey = "morphe_music_lyrics_mini_line_limits_summary",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsLineLimitsPreference",
                         selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
                     ),

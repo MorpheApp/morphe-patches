@@ -241,7 +241,7 @@ public final class LyricsOrderedListPreference extends Preference {
 
     private static boolean hasTokenDialog(String id) {
         return switch (id) {
-            case "Captions", "Apple", "Spotify", "Deezer", "Musixmatch" -> true;
+            case "Captions", "Apple", "Spotify", "Deezer", "Musixmatch", "LRCLIB" -> true;
             default -> false;
         };
     }
@@ -255,6 +255,7 @@ public final class LyricsOrderedListPreference extends Preference {
             case "Spotify":     pref = LyricsTokenDialogPreference.spotify(context); break;
             case "Deezer":      pref = LyricsTokenDialogPreference.deezer(context); break;
             case "Musixmatch":  pref = LyricsTokenDialogPreference.musixmatch(context); break;
+            case "LRCLIB":      pref = LyricsTokenDialogPreference.lrclib(context); break;
             default: return;
         }
         pref.showDialog(onTokenSaved);
