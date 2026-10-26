@@ -20,6 +20,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -66,6 +67,7 @@ final class NiconicoCommentsOverlayView extends View {
     private String videoId = "";
     private boolean overlayActive;
     private boolean videoPlaying;
+    private boolean highFrameRateRequested;
     private int fontSizeSp = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_FONT_SIZE);
     private int opacityPercent = SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY);
     private float laneHeight;
@@ -178,11 +180,13 @@ final class NiconicoCommentsOverlayView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         if (!overlayActive || videoId.isEmpty()) {
+            setHighFrameRate(false);
             return;
         }
 
         long videoTimeMs = NiconicoCommentsController.getVideoTime();
         if (videoTimeMs < 0) {
+            setHighFrameRate(false);
             if (videoPlaying) {
                 postInvalidateDelayed(IDLE_FRAME_DELAY_MS);
             }
@@ -193,6 +197,7 @@ final class NiconicoCommentsOverlayView extends View {
         updateEmojiDemand(videoTimeMs);
         int laneCount = getLaneCount();
         boolean hasActiveOrUpcomingComment = false;
+        boolean hasVisibleComment = false;
         for (CommentSchedule.ScheduledComment scheduled : schedule.comments()) {
             long elapsedMs = videoTimeMs - scheduled.startTimeMs;
             if (elapsedMs < 0) {
@@ -201,6 +206,7 @@ final class NiconicoCommentsOverlayView extends View {
             }
 
             hasActiveOrUpcomingComment = true;
+            hasVisibleComment = true;
             NiconicoComment comment = scheduled.comment;
             float commentWidth = measureCommentWidth(comment);
             float progress = (float) elapsedMs / CommentSchedule.COMMENT_DURATION_MS;
@@ -227,9 +233,25 @@ final class NiconicoCommentsOverlayView extends View {
             drawCommentSegments(canvas, comment, x, y);
         }
 
+        setHighFrameRate(videoPlaying && hasVisibleComment);
         if (videoPlaying && hasActiveOrUpcomingComment) {
             postInvalidateOnAnimation();
         }
+    }
+
+    /**
+     * The display can lower its refresh rate to match the video frame rate (often 30 Hz),
+     * which makes the scrolling comments choppy. Request a high refresh rate only while
+     * comments are moving across the screen.
+     */
+    private void setHighFrameRate(boolean high) {
+        if (highFrameRateRequested == high || Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            return;
+        }
+        highFrameRateRequested = high;
+        setRequestedFrameRate(high
+                ? REQUESTED_FRAME_RATE_CATEGORY_HIGH
+                : REQUESTED_FRAME_RATE_CATEGORY_DEFAULT);
     }
 
     private void applyFontSize() {
