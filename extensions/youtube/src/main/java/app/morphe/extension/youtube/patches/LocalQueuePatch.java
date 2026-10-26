@@ -378,7 +378,11 @@ public final class LocalQueuePatch {
      * Injection point.
      */
     public static void onUserLeaveHint() {
-        LocalQueueSheet.dismissImmediately();
+        try {
+            LocalQueueSheet.dismissImmediately();
+        } catch (Exception ex) {
+            Logger.printException(() -> "onUserLeaveHint failure", ex);
+        }
     }
 
     private static void notifyChanged() {
