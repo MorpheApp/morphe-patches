@@ -4,10 +4,9 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  *
- * The Niconico-style live/replay comments implementation is adapted from
- * david419kr/niconico-yt-morphe-patches, bundle 1.3.3 (GPLv3):
- * https://github.com/david419kr/niconico-yt-morphe-patches
- * The feature design is based on david419kr/niconico-yt (MIT License).
+ * Niconico-style live/replay comments implementation is adapted from
+ * https://github.com/david419kr/niconico-yt-morphe-patches (GPLv3)
+ * Feature design is based on david419kr/niconico-yt (MIT License)
  */
 
 package app.morphe.extension.youtube.niconicocomments;
