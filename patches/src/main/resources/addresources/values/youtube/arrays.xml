@@ -287,6 +287,23 @@
     </string-array>
 
     <!-- layout.theme.themePatch -->
+    <!-- 21.39+ also has the glow Rive animation. Older versions and YT Music use the shared arrays without it. -->
+    <string-array name="morphe_splash_screen_animation_style_21_39_entries">
+        <item>@string/morphe_splash_screen_animation_style_entry_1</item>
+        <item>@string/morphe_splash_screen_animation_style_entry_2</item>
+        <item>@string/morphe_splash_screen_animation_style_entry_3</item>
+        <item>@string/morphe_splash_screen_animation_style_entry_4</item>
+        <item>@string/morphe_splash_screen_animation_style_entry_5</item>
+        <item>@string/morphe_splash_screen_animation_style_entry_6</item>
+    </string-array>
+    <string-array name="morphe_splash_screen_animation_style_21_39_entry_values">
+        <item>DISABLED</item>
+        <item>FPS_60_ONE_SECOND</item>
+        <item>MORPHE_COLOR</item>
+        <item>FPS_60_BLACK_AND_WHITE</item>
+        <item>MORPHE_MONOCHROME</item>
+        <item>RIVE_GLOW</item>
+    </string-array>
     <string-array name="morphe_theme_color_light_entries">
         <item>@string/morphe_theme_color_entry_1</item>
         <item>@string/morphe_theme_color_light_entry_2</item>

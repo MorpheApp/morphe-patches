@@ -14,12 +14,16 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object UseGradientLoadingScreenFingerprint : Fingerprint(
@@ -45,6 +49,137 @@ internal object LithoImageColorFilterFingerprint : Fingerprint(
     name = "setColorFilter",
     parameters = listOf("Landroid/graphics/ColorFilter;"),
     returnType = "V"
+)
+
+/**
+ * Rive startup animation, which is played instead of the Lottie animation.
+ */
+internal object RiveSplashScreenFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(1073830295L)
+    )
+)
+
+internal const val RIVE_THEMED_SPLASH_SCREEN_FEATURE_FLAG = 1073830411L
+
+/**
+ * Rive animation 'rive_themed_startup_animation', of a logo that turns into a play button.
+ */
+internal object RiveThemedSplashScreenFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(RIVE_THEMED_SPLASH_SCREEN_FEATURE_FLAG)
+    )
+)
+
+/**
+ * 21.39+ Rive animation 'rive_phantom', of a logo that comes into focus out of a glow.
+ * In earlier versions this flag selects a different Rive view.
+ */
+internal object RiveGlowSplashScreenFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(1073840124L)
+    )
+)
+
+/**
+ * Creates the startup animation view, and sets the field that the Rive animation is played.
+ */
+internal object RiveSplashScreenViewFingerprint : Fingerprint(
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        literal(1073830295L),
+        fieldAccess(
+            opcode = Opcode.IPUT_BOOLEAN,
+            type = "Z"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_BOOLEAN,
+            type = "Z",
+            location = MatchAfterImmediately()
+        ),
+        resourceLiteral(
+            ResourceType.LAYOUT,
+            "main_activity_modern_rive_startup_animation",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * 21.39+ Sets the view that the Rive animation is drawn in.
+ */
+internal object RiveSplashScreenAnimationViewFingerprint : Fingerprint(
+    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onCreate",
+    returnType = "V",
+    parameters = listOf("Landroid/os/Bundle;"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "rive_animation"),
+        methodCall(
+            name = "findViewById",
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT_OBJECT,
+            location = MatchAfterImmediately()
+        ),
+        checkCast(
+            "Landroid/widget/ImageView;",
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/widget/ImageView;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Closes the startup animation as soon as the home feed is shown.
+ */
+internal object SplashScreenOnStartFingerprint : Fingerprint(
+    classFingerprint = RiveSplashScreenViewFingerprint,
+    name = "onStart",
+    returnType = "V",
+    filters = listOf(
+        literal(1073815019L),
+        literal(1073828809L)
+    )
+)
+
+/**
+ * Creates the source of a Rive file that is a raw resource,
+ * with the key the app keeps the file in memory with.
+ */
+internal object RiveRawResourceSourceFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("I"),
+    filters = listOf(
+        string("raw_res_"),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Ljava/lang/String;",
+            location = MatchAfterWithin(3)
+        ),
+        string("resId must not be 0")
+    )
+)
+
+/**
+ * Reads the Rive file of a raw resource.
+ */
+internal object RiveReadRawResourceFingerprint : Fingerprint(
+    returnType = "[B",
+    parameters = listOf("I"),
+    filters = listOf(
+        string("readRawResource"),
+        methodCall(smali = "Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;"),
+        opcode(
+            opcode = Opcode.RETURN_OBJECT,
+            location = MatchAfterWithin(5)
+        )
+    )
 )
 
 internal object LottieLayerColorFingerprint : Fingerprint(

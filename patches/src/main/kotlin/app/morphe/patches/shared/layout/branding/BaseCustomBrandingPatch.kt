@@ -41,6 +41,7 @@ import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.removeFromParent
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
@@ -224,6 +225,9 @@ internal fun baseCustomBrandingPatch(
         fixRecycledBitmapPatch,
         bytecodePatch {
             execute {
+                // Custom branding changes the default splash screen style to the Morphe animation.
+                setExtensionIsPatchIncluded(EXTENSION_CLASS)
+
                 mainActivityOnCreateFingerprint.method.addInstruction(
                     0,
                     "invoke-static { }, $EXTENSION_CLASS->setBranding()V"
@@ -562,17 +566,6 @@ internal fun baseCustomBrandingPatch(
             ResourceGroup(
                 "mipmap-anydpi",
                 "$LAUNCHER_RESOURCE_NAME_PREFIX$CUSTOM_USER_ICON_STYLE_NAME.xml"
-            )
-        )
-
-        // Startup animation of each launcher foreground, played by the app hooks
-        // in place of the original one.
-        copyResources(
-            "custom-branding",
-            ResourceGroup(
-                "raw",
-                "morphe_startup_animation.json",
-                "morphe_startup_animation_play.json"
             )
         )
 

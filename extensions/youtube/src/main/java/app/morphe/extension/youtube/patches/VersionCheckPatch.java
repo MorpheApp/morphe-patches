@@ -28,4 +28,6 @@ public class VersionCheckPatch {
     public static final boolean IS_21_30_OR_GREATER = isVersionOrGreater("21.30.00");
 
     public static final boolean IS_21_36_OR_GREATER = isVersionOrGreater("21.36.00");
+
+    public static final boolean IS_21_39_OR_GREATER = isVersionOrGreater("21.39.00");
 }

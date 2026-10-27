@@ -18,6 +18,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.patches.CustomFontPatch.FontType;
 import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
@@ -1040,6 +1041,13 @@ public class Settings extends SharedYouTubeSettings {
         // 21.36+ has many visual glitches and problems with old thin player icons
         if (VersionCheckPatch.IS_21_36_OR_GREATER && !RESTORE_OLD_PLAYER_BUTTONS.isSetToDefault()) {
             RESTORE_OLD_PLAYER_BUTTONS.resetToDefault();
+        }
+
+        // The Rive startup animation requires 21.39+.
+        if (!VersionCheckPatch.IS_21_39_OR_GREATER
+                && SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW) {
+            Logger.printInfo(() -> "Resetting Rive splash screen animation style");
+            SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.resetToDefault();
         }
 
         // Android XR, Android XR Downgraded, and visionOS 1.03 are not selectable in the settings and are selected by spoof stream patch if needed.
