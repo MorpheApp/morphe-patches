@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4114
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -84,7 +84,11 @@ public class NotificationIconListPreference extends IconListPreference {
         for (int i = 0; i < values.length; i++) {
             String suffix = values[i].toString().toLowerCase(Locale.US);
             if ("follow".equals(suffix) && currentAppIconSuffix != null) {
-                suffix = currentAppIconSuffix;
+                // An app icon without a notification icon of its own, such as a launcher icon
+                // of the app, keeps the original notification icon.
+                suffix = resolveResId("morphe_notification_icon_" + currentAppIconSuffix) != 0
+                        ? currentAppIconSuffix
+                        : "original";
             }
             drawables[i] = buildNotificationIconDrawable(context, suffix, sizePx, cornerRadius, fgColor, bgColor);
         }

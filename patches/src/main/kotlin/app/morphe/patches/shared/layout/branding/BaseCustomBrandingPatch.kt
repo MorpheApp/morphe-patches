@@ -138,6 +138,10 @@ private val logger = Logger.getLogger(ResourcePatchContext::class.java.name)
 
 /**
  * Shared custom branding patch for YouTube and YT Music.
+ *
+ * @param appLauncherIconNames Launcher icons of the app that can be selected in the app settings,
+ * as the icon style name and the mipmap resource name. They are not patch option values,
+ * because older app versions do not have them.
  */
 internal fun baseCustomBrandingPatch(
     originalLauncherIconName: String,
@@ -150,6 +154,7 @@ internal fun baseCustomBrandingPatch(
     mainActivityName: String,
     activityAliasNameWithIntents: String,
     preferenceScreen: BasePreferenceScreen.Screen,
+    appLauncherIconNames: () -> Map<String, String> = { emptyMap() },
     block: ResourcePatchBuilder.() -> Unit,
     executeBlock: ResourcePatchContext.() -> Unit = {}
 ): ResourcePatch = resourcePatch(
@@ -434,6 +439,21 @@ internal fun baseCustomBrandingPatch(
                             )
                         }
 
+                        // Launcher icons of the app. Not enabled here, because they can only be
+                        // selected in the app settings.
+                        appLauncherIconNames().forEach { (style, iconMipmapName) ->
+                            application.appendChild(
+                                createAlias(
+                                    aliasName = aliasName(style),
+                                    iconMipmapName = iconMipmapName,
+                                    appNameIndex = appNameIndex,
+                                    useCustomName = useCustomNameLabel,
+                                    enabled = false,
+                                    intentFilters
+                                )
+                            )
+                        }
+
                         // User provided custom icon.
                         //
                         // Must add all aliases even if the user did not provide a custom icon of their own.
@@ -512,12 +532,15 @@ internal fun baseCustomBrandingPatch(
             ListPreference("morphe_custom_branding_name")
         }
 
+        // YouTube 21.41+ also has launcher icons of its own.
+        val arrayKeySuffix = if (appLauncherIconNames().isEmpty()) "" else "_21_41"
+
         if (useCustomIcon) {
             preferences += ListPreference(
                 key = "morphe_custom_branding_icon",
                 tag = "app.morphe.extension.shared.settings.preference.IconListPreference",
-                entriesKey = "morphe_custom_branding_icon_custom_entries",
-                entryValuesKey = "morphe_custom_branding_icon_custom_entry_values"
+                entriesKey = "morphe_custom_branding_icon${arrayKeySuffix}_custom_entries",
+                entryValuesKey = "morphe_custom_branding_icon${arrayKeySuffix}_custom_entry_values"
             )
             preferences += ListPreference(
                 key = "morphe_custom_branding_notification_icon",
@@ -528,7 +551,9 @@ internal fun baseCustomBrandingPatch(
         } else {
             preferences += ListPreference(
                 key = "morphe_custom_branding_icon",
-                tag = "app.morphe.extension.shared.settings.preference.IconListPreference"
+                tag = "app.morphe.extension.shared.settings.preference.IconListPreference",
+                entriesKey = "morphe_custom_branding_icon${arrayKeySuffix}_entries",
+                entryValuesKey = "morphe_custom_branding_icon${arrayKeySuffix}_entry_values"
             )
             preferences += ListPreference(
                 key = "morphe_custom_branding_notification_icon",
