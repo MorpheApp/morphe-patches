@@ -62,8 +62,8 @@ public class CustomBrandingPatch {
          * has these icons. If YouTube removes an icon, the alias must stay with a dummy icon.
          * Numbered like the icons of the app, so a theme can be reused if YouTube replaces an icon.
          */
-        YOUTUBE_ICON1, // CRT
-        YOUTUBE_ICON2, // Frosting
+        YOUTUBE_ICON1, // Neon
+        YOUTUBE_ICON2, // Cake
         YOUTUBE_ICON3; // Metal
 
         private String packageAndNameIndexToClassAlias(String packageName, int appIndex) {
