@@ -542,6 +542,9 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_external_downloader_quick_video">Video</string>
     <string name="morphe_external_downloader_quick_audio">Audio</string>
     <string name="morphe_external_downloader_quick_options">All options</string>
+    <string name="morphe_shorts_download_flyout_button_title">Show download in Shorts menu</string>
+    <string name="morphe_shorts_download_flyout_button_summary">Adds a Download item to the menu of Shorts, which opens your external downloader</string>
+    <string name="morphe_shorts_download_flyout_title">Download</string>
 
     <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
     <string name="morphe_vot_screen_title">Voice over translation</string>

@@ -25,6 +25,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -38,6 +39,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -64,7 +66,8 @@ private val downloadsResourcePatch = resourcePatch {
                         tag = "app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference",
                     ),
                     SwitchPreference("morphe_external_downloader_quick_menu", summary = true),
-                    SwitchPreference("morphe_external_downloader_mark_watched", summary = true)
+                    SwitchPreference("morphe_external_downloader_mark_watched", summary = true),
+                    SwitchPreference("morphe_shorts_download_flyout_button", summary = true)
                 )
             )
         )
@@ -96,6 +99,9 @@ private const val EXTENSION_IN_APP_DOWNLOADS_CLASS = "Lapp/morphe/extension/yout
 
 private const val EXTENSION_SPOOF_CLASS = "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
+private const val EXTENSION_SHORTS_DOWNLOAD_BUTTON =
+    "Lapp/morphe/extension/youtube/videoplayer/ShortsDownloadButton;"
+
 private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/ExternalDownloadButton;"
 
 private const val GET_GENERATED_REGISTRY =
@@ -115,13 +121,16 @@ val downloadsPatch = bytecodePatch(
         legacyPlayerControlsPatch,
         fixProtoLibraryPatch,
         spoofVideoStreamsPatch,
-        elementProtoParserHookPatch
+        elementProtoParserHookPatch,
+        flyoutPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         initializeTopControl(EXTENSION_BUTTON)
+
+        setExtensionIsPatchIncluded(EXTENSION_SHORTS_DOWNLOAD_BUTTON)
 
         OfflineVideoEndpointFingerprint.method.apply {
             addInstructionsWithLabels(

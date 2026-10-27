@@ -35,8 +35,25 @@ public final class DownloadsPatch {
      * Appears to always be called from the main thread.
      */
     public static boolean inAppDownloadButtonOnClick(String videoId) {
+        return downloadVideo(videoId);
+    }
+
+    /**
+     * @return If videos are downloaded by Morphe instead of the app,
+     *         so download buttons can be added where the app has none, such as the Shorts player.
+     */
+    public static boolean isDownloadModeHandledByMorphe() {
+        return Settings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL;
+    }
+
+    /**
+     * Downloads a video with the download mode that is set.
+     *
+     * @return If the download was handled, otherwise the app downloads the video itself.
+     */
+    public static boolean downloadVideo(String videoId) {
         try {
-            if (Settings.DOWNLOAD_MODE.get() != DownloadMode.EXTERNAL) {
+            if (!isDownloadModeHandledByMorphe()) {
                 return false;
             }
 
@@ -48,7 +65,7 @@ public final class DownloadsPatch {
             ExternalDownloadButton.launchDownloader(Utils.getActivity(), videoId, null);
             return true;
         } catch (Exception ex) {
-            Logger.printException(() -> "inAppDownloadButtonOnClick failure", ex);
+            Logger.printException(() -> "downloadVideo failure", ex);
         }
         return false;
     }

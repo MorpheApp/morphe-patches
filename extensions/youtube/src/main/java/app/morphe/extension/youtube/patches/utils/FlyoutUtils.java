@@ -70,8 +70,11 @@ import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponent
 import app.morphe.extension.youtube.patches.playback.speed.ShortsPlaybackSpeedFlyoutPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.EngagementPanel;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.videoplayer.PictureinPictureButton;
 import app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton;
+import app.morphe.extension.youtube.videoplayer.ShortsDownloadButton;
 import app.morphe.extension.youtube.videoplayer.VideoDelayDialogButton;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
 
@@ -350,6 +353,17 @@ public final class FlyoutUtils {
      * and only gets the playback speed item.
      */
     private static boolean isShortsPlayerFlyout;
+
+    /**
+     * Items of the menu of the Shorts player, to tell it apart from the other
+     * bottom sheets opened in the Shorts player, such as the share sheet.
+     */
+    private static final List<String> SHORTS_PLAYER_MENU_BUTTONS = List.of(
+            "ALIGN_LEFT", // Description.
+            "NERD_STATS", // Stats for nerds.
+            "FLAG",       // Report.
+            "FEEDBACK"    // Send feedback.
+    );
     /**
      * Channel of the video of the open menu. It loads in the background, so the menu never waits for it.
      */
@@ -549,10 +563,11 @@ public final class FlyoutUtils {
         // onto whatever this call adds instead.
         customItemTextRefs.clear();
 
-        isShortsPlayerFlyout = ShortsPlaybackSpeedFlyoutPatch.isPatchIncluded()
-                && ShortsPlaybackSpeedFlyoutPatch.showFlyoutButton(isShortFlyout);
+        isShortsPlayerFlyout = (ShortsPlaybackSpeedFlyoutPatch.isPatchIncluded()
+                || ShortsDownloadButton.isPatchIncluded())
+                && isShortsPlayerMenu();
         if (isShortsPlayerFlyout) {
-            nextButtonIndex = ShortsPlaybackSpeedFlyoutPatch.addFlyoutButton(flyoutPanel, nextButtonIndex);
+            nextButtonIndex = addShortsPlayerFlyoutButtons(flyoutPanel, nextButtonIndex);
         } else {
             nextButtonIndex = addVideoFlyoutButtons(flyoutPanel, nextButtonIndex);
         }
@@ -564,6 +579,43 @@ public final class FlyoutUtils {
         // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
         // overlay settings, to prevent them from also being added into nested menus.
         PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
+    }
+
+    /**
+     * @return If the menu is the menu of the Shorts player, and not another bottom sheet
+     *         opened in the Shorts player, such as the share sheet or the menu of a comment.
+     */
+    private static boolean isShortsPlayerMenu() {
+        if (!ShortsPlayerState.isOpen()
+                || isShortFlyout
+                // Menus opened inside a panel, such as the menu of a comment.
+                || EngagementPanel.getLastOpenedPanelId() != null) {
+            return false;
+        }
+        for (Pair<String, Integer> button : visibleFlyoutButtons) {
+            if (SHORTS_PLAYER_MENU_BUTTONS.contains(button.first)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int addShortsPlayerFlyoutButtons(Object flyoutPanel, int nextButtonIndex) {
+        if (ShortsPlaybackSpeedFlyoutPatch.isPatchIncluded()
+                && ShortsPlaybackSpeedFlyoutPatch.showFlyoutButton()) {
+            nextButtonIndex = ShortsPlaybackSpeedFlyoutPatch.addFlyoutButton(flyoutPanel, nextButtonIndex);
+        }
+
+        if (ShortsDownloadButton.isPatchIncluded()) {
+            final String flyoutVideoId = getFlyoutVideoId();
+            nextButtonIndex = ShortsDownloadButton.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    flyoutVideoId.isEmpty() ? VideoInformation.getVideoId() : flyoutVideoId
+            );
+        }
+
+        return nextButtonIndex;
     }
 
     private static int addVideoFlyoutButtons(Object flyoutPanel, int nextButtonIndex) {
@@ -625,6 +677,15 @@ public final class FlyoutUtils {
                     videoMarkedAsForKids,
                     isShortFlyout,
                     PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
+            );
+        }
+
+        // The menus of Shorts in the feed have no download option.
+        if (ShortsDownloadButton.isPatchIncluded() && isShortFlyout) {
+            nextButtonIndex = ShortsDownloadButton.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    flyoutVideoId
             );
         }
 
