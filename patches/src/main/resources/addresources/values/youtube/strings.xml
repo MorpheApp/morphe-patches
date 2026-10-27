@@ -1366,7 +1366,7 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_fix_status_bar_layout_summary">Keeps the layout of the status bar consistent, so it does not cover the top bars and leaves no empty space above the player. Turn this off if the app crashes or the top bars look wrong</string>
 
     <!-- layout.theme.themePatch -->
-    <string name="morphe_splash_screen_animation_style_entry_6">Glow</string>
+    <string name="morphe_splash_screen_style_entry_6">Glow</string>
     <string name="morphe_theme_color_light_title">Light theme background</string>
     <string name="morphe_theme_color_light_entry_2">White</string>
     <string name="morphe_theme_color_light_entry_3">Material You (White)</string>

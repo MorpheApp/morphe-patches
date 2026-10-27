@@ -40,28 +40,28 @@ public class SplashAnimationPatch {
 
     public enum SplashScreenAnimationStyle {
         // 0 int style exists in target app as a fall through default, but its value is repurposed to be disabled.
-        DISABLED(0),
-        FPS_60_ONE_SECOND(1),
-        FPS_60_TWO_SECOND(2),
-        FPS_60_FIVE_SECOND(3),
-        FPS_60_BLACK_AND_WHITE(4),
-        FPS_30_ONE_SECOND(5),
-        FPS_30_TWO_SECOND(6),
-        FPS_30_FIVE_SECOND(7),
-        FPS_30_BLACK_AND_WHITE(8),
+        DISABLED(0, false),
+        FPS_60_ONE_SECOND(1, false),
+        FPS_60_TWO_SECOND(2, false),
+        FPS_60_FIVE_SECOND(3, false),
+        FPS_60_BLACK_AND_WHITE(4, true),
+        FPS_30_ONE_SECOND(5, false),
+        FPS_30_TWO_SECOND(6, false),
+        FPS_30_FIVE_SECOND(7, false),
+        FPS_30_BLACK_AND_WHITE(8, true),
         /**
          * YouTube 21.39+ Rive animation of a logo that comes into focus out of a colored glow.
          * Low memory devices cannot play it and get the Lottie animation of this style instead.
          */
-        RIVE_GLOW(1),
+        RIVE_GLOW(1, false),
         /**
          * Morphe animation of the launcher icon, which replaces the Lottie animation of the app.
          */
-        MORPHE_COLOR(1),
+        MORPHE_COLOR(1, false),
         /**
          * Morphe animation of the launcher icon in the foreground color of the theme.
          */
-        MORPHE_MONOCHROME(1);
+        MORPHE_MONOCHROME(1, true);
         // There exists a 10th JSON style used as the switch statement default,
         // but visually it is identical to 60fps one second.
         //
@@ -82,8 +82,14 @@ public class SplashAnimationPatch {
 
         public final int style;
 
-        SplashScreenAnimationStyle(int style) {
+        /**
+         * If the animation is drawn in the foreground color of the theme, or in black and white.
+         */
+        public final boolean isMonochrome;
+
+        SplashScreenAnimationStyle(int style, boolean isMonochrome) {
             this.style = style;
+            this.isMonochrome = isMonochrome;
         }
     }
 
@@ -96,9 +102,7 @@ public class SplashAnimationPatch {
     private static final String BRAND_GRADIENT = "[0,0.117647,0.352941,0.658824,1,0,0.686275,0.682353]";
 
     public static boolean isMonochrome() {
-        SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get();
-        return style == SplashScreenAnimationStyle.FPS_30_BLACK_AND_WHITE
-                || style == SplashScreenAnimationStyle.FPS_60_BLACK_AND_WHITE;
+        return SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().isMonochrome;
     }
 
     /**
@@ -108,7 +112,7 @@ public class SplashAnimationPatch {
      * @return If a Morphe animation was played, and the original one should not be.
      */
     public static boolean setBrandedSplashAnimation(LottieAnimationView view) {
-        SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get();
+        SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
         if (style != SplashScreenAnimationStyle.MORPHE_COLOR && style != SplashScreenAnimationStyle.MORPHE_MONOCHROME) {
             return false;
         }
@@ -118,7 +122,7 @@ public class SplashAnimationPatch {
             return false;
         }
 
-        if (style == SplashScreenAnimationStyle.MORPHE_MONOCHROME) {
+        if (style.isMonochrome) {
             // A gradient of a single color is a flat fill, so the same file
             // also serves as the monochrome animation.
             final int color = ThemeUtils.getAppForegroundColor();

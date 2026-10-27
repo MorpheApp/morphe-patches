@@ -175,7 +175,7 @@ public class CustomBrandingPatch {
      * Injection point.
      */
     public static View getLottieViewOrNull(View lottieStartupView) {
-        if (SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get()
+        if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get()
                 == SplashAnimationPatch.SplashScreenAnimationStyle.DISABLED) {
             return null;
         }
@@ -190,6 +190,29 @@ public class CustomBrandingPatch {
         return false; // Modified during patching.
     }
 
+    private static BrandingTheme getLauncherIconBranding() {
+        if (!isPatchIncluded()) {
+            // The app keeps its original icon.
+            return BrandingTheme.ORIGINAL;
+        }
+
+        if (GmsCoreSupportPatch.isPackageNameOriginal()) {
+            // A mounted install cannot change the icon at runtime.
+            return mountedIconApplied()
+                    ? getDefaultIconStyle()
+                    : BrandingTheme.ORIGINAL;
+        }
+
+        return SharedYouTubeSettings.CUSTOM_BRANDING_ICON.get();
+    }
+
+    /**
+     * If the launcher icon has a Morphe startup animation of its own.
+     */
+    public static boolean iconHasStartupAnimation() {
+        return getLauncherIconBranding().startupAnimationResourceName() != null;
+    }
+
     /**
      * The branded startup animation that matches the launcher icon. The original icon and a user
      * provided icon have no animation of their own, and use the animation of the default icon.
@@ -198,20 +221,7 @@ public class CustomBrandingPatch {
      */
     public static int getStartupAnimation() {
         try {
-            BrandingTheme branding;
-            if (!isPatchIncluded()) {
-                // The app keeps its original icon.
-                branding = BrandingTheme.ORIGINAL;
-            } else if (GmsCoreSupportPatch.isPackageNameOriginal()) {
-                // A mounted install cannot change the icon at runtime.
-                branding = mountedIconApplied()
-                        ? getDefaultIconStyle()
-                        : BrandingTheme.ORIGINAL;
-            } else {
-                branding = SharedYouTubeSettings.CUSTOM_BRANDING_ICON.get();
-            }
-
-            String animationName = branding.startupAnimationResourceName();
+            String animationName = getLauncherIconBranding().startupAnimationResourceName();
             if (animationName == null) {
                 animationName = BrandingTheme.BLACK.startupAnimationResourceName();
             }

@@ -62,9 +62,9 @@ val splashAnimationPatch = bytecodePatch {
 
         PreferenceScreen.GENERAL.addPreferences(
             ListPreference(
-                key = "morphe_splash_screen_animation_style",
-                entriesKey = "morphe_splash_screen_animation_style${arrayKeySuffix}_entries",
-                entryValuesKey = "morphe_splash_screen_animation_style${arrayKeySuffix}_entry_values"
+                key = "morphe_splash_screen_style",
+                entriesKey = "morphe_splash_screen_style${arrayKeySuffix}_entries",
+                entryValuesKey = "morphe_splash_screen_style${arrayKeySuffix}_entry_values"
             )
         )
 

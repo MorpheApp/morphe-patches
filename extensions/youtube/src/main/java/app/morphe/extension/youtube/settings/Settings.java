@@ -1045,9 +1045,9 @@ public class Settings extends SharedYouTubeSettings {
 
         // The Rive startup animation requires 21.39+.
         if (!VersionCheckPatch.IS_21_39_OR_GREATER
-                && SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW) {
+                && SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW) {
             Logger.printInfo(() -> "Resetting Rive splash screen animation style");
-            SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.resetToDefault();
+            SharedYouTubeSettings.SPLASH_SCREEN_STYLE.resetToDefault();
         }
 
         // Android XR, Android XR Downgraded, and visionOS 1.03 are not selectable in the settings and are selected by spoof stream patch if needed.

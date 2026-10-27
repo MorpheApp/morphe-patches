@@ -18,14 +18,14 @@
          YT Music has a single animation, so the same styles apply to it.
          YouTube 21.39+ uses its own arrays that add the Rive animation.
          Imported settings data can still be manually edited to force the other styles. -->
-    <string-array name="morphe_splash_screen_animation_style_entries">
-        <item>@string/morphe_splash_screen_animation_style_entry_1</item>
-        <item>@string/morphe_splash_screen_animation_style_entry_2</item>
-        <item>@string/morphe_splash_screen_animation_style_entry_3</item>
-        <item>@string/morphe_splash_screen_animation_style_entry_4</item>
-        <item>@string/morphe_splash_screen_animation_style_entry_5</item>
+    <string-array name="morphe_splash_screen_style_entries">
+        <item>@string/morphe_splash_screen_style_entry_1</item>
+        <item>@string/morphe_splash_screen_style_entry_2</item>
+        <item>@string/morphe_splash_screen_style_entry_3</item>
+        <item>@string/morphe_splash_screen_style_entry_4</item>
+        <item>@string/morphe_splash_screen_style_entry_5</item>
     </string-array>
-    <string-array name="morphe_splash_screen_animation_style_entry_values">
+    <string-array name="morphe_splash_screen_style_entry_values">
         <item>DISABLED</item>
         <item>FPS_60_ONE_SECOND</item>
         <item>MORPHE_COLOR</item>

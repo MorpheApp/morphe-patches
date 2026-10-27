@@ -43,7 +43,7 @@ private val startupAnimationPatch = bytecodePatch {
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            ListPreference("morphe_splash_screen_animation_style")
+            ListPreference("morphe_splash_screen_style")
         )
 
         // The style decides if the original animation, the Morphe animation or none is played.

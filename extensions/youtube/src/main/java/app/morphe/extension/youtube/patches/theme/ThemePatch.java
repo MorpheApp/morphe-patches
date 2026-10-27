@@ -117,7 +117,7 @@ public class ThemePatch extends BaseThemePatch {
     private static volatile int riveGlowBackgroundColor;
 
     private static boolean isRiveSplashScreenEnabled() {
-        return SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW;
+        return SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW;
     }
 
     private static boolean isRiveGlowFile(int resourceId) {
@@ -318,14 +318,14 @@ public class ThemePatch extends BaseThemePatch {
      * Injection point.
      */
     public static boolean showSplashScreen(boolean original) {
-        return SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get() != SplashScreenAnimationStyle.DISABLED && original;
+        return SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() != SplashScreenAnimationStyle.DISABLED && original;
     }
 
     /**
      * Injection point.
      */
     public static int showSplashScreen(int i, int i2) {
-        if (SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get() != SplashScreenAnimationStyle.DISABLED || i != i2) {
+        if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() != SplashScreenAnimationStyle.DISABLED || i != i2) {
             return i;
         }
         return i - 1;
@@ -335,7 +335,7 @@ public class ThemePatch extends BaseThemePatch {
      * Injection point.
      */
     public static int getLoadingScreenType(int original) {
-        SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get();
+        SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
 
         if (style == SplashScreenAnimationStyle.DISABLED) {
             return original;
