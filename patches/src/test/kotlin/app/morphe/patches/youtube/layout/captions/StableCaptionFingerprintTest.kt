@@ -123,6 +123,13 @@ class StableCaptionFingerprintTest {
     }
 
     @Test
+    fun `missing nested fingerprint retains base caption support`() {
+        assertNull(optionalCaptionSupport("nested fingerprint") {
+            throw app.morphe.patcher.patch.PatchException("Missing optional native factory")
+        })
+    }
+
+    @Test
     fun `unrelated programming errors are not hidden as compatibility failures`() {
         assertFailsWith<ArithmeticException> {
             optionalCaptionSupport("test layout") { throw ArithmeticException("test") }

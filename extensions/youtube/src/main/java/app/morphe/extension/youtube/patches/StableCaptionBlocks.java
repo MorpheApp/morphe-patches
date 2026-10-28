@@ -1,4 +1,9 @@
-/* Copyright 2026 Morphe. See NOTICE for the GPLv3 Section 7 terms. */
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4149
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
 package app.morphe.extension.youtube.patches;
 
 import android.os.Build;
@@ -9,9 +14,6 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.view.View;
 
-import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.settings.Settings;
-
 import org.w3c.dom.Document;
 
 import java.lang.ref.WeakReference;
@@ -21,6 +23,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.CancellationException;
+
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.settings.Settings;
 
 /** Native source timing and phone paint, with complete immutable text between block boundaries. */
 @SuppressWarnings("unused")

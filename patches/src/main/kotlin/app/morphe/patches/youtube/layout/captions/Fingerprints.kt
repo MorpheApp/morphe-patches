@@ -19,6 +19,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -651,8 +652,8 @@ internal fun isCaptionCueConstructor(method:MethodReference):Boolean =
 /** Only read-only discovery belongs here; mutations must follow successful preflight. */
 internal fun <T> optionalCaptionSupport(feature:String,resolve:()->T):T? = try {
  resolve()
-} catch (error:RuntimeException) {
- if(error !is IllegalStateException && error !is IllegalArgumentException && error !is NoSuchElementException)throw error
+} catch (error:Exception) {
+ if(error !is PatchException && error !is IllegalStateException && error !is IllegalArgumentException && error !is NoSuchElementException)throw error
  Logger.getLogger(BytecodePatchContext::class.java.name).warning("Optional $feature unavailable: ${error.message}")
  null
 }

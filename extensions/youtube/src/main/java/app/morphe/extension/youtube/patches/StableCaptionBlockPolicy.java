@@ -1,11 +1,22 @@
-/* Copyright 2026 Morphe. See NOTICE for the GPLv3 Section 7 terms. */
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4149
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.youtube.patches.CaptionXml.children;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /** Source-timed complete blocks; the renderer supplies the actual two-line capacity. */
 final class StableCaptionBlockPolicy {

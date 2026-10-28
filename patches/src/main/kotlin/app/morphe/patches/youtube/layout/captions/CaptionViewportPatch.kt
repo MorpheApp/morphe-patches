@@ -1,4 +1,10 @@
-/* Copyright 2026 Morphe. See NOTICE for the GPLv3 Section 7 terms. */
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4149
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.Fingerprint

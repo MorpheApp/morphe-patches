@@ -1,15 +1,21 @@
-/* Copyright 2026 Morphe. See NOTICE for the GPLv3 Section 7 terms. */
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4149
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import android.content.res.Configuration;
 import android.os.Looper;
 import android.view.View;
 
-import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.shared.PlayerType;
-
 import java.lang.ref.WeakReference;
 import java.util.List;
+
+import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PlayerType;
 
 /** Preserve YouTube's font formula and preference scale, using known fitted content height. */
 @SuppressWarnings("unused")
