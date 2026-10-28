@@ -12,26 +12,26 @@ public class CaptionViewportPolicyTest {
         CaptionViewportPolicy p = new CaptionViewportPolicy();
         p.select(A);
         p.record(A, 1920, 1080);
-        assertEquals(1229, p.height(2184, 1968, true));
+        assertEquals(1229, p.height(2184, 1968, true, false));
         p.record(A, 1440, 1080);
-        assertEquals(1638, p.height(2184, 1968, true));
+        assertEquals(1638, p.height(2184, 1968, true, false));
         p.record(A, 1080, 1080);
-        assertEquals(1968, p.height(2184, 1968, true));
+        assertEquals(1968, p.height(2184, 1968, true, false));
         p.record(A, 1080, 1920);
-        assertEquals(1968, p.height(2184, 1968, true));
+        assertEquals(1968, p.height(2184, 1968, true, false));
     }
 
     @Test
     public void preservesOrdinaryPortraitInlineAndUnknownGeometry() {
         CaptionViewportPolicy p = new CaptionViewportPolicy();
         p.select(A);
-        assertEquals(1968, p.height(2184, 1968, true));
+        assertEquals(1968, p.height(2184, 1968, true, false));
         p.record(A, 1920, 1080);
-        assertEquals(608, p.height(1080, 608, true));
-        assertEquals(1080, p.height(2520, 1080, true));
-        assertEquals(2184, p.height(1968, 2184, true));
-        assertEquals(1968, p.height(2184, 1968, false));
-        assertEquals(0, p.height(2184, 0, true));
+        assertEquals(608, p.height(1080, 608, true, false));
+        assertEquals(1080, p.height(2520, 1080, true, false));
+        assertEquals(2184, p.height(1968, 2184, true, false));
+        assertEquals(1968, p.height(2184, 1968, false, false));
+        assertEquals(0, p.height(2184, 0, true, false));
     }
 
     @Test
@@ -40,11 +40,11 @@ public class CaptionViewportPolicyTest {
         p.select(A);
         p.record(A, 1920, 1080);
         p.record(B, 1440, 1080);
-        assertEquals(1229, p.height(2184, 1968, true));
+        assertEquals(1229, p.height(2184, 1968, true, false));
         p.select(B);
-        assertEquals(1638, p.height(2184, 1968, true));
+        assertEquals(1638, p.height(2184, 1968, true, false));
         p.select("unknown0001");
-        assertEquals(1968, p.height(2184, 1968, true));
+        assertEquals(1968, p.height(2184, 1968, true, false));
     }
 
     @Test
@@ -52,11 +52,11 @@ public class CaptionViewportPolicyTest {
         CaptionViewportPolicy p = new CaptionViewportPolicy();
         p.record(A, 1920, 1080);
         p.select(A);
-        assertEquals(1229, p.height(2184, 1968, true));
+        assertEquals(1229, p.height(2184, 1968, true, false));
         p.select(B);
-        assertEquals(1968, p.height(2184, 1968, true));
+        assertEquals(1968, p.height(2184, 1968, true, false));
         p.record(B, 1920, 1080);
-        assertEquals(1229, p.height(2184, 1968, true));
+        assertEquals(1229, p.height(2184, 1968, true, false));
     }
 
     @Test
@@ -67,9 +67,9 @@ public class CaptionViewportPolicyTest {
         p.record(A, 0, 1080);
         p.record(A, -1, 1080);
         p.record(A, 100000, 1);
-        assertEquals(1229, p.height(2184, 1968, true));
+        assertEquals(1229, p.height(2184, 1968, true, false));
         p.select(null);
-        assertEquals(1968, p.height(2184, 1968, true));
+        assertEquals(1968, p.height(2184, 1968, true, false));
     }
 
     @Test
@@ -78,8 +78,13 @@ public class CaptionViewportPolicyTest {
         p.select(A);
         p.record(A, 1920, 1080);
         for (int i = 0; i < 100; i++) p.record(String.format("%011d", i), 1440, 1080);
-        assertEquals(1229, p.height(2184, 1968, true));
-        assertTrue(p.size() <= 32);
+        assertEquals(1229, p.height(2184, 1968, true, false));
+        p.select(String.format("%011d", 68));
+        assertEquals(1968, p.height(2184, 1968, true, false));
+        p.select(String.format("%011d", 69));
+        assertEquals(1638, p.height(2184, 1968, true, false));
+        p.select(String.format("%011d", 99));
+        assertEquals(1638, p.height(2184, 1968, true, false));
     }
 
     @Test

@@ -100,7 +100,7 @@ internal val translatedCaptionPensPatch = bytecodePatch(
     }
 }
 
-/** Register optional processing after the shared native request has resolved its track. */
+/** Register optional processing after the shared caption classification. */
 internal fun BytecodePatchContext.hookParsedCaptionTrack(descriptor: String) {
     mutableClassDefBy(EXTENSION_CLASS).methods.first { it.name == "onParsedTrack" }
         .addInstruction(0, "invoke-static { p0 }, $descriptor")

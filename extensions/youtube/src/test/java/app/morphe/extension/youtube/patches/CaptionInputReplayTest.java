@@ -69,8 +69,10 @@ public class CaptionInputReplayTest {
                         closed[0] = true;
                     }
                 };
+        Track track = new Track();
         TranslatedCaptionPensPatch.setParsedRequest(
-                (TranslatedCaptionPensPatch.CaptionRequestInterface) Track::new);
+                (TranslatedCaptionPensPatch.CaptionRequestInterface) () -> track);
+        assertEquals(1, track.vssReads);
         InputStream repaired = TranslatedCaptionPensPatch.repairInput(original);
         assertEquals(2, CaptionXml.read(read(repaired)).getElementsByTagName("p").getLength());
         assertFalse(closed[0]);
@@ -82,7 +84,25 @@ public class CaptionInputReplayTest {
         assertSame(next, TranslatedCaptionPensPatch.repairInput(next));
     }
 
+    @Test
+    public void failedSourceGetterClearsRepairAndPreservesTranslatedStyle() throws Exception {
+        Track track = new Track();
+        TranslatedCaptionPensPatch.CaptionRequestInterface request = () -> track;
+        try {
+            TranslatedCaptionPensPatch.setParsedRequest(request);
+            track.urlUnavailable = true;
+            TranslatedCaptionPensPatch.setParsedRequest(request);
+            assertEquals(Integer.MIN_VALUE, TranslatedCaptionPensPatch.getPenId(7));
+            InputStream input = new ByteArrayInputStream(new byte[] {1});
+            assertSame(input, TranslatedCaptionPensPatch.repairInput(input));
+        } finally {
+            TranslatedCaptionPensPatch.setParsedRequest(null);
+        }
+    }
+
     private static final class Track implements AutoTranslateCaptionsPatch.CaptionTrackInterface {
+        int vssReads;
+        boolean urlUnavailable;
         @Override
         public String patch_getLanguageCode() {
             return "de";
@@ -90,11 +110,13 @@ public class CaptionInputReplayTest {
 
         @Override
         public String patch_getVssId() {
+            vssReads++;
             return "ta.en.de";
         }
 
         @Override
         public String patch_getUrl() {
+            if (urlUnavailable) throw new NoSuchMethodError("URL getter unavailable");
             return "https://www.youtube.com/api/timedtext?kind=asr&lang=en&tlang=de";
         }
 

@@ -23,8 +23,12 @@ public class StableCaptionBlockPolicyTest {
         return "<s t='" + t + "'>" + text + "</s>";
     }
 
+    private static StableCaptionBlockPolicy parse(byte[] input) {
+        return StableCaptionBlockPolicy.parse(CaptionXml.read(input));
+    }
+
     static StableCaptionBlockPolicy policy(String body) {
-        StableCaptionBlockPolicy p = StableCaptionBlockPolicy.parse(xml(body));
+        StableCaptionBlockPolicy p = parse(xml(body));
         assertNotNull(p);
         return p;
     }
@@ -56,7 +60,7 @@ public class StableCaptionBlockPolicyTest {
             assertEquals(before.get(i).end, after.get(i).end);
             assertEquals(before.get(i).text, after.get(i).text);
         }
-        assertSame(repaired, TranslatedRollingCaptionPolicy.repair(repaired));
+        assertSame(repaired, TranslatedRollingCaptionPolicy.repair(repaired, CaptionXml.read(repaired)));
         assertSame(source, TranslatedRollingCaptionPolicy.repair(source, null));
     }
 
@@ -160,24 +164,24 @@ public class StableCaptionBlockPolicyTest {
 
     @Test
     public void unsupportedStructureFallsBackBeforePresentation() {
-        assertNull(StableCaptionBlockPolicy.parse(xml("<w t='1' id='2'/>" + p(0, 1000, "hello"))));
-        assertNull(StableCaptionBlockPolicy.parse(xml(p(0, 1000, "<b>styled</b>"))));
-        assertNull(StableCaptionBlockPolicy.parse(xml(p(0, 1000, s(500, "a ") + s(100, "b")))));
+        assertNull(parse(xml("<w t='1' id='2'/>" + p(0, 1000, "hello"))));
+        assertNull(parse(xml(p(0, 1000, "<b>styled</b>"))));
+        assertNull(parse(xml(p(0, 1000, s(500, "a ") + s(100, "b")))));
     }
 
     @Test
     public void recognizesOnlyVerifiedAutomaticTracks() {
         assertTrue(
-                StableCaptionBlockPolicy.automatic(
+                AutoTranslateCaptionsPatch.isAutomaticCaption(
                         "a.en", "https://www.youtube.com/api/timedtext?kind=asr"));
         assertTrue(
-                StableCaptionBlockPolicy.automatic(
+                AutoTranslateCaptionsPatch.isAutomaticCaption(
                         "ta.en.tr", "https://www.youtube.com/api/timedtext?kind=asr&tlang=tr"));
         assertFalse(
-                StableCaptionBlockPolicy.automatic(
+                AutoTranslateCaptionsPatch.isAutomaticCaption(
                         ".en", "https://www.youtube.com/api/timedtext?kind=asr"));
         assertFalse(
-                StableCaptionBlockPolicy.automatic(
+                AutoTranslateCaptionsPatch.isAutomaticCaption(
                         "a.en", "https://evil.example/api/timedtext?kind=asr"));
     }
 
@@ -208,9 +212,9 @@ public class StableCaptionBlockPolicyTest {
                 "<timedtext format='3'><head><pen id='1' b='1'/></head><body><w t='0' id='1'/>"
                         + p(0, 1000, "style")
                         + "</body></timedtext>";
-        assertNull(StableCaptionBlockPolicy.parse(styled.getBytes(StandardCharsets.UTF_8)));
+        assertNull(parse(styled.getBytes(StandardCharsets.UTF_8)));
         assertNull(
-                StableCaptionBlockPolicy.parse(
+                parse(
                         xml(p(0, 1000, s(0, "x".repeat(3000)) + s(0, "y".repeat(3000))))));
     }
 

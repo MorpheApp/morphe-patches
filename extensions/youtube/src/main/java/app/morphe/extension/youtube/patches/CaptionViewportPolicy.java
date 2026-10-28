@@ -35,10 +35,6 @@ final class CaptionViewportPolicy {
         }
     }
 
-    synchronized int height(int width, int height, boolean fullscreenFit) {
-        return height(width, height, fullscreenFit, false);
-    }
-
     synchronized int height(
             int width, int height, boolean fullscreenFit, boolean landscapeTransition) {
         if (!fullscreenFit || width <= 0 || height <= 0 || selected == null) return height;
@@ -50,7 +46,4 @@ final class CaptionViewportPolicy {
         return (int) Math.min(height, Math.max(1L, Math.round(width / aspect)));
     }
 
-    synchronized int size() {
-        return aspects.size();
-    }
 }

@@ -56,32 +56,24 @@ public class TranslatedCaptionPensPatch {
      */
     public static void setParsedRequest(@Nullable Object request) {
         Object track = null;
-        boolean translated = false;
+        String vss = null;
+        boolean automatic = false;
         try {
             if (request instanceof CaptionRequestInterface captionRequest)
                 track = captionRequest.patch_getCaptionTrack();
-            translated = track instanceof PreferredCaptionLanguagePatch.CaptionTrackInterface t
-                    // Auto-translated vss ids are "t" + source vss id + "." + language code.
-                    && t.patch_getVssId().startsWith("t");
+            if (track instanceof PreferredCaptionLanguagePatch.CaptionTrackInterface t)
+                vss = t.patch_getVssId();
         } catch (RuntimeException | LinkageError ignored) {
-            // Unknown native layouts must not retain the previous decoder's styling.
+            // Unknown native layouts must clear the previous decoder's state.
         }
-        // A failed native getter must not leave the previous translated state enabled.
-        isAutoTranslatedTrack.set(translated);
-        setTranslatedAsrTrack(track);
-        onParsedTrack(track);
-    }
-
-    private static void setTranslatedAsrTrack(Object track) {
-        boolean active = false;
         try {
-            active =
-                    track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface t
-                            && TranslatedRollingCaptionPolicy.isTranslatedAsr(
-                                    t.patch_getVssId(), t.patch_getUrl());
+            automatic = track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface t
+                    && AutoTranslateCaptionsPatch.isAutomaticCaption(vss, t.patch_getUrl());
         } catch (RuntimeException | LinkageError ignored) {
         }
-        translatedAsr.set(active);
+        isAutoTranslatedTrack.set(vss != null && vss.startsWith("t"));
+        translatedAsr.set(automatic && vss.startsWith("ta."));
+        onParsedTrack(automatic);
     }
 
     public static InputStream repairInput(InputStream input) throws IOException {
@@ -108,7 +100,7 @@ public class TranslatedCaptionPensPatch {
     }
 
     /** Optional caption patches add their observers here; native request getters run only once. */
-    private static void onParsedTrack(@Nullable Object track) {}
+    private static void onParsedTrack(boolean automatic) {}
 
 
     /**

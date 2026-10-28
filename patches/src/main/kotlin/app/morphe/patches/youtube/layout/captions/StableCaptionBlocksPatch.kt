@@ -355,7 +355,7 @@ internal val stableCaptionBlocksPatch =
                     )
                 } ?: return@execute
             val (layout, fields, defaults, setter, lines, row, presenter, factories) = support
-            hookParsedCaptionTrack("$BLOCKS->setTrack(Ljava/lang/Object;)V")
+            hookParsedCaptionTrack("$BLOCKS->setAutomaticTrack(Z)V")
             mutableClassDefBy(layout.cueType).apply {
                 interfaces.add("${BLOCKS.removeSuffix(";")}\$Cue;")
                 addHelperMethod(
@@ -445,7 +445,7 @@ internal val stableCaptionBlocksPatch =
                     .single { it.name == "onMeasure" && it.parameterTypes == listOf("I", "I") }
                     .addInstructions(
                         0,
-                        "invoke-static/range { p0 .. p2 }, $BLOCKS->prepare(Landroid/view/View;II)V",
+                        "invoke-static/range { p0 .. p1 }, $BLOCKS->prepare(Landroid/view/View;I)V",
                     )
             }
             mutableClassDefBy(presenter.definingClass)

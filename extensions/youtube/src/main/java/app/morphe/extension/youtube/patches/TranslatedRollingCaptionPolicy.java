@@ -12,8 +12,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 
 import java.io.ByteArrayOutputStream;
-import java.net.URI;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,42 +26,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 /** Remove orphan ASR append events, never normalize sampled caption strings. */
-public final class TranslatedRollingCaptionPolicy {
+final class TranslatedRollingCaptionPolicy {
     private TranslatedRollingCaptionPolicy() {}
-
-    public static boolean isTranslatedAsr(String vss, String url) {
-        if (vss == null || !vss.startsWith("ta.")) return false;
-        try {
-            URI uri = URI.create(url);
-            String host = uri.getHost();
-            if (!"https".equals(uri.getScheme())
-                    || host == null
-                    || !(host.equals("youtube.com") || host.endsWith(".youtube.com"))
-                    || uri.getUserInfo() != null
-                    || (uri.getPort() != -1 && uri.getPort() != 443)
-                    || !"/api/timedtext".equals(uri.getPath())
-                    || uri.getRawQuery() == null) return false;
-            Map<String, String> values = new HashMap<>();
-            for (String part : uri.getRawQuery().split("&")) {
-                int at = part.indexOf('=');
-                String key = URLDecoder.decode(at < 0 ? part : part.substring(0, at), "UTF-8");
-                if (!key.equals("kind") && !key.equals("tlang")) continue;
-                if (values.containsKey(key)) return false;
-                values.put(key, URLDecoder.decode(at < 0 ? "" : part.substring(at + 1), "UTF-8"));
-            }
-            String target = values.get("tlang");
-            return "asr".equals(values.get("kind"))
-                    && target != null
-                    && target.matches("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*")
-                    && vss.endsWith("." + target);
-        } catch (Exception ignored) {
-            return false;
-        }
-    }
-
-    public static byte[] repair(byte[] input) {
-        return repair(input, CaptionXml.read(input));
-    }
 
     static byte[] repair(byte[] input, Document doc) {
         try {

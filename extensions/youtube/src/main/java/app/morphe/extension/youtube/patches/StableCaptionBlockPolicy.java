@@ -5,8 +5,6 @@ import static app.morphe.extension.youtube.patches.CaptionXml.children;
 
 import org.w3c.dom.*;
 
-import java.net.URI;
-import java.net.URLDecoder;
 import java.util.*;
 
 /** Source-timed complete blocks; the renderer supplies the actual two-line capacity. */
@@ -53,10 +51,6 @@ final class StableCaptionBlockPolicy {
         for (int i = 0; i < atoms.size(); i++)
             characters[i + 1] =
                     characters[i] + atoms.get(i).text.codePointCount(0, atoms.get(i).text.length());
-    }
-
-    static StableCaptionBlockPolicy parse(byte[] input) {
-        return parse(CaptionXml.read(input));
     }
 
     static StableCaptionBlockPolicy parse(Document d) {
@@ -326,40 +320,10 @@ final class StableCaptionBlockPolicy {
     }
 
     private static boolean attributes(Element e, String... allowed) {
-        Set<String> keys = new HashSet<>(Arrays.asList(allowed));
+        List<String> keys = Arrays.asList(allowed);
         NamedNodeMap a = e.getAttributes();
         for (int i = 0; i < a.getLength(); i++)
             if (!keys.contains(a.item(i).getNodeName())) return false;
         return true;
-    }
-
-    static boolean automatic(String vss, String url) {
-        if (vss == null) return false;
-        if (vss.startsWith("ta.")) return TranslatedRollingCaptionPolicy.isTranslatedAsr(vss, url);
-        if (!vss.matches("a\\.[A-Za-z0-9_-]+")) return false;
-        try {
-            URI u = URI.create(url);
-            String host = u.getHost();
-            if (!"https".equals(u.getScheme())
-                    || host == null
-                    || !(host.equals("youtube.com") || host.endsWith(".youtube.com"))
-                    || u.getUserInfo() != null
-                    || (u.getPort() != -1 && u.getPort() != 443)
-                    || !"/api/timedtext".equals(u.getPath())
-                    || u.getRawQuery() == null) return false;
-            String kind = null;
-            for (String p : u.getRawQuery().split("&")) {
-                int at = p.indexOf('=');
-                String k = URLDecoder.decode(at < 0 ? p : p.substring(0, at), "UTF-8");
-                if (k.equals("tlang")) return false;
-                if (k.equals("kind")) {
-                    if (kind != null) return false;
-                    kind = URLDecoder.decode(at < 0 ? "" : p.substring(at + 1), "UTF-8");
-                }
-            }
-            return "asr".equals(kind);
-        } catch (Exception ignored) {
-            return false;
-        }
     }
 }

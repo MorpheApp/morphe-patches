@@ -14,6 +14,10 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 public class TranslatedRollingCaptionPolicyTest {
+    private static byte[] repair(byte[] input) {
+        return TranslatedRollingCaptionPolicy.repair(input, CaptionXml.read(input));
+    }
+
     private static byte[] utf(String s) {
         return s.getBytes(StandardCharsets.UTF_8);
     }
@@ -73,26 +77,26 @@ public class TranslatedRollingCaptionPolicyTest {
                                         + c
                                         + br(20150, 3209)
                                         + d));
-        byte[] fixed = TranslatedRollingCaptionPolicy.repair(source);
+        byte[] fixed = repair(source);
         assertNotSame(source, fixed);
         assertEquals(paragraphs(utf(document(a + b + c + br(20150, 3209) + d))), paragraphs(fixed));
         String text = new String(fixed, StandardCharsets.UTF_8);
         assertTrue(text.contains("p=\"3\""));
         assertTrue(text.contains("p=\"4\""));
         assertTrue(text.contains("t=\"226\""));
-        assertSame(fixed, TranslatedRollingCaptionPolicy.repair(fixed));
+        assertSame(fixed, repair(fixed));
     }
 
     @Test
     public void preservesLegitimateSingleNewlineByteForByte() {
         byte[] source = utf(document(p(100, 1000, "A") + br(490, 610) + p(500, 1000, "B")));
-        assertSame(source, TranslatedRollingCaptionPolicy.repair(source));
+        assertSame(source, repair(source));
     }
 
     @Test
     public void preservesActualNewlinesInsideText() {
         byte[] source = utf(document(p(100, 1000, "A\n\nB")));
-        assertSame(source, TranslatedRollingCaptionPolicy.repair(source));
+        assertSame(source, repair(source));
     }
 
     @Test
@@ -106,7 +110,7 @@ public class TranslatedRollingCaptionPolicyTest {
                                         + other
                                         + br(12470, 2970)
                                         + p(12480, 5360, "B")));
-        List<String> fixed = paragraphs(TranslatedRollingCaptionPolicy.repair(source));
+        List<String> fixed = paragraphs(repair(source));
         assertEquals(3, fixed.size());
         assertTrue(fixed.toString().contains("Other"));
     }
@@ -121,7 +125,7 @@ public class TranslatedRollingCaptionPolicyTest {
                     document(body).replace("<ws id='1' mh='2'/>", "")
                 }) {
             byte[] b = utf(xml);
-            assertSame(b, TranslatedRollingCaptionPolicy.repair(b));
+            assertSame(b, repair(b));
         }
     }
 
@@ -135,7 +139,7 @@ public class TranslatedRollingCaptionPolicyTest {
                                         + br(11030, 1450)
                                         + br(12470, 2970)
                                         + p(12480, 5360, "B")));
-        assertSame(source, TranslatedRollingCaptionPolicy.repair(source));
+        assertSame(source, repair(source));
     }
 
     @Test
@@ -154,7 +158,7 @@ public class TranslatedRollingCaptionPolicyTest {
                     source.replace("id='1' ws='1'", "id='' ws='1'")
                 }) {
             byte[] bytes = utf(xml);
-            assertSame(xml, bytes, TranslatedRollingCaptionPolicy.repair(bytes));
+            assertSame(xml, bytes, repair(bytes));
         }
     }
 
@@ -168,7 +172,7 @@ public class TranslatedRollingCaptionPolicyTest {
                     body.replace("t='11030' d='1450'", "t='11030' d='1440'")
                 }) {
             byte[] b = utf(document(s));
-            assertSame(b, TranslatedRollingCaptionPolicy.repair(b));
+            assertSame(b, repair(b));
         }
     }
 
@@ -182,7 +186,7 @@ public class TranslatedRollingCaptionPolicyTest {
                     p(8080, 4400, "A") + br(11030, 1450) + br(12470, 2970)
                 }) {
             byte[] b = utf(document(s));
-            assertSame(b, TranslatedRollingCaptionPolicy.repair(b));
+            assertSame(b, repair(b));
         }
     }
 
@@ -192,10 +196,11 @@ public class TranslatedRollingCaptionPolicyTest {
                 new String[] {
                     "<bad>",
                     "<timedtext format='2'/>",
-                    "<!DOCTYPE timedtext [<!ENTITY x SYSTEM 'file:///not-allowed'>]><timedtext format='3'>&x;</timedtext>"
+                    "<!DOCTYPE timedtext [<!ENTITY x SYSTEM 'file:///not-allowed'>]><timedtext"
+                        + " format='3'>&x;</timedtext>"
                 }) {
             byte[] b = utf(s);
-            assertSame(b, TranslatedRollingCaptionPolicy.repair(b));
+            assertSame(b, repair(b));
         }
     }
 
@@ -204,26 +209,39 @@ public class TranslatedRollingCaptionPolicyTest {
         String a = p(8080, 4400, "A"), b = p(12480, 5360, "B");
         String untimed = "<p t='92550' w='1' a='1'>\n</p>";
         byte[] source = utf(document(a + br(11030, 1450) + br(12470, 2970) + b + untimed));
-        assertEquals(
-                paragraphs(utf(document(a + b + untimed))),
-                paragraphs(TranslatedRollingCaptionPolicy.repair(source)));
+        assertEquals(paragraphs(utf(document(a + b + untimed))), paragraphs(repair(source)));
     }
 
     @Test
-    public void requestScopeRequiresTranslatedAsr() {
+    public void requestScopeRecognizesBothOriginalAndTranslatedAsr() {
         assertTrue(
-                TranslatedRollingCaptionPolicy.isTranslatedAsr(
+                AutoTranslateCaptionsPatch.isAutomaticCaption(
                         "ta.en.tr",
                         "https://www.youtube.com/api/timedtext?v=any&kind=asr&tlang=tr"));
-        assertFalse(
-                TranslatedRollingCaptionPolicy.isTranslatedAsr(
+        assertTrue(
+                AutoTranslateCaptionsPatch.isAutomaticCaption(
                         "a.en", "https://www.youtube.com/api/timedtext?v=any&kind=asr"));
         assertFalse(
-                TranslatedRollingCaptionPolicy.isTranslatedAsr(
+                AutoTranslateCaptionsPatch.isAutomaticCaption(
                         "t.en.tr", "https://www.youtube.com/api/timedtext?v=any&tlang=tr"));
         assertFalse(
-                TranslatedRollingCaptionPolicy.isTranslatedAsr(
+                AutoTranslateCaptionsPatch.isAutomaticCaption(
                         "ta.en.tr", "https://example.org/api/timedtext?kind=asr&tlang=tr"));
+    }
+
+    @Test
+    public void automaticSourceUsesCanonicalIdentityValidation() {
+        String base = "https://www.youtube.com/api/timedtext?kind=asr&tlang=de";
+        assertTrue(AutoTranslateCaptionsPatch.isAutomaticCaption("ta.en.de", base));
+        for (String url :
+                new String[] {
+                    base + "&kind=asr",
+                    base + "&v=one&v=two",
+                    base.replace("kind=", "%6bind="),
+                    base.replace("/timedtext?", "/%74imedtext?"),
+                    base.replace("tlang=de", "tlang=fr"),
+                    base.replace("www.youtube.com", "www.youtube.com.example.org")
+                }) assertFalse(url, AutoTranslateCaptionsPatch.isAutomaticCaption("ta.en.de", url));
     }
 
     @Test
@@ -232,9 +250,9 @@ public class TranslatedRollingCaptionPolicyTest {
         byte[] encoded =
                 ("<?xml version='1.0' encoding='CP037'?>" + document(body))
                         .getBytes(java.nio.charset.Charset.forName("CP037"));
-        assertSame(encoded, TranslatedRollingCaptionPolicy.repair(encoded));
+        assertSame(encoded, repair(encoded));
         byte[] declared = utf("<?xml version='1.0' encoding='ISO-8859-1'?>" + document(body));
-        assertSame(declared, TranslatedRollingCaptionPolicy.repair(declared));
+        assertSame(declared, repair(declared));
     }
 
     @Test
@@ -253,7 +271,7 @@ public class TranslatedRollingCaptionPolicyTest {
                                             + br(12470, 2970)
                                             + p(12480, 5360, "B"));
             byte[] source = xml.getBytes(java.nio.charset.Charset.forName("CP037"));
-            assertSame(source, TranslatedRollingCaptionPolicy.repair(source));
+            assertSame(source, repair(source));
         } finally {
             java.nio.file.Files.delete(marker);
         }
@@ -268,7 +286,7 @@ public class TranslatedRollingCaptionPolicyTest {
                     "\uFEFF<?xml version='1.0' encoding='utf-8'?>"
                 }) {
             byte[] source = utf(prefix + document(body));
-            assertNotSame(source, TranslatedRollingCaptionPolicy.repair(source));
+            assertNotSame(source, repair(source));
         }
     }
 }

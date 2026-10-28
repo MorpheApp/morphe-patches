@@ -235,6 +235,20 @@ public final class AutoTranslateCaptionsPatch {
                 "t" + source.patch_getVssId() + "." + language, name.isEmpty() ? language : name);
     }
 
+    /** ASR processing shares the same canonical URL validation as native translation tracks. */
+    static boolean isAutomaticCaption(String vss, String url) {
+        if (vss == null) return false;
+        boolean translated = vss.startsWith("ta.");
+        if (!translated && !vss.matches("a\\.[A-Za-z0-9_-]+")) return false;
+        Map<String, String> fields = captionParameters(url);
+        if (fields == null || !"asr".equals(fields.get("kind"))) return false;
+        String target = fields.get("tlang");
+        return translated
+                ? target != null && LANGUAGE_CODE_PATTERN.matcher(target).matches()
+                        && vss.endsWith("." + target)
+                : !fields.containsKey("tlang");
+    }
+
     /** Keep YouTube URL validation shared by original and native translated tracks. */
     private static Map<String, String> captionParameters(String url) {
         if (url == null) return null;

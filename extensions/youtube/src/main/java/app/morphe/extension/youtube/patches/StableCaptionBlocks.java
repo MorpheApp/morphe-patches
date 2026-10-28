@@ -61,10 +61,10 @@ public final class StableCaptionBlocks {
         final State state;
         final long time, key;
 
-        Frame(State state, long time) {
+        Frame(State state, long time, long key) {
             this.state = state;
             this.time = time;
-            this.key = state.policy.templateTime(time);
+            this.key = key;
         }
 
         @Override
@@ -81,6 +81,7 @@ public final class StableCaptionBlocks {
     public static final class State {
         StableCaptionBlockPolicy policy;
         private final Map<View, Cache> caches = new WeakHashMap<>();
+        // Published only after a nonempty plan is ready.
         private volatile Cache lastReady;
     }
 
@@ -99,26 +100,19 @@ public final class StableCaptionBlocks {
             this.paint.set(paint);
         }
 
+        boolean matches(StaticLayout probe) {
+            return width == probe.getWidth() && paint.equalsForTextMeasurement(probe.getPaint());
+        }
+
         StaticLayout layout(String text) {
             if (cancelled) throw new CancellationException();
-            return StaticLayout.Builder.obtain(text, 0, text.length(), paint, width)
-                    .setAlignment(Layout.Alignment.ALIGN_CENTER)
-                    .setBreakStrategy(Layout.BREAK_STRATEGY_BALANCED)
-                    .setHyphenationFrequency(Layout.HYPHENATION_FREQUENCY_NONE)
-                    .setIncludePad(true)
-                    .build();
+            return blockLayout(text, paint, width).setIncludePad(true).build();
         }
     }
 
-    public static void setTrack(Object track) {
+    public static void setAutomaticTrack(boolean automatic) {
         parsing.remove();
-        if (Build.VERSION.SDK_INT < 28) return;
-        try {
-            if (track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface t
-                    && StableCaptionBlockPolicy.automatic(t.patch_getVssId(), t.patch_getUrl()))
-                parsing.set(new State());
-        } catch (RuntimeException | LinkageError ignored) {
-        }
+        if (automatic && Build.VERSION.SDK_INT >= 28) parsing.set(new State());
     }
 
     static boolean isCapturing() {
@@ -154,7 +148,8 @@ public final class StableCaptionBlocks {
 
     public static List<?> present(Timeline timeline, List<?> original, long time, State state) {
         if (state == null || original == null || original.size() > 1) return original;
-        if (state.policy.templateTime(time) < 0) return Collections.emptyList();
+        long template = state.policy.templateTime(time);
+        if (template < 0) return Collections.emptyList();
         try {
             List<?> source = original;
             if (source.isEmpty()
@@ -162,13 +157,12 @@ public final class StableCaptionBlocks {
                             && source.get(0) instanceof Cue c
                             && (c.patch_getOriginalCaptionVisible() == null
                                     || c.patch_getOriginalCaptionVisible().length() == 0))) {
-                long template = state.policy.templateTime(time);
-                if (template < 0 || timeline == null) return original;
+                if (timeline == null) return original;
                 source = timeline.patch_getOriginalCaptions(template);
             }
             if (source == null || source.size() != 1 || !(source.get(0) instanceof Cue cue))
                 return original;
-            Object copy = cue.patch_copyBlockFrame(new Frame(state, time));
+            Object copy = cue.patch_copyBlockFrame(new Frame(state, time, template));
             return copy == null ? original : Collections.singletonList(copy);
         } catch (RuntimeException | LinkageError ignored) {
             return original;
@@ -195,7 +189,7 @@ public final class StableCaptionBlocks {
     /**
      * Called before native window measurement, after its font/typeface/style have been configured.
      */
-    public static void prepare(View view, int widthSpec, int heightSpec) {
+    public static void prepare(View view, int widthSpec) {
         if (Build.VERSION.SDK_INT < 28) return;
         if (!(view instanceof Window window) || !(window.patch_getCaptionCue() instanceof Cue cue))
             return;
@@ -232,18 +226,12 @@ public final class StableCaptionBlocks {
                     View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
             StaticLayout probe = row.patch_getCaptionLayout();
             if (probe == null || probe.getWidth() <= 0) return;
-            if (cache == null
-                    || cache.width != probe.getWidth()
-                    || !cache.paint.equalsForTextMeasurement(probe.getPaint())) {
+            if (cache == null || !cache.matches(probe)) {
                 if (cache != null) cache.cancelled = true;
                 cache = new Cache(probe.getWidth(), probe.getPaint());
                 frame.state.caches.put(view, cache);
                 Cache ready = frame.state.lastReady;
-                if (ready != null
-                        && ready.blocks != null
-                        && !ready.blocks.isEmpty()
-                        && ready.width == cache.width
-                        && ready.paint.equalsForTextMeasurement(cache.paint)) {
+                if (ready != null && ready.matches(probe)) {
                     cache.blocks = ready.blocks;
                 } else {
                     Cache next = cache;
@@ -286,6 +274,13 @@ public final class StableCaptionBlocks {
         }
     }
 
+    private static StaticLayout.Builder blockLayout(CharSequence text, TextPaint paint, int width) {
+        return StaticLayout.Builder.obtain(text, 0, text.length(), paint, width)
+                .setAlignment(Layout.Alignment.ALIGN_CENTER)
+                .setBreakStrategy(Layout.BREAK_STRATEGY_BALANCED)
+                .setHyphenationFrequency(Layout.HYPHENATION_FREQUENCY_NONE);
+    }
+
     private static boolean marked(List<CharSequence> lines) {
         for (CharSequence text : lines)
             if (text instanceof Spanned spans && spans.getSpanStart(FIXED_PARAGRAPH) >= 0)
@@ -304,10 +299,7 @@ public final class StableCaptionBlocks {
             float spacingAdd,
             boolean includePad) {
         if (text instanceof Spanned spans && spans.getSpanStart(FIXED_PARAGRAPH) >= 0) {
-            return StaticLayout.Builder.obtain(text, 0, text.length(), paint, width)
-                    .setAlignment(Layout.Alignment.ALIGN_CENTER)
-                    .setBreakStrategy(Layout.BREAK_STRATEGY_BALANCED)
-                    .setHyphenationFrequency(Layout.HYPHENATION_FREQUENCY_NONE)
+            return blockLayout(text, paint, width)
                     .setLineSpacing(spacingAdd, spacingMult)
                     .setIncludePad(includePad)
                     .build();
