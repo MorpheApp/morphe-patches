@@ -18,7 +18,8 @@ internal object CaptionTextViewConstructorFingerprint : Fingerprint(
     name = "<init>",
     parameters = listOf("Landroid/content/Context;"),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "subtitle_window_identifier")
+        resourceLiteral(ResourceType.ID, "subtitle_window_identifier"),
+        opcode(Opcode.RETURN_VOID)
     )
 )
 

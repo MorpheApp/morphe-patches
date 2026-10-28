@@ -22,9 +22,9 @@ internal val fixCaptionsAccessibilityPatch = bytecodePatch(
 
         // YouTube 21.23.492 uses ACCESSIBILITY_LIVE_REGION_POLITE to announce caption updates.
         // Backport it so TalkBack can read changing captions without accessibility focus (#3095).
-        CaptionTextViewConstructorFingerprint.method.apply {
-            addInstructions(
-                implementation!!.instructions.lastIndex,
+        CaptionTextViewConstructorFingerprint.let {
+            it.method.addInstructions(
+                it.instructionMatches.last().index,
                 """
                     const/4 v0, 0x1
                     invoke-virtual { p0, v0 }, Landroid/view/View;->setAccessibilityLiveRegion(I)V
