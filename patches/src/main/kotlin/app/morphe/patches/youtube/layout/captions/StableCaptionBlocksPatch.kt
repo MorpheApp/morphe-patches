@@ -7,17 +7,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.*
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val BLOCKS = "Lapp/morphe/extension/youtube/patches/StableCaptionBlocks;"
 private const val STATE = "Lapp/morphe/extension/youtube/patches/StableCaptionBlocks\$State;"
@@ -255,7 +251,7 @@ internal val stableCaptionBlocksPatch =
     bytecodePatch(
         description = "Presents automatic speech captions in stable measured two-line blocks.",
     ) {
-        dependsOn(translatedRollingCaptionFixPatch)
+        dependsOn(translatedCaptionPensPatch)
         execute {
             val support =
                 optionalCaptionSupport("stable caption blocks") {
@@ -499,34 +495,22 @@ internal val stableCaptionBlocksPatch =
                         it.returnType == "Ljava/util/List;"
                 }
                 val originalName = sampler.name
-                val owner = type
-                val access = sampler.accessFlags
                 sampler.name = "patch_getOriginalCaptions"
-                methods.add(
-                    ImmutableMethod(
-                            type,
-                            originalName,
-                            listOf(ImmutableMethodParameter("J", null, null)),
-                            "Ljava/util/List;",
-                            access,
-                            null,
-                            null,
-                            MutableMethodImplementation(5),
-                        )
-                        .toMutable()
-                        .apply {
-                            addInstructions(
-                                0,
-                                """
-     invoke-virtual/range { p0 .. p2 }, $owner->patch_getOriginalCaptions(J)Ljava/util/List;
-     move-result-object v0
-     iget-object v1, p0, $state
-     invoke-static { p0, v0, p1, p2, v1 }, $BLOCKS->present(${TIMELINE}Ljava/util/List;J$STATE)Ljava/util/List;
-     move-result-object v0
-     return-object v0
-    """,
-                            )
-                        },
+                addHelperMethod(
+                    originalName,
+                    "Ljava/util/List;",
+                    parameters = listOf("J"),
+                    freeRegisters = 2,
+                    accessFlags = sampler.accessFlags,
+                    smali =
+                        """
+                    invoke-virtual/range { p0 .. p2 }, $type->patch_getOriginalCaptions(J)Ljava/util/List;
+                    move-result-object v0
+                    iget-object v1, p0, $state
+                    invoke-static { p0, v0, p1, p2, v1 }, $BLOCKS->present(${TIMELINE}Ljava/util/List;J$STATE)Ljava/util/List;
+                    move-result-object v0
+                    return-object v0
+                """,
                 )
             }
         }

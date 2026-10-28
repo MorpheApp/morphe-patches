@@ -19,9 +19,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 internal val settingsMenuCaptionGroup = mutableSetOf<BasePreference>()
 
 /**
- * Adds a public final method.
+ * Adds an instance method, public and final by default.
  *
- * @param parameters Object parameter types.
+ * @param parameters Parameter types; J and D require two registers.
  * @param freeRegisters Number of free registers, starting at v0.
  */
 internal fun MutableClass.addHelperMethod(
@@ -29,19 +29,23 @@ internal fun MutableClass.addHelperMethod(
     returnType: String,
     parameters: List<String> = listOf(),
     freeRegisters: Int = 1,
+    accessFlags: Int = AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
     smali: String,
 ) {
+    require(!AccessFlags.STATIC.isSet(accessFlags)) { "Caption helper must be an instance method" }
     methods.add(
         ImmutableMethod(
             type,
             name,
             parameters.map { ImmutableMethodParameter(it, null, null) },
             returnType,
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+            accessFlags,
             null,
             null,
-            // Parameter registers are p0 (this) and one for each parameter.
-            MutableMethodImplementation(freeRegisters + 1 + parameters.size),
+            // p0 is this; wide primitives use pairs, including when registers shift.
+            MutableMethodImplementation(
+                freeRegisters + 1 + parameters.sumOf { if (it == "J" || it == "D") 2 else 1 }
+            ),
         ).toMutable().apply {
             addInstructions(0, smali)
         }
@@ -62,7 +66,6 @@ val captionsPatch = bytecodePatch(
         captionCookiesPatch,
         transcriptPatch,
         translatedCaptionPensPatch,
-        translatedRollingCaptionFixPatch,
         captionWindowMeasurePatch,
         stableCaptionBlocksPatch,
         captionViewportPatch,

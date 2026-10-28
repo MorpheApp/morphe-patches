@@ -30,12 +30,14 @@ private const val EXTENSION_CAPTION_REQUEST_INTERFACE =
  * line drawn with an invisible or black pen, so only the caption background is shown.
  *
  * Ignore all pens of auto-translated tracks so the translation uses the user caption style.
+ * The same decoder input also repairs orphan translated-ASR newline events and captures
+ * source timing for optional stable blocks.
  */
 internal val translatedCaptionPensPatch = bytecodePatch(
     description = "Fixes auto-translated captions of styled caption tracks showing an empty background.",
 ) {
     // Adds the caption track interface.
-    dependsOn(sharedExtensionPatch, preferredCaptionLanguagePatch)
+    dependsOn(sharedExtensionPatch, autoTranslateCaptionsPatch)
 
     execute {
         // Track whether the caption track that is parsed is auto-translated.
@@ -76,6 +78,16 @@ internal val translatedCaptionPensPatch = bytecodePatch(
                 """
             )
         }
+
+        val decoder = CaptionFileParserFingerprint.instructionMatches.last().getMethodCalled()
+        require(decoder.parameterTypes[0] == "Ljava/io/InputStream;")
+        decoder.addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->repairInput(Ljava/io/InputStream;)Ljava/io/InputStream;
+                move-result-object p1
+            """
+        )
 
         // Every pen lookup of the timed text parser (<pen>, <p> and <s> elements) uses the same method.
         TimedTextSegmentElementFingerprint.instructionMatches[2].getMethodCalled().addInstructions(

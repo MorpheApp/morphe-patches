@@ -69,16 +69,17 @@ public class CaptionInputReplayTest {
                         closed[0] = true;
                     }
                 };
-        TranslatedRollingCaptionFix.setTrack(new Track());
-        InputStream repaired = TranslatedRollingCaptionFix.repairInput(original);
+        TranslatedCaptionPensPatch.setParsedRequest(
+                (TranslatedCaptionPensPatch.CaptionRequestInterface) Track::new);
+        InputStream repaired = TranslatedCaptionPensPatch.repairInput(original);
         assertEquals(2, CaptionXml.read(read(repaired)).getElementsByTagName("p").getLength());
         assertFalse(closed[0]);
         repaired.close();
         assertTrue(closed[0]);
         // A non-caption request must clear the previous translated decoder state.
-        TranslatedRollingCaptionFix.setTrack(null);
+        TranslatedCaptionPensPatch.setParsedRequest(null);
         InputStream next = new ByteArrayInputStream(source);
-        assertSame(next, TranslatedRollingCaptionFix.repairInput(next));
+        assertSame(next, TranslatedCaptionPensPatch.repairInput(next));
     }
 
     private static final class Track implements AutoTranslateCaptionsPatch.CaptionTrackInterface {
