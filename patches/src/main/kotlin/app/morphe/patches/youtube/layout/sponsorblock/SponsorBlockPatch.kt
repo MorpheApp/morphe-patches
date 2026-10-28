@@ -128,6 +128,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
                 key = "morphe_sb_general",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
+                    SwitchPreference("morphe_sb_offline_enabled", summary = true),
                     SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
                     SwitchPreference("morphe_sb_track_skip_count", summary = true),
                     TextPreference(

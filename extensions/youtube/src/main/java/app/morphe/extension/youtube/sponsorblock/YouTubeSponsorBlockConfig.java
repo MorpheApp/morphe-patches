@@ -177,6 +177,7 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
         @Override public @NonNull BooleanSetting toastOnConnectionError()   { return Settings.SB_TOAST_ON_CONNECTION_ERROR; }
         @Override public @NonNull StringSetting  apiUrl()                   { return Settings.SB_API_URL; }
         @Override public @NonNull BooleanSetting videoLengthWithoutSegments()  { return Settings.SB_VIDEO_LENGTH_WITHOUT_SEGMENTS; }
+        @Override public @NonNull BooleanSetting sbOfflineEnabled()            { return Settings.SB_OFFLINE_ENABLED; }
         @Override public @NonNull BooleanSetting toastOnWhitelistedChannel()   { return Settings.SB_TOAST_ON_WHITELISTED_CHANNEL; }
         @Override public @NonNull BooleanSetting autoHideSkipButton()          { return Settings.SB_AUTO_HIDE_SKIP_BUTTON; }
         @Override public @NonNull BooleanSetting userIsVip()                   { return Settings.SB_USER_IS_VIP; }

@@ -143,7 +143,10 @@ val downloadsPatch = bytecodePatch(
             addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
+                    # The parameter registers can be higher than 15.
+                    move-object/from16 v0, p3
+                    move-object/from16 v1, p4
+                    invoke-static { v0, v1 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/lang/String;Ljava/lang/Enum;)Z
                     move-result v0
                     if-eqz v0, :show_native_downloader
                     return-void

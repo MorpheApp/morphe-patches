@@ -758,6 +758,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // SponsorBlock
     public static final BooleanSetting SB_ENABLED = new BooleanSetting("morphe_sb_enabled", TRUE);
+    public static final BooleanSetting SB_OFFLINE_ENABLED = new BooleanSetting("morphe_sb_offline_enabled", TRUE, parent(SB_ENABLED));
     /** Do not use id setting directly. Instead, use {@link SponsorBlockSettings}. */
     public static final StringSetting SB_PRIVATE_USER_ID = new StringSetting("morphe_sb_private_user_id_Do_Not_Share", "", true, parent(SB_ENABLED));
     public static final IntegerSetting SB_CREATE_NEW_SEGMENT_STEP = new IntegerSetting("morphe_sb_create_new_segment_step", 150, parent(SB_ENABLED));

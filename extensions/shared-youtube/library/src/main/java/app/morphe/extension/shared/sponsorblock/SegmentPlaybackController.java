@@ -402,6 +402,16 @@ public class SegmentPlaybackController {
                 return;
             }
             if (!Utils.isNetworkConnected()) {
+                if (SponsorBlockOfflineStorage.isOfflineEnabled() && SponsorBlockOfflineStorage.hasSegments(videoId)) {
+                    Logger.printDebug(() -> "Network not connected, loading offline segments for: " + videoId);
+                    currentVideoId = videoId;
+                    SponsorSegment[] offlineSegments = SponsorBlockOfflineStorage.loadSegments(videoId);
+                    if (offlineSegments != null && offlineSegments.length > 0) {
+                        setSegments(offlineSegments);
+                        setVideoTime(video().getVideoTime());
+                        return;
+                    }
+                }
                 Logger.printDebug(() -> "Network not connected, ignoring video");
                 return;
             }
@@ -433,6 +443,11 @@ public class SegmentPlaybackController {
         Utils.verifyOffMainThread();
 
         SponsorSegment[] segments = SBRequester.getSegments(videoId);
+
+        if (segments.length > 0 && SponsorBlockOfflineStorage.isOfflineEnabled()
+                && SponsorBlockOfflineStorage.hasSegments(videoId)) {
+            SponsorBlockOfflineStorage.saveSegments(videoId, segments);
+        }
 
         Utils.runOnMainThread(() -> {
             if (!videoId.equals(currentVideoId)) {
@@ -856,7 +871,7 @@ public class SegmentPlaybackController {
                 if (timeSavedCount != null) timeSavedCount.save(timeSavedCount.get() + 1);
 
                 BooleanSetting trackSkipCount = settings().trackSkipCount();
-                if (trackSkipCount == null || trackSkipCount.get()) {
+                if ((trackSkipCount == null || trackSkipCount.get()) && Utils.isNetworkConnected()) {
                     Utils.runOnBackgroundThread(() -> SBRequester.sendSegmentSkippedViewedRequest(segmentToSkip));
                 }
             }
