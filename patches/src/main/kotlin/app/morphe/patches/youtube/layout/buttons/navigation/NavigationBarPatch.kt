@@ -44,7 +44,6 @@ import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -225,12 +224,12 @@ val navigationBarPatch = bytecodePatch(
         // they break. Every fix checks that the flags are turned on by this patch, so the fixes do
         // nothing if the flags are left to the account, as with the default navigation bar style.
 
-        // The translucent navigation bar comes from three feature flags that not every account
+        // The translucent navigation bar comes from two feature flags that not every account
         // gets, so they are turned on to make the bar look the same on every account, and the opaque
         // style below paints over the same translucent bar everywhere. The flag that makes the bar
         // cover the system navigation buttons is turned on only when the window is drawn edge to
-        // edge. The blur and the feed behind the bar do not change the room left for the system
-        // navigation buttons, so they are also turned on without it.
+        // edge. The blur does not change the room left for the system
+        // navigation buttons, so it is also turned on without it.
         TranslucentNavigationBarFeatureFlagsFingerprint.matchAll().forEach { match ->
             match.method.apply {
                 TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS.forEach { flag ->
@@ -323,17 +322,6 @@ val navigationBarPatch = bytecodePatch(
                     move-result v$register
                 """
             )
-        }
-
-        // A flag gives the pages the height of the navigation bar and the miniplayer in another way,
-        // which leaves wrong padding in some pages, such as the incognito search. It is turned off.
-        if (is_21_07_or_greater) {
-            IncognitoSearchPaddingFeatureFlagFingerprint.matchAllMethodIndicesForEach { index ->
-                val moveResultIndex = indexOfFirstInstructionOrThrow(index, Opcode.MOVE_RESULT)
-                val register = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
-
-                addInstruction(moveResultIndex + 1, "const/4 v$register, 0x0")
-            }
         }
 
         // The slim status bar ("No connection", "Back online") is laid out below the bar covering

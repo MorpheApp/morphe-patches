@@ -51,6 +51,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.accessibility.fixShortsAccessibilityPatch
 import app.morphe.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
 import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
+import app.morphe.patches.youtube.misc.fix.padding.fixPagePaddingPatch
 import app.morphe.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
 import app.morphe.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
@@ -226,6 +227,7 @@ val settingsPatch = bytecodePatch(
         fixLikeButtonPatch,
         fixContentProviderPatch,
         fixPipChatBarPatch,
+        fixPagePaddingPatch,
         addLicensePatch,
         removeLinkVerification,
         crashLogPatch(

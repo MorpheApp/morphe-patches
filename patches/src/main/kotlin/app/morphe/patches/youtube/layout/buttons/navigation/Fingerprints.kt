@@ -142,25 +142,13 @@ internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
 )
 
 /**
- * Changes how the height of the navigation bar and the miniplayer is given to the pages,
- * which leaves wrong padding in some pages, such as the incognito search.
- * 21.29 and older read it with a single accessor method.
- */
-internal object IncognitoSearchPaddingFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45724388L)
-    )
-)
-
-/**
  * Feature flags of the translucent navigation bar. 21.29 and older read each of them with a single
  * accessor method, newer targets read them inline in many classes, sometimes more than once in
  * the same method.
  */
 internal val TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS = listOf(
     45630927L, // Blurred, translucent background of the navigation bar.
-    NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG,
-    45631257L  // Feed laid out behind the navigation bar instead of above it.
+    NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG
 )
 
 /**
