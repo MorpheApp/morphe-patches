@@ -12,6 +12,8 @@ import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE;
 
+import android.os.Build;
+
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -406,6 +408,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
     public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", TRUE, true);
     public static final BooleanSetting CAPTIONS_IN_PIP = new BooleanSetting("morphe_captions_in_pip", TRUE);
+    public static final BooleanSetting STABLE_CAPTION_BLOCKS = new BooleanSetting("morphe_stable_caption_blocks", FALSE, true,
+            () -> Build.VERSION.SDK_INT >= 28);
 
     // Miniplayer
     public static final BooleanSetting MINIPLAYER_DISABLE_RESUMING = new BooleanSetting("morphe_miniplayer_disable_resuming", FALSE, true);

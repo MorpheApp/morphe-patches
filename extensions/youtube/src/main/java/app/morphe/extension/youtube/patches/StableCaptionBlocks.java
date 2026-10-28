@@ -10,6 +10,7 @@ import android.text.TextPaint;
 import android.view.View;
 
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.settings.Settings;
 
 import org.w3c.dom.Document;
 
@@ -112,7 +113,9 @@ public final class StableCaptionBlocks {
 
     public static void setAutomaticTrack(boolean automatic) {
         parsing.remove();
-        if (automatic && Build.VERSION.SDK_INT >= 28) parsing.set(new State());
+        if (automatic && Build.VERSION.SDK_INT >= 28 && Settings.STABLE_CAPTION_BLOCKS.get()) {
+            parsing.set(new State());
+        }
     }
 
     static boolean isCapturing() {

@@ -7,6 +7,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.getMutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -355,6 +356,9 @@ internal val stableCaptionBlocksPatch =
                 } ?: return@execute
             val (layout, fields, defaults, setter, lines, row, presenter, measure, factories) =
                 support
+            settingsMenuCaptionGroup.add(
+                SwitchPreference("morphe_stable_caption_blocks", summary = true)
+            )
             hookParsedCaptionTrack("$BLOCKS->setAutomaticTrack(Z)V")
             mutableClassDefBy(layout.cueType).apply {
                 interfaces.add("${BLOCKS.removeSuffix(";")}\$Cue;")
