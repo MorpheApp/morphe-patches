@@ -34,6 +34,11 @@ private const val GLOW_MORPHE_ANIMATION_FILE = "res/raw/morphe_startup_animation
  */
 private const val GLOW_MORPHE_LEGACY_ANIMATION_FILE = "morphe_startup_animation_glow_legacy.riv"
 
+/**
+ * The same animation with the Morphe play icon, for the play launcher icons.
+ */
+private const val GLOW_MORPHE_LEGACY_PLAY_ANIMATION_FILE = "morphe_startup_animation_glow_legacy_play.riv"
+
 // Rive type keys.
 private const val TYPE_ARTBOARD = 1
 private const val TYPE_STRAIGHT_VERTEX = 5
@@ -134,7 +139,10 @@ internal val glowMorpheAnimationResourcePatch = resourcePatch {
         // The glow animation exists in 21.39+.
         if (!is_21_39_or_greater) {
             if (is_21_30_or_greater) {
-                copyResources("custom-branding", ResourceGroup("raw", GLOW_MORPHE_LEGACY_ANIMATION_FILE))
+                copyResources(
+                    "custom-branding",
+                    ResourceGroup("raw", GLOW_MORPHE_LEGACY_ANIMATION_FILE, GLOW_MORPHE_LEGACY_PLAY_ANIMATION_FILE)
+                )
             }
             return@execute
         }

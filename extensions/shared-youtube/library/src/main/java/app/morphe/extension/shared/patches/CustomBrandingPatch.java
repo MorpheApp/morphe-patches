@@ -249,6 +249,14 @@ public class CustomBrandingPatch {
     }
 
     /**
+     * If the launcher icon is the Morphe play icon.
+     */
+    public static boolean iconIsPlay() {
+        BrandingTheme branding = getLauncherIconBranding();
+        return branding == BrandingTheme.PLAY || branding == BrandingTheme.PLAY_BLACK;
+    }
+
+    /**
      * The branded startup animation that matches the launcher icon. The original icon and a user
      * provided icon have no animation of their own, and use the animation of the default icon.
      *

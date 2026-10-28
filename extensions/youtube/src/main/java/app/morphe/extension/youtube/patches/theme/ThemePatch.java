@@ -46,6 +46,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.patches.SplashAnimationPatch;
 import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -229,6 +230,11 @@ public class ThemePatch extends BaseThemePatch {
     private static final String LEGACY_RIVE_GLOW_MORPHE_RESOURCE = "morphe_startup_animation_glow_legacy";
 
     /**
+     * The same animation with the Morphe play icon, played if the launcher icon is the play icon.
+     */
+    private static final String LEGACY_RIVE_GLOW_MORPHE_PLAY_RESOURCE = "morphe_startup_animation_glow_legacy_play";
+
+    /**
      * The Glow Morphe animation of 21.30 - 21.38 is made for the square view, and has no backdrop.
      */
     private static final float LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_WIDTH = 432;
@@ -324,6 +330,8 @@ public class ThemePatch extends BaseThemePatch {
                 ? new int[]{android.R.attr.windowBackground, android.R.attr.windowSplashScreenBackground}
                 : new int[]{android.R.attr.windowBackground};
 
+        // TypedArray is AutoCloseable only on Android 12+, so it is recycled in finally.
+        //noinspection resource
         TypedArray array = theme.obtainStyledAttributes(attributes);
         try {
             for (int i = attributes.length - 1; i >= 0; i--) {
@@ -523,7 +531,7 @@ public class ThemePatch extends BaseThemePatch {
      * Injection point.
      * <p>
      * The app keeps the Rive file of a raw resource in memory, and the key of the glow animation
-     * is changed for each background color, artboard size and logo. Otherwise a file changed for
+     * is changed for each background color, artboard size and logo. Otherwise, a file changed for
      * an earlier launch would be used.
      *
      * @param key The key of a raw resource, which is the prefix followed by the resource id.
@@ -537,7 +545,8 @@ public class ThemePatch extends BaseThemePatch {
                     && isRiveSplashScreenFile(Integer.parseInt(key.substring(RIVE_RAW_RESOURCE_KEY_PREFIX.length())))) {
                 return key + "_" + Integer.toHexString(backgroundColor)
                         + "_" + riveGlowArtboardWidth + "x" + riveGlowArtboardHeight
-                        + "_" + SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().name();
+                        + "_" + SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().name()
+                        + (CustomBrandingPatch.iconIsPlay() ? "_play" : "");
             }
         } catch (Exception ex) {
             Logger.printException(() -> "getRiveRawResourceKey failure", ex);
@@ -573,7 +582,10 @@ public class ThemePatch extends BaseThemePatch {
             // 21.30 - 21.38 has no glow animation, and plays an animation made from the Morphe logo.
             // It has no backdrop, and fades in by itself.
             if (!VersionCheckPatch.IS_21_39_OR_GREATER) {
-                fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, LEGACY_RIVE_GLOW_MORPHE_RESOURCE));
+                fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW,
+                        CustomBrandingPatch.iconIsPlay()
+                                ? LEGACY_RIVE_GLOW_MORPHE_PLAY_RESOURCE
+                                : LEGACY_RIVE_GLOW_MORPHE_RESOURCE));
                 return resizeArtboard
                         ? setRiveArtboardSize(fileBytes, LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_SIZE,
                         LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_WIDTH, LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_HEIGHT,
