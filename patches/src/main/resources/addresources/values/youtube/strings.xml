@@ -119,6 +119,9 @@ Changes include:
     <string name="morphe_hide_surveys_title">Hide surveys</string>
     <string name="morphe_hide_surveys_summary">Hide surveys and nudges about feed recommendation accuracy</string>
     <string name="morphe_hide_ticket_shelf_title">Hide ticket shelf</string>
+    <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+    <string name="morphe_hide_unavailable_videos_hidden_banner_title">Hide \'Unavailable videos are hidden\' banner</string>
+    <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Hides the \'Unavailable videos are hidden\' banner in playlists</string>
     <string name="morphe_hide_upload_time_title">Hide upload time</string>
     <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
     <string name="morphe_hide_upload_time_summary">"Limitations:

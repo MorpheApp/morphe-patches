@@ -178,6 +178,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SUBSCRIBED_CHANNELS_BAR_NAMES = new BooleanSetting("morphe_hide_subscribed_channels_bar_names", FALSE, parentNot(HIDE_SUBSCRIBED_CHANNELS_BAR));
     public static final BooleanSetting HIDE_SURVEYS = new BooleanSetting("morphe_hide_surveys", TRUE);
     public static final BooleanSetting HIDE_TICKET_SHELF = new BooleanSetting("morphe_hide_ticket_shelf", FALSE);
+    public static final BooleanSetting HIDE_UNAVAILABLE_VIDEOS_HIDDEN_BANNER = new BooleanSetting("morphe_hide_unavailable_videos_hidden_banner", FALSE);
     public static final BooleanSetting HIDE_UPLOAD_TIME = new BooleanSetting("morphe_hide_upload_time", FALSE);
     public static final BooleanSetting HIDE_VIDEO_LABELS = new BooleanSetting("morphe_hide_video_labels", TRUE);
     public static final BooleanSetting HIDE_VIDEO_THUMBNAIL = new BooleanSetting("morphe_hide_video_thumbnail", FALSE);

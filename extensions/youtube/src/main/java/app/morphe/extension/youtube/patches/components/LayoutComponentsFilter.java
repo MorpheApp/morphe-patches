@@ -90,8 +90,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup expandableMetadata;
     private final ByteArrayFilterGroup summaryCardBuffer;
     private final StringFilterGroup exploreTopicsShelf;
-    private final StringFilterGroup inviteToMessageCard;
-    private final ByteArrayFilterGroup inviteToMessageCardBuffer;
+    private final StringFilterGroup linearLayout;
+    private final ByteArrayFilterGroupList linearLayoutGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup liveStream;
     private final ByteArrayFilterGroup liveStreamBuffer;
     private final StringFilterGroup notificationsMenuHeader;
@@ -147,14 +147,20 @@ public final class LayoutComponentsFilter extends Filter {
         // 'This week', 'Older') uses the exact same identifier and an otherwise byte
         // identical buffer, and the title is localized by the server without an app string
         // resource, so there is no language independent way to match it.
-        inviteToMessageCard = new StringFilterGroup(
-                Settings.HIDE_INVITE_TO_MESSAGE_CARD,
+        linearLayout = new StringFilterGroup(
+                null,
                 "linear_layout.e"
         );
 
-        inviteToMessageCardBuffer = new ByteArrayFilterGroup(
-                null,
-                "connections_inbox_zero_state"
+        linearLayoutGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_INVITE_TO_MESSAGE_CARD,
+                        "connections_inbox_zero_state"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_UNAVAILABLE_VIDEOS_HIDDEN_BANNER,
+                        "basic_content"
+                )
         );
 
         // Feed and search result items.
@@ -180,8 +186,8 @@ public final class LayoutComponentsFilter extends Filter {
         addIdentifierCallbacks(
                 cellDivider,
                 exploreTopicsShelf,
+                linearLayout,
                 liveChatReplay,
-                inviteToMessageCard,
                 liveStream,
                 seekEduOverlay
         );
@@ -624,18 +630,23 @@ public final class LayoutComponentsFilter extends Filter {
             }
         }
 
-        if (matchedGroup == inviteToMessageCard) {
+        if (matchedGroup == linearLayout) {
             // The identifier is generic and used all over the app.
             if (contentIndex != 0) {
                 return false;
             }
 
-            if (!inviteToMessageCardBuffer.check(buffer).isFiltered()) {
+            FilterGroupResult result = linearLayoutGroupList.check(buffer);
+            if (!result.isFiltered()) {
                 return false;
             }
 
             // Check the navigation button last and only after all buffer checks pass.
-            return NavigationButton.getSelectedNavigationButton() == NavigationButton.NOTIFICATIONS;
+            if (result.getSetting() == Settings.HIDE_INVITE_TO_MESSAGE_CARD) {
+                return NavigationButton.getSelectedNavigationButton() == NavigationButton.NOTIFICATIONS;
+            }
+
+            return true;
         }
 
         if (matchedGroup == liveStream) {
