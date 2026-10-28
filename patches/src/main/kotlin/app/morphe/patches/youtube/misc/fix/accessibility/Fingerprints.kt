@@ -17,6 +17,16 @@ internal object TouchDelegateConstructorFingerprint : Fingerprint(
     parameters = listOf("Lcom/facebook/litho/ComponentHost;")
 )
 
+/**
+ * 21.30+
+ */
+internal object TouchExplorationHoverEventFingerprint : Fingerprint(
+    classFingerprint = TouchDelegateConstructorFingerprint,
+    name = "onTouchExplorationHoverEvent",
+    returnType = "Z",
+    parameters = listOf("Landroid/view/MotionEvent;")
+)
+
 internal object BottomUiKeyboardVisibilityFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),

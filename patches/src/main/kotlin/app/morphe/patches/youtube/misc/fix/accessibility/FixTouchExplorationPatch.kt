@@ -11,6 +11,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.youtube.misc.playservice.is_20_51_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -30,24 +31,28 @@ internal val fixTouchExplorationPatch = bytecodePatch(
     execute {
         if (!is_20_51_or_greater || is_21_42_or_greater) return@execute
 
-        val classDef = TouchDelegateConstructorFingerprint.classDef
-
-        // Skip the inherited forwarding back to ComponentHost, as YouTube 21.41's workaround does.
+        // The inherited TouchDelegate implementation forwards the event back to the ComponentHost.
+        // Return false instead, the same as the flag gated workaround YouTube added in 21.30.
         // Ordinary touch events use the class's own implementation.
-        val hoverMethod = classDef.methods.firstOrNull {
-            it.name == "onTouchExplorationHoverEvent" &&
-                    it.parameterTypes == listOf("Landroid/view/MotionEvent;")
-        } ?: ImmutableMethod(
-            classDef.type,
-            "onTouchExplorationHoverEvent",
-            listOf(ImmutableMethodParameter("Landroid/view/MotionEvent;", null, null)),
-            "Z",
-            AccessFlags.PUBLIC.value,
-            null,
-            null,
-            MutableMethodImplementation(2),
-        ).toMutable().also { classDef.methods.add(it) }
+        if (is_21_30_or_greater) {
+            TouchExplorationHoverEventFingerprint.method.returnEarly(false)
+        } else {
+            val classDef = TouchDelegateConstructorFingerprint.classDef
 
-        hoverMethod.returnEarly(false)
+            classDef.methods.add(
+                ImmutableMethod(
+                    classDef.type,
+                    "onTouchExplorationHoverEvent",
+                    listOf(ImmutableMethodParameter("Landroid/view/MotionEvent;", null, null)),
+                    "Z",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(2),
+                ).toMutable().apply {
+                    returnEarly(false)
+                }
+            )
+        }
     }
 }
