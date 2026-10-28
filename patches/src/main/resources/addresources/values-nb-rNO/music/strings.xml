@@ -551,8 +551,29 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_mediasession_summary">Viser gjeldende linje på låsskjerm, Android Auto og Bluetooth. Krever Android 11 eller nyere</string>
   <string name="morphe_music_lyrics_miniplayer_title">Vis minispillertekster</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Viser gjeldende linje i miniavspilleren, med spor flyttet til underteksten</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Visningsrekkefølge for Artist og Tittel</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Bytt visningsrekkefølgen til Artist og Tittel i Minispilleren og MediaSession. PÅ «Artist – Tittel» og AV «Tittel – Artist». Påvirker ikke tekstsøk</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Format for sangtittel/artist</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Formatet på sporet som vises sammen med sangteksten i minispilleren og MediaSession. {t} er tittelen, {a} er artisten og {v} er versjonen, slik som akustisk, når kilden til sangteksten oppgir dette. Tekst mellom to kolon vises bare når hver variabel inni har en verdi; skriv \\: for et vanlig kolon. Hver linje vises etter tur, og skifter når sangteksten endres</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Format for sangtekstlinje</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Formatet på sangtekstlinjen i minispilleren og MediaSession. {lrc} er linjen og {n} er hvor mange ganger på rad den synges. Tekst mellom kolon vises bare når linjen gjentas. Bruk \\: for et kolon</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Formatet må inneholde {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Mal for artistlinje og animasjonstidspunkt</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimum skjermtid (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maksimum skjermtid (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Kun for flertallslinjeanimasjoner. Behold hver ramme i minst minimumstiden. Ved maksimum, avanser artistlinjen selv når sangteksten forblir den samme.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimum må være 0 eller høyere. Maksimum må være større enn 0 og minst like mye som minimum.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Grenser for linjelengde</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Grenser for sangtekst- og artistlinjer, og vekt for tegn med full bredde</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Grense for sangtekstlinje
+Del lengre tekster inn i balanserte halvdeler. 0 deaktiverer oppdeling."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Linjegrense for artist
+Del det utfylte sporformatet inn i sykliske rammer. 0 deaktiverer oppdeling."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Vekt for tegn med full bredde
+Gjelder for begge grenser. Ved 1,75 teller fire tegn med full bredde som 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Angi heltallsgrenser fra 0 til 10000 og en tegnvekt større enn 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumental pause</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Vises i minispilleren og MediaSession under en instrumental pause. Hver linje er én animasjonsramme. {t} er tittelen, {a} er artisten og {lrc} er den siste tekstlinjen</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Tidsforskyvning for minispiller og MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Forskyver når neste linje vises i minispilleren og MediaSession. Bruk en negativ verdi hvis linjene vises for sent, for eksempel på låsskjermen</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtre</string>
   <string name="morphe_music_lyrics_custom_regex_title">Metadata […] \"Lyrics filter regex\"</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Regulært uttrykk som brukes på titler, artister og album før sangtekster slås opp, og ved vurdering av om to titler samsvarer. La det stå tomt for å deaktivere begge. Standarden fjerner vanlig støy som «Official Video», «Remaster», «【插曲】» og «- Topic».</string>
@@ -560,6 +581,10 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_text_filter_summary">Regulært uttrykk brukes bare på originalteksten (ikke oversettelser eller romanisering). La feltet stå tomt for å deaktivere</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Markører for info-linjer</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Hvis tekster blir feilaktig filtrert til bunnen, justerer eller tømmer du dette. Kommaseparerte markører: linjer som inneholder en markør etterfulgt av kolon, vises som kredittinformasjon nederst. La feltet stå tomt for å deaktivere</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Stor forbokstav</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Gjør den første bokstaven i hver sangtekstlinje stor</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Fjern tegnsetting på slutten</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Fjerner punktum, komma, kolon og semikolon på slutten av sangtekstlinjer. Spørsmålstegn, utropstegn, ellipse, sitattegn og parenteser beholdes</string>
   <string name="morphe_music_lyrics_text_size_title">Tekststørrelse</string>
   <string name="morphe_music_lyrics_text_size_summary">Størrelse på sangteksten</string>
   <string name="morphe_music_lyrics_offset_ms_title">Global tidsforskyvning</string>

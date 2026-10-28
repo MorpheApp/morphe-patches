@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+
+// Action of an edit playlist request.
+// Only the fields that are read are declared.
+message PlaylistEditAction {
+    optional PlaylistEditActionType action = 6;
+}
+
+enum PlaylistEditActionType {
+    ACTION_UNKNOWN = 0;
+    ACTION_ADD_VIDEO = 1;
+}

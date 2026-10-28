@@ -553,8 +553,29 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_mediasession_summary">خط فعلی را در صفحه قفل، Android Auto و Bluetooth نشان می‌دهد. نیازمند Android 11 یا جدیدتر است</string>
   <string name="morphe_music_lyrics_miniplayer_title">نمایش متن ترانه در پخش‌کنندهٔ کوچک‌شده</string>
   <string name="morphe_music_lyrics_miniplayer_summary">خط فعلی را در پخش‌کننده کوچک نشان می‌دهد، با حرکت ترانه به زیرنویس</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">ترتیب نمایش هنرمند و عنوان</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">ترتیب نمایش هنرمند و عنوان را در پخش‌کنندهٔ کوچک‌شده و MediaSession تغییر دهید. روشن: «هنرمند - عنوان» و خاموش: «عنوان - هنرمند». روی جستجوی متن ترانه تأثیر نمی‌گذارد</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">قالب عنوان آهنگ/هنرمند</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">قالب قطعه‌ای که همراه با متن ترانه در پخش‌کننده کوچک‌شده و MediaSession نمایش داده می‌شود. {t} عنوان، {a} هنرمند و {v} نسخه است، مانند Acoustic، در صورتی که منبع متن ترانه آن را ارائه دهد. متن بین دو دو-نقطه تنها زمانی نمایش داده می‌شود که هر متغیر داخل آن دارای مقدار باشد؛ برای دو-نقطه معمولی از \\: استفاده کنید. هر خط به نوبت نمایش داده می‌شود و با تغییر متن ترانه، به خط بعدی می‌رود</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">قالب خط متن ترانه</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">قالب خط متن ترانه در پخش‌کننده کوچک‌شده و MediaSession. {lrc} همان خط و {n} تعداد دفعاتی است که آن خط به طور متوالی خوانده می‌شود. متن بین دو-نقطه‌ها تنها زمانی نمایش داده می‌شود که خط تکرار شود. برای دو-نقطه از \\: استفاده کنید</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">قالب باید شامل {lrc} باشد</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">قالب خط هنرمند و زمان‌بندی انیمیشن</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">حداقل زمان نمایش (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">حداکثر زمان نمایش (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">فقط برای انیمیشن‌های چندخطی. هر فریم را حداقل به اندازه زمان مینیمم نگه دارید. در زمان حداکثر، حتی اگر متن ترانه ثابت بماند، خط هنرمند جلو می‌رود.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">حداقل باید 0 یا بیشتر باشد. حداکثر باید بیشتر از 0 و حداقل برابر با مقدار مینیمم باشد.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">محدودیت‌های طول خط</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">محدودیت‌های خط ترانه و هنرمند، و وزن نویسه‌های تمام-عرض</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"محدودیت خط ترانه
+ترانه‌های بلندتر را به دو نیمه متوازن تقسیم کنید. 0 تقسیم‌بندی را غیرفعال می‌کند."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"محدودیت خطوط هنرمند
+قالب ترک پر شده را به فریم‌های چرخان تقسیم کنید. مقدار 0 تقسیم‌بندی را غیرفعال می‌کند."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"وزن کاراکترهای تمام-عرض
+برای هر دو محدودیت اعمال می‌شود. در مقدار 1.75، چهار کاراکتر تمام-عرض به عنوان 7 محاسبه می‌شوند."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">محدودیت‌ها را به صورت اعداد صحیح از 0 تا 10000 و وزن کاراکتر را بیشتر از 0 وارد کنید</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">وقفه سازی</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">در پخش‌کننده کوچک‌شده و MediaSession در طول وقفه سازی نمایش داده می‌شود. هر خط یک فریم انیمیشن است. {t} عنوان، {a} هنرمند و {lrc} آخرین خط متن ترانه است</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">آفست زمانی Miniplayer و MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">زمان نمایش خط بعدی در پخش‌کننده کوچک‌شده و MediaSession را تغییر می‌دهد. اگر خطوط با تأخیر نمایش داده می‌شوند، برای مثال در صفحه قفل، از یک مقدار منفی استفاده کنید</string>
   <string name="morphe_settings_music_lyrics_metadata_title">فیلترها</string>
   <string name="morphe_music_lyrics_custom_regex_title">عبارت باقاعدهٔ فراداده</string>
   <string name="morphe_music_lyrics_custom_regex_summary">عبارت باقاعده روی عنوان‌ها، هنرمندان و آلبوم‌ها قبل از جستجوی متن ترانه و هنگام امتیازدهی به تطابق دو عنوان اعمال می‌شود. برای غیرفعال‌کردن هر دو خالی بگذارید. پیش‌فرض موارد رایج اضافی مثل «Official Video»، «Remaster»، «【插曲】» و «- Topic» را حذف می‌کند</string>
@@ -562,6 +583,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_text_filter_summary">عبارت باقاعده فقط روی متن اصلی ترانه اعمال می‌شود (نه ترجمه‌ها یا لاتین‌نویسی‌ها). برای غیرفعال‌کردن خالی بگذارید</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">نشانگرهای خط اطلاعات</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">اگر متن ترانه به‌اشتباه به پایین فیلتر شد، این را تنظیم یا پاک کنید. نشانگرهای جداشده با ویرگول: خطوطی که شامل نشانگری دنبال‌شده با دونقطه هستند به‌عنوان اطلاعات اعتبار در پایین نمایش داده می‌شوند. برای غیرفعال‌کردن خالی بگذارید</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">بزرگ کردن حرف اول</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">حرف اول هر خط از متن ترانه را بزرگ می‌کند</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">حذف علائم نگارشی انتهایی</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">نقطه، ویرگول، دو نقطه و نقطه-ویرگول را از انتهای خطوط ترانه حذف می‌کند. علامت‌های سؤال، تعجب، سه نقطه، نقل‌قول‌ها و پرانتزها حفظ می‌شوند</string>
   <string name="morphe_music_lyrics_text_size_title">اندازهٔ متن</string>
   <string name="morphe_music_lyrics_text_size_summary">اندازهٔ متن آهنگ</string>
   <string name="morphe_music_lyrics_offset_ms_title">جبران زمان سراسری</string>

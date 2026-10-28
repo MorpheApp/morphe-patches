@@ -553,8 +553,29 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_mediasession_summary">Menampilkan baris saat ini di layar kunci, Android Auto dan Bluetooth. Memerlukan Android 11 atau versi yang lebih baru</string>
   <string name="morphe_music_lyrics_miniplayer_title">Tampilkan lirik Pemutar mini</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Menampilkan baris saat ini di pemutar mini, dengan trek dipindahkan ke subjudul</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Urutan tampilan Artis dan Judul</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Ubah urutan tampilan Artis dan Judul di Pemutar mini dan MediaSession. ON \"Artis - Judul\" dan OFF \"Judul - Artis\". Tidak memengaruhi pencarian lirik</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Format judul lagu/artis</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Format trek yang ditampilkan bersama lirik di miniplayer dan MediaSession. {t} adalah judul, {a} adalah artis, dan {v} adalah versi, seperti Akustik, jika sumber lirik menyediakannya. Teks di antara dua titik dua hanya ditampilkan jika setiap variabel di dalamnya memiliki nilai; tulis \\: untuk titik dua biasa. Setiap baris ditampilkan secara bergantian, berpindah setiap kali lirik berubah</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Format baris lirik</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Format baris lirik di miniplayer dan MediaSession. {lrc} adalah barisnya dan {n} adalah berapa kali baris tersebut dinyanyikan secara berurutan. Teks di antara titik dua hanya ditampilkan saat baris berulang. Gunakan \\: untuk titik dua</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Format harus mengandung {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Templat baris artis dan waktu animasi</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Waktu layar minimum (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Waktu layar maksimum (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Hanya untuk animasi multibaris. Pertahankan setiap bingkai setidaknya selama waktu minimum. Pada batas maksimum, majukan baris artis meskipun lirik tetap sama.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimum harus 0 atau lebih besar. Maksimum harus lebih besar dari 0 dan setidaknya sama dengan minimum.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Batas panjang baris</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Batas baris lirik dan artis, serta bobot karakter lebar penuh</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Batas baris lirik
+Pecah lirik yang lebih panjang menjadi dua bagian yang seimbang. 0 menonaktifkan pemisahan."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Batas baris Artis
+Bagi format trek yang terisi menjadi bingkai siklus. 0 menonaktifkan pembagian."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Bobot karakter lebar penuh
+Berlaku untuk kedua batas. Pada 1,75, empat karakter lebar penuh dihitung sebagai 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Masukkan batas bilangan bulat dari 0 hingga 10000 dan bobot karakter lebih dari 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Jeda instrumental</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Ditampilkan di miniplayer dan MediaSession selama jeda instrumental. Setiap baris adalah satu bingkai animasi. {t} adalah judul, {a} adalah artis dan {lrc} adalah baris lirik terakhir</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Offset waktu miniplayer dan MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Menggeser kapan baris berikutnya ditampilkan di Miniplayer dan MediaSession. Gunakan nilai negatif jika baris muncul terlambat, misalnya pada layar kunci</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filter</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex metadata</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Ekspresi reguler diterapkan pada judul, artis, dan album sebelum mencari lirik dan saat menilai apakah dua judul cocok. Biarkan kosong untuk menonaktifkan keduanya. Default menghapus keramaian umum seperti \"Official Video\", \"Remaster\", \"【插曲】\", dan \"- Topic\"</string>
@@ -562,6 +583,10 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_text_filter_summary">Regular expression hanya diterapkan pada teks lirik asli (bukan terjemahan atau romanisasi). Biarkan kosong untuk menonaktifkan</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Penanda baris info</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Jika lirik salah disaring ke bagian bawah, sesuaikan atau hapus ini. Penanda yang dipisahkan dengan koma: baris yang berisi penanda diikuti dengan titik dua akan ditampilkan sebagai info kredit di bagian bawah. Biarkan kosong untuk menonaktifkan</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Kapitalisasi huruf pertama</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Mengapitalisasi huruf pertama dari setiap baris lirik</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Hapus tanda baca di akhir</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Menghapus tanda titik, koma, titik dua, dan titik koma di akhir baris lirik. Tanda tanya, tanda seru, elipsis, tanda kutip, dan kurung tetap dipertahankan</string>
   <string name="morphe_music_lyrics_text_size_title">Ukuran teks</string>
   <string name="morphe_music_lyrics_text_size_summary">Ukuran teks lirik</string>
   <string name="morphe_music_lyrics_offset_ms_title">Offset waktu global</string>

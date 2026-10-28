@@ -61,8 +61,8 @@ public class ChangeFormFactorPatch {
     @Nullable
     private static final Integer FORM_FACTOR_TYPE = FORM_FACTOR.formFactorType;
     private static final boolean IS_BROKEN_FORM_FACTOR = FORM_FACTOR.isBroken;
-    private static final boolean TABLET_LAYOUT_IN_PLAYER = VersionCheckPatch.IS_20_31_OR_GREATER
-            && FORM_FACTOR != FormFactor.LARGE && Settings.TABLET_LAYOUT_IN_PLAYER.get();
+    private static final boolean TABLET_LAYOUT_IN_PLAYER =
+            FORM_FACTOR != FormFactor.LARGE && Settings.TABLET_LAYOUT_IN_PLAYER.get();
 
     public static final class TabletLayoutInPlayerAvailability implements Setting.Availability {
         @Override

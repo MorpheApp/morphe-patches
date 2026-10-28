@@ -7,9 +7,7 @@ import kotlin.properties.Delegates
 
 // Use notNull delegate so an exception is thrown if these fields are accessed before they are set.
 
-var is_20_22_or_greater : Boolean by Delegates.notNull()
-    private set
-var is_20_26_or_greater : Boolean by Delegates.notNull()
+var is_20_27_or_greater : Boolean by Delegates.notNull()
     private set
 var is_20_28_or_greater : Boolean by Delegates.notNull()
     private set
@@ -42,6 +40,8 @@ var is_20_46_or_greater : Boolean by Delegates.notNull()
 var is_20_47_or_greater : Boolean by Delegates.notNull()
     private set
 var is_20_49_or_greater : Boolean by Delegates.notNull()
+    private set
+var is_20_51_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_02_or_greater : Boolean by Delegates.notNull()
     private set
@@ -123,8 +123,7 @@ val versionCheckPatch = bytecodePatch {
             return versionName >= version
         }
 
-        is_20_22_or_greater = isEqualsOrGreaterThan("20.22.00")
-        is_20_26_or_greater = isEqualsOrGreaterThan("20.26.00")
+        is_20_27_or_greater = isEqualsOrGreaterThan("20.27.00")
         is_20_28_or_greater = isEqualsOrGreaterThan("20.28.00")
         is_20_29_or_greater = isEqualsOrGreaterThan("20.29.00")
         is_20_30_or_greater = isEqualsOrGreaterThan("20.30.00")
@@ -141,6 +140,7 @@ val versionCheckPatch = bytecodePatch {
         is_20_46_or_greater = isEqualsOrGreaterThan("20.46.00")
         is_20_47_or_greater = isEqualsOrGreaterThan("20.47.00")
         is_20_49_or_greater = isEqualsOrGreaterThan("20.49.00")
+        is_20_51_or_greater = isEqualsOrGreaterThan("20.51.00")
         is_21_02_or_greater = isEqualsOrGreaterThan("21.02.00")
         is_21_03_or_greater = isEqualsOrGreaterThan("21.03.000")
         is_21_04_or_greater = isEqualsOrGreaterThan("21.04.000")

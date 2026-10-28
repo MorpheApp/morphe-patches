@@ -393,6 +393,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">쇼핑 링크 숨기기</string>
   <string name="morphe_hide_video_ads_title">छुपाएं वीडियो विज्ञापन</string>
   <string name="morphe_hide_youtube_premium_promotions_title">छुपाएं YouTube प्रीमियम प्रोमोशन</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">लोड हो रहा है…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">वर्तमान चैनल:</string>
   <string name="morphe_channel_whitelist_add">व्हाइटलिस्ट में जोड़ें</string>
@@ -409,6 +412,9 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">चैनल खोज परिणाम</string>
   <string name="morphe_channel_search_no_results">इस चैनल पर कुछ नहीं मिला</string>
   <string name="morphe_channel_search_failed">इस चैनल में खोज नहीं की जा सकी</string>
+  <string name="morphe_channel_search_videos">वीडियो</string>
+  <string name="morphe_channel_search_posts">पोस्ट</string>
+  <string name="morphe_channel_search_no_posts">इस चैनल पर कोई पोस्ट मेल नहीं खाता</string>
   <string name="morphe_channel_search_sort_relevance">प्रासंगिकता</string>
   <string name="morphe_channel_search_sort_most_viewed">सबसे अधिक देखे गए</string>
   <string name="morphe_channel_search_sort_least_viewed">सबसे कम देखे गए</string>
@@ -494,6 +500,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_video">वीडियो</string>
   <string name="morphe_external_downloader_quick_audio">ऑडियो</string>
   <string name="morphe_external_downloader_quick_options">सभी विकल्प</string>
+  <string name="morphe_shorts_download_flyout_button_title">Shorts मेनू में डाउनलोड दिखाएं</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts प्लेयर में बाहरी डाउनलोडर फ्लाउट मेनू आइटम जोड़ें</string>
+  <string name="morphe_shorts_download_flyout_title">डाउनलोड करें</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">वॉइस ओवर अनुवाद</string>
   <string name="morphe_vot_screen_summary">डिवाइस पर टेक्स्ट-टू-स्पीच का उपयोग करके वीडियो कैप्शन को ज़ोर से पढ़ें, जो प्लेबैक के साथ सिंक्रनाइज़ किया गया है।</string>
@@ -604,6 +613,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">फ्लाईआउट मेनू से बच्चों से जुड़े वीडियो को \'बाद में देखें\' में सेव करने की अनुमति देता है</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">शॉर्ट्स फ्लाईआउट में बाद में देखने के लिए सेव करें बटन दिखाएँ</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">फ्लाईआउट मेनू से शॉर्ट्स को \'बाद में देखें\' में सेव करने की अनुमति देता है</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\'Watch later\' को प्लेलिस्ट पर रीडायरेक्ट करें</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">बाद में देखें</string>
   <string name="morphe_queue_flyout_title">Morphe कतार में जोड़ें</string>
   <string name="morphe_queue_restore_title">सत्रों के बीच कतार बनाए रखें</string>
   <string name="morphe_queue_restore_summary">ऐप को पुनरारंभ करने के बाद कतार बनी रहती है</string>
@@ -826,8 +837,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_auto_captions_style_entry_2">कभी भी नहीं दिखाएं</string>
   <string name="morphe_auto_captions_style_entry_3">जब अनम्यूट पर दिखाएं</string>
   <string name="morphe_auto_captions_style_entry_4">म्यूट किए हुए दिखाएं</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">ऑटो कैप्शंस दिखाएं</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">ऑटो कैप्शंस छुपाएं</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">पसंदीदा कैप्शन भाषा</string>
   <string name="morphe_preferred_caption_language_summary">पहले प्रदाता उपशीर्षक चुनता है, फिर स्वतः पसंदीदा भाषा में अनुवाद करता है</string>
@@ -1100,30 +1109,28 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_change_form_factor_entry_2">फ़ोन</string>
   <string name="morphe_change_form_factor_entry_3">टैबलेट</string>
   <string name="morphe_change_form_factor_entry_4">ऑटोमोटिव</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"परिवर्तनों में शामिल हैं:
+  <string name="morphe_change_form_factor_user_dialog_message">"बदलाव इस प्रकार हैं:
 
 टैबलेट लेआउट
 • सामुदायिक पोस्ट छिपे हुए हैं
-• फ़ीड सेटिंग में प्लेबैक उपलब्ध नहीं है
+• फ़ीड में प्लेबैक सेटिंग उपलब्ध नहीं है
 • शॉर्ट्स में रीमिक्स बटन और साउंड बटन उपलब्ध नहीं हैं
 • 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है
-• गैर-संक्षिप्त पुराना वीडियो एक्शन बार दिखाया गया है
+• गैर-संक्षिप्त पुराना वीडियो एक्शन बार दिखाया जाता है
+• फ्लाउआउट मेनू आइटम सही ढंग से काम न कर सकते हैं
 
 ऑटोमोटिव लेआउट
-• फ़ीड विषयों और चैनलों द्वारा व्यवस्थित है
-• फ़ीड सेटिंग में प्लेबैक उपलब्ध नहीं है
+• फ़ीड विषयों और चैनलों द्वारा संगठित किया गया है
+• फ़ीड में प्लेबैक सेटिंग उपलब्ध नहीं है
 • शॉर्ट्स में रीमिक्स बटन और साउंड बटन उपलब्ध नहीं हैं
 • 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है
 • शॉर्ट्स नियमित प्लेयर में खुलते हैं
-• गैर-संक्षिप्त पुराना वीडियो एक्शन बार दिखाया गया है"</string>
+• गैर-संक्षिप्त पुराना वीडियो एक्शन बार दिखाया जाता है"</string>
   <string name="morphe_tablet_layout_in_player_title">प्लेयर में टैबलेट लेआउट सक्षम करें</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"पुराने प्लेयर लेआउट को पुनर्स्थापित करता है
 
 सीमा: यदि 'पुराने वीडियो एक्शन बार को पुनर्स्थापित करें' बंद कर दिया गया है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"इसे सक्षम करने से प्लेयर लेआउट की कुछ विशेषताएं खराब हो सकती हैं, जैसे कि कमेंट सेक्शन या प्लेयर के नीचे दिखाए गए 'More videos'।
-
-टैबलेट लेआउट अब YouTube द्वारा समर्थित नहीं है, और हाल के YouTube वर्ज़न में आंशिक या पूरी तरह से खराब है। एक वर्किंग टैबलेट लेआउट के लिए, YouTube 20.21.37 को पैच करें"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - पुराने कैप्शन व्यवहार को पुनर्स्थापित करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराने सेव को प्लेलिस्ट में पुन: स्थापित करें</string>
@@ -1241,6 +1248,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_fix_status_bar_layout_title">स्टेटस बार को टॉप बार्स को कवर करना ठीक करें</string>
   <string name="morphe_fix_status_bar_layout_summary">स्टेटस बार की लेआउट को स्थिर रखता है, ताकि यह टॉप बार्स को न कवर करे और प्लेयर के ऊपर खाली जगह न छोड़े। अगर ऐप क्रैश हो जाए या टॉप बार्स गलत दिखें तो इसे बंद करें</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">ग्लो</string>
   <string name="morphe_theme_color_light_title">लाइट थीम की पृष्ठभूमि</string>
   <string name="morphe_theme_color_light_entry_2">सफेद</string>
   <string name="morphe_theme_color_light_entry_3">मटेरियल यू (सफेद) </string>
@@ -1263,6 +1271,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_seekbar_custom_color_accent_summary">वीडियो प्रोग्रेस बार का माध्यमिक रंग सेट करें</string>
   <string name="morphe_seekbar_custom_color_invalid">अमान्य सर्च बार रंग मूल्य</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">ओरिजनल एनालॉग</string>
+  <string name="morphe_custom_branding_icon_entry_9">ओरिजिनल केक</string>
+  <string name="morphe_custom_branding_icon_entry_10">ओरिजिनल मेटल</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">हेडर लोगो</string>
   <string name="morphe_header_logo_entry_1">डिफ़ॉल्ट</string>
@@ -1626,4 +1637,17 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_series_tracker_no_search_results">कोई सीरीज़ नहीं मिली</string>
   <string name="morphe_series_tracker_untitled_episode">शीर्षकहीन एपिसोड</string>
   <string name="morphe_series_tracker_unavailable_episode">अनुपलब्ध एपिसोड</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Niconico कमेंट्स</string>
+  <string name="morphe_niconico_comments_screen_summary">लाइव चैट और चैट रिप्ले को कमेंट्स के रूप में दिखाएं जो वीडियो में स्क्रॉल होते हैं</string>
+  <string name="morphe_niconico_comments_summary">वीडियो प्लेयर में एक ओवरले बटन दिखाता है। कमेंट्स दिखाने या छिपाने के लिए टैप करें, क्विक सेटिंग्स के लिए टैप करके रखें</string>
+  <string name="morphe_niconico_comments_font_size_title">कमेंट फ़ॉन्ट आकार</string>
+  <string name="morphe_niconico_comments_font_size_summary">कमेंट्स के टेक्स्ट का आकार (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">कमेंट ओपेसिटी</string>
+  <string name="morphe_niconico_comments_opacity_summary">कमेंट टेक्स्ट और बैकग्राउंड की ओपेसिटी</string>
+  <string name="morphe_niconico_comments_travel_duration_title">ट्रैवल ड्यूरेशन</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">कमेंट्स को स्क्रीन पार करने में कितने सेकंड लगते हैं। कम वैल्यू तेज़ी से चलती हैं</string>
+  <string name="morphe_niconico_comments_max_length_title">कमेंट की अधिकतम लंबाई</string>
+  <string name="morphe_niconico_comments_max_length_summary">इससे अधिक वर्णों वाले कमेंट छुपाएं। प्रत्येक इमोजी को एक वर्ण माना जाएगा</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">कोई सीमा नहीं</string>
 </resources>

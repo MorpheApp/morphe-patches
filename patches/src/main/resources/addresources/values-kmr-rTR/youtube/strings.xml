@@ -313,6 +313,8 @@ Sînorkirin:
   <string name="morphe_hide_shopping_links_title">Girêkên firotinê veşêrin</string>
   <string name="morphe_hide_video_ads_title">Reklamên vîdyoyê veşêrin</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Promosyonên YouTube Premium veşêre</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Kanalê niha:</string>
   <string name="morphe_channel_whitelist_add">Tê bikirin listeya spî</string>
@@ -449,6 +451,7 @@ Info: May not work on live streams"</string>
   <string name="morphe_save_to_watch_later_error_toast">Nikare vî vîdyoyê di lîsteya tomar kirina ji bo paşê dîtinê de tomar bike</string>
   <string name="morphe_save_to_watch_later_flyout_title">Paşê temaşekirinê tomar bike</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Bişkoka \'Paşê temaşekirinê tomar bike\' di vîdyoyên zarokan de nîşan bide</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Dîrûvaniya paş</string>
   <string name="morphe_queue_flyout_title">Zêde bikeye rêza Morphe</string>
   <string name="morphe_queue_restore_title">Lîsteyê di nav beşan de bidomîne</string>
   <string name="morphe_queue_restore_summary">Lîste piştî destkirina serî lêve tê parastin</string>
@@ -614,8 +617,6 @@ Info: May not work on live streams"</string>
   <string name="morphe_auto_captions_style_entry_2">Hîşka nîşan nedê</string>
   <string name="morphe_auto_captions_style_entry_3">Dema ku bêdeng dibe nîşan bide</string>
   <string name="morphe_auto_captions_style_entry_4">Dibe ku darvekirin</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Nîşanê otomatîk</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Qefalê otomatîk</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">Dabe</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
@@ -1115,4 +1116,5 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_player_icon_style_entry_auto">Otomatîk</string>
   <string name="morphe_player_icon_style_entry_default">Bixweber</string>
   <!-- video.series.seriesTrackerPatch -->
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

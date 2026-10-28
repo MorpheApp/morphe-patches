@@ -278,6 +278,12 @@ public class ThemeColorPatch {
     private static boolean splashScreenThemeApplied;
 
     /**
+     * Index of the theme the system drew the splash screen of this launch with,
+     * or -1 if it was given none and drew it with the theme of the launched activity.
+     */
+    private static int launchSplashScreenThemeIndex = -1;
+
+    /**
      * If the system gives the app the overlay manager it needs. Resolved with the first context
      * of the app, because the API being there is not a promise that the manager is.
      */
@@ -483,7 +489,15 @@ public class ThemeColorPatch {
      */
     public static void setSplashScreenTheme(Activity activity) {
         try {
-            if (splashScreenThemeApplied || Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                return;
+            }
+
+            // A theme handed over is used from the next launch on,
+            // so this launch was drawn with the one handed over before.
+            launchSplashScreenThemeIndex = SharedYouTubeSettings.THEME_LAST_SPLASH_SCREEN_INDEX.get();
+
+            if (splashScreenThemeApplied) {
                 return;
             }
             splashScreenThemeApplied = true;
@@ -495,9 +509,23 @@ public class ThemeColorPatch {
             Logger.printDebug(() -> "Splash screen theme: " + SPLASH_THEME_NAME + index
                     + " id: " + themeId);
             activity.getSplashScreen().setSplashScreenTheme(themeId);
+            SharedYouTubeSettings.THEME_LAST_SPLASH_SCREEN_INDEX.save(index);
         } catch (Exception ex) {
             Logger.printException(() -> "setSplashScreenTheme failure", ex);
         }
+    }
+
+    /**
+     * The theme the system drew the splash screen of this launch with.
+     *
+     * @return The theme, or 0 if the system was given none and drew it with the theme
+     *         of the launched activity.
+     */
+    public static int getLaunchSplashScreenTheme() {
+        final int index = launchSplashScreenThemeIndex;
+        return index < 0
+                ? 0
+                : ResourceUtils.getIdentifier(ResourceType.STYLE, SPLASH_THEME_NAME + index);
     }
 
     /**

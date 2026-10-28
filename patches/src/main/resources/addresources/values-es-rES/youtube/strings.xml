@@ -393,6 +393,9 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_hide_shopping_links_title">Ocultar enlaces de compras</string>
   <string name="morphe_hide_video_ads_title">Ocultar anuncios de vídeo</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Ocultar promociones de YouTube Premium</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Cargando…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Canal actual:</string>
   <string name="morphe_channel_whitelist_add">Añadir a la lista de excepción</string>
@@ -409,6 +412,9 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_channel_search_results">Resultados de búsqueda del canal</string>
   <string name="morphe_channel_search_no_results">No se encontró nada en este canal</string>
   <string name="morphe_channel_search_failed">No se pudo buscar en este canal</string>
+  <string name="morphe_channel_search_videos">Vídeos</string>
+  <string name="morphe_channel_search_posts">Publicaciones</string>
+  <string name="morphe_channel_search_no_posts">No hay publicaciones en este canal que coincidan</string>
   <string name="morphe_channel_search_sort_relevance">Relevancia</string>
   <string name="morphe_channel_search_sort_most_viewed">Más vistos</string>
   <string name="morphe_channel_search_sort_least_viewed">Menos vistos</string>
@@ -494,6 +500,9 @@ Después de abrir por primera vez un vídeo con el botón «Preguntar», la func
   <string name="morphe_external_downloader_quick_video">Vídeo</string>
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Todas las opciones</string>
+  <string name="morphe_shorts_download_flyout_button_title">Mostrar descarga en el menú de Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Añade un elemento de menú desplegable del descargador externo al reproductor de Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">Descargar</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducción con voz</string>
   <string name="morphe_vot_screen_summary">Lee en voz alta los subtítulos del vídeo mediante la síntesis de texto a voz del dispositivo, sincronizada con la reproducción</string>
@@ -604,6 +613,8 @@ Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite guardar vídeos infantiles en \'Ver más tarde\' desde el menú flotante</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en el menú flotante de Shorts</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite guardar Shorts en \'Ver más tarde\' desde el menú flotante</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirigir \"Ver más tarde\" a una lista de reproducción</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Ver más tarde</string>
   <string name="morphe_queue_flyout_title">Añadir a la cola de Morphe</string>
   <string name="morphe_queue_restore_title">Mantener la cola entre sesiones</string>
   <string name="morphe_queue_restore_summary">La cola se mantiene después de reiniciar la aplicación</string>
@@ -826,8 +837,6 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_auto_captions_style_entry_2">No mostrar nunca</string>
   <string name="morphe_auto_captions_style_entry_3">Mostrar cuando no está silenciado</string>
   <string name="morphe_auto_captions_style_entry_4">Mostrar cuando está silenciado</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Mostrar subtítulos automáticos</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Ocultar subtítulos automáticos</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Idioma preferido para subtítulos</string>
   <string name="morphe_preferred_caption_language_summary">Selecciona primero los subtítulos del proveedor y luego los traduce automáticamente al idioma preferido</string>
@@ -1106,24 +1115,21 @@ Diseño para tablet
 • Las publicaciones de la comunidad están ocultas
 • El ajuste de reproducción en feeds no está disponible
 • El botón Remix y el botón Sonido no están disponibles en Shorts
-• La superposición 'Más vídeos' puede no estar disponible
+• La superposición «Más vídeos» puede no estar disponible
 • Se muestra la antigua barra de acciones de vídeo sin colapsar
 
 Diseño para automóviles
 • El feed está organizado por temas y canales
 • El ajuste de reproducción en feeds no está disponible
 • El botón Remix y el botón Sonido no están disponibles en Shorts
-• La superposición 'Más vídeos' puede no estar disponible
-• Shorts se abre en el reproductor normal
+• La superposición «Más vídeos» puede no estar disponible
+• Los Shorts se abren en el reproductor normal
 • Se muestra la antigua barra de acciones de vídeo sin colapsar"</string>
   <string name="morphe_tablet_layout_in_player_title">Habilitar diseño para tablet en el reproductor</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Restaura el diseño antiguo del reproductor
 
 Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está desactivada, es posible que la superposición 'Más vídeos' no esté disponible"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Activar esto puede afectar algunas funciones del diseño del reproductor, como la sección de comentarios o \"Más videos\" que se muestran debajo del reproductor.
-
-El diseño de tableta ya no es compatible con YouTube y está parcial o totalmente roto en las versiones recientes de YouTube. Para obtener un diseño de tableta funcional, aplica el parche a YouTube 20.21.37"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restaurar comportamiento antiguo de los subtítulos</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar guardado antiguo de lista de reproducción</string>
@@ -1241,6 +1247,7 @@ El diseño de tableta ya no es compatible con YouTube y está parcial o totalmen
   <string name="morphe_fix_status_bar_layout_title">Corregir barra de estado que cubre barras superiores</string>
   <string name="morphe_fix_status_bar_layout_summary">Mantiene la uniformidad del diseño de la barra de estado, de modo que no cubra las barras superiores y no deje ningún espacio vacío encima del reproductor. Desactiva esta opción si la aplicación se bloquea o las barras superiores no se ven bien.</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Resplandor</string>
   <string name="morphe_theme_color_light_title">Fondo del tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Blanco</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Blanco)</string>
@@ -1263,6 +1270,9 @@ El diseño de tableta ya no es compatible con YouTube y está parcial o totalmen
   <string name="morphe_seekbar_custom_color_accent_summary">Establece el color secundario de la barra de progreso del vídeo</string>
   <string name="morphe_seekbar_custom_color_invalid">Valor de color de la barra de progreso no válido</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Analógico original</string>
+  <string name="morphe_custom_branding_icon_entry_9">Tarta original</string>
+  <string name="morphe_custom_branding_icon_entry_10">Metal original</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo del encabezado</string>
   <string name="morphe_header_logo_entry_1">Predeterminado</string>
@@ -1626,4 +1636,17 @@ La grabación automática es opcional. Se detiene en modo incógnito o cuando ca
   <string name="morphe_series_tracker_no_search_results">No se encontraron series</string>
   <string name="morphe_series_tracker_untitled_episode">Episodio sin título</string>
   <string name="morphe_series_tracker_unavailable_episode">Episodio no disponible</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Comentarios de Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Muestra el chat en vivo y la reproducción del chat como comentarios que se desplazan por el vídeo</string>
+  <string name="morphe_niconico_comments_summary">Muestra un botón superpuesto en el reproductor de vídeo. Púlsalo para mostrar u ocultar los comentarios; mantenlo pulsado para acceder a los ajustes rápidos</string>
+  <string name="morphe_niconico_comments_font_size_title">Tamaño de fuente de los comentarios</string>
+  <string name="morphe_niconico_comments_font_size_summary">Tamaño del texto de los comentarios (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Opacidad de los comentarios</string>
+  <string name="morphe_niconico_comments_opacity_summary">Opacidad del texto y los fondos de los comentarios</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Duración del recorrido</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Cuántos segundos tardan los comentarios en cruzar la pantalla. Los valores más bajos se mueven más rápido</string>
+  <string name="morphe_niconico_comments_max_length_title">Longitud máxima del comentario</string>
+  <string name="morphe_niconico_comments_max_length_summary">Oculta los comentarios con más caracteres que este. Cada emoji cuenta como un carácter</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Sin límite</string>
 </resources>

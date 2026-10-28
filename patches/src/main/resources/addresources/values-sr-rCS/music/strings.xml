@@ -544,8 +544,29 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_mediasession_summary">Prikazuje trenutnu liniju na zaključanom ekranu, Android Auto i Bluetooth-u. Potreban je Android 11 ili noviji</string>
   <string name="morphe_music_lyrics_miniplayer_title">Prikaži stihove u mini plejeru.</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Prikazuje trenutnu liniju u miniplereju, sa pomeranjem tračke u titl</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Redosled prikaza izvođača i naslova.</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Promeni redosled prikaza izvođača i naslova u mini plejeru i […] UKLJUČENO „Artist - Title“ i ISKLJUČENO „Title - Artist“. Ne utiče na pretragu stihova.</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Format naslova pesme/izvođača</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Format trake koji se prikazuje uz tekst pesme u Miniplayer-u i MediaSession-u. {t} je naslov, {a} je izvođač i {v} je verzija, kao što je akustična, kada izvor teksta pesme to obezbedi. Tekst između dve dvotačke se prikazuje samo kada svaka varijabla unutar njega ima vrednost; napišite \\: za običnu dvotačku. Svaka linija se prikazuje redom, prelazeći na sledeću kad god se promeni tekst pesme</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Format linije teksta pesme</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Format linije teksta pesme u Miniplayer-u i MediaSession-u. {lrc} je linija, a {n} je broj puta koliko se ona zaredom peva. Tekst između dvotačaka se prikazuje samo kada se linija ponavlja. Koristite \\: za dvotačku</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Format mora sadržati {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Šablon linije izvođača i tajming animacije</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimalno vreme prikazivanja na ekranu (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maksimalno vreme prikazivanja na ekranu (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Samo za animacije u više redova. Zadržite svaki okvir najmanje minimalno vreme. Na maksimalnom, pomerite liniju izvođača čak i kada tekst pesme ostaje isti.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimalna vrednost mora biti 0 ili veća. Maksimalna mora biti veća od 0 i najmanje jednaka minimalnoj.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Ograničenja dužine linije</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Ograničenja linija teksta pesme i izvođača, i težina karaktera pune širine</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Ograničenje linije teksta pesme
+Podelite duže tekstove pesama na uravnotežene polovine. 0 onemogućava podelu."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Limit linija za umetnika
+Podeli popunjen format trake u ciklične okvire. 0 onemogućava podelu."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Težina karaktera pune širine
+Primenjuje se na oba limita. Na 1.75, četiri karaktera pune širine računaju se kao 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Unesite celobrojne limite od 0 do 10000 i težinu karaktera veću od 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentalna pauza</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Prikazuje se u mini-plejeru i MediaSession-u tokom instrumentalne pauze. Svaka linija je jedan animacioni okvir. {t} je naslov, {a} je umetnik, a {lrc} je poslednja linija teksta</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Vremenski pomak mini-plejera i MediaSession-a</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Pomera vreme kada se sledeći red prikazuje u minimizovanom plejeru i MediaSession-u. Koristite negativnu vrednost ako se redovi pojavljuju sa zakašnjenjem, na primer na zaključanom ekranu</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filteri</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex metapodataka</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Regularni izraz koji se primenjuje na naslove, izvođače i albume pre traženja tekstova i pri ocenjivanju da li se dva naslova poklapaju. Ostavite prazno da biste onemogućili oba. Podrazumevana vrednost uklanja uobičajene nepotrebne dodatke kao što su „Official Video“, „Remaster“, „【插曲】“ i „- Topic“</string>
@@ -553,6 +574,10 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_text_filter_summary">Regularni izraz se primenjuje samo na originalni tekst stihova (ne na prevode ili romanizacije). Ostavite prazno da biste onemogućili.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Oznake redova s informacijama</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Ako se stihovi pogrešno filtriraju na dno, prilagodite ovo ili obrišite. […] Ostavite prazno da biste onemogućili.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Veliko početno slovo</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Piše prvo slovo svakog reda teksta pesme velikim slovom</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Ukloni znakove interpunkcije na kraju</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Uklanja tačke, zareze, dvotačke i tačka-zareze na kraju redova teksta pesme. Upitnici, znaci uzvika, tri tačke, navodnici i zagrade se zadržavaju</string>
   <string name="morphe_music_lyrics_text_size_title">Veličina teksta</string>
   <string name="morphe_music_lyrics_text_size_summary">Veličina teksta stihova</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globalni vremenski pomak</string>

@@ -143,6 +143,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_self_sponsor_ads_title">کارتی خۆ سپۆنسەرکراو بشارەوە</string>
   <string name="morphe_hide_shopping_links_title">بەستەرەکانی بازاڕکردن بشارەوە</string>
   <string name="morphe_hide_video_ads_title">شاردنەوەی ڕێکلامی ڤیدیۆکان</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">بارکردن…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">کەناڵی ئێستا:</string>
   <string name="morphe_channel_whitelist_add">زیادکردن بۆ لیستی ڕێگەپێدراو</string>
@@ -170,6 +173,7 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_quick_video">ڤیدێۆ</string>
+  <string name="morphe_shorts_download_flyout_title">دابەزاندن</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">باو</string>
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
@@ -258,8 +262,6 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_title">دیارە ڕەنگەکانی زیرەکان</string>
   <string name="morphe_auto_captions_style_entry_2">تۆ نەربێنە</string>
   <string name="morphe_auto_captions_style_entry_4">هنگێو سڕکرێتەوە نیشانە</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">نیشاندانی ژێرنووسی خۆکار</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">به‌کارھێنانی زیروکان قایم بگرە</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">کوژاوە</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
@@ -550,4 +552,5 @@ Second \"item\" text"</string>
   <string name="morphe_series_tracker_ui_cancel">پاشگەز</string>
   <string name="morphe_series_tracker_continue">بەردەوامبوون</string>
   <string name="morphe_series_tracker_undo">گەڕانەوە</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

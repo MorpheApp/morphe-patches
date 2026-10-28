@@ -101,6 +101,8 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sorokkan iklan video</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Saluran semasa:</string>
   <string name="morphe_channel_whitelist_add">Tambahkan ke senarai putih</string>
@@ -277,22 +279,6 @@ Second \"item\" text"</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_entry_1">Lalai</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Changes include:
-
-Tablet layout
-• Community posts are hidden
-• Playback in feeds setting is not available
-• Remix button and Sound button are not available in Shorts
-• 'More videos' overlay may not be available
-• Non collapsed old video action bar is shown
-
-Automotive layout
-• Feed is organized by topics and channels
-• Playback in feeds setting is not available
-• Remix button and Sound button are not available in Shorts
-• 'More videos' overlay may not be available
-• Shorts open in the regular player
-• Non collapsed old video action bar is shown"</string>
   <string name="morphe_tablet_layout_in_player_title">Dayakan tata letak tablet di pemain</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
@@ -380,4 +366,5 @@ Automotive layout
   <string name="morphe_player_icon_style_entry_custom">Tersuai</string>
   <!-- video.series.seriesTrackerPatch -->
   <string name="morphe_series_tracker_continue">Teruskan</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

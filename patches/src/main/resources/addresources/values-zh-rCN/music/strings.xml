@@ -553,8 +553,29 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_mediasession_summary">在锁屏界面、Android Auto 和蓝牙中显示当前行。需要 Android 11 或更高版本</string>
   <string name="morphe_music_lyrics_miniplayer_title">显示迷你播放器歌词</string>
   <string name="morphe_music_lyrics_miniplayer_summary">在小播放器中显示当前行，并将曲目移至字幕</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">艺术家和标题显示顺序</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">在迷你播放器和媒体通知卡片中切换艺术家和标题的显示顺序。ON“艺术家-标题”和OFF“标题-艺术家”不影响歌词搜索</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">歌曲标题/艺术家格式</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">在迷你播放器和 MediaSession 中与歌词一起显示的曲目格式。{t} 是标题，{a} 是艺术家，{v} 是版本（例如 Acoustic），当歌词源提供时显示。两个冒号之间的文本仅在其中所有变量都有值时显示；若要显示普通冒号，请写入 \\:。每行依次显示，并在歌词更改时切换</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">歌词行格式</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">在迷你播放器和 MediaSession 中的歌词行格式。{lrc} 是该行内容，{n} 是连续演唱的次数。冒号之间的文本仅在行重复时显示。使用 \\: 表示冒号</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">格式必须包含 {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">艺术家行模板和动画时间</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">最短屏幕显示时间 (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">最长屏幕显示时间 (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">仅适用于多行动画。每帧至少保留最短时间。达到最长时间时，即使歌词保持不变，也会推进艺术家行。</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">最小值必须为 0 或更大。最大值必须大于 0 且至少等于最小值。</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">行长度限制</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">歌词和艺术家行限制，以及全宽字符权重</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"歌词行限制
+将较长的歌词分成均衡的两半。0 为禁用拆分。"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"艺术家行限制
+将填充的轨道格式拆分为循环帧。0 表示禁用拆分。"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"全角字符权重
+适用于两个限制。当权重为 1.75 时，四个全角字符计为 7。"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">请输入 0 到 10000 之间的整数限制，以及大于 0 的字符权重</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">器乐间奏</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">在器乐间奏期间显示在迷你播放器和 MediaSession 中。每一行是一个动画帧。{t} 是标题，{a} 是艺术家，{lrc} 是最后一行歌词</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">迷你播放器和 MediaSession 时间偏移</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">偏移迷你播放器和 MediaSession 中显示下一行歌词的时间。如果歌词显示延迟，例如在锁屏界面上，请使用负值</string>
   <string name="morphe_settings_music_lyrics_metadata_title">过滤规则</string>
   <string name="morphe_music_lyrics_custom_regex_title">元数据正则表达式</string>
   <string name="morphe_music_lyrics_custom_regex_summary">用于标题、艺术家和专辑的正则表达式，在查找歌词前以及为两个标题是否匹配评分时使用。留空可同时禁用两者。默认值会移除常见干扰项，如\"Official Video\"、\"Remaster\"、\"【插曲】\"和\"- Topic\"。</string>
@@ -562,6 +583,10 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_text_filter_summary">仅应用于原始歌词文本的正则表达式（不应用于翻译或音译）。留空以禁用</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">信息行标记</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">如果歌词被错误地过滤到底部，请调整或清除此项。以逗号分隔的标记：包含标记且后跟冒号的行会作为署名信息显示在底部。留空以禁用</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">首字母大写</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">将每行歌词的首字母大写</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">移除末尾标点</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">移除歌词行末尾的句号、逗号、冒号和分号。保留问号、感叹号、省略号、引号和括号</string>
   <string name="morphe_music_lyrics_text_size_title">文本大小</string>
   <string name="morphe_music_lyrics_text_size_summary">歌词文本的大小</string>
   <string name="morphe_music_lyrics_offset_ms_title">全局时间偏移</string>

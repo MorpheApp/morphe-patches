@@ -543,8 +543,29 @@ Cookies necessários: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_mediasession_summary">Mostra a linha atual na tela de bloqueio, Android Auto e Bluetooth. Precisa do Android 11 ou mais recente</string>
   <string name="morphe_music_lyrics_miniplayer_title">Mostrar letras no miniplayer</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Mostra a linha atual no miniplayer, com a faixa movida para a legenda</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Exibição de artista e título na MediaSession. LIGADO \"Artista - Título\" e DESLIGADO \"Título - Artista\". Não afeta a busca por letras.</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Alternar a ordem de exibição de Artista e Título no Miniplayer e no MediaSession. LIGADO \"Artista - Título\" e DESLIGADO \"Título - Artista\". Não afeta a busca de letras</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Formato do título da música/artista</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Formato da faixa exibida com as letras no miniplayer e na MediaSession. {t} é o título, {a} é o artista e {v} é a versão, como Acústico, quando a fonte da letra fornece uma. O texto entre dois dois-pontos só é exibido quando cada variável dentro dele possui um valor; escreva \\: para um dois-pontos simples. Cada linha é exibida por vez, avançando sempre que a letra muda</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Formato da linha da letra</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Formato da linha da letra no miniplayer e na MediaSession. {lrc} é a linha e {n} é quantas vezes seguidas ela é cantada. O texto entre dois-pontos só é exibido quando a linha se repete. Use \\: para um dois-pontos</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">O formato deve conter {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Modelo de linha do artista e tempo de animação</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Tempo mínimo de tela (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Tempo máximo de tela (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Apenas para animações de várias linhas. Mantenha cada quadro por pelo menos o tempo mínimo. No máximo, avance a linha do artista mesmo quando a letra permanecer a mesma.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">O mínimo deve ser 0 ou maior. O máximo deve ser maior que 0 e pelo menos o valor do mínimo.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Limites de comprimento de linha</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Limites de linha da letra e do artista, e peso de caracteres de largura total</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Limite de linha da letra
+Divida letras mais longas em metades equilibradas. 0 desativa a divisão."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Limite de linhas do artista
+Divide o formato de faixa preenchido em quadros cíclicos. 0 desativa a divisão."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Peso de caracteres de largura total
+Aplica-se a ambos os limites. Em 1,75, quatro caracteres de largura total contam como 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Insira limites de números inteiros de 0 a 10000 e um peso de caractere maior que 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Intervalo instrumental</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Exibido no Miniplayer e na MediaSession durante um intervalo instrumental. Cada linha é um quadro de animação. {t} é o título, {a} é o artista e {lrc} é a última linha da letra</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Deslocamento de tempo do Miniplayer e da MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Desloca quando a próxima linha é exibida no miniplayer e na MediaSession. Use um valor negativo se as linhas aparecerem com atraso, por exemplo, na tela de bloqueio</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtros</string>
   <string name="morphe_music_lyrics_custom_regex_title">Metadados: \"regex de filtro de letras\"</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Expressão regular aplicada a títulos, artistas e álbuns antes de procurar letras e ao avaliar se dois títulos correspondem. Deixe vazio para desativar ambos. O padrão remove ruído comum, como \"Official Video\", \"Remaster\", \"【插曲】\" e \"- Topic\".</string>
@@ -552,6 +573,10 @@ Cookies necessários: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_text_filter_summary">Expressão regular aplicada apenas ao texto original da letra (não a traduções nem a romanizações). Deixe em branco para desativar.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Marcadores de linha de informação</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Se as letras forem filtradas incorretamente para a parte inferior, ajuste ou limpe este campo. Marcadores separados por vírgula: linhas que contêm um marcador seguido de dois pontos são mostradas como informações de crédito na parte inferior. Deixe vazio para desativar</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Capitalizar primeira letra</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Capitaliza a primeira letra de cada linha da letra</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Remover pontuação final</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Remove pontos finais, vírgulas, dois-pontos e pontos e vírgulas ao final das linhas da letra. Pontos de interrogação, pontos de exclamação, reticências, aspas e colchetes são mantidos</string>
   <string name="morphe_music_lyrics_text_size_title">Tamanho do texto</string>
   <string name="morphe_music_lyrics_text_size_summary">Tamanho do texto da letra</string>
   <string name="morphe_music_lyrics_offset_ms_title">Deslocamento global de tempo</string>

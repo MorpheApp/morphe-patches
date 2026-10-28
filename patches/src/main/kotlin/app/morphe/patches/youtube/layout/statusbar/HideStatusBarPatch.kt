@@ -49,7 +49,8 @@ val hideStatusBarPatch = bytecodePatch(
         // so the status bar and its background view cover them. Every class uses the first value read,
         // instead of always turning the flag off: the edge to edge layout is the stock layout of most accounts
         // (transparent status bar over Shorts and the player). The flag is turned off only when the
-        // status bar is hidden, as it then leaves an empty bar above the player.
+        // status bar is hidden, as it then leaves an empty bar above the player, and when the window
+        // is laid out below the status bar, as the room left for the status bar then covers the top bars.
         EdgeToEdgeTopBarFeatureFlagFingerprint.matchAll().forEach {
             // Overrides every read of the flag in the method.
             it.method.insertLiteralOverride(

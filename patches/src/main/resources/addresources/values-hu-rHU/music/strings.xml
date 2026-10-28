@@ -553,8 +553,29 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_mediasession_summary">Jelenlegi sor megjelenítése a zárolási képernyőn, Android Autóban és Bluetoothon. Android 11 vagy újabb szükséges</string>
   <string name="morphe_music_lyrics_miniplayer_title">Dalszöveg megjelenítése a minilejátszóban</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Jelenlegi sor megjelenítése a miniLejátszóban, a szám áthelyezésével az alfejlécbe</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Előadó és cím megjelenítési sorrendje</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Váltja az előadó és a cím sorrendjét a minilejátszóban és a MediaSessionben. BE: \"Előadó - Cím\", KI: \"Cím - Előadó\". Nem befolyásolja a dalszövegkeresést.</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Dal címe/művész formátuma</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">A Miniplayerben és a MediaSessionben a dalszámmal együtt megjelenített szöveg formátuma. A {t} a cím, az {a} a művész, és a {v} a verzió, például Akusztikus, ha a dalszöveg forrás rendelkezik vele. A két kettőspont közötti szöveg csak akkor jelenik meg, ha minden benne lévő változónak van értéke; a sima kettősponthoz írja: \\:. Minden sor sorban jelenik meg, és váltik, amint a dalszöveg változik</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Dalszöveg sor formátuma</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">A dalszöveg sor formátuma a Miniplayerben és a MediaSessionben. Az {lrc} a sor, az {n} pedig azt jelzi, hányszor ismétlődik egymás után. A kettőspontok közötti szöveg csak akkor jelenik meg, ha a sor ismétlődik. A kettőspont használatához használja a \\: jelet</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">A formátumnak tartalmaznia kell az {lrc} jelzést</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Művészsor-sablon és animációs időzítés</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimum képernyőidő (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maximum képernyőidő (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Csak több soros animációkhoz. Minden képkeretet tartsa legalább a minimum időig. A maximum elérésekor a művészsor halad tovább, még akkor is, ha a dalszöveg változatlan marad.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">A minimum értéke 0 vagy annál nagyobb kell hogy legyen. A maximum értéke nagyobb kell hogy legyen 0-nál, és legalább a minimum egyenlyegű.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Sorhosszúság korlátok</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Dalszöveg és művészsor korlátok, valamint a teljes szélességű karakterek súlya</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Dalszöveg sorhosszúság korláta
+Bontsa a hosszabb dalszövegeket egyensúlyozott felekre. A 0 érték kikapcsolja a bontást."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Művész sorlimit
+Ossza fel a kitöltött számformát ciklikus keretekre. A 0 kapcsolja ki az osztást."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Teljes szélességű karakter súlya
+Mindkét limitre vonatkozik. 1,75 esetén négy teljes szélességű karakter 7-nek számít."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Adjon meg egész számú limiteket 0 és 10000 között, valamint 0-nál nagyobb karaktersúlyt</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentális szünet</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">A miniplayerben és a MediaSessionben megjelenítve instrumentális szünet alatt. Minden sor egy animációs keret. A {t} a cím, az {a} a művész és a {lrc} az utolsó dalszövegsor</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Miniplayer és MediaSession időeltolás</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Eltolás, hogy mikor jelenjen meg a következő sor a mini lejátszóban és a MediaSession-ben. Használjon negatív értéket, ha a sorok későn jelennek meg, például a zárolt képernyőn</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Szűrők</string>
   <string name="morphe_music_lyrics_custom_regex_title">Dalszöveg-szűrő regex</string>
   <string name="morphe_music_lyrics_custom_regex_summary">A címekre, előadókra és albumokra alkalmazott reguláris kifejezés a dalszöveg keresése előtt, valamint annak kiértékelésekor, hogy két cím egyezik-e. Hagyja üresen mindkettő letiltásához. Az alapértelmezett reguláris kifejezés eltávolítja a gyakori felesleges elemeket, például \"Official Video\", \"Remaster\", \"【插曲】\" és \"- Topic\".</string>
@@ -562,6 +583,10 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_text_filter_summary">Csak az eredeti dalszövegre alkalmazott reguláris kifejezés (nem a fordításokra vagy romanizációkra). A letiltáshoz hagyd üresen.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Információs sorok jelölői</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Ha a dalszövegek hibásan az aljára szűrődnek, módosítsd vagy töröld ezt a mezőt. Vesszővel elválasztott jelölők: azok a sorok, amelyek egy, kettősponttal követett jelölőt tartalmaznak, alul forrásmegjelölésként jelennek meg. A letiltáshoz hagyd üresen.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Első betű nagybetűsre írása</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Nagybetűvel kezdi minden dalszövegsor első betűjét</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Végező rajzjelek eltávolítása</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Eltávolítja a pontokat, vesszőket, kettőspontokat és pontosvesszőket a dalszövegsorok végéről. A kérdőjeleket, felkiáltójeleket, hárompontokat, idézőjeleket és zárójeleket megtartja</string>
   <string name="morphe_music_lyrics_text_size_title">Betűméret</string>
   <string name="morphe_music_lyrics_text_size_summary">A dalszöveg betűmérete</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globális időzítési eltolás</string>

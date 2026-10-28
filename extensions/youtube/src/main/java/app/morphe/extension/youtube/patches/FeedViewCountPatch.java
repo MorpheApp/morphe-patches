@@ -55,13 +55,15 @@ import app.morphe.extension.youtube.settings.Settings;
 /**
  * Shows the view count of feed videos at the bottom left of their thumbnails,
  * lined up with the duration badge at the bottom right.
+ * In right to left languages, both are on the other side.
  * <p>
  * The view count is the text YouTube shows below the title, such as
  * "Channel - 4.7M views - 2 days ago". When that text is created, the shortened view count
  * is attached to it as a span, so the card that draws the text knows its view count.
  * The span is copied with the text, so it is kept when the Hide view count option
  * of the Hide layout components patch removes the view count from below the title.
- * No request is made, and the count is the same that YouTube shows.
+ * No request is made, and the count is the same that YouTube shows. Until the text is drawn,
+ * such as while only a part of the card is shown, the badge shows a loading spinner.
  * <p>
  * The same text is used by other lists too, such as the videos of a playlist, where no badge is
  * shown. So the view count is removed from below the title only for the texts of the components
@@ -104,7 +106,7 @@ public final class FeedViewCountPatch {
     /** Space between the duration badge and the edges of the thumbnail, if the badge is not found. */
     private static final int FALLBACK_MARGIN_DP = 8;
     /** A little more space than the duration badge has, so the count is not at the very edge. */
-    private static final int EXTRA_LEFT_MARGIN_DP = 2;
+    private static final int EXTRA_MARGIN_DP = 2;
     /** A square thumbnail is this much taller than 16:9, at least. */
     private static final int SQUARE_MIN_EXTRA_DP = 40;
     /** Space between the thumbnail and the title. */
@@ -129,6 +131,8 @@ public final class FeedViewCountPatch {
     private static final float ICON_SIZE_OF_TEXT = 0.72f;
     /** Width of the play icon, relative to its height. */
     private static final float ICON_WIDTH_OF_HEIGHT = 0.88f;
+    /** Size of the loading spinner, relative to the text size. */
+    private static final float SPINNER_SIZE_OF_TEXT = 0.85f;
 
     private static final int BACKGROUND_COLOR = 0xA6000000;
     private static final int TEXT_COLOR = 0xFFFFFFFF;
@@ -477,8 +481,10 @@ public final class FeedViewCountPatch {
                     index = 1;
                 }
             } else if (parsed[0] != null && segments.get(0).startsWithNumber()
-                    && segments.get(1).startsWithNumber()) {
-                // The view count and the upload time, such as on the channel page.
+                    && segments.get(1).hasNumber()) {
+                // The view count and the upload time, such as on the channel page and on the cards.
+                // Some languages show a word before the number of the upload time,
+                // such as "vor 2 Tagen" in German.
                 index = 0;
             }
         }
@@ -831,7 +837,8 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * A host only as large as the badge, at the bottom right of the thumbnail.
+     * A host only as large as the badge, at the bottom right of the thumbnail,
+     * or at the bottom left in right to left languages.
      */
     private static boolean isDurationBadgeShaped(ComponentHost root, Rect rect) {
         final float density = root.getResources().getDisplayMetrics().density;
@@ -840,8 +847,16 @@ public final class FeedViewCountPatch {
                 && rect.width() <= MAX_DURATION_WIDTH_DP * density
                 && rect.height() >= MIN_DURATION_HEIGHT_DP * density
                 && rect.height() <= MAX_DURATION_HEIGHT_DP * density
-                && rect.centerX() > root.getWidth() / 2
+                && (isRtl(root) ? rect.centerX() < root.getWidth() / 2 : rect.centerX() > root.getWidth() / 2)
                 && rect.bottom <= root.getWidth() + TOLERANCE_DP * density;
+    }
+
+    /**
+     * @return If the card is laid out right to left, where the duration badge is at the bottom left
+     *         of the thumbnail, so the badges are placed on the other side.
+     */
+    public static boolean isRtl(View view) {
+        return view.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
     }
 
     /**
@@ -895,6 +910,8 @@ public final class FeedViewCountPatch {
         ViewCountSpan span = null;
         Rect duration = null;
         Rect thumbnail = null;
+        // If the view count is not found yet, but the card is checked again.
+        boolean loading = false;
         // Videos of shelves are not known, but the view count is shown by the card itself,
         // so it is shown on any card shaped like a video with a duration.
         // Cards of a grid, such as in landscape, are narrower than the screen and their video is not known.
@@ -929,7 +946,7 @@ public final class FeedViewCountPatch {
                 final String id = videoId == null ? "unknown" : videoId;
                 if (viewCount == null) {
                     // The texts can be drawn after the layout of the card.
-                    FeedVideoCardsPatch.scheduleRetry(host);
+                    loading = FeedVideoCardsPatch.scheduleRetry(host);
                     logTexts(id, info.texts);
                 } else if (duration == null) {
                     final Rect found = thumbnail;
@@ -939,7 +956,7 @@ public final class FeedViewCountPatch {
         }
 
         ViewCountBadge badge = badges.get(host);
-        if (viewCount == null) {
+        if (viewCount == null && !loading) {
             if (badge != null) {
                 badge.detach(host);
                 badges.remove(host);
@@ -968,16 +985,20 @@ public final class FeedViewCountPatch {
         private final Paint backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint iconPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint spinnerPaint;
         private final Path iconPath = new Path();
         private final RectF rect = new RectF();
         private final float density;
         private final float maxTextSize;
         private final WeakReference<ComponentHost> hostRef;
 
+        /** The view count, or null while it's loading. */
         @Nullable
         private String viewCount;
         private boolean added;
         private int alpha = 255;
+        /** If the background fades in too, as it was not shown with the loading spinner. */
+        private boolean backgroundFades;
         @Nullable
         private ValueAnimator fadeIn;
 
@@ -997,6 +1018,8 @@ public final class FeedViewCountPatch {
             iconPaint.setStrokeJoin(Paint.Join.ROUND);
             iconPaint.setStrokeCap(Paint.Cap.ROUND);
             iconPaint.setStrokeWidth(ICON_STROKE_DP * density);
+
+            spinnerPaint = FeedVideoCardsPatch.createSpinnerPaint(density, TEXT_COLOR);
         }
 
         private int px(float dp) {
@@ -1004,13 +1027,16 @@ public final class FeedViewCountPatch {
         }
 
         /**
-         * @param thumbnail The thumbnail, or null if not found.
-         *                  Then a 16:9 thumbnail as wide as the card is used.
+         * @param newViewCount The view count, or null to show the loading spinner.
+         * @param thumbnail    The thumbnail, or null if not found.
+         *                     Then a 16:9 thumbnail as wide as the card is used.
          */
-        void bind(ComponentHost host, String newViewCount, @Nullable Rect duration, @Nullable Rect thumbnail) {
+        void bind(ComponentHost host, @Nullable String newViewCount, @Nullable Rect duration, @Nullable Rect thumbnail) {
             // Fades in when shown, or when the card shows another video.
-            // Not when the card is only laid out again.
-            final boolean changed = !newViewCount.equals(viewCount);
+            // Not when the card is only laid out again, and not the loading spinner.
+            final boolean changed = newViewCount != null && !newViewCount.equals(viewCount);
+            // The background of the loading spinner stays.
+            backgroundFades = !(added && viewCount == null);
             viewCount = newViewCount;
 
             // Cards of some layouts show the thumbnail inset from their edges,
@@ -1020,26 +1046,32 @@ public final class FeedViewCountPatch {
                     : new Rect(0, 0, host.getWidth(),
                     Math.round(host.getWidth() * FeedVideoCardsPatch.THUMBNAIL_RATIO));
 
-            // Same height, bottom and margin as the duration badge.
+            // Same height, bottom and margin as the duration badge, on the other side of the thumbnail.
+            final boolean rtl = isRtl(host);
             final int top;
             final int bottom;
-            final int left;
+            // Distance of the badge from the edge of the thumbnail on its side.
+            final int margin;
             if (duration != null) {
                 top = duration.top;
                 bottom = duration.bottom;
-                left = frame.left + Math.max(0, frame.right - duration.right) + px(EXTRA_LEFT_MARGIN_DP);
+                margin = Math.max(0, rtl ? duration.left - frame.left : frame.right - duration.right)
+                        + px(EXTRA_MARGIN_DP);
             } else {
                 bottom = frame.bottom - px(FALLBACK_MARGIN_DP);
                 top = bottom - px(FALLBACK_HEIGHT_DP);
-                left = frame.left + px(FALLBACK_MARGIN_DP + EXTRA_LEFT_MARGIN_DP);
+                margin = px(FALLBACK_MARGIN_DP + EXTRA_MARGIN_DP);
             }
             final int height = bottom - top;
 
             textPaint.setTextSize(Math.min(maxTextSize, height * TEXT_SIZE_OF_HEIGHT));
             final float iconSize = textPaint.getTextSize() * ICON_SIZE_OF_TEXT;
-            final int width = Math.round(px(PADDING_DP) * 2 + iconSize + px(GAP_DP)
-                    + textPaint.measureText(viewCount));
+            final float contentWidth = viewCount == null
+                    ? textPaint.getTextSize() * SPINNER_SIZE_OF_TEXT
+                    : textPaint.measureText(viewCount);
+            final int width = Math.round(px(PADDING_DP) * 2 + iconSize + px(GAP_DP) + contentWidth);
 
+            final int left = rtl ? frame.right - margin - width : frame.left + margin;
             setBounds(left, top, left + width, bottom);
             if (!added) {
                 host.getOverlay().add(this);
@@ -1048,6 +1080,9 @@ public final class FeedViewCountPatch {
             if (changed) {
                 startFadeIn();
             } else {
+                if (viewCount == null) {
+                    endFadeIn();
+                }
                 invalidateSelf();
             }
         }
@@ -1083,17 +1118,15 @@ public final class FeedViewCountPatch {
 
         @Override
         public void draw(@NonNull Canvas canvas) {
-            if (viewCount == null) {
-                return;
-            }
             ComponentHost host = hostRef.get();
             if (host != null && FeedVideoCardsPatch.isCardPlayingInline(host)) {
                 // The inline player shows its own controls over the thumbnail.
                 return;
             }
-            backgroundPaint.setAlpha(Color.alpha(BACKGROUND_COLOR) * alpha / 255);
+            backgroundPaint.setAlpha(Color.alpha(BACKGROUND_COLOR) * (backgroundFades ? alpha : 255) / 255);
             textPaint.setAlpha(alpha);
-            iconPaint.setAlpha(alpha);
+            // The icon is shown with the loading spinner too, so it fades in only with the background.
+            iconPaint.setAlpha(backgroundFades ? alpha : 255);
 
             Rect bounds = getBounds();
             final float radius = px(RADIUS_DP);
@@ -1112,8 +1145,16 @@ public final class FeedViewCountPatch {
             iconPath.close();
             canvas.drawPath(iconPath, iconPaint);
 
-            Paint.FontMetrics metrics = textPaint.getFontMetrics();
             final float textX = bounds.left + px(PADDING_DP) + iconSize + px(GAP_DP);
+            if (viewCount == null) {
+                final float spinnerSize = textPaint.getTextSize() * SPINNER_SIZE_OF_TEXT;
+                rect.set(textX, centerY - spinnerSize / 2, textX + spinnerSize, centerY + spinnerSize / 2);
+                FeedVideoCardsPatch.drawSpinner(canvas, rect, spinnerPaint);
+                // Drawn again, so the spinner turns.
+                invalidateSelf();
+                return;
+            }
+            Paint.FontMetrics metrics = textPaint.getFontMetrics();
             final float baseline = centerY - (metrics.ascent + metrics.descent) / 2;
             canvas.drawText(viewCount, textX, baseline, textPaint);
         }

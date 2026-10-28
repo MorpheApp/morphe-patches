@@ -29,7 +29,7 @@ public final class ForceSystemFontPreference extends BooleanSettingPreference {
                 }
             }
 
-            AbstractPreferenceFragment.showRestartDialog(context);
+            AbstractPreferenceFragment.setRestartNeeded();
             return true;
         });
     }

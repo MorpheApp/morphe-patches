@@ -539,8 +539,29 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_mediasession_summary">Показва текущия ред на екрана за заключване, Android Auto и Bluetooth. Изисква Android 11 или по-нова версия</string>
   <string name="morphe_music_lyrics_miniplayer_title">Показване на текстовете в миниплейъра.</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Показва текущия ред в мини плеъра, като парчето се премества в субтитрите</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Ред на показване на изпълнител и заглавие</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Превключва реда на показване на изпълнителя и заглавието в миниплейъра и MediaSession. ВКЛ. „Изпълнител - Заглавие“, а ИЗКЛ. „Заглавие - Изпълнител“. Не засяга търсенето на текстове.</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Формат на заглавието/изпълнителя на песента</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Формат на песента, показана с текстовете в миниплеера и MediaSession. {t} е заглавието, {a} е изпълнителят и {v} е версията, например Acoustic, когато източникът на текстовете предоставя такава. Текстът между две двоеточки се показва само когато всяка променлива в него има стойност; напишете \\: за обикновено двоеточие. Всеки ред се показва поредно, като се сменя при всяка промяна на текста</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Формат на реда с текст</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Формат на реда с текст в миниплеера и MediaSession. {lrc} е редът, а {n} е колко пъти подред се пее той. Текстът между двоеточките се показва само когато редът се повтаря. Използвайте \\: за двоеточие</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Форматът трябва да съдържа {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Шаблон на реда с изпълнителя и времеви интервали на анимацията</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Минимално време на екрана (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Максимално време на екрана (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Само за многоредни анимации. Запазете всеки кадър за поне минималното време. При достигане на максималното, превъртете реда на изпълнителя, дори текстът на песента да остане същият.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Минималната стойност трябва да бъде 0 или по-голяма. Максималната трябва да бъде по-голяма от 0 и поне колкото минималната.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Ограничения за дължина на реда</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Ограничения за редовете на текста и изпълнителя и тегло на пълноширинни символи</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Ограничение за реда на текста
+Разделете по-дългите текстове на балансирани половини. 0 изключва разделянето."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Лимит на редовете на изпълнителя
+Разделя попълнения формат на пистата на циклиращи кадри. 0 изключва разделянето."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Тегло на знаци с пълна ширина
+Важи и за двете ограничения. При 1.75, четири знака с пълна ширина се броят като 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Въведете цели числа за лимитите от 0 до 10000 и тегло на знака, по-голямо от 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Инструментална пауза</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Показва се в миниплеера и MediaSession по време на инструментална пауза. Всеки ред е един анимационен кадър. {t} е заглавието, {a} е изпълнителят, а {lrc} е последният ред от текста</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Времево отместване на миниплеера и MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Премества кога следващият ред се показва в минимизирания плеър и MediaSession. Използвайте отрицателна стойност, ако редовете се появяват с закъснение, например на екрана за заключване</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Филтри</string>
   <string name="morphe_music_lyrics_custom_regex_title">Регулярен израз за метаданни</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Регулярен израз, прилаган към заглавия, изпълнители и албуми преди търсене на текстове на песни и при оценяване дали две заглавия съвпадат. Оставете празно, за да деактивирате и двете. По подразбиране премахва често срещаните ненужни елементи като „Official Video“, „Remaster“, „【插曲】“ и „- Topic“.</string>
@@ -548,6 +569,10 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_text_filter_summary">Регулярен израз, прилаган само към оригиналния текст (не към преводите или романизациите). Оставете полето празно, за да деактивирате.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Маркери за информационни редове</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Ако редовете на текста неправилно се филтрират към долната част, коригирайте това или го изчистете. Маркери, разделени със запетая: редовете, съдържащи маркер, последван от двоеточие, се показват като информация за авторство в долната част. Оставете празно, за да деактивирате.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Заглавна първа буква</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Заглавна първа буква на всеки ред от текста на песента</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Премахване на крайен пунктуационен знак</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Премахва точки, запетаи, двоеточия и точка и запетаи в края на редовете от текста на песента. Въпросителните знаци, удивителните знаци, многоточията, кавичките и скобите се запазват</string>
   <string name="morphe_music_lyrics_text_size_title">Размер на текста</string>
   <string name="morphe_music_lyrics_text_size_summary">Размер на текста на текста на песните</string>
   <string name="morphe_music_lyrics_offset_ms_title">Глобално отместване на времето</string>

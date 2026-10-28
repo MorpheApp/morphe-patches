@@ -393,6 +393,9 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_hide_shopping_links_title">Piilota ostoslinkit</string>
   <string name="morphe_hide_video_ads_title">Piilota videomainokset</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Piilota YouTube Premium -mainokset</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Ladataan…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Nykyinen kanava:</string>
   <string name="morphe_channel_whitelist_add">Lisää valkolistalle</string>
@@ -409,6 +412,9 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_channel_search_results">Kanavahaun tulokset</string>
   <string name="morphe_channel_search_no_results">Tältä kanavalta ei löytynyt mitään</string>
   <string name="morphe_channel_search_failed">Tätä kanavaa ei voitu hakea</string>
+  <string name="morphe_channel_search_videos">Videot</string>
+  <string name="morphe_channel_search_posts">Postaukset</string>
+  <string name="morphe_channel_search_no_posts">Tältä kanavalta ei löytynyt vastaavia postauksia</string>
   <string name="morphe_channel_search_sort_relevance">Osuvuus</string>
   <string name="morphe_channel_search_sort_most_viewed">Eniten katsottu</string>
   <string name="morphe_channel_search_sort_least_viewed">Vähiten katsottu</string>
@@ -494,6 +500,9 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_external_downloader_quick_video">Video</string>
   <string name="morphe_external_downloader_quick_audio">Ääni</string>
   <string name="morphe_external_downloader_quick_options">Kaikki asetukset</string>
+  <string name="morphe_shorts_download_flyout_button_title">Näytä lataus Shorts-valikossa</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Lisää ulkoisen lataussovelluksen ponnahdusvalikkokohdan Shorts-soittoehdotukseen</string>
+  <string name="morphe_shorts_download_flyout_title">Lataa</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ääniratateksti</string>
   <string name="morphe_vot_screen_summary">Lue videon tekstitykset ääneen laitteen tekstistä puheeksi -toiminnolla, synkronoitu toiston kanssa</string>
@@ -604,6 +613,8 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Sallii lapsiin liittyvien videoiden tallentamisen \'Katso myöhemmin\' -luetteloon ponnahdusvalikosta</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Näytä Tallenna myöhemmin -painike Shortsit-ponnahdusvalikossa</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Sallii Shortsien tallentamisen \'Katso myöhemmin\' -luetteloon ponnahdusvalikosta</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Ohjaa Katso myöhemmin -lista soittolistalle</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Katso myöhemmin</string>
   <string name="morphe_queue_flyout_title">Lisää Morphe-jonoon</string>
   <string name="morphe_queue_restore_title">Pidä jono käytössä istuntojen välillä</string>
   <string name="morphe_queue_restore_summary">Jono säilyy sovelluksen uudelleenkäynnistyksen jälkeen</string>
@@ -826,8 +837,6 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_auto_captions_style_entry_2">Älä näytä koskaan</string>
   <string name="morphe_auto_captions_style_entry_3">Ota tekstityskeksit käyttöön</string>
   <string name="morphe_auto_captions_style_entry_4">Näytä, kun mykistetty</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Näytä automaattiset tekstitykset</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Piilota automaattiset tekstitykset</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Ensisijainen tekstityskieli</string>
   <string name="morphe_preferred_caption_language_summary">Valitsee ensin tarjoajan tekstitykset ja kääntää ne sitten automaattisesti ensisijaiselle kielelle</string>
@@ -1102,28 +1111,26 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_change_form_factor_entry_4">Ajoneuvo</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Muutokset sisältävät:
 
-Tabletin asettelu
-• Yhteisön julkaisut ovat piilotettuja
+Tablettiasettelu
+• Yhteisöpostaukset on piilotettu
 • Toisto syötteissä -asetus ei ole käytettävissä
-• Remix-painike ja äänipainike eivät ole käytettävissä Shortseissa
-• 'Lisää videoita' -peittokuva ei ehkä ole käytettävissä
-• Vanha, tiivistämätön video-toimintapalkki on näkyvissä
+• Remix-painike ja Ääni-painike eivät ole käytettävissä Shorts-videoilla
+• \"Lisää videoita\" -peitekerros ei välttämättä ole käytettävissä
+• Vanha videon toimintopalkki näkyy laajennettuna
+• Avautuvan valikon kohteet eivät välttämättä toimi oikein
 
 Auton asettelu
 • Syöte on järjestetty aiheiden ja kanavien mukaan
 • Toisto syötteissä -asetus ei ole käytettävissä
-• Remix-painike ja äänipainike eivät ole käytettävissä Shortseissa
-• 'Lisää videoita' -peittokuva ei ehkä ole käytettävissä
-• Shorts avautuvat tavallisessa soittimessa
-• Vanha, tiivistämätön video-toimintapalkki on näkyvissä"</string>
+• Remix-painike ja Ääni-painike eivät ole käytettävissä Shorts-videoilla
+• \"Lisää videoita\" -peitekerros ei välttämättä ole käytettävissä
+• Shorts-videot avautuvat tavalliseen soittimeen
+• Vanha videon toimintopalkki näkyy laajennettuna"</string>
   <string name="morphe_tablet_layout_in_player_title">Ota tablettiasettelun käyttöön soittimessa</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Palauttaa vanhan soittimen asettelun
 
 Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lisää videoita\" -peittokuvio ei välttämättä ole käytettävissä"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Tämän ottaminen käyttöön voi rikkoa joitakin soittimen asettelun ominaisuuksia, kuten kommenttiosion tai soittimen alapuolella näkyvät \"Lisää videoita\" -videot.
-
-YouTube ei tue enää tablettiasettelua, ja se on osittain tai kokonaan rikki uusimmissa YouTube-versioissa. Toimivan tablettiasettelun saamiseksi asenna päivitys YouTube-versioon 20.21.37"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Palauta vanha tekstitysten käyttäytyminen</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Palauta vanhat tallenteet soittimeen</string>
@@ -1241,6 +1248,7 @@ YouTube ei tue enää tablettiasettelua, ja se on osittain tai kokonaan rikki uu
   <string name="morphe_fix_status_bar_layout_title">Korjaa tilapalkin peittämistä yläpalkkien kanssa</string>
   <string name="morphe_fix_status_bar_layout_summary">Pysäyttää tilapalkin asettelun johdonmukaisuuden, joten se ei peitä yläpalkkeja ja jättää tyhjää tilaa soittimen yläpuolelle. Poista tämä käytöstä, jos sovellus kaatuu tai yläpalkit näyttävät vääriltä</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Hehku</string>
   <string name="morphe_theme_color_light_title">Vaalean teeman tausta</string>
   <string name="morphe_theme_color_light_entry_2">Valkoinen</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Valkoinen)()</string>
@@ -1263,6 +1271,9 @@ YouTube ei tue enää tablettiasettelua, ja se on osittain tai kokonaan rikki uu
   <string name="morphe_seekbar_custom_color_accent_summary">Aseta videon etenemispalkin toissijainen väri</string>
   <string name="morphe_seekbar_custom_color_invalid">Virheellinen etenemispalkin väriarvo</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Alkuperäinen analogi</string>
+  <string name="morphe_custom_branding_icon_entry_9">Alkuperäinen kakku</string>
+  <string name="morphe_custom_branding_icon_entry_10">Alkuperäinen metalli</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Ylätunnisteen logo</string>
   <string name="morphe_header_logo_entry_1">Oletus</string>
@@ -1626,4 +1637,17 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_series_tracker_no_search_results">Sarjoja ei löytynyt</string>
   <string name="morphe_series_tracker_untitled_episode">Nimetön jakso</string>
   <string name="morphe_series_tracker_unavailable_episode">Ei saatavilla oleva jakso</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Niconico-kommentit</string>
+  <string name="morphe_niconico_comments_screen_summary">Näytä live-chat ja chatin toisto kommenteina, jotka rullaavat videon yli</string>
+  <string name="morphe_niconico_comments_summary">Näyttää peittopainikkeen videosoittimessa. Napauta näyttääksesi tai piilottaaksesi kommentit, napauta ja pidä painettuna pika-asetuksia varten</string>
+  <string name="morphe_niconico_comments_font_size_title">Kommenttien kirjasinkoko</string>
+  <string name="morphe_niconico_comments_font_size_summary">Kommenttien tekstikoko (12–40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Kommenttien läpinäkyvyys</string>
+  <string name="morphe_niconico_comments_opacity_summary">Kommenttitekstin ja taustojen läpinäkyvyys</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Keston kesto</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Kuinka monta sekuntia kommenttien kulkeminen näytön yli kestää. Pienemmät arvot liikkuvat nopeammin</string>
+  <string name="morphe_niconico_comments_max_length_title">Maksimit kommentin pituus</string>
+  <string name="morphe_niconico_comments_max_length_summary">Piilottaa kommentit, jotka ovat tämän merkkimäärän pidempiä. Jokainen emojimerkki lasketaan yhdeksi merkiksi</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Ei rajoitusta</string>
 </resources>

@@ -393,6 +393,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">הסתר קישורי קניות</string>
   <string name="morphe_hide_video_ads_title">הסתר מודעות סרטון</string>
   <string name="morphe_hide_youtube_premium_promotions_title">הסתר קידומי YouTube Premium</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">טוען…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">ערוץ נוכחי:</string>
   <string name="morphe_channel_whitelist_add">הוסף לרשימה הלבנה</string>
@@ -409,6 +412,9 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">תוצאות חיפוש ערוצים</string>
   <string name="morphe_channel_search_no_results">לא נמצא דבר בערוץ זה</string>
   <string name="morphe_channel_search_failed">לא ניתן לחפש בערוץ זה</string>
+  <string name="morphe_channel_search_videos">סרטונים</string>
+  <string name="morphe_channel_search_posts">פוסטים</string>
+  <string name="morphe_channel_search_no_posts">אין פוסטים בערוץ זה התואמים לחיפוש</string>
   <string name="morphe_channel_search_sort_relevance">רלוונטיות</string>
   <string name="morphe_channel_search_sort_most_viewed">הנצפים ביותר</string>
   <string name="morphe_channel_search_sort_least_viewed">הפחות נצפים</string>
@@ -442,6 +448,7 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_flyout_single">הורדת תמונה</string>
   <string name="morphe_post_image_download_started">הורדת %s תמונות...</string>
   <string name="morphe_post_image_download_started_single">מוריד תמונה…</string>
+  <string name="morphe_post_image_download_saved">%1$s תמונות נשמרו ב-%2$s</string>
   <string name="morphe_post_image_download_saved_single">התמונה נשמרה ב-%s</string>
   <string name="morphe_post_image_download_failed">לא ניתן להוריד את התמונה</string>
   <string name="morphe_post_image_download_not_found">לא נמצאה תמונה בפוסט זה</string>
@@ -493,6 +500,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_video">סרטון</string>
   <string name="morphe_external_downloader_quick_audio">שמע</string>
   <string name="morphe_external_downloader_quick_options">כל האפשרויות</string>
+  <string name="morphe_shorts_download_flyout_button_title">הצג הורדה בתפריט Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">מוסיף פריט תפריט קופץ של מוריד חיצוני לפייסטיינר של Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">הורד</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">תרגום דיבוב</string>
   <string name="morphe_vot_screen_summary">קריאת כתוביות הסרטון בקול רם באמצעות טקסט לדיבור מקומי, בסנכרון עם ההפעלה</string>
@@ -603,6 +613,8 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">מאפשר לשמור סרטונים הקשורים לילדים ברשימת \'צפה מאוחר יותר\' מהתפריט הנפתח</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">הצג כפתור שמירה ל\'צפה מאוחר יותר\' בתפריט הנפתח של הסרטונים הקצרים</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">מאפשר לשמור סרטונים קצרים ברשימת \'צפה מאוחר יותר\' מהתפריט הנפתח</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">הפנה את \"צפייה מאוחר יותר\" לפלייליסט</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">לצפייה בהמשך</string>
   <string name="morphe_queue_flyout_title">הוסף לתור Morphe</string>
   <string name="morphe_queue_restore_title">שמור תור בין הפעלות</string>
   <string name="morphe_queue_restore_summary">התור נשמר גם לאחר הפעלה מחדש של האפליקציה</string>
@@ -825,8 +837,6 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_2">אל תהצג</string>
   <string name="morphe_auto_captions_style_entry_3">הצג כאשר הושתיק</string>
   <string name="morphe_auto_captions_style_entry_4">הצג בעת שתק</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">הצג כתוביות אוטומטיות</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">הסתר כתוביות אוטומטיות</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">שפת כתוביות מועדפת</string>
   <string name="morphe_preferred_caption_language_summary">בוחר תחילה בכתוביות של הספק, ולאחר מכן מתרגם אותן אוטומטית לשפה המועדפת</string>
@@ -1101,28 +1111,26 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_4">רכב</string>
   <string name="morphe_change_form_factor_user_dialog_message">"השינויים כוללים:
 
-פריסת טאבלט
-• פוסטים קהילתיים מוסתרים
-• הגדרת השמעה בפידים אינה זמינה
-• כפתור רמיקס וכפתור סאונד אינם זמינים ב-Shorts
-• שכבת 'עוד סרטונים' עשויה לא להיות זמינה
-• סרגל פעולות וידאו ישן שאינו מקופל מוצג
+מסמך טאבלט
+• פוסטים בקהילה מוסתרים
+• הגדרת ניגון בריבים אינה זמינה
+• כפתורי הרמיקס וצליל אינם זמינים בסרטונים קצרים
+• ייתכן ששכבת העל 'סרטונים נוספים' לא תהיה זמינה
+• יישור הפעולה הישן לא המקופל של הסרטון מוצג
+• פריטי תפריט קופץ עשויים לא לעבוד כראוי
 
-פריסה לרכב
-• הפיד מאורגן לפי נושאים וערוצים
-• הגדרת השמעה בפידים אינה זמינה
-• כפתור רמיקס וכפתור סאונד אינם זמינים ב-Shorts
-• שכבת 'עוד סרטונים' עשויה לא להיות זמינה
-• Shorts נפתחים בנגן הרגיל
-• סרגל פעולות וידאו ישן שאינו מקופל מוצג"</string>
+מסמך רכב
+• הריב מסודר לפי נושאים וערוצים
+• הגדרת ניגון בריבים אינה זמינה
+• כפתורים של הרמיקס וצליל אינם זמינים בסרטונים קצרים
+• ייתכן ששכבת העל 'סרטונים נוספים' לא תהיה זמינה
+• סרטונים קצרים נפתחים בנגן הרגיל
+• יישור הפעולה הישן לא המקופל של הסרטון מוצג"</string>
   <string name="morphe_tablet_layout_in_player_title">הפעל פריסת טאבלט בנגן</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"משחזר את פריסת הנגן הישנה
 
 מגבלה: אם \"שחזר סרגל הפעולות של הווידאו הישן\" כבוי, ייתכן ש-\"עוד סרטונים\" לא יהיה זמין"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"הפעלת אפשרות זו עלולה לשבש חלק מתכונות הפריסה של הנגן, כגון אזור התגובות או \"סרטונים נוספים\" המוצגים מתחת לנגן.
-
-פריסת הטאבלט אינה נתמכת יותר על ידי YouTube, והיא פגומה חלקית או באופן מלא בגרסאות YouTube האחרונות. לקבלת פריסת טאבלט תקינה, יש להחיל פאץ' ל-YouTube 20.21.37"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - שחזור התנהגות הכתוביות הישנה</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - שחזר שפופרות ישנות לפלייליסט</string>
@@ -1240,6 +1248,7 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_title">תיקון מסך החיווי שמכסה את הפסים העליונים</string>
   <string name="morphe_fix_status_bar_layout_summary">שומר על עקביות תצורת מסך החיווי, כך שהוא לא יכסה את הפסים העליונים ולא יישאר רווח ריק מעל הנגן. כבה אפשרות זו אם האפליקציה קורסת או שהפסים העליונים נראים לא תקין</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">זוהר</string>
   <string name="morphe_theme_color_light_title">רקע של ערכת נושא בהירה</string>
   <string name="morphe_theme_color_light_entry_2">לבן</string>
   <string name="morphe_theme_color_light_entry_3">Material You (לבן)</string>
@@ -1262,6 +1271,9 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">הגדר את הצבע המשני של סרגל התקדמות הסרטון</string>
   <string name="morphe_seekbar_custom_color_invalid">ערך צבע סרגל דילוג לא חוקי</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">אנלוג מקורי</string>
+  <string name="morphe_custom_branding_icon_entry_9">עוגה מקורית</string>
+  <string name="morphe_custom_branding_icon_entry_10">מתכת מקורית</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">לוגו כותרת</string>
   <string name="morphe_header_logo_entry_1">ברירת מחדל</string>
@@ -1625,4 +1637,17 @@ AVC (H.264)
   <string name="morphe_series_tracker_no_search_results">לא נמצאו סדרות</string>
   <string name="morphe_series_tracker_untitled_episode">פרק ללא שם</string>
   <string name="morphe_series_tracker_unavailable_episode">פרק לא זמין</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">תגובות Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">הצגת צ\'אט חי והשמעה חוזרת של צ\'אט כתגובות שגולשות על פני הסרטון</string>
+  <string name="morphe_niconico_comments_summary">מציג כפתור שכבה בנגן הווידאו. הקשה להצגה או הסתרה של התגובות, לחיצה ארוכה להגדרות מהירות</string>
+  <string name="morphe_niconico_comments_font_size_title">גודל גופן של תגובה</string>
+  <string name="morphe_niconico_comments_font_size_summary">גודל הטקסט של התגובות (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">שקיפות תגובה</string>
+  <string name="morphe_niconico_comments_opacity_summary">שקיפות של טקסט התגובה והרקעים</string>
+  <string name="morphe_niconico_comments_travel_duration_title">משך זמן מעבר</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">כמה שניות לוקח לתגובות לחצות את המסך. ערכים נמוכים יותר נעים מהר יותר</string>
+  <string name="morphe_niconico_comments_max_length_title">אורך תגובה מקסימלי</string>
+  <string name="morphe_niconico_comments_max_length_summary">מסתיר תגובות עם יותר תווים מזה. כל אימוג\'י נחשב כתו אחד</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">ללא הגבלה</string>
 </resources>

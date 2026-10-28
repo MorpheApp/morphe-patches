@@ -538,8 +538,29 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_lyrics_mediasession_summary">يعرض السطر الحالي على شاشة القفل وAndroid Auto والبلوتوث. يتطلب Android 11 أو أحدث</string>
   <string name="morphe_music_lyrics_miniplayer_title">إظهار الكلمات في المشغّل المصغّر</string>
   <string name="morphe_music_lyrics_miniplayer_summary">يعرض السطر الحالي في المشغل المصغر، مع تحريك المسار إلى العنوان الفرعي</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">عند التشغيل: تكون الرومنة أسفل الكلمات والترجمة أعلاها. عند الإيقاف: تبقى الرومنة أعلى الكلمات والترجمة أسفلها.</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">تبديل ترتيب الفنان والعنوان في المشغل المصغر وواجهة \"MediaSession\". تشغيل يعني \"الفنان - العنوان\" وإطفاء يعني \"العنوان - الفنان\". لا يؤثر هذا الإجراء على البحث عن كلمات الأغاني</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">تنسيق عنوان الأغنية/الفنان</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">تنسيق المسار المعروض مع كلمات الأغاني في المشغل المصغر وMediaSession. {t} هو العنوان، و{a} هو الفنان و{v} هو الإصدار، مثل Acoustic، عندما يوفر مصدر كلمات الأغاني ذلك. النص الموجود بين نقطتين رأسيتين يظهر فقط عندما يكون لكل متغير بداخله قيمة؛ اكتب \\: لنقطة رأسية عادية. يتم عرض كل سطر بدوره، وينتقل السطر عند تغيير كلمات الأغاني</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">تنسيق سطر كلمات الأغاني</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">تنسيق سطر كلمات الأغاني في المشغل المصغر وMediaSession. {lrc} هو السطر و{n} هو عدد المرات التي يتم فيها غناؤه على التوالي. النص الموجود بين النقطتين الرأسيتين يظهر فقط عندما يتكرر السطر. استخدم \\: للنقطة الرأسية</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">يجب أن يحتوي التنسيق على {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">قالب سطر الفنان وتوقيت الرسوم المتحركة</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">الحد الأدنى لوقت الشاشة (ملي ثانية)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">الحد الأقصى لوقت الشاشة (ملي ثانية)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">للرسوم المتحركة متعددة الأسطر فقط. احتفظ بكل إطار لمدة لا تقل عن الحد الأدنى من الوقت. عند الحد الأقصى، يتم تقديم سطر الفنان حتى لو ظلت كلمات الأغنية كما هي.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">يجب أن يكون الحد الأدنى 0 أو أكبر. يجب أن يكون الحد الأقصى أكبر من 0 وبحد أدنى مساوٍ للحد الأدنى.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">حدود طول السطر</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">حدود سطر الكلمات وسطر الفنان، ووزن الأحرف كاملة العرض</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"حد سطر كلمات الأغاني
+تقسيم الكلمات الطويلة إلى نصفين متوازنين. 0 لتعطيل التقسيم."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"حد أسطر الفنان
+تقسيم تنسيق المسار المأهول إلى إطارات متناوبة. 0 لتعطيل التقسيم."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"وزن الأحرف كاملة العرض
+ينطبق على كلا الحدين. عند 1.75، تُحسب أربعة أحرف كاملة العرض على أنها 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">أدخل حدوداً بأرقام صحيحة من 0 إلى 10000 ووزناً للأحرف أكبر من 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">فاصل موسيقي</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">يظهر في المشغل المصغر و MediaSession أثناء الفاصل الموسيقي. كل سطر يمثل إطار حركة واحداً. {t} هو العنوان، و {a} هو الفنان، و {lrc} هو آخر سطر من كلمات الأغنية</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">إزاحة التوقيت في المشغل المصغر و MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">يحدد موعد ظهور السطر التالي في المشغل المصغر وMediaSession. استخدم قيمة سالبة إذا كانت الأسطر تظهر متأخرة، على سبيل المثال في شاشة القفل</string>
   <string name="morphe_settings_music_lyrics_metadata_title">الفلاتر</string>
   <string name="morphe_music_lyrics_custom_regex_title">تعبير مرشّح الكلمات</string>
   <string name="morphe_music_lyrics_custom_regex_summary">تعبير نمطي يُطبَّق على العناوين والفنانين والألبومات قبل البحث عن كلمات الأغاني وعند تقييم درجة تطابق عنوانين. اتركه فارغًا لتعطيل الاستخدامين معًا. الإعداد الافتراضي يزيل العبارات الزائدة الشائعة مثل \"Official Video\" و\"Remaster\" و\"【插曲】\" و\"- Topic\".</string>
@@ -547,6 +568,10 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_lyrics_text_filter_summary">تعبير نمطي يُطبَّق على نص الكلمات الأصلي فقط (وليس الترجمات أو الرومنة). اتركه فارغًا لتعطيله.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">علامات سطر المعلومات</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">إذا تمت تصفية الكلمات بشكل غير صحيح إلى الأسفل، فاضبط هذا أو امسحه. […] اتركه فارغًا لتعطيله.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">تكبير الحرف الأول</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">يجعل الحرف الأول من كل سطر في كلمات الأغنية حرفاً كبيراً</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">إزالة علامات الترقيم الختامية</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">يزيل النقاط والفواصل والنقطتين الرأسيتين والفاصلة المنقوطة في نهاية أسطر كلمات الأغاني. مع الإبقاء على علامات الاستفهام وعلامات التعجب وعلامات الحذف وعلامات الاقتباس والأقواس</string>
   <string name="morphe_music_lyrics_text_size_title">حجم النص</string>
   <string name="morphe_music_lyrics_text_size_summary">حجم نص كلمات الأغنية</string>
   <string name="morphe_music_lyrics_offset_ms_title">إزاحة التوقيت العامة</string>

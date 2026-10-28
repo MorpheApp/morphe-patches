@@ -393,6 +393,9 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_hide_shopping_links_title">Sembunyikan tautan belanja</string>
   <string name="morphe_hide_video_ads_title">Sembunyikan iklan video</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Sembunyikan promosi YouTube Premium</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Memuat…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Saluran saat ini:</string>
   <string name="morphe_channel_whitelist_add">Tambahkan ke daftar putih</string>
@@ -409,6 +412,9 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_channel_search_results">Hasil pencarian saluran</string>
   <string name="morphe_channel_search_no_results">Tidak ada yang ditemukan di saluran ini</string>
   <string name="morphe_channel_search_failed">Tidak dapat mencari di saluran ini</string>
+  <string name="morphe_channel_search_videos">Video</string>
+  <string name="morphe_channel_search_posts">Postingan</string>
+  <string name="morphe_channel_search_no_posts">Tidak ada postingan di saluran ini yang cocok</string>
   <string name="morphe_channel_search_sort_relevance">Relevansi</string>
   <string name="morphe_channel_search_sort_most_viewed">Paling banyak ditonton</string>
   <string name="morphe_channel_search_sort_least_viewed">Paling sedikit ditonton</string>
@@ -494,6 +500,9 @@ Setelah video dengan tombol Ask dibuka satu kali, fitur ini berfungsi untuk semu
   <string name="morphe_external_downloader_quick_video">Video</string>
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Semua opsi</string>
+  <string name="morphe_shorts_download_flyout_button_title">Tampilkan download di menu Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Menambahkan item menu flyout pengunduh eksternal ke pemutar Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">Download</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Terjemahan sulih suara</string>
   <string name="morphe_vot_screen_summary">Baca teks keterangan video dengan suara keras menggunakan fitur text-to-speech bawaan perangkat, yang disinkronkan dengan pemutaran video</string>
@@ -604,6 +613,8 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Memungkinkan Anda menyimpan video terkait anak-anak ke \'Tonton Nanti\' melalui menu flyout.</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Tampilkan tombol Simpan ke Tonton Nanti di flyout Shorts</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Memungkinkan Anda menyimpan Shorts ke \'Tonton Nanti\' melalui menu flyout.</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Alihkan Tonton nanti ke daftar putar</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Tonton nanti</string>
   <string name="morphe_queue_flyout_title">Tambahkan ke antrean Morphe</string>
   <string name="morphe_queue_restore_title">Simpan antrean antar sesi</string>
   <string name="morphe_queue_restore_summary">Antrean disimpan setelah memulai ulang aplikasi</string>
@@ -826,8 +837,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_auto_captions_style_entry_2">Jangan pernah tampilkan</string>
   <string name="morphe_auto_captions_style_entry_3">Tampilkan saat audio tidak dibisukan</string>
   <string name="morphe_auto_captions_style_entry_4">Tampilkan saat audio dibisukan</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Tampilkan teks otomatis</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Sembunyikan teks otomatis</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Bahasa teks pilihan</string>
   <string name="morphe_preferred_caption_language_summary">Memilih subtitle dari penyedia terlebih dahulu, lalu menerjemahkan secara otomatis ke bahasa pilihan</string>
@@ -1121,9 +1130,6 @@ Tata letak Otomotif
   <string name="morphe_tablet_layout_in_player_summary">"Mengembalikan tata letak pemutar lama
 
 Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Video lainnya' mungkin tidak tersedia"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Mengaktifkan fitur ini dapat merusak beberapa fitur tata letak pemutar, seperti bagian komentar atau 'Video lainnya' yang ditampilkan di bawah pemutar.
-
-Tata letak tablet tidak lagi didukung oleh YouTube, dan sebagian atau seluruhnya rusak pada versi YouTube terbaru. Untuk tata letak tablet yang berfungsi, tambal YouTube 20.21.37"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Kembalikan perilaku teks lama</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Kembalikan penyimpanan lama ke daftar putar</string>
@@ -1241,6 +1247,7 @@ Tata letak tablet tidak lagi didukung oleh YouTube, dan sebagian atau seluruhnya
   <string name="morphe_fix_status_bar_layout_title">Perbaiki status bar yang menutupi bar atas</string>
   <string name="morphe_fix_status_bar_layout_summary">Menjaga tata letak status bar konsisten, sehingga tidak menutupi bar atas dan tidak meninggalkan ruang kosong di atas pemutar. Matikan ini jika aplikasi mengalami crash atau bar atas terlihat salah</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Bercahaya</string>
   <string name="morphe_theme_color_light_title">Latar belakang tema terang</string>
   <string name="morphe_theme_color_light_entry_2">Putih</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Putih)</string>
@@ -1263,6 +1270,9 @@ Tata letak tablet tidak lagi didukung oleh YouTube, dan sebagian atau seluruhnya
   <string name="morphe_seekbar_custom_color_accent_summary">Atur warna sekunder bilah kemajuan video</string>
   <string name="morphe_seekbar_custom_color_invalid">Nilai warna bilah geser tidak sah</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Analog asli</string>
+  <string name="morphe_custom_branding_icon_entry_9">Kue asli</string>
+  <string name="morphe_custom_branding_icon_entry_10">Logam asli</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo Header</string>
   <string name="morphe_header_logo_entry_1">Bawaan</string>
@@ -1626,4 +1636,17 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_series_tracker_no_search_results">Tidak ada seri ditemukan</string>
   <string name="morphe_series_tracker_untitled_episode">Episode tanpa judul</string>
   <string name="morphe_series_tracker_unavailable_episode">Episode tidak tersedia</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Komentar Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Tampilkan live chat dan putar ulang chat sebagai komentar yang bergulir di sepanjang video</string>
+  <string name="morphe_niconico_comments_summary">Menampilkan tombol hamparan di pemutar video. Ketuk untuk menampilkan atau menyembunyikan komentar, ketuk dan tahan untuk setelan cepat</string>
+  <string name="morphe_niconico_comments_font_size_title">Ukuran font komentar</string>
+  <string name="morphe_niconico_comments_font_size_summary">Ukuran teks komentar (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Opasitas komentar</string>
+  <string name="morphe_niconico_comments_opacity_summary">Opasitas teks dan latar belakang komentar</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Durasi perjalanan</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Berapa detik yang dibutuhkan komentar untuk melintasi layar. Nilai yang lebih rendah bergerak lebih cepat</string>
+  <string name="morphe_niconico_comments_max_length_title">Maksimal panjang komentar</string>
+  <string name="morphe_niconico_comments_max_length_summary">Menyembunyikan komentar yang jumlah karakternya melebihi batas ini. Setiap emoji dihitung sebagai satu karakter</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Tanpa batas</string>
 </resources>

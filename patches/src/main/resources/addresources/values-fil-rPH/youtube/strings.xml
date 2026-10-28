@@ -393,6 +393,9 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_hide_shopping_links_title">Itago ang mga link ng pagbili</string>
   <string name="morphe_hide_video_ads_title">Itago ang mga patalastas sa video</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Itago ang mga promosyon sa YouTube Premium</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Naglo-load…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Kasalukuyang channel:</string>
   <string name="morphe_channel_whitelist_add">Idagdag sa whitelist</string>
@@ -409,6 +412,9 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_channel_search_results">Mga resulta ng paghahanap sa channel</string>
   <string name="morphe_channel_search_no_results">Walang nahanap sa channel na ito</string>
   <string name="morphe_channel_search_failed">Hindi ma-search ang channel na ito</string>
+  <string name="morphe_channel_search_videos">Mga Video</string>
+  <string name="morphe_channel_search_posts">Mga Post</string>
+  <string name="morphe_channel_search_no_posts">Walang mga post sa channel na ito ang tumutugma</string>
   <string name="morphe_channel_search_sort_relevance">Kaugnayan</string>
   <string name="morphe_channel_search_sort_most_viewed">Pinakamaraming napanood</string>
   <string name="morphe_channel_search_sort_least_viewed">Pinakakaunting napanood</string>
@@ -494,6 +500,9 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_external_downloader_quick_video">Video</string>
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Lahat ng opsyon</string>
+  <string name="morphe_shorts_download_flyout_button_title">Ipakita ang pag-download sa Shorts menu</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Nagdadagdag ng item ng external downloader flyout menu sa Shorts player</string>
+  <string name="morphe_shorts_download_flyout_title">I-download</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Pagsasalin ng boses</string>
   <string name="morphe_vot_screen_summary">Basahin nang malakas ang mga caption ng video gamit ang text-to-speech sa iyong device, na naka-synchronize sa pagpapatugtog</string>
@@ -604,6 +613,8 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Nagbibigay-daan sa pag-save ng mga video na nauugnay sa mga bata sa \'Panoorin Mamaya\' mula sa flyout menu</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa flyout ng shorts</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Nagbibigay-daan sa pag-save ng mga shorts sa \'Panoorin Mamaya\' mula sa flyout menu</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">I-redirect ang \"Panoorin mamaya\" sa playlist</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Panoorin mamaya</string>
   <string name="morphe_queue_flyout_title">Idagdag sa Morphe queue</string>
   <string name="morphe_queue_restore_title">Panatilihin ang pila sa pagitan ng mga sesyon</string>
   <string name="morphe_queue_restore_summary">Ang pila ay nananatili kahit i-restart ang app</string>
@@ -826,8 +837,6 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_auto_captions_style_entry_2">Huwag ipakita</string>
   <string name="morphe_auto_captions_style_entry_3">Ipakita kapag hindi naka-mute</string>
   <string name="morphe_auto_captions_style_entry_4">Ipakita kapag naka-mute</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Ipakita ang auto captions</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Itago ang auto captions</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Ginustong wika ng caption</string>
   <string name="morphe_preferred_caption_language_summary">Pinipili muna ang mga subtitle mula sa provider, pagkatapos ay awtomatikong isinasalin ang mga ito sa ginustong wika</string>
@@ -1098,30 +1107,28 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <string name="morphe_change_form_factor_entry_2">Telepono</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automotive</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Kasama sa mga pagbabago ang sumusunod:
+  <string name="morphe_change_form_factor_user_dialog_message">"Kasama sa mga pagbabago ang:
 
-Layout ng tablet
-• Nakatago ang mga post sa komunidad
-• Hindi available ang setting na Playback sa mga feed
+Tablet layout
+• Nakatago ang mga community post
+• Hindi available ang setting para sa playback sa mga feed
 • Hindi available ang Remix button at Sound button sa Shorts
 • Maaaring hindi available ang overlay na 'Higit pang mga video'
-• Ipinapakita ang hindi naka-collapse na lumang video action bar
+• Ipinapakita ang lumang video action bar na hindi collapsed
+• Maaaring hindi gumana nang tama ang mga item sa flyout menu
 
-Layout ng automotive
-• Nakaayos ang feed ayon sa mga paksa at mga channel
-• Hindi available ang setting na Playback sa mga feed
+Automotive layout
+• Ang feed ay naka-organisa ayon sa mga paksa at channel
+• Hindi available ang setting para sa playback sa mga feed
 • Hindi available ang Remix button at Sound button sa Shorts
 • Maaaring hindi available ang overlay na 'Higit pang mga video'
-• Nagbubukas ang Shorts sa regular na player
-• Ipinapakita ang hindi naka-collapse na lumang video action bar"</string>
+• Ang mga Shorts ay bumubukas sa regular na player
+• Ipinapakita ang lumang video action bar na hindi collapsed"</string>
   <string name="morphe_tablet_layout_in_player_title">Paganahin ang layout ng tablet sa player</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Ibinabalik ang lumang layout ng player
 
 Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring hindi magamit ang overlay na 'Higit pang mga video'"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Ang pag-enable nito ay maaaring makasira sa ilang feature ng layout ng player, gaya ng comment section o 'Higit pang mga video' na ipinapakita sa ibaba ng player.
-
-Hindi na suportado ng YouTube ang tablet layout, at bahagya o ganap na itong sira sa mga kamakailang bersyon ng YouTube. Para sa isang gumaganang tablet layout, i-patch ang YouTube 20.21.37"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ibalik ang dating pag-uugali ng mga caption</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ibalik ang lumang save sa playlist</string>
@@ -1239,6 +1246,7 @@ Hindi na suportado ng YouTube ang tablet layout, at bahagya o ganap na itong sir
   <string name="morphe_fix_status_bar_layout_title">Ayusin ang layout ng status bar na sumasakop sa mga itaas na bar</string>
   <string name="morphe_fix_status_bar_layout_summary">Pinapanatiling consistent ang layout ng status bar upang hindi ito sumakop sa mga itaas na bar at walang walang laman na espasyo sa itaas ng player. I-off ito kung crash ang app o magmukha nang mali ang mga itaas na bar</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Kislap</string>
   <string name="morphe_theme_color_light_title">Likuran ng maliwanag na tema</string>
   <string name="morphe_theme_color_light_entry_2">Puti</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Puti)</string>
@@ -1261,6 +1269,9 @@ Hindi na suportado ng YouTube ang tablet layout, at bahagya o ganap na itong sir
   <string name="morphe_seekbar_custom_color_accent_summary">Itakda ang pangalawang kulay ng video progress bar</string>
   <string name="morphe_seekbar_custom_color_invalid">Hindi wastong halaga ng seekbar color</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Orihinal na analog</string>
+  <string name="morphe_custom_branding_icon_entry_9">Orihinal na cake</string>
+  <string name="morphe_custom_branding_icon_entry_10">Orihinal na metal</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Header logo</string>
   <string name="morphe_header_logo_entry_1">Panimula</string>
@@ -1624,4 +1635,17 @@ Optional ang automatic recording. Itinatigil ito sa incognito o kapag nabagyo an
   <string name="morphe_series_tracker_no_search_results">Walang nahanap na serye</string>
   <string name="morphe_series_tracker_untitled_episode">Episodong walang pamagat</string>
   <string name="morphe_series_tracker_unavailable_episode">Episodong hindi available</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Mga komento ng Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Ipakita ang live chat at chat replay bilang mga komentong gumugulong sa video</string>
+  <string name="morphe_niconico_comments_summary">Nagpapakita ng isang overlay button sa video player. I-tap para ipakita o itago ang mga komento, i-tap at i-hold para sa mabilis na settings</string>
+  <string name="morphe_niconico_comments_font_size_title">Laki ng font ng komento</string>
+  <string name="morphe_niconico_comments_font_size_summary">Laki ng teksto ng mga komento (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Opacity ng komento</string>
+  <string name="morphe_niconico_comments_opacity_summary">Opacity ng teksto at background ng komento</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Tagal ng pagdaan</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Ilang segundo ang ginugugol ng mga komento para tawirin ang screen. Ang mas mababang value ay mas mabilis gumalaw</string>
+  <string name="morphe_niconico_comments_max_length_title">Maximum na haba ng komento</string>
+  <string name="morphe_niconico_comments_max_length_summary">Nagtatago ng mga komento na may mas maraming karakter kaysa dito. Bawat emoji ay itinuturing na isang karakter.</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Walang limitasyon</string>
 </resources>

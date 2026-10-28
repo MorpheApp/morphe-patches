@@ -548,8 +548,29 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_mediasession_summary">ब्लूटूथ, Android Auto और लॉक स्क्रीन पर वर्तमान पंक्ति दिखाता है। Android 11 या उससे नया चाहिए</string>
   <string name="morphe_music_lyrics_miniplayer_title">मिनीप्लेयर गीत दिखाएँ</string>
   <string name="morphe_music_lyrics_miniplayer_summary">न्यूक्लेस पर ट्रैक उपशीर्षक पर स्थानांतरित करके, मिनीप्लेयर में वर्तमान पंक्ति दिखाता है</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">कलाकार और शीर्षक दिखाने का क्रम</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">मिनीप्लेयर और MediaSession में कलाकार और शीर्षक के प्रदर्शन क्रम को टॉगल करें। चालू: \"कलाकार - शीर्षक\" और बंद: \"शीर्षक - कलाकार\"। गीत खोज पर इसका कोई प्रभाव नहीं पड़ता।</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">गाने का शीर्षक/कलाकार प्रारूप</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Miniplayer और MediaSession में लिरिक्स के साथ दिखाए गए ट्रैक का प्रारूप। {t} शीर्षक है, {a} कलाकार है और {v} वर्शन है, जैसे कि Acoustic, जब लिरिक्स स्रोत इसे प्रदान करता है। दो कोलन के बीच का टेक्स्ट केवल तभी दिखाया जाता है जब उसके अंदर के प्रत्येक वेरिएबल का मान हो; साधारण कोलन के लिए \\: लिखें। प्रत्येक पंक्ति बारी-बारी से दिखाई देती है, और लिरिक्स बदलने पर आगे बढ़ जाती है</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">लिरिक्स लाइन प्रारूप</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Miniplayer और MediaSession में लिरिक्स लाइन का प्रारूप। {lrc} लाइन है और {n} यह है कि इसे लगातार कितनी बार गाया गया है। कोलन के बीच का टेक्स्ट केवल तभी दिखाया जाता है जब लाइन दोहराई जाती है। कोलन के लिए \\: का उपयोग करें</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">प्रारूप में {lrc} होना चाहिए</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">कलाकार-लाइन टेम्पलेट और एनिमेशन टाइमिंग</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">न्यूनतम स्क्रीन समय (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">अधिकतम स्क्रीन समय (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">केवल मल्टीलाइन एनिमेशन के लिए। प्रत्येक फ्रेम को कम से कम न्यूनतम समय तक रखें। अधिकतम समय पर, कलाकार लाइन को तब भी आगे बढ़ाएं जब गीत वही रहे।</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">न्यूनतम 0 या उससे अधिक होना चाहिए। अधिकतम 0 से अधिक और कम से कम न्यूनतम के बराबर होना चाहिए।</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">लाइन लंबाई सीमाएँ</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">गीत और कलाकार लाइन सीमाएँ, और फुल-विड्थ कैरेक्टर वेट</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"गीत लाइन सीमा
+लंबे गीतों को संतुलित आधे हिस्सों में विभाजित करें। 0 विभाजन को अक्षम करता है।"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"कलाकार लाइन सीमा
+भरे हुए ट्रैक फॉर्मेट को साइकलिंग फ्रेम में विभाजित करें। 0 विभाजन को अक्षम करता है।"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"फुल-विड्थ कैरेक्टर वेट
+दोनों सीमाओं पर लागू होता है। 1.75 पर, चार फुल-विड्थ कैरेक्टर्स को 7 गिना जाता है।"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">0 से 10000 तक पूर्ण-संख्या सीमाएं और 0 से अधिक कैरेक्टर वेट दर्ज करें</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">इंस्ट्रूमेंटल ब्रेक</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">इंस्ट्रूमेंटल ब्रेक के दौरान मिनीप्लेयर और MediaSession में दिखाया जाता है। प्रत्येक लाइन एक एनीमेशन फ्रेम है। {t} शीर्षक है, {a} कलाकार है और {lrc} अंतिम लिरिक्स लाइन है</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">मिनीप्लेयर और MediaSession टाइमिंग ऑफसेट</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">मिनीप्लेयर और MediaSession में अगली पंक्ति कब दिखाई दे, इसे शिफ्ट करता है। यदि पंक्तियाँ देर से दिखाई देती हैं, तो नकारात्मक मान का उपयोग करें, उदाहरण के लिए लॉक स्क्रीन पर</string>
   <string name="morphe_settings_music_lyrics_metadata_title">फ़िल्टर</string>
   <string name="morphe_music_lyrics_custom_regex_title">मेटाडेटा regex</string>
   <string name="morphe_music_lyrics_custom_regex_summary">रेगुलर एक्सप्रेशन शीर्षकों, कलाकारों और एल्बमों पर गीत खोजने से पहले और यह जाँचते समय लागू किया जाता है कि दो शीर्षक मेल खाते हैं या नहीं। दोनों को अक्षम करने के लिए खाली छोड़ें। डिफ़ॉल्ट \"Official Video\", \"Remaster\", \"【插曲】\" और \"- Topic\" जैसी सामान्य अनावश्यक चीज़ें हटा देता है।</string>
@@ -557,6 +578,10 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_text_filter_summary">रेगुलर एक्सप्रेशन केवल मूल गीत पाठ पर लागू होता है (अनुवाद या रोमनीकरण पर नहीं)। अक्षम करने के लिए खाली छोड़ें</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">जानकारी पंक्ति मार्कर</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">यदि गीत गलत तरीके से नीचे फ़िल्टर हो जाते हैं, तो इसे समायोजित करें या साफ़ करें। अल्पविराम से अलग किए गए मार्कर: जिन पंक्तियों में मार्कर के बाद कोलन होता है, वे नीचे क्रेडिट जानकारी के रूप में दिखाई जाती हैं। अक्षम करने के लिए खाली छोड़ें</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">पहला अक्षर बड़ा करें</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">गीत की प्रत्येक पंक्ति के पहले अक्षर को बड़ा करता है</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">अंत के विराम चिह्नों को हटाएँ</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">गीत की पंक्तियों के अंत में पूर्ण विराम, अल्पविराम, कोलन और सेमीकोलन को हटाता है। प्रश्न चिह्न, विस्मयादिबोधक चिह्न, एलिप्सिस, उद्धरण चिह्न और ब्रैकेट रखे जाते हैं</string>
   <string name="morphe_music_lyrics_text_size_title">टेक्स्ट का आकार</string>
   <string name="morphe_music_lyrics_text_size_summary">गीत टेक्स्ट का आकार</string>
   <string name="morphe_music_lyrics_offset_ms_title">वैश्विक समय ऑफ़सेट</string>

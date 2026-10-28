@@ -52,7 +52,6 @@ import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
@@ -321,15 +320,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_channel_buttons", summary = true),
             SwitchPreference("morphe_hide_community_posts"),
             SwitchPreference("morphe_hide_compact_banner", summary = true),
-            if (is_20_26_or_greater) {
-                ListPreference("morphe_hide_expandable_card")
-            } else {
-                ListPreference(
-                    key = "morphe_hide_expandable_card",
-                    entriesKey = "morphe_hide_expandable_card_legacy_entries",
-                    entryValuesKey = "morphe_hide_expandable_card_legacy_entry_values"
-                )
-            },
+            ListPreference("morphe_hide_expandable_card"),
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_hide_feed_flyout_menu"),
                 TextPreference(

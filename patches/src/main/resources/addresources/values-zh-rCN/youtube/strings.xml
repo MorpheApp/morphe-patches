@@ -393,6 +393,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">隐藏购物链接</string>
   <string name="morphe_hide_video_ads_title">隐藏视频广告</string>
   <string name="morphe_hide_youtube_premium_promotions_title">隐藏 YouTube Premium 促销推广</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">正在加载…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">当前频道：</string>
   <string name="morphe_channel_whitelist_add">添加到白名单</string>
@@ -409,6 +412,9 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">频道搜索结果</string>
   <string name="morphe_channel_search_no_results">此频道中未找到任何内容</string>
   <string name="morphe_channel_search_failed">无法搜索此频道</string>
+  <string name="morphe_channel_search_videos">视频</string>
+  <string name="morphe_channel_search_posts">帖子</string>
+  <string name="morphe_channel_search_no_posts">此频道中没有匹配的帖子</string>
   <string name="morphe_channel_search_sort_relevance">相关性</string>
   <string name="morphe_channel_search_sort_most_viewed">最多观看</string>
   <string name="morphe_channel_search_sort_least_viewed">最少观看</string>
@@ -494,6 +500,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_video">视频</string>
   <string name="morphe_external_downloader_quick_audio">音频</string>
   <string name="morphe_external_downloader_quick_options">所有选项</string>
+  <string name="morphe_shorts_download_flyout_button_title">在 Shorts 菜单中显示下载</string>
+  <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器中添加外部下载器弹出菜单项</string>
+  <string name="morphe_shorts_download_flyout_title">下载</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">语音旁白翻译</string>
   <string name="morphe_vot_screen_summary">使用设备上的文本转语音功能朗读视频字幕，并与播放同步</string>
@@ -604,6 +613,8 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">允许从弹出菜单中将与儿童相关的视频保存到“稍后观看”</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">在短视频弹出菜单中显示“保存到稍后观看”按钮</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">允许从弹出菜单中将短视频保存到“稍后观看”</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">将“稍后观看”重定向至播放列表</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">稍后观看</string>
   <string name="morphe_queue_flyout_title">添加到 Morphe 队列</string>
   <string name="morphe_queue_restore_title">在会话之间保留队列</string>
   <string name="morphe_queue_restore_summary">重启应用后队列仍会保留</string>
@@ -826,8 +837,6 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_2">从不显示</string>
   <string name="morphe_auto_captions_style_entry_3">显示设置按钮</string>
   <string name="morphe_auto_captions_style_entry_4">显示静音时的字幕</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">显示自动字幕</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">隐藏自动字幕</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">首选字幕语言</string>
   <string name="morphe_preferred_caption_language_summary">先选择提供方字幕，然后自动翻译为首选语言</string>
@@ -1100,30 +1109,28 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_2">手机</string>
   <string name="morphe_change_form_factor_entry_3">平板电脑</string>
   <string name="morphe_change_form_factor_entry_4">汽车</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"更改内容包括：
+  <string name="morphe_change_form_factor_user_dialog_message">"更改包括：
 
 平板电脑布局
-• 社区帖子已隐藏
-• 信息流中的播放设置不可用
-• Remix 按钮和声音按钮在 Shorts 中不可用
-• “更多视频”叠加层可能不可用
-• 显示未折叠的旧版视频操作栏
+• 隐藏社区帖子
+• 无法使用“Feed 中播放”设置
+• Shorts 中无法使用 Remix 按钮和声音按钮
+• 可能无法使用“更多视频”叠加层
+• 显示未折叠的旧视频操作栏
+• 弹出式菜单项可能无法正常工作
 
-汽车布局
-• 信息流按主题和频道组织
-• 信息流中的播放设置不可用
-• Remix 按钮和声音按钮在 Shorts 中不可用
-• “更多视频”叠加层可能不可用
+车载布局
+• Feed 按主题和频道组织
+• 无法使用“Feed 中播放”设置
+• Shorts 中无法使用 Remix 按钮和声音按钮
+• 可能无法使用“更多视频”叠加层
 • Shorts 在常规播放器中打开
-• 显示未折叠的旧版视频操作栏"</string>
+• 显示未折叠的旧视频操作栏"</string>
   <string name="morphe_tablet_layout_in_player_title">在播放器中启用平板电脑布局</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"恢复旧版播放器布局
 
 限制：如果关闭“恢复旧版视频操作栏”选项，则“更多视频”叠加层可能不可用"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"启用此功能可能会破坏某些播放器布局特性，例如播放器下方显示的评论区或“更多视频”。
-
-YouTube 不再支持平板电脑布局，且在较新版本的 YouTube 中该布局已部分或完全损坏。如需可用的平板电脑布局，请将 YouTube 补丁至 20.21.37 版本"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 恢复旧版字幕行为</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢复旧的保存到播放列表</string>
@@ -1241,6 +1248,7 @@ YouTube 不再支持平板电脑布局，且在较新版本的 YouTube 中该布
   <string name="morphe_fix_status_bar_layout_title">修复状态栏覆盖顶部栏的问题</string>
   <string name="morphe_fix_status_bar_layout_summary">保持状态栏布局一致，使其不覆盖顶部栏且播放器上方无空白区域。如果应用崩溃或顶部栏显示异常，请关闭此选项</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">发光</string>
   <string name="morphe_theme_color_light_title">浅色主题背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>
   <string name="morphe_theme_color_light_entry_3">Material You（白色）</string>
@@ -1263,6 +1271,9 @@ YouTube 不再支持平板电脑布局，且在较新版本的 YouTube 中该布
   <string name="morphe_seekbar_custom_color_accent_summary">设置视频进度条的第二颜色</string>
   <string name="morphe_seekbar_custom_color_invalid">无效的进度条颜色值</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">原始模拟</string>
+  <string name="morphe_custom_branding_icon_entry_9">原始蛋糕</string>
+  <string name="morphe_custom_branding_icon_entry_10">原始金属</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">标题logo</string>
   <string name="morphe_header_logo_entry_1">默认</string>
@@ -1626,4 +1637,17 @@ AVC (H.264)
   <string name="morphe_series_tracker_no_search_results">未找到剧集</string>
   <string name="morphe_series_tracker_untitled_episode">无名剧集</string>
   <string name="morphe_series_tracker_unavailable_episode">不可用剧集</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Niconico 弹幕</string>
+  <string name="morphe_niconico_comments_screen_summary">将实时聊天和聊天回放以在视频上滚动弹幕的形式显示</string>
+  <string name="morphe_niconico_comments_summary">在视频播放器中显示一个叠加按钮。点击以显示或隐藏弹幕，长按进入快速设置</string>
+  <string name="morphe_niconico_comments_font_size_title">弹幕字体大小</string>
+  <string name="morphe_niconico_comments_font_size_summary">弹幕的文本大小 (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">弹幕不透明度</string>
+  <string name="morphe_niconico_comments_opacity_summary">弹幕文本和背景的不透明度</string>
+  <string name="morphe_niconico_comments_travel_duration_title">滚动时长</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">评论横跨屏幕所需的时间（秒）。值越低移动速度越快</string>
+  <string name="morphe_niconico_comments_max_length_title">最大评论长度</string>
+  <string name="morphe_niconico_comments_max_length_summary">隐藏字符数超过此限制的评论。每个表情符号计为一个字符</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">无限制</string>
 </resources>

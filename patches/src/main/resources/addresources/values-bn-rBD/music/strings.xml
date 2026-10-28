@@ -548,8 +548,29 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_mediasession_summary">আপাত দৃশ্যমান লক স্ক্রিন, অ্যান্ড্রয়েড অটো এবং ব্লুটুথ চলমান লিরিক্স দেখায়। অ্যান্ড্রয়েড ১১ বা তার পরবর্তী সংস্করণ লাগবে</string>
   <string name="morphe_music_lyrics_miniplayer_title">মিনিপ্লেয়ার লিরিক্স দেখান</string>
   <string name="morphe_music_lyrics_miniplayer_summary">মিনিপ্লেয়ারে চলমান লিরিক্স দেখায়, ট্র্যাকটি সাবটাইটেলে সরানো হয়</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">শিল্পী ও শিরোনাম প্রদর্শন […] ON \"Artist - Title\" এবং OFF \"Title - Artist\" লিরিক্স অনুসন্ধানকে প্রভাবিত করে না।</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">মিনিপ্লেয়ার এবং MediaSession-এ শিল্পী ও শিরোনামের প্রদর্শনের ক্রম টগল করুন। ON থাকলে \"শিল্পী - শিরোনাম\" এবং OFF থাকলে \"শিরোনাম - শিল্পী\"। এটি লিরিক্স অনুসন্ধানে প্রভাব ফেলে না</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">গানের শিরোনাম/শিল্পী ফরম্যাট</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">মিনিপ্লেয়ার এবং MediaSession-এ লিরিক্সের সাথে দেখানো ট্র্যাকের ফরম্যাট। {t} হলো শিরোনাম, {a} হলো শিল্পী এবং {v} হলো ভার্সন, যেমন Acoustic, যখন লিরিক্স সোর্স এটি প্রদান করে। দুটি কোলনের মধ্যবর্তী টেক্সট শুধুমাত্র তখনই দেখানো হয় যখন এর ভিতরের প্রতিটি ভেরিয়েবলের মান থাকে; সাধারণ কোলনের জন্য \\: লিখুন। প্রতিটি লাইন পর্যায়ক্রমে দেখানো হয়, লিরিক্স পরিবর্তনের সাথে সাথে পরবর্তী লাইনে চলে যায়</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">লিরিক্স লাইনের ফরম্যাট</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">মিনিপ্লেয়ার এবং MediaSession-এ লিরিক্স লাইনের ফরম্যাট। {lrc} হলো লাইন এবং {n} হলো এটি পরপর কতবার গাওয়া হয়েছে। কোলনের মধ্যবর্তী টেক্সট শুধুমাত্র তখনই দেখানো হয় যখন লাইনটি পুনরাবৃত্তি হয়। কোলনের জন্য \\: ব্যবহার করুন</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">ফরম্যাটে অবশ্যই {lrc} থাকতে হবে</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">আর্টিস্ট-লাইন টেমপ্লেট এবং অ্যানিমেশন টাইমিং</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">নূন্যতম স্ক্রিন টাইম (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">সর্বোচ্চ স্ক্রিন টাইম (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">শুধুমাত্র মাল্টিলাইন অ্যানিমেশনের জন্য। প্রতিটি ফ্রেম অন্তত নূন্যতম সময়ের জন্য রাখুন। সর্বোচ্চ সময়ে, লিরিক্স একই থাকলেও আর্টিস্ট লাইনটি এগিয়ে যাবে।</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">নূন্যতম ০ বা তার বেশি হতে হবে। সর্বোচ্চ ০-এর বেশি এবং অন্তত নূন্যতম সময়ের সমান হতে হবে।</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">লাইনের দৈর্ঘ্যের সীমা</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">লিরিক্স এবং আর্টিস্ট লাইনের সীমা, এবং ফুল-উইডথ ক্যারেক্টার ওয়েট</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"লিরিক্স লাইনের সীমা
+দীর্ঘ লিরিক্সগুলিকে ভারসাম্যপূর্ণ অর্ধে বিভক্ত করুন। ০ দিলে স্প্লিটিং নিষ্ক্রিয় হবে।"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"শিল্পী লাইনের সীমা
+পূরণ করা ট্র্যাক ফরম্যাটটিকে সাইক্লিং ফ্রেমে বিভক্ত করুন। ০ বিভক্ত করা বন্ধ করে।"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"ফুল-উইথ ক্যারেক্টার ওয়েট
+উভয় সীমার ক্ষেত্রেই প্রযোজ্য। ১.৭৫-এ, চারটি ফুল-উইথ ক্যারেক্টার ৭ হিসেবে গণ্য হবে।"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">০ থেকে ১০০০০ পর্যন্ত পূর্ণসংখ্যার সীমা এবং ০-এর বেশি ক্যারেক্টার ওয়েট লিখুন</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">ইনস্ট্রুমেন্টাল ব্রেক</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">একটি ইনস্ট্রুমেন্টাল ব্রেকের সময় মিনিপ্লেয়ার এবং মিডিয়া সেশনে প্রদর্শিত হয়। প্রতিটি লাইন একটি অ্যানিমেশন ফ্রেম। {t} হলো শিরোনাম, {a} হলো শিল্পী এবং {lrc} হলো শেষ লিরিক্স লাইন</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">মিনিপ্লেয়ার এবং মিডিয়া সেশন টাইমিং অফসেট</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">মিনিপ্লেয়ার এবং MediaSession-এ পরবর্তী লাইন কখন প্রদর্শিত হবে তা শিফট করে। যদি লাইনগুলো দেরিতে প্রদর্শিত হয়, তবে একটি নেতিবাচক মান ব্যবহার করুন, উদাহরণস্বরূপ লক স্ক্রিনে</string>
   <string name="morphe_settings_music_lyrics_metadata_title">লিরিক্স ট্র্যাক শিরোনাম এবং শিল্পী অনুযায়ী খোঁজা হয়, […] ম্যানুয়ালি সংস্করণ পরিবর্তন করতে আপনি রিফ্রেশ বাটনও চেষ্টা করতে পারেন। […] সব সক্রিয় প্রদানকারী সবসময় তাদের ক্রমে অনুরোধ করা হয় না, তবে তাদের গতির ভিত্তিতে সাড়া দেয়।</string>
   <string name="morphe_music_lyrics_custom_regex_title">মেটাডেটা রেজেক্স</string>
   <string name="morphe_music_lyrics_custom_regex_summary">গানের কথা খোঁজার আগে এবং দুটি শিরোনাম মেলে কিনা তা যাচাই করার সময় শিরোনাম, শিল্পী এবং অ্যালবামগুলিতে রেগুলার এক্সপ্রেশন প্রয়োগ করা হয়। উভয় নিষ্ক্রিয় করতে খালি রাখুন। ডিফল্টটি \"Official Video\", \"Remaster\", \"【插曲】\" এবং \"- Topic\" এর মতো সাধারণ অপ্রয়োজনীয় অংশ সরিয়ে দেয়।</string>
@@ -557,6 +578,10 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_text_filter_summary">শুধুমাত্র মূল লিরিক্স টেক্সটে প্রযোজ্য রেগুলার এক্সপ্রেশন (অনুবাদ বা রোমানাইজেশনে নয়)। খালি রাখলে এটি নিষ্ক্রিয় থাকবে।</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">তথ্য লাইনের মার্কার</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">যদি লিরিক্স ভুলভাবে নিচে ফিল্টার করা হয়, তবে এটি সামঞ্জস্য করুন বা মুছে ফেলুন। কমা-বিভাজিত মার্কার: একটি মার্কারের পরে কোলন থাকে এমন লাইনগুলো নিচে ক্রেডিট তথ্য হিসেবে দেখানো হয়। খালি রাখলে এটি নিষ্ক্রিয় থাকবে।</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">প্রথম অক্ষরটি বড় হাতের করুন</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">লিরিক্সের প্রতিটি লাইনের প্রথম অক্ষরটি বড় হাতের করে</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">শেষের বিরামচিহ্ন সরিয়ে ফেলুন</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">লিরিক্স লাইনের শেষে থাকা ফুল স্টপ, কমা, কোলন এবং সেমিকোলন সরিয়ে ফেলে। প্রশ্নচিহ্ন, বিস্ময়চিহ্ন, ইলিপসিস, উদ্ধৃতি চিহ্ন এবং ব্র্যাকেট রাখা হয়</string>
   <string name="morphe_music_lyrics_text_size_title">টেক্সট আকার</string>
   <string name="morphe_music_lyrics_text_size_summary">লিরিক্স টেক্সটের আকার</string>
   <string name="morphe_music_lyrics_offset_ms_title">বৈশ্বিক সময় অফসেট</string>

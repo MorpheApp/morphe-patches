@@ -63,6 +63,8 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- ad.hideAdsPatch -->
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_remove">ដកចេញ</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
@@ -83,6 +85,7 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_quick_video">វីដេអូ</string>
+  <string name="morphe_shorts_download_flyout_title">ដោនឡូដ</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">ផ្ទាល់ខ្លួន</string>
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
@@ -255,4 +258,5 @@ Second \"item\" text"</string>
   <string name="morphe_series_tracker_ui_save">រក្សាទុក</string>
   <string name="morphe_series_tracker_ui_rename">ប្ដូរឈ្មោះ</string>
   <string name="morphe_series_tracker_undo">អាន់ឌូ</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

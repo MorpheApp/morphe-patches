@@ -551,8 +551,29 @@ Nauðsynlegar vafrakökur: SID, HSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_mediasession_summary">Sýnir núverandi línu á læsiskjá, Android Auto og Bluetooth. Kræfur Android 11 eða nýrra</string>
   <string name="morphe_music_lyrics_miniplayer_title">Sýna texta í smáspilara</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Sýnir núverandi línu í smaspilara, með lagi flyttri í undirtexta</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Birtingarröð flytjanda og titils</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Notaðu lyklaborðið til að leita að texta. Stilltu leitarstillingarnar eftir þörfum.</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Snið á lagatitli/listamanni</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Snið á lágnumri sem sýnt er með textanum í lágnumrinum og MediaSession. {t} er titillinn, {a} er listamaðurinn og {v} er útgáfan, eins og Acoustic, ef textakerfið gefur upp slíka upplýsingar. Texti á milli tveggja skila er aðeins sýndur þegar hver breyta inni í honum hefur gildi; skrifaðu \\: fyrir venjulegan skilja. Hver lína er sýnd eftir og eftir þegar textinn breytist</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Snið á textalínu</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Snið á textalínu í lágnumrinum og MediaSession. {lrc} er línan og {n} er fjöldi sinna sem hún er sungin í röð. Texti á milli skila er aðeins sýndur þegar línan endurtekst. Notaðu \\: fyrir skilja</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Sniðið verður að innihalda {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Snið fyrir listamannalínu og tímasetningu hreyfingar</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Lágmarkstimi á skjá (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Hámarkstimi á skjá (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Aðeins fyrir hreyfingar með margar linnur. Halda hverju römni í að minnsta kosti lágmarkstima. Við hámarkstima er listamannalínan færð áfram jafnvel þótt textinn sé sá sami.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Lágmark verður að vera 0 eða hærra. Hámark verður að vera hærra en 0 og að minnsta kosti jafnt og lágmark.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Tökur á lengd línna</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Tökur á línustærð texta og listamanns, og þyngd fullbreiddarteikna</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Taka á línustærð texta
+Skipta lengri texta í jafnvægnar hluti. 0 slökkvir á skiptingu."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Línumat fyrir listamann
+Skipti fyllta lagsmynd í hringrásarramma. 0 slökkvir á skiptingu."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Þyngd fullbreiddarteikna
+Gildir fyrir bæði mörk. Við 1,75 teljast fjórar fullbreiddarteiknir sem 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Sláðu inn heiltölu fyrir mörk frá 0 til 10000 og teiknþyngd stærri en 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Tónlistarhlutur án söngs</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Sýnd í lágmarkaspilaranum og MediaSession á meðan tónlistarhlutur án söngs spilar. Hver lína er einn hreyfirammi. {t} er titillinn, {a} er listamaðurinn og {lrc} er síðasta textalínan</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Tímahliðrun lágmarkaspilarans og MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Breytir því hvenær næsta lína birtist í lágmörkuða spilaranum og MediaSession. Notaðu neikvætt gildi ef línurnar birtast of seint, til dæmis á læsingarskjánum</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Síur</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regluleg segð fyrir lýsigögn</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Regluleg segð sem er notuð á titla, flytjendur og plötur áður en leitað er að textum og þegar lagt er mat á hvort tveir titlar passi saman. Skildu það eftir tómt til að slökkva á báðum. Sjálfgefna stillingin fjarlægir algengt rusl eins og „Official Video“, „Remaster“, „【插曲】“ og „- Topic“.</string>
@@ -560,6 +581,10 @@ Nauðsynlegar vafrakökur: SID, HSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_text_filter_summary">Regluleg segð sem er eingöngu beitt á upprunalega textann (ekki þýðingar eða rómavæðingar). Skilið eftir tómt til að slökkva á.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Upplýsingalínumerki</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Ef textar eru ranglega síaðir, stilltu eða hreinsaðu þetta. Skilið eftir tómt til að slökkva á</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Hæfa fyrsta staf</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Hæfir fyrsta staf hvers lagalínustróks</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Fjarlægja punktastaðsetningu í lok</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Fjarlægir punktum, kommaum, skýlu- og hálfpunktum í lok lagalínna. Spurnarmerki, utrópamerki, þrír punktar, gæslumerki og svigarar eru varðveittir</string>
   <string name="morphe_music_lyrics_text_size_title">Leturstærð</string>
   <string name="morphe_music_lyrics_text_size_summary">Stærð textans.</string>
   <string name="morphe_music_lyrics_offset_ms_title">Altæk tímafærsla</string>

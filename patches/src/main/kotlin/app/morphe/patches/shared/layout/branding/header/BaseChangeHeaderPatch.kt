@@ -10,7 +10,6 @@
 
 package app.morphe.patches.shared.layout.branding.header
 
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.ResourcePatch
 import app.morphe.patcher.patch.ResourcePatchBuilder
 import app.morphe.patcher.patch.ResourcePatchContext
@@ -21,8 +20,12 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import java.io.File
+import java.util.logging.Logger
 
 const val CUSTOM_HEADER_RESOURCE_NAME = "morphe_header_custom"
+
+// Must be named in the 'app.morphe' namespace, otherwise the log is not published.
+private val logger = Logger.getLogger(ResourcePatchContext::class.java.name)
 
 internal fun baseChangeHeaderPatch(
     targetResourceDirectoryNames: Map<String, String>,
@@ -55,7 +58,9 @@ internal fun baseChangeHeaderPatch(
             Required dimensions:
             ${targetResourceDirectoryNames.map { (dpi, dim) -> "- $dpi: $dim" }.joinToString("\n")}
         """
-    )
+    ) {
+        it == null || customHeaderImages(it, targetResourceDirectoryNames.keys, customHeaderResourceFileNames) != null
+    }
 
     block()
 
@@ -86,37 +91,38 @@ internal fun baseChangeHeaderPatch(
             copyResources("change-header", ResourceGroup(dpi, *customHeaderResourceFileNames))
         }
 
-        custom?.trim()?.let { customPath ->
-            val customDir = File(customPath)
-            if (!customDir.exists())
-                throw PatchException("Custom header path not found: ${customDir.absolutePath}")
-
-            if (!customDir.isDirectory)
-                throw PatchException("Custom header path must be a directory.")
-
-            var copied = false
-            customDir.listFiles { file -> file.isDirectory && file.name in targetResourceDirectoryNames }
-                ?.forEach { dpiFolder ->
-                    val targetFolder = get("res").resolve(dpiFolder.name)
-                    targetFolder.mkdirs()
-
-                    val files = dpiFolder.listFiles { file ->
-                        file.isFile && file.name in customHeaderResourceFileNames
-                    } ?: emptyArray()
-
-                    if (files.size != customHeaderResourceFileNames.size)
-                        throw PatchException("Missing required images in ${dpiFolder.name}. Expected: ${customHeaderResourceFileNames.joinToString(", ")}")
-
-                    files.forEach { source ->
-                        source.copyTo(targetFolder.resolve(source.name), overwrite = true)
-                        copied = true
-                    }
-                }
-
-            if (!copied)
-                throw PatchException("No valid DPI folders found in: ${customDir.absolutePath}")
+        // Reading the option already checked the folder, see customHeaderImages
+        custom?.let { path ->
+            val resourceDirectory = get("res")
+            customHeaderImages(path, targetResourceDirectoryNames.keys, customHeaderResourceFileNames)!!.forEach { image ->
+                image.copyTo(resourceDirectory.resolve("${image.parentFile.name}/${image.name}"), overwrite = true)
+            }
         }
 
         executeBlock(customHeaderResourceFileNames)
+    }
+}
+
+/**
+ * The images of the custom header folder at [path], each in the folder of its density, or null
+ * when the folder has none of [densities] or leaves out one of [fileNames] in a density it has.
+ * The reason is logged, as a failed option validation does not say what is wrong.
+ */
+private fun customHeaderImages(path: String, densities: Set<String>, fileNames: Array<String>): List<File>? {
+    val folder = File(path.trim())
+    val densityFolders = folder.listFiles { file -> file.isDirectory && file.name in densities }
+    if (densityFolders.isNullOrEmpty()) {
+        logger.warning("Custom header folder must contain one of ${densities.joinToString()}: ${folder.absolutePath}")
+        return null
+    }
+
+    return densityFolders.flatMap { densityFolder ->
+        val images = fileNames.map(densityFolder::resolve)
+        val missing = images.filterNot(File::isFile)
+        if (missing.isNotEmpty()) {
+            logger.warning("Custom header folder ${densityFolder.name} is missing: ${missing.joinToString { it.name }}")
+            return null
+        }
+        images
     }
 }

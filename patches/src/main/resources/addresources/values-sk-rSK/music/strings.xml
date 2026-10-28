@@ -548,8 +548,29 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_mediasession_summary">Zobrazuje aktuálny riadok na zamknutej obrazovke, Android Auto a Bluetooth. Vyžaduje Android 11 alebo novší</string>
   <string name="morphe_music_lyrics_miniplayer_title">Zobraziť text piesne v mini prehrávači</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Zobrazuje aktuálny riadok v mini prehrávači, so stopou presunutou do titulkov</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Nenašiel sa žiadny text piesne</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Nenašiel sa žiadny preklad</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Formát názvu skladby/umelca</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Formát skladby zobrazené s textom piesne v Miniplayeri a MediaSession. {t} je názov, {a} je umelec a {v} je verzia, napríklad akustická, ak ju zdroj textu poskytuje. Text medzi dvoma dvojbodkami sa zobrazí len vtedy, keď každá premenná v ňom má hodnotu; pre obyčajnú dvojbodku napíšte \\:. Každý riadok sa zobrazuje postupne a mení sa s každou zmenou textu piesne</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Formát riadku textu piesne</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Formát riadka textu piesne v Miniplayeri a MediaSession. {lrc} je riadok a {n} je počet opakovaní za sebou. Text medzi dvojbodkami sa zobrazí len vtedy, keď sa riadok opakuje. Pre dvojbodku použite \\:</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Formát musí obsahovať {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Šablona riadku s umelcom a časovanie animácie</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimálny čas zobrazenia (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maximálny čas zobrazenia (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Len pre viacriadkové animácie. Každý snímok ponechajte aspoň minimálny čas. Pri maximálnom čase posuňte riadok s umelcom, aj keď zostáva text piesne rovnaký.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimum musí byť 0 alebo viac. Maximum musí byť viac ako 0 a aspoň rovné minimu.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Limity dĺžky riadku</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Limity riadkov textu piesne a umelca a váha znakov s plnou šírkou</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Limit riadku textu piesne
+Rozdeľte dlhší text piesne na vyvážené polovice. Hodnota 0 vypne rozdeľovanie."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Limit riadkov Künstly
+Rozdelte vyplnený formát skladby do cyklických snímkov. Hodnota 0 vypne rozdeľovanie."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Váha znakov plnej šírky
+Platí pre oba limity. Pri hodnote 1,75 sa štyri znaky plnej šírky započítajú ako 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Zadajte limity ako celé čísla od 0 do 10 000 a váhu znakov väčšiu ako 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentálna pauza</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Zobrazuje sa v Miniplayeri a MediaSession počas instrumentálnej pauzy. Každý riadok je jeden animačný snímok. {t} je názov, {a} je umelec a {lrc} je posledný riadok textu piesne</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Časový posun Miniplayera a MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Posúva čas zobrazenia ďalšieho riadku v Miniplayeri a MediaSession. Ak sa riadky zobrazujú neskoro, napríklad na uzamknutej obrazovke, použite zápornú hodnotu</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Táto pieseň nemá text</string>
   <string name="morphe_music_lyrics_custom_regex_title">Táto pieseň nemá preklad</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Regulárny výraz sa aplikuje na názvy, interpretov a albumy pred vyhľadaním textov piesní a pri posudzovaní, či sa dva názvy zhodujú. Ak ho necháte prázdny, obe funkcie sa vypnú. Predvolený výraz odstraňuje bežné rušivé prvky, ako napríklad „Official Video“, „Remaster“, „【插曲】“ a „- Topic“.</string>
@@ -557,6 +578,10 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_text_filter_summary">Žiadne filtre</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Zobraziť pôvodný text piesne</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Skryť pôvodný text piesne</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Začať veľkým písmenom</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Zapíše prvé písmeno každého riadku textu piesne veľkým písmenom</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Odstrániť interpunkciu na konci</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Odstraňuje bodky, čiarky, dvojbodky a polobodky na konci riadkov textu piesne. Otazníky, výkričníky, trojbodkovia, úvodzovky a zátvorky zostávajú</string>
   <string name="morphe_music_lyrics_text_size_title">Veľkosť textu</string>
   <string name="morphe_music_lyrics_text_size_summary">Veľkosť textu piesne</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globálny časový posun</string>

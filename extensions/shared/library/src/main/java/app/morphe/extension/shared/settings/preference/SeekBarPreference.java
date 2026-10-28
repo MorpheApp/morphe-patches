@@ -38,10 +38,18 @@ import app.morphe.extension.shared.ui.Dim;
 @SuppressWarnings({"unused", "deprecation"})
 public class SeekBarPreference extends Preference {
 
+    /**
+     * @param maxLabel If not null, shown instead of the number when the value is the max,
+     *                 such as for a max value that means "no limit".
+     */
     public record SeekBarConfig(IntegerSetting setting, int min, int max, int step,
-                                String unit, int divisor) {
+                                String unit, int divisor, @Nullable StringRef maxLabel) {
         public SeekBarConfig(IntegerSetting setting, int min, int max, int step, String unit) {
             this(setting, min, max, step, unit, 1);
+        }
+
+        public SeekBarConfig(IntegerSetting setting, int min, int max, int step, String unit, int divisor) {
+            this(setting, min, max, step, unit, divisor, null);
         }
     }
 
@@ -216,6 +224,9 @@ public class SeekBarPreference extends Preference {
     }
 
     private static String formatValue(int value, SeekBarConfig config) {
+        if (value == config.max && config.maxLabel != null) {
+            return config.maxLabel.toString();
+        }
         if (config.divisor == 1) {
             return String.format(Locale.ROOT, "%d%s", value, config.unit);
         }

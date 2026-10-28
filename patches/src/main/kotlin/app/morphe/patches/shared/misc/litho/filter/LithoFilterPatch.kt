@@ -29,7 +29,6 @@ import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.misc.litho.context.ConversionContextToStringFingerprint
 import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
@@ -99,14 +98,6 @@ fun addLithoFilter(classDescriptor: String) {
  *
  * The following pseudocode shows how this patch works:
  *
- * class SomeOtherClass {
- *    // Called before ComponentContextParser.parseComponent() method.
- *    public void someOtherMethod(ByteBuffer byteBuffer) {
- *        ExtensionClass.setProtoBuffer(byteBuffer); // Inserted by this patch.
- *        ...
- *   }
- * }
- *
  * class ComponentContextParser {
  *    public Component parseComponent() {
  *        ...
@@ -118,10 +109,6 @@ fun addLithoFilter(classDescriptor: String) {
  *    }
  * }
  *
- * @param hookNonNativeBuffer Whether to also insert the non-native ByteBuffer hook.
- *                            Older client versions push data through a non-native path; newer ones
- *                            (YouTube 20.22+, YT Music 9.x) always use the native Upb encode path.
- *                            Evaluated lazily inside execute so version flags are already set.
  * @param overrideUpbFeatureFlag Whether to override the A/B feature flag that enables Upb-native
  *                               protobuf parsing (only present on older YouTube; absent in Music).
  * @param removeFilteredListItems Whether to remove the items of the lists (such as the feed) whose
@@ -131,9 +118,7 @@ fun addLithoFilter(classDescriptor: String) {
  *              versionCheckPatch, and any app-specific fixes).
  */
 internal fun sharedLithoFilterPatch(
-    hookNonNativeBuffer: () -> Boolean,
     overrideUpbFeatureFlag: () -> Boolean,
-    useLegacyLithoFiltering: () -> Boolean,
     removeFilteredListItems: Boolean,
     block: BytecodePatchBuilder.() -> Unit,
 ): BytecodePatch = bytecodePatch(
@@ -142,8 +127,6 @@ internal fun sharedLithoFilterPatch(
     block()
 
     execute {
-        LithoFilterLegacyMethodFingerprint.method.returnEarly(useLegacyLithoFiltering())
-
         // Remove dummy filter from extenion static field
         // and add the filters included during patching.
         LithoFilterFingerprint.let {
@@ -180,23 +163,10 @@ internal fun sharedLithoFilterPatch(
             }
         }
 
-        // region Pass the buffer into extension.
-
-        if (hookNonNativeBuffer()) {
-            // Non-native buffer.
-            ProtobufBufferReferenceFingerprint.method.addInstruction(
-                0,
-                "invoke-static { p2 }, $EXTENSION_CLASS->setProtoBuffer(Ljava/nio/ByteBuffer;)V",
-            )
-        }
-
-        val protoBufferEncodeMethod = ProtobufBufferEncodeFingerprint.method
-
-        // endregion
-
-
         // region Modify the create component method and
         // if the component is filtered then return an empty component.
+
+        val protoBufferEncodeMethod = ProtobufBufferEncodeFingerprint.method
 
         // Find class and methods to create an empty component.
         val builderMethodDescriptor = EmptyComponentFingerprint.method
@@ -421,6 +391,16 @@ internal fun sharedLithoFilterPatch(
                 val itemsField = it.instructionMatches[2].getFieldAccessed()
                 val removeItemMethod = it.method
 
+                // Removing an item does not lay out the rows again when the section is no longer
+                // a grid, such as when a single item is left, and the old rows that are views of
+                // the items would throw on the next access.
+                val (isGridMethod, layOutRowsMethod, updateSectionMethod) =
+                    ListSectionUpdateRowsFingerprint.instructionMatches.let { matches ->
+                        listOf(0, 3, 4).map { index ->
+                            matches[index].instruction.getReference<MethodReference>()!!
+                        }
+                    }
+
                 it.classDef.apply {
                     interfaces.add(EXTENSION_LIST_SECTION_INTERFACE)
 
@@ -433,7 +413,7 @@ internal fun sharedLithoFilterPatch(
                             AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
                             null,
                             null,
-                            MutableMethodImplementation(3),
+                            MutableMethodImplementation(4),
                         ).toMutable().apply {
                             addInstructionsWithLabels(
                                 0,
@@ -441,13 +421,32 @@ internal fun sharedLithoFilterPatch(
                                     iget-object v0, p0, $itemsField
                                     invoke-interface { v0, p1 }, Ljava/util/List;->contains(Ljava/lang/Object;)Z
                                     move-result v0
-                                    if-eqz v0, :not_found
+                                    if-eqz v0, :done
+                                    invoke-direct { p0 }, $isGridMethod
+                                    move-result v1
                                     invoke-virtual { p0, p1 }, $removeItemMethod
-                                    :not_found
+                                    if-eqz v1, :done
+                                    invoke-direct { p0 }, $isGridMethod
+                                    move-result v1
+                                    if-nez v1, :done
+                                    iget-object v1, p0, $itemsField
+                                    invoke-interface { v1 }, Ljava/util/List;->isEmpty()Z
+                                    move-result v1
+                                    if-nez v1, :done
+                                    invoke-virtual { p0 }, $layOutRowsMethod
+                                    invoke-virtual { p0 }, $updateSectionMethod
+                                    :done
                                     return v0
                                 """
                             )
                         }
+                    )
+
+                    // The released sections stop receiving the removed items.
+                    ListSectionReleaseFingerprint.method.addInstruction(
+                        0,
+                        "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
+                                "removeListSection($EXTENSION_LIST_SECTION_INTERFACE)V"
                     )
 
                     // Only the constructors that call the constructor of the superclass,

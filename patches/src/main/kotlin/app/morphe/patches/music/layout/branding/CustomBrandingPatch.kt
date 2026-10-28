@@ -25,6 +25,7 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
+import app.morphe.patches.shared.layout.branding.startupAnimationResourcePatch
 import app.morphe.patches.shared.misc.lottie.LOTTIE_ANIMATION_VIEW_CLASS_TYPE
 import app.morphe.patches.shared.misc.lottie.lottieAnimationPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -38,16 +39,14 @@ private const val STARTUP_ANIMATION_EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/StartupAnimationPatch;"
 
 private val startupAnimationPatch = bytecodePatch {
-    dependsOn(settingsPatch, lottieAnimationPatch)
+    dependsOn(settingsPatch, lottieAnimationPatch, startupAnimationResourcePatch)
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            ListPreference("morphe_splash_screen_animation_style")
+            ListPreference("morphe_splash_screen_style")
         )
 
-        // The original animation starts with the original logo, which would flash on screen
-        // before a branded app. An icon with its own animation plays that instead, and the
-        // animation is turned off for a user provided icon.
+        // The style decides if the original animation, the Morphe animation or none is played.
         CairoSplashAnimationConfigFingerprint.let {
             it.method.apply {
                 // The extension decides which animation is played and with which colors.

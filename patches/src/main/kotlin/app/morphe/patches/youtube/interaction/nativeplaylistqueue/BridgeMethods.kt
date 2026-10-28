@@ -14,6 +14,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.ProtobufClassParseByteArrayWithRegistryFingerprint
+import app.morphe.patches.shared.misc.fix.proto.protoDefaultInstanceFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference

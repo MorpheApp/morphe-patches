@@ -553,8 +553,29 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_mediasession_summary">แสดงบรรทัดปัจจุบันบนหน้าจอล็อค Android Auto และบลูทูธ ต้องการ Android 11 หรือใหม่กว่า</string>
   <string name="morphe_music_lyrics_miniplayer_title">แสดงเนื้อเพลงในมินิเพลเยอร์</string>
   <string name="morphe_music_lyrics_miniplayer_summary">แสดงบรรทัดปัจจุบันในมินิเพลเยอร์ โดยย้ายแทร็กไปยังส่วนบรรยาย</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">การแสดงศิลปินและชื่อเพลง […] เปิด \"ศิลปิน - ชื่อเพลง\" และปิด \"ชื่อเพลง - ศิลปิน\" ไม่มีผลต่อการค้นหาเนื้อเพลง</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">สลับลำดับการแสดงชื่อศิลปินและชื่อเพลงในมินิเพลเยอร์และ MediaSession เปิด \"ชื่อศิลปิน - ชื่อเพลง\" และปิด \"ชื่อเพลง - ชื่อศิลปิน\" ไม่ส่งผลต่อการค้นหาเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">รูปแบบชื่อเพลง/ศิลปิน</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">รูปแบบของแทร็กที่แสดงพร้อมกับเนื้อเพลงใน Miniplayer และ MediaSession โดย {t} คือชื่อเพลง, {a} คือศิลปิน และ {v} คือเวอร์ชัน เช่น Acoustic เมื่อแหล่งที่มาของเนื้อเพลงมีระบุไว้ ข้อความที่อยู่ระหว่างเครื่องหมายโคลอนสองตัวจะแสดงก็ต่อเมื่อตัวแปรทุกตัวภายในนั้นมีค่า ให้ใช้ \\: สำหรับเครื่องหมายโคลอนทั่วไป แต่ละบรรทัดจะแสดงผลสลับกันไปเมื่อเนื้อเพลงเปลี่ยน</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">รูปแบบบรรทัดเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">รูปแบบของบรรทัดเนื้อเพลงใน miniplayer และ MediaSession โดย {lrc} คือบรรทัดเนื้อเพลง และ {n} คือจำนวนครั้งที่ร้องซ้ำติดต่อกัน ข้อความที่อยู่ระหว่างเครื่องหมายโคลอนจะแสดงก็ต่อเมื่อบรรทัดนั้นมีการร้องซ้ำ ให้ใช้ \\: สำหรับเครื่องหมายโคลอน</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">รูปแบบต้องมี {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">เทมเพลตบรรทัดศิลปินและจังหวะแอนิเมชัน</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">เวลาแสดงบนหน้าจอขั้นต่ำ (มิลลิวินาที)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">เวลาแสดงบนหน้าจอสูงสุด (มิลลิวินาที)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">สำหรับแอนิเมชันแบบหลายบรรทัดเท่านั้น ให้แสดงแต่ละเฟรมไว้อย่างน้อยตามเวลาขั้นต่ำ และเมื่อถึงเวลาสูงสุด ให้เลื่อนบรรทัดศิลปินต่อไปแม้ว่าเนื้อเพลงจะยังคงเดิม</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">ค่าขั้นต่ำต้องเป็น 0 หรือมากกว่า ค่าสูงสุดต้องมากกว่า 0 และไม่น้อยกว่าค่าขั้นต่ำ</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">ขีดจำกัดความยาวบรรทัด</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">ขีดจำกัดบรรทัดเนื้อเพลงและศิลปิน และน้ำหนักของตัวอักษรแบบเต็มความกว้าง</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"ขีดจำกัดบรรทัดเนื้อเพลง
+แบ่งเนื้อเพลงที่ยาวเกินไปให้เป็นสองส่วนที่สมดุล กำหนดเป็น 0 เพื่อปิดการแบ่งบรรทัด"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"ขีดจำกัดบรรทัดของศิลปิน
+แบ่งรูปแบบแทร็กที่มีข้อมูลออกเป็นเฟรมที่วนซ้ำ การตั้งค่าเป็น 0 จะปิดการแบ่ง"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"น้ำหนักตัวอักษรความกว้างเต็ม
+มีผลกับทั้งสองขีดจำกัด ที่ค่า 1.75 ตัวอักษรความกว้างเต็มสี่ตัวจะนับเป็น 7"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">กรุณาป้อนขีดจำกัดเป็นจำนวนเต็มตั้งแต่ 0 ถึง 10000 และน้ำหนักตัวอักษรที่มากกว่า 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">ช่วงบรรเลงดนตรี</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">แสดงในมินิเพลเยอร์และ MediaSession ระหว่างช่วงบรรเลงดนตรี แต่ละบรรทัดคือหนึ่งเฟรมแอนิเมชัน {t} คือชื่อเพลง, {a} คือศิลปิน และ {lrc} คือบรรทัดเนื้อเพลงสุดท้าย</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">การชดเชยเวลาของมินิเพลเยอร์และ MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">ปรับเวลาแสดงบรรทัดถัดไปในมินิเพลเยอร์และ MediaSession ใช้ค่าติดลบหากบรรทัดแสดงขึ้นช้าเกินไป เช่น บนหน้าจอล็อก</string>
   <string name="morphe_settings_music_lyrics_metadata_title">ตัวกรอง</string>
   <string name="morphe_music_lyrics_custom_regex_title">Metadata: \"รีเจ็กซ์ตัวกรองเนื้อเพลง\"</string>
   <string name="morphe_music_lyrics_custom_regex_summary">นิพจน์ปกติที่ใช้กับชื่อเพลง ศิลปิน และอัลบั้มก่อนค้นหาเนื้อเพลง และใช้เมื่อให้คะแนนว่าชื่อสองชื่อตรงกันหรือไม่ เว้นว่างไว้เพื่อปิดใช้งานทั้งสองอย่าง ค่าเริ่มต้นจะลบคำที่ไม่จำเป็นทั่วไป เช่น \"Official Video\", \"Remaster\", \"【插曲】\" และ \"- Topic\"</string>
@@ -562,6 +583,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_text_filter_summary">นิพจน์ทั่วไปที่ใช้กับเนื้อเพลงต้นฉบับเท่านั้น (ไม่รวมคำแปลหรือข้อความแบบโรมัน) เว้นว่างเพื่อปิดใช้งาน</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">…</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">หากเนื้อเพลงถูกกรองไปไว้ด้านล่างอย่างไม่ถูกต้อง ให้ปรับหรือล้างค่าตรงนี้ คำกำกับที่คั่นด้วยเครื่องหมายจุลภาค: บรรทัดที่มีคำกำกับตามด้วยเครื่องหมายทวิภาคจะแสดงเป็นข้อมูลเครดิตที่ด้านล่าง เว้นว่างเพื่อปิดใช้</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">ขึ้นต้นด้วยตัวพิมพ์ใหญ่</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">ทำให้ตัวอักษรแรกของแต่ละบรรทัดในเนื้อเพลงเป็นตัวพิมพ์ใหญ่</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">ลบเครื่องหมายวรรคตอนท้ายประโยค</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">ลบจุดทศนิยม จุลภาค ทวิภาค และอัฒภาคที่ท้ายบรรทัดของเนื้อเพลง โดยจะยังคงเครื่องหมายคำถาม เครื่องหมายตกใจ จุดไข่ปลา อัญประกาศ และวงเล็บไว้</string>
   <string name="morphe_music_lyrics_text_size_title">ขนาดข้อความ</string>
   <string name="morphe_music_lyrics_text_size_summary">ขนาดของข้อความเนื้อเพลง</string>
   <string name="morphe_music_lyrics_offset_ms_title">ออฟเซ็ตเวลาโดยรวม</string>

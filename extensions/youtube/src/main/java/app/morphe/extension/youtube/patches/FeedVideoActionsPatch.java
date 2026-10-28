@@ -44,6 +44,7 @@ import com.facebook.litho.TextContent;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.regex.Pattern;
@@ -61,7 +62,8 @@ import app.morphe.extension.youtube.settings.Settings;
  * <p>
  * Feed videos are drawn by Litho, so a video has no view of its own. The root
  * {@link ComponentHost} of a full width video is recognized by its shape:
- * a 16:9 thumbnail at the top, and the menu button below it on the right.
+ * a 16:9 thumbnail at the top, and the menu button below it at the end side
+ * (on the right, or on the left in right to left languages).
  * <ul>
  *   <li>Tap and hold anywhere on the video: clicks the menu button of the video.</li>
  *   <li>Watch later button: drawn on the overlay of the root host. Tapping it opens the menu
@@ -97,7 +99,10 @@ public final class FeedVideoActionsPatch {
     private static final int THUMBNAIL_OVERLAP_DP = 8;
     private static final int MENU_BUTTON_MIN_DP = 20;
     private static final int MENU_BUTTON_MAX_DP = 72;
-    /** The menu button is in the right part of the video. */
+    /**
+     * The menu button is in the end part of the video: the right part, or the left part
+     * in right to left languages, where the channel avatar is in the right part.
+     */
     private static final float MENU_BUTTON_MIN_CENTER_X = 0.8f;
 
     private static final int BADGE_SIZE_DP = 34;
@@ -124,6 +129,7 @@ public final class FeedVideoActionsPatch {
     /** A short badge in capital letters, such as the live badge. */
     private static final Pattern BADGE_PATTERN = Pattern.compile("^\\p{Lu}{2,12}$");
     private static final Pattern NOT_LETTERS_PATTERN = Pattern.compile("[^\\p{L}]+");
+    private static final Pattern VIDEO_ID_PATTERN = Pattern.compile("^[\\w-]{11}$");
 
     /** Time the menu click has to open the menu, before a Watch later tap is forgotten. */
     private static final long PENDING_WATCH_LATER_TIMEOUT_MS = 2000;
@@ -176,6 +182,8 @@ public final class FeedVideoActionsPatch {
     /** If the pending menu item is Save to playlist instead of Watch later. */
     private static boolean pendingSaveToPlaylist;
     private static String pendingVideoId = "";
+    /** Video of the tapped card, used if the menu does not give the video id. */
+    private static String pendingCardVideoId = "";
     /** Menu that is hidden until its Watch later item is clicked. */
     private static WeakReference<Object> pendingFlyoutRef = new WeakReference<>(null);
     private static boolean pendingItemClicked;
@@ -323,7 +331,7 @@ public final class FeedVideoActionsPatch {
 
     /**
      * @return If the view is where the menu button of a video is:
-     *         small, below the thumbnail and at the right side.
+     *         small, below the thumbnail and at the end side.
      */
     private static boolean isMenuButtonShaped(ComponentHost root, View view, Rect rect) {
         rect.set(0, 0, view.getWidth(), view.getHeight());
@@ -332,9 +340,13 @@ public final class FeedVideoActionsPatch {
         final int min = dp(root, MENU_BUTTON_MIN_DP);
         final int max = dp(root, MENU_BUTTON_MAX_DP);
         final int width = root.getWidth();
+        // The channel avatar has the same size, at the start side.
+        final boolean atEndSide = root.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL
+                ? rect.centerX() <= width * (1 - MENU_BUTTON_MIN_CENTER_X)
+                : rect.centerX() >= width * MENU_BUTTON_MIN_CENTER_X;
         return rect.width() >= min && rect.width() <= max
                 && rect.height() >= min && rect.height() <= max
-                && rect.centerX() >= width * MENU_BUTTON_MIN_CENTER_X
+                && atEndSide
                 && rect.top >= width * THUMBNAIL_RATIO - dp(root, THUMBNAIL_OVERLAP_DP);
     }
 
@@ -407,11 +419,16 @@ public final class FeedVideoActionsPatch {
     /**
      * If a text of the video is not drawn by Litho, it is still in the description.
      * The fixed part of the description is then at its start or at its end.
+     * The case is ignored, as the layouts can use another case for the same words,
+     * such as "Action menu" and "action menu for [title]", and the pattern can be
+     * learned on another layout.
      */
     private static boolean isSamePattern(String pattern, String learned) {
         if (pattern.isEmpty() || learned.isEmpty()) {
             return false;
         }
+        pattern = pattern.toLowerCase(Locale.ROOT);
+        learned = learned.toLowerCase(Locale.ROOT);
         if (pattern.equals(learned)) {
             return true;
         }
@@ -552,6 +569,27 @@ public final class FeedVideoActionsPatch {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "updateRoots failure", ex);
+        }
+    }
+
+    /**
+     * Called when {@link FeedVideoCardsPatch} checks a card, which it also does again while
+     * the list scrolls and the card is partly shown. Litho mounts only the part of a card that
+     * is shown, so the menu button of a card that enters from the top of the list may not be
+     * found when it is laid out, and the card may not be laid out again once it is shown.
+     *
+     * @param videoId The video of the card, or null if the card is not a known video.
+     */
+    public static void onCardLaidOut(ComponentHost host, @Nullable String videoId) {
+        if (!ENABLED) {
+            return;
+        }
+        try {
+            if (updateCard(host) == null && videoId != null) {
+                FeedVideoCardsPatch.scheduleScrollCheck(host);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onCardLaidOut failure", ex);
         }
     }
 
@@ -815,6 +853,11 @@ public final class FeedVideoActionsPatch {
         // is clicked, so the app saves the video and shows its own message.
         pendingMenuButtonRef = new WeakReference<>(menuButton);
         pendingVideoId = "";
+        ComponentHost root = findRootHost(menuButton);
+        String cardVideoId = root == null ? null : FeedVideoCardsPatch.findVideoId(root);
+        pendingCardVideoId = cardVideoId != null && VIDEO_ID_PATTERN.matcher(cardVideoId).matches()
+                ? cardVideoId
+                : "";
         pendingWatchLaterUptime = SystemClock.uptimeMillis();
         pendingSaveToPlaylist = saveToPlaylist;
         pendingItemClicked = false;
@@ -836,6 +879,7 @@ public final class FeedVideoActionsPatch {
         pendingWatchLaterUptime = 0;
         pendingSaveToPlaylist = false;
         pendingVideoId = "";
+        pendingCardVideoId = "";
         pendingMenuButtonRef = new WeakReference<>(null);
         pendingFlyoutRef = new WeakReference<>(null);
         pendingItemClicked = false;
@@ -1032,6 +1076,14 @@ public final class FeedVideoActionsPatch {
                     // The items may not be bound yet. The fallback runs if they never are.
                     return;
                 }
+                // The index is only right if every button is an item, and no other item was added,
+                // otherwise another item is clicked, such as the share item. The fallback runs instead.
+                final int buttonCount = FlyoutUtils.getVisibleFlyoutButtons().size();
+                if (items.getChildCount() != buttonCount) {
+                    Logger.printDebug(() -> "Menu items do not match the buttons: " + items.getChildCount()
+                            + " items, " + buttonCount + " buttons");
+                    return;
+                }
                 item = items.getChildAt(itemIndex);
             }
 
@@ -1204,7 +1256,7 @@ public final class FeedVideoActionsPatch {
                 return;
             }
             Object flyout = pendingFlyoutRef.get();
-            String videoId = pendingVideoId;
+            String videoId = pendingVideoId.isEmpty() ? pendingCardVideoId : pendingVideoId;
             final boolean saveToPlaylist = pendingSaveToPlaylist;
             clearPendingWatchLater();
             if (saveToPlaylist) {

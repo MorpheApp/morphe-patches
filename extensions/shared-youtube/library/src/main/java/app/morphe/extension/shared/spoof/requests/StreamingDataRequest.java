@@ -33,9 +33,15 @@ import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.innertube.ResponseContextOuterClass.*;
-import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.*;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.AudioConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.InlinePlaybackConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayabilityStatus;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerGestureConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerResponse;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingData;
 import app.morphe.extension.shared.innertube.ReelItemWatchResponseOuterClass.ReelItemWatchResponse;
+import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -219,7 +225,11 @@ public class StreamingDataRequest {
         ClientType[] clientOrder = buildClientOrder(downloadClients, preferredClient)
                 .toArray(new ClientType[0]);
         // The video details name the saved file, so the download asks for them as well.
-        return new StreamingDataRequest(videoId, false, lastPlayerHeaders, true, clientOrder, true);
+        // The auth hook keeps the headers even if spoofing is off, but it is not used by all apps.
+        Map<String, String> headers = AuthUtils.getAuthorization().isEmpty()
+                ? lastPlayerHeaders
+                : AuthUtils.getRequestHeader();
+        return new StreamingDataRequest(videoId, false, headers, true, clientOrder, true);
     }
 
     @Nullable

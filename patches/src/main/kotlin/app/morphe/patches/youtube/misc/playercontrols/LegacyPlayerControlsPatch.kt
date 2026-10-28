@@ -44,6 +44,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_04_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
@@ -423,18 +424,22 @@ val legacyPlayerControlsPatch = bytecodePatch(
         }
 
         // Override flags that interfere with old player icons override.
-        arrayOf(
-            PlayerCommentTeaserFeatureFlagFingerprint to is_21_15_or_greater,
-            RecycleViewScrollingFlagFingerprint to is_21_15_or_greater
-        ).forEach { (fingerprint, applyChanges) ->
-            if (applyChanges) {
-                fingerprint.matchAll().forEach {
-                    it.method.insertLiteralOverride(
-                        it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS->" +
-                                "allowModernPlayerLayoutFlags(Z)Z"
-                    )
-                }
+        if (is_21_15_or_greater) {
+            PlayerCommentTeaserFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->" +
+                            "allowModernPlayerLayoutFlags(Z)Z"
+                )
+            }
+        }
+
+        // Watch feed resize A/B test: every scroll event of the watch next feed
+        // resizes the player and relayouts the watch page, and scrolling lags.
+        // It also interferes with the old player icons, so always turn it off.
+        if (is_21_11_or_greater) {
+            WatchFeedResizeFeatureFlagFingerprint.matchAllMethodIndicesForEach { index ->
+                insertLiteralOverride(index, false)
             }
         }
 

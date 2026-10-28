@@ -35,14 +35,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.49.0-dev.7](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.49.0-dev.7)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;192 patches total
+> **[v1.49.0-dev.10](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.49.0-dev.10)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;193 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;107 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;108 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.43.523 | 🧪&nbsp;21.42.241 | 🧪&nbsp;21.28.208 | 21.23.492 | 21.20.405 | 21.16.256 | 20.51.39 | 20.21.37 |
+| 🧪&nbsp;21.43.523 | 🧪&nbsp;21.42.241 | 🧪&nbsp;21.28.208 | 21.23.492 | 21.20.405 | 21.16.256 | 20.51.39 | 20.26.46 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -115,6 +115,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Mute button](#mute-button) | Adds an option to show a player button that mutes the video audio. |  |
 | [Navigation bar](#navigation-bar) | Adds options to hide and change the bottom navigation bar (such as the Shorts button) and the upper navigation toolbar. | • Hide Search app shortcut<br>• Hide Subscriptions app shortcut |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
+| [Niconico comments](#niconico-comments) | Adds an option to show live chat and chat replay as comments that scroll across the video. |  |
 | [Open Shorts in regular player](#open-shorts-in-regular-player) | Adds options to open Shorts in the regular video player. |  |
 | [Open channel of live avatar](#open-channel-of-live-avatar) | Adds an option to prevent a channel's current live video from opening when tapping its avatar. |  |
 | [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app browser. |  |
@@ -135,7 +136,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Restore original titles](#restore-original-titles) | Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones. |  |
 | [Return YouTube Dislike](#return-youtube-dislike) | Adds an option to show the dislike count of videos with Return YouTube Dislike, and the like count and like ratio on the thumbnails of feed videos. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
-| [Save to Watch later](#save-to-watch-later) | Adds an option to display save to Watch later button in the video player. |  |
+| [Save to Watch later](#save-to-watch-later) | Adds an option to display save to Watch later button in the video player, and adds a setting to redirect Watch later saves to a playlist of your choice. |  |
 | [Search comments](#search-comments) | Adds a button to the comments to show only the loaded comments that contain the searched words. |  |
 | [Seekbar](#seekbar) | Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in live streams, and expanding the live stream DVR duration. |  |
 | [Series tracking](#series-tracking) | Adds a series library to History with local progress and episode continuation. This patch works with YouTube 21.02 and newer. |  |
@@ -163,7 +164,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.42.52 | 🧪&nbsp;9.41.52 | 🧪&nbsp;9.40.51 | 9.20.53 | 9.15.51 |
+| 🧪&nbsp;9.43.51 | 🧪&nbsp;9.42.52 | 🧪&nbsp;9.41.52 | 9.20.53 | 9.15.51 |
 | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |

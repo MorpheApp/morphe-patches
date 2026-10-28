@@ -548,8 +548,29 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_mediasession_summary">Ipakita ang current line sa lock screen, Android Auto at Bluetooth. Kailangan ng Android 11 o mas baga</string>
   <string name="morphe_music_lyrics_miniplayer_title">Ipakita ang Lyrics sa Miniplayer</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Ipakita ang current line sa miniplayer, with the track moved to the subtitle</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Pagpapakita ng Artist at Pamagat […] ON \"Artist - Title\" at OFF \"Title - Artist\" — hindi ito nakakaapekto sa paghahanap ng lyrics.</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">I-toggle ang pagkakasunod-sunod ng pagpapakita ng Artist at Title sa Miniplayer at MediaSession. Kapag ON: \"Artist - Title\"; kapag OFF: \"Title - Artist\". Hindi ito nakakaapekto sa paghahanap ng lyrics.</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Format ng pamagat ng kanta/artist</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Format ng track na ipinapakita kasama ang lyrics sa miniplayer at MediaSession. Ang {t} ay ang pamagat, ang {a} ay ang artist at ang {v} ay ang bersyon, gaya ng Acoustic, kapag nagbigay nito ang source ng lyrics. Ang text sa pagitan ng dalawang colon ay ipinapakita lamang kapag ang bawat variable sa loob nito ay may value; isulat ang \\: para sa isang plain na colon. Ang bawat linya ay ipinapakita nang sunod-sunod, at lilipat kapag nagbago ang lyric</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Format ng linya ng lyric</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Format ng linya ng lyrics sa miniplayer at MediaSession. Ang {lrc} ay ang linya at ang {n} ay kung ilang beses itong kinanta nang sunod-sunod. Ang text sa pagitan ng mga colon ay ipinapakita lamang kapag nauulit ang linya. Gumamit ng \\: para sa isang colon</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Ang format ay dapat maglaman ng {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Template ng artist-line at timing ng animation</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimum na screen time (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maximum na screen time (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Para sa mga multiline animation lamang. Panatilihin ang bawat frame nang hindi bababa sa minimum na oras. Sa maximum, i-advance ang artist line kahit hindi nagbabago ang liriko.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Ang minimum ay dapat 0 o higit pa. Ang maximum ay dapat higit sa 0 at hindi bababa sa minimum.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Mga limitasyon sa haba ng linya</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Mga limitasyon sa linya ng liriko at artist, at full-width character weight</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Limitasyon sa linya ng liriko
+Hatiin ang mas mahahabang liriko sa balanseng kalahati. I-disable ang paghahati gamit ang 0."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Limit ng linya ng artist
+Hatiin ang populated track format sa mga cycling frame. I-disable ang paghahati gamit ang 0."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Bigat ng full-width character
+Nalalapat sa parehong limitasyon. Sa 1.75, ang apat na full-width character ay mabibilang bilang 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Maglagay ng whole-number limit mula 0 hanggang 10000 at bigat ng character na higit sa 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumental break</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Ipinapakita sa miniplayer at MediaSession habang may instrumental break. Ang bawat linya ay isang animation frame. Ang {t} ay ang pamagat, ang {a} ay ang artist at ang {lrc} ay ang huling linya ng lyrics</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Timing offset ng miniplayer at MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Inililipat kung kailan ipapakita ang susunod na linya sa Miniplayer at MediaSession. Gumamit ng negatibong halaga kung huling lumalabas ang mga linya, halimbawa sa lock screen</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Mga Filter</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex ng filter ng lyrics</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Regular expression na inilalapat sa mga pamagat, artist, at album bago maghanap ng mga liriko at kapag nagmamarka kung magkatugma ang dalawang pamagat. Iwanang blangko upang i-disable ang pareho. Ang default ay nag-aalis ng karaniwang kalat tulad ng \"Official Video\", \"Remaster\", \"【插曲】\", at \"- Topic\"</string>
@@ -557,6 +578,10 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_text_filter_summary">Ang regular expression ay inilalapat lamang sa orihinal na teksto ng lyrics (hindi sa mga pagsasalin o romanisasyon). Iwanang blangko upang i-disable.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Mga marker ng linya ng impormasyon</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Kung ang mga lyrics ay hindi wastong na-filter sa ibaba, ayusin o i-clear ito. […] Iwanang blangko upang i-disable.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Gawing malaking titik ang unang letra</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Ginagawang malaking titik ang unang letra ng bawat linya ng liriko</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Alisin ang huling bantas</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Inaalis ang mga tuldok, kuwit, colon at semicolon sa dulo ng mga linya ng liriko. Pinananatili ang mga question mark, exclamation mark, ellipses, panipi at panaklong</string>
   <string name="morphe_music_lyrics_text_size_title">Laki ng teksto</string>
   <string name="morphe_music_lyrics_text_size_summary">Laki ng teksto ng lyrics</string>
   <string name="morphe_music_lyrics_offset_ms_title">Pandaigdigang offset ng timing</string>

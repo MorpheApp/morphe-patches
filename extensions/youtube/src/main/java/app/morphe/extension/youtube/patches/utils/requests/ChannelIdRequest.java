@@ -17,6 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.util.Collections;
 import java.util.Map;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -31,19 +32,48 @@ import app.morphe.extension.shared.settings.BaseSettings;
 public class ChannelIdRequest {
     // Must be less than 5 seconds to ensure Android "App not responding" dialog does not show.
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 3 * 1000;
+    private final String videoId;
     private final Future<Pair<String, String>> future;
     private volatile String videoTitle = "";
+    @Nullable
+    private volatile HttpURLConnection openConnection;
 
     private static final Map<String, ChannelIdRequest> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(50));
 
     private ChannelIdRequest(String videoId) {
+        this.videoId = videoId;
         this.future = Utils.submitOnBackgroundThread(() -> fetch(videoId));
     }
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean fetchIsDone() {
         return future.isDone();
+    }
+
+    /**
+     * @return The pending fetch, to wait for it off the main thread.
+     */
+    public Future<Pair<String, String>> getFuture() {
+        return future;
+    }
+
+    /**
+     * Stops the fetch if it is not done yet, such as when nothing is waiting for it anymore.
+     * The next request of the video fetches it again.
+     */
+    public void cancelIfNotDone() {
+        if (future.isDone()) {
+            return;
+        }
+
+        cache.remove(videoId, this);
+        future.cancel(true);
+        HttpURLConnection connection = openConnection;
+        if (connection != null) {
+            // Closing the connection also stops a response that is still being read.
+            Utils.runOnBackgroundThread(connection::disconnect);
+        }
     }
 
     @Nullable
@@ -60,6 +90,8 @@ public class ChannelIdRequest {
             Thread.currentThread().interrupt();
         } catch (ExecutionException ex) {
             Logger.printException(() -> "getChannelId failure", ex);
+        } catch (CancellationException ex) {
+            Logger.printDebug(() -> "getChannelId cancelled");
         }
         return null;
     }
@@ -82,20 +114,7 @@ public class ChannelIdRequest {
     }
 
     @Nullable
-    private static Pair<String, String> parseResponse(JSONObject json) {
-        JSONObject videoDetails = json.optJSONObject("videoDetails");
-        if (videoDetails != null) {
-            return new Pair<>(
-                    videoDetails.optString("author", ""),
-                    videoDetails.optString("channelId", "")
-            );
-        }
-
-        return null;
-    }
-
-    @Nullable
-    private static JSONObject sendRequest(String videoId) {
+    private JSONObject sendRequest(String videoId) {
         Utils.verifyOffMainThread();
 
         final long startTime = System.currentTimeMillis();
@@ -104,6 +123,11 @@ public class ChannelIdRequest {
         try {
             byte[] requestBody = ChannelIdRoutes.createBody(videoId);
             HttpURLConnection connection = ChannelIdRoutes.getConnection(ChannelIdRoutes.GET_CHANNEL_ID);
+            openConnection = connection;
+            // The fetch can start before the constructor sets the future.
+            if (future != null && future.isCancelled()) {
+                return null; // Cancelled before the request was sent.
+            }
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
             int responseCode = connection.getResponseCode();
@@ -126,12 +150,15 @@ public class ChannelIdRequest {
     @Nullable
     private Pair<String, String> fetch(String videoId) {
         JSONObject json = sendRequest(videoId);
-        if (json != null) {
-            JSONObject videoDetails = json.optJSONObject("videoDetails");
-            if (videoDetails != null && videoId.equals(videoDetails.optString("videoId"))) {
+        JSONObject videoDetails = json == null ? null : json.optJSONObject("videoDetails");
+        if (videoDetails != null) {
+            if (videoId.equals(videoDetails.optString("videoId"))) {
                 videoTitle = videoDetails.optString("title");
             }
-            return parseResponse(json);
+            return new Pair<>(
+                    videoDetails.optString("author", ""),
+                    videoDetails.optString("channelId", "")
+            );
         }
         return null;
     }

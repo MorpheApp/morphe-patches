@@ -285,6 +285,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         communityPosts = new StringFilterGroup(
                 Settings.HIDE_COMMUNITY_POSTS,
+                "communities_entrypoint.e",
                 "images_post_responsive_root.e",
                 "images_post_root.e",
                 "images_post_root_slim.e",
@@ -585,6 +586,15 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == communityPosts) {
+            // YouTube now also shows community posts on a dedicated page for channels.
+            // This page is navigated with a back button, and hiding its posts
+            // prevents any posts from loading (the page shows a loading spinner forever).
+            // Only hide the posts when no back button is visible (home and subscription feeds).
+            // https://github.com/MorpheApp/morphe-patches/issues/4101
+            if (NavigationBar.isBackButtonVisible()) {
+                return false;
+            }
+
             return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
         }
 

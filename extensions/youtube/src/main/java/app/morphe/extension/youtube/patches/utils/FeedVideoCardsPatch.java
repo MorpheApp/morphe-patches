@@ -10,9 +10,15 @@ package app.morphe.extension.youtube.patches.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import androidx.annotation.GuardedBy;
@@ -28,6 +34,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,6 +42,7 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.FeedEngagementCountsPatch;
+import app.morphe.extension.youtube.patches.FeedVideoActionsPatch;
 import app.morphe.extension.youtube.patches.FeedViewCountPatch;
 import app.morphe.extension.youtube.patches.PostImageDownloadPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -88,6 +96,13 @@ public final class FeedVideoCardsPatch {
      */
     private static final int MAX_RETRIES = 3;
     private static final long RETRY_DELAY_MS = 500;
+    /** Time between checks of the cards that are partly shown, while the list scrolls. */
+    private static final long SCROLL_CHECK_DELAY_MS = 50;
+
+    /** Duration of a turn of the loading spinner of the badges. */
+    private static final long SPINNER_TURN_MS = 1000;
+    private static final float SPINNER_SWEEP_DEGREES = 270;
+    private static final float SPINNER_STROKE_DP = 1.6f;
 
     /**
      * Result of {@link #findVideoId(ComponentHost)} for a video card whose texts are not drawn yet,
@@ -112,6 +127,12 @@ public final class FeedVideoCardsPatch {
 
     private static final byte[] THUMBNAIL_PATH = "/vi".getBytes(StandardCharsets.US_ASCII);
 
+    /**
+     * Invisible format characters, such as the ones the elements of the classic layout add
+     * after the title (U+2060 to U+2064), which the card does not show.
+     */
+    private static final Pattern FORMAT_CHARACTERS_PATTERN = Pattern.compile("\\p{Cf}+");
+
     /** Text -> video id, or {@link #AMBIGUOUS}. Oldest texts are removed first. */
     @GuardedBy("itself")
     private static final Map<String, String> textVideoIds = Utils
@@ -132,11 +153,15 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
-     * @return If the video plays in the feed, where the inline player shows its own buttons
-     *         over the thumbnail, such as the mute and the captions buttons.
+     * @return If what is drawn on the thumbnail of the card is hidden now, because the video plays
+     *         in the feed, where the inline player shows its own buttons over the thumbnail,
+     *         such as the mute and the captions buttons.
      */
-    public static boolean isPlayingInline(@Nullable String videoId) {
-        if (videoId == null || PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL) {
+    public static boolean isCardPlayingInline(ComponentHost host) {
+        // The video of the card that was laid out, or null if it is not known.
+        String videoId = cardVideoIds.get(host);
+        if (videoId == null || PLAYLIST.equals(videoId)
+                || PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL) {
             return false;
         }
         return videoId.equals(VideoInformation.getVideoId())
@@ -144,19 +169,33 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
-     * @return If what is drawn on the thumbnail of the card is hidden now.
-     */
-    public static boolean isCardPlayingInline(ComponentHost host) {
-        // The video of the card that was laid out, or null if it is not known.
-        String videoId = cardVideoIds.get(host);
-        return isPlayingInline(PLAYLIST.equals(videoId) ? null : videoId);
-    }
-
-    /**
      * @return If the card is a playlist or a mix, which nothing is drawn on.
      */
     public static boolean isPlaylistCard(ComponentHost host) {
         return PLAYLIST.equals(cardVideoIds.get(host));
+    }
+
+    /**
+     * @return The paint of the loading spinner of a badge, shown until what the badge shows is found.
+     */
+    public static Paint createSpinnerPaint(float density, int color) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(color);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeCap(Paint.Cap.ROUND);
+        paint.setStrokeWidth(SPINNER_STROKE_DP * density);
+        return paint;
+    }
+
+    /**
+     * Draws the loading spinner of a badge, an arc that turns with the time.
+     * The badge draws itself again after it, so the arc keeps turning while it's shown.
+     */
+    public static void drawSpinner(Canvas canvas, RectF oval, Paint paint) {
+        final float inset = paint.getStrokeWidth() / 2;
+        oval.inset(inset, inset);
+        final float start = (SystemClock.uptimeMillis() % SPINNER_TURN_MS) * 360f / SPINNER_TURN_MS;
+        canvas.drawArc(oval, start, SPINNER_SWEEP_DEGREES, false, paint);
     }
 
     private static void redrawCards() {
@@ -201,6 +240,13 @@ public final class FeedVideoCardsPatch {
             return true;
         }
         return false;
+    }
+
+    /**
+     * @return The text as it's matched between an element and a card.
+     */
+    private static String normalizeText(CharSequence text) {
+        return FORMAT_CHARACTERS_PATTERN.matcher(text).replaceAll("").trim();
     }
 
     private static boolean isVideoText(String text) {
@@ -268,7 +314,7 @@ public final class FeedVideoCardsPatch {
 
             synchronized (textVideoIds) {
                 for (ProtoNode node : textNodes) {
-                    String text = node.getText().trim();
+                    String text = normalizeText(node.getText());
                     if (!isVideoText(text)) {
                         continue;
                     }
@@ -465,7 +511,7 @@ public final class FeedVideoCardsPatch {
         if (textContent != null) {
             for (CharSequence text : textContent.getTextItems()) {
                 if (text != null) {
-                    String item = text.toString().trim();
+                    String item = normalizeText(text);
                     if (isVideoText(item) && !texts.contains(item)) {
                         texts.add(item);
                     }
@@ -479,37 +525,24 @@ public final class FeedVideoCardsPatch {
         }
     }
 
-    @Nullable
-    private static Activity findActivity(Context context) {
-        while (context instanceof ContextWrapper wrapper) {
-            if (context instanceof Activity activity) {
-                return activity;
-            }
-            context = wrapper.getBaseContext();
-        }
-        return null;
-    }
-
     /**
      * The share sheet and other bottom sheets are dialogs that can show the thumbnail and the texts
      * of the opened video, so they look like a card. Feeds are in the window of the activity.
      */
     public static boolean isInDialog(ComponentHost host) {
-        Activity activity = findActivity(host.getContext());
-        if (activity != null && activity.getWindow() != null) {
+        Context context = host.getContext();
+        while (context instanceof ContextWrapper wrapper && !(context instanceof Activity)) {
+            context = wrapper.getBaseContext();
+        }
+        if (context instanceof Activity activity && activity.getWindow() != null) {
             View decorView = activity.getWindow().peekDecorView();
             if (decorView != null && host.getRootView() != decorView) {
                 return true;
             }
         }
-        return isInBottomSheet(host);
-    }
 
-    /**
-     * Bottom sheets that are shown in the window of the activity.
-     */
-    private static boolean isInBottomSheet(View view) {
-        ViewParent parent = view.getParent();
+        // Bottom sheets that are shown in the window of the activity.
+        ViewParent parent = host.getParent();
         while (parent instanceof View parentView) {
             final int id = parentView.getId();
             // Generated ids, which have no package, are not resources.
@@ -630,6 +663,33 @@ public final class FeedVideoCardsPatch {
     /** Root host -> number of checks since its last layout. Used only on the main thread. */
     private static final Map<ComponentHost, Integer> retries = new WeakHashMap<>();
 
+    /**
+     * Root hosts that are checked again when the list scrolls. Litho mounts only the part of a card
+     * that is shown, so what is drawn on it can be found once more of it is shown.
+     * Used only on the main thread.
+     */
+    private static final Set<ComponentHost> scrollChecks = Collections.newSetFromMap(new WeakHashMap<>());
+    /** Tree observers of the windows the scroll listener was added to. Used only on the main thread. */
+    private static final Map<ViewTreeObserver, Boolean> scrollObservers = new WeakHashMap<>();
+    private static boolean scrollCheckScheduled;
+    private static final Rect visibleRect = new Rect();
+
+    private static final Runnable scrollCheckRunnable = () -> {
+        scrollCheckScheduled = false;
+        for (ComponentHost root : scrollChecks.toArray(new ComponentHost[0])) {
+            if (root != null) {
+                scheduleUpdate(root);
+            }
+        }
+    };
+
+    private static final ViewTreeObserver.OnScrollChangedListener scrollListener = () -> {
+        if (!scrollCheckScheduled && !scrollChecks.isEmpty()) {
+            scrollCheckScheduled = true;
+            Utils.runOnMainThreadDelayed(scrollCheckRunnable, SCROLL_CHECK_DELAY_MS);
+        }
+    };
+
     private static void scheduleUpdate(ComponentHost root) {
         rootsToUpdate.put(root, Boolean.TRUE);
         if (!rootsUpdateScheduled) {
@@ -639,13 +699,39 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
-     * Checks the card again a little later, such as when what is drawn on it was not found yet.
+     * Checks the card again when the list scrolls, if the card is partly shown.
+     * Litho mounts only the part of a card that is shown, so what is drawn on it can be found
+     * once more of it is shown. Must be called on the main thread.
+     *
+     * @return If the card is partly shown, so it is checked again.
      */
-    public static void scheduleRetry(ComponentHost root) {
+    public static boolean scheduleScrollCheck(ComponentHost root) {
+        final boolean partlyShown = root.isAttachedToWindow()
+                && (!root.getLocalVisibleRect(visibleRect) || visibleRect.height() < root.getHeight());
+        if (partlyShown) {
+            scrollChecks.add(root);
+            ViewTreeObserver observer = root.getViewTreeObserver();
+            if (observer.isAlive() && scrollObservers.put(observer, Boolean.TRUE) == null) {
+                observer.addOnScrollChangedListener(scrollListener);
+            }
+        }
+        return partlyShown;
+    }
+
+    /**
+     * Checks the card again a little later, such as when what is drawn on it was not found yet,
+     * and when the list scrolls while the card is partly shown.
+     * Must be called on the main thread.
+     *
+     * @return If the card is checked again.
+     */
+    public static boolean scheduleRetry(ComponentHost root) {
+        final boolean partlyShown = scheduleScrollCheck(root);
+
         Integer count = retries.get(root);
         final int attempt = count == null ? 0 : count;
         if (attempt >= MAX_RETRIES) {
-            return;
+            return partlyShown;
         }
         retries.put(root, attempt + 1);
         root.postDelayed(() -> {
@@ -653,6 +739,7 @@ public final class FeedVideoCardsPatch {
                 scheduleUpdate(root);
             }
         }, RETRY_DELAY_MS);
+        return true;
     }
 
     private static final Runnable updateRootsRunnable = () -> {
@@ -661,13 +748,21 @@ public final class FeedVideoCardsPatch {
             ComponentHost[] roots = rootsToUpdate.keySet().toArray(new ComponentHost[0]);
             rootsToUpdate.clear();
             for (ComponentHost root : roots) {
-                if (root == null || !root.isAttachedToWindow()
-                        || root.getParent() instanceof ComponentHost) {
+                if (root == null) {
+                    continue;
+                }
+                // Added again below if the card is still checked again.
+                scrollChecks.remove(root);
+                if (!root.isAttachedToWindow() || root.getParent() instanceof ComponentHost) {
                     continue;
                 }
                 String videoId = findVideoId(root);
                 if (NOT_READY.equals(videoId)
-                        || (videoId == null && isVideoShaped(root) && !hasHorizontalList(root))) {
+                        || (videoId == null && isVideoShaped(root) && !hasHorizontalList(root))
+                        // A card that enters from the top of the list shows its texts before the
+                        // duration of its thumbnail, so it looks like a mix until its top is shown.
+                        || (PLAYLIST.equals(videoId)
+                        && (!root.getLocalVisibleRect(visibleRect) || visibleRect.top > 0))) {
                     scheduleRetry(root);
                 } else {
                     retries.remove(root);
@@ -683,6 +778,7 @@ public final class FeedVideoCardsPatch {
                 final String cardVideoId = PLAYLIST.equals(videoId) ? null : videoId;
                 FeedEngagementCountsPatch.onCardLaidOut(root, cardVideoId);
                 FeedViewCountPatch.onCardLaidOut(root, cardVideoId);
+                FeedVideoActionsPatch.onCardLaidOut(root, cardVideoId);
                 PostImageDownloadPatch.onRootLaidOut(root);
             }
         } catch (Exception ex) {

@@ -544,8 +544,29 @@ Các bước:
   <string name="morphe_music_lyrics_mediasession_summary">Hiển thị dòng hiện tại trên màn hình khóa, Android Auto và Bluetooth. Yêu cầu Android 11 trở lên</string>
   <string name="morphe_music_lyrics_miniplayer_title">Hiển thị Lời bài hát trong Miniplayer</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Hiển thị dòng hiện tại trong trình phát nhỏ, với tiêu đề bài hát được chuyển xuống phần phụ đề</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Thứ tự hiển thị Nghệ sĩ và Tên bài hát</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Chuyển đổi thứ tự hiển thị của Nghệ sĩ và Tên bài hát trong Miniplayer và MediaSession. BẬT \"Nghệ sĩ - Tên bài hát\" và TẮT \"Tên bài hát - Nghệ sĩ\" Không ảnh hưởng đến tìm kiếm lời bài hát</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Định dạng tiêu đề bài hát/nghệ sĩ</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Định dạng của bản nhạc được hiển thị cùng với lời bài hát trong miniplayer và MediaSession. {t} là tiêu đề, {a} là nghệ sĩ và {v} là phiên bản, chẳng hạn như Acoustic, khi nguồn lời bài hát cung cấp. Văn bản giữa hai dấu hai chấm chỉ được hiển thị khi mọi biến bên trong nó có giá trị; viết \\: cho dấu hai chấm thông thường. Mỗi dòng được hiển thị lần lượt, chuyển tiếp bất cứ khi nào lời bài hát thay đổi</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Định dạng dòng lời bài hát</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Định dạng của dòng lời bài hát trong miniplayer và MediaSession. {lrc} là dòng lời bài hát và {n} là số lần dòng đó được hát liên tiếp. Văn bản giữa các dấu hai chấm chỉ được hiển thị khi dòng lời bài hát lặp lại. Sử dụng \\: cho dấu hai chấm</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Định dạng phải bao gồm {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Mẫu dòng nghệ sĩ và thời gian hoạt ảnh</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Thời gian hiển thị tối thiểu (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Thời gian hiển thị tối đa (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Chỉ dành cho hoạt ảnh nhiều dòng. Giữ mỗi khung hình trong ít nhất thời gian tối thiểu. Ở mức tối đa, chuyển dòng nghệ sĩ ngay cả khi lời bài hát không thay đổi.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Giá trị tối thiểu phải từ 0 trở lên. Giá trị tối đa phải lớn hơn 0 và ít nhất bằng giá trị tối thiểu.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Giới hạn độ dài dòng</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Giới hạn dòng lời bài hát và nghệ sĩ, và trọng số ký tự toàn chiều rộng</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Giới hạn dòng lời bài hát
+Chia lời bài hát dài thành hai nửa cân đối. 0 để tắt tính năng chia."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Giới hạn dòng của nghệ sĩ
+Chia định dạng bản nhạc đã điền thành các khung hình xoay vòng. 0 để tắt chia."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Trọng số ký tự toàn chiều rộng
+Áp dụng cho cả hai giới hạn. Tại mức 1.75, bốn ký tự toàn chiều rộng sẽ được tính là 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Nhập giới hạn là số nguyên từ 0 đến 10000 và trọng số ký tự lớn hơn 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Đoạn nhạc dạo</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Hiển thị trong miniplayer và MediaSession trong một đoạn nhạc dạo. Mỗi dòng là một khung hình hoạt ảnh. {t} là tiêu đề, {a} là nghệ sĩ và {lrc} là dòng lời bài hát cuối cùng</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Độ lệch thời gian của miniplayer và MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Điều chỉnh thời điểm hiển thị dòng tiếp theo trong Trình phát thu nhỏ và MediaSession. Sử dụng giá trị âm nếu các dòng hiển thị muộn, ví dụ như trên màn hình khóa</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Bộ lọc</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex siêu dữ liệu</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Biểu thức chính quy được áp dụng cho tiêu đề, nghệ sĩ và album trước khi tra cứu lời bài hát và khi đánh giá xem hai tiêu đề có khớp nhau không. Để trống để tắt cả hai. Mặc định loại bỏ những phần thừa phổ biến như \"Official Video\", \"Remaster\", \"【插曲】\" và \"- Topic\".</string>
@@ -553,6 +574,10 @@ Các bước:
   <string name="morphe_music_lyrics_text_filter_summary">Biểu thức chính quy chỉ áp dụng cho văn bản lời bài hát gốc (không phải bản dịch hoặc chuyển tự). Để trống để vô hiệu hóa</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Đánh dấu dòng thông tin</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Nếu lời bài hát bị lọc sai xuống cuối, hãy điều chỉnh hoặc xóa mục này. Các dấu hiệu phân tách bằng dấu phẩy: các dòng chứa dấu hiệu theo sau bởi dấu hai chấm sẽ được hiển thị dưới dạng thông tin ghi công ở cuối. Để trống để vô hiệu hóa</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Viết hoa chữ cái đầu</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Viết hoa chữ cái đầu của mỗi dòng lời bài hát</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Xóa dấu câu ở cuối</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Xóa dấu chấm, dấu phẩy, dấu hai chấm và dấu chấm phẩy ở cuối các dòng lời bài hát. Dấu hỏi, dấu chấm than, dấu ba chấm, dấu ngoặc kép và dấu ngoặc đơn được giữ nguyên</string>
   <string name="morphe_music_lyrics_text_size_title">Cỡ chữ</string>
   <string name="morphe_music_lyrics_text_size_summary">Kích thước chữ của lời bài hát</string>
   <string name="morphe_music_lyrics_offset_ms_title">Độ lệch thời gian toàn cục</string>

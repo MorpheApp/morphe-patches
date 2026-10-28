@@ -39,6 +39,26 @@ internal object OfflineVideoEndpointFingerprint : Fingerprint(
 )
 
 /**
+ * Saves or removes a playlist, such as from the Download button of a playlist page header.
+ */
+internal object OfflinePlaylistEndpointFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "Ljava/util/Map;",
+        "Ljava/lang/String;", // Playlist ID
+        "L", // Action
+    ),
+    filters = listOf(
+        anyInstruction(
+            string("Unsupported Offline Playlist Action: "), // 20.x
+            string("Unsupported Offline Playlist Action: %d") // 21.x
+        )
+    )
+)
+
+/**
  * Matches the offline video endpoint method, to find the call that saves a video with its offlineability renderer.
  * The quality picker and the Premium upsell of the video are both shown by the called method.
  */
@@ -109,6 +129,26 @@ internal object OfflinePlayerResponseFingerprint : Fingerprint(
         methodCall(
             parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
             returnType = "Lcom/google/common/util/concurrent/ListenableFuture;"
+        )
+    )
+)
+
+/**
+ * Updates the offline state of a saved video with the state of the 'player/refresh' response.
+ * Matches two methods, one for each of the two ways the app refreshes saved videos.
+ */
+internal object UpdateOfflineVideoPolicyFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "J", // Time of the refresh.
+        "L", // Offline state.
+        "L" // Video policy.
+    ),
+    filters = listOf(
+        anyInstruction(
+            string("[Offline] UpdateVideoPolicy failed for video "), // 20.x
+            string("[Offline] UpdateVideoPolicy failed for video %s") // 21.x
         )
     )
 )

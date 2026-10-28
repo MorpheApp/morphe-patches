@@ -18,10 +18,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">स्टार्टअप एनीमेशन</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">बंद किया गया</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">रंगीन</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">एक रंग का</string>
+  <string name="morphe_splash_screen_style_title">स्टार्टअप एनीमेशन</string>
+  <string name="morphe_splash_screen_style_entry_1">बंद किया गया</string>
+  <string name="morphe_splash_screen_style_entry_2">रंगीन</string>
+  <string name="morphe_splash_screen_style_entry_3">कलर Morphe</string>
+  <string name="morphe_splash_screen_style_entry_4">एक रंग का</string>
+  <string name="morphe_splash_screen_style_entry_5">मोनोक्रोम Morphe</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">सेटिंग को पूरा करने के लिए रीस्टार्ट करें</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

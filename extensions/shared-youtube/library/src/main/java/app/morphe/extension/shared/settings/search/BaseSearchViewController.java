@@ -57,6 +57,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.AppLanguage;
+import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory;
@@ -323,7 +324,7 @@ public abstract class BaseSearchViewController {
             if (isSearchActive) {
                 closeSearch();
             } else {
-                activity.finish();
+                BaseActivityHook.closeSettings(activity);
             }
         });
     }

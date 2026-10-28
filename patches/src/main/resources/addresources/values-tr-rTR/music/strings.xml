@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.androidauto.androidAutoPatch -->
-  <string name="morphe_music_android_auto_last_played">Son çalındı</string>
+  <string name="morphe_music_android_auto_last_played">Son çalınan</string>
   <string name="morphe_music_android_auto_subscriptions">Abonelikler</string>
   <string name="morphe_music_android_auto_videos">Videolar</string>
   <string name="morphe_music_android_auto_other_results">Diğer sonuçlar</string>
@@ -553,8 +553,29 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_mediasession_summary">Mevcut satırı kilit ekranı, Android Auto ve Bluetooth\'ta gösterir. Android 11 veya daha yenisini gerektirir.</string>
   <string name="morphe_music_lyrics_miniplayer_title">Mini oynatıcıda şarkı sözlerini göster</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Mevcut satırı mini oynatıcıda gösterir, parça ismi ise alt başlığa taşınır</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Sanatçı ve Başlık görüntüleme sırası</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Mini oynatıcı ve MediaSession\'daki Sanatçı ve Başlık görüntüleme sırasını değiştirir. AÇIK: \"Sanatçı - Başlık\" ve KAPALI: \"Başlık - Sanatçı\" Şarkı sözü aramasını etkilemez</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Şarkı başlığı/sanatçı formatı</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Mini oynatıcı ve MediaSession\'da şarkı sözleriyle birlikte gösterilen parçanın formatı. {t} başlığı, {a} sanatçıyı ve {v} (şarkı sözü kaynağı sağladığında Akustik gibi) versiyonu temsil eder. İki iki nokta üst üste arasındaki metin, yalnızca içindeki tüm değişkenlerin bir değeri olduğunda gösterilir; düz iki nokta üst üste için \\: yazın. Her satır, şarkı sözleri değiştikçe sırayla gösterilir</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Şarkı sözü satırı formatı</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Mini oynatıcı ve MediaSession\'daki şarkı sözü satırının formatı. {lrc} satırı, {n} ise bu satırın üst üste kaç kez söylendiğini temsil eder. İki nokta üst üste arasındaki metin yalnızca satır tekrarlandığında gösterilir. İki nokta üst üste için \\: kullanın</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Format {lrc} içermelidir</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Sanatçı satırı şablonu ve animasyon zamanlaması</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimum ekran süresi (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maksimum ekran süresi (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Yalnızca çok satırlı animasyonlar içindir. Her kareyi en az minimum süre boyunca tutun. Maksimum sürede, şarkı sözleri aynı kalsa bile sanatçı satırını ilerletin.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimum değer 0 veya daha büyük olmalıdır. Maksimum değer 0\'dan büyük ve en az minimum değer kadar olmalıdır.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Satır uzunluğu sınırları</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Şarkı sözü ve sanatçı satırı sınırları ile tam genişlikteki karakter ağırlığı</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Şarkı sözü satırı sınırı
+Uzun şarkı sözlerini dengeli iki yarıya bölün. 0, bölmeyi devre dışı bırakır."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Sanatçı satır sınırı
+Doldurulmuş parça formatını döngüsel karelere ayırın. 0, ayırmayı devre dışı bırakır."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Tam genişlikteki karakter ağırlığı
+Her iki sınır için de geçerlidir. 1,75 değerinde, dört tam genişlikteki karakter 7 olarak sayılır."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">0 ile 10000 arasında tam sayı sınırları ve 0\'dan büyük bir karakter ağırlığı girin</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Enstrümantal ara</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Enstrümantal bir ara sırasında Mini oynatıcıda ve MediaSession\'da gösterilir. Her satır bir animasyon karesidir. {t} başlık, {a} sanatçı ve {lrc} son şarkı sözü satırıdır</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Mini oynatıcı ve MediaSession zamanlama ofseti</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Mini oynatıcı ve MediaSession\'da sonraki satırın ne zaman gösterileceğini kaydırır. Satırlar geç görünüyorsa, örneğin kilit ekranında, negatif bir değer kullanın</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtreler</string>
   <string name="morphe_music_lyrics_custom_regex_title">Şarkı sözü filtresi normal ifadesi</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Düzenli ifade; şarkı sözleri aranmadan önce ve iki başlığın eşleşip eşleşmediği değerlendirilirken başlıklara, sanatçılara ve albümlere uygulanır. Her ikisini de devre dışı bırakmak için boş bırakın. Varsayılan ayar, \"Official Video\", \"Remaster\", \"【插曲】\" ve \"- Topic\" gibi yaygın gereksiz ifadeleri kaldırır.</string>
@@ -562,6 +583,10 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_text_filter_summary">Düzenli ifade yalnızca orijinal şarkı sözü metnine uygulanır (çevirilere veya romanizasyonlara değil). Devre dışı bırakmak için boş bırakın</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Bilgi satırı belirteçleri</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Şarkı sözleri yanlışlıkla en alta filtreleniyorsa bu ayarı düzenleyin veya temizleyin. Virgülle ayrılmış belirteçler: Bir belirteç ve ardından iki nokta üst üste içeren satırlar, en altta künye bilgisi olarak gösterilir. Devre dışı bırakmak için boş bırakın</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">İlk harfi büyük yap</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Her şarkı sözü satırının ilk harfini büyük yapar</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Sondaki noktalama işaretlerini kaldır</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Şarkı sözü satırlarının sonundaki noktaları, virgülleri, iki noktaları ve noktalı virgülleri kaldırır. Soru işaretleri, ünlem işaretleri, üç noktalar, tırnaklar ve parantezler korunur</string>
   <string name="morphe_music_lyrics_text_size_title">Yazı tipi boyutu</string>
   <string name="morphe_music_lyrics_text_size_summary">Şarkı sözü metninin boyutu</string>
   <string name="morphe_music_lyrics_offset_ms_title">Genel zamanlama farkı</string>

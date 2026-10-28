@@ -553,8 +553,29 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_mediasession_summary">Pokazuje bieżący wers na ekranie blokady, w Android Auto i przez Bluetooth. Wymaga systemu Android 11 lub nowszego</string>
   <string name="morphe_music_lyrics_miniplayer_title">Pokaż teksty w miniodtwarzaczu</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Pokazuje bieżący wers w miniodtwarzaczu, przenosząc nazwę utworu do podtytułu</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Kolejność wyświetlania wykonawcy i tytułu</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Zmienia kolejność wyświetlania wykonawcy i tytułu w miniodtwarzaczu i MediaSession. Włączone: \"Wykonawca - Tytuł\", wyłączone: \"Tytuł - Wykonawca\". Nie wpływa to na wyszukiwanie tekstów</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Format tytułu i wykonawcy utworu</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Format informacji o utworze wyświetlanych wraz z tekstem w miniodtwarzaczu i MediaSession. {t} to tytuł, {a} to wykonawca, a {v} to wersja (np. akustyczna), jeśli źródło tekstu ją udostępnia. Tekst między dwoma dwukropkami jest pokazywany tylko wtedy, gdy każda zawarta w nim zmienna ma wartość. Wpisz \:, aby wstawić zwykły dwukropek. Każdy wiersz jest wyświetlany po kolei i zmienia się wraz ze zmianą wersu tekstu</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Format wersu tekstu</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Format wersu tekstu w miniodtwarzaczu i MediaSession. {lrc} to wers tekstu, a {n} określa, ile razy z rzędu jest śpiewany. Tekst między dwukropkami jest pokazywany tylko wtedy, gdy wers się powtarza. Użyj \:, aby wstawić dwukropek</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Format musi zawierać zmienną {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Szablon wiersza wykonawcy i czas trwania animacji</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimalny czas wyświetlania (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maksymalny czas wyświetlania (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Tylko dla animacji wielowierszowych. Wyświetlaj każdą klatkę co najmniej przez czas minimalny. Po osiągnięciu czasu maksymalnego przejdź do kolejnego wiersza wykonawcy, nawet jeśli wers tekstu się nie zmienił</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Wartość minimalna musi wynosić co najmniej 0. Wartość maksymalna musi być większa od 0 i nie mniejsza niż wartość minimalna</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Limity długości wierszy</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Limity wiersza tekstu i wykonawcy oraz waga znaków pełnej szerokości</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Limit wiersza tekstu
+Dzieli dłuższe wersy na równe połowy. Wartość 0 wyłącza dzielenie"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Limit wiersza wykonawcy
+Dzieli wypełniony format utworu na zmieniające się cyklicznie klatki. Wartość 0 wyłącza dzielenie"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Waga znaków pełnej szerokości
+Dotyczy obu limitów. Przy wartości 1.75 cztery znaki pełnej szerokości liczą się jako 7"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Wprowadź limity jako liczby całkowite od 0 do 10000 oraz wagę znaków większą od 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Przerwa instrumentalna</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Wyświetlane w miniodtwarzaczu i MediaSession podczas przerwy instrumentalnej. Każdy wiersz to jedna klatka animacji. {t} to tytuł, {a} to wykonawca, a {lrc} to ostatni wers tekstu</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Przesunięcie czasu w miniodtwarzaczu i MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Przesuwa moment wyświetlenia kolejnego wersu w miniodtwarzaczu i MediaSession. Użyj wartości ujemnej, jeśli wersy pojawiają się za późno, np. na ekranie blokady</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtry</string>
   <string name="morphe_music_lyrics_custom_regex_title">Wyrażenie regularne dla metadanych</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Wyrażenie regularne stosowane do tytułów, wykonawców i albumów przed wyszukaniem tekstu oraz podczas oceniania zgodności dwóch tytułów. Pozostaw puste, aby wyłączyć obie funkcje. Domyślne ustawienie usuwa powszechne zbędne elementy, takie jak \"Official Video\", \"Remaster\", \"【插曲】\" i \"- Topic\"</string>
@@ -562,6 +583,10 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_text_filter_summary">Wyrażenie regularne stosowane wyłącznie do oryginalnego tekstu utworu (z pominięciem tłumaczeń i romanizacji). Pozostaw puste, aby wyłączyć</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Znaczniki wierszy informacyjnych</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Jeśli standardowy tekst utworu jest błędnie przenoszony na sam dół, dostosuj to pole lub je wyczyść. Znaczniki oddzielane przecinkami: wiersze zawierające znacznik, po którym następuje dwukropek, są traktowane jako informacje o twórcach i wyświetlane na dole. Pozostaw puste, aby wyłączyć</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Wielka pierwsza litera</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Zmienia pierwszą literę każdego wersu tekstu na wielką</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Usuń końcową interpunkcję</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Usuwa kropki, przecinki, dwukropki i średniki na końcu wersów tekstu. Znaki zapytania, wykrzykniki, wielokropki, cudzysłowy oraz nawiasy są zachowywane</string>
   <string name="morphe_music_lyrics_text_size_title">Rozmiar tekstu</string>
   <string name="morphe_music_lyrics_text_size_summary">Rozmiar tekstu utworu</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globalne przesunięcie czasowe</string>

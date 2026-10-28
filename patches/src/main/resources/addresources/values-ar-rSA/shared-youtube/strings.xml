@@ -18,10 +18,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">تأثير حركة بدء التشغيل</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">معطّل</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">اللون</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">أحادية اللون</string>
+  <string name="morphe_splash_screen_style_title">تأثير حركة بدء التشغيل</string>
+  <string name="morphe_splash_screen_style_entry_1">معطّل</string>
+  <string name="morphe_splash_screen_style_entry_2">اللون</string>
+  <string name="morphe_splash_screen_style_entry_3">تلوين Morphe</string>
+  <string name="morphe_splash_screen_style_entry_4">أحادي اللون</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe أحادي اللون</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">إعادة التشغيل لإنهاء الإعداد</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

@@ -27,6 +27,7 @@ Second \"item\" text"</string>
   <!-- app.morphe.patches.music.interaction.jam -->
   <string name="morphe_music_jam_update_host_controls">නැවත්වීමට සහ නැවත පටන් ගැනීමට host එකේ Jam patch එක යාවත්කාලින කරන්න </string>
   <string name="morphe_music_jam_probe_title">Jam පෝලිම් හවුල්කරණය</string>
+  <string name="morphe_music_jam_open">විවෘත</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- misc.album.albumMusicVideoPatch -->
@@ -79,5 +80,6 @@ Second \"item\" text"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_romanize_language_DEFAULT">ස්වයංක්‍රීය</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

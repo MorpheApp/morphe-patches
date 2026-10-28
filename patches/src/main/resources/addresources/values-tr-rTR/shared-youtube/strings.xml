@@ -18,10 +18,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Başlangıç animasyonu</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Devre dışı</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Renkli</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Tek renk</string>
+  <string name="morphe_splash_screen_style_title">Başlangıç animasyonu</string>
+  <string name="morphe_splash_screen_style_entry_1">Devre dışı</string>
+  <string name="morphe_splash_screen_style_entry_2">Renkli</string>
+  <string name="morphe_splash_screen_style_entry_3">Renkli Morphe</string>
+  <string name="morphe_splash_screen_style_entry_4">Tek renk</string>
+  <string name="morphe_splash_screen_style_entry_5">Tek renkli Morphe</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Kurulumu tamamlamak için yeniden başlatın</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -150,13 +152,13 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerindeki Önceki ve Sonraki butonlarını gizler</string>
   <string name="morphe_disable_notification_media_seekbar_title">İlerleme çubuğunu devre dışı bırak</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Bildirim panelindeki ve kilit ekranındaki ilerleme çubuğunu sürüklemeyi engeller</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Önceki &amp; Sonraki düğmeleriyle arama</string>
-  <string name="morphe_seek_notification_media_prev_next_summary">Medybildirimi, kilit ekranı ve kulaklık için medya kontrolünü videoları değiştirmek yerine arama yapmak üzere değiştirir</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Önceki &amp; Sonraki düğmeleriyle sardırma</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerinin videoları değiştirmek yerine sardırma yapmasını sağlar</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Geri sarma süresi</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Önceki düğmesiyle geri sarılacak saniye sayısı</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">İleri sarma süresi</string>
   <string name="morphe_seek_notification_media_fast_forward_length_summary">Sonraki düğmesiyle ileri sarılacak saniye sayısı</string>
-  <string name="morphe_seek_notification_media_length_invalid">Arama süresi 1 ile %s saniye arasında olmalıdır. Varsayılan kullanılıyor</string>
+  <string name="morphe_seek_notification_media_length_invalid">Sardırma süresi 1 ile %s saniye arasında olmalıdır. Varsayılan kullanılıyor</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolünü devre dışı bırak</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

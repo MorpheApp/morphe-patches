@@ -19,6 +19,7 @@ Second \"item\" text"</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_auto_pause_on_screen_lock_off">අක්‍රීයයි</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
@@ -51,9 +52,12 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- ad.hideAdsPatch -->
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_videos">දෘශ්‍ය පට</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.copytext.copyTextPatch -->
   <!-- interaction.feedactions.feedVideoActionsPatch -->
@@ -89,6 +93,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsPatch -->
+  <string name="morphe_swipe_zone_label_off">අක්‍රීයයි</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <!-- layout.buttons.action.hideButtonsPatch -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
@@ -111,6 +116,7 @@ Second \"item\" text"</string>
   <!-- layout.captions.captionsPatch -->
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_entry_off">අක්‍රීයයි</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
@@ -168,6 +174,7 @@ Second \"item\" text"</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <!-- layout.searchbar.wideSearchbarPatch -->
+  <string name="morphe_searchbar_type_entry_disabled">විසන්ධි කර ඇත</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
@@ -179,6 +186,7 @@ Second \"item\" text"</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_entry_off">අක්‍රීයයි</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.feedcards.feedCardLayoutPatch -->
@@ -223,5 +231,7 @@ Second \"item\" text"</string>
   <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_entry_auto">ස්වයංක්‍රීය</string>
   <!-- video.series.seriesTrackerPatch -->
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

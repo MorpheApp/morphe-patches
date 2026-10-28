@@ -127,7 +127,7 @@ public class CustomFontFilePreference extends Preference {
                 preference.updateSummary();
             }
 
-            AbstractPreferenceFragment.showRestartDialog(context);
+            AbstractPreferenceFragment.setRestartNeeded();
         } catch (Exception ex) {
             Logger.printException(() -> "handleActivityResult failure", ex);
         }

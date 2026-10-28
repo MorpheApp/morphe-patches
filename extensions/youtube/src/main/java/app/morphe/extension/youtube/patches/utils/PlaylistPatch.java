@@ -29,6 +29,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
@@ -283,14 +284,21 @@ public class PlaylistPatch {
             handleCheckError(checkFailedQueue);
             return;
         }
+        showPlaylistPicker(context, currentPlaylistId, PlaylistPatch::saveToPlaylist);
+    }
+
+    public static void showPlaylistPicker(Context context, String sourcePlaylistId,
+                                         BiConsumer<String, String> onSelected) {
         try {
             GetPlaylistsRequest request = GetPlaylistsRequest.fetchRequestIfNeeded(
-                    currentPlaylistId, AuthUtils.getRequestHeader());
+                    sourcePlaylistId, AuthUtils.getRequestHeader());
             if (request == null) {
                 return;
             }
-            Utils.runOnBackgroundThread(() ->  {
+            Utils.runOnBackgroundThread(() -> {
                 Pair<String, String>[] playlists = request.getPlaylists();
+                // Fetch again next time, so a failed request can be retried.
+                GetPlaylistsRequest.clear();
                 if (playlists == null || playlists.length == 0) return;
                 Utils.runOnMainThread(() -> {
                     SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
@@ -304,7 +312,7 @@ public class PlaylistPatch {
                     for (Pair<String, String> playlist : playlists) {
                         String listId = playlist.first;
                         String title = playlist.second;
-                        Runnable action = () -> saveToPlaylist(listId, title);
+                        Runnable action = () -> onSelected.accept(listId, title);
                         View itemLayout = createItemLayout(context, title, libraryIconId);
                         actionsMap.put(itemLayout, action);
                         listContainer.addView(itemLayout);
@@ -325,11 +333,10 @@ public class PlaylistPatch {
                         });
                     }
                     dialog.show();
-                    GetPlaylistsRequest.clear();
                 });
             });
         } catch (Exception ex) {
-            Logger.printException(() -> "saveToPlaylist failure", ex);
+            Logger.printException(() -> "showPlaylistPicker failure", ex);
         }
     }
 

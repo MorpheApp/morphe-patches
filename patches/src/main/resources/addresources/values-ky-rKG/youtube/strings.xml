@@ -62,6 +62,8 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_video_ads_title">Видео жарнамаларын жашыруу</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
@@ -253,4 +255,5 @@ Second \"item\" text"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_entry_auto">Өзүнөн өзү</string>
   <!-- video.series.seriesTrackerPatch -->
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

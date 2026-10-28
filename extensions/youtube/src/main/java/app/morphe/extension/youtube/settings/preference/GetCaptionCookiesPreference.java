@@ -70,7 +70,7 @@ public class GetCaptionCookiesPreference extends Preference implements Preferenc
                 Setting.privateSetValueFromString(Settings.CAPTION_COOKIES, newValue);
                 Settings.CAPTION_COOKIES.saveToPreferences();
                 AbstractPreferenceFragment.settingImportInProgress = false;
-                AbstractPreferenceFragment.showRestartDialog(getContext());
+                AbstractPreferenceFragment.setRestartNeeded();
 
                 Utils.showToastShort(str("morphe_get_caption_cookies_success"));
             } else {

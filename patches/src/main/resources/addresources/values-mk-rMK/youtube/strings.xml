@@ -197,6 +197,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">Скриј линкови за купување</string>
   <string name="morphe_hide_video_ads_title">Скриј реклами во видеа</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Скриј промоции за YouTube Premium</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_remove">Отстрани</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
@@ -220,6 +222,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Изберете ја надворешната апликација што ќе ги обработува вашите преземања</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Ја исклучува двојната допренска гестикулација со два прста што ги прескокнува поглавјата, која може случајно да се активира со еден прст</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_shorts_download_flyout_title">Преземи</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">По нарачка</string>
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
@@ -390,8 +393,6 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_2">Никогаш не покажувај</string>
   <string name="morphe_auto_captions_style_entry_3">Прикажи кога е исклучен звук</string>
   <string name="morphe_auto_captions_style_entry_4">Покажи кога е исклучен звукот</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Покажи автоматски титри</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Скриј автоматски титри</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_entry_off">Исклучено</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
@@ -806,4 +807,5 @@ Second \"item\" text"</string>
   <!-- video.series.seriesTrackerPatch -->
   <string name="morphe_series_tracker_ui_cancel">Откажи</string>
   <string name="morphe_series_tracker_undo">Врати</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

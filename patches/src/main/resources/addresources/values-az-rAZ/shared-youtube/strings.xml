@@ -18,10 +18,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Başlanğıc animasiyası</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Qapalıdı</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Rəng</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Saya</string>
+  <string name="morphe_splash_screen_style_title">Başlanğıc animasiyası</string>
+  <string name="morphe_splash_screen_style_entry_1">Qapalıdı</string>
+  <string name="morphe_splash_screen_style_entry_2">Rəng</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe-ni Rənglə</string>
+  <string name="morphe_splash_screen_style_entry_4">Saya</string>
+  <string name="morphe_splash_screen_style_entry_5">Saya Morphe</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Tənzimləməni bitirmək üçün yenidən başlat</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

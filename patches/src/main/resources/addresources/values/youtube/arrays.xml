@@ -40,6 +40,53 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <!-- 21.41+ also has launcher icons of its own. Older versions and YT Music use the shared arrays without them. -->
+    <string-array name="morphe_custom_branding_icon_21_41_entries">
+        <item>@string/morphe_custom_branding_icon_entry_1</item>
+        <item>@string/morphe_custom_branding_icon_entry_8</item>
+        <item>@string/morphe_custom_branding_icon_entry_9</item>
+        <item>@string/morphe_custom_branding_icon_entry_10</item>
+        <item>@string/morphe_custom_branding_icon_entry_2</item>
+        <item>@string/morphe_custom_branding_icon_entry_3</item>
+        <item>@string/morphe_custom_branding_icon_entry_4</item>
+        <item>@string/morphe_custom_branding_icon_entry_5</item>
+        <item>@string/morphe_custom_branding_icon_entry_6</item>
+    </string-array>
+    <string-array name="morphe_custom_branding_icon_21_41_entry_values">
+        <item>ORIGINAL</item>
+        <item>YOUTUBE_ICON1</item>
+        <item>YOUTUBE_ICON2</item>
+        <item>YOUTUBE_ICON3</item>
+        <item>BLACK</item>
+        <item>DARK</item>
+        <item>LIGHT</item>
+        <item>PLAY</item>
+        <item>PLAY_BLACK</item>
+    </string-array>
+    <string-array name="morphe_custom_branding_icon_21_41_custom_entries">
+        <item>@string/morphe_custom_branding_icon_entry_1</item>
+        <item>@string/morphe_custom_branding_icon_entry_8</item>
+        <item>@string/morphe_custom_branding_icon_entry_9</item>
+        <item>@string/morphe_custom_branding_icon_entry_10</item>
+        <item>@string/morphe_custom_branding_icon_entry_2</item>
+        <item>@string/morphe_custom_branding_icon_entry_3</item>
+        <item>@string/morphe_custom_branding_icon_entry_4</item>
+        <item>@string/morphe_custom_branding_icon_entry_5</item>
+        <item>@string/morphe_custom_branding_icon_entry_6</item>
+        <item>@string/morphe_custom_branding_icon_entry_7</item>
+    </string-array>
+    <string-array name="morphe_custom_branding_icon_21_41_custom_entry_values">
+        <item>ORIGINAL</item>
+        <item>YOUTUBE_ICON1</item>
+        <item>YOUTUBE_ICON2</item>
+        <item>YOUTUBE_ICON3</item>
+        <item>BLACK</item>
+        <item>DARK</item>
+        <item>LIGHT</item>
+        <item>PLAY</item>
+        <item>PLAY_BLACK</item>
+        <item>CUSTOM</item>
+    </string-array>
 
     <!-- interaction.playall.playAllButtonPatch -->
     <string-array name="morphe_play_all_button_type_entries">
@@ -287,6 +334,23 @@
     </string-array>
 
     <!-- layout.theme.themePatch -->
+    <!-- 21.39+ also has the glow Rive animation. Older versions and YT Music use the shared arrays without it. -->
+    <string-array name="morphe_splash_screen_style_21_39_entries">
+        <item>@string/morphe_splash_screen_style_entry_1</item>
+        <item>@string/morphe_splash_screen_style_entry_2</item>
+        <item>@string/morphe_splash_screen_style_entry_3</item>
+        <item>@string/morphe_splash_screen_style_entry_4</item>
+        <item>@string/morphe_splash_screen_style_entry_5</item>
+        <item>@string/morphe_splash_screen_style_entry_6</item>
+    </string-array>
+    <string-array name="morphe_splash_screen_style_21_39_entry_values">
+        <item>DISABLED</item>
+        <item>FPS_60_ONE_SECOND</item>
+        <item>MORPHE_COLOR</item>
+        <item>FPS_60_BLACK_AND_WHITE</item>
+        <item>MORPHE_MONOCHROME</item>
+        <item>RIVE_GLOW</item>
+    </string-array>
     <string-array name="morphe_theme_color_light_entries">
         <item>@string/morphe_theme_color_entry_1</item>
         <item>@string/morphe_theme_color_light_entry_2</item>
@@ -331,14 +395,6 @@
     <string-array name="morphe_hide_expandable_card_entry_values">
         <item>SHOW_ALL</item>
         <item>HIDE_SUMMARY_ONLY</item>
-        <item>HIDE_ALL</item>
-    </string-array>
-    <string-array name="morphe_hide_expandable_card_legacy_entries">
-        <item>@string/morphe_hide_expandable_card_entry_1</item>
-        <item>@string/morphe_hide_expandable_card_entry_3</item>
-    </string-array>
-    <string-array name="morphe_hide_expandable_card_legacy_entry_values">
-        <item>SHOW_ALL</item>
         <item>HIDE_ALL</item>
     </string-array>
 
@@ -391,14 +447,6 @@
         <item>BOTH_DISABLED</item>
         <item>WITH_VOLUME_ONLY</item>
         <item>WITHOUT_VOLUME_ONLY</item>
-    </string-array>
-    <string-array name="morphe_auto_captions_style_legacy_entries">
-        <item>@string/morphe_auto_captions_style_legacy_entry_1</item>
-        <item>@string/morphe_auto_captions_style_legacy_entry_2</item>
-    </string-array>
-    <string-array name="morphe_auto_captions_style_legacy_entry_values">
-        <item>BOTH_ENABLED</item>
-        <item>BOTH_DISABLED</item>
     </string-array>
 
     <!-- layout.captions.preferredCaptionLanguagePatch -->

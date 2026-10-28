@@ -547,8 +547,29 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_mediasession_summary">Viser den nuværende linje på låseskærmen, Android Auto og Bluetooth. Kræver Android 11 eller nyere</string>
   <string name="morphe_music_lyrics_miniplayer_title">Vis Miniplayer-tekster</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Viser den nuværende linje i mini-spilleren, med sporet flyttet til underteksten</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Visning af kunstner og titel […] TIL \"Kunstner - Titel\" og FRA \"Titel - Kunstner\" Påvirker ikke tekstsøgning.</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Skift visningsrækkefølgen for kunstner og titel i Miniplayer og MediaSession. TIL \"Kunstner - Titel\" og FRA \"Titel - Kunstner\". Det påvirker ikke søgningen efter sangtekster.</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Format for sangtitel/artist</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Formatet for sporet, der vises med sangteksten i miniplayeren og MediaSession. {t} er titlen, {a} er kunstneren og {v} er versionen, f.eks. akustisk, når kilden til sangteksten angiver en. Tekst mellem to kolonner vises kun, når hver variabel i den har en værdi; skriv \\: for et almindeligt kolon. Hver linje vises efter tur og skifter, hver gang sangteksten ændres</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Format for tekstlinje</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Formatet for sangtekstlinjen i miniplayeren og MediaSession. {lrc} er linjen, og {n} er antallet af gange, den synges i træk. Tekst mellem koloner vises kun, når linjen gentages. Brug \\: for et kolon</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Formatet skal indeholde {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Skabelon for artistlinje og animationstid</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimum skærmtid (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maksimum skærmtid (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Kun for flertumsanimationer. Behold hver frame i mindst den minimumstid. Ved maksimum rykkes artistlinjen videre, selv når teksten forbliver den samme.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimum skal være 0 eller derover. Maksimum skal være større end 0 og mindst det samme som minimum.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Grænser for linjelængde</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Grænser for tekst- og artistlinjer samt vægt for fuldbreddekarakterer</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Grænse for tekstlinje
+Opdel længere tekster i balancerede halvdele. 0 deaktiverer opdeling."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Grænse for kunstnerlinjer
+Opdel det udfyldte sporformat i cykliske rammer. 0 deaktiverer opdeling."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Vægt for fuldbredde-tegn
+Gælder for begge grænser. Ved 1,75 tæller fire fuldbredde-tegn som 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Indtast heltalgrænser fra 0 til 10000 og en tegnvægt større end 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentalt stykke</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Vises i Miniplayeren og MediaSession under et instrumentalt stykke. Hver linje er én animationsramme. {t} er titlen, {a} er kunstneren og {lrc} er den sidste sangtekstlinje</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Tidsforskydning for Miniplayer og MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Forskubber hvornår den næste linje vises i miniplayeren og MediaSession. Brug en negativ værdi, hvis linjerne vises for sent, for eksempel på låseskærmen</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtre</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex for tekstfilter</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Regulært udtryk, der anvendes på titler, kunstnere og albummer, før man slår tekster op, og ved vurdering af, om to titler matcher. Lad feltet være tomt for at deaktivere begge. Standardværdien fjerner almindelig støj som \"Official Video\", \"Remaster\", \"【插曲】\" og \"- Topic\".</string>
@@ -556,6 +577,10 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_text_filter_summary">Et regulært udtryk anvendes kun på den oprindelige tekst (ikke oversættelser eller romaniseringer). Lad det være tomt for at deaktivere.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Markører for infolinjer</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Hvis teksterne fejlagtigt filtreres til bunden, skal du justere eller rydde dette. […] Lad feltet være tomt for at deaktivere.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Skriv første bogstav med stort</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Skriver det første bogstav i hver sangtekstlinje med stort</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Fjern afsluttende tegnsætning</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Fjerner punktummer, kommaer, kolon og semikolon i slutningen af sangtekstlinjer. Spørgsmålstegn, udråbstegn, ellipse, citationstegn og parenteser bevares</string>
   <string name="morphe_music_lyrics_text_size_title">Tekststørrelse</string>
   <string name="morphe_music_lyrics_text_size_summary">Størrelse på sangteksten</string>
   <string name="morphe_music_lyrics_offset_ms_title">Global tidsforskydning</string>

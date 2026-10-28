@@ -393,6 +393,9 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_hide_shopping_links_title">Dölj butikslänkar</string>
   <string name="morphe_hide_video_ads_title">Dölj videoannonser</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Dölj YouTube Premium-kampanjer</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Läser in …</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Nuvarande kanal:</string>
   <string name="morphe_channel_whitelist_add">Lägg till i vitlistan</string>
@@ -409,6 +412,9 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_channel_search_results">Sökresultat för kanaler</string>
   <string name="morphe_channel_search_no_results">Inget hittades i den här kanalen</string>
   <string name="morphe_channel_search_failed">Det gick inte att söka i den här kanalen</string>
+  <string name="morphe_channel_search_videos">Videor</string>
+  <string name="morphe_channel_search_posts">Inlägg</string>
+  <string name="morphe_channel_search_no_posts">Inga inlägg i den här kanalen matchar</string>
   <string name="morphe_channel_search_sort_relevance">Relevans</string>
   <string name="morphe_channel_search_sort_most_viewed">Mest visade</string>
   <string name="morphe_channel_search_sort_least_viewed">Minst visade</string>
@@ -442,6 +448,7 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_post_image_download_flyout_single">Ladda ned bild</string>
   <string name="morphe_post_image_download_started">Laddar ned %s bilder …</string>
   <string name="morphe_post_image_download_started_single">Laddar ned bild…</string>
+  <string name="morphe_post_image_download_saved">%1$s bilder sparade till %2$s</string>
   <string name="morphe_post_image_download_saved_single">Bilden sparades i %s</string>
   <string name="morphe_post_image_download_failed">Det gick inte att ladda ned bilden</string>
   <string name="morphe_post_image_download_not_found">Ingen bild hittades i det här inlägget</string>
@@ -493,6 +500,9 @@ När en video med Ask-knappen har öppnats en gång fungerar funktionen med alla
   <string name="morphe_external_downloader_quick_video">Video</string>
   <string name="morphe_external_downloader_quick_audio">Ljud</string>
   <string name="morphe_external_downloader_quick_options">Alla alternativ</string>
+  <string name="morphe_shorts_download_flyout_button_title">Visa nedladdning i Shorts-menyn</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Lägger till ett menyalternativ för extern nedladdare i Shorts-spelaren</string>
+  <string name="morphe_shorts_download_flyout_title">Ladda ned</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Voice over-översättning</string>
   <string name="morphe_vot_screen_summary">Läs upp video-textning med hjälp av enhetens text-till-tal, synkroniserat med uppspelning</string>
@@ -603,6 +613,8 @@ Information: Kanske inte fungerar i livestreamar"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Gör det möjligt att spara barnrelaterade videor i \'Titta senare\' från den utfällbara menyn</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Visa knappen Spara till Titta senare i den utfällbara menyn för Shorts</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Gör det möjligt att spara Shorts i \'Titta senare\' från den utfällbara menyn</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Omdirigera Se senare till spellista</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Titta senare</string>
   <string name="morphe_queue_flyout_title">Lägg till i Morphe-kön</string>
   <string name="morphe_queue_restore_title">Behåll kön mellan sessioner</string>
   <string name="morphe_queue_restore_summary">Kön behålls efter omstart av appen</string>
@@ -825,8 +837,6 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <string name="morphe_auto_captions_style_entry_2">Visa aldrig</string>
   <string name="morphe_auto_captions_style_entry_3">Visa när ljudet inte är avstängt</string>
   <string name="morphe_auto_captions_style_entry_4">Visa när ljudet är avstängt</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Visa automatisk textning</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Dölj automatisk textning</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Föredraget undertextspråk</string>
   <string name="morphe_preferred_caption_language_summary">Väljer leverantörens undertexter först och översätter sedan automatiskt till det föredragna språket</string>
@@ -1101,28 +1111,26 @@ Inställningar → Uppspelning (eller Autouppspelning) → Autouppspela nästa v
   <string name="morphe_change_form_factor_entry_4">Bil</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Ändringar inkluderar:
 
-Surfplattelayout
-• Community-inlägg är dolda
-• Inställningen för uppspelning i flöden är inte tillgänglig
-• Remix-knappen och ljudknappen är inte tillgängliga i Shorts
-• Överlägget 'Fler videor' kanske inte är tillgängligt
-• Det gamla, ej komprimerade videoåtgärdsfältet visas
+Surfplattlayout
+• Inlägg i community visas inte
+• Inställningen Uppspelning i flöden är inte tillgänglig
+• Knapparna \"Remixa\" och \"Ljud\" är inte tillgängliga i Shorts
+• Översikten \"Fler videor\" kanske inte är tillgänglig
+• Åtgärdsfältet för gamla videobeskrivningar visas inte komprimerat
+• Menyalternativ i flygmenyn fungerar kanske inte korrekt
 
 Billayout
-• Flödet är organiserat efter ämnen och kanaler
-• Inställningen för uppspelning i flöden är inte tillgänglig
-• Remix-knappen och ljudknappen är inte tillgängliga i Shorts
-• Överlägget 'Fler videor' kanske inte är tillgängligt
-• Shorts öppnas i den vanliga spelaren
-• Det gamla, ej komprimerade videoåtgärdsfältet visas"</string>
+• Flödet är indelat efter ämnen och kanaler
+• Inställningen Uppspelning i flöden är inte tillgänglig
+• Knapparna \"Remixa\" och \"Ljud\" är inte tillgängliga i Shorts
+• Översikten \"Fler videor\" kanske inte är tillgänglig
+• Shorts öppnas i vanliga spelaren
+• Åtgärdsfältet för gamla videobeskrivningar visas inte komprimerat"</string>
   <string name="morphe_tablet_layout_in_player_title">Aktivera surfplattelayout i spelaren</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Återställer den gamla spelarlayouten
 
 Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan överlägget 'Fler videor' inte vara tillgängligt"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Om detta aktiveras kan vissa layoutfunktioner i spelaren sluta fungera, till exempel kommentarsfältet eller \"Fler videor\" som visas under spelaren.
-
-Surfplattelayout stöds inte längre av YouTube och är delvis eller helt trasig i nyare versioner av YouTube. För en fungerande surfplattelayout, patcha YouTube 20.21.37"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Återställ det gamla undertextbeteendet</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 – Återställ gamla Spara i spellista</string>
@@ -1240,6 +1248,7 @@ Surfplattelayout stöds inte längre av YouTube och är delvis eller helt trasig
   <string name="morphe_fix_status_bar_layout_title">Fixa statusraden så att den inte täcker de övre fältens</string>
   <string name="morphe_fix_status_bar_layout_summary">Behåller statusradens layout konsekvent, så att den inte täcker de övre fälten och lämnar inget tomt utrymme ovanför spelaren. Stäng av detta om appen kraschar eller om de övre fälten ser fel ut</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Glöd</string>
   <string name="morphe_theme_color_light_title">Bakgrundsfärg för ljust tema</string>
   <string name="morphe_theme_color_light_entry_2">Vit</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Vit)</string>
@@ -1262,6 +1271,9 @@ Surfplattelayout stöds inte längre av YouTube och är delvis eller helt trasig
   <string name="morphe_seekbar_custom_color_accent_summary">Ange den sekundära färgen för videons förloppsindikator</string>
   <string name="morphe_seekbar_custom_color_invalid">Ogiltigt färgvärde för sökreglaget</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Original analog</string>
+  <string name="morphe_custom_branding_icon_entry_9">Original tårta</string>
+  <string name="morphe_custom_branding_icon_entry_10">Original metall</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotyp i sidhuvudet</string>
   <string name="morphe_header_logo_entry_1">Standard</string>
@@ -1625,4 +1637,17 @@ Automatisk inspelning är valfri. Den stoppas i inkognito-läge eller när konto
   <string name="morphe_series_tracker_no_search_results">Inga serier hittades</string>
   <string name="morphe_series_tracker_untitled_episode">Avsnitt utan titel</string>
   <string name="morphe_series_tracker_unavailable_episode">Otillgängligt avsnitt</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Niconico-kommentarer</string>
+  <string name="morphe_niconico_comments_screen_summary">Visa livechatt och chattuppspelning som kommentarer som rullar över videon</string>
+  <string name="morphe_niconico_comments_summary">Visar en overlay-knapp i videospelaren. Tryck för att visa eller dölja kommentarer, tryck och håll kvar för snabbinställningar</string>
+  <string name="morphe_niconico_comments_font_size_title">Kommentarernas teckensnittsstorlek</string>
+  <string name="morphe_niconico_comments_font_size_summary">Textstorlek för kommentarerna (12–40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Kommentarernas opacitet</string>
+  <string name="morphe_niconico_comments_opacity_summary">Opacitet för kommentarstext och bakgrunder</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Rörelsens varaktighet</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Hur många sekunder kommentarerna tar på sig att korsa skärmen. Lägre värden rör sig snabbare</string>
+  <string name="morphe_niconico_comments_max_length_title">Max kommentarlängd</string>
+  <string name="morphe_niconico_comments_max_length_summary">Döljer kommentarer som har fler tecken än detta. Varje emoji räknas som ett tecken</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Ingen gräns</string>
 </resources>

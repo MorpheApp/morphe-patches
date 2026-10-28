@@ -267,6 +267,12 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     private static boolean showingUserDialogMessage;
 
     /**
+     * If a changed setting requires an app restart. The restart dialog is shown when the
+     * settings are closed, so multiple settings can be changed with only one restart.
+     */
+    private static boolean restartNeeded;
+
+    /**
      * Confirm and restart dialog button text and title.
      * Set by subclasses if Strings cannot be added as a resource.
      */
@@ -313,7 +319,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                             showSettingUserDialogConfirmation(pref, setting);
                             return;
                         } else if (setting.rebootApp) {
-                            showRestartDialog(getContext());
+                            setRestartNeeded();
                         }
                     }
 
@@ -382,7 +388,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     updateUIAvailability();
 
                     if (setting.rebootApp) {
-                        showRestartDialog(context);
+                        setRestartNeeded();
                     }
                 },
                 () -> {
@@ -537,7 +543,33 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
     }
 
-    public static void showRestartDialog(Context context) {
+    /**
+     * Marks that a changed setting requires an app restart.
+     * The restart dialog is shown when the settings are closed.
+     */
+    public static void setRestartNeeded() {
+        restartNeeded = true;
+    }
+
+    /**
+     * Shows the restart dialog if a changed setting requires an app restart.
+     * Must be called when the user closes the settings.
+     *
+     * @param closeSettings Closes the settings, if the user does not restart.
+     * @return If the dialog is shown, and the settings must not close yet.
+     */
+    public static boolean showRestartDialogIfNeeded(Context context, Runnable closeSettings) {
+        if (!restartNeeded) {
+            return false;
+        }
+        restartNeeded = false;
+
+        Dialog dialog = showRestartDialog(context);
+        dialog.setOnDismissListener(d -> closeSettings.run());
+        return true;
+    }
+
+    public static Dialog showRestartDialog(Context context) {
         Utils.verifyOnMainThread();
         if (restartDialogTitle == null) {
             restartDialogTitle = str("morphe_settings_restart_title");
@@ -564,6 +596,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         // Show the dialog.
         dialogPair.first.show();
+        return dialogPair.first;
     }
 
     /**
@@ -593,7 +626,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     // OK button text.
                     str("morphe_settings_save"),
                     // OK button action.
-                    () -> importSettingsText(context, currentImportExportEditText.getText().toString()),
+                    () -> importSettingsText(currentImportExportEditText.getText().toString()),
                     // Cancel button action (dismiss only).
                     () -> {},
                     // Neutral button (Copy) text.
@@ -690,7 +723,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 showLocalizedToast("morphe_settings_import_file_success",
                         "Settings imported successfully, tap Save to apply");
             } else {
-                importSettingsText(getContext(), text);
+                importSettingsText(text);
             }
         });
     }
@@ -1061,7 +1094,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
     }
 
-    private void importSettingsText(Context context, String replacementSettings) {
+    private void importSettingsText(String replacementSettings) {
         try {
             existingSettings = Setting.exportToJson(null);
             if (replacementSettings.equals(existingSettings)) {
@@ -1070,7 +1103,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             settingImportInProgress = true;
             final boolean rebootNeeded = Setting.importFromJSON(getActivity(), replacementSettings);
             if (rebootNeeded) {
-                showRestartDialog(context);
+                setRestartNeeded();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "importSettingsText failure", ex);
@@ -1099,7 +1132,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     if (activity != null) {
                         Intent intent = activity.getIntent();
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        // Activity is recreated and not closed, so do not show the restart dialog yet.
+                        final boolean restartWasNeeded = restartNeeded;
+                        restartNeeded = false;
                         activity.finish();
+                        restartNeeded = restartWasNeeded;
                         activity.overridePendingTransition(0, 0);
                         startActivity(intent);
                         activity.overridePendingTransition(0, 0);

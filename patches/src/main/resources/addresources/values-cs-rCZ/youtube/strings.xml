@@ -393,6 +393,9 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_hide_shopping_links_title">Skrýt nákupní odkazy</string>
   <string name="morphe_hide_video_ads_title">Skrýt reklamy ve videu</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Skrýt nabídky YouTube Premium</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Načítám…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Aktuální kanál:</string>
   <string name="morphe_channel_whitelist_add">Přidat do seznamu povolených</string>
@@ -409,6 +412,9 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_channel_search_results">Výsledky vyhledávání kanálů</string>
   <string name="morphe_channel_search_no_results">Na tomto kanálu se nic nenašlo</string>
   <string name="morphe_channel_search_failed">Tento kanál se nepodařilo prohledat</string>
+  <string name="morphe_channel_search_videos">Videa</string>
+  <string name="morphe_channel_search_posts">Príspevky</string>
+  <string name="morphe_channel_search_no_posts">Na tomto kanálu nebyly nalezeny žádné príspevky</string>
   <string name="morphe_channel_search_sort_relevance">Relevantnost</string>
   <string name="morphe_channel_search_sort_most_viewed">Nejvíce zhlédnuté</string>
   <string name="morphe_channel_search_sort_least_viewed">Nejméně zhlédnuté</string>
@@ -442,6 +448,7 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_post_image_download_flyout_single">Stáhnout obrázek</string>
   <string name="morphe_post_image_download_started">Stahování %s obrázků…</string>
   <string name="morphe_post_image_download_started_single">Stahování obrázku…</string>
+  <string name="morphe_post_image_download_saved">%1$s obrázků uloženo do %2$s</string>
   <string name="morphe_post_image_download_saved_single">Obrázek byl uložen do %s</string>
   <string name="morphe_post_image_download_failed">Obrázek se nepodařilo stáhnout</string>
   <string name="morphe_post_image_download_not_found">V tomto příspěvku nebyl nalezen žádný obrázek</string>
@@ -493,6 +500,9 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <string name="morphe_external_downloader_quick_video">Video</string>
   <string name="morphe_external_downloader_quick_audio">Zvuk</string>
   <string name="morphe_external_downloader_quick_options">Všechny možnosti</string>
+  <string name="morphe_shorts_download_flyout_button_title">Zobrazit stahování v menu Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Přidá položku externího stahovače do vysouvacího menu přehrávače Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">Stáhnout</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hlasový překlad</string>
   <string name="morphe_vot_screen_summary">Přečte titulky videa nahlas pomocí text-to-speech v zařízení, synchronizovaně s přehráváním</string>
@@ -603,6 +613,8 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umožňuje ukládat videa související s dětmi do seznamu „Přehrát později“ z rozbalovací nabídky</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Zobrazit tlačítko Uložit k přehrání později v nabídce Shorts</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Umožňuje ukládat Shorts do seznamu „Přehrát později“ z rozbalovací nabídky</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Přesměrovat \"Sledovat později\" do seznamu přehrávání</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Sledovat později</string>
   <string name="morphe_queue_flyout_title">Přidat do Morphe fronty</string>
   <string name="morphe_queue_restore_title">Udržet frontu mezi relacemi</string>
   <string name="morphe_queue_restore_summary">Fronta je zachována i po restartu aplikace</string>
@@ -825,8 +837,6 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_auto_captions_style_entry_2">Nikdy neukázat</string>
   <string name="morphe_auto_captions_style_entry_3">Zobrazovat, když není ztlumené</string>
   <string name="morphe_auto_captions_style_entry_4">Zobrazit při tichém</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Zobrazit automatické titulky</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Skrýt automatické titulky</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Preferovaný jazyk titulků</string>
   <string name="morphe_preferred_caption_language_summary">Nejprve vybere titulky poskytovatele a poté je automaticky přeloží do preferovaného jazyka</string>
@@ -1099,28 +1109,26 @@ Nastavení → Přehrávání (nebo Automatické přehrávání) → Automaticky
   <string name="morphe_change_form_factor_entry_4">Automobilový</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Změny zahrnují:
 
-Rozhraní pro tablety
-• Příspěvky komunity jsou skryté
-• Nastavení „Přehrávání ve feedech“ není k dispozici
-• U videí Shorts nejsou dostupná tlačítka „Remixovat“ a „Zvuk“
-• Překryvná vrstva „Další videa“ nemusí být k dispozici
-• Zobrazuje se nesbalený starý panel akcí videa
+Rozvržení pro tablet
+• Příspěvky komunity jsou skryty
+• Nastavení automatického přehrávání v kanálech není k dispozici
+• Tlačítko Remix a tlačítko Zvuk nejsou v Shorts k dispozici
+• Překryv „Více videí“ nemusí být k dispozici
+• Zobrazuje se starý nerozbalený panel akcí videa
+• Položky vysouvacího menu nemusí fungovat správně
 
-Rozhraní pro automobily
-• Feed je uspořádán podle témat a kanálů
-• Nastavení „Přehrávání ve feedech“ není k dispozici
-• U videí Shorts nejsou dostupná tlačítka „Remixovat“ a „Zvuk“
-• Překryvná vrstva „Další videa“ nemusí být k dispozici
-• Videa Shorts se otevírají v běžném přehrávači
-• Zobrazuje se nesbalený starý panel akcí videa"</string>
+Automobilní rozvržení
+• Kanál je organizován podle témat a kanálů
+• Nastavení automatického přehrávání v kanálech není k dispozici
+• Tlačítko Remix a tlačítko Zvuk nejsou v Shorts k dispozici
+• Překryv „Více videí“ nemusí být k dispozici
+• Shorts se otevírají v běžném přehrávači
+• Zobrazuje se starý nerozbalený panel akcí videa"</string>
   <string name="morphe_tablet_layout_in_player_title">Povolit rozložení tabletu v přehrávači</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Obnoví staré rozložení přehrávače
 
 Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překrytí 'Další videa' nemusí být k dispozici"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Zapnutí této funkce může narušit některé prvky rozložení přehrávače, jako je sekce komentářů nebo „Další videa“ zobrazená pod přehrávačem.
-
-Rozložení pro tablety již YouTube nepodporuje a v novějších verzích YouTube je částečně nebo zcela nefunkční. Pro funkční rozložení pro tablety aplikujte patch na YouTube 20.21.37"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Obnovit staré chování titulků</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré uložení zpět do seznamu přehrávání</string>
@@ -1238,6 +1246,7 @@ Rozložení pro tablety již YouTube nepodporuje a v novějších verzích YouTu
   <string name="morphe_fix_status_bar_layout_title">Oprava stavového řádku zakrývajícího horní lišty</string>
   <string name="morphe_fix_status_bar_layout_summary">Udržuje konzistentní rozvržení stavového řádku, takže nezakrývá horní lišty a nezanechává prázdný prostor nad přehrávačem. Toto vypněte, pokud aplikace havaruje nebo pokud horní lišty vypadají špatně</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Záře</string>
   <string name="morphe_theme_color_light_title">Pozadí světlého motivu</string>
   <string name="morphe_theme_color_light_entry_2">Bílá</string>
   <string name="morphe_theme_color_light_entry_3">Material You (bílá)</string>
@@ -1260,6 +1269,9 @@ Rozložení pro tablety již YouTube nepodporuje a v novějších verzích YouTu
   <string name="morphe_seekbar_custom_color_accent_summary">Nastavte sekundární barvu indikátoru průběhu videa</string>
   <string name="morphe_seekbar_custom_color_invalid">Neplatná hodnota barvy posuvníku</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Originální analog</string>
+  <string name="morphe_custom_branding_icon_entry_9">Původní dort</string>
+  <string name="morphe_custom_branding_icon_entry_10">Původní kov</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo záhlaví</string>
   <string name="morphe_header_logo_entry_1">Výchozí</string>
@@ -1623,4 +1635,17 @@ Automatické nahrávání je volitelné. Zastavuje se v anonymním režimu nebo 
   <string name="morphe_series_tracker_no_search_results">Nebyly nalezeny žádné série</string>
   <string name="morphe_series_tracker_untitled_episode">Díl bez názvu</string>
   <string name="morphe_series_tracker_unavailable_episode">Nedostupný díl</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Komentáře Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Zobrazit živý chat a opakování chatu jako komentáře, které přejíždějí přes video</string>
+  <string name="morphe_niconico_comments_summary">Zobrazí překryvné tlačítko ve videopřehrávači. Klepnutím zobrazíte nebo skryjete komentáře, dlouhým stisknutím otevřete rychlé nastavení</string>
+  <string name="morphe_niconico_comments_font_size_title">Velikost písma komentářů</string>
+  <string name="morphe_niconico_comments_font_size_summary">Velikost textu komentářů (12–40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Průhlednost komentářů</string>
+  <string name="morphe_niconico_comments_opacity_summary">Průhlednost textu a pozadí komentářů</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Doba průjezdu</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Kolik sekund komentářům trvá překročit obrazovku. Nižší hodnoty znamenají rychlejší pohyb</string>
+  <string name="morphe_niconico_comments_max_length_title">Maximální délka komentáře</string>
+  <string name="morphe_niconico_comments_max_length_summary">Skryje komentáře, které mají více znaků než tato hodnota. Každý emoji se počítá jako jeden znak</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Bez limitu</string>
 </resources>

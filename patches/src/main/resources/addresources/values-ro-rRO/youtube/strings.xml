@@ -393,6 +393,9 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_hide_shopping_links_title">Ascunde linkurile de cumpărături</string>
   <string name="morphe_hide_video_ads_title">Ascunde reclamele video</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Ascunde promoțiile YouTube Premium</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Se încarcă…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Canalul curent:</string>
   <string name="morphe_channel_whitelist_add">Adăugare la lista albă</string>
@@ -409,6 +412,9 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_channel_search_results">Rezultatele căutării în canal</string>
   <string name="morphe_channel_search_no_results">Nu s-a găsit nimic în acest canal.</string>
   <string name="morphe_channel_search_failed">Nu s-a putut căuta în acest canal.</string>
+  <string name="morphe_channel_search_videos">Videoclipuri</string>
+  <string name="morphe_channel_search_posts">Postări</string>
+  <string name="morphe_channel_search_no_posts">Nicio postare de pe acest canal nu corespunde</string>
   <string name="morphe_channel_search_sort_relevance">Relevanță</string>
   <string name="morphe_channel_search_sort_most_viewed">Cele mai vizionate</string>
   <string name="morphe_channel_search_sort_least_viewed">Cele mai puțin vizionate</string>
@@ -494,6 +500,9 @@ După ce un videoclip cu butonul Ask este deschis o dată, funcția funcționeaz
   <string name="morphe_external_downloader_quick_video">Video</string>
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Toate opțiunile</string>
+  <string name="morphe_shorts_download_flyout_button_title">Afișează descărcarea în meniul Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Adaugă o opțiune de meniu flyout pentru descărcator extern în player-ul Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">Descărcare</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
   <string name="morphe_vot_screen_summary">Citește cu voce tare subtitrările video folosind text-to-speech pe dispozitiv, sincronizat cu redarea</string>
@@ -604,6 +613,8 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite salvarea videoclipurilor pentru copii în „Vizionează mai târziu” din meniul derulant</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Afișează butonul Salvează în Vizionează mai târziu în meniul pentru Shorts</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite salvarea shorts-urilor în „Vizionează mai târziu” din meniul derulant</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirecționează „ulterior” către o listă de redare</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Urmărește mai târziu</string>
   <string name="morphe_queue_flyout_title">Adaugă în coada Morphe</string>
   <string name="morphe_queue_restore_title">Menține coada între sesiuni</string>
   <string name="morphe_queue_restore_summary">Coada este păstrată după repornirea aplicației</string>
@@ -826,8 +837,6 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
   <string name="morphe_auto_captions_style_entry_2">Nu arată niciodată</string>
   <string name="morphe_auto_captions_style_entry_3">Face bara de stare complet opacă</string>
   <string name="morphe_auto_captions_style_entry_4">Arată când mut</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Arată subtitrări automate</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Ascunde subtitrări automate</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Limba preferată pentru subtitrări</string>
   <string name="morphe_preferred_caption_language_summary">Selectează mai întâi subtitrările furnizorului, apoi traduce automat în limba preferată</string>
@@ -1102,28 +1111,26 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <string name="morphe_change_form_factor_entry_4">Automatizări</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Modificările includ:
 
-Aspect tablet
-• Postările comunității sunt ascunse
-• Setarea de redare în fluxuri nu este disponibilă
+Aspect tabletă
+• Postările din comunitate sunt ascunse
+• Setarea redare în feed nu este disponibilă
 • Butonul Remix și butonul Sunet nu sunt disponibile în Shorts
-• Suprapunerea 'Mai multe videoclipuri' poate să nu fie disponibilă
-• Bara de acțiuni veche a videoclipului este afișată necontractată
+• Suprapunerea „Alte videoclipuri” poate să nu fie disponibilă
+• Se afișează bara de acțiuni video vechi, nepredisată
+• Elementele meniului lateral (flyout) pot să nu funcționeze corect
 
-Aspect auto
-• Fluxul este organizat pe subiecte și canale
-• Setarea de redare în fluxuri nu este disponibilă
+Aspect pentru automotive
+• Feed-ul este organizat pe subiecte și canale
+• Setarea redare în feed nu este disponibilă
 • Butonul Remix și butonul Sunet nu sunt disponibile în Shorts
-• Suprapunerea 'Mai multe videoclipuri' poate să nu fie disponibilă
-• Shorts se deschid în playerul obișnuit
-• Bara de acțiuni veche a videoclipului este afișată necontractată"</string>
+• Suprapunerea „Alte videoclipuri” poate să nu fie disponibilă
+• Shorts se deschide în playerul obișnuit
+• Se afișează bara de acțiuni video vechi, nepredisată"</string>
   <string name="morphe_tablet_layout_in_player_title">Activează aspectul tabletă în player</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Restabilește aspectul vechi al playerului
 
 Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, stratul 'Mai multe videoclipuri' ar putea să nu fie disponibil"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Activarea acestei opțiuni poate afecta unele funcții de layout ale playerului, cum ar fi secțiunea de comentarii sau „Mai multe videoclipuri” afișate sub player.
-
-Layout-ul pentru tabletă nu mai este suportat de YouTube și este parțial sau complet defect în versiunile recente de YouTube. Pentru un layout de tabletă funcțional, patch-uiește YouTube 20.21.37"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restabilește comportamentul vechi al subtitrărilor</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restore old save to playlist</string>
@@ -1241,6 +1248,7 @@ Layout-ul pentru tabletă nu mai este suportat de YouTube și este parțial sau 
   <string name="morphe_fix_status_bar_layout_title">Corectează bara de stare pentru a nu acoperi barele superioare</string>
   <string name="morphe_fix_status_bar_layout_summary">Păstrează aspectul fermei de stare constant, astfel încât să nu acopere barele superioare și să lase spațiu liber deasupra player-ului. Dezactivează această opțiune dacă aplicația se blochează sau dacă barele superioare arată incorect</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Strălucire</string>
   <string name="morphe_theme_color_light_title">Fundalul temei luminoase</string>
   <string name="morphe_theme_color_light_entry_2">Alb</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Alb)</string>
@@ -1263,6 +1271,9 @@ Layout-ul pentru tabletă nu mai este suportat de YouTube și este parțial sau 
   <string name="morphe_seekbar_custom_color_accent_summary">Stabilește culoarea secundară a barei de progres video</string>
   <string name="morphe_seekbar_custom_color_invalid">Valoare culoare bară căutare nevalidă</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Analog original</string>
+  <string name="morphe_custom_branding_icon_entry_9">Prăjitură originală</string>
+  <string name="morphe_custom_branding_icon_entry_10">Metal original</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Siglă antet</string>
   <string name="morphe_header_logo_entry_1">Implicit</string>
@@ -1626,4 +1637,17 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_series_tracker_no_search_results">Niciun serial găsit</string>
   <string name="morphe_series_tracker_untitled_episode">Episod fără titlu</string>
   <string name="morphe_series_tracker_unavailable_episode">Episod indisponibil</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Comentarii Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Afișează chat-ul live și redarea chat-ului sub formă de comentarii care defilează pe ecranul videoclipului</string>
+  <string name="morphe_niconico_comments_summary">Afișează un buton de suprapunere în playerul video. Apasă pentru a afișa sau ascunde comentariile, apasă și menține pentru setări rapide</string>
+  <string name="morphe_niconico_comments_font_size_title">Dimensiunea fontului comentariilor</string>
+  <string name="morphe_niconico_comments_font_size_summary">Dimensiunea textului comentariilor (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Opacitatea comentariilor</string>
+  <string name="morphe_niconico_comments_opacity_summary">Opacitatea textului și a fundalului comentariilor</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Durata tranzitului</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Câte secunde durează ca comentariile să traverseze ecranul. Valorile mai mici se deplasează mai rapid</string>
+  <string name="morphe_niconico_comments_max_length_title">Lungimea maximă a comentariului</string>
+  <string name="morphe_niconico_comments_max_length_summary">Ascunde comentariile care conțin mai multe caractere decât această valoare. Fiecare emoji se numără ca un caracter</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Fără limită</string>
 </resources>

@@ -21,6 +21,7 @@ import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ import java.util.List;
  * <p>
  * Length delimited fields are parsed as text if the payload is printable UTF-8,
  * otherwise as a message if possible, otherwise kept as bytes.
- * Only text and varints can be modified, and fields can be removed.
+ * Only text, varints and the bytes of length delimited fields can be modified, and fields can be removed.
  * All other fields are written back unchanged.
  * Fields reference the parsed bytes instead of copying them.
  */
@@ -55,6 +56,11 @@ public final class ProtoNode {
     private String text;
     @Nullable
     private Long varint;
+    /**
+     * Replaced bytes of a length delimited field.
+     */
+    @Nullable
+    private byte[] payload;
     /**
      * If the text of this field or a sub-field is modified.
      */
@@ -197,6 +203,26 @@ public final class ProtoNode {
     public void setText(String text) {
         this.text = text;
         children = null;
+        payload = null;
+        setModified();
+    }
+
+    /**
+     * @return The bytes of a length delimited field, such as a message to parse with a schema.
+     */
+    public byte[] getPayload() {
+        return payload != null
+                ? payload
+                : Arrays.copyOfRange(bytes, valueStart, valueEnd);
+    }
+
+    /**
+     * Replaces the bytes of a length delimited field, such as with a modified message.
+     */
+    public void setPayload(byte[] payload) {
+        this.payload = payload;
+        text = null;
+        children = null;
         setModified();
     }
 
@@ -286,6 +312,8 @@ public final class ProtoNode {
             List<ProtoNode> children = node.children;
             if (!node.modified) {
                 output.writeRawBytes(node.bytes, node.tagStart, node.valueEnd - node.tagStart);
+            } else if (node.payload != null) {
+                output.writeByteArray(node.fieldNumber, node.payload);
             } else if (children != null) {
                 output.writeByteArray(node.fieldNumber, write(children));
             } else if (node.text != null) {

@@ -18,10 +18,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">起動時のアニメーション</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">無効</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">カラー</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">モノクロ</string>
+  <string name="morphe_splash_screen_style_title">起動時のアニメーション</string>
+  <string name="morphe_splash_screen_style_entry_1">無効</string>
+  <string name="morphe_splash_screen_style_entry_2">カラー</string>
+  <string name="morphe_splash_screen_style_entry_3">カラー Morphe</string>
+  <string name="morphe_splash_screen_style_entry_4">モノクロ</string>
+  <string name="morphe_splash_screen_style_entry_5">モノクロ Morphe</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">設定を完了するには再起動してください</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -164,7 +166,7 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
   <string name="morphe_disable_drc_audio_title">オーディオ DRC を無効化</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">オリジナルの音声を常に使用</string>
-  <string name="morphe_force_original_audio_summary">常にオリジナルの音声トラック (言語) を再生します。オートダビングを含む吹き替えの音声トラックは再生されなくなります</string>
+  <string name="morphe_force_original_audio_summary">オリジナルの音声トラック (言語) を常に再生します。オートダビングを含む吹き替えの音声トラックは再生されなくなります</string>
   <!-- misc.audio.silence.skipSilencePatch -->
   <string name="morphe_skip_silence_title">無音の区間をスキップ</string>
   <string name="morphe_skip_silence_summary">動画内の無音の部分や会話などの間を自動的にスキップします</string>

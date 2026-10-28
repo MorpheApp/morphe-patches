@@ -28,15 +28,6 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-/** A generated protobuf message creates its default instance in its static initializer. */
-internal fun protoDefaultInstanceFingerprint(messageType: String) = Fingerprint(
-    definingClass = messageType,
-    name = "<clinit>",
-    filters = listOf(
-        fieldAccess(definingClass = messageType, type = messageType, opcode = Opcode.SPUT_OBJECT)
-    )
-)
-
 /** The native batch request, not the modern panel's single-video parameter. */
 internal object QueueSaveRequestFingerprint : Fingerprint(
     name = "<init>",

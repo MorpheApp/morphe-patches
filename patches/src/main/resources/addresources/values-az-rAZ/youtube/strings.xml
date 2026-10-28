@@ -393,6 +393,9 @@ Məhdudiyyətlər:
   <string name="morphe_hide_shopping_links_title">Alış-veriş linklərini gizlət</string>
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizlət</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamlarını gizlət</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Yüklənir…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Hazırkı kanal:</string>
   <string name="morphe_channel_whitelist_add">Ağ siyahıya əlavə et</string>
@@ -409,6 +412,9 @@ Məhdudiyyətlər:
   <string name="morphe_channel_search_results">Kanal axtarış nəticələri</string>
   <string name="morphe_channel_search_no_results">Bu kanalda heç nə tapılmadı</string>
   <string name="morphe_channel_search_failed">Bu kanalda axtarış etmək olmadı</string>
+  <string name="morphe_channel_search_videos">Videolar</string>
+  <string name="morphe_channel_search_posts">Postlar</string>
+  <string name="morphe_channel_search_no_posts">Bu kanalda uyğun post yoxdur</string>
   <string name="morphe_channel_search_sort_relevance">Uyğunluq</string>
   <string name="morphe_channel_search_sort_most_viewed">Ən çox baxılan</string>
   <string name="morphe_channel_search_sort_least_viewed">Ən az baxılan</string>
@@ -494,6 +500,9 @@ Məhdudiyyətlər:
   <string name="morphe_external_downloader_quick_video">Video</string>
   <string name="morphe_external_downloader_quick_audio">Səs</string>
   <string name="morphe_external_downloader_quick_options">Bütün seçimlər</string>
+  <string name="morphe_shorts_download_flyout_button_title">Shorts menyusunda yükləməni göstər</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts oynadıcıya xarici yükləyici açılan menyusu elementi əlavə edir</string>
+  <string name="morphe_shorts_download_flyout_title">Yüklə</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Səs üstələyici tərcümə</string>
   <string name="morphe_vot_screen_summary">Cihazdakı mətni nitqə çevirməni istifadə edərək video titrlərini oynatma ilə sinxronlaşdırıb ucadan oxu</string>
@@ -604,6 +613,8 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Uşaqlarla əlaqəli videoları açılan menyudan \"Sonra izləyin\" bölməsində saxlamağa imkan verir</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts açılan menyusunda \"Daha sonra İzləmək üçün Saxla\" düyməsini göstər</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Shorts-ları açılan menyudan \"Sonra izləyin\" bölməsində saxlamağa imkan verir</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Daha sonra izləni pleylistə yönləndir</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Sonra izlə</string>
   <string name="morphe_queue_flyout_title">Morphe növbəsinə əlavə et</string>
   <string name="morphe_queue_restore_title">​Sessiyalar arasında növbəni qoru</string>
   <string name="morphe_queue_restore_summary">Tətbiq yenidən başladıldıqdan sonra növbə qorunur</string>
@@ -826,8 +837,6 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_auto_captions_style_entry_2">Heç vaxt göstərmə</string>
   <string name="morphe_auto_captions_style_entry_3">Səsli olduqda göstər</string>
   <string name="morphe_auto_captions_style_entry_4">Səssiz olduqda göstər</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Avtomatik titrləri göstər</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Avtomatik titrləri gizlət</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Üstünlük verilmiş titr dili</string>
   <string name="morphe_preferred_caption_language_summary">Əvvəlcə təminatçının altyazılarını seçir, sonra avtomatik üstünlük verilən dilə tərcümə edir</string>
@@ -1108,6 +1117,7 @@ Planşet tərtibatı
 • Shorts-da Remiks düyməsi və Səs düyməsi mövcud deyil
 • \"Daha çox video\" örtüyü mövcud olmaya bilər
 • Yığılmamış köhnə video fəaliyyət cizgisi göstərilir
+• Açılan menyu elementləri düzgün işləməyə bilər
 
 Avtomobil tərtibatı
 • Axın mövzular və kanallara görə qruplaşdırılır
@@ -1121,9 +1131,6 @@ Avtomobil tərtibatı
   <string name="morphe_tablet_layout_in_player_summary">"Köhnə oynadıcı tərtibatını bərpa edir
 
 Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'Daha çox video' örtüyü mövcud olmaya bilər"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Bunu aktivləşdirmək oynadıcının aşağısında göstərilən şərhlər bölməsi və ya 'Daha çox video' kimi bəzi oynadıcı tərtibatı xüsusiyyətlərini poza bilər.
-
-Planşet tərtibatı artıq YouTube tərəfindən dəstəklənmir və son YouTube versiyalarında qismən və ya tamamilə pozulub. İşlək planşet tərtibatı üçün YouTube 20.21.37-ni yamaqla"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Köhnə titrlərin davranışını bərpa et</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Köhnə pleylistdə saxlanı bərpa et</string>
@@ -1241,6 +1248,7 @@ Planşet tərtibatı artıq YouTube tərəfindən dəstəklənmir və son YouTub
   <string name="morphe_fix_status_bar_layout_title">Üst cərgələri örtən status panelini düzəlt</string>
   <string name="morphe_fix_status_bar_layout_summary">Status zolağının tərtibatını sabit saxlayır, beləliklə o, yuxarı zolaqları örtmür və oynadıcı yuxarısında boş yer saxlamır. Tətbiq çöksə və ya yuxarı zolaqlar yanlış görünsə, bunu qapat</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Parlama</string>
   <string name="morphe_theme_color_light_title">İşıqlı kolorit fonu</string>
   <string name="morphe_theme_color_light_entry_2">Ağ</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Ağ)</string>
@@ -1263,6 +1271,9 @@ Planşet tərtibatı artıq YouTube tərəfindən dəstəklənmir və son YouTub
   <string name="morphe_seekbar_custom_color_accent_summary">Videonun çəkmə cizgisinin ikinci dərəcəli rəngini təyin et</string>
   <string name="morphe_seekbar_custom_color_invalid">Etibarsız çevirmə cizgisi rəng dəyəri</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Orijinal analoq</string>
+  <string name="morphe_custom_branding_icon_entry_9">Orijinal tort</string>
+  <string name="morphe_custom_branding_icon_entry_10">Orijinal metal</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Sərlövhə simvolu</string>
   <string name="morphe_header_logo_entry_1">İlkin</string>
@@ -1626,4 +1637,17 @@ Məhdudiyyət: Köhnə üslub üçün \"Daha çox video\" örtüyünə qayıdır
   <string name="morphe_series_tracker_no_search_results">Seriya tapılmadı</string>
   <string name="morphe_series_tracker_untitled_episode">Başlıqsız epizod</string>
   <string name="morphe_series_tracker_unavailable_episode">Əlçatmaz epizod</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Niconico şərhləri</string>
+  <string name="morphe_niconico_comments_screen_summary">Canlı söhbəti və təkrar oxudulan söhbəti video üzərində axan şərhlər kimi göstər</string>
+  <string name="morphe_niconico_comments_summary">Video oynadıcıda örtük düyməsini göstərir. Şərhləri göstərmək və ya gizlətmək üçün toxun, sürətli tənzimləmələr üçün basıb saxla</string>
+  <string name="morphe_niconico_comments_font_size_title">Şərh şriftinin ölçüsü</string>
+  <string name="morphe_niconico_comments_font_size_summary">Şərhlərin mətn ölçüsü (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Şərhin qeyri-şəffaflığı</string>
+  <string name="morphe_niconico_comments_opacity_summary">Şərh mətninin və arxa planların qeyri-şəffaflığı</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Səyahət müddəti</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Şərhlərin ekrandan keçməsi üçün tələb olunan saniyə dəyəri. Kiçik dəyərlər daha sürətli hərəkət edir</string>
+  <string name="morphe_niconico_comments_max_length_title">Maksimum şərh uzunluğu</string>
+  <string name="morphe_niconico_comments_max_length_summary">Bundan çox simvolu olan şərhləri gizlədir. Hər bir emoji bir simvol kimi sayılır</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Limitsiz</string>
 </resources>

@@ -8,19 +8,34 @@
 package app.morphe.extension.youtube.patches;
 
 
+import android.net.Uri;
+import android.util.Base64;
+
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
+import app.morphe.extension.youtube.innertube.Offline.ButtonCommand;
+import app.morphe.extension.youtube.innertube.Offline.DownloadButtonColor;
+import app.morphe.extension.youtube.innertube.Offline.DownloadButtonLayout;
+import app.morphe.extension.youtube.innertube.Offline.DownloadButtonSize;
+import app.morphe.extension.youtube.innertube.Offline.DownloadButtonStyle;
+import app.morphe.extension.youtube.innertube.Offline.EntityKey;
+import app.morphe.extension.youtube.innertube.Offline.FlexibleAction;
+import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsRow;
+import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsViewModel;
 import app.morphe.extension.youtube.innertube.Offline.OfflineCommand;
 import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadAction;
 import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadActionCommand;
@@ -30,6 +45,8 @@ import app.morphe.extension.youtube.innertube.Offline.OfflineFormatLabel;
 import app.morphe.extension.youtube.innertube.Offline.OfflineFormatType;
 import app.morphe.extension.youtube.innertube.Offline.OfflinePlayerConfig;
 import app.morphe.extension.youtube.innertube.Offline.OfflinePlayerResponse;
+import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistAction;
+import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistEndpoint;
 import app.morphe.extension.youtube.innertube.Offline.OfflineState;
 import app.morphe.extension.youtube.innertube.Offline.OfflineStateAction;
 import app.morphe.extension.youtube.innertube.Offline.OfflineStreamFormat;
@@ -40,6 +57,10 @@ import app.morphe.extension.youtube.innertube.Offline.OfflineVideoAction;
 import app.morphe.extension.youtube.innertube.Offline.OfflineVideoEndpoint;
 import app.morphe.extension.youtube.innertube.Offline.OfflineabilityContainer;
 import app.morphe.extension.youtube.innertube.Offline.OfflineabilityRenderer;
+import app.morphe.extension.youtube.innertube.Offline.PlaylistDownloadButtonViewModel;
+import app.morphe.extension.youtube.innertube.Offline.PlaylistDownloadStatusEntityId;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
+import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -82,6 +103,28 @@ public final class InAppDownloadsPatch {
      * Opus audio is not saved, the other audio and all video formats are.
      */
     private static final String UNSAVABLE_AUDIO_MIME_TYPE_PREFIX = "audio/webm";
+
+    /**
+     * Name of the template of the page headers, such as the header of a playlist page.
+     */
+    private static final byte[] PAGE_HEADER_TEMPLATE = "page_header".getBytes(StandardCharsets.US_ASCII);
+
+    /**
+     * Field of the buttons of a page header, in the proto of the element.
+     */
+    private static final int FLEXIBLE_ACTIONS_VIEW_MODEL_FIELD = 520990934;
+
+    /**
+     * Entities the Download button of a playlist reads the download status from,
+     * with the keys the app gives them when the playlist is saved.
+     */
+    private static final int DOWNLOAD_STATUS_ENTITY_TYPE = 141;
+    private static final int PLAYLIST_DOWNLOAD_STATUS_ENTITY_ID_TYPE = 306;
+    private static final int GENERATION_STATUS_ENTITY_TYPE = 147;
+    private static final String PLAYLIST_GENERATION_STATUS_ENTITY_ID = "playlist";
+    private static final int ENTITY_PERSISTENCE = 1;
+
+    private static final String PLAYLIST_DOWNLOAD_BUTTON_IDENTIFIER = "playlist-download-button";
 
     /**
      * Injection point.
@@ -244,10 +287,7 @@ public final class InAppDownloadsPatch {
             // and only the offline state token and player config are kept from the declined response.
             OfflinePlayerResponse.Builder builder = OfflinePlayerResponse.parseFrom(streams.streamingData()).toBuilder();
             builder.setStreamingData(savableStreamingData(builder.getStreamingData()))
-                    .setOfflineState(OfflineState.newBuilder()
-                            .setToken(original.getOfflineState().getToken())
-                            .setPolicyLifetimeSeconds(OFFLINE_POLICY_LIFETIME_SECONDS)
-                            .setAction(OfflineStateAction.OFFLINE_STATE_ACTION_OK));
+                    .setOfflineState(playableOfflineState(original.getOfflineState().getToken()));
 
             // Without the ExoPlayer config the app only looks at the progressive formats, which are not savable.
             // The player config of the app's own response fits the device, so it's kept if there is one.
@@ -268,20 +308,198 @@ public final class InAppDownloadsPatch {
     }
 
     /**
+     * Injection point.
+     * <p>
+     * Called off the main thread with the offline state the server gives a saved video when the app
+     * refreshes its saved videos, which the server schedules about every 12 hours.
+     * The server disables saved videos that need Premium to be saved, such as music videos,
+     * and the app then shows an error instead of playing them.
+     *
+     * @param offlineState New offline state of a saved video.
+     * @return An offline state that keeps the video playable, or null to keep the original.
+     */
+    @Nullable
+    public static byte[] replaceDisabledOfflineState(@Nullable MessageLite offlineState) {
+        try {
+            if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP || offlineState == null) {
+                return null;
+            }
+
+            OfflineState state = OfflineState.parseFrom(offlineState.toByteArray());
+            if (state.getAction() != OfflineStateAction.OFFLINE_STATE_ACTION_DISABLE) {
+                return null;
+            }
+
+            Logger.printDebug(() -> "Replacing disabled offline state with reason: " + state.getDisabledReason());
+            return playableOfflineState(state.getToken()).toByteArray();
+        } catch (Exception ex) {
+            Logger.printException(() -> "replaceDisabledOfflineState failure", ex);
+            return null;
+        }
+    }
+
+    /**
+     * @return Offline state that keeps a saved video playable, without asking the server again for a long time.
+     */
+    private static OfflineState playableOfflineState(String token) {
+        return OfflineState.newBuilder()
+                .setToken(token)
+                .setPolicyLifetimeSeconds(OFFLINE_POLICY_LIFETIME_SECONDS)
+                .setAction(OfflineStateAction.OFFLINE_STATE_ACTION_OK)
+                .build();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called for every element the app parses.
+     * The server only gives a Download button to the playlist page headers of Premium accounts,
+     * so it's added to the headers of other accounts. The button saves the playlist in-app,
+     * or opens the external downloader in External downloader mode.
+     *
+     * @param bytes Proto of the element.
+     * @return The element with a Download button, or the original element.
+     */
+    public static byte[] addPlaylistDownloadButton(byte[] bytes) {
+        try {
+            if (Settings.DOWNLOAD_MODE.get() == DownloadMode.DEFAULT
+                    || !FeedVideoCardsPatch.contains(bytes, PAGE_HEADER_TEMPLATE)) {
+                return bytes;
+            }
+
+            List<ProtoNode> element = ProtoNode.parse(bytes);
+            if (element == null) {
+                return bytes;
+            }
+
+            for (ProtoNode actionsNode : ProtoNode.findMessages(element, FLEXIBLE_ACTIONS_VIEW_MODEL_FIELD)) {
+                FlexibleActionsViewModel actions = withPlaylistDownloadButton(
+                        FlexibleActionsViewModel.parseFrom(actionsNode.getPayload()));
+                if (actions != null) {
+                    actionsNode.setPayload(actions.toByteArray());
+                    return ProtoNode.write(element);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "addPlaylistDownloadButton failure", ex);
+        }
+
+        return bytes;
+    }
+
+    /**
+     * @return The buttons with a Download button in the row of the Play all button of a playlist,
+     *         or null if the buttons are not of a playlist or already have a Download button.
+     */
+    @Nullable
+    private static FlexibleActionsViewModel withPlaylistDownloadButton(FlexibleActionsViewModel actions) {
+        int playlistRowIndex = -1;
+        String playlistId = "";
+
+        List<FlexibleActionsRow> rows = actions.getActionsRowsList();
+        for (int i = 0; i < rows.size(); i++) {
+            for (FlexibleAction action : rows.get(i).getActionsList()) {
+                if (action.hasDownloadButtonViewModel()) {
+                    return null;
+                }
+                String id = action.getButtonViewModel().getOnTap().getInnertubeCommand()
+                        .getWatchEndpoint().getPlaylistId();
+                if (playlistId.isEmpty() && !id.isEmpty()) {
+                    playlistRowIndex = i;
+                    playlistId = id;
+                }
+            }
+        }
+        if (playlistId.isEmpty()) {
+            return null;
+        }
+
+        return actions.toBuilder()
+                .setActionsRows(playlistRowIndex, rows.get(playlistRowIndex).toBuilder()
+                        .addActions(playlistDownloadButton(playlistId)))
+                .build();
+    }
+
+    /**
+     * @return The Download button the server gives to the playlist page header of Premium accounts,
+     *         which saves the playlist or removes it if it's saved.
+     */
+    private static FlexibleAction playlistDownloadButton(String playlistId) {
+        Logger.printDebug(() -> "Adding download button to playlist: " + playlistId);
+
+        OfflinePlaylistEndpoint endpoint = OfflinePlaylistEndpoint.newBuilder()
+                .setPlaylistId(playlistId)
+                .setAction(OfflinePlaylistAction.OFFLINE_PLAYLIST_ACTION_INFER_AUTOMATICALLY)
+                .setOfflineability(offlineability(List.of()))
+                .build();
+        // Texts of the app, which all supported app versions have.
+        String downloadableText = ResourceUtils.getString("accessibility_playlist_download");
+        String inProgressText = ResourceUtils.getString("offline_button_progress_text");
+        String completedText = ResourceUtils.getString("offline_button_complete_text");
+        ByteString downloadStatusEntityId = PlaylistDownloadStatusEntityId.newBuilder()
+                .setPlaylistId(playlistId)
+                .setType(PLAYLIST_DOWNLOAD_STATUS_ENTITY_ID_TYPE)
+                .build()
+                .toByteString();
+
+        PlaylistDownloadButtonViewModel button = PlaylistDownloadButtonViewModel.newBuilder()
+                .setPlaylistId(playlistId)
+                .setDownloadableText(downloadableText)
+                .setInProgressText(inProgressText)
+                .setCompletedText(completedText)
+                .setDownloadableA11YText(downloadableText)
+                .setInProgressA11YText(inProgressText)
+                .setCompletedA11YText(completedText)
+                .setDownloadStatusKey(entityKey(DOWNLOAD_STATUS_ENTITY_TYPE, downloadStatusEntityId))
+                .setGenerationStatusKey(entityKey(GENERATION_STATUS_ENTITY_TYPE,
+                        ByteString.copyFromUtf8(PLAYLIST_GENERATION_STATUS_ENTITY_ID)))
+                .setLayout(DownloadButtonLayout.DOWNLOAD_BUTTON_LAYOUT_PLAYLIST_HEADER)
+                .setIconColor(DownloadButtonColor.DOWNLOAD_BUTTON_COLOR_PLAYLIST_HEADER)
+                .setTextColor(DownloadButtonColor.DOWNLOAD_BUTTON_COLOR_PLAYLIST_HEADER)
+                .setButtonSize(DownloadButtonSize.DOWNLOAD_BUTTON_SIZE_DEFAULT)
+                .setButtonStyle(DownloadButtonStyle.DOWNLOAD_BUTTON_STYLE_OVERLAY)
+                .setOnTapCommand(ButtonCommand.newBuilder().setInnertubeCommand(
+                        OfflineCommand.newBuilder().setOfflinePlaylistEndpoint(endpoint)))
+                .setIdentifier(PLAYLIST_DOWNLOAD_BUTTON_IDENTIFIER)
+                .build();
+        return FlexibleAction.newBuilder().setDownloadButtonViewModel(button).build();
+    }
+
+    /**
+     * @return The key of the entity, as the app encodes it.
+     */
+    private static String entityKey(int entityType, ByteString entityId) {
+        EntityKey key = EntityKey.newBuilder()
+                .setEntityId(entityId)
+                .setEntityType(entityType)
+                .setPersistence(ENTITY_PERSISTENCE)
+                .build();
+        return Uri.encode(Base64.encodeToString(key.toByteArray(), Base64.URL_SAFE | Base64.NO_WRAP));
+    }
+
+    /**
      * @return A command of the offline video endpoint that saves the video with the formats.
      */
     private static OfflineCommand saveVideoCommand(String videoId, List<OfflineFormat> formats) {
+        OfflineVideoEndpoint endpoint = OfflineVideoEndpoint.newBuilder()
+                .setVideoId(videoId)
+                .setAction(OfflineVideoAction.OFFLINE_VIDEO_ACTION_ADD)
+                .setOfflineability(offlineability(formats))
+                .build();
+        return OfflineCommand.newBuilder().setOfflineVideoEndpoint(endpoint).build();
+    }
+
+    /**
+     * @return Offlineability that saves with the formats.
+     */
+    private static OfflineabilityContainer offlineability(List<OfflineFormat> formats) {
         OfflineabilityRenderer renderer = OfflineabilityRenderer.newBuilder()
                 .setOfflineable(true)
                 .addAllFormats(unlockedFormats(formats))
                 .build();
-        OfflineVideoEndpoint endpoint = OfflineVideoEndpoint.newBuilder()
-                .setVideoId(videoId)
-                .setAction(OfflineVideoAction.OFFLINE_VIDEO_ACTION_ADD)
-                .setOfflineability(OfflineabilityContainer.newBuilder()
-                        .setOfflineabilityRenderer(renderer))
+        return OfflineabilityContainer.newBuilder()
+                .setOfflineabilityRenderer(renderer)
                 .build();
-        return OfflineCommand.newBuilder().setOfflineVideoEndpoint(endpoint).build();
     }
 
     private static boolean hasLockedFormat(List<OfflineFormat> formats) {

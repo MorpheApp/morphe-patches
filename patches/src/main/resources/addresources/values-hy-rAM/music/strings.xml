@@ -17,58 +17,675 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Վերջին նվագվածը</string>
+  <string name="morphe_music_android_auto_subscriptions">Բաժանորդագրություններ</string>
+  <string name="morphe_music_android_auto_videos">Տեսանյութեր</string>
+  <string name="morphe_music_android_auto_other_results">Այլ արդյունքներ</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Վերբեռնված երգեր</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Վերբեռնված ալբոմներ</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Վերբեռնված կատարողներ</string>
   <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_update_host_controls">Թարմացրեք հոսթի Jam փաչը՝ դադարեցման և վերսկսման ֆունկցիաներն օգտագործելու համար</string>
+  <string name="morphe_music_jam_probe_title">Jam հերթի կիսում</string>
+  <string name="morphe_music_jam_probe_summary">Ստեղծեք կամ միացեք մոտակա Jam-ին և խմբագրեք դրա հերթը Jam Layer-ի միջոցով</string>
+  <string name="morphe_music_jam_enabled_title">Միացրեք Jam հերթի կիսումը</string>
+  <string name="morphe_music_jam_enabled_summary">Միացնում է Jam ինտեգրումը YouTube Music-ի վերագործարկումից հետո</string>
+  <string name="morphe_music_jam_download_title">Ներբեռնեք Jam Layer-ը աշխատանքի սկսելու համար</string>
+  <string name="morphe_music_jam_download_summary">Բացել Jam Layer-ի վերջին թողարկումը ձեր բրաուզերում</string>
+  <string name="morphe_music_jam_controls_title">Jam-ի կառավարման գործիքները</string>
+  <string name="morphe_music_jam_controls_summary">Հյուրընկալել կամ միանալ մոտակա Jam-ին և կառավարել սեսիան</string>
+  <string name="morphe_music_jam_companion_package_title">Jam Layer փաթեթ</string>
+  <string name="morphe_music_jam_companion_package_summary">Ընտրեք տեղադրված ուղեկից հավելվածը, որն օգտագործվում է մոտակա հերթի බෙදාժխտման համար</string>
+  <string name="morphe_music_jam_package_message">Օգտագործել տեղադրված ուղեկից փաթեթը: Զուգակցումը պահանջում է ձեր հաստատումը և տեղային հնարավորությունների տոկեն</string>
+  <string name="morphe_music_jam_wifi_title">Միացնե՞լ Wi-Fi-ն։</string>
+  <string name="morphe_music_jam_wifi_message">Միացրեք Wi-Fi-ն, ապա փորձեք նորից սկսել կամ միանալ Jam-ին</string>
+  <string name="morphe_music_jam_wifi_settings">Բացել Wi-Fi կարգավորումները</string>
+  <string name="morphe_music_jam_cancel">Չեղարկել</string>
+  <string name="morphe_music_jam_use_package">Օգտագործել փաթեթը</string>
+  <string name="morphe_music_jam_invalid_package">Մուտքագրեք Android փաթեթի գործող անվանում</string>
+  <string name="morphe_music_jam_package_saved">Փաթեթը պահպանված է: Միացնելու համար կարգավորեք Jam Layer-ը</string>
+  <string name="morphe_music_jam_disconnected">Jam-ի կապը խզված է</string>
+  <string name="morphe_music_jam_enable_layer_first">Նախ միացրեք Jam Layer-ը</string>
+  <string name="morphe_music_jam_enable_patch_first">Միացրեք Jam հերթի կիսումը կարգավորումներում, ապա վերագործարկեք YouTube Music-ը</string>
+  <string name="morphe_music_jam_install_layer_first">Նախ տեղադրեք ընտրված Jam Layer փաթեթը</string>
+  <string name="morphe_music_jam_join_hint">Մուտքագրեք հոստի վրա ցուցադրված կոդը: Wi-Fi Aware-ը կարող է միացնել մոտակա սարքերը, նույնիսկ եթե նրանց LAN-երը տարբեր են</string>
+  <string name="morphe_music_jam_join_with_code">Միացեք կոդով</string>
+  <string name="morphe_music_jam_join">Միանալ</string>
+  <string name="morphe_music_jam_scan_qr">Սկանավորել QR-ը</string>
+  <string name="morphe_music_jam_invalid_invite">Մուտքագրեք ութնիշանոց կոդը կամ տեղադրեք հրավերը</string>
+  <string name="morphe_music_jam_join_your_jam">Միացեք ձեր Jam-ին</string>
+  <string name="morphe_music_jam_copy_code">Պատճենել կոդը</string>
+  <string name="morphe_music_jam_code_clip">Jam-ի կոդ</string>
+  <string name="morphe_music_jam_show_qr">Ցույց տալ QR-ը</string>
+  <string name="morphe_music_jam_done">Պատրաստ է</string>
+  <string name="morphe_music_jam_invite_title">Հրավիրեք ձեր Jam-ին</string>
+  <string name="morphe_music_jam_invite_message">Սկանավորեք՝ միանալու և խմբագրելու այս հերթը: Jam-ի ավարտը չեղարկում է հրավերը</string>
+  <string name="morphe_music_jam_copy_link">Պատճենել հղումը</string>
+  <string name="morphe_music_jam_invitation_clip">Jam-ի հրավեր</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam-ը վերակցվում է. փորձեք նորից մի փոքր ուշ</string>
+  <string name="morphe_music_jam_added_to_jam">Ավելացված է Jam-ին</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam-ը հասանելի չէ. տրեկը չավելացվեց</string>
+  <string name="morphe_music_jam_your_jam">Ձեր Jam-ը</string>
+  <string name="morphe_music_jam_listening_together">Լսում ենք միասին</string>
+  <string name="morphe_music_jam_joining_jam">Միանում ենք Jam-ին</string>
+  <string name="morphe_music_jam_listen_together">Լսել միասին</string>
+  <string name="morphe_music_jam_updating">Թարմացում Jam-ը…</string>
+  <string name="morphe_music_jam_finding_host">Փնտրում ենք ձեր հոսթը Wi-Fi-ում…</string>
+  <string name="morphe_music_jam_waiting_people">Սպասում ենք մարդկանց</string>
+  <string name="morphe_music_jam_one_connected">%s մարդ միացավ</string>
+  <string name="morphe_music_jam_many_connected">%s մարդ միացան</string>
+  <string name="morphe_music_jam_code_expires">Մուտքագրեք այս կոդը մոտակայ սարքի վրա: Wi-Fi Aware-ը աշխատում է առանձին տեղային ցանցերի միջև, եթե այն աջակցվում է: Ժամկետը լրանում է %s րոպեի ընթացքում</string>
+  <string name="morphe_music_jam_seek_to">Տեղափոխվել %s-ի?</string>
+  <string name="morphe_music_jam_edits_open">Խմբագրումները բաց են</string>
+  <string name="morphe_music_jam_edits_locked">Խմբագրումները արգելափակված են</string>
+  <string name="morphe_music_jam_connected_aware">Միացված է Wi-Fi Aware-ի միջոցով</string>
+  <string name="morphe_music_jam_connected_wifi">Միացված է Wi-Fi-ի միջոցով</string>
+  <string name="morphe_music_jam_connected_bluetooth">Միացված է Bluetooth-ի միջոցով</string>
+  <string name="morphe_music_jam_unsupported">Չի աջակցվում Jam-ի ժամանակ</string>
+  <string name="morphe_music_jam_cancelled">Միացումը չեղարկվեց</string>
+  <string name="morphe_music_jam_reconnecting_host">Վերամիացում ձեր հոսթին…</string>
+  <string name="morphe_music_jam_share_prompt">Կիսվեք հերթով: Թույլ տվեք բոլորին ավելացնել երգեր</string>
+  <string name="morphe_music_jam_invite_people">Հրավիրել մարդկանց</string>
+  <string name="morphe_music_jam_guest_edits">Հյուրերը կարող են խմբագրել հերթը</string>
+  <string name="morphe_music_jam_end_jam">Ավարտել Jam-ը</string>
+  <string name="morphe_music_jam_participant_help">Հոսթը միացնում է երաժշտությունը: Ավելացրեք, տեղափոխեք կամ հեռացրեք երգերը անմիջապես YouTube Music-ի հերթում</string>
+  <string name="morphe_music_jam_joining_help">Պահեք երկու սարքերն էլ մոտ: Դուք կարող եք չեղարկել, մինչ մենք փնտրում ենք հոսթին</string>
+  <string name="morphe_music_jam_cancel_joining">Չեղարկել միացումը</string>
+  <string name="morphe_music_jam_leave_jam">Լքել Jam-ը</string>
+  <string name="morphe_music_jam_start_jam">Սկսել Jam</string>
+  <string name="morphe_music_jam_setup_layer">Կարգավորել Jam Layer-ը</string>
+  <string name="morphe_music_jam_manage">Կառավարել</string>
+  <string name="morphe_music_jam_details">Մանրամասներ</string>
+  <string name="morphe_music_jam_open">Բացել</string>
+  <string name="morphe_music_jam_loading_song_options">Բեռնվում են երգի տարբերակները...</string>
+  <string name="morphe_music_jam_song_options_unavailable">Երգի տարբերակները հասանելի չեն. փորձեք նորից</string>
+  <string name="morphe_music_jam_song_options_failed">Չհաջողվեց բացել երգի տարբերակները</string>
+  <string name="morphe_music_jam_no_browser">Jam Layer-ը ներբեռնելու համար բրաուզեր հասանելի չէ</string>
+  <string name="morphe_music_jam_waiting_host_queue">Սպասում ենք հոսթի հերթին</string>
+  <string name="morphe_music_jam_open_song_first">Նախ բացեք երգը YouTube Music-ում</string>
+  <string name="morphe_music_jam_play_on_host">Նվագարկել հոսթի վրա</string>
+  <string name="morphe_music_jam_quit_and_play">Դուրս եկեք Jam-ից և նվագեք տեղում</string>
+  <string name="morphe_music_jam_play_next">Նվագել հաջորդը Jam-ում</string>
+  <string name="morphe_music_jam_add_to_queue">Ավելացնել Jam-ի հերթի մեջ</string>
+  <string name="morphe_music_jam_play_track">Նվագել Jam-ի այս թրեքը</string>
+  <string name="morphe_music_jam_choose_playback">Ընտրեք, թե որտեղ նվագել</string>
+  <string name="morphe_music_jam_move_host_here">Տեղափոխել հոսթին այստեղ</string>
+  <string name="morphe_music_jam_seek_not_ready">Երգը պատրաստ չէ փոխադրման համար</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Հերթը փոփոխվել է, փորձեք ժեստը նորից</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Վերնագրի լոգոն</string>
+  <string name="morphe_header_logo_entry_1">Լռելյայն</string>
+  <string name="morphe_header_logo_entry_3">Անհատական</string>
   <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Նվագարկել ալբոմի աուդիո թրեքները</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Նվագարկել երգերի ալբոմի միայն աուդիո տարբերակը՝ երաժշտական տեսահոլովակի փոխարեն: Պահանջվում է \'Spoof video streams\' ֆունկցիան</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Միացնել աուդիո/վիդեո փոխարկիչը</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Փորձեք փոխել աուդիո տրեկի տարբերակը և պաշտոնական երաժշտական տեսահոլովակը</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">Ներբեռնեք երաժշտական տեսահոլովակներ, փոդքասթներ կամ երգեր երրորդ կողմի ներբեռնման հավելվածների միջոցով</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Օգտագործել արտաքին ներբեռնիչ «Ներբեռնում» մենյուի համար</string>
+  <string name="morphe_external_downloader_menu_summary">Մենյուների «Ներբեռնում» տարբերակը փոխարենը կբացի ձեր արտաքին ներբեռնիչը</string>
+  <string name="morphe_music_downloads_screen_title">Ներբեռնումներ</string>
+  <string name="morphe_music_downloads_empty">"Ներբեռնումներ չկան
+Ներբեռնված թրեկները կհայտնվեն այստեղ"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s ՄԲ</string>
+  <string name="morphe_music_downloads_search_hint">Որոնել ներբեռնումների մեջ</string>
+  <string name="morphe_music_downloads_sort">Տեսակավորել</string>
+  <string name="morphe_music_downloads_sort_artist">Տեսակավորել ըստ կատարողի</string>
+  <string name="morphe_music_downloads_sort_title">Տեսակավորել ըստ վերնագրի</string>
+  <string name="morphe_music_downloads_sort_size">Տեսակավորել ըստ չափսի</string>
+  <string name="morphe_music_downloads_delete_all">Ջնջել բոլոր ներբեռնումները</string>
+  <string name="morphe_music_downloads_delete_all_title">Ջնջե՞լ բոլոր ներբեռնումները</string>
+  <string name="morphe_music_downloads_delete_all_message">Բոլոր ներբեռնված թրեքները կջնջվեն այս սարքից</string>
+  <string name="morphe_music_downloads_all_deleted">Ներբեռնումները ջնջված են</string>
+  <string name="morphe_music_downloads_nothing_found">Ոչինչ չի գտնվել</string>
+  <string name="morphe_music_downloads_actions_for">Գործողություններ %s-ի համար</string>
+  <string name="morphe_music_downloads_play">Նվագարկել</string>
+  <string name="morphe_music_downloads_play_pause">Նվագարկել կամ դադարեցնել</string>
+  <string name="morphe_music_downloads_previous">Նախորդ</string>
+  <string name="morphe_music_downloads_next">Հաջորդ</string>
+  <string name="morphe_music_downloads_pause">Դադարեցնել</string>
+  <string name="morphe_music_downloads_close">Փակել</string>
+  <string name="morphe_music_downloads_delete">Ջնջել</string>
+  <string name="morphe_music_downloads_delete_track">Ջնջել ներբեռնումը</string>
+  <string name="morphe_music_downloads_delete_track_title">Ջնջե՞լ ներբեռնումը։</string>
+  <string name="morphe_music_downloads_delete_track_message">%s-ը կջնջվի այս սարքից</string>
+  <string name="morphe_music_downloads_track_deleted">Ներբեռնումը ջնջված է</string>
+  <string name="morphe_music_downloads_track_delete_failed">Չհաջողվեց ջնջել ներբեռնումը</string>
+  <string name="morphe_music_downloads_play_failed">Չհաջողվեց նվագարկել ներբեռնումը</string>
+  <string name="morphe_music_downloads_notification_channel">Աուդիո ներբեռնումներ</string>
+  <string name="morphe_music_downloads_playback_channel">Օֆլայն վերարտադրում</string>
+  <string name="morphe_music_downloads_unknown_track">Չհաջողվեց նույնականացնել ներբեռնվող թրեքը</string>
+  <string name="morphe_music_downloads_already_running">Ներբեռնումն արդեն ընթացքի մեջ է</string>
+  <string name="morphe_music_downloads_already_saved">Արդեն ներբեռնված է</string>
+  <string name="morphe_music_downloads_started">Ներբեռնումը սկսված է</string>
+  <string name="morphe_music_downloads_starting">Ներբեռնումը սկսվում է…</string>
+  <string name="morphe_music_downloads_progress">Ներբեռնվում է %s%%</string>
+  <string name="morphe_music_downloads_complete">Ներբեռնումն ավարտված է</string>
+  <string name="morphe_music_downloads_failed">Ներբեռնումը ձախողվեց</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">Morphe-ի մասին</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Գովազդներ</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Լրահոս</string>
+  <string name="morphe_settings_music_screen_3_general_title">Ընդհանուր</string>
+  <string name="morphe_settings_music_screen_4_player_title">Նվագարկիչ</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Բառեր</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Տարբեր</string>
+  <string name="morphe_music_app_language_title">YouTube Music-ի լեզուն</string>
+  <string name="morphe_music_app_language_summary_default">Համակարգի լեզուն</string>
+  <string name="morphe_music_app_language_summary_unsupported">Պահանջվում է Android 13 կամ ավելի նոր տարբերակ</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Թաքցնել \"Ձեռքբերեք Music Premium\" պիտակը</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">Թաքցնել Music Premium գովազդները</string>
+  <string name="morphe_music_hide_video_ads_title">Թաքցնել տեսանյութերի գովազդները</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Թաքցնել Աուդիո / Վիդեո փոխանցիչը</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Թաքցնել «Ներբեռնել» կոճակը</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Թաքցնում է «Ներբեռնել» կոճակը պոդկաստ ծրագրում</string>
+  <string name="morphe_music_hide_explore_shelf_title">Թաքցնել «Բացահայտել» դարակը</string>
+  <string name="morphe_music_hide_filter_bar_title">Թաքցնել զտիչների տողը</string>
+  <string name="morphe_music_hide_grid_shelves_title">Թաքցնել ցանցային դարակները</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Թաքցնել հորիզոնական դարակները</string>
+  <string name="morphe_music_hide_list_shelves_title">Թաքցնել ցուցակային դարակները</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Տեքստերի վահանակ</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Թաքցնել Կիսվելու կոճակը</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Թաքցնել Թարգմանելու կոճակը</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Թաքցնել «Նորություններ» դարակը</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Թաքցնել плейլիստերի դարակները</string>
+  <string name="morphe_music_hide_repeat_button_title">Թաքցնել \"Կրկնել\" կոճակը</string>
+  <string name="morphe_music_hide_shuffle_button_title">Թաքցնել \"Խառնել\" կոճակը</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Թաքցնել \"Արագ հավաքման\" դարակը</string>
+  <string name="morphe_music_comments_screen_title">Մեկնաբանություններ</string>
+  <string name="morphe_music_comments_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն մեկնաբանությունների բաժնում</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Թաքցնել համայնքի ուղեցույցները</string>
+  <string name="morphe_music_hide_comments_context_title">Թաքցնել համատեքստի հաղորդագրությունը</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Թաքցնել էմոջիների կոճակը</string>
+  <string name="morphe_music_hide_comments_info_button_title">Թաքցնել տեղեկատվության կոճակը</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Թաքցնել ժամանակային նշման կոճակը</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Crossfade</string>
+  <string name="morphe_music_crossfade_screen_summary">Հարթ կերպով միացրեք տրեկները միմյանց</string>
+  <string name="morphe_music_crossfade_enabled_title">Միացնել crossfade-ը</string>
+  <string name="morphe_music_crossfade_curve_title">Մարման կորը</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Հավասար հզորություն</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Զգուշացված պահում</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Մեղմ անցում</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Հարթ S-կոր</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Ելքային</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Մուտքային</string>
+  <string name="morphe_music_crossfade_duration_title">Անցումային տևողություն</string>
+  <string name="morphe_crossfade_duration_250ms">250 միլիվայրկյան</string>
+  <string name="morphe_crossfade_duration_500ms">500 միլիվայրկյան</string>
+  <string name="morphe_crossfade_duration_750ms">750 միլիվայրկյան</string>
+  <string name="morphe_crossfade_duration_1000ms">{one, 1 վայրկյան, other, {count} վայրկյան}</string>
+  <string name="morphe_crossfade_duration_2000ms">2 վայրկյան</string>
+  <string name="morphe_crossfade_duration_3000ms">3 վայրկյան</string>
+  <string name="morphe_crossfade_duration_4000ms">4 վայրկյան</string>
+  <string name="morphe_crossfade_duration_5000ms">5 վայրկյան</string>
+  <string name="morphe_crossfade_duration_6000ms">6 վայրկյան</string>
+  <string name="morphe_crossfade_duration_7000ms">7 վայրկյան</string>
+  <string name="morphe_crossfade_duration_8000ms">8 վայրկյան</string>
+  <string name="morphe_crossfade_duration_9000ms">9 վայրկյան</string>
+  <string name="morphe_crossfade_duration_10000ms">10 վայրկյան</string>
+  <string name="morphe_crossfade_duration_11000ms">11 վայրկյան</string>
+  <string name="morphe_crossfade_duration_12000ms">12 վայրկյան</string>
+  <string name="morphe_music_crossfade_on_skip_title">Crossfade-ի միացում ձեռքով բաց թողնելիս</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Կիրառում է crossfade էֆեկտը, երբ դուք ձեռքով անցնում եք հաջորդ տրեկին</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade-ի միացում ավտոմատ անցման ժամանակ</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Կիրառում է crossfade էֆեկտը, երբ տրեկն ավարտվում է բնական ճանապարհով</string>
+  <string name="morphe_music_crossfade_session_control_title">Սեսիայի կառավարում</string>
+  <string name="morphe_music_crossfade_session_control_summary">Սեղմեք shuffle կոճակը երկար՝ crossfade-ը դադարեցնելու կամ վերսկսելու համար</string>
+  <string name="morphe_music_crossfade_paused_toast">Crossfade-ը դադարեցված է այս սեսիայի համար</string>
+  <string name="morphe_music_crossfade_resumed_toast">Crossfade-ը վերսկսված է</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Տեսանյութի ռեժիմը հասանելի չէ, երբ crossfade-ը միացված է</string>
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade-ը անջատված է SABR-ի վերարտադրման ժամանակ</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade-ը անջատված է casting-ի ժամանակ</string>
+  <string name="morphe_music_crossfade_about_how_title">Ինչպես է այն աշխատում</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade-ը համադրում է մի երգի ավարտը հաջորդի սկզբի հետ՝ օգտագործելով ձեր նշած տևողությունը և կորը
+
+Այն աշխատում է ավտոմատ անցման և ձեռքով բաց թողման ժամանակ, որոնցից յուրաքանչյուրն ունի իր անջատիչը: Ավտոմատ անցման դեպքում համադրումը սկսվում է մի քանի վայրկյան առաջ, նախքան երգի ավարտը"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Սահմանափակումներ</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Երաժշտական տեսահոլովակները հնչում են միայն որպես աուդիո, երբ crossfade-ը միացված է: Երկար սեղմեք shuffle-ի վրա՝ crossfade-ը դադարեցնելու և տեսահոլովակը դիտելու համար
+
+Երաժշտական տեսահոլովակը, որը սկսում է վերարտադրվել, մնում է տեսանյութի ռեժիմում մինչև հաջորդ երգը
+
+Fade-ի տևողությունից կարճ երգերը չեն crossfade-վում
+
+Կողպեքի էկրանը կամ ծանուցումը կարող են կարճ ժամանակով ցույց տալ հնացած վիճակ անցման ընթացքում
+
+Crossfade-ի դադարեցումը տեսահոլովակը դիտելու համար կարող է որոշ տեսանյութեր դարձնել սև: Crossfade-ի դադարեցումը նախքան երգն ընտրելը կխուսափեցնի դրանից"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Չի աջակցվի</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Աուդիոյի casting կամ mirroring (Chromecast, էկրանի կամ աուդիոյի mirroring)
+
+SABR վերարտադրում (Spoof տեսանյութերի հոսքերը անջատված են)"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Հեղինակ</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade ֆունկցիան՝ VazerOG-ի կողմից</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
+  <string name="morphe_music_remember_repeat_state_title">Հիշել կրկնության վիճակը</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <string name="morphe_music_remember_shuffle_state_title">Հիշել խառնման վիճակը</string>
   <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Վերարտադրման արագություն</string>
+  <string name="morphe_music_playback_speed_summary">Արագությունը, որն օգտագործվում է բոլոր թրեկների համար: 100%-ի դեպքում օգտագործվում է հավելվածի արագությունը, օրինակ՝ փոդքասթի վերարտադրման արագությունը</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Փոխել տոնայնությունը արագության հետ</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Անջատել չհավանելու վերահասցեավորումը</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Կանխում է հաջորդ տրեկին անցումը, երբ սեղմվում է «Չհավանել» կոճակը</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Ցուցակի տրեկի հպման գործողություն</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Նվագարկել ցուցակը</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Նվագարկել միայն ընտրված տրեկը</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Ավելացնել ընտրված տրեկը հերթի մեջ</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Ավելացված է հերթի մեջ</string>
   <!-- layout.buttons.hideButtonsPatch -->
+  <string name="morphe_music_hide_cast_button_title">Թաքցնել Cast կոճակը</string>
+  <string name="morphe_music_hide_history_button_title">Թաքցնել Պատմության կոճակը</string>
+  <string name="morphe_music_hide_notification_button_title">Թաքցնել Ծանուցումների կոճակը</string>
+  <string name="morphe_music_hide_search_button_title">Թաքցնել Որոնման կոճակը</string>
+  <string name="morphe_music_hide_voice_search_button_title">Թաքցնել ձայնային որոնման կոճակը</string>
+  <string name="morphe_music_hide_sound_search_button_title">Թաքցնել ձայնի որոնման կոճակը</string>
+  <string name="morphe_music_hide_library_new_button_title">Թաքցնել \"Նոր\" կոճակը</string>
+  <string name="morphe_music_hide_library_new_button_summary">Թաքցնում է \"Նոր\" կոճակը «Գրադարան» ներդիրում</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Գործողությունների կոճակներ</string>
+  <string name="morphe_music_action_buttons_screen_summary">Ընտրեք, թե որ գործողությունների կոճակները հայտնվեն նվագարկիչի տակ</string>
+  <string name="morphe_music_hide_action_bar_title">Թաքցնել գործողությունների տողը</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Թաքցնել «Հավանել» և «Չհավանել» կոճակները</string>
+  <string name="morphe_music_hide_comments_button_title">Թաքցնել «Մեկնաբանություններ» կոճակը</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Թաքցնել «Ուղիղ եթերչատի կրկնություն» կոճակը</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Թաքցնել «Տեքստը» կոճակը</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Թաքցնել «Կիսվել» կոճակը</string>
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Թաքցնել «Պահպանել» կոճակը</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Թաքցնել «Ներբեռնել» կոճակը</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Թաքցնել «Միացնել ռադիոն» կոճակը</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
+  <string name="morphe_music_hide_flyout_menu_components_screen_title">Ցուցակիչ մենյու</string>
+  <string name="morphe_music_hide_flyout_menu_components_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն նվագարկիչի և հերթի ցուցակիչ մենյուներում</string>
+  <string name="morphe_music_hide_flyout_menu_3_column_component_title">Թաքցնել 3-սյունականի բաղադրիչը</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Թաքցնել \"Հավանել» և \"Չհավանել» կոճակները</string>
+  <string name="morphe_music_hide_flyout_menu_taste_match_title">Թաքցնել \"Taste match\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Թաքցնել «Ավելացնել \'Լսել ավելի ուշ\' ցուցակում» մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Թաքցնել «Ավելացնել հերթի մեջ» մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_captions_title">Թաքցնել Ենթագրերի մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_delete_playlist_title">Թաքցնել \"Ջնջել and playlist\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">Թաքցնել \"Հեռացնել հերթը\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">Թաքցնել \"Մի՛ առաջարկեք այս արտիստին\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_download_title">Թաքցնել Ներբեռնման մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_edit_playlist_title">Թաքցնել \"Խմբագրել playlist-ը\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_album_title">Թաքցնել \"Անցնել ալբոմին\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_artist_title">Թաքցնել \"Անցնել արտիստին\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_episode_title">Թաքցնել \"Անցնել էպիզոդին\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">Թաքցնել \"Անցնել փոդքասթին\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_help_title">Թաքցնել օգնության մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">Թաքցնել \"Նշել էպիզոդը որպես լսված\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_not_interested_title">Թաքցնել \"Հետաքրքիր չէ\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Թաքցնել \"Ամրացնել արագ հավաքման համար\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_play_next_title">Թաքցնել \"Նվագարկել հաջորդը\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_quality_title">Թաքցնել որակի մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_library_title">Թաքցնել \"Հեռացնել գրադարանից\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">Թաքցնել \"Հեռացնել пլեյլիստից\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_report_title">Թաքցնել հաշվետվության մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">Թաքցնել \"Պահպանել էպիզոդը ավելի ուշ համար\" / \"Պահպանել գրադարանում\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">Թաքցնել \"Պահպանել пլեյլիստում\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_share_title">Թաքցնել կիսման մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Թաքցնել \"Պատահական նվագարկում\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Թաքցնել \"Քնի ժամանակաչափի\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_start_radio_title">Թաքցնել \"Միացնել ռադիոն\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Թաքցնել \"Վիճակագրություն գիտնականների համար\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">Թաքցնել բաժանորդագրության մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Թաքցնել \"Հեռացնել արագ հավաքման ցուցակից\" մենյուն</string>
+  <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Թաքցնել \"Տեսնել երգի հեղինակներին\" մենյուն</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Մեկնարկային էջ</string>
+  <string name="morphe_change_start_page_entry_default">Լռելյայն</string>
+  <string name="morphe_change_start_page_entry_charts">Աղբյուրներ</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Էպիզոդներ ավելի ուշ լսելու համար</string>
+  <string name="morphe_change_start_page_entry_explore">Բացահայտել</string>
+  <string name="morphe_change_start_page_entry_history">Պատմություն</string>
+  <string name="morphe_change_start_page_entry_library">Գրադարան</string>
+  <string name="morphe_change_start_page_entry_liked_music">Հավանած երաժշտություն</string>
+  <string name="morphe_change_start_page_entry_playlists">Պլեյլիստեր</string>
+  <string name="morphe_change_start_page_entry_search">Որոնում</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Բաժանորդագրություններ</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Հարկադիր դիվերտիզիոն կողմնորոշում</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Պահպանում է հավելվածը դիվերտիզիայի կողմնորոշմամբ, երբ սարքը պտտվում է</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
+  <string name="morphe_music_change_miniplayer_color_title">Փոխել մինիպլայերի գույնը</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Համապատասխանեցնում է մինի-նվագիչի գույնը լիարժեք էկրանի նվագիչին</string>
+  <string name="morphe_music_change_navigation_bar_color_title">Փոխել նավիգացիոն վահանակի գույնը</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">Համապատասխանեցնում է նավիգացիոն վահանակի գույնը լրամասն էկրանի նվագարկիչին</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
+  <string name="morphe_music_miniplayer_next_button_title">Ցույց տալ \"Հաջորդ» կոճակը մինիպլեյերում</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Ցույց տալ «Նախորդ» կոճակը մինիպլեյերում</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Միացնել հարկադիր մինիպլեյերը</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Խոչընդոտում է նվագիչի ավտոմատ լիարժեք էկրանի անցումը նոր թրեկի սկզբում</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Ակտիվացնել մինի-նվագիչի փոխանցմամբ փակումը</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Թույլ է տալիս փակել մինիպլեյերը՝ այն ներքև doğru սլայսելով</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Նավիգացիայի վահանակ</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Ընտրեք, թե որ կոճակները հայտնվեն ներքևի նավիգացիոն վահանակում</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Թաքցնել Գլխավոր էջ կոճակը</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Թաքցնել Հնչյունանմուշներ կոճակը</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Թաքցնել Բացահայտել կոճակը</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Թաքցնել Հավաքածու կոճակը</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Թաքցնել Թարմացնել կոճակը</string>
+  <string name="morphe_music_hide_navigation_bar_title">Թաքցնել նավիգացիայի վահանակը</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Թաքցնել նավիգացիայի կոճակների պիտակները</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary_logged_out">Չեք մուտք գործել: Պատրաստելու համար հպեք</string>
+  <string name="morphe_music_scrobbling_log_out">Ելք</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Ելք եք գործել</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_enabled_title">Միացնել scrobbling-ը</string>
+  <string name="morphe_music_scrobbling_now_playing_title">Ուղարկել \"Հիմա հնչում է\" կարգավիճակը</string>
+  <string name="morphe_music_scrobbling_min_song_duration_title">Երգի նվազագույն տևողությունը</string>
   <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_min_song_duration_summary">Այս տևողությունից կարճ երգերը չեն scrobble լինի</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_title">Scrobble հապաղման տոկոսը</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_summary">Ակտիվացնել scrobble-ը երգի այս տոկոսը լսելուց հետո</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_title">Scrobble հապաղման վայրկյաններ</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_summary">Ակտիվացնել scrobble-ը լսելուց այսքան վայրկյան հետո</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz հաշիվ</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Մուտք եք կատարել: Հպեք հաշվի կառավարման համար</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Մուտքագրեք ձեր ListenBrainz-ի օգտատիրոջ տոկենը՝ scrobbling-ը միացնելու համար</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Տոկեն</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Ստուգել</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Խնդրում ենք մուտքագրել տոկենը</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Ստուգվում է…</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Վավեր տոկեն: Օգտատեր՝ %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Անվավեր տոկեն՝ %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">անհայտ</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Ստուգումը ձախողվեց՝ %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Թոքենը ջնջված է</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Թոքենը պահպանված է</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Զգուշացում. Պահպանված թոքենը անվավեր է:</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Սիրել հավանած թրեկները</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Ավտոմատ կերպով սիրեք թրեկները Last.fm-ում, երբ դրանք հավանում եք YouTube Music-ում (և հեռացրեք սերը, երբ հավանանքը հեռացնում եք կամ նշում եք որպես «չհավանած»),</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm հաշիվ</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Մուտք եք գործել որպես %s: Հպվեք հաշիվը կառավարելու համար</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Մուտք գործելու համար մուտքագրեք ձեր Last.fm տվյալները</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Օգտանուն</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Գաղտնաբառ</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Մուտք գործել</string>
+  <string name="morphe_music_lastfm_token_status_empty">Խնդրում ենք մուտքագրել օգտանունը և գաղտնաբառը</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Մուտք է գործվում…</string>
+  <string name="morphe_music_lastfm_token_status_success">Մուտքը հաջողությամբ կատարվեց:</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Չհաջողվեց սեսիա ստանալ Last.fm-ից</string>
+  <string name="morphe_music_lastfm_token_status_failed">Մուտքը ձախողվեց. %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm-ի տվյալները պահպանվեցին:</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Մետատվյալների մաքրում</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Մաքրել մետատվյալները</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Ավտոմատ մաքրել տարածված ավելորդ տեքստերը (օրինակ՝ \"Official Video\", \"Remaster\", \"Live\") վերնագրերից, կատարողներից և ալբոմներից scrobbling-ից առաջ</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Custom regex մաքրում</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">Մուտքագրեք հատուկ կանոնավոր արտահայտություն՝ երգերի վերնագրերից, կատարողներից կամ ալբոմներից լրացուցիչ տեքստերը հեռացնելու համար: Օրինակ՝ (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Վերլուծել կատարողը և թրեկը վերնագրից</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Հեռացրեք արտիստի և թրեկի անվանումը տեսանյութի վերնագրից՝ օգտագործելով \" - \" բախչողը: Օգտակար է վերաբեռնված բովանդակության համար, որտեղ ալիքի անվանումը կարող է օգտագործվել որպես արտիստ</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Լրացնել բաց թողնված ալբոմը</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Երբ երաժշտությունը չի ներառում ալբոմ, փնտրել այն Last.fm-ում, որպեսզի ձեր scrobble-ը լինի ամբողջական</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling-ն ավտոմատ կերպով սինխրոնացնում է ձեր YouTube Music-ի օգտագործումը ձեր Last.fm կամ ListenBrainz պրոֆիլի հետ
+
+Որպեսզի scrobbling-ը սինխրոնացվի ֆոնային ընտացքի ժամանակ, համոզվեք, որ YouTube Music հավելվածի մարտկոցի օգտագործումը սահմանված է որպես \"Սահմանափակում չկա\""</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Օգտագործել երրորդ կողմի բառերը</string>
+  <string name="morphe_music_lyrics_enabled_summary">Ցուցադրում է բառերը երրորդ կողմի ծառայությունից, անցում է ներկառուցված բառերին, եթե ոչինչ չի գտնվել</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Պահել էկրանը միացված տեքստերը դիտելիս</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Կանխում է էկրանի անջատումը, քանի դեռ տեքստերի վահանակը բաց է</string>
+  <string name="morphe_music_lyrics_section_service_title">Տեքստերի ծառայություն</string>
+  <string name="morphe_music_lyrics_section_display_title">Ցուցադրում</string>
+  <string name="morphe_music_lyrics_section_sync_title">Սինխրոնիզացիա</string>
+  <string name="morphe_music_lyrics_section_panel_title">Պանել</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI վերջնակետ</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Բոլոր մատակարարները անջատված են՝ ներկառուցված տեքստերը և ամրացված տեքստերը</string>
+  <string name="morphe_music_lyrics_source_reset_title">Վերակնդրե՞լ տրամադրողների հերթականությունը։</string>
+  <string name="morphe_music_lyrics_source_reset_message">Վերականգնել տրամադրողները լռելյայն առաջնահերթության հերթականությամբ</string>
+  <string name="morphe_music_lyrics_clear_cache_title">Մաքրել պահպանված տեքստերը</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Ջնջել այս սարքի վրա պահպանված տեքստերը</string>
+  <string name="morphe_music_lyrics_clear_cache_done">Մաքրված է %1$s ՄԲ</string>
+  <string name="morphe_music_token_dialog_get_token">Ստանալ թոքեն</string>
+  <string name="morphe_music_apple_music_token_title">Apple Music-ի մեդիա օգտատիրոջ տոկեն</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Տեղադրեք media-user-token քուքին music.apple.com կայքից
+
+Քայլերը
+1. Մուտք գործեք music.apple.com կայք՝ որպես անդամ
+2. Բացեք DevTools → Application → Cookies → music.apple.com
+3. Պատճենեք \"media-user-token\"-ի արժեքը"</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music. media-user-token-ը պահպանված է</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music. media-user-token-ը ջնջված է</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music. անվավեր media-user-token. խնդրում ենք ստուգել և փորձել նորից</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"Տեղադրեք sp_dc քուքին Spotify-ից:
+
+Քայլերը
+1. Մուտք գործեք open.spotify.com
+2. Բացեք DevTools → Application → Cookies → open.spotify.com
+3. Պատճենեք \"sp_dc\"-ի արժեքը"</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify. sp_dc-ն պահպանված է</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify. sp_dc-ն ջնջված է</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify. անվավեր sp_dc. խնդրում ենք ստուգել և փորձել նորից</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music-ի տոկենը կամընտիր է: Առանց դրա կօգտագործվի Lyrically-ն որպես պահուստային տարբերակ</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"Տեղադրեք arl cookie-ն Deezer-ից
+
+Քայլերը
+1. Մուտք գործեք deezer.com կայքում
+2. Բացեք DevTools → Application → Cookies → deezer.com
+3. Պատճենեք \"arl\"-ի արժեքը"</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer. arl-ը պահվեց</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer. arl-ը ջնջվեց</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer. անվավեր arl. խնդրում ենք ստուգել և փորձել նորից</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch-ի տոկեն</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Ավելացրեք թոքեն միայն ձեր սեփական հաշվից օգտվելու համար: Այն պետք է լինի Musixmatch Android հավելվածից. musixmatch.com-ից պատճենված թոքենները պատկանում են հնացած desktop կլիենտին, և API-ն մերժում է դրանք</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch-ն աշխատում է առանց թոքենի, ուստի այս դաշտը կարող է մնալ դատարկ</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">օգտատիրոջ տոկեն</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch. օգտատիրոջ տոկենը պահվեց</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch. օգտատիրոջ տոկենը ջնջվեց</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch. անվավեր օգտատիրոջ թոքեն. խնդրում ենք ստուգել և փորձել նորից</string>
+  <string name="morphe_music_youtube_cookies_title">YouTube-ի ኩկիները</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"Տեղադրեք ձեր YouTube-ի ኩկիները՝ YouTube-ից սուբտիտրերը և ժամանակային տեքստերը հարցնելու համար:
+
+Քայլերը
+1. Բացեք youtube.com-ը բրաուզերում և մուտք գործեք
+2. Բացեք DevTools (F12) → Application → Cookies → youtube.com
+3. Պատճենեք ኩկիների ամբողջ տողը (key=value զույգեր՝ բաժանված կետ-ստորակետներով)
+
+Պահանջվող ኩկիները՝ SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube. ኩկիները պահպանված են</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube. cookies-ները մաքրվեցին</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube. անվավեր cookies. խնդրում ենք ստուգել և փորձել նորից</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Սեղմեք և պահեք տողը</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Սեղմեք տողի վրա՝ երգի այդ հատվածին անցնելու համար, երկար սեղմեք՝ ձեր մատի տակ գտնվող բառը պատճենելու համար, կամ ամբողջ տողը, եթե սեղմումը բառի վրա չէ: Անջատումը հեռացնում է երկու ժեստերն էլ</string>
+  <string name="morphe_music_lyrics_show_section_title">Ցուցադրել բաժնի պիտակները</string>
+  <string name="morphe_music_lyrics_show_section_summary">Նշել լիրիկայի յուրաքանչյուր նոր բաժին փոքր պիտակով, օրինակ՝ Տուն կամ Կրկներ</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Ցույց տալ պատճենման կոճակը</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Սեղմեք՝ բնօրինակ տեքստը որպես սովորական տեքստ պատճենելու համար, երկար սեղմեք՝ տեքստի աղբյուր ֆայլը Ներբեռնումներ պապկայում պահպանելու համար</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Ցույց տալ թարգմանության կոճակը</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Սեղմեք՝ թարգմանությունը միացնելու/անջատելու համար, երկար սեղմեք՝ միայն թարգմանության համար: Օգտագործում է տրամադրողի թարգմանությունները, Google Translate-ը կամ OpenAI-ի հետ համատեղելի API-ն</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Ցույց տալ Romanize կոճակը</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Սեղմեք՝ տրանսլիտերացիան միացնելու/անջատելու համար, երկար սեղմեք՝ միայն տրանսլիտերացիայի համար: Օգտագործում է տրամադրողի տրանսլիտերացիան, Google Translate-ը կամ OpenAI-ի հետ համատեղելի API-ն</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Տեղային տառադարձում և համապատասխանեցում</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Կատարել տառադարձում սարքի վրա, երբ մատակարարը, ձեր մոդելը և Google Translate-ը չեն աշխատում: Կարդոմությունը հաջորդում է ժամանակային տեքստի յուրաքանչյուր բառին. բառերի սինխրոնացումը պետք է միացված լինի: Չինարեն, կանտոներեն, ճապոներեն, կորեերեն, հունարեն, ռուսերեն, վրացերեն, հայերեն; մոտ 120 ՄԲ</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Կարդացվում է %1$s-ը՝ %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Ներբեռնումը ձախողվեց. անջատեք և նորից միացրեք սա՝ կրկնելու համար</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">Ցույց տալ Refresh կոճակը</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Հպեք՝ հաջորդ տեքստի տարբերակին անցնելու համար. սեղմեք երկար՝ ըստ երգի վերնագրի և կատարողի տեքստեր փնտրելու համար</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Փնտրել տեքստերը</string>
+  <string name="morphe_music_lyrics_search_title_hint">Երգի վերնագիր</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Արտիստ</string>
+  <string name="morphe_music_lyrics_search_empty">Մուտքագրեք երգի վերնագիրը և արտիստին</string>
+  <string name="morphe_music_lyrics_search_no_providers">Ակտիվացված մատակարարներից ոչ մեկը չի կարող փնտրել այլ երգեր</string>
+  <string name="morphe_music_lyrics_saved">Պահպանված է</string>
+  <string name="morphe_music_lyrics_word_sync_title">Ընդգծել սինխրոնացված բառերը կամ վանկերը</string>
+  <string name="morphe_music_lyrics_word_sync_summary">Առաջնահերթություն տալ բառ առ բառ տեքստերին, երբ դրանք հասանելի են: Երբ տեքստերը ունեն բառերի ժամանակային տվյալներ, ընդգծվում է յուրաքանչյուր բառ կամ վանկ՝ համահունչ երաժշտությանը</string>
+  <string name="morphe_music_lyrics_split_background_title">Ցուցադրել հետնապլանային ձայները առանձին</string>
+  <string name="morphe_music_lyrics_split_background_summary">Փակագծերով գրված հետնափոնային վոկալը, օրինակ՝ \"(Oh) I want you\", տեղափոխում է երգվող տողից դեպի իր սեփական ավելի մթնագույն տողը</string>
+  <string name="morphe_music_lyrics_hide_played_title">Թաքցնել հնչեցված տեքստերը</string>
+  <string name="morphe_music_lyrics_hide_played_summary">Թաքցնել տեքստի տողերը, որոնք գտնվում են ընթացիկ տողից վերև</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">Թաքցնել չհնչեցված տեքստերը</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Թաքցնել տեքստի տողերը, որոնք գտնվում են ընթացիկ տողից ներքև</string>
+  <string name="morphe_music_lyrics_mediasession_title">Ցուցադրել MediaSession-ի տեքստերը կողպված էկրանին</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Ցուցադրում է ընթացիկ տողը կողպելու էկրանին, Android Auto-ում և Bluetooth-ի միջոցով: Պահանջվում է Android 11 կամ ավելի նոր տարբերակ</string>
+  <string name="morphe_music_lyrics_miniplayer_title">Ցուցադրել մինի-նվագարկիչի տեքստերը</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">Ցուցադրում է ընթացիկ տողը մինիպլայերում, իսկ թրեքը տեղափոխվում է ենթավերնագրի տող</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Երգի վերնագիր/կատարողի ձևաչափ</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Մինիպլեյերում և MediaSession-ում բառերի հետ ցուցադրվող թրեկի ձևաչափը: {t}-ն վերնագիրն է, {a}-ն կատարողը, իսկ {v}-ն տարբերակը, օրինակ՝ Acoustic, եթե բառերի աղբյուրը տրամադրում է այդպիսին: Երկու կետերի միջև գրված տեքստը ցուցադրվում է միայն այն դեպքում, երբ դրա ներսի բոլոր փոփոխականները ունեն արժեք. սովորական կետի համար գրեք \\: Յուրաքանչյուր տող ցուցադրվում է հերթով՝ փոխվելով բառերի փոփոխության հետ մեկտեղ</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Լիրիկայի տողի ձևաչափ</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Լիրիկայի տողի ձևաչափը մինի-նվագարկիչում և MediaSession-ում: {lrc}-ն տողն է, իսկ {n}-ը՝ թե քանի անգամ է այն երգվում հաջորդաբար: Վերջակետների միջև գտնվող տեքստը ցուցադրվում է միայն, երբ տողը կրկնվում է: Վերջակետի համար օգտագործեք \\:</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Ձևաչափը պետք է պարունակի {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Արտիստ-տողի կաղապար և անիմացիայի ժամանակացույց</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Էկրանի նվազագույն ժամանակը (մվ)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Էկրանի առավելագույն ժամանակը (մվ)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Միայն բազմատող անիմացիաների համար: Պահպանեք յուրաքանչյուր կադրը առնվազն նվազագույն ժամանակի ընթացքում: Առավելագույնի դեպքում, առաջացնեք արտիստի տողը, նույնիսկ եթե լիրիկան մնում է նույնը:</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Նվազագույնը պետք է լինի 0 կամ ավելի: Առավելագույնը պետք է լինի ավելի մեծ, քան 0-ն, և առնվազն հավասար նվազագույնին:</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Տողի երկարության սահմանափակումներ</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Բառերի և արտիստի տողի սահմանափակումներ, և լրիվ լայնությամբ նիշի կշիռը</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Բառերի տողի սահմանափակում
+Բաժանել ավելի երկար բառերը հավասար կեսերի: 0-ն անջատում է բաժանումը:"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Արտիստի տողի սահմանափակում
+Բաժանել լրացված թրեքի ձևաչափը փոխ替վող շրջանակների: 0-ն անջատում է բաժանումը:"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Լրիվ լայնությամբ նիշի կշիռը
+Կիրառվում է երկու սահմանափակումների համար էլ: 1.75-ի դեպքում չորս լրիվ լայնությամբ նիշերը հաշվարկվում են որպես 7:"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Մուտքագրեք ամբողջ թվային սահմանափակումներ 0-ից 10000-ի միջակայքում և նիշի կշիռ, որը մեծ է 0-ից</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Ինստրումենտալ դադար</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Ցուցադրվում է փոքրացված նվագարկիչում և MediaSession-ում գործիքային դադարի ժամանակ: Յուրաքանչյուր տողը մեկ անիմացիոն կադր է: {t}-ն վերնագիրն է, {a}-ն՝ արտիստը, իսկ {lrc}-ն՝ լիրիկայի վերջին տողը</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Փոքրացված նվագարկիչի և MediaSession-ի ժամանակային շեղում</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Տեղաշարժում է այն պահը, երբ հաջորդ տողը ցուցադրվում է փոքրացված նվագարկիչում և MediaSession-ում: Օգտագործեք բացասական արժեք, եթե տողերը ուշ են հայտնվում, օրինակ՝ կողպեքի էկրանին</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">Զտիչներ</string>
+  <string name="morphe_music_lyrics_custom_regex_title">Մետատվյալների regex</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Կանոնավոր արտահայտություն, որը կիրառվում է վերնագրերի, կատարողների և ալբոմների վրա՝ նախքան տեքստերի որոնումը և երկու վերնագրերի համապատասխանությունը գնահատելիս: Թողեք դատարկ՝ երկուսն էլ անջատելու համար: Լռելյայն տարբերակը հեռացնում է տարածված ավելորդությունները, ինչպիսիք են \"Official Video\"-ն, \"Remaster\"-ը, \"【插曲】\"-ը և \"- Topic\"-ը</string>
+  <string name="morphe_music_lyrics_text_filter_title">Տեքստերի զտիչի regex</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Կանոնավոր արտահայտություն, որը կիրառվում է միայն տեքստերի բնօրինակ տեքստի վրա (ոչ թե թարգմանությունների կամ ռոմանիզացիայի): Թողեք դատարկ՝ անջատելու համար</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">Տեղեկատվական տողերի նշաններ</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Եթե տեքստերը սխալ կերպով են զտվել դեպի ներքև, կարգավորեք կամ մաքրեք սա: Ստորակետով բաժանված նշաններ. նշան պարունակող տողերը, որոնց հաջորդում է վերջակետ, ցուցադրվում են որպես հեղինակային տեղեկություն ներքևում: Թողեք դատարկ՝ անջատելու համար</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Մեծատառով սկսել</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Մեծատառով է դարձնում լիրիկայի յուրաքանչյուր տողի առաջին տառը</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Հեռացնել վերջնակետային նշանները</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Հեռացնում է վերջակետները, ստորակետները, երկչնակները և կիսավերջակետները երգի տողերի վերջից: Հարցականները, բացականչական նշանները, ellipsis-ները, չակերտները և փակագծերը պահպանվում են:</string>
+  <string name="morphe_music_lyrics_text_size_title">Տեքստի չափը</string>
+  <string name="morphe_music_lyrics_text_size_summary">Բառերի տեքստի չափը</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Ժամանակային գլոբալ շեղում</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Սինխրոնացված տեքստերը հետևում են վերարտադրմանը: Եթե դրանք շեղվում են, կարգավորեք ժամանակային շեղումը: Տեղափոխեք սինխրոնացված տեքստերը առաջ կամ հետ: Օգտագործեք դրական արժեք, եթե տեքստերը գնում են երգից առաջ</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Օգտագործել SponsorBlock հատվածները լիրիկայի շեղման համար</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Համադրել՝ առանց SponsorBlock-ի բաց թողնած հատվածների, և տեղափոխել լիրիկան թողարկված աուդիոյի վրա: «Անջատված» տարբերակը ամբողջությամբ անտեսում է SponsorBlock-ը</string>
+  <string name="morphe_music_lyrics_sb_no_video">Այս թրեքը չունի տեսանյութի ID՝ ներկայացնելու համար</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Աղբյուր՝ %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Սեղմեք պատճենման կոճակը երկար՝ այս LRC-ը պահպանելու համար. եթե կարողանաք կատարելագործել ժամանակացույցերը և կիսվել դրանցով համայնքային մատակարարների հետ, մենք շատ երախտապարտ կլինենք</string>
+  <string name="morphe_music_lyrics_translated_by_google">Թարգմանված է Google-ի կողմից</string>
+  <string name="morphe_music_lyrics_romanized_by_google">Ռոմանիզացված է Google-ի կողմից</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Թարգմանված է %s-ի կողմից</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Տրանսլիտերացված է %s-ի կողմից</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Ռոմանիզացված է %s-ի կողմից</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_hide">Թարգմանված</string>
+  <string name="morphe_music_lyrics_translation_language_title">Թարգմանության լեզուն</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Ռոմանիզացման լեզուն</string>
+  <string name="morphe_music_lyrics_translating">Թարգմանվում է…</string>
+  <string name="morphe_music_lyrics_translate_failed">Չհաջողվեց թարգմանել բառերը</string>
+  <string name="morphe_music_lyrics_romanize_hide">Ռոմանիզացված</string>
+  <string name="morphe_romanize_language_DEFAULT">Ավտոմատ</string>
+  <string name="morphe_music_lyrics_romanizing">Ռոմանիզացվում է...</string>
+  <string name="morphe_music_lyrics_romanize_failed">Չհաջողվեց ռոմանիզացնել տեքստերը</string>
+  <string name="morphe_music_lyrics_translate_only">Միայն թարգմանված</string>
+  <string name="morphe_music_lyrics_romanize_only">Միայն տառադարձում</string>
+  <string name="morphe_music_lyrics_dual_only">Երկակի ռեժիմ</string>
+  <string name="morphe_music_lyrics_copied">Պատճենված է հիշողության մեջ</string>
+  <string name="morphe_music_lyrics_refreshing">Թարմացվում է</string>
+  <string name="morphe_music_lyrics_refreshed">Թարմացված է</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API բանալին</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC-ը տառադարձում է կամ ժամանակային համապատասխանեցնում է ընթացիկ թրեկի տեքստերը: Սա առանձին ծառայություն է, որը կապ չունի վերոհի OpenAI-ի հետ համատեղելի վերջնակետի հետ:</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC բանալին պահպանված է: Օգտագործեք համապատասխանեցման կոճակը երգերի տեքստերի որոնման պատուհանում կամ վահանակի հուշումը, երբ տրեկը չունի տեքստ</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API բանալին պահպանված է</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC-ը չընդունեց այդ բանալին</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API բանալին ջնջված է</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC-ն ժամանակային նշումներ է ավելացնում այն տեքստերին, որոնք չունեն դրանք, կամ տրանսկրիպցիայի է ենթարկում տրեկը՝ կրեդիտների հաշվին: Բանալիի առկայության դեպքում, առանց տեքստի տրեկերը կառաջարկեն տրանսկրիպցիա, իսկ որոնման պատուհանում կհայտնվի համապատասխանեցման կոճակ</string>
+  <string name="morphe_music_lyrics_transcribe_align">Հարցումել QuickLRC համապատասխանեցում</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Համապատասխանեցում</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Կիրառել համապատասխանեցումը</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Հարցումել QuickLRC տրանսկրիպցիա</string>
+  <string name="morphe_music_lyrics_transcribe_working">Տրանսկրիպցիա</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Տրանսկրիպցիան չեղարկվեց</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Միայն YouTube-ից նվագվող տրեկները կարող են տրանսկրիբ될</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Համապատասխանեցնելու տեքստ չկա. փոխարենը կատարվում է տրանսկրիպցիա</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC-ն չկարողացավ մշակել այս տրեկը</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-ի կրեդիտները սպառված են այս տրեկի համար</string>
+  <string name="morphe_music_lyrics_about_summary">"Բառերը համադրվում են ըստ վերնագրի և կատարողի, անսովոր մետատվյալները կարող են ոչինչ չգտնել կամ գտնել սխալ տարբերակը: Օգտագործեք թարմացումը տարբերակները փոխելու համար: * նշված մատակարարները պահանջում են տոկեն: Միացված բոլոր մատակարարներին միշտ չէ, որ հարցում է ուղարկվում ձեր նշած հերթականությամբ, այլ պատասխանը ստացվում է՝ կախված նրանց արագությունից:\n\nԲառերը տրամադրվում են երրորդ կողմի ծառայությունների կողմից, որոնք կապված չեն Morphe-ի հետ, չեն հովանավորվի կամ հավաստվում նրա կողմից: Յուրաքանչյուրն օգտագործվում է այնպես, ինչպես կա. բառերը, դրանց հասանելիությունը և լիցենզավորումը մնում են այդ ծառայությունների և նրանց լիցենզարուների մոտ, իսկ դրանց օգտագործումը կարող է ենթակայ լինել նրանց օգտագործման պայմաններին: Այն, ինչ հասնում է միացված ծառայությանը, միայն ձեր խնդրած որոնումն է՝ վերնագիրը, կատարողը և, այնտեղ, որտեղ այդ ծառայությանը դա անհրաժեշտ է, տեսանյութի ID-ն: Լրացուցիչ AI վերջնակետը և QuickLRC տրանսկրիպցիան աշխատում են միայն ձեր կողմից կայ alright-ացվելուց հետո և ստանում են բառերի տեքստը կամ թրեքի տեսանյութի URL-ը:"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Ակտիվացրեք միայն ձեր օգտագործած մատակարարները կամ պահպանեք լռելյայն կարգավորումները. հաճախակի հարցումները կարող են przecանցել լիրիկայի փոքր համայնքային կայքերը</string>
+  <string name="morphe_music_lyrics_hide_info_title">Թաքցնել հեղինակության տողը</string>
+  <string name="morphe_music_lyrics_hide_info_summary">Թաքցնել տեքստի ներքևում ցուցադրվող հեղինակության տողը</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">Փոխել թարգմանության և տառադարձման տեղերը</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ՄԻԱՑՎԱԾ՝ տառադարձումը դրվում է տեքստի ներքևում, իսկ թարգմանությունը՝ վերևում. ԱՆջԱՏՎԱԾ՝ տառադարձումը մնում է վերևում, իսկ թարգմանությունը՝ ներքևում</string>
+  <string name="morphe_music_lyrics_section_translation_title">Թարգմանություն</string>
+  <string name="morphe_music_lyrics_section_romanization_title">Ռոմանիզացիա</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Թարգմանչի տրամադրող</string>
+  <string name="morphe_music_lyrics_translation_provider_google">Google (Լռումնյա, Անվճար)</string>
+  <string name="morphe_music_lyrics_translation_provider_openai_compatible">OpenAI համատեղելի (Անհատականացված)</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Ռոմանիզացման մատակարար</string>
+  <string name="morphe_music_lyrics_romanization_provider_google">Google (Լռելյայն)</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Տեղային / អնցանց բառարան</string>
+  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI-ի հետ համատեղելի (Անհատական)</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">AI բաժին</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Օգտագործվում է միայն այն դեպքում, երբ տրամադրողը չի ներառում բաժնի պիտակներ, ինչպիսիք են Կրկները կամ Տունը, որոնք այնուհետև հայտնաբերվում են ձեր OpenAI-ի հետ համատեղելի մոդելի կողմից</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; ամպային վերջնակետեր</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Կարգավորեք API բանալիները, մոդելները, վերջնակետերը և հուշումների կաղապարները AI մատակարարների համար:</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint-ի URL-ը (օրինակ՝ https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Հուշման կաղապար</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Տեղադրնշաններ՝ {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Հուշումը պահպանված է</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Հուշումը պահվեց, սակայն AI վերջնակետը դեռ հասանելի չէ: Նախ կայքերգավորեք այն AI կարգավորումներում</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Հուշումը վերակայացված է</string>
+  <string name="morphe_music_lyrics_ai_extra_body_invalid">Անվալիդ JSON: Ուղղեք այն կամ մաքրեք դաշտը նախքան պահպանելը</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Թարգմանության և ռոմանիզացիայի կարգավորումները պահպանված են</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Կարգավորումները վերականգնվեցին լռելյայն արժեքներին</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Հիմնական URL-ը պետք է սկսվի http:// կամ https://-ով</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Ստուգել կապը</string>
+  <string name="morphe_music_lyrics_ai_config_endpoint_label">Կարգավորել endpoint-ները</string>
+  <string name="morphe_music_lyrics_ai_config_show_all">Ցույց տալ բոլոր endpoint-ները</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Կապի ստուգում...</string>
+  <string name="morphe_music_lyrics_ai_config_translation_provider_label">Թարգմանության տրամադրող</string>
+  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">Ռոմանիզացիայի տրամադրող</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Ստանալ մոդելները</string>
+  <string name="morphe_music_lyrics_ai_config_fetching_models">Մոդելների բեռնում…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_success">Ընտրեք մոդելը</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Չհաջողվեց բեռնել մոդելները: Ստուգեք API բանալին կամ կապը:</string>
+  <string name="morphe_music_lyrics_ai_config_gemini_section">Gemini API կարգավորումներ</string>
+  <string name="morphe_music_lyrics_ai_config_openai_compat_section">OpenAI համատեղելի (Custom Endpoint)</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_section">DeepL API կարգավորումներ</string>
+  <string name="morphe_music_lyrics_ai_config_api_key_label">API բանալի</string>
+  <string name="morphe_music_lyrics_ai_config_model_label">Մոդել</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_label">Հիմնական URL</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_label">API բանալի (ըստ ցանկության)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Թարգմանության հուշում</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_label">Հարցման լրացուցիչ մարմին (ըստ ցանկության JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_key_label">Ավտորիզացիայի բանալի (Free կամ Pro)</string>
+  <string name="morphe_music_lyrics_ai_config_summary">Կարգավորեք API բանալիները, մոդելները, վերջնակետերը և հուշումները</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Անջատել թավ տառերով սիմվոլները</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Վերականգնել նվագարկիչի \"Հաջորդը\", \"Լիրիկան» և \"Կապված» ներդիրները</string>
 </resources>

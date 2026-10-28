@@ -6,6 +6,8 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
 
+import java.util.EnumSet;
+
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.BaseAppRefreshRatePatch.AppRefreshType;
 import app.morphe.extension.shared.patches.BaseAppRefreshRatePatch.RefreshRateType;
@@ -75,9 +77,10 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting THEME_COLOR_LIGHT_CUSTOM = new StringSetting("morphe_theme_color_light_custom", "#FFFFFF", true, new ThemeColorCustomAvailability(THEME_COLOR_LIGHT));
     public static final BooleanSetting THEME_COLOR_CHANGE_FOREGROUND = new BooleanSetting("morphe_theme_color_change_foreground", false, true, new ThemeColorChangeForegroundAvailability());
     public static final BooleanSetting THEME_LAST_USED_DARK_MODE = new BooleanSetting("morphe_theme_last_used_dark_mode", Utils.isDarkModeEnabled(), false, false);
+    public static final IntegerSetting THEME_LAST_SPLASH_SCREEN_INDEX = new IntegerSetting("morphe_theme_last_splash_screen_index", -1, false, false);
 
     // Custom branding
-    public static final EnumSetting<SplashScreenAnimationStyle> SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("morphe_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND, true);
+    public static final EnumSetting<SplashScreenAnimationStyle> SPLASH_SCREEN_STYLE = new EnumSetting<>("morphe_splash_screen_style", CustomBrandingPatch.isPatchIncluded() ? SplashScreenAnimationStyle.MORPHE_COLOR : SplashScreenAnimationStyle.FPS_60_ONE_SECOND, true);
     public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true, "morphe_custom_branding_icon_user_dialog_message");
     public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);
     public static final IntegerSetting CUSTOM_BRANDING_NAME = new IntegerSetting("morphe_custom_branding_name", CustomBrandingPatch.getDefaultAppNameIndex(), true);
@@ -140,10 +143,24 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     // Migration
     private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
+    private static final EnumSetting<SplashScreenAnimationStyle> DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("morphe_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND);
 
     static {
         // TODO: Eventually remove these migrations
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
+
+        // The styles of the original animation used to play the Morphe animation of an icon that has
+        // one, and now always play the original animation. The Morphe styles play the Morphe animation.
+        SplashScreenAnimationStyle splashStyle = DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE.get();
+        if (!DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE.isSetToDefault()
+                && EnumSet.range(SplashScreenAnimationStyle.FPS_60_ONE_SECOND,
+                        SplashScreenAnimationStyle.FPS_30_BLACK_AND_WHITE).contains(splashStyle)
+                && CustomBrandingPatch.iconHasStartupAnimation()) {
+            DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE.save(splashStyle.isMonochrome
+                    ? SplashScreenAnimationStyle.MORPHE_MONOCHROME
+                    : SplashScreenAnimationStyle.MORPHE_COLOR);
+        }
+        migrateOldSettingToNew(DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE, SPLASH_SCREEN_STYLE);
     }
 
     private static String getDefaultSpoofAppVersionTarget() {

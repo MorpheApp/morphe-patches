@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4114
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -15,6 +15,8 @@ import app.morphe.patches.youtube.layout.theme.splashAnimationPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_MAIN_ACTIVITY_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
+import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
@@ -33,12 +35,27 @@ val customBrandingPatch = baseCustomBrandingPatch(
     mainActivityName = YOUTUBE_MAIN_ACTIVITY_NAME,
     activityAliasNameWithIntents = $$"com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
     preferenceScreen = PreferenceScreen.GENERAL,
+    // Alternative launcher icons that YouTube has but does not show in its settings.
+    // The aliases are numbered like the icons, so an alias can be reused if YouTube
+    // replaces an icon.
+    appLauncherIconNames = {
+        if (is_21_41_or_greater) {
+            mapOf(
+                "youtube_icon1" to "ic_launcher_icon1",
+                "youtube_icon2" to "ic_launcher_icon2",
+                "youtube_icon3" to "ic_launcher_icon3"
+            )
+        } else {
+            emptyMap()
+        }
+    },
 
     block = {
         dependsOn(
             sharedExtensionPatch,
             // Owns the hook that loads the startup animation.
-            splashAnimationPatch
+            splashAnimationPatch,
+            versionCheckPatch
         )
 
         compatibleWith(COMPATIBILITY_YOUTUBE)

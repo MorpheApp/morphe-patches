@@ -548,8 +548,29 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_mediasession_summary">Отображает текущую строку на экране блокировки, в Android Auto и при подключении по Bluetooth. Требуется Android 11 или более поздней версии</string>
   <string name="morphe_music_lyrics_miniplayer_title">Показывать тексты в мини-плеере</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Отображает текущую строку в мини плеере, при этом трек перемещается к соответствующему субтитру</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Порядок отображения исполнителя и названия</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Переключить порядок отображения исполнителя и названия в мини-плеере и MediaSession. Включено: «Исполнитель — Название», выключено: «Название — Исполнитель»</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Формат названия песни/исполнителя</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Формат трека, отображаемого с текстом песни в миниплеере и MediaSession. {t} — название, {a} — исполнитель, а {v} — версия, например Acoustic, если она указана в источнике текста. Текст между двумя двоеточиями отображается только тогда, когда у каждой переменной внутри него есть значение; для обычного двоеточия используйте \\: Каждая строка отображается по очереди при смене строки текста песни</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Формат строки текста песни</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Формат строки текста песни в миниплеере и MediaSession. {lrc} — строка, а {n} — сколько раз подряд она поется. Текст между двоеточиями отображается только при повторе строки. Для двоеточия используйте \\:</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Формат должен содержать {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Шаблон строки исполнителя и время анимации</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Минимальное время отображения (мс)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Максимальное время отображения (мс)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Только для многострочных анимаций. Каждый кадр отображается не менее минимального времени. При достижении максимума строка исполнителя сменяется, даже если текст песни остается прежним.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Минимум должен быть 0 или больше. Максимум должен быть больше 0 и не меньше минимума.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Ограничения длины строки</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Лимиты строк текста песни и исполнителя, а также вес полноширинных символов</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Лимит строки текста песни
+Разделять длинные строки на сбалансированные части. 0 отключает разделение."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Лимит строк исполнителя
+Разделить заполненный формат трека на циклические кадры. 0 отключает разделение."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Вес полноширинного символа
+Применяется к обоим лимитам. При значении 1,75 четыре полноширинных символа считаются как 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Введите целые числа для лимитов от 0 до 10000 и вес символа больше 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Инструментальный проигрыш</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Отображается в миниплеере и MediaSession во время инструментального проигрыша. Каждая строка — один кадр анимации. {t} — заголовок, {a} — исполнитель, а {lrc} — последняя строка текста песни</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Смещение времени миниплеера и MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Сдвиг времени появления следующей строки в минимизированном плеере и MediaSession. Используйте отрицательное значение, если строки появляются с опозданием, например, на экране блокировки</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Фильтры</string>
   <string name="morphe_music_lyrics_custom_regex_title">Регулярное выражение для метаданных</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Регулярное выражение применяется к названиям, исполнителям и альбомам перед поиском текстов песен и при оценке совпадения двух названий. Оставьте пустым, чтобы отключить оба. По умолчанию удаляется распространённый мусор, такой как \"Official Video\", \"Remaster\", \"【插曲】\" и \"- Topic\".</string>
@@ -557,6 +578,10 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_text_filter_summary">Регулярное выражение применяется только к оригинальному тексту песни (не к переводам или романизациям)</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Маркеры информационных строк</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Если строки текста неправильно определяются как информационные строки, настройте эти маркеры</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Начинать с заглавной буквы</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Делает первую букву каждой строки текста песни заглавной</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Удалять конечные знаки препинания</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Удаляет точки, запятые, двоеточия и точки с запятой в конце строк текста песни. Вопросительные, восклицательные знаки, многоточия, кавычки и скобки сохраняются</string>
   <string name="morphe_music_lyrics_text_size_title">Размер текста</string>
   <string name="morphe_music_lyrics_text_size_summary">Размер текста песни</string>
   <string name="morphe_music_lyrics_offset_ms_title">Глобальное смещение тайминга</string>

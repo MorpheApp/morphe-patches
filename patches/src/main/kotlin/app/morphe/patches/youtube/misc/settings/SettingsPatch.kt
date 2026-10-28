@@ -48,6 +48,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.fix.accessibility.fixShortsAccessibilityPatch
 import app.morphe.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
 import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
@@ -219,6 +220,7 @@ val settingsPatch = bytecodePatch(
         versionCheckPatch,
         // Currently there is no easy way to make patches mandatory,
         // so for now these are all dependents of this patch.
+        fixShortsAccessibilityPatch,
         fixPlaybackSpeedWhilePlayingPatch,
         fixPreferenceIconPatch,
         fixLikeButtonPatch,
@@ -408,7 +410,7 @@ internal fun modifyActivityForSettingsInjection(
         )
     }.let(activityOnCreateClass.methods::add)
 
-    // Override finish() to intercept back gesture.
+    // Override finish() to intercept back gesture, and to show the restart dialog if needed.
     ImmutableMethod(
         activityOnCreateClass.type,
         if (isYouTubeMusic) "finish" else "onBackPressed",
@@ -426,11 +428,11 @@ internal fun modifyActivityForSettingsInjection(
         addInstructions(
             0,
             """
-                invoke-static {}, $extensionClassType->$extensionMethodName()Z
+                invoke-static { p0 }, $extensionClassType->$extensionMethodName(Landroid/app/Activity;)Z
                 move-result v0
-                if-nez v0, :search_handled
+                if-nez v0, :handled
                 $invokeFinishOpcode { p0 }, Landroid/app/Activity;->finish()V
-                :search_handled
+                :handled
                 return-void
             """
         )

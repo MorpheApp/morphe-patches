@@ -10,6 +10,13 @@ option java_package = "app.morphe.extension.youtube.innertube";
 
 message OfflineCommand {
     optional OfflineVideoEndpoint offlineVideoEndpoint = 73080600;
+    optional OfflinePlaylistEndpoint offlinePlaylistEndpoint = 73082583;
+    // Endpoint of the Play all button of a playlist page header.
+    optional PlaylistWatchEndpoint watchEndpoint = 48687757;
+}
+
+message PlaylistWatchEndpoint {
+    optional string playlistId = 2;
 }
 
 message OfflineVideoEndpoint {
@@ -21,6 +28,18 @@ message OfflineVideoEndpoint {
 enum OfflineVideoAction {
     OFFLINE_VIDEO_ACTION_UNKNOWN = 0;
     OFFLINE_VIDEO_ACTION_ADD = 1;
+}
+
+message OfflinePlaylistEndpoint {
+    optional string playlistId = 1;
+    optional OfflinePlaylistAction action = 2;
+    optional OfflineabilityContainer offlineability = 4;
+}
+
+enum OfflinePlaylistAction {
+    OFFLINE_PLAYLIST_ACTION_UNKNOWN = 0;
+    // Saves the playlist, or removes it if it's saved.
+    OFFLINE_PLAYLIST_ACTION_INFER_AUTOMATICALLY = 9;
 }
 
 message OfflineabilityContainer {
@@ -131,9 +150,90 @@ message OfflineState {
     // Seconds until the saved video must be refreshed with the server.
     optional uint32 policyLifetimeSeconds = 3;
     optional OfflineStateAction action = 5;
+    // Message of a disabled saved video, such as "YouTube Premium required".
+    optional string disabledReason = 6;
 }
 
 enum OfflineStateAction {
     OFFLINE_STATE_ACTION_UNKNOWN = 0;
     OFFLINE_STATE_ACTION_OK = 1;
+    // The saved video stays in the downloads, but can't be played.
+    OFFLINE_STATE_ACTION_DISABLE = 3;
+}
+
+// Buttons of a page header, such as the Play all, Save and Share buttons of a playlist page.
+message FlexibleActionsViewModel {
+    repeated FlexibleActionsRow actionsRows = 1;
+}
+
+message FlexibleActionsRow {
+    repeated FlexibleAction actions = 1;
+}
+
+message FlexibleAction {
+    optional FlexibleActionButtonViewModel buttonViewModel = 461054335;
+    optional PlaylistDownloadButtonViewModel downloadButtonViewModel = 33561776;
+}
+
+message FlexibleActionButtonViewModel {
+    optional ButtonCommand onTap = 4;
+}
+
+message ButtonCommand {
+    optional OfflineCommand innertubeCommand = 169495254;
+}
+
+// Download button of a playlist page header, which shows the download status of the playlist.
+message PlaylistDownloadButtonViewModel {
+    optional string playlistId = 2;
+    optional string completedText = 4;
+    optional string inProgressText = 5;
+    optional string downloadableText = 6;
+    optional string completedA11yText = 7;
+    optional string inProgressA11yText = 8;
+    // Entity keys the download status is read from.
+    optional string downloadStatusKey = 12;
+    optional string generationStatusKey = 13;
+    optional DownloadButtonLayout layout = 14;
+    optional DownloadButtonColor iconColor = 23;
+    optional DownloadButtonColor textColor = 24;
+    optional string downloadableA11yText = 26;
+    optional ButtonCommand onTapCommand = 27;
+    optional DownloadButtonSize buttonSize = 29;
+    optional DownloadButtonStyle buttonStyle = 30;
+    optional string identifier = 31;
+}
+
+// Values of the Download button the server gives to a playlist page header.
+enum DownloadButtonLayout {
+    DOWNLOAD_BUTTON_LAYOUT_UNKNOWN = 0;
+    DOWNLOAD_BUTTON_LAYOUT_PLAYLIST_HEADER = 8;
+}
+
+enum DownloadButtonColor {
+    DOWNLOAD_BUTTON_COLOR_UNKNOWN = 0;
+    DOWNLOAD_BUTTON_COLOR_PLAYLIST_HEADER = 2;
+}
+
+enum DownloadButtonSize {
+    DOWNLOAD_BUTTON_SIZE_UNKNOWN = 0;
+    DOWNLOAD_BUTTON_SIZE_DEFAULT = 1;
+}
+
+enum DownloadButtonStyle {
+    DOWNLOAD_BUTTON_STYLE_UNKNOWN = 0;
+    DOWNLOAD_BUTTON_STYLE_OVERLAY = 4;
+}
+
+// Key of an entity of the entity store.
+message EntityKey {
+    optional bytes entityId = 2;
+    optional int32 entityType = 4;
+    optional int32 persistence = 5;
+}
+
+// Entity id of the download status of a playlist.
+message PlaylistDownloadStatusEntityId {
+    optional string playlistId = 1;
+    optional int32 type = 2;
 }

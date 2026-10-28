@@ -17,24 +17,219 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Налады</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Вы ўпэўнены, што хочаце працягнуць?</string>
+  <string name="morphe_settings_save">Захаваць</string>
+  <string name="morphe_settings_reset">Скінуць</string>
+  <string name="morphe_settings_reset_color">Скінуць колер</string>
+  <string name="morphe_settings_color_invalid">Несапраўдны колер</string>
+  <string name="morphe_settings_restart_title">Патрабуецца перазагрузка</string>
+  <string name="morphe_settings_restart_dialog_message">Перазапусціце праграму, каб гэтыя змены ўступілі ў сілу</string>
+  <string name="morphe_settings_restart">Перазагрузіць</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Імпартаваць</string>
+  <string name="morphe_settings_import_copy">Капіяваць</string>
+  <string name="morphe_settings_import_reset">Налады Morphe скінуты да пачатку</string>
+  <string name="morphe_settings_import_success">Імпартавана %s налад</string>
+  <string name="morphe_settings_import_failure_parse">Імпарт недаўлічыўся: %s</string>
+  <string name="morphe_settings_navigate_up">Перайсці ўверх</string>
+  <string name="morphe_settings_search_hint">Пошук па наладах</string>
+  <string name="morphe_settings_screen_info_title">Пра праграму</string>
+  <string name="morphe_settings_search_no_results_title">Па \'%s\' нічога не знойдзена</string>
+  <string name="morphe_settings_search_no_results_summary">Спрабуйце іншае ключавое слова</string>
+  <string name="morphe_settings_search_recent_searches">Нядаўнія запыты</string>
+  <string name="morphe_settings_search_remove_message">Выдаліць з гісторыі пошуку?</string>
+  <string name="morphe_settings_search_remove">Выдаліць з гісторыі пошуку</string>
+  <string name="morphe_settings_search_clear_history">Ачысціць гісторыю пошуку</string>
+  <string name="morphe_settings_search_clear_history_message">Вы ўпэўнены, што хочаце ачысціць усю гісторыю пошуку?</string>
+  <string name="morphe_settings_search_tips_title">Падказкі па пошуку</string>
+  <string name="morphe_settings_search_tips_summary">"• Націсніце на шлях, каб перайсці па ім
+• Зацісніце настройку, каб перайсці да яе
+• Націсніце Enter, каб захаваць пошуковы запыт у гісторыі
+• Пры пошуку рэгістр і пунктуацыя ігнаруюцца
+• Бацькоўскія настуроўкі відацейся вышэй за адключаныя дачернія настуроўкі"</string>
+  <string name="morphe_settings_search_empty_history_title">Гісторыя пошуку пустая</string>
+  <string name="morphe_settings_search_empty_history_summary">Каб захаваць гісторыю пошуку, увядзіце пошуковы запыт і націсніце Enter</string>
+  <string name="morphe_settings_search_history_title">Паказваць гісторыю пошуку па настуроўках</string>
+  <string name="morphe_settings_name_title">Назва налад Morphe</string>
+  <string name="morphe_settings_name_default_item">Звычайны</string>
+  <string name="morphe_settings_name_entry_2">Дадатковае</string>
+  <string name="morphe_settings_name_entry_3">Твікі</string>
+  <string name="morphe_settings_name_entry_4">Час марфінгу</string>
   <string name="morphe_settings_name_custom_item">Карыстальніцкае</string>
+  <string name="morphe_settings_name_custom_item_hint">Увядзіце імя</string>
+  <string name="morphe_settings_name_empty_warning">Імя не можа быць пустым</string>
+  <string name="morphe_show_menu_icons_title">Паказваць іконкі настуроўкаў Morphe</string>
+  <string name="morphe_settings_menu_copy_path">Скопіявана: %s</string>
+  <string name="morphe_language_title">Мова Morphe</string>
+  <string name="morphe_language_user_dialog_message">"Пераклады для некаторых моў могуць адсутнічаць або быць няпоўнымі.
+
+Каб перакласці новыя мовы або палепшыць існуючыя пераклады, наведзіцеся па адрасе morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Мова праграмы</string>
+  <string name="morphe_pref_import_export_title">Імпарт / Экспарт</string>
+  <string name="morphe_pref_import_export_summary">Імпартаваць / Экспартаваць налады Morphe</string>
+  <string name="morphe_settings_import_file">Імпартаваць з файла</string>
+  <string name="morphe_settings_import_file_success">Налады паспяхова імпартаваны, націсніце \"Захаваць\", каб прымяніць іх</string>
+  <string name="morphe_settings_import_file_failed">Не ўдалося імпартаваць налады</string>
+  <string name="morphe_settings_export_file">Экспартаваць у файл</string>
+  <string name="morphe_settings_export_file_success">Налады паспяхова экспартаваны</string>
+  <string name="morphe_settings_export_file_failed">Не удалось экспартаваць налады</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Вы карыстаецеся найсвежай версіяй Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Вы выкарыстоўваеце версію Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Даступна абнаўленне: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Каб абнавіць патчы, выкарыстайце Morphe для паўторнага патчавання гэтай праграмы</string>
+  <string name="morphe_settings_about_links_dev_header">Заўвага</string>
+  <string name="morphe_settings_about_links_dev_body">Гэтая версія з\'яўляецца папярэднім выпускам, і вы можаце сунуцца з нечаканымі праблемамі</string>
+  <string name="morphe_settings_about_links_header">Афіцыйныя спасылкі</string>
+  <string name="morphe_settings_about_links_website">Вебсайт</string>
+  <string name="morphe_settings_about_links_donate">Данатаць</string>
+  <string name="morphe_settings_about_links_translations">Пераклады</string>
+  <string name="morphe_settings_about_links_credits">Уклад</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Актуальна</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Даступна абнаўленне</string>
+  <string name="morphe_settings_about_contributors_current">Бягучая распрацоўка</string>
+  <string name="morphe_settings_about_contributors_prior">Папярэдняя распрацоўка</string>
+  <string name="morphe_settings_about_links_morphe">Актыўная распрацоўка</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Заўвагі аб ліцэнзіі</string>
+  <string name="morphe_settings_about_licenses_loading">Загрузка…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Адладка</string>
+  <string name="morphe_debug_screen_summary">Налада пашырэных опцый распрацоўшчыка і дыягнастычных сінхронаў</string>
+  <string name="morphe_debug_title">Уключыць адлагоджаныя сінхроны</string>
+  <string name="morphe_debug_stacktrace_title">Стэк выклікаў лага адладкі</string>
+  <string name="morphe_debug_stacktrace_summary">Уключае трасы стэка ў адлагоджаных сінхронах, каб дапамагчы вызначыць памылкі</string>
+  <string name="morphe_debug_toast_on_error_title">Паказваць паведамленне пры памылцы Morphe</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Выключаючы паведамленні аб памылках, вы схаваеце ўсе паведамленні аб памылках Morphe.
+
+Вы не будзеце атрымліваць паведамленні аб любых нечаканых падзеях"</string>
+  <string name="morphe_debug_export_logs_title">Экспартаваць лагі адладкі</string>
+  <string name="morphe_debug_export_logs_summary">Экспартаваць налагодзванням-логі Morphe</string>
+  <string name="morphe_debug_export_logs_success">Налагодзванням-логі паспяхова экспартаваны</string>
+  <string name="morphe_debug_export_logs_failed">Не ўдалося экспартаваць налагодзванням-логі</string>
+  <string name="morphe_debug_logs_search_hint">Пошук у логах адладкі…</string>
+  <string name="morphe_debug_export_logs_clear">Ачысціць</string>
+  <string name="morphe_debug_logs_disabled">Адладчывы лагаванне адключана</string>
+  <string name="morphe_debug_logs_none_found">Налагодзванням-логі не знойдзены</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Налагодзванням-логі скапіяваны</string>
+  <string name="morphe_debug_logs_failed_to_export">Не ўдалося экспартаваць налагодзванням-логі: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Налагодзванням-логі ачышчаны</string>
+  <string name="morphe_debug_feature_flags_manager_title">Менеджэр функцыянальных сцягаў</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Кіраванне булевымі сцягамі функцый</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Пошук сцягоў функцый…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Неактыўныя (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Актыўныя (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Заблакавана (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Прымусова (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Аўта</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Выкл.</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Укл.</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Уłączyć прымусова</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Заблакаваць</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Выдаліць</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Сцяги функцый захаваны</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Скінута сцягі функцый</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Сцягі функцый скопіяваны ў буфер абмену</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перазапусціце праграму, каб выкарыстаць гэтую настройку</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Імпорт і экспорт</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Імпартавана %s прагрэсіўных сцягаў</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Сцягі функцый не знайдзены</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Сцягі функцый паспяхова экспартаваны</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Не удалось экспартаваць сцягі функцый</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Сцягі функцый загружаны, націсніце \"Захаваць\", каб прымяніць</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Не удалось прачытаць файл</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Бінарны пошук</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Вызначае, які працяк функцыянальнасці выклікае паводзіны праграмы.
+
+Палова з %s працякоў заблакавана, і пасля кожнага перазапуску вы паведамляеце, ці застаецца паводзіна.
+
+Адна разім адтворыце паводзіну перад пачатком, інакш працякі, якія праграма яшчэ не запытала, будуць адсутнічаць у пошуку"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Пачаць</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Няма сيزةвых сцягаў для пошуку.
+
+У бінарным пошуку можна выкарыстоўваць толькі тыя сцягі, да якіх праграма звярталася і якія ў дадзены момант не прымусава ўключаны"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Крок %1$s
+
+Засталося сцягаў: %2$s, з іх %3$s заблакаваны для гэтага кроку.
+
+Перазапусціце праграму, праверце, ці заўважаецца паводзіна, затым адкажыце ніжэй"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Ідзе пошук сيزةвага сцяга</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Паводзіна заўважаецца</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Паводзіна не заўважаецца</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Скасаваць бінарны пошук</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Бінарны пошук скасаваны</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Сيزةвы сцяг %s выклікае гэтую паводзіну.
+
+Цяпер ён заблакаваны"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Не ўдалося знайсці працяк функцыянальнасці.
+
+Здаецца, што паводзіны праграмы не кіруюцца працяком функцыянальнасці"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Не ўдалося знайсці адзіны працяк функцыянальнасці.
+
+Паводзіна знікла раней у пошуку, таму можа быць задейна больш за адзін працяк або адзін з адказаў быў няправільным"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Адкрыць налады MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG не ўсталяваны. Усталюйце яго</string>
+  <string name="gms_core_dialog_title">Патрабуюцца дзеянні</string>
+  <string name="gms_core_dialog_outdated_message">"Ваша версія MicroG v%1s састарэла і можа выклікаць праблемы.
+
+Калі ласка, абновіце MicroG да найпрыхраснейшай версіі v%2s"</string>
+  <string name="gms_core_dialog_update_text">Абнавіць</string>
+  <string name="gms_core_dialog_ignore_text">Ігнараваць</string>
+  <string name="gms_core_dialog_conflict_message">"Усталяваны MicroG не рэкамендуецца Morphe:
+
+%1s
+
+Націсніце, каб выдаліць яго, затым зноў адкрыйце гэтую праграму і ўсталюйце MicroG RE"</string>
+  <string name="gms_core_dialog_uninstall_text">Выдаліць</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG не мае дазволу працаваць у фоне.
+
+Пазнаёмся з інструкцыяй \"Don't kill my app\" для вашага тэлефона і прымяніце яе да ўсталёўкі MicroG.
+
+Гэта неабходна для працы праграмы"</string>
+  <string name="gms_core_dialog_open_website_text">Адкрыць вебсайт</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Аптымізацыю батарэі для MicroG трэба адключаць, каб пазбегнуць праблем.
+
+Адключэнне аптымізацыі батарэі для MicroG не паўплывае негатыўна на выкарыстанне зараду.
+
+Націсніце кнопку працягу і дазвольце змены аптымізацыі"</string>
+  <string name="gms_core_dialog_continue_text">Працягнуць</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Паказаць дыялогавае акно аптымізацыі батарэі MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Адключэнне гэтай функцыі скрое запыт на аптымізацыю батарэі MicroG.
+
+Калі налады аптымізацыі батарэі не будуць змененыя, вы можаце сунуцься з наступным:
+• Праграма можа выпадкова закрывацца
+• Апавешчэнні могуць не працаваць
+• Відтварванне ў фоне можа не працаваць"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Апрацоўка спасылак праграмы</string>
+  <string name="morphe_link_handling_summary">Наладзіць адкрыццё спасылак у гэтай праграме</string>
+  <string name="morphe_link_handling_step1_title">Крок 1: Адключыце арыгінальныя спасылкі праграмы</string>
+  <string name="morphe_link_handling_step1_message">Адкрыйце налады арыгінальнай праграмы і адключайце ўсе спасылкі даменаў</string>
+  <string name="morphe_link_handling_step2_title">Крок 2: Уключыце спасылкі патчанай праграмы</string>
+  <string name="morphe_link_handling_step2_message">Адкрыйце налады патчанай праграмы і ўключыце ўсе спасылкі даменаў</string>
+  <string name="morphe_link_handling_open">Адкрыць налады</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Эксперыментальнае папярэджанне 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Вы выкарыстоўваеце eksperыментальную версію праграмы ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Очакуйце дзіўнай паводзіны праграмы або невядомых памылак, пакуль мы дапрацоўваем патчы для гэтай версіі праграмы.
+&lt;br/&gt;&lt;br/&gt;
+Калі вы жадаеце максімальна стабільнай працы, тады &lt;b&gt;выдаліце&lt;/b&gt; гэтую версію і ўсталюйце рэкамендаваную версію праграмы ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Я хачу эксперыментальную версію</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Я хачу стабільную версію</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Журнал паломкі захаваны ў дакументы карыстальніка: %s</string>
+  <string name="morphe_crash_log_saved">Журнал паломкі захаваны: %s</string>
 </resources>

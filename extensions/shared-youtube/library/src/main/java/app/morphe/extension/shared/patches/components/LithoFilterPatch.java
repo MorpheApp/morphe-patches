@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -74,6 +73,7 @@ public final class LithoFilterPatch {
     public interface ListSectionInterface {
         /**
          * Removes the item from the section, which lays itself out again without it.
+         * The rows of the grids are laid out again too, also when the section is no longer a grid.
          *
          * @return If the section has the item.
          */
@@ -106,13 +106,6 @@ public final class LithoFilterPatch {
     private static final int LITHO_LAYOUT_THREAD_POOL_SIZE = 1;
 
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-
-    /**
-     * Because litho filtering is multithreaded and the buffer is passed in from a different injection point,
-     * the buffer is saved to a ThreadLocal so each calling thread does not interfere with other threads.
-     * Used for 20.21 and lower.
-     */
-    private static final ThreadLocal<byte[]> bufferThreadLocal = new ThreadLocal<>();
 
     /**
      * Observable lists that hold the items of the lists, such as the feed.
@@ -180,24 +173,6 @@ public final class LithoFilterPatch {
     }
 
     /**
-     * Injection point.  Called off the main thread.
-     * Targets 20.21 and lower.
-     */
-    public static void setProtoBuffer(@Nullable ByteBuffer buffer) {
-        if (buffer == null || !buffer.hasArray()) {
-            // It appears the buffer can be cleared out just before the call to #filter()
-            // Ignore this null value and retain the last buffer that was set.
-            Logger.printDebug(() -> "Ignoring null or empty buffer: " + buffer);
-        } else {
-            // Set the buffer to a thread local.  The buffer will remain in memory, even after the call to #filter completes.
-            // This is intentional, as it appears the buffer can be set once and then filtered multiple times.
-            // The buffer will be cleared from memory after a new buffer is set by the same thread,
-            // or when the calling thread eventually dies.
-            bufferThreadLocal.set(buffer.array());
-        }
-    }
-
-    /**
      * Injection point.
      */
     public static boolean isFiltered(ContextInterface contextInterface, @Nullable byte[] bytes,
@@ -219,14 +194,8 @@ public final class LithoFilterPatch {
                 accessibility = "";
             }
 
-            byte[] buffer = useLegacyLithoFiltering()
-                    ? bufferThreadLocal.get()
-                    : bytes;
-            // Potentially the buffer may have been null or never set up until now.
-            // Use an empty buffer so the litho id/path filters that do not use a buffer still work.
-            if (buffer == null) {
-                buffer = EMPTY_BYTE_ARRAY;
-            }
+            // Use an empty buffer if there is none, so the litho id/path filters that do not use a buffer still work.
+            byte[] buffer = bytes == null ? EMPTY_BYTE_ARRAY : bytes;
 
             LithoFilterParameters parameter = new LithoFilterParameters(
                     contextInterface, identifier, pathBuilder, accessibility,
@@ -279,6 +248,20 @@ public final class LithoFilterPatch {
 
     /**
      * Injection point.
+     * Called when a section of a list is released, such as when the list is created again.
+     * <p>
+     * A released section can share the list of its items with the section that replaces it.
+     * Removing an item through the released section would not lay out the rows of the new one
+     * again, and the rows that are views of the list would throw on the next access.
+     */
+    public static void removeListSection(ListSectionInterface section) {
+        synchronized (listSections) {
+            listSections.removeIf(reference -> reference.get() == section);
+        }
+    }
+
+    /**
+     * Injection point.
      * Called when the whole element is hidden.
      * <p>
      * Hiding an element replaces it with an empty component, but the item of the element stays
@@ -301,79 +284,62 @@ public final class LithoFilterPatch {
                     Object item = listItemDecorator.patch_getListItem();
                     if (item != null) {
                         // The lists can only be changed on the main thread.
-                        Utils.runOnMainThread(() -> removeListItem(item));
+                        Utils.runOnMainThread(() -> {
+                            // The sections group their items into the rows of some grids, such as
+                            // the related videos, and lay the rows out again. Other grids, such as
+                            // the feed, have a list for each item.
+                            List<ListSectionInterface> sections = new ArrayList<>();
+                            synchronized (listSections) {
+                                Iterator<WeakReference<ListSectionInterface>> iterator = listSections.iterator();
+                                while (iterator.hasNext()) {
+                                    ListSectionInterface section = iterator.next().get();
+                                    if (section == null) {
+                                        iterator.remove();
+                                        continue;
+                                    }
+                                    sections.add(section);
+                                }
+                            }
+
+                            // Removing the item notifies the list observers, so it is done outside the lock.
+                            for (ListSectionInterface section : sections) {
+                                if (section.patch_removeListItem(item)) {
+                                    Logger.printDebug(() -> "Removed list item of filtered element: " + item);
+                                    return;
+                                }
+                            }
+
+                            List<?> itemList = null;
+                            int itemIndex = -1;
+                            synchronized (observableLists) {
+                                Iterator<WeakReference<List<?>>> iterator = observableLists.iterator();
+                                while (iterator.hasNext()) {
+                                    List<?> list = iterator.next().get();
+                                    if (list == null) {
+                                        iterator.remove();
+                                        continue;
+                                    }
+
+                                    itemIndex = list.indexOf(item);
+                                    if (itemIndex >= 0) {
+                                        itemList = list;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            // Removing the item notifies the list observers, so it is done outside the lock.
+                            if (itemList != null) {
+                                itemList.remove(itemIndex);
+                                Logger.printDebug(() -> "Removed list item of filtered element: " + item);
+                            }
+                        });
                     }
                 }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "removeFilteredElementListItem failure", ex);
         }
-    }
-
-    private static void removeListItem(Object item) {
-        // The sections group their items into the rows of some grids, such as the related videos,
-        // and lay the rows out again. Other grids, such as the feed, have a list for each item.
-        if (removeListSectionItem(item) || removeObservableListItem(item)) {
-            Logger.printDebug(() -> "Removed list item of filtered element: " + item);
-        }
-    }
-
-    private static boolean removeListSectionItem(Object item) {
-        List<ListSectionInterface> sections = new ArrayList<>();
-        synchronized (listSections) {
-            Iterator<WeakReference<ListSectionInterface>> iterator = listSections.iterator();
-            while (iterator.hasNext()) {
-                ListSectionInterface section = iterator.next().get();
-                if (section == null) {
-                    iterator.remove();
-                    continue;
-                }
-                sections.add(section);
-            }
-        }
-
-        // Removing the item notifies the list observers, so it is done outside the lock.
-        for (ListSectionInterface section : sections) {
-            if (section.patch_removeListItem(item)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private static boolean removeObservableListItem(Object item) {
-        List<?> itemList = null;
-        int itemIndex = -1;
-
-        synchronized (observableLists) {
-            Iterator<WeakReference<List<?>>> iterator = observableLists.iterator();
-            while (iterator.hasNext()) {
-                List<?> list = iterator.next().get();
-                if (list == null) {
-                    iterator.remove();
-                    continue;
-                }
-
-                itemIndex = list.indexOf(item);
-                if (itemIndex >= 0) {
-                    itemList = list;
-                    break;
-                }
-            }
-        }
-
-        // Removing the item notifies the list observers, so it is done outside the lock.
-        if (itemList != null) {
-            itemList.remove(itemIndex);
-            return true;
-        }
-
-        return false;
-    }
-
-    private static boolean useLegacyLithoFiltering() {
-        return false; // Method is modified during patching.
     }
 
     /**

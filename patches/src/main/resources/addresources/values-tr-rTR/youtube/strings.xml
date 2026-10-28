@@ -228,7 +228,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_store_button_title">Mağaza düğmesini gizle</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Abone ol düğmesini gizle</string>
-  <string name="morphe_explore_menu_screen_title">Menüyü keşfet</string>
+  <string name="morphe_explore_menu_screen_title">Keşfet menüsü</string>
   <string name="morphe_explore_menu_screen_summary">Keşfet menüsünde hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_courses_menu_title">Dersler menüsünü gizle</string>
   <string name="morphe_hide_explore_button_title">Keşfet düğmesini gizle</string>
@@ -394,6 +394,9 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_hide_shopping_links_title">Alışveriş bağlantılarını gizle</string>
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizle</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promosyonlarını gizle</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Yükleniyor...</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Şu anki kanal:</string>
   <string name="morphe_channel_whitelist_add">Beyaz listeye ekle</string>
@@ -410,6 +413,9 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_channel_search_results">Kanal arama sonuçları</string>
   <string name="morphe_channel_search_no_results">Bu kanalda sonuç bulunamadı</string>
   <string name="morphe_channel_search_failed">Bu kanalda arama yapılamadı</string>
+  <string name="morphe_channel_search_videos">Videolar</string>
+  <string name="morphe_channel_search_posts">Gönderiler</string>
+  <string name="morphe_channel_search_no_posts">Bu kanalda eşleşen gönderi bulunamadı</string>
   <string name="morphe_channel_search_sort_relevance">Alaka</string>
   <string name="morphe_channel_search_sort_most_viewed">En çok izlenen</string>
   <string name="morphe_channel_search_sort_least_viewed">En az izlenen</string>
@@ -495,6 +501,9 @@ Soru düğmesine sahip olan bir video bir kez açıldıktan sonra bu özellik, m
   <string name="morphe_external_downloader_quick_video">Video</string>
   <string name="morphe_external_downloader_quick_audio">Ses</string>
   <string name="morphe_external_downloader_quick_options">Tüm seçenekler</string>
+  <string name="morphe_shorts_download_flyout_button_title">Shorts menüsünde indiri göster</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts oynatıcısına harici indirici açılır menü öğesi ekler</string>
+  <string name="morphe_shorts_download_flyout_title">İndir</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Seslendirme çevirisi</string>
   <string name="morphe_vot_screen_summary">Cihaz üzerindeki metin-konuşma özelliğini kullanarak video altyazılarını oynatmayla senkronize bir şekilde yüksek sesle okuyun.</string>
@@ -605,6 +614,8 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Açılır menüden çocuklarla ilgili videoları “Daha sonra izle” bölümüne kaydetmeye olanak tanır</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">“Daha sonra izle” butonunu shorts açılır menüsünde göster</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Açılır menüden shorts videolarını “Daha sonra izle” bölümüne kaydetmeye olanak tanır</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\"Daha sonra izle\"yi oynatma listesine yönlendir</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Daha sonra izle</string>
   <string name="morphe_queue_flyout_title">Morphe sırasına ekle</string>
   <string name="morphe_queue_restore_title">Sırayı oturumlar arasında koru</string>
   <string name="morphe_queue_restore_summary">Uygulama yeniden başlatıldığında sıra korunur</string>
@@ -827,8 +838,6 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_auto_captions_style_entry_2">Asla gösterme</string>
   <string name="morphe_auto_captions_style_entry_3">Ses kapatılmadığında göster</string>
   <string name="morphe_auto_captions_style_entry_4">Ses kapatıldığında göster</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Otomatik altyazıları göster</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Otomatik altyazıları gizle</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Tercih edilen altyazı dili</string>
   <string name="morphe_preferred_caption_language_summary">Önce sağlayıcı altyazılarını seçer, ardından otomatik olarak tercih edilen dile çevirir</string>
@@ -1101,20 +1110,21 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Otomotiv</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Değişiklikler:
+  <string name="morphe_change_form_factor_user_dialog_message">"Değişiklikler şunları içerir:
 
 Tablet düzeni
-• Topluluk gönderileri gizlenir
+• Topluluk gönderileri gizlidir
 • Akışlarda oynatma ayarı kullanılamaz
 • Shorts'ta Remix düğmesi ve Ses düğmesi bulunmaz
-• 'Daha fazla video' katmanı kullanılamayabilir
+• 'Daha fazla video' paneli kullanılamayabilir
 • Daraltılmamış eski video eylem çubuğu gösterilir
+• Açılır menü öğeleri düzgün çalışmayabilir
 
 Otomotiv düzeni
 • Akış, konulara ve kanallara göre düzenlenmiştir
 • Akışlarda oynatma ayarı kullanılamaz
-• Shorts'ta Remix düğmesi ve Ses düğmesi kullanılamaz
-• \"Daha fazla video\" katmanı kullanılamayabilir
+• Shorts'ta Remix düğmesi ve Ses düğmesi bulunmaz
+• 'Daha fazla video' paneli kullanılamayabilir
 • Shorts, normal oynatıcıda açılır
 • Daraltılmamış eski video eylem çubuğu gösterilir"</string>
   <string name="morphe_tablet_layout_in_player_title">Oynatıcıda tablet düzenini etkinleştir</string>
@@ -1122,9 +1132,6 @@ Otomotiv düzeni
   <string name="morphe_tablet_layout_in_player_summary">"Eski oynatıcı düzenini geri yükler
 
 Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha fazla video' katmanı kullanılamayabilir"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Bunu etkinleştirilmek, oynatıcının altında gösterilen yorumlar veya 'Daha fazla video' kısımları gibi bazı oynatıcı düzen özelliklerini bozabilir.
-
-Tablet düzeni artık YouTube tarafından desteklenmiyor ve güncel YouTube sürümlerinde kısmen veya tamamen bozulmuş durumda. Çalışan bir tablet düzeni için, Youtube 20.21.37'yi yamalayın"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Eski altyazı davranışını geri yükle</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Oynatma listesine kaydetme için eski düzeni geri getir</string>
@@ -1242,6 +1249,7 @@ Tablet düzeni artık YouTube tarafından desteklenmiyor ve güncel YouTube sür
   <string name="morphe_fix_status_bar_layout_title">Durum çubuğunun üst barları kapatmasını düzelt</string>
   <string name="morphe_fix_status_bar_layout_summary">Üst barları kapatmaması ve oynatıcının üzerinde boş alan bırakmaması için durum çubuğu düzenini tutarlı hale getirir. Uygulama çöktüğünde veya üst barlar yanlış göründüğünde bu özelliği kapatın</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Işıltı</string>
   <string name="morphe_theme_color_light_title">Açık tema arka plan</string>
   <string name="morphe_theme_color_light_entry_2">Beyaz</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Beyaz)</string>
@@ -1264,6 +1272,9 @@ Tablet düzeni artık YouTube tarafından desteklenmiyor ve güncel YouTube sür
   <string name="morphe_seekbar_custom_color_accent_summary">Video ilerleme çubuğunun ikincil rengini ayarlayın</string>
   <string name="morphe_seekbar_custom_color_invalid">İlerleme çubuğu renk değeri geçersiz</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Orijinal analog</string>
+  <string name="morphe_custom_branding_icon_entry_9">Orijinal pasta</string>
+  <string name="morphe_custom_branding_icon_entry_10">Orijinal metal</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Başlık logosu</string>
   <string name="morphe_header_logo_entry_1">Varsayılan</string>
@@ -1628,4 +1639,17 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_series_tracker_no_search_results">Dizi bulunamadı</string>
   <string name="morphe_series_tracker_untitled_episode">İsimsiz bölüm</string>
   <string name="morphe_series_tracker_unavailable_episode">Mevcut olmayan bölüm</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Niconico yorumları</string>
+  <string name="morphe_niconico_comments_screen_summary">Canlı sohbeti ve sohbet tekrarını, videonun üzerinden kayan yorumlar olarak göster</string>
+  <string name="morphe_niconico_comments_summary">Video oynatıcıda bir katman düğmesi gösterir. Yorumları göstermek veya gizlemek için dokunun, hızlı ayarlar için basılı tutun</string>
+  <string name="morphe_niconico_comments_font_size_title">Yorum yazı tipi boyutu</string>
+  <string name="morphe_niconico_comments_font_size_summary">Yorumların metin boyutu (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Yorum opaklığı</string>
+  <string name="morphe_niconico_comments_opacity_summary">Yorum metninin ve arka planlarının opaklığı</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Yolculuk süresi</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Yorumların ekranı geçmesi için geçen saniye sayısı. Düşük değerler daha hızlı hareket eder</string>
+  <string name="morphe_niconico_comments_max_length_title">Maksimum yorum uzunluğu</string>
+  <string name="morphe_niconico_comments_max_length_summary">Bunu aşan karakter sayısına sahip yorumları gizler. Her emoji bir karakter olarak sayılır</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Sınırsız</string>
 </resources>

@@ -24,7 +24,6 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -161,17 +160,15 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             }
         }
 
-        if (is_20_28_or_greater) {
-            arrayOf(
-                CastButtonPlayerFeatureFlagFingerprint,
-                CastButtonActionFeatureFlagFingerprint // Cast button in the feed.
-            ).forEach { fingerprint ->
-                fingerprint.matchAll().forEach {
-                    it.method.insertLiteralOverride(
-                        it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS->hideCastButton(Z)Z"
-                    )
-                }
+        arrayOf(
+            CastButtonPlayerFeatureFlagFingerprint,
+            CastButtonActionFeatureFlagFingerprint // Cast button in the feed.
+        ).forEach { fingerprint ->
+            fingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->hideCastButton(Z)Z"
+                )
             }
         }
 

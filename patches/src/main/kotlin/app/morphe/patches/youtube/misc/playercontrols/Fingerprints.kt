@@ -136,10 +136,13 @@ internal object PlayerCommentTeaserFeatureFlagFingerprint : Fingerprint(
     )
 )
 
-
-internal object RecycleViewScrollingFlagFingerprint : Fingerprint(
+/**
+ * Watch feed resize: scrolling the watch next feed resizes the player,
+ * and every scroll event relayouts the whole watch page.
+ */
+internal object WatchFeedResizeFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
-        literal(45763727)
+        literal(45763727L) // 21.11+
     )
 )
 

@@ -548,8 +548,29 @@ Erforderliche Cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_mediasession_summary">Zeigt die aktuelle Zeile auf dem Sperrbildschirm, Android Auto und Bluetooth. Benötigt Android 11 oder neuer</string>
   <string name="morphe_music_lyrics_miniplayer_title">Miniplayer-Songtexte anzeigen.</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Zeigt die aktuelle Zeile im Miniplayer an, wobei der Titel in den Untertitel verschoben wird</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Anzeige von Künstler und Titel […] EIN „Künstler – Titel“ und AUS „Titel – Künstler“. Das hat keinen Einfluss auf die Songtextsuche.</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Schaltet die Anzeigereihenfolge von Interpret und Titel im Miniplayer und in MediaSession um. EIN „Interpret - Titel“ und AUS „Titel - Interpret“. Dies hat keinen Einfluss auf die Songtextsuche.</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Format für Songtitel/Künstler</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Format des Titels, der zusammen mit dem Songtext im Miniplayer und in der MediaSession angezeigt wird. {t} ist der Titel, {a} ist der Künstler und {v} ist die Version, z. B. Acoustic, sofern die Songtextquelle eine bereitstellt. Text zwischen zwei Doppelpunkten wird nur angezeigt, wenn jede darin enthaltene Variable einen Wert hat; schreiben Sie \\: für einen einfachen Doppelpunkt. Jede Zeile wird nacheinander angezeigt und wechselt, sobald sich der Songtext ändert</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Format der Songtextzeile</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Format der Songtextzeile im Miniplayer und in der MediaSession. {lrc} ist die Zeile und {n} ist die Anzahl der aufeinanderfolgenden Wiederholungen. Text zwischen Doppelpunkten wird nur angezeigt, wenn die Zeile wiederholt wird. Verwenden Sie \\: für einen Doppelpunkt</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Das Format muss {lrc} enthalten</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Vorlage für die Künstlerzeile und Timing der Animation</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimale Bildschirmzeit (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maximale Bildschirmzeit (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Nur für mehrzeilige Animationen. Behalte jeden Frame für mindestens die Mindestzeit bei. Beim Maximum rückt die Künstlerzeile weiter, selbst wenn der Songtext gleich bleibt.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Das Minimum muss 0 oder größer sein. Das Maximum muss größer als 0 und mindestens so groß wie das Minimum sein.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Zeilenlängenbeschränkungen</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Beschränkungen für Songtext- und Künstlerzeilen sowie Gewichtung von Vollbreite-Zeichen</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Limit für Songtextzeile
+Längere Songtexte in ausgeglichene Hälften aufteilen. 0 deaktiviert die Aufteilung."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Zeilenlimit für Künstler
+Teilt das ausgefüllte Track-Format in zyklische Frames auf. 0 deaktiviert die Aufteilung."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Gewichtung von Vollbreite-Zeichen
+Überträgt sich auf beide Limits. Bei 1,75 zählen vier Vollbreite-Zeichen als 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Geben Sie ganzzahlige Limits von 0 bis 10000 und eine Zeichengewichtung größer als 0 ein</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentalpause</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Wird im Miniplayer und in der MediaSession während einer Instrumentalpause angezeigt. Jede Zeile ist ein Animationsframe. {t} ist der Titel, {a} ist der Künstler und {lrc} ist die letzte Textzeile</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Timing-Offset für Miniplayer und MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Verschiebt den Zeitpunkt, zu dem die nächste Zeile im Miniplayer und in der MediaSession angezeigt wird. Verwenden Sie einen negativen Wert, wenn Zeilen zu spät erscheinen, zum Beispiel auf dem Sperrbildschirm</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filter</string>
   <string name="morphe_music_lyrics_custom_regex_title">RegEx für Songtextfilter</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Regulärer Ausdruck, der auf Titel, Interpreten und Alben angewendet wird, bevor Songtexte gesucht werden und beim Bewerten, ob zwei Titel übereinstimmen. Leer lassen, um beides zu deaktivieren. Die Standardeinstellung entfernt häufiges Beiwerk wie \"Official Video\", \"Remaster\", \"【插曲】\" und \"- Topic\".</string>
@@ -557,6 +578,10 @@ Erforderliche Cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_text_filter_summary">Regulärer Ausdruck, der nur auf den Originaltext der Songtexte angewendet wird (nicht auf Übersetzungen oder Romanisierungen). Leer lassen, um zu deaktivieren.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Markierungen für Infozeilen.</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Wenn Songtexte fälschlicherweise nach unten herausgefiltert werden, passe dies an oder leere das Feld. […] Leer lassen, um zu deaktivieren.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Ersten Buchstaben großschreiben</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Schreibt den ersten Buchstaben jeder Liedtextzeile groß</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Abschließende Satzzeichen entfernen</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Entfernt Punkte, Kommas, Doppelpunkte und Semikolons am Ende von Liedtextzeilen. Fragezeichen, Ausrufezeichen, Auslassungszeichen, Anführungszeichen und Klammern bleiben erhalten</string>
   <string name="morphe_music_lyrics_text_size_title">Textgröße</string>
   <string name="morphe_music_lyrics_text_size_summary">Größe des Liedtextes</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globaler Zeitversatz</string>

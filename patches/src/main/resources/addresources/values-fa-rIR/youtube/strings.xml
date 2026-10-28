@@ -393,6 +393,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">پنهان‌کردن پیوندهای خرید</string>
   <string name="morphe_hide_video_ads_title">پنهان‌کردن تبلیغات ویدئویی</string>
   <string name="morphe_hide_youtube_premium_promotions_title">پنهان‌کردن تبلیغ‌های YouTube Premium</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">در حال بارگیری…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">کانال فعلی:</string>
   <string name="morphe_channel_whitelist_add">افزودن به فهرست مجاز</string>
@@ -409,6 +412,9 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">نتایج جستجو در کانال</string>
   <string name="morphe_channel_search_no_results">چیزی در این کانال پیدا نشد</string>
   <string name="morphe_channel_search_failed">نمی‌توان در این کانال جست‌وجو کرد</string>
+  <string name="morphe_channel_search_videos">ویدئوها</string>
+  <string name="morphe_channel_search_posts">پست‌ها</string>
+  <string name="morphe_channel_search_no_posts">هیچ پستی در این کانال مطابقت ندارد</string>
   <string name="morphe_channel_search_sort_relevance">مرتبط‌ترین</string>
   <string name="morphe_channel_search_sort_most_viewed">بیشترین بازدید</string>
   <string name="morphe_channel_search_sort_least_viewed">کمترین بازدید</string>
@@ -494,6 +500,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_video">ویدئو</string>
   <string name="morphe_external_downloader_quick_audio">صدا</string>
   <string name="morphe_external_downloader_quick_options">همه گزینه‌ها</string>
+  <string name="morphe_shorts_download_flyout_button_title">نمایش دانلود در منوی Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">افزودن گزینه دانلود خارجی در منوی کشویی پخش کننده Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">دانلود</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ترجمهٔ صوتی</string>
   <string name="morphe_vot_screen_summary">زیرنویس‌های ویدئو را با تبدیل متن به گفتار روی دستگاه و همگام با پخش، بلند می‌خواند</string>
@@ -604,6 +613,8 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">امکان ذخیره ویدیوهای مرتبط با کودکان در «تماشای بعداً» را از منوی بازشو فراهم می‌کند</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">نمایش دکمهٔ ذخیره برای بعداً تماشا کردن در منوی بازشو Shorts ها</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">امکان ذخیره Shorts در «تماشای بعداً» را از منوی بازشو فراهم می‌کند</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">هدایت \"بعداً می‌بینم\" به لیست پخش</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">بعداً تماشا می‌کنم</string>
   <string name="morphe_queue_flyout_title">افزودن به صف Morphe</string>
   <string name="morphe_queue_restore_title">نگه‌داشتن صف بین جلسه‌ها</string>
   <string name="morphe_queue_restore_summary">صف پس از راه‌اندازی دوبارهٔ برنامه حفظ می‌شود</string>
@@ -826,8 +837,6 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_2">هرگز نمایش نده</string>
   <string name="morphe_auto_captions_style_entry_3">هنگام بی‌صدا نبودن نمایش بده</string>
   <string name="morphe_auto_captions_style_entry_4">هنگام بی‌صدا بودن نمایش بده</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">نمایش زیرنویس خودکار</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">پنهان‌کردن زیرنویس خودکار</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">زبان ترجیحی زیرنویس‌ها</string>
   <string name="morphe_preferred_caption_language_summary">ابتدا زیرنویس‌های ارائه‌شده را انتخاب می‌کند، سپس به‌طور خودکار به زبان ترجیحی ترجمه می‌کند</string>
@@ -1104,14 +1113,14 @@ Second \"item\" text"</string>
 
 طرح‌بندی تبلت
 • پست‌های انجمن پنهان می‌شوند
-• تنظیم پخش در خوراک‌ها در دسترس نیست
+• تنظیم پخش در فید در دسترس نیست
 • دکمه‌های ریمیکس و صدا در Shorts در دسترس نیستند
 • ممکن است روی‌هم‌افتادگی «ویدئوهای بیشتر» در دسترس نباشد
 • نوار عملیات قدیمی ویدئو به‌صورت بازشده نمایش داده می‌شود
 
 طرح‌بندی خودرویی
-• خوراک بر اساس موضوع‌ها و کانال‌ها سازمان‌دهی می‌شود
-• تنظیم پخش در خوراک‌ها در دسترس نیست
+• فید بر اساس موضوع‌ها و کانال‌ها سازمان‌دهی می‌شود
+• تنظیم پخش در فید در دسترس نیست
 • دکمه‌های ریمیکس و صدا در Shorts در دسترس نیستند
 • ممکن است روی‌هم‌افتادگی «ویدئوهای بیشتر» در دسترس نباشد
 • Shorts در پخش‌کنندهٔ معمولی باز می‌شود
@@ -1121,9 +1130,6 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"طرح‌بندی قدیمی پخش‌کننده را بازیابی می‌کند
 
 محدودیت: اگر «بازیابی نوار عملیات قدیمی ویدئو» خاموش باشد، ممکن است روی‌هم‌افتادگی «ویدئوهای بیشتر» در دسترس نباشد"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"فعال کردن این گزینه ممکن است برخی از ویژگی‌های چیدمان پلیر، مانند بخش نظرات یا \"ویدیوهای بیشتر\" که در پایین پلیر نمایش داده می‌شوند را مختل کند.
-
-چیدمان تبلت دیگر توسط YouTube پشتیبانی نمی‌شود و در نسخه‌های اخیر YouTube به طور جزئی یا کامل خراب شده است. برای داشتن یک چیدمان تبلت کاربردی، نسخه 20.21.37 YouTube را پچ کنید"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 — بازگردانی رفتار قبلی کپشن‌ها</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - بازیابی ذخیره در فهرست پخش</string>
@@ -1241,6 +1247,7 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_title">رفع مشکل پوشیدن نوار وضعیت بر روی نوارهای بالایی</string>
   <string name="morphe_fix_status_bar_layout_summary">چیدمان نوار وضعیت را یکپارچه نگه می‌دارد، بنابراین بر نوارهای بالایی پوشانده نمی‌شود و فضای خالی در بالای پخش‌کننده باقی نمی‌گذارد. اگر برنامه کرش کرد یا نوارهای بالایی به درستی نمایش داده نشدند، این گزینه را غیرفعال کنید</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">درخشش</string>
   <string name="morphe_theme_color_light_title">پس‌زمینهٔ طرح روشن</string>
   <string name="morphe_theme_color_light_entry_2">سفید</string>
   <string name="morphe_theme_color_light_entry_3">Material You (سفید)</string>
@@ -1263,6 +1270,9 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">رنگ ثانویهٔ نوار پیشرفت ویدئو را تنظیم کنید</string>
   <string name="morphe_seekbar_custom_color_invalid">مقدار رنگ نوار جست‌وجو نامعتبر است</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">آنالوگ اصلی</string>
+  <string name="morphe_custom_branding_icon_entry_9">کیک اصلی</string>
+  <string name="morphe_custom_branding_icon_entry_10">فلز اصلی</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">لوگوی سربرگ</string>
   <string name="morphe_header_logo_entry_1">پیش‌فرض</string>
@@ -1626,4 +1636,17 @@ AVC (H.264)
   <string name="morphe_series_tracker_no_search_results">هیچ سریالی پیدا نشد</string>
   <string name="morphe_series_tracker_untitled_episode">قسمت بی‌عنوان</string>
   <string name="morphe_series_tracker_unavailable_episode">قسمت غیرموجود</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">دیدگاه‌های Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">نمایش چت زنده و بازپخش چت به صورت دیدگاه‌هایی که روی ویدیو حرکت می‌کنند</string>
+  <string name="morphe_niconico_comments_summary">یک دکمه روی پخش‌کننده ویدیو نمایش می‌دهد. برای نمایش یا پنهان کردن دیدگاه‌ها ضربه بزنید و برای تنظیمات سریع لمس کرده و نگه دارید</string>
+  <string name="morphe_niconico_comments_font_size_title">اندازه فونت دیدگاه‌ها</string>
+  <string name="morphe_niconico_comments_font_size_summary">اندازه متن دیدگاه‌ها (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">شفافیت دیدگاه‌ها</string>
+  <string name="morphe_niconico_comments_opacity_summary">شفافیت متن و پس‌زمینه‌ی نظرات</string>
+  <string name="morphe_niconico_comments_travel_duration_title">مدت زمان پیمایش</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">تعداد ثانیه‌هایی که نظرات برای عبور از صفحه نیاز دارند. مقادیر کمتر، سرعت را بیشتر می‌کنند</string>
+  <string name="morphe_niconico_comments_max_length_title">حداکثر طول نظر</string>
+  <string name="morphe_niconico_comments_max_length_summary">نظراتی که کاراکترهای بیشتری از این مقدار دارند را مخفی می‌کند. هر ایموجی به عنوان یک کاراکتر در نظر گرفته می‌شود</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">بدون محدودیت</string>
 </resources>

@@ -548,8 +548,29 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_mediasession_summary">Εμφάνιση της τρέχουσας γραμμής στην οθόνη κλειδώματος, στο Android Auto και στο Bluetooth. Απαιτείται Android 11 ή νεότερο</string>
   <string name="morphe_music_lyrics_miniplayer_title">Εμφάνιση στίχων στο Miniplayer.</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Εμφάνιση της τρέχουσας γραμμής στο μίνι παίκτη, με την κομμάτι να μεταφέρεται στα υπότιτλα</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Εμφάνιση καλλιτέχνη και τίτλου […] MediaSession. ON: \"Καλλιτέχνης - Τίτλος\" και OFF: \"Τίτλος - Καλλιτέχνης\". Δεν επηρεάζει την αναζήτηση στίχων.</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Εναλλαγή της σειράς εμφάνισης καλλιτέχνη και τίτλου στο Miniplayer και στο MediaSession. Ενεργό \"Καλλιτέχνης - Τίτλος\" και ανενεργό \"Τίτλος - Καλλιτέχνης\" Δεν επηρεάζει την αναζήτηση στίχων</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Μορφή τίτλου τραγουδιού/καλλιτέχνη</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Μορφή του κομματιού που εμφανίζεται με τους στίχους στο Miniplayer και στο MediaSession. Το {t} είναι ο τίτλος, το {a} είναι ο καλλιτέχνης και το {v} είναι η έκδοση, όπως η Acoustic, όταν η πηγή των στίχων παρέχει μία τέτοια. Το κείμενο μεταξύ δύο δρόμων εμφανίζεται μόνο όταν κάθε μεταβλητή μέσα σε αυτό έχει τιμή· γράψτε \\: για έναν απλό δρόμο. Κάθε γραμμή εμφανίζεται με τη σειρά, προχωρώντας κάθε φορά που αλλάζουν οι στίχοι</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Μορφή γραμμής στίχου</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Μορφή της γραμμής στίχων στο Miniplayer και στο MediaSession. Το {lrc} είναι η γραμμή και το {n} είναι το πόσες φορές τραγουδιέται συνεχόμενα. Το κείμενο μεταξύ των δρόμων εμφανίζεται μόνο όταν η γραμμή επαναλαμβάνεται. Χρησιμοποιήστε \\: για έναν δρόμο</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Η μορφή πρέπει να περιλαμβάνει το {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Πρότυπο γραμμής καλλιτέχνη και χρονισμός animation</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Ελάχιστος χρόνος οθόνης (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Μέγιστος χρόνος οθόνης (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Μόνο για animations πολλαπλών γραμμών. Διατήρησε κάθε frame για τουλάχιστον τον ελάχιστο χρόνο. Στο μέγιστο, προχώρα τη γραμμή του καλλιτέχνη ακόμα και όταν ο στίχος παραμένει ο ίδιος.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Το ελάχιστο πρέπει να είναι 0 ή μεγαλύτερο. Το μέγιστο πρέπει να είναι μεγαλύτερο από 0 και τουλάχιστον ίσο με το ελάχιστο.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Όρια μήκους γραμμής</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Όρια γραμμής στίχου και καλλιτέχνη, και βάρος χαρακτήρων πλήρους πλάτους</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Όριο γραμμής στίχου
+Διχάσε τους μακρύτερους στίχους σε ισορροπημένα μισά. Το 0 απενεργοποιεί τη διάσπαση."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Όριο γραμμών καλλιτέχνη
+Χωρίστε τη μορφή της γεμισμένης κομμάτις σε εναλλασσόμενα πλαίσια. Το 0 απενεργοποιεί τον διαχωρισμό."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Βάρος χαρακτήρα πλήρους πλάτους
+Εφαρμόζεται και στους δύο περιορισμούς. Στο 1,75, τέσσερις χαρακτήρες πλήρους πλάτους μετράνε ως 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Εισαγάγετε ακέραιους περιορισμούς από 0 έως 10000 και ένα βάρος χαρακτήρα μεγαλύτερο από 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Οργανικό διάλειμμα</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Εμφανίζεται στον Miniplayer και στο MediaSession κατά τη διάρκεια ενός οργανικού διαλείμματος. Κάθε γραμμή είναι ένα πλαίσιο κίνησης. Το {t} είναι ο τίτλος, το {a} ο καλλιτέχνης και το {lrc} η τελευταία γραμμή των στίχων</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Απόκλιση χρονισμού miniplayer και MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Μετοπίζει το πότε εμφανίζεται η επόμενη γραμμή στον ελαχιστοποιημένο πρόγραμμα αναπαραγωγής και στο MediaSession. Χρησιμοποιήστε μια αρνητική τιμή εάν οι γραμμές εμφανίζονται αργά, για παράδειγμα στην οθόνη κλειδώματος</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Φίλτρα</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex φίλτρου στίχων.</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Κανονική έκφραση που εφαρμόζεται σε τίτλους, καλλιτέχνες και άλμπουμ πριν από την αναζήτηση στίχων και κατά τη βαθμολόγηση του αν δύο τίτλοι ταιριάζουν. Αφήστε το κενό για να απενεργοποιήσετε και τα δύο. Η προεπιλογή αφαιρεί συνηθισμένα περιττά στοιχεία, όπως \"Official Video\", \"Remaster\", \"【插曲】\" και \"- Topic\".</string>
@@ -557,6 +578,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_text_filter_summary">Η κανονική έκφραση εφαρμόζεται μόνο στο αρχικό κείμενο στίχων (όχι σε μεταφράσεις ή μεταγραφές). Αφήστε το κενό για απενεργοποίηση.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Δείκτες γραμμών πληροφοριών.</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Αν οι στίχοι φιλτράρονται λανθασμένα προς τα κάτω, προσαρμόστε ή καθαρίστε αυτό το πεδίο. […] Αφήστε το κενό για απενεργοποίηση.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Κεφαλαίωση του πρώτου γράμματος</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Κεφαλαιοποιεί το πρώτο γράμμα κάθε γραμμής των στίχων</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Αφαίρεση τελικής στίξης</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Αφαιρεί τελείες, κόμματα, δύο τελείες και ερωτηματικά στο τέλος των γραμμών των στίχων. Τα ερωτηματικά, τα θαυμαστικά, οι πολύ τελείες, τα εισαγωγικά και οι παρενθέσεις διατηρούνται</string>
   <string name="morphe_music_lyrics_text_size_title">Μέγεθος κειμένου</string>
   <string name="morphe_music_lyrics_text_size_summary">Μέγεθος κειμένου των στίχων</string>
   <string name="morphe_music_lyrics_offset_ms_title">Καθολική χρονική μετατόπιση</string>

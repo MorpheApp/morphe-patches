@@ -548,8 +548,29 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_mediasession_summary">Visar nuvarande rad på låsskärmen, Android Auto och Bluetooth. Kräver Android 11 eller nyare</string>
   <string name="morphe_music_lyrics_miniplayer_title">Visa text i minispelaren</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Visar nuvarande rad i minispelaren, med spåret flyttat till undertexten</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Visning av artist och titel […] MediaSession. PÅ \"Artist – Titel\" och AV \"Titel – Artist\". Påverkar inte textsökning.</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Växla visningsordningen för Artist och Titel i minispelaren och MediaSession. PÅ \"Artist - Titel\" och AV \"Titel - Artist\" Påverkar inte textsökningen</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Format för låttitel/artist</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Formatet för spåret som visas med texten i minispelaren och MediaSession. {t} är titeln, {a} är artisten och {v} är versionen, till exempel akustisk, om textkällan tillhandahåller en. Text mellan två kolon visas endast när varje variabel i den har ett värde; skriv \\: för ett vanligt kolon. Varje rad visas i tur och ordning och växlar när texten ändras</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Format för textrad</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Formatet för textraden i minispelaren och MediaSession. {lrc} är raden och {n} är hur många gånger i rad den sjungs. Text mellan kolon visas endast när raden upprepas. Använd \\: för ett kolon</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Formatet måste innehålla {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Mall för artistrad och animationstajming</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minsta skärmtid (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maximal skärmtid (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Endast för flerradiga animationer. Behåll varje bildruta i minst den minsta tiden. Vid den maximala tiden går artistraden vidare även om texten förblir densamma.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minsta måste vara 0 eller högre. Maximala måste vara större än 0 och minst lika med det minsta värdet.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Gränser för radlängd</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Gränser för text- och artistrader, samt vikt för helbreddstecken</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Gräns för textrad
+Dela upp längre texter i balanserade halvor. 0 inaktiverar uppdelning."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Artistradsgräns
+Dela upp det ifyllda spårformatet i cykliska ramar. 0 inaktiverar uppdelning."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Vikt för helbreddstecken
+Gäller båda gränserna. Vid 1,75 räknas fyra helbreddstecken som 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Ange heltal för gränser från 0 till 10000 och en teckenvikt större än 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentalt parti</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Visas i miniplayer och MediaSession under ett instrumentalt parti. Varje rad är en animationsram. {t} är titeln, {a} är artisten och {lrc} är den sista textraden</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Tidsförskjutning för miniplayer och MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Förskjuter när nästa rad visas i minispelaren och MediaSession. Använd ett negativt värde om raderna visas för sent, till exempel på låsskärmen</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filter</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex för låttextfilter</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Reguljärt uttryck som tillämpas på titlar, artister och album innan texter slås upp och när man bedömer om två titlar matchar. Lämna tomt för att inaktivera båda. Standardvärdet tar bort vanligt skräp som \"Official Video\", \"Remaster\", \"【插曲】\" och \"- Topic\".</string>
@@ -557,6 +578,10 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_text_filter_summary">Reguljärt uttryck som endast tillämpas på originaltexten, inte översättningar eller romaniseringar. Lämna tomt för att inaktivera.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Markeringar för informationsrader</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Om texter filtreras felaktigt till botten, justera eller rensa detta. […] Lämna tomt för att inaktivera.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Stor bokstav i början</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Gör första bokstaven i varje textrad till stor bokstav</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Ta bort avslutande skiljetecken</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Tar bort punkter, kommatecken, kolon och semikolon i slutet av textrader. Frågetecken, utropstecken, ellips, citattecken och parenteser behålls</string>
   <string name="morphe_music_lyrics_text_size_title">Textstorlek</string>
   <string name="morphe_music_lyrics_text_size_summary">Storleken på sångtexten</string>
   <string name="morphe_music_lyrics_offset_ms_title">Global tidsförskjutning</string>

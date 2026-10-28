@@ -51,6 +51,8 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- ad.hideAdsPatch -->
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
@@ -227,4 +229,5 @@ Second \"item\" text"</string>
   <string name="morphe_series_tracker_ui_save">محفوظ کریں</string>
   <string name="morphe_series_tracker_plan_caught_up">تا تاریخ</string>
   <string name="morphe_series_tracker_continue">जारी रखें</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

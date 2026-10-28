@@ -23,6 +23,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
@@ -353,6 +354,36 @@ val rememberVideoQualityPatch = bytecodePatch {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->useSelectedQualityFormats(Z)Z"
+            )
+        }
+
+        // The player plays another quality of the same resolution if this flag is off,
+        // such as 720p after selecting a 480p quality that YouTube gives the resolution 720.
+        // Without a quality selected in the Shorts quality menu, the player has no formats to use.
+        QualityFormatsFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                true
+            )
+        }
+
+        // When the quality changes, the player keeps playing the video already buffered,
+        // so the buffered video is cleared when the quality selected by the user is set.
+        if (is_21_17_or_greater) {
+            PlaybackControllerSetVideoFormatsFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { p1 }, $EXTENSION_CLASS->clearVideoBufferOnQualityChange(Z)Z
+                    move-result p1
+                """
+            )
+
+            AsyncMediaFetchControllerSetVideoFormatsFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { p2 }, $EXTENSION_CLASS->clearVideoBufferOnQualityChange(Z)Z
+                    move-result p2
+                """
             )
         }
     }

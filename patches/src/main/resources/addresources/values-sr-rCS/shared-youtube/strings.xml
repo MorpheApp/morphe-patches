@@ -18,10 +18,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Animacija pri pokretanju</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Onemogućen</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Boja</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monohromni</string>
+  <string name="morphe_splash_screen_style_title">Animacija pri pokretanju</string>
+  <string name="morphe_splash_screen_style_entry_1">Onemogućen</string>
+  <string name="morphe_splash_screen_style_entry_2">Boja</string>
+  <string name="morphe_splash_screen_style_entry_3">Kolorni Morphe</string>
+  <string name="morphe_splash_screen_style_entry_4">Monohromski</string>
+  <string name="morphe_splash_screen_style_entry_5">Monohromni Morphe</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Ponovo pokrenite da biste završili postavljanje</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

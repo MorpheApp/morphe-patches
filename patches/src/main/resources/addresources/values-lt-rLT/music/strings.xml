@@ -553,8 +553,29 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_mediasession_summary">Rodo esamą eilutę atrakintame ekrane, „Android Auto“ ir Bluetooth. Reikia Android 11 ar naujesnės versijos</string>
   <string name="morphe_music_lyrics_miniplayer_title">Rodyti mini grotuvo dainų tekstus</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Rodo esamą eilutę mini grotuve, perkeliant takelį į subtitrą</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Atlikėjo ir pavadinimo rodymo tvarka</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Perjungia atlikėjo ir pavadinimo rodymo tvarką mini grotuve ir „MediaSession“. ĮJUNGUS – „Atlikėjas – Pavadinimas“, IŠJUNGUS – „Pavadinimas – Atlikėjas“. Dainų tekstų paieškai įtakos neturi</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Dainos pavadinimo ir atlikėjo formatas</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Takto formatas, rodomas kartu su dainos žodžiais Miniplayeryje ir MediaSession. {t} yra pavadinimas, {a} – atlikėjas, o {v} – versija (pvz., akustinė), jei žodžių šaltinis ją nurodo. Tekstas tarp dviejų dvitaškių yra rodomas tik tada, kai kiekviena jame esanti kintamoji turi reikšmę; paprastai dvitaškiai rašykite \\:. Kiekviena eilutė yra rodoma po eilutės, keičdamasi kartu su dainos žodžiais</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Dainos žodžių eilutės formatas</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Dainos žodžių eilutės formatas Miniplayeryje ir MediaSession. {lrc} yra eilutė, o {n} – kiek kartų iš eilgos ji yra dainuojama. Tekstas tarp dvitaškių yra rodomas tik tada, kai eilutė kartojasi. Dvitaškiai naudokite \\:</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Formatas privalo содержаti {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Atlikėjo eilutės šablonas ir animacijos laikymas</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimalus ekrano rodymo laikas (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maksimalus ekrano rodymo laikas (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Tik daugiaeilinėms animacijoms. Kiekvieną kadrą rodyti bent minimalų laiką. Pasiekus maksimalų laiką, atlikėjo eilutė slenka toliau net ir jei dainos žodžiai išlieka tie patys.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimali reikšmė turi būti 0 arba didesnė. Maksimali reikšmė turi būti didesnė už 0 ir ne mažiau nei minimali.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Eilutės ilgio apribojimai</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Dainos žodžių ir atlikėjo eilutės apribojimai bei viso pločio simbolių svoris</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Dainos žodžių eilutės riba
+Ilgesni žodžiai bus padalinti į subalansuotas puses. 0 išjungia skaldymą."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Atlikėjo eilutės riba
+Suskirstykite užpildytą takelio formatą į besukančius kadrus. 0 išjungia skirstymą."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Pilno pločio simbolio svoris
+Taikoma abiems riboms. Nustatant 1,75, keturi pilno pločio simboliai counted kaip 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Įveskite sveikąjį skaičių riboms nuo 0 iki 10000 ir simbolio svorį, kuris yra didesnis nei 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentinė pertrauka</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Rodoma miniplayeryje ir „MediaSession“ instrumentinės pertraukos metu. Kiekviena eilutė yra vienas animacijos kadras. {t} yra pavadinimas, {a} – atlikėjas, o {lrc} – paskutinė dainos teksto eilutė</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Miniplayerio ir „MediaSession“ laiko poslinkis</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Nustato, kada Miniplayeryje ir MediaSession rodoma kitka eilutė. Jei eilutės pasirodo pervėlai, pavyzdžiui, užrakinto ekrano, naudokite neigiamą reikšmę</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtrai</string>
   <string name="morphe_music_lyrics_custom_regex_title">Metaduomenų regex</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Reguliarioji išraiška taikoma pavadinimams, atlikėjams ir albumams prieš ieškant dainų tekstų ir vertinant, ar du pavadinimai sutampa. Palikite tuščią, kad išjungtumėte abi funkcijas. Numatytasis variantas pašalina įprastą papildomą tekstą, pvz., „Official Video“, „Remaster“, „【插曲】“ ir „- Topic“</string>
@@ -562,6 +583,10 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_text_filter_summary">Reguliarioji išraiška taikoma tik originaliam dainų tekstui (ne vertimams ar romanizacijoms). Palikite tuščią, kad išjungtumėte</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Informacinių eilučių žymekliai</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Jei dainų tekstai klaidingai nukeliami į apačią, pakoreguokite arba išvalykite šį lauką. Žymekliai, atskirti kableliais: eilutės, turinčios žymeklį, po kurio yra dvitaškis, rodomos kaip informacija apie autorius apačioje. Palikite tuščią, kad išjungtumėte</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Rašyti pirmą raidę didžiuoju</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Kiekvienos dainos žodžių eilutės pirmą raidę rašo didžiuoju</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Pašalinti skyrybos ženklus pabaigoje</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Pašalina taškus, kvertes, dvitaškius ir pusetaškius dainos žodžių eilučių pabaigoje. Klausmės ženklai, šaukeliai, daugtaškiai, citatos ir skliaustai išlieka</string>
   <string name="morphe_music_lyrics_text_size_title">Teksto dydis</string>
   <string name="morphe_music_lyrics_text_size_summary">Dainų teksto dydis</string>
   <string name="morphe_music_lyrics_offset_ms_title">Bendras laiko poslinkis</string>

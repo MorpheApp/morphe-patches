@@ -555,8 +555,29 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_mediasession_summary">잠금 화면, Android Auto 및 블루투스에서 현재 가사 줄을 표시합니다. Android 11 이상이 필요합니다</string>
   <string name="morphe_music_lyrics_miniplayer_title">미니 플레이어 가사 표시하기</string>
   <string name="morphe_music_lyrics_miniplayer_summary">미니 플레이어에 현재 가사 줄을 표시하고, 노래 정보를 제목 하단으로 이동합니다</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">아티스트 및 제목 표시 순서</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">미니 플레이어와 MediaSession에서 아티스트와 제목의 표시 순서를 전환합니다. 활성화되면 \'아티스트 - 제목\', 비활성화되면 \'제목 - 아티스트\'로 표시됩니다. 가사 검색에는 영향을 주지 않습니다</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">노래 제목/아티스트 형식</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">미니 플레이어와 MediaSession에서 가사와 함께 표시되는 트랙의 형식입니다. {t}는 노래 제목, {a}는 아티스트, {v}는 가사 소스에서 정보를 제공하는 경우 Acoustic과 같은 버전을 의미합니다. 두 개의 콜론 사이의 텍스트는 그 안에 있는 모든 변수가 값을 가지고 있을 때만 표시됩니다. 일반 콜론을 표시하려면 \\:를 입력하세요. 각 줄은 차례대로 표시되며, 가사가 바뀔 때마다 다음 줄로 넘어갑니다</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">가사 줄 형식</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">미니 플레이어와 MediaSession에서 가사 한 줄이 표시되는 형식입니다. {lrc}는 가사 한 줄을, {n}은 해당 가사가 연속으로 반복되는 횟수를 의미합니다. 콜론 사이의 텍스트는 가사가 반복될 때만 표시됩니다. 콜론을 표시하려면 \\:를 사용하세요</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">형식에 {lrc}가 포함되어야 합니다</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">아티스트 라인 템플릿 및 애니메이션 타이밍</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">최소 화면 표시 시간 (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">최대 화면 표시 시간 (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">여러 줄로 구성된 애니메이션에만 적용됩니다. 각 프레임은 최소 표시 시간 동안 유지됩니다. 최대 표시 시간에 도달하면 가사가 바뀌지 않더라도 아티스트 표시 줄로 넘어갑니다</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">최소값은 0 이상이어야 합니다. 최대값은 0보다 커야 하며, 최소값 이상이어야 합니다</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">라인 길이 제한</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">가사 및 아티스트 라인 제한, 전각 문자 가중치</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"가사 라인 제한
+긴 가사를 균형 잡힌 두 부분으로 나눕니다. 0으로 설정하면 분할 기능이 비활성화됩니다."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"아티스트 라인 제한
+입력된 트랙 형식을 순환 프레임으로 분할합니다. 0으로 설정하면 분할되지 않습니다."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"전각 문자 가중치
+두 제한 사항 모두에 적용됩니다. 1.75로 설정하면 전각 문자 4개가 7개로 계산됩니다."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">0에서 10000 사이의 정수 제한 값과 0보다 큰 문자 가중치를 입력하세요</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">연주 간주</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">연주 구간에서 미니 플레이어와 MediaSession에 표시됩니다. 각 줄은 애니메이션의 한 프레임입니다. {t}는 노래 제목, {a}는 아티스트, {lrc}는 마지막 가사 줄을 의미합니다</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">미니 플레이어 및 MediaSession 타이밍 오프셋</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">미니 플레이어와 MediaSession에서 다음 가사 줄이 표시되는 시점을 조정합니다. 예를 들어 잠금 화면에서 가사가 늦게 표시된다면 음수 값을 사용하세요</string>
   <string name="morphe_settings_music_lyrics_metadata_title">필터</string>
   <string name="morphe_music_lyrics_custom_regex_title">메타데이터 정규식</string>
   <string name="morphe_music_lyrics_custom_regex_summary">가사를 검색하기 전과 두 제목이 일치하는지 판단할 때 제목, 아티스트, 앨범에 적용할 정규식입니다. 비워 두면 두 기능 모두 비활성화됩니다. 기본값은 \'Official Video\', \'Remaster\', \'【插曲】\', \'- Topic\'과 같은 불필요한 문구를 제거합니다</string>
@@ -564,6 +585,10 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_text_filter_summary">원본 가사 텍스트에만 적용되는 정규식입니다. 번역이나 로마자 표기에는 적용되지 않습니다. 비워두면 비활성화됩니다</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">정보 줄 마커</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">가사가 잘못 필터링되어 하단으로 내려가는 경우 이 설정을 조정하거나 비워 두세요. 쉼표로 구분된 마커: 마커가 포함된 줄에 콜론(:)이 뒤따르면 해당 줄은 크레딧 정보로 간주되어 하단에 표시됩니다. 비워두면 비활성화됩니다</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">첫 글자 대문자로 표시</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">각 가사 줄의 첫 글자를 대문자로 표시합니다</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">끝 문장 부호 제거</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">가사 줄 끝에 있는 마침표, 쉼표, 콜론 및 세미콜론을 제거합니다. 물음표, 느낌표, 말줄임표, 따옴표 및 괄호는 유지됩니다</string>
   <string name="morphe_music_lyrics_text_size_title">텍스트 크기</string>
   <string name="morphe_music_lyrics_text_size_summary">가사 텍스트 크기</string>
   <string name="morphe_music_lyrics_offset_ms_title">전역 타이밍 오프셋</string>

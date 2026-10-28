@@ -34,6 +34,7 @@ import app.morphe.extension.reddit.ui.MorpheSettingsIconVectorDrawable;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import kotlin.jvm.functions.Function0;
@@ -42,6 +43,7 @@ import kotlin.jvm.functions.Function0;
 public class RedditActivityHook {
     private static final Drawable MORPHE_ICON = MorpheSettingsIconVectorDrawable.getIcon();
     private static final String MORPHE_LABEL = "Morphe";
+    private static final String EXTRA_INITIAL_URL = "com.reddit.extra.initial_url";
     private static final String PRIVACY_POLICY_URI = Objects.requireNonNull(
             ResourceUtils.getString("privacy_policy_uri"));
 
@@ -81,13 +83,32 @@ public class RedditActivityHook {
      * Injection point.
      */
     public static boolean hook(Activity activity) {
-        Intent intent = activity.getIntent();
-        if (MORPHE_LABEL.equals(intent.getStringExtra("com.reddit.extra.initial_url"))) {
+        if (isMorpheSettingsActivity(activity)) {
             initialize(activity);
             return true;
         }
 
         return false;
+    }
+
+    private static boolean isMorpheSettingsActivity(Activity activity) {
+        return MORPHE_LABEL.equals(activity.getIntent().getStringExtra(EXTRA_INITIAL_URL));
+    }
+
+    /**
+     * Injection point.
+     * 2026.29.0 and older.
+     * <p>
+     * Overrides {@link Activity#finish()} of the settings activity.
+     *
+     * @return If the restart dialog is shown, and the original finish method must not run yet.
+     */
+    public static boolean handleFinish(Activity activity) {
+        if (!isMorpheSettingsActivity(activity)) {
+            return false;
+        }
+
+        return AbstractPreferenceFragment.showRestartDialogIfNeeded(activity, activity::finish);
     }
 
     /**
@@ -96,7 +117,7 @@ public class RedditActivityHook {
     public static Intent initializeByIntent(Context context) {
         Intent intent = new Intent();
         intent.setClassName(context, "com.reddit.webembed.browser.WebBrowserActivity");
-        intent.putExtra("com.reddit.extra.initial_url", MORPHE_LABEL);
+        intent.putExtra(EXTRA_INITIAL_URL, MORPHE_LABEL);
         return intent;
     }
 
@@ -151,6 +172,25 @@ public class RedditActivityHook {
         }
 
         @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            return new Dialog(getActivity(), getTheme()) {
+                @Override
+                public void onBackPressed() {
+                    closeSettings();
+                }
+            };
+        }
+
+        /**
+         * Closes the settings, after first showing the restart dialog if a changed setting requires it.
+         */
+        private void closeSettings() {
+            if (!AbstractPreferenceFragment.showRestartDialogIfNeeded(getActivity(), this::dismiss)) {
+                dismiss();
+            }
+        }
+
+        @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             Activity activity = getActivity();
             final int appForegroundColor = ThemeUtils.getAppForegroundColor();
@@ -199,7 +239,7 @@ public class RedditActivityHook {
             Drawable backIcon = Objects.requireNonNull(ResourceUtils.getDrawable("icon_arrow_back"));
             backIcon.setTint(appForegroundColor);
             toolbar.setNavigationIcon(backIcon);
-            toolbar.setNavigationOnClickListener(v -> dismiss());
+            toolbar.setNavigationOnClickListener(v -> closeSettings());
             linearLayout.addView(toolbar);
 
             final int fragmentId = View.generateViewId();

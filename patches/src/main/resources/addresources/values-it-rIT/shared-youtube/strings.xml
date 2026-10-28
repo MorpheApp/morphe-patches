@@ -18,10 +18,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_animation_style_title">Animazione di avvio</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Disattivato</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Colore</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monocromatico</string>
+  <string name="morphe_splash_screen_style_title">Animazione di avvio</string>
+  <string name="morphe_splash_screen_style_entry_1">Disattivato</string>
+  <string name="morphe_splash_screen_style_entry_2">Colore</string>
+  <string name="morphe_splash_screen_style_entry_3">Color Morphe</string>
+  <string name="morphe_splash_screen_style_entry_4">Monocromatico</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe monocromatico</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Riavvia per completare la configurazione</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

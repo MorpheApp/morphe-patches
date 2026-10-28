@@ -145,6 +145,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">शॉपिंग लिंक छिपाएं</string>
   <string name="morphe_hide_video_ads_title">वीडियो विज्ञापन छिपाएं</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium प्रमोशन छिपाइ</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
@@ -260,8 +262,6 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_title">ऑटो कैप्शन दृश्यता</string>
   <string name="morphe_auto_captions_style_entry_2">कविकैर नहि देखाइत</string>
   <string name="morphe_auto_captions_style_entry_4">म्यूटित कब स देखाइत अछि</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">ऑटो कैप्शन दिखाओ</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">ऑटो कैप्शन छिपाइ</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
@@ -537,4 +537,5 @@ Second \"item\" text"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <!-- layout.player.icons.playerIconStylePatch -->
   <!-- video.series.seriesTrackerPatch -->
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

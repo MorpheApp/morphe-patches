@@ -312,6 +312,8 @@ Cheklovlar:
   <string name="morphe_hide_shopping_links_title">Savdo havolalarini yashirish</string>
   <string name="morphe_hide_video_ads_title">Videodagi reklamalarni yashirish</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamasini yashirish</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
@@ -605,8 +607,6 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_auto_captions_style_entry_2">Hech qachon ko\'rsatma</string>
   <string name="morphe_auto_captions_style_entry_3">\'Hype tugmasini\' yashirish</string>
   <string name="morphe_auto_captions_style_entry_4">Ovozsiz paytda ko\'rsatish</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Avtomatik yozuvlarni ko\'rsatish</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Avtomatik yozuvlarni yashirish</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
@@ -1108,4 +1108,5 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_player_icon_style_entry_default">Standart</string>
   <string name="morphe_player_icon_style_entry_custom">Maxsus</string>
   <!-- video.series.seriesTrackerPatch -->
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

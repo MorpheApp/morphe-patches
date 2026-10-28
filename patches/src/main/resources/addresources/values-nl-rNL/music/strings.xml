@@ -543,8 +543,29 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_mediasession_summary">Toont de huidige regel op het vergrendelscherm, Android Auto en Bluetooth. Vereist Android 11 of nieuwer</string>
   <string name="morphe_music_lyrics_miniplayer_title">Toon miniplayer-songteksten</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Toont de huidige regel in de minispeler, waarbij het nummer naar de ondertiteling is verplaatst</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Artiest- en titelweergave […] AAN \"Artiest - Titel\" en UIT \"Titel - Artiest\". Heeft geen invloed op het zoeken van songteksten.</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Wissel de weergavevolgorde van artiest en titel in de Miniplayer en MediaSession. AAN \"Artiest - Titel\" en UIT \"Titel - Artiest\" Heeft geen invloed op het zoeken naar songteksten.</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Formaat songtitel/artiest</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Formaat van het nummer dat samen met de songtekst wordt getoond in de miniplayer en MediaSession. {t} is de titel, {a} is de artiest en {v} is de versie, zoals Akoestisch, wanneer de bron van de songtekst deze biedt. Tekst tussen twee dubbele punten wordt alleen getoond wanneer elke variabele daarin een waarde heeft; gebruik \\: voor een gewone dubbele punt. Elke regel wordt op beurt getoond en verandert zodra de songtekst wijzigt</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Formaat songtekstregel</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Formaat van de regel songtekst in de miniplayer en MediaSession. {lrc} is de regel en {n} is hoe vaak deze achter elkaar wordt gezongen. Tekst tussen dubbele punten wordt alleen getoond wanneer de regel zich herhaalt. Gebruik \\: voor een dubbele punt</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Het formaat moet {lrc} bevatten</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Sjabloon voor artiestenregel en timing van animatie</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Minimale schermtijd (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maximale schermtijd (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Alleen voor animaties met meerdere regels. Houd elk frame minstens de minimale tijd vast. Bij de maximale tijd wordt de artiestenregel doorgeschoven, zelfs als de songtekst hetzelfde blijft.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimum moet 0 of hoger zijn. Maximum moet groter zijn dan 0 en minstens gelijk aan het minimum.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Limieten voor regellengte</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Limieten voor tekst- en artiestenregels, en gewicht van tekens met volledige breedte</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Limiet voor tekstregel
+Splits langere teksten in gebalanceerde helften. 0 schakelt splitsen uit."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Regellimiet artiest
+Splits het ingevulde trackformaat in cyclische frames. 0 schakelt splitsen uit."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Gewicht van volledige breedte tekens
+Van toepassing op beide limieten. Bij 1,75 tellen vier tekens van volledige breedte als 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Voer gehele getal limieten in van 0 tot 10000 en een tekengewicht groter dan 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentaal intermezzo</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Getoond in de miniplayer en MediaSession tijdens een instrumentaal intermezzo. Elke regel is één animatieframe. {t} is de titel, {a} is de artiest en {lrc} is de laatste tekstregel</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Timing-offset miniplayer en MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Verschuift wanneer de volgende regel wordt getoond in de Miniplayer en MediaSession. Gebruik een negatieve waarde als regels te laat verschijnen, bijvoorbeeld op het vergrendelscherm</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filters</string>
   <string name="morphe_music_lyrics_custom_regex_title">Me […] :\"Songtekstfilter-regex\"</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Reguliere expressie die wordt toegepast op titels, artiesten en albums voordat songteksten worden opgezocht en bij het beoordelen of twee titels overeenkomen. Laat leeg om beide uit te schakelen. De standaard verwijdert veelvoorkomende rommel zoals \"Official Video\", \"Remaster\", \"【插曲】\" en \"- Topic\".</string>
@@ -552,6 +573,10 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_text_filter_summary">Reguliere expressie wordt alleen toegepast op de originele songtekst (niet op vertalingen of romanisaties). Leeg laten om uit te schakelen.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Info-regelmarkeringen</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Als songteksten onterecht naar de onderkant worden gefilterd, pas dit dan aan of wis dit. […] Leeg laten om uit te schakelen.</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Eerste letter hoofdletter maken</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Maakt de eerste letter van elke songtekstregel een hoofdletter</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Interpunctie aan het einde verwijderen</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Verwijders punten, komma\'s, dubbele punten en puntkomma\'s aan het einde van songtekstregels. Vraagtekens, uitroeptekens, beletseltekens, aanhalingstekens en haakjes blijven behouden</string>
   <string name="morphe_music_lyrics_text_size_title">Tekstgrootte</string>
   <string name="morphe_music_lyrics_text_size_summary">Grootte van de songtekst</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globale timing-offset</string>

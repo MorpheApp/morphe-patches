@@ -548,8 +548,29 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_mediasession_summary">Näyttää nykyisen rivin lukitusnäytöllä, Android Autolla ja Bluetoothilla. Vaatii Android 11:n tai uudemman</string>
   <string name="morphe_music_lyrics_miniplayer_title">Näytä minisoittimen lyriikat</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Näyttää nykyisen rivin mini-soittimessa, jossa kappale siirretty tekstitykseen</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Artistin ja kappaleen nimen näyttöjärjestys</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">Vaihda artistin ja kappaleen nimen näyttöjärjestystä minisoittimessa ja MediaSessionissa. PÄÄLLÄ \"Artisti - Kappale\" ja POIS \"Kappale - Artisti\" Ei vaikuta lyriikkahakuun</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Kappaleen nimi/artisti-muoto</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Kappaleen muoto, joka näytetään sanoitusten kanssa pienessä soittimessa ja MediaSessionissa. {t} on otsikko, {a} on artisti ja {v} on versio, kuten Acoustic, jos sanoitusten lähde antaa sellaisen. Kahden kaksoispisteen välinen teksti näytetään vain, kun jokaisella sen sisällä olevalla muuttujalla on arvo; kirjoita \\: tavallista kaksoispistettä varten. Jokainen rivi näytetään vuorotellen, ja se vaihtuu aina, kun sanoitus muuttuu</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Sanoitusrivin muoto</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Sanoitusrivin muoto pienessä soittimessa ja MediaSessionissa. {lrc} on rivi ja {n} on määrä, kuinka monta kertaa se lauletaan peräkkäin. Kaksoispisteiden välinen teksti näytetään vain, kun rivi toistuu. Käytä \\: kaksoispistettä varten</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Muodon on sisällettävä {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Artistirivimalli ja animaation ajoitus</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Miniminäyttöaika (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Maksiminäyttöaika (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Vain monirivisille animaatioille. Pidä kukin ruutu näkyvissä vähintään minimiajan. Maksimiajan kohdalla artistirivi vaihtuu, vaikka lyriikka pysyisi samana.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Minimin on oltava 0 tai suurempi. Maksimin on oltava suurempi kuin 0 ja vähintään minimin arvoinen.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Rivin pituuden rajoitukset</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Lyriikka- ja artistirivien rajoitukset sekä täyslevymerkkien painotus</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Lyriikkarivin rajoitus
+Jaa pidemmät lyriikat tasapainoiseksi puolikkaiksi. 0 poistaa jaon."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Artistirivin rajat
+Jaa täytetty raidan muoto kiertäviin kehyksiin. 0 poistaa jaon."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Täyslevyisten merkkien paino
+Koskee molempia rajoja. Arvolla 1,75 neljä täyslevyistä merkkiä lasketaan seitsemäksi (7)."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Syötä kokonaislukurajat väliltä 0–10000 ja merkkipaino, joka on suurempi kuin 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentaalivälisoitto</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Näytetään minisoittimessa ja MediaSessionissa instrumentaalivälisoiton aikana. Jokainen rivi on yksi animaatiokehys. {t} on otsikko, {a} on artisti ja {lrc} on viimeinen sanoitusrivi</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Minisoittimen ja MediaSessionin ajoitusoffset</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Siirtää aikaa, jolloin seuraava rivi näytetään Miniplayerissa ja MediaSessionissa. Käytä negatiivista arvoa, jos rivit ilmestyvät myöhässä, esimerkiksi lukitusnäytöllä</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Suodattimet</string>
   <string name="morphe_music_lyrics_custom_regex_title">Metadatan säännöllinen lauseke</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Säännöllinen lauseke, jota sovelletaan kappaleiden nimiin, artisteihin ja albumeihin ennen sanoitusten hakua ja arvioitaessa, vastaavatko kaksi kappaleen nimeä toisiaan. Jätä tyhjäksi poistaaksesi molemmat käytöstä. Oletusarvo poistaa yleistä hälyä, kuten \"Official Video\", \"Remaster\", \"【插曲】\" ja \"- Topic\"</string>
@@ -557,6 +578,10 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_text_filter_summary">Säännöllinen lauseke, jota sovelletaan vain alkuperäiseen lyriikkatekstiin (ei käännöksiin tai romanisointeihin). Jätä tyhjäksi poistaaksesi käytöstä</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Tietorivien merkinnät</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Jos lyriikat suodatetaan virheellisesti alareunaan, säädä tai tyhjennä tämä. Pilkulla erotetut merkinnät: rivit, jotka sisältävät merkinnän ja sen jälkeen kaksoispisteen, näytetään tekijätietoina alareunassa. Jätä tyhjäksi poistaaksesi käytöstä</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Kirjoita ensimmäinen kirjain suurella</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Kirjoittaa jokaisen lyriikkarivin ensimmäisen kirjaimen suurella</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Poista loppuvälimerkit</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Poistaa pisteet, pilkut, kaksoispisteet ja puolipisteet lyriikkarivien lopusta. Kysymysmerkit, huutomerkit, kolme pistettä, lainausmerkit ja sulkeet säilytetään</string>
   <string name="morphe_music_lyrics_text_size_title">Tekstin koko</string>
   <string name="morphe_music_lyrics_text_size_summary">Sanoitusten tekstin koko</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globaali ajoitussiirtymä</string>

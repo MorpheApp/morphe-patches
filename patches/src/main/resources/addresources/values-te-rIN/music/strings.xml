@@ -27,6 +27,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_music_downloads_close">మూయండి</string>
+  <string name="morphe_music_downloads_delete">డిలీట్ </string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_2_feed_title">ఫీడ్ </string>

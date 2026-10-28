@@ -26,7 +26,7 @@ import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_27_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -57,7 +57,7 @@ val changeFormFactorPatch = bytecodePatch(
             ListPreference("morphe_change_form_factor")
         )
 
-        if (is_20_31_or_greater) {
+        if (!is_20_27_or_greater) {
             preferences += SwitchPreference("morphe_tablet_layout_in_player", summary = true)
         }
 

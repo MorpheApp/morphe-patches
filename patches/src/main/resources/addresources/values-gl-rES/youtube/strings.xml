@@ -164,6 +164,9 @@ Os cambios inclúen:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- ad.hideAdsPatch -->
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Cargando…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_remove">Eliminar</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
@@ -186,6 +189,7 @@ Os cambios inclúen:
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_quick_video">Vídeo</string>
+  <string name="morphe_shorts_download_flyout_title">Descargar</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">Personalizado</string>
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
@@ -368,4 +372,5 @@ Os cambios inclúen:
   <string name="morphe_series_tracker_plan_caught_up">Ao día</string>
   <string name="morphe_series_tracker_continue">Continuar</string>
   <string name="morphe_series_tracker_undo">Anular</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

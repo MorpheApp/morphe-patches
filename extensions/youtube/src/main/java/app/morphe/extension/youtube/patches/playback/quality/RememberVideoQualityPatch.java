@@ -55,6 +55,12 @@ public class RememberVideoQualityPatch {
     private static volatile boolean userSelectedQualityIsShorts;
 
     /**
+     * ID of the video whose buffered video is cleared once the player sets the quality
+     * selected by the user, or an empty string.
+     */
+    private static volatile String clearVideoBufferVideoId = "";
+
+    /**
      * The quality selected in the Shorts quality menu, until the menu sets it.
      */
     @Nullable
@@ -64,6 +70,7 @@ public class RememberVideoQualityPatch {
         userSelectedQualityResolution = resolution;
         userSelectedQualityIsShorts = isShorts;
         userSelectedQualityVideoId = VideoInformation.getVideoId();
+        clearVideoBufferVideoId = userSelectedQualityVideoId;
     }
 
     /**
@@ -429,5 +436,27 @@ public class RememberVideoQualityPatch {
      */
     public static boolean useSelectedQualityFormats(boolean original) {
         return ShortsPlayerState.isOpen() && isQualitySelectedByUser();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * When the quality changes, the player keeps playing the video already buffered and
+     * plays the new quality only after it. Shorts are often buffered entirely when they open,
+     * so the quality selected for a Short is not played, not even when the Short loops.
+     * So the buffered video is cleared the first time the player sets the video formats
+     * after the user selected the quality of the current video.
+     *
+     * @return If the buffered video is cleared.
+     */
+    public static boolean clearVideoBufferOnQualityChange(boolean original) {
+        final String videoId = clearVideoBufferVideoId;
+        if (videoId.isEmpty()) {
+            return original;
+        }
+
+        clearVideoBufferVideoId = "";
+        // Not cleared if another video started before the player set the selected quality.
+        return original || videoId.equals(VideoInformation.getVideoId());
     }
 }

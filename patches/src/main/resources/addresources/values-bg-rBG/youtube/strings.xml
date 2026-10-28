@@ -393,6 +393,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">Скрийте връзки</string>
   <string name="morphe_hide_video_ads_title">Скрийте общни видеореклами</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Скриване на YouTube Premium предложения</string>
+  <!-- layout.flyout.flyoutPatch -->
+  <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Зарежда се…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Текущ канал:</string>
   <string name="morphe_channel_whitelist_add">Добавяне към списъка с разрешени канали</string>
@@ -409,6 +412,9 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">Резултати от търсенето на канали</string>
   <string name="morphe_channel_search_no_results">Нищо не е намерено в този канал</string>
   <string name="morphe_channel_search_failed">Неуспешно търсене в този канал</string>
+  <string name="morphe_channel_search_videos">Видеа</string>
+  <string name="morphe_channel_search_posts">Публикации</string>
+  <string name="morphe_channel_search_no_posts">Няма публикации в този канал, които  да съвпадат</string>
   <string name="morphe_channel_search_sort_relevance">Уместност</string>
   <string name="morphe_channel_search_sort_most_viewed">Най-гледани</string>
   <string name="morphe_channel_search_sort_least_viewed">Най-малко гледани</string>
@@ -442,6 +448,7 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_flyout_single">Изтегляне на изображение</string>
   <string name="morphe_post_image_download_started">Изтегляне на %s изображения…</string>
   <string name="morphe_post_image_download_started_single">Изтегляне на изображение…</string>
+  <string name="morphe_post_image_download_saved">%1$s изображения са запазени в %2$s</string>
   <string name="morphe_post_image_download_saved_single">Изображението е запазено в %s</string>
   <string name="morphe_post_image_download_failed">Изображението не можа да бъде изтеглено</string>
   <string name="morphe_post_image_download_not_found">В този пост не е намерено изображение</string>
@@ -493,6 +500,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_video">Видео</string>
   <string name="morphe_external_downloader_quick_audio">Аудио</string>
   <string name="morphe_external_downloader_quick_options">Всички опции</string>
+  <string name="morphe_shorts_download_flyout_button_title">Показване на изтегляне в менюто на Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Добавя елемент за външен инструмент за изтегляне в изскачащото меню на плейъра за Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">Изтегляне</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод на глас зад кадър</string>
   <string name="morphe_vot_screen_summary">Четете надписите на видеото на глас, използвайки вграден текстов говор, синхронизиран с възпроизвеждането</string>
@@ -603,6 +613,8 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Позволява запазването на видеоклипове, свързани с деца, в „Гледай по-късно“ от изскачащото меню.</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Показване на бутона „Запазване в ‘Гледай по-късно’“ в изскачащото меню на Shorts</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Позволява запазване на Shorts в „Гледай по-късно“ от изскачащото меню</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Пренасочване на \"Гледай по-късно\" към плейлист</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Гледай по-късно</string>
   <string name="morphe_queue_flyout_title">Добавяне към опашката на Morphe</string>
   <string name="morphe_queue_restore_title">Запазване на опашката между сесиите</string>
   <string name="morphe_queue_restore_summary">Опашката се запазва след рестартиране на приложението</string>
@@ -825,8 +837,6 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_2">Никога не показвай</string>
   <string name="morphe_auto_captions_style_entry_3">Прави лентата на състоянието напълно непрозрачна</string>
   <string name="morphe_auto_captions_style_entry_4">Показване при мълчание</string>
-  <string name="morphe_auto_captions_style_legacy_entry_1">Показване на автоматични надписи</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">Скриване на автоматични надписи</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
   <string name="morphe_preferred_caption_language_title">Предпочитан език на субтитрите</string>
   <string name="morphe_preferred_caption_language_summary">Първо избира субтитрите от доставчика, след което автоматично превежда на предпочитания език</string>
@@ -1101,28 +1111,26 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_4">Автомобилна</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Промените включват:
 
-Оформление за таблет
-• Публикациите в общността са скрити
-• Настройката за възпроизвеждане в feed не е налична
+Таблет разположение
+• Публикациите на общността са скрити
+• Настройката за възпроизвеждане във фидовете не е налична
 • Бутонът Remix и бутонът Sound не са налични в Shorts
-• Наслагването „Още видеа“ може да не е налично
-• Показва се некомпактната стара лента за действия на видеото
+• Оверлеят \"Още видеоклипове\" може да не е наличен
+• Показва се старата лента за действия на видеоклипове, която не е сгъната
+• Елементите на изскачащото меню може да не работят правилно
 
-Оформление за автомобил
-• Feed е организиран по теми и канали
-• Настройката за възпроизвеждане в feed не е налична
+Автомобилен интерфейс
+• Фидът е организиран по теми и канали
+• Настройката за възпроизвеждане във фидовете не е налична
 • Бутонът Remix и бутонът Sound не са налични в Shorts
-• Наслагването „Още видеа“ може да не е налично
-• Shorts се отварят в стандартния плейър
-• Показва се некомпактната стара лента за действия на видеото"</string>
+• Оверлеят \"Още видеоклипове\" може да не е наличен
+• Shorts се отварят в обичайния плейър
+• Показва се старата лента за действия на видеоклипове, която не е сгъната"</string>
   <string name="morphe_tablet_layout_in_player_title">Активиране на оформление за таблет в плейъра</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Възстановява стария вид на плейъра
 
 Ограничение: Ако „Възстановяване на старата лента за действия във видеоклипа“ е изключено, покритието „Още видеоклипове“ може да не е достъпно"</string>
-  <string name="morphe_tablet_layout_in_player_user_dialog_message">"Активирането на това може да наруши някои функции на оформянето на плейъра, като раздела с коментари или \"Още видеоклипове\", показани под плейъра.
-
-Таблет оформянето вече не се поддържа от YouTube и е частично или напълно счупено в последните версии на YouTube. За работещо таблет оформяне, пачнете YouTube 20.21.37"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Възстановяване на старото поведение на субтитрите</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Възстанови старите запазвания в списъка</string>
@@ -1240,6 +1248,7 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_title">Оправя статус бара да не покрива горните ленти</string>
   <string name="morphe_fix_status_bar_layout_summary">Поддържа последователен макет на статус бара, така че той да не покрива горните ленти и да не оставя празно пространство над плеъра. Изключете тази опция, ако приложението се счупи или горните ленти изглеждат неправилно</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Сяяне</string>
   <string name="morphe_theme_color_light_title">Фон на светлата тема</string>
   <string name="morphe_theme_color_light_entry_2">Бяло</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Бяло)‎</string>
@@ -1262,6 +1271,9 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Задайте вторичния цвят на лентата за напредък на видеото</string>
   <string name="morphe_seekbar_custom_color_invalid">Редовно</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Оригинален аналог</string>
+  <string name="morphe_custom_branding_icon_entry_9">Оригинална торта</string>
+  <string name="morphe_custom_branding_icon_entry_10">Оригинален метал</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Табло за Home</string>
   <string name="morphe_header_logo_entry_1">Табло за Abonations</string>
@@ -1625,4 +1637,17 @@ AVC (H.264)
   <string name="morphe_series_tracker_no_search_results">Няма намерени поредици</string>
   <string name="morphe_series_tracker_untitled_episode">Епизод без заглавие</string>
   <string name="morphe_series_tracker_unavailable_episode">Недостъпен епизод</string>
+  <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Коментари от Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Показване на чата на живо и повтореното възпроизвеждане на чата като коментари, които се движат през видеото</string>
+  <string name="morphe_niconico_comments_summary">Показва overlay бутон във видеоплейъра. Докоснете, за да покажете или скриете коментарите, докоснете и задръжте за бързи настройки</string>
+  <string name="morphe_niconico_comments_font_size_title">Размер на шрифта на коментарите</string>
+  <string name="morphe_niconico_comments_font_size_summary">Размер на текста на коментарите (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Прозрачност на коментарите</string>
+  <string name="morphe_niconico_comments_opacity_summary">Прозрачност на текста на коментарите и фоновете</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Времетраене на преминаване</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Колко секунди отнема на коментарите да пресекат екрана. По-ниските стойности се движат по-бързо</string>
+  <string name="morphe_niconico_comments_max_length_title">Максимална дължина на коментара</string>
+  <string name="morphe_niconico_comments_max_length_summary">Скрива коментари с повече знаци от посочения брой. Всеки емоджи се брои за един знак</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Без ограничение</string>
 </resources>
