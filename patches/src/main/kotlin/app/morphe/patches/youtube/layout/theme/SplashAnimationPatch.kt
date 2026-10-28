@@ -198,22 +198,20 @@ val splashAnimationPatch = bytecodePatch {
             }
 
             // The backdrop of the glow animation is changed to the color of the splash screen
-            // when the file is read, and the app keeps the file in memory with a key of that color.
-            // The Morphe animation of 21.30 - 21.38 is not changed when it is read.
-            if (is_21_39_or_greater) {
-                RiveRawResourceSourceFingerprint.let {
-                    it.method.apply {
-                        val index = it.instructionMatches[1].index
-                        val register = getInstruction<TwoRegisterInstruction>(index).registerA
+            // when the file is read, and the animation is given the shape of the screen.
+            // The app keeps the file in memory with a key of that color and shape.
+            RiveRawResourceSourceFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches[1].index
+                    val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-                        addInstructions(
-                            index,
-                            """
-                                invoke-static { v$register }, $EXTENSION_CLASS->getRiveRawResourceKey(Ljava/lang/String;)Ljava/lang/String;
-                                move-result-object v$register
-                            """
-                        )
-                    }
+                    addInstructions(
+                        index,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->getRiveRawResourceKey(Ljava/lang/String;)Ljava/lang/String;
+                            move-result-object v$register
+                        """
+                    )
                 }
             }
 

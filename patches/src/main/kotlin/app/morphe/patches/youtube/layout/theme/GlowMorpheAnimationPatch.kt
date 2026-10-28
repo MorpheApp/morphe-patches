@@ -206,7 +206,7 @@ private fun replaceLogoWithMorpheLogo(file: RiveFile) {
     }
 
     // The visible copy of the rounded rectangle whose fill is only a solid color.
-    val logoColor = rectanglePaths.keys.map(::parent)
+    val logoColor = rectanglePaths.keys.asSequence().map(::parent)
         .filter { it.uint(DRAWABLE_FLAGS) and DRAWABLE_FLAG_HIDDEN == 0 }
         .flatMap(::children)
         .filter { it.typeKey == TYPE_FILL }
@@ -427,7 +427,7 @@ private fun toMorpheColor(color: Int): Int {
         else -> 4 + (max - green) / range - (max - red) / range
     }
     val hue = (hueSixths / 6).mod(1.0) * 360
-    val newHue = if (hue >= 290 || hue < 70) {
+    val newHue = if (hue !in 70.0..<290.0) {
         MORPHE_BLUE_HUE - ((hue - APP_RED_HUE + 180).mod(360.0) - 180) * 0.7
     } else {
         MORPHE_TEAL_HUE + (hue - APP_BLUE_HUE) * 0.5

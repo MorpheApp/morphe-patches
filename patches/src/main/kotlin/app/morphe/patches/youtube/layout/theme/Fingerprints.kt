@@ -210,8 +210,7 @@ internal object RiveRawResourceSourceFingerprint : Fingerprint(
             opcode = Opcode.IPUT_OBJECT,
             type = "Ljava/lang/String;",
             location = MatchAfterWithin(3)
-        ),
-        string("resId must not be 0")
+        )
     )
 )
 

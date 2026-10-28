@@ -228,6 +228,20 @@ public class ThemePatch extends BaseThemePatch {
      */
     private static final String LEGACY_RIVE_GLOW_MORPHE_RESOURCE = "morphe_startup_animation_glow_legacy";
 
+    /**
+     * The Glow Morphe animation of 21.30 - 21.38 is made for the square view, and has no backdrop.
+     */
+    private static final float LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_WIDTH = 432;
+    private static final float LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_HEIGHT = 432;
+
+    /**
+     * The artboard size of the Glow Morphe animation of 21.30 - 21.38, as it is written in the Rive file.
+     */
+    private static final byte[] LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_SIZE = {
+            0x07, 0x00, 0x00, (byte) 0xD8, 0x43,
+            0x08, 0x00, 0x00, (byte) 0xD8, 0x43
+    };
+
     private static boolean riveSplashScreenCrashChecked;
 
     private static boolean isRiveSplashScreenEnabled() {
@@ -356,23 +370,23 @@ public class ThemePatch extends BaseThemePatch {
             // The app draws the artboard to cover a square view, so the width of the artboard
             // fits the square. The view is changed to fill the screen, and the artboard is
             // given the shape of the screen at that same scale.
-            // The Morphe animation of 21.30 - 21.38 has no backdrop, and is made for the square view.
             float artboardWidth = 0;
             float artboardHeight = 0;
-            if (VersionCheckPatch.IS_21_39_OR_GREATER) {
-                ViewGroup.LayoutParams params = animationView.getLayoutParams();
-                if (context instanceof Activity activity && params.width > 0) {
-                    final float artboardUnitsPerPixel = RIVE_GLOW_ARTBOARD_WIDTH / params.width;
-                    Rect windowBounds = getWindowBounds(activity);
-                    artboardWidth = windowBounds.width() * artboardUnitsPerPixel;
-                    artboardHeight = windowBounds.height() * artboardUnitsPerPixel;
+            ViewGroup.LayoutParams params = animationView.getLayoutParams();
+            if (context instanceof Activity activity && params.width > 0) {
+                final float originalArtboardWidth = VersionCheckPatch.IS_21_39_OR_GREATER
+                        ? RIVE_GLOW_ARTBOARD_WIDTH
+                        : LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_WIDTH;
+                final float artboardUnitsPerPixel = originalArtboardWidth / params.width;
+                Rect windowBounds = getWindowBounds(activity);
+                artboardWidth = windowBounds.width() * artboardUnitsPerPixel;
+                artboardHeight = windowBounds.height() * artboardUnitsPerPixel;
 
-                    params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-                    params.height = ViewGroup.LayoutParams.MATCH_PARENT;
-                    animationView.setLayoutParams(params);
-                } else {
-                    Logger.printDebug(() -> "Glow animation view is not a fixed size");
-                }
+                params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+                animationView.setLayoutParams(params);
+            } else {
+                Logger.printDebug(() -> "Glow animation view is not a fixed size");
             }
 
             riveGlowArtboardWidth = artboardWidth;
@@ -552,10 +566,19 @@ public class ThemePatch extends BaseThemePatch {
                 return fileBytes;
             }
 
+            final float artboardWidth = riveGlowArtboardWidth;
+            final float artboardHeight = riveGlowArtboardHeight;
+            final boolean resizeArtboard = artboardWidth > 0 && artboardHeight > 0;
+
             // 21.30 - 21.38 has no glow animation, and plays an animation made from the Morphe logo.
-            // It is played as it is, and fades in by itself.
+            // It has no backdrop, and fades in by itself.
             if (!VersionCheckPatch.IS_21_39_OR_GREATER) {
-                return readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, LEGACY_RIVE_GLOW_MORPHE_RESOURCE));
+                fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, LEGACY_RIVE_GLOW_MORPHE_RESOURCE));
+                return resizeArtboard
+                        ? setRiveArtboardSize(fileBytes, LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_SIZE,
+                        LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_WIDTH, LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_HEIGHT,
+                        artboardWidth, artboardHeight)
+                        : fileBytes;
             }
 
             if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW_MORPHE) {
@@ -566,10 +589,9 @@ public class ThemePatch extends BaseThemePatch {
                 setRiveGlowBackgroundColor(fileBytes, backgroundColor);
             }
 
-            final float artboardWidth = riveGlowArtboardWidth;
-            final float artboardHeight = riveGlowArtboardHeight;
-            if (artboardWidth > 0 && artboardHeight > 0) {
-                fileBytes = setRiveGlowArtboardSize(fileBytes, artboardWidth, artboardHeight);
+            if (resizeArtboard) {
+                fileBytes = setRiveArtboardSize(fileBytes, RIVE_GLOW_ARTBOARD_SIZE,
+                        RIVE_GLOW_ARTBOARD_WIDTH, RIVE_GLOW_ARTBOARD_HEIGHT, artboardWidth, artboardHeight);
             }
 
             final int timelineIndex = indexOf(fileBytes, RIVE_GLOW_TIMELINE);
@@ -612,17 +634,24 @@ public class ThemePatch extends BaseThemePatch {
                 .putInt(color);
     }
 
-    private static byte[] setRiveGlowArtboardSize(byte[] fileBytes, float width, float height) {
-        final int index = indexOf(fileBytes, RIVE_GLOW_ARTBOARD_SIZE);
+    /**
+     * @param sizeBytes      The width and height of the artboard, as they are written in the Rive file.
+     * @param originalWidth  The width of the artboard in the Rive file.
+     * @param originalHeight The height of the artboard in the Rive file.
+     */
+    private static byte[] setRiveArtboardSize(byte[] fileBytes, byte[] sizeBytes,
+                                              float originalWidth, float originalHeight,
+                                              float width, float height) {
+        final int index = indexOf(fileBytes, sizeBytes);
         if (index < 0) {
-            Logger.printException(() -> "Could not find the artboard size of the glow animation");
+            Logger.printException(() -> "Could not find the artboard size of the Rive animation");
             return fileBytes;
         }
 
         // The content is drawn from the origin of the artboard, which is a fraction of its size.
         // The origin keeps the content in the middle of the resized artboard.
-        final float originX = (width - RIVE_GLOW_ARTBOARD_WIDTH) / 2 / width;
-        final float originY = (height - RIVE_GLOW_ARTBOARD_HEIGHT) / 2 / height;
+        final float originX = (width - originalWidth) / 2 / width;
+        final float originY = (height - originalHeight) / 2 / height;
 
         // Each property is a one byte property key followed by a float.
         byte[] artboardProperties = ByteBuffer.allocate(4 * (1 + Float.BYTES))
@@ -633,7 +662,7 @@ public class ThemePatch extends BaseThemePatch {
                 .put(RIVE_PROPERTY_KEY_ORIGIN_Y).putFloat(originY)
                 .array();
 
-        return replaceBytes(fileBytes, index, RIVE_GLOW_ARTBOARD_SIZE.length, artboardProperties);
+        return replaceBytes(fileBytes, index, sizeBytes.length, artboardProperties);
     }
 
     private static byte[] replaceBytes(byte[] array, int index, int length, byte[] replacement) {
