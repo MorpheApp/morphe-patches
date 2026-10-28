@@ -29,6 +29,9 @@ import app.morphe.patches.youtube.layout.seekbar.LottieSplashScreenFeatureFlagFi
 import app.morphe.patches.youtube.layout.seekbar.LottieSplashScreenFeatureFlagLegacyFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -63,8 +66,13 @@ val splashAnimationPatch = bytecodePatch {
     )
 
     execute {
-        // 21.39+ also has the glow Rive animation, with the YouTube or the Morphe logo.
-        val arrayKeySuffix = if (is_21_39_or_greater) "_21_39" else ""
+        // 21.30+ also has the Morphe glow Rive animation, and 21.39+ has the glow animation
+        // with the YouTube logo as well.
+        val arrayKeySuffix = when {
+            is_21_39_or_greater -> "_21_39"
+            is_21_30_or_greater -> "_21_30"
+            else -> ""
+        }
 
         PreferenceScreen.GENERAL.addPreferences(
             ListPreference(
@@ -124,36 +132,61 @@ val splashAnimationPatch = bytecodePatch {
             )
         }
 
-        if (is_21_39_or_greater) {
+        // The Rive styles are not available before 21.30:
+        // - 21.21 and earlier do not include the Rive library.
+        // - 21.22 - 21.28 play the Rive startup animation with an older Rive view, but 21.22 - 21.23
+        //   crash when the view is created, because the app build removed Java code that the native
+        //   Rive library calls. 21.24 - 21.28 are only experimental targets and are not supported.
+        // - 21.29 does not include the native library of the older view, and does not have
+        //   the newer Rive startup animation of 21.30+.
+        if (is_21_30_or_greater) {
             // The Morphe glow animation is the default style.
             SplashAnimationIsRiveIncludedFingerprint.method.returnEarly(true)
 
-            arrayOf(
-                RiveSplashScreenFeatureFlagFingerprint,
-                RiveGlowSplashScreenFeatureFlagFingerprint
-            ).forEach { fingerprint ->
-                fingerprint.matchAll().forEach {
+            RiveSplashScreenFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useRiveSplashScreen(Z)Z"
+                )
+            }
+
+            // 21.39+ plays the glow animation if this flag is on. Before 21.39 the flag
+            // selects the older Rive view, which crashes because its library is not included.
+            RiveGlowSplashScreenFeatureFlagFingerprint.matchAll().forEach {
+                if (is_21_39_or_greater) {
                     it.method.insertLiteralOverride(
                         it.instructionMatches.first().index,
                         "$EXTENSION_CLASS->useRiveSplashScreen(Z)Z"
                     )
+                } else {
+                    it.method.insertLiteralOverride(it.instructionMatches.first().index, false)
                 }
             }
 
-            // The themed Rive animation is used instead of the glow animation if it is on.
-            RiveThemedSplashScreenFeatureFlagFingerprint.matchAll().forEach {
-                it.method.apply {
-                    findInstructionIndicesReversedOrThrow(
-                        literal(RIVE_THEMED_SPLASH_SCREEN_FEATURE_FLAG)
-                    ).forEach { index ->
-                        insertLiteralOverride(index, false)
+            // The themed Rive animation of 21.32+ is used instead of the glow animation if it is on.
+            if (is_21_32_or_greater) {
+                RiveThemedSplashScreenFeatureFlagFingerprint.matchAll().forEach {
+                    it.method.apply {
+                        findInstructionIndicesReversedOrThrow(
+                            literal(RIVE_THEMED_SPLASH_SCREEN_FEATURE_FLAG)
+                        ).forEach { index ->
+                            insertLiteralOverride(index, false)
+                        }
                     }
                 }
             }
 
-            RiveSplashScreenAnimationViewFingerprint.let {
+            // The match of the instruction that sets the view field.
+            val (animationViewFingerprint, animationViewMatchIndex) =
+                if (is_21_32_or_greater && !is_21_35_or_greater) {
+                    RiveSplashScreenAnimationViewLegacyFingerprint to 3
+                } else {
+                    RiveSplashScreenAnimationViewFingerprint to 4
+                }
+
+            animationViewFingerprint.let {
                 it.method.apply {
-                    val index = it.instructionMatches.last().index
+                    val index = it.instructionMatches[animationViewMatchIndex].index
                     val viewRegister = getInstruction<TwoRegisterInstruction>(index).registerA
 
                     addInstruction(
@@ -166,18 +199,21 @@ val splashAnimationPatch = bytecodePatch {
 
             // The backdrop of the glow animation is changed to the color of the splash screen
             // when the file is read, and the app keeps the file in memory with a key of that color.
-            RiveRawResourceSourceFingerprint.let {
-                it.method.apply {
-                    val index = it.instructionMatches[1].index
-                    val register = getInstruction<TwoRegisterInstruction>(index).registerA
+            // The Morphe animation of 21.30 - 21.38 is not changed when it is read.
+            if (is_21_39_or_greater) {
+                RiveRawResourceSourceFingerprint.let {
+                    it.method.apply {
+                        val index = it.instructionMatches[1].index
+                        val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-                    addInstructions(
-                        index,
-                        """
-                            invoke-static { v$register }, $EXTENSION_CLASS->getRiveRawResourceKey(Ljava/lang/String;)Ljava/lang/String;
-                            move-result-object v$register
-                        """
-                    )
+                        addInstructions(
+                            index,
+                            """
+                                invoke-static { v$register }, $EXTENSION_CLASS->getRiveRawResourceKey(Ljava/lang/String;)Ljava/lang/String;
+                                move-result-object v$register
+                            """
+                        )
+                    }
                 }
             }
 

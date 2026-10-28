@@ -106,7 +106,7 @@ internal object RiveSplashScreenViewFingerprint : Fingerprint(
 )
 
 /**
- * 21.39+ Sets the view that the Rive animation is drawn in.
+ * 21.30 - 21.31 and 21.35+ sets the view that the Rive animation is drawn in.
  */
 internal object RiveSplashScreenAnimationViewFingerprint : Fingerprint(
     definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
@@ -131,6 +131,37 @@ internal object RiveSplashScreenAnimationViewFingerprint : Fingerprint(
             opcode = Opcode.IPUT_OBJECT,
             type = "Landroid/widget/ImageView;",
             location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * 21.32 - 21.34 sets the view that the Rive animation is drawn in,
+ * with a resource id that was loaded earlier for another view.
+ */
+internal object RiveSplashScreenAnimationViewLegacyFingerprint : Fingerprint(
+    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onCreate",
+    returnType = "V",
+    parameters = listOf("Landroid/os/Bundle;"),
+    filters = listOf(
+        methodCall(name = "findViewById"),
+        opcode(
+            opcode = Opcode.MOVE_RESULT_OBJECT,
+            location = MatchAfterImmediately()
+        ),
+        checkCast(
+            "Landroid/widget/ImageView;",
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/widget/ImageView;",
+            location = MatchAfterImmediately()
+        ),
+        literal(
+            RIVE_THEMED_SPLASH_SCREEN_FEATURE_FLAG,
+            location = MatchAfterWithin(2)
         )
     )
 )

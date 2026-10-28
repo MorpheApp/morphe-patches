@@ -52,6 +52,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.theme.BaseThemePatch;
 import app.morphe.extension.shared.theme.ThemeColorPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -211,7 +212,7 @@ public class ThemePatch extends BaseThemePatch {
 
     /**
      * How long the Glow Morphe animation plays from its first frame until the splash screen closes.
-     * The animation ends after 1.27 seconds, and the timeout of the app would keep it longer.
+     * The animation ends after 1.3 seconds, and the timeout of the app would keep it longer.
      */
     private static final long RIVE_GLOW_MORPHE_DURATION_MILLISECONDS = 1400;
 
@@ -221,6 +222,11 @@ public class ThemePatch extends BaseThemePatch {
      */
     @Nullable
     private static volatile Runnable riveGlowMorpheSplashScreenCloser;
+
+    /**
+     * The Glow Morphe animation of 21.30 - 21.38, which has no glow animation to make it from.
+     */
+    private static final String LEGACY_RIVE_GLOW_MORPHE_RESOURCE = "morphe_startup_animation_glow_legacy";
 
     private static boolean riveSplashScreenCrashChecked;
 
@@ -249,8 +255,17 @@ public class ThemePatch extends BaseThemePatch {
         }
     }
 
-    private static boolean isRiveGlowFile(int resourceId) {
-        return resourceId == ResourceUtils.getIdentifier(ResourceType.RAW, "rive_phantom");
+    /**
+     * The Rive file of the splash screen: the glow animation in 21.39+,
+     * and the startup animation of the light or the dark theme in 21.30 - 21.38.
+     */
+    private static boolean isRiveSplashScreenFile(int resourceId) {
+        if (VersionCheckPatch.IS_21_39_OR_GREATER) {
+            return resourceId == ResourceUtils.getIdentifier(ResourceType.RAW, "rive_phantom");
+        }
+
+        return resourceId == ResourceUtils.getIdentifier(ResourceType.RAW, "rive_startup_animation_light")
+                || resourceId == ResourceUtils.getIdentifier(ResourceType.RAW, "rive_startup_animation_dark");
     }
 
     /**
@@ -341,20 +356,23 @@ public class ThemePatch extends BaseThemePatch {
             // The app draws the artboard to cover a square view, so the width of the artboard
             // fits the square. The view is changed to fill the screen, and the artboard is
             // given the shape of the screen at that same scale.
+            // The Morphe animation of 21.30 - 21.38 has no backdrop, and is made for the square view.
             float artboardWidth = 0;
             float artboardHeight = 0;
-            ViewGroup.LayoutParams params = animationView.getLayoutParams();
-            if (context instanceof Activity activity && params.width > 0) {
-                final float artboardUnitsPerPixel = RIVE_GLOW_ARTBOARD_WIDTH / params.width;
-                Rect windowBounds = getWindowBounds(activity);
-                artboardWidth = windowBounds.width() * artboardUnitsPerPixel;
-                artboardHeight = windowBounds.height() * artboardUnitsPerPixel;
+            if (VersionCheckPatch.IS_21_39_OR_GREATER) {
+                ViewGroup.LayoutParams params = animationView.getLayoutParams();
+                if (context instanceof Activity activity && params.width > 0) {
+                    final float artboardUnitsPerPixel = RIVE_GLOW_ARTBOARD_WIDTH / params.width;
+                    Rect windowBounds = getWindowBounds(activity);
+                    artboardWidth = windowBounds.width() * artboardUnitsPerPixel;
+                    artboardHeight = windowBounds.height() * artboardUnitsPerPixel;
 
-                params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-                params.height = ViewGroup.LayoutParams.MATCH_PARENT;
-                animationView.setLayoutParams(params);
-            } else {
-                Logger.printDebug(() -> "Glow animation view is not a fixed size");
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                    params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+                    animationView.setLayoutParams(params);
+                } else {
+                    Logger.printDebug(() -> "Glow animation view is not a fixed size");
+                }
             }
 
             riveGlowArtboardWidth = artboardWidth;
@@ -502,7 +520,7 @@ public class ThemePatch extends BaseThemePatch {
             final int backgroundColor = riveGlowBackgroundColor;
             if (backgroundColor != 0
                     && key.startsWith(RIVE_RAW_RESOURCE_KEY_PREFIX)
-                    && isRiveGlowFile(Integer.parseInt(key.substring(RIVE_RAW_RESOURCE_KEY_PREFIX.length())))) {
+                    && isRiveSplashScreenFile(Integer.parseInt(key.substring(RIVE_RAW_RESOURCE_KEY_PREFIX.length())))) {
                 return key + "_" + Integer.toHexString(backgroundColor)
                         + "_" + riveGlowArtboardWidth + "x" + riveGlowArtboardHeight
                         + "_" + SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().name();
@@ -530,8 +548,14 @@ public class ThemePatch extends BaseThemePatch {
     public static byte[] getRiveFile(@Nullable byte[] fileBytes, int resourceId) {
         try {
             final int backgroundColor = riveGlowBackgroundColor;
-            if (fileBytes == null || backgroundColor == 0 || !isRiveGlowFile(resourceId)) {
+            if (fileBytes == null || backgroundColor == 0 || !isRiveSplashScreenFile(resourceId)) {
                 return fileBytes;
+            }
+
+            // 21.30 - 21.38 has no glow animation, and plays an animation made from the Morphe logo.
+            // It is played as it is, and fades in by itself.
+            if (!VersionCheckPatch.IS_21_39_OR_GREATER) {
+                return readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, LEGACY_RIVE_GLOW_MORPHE_RESOURCE));
             }
 
             if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW_MORPHE) {

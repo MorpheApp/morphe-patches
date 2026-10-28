@@ -56,6 +56,8 @@ public class SplashAnimationPatch {
         RIVE_GLOW(1, false),
         /**
          * The glow animation with the Morphe logo, made from the glow animation of the app during patching.
+         * YouTube 21.30 - 21.38 has no glow animation, and plays an animation of the Morphe logo
+         * coming into focus out of a glow instead.
          * Low memory devices get the Morphe animation of {@link #MORPHE_COLOR} instead.
          */
         RIVE_GLOW_MORPHE(1, false),
@@ -98,7 +100,7 @@ public class SplashAnimationPatch {
         }
 
         /**
-         * If the style plays a YouTube 21.39+ Rive animation.
+         * If the style plays a Rive animation, which YouTube 21.30+ can play.
          */
         public boolean isRive() {
             return this == RIVE_GLOW || this == RIVE_GLOW_MORPHE;
@@ -114,7 +116,7 @@ public class SplashAnimationPatch {
     private static final String BRAND_GRADIENT = "[0,0.117647,0.352941,0.658824,1,0,0.686275,0.682353]";
 
     /**
-     * If the app has the Rive animations, which YouTube 21.39+ has.
+     * If the app plays the Rive animations, which YouTube 21.30+ does.
      */
     private static boolean isRiveIncluded() {
         return false; // Modified during patching.

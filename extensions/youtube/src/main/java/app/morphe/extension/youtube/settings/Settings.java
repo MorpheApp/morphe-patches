@@ -18,6 +18,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.patches.CustomFontPatch.FontType;
 import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
@@ -1045,8 +1046,10 @@ public class Settings extends SharedYouTubeSettings {
             RESTORE_OLD_PLAYER_BUTTONS.resetToDefault();
         }
 
-        // The Rive startup animations require 21.39+.
-        if (!VersionCheckPatch.IS_21_39_OR_GREATER && SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().isRive()) {
+        // The glow startup animation requires 21.39+, and Glow Morphe requires 21.30+.
+        SplashScreenAnimationStyle splashScreenStyle = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
+        if (splashScreenStyle == SplashScreenAnimationStyle.RIVE_GLOW && !VersionCheckPatch.IS_21_39_OR_GREATER
+                || splashScreenStyle == SplashScreenAnimationStyle.RIVE_GLOW_MORPHE && !VersionCheckPatch.IS_21_30_OR_GREATER) {
             Logger.printInfo(() -> "Resetting Rive splash screen animation style");
             SharedYouTubeSettings.SPLASH_SCREEN_STYLE.resetToDefault();
         }

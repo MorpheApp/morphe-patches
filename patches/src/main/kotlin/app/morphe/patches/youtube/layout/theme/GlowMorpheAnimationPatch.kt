@@ -15,8 +15,11 @@ package app.morphe.patches.youtube.layout.theme
 
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import kotlin.math.atan2
 import kotlin.math.floor
 import kotlin.math.hypot
@@ -24,6 +27,12 @@ import kotlin.math.roundToInt
 
 private const val GLOW_ANIMATION_FILE = "res/raw/rive_phantom.riv"
 private const val GLOW_MORPHE_ANIMATION_FILE = "res/raw/morphe_startup_animation_glow.riv"
+
+/**
+ * The Morphe logo comes into focus out of a glow. Made only from the Morphe logo,
+ * for 21.30 - 21.38 that has no glow animation to make the Glow Morphe animation from.
+ */
+private const val GLOW_MORPHE_LEGACY_ANIMATION_FILE = "morphe_startup_animation_glow_legacy.riv"
 
 // Rive type keys.
 private const val TYPE_ARTBOARD = 1
@@ -116,13 +125,19 @@ private const val KEY_FRAME_TIME_SCALE = 0.7
 /**
  * Adds a copy of the glow startup animation of the app with the Morphe logo in place of the app logo,
  * which the Glow Morphe splash screen style plays. The copy is made from the animation of the app.
+ * 21.30 - 21.38 plays an animation made only from the Morphe logo instead.
  */
 internal val glowMorpheAnimationResourcePatch = resourcePatch {
     dependsOn(versionCheckPatch)
 
     execute {
         // The glow animation exists in 21.39+.
-        if (!is_21_39_or_greater) return@execute
+        if (!is_21_39_or_greater) {
+            if (is_21_30_or_greater) {
+                copyResources("custom-branding", ResourceGroup("raw", GLOW_MORPHE_LEGACY_ANIMATION_FILE))
+            }
+            return@execute
+        }
 
         val animation = RiveFile(get(GLOW_ANIMATION_FILE).readBytes())
         replaceLogoWithMorpheLogo(animation)
