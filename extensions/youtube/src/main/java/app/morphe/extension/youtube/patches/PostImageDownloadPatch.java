@@ -989,10 +989,10 @@ public final class PostImageDownloadPatch {
 
     private static void download(@Nullable List<PostImage> images) {
         if (images == null || images.isEmpty()) {
-            Utils.showToastShort(str("morphe_post_image_download_not_found"));
+            Utils.showSnackbarShort(str("morphe_post_image_download_not_found"));
             return;
         }
-        Utils.showToastShort(images.size() == 1
+        Utils.showSnackbarShort(images.size() == 1
                 ? str("morphe_post_image_download_started_single")
                 : str("morphe_post_image_download_started", images.size()));
 
@@ -1031,7 +1031,7 @@ public final class PostImageDownloadPatch {
                 } else {
                     toast = str("morphe_post_image_download_saved", savedCount, folder);
                 }
-                Utils.showToastShort(toast);
+                Utils.showSnackbarShort(toast);
             });
         });
     }

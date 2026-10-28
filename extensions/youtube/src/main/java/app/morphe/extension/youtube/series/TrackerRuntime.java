@@ -124,7 +124,7 @@ final class TrackerRuntime {
                         if (!waiting) return;
                         if (SystemClock.elapsedRealtime() - requestedAt >= 15000) {
                             cancelLaunch();
-                            Utils.showToastLong(UiText.get("morphe_series_tracker_error_resume"));
+                            Utils.showSnackbarLong(UiText.get("morphe_series_tracker_error_resume"));
                         } else main.postDelayed(this, 250);
                     }
                 },

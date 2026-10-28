@@ -63,7 +63,7 @@ public final class BackupPreference extends Preference {
             sheet.action("morphe_series_tracker_backup_restore", () -> {
                 sheet.dialog.dismiss();
                 service.restoreBackup(data,
-                        added -> Utils.showToastLong(
+                        added -> Utils.showSnackbarLong(
                                 UiText.format("morphe_series_tracker_backup_restored", added)),
                         BackupPreference::toast);
             }, true);
@@ -76,6 +76,6 @@ public final class BackupPreference extends Preference {
     }
 
     private static void toast(String key) {
-        Utils.showToastLong(UiText.get(key));
+        Utils.showSnackbarLong(UiText.get(key));
     }
 }

@@ -984,7 +984,7 @@ final class LibraryDialog {
     }
 
     private void toast(String message) {
-        Utils.showToastLong(UiText.get(message));
+        Utils.showSnackbarLong(UiText.get(message));
     }
 
     private LinearLayout column() {

@@ -155,13 +155,13 @@ public final class ChannelWhitelist {
     public static void toggleChannel(WhitelistType type, String channelId, @Nullable String channelName) {
         if (isChannelWhitelisted(type, channelId)) {
             removeChannel(type, channelId);
-            Utils.showToastShort(str("morphe_channel_whitelist_channel_removed"));
+            Utils.showSnackbarShort(str("morphe_channel_whitelist_channel_removed"));
         } else {
             Map<String, String> channels = new LinkedHashMap<>(getWhitelistedChannels(type));
             if (!channelId.isEmpty() && channels.put(channelId, channelName == null ? "" : channelName) == null) {
                 save(type, channels);
             }
-            Utils.showToastShort(str("morphe_channel_whitelist_channel_added"));
+            Utils.showSnackbarShort(str("morphe_channel_whitelist_channel_added"));
         }
     }
 

@@ -548,7 +548,7 @@ public final class NativePlaylistQueuePatch {
             // Keep the old snapshot until publish attaches the changed rows to the
             // native backend; preassigning queue would conceal the item-list change.
             if (publish(controller, queue.playNextAndSelect(videoId), false)) {
-                Utils.showToastShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
                 completeMetadata();
             }
 
@@ -1337,13 +1337,13 @@ public final class NativePlaylistQueuePatch {
                 }
                 NativePlayback playback = playbackFor(controller);
                 if (pendingSelection != null || dragSession != null || playback == null) {
-                    Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
                     return null;
                 }
 
                 PlaylistQueue before = queue.withRepeatMode(playback.patch_getRepeatMode());
                 if (!playback.patch_clearQueue()) {
-                    Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
                     return null;
                 }
 
@@ -1373,7 +1373,7 @@ public final class NativePlaylistQueuePatch {
             return null;
         } catch (Exception ex) {
             Logger.printException(() -> "onQueueMenuCommand failure", ex);
-            Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
             return null;
         }
     }
@@ -1989,7 +1989,7 @@ public final class NativePlaylistQueuePatch {
 
         if (playLast && queue == null) {
             // A menu callback can outlive the queue that made Play last available.
-            Utils.showToastShort(str("morphe_native_playlist_queue_not_ready"));
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
             return;
         }
 
@@ -2006,13 +2006,13 @@ public final class NativePlaylistQueuePatch {
         try {
             if (playlist != null) {
                 if (dragSession != null || queue != null) {
-                    Utils.showToastShort(str("morphe_native_playlist_queue_not_ready"));
+                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
                     return;
                 }
 
                 NativePlayback playback = playbackFor(playlist);
                 if (playback == null) {
-                    Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
                     return;
                 }
 
@@ -2036,7 +2036,7 @@ public final class NativePlaylistQueuePatch {
                     refreshPlayerControls(playlist.patch_getNavigator());
                     QueueFullscreenActions.refresh();
                     FlyoutUtils.dismissFlyout();
-                    Utils.showToastShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                    Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
                     completeMetadata();
                 }
 
@@ -2057,7 +2057,7 @@ public final class NativePlaylistQueuePatch {
 
             PlaylistController controller = readyController();
             if (controller == null || dragSession != null) {
-                Utils.showToastShort(str("morphe_native_playlist_queue_not_ready"));
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
                 return;
             }
 
@@ -2077,12 +2077,12 @@ public final class NativePlaylistQueuePatch {
                     ? candidate : playLast ? candidate.playLast(videoId) : candidate.playNext(videoId);
             if (publish(controller, updated, true)) {
                 FlyoutUtils.dismissFlyout();
-                Utils.showToastShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
                 completeMetadata();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Could not add video to native playlist queue", ex);
-            Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
         }
     }
 
@@ -2177,7 +2177,7 @@ public final class NativePlaylistQueuePatch {
                 refreshRepeatHeaders();
                 refreshPlayerControls(controller.patch_getNavigator());
             } else {
-                Utils.showToastShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
             }
             completeMetadata();
         }
@@ -2294,7 +2294,7 @@ public final class NativePlaylistQueuePatch {
                     return false;
                 }
                 pendingMixAddition = choice;
-                Utils.showToastShort(str("morphe_native_playlist_queue_loading_mix"));
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_mix"));
                 Utils.runOnBackgroundThread(() -> {
                     if (pendingMixAddition != choice) {
                         return;
@@ -2341,7 +2341,7 @@ public final class NativePlaylistQueuePatch {
             Logger.printException(() -> "onQueueMixTap failure", ex);
             // A failed prompt must not silently discard the playing queue.
             if (intercepted) {
-                Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
             }
             return intercepted;
         }
@@ -2387,7 +2387,7 @@ public final class NativePlaylistQueuePatch {
             return;
         }
         if (videos == null || videos.isEmpty()) {
-            Utils.showToastShort(str("morphe_queue_manager_fetch_failed_add"));
+            Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
             return;
         }
 
@@ -2401,12 +2401,12 @@ public final class NativePlaylistQueuePatch {
             PlaylistQueue updated = queue.append(additions)
                     .withRepeatMode(playback.patch_getRepeatMode());
             if (publish(controller, updated, true)) {
-                Utils.showToastShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
                 completeMetadata();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Could not append Mix to native queue", ex);
-            Utils.showToastShort(str("morphe_queue_manager_fetch_failed_add"));
+            Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
         }
     }
 
@@ -2477,7 +2477,7 @@ public final class NativePlaylistQueuePatch {
             NativePlayback playback = playbackFor(controller);
             if (playback == null) {
                 if (reportFailure) {
-                    Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
                 }
                 return false;
             }
@@ -2486,7 +2486,7 @@ public final class NativePlaylistQueuePatch {
             acceptedModel = controller.patch_updatePanel(panel);
             if (acceptedModel == null) {
                 if (reportFailure) {
-                    Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
                 }
                 return false;
             }
@@ -2508,7 +2508,7 @@ public final class NativePlaylistQueuePatch {
                 if (!playback.patch_attachQueue(panel, currentQueueCommand(candidate))) {
                     controller.patch_restorePanel(acceptedModel, previousModel);
                     if (reportFailure) {
-                        Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+                        Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
                     }
                     return false;
                 }
@@ -2550,7 +2550,7 @@ public final class NativePlaylistQueuePatch {
 
             Logger.printException(() -> "Could not display native playlist queue", ex);
             if (reportFailure) {
-                Utils.showToastShort(str("morphe_native_playlist_queue_unavailable"));
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
             }
             return false;
         } finally {

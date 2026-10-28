@@ -102,7 +102,7 @@ public class PlayAllButton {
                         sb.append(baseId);
                     } else {
                         Logger.printDebug(() -> "Play all button: Invalid or missing Channel ID: " + channelId);
-                        Utils.showToastShort(str("morphe_play_all_button_not_available_toast"));
+                        Utils.showSnackbarShort(str("morphe_play_all_button_not_available_toast"));
                         return;
                     }
                 } else {

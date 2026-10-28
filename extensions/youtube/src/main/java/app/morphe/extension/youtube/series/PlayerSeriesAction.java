@@ -54,7 +54,7 @@ final class PlayerSeriesAction {
                     }
                     java.util.function.Consumer<String> done =
                             id ->
-                                    Utils.showToastShort(UiText.get("morphe_series_tracker_followed"));
+                                    Utils.showSnackbarShort(UiText.get("morphe_series_tracker_followed"));
                     if (playlist.isEmpty()) {
                         java.util.List<PlaylistDiscovery.Match> saved =
                                 new java.util.ArrayList<>();
@@ -74,7 +74,7 @@ final class PlayerSeriesAction {
                 message -> {
                     pending.clear();
                     if (!activity.isFinishing() && !activity.isDestroyed())
-                        Utils.showToastLong(UiText.get(message));
+                        Utils.showSnackbarLong(UiText.get(message));
                 });
     }
 

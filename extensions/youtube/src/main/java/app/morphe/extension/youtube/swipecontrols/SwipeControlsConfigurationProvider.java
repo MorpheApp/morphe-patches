@@ -381,7 +381,7 @@ public final class SwipeControlsConfigurationProvider {
 
     /**
      * The color of the progress bar in the overlay for brightness.
-     * Resets to default and shows a toast if the color string is invalid or empty.
+     * Resets to default and shows a message if the color string is invalid or empty.
      */
     public int getOverlayBrightnessProgressColor() {
         return getSettingColor(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR);
@@ -389,7 +389,7 @@ public final class SwipeControlsConfigurationProvider {
 
     /**
      * The color of the progress bar in the overlay for volume.
-     * Resets to default and shows a toast if the color string is invalid or empty.
+     * Resets to default and shows a message if the color string is invalid or empty.
      */
     public int getOverlayVolumeProgressColor() {
         return getSettingColor(Settings.SWIPE_OVERLAY_VOLUME_COLOR);
@@ -411,7 +411,7 @@ public final class SwipeControlsConfigurationProvider {
             // If a user imports bad data, the color picker preference resets the
             // bad color before this method can be called.
             Logger.printDebug(() -> "Could not parse color: " + setting, ex);
-            Utils.showToastLong(str("morphe_settings_color_invalid"));
+            Utils.showSnackbarLong(str("morphe_settings_color_invalid"));
             setting.resetToDefault();
             return getSettingColor(setting); // Recursively return.
         }

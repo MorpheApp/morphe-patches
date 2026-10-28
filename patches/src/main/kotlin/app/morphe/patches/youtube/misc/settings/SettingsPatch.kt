@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.misc.settings
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
@@ -28,6 +29,7 @@ import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.addLicensePatch
+import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.initialization.initializationPatch
 import app.morphe.patches.shared.misc.settings.MORPHE_SETTINGS_INTENT
@@ -47,6 +49,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.settingsPatch
+import app.morphe.patches.youtube.interaction.nativeplaylistqueue.parseProtoInstructions
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.accessibility.fixCaptionsAccessibilityPatch
 import app.morphe.patches.youtube.misc.fix.accessibility.fixShortsAccessibilityPatch
@@ -80,6 +83,9 @@ import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val BASE_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/shared/settings/BaseActivityHook;"
 private const val YOUTUBE_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/youtube/settings/YouTubeActivityHook;"
+private const val NATIVE_SNACKBAR_CLASS = "Lapp/morphe/extension/youtube/patches/NativeSnackbarPatch;"
+private const val COMMAND_ROUTER_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/NativeSnackbarPatch$CommandRouter;"
 
 private val preferences = mutableSetOf<BasePreference>()
 
@@ -271,6 +277,7 @@ val settingsPatch = bytecodePatch(
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_settings_search_history"),
             SwitchPreference("morphe_show_menu_icons"),
+            SwitchPreference("morphe_native_snackbar", summary = true),
             customSettingsNamePreference()
         )
 
@@ -356,6 +363,40 @@ val settingsPatch = bytecodePatch(
                     )
                 )
             }
+        }
+
+        // The command router of an activity runs the command a server response shows a snackbar with,
+        // so the extension shows its messages in the YouTube snackbar instead of a toast.
+        CommandRouterConstructorFingerprint.let {
+            val routerClass = it.classDef
+            // The method of the router interface that runs one command.
+            val executeCommandMethod = routerClass.interfaces.flatMap { type -> classDefBy(type).methods }
+                .single { method ->
+                    method.returnType == "V" && method.parameterTypes.size == 2 &&
+                            method.parameterTypes[0].toString() != "Ljava/util/List;" &&
+                            method.parameterTypes[1].toString() == "Ljava/util/Map;"
+                }
+            val commandClass = executeCommandMethod.parameterTypes.first().toString()
+
+            routerClass.interfaces.add(COMMAND_ROUTER_INTERFACE)
+            routerClass.addBridge(
+                "patch_executeCommand", listOf("[B"), "V", 4,
+                """
+                    ${parseProtoInstructions(commandClass, bytes = "p1", result = "v0", registry = "v1")}
+                    check-cast v0, $commandClass
+                    new-instance v1, Ljava/util/HashMap;
+                    invoke-direct { v1 }, Ljava/util/HashMap;-><init>()V
+                    invoke-interface { p0, v0, v1 }, $executeCommandMethod
+                    return-void
+                """
+            )
+
+            // Right after the super constructor, before the activity register can be reused.
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
+                "invoke-static { p0, p1 }, $NATIVE_SNACKBAR_CLASS->" +
+                        "setCommandRouter(${COMMAND_ROUTER_INTERFACE}Landroid/app/Activity;)V"
+            )
         }
 
         modifyActivityForSettingsInjection(

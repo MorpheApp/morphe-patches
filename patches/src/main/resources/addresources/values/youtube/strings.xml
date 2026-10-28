@@ -31,6 +31,8 @@ Second \"item\" text"</string>
     <string name="morphe_settings_screen_11_misc_title">Miscellaneous</string>
     <string name="morphe_settings_screen_12_video_title">Video</string>
     <string name="morphe_restore_old_settings_menus_title">Restore old YouTube settings screen</string>
+    <string name="morphe_native_snackbar_title">Show messages in YouTube snackbar</string>
+    <string name="morphe_native_snackbar_summary">Morphe messages, such as the confirmation of a player button, are shown in the YouTube snackbar instead of a popup</string>
 
     <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
     <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>

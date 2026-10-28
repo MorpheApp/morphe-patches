@@ -145,7 +145,7 @@ public final class HistoryUi extends LinearLayout {
             Logger.printException(() -> "Could not open History", e);
             openSeriesUntil = 0;
             openSeriesId = "";
-            Utils.showToastLong(UiText.get("morphe_series_tracker_ui_open_history_from_you_to_view_your_series"));
+            Utils.showSnackbarLong(UiText.get("morphe_series_tracker_ui_open_history_from_you_to_view_your_series"));
         }
     }
 
