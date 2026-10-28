@@ -147,7 +147,7 @@ public final class MetadataCleaner {
         if (regex == null || regex.trim().isEmpty()) {
             return input;
         }
-        final Pattern pattern = compiled(regex);
+        Pattern pattern = compiled(regex);
         if (pattern == null) {
             return input;
         }
@@ -170,12 +170,12 @@ public final class MetadataCleaner {
         if (regex == null || regex.trim().isEmpty()) {
             return input;
         }
-        final Pattern pattern = compiled(regex);
+        Pattern pattern = compiled(regex);
         if (pattern == null) {
             return input;
         }
         try {
-            final String normalized = CharactersConverter.normalizePreserveCase(input);
+            String normalized = CharactersConverter.normalizePreserveCase(input);
             if (!pattern.matcher(normalized).find()) {
                 return input;
             }

@@ -976,7 +976,7 @@ public final class CaptionsFetcher {
 
     public static boolean validateYouTubeCookies(String cookies) {
         if (cookies == null || cookies.trim().isEmpty()) return false;
-        final String normalized = normalizeCookies(cookies);
+        String normalized = normalizeCookies(cookies);
         if (!hasRequiredCookieKeys(normalized)) {
             Logger.printDebug(() -> "YouTube cookies are missing required keys");
             return false;
@@ -1165,7 +1165,7 @@ public final class CaptionsFetcher {
         }
         Word last = words.get(total - 1);
         words.set(total - 1, new Word(last.startMs(),
-                eventEndMs > last.startMs() ? eventEndMs : last.startMs(), last.text(),
+                Math.max(eventEndMs, last.startMs()), last.text(),
                 null, last.endsWithSpace()));
         return words;
     }

@@ -60,16 +60,16 @@ final class AlphabetRomanizer {
                 continue;
             }
 
-            final String base = base(c);
+            String base = base(c);
             if (i + 1 < line.length() && pairsWith(line.charAt(i + 1))) {
-                final String pair = digraphs.get(base + base(line.charAt(i + 1)));
+                String pair = digraphs.get(base + base(line.charAt(i + 1)));
                 if (pair != null) {
                     word.append(cased(pair, c));
                     i += 2;
                     continue;
                 }
             }
-            final String reading = letters.get(base);
+            String reading = letters.get(base);
             word.append(reading != null ? cased(reading, c) : String.valueOf(c));
             i++;
         }
@@ -104,6 +104,7 @@ final class AlphabetRomanizer {
 
     private static void append(StringBuilder out, String word) {
         if (word.isEmpty()) return;
+        //noinspection SizeReplaceableByIsEmpty
         if (out.length() > 0) out.append(' ');
         out.append(word);
     }

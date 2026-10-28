@@ -309,7 +309,7 @@ public final class LyricsOrderedListPreference extends Preference {
             name.setClickable(true);
             name.setOnClickListener(v -> showTokenDialogFor(item.id, null));
         } else if (!locked && PROVIDER_URLS.containsKey(item.id)) {
-            final String url = PROVIDER_URLS.get(item.id);
+            String url = PROVIDER_URLS.get(item.id);
             name.setClickable(true);
             name.setOnClickListener(v -> openUrl(url));
         }

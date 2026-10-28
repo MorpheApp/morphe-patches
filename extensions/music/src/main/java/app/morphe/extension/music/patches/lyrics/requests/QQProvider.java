@@ -131,7 +131,7 @@ public final class QQProvider implements LyricsProvider {
         }
 
         final long songId = song.optLong("id");
-        final String sourceUrl = "https://y.qq.com/n/ryqq/songDetail/" + songId;
+        String sourceUrl = "https://y.qq.com/n/ryqq/songDetail/" + songId;
 
         String original = decodeQqLyricPayload(data.optString("lyric", ""));
         Matcher qrcXmlMatcher = QRC_XML.matcher(original);

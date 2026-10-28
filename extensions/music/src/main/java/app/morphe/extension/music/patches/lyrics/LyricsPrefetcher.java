@@ -69,7 +69,7 @@ final class LyricsPrefetcher {
         if (!Settings.LYRICS_ENABLED.get()) return;
         if (!Utils.isNetworkConnected()) return;
 
-        final Future<?> previous;
+        Future<?> previous;
         synchronized (LyricsPrefetcher.class) {
             if (currentVideoId.equals(prefetchingFor)) return;
             prefetchingFor = currentVideoId;
@@ -79,7 +79,7 @@ final class LyricsPrefetcher {
             // Frees the single thread for the track that is playing now.
             previous.cancel(true);
         }
-        final Future<?> task = executor.submit(() -> runPrefetch(currentVideoId));
+        Future<?> task = executor.submit(() -> runPrefetch(currentVideoId));
         synchronized (LyricsPrefetcher.class) {
             if (currentVideoId.equals(prefetchingFor)) {
                 running = task;
@@ -105,7 +105,7 @@ final class LyricsPrefetcher {
     private static void prefetch(String currentVideoId) {
         if (superseded(currentVideoId)) return;
 
-        final String[] nextVideoId = new String[1];
+        String[] nextVideoId = new String[1];
         TrackInfo track = SessionQueue.nextTrackOf(currentVideoId, nextVideoId);
         if (superseded(currentVideoId)) return;
         if (track == null) return;
@@ -120,7 +120,7 @@ final class LyricsPrefetcher {
 
         // The providers keyed by the video of the playing track only know that track,
         // so the successor is asked with the ones that search by title and artist.
-        final List<LyricsProvider> providers = LyricsProviders.searchableProviders(
+        List<LyricsProvider> providers = LyricsProviders.searchableProviders(
                 LyricsProviders.providersInOrder(Settings.LYRICS_SOURCE.get()));
         if (providers.isEmpty()) return;
         if (allKnown(track, providers)) return;

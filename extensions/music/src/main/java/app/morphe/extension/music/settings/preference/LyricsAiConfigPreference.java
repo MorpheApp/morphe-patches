@@ -110,7 +110,7 @@ public class LyricsAiConfigPreference extends Preference {
         instructionParams.bottomMargin = Dim.dp12;
         content.addView(instruction, instructionParams);
 
-        final String[] endpointFilter = {"all"};
+        String[] endpointFilter = {"all"};
         content.addView(createLabel(context, "morphe_music_lyrics_ai_config_endpoint_label"));
         Button endpointFilterButton = createButton(context, str("morphe_music_lyrics_ai_config_show_all"));
         content.addView(endpointFilterButton);

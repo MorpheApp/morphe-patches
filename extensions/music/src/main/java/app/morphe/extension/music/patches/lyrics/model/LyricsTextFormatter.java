@@ -20,8 +20,8 @@ public final class LyricsTextFormatter {
     private LyricsTextFormatter() { }
 
     public static Result format(String input, boolean capitalize, boolean strip) {
-        final String text = input == null ? "" : input;
-        final boolean[] remove = new boolean[text.length()];
+        String text = input == null ? "" : input;
+        boolean[] remove = new boolean[text.length()];
         if (strip) {
             int lineStart = 0;
             while (lineStart <= text.length()) {
@@ -41,15 +41,15 @@ public final class LyricsTextFormatter {
                 lineStart = end + 1;
             }
         }
-        final StringBuilder out = new StringBuilder(text.length());
-        final int[] offsets = new int[text.length() + 1];
+        StringBuilder out = new StringBuilder(text.length());
+        int[] offsets = new int[text.length() + 1];
         boolean firstCased = true;
         for (int at = 0; at < text.length();) {
             final int cp = text.codePointAt(at);
             final int end = at + Character.charCount(cp);
             for (int i = at; i < end; i++) offsets[i] = out.length();
             if (!remove[at]) {
-                final String own = text.substring(at, end);
+                String own = text.substring(at, end);
                 if (capitalize && firstCased && (Character.isLowerCase(cp)
                         || Character.isUpperCase(cp) || Character.isTitleCase(cp))) {
                     out.append(own.toUpperCase(Locale.ROOT));
@@ -79,7 +79,7 @@ public final class LyricsTextFormatter {
     private static boolean isRedundant(int cp) {
         if (Character.getType(cp) != Character.OTHER_PUNCTUATION
                 || Character.isMirrored(cp) || cp == '\'' || cp == '"') return false;
-        final String name = Character.getName(cp);
+        String name = Character.getName(cp);
         if (name == null || name.contains("QUESTION") || name.contains("EXCLAMATION")
                 || name.contains("INTERROBANG") || name.contains("ELLIPSIS")
                 || name.contains("QUOTATION") || name.contains("APOSTROPHE")) return false;
@@ -89,7 +89,7 @@ public final class LyricsTextFormatter {
     }
 
     private static boolean isEllipsisDot(String text, int start, int end, int cp) {
-        final String name = Character.getName(cp);
+        String name = Character.getName(cp);
         if (cp != 0x2024 && (name == null || !name.contains("FULL STOP"))) return false;
         return (start > 0 && text.codePointBefore(start) == cp)
                 || (end < text.length() && text.codePointAt(end) == cp);

@@ -10,12 +10,12 @@ package app.morphe.extension.music.patches.lyrics.ui;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.model.Word;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 
 public final class SectionDotsMotion {
 
@@ -86,7 +86,7 @@ public final class SectionDotsMotion {
             firstIndex++;
         }
         if (firstIndex < lines.size()) {
-            final LyricsLine first = lines.get(firstIndex);
+            LyricsLine first = lines.get(firstIndex);
             if (first.startTimeMs() >= MIN_GAP_MS) {
                 gaps = new ArrayList<>(4);
                 gaps.add(new Gap(firstIndex, 0L, first.startTimeMs()));
@@ -94,7 +94,7 @@ public final class SectionDotsMotion {
         }
         int previousLead = -1;
         for (int i = 0; i < lines.size(); i++) {
-            final LyricsLine line = lines.get(i);
+            LyricsLine line = lines.get(i);
             if (line == null || line.isBG()) {
                 continue;
             }
@@ -144,7 +144,7 @@ public final class SectionDotsMotion {
 
         // Staggered so the last dot finishes exactly when the row hides.
         final float dotSpan = Math.max(1f, (vanishStart - enterEnd) / DOT_COUNT);
-        final float[] dotAlpha = new float[DOT_COUNT];
+        float[] dotAlpha = new float[DOT_COUNT];
         for (int i = 0; i < DOT_COUNT; i++) {
             final float lit = DOT_UNLIT + (1f - DOT_UNLIT)
                     * clamp((t - enterEnd - dotSpan * i) / dotSpan);
@@ -170,7 +170,7 @@ public final class SectionDotsMotion {
         if (end > line.startTimeMs()) {
             return end;
         }
-        final List<Word> words = line.words();
+        List<Word> words = line.words();
         for (int i = words.size() - 1; i >= 0; i--) {
             final long wordEnd = words.get(i).endMs();
             if (wordEnd > line.startTimeMs()) {

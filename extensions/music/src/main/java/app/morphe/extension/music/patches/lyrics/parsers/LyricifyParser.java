@@ -38,22 +38,22 @@ public final class LyricifyParser {
             return Collections.emptyList();
         }
 
-        final List<LyricsLine> lines = new ArrayList<>();
+        List<LyricsLine> lines = new ArrayList<>();
 
         for (String raw : text.split("\\r?\\n")) {
-            final String line = raw.trim();
+            String line = raw.trim();
             if (line.isEmpty()) {
                 continue;
             }
 
-            final Matcher m = LINE_TIMING.matcher(line);
+            Matcher m = LINE_TIMING.matcher(line);
             if (!m.matches()) {
                 continue;
             }
 
             final long startMs = Long.parseLong(Objects.requireNonNull(m.group(1))) + offsetMs;
             final long endMs = Long.parseLong(Objects.requireNonNull(m.group(2))) + offsetMs;
-            final String body = Objects.requireNonNull(m.group(3)).trim();
+            String body = Objects.requireNonNull(m.group(3)).trim();
             if (body.isEmpty()) {
                 continue;
             }
@@ -74,15 +74,15 @@ public final class LyricifyParser {
             return Collections.emptyList();
         }
 
-        final List<LyricsLine> lines = new ArrayList<>();
+        List<LyricsLine> lines = new ArrayList<>();
 
         for (String raw : text.split("\\r?\\n")) {
-            final String line = raw.trim();
+            String line = raw.trim();
             if (line.isEmpty()) {
                 continue;
             }
 
-            final String body;
+            String body;
             if (line.startsWith("[")) {
                 final int close = line.indexOf(']');
                 body = (close > 0) ? line.substring(close + 1) : line;
@@ -90,12 +90,12 @@ public final class LyricifyParser {
                 body = line;
             }
 
-            final List<Word> words = parseSyllableWords(body, offsetMs);
+            List<Word> words = parseSyllableWords(body, offsetMs);
             if (words.isEmpty()) {
                 continue;
             }
 
-            final String fullText = joinWordTexts(words);
+            String fullText = joinWordTexts(words);
             final long startMs = words.get(0).startMs();
             final long endMs = words.get(words.size() - 1).endMs();
             lines.add(new LyricsLine(startMs, endMs, fullText, words));
@@ -110,11 +110,11 @@ public final class LyricifyParser {
     }
 
     private static List<Word> parseSyllableWords(String body, int offsetMs) {
-        final List<Word> words = new ArrayList<>();
-        final Matcher m = WORD_TIMING.matcher(body);
+        List<Word> words = new ArrayList<>();
+        Matcher m = WORD_TIMING.matcher(body);
 
         while (m.find()) {
-            final String wordText = Objects.requireNonNull(m.group(1));
+            String wordText = Objects.requireNonNull(m.group(1));
             final long startMs = Long.parseLong(Objects.requireNonNull(m.group(2))) + offsetMs;
             final long durMs = Long.parseLong(Objects.requireNonNull(m.group(3)));
             final long endMs = startMs + durMs;
@@ -132,7 +132,7 @@ public final class LyricifyParser {
     }
 
     private static String joinWordTexts(List<Word> words) {
-        final StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (Word w : words) {
             sb.append(w.text());
         }
@@ -144,22 +144,22 @@ public final class LyricifyParser {
             return Collections.emptyList();
         }
 
-        final List<TranslatedEntry> entries = new ArrayList<>();
+        List<TranslatedEntry> entries = new ArrayList<>();
 
         for (String raw : trans.split("\\r?\\n")) {
-            final String line = raw.trim();
+            String line = raw.trim();
             if (line.isEmpty()) {
                 continue;
             }
 
-            final Matcher m = LRC_TIMESTAMP.matcher(line);
+            Matcher m = LRC_TIMESTAMP.matcher(line);
             if (!m.matches()) {
                 continue;
             }
 
             final long min = Long.parseLong(Objects.requireNonNull(m.group(1)));
-            final String secPart = Objects.requireNonNull(m.group(2));
-            final String text = Objects.requireNonNull(m.group(3)).trim();
+            String secPart = Objects.requireNonNull(m.group(2));
+            String text = Objects.requireNonNull(m.group(3)).trim();
             if (text.isEmpty()) {
                 continue;
             }
@@ -174,7 +174,7 @@ public final class LyricifyParser {
 
         entries.sort(Comparator.comparingLong(TranslatedEntry::timeMs));
 
-        final List<String> result = new ArrayList<>(entries.size());
+        List<String> result = new ArrayList<>(entries.size());
         for (TranslatedEntry e : entries) {
             result.add(e.text());
         }

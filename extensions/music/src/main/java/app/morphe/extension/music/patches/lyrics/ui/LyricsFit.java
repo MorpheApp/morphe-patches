@@ -71,12 +71,12 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
 
     private static Layout buildCandidateLayout(TextView view, int sizePx, int width,
             CharSequence text, float letterSpacingEm, @Nullable String fontVariation) {
-        final TextPaint paint = new TextPaint(view.getPaint());
+        TextPaint paint = new TextPaint(view.getPaint());
         paint.setTextSize(sizePx);
         paint.setLetterSpacing(letterSpacingEm);
         paint.setFontVariationSettings(fontVariation);
-        final Layout current = view.getLayout();
-        final Layout.Alignment alignment = current != null
+        Layout current = view.getLayout();
+        Layout.Alignment alignment = current != null
                 ? current.getAlignment() : Layout.Alignment.ALIGN_NORMAL;
         return StaticLayout.Builder.obtain(text, 0, text.length(), paint, width)
                 .setAlignment(alignment)
@@ -90,9 +90,9 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
 
     private static boolean widthAxisSupported(TextPaint paint) {
         if (widthAxisSupport == null) {
-            final TextPaint probe = new TextPaint(paint);
+            TextPaint probe = new TextPaint(paint);
             probe.setTextSize(100f);
-            final String[] sample = {"WAVEWIDTH", "MOMENT", "LONGERSONGTEXT"};
+            String[] sample = {"WAVEWIDTH", "MOMENT", "LONGERSONGTEXT"};
             float before = 0f;
             for (String part : sample) {
                 before += probe.measureText(part);
@@ -128,7 +128,7 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
         for (int i = 1; i <= FIT_MAX_STEPS; i++) {
             final float spacing = Math.max(FIT_MIN_LETTER_SPACING_EM,
                     -i * FIT_LETTER_SPACING_STEP_EM);
-            final String variation = "'wdth' "
+            String variation = "'wdth' "
                     + Math.max(FIT_MIN_WIDTH_AXIS, 100f - i * FIT_WIDTH_AXIS_STEP);
             if (!hasOrphanTail(buildCandidateLayout(view, sizePx, width, text, spacing,
                     variation), text)) {
@@ -156,7 +156,7 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
         float spacing = 0f;
         String variation = null;
         if (hasOrphanTail(base, text)) {
-            final CompressionFit fit = findCompression(view, sizePx, width, text);
+            CompressionFit fit = findCompression(view, sizePx, width, text);
             if (fit != null) {
                 spacing = fit.letterSpacingEm;
                 variation = fit.fontVariation;
@@ -205,7 +205,7 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
             if (width <= 0) {
                 return;
             }
-            final CharSequence text = getText();
+            CharSequence text = getText();
             if (text == null || text.length() == 0) {
                 return;
             }

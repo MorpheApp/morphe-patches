@@ -62,11 +62,11 @@ public final class SectionDetector {
     public static void detect(TrackInfo track, Lyrics lyrics, BooleanSupplier stillWanted,
             Callback callback) {
         List<LyricsLine> lines = lyrics.lines();
-        final List<String> texts = new ArrayList<>(lines.size());
+        List<String> texts = new ArrayList<>(lines.size());
         for (LyricsLine line : lines) {
             texts.add(line.text());
         }
-        final String source = lyrics.providerName();
+        String source = lyrics.providerName();
 
         executor.execute(() -> {
             try {
@@ -76,7 +76,7 @@ public final class SectionDetector {
                 }
                 List<String> cached = LyricsCache.getSectionAI(track, source, texts);
                 if (cached != null) {
-                    final List<String> result = cached;
+                    List<String> result = cached;
                     Utils.runOnMainThread(() -> callback.onSections(result));
                     return;
                 }
@@ -89,7 +89,7 @@ public final class SectionDetector {
                 if (detected != null) {
                     LyricsCache.putSectionAI(track, source, texts, detected);
                 }
-                final List<String> result = detected;
+                List<String> result = detected;
                 Utils.runOnMainThread(() -> callback.onSections(result));
             } catch (Exception ex) {
                 Logger.printException(() -> "detect failure", ex);

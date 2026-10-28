@@ -121,7 +121,7 @@ public final class ScriptDetector {
         for (int i = 0; i < text.length(); ) {
             final int cp = Character.codePointAt(text, i);
             i += Character.charCount(cp);
-            final Character.UnicodeScript script = Character.UnicodeScript.of(cp);
+            Character.UnicodeScript script = Character.UnicodeScript.of(cp);
             for (Character.UnicodeScript wanted : scripts) {
                 if (script == wanted) return true;
             }

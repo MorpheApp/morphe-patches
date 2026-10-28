@@ -477,7 +477,7 @@ public final class LRCParser {
      * between two of them. Dropped, it would be gone from the next write.
      */
     private static void addWord(List<Word> words, long startMs, String written) {
-        final String body = written.trim();
+        String body = written.trim();
         if (body.isEmpty()) {
             markSpaceAfter(words);
             return;
@@ -493,7 +493,7 @@ public final class LRCParser {
         if (words.isEmpty()) {
             return;
         }
-        final Word previous = words.get(words.size() - 1);
+        Word previous = words.get(words.size() - 1);
         if (!previous.endsWithSpace()) {
             words.set(words.size() - 1, new Word(previous.startMs(), previous.endMs(),
                     previous.text(), previous.romaji(), true));
@@ -557,11 +557,11 @@ public final class LRCParser {
             builder.append("[duet]");
         }
         if (line.hasWords()) {
-            final List<Word> words = line.words();
-            final String marks = spacesAfter(line.text(), words);
+            List<Word> words = line.words();
+            String marks = spacesAfter(line.text(), words);
             Word lastWord = null;
             for (int i = 0; i < words.size(); i++) {
-                final Word word = words.get(i);
+                Word word = words.get(i);
                 builder.append('<')
                         .append(formatWordTimestamp(word.startMs()))
                         .append('>')
@@ -591,11 +591,11 @@ public final class LRCParser {
      * where it can be placed; a word it does not hold keeps the flag it came in with.
      */
     private static String spacesAfter(String text, List<Word> words) {
-        final StringBuilder marks = new StringBuilder(words.size());
+        StringBuilder marks = new StringBuilder(words.size());
         int at = 0;
         for (int i = 0; i < words.size(); i++) {
-            final Word word = words.get(i);
-            final String body = word.text();
+            Word word = words.get(i);
+            String body = word.text();
             if (body.isEmpty()) {
                 marks.append(word.endsWithSpace() ? SEPARATED : '0');
                 continue;
@@ -619,14 +619,14 @@ public final class LRCParser {
      * writing the space again would double it.
      */
     private static boolean carriesOwnSpace(List<Word> words, int index) {
-        final String body = words.get(index).text();
+        String body = words.get(index).text();
         if (Character.isWhitespace(body.charAt(body.length() - 1))) {
             return true;
         }
         if (index + 1 >= words.size()) {
             return false;
         }
-        final String next = words.get(index + 1).text();
+        String next = words.get(index + 1).text();
         return !next.isEmpty() && Character.isWhitespace(next.charAt(0));
     }
 

@@ -86,8 +86,8 @@ public class LyricsLocalRomanizationPreference extends SwitchPreference {
         JapaneseDictStore.ensure(listener(1));
     }
 
-    private RomanizationDict.Listener listener(final int which) {
-        final Progress slot = progress[which];
+    private RomanizationDict.Listener listener(int which) {
+        Progress slot = progress[which];
         return new RomanizationDict.Listener() {
             @Override
             public void onDownload(String fileName, int percent) {

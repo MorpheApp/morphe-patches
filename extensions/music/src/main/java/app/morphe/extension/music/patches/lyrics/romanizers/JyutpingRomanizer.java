@@ -20,7 +20,7 @@ public final class JyutpingRomanizer {
     }
 
     public static String romanize(String line) {
-        final WordReadingTable table = CantoneseDictStore.word();
+        WordReadingTable table = CantoneseDictStore.word();
         return HanRomanizer.romanize(line, new HanRomanizer.Readings() {
             @Nullable
             @Override

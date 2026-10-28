@@ -119,23 +119,23 @@ public final class LyricsRequests {
 
     @NonNull
     public static String resolvedScript(@Nullable String language) {
-        final String declared = declaredScript(language);
+        String declared = declaredScript(language);
         if (!declared.isEmpty()) {
             return declared;
         }
         if (!"zh".equals(primarySubtag(language))) {
             return "";
         }
-        final String region = chineseScriptOfRegion(regionSubtag(language));
+        String region = chineseScriptOfRegion(regionSubtag(language));
         if (!region.isEmpty()) {
             return region;
         }
-        final Locale device = Locale.getDefault();
-        final String script = device.getScript();
+        Locale device = Locale.getDefault();
+        String script = device.getScript();
         if (script != null && !script.isEmpty()) {
             return script;
         }
-        final String country = chineseScriptOfRegion(device.getCountry());
+        String country = chineseScriptOfRegion(device.getCountry());
         // Chinese with no region settles is read as the mainland writes it.
         return country.isEmpty() ? "Hans" : country;
     }
@@ -175,9 +175,9 @@ public final class LyricsRequests {
             return "";
         }
         // The leading subtag is the language, so it is skipped.
-        final String[] parts = language.split("[-_]");
+        String[] parts = language.split("[-_]");
         for (int i = 1; i < parts.length; i++) {
-            final String part = parts[i];
+            String part = parts[i];
             if (part.length() == 2 && Character.isLetter(part.charAt(0))
                     && Character.isLetter(part.charAt(1))) {
                 return part.toUpperCase(Locale.ROOT);
@@ -367,7 +367,7 @@ public final class LyricsRequests {
         if (object.isNull(key)) {
             return null;
         }
-        final String value = object.optString(key, "");
+        String value = object.optString(key, "");
         return value.trim().isEmpty() ? null : value;
     }
 
@@ -375,9 +375,9 @@ public final class LyricsRequests {
         if (array == null) {
             return List.of();
         }
-        final List<String> out = new ArrayList<>(array.length());
+        List<String> out = new ArrayList<>(array.length());
         for (int i = 0; i < array.length(); i++) {
-            final String value = array.optString(i, "").trim();
+            String value = array.optString(i, "").trim();
             if (!value.isEmpty()) {
                 out.add(value);
             }
@@ -390,12 +390,12 @@ public final class LyricsRequests {
     }
 
     static String parseGzipString(HttpURLConnection connection) throws IOException {
-        final InputStream raw = connection.getInputStream();
-        final InputStream stream = "gzip".equalsIgnoreCase(connection.getContentEncoding())
+        InputStream raw = connection.getInputStream();
+        InputStream stream = "gzip".equalsIgnoreCase(connection.getContentEncoding())
                 ? new GZIPInputStream(raw) : raw;
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(stream, StandardCharsets.UTF_8))) {
-            final StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append('\n');
@@ -410,12 +410,12 @@ public final class LyricsRequests {
     }
 
     static List<LyricsLine> parsePlainTextLines(String text) {
-        final List<LyricsLine> lines = new ArrayList<>();
+        List<LyricsLine> lines = new ArrayList<>();
         if (text == null || text.isEmpty()) {
             return lines;
         }
         for (String line : text.split("\\r?\\n")) {
-            final String trimmed = line.trim();
+            String trimmed = line.trim();
             if (!trimmed.isEmpty()) {
                 lines.add(new LyricsLine(LyricsLine.NO_TIME, trimmed));
             }
@@ -614,11 +614,11 @@ public final class LyricsRequests {
 
         public MatchVerdict evaluate(@Nullable String title, @Nullable String artist,
                                      long durationSec, @Nullable String album) {
-            final String t = normalizeForMatch(title);
-            final String a = normalizeForMatch(artist);
-            final String al = normalizeForMatch(album);
+            String t = normalizeForMatch(title);
+            String a = normalizeForMatch(artist);
+            String al = normalizeForMatch(album);
 
-            final Evidence titleEv;
+            Evidence titleEv;
             int titleScore;
             if (!titleValid) {
                 titleEv = Evidence.MISSING;
@@ -646,7 +646,7 @@ public final class LyricsRequests {
                 }
             }
 
-            final Evidence artistEv;
+            Evidence artistEv;
             int artistScore;
             if (a.isEmpty()) {
                 artistEv = Evidence.MISSING;
@@ -668,7 +668,7 @@ public final class LyricsRequests {
                 artistScore = 0;
             }
 
-            final Evidence durationEv;
+            Evidence durationEv;
             int durationScore;
             if (durationSec <= 0 || this.durationSec <= 0) {
                 durationEv = Evidence.MISSING;
@@ -690,7 +690,7 @@ public final class LyricsRequests {
                 }
             }
 
-            final Evidence albumEv;
+            Evidence albumEv;
             int albumScore;
             if (al.isEmpty() || this.album.isEmpty()) {
                 albumEv = Evidence.MISSING;
@@ -760,7 +760,7 @@ public final class LyricsRequests {
     }
 
     private static String foldPunctuation(String s) {
-        final StringBuilder sb = new StringBuilder(s.length());
+        StringBuilder sb = new StringBuilder(s.length());
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c >= 0xFF01 && c <= 0xFF5E) {
@@ -779,8 +779,8 @@ public final class LyricsRequests {
             return false;
         }
         if (a.contains(b) || b.contains(a)) {
-            final String shorter = a.length() <= b.length() ? a : b;
-            final String longer = a.length() <= b.length() ? b : a;
+            String shorter = a.length() <= b.length() ? a : b;
+            String longer = a.length() <= b.length() ? b : a;
             if (shorter.length() < 4 && !isCjk(shorter.charAt(0))) {
                 return longer.length() <= shorter.length() + 6;
             }
@@ -793,9 +793,9 @@ public final class LyricsRequests {
     }
 
     private static boolean splitArtistHits(String candidateArtist, String queryArtist) {
-        final String[] parts = candidateArtist.split("\\s*(?:和|&|feat\\.?|ft\\.?|,|/|×)\\s*");
+        String[] parts = candidateArtist.split("\\s*(?:和|&|feat\\.?|ft\\.?|,|/|×)\\s*");
         for (String part : parts) {
-            final String p = part.trim();
+            String p = part.trim();
             if (p.isEmpty()) {
                 continue;
             }
@@ -816,8 +816,8 @@ public final class LyricsRequests {
     }
 
     static double jaccard(String a, String b) {
-        final java.util.Set<String> ta = tokens(a);
-        final java.util.Set<String> tb = tokens(b);
+        java.util.Set<String> ta = tokens(a);
+        java.util.Set<String> tb = tokens(b);
         if (ta.isEmpty() || tb.isEmpty()) {
             return 0;
         }
@@ -832,8 +832,8 @@ public final class LyricsRequests {
     }
 
     private static java.util.Set<String> tokens(String s) {
-        final java.util.Set<String> out = new java.util.LinkedHashSet<>();
-        final StringBuilder cur = new StringBuilder();
+        java.util.Set<String> out = new java.util.LinkedHashSet<>();
+        StringBuilder cur = new StringBuilder();
         for (int i = 0; i < s.length(); ) {
             final int cp = s.codePointAt(i);
             i += Character.charCount(cp);

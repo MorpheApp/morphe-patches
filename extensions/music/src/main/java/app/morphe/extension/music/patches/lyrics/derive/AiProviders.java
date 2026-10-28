@@ -42,8 +42,8 @@ public final class AiProviders {
      */
     @Nullable
     static Result mapLines(String provider, String prompt, List<String> lines) {
-        final String model;
-        final List<String> mapped;
+        String model;
+        List<String> mapped;
         switch (provider) {
             case GEMINI -> {
                 String apiKey = Settings.LYRICS_GEMINI_API_KEY.get();

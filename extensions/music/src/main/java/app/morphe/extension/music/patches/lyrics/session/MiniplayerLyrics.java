@@ -255,13 +255,13 @@ public final class MiniplayerLyrics {
 
     /** The title the app itself shows: the untouched metadata title when it is known. */
     private static String displayTitleOr(TrackInfo track) {
-        final String raw = rawDisplayTitle;
+        String raw = rawDisplayTitle;
         return raw != null && !raw.trim().isEmpty() ? raw : track.title();
     }
 
     /** The artist the app itself shows: the untouched metadata artist when it is known. */
     private static String displayArtistOr(TrackInfo track) {
-        final String raw = rawDisplayArtist;
+        String raw = rawDisplayArtist;
         return raw != null && !raw.trim().isEmpty() ? raw : track.artist();
     }
 
@@ -271,8 +271,8 @@ public final class MiniplayerLyrics {
      * fullwidth punctuation to ASCII, which must not leak into what is displayed.
      */
     private static String buildSubtitle(TrackInfo track) {
-        final String rawTitle = rawDisplayTitle;
-        final String rawArtist = rawDisplayArtist;
+        String rawTitle = rawDisplayTitle;
+        String rawArtist = rawDisplayArtist;
         if (rawTitle == null || rawTitle.trim().isEmpty()
                 || rawArtist == null || rawArtist.trim().isEmpty()) {
             return LyricsPresentation.trackLabel(track.title(), track.artist());
@@ -282,11 +282,11 @@ public final class MiniplayerLyrics {
 
     private static void restoreField(TextView view, @Nullable String lastMirrored,
             @Nullable CharSequence preMirror, @Nullable String fallback) {
-        final CharSequence current = view.getText();
+        CharSequence current = view.getText();
         if (!TextUtils.equals(current, lastMirrored)) {
             return;
         }
-        final CharSequence restore = (preMirror != null && !preMirror.toString().isEmpty())
+        CharSequence restore = (preMirror != null && !preMirror.toString().isEmpty())
                 ? preMirror
                 : fallback;
         if (restore != null && !TextUtils.equals(current, restore)) {

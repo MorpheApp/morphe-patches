@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
-import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
@@ -51,17 +51,17 @@ public final class UnisonProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        final String videoId = VideoInformation.getVideoId();
+        String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
             return null;
         }
-        final String title = track.title() != null ? track.title() : "";
-        final String artist = track.artist() != null ? track.artist() : "";
+        String title = track.title() != null ? track.title() : "";
+        String artist = track.artist() != null ? track.artist() : "";
         final long videoLengthMs = VideoInformation.getVideoLength();
         final int duration = videoLengthMs > 0
                 ? (int) (videoLengthMs / 1000)
                 : track.durationSeconds();
-        final String album = track.album();
+        String album = track.album();
 
         return FetchResult.of(fetchByVideoId(videoId, title, artist, duration, album));
     }
@@ -71,7 +71,7 @@ public final class UnisonProvider implements LyricsProvider {
                                   int duration, String album) {
         HttpURLConnection connection = null;
         try {
-            final StringBuilder url = new StringBuilder(BASE_URL)
+            StringBuilder url = new StringBuilder(BASE_URL)
                     .append("?v=").append(LyricsRequests.encode(videoId));
             if (!title.isEmpty()) {
                 url.append("&song=").append(LyricsRequests.encode(title));
@@ -102,13 +102,13 @@ public final class UnisonProvider implements LyricsProvider {
             if (data == null) {
                 return null;
             }
-            final String format = LyricsRequests.optString(data, "format");
-            final String lyrics = LyricsRequests.optString(data, "lyrics");
+            String format = LyricsRequests.optString(data, "format");
+            String lyrics = LyricsRequests.optString(data, "lyrics");
             if (format == null || lyrics == null) {
                 return null;
             }
-            final JSONObject submitter = data.optJSONObject("submitter");
-            final String submitterName = submitter != null
+            JSONObject submitter = data.optJSONObject("submitter");
+            String submitterName = submitter != null
                     ? LyricsRequests.optString(submitter, "displayName")
                     : null;
             return parseLyrics(format, lyrics, videoId, submitterName);
@@ -138,14 +138,14 @@ public final class UnisonProvider implements LyricsProvider {
 
     private static String computeKeyId() {
         try {
-            final KeyPairGenerator generator = KeyPairGenerator.getInstance("EC");
+            KeyPairGenerator generator = KeyPairGenerator.getInstance("EC");
             generator.initialize(new ECGenParameterSpec("secp256r1"));
-            final ECPublicKey publicKey = (ECPublicKey) generator.generateKeyPair().getPublic();
-            final String x = base64Url(publicKey.getW().getAffineX());
-            final String y = base64Url(publicKey.getW().getAffineY());
-            final String canonical = "{\"crv\":\"P-256\",\"kty\":\"EC\",\"x\":\"" + x + "\",\"y\":\"" + y + "\"}";
-            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            final byte[] hash = digest.digest(canonical.getBytes(StandardCharsets.UTF_8));
+            ECPublicKey publicKey = (ECPublicKey) generator.generateKeyPair().getPublic();
+            String x = base64Url(publicKey.getW().getAffineX());
+            String y = base64Url(publicKey.getW().getAffineY());
+            String canonical = "{\"crv\":\"P-256\",\"kty\":\"EC\",\"x\":\"" + x + "\",\"y\":\"" + y + "\"}";
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(canonical.getBytes(StandardCharsets.UTF_8));
             return toHex(hash);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not compute Unison key ID", ex);
@@ -154,8 +154,8 @@ public final class UnisonProvider implements LyricsProvider {
     }
 
     private static String base64Url(BigInteger value) {
-        final byte[] bytes = value.toByteArray();
-        final byte[] coordinate = new byte[32];
+        byte[] bytes = value.toByteArray();
+        byte[] coordinate = new byte[32];
         int srcPos = 0;
         if (bytes.length > 32 && bytes[0] == 0) {
             srcPos = 1;
@@ -167,7 +167,7 @@ public final class UnisonProvider implements LyricsProvider {
     }
 
     private static String toHex(byte[] bytes) {
-        final StringBuilder builder = new StringBuilder(bytes.length * 2);
+        StringBuilder builder = new StringBuilder(bytes.length * 2);
         for (byte b : bytes) {
             builder.append(Character.forDigit((b >> 4) & 0xF, 16));
             builder.append(Character.forDigit(b & 0xF, 16));
@@ -196,7 +196,7 @@ public final class UnisonProvider implements LyricsProvider {
                         result.creditLines.isEmpty() ? null : result.creditLines,
                         lyrics, "lrc", sourceUrl(videoId)), submitter);
             case "plain":
-                final List<LyricsLine> plain = LRCParser.parsePlain(lyrics);
+                List<LyricsLine> plain = LRCParser.parsePlain(lyrics);
                 if (plain.isEmpty()) {
                     return null;
                 }

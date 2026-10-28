@@ -85,22 +85,22 @@ final class SponsorBlockMusicSubmitDialog {
     static void show(Context context, String videoId, long startMs, long endMs,
                      IntConsumer onOffsetSync, Runnable onExit) {
         final long videoLength = VideoInformation.getVideoLength();
-        final long[] times = {clampTime(Math.min(startMs, endMs), videoLength),
+        long[] times = {clampTime(Math.min(startMs, endMs), videoLength),
                 clampTime(Math.max(startMs, endMs), videoLength)};
-        final int[] slots = {0, 0};
-        final int[] selected = {DEFAULT_CATEGORY_INDEX};
-        final boolean[] submitted = {false};
-        final LyricsManager manager = LyricsManager.getInstance();
+        int[] slots = {0, 0};
+        int[] selected = {DEFAULT_CATEGORY_INDEX};
+        boolean[] submitted = {false};
+        LyricsManager manager = LyricsManager.getInstance();
 
-        final TextView startView = createTimeView(context);
-        final TextView endView = createTimeView(context);
-        final TextView separator = new TextView(context);
+        TextView startView = createTimeView(context);
+        TextView endView = createTimeView(context);
+        TextView separator = new TextView(context);
         separator.setText(" - ");
         separator.setTextSize(22);
         separator.setTypeface(Typeface.DEFAULT_BOLD);
         separator.setTextColor(ThemeUtils.getAppForegroundColor());
 
-        final OffsetSliderView offsetSlider = new OffsetSliderView(context);
+        OffsetSliderView offsetSlider = new OffsetSliderView(context);
         offsetSlider.setValue(manager.getTemporaryOffsetMs());
         offsetSlider.listener = ms -> {
             manager.setTemporaryOffsetMs(ms);
@@ -109,7 +109,7 @@ final class SponsorBlockMusicSubmitDialog {
             onOffsetSync.accept(ms);
         };
 
-        final Runnable refreshTimes = () -> {
+        Runnable refreshTimes = () -> {
             startView.setText(formatTimeMs(times[0]));
             endView.setText(formatTimeMs(times[1]));
             // The candidate skips the lyrics the moment it exists and on every resample,
@@ -121,26 +121,26 @@ final class SponsorBlockMusicSubmitDialog {
         bindTimeView(endView, times, slots, 1, refreshTimes);
         refreshTimes.run();
 
-        final LinearLayout timesRow = new LinearLayout(context);
+        LinearLayout timesRow = new LinearLayout(context);
         timesRow.setOrientation(LinearLayout.HORIZONTAL);
         timesRow.setGravity(Gravity.CENTER);
         timesRow.addView(startView);
         timesRow.addView(separator);
         timesRow.addView(endView);
 
-        final Button offsetButtonA = createCircleButton(context, "A");
-        final Button offsetButtonB = createCircleButton(context, "B");
+        Button offsetButtonA = createCircleButton(context, "A");
+        Button offsetButtonB = createCircleButton(context, "B");
         offsetButtonA.setOnClickListener(v ->
                 applyOffsetSlot(manager, offsetSlider, times, slots, 0, refreshTimes));
         offsetButtonB.setOnClickListener(v ->
                 applyOffsetSlot(manager, offsetSlider, times, slots, 1, refreshTimes));
 
-        final LinearLayout offsetRow = new LinearLayout(context);
+        LinearLayout offsetRow = new LinearLayout(context);
         offsetRow.setOrientation(LinearLayout.HORIZONTAL);
         offsetRow.setGravity(Gravity.CENTER_VERTICAL);
         offsetRow.addView(offsetButtonA, new LinearLayout.LayoutParams(
                 Dim.dp36, Dim.dp36));
-        final LinearLayout.LayoutParams sliderParams = new LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams sliderParams = new LinearLayout.LayoutParams(
                 0, Dim.dp36, 1f);
         sliderParams.leftMargin = Dim.dp8;
         sliderParams.rightMargin = Dim.dp8;
@@ -148,24 +148,24 @@ final class SponsorBlockMusicSubmitDialog {
         offsetRow.addView(offsetButtonB, new LinearLayout.LayoutParams(
                 Dim.dp36, Dim.dp36));
 
-        final LinearLayout content = new LinearLayout(context);
+        LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
         content.addView(timesRow, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         content.addView(offsetRow, blockParams(Dim.dp28));
 
-        final String[] categoryTitles = new String[CATEGORIES.length];
-        final String[] categoryKeys = new String[CATEGORIES.length];
+        String[] categoryTitles = new String[CATEGORIES.length];
+        String[] categoryKeys = new String[CATEGORIES.length];
         for (int i = 0; i < CATEGORIES.length; i++) {
             categoryTitles[i] = CATEGORIES[i].title.toString();
             categoryKeys[i] = CATEGORIES[i].keyValue;
         }
 
-        final Button categoryButton = CustomDialog.createButton(context, null,
+        Button categoryButton = CustomDialog.createButton(context, null,
                 categoryTitles[selected[0]], null, false, false);
         categoryButton.setOnClickListener(v -> {
-            final Dialog picker = CustomDialogListPreference.createListDialog(
+            Dialog picker = CustomDialogListPreference.createListDialog(
                     context, str("morphe_sb_new_segment_choose_category"),
                     categoryTitles, categoryKeys, categoryKeys[selected[0]],
                     index -> {
@@ -176,7 +176,7 @@ final class SponsorBlockMusicSubmitDialog {
         });
         content.addView(categoryButton, blockParams(Dim.dp16));
 
-        final Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
                 str("morphe_sb_new_segment_title"),
                 null,
@@ -190,7 +190,7 @@ final class SponsorBlockMusicSubmitDialog {
                                 str("morphe_sb_new_segment_start_is_before_end"));
                         return;
                     }
-                    final SegmentCategory category = CATEGORIES[selected[0]];
+                    SegmentCategory category = CATEGORIES[selected[0]];
                     submitted[0] = true;
                     Utils.runOnBackgroundThread(() -> submitSegment(
                             videoId, category, start, end, videoLength, manager));
@@ -200,14 +200,14 @@ final class SponsorBlockMusicSubmitDialog {
                 () -> copySpan(context, videoId, times),
                 false);
 
-        final Dialog dialog = dialogPair.first;
+        Dialog dialog = dialogPair.first;
         dialog.setOnDismissListener(d -> {
             if (!submitted[0]) {
                 manager.clearDialogSegment();
             }
             onExit.run();
         });
-        final LinearLayout mainLayout = dialogPair.second;
+        LinearLayout mainLayout = dialogPair.second;
         mainLayout.addView(content, mainLayout.getChildCount() - 1,
                 new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -250,9 +250,9 @@ final class SponsorBlockMusicSubmitDialog {
 
     private static void copySpan(Context context, String videoId, long[] times) {
         final long offsetMs = LyricsManager.getInstance().getTemporaryOffsetMs();
-        final String text = videoId + " [" + formatSeconds(times[0]) + ", "
+        String text = videoId + " [" + formatSeconds(times[0]) + ", "
                 + formatSeconds(times[1]) + "] " + (offsetMs > 0 ? "+" : "") + offsetMs;
-        final ClipboardManager clipboard = (ClipboardManager)
+        ClipboardManager clipboard = (ClipboardManager)
                 context.getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard != null) {
             clipboard.setPrimaryClip(ClipData.newPlainText("sponsorblock", text));
@@ -261,7 +261,7 @@ final class SponsorBlockMusicSubmitDialog {
     }
 
     private static TextView createTimeView(Context context) {
-        final TextView view = new TextView(context);
+        TextView view = new TextView(context);
         view.setTextSize(22);
         view.setTypeface(Typeface.DEFAULT_BOLD);
         view.setTextColor(ThemeUtils.getAppForegroundColor());
@@ -270,7 +270,7 @@ final class SponsorBlockMusicSubmitDialog {
     }
 
     private static LinearLayout.LayoutParams blockParams(int topMargin) {
-        final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
         params.topMargin = topMargin;
         return params;
@@ -279,7 +279,7 @@ final class SponsorBlockMusicSubmitDialog {
     @SuppressLint("ClickableViewAccessibility")
     private static void bindTimeView(TextView view, long[] times, int[] slots, int index,
                                      Runnable refreshTimes) {
-        final long[] downSample = new long[1];
+        long[] downSample = new long[1];
         view.setOnTouchListener((v, event) -> {
             if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
                 downSample[0] = LyricsManager.getInstance().getVideoPositionMs();
@@ -315,9 +315,9 @@ final class SponsorBlockMusicSubmitDialog {
     }
 
     private static Button createCircleButton(Context context, String text) {
-        final Button button = CustomDialog.createButton(context, null, text, null,
+        Button button = CustomDialog.createButton(context, null, text, null,
                 false, false);
-        final GradientDrawable circle = new GradientDrawable();
+        GradientDrawable circle = new GradientDrawable();
         circle.setShape(GradientDrawable.OVAL);
         circle.setColor(ThemeUtils.getCancelOrNeutralButtonBackgroundColor());
         button.setBackground(circle);
@@ -446,7 +446,7 @@ final class SponsorBlockMusicSubmitDialog {
         protected void onDraw(@NonNull Canvas canvas) {
             textPaint.setTextSize(TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
-            final Paint.FontMetrics metrics = textPaint.getFontMetrics();
+            Paint.FontMetrics metrics = textPaint.getFontMetrics();
             canvas.drawText(formatOffsetMs(offsetMs),
                     getWidth() / 2f,
                     getHeight() / 2f - (metrics.ascent + metrics.descent) / 2f, textPaint);

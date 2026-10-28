@@ -41,7 +41,7 @@ public final class AMLLProvider implements LyricsProvider {
             return null;
         }
 
-        final JSONObject best = searchBest(track.title(), track.artist(), track.album());
+        JSONObject best = searchBest(track.title(), track.artist(), track.album());
         if (best == null) {
             return null;
         }
@@ -95,7 +95,7 @@ public final class AMLLProvider implements LyricsProvider {
     @Nullable
     private static String firstPath(JSONObject object) {
         for (String key : new String[]{"path", "file", "filename", "filePath"}) {
-            final String value = LyricsRequests.optString(object, key);
+            String value = LyricsRequests.optString(object, key);
             if (value != null) {
                 return value;
             }

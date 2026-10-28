@@ -242,7 +242,7 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
             long effectiveEnd = lastWord.endMs();
             long nextStart = LyricsLine.NO_TIME;
             for (int j = i + 1; j < size; j++) {
-                final LyricsLine candidate = out.get(j);
+                LyricsLine candidate = out.get(j);
                 if (candidate.isBG()) {
                     continue;
                 }

@@ -110,15 +110,15 @@ public final class MiniLyricsFormatter {
      */
     public static String trackLabel(@Nullable String template, @Nullable String title,
                                     @Nullable String artist, @Nullable String variant) {
-        final Map<String, String> values = new HashMap<>();
+        Map<String, String> values = new HashMap<>();
         values.put("t", title == null ? "" : title);
         values.put("a", artist == null ? "" : artist);
         values.put("v", variant == null ? "" : variant.trim());
-        final String rendered = render(template == null ? DEFAULT_TRACK_FORMAT : template, values, true);
-        final StringBuilder out = new StringBuilder();
+        String rendered = render(template == null ? DEFAULT_TRACK_FORMAT : template, values, true);
+        StringBuilder out = new StringBuilder();
         for (String line : LINE_BREAK.split(rendered, -1)) {
             // A hidden section leaves the spaces around it behind.
-            final String tidy = REPEATED_SPACES.matcher(line).replaceAll(" ").trim();
+            String tidy = REPEATED_SPACES.matcher(line).replaceAll(" ").trim();
             if (tidy.isEmpty()) continue;
             if (out.length() > 0) out.append('\n');
             out.append(tidy);
@@ -134,8 +134,8 @@ public final class MiniLyricsFormatter {
     public static List<String> trackFrames(@Nullable String template, @Nullable String title,
                                            @Nullable String artist, @Nullable String variant,
                                            int limit, double fullWidthMultiplier) {
-        final List<String> frames = new ArrayList<>();
-        final String label = trackLabel(template, title, artist, variant);
+        List<String> frames = new ArrayList<>();
+        String label = trackLabel(template, title, artist, variant);
         for (String line : label.split("\n")) {
             if (line.isEmpty()) continue;
             if (limit <= 0 || width(line, fullWidthMultiplier) <= limit) {
@@ -155,17 +155,17 @@ public final class MiniLyricsFormatter {
             frames.add(frame);
             return;
         }
-        final List<Chunk> halves = chunks(new LyricsLine(0, frame), -1, limit, false, false, fullWidthMultiplier);
+        List<Chunk> halves = chunks(new LyricsLine(0, frame), -1, limit, false, false, fullWidthMultiplier);
         if (halves.size() < 2) {
             frames.add(frame);
             return;
         }
         for (Chunk half : halves) {
-            final String text = half.text();
+            String text = half.text();
             if (text.isEmpty()) continue;
             // An ellipsis added at a split does not count against the limit, or a two-character
             // part would never fit a limit of two.
-            final String bare = text.endsWith(SPLIT_ELLIPSIS)
+            String bare = text.endsWith(SPLIT_ELLIPSIS)
                     ? text.substring(0, text.length() - SPLIT_ELLIPSIS.length()) : text;
             if (bare.equals(frame) || width(bare, fullWidthMultiplier) <= limit) {
                 frames.add(text);
@@ -175,7 +175,7 @@ public final class MiniLyricsFormatter {
             splitFrame(bare, limit, fullWidthMultiplier, frames, depth + 1);
             if (!bare.equals(text) && frames.size() > before) {
                 final int last = frames.size() - 1;
-                final String lastFrame = frames.get(last);
+                String lastFrame = frames.get(last);
                 if (!lastFrame.endsWith(SPLIT_ELLIPSIS)) frames.set(last, lastFrame + SPLIT_ELLIPSIS);
             }
         }
@@ -187,7 +187,7 @@ public final class MiniLyricsFormatter {
      */
     private static String replacePlaceholders(String template, @Nullable String title,
                                               @Nullable String artist, @Nullable String lyric) {
-        final StringBuilder out = new StringBuilder();
+        StringBuilder out = new StringBuilder();
         for (int i = 0, length = template.length(); i < length; ) {
             if (template.startsWith("{t}", i)) {
                 out.append(title == null ? "" : title);
@@ -210,8 +210,8 @@ public final class MiniLyricsFormatter {
      * the count is above 1; a backslash before a colon keeps it literal.
      */
     public static String encapsulate(@Nullable String template, String lyric, int repeat) {
-        final String source = validEncapsulation(template) ? template : DEFAULT_ENCAPSULATION;
-        final Map<String, String> values = new HashMap<>();
+        String source = validEncapsulation(template) ? template : DEFAULT_ENCAPSULATION;
+        Map<String, String> values = new HashMap<>();
         values.put("lrc", lyric);
         values.put("n", String.valueOf(repeat));
         return render(source, values, repeat > 1);
@@ -224,8 +224,8 @@ public final class MiniLyricsFormatter {
      * {@code bareShown} is set. A backslash before a colon keeps it literal.
      */
     static String render(String template, Map<String, String> values, boolean bareShown) {
-        final StringBuilder out = new StringBuilder();
-        final StringBuilder segment = new StringBuilder();
+        StringBuilder out = new StringBuilder();
+        StringBuilder segment = new StringBuilder();
         boolean inside = false;
         boolean populated = true;
         boolean placeholders = false;
@@ -245,9 +245,9 @@ public final class MiniLyricsFormatter {
                 i++;
                 continue;
             }
-            final String name = c == '{' ? placeholderAt(template, i, values) : null;
+            String name = c == '{' ? placeholderAt(template, i, values) : null;
             if (name != null) {
-                final String value = values.get(name);
+                String value = values.get(name);
                 if (inside) {
                     placeholders = true;
                     if (!isPopulated(name, value)) populated = false;
@@ -278,7 +278,7 @@ public final class MiniLyricsFormatter {
 
     /** How many times in a row the line at the index is sung, counting up to and including it. */
     public static int repeatCount(List<LyricsLine> lines, int index) {
-        final String text = lines.get(index).text();
+        String text = lines.get(index).text();
         int count = 1;
         for (int i = index - 1; i >= 0 && lines.get(i).text().equals(text); i--) {
             count++;
@@ -293,7 +293,7 @@ public final class MiniLyricsFormatter {
     public static double width(String text, double fullWidthMultiplier) {
         final double wide = Double.isFinite(fullWidthMultiplier) && fullWidthMultiplier > 0
                 ? fullWidthMultiplier : 1;
-        final Matcher matcher = GRAPHEME.matcher(text);
+        Matcher matcher = GRAPHEME.matcher(text);
         double total = 0;
         while (matcher.find()) total += isFullWidth(text.codePointAt(matcher.start())) ? wide : 1;
         return total;
@@ -349,7 +349,7 @@ public final class MiniLyricsFormatter {
     }
 
     public static int characterCount(String text) {
-        final Matcher matcher = GRAPHEME.matcher(text);
+        Matcher matcher = GRAPHEME.matcher(text);
         int count = 0;
         while (matcher.find()) count++;
         return count;
@@ -383,15 +383,15 @@ public final class MiniLyricsFormatter {
      */
     public static List<Chunk> chunks(LyricsLine line, long intervalEndMs, int limit,
                                      boolean capitalize, boolean strip, double fullWidthMultiplier) {
-        final LyricsTextFormatter.Result cleaned = LyricsTextFormatter.format(line.text(), false, strip);
-        final String text = cleaned.text();
+        LyricsTextFormatter.Result cleaned = LyricsTextFormatter.format(line.text(), false, strip);
+        String text = cleaned.text();
         if (limit <= 0 || width(text, fullWidthMultiplier) <= limit) {
             return List.of(new Chunk(LyricsTextFormatter.format(text, capitalize, false).text(),
                     line.startTimeMs()));
         }
-        final List<Unit> timed = timedUnits(line, cleaned);
-        final List<Unit> units = timed.isEmpty() ? untimedUnits(text) : timed;
-        final List<Unit> groups = new ArrayList<>(2);
+        List<Unit> timed = timedUnits(line, cleaned);
+        List<Unit> units = timed.isEmpty() ? untimedUnits(text) : timed;
+        List<Unit> groups = new ArrayList<>(2);
         final int middle = (units.size() + 1) / 2;
         if (middle > 0) {
             groups.add(new Unit(units.get(0).start(), units.get(middle - 1).end(), units.get(0).timeMs()));
@@ -400,11 +400,11 @@ public final class MiniLyricsFormatter {
             groups.add(new Unit(units.get(middle).start(), units.get(units.size() - 1).end(),
                     units.get(middle).timeMs()));
         }
-        final List<Chunk> result = new ArrayList<>(groups.size());
+        List<Chunk> result = new ArrayList<>(groups.size());
         final int total = Math.max(1, characterCount(text));
         long previousTime = line.startTimeMs();
         for (int i = 0; i < groups.size(); i++) {
-            final Unit group = groups.get(i);
+            Unit group = groups.get(i);
             long start = group.timeMs();
             if (i == 0) start = line.startTimeMs();
             else if (start < line.startTimeMs() || start < previousTime) {
@@ -436,7 +436,7 @@ public final class MiniLyricsFormatter {
      */
     public static String instrumental(@Nullable String template, long startMs, long endMs, long positionMs,
                                       @Nullable String title, @Nullable String artist, @Nullable String lastLyric) {
-        final String[] frames = LINE_BREAK.split(template == null ? DEFAULT_INSTRUMENTAL : template, -1);
+        String[] frames = LINE_BREAK.split(template == null ? DEFAULT_INSTRUMENTAL : template, -1);
         final long duration = endMs - startMs;
         final int index = endMs == Long.MAX_VALUE || duration <= 0 ? 0
                 : (int) Math.min(frames.length - 1,
@@ -446,11 +446,11 @@ public final class MiniLyricsFormatter {
 
     private static List<Unit> timedUnits(LyricsLine line, LyricsTextFormatter.Result cleaned) {
         if (!line.hasWordTimings()) return List.of();
-        final List<Unit> units = new ArrayList<>();
+        List<Unit> units = new ArrayList<>();
         int cursor = 0;
         final boolean spaced = hasWhitespace(line.text());
         for (Word word : line.words()) {
-            final String own = word.text().trim();
+            String own = word.text().trim();
             if (own.isEmpty()) continue;
             final int start = line.text().indexOf(own, cursor);
             if (start < 0 || word.startMs() < 0) return List.of();
@@ -459,7 +459,7 @@ public final class MiniLyricsFormatter {
                 return List.of();
             }
             final int end = start + own.length();
-            final Unit next = new Unit(cleaned.offset(start), cleaned.offset(end), word.startMs());
+            Unit next = new Unit(cleaned.offset(start), cleaned.offset(end), word.startMs());
             if (!units.isEmpty() && spaced && !hasWhitespace(line.text().substring(cursor, start))) {
                 Unit previous = units.remove(units.size() - 1);
                 units.add(new Unit(previous.start(), next.end(), previous.timeMs()));
@@ -474,9 +474,9 @@ public final class MiniLyricsFormatter {
                 || hasLetterOrDigit(cleaned.text().substring(units.get(units.size() - 1).end()))) {
             return List.of();
         }
-        final List<Unit> covering = new ArrayList<>(units.size());
+        List<Unit> covering = new ArrayList<>(units.size());
         for (int i = 0; i < units.size(); i++) {
-            final Unit unit = units.get(i);
+            Unit unit = units.get(i);
             int end = i + 1 < units.size() ? units.get(i + 1).start() : cleaned.text().length();
             while (end > unit.end()) {
                 final int cp = cleaned.text().codePointBefore(end);
@@ -502,16 +502,16 @@ public final class MiniLyricsFormatter {
      * dictionary words are the units. Punctuation joins the word before it.
      */
     private static List<Unit> untimedUnits(String text) {
-        final List<Unit> units = new ArrayList<>();
+        List<Unit> units = new ArrayList<>();
         final boolean spaced = hasWhitespace(text);
-        final BreakIterator words = BreakIterator.getWordInstance(Locale.ROOT);
+        BreakIterator words = BreakIterator.getWordInstance(Locale.ROOT);
         words.setText(text);
         int start = words.first();
         // Opening punctuation is held back and joins the word after it.
         int opening = -1;
         int worded = 0;
         for (int end = words.next(); end != BreakIterator.DONE; start = end, end = words.next()) {
-            final String piece = text.substring(start, end);
+            String piece = text.substring(start, end);
             if (!hasNonWhitespace(piece)) continue;
             final boolean letters = hasLetterOrDigit(piece);
             final boolean joined = start > 0 && !isWhitespace(text.codePointBefore(start));
@@ -522,7 +522,7 @@ public final class MiniLyricsFormatter {
             final int from = opening >= 0 ? opening : start;
             opening = -1;
             if (!units.isEmpty() && joined && from == start && (spaced || !letters)) {
-                final Unit previous = units.remove(units.size() - 1);
+                Unit previous = units.remove(units.size() - 1);
                 units.add(new Unit(previous.start(), end, -1));
             } else {
                 units.add(new Unit(from, end, -1));
@@ -532,14 +532,14 @@ public final class MiniLyricsFormatter {
         if (opening >= 0) {
             if (units.isEmpty()) units.add(new Unit(opening, text.length(), -1));
             else {
-                final Unit previous = units.remove(units.size() - 1);
+                Unit previous = units.remove(units.size() - 1);
                 units.add(new Unit(previous.start(), text.length(), -1));
             }
         }
         if (worded < 2 && !spaced) {
             // One dictionary word longer than the limit: fall back to characters.
             units.clear();
-            final Matcher matcher = GRAPHEME.matcher(text);
+            Matcher matcher = GRAPHEME.matcher(text);
             while (matcher.find()) units.add(new Unit(matcher.start(), matcher.end(), -1));
         }
         return units;

@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.translation.TextTranslator;
@@ -65,7 +64,7 @@ public final class LyricsMerge {
         if (track == null || index < 0 || index >= track.size()) {
             return "";
         }
-        final String text = track.get(index).text();
+        String text = track.get(index).text();
         return text == null ? "" : text.trim();
     }
 

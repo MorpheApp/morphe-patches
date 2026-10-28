@@ -131,7 +131,7 @@ public final class LyricsRomanizer {
 
         executor.execute(() -> {
             try {
-                final String provider = Settings.LYRICS_ROMANIZATION_PROVIDER.get();
+                String provider = Settings.LYRICS_ROMANIZATION_PROVIDER.get();
 
                 if (AiProviders.LOCAL.equals(provider)) {
                     if (!JapaneseDictStore.isReady()) JapaneseDictStore.ensure(null);
@@ -145,8 +145,8 @@ public final class LyricsRomanizer {
                         dictionary = result != null ? RULE_BASED_DICTIONARY : null;
                     }
                     if (LyricsMerge.hasText(result)) {
-                        final List<LyricsLine> finalResult = alignIfWordSynced(lyrics, result, isWordSynced);
-                        final String finalDictionary = dictionary;
+                        List<LyricsLine> finalResult = alignIfWordSynced(lyrics, result, isWordSynced);
+                        String finalDictionary = dictionary;
                         final boolean hasWordRomaji = isWordSynced && finalResult != null && LyricsMerge.anyWordHasRomaji(finalResult);
                         Utils.runOnMainThread(() -> callback.onRomanized(
                                 finalResult, false, false, null, hasWordRomaji, finalDictionary));
@@ -158,7 +158,7 @@ public final class LyricsRomanizer {
                 if (AiProviders.isAi(provider)) {
                     List<LyricsLine> aiCached = LyricsCache.getRomanizationAI(track, source, lines);
                     if (aiCached != null) {
-                        final List<LyricsLine> aligned = alignIfWordSynced(lyrics, aiCached, isWordSynced);
+                        List<LyricsLine> aligned = alignIfWordSynced(lyrics, aiCached, isWordSynced);
                         final boolean hasWordRomaji = isWordSynced && aligned != null && LyricsMerge.anyWordHasRomaji(aligned);
                         Utils.runOnMainThread(() -> callback.onRomanized(aligned, false, true, provider, hasWordRomaji, null));
                         return;
@@ -213,7 +213,7 @@ public final class LyricsRomanizer {
                     }
                 }
 
-                final List<LyricsLine> finalResult = result;
+                List<LyricsLine> finalResult = result;
                 final boolean fromGoogle = LyricsMerge.hasText(result) && online && local == null;
                 final boolean hasWordRomaji = isWordSynced && finalResult != null && LyricsMerge.anyWordHasRomaji(finalResult);
                 Utils.runOnMainThread(() -> callback.onRomanized(
@@ -375,7 +375,7 @@ public final class LyricsRomanizer {
             return result;
         }
 
-        final String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
+        String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
         List<String> fetched = LyricsMerge.mapLinesOnline(toFetch, batch -> {
             try {
                 return TextTranslator.romanize(batch, language);
@@ -853,7 +853,7 @@ public final class LyricsRomanizer {
             String fullText,
             List<String> romanizedGuides,
             List<String> originalSyllables) {
-        final String target = fullText;
+        String target = fullText;
         final int N = target.length();
         final int M = romanizedGuides.size();
 

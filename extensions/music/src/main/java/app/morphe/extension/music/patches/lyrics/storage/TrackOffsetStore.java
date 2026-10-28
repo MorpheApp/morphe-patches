@@ -13,11 +13,11 @@ import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
-import app.morphe.extension.shared.Utils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.shared.Utils;
 
 /**
  * The timing offset the user dragged out for one track, kept so a loop, a trip to another song
@@ -58,7 +58,7 @@ public final class TrackOffsetStore {
         if (preferences == null) {
             return;
         }
-        final String key = key(track);
+        String key = key(track);
         SharedPreferences.Editor editor = preferences.edit();
         if (ms == 0) {
             editor.remove(key);
@@ -76,7 +76,7 @@ public final class TrackOffsetStore {
 
     private static List<String> order(SharedPreferences preferences, String key, boolean present) {
         List<String> order = new ArrayList<>();
-        final String stored = preferences.getString(KEY_ORDER, null);
+        String stored = preferences.getString(KEY_ORDER, null);
         if (stored != null) {
             for (String entry : stored.split(SEPARATOR)) {
                 if (!entry.isEmpty() && !entry.equals(key)) {

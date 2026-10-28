@@ -138,7 +138,7 @@ public final class LyricsPanelInstaller {
                 LockScreenLyrics.onSettingsChanged();
                 return;
             }
-            final LyricsPanelView panelView = panelReference.get();
+            LyricsPanelView panelView = panelReference.get();
             if (panelView == null) {
                 return;
             }
@@ -170,7 +170,7 @@ public final class LyricsPanelInstaller {
 
     private static void uninstallLyricsPanel() {
         installPending = false;
-        final LyricsPanelView panelView = panelReference.get();
+        LyricsPanelView panelView = panelReference.get();
         if (panelView == null) {
             return;
         }
@@ -575,13 +575,13 @@ public final class LyricsPanelInstaller {
         if (title == null) {
             return;
         }
-        final View root = activity.getWindow().getDecorView();
+        View root = activity.getWindow().getDecorView();
         enableButtonWalkPending = true;
         lastEnableButtonWalkUptimeMs = now;
         scheduleEnableButtonPass(root, title, 0);
     }
 
-    private static void scheduleEnableButtonPass(final View root, final String title, final int step) {
+    private static void scheduleEnableButtonPass(View root, String title, int step) {
         final long delay = step == 0
                 ? ENABLE_BUTTON_DELAYS_MS[0]
                 : ENABLE_BUTTON_DELAYS_MS[step] - ENABLE_BUTTON_DELAYS_MS[step - 1];

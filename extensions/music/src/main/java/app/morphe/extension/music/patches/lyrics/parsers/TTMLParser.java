@@ -80,9 +80,9 @@ public final class TTMLParser {
         Map<String, SidecarTranslation> sidecarTrans = new HashMap<>();
 
         try {
-            final XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
-            final XmlPullParser p = factory.newPullParser();
+            XmlPullParser p = factory.newPullParser();
             p.setInput(new StringReader(ttml));
 
             boolean inHead = false;
@@ -96,7 +96,7 @@ public final class TTMLParser {
             int event = p.getEventType();
             while (event != XmlPullParser.END_DOCUMENT) {
                 if (event == XmlPullParser.START_TAG) {
-                    final String local = localName(p.getName());
+                    String local = localName(p.getName());
                     if ("head".equals(local)) {
                         inHead = true;
                     } else if (inHead) {
@@ -109,7 +109,7 @@ public final class TTMLParser {
                                 // one would leave songwritersDepth above zero at
                                 // </songwriters> and latch inSongwriters, which swallows
                                 // the transliterations below.
-                                final String name = readTextContent(p);
+                                String name = readTextContent(p);
                                 if (!name.trim().isEmpty()) {
                                     songwriters.add(name.trim());
                                 }
@@ -117,8 +117,8 @@ public final class TTMLParser {
                                 songwritersDepth++;
                             }
                         } else if ("meta".equals(local) && NS_AMLL.equals(p.getNamespace())) {
-                            final String key = getAttr(p, NS_AMLL, "key", "amll:key");
-                            final String value = getAttr(p, NS_AMLL, "value", "amll:value");
+                            String key = getAttr(p, NS_AMLL, "key", "amll:key");
+                            String value = getAttr(p, NS_AMLL, "value", "amll:value");
                             if (key != null && value != null && !key.isEmpty() && !value.isEmpty()
                                     && !AMLL_EXCLUDED_KEYS.contains(key)) {
                                 amllCredits.add(key + ": " + value.trim());
@@ -132,7 +132,7 @@ public final class TTMLParser {
                             agentName = null;
                             inAgent = true;
                         } else if (inAgent && "name".equals(local)) {
-                            final String name = readTextContent(p);
+                            String name = readTextContent(p);
                             if (!name.trim().isEmpty()) {
                                 agentName = name.trim();
                             }
@@ -143,7 +143,7 @@ public final class TTMLParser {
                         }
                     }
                 } else if (event == XmlPullParser.END_TAG) {
-                    final String local = localName(p.getName());
+                    String local = localName(p.getName());
                     if ("head".equals(local)) {
                         inHead = false;
                     } else if (inSongwriters && "songwriters".equals(local)) {
@@ -195,9 +195,9 @@ public final class TTMLParser {
             return null;
         }
         try {
-            final HeadMetadata hm = parseHeadMetadata(ttml);
+            HeadMetadata hm = parseHeadMetadata(ttml);
 
-            final List<String> songwriters;
+            List<String> songwriters;
             if (!hm.songwriters().isEmpty()) {
                 StringBuilder sb = new StringBuilder("Written by: ");
                 for (int i = 0; i < hm.songwriters().size(); i++) {
@@ -208,20 +208,20 @@ public final class TTMLParser {
             } else {
                 songwriters = null;
             }
-            final List<String> amllCreditLines = hm.amllCredits();
-            final Map<String, AgentInfo> agentTypes = hm.agentTypes();
-            final Map<String, List<RomajiSyllable>> sidecarRoman = hm.sidecarRoman();
-            final Map<String, SidecarTranslation> sidecarTrans = hm.sidecarTrans();
+            List<String> amllCreditLines = hm.amllCredits();
+            Map<String, AgentInfo> agentTypes = hm.agentTypes();
+            Map<String, List<RomajiSyllable>> sidecarRoman = hm.sidecarRoman();
+            Map<String, SidecarTranslation> sidecarTrans = hm.sidecarTrans();
 
-            final XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
-            final XmlPullParser p = factory.newPullParser();
+            XmlPullParser p = factory.newPullParser();
             p.setInput(new StringReader(ttml));
 
-            final List<LyricsLine> lines = new ArrayList<>();
-            final List<LyricsLine> romanization = new ArrayList<>();
-            final Map<String, List<LyricsLine>> translations = new HashMap<>();
-            final Map<String, List<LyricsLine>> romanizations = new HashMap<>();
+            List<LyricsLine> lines = new ArrayList<>();
+            List<LyricsLine> romanization = new ArrayList<>();
+            Map<String, List<LyricsLine>> translations = new HashMap<>();
+            Map<String, List<LyricsLine>> romanizations = new HashMap<>();
             int mainLineCount;
 
             boolean noTiming = false;
@@ -232,7 +232,7 @@ public final class TTMLParser {
             int event = p.getEventType();
             while (event != XmlPullParser.END_DOCUMENT) {
                 if (event == XmlPullParser.START_TAG) {
-                    final String local = localName(p.getName());
+                    String local = localName(p.getName());
 
                     if ("tt".equals(local)) {
                         noTiming = "none".equals(
@@ -247,35 +247,35 @@ public final class TTMLParser {
                             divSongPart = getAttr(p, NS_ITUNES, "songPart", "itunes:song-part");
                         }
                     } else if ("p".equals(local) && inBody && !inHead) {
-                        final String lineId = getAttr(p, NS_ITUNES, "key", "itunes:key");
-                        final String agentId = getAttr(p, NS_TTM, "agent", "ttm:agent");
+                        String lineId = getAttr(p, NS_ITUNES, "key", "itunes:key");
+                        String agentId = getAttr(p, NS_TTM, "agent", "ttm:agent");
                         final long pBegin = noTiming ? 0 : parseTime(getAttr(p, null, "begin", "begin"));
                         final long pEnd = noTiming ? 0 : parseTime(getAttr(p, null, "end", "end"));
 
-                        final ParsedLine pl = processPElement(p, pBegin, pEnd);
+                        ParsedLine pl = processPElement(p, pBegin, pEnd);
 
                         if (pl != null && (!pl.text().trim().isEmpty() || !pl.bgLines().isEmpty())) {
-                            final List<RomajiSyllable> lineSidecar =
+                            List<RomajiSyllable> lineSidecar =
                                     findSidecarRoman(lineId, sidecarRoman);
                             // Read off the sidecar before the words carry a reading, or the
                             // line loses the parts no word matched.
-                            final String romaText = buildLineRomaji(pl.words(), lineSidecar);
+                            String romaText = buildLineRomaji(pl.words(), lineSidecar);
                             // The panel draws a reading over the words, not beside them.
                             if (lineSidecar != null && !lineSidecar.isEmpty()) {
                                 alignRomajiToWords(pl.words(), lineSidecar);
                             }
 
                             if (!pl.text().trim().isEmpty()) {
-                                final LyricsLine line = new LyricsLine(
+                                LyricsLine line = new LyricsLine(
                                         pl.begin(), pl.end(), pl.text(), pl.words(),
                                         agentId, false, false, divSongPart);
                                 lines.add(line);
                             }
                             mainLineCount = lines.size();
 
-                            final String bgAgent = pl.bgAgentId() != null ? pl.bgAgentId() : agentId;
+                            String bgAgent = pl.bgAgentId() != null ? pl.bgAgentId() : agentId;
                             for (LyricsLine bgSrc : pl.bgLines()) {
-                                final LyricsLine bgLine = new LyricsLine(
+                                LyricsLine bgLine = new LyricsLine(
                                         bgSrc.startTimeMs(), bgSrc.endTimeMs(),
                                         bgSrc.text(), bgSrc.words(),
                                         bgAgent, false, true, divSongPart);
@@ -298,10 +298,10 @@ public final class TTMLParser {
 
                             if (pl.inlineTranslations() != null) {
                                 for (Map.Entry<String, String> e : pl.inlineTranslations().entrySet()) {
-                                    final String lang = e.getKey();
-                                    final String text = e.getValue();
+                                    String lang = e.getKey();
+                                    String text = e.getValue();
                                     if (text.isEmpty()) continue;
-                                    final List<LyricsLine> langLines = translations.computeIfAbsent(
+                                    List<LyricsLine> langLines = translations.computeIfAbsent(
                                             lang, k -> new ArrayList<>());
                                     while (langLines.size() < mainLineCount - 1) {
                                         langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
@@ -317,10 +317,10 @@ public final class TTMLParser {
 
                             if (pl.inlineRomanizations() != null) {
                                 for (Map.Entry<String, String> e : pl.inlineRomanizations().entrySet()) {
-                                    final String lang = e.getKey();
-                                    final String text = e.getValue();
+                                    String lang = e.getKey();
+                                    String text = e.getValue();
                                     if (text.isEmpty()) continue;
-                                    final List<LyricsLine> langLines = romanizations.computeIfAbsent(
+                                    List<LyricsLine> langLines = romanizations.computeIfAbsent(
                                             lang, k -> new ArrayList<>());
                                     while (langLines.size() < mainLineCount - 1) {
                                         langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
@@ -331,10 +331,10 @@ public final class TTMLParser {
 
                             if (pl.bgInlineTranslations() != null) {
                                 for (Map.Entry<String, String> e : pl.bgInlineTranslations().entrySet()) {
-                                    final String lang = "bg:" + e.getKey();
-                                    final String text = e.getValue();
+                                    String lang = "bg:" + e.getKey();
+                                    String text = e.getValue();
                                     if (text.isEmpty()) continue;
-                                    final List<LyricsLine> langLines = translations.computeIfAbsent(
+                                    List<LyricsLine> langLines = translations.computeIfAbsent(
                                             lang, k -> new ArrayList<>());
                                     while (langLines.size() < mainLineCount) {
                                         langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
@@ -345,10 +345,10 @@ public final class TTMLParser {
 
                             if (pl.bgInlineRomanizations() != null) {
                                 for (Map.Entry<String, String> e : pl.bgInlineRomanizations().entrySet()) {
-                                    final String lang = "bg:" + e.getKey();
-                                    final String text = e.getValue();
+                                    String lang = "bg:" + e.getKey();
+                                    String text = e.getValue();
                                     if (text.isEmpty()) continue;
-                                    final List<LyricsLine> langLines = romanizations.computeIfAbsent(
+                                    List<LyricsLine> langLines = romanizations.computeIfAbsent(
                                             lang, k -> new ArrayList<>());
                                     while (langLines.size() < mainLineCount) {
                                         langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
@@ -377,16 +377,16 @@ public final class TTMLParser {
             padDerivedTo(translations, lines.size());
             padDerivedTo(romanizations, lines.size());
 
-            final Map<String, List<LyricsLine>> transOut =
+            Map<String, List<LyricsLine>> transOut =
                     translations.isEmpty() ? null : translations;
-            final Map<String, List<LyricsLine>> romaOut =
+            Map<String, List<LyricsLine>> romaOut =
                     romanizations.isEmpty() ? null : romanizations;
 
-            final Map<String, String> agentNames;
+            Map<String, String> agentNames;
             if (agentTypes.isEmpty()) {
                 agentNames = null;
             } else {
-                final Map<String, String> names = new HashMap<>();
+                Map<String, String> names = new HashMap<>();
                 for (Map.Entry<String, AgentInfo> e : agentTypes.entrySet()) {
                     if (e.getValue().name() != null) {
                         names.put(e.getKey(), e.getValue().name());
@@ -412,8 +412,8 @@ public final class TTMLParser {
         boolean lastPersonIsDuet = false;
 
         for (int i = 0; i < lines.size(); i++) {
-            final LyricsLine original = lines.get(i);
-            final String agentId = original.agentId();
+            LyricsLine original = lines.get(i);
+            String agentId = original.agentId();
             if (agentId == null) {
                 continue;
             }
@@ -424,8 +424,8 @@ public final class TTMLParser {
             if (agentNum > 0) {
                 isDuet = (agentNum % 2 == 0);
             } else {
-                final AgentInfo info = agentTypes.get(agentId);
-                final String type = info != null ? info.type() : AGENT_TYPE_PERSON;
+                AgentInfo info = agentTypes.get(agentId);
+                String type = info != null ? info.type() : AGENT_TYPE_PERSON;
 
                 if (AGENT_TYPE_GROUP.equals(type)) {
                     isDuet = false;
@@ -475,9 +475,9 @@ public final class TTMLParser {
                 break;
             }
             if (event == XmlPullParser.START_TAG) {
-                final String local = localName(p.getName());
+                String local = localName(p.getName());
                 if ("transliteration".equals(local)) {
-                    final String lang = getAttr(p, NS_XML, "lang", "xml:lang");
+                    String lang = getAttr(p, NS_XML, "lang", "xml:lang");
                     collectOneTransliteration(p, lang, map);
                     continue;
                 }
@@ -499,13 +499,13 @@ public final class TTMLParser {
                 break;
             }
             if (event == XmlPullParser.START_TAG) {
-                final String local = localName(p.getName());
+                String local = localName(p.getName());
                 if ("text".equals(local)) {
-                    final String forKey = getAttr(p, null, "for", "for");
+                    String forKey = getAttr(p, null, "for", "for");
                     if (forKey != null && !forKey.isEmpty()) {
-                        final List<RomajiSyllable> syllables = parseTransliterationText(p);
+                        List<RomajiSyllable> syllables = parseTransliterationText(p);
                         if (!syllables.isEmpty()) {
-                            final String key = (lang != null && !lang.isEmpty())
+                            String key = (lang != null && !lang.isEmpty())
                                     ? lang + ":" + forKey : forKey;
                             map.put(key, syllables);
                             continue;
@@ -523,7 +523,7 @@ public final class TTMLParser {
 
     private static List<RomajiSyllable> parseTransliterationText(XmlPullParser p)
             throws XmlPullParserException, IOException {
-        final List<RomajiSyllable> syllables = new ArrayList<>();
+        List<RomajiSyllable> syllables = new ArrayList<>();
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
@@ -531,12 +531,12 @@ public final class TTMLParser {
                 break;
             }
             if (event == XmlPullParser.START_TAG) {
-                final String local = localName(p.getName());
+                String local = localName(p.getName());
                 if ("span".equals(local)) {
-                    final String begin = getAttr(p, null, "begin", "begin");
-                    final String end = getAttr(p, null, "end", "end");
+                    String begin = getAttr(p, null, "begin", "begin");
+                    String end = getAttr(p, null, "end", "end");
                     if (begin != null && end != null) {
-                        final String text = normalizeText(readTextContent(p));
+                        String text = normalizeText(readTextContent(p));
                         if (!text.isEmpty()) {
                             syllables.add(new RomajiSyllable(
                                     parseTime(begin), parseTime(end), text));
@@ -550,9 +550,9 @@ public final class TTMLParser {
             } else if (event == XmlPullParser.END_TAG) {
                 depth--;
             } else if (event == XmlPullParser.TEXT) {
-                final String text = p.getText();
+                String text = p.getText();
                 if (text != null) {
-                    final String trimmed = normalizeText(text);
+                    String trimmed = normalizeText(text);
                     if (!trimmed.isEmpty()) {
                         syllables.add(new RomajiSyllable(0, 0, trimmed));
                     }
@@ -575,9 +575,9 @@ public final class TTMLParser {
             }
 
             if (event == XmlPullParser.START_TAG) {
-                final String local = localName(p.getName());
+                String local = localName(p.getName());
                 if ("translation".equals(local)) {
-                    final String lang = getAttr(p, NS_XML, "lang", "xml:lang");
+                    String lang = getAttr(p, NS_XML, "lang", "xml:lang");
                     if (lang != null && !lang.isEmpty()) {
                         collectOneTranslation(p, lang, map);
                         continue;
@@ -602,11 +602,11 @@ public final class TTMLParser {
                 break;
             }
             if (event == XmlPullParser.START_TAG) {
-                final String local = localName(p.getName());
+                String local = localName(p.getName());
                 if ("text".equals(local)) {
-                    final String forKey = getAttr(p, null, "for", "for");
+                    String forKey = getAttr(p, null, "for", "for");
                     if (forKey != null && !forKey.isEmpty()) {
-                        final SidecarTranslation st = parseTranslationText(p);
+                        SidecarTranslation st = parseTranslationText(p);
                         if (!st.text().isEmpty()) {
                             map.put(lang + ":" + forKey, st);
                         }
@@ -624,19 +624,19 @@ public final class TTMLParser {
 
     private static SidecarTranslation parseTranslationText(XmlPullParser p)
             throws XmlPullParserException, IOException {
-        final StringBuilder mainFullText = new StringBuilder();
-        final List<Word> mainWords = new ArrayList<>();
-        final StringBuilder bgFullText = new StringBuilder();
-        final List<Word> bgWords = new ArrayList<>();
+        StringBuilder mainFullText = new StringBuilder();
+        List<Word> mainWords = new ArrayList<>();
+        StringBuilder bgFullText = new StringBuilder();
+        List<Word> bgWords = new ArrayList<>();
         boolean inBg = false;
         int bgWrapperDepth = 0;
 
         boolean inMainWord = false;
-        final StringBuilder mainWordBuf = new StringBuilder();
+        StringBuilder mainWordBuf = new StringBuilder();
         long mainWordBegin = 0, mainWordEnd = 0;
 
         boolean inBgWord = false;
-        final StringBuilder bgWordBuf = new StringBuilder();
+        StringBuilder bgWordBuf = new StringBuilder();
         long bgWordBegin = 0, bgWordEnd = 0;
 
         int depth = 1;
@@ -648,14 +648,14 @@ public final class TTMLParser {
             }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
-                final String local = localName(p.getName());
-                final String role = getAttr(p, NS_TTM, "role", "ttm:role");
+                String local = localName(p.getName());
+                String role = getAttr(p, NS_TTM, "role", "ttm:role");
 
                 if ("x-bg".equals(role)) {
                     inBg = true;
                 } else if ("span".equals(local)) {
-                    final String beginAttr = getAttr(p, null, "begin", "begin");
-                    final String endAttr = getAttr(p, null, "end", "end");
+                    String beginAttr = getAttr(p, null, "begin", "begin");
+                    String endAttr = getAttr(p, null, "end", "end");
                     if (beginAttr != null && endAttr != null) {
                         if (inBg) {
                             inBgWord = true;
@@ -681,15 +681,15 @@ public final class TTMLParser {
                 if (depth <= 1) {
                     if (inBgWord) {
                         inBgWord = false;
-                        final String normalized = normalizeTextRaw(bgWordBuf.toString());
+                        String normalized = normalizeTextRaw(bgWordBuf.toString());
                         final boolean startsWithSpace = !normalized.isEmpty()
                                 && Character.isWhitespace(normalized.charAt(0));
                         final boolean endsWithSpace = !normalized.isEmpty()
                                 && Character.isWhitespace(normalized.charAt(normalized.length() - 1));
-                        final String text = normalized.trim();
+                        String text = normalized.trim();
                         bgFullText.append(normalized);
                         if (startsWithSpace && !bgWords.isEmpty()) {
-                            final Word prev = bgWords.get(bgWords.size() - 1);
+                            Word prev = bgWords.get(bgWords.size() - 1);
                             bgWords.set(bgWords.size() - 1,
                                     new Word(prev.startMs(), prev.endMs(), prev.text(),
                                             prev.romaji(), true));
@@ -700,15 +700,15 @@ public final class TTMLParser {
                         }
                     } else if (inMainWord) {
                         inMainWord = false;
-                        final String normalized = normalizeTextRaw(mainWordBuf.toString());
+                        String normalized = normalizeTextRaw(mainWordBuf.toString());
                         final boolean startsWithSpace = !normalized.isEmpty()
                                 && Character.isWhitespace(normalized.charAt(0));
                         final boolean endsWithSpace = !normalized.isEmpty()
                                 && Character.isWhitespace(normalized.charAt(normalized.length() - 1));
-                        final String text = normalized.trim();
+                        String text = normalized.trim();
                         mainFullText.append(normalized);
                         if (startsWithSpace && !mainWords.isEmpty()) {
-                            final Word prev = mainWords.get(mainWords.size() - 1);
+                            Word prev = mainWords.get(mainWords.size() - 1);
                             mainWords.set(mainWords.size() - 1,
                                     new Word(prev.startMs(), prev.endMs(), prev.text(),
                                             prev.romaji(), true));
@@ -724,7 +724,7 @@ public final class TTMLParser {
                     }
                 }
             } else if (event == XmlPullParser.TEXT) {
-                final String raw = p.getText();
+                String raw = p.getText();
                 if (raw == null || raw.isEmpty()) continue;
                 if (inBgWord) {
                     bgWordBuf.append(raw);
@@ -734,7 +734,7 @@ public final class TTMLParser {
                     bgFullText.append(raw);
                     // Whitespace between bg word spans
                     if (!raw.contains("\n") && raw.trim().isEmpty() && !bgWords.isEmpty()) {
-                        final Word prev = bgWords.get(bgWords.size() - 1);
+                        Word prev = bgWords.get(bgWords.size() - 1);
                         if (!prev.endsWithSpace()) {
                             bgWords.set(bgWords.size() - 1, new Word(
                                     prev.startMs(), prev.endMs(),
@@ -745,7 +745,7 @@ public final class TTMLParser {
                     mainFullText.append(raw);
                     // Whitespace between main word spans
                     if (!raw.contains("\n") && raw.trim().isEmpty() && !mainWords.isEmpty()) {
-                        final Word prev = mainWords.get(mainWords.size() - 1);
+                        Word prev = mainWords.get(mainWords.size() - 1);
                         if (!prev.endsWithSpace()) {
                             mainWords.set(mainWords.size() - 1, new Word(
                                     prev.startMs(), prev.endMs(),
@@ -756,17 +756,17 @@ public final class TTMLParser {
             }
         }
 
-        final String main = normalizeText(mainFullText.toString());
-        final String bg = normalizeText(bgFullText.toString());
+        String main = normalizeText(mainFullText.toString());
+        String bg = normalizeText(bgFullText.toString());
 
         if (!mainWords.isEmpty()) {
-            final Word first = mainWords.get(0);
+            Word first = mainWords.get(0);
             if (first.text().startsWith(" ")) {
                 mainWords.set(0, new Word(first.startMs(), first.endMs(),
                         first.text().substring(1).trim(), first.romaji(), first.endsWithSpace()));
             }
             final int lastIdx = mainWords.size() - 1;
-            final Word last = mainWords.get(lastIdx);
+            Word last = mainWords.get(lastIdx);
             if (last.text().endsWith(" ") || last.endsWithSpace()) {
                 mainWords.set(lastIdx, new Word(last.startMs(), last.endMs(),
                         last.text().trim(), last.romaji(), false));
@@ -774,23 +774,23 @@ public final class TTMLParser {
         }
 
         if (!bgWords.isEmpty()) {
-            final Word first = bgWords.get(0);
+            Word first = bgWords.get(0);
             if (first.text().startsWith(" ")) {
                 bgWords.set(0, new Word(first.startMs(), first.endMs(),
                         first.text().substring(1).trim(), first.romaji(), first.endsWithSpace()));
             }
             final int lastIdx = bgWords.size() - 1;
-            final Word last = bgWords.get(lastIdx);
+            Word last = bgWords.get(lastIdx);
             if (last.text().endsWith(" ") || last.endsWithSpace()) {
                 bgWords.set(lastIdx, new Word(last.startMs(), last.endMs(),
                         last.text().trim(), last.romaji(), false));
             }
         }
 
-        final List<Word> finalMainWords = (mainWords.size() == 1
+        List<Word> finalMainWords = (mainWords.size() == 1
                 && mainWords.get(0).startMs() == 0 && mainWords.get(0).endMs() == 0)
                 ? null : (mainWords.isEmpty() ? null : mainWords);
-        final List<Word> finalBgWords = (bgWords.size() == 1
+        List<Word> finalBgWords = (bgWords.size() == 1
                 && bgWords.get(0).startMs() == 0 && bgWords.get(0).endMs() == 0)
                 ? null : (bgWords.isEmpty() ? null : bgWords);
 
@@ -809,49 +809,49 @@ public final class TTMLParser {
     private static ParsedLine processPElement(XmlPullParser p, long pBegin, long pEnd)
             throws XmlPullParserException, IOException {
 
-        final List<Word> words = new ArrayList<>();
-        final StringBuilder fullText = new StringBuilder();
+        List<Word> words = new ArrayList<>();
+        StringBuilder fullText = new StringBuilder();
 
         boolean inTranslation = false;
-        final StringBuilder transBuf = new StringBuilder();
+        StringBuilder transBuf = new StringBuilder();
         String transLang = null;
         boolean inRoman = false;
-        final StringBuilder romanBuf = new StringBuilder();
+        StringBuilder romanBuf = new StringBuilder();
         String romanLang = null;
 
-        final Map<String, String> inlineTrans = new HashMap<>();
-        final Map<String, String> inlineRoma = new HashMap<>();
-        final Map<String, String> bgInlineTrans = new HashMap<>();
-        final Map<String, String> bgInlineRoma = new HashMap<>();
+        Map<String, String> inlineTrans = new HashMap<>();
+        Map<String, String> inlineRoma = new HashMap<>();
+        Map<String, String> bgInlineTrans = new HashMap<>();
+        Map<String, String> bgInlineRoma = new HashMap<>();
 
         boolean inBg = false;
-        final List<Word> bgWords = new ArrayList<>();
-        final StringBuilder bgFullText = new StringBuilder();
-        final StringBuilder bgWordBuf = new StringBuilder();
+        List<Word> bgWords = new ArrayList<>();
+        StringBuilder bgFullText = new StringBuilder();
+        StringBuilder bgWordBuf = new StringBuilder();
         long bgWordBegin = 0, bgWordEnd = 0;
         int bgWrapperDepth = 0;
         String bgAgentId = null;
         long bgBeginMs = 0, bgEndMs = 0;
-        final StringBuilder bgTransBuf = new StringBuilder();
-        final StringBuilder bgRomanBuf = new StringBuilder();
+        StringBuilder bgTransBuf = new StringBuilder();
+        StringBuilder bgRomanBuf = new StringBuilder();
         boolean inBgTranslation = false;
         boolean inBgRoman = false;
         boolean inBgWord = false;
-        final List<LyricsLine> bgLines = new ArrayList<>();
+        List<LyricsLine> bgLines = new ArrayList<>();
 
         boolean inWord = false;
-        final StringBuilder wordBuf = new StringBuilder();
+        StringBuilder wordBuf = new StringBuilder();
         long wordBegin = 0, wordEnd = 0;
         int wrapperDepth = 0;
 
         boolean inRubyContainer = false;
         boolean inRubyBase = false;
-        final StringBuilder rubyBaseBuf = new StringBuilder();
+        StringBuilder rubyBaseBuf = new StringBuilder();
         boolean inRubyTextContainer = false;
         boolean inRubyText = false;
-        final StringBuilder rubyTextBuf = new StringBuilder();
+        StringBuilder rubyTextBuf = new StringBuilder();
         long rubyTextBegin = 0, rubyTextEnd = 0;
-        final List<RomajiSyllable> rubyTags = new ArrayList<>();
+        List<RomajiSyllable> rubyTags = new ArrayList<>();
 
         int depth = 1;
 
@@ -862,15 +862,15 @@ public final class TTMLParser {
             }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
-                final String local = localName(p.getName());
+                String local = localName(p.getName());
                 if (!"span".equals(local)) {
                     continue;
                 }
 
-                final String role = getAttr(p, NS_TTM, "role", "ttm:role");
-                final String ruby = getAttr(p, NS_TTS, "ruby", "tts:ruby");
-                final String beginAttr = getAttr(p, null, "begin", "begin");
-                final String endAttr = getAttr(p, null, "end", "end");
+                String role = getAttr(p, NS_TTM, "role", "ttm:role");
+                String ruby = getAttr(p, NS_TTS, "ruby", "tts:ruby");
+                String beginAttr = getAttr(p, null, "begin", "begin");
+                String endAttr = getAttr(p, null, "end", "end");
 
                 // Ruby is settled first: an annotation sits inside the vocal it reads,
                 // so the background branch below would drop its base text.
@@ -928,34 +928,34 @@ public final class TTMLParser {
                     wrapperDepth++;
                 }
             } else if (event == XmlPullParser.END_TAG) {
-                final String local = localName(p.getName());
+                String local = localName(p.getName());
 
                 if ("span".equals(local)) {
                     if (inBgTranslation) {
                         inBgTranslation = false;
-                        final String btText = bgTransBuf.toString().trim();
+                        String btText = bgTransBuf.toString().trim();
                         if (!btText.isEmpty()) {
                             bgInlineTrans.merge("bg", btText, (a, b) -> a + " " + b);
                         }
                     } else if (inBgRoman) {
                         inBgRoman = false;
-                        final String brText = bgRomanBuf.toString().trim();
+                        String brText = bgRomanBuf.toString().trim();
                         if (!brText.isEmpty()) {
                             bgInlineRoma.merge("bg", brText, (a, b) -> a + " " + b);
                         }
                     } else if (inBgWord) {
                         inBgWord = false;
-                        final String rawBgWord = bgWordBuf.toString();
-                        final String normalized = normalizeTextRaw(rawBgWord);
+                        String rawBgWord = bgWordBuf.toString();
+                        String normalized = normalizeTextRaw(rawBgWord);
                         final boolean isFormatting = rawBgWord.contains("\n");
                         final boolean startsWithSpace = !isFormatting && !normalized.isEmpty()
                                 && Character.isWhitespace(normalized.charAt(0));
                         final boolean endsWithSpace = !isFormatting && !normalized.isEmpty()
                                 && Character.isWhitespace(normalized.charAt(normalized.length() - 1));
-                        final String text = normalized.trim();
+                        String text = normalized.trim();
                         bgFullText.append(normalized);
                         if (startsWithSpace && !bgWords.isEmpty()) {
-                            final Word prev = bgWords.get(bgWords.size() - 1);
+                            Word prev = bgWords.get(bgWords.size() - 1);
                             bgWords.set(bgWords.size() - 1,
                                     new Word(prev.startMs(), prev.endMs(), prev.text(),
                                             prev.romaji(), true));
@@ -971,7 +971,7 @@ public final class TTMLParser {
                         inBg = false;
                     } else if (inRubyText && inRubyContainer) {
                         inRubyText = false;
-                        final String text = normalizeText(rubyTextBuf.toString());
+                        String text = normalizeText(rubyTextBuf.toString());
                         if (!text.isEmpty()) {
                             rubyTags.add(new RomajiSyllable(
                                     rubyTextBegin, rubyTextEnd, text));
@@ -982,7 +982,7 @@ public final class TTMLParser {
                         inRubyBase = false;
                     } else if (inRubyContainer) {
                         inRubyContainer = false;
-                        final String baseText = normalizeText(rubyBaseBuf.toString());
+                        String baseText = normalizeText(rubyBaseBuf.toString());
                         if (!baseText.isEmpty()) {
                             long rBegin = 0, rEnd = 0;
                             if (!rubyTags.isEmpty()) {
@@ -996,7 +996,7 @@ public final class TTMLParser {
                                 rRoma.append(rs.text());
                             }
                             //noinspection SizeReplaceableByIsEmpty
-                            final String romaji = rRoma.length() > 0 ? rRoma.toString() : null;
+                            String romaji = rRoma.length() > 0 ? rRoma.toString() : null;
 
                             // The base is the sung text either way, only the line differs.
                             if (inBg) {
@@ -1017,29 +1017,29 @@ public final class TTMLParser {
                         inBg = false;
                     } else if (inTranslation) {
                         inTranslation = false;
-                        final String tText = transBuf.toString().trim();
+                        String tText = transBuf.toString().trim();
                         if (!tText.isEmpty() && transLang != null) {
                             inlineTrans.merge(transLang, tText, (a, b) -> a + " " + b);
                         }
                     } else if (inRoman) {
                         inRoman = false;
-                        final String rText = romanBuf.toString().trim();
+                        String rText = romanBuf.toString().trim();
                         if (!rText.isEmpty() && romanLang != null) {
                             inlineRoma.merge(romanLang, rText, (a, b) -> a + " " + b);
                         }
                     } else if (inWord) {
                         inWord = false;
-                        final String rawWord = wordBuf.toString();
-                        final String normalized = normalizeTextRaw(rawWord);
+                        String rawWord = wordBuf.toString();
+                        String normalized = normalizeTextRaw(rawWord);
                         final boolean isFormatting = rawWord.contains("\n");
                         final boolean startsWithSpace = !isFormatting && !normalized.isEmpty()
                                 && Character.isWhitespace(normalized.charAt(0));
                         final boolean endsWithSpace = !isFormatting && !normalized.isEmpty()
                                 && Character.isWhitespace(normalized.charAt(normalized.length() - 1));
-                        final String text = normalized.trim();
+                        String text = normalized.trim();
                         fullText.append(normalized);
                         if (startsWithSpace && !words.isEmpty()) {
-                            final Word prev = words.get(words.size() - 1);
+                            Word prev = words.get(words.size() - 1);
                             words.set(words.size() - 1,
                                     new Word(prev.startMs(), prev.endMs(), prev.text(),
                                             prev.romaji(), true));
@@ -1054,7 +1054,7 @@ public final class TTMLParser {
                 }
                 depth--;
             } else if (event == XmlPullParser.TEXT) {
-                final String raw = p.getText();
+                String raw = p.getText();
                 if (raw == null || raw.isEmpty()) continue;
                 final boolean isWhitespace = raw.trim().isEmpty();
                 final boolean hasNewline = raw.contains("\n");
@@ -1072,7 +1072,7 @@ public final class TTMLParser {
                 } else if (inBg && bgWrapperDepth == 0) {
                     if (isWhitespace) {
                         if (!bgWords.isEmpty()) {
-                            final Word prev = bgWords.get(bgWords.size() - 1);
+                            Word prev = bgWords.get(bgWords.size() - 1);
                             final boolean cjk = isContinuousCjk(prev.text());
                             if (!hasNewline || !cjk) {
                                 if (bgFullText.length() > 0 && bgFullText.charAt(bgFullText.length() - 1) != ' ') {
@@ -1097,7 +1097,7 @@ public final class TTMLParser {
                 } else if (!inBg && !inRubyContainer) {
                     if (isWhitespace) {
                         if (!words.isEmpty()) {
-                            final Word prev = words.get(words.size() - 1);
+                            Word prev = words.get(words.size() - 1);
                             final boolean cjk = isContinuousCjk(prev.text());
                             if (!hasNewline || !cjk) {
                                 if (fullText.length() > 0 && fullText.charAt(fullText.length() - 1) != ' ') {
@@ -1117,12 +1117,12 @@ public final class TTMLParser {
             }
         }
 
-        final String rawLineText = normalizeText(fullText.toString());
+        String rawLineText = normalizeText(fullText.toString());
         String lineText = rawLineText;
         if (lineText.indexOf(' ') < 0 && words.size() > 1 && !isContinuousCjk(words.get(0).text())) {
             StringBuilder reconstructed = new StringBuilder();
             for (int i = 0; i < words.size(); i++) {
-                final Word w = words.get(i);
+                Word w = words.get(i);
                 if (i > 0) reconstructed.append(' ');
                 reconstructed.append(w.text());
                 final boolean shouldEndWithSpace = (i < words.size() - 1);
@@ -1172,13 +1172,13 @@ public final class TTMLParser {
         }
 
         if (!words.isEmpty()) {
-            final Word first = words.get(0);
+            Word first = words.get(0);
             if (first.text().startsWith(" ")) {
                 words.set(0, new Word(first.startMs(), first.endMs(),
                         first.text().substring(1).trim(), first.romaji(), first.endsWithSpace()));
             }
             final int lastIdx = words.size() - 1;
-            final Word last = words.get(lastIdx);
+            Word last = words.get(lastIdx);
             if (last.text().endsWith(" ") || last.endsWithSpace()) {
                 words.set(lastIdx, new Word(last.startMs(), last.endMs(),
                         last.text().trim(), last.romaji(), false));
@@ -1221,7 +1221,7 @@ public final class TTMLParser {
             if (cleanBgText.indexOf(' ') < 0 && bgWords.size() > 1 && !isContinuousCjk(bgWords.get(0).text())) {
                 StringBuilder reconstructed = new StringBuilder();
                 for (int i = 0; i < bgWords.size(); i++) {
-                    final Word w = bgWords.get(i);
+                    Word w = bgWords.get(i);
                     if (i > 0) reconstructed.append(' ');
                     reconstructed.append(w.text());
                     final boolean shouldEndWithSpace = (i < bgWords.size() - 1);
@@ -1243,16 +1243,16 @@ public final class TTMLParser {
 
     private static void stripBgWordParens(List<Word> bgWords) {
         if (bgWords.isEmpty()) return;
-        final Word first = bgWords.get(0);
-        final String strippedFirst = TextTrim.stripLeading(
+        Word first = bgWords.get(0);
+        String strippedFirst = TextTrim.stripLeading(
                 first.text().replaceAll("^[(（]+", ""));
         if (!strippedFirst.equals(first.text())) {
             bgWords.set(0, new Word(first.startMs(), first.endMs(),
                     strippedFirst, first.romaji(), first.endsWithSpace()));
         }
         final int lastIdx = bgWords.size() - 1;
-        final Word last = bgWords.get(lastIdx);
-        final String strippedLast = TextTrim.stripTrailing(
+        Word last = bgWords.get(lastIdx);
+        String strippedLast = TextTrim.stripTrailing(
                 last.text().replaceAll("[)）]+$", ""));
         if (!strippedLast.equals(last.text())) {
             bgWords.set(lastIdx, new Word(last.startMs(), last.endMs(),
@@ -1282,14 +1282,14 @@ public final class TTMLParser {
         int romanSearchStart = 0;
 
         for (int i = 0; i < words.size(); i++) {
-            final Word main = words.get(i);
+            Word main = words.get(i);
             double maxIou = 0;
             int bestIdx = -1;
             boolean fastMatched = false;
 
             int j = romanSearchStart;
             while (j < sidecar.size()) {
-                final RomajiSyllable sub = sidecar.get(j);
+                RomajiSyllable sub = sidecar.get(j);
 
                 // Fast track: start times match within 2ms
                 if (Math.abs(main.startMs() - sub.startMs()) <= FAST_TRACK_MS) {
@@ -1322,7 +1322,7 @@ public final class TTMLParser {
             }
 
             if (!fastMatched && bestIdx >= 0 && maxIou >= MIN_IOU) {
-                final RomajiSyllable sub = sidecar.get(bestIdx);
+                RomajiSyllable sub = sidecar.get(bestIdx);
                 words.set(i, new Word(main.startMs(), main.endMs(), main.text(),
                         sub.text(), main.endsWithSpace()));
                 romanSearchStart = bestIdx + 1;
@@ -1333,10 +1333,10 @@ public final class TTMLParser {
     @Nullable
     private static List<RomajiSyllable> findSidecarRoman(String lineId,
             Map<String, List<RomajiSyllable>> sidecarRoman) {
-        final List<RomajiSyllable> exact = sidecarRoman.get(lineId);
+        List<RomajiSyllable> exact = sidecarRoman.get(lineId);
         if (exact != null) return exact;
         for (Map.Entry<String, List<RomajiSyllable>> e : sidecarRoman.entrySet()) {
-            final String key = e.getKey();
+            String key = e.getKey();
             final int sep = key.indexOf(':');
             if (sep > 0 && key.substring(sep + 1).equals(lineId)) {
                 return e.getValue();
@@ -1348,18 +1348,18 @@ public final class TTMLParser {
     private static String buildLineRomaji(List<Word> words,
                                           @Nullable List<RomajiSyllable> sidecar) {
         if (sidecar != null && !sidecar.isEmpty()) {
-            final StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             for (RomajiSyllable s : sidecar) {
                 if (s.text().isEmpty()) continue;
                 sb.append(s.text());
             }
-            final String result = sb.toString().trim();
+            String result = sb.toString().trim();
             if (!result.isEmpty() && LyricsRomanizer.isPurelyLatinScript(result)) {
                 return result;
             }
         }
 
-        final StringBuilder perWord = new StringBuilder();
+        StringBuilder perWord = new StringBuilder();
         boolean hasPerWord = false;
         for (Word w : words) {
             if (w.romaji() != null && !w.romaji().isEmpty() && LyricsRomanizer.isPurelyLatinScript(w.romaji())) {
@@ -1392,9 +1392,9 @@ public final class TTMLParser {
             int mainIndex, int bgCount) {
         // Keys may be "lang:lineId" or just "lineId" (no language)
         for (Map.Entry<String, List<RomajiSyllable>> entry : sidecarRoman.entrySet()) {
-            final String key = entry.getKey();
-            final String forId;
-            final String lang;
+            String key = entry.getKey();
+            String forId;
+            String lang;
 
             final int sep = key.indexOf(':');
             if (sep > 0) {
@@ -1407,17 +1407,17 @@ public final class TTMLParser {
 
             if (!lineId.equals(forId)) continue;
 
-            final List<RomajiSyllable> sidecar = entry.getValue();
+            List<RomajiSyllable> sidecar = entry.getValue();
             if (sidecar.isEmpty()) continue;
 
             if (sidecar.size() == 1 && sidecar.get(0).startMs() == 0 && sidecar.get(0).endMs() == 0) {
                 continue;
             }
 
-            final List<Word> alignedWords = new ArrayList<>(words);
+            List<Word> alignedWords = new ArrayList<>(words);
             alignRomajiToWords(alignedWords, sidecar);
 
-            final StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             for (Word w : alignedWords) {
                 if (w.romaji() != null && !w.romaji().isEmpty()) {
                     sb.append(w.romaji());
@@ -1426,9 +1426,9 @@ public final class TTMLParser {
                     }
                 }
             }
-            final String text = sb.toString().trim();
-            final String langKey = lang != null ? lang : "romaji";
-            final List<LyricsLine> langLines = romanizations.computeIfAbsent(
+            String text = sb.toString().trim();
+            String langKey = lang != null ? lang : "romaji";
+            List<LyricsLine> langLines = romanizations.computeIfAbsent(
                     langKey, k -> new ArrayList<>());
             while (langLines.size() < mainIndex) {
                 langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
@@ -1456,18 +1456,18 @@ public final class TTMLParser {
             Map<String, SidecarTranslation> sidecarTrans,
             Map<String, List<LyricsLine>> translations, int mainIndex, int bgCount) {
 
-        final Map<String, SidecarTranslation> mainByLang = new HashMap<>();
-        final Map<String, SidecarTranslation> bgByLang = new HashMap<>();
+        Map<String, SidecarTranslation> mainByLang = new HashMap<>();
+        Map<String, SidecarTranslation> bgByLang = new HashMap<>();
 
         for (Map.Entry<String, SidecarTranslation> entry : sidecarTrans.entrySet()) {
-            final String key = entry.getKey();
+            String key = entry.getKey();
             final int sep = key.indexOf(':');
             if (sep < 0) continue;
-            final String lang = key.substring(0, sep);
-            final String forId = key.substring(sep + 1);
+            String lang = key.substring(0, sep);
+            String forId = key.substring(sep + 1);
             if (!lineId.equals(forId)) continue;
 
-            final SidecarTranslation st = entry.getValue();
+            SidecarTranslation st = entry.getValue();
             mainByLang.put(lang, st);
             if (st.bgText() != null) {
                 bgByLang.put(lang, st);
@@ -1475,9 +1475,9 @@ public final class TTMLParser {
         }
 
         for (Map.Entry<String, SidecarTranslation> entry : mainByLang.entrySet()) {
-            final String lang = entry.getKey();
-            final SidecarTranslation st = entry.getValue();
-            final List<LyricsLine> langLines = translations.computeIfAbsent(
+            String lang = entry.getKey();
+            SidecarTranslation st = entry.getValue();
+            List<LyricsLine> langLines = translations.computeIfAbsent(
                     lang, k -> new ArrayList<>());
             while (langLines.size() < mainIndex) {
                 langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
@@ -1488,16 +1488,16 @@ public final class TTMLParser {
         }
 
         for (Map.Entry<String, SidecarTranslation> entry : bgByLang.entrySet()) {
-            final String lang = "bg:" + entry.getKey();
-            final SidecarTranslation st = entry.getValue();
-            final List<LyricsLine> langLines = translations.computeIfAbsent(
+            String lang = "bg:" + entry.getKey();
+            SidecarTranslation st = entry.getValue();
+            List<LyricsLine> langLines = translations.computeIfAbsent(
                     lang, k -> new ArrayList<>());
             final int firstBg = mainIndex + 1;
             while (langLines.size() < firstBg) {
                 langLines.add(new LyricsLine(LyricsLine.NO_TIME, ""));
             }
             if (langLines.size() == firstBg) {
-                final String bgText = st.bgText() == null ? "" : st.bgText();
+                String bgText = st.bgText() == null ? "" : st.bgText();
                 langLines.add(bgText.isEmpty()
                         ? new LyricsLine(LyricsLine.NO_TIME, "")
                         : new LyricsLine(LyricsLine.NO_TIME, bgText, st.bgWords()));
@@ -1509,7 +1509,7 @@ public final class TTMLParser {
 
     private static String readTextContent(XmlPullParser p)
             throws XmlPullParserException, IOException {
-        final StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
@@ -1521,7 +1521,7 @@ public final class TTMLParser {
             } else if (event == XmlPullParser.END_TAG) {
                 depth--;
             } else if (event == XmlPullParser.TEXT) {
-                final String text = p.getText();
+                String text = p.getText();
                 if (text != null) {
                     sb.append(text);
                 }
@@ -1548,13 +1548,13 @@ public final class TTMLParser {
 
     public static long parseTime(@Nullable String raw) {
         if (raw == null || raw.isEmpty()) return 0;
-        final String trimmed = raw.trim();
+        String trimmed = raw.trim();
 
         // Try colon-separated format first: HH:MM:SS.mmm or MM:SS.mmm
-        final Matcher cm = TIME_COLON.matcher(trimmed);
+        Matcher cm = TIME_COLON.matcher(trimmed);
         if (cm.matches()) {
-            final String g1 = cm.group(1); // hours (HH:MM:SS) or minutes (MM:SS)
-            final String g2 = cm.group(2); // minutes (HH:MM:SS only)
+            String g1 = cm.group(1); // hours (HH:MM:SS) or minutes (MM:SS)
+            String g2 = cm.group(2); // minutes (HH:MM:SS only)
             // Seconds are the only mandatory group of TIME_COLON.
             final double sec = Double.parseDouble(Objects.requireNonNull(cm.group(3)));
             if (g1 != null && g2 != null) {
@@ -1570,7 +1570,7 @@ public final class TTMLParser {
         }
 
         // Try unit-suffixed format: 3.5s, 100ms, etc.
-        final Matcher m = TIME_UNIT.matcher(trimmed);
+        Matcher m = TIME_UNIT.matcher(trimmed);
         if (m.find()) {
             final double value = Double.parseDouble(Objects.requireNonNull(m.group(1)));
             return switch (Objects.requireNonNull(m.group(2))) {
@@ -1606,18 +1606,18 @@ public final class TTMLParser {
     private static String getAttr(XmlPullParser p, @Nullable String ns,
             String local, @Nullable String fallbackQName) {
         if (ns != null) {
-            final String val = p.getAttributeValue(ns, local);
+            String val = p.getAttributeValue(ns, local);
             if (val != null) return val;
         }
         if (fallbackQName != null) {
-            final String val = p.getAttributeValue(null, fallbackQName);
+            String val = p.getAttributeValue(null, fallbackQName);
             if (val != null) return val;
         }
         for (int i = 0, n = p.getAttributeCount(); i < n; i++) {
-            final String name = p.getAttributeName(i);
+            String name = p.getAttributeName(i);
             if (name != null) {
                 final int colon = name.indexOf(':');
-                final String attrLocal = colon >= 0 ? name.substring(colon + 1) : name;
+                String attrLocal = colon >= 0 ? name.substring(colon + 1) : name;
                 if (attrLocal.equals(local)) {
                     return p.getAttributeValue(i);
                 }

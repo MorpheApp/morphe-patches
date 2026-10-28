@@ -29,8 +29,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.music.patches.lyrics.parsers.LyricifyParser;
+import app.morphe.extension.shared.Logger;
 
 public final class LyricifyProvider implements LyricsProvider {
 
@@ -58,7 +58,7 @@ public final class LyricifyProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        final String cacheKey = track.title().toLowerCase(Locale.ROOT)
+        String cacheKey = track.title().toLowerCase(Locale.ROOT)
                 + "|" + track.artist().toLowerCase(Locale.ROOT);
         Resolved resolved = resolvedCache.get(cacheKey);
         if (resolved == null) {
@@ -70,19 +70,19 @@ public final class LyricifyProvider implements LyricsProvider {
         if (resolved == null) {
             return null;
         }
-        final String isrc = resolved.isrc();
+        String isrc = resolved.isrc();
 
-        final String username = generateUsername();
-        final String isrcParam = Base64.encodeToString(
+        String username = generateUsername();
+        String isrcParam = Base64.encodeToString(
                 isrc.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
-        final String isrcEncoded = LyricsRequests.encode(isrcParam);
+        String isrcEncoded = LyricsRequests.encode(isrcParam);
 
-        final String url = API_BASE
+        String url = API_BASE
                 + "?username=" + username
                 + "&isrc=" + isrcEncoded;
 
         LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
-        final HttpURLConnection conn = openApi(url);
+        HttpURLConnection conn = openApi(url);
 
         final int code = conn.getResponseCode();
         if (code != 200) {
@@ -91,7 +91,7 @@ public final class LyricifyProvider implements LyricsProvider {
             return null;
         }
 
-        final String json = LyricsRequests.parseGzipString(conn);
+        String json = LyricsRequests.parseGzipString(conn);
         conn.disconnect();
 
         if (json.isEmpty()) {
@@ -104,17 +104,17 @@ public final class LyricifyProvider implements LyricsProvider {
             return null;
         }
 
-        final String text = LyricsRequests.optString(response, "text");
+        String text = LyricsRequests.optString(response, "text");
         if (text == null || text.isEmpty()) {
             return null;
         }
 
         final int offset = response.optInt("offset", 0);
-        final String writer = LyricsRequests.optString(response, "writer");
-        final String trans = LyricsRequests.optString(response, "trans");
+        String writer = LyricsRequests.optString(response, "writer");
+        String trans = LyricsRequests.optString(response, "trans");
 
         final boolean isSyllable = text.contains("[from:AppleSyllable]");
-        final List<LyricsLine> lines;
+        List<LyricsLine> lines;
         if (isSyllable) {
             lines = LyricifyParser.parseSyllable(text, offset);
         } else {
@@ -125,23 +125,23 @@ public final class LyricifyProvider implements LyricsProvider {
             return null;
         }
 
-        final List<String> creditLines = new ArrayList<>();
+        List<String> creditLines = new ArrayList<>();
         if (writer != null && !writer.isEmpty()) {
             creditLines.add("Written by " + writer);
         }
 
-        final Map<String, List<LyricsLine>> translations;
+        Map<String, List<LyricsLine>> translations;
         if ("zh".equals(LyricsRequests.primarySubtag(LyricsRequests.translationLanguage()))
                 && trans != null && !trans.isEmpty()) {
-            final List<String> translatedTexts = LyricifyParser.parseTranslation(trans, offset);
+            List<String> translatedTexts = LyricifyParser.parseTranslation(trans, offset);
             if (!translatedTexts.isEmpty()) {
                 while (translatedTexts.size() < lines.size()) {
                     translatedTexts.add("");
                 }
-                final List<LyricsLine> translationLines = new ArrayList<>(lines.size());
+                List<LyricsLine> translationLines = new ArrayList<>(lines.size());
                 for (int i = 0; i < lines.size(); i++) {
-                    final LyricsLine original = lines.get(i);
-                    final String tText = translatedTexts.get(i);
+                    LyricsLine original = lines.get(i);
+                    String tText = translatedTexts.get(i);
                     if (tText.isEmpty()) {
                         translationLines.add(new LyricsLine(
                                 original.startTimeMs(), original.endTimeMs(), "", List.of()));
@@ -158,7 +158,7 @@ public final class LyricifyProvider implements LyricsProvider {
             translations = null;
         }
 
-        final String formatType = isSyllable ? "lys" : "lyl";
+        String formatType = isSyllable ? "lys" : "lyl";
         return FetchResult.searched(new Lyrics(
                 lines,
                 name(),
@@ -174,7 +174,7 @@ public final class LyricifyProvider implements LyricsProvider {
     }
 
     private static HttpURLConnection openApi(String url) throws IOException {
-        final HttpURLConnection conn =
+        HttpURLConnection conn =
                 (HttpURLConnection) new java.net.URL(url).openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("User-Agent", USER_AGENT);
@@ -189,7 +189,7 @@ public final class LyricifyProvider implements LyricsProvider {
     private static Resolved resolveFromCreditsFm(String title, String artist) {
         HttpURLConnection connection = null;
         try {
-            final String url = "https://api.credits.fm/v1/resolve/track";
+            String url = "https://api.credits.fm/v1/resolve/track";
             LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             connection = (HttpURLConnection) new java.net.URL(url).openConnection();
             connection.setRequestMethod("POST");
@@ -201,11 +201,11 @@ public final class LyricifyProvider implements LyricsProvider {
             connection.setReadTimeout(15000);
             connection.setDoOutput(true);
 
-            final String body = new JSONObject()
+            String body = new JSONObject()
                     .put("name", title)
                     .put("artist", artist)
                     .toString();
-            final byte[] bodyBytes = body.getBytes(StandardCharsets.UTF_8);
+            byte[] bodyBytes = body.getBytes(StandardCharsets.UTF_8);
             connection.setFixedLengthStreamingMode(bodyBytes.length);
             try (OutputStream output = connection.getOutputStream()) {
                 output.write(bodyBytes);
@@ -213,22 +213,22 @@ public final class LyricifyProvider implements LyricsProvider {
 
             final int code = connection.getResponseCode();
             if (code == 200) {
-                final String responseBody = LyricsRequests.parseGzipString(connection);
+                String responseBody = LyricsRequests.parseGzipString(connection);
                 if (responseBody.isEmpty()) {
                     return null;
                 }
                 JSONObject response = new JSONObject(responseBody);
-                final String isrc = LyricsRequests.optString(response, "isrc");
+                String isrc = LyricsRequests.optString(response, "isrc");
                 if (isrc == null || isrc.isEmpty()) {
                     return null;
                 }
-                final List<String> titles = new ArrayList<>(2);
-                final String recordingTitle =
+                List<String> titles = new ArrayList<>(2);
+                String recordingTitle =
                         LyricsRequests.optString(response, "recording_title");
                 if (recordingTitle != null) {
                     titles.add(recordingTitle);
                 }
-                final String songTitle = LyricsRequests.optString(response, "song_title");
+                String songTitle = LyricsRequests.optString(response, "song_title");
                 if (songTitle != null && !titles.contains(songTitle)) {
                     titles.add(songTitle);
                 }
@@ -245,7 +245,7 @@ public final class LyricifyProvider implements LyricsProvider {
 
     private static String generateUsername() {
         final int len = 5 + RNG.nextInt(8);
-        final StringBuilder sb = new StringBuilder(len);
+        StringBuilder sb = new StringBuilder(len);
         for (int i = 0; i < len; i++) {
             sb.append((char) ('a' + RNG.nextInt(26)));
         }

@@ -137,8 +137,8 @@ public final class RMMProvider implements LyricsProvider {
                 return new ArrayList<>();
             }
 
-            final String title = track.title().toLowerCase(Locale.ROOT).trim();
-            final String artist = track.artist().toLowerCase(Locale.ROOT).trim();
+            String title = track.title().toLowerCase(Locale.ROOT).trim();
+            String artist = track.artist().toLowerCase(Locale.ROOT).trim();
 
             List<ScoredItem> scored = new ArrayList<>();
             for (int i = 0; i < results.length(); i++) {

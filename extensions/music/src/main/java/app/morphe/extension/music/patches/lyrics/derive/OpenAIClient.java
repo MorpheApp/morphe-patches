@@ -81,7 +81,7 @@ public final class OpenAIClient {
     }
 
     public static String[] fetchReasoningEfforts(String baseUrl, String apiToken, String model) {
-        final String models = listModels(baseUrl, apiToken);
+        String models = listModels(baseUrl, apiToken);
         if (models == null) {
             return new String[0];
         }
@@ -96,7 +96,7 @@ public final class OpenAIClient {
     /** The ids of the models the endpoint lists, empty when it lists none. */
     public static List<String> fetchModels(String baseUrl, @Nullable String apiToken) {
         List<String> ids = new ArrayList<>();
-        final String models = listModels(baseUrl, apiToken);
+        String models = listModels(baseUrl, apiToken);
         if (models == null) {
             return ids;
         }
@@ -119,7 +119,7 @@ public final class OpenAIClient {
     /** The raw response of the endpoint's model list, or null if it has none. */
     @Nullable
     private static String listModels(String baseUrl, @Nullable String apiToken) {
-        final String url = modelsUrl(baseUrl);
+        String url = modelsUrl(baseUrl);
         if (url == null) {
             return null;
         }
@@ -158,7 +158,7 @@ public final class OpenAIClient {
         if (slash < 0) {
             return null;
         }
-        final String host = base.substring(0, slash);
+        String host = base.substring(0, slash);
         String path = base.substring(slash);
         for (String chatPath : new String[]{"/chat/completions", "/completions"}) {
             if (path.endsWith(chatPath)) {
@@ -176,12 +176,12 @@ public final class OpenAIClient {
     }
 
     private static String[] parseSupportedEfforts(String json, String model) throws JSONException {
-        final String trimmed = json.trim();
+        String trimmed = json.trim();
         JSONArray entries;
         if (trimmed.startsWith("[")) {
             entries = new JSONArray(trimmed);
         } else {
-            final JSONObject root = new JSONObject(trimmed);
+            JSONObject root = new JSONObject(trimmed);
             entries = root.optJSONArray("data");
             if (entries == null) {
                 entries = root.optJSONArray("models");
@@ -191,23 +191,23 @@ public final class OpenAIClient {
             return new String[0];
         }
         for (int i = 0; i < entries.length(); i++) {
-            final JSONObject entry = entries.optJSONObject(i);
+            JSONObject entry = entries.optJSONObject(i);
             if (entry == null || !describesSameModel(entry, model)) {
                 continue;
             }
-            final Object reasoning = entry.opt("reasoning");
+            Object reasoning = entry.opt("reasoning");
             if (!(reasoning instanceof JSONObject detail)) {
                 // A plain true/false says the model reasons but not how hard, so there is nothing
                 // to choose from and the parameter is not worth offering.
                 return new String[0];
             }
-            final JSONArray efforts = detail.optJSONArray("supported_efforts");
+            JSONArray efforts = detail.optJSONArray("supported_efforts");
             if (efforts == null || efforts.length() == 0) {
                 return new String[0];
             }
-            final List<String> values = new ArrayList<>(efforts.length());
+            List<String> values = new ArrayList<>(efforts.length());
             for (int j = 0; j < efforts.length(); j++) {
-                final String value = efforts.optString(j, "").trim();
+                String value = efforts.optString(j, "").trim();
                 if (!value.isEmpty() && !values.contains(value)) {
                     values.add(value);
                 }
@@ -221,9 +221,9 @@ public final class OpenAIClient {
         if (model == null) {
             return false;
         }
-        final String wanted = model.trim();
+        String wanted = model.trim();
         for (String key : new String[]{"id", "name", "canonical_slug"}) {
-            final String candidate = entry.optString(key, "").trim();
+            String candidate = entry.optString(key, "").trim();
             if (candidate.isEmpty()) {
                 continue;
             }
@@ -232,7 +232,7 @@ public final class OpenAIClient {
                 return true;
             }
         }
-        final JSONArray aliases = entry.optJSONArray("aliases");
+        JSONArray aliases = entry.optJSONArray("aliases");
         if (aliases != null) {
             for (int i = 0; i < aliases.length(); i++) {
                 if (aliases.optString(i, "").equalsIgnoreCase(wanted)) {
@@ -251,7 +251,7 @@ public final class OpenAIClient {
     /** The stored effort, sent as typed, or empty when nothing is stored. */
     @SuppressWarnings("ConstantValue")
     public static String reasoningEffort() {
-        final String configured = Settings.LYRICS_AI_REASONING_EFFORT.get();
+        String configured = Settings.LYRICS_AI_REASONING_EFFORT.get();
         if (configured != null && !configured.trim().isEmpty()) {
             return configured.trim();
         }
@@ -261,7 +261,7 @@ public final class OpenAIClient {
     /** An array or a bare value has no keys to lay over a body, so neither counts as one. */
     public static boolean isValidExtraBody(@Nullable String body) {
         if (body == null) return true;
-        final String trimmed = body.trim();
+        String trimmed = body.trim();
         if (trimmed.isEmpty()) return true;
         try {
             new JSONObject(trimmed);
@@ -276,16 +276,16 @@ public final class OpenAIClient {
      * messages, whose length decides where the answer is cut into lines.
      */
     private static void applyExtraBody(JSONObject body) {
-        final String extra = Settings.LYRICS_AI_EXTRA_BODY.get();
+        String extra = Settings.LYRICS_AI_EXTRA_BODY.get();
         if (extra == null) return;
-        final String trimmed = extra.trim();
+        String trimmed = extra.trim();
         if (trimmed.isEmpty()) return;
 
         try {
-            final JSONObject overlay = new JSONObject(trimmed);
-            final Iterator<String> keys = overlay.keys();
+            JSONObject overlay = new JSONObject(trimmed);
+            Iterator<String> keys = overlay.keys();
             while (keys.hasNext()) {
-                final String key = keys.next();
+                String key = keys.next();
                 if (key.equals("model") || key.equals("messages")) continue;
                 // get rather than opt, so an explicit null is sent as the null it was written as.
                 body.put(key, overlay.get(key));
@@ -305,7 +305,7 @@ public final class OpenAIClient {
         try {
             JSONObject body = new JSONObject();
             body.put("model", model);
-            final String effort = reasoningEffort();
+            String effort = reasoningEffort();
             if (!effort.isEmpty()) {
                 body.put("reasoning_effort", effort);
             }

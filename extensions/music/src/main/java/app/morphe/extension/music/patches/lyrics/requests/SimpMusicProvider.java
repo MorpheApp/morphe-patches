@@ -22,8 +22,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
-import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.shared.VideoInformation;
@@ -47,7 +47,7 @@ public final class SimpMusicProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        final String videoId = VideoInformation.getVideoId();
+        String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
             return null;
         }
@@ -58,7 +58,7 @@ public final class SimpMusicProvider implements LyricsProvider {
     private Lyrics fetchByVideoId(String videoId) {
         HttpURLConnection connection = null;
         try {
-            final String url = BASE_URL + LyricsRequests.encode(videoId);
+            String url = BASE_URL + LyricsRequests.encode(videoId);
             connection = LyricsRequests.openConnection(url);
             connection.setRequestProperty("User-Agent", CLIENT_USER_AGENT);
             connection.setRequestProperty("Accept", "application/json");
@@ -76,7 +76,7 @@ public final class SimpMusicProvider implements LyricsProvider {
             if (!root.optBoolean("success", false)) {
                 return null;
             }
-            final JSONArray data = root.optJSONArray("data");
+            JSONArray data = root.optJSONArray("data");
             if (data == null || data.length() == 0) {
                 return null;
             }
@@ -108,7 +108,7 @@ public final class SimpMusicProvider implements LyricsProvider {
             if (vote < bestVote) {
                 continue;
             }
-            final Lyrics lyrics = parseEntry(entry, videoId);
+            Lyrics lyrics = parseEntry(entry, videoId);
             if (lyrics != null && !lyrics.isEmpty()) {
                 best = lyrics;
                 bestVote = vote;
@@ -119,18 +119,18 @@ public final class SimpMusicProvider implements LyricsProvider {
 
     @Nullable
     private Lyrics parseEntry(JSONObject entry, String videoId) {
-        final String contributor = LyricsRequests.optString(entry, "contributor");
-        final String richSync = LyricsRequests.optString(entry, "richSyncLyrics");
+        String contributor = LyricsRequests.optString(entry, "contributor");
+        String richSync = LyricsRequests.optString(entry, "richSyncLyrics");
         if (richSync != null) {
             return withContributor(parseLrc(richSync, videoId), contributor);
         }
-        final String synced = LyricsRequests.optString(entry, "syncedLyrics");
+        String synced = LyricsRequests.optString(entry, "syncedLyrics");
         if (synced != null) {
             return withContributor(parseLrc(synced, videoId), contributor);
         }
-        final String plain = LyricsRequests.optString(entry, "plainLyric");
+        String plain = LyricsRequests.optString(entry, "plainLyric");
         if (plain != null) {
-            final List<LyricsLine> lines = LRCParser.parsePlain(plain);
+            List<LyricsLine> lines = LRCParser.parsePlain(plain);
             if (!lines.isEmpty()) {
                 return withContributor(new Lyrics(lines, name(), false,
                         null, null, null, null, plain, "plain", sourceUrl(videoId)), contributor);
@@ -141,9 +141,9 @@ public final class SimpMusicProvider implements LyricsProvider {
 
     @Nullable
     private Lyrics parseLrc(String lrc, String videoId) {
-        final long[] offsetHolder = {0};
-        final String sanitized = sanitizeLrc(lrc, offsetHolder);
-        final LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(sanitized);
+        long[] offsetHolder = {0};
+        String sanitized = sanitizeLrc(lrc, offsetHolder);
+        LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(sanitized);
         if (result.lines.isEmpty()) {
             return null;
         }

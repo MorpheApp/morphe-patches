@@ -71,12 +71,12 @@ public final class QuickLRCClient {
     }
 
     public static void checkKey(String apiKey, KeyCheckCallback callback) {
-        final String key = apiKey == null ? "" : apiKey.trim();
+        String key = apiKey == null ? "" : apiKey.trim();
         if (key.isEmpty()) {
             callback.onChecked(KeyCheck.REJECTED);
             return;
         }
-        final Thread worker = new Thread(() -> {
+        Thread worker = new Thread(() -> {
             KeyCheck result;
             HttpURLConnection conn = null;
             try {
@@ -99,7 +99,7 @@ public final class QuickLRCClient {
                     conn.disconnect();
                 }
             }
-            final KeyCheck answer = result;
+            KeyCheck answer = result;
             Utils.runOnMainThread(() -> callback.onChecked(answer));
         }, "QuickLRC key check");
         worker.setDaemon(true);
@@ -115,17 +115,17 @@ public final class QuickLRCClient {
 
     @SuppressWarnings("ConstantValue")
     public static boolean isConfigured() {
-        final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
+        String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
         return key != null && !key.trim().isEmpty();
     }
 
     public static boolean isRunning() {
-        final Future<?> current = running;
+        Future<?> current = running;
         return current != null && !current.isDone();
     }
 
     public static void cancel() {
-        final Future<?> current = running;
+        Future<?> current = running;
         running = null;
         if (current != null) {
             current.cancel(true);
@@ -135,17 +135,17 @@ public final class QuickLRCClient {
     @SuppressWarnings("ConstantValue")
     public static void transcribe(String videoId, @Nullable String lyrics,
                                   BooleanSupplier stillWanted, Callback callback) {
-        final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
+        String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
         if (key == null || key.trim().isEmpty()) {
             Utils.runOnMainThread(() -> callback.onTranscribed(null, Failure.NO_KEY));
             return;
         }
-        final String source = videoId == null ? "" : videoId.trim();
+        String source = videoId == null ? "" : videoId.trim();
         if (source.isEmpty()) {
             Utils.runOnMainThread(() -> callback.onTranscribed(null, Failure.UNSUPPORTED_SOURCE));
             return;
         }
-        final String text = lyrics == null ? "" : lyrics.trim();
+        String text = lyrics == null ? "" : lyrics.trim();
 
         cancel();
         running = executor.submit(() -> {
@@ -153,7 +153,7 @@ public final class QuickLRCClient {
             Lyrics result = null;
             try {
                 if (stillWanted.getAsBoolean()) {
-                    final String ttml = post(source, text, key.trim());
+                    String ttml = post(source, text, key.trim());
                     if (ttml == null) {
                         failure = Failure.FAILED;
                     } else {
@@ -176,8 +176,8 @@ public final class QuickLRCClient {
                 }
             }
 
-            final Lyrics deliver = result;
-            final Failure reason = failure;
+            Lyrics deliver = result;
+            Failure reason = failure;
             Utils.runOnMainThread(() -> callback.onTranscribed(deliver, reason));
         });
     }
@@ -190,7 +190,7 @@ public final class QuickLRCClient {
 
     private static String post(String videoId, String lyrics, String apiKey)
             throws IOException, JSONException {
-        final JSONObject body = new JSONObject();
+        JSONObject body = new JSONObject();
         body.put("fileUrl", "https://www.youtube.com/watch?v=" + videoId);
         body.put("format", "lrc");
         body.put("isWordLevel", true);
@@ -198,19 +198,19 @@ public final class QuickLRCClient {
             body.put("lyrics", lyrics);
         }
 
-        final String json = body.toString();
+        String json = body.toString();
 
         String target = ENDPOINT;
         for (int hop = 0; hop <= MAX_REDIRECTS; hop++) {
-            final Attempt attempt = sendOnce(target, json, apiKey);
+            Attempt attempt = sendOnce(target, json, apiKey);
             final int code = attempt.code();
 
             if (code == 307 || code == 308 || code == 301 || code == 302) {
-                final String location = attempt.location();
+                String location = attempt.location();
                 if (location == null || location.isEmpty()) {
                     return null;
                 }
-                final String next = resolve(target, location);
+                String next = resolve(target, location);
                 if (next == null) {
                     return null;
                 }
@@ -258,15 +258,15 @@ public final class QuickLRCClient {
             conn.setDoOutput(true);
             conn.setInstanceFollowRedirects(false);
 
-            final byte[] payload = json.getBytes(StandardCharsets.UTF_8);
+            byte[] payload = json.getBytes(StandardCharsets.UTF_8);
             try (java.io.OutputStream out = conn.getOutputStream()) {
                 out.write(payload);
             }
 
             final int code = conn.getResponseCode();
-            final String location = conn.getHeaderField("Location");
+            String location = conn.getHeaderField("Location");
             if (code == 200) {
-                final String body = Requester.parseString(conn);
+                String body = Requester.parseString(conn);
                 return new Attempt(code, conn.getResponseMessage(), conn.getContentType(),
                         conn.getContentLength(), location, body, null);
             }
@@ -282,7 +282,7 @@ public final class QuickLRCClient {
     @Nullable
     private static String resolve(String base, String location) {
         try {
-            final java.net.URL resolved = new URL(new URL(base), location);
+            java.net.URL resolved = new URL(new URL(base), location);
             return resolved.getProtocol() + "://" + resolved.getAuthority() + resolved.getPath()
                     + (resolved.getQuery() == null ? "" : "?" + resolved.getQuery());
         } catch (java.net.MalformedURLException ex) {
@@ -298,7 +298,7 @@ public final class QuickLRCClient {
      * that far past the tag matches.
      */
     private static String dropCjkSeparators(String lrc) {
-        final StringBuilder out = new StringBuilder(lrc.length());
+        StringBuilder out = new StringBuilder(lrc.length());
         for (int i = 0; i < lrc.length(); ) {
             if (Character.isWhitespace(lrc.charAt(i)) && isCjkGap(lrc, i)) {
                 i = skipWhitespace(lrc, i);
@@ -380,8 +380,8 @@ public final class QuickLRCClient {
     private static Lyrics toLyrics(String lrc) {
         try {
             // Cleaned first, so the raw format and everything reading it are the clean one.
-            final String body = dropCjkSeparators(lrc);
-            final List<LyricsLine> lines = LRCParser.parseSynced(body);
+            String body = dropCjkSeparators(lrc);
+            List<LyricsLine> lines = LRCParser.parseSynced(body);
             if (lines == null || lines.isEmpty()) {
                 return null;
             }

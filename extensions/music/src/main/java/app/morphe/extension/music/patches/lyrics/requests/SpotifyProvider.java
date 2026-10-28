@@ -86,7 +86,7 @@ public final class SpotifyProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        final String spDc = Settings.SPOTIFY_TOKEN.get();
+        String spDc = Settings.SPOTIFY_TOKEN.get();
         if (spDc.trim().isEmpty()) {
             return null;
         }
@@ -96,13 +96,13 @@ public final class SpotifyProvider implements LyricsProvider {
             return null;
         }
 
-        final String sourceUrl = "https://open.spotify.com/track/" + hit.id();
+        String sourceUrl = "https://open.spotify.com/track/" + hit.id();
         JSONObject lyricsResponse = fetchLyrics(spDc, hit.id());
         if (lyricsResponse == null) {
             return null;
         }
 
-        final String rawJson = lyricsResponse.toString();
+        String rawJson = lyricsResponse.toString();
         return FetchResult.searched(parseLyrics(lyricsResponse, rawJson, sourceUrl),
                 List.of(hit.title()), hit.artists(), 0L, track);
     }
@@ -111,17 +111,17 @@ public final class SpotifyProvider implements LyricsProvider {
 
     @Nullable
     private SearchHit searchTrack(String spDc, String title, String artist) throws Exception {
-        final String accessToken = getAccessToken(spDc);
+        String accessToken = getAccessToken(spDc);
         if (accessToken == null) {
             return null;
         }
 
-        final String clientToken = getClientToken(spDc);
+        String clientToken = getClientToken(spDc);
 
-        final String query = title + " " + artist;
+        String query = title + " " + artist;
 
         for (String hash : SEARCH_HASHES) {
-            final String body = new JSONObject()
+            String body = new JSONObject()
                     .put("extensions", new JSONObject()
                             .put("persistedQuery", new JSONObject()
                                     .put("sha256Hash", hash)
@@ -146,7 +146,7 @@ public final class SpotifyProvider implements LyricsProvider {
     @Nullable
     private SearchHit executeSearch(String accessToken, @Nullable String clientToken,
                                     String body) throws Exception {
-        final byte[] bodyBytes = body.getBytes(StandardCharsets.UTF_8);
+        byte[] bodyBytes = body.getBytes(StandardCharsets.UTF_8);
         long retryAfterMs = 0;
 
         for (int attempt = 0; attempt <= SEARCH_RETRIES; attempt++) {
@@ -160,13 +160,13 @@ public final class SpotifyProvider implements LyricsProvider {
                 }
             }
 
-            final HttpURLConnection connection =
+            HttpURLConnection connection =
                     openSearchConnection(accessToken, clientToken, bodyBytes);
 
             final int code = connection.getResponseCode();
 
             if (code == 200) {
-                final String json = Requester.parseString(connection);
+                String json = Requester.parseString(connection);
                 connection.disconnect();
 
                 SearchHit hit = parseSearchResult(json);
@@ -192,7 +192,7 @@ public final class SpotifyProvider implements LyricsProvider {
     private static HttpURLConnection openSearchConnection(String accessToken,
                                                           @Nullable String clientToken,
                                                           byte[] bodyBytes) throws IOException {
-        final HttpURLConnection connection = (HttpURLConnection)
+        HttpURLConnection connection = (HttpURLConnection)
                 new java.net.URL(PARTNER_GRAPHQL_URL).openConnection();
         connection.setRequestMethod("POST");
         connection.setConnectTimeout(5000);
@@ -263,13 +263,13 @@ public final class SpotifyProvider implements LyricsProvider {
 
             String id = LyricsRequests.optString(node, "id");
             if (id == null || id.isEmpty()) {
-                final String uri = LyricsRequests.optString(node, "uri");
+                String uri = LyricsRequests.optString(node, "uri");
                 if (uri != null && uri.startsWith("spotify:track:")) {
                     id = uri.substring("spotify:track:".length());
                 }
             }
             if (id != null && !id.isEmpty()) {
-                final String title = LyricsRequests.optString(node, "name");
+                String title = LyricsRequests.optString(node, "name");
                 return new SearchHit(id, title != null ? title : "", artistNames(node));
             }
         }
@@ -278,13 +278,13 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     private static List<String> artistNames(JSONObject node) {
-        final List<String> out = new ArrayList<>();
-        final JSONArray artists = node.optJSONArray("artists");
+        List<String> out = new ArrayList<>();
+        JSONArray artists = node.optJSONArray("artists");
         if (artists != null) {
             for (int i = 0; i < artists.length(); i++) {
-                final JSONObject artist = artists.optJSONObject(i);
+                JSONObject artist = artists.optJSONObject(i);
                 if (artist == null) continue;
-                final String name = LyricsRequests.optString(artist, "name");
+                String name = LyricsRequests.optString(artist, "name");
                 if (name != null) {
                     out.add(name);
                 }
@@ -293,15 +293,15 @@ public final class SpotifyProvider implements LyricsProvider {
                 return out;
             }
         }
-        final JSONObject connection = node.optJSONObject("artists");
+        JSONObject connection = node.optJSONObject("artists");
         if (connection != null) {
-            final JSONArray edges = connection.optJSONArray("edges");
+            JSONArray edges = connection.optJSONArray("edges");
             if (edges != null) {
                 for (int i = 0; i < edges.length(); i++) {
-                    final JSONObject edge = edges.optJSONObject(i);
-                    final JSONObject artistNode =
+                    JSONObject edge = edges.optJSONObject(i);
+                    JSONObject artistNode =
                             edge != null ? edge.optJSONObject("node") : null;
-                    final String name = artistNode != null
+                    String name = artistNode != null
                             ? LyricsRequests.optString(artistNode, "name") : null;
                     if (name != null) {
                         out.add(name);
@@ -310,7 +310,7 @@ public final class SpotifyProvider implements LyricsProvider {
             }
         }
         if (out.isEmpty()) {
-            final String artist = LyricsRequests.optString(node, "artist");
+            String artist = LyricsRequests.optString(node, "artist");
             if (artist != null) {
                 out.add(artist);
             }
@@ -320,12 +320,12 @@ public final class SpotifyProvider implements LyricsProvider {
 
     @Nullable
     private JSONObject fetchLyrics(String spDc, String trackId) throws Exception {
-        final String accessToken = getAccessToken(spDc);
+        String accessToken = getAccessToken(spDc);
         if (accessToken == null) {
             return null;
         }
 
-        final String url = LYRICS_URL + trackId + "?format=json&market=from_token";
+        String url = LYRICS_URL + trackId + "?format=json&market=from_token";
         HttpURLConnection connection = LyricsRequests.openConnection(url);
         connection.setRequestProperty("Authorization", "Bearer " + accessToken);
         connection.setRequestProperty("User-Agent", USER_AGENT);
@@ -337,7 +337,7 @@ public final class SpotifyProvider implements LyricsProvider {
             return null;
         }
 
-        final String json = LyricsRequests.parseGzipString(connection);
+        String json = LyricsRequests.parseGzipString(connection);
         return new JSONObject(json);
     }
 
@@ -348,11 +348,11 @@ public final class SpotifyProvider implements LyricsProvider {
             return null;
         }
 
-        final String syncType = lyricsObj.optString("syncType", "UNSYNCED");
-        final String provider = LyricsRequests.optString(lyricsObj, "provider");
-        final String providerName = (provider != null && !provider.isEmpty())
+        String syncType = lyricsObj.optString("syncType", "UNSYNCED");
+        String provider = LyricsRequests.optString(lyricsObj, "provider");
+        String providerName = (provider != null && !provider.isEmpty())
                 ? name() + " (via " + provider + ")" : name();
-        final JSONArray linesArr = lyricsObj.optJSONArray("lines");
+        JSONArray linesArr = lyricsObj.optJSONArray("lines");
         if (linesArr == null || linesArr.length() == 0) {
             return null;
         }
@@ -368,7 +368,7 @@ public final class SpotifyProvider implements LyricsProvider {
 
     @Nullable
     private Lyrics parseSyncedLines(JSONArray linesArr, String providerName, String rawJson, @Nullable String sourceUrl) {
-        final List<LyricsLine> lines = new ArrayList<>(linesArr.length());
+        List<LyricsLine> lines = new ArrayList<>(linesArr.length());
 
         for (int i = 0; i < linesArr.length(); i++) {
             JSONObject lineObj = linesArr.optJSONObject(i);
@@ -377,7 +377,7 @@ public final class SpotifyProvider implements LyricsProvider {
             }
 
             final long startTimeMs = parseStartTimeMs(lineObj);
-            final String text = lineObj.optString("words", "").trim();
+            String text = lineObj.optString("words", "").trim();
             if (text.isEmpty()) {
                 continue;
             }
@@ -432,7 +432,7 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     private static List<Word> parseSyllables(JSONArray syllablesArr, String lineText) {
-        final List<Word> words = new ArrayList<>(syllablesArr.length());
+        List<Word> words = new ArrayList<>(syllablesArr.length());
         int charOffset = 0;
 
         for (int j = 0; j < syllablesArr.length(); j++) {
@@ -457,7 +457,7 @@ public final class SpotifyProvider implements LyricsProvider {
             }
 
             final int end = Math.min(charOffset + numChars, lineText.length());
-            final String wordText = lineText.substring(charOffset, end);
+            String wordText = lineText.substring(charOffset, end);
             final boolean spaceAfter = (end < lineText.length() && Character.isWhitespace(lineText.charAt(end)));
             words.add(new Word(startMs, endMs, wordText, null, spaceAfter));
             charOffset = end;
@@ -467,7 +467,7 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     private static long parseStartTimeMs(JSONObject obj) {
-        final String raw = LyricsRequests.optString(obj, "startTimeMs");
+        String raw = LyricsRequests.optString(obj, "startTimeMs");
         if (raw == null || raw.isEmpty()) {
             return LyricsLine.NO_TIME;
         }
@@ -482,7 +482,7 @@ public final class SpotifyProvider implements LyricsProvider {
     @Nullable
     private Lyrics parsePlainLines(JSONArray linesArr, String providerName,
                                     String rawJson, @Nullable String sourceUrl) {
-        final List<LyricsLine> lines = new ArrayList<>(linesArr.length());
+        List<LyricsLine> lines = new ArrayList<>(linesArr.length());
 
         for (int i = 0; i < linesArr.length(); i++) {
             JSONObject lineObj = linesArr.optJSONObject(i);
@@ -490,7 +490,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 continue;
             }
 
-            final String text = lineObj.optString("words", "").trim();
+            String text = lineObj.optString("words", "").trim();
             if (text.isEmpty()) {
                 continue;
             }
@@ -512,16 +512,16 @@ public final class SpotifyProvider implements LyricsProvider {
         HttpURLConnection connection = null;
         try {
             ensureTotpSecrets();
-            final String[] totpSecrets = cachedTotpSecrets;
+            String[] totpSecrets = cachedTotpSecrets;
             if (totpSecrets == null || totpSecrets.length == 0) {
                 return null;
             }
 
             final long serverTimeMs = getServerTime(spDc);
 
-            final String totpValue = generateTotp(serverTimeMs, totpSecrets[0]);
+            String totpValue = generateTotp(serverTimeMs, totpSecrets[0]);
 
-            final String url = TOKEN_URL
+            String url = TOKEN_URL
                     + "?reason=init&productType=web-player"
                     + "&totp=" + totpValue
                     + "&totpVer=" + cachedTotpVersion
@@ -543,15 +543,15 @@ public final class SpotifyProvider implements LyricsProvider {
                 return null;
             }
 
-            final String body = Requester.parseString(connection);
+            String body = Requester.parseString(connection);
             JSONObject json = new JSONObject(body);
-            final String token = json.optString("accessToken", "");
+            String token = json.optString("accessToken", "");
             if (token.trim().isEmpty()) {
                 return null;
             }
             cachedAccessToken = token;
 
-            final String clientId = LyricsRequests.optString(json, "clientId");
+            String clientId = LyricsRequests.optString(json, "clientId");
             if (clientId != null && !clientId.isEmpty()) {
                 cachedClientId = clientId;
             }
@@ -573,17 +573,17 @@ public final class SpotifyProvider implements LyricsProvider {
         }
 
         try {
-            final String accessToken = getAccessToken(spDc);
+            String accessToken = getAccessToken(spDc);
             if (accessToken == null) {
                 return null;
             }
 
-            final String clientId = cachedClientId;
+            String clientId = cachedClientId;
             if (clientId == null || clientId.isEmpty()) {
                 return null;
             }
 
-            final String deviceId = UUID.randomUUID().toString();
+            String deviceId = UUID.randomUUID().toString();
             JSONObject jsSdkData = new JSONObject()
                     .put("device_brand", "unknown")
                     .put("device_model", "unknown")
@@ -600,7 +600,7 @@ public final class SpotifyProvider implements LyricsProvider {
             JSONObject requestBody = new JSONObject()
                     .put("client_data", clientData);
 
-            final HttpURLConnection connection = (HttpURLConnection)
+            HttpURLConnection connection = (HttpURLConnection)
                     new java.net.URL(CLIENT_TOKEN_URL).openConnection();
             connection.setRequestMethod("POST");
             connection.setConnectTimeout(5000);
@@ -612,7 +612,7 @@ public final class SpotifyProvider implements LyricsProvider {
             connection.setRequestProperty("Origin", "https://open.spotify.com");
             connection.setRequestProperty("Referer", "https://open.spotify.com");
 
-            final byte[] bodyBytes = requestBody.toString().getBytes(StandardCharsets.UTF_8);
+            byte[] bodyBytes = requestBody.toString().getBytes(StandardCharsets.UTF_8);
             connection.setFixedLengthStreamingMode(bodyBytes.length);
             try (java.io.OutputStream os = connection.getOutputStream()) {
                 os.write(bodyBytes);
@@ -624,7 +624,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 return null;
             }
 
-            final String body = Requester.parseString(connection);
+            String body = Requester.parseString(connection);
             JSONObject json = new JSONObject(body);
             JSONObject grantedToken = json.optJSONObject("granted_token");
             if (grantedToken == null) {
@@ -632,7 +632,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 return null;
             }
 
-            final String token = grantedToken.optString("token", "");
+            String token = grantedToken.optString("token", "");
             if (token.isEmpty()) {
                 connection.disconnect();
                 return null;
@@ -668,7 +668,7 @@ public final class SpotifyProvider implements LyricsProvider {
             connection = openServerTimeConnection(spDc, 5000);
             final int code = connection.getResponseCode();
             if (code == 200) {
-                final String body = Requester.parseString(connection);
+                String body = Requester.parseString(connection);
                 JSONObject json = new JSONObject(body);
                 final long serverTime = json.optLong("serverTime", 0);
                 if (serverTime > 0) {
@@ -691,7 +691,7 @@ public final class SpotifyProvider implements LyricsProvider {
         }
 
         try {
-            final String body = fetchSecrets();
+            String body = fetchSecrets();
             if (body != null) {
                 JSONObject secrets = new JSONObject(body);
 
@@ -710,15 +710,15 @@ public final class SpotifyProvider implements LyricsProvider {
                 }
 
                 if (newestVersion >= 0) {
-                    final String previousVersion = cachedTotpVersion;
+                    String previousVersion = cachedTotpVersion;
                     cachedTotpVersion = String.valueOf(newestVersion);
-                    final JSONArray arr = secrets.getJSONArray(cachedTotpVersion);
-                    final int[] secretData = new int[arr.length()];
+                    JSONArray arr = secrets.getJSONArray(cachedTotpVersion);
+                    int[] secretData = new int[arr.length()];
                     for (int i = 0; i < arr.length(); i++) {
                         secretData[i] = arr.getInt(i);
                     }
 
-                    final int[] xored = new int[secretData.length];
+                    int[] xored = new int[secretData.length];
                     for (int i = 0; i < secretData.length; i++) {
                         xored[i] = secretData[i] ^ ((i % 33) + 9);
                     }
@@ -749,17 +749,17 @@ public final class SpotifyProvider implements LyricsProvider {
         final long epochSeconds = timestampMs / 1000;
         final long counter = epochSeconds / 30;
 
-        final byte[] counterBytes = new byte[8];
+        byte[] counterBytes = new byte[8];
         long tmp = counter;
         for (int i = 7; i >= 0; i--) {
             counterBytes[i] = (byte) (tmp & 0xFF);
             tmp >>= 8;
         }
 
-        final Mac mac = Mac.getInstance("HmacSHA1");
-        final byte[] secretBytes = secret.getBytes(StandardCharsets.UTF_8);
+        Mac mac = Mac.getInstance("HmacSHA1");
+        byte[] secretBytes = secret.getBytes(StandardCharsets.UTF_8);
         mac.init(new SecretKeySpec(secretBytes, "HmacSHA1"));
-        final byte[] hash = mac.doFinal(counterBytes);
+        byte[] hash = mac.doFinal(counterBytes);
 
         final int offset = hash[hash.length - 1] & 0x0F;
         final int binary = ((hash[offset] & 0x7F) << 24)
@@ -806,7 +806,7 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     private static String decimalStringFromInts(int[] values) {
-        final StringBuilder sb = new StringBuilder(values.length);
+        StringBuilder sb = new StringBuilder(values.length);
         for (int v : values) {
             sb.append(v);
         }
@@ -814,7 +814,7 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     private static long parseRetryAfter(HttpURLConnection connection) {
-        final String retryAfter = connection.getHeaderField("Retry-After");
+        String retryAfter = connection.getHeaderField("Retry-After");
         if (retryAfter != null) {
             try {
                 final long seconds = Long.parseLong(retryAfter.trim());

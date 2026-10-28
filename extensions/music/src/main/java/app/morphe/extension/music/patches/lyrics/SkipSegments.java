@@ -272,7 +272,7 @@ public final class SkipSegments {
         if (!stale) {
             return segs;
         }
-        final List<Seg> kept = new ArrayList<>(segs.size());
+        List<Seg> kept = new ArrayList<>(segs.size());
         for (Seg seg : segs) {
             final long reported = seg.reportedDurationMs();
             if (reported > 0 && Math.abs(reported - durationMs) > REPORTED_DURATION_TOLERANCE_MS) {

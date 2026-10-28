@@ -79,7 +79,7 @@ public final class LocalRomanizer {
         List<String> result = new ArrayList<>(lines.size());
 
         for (String line : lines) {
-            final Read read = readAs(line, ScriptDetector.detect(line), cantonese);
+            Read read = readAs(line, ScriptDetector.detect(line), cantonese);
             if (read.dictionary() != null) dictionary = read.dictionary();
             if (!read.text().equals(line)) changed = true;
             result.add(read.text());
@@ -102,10 +102,10 @@ public final class LocalRomanizer {
         boolean aligned = false;
 
         for (int i = 0; i < lines.size(); i++) {
-            final LyricsLine line = lines.get(i);
+            LyricsLine line = lines.get(i);
             // Kana is what marks a line Japanese; a word of kanji alone says only Han, and would
             // then be looked up in the wrong dictionary.
-            final Script script = ScriptDetector.detect(line.text());
+            Script script = ScriptDetector.detect(line.text());
             List<Word> read = exactReadings(line.words(), script, cantonese);
             if (read == null) {
                 read = splitReading(line, wholeLine.get(i).text());
@@ -129,11 +129,11 @@ public final class LocalRomanizer {
     private static List<Word> exactReadings(List<Word> words, @Nullable Script script,
             boolean cantonese) {
         if (words.isEmpty() || script == null) return null;
-        final List<Word> read = new ArrayList<>(words.size());
+        List<Word> read = new ArrayList<>(words.size());
         boolean any = false;
 
         for (Word word : words) {
-            final String reading = readAs(word.text(), script, cantonese).text();
+            String reading = readAs(word.text(), script, cantonese).text();
             if (reading.equals(word.text())) {
                 read.add(word);
                 continue;
@@ -153,27 +153,27 @@ public final class LocalRomanizer {
      */
     @Nullable
     private static List<Word> splitReading(LyricsLine line, @Nullable String wholeLine) {
-        final List<Word> words = line.words();
+        List<Word> words = line.words();
         if (wholeLine == null || words.isEmpty()) return null;
-        final String original = line.text();
-        final String reading = wholeLine.trim();
+        String original = line.text();
+        String reading = wholeLine.trim();
         if (reading.isEmpty() || original == null || reading.equalsIgnoreCase(original.trim())) {
             return null;
         }
 
-        final int[][] tokens = readingTokens(wholeLine);
-        final int[][] spread = spreadReading(words, wholeLine);
+        int[][] tokens = readingTokens(wholeLine);
+        int[][] spread = spreadReading(words, wholeLine);
         if (tokens.length == 0 || spread == null) return null;
 
-        final List<Word> read = new ArrayList<>(words.size());
+        List<Word> read = new ArrayList<>(words.size());
         for (int i = 0; i < words.size(); i++) {
-            final Word word = words.get(i);
-            final int[] range = spread[i];
+            Word word = words.get(i);
+            int[] range = spread[i];
             if (range[1] <= range[0]) {
                 read.add(word);
                 continue;
             }
-            final StringBuilder syllables = new StringBuilder();
+            StringBuilder syllables = new StringBuilder();
             for (int at = range[0]; at < range[1]; at++) {
                 if (syllables.length() > 0) syllables.append(' ');
                 syllables.append(reading, tokens[at][0], tokens[at][1]);
@@ -192,7 +192,7 @@ public final class LocalRomanizer {
         if (reading == null) {
             return NO_TOKENS;
         }
-        final List<int[]> tokens = new ArrayList<>();
+        List<int[]> tokens = new ArrayList<>();
         int at = 0;
         while (at < reading.length()) {
             while (at < reading.length() && Character.isWhitespace(reading.charAt(at))) at++;
@@ -214,10 +214,10 @@ public final class LocalRomanizer {
      */
     @Nullable
     public static int[][] spreadReading(List<Word> words, @Nullable String reading) {
-        final int[][] tokens = readingTokens(reading);
+        int[][] tokens = readingTokens(reading);
         if (tokens.length == 0 || words.isEmpty()) return null;
 
-        final int[] spoken = new int[words.size()];
+        int[] spoken = new int[words.size()];
         int syllables = 0;
         int carried = 0;
         for (int i = 0; i < words.size(); i++) {
@@ -229,7 +229,7 @@ public final class LocalRomanizer {
         final int length = tokens.length;
         if (length != syllables && length != carried) return null;
 
-        final int[][] spread = new int[words.size()][];
+        int[][] spread = new int[words.size()][];
         int token = 0;
         int placed = 0;
         for (int i = 0; i < words.size(); i++) {
@@ -274,10 +274,10 @@ public final class LocalRomanizer {
     private static void attachPunctuation(List<Word> read) {
         for (int i = 0; i < read.size(); i++) {
             if (read.get(i).romaji() != null) continue;
-            final String text = read.get(i).text().trim();
+            String text = read.get(i).text().trim();
             if (text.isEmpty() || speaks(text)) continue;
             for (int at = i - 1; at >= 0; at--) {
-                final Word previous = read.get(at);
+                Word previous = read.get(at);
                 // One that already gave its marks away has nothing left to carry more.
                 if (previous.romaji() == null || previous.romaji().isEmpty()) continue;
                 if (!previous.romaji().endsWith(text)) {

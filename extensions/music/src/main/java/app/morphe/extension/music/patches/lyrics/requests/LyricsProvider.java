@@ -116,7 +116,7 @@ public interface LyricsProvider {
             if (titles == null || titles.isEmpty()) {
                 return blind(lyrics);
             }
-            final List<String> artistNames =
+            List<String> artistNames =
                     artists == null || artists.isEmpty() ? List.of("") : artists;
             for (String title : titles) {
                 if (title == null || title.isEmpty()) {

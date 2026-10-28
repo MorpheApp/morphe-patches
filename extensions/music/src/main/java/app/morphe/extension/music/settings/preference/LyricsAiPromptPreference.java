@@ -231,7 +231,7 @@ public class LyricsAiPromptPreference extends SwitchPreference {
 
     private static final ExecutorService VALIDATION = Executors.newSingleThreadExecutor(
             runnable -> {
-                final Thread thread = new Thread(runnable, "lyrics-ai-validate");
+                Thread thread = new Thread(runnable, "lyrics-ai-validate");
                 thread.setDaemon(true);
                 return thread;
             });
@@ -265,10 +265,10 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         row.setPadding(Dim.dp12, Dim.dp10, Dim.dp12, Dim.dp10);
         row.setVisibility(View.GONE);
 
-        final String stored = Settings.LYRICS_AI_REASONING_EFFORT.get();
+        String stored = Settings.LYRICS_AI_REASONING_EFFORT.get();
         value.setText(display(stored));
         MODEL_QUERY.execute(() -> {
-            final String[] efforts = OpenAIClient.fetchReasoningEfforts(
+            String[] efforts = OpenAIClient.fetchReasoningEfforts(
                     Settings.LYRICS_AI_BASE_URL.get(), Settings.LYRICS_AI_API_TOKEN.get(),
                     Settings.LYRICS_AI_MODEL.get());
             Utils.runOnMainThread(() -> {
@@ -276,14 +276,14 @@ public class LyricsAiPromptPreference extends SwitchPreference {
                     return;
                 }
                 row.setVisibility(View.VISIBLE);
-                final CharSequence[] labels = new CharSequence[efforts.length];
+                CharSequence[] labels = new CharSequence[efforts.length];
                 for (int i = 0; i < efforts.length; i++) {
                     labels[i] = display(efforts[i]);
                 }
                 row.setOnClickListener(v -> CustomDialogListPreference.createListDialog(context,
                                 "Reasoning effort", labels, efforts,
                                 Settings.LYRICS_AI_REASONING_EFFORT.get(), index -> {
-                                    final String chosen = efforts[index];
+                                    String chosen = efforts[index];
                                     Settings.LYRICS_AI_REASONING_EFFORT.save(chosen);
                                     value.setText(display(chosen));
                                 })
@@ -302,7 +302,7 @@ public class LyricsAiPromptPreference extends SwitchPreference {
 
     private static final ExecutorService MODEL_QUERY = Executors.newSingleThreadExecutor(
             runnable -> {
-                final Thread thread = new Thread(runnable, "lyrics-ai-models");
+                Thread thread = new Thread(runnable, "lyrics-ai-models");
                 thread.setDaemon(true);
                 return thread;
             });

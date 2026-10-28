@@ -77,7 +77,7 @@ public class LyricsTranscribeKeyPreference extends Preference {
 
     @SuppressWarnings("ConstantValue")
     private void updateSummary() {
-        final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
+        String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
         setSummary(key == null || key.trim().isEmpty()
                 ? str("morphe_music_lyrics_transcribe_key_summary")
                 : str("morphe_music_lyrics_transcribe_key_set_summary"));
@@ -90,7 +90,7 @@ public class LyricsTranscribeKeyPreference extends Preference {
 
     @SuppressWarnings("ConstantValue")
     private void showDialog() {
-        final Context context = getContext();
+        Context context = getContext();
         if (!(context instanceof Activity activity)
                 || activity.isFinishing() || activity.isDestroyed()) {
             return;
@@ -99,23 +99,23 @@ public class LyricsTranscribeKeyPreference extends Preference {
             return;
         }
 
-        final String stored = Settings.LYRICS_TRANSCRIBE_KEY.get();
+        String stored = Settings.LYRICS_TRANSCRIBE_KEY.get();
         final boolean configured = stored != null && !stored.trim().isEmpty();
 
-        final LinearLayout content = new LinearLayout(context);
+        LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
 
-        final TextView instruction = new TextView(context);
+        TextView instruction = new TextView(context);
         instruction.setText(str("morphe_music_lyrics_transcribe_key_dialog_instruction"));
         instruction.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         instruction.setTextColor(ThemeUtils.getAppForegroundColor());
-        final LinearLayout.LayoutParams instructionParams = new LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams instructionParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         instructionParams.bottomMargin = Dim.dp12;
         content.addView(instruction, instructionParams);
 
-        final EditText keyInput = ThemedInput.create(context);
+        EditText keyInput = ThemedInput.create(context);
         keyInput.setHint("qlrc_...");
         keyInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         if (configured) {
@@ -126,11 +126,11 @@ public class LyricsTranscribeKeyPreference extends Preference {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        final Button getKeyButton = CustomDialog.createButton(context, null,
+        Button getKeyButton = CustomDialog.createButton(context, null,
                 str("morphe_music_token_dialog_get_token"),
                 () -> {
                     try {
-                        final Intent intent = new Intent(Intent.ACTION_VIEW,
+                        Intent intent = new Intent(Intent.ACTION_VIEW,
                                 Uri.parse(DASHBOARD_URL));
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
@@ -139,19 +139,19 @@ public class LyricsTranscribeKeyPreference extends Preference {
                     }
                 },
                 false, false);
-        final LinearLayout.LayoutParams getKeyParams = new LinearLayout.LayoutParams(
+        LinearLayout.LayoutParams getKeyParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
         getKeyParams.topMargin = Dim.dp12;
         content.addView(getKeyButton, getKeyParams);
 
-        final Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
                 str("morphe_music_lyrics_transcribe_key_title"),
                 null,
                 null,
                 str("morphe_settings_save"),
                 () -> {
-                    final String key = keyInput.getText().toString().trim();
+                    String key = keyInput.getText().toString().trim();
                     if (key.isEmpty()) {
                         // Saving nothing clears it, which is also what the reset button does.
                         Settings.LYRICS_TRANSCRIBE_KEY.resetToDefault();
@@ -183,8 +183,8 @@ public class LyricsTranscribeKeyPreference extends Preference {
                 false
         );
 
-        final Dialog dialog = dialogPair.first;
-        final LinearLayout mainLayout = dialogPair.second;
+        Dialog dialog = dialogPair.first;
+        LinearLayout mainLayout = dialogPair.second;
         mainLayout.addView(content, mainLayout.getChildCount() - 1,
                 new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,

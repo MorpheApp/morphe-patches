@@ -60,7 +60,7 @@ public final class BinimumProvider implements LyricsProvider {
         }
 
         // A title with a video tag is asked again without it.
-        final String cleanTitle = track.title()
+        String cleanTitle = track.title()
                 .replace("(Official Video)", "")
                 .replace("(Official Music Video)", "")
                 .replace("(Official Audio)", "")
@@ -185,7 +185,7 @@ public final class BinimumProvider implements LyricsProvider {
                     JSONObject sp = songPartsJson.optJSONObject(songPartIndex);
                     if (sp != null) {
                         String name = sp.optString("name", null);
-                        if (name != null && !name.isEmpty()) songPart = name;
+                        if (!name.isEmpty()) songPart = name;
                     }
                 }
             }
@@ -251,7 +251,7 @@ public final class BinimumProvider implements LyricsProvider {
             if (transliterationText != null && !transliterationText.trim().isEmpty()) {
                 romanization.add(new LyricsLine(LyricsLine.NO_TIME, transliterationText.trim()));
             }
-            if (transText != null && !transText.trim().isEmpty()) {
+            if (!transText.trim().isEmpty()) {
                 translations.computeIfAbsent("default", k -> new ArrayList<>())
                         .add(new LyricsLine(LyricsLine.NO_TIME, transText.trim()));
             }

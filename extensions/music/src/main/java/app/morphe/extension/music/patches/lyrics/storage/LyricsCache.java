@@ -91,7 +91,7 @@ public final class LyricsCache {
 
     @Nullable
     public static Lyrics get(TrackInfo track, String source, @Nullable String videoId) {
-        final String key = key(track, source);
+        String key = key(track, source);
         Lyrics lyrics = memoryCache.get(key);
         if (lyrics == null) {
             lyrics = readFromDisk(key);
@@ -168,7 +168,7 @@ public final class LyricsCache {
                     + " videoFile=" + name(videoFile) + " trackFile=" + name(file));
             return null;
         }
-        final File source = file;
+        File source = file;
         Logger.printInfo(() -> "LyricsPref read: " + source.getName());
 
         LyricsPreference preference = readPreferenceFile(source,
@@ -553,7 +553,7 @@ public final class LyricsCache {
     private static File romanizationFile(TrackInfo track, String source,
             List<String> sourceLines) {
         // Only a chosen language changes the result, so "automatic" keeps the file it had.
-        final String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
+        String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
         return derivedCacheFile(track, source,
                 LyricsRequests.isDefaultRomanizationLanguage()
                         ? ".rom.txt" : ".rom." + language.toLowerCase(Locale.ROOT) + ".txt",
@@ -883,7 +883,7 @@ public final class LyricsCache {
         // An LRC line cannot hold a reading on the word or the reading keyed by language, and
         // both are gone for good once written as one. Reading the file back brings them.
         if (TTML_FORMAT_TYPE.equals(formatType) && rawFormat != null && !rawFormat.isEmpty()) {
-            final Lyrics reread = TTMLParser.ttmlToLyrics(rawFormat, provider, sourceUrl);
+            Lyrics reread = TTMLParser.ttmlToLyrics(rawFormat, provider, sourceUrl);
             if (reread != null && !reread.isEmpty()) {
                 return withAbout(reread, about);
             }
@@ -957,7 +957,7 @@ public final class LyricsCache {
 
         try {
             List<String> fileLines = new ArrayList<>();
-            final String videoId = videoIdByKey.get(key);
+            String videoId = videoIdByKey.get(key);
             if (lyrics == Lyrics.NOT_FOUND || lyrics.isEmpty()) {
                 // The marker ends the headers, so the video has to be named before it.
                 appendVideoId(fileLines, videoId);
@@ -1055,8 +1055,8 @@ public final class LyricsCache {
             return;
         }
 
-        final long[] modified = new long[mains.size()];
-        final Integer[] oldestFirst = new Integer[mains.size()];
+        long[] modified = new long[mains.size()];
+        Integer[] oldestFirst = new Integer[mains.size()];
         for (int i = 0; i < mains.size(); i++) {
             modified[i] = mains.get(i).lastModified();
             oldestFirst[i] = i;
@@ -1126,8 +1126,8 @@ public final class LyricsCache {
      */
     public static long clear() {
         long freed = 0;
-        final File directory = offlineDirectory();
-        final File[] files = directory == null ? null : directory.listFiles();
+        File directory = offlineDirectory();
+        File[] files = directory == null ? null : directory.listFiles();
         if (files != null) {
             for (File file : files) {
                 freed += file.isDirectory() ? 0 : file.length();

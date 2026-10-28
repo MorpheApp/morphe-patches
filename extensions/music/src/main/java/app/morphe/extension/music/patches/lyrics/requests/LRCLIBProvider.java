@@ -258,7 +258,7 @@ public final class LRCLIBProvider implements LyricsProvider {
         }
 
         final int id = response.optInt("id", -1);
-        final String sourceUrl = id > 0 ? "https://lrclib.net/tracks/" + id : null;
+        String sourceUrl = id > 0 ? "https://lrclib.net/tracks/" + id : null;
 
         String lyricsFile = LyricsRequests.optString(response, "lyricsFile");
         if (lyricsFile == null) {

@@ -77,7 +77,7 @@ public class LyricsClearCachePreference extends Preference {
     /** Thousands of files can be stored, so they are deleted off the main thread. */
     private static void clear() {
         Utils.runOnBackgroundThread(() -> {
-            final String freed = megabytes(LyricsCache.clear());
+            String freed = megabytes(LyricsCache.clear());
             Utils.runOnMainThread(() -> Utils.showToastShort(
                     str("morphe_music_lyrics_clear_cache_done", freed)));
         });

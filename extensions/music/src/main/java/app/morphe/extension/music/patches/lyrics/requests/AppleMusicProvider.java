@@ -100,7 +100,7 @@ public final class AppleMusicProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        final ResolvedContext ctx = resolveContext();
+        ResolvedContext ctx = resolveContext();
         if (ctx == null) {
             return fetchViaLyrically(track);
         }
@@ -379,8 +379,8 @@ public final class AppleMusicProvider implements LyricsProvider {
 
     @Nullable
     private static String lyricsLanguageParam() {
-        final String target = LyricsRequests.translationLanguage();
-        final String matched = matchSupportedLanguage(Locale.forLanguageTag(target.replace('_', '-')));
+        String target = LyricsRequests.translationLanguage();
+        String matched = matchSupportedLanguage(Locale.forLanguageTag(target.replace('_', '-')));
         return matched != null ? matched : matchSupportedLanguage(Locale.getDefault());
     }
 

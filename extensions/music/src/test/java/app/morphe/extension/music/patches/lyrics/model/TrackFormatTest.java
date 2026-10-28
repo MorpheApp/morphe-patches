@@ -30,7 +30,7 @@ public class TrackFormatTest {
     }
 
     @Test public void sectionNeedsEveryVariableInside() {
-        final String template = "{t}: [{v} by {a}]:";
+        String template = "{t}: [{v} by {a}]:";
         assertEquals("Duvet [Live by bôa]", MiniLyricsFormatter.trackLabel(template, "Duvet", "bôa", "Live"));
         assertEquals("Duvet", MiniLyricsFormatter.trackLabel(template, "Duvet", "bôa", null));
         assertEquals("Duvet", MiniLyricsFormatter.trackLabel(template, "Duvet", "", "Live"));
@@ -53,7 +53,7 @@ public class TrackFormatTest {
     }
 
     @Test public void longTrackLineIsSplitIntoFramesThatFit() {
-        final List<String> frames = MiniLyricsFormatter.trackFrames("{t} - {a}",
+        List<String> frames = MiniLyricsFormatter.trackFrames("{t} - {a}",
                 "Smells Like Teen Spirit", "Nirvana", null, 10, 1);
         assertTrue(frames.size() > 2);
         for (String frame : frames) {
@@ -64,12 +64,12 @@ public class TrackFormatTest {
 
     @Test public void splitIsDecidedFromTheWholeLine() {
         // Neither variable is over the limit, but the rendered line is.
-        final List<String> frames = MiniLyricsFormatter.trackFrames("{t} - {a}", "Duvet", "bôa", null, 8, 1);
+        List<String> frames = MiniLyricsFormatter.trackFrames("{t} - {a}", "Duvet", "bôa", null, 8, 1);
         assertEquals(List.of("Duvet -", "bôa"), frames);
     }
 
     @Test public void fullWidthCharactersCountAsTheMultiplier() {
-        final String six = "あいうえおか";
+        String six = "あいうえおか";
         assertEquals(6.0, MiniLyricsFormatter.width(six, 1), 0.001);
         assertEquals(10.8, MiniLyricsFormatter.width(six, 1.8), 0.001);
         assertEquals(1, MiniLyricsFormatter.chunks(new LyricsLine(0, six), 5000, 10, false, false, 1).size());
@@ -78,8 +78,8 @@ public class TrackFormatTest {
     }
 
     @Test public void unspacedSplitGetsOneEllipsis() {
-        final String text = "あいうえおかきくけこ";
-        final List<MiniLyricsFormatter.Chunk> chunks =
+        String text = "あいうえおかきくけこ";
+        List<MiniLyricsFormatter.Chunk> chunks =
                 MiniLyricsFormatter.chunks(new LyricsLine(0, text), 5000, 5, false, false, 1);
         assertEquals(2, chunks.size());
         assertTrue(chunks.get(0).text().endsWith(ELLIPSIS));
@@ -88,24 +88,24 @@ public class TrackFormatTest {
     }
 
     @Test public void spacedSplitHasNoEllipsis() {
-        final List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(
+        List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(
                 new LyricsLine(0, "don't stop me now"), 5000, 10, false, false, 1);
         assertEquals("don't stop", chunks.get(0).text());
         assertEquals("me now", chunks.get(1).text());
     }
 
     @Test public void hyphenatedAndPunctuatedWordsStayWhole() {
-        final List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(
+        List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(
                 new LyricsLine(0, "well-known words, again!"), 5000, 10, false, false, 1);
         assertEquals("well-known words,", chunks.get(0).text());
         assertEquals("again!", chunks.get(1).text());
     }
 
     @Test public void wordTimestampsDecideTheSplit() {
-        final String text = "今日はいい天気";
-        final LyricsLine line = new LyricsLine(0, text, List.of(
+        String text = "今日はいい天気";
+        LyricsLine line = new LyricsLine(0, text, List.of(
                 new Word(0, 500, "今日は"), new Word(500, 1000, "いい"), new Word(1000, 1500, "天気")));
-        final List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(line, 2000, 3, false, false, 1);
+        List<MiniLyricsFormatter.Chunk> chunks = MiniLyricsFormatter.chunks(line, 2000, 3, false, false, 1);
         assertEquals(2, chunks.size());
         assertEquals("今日はいい" + ELLIPSIS, chunks.get(0).text());
         assertEquals("天気", chunks.get(1).text());

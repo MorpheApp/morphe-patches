@@ -223,8 +223,8 @@ public final class DeezerProvider extends ScoredSongProvider {
         JSONArray data = getJson(url).optJSONArray("data");
         if (data == null) throw new IOException("Deezer search has no results array");
 
-        final String wantedTitle = TrackVersion.normalize(track.title());
-        final String wantedArtist = TrackVersion.normalize(track.artist());
+        String wantedTitle = TrackVersion.normalize(track.title());
+        String wantedArtist = TrackVersion.normalize(track.artist());
         // The full title is matched first. Short title equality alone would confuse the
         // original recording with a remix or acoustic version of that same song.
         for (int pass = 0; pass < 2; pass++) {
@@ -235,9 +235,9 @@ public final class DeezerProvider extends ScoredSongProvider {
                 if (artist == null || !wantedArtist.equals(TrackVersion.normalize(artist.optString("name", "")))) {
                     continue;
                 }
-                final String full = item.optString("title", "");
-                final String shortTitle = item.optString("title_short", "");
-                final String version = item.optString("title_version", "");
+                String full = item.optString("title", "");
+                String shortTitle = item.optString("title_short", "");
+                String version = item.optString("title_version", "");
                 final boolean matches = pass == 0
                         ? wantedTitle.equals(TrackVersion.normalize(full))
                         : TrackVersion.matchesStructuredTitle(track.title(), full, shortTitle, version);
@@ -374,11 +374,11 @@ public final class DeezerProvider extends ScoredSongProvider {
     @Nullable
     private static List<String> creditLines(JSONObject lyrics) {
         List<String> credits = new ArrayList<>(2);
-        final String writers = flatten(lyrics.opt("writers"));
+        String writers = flatten(lyrics.opt("writers"));
         if (writers != null) {
             credits.add("Writer(s): " + writers);
         }
-        final String copyright = LyricsRequests.optString(lyrics, "copyright");
+        String copyright = LyricsRequests.optString(lyrics, "copyright");
         if (copyright != null) {
             credits.add("Copyright: " + copyright);
         }
@@ -394,7 +394,7 @@ public final class DeezerProvider extends ScoredSongProvider {
         if (value instanceof JSONArray array) {
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < array.length(); i++) {
-                final String entry = array.optString(i, "").trim();
+                String entry = array.optString(i, "").trim();
                 if (entry.isEmpty()) continue;
                 //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) builder.append(", ");

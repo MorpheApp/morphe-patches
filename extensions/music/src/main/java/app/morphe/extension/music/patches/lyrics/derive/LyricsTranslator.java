@@ -45,7 +45,7 @@ public final class LyricsTranslator {
             return null;
         }
         String targetLang = LyricsRequests.primarySubtag(target);
-        final String targetScript = LyricsRequests.resolvedScript(target);
+        String targetScript = LyricsRequests.resolvedScript(target);
         for (Map.Entry<String, List<LyricsLine>> entry : byLang.entrySet()) {
             String key = entry.getKey();
             if (key.startsWith(LyricsMerge.BACKGROUND_TRACK_PREFIX)) {
@@ -81,7 +81,7 @@ public final class LyricsTranslator {
             if (!allLines.get(i).isBG()) {
                 continue;
             }
-            final String own = LyricsMerge.textAt(backgroundLines, i);
+            String own = LyricsMerge.textAt(backgroundLines, i);
             if (!own.isEmpty()) {
                 out.set(i, own);
                 continue;
