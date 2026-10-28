@@ -18,16 +18,16 @@ final class LyricsColors {
     /** The app's secondary text color, which is what the translation is drawn in. */
     static final String APP_SECONDARY_TEXT_COLOR = "ytm_text_color_secondary";
 
-    // Dimmed until word is get sung so contrast look good
+    /** Dimmed until the word is sung. */
     static final float UNSUNG_ALPHA = 0.35f;
 
-    // Opacity for active romanization reading text
+    /** The reading of the active line once it is lit, or all along when it is not read word by word. */
     static final float ACTIVE_READING_ALPHA = 0.85f;
 
-    // Active translation line opacity
+    /** The translation of the active line. */
     static final float ACTIVE_TRANSLATION_ALPHA = 0.6f;
 
-    // Active background vocal opacity when it show up
+    /** A background vocal while it is shown. */
     static final float ACTIVE_BG_ALPHA = 0.8f;
 
     static int secondaryTextColor() {
@@ -68,11 +68,6 @@ final class LyricsColors {
     static int lineTextColor() {
         ensureColorCache();
         return cachedLineColor;
-    }
-
-    static int withAlpha(int color, float alpha) {
-        final int a = Math.max(0, Math.min(255, Math.round(alpha * 255f)));
-        return Color.argb(a, Color.red(color), Color.green(color), Color.blue(color));
     }
 
     private static int computeLineColor() {

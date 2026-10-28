@@ -33,13 +33,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.settings.Settings;
@@ -56,141 +53,52 @@ final class LyricsViewSupport {
 
     private static final float FOOTER_TEXT_SIZE_SP = 16;
 
-    // Scale factor for background vocal text size relative to main lyrics
-    static final float BACKGROUND_TEXT_SIZE_FACTOR = 0.7f;
+    private static final float BACKGROUND_TEXT_SIZE_FACTOR = 0.7f;
     private static final float SECTION_TAG_TEXT_SIZE_FACTOR = 0.45f;
 
     private static final float SECTION_DOT_INSET_FACTOR = 0.18f;
 
+    /** Lines other than the active one shrink a little, on top of dimming. */
     static final float ACTIVE_LINE_SCALE = 1.0f;
     static final float INACTIVE_LINE_SCALE = 0.95f;
 
     private static final ArgbEvaluator BUTTON_COLOR_EVALUATOR = new ArgbEvaluator();
 
-    // Cubic bezier easing for scroll animation
-    static final TimeInterpolator LYPLUS_SCROLL_EASING =
-            new PathInterpolator(0.41f, 0f, 0.12f, 0.99f);
-
-    /** Standard Compose LinearOutSlowInEasing (0f, 0f, 0.2f, 1f). */
+    /** Compose LinearOutSlowInEasing. */
     static final TimeInterpolator LINEAR_OUT_SLOW_IN =
             new PathInterpolator(0f, 0f, 0.2f, 1f);
 
-    /** Standard Compose FastOutSlowInEasing (0.4f, 0f, 0.2f, 1f). */
+    /** Compose FastOutSlowInEasing. */
     static final TimeInterpolator FAST_OUT_SLOW_IN =
             new PathInterpolator(0.4f, 0f, 0.2f, 1f);
 
-    private static volatile Boolean cachedIsMiuiOrHyperOs = null;
-    private static volatile Typeface cachedLyricsBoldTypeface = null;
+    /**
+     * MIUI and HyperOS draw the bold system font too thin, most visibly on CJK text, so these
+     * devices get a heavier weight on top.
+     */
+    private static final boolean IS_XIAOMI = isXiaomi();
 
-    // MIUI and HyperOS have bug where bold font look thin for CJK characters so we detect it
-    static boolean isMiuiOrHyperOs() {
-        final Boolean cached = cachedIsMiuiOrHyperOs;
-        if (cached != null) {
-            return cached;
-        }
-        boolean result = false;
-        try {
-            final String manufacturer = Build.MANUFACTURER != null
-                    ? Build.MANUFACTURER.toLowerCase(Locale.ROOT) : "";
-            final String brand = Build.BRAND != null
-                    ? Build.BRAND.toLowerCase(Locale.ROOT) : "";
-            if (manufacturer.contains("xiaomi") || brand.contains("xiaomi")
-                    || brand.contains("redmi") || brand.contains("poco")) {
-                result = true;
-            } else {
-                Class<?> sp = Class.forName("android.os.SystemProperties");
-                Method get = sp.getMethod("get", String.class, String.class);
-                String miuiVer = (String) get.invoke(null, "ro.miui.ui.version.name", "");
-                String hyperVer = (String) get.invoke(null, "ro.mi.os.version.name", "");
-                if ((miuiVer != null && !miuiVer.isEmpty())
-                        || (hyperVer != null && !hyperVer.isEmpty())) {
-                    result = true;
-                }
-            }
-        } catch (Throwable ignored) {
-        }
-        cachedIsMiuiOrHyperOs = result;
-        return result;
+    private static boolean isXiaomi() {
+        String manufacturer = Build.MANUFACTURER.toLowerCase(Locale.ROOT);
+        String brand = Build.BRAND.toLowerCase(Locale.ROOT);
+        return manufacturer.contains("xiaomi") || brand.contains("xiaomi")
+                || brand.contains("redmi") || brand.contains("poco");
     }
 
-    @NonNull
-    static Typeface getLyricsBoldTypeface() {
-        Typeface tf = cachedLyricsBoldTypeface;
-        if (tf != null) {
-            return tf;
-        }
-        final Typeface base = Typeface.create("sans-serif", Typeface.BOLD);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            tf = Typeface.create(base, 700, false);
-        } else {
-            tf = base;
-        }
-        cachedLyricsBoldTypeface = tf;
-        return tf;
-    }
-
-    static void applyLyricsBoldPaint(@NonNull Paint paint) {
-        paint.setTypeface(getLyricsBoldTypeface());
+    /** Bolds a paint for lyrics; a typeface set on it afterwards undoes the weight. */
+    static void applyLyricsBoldPaint(Paint paint) {
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
         paint.setFlags(paint.getFlags()
                 | Paint.ANTI_ALIAS_FLAG
                 | Paint.SUBPIXEL_TEXT_FLAG
                 | Paint.LINEAR_TEXT_FLAG);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            try {
-                paint.setFontVariationSettings(isMiuiOrHyperOs() ? "'wght' 750" : "'wght' 700");
-            } catch (Throwable ignored) {
-            }
-        }
-        paint.setFakeBoldText(isMiuiOrHyperOs());
+        paint.setFontVariationSettings(IS_XIAOMI ? "'wght' 750" : "'wght' 700");
+        paint.setFakeBoldText(IS_XIAOMI);
     }
 
-    private static final Map<Integer, LyPlusSpring> SPRING_CACHE = new HashMap<>();
-
-    // Spring easing model for accordion expand animation
-    static final class LyPlusSpring {
-        private final float peakMs;
-        private final float tailMs;
-        private final float peakValue;
-        final float totalMs;
-
-        LyPlusSpring(float peakMs) {
-            this(peakMs, 0.78f, 1.5f);
-        }
-
-        LyPlusSpring(float peakMs, float zeta, float settleRatio) {
-            this.peakMs = peakMs;
-            this.tailMs = peakMs * settleRatio;
-            this.totalMs = this.peakMs + this.tailMs;
-            final double peakS = peakMs / 1000.0;
-            final double omegaD = Math.PI / peakS;
-            final double omega0 = omegaD / Math.sqrt(1.0 - zeta * zeta);
-            final double decayRate = zeta * omega0;
-            this.peakValue = (float) (1.0 + Math.exp(-decayRate * peakS));
-        }
-
-        float value(float tMs) {
-            if (tMs <= 0f) {
-                return 0f;
-            }
-            if (tMs >= totalMs) {
-                return 1f;
-            }
-            if (tMs < peakMs) {
-                return peakValue * LYPLUS_SCROLL_EASING.getInterpolation(tMs / peakMs);
-            }
-            final float u = (tMs - peakMs) / tailMs;
-            return 1f + (peakValue - 1f) * 0.5f * (1f + (float) Math.cos(Math.PI * u));
-        }
-    }
-
-    static synchronized LyPlusSpring lyPlusSpringFor(long durationMs) {
-        final int clamped = (int) Math.max(10L, ((Math.max(1L, durationMs) + 5L) / 10L) * 10L);
-        LyPlusSpring cached = SPRING_CACHE.get(clamped);
-        if (cached == null) {
-            cached = new LyPlusSpring((float) clamped);
-            SPRING_CACHE.put(clamped, cached);
-        }
-        return cached;
+    /** Draws a line a little tighter, except a joining script, which spacing would break apart. */
+    static float lineLetterSpacing(@Nullable CharSequence text, float textSizeSp) {
+        return LyricsSpanBuilder.containsJoiningScript(text) ? 0f : -0.5f / Math.max(12f, textSizeSp);
     }
 
     private LyricsViewSupport() {
@@ -216,12 +124,12 @@ final class LyricsViewSupport {
         }
         int total = 0;
         for (int i = 0; i < group.getChildCount(); i++) {
-            final View child = group.getChildAt(i);
+            View child = group.getChildAt(i);
             if (child == text || child.getVisibility() == View.GONE) {
                 continue;
             }
             int height = child.getHeight();
-            final ViewGroup.LayoutParams lp = child.getLayoutParams();
+            ViewGroup.LayoutParams lp = child.getLayoutParams();
             if (height <= 0 && lp != null && lp.height > 0) {
                 height = lp.height;
             }
@@ -240,11 +148,11 @@ final class LyricsViewSupport {
         final int size = scaledPixels(row.getContext(), LyricsPanelView.SECTION_DOT_SIZE_FACTOR);
         final int gap = scaledPixels(row.getContext(), LyricsPanelView.SECTION_DOT_GAP_FACTOR);
         for (int i = 0; i < row.getChildCount(); i++) {
-            final View dot = row.getChildAt(i);
+            View dot = row.getChildAt(i);
             if (dot == null) {
                 continue;
             }
-            final LinearLayout.LayoutParams params =
+            LinearLayout.LayoutParams params =
                     (LinearLayout.LayoutParams) dot.getLayoutParams();
             if (params == null) {
                 continue;
@@ -258,30 +166,40 @@ final class LyricsViewSupport {
 
     /**
      * The words the karaoke pass paints for one line.
+     *
+     * <p>An only mode drops the original and measures its reading against the text it draws, so the
+     * reading's words already sit on the {@code originalStart} base and the original's are not in that text
+     * at all; a plain mode keeps the original, which is the base {@link #withReading} moves the reading's
+     * onto. Deciding by the reading alone would rob a plain mode of the words it paints.
      */
     static List<LyricsSpanBuilder.WordTiming> wordSpansFor(
             LyricsSpanBuilder.BuildResult result, boolean only,
-            List<LyricsSpanBuilder.WordTiming> lineTimings, int origStart) {
+            List<LyricsSpanBuilder.WordTiming> lineTimings) {
         if (!only) {
-            if (result.showSyllableRomanization() && result.readingSpans() != null
-                    && !result.readingSpans().isEmpty()) {
+            // Syllable readings are drawn by the view from the same timings that light the lyric.
+            if (result.showSyllableRomanization()) {
                 return result.readingSpans();
             }
-            return withReading(lineTimings, result, origStart);
+            return withReading(lineTimings, result);
         }
-        final List<LyricsSpanBuilder.WordTiming> spans = result.readingSpans();
+        List<LyricsSpanBuilder.WordTiming> spans = result.readingSpans();
         return spans == null || spans.isEmpty() ? Collections.emptyList() : spans;
     }
 
+    /**
+     * Puts the reading's words on the line's offset base: the view adds {@code originalTextStart} to
+     * every offset it is given, and the reading sits elsewhere in the text, so its offsets move by the
+     * difference.
+     */
     static List<LyricsSpanBuilder.WordTiming> withReading(
             List<LyricsSpanBuilder.WordTiming> lineTimings,
-            LyricsSpanBuilder.BuildResult result, int origStart) {
-        final List<LyricsSpanBuilder.WordTiming> readingSpans = result.readingSpans();
+            LyricsSpanBuilder.BuildResult result) {
+        List<LyricsSpanBuilder.WordTiming> readingSpans = result.readingSpans();
         if (readingSpans == null || readingSpans.isEmpty() || result.romaStart() < 0) {
             return lineTimings;
         }
-        final int shift = result.romaStart() - origStart;
-        final List<LyricsSpanBuilder.WordTiming> combined =
+        final int shift = result.romaStart() - result.originalStart();
+        List<LyricsSpanBuilder.WordTiming> combined =
                 new ArrayList<>(lineTimings.size() + readingSpans.size());
         combined.addAll(lineTimings);
         for (LyricsSpanBuilder.WordTiming span : readingSpans) {
@@ -291,13 +209,13 @@ final class LyricsViewSupport {
         return combined;
     }
 
-    // Ease line opacity and scale when active line changes
+    /** Eases the highlight between lines the way the built-in panel does, shrinking the dimmed ones. */
     static void fadeTo(TextView lineView, float alpha) {
         if (!(lineView instanceof LyricsLineView view)) {
             return;
         }
         if (view.isSecondary()) {
-        // Secondary lyrics opacity and scale are handled by animateSecondaryExpansion
+            // A background vocal shows and hides with its own expansion instead.
             if (view.fadeAnimator != null) {
                 view.fadeAnimator.cancel();
                 view.fadeAnimator = null;
@@ -306,8 +224,8 @@ final class LyricsViewSupport {
             view.fadeTargetAlpha = 1f;
             return;
         }
+        // Called on every highlight tick, so a fade already heading here is left to finish.
         if (view.fadeAnimator != null && Math.abs(view.fadeTargetAlpha - alpha) < 0.005f) {
-            // Already animating toward this exact target; do not cancel and restart on every tick!
             return;
         }
         if (view.fadeAnimator != null) {
@@ -315,7 +233,7 @@ final class LyricsViewSupport {
             view.fadeAnimator = null;
         }
         view.fadeTargetAlpha = alpha;
-        final float targetScale = alpha >= 0.8f ? ACTIVE_LINE_SCALE : INACTIVE_LINE_SCALE;
+        final float targetScale = alpha >= 1f ? ACTIVE_LINE_SCALE : INACTIVE_LINE_SCALE;
         final float startAlpha = view.lineAlpha;
         final float startScale = view.lineScale;
         if (Math.abs(startAlpha - alpha) < 0.01f && Math.abs(startScale - targetScale) < 0.005f) {
@@ -325,7 +243,7 @@ final class LyricsViewSupport {
             view.invalidate();
             return;
         }
-        final ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
+        ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
         animator.setDuration(HIGHLIGHT_FADE_DURATION_MILLISECONDS);
         animator.setInterpolator(FAST_OUT_SLOW_IN);
         animator.addUpdateListener(animation -> {
@@ -368,6 +286,8 @@ final class LyricsViewSupport {
     static void applyFooterStyle(TextView footer) {
         footer.setTextSize(TypedValue.COMPLEX_UNIT_SP, FOOTER_TEXT_SIZE_SP);
         footer.setTextColor(LyricsColors.secondaryTextColor());
+        // The secondary color alone is brighter than the app draws this line, which
+        // sits dimmer than even the inactive lyrics above it.
         footer.setAlpha(FOOTER_ALPHA);
     }
 
@@ -400,6 +320,7 @@ final class LyricsViewSupport {
                 .setDuration(LyricsPanelView.BUTTON_STATE_FADE_MILLISECONDS).start();
     }
 
+    /** So the next merge starts from whole again. */
     static void resetDualButton(View button) {
         button.animate().cancel();
         button.setAlpha(1f);
@@ -415,7 +336,12 @@ final class LyricsViewSupport {
                 .setDuration(LyricsPanelView.BUTTON_STATE_FADE_MILLISECONDS).start();
     }
 
+    /**
+     * Eases a button between its two colors: pill, label and icon change at once, so a single animator
+     * drives all of them.
+     */
     static void fadeButtonColors(TextView button, int background, int foreground) {
+        // The tag is free on these buttons and keeps the running animator with its view.
         if (button.getTag() instanceof ValueAnimator running) {
             running.cancel();
         }
@@ -430,11 +356,13 @@ final class LyricsViewSupport {
             button.setBackground(pill);
         }
 
-        final ColorStateList pillColor = pill.getColor();
+        ColorStateList pillColor = pill.getColor();
         final int fromBackground = pillColor == null ? background : pillColor.getDefaultColor();
         final int fromForeground = button.getCurrentTextColor();
-        final Drawable[] icons = button.getCompoundDrawablesRelative();
+        // All of them: the dual pill's far twin would keep the inactive tint while it is up.
+        Drawable[] icons = button.getCompoundDrawablesRelative();
 
+        // Nothing to ease from before the panel is on screen, or when nothing changed.
         if (!button.isAttachedToWindow()
                 || (fromBackground == background && fromForeground == foreground)) {
             setButtonColors(button, pill, icons, background, foreground);
@@ -501,6 +429,7 @@ final class LyricsViewSupport {
                 text += "\n" + String.format(str("morphe_music_lyrics_romanized_by_ai"),
                         romanizedAiModel);
             } else if (romanizedLocalDictionary != null) {
+                // Named and nothing more: the licences are in the About row.
                 text += "\n" + String.format(str("morphe_music_lyrics_romanized_by_local"),
                         romanizedLocalDictionary);
             }

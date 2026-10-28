@@ -128,10 +128,10 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
         }
         if (words.size() == 1) {
             Word single = words.get(0);
-            if (single.endMs() <= single.startMs()) {
+            if (compactText(single.text()).equalsIgnoreCase(compactText(text))) {
                 return false;
             }
-            if (hasMultipleWords(text) && compactText(single.text()).equalsIgnoreCase(compactText(text))) {
+            if (single.endMs() <= single.startMs()) {
                 return false;
             }
         }
@@ -139,7 +139,7 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
     }
 
     private static String compactText(String value) {
-        final StringBuilder builder = new StringBuilder(value.length());
+        StringBuilder builder = new StringBuilder(value.length());
         for (int i = 0; i < value.length(); i++) {
             final char c = value.charAt(i);
             if (!Character.isWhitespace(c)) {
@@ -147,22 +147,6 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
             }
         }
         return builder.toString();
-    }
-    private static boolean hasMultipleWords(String value) {
-        boolean inWord = false;
-        int wordCount = 0;
-        for (int i = 0; i < value.length(); i++) {
-            if (Character.isWhitespace(value.charAt(i))) {
-                inWord = false;
-            } else if (!inWord) {
-                inWord = true;
-                wordCount++;
-                if (wordCount > 1) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     @NonNull
