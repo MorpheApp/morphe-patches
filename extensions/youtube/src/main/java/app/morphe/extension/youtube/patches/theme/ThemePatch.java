@@ -53,7 +53,6 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.theme.BaseThemePatch;
 import app.morphe.extension.shared.theme.ThemeColorPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
-import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -201,6 +200,16 @@ public class ThemePatch extends BaseThemePatch {
     private static final int RIVE_SPLASH_SCREEN_SUPPORTED_FRAMES = 30;
 
     /**
+     * Values of {@link Settings#RIVE_SPLASH_SCREEN_STATE}. The state is set to failed before the
+     * animation starts, and set to played when the animation has drawn. If the app closes in
+     * between, it stays failed and the animation is turned off on the next launch.
+     * After the animation has played once, it is not checked again.
+     */
+    private static final int RIVE_SPLASH_SCREEN_STATE_NOT_PLAYED = 0;
+    private static final int RIVE_SPLASH_SCREEN_STATE_PLAYED = 1;
+    private static final int RIVE_SPLASH_SCREEN_STATE_FAILED = -1;
+
+    /**
      * Frames the glow animation still has to draw before the device is known to support it,
      * or 0 if the animation is not starting.
      */
@@ -225,25 +234,60 @@ public class ThemePatch extends BaseThemePatch {
     private static volatile Runnable riveGlowMorpheSplashScreenCloser;
 
     /**
-     * The Glow Morphe animation of 21.30 - 21.38, which has no glow animation to make it from.
+     * The Glow Morphe 1 animation for the dark theme, which is played in place of the startup
+     * animation of the app. It has the same backdrop and artboard size as the glow animation, so it is changed the same
+     * way, and it fades in by itself.
      */
-    private static final String LEGACY_RIVE_GLOW_MORPHE_RESOURCE = "morphe_startup_animation_glow_legacy";
+    private static final String RIVE_GLOW_MORPHE_1_DARK_RESOURCE = "morphe_startup_animation_glow_1_dark";
 
     /**
-     * The same animation with the Morphe play icon, played if the launcher icon is the play icon.
+     * The Glow Morphe 1 animation for the light theme, with the same glow colors as the dark theme
+     * animation but less bright.
      */
-    private static final String LEGACY_RIVE_GLOW_MORPHE_PLAY_RESOURCE = "morphe_startup_animation_glow_legacy_play";
+    private static final String RIVE_GLOW_MORPHE_1_LIGHT_RESOURCE = "morphe_startup_animation_glow_1_light";
 
     /**
-     * The Glow Morphe animation of 21.30 - 21.38 is made for the square view, and has no backdrop.
+     * The Glow Morphe 1 animation for the dark theme with the Morphe play icon,
+     * played if the launcher icon is the play icon.
      */
-    private static final float LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_WIDTH = 432;
-    private static final float LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_HEIGHT = 432;
+    private static final String RIVE_GLOW_MORPHE_1_PLAY_DARK_RESOURCE = "morphe_startup_animation_glow_1_play_dark";
 
     /**
-     * The artboard size of the Glow Morphe animation of 21.30 - 21.38, as it is written in the Rive file.
+     * The Glow Morphe 1 play animation for the light theme, with a less bright glow.
      */
-    private static final byte[] LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_SIZE = {
+    private static final String RIVE_GLOW_MORPHE_1_PLAY_LIGHT_RESOURCE = "morphe_startup_animation_glow_1_play_light";
+
+    /**
+     * The Glow Morphe 2 animation for the dark theme, which is played in place of the startup animation of the app.
+     */
+    private static final String RIVE_GLOW_MORPHE_2_DARK_RESOURCE = "morphe_startup_animation_glow_2_dark";
+
+    /**
+     * The Glow Morphe 2 animation for the light theme, with a less bright glow.
+     */
+    private static final String RIVE_GLOW_MORPHE_2_LIGHT_RESOURCE = "morphe_startup_animation_glow_2_light";
+
+    /**
+     * The Glow Morphe 2 animation for the dark theme with the Morphe play icon,
+     * played if the launcher icon is the play icon.
+     */
+    private static final String RIVE_GLOW_MORPHE_2_PLAY_DARK_RESOURCE = "morphe_startup_animation_glow_2_play_dark";
+
+    /**
+     * The Glow Morphe 2 play animation for the light theme, with a less bright glow.
+     */
+    private static final String RIVE_GLOW_MORPHE_2_PLAY_LIGHT_RESOURCE = "morphe_startup_animation_glow_2_play_light";
+
+    /**
+     * The Glow Morphe 2 animations are made for the square view, and have no backdrop.
+     */
+    private static final float RIVE_GLOW_MORPHE_2_ARTBOARD_WIDTH = 432;
+    private static final float RIVE_GLOW_MORPHE_2_ARTBOARD_HEIGHT = 432;
+
+    /**
+     * The artboard size of the Glow Morphe 2 animations, as it is written in the Rive file.
+     */
+    private static final byte[] RIVE_GLOW_MORPHE_2_ARTBOARD_SIZE = {
             0x07, 0x00, 0x00, (byte) 0xD8, 0x43,
             0x08, 0x00, 0x00, (byte) 0xD8, 0x43
     };
@@ -255,10 +299,27 @@ public class ThemePatch extends BaseThemePatch {
     }
 
     /**
+     * If the glow animation of the app is played. Otherwise, the Glow Morphe styles
+     * play their own animation in place of the startup animation of the app.
+     */
+    private static boolean isRiveGlowStyle() {
+        return SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW;
+    }
+
+    /**
+     * If the animation played has the backdrop and artboard size of the glow animation of the app:
+     * the glow animation, or the Glow Morphe 1 animation.
+     */
+    private static boolean isRiveGlowLayout() {
+        SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
+        return style == SplashScreenAnimationStyle.RIVE_GLOW || style == SplashScreenAnimationStyle.RIVE_GLOW_MORPHE;
+    }
+
+    /**
      * Some devices crash when drawing the glow animation, because the Rive renderer
-     * uses GPU features they do not have. If the app closed before the animation could draw,
-     * the animation is turned off. Checked once when the app starts, before this launch
-     * shows the animation.
+     * uses GPU features they do not have. If the app closed before the animation could draw
+     * the last time it started, the animation is turned off. Checked once when the app starts,
+     * before this launch shows the animation.
      */
     private static synchronized void checkRiveSplashScreenCrash() {
         if (riveSplashScreenCrashChecked) {
@@ -266,9 +327,9 @@ public class ThemePatch extends BaseThemePatch {
         }
         riveSplashScreenCrashChecked = true;
 
-        if (Settings.RIVE_SPLASH_SCREEN_STARTING.get()) {
+        if (Settings.RIVE_SPLASH_SCREEN_STATE.get() == RIVE_SPLASH_SCREEN_STATE_FAILED) {
             Logger.printInfo(() -> "App closed before the glow splash screen could draw, changing splash screen style");
-            Settings.RIVE_SPLASH_SCREEN_STARTING.save(false);
+            Settings.RIVE_SPLASH_SCREEN_STATE.save(RIVE_SPLASH_SCREEN_STATE_NOT_PLAYED);
             // The default style can be a Rive animation.
             SharedYouTubeSettings.SPLASH_SCREEN_STYLE.save(SplashAnimationPatch.getDefaultLottieStyle());
             Utils.showToastLong(str("morphe_splash_screen_style_glow_not_supported"));
@@ -276,11 +337,11 @@ public class ThemePatch extends BaseThemePatch {
     }
 
     /**
-     * The Rive file of the splash screen: the glow animation in 21.39+,
-     * and the startup animation of the light or the dark theme in 21.30 - 21.38.
+     * The Rive file of the splash screen: the glow animation of the app for the glow style,
+     * and the startup animation of the light or the dark theme for the Glow Morphe styles.
      */
     private static boolean isRiveSplashScreenFile(int resourceId) {
-        if (VersionCheckPatch.IS_21_39_OR_GREATER) {
+        if (isRiveGlowStyle()) {
             return resourceId == ResourceUtils.getIdentifier(ResourceType.RAW, "rive_phantom");
         }
 
@@ -301,6 +362,16 @@ public class ThemePatch extends BaseThemePatch {
         }
 
         return isRiveSplashScreenEnabled();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * 21.39+ plays the glow animation if this is on, and otherwise the startup animation
+     * of the light or the dark theme.
+     */
+    public static boolean useRiveGlowSplashScreen(boolean original) {
+        return useRiveSplashScreen(original) && isRiveGlowStyle();
     }
 
     /**
@@ -382,9 +453,9 @@ public class ThemePatch extends BaseThemePatch {
             float artboardHeight = 0;
             ViewGroup.LayoutParams params = animationView.getLayoutParams();
             if (context instanceof Activity activity && params.width > 0) {
-                final float originalArtboardWidth = VersionCheckPatch.IS_21_39_OR_GREATER
+                final float originalArtboardWidth = isRiveGlowLayout()
                         ? RIVE_GLOW_ARTBOARD_WIDTH
-                        : LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_WIDTH;
+                        : RIVE_GLOW_MORPHE_2_ARTBOARD_WIDTH;
                 final float artboardUnitsPerPixel = originalArtboardWidth / params.width;
                 Rect windowBounds = getWindowBounds(activity);
                 artboardWidth = windowBounds.width() * artboardUnitsPerPixel;
@@ -406,9 +477,11 @@ public class ThemePatch extends BaseThemePatch {
                 keepSplashScreenUntilRiveFrame(activity);
             }
 
-            // Cleared when the animation has drawn, or when the app is stopped.
-            Settings.RIVE_SPLASH_SCREEN_STARTING.save(true);
-            riveSplashScreenFramesUntilSupported = RIVE_SPLASH_SCREEN_SUPPORTED_FRAMES;
+            // Set to played when the animation has drawn, and back to not played if the app is stopped first.
+            if (Settings.RIVE_SPLASH_SCREEN_STATE.get() != RIVE_SPLASH_SCREEN_STATE_PLAYED) {
+                Settings.RIVE_SPLASH_SCREEN_STATE.save(RIVE_SPLASH_SCREEN_STATE_FAILED);
+                riveSplashScreenFramesUntilSupported = RIVE_SPLASH_SCREEN_SUPPORTED_FRAMES;
+            }
             riveSplashScreenFirstStart = true;
         } catch (Exception ex) {
             Logger.printException(() -> "setRiveSplashScreenBackground failure", ex);
@@ -461,7 +534,8 @@ public class ThemePatch extends BaseThemePatch {
 
             final int framesUntilSupported = riveSplashScreenFramesUntilSupported;
             if (framesUntilSupported == 1) {
-                clearRiveSplashScreenStarting();
+                riveSplashScreenFramesUntilSupported = 0;
+                Settings.RIVE_SPLASH_SCREEN_STATE.save(RIVE_SPLASH_SCREEN_STATE_PLAYED);
             } else if (framesUntilSupported > 1) {
                 riveSplashScreenFramesUntilSupported = framesUntilSupported - 1;
             }
@@ -478,16 +552,12 @@ public class ThemePatch extends BaseThemePatch {
     public static void onSplashScreenStop() {
         try {
             if (riveSplashScreenFramesUntilSupported > 0) {
-                clearRiveSplashScreenStarting();
+                riveSplashScreenFramesUntilSupported = 0;
+                Settings.RIVE_SPLASH_SCREEN_STATE.save(RIVE_SPLASH_SCREEN_STATE_NOT_PLAYED);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onSplashScreenStop failure", ex);
         }
-    }
-
-    private static void clearRiveSplashScreenStarting() {
-        riveSplashScreenFramesUntilSupported = 0;
-        Settings.RIVE_SPLASH_SCREEN_STARTING.save(false);
     }
 
     /**
@@ -507,7 +577,7 @@ public class ThemePatch extends BaseThemePatch {
             if (riveAnimationShown && riveSplashScreenFirstStart) {
                 riveSplashScreenFirstStart = false;
 
-                if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW_MORPHE) {
+                if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().isRiveGlowMorphe()) {
                     riveGlowMorpheSplashScreenCloser = splashScreen;
                 }
                 return true;
@@ -560,8 +630,7 @@ public class ThemePatch extends BaseThemePatch {
      * <p>
      * Called when the app reads the Rive file of a raw resource it has not cached yet.
      * The splash screen reads its file after the background and size are set.
-     * The Glow Morphe style plays the copy of the glow animation with the Morphe logo,
-     * which is made during patching.
+     * The Glow Morphe styles play their own animation in place of the startup animation of the app.
      *
      * @param fileBytes  The Rive file of a raw resource, or null if it could not be read.
      * @param resourceId The raw resource the file was read from.
@@ -579,22 +648,42 @@ public class ThemePatch extends BaseThemePatch {
             final float artboardHeight = riveGlowArtboardHeight;
             final boolean resizeArtboard = artboardWidth > 0 && artboardHeight > 0;
 
-            // 21.30 - 21.38 has no glow animation, and plays an animation made from the Morphe logo.
-            // It has no backdrop, and fades in by itself.
-            if (!VersionCheckPatch.IS_21_39_OR_GREATER) {
-                fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW,
-                        CustomBrandingPatch.iconIsPlay()
-                                ? LEGACY_RIVE_GLOW_MORPHE_PLAY_RESOURCE
-                                : LEGACY_RIVE_GLOW_MORPHE_RESOURCE));
-                return resizeArtboard
-                        ? setRiveArtboardSize(fileBytes, LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_SIZE,
-                        LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_WIDTH, LEGACY_RIVE_GLOW_MORPHE_ARTBOARD_HEIGHT,
-                        artboardWidth, artboardHeight)
-                        : fileBytes;
-            }
+            if (!isRiveGlowStyle()) {
+                // The app plays the startup animation of the light theme in the light theme.
+                final boolean lightTheme = resourceId
+                        == ResourceUtils.getIdentifier(ResourceType.RAW, "rive_startup_animation_light");
 
-            if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW_MORPHE) {
-                fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, "morphe_startup_animation_glow"));
+                if (!isRiveGlowLayout()) {
+                    // The Glow Morphe 2 animations have no backdrop, and fade in by themselves.
+                    final String resourceName;
+                    if (CustomBrandingPatch.iconIsPlay()) {
+                        resourceName = lightTheme
+                                ? RIVE_GLOW_MORPHE_2_PLAY_LIGHT_RESOURCE
+                                : RIVE_GLOW_MORPHE_2_PLAY_DARK_RESOURCE;
+                    } else {
+                        resourceName = lightTheme
+                                ? RIVE_GLOW_MORPHE_2_LIGHT_RESOURCE
+                                : RIVE_GLOW_MORPHE_2_DARK_RESOURCE;
+                    }
+                    fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, resourceName));
+                    return resizeArtboard
+                            ? setRiveArtboardSize(fileBytes, RIVE_GLOW_MORPHE_2_ARTBOARD_SIZE,
+                            RIVE_GLOW_MORPHE_2_ARTBOARD_WIDTH, RIVE_GLOW_MORPHE_2_ARTBOARD_HEIGHT,
+                            artboardWidth, artboardHeight)
+                            : fileBytes;
+                }
+
+                final String resourceName;
+                if (CustomBrandingPatch.iconIsPlay()) {
+                    resourceName = lightTheme
+                            ? RIVE_GLOW_MORPHE_1_PLAY_LIGHT_RESOURCE
+                            : RIVE_GLOW_MORPHE_1_PLAY_DARK_RESOURCE;
+                } else {
+                    resourceName = lightTheme
+                            ? RIVE_GLOW_MORPHE_1_LIGHT_RESOURCE
+                            : RIVE_GLOW_MORPHE_1_DARK_RESOURCE;
+                }
+                fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, resourceName));
             }
 
             if (backgroundColor != RIVE_GLOW_ORIGINAL_BACKGROUND_COLOR) {
@@ -604,6 +693,11 @@ public class ThemePatch extends BaseThemePatch {
             if (resizeArtboard) {
                 fileBytes = setRiveArtboardSize(fileBytes, RIVE_GLOW_ARTBOARD_SIZE,
                         RIVE_GLOW_ARTBOARD_WIDTH, RIVE_GLOW_ARTBOARD_HEIGHT, artboardWidth, artboardHeight);
+            }
+
+            // The Glow Morphe 1 animation fades in by itself.
+            if (!isRiveGlowStyle()) {
+                return fileBytes;
             }
 
             final int timelineIndex = indexOf(fileBytes, RIVE_GLOW_TIMELINE);

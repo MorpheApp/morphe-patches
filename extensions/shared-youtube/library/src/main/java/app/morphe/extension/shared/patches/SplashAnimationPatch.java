@@ -55,12 +55,15 @@ public class SplashAnimationPatch {
          */
         RIVE_GLOW(1, false),
         /**
-         * The glow animation with the Morphe logo, made from the glow animation of the app during patching.
-         * YouTube 21.30 - 21.38 has no glow animation, and plays an animation of the Morphe logo
-         * coming into focus out of a glow instead.
+         * YouTube 21.30+ Rive animation of the Morphe logo coming into focus out of a glow,
+         * played in place of the Rive startup animation of the app.
          * Low memory devices get the Morphe animation of {@link #MORPHE_COLOR} instead.
          */
         RIVE_GLOW_MORPHE(1, false),
+        /**
+         * Another Glow Morphe animation, the same as {@link #RIVE_GLOW_MORPHE} except for the animation played.
+         */
+        RIVE_GLOW_MORPHE_2(1, false),
         /**
          * Morphe animation of the launcher icon, which replaces the Lottie animation of the app.
          */
@@ -103,7 +106,14 @@ public class SplashAnimationPatch {
          * If the style plays a Rive animation, which YouTube 21.30+ can play.
          */
         public boolean isRive() {
-            return this == RIVE_GLOW || this == RIVE_GLOW_MORPHE;
+            return this == RIVE_GLOW || isRiveGlowMorphe();
+        }
+
+        /**
+         * If the style plays a Morphe Rive animation in place of the Rive startup animation of the app.
+         */
+        public boolean isRiveGlowMorphe() {
+            return this == RIVE_GLOW_MORPHE || this == RIVE_GLOW_MORPHE_2;
         }
     }
 
@@ -153,7 +163,7 @@ public class SplashAnimationPatch {
     public static boolean setBrandedSplashAnimation(LottieAnimationView view) {
         SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
         if (style != SplashScreenAnimationStyle.MORPHE_COLOR && style != SplashScreenAnimationStyle.MORPHE_MONOCHROME
-                && style != SplashScreenAnimationStyle.RIVE_GLOW_MORPHE) {
+                && !style.isRiveGlowMorphe()) {
             return false;
         }
 
