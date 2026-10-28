@@ -1,9 +1,8 @@
 package app.morphe.patches.youtube.misc.fix.accessibility
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.playservice.is_20_51_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_28_or_greater
@@ -30,14 +29,13 @@ internal val fixShortsAccessibilityPatch = bytecodePatch(
             // An empty BottomUiContainer can hide Shorts panels from TalkBack (#3417).
             // Backport YouTube 21.28.208's keyboard visibility gate to preserve the requested visibility.
             method.apply {
-                removeInstructions(keyboardIndex + 1, visibilityIndex - keyboardIndex - 1)
-                replaceInstruction(
+                removeInstructions(keyboardIndex + 1, visibilityIndex - keyboardIndex)
+                addInstructions(
                     keyboardIndex + 1,
-                    "invoke-virtual { v$containerRegister, v$keyboardRegister }, $visibilityGate"
-                )
-                addInstruction(
-                    keyboardIndex + 1,
-                    "xor-int/lit8 v$keyboardRegister, v$keyboardRegister, 0x1"
+                    """
+                        xor-int/lit8 v$keyboardRegister, v$keyboardRegister, 0x1
+                        invoke-virtual { v$containerRegister, v$keyboardRegister }, $visibilityGate
+                    """
                 )
             }
         }
