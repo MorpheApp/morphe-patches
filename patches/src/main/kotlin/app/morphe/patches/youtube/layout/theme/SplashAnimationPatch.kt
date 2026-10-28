@@ -2,6 +2,7 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3178
  * https://github.com/MorpheApp/morphe-patches/pull/4109
+ * https://github.com/MorpheApp/morphe-patches/pull/4135
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -17,6 +18,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.layout.branding.startupAnimationResourcePatch
 import app.morphe.patches.shared.misc.lottie.LOTTIE_ANIMATION_VIEW_CLASS_TYPE
@@ -35,9 +37,12 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.fiveRegisters
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
@@ -203,9 +208,37 @@ val splashAnimationPatch = bytecodePatch {
                 "invoke-static { }, $EXTENSION_CLASS->onSplashScreenStop()V"
             )
 
+            // The splash screen is a Runnable that removes it, so the extension can close
+            // the Morphe glow animation when it has played.
+            SplashScreenRemoveFingerprint.let {
+                it.classDef.apply {
+                    interfaces.add("Ljava/lang/Runnable;")
+
+                    ImmutableMethod(
+                        type,
+                        "run",
+                        emptyList(),
+                        "V",
+                        AccessFlags.PUBLIC.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(1)
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                invoke-virtual { p0 }, ${it.method}
+                                return-void
+                            """
+                        )
+                    }.let(methods::add)
+                }
+            }
+
             // The Rive animation is loaded in the background, and a home feed that is
             // shown quickly closes the animation before it has drawn anything. On the first
-            // start the animation is instead closed by the timeout of the app.
+            // start the animation is instead closed by the timeout of the app, or by the
+            // extension when the Morphe glow animation has played.
             val riveAnimationShownField = RiveSplashScreenViewFingerprint.instructionMatches[1]
                 .instruction.getReference<FieldReference>()!!
 
@@ -213,7 +246,7 @@ val splashAnimationPatch = bytecodePatch {
                 0,
                 """
                     iget-boolean v0, p0, $riveAnimationShownField
-                    invoke-static { v0 }, $EXTENSION_CLASS->skipSplashScreenCloseOnHomeFeed(Z)Z
+                    invoke-static { p0, v0 }, $EXTENSION_CLASS->skipSplashScreenCloseOnHomeFeed(Ljava/lang/Runnable;Z)Z
                     move-result v0
                     if-eqz v0, :close_on_home_feed
                     return-void

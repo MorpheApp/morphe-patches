@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2524
+ * https://github.com/MorpheApp/morphe-patches/pull/4135
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -208,6 +209,19 @@ public class ThemePatch extends BaseThemePatch {
      */
     private static volatile boolean riveSplashScreenFirstStart;
 
+    /**
+     * How long the Glow Morphe animation plays from its first frame until the splash screen closes.
+     * The animation ends after 1.27 seconds, and the timeout of the app would keep it longer.
+     */
+    private static final long RIVE_GLOW_MORPHE_DURATION_MILLISECONDS = 1400;
+
+    /**
+     * Closes the splash screen when the Glow Morphe animation has played,
+     * or null if the animation is not waiting for its first frame.
+     */
+    @Nullable
+    private static volatile Runnable riveGlowMorpheSplashScreenCloser;
+
     private static boolean riveSplashScreenCrashChecked;
 
     private static boolean isRiveSplashScreenEnabled() {
@@ -399,6 +413,12 @@ public class ThemePatch extends BaseThemePatch {
                 Utils.runOnMainThreadNowOrLater(ThemePatch::removeRiveSplashScreen);
             }
 
+            Runnable closer = riveGlowMorpheSplashScreenCloser;
+            if (closer != null) {
+                riveGlowMorpheSplashScreenCloser = null;
+                Utils.runOnMainThreadDelayed(closer, RIVE_GLOW_MORPHE_DURATION_MILLISECONDS);
+            }
+
             final int framesUntilSupported = riveSplashScreenFramesUntilSupported;
             if (framesUntilSupported == 1) {
                 clearRiveSplashScreenStarting();
@@ -435,15 +455,25 @@ public class ThemePatch extends BaseThemePatch {
      * <p>
      * A home feed that is shown quickly closes the glow animation before it has drawn
      * anything, so on the first start the timeout of the app closes it instead.
+     * The Glow Morphe animation is shorter, and closes when it has played.
      * Stopping the app cancels the timeout, and then the home feed closes it as usual.
      *
+     * @param splashScreen       Removes the splash screen when run.
      * @param riveAnimationShown If the app shows a Rive animation.
      * @return If the home feed does not close the animation.
      */
-    public static boolean skipSplashScreenCloseOnHomeFeed(boolean riveAnimationShown) {
-        if (riveAnimationShown && riveSplashScreenFirstStart) {
-            riveSplashScreenFirstStart = false;
-            return true;
+    public static boolean skipSplashScreenCloseOnHomeFeed(Runnable splashScreen, boolean riveAnimationShown) {
+        try {
+            if (riveAnimationShown && riveSplashScreenFirstStart) {
+                riveSplashScreenFirstStart = false;
+
+                if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW_MORPHE) {
+                    riveGlowMorpheSplashScreenCloser = splashScreen;
+                }
+                return true;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "skipSplashScreenCloseOnHomeFeed failure", ex);
         }
         return false;
     }

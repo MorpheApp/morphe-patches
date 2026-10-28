@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4135
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -152,6 +152,18 @@ internal object SplashScreenOnStopFingerprint : Fingerprint(
     classFingerprint = RiveSplashScreenViewFingerprint,
     name = "onStop",
     returnType = "V"
+)
+
+/**
+ * Removes the splash screen.
+ */
+internal object SplashScreenRemoveFingerprint : Fingerprint(
+    classFingerprint = RiveSplashScreenViewFingerprint,
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("SAU_REMOVE_SPLASH_ANIMATION|ANIMATION_SHOWN")
+    )
 )
 
 /**
