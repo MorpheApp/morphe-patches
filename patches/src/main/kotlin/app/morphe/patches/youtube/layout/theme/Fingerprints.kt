@@ -198,6 +198,13 @@ internal object RiveCanvasSessionSetLatestBitmapFingerprint : Fingerprint(
     parameters = listOf("Lapp/rive/RiveCanvasSession;", "Landroid/graphics/Bitmap;")
 )
 
+internal object SplashAnimationIsRiveIncludedFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/shared/patches/SplashAnimationPatch;",
+    name = "isRiveIncluded",
+    returnType = "Z",
+    parameters = listOf()
+)
+
 internal object LottieLayerColorFingerprint : Fingerprint(
     parameters = listOf(
         "Landroid/graphics/Canvas;",

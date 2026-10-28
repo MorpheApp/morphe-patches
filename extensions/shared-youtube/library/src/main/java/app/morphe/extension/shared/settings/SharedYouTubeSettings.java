@@ -18,6 +18,7 @@ import app.morphe.extension.shared.patches.CustomFontPatch.FontType;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.patches.PoTokenProviderPatch.PoTokenProviderAvailability;
 import app.morphe.extension.shared.patches.SkipSilencePatch.MinimumPause;
+import app.morphe.extension.shared.patches.SplashAnimationPatch;
 import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference.ExternalDownloaderAvailability;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptClientAvailability;
@@ -80,7 +81,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final IntegerSetting THEME_LAST_SPLASH_SCREEN_INDEX = new IntegerSetting("morphe_theme_last_splash_screen_index", -1, false, false);
 
     // Custom branding
-    public static final EnumSetting<SplashScreenAnimationStyle> SPLASH_SCREEN_STYLE = new EnumSetting<>("morphe_splash_screen_style", CustomBrandingPatch.isPatchIncluded() ? SplashScreenAnimationStyle.MORPHE_COLOR : SplashScreenAnimationStyle.FPS_60_ONE_SECOND, true);
+    public static final EnumSetting<SplashScreenAnimationStyle> SPLASH_SCREEN_STYLE = new EnumSetting<>("morphe_splash_screen_style", SplashAnimationPatch.getDefaultStyle(), true);
     public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true, "morphe_custom_branding_icon_user_dialog_message");
     public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);
     public static final IntegerSetting CUSTOM_BRANDING_NAME = new IntegerSetting("morphe_custom_branding_name", CustomBrandingPatch.getDefaultAppNameIndex(), true);

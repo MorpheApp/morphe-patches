@@ -17,6 +17,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.layout.branding.startupAnimationResourcePatch
 import app.morphe.patches.shared.misc.lottie.LOTTIE_ANIMATION_VIEW_CLASS_TYPE
 import app.morphe.patches.shared.misc.lottie.LottieAnimationViewSetAnimationIntFingerprint
@@ -52,11 +53,12 @@ val splashAnimationPatch = bytecodePatch {
         settingsPatch,
         lottieAnimationPatch,
         versionCheckPatch,
-        startupAnimationResourcePatch
+        startupAnimationResourcePatch,
+        glowMorpheAnimationResourcePatch
     )
 
     execute {
-        // 21.39+ also has the glow Rive animation.
+        // 21.39+ also has the glow Rive animation, with the YouTube or the Morphe logo.
         val arrayKeySuffix = if (is_21_39_or_greater) "_21_39" else ""
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -118,6 +120,9 @@ val splashAnimationPatch = bytecodePatch {
         }
 
         if (is_21_39_or_greater) {
+            // The Morphe glow animation is the default style.
+            SplashAnimationIsRiveIncludedFingerprint.method.returnEarly(true)
+
             arrayOf(
                 RiveSplashScreenFeatureFlagFingerprint,
                 RiveGlowSplashScreenFeatureFlagFingerprint

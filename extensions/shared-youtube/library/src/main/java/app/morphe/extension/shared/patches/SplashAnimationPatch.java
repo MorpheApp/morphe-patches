@@ -55,6 +55,11 @@ public class SplashAnimationPatch {
          */
         RIVE_GLOW(1, false),
         /**
+         * The glow animation with the Morphe logo, made from the glow animation of the app during patching.
+         * Low memory devices get the Morphe animation of {@link #MORPHE_COLOR} instead.
+         */
+        RIVE_GLOW_MORPHE(1, false),
+        /**
          * Morphe animation of the launcher icon, which replaces the Lottie animation of the app.
          */
         MORPHE_COLOR(1, false),
@@ -91,6 +96,13 @@ public class SplashAnimationPatch {
             this.style = style;
             this.isMonochrome = isMonochrome;
         }
+
+        /**
+         * If the style plays a YouTube 21.39+ Rive animation.
+         */
+        public boolean isRive() {
+            return this == RIVE_GLOW || this == RIVE_GLOW_MORPHE;
+        }
     }
 
     /**
@@ -100,6 +112,31 @@ public class SplashAnimationPatch {
     private static final String BRAND_PRIMARY_COLOR = "[0.117647,0.352941,0.658824,1]";
     private static final String BRAND_SECONDARY_COLOR = "[0,0.686275,0.682353,1]";
     private static final String BRAND_GRADIENT = "[0,0.117647,0.352941,0.658824,1,0,0.686275,0.682353]";
+
+    /**
+     * If the app has the Rive animations, which YouTube 21.39+ has.
+     */
+    private static boolean isRiveIncluded() {
+        return false; // Modified during patching.
+    }
+
+    /**
+     * The default style, which is the Morphe glow animation if the app has the Rive animations.
+     */
+    public static SplashScreenAnimationStyle getDefaultStyle() {
+        return isRiveIncluded()
+                ? SplashScreenAnimationStyle.RIVE_GLOW_MORPHE
+                : getDefaultLottieStyle();
+    }
+
+    /**
+     * The default style that is not a Rive animation.
+     */
+    public static SplashScreenAnimationStyle getDefaultLottieStyle() {
+        return CustomBrandingPatch.isPatchIncluded()
+                ? SplashScreenAnimationStyle.MORPHE_COLOR
+                : SplashScreenAnimationStyle.FPS_60_ONE_SECOND;
+    }
 
     public static boolean isMonochrome() {
         return SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().isMonochrome;
@@ -113,7 +150,8 @@ public class SplashAnimationPatch {
      */
     public static boolean setBrandedSplashAnimation(LottieAnimationView view) {
         SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
-        if (style != SplashScreenAnimationStyle.MORPHE_COLOR && style != SplashScreenAnimationStyle.MORPHE_MONOCHROME) {
+        if (style != SplashScreenAnimationStyle.MORPHE_COLOR && style != SplashScreenAnimationStyle.MORPHE_MONOCHROME
+                && style != SplashScreenAnimationStyle.RIVE_GLOW_MORPHE) {
             return false;
         }
 

@@ -34,6 +34,9 @@ import androidx.annotation.RequiresApi;
 
 import com.airbnb.lottie.LottieAnimationView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Map;
@@ -208,7 +211,7 @@ public class ThemePatch extends BaseThemePatch {
     private static boolean riveSplashScreenCrashChecked;
 
     private static boolean isRiveSplashScreenEnabled() {
-        return SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW;
+        return SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().isRive();
     }
 
     /**
@@ -224,9 +227,10 @@ public class ThemePatch extends BaseThemePatch {
         riveSplashScreenCrashChecked = true;
 
         if (Settings.RIVE_SPLASH_SCREEN_STARTING.get()) {
-            Logger.printInfo(() -> "App closed before the glow splash screen could draw, resetting splash screen style");
+            Logger.printInfo(() -> "App closed before the glow splash screen could draw, changing splash screen style");
             Settings.RIVE_SPLASH_SCREEN_STARTING.save(false);
-            SharedYouTubeSettings.SPLASH_SCREEN_STYLE.resetToDefault();
+            // The default style can be a Rive animation.
+            SharedYouTubeSettings.SPLASH_SCREEN_STYLE.save(SplashAnimationPatch.getDefaultLottieStyle());
             Utils.showToastLong(str("morphe_splash_screen_style_glow_not_supported"));
         }
     }
@@ -457,7 +461,7 @@ public class ThemePatch extends BaseThemePatch {
      * Injection point.
      * <p>
      * The app keeps the Rive file of a raw resource in memory, and the key of the glow animation
-     * is changed for each background color and artboard size. Otherwise a file changed for
+     * is changed for each background color, artboard size and logo. Otherwise a file changed for
      * an earlier launch would be used.
      *
      * @param key The key of a raw resource, which is the prefix followed by the resource id.
@@ -470,7 +474,8 @@ public class ThemePatch extends BaseThemePatch {
                     && key.startsWith(RIVE_RAW_RESOURCE_KEY_PREFIX)
                     && isRiveGlowFile(Integer.parseInt(key.substring(RIVE_RAW_RESOURCE_KEY_PREFIX.length())))) {
                 return key + "_" + Integer.toHexString(backgroundColor)
-                        + "_" + riveGlowArtboardWidth + "x" + riveGlowArtboardHeight;
+                        + "_" + riveGlowArtboardWidth + "x" + riveGlowArtboardHeight
+                        + "_" + SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().name();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "getRiveRawResourceKey failure", ex);
@@ -484,6 +489,8 @@ public class ThemePatch extends BaseThemePatch {
      * <p>
      * Called when the app reads the Rive file of a raw resource it has not cached yet.
      * The splash screen reads its file after the background and size are set.
+     * The Glow Morphe style plays the copy of the glow animation with the Morphe logo,
+     * which is made during patching.
      *
      * @param fileBytes  The Rive file of a raw resource, or null if it could not be read.
      * @param resourceId The raw resource the file was read from.
@@ -495,6 +502,10 @@ public class ThemePatch extends BaseThemePatch {
             final int backgroundColor = riveGlowBackgroundColor;
             if (fileBytes == null || backgroundColor == 0 || !isRiveGlowFile(resourceId)) {
                 return fileBytes;
+            }
+
+            if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() == SplashScreenAnimationStyle.RIVE_GLOW_MORPHE) {
+                fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, "morphe_startup_animation_glow"));
             }
 
             if (backgroundColor != RIVE_GLOW_ORIGINAL_BACKGROUND_COLOR) {
@@ -520,6 +531,18 @@ public class ThemePatch extends BaseThemePatch {
         }
 
         return fileBytes;
+    }
+
+    private static byte[] readRawResource(int resourceId) throws IOException {
+        try (InputStream input = Utils.getContext().getResources().openRawResource(resourceId)) {
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            byte[] buffer = new byte[8192];
+            int length;
+            while ((length = input.read(buffer)) != -1) {
+                output.write(buffer, 0, length);
+            }
+            return output.toByteArray();
+        }
     }
 
     private static void setRiveGlowBackgroundColor(byte[] fileBytes, @ColorInt int color) {
