@@ -347,19 +347,30 @@ public final class AutoTranslateCaptionsPatch {
                 && VSS_ID_SUFFIX_PATTERN.matcher(value.substring(prefix.length() + 1)).matches());
     }
 
+    /** Canonical aliases while retaining the region/script for exact track selection. */
+    static String normalizeLanguageCode(String languageCode) {
+        if (languageCode == null) return "";
+        String code = languageCode.trim().replace('_', '-').toLowerCase(Locale.ROOT);
+        int dash = code.indexOf('-');
+        String primary = dash < 0 ? code : code.substring(0, dash);
+        String canonical = switch (primary) {
+            case "iw" -> "he";
+            case "in" -> "id";
+            case "ji" -> "yi";
+            case "tl" -> "fil";
+            case "nb" -> "no";
+            default -> primary;
+        };
+        return canonical + code.substring(primary.length());
+    }
+
     /**
      * @return Key that is the same for all codes of a language.
      */
-    private static String getLanguageKey(String languageCode) {
-        String code = languageCode.replace('_', '-').toLowerCase(Locale.ROOT);
+    static String getLanguageKey(String languageCode) {
+        String code = normalizeLanguageCode(languageCode);
         String primary = code.split("-")[0];
         switch (primary) {
-            // Legacy ISO 639 codes used by Java Locale and YouTube.
-            case "iw": return "he";
-            case "in": return "id";
-            case "ji": return "yi";
-            case "tl": return "fil";
-            case "nb": return "no";
             // Traditional and Simplified Chinese are different translations.
             case "zh":
                 // Script takes priority over region.
