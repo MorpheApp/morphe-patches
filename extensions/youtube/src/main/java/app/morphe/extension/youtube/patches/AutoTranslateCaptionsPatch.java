@@ -92,13 +92,18 @@ public final class AutoTranslateCaptionsPatch {
             return tracks;
         }
 
-        // Native translations can use different originals for different targets.
-        // Only clone them when their signed URL and original VSS agree.
+        // Keep YouTube's first translation as the template for missing targets. Other native
+        // targets may use another original, but every track must be valid and from the same video.
         CaptionTrackInterface template = tracks.get(0);
         String identity = translationSourceIdentity(template);
         if (identity == null) return tracks;
+        String video = captionParameters(template.patch_getUrl()).get("v");
         for (CaptionTrackInterface track : tracks) {
-            if (!identity.equals(translationSourceIdentity(track))) return tracks;
+            String otherIdentity = translationSourceIdentity(track);
+            if (otherIdentity == null || !identity.equals(otherIdentity)
+                    && (video == null || !video.equals(captionParameters(track.patch_getUrl()).get("v")))) {
+                return tracks;
+            }
         }
         String templateCode = template.patch_getLanguageCode();
         String templateUrl = template.patch_getUrl();

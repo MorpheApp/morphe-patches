@@ -22,7 +22,10 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import java.util.logging.Logger
 
 private object SubtitleManagerFingerprintClassFingerprint : Fingerprint(
     isStatic = true,
@@ -627,3 +630,45 @@ internal fun getCaptionChunkLoaderFingerprint(loaderType: String) = object : Fin
         methodCall(smali = "Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V")
     )
 ) {}
+
+/** Native window setter linked to the structurally resolved cue type. */
+internal fun getCaptionWindowSetterFingerprint(cueType:String)=object:Fingerprint(
+ superclass="Landroid/view/ViewGroup;",returnType="V",parameters=listOf(cueType),
+ filters=listOf(fieldAccess(opcode=Opcode.IPUT_OBJECT,definingClass="this",type=cueType),
+ methodCall("Ljava/util/List;->clear()V"))
+) {}
+
+internal fun getCaptionOverlayFactoryFingerprint(cueType:String,windowType:String)=object:Fingerprint(
+ returnType=windowType,parameters=listOf("Ljava/lang/Object;",cueType),
+ filters=listOf(newInstance(windowType))
+) {}
+
+internal fun isCaptionCueConstructor(method:MethodReference):Boolean =
+ method.name=="<init>" && method.returnType=="V" && method.parameterTypes.map{it.toString()}.let {
+  it.size==5 && it.take(4)==listOf("I","J","Ljava/lang/CharSequence;","Ljava/lang/CharSequence;") && it[4].startsWith("L")
+ }
+
+/** Only read-only discovery belongs here; mutations must follow successful preflight. */
+internal fun <T> optionalCaptionSupport(feature:String,resolve:()->T):T? = try {
+ resolve()
+} catch (error:RuntimeException) {
+ if(error !is IllegalStateException && error !is IllegalArgumentException && error !is NoSuchElementException)throw error
+ Logger.getLogger(BytecodePatchContext::class.java.name).warning("Optional $feature unavailable: ${error.message}")
+ null
+}
+internal data class CaptionNativeLayout(val timelineType:String,val sampler:Method,val cueConstructor:Method) {
+ val cueType:String get()=cueConstructor.definingClass
+}
+internal fun BytecodePatchContext.resolveCaptionCueType():String = resolveCaptionNativeLayout().cueType
+internal fun BytecodePatchContext.resolveCaptionNativeLayout():CaptionNativeLayout {
+ val timeline=CaptionWindowsConstructorFingerprint.classDefOrNull?:error("Caption timeline not found")
+ val candidates=timeline.methods.filter{it.parameterTypes==listOf("J")&&it.returnType=="Ljava/util/List;"}.mapNotNull { method ->
+  val constructors=method.implementation?.instructions?.mapNotNull { ((it as? ReferenceInstruction)?.reference as? MethodReference)?.takeIf(::isCaptionCueConstructor) }?.distinctBy{it.toString()}.orEmpty()
+  if(constructors.isEmpty())null else {check(constructors.size==1){"Ambiguous caption sampler allocation"};method to constructors.single()}
+ }
+ check(candidates.size==1){"Caption sampler not uniquely resolved"}
+ val (sampler,reference)=candidates.single()
+ val cue=classDefBy(reference.definingClass)?:error("Caption cue class missing")
+ val constructor=cue.methods.single{it.name==reference.name&&it.parameterTypes==reference.parameterTypes&&it.returnType==reference.returnType}
+ return CaptionNativeLayout(timeline.type,sampler,constructor)
+}

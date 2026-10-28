@@ -88,19 +88,35 @@ public class AutoTranslateCaptionsPatchTest {
         assertEquals(URL + "&tlang=el&fmt=srv3#opaque", find(result, "el").patch_getUrl());
     }
 
-    @Test public void nativeTranslationsMustShareSourceBeforeExpansion() {
-        Track english = new Track("de", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&sig=x%2By&tlang=de",
+    @Test public void mixedSourcesFromTheSameVideoStillExpandWithoutReplacingNativeTargets() {
+        for (String video : List.of("bYsvNgA-tEE", "l8Sgq4zw1MY")) {
+            String base = "https://www.youtube.com/api/timedtext?v=" + video;
+            Track german = new Track("de", base + "&lang=en&kind=asr&sig=x%2By&tlang=de&fmt=srv3#opaque",
+                    "ta.en.de", "German");
+            String source = video.equals("bYsvNgA-tEE") ? "de" : "tr";
+            Track english = new Track("en", base + "&lang=" + source + "&kind=asr&sig=other&tlang=en",
+                    "ta." + source + ".en", "English");
+            List<CaptionTrackInterface> result = add(List.of(german, english), Locale.ENGLISH);
+            assertEquals(156, result.size());
+            assertSame(german, find(result, "de"));
+            assertSame(english, find(result, "en"));
+            assertEquals(base + "&lang=en&kind=asr&sig=x%2By&tlang=tr&fmt=srv3#opaque",
+                    find(result, "tr").patch_getUrl());
+            assertEquals("ta.en.tr", find(result, "tr").patch_getVssId());
+        }
+    }
+
+    @Test public void mixedSourceExpansionRequiresTheSameUnambiguousVideo() {
+        Track german = new Track("de", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&tlang=de",
                 "ta.en.de", "German");
-        Track french = new Track("fr", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=fr&sig=x%2By&tlang=fr",
-                "ta.fr.fr", "French");
-        Track otherVideo = new Track("fr", "https://www.youtube.com/api/timedtext?v=zyxwvutsrqp&lang=en&sig=x%2By&tlang=fr",
-                "ta.en.fr", "French");
-        for (Track other : List.of(french, otherVideo)) {
-            List<CaptionTrackInterface> nativeList = List.of(english, other);
+        for (String url : List.of(
+                "https://www.youtube.com/api/timedtext?v=zyxwvutsrqp&lang=tr&tlang=en",
+                "https://www.youtube.com/api/timedtext?lang=tr&tlang=en",
+                "https://www.youtube.com/api/timedtext?v=abcdefghijk&v=zyxwvutsrqp&lang=tr&tlang=en",
+                "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=tr&tlang=en&tlang=fr")) {
+            List<CaptionTrackInterface> nativeList = List.of(german, new Track("en", url, "ta.tr.en", "English"));
             assertSame(nativeList, add(nativeList, Locale.ENGLISH));
         }
-        assertSame(english, find(add(List.of(english), Locale.ENGLISH), "de"));
-        find(add(List.of(english), Locale.ENGLISH), "tr");
     }
 
     @Test public void nativeTranslationTargetMustBeUnambiguousAndInTheActualQuery() {

@@ -1,0 +1,75 @@
+/* Copyright 2026 Morphe. See NOTICE for the GPLv3 Section 7 terms. */
+package app.morphe.extension.youtube.patches;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+import org.xml.sax.helpers.DefaultHandler;
+
+import java.io.StringReader;
+import java.nio.ByteBuffer;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+
+/** Bounded, fail-closed srv3 reader used by translated-caption repair. */
+final class CaptionXml {
+    static final int MAX_BYTES = 4 * 1024 * 1024;
+    private static final Pattern ENCODING =
+            Pattern.compile(
+                    "^\\s*<\\?xml\\s+[^?]*\\bencoding\\s*=\\s*(['\"])([^'\"]+)\\1",
+                    Pattern.CASE_INSENSITIVE);
+
+    private CaptionXml() {}
+
+    static Document read(byte[] input) {
+        if (input == null || input.length == 0 || input.length > MAX_BYTES) return null;
+        try {
+            String source =
+                    StandardCharsets.UTF_8
+                            .newDecoder()
+                            .onMalformedInput(CodingErrorAction.REPORT)
+                            .onUnmappableCharacter(CodingErrorAction.REPORT)
+                            .decode(ByteBuffer.wrap(input))
+                            .toString();
+            if (source.startsWith("\uFEFF")) source = source.substring(1);
+            Matcher encoding = ENCODING.matcher(source);
+            if (encoding.find()
+                    && !encoding.group(2).equalsIgnoreCase("UTF-8")
+                    && !encoding.group(2).equalsIgnoreCase("UTF8")) return null;
+            if (source.indexOf('\0') >= 0
+                    || source.contains("<!DOCTYPE")
+                    || source.contains("<!ENTITY")) return null;
+            var builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            builder.setEntityResolver(
+                    (publicId, systemId) -> {
+                        throw new SAXException("External caption entity");
+                    });
+            builder.setErrorHandler(
+                    new DefaultHandler() {
+                        @Override
+                        public void error(SAXParseException error) throws SAXException {
+                            throw error;
+                        }
+
+                        @Override
+                        public void fatalError(SAXParseException error) throws SAXException {
+                            throw error;
+                        }
+                    });
+            // Parse the same validated characters; the declaration cannot reinterpret bytes.
+            Document document = builder.parse(new InputSource(new StringReader(source)));
+            Element root = document.getDocumentElement();
+            return root.getTagName().equals("timedtext") && root.getAttribute("format").equals("3")
+                    ? document
+                    : null;
+        } catch (Exception ignored) {
+            return null;
+        }
+    }
+}
