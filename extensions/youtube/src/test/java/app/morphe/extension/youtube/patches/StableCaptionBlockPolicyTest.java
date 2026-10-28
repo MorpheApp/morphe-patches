@@ -34,6 +34,21 @@ public class StableCaptionBlockPolicyTest {
     }
 
     @Test
+    public void alreadyCenteredFrameRetainsItsNativeList() {
+        var frame = new StableCaptionBlocks.Frame(new StableCaptionBlocks.State(), 0, 0);
+        var cue = new StableCaptionBlocks.Cue() {
+            @Override public CharSequence patch_getOriginalCaptionVisible() { return "native"; }
+            @Override public StableCaptionBlocks.Frame patch_getBlockFrame() { return frame; }
+            @Override public Object patch_copyBlockFrame(StableCaptionBlocks.Frame requested) {
+                assertSame(frame, requested);
+                return this;
+            }
+        };
+        List<?> original = List.of(cue);
+        assertSame(original, StableCaptionBlocks.centerBlocks(original));
+    }
+
+    @Test
     public void sharedDocumentKeepsSourcePlanWhenRepairRemovesOrphanEvents() {
         byte[] source =
                 ("<timedtext format='3'><head><ws id='1' mh='2'/></head>"

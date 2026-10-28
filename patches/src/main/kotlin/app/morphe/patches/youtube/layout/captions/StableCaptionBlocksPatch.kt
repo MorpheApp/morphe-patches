@@ -7,6 +7,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
+import app.morphe.util.getMutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
@@ -244,6 +245,7 @@ private data class StableCaptionSupport(
     val lines: CaptionWindowLines,
     val row: Triple<FieldReference, Method, Method>,
     val presenter: Method,
+    val measure: Method,
     val factories: List<CaptionLayoutFactory>,
 )
 
@@ -282,15 +284,11 @@ internal val stableCaptionBlocksPatch =
                             Triple(field, getters.single(), set)
                         }
                     val row = rowCandidates.single()
-                    check(
-                        window.methods.count {
+                    val measure =
+                        window.methods.single {
                             it.name == "onMeasure" && it.parameterTypes == listOf("I", "I")
-                        } == 1,
-                    )
-                    val ctor =
-                        classDefBy(layout.timelineType)!!.methods.single {
-                            it.name == "<init>" && it.parameterTypes == listOf("Ljava/util/List;")
                         }
+                    val ctor = CaptionWindowsConstructorFingerprint.method
                     check(ctor.implementation!!.registerCount >= 3)
                     check(
                         ctor.implementation!!.instructions.count {
@@ -351,10 +349,12 @@ internal val stableCaptionBlocksPatch =
                         lines,
                         row,
                         presenter,
+                        measure,
                         findCaptionLayoutFactories(classDefBy(row.first.type)!!.methods),
                     )
                 } ?: return@execute
-            val (layout, fields, defaults, setter, lines, row, presenter, factories) = support
+            val (layout, fields, defaults, setter, lines, row, presenter, measure, factories) =
+                support
             hookParsedCaptionTrack("$BLOCKS->setAutomaticTrack(Z)V")
             mutableClassDefBy(layout.cueType).apply {
                 interfaces.add("${BLOCKS.removeSuffix(";")}\$Cue;")
@@ -381,6 +381,18 @@ internal val stableCaptionBlocksPatch =
                     freeRegisters = 7,
                     smali =
                         """
+    iget-object v6, p0, ${fields.settings}
+    sget-object v0, $defaults
+    if-ne v6, v0, :copy_frame
+    invoke-virtual { p0 }, $type->patch_getBlockFrame()$FRAME
+    move-result-object v0
+    if-ne v0, p1, :copy_frame
+    iget-object v0, p0, ${fields.visible}
+    invoke-static { v0 }, $BLOCKS->frameOf(Ljava/lang/CharSequence;)$FRAME
+    move-result-object v0
+    if-ne v0, p1, :copy_frame
+    return-object p0
+    :copy_frame
     new-instance v0, $type
     iget v1, p0, ${fields.id}
     iget-wide v2, p0, ${fields.time}
@@ -397,21 +409,15 @@ internal val stableCaptionBlocksPatch =
                 )
             }
             for (factory in factories) {
-                mutableClassDefBy(factory.method.definingClass)
-                    .methods
-                    .single {
-                        it.name == factory.method.name &&
-                            it.parameterTypes == factory.method.parameterTypes
-                    }
-                    .apply {
-                        val r = factory.register
-                        replaceInstruction(
-                            factory.invocation,
-                            "invoke-static/range { v${r+1} .. v${r+7} }, $BLOCKS->createLayout($LAYOUT_ARGS)Landroid/text/StaticLayout;",
-                        )
-                        addInstructions(factory.invocation + 1, "move-result-object v$r")
-                        removeInstruction(factory.allocation)
-                    }
+                factory.method.getMutableMethod().apply {
+                    val r = factory.register
+                    replaceInstruction(
+                        factory.invocation,
+                        "invoke-static/range { v${r+1} .. v${r+7} }, $BLOCKS->createLayout($LAYOUT_ARGS)Landroid/text/StaticLayout;",
+                    )
+                    addInstructions(factory.invocation + 1, "move-result-object v$r")
+                    removeInstruction(factory.allocation)
+                }
             }
             mutableClassDefBy(row.first.type).apply {
                 interfaces.add("${BLOCKS.removeSuffix(";")}\$Row;")
@@ -441,18 +447,15 @@ internal val stableCaptionBlocksPatch =
                     if (field.type == "Ljava/util/List;") field.type else "Ljava/lang/Object;",
                     smali = "iget-object v0, p0, $field\nreturn-object v0",
                 )
-                methods
-                    .single { it.name == "onMeasure" && it.parameterTypes == listOf("I", "I") }
+                measure
+                    .getMutableMethod()
                     .addInstructions(
                         0,
                         "invoke-static/range { p0 .. p1 }, $BLOCKS->prepare(Landroid/view/View;I)V",
                     )
             }
-            mutableClassDefBy(presenter.definingClass)
-                .methods
-                .single {
-                    it.name == presenter.name && it.parameterTypes == presenter.parameterTypes
-                }
+            presenter
+                .getMutableMethod()
                 .addInstructions(
                     0,
                     """
@@ -475,25 +478,17 @@ internal val stableCaptionBlocksPatch =
                         )
                         .toMutable(),
                 )
-                methods
-                    .single {
-                        it.name == "<init>" && it.parameterTypes == listOf("Ljava/util/List;")
-                    }
-                    .apply {
-                        val at =
-                            implementation!!.instructions.indexOfLast {
-                                it.opcode == Opcode.RETURN_VOID
-                            }
-                        addInstructions(
-                            at,
-                            "invoke-static {}, $BLOCKS->takeState()$STATE\nmove-result-object v0\niput-object v0, p0, $state",
-                        )
-                    }
-                val sampler = methods.single {
-                    it.name == layout.sampler.name &&
-                        it.parameterTypes == listOf("J") &&
-                        it.returnType == "Ljava/util/List;"
+                CaptionWindowsConstructorFingerprint.method.getMutableMethod().apply {
+                    val at =
+                        implementation!!.instructions.indexOfLast {
+                            it.opcode == Opcode.RETURN_VOID
+                        }
+                    addInstructions(
+                        at,
+                        "invoke-static {}, $BLOCKS->takeState()$STATE\nmove-result-object v0\niput-object v0, p0, $state",
+                    )
                 }
+                val sampler = layout.sampler.getMutableMethod()
                 val originalName = sampler.name
                 sampler.name = "patch_getOriginalCaptions"
                 addHelperMethod(

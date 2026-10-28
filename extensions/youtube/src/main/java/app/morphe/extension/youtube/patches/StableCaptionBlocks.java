@@ -180,7 +180,7 @@ public final class StableCaptionBlocks {
         if (frame == null) return original;
         try {
             Object copy = cue.patch_copyBlockFrame(frame);
-            return copy == null ? original : Collections.singletonList(copy);
+            return copy == null || copy == cue ? original : Collections.singletonList(copy);
         } catch (RuntimeException | LinkageError ignored) {
             return original;
         }
