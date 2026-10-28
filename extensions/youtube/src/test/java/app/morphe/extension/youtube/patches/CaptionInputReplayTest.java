@@ -51,6 +51,59 @@ public class CaptionInputReplayTest {
                 1024);
     }
 
+    @Test
+    public void sharedTrackRoutingRepairsInputAndRetainsParserOwnedClose() throws Exception {
+        byte[] source =
+                ("<timedtext format='3'><head><ws id='1' mh='2'/></head>"
+                                + "<body><w t='0' id='1' ws='1'/>"
+                                + "<p t='0' d='2000' w='1'>one</p>"
+                                + "<p t='1000' d='1000' w='1' a='1'>\n</p>"
+                                + "<p t='1500' d='2000' w='1' a='1'>\n</p>"
+                                + "<p t='2000' d='4000' w='1'>two</p></body></timedtext>")
+                        .getBytes("UTF-8");
+        boolean[] closed = {false};
+        InputStream original =
+                new ByteArrayInputStream(source) {
+                    @Override
+                    public void close() {
+                        closed[0] = true;
+                    }
+                };
+        TranslatedRollingCaptionFix.setTrack(new Track());
+        InputStream repaired = TranslatedRollingCaptionFix.repairInput(original);
+        assertEquals(2, CaptionXml.read(read(repaired)).getElementsByTagName("p").getLength());
+        assertFalse(closed[0]);
+        repaired.close();
+        assertTrue(closed[0]);
+        // A non-caption request must clear the previous translated decoder state.
+        TranslatedRollingCaptionFix.setTrack(null);
+        InputStream next = new ByteArrayInputStream(source);
+        assertSame(next, TranslatedRollingCaptionFix.repairInput(next));
+    }
+
+    private static final class Track implements AutoTranslateCaptionsPatch.CaptionTrackInterface {
+        @Override
+        public String patch_getLanguageCode() {
+            return "de";
+        }
+
+        @Override
+        public String patch_getVssId() {
+            return "ta.en.de";
+        }
+
+        @Override
+        public String patch_getUrl() {
+            return "https://www.youtube.com/api/timedtext?kind=asr&lang=en&tlang=de";
+        }
+
+        @Override
+        public AutoTranslateCaptionsPatch.CaptionTrackInterface patch_copyTranslation(
+                String languageCode, String url, String vssId, CharSequence label) {
+            throw new UnsupportedOperationException();
+        }
+    }
+
     private static byte[] read(InputStream input) throws IOException {
         java.io.ByteArrayOutputStream output = new java.io.ByteArrayOutputStream();
         byte[] buffer = new byte[113];

@@ -6,7 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -360,21 +359,7 @@ internal val stableCaptionBlocksPatch =
                     )
                 } ?: return@execute
             val (layout, fields, defaults, setter, lines, row, presenter, factories) = support
-            CaptionFileParserFingerprint.method.addInstructions(
-                0,
-                "invoke-static { p1 }, $BLOCKS->setRequest(Ljava/lang/Object;)V",
-            )
-            RequestResponseParserFingerprint.let {
-                val match = it.instructionMatches[2]
-                val register = match.getInstruction<TwoRegisterInstruction>().registerA
-                it.method.addInstructions(
-                    0,
-                    """
-    iget-object v$register, p0, ${match.instruction.getReference<FieldReference>()}
-    invoke-static { v$register }, $BLOCKS->setRequest(Ljava/lang/Object;)V
-   """,
-                )
-            }
+            hookParsedCaptionTrack("$BLOCKS->setTrack(Ljava/lang/Object;)V")
             mutableClassDefBy(layout.cueType).apply {
                 interfaces.add("${BLOCKS.removeSuffix(";")}\$Cue;")
                 addHelperMethod(

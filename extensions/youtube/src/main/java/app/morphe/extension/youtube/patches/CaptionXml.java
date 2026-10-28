@@ -3,6 +3,7 @@ package app.morphe.extension.youtube.patches;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -12,12 +13,14 @@ import java.io.StringReader;
 import java.nio.ByteBuffer;
 import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 
-/** Bounded, fail-closed srv3 reader used by translated-caption repair. */
+/** Bounded, fail-closed srv3 reader shared by source capture and translated-caption repair. */
 final class CaptionXml {
     static final int MAX_BYTES = 4 * 1024 * 1024;
     private static final Pattern ENCODING =
@@ -26,6 +29,13 @@ final class CaptionXml {
                     Pattern.CASE_INSENSITIVE);
 
     private CaptionXml() {}
+
+    static List<Element> children(Element parent) {
+        List<Element> elements = new ArrayList<>();
+        for (Node node = parent.getFirstChild(); node != null; node = node.getNextSibling())
+            if (node instanceof Element) elements.add((Element) node);
+        return elements;
+    }
 
     static Document read(byte[] input) {
         if (input == null || input.length == 0 || input.length > MAX_BYTES) return null;
@@ -68,7 +78,7 @@ final class CaptionXml {
             return root.getTagName().equals("timedtext") && root.getAttribute("format").equals("3")
                     ? document
                     : null;
-        } catch (Exception ignored) {
+        } catch (Exception | LinkageError ignored) {
             return null;
         }
     }

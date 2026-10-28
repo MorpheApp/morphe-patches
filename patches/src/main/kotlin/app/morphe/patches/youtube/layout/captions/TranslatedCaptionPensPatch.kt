@@ -11,6 +11,7 @@ package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -85,4 +86,10 @@ internal val translatedCaptionPensPatch = bytecodePatch(
             """
         )
     }
+}
+
+/** Register optional processing after the shared native request has resolved its track. */
+internal fun BytecodePatchContext.hookParsedCaptionTrack(descriptor: String) {
+    mutableClassDefBy(EXTENSION_CLASS).methods.first { it.name == "onParsedTrack" }
+        .addInstruction(0, "invoke-static { p0 }, $descriptor")
 }

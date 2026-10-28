@@ -5,10 +5,11 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.youtube.patches.CaptionXml.children;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
@@ -61,8 +62,11 @@ public final class TranslatedRollingCaptionPolicy {
     }
 
     public static byte[] repair(byte[] input) {
+        return repair(input, CaptionXml.read(input));
+    }
+
+    static byte[] repair(byte[] input, Document doc) {
         try {
-            Document doc = CaptionXml.read(input);
             if (doc == null) return input;
             Element root = doc.getDocumentElement();
             Element head = onlyChild(root, "head"), body = onlyChild(root, "body");
@@ -146,13 +150,6 @@ public final class TranslatedRollingCaptionPolicy {
         } catch (Exception | LinkageError ignored) {
             return input;
         }
-    }
-
-    private static List<Element> children(Element parent) {
-        List<Element> out = new ArrayList<>();
-        for (Node n = parent.getFirstChild(); n != null; n = n.getNextSibling())
-            if (n instanceof Element) out.add((Element) n);
-        return out;
     }
 
     private static Element onlyChild(Element parent, String tag) {

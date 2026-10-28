@@ -30,6 +30,37 @@ public class StableCaptionBlockPolicyTest {
     }
 
     @Test
+    public void sharedDocumentKeepsSourcePlanWhenRepairRemovesOrphanEvents() {
+        byte[] source =
+                ("<timedtext format='3'><head><ws id='1' mh='2'/></head>"
+                                + "<body><w t='0' id='1' ws='1'/>"
+                                + p(0, 2000, "one")
+                                + "<p t='1000' d='1000' w='1' a='1'>\n</p>"
+                                + "<p t='1500' d='2000' w='1' a='1'>\n</p>"
+                                + p(2000, 4000, "two")
+                                + "</body></timedtext>")
+                        .getBytes(StandardCharsets.UTF_8);
+        var document = CaptionXml.read(source);
+        assertNotNull(document);
+        var policy = StableCaptionBlockPolicy.parse(document);
+        assertNotNull(policy);
+        var before = policy.plan(text -> true);
+        byte[] repaired = TranslatedRollingCaptionPolicy.repair(source, document);
+        assertNotSame(source, repaired);
+        assertEquals(2, document.getElementsByTagName("p").getLength());
+        assertEquals(4, CaptionXml.read(source).getElementsByTagName("p").getLength());
+        var after = policy.plan(text -> true);
+        assertEquals(before.size(), after.size());
+        for (int i = 0; i < before.size(); i++) {
+            assertEquals(before.get(i).start, after.get(i).start);
+            assertEquals(before.get(i).end, after.get(i).end);
+            assertEquals(before.get(i).text, after.get(i).text);
+        }
+        assertSame(repaired, TranslatedRollingCaptionPolicy.repair(repaired));
+        assertSame(source, TranslatedRollingCaptionPolicy.repair(source, null));
+    }
+
+    @Test
     public void preservesSeparatelyTimedWhitespaceWithoutInventingWordTimes() {
         var policy = policy(p(0, 4000, s(0, "hello") + s(500, " ") + s(1000, "world")));
         var blocks = policy.plan(text -> true);

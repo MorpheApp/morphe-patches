@@ -1,6 +1,8 @@
 /* Copyright 2026 Morphe. See NOTICE for the GPLv3 Section 7 terms. */
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.youtube.patches.CaptionXml.children;
+
 import org.w3c.dom.*;
 
 import java.net.URI;
@@ -54,8 +56,11 @@ final class StableCaptionBlockPolicy {
     }
 
     static StableCaptionBlockPolicy parse(byte[] input) {
+        return parse(CaptionXml.read(input));
+    }
+
+    static StableCaptionBlockPolicy parse(Document d) {
         try {
-            Document d = CaptionXml.read(input);
             if (d == null || d.getElementsByTagName("pen").getLength() != 0) return null;
             Element root = d.getDocumentElement(), body = null;
             for (Element e : children(root))
@@ -326,13 +331,6 @@ final class StableCaptionBlockPolicy {
         for (int i = 0; i < a.getLength(); i++)
             if (!keys.contains(a.item(i).getNodeName())) return false;
         return true;
-    }
-
-    private static List<Element> children(Element e) {
-        List<Element> out = new ArrayList<>();
-        for (Node n = e.getFirstChild(); n != null; n = n.getNextSibling())
-            if (n instanceof Element) out.add((Element) n);
-        return out;
     }
 
     static boolean automatic(String vss, String url) {

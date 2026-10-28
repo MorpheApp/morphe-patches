@@ -11,6 +11,8 @@ import android.view.View;
 
 import app.morphe.extension.shared.Utils;
 
+import org.w3c.dom.Document;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -108,13 +110,11 @@ public final class StableCaptionBlocks {
         }
     }
 
-    public static void setRequest(Object request) {
+    public static void setTrack(Object track) {
         parsing.remove();
         if (Build.VERSION.SDK_INT < 28) return;
         try {
-            if (request instanceof TranslatedCaptionPensPatch.CaptionRequestInterface r
-                    && r.patch_getCaptionTrack()
-                            instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface t
+            if (track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface t
                     && StableCaptionBlockPolicy.automatic(t.patch_getVssId(), t.patch_getUrl()))
                 parsing.set(new State());
         } catch (RuntimeException | LinkageError ignored) {
@@ -125,9 +125,9 @@ public final class StableCaptionBlocks {
         return parsing.get() != null;
     }
 
-    static void capture(byte[] bytes) {
+    static void capture(Document document) {
         State state = parsing.get();
-        if (state != null) state.policy = StableCaptionBlockPolicy.parse(bytes);
+        if (state != null) state.policy = StableCaptionBlockPolicy.parse(document);
     }
 
     public static State takeState() {
@@ -175,7 +175,10 @@ public final class StableCaptionBlocks {
         }
     }
 
-    /** Player subclasses may recreate cue placement; only marked ASR blocks use default center placement. */
+    /**
+     * Player subclasses may recreate cue placement; only marked ASR blocks use default center
+     * placement.
+     */
     public static List<?> centerBlocks(List<?> original) {
         if (original == null || original.size() != 1 || !(original.get(0) instanceof Cue cue))
             return original;
@@ -189,7 +192,9 @@ public final class StableCaptionBlocks {
         }
     }
 
-    /** Called before native window measurement, after its font/typeface/style have been configured. */
+    /**
+     * Called before native window measurement, after its font/typeface/style have been configured.
+     */
     public static void prepare(View view, int widthSpec, int heightSpec) {
         if (Build.VERSION.SDK_INT < 28) return;
         if (!(view instanceof Window window) || !(window.patch_getCaptionCue() instanceof Cue cue))
