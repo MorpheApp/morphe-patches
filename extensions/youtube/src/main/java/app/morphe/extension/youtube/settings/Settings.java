@@ -371,7 +371,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting POST_IMAGE_DOWNLOAD = new BooleanSetting("morphe_post_image_download", TRUE);
 
     // Post translate
-    public static final BooleanSetting POST_TRANSLATE = new BooleanSetting("morphe_post_translate", TRUE);
+    public static final BooleanSetting POST_TRANSLATE = new BooleanSetting("morphe_post_translate", TRUE, true);
     public static final StringSetting POST_TRANSLATE_LANGUAGE = new StringSetting("morphe_post_translate_language", "default", parent(POST_TRANSLATE));
 
     // Feed view count

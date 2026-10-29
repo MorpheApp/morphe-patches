@@ -96,9 +96,6 @@ public final class PostTranslatePatch {
             ? new String[]{"yt_outline_experimental_translate_vd_theme_24", "yt_outline_translate_black_24"}
             : new String[]{"yt_outline_translate_black_24", "yt_outline_experimental_translate_vd_theme_24"};
 
-    /** Value of the language setting that uses the language of the app. */
-    private static final String APP_LANGUAGE = "default";
-
     private static final String GOOGLE_TRANSLATE_PACKAGE = "com.google.android.apps.translate";
 
     private static final int MIN_TEXT_LENGTH = 2;
@@ -127,7 +124,7 @@ public final class PostTranslatePatch {
     private static final Map<String, String> postTexts = Utils.createSizeRestrictedMap(MAX_TEXTS, true);
 
     /** Normalized original text -> its translation. */
-    @GuardedBy("translations")
+    @GuardedBy("itself")
     private static final Map<String, String> translations = Utils.createSizeRestrictedMap(MAX_TRANSLATIONS, true);
 
     /** Normalized translation -> the normalized original text. */
@@ -155,10 +152,11 @@ public final class PostTranslatePatch {
     /**
      * The text of a post.
      *
-     * @param original The whole text, with its line breaks.
-     * @param key      The normalized whole text.
+     * @param original          The whole text, with its line breaks.
+     * @param key               The normalized whole text.
+     * @param showsTranslation  If the shown text is the translation.
      */
-    private record PostText(ShownText shown, String original, String key) {
+    private record PostText(ShownText shown, String original, String key, boolean showsTranslation) {
     }
 
     /**
@@ -167,20 +165,13 @@ public final class PostTranslatePatch {
     private record DrawableFields(Field layout, Field text, List<Field> spans) {
     }
 
-    private static final class TranslatedDrawable {
-        final Layout originalLayout;
-        final CharSequence originalText;
-        final Map<Field, Object> originalSpans = new HashMap<>();
-        final Layout translatedLayout;
-        final String key;
-
-        TranslatedDrawable(Layout originalLayout, CharSequence originalText,
-                           Layout translatedLayout, String key) {
-            this.originalLayout = originalLayout;
-            this.originalText = originalText;
-            this.translatedLayout = translatedLayout;
-            this.key = key;
-        }
+    /**
+     * What a drawable that shows a translation showed before.
+     *
+     * @param originalSpans Span field -> the spans of the original text.
+     */
+    private record TranslatedDrawable(Layout originalLayout, CharSequence originalText,
+                                      Map<Field, Object> originalSpans, Layout translatedLayout, String key) {
     }
 
     public static boolean isPatchIncluded() {
@@ -239,10 +230,13 @@ public final class PostTranslatePatch {
                 return bytes;
             }
 
+            // Post texts with line breaks are not parsed as text fields.
+            List<String> texts = ProtoNode.texts(root);
+
             String identifier = null;
-            for (ProtoNode node : ProtoNode.textNodes(root)) {
-                if (node.getText().contains(".eml")) {
-                    identifier = node.getText();
+            for (String text : texts) {
+                if (text.contains(".eml")) {
+                    identifier = text;
                     break;
                 }
             }
@@ -250,8 +244,6 @@ public final class PostTranslatePatch {
                 return bytes;
             }
 
-            List<String> texts = new ArrayList<>();
-            collectTexts(root, texts);
             synchronized (postTexts) {
                 for (String text : texts) {
                     String key = normalize(text);
@@ -264,46 +256,6 @@ public final class PostTranslatePatch {
             Logger.printException(() -> "onElementLoaded failure", ex);
         }
         return bytes;
-    }
-
-    /**
-     * Collects the texts of the message, including the texts with line breaks,
-     * which are not parsed as texts.
-     */
-    private static void collectTexts(List<ProtoNode> message, List<String> texts) {
-        for (ProtoNode node : message) {
-            if (node.isText()) {
-                texts.add(node.getText());
-                continue;
-            }
-            if (node.children != null) {
-                collectTexts(node.children, texts);
-            }
-            String text = getMultiLineText(node);
-            if (text != null) {
-                texts.add(text);
-            }
-        }
-    }
-
-    @Nullable
-    private static String getMultiLineText(ProtoNode node) {
-        String text;
-        try {
-            text = node.decodeUtf8();
-        } catch (Exception ex) {
-            return null;
-        }
-        if (text.length() < MIN_TEXT_LENGTH || text.indexOf('\n') < 0 || text.indexOf('�') >= 0) {
-            return null;
-        }
-        for (int i = 0, length = text.length(); i < length; i++) {
-            final char c = text.charAt(i);
-            if (Character.isISOControl(c) && c != '\n' && c != '\r' && c != '\t') {
-                return null;
-            }
-        }
-        return text;
     }
 
     /**
@@ -403,7 +355,7 @@ public final class PostTranslatePatch {
     }
 
     private static boolean isLinkOrImage(Object span) {
-        return span instanceof ClickableSpan || span instanceof ImageSpan || span instanceof ReplacementSpan;
+        return span instanceof ClickableSpan || span instanceof ReplacementSpan;
     }
 
     @Nullable
@@ -626,7 +578,7 @@ public final class PostTranslatePatch {
                 return false;
             }
             TranslatedDrawable translated = translatedDrawables.get(drawable);
-            if (translated != null && translated.translatedLayout == layout) {
+            if (translated != null && translated.translatedLayout() == layout) {
                 return true; // Already shown.
             }
             // The drawable can be used again by another post while the text is translated.
@@ -638,15 +590,16 @@ public final class PostTranslatePatch {
 
             SpannableString translationText = createTranslationText(text, translation);
             Layout translatedLayout = createLayout(layout, translationText);
-            translated = new TranslatedDrawable(layout, text, translatedLayout, key);
+            Map<Field, Object> originalSpans = new HashMap<>();
             for (Field spanField : fields.spans()) {
-                translated.originalSpans.put(spanField, spanField.get(drawable));
+                originalSpans.put(spanField, spanField.get(drawable));
                 // The links and images of the original text are not in the translation.
                 spanField.set(drawable, Array.newInstance(spanField.getType().getComponentType(), 0));
             }
             fields.layout().set(drawable, translatedLayout);
             fields.text().set(drawable, translationText);
-            translatedDrawables.put(drawable, translated);
+            translatedDrawables.put(drawable,
+                    new TranslatedDrawable(layout, text, originalSpans, translatedLayout, key));
             drawable.invalidateSelf();
             return true;
         } catch (Exception ex) {
@@ -669,10 +622,10 @@ public final class PostTranslatePatch {
                 return;
             }
             TranslatedDrawable translated = translatedDrawables.remove(drawable);
-            if (translated != null && translated.translatedLayout == layout) {
-                fields.layout().set(drawable, translated.originalLayout);
-                fields.text().set(drawable, translated.originalText);
-                for (Map.Entry<Field, Object> entry : translated.originalSpans.entrySet()) {
+            if (translated != null && translated.translatedLayout() == layout) {
+                fields.layout().set(drawable, translated.originalLayout());
+                fields.text().set(drawable, translated.originalText());
+                for (Map.Entry<Field, Object> entry : translated.originalSpans().entrySet()) {
                     entry.getKey().set(drawable, entry.getValue());
                 }
             } else {
@@ -725,8 +678,8 @@ public final class PostTranslatePatch {
             String text = shown.text().trim();
             String original;
             String key = getOriginalKey(text);
-            if (key != null) {
-                // The text shows a translation.
+            final boolean showsTranslation = key != null;
+            if (showsTranslation) {
                 synchronized (postTexts) {
                     original = postTexts.get(key);
                 }
@@ -743,7 +696,7 @@ public final class PostTranslatePatch {
                 }
                 key = normalize(original);
             }
-            candidates.add(new PostText(shown, original, key));
+            candidates.add(new PostText(shown, original, key, showsTranslation));
         }
         if (candidates.isEmpty()) {
             return null;
@@ -879,7 +832,7 @@ public final class PostTranslatePatch {
                 return index;
             }
 
-            final boolean showsTranslation = getOriginalKey(postText.shown().text()) != null;
+            final boolean showsTranslation = postText.showsTranslation();
             final int nextIndex = FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
                     getTranslateIcon(),
@@ -911,13 +864,15 @@ public final class PostTranslatePatch {
      * @return The language the texts are translated to, as a Google Translate language code.
      */
     private static String getTargetLanguage() {
-        String language = Settings.POST_TRANSLATE_LANGUAGE.get();
-        if (language.isEmpty() || APP_LANGUAGE.equalsIgnoreCase(language)) {
+        String language;
+        if (Settings.POST_TRANSLATE_LANGUAGE.isSetToDefault()) {
             Configuration configuration = Utils.getContext().getResources().getConfiguration();
             Locale locale = configuration.getLocales().isEmpty()
                     ? Locale.getDefault()
                     : configuration.getLocales().get(0);
             language = getLanguageCode(locale);
+        } else {
+            language = Settings.POST_TRANSLATE_LANGUAGE.get();
         }
         return switch (language.toLowerCase(Locale.ROOT)) {
             case "fil" -> "tl";
@@ -1028,7 +983,7 @@ public final class PostTranslatePatch {
         }
         // Other drawables that show the translation, such as the same post in another feed.
         for (Map.Entry<Drawable, TranslatedDrawable> entry : new ArrayList<>(translatedDrawables.entrySet())) {
-            if (entry.getValue().key.equals(key)) {
+            if (entry.getValue().key().equals(key)) {
                 showOriginal(entry.getKey(), postText.original());
             }
         }
