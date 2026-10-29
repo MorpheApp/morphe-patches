@@ -490,6 +490,16 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_post_image_download_failed">Could not download the image</string>
     <string name="morphe_post_image_download_not_found">No image found in this post</string>
 
+    <!-- interaction.posttranslate.postTranslatePatch -->
+    <string name="morphe_post_translate_title">Translate posts</string>
+    <string name="morphe_post_translate_summary">A Translate item is added to the menu of posts with a text, which shows the translation in place of the text</string>
+    <string name="morphe_post_translate_language_title">Post translation language</string>
+    <string name="morphe_post_translate_flyout">Translate</string>
+    <string name="morphe_post_translate_flyout_original">Show original</string>
+    <string name="morphe_post_translate_started">Translating…</string>
+    <string name="morphe_post_translate_failed">Could not translate the post</string>
+    <string name="morphe_post_translate_same_language">The post is already in the translation language</string>
+
     <!-- interaction.ask.askFlyoutMenuPatch -->
     <string name="morphe_ask_summarize_flyout_menu_title">Add Ask item to flyout menu</string>
     <string name="morphe_ask_summarize_flyout_menu_summary">Adds a video summarize item to the feed flyout menu</string>

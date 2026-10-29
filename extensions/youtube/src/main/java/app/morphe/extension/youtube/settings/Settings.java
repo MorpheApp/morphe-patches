@@ -370,6 +370,10 @@ public class Settings extends SharedYouTubeSettings {
     // Post image download
     public static final BooleanSetting POST_IMAGE_DOWNLOAD = new BooleanSetting("morphe_post_image_download", TRUE);
 
+    // Post translate
+    public static final BooleanSetting POST_TRANSLATE = new BooleanSetting("morphe_post_translate", TRUE);
+    public static final StringSetting POST_TRANSLATE_LANGUAGE = new StringSetting("morphe_post_translate_language", "default", parent(POST_TRANSLATE));
+
     // Feed view count
     public static final BooleanSetting FEED_VIEW_COUNT = new BooleanSetting("morphe_feed_view_count", FALSE, true);
     public static final StringSetting FEED_VIEW_COUNT_PATHS = new StringSetting("morphe_feed_view_count_paths", "", false, false);

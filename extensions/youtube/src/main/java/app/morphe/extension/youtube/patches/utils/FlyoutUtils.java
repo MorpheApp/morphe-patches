@@ -63,6 +63,7 @@ import app.morphe.extension.youtube.patches.FeedVideoActionsPatch;
 import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.PictureinPictureButtonPatch;
 import app.morphe.extension.youtube.patches.PostImageDownloadPatch;
+import app.morphe.extension.youtube.patches.PostTranslatePatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoDelayPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -624,6 +625,15 @@ public final class FlyoutUtils {
         // Only added to the menus of posts with images.
         if (PostImageDownloadPatch.ENABLED) {
             nextButtonIndex = PostImageDownloadPatch.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    senderViewRef.get()
+            );
+        }
+
+        // Only added to the menus of posts with a text.
+        if (PostTranslatePatch.ENABLED) {
+            nextButtonIndex = PostTranslatePatch.addFlyoutButton(
                     flyoutPanel,
                     nextButtonIndex,
                     senderViewRef.get()
