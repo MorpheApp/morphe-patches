@@ -200,6 +200,48 @@ public final class ProtoNode {
                 : new String(bytes, valueStart, valueEnd - valueStart, StandardCharsets.UTF_8);
     }
 
+    /**
+     * @return The text of a length delimited field with line breaks, such as a post text,
+     *         which is not parsed as text, or null if the payload is not printable UTF-8 text
+     *         with line breaks.
+     */
+    @Nullable
+    public String getMultiLineText() {
+        if (text != null || !lengthDelimited) {
+            return null;
+        }
+        final byte[] data = payload != null ? payload : bytes;
+        final int start = payload != null ? 0 : valueStart;
+        final int end = payload != null ? payload.length : valueEnd;
+        // A message starts with the tag of its first field, which can be a line break.
+        if (end - start < 2 || (data[start] >= 0 && data[start] < 0x20)) {
+            return null;
+        }
+
+        boolean hasLineBreak = false;
+        for (int i = start; i < end; i++) {
+            final byte b = data[i];
+            if (b == '\n') {
+                hasLineBreak = true;
+            } else if ((b >= 0 && b < 0x20 && b != '\r' && b != '\t') || b == 0x7F) {
+                return null;
+            }
+        }
+        if (!hasLineBreak) {
+            return null;
+        }
+
+        try {
+            return StandardCharsets.UTF_8.newDecoder()
+                    .onMalformedInput(CodingErrorAction.REPORT)
+                    .onUnmappableCharacter(CodingErrorAction.REPORT)
+                    .decode(ByteBuffer.wrap(data, start, end - start))
+                    .toString();
+        } catch (CharacterCodingException ex) {
+            return null;
+        }
+    }
+
     public void setText(String text) {
         this.text = text;
         children = null;
@@ -320,6 +362,32 @@ public final class ProtoNode {
                 output.writeString(node.fieldNumber, node.text);
             } else if (node.varint != null) {
                 output.writeUInt64(node.fieldNumber, node.varint);
+            }
+        }
+    }
+
+    /**
+     * @return All texts of the message in order, including the texts with line breaks,
+     *         which are not parsed as text fields.
+     */
+    public static List<String> texts(List<ProtoNode> message) {
+        List<String> texts = new ArrayList<>();
+        addTexts(message, texts);
+        return texts;
+    }
+
+    private static void addTexts(List<ProtoNode> message, List<String> texts) {
+        for (ProtoNode node : message) {
+            if (node.text != null) {
+                texts.add(node.text);
+                continue;
+            }
+            if (node.children != null) {
+                addTexts(node.children, texts);
+            }
+            String multiLineText = node.getMultiLineText();
+            if (multiLineText != null) {
+                texts.add(multiLineText);
             }
         }
     }
