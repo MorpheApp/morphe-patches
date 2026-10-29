@@ -401,17 +401,7 @@ public class SegmentPlaybackController {
                 Logger.printDebug(() -> "Ignoring Short");
                 return;
             }
-            if (!Utils.isNetworkConnected()) {
-                if (SponsorBlockOfflineStorage.isOfflineEnabled() && SponsorBlockOfflineStorage.hasSegments(videoId)) {
-                    Logger.printDebug(() -> "Network not connected, loading offline segments for: " + videoId);
-                    currentVideoId = videoId;
-                    SponsorSegment[] offlineSegments = SponsorBlockOfflineStorage.loadSegments(videoId);
-                    if (offlineSegments != null && offlineSegments.length > 0) {
-                        setSegments(offlineSegments);
-                        setVideoTime(video().getVideoTime());
-                        return;
-                    }
-                }
+            if (!Utils.isNetworkConnected() && !SponsorBlockOfflineStorage.hasSavedSegments(videoId)) {
                 Logger.printDebug(() -> "Network not connected, ignoring video");
                 return;
             }
@@ -442,11 +432,15 @@ public class SegmentPlaybackController {
         Objects.requireNonNull(videoId);
         Utils.verifyOffMainThread();
 
-        SponsorSegment[] segments = SBRequester.getSegments(videoId);
-
-        if (segments.length > 0 && SponsorBlockOfflineStorage.isOfflineEnabled()
-                && SponsorBlockOfflineStorage.hasSegments(videoId)) {
-            SponsorBlockOfflineStorage.saveSegments(videoId, segments);
+        SponsorSegment[] segments;
+        if (Utils.isNetworkConnected()) {
+            segments = SBRequester.getSegments(videoId);
+            // Keep the saved segments of downloaded videos up to date.
+            if (segments.length > 0 && SponsorBlockOfflineStorage.hasSavedSegments(videoId)) {
+                SponsorBlockOfflineStorage.saveSegments(videoId, segments);
+            }
+        } else {
+            segments = SponsorBlockOfflineStorage.loadSegments(videoId);
         }
 
         Utils.runOnMainThread(() -> {

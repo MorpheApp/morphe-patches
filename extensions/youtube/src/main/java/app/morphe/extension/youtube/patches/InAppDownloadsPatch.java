@@ -25,7 +25,6 @@ import java.util.concurrent.TimeUnit;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.patches.DownloadMode;
-import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
@@ -159,7 +158,6 @@ public final class InAppDownloadsPatch {
             }
 
             Logger.printDebug(() -> "Replacing download action with saving the video: " + videoId);
-            SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
             return saveVideoCommand(videoId, List.of()).toByteArray();
         } catch (Exception ex) {
             Logger.printException(() -> "replaceDownloadActionCommand failure", ex);

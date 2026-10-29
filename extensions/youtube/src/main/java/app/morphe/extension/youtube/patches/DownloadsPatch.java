@@ -10,13 +10,10 @@
 
 package app.morphe.extension.youtube.patches;
 
-import androidx.annotation.Nullable;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
-import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.videoplayer.ExternalDownloadButton;
 
@@ -38,29 +35,6 @@ public final class DownloadsPatch {
      * Appears to always be called from the main thread.
      */
     public static boolean inAppDownloadButtonOnClick(String videoId) {
-        return inAppDownloadButtonOnClick(videoId, null);
-    }
-
-    /**
-     * Injection point.
-     *
-     * @param videoId Video ID being acted upon.
-     * @param action Offline video action enum (e.g. ACTION_ADD, ACTION_REMOVE).
-     * @return If the action was handled by an external downloader.
-     */
-    public static boolean inAppDownloadButtonOnClick(String videoId, @Nullable Enum<?> action) {
-        try {
-            if (action != null) {
-                String actionName = action.name();
-                if (actionName.contains("REMOVE")) {
-                    SponsorBlockOfflineStorage.deleteSegments(videoId);
-                } else if (actionName.equals("ACTION_ADD") && !isDownloadModeHandledByMorphe()) {
-                    SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Error handling offline video endpoint action", ex);
-        }
         return downloadVideo(videoId);
     }
 
