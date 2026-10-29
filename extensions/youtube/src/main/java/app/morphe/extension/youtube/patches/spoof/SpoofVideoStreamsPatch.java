@@ -6,6 +6,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch;
 import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch.VideoCodec;
+import app.morphe.extension.youtube.patches.InAppDownloadsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -29,6 +30,9 @@ public class SpoofVideoStreamsPatch {
      * Injection point.
      */
     public static void setClientOrderToUse() {
+        app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setOfflineResponseResolver(
+                InAppDownloadsPatch::isOfflinePlayerResponse);
+
         ClientType client = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
 
         // Use [Android XR, Android XR Downgraded, visonOS 1.03] client that has AV1 if user settings allow it.

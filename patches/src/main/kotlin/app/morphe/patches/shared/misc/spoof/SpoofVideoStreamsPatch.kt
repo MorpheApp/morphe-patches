@@ -260,7 +260,7 @@ internal fun spoofVideoStreamsPatch(
                             if-eqz v2, :disabled
     
                             # Get streaming data.
-                            invoke-static { v2 }, $EXTENSION_CLASS->getStreamingData(Ljava/lang/String;)[B
+                            invoke-static { v2, p2 }, $EXTENSION_CLASS->getStreamingData(Ljava/lang/String;Ljava/lang/Object;)[B
                             move-result-object v3
                             if-eqz v3, :disabled
     

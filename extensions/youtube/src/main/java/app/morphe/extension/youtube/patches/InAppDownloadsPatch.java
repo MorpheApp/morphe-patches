@@ -11,6 +11,7 @@ package app.morphe.extension.youtube.patches;
 import android.net.Uri;
 import android.util.Base64;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.protobuf.ByteString;
@@ -240,6 +241,26 @@ public final class InAppDownloadsPatch {
             Logger.printException(() -> "replaceOfflineUpsell failure", ex);
             return null;
         }
+    }
+
+    /**
+     * Determines whether the given player response proto represents a playable offline video.
+     */
+    public static boolean isOfflinePlayerResponse(@NonNull String videoId, @Nullable Object playerProto) {
+        try {
+            if (!(playerProto instanceof MessageLite message)) {
+                return false;
+            }
+            OfflinePlayerResponse response = OfflinePlayerResponse.parseFrom(message.toByteArray());
+            if (response.hasOfflineState()
+                    && response.getOfflineState().getActionValue() == OfflineStateAction.OFFLINE_STATE_ACTION_OK_VALUE) {
+                Logger.printDebug(() -> "Detected playable offline video: " + videoId);
+                return true;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "isOfflinePlayerResponse failure", ex);
+        }
+        return false;
     }
 
     /**

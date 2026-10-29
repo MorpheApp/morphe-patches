@@ -237,6 +237,29 @@ public class SpoofVideoStreamsPatch {
         }
     }
 
+    public interface OfflineResponseResolver {
+        boolean isOffline(@NonNull String videoId, @Nullable Object playerProto);
+    }
+
+    @Nullable
+    private static volatile OfflineResponseResolver offlineResponseResolver;
+
+    public static void setOfflineResponseResolver(@Nullable OfflineResponseResolver resolver) {
+        offlineResponseResolver = resolver;
+    }
+
+    private static boolean isOfflinePlayerResponse(@NonNull String videoId, @Nullable Object playerProto) {
+        try {
+            OfflineResponseResolver resolver = offlineResponseResolver;
+            if (resolver != null) {
+                return resolver.isOffline(videoId, playerProto);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "isOfflinePlayerResponse failure", ex);
+        }
+        return false;
+    }
+
     /**
      * Injection point.
      */
@@ -368,9 +391,19 @@ public class SpoofVideoStreamsPatch {
      */
     @Nullable
     public static byte[] getStreamingData(String videoId) {
+        return getStreamingData(videoId, null);
+    }
+
+    @Nullable
+    public static byte[] getStreamingData(String videoId, @Nullable Object playerProto) {
         if (SPOOF_VIDEO_STREAMS) {
             if (Boolean.TRUE.equals(keepStreamsOnThread.get())) {
                 Logger.printDebug(() -> "Keeping the streams of the player response: " + videoId);
+                return null;
+            }
+
+            if (isOfflinePlayerResponse(videoId, playerProto)) {
+                Logger.printDebug(() -> "Not overriding streaming data (saved offline video): " + videoId);
                 return null;
             }
 
