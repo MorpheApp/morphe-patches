@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import app.morphe.extension.shared.Logger;
+
 /**
  * Field of a proto message parsed without a schema.
  * <p>
@@ -164,6 +166,8 @@ public final class ProtoNode {
             }
             return text;
         } catch (CharacterCodingException ex) {
+            Logger.printDebug(() -> "Could not decode bytes: " +
+                    Arrays.toString(Arrays.copyOfRange(bytes, start, end)), ex);
             return null;
         }
     }
@@ -238,6 +242,8 @@ public final class ProtoNode {
                     .decode(ByteBuffer.wrap(data, start, end - start))
                     .toString();
         } catch (CharacterCodingException ex) {
+            Logger.printDebug(() -> "Could not decode bytes: " +
+                    Arrays.toString(Arrays.copyOfRange(data, start, end)), ex);
             return null;
         }
     }
