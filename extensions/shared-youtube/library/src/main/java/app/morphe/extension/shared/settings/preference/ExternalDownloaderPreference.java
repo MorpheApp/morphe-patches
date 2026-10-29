@@ -555,4 +555,9 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
 
         return true;
     }
+
+    @Override
+    public boolean tracksNewEntries() {
+        return false; // Entries depend on the installed apps.
+    }
 }

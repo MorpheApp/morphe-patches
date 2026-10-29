@@ -88,4 +88,9 @@ public class SwipeVolumeStepsPreference extends CustomDialogListPreference {
         setEntries(shownEntries.toArray(new CharSequence[0]));
         setEntryValues(shownValues.toArray(new CharSequence[0]));
     }
+
+    @Override
+    public boolean tracksNewEntries() {
+        return false; // Entries depend on the volume levels of the device.
+    }
 }

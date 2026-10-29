@@ -275,6 +275,11 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.MISC.addPreferences(
+            NonInteractivePreference(
+                key = "morphe_settings_new_indicator_days",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                selectable = true
+            ),
             TextPreference(
                 key = null,
                 titleKey = "morphe_pref_import_export_title",
