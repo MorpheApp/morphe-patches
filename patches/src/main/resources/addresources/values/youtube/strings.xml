@@ -492,7 +492,7 @@ Reports are public and are reviewed before a channel is added to a list. Removal
 
     <!-- interaction.posttranslate.postTranslatePatch -->
     <string name="morphe_post_translate_title">Translate posts</string>
-    <string name="morphe_post_translate_summary">A Translate item is added to the menu of posts with a text, which shows the translation in place of the text</string>
+    <string name="morphe_post_translate_summary">Adds a flyout menu item to translate content creator posts</string>
     <string name="morphe_post_translate_language_title">Post translation language</string>
     <string name="morphe_post_translate_flyout">Translate</string>
     <string name="morphe_post_translate_flyout_original">Show original</string>
