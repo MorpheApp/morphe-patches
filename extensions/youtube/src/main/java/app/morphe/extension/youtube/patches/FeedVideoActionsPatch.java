@@ -230,6 +230,13 @@ public final class FeedVideoActionsPatch {
             }
         }
 
+        void removeBadge(ComponentHost host) {
+            if (badgeAdded) {
+                host.getOverlay().remove(badge);
+                badgeAdded = false;
+            }
+        }
+
         boolean isBadgeHit(ComponentHost host, float x, float y) {
             if (!badgeAdded || FeedVideoCardsPatch.isCardPlayingInline(host)
                     || FeedVideoCardsPatch.isPlaylistCard(host)) {
@@ -371,21 +378,9 @@ public final class FeedVideoActionsPatch {
     }
 
     private static boolean hasVideoBadge(ComponentHost root, View view, int thumbnailBottom, Rect rect) {
-        List<CharSequence> texts = null;
-        if (view instanceof ComponentHost host) {
-            TextContent textContent = host.getTextContent();
-            if (textContent != null) {
-                texts = textContent.getTextItems();
-            }
-        } else if (view instanceof TextView textView) {
-            texts = List.of(textView.getText());
-        }
-
+        List<CharSequence> texts = getTexts(view);
         if (texts != null && !texts.isEmpty()) {
-            rect.set(0, 0, view.getWidth(), view.getHeight());
-            if (view != root) {
-                root.offsetDescendantRectToMyCoords(view, rect);
-            }
+            setRectInRoot(root, view, rect);
             final boolean inThumbnail = rect.bottom <= thumbnailBottom;
 
             for (CharSequence text : texts) {
@@ -413,28 +408,38 @@ public final class FeedVideoActionsPatch {
     }
 
     /**
+     * @return The texts drawn by the view itself, or null if it draws none.
+     */
+    @Nullable
+    private static List<CharSequence> getTexts(View view) {
+        if (view instanceof ComponentHost host) {
+            TextContent textContent = host.getTextContent();
+            return textContent == null ? null : textContent.getTextItems();
+        }
+        if (view instanceof TextView textView) {
+            return List.of(textView.getText());
+        }
+        return null;
+    }
+
+    private static void setRectInRoot(ComponentHost root, View view, Rect rect) {
+        rect.set(0, 0, view.getWidth(), view.getHeight());
+        if (view != root) {
+            root.offsetDescendantRectToMyCoords(view, rect);
+        }
+    }
+
+    /**
      * @return The bottom of the lowest duration badge in the host, or -1 if none is shown.
      */
     private static int findDurationBottom(ComponentHost root, View view, Rect rect) {
         int bottom = -1;
-        List<CharSequence> texts = null;
-        if (view instanceof ComponentHost host) {
-            TextContent textContent = host.getTextContent();
-            if (textContent != null) {
-                texts = textContent.getTextItems();
-            }
-        } else if (view instanceof TextView textView) {
-            texts = List.of(textView.getText());
-        }
-
+        List<CharSequence> texts = getTexts(view);
         if (texts != null) {
             for (CharSequence text : texts) {
                 if (text != null && DURATION_PATTERN.matcher(text.toString().trim()).matches()) {
-                    rect.set(0, 0, view.getWidth(), view.getHeight());
-                    if (view != root) {
-                        root.offsetDescendantRectToMyCoords(view, rect);
-                    }
-                    bottom = Math.max(bottom, rect.bottom);
+                    setRectInRoot(root, view, rect);
+                    bottom = rect.bottom;
                     break;
                 }
             }
@@ -456,23 +461,19 @@ public final class FeedVideoActionsPatch {
      *         and the text of a post above its video.
      */
     private static boolean hasTextAbove(ComponentHost root, View view, int y, Rect rect) {
-        if (view instanceof ComponentHost host) {
-            TextContent textContent = host.getTextContent();
-            if (textContent != null) {
-                for (CharSequence text : textContent.getTextItems()) {
-                    if (text != null && LETTERS_PATTERN.matcher(text).find()) {
-                        rect.set(0, 0, view.getWidth(), view.getHeight());
-                        if (view != root) {
-                            root.offsetDescendantRectToMyCoords(view, rect);
-                        }
-                        if (rect.bottom <= y) {
-                            return true;
-                        }
-                        break;
+        List<CharSequence> texts = getTexts(view);
+        if (texts != null) {
+            for (CharSequence text : texts) {
+                if (text != null && LETTERS_PATTERN.matcher(text).find()) {
+                    setRectInRoot(root, view, rect);
+                    if (rect.bottom <= y) {
+                        return true;
                     }
+                    break;
                 }
             }
         }
+
         if (view instanceof ViewGroup group) {
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
                 View child = group.getChildAt(i);
@@ -504,8 +505,7 @@ public final class FeedVideoActionsPatch {
 
         // Live videos have no duration. The thumbnail is above the menu button,
         // and at most as tall as it is wide.
-        rect.set(0, 0, menuButton.getWidth(), menuButton.getHeight());
-        host.offsetDescendantRectToMyCoords(menuButton, rect);
+        setRectInRoot(host, menuButton, rect);
         final int highestTop = rect.top - width - dp(host, MAX_MENU_BUTTON_BELOW_THUMBNAIL_DP);
         return highestTop > 0 && hasTextAbove(host, host, highestTop, rect) ? -1 : 0;
     }
@@ -515,7 +515,7 @@ public final class FeedVideoActionsPatch {
      */
     private static String getLanguage(View view) {
         LocaleList locales = view.getResources().getConfiguration().getLocales();
-        return locales.isEmpty() ? "" : locales.get(0).toLanguageTag();
+        return (locales.isEmpty() ? Locale.getDefault() : locales.get(0)).toLanguageTag();
     }
 
     /**
@@ -616,8 +616,7 @@ public final class FeedVideoActionsPatch {
      * of posts, never are.
      */
     @Nullable
-    private static View findMenuButton(ComponentHost root) {
-        String learned = getLearnedPattern(root);
+    private static View findMenuButton(ComponentHost root, String learned) {
         List<String> videoTexts = learned.isEmpty() ? List.of() : collectVideoTexts(root);
         View[] bestMatch = new View[1];
         if (findMenuButton(root, root, learned, videoTexts, new Rect(), bestMatch)) {
@@ -660,12 +659,15 @@ public final class FeedVideoActionsPatch {
     @Nullable
     private static VideoCard updateCard(ComponentHost host) {
         VideoCard card = cards.get(host);
-        View menuButton = isVideoShaped(host) ? findMenuButton(host) : null;
-        // Until the menu button is learned, buttons are found only by their shape,
-        // which posts with an image also have, so only videos with a badge are used.
-        if (menuButton != null && getLearnedPattern(host).isEmpty()
-                && !hasVideoBadge(host)) {
-            menuButton = null;
+        View menuButton = null;
+        if (isVideoShaped(host)) {
+            String learned = getLearnedPattern(host);
+            menuButton = findMenuButton(host, learned);
+            // Until the menu button is learned, buttons are found only by their shape,
+            // which posts with an image also have, so only videos with a badge are used.
+            if (menuButton != null && learned.isEmpty() && !hasVideoBadge(host)) {
+                menuButton = null;
+            }
         }
 
         if (menuButton == null) {
@@ -677,10 +679,7 @@ public final class FeedVideoActionsPatch {
                 if (card.badgeAdded && isVideoShaped(host) && FeedVideoCardsPatch.scheduleScrollCheck(host)) {
                     return card;
                 }
-                if (card.badgeAdded) {
-                    host.getOverlay().remove(card.badge);
-                    card.badgeAdded = false;
-                }
+                card.removeBadge(host);
                 cards.remove(host);
             }
             return null;
@@ -696,14 +695,13 @@ public final class FeedVideoActionsPatch {
             final int thumbnailTop = findThumbnailTop(host, menuButton);
             // Litho mounts only the part of a card that is shown, so the duration badge
             // may not be mounted. The thumbnail of the same video does not move.
-            if (thumbnailTop >= 0 || card.thumbnailTop < 0 || !sameMenuButton) {
+            if (thumbnailTop >= 0 || !sameMenuButton) {
                 card.thumbnailTop = thumbnailTop;
             }
             if (card.thumbnailTop >= 0) {
                 card.placeBadge(host);
-            } else if (card.badgeAdded) {
-                host.getOverlay().remove(card.badge);
-                card.badgeAdded = false;
+            } else {
+                card.removeBadge(host);
             }
         }
         return card;
@@ -1088,10 +1086,11 @@ public final class FeedVideoActionsPatch {
         if (pattern.isEmpty()) {
             return;
         }
-        if (!pattern.equals(getLearnedPattern(root))) {
-            Logger.printDebug(() -> "Learned feed menu button pattern: " + pattern
+        String learned = getLanguage(root) + LANGUAGE_SEPARATOR + pattern;
+        if (!learned.equals(Settings.FEED_MENU_BUTTON_DESCRIPTION.get())) {
+            Logger.printDebug(() -> "Learned feed menu button pattern: " + learned
                     + " (description: " + description + ")");
-            Settings.FEED_MENU_BUTTON_DESCRIPTION.save(getLanguage(root) + LANGUAGE_SEPARATOR + pattern);
+            Settings.FEED_MENU_BUTTON_DESCRIPTION.save(learned);
         }
     }
 
