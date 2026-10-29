@@ -1046,7 +1046,7 @@ public class Settings extends SharedYouTubeSettings {
             RESTORE_OLD_PLAYER_BUTTONS.resetToDefault();
         }
 
-        // The glow startup animation requires 21.39+, and Glow Morphe requires 21.30+.
+        // The glow startup animation requires 21.39+, and Morphe Glow requires 21.30+.
         SplashScreenAnimationStyle splashScreenStyle = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
         if (splashScreenStyle == SplashScreenAnimationStyle.RIVE_GLOW && !VersionCheckPatch.IS_21_39_OR_GREATER
                 || splashScreenStyle.isRiveGlowMorphe() && !VersionCheckPatch.IS_21_30_OR_GREATER) {

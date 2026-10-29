@@ -21,15 +21,15 @@
     <string-array name="morphe_splash_screen_style_entries">
         <item>@string/morphe_splash_screen_style_entry_1</item>
         <item>@string/morphe_splash_screen_style_entry_2</item>
-        <item>@string/morphe_splash_screen_style_entry_3</item>
         <item>@string/morphe_splash_screen_style_entry_4</item>
+        <item>@string/morphe_splash_screen_style_entry_3</item>
         <item>@string/morphe_splash_screen_style_entry_5</item>
     </string-array>
     <string-array name="morphe_splash_screen_style_entry_values">
         <item>DISABLED</item>
         <item>FPS_60_ONE_SECOND</item>
-        <item>MORPHE_COLOR</item>
         <item>FPS_60_BLACK_AND_WHITE</item>
+        <item>MORPHE_COLOR</item>
         <item>MORPHE_MONOCHROME</item>
     </string-array>
 

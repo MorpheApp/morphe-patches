@@ -14,7 +14,7 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
 /**
- * Adds the animations of the Glow Morphe 1 and 2 splash screen styles: the Morphe logo comes into
+ * Adds the animations of the Morphe Glow 1 and 2 splash screen styles: the Morphe logo comes into
  * focus out of a glow. Each has a dark and a light theme animation.
  */
 internal val glowMorpheAnimationResourcePatch = resourcePatch {

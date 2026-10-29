@@ -61,7 +61,7 @@ public class SplashAnimationPatch {
          */
         RIVE_GLOW_MORPHE(1, false),
         /**
-         * Another Glow Morphe animation, the same as {@link #RIVE_GLOW_MORPHE} except for the animation played.
+         * Another Morphe Glow animation, the same as {@link #RIVE_GLOW_MORPHE} except for the animation played.
          */
         RIVE_GLOW_MORPHE_2(1, false),
         /**

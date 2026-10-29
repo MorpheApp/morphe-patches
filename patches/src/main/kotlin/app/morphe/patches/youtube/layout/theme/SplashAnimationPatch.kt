@@ -151,7 +151,7 @@ val splashAnimationPatch = bytecodePatch {
             }
 
             // 21.39+ plays the glow animation if this flag is on, and otherwise the startup animation
-            // of the light or the dark theme, which the Glow Morphe style replaces. Before 21.39 the flag
+            // of the light or the dark theme, which the Morphe Glow style replaces. Before 21.39 the flag
             // selects the older Rive view, which crashes because its library is not included.
             RiveGlowSplashScreenFeatureFlagFingerprint.matchAll().forEach {
                 if (is_21_39_or_greater) {

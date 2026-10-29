@@ -221,71 +221,71 @@ public class ThemePatch extends BaseThemePatch {
     private static volatile boolean riveSplashScreenFirstStart;
 
     /**
-     * How long the Glow Morphe animation plays from its first frame until the splash screen closes.
+     * How long the Morphe Glow animation plays from its first frame until the splash screen closes.
      * The animation ends after 1.3 seconds, and the timeout of the app would keep it longer.
      */
     private static final long RIVE_GLOW_MORPHE_DURATION_MILLISECONDS = 1400;
 
     /**
-     * Closes the splash screen when the Glow Morphe animation has played,
+     * Closes the splash screen when the Morphe Glow animation has played,
      * or null if the animation is not waiting for its first frame.
      */
     @Nullable
     private static volatile Runnable riveGlowMorpheSplashScreenCloser;
 
     /**
-     * The Glow Morphe 1 animation for the dark theme, which is played in place of the startup
+     * The Morphe Glow 1 animation for the dark theme, which is played in place of the startup
      * animation of the app. It has the same backdrop and artboard size as the glow animation, so it is changed the same
      * way, and it fades in by itself.
      */
     private static final String RIVE_GLOW_MORPHE_1_DARK_RESOURCE = "morphe_startup_animation_glow_1_dark";
 
     /**
-     * The Glow Morphe 1 animation for the light theme, with the same glow colors as the dark theme
+     * The Morphe Glow 1 animation for the light theme, with the same glow colors as the dark theme
      * animation but less bright.
      */
     private static final String RIVE_GLOW_MORPHE_1_LIGHT_RESOURCE = "morphe_startup_animation_glow_1_light";
 
     /**
-     * The Glow Morphe 1 animation for the dark theme with the Morphe play icon,
+     * The Morphe Glow 1 animation for the dark theme with the Morphe play icon,
      * played if the launcher icon is the play icon.
      */
     private static final String RIVE_GLOW_MORPHE_1_PLAY_DARK_RESOURCE = "morphe_startup_animation_glow_1_play_dark";
 
     /**
-     * The Glow Morphe 1 play animation for the light theme, with a less bright glow.
+     * The Morphe Glow 1 play animation for the light theme, with a less bright glow.
      */
     private static final String RIVE_GLOW_MORPHE_1_PLAY_LIGHT_RESOURCE = "morphe_startup_animation_glow_1_play_light";
 
     /**
-     * The Glow Morphe 2 animation for the dark theme, which is played in place of the startup animation of the app.
+     * The Morphe Glow 2 animation for the dark theme, which is played in place of the startup animation of the app.
      */
     private static final String RIVE_GLOW_MORPHE_2_DARK_RESOURCE = "morphe_startup_animation_glow_2_dark";
 
     /**
-     * The Glow Morphe 2 animation for the light theme, with a less bright glow.
+     * The Morphe Glow 2 animation for the light theme, with a less bright glow.
      */
     private static final String RIVE_GLOW_MORPHE_2_LIGHT_RESOURCE = "morphe_startup_animation_glow_2_light";
 
     /**
-     * The Glow Morphe 2 animation for the dark theme with the Morphe play icon,
+     * The Morphe Glow 2 animation for the dark theme with the Morphe play icon,
      * played if the launcher icon is the play icon.
      */
     private static final String RIVE_GLOW_MORPHE_2_PLAY_DARK_RESOURCE = "morphe_startup_animation_glow_2_play_dark";
 
     /**
-     * The Glow Morphe 2 play animation for the light theme, with a less bright glow.
+     * The Morphe Glow 2 play animation for the light theme, with a less bright glow.
      */
     private static final String RIVE_GLOW_MORPHE_2_PLAY_LIGHT_RESOURCE = "morphe_startup_animation_glow_2_play_light";
 
     /**
-     * The Glow Morphe 2 animations are made for the square view, and have no backdrop.
+     * The Morphe Glow 2 animations are made for the square view, and have no backdrop.
      */
     private static final float RIVE_GLOW_MORPHE_2_ARTBOARD_WIDTH = 432;
     private static final float RIVE_GLOW_MORPHE_2_ARTBOARD_HEIGHT = 432;
 
     /**
-     * The artboard size of the Glow Morphe 2 animations, as it is written in the Rive file.
+     * The artboard size of the Morphe Glow 2 animations, as it is written in the Rive file.
      */
     private static final byte[] RIVE_GLOW_MORPHE_2_ARTBOARD_SIZE = {
             0x07, 0x00, 0x00, (byte) 0xD8, 0x43,
@@ -299,7 +299,7 @@ public class ThemePatch extends BaseThemePatch {
     }
 
     /**
-     * If the glow animation of the app is played. Otherwise, the Glow Morphe styles
+     * If the glow animation of the app is played. Otherwise, the Morphe Glow styles
      * play their own animation in place of the startup animation of the app.
      */
     private static boolean isRiveGlowStyle() {
@@ -308,7 +308,7 @@ public class ThemePatch extends BaseThemePatch {
 
     /**
      * If the animation played has the backdrop and artboard size of the glow animation of the app:
-     * the glow animation, or the Glow Morphe 1 animation.
+     * the glow animation, or the Morphe Glow 1 animation.
      */
     private static boolean isRiveGlowLayout() {
         SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
@@ -338,7 +338,7 @@ public class ThemePatch extends BaseThemePatch {
 
     /**
      * The Rive file of the splash screen: the glow animation of the app for the glow style,
-     * and the startup animation of the light or the dark theme for the Glow Morphe styles.
+     * and the startup animation of the light or the dark theme for the Morphe Glow styles.
      */
     private static boolean isRiveSplashScreenFile(int resourceId) {
         if (isRiveGlowStyle()) {
@@ -565,7 +565,7 @@ public class ThemePatch extends BaseThemePatch {
      * <p>
      * A home feed that is shown quickly closes the glow animation before it has drawn
      * anything, so on the first start the timeout of the app closes it instead.
-     * The Glow Morphe animation is shorter, and closes when it has played.
+     * The Morphe Glow animation is shorter, and closes when it has played.
      * Stopping the app cancels the timeout, and then the home feed closes it as usual.
      *
      * @param splashScreen       Removes the splash screen when run.
@@ -630,7 +630,7 @@ public class ThemePatch extends BaseThemePatch {
      * <p>
      * Called when the app reads the Rive file of a raw resource it has not cached yet.
      * The splash screen reads its file after the background and size are set.
-     * The Glow Morphe styles play their own animation in place of the startup animation of the app.
+     * The Morphe Glow styles play their own animation in place of the startup animation of the app.
      *
      * @param fileBytes  The Rive file of a raw resource, or null if it could not be read.
      * @param resourceId The raw resource the file was read from.
@@ -654,7 +654,7 @@ public class ThemePatch extends BaseThemePatch {
                         == ResourceUtils.getIdentifier(ResourceType.RAW, "rive_startup_animation_light");
 
                 if (!isRiveGlowLayout()) {
-                    // The Glow Morphe 2 animations have no backdrop, and fade in by themselves.
+                    // The Morphe Glow 2 animations have no backdrop, and fade in by themselves.
                     final String resourceName;
                     if (CustomBrandingPatch.iconIsPlay()) {
                         resourceName = lightTheme
@@ -695,7 +695,7 @@ public class ThemePatch extends BaseThemePatch {
                         RIVE_GLOW_ARTBOARD_WIDTH, RIVE_GLOW_ARTBOARD_HEIGHT, artboardWidth, artboardHeight);
             }
 
-            // The Glow Morphe 1 animation fades in by itself.
+            // The Morphe Glow 1 animation fades in by itself.
             if (!isRiveGlowStyle()) {
                 return fileBytes;
             }
