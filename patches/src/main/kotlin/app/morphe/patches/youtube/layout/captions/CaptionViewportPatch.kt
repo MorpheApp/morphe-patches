@@ -16,7 +16,6 @@ import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CaptionViewportPatch;"
@@ -28,9 +27,7 @@ internal val captionViewportPatch = bytecodePatch(
 
     execute {
         if (!is_21_10_or_greater) {
-            return@execute Logger.getLogger(this::class.java.name).warning(
-                "Caption viewport sizing requires YouTube 21.10+"
-            )
+            return@execute
         }
 
         hookVideoId("$EXTENSION_CLASS->onVideoId(Ljava/lang/String;)V")
