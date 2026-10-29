@@ -109,8 +109,8 @@ public final class StableCaptionBlocks {
     public static final class State {
         StableCaptionBlockPolicy policy;
         private final Map<View, Cache> caches = new WeakHashMap<>();
-        // Published only after a nonempty plan is ready.
-        private volatile Cache lastReady;
+        // Keep inner, outer portrait and outer landscape plans across native view recreation.
+        private final List<Cache> ready = new ArrayList<>();
     }
 
     private static final class Cache {
@@ -282,8 +282,16 @@ public final class StableCaptionBlocks {
                 if (cache != null) cache.cancelled = true;
                 cache = new Cache(probe.getWidth(), probe.getPaint());
                 frame.state.caches.put(view, cache);
-                Cache ready = frame.state.lastReady;
-                if (ready != null && ready.matches(probe)) {
+                Cache ready = null;
+                for (Cache prepared : frame.state.ready) {
+                    if (prepared.matches(probe)) {
+                        ready = prepared;
+                        break;
+                    }
+                }
+                if (ready != null) {
+                    frame.state.ready.remove(ready);
+                    frame.state.ready.add(0, ready);
                     cache.blocks = ready.blocks;
                 } else {
                     Cache next = cache;
@@ -301,11 +309,23 @@ public final class StableCaptionBlocks {
                                     Logger.printException(() -> "plan failure", ex);
                                     next.blocks = List.of();
                                 }
-                                if (!next.cancelled) {
-                                    if (!next.blocks.isEmpty()) frame.state.lastReady = next;
-                                    View target = redraw.get();
-                                    if (target != null) target.post(target::requestLayout);
-                                }
+                                Utils.runOnMainThread(
+                                        () -> {
+                                            if (next.cancelled) return;
+                                            if (!next.blocks.isEmpty()) {
+                                                frame.state.ready.removeIf(
+                                                        prepared ->
+                                                                prepared.width == next.width
+                                                                        && prepared.paint
+                                                                                .equalsForTextMeasurement(
+                                                                                        next.paint));
+                                                frame.state.ready.add(0, next);
+                                                if (frame.state.ready.size() > 3)
+                                                    frame.state.ready.remove(3);
+                                            }
+                                            View target = redraw.get();
+                                            if (target != null) target.requestLayout();
+                                        });
                             });
                 }
             }
