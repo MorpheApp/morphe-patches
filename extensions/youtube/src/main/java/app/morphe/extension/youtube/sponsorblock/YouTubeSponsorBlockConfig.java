@@ -172,7 +172,6 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
                 // The external downloader is used instead.
                 if (DownloadsPatch.isDownloadModeHandledByMorphe()) return;
 
-                install();
                 SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
             } else if (actionName.equals(OFFLINE_VIDEO_ACTION_REMOVE)) {
                 SponsorBlockOfflineStorage.deleteSegments(videoId);

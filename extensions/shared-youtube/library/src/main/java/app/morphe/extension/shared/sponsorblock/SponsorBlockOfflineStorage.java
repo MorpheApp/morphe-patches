@@ -72,6 +72,10 @@ public final class SponsorBlockOfflineStorage {
             return;
         }
 
+        // The categories to fetch are loaded when the player is created,
+        // which has not happened yet if the video is downloaded from the feed.
+        SegmentCategory.loadAllCategoriesFromSettings();
+
         Utils.runOnBackgroundThread(() -> {
             try {
                 SponsorSegment[] segments = SBRequester.getSegments(videoId);
