@@ -14,6 +14,8 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import org.w3c.dom.Document;
 
 import java.lang.ref.WeakReference;
@@ -24,6 +26,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.CancellationException;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -33,13 +36,30 @@ public final class StableCaptionBlocks {
     private static final ThreadLocal<State> parsing = new ThreadLocal<>();
     private static final Object FIXED_PARAGRAPH = new Object();
 
+    /**
+     * Text paint measurement comparison requires Android 10.
+     * The setting requires restarting the app.
+     */
+    private static final boolean ENABLED = isPatchIncluded()
+            && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+            && Settings.STABLE_CAPTION_BLOCKS.get();
+
     private StableCaptionBlocks() {}
 
+    private static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
     public interface Timeline {
+        // Methods are added during patching.
         List<?> patch_getOriginalCaptions(long time);
+
+        @Nullable
+        State patch_getBlockState();
     }
 
     public interface Cue {
+        // Methods are added during patching.
         CharSequence patch_getOriginalCaptionVisible();
 
         Frame patch_getBlockFrame();
@@ -48,6 +68,7 @@ public final class StableCaptionBlocks {
     }
 
     public interface Window {
+        // Methods are added during patching.
         Object patch_getCaptionCue();
 
         Object patch_getCaptionMeasureRow();
@@ -58,6 +79,7 @@ public final class StableCaptionBlocks {
     }
 
     public interface Row {
+        // Methods are added during patching.
         void patch_setCaptionText(CharSequence text);
 
         StaticLayout patch_getCaptionLayout();
@@ -116,9 +138,13 @@ public final class StableCaptionBlocks {
         }
     }
 
-    public static void setAutomaticTrack(boolean automatic) {
+    /**
+     * Called before a caption track is parsed.
+     */
+    static void setAutomaticTrack(boolean automatic) {
+        if (!ENABLED) return;
         parsing.remove();
-        if (automatic && Build.VERSION.SDK_INT >= 28 && Settings.STABLE_CAPTION_BLOCKS.get()) {
+        if (automatic) {
             parsing.set(new State());
         }
     }
@@ -132,14 +158,21 @@ public final class StableCaptionBlocks {
         if (state != null) state.policy = StableCaptionBlockPolicy.parse(document);
     }
 
+    /**
+     * Injection point.
+     * Called at the end of the caption timeline constructor.
+     */
+    @Nullable
     public static State takeState() {
+        if (!ENABLED) return null;
         State state = parsing.get();
         parsing.remove();
         return state != null && state.policy != null ? state : null;
     }
 
     /** Native player stages recreate cues, but retain their styled full-text sequence. */
-    public static CharSequence carryFrame(CharSequence text, Frame frame) {
+    public static CharSequence carryFrame(@Nullable CharSequence text, @Nullable Frame frame) {
+        //noinspection SizeReplaceableByIsEmpty
         if (text == null || text.length() == 0 || frame == null) return text;
         SpannableStringBuilder copy = new SpannableStringBuilder(text);
         for (Frame previous : copy.getSpans(0, copy.length(), Frame.class))
@@ -148,31 +181,39 @@ public final class StableCaptionBlocks {
         return copy;
     }
 
-    public static Frame frameOf(CharSequence text) {
+    @Nullable
+    public static Frame frameOf(@Nullable CharSequence text) {
+        //noinspection SizeReplaceableByIsEmpty
         if (!(text instanceof Spanned spanned) || text.length() == 0) return null;
         Frame[] frames = spanned.getSpans(0, text.length(), Frame.class);
         return frames.length == 1 ? frames[0] : null;
     }
 
-    public static List<?> present(Timeline timeline, List<?> original, long time, State state) {
-        if (state == null || original == null || original.size() > 1) return original;
-        long template = state.policy.templateTime(time);
-        if (template < 0) return Collections.emptyList();
+    /**
+     * Injection point.
+     * Called instead of the caption sampler, if the timeline has a block state.
+     */
+    public static List<?> present(Timeline timeline, long time) {
+        List<?> original = timeline.patch_getOriginalCaptions(time);
         try {
+            State state = timeline.patch_getBlockState();
+            if (state == null || original == null || original.size() > 1) return original;
+            long template = state.policy.templateTime(time);
+            if (template < 0) return Collections.emptyList();
+
             List<?> source = original;
-            if (source.isEmpty()
-                    || (source.size() == 1
-                            && source.get(0) instanceof Cue c
+            //noinspection SizeReplaceableByIsEmpty
+            if (source.isEmpty() || (source.size() == 1 && source.get(0) instanceof Cue c
                             && (c.patch_getOriginalCaptionVisible() == null
                                     || c.patch_getOriginalCaptionVisible().length() == 0))) {
-                if (timeline == null) return original;
                 source = timeline.patch_getOriginalCaptions(template);
             }
             if (source == null || source.size() != 1 || !(source.get(0) instanceof Cue cue))
                 return original;
             Object copy = cue.patch_copyBlockFrame(new Frame(state, time, template));
             return copy == null ? original : Collections.singletonList(copy);
-        } catch (RuntimeException | LinkageError ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "present failure", ex);
             return original;
         }
     }
@@ -181,15 +222,18 @@ public final class StableCaptionBlocks {
      * Player subclasses may recreate cue placement; only marked ASR blocks use default center
      * placement.
      */
-    public static List<?> centerBlocks(List<?> original) {
-        if (original == null || original.size() != 1 || !(original.get(0) instanceof Cue cue))
+    public static List<?> centerBlocks(@Nullable List<?> original) {
+        if (!ENABLED || original == null || original.size() != 1
+                || !(original.get(0) instanceof Cue cue)) {
             return original;
-        Frame frame = cue.patch_getBlockFrame();
-        if (frame == null) return original;
+        }
         try {
+            Frame frame = cue.patch_getBlockFrame();
+            if (frame == null) return original;
             Object copy = cue.patch_copyBlockFrame(frame);
             return copy == null || copy == cue ? original : Collections.singletonList(copy);
-        } catch (RuntimeException | LinkageError ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "centerBlocks failure", ex);
             return original;
         }
     }
@@ -198,12 +242,12 @@ public final class StableCaptionBlocks {
      * Called before native window measurement, after its font/typeface/style have been configured.
      */
     public static void prepare(View view, int widthSpec) {
-        if (Build.VERSION.SDK_INT < 28) return;
-        if (!(view instanceof Window window) || !(window.patch_getCaptionCue() instanceof Cue cue))
-            return;
-        Frame frame = cue.patch_getBlockFrame();
-        if (frame == null) return;
+        if (!ENABLED) return;
         try {
+            if (!(view instanceof Window window)
+                    || !(window.patch_getCaptionCue() instanceof Cue cue)) return;
+            Frame frame = cue.patch_getBlockFrame();
+            if (frame == null) return;
             Cache cache = frame.state.caches.get(view);
             List<CharSequence> full = window.patch_getFullCaptionLines(),
                     visible = window.patch_getVisibleCaptionLines();
@@ -250,7 +294,11 @@ public final class StableCaptionBlocks {
                                     next.blocks =
                                             frame.state.policy.plan(
                                                     text -> next.layout(text).getLineCount() <= 2);
-                                } catch (RuntimeException failure) {
+                                } catch (CancellationException ex) {
+                                    // A newer text layout replaced this cache.
+                                    next.blocks = List.of();
+                                } catch (Exception ex) {
+                                    Logger.printException(() -> "plan failure", ex);
                                     next.blocks = List.of();
                                 }
                                 if (!next.cancelled) {
@@ -277,8 +325,8 @@ public final class StableCaptionBlocks {
             full.add(cache.text);
             visible.clear();
             visible.add(cache.text);
-        } catch (RuntimeException | LinkageError ignored) {
-            /* Unknown native geometry retains native text. */
+        } catch (Exception ex) {
+            Logger.printException(() -> "prepare failure", ex);
         }
     }
 
@@ -306,7 +354,7 @@ public final class StableCaptionBlocks {
             float spacingMult,
             float spacingAdd,
             boolean includePad) {
-        if (text instanceof Spanned spans && spans.getSpanStart(FIXED_PARAGRAPH) >= 0) {
+        if (ENABLED && text instanceof Spanned spans && spans.getSpanStart(FIXED_PARAGRAPH) >= 0) {
             return blockLayout(text, paint, width)
                     .setLineSpacing(spacingAdd, spacingMult)
                     .setIncludePad(includePad)

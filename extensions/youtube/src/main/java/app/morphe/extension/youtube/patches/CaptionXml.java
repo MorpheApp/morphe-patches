@@ -26,6 +26,8 @@ import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import app.morphe.extension.shared.Logger;
+
 /** Bounded, fail-closed srv3 reader shared by source capture and translated-caption repair. */
 final class CaptionXml {
     static final int MAX_BYTES = 4 * 1024 * 1024;
@@ -55,6 +57,7 @@ final class CaptionXml {
                             .toString();
             if (source.startsWith("\uFEFF")) source = source.substring(1);
             Matcher encoding = ENCODING.matcher(source);
+            //noinspection ConstantConditions
             if (encoding.find()
                     && !encoding.group(2).equalsIgnoreCase("UTF-8")
                     && !encoding.group(2).equalsIgnoreCase("UTF8")) return null;
@@ -84,7 +87,8 @@ final class CaptionXml {
             return root.getTagName().equals("timedtext") && root.getAttribute("format").equals("3")
                     ? document
                     : null;
-        } catch (Exception | LinkageError ignored) {
+        } catch (Exception ex) {
+            Logger.printInfo(() -> "Unsupported caption document", ex);
             return null;
         }
     }

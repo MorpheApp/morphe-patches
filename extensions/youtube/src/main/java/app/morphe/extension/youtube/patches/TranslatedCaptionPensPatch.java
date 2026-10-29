@@ -17,6 +17,8 @@ import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import app.morphe.extension.shared.Logger;
+
 
 @SuppressWarnings("unused")
 public class TranslatedCaptionPensPatch {
@@ -45,7 +47,11 @@ public class TranslatedCaptionPensPatch {
      * Caption tracks are parsed on background threads, and different tracks can be parsed at the same time.
      */
     private static final ThreadLocal<Boolean> isAutoTranslatedTrack = new ThreadLocal<>();
-    private static final ThreadLocal<Boolean> translatedAsr = new ThreadLocal<>();
+
+    /**
+     * If the caption track parsed on the current thread is an auto-translated automatic caption track.
+     */
+    private static final ThreadLocal<Boolean> isTranslatedAutomaticTrack = new ThreadLocal<>();
 
     /**
      * Injection point.
@@ -55,37 +61,42 @@ public class TranslatedCaptionPensPatch {
      * @param request Caption request, or any other request handled by the same code.
      */
     public static void setParsedRequest(@Nullable Object request) {
-        Object track = null;
-        String vss = null;
+        boolean translated = false;
         boolean automatic = false;
         try {
-            if (request instanceof CaptionRequestInterface captionRequest)
-                track = captionRequest.patch_getCaptionTrack();
-            if (track instanceof PreferredCaptionLanguagePatch.CaptionTrackInterface t)
-                vss = t.patch_getVssId();
-        } catch (RuntimeException | LinkageError ignored) {
-            // Unknown native layouts must clear the previous decoder's state.
+            if (request instanceof CaptionRequestInterface captionRequest
+                    && captionRequest.patch_getCaptionTrack() instanceof PreferredCaptionLanguagePatch.CaptionTrackInterface track) {
+                String vssId = track.patch_getVssId();
+                // Auto-translated vss ids are "t" + source vss id + "." + language code.
+                translated = vssId.startsWith("t");
+                automatic = track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface autoTrack
+                        && AutoTranslateCaptionsPatch.isAutomaticCaption(vssId, autoTrack.patch_getUrl());
+            }
+        } catch (RuntimeException | LinkageError ex) {
+            Logger.printException(() -> "setParsedRequest failure", ex);
         }
-        try {
-            automatic = track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface t
-                    && AutoTranslateCaptionsPatch.isAutomaticCaption(vss, t.patch_getUrl());
-        } catch (RuntimeException | LinkageError ignored) {
-        }
-        isAutoTranslatedTrack.set(vss != null && vss.startsWith("t"));
-        translatedAsr.set(automatic && vss.startsWith("ta."));
-        onParsedTrack(automatic);
+        // A failed native getter must not leave the previous track state enabled.
+        isAutoTranslatedTrack.set(translated);
+        isTranslatedAutomaticTrack.set(translated && automatic);
+        StableCaptionBlocks.setAutomaticTrack(automatic);
     }
 
-    public static InputStream repairInput(InputStream input) throws IOException {
-        boolean repair = Boolean.TRUE.equals(translatedAsr.get());
+    /**
+     * Injection point.
+     *
+     * Called before a caption track file is decoded.
+     */
+    public static InputStream repairInput(@Nullable InputStream input) throws IOException {
+        boolean repair = Boolean.TRUE.equals(isTranslatedAutomaticTrack.get());
         if (input == null || (!repair && !StableCaptionBlocks.isCapturing())) return input;
         CaptionInputReplay.Copy copy = CaptionInputReplay.copy(input, CaptionXml.MAX_BYTES);
         if (!copy.complete) return copy.input;
         Document document = CaptionXml.read(copy.bytes);
-        // Capture immutable source atoms before repair removes orphan events from the shared DOM.
+        // Capture the source captions before the repair removes events from the document.
         StableCaptionBlocks.capture(document);
-        byte[] repaired =
-                repair ? TranslatedRollingCaptionPolicy.repair(copy.bytes, document) : copy.bytes;
+        byte[] repaired = repair
+                ? TranslatedRollingCaptionPolicy.repair(copy.bytes, document)
+                : copy.bytes;
         if (repaired == copy.bytes) return copy.input;
         return new FilterInputStream(new ByteArrayInputStream(repaired)) {
             @Override
@@ -98,10 +109,6 @@ public class TranslatedCaptionPensPatch {
             }
         };
     }
-
-    /** Optional caption patches add their observers here; native request getters run only once. */
-    private static void onParsedTrack(boolean automatic) {}
-
 
     /**
      * Injection point.

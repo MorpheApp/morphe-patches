@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import app.morphe.extension.shared.Logger;
+
 /** Source-timed complete blocks; the renderer supplies the actual two-line capacity. */
 final class StableCaptionBlockPolicy {
     static final int MAX_ATOMS = 20000, MAX_BLOCK_CHARS = 512;
@@ -95,7 +97,8 @@ final class StableCaptionBlockPolicy {
                 }
                 if (!e.getAttribute("a").isEmpty() && !e.getAttribute("a").equals("0")) return null;
                 long start = number(e, "t"), duration = number(e, "d");
-                if (start <= previousParagraph
+                if (start < 0
+                        || start <= previousParagraph
                         || start > 7200000
                         || duration <= 0
                         || duration > 600000) return null;
@@ -107,7 +110,8 @@ final class StableCaptionBlockPolicy {
                 boolean first = true;
                 StringBuilder whitespace = new StringBuilder();
                 if (segments.isEmpty()) {
-                    add(atoms, start, start + duration, e.getTextContent(), true, barrier);
+                    if (!add(atoms, start, start + duration, e.getTextContent(), true, barrier))
+                        return null;
                 } else {
                     for (Node n = e.getFirstChild(); n != null; n = n.getNextSibling())
                         if ((n.getNodeType() == Node.TEXT_NODE
@@ -118,20 +122,20 @@ final class StableCaptionBlockPolicy {
                                 || !children(segment).isEmpty()
                                 || !attributes(segment, "t", "p", "ac")) return null;
                         long offset = segment.hasAttribute("t") ? number(segment, "t") : 0;
-                        if (offset < previousOffset || offset >= duration) return null;
+                        if (offset < 0 || offset < previousOffset || offset >= duration) return null;
                         previousOffset = offset;
                         String text = segment.getTextContent();
                         if (text.isBlank()) {
                             if (text.indexOf('\n') >= 0 || text.indexOf('\r') >= 0) return null;
                             whitespace.append(text);
                         } else {
-                            add(
+                            if (!add(
                                     atoms,
                                     start + offset,
                                     start + duration,
                                     whitespace + text,
                                     first,
-                                    first && barrier);
+                                    first && barrier)) return null;
                             whitespace.setLength(0);
                             first = false;
                         }
@@ -150,12 +154,16 @@ final class StableCaptionBlockPolicy {
                 }
             }
             return atoms.isEmpty() ? null : new StableCaptionBlockPolicy(atoms);
-        } catch (RuntimeException ignored) {
+        } catch (RuntimeException ex) {
+            Logger.printException(() -> "parse failure", ex);
             return null;
         }
     }
 
-    private static void add(
+    /**
+     * @return False if the source is too complex for stable blocks.
+     */
+    private static boolean add(
             List<Atom> atoms,
             long time,
             long end,
@@ -163,18 +171,18 @@ final class StableCaptionBlockPolicy {
             boolean paragraph,
             boolean barrier) {
         if (text.length() > 4096 || text.indexOf('\n') >= 0 || text.indexOf('\r') >= 0)
-            throw new IllegalArgumentException("Complex ASR segment");
-        if (text.isBlank()) return;
+            return false;
+        if (text.isBlank()) return true;
         if (!atoms.isEmpty()) {
             Atom last = atoms.get(atoms.size() - 1);
-            if (time < last.start) throw new IllegalArgumentException("Overlapping source words");
+            // Overlapping source words.
+            if (time < last.start) return false;
             if (paragraph
                     && !Character.isWhitespace(last.text.charAt(last.text.length() - 1))
                     && !Character.isWhitespace(text.charAt(0))
                     && ".,!?;:)]}".indexOf(text.charAt(0)) < 0) text = " " + text;
             if (time == last.start) {
-                if (last.text.length() + text.length() > 4096)
-                    throw new IllegalArgumentException("Oversized atomic span");
+                if (last.text.length() + text.length() > 4096) return false;
                 atoms.set(
                         atoms.size() - 1,
                         new Atom(
@@ -182,11 +190,12 @@ final class StableCaptionBlockPolicy {
                                 Math.max(end, last.end),
                                 last.text + text,
                                 last.barrierBefore));
-                return;
+                return true;
             }
         }
-        if (atoms.size() >= MAX_ATOMS) throw new IllegalArgumentException("ASR source too large");
+        if (atoms.size() >= MAX_ATOMS) return false;
         atoms.add(new Atom(time, end, text, barrier));
+        return true;
     }
 
     private String text(int from, int to) {
@@ -324,10 +333,12 @@ final class StableCaptionBlockPolicy {
         return null;
     }
 
+    /**
+     * @return The time attribute, or -1 if it is missing or invalid.
+     */
     private static long number(Element e, String key) {
         String s = e.getAttribute(key);
-        if (!s.matches("[0-9]{1,10}")) throw new IllegalArgumentException("Caption time");
-        return Long.parseLong(s);
+        return s.matches("[0-9]{1,10}") ? Long.parseLong(s) : -1;
     }
 
     private static boolean attributes(Element e, String... allowed) {

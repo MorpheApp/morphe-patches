@@ -18,12 +18,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
+import app.morphe.extension.shared.Logger;
 
 /** Remove orphan ASR append events, never normalize sampled caption strings. */
 final class TranslatedRollingCaptionPolicy {
@@ -111,7 +114,8 @@ final class TranslatedRollingCaptionPolicy {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             transformer.transform(new DOMSource(doc), new StreamResult(out));
             return out.toByteArray();
-        } catch (Exception | LinkageError ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "repair failure", ex);
             return input;
         }
     }
@@ -126,6 +130,8 @@ final class TranslatedRollingCaptionPolicy {
         return result;
     }
 
+    private static final Pattern TIME_PATTERN = Pattern.compile("[0-9]{1,15}");
+
     private static final class Event {
         final Element element;
         long start, end;
@@ -133,25 +139,26 @@ final class TranslatedRollingCaptionPolicy {
 
         Event(Element element) {
             this.element = element;
-            try {
-                start = Long.parseLong(element.getAttribute("t"));
-                long duration = Long.parseLong(element.getAttribute("d"));
-                if (start < 0 || duration <= 0 || start > Long.MAX_VALUE - duration) return;
-                end = start + duration;
-                valid = true;
-                String content = element.getTextContent(), append = element.getAttribute("a");
-                text = (append.isEmpty() || append.equals("0")) && !content.trim().isEmpty();
-                newline = append.equals("1") && content.equals("\n") && children(element).isEmpty();
-                NamedNodeMap attrs = element.getAttributes();
-                for (int i = 0; i < attrs.getLength(); i++) {
-                    String name = attrs.item(i).getNodeName();
-                    if (!name.equals("t")
-                            && !name.equals("d")
-                            && !name.equals("w")
-                            && !name.equals("a")) newline = false;
-                }
-            } catch (RuntimeException ignored) {
-                valid = false;
+            String time = element.getAttribute("t"), durationText = element.getAttribute("d");
+            // Untimed events are not valid.
+            if (!TIME_PATTERN.matcher(time).matches() || !TIME_PATTERN.matcher(durationText).matches()) {
+                return;
+            }
+            start = Long.parseLong(time);
+            long duration = Long.parseLong(durationText);
+            if (duration <= 0) return;
+            end = start + duration;
+            valid = true;
+            String content = element.getTextContent(), append = element.getAttribute("a");
+            text = (append.isEmpty() || append.equals("0")) && !content.trim().isEmpty();
+            newline = append.equals("1") && content.equals("\n") && children(element).isEmpty();
+            NamedNodeMap attrs = element.getAttributes();
+            for (int i = 0; i < attrs.getLength(); i++) {
+                String name = attrs.item(i).getNodeName();
+                if (!name.equals("t")
+                        && !name.equals("d")
+                        && !name.equals("w")
+                        && !name.equals("a")) newline = false;
             }
         }
     }

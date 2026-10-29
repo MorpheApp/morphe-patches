@@ -11,7 +11,6 @@ package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -30,8 +29,6 @@ private const val EXTENSION_CAPTION_REQUEST_INTERFACE =
  * line drawn with an invisible or black pen, so only the caption background is shown.
  *
  * Ignore all pens of auto-translated tracks so the translation uses the user caption style.
- * The same decoder input also repairs orphan translated-ASR newline events and captures
- * source timing for optional stable blocks.
  */
 internal val translatedCaptionPensPatch = bytecodePatch(
     description = "Fixes auto-translated captions of styled caption tracks showing an empty background.",
@@ -79,9 +76,9 @@ internal val translatedCaptionPensPatch = bytecodePatch(
             )
         }
 
-        val decoder = CaptionFileParserFingerprint.instructionMatches.last().getMethodCalled()
-        require(decoder.parameterTypes[0] == "Ljava/io/InputStream;")
-        decoder.addInstructions(
+        // Translated automatic captions can have orphan line break events,
+        // and stable caption blocks use the source timing of automatic captions.
+        CaptionFileParserFingerprint.instructionMatches.last().getMethodCalled().addInstructions(
             0,
             """
                 invoke-static { p1 }, $EXTENSION_CLASS->repairInput(Ljava/io/InputStream;)Ljava/io/InputStream;
@@ -98,10 +95,4 @@ internal val translatedCaptionPensPatch = bytecodePatch(
             """
         )
     }
-}
-
-/** Register optional processing after the shared caption classification. */
-internal fun BytecodePatchContext.hookParsedCaptionTrack(descriptor: String) {
-    mutableClassDefBy(EXTENSION_CLASS).methods.first { it.name == "onParsedTrack" }
-        .addInstruction(0, "invoke-static { p0 }, $descriptor")
 }
