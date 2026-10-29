@@ -147,17 +147,17 @@ public final class FeedEngagementCountsPatch {
         }
         CountsBadge badge = badges.get(host);
         if (videoId == null) {
+            if (badge == null) {
+                return;
+            }
             // While the card is laid out again, its video can be not found for a moment.
             // The card still shows the same video if it was not detached, and the badge is
             // kept until the card is checked again, so it does not blink.
-            if (badge != null && badge.confirmed && badge.hasContent()
-                    && FeedVideoCardsPatch.isRetryPending(host)) {
+            if (badge.confirmed && badge.hasContent() && FeedVideoCardsPatch.isRetryPending(host)) {
                 return;
             }
-            if (badge != null) {
-                badge.detach(host);
-                badges.remove(host);
-            }
+            badge.detach(host);
+            badges.remove(host);
             return;
         }
         if (badge == null) {
@@ -208,6 +208,7 @@ public final class FeedEngagementCountsPatch {
         private int durationEdge;
         private int durationBottom;
         private int durationThumbnailTop;
+        /** Width of the card when the place was found, or -1 if it is not known. */
         private int durationHostWidth = -1;
 
         CountsBadge(ComponentHost host) {
@@ -416,11 +417,7 @@ public final class FeedEngagementCountsPatch {
             final int edge;
             final int bottom;
             final int thumbnailTop;
-            if (duration == null && durationHostWidth == host.getWidth()) {
-                edge = durationEdge;
-                bottom = durationBottom;
-                thumbnailTop = durationThumbnailTop;
-            } else if (duration != null) {
+            if (duration != null) {
                 edge = rtl ? duration.left : duration.right;
                 bottom = duration.top - px(DURATION_GAP_DP);
                 if (thumbnail != null && thumbnail.top < duration.top) {
@@ -442,6 +439,10 @@ public final class FeedEngagementCountsPatch {
                 durationBottom = bottom;
                 durationThumbnailTop = thumbnailTop;
                 durationHostWidth = host.getWidth();
+            } else if (durationHostWidth == host.getWidth()) {
+                edge = durationEdge;
+                bottom = durationBottom;
+                thumbnailTop = durationThumbnailTop;
             } else if (thumbnail != null) {
                 edge = rtl ? thumbnail.left + px(RIGHT_MARGIN_DP) : thumbnail.right - px(RIGHT_MARGIN_DP);
                 bottom = thumbnail.bottom - px(ABOVE_DURATION_DP);

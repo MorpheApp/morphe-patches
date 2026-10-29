@@ -402,12 +402,19 @@ public final class FeedVideoCardsPatch {
             return;
         }
         synchronized (textVideoIds) {
-            String previous = textVideoIds.get(normalized);
-            if (previous == null) {
-                textVideoIds.put(normalized, videoId);
-            } else if (!previous.equals(videoId)) {
-                textVideoIds.put(normalized, AMBIGUOUS);
-            }
+            putVideoText(textVideoIds, normalized, videoId);
+        }
+    }
+
+    /**
+     * Adds the text of the video, or marks it as {@link #AMBIGUOUS} if another video shows it too.
+     */
+    private static void putVideoText(Map<String, String> textVideoIds, String text, String videoId) {
+        String previous = textVideoIds.get(text);
+        if (previous == null) {
+            textVideoIds.put(text, videoId);
+        } else if (!previous.equals(videoId)) {
+            textVideoIds.put(text, AMBIGUOUS);
         }
     }
 
@@ -729,26 +736,33 @@ public final class FeedVideoCardsPatch {
         if (videoId != null) {
             for (String text : texts) {
                 if (text.length() >= TITLE_TEXT_LENGTH) {
-                    String previous = foundTitleVideoIds.get(text);
-                    foundTitleVideoIds.put(text, previous == null || previous.equals(videoId)
-                            ? videoId
-                            : AMBIGUOUS);
+                    putVideoText(foundTitleVideoIds, text, videoId);
                 }
             }
-        } else if (scores.isEmpty()) {
-            // The texts of the element of the card were removed, so the card is found
-            // by the titles of the cards that were found before. A long text of the card can
-            // be shared with another video of the same channel that was found, such as
-            // the channel and the view count, so at least two texts must match.
-            for (String text : texts) {
-                String foundVideoId = text.length() >= TITLE_TEXT_LENGTH ? foundTitleVideoIds.get(text) : null;
-                if (foundVideoId != null && !foundVideoId.equals(AMBIGUOUS)) {
-                    scores.merge(foundVideoId, 1, Integer::sum);
-                }
-            }
-            videoId = findBestMatch(scores);
+            return videoId;
         }
-        return videoId;
+        return scores.isEmpty() ? findVideoIdByFoundTitles(texts) : null;
+    }
+
+    /**
+     * The texts of the element of the card were removed, so the card is found by the titles
+     * of the cards that were found before. A long text of the card can be shared with another
+     * video of the same channel that was found, such as the channel and the view count,
+     * so at least two texts must match.
+     */
+    @Nullable
+    private static String findVideoIdByFoundTitles(List<String> texts) {
+        Map<String, Integer> scores = new HashMap<>();
+        for (String text : texts) {
+            if (text.length() < TITLE_TEXT_LENGTH) {
+                continue;
+            }
+            String videoId = foundTitleVideoIds.get(text);
+            if (videoId != null && !videoId.equals(AMBIGUOUS)) {
+                scores.merge(videoId, 1, Integer::sum);
+            }
+        }
+        return findBestMatch(scores);
     }
 
     /**
