@@ -693,11 +693,8 @@
         <item>Русский</item>
         <item>Українська</item>
         <item>አማርኛ</item>
-        <item>العربية</item>
         <item>বাংলা</item>
-        <item>فارسی</item>
         <item>ગુજરાતી</item>
-        <item>עברית</item>
         <item>हिन्दी</item>
         <item>ᐃᓄᒃᑎᑐᑦ</item>
         <item>ქართული</item>
@@ -708,14 +705,17 @@
         <item>मराठी</item>
         <item>မြန်မာစာ</item>
         <item>नेपाली</item>
-        <item>پښتو</item>
         <item>සිංහල</item>
         <item>தமிழ்</item>
         <item>తెలుగు</item>
         <item>ไทย</item>
-        <item>اردو</item>
         <item>中文 (简体)</item>
         <item>中文 (繁體)</item>
+        <item>العربية</item>
+        <item>فارسی</item>
+        <item>עברית</item>
+        <item>پښتو</item>
+        <item>اردو</item>
     </string-array>
     <string-array name="morphe_post_translate_language_entry_values">
         <item>default</item>
@@ -773,11 +773,8 @@
         <item>ru</item>
         <item>uk</item>
         <item>am</item>
-        <item>ar</item>
         <item>bn</item>
-        <item>fa</item>
         <item>gu</item>
-        <item>he</item>
         <item>hi</item>
         <item>iu</item>
         <item>ka</item>
@@ -788,14 +785,17 @@
         <item>mr</item>
         <item>my</item>
         <item>ne</item>
-        <item>ps</item>
         <item>si</item>
         <item>ta</item>
         <item>te</item>
         <item>th</item>
-        <item>ur</item>
         <item>zh-CN</item>
         <item>zh-TW</item>
+        <item>ar</item>
+        <item>fa</item>
+        <item>he</item>
+        <item>ps</item>
+        <item>ur</item>
     </string-array>
 
     <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
