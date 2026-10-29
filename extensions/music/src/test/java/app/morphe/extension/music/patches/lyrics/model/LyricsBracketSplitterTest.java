@@ -67,4 +67,12 @@ public class LyricsBracketSplitterTest {
         assertFalse(lines.get(1).isBG());
         assertEquals("【Live】 Hello (oh)", lines.get(2).text());
     }
+
+    @Test public void singleWordLineWithWordTimingHasWordTimings() {
+        LyricsLine singleWord = new LyricsLine(1000, 2000, "Yeah", List.of(new Word(1000, 2000, "Yeah")));
+        assertTrue(singleWord.hasWordTimings());
+
+        LyricsLine fakeWordSync = new LyricsLine(1000, 2000, "I want you", List.of(new Word(1000, 2000, "I want you")));
+        assertFalse(fakeWordSync.hasWordTimings());
+    }
 }
