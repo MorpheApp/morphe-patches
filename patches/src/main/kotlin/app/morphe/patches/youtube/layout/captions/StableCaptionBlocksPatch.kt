@@ -17,6 +17,10 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.CaptionsOldBottomSheetLayoutInflaterFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import app.morphe.patcher.util.getReference
+import app.morphe.patches.youtube.layout.flyout.FeedBottomSheetFlyoutFingerprint
+import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
+import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
@@ -51,7 +55,7 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
     description = "Shows automatic captions in stable blocks with optional bilingual translation.",
 ) {
     // The window measure method must be patched first, since this inserts instructions before it.
-    dependsOn(versionCheckPatch, translatedCaptionPensPatch, captionWindowMeasurePatch)
+    dependsOn(versionCheckPatch, translatedCaptionPensPatch, captionWindowMeasurePatch, treeNodeElementHookPatch)
 
     execute {
         if (!is_21_10_or_greater) {
@@ -72,6 +76,16 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
             val list = (footer.instruction as FiveRegisterInstruction).registerC
             match.method.addInstructions(footer.index,
                 "invoke-static { v$list }, Lapp/morphe/extension/youtube/patches/CaptionMenu;->addToggle(Landroid/widget/ListView;)V")
+        }
+
+        hookTreeNodeResult("Lapp/morphe/extension/youtube/patches/CaptionMenu;->onCaptionSheet",
+            isLazilyConvertedElement = false)
+        FeedBottomSheetFlyoutFingerprint.method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+                addInstruction(index,
+                    "invoke-static { v$register }, Lapp/morphe/extension/youtube/patches/CaptionMenu;->onDialog(Landroid/app/Dialog;)V")
+            }
         }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)

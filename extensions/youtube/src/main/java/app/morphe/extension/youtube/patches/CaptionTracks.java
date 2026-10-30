@@ -11,6 +11,7 @@ import org.w3c.dom.Document;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /** Captures the selected source and binds caption outputs to its lifecycle. */
@@ -54,18 +55,20 @@ public final class CaptionTracks {
 
     /** Reapply the actual native selection; cached originals may need no native reload. */
     public static void setDualCaptionsEnabled(boolean enabled) {
-        List<StableCaptionBlocks.State> cached = new ArrayList<>();
+        Map<StableCaptionBlocks.State, Long> cached = new LinkedHashMap<>();
         synchronized (CaptionTracks.class) {
             Settings.DUAL_CAPTIONS_ENABLED.save(enabled);
             for (WeakReference<StableCaptionBlocks.State> ref : translatedStates) {
                 StableCaptionBlocks.State state = ref.get();
-                if (state != null && state.captured != null) cached.add(state);
+                if (state != null && state.captured != null && state.translation != null)
+                    cached.put(state, state.translation.playbackTime());
             }
             invalidateTranslation();
         }
         PreferredCaptionLanguagePatch.refreshCaptionSelection();
         synchronized (CaptionTracks.class) {
-            for (StableCaptionBlocks.State state : cached) {
+            for (var entry : cached.entrySet()) {
+                StableCaptionBlocks.State state = entry.getKey();
                 Captured captured = state.captured;
                 Track previous = captured.track;
                 if (!current(previous) || enabled && previous.translated) continue;
@@ -74,8 +77,15 @@ public final class CaptionTracks {
                         previous.video, previous.automatic, previous.translated);
                 state.captured = new Captured(next, captured.policy);
                 attachTranslation(next, captured.policy, state);
+                state.translation.demand(entry.getValue());
             }
+            translationChanged(translatedToken);
+            for (StableCaptionBlocks.State state : cached.keySet()) StableCaptionBlocks.requestLayout(state);
         }
+    }
+
+    static synchronized boolean isCurrentVideo(String id) {
+        return id != null && id.equals(video);
     }
 
     /** Validated identity shared across original and translated forms of the same source. */
@@ -135,6 +145,7 @@ public final class CaptionTracks {
 
     public static synchronized void onVideoId(String id) {
         if (id == null || !id.equals(video)) {
+            PreferredCaptionLanguagePatch.forgetSelectionForVideo(id);
             video = id;
             source = null;
             selectedInputLanguage = null;

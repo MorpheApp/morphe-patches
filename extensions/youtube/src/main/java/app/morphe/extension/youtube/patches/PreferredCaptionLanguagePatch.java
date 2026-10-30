@@ -57,7 +57,7 @@ public class PreferredCaptionLanguagePatch {
         @Nullable
         default CaptionTrackInterface patch_getCurrentAudioCaptionSource() { return null; }
 
-        default boolean patch_refreshCaptionTrack() { return false; }
+        default boolean patch_selectCaptionTrack(CaptionTrackInterface track) { return false; }
     }
 
     /**
@@ -90,6 +90,9 @@ public class PreferredCaptionLanguagePatch {
     private static final AtomicLong userInteractionAllowedAt = new AtomicLong(Long.MAX_VALUE);
     private static volatile long videoStartTime;
     private static volatile WeakReference<SubtitleManagerInterface> activeManager = new WeakReference<>(null);
+    private static volatile CaptionTrackInterface activeTrack;
+    private static volatile String managerVideo;
+    private static final ThreadLocal<Boolean> replayingSelection = new ThreadLocal<>();
 
     @Nullable
     private static volatile String lastProgrammaticTrackLang;
@@ -101,6 +104,7 @@ public class PreferredCaptionLanguagePatch {
      */
     public static CaptionTrackInterface getPreferredCaptionTrack(
             SubtitleManagerInterface subtitleManager, @Nullable CaptionTrackInterface originalTrack) {
+        rememberSelection(subtitleManager, originalTrack);
         try {
             // CC off guard: Preserve explicitly disabled caption option.
             if (isExplicitlyDisabled(originalTrack)) {
@@ -219,7 +223,7 @@ public class PreferredCaptionLanguagePatch {
     public static CaptionTrackInterface onSetSubtitleTrack(SubtitleManagerInterface subtitleManager,
                                                            @Nullable CaptionTrackInterface track,
                                                            @Nullable Enum<?> selectType) {
-        activeManager = new WeakReference<>(subtitleManager);
+        rememberSelection(subtitleManager, track);
         try {
             if (CaptionTracks.dualCaptionEnabled()
                     && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface translated) {
@@ -290,7 +294,6 @@ public class PreferredCaptionLanguagePatch {
      */
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredController) {
         userInteractionAllowedAt.set(Long.MAX_VALUE);
-        activeManager.clear();
         userSelectedTrack.set(false);
         recordProgrammaticSelection(null);
         videoStartTime = SystemClock.uptimeMillis();
@@ -305,9 +308,42 @@ public class PreferredCaptionLanguagePatch {
         userInteractionAllowedAt.compareAndSet(Long.MAX_VALUE, SystemClock.uptimeMillis() + 300);
     }
 
+    private static void rememberSelection(SubtitleManagerInterface manager, CaptionTrackInterface track) {
+        if (Boolean.TRUE.equals(replayingSelection.get())) return;
+        activeManager = new WeakReference<>(manager);
+        activeTrack = track;
+        managerVideo = null;
+        try {
+            if (track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface input
+                    && !isExplicitlyDisabled(track)) {
+                var parameters = AutoTranslateCaptionsPatch.captionParameters(input.patch_getUrl());
+                if (parameters != null) managerVideo = parameters.get("v");
+            }
+        } catch (RuntimeException | LinkageError ignored) {
+            // An unavailable native URL must not leave the previous video's selector active.
+        }
+    }
+
+    static void forgetSelectionForVideo(String id) {
+        if (managerVideo != null && managerVideo.equals(id)) return;
+        activeManager.clear();
+        activeTrack = null;
+        managerVideo = null;
+    }
+
     static boolean refreshCaptionSelection() {
         SubtitleManagerInterface manager = activeManager.get();
-        return manager != null && manager.patch_refreshCaptionTrack();
+        CaptionTrackInterface track = activeTrack;
+        if (manager == null || track == null || isExplicitlyDisabled(track)
+                || !CaptionTracks.isCurrentVideo(managerVideo)) return false;
+        CaptionTrackInterface selected = getPreferredCaptionTrack(manager, track);
+        if (selected == null) return false;
+        replayingSelection.set(true);
+        try {
+            return manager.patch_selectCaptionTrack(selected);
+        } finally {
+            replayingSelection.remove();
+        }
     }
 
     static boolean hasUserSelectedTrack() { return userSelectedTrack.get(); }

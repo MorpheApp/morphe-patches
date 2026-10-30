@@ -419,6 +419,15 @@ internal fun preferredCaptionsTrackFingerprint() = Fingerprint(
     )
 )
 
+/** Native selection entry point derives the reason before dispatching the track event. */
+internal class CaptionSelectionFingerprint(setter: MethodReference) : Fingerprint(
+    classFingerprint = SubtitleManagerFingerprintClassFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = setter.parameterTypes.take(2).map { it.toString() },
+    filters = listOf(methodCall(reference = setter)),
+)
+
 internal object SetSubtitleTrackFingerprint : Fingerprint(
     classFingerprint = SubtitleManagerFingerprintClassFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

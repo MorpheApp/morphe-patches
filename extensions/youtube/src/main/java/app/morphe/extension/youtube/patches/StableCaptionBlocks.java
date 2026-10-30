@@ -181,6 +181,10 @@ public final class StableCaptionBlocks {
 
     static void refreshTranslation(State state, CaptionSession session) {
         if (state.translation != session || !session.isActive()) return;
+        requestLayout(state);
+    }
+
+    static void requestLayout(State state) {
         for (View view : new ArrayList<>(state.caches.keySet())) if (view != null) view.requestLayout();
     }
 
@@ -400,12 +404,13 @@ public final class StableCaptionBlocks {
     private static void renderTranslation(View view, Frame frame, Cache cache,
             List<CharSequence> full, List<CharSequence> visible) {
         CaptionSession session = frame.state.translation;
-        CaptionSession.Snapshot cue = session.snapshot(frame.time,
+        long time = session.playbackTime();
+        CaptionSession.Snapshot cue = session.snapshot(time,
                 app.morphe.extension.youtube.shared.VideoState.getCurrent()
                         == app.morphe.extension.youtube.shared.VideoState.PAUSED);
         if (cue == null) { replace(full, visible, ""); return; }
         String first = cue.primary, second = cue.secondary;
-        StableCaptionBlockPolicy.Block source = StableCaptionBlockPolicy.at(session.source, frame.time);
+        StableCaptionBlockPolicy.Block source = StableCaptionBlockPolicy.at(session.source, time);
         if (session.secondaryLanguage != null && source != null && source.fits)
             DualCaptionOverlay.show(view, first, second, cache.paint, cache.width,
                     session, cue.start, cue.complete);

@@ -68,6 +68,7 @@ final class CaptionSession {
             previousEnd = cue.end;
         }
     }
+    synchronized long playbackTime() { return position; }
     synchronized boolean isActive() { return active; }
     synchronized void invalidate() { active = false; ready.clear(); displayed = null; }
     void demand(long time) { demand(time, 1); }
