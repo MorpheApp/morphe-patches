@@ -30,6 +30,7 @@ import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -79,6 +80,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private File musicRoot;
     private OfflinePlaylistManager playlistManager;
     private List<OfflinePlaylist> createdPlaylists = new ArrayList<>();
+    private final List<String> selectedVideoIds = new ArrayList<>();
+    private boolean selectionMode;
 
     private ImageView miniArtwork;
     private TextView miniTitle;
@@ -122,7 +125,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         LinearLayout root = new LinearLayout(getActivity());
         root.setOrientation(LinearLayout.VERTICAL);
         root.setBackgroundColor(background());
-
         root.addView(createHeader(), new LinearLayout.LayoutParams(-1, -2));
 
         ScrollView scroll = new ScrollView(getActivity());
@@ -236,6 +238,15 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         search.setOnClickListener(v -> toggleSearch());
         line.addView(search, new LinearLayout.LayoutParams(dp(40), dp(40)));
 
+        ImageButton select = icon("yt_outline_experimental_select_all_vd_theme_24", "Select tracks");
+        select.setOnClickListener(v -> toggleSelectionMode());
+        line.addView(select, new LinearLayout.LayoutParams(dp(40), dp(40)));
+
+        ImageButton addToPlaylist = icon("yt_outline_experimental_playlist_vd_theme_24",
+                "Add selected songs to local playlist");
+        addToPlaylist.setOnClickListener(v -> addSelectedToPlaylist());
+        line.addView(addToPlaylist, new LinearLayout.LayoutParams(dp(40), dp(40)));
+
         ImageButton sort = icon("yt_outline_experimental_sort_vd_theme_24",
                 str("morphe_music_downloads_sort"));
         sort.setOnClickListener(v -> showSortMenu(sort));
@@ -253,6 +264,79 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         header.addView(line, new LinearLayout.LayoutParams(-1, -2));
         return header;
+    }
+
+    private void toggleSelectionMode() {
+        selectionMode = !selectionMode;
+        selectedVideoIds.clear();
+        renderTracksWithSelectionState();
+    }
+
+    private void renderTracksWithSelectionState() {
+        for (int i = 0; i < songsList.getChildCount(); i++) {
+            View child = songsList.getChildAt(i);
+            if (child instanceof LinearLayout row) {
+                for (int j = 0; j < row.getChildCount(); j++) {
+                    View childView = row.getChildAt(j);
+                    if (childView instanceof CheckBox box) {
+                        box.setVisibility(selectionMode ? View.VISIBLE : View.GONE);
+                    }
+                }
+            }
+        }
+    }
+
+    private void toggleSelected(OfflineTrack track) {
+        if (!selectedVideoIds.remove(track.videoId())) {
+            selectedVideoIds.add(track.videoId());
+        }
+        refreshRowsSelectionState();
+    }
+
+    private void refreshRowsSelectionState() {
+        for (int i = 0; i < songsList.getChildCount(); i++) {
+            View row = songsList.getChildAt(i);
+            if (!(row instanceof LinearLayout layout)) continue;
+            for (int j = 0; j < layout.getChildCount(); j++) {
+                View child = layout.getChildAt(j);
+                if (child instanceof CheckBox box) {
+                    String tag = (String) box.getTag();
+                    if (tag != null) {
+                        box.setChecked(selectedVideoIds.contains(tag));
+                    }
+                }
+            }
+        }
+    }
+
+    private void addSelectedToPlaylist() {
+        if (selectedVideoIds.isEmpty()) {
+            Utils.showToastShort("Select songs first");
+            return;
+        }
+        if (createdPlaylists.isEmpty()) {
+            Utils.showToastShort("Create a local playlist first");
+            return;
+        }
+
+        List<String> ids = new ArrayList<>(selectedVideoIds);
+        String[] names = new String[createdPlaylists.size()];
+        for (int i = 0; i < createdPlaylists.size(); i++) {
+            names[i] = createdPlaylists.get(i).name();
+        }
+
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Add to playlist")
+                .setItems(names, (dialog, which) -> {
+                    OfflinePlaylist target = createdPlaylists.get(which);
+                    try {
+                        playlistManager.addVideoIdsToPlaylist(target.id(), ids);
+                        Utils.showToastShort("Added to playlist");
+                    } catch (Exception ex) {
+                        Utils.showToastShort("Could not add songs");
+                    }
+                })
+                .show();
     }
 
     private void toggleSearch() {
@@ -353,6 +437,14 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         row.setGravity(Gravity.CENTER_VERTICAL);
         row.setPadding(dp(8), dp(7), dp(8), dp(7));
         rowViews.add(row);
+
+        CheckBox checkBox = new CheckBox(getActivity());
+        checkBox.setTag(track.videoId());
+        checkBox.setVisibility(selectionMode ? View.VISIBLE : View.GONE);
+        checkBox.setChecked(selectedVideoIds.contains(track.videoId()));
+        checkBox.setOnClickListener(v -> toggleSelected(track));
+        row.addView(checkBox, new LinearLayout.LayoutParams(dp(40), dp(40)));
+
         row.addView(artworkView(track.artwork(ROW_ARTWORK_PIXELS)),
                 new LinearLayout.LayoutParams(dp(56), dp(56)));
 
@@ -377,7 +469,13 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         menu.setOnClickListener(v -> showTrackMenu(menu, track));
         row.addView(menu, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
-        row.setOnClickListener(v -> play(track));
+        row.setOnClickListener(v -> {
+            if (selectionMode) {
+                toggleSelected(track);
+                return;
+            }
+            play(track);
+        });
         return row;
     }
 
@@ -591,7 +689,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                         return;
                     }
                     OfflinePlaylist playlist = new OfflinePlaylist(
-                            "playlist_" + System.currentTimeMillis(), title, List.of(track.videoId()));
+                            "playlist_" + System.currentTimeMillis(), title, new ArrayList<>(List.of(track.videoId())));
                     try {
                         playlistManager.savePlaylist(playlist);
                         refreshCreatedPlaylists();

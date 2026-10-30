@@ -2,7 +2,9 @@ package app.morphe.extension.music.patches.downloads;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public final class OfflinePlaylistManager {
 
@@ -43,5 +45,18 @@ public final class OfflinePlaylistManager {
             }
         }
         return new OfflinePlaylist(id, name, videoIds);
+    }
+
+    public void addVideoIdsToPlaylist(String playlistId, List<String> newVideoIds) throws Exception {
+        File file = new File(root, playlistId + ".json");
+        if (!file.exists()) return;
+
+        OfflinePlaylist playlist = OfflinePlaylist.fromFile(file);
+        Set<String> unique = new LinkedHashSet<>();
+        unique.addAll(playlist.videoIds());
+        unique.addAll(newVideoIds);
+
+        OfflinePlaylist updated = new OfflinePlaylist(playlist.id(), playlist.name(), new ArrayList<>(unique));
+        updated.save(file);
     }
 }
