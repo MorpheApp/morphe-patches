@@ -1324,26 +1324,46 @@ final class LyricsSpanBuilder {
         final int originalStart = 0;
         builder.append(original);
         final int originalEnd = builder.length();
+        // Swap exchanges the relative order of romanization and translation beneath the main lyrics.
+        // The main lyrics always remains on top.
+        final String firstBelow;
+        final String secondBelow;
+        final boolean firstIsRoma;
 
-        String firstBelow = swap ? translation : romanization;
-        String secondBelow = swap ? romanization : translation;
+        if (romanization != null && translation != null) {
+            firstBelow = swap ? translation : romanization;
+            secondBelow = swap ? romanization : translation;
+            firstIsRoma = !swap;
+        } else if (romanization != null) {
+            firstBelow = romanization;
+            secondBelow = null;
+            firstIsRoma = true;
+        } else if (translation != null) {
+            firstBelow = translation;
+            secondBelow = null;
+            firstIsRoma = false;
+        } else {
+            firstBelow = null;
+            secondBelow = null;
+            firstIsRoma = false;
+        }
 
         if (firstBelow != null) {
             builder.append('\n');
-            if (swap) {
-                transStart = builder.length();
-                builder.append(firstBelow);
-                transEnd = builder.length();
-            } else {
+            if (firstIsRoma) {
                 romaStart = builder.length();
                 builder.append(firstBelow);
                 romaEnd = builder.length();
+            } else {
+                transStart = builder.length();
+                builder.append(firstBelow);
+                transEnd = builder.length();
             }
         }
 
         if (secondBelow != null) {
             builder.append('\n');
-            if (swap) {
+            if (!firstIsRoma) {
                 romaStart = builder.length();
                 builder.append(secondBelow);
                 romaEnd = builder.length();
@@ -1403,13 +1423,9 @@ final class LyricsSpanBuilder {
             main = mainIsRoma ? romanization : translation;
             small = mainIsRoma ? translation : romanization;
         } else if (translation != null) {
-            // The original takes the reading's slot when the reading never arrived, so the swap
-            // still decides which of the two that is: off puts the original above the translation,
-            // on puts it below. Swapping this way hands the main slot to the translation, which is
-            // what lights the line, so the words move down with the original they belong to.
             mainIsRoma = false;
-            main = swap ? translation : original;
-            small = swap ? original : translation;
+            main = original;
+            small = translation;
         } else if (romanization != null) {
             mainIsRoma = true;
             main = romanization;
@@ -1422,7 +1438,7 @@ final class LyricsSpanBuilder {
         // The words follow the reading, and fall back to the original when there is none; the
         // translation never holds them.
         List<WordTiming> words = romanization != null ? roma.spans() : lineTimings;
-        final boolean wordsOnSmall = romanization != null ? !mainIsRoma : swap;
+        final boolean wordsOnSmall = romanization != null && !mainIsRoma;
         if (small == null) {
             return new DualLine(main, mainIsRoma, false, -1, -1, words, false);
         }
