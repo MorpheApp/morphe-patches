@@ -24,6 +24,8 @@ public final class DualCaptionOverlay extends LinearLayout {
     private final Map<View, Float> originalAlphas = new WeakHashMap<>();
     private boolean active;
     private int requestedWidth;
+    private WeakReference<CaptionSession> session = new WeakReference<>(null);
+    private long cueStart = Long.MIN_VALUE;
 
     private DualCaptionOverlay(Context context) {
         super(context);
@@ -50,7 +52,8 @@ public final class DualCaptionOverlay extends LinearLayout {
         layer.originalAlphas.clear();
     }
 
-    static void show(View view, String first, String second, TextPaint paint, int width) {
+    static void show(View view, String first, String second, TextPaint paint, int width,
+            CaptionSession session, long cueStart, boolean complete) {
         if (!(view instanceof ViewGroup group)) return;
         DualCaptionOverlay layer = get(view);
         if (layer == null) {
@@ -66,9 +69,14 @@ public final class DualCaptionOverlay extends LinearLayout {
         }
         CaptioningManager.CaptionStyle style = manager.getUserStyle();
         layer.setBackgroundColor(style.hasWindowColor() ? style.windowColor : Color.TRANSPARENT);
+        boolean newSession = layer.session.get() != session;
+        boolean reset = newSession || layer.cueStart != cueStart || layer.requestedWidth != width
+                || !layer.primary.paint.equalsForTextMeasurement(paint);
+        if (newSession) layer.session = new WeakReference<>(session);
+        layer.cueStart = cueStart;
         layer.requestedWidth = width;
-        layer.primary.configure(first, paint, style);
-        layer.secondary.configure(second, paint, style);
+        layer.primary.configure(first, paint, style, reset, !complete);
+        layer.secondary.configure(second, paint, style, reset, !complete);
         ((LayoutParams) layer.secondary.getLayoutParams()).topMargin =
                 Math.round(
                         Math.max(
@@ -136,6 +144,8 @@ public final class DualCaptionOverlay extends LinearLayout {
         private StaticLayout layout;
         private final float padding;
         private final boolean bottom;
+        private boolean pending;
+        private int slotHeight;
 
         Part(Context context, boolean bottom) {
             super(context);
@@ -143,7 +153,10 @@ public final class DualCaptionOverlay extends LinearLayout {
             padding = context.getResources().getDisplayMetrics().density * 2;
         }
 
-        void configure(String text, TextPaint source, CaptioningManager.CaptionStyle style) {
+        void configure(String text, TextPaint source, CaptioningManager.CaptionStyle style,
+                boolean reset, boolean pending) {
+            if (reset) slotHeight = 0;
+            this.pending = pending;
             this.text = text;
             this.style = style;
             paint.set(source);
@@ -163,14 +176,16 @@ public final class DualCaptionOverlay extends LinearLayout {
                             .setHyphenationFrequency(Layout.HYPHENATION_FREQUENCY_NONE)
                             .setIncludePad(true)
                             .build();
-            int twoRows =
-                    StaticLayout.Builder.obtain("\n", 0, 1, paint, width)
-                            .setIncludePad(true)
-                            .build()
-                            .getHeight();
+            // Pending translations may arrive mid-cue. Keep their slots until the next cue
+            // so completing a translation cannot move text that is already being read.
+            int height = pending
+                    ? StaticLayout.Builder.obtain("\n", 0, 1, paint, width)
+                            .setIncludePad(true).build().getHeight()
+                    : layout.getHeight();
+            slotHeight = Math.max(slotHeight, Math.max(layout.getHeight(), height));
             setMeasuredDimension(
                     MeasureSpec.getSize(widthSpec),
-                    Math.max(layout.getHeight(), twoRows) + Math.round(padding * 2));
+                    slotHeight + Math.round(padding * 2));
         }
 
         @Override

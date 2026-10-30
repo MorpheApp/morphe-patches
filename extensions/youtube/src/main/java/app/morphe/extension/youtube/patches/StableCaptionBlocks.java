@@ -435,7 +435,8 @@ public final class StableCaptionBlocks {
             }
         }
         if (dual && (!overflow || cache.overlayLayout(first).getLineCount() <= 2))
-            DualCaptionOverlay.show(view, first, second, cache.paint, cache.width);
+            DualCaptionOverlay.show(view, first, second, cache.paint, cache.width,
+                    session, cue.start, cue.complete);
         replace(full, visible, first);
     }
 
