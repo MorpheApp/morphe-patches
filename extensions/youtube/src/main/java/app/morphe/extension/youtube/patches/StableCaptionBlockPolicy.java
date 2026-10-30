@@ -161,9 +161,9 @@ final class StableCaptionBlockPolicy {
                 long start = number(e, "t"), duration = number(e, "d");
                 if (start < 0
                         || start <= previousParagraph
-                        || start > 7200000
                         || duration <= 0
-                        || duration > 600000) return null;
+                        || duration > 600000
+                        || start > Long.MAX_VALUE - duration) return null;
                 previousParagraph = start;
                 List<Element> segments = children(e);
                 if (segments.size() > 2048) return null;

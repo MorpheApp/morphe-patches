@@ -520,4 +520,20 @@ public class StableCaptionBlockPolicyTest {
         assertNull(StableCaptionBlockPolicy.parseManual(doc(p(1000, 3000, s(0, "one") + s(500, " two")))));
     }
 
+    @Test public void longVideoCaptionClockDoesNotDiscardEarlierCues() {
+        var document = doc(p(264000, 3000, "Earlier phrase.") + p(9000000, 3000, "Later phrase."));
+        for (var policy : new StableCaptionBlockPolicy[]{StableCaptionBlockPolicy.parseManual(document), StableCaptionBlockPolicy.parseSource(document)}) {
+            assertNotNull(policy);
+            var blocks = policy.sourceBlocks("en");
+            assertEquals("Earlier phrase.", StableCaptionBlockPolicy.at(blocks, 265000).text);
+            assertEquals("Later phrase.", StableCaptionBlockPolicy.at(blocks, 9001000).text);
+            assertEquals(9003000, blocks.get(1).end);
+        }
+    }
+    @Test public void overflowingCaptionClockStaysNative() {
+        String body = "<p t='9223372036854775000' d='3000' w='1'>Overflow.</p>";
+        assertNull(StableCaptionBlockPolicy.parseManual(doc(body)));
+        assertNull(StableCaptionBlockPolicy.parseSource(doc(body)));
+    }
+
 }
