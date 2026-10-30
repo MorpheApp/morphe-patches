@@ -23,232 +23,1634 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Canal</string>
   <string name="morphe_settings_screen_04_general_title">General</string>
   <string name="morphe_settings_screen_05_player_title">Reproductor</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Barra de cerca</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Controls de lliscada</string>
   <string name="morphe_settings_screen_11_misc_title">Miscel·lània</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
+  <string name="morphe_restore_old_settings_menus_title">Restaurar la pantalla de configuració antiga de YouTube</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Eliminar restriccions de reproducció en segon pla</string>
+  <string name="morphe_shorts_disable_background_playback_title">Desactivar la reproducció en segon pla</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Pausa automàtica quan el dispositiu està bloquejat</string>
   <string name="morphe_auto_pause_on_screen_lock_off">Apagat</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Pausa sempre quan està bloquejat</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Pausa a menys que hi hagi un àudio sense fils connectat</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
+  <string name="morphe_disable_scrolling_speed_limit_title">Desactivar el límit de velocitat de desplaçament</string>
   <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Desactivar actualitzacions de la disposició</string>
+  <string name="morphe_disable_layout_updates_summary">Evita que el servidor actualitzi la disposició de l\'aplicació</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"La disposició de l'aplicació torna a la disposició utilitzada quan s'instal·là per primera vegada.
+
+Algunes disposicions del servidor potser no tornin.
+
+Els canvis inclouen:
+• Els components del menú desplegable del reproductor (o la configuració relacionada) potser no funcionin
+• Els números progressius no estan animats
+• Es mostra la pestanya de Biblioteca
+• La secció de música de la descripció del vídeo potser no funcioni
+• Els elements del menú desplegable del reproductor no es poden ocultar
+• El botó de canvi de compte potser no aparegui a la pestanya de Biblioteca"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_feed_flyout_menu_title">Activar filtre del menú desplegable del feed</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtre del menú desplegable del feed</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Introduïu els noms dels menus desplegables per filtrar, separats per noves línies</string>
+  <string name="morphe_hide_account_menu_title">Habilita el filtre del menú inferior de Biblioteca / Tu</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">Filtre del menú inferior de Biblioteca / Tu</string>
+  <string name="morphe_hide_account_menu_filter_strings_summary">Introdueix els noms del menú inferior de Biblioteca / Tu per filtrar, separats per noves línies</string>
+  <string name="morphe_hide_album_cards_title">Ocultar targetes d\'àlbums</string>
+  <string name="morphe_hide_album_cards_summary">Amaga les targetes d\'àlbums sota la descripció de l\'artista</string>
+  <string name="morphe_hide_artist_cards_title">Ocultar targetes d\'artistes</string>
+  <string name="morphe_hide_artist_cards_summary">Amaga la targeta de l\'artista a la part superior dels resultats de la cerca</string>
+  <string name="morphe_hide_channel_buttons_title">Ocultar botons del canal</string>
+  <string name="morphe_hide_channel_buttons_summary">Oculta botons com Subscriure\'s, Veure canal, Comunitat i YouTube Music dels perfils de canal als resultats de cerca</string>
+  <string name="morphe_hide_community_posts_title">Ocultar publicacions de la comunitat</string>
+  <string name="morphe_hide_compact_banner_title">Ocultar bannes compactes</string>
+  <string name="morphe_hide_compact_banner_summary">Amaga els bàners compactes i l\'espai entre alguns components</string>
+  <string name="morphe_hide_expandable_card_title">Targetes desplegables sota els vídeos</string>
+  <string name="morphe_hide_expandable_card_entry_1">Mostra-ho tot</string>
+  <string name="morphe_hide_expandable_card_entry_2">Amaga només la targeta de resum</string>
+  <string name="morphe_hide_expandable_card_entry_3">Amaga-ho tot</string>
+  <string name="morphe_hide_floating_microphone_button_title">Ocultar botó flotant del micròfon</string>
+  <string name="morphe_hide_floating_microphone_button_summary">Amaga el botó del micròfon flotant a la cantonada inferior dreta de la pantalla de suggeriments de cerca</string>
+  <string name="morphe_hide_get_premium_button_title">Amaga el botó \"Get Premium\"</string>
+  <string name="morphe_hide_history_shelf_title">Ocultar la prestatgia d\'Historial</string>
+  <string name="morphe_hide_horizontal_shelves_title">Ocultar prestatges horitzontals</string>
+  <string name="morphe_hide_horizontal_shelves_summary">Amaga els prestatges horitzontals com ara Notícies d\'última hora, Publicacions de la comunitat que et poden agradar, Continua mirant, Explora més canals, Explora més temes, Per a tu, Vídeos recents, Més rellevants, Publicacions de la comunitat del creador, Shopping i Torna\'l a mirar</string>
+  <string name="morphe_hide_image_shelf_title">Ocultar prestatge d\'imatges</string>
+  <string name="morphe_hide_image_shelf_summary">Amaga els baladros d\'imatges als resultats de la cerca</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
+  <string name="morphe_hide_invite_to_message_card_title">Ocultar la targeta \"Convida altres a enviar missatges\"</string>
+  <string name="morphe_hide_invite_to_message_card_summary">Oculta la targeta d\'invitació que apareix a la secció de Missatges de la pestanya de Notificacions</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">Amaga el botó \"Vídeos recents\"</string>
+  <string name="morphe_hide_latest_videos_button_summary">Amaga el bàner blau de \"Vídeos recents\" que apareix a la part superior del feed de l\'Inici</string>
+  <string name="morphe_hide_live_streams_title">Ocultar retransmissions en directe</string>
+  <string name="morphe_hide_live_streams_summary">Oculta els vídeos que estan en directe ara al feed d\'inici i als resultats de cerca</string>
   <string name="morphe_hide_mix_playlists_title">Amaga llistes de reproducció de Mix</string>
   <string name="morphe_hide_movies_section_title">Amagar secció de pel·lícules</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Ocultar l\'encapçalament del menú de Notificacions</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Oculta l\'encapçalament del menú de Notificacions quan es prem el botó de la campana</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Amaga el botó \"Notifica\'m\"</string>
+  <string name="morphe_hide_notify_me_button_summary">Oculta el botó de recordatori per a les retransmissions en directe i els estrens programats</string>
+  <string name="morphe_hide_playables_title">Amaga els Playables</string>
+  <string name="morphe_hide_playables_summary">Amaga la funció que permet jugar a jocs</string>
+  <string name="morphe_hide_search_term_thumbnails_title">Ocultar miniatures dels termes de cerca</string>
+  <string name="morphe_hide_search_term_thumbnails_summary">Amaga les miniatures de previr en la llista d\'autocompletat de la cerca</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
+  <string name="morphe_hide_show_more_button_title">Amaga el botó \"Mostra\'n més\"</string>
+  <string name="morphe_hide_show_more_button_summary">Amaga el botó d\'expandir sota els vídeos dels resultats de la cerca</string>
+  <string name="morphe_hide_subscribed_channels_bar_title">Ocultar barra de canals subscrits</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Ocultar noms de canals subscrits</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_summary">Oculta els noms dels canals a la barra de canals subscrits</string>
+  <string name="morphe_hide_surveys_title">Amaga les enquestes</string>
+  <string name="morphe_hide_surveys_summary">Amagar les enquestes i els avisos sobre la precisió de les recomanacions del flux</string>
+  <string name="morphe_hide_ticket_shelf_title">Amaga la prestatgeria de kindness</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Ocultar el bàner \"Els vídeos no disponibles estan ocults\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Oculta el bàner \"Els vídeos no disponibles estan ocults\" a les llistes de reproducció</string>
+  <string name="morphe_hide_upload_time_title">Amagar l\'hora de pujada</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Limitacions:
+• És possible que els estanteres de Shorts, les pàgines dels canals i els resultats de la recerca encara mostrin l'hora de pujada
+• No funciona amb la disposició d'automòbil"</string>
+  <string name="morphe_hide_video_thumbnail_title">Ocultar la miniatura del vídeo</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_labels_title">Ocultar etiquetes de vídeo</string>
+  <string name="morphe_hide_video_labels_summary">Oculta etiquetes com \'Doblat automàticament\' / \'Doblat\', \'Guanya comissions\', \'Tendència\', \'La gent també ha vist\', \'producte(s)\' i \'Potser també us agradi\'</string>
+  <string name="morphe_hide_view_count_title">Amagar el recompte de visites</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Limitacions:
+• És possible que els estanteres de Shorts, les pàgines dels canals i els resultats de la recerca encara mostrin el nombre de visualitzacions
+• No funciona amb la disposició d'automòbil"</string>
+  <string name="morphe_hide_web_search_results_title">Ocultar resultats de cerca web</string>
+  <string name="morphe_hide_web_search_results_summary">Amaga la secció \'Resultats de la web\' dels resultats de cerca</string>
+  <string name="morphe_hide_you_may_like_section_title">Ocultar la secció \"Potser t\'agradi\"</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
+  <string name="morphe_hide_youtube_doodles_title">Amaga els Doodles de YouTube</string>
+  <string name="morphe_hide_youtube_doodles_summary">Amaga les animacions estacionals i basades en esdeveniments del logotip de YouTube</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">Mostrar els Doodles de YouTube pot impedir que es mostrin els encapçalaments personalitzats</string>
+  <string name="morphe_hide_channel_bar_title">Amaga la barra de canals</string>
+  <string name="morphe_hide_channel_watermark_title">Ocultar marca d\'aigua del canal</string>
+  <string name="morphe_hide_chapters_timeline_button_title">Oculta els capítols i el botó \'En aquest vídeo\'</string>
+  <string name="morphe_hide_crowdfunding_box_title">Ocultar caixa de micromecenatge</string>
+  <string name="morphe_hide_emergency_box_title">Ocultar caixes d\'emergència</string>
+  <string name="morphe_hide_info_panels_title">Ocultar panells d\'informació</string>
+  <string name="morphe_hide_info_panels_summary">Amaga els panells de context informatius, com la informació mèdica</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
+  <string name="morphe_hide_join_membership_button_title">Amaga el botó \"Unir-se\"</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">Amaga el botó \"Repetició del xat en directe\"</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">Amaga el botó de reproducció del xat en el mode de pantalla completa</string>
+  <string name="morphe_hide_medical_panels_title">Amaga els panells mèdics</string>
+  <string name="morphe_hide_player_gesture_hints_title">Ocultar els indicadors de gestos del reproductor</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Oculta els indicadors que apareixen durant els gestos del reproductor, com \"Desllisa cap amunt per a una recerca precisa\", \"Allibera per cancel·lar\" i \"2x\"</string>
+  <string name="morphe_hide_snackbar_title">Oculta la barra de notificacions</string>
+  <string name="morphe_hide_subscribers_community_guidelines_title">Amaga les directrius per als subscriptors</string>
+  <string name="morphe_hide_sync_button_title">Ocultar el botó \'Sincronitzar amb el vídeo\'</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">Ocultar el degradat de tocar i mantenir</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Oculta el degradat dels controls del reproductor quan llisques el dit mentre mantens premut per accelerar</string>
+  <string name="morphe_hide_timed_reactions_title">Amagar reaccions temporitzades</string>
+  <string name="morphe_hide_timed_reactions_summary">Amaga la funció que permet als usuaris reaccionar amb emojis a la secció de comentaris i al xat en directe</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Ocultar el menú \'Ajuda &amp; comentaris\'</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Oculta el menú \'Ajuda &amp; comentaris\' quan s\'utilitza el botó de tres punts, com ara als resultats de la cerca</string>
+  <string name="morphe_hide_handle_title">Ocultar identificador</string>
+  <string name="morphe_hide_handle_summary">Oculta l\'identificador del teu canal a la pestanya \'Tu\'</string>
+  <string name="morphe_hide_video_title_title">Ocultar títol del vídeo</string>
+  <string name="morphe_hide_video_title_summary">Amaga el títol del vídeo en el mode de pantalla completa</string>
+  <string name="morphe_sanitize_video_subtitle_title">Netejar els subtítols del vídeo</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Elimina frases com \'#\', \'Fundraiser\', \'product(s)\' i \'Shop\' dels subtítols del vídeo</string>
+  <string name="morphe_hide_ask_gemini_button_title">Ocultar el botó \"Pregunta a Gemini\"</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Oculta el botó \"Pregunta a Gemini\" a la part inferior del panell \"Pregunta sobre aquest vídeo\"</string>
+  <string name="morphe_hide_description_components_screen_title">Descripció del vídeo</string>
+  <string name="morphe_hide_description_components_screen_summary">Tria quins components apareixen a la descripció del vídeo</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_title">Amagar la secció \"Resum del vídeo generat per IA\"</string>
+  <string name="morphe_hide_ask_section_title">Amagar la secció de Preguntes</string>
+  <string name="morphe_hide_attributes_section_title">Amagar la secció d\'Atributs</string>
+  <string name="morphe_hide_attributes_section_summary">Amaga les seccions de Llocs destacats, Jocs, Música i Persones esmentades</string>
+  <string name="morphe_hide_channel_links_section_title">Amaga la secció d\'enllaços del canal</string>
+  <string name="morphe_hide_chapters_section_title">Amagar la secció de Capítols</string>
+  <string name="morphe_hide_corrections_section_title">Amagar la secció de Correccions</string>
+  <string name="morphe_hide_course_progress_section_title">Amagar la secció \'Progress del curs\'</string>
+  <string name="morphe_hide_explore_section_title">Amagar la secció d\'Exploració</string>
+  <string name="morphe_hide_explore_section_summary">Amaga les seccions \'Explora aquest curs\' i \'Explora el podcast\'</string>
+  <string name="morphe_hide_explore_course_section_title">Amagar la secció \'Explora aquest curs\'</string>
+  <string name="morphe_hide_explore_podcast_section_title">Amagar la secció \'Explora el podcast\'</string>
+  <string name="morphe_hide_featured_channels_section_title">Ocultar la secció de canals destacats</string>
+  <string name="morphe_hide_featured_links_section_title">Amagar la secció d\'Enllaços destacats</string>
+  <string name="morphe_hide_featured_playlists_section_title">Amagar la secció de llistes de reproducció destacades</string>
+  <string name="morphe_hide_featured_videos_section_title">Amagar la secció de Vídeos destacats</string>
+  <string name="morphe_hide_hashtag_section_title">Amagar la secció d\'etiquetes</string>
+  <string name="morphe_hide_how_this_was_made_section_title">Ocultar la secció \"Com s\'ha fet\"</string>
+  <string name="morphe_hide_hype_points_title">Amagar punts de Hype</string>
+  <string name="morphe_hide_info_cards_section_title">Amagar secció de targetes d\'informació</string>
+  <string name="morphe_hide_key_concepts_section_title">Ocultar la secció \"Conceptes clau\"</string>
+  <string name="morphe_hide_quizzes_section_title">Amagar secció de qüestionaris</string>
+  <string name="morphe_hide_search_inside_this_video_section_title">Amagar la secció \'Cerca dins d\'aquest vídeo\'</string>
+  <string name="morphe_hide_subscribe_button_title">Ocultar el botó de Subscriure\'s</string>
+  <string name="morphe_hide_transcript_section_title">Amagar secció de transcripció</string>
+  <string name="morphe_hide_video_details_section_title">Amagar secció \'Detalls del vídeo\'</string>
+  <string name="morphe_hide_filter_bar_screen_title">Barra de filtres</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Trieu on ocultar la barra de filtres desplaçable</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">Ocultar a la pàgina del canal</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Ocultar als comentaris</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Ocultar als feeds</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Ocultar als vídeos relacionats</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Ocultar als resultats de cerca</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Ocultar a l\'historial de reproducció</string>
+  <string name="morphe_channel_screen_title">Pàgina del canal</string>
+  <string name="morphe_channel_screen_summary">Trieu quins components apareixen a la pàgina del canal</string>
+  <string name="morphe_hide_channel_tab_title">Habilitar el filtre de la pestanya del canal</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">Filtre de la pestanya del canal</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">Introduïu els noms de les pestanyes del canal per filtrar, separats per salts de línia</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">Ocultar el botó de Comunitat</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">Amaga el botó \"Unir-se\"</string>
+  <string name="morphe_hide_links_preview_title">Amagar vista prèvia dels enllaços</string>
+  <string name="morphe_hide_links_preview_summary">Amaga els enllaços web clicables al capçalet del canal</string>
+  <string name="morphe_hide_members_only_chip_title">Ocultar l\'etiqueta \"Només membres\"</string>
+  <string name="morphe_hide_members_only_chip_summary">Oculta l\'etiqueta \"Només membres\" a la barra de filtres del canal</string>
+  <string name="morphe_hide_members_shelf_title">Amagar prestatgeria de membres</string>
+  <string name="morphe_hide_members_shelf_summary">Amaga la llista de membres del canal</string>
+  <string name="morphe_hide_posts_shelf_title">Ocultar la prestatgia de publicacions</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">Amaga el botó \"Botiga\"</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">Amaga el botó \"Subscriure\'s\"</string>
+  <string name="morphe_explore_menu_screen_title">Menú d\'exploració</string>
+  <string name="morphe_explore_menu_screen_summary">Trieu quins components apareixen al menú d\'exploració</string>
+  <string name="morphe_hide_courses_menu_title">Ocultar el menú de Cursos</string>
+  <string name="morphe_hide_explore_button_title">Ocultar el botó d\'Explorar</string>
+  <string name="morphe_hide_fashion_menu_title">Ocultar el menú de \'Fashion &amp; Beauty\'</string>
+  <string name="morphe_hide_gaming_menu_title">Ocultar el menú de Gaming</string>
+  <string name="morphe_hide_hype_menu_title">Ocultar el menú de Hype</string>
+  <string name="morphe_hide_learning_menu_title">Amaga el menú d\'Aprenentatge</string>
+  <string name="morphe_hide_live_menu_title">Ocultar el menú de Live</string>
+  <string name="morphe_hide_memberships_menu_title">Ocultar el menú de Membresies</string>
+  <string name="morphe_hide_movies_menu_title">Ocultar el menú \'Pel·lícules &amp; TV\'</string>
+  <string name="morphe_hide_music_menu_title">Ocultar el menú de Música</string>
+  <string name="morphe_hide_news_menu_title">Ocultar el menú de Notícies</string>
+  <string name="morphe_hide_playables_menu_title">Ocultar el menú de Playables</string>
+  <string name="morphe_hide_podcasts_menu_title">Ocultar el menú de Podcasts</string>
+  <string name="morphe_hide_shopping_menu_title">Ocultar el menú de Shopping</string>
+  <string name="morphe_hide_sports_menu_title">Ocultar el menú d\'Esports</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Ocultar el menú de YouTube Premium</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Ocultar el menú de YouTube Studio</string>
+  <string name="morphe_hide_youtube_music_menu_title">Amaga el menú de YouTube Music</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Amaga el menú de YouTube Kids</string>
+  <string name="morphe_hide_youtube_create_menu_title">Amaga el menú de YouTube Create</string>
+  <string name="morphe_hide_youtube_works_menu_title">Amaga el menú \"How YouTube works\"</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Ocultar els peus de pàgina legals i de privacitat</string>
+  <string name="morphe_comments_screen_title">Comentaris</string>
+  <string name="morphe_comments_screen_summary">Trieu quins components apareixen a la secció de comentaris</string>
+  <string name="morphe_hide_comments_carousel_title">Habilitar el filtre del carrusel de comentaris</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Assegureu-vos d'introduir el nom exacte de l'element del carrossel (p. ex., Pregunta, Dona hype a aquest vídeo, Escolta a YouTube Music)
+• Ocultar els elements del carrossel pot tenir efectes secundaris no desitjats
+• Si s'oculten tots els elements del carrossel, també s'ocultarà tota la secció de comentaris"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Filtre del carrusel de comentaris</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Introduïu els noms dels carrisels de comentaris per filtrar, separats per salts de línia</string>
+  <string name="morphe_hide_comments_ai_chat_summary_title">Amagar resum del xat per IA</string>
+  <string name="morphe_hide_comments_channel_guidelines_title">Amagar directrius del canal</string>
+  <string name="morphe_hide_comments_contexts_title">Amaga els missatges de context</string>
+  <string name="morphe_hide_comments_by_members_header_title">Amagar l\'encapçalat \'Comentaris dels membres\'</string>
+  <string name="morphe_hide_comments_section_title">Amagar secció de comentaris</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Ocultar la secció de comentaris al feed de Inici</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Amaga les Normes de la Comunitat</string>
+  <string name="morphe_hide_comments_create_a_short_button_title">Amagar el botó \'Crea un Short\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">Amaga el botó de No m\'agrada</string>
+  <string name="morphe_hide_comments_emoji_button_title">Amaga el botó d\'Emoji</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Ocultar opcions de la barra de filtres</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Oculta totes les opcions de la barra de filtres exceptu \'Principals\' i \'Més recents\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Amaga l\'animació i les targetes de regal</string>
+  <string name="morphe_hide_comments_gift_button_title">Amaga el botó de Regal</string>
+  <string name="morphe_hide_comments_info_button_title">Ocultar el botó d\'Informació</string>
+  <string name="morphe_hide_comments_live_chat_donators_bar_title">Oculta la barra de donadors del xat en directe</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">Oculta el botó de desplaçament fins a baix del xat en viu</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Ocultar els avisos del xat en viu</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Oculta les finestres emergents d\'ajuda que apareixen prop de la barra d\'entrada del xat, com l\'avís de xat només per a subscriptors</string>
+  <string name="morphe_hide_comments_menu_button_title">Ocultar botó de menú</string>
+  <string name="morphe_hide_comments_menu_button_summary">Amaga el botó del menú de 3 punts de cada comentari</string>
+  <string name="morphe_hide_comments_preview_comment_title">Amagar l\'aperçú del comentari</string>
+  <string name="morphe_hide_comments_preview_comment_summary">Oculta la vista prèvia del comentari sota el vídeo abans d\'obrir la secció completa de comentaris</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Comentari ocult per Morphe…</string>
+  <string name="morphe_minimal_comments_button_title">Habilitar el botó de comentaris minimalistes</string>
+  <string name="morphe_minimal_comments_button_summary">Amaga les cartes lliscants i el seu selector de pàgina, mostrat al botó de comentaris</string>
+  <string name="morphe_hide_comments_thanks_button_title">Amagar el botó de Gràcies</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Amaga el botó de la marca temporal</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Amaga el botó \"Fans principals\"</string>
+  <string name="morphe_hide_comments_translate_button_title">Amaga el botó de Tradueix</string>
+  <string name="morphe_hide_comments_zero_state_title">Ocultar el missatge \"Encara no hi ha comentaris\"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Netejar els enllaços de cerca ressaltats</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Neteja els enllaços de cerca ressaltats, deixant només el text pla original</string>
+  <string name="morphe_hide_keyword_content_screen_title">Filtre de paraules clau</string>
+  <string name="morphe_hide_keyword_content_screen_summary">Trieu paraules o frases específiques per ocultar vídeos als feeds i a la cerca</string>
+  <string name="morphe_hide_keyword_content_comments_title">Oculta els comentaris per paraules clau</string>
+  <string name="morphe_hide_keyword_content_home_title">Amagar vídeos de l\'Inici per paraules clau</string>
+  <string name="morphe_hide_keyword_content_search_title">Amagar resultats de cerca per paraules clau</string>
+  <string name="morphe_hide_keyword_content_subscriptions_title">Amagar vídeos de Subscripcions per paraules clau</string>
+  <string name="morphe_hide_keyword_content_phrases_title">Paraules clau per ocultar</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
+  <string name="morphe_hide_keyword_content_phrases_summary">"Introduïu paraules clau i frases per ocultar, separades per salts de línia
+
+Les paraules clau poden ser qualsevol text que aparegui als títols dels vídeos o als noms dels canals
+
+Les paraules amb lletres majúscules a la meitat han de coincidir exactament (per exemple, iPhone, TikTok, LeBlanc)"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Inici / Subscripcions / Cerca / Els comentaris es filtren per ocultar el contingut que coincideix amb frases clau
+
+Limitacions:
+• Els Shorts no es poden ocultar pel nom del canal
+• Alguns components de la interfície d'usuari podrien no ocultar-se
+• La cerca d'una paraula clau podria no mostrar resultats"</string>
+  <string name="morphe_hide_keyword_content_about_whole_words_title">Coincidència amb paraules completes</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <string name="morphe_hide_keyword_content_about_whole_words_summary">Envolir una paraula clau/frase amb cometes evitarà coincidències partials dels títols dels vídeos i dels noms dels canals&lt;br&gt;&lt;br&gt;Per exemple,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ocultarà el vídeo: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;però no ocultarà: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_toast_invalid_common">No es pot utilitzar la paraula clau: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Afegeix cometes per utilitzar la paraula clau: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_conflicting">La paraula clau té declaracions contradictoryes: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_length">La paraula clau és massa curta i requereix cometes: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_broad">La paraula clau ocultarà tots els vídeos: %s</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Inici: %s
+• Subscripcions: %s
+• Cerca: %s
+• Comentaris: %s
+• Total: %s"</string>
+  <string name="morphe_hide_stats_category_title">Estadístiques</string>
+  <string name="morphe_hide_stats_hidden_24h_title">Vídeos ocults, últimes 24 hores</string>
+  <string name="morphe_hide_stats_hidden_all_title">Vídeos ocults, tot el temps</string>
+  <string name="morphe_hide_stats_hidden_24h_reset_title">Reiniciar el comptador de les últimes 24 hores?</string>
+  <string name="morphe_hide_stats_hidden_all_reset_title">Reiniciar el comptador de tot el temps?</string>
+  <string name="morphe_hide_aislist_screen_title">Filtre de canals d\'IA</string>
+  <string name="morphe_hide_aislist_screen_summary">Oculta els vídeos de canals marcats com a contingut generat per IA per la llista de la comunitat AiSList</string>
+  <string name="morphe_hide_aislist_blocklist_category_title">Llista negra: Confiança alta</string>
+  <string name="morphe_hide_aislist_warnlist_category_title">Llista d\'advertència: Confiança moderada</string>
+  <string name="morphe_hide_aislist_hide_home_title">Ocultar vídeos a l\'Inici</string>
+  <string name="morphe_hide_aislist_hide_search_title">Ocultar vídeos a la cerca</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Inici: %s
+• Cerca: %s
+• Total: %s"</string>
+  <string name="morphe_hide_aislist_stats_blocklist_channels_title">Canals de la llista negra</string>
+  <string name="morphe_hide_aislist_stats_warnlist_channels_title">Canals de la llista d\'advertència</string>
+  <string name="morphe_hide_aislist_stats_channels_disabled_summary">Habilita un filtre per carregar els canals</string>
+  <string name="morphe_hide_aislist_stats_channels_loading_summary">Carregant canals…</string>
+  <string name="morphe_hide_aislist_about_summary">"L'inici i els resultats de la cerca es filtren per ocultar els vídeos de canals marcats per AiSList
+
+Limitacions:
+• Els Shorts de IA filtrats poden aparèixer com un espai buit
+• Alguns vídeos de IA poden seguir apareixent"</string>
+  <string name="morphe_hide_aislist_attribution_summary">"AiSList és una llista de codi obert de canals de YouTube que publiquen contingut generat per IA, mantenida per voluntaris. Els canals són reportats per els usuaris i revisats abans d'ser afegits
+
+La llista es descarrega des de GitHub i els vídeos es filtren al vostre dispositiu"</string>
+  <string name="morphe_aislist_submit_category_title">Denunciar canals d\'IA</string>
+  <string name="morphe_aislist_submit_flyout_menu_title">Afegir entrada de denúncia al menú de vídeo</string>
+  <string name="morphe_aislist_submit_flyout_menu_summary">Afegir una entrada al menú de vídeo que denuncia el canal d\'un vídeo a AiSList</string>
+  <string name="morphe_aislist_submit_username_title">Nom de qui denuncia</string>
+  <string name="morphe_aislist_submit_username_summary">Nom mostrat al costat de les teves denúncies a la taula de classificació pública d\'AiSList. La denúncia no està disponible mentre aquest camp estigui buit</string>
+  <string name="morphe_aislist_submit_title">Denunciar canal d\'IA</string>
+  <string name="morphe_aislist_submit_dialog_message">"Enviar %s a AiSList, utilitzant aquest vídeo com a prova?
+
+Només denuncia els canals que:
+• Utilitzen veus, visuals, guions o música d'IA com a contingut principal
+• Produئين contingut en massa amb eines d'IA i poca intervenció humana
+
+No denunciis canals que només discutin la IA o n'utilitzin per a algunes parts dels seus vídeos.
+
+Els informes són públics i es revisen abans d'afegir un canal a una llista. L'eliminació només és possible mitjançant una sol·licitud a GitHub"</string>
+  <string name="morphe_aislist_submit_already_blocklisted">Aquest canal ja està a la llista negra d\'AiSList</string>
+  <string name="morphe_aislist_submit_already_warnlisted">Aquest canal ja està a la llista d\'advertències de l\'AiSList</string>
+  <string name="morphe_aislist_submit_dialog_confirm">Informar</string>
+  <string name="morphe_aislist_submit_no_username">Estableix un nom de l\'emissor a la configuració del filtre de canals d\'IA per informar canals</string>
+  <string name="morphe_aislist_submit_resolving">Buscant el canal…</string>
+  <string name="morphe_aislist_submit_failed_channel">No es pot trobar el canal d\'aquest vídeo</string>
+  <string name="morphe_aislist_submit_success">Canal denunciat i a l\'espera de revisió</string>
+  <string name="morphe_aislist_submit_failed_conflict">AiSList no ha pogut desar la denúncia, torneu-ho a intentar més tard</string>
+  <string name="morphe_aislist_submit_failed_rate_limit">S\'han enviat massa denúncies, torneu-ho a intentar més tard</string>
+  <string name="morphe_aislist_submit_failed_rejected">AiSList ha rebutjat la denúncia</string>
+  <string name="morphe_aislist_submit_failed">Error en la denúncia, comproveu la vostra connexió</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_ads_channel_whitelist_title">Llista blanca d\'anuncis del canal</string>
+  <string name="morphe_ads_channel_whitelist_summary">Els vídeos dels canals de la llista blanca es reproduen amb anuncis, així els seus creadors reben un pagament. Els anuncis es mantenen bloquejats en tots els altres canals</string>
+  <string name="morphe_ads_channel_whitelist_flyout_add">Afegeix el canal a la llista blanca d\'anuncis</string>
+  <string name="morphe_ads_channel_whitelist_flyout_remove">Elimina el canal de la llista blanca d\'anuncis</string>
+  <string name="morphe_hide_creator_store_shelf_title">Ocultar l\'estanteria de la botiga del creador</string>
+  <string name="morphe_hide_end_screen_store_banner_title">Ocultar el bàner de la botiga de la pantalla final</string>
+  <string name="morphe_hide_general_ads_title">Ocultar anuncis generals</string>
+  <string name="morphe_hide_merchandise_banners_title">Ocultar bàners de merchandise</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Amaga les etiquetes de promocions pagades</string>
+  <string name="morphe_hide_player_popup_ads_title">Ocultar els anuncis pop-up del reproductor</string>
+  <string name="morphe_hide_self_sponsor_ads_title">Ocultar targetes auto-patrocinades</string>
+  <string name="morphe_hide_shopping_links_title">Ocultar enllaços de compres</string>
+  <string name="morphe_hide_video_ads_title">Ocultar anuncis de vídeo</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Ocultar les promocions de YouTube Premium</string>
   <!-- layout.flyout.flyoutPatch -->
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Carregant…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+  <string name="morphe_channel_whitelist_current_channel">Canal actual:</string>
+  <string name="morphe_channel_whitelist_add">Afegeix a la llista blanca</string>
   <string name="morphe_channel_whitelist_remove">Eliminar</string>
+  <string name="morphe_channel_whitelist_channels_header">Canals de la llista blanca</string>
+  <string name="morphe_channel_whitelist_empty">No hi ha canals a la llista blanca</string>
+  <string name="morphe_channel_whitelist_channel_added">Canal afegit a la llista blanca</string>
+  <string name="morphe_channel_whitelist_channel_removed">Canal eliminat de la llista blanca</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Cerca dins del canal</string>
+  <string name="morphe_channel_search_summary">Afegeix un segon botó de cerca a les pàgines dels canals per cercar només en aquest canal</string>
+  <string name="morphe_channel_search_hint">Cerca canal</string>
+  <string name="morphe_channel_search_results">Resultats de la cerca de canals</string>
+  <string name="morphe_channel_search_no_results">No s\'ha trobat res en aquest canal</string>
+  <string name="morphe_channel_search_failed">No s\'ha pogut cercar en aquest canal</string>
+  <string name="morphe_channel_search_videos">Vídeos</string>
+  <string name="morphe_channel_search_posts">Publicacions</string>
+  <string name="morphe_channel_search_no_posts">No hi ha publicacions en aquest canal que coincideixin</string>
+  <string name="morphe_channel_search_sort_relevance">Relevància</string>
+  <string name="morphe_channel_search_sort_most_viewed">Més vistos</string>
+  <string name="morphe_channel_search_sort_least_viewed">Menys vists</string>
+  <string name="morphe_channel_search_sort_newest">Més recents</string>
+  <string name="morphe_channel_search_sort_oldest">Més antic</string>
+  <string name="morphe_channel_search_sort_shortest">Més curt</string>
+  <string name="morphe_channel_search_sort_longest">Més llarg</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Enllaç copiat al porta papers</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Enllaç amb marca de temps copiat al porta papers</string>
+  <string name="morphe_copy_video_link_button_title">Mostrar el botó de Copiar l\'enllaç del vídeo</string>
+  <string name="morphe_copy_video_link_button_summary">Toca per copiar l\'enllaç del vídeo, mantingui toca per copiar amb la marca de temps</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Copiar la marca de temps per defecte</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Inverteix les accions de tocar i mantenir tocat del botó \'Copiar l\'enllaç del vídeo\'</string>
   <!-- interaction.copytext.copyTextPatch -->
+  <string name="morphe_copy_video_title_title">Copia el títol del vídeo</string>
+  <string name="morphe_copy_video_title_summary">Mantingueu premt el títol del vídeo per copiar-lo</string>
+  <string name="morphe_copy_video_title_success">Títol del vídeo copiat al porta papers</string>
+  <string name="morphe_copy_comments_title">Copia els comentaris</string>
+  <string name="morphe_copy_comments_summary">Mantingueu premt un comentari per copiar-lo</string>
+  <string name="morphe_copy_comments_success">Comentari copiat al porta papers</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Manté premut per obrir el menú del vídeo</string>
+  <string name="morphe_feed_long_press_menu_summary">Si mantens premut qualsevol part d\'un vídeo del feed, s\'obrirà el seu menú</string>
+  <string name="morphe_feed_watch_later_button_title">Mostra el botó Veure més tard a les miniatures</string>
+  <string name="morphe_feed_watch_later_button_summary">A les miniatures dels vídeos del feed es mostra un botó Veure més tard. Si el mantens premut, s\'obrirà Desarar a la llista de reproducció</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
+  <string name="morphe_post_image_download_title">Descarregar imatges de publicacions</string>
+  <string name="morphe_post_image_download_summary">Es mostra un botó de descàrrega al costat del botó Compartir de les publicacions amb imatges o GIFs, i s\'afegeix un element de descàrrega al seu menú</string>
+  <string name="morphe_post_image_download_flyout">Descarregar imatges</string>
+  <string name="morphe_post_image_download_flyout_single">Descarregar imatge</string>
+  <string name="morphe_post_image_download_started">Descarregant %s imatges…</string>
+  <string name="morphe_post_image_download_started_single">Descarregant imatge…</string>
+  <string name="morphe_post_image_download_saved">%1$s imatges guardades a %2$s</string>
+  <string name="morphe_post_image_download_saved_single">Imatge guardada a %s</string>
+  <string name="morphe_post_image_download_failed">No s\'ha pogut descarregar la imatge</string>
+  <string name="morphe_post_image_download_not_found">No s\'ha trobat cap imatge en aquesta publicació</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">Afegeix l\'element Pregunta al menú desplegable</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Afegeix un element de resum de vídeo al menú desplegable del feed</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Per utilitzar Ask, inicialment cal tenir un compte iniciat en un país on Ask estigui disponible.
+
+Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els vídeos, encara que el país actual no tingui la funció Ask."</string>
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">Resumir el vídeo</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">No s\'ha pogut obrir Ask per a aquest vídeo</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask no està disponible per al teu compte o per al teu país actual</string>
   <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">Mostra el nombre de visualitzacions a les miniatures</string>
+  <string name="morphe_feed_view_count_summary">El nombre de visualitzacions dels vídeos del feed es mostra a la part inferior esquerra de les seves miniatures en lloc de sota el títol. Alguns vídeos, com els de les prestatgeries, potser no mostren el nombre de visualitzacions</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">Mostrar el recompte de m\'agrada de la miniatura del feed</string>
+  <string name="morphe_ryd_feed_like_ratio_title">Mostrar el percentatge de m\'agrada de la miniatura del feed</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">Cercar comentaris</string>
+  <string name="morphe_search_comments_summary">Toqueu el botó de cerca als comentaris per mostrar només els comentaris carregats que contenguin totes les paraules cercades. Poseu les paraules entre cometes per cercar una frase</string>
+  <string name="morphe_search_comments_dialog_title">Cerca comentaris</string>
+  <string name="morphe_search_comments_hint">Paraules per a la cerca</string>
   <string name="morphe_search_comments_search">Cercar</string>
   <string name="morphe_search_comments_clear">Buida</string>
+  <string name="morphe_search_comments_applied">Canvieu l\'ordre de classificació o obriu els comentaris de nou per cercar-los</string>
+  <string name="morphe_search_comments_cleared">Cerca esborrada. Canvieu l\'ordre de classificació o obriu els comentaris de nou per mostrar tots els comentaris</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">Desactiva la finestra emergenta \"Inicia sessió a la TV\"</string>
+  <string name="morphe_disable_connect_your_devices_popup_title">Desactivar la finestra desplegable \"Connecta els teus dispositius\"</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
+  <string name="morphe_disable_chapter_skip_double_tap_title">Desactiva el salt de capítol amb toc doble</string>
+  <string name="morphe_disable_chapter_skip_double_tap_summary">Desactiva el gest de doble toc amb dos dits que salta capítols, que es pot activar accidentalment amb un sol dit</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">Descarrega vídeos, podcasts o cançons amb aplicacions de descàrrega de tercers</string>
+  <string name="morphe_external_downloader_overlay_button_title">Mostra el botó de descàrrega de la capa del reproductor</string>
+  <string name="morphe_external_downloader_overlay_button_summary">Mostra un botó al reproductor de vídeo que obre el teu descarregador extern</string>
+  <string name="morphe_external_downloader_quick_menu_title">Descarga ràpida amb un toc</string>
+  <string name="morphe_external_downloader_quick_menu_summary">Sol·licita la descàrrega en segon pla. Mantingueu premut per obrir el descarregador. Funciona amb YTDLnis i YTindir</string>
+  <string name="morphe_external_downloader_mark_watched_title">Marcar descàrregues com a vist</string>
+  <string name="morphe_external_downloader_mark_watched_summary">Els vídeos descarregats amb un descarregador extern s\'afegeixen a l\'historial de reproducció de YouTube</string>
+  <string name="morphe_external_downloader_quick_video_quality">Full HD (1080p)</string>
+  <string name="morphe_external_downloader_quick_audio_quality">Mitjana (192 kbps)</string>
+  <string name="morphe_external_downloader_quick_menu_header">Descarga ràpida</string>
   <string name="morphe_external_downloader_quick_video">Vídeo</string>
+  <string name="morphe_external_downloader_quick_audio">Àudio</string>
+  <string name="morphe_external_downloader_quick_options">Totes les opcions</string>
+  <string name="morphe_shorts_download_flyout_button_title">Mostra la descàrrega al menú de Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Afegeix un element de menú desplegable de descàrrega externa al reproductor de Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">Descárrega</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Traducció de veu en off</string>
+  <string name="morphe_vot_screen_summary">Llegeix els subtítols del vídeo en veu alta mitjançant el text a veu del dispositiu, sincronitzat amb la reproducció</string>
+  <string name="morphe_vot_enabled_summary">Mostra un botó superposat al reproductor de vídeo. Toca per alternar la traducció, mantingui premut per a la configuració ràpida</string>
+  <string name="morphe_vot_caption_language_title">Idioma</string>
+  <string name="morphe_vot_translation_service_title">Proveïdor de traducció</string>
+  <string name="morphe_vot_original_audio_volume_title">Volum de l\'àudio original</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volum de l\'àudio original de YouTube mentre la traducció està parlant</string>
+  <string name="morphe_vot_translation_volume_title">Volum de la traducció</string>
+  <string name="morphe_vot_translation_volume_summary">Volum de la veu de la traducció doblada</string>
+  <string name="morphe_vot_max_speech_rate_title">Velocitat màxima de parla</string>
+  <string name="morphe_vot_max_speech_rate_summary">Multiplicador de velocitat màxima per ajustar la parla a l\'espai d\'un subtítol</string>
+  <string name="morphe_vot_mymemory_info_summary">"API de traducció gratuïta, no requerix clau d'API. Fins a 5.000 caràcters per dia en el nivell gratuït, o fins a 50.000 caràcters per dia amb una adreça de correu electrònic.
+
+Toqueu aquí per obrir MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Correu electrònic de MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opcional. Introduïu la vostra adreça de correu electrònic de MyMemory per augmentar el límit diari de 5.000 a 50.000 caràcters. Deixeu-ho buit per utilitzar el límit anònim</string>
+  <string name="morphe_vot_openrouter_info_summary">"Traducció per IA de pagament via OpenRouter. Recarregueu un cop i traduïu milers de vídeos. Mistral Nemo és l'opció més econòmica, Gemma 4 ofereix la qualitat més alta.
+
+Toqueu aquí per obrir OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Clau API d\'OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">La vostra clau API d\'OpenRouter. Creeu una clau a OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Model d\'OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Personalitzat</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter no configurat</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Introduïu la vostra clau API d\'OpenRouter a la configuració abans de seleccionar aquest proveïdor</string>
+  <string name="morphe_vot_cost_free">Gratuït</string>
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s per cada 100 hores de vídeo</string>
+  <string name="morphe_vot_tts_voice_type">Veu</string>
+  <string name="morphe_vot_tts_system">Sistema</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Masculí multilingüe</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Femenina multilingüe</string>
+  <string name="morphe_vot_voice_gender_male">Masculí</string>
+  <string name="morphe_vot_voice_gender_female">Femenina</string>
+  <string name="morphe_vot_tts_sample">És l\'hora de morphing!</string>
+  <string name="morphe_vot_http_error_title">Traducció no disponible</string>
+  <string name="morphe_vot_http_error_message">"El servei de traducció ha retornat l'error HTTP %s. És probable que la vostra adreça IP hagi estat limitada durant fins a 24 hores.
+
+Per continuar utilitzant les traduccions, canvieu a un proveïdor de traducció diferent a la configuració o utilitzeu una VPN"</string>
+  <string name="morphe_vot_do_not_show_again">No torni a mostrar</string>
+  <string name="morphe_vot_export_api_key_warning">"La vostra configuració conté una clau API d'OpenRouter.
+
+La vostra clau API mai s'ha de compartir. Qualsevol persona amb accés a ella pot utilitzar els vostres crèdits d'OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">S\'ha assolit el límit de crèdit d\'OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">S\'ha assolit el límit de crèdit d\'OpenRouter. Recarregueu el vostre saldo o augmenteu el límit de despesa de la clau a OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Obre OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">La traducció d\'OpenRouter ha fallat (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">S\'ha assolit el límit diari de MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Següent disponible a %s</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Heu utilitzat la quota de traducció gratuïta de MyMemory d\'avui (5.000 caràcters). Afegiu un correu electrònic de MyMemory a la configuració per augmentar el límit diari a 50.000 caràcters, o canvieu a un servei de traducció diferent</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Heu utilitzat la quota de traducció de MyMemory d\'avui (50.000 caràcters). Canvieu a un servei de traducció diferent o torneu-ho a intentar demà</string>
+  <string name="morphe_vot_mymemory_error">La traducció de MyMemory ha fallat (estat %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Habilitar la repetició del vídeo</string>
+  <string name="morphe_do_not_remember_loop_video_title">No recordis el vídeo en bucle</string>
+  <string name="morphe_do_not_remember_loop_video_summary">Evita que l\'estat actual de la repetició del vídeo es desi per a els vídeos posteriors</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Mostra el botó de Repetir vídeo</string>
+  <string name="morphe_loop_video_button_toast_on">La repetició del vídeo està activada</string>
+  <string name="morphe_loop_video_button_toast_off">El bucle de vídeo està desactivat</string>
+  <string name="morphe_loop_video_range_dialog_title">Interval de bucle</string>
+  <string name="morphe_loop_video_range_label_start">Inici</string>
+  <string name="morphe_loop_video_range_label_end">Fi</string>
+  <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
+  <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (buit = fi del vídeo)</string>
+  <string name="morphe_loop_video_range_set">Establir</string>
+  <string name="morphe_loop_video_range_clear">Buida</string>
+  <string name="morphe_loop_video_range_toast_on">Repetint %1$s - %2$s</string>
+  <string name="morphe_loop_video_range_invalid_time">Interval de temps no vàlid</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Mostrar el botó de Picture-in-Picture</string>
+  <string name="morphe_pip_button_flyout_title">Mostrar el menú de Picture-in-Picture</string>
+  <string name="morphe_pip_button_flyout_name">Passar a Picture-in-Picture</string>
   <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Mostra el botó de Reproduir tot</string>
+  <string name="morphe_play_all_button_summary">"Toca per generar una llista de reproducció de tots els vídeos del canal, manté premut per desfer
+
+Info: Potser no funcioni en les retransmissions en directe"</string>
+  <string name="morphe_play_all_button_type_title">Mode de generació de llista de reproducció</string>
+  <string name="morphe_play_all_button_type_entry_0">Tots els continguts (ordenats per temps, ascendent)</string>
+  <string name="morphe_play_all_button_type_entry_1">Tots els continguts (ordenats per temps)</string>
+  <string name="morphe_play_all_button_type_entry_2">Tots els continguts (ordenats per popularitat)</string>
+  <string name="morphe_play_all_button_type_entry_3">Només vídeos (ordenats per temps)</string>
+  <string name="morphe_play_all_button_type_entry_4">Només vídeos (ordenats per popularitat)</string>
+  <string name="morphe_play_all_button_type_entry_5">Només Shorts (ordenats per temps)</string>
+  <string name="morphe_play_all_button_type_entry_6">Només Shorts (Ordinar per popularitat)</string>
+  <string name="morphe_play_all_button_type_entry_7">Només vídeos transmitits (Ordinar per temps)</string>
+  <string name="morphe_play_all_button_type_entry_8">Només vídeos transmitits (Ordinar per popularitat)</string>
+  <string name="morphe_play_all_button_type_entry_9">Només continguts per a membres</string>
+  <string name="morphe_play_all_button_type_entry_10">Vídeos només per a membres</string>
+  <string name="morphe_play_all_button_type_entry_11">Shorts només per a membres</string>
+  <string name="morphe_play_all_button_type_entry_12">Transmissions en directe només per a membres</string>
+  <string name="morphe_play_all_button_not_available_toast">No s\'ha pogut generar la llista de reproducció per a una incoherència de l\'ID del canal</string>
   <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_button_title">Mostra el botó de Recarregar vídeo</string>
+  <string name="morphe_dismiss_player_not_available_toast">L\'ID del vídeo no està disponible. Si us plau, recarrega el vídeo manualment</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Mostra el botó de Desar per veure més tard</string>
+  <string name="morphe_save_to_watch_later_button_summary">Toca per desar a Veure més tard, mantingues premut per a les opcions de la cua</string>
+  <string name="morphe_save_to_watch_later_success_toast">Vídeo desat correctament a la llista de reproducció \"Veure més tard\"</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Aquest vídeo ja està desat a la llista de reproducció \"Veure més tard\"</string>
+  <string name="morphe_save_to_watch_later_error_toast">No es pot desar aquest vídeo a la llista de reproducció \"Veure més tard\"</string>
+  <string name="morphe_save_to_watch_later_flyout_title">Desar a Veure més tard</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Mostra el botó Desar per veure més tard al menú desplegable de configuració del reproductor</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Permet desar el vídeo que s\'està veient actualment a \'Veure més tard\' des del menú desplegable de configuració del vídeo</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostrar el botó de Desau a Veure més tard en els vídeos per a nens</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permet desar els vídeos infantils a \'Veure més tard\' des del menú desplegable</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostra el botó de desar a Veure més tard al desplegable de shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permet desar els shorts a \'Veure més tard\' des del menú desplegable</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirigeix \"Veure més tard\" a una llista de reproducció</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Veure més tard</string>
+  <string name="morphe_queue_flyout_title">Afegir a la cua de Morphe</string>
+  <string name="morphe_queue_restore_title">Manté la cua entre sessions</string>
+  <string name="morphe_queue_restore_summary">La cua es manté després de reiniciar l\'aplicació</string>
+  <string name="morphe_swap_save_and_queue_actions_title">Intercanvia les accions de Desa i Cua</string>
+  <string name="morphe_swap_save_and_queue_actions_summary">Toca per a les opcions de la cua, mantingues premut per desar a Veure més tard</string>
   <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
+  <string name="morphe_queue_type_title">Tipus de Reproduir a continuació a la cua</string>
+  <string name="morphe_queue_type_entry_1">Per defecte</string>
+  <string name="morphe_queue_type_entry_2">Cua nativa</string>
+  <string name="morphe_queue_type_entry_3">Cua de Morphe</string>
+  <string name="morphe_queue_type_entry_4">Cua de Morphe del costat del client</string>
+  <string name="morphe_queue_add_flyout_menu_title">Afegeix l\'element del menú desplegable de la cua del feed</string>
+  <string name="morphe_queue_add_flyout_menu_summary">Afegeix un element desplegable addicional. Activeu-ho si no apareix \"Afegeix a la cua\"</string>
+  <string name="morphe_local_queue_sheet_title">Cua</string>
+  <string name="morphe_local_queue_open">Cua (%s)</string>
+  <string name="morphe_local_queue_clear">N\'elimina tots</string>
+  <string name="morphe_local_queue_empty">No hi ha res a la cua</string>
+  <string name="morphe_local_queue_empty_hint">Utilitza \"Reprodueix el següent a la cua\" en qualsevol vídeo</string>
+  <string name="morphe_local_queue_now_playing">Reproduint ara</string>
+  <string name="morphe_local_queue_play_next">Reprodueix el següent a la cua</string>
+  <string name="morphe_local_queue_play_last">Reprodueix l\'últim de la cua</string>
+  <string name="morphe_local_queue_reorder">Reordenar</string>
   <string name="morphe_local_queue_remove">Eliminar</string>
+  <string name="morphe_local_queue_added">Afegit a la cua</string>
+  <string name="morphe_local_queue_unavailable">No s\'ha pogut afegir aquest vídeo a la cua</string>
+  <string name="morphe_local_queue_playlist_unsupported">No es poden afegir llistes de reproducció a la cua</string>
+  <string name="morphe_local_queue_full">La cua està plena</string>
+  <string name="morphe_local_queue_play_failed">No s\'ha pogut iniciar el vídeo</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">Llista blanca d\'anuncis al menú desplegable</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Afegeix un element al desplegable que permet que els anuncis es reproduïn al canal d\'aquest vídeo</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Aquesta funció pot requerir l\'ús de PotHelper o canviar \"Spoof video streams\" a l\'inici de sessió de TV o Android VR</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Llista blanca de velocitat al menú desplegable</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Afegeix un element al menú desplegable que sempre reprodueix el canal d\'aquest vídeo a velocitat 1.0x</string>
+  <string name="morphe_queue_manager_check_failed_auth">No has iniciat sessió</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">No hi ha ID de llista de reproducció</string>
+  <string name="morphe_queue_manager_check_failed_queue">La cua està buida</string>
+  <string name="morphe_queue_manager_check_failed_video_id">No hi ha ID de vídeo</string>
+  <string name="morphe_queue_manager_check_failed_generic">Error: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">No s\'ha pogut afegir a la cua</string>
+  <string name="morphe_queue_manager_fetch_failed_create">No s\'ha pogut crear la cua</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">No s\'ha pogut eliminar de la cua</string>
+  <string name="morphe_queue_manager_fetch_failed_save">No s\'ha pogut desar la cua</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Afegit a la cua</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Cua creada</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Eliminat de la cua</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Cua desada a %s</string>
+  <string name="morphe_queue_manager_playlist_title">Cua de Morphe</string>
+  <string name="morphe_queue_manager_add_to_queue">Afegir a la cua</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Afegeix a la cua i obre</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Afegeix a la cua i reproduix</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Afegeix i recarrega el vídeo</string>
+  <string name="morphe_queue_manager_remove_from_queue">Elimina de la cua</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Elimina i obre la cua</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Elimina i recarrega el vídeo</string>
+  <string name="morphe_queue_manager_open_queue">Obre la cua</string>
+  <string name="morphe_queue_manager_save_queue">Desa la cua a la llista de reproducció</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_playlist_queue_saved">Llista de reproducció des guarded</string>
+  <string name="morphe_native_playlist_queue_saved_to">Desguardat a %s</string>
+  <string name="morphe_native_playlist_queue_clear">Neteja la cua</string>
+  <string name="morphe_native_playlist_queue_cleared">Cua netejada</string>
+  <string name="morphe_native_playlist_queue_title">Cua</string>
+  <string name="morphe_native_playlist_queue_last">Reproduir l\'últim de la cua</string>
+  <string name="morphe_native_playlist_queue_next">Reproduir el següent de la cua</string>
+  <string name="morphe_native_playlist_queue_unavailable">YouTube no ha pogut mostrar la cua.</string>
+  <string name="morphe_native_playlist_queue_not_ready">La cua no està llesta per a aquest vídeo. Obriu el reproductor de vídeo i torneu-ho a intentar.</string>
+  <string name="morphe_native_playlist_queue_mix_choice">Afegir el Mix a la cua o veure el Mix?</string>
+  <string name="morphe_native_playlist_queue_watch_mix">Veure</string>
+  <string name="morphe_native_playlist_queue_add_mix">Afegir a la cua</string>
+  <string name="morphe_native_playlist_queue_loading_mix">Carregant Mix…</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Obre el canal des de l\'avatar en directe</string>
+  <string name="morphe_open_channel_of_live_avatar_summary">Evita que la retransmissió en directe s\'obri en tocar l\'avatar del canal</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
+  <string name="morphe_disable_precise_seeking_gesture_title">Desactiva el gest de recerca precisa</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary">Desactiva el mode de cerca precisa que s\'activa en arrossegar la barra de cerca cap amunt</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Habilitar el DVR de retransmissions en directe</string>
+  <string name="morphe_live_stream_dvr_summary">Permet fer una recerca en totes les retransmissions en directe, fins i tot en aquelles que normalment ho resten</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Habilitar les miniatures de la barra de cerca</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Mostra una miniatura del vídeo mentre s\'arrossega la barra de cerca</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Més reproduït</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"\"Habilitar el DVR de retransmissions en directe\" pot no estar disponible
+
+Per solucionar-ho, activa \"Simular retransmissions de vídeo\" i canvia el \"Client per defecte\" a \"TV Simply\" o \"visionOS\""</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Amplia la durada del DVR de la retransmissió en directe</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Permet retrocedir les retransmissions en directe fins a 7 dies en el passat</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Expandir la durada del DVR de la transmissió en directe' pot no estar disponible
+
+Per solucionar-ho, activa 'Spoof video streams' i canvia el 'Client per defecte' a 'TV Simply' o 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">Activar lliscar per buscar</string>
+  <string name="morphe_slide_to_seek_summary">Habilita lliscar per cercar en lloc de reproduir a velocitat 2x quan mantens premut el reproductor de vídeo</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">Activa tocar per recercar</string>
+  <string name="morphe_tap_to_seek_summary">Simplement toca la barra de cerca per saltar a aquesta posició sense arrossegar-la</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
+  <string name="morphe_swipe_left_zone_title">Gest d\'arrosgament a l\'esquerra</string>
+  <string name="morphe_swipe_right_zone_title">Gest d\'arrosgament a la dreta</string>
+  <string name="morphe_swipe_top_zone_title">Gest d\'arrosgament a dalt</string>
+  <string name="morphe_swipe_zone_width_title">Amplada de la zona esquerra/dreta</string>
+  <string name="morphe_swipe_zone_width_summary">Percentatge de cada vorare de la pantalla reservat per als gestos d\'arrosgament a l\'esquerra i a la dreta (5-50)</string>
+  <string name="morphe_swipe_zone_label_brightness">Luminositat</string>
+  <string name="morphe_swipe_zone_label_volume">Volum</string>
+  <string name="morphe_swipe_zone_label_native">Natiu</string>
   <string name="morphe_swipe_zone_label_off">Apagat</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignorar els arrosgaments quan està bloquejat</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Els gestos d\'arrosgament s\'ignoren mentre el reproductor està bloquejat amb \"Bloqueja la pantalla\"</string>
+  <string name="morphe_swipe_press_to_engage_title">Activa el gest de mantenir premut per lliscar</string>
+  <string name="morphe_swipe_press_to_engage_summary">Requerix mantenir premut abans que es reconegui el gest de descriptors</string>
+  <string name="morphe_swipe_haptic_feedback_title">Activa la retroalimentació hàptica</string>
+  <string name="morphe_swipe_save_and_restore_brightness_title">Desa i restaura la Brightness</string>
+  <string name="morphe_swipe_save_and_restore_brightness_summary">Recorda el nivell de brillantor en entrar / sortir del mode de pantalla completa</string>
+  <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Activa el gest de brillantor automàtica</string>
+  <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary">Desllisar la brillantor fins al seu valor més baix activa la brillantor automàtica del sistema</string>
+  <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">Automàtic</string>
+  <string name="morphe_swipe_overlay_timeout_title">Temps d\'espera de la capa de lliscat</string>
+  <string name="morphe_swipe_overlay_timeout_summary">La quantitat de mil·lisegons que la capa és visible</string>
+  <string name="morphe_swipe_overlay_background_opacity_title">Opacitat del fons de la capa de desllisement</string>
+  <string name="morphe_swipe_overlay_background_opacity_summary">Ajusta el nivell de transparència (0 és transparent, 100 és opac)</string>
+  <string name="morphe_swipe_overlay_progress_brightness_color_title">Color de brillantor de la capa de desllisement</string>
+  <string name="morphe_swipe_overlay_progress_brightness_color_summary">Estableix el color de la barra de progressió dels controls de brillantor</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_title">Color de volum de la capa de desllisement</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_summary">Estableix el color de la barra de progressió dels controls de volum</string>
+  <string name="morphe_swipe_overlay_progress_speed_color_title">Color de la velocitat de la capa de desllisement</string>
+  <string name="morphe_swipe_overlay_progress_speed_color_summary">Estableix el color de la barra de progrés dels controls de velocitat de reproducció</string>
+  <string name="morphe_swipe_text_overlay_size_title">Mida del text de la capa de desllisement</string>
+  <string name="morphe_swipe_text_overlay_size_summary">Ajusta la mida del text a la pantalla (1-30)</string>
+  <string name="morphe_swipe_threshold_title">Llindar de magnitud del desllisement</string>
+  <string name="morphe_swipe_threshold_summary">Estableix la distància de desllisement requerida abans que s\'activi un ajust</string>
+  <string name="morphe_swipe_volume_distance_title">Sensibilitat del desllisement de volum</string>
+  <string name="morphe_swipe_volume_distance_summary">Els valors més alts requereixen més desllisement per cada pas de volum</string>
+  <string name="morphe_swipe_volume_steps_title">Passos de volum</string>
+  <string name="morphe_volume_boost_title">Augment de volum</string>
+  <string name="morphe_volume_boost_summary">Desllisar cap amunt passat el volum màxim l\'augmenta, cosa que pot distorsionar l\'àudio fort</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Per defecte del dispositiu</string>
+  <string name="morphe_swipe_brightness_sensitivity_title">Sensibilitat del desllisement de luminositat</string>
+  <string name="morphe_swipe_brightness_sensitivity_summary">Els valors més alts requereixen més desllisement per cada pas de luminositat</string>
+  <string name="morphe_swipe_speed_sensitivity_title">Sensibilitat del desllisement de velocitat</string>
+  <string name="morphe_swipe_speed_sensitivity_summary">Els valors més alts requereixen més desllisement per cada pas de velocitat</string>
+  <string name="morphe_swipe_speed_step_title">Pass de velocitat</string>
+  <string name="morphe_swipe_speed_zone_height_title">Alçada de la zona de velocitat</string>
+  <string name="morphe_swipe_speed_zone_height_summary">Alçada de la zona del gest de velocitat com a percentatge de l\'alçada del reproductor (5-75)</string>
+  <string name="morphe_swipe_zone_label_speed">Velocitat</string>
+  <string name="morphe_swipe_overlay_style_title">Estil de la capa de desllisement</string>
+  <string name="morphe_swipe_overlay_style_entry_1">Capa horitzontal</string>
+  <string name="morphe_swipe_overlay_style_entry_2">Capa horitzontal (minimalista - superior)</string>
+  <string name="morphe_swipe_overlay_style_entry_3">Capa horitzontal (minimalista - centre)</string>
+  <string name="morphe_swipe_overlay_style_entry_4">Superposició circular</string>
+  <string name="morphe_swipe_overlay_style_entry_5">Superposició circular (minimalista)</string>
+  <string name="morphe_swipe_overlay_style_entry_6">Superposició vertical</string>
+  <string name="morphe_swipe_overlay_style_entry_7">Superposició vertical (minimalista)</string>
+  <string name="morphe_swipe_change_video_title">Habilita el desllisement per canviar de vídeo</string>
+  <string name="morphe_swipe_change_video_summary">Desllisa en mode de pantalla completa per saltar al vídeo següent o al anterior</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
+  <string name="morphe_action_buttons_screen_title">Botons d\'acció</string>
+  <string name="morphe_action_buttons_screen_summary">Tria quins botons d\'acció apareixen en els modes retrat i de pantalla completa</string>
+  <string name="morphe_portrait_buttons">Botons de mode retrat</string>
+  <string name="morphe_disable_like_subscribe_glow_title">Desactiva la resplendor de \"M\'agrada\" i \"Subscriure\'s\"</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">Evita que els botons de \"Like\" i \"Subscriure\'s\" brillin quan un creador els menciona</string>
+  <string name="morphe_hide_action_bar_title">Ocultar la barra d\'acció</string>
+  <string name="morphe_hide_like_dislike_button_title">Amaga el botó de Like i No m\'agrada</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_share_button_title">Amaga el botó de Compartir</string>
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_stop_ads_button_title">Amaga el botó \"Atura els anuncis\"</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <string name="morphe_hide_comments_button_title">Amaga el botó de Comentaris</string>
   <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Oculta el botó Connectiu</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live stream videos. -->
+  <string name="morphe_hide_report_button_title">Amaga el botó de Denunciar</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_remix_button_title">Amaga el botó de Remix</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_download_button_title">Amaga el botó \"Descarregar\"</string>
   <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on videos uploaded by the logged-in user. -->
+  <string name="morphe_hide_hype_button_title">Amaga el botó \"Hype\"</string>
   <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_promote_button_title">Amaga el botó \"Promociona\"</string>
   <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_thanks_button_title">Amaga el botó \"Gràcies\"</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <string name="morphe_hide_ask_button_title">Amaga el botó \"Pregunta\"</string>
+  <string name="morphe_hide_channel_profile_button_title">Amaga el canal i el botó de Subscriure\'s</string>
+  <string name="morphe_hide_channel_profile_button_summary">Amaga l\'avatar del canal i el botó de Subscriure\'s al començament de la barra d\'acció</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Ocultar el botó de Subscriure</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Oculta els botons de Subscriure i Unir-se al costat de l\'avatar del canal al començament de la barra d\'acció</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_clip_button_title">Amaga el botó \"Clip\"</string>
+  <string name="morphe_hide_clip_button_summary">Potser no funcioni per a alguns comptes d\'usuari</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shop_button_title">Amaga el botó de la Botiga</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_save_button_title">Amaga el botó de Desar</string>
+  <string name="morphe_hide_more_button_title">Amaga el botó Més</string>
+  <string name="morphe_fullscreen_buttons">Botons de pantalla completa</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Amaga el botó de No m\'agrada</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Amaga el botó de M\'agrada</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Amaga el botó de \"Xat en directe\"</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Amaga el botó de Mix</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Amaga el botó \"Més vídeos\"</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Amaga el botó de Llista de reproducció</string>
+  <string name="morphe_quick_actions_top_margin_title">Margen superior d\'accions ràpides</string>
+  <string name="morphe_quick_actions_top_margin_summary">Establir el margen superior de la barra d\'accions ràpides (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">Subtítols</string>
+  <string name="morphe_captions_screen_summary">Gestiona els subtítols automàtics i les cookies de subtítols</string>
   <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_title">Visibilitat dels subtítols automàtics</string>
+  <string name="morphe_auto_captions_style_entry_1">Mostra sempre</string>
+  <string name="morphe_auto_captions_style_entry_2">No mostrar mai</string>
+  <string name="morphe_auto_captions_style_entry_3">Mostra quan no estigui silenciat</string>
+  <string name="morphe_auto_captions_style_entry_4">Mostrar quan estigui silenciat</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_title">Idioma de subtítols preferit</string>
+  <string name="morphe_preferred_caption_language_summary">Selecciona primer els subtítols del proveïdor i després els tradueix automàticament a l\'idioma preferit</string>
   <string name="morphe_preferred_caption_language_entry_off">Apagat</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">Afegeix idiomes de traducció automàtica addicionals</string>
+  <string name="morphe_auto_translate_additional_languages_summary">Afegeix més idiomes al menú de traducció automàtica</string>
   <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">Establir cookies de subtítols</string>
+  <string name="morphe_set_caption_cookies_summary">"Soluciona un error de YouTube on els subtítols de traducció automàtica poden no estar disponibles per la falta de cookies
+
+Cal proporcionar les 'cookies de subtítols'"</string>
+  <string name="morphe_caption_cookies_title">Cookies dels subtítols</string>
+  <string name="morphe_caption_cookies_summary">Cookies que s\'han d\'establir en les sol·licituds de l\'API de Text Temporitzat (API de dades de subtítols)</string>
+  <string name="morphe_get_caption_cookies_title">Obtenir cookies dels subtítols</string>
+  <string name="morphe_get_caption_cookies_summary">Fes clic aquí per obtenir les cookies</string>
+  <string name="morphe_get_caption_cookies_failed">S\'ha produït un error en obtenir les cookies</string>
+  <string name="morphe_get_caption_cookies_duplicate">Les cookies ja existeixen</string>
+  <string name="morphe_get_caption_cookies_success">Les cookies s\'han actualitzat correctament</string>
   <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">Corrigir transcripció</string>
+  <string name="morphe_fix_transcript_summary">Soluciona un error de comprovació de precondició que pot impedir que es carregui la transcripció</string>
+  <string name="morphe_captions_in_pip_title">Mostrar els subtítols en el mode picture-in-picture</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <string name="morphe_navigation_buttons_screen_title">Botons de navegació</string>
+  <string name="morphe_navigation_buttons_screen_summary">Tria quins botons apareixen a la barra de navigació inferior</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_home_button_title">Amaga el botó d\'Inici</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_button_title">Amaga el botó de Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
+  <string name="morphe_hide_create_button_title">Amaga el botó de Crear</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_subscriptions_button_title">Amaga el botó de Subscripcions</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_notifications_button_title">Amaga el botó de Notificacions</string>
+  <string name="morphe_show_search_button_title">Mostra el botó de Cerca</string>
+  <string name="morphe_show_search_button_index_title">Posició del botó de Cerca</string>
+  <string name="morphe_show_settings_button_title">Mostra el botó de Configuració</string>
+  <string name="morphe_show_settings_button_index_title">Posició del botó de Configuració</string>
+  <string name="morphe_show_settings_button_type_title">Acció del botó de Configuració</string>
+  <string name="morphe_show_settings_button_type_summary">Obre els ajusts de Morphe quan està activat, o els ajusts de YouTube quan està desactivat</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Intercanvia el botó de Crear amb el de Notificacions</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Si canviar aquest ajust no té efecte, intenta passar al mode Incògnit</string>
+  <string name="morphe_hide_navigation_button_labels_title">Ocultar les etiquetes dels botons de navegació</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Amaga el punt de contingut nou</string>
+  <string name="morphe_hide_navigation_bar_title">Ocultar la barra de navegació</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Això oculta completament la barra de navegació, inclosa la pestanya 'Tu'.
+
+Per accedir a la Configuració, activa el botó de Configuració a través de General → Barra d'eines → Mostrar configuració"</string>
+  <string name="morphe_narrow_navigation_buttons_title">Habilitar botons de navegació estrets</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Redueix l\'espai horitzontal entre els botons</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Desactiva els botons de navegació sense etiqueta</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Mostra els botons de navegació amb etiqueta, si YouTube els envia sense etiqueta</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Desactivar les pestanyes de navegació de la barra d\'eines</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Mostra les Subscripcions a la barra de navegació si YouTube les mou a una pestanya a la part superior de l\'Inici</string>
+  <string name="morphe_navigation_bar_animations_title">Habilitar les animacions de la barra de navegació</string>
+  <string name="morphe_navigation_bar_animations_summary">anima les transicions en canviar d\'estil</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Desactiva l\'ocultació automàtica de la barra de navegació</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary">Manté la barra de navegació visible mentre es desplaça</string>
+  <string name="morphe_navigation_bar_style_title">Estil de la barra de navegació</string>
+  <string name="morphe_navigation_bar_style_entry_1">Per defecte</string>
+  <string name="morphe_navigation_bar_style_entry_2">Translúcid</string>
+  <string name="morphe_navigation_bar_style_entry_3">Transparent</string>
+  <string name="morphe_navigation_bar_style_entry_4">Opac</string>
+  <string name="morphe_navigation_bar_style_user_dialog_message">És possible que el vostre dispositiu o la versió de YouTube no admetin aquest estil, i això pot causar problemes de disposició o errors</string>
+  <string name="morphe_toolbar_screen_title">Barra d\'eines</string>
+  <string name="morphe_toolbar_screen_summary">Trieu quins components apareixen a la barra d\'eines</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Ocultar el botó de Cast</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Oculta el botó de Xat</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Ocultar el botó del Micròfon</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ocultar el botó de cerca</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary">Quan està activat, un toc obre els ajustos de Morphe i una pressió llarga obre els ajustos de YouTube; desactiva per intercanviar</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
+  <string name="morphe_hide_player_flyout_title">Menú desplegable</string>
+  <string name="morphe_hide_player_flyout_summary">Trieu quins components apareixen al menú desplegable</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Ocultar el menú \"Configuració addicional\" / Més</string>
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Ocultar el menú \"Mode ambient\"</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"El menú 'Audio Track' està ocult
+
+Per mostrar el menú 'Audio Track', canvia 'Spoof video streams' a qualsevol client excepta 'Android Studio' i 'Android VR Downgraded'"</string>
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Ocultar el menú \"Pista d\'àudio\"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Ocultar el peu de pàgina del menú \"Pista d\'àudio\"</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_captions_title">Ocultar el menú de Subtítols</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Ocultar el peu de pàgina del menú de Subtítols</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Ocultar el capçalet del menú de Subtítols</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_help_title">Amaga el menú \"Ajuda i comentaris\"</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Ocultar el menú \"Escolta amb YouTube Music\"</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Ocultar el menú \"Bloqueja la pantalla\"</string>
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Ocultar el menú \"Bucle de vídeo\"</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Amaga el menú \"Sobre la marxa\"</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_quality_title">Ocultar el menú de Qualitat</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Ocultar el peu del menú de Qualitat</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Ocultar el capdelit del menú de Qualitat</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Amaga el menú \"Temporitzador de suspensió\"</string>
   <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Ocultar el menú \"Velocitat de reproducció\"</string>
   <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Ocultar el menú \"Volum estabil\"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Ocultar el menú \"Mira en VR\"</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <string name="morphe_hide_autoplay_preview_title">Ocultar vista prèvia de reproducció automàtica</string>
+  <string name="morphe_hide_autoplay_preview_summary">Amaga la vista prèvia del vídeo següent en pantalla completa abans que comenci la reproducció automàtica</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_overlay_buttons_screen_title">Botons de superposició</string>
+  <string name="morphe_overlay_buttons_screen_summary">Tria quins botons apareixen sobre el reproductor de vídeo</string>
+  <string name="morphe_hide_autoplay_button_title">Amaga el botó de Reproducció automàtica</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_captions_button_title">Amaga el botó de Subtítols</string>
+  <string name="morphe_hide_cast_button_title">Amaga el botó de Cast</string>
+  <string name="morphe_hide_collapse_button_title">Amaga el botó de Contraure</string>
+  <string name="morphe_hide_fullscreen_button_title">Amaga el botó de Pantalla completa</string>
+  <string name="morphe_hide_player_control_buttons_background_title">Ocultar el fons dels controls del reproductor</string>
+  <string name="morphe_hide_player_control_buttons_background_summary">Amaga l\'ombrejat fosc que envolta els controls del reproductor de vídeo</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Opacitat del fons dels botons de control</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Ajusta l\'opacitat del fons darrere dels botons de control del reproductor i de la barra de temps (0 és invisible, 100 és sòlid)</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">Amaga els botons Anterior &amp; Següent</string>
+  <string name="morphe_hide_settings_button_title">Amaga el botó de Configuració</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
+  <string name="morphe_hide_end_screen_cards_title">Ocultar les targetes de la pantalla final</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">Mode ambient</string>
+  <string name="morphe_ambient_mode_screen_summary">Gestiona la visibilitat i les restriccions d\'alimentació del mode Ambient</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Omiteix les restriccions del mode ambient</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary">Permet que el mode Ambient es mantingui actiu en el mode d\'estalvi de bateria</string>
+  <string name="morphe_disable_ambient_mode_title">Desactivar el mode ambient</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_title">Desactivar el mode Ambient a pantalla completa</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
+  <string name="morphe_hide_info_cards_title">Ocultar les targetes d\'informació</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
+  <string name="morphe_disable_rolling_number_animations_title">Desactiva les animacions de números giratoris</string>
+  <string name="morphe_disable_rolling_number_animations_summary">Atura l\'animació de comptador en el nombre de m\'agrada i de visualitzacions</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
+  <string name="morphe_hide_seekbar_title">Amaga la barra de cerca del reproductor de vídeo</string>
+  <string name="morphe_hide_seekbar_thumbnail_title">Amaga la barra de cerca amb miniatures de vídeo</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary">Oculta la barra de progressió de visualització mostrada a les miniatures dels vídeos que ja has vist</string>
+  <string name="morphe_fullscreen_large_seekbar_title">Habilita la barra de cerca gran a pantalla completa</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
+  <string name="morphe_hide_shorts_category_title">Ocultar Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">Amaga a la pàgina del canal</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_home_title">Amagar al feed de Inici &amp; vídeos relacionats</string>
+  <string name="morphe_hide_shorts_search_title">Amagar als resultats de cerca</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_subscriptions_title">Amagar al feed de Subscripcions</string>
+  <string name="morphe_hide_shorts_video_description_title">Amagar a la descripció del vídeo</string>
+  <string name="morphe_hide_shorts_history_title">Amagar a l\'historial de reproducció</string>
+  <string name="morphe_shorts_player_screen_title">Reproductor de Shorts</string>
+  <string name="morphe_shorts_player_screen_summary">Tria quins components apareixen al reproductor de Shorts</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Desactivar el toc doble per a contenir \'M\'en gusta\'</string>
+  <string name="morphe_hide_shorts_ai_button_title">Ocultar botó d\'IA</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">Amaga l\'etiqueta \"Doblat automàticament\"</string>
+  <string name="morphe_hide_shorts_channel_bar_title">Ocultar la barra del canal</string>
+  <string name="morphe_hide_shorts_comments_button_title">Ocultar el botó de Comentaris</string>
+  <string name="morphe_hide_shorts_effect_button_title">Amaga el botó d\'efectes</string>
+  <string name="morphe_hide_shorts_full_video_link_label_title">Ocultar l\'etiqueta de l\'enllaç del vídeo</string>
+  <string name="morphe_hide_shorts_gesture_hints_title">Ocultar indicadors de gestos</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Amaga el botó \"Pantalla verda\"</string>
+  <string name="morphe_hide_shorts_hashtag_button_title">Amaga el botó de Hashtag</string>
+  <string name="morphe_hide_shorts_info_panel_title">Ocultar el panell d\'informació</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_join_button_title">Amaga el botó \"Unir-se\"</string>
+  <string name="morphe_hide_shorts_like_button_title">Amaga el botó \"Like\"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+  <string name="morphe_hide_shorts_like_fountain_title">Ocultar l\'animació de font del botó de M\'agrada</string>
+  <string name="morphe_hide_shorts_live_preview_title">Amaga la vista prèvia en directe</string>
+  <string name="morphe_hide_shorts_location_label_title">Ocultar l\'etiqueta de ubicació</string>
+  <string name="morphe_hide_shorts_navigation_bar_title">Ocultar la barra de navegació</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Amaga el botó \"Noves publicacions\"</string>
+  <string name="morphe_hide_shorts_paused_overlay_buttons_title">Ocultar els botons de la capa de pausa</string>
+  <string name="morphe_hide_shorts_preview_comment_title">Ocultar la vista prèvia del comentari</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_remix_button_title">Ocultar el botó Remix</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Ocultar el botó Desar</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">Amaga el botó \"Desa la música\"</string>
+  <string name="morphe_hide_shorts_search_suggestions_title">Ocultar les suggerències de cerca</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_share_button_title">Ocultar el botó Compartir</string>
+  <string name="morphe_hide_shorts_shop_button_title">Ocultar el botó de Botiga</string>
+  <string name="morphe_hide_shorts_sound_button_title">Ocultar el botó de So</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">Ocultar l\'etiqueta de metadades del so</string>
+  <string name="morphe_hide_shorts_subscribe_button_title">Ocultar el botó de Subscriure\'s</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Amaga el botó \"Compra Super Thanks\"</string>
+  <string name="morphe_hide_shorts_tagged_products_title">Ocultar els productes etiquetats</string>
+  <string name="morphe_hide_shorts_upcoming_button_title">Ocultar el botó de Pròximament</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">Amaga el botó \"Utilitza aquest so\"</string>
+  <string name="morphe_hide_shorts_use_template_button_title">Amaga el botó \"Utilitza aquesta plantilla\"</string>
+  <string name="morphe_hide_shorts_video_title_title">Ocultar el títol del vídeo</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
+  <string name="morphe_hide_end_screen_suggested_video_title">Ocultar el vídeo suggerit de la pantalla final</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary">"Oculta la capa de vídeo suggerit que apareix quan el vídeo acaba
+
+Aquest ajust només funciona si la reproducció automàtica està desactivada. Pots canviar-ho a YouTube:
+Configuració → Reproducció (o Reproducció automàtica) → Reproducció automàtica del vídeo següent"</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">Ocultar vídeos relacionats</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
+  <string name="morphe_hide_player_related_videos_overlay_title">Ocultar la capa superposada de \'Més vídeos\'</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary">Amaga la superposició \"Més vídeos\" que apareix quan es llisca cap amunt en el mode de pantalla completa</string>
   <!-- layout.hide.time.hideTimestampPatch -->
+  <string name="morphe_hide_timestamp_title">Ocultar la marca de temps del vídeo</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">Deshabilitar els panells pop-up del reproductor</string>
+  <string name="morphe_disable_player_popup_panels_summary">Desactiva l\'obertura automàtica dels panells de llista de reproducció i xat en viu</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Desactiva la reproducció automàtica de la llista de reproducció</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Evita que les llistes de reproducció avancin automàticament al vídeo següent</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_disable_continue_watching_prompt_title">Desactiva l\'avís \"Vols continuar mirant\"</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
+  <string name="morphe_exit_fullscreen_title">Sortir del mode pantalla completa quan acabi el vídeo</string>
+  <string name="morphe_exit_fullscreen_entry_1">Deshabilitat</string>
+  <string name="morphe_exit_fullscreen_entry_2">Només vertical</string>
+  <string name="morphe_exit_fullscreen_entry_3">Només horitzontal</string>
+  <string name="morphe_exit_fullscreen_entry_4">Retrat i paisatge</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Forçar mode horitzontal a pantalla completa</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Gira el reproductor a mode horitzontal en entrar a pantalla completa. No disponible en pantalles petites, que ja s\'obren a pantalla completa en mode horitzontal</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
+  <string name="morphe_disable_fullscreen_gestures_title">Gestos de pantalla completa</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Gestos del reproductor en mode pantalla completa</string>
+  <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Desactiva el gest de lliscar cap amunt en vertical</string>
+  <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Desactiva el gest de lliscar cap avall en vertical</string>
+  <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Desactiva el gest de lliscar cap avall en horitzontal</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Desactiva el gest de pellizcar per zoomar</string>
+  <string name="morphe_restore_pinch_to_zoom_title">Restaurar el gest de pessat per zooming</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Obre els vídeos en mode pantalla completa</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Deshabilitat</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Vertical</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Horizontal</string>
   <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <string name="morphe_fullscreen_video_scale_title">Escala del vídeo a pantalla completa</string>
+  <string name="morphe_fullscreen_video_scale_entry_default">Per defecte</string>
+  <string name="morphe_fullscreen_video_scale_entry_stretch">Estirar (omplir pantalla)</string>
+  <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (recortar per omplir)</string>
+  <string name="morphe_fullscreen_video_scale_button_title">Mostrar botó d\'escala de vídeo</string>
+  <string name="morphe_fullscreen_video_scale_button_summary">Toca per alternar entre Per defecte, Estirar i Zoom</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Mostrar només en pantalla completa</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Oculta el botó d\'escala del vídeo al reproductor en mode vertical</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">Mostrar botó de silenciar</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
+  <string name="morphe_player_overlay_opacity_title">Opacitat de la capa superposada del reproductor</string>
+  <string name="morphe_player_overlay_opacity_summary">Ajusta el nivell de transparència (0 és transparent, 100 és opac)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
+  <string name="morphe_searchbar_type_title">Barra de cerca</string>
   <string name="morphe_searchbar_type_entry_disabled">Deshabilitat</string>
+  <string name="morphe_searchbar_type_entry_wide">Ampla</string>
+  <string name="morphe_searchbar_type_entry_extra_wide">Extra ampli</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
+  <string name="morphe_change_form_factor_title">Disseny del dispositiu</string>
+  <string name="morphe_change_form_factor_entry_1">Per defecte</string>
+  <string name="morphe_change_form_factor_entry_2">Telèfon</string>
+  <string name="morphe_change_form_factor_entry_3">Tauleta</string>
+  <string name="morphe_change_form_factor_entry_4">Automoció</string>
+  <string name="morphe_change_form_factor_user_dialog_message">"Els canvis inclouen:
+
+Disseny de tauleta
+• Les publicacions de la comunitat estan ocultes
+• L'ajust de reproducció als feeds no està disponible
+• El botó de Remix i el botó de So no estan disponibles als Shorts
+• L'estrat 'Més vídeos' pot no estar disponible
+• Es mostra la barra d'acions de vídeo antiga no col·lapsada
+• És possible que els elements del menú desplegable no funcionin correctament
+
+Disseny d'automoció
+• El feed està organitzat per temes i canals
+• L'ajust de reproducció als feeds no està disponible
+• El botó de Remix i el botó de So no estan disponibles als Shorts
+• L'estrat 'Més vídeos' pot no estar disponible
+• Els Shorts s'obrin al reproductor habitual
+• Es mostra la barra d'acions de vídeo antiga no col·lapsada"</string>
+  <string name="morphe_tablet_layout_in_player_title">Habilitar la disposició de tauleta al reproductor</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Restaura la disposició antiga del reproductor
+
+Limitació: Si 'Restaura la barra d'accions de vídeo antiga' està desactivada, és possible que la capa de 'Més vídeos' no estigui disponible"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restaurar el comportament antic dels subtítols</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar l\'opció antiga de desar a la llista de reproducció</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desactivar icones en negreta</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurar el nom del canal sota el reproductor de vídeo</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Obrir el full de compartició del sistema</string>
+  <string name="morphe_open_system_share_sheet_summary">Obre el menú de compartir del sistema en lloc del de l\'aplicació en compartir contingut</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Anular els botons de YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Obre la vostra aplicació de música preferida en lloc de l\'aplicació YouTube Music predeterminada</string>
+  <string name="morphe_custom_music_package_name_title">Nom del paquet de l\'app de música</string>
+  <string name="morphe_custom_music_package_name_summary">Nom del paquet de la vostra aplicació de música instal·lada</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Pàgina d\'inici</string>
+  <string name="morphe_change_start_page_entry_default">Per defecte</string>
+  <string name="morphe_change_start_page_entry_all_subscriptions">Totes les subscripcions</string>
+  <string name="morphe_change_start_page_entry_browse">Navega per els canals</string>
+  <string name="morphe_change_start_page_entry_courses">Cursos / Aprenentatge</string>
+  <string name="morphe_change_start_page_entry_explore">Explora</string>
+  <string name="morphe_change_start_page_entry_fashion">Moda &amp; Bellesa</string>
+  <string name="morphe_change_start_page_entry_gaming">Jocs</string>
+  <string name="morphe_change_start_page_entry_history">Historial</string>
+  <string name="morphe_change_start_page_entry_library">Llibreria</string>
+  <string name="morphe_change_start_page_entry_liked_videos">Vídeos que t\'agraden</string>
+  <string name="morphe_change_start_page_entry_live">En directe</string>
+  <string name="morphe_change_start_page_entry_movies">Pel·lícules</string>
+  <string name="morphe_change_start_page_entry_music">Música</string>
+  <string name="morphe_change_start_page_entry_news">Notícies</string>
+  <string name="morphe_change_start_page_entry_notifications">Notificacions</string>
+  <string name="morphe_change_start_page_entry_playlists">Llistes de reproducció</string>
+  <string name="morphe_change_start_page_entry_search">Cercar</string>
+  <string name="morphe_change_start_page_entry_shopping"> compreses</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
+  <string name="morphe_change_start_page_entry_sports">Esports</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Subscripcions</string>
+  <string name="morphe_change_start_page_entry_trending">Tendències</string>
+  <string name="morphe_change_start_page_entry_virtual_reality">Realitat virtual</string>
+  <string name="morphe_change_start_page_entry_watch_later">Veure més tard</string>
+  <string name="morphe_change_start_page_entry_your_clips">Els teus clips</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Desactiva la represa en l\'inici</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
+  <string name="morphe_shorts_player_type_title">Obre els Shorts amb</string>
+  <string name="morphe_shorts_player_type_shorts">Reproductor de Shorts</string>
+  <string name="morphe_shorts_player_type_regular_player">Reproductor ordinari</string>
+  <string name="morphe_shorts_player_type_regular_player_fullscreen">Reproductor ordinari a pantalla completa</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
+  <string name="morphe_shorts_autoplay_title">Reproducció automàtica de Shorts</string>
+  <string name="morphe_shorts_autoplay_summary">Avança al següent Short automàticament en lloc de repetir l\'actual</string>
+  <string name="morphe_shorts_autoplay_background_title">Reproducció automàtica en segon pla</string>
+  <string name="morphe_shorts_autoplay_background_summary">Avança al següent Short automàticament durant la reproducció en segon pla</string>
+  <string name="morphe_skip_live_shorts_title">Salta els Shorts en viu</string>
+  <string name="morphe_skip_live_shorts_summary">Omet els streams en directe que apareixen al feed de Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Reproducció als feeds</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Sempre activat</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Només Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Apagat</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Restaurar els títols originals</string>
+  <string name="morphe_restore_original_titles_summary">Mostra els títols originals dels vídeos, les descripcions dels vídeos i les descripcions dels canals en lloc dels traduïts automàticament</string>
+  <string name="morphe_restore_original_titles_loading">Carregant títol…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Desactiva l\'actualització automàtica del feed</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Evita que els feeds s\'actualitzin automàticament quan queden obsolets</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">Disseny de la targeta del feed</string>
+  <string name="morphe_feed_card_layout_entry_1">Clàssic</string>
+  <string name="morphe_feed_card_layout_entry_2">Targetes</string>
+  <string name="morphe_feed_card_layout_entry_3">Targetes amb botons de \"M\'agrada\", comentari i desar</string>
+  <string name="morphe_feed_card_layout_comments">Comentaris</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Desactivar la represa del miniplayer</string>
+  <string name="morphe_miniplayer_disable_resuming_summary">Desactiva el miniplayer de \"Continuar veient\", una funció de YouTube Premium que apareix en iniciar l\'aplicació</string>
+  <string name="morphe_miniplayer_screen_title">Miniplayer</string>
+  <string name="morphe_miniplayer_screen_summary">Personalitza l\'aparença i el comportament del reproductor de vídeo minimitzat</string>
+  <string name="morphe_miniplayer_type_title">Tipus de miniplayer</string>
+  <string name="morphe_miniplayer_hide_title_title">Ocultar títol i canal</string>
+  <string name="morphe_miniplayer_type_entry_0">Deshabilitat</string>
+  <string name="morphe_miniplayer_type_entry_1">Per defecte</string>
+  <string name="morphe_miniplayer_type_entry_2">Minimalista</string>
+  <string name="morphe_miniplayer_type_entry_3">Minimal 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Tableta</string>
+  <string name="morphe_miniplayer_type_entry_5">Modern 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Modern 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Modern 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Modern 4</string>
+  <string name="morphe_miniplayer_disable_rounded_corners_title">Deshabilitar cantonades arrodonides</string>
+  <string name="morphe_miniplayer_disable_drag_and_drop_title">Deshabilitar arrossegar i soltar</string>
+  <string name="morphe_miniplayer_disable_drag_and_drop_summary">Evita arrossegar el reproductor minimitzat a diferents cantonades de la pantalla</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_title">Deshabilitar gest de desplaçament horitzontal</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_summary">Evita tancar el reproductor minimitzat lliscant-lo horitzontalment fora de la pantalla</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Atura la reproducció amb un arrossegament horitzontal</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">La reproducció s\'aturarà quan es desplaci el miniplayer fora de la pantalla</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Recordar la posició de l\'estat d\'arrossegament</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Si arrossegeu el reproductor minimitzat fora de la pantalla, es preservarà l\'estat de la seva interfície d\'usuari</string>
+  <string name="morphe_miniplayer_hide_overlay_buttons_title">Ocultar botons de superposició</string>
+  <string name="morphe_miniplayer_width_dip_title">Mida per defecte</string>
+  <string name="morphe_miniplayer_width_dip_summary">Estableix la mida inicial a la pantalla, en píxels</string>
+  <string name="morphe_miniplayer_width_dip_invalid_toast">La mida del píxel ha de estar entre %1$s i %2$s</string>
+  <string name="morphe_miniplayer_opacity_title">Opacitat de la capa superposada</string>
+  <string name="morphe_miniplayer_opacity_summary">Ajusteu el nivell de transparència (0 és transparent, 100 és opac)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <string name="morphe_back_button_always_exits_feed_title">El botó d\'tornar surt del feed</string>
+  <string name="morphe_back_button_always_exits_feed_summary">Premer tornar sempre surt de l\'app en lloc de desplassar-se fins a la part superior del feed</string>
   <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">Forçar animacions</string>
+  <string name="morphe_force_animations_entry_default">Per defecte</string>
+  <string name="morphe_force_animations_entry_always_on">Sempre activat</string>
+  <string name="morphe_force_animations_entry_always_off">Sempre desactivat</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Ocultar la barra d\'estat</string>
+  <string name="morphe_hide_status_bar_summary">Oculta la barra d\'estat del sistema. Desllisa cap avall des de la part superior per mostrar-la durant un moment</string>
+  <string name="morphe_fix_status_bar_layout_title">Soluciona la barra d\'estat que cobreix les barres superiors</string>
+  <string name="morphe_fix_status_bar_layout_summary">Manté la disposició de la barra d\'estat coherent, de manera que no cobreixi les barres superiors i no deixi espai buit sobre el reproductor. Desactiva aquesta opció si l\'aplicació es tanca inesperadament o si les barres superiors no es veuen bé</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Resplendor</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">La pantalla de iniciació resplandecent no és compatible amb aquest dispositiu</string>
+  <string name="morphe_theme_color_light_title">Fons del tema clar</string>
+  <string name="morphe_theme_color_light_entry_2">Blanc</string>
+  <string name="morphe_theme_color_light_entry_3">Material You (Blanc)</string>
+  <string name="morphe_theme_color_light_entry_9">Rosa clar</string>
+  <string name="morphe_theme_color_light_entry_10">Blau clar</string>
+  <string name="morphe_theme_color_light_entry_11">Verd clar</string>
+  <string name="morphe_theme_color_light_entry_12">Groc clar</string>
+  <string name="morphe_theme_color_light_entry_13">Taronja clar</string>
+  <string name="morphe_theme_color_light_entry_14">Vermell clar</string>
+  <string name="morphe_theme_color_light_custom_title">Fons clar personalitzat</string>
+  <string name="morphe_theme_color_light_custom_summary">Estableix el color del fons del tema clar</string>
+  <string name="morphe_theme_color_change_foreground_title">Canvia el color del primer pla</string>
+  <string name="morphe_theme_color_change_foreground_summary">Utilitza el color del tema per al text i les icones</string>
+  <string name="morphe_gradient_loading_screen_title">Habilitar la pantalla de càrrega amb degradat</string>
+  <string name="morphe_gradient_loading_screen_summary">Mostra un fons degradat a la pantalla de càrrega en lloc d\'un color sòlid</string>
+  <string name="morphe_seekbar_custom_color_title">Habilitar un color personalitzat per a la barra de progressió</string>
+  <string name="morphe_seekbar_custom_color_primary_title">Color de la barra de cerca</string>
+  <string name="morphe_seekbar_custom_color_primary_summary">Establiu el color primari de la barra de progrés del vídeo</string>
+  <string name="morphe_seekbar_custom_color_accent_title">Color d\'accent de la barra de cerca</string>
+  <string name="morphe_seekbar_custom_color_accent_summary">Establiu el color secundari de la barra de progrés del vídeo</string>
+  <string name="morphe_seekbar_custom_color_invalid">Valor del color de la barra de cerca no vàlid</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Analògic original</string>
+  <string name="morphe_custom_branding_icon_entry_9">Pastís original</string>
+  <string name="morphe_custom_branding_icon_entry_10">Metal original</string>
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Logo del capçalera</string>
+  <string name="morphe_header_logo_entry_1">Per defecte</string>
+  <string name="morphe_header_logo_entry_2">Regular</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
+  <string name="morphe_header_logo_entry_5">Personalitzat</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
+  <string name="morphe_bypass_image_region_restrictions_title">Omplir les restriccions de regió d\'imatge</string>
+  <string name="morphe_bypass_image_region_restrictions_summary">Redirecciona les sol·licituds de miniatures a un servidor alternatiu per solucionar la manca d\'imatges en països restringits</string>
   <!-- layout.dearrow.deArrowPatch -->
   <!-- "DeArrow" must be kept untranslated. -->
+  <string name="morphe_dearrow_titles_title">Títols de DeArrow</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_home_title">Pestaña Inicio</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_subscription_title">Pestaña Suscripciones</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_library_title">Pestaña Tú</string>
+  <string name="morphe_dearrow_titles_player_title">Llistes de reproducció &amp; recomanacions del reproductor</string>
+  <string name="morphe_dearrow_titles_search_title">Resultats de la cerca</string>
+  <string name="morphe_dearrow_titles_icon_title">Mostrar la icona de DeArrow</string>
+  <string name="morphe_dearrow_titles_icon_summary">Mostra la icona de DeArrow als títols de vídeos col·laboratius</string>
+  <string name="morphe_dearrow_casual_mode_title">Mode casual</string>
+  <string name="morphe_dearrow_casual_mode_summary">Mostra el títol original en lloc del títol de DeArrow si els usuaris de DeArrow han votat que els agrada el títol original</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">Vots casuals mínims per mostrar el títol original</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">El nombre de vots casuals en una sola categoria, com ara divertit o creatiu, necessaris per mostrar el títol original</string>
+  <string name="morphe_dearrow_thumbnails_title">Miniatures de DeArrow</string>
+  <string name="morphe_dearrow_thumbnail_options_entry_1">Miniatures originals</string>
+  <string name="morphe_dearrow_thumbnail_options_entry_2">Miniatures de DeArrow &amp; originals</string>
+  <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; captures fixes</string>
+  <string name="morphe_dearrow_thumbnail_options_entry_4">Captures fixes</string>
+  <string name="morphe_dearrow_about_summary">"DeArrow substitueix els títols i miniatures clickbait per uns basats en la col·laboració popular que són més precisos i menys sensacionalistes. Els títols són escrits i votats per la comunitat, i les miniatures són fotogrames extrets del vídeo
+
+Els vídeos es sol·liciten mitjançant un prefix curt de l'ID del vídeo hashat, de manera que el servidor no pot saber exactament quin vídeo esteu mirant. Si un vídeo no té una miniatura de DeArrow, es mostra l'original o una captura fixa"</string>
+  <string name="morphe_dearrow_connection_toast_title">Mostrar alertes d\'error de connexió</string>
+  <string name="morphe_dearrow_connection_toast_summary">Mostra una notificació quan el servidor de DeArrow no està disponible</string>
+  <string name="morphe_dearrow_api_url_title">Endpoint de l\'API</string>
+  <string name="morphe_dearrow_api_url_summary">La URL de l\'endpoint de la memòria cau de miniatures de DeArrow</string>
+  <string name="morphe_dearrow_thumbnail_stills_about_title">Captures de vídeo fixes</string>
+  <string name="morphe_dearrow_thumbnail_stills_about_summary">Les captures fixes encara es prenen del començament / mig / final de cada vídeo. Aquestes imatges estan integrades a YouTube i no s\'utilitza cap API externa</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_title">Extreure fotograma del vídeo de</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_entry_1">Principi</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_entry_2">Mitja</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_entry_3">Final</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_dearrow_error">DeArrow no està disponible temporalment (codi d\'estat: %s)</string>
+  <string name="morphe_dearrow_error_generic">DeArrow no està disponible temporalment</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">Restaura l\'estil antic dels botons del reproductor</string>
+  <string name="morphe_restore_old_player_buttons_summary">Reverteix els controls en negreta del reproductor de vídeo a l\'estil visual antic i més prim</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
+  <string name="morphe_spoof_device_dimensions_title">Simular les dimensions del dispositiu</string>
+  <string name="morphe_spoof_device_dimensions_summary">Activar això pot desbloquejar qualitats de vídeo més altes</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Activar això pot causar talls en la reproducció del vídeo, empitjorar la durada de la bateria i produceir efectes secundaris desconeguts</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
+  <string name="morphe_disable_haptic_feedback_title">Resposta hàptica</string>
+  <string name="morphe_disable_haptic_feedback_summary">Trieu quines interaccions activen la vibració del dispositiu</string>
+  <string name="morphe_disable_haptic_feedback_chapters_title">Desactivar la resposta hàptica dels capítols</string>
+  <string name="morphe_disable_haptic_feedback_precise_seeking_title">Desactivar la resposta hàptica de la recerca precisa</string>
+  <string name="morphe_disable_haptic_feedback_seek_undo_title">Desactivar la resposta hàptica de l\'anul·lació de la recerca</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Deshabilitar l\'hàptica de mantenir premut</string>
+  <string name="morphe_disable_haptic_feedback_zoom_title">Desactivar la hàptica de zoom</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
+  <string name="microg_offline_account_login_error">Si has canviat recentment les dades d\'accés del teu compte, desinstal·la i torna a instal·lar MicroG</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Omitir redireccions d\'enllaços</string>
+  <string name="morphe_bypass_link_redirects_summary">Obre l\'enllaç original directament, ometent l\'enllaç de seguiment (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
+  <string name="morphe_external_browser_title">Obrir els enllaços al navegador</string>
+  <string name="morphe_external_browser_summary">Obre els enllaços en un navegador extern en lloc del navegador de l\'aplicació</string>
   <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Mida del buffer de reproducció</string>
+  <string name="morphe_playback_buffer_size_entry_default">Per defecte</string>
+  <string name="morphe_playback_buffer_size_entry_low">Baixa</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Mitjana</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Màxima</string>
   <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">Retard del vídeo</string>
+  <string name="morphe_video_delay_summary">Retarda el vídeo per mantenir-lo sincronitzat amb l\'àudio que té retard, com els auriculars Bluetooth (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">Retardar només amb àudio Bluetooth</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">Només retarda el vídeo mentre l\'àudio Bluetooth està connectat, de manera que l\'altveu del telèfon es mantingui sincronitzat</string>
+  <string name="morphe_video_delay_button_overlay_title">Mostrar el botó de retard de vídeo</string>
+  <string name="morphe_video_delay_button_overlay_summary">Mantingueu premut per restableixir el retard a 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">Mostrar el menú de retard de vídeo</string>
+  <string name="morphe_video_delay_dialog_input_hint">Retard en mil·lisegons</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automàtic</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Recordar la qualitat del vídeo</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Aplica la teva selecció manual de qualitat a tots els vídeos futurs</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notificacions de canvi de qualitat</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Mostra una notificació quan es desava una nova qualitat per defecte</string>
+  <string name="morphe_video_quality_default_wifi_title">Qualitat de vídeo per defecte en xarxa Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Qualitat de vídeo per defecte en xarxa mòbil</string>
+  <string name="morphe_remember_shorts_quality_last_selected_title">Recorda la qualitat dels Shorts</string>
+  <string name="morphe_remember_shorts_quality_last_selected_summary">Aplica la teva selecció manual de qualitat a tots els Shorts futurs</string>
+  <string name="morphe_shorts_quality_default_wifi_title">Qualitat de Shorts per defecte en xarxa Wi-Fi</string>
+  <string name="morphe_shorts_quality_default_mobile_title">Qualitat de Shorts per defecte en xarxa mòbil</string>
+  <string name="morphe_remember_video_quality_toast_mobile">S\'ha canviat la qualitat mòbil per defecte a: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">S\'ha canviat la qualitat de Wi-Fi per defecte a: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">S\'ha canviat la qualitat de Shorts per a mòbil a: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">S\'ha canviat la qualitat de Shorts per a Wi-Fi a: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
+  <string name="morphe_playback_speed_dialog_button_title">Mostra el botó de velocitat de reproducció</string>
+  <string name="morphe_playback_speed_dialog_button_summary">Mantingueu premut per restablir la velocitat per defecte</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
+  <string name="morphe_video_quality_dialog_button_title">Mostra el botó de qualitat</string>
+  <string name="morphe_video_quality_dialog_button_summary">Mantineu premut per restableir la qualitat per defecte</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Mostra la resolució al botó de Qualitat</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Mostra la resolució, com ara 1080, en lloc d\'una etiqueta com ara FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
+  <string name="morphe_custom_speed_menu_title">Menú de velocitat de reproducció personalitzada</string>
+  <string name="morphe_restore_old_speed_menu_title">Restaura el menú antic de velocitat de reproducció</string>
+  <string name="morphe_custom_playback_speeds_title">Velocitats de reproducció personalitzades</string>
+  <string name="morphe_custom_playback_speeds_summary">Introduïu l\'opció de velocitat de reproducció preferida</string>
+  <string name="morphe_custom_playback_speeds_invalid">Les velocitats de reproducció personalitzades han de ser inferiors a %s</string>
+  <string name="morphe_custom_playback_speeds_parse_exception">Velocitats de reproducció personalitzades no vàlides</string>
+  <string name="morphe_custom_playback_speeds_auto">Automàtic</string>
+  <string name="morphe_speed_tap_and_hold_title">Mantineu premuta la velocitat de reproducció</string>
+  <string name="morphe_speed_tap_and_hold_summary">Estableix el multiplicador de velocitat quan mantinguis premuta la pantalla; estableix a 0 per desactivar-ho</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
+  <string name="morphe_remember_playback_speed_last_selected_title">Recorda la velocitat de reproducció</string>
+  <string name="morphe_remember_playback_speed_last_selected_summary">Aplica la teva selecció manual de velocitat a tots els vídeos futurs</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_title">Notificacions de canvi de velocitat</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_summary">Mostra una notificació quan es desava una nova velocitat de reproducció per defecte</string>
+  <string name="morphe_playback_speed_default_title">Velocitat de reproducció per defecte</string>
+  <string name="morphe_shorts_playback_speed_default_title">Velocitat de reproducció per defecte a Shorts</string>
+  <string name="morphe_shorts_remember_playback_speed_title">Recorda la velocitat de reproducció en els Shorts</string>
+  <string name="morphe_shorts_remember_playback_speed_summary">Aplica la teva selecció manual de velocitat dels Shorts a tots els Shorts futurs. Si està desactivat, la velocitat torna a la predeterminada després de tancar el reproductor de Shorts</string>
+  <string name="morphe_shorts_playback_speed_flyout_button_title">Mostra la velocitat de reproducció al menú de Shorts</string>
+  <string name="morphe_shorts_playback_speed_flyout_button_summary">Afegeix un element de velocitat de reproducció al menú del reproductor de Shorts</string>
+  <string name="morphe_shorts_playback_speed_flyout_title">Velocitat de reproducció · %s</string>
+  <string name="morphe_remember_playback_speed_toast">S\'ha canviat la velocitat de reproducció per defecte a: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Utilitzar la velocitat normal per a la música</string>
+  <string name="morphe_disable_playback_speed_music_summary">Reproduir sempre els vídeos musicals a velocitat 1.0x</string>
+  <string name="morphe_playback_speed_channel_whitelist_title">Llista blanca de velocitat del canal</string>
+  <string name="morphe_playback_speed_channel_whitelist_summary">Els vídeos dels canals de la llista blanca sempre es reproduئين a velocitat 1.0x</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_add">Afegeix el canal a la llista blanca de velocitat</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_remove">Elimina el canal de la llista blanca de velocitat</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Habilitar els controls de tony immoral de l\'àudio</string>
+  <string name="morphe_playback_audio_pitch_default_title">Tony immoral d\'àudio de reproducció per defecte</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">S\'ha canviat el tony immoral d\'àudio per defecte a: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Estirament temporal de l\'àudio</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Permet ajustar la velocitat i el tony immoral de manera independent, cosa que pot causar artefacts d\'àudio</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Recordar la posició de reproducció de la transmissió en directe</string>
+  <string name="morphe_remember_live_stream_position_summary">Per a les transmissions en directe en curs, recorda i repren la posició de reproducció en lloc de saltar a la posició actual en directe</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Aquesta funció no funciona amb transmissions en directe 24/7 i altres transmissions que estiguin \"sempre actives\"</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
+  <string name="morphe_disable_hdr_video_title">Desactivar vídeo HDR</string>
+  <string name="morphe_force_hdr_video_title">Forçar vídeo HDR</string>
+  <string name="morphe_force_hdr_video_summary">Força l\'aplicació a reconèixer aquest dispositiu com a compatible amb HDR</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Utilitzeu això si la descodificació HDR funciona però YouTube no ofereix HDR, com passa en alguns dispositius HyperOS que oculten HLG.
+
+Limitacions:
+• Els colors poden veure's incorrectament si la pantalla no pot mostrar HDR realment
+• La reproducció pot fallar si el descodificador no pot gestionar HDR
+• L'HDR encara depèn del client que emula els fluxos de vídeo"</string>
+  <string name="morphe_video_codec_title">Còdec de vídeo</string>
+  <string name="morphe_video_codec_entry_default">Per defecte</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_video_codec_avc_not_available">Per forçar AVC, canvia \'Simular fluxos de vídeo\' a \'Android Studio\', \'Android VR\' o \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Pot millorar la durada de la bateria i solucionar els salts de la reproducció
+• Utilitza més dades d'internet que AV1
+
+AVC (H.264)
+• Requereix el client de Simular flux de vídeo 'Android Studio', 'Android VR' o 'visionOS'
+• Pot millorar encara més la durada de la bateria
+• Pot restaurar resolucions de vídeo desaparegudes en dispositius antics
+• La resolució màxima és 1080p
+• Els vídeos HDR potser no utilitzin AVC
+• Alguns dispositius no poden forçar AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
+  <string name="morphe_advanced_video_quality_menu_title">Obre el menú de qualitat avançada</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Omet el menú de selecció de qualitat i obre directament el menú de qualitat avançada</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Ocultar opcions de qualitat Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_video_quality_prioritize_title">Prioritzar la qualitat del vídeo</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioritza la qualitat de vídeo més alta disponible per sobre de l\'eficiència del còdec</string>
+  <string name="morphe_video_quality_prioritize_dialog">Si aquest ajust està desactivat, els vídeos més antics podrien no mostrar opcions de qualitat de vídeo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Permetre \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Permet la decodificació AV1 per programari quan s\'utilitza el client \'Android VR\' / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Activar aquesta configuració pot utilitzar la descodificació AV1 per programari.
+
+La reproducció de vídeos amb AV1 pot tenir talls o pèrdues de fotogrames"</string>
+  <string name="morphe_spoof_video_streams_about_title">Efectes secundaris de la falsificació</string>
+  <string name="morphe_spoof_video_streams_about_failure">• La reproducció pot fallar al cap d\'1 minut</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Falta el menú \'Pista d\'àudio\'</string>
+  <string name="morphe_spoof_video_streams_about_no_av1">• Sense còdec de vídeo AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• El mode immersiu VR de 360° no està disponible</string>
+  <string name="morphe_spoof_video_streams_about_no_stable_volume">• El volum estable no està disponible</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• La reproducció pot acabar 1 segon abans</string>
+  <string name="morphe_spoof_video_streams_about_js">• Si la desobfuscació falla, la reproducció podria fallar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
+  <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forçar l\'àudio original no està disponible</string>
+  <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Cal iniciar sessió a Android VR</string>
   <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• La qualitat pot estar limitada a 720p</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Variant de JavaScript del reproductor</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar la simulació a \'Estadístiques per a experts\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Restaura la barra d\'acció de vídeo antiga</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Soluciona que els botons d'acció del vídeo no es puguin ocultar
+
+Limitació: Torna a l'estil antic de la capa de 'Més vídeos'"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Estil de la icona del reproductor</string>
   <string name="morphe_player_icon_style_entry_auto">Automàtic</string>
+  <string name="morphe_player_icon_style_entry_default">Per defecte</string>
+  <string name="morphe_player_icon_style_entry_regular">Fina</string>
+  <string name="morphe_player_icon_style_entry_bold">Negreta</string>
+  <string name="morphe_player_icon_style_entry_custom">Personalitzat</string>
+  <string name="morphe_shorts_icon_style_title">Estil de la icona de Shorts</string>
   <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Seguiment de sèries</string>
+  <string name="morphe_series_tracker_screen_summary">Segueix llistes de reproducció com a sèries i mantingues la teva posició</string>
+  <string name="morphe_series_tracker_title">Habilitar el seguiment de sèries</string>
+  <string name="morphe_series_tracker_summary">Afegeix una pàgina de Sèries a l\'Historial i una opció de Seguir sèrie a les llistes de reproducció</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">Mostrar Sèries a la barra de navegació</string>
+  <string name="morphe_series_tracker_show_button_title">Mostrar botó de Seguiment de sèries</string>
+  <string name="morphe_series_tracker_show_button_summary">Afegeix un botó al reproductor per seguir o obrir la sèrie del vídeo actual</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Registrar el progrés de les sèries segudes</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Registra la reproducció en aquest telèfon per a les sèries guardades i els marcadors</string>
   <string name="morphe_series_tracker_ui_cancel">Cancel·lar</string>
+  <string name="morphe_series_tracker_ui_save">Desar,</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Desa el marcador</string>
+  <string name="morphe_series_tracker_ui_series_name">Nom de la sèrie</string>
+  <string name="morphe_series_tracker_ui_series_options">Opcions de la sèrie</string>
+  <string name="morphe_series_tracker_ui_library_options">Opcions de la biblioteca</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Actualitzar episodis</string>
+  <string name="morphe_series_tracker_ui_rename">Canviar nom</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Obrir la llista de reproducció a YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Eliminar de la biblioteca</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Enllaç o ID de la llista de reproducció</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Netejar tot el progrés local</string>
+  <string name="morphe_series_tracker_ui_clear_history">Netejar l\'historial</string>
+  <string name="morphe_series_tracker_clear_progress_title">Esborrar tot el progrés local?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Això elimina les posicions, les anul·lacions de vídeos vistos i les seleccions de reproducció per a cada vídeo. Les sèries guardades i els seus catàlegs es mantenen. Es registrarà una nova reproducció si l\'enregistrament està activat</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Marcar com a vist</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Marcar com a no vist</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Utilitzar l\'estat automàtic</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Reiniciar des de 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Tornar a reproduir des de 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Estat desat</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Reintentar de desar</string>
+  <string name="morphe_series_tracker_ui_previous_100">100 anteriors</string>
+  <string name="morphe_series_tracker_ui_next_100">100 següents</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Obre el vídeo desat</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">S\'ha esborrat el progrés local</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Obre l\'Historial de \"Tu\" per veure les teves sèries</string>
+  <string name="morphe_series_tracker_ui_watch_history">Historial de reproducció</string>
+  <string name="morphe_series_tracker_ui_series">Sèries</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Carregant sèries desates…</string>
+  <string name="morphe_series_tracker_empty_library">Segueix una llista de reproducció per fer seguiment dels seus episodis</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Marcador de llista de reproducció</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Actualitzant episodis…</string>
+  <string name="morphe_series_tracker_ui_all_series">Totes les sèries</string>
+  <string name="morphe_series_tracker_watched">Vist</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Carregant episodis…</string>
+  <string name="morphe_series_tracker_ui_more_options">Més opcions</string>
+  <string name="morphe_series_tracker_record_consent">"Registra el progrés només per a les teves sèries desades i els vídeos amb marcadors.
+
+Aquesta biblioteca s'emmagatzema en aquest dispositiu i es comparteix entre els comptes de YouTube. Els controls de pausa i d'eliminació de l'historial de YouTube no la modifiquen. Utilitza Sèries → Més → Eliminar progrés local per borrar-la.
+
+El registre automàtic s'atura en mode incògnit, quan la identitat del compte no està disponible o quan canvies a un compte diferent. Activa el seguiment novament per utilitzar-lo amb aquest compte"</string>
+  <string name="morphe_series_tracker_identity_unavailable">El seguiment no es pot activar en mode incògnit o abans que YouTube hagi carregat l\'estat actual del compte. Torna a l\'Inici i torna-ho a intentar. No cal iniciar sessió</string>
+  <string name="morphe_series_tracker_enable">Habilitar el seguiment local</string>
+  <string name="morphe_series_tracker_tracking_paused">El registre del progrés està desactivat</string>
+  <string name="morphe_series_tracker_resume_at">Reprèn a %1$s</string>
+  <string name="morphe_series_tracker_episode_position">Episodi %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Episodis %1$s-%2$s de %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Actualitza per intentar carregar els episodis. Les llistes de reproducció privades requereixen accés al compte; el seu marcador encara s\'obre a YouTube</string>
+  <string name="morphe_series_tracker_open_failed">YouTube no ha pogut obrir aquest episodi</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube no ha pogut obrir aquesta llista de reproducció</string>
+  <string name="morphe_series_tracker_plan_changed">Trieu un episodi</string>
+  <string name="morphe_series_tracker_plan_caught_up">Actualitzat</string>
+  <string name="morphe_series_tracker_plan_none">No hi ha episodis reproduïbles</string>
+  <string name="morphe_series_tracker_saved_position">Vídeo desat · %1$s</string>
+  <string name="morphe_series_tracker_follow">Seguir sèrie</string>
+  <string name="morphe_series_tracker_view_series">Veure sèries</string>
+  <string name="morphe_series_tracker_continue">Continuar</string>
+  <string name="morphe_series_tracker_start_here">Comença aquí</string>
+  <string name="morphe_series_tracker_start_saved">Point de partida desat</string>
+  <string name="morphe_series_tracker_watched_to_here">Vist fins aquí</string>
+  <string name="morphe_series_tracker_marked">Episodis marcats com a vistos</string>
+  <string name="morphe_series_tracker_undo">Desfer</string>
+  <string name="morphe_series_tracker_enable_short">Habilitar</string>
+  <string name="morphe_series_tracker_record_short">Registrar el progrés en aquest dispositiu</string>
+  <string name="morphe_series_tracker_follow_consent">"Les teves sèries i el teu progrés es mantenen en aquest dispositiu, compartits entre comptes de YouTube. Els controls de l'historial de YouTube no els modifiquen. Esborra el progrés des del menú de Sèries.
+
+El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el compte"</string>
+  <string name="morphe_series_tracker_follow_unavailable">No s\'han pogut carregar els episodis. Pots desar la llista de reproducció com a marcador</string>
+  <string name="morphe_series_tracker_error_pending_full">Hi ha massa canvis no desats. Intenta desar-ho primer</string>
+  <string name="morphe_series_tracker_error_storage_busy">L\'operació de desar està ocupada. Intenta-ho de nou</string>
+  <string name="morphe_series_tracker_error_catalog_busy">La càrrega d\'episodis està ocupada. Intenta-ho de nou</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">L\'emmagatzematge no està disponible. Les vostres dades desades s\'han conservat</string>
+  <string name="morphe_series_tracker_error_storage_save">No s\'han pogut desar els canvis. Torna a intentar-ho abans de tancar YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">Aquesta sèrie ja està desada, o la seva llista de reproducció ha canviat. Torna a obrir-la</string>
+  <string name="morphe_series_tracker_error_series_changed">Aquesta sèrie ha canviat o ha estat eliminada. Torna a obrir la biblioteca</string>
+  <string name="morphe_series_tracker_error_playlist_changed">La llista de reproducció ha canviat. Seleccioneu l\'episodi de nou</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Aquest episodi no està disponible. Trieu-ne un altre</string>
+  <string name="morphe_series_tracker_error_name_required">Introduïu el nom d\'una sèrie</string>
+  <string name="morphe_series_tracker_error_playlist_input">Introduïu un enllaç o l\'ID d\'una llista de reproducció de YouTube</string>
+  <string name="morphe_series_tracker_error_retry_later">Si us plau, espereu abans de tornar a actualitzar</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">No s\'han pogut carregar els episodis. Torna-ho a intentar més tard</string>
+  <string name="morphe_series_tracker_error_operation">No s\'ha pogut completar el canvi. Torna-ho a intentar</string>
+  <string name="morphe_series_tracker_error_resume">No s\'ha pogut confirmar la reproducció. Comprova el reproductor i torna-ho a intentar</string>
+  <string name="morphe_series_tracker_followed">Sèries seguidos</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Aquest vídeo no és part d\'aquesta llista de reproducció</string>
+  <string name="morphe_series_tracker_finding_playlists">Buscant llistes de reproducció…</string>
+  <string name="morphe_series_tracker_paste_playlist">Enganxa l\'enllaç de la llista de reproducció</string>
+  <string name="morphe_series_tracker_discovery_unavailable">No s\'ha pogut trobar cap llista de reproducció</string>
+  <string name="morphe_series_tracker_no_available_episodes">No hi ha episodis disponibles</string>
+  <string name="morphe_series_tracker_hide_watched">Ocultar els vistos</string>
+  <string name="morphe_series_tracker_watch_previous">Marcar els episodis anteriors com a vistos</string>
+  <string name="morphe_series_tracker_order_starts_with">Comença per: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Ordre dels episodis</string>
+  <string name="morphe_series_tracker_playlist_order">Ordre de la llista de reproducció</string>
+  <string name="morphe_series_tracker_reverse_order">Invertir l\'ordre de la llista de reproducció</string>
+  <string name="morphe_series_tracker_view_count">%1$s visualitzacions</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s visada</string>
+  <string name="morphe_series_tracker_completion_title">Marcar episodis com a vistos</string>
+  <string name="morphe_series_tracker_completion_summary">Almenys un %1$s%% vist amb un màxim de 90 segons restants, o %2$s segons restants</string>
+  <string name="morphe_series_tracker_completion_explanation">Marca automàticament un episodi com a vist després de qualsevol dels dos llindors. La regla del percentatge també requereix que no restin més de 90 segons, perquè no es salti el final dels episodis llargs. La regla del temps restant s\'aplica a vídeos de més d\'un minut; estableix-la a 0 per desactivar-la. Els canvis s\'aplicaran a les futures actualitzacions del progrés. Es mantenen les opcions manuals de vist/no vist</string>
+  <string name="morphe_series_tracker_completion_percent">Percentatge vist (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Segons restants (0-300; 0 desactiva)</string>
+  <string name="morphe_series_tracker_completion_range">Introdueix un valor des de %1$s a %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Utilitza el progrés de YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Reprèn les sèries seguides després de veure-les en un altre dispositiu</string>
+  <string name="morphe_series_tracker_sync_consent">Llegeix l\'estat de vist i les posicions de reproducció de les sèries que segueixes des del compte actual de YouTube. Només es desenvolupen els episodis coincidents en aquest telèfon. Les comprovacions s\'executen mentre la biblioteca de sèries està oberta i abans de Continuar. L\'historial de YouTube ha d\'estar activat en l\'altre dispositiu</string>
+  <string name="morphe_series_tracker_sync_checking">Comprobant el progrés de YouTube…</string>
+  <string name="morphe_series_tracker_sync_failed">El progrés de YouTube no està disponible. S\'està utilitzant el progrés desat</string>
+  <string name="morphe_series_tracker_sync_partial">Part del progrés de YouTube no està disponible. Es mantenen les posicions desades</string>
+  <string name="morphe_series_tracker_backup_title">Còpia de seguretat i restauració</string>
+  <string name="morphe_series_tracker_backup_summary">Desa la teva biblioteca de sèries en un arxiu o restaura una còpia de seguretat</string>
+  <string name="morphe_series_tracker_backup_explanation">Desa les sèries segudes, les posicions dels episodis i les opcions de vist. No s\'inclouen els permisos de gravació i de progrés de YouTube</string>
+  <string name="morphe_series_tracker_backup_save">Desa la còpia de seguretat</string>
+  <string name="morphe_series_tracker_backup_restore">Restaura la còpia de seguretat</string>
+  <string name="morphe_series_tracker_backup_preview">Afegeix %1$s sèries. Es mantenen les %2$s sèries que ja són part de la teva biblioteca. Es manté el progrés del vídeo existent</string>
+  <string name="morphe_series_tracker_backup_saved">Còpia de seguretat de la sèrie desada</string>
+  <string name="morphe_series_tracker_backup_restored">S\'han restaurat %1$s sèries</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Aquest fitxer no és una còpia de seguretat de sèrie compatible, o és massa gran. La vostra biblioteca no s\'ha modificat</string>
+  <string name="morphe_series_tracker_error_backup_write">No s\'ha pogut desar la còpia de seguretat. Proveu una altra ubicació</string>
+  <string name="morphe_series_tracker_removed">Sèries eliminades</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Aquest episodi ara apareix més d\'una vegada. Escolliu des de quin voleu continuar</string>
+  <string name="morphe_series_tracker_recovery_missing">L\'episodi desat ja no està en aquesta llista de reproducció. S\'ha conservat la vostra posició desada</string>
+  <string name="morphe_series_tracker_recovery_continue">Continua amb l\'episodi %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">També podeu triar qualsevol episodi a continuació. Els episodis anteriors no s\'han modificat</string>
+  <string name="morphe_series_tracker_playback_changed">Aquesta llista de reproducció ha canviat. Obriu la sèrie per triar on continuar</string>
+  <string name="morphe_series_tracker_playback_boundary">No hi ha més episodis en aquesta direcció</string>
+  <string name="morphe_series_tracker_continue_series">Continua %1$s</string>
+  <string name="morphe_series_tracker_search_series">Cercar sèries</string>
+  <string name="morphe_series_tracker_clear_search">Netejar cerca</string>
+  <string name="morphe_series_tracker_no_search_results">No s\'han trobat sèries</string>
+  <string name="morphe_series_tracker_untitled_episode">Episodi sense títol</string>
+  <string name="morphe_series_tracker_unavailable_episode">Episodi no disponible</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Comentaris de Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Mostra el xat en directe i la repetició del xat com a comentaris que desllisen per sobre del vídeo</string>
+  <string name="morphe_niconico_comments_summary">Mostra un botó superposat al reproductor de vídeo. Toqueu per mostrar o ocultar els comentaris, mantingueu premut per a la configuració ràpida</string>
+  <string name="morphe_niconico_comments_font_size_title">Mida de la font dels comentaris</string>
+  <string name="morphe_niconico_comments_font_size_summary">Mida del text dels comentaris (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Opacitat dels comentaris</string>
+  <string name="morphe_niconico_comments_opacity_summary">Opacitat del text i dels fons dels comentaris</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Durada del trajecte</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Quants segons triguen els comentaris a creuar la pantalla. Els valors més baixos es mouen més ràpid</string>
+  <string name="morphe_niconico_comments_max_length_title">Longitud màxima del comentari</string>
+  <string name="morphe_niconico_comments_max_length_summary">Amaga els comentaris que tinguin més caràcters que aquest. Cada emoji compta com a un caràcter</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Sense límit</string>
 </resources>

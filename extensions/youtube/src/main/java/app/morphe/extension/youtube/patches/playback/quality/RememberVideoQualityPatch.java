@@ -305,7 +305,7 @@ public class RememberVideoQualityPatch {
             } else {
                 toastStringId = "morphe_remember_video_quality_toast_wifi";
             }
-            Utils.showToastShort(str(toastStringId, qualityResolution + "p"));
+            Utils.showSnackbarShort(str(toastStringId, qualityResolution + "p"));
         }
     }
 

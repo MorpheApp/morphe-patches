@@ -133,6 +133,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_empty">"Ներբեռնումներ չկան
 Ներբեռնված թրեկները կհայտնվեն այստեղ"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s ՄԲ</string>
+  <string name="morphe_music_downloads_summary">%1$s տրեկ • %2$s ՄԲ</string>
   <string name="morphe_music_downloads_search_hint">Որոնել ներբեռնումների մեջ</string>
   <string name="morphe_music_downloads_sort">Տեսակավորել</string>
   <string name="morphe_music_downloads_sort_artist">Տեսակավորել ըստ կատարողի</string>
@@ -532,6 +533,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_local_romanization_title">Տեղային տառադարձում և համապատասխանեցում</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Կատարել տառադարձում սարքի վրա, երբ մատակարարը, ձեր մոդելը և Google Translate-ը չեն աշխատում: Կարդոմությունը հաջորդում է ժամանակային տեքստի յուրաքանչյուր բառին. բառերի սինխրոնացումը պետք է միացված լինի: Չինարեն, կանտոներեն, ճապոներեն, կորեերեն, հունարեն, ռուսերեն, վրացերեն, հայերեն; մոտ 120 ՄԲ</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Կարդացվում է %1$s-ը՝ %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Կարդոմները պատրաստ են (%1$d գրառում)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Ներբեռնումը ձախողվեց. անջատեք և նորից միացրեք սա՝ կրկնելու համար</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ցույց տալ Refresh կոճակը</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Հպեք՝ հաջորդ տեքստի տարբերակին անցնելու համար. սեղմեք երկար՝ ըստ երգի վերնագրի և կատարողի տեքստեր փնտրելու համար</string>
@@ -543,8 +545,6 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_saved">Պահպանված է</string>
   <string name="morphe_music_lyrics_word_sync_title">Ընդգծել սինխրոնացված բառերը կամ վանկերը</string>
   <string name="morphe_music_lyrics_word_sync_summary">Առաջնահերթություն տալ բառ առ բառ տեքստերին, երբ դրանք հասանելի են: Երբ տեքստերը ունեն բառերի ժամանակային տվյալներ, ընդգծվում է յուրաքանչյուր բառ կամ վանկ՝ համահունչ երաժշտությանը</string>
-  <string name="morphe_music_lyrics_split_background_title">Ցուցադրել հետնապլանային ձայները առանձին</string>
-  <string name="morphe_music_lyrics_split_background_summary">Փակագծերով գրված հետնափոնային վոկալը, օրինակ՝ \"(Oh) I want you\", տեղափոխում է երգվող տողից դեպի իր սեփական ավելի մթնագույն տողը</string>
   <string name="morphe_music_lyrics_hide_played_title">Թաքցնել հնչեցված տեքստերը</string>
   <string name="morphe_music_lyrics_hide_played_summary">Թաքցնել տեքստի տողերը, որոնք գտնվում են ընթացիկ տողից վերև</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Թաքցնել չհնչեցված տեքստերը</string>

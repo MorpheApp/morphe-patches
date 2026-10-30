@@ -635,7 +635,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_line_scale_title">Shrink inactive lines</string>
     <string name="morphe_music_lyrics_line_scale_summary">Draws every line that is not currently being sung slightly smaller, on top of dimming it</string>
     <string name="morphe_music_lyrics_split_background_title">Show background vocals separately</string>
-    <string name="morphe_music_lyrics_split_background_summary">Master switch for separating background vocals and harmony from the lead line. Moves a background vocal written in brackets, such as \"(Oh) I want you\", out of the sung line into a dimmer line of its own</string>
+    <string name="morphe_music_lyrics_split_background_summary">Separates background vocals and harmony from the lead line. Moves a background vocal written in brackets, such as \"(Oh) I want you\", out of the sung line into a dimmer line of its own</string>
     <string name="morphe_music_lyrics_hide_played_title">Hide played lyrics</string>
     <string name="morphe_music_lyrics_hide_played_summary">Hide lyrics lines above the currently playing line</string>
     <string name="morphe_music_lyrics_hide_unplayed_title">Hide unplayed lyrics</string>

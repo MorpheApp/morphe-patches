@@ -13,6 +13,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -627,3 +628,216 @@ internal fun getCaptionChunkLoaderFingerprint(loaderType: String) = object : Fin
         methodCall(smali = "Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V")
     )
 ) {}
+
+internal const val SUBTITLE_WINDOW_VIEW_CLASS =
+    "Lcom/google/android/libraries/youtube/player/subtitles/ui/SubtitleWindowView;"
+
+/**
+ * Caption cue of a subtitle window. Matches the id, time, text, full text and settings fields.
+ */
+internal object CaptionCueToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET, definingClass = "this", type = "I"),
+        fieldAccess(opcode = Opcode.IGET_WIDE, definingClass = "this", type = "J"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/CharSequence;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/CharSequence;",
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        ),
+        string("id: %d time: %d text: %s fullText: %s settings: %s")
+    )
+)
+
+internal object CaptionCueConstructorFingerprint : Fingerprint(
+    classFingerprint = CaptionCueToStringFingerprint,
+    name = "<init>",
+    returnType = "V",
+    parameters = listOf("I", "J", "Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "L")
+)
+
+/**
+ * Matches at the default caption window settings.
+ */
+internal fun getCaptionDefaultSettingsFingerprint(settingsType: String) = object : Fingerprint(
+    definingClass = settingsType,
+    name = "<clinit>",
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(opcode = Opcode.SPUT_OBJECT, definingClass = "this", type = settingsType)
+    )
+) {}
+
+/**
+ * Returns the caption cues shown at a video time.
+ */
+internal fun getCaptionSamplerFingerprint(cueType: String) = object : Fingerprint(
+    classFingerprint = CaptionWindowsConstructorFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/util/List;",
+    parameters = listOf("J"),
+    filters = listOf(
+        newInstance(cueType),
+        methodCall(definingClass = cueType, name = "<init>")
+    )
+) {}
+
+/**
+ * Sets the cue of a subtitle window and splits its text into lines.
+ */
+internal fun getCaptionWindowSetterFingerprint(cueType: String) = object : Fingerprint(
+    definingClass = SUBTITLE_WINDOW_VIEW_CLASS,
+    returnType = "V",
+    parameters = listOf(cueType),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = "this", type = cueType),
+        // Visible text lines.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/util/List;",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(smali = "Ljava/util/List;->clear()V", location = MatchAfterImmediately()),
+        // Full text lines.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/util/List;",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(smali = "Ljava/util/List;->clear()V", location = MatchAfterImmediately()),
+        // Split the visible text, then the full text.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Ljava/util/List;", "Ljava/lang/CharSequence;"),
+            returnType = "V"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Ljava/util/List;", "Ljava/lang/CharSequence;"),
+            returnType = "V",
+            location = MatchAfterWithin(2)
+        )
+    )
+) {}
+
+/**
+ * Subtitle window constructor. Matches at the row used to measure caption text.
+ */
+internal fun getCaptionWindowConstructorFingerprint(rowType: String) = object : Fingerprint(
+    definingClass = SUBTITLE_WINDOW_VIEW_CLASS,
+    name = "<init>",
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = "this", type = rowType)
+    )
+) {}
+
+/**
+ * The height measure spec branch incorrectly checks the width measure mode.
+ */
+internal object CaptionWindowMeasureFingerprint : Fingerprint(
+    definingClass = SUBTITLE_WINDOW_VIEW_CLASS,
+    name = "onMeasure",
+    returnType = "V",
+    parameters = listOf("I", "I"),
+    filters = listOf(
+        methodCall(smali = $$"Landroid/view/View$MeasureSpec;->getMode(I)I"),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        literal(0x40000000, location = MatchAfterImmediately()),
+        methodCall(smali = $$"Landroid/view/View$MeasureSpec;->getMode(I)I"),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        // Height mode is AT_MOST.
+        opcode(Opcode.IF_NE, MatchAfterImmediately()),
+        // Width mode is EXACTLY.
+        anyInstruction(
+            opcode(Opcode.IF_EQ),
+            opcode(Opcode.IF_NE),
+            location = MatchAfterWithin(4)
+        )
+    )
+)
+
+/**
+ * Text layout of a caption row.
+ */
+internal object CaptionRowLayoutFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/text/StaticLayout;",
+    parameters = listOf(),
+    superclass = "Landroid/view/View;",
+    filters = listOf(
+        string("Edge type %d is not supported.")
+    )
+)
+
+internal object CaptionRowSetTextFingerprint : Fingerprint(
+    classFingerprint = CaptionRowLayoutFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/lang/CharSequence;")
+)
+
+internal const val CAPTION_STATIC_LAYOUT_PARAMETERS =
+    $$"Ljava/lang/CharSequence;Landroid/text/TextPaint;ILandroid/text/Layout$Alignment;FFZ"
+
+/**
+ * Creates the fill and the outline text layouts of a caption row.
+ */
+internal object CaptionRowLayoutFactoryFingerprint : Fingerprint(
+    classFingerprint = CaptionRowLayoutFingerprint,
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Landroid/text/StaticLayout;",
+    parameters = listOf("I"),
+    filters = listOf(
+        newInstance("Landroid/text/StaticLayout;"),
+        methodCall(
+            smali = "Landroid/text/StaticLayout;-><init>(${CAPTION_STATIC_LAYOUT_PARAMETERS})V"
+        )
+    )
+)
+
+/**
+ * Shows the caption cues of the subtitle overlay.
+ */
+internal fun getCaptionOverlayPresenterFingerprint(cueType: String) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC),
+    returnType = "V",
+    parameters = listOf("Ljava/util/List;"),
+    filters = listOf(
+        methodCall(
+            definingClass = SUBTITLE_WINDOW_VIEW_CLASS,
+            parameters = listOf(cueType),
+            returnType = "V"
+        )
+    )
+) {}
+
+/**
+ * Caption font size, calculated from the size of the subtitle overlay.
+ */
+internal object CaptionFontSizeFingerprint : Fingerprint(
+    returnType = "F",
+    parameters = listOf("F", "I", "I"),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Math;->min(II)I"),
+        fieldAccess(smali = "Landroid/util/DisplayMetrics;->scaledDensity:F"),
+        literal(0.0625f),
+        literal(13.0f)
+    )
+)

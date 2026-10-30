@@ -555,21 +555,23 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
      * Shows the restart dialog if a changed setting requires an app restart.
      * Must be called when the user closes the settings.
      *
-     * @param closeSettings Closes the settings, if the user does not restart.
      * @return If the dialog is shown, and the settings must not close yet.
      */
-    public static boolean showRestartDialogIfNeeded(Context context, Runnable closeSettings) {
+    public static boolean showRestartDialogIfNeeded(Context context) {
         if (!restartNeeded) {
             return false;
         }
         restartNeeded = false;
 
-        Dialog dialog = showRestartDialog(context);
-        dialog.setOnDismissListener(d -> closeSettings.run());
+        showRestartDialog(context);
         return true;
     }
 
-    public static Dialog showRestartDialog(Context context) {
+    /**
+     * Shows a dialog that restarts the app when it is closed in any way,
+     * including the back button.
+     */
+    public static void showRestartDialog(Context context) {
         Utils.verifyOnMainThread();
         if (restartDialogTitle == null) {
             restartDialogTitle = str("morphe_settings_restart_title");
@@ -587,16 +589,16 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 restartDialogMessage,            // Message.
                 null,                            // No EditText.
                 restartDialogButtonText,         // OK button text.
-                () -> Utils.restartApp(context), // OK button action.
-                () -> {},                        // Cancel button action (dismiss only).
+                () -> {},                        // OK button action (dismiss restarts).
+                null,                            // No Cancel button.
                 null,                            // No Neutral button text.
                 null,                            // No Neutral button action.
                 true                             // Dismiss dialog when onNeutralClick.
         );
 
-        // Show the dialog.
-        dialogPair.first.show();
-        return dialogPair.first;
+        Dialog dialog = dialogPair.first;
+        dialog.setOnDismissListener(d -> Utils.restartApp(context));
+        dialog.show();
     }
 
     /**

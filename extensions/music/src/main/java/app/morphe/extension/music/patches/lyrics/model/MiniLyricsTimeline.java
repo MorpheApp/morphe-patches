@@ -28,6 +28,7 @@ public final class MiniLyricsTimeline {
     /** The latest end time of the vocals up to and including each index. */
     private final long[] prefixEnds;
     private final long durationMs;
+
     public MiniLyricsTimeline(List<LyricsLine> lines, long durationMs) {
         this.durationMs = durationMs;
 

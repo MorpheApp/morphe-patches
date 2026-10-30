@@ -113,6 +113,9 @@ As alterações incluem:
   <string name="morphe_hide_surveys_title">Ocultar pesquisas</string>
   <string name="morphe_hide_surveys_summary">Oculta enquetes e avisos sobre a precisão da recomendação de feed</string>
   <string name="morphe_hide_ticket_shelf_title">Ocultar prateleira de ingressos</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Ocultar banner \"Vídeos indisponíveis estão ocultos\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Oculta o banner \"Vídeos indisponíveis estão ocultos\" em playlists</string>
   <string name="morphe_hide_upload_time_title">Ocultar tempo de upload</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Limitações:
@@ -1249,6 +1252,7 @@ Limitação: Se 'Restaurar a barra de ação de vídeo antiga' estiver desativad
   <string name="morphe_fix_status_bar_layout_summary">Mantém o layout da barra de status consistente, para que não cubra as barras superiores e não deixe espaço vazio acima do player. Desative isso se o aplicativo travar ou se as barras superiores estiverem incorretas</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Brilho</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">A tela de abertura Glow não é suportada por este dispositivo</string>
   <string name="morphe_theme_color_light_title">Cor de fundo do tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Branco</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Branco)</string>

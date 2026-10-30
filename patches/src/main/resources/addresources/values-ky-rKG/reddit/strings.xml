@@ -16,8 +16,20 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="reddit_privacy_policy">Reddit\'тин купуялуулук саясаты</string>
+  <string name="morphe_google_signin_not_available_toast">Google аркылуу кирүү мүмкүн эмес. Кирүү үчүн электрондук почтаны колдонуңуз</string>
   <string name="morphe_screen_ads_title">Жарнама</string>
   <string name="morphe_hide_create_button_title">Жасоо баскычын жашыруу</string>
+  <string name="morphe_custom_font_title">Custom шрифт</string>
+  <string name="morphe_custom_font_summary">Төмөнкү жолдон custom TTF же OTF шрифт файлын жүктөңүз. Бул функцияны күйгүзүү Системалык шрифтти мажбурлоону өчүрөт</string>
+  <string name="morphe_custom_font_file_path_title">Custom шрифт файлы</string>
+  <string name="morphe_custom_font_file_path_summary">TTF же OTF шрифт файлын тандоо үчүн басыңыз</string>
+  <string name="morphe_custom_font_selected_font">Тандалган шрифт - %s</string>
+  <string name="morphe_custom_font_pick_file_first">Алгач custom шрифт файлын тандаңыз</string>
+  <string name="morphe_custom_font_invalid_file">Сураныч, .ttf же .otf шрифт файлын тандаңыз</string>
+  <string name="morphe_custom_font_failed_to_load">Custom шрифтти жүктөө мүмкүн болгон жок. Башка файлды тандаңыз</string>
+  <string name="morphe_force_system_font_title">Системалык шрифтти мажбурлоо</string>
+  <string name="morphe_force_system_font_summary">Reddit Sans же Roboto ордуна түзмөктүн системалык шрифтин колдонуңуз. Бул функцияны күйгүзүү Custom шрифтти өчүрөт</string>
   <string name="morphe_screen_miscellaneous_title">Майда-чүйдө</string>
   <string name="morphe_about_title">Маалымат</string>
 </resources>

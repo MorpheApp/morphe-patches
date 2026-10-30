@@ -133,6 +133,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_empty">"Ez da deskargaik
 Deskargatutako pisteak hemen agertuko dira"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_summary">%1$s pista • %2$s MB</string>
   <string name="morphe_music_downloads_search_hint">Bilatu deskargak</string>
   <string name="morphe_music_downloads_sort">Ordenatu</string>
   <string name="morphe_music_downloads_sort_artist">Artista arabera ordenatu</string>
@@ -532,6 +533,7 @@ Cookie beharrezkoak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_title">Romanizazio eta Azeratze Lokalizatuak</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Romanizatu gailuaren barruan itzultzaileak, zure modeloa eta Google Translate fallatzen direnean. Irakurkizuna letra sinkronizatuaren hitz bakoitzaren ondoren dator; hitz sinkronizazioa aktibo egon behar da. Txinoa, Kantonesa, Japoniera, Koreera, Grekera, Errusiera, Georgiana, Armeniera; 120 MB inguru</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s irakurtzen: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Irakurketa prest (%1$d entradak)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Deskarga huts egin du - desaktibatu eta aktibatu berriro saiatzeko</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Aktualizatzeko botoia erakutsi</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Sakatu hurrengo letra kandidatora aldatzeko; sakatu luze abestuaren izenaren eta artistaren arabera letra bilatzeko</string>
@@ -543,8 +545,6 @@ Cookie beharrezkoak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_saved">Gordea da</string>
   <string name="morphe_music_lyrics_word_sync_title">Markatu sinkronizatutako hitzak edo silabak</string>
   <string name="morphe_music_lyrics_word_sync_summary">Lehenetsi hitz-by-hitz letak eskuragarriak direnean. Letak hitzen timinga dutenean, musikaurreko hitz edo silaba bakoitza nabementzen ditu</string>
-  <string name="morphe_music_lyrics_split_background_title">Erakutsi atzeko ahizpak separat Updateren</string>
-  <string name="morphe_music_lyrics_split_background_summary">Parantezian idatzitako ahozko fondoak, \"(Oh) I want you\" bezalakoak, abestu egin den lerrotik atera eta lerro propioago eta diseinuzko batean jartzen ditu</string>
   <string name="morphe_music_lyrics_hide_played_title">Ezikusi abestutako hitzak</string>
   <string name="morphe_music_lyrics_hide_played_summary">Ezikusi gaur egun dozen linearen gaindiko hitz-lerroak</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Ezagutu gabeko letra ezkutatu</string>

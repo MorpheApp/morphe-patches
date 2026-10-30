@@ -21,6 +21,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Hasi-animazioa</string>
   <string name="morphe_splash_screen_style_entry_1">Desaktibatuta</string>
   <string name="morphe_splash_screen_style_entry_2">Kolorea</string>
+  <string name="morphe_splash_screen_style_entry_4">Monokromoa</string>
+  <!-- misc.settings.settingsPatch -->
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Berrifiziatu konfiguratzea amaitzeko</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -36,11 +38,14 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_13">HoriDARK horia</string>
   <string name="morphe_theme_color_dark_entry_14">Urare iluna</string>
   <string name="morphe_theme_color_dark_entry_15">Gorri iluna</string>
+  <string name="morphe_theme_color_dark_custom_title">Atzeondo iluna pertsonalizatua</string>
+  <string name="morphe_theme_color_dark_custom_summary">Konfigura gai ilunaren atzeondo kolorea</string>
   <string name="morphe_theme_color_entry_1">Aplikazioaren lehenestekoa</string>
   <string name="morphe_theme_color_entry_4">Material You (Neutroa)</string>
   <string name="morphe_theme_color_entry_5">Material You (Primaria)</string>
   <string name="morphe_theme_color_entry_6">Material You (Sekundaria)</string>
   <string name="morphe_theme_color_entry_7">Material You (Terziaria)</string>
+  <string name="morphe_theme_color_custom_entry">Pertsonalizatua</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Deskargak</string>
   <string name="morphe_download_mode_title">Deskarga modu</string>
@@ -52,6 +57,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_other_item_hint">Sartu paketearen izena</string>
   <string name="morphe_external_downloader_other_item">Besteak</string>
   <string name="morphe_external_downloader_not_found_title">Aplikazioa ez dago instalatuta</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s ez dago instalatuta. Mesedez, instalatu</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Ezin izan da pakete-izen honek instalatutako aplikazioik aurkitu: %s
 
 Egiaztatu pakete-izena zuzena dela eta aplikazioa instalatuta dagoela"</string>
@@ -83,6 +89,7 @@ Ikonoa guzten guzten aldatzeko, patch-atu berriro eta aldatu 'Aplikazio-ikonoa' 
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Ohartupena</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Zure ikusteko historia ez da gordetzen.&lt;br&gt;&lt;br&gt;Hau DNS publizitate blokeatzaile batek edo sare proxy batek eragiki du probablementen.&lt;br&gt;&lt;br&gt;Hau konpontzeko, gehitu &lt;b&gt;s.youtube.com&lt;/b&gt; zscalerra edo desaktiba DNS blokeatzaile eta proxy guztiak</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ez erakutsi berriz</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Bideo-fluxuak imitatu</string>
@@ -218,6 +225,8 @@ Hala ere, hau aktibatzeak erabiltzailearen datu batzuk ere erregistratuko ditu, 
   <string name="morphe_remove_viewer_discretion_dialog_title">Ikustzailearen diskrezio-dialogoa kendu</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Honek ez du adinkako gehikarria gainditu. Automatiki onartzen du soilik</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken hornitzailea</string>
+  <string name="morphe_potoken_provider_screen_summary">Konfigura PoToken hornitzailea erreprodukzio arazoak saihesteko</string>
   <string name="morphe_external_potoken_provider_title">PoToken hornitzaile kanpokoa</string>
   <string name="morphe_external_potoken_provider_summary">"PoToken minter kanpoko bat erabiliz erreprodukzio arazoak konpondu egiten ditu (Experimentala)
 
@@ -294,9 +303,12 @@ Ikusten ari zaren bideoaren IDa Return YouTube Dislike API-ra bidaltzen da, eta 
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Ezonukak batzuetan eskuragarri ez dira - Bezeroaren API tasa muga aplikatuta dago</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API botoen eskaerak, deiekin kopurua</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Ez da sare-deiik egin</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s sare-deia egin dira</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API botoen eskaerak, timeout-en kopurua</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Ezik sare-deiik timeout-etan amaitu</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s sare-deien denbora iraiki da</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API bezeroaren tasa mugaak</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ez da bezeroaren tasa mugarik aurkitu</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klienteren tasa-muga %s aldiz aurkitu da</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s milisegundo</string>
 </resources>

@@ -113,6 +113,9 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_surveys_title">Ẩn khảo sát</string>
   <string name="morphe_hide_surveys_summary">Ẩn khảo sát ​​và đánh giá độ phù hợp của đề xuất trang video</string>
   <string name="morphe_hide_ticket_shelf_title">Ẩn kệ vé</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Ẩn biểu ngữ \"Đã ẩn các video không khả dụng\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Ẩn biểu ngữ \"Đã ẩn các video không khả dụng\" trong danh sách phát</string>
   <string name="morphe_hide_upload_time_title">Ẩn ngày tải lên</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Hạn chế:
@@ -1249,6 +1252,7 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <string name="morphe_fix_status_bar_layout_summary">Giữ cho bố cục của thanh trạng nhất quán, để nó không che các thanh trên cùng và không để khoảng trống phía trên trình phát. Tắt tùy chọn này nếu ứng dụng bị đóng băng hoặc các thanh trên cùng trông sai</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Phát sáng</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Màn hình chào hiệu ứng phát sáng không được hỗ trợ bởi thiết bị này</string>
   <string name="morphe_theme_color_light_title">Nền chủ đề sáng</string>
   <string name="morphe_theme_color_light_entry_2">Trắng</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Trắng)</string>

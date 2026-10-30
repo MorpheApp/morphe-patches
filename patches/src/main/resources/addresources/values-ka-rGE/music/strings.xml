@@ -17,59 +17,675 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">ბოლოს ნათქვამი</string>
+  <string name="morphe_music_android_auto_subscriptions">გამოწერები</string>
+  <string name="morphe_music_android_auto_videos">ვიდეოები</string>
+  <string name="morphe_music_android_auto_other_results">სხვა შედეგები</string>
+  <string name="morphe_music_android_auto_uploaded_songs">ატვირთული სიმღერები</string>
+  <string name="morphe_music_android_auto_uploaded_albums">ატვირთული ალბომები</string>
+  <string name="morphe_music_android_auto_uploaded_artists">ატვირთული შემსრულებლები</string>
   <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_update_host_controls">განაახლეთ ჰოსტის Jam პატჩი პაუზისა და განახლების გამოსაყენებლად</string>
+  <string name="morphe_music_jam_probe_title">Jam რიგის გაზიარება</string>
+  <string name="morphe_music_jam_probe_summary">გახდით ახლომდებარე Jam-ის მასპინძელი ან შეუერთდით მას და დაარედაქტირეთ მისი განრიგი Jam Layer-ის მეშვეობით</string>
+  <string name="morphe_music_jam_enabled_title">Jam რიგის გაზიარების ჩართვა</string>
+  <string name="morphe_music_jam_enabled_summary">რთავს Jam-ის ინტეგრაციას YouTube Music-ის რესტარტის შემდეგ</string>
+  <string name="morphe_music_jam_download_title">ჩამოტვირთეთ Jam Layer მუშაობისთვის</string>
+  <string name="morphe_music_jam_download_summary">გახსენით Jam Layer-ის უახლესი ვერსია თქვენს ბრაუზერში</string>
+  <string name="morphe_music_jam_controls_title">Jam-ის მართვა</string>
+  <string name="morphe_music_jam_controls_summary">გახდით ახლომდებარე Jam-ის მასპინძელი ან შეუერთდით მას და მართეთ სესია</string>
+  <string name="morphe_music_jam_companion_package_title">Jam Layer პაკეტი</string>
+  <string name="morphe_music_jam_companion_package_summary">აირჩიეთ დაინსტალირებული დამხმარე აპლიკაცია ახლომდებარე რიგის გასაზიარებლად</string>
+  <string name="morphe_music_jam_package_message">გამოიყენეთ დაინსტალირებული დამხმარე პაკეტი. დაწყვილება მოითხოვს თქვენს დასტურს და ლოკალურ შესაძლებლობის ტოკენს</string>
+  <string name="morphe_music_jam_wifi_title">ჩართოთ Wi-Fi?</string>
+  <string name="morphe_music_jam_wifi_message">ჩართეთ Wi-Fi, შემდეგ სცადეთ Jam-ის ხელახლა დაწყება ან მასთან შეერთება</string>
+  <string name="morphe_music_jam_wifi_settings">Wi-Fi პარამეტრების გახსნა</string>
+  <string name="morphe_music_jam_cancel">გაუქმება</string>
+  <string name="morphe_music_jam_use_package">გამოიყენეთ პაკეტი</string>
+  <string name="morphe_music_jam_invalid_package">შეიყვანეთ Android-ის პაკეტის ვალიდური სახელი</string>
+  <string name="morphe_music_jam_package_saved">პაკეტი შენახულია. დასაკავშირებლად დააყენეთ Jam Layer</string>
+  <string name="morphe_music_jam_disconnected">Jam გაწყვეტილია</string>
+  <string name="morphe_music_jam_enable_layer_first">ჯერ გააქტიურეთ Jam Layer</string>
+  <string name="morphe_music_jam_enable_patch_first">გააქტიურეთ Jam-ის რიგის გაზიარება პარამეტრებში, შემდეგ კი გადატვირთეთ YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">ჯერ დააინსტალირეთ არჩეული Jam Layer პაკეტი</string>
+  <string name="morphe_music_jam_join_hint">შეიყვანეთ მასპინძელზე მითითებული კოდი. Wi-Fi Aware-ს შეუძლია ახლომდებარე მოწყობილობების დაკავშირება მაშინაც კი, როდესაც მათი LAN-ები განსხვავდება</string>
+  <string name="morphe_music_jam_join_with_code">присоедиება კოდით</string>
+  <string name="morphe_music_jam_join">შეერთება</string>
+  <string name="morphe_music_jam_scan_qr">QR-ის სკანირება</string>
+  <string name="morphe_music_jam_invalid_invite">შეიყვანეთ რვასიმბოლოიანი კოდი ან ჩასვით მოწვევა</string>
+  <string name="morphe_music_jam_join_your_jam">შემოუერთდით თქვენს Jam-ს</string>
+  <string name="morphe_music_jam_copy_code">კოდის კოპირება</string>
+  <string name="morphe_music_jam_code_clip">Jam-ის კოდი</string>
+  <string name="morphe_music_jam_show_qr">QR-ის ჩვენება</string>
+  <string name="morphe_music_jam_done">დასრულდა</string>
+  <string name="morphe_music_jam_invite_title">მოიწვიეთ თქვენს Jam-ში</string>
+  <string name="morphe_music_jam_invite_message">დაასკანერეთ სრიალში მოსაწვევად და რედაქტირებისთვის. Jam-ის დასრულება აუქმებს მოწვევას</string>
+  <string name="morphe_music_jam_copy_link">ბმულის კოპირება</string>
+  <string name="morphe_music_jam_invitation_clip">Jam-ის მოწვევა</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam ხელახლა უკავშირდება; სცადეთ მოგვიანებით</string>
+  <string name="morphe_music_jam_added_to_jam">დაემატა Jam-ს</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam недоступურია; ტრეკი არ დაემატა</string>
+  <string name="morphe_music_jam_your_jam">თქვენი Jam</string>
+  <string name="morphe_music_jam_listening_together">ერთად მოსმენა</string>
+  <string name="morphe_music_jam_joining_jam">Jam-ის შეერთება</string>
+  <string name="morphe_music_jam_listen_together">მოისმინეთ ერთად</string>
+  <string name="morphe_music_jam_updating">Jam-ის განახლება…</string>
+  <string name="morphe_music_jam_finding_host">თქვენი ჰოსტის ძებნა Wi-Fi-ზე…</string>
+  <string name="morphe_music_jam_waiting_people">ხალხის ლოდინი</string>
+  <string name="morphe_music_jam_one_connected">%s პირი ჩართულია</string>
+  <string name="morphe_music_jam_many_connected">%s პირი ჩართულია</string>
+  <string name="morphe_music_jam_code_expires">შეიყვანეთ ეს კოდი მეზობელ მოწყობილობაში. Wi-Fi Aware მუშაობს განცალკევებულ ლოკალურ ქსელებში, თუ მხარდაჭერილია. ვადა იწურება %s წუთში</string>
+  <string name="morphe_music_jam_seek_to">გადავ scrolls %s-ზე?</string>
+  <string name="morphe_music_jam_edits_open">რედაქტირება ღიაა</string>
+  <string name="morphe_music_jam_edits_locked">რედაქტირება დაბლოკილია</string>
+  <string name="morphe_music_jam_connected_aware">დაკავშირებულია Wi-Fi Aware-ის მეშვეობით</string>
+  <string name="morphe_music_jam_connected_wifi">დაკავშირებულია Wi-Fi-ს მეშვეობით</string>
+  <string name="morphe_music_jam_connected_bluetooth">დაკავშირებულია Bluetooth-ის მეშვეობით</string>
+  <string name="morphe_music_jam_unsupported">Jam-ის დროს არ არის მხარდაჭერილი</string>
+  <string name="morphe_music_jam_cancelled">przyсоедиება გაუქმდა</string>
+  <string name="morphe_music_jam_reconnecting_host">ხელახლა დაკავშირება ჰოსტთან…</string>
+  <string name="morphe_music_jam_share_prompt">გააზიარეთ მორიგი. საშუალება მიეცით ყველას, დაამატონ სიმღერები</string>
+  <string name="morphe_music_jam_invite_people">მოიწვიეთ ადამიანები</string>
+  <string name="morphe_music_jam_guest_edits">სტუმრებს შეუძლიათ რიგის რედაქტირება</string>
+  <string name="morphe_music_jam_end_jam">Jam-ის დასრულება</string>
+  <string name="morphe_music_jam_participant_help">მუსიკას რთავს ჰოსტი. დაამატეთ, გადაადგილეთ ან წაშალეთ სიმღერები პირდაპირ YouTube Music-ის მორიგში</string>
+  <string name="morphe_music_jam_joining_help">ორივე მოწყობილობა ახლოს დატოვეთ. შეგიძლიათ გააუქმოთ, სანამ ჰოსტს ვეძებთ</string>
+  <string name="morphe_music_jam_cancel_joining">przyсоедиების გაუქმება</string>
+  <string name="morphe_music_jam_leave_jam">Jam-ის დატოვება</string>
+  <string name="morphe_music_jam_start_jam">ჯემ-სესიის დაწყება</string>
+  <string name="morphe_music_jam_setup_layer">ჯემ-ფენის გამართვა</string>
+  <string name="morphe_music_jam_manage">მართვა</string>
+  <string name="morphe_music_jam_details">დეტალები</string>
+  <string name="morphe_music_jam_open">გახსნა</string>
+  <string name="morphe_music_jam_loading_song_options">სიმღერის პარამეტრების ჩატვირთვა…</string>
+  <string name="morphe_music_jam_song_options_unavailable">სიმღერის პარამეტრები недоступბელია; სცადეთ ხელახლა</string>
+  <string name="morphe_music_jam_song_options_failed">სიმღერის პარამეტრების გახსნა ვერ მოხერხდა</string>
+  <string name="morphe_music_jam_no_browser">Jam Layer-ის ჩამოსატვირთად ბრაუზერი არ არის ხელმისაწვდომი</string>
+  <string name="morphe_music_jam_waiting_host_queue">მესპრიან Gastgeber-ის რიგის მოლოდინში</string>
+  <string name="morphe_music_jam_open_song_first">ჯერ გახსენით სიმღერა YouTube Music-ში</string>
+  <string name="morphe_music_jam_play_on_host">განამეზის Gastgeber-ზე</string>
+  <string name="morphe_music_jam_quit_and_play">გაიტოვეთ Jam და ჩართეთ локаლურად</string>
+  <string name="morphe_music_jam_play_next">ჩართეთ შემდეგი Jam-ში</string>
+  <string name="morphe_music_jam_add_to_queue">დაამატეთ Jam-ის რიგში</string>
+  <string name="morphe_music_jam_play_track">განიშნავეთ ეს Jam ტრეკი</string>
+  <string name="morphe_music_jam_choose_playback">აირჩიეთ დაკვრის ადგილი</string>
+  <string name="morphe_music_jam_move_host_here">გადაიტანეთ ჰოსტერი აქ</string>
+  <string name="morphe_music_jam_seek_not_ready">სიმღერა არ არის მზად გადასახტობად</string>
+  <string name="morphe_music_jam_queue_changed_gesture">რიგი შეიცვალა; სცადეთ ჟესტი ხელახლა</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">ზედა პანელის ლოგო</string>
+  <string name="morphe_header_logo_entry_1">ნაგულისხმები</string>
+  <string name="morphe_header_logo_entry_3">საკუთარი</string>
   <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">ალბომის აუდიო ტრეკების დაკვრა</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">სიმღერების ალბომის მხოლოდ აუდიო ვერსიის დაკვრა მუსიკალური ვიდეოს ნაცვლად. საჭიროებს \'ვიდეო ნაკადების იმიტაციას\'</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">აუდიო/ვიდეო გადამრთველის ჩართვა</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">სცადეთ აუდიო ტრეკის ვერსიისა და ოფიციალური მუსიკალური ვიდეოს გადართვა</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">ჩამოტვირთეთ მუსიკალური ვიდეოები, პოდკასტები ან სიმღერები მესამე მხარის ჩამტვირთავი აპლიკაციების მეშვეობით</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">გამოიყენეთ გარე ჩამტვირთავი Download მენიუსთვის</string>
+  <string name="morphe_external_downloader_menu_summary">მენიუს Download ოფცია ამის ნაცვლად ხსნის თქვენს გარე ჩამტვირთავს</string>
   <string name="morphe_music_downloads_screen_title">ჩამოტვირთულები</string>
+  <string name="morphe_music_downloads_empty">"ჩამოტვირთვები არ არის
+ჩამოტვირთული ტრეკები აქ გამოჩნდება"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s მბ</string>
+  <string name="morphe_music_downloads_summary">%1$s ტრეკი • %2$s მბ</string>
+  <string name="morphe_music_downloads_search_hint">ჩამოტვირთვების ძებნა</string>
+  <string name="morphe_music_downloads_sort">სორტირება</string>
+  <string name="morphe_music_downloads_sort_artist">სორტირება შემსრულებლის მიხედვით</string>
+  <string name="morphe_music_downloads_sort_title">სორტირება სათაურის მიხედვით</string>
+  <string name="morphe_music_downloads_sort_size">სორტირება ზომის მიხედვით</string>
+  <string name="morphe_music_downloads_delete_all">ყველა ჩამოტვირთვის წაშლა</string>
+  <string name="morphe_music_downloads_delete_all_title">წაშალოთ ყველა ჩამოტვირთვა?</string>
+  <string name="morphe_music_downloads_delete_all_message">ყველა გადმოწერილი ტრეკი წაიშლება ამ მოწყობილობიდან</string>
+  <string name="morphe_music_downloads_all_deleted">გადმოწერილი ფაილები წაიშალა</string>
+  <string name="morphe_music_downloads_nothing_found">ვერაფერი მოიძებნა</string>
+  <string name="morphe_music_downloads_actions_for">მოქმედებები %s-ისთვის</string>
+  <string name="morphe_music_downloads_play">გనახეთ</string>
+  <string name="morphe_music_downloads_play_pause">გనახეთ ან შეაჩერეთ</string>
+  <string name="morphe_music_downloads_previous">წინა</string>
+  <string name="morphe_music_downloads_next">შემდეგი</string>
+  <string name="morphe_music_downloads_pause">შეჩერება</string>
+  <string name="morphe_music_downloads_close">დახურვა</string>
+  <string name="morphe_music_downloads_delete">წაშლა</string>
+  <string name="morphe_music_downloads_delete_track">ჩამოტვირთვის წაშლა</string>
+  <string name="morphe_music_downloads_delete_track_title">წავშალო ჩამოტვირთვა?</string>
+  <string name="morphe_music_downloads_delete_track_message">%s წაიშლება ამ მოწყობილობიდან</string>
+  <string name="morphe_music_downloads_track_deleted">ჩამოტვირთვა წაშლილია</string>
+  <string name="morphe_music_downloads_track_delete_failed">ჩამოტვირთვის წაშლა ვერ მოხერხდა</string>
+  <string name="morphe_music_downloads_play_failed">ჩამოტვირთულის დაკვრა ვერ მოხერხდა</string>
+  <string name="morphe_music_downloads_notification_channel">აუდიო ჩამოტვირთვები</string>
+  <string name="morphe_music_downloads_playback_channel">ოფლაინ დაკვრა</string>
+  <string name="morphe_music_downloads_unknown_track">ჩამოსატვირთი ტრეკის იდენტიფიცირება ვერ მოხერხდა</string>
+  <string name="morphe_music_downloads_already_running">ჩამოტვირთვა უკვე მიმდინარეობს</string>
+  <string name="morphe_music_downloads_already_saved">უკვე ჩამოტვირთულია</string>
+  <string name="morphe_music_downloads_started">ჩამოტვირთვა დაიწყო</string>
+  <string name="morphe_music_downloads_starting">ჩამოტვირთვის დაწყება…</string>
+  <string name="morphe_music_downloads_progress">ჩამოტვირთვა %s%%</string>
+  <string name="morphe_music_downloads_complete">ჩამოტვირთვა დასრულდა</string>
+  <string name="morphe_music_downloads_failed">ჩამოტვირთვა ჩაიშალა</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">Morphe-ის შესახებ</string>
+  <string name="morphe_settings_music_screen_1_ads_title">რეკლამები</string>
+  <string name="morphe_settings_music_screen_2_feed_title">ფიდი</string>
+  <string name="morphe_settings_music_screen_3_general_title">ზოგადი</string>
+  <string name="morphe_settings_music_screen_4_player_title">ფლეიერი</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">ტექსტები</string>
+  <string name="morphe_settings_music_screen_9_misc_title">სხვადასხვა</string>
+  <string name="morphe_music_app_language_title">YouTube Music-ის ენა</string>
+  <string name="morphe_music_app_language_summary_default">სისტემის ენა</string>
+  <string name="morphe_music_app_language_summary_unsupported">საჭიროა Android 13 ან უფრო ახალი ვერსია</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">წარწერის \"მიიღეთ Music Premium\" დამალვა</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">숨겨 Music Premium-ის აქციები</string>
+  <string name="morphe_music_hide_video_ads_title">ვიდეორეკლამების დამალვა</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">숨겨 აუდიოს / ვიდეოს გადამრთველი</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">ჩამოტვირთვის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">მალავს ჩამოტვირთვის ღილაკს პოდკასთის შოუში</string>
+  <string name="morphe_music_hide_explore_shelf_title">დამალეთ Explore-ის თარო</string>
+  <string name="morphe_music_hide_filter_bar_title">მოიხსნათ ფილტრების პანელი</string>
+  <string name="morphe_music_hide_grid_shelves_title">ბადისებრი თვლების დამალვა</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">ჰორიზონტალური თვლების დამალვა</string>
+  <string name="morphe_music_hide_list_shelves_title">სпиისებრი თვლების დამალვა</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">ტექსტების პანელი</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">გაზიარების ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">თარგმნის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_new_from_shelf_title">დამალეთ თარო „ახალია“</string>
+  <string name="morphe_music_hide_playlist_shelves_title">ფლეილისტების თვლების დამალვა</string>
+  <string name="morphe_music_hide_repeat_button_title">გამეორების ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_shuffle_button_title">გაურკვეველი თანმიმდევრობის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">\"სწრაფი წვდომის\" თვლის დამალვა</string>
+  <string name="morphe_music_comments_screen_title">კომენტარები</string>
+  <string name="morphe_music_comments_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს კომენტარების სექციაში</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">საზოგადოების წესების დამალვა</string>
+  <string name="morphe_music_hide_comments_context_title">კონტექსტური შეტყობინების დამალვა</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">ემოჯი ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_comments_info_button_title">ინფოს ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">დროის აღნიშვნის ღილაკის დამალვა</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">კროსფეიდი</string>
+  <string name="morphe_music_crossfade_screen_summary">ტრეკების გლუვად გადაბმა ერთმანეთში</string>
+  <string name="morphe_music_crossfade_enabled_title">კროსფეიდის ჩართვა</string>
+  <string name="morphe_music_crossfade_curve_title">გაუფერულების მრუდი</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">თანაბარი სიმძლავრე</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">მსუბუქი შეკავება</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">რბილი გადასვლა</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">გლუვი S-მრუდი</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">გამავალი</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">შემავალი</string>
+  <string name="morphe_music_crossfade_duration_title">კროსფეიდის ხანგრძლივობა</string>
+  <string name="morphe_crossfade_duration_250ms">250 მილიწამი</string>
+  <string name="morphe_crossfade_duration_500ms">500 მილიწამი</string>
+  <string name="morphe_crossfade_duration_750ms">750 მილიწამი</string>
+  <string name="morphe_crossfade_duration_1000ms">1 წამი</string>
+  <string name="morphe_crossfade_duration_2000ms">2 წამი</string>
+  <string name="morphe_crossfade_duration_3000ms">3 წამი</string>
+  <string name="morphe_crossfade_duration_4000ms">4 წამი</string>
+  <string name="morphe_crossfade_duration_5000ms">5 წამი</string>
+  <string name="morphe_crossfade_duration_6000ms">6 წამი</string>
+  <string name="morphe_crossfade_duration_7000ms">7 წამი</string>
+  <string name="morphe_crossfade_duration_8000ms">8 წამი</string>
+  <string name="morphe_crossfade_duration_9000ms">9 წამი</string>
+  <string name="morphe_crossfade_duration_10000ms">10 წამი</string>
+  <string name="morphe_crossfade_duration_11000ms">11 წამი</string>
+  <string name="morphe_crossfade_duration_12000ms">12 წამი</string>
+  <string name="morphe_music_crossfade_on_skip_title">Crossfade-ი ხელით გადართვისას</string>
+  <string name="morphe_music_crossfade_on_skip_summary">გამოიყენებს Crossfade-ის ეფექტს, როდესაც შემდეგ ტრეკზე ხელით გადართავთ</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade-ი ავტომატური გადართვისას</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">გამოიყენებს crossfade ეფექტს, როდესაც ტრეკი ბუნებრივად სრულდება</string>
+  <string name="morphe_music_crossfade_session_control_title">სესიის კონტროლი</string>
+  <string name="morphe_music_crossfade_session_control_summary">shuffle ღილაკზე დააჭირეთ დიდხანს crossfade-ის შეჩერებისთვის ან განახლებისთვის</string>
+  <string name="morphe_music_crossfade_paused_toast">ამ სესიისთვის Crossfade-ი შეჩერებულია</string>
+  <string name="morphe_music_crossfade_resumed_toast">Crossfade-ი განახლდა</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">ვიდეო რეჟიმი недоступებელია Crossfade-ის ჩართვისას</string>
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade გამორთულია SABR დაკვრისას</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade გამორთულია ტრანსლაციისას</string>
+  <string name="morphe_music_crossfade_about_how_title">როგორ მუშაობს</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade ერთ სიმღერის დასრულებას ओवरლაპს მომდევნოს დასაწყისთან, თქვენი ხანგრძლივობისა და მრუდის გამოყენებით
+
+ის მუშაობს ავტომატურ გადასვლაზე და მანუალური გადახტომისას, თითოეულს თავისი ჩართვის ღილაკი აქვს. ავტომატური გადასვლისას შერწყმა სიმღერის დასრულებამდე რამდენიმე წამით ადრე იწყება"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">შეზღუდვები</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"მუსიკალური ვიდეოები მხოლოდ აუდიოს სახით უკრავს, როდესაც crossfade ჩართულია. გრძლად დააჭირეთ shuffle-ს crossfade-ის გასაჩერებლად და ვიდეოს სანახავად
+
+მუსიკალური ვიდეო, რომელიც იწყებს დაკვრას, რჩება ვიდეო რეჟიმში მომდევნო სიმღერამდე
+
+სიმღერები, რომლებიც crossfade-ის ხანგრძლივობაზე მოკლეა, არ გადადის crossfade-ში
+
+დაბლოკვის ეკრანმა ან შეტყობინებამ შესაძლოა გარდამავალ პროცესში მოკლედ აჩვენოს მოძველებული მდგომარეობა
+
+crossfade-ის შეჩერებამ მუსიკალური ვიდეოს სანახავად შესაძლოა ზოგიერთი ვიდეო გაშავოს. სიმღერის არჩევამდე crossfade-ის შეჩერება ამის თავიდან აცილებას უზრუნველყოფს"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">არ არის მხარდაჭერილი</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"აუდიოს გადაცემა ან სარკისებური ასახვა (Chromecast, ეკრანის ან აუდიოს სარკისებური ასახვა)
+
+SABR დაკვრა (ვიდეო ნაკადების იმიტაცია გამორთულია)"</string>
+  <string name="morphe_music_crossfade_about_credit_title">კრედიტები</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade ფუნქცია VazerOG-სგან</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
+  <string name="morphe_music_remember_repeat_state_title">გაიმეორების მდგომარეობის запоმინება</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <string name="morphe_music_remember_shuffle_state_title">გამოიხსენე არევის მდგომარეობა</string>
   <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">უკუკავშირის სიჩქარე</string>
+  <string name="morphe_music_playback_speed_summary">სიჩქარე, რომელიც გამოიყენება ყველა ტრეკისთვის. 100%-ის შემთხვევაში გამოიყენება აპლიკაციის სიჩქარე, მაგალითად, პოდკასტის დაკვრის სიჩქარე</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">ტონალობის შეცვლა სიჩქარესთან ერთად</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">არმოწონების გადამისამართების გამორთვა</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">თავიდან აგვარდინებს შემდეგ ტრეკზე გადასვლას \"არ მომწონს\" ღილაკზე დაჭერისას</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">პლეილისტის ტრეკზე დაჭერის მოქმედება</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">პლეილისტის დაკვრა</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">მხოლოდ არჩეული ტრეკის დაკვრა</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">დაამატეთ არჩეული ტრეკი რიგში</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">დაემატა რიგში</string>
   <!-- layout.buttons.hideButtonsPatch -->
+  <string name="morphe_music_hide_cast_button_title">Cast ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_history_button_title">ისტორიის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_notification_button_title">შეტყობინების ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_search_button_title">ძებნის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_voice_search_button_title">ხმოვანი ძიების ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_sound_search_button_title">ბგერის ძებნის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_library_new_button_title">ახლის ღილაკის დამალვა</string>
+  <string name="morphe_music_hide_library_new_button_summary">მალავს \"ახლის\" ღილაკს ბიბლიოთეკის ჩანართში</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">მოქმედების ღილაკები</string>
+  <string name="morphe_music_action_buttons_screen_summary">აირჩიეთ, რომელი მოქმედების ღილაკები გამოჩნდეს პლეერის ქვემოთ</string>
+  <string name="morphe_music_hide_action_bar_title">მოქმედებების პანელის დამალვა</string>
+  <string name="morphe_music_hide_like_dislike_button_title">მოწონებისა და არმოწონების ღილაკების დამალვა</string>
+  <string name="morphe_music_hide_comments_button_title">კომენტარების ღილაკის დამალვა</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">დამალეთ ღილაკი \"ჩატის რეპლეი\"</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">ტექსტების ღილაკის დამალვა</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">გაგვიზიარეთ ღილაკის დამალვა</string>
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">შენახვის ღილაკის დამალვა</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">გადმოწერის ღილაკის დამალვა</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">დამალეთ ღილაკი \"რადიოს ჩართვა\"</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
+  <string name="morphe_music_hide_flyout_menu_components_screen_title">გასაშლელი მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_components_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს პლეიერისა და რიგის გასაშლელ მენიუებში</string>
+  <string name="morphe_music_hide_flyout_menu_3_column_component_title">დამალეთ 3-სვეტიანი კომპონენტი</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">მოიხსნათ მოწონებისა და არმოწონების ღილაკები</string>
+  <string name="morphe_music_hide_flyout_menu_taste_match_title">დამალეთ მენიუ \"გემოვნების შესაბამისობა\"</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">დამალეთ მენიუ \"დაამატეთ სიაში \'მოგვიანებით მოსასმენი\'\"</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_queue_title">დამალეთ მენიუ \"დაამატეთ რიგში\"</string>
+  <string name="morphe_music_hide_flyout_menu_captions_title">მოიხსნათ სუბტიტრების მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_delete_playlist_title">დამალეთ მენიუ \"წაშალეთ ფლეილისტი\"</string>
+  <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">დამალეთ მენიუ \"გაასუფთავეთ რიგი\"</string>
+  <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">დამალეთ მენიუ \"ნუ მომირჩიეთ ეს არტისტი\"</string>
+  <string name="morphe_music_hide_flyout_menu_download_title">მოიხსნათ ჩამოტვირთვის მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_edit_playlist_title">დამალეთ მენიუ \"ప్ლეილისტის რედაქტირება\"</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_album_title">დამალეთ მენიუ \"გადასვლა ალბომზე\"</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_artist_title">დამალეთ მენიუ \"გადასვლა არტისტზე\"</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_episode_title">დამალეთ მენიუ \"გადასვლა ეპიზოდზე\"</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">დამალეთ მენიუ \"გადასვლა პოდკასტზე\"</string>
+  <string name="morphe_music_hide_flyout_menu_help_title">მოიხსნათ დახმარების მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">დამალეთ მენიუ \"მონიშნეთ ეპიზოდი როგორც მოსმენილი\"</string>
+  <string name="morphe_music_hide_flyout_menu_not_interested_title">დამალეთ მენიუ \"не დაინტერესებული\"</string>
+  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">დამალეთ მენიუ \'მიმაგრება სწრაფი ამორჩევითი განყოფილების\'</string>
+  <string name="morphe_music_hide_flyout_menu_play_next_title">숨기기 \'შემდეგის დაკვრა\' მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_quality_title">მოიხსნათ ხარისხის მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_library_title">숨기기 \'ბიბლიოთეკიდან წაშლა\' მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">숨기기 \'ფლეილისტიდან წაშლა\' მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_report_title">მოიხსნათ შეტყობინების მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">숨기기 \'ეპიზოდის შენახვა მოგვიანებითთვის\' / \'ბიბლიოთეკაში შენახვა\' მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">숨기기 \'ფლეილისტში შენახვა\' მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_share_title">გაგვიფარულდეს გაზიარების მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_shuffle_play_title">숨기기 \'გაურandomებული დაკვრა\' მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_sleep_timer_title">숨기기 \'ძილის ტაიმერი\' მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_start_radio_title">დამალეთ მენიუ \"გაააქტიურეთ რადიო\"</string>
+  <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">დამალეთ მენიუ \"სტატისტიკა ენთუზიასტებისთვის\"</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">მოიხსნათ გამოწერის მენიუ</string>
+  <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">დამალეთ მენიუ \"მოხსენით სწრაფი წვდომიდან\"</string>
+  <string name="morphe_music_hide_flyout_menu_view_song_credit_title">დამალეთ მენიუ \"ნახეთ სიმღერის ავტორები\"</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">საწყისი გვერდი</string>
+  <string name="morphe_change_start_page_entry_default">ნაგულისხმები</string>
+  <string name="morphe_change_start_page_entry_charts">ჩარტები</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">ეპიზოდები მოგვიანებითთვის</string>
+  <string name="morphe_change_start_page_entry_explore">კვლევა</string>
+  <string name="morphe_change_start_page_entry_history">ისტორია</string>
+  <string name="morphe_change_start_page_entry_library">ბიბლიოთეკა</string>
+  <string name="morphe_change_start_page_entry_liked_music">მოწონებული მუსიკა</string>
+  <string name="morphe_change_start_page_entry_playlists">ფლეილისტები</string>
+  <string name="morphe_change_start_page_entry_search">ძებნა</string>
+  <string name="morphe_change_start_page_entry_subscriptions">გამოწერები</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">პორტრეტული ორიენტაციის იძულება</string>
+  <string name="morphe_music_force_portrait_orientation_summary">ინახავს აპლიკაციას პორტრეტულ ორიენტაციაში მოწყობილობის დატრიალებისას</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
+  <string name="morphe_music_change_miniplayer_color_title">მინიპლეერის ფერის შეცვლა</string>
+  <string name="morphe_music_change_miniplayer_color_summary">მინიპლეიერის ფერს ავსებს სრულეკრანიანი პლეიერის ფერამდე</string>
+  <string name="morphe_music_change_navigation_bar_color_title">შეცვალეთ навіგაციის პანელის ფერი</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">ანესაბამებს навіგაციის პანელის ფერს სრულეკრანიან პლეერს</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
+  <string name="morphe_music_miniplayer_next_button_title">შემდეგ ღილაკის ჩვენება მინიპლეერში</string>
+  <string name="morphe_music_miniplayer_previous_button_title">წინა ღილაკის ჩვენება მინი-პლეერში</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
+  <string name="morphe_music_enable_forced_miniplayer_title">მინიპლეერის იძულებითი ჩართვა</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">თავიდან აგდებს პლეიერის ავტომატურ გაფართოებას სრულეკრანზე ახალი ტრეკის დაწყებისას</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">ჩართეთ მინი-პლეიერის გადატაცებით დახურვა</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">აძლევს საშუალებას დახუროთ მინი-პლეიერი მასზე ქვემოთ გადატაცებით</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">ნავიგაციის პანელი</string>
+  <string name="morphe_music_navigation_bar_screen_summary">აირჩიეთ, რომელი ღილაკები გამოჩნდეს ქვედა навіგაციის პანელში</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">მთავარი ღილაკის დამალვა</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Samples ღილაკის დამალვა</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">დამალეთ ღილაკი „კვლევა“</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">დამალეთ ღილაკი „ბიბლიოთეკა“</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">დამალეთ ღილაკი „განახლება“</string>
+  <string name="morphe_music_hide_navigation_bar_title">ნავიგაციის პანელის დამალვა</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">ნავიგაციის ღილაკების წარწერების დამალვა</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary_logged_out">არ ხართ ავტორიზებული. კონფიგურაციისთვის დააჭირეთ</string>
+  <string name="morphe_music_scrobbling_log_out">გამოვლა</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">გამოვლა მოხდა</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_enabled_title">ჩართეთ scrobbling</string>
+  <string name="morphe_music_scrobbling_now_playing_title">გაგზავნეთ \"ახლა უკრავს\" სტატუსი</string>
+  <string name="morphe_music_scrobbling_min_song_duration_title">სიმღერის მინიმალური ხანგრძლივობა</string>
   <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_min_song_duration_summary">ამაზე მოკლე სიმღერები არ იქნება scrobbled</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_title">Scrobble-ის დაგვიანების პროცენტი</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_summary">გააქტიურეთ scrobble სიმღერის ამ პროცენტის მოსმენის შემდეგ</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_title">Scrobble-ის დაგვიანების წამები</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_summary">გააქტიურეთ scrobble ამ რაოდენობის წამის მოსმენის შემდეგ</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz-ის ანგარიში</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">ავტორიზებული. შეხეთქეთ ანგარიშის სამართავად</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">შეიყვანეთ თქვენი ListenBrainz-ის მომხმარებლის ტოკენი scrobbling-ის გასააქტიურებლად</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">ტოკენი</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">ვერიფიკაცია</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">გთხოვთ შეიყვანოთ ტოკენი</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">ვალიდაცია...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">ვალიდური ტოკენია! მომხმარებელი: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">არავალიდური ტოკენია: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">უცნობი</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">ვერიფიკაცია ჩაიშალა: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">ტოკენი წაშლილია</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">ტოკენი შენახულია</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">გაფრთხილება: შენახული ტოკენი არასწორია!</string>
+  <string name="morphe_music_lastfm_love_on_like_title">მოიყვარეთ მოწონებული ტრეკები</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">ავტომატურად მოიყვარეთ ტრეკები Last.fm-ზე, როდესაც მათ მოიწონებთ YouTube Music-ზე (და წაშალეთ სიყვარული, როდესაც მოიხსნით მოწონებას ან აღნიშნავთ, რომ არ მოგწონთ)</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm ანგარიში</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">ავტორიზებულია როგორც %s. დააჭირეთ ანგარიშის სამართავად</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">ავტორიზაციისთვის შეიყვანეთ თქვენი Last.fm მონაცემები</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">მომხმარებლის სახელი</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">პაროლი</string>
+  <string name="morphe_music_lastfm_token_dialog_login">შესვლა</string>
+  <string name="morphe_music_lastfm_token_status_empty">გთხოვთ, შეიყვანოთ მომხმარებლის სახელი და პაროლი</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">ავტორიზაცია...</string>
+  <string name="morphe_music_lastfm_token_status_success">წარმატებით შეხვედით!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Last.fm-იდან სესიის მიღება ვერ მოხერხდა</string>
+  <string name="morphe_music_lastfm_token_status_failed">შესვლა ვერ მოხერხდა: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm-ის მონაცემები შენახულია!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">მეტამონაცემების გასუფთავება</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">გასუფთავეთ მეტამონაცემები</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">სკრობლინგამდე სათაურებიდან, შემსრულებლებიდან და ალბომებიდან ავტომატურად წაშალეთ გავრცელებული ზედმეტი ტექსტები (მაგ. \"Official Video\", \"Remaster\", \"Live\")</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Custom regex გასუფთავება</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">შეიყვანეთ თქვენი რეგულარული გამოსახულება სულთებიდან, შემსრულებლებიდან ან ალბომებიდან დამატებითი ტექსტის მოსაშორებლად. მაგალითად: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">გამოყავით შემსრულებელი და ტრეკი სათაურიდან</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">ამოიღეთ შემსრულებლისა და ტრეკის სახელი ვიდეოს სათაურიდან \" - \" გამყოფი ნიშნით. სასარგებლოა ხელახლა ატვირთული კონტენტისთვის, სადაც არხის სახელი შეიძლება იყოს გამოყენებული როგორც შემსრულებელი</string>
+  <string name="morphe_music_scrobbling_guess_album_title">აკლებული ალბომის შევსება</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">როდესაც მუსიკას არ ახლავს ალბომი, მოძებნეთ იგი Last.fm-ზე, რათა თქვენი scrobble იყოს სრული</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_about_summary">"scrobbling ავტომატურად ასინქრონიზებს თქვენს YouTube Music-ის გამოყენებას Last.fm-ის ან ListenBrainz-ის პროფილთან
+
+იმისათვის, რომ ფონურ რეჟიმში დაკვრისას scrobbling სინქრონიზებული იყოს, დარწმუნდით, რომ YouTube Music-ის აპლიკაციის ელემენტის გამოყენება დაყენებულია როგორც \"შეზღუდვების გარეშე\""</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">მესამე მხარის ტექსტების გამოყენება</string>
+  <string name="morphe_music_lyrics_enabled_summary">აჩვენებს ტექსტებს მესამე მხარის სერვისიდან; თუ ტექსტები ვერ მოიძებნა, გამოიყენება ჩაშენებული ტექსტები</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">ეკრანის ჩართვა ტექსტის ნახვისას</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">თავიდან აგდებს ეკრანის გამორთვას, სანამ ტექსტის პანელი ღიაა</string>
+  <string name="morphe_music_lyrics_section_service_title">ტექსტების სერვისი</string>
+  <string name="morphe_music_lyrics_section_display_title">ჩვენება</string>
+  <string name="morphe_music_lyrics_section_sync_title">სინქრონიზაცია</string>
+  <string name="morphe_music_lyrics_section_panel_title">პანელი</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI ენდპოინტი</string>
+  <string name="morphe_music_lyrics_source_all_disabled">ყველა პროვაიდერი გათიშულია - ჩაშენებული და ინტეგრირებული ტექსტები</string>
+  <string name="morphe_music_lyrics_source_reset_title">მ sağlayებლების თანმიმდევრობის განახლება?</string>
+  <string name="morphe_music_lyrics_source_reset_message">მ sağlayებლების პრიორიტეტების აღდგენა ნაგულისხმევ მდგომარეობაში</string>
+  <string name="morphe_music_lyrics_clear_cache_title">შენახული ტექსტების გასუფთავება</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">წაშალეთ ამ მოწყობილობაზე შენახული ტექსტები</string>
+  <string name="morphe_music_lyrics_clear_cache_done">გასუფთავებულია %1$s მბ</string>
+  <string name="morphe_music_token_dialog_get_token">ტოკენის მიღება</string>
+  <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"ჩასვით media-user-token ქუქი music.apple.com-იდან
+
+ნაბიჯები:
+1. გაიარეთ ავტორიზაცია music.apple.com-ზე როგორც წევრი მომხმარებელი
+2. გახსენით DevTools → Application → Cookies → music.apple.com
+3. დააკოპირეთ \"media-user-token\"-ის მნიშვნელობა"</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token შენახულია</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token წაშლილია</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: არასწორი media-user-token - გთხოვთ შეამოწმოთ და სცადოთ ხელახლა</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"ჩასვით sp_dc ქუქი Spotify-დან.
+
+ნაბიჯები:
+1. გაიარეთ ავტორიზაცია open.spotify.com-ზე
+2. გახსენით DevTools → Application → Cookies → open.spotify.com
+3. დააკოპირეთ \"sp_dc\"-ის მნიშვნელობა"</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc შენახულია</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc წაშლილია</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: არასწორი sp_dc - გთხოვთ შეამოწმოთ და სცადოთ ხელახლა</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music-ის ტოკენი არასავალდებულოა. მის გარეშე, სათაურებისთვის გამოყენებული იქნება Lyrically</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"ჩასვით arl ქუქი Deezer-იდან.
+
+ნაბიჯები:
+1. გაიარეთ ავტორიზაცია deezer.com-ზე
+2. გახსენით DevTools → Application → Cookies → deezer.com
+3. დააკოპირეთ \"arl\"-ის მნიშვნელობა"</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl შენახულია</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl გასუფთავდა</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: არასწორი arl - გთხოვთ შეამოწმოთ და სცადოთ თავიდან</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch-ის ტოკენი</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">დაამატეთ ტოკენი მხოლოდ საკუთარი ანგარიშის გამოსაყენებლად. ის უნდა იყოს აღებული Musixmatch-ის Android აპლიკაციიდან: musixmatch.com-დან კოპირებული ტოკენები ეკუთვნის მოძველებულ დესკტოპ კლიენტს და API მათ უარყოფს</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch მუშაობს ტოკენის გარეშეც, ამიტომ ეს ველი შეიძლება დარჩეს ცარიელი</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">მომხმარებლის ტოკენი</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: მომხმარებლის ტოკენი შენახულია</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: მომხმარებლის ტოკენი გასუფთავდა</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: მომხმარებლის არასწორი ტოკენი - გთხოვთ შეამოწმოთ და სცადოთ თავიდან</string>
+  <string name="morphe_music_youtube_cookies_title">YouTube-ის ქუქიები</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"ჩასვით თქვენი YouTube-ის ქუქიები, რათა მოიძიოთ სუბტიტრები და დროის ტექსტი YouTube-იდან.
+
+ნაბიჯები:
+1. გახსენით youtube.com ბრაუზერში და გაიარეთ ავტორიზაცია
+2. გახსენით DevTools (F12) → Application → Cookies → youtube.com
+3. დააკოპირეთ ქუქიების სრული სტრიქონი (გას separating semicolons-ით გამოყოფილი key=value წყვილები)
+
+საჭირო ქუქიები: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: ქუქიები შენახულია</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: ქუქიები წაშლილია</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: არასწორი ქუქი-ფაილები - გთხოვთ შეამოწმოთ და სცადოთ თავიდან</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">დააჭირეთ და გეჭირავთ ხაზს</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">შეეხეთ ხაზს სიმღერის შესაბამის მომენტზე გადასასვლელად, გრძლად დააჭირეთ თითისქვეშა სიტყვის დასაკოპირებლად, ხოლო თუ დაჭერა არ მოხდა სიტყვაზე, კოპირდება მთლიანი ხაზი. გამორთვა რთავს ორივე ჟესტს</string>
+  <string name="morphe_music_lyrics_show_section_title">სექციების ტეგების ჩვენება</string>
+  <string name="morphe_music_lyrics_show_section_summary">ტექსტის თითოეულ ახალ სექციას მონიშნეთ პატარა ტეგით, მაგალითად: კუპლეტი ან გუნდი</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">კოპირების ღილაკის ჩვენება</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">შეეხეთ ორიგინალი ტექსტის ჩვეულებრივ ტექსტად დასაკოპირებლად; გრძლად დააჭირეთ ტექსტის საწყის ფაილს ჩამოტვირთვებში შესანახად</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">თარგმნის ღილაკის ჩვენება</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">დააჭირეთ თარგმანის ჩასართავად/გამოსართავად; გრძელვად დააჭირეთ მხოლოდ თარგმანისთვის. გამოიყენება პროვაიდერის თარგმანები, Google Translate ან OpenAI-ს თავსებადი API</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">რომაიზაციის ღილაკის ჩვენება</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">დააჭირეთ რომანიზაციის ჩასართავად/გამოსართავად; გრძელვად დააჭირეთ მხოლოდ რომანიზაციისთვის. გამოიყენება პროვაიდერის რომანიზაცია, Google Translate ან OpenAI-ს თავსებადი API</string>
+  <string name="morphe_music_lyrics_local_romanization_title">ლოკალური რომანიზაცია და გასწორება</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">გახელვეთ რომანიზაცია მოწყობილობაზე, როდესაც პროვაიდერი, თქვენი მოდელი და Google Translate ვერ იმუშავებენ. წაკითხვა მიყვება სინქრონიზებული ტექსტის თითოეულ სიტყვას; სიტყვების სინქრონიზაცია უნდა იყოს ჩართული. ჩინური, კანტონური, იაპონური, კორეული, ბერძნული, რუსული, ქართული, სომხური; დაახლ. 120 მბ</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">კითხვა %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">მონაცემები მზადაა (%1$d ჩანაწერი)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">ჩამოტვირთვა ვერ მოხერხდა - სცადეთ ხელახლა ამ ფუნქციის გამორთვა და ჩართვა</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">განახლების ღილაკის ჩვენება</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">დააჭირეთ შემდეგი ტექსტის ვარიანტისთვის; გრძელვად დააჭირეთ ტექსტის მოსაძებნად სიმღერის სათაურისა და შემსრულებლის მიხედვით</string>
+  <string name="morphe_music_lyrics_search_dialog_title">ტექსტების ძიება</string>
+  <string name="morphe_music_lyrics_search_title_hint">სიმღერის სათაური</string>
+  <string name="morphe_music_lyrics_search_artist_hint">მომღერალი</string>
+  <string name="morphe_music_lyrics_search_empty">შეიყვანეთ სიმღერის სათაური და მომღერალი</string>
+  <string name="morphe_music_lyrics_search_no_providers">აქტივურ პროვაიდერებს არ შეუძლიათ სხვა სიმღერების ძიება</string>
+  <string name="morphe_music_lyrics_saved">შენახულია</string>
+  <string name="morphe_music_lyrics_word_sync_title">სინქრონიზებული სიტყვების ან მარცვლების გამოკვეთა</string>
+  <string name="morphe_music_lyrics_word_sync_summary">უპირატესობა მიენიჭება სიტყვა-სიტყვა ტექსტს, როდესაც ის ხელმისაწვდომია. როდესაც ტექსტს აქვს სიტყვების ტაიმინგი, მუსიკის ტემპთან სინქრონულად გამოიკვეთება თითოეული სიტყვა ან მარცვა</string>
+  <string name="morphe_music_lyrics_hide_played_title">გასათამაშები ტექსტის დამალვა</string>
+  <string name="morphe_music_lyrics_hide_played_summary">ტექსტის იმ ხაზების დამალვა, რომლებიც იმყოფება მიმდინარე სათამაშო ხაზის ზემოთ</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">დამალეთ განუთამაშებელი ტექსტი</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">დამალეთ ტექსტის სტრიქონები მიმდინარე სტრიქონის ქვემოთ</string>
+  <string name="morphe_music_lyrics_mediasession_title">აჩვენე MediaSession-ის ტექსტები ჩაკეტილ ეკრანზე</string>
+  <string name="morphe_music_lyrics_mediasession_summary">აჩვენებს მიმდინარე ხაზს ბლოკირების ეკრანზე, Android Auto-სა და Bluetooth-ზე. საჭიროა Android 11 ან უფრო ახალი ვერსია</string>
+  <string name="morphe_music_lyrics_miniplayer_title">აჩვენე მინი-პლეიერის ტექსტები</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">აჩვენებს მიმდინარე ხაზს მინი-პლეიერში, ხოლო ტრეკი გადატანილია ქვესათაურში</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">სიმღერის სათაურის/შემსრულებლის ფორმატი</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">ტრეკის ფორმატი, რომელიც ჩანს ტექსტთან ერთად მინიპლეერში და MediaSession-ში. {t} არის სათაური, {a} არის შემსრულებელი და {v} არის ვერსია, მაგალითად Acoustic, თუ ტექსტის წყარო ამის მიწოდებას ახდენს. ორი ორწერილს შორის მოქცეული ტექსტი ჩანს მხოლოდ მაშინ, როდესაც მასში არსებულ ყველა ცვლადს აქვს მნიშვნელობა; ჩვეულებრივი ორწერილისთვის გამოიყენეთ \\:. თითოეული ხაზი ჩნდება რიგრიგად, ტექსტის შეცვლისთანავე</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">ტექსტის ხაზის ფორმატი</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">სიმღერის ტექსტის ხაზის ფორმატი მინიპლეერში და MediaSession-ში. {lrc} არის ხაზი და {n} არის ის, თუ რამდენჯერ იმღერა ის ზედიზედ. ორწერილებს შორის მოქცეული ტექსტი ჩნდება მხოლოდ ხაზის განმეორებისას. ორწერილისთვის გამოიყენეთ \\:</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">ფორმატი უნდა შეიცავდეს {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">არტისტის ხაზის შაბლონი და ანიმაციის დრო</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">ეკრანზე wyświetების მინიმალური დრო (მს)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">ეკრანზე wyświetების მაქსიმალური დრო (მს)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">მხოლოდ მრავალხაზიანი ანიმაციებისთვის. შეინარჩუნეთ თითოეული კადრი მინიმუმ მინიმალური დროის განმავლობაში. მაქსიმალურის შემთხვევაში, გადაიტანეთ არტისტის ხაზი მაშინაც კი, როდესაც ტექსტი იგივე რჩება.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">მინიმუმი უნდა იყოს 0 ან მეტი. მაქსიმუმი უნდა იყოს მეტი 0-ზე და მინიმუმ მინიმალურის ტოლი.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">ხაზის სიგრძის შეზღუდვები</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">ტექსტისა და არტისტის ხაზის შეზღუდვები და სრული სიგანის სიმბოლოების წონა</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"ლირიკის ხაზის ლიმიტი
+გაყავით გრძელი ლირიკა ბალანსირებულ ნახევრად. 0 გამორთავს გაყოფას."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"არტისტის ხაზის ლიმიტი
+გაყავით შევსებული ტრეკის ფორმატი ციკლურ კადრებად. 0 გამორთავს გაყოფას."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"სრული სიგანის სიმბოლოს წონა
+გამოიყენება ორივე ლიმიტისთვის. 1.75-ის შემთხვევაში, ოთხი სრული სიგანის სიმბოლო ჩაითვლება როგორც 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">შეიყვანეთ მთელი რიცხვის ლიმიტები 0-დან 10000-მდე და სიმბოლოს წონა, რომელიც მეტია 0-ზე</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">ინსტრუმენტული პაუზა</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">ჩანს მინი-პლეიერში და MediaSession-ში ინსტრუმენტული პაუზის დროს. თითოეული ხაზია ერთი საანიმაციო კადრი. {t} არის სათაური, {a} არის არტისტი და {lrc} არის ლირიკის ბოლო ხაზი</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">მინიპლეიერისა და MediaSession-ის დროის განზომილების განზუსტება</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">აისმ desplazamiento იმის, თუ როდის გამოჩნდება შემდეგი ხაზი მინიპლეერში და MediaSession-ში. გამოიყენეთ უარყოფითი მნიშვნელობა, თუ ხაზები გვიან ჩნდება, მაგალითად, დაბლოკილ ეკრანზე</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">ფილტრები</string>
+  <string name="morphe_music_lyrics_custom_regex_title">მეტამონაცემების regex</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">რეგულარული გამოსახულება, რომელიც გამოიყენება სათაურების, შემსრულებლებისა და ალბომების მიმართ ტექსტების ძებნამდე და ორი სათაურის შესაბამისობის შეფასებისას. გამორთვას სულ რაღაც ცარიელი დატოვებით. ნაგულისხმევი პარამეტრი აქრობს გავრცელებულ ზედმეტ ტექსტებს, როგორიცაა \"Official Video\", \"Remaster\", \"【插曲】\" და \"- Topic\"</string>
+  <string name="morphe_music_lyrics_text_filter_title">ტექსტის ფილტრის regex</string>
+  <string name="morphe_music_lyrics_text_filter_summary">რეგულარული გამოსახულება, რომელიც გამოიყენება მხოლოდ ორიგინალი ტექსტისთვის (არა თარგმანებისთვის ან რომანიზაციისთვის). გამოსართავად დატოვეთ ცარიელი</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">ინფორმაციის ხაზის მარკერები</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">თუ ტექსტი არასწორად ფილტრდება ქვედა ნაწილში, შეცვალეთ ან წაშალეთ ეს პარამეტრი. მძიმით გამოყოფილი მარკერები: ხაზები, რომლებიც შეიცავს მარკერს და მას მოსდევს ორწერტილი, ჩანს როგორც საკრედიტო ინფორმაცია ქვემოთ. გამორთვას დატოვეთ ცარიელი</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">პირველი ასოს დაწერა დიდი ასოთი</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">ტექსტის თითოეული ხაზის პირველი ასოს ხდის დიდს</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">ბოლო სასვენი ნიშნების მოცილება</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">შესაბამისად აქრობს წერტილებს, მძიმეებს, ორწერტილებსა და წერტილ-მძიმეებს ტექსტის ხაზების ბოლოს. კითხვის ნიშნები, ძახილის ნიშნები, მრავალწერტილები, ბრჭყალები და ფრჩხილები რჩება</string>
+  <string name="morphe_music_lyrics_text_size_title">ტექსტის ზომა</string>
+  <string name="morphe_music_lyrics_text_size_summary">სათytuላო ტექსტის ზომა</string>
+  <string name="morphe_music_lyrics_offset_ms_title">გლობალური დროის зміწევა</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">სინქრონიზებული ტექსტი მიყვება დაკვრას. თუ ისინი ს deviates, შეცვალეთ დროის зміდან. გადაწიეთ სინქრონიზებული ტექსტი წინ ან უკან. გამოიყენეთ დადებითი მნიშვნელობა, თუ ტექსტი სულს უსწრებს</string>
+  <string name="morphe_music_lyrics_sb_matching_title">გამოიყენეთ SponsorBlock სეგმენტები ტექსტის зміწევისთვის</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">შესაბამისობის მოძებნა SponsorBlock-ის მიერ გამოტოვებული სეგმენტების გარეშე და ტექსტის გადატანა გამოშვებულ აუდიოზე. გამორთვ absence-ის შემთხვევაში SponsorBlock სრულად იგნორირდება</string>
+  <string name="morphe_music_lyrics_sb_no_video">ამ ტრეკს არ აქვს ვიდეოს ID გამოსაგზავნად</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">წყარო: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">გააწყვეტინეთ კოპირების ღილაკს ამ LRC-ის შესანახად; თუ შეძლებთ ტაიმინგების დაზუსტებას და მათ გაზიარებას საზოგადოების პროვაიდერებისთვის, მადლობელი ვიქნებით</string>
+  <string name="morphe_music_lyrics_translated_by_google">თარგმნილია Google-ის მიერ</string>
+  <string name="morphe_music_lyrics_romanized_by_google">რომანიზებულია Google-ის მიერ</string>
+  <string name="morphe_music_lyrics_translated_by_ai">თარგმნილია %s-ის მიერ</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">რომანიზირებულია %s-ის მიერ</string>
+  <string name="morphe_music_lyrics_romanized_by_local">რომანიზებულია %s-ის მიერ</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_hide">თარგმნილია</string>
+  <string name="morphe_music_lyrics_translation_language_title">თარგმანის ენა</string>
+  <string name="morphe_music_lyrics_romanize_language_title">რომანიზაციის ენა</string>
+  <string name="morphe_music_lyrics_translating">თარგმნა...</string>
+  <string name="morphe_music_lyrics_translate_failed">სათytuላო ტექსტის თარგმნა ვერ მოხერხდა</string>
+  <string name="morphe_music_lyrics_romanize_hide">რომანიზებულია</string>
+  <string name="morphe_romanize_language_DEFAULT">ავტომატური</string>
+  <string name="morphe_music_lyrics_romanizing">რომანიზება...</string>
+  <string name="morphe_music_lyrics_romanize_failed">ტექსტის რომანიზება ვერ მოხერხდა</string>
+  <string name="morphe_music_lyrics_translate_only">მხოლოდ თარგმნილი</string>
+  <string name="morphe_music_lyrics_romanize_only">მხოლოდ რომანიზებული</string>
+  <string name="morphe_music_lyrics_dual_only">ორმაგი რეჟიმი</string>
+  <string name="morphe_music_lyrics_copied">გადაკოპირებულია ბუფერში</string>
+  <string name="morphe_music_lyrics_refreshing">განახლება</string>
+  <string name="morphe_music_lyrics_refreshed">განახლებულია</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API გასაღები</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC ახდენს ტრეკის ტექსტის ტრანსკრიფციას ან დროში გასწორებას. ეს არის ცალკე სერვისი, რომელიც არ არის დაკავშირებული ზემოთ მოცემულ OpenAI-ს თავსებად ენდპოინტთან</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC გასაღები შენახულია. გამოიყენეთ გასწორების ღილაკი ტექსტის ძიების დიალოგში, ან პანელის შეტყობინება, როდესაც ტრეკს არ აქვს ტექსტი</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API გასაღები შენახულია</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC-მა არ მიიღო ეს გასაღები</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API გასაღები წაიშალა</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC გასწორებს ტექსტებს, რომლებსაც არ აქვთ დროის აღნიშვნები, ან ტრანსკრიპირებს მათ ტრეკიდან კრედიტების სანაცვლოდ. გასაღების დაყენების შემთხვევაში, ტრეკები ტექსტის გარეშე შესთავაზებენ ტრანსკრიპციას, ხოლო ძიების დიალოგში გამოჩნდება სინქრონიზაციის ღილაკი</string>
+  <string name="morphe_music_lyrics_transcribe_align">მოითხოვეთ QuickLRC გასწორება</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">გასწორება 진행վումაა</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">გასწორების გამოყენება</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">მოითხოვეთ QuickLRC ტრანსკრიფცია</string>
+  <string name="morphe_music_lyrics_transcribe_working">ტრანსკრიფცია 진행დება</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">ტრანსკრიფცია გაუქმა</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">ტრანსკრიფცია შესაძლებელია მხოლოდ YouTube-დან ჩართული ტრეკებისთვის</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">სინქრონიზაციისთვის ტექსტი არ მოიპოვება - ტრანსკრიპირება მიმდინარეობს</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC-მა ვერ დაამუშავა ეს ტრეკი</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">ამ ტრეკისთვის QuickLRC-ის კრედიტები ამოწურულია</string>
+  <string name="morphe_music_lyrics_about_summary">"ტექსტები სრულდება სათაურისა და შემსრულებლის მიხედვით; უჩვეულო მეტამონაცემებმა შესაძლოა არაფერი იპოვოს ან არასწორი ვერსია მოიძიოს. ვერსიების შესაცვლელად გამოიყენეთ განახლება. * ნიშნით მონიშნული პროვაიდერები საჭიროებენ ტოკენს. ყველა ჩართული პროვაიდერი ყოველთვის თქვენს მიერ განსაზღვრული თანმიმდევრობით არ მოითხოვება, არამედ პასუხობენ მათი სისწრაფის მიხედვით.\n\nტექსტები მოდის მესამე მხარის სერვისებიდან, რომლებიც არ არიან დაკავშირებულნი Morphe-თან, არ არიან მისი სპონსორები ან რეკომენდებული. თითოეული მათგანი გამოიყენება ისე, როგორც არის: ტექსტები, მათი ხელმისაწვდომობა და ლიცენზირება რჩება ამ სერვისებსა და მათ ლიცენზიარებს, ხოლო მათი გამოყენება შესაძლოა ექვემდებარებოდეს მათ მომსახურების პირობებს. ჩართულ სერვისამდე აღწევს მხოლოდ თქვენ მიერ მოთხოვნილი მოძიება - სათაური, შემსრულებელი და, იქ სადაც სერვისს ეს სჭირდება, ვიდეოს ID. სურვილისამებრ AI ენდპოინტი და QuickLRC ტრანსკრიფცია მუშაობს მხოლოდ თქვენი კონფიგურაციის შემდეგ და იღებს ტექსტის ტექსტს ან ტრეკის ვიდეო URL-ს."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">გააქტიურეთ მხოლოდ ის პროვაიდერები, რომლებსაც იყენებთ, ან დატოვეთ ნაგულისხმევი პარამეტრები - მუდმივმა მოთხოვნებმა შესაძლოა გადატვირთოს პატარა საზოგადოებო ტექსტების საიტები</string>
+  <string name="morphe_music_lyrics_hide_info_title">მფლობელის ხაზის დამალვა</string>
+  <string name="morphe_music_lyrics_hide_info_summary">დამალეთ ტექსტის ქვემოთ მოცემული მფლობელის ხაზი</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">თარგმანისა და რომანიზაციის ადგილების შეცვლა</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON განათავსებს რომანიზაციას ტექსტის ქვემოთ და თარგმანს ზემოთ; OFF ტოვებს რომანიზაციას ზემოთ და თარგმანს ქვემოთ</string>
+  <string name="morphe_music_lyrics_section_translation_title">თარგმანი</string>
+  <string name="morphe_music_lyrics_section_romanization_title">რომანიზაცია</string>
+  <string name="morphe_music_lyrics_translation_provider_title">თარგმანის პროვაიდერი</string>
+  <string name="morphe_music_lyrics_translation_provider_google">Google (ნაგულისხმევი, უფასო)</string>
+  <string name="morphe_music_lyrics_translation_provider_openai_compatible">OpenAI თავსებადი (საკუთარი)</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">რომანიზაციის პროვაიდერი</string>
+  <string name="morphe_music_lyrics_romanization_provider_google">Google (ნაგულისხმევი)</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">ლოკალური / ოფლაინ ლექსიკონი</string>
+  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI თავსებადი (საკუთარი)</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">AI სექცია</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">გამოიყენება მხოლოდ მაშინ, როდესაც პროვაიდერი არ გვიგზავნის სექციის ეტიკეტებს, როგორიცაა Chorus ან Verse, რომლებსაც შემდეგ თქვენი OpenAI-ს თავსებადი მოდელი აღმოაჩენს</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; ღრუბლოვანი Endpoints-ები</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">გააკონფიგურირეთ API გასაღებები, მოდელები, endpoint-ები და prompt-ის შაბლონები AI პროვაიდერებისთვის.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint-ის URL (მაგ. https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_title">პრომპტის შაბლონი</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">პლეისჰოლდერები: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_saved">პრომპტი შენახულია</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">პრომპტი შენახულია, მაგრამ AI endpoint ჯერჯერობით მიუწვდომელია. ჯერ დააკონფიგურირეთ იგი AI პარამეტრებში</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_reset">პრომპტი გასუფთავდა</string>
+  <string name="morphe_music_lyrics_ai_extra_body_invalid">არასწორი JSON. გამოსწორეთ ან გასუფთავეთ ველი შენახვამდე</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">თარგმნისა &amp; რომანიზაციის პარამეტრები შენახულია</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">პარამეტრები განახლდა ნაგულისხმევ მდგომარეობაში</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">ბაზისური URL უნდა იწყებოდეს http:// ან https://</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">კავშირის შემოწმება</string>
+  <string name="morphe_music_lyrics_ai_config_endpoint_label">Endpoint-ების კონფიგურაცია</string>
+  <string name="morphe_music_lyrics_ai_config_show_all">ყველა End-point-ის ჩვენება</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">კავშირის ვალიდაცია…</string>
+  <string name="morphe_music_lyrics_ai_config_translation_provider_label">თარგმანის პროვაიდერი</string>
+  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">რომანიზაციის პროვაიდერი</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">მოდელების წამოღება</string>
+  <string name="morphe_music_lyrics_ai_config_fetching_models">მოდელების ჩატვირთვა…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_success">აირჩიეთ მოდელი</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_failed">მოდელების ჩატვირთვა ვერ მოხერხდა. შეამოწმეთ API გასაღები ან კავშირი.</string>
+  <string name="morphe_music_lyrics_ai_config_gemini_section">Gemini API პარამეტრები</string>
+  <string name="morphe_music_lyrics_ai_config_openai_compat_section">OpenAI თავსებადი (საკუთარი End-point)</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_section">DeepL API პარამეტრები</string>
+  <string name="morphe_music_lyrics_ai_config_api_key_label">API გასაღები</string>
+  <string name="morphe_music_lyrics_ai_config_model_label">მოდელი</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_label">ბაზისური URL</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_label">API გასაღები (არასავალდებულო)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">თარგმანის პრომპტი</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_label">მოთხოვნის დამატებითიტექსტი (არასავალდებულო JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_key_label">ავთენტიფიკაციის გასაღები (Free ან Pro)</string>
+  <string name="morphe_music_lyrics_ai_config_summary">API გასაღებების, მოდელების, ენდპოინტების და პრომპტების კონფიგურაცია</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - სქელი ხაზის ღილაკების გამორთვა</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - აღდგინეთ პლეერის შემდეგი, ტექსტებისა და დაკავშირებული ჩანართები</string>
 </resources>

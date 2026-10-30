@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">Թաքցնել հարցումները</string>
   <string name="morphe_hide_surveys_summary">Թաքցնել հարցումները և հուշումները ленտայի առաջարկությունների ճշգրտության վերաբերյալ</string>
   <string name="morphe_hide_ticket_shelf_title">Թաքցնել տոմսերի բաժինը</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Թաքցնել \"Անհասանելի տեսանյութերը թաքցված են\" բաները</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Թաքցնում է \"Անհասանելի տեսանյութերը թաքցված են\" բաները ಪլեյլիստներում</string>
   <string name="morphe_hide_upload_time_title">Թաքցնել վերբեռնման ժամանակը</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Սահմանափակումներ.
@@ -171,6 +174,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_video_subtitle_summary">Մաքրում է տեսանյութի ենթագրերից այնպիսի արտահայտություններ, ինչպիսիք են՝ \'#\', \'Fundraiser\', \'product(s)\' և \'Shop\'</string>
   <string name="morphe_hide_ask_gemini_button_title">Թաքցնել \"Հարցրու Gemini\" կոճակը</string>
   <string name="morphe_hide_ask_gemini_button_summary">Թաքցնում է \"Հարցրու Gemini\" կոճակը \"Հարցրու այս տեսանյութի մասին\" վահանակի ներքևում</string>
+  <string name="morphe_hide_description_components_screen_title">Տեսանյութի նկարագրություն</string>
   <string name="morphe_hide_description_components_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն տեսանյութի նկարագրության մեջ</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Թաքցնել «AI-ով գեներացված տեսանյութի ամփոփում» բաժինը</string>
   <string name="morphe_hide_ask_section_title">Թաքցնել Հարցման բաժինը</string>
@@ -198,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_title">Թաքցնել «Բաժանորդագրվել» կոճակը</string>
   <string name="morphe_hide_transcript_section_title">Թաքցնել «Տրանսկրիպցիա» բաժինը</string>
   <string name="morphe_hide_video_details_section_title">Թաքցնել «Տեսանյութի մանրամասները» բաժինը</string>
+  <string name="morphe_hide_filter_bar_screen_title">Զտիչների վահանակ</string>
   <string name="morphe_hide_filter_bar_screen_summary">Ընտրեք, թե որտեղ թաքցնել թողնմամբ ֆիլտրի զուգแถվը</string>
   <string name="morphe_hide_filter_bar_in_channel_page_title">Թաքցնել ալիքի էջում</string>
   <string name="morphe_hide_filter_bar_in_comments_title">Թաքցնել մեկնաբանություններում</string>
@@ -205,6 +210,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">Թաքցնել կապված տեսանյութերում</string>
   <string name="morphe_hide_filter_bar_in_search_title">Թաքցնել որոնման արդյունքներում</string>
   <string name="morphe_hide_filter_bar_in_history_title">Թաքցնել դիտումների պատմության մեջ</string>
+  <string name="morphe_channel_screen_title">Ալիքի էջ</string>
   <string name="morphe_channel_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն ալիքի էջում</string>
   <string name="morphe_hide_channel_tab_title">Միացնել ալիքի ներ পাতাի զտիչը</string>
   <string name="morphe_hide_channel_tab_filter_strings_title">Ալիքի ներ পাতাի զտիչ</string>
@@ -213,9 +219,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_community_button_title">Թաքցնել «Համայնք» կոճակը</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Թաքցնել «Միանալ» կոճակը</string>
+  <string name="morphe_hide_links_preview_title">Թաքցնել հղումների նախադիտումը</string>
   <string name="morphe_hide_links_preview_summary">Թաքցնում է սեղմելի վեբ հղումները ալիքի վերնագրում</string>
   <string name="morphe_hide_members_only_chip_title">Թաքցնել \"Միայն անդամների համար\" չիպը</string>
   <string name="morphe_hide_members_only_chip_summary">Թաքցնում է «Միայն անդամների համար» չիպը ալիքի զտիչների տողում</string>
+  <string name="morphe_hide_members_shelf_title">Թաքցնել անդամների բաժինը</string>
   <string name="morphe_hide_members_shelf_summary">Թաքցնում է ալիքի անդամների ցուցակը</string>
   <string name="morphe_hide_posts_shelf_title">Թաքցնել գրառումների դարակը</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
@@ -246,6 +254,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_create_menu_title">Թաքցնել YouTube Create-ի մենյուն</string>
   <string name="morphe_hide_youtube_works_menu_title">Թաքցնել \"Ինչպես է աշխատում YouTube-ը\" մենյուն</string>
   <string name="morphe_hide_privacy_tos_footer_title">Թաքցնել իրավական և գաղտնիության մասին տեղեկությունների ստորին հատվածները</string>
+  <string name="morphe_comments_screen_title">Մեկնաբանություններ</string>
   <string name="morphe_comments_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն մեկնաբանությունների բաժնում</string>
   <string name="morphe_hide_comments_carousel_title">Միացնել մեկնաբանությունների կարուսելի զտիչը</string>
   <string name="morphe_hide_comments_carousel_summary">"• Համոզվեք, որ մուտքագրում եք կարուսելի տարրի ճիշտ անվանումը (օր.՝ Ask, Hype this video, Listen on YouTube Music)
@@ -253,7 +262,10 @@ Second \"item\" text"</string>
 • Եթե բոլոր կարուսելի տարրերը թաքցված են, ապա մեկնաբանությունների ողջ բաժինը նույնպես կթաքցվի"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Մեկնաբանությունների կարուսելի զտիչ</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Մուտքագրեք մեկնաբանությունների կարուսելի անվանումները զտման համար՝ բաժանելով նոր տողերով</string>
+  <string name="morphe_hide_comments_ai_chat_summary_title">Թաքցնել AI չատի ամփոփումը</string>
+  <string name="morphe_hide_comments_channel_guidelines_title">Թաքցնել ալիքի կանոնները</string>
   <string name="morphe_hide_comments_contexts_title">Թաքցնել համատեքստային հաղորդագրությունները</string>
+  <string name="morphe_hide_comments_by_members_header_title">Թաքցնել \"Անդամների մեկնաբանություններ\" վերնագիրը</string>
   <string name="morphe_hide_comments_section_title">Թաքցնել մեկնաբանությունների բաժինը</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Թաքցնել մեկնաբանությունների բաժինը Գլխավոր ленտայում</string>
   <string name="morphe_hide_comments_community_guidelines_title">Թաքցնել համայնքի կանոնները</string>
@@ -767,6 +779,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary">Սահsetեք լրամասն էկրանի ռեժիմում՝ անցնելու հաջորդ կամ նախորդ տեսանյութին</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_action_buttons_screen_title">Գործողությունների կոճակներ</string>
+  <string name="morphe_action_buttons_screen_summary">Ընտրեք, թե որ գործողությունների կոճակները հայտնվեն դիվերտիզիոն և լրիվ էկրանի ռեժիմներում</string>
   <string name="morphe_portrait_buttons">Դիզaynի կոճակներ</string>
   <string name="morphe_disable_like_subscribe_glow_title">Անջատել «Հավանել» և «Բաժանորդագրվել» կոճակների փայլը</string>
   <string name="morphe_disable_like_subscribe_glow_summary">Կանխում է «Հավանել» և «Բաժանորդագրվել» կոճակների փայլեցումը, երբ ստեղծողը հիշատակում է դրանք</string>
@@ -1238,6 +1251,10 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_title">Ուղղել կարգավիճակի տողի ծածկելը վերին տողերի</string>
   <string name="morphe_fix_status_bar_layout_summary">Պահպանում է կարգավիճակի տողի դասավորությունը հետևողական, որպեսզի այն չծածկի վերին տողերը և չթողնի դատարկ տարածք նվագարկիչի վերևում: Անջատեք սա, եթե հավելվածը փակվում է կամ վերին տողերը սխալ են երևում</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Փայլ</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Փայլուն սկսնական էկրանը չի աջակցվում այս սարքի կողմից</string>
   <string name="morphe_theme_color_light_title">Լուսավոր թեմայի ֆոն</string>
   <string name="morphe_theme_color_light_entry_2">Սպիտակ</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Սպիտակ)</string>
@@ -1260,6 +1277,9 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Սահմանեք տեսանյութի առաջդիմության ստորի երկրորդական գույնը</string>
   <string name="morphe_seekbar_custom_color_invalid">Սլայդերի գույնի անվավեր արժեք</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Բնօրինակ անալոգ</string>
+  <string name="morphe_custom_branding_icon_entry_9">Բնօրինակ տորթ</string>
+  <string name="morphe_custom_branding_icon_entry_10">Բնօրինակ մետաղ</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Վերնագրի լոգո</string>
   <string name="morphe_header_logo_entry_1">Լռելյայն</string>
@@ -1533,6 +1553,7 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_series_tracker_enable">Միացնել տեղային հետևումը</string>
   <string name="morphe_series_tracker_tracking_paused">Առաջընթացի գրանցումն անջատված է</string>
   <string name="morphe_series_tracker_resume_at">Շարունակել %1$s-ից</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s դիտված էպիզոդներ</string>
   <string name="morphe_series_tracker_episode_position">Էպիզոդ %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Էպիզոդներ %1$s-%2$s %3$s-ից</string>
   <string name="morphe_series_tracker_catalog_unavailable">Թարմացրեք՝ էպիզոդների բեռնումը փորձելու համար: Մասնավոր ցուցակների համար անհրաժեշտ է հաշվի հասանելիություն. դրանց նշումները դեռևս բացվում են YouTube-ում:</string>
@@ -1551,7 +1572,6 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_series_tracker_marked">Էպիզոդները նշված են որպես դիտված</string>
   <string name="morphe_series_tracker_undo">Չեղարկել</string>
   <string name="morphe_series_tracker_enable_short">Միացնել</string>
-  <string name="morphe_series_tracker_new_episode">{\"one\":\"1 նոր էպիզոդ\",\"other\":\"{} նոր էպիզոդ\"}</string>
   <string name="morphe_series_tracker_record_short">Գրանցել առաջընթացը այս սարքի վրա</string>
   <string name="morphe_series_tracker_follow_consent">"Ձեր սերիալները և առաջընթացը մնում են այս սարքի վրա՝ հասանելի լինելով YouTube-ի հաշիվների համար: YouTube-ի պատմության կառավարման գործիքները չեն փոխում դրանք: Մաքրեք առաջընթացը «Սերիալներ» մենյուից:
 

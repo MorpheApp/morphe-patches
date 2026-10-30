@@ -21,9 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Başlangıç animasyonu</string>
   <string name="morphe_splash_screen_style_entry_1">Devre dışı</string>
   <string name="morphe_splash_screen_style_entry_2">Renkli</string>
-  <string name="morphe_splash_screen_style_entry_3">Renkli Morphe</string>
-  <string name="morphe_splash_screen_style_entry_4">Tek renk</string>
-  <string name="morphe_splash_screen_style_entry_5">Tek renkli Morphe</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Renkli</string>
+  <string name="morphe_splash_screen_style_entry_4">Tek Renk</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Tek Renk</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Yeni ayarları vurgula</string>
+  <string name="morphe_settings_new_indicator_days_summary">Bir güncelleme ile eklenen ayar ve seçeneklerin yanında bir noktanın gösterileceği gün sayısı</string>
+  <string name="morphe_settings_new_indicator_days_off">Kapalı</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Kurulumu tamamlamak için yeniden başlatın</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

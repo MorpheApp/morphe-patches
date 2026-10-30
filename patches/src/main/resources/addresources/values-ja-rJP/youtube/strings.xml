@@ -41,16 +41,16 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">レイアウトの更新を無効化</string>
   <string name="morphe_disable_layout_updates_summary">サーバーによるアプリのレイアウトの更新を防ぎます</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"アプリのレイアウトは、初回インストール時に使用されるレイアウトに戻ります。
+  <string name="morphe_disable_layout_updates_user_dialog_message">"アプリのレイアウトは、初回インストール時のレイアウトに戻ります。
 
-サーバー側のレイアウトの一部は戻らない場合があります。
+サーバー側のレイアウトによっては、元に戻らない場合があります。
 
 変更内容:
-• プレイヤーのフライアウトメニュー（または関連設定）内のコンポーネントが正常に動作しない場合があります
+• プレーヤーのフライアウト メニュー（または関連設定）内のコンポーネントが正常に動作しない場合があります
 • 数字の回転アニメーションは表示されません
 • ライブラリタブが表示されます
-• 動画説明の音楽セクションが正常に動作しない場合があります
-• プレイヤーのフライアウトメニュー項目は非表示にできません
+• 動画の概要欄の音楽セクションが機能しない場合があります
+• プレーヤーのフライアウト メニューの項目は非表示にできません
 • アカウント切替ボタンはライブラリタブに表示されない場合があります"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">フィードのフライアウト メニューのフィルタを有効化</string>
@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">アンケートを非表示</string>
   <string name="morphe_hide_surveys_summary">フィードのおすすめ精度に関するアンケートやフィードバック要求を非表示にします</string>
   <string name="morphe_hide_ticket_shelf_title">チケット欄を非表示</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">「利用できない動画は非表示になっています」バナーを非表示にする</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">プレイリスト内の「利用できない動画は非表示になっています」バナーを非表示にします</string>
   <string name="morphe_hide_upload_time_title">公開からの経過時間 / 予定時間を非表示</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"制限事項:
@@ -891,7 +894,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_narrow_navigation_buttons_title">ボタンの間隔を詰める</string>
   <string name="morphe_narrow_navigation_buttons_summary">ナビゲーション ボタンの間隔を詰めて表示します</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">ラベルのないナビゲーションボタンを無効にする</string>
-  <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTubeがラベルなしで送信する場合、ナビゲーションボタンをラベル付きで表示します</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube からラベルなしのナビゲーション ボタンが送信された場合、ナビゲーション ボタンをラベル付きで表示します</string>
   <string name="morphe_disable_toolbar_navigation_tabs_title">ナビゲーション ボタンの最上部への移動を無効化</string>
   <string name="morphe_disable_toolbar_navigation_tabs_summary">YouTube が「登録チャンネル」ボタンをホームの最上部に移動するレイアウトを有効にした場合に、このレイアウトを無効にし、最下部のナビゲーション バーに戻します</string>
   <string name="morphe_navigation_bar_animations_title">ナビゲーション バーのアニメーションを有効化</string>
@@ -967,7 +970,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_player_control_buttons_background_title">プレーヤーのコントロールの背景を非表示</string>
   <string name="morphe_hide_player_control_buttons_background_summary">動画プレーヤーのコントロール (再生ボタンなど) の周辺に表示される、ふちどりのための影を非表示にします</string>
   <string name="morphe_player_control_buttons_background_opacity_title">プレーヤーのコントロールの背景の透明度</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">プレイヤーのコントロールボタンとタイムバーの背後にある背景の不透明度を調整します（0は透明、100は不透明）</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">プレーヤーのコントロール ボタンとタイムバーの背景の不透明度を調整します（0 は透明、100 は不透明）</string>
   <string name="morphe_hide_player_previous_next_buttons_title">前の動画ボタンと次の動画ボタンを非表示</string>
   <string name="morphe_hide_settings_button_title">設定ボタンを非表示</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1110,22 +1113,23 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_change_form_factor_entry_2">スマートフォン</string>
   <string name="morphe_change_form_factor_entry_3">タブレット</string>
   <string name="morphe_change_form_factor_entry_4">Automotive</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"変更点:
+  <string name="morphe_change_form_factor_user_dialog_message">"以下の変更を伴います:
 
 タブレット レイアウト
-• コミュニティ投稿は非表示になります
-• フィードでの再生設定は無効です
-• Shortsでのリミックス ボタンとサウンド ボタンは無効です
+• コミュニティ投稿が表示されません
+• YouTube の設定項目の [フィードで再生] が表示されません
+• ショート動画のリミックス ボタンとサウンドボタンが利用できません
 • 「その他の動画」オーバーレイが表示されない場合があります
-• 折りたたみ前の旧動画アクションバーが表示されます
+• 動画プレーヤーのアクション ボタンにボタン名が表示されます (旧仕様)
+• フライアウト メニューの項目が正しく機能しない場合があります
 
 Automotive レイアウト
-• フィードはトピックやチャンネルごとに整理されます
-• フィードでの再生設定は無効です
-• Shortsでのリミックス ボタンとサウンド ボタンは無効です
+• フィードがトピックやチャンネルごとに分類された形で表示されます
+• YouTube の設定項目の [フィードで再生] が表示されません
+• ショート動画のリミックス ボタンとサウンドボタンが利用できません
 • 「その他の動画」オーバーレイが表示されない場合があります
-• Shortsは通常のプレーヤーで開きます
-• 折りたたみ前の旧動画アクションバーが表示されます"</string>
+• ショート動画は通常のプレーヤーで再生されます
+• 動画プレーヤーのアクション ボタンにボタン名が表示されます (旧仕様)"</string>
   <string name="morphe_tablet_layout_in_player_title">プレーヤーにのみタブレット レイアウトを適用</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"動画プレーヤーのレイアウトを以前のスタイルに戻します
@@ -1249,6 +1253,9 @@ Automotive レイアウト
   <string name="morphe_fix_status_bar_layout_summary">ステータスバーのレイアウトを統一し、上部のバーが覆われないようにして、プレイヤーの上に空白ができないようにします。アプリがクラッシュしたり、上部のバーの表示がおかしい場合は、これをオフにしてください</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">グロウ</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">このデバイスではグロー・スプラッシュ画面はサポートされていません</string>
   <string name="morphe_theme_color_light_title">ライトモードのテーマ</string>
   <string name="morphe_theme_color_light_entry_2">ホワイト</string>
   <string name="morphe_theme_color_light_entry_3">Material You（ホワイト）</string>
@@ -1297,7 +1304,7 @@ Automotive レイアウト
   <string name="morphe_dearrow_titles_icon_title">DeArrow アイコンを表示</string>
   <string name="morphe_dearrow_titles_icon_summary">クラウドソースされた動画タイトルに DeArrow アイコンを表示します</string>
   <string name="morphe_dearrow_casual_mode_title">カジュアルモード</string>
-  <string name="morphe_dearrow_casual_mode_summary">DeArrowユーザーが元のタイトルを好むと投票した場合、DeArrowタイトルではなく元のタイトルを表示します</string>
+  <string name="morphe_dearrow_casual_mode_summary">DeArrow ユーザーが元のタイトルを「いいね」と投票した場合、DeArrow のタイトルではなく元のタイトルが表示されます</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">元のタイトルを表示するためのカジュアル投票の最小数</string>
   <string name="morphe_dearrow_casual_mode_min_votes_summary">元のタイトルを表示するために必要な、面白いやクリエイティブなどの単一カテゴリでのカジュアル投票の数</string>
   <string name="morphe_dearrow_thumbnails_title">DeArrow サムネイル</string>
@@ -1305,9 +1312,9 @@ Automotive レイアウト
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; デフォルト</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; 静止画</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">静止画サムネイル</string>
-  <string name="morphe_dearrow_about_summary">"DeArrowは、クリックベイトのタイトルとサムネイルを、より正確で扇動的でないクラウドソースのものに置き換えます。タイトルはコミュニティによって書かれ投票され、サムネイルは動画から取られたフレームです
+  <string name="morphe_dearrow_about_summary">"DeArrow は、クリックベイト的なタイトルやサムネイルを、より正確でセンセーショナルさが抑えられた、クラウド ソーシングによるものに置き換えます。タイトルはコミュニティによって作成・投票され、サムネイルは動画から切り出されたフレームが使用されます
 
-動画はハッシュ化された動画IDの短いプレフィックスによってリクエストされるため、サーバーはあなたが見ている動画を正確に特定できません。動画にDeArrowのサムネイルがない場合、オリジナルまたは静止画が表示されます"</string>
+動画は、ハッシュ化された動画 ID の短いプレフィックスでリクエストされるため、サーバーはユーザーがどの動画を閲覧しているかを正確に把握することはできません。動画に DeArrow のサムネイルがない場合は、元の画像または静止画が表示されます"</string>
   <string name="morphe_dearrow_connection_toast_title">接続エラーの通知を表示</string>
   <string name="morphe_dearrow_connection_toast_summary">DeArrow サーバーが利用できない場合に通知を表示します</string>
   <string name="morphe_dearrow_api_url_title">API エンドポイント</string>
@@ -1323,7 +1330,7 @@ Automotive レイアウト
   <string name="morphe_dearrow_error_generic">DeArrow は一時的に利用できません</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
-  <string name="morphe_restore_old_player_buttons_title">以前のプレーヤーボタンのデザインに戻す</string>
+  <string name="morphe_restore_old_player_buttons_title">以前のプレーヤー ボタンのデザインに戻す</string>
   <string name="morphe_restore_old_player_buttons_summary">動画プレーヤーのコントロールのデザインを、現在の太字デザインから以前の細字デザインに戻します</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">デバイスの画面サイズを偽装</string>
@@ -1498,7 +1505,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_summary">履歴にシリーズページを追加し、プレイリストにシリーズをフォローするオプションを追加します</string>
   <string name="morphe_series_tracker_show_navigation_button_title">ナビゲーション バーにシリーズを表示</string>
   <string name="morphe_series_tracker_show_button_title">シリーズ トラッカー ボタンを表示</string>
-  <string name="morphe_series_tracker_show_button_summary">現在の動画のシリーズをフォローまたは開くためのプレーヤーボタンを追加します</string>
+  <string name="morphe_series_tracker_show_button_summary">現在の動画のシリーズをフォローまたは開くためのプレーヤー ボタンを追加します</string>
   <string name="morphe_series_tracker_record_followed_progress_title">フォロー中のシリーズの進捗を記録する</string>
   <string name="morphe_series_tracker_record_followed_progress_summary">保存されたシリーズとブックマークに対して、この電話での再生を記録します</string>
   <string name="morphe_series_tracker_ui_cancel">キャンセル</string>
@@ -1509,7 +1516,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_ui_library_options">ライブラリオプション</string>
   <string name="morphe_series_tracker_ui_refresh_episodes">エピソードを更新</string>
   <string name="morphe_series_tracker_ui_rename">名前を変更</string>
-  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">YouTubeでプレイリストを開く</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">YouTube でプレイリストを開く</string>
   <string name="morphe_series_tracker_ui_remove_from_library">ライブラリから削除</string>
   <string name="morphe_series_tracker_ui_playlist_link_or_id">プレイリストリンクまたはID</string>
   <string name="morphe_series_tracker_ui_clear_all_local_progress">すべてのローカル進捗を消去</string>
@@ -1538,19 +1545,19 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_watched">視聴済み</string>
   <string name="morphe_series_tracker_ui_loading_episodes">エピソードを読み込み中…</string>
   <string name="morphe_series_tracker_ui_more_options">その他のオプション</string>
-  <string name="morphe_series_tracker_record_consent">"保存されたシリーズとブックマークされた動画についてのみ進行状況を記録します。
+  <string name="morphe_series_tracker_record_consent">"保存したシリーズ動画とブックマークした動画のみ、進捗状況を記録します。
 
-このライブラリはデバイス上に保存され、YouTube アカウント間で共有されます。YouTube の一時停止および履歴消去コントロールはこのライブラリを変更しません。削除するには「シリーズ」→「詳細」→「ローカル進行状況を消去」を使用します。
+このライブラリはデバイス上に保存され、複数の YouTube アカウントで共有されます。YouTube の一時停止や履歴を削除する機能では変更されません。削除するには、「シリーズ」→「その他」→「ローカルの進行状況を消去」を選択してください。
 
-匿名モード、アカウントIDが利用できない場合、または異なるアカウントに切り替えた場合、自動記録は停止します。そのアカウントで使用するには追跡を再度有効にしてください"</string>
-  <string name="morphe_series_tracker_identity_unavailable">匿名モードでは、または YouTube が現在のアカウント状態を読み込む前に、追跡を有効にすることはできません。ホームに戻ってもう一度お試しください。サインインは必要ありません</string>
+シークレット モードが有効の場合、アカウント ID が利用できない場合、または別のアカウントに切り替えた場合、自動記録は停止します。そのアカウントで使用するには、追跡を再度有効にしてください"</string>
+  <string name="morphe_series_tracker_identity_unavailable">シークレット モードが有効の場合、または YouTube が現在のアカウント状態を読み込むまでは、追跡機能を有効にすることはできません。ホーム画面に戻って、もう一度お試しください。ログインは不要です</string>
   <string name="morphe_series_tracker_enable">ローカル追跡を有効にする</string>
   <string name="morphe_series_tracker_tracking_paused">進捗記録はオフです</string>
   <string name="morphe_series_tracker_resume_at">%1$s で再開</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s エピソード視聴済み</string>
   <string name="morphe_series_tracker_episode_position">エピソード %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">エピソード %1$s-%2$s of %3$s</string>
-  <string name="morphe_series_tracker_catalog_unavailable">読み込みを試すために更新してください。プライベートプレイリストにはアカウントアクセスが必要です。ブックマークは YouTube で開きます</string>
+  <string name="morphe_series_tracker_catalog_unavailable">ページを更新して、エピソードの読み込みを試してみてください。非公開プレイリストを再生するにはアカウントへのアクセス権が必要です。ブックマークは引き続き YouTube で開きます</string>
   <string name="morphe_series_tracker_open_failed">YouTube はこのエピソードを開けませんでした</string>
   <string name="morphe_series_tracker_playlist_failed">YouTube はこのプレイリストを開けませんでした</string>
   <string name="morphe_series_tracker_plan_changed">エピソードを選択</string>
@@ -1569,9 +1576,9 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_new_episode">新作エピソード1個</string>
   <string name="morphe_series_tracker_new_episodes">新エピソード %1$s</string>
   <string name="morphe_series_tracker_record_short">このデバイスでの進捗記録</string>
-  <string name="morphe_series_tracker_follow_consent">"シリーズと進行状況はこのデバイス上に留まり、YouTube アカウント間で共有されます。YouTube の履歴コントロールはこれを変更しません。「シリーズ」メニューから進行状況を消去できます。
+  <string name="morphe_series_tracker_follow_consent">"シリーズと進捗状況は、このデバイスに保存され、YouTube アカウント間で共有されます。YouTube の履歴コントロールでは、これらの情報は変更されません。「シリーズ」メニューから進捗状況をクリアしてください。
 
-自動記録はオプションです。匿名モードまたはアカウント変更時に停止します"</string>
+自動記録はオプションです。シークレット モードが有効になっている場合、またはアカウントが変更された際に停止します"</string>
   <string name="morphe_series_tracker_follow_unavailable">エピソードを読み込めませんでした。プレイリストをブックマークとして保存できます</string>
   <string name="morphe_series_tracker_error_pending_full">保存されていない変更が多すぎます。最初に保存を再試行してください</string>
   <string name="morphe_series_tracker_error_storage_busy">保存操作中です。再試行してください</string>
@@ -1583,7 +1590,7 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_error_playlist_changed">プレイリストが変更されました。エピソードを再度選択してください</string>
   <string name="morphe_series_tracker_error_episode_unavailable">このエピソードは利用できません。別のもので選んでください</string>
   <string name="morphe_series_tracker_error_name_required">シリーズ名を入力してください</string>
-  <string name="morphe_series_tracker_error_playlist_input">YouTube プレイリストリンクまたはプレイリスト ID を入力してください</string>
+  <string name="morphe_series_tracker_error_playlist_input">YouTube プレイリスト リンクまたはプレイリスト ID を入力してください</string>
   <string name="morphe_series_tracker_error_retry_later">再更新するまでお待ちください</string>
   <string name="morphe_series_tracker_error_catalog_unavailable">エピソードを読み込めませんでした。後でもう一度お試しください</string>
   <string name="morphe_series_tracker_error_operation">変更を完了できませんでした。再試行してください</string>
@@ -1608,10 +1615,10 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_series_tracker_completion_percent">視聴済み割合 (1-100)</string>
   <string name="morphe_series_tracker_completion_seconds">残り秒数 (0-300; 0 で無効化)</string>
   <string name="morphe_series_tracker_completion_range">%1$s から %2$s の値を入力してください</string>
-  <string name="morphe_series_tracker_youtube_progress_title">YouTubeの進捗を使用</string>
+  <string name="morphe_series_tracker_youtube_progress_title">YouTube の進捗状況を使用</string>
   <string name="morphe_series_tracker_youtube_progress_summary">他のデバイスで視聴した後、フォロー中のシリーズを引き継ぐ</string>
   <string name="morphe_series_tracker_sync_consent">現在の YouTube アカウントからフォロー中のシリーズの視聴済み状態と再開位置を読み取ります。一致するエピソードのみがこのスマートフォンに保存されます。チェックはシリーズライブラリが開いている間と、続きを見る前に実行されます。別のデバイスで YouTube 履歴を有効にする必要があります</string>
-  <string name="morphe_series_tracker_sync_checking">YouTubeの進捗を確認中…</string>
+  <string name="morphe_series_tracker_sync_checking">YouTube の進捗状況を確認中…</string>
   <string name="morphe_series_tracker_sync_failed">YouTube の進行状況は利用できません。保存された進行状況を使用しています</string>
   <string name="morphe_series_tracker_sync_partial">一部の YouTube 進行状況が利用できません。保存された位置は保持されます</string>
   <string name="morphe_series_tracker_backup_title">バックアップと復元</string>
@@ -1640,14 +1647,14 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
   <string name="morphe_niconico_comments_screen_title">ニコニコ動画風のコメント表示</string>
   <string name="morphe_niconico_comments_screen_summary">ライブチャットとチャットのリプレイを、ビデオ上を流れるコメントとして表示します</string>
-  <string name="morphe_niconico_comments_summary">ビデオプレーヤーにオーバーレイボタンを表示します。タップするとコメントの表示/非表示を切り替え、長押しすると簡易設定を表示します</string>
+  <string name="morphe_niconico_comments_summary">プレーヤー オーバーレイにボタンを表示します。タップするとコメントの表示 / 非表示を切り替えます。長押しすると簡易設定メニューを表示します</string>
   <string name="morphe_niconico_comments_font_size_title">コメントのフォントサイズ</string>
   <string name="morphe_niconico_comments_font_size_summary">コメントのテキストサイズ (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">コメントの不透明度</string>
   <string name="morphe_niconico_comments_opacity_summary">コメントのテキストと背景の不透明度</string>
   <string name="morphe_niconico_comments_travel_duration_title">移動時間</string>
   <string name="morphe_niconico_comments_travel_duration_summary">コメントが画面を横切るまでの秒数です。値を小さくすると移動速度が上がります</string>
-  <string name="morphe_niconico_comments_max_length_title">コメントの最大文字数</string>
-  <string name="morphe_niconico_comments_max_length_summary">これより長い文字数のコメントを非表示にします。絵文字は1文字としてカウントされます</string>
+  <string name="morphe_niconico_comments_max_length_title">コメントの文字数の上限</string>
+  <string name="morphe_niconico_comments_max_length_summary">この値より文字数が多いコメントを非表示にします。絵文字はそれぞれ 1 文字としてカウントされます</string>
   <string name="morphe_niconico_comments_max_length_no_limit">制限なし</string>
 </resources>

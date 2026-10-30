@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">Схаваць апытанні</string>
   <string name="morphe_hide_surveys_summary">Схаваць апытанні і падказкі аб дакладнасці рэкамендацый стужкі</string>
   <string name="morphe_hide_ticket_shelf_title">Схаваць паліцу з білетамі</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Схаваць банер \"Недаступныя відэа схаваныя\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Схаваць банер \"Недаступныя відэа схаваныя\" ў плейлістах</string>
   <string name="morphe_hide_upload_time_title">Схаваць час загрузкі</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Абмежаванні:
@@ -511,6 +514,10 @@ Second \"item\" text"</string>
   <string name="morphe_vot_translation_service_title">Пастаўшчык перакладу</string>
   <string name="morphe_vot_original_audio_volume_title">Гучнасць арыгінальнага аўдыё</string>
   <string name="morphe_vot_original_audio_volume_summary">Гучнасць арыгінальнага аўдыё YouTube, пакуль ідзе пераклад</string>
+  <string name="morphe_vot_translation_volume_title">Гучнасць перакладу</string>
+  <string name="morphe_vot_translation_volume_summary">Гучнасць голаса дубляжанага перакладу</string>
+  <string name="morphe_vot_max_speech_rate_title">Максимальная хуткасць маўлення</string>
+  <string name="morphe_vot_max_speech_rate_summary">Максімальны множнік хуткасці пры ўмясчанні маўлення ў слот субцітраў</string>
   <string name="morphe_vot_mymemory_info_summary">"Бясплатны API перакладу, ключ API не патрабуецца. Да 5 000 сімвалаў у дзень на бясплатным тарыфе або да 50 000 сімвалаў у дзень пры наяўнасці адраса электроннай пошты.
 
 Націсніце тут, каб адкрыць MyMemory.translated.net"</string>
@@ -530,6 +537,11 @@ Second \"item\" text"</string>
   <string name="morphe_vot_cost_per_hour">%s за 100 відэагадзін</string>
   <string name="morphe_vot_tts_voice_type">Голас</string>
   <string name="morphe_vot_tts_system">Сістэма</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Мноўмоўны мужчына</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Мноўмоўная жанчына</string>
+  <string name="morphe_vot_voice_gender_male">Мужчына</string>
+  <string name="morphe_vot_voice_gender_female">Жанчына</string>
+  <string name="morphe_vot_tts_sample">Час марфінга!</string>
   <string name="morphe_vot_http_error_title">Пераклад недаступны</string>
   <string name="morphe_vot_http_error_message">"Служба перакладу вернула памылку HTTP %s. Ваша IP-адрас, верагодна, быў абмежаваны па колькасці запытаў на тэрмін да 24 гадзін.
 
@@ -722,16 +734,24 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_press_to_engage_title">Уключаць жэст «націсніць, каб праціркнуць»</string>
   <string name="morphe_swipe_press_to_engage_summary">Патрабуецца націсканне і ўтрыманне перад тым, як будзе распазнаны жэст працягвання</string>
   <string name="morphe_swipe_haptic_feedback_title">Уключаць тактыльны водгук</string>
+  <string name="morphe_swipe_save_and_restore_brightness_title">Захаваць і аднавіць яскрасць</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Запамінае ўзровень яскравасці пры ўваходзе / выхадзе з паўнаэкраннага рэжыму</string>
+  <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Уключыць жэст аўтаяскрасці</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary">Перамяшчэнне паўзунка яскравасці да мінімальнага значэння актывуе сістэмную аўтаяскравасць</string>
+  <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">Аўта</string>
+  <string name="morphe_swipe_overlay_timeout_title">Таймаўт панэлі прагавання</string>
+  <string name="morphe_swipe_overlay_timeout_summary">Колькасць мілісекунд, працягваючыя якія панэль візібельная</string>
+  <string name="morphe_swipe_overlay_background_opacity_title">Празрачнасць фона панэлі прагавання</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Наладзіце ўзровень празрыстасці (0 — празрысты, 100 — непрозрачны)</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Колер пакрыцця прагарткі яскравасці</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Усталюйце колер палоскі прагрэсу рэгулятара яскрасці</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_title">Колер гучнасці на панэлі прагавання</string>
   <string name="morphe_swipe_overlay_progress_volume_color_summary">Усталюйце колер палоскі прагрэсу рэгулятара гучнасці</string>
   <string name="morphe_swipe_overlay_progress_speed_color_title">Колер паказчыка хуткасці свайпа</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Усталюйце колер палоскі прагрэсу элементаў кіравання хуткасцю прайгравання</string>
   <string name="morphe_swipe_text_overlay_size_title">Памер тэксту ў накладання свайпа</string>
   <string name="morphe_swipe_text_overlay_size_summary">Наладзіце памер тэксту на экране (1–30)</string>
+  <string name="morphe_swipe_threshold_title">Парог велічыні прагавання</string>
   <string name="morphe_swipe_threshold_summary">Усталюйце неабходную дыстанцыю свайпа для актывацыі рэгуляцыі</string>
   <string name="morphe_swipe_volume_distance_title">Частривливасть свайпа граммисты гусникки</string>
   <string name="morphe_swipe_volume_distance_summary">Вышейшыйся значенниусть паребвавниутся большй свайп на кожни ступень гусникки</string>
@@ -747,7 +767,11 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_speed_zone_height_title">Вышыня зоны хуткасці</string>
   <string name="morphe_swipe_speed_zone_height_summary">Вышыня зоны жэсту хуткасці як працэнт ад вышыні плеера (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Хуткасць</string>
+  <string name="morphe_swipe_overlay_style_title">Стыль панэлі прагавання</string>
   <string name="morphe_swipe_overlay_style_entry_1">Гарызантальны слой</string>
+  <string name="morphe_swipe_overlay_style_entry_2">Гарызонтальнае накладанне (мінімалістычнае - зверху)</string>
+  <string name="morphe_swipe_overlay_style_entry_3">Гарызонтальнае накладанне (мінімалістычнае - па цэнтры)</string>
+  <string name="morphe_swipe_overlay_style_entry_4">Круглае накладанне</string>
   <string name="morphe_swipe_overlay_style_entry_5">Круглае пакрыццё (мінімалістычнае)</string>
   <string name="morphe_swipe_overlay_style_entry_6">Вертыкальнае пакрыццё</string>
   <string name="morphe_swipe_overlay_style_entry_7">Вертыкальнае пакрыццё (мінімалістычнае)</string>
@@ -942,12 +966,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_cast_button_title">Схаваць кнопку Cast</string>
   <string name="morphe_hide_collapse_button_title">Схаваць кнопку \"Згарнуць\"</string>
   <string name="morphe_hide_fullscreen_button_title">Схаваць кнопку \"Паўны экран\"</string>
+  <string name="morphe_hide_player_control_buttons_background_title">Схаваць фон элементаў кіравання плеярам</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Хавае цёмную зацянелую вобласць вакол элементаў кіравання відэаплэерам</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Празрачнасць фона кнопак кіравання</string>
   <string name="morphe_player_control_buttons_background_opacity_summary">Наладаць празрыстасць фона за кнопкамі кіравання плеярам і палосай часу (0 — нябачны, 100 — сплошны)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Схаваць кнопкі «Папярэдні» і «Наступны»</string>
   <string name="morphe_hide_settings_button_title">Схаваць кнопку \"Налады\"</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
+  <string name="morphe_hide_end_screen_cards_title">Схаваць карткі фінальнага экрана</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <string name="morphe_ambient_mode_screen_title">Атмасферны рэжым</string>
   <string name="morphe_ambient_mode_screen_summary">Кіраванне бачнасцю рэжыму Ambient і абмежаваннямі па харчаванні</string>
@@ -956,9 +982,13 @@ Second \"item\" text"</string>
   <string name="morphe_disable_ambient_mode_title">Адключаць атмасферны рэжым</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Адключаць рэжым Ambient у паўнаэкранным рэжыме</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
+  <string name="morphe_hide_info_cards_title">Схаваць інфармацыйныя карткі</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
+  <string name="morphe_disable_rolling_number_animations_title">Адключаць анімацыю пракруткі лікаў</string>
   <string name="morphe_disable_rolling_number_animations_summary">Спыняе анімацыю лічыльніка лайкаў і праглядаў</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
+  <string name="morphe_hide_seekbar_title">Схаваць палосу пракруткі відэаплеяра</string>
+  <string name="morphe_hide_seekbar_thumbnail_title">Схаваць палосу пракруткі з мініятурамі відэа</string>
   <string name="morphe_hide_seekbar_thumbnail_summary">Схаваць палоску прагрэсу прагляду, якая паказваецца на мініятурах відэа, якія вы ўжо паглядзелі</string>
   <string name="morphe_fullscreen_large_seekbar_title">Уключаць паўнаэкранны вялікі паўзунак пракруткі</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
@@ -976,12 +1006,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Адключаць пастаўленне лайка па двайным націсканні</string>
   <string name="morphe_hide_shorts_ai_button_title">Схаваць кнопку AI</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Схаваць пазначку \"Аўтаматычна дубляваны\"</string>
+  <string name="morphe_hide_shorts_channel_bar_title">Схаваць панэль канала</string>
   <string name="morphe_hide_shorts_comments_button_title">Схаваць кнопку \"Каментарыі\"</string>
   <string name="morphe_hide_shorts_effect_button_title">Схаваць кнопку \"Эфект\"</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Схаваць надпіс спасылкі на відэа</string>
   <string name="morphe_hide_shorts_gesture_hints_title">Схаваць падказкі па жэстах</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Схаваць кнопку \"Зялёны экран\"</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Схаваць кнопку \"Хэштэг\"</string>
+  <string name="morphe_hide_shorts_info_panel_title">Схаваць панэль інфармацыі</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">Схаваць кнопку \"Далучыцца\"</string>
   <string name="morphe_hide_shorts_like_button_title">Схаваць кнопку \"Падабаецца\"</string>
@@ -1003,12 +1035,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_share_button_title">Схаваць кнопку \"Паділіцца\"</string>
   <string name="morphe_hide_shorts_shop_button_title">Схаваць кнопку \"Крама\"</string>
   <string name="morphe_hide_shorts_sound_button_title">Схаваць кнопку гуку</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">Схаваць ярлычок метаданых гуку</string>
   <string name="morphe_hide_shorts_subscribe_button_title">Схаваць кнопку \"Падпісацца\"</string>
   <string name="morphe_hide_shorts_super_thanks_button_title">Схаваць кнопку \"Купіць Super Thanks\"</string>
   <string name="morphe_hide_shorts_tagged_products_title">Схаваць пазначаныя тавары</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Схаваць кнопку \"Далейшае\"</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Схаваць кнопку \"Выкарыстаць гэты гук\"</string>
   <string name="morphe_hide_shorts_use_template_button_title">Схаваць кнопку \"Выкарыстаць гэты шаблон\"</string>
+  <string name="morphe_hide_shorts_video_title_title">Схаваць назву відэа</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Схаваць рэкамендаванае відэа ў канцы</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Хавае ўкладку з рэкамендацыйнымі відэа, якая з'яўляецца пасля заканчэння відэа
@@ -1111,6 +1145,8 @@ Second \"item\" text"</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Перакрыць кнопкі YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Адкрывае вашу прыляганую музыку замест стандартнай праграмы YouTube Music</string>
+  <string name="morphe_custom_music_package_name_title">Назва пакета музычнага праграмы</string>
+  <string name="morphe_custom_music_package_name_summary">Назва пакета вашай усталяванай музычнай праграмы</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Стартовая старонка</string>
   <string name="morphe_change_start_page_entry_default">Звычайны</string>
@@ -1177,6 +1213,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_summary">Настройце выгляд і паводзіны зведзенага відэаплэера</string>
   <string name="morphe_miniplayer_type_title">Тып мініплэера</string>
   <string name="morphe_miniplayer_hide_title_title">Схаваць загаловак і канал</string>
+  <string name="morphe_miniplayer_type_entry_0">Адключана</string>
   <string name="morphe_miniplayer_type_entry_1">Звычайны</string>
   <string name="morphe_miniplayer_type_entry_2">Мінімалістычны</string>
   <string name="morphe_miniplayer_type_entry_3">Мінімалістычны 2</string>
@@ -1188,6 +1225,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Адключаць закругленыя куты</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Адключаць перацягванне</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Забараняе перацягванне зведзенага плэера па розных кутах экрана</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_title">Адключаць жэст гарызантальнага перацягвання</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Забараняе закрываць мініплэер шляхам гарызантальнага працягвання за межы экрана</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Паўза ў працьоўванні пры гарызантальным перацягванні</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Відпраўка спыніцца, калі мініплэер будзе перацягнуты за межы экрана</string>
@@ -1213,12 +1251,22 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_title">Выправіць перакрыццё верхніх панэляў панэллю стану</string>
   <string name="morphe_fix_status_bar_layout_summary">Забяспечвае стабільнасць размяшчаўкі панэлі стану, каб яна не перакрывала верхнія панэлі і не пакідала пустага месца над плэерам. Выключайце гэтую функцыю, калі праграма вылетае або верхнія панэлі выглядаюць няправільна</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Свячэнне</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Гэтая прылада не падтрымлівае эфект святлення для экрана загрузкі</string>
   <string name="morphe_theme_color_light_title">Фон светлай тэмы</string>
   <string name="morphe_theme_color_light_entry_2">Белы</string>
   <string name="morphe_theme_color_light_entry_3">Material You (белы)</string>
   <string name="morphe_theme_color_light_entry_9">Святла-рожавы</string>
+  <string name="morphe_theme_color_light_entry_10">Святла-блакітны</string>
+  <string name="morphe_theme_color_light_entry_11">Святло-зялёны</string>
+  <string name="morphe_theme_color_light_entry_12">Святло-жоўты</string>
   <string name="morphe_theme_color_light_entry_13">Святла-аранжавы</string>
+  <string name="morphe_theme_color_light_entry_14">Святло-чырвоны</string>
+  <string name="morphe_theme_color_light_custom_title">Свой святлы фон</string>
   <string name="morphe_theme_color_light_custom_summary">Усталяваць колер фона для светлай тэмы</string>
+  <string name="morphe_theme_color_change_foreground_title">Змяніць колер передняга плана</string>
   <string name="morphe_theme_color_change_foreground_summary">Выкарыстоўваць колер тэмы для тэксту і іконак</string>
   <string name="morphe_gradient_loading_screen_title">Уключыць градыянтны экран загрузкі</string>
   <string name="morphe_gradient_loading_screen_summary">Паказвае градыентны фон на экране загрузкі замест аднатоннага колары</string>
@@ -1229,6 +1277,9 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Усталюйце дапаможны колер палоскі прагрэсу відэа</string>
   <string name="morphe_seekbar_custom_color_invalid">Непрыемнае значэнне колеру палоскі пракруткі</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Арыгінальны аналог</string>
+  <string name="morphe_custom_branding_icon_entry_9">Арыгінальны торт</string>
+  <string name="morphe_custom_branding_icon_entry_10">Арыгінальны метал</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Логотып загалоўка</string>
   <string name="morphe_header_logo_entry_1">Звычайны</string>
@@ -1475,6 +1526,12 @@ AVC (H.264)
   <string name="morphe_series_tracker_ui_mark_unwatched">Пазначыць як непраглянутае</string>
   <string name="morphe_series_tracker_ui_use_automatic_status">Выкарыстоўваць аўтаматычны статус</string>
   <string name="morphe_series_tracker_ui_restart_from_0_00">Перазапусціць з 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Паўторзіць прагляд з 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Статус захаваны</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Паўторыць захаванне</string>
+  <string name="morphe_series_tracker_ui_previous_100">Папярэднія 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Наступныя 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Адкрыць захаванае відэа</string>
   <string name="morphe_series_tracker_ui_local_progress_cleared">Локальны прагрэс ачышчаны</string>
   <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Адкрыйце «Гісторыю», каб пабачыць свае серыялы</string>
   <string name="morphe_series_tracker_ui_watch_history">Гісторыя прагляду</string>
@@ -1510,6 +1567,9 @@ AVC (H.264)
   <string name="morphe_series_tracker_view_series">Праглядзець серыялы</string>
   <string name="morphe_series_tracker_continue">Працягнуць</string>
   <string name="morphe_series_tracker_start_here">Пачніце тут</string>
+  <string name="morphe_series_tracker_start_saved">Пункт пачатку захаваны</string>
+  <string name="morphe_series_tracker_watched_to_here">Паглядзена да гэтага месца</string>
+  <string name="morphe_series_tracker_marked">Эпізоды пазначаны як праглядзеныя</string>
   <string name="morphe_series_tracker_undo">Скасаваць</string>
   <string name="morphe_series_tracker_enable_short">Уключыць</string>
   <string name="morphe_series_tracker_new_episodes">%1$s новых серый</string>
@@ -1554,6 +1614,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_completion_seconds">Застацца секунд (0-300; 0 выключае)</string>
   <string name="morphe_series_tracker_completion_range">Увядзіце значэнне ад %1$s да %2$s</string>
   <string name="morphe_series_tracker_youtube_progress_title">Выкарыстоўваць прагрэс YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Працягніце прагляд серыялаў пасля прагляду на іншай прыладнасці</string>
   <string name="morphe_series_tracker_sync_consent">Чытаць статус прагляду і пазіцыі ўзоўлення для вашых падпісаных серыялаў з бягучага ўліковага запісу YouTube. На гэтым тэлефоне захраняюцца толькі адпаведныя эпізоды. Праверкі выконваюцца, пакуль адкрыта бібліятэка серыялаў і перад «Працягнуць». Гісторыя YouTube павінна быць уключана на іншай прыладзе</string>
   <string name="morphe_series_tracker_sync_checking">Праверка прагрэсу ў YouTube…</string>
   <string name="morphe_series_tracker_sync_failed">Прагрэс YouTube недаступны. Выкарыстоўваецца захаваны прагрэс</string>

@@ -174,7 +174,7 @@ public class MusicActivityHook extends BaseActivityHook {
     @SuppressWarnings("unused")
     public static boolean handleFinish(Activity activity) {
         return MusicSearchViewController.handleFinish(searchViewController)
-                || AbstractPreferenceFragment.showRestartDialogIfNeeded(activity, activity::finish);
+                || AbstractPreferenceFragment.showRestartDialogIfNeeded(activity);
     }
 
     /**

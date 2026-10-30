@@ -113,6 +113,9 @@ Pakeitimai apima:
   <string name="morphe_hide_surveys_title">Slėpti apklausas</string>
   <string name="morphe_hide_surveys_summary">Slėpti apklausas ir raginimus apie kanalo rekomendacijų tikslumą</string>
   <string name="morphe_hide_ticket_shelf_title">Slėpti bilietų lentyną</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Slėpti bannerį „Nepriejamos videoklipai yra slėpti“</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Slėpia bannerį „Nepriejamos videoklipai yra slėpti“ grožiuose</string>
   <string name="morphe_hide_upload_time_title">Slėpti įkėlimo laiką</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Apribojimai:
@@ -1249,6 +1252,9 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <string name="morphe_fix_status_bar_layout_summary">Laiko būsenos juostos išdėstymą nuoseklų, kad ji nengeltų viršutinių juostų ir nepaliktų tuščios vietos virš grojimo įrenginio. Išjunkite šią parinktį, jei programėlė žlunga arba viršutinės juostos atrodo netinkamai</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Švytėjimas</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Šis įrenginys nepalaiko švytinčio įvadimo ekrano stiliaus</string>
   <string name="morphe_theme_color_light_title">Šviesios temos fonas</string>
   <string name="morphe_theme_color_light_entry_2">Balta</string>
   <string name="morphe_theme_color_light_entry_3">Material You (balta)</string>

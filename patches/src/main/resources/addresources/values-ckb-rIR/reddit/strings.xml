@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="reddit_privacy_policy">سیاسەتی تایبەتیی ڕێدیت</string>
+  <string name="morphe_google_signin_not_available_toast">چوونەژوورەوەی گووگڵ بەردەست نییە. ئیمەیڵ بەکاربهێنە بۆ چوونەژوورەوە</string>
   <string name="morphe_screen_ads_title">ڕێکلام</string>
   <string name="morphe_hide_post_ads_title">هێڵپەڕەکانی بڵاوکردنەوە قایپ بکه</string>
   <string name="morphe_hide_comment_ads_title">دابەزاندنی ڕاوەستێنانی کۆمێنتەکان</string>
@@ -31,8 +33,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">ڕەفەی دەربارە بشارەوە</string>
   <string name="morphe_hide_resources_shelf_title">ڕەفەی سەرچاوەکان بشارەوە</string>
   <string name="morphe_screen_layout_title">سازان</string>
+  <string name="morphe_custom_font_title">فۆنتی تایبەت</string>
+  <string name="morphe_custom_font_summary">فایلی فۆنتێکی تایبەتی TTF یان OTF لە ڕێگەی ئەو ڕێگایەی خوارەوە لایبەرە. چالاککردنی ئەمەیەش فۆنتی سیستەم زۆر کردن (Force system font) ڕادەگرێت</string>
+  <string name="morphe_custom_font_file_path_title">فایلی فۆنتی تایبەت</string>
+  <string name="morphe_custom_font_file_path_summary">کلیک بکە بۆ هەڵبژاردنی فایلی فۆنتێکی TTF یان OTF</string>
+  <string name="morphe_custom_font_selected_font">فۆنتی هەڵبژێردراو - %s</string>
+  <string name="morphe_custom_font_pick_file_first">سەرەتا فایلی فۆنتێکی تایبەت هەڵبژێرە</string>
+  <string name="morphe_custom_font_invalid_file">تکایە فایلی فۆنتێکی .ttf یان .otf هەڵبژێرە</string>
+  <string name="morphe_custom_font_failed_to_load">کەوتن لە بارکردنی فۆنتی تایبەت. فایلێکی تر هەڵبژێرە</string>
   <string name="morphe_disable_screenshot_popup_title">خۆراکێکی ڕەخساوییەکە ڕاگەخشاوە</string>
   <string name="morphe_disable_screenshot_popup_summary">خۆراکێکی ڕەخساوییەکە ڕاگەخشاوە دێت کاتێک تۆ دەگرێتە ڕەسی ڕەخساو</string>
+  <string name="morphe_force_system_font_title">فۆنتی سیستەم زۆر بکە</string>
+  <string name="morphe_force_system_font_summary">فۆنتی سیستەمی ئامێرەکە بەکاربهێنە لەجیاتی Reddit Sans یان Roboto. چالاککردنی ئەمەیەش فۆنتی تایبەت ڕادەگرێت</string>
   <string name="morphe_hide_ask_button_title">دۆزینەوەی پەیامگە دەربخۆ</string>
   <string name="morphe_hide_ask_button_summary">دوگمەی پرسیار (Ask) لە ناو ڕیزبەندی گەڕان دەشارێتەوە</string>
   <string name="morphe_remove_notification_dialog_title">دیالۆگی پێشنیاری ئاگادارکردنەوە لابەرە</string>

@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">پنهان‌کردن نظرسنجی‌ها</string>
   <string name="morphe_hide_surveys_summary">نظرسنجی‌ها و پیشنهادهای مربوط به دقت پیشنهادهای خوراک را پنهان می‌کند</string>
   <string name="morphe_hide_ticket_shelf_title">پنهان‌کردن قفسهٔ بلیت</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">مخفی کردن بنر \"ویدیوهای در دسترس نیستند مخفی شده‌اند\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">بنر \"ویدیوهای در دسترس نیستند مخفی شده‌اند\" را در لیست‌های پخش مخفی می‌کند</string>
   <string name="morphe_hide_upload_time_title">پنهان‌کردن زمان بارگذاری</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"محدودیت‌ها:
@@ -1248,6 +1251,7 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">چیدمان نوار وضعیت را یکپارچه نگه می‌دارد، بنابراین بر نوارهای بالایی پوشانده نمی‌شود و فضای خالی در بالای پخش‌کننده باقی نمی‌گذارد. اگر برنامه کرش کرد یا نوارهای بالایی به درستی نمایش داده نشدند، این گزینه را غیرفعال کنید</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">درخشش</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">صفحه شروع Glow توسط این دستگاه پشتیبانی نمی‌شود</string>
   <string name="morphe_theme_color_light_title">پس‌زمینهٔ طرح روشن</string>
   <string name="morphe_theme_color_light_entry_2">سفید</string>
   <string name="morphe_theme_color_light_entry_3">Material You (سفید)</string>

@@ -43,3 +43,23 @@ internal object SettingsPreferenceScreenSyntheticFingerprint : Fingerprint(
         opcode(Opcode.RETURN_VOID)
     )
 )
+
+/**
+ * Looks up the account scoped command router, which only the command router of an activity does.
+ */
+internal object CommandRouterFragmentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    strings = listOf("com.google.android.apps.youtube.app.endpoint.routers.AccountScopeCommandRouterFragment")
+)
+
+/**
+ * The command router of an activity, created with it.
+ */
+internal object CommandRouterConstructorFingerprint : Fingerprint(
+    classFingerprint = CommandRouterFragmentFingerprint,
+    name = "<init>",
+    parameters = listOf("Landroid/app/Activity;", "L", "Ljava/util/concurrent/Executor;"),
+    filters = listOf(
+        methodCall(smali = "Ljava/lang/Object;-><init>()V")
+    )
+)

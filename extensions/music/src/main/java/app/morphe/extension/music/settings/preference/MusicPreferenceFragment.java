@@ -18,6 +18,7 @@ import app.morphe.extension.music.settings.MusicActivityHook;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.GmsCoreSupportPatch;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.NewSettingsIndicator;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 
 /**
@@ -53,6 +54,8 @@ public class MusicPreferenceFragment extends ToolbarPreferenceFragment {
                         SharedYouTubeSettings.CUSTOM_BRANDING_NOTIFICATION_ICON.key,
                         SharedYouTubeSettings.CUSTOM_BRANDING_NAME.key);
             }
+
+            NewSettingsIndicator.markNewPreferences(preferenceScreen);
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         }

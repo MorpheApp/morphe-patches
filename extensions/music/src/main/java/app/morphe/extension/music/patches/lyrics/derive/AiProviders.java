@@ -145,7 +145,7 @@ public final class AiProviders {
 
     /** Rewrites one provider's flag, returning {@code stored} untouched when it already matches. */
     public static String withProviderEnabled(@Nullable String stored, List<String> known,
-            String id, boolean enabled) {
+                                             String id, boolean enabled) {
         final List<ProviderEntry> entries = parseOrder(stored, known);
         boolean changed = false;
         final List<ProviderEntry> updated = new ArrayList<>(entries.size());
@@ -160,34 +160,6 @@ public final class AiProviders {
         return changed ? serializeOrder(updated) : stored;
     }
 
-    /**
-     * Rewrites the names v1.48.0 could store for one provider to the id it is known by now. Only
-     * the token is replaced, so the entry keeps its position and its enabled flag.
-     */
-    public static String renameLegacyProviders(@Nullable String stored) {
-        if (stored == null || stored.isEmpty()) {
-            return stored == null ? "" : stored;
-        }
-        final StringBuilder rewritten = new StringBuilder(stored.length());
-        for (String raw : stored.split(",")) {
-            final String token = raw.trim();
-            if (token.isEmpty()) {
-                continue;
-            }
-            final boolean enabled = !token.startsWith("-");
-            final String id = enabled ? token : token.substring(1).trim();
-            if (rewritten.length() > 0) {
-                rewritten.append(',');
-            }
-            if (!enabled) {
-                rewritten.append('-');
-            }
-            rewritten.append(currentId(id));
-        }
-        return rewritten.toString();
-    }
-
-    /** The id of a provider stored under a name earlier versions used. */
     private static String currentId(String id) {
         return switch (id) {
             // An early build named the entry after the endpoint it talks to.
@@ -196,33 +168,6 @@ public final class AiProviders {
         };
     }
 
-    /** v1.48.0 had one AI switch per task, mapped to the OpenAI-compatible entry. */
-    public static String migrateFrom148(boolean ai, boolean local, List<String> known) {
-        List<String> enabled = new ArrayList<>();
-        if (known.contains(EMBEDDED)) {
-            enabled.add(EMBEDDED);
-        }
-        if (ai) {
-            enabled.add(OPENAI_COMPATIBLE);
-        }
-        enabled.add(GOOGLE);
-        if (local && known.contains(LOCAL)) {
-            enabled.add(LOCAL);
-        }
-
-        List<String> order = new ArrayList<>(enabled);
-        for (String id : known) {
-            if (!order.contains(id)) {
-                order.add(id);
-            }
-        }
-
-        List<ProviderEntry> entries = new ArrayList<>(order.size());
-        for (String id : order) {
-            entries.add(new ProviderEntry(id, enabled.contains(id)));
-        }
-        return serializeOrder(entries);
-    }
 
     public static boolean isAi(@Nullable String provider) {
         return OPENAI_COMPATIBLE.equals(provider);

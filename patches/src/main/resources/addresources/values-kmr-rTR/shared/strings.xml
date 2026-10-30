@@ -24,18 +24,22 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Reng saz bike</string>
   <string name="morphe_settings_color_invalid">Reng nebaş</string>
   <string name="morphe_settings_restart_title">Nûtin hewce ye</string>
+  <string name="morphe_settings_restart_dialog_message">Ji bo ku ev guhertin pêk bê, appê ji nû ve veke</string>
   <string name="morphe_settings_restart">Nûtinê bike</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importe kirin</string>
   <string name="morphe_settings_import_copy">Nuşînekiye</string>
   <string name="morphe_settings_import_reset">Sazkarên Morphe pêşdizitin</string>
+  <string name="morphe_settings_import_success">Rêvekirinên %s hatin împortkirin</string>
   <string name="morphe_settings_import_failure_parse">Importe kirin ne serket: %s</string>
+  <string name="morphe_settings_navigate_up">Biçe jor</string>
   <string name="morphe_settings_search_hint">Dizimên sazkarê bigere</string>
   <string name="morphe_settings_screen_info_title">Derbarê</string>
   <string name="morphe_settings_search_no_results_title">Ji bo \'%s\' tu encam ne dîtin</string>
   <string name="morphe_settings_search_no_results_summary">Pêşniyarê din bilêvêre</string>
   <string name="morphe_settings_search_recent_searches">Dizimên nêzîk</string>
   <string name="morphe_settings_search_remove_message">Ji dîroka dizimê ji holê bibe?</string>
+  <string name="morphe_settings_search_remove">Ji dîroka lêgeran rakişe</string>
   <string name="morphe_settings_search_clear_history">Dîroka dizimê paqij bike</string>
   <string name="morphe_settings_search_clear_history_message">Êdî dixwest hemû dîroka dizimê paqij bike?</string>
   <string name="morphe_settings_search_tips_title">Tişeyên dizimê</string>
@@ -47,7 +51,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Dîroka dizimê vala ye</string>
   <string name="morphe_settings_search_empty_history_summary">Bo raya şewitîna doza lêgerînê şopandî, î reîka lêgerînê binivîsîne û Enter bikşîne</string>
   <string name="morphe_settings_search_history_title">Nîşan da dîroka dizimê</string>
+  <string name="morphe_settings_name_title">Navê mîhengên Morphe</string>
   <string name="morphe_settings_name_default_item">Bixweber</string>
+  <string name="morphe_settings_name_entry_2">Zêdekirin</string>
+  <string name="morphe_settings_name_entry_3">Tweak</string>
+  <string name="morphe_settings_name_entry_4">Dema morphingê</string>
+  <string name="morphe_settings_name_custom_item">Taybet</string>
+  <string name="morphe_settings_name_custom_item_hint">Navekî binivîse</string>
+  <string name="morphe_settings_name_empty_warning">Nav nikare vala be</string>
   <string name="morphe_show_menu_icons_title">Îkonên sazkirina Morphe nîşan da</string>
   <string name="morphe_settings_menu_copy_path">Kopîkirî: %s</string>
   <string name="morphe_language_title">Zimanê Morphe</string>
@@ -90,6 +101,9 @@ Da ku zimanên nû wergerînin an wergerandinên hebin baş bikin, malpera morph
   <string name="morphe_debug_stacktrace_title">Rêveşeke logsê debug</string>
   <string name="morphe_debug_stacktrace_summary">Hêlanîna şopên pelan di tomarên teşhîsê de da ku alîkariya dîtina xeletiyan bike</string>
   <string name="morphe_debug_toast_on_error_title">Qextinê li toastê ser Morphe error</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Girtina toastên şaşiyan hemû agahdariyên şaşiya Morphe veşeride.
+
+Tu nayên agahdarkirin derbarê tu bûyereke neyîspediya"</string>
   <string name="morphe_debug_export_logs_title">Rapora logên çepkirinê</string>
   <string name="morphe_debug_export_logs_summary">Logs debug ên Morphe vekişîne</string>
   <string name="morphe_debug_export_logs_success">Logs debug bi serketî hatin vekirin</string>
@@ -105,27 +119,91 @@ Da ku zimanên nû wergerînin an wergerandinên hebin baş bikin, malpera morph
   <string name="morphe_debug_feature_flags_manager_summary">Bayinatan booleanan sererast bike</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Nîşanên taybetmendiyê bigerin…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Naçalak (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Çalak (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokkirî (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Zoravî (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Otomatîk</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Dabe</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Bo</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Bi zor veke</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Bloke bike</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Lêkirin</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Nîşanan xwertek hatin vekirin</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Nîşanan xwertek hatin veşartin</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Nîşanan xwertek lûsteyê hatin vekirin</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Serîlêdanê appê nûbike ku ev ayar bikarînin</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Eksport û import</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s nîşanên taybetmendiyê hatin zeviyan</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Tu nîşanên taybetmendiyê nehatin dîtin</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Nîşanên taybetmendiyê bi serketî hatin derxistin</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Derxistina nîşanên taybetmendiyê bi ser neket</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Nîşanên taybetmendiyê hatin barkirin, ji bo sepandin li Save bitikîne</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Xwendina pelê bi ser neket</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Lêgerîna bîner</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Dibise ku kîjan nîşaneya taybetmendiyê dibe sedema tevgera aplikasyonê.
+
+Nîv ji %s nîşaneyan hatine bloka kirin, û piştî her destpêkirinekê tu dibêjî ka tevger hîna heye.
+
+Berî destpêkirinê, carekê tevgerê biduhurîne, wegera nîşaneyên ku aplikasyon hîna xwestine ji lêgerînan winda dibin"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Destpêk</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Tu nîşaneyên taybetmendiyê ji bo lêgerînê tune ne.
+
+Tenê ew nîşaneyên ku aplikasyon gihîştiye û niha bi zorê nehatine vekirin dikarin di lêgerîna binarî de werin bikaranîn"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Gav %1$s
+
+%2$s nîşaneyên mayî, %3$s ji wan ji bo vê gavê hatine bloka kirin.
+
+Sîstema aplikasyonê dîsa destpêbike, kontrol bike ka tevger heye, paşê li jêr bersiv bide"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Lêgerîna nîşaneya taybetmendiyê di pêşve çûyê</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Tevger heye</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Tevger tune ye</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Lêgerîna binarî betal bike</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Lêgerîna binary hat betkirin</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Flag-ê taybetmendiyê %s dibe sedema tevgerê.
+
+Niha hat blokkirin"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Neqeredibû flag-ek taybetmendiyê.
+
+Wusa xuya dike ku tevgera app-ê nayê kontrolkirin bi flag-ek taybetmendiyê"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Neqeredibû tenê flag-ek taybetmendiyê.
+
+Tevger di destpêka lêgerînan de winda bû, lewma dibe ku ji yekî zêdetir flag-ên têkilidar bin an jî yek ji bersivan şaş bû"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Sazîna MicroG veke</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG nehatiye sazkirin. Besaz bike</string>
   <string name="gms_core_dialog_title">Çawa kirin heye</string>
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1s ya we kevne û dibe ku bibe sedema pirsgirekan.
+
+Ji kerema xwe MicroG nû bikeye versiyona herî dawî v%2s"</string>
+  <string name="gms_core_dialog_update_text">Nûkirin</string>
+  <string name="gms_core_dialog_ignore_text">Paşguh kirin</string>
+  <string name="gms_core_dialog_conflict_message">"MicroG ê hatî sazkirin ji aliyê Morphe ve nayê pêşniyar kirin:
+
+%1s
+
+Ji bo jêkirina wê bitikîne, piştre vê sepanê veke û MicroG RE sazkirine"</string>
+  <string name="gms_core_dialog_uninstall_text">Ji eskî kirin</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG destûr nîne ku li piştperdeyan bixebite.
+
+Ji bo telefona xwe rêberiya \"Don't kill my app\" bişopîne, û rênimayiyan li ser sazkirina MicroG a xwe bicîbîne.
+
+Ev ji bo xebatkirina sepanê pêwîst e"</string>
   <string name="gms_core_dialog_open_website_text">Malper veke</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Divê optimîzasyonên bataryayê yên MicroG bên guhertin da ku pirsgirêk pêş bikevin.
+
+Ragirtina optimîzasyonên bataryayê ji bo MicroG bandoreke neyênî li ser bikaranîna bataryayê nake.
+
+Bi botãoê berdewamkirinê bitikîne û guhertinên optimîzasyonê qebûl bike"</string>
   <string name="gms_core_dialog_continue_text">Bidomîne</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Nîşanîya dîyaloga çêkirina hestiyariya pîlê ya MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Birçawiya vê, dê ragirinê MicroG optimîzasyona bateriyê veşêre.
@@ -152,4 +230,6 @@ Ger hûn ezmûnek bêkêmasî dixwazin, &lt;b&gt;veguherînin&lt;/b&gt; evê û 
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ez versiyona lêgerînî dixwazim</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ez versiyona pêşbaz dixwazim</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Loga têkçûyînê li belgeyên bikarhêner hat save kirin: %s</string>
+  <string name="morphe_crash_log_saved">Loga têkçûyînê hat save kirin: %s</string>
 </resources>

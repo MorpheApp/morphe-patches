@@ -17,21 +17,219 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">ການຕັ້ງຄ່າ</string>
+  <string name="morphe_settings_confirm_user_dialog_title">ທ່ານແນ່ໃຈຫຼືບໍ່ວ່າຕ້ອງການດຳເນີນການຕໍ່?</string>
+  <string name="morphe_settings_save">ບັນທຶກ</string>
+  <string name="morphe_settings_reset">ຣີເຊັດ</string>
+  <string name="morphe_settings_reset_color">ຣີເຊັດສີ</string>
+  <string name="morphe_settings_color_invalid">ສີບໍ່ຖືກຕ້ອງ</string>
+  <string name="morphe_settings_restart_title">ຈຳເປັນຕ້ອງຣີສຕາດ</string>
+  <string name="morphe_settings_restart_dialog_message">ກະລຸນາເລີ່ມແອັບໃໝ່ ເພື່ອໃຫ້ການປ່ຽນແປງນີ້ມີຜົນ</string>
+  <string name="morphe_settings_restart">ຣີສຕາດ</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">ນຳເຂົ້າ</string>
+  <string name="morphe_settings_import_copy">ຄັດລອກ</string>
+  <string name="morphe_settings_import_reset">ຣີເຊັດການຕັ້ງຄ່າ Morphe ເປັນຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_settings_import_success">ນຳເຂົ້າການຕັ້ງຄ່າ %s ແລ້ວ</string>
+  <string name="morphe_settings_import_failure_parse">ການນຳເຂົ້າລົ້ມເຫຼວ: %s</string>
+  <string name="morphe_settings_navigate_up">ຍ້ອນກັບໄປ</string>
+  <string name="morphe_settings_search_hint">ຄົ້ນຫາການຕັ້ງຄ່າ</string>
+  <string name="morphe_settings_screen_info_title">ກ່ຽວກັບ</string>
+  <string name="morphe_settings_search_no_results_title">ບໍ່ພົບຜົນລັດສຳລັບ \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">ລອງໃຊ້ຄຳຄົ້ນຫາອື່ນ</string>
+  <string name="morphe_settings_search_recent_searches">ການຄົ້ນຫາຫຼ້າສຸດ</string>
+  <string name="morphe_settings_search_remove_message">ລຶບອອກຈາກປະຫວັດການຄົ້ນຫາບໍ?</string>
+  <string name="morphe_settings_search_remove">ລຶບອອກຈາກປະຫວັດການຄົ້ນຫາ</string>
+  <string name="morphe_settings_search_clear_history">ລ້າງປະຫວັດການຄົ້ນຫາ</string>
+  <string name="morphe_settings_search_clear_history_message">ທ່ານແນ່ໃຈບໍວ່າຕ້ອງການລ້າງປະຫວັດການຄົ້ນຫາທັງໝົດ?</string>
+  <string name="morphe_settings_search_tips_title">ເຄັດລັບການຄົ້ນຫາ</string>
+  <string name="morphe_settings_search_tips_summary">"• ແຕະທີ່ເສັ້ນທາງເພື່ອໄປຫາບ່ອນນັ້ນ
+• ກົດຄ້າງທີ່ການຕັ້ງຄ່າເພື່ອໄປຫາບ່ອນນັ້ນ
+• ກົດ Enter ເພື່ອບັນທຶກຄຳຄົ້ນຫາລົງໃນປະຫວັດ
+• ການຄົ້ນຫາຈະບໍ່ຄຳນຶງເຖິງຕົວອັກສອນໃຫຍ່-ນ້ອຍ ແລະ ເຄື່ອງໝາຍວັກຕອນ
+• ການຕັ້ງຄ່າຫຼັກຈະປາກົດຢູ່ເໜືອການຕັ້ງຄ່າຍ່ອຍທີ່ຖືກປິດໃຊ້ງານ"</string>
+  <string name="morphe_settings_search_empty_history_title">ປະຫວັດການຄົ້ນຫາວ່າງເປົ່າ</string>
+  <string name="morphe_settings_search_empty_history_summary">ເພື່ອບັນທຶກປະຫວັດການຄົ້ນຫາ, ໃຫ້ພິມຄຳຄົ້ນຫາ ແລະ ກົດ Enter</string>
+  <string name="morphe_settings_search_history_title">ສະແດງປະຫວັດການຄົ້ນຫາການຕັ້ງຄ່າ</string>
+  <string name="morphe_settings_name_title">ຊື່ການຕັ້ງຄ່າ Morphe</string>
+  <string name="morphe_settings_name_default_item">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_settings_name_entry_2">ສ່ວນເສີມ</string>
+  <string name="morphe_settings_name_entry_3">ການປັບແຕ່ງ</string>
+  <string name="morphe_settings_name_entry_4">ເວລາໃນການ Morphing</string>
+  <string name="morphe_settings_name_custom_item">ກຳນົດເອງ</string>
+  <string name="morphe_settings_name_custom_item_hint">ປ້ອນຊື່</string>
+  <string name="morphe_settings_name_empty_warning">ຊື່ບໍ່ສາມາດປ່ອຍວ່າງໄດ້</string>
+  <string name="morphe_show_menu_icons_title">ສະແດງໄອຄອນການຕັ້ງຄ່າ Morphe</string>
+  <string name="morphe_settings_menu_copy_path">ຄັດລອກແລ້ວ: %s</string>
+  <string name="morphe_language_title">ພາສາ Morphe</string>
+  <string name="morphe_language_user_dialog_message">"ການແປສຳລັບບາງພາສາອາດຈະຂາດຫາຍ ຫຼື ບໍ່ສົມບູນ.
+
+ເພື່ອແປພາສາໃໝ່ ຫຼື ປັບປຸງການແປທີ່ມີຢູ່, ໃຫ້ໄປທີ່ morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">ພາສາຂອງແອັບ</string>
+  <string name="morphe_pref_import_export_title">ນຳເຂົ້າ / ສົ່ງອອກ</string>
+  <string name="morphe_pref_import_export_summary">ນຳເຂົ້າ / ສົ່ງອອກ ການຕັ້ງຄ່າ Morphe</string>
+  <string name="morphe_settings_import_file">ນຳເຂົ້າຈາກໄຟລ໌</string>
+  <string name="morphe_settings_import_file_success">ນຳເຂົ້າການຕັ້ງຄ່າສຳເລັດແລ້ວ, ແຕະ ບັນທຶກ ເພື່ອປ່ຽນແປງ</string>
+  <string name="morphe_settings_import_file_failed">ນຳເຂົ້າການຕັ້ງຄ່າບໍ່ສຳເລັດ</string>
+  <string name="morphe_settings_export_file">ສົ່ງອອກເປັນໄຟລ໌</string>
+  <string name="morphe_settings_export_file_success">ສົ່ງອອກການຕັ້ງຄ່າສຳເລັດແລ້ວ</string>
+  <string name="morphe_settings_export_file_failed">ສົ່ງອອກການຕັ້ງຄ່າບໍ່ສຳເລັດ</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">ທ່ານກຳລັງໃຊ້ Morphe Patches ເວີຊັນຫຼ້າສຸດ &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">ທ່ານກຳລັງໃຊ້ Morphe Patches ເວີຊັນ &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;ມີການອັບເດດ: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;ເພື່ອອັບເດດ patches ຂອງທ່ານ, ໃຫ້ໃຊ້ Morphe ເພື່ອ patch ແອັບນີ້ຄືນໃໝ່</string>
+  <string name="morphe_settings_about_links_dev_header">ໝາຍເຫດ</string>
+  <string name="morphe_settings_about_links_dev_body">ເວີຊັນນີ້ແມ່ນເວີຊັນກ່ອນການປ່ອຍຕົວ ແລະ ທ່ານອາດຈະພົບກັບບັນຫາທີ່ບໍ່ຄາດຄິດ</string>
+  <string name="morphe_settings_about_links_header">ລິງກ໌ທາງການ</string>
+  <string name="morphe_settings_about_links_website">ເວັບໄຊທ໌</string>
+  <string name="morphe_settings_about_links_donate">ບໍລິຈາກ</string>
+  <string name="morphe_settings_about_links_translations">ການແປພາສາ</string>
+  <string name="morphe_settings_about_links_credits">ເຄຣດິດ</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">ເປັນເວີຊັນຫຼ້າສຸດແລ້ວ</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">ມີການອັບເດດໃໝ່</string>
+  <string name="morphe_settings_about_contributors_current">ການພັດທະນາປັດຈຸບັນ</string>
+  <string name="morphe_settings_about_contributors_prior">ການພັດທະນາກ່ອນໜ້ານີ້</string>
+  <string name="morphe_settings_about_links_morphe">ການພັດທະນາທີ່ກຳລັງດຳເນີນການ</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">ແຈ້ງການອະນຸຍາດ</string>
+  <string name="morphe_settings_about_licenses_loading">ກຳລັງໂຫຼດ…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">ການກວດສອບຂໍ້ຜິດພາດ</string>
+  <string name="morphe_debug_screen_summary">ກຳນົດຄ່າຕົວເລືອກນັກພັດທະນາຂັ້ນສູງ ແລະ ບັນທຶກການວິນິດໄສ</string>
+  <string name="morphe_debug_title">ເປີດການບັນທຶກ debug</string>
+  <string name="morphe_debug_stacktrace_title">ລາຍລະອຽດ stack trace ຂອງບັນທຶກການດີບັກ</string>
+  <string name="morphe_debug_stacktrace_summary">ລວມ stack traces ໃນບັນທຶກ debug ເພື່ອຊ່ວຍໃນການລະບຸຂໍ້ຜິດພາດ</string>
+  <string name="morphe_debug_toast_on_error_title">ສະແດງການແຈ້ງເຕືອນແບບ popup ເມື່ອເກີດຂໍ້ຜິດພາດໃນ Morphe</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"ການປິດການແຈ້ງເຕືອນຂໍ້ຜິດພາດແບບ toast ຈະເຊື່ອງທຸກການແຈ້ງເຕືອນຂໍ້ຜິດພາດຂອງ Morphe.
+
+ທ່ານຈະບໍ່ໄດ້ຮັບການແຈ້ງເຕືອນກ່ຽວກັບເຫດການທີ່ບໍ່ຄາດຄິດໃດໆ"</string>
+  <string name="morphe_debug_export_logs_title">ສົ່ງອອກບັນທຶກການກວດສອບຂໍ້ຜິດພາດ</string>
+  <string name="morphe_debug_export_logs_summary">ສົ່ງອອກບັນທຶກການກວດສອບຂໍ້ຜິດພາດຂອງ Morphe</string>
+  <string name="morphe_debug_export_logs_success">ສົ່ງອອກບັນທຶກການກວດສອບຂໍ້ຜິດພາດສຳເລັດແລ້ວ</string>
+  <string name="morphe_debug_export_logs_failed">ການສົ່ງອອກບັນທຶກການກວດສອບຂໍ້ຜິດພາດລົ້ມເຫຼວ</string>
+  <string name="morphe_debug_logs_search_hint">ຄົ້ນຫາບັນທຶກການດີບັກ…</string>
+  <string name="morphe_debug_export_logs_clear">ລ້າງ</string>
+  <string name="morphe_debug_logs_disabled">ການບັນທຶກການກວດສອບຂໍ້ຜິດພາດຖືກປິດໃຊ້ງານ</string>
+  <string name="morphe_debug_logs_none_found">ບໍ່ພົບລາຍການບັນທຶກການກວດສອບຂໍ້ຜິດພາດ</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">ຄັດລອກບັນທຶກການກວດສອບຂໍ້ຜິດພາດແລ້ວ</string>
+  <string name="morphe_debug_logs_failed_to_export">ການສົ່ງອອກບັນທຶກການກວດສອບຂໍ້ຜິດພາດລົ້ມເຫຼວ: %s</string>
+  <string name="morphe_debug_logs_clear_toast">ລ້າງບັນທຶກການກວດສອບຂໍ້ຜິດພາດແລ້ວ</string>
+  <string name="morphe_debug_feature_flags_manager_title">ຕົວຈັດການ Feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_summary">ຈັດການ boolean feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">ຄົ້ນຫາ feature flags…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">ບໍ່ໄດ້ເປີດໃຊ້ (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">ເປີດໃຊ້ຢູ່ (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">ຖືກບລັອກ (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">ບັງຄັບ (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">ອັດຕະໂນມັດ</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">ປິດ</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">ເປີດ</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">ບັງຄັບໃຫ້ເປີດ</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">ບລັອກ</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">ລຶບອອກ</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">ບັນທຶກການຕັ້ງຄ່າ Feature flags ແລ້ວ</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">ຣີເຊັດ Feature flags ແລ້ວ</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">ຄັດລອກ Feature flags ໄປยังຄລິບບອດແລ້ວ</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">ເລີ່ມແອັບໃໝ່ເພື່ອໃຊ້ການຕັ້ງຄ່ານີ້</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">ສົ່ງອອກ ແລະ ນຳເຂົ້າ</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">ນຳເຂົ້າ feature flags %s ສຳເລັດແລ້ວ</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">ບໍ່ພົບ feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">ສົ່ງອອກ Feature flags ສຳເລັດແລ້ວ</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">ການສົ່ງອອກ feature flags ລົ້ມເຫຼວ</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">ໂຫຼດ Feature flags ແລ້ວ, ແຕະ ບັນທຶກ ເພື່ອໃຊ້ງານ</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">ການອ່ານໄຟລ໌ລົ້ມເຫຼວ</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">ການຄົ້ນຫາແບບ Binary search</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"ຄົ້ນຫາວ່າ feature flag ໃດທີ່ເຮັດໃຫ້ເກີດພຶດຕິກຳຂອງແອັບ.
+
+ເຄິ່ງໜຶ່ງຂອງ %s flags ຖືກບລັອກ, ແລະ ຫຼັງຈາກການເລີ່ມຕົ້ນໃໝ່ແຕ່ລະຄັ້ງ ທ່ານຕ້ອງບອກວ່າພຶດຕິກຳນັ້ນຍັງຄົງມີຢູ່ຫຼືບໍ່.
+
+ເຮັດໃຫ້ເກີດພຶດຕິກຳນັ້ນຄັ້ງໜຶ່ງກ່ອນເລີ່ມຕົ້ນ, ບໍ່ດັ່ງນັ້ນ flags ທີ່ແອັບຍັງບໍ່ທັນໄດ້ຮຽກຮ້ອງຈະຫາຍໄປຈາກການຄົ້ນຫາ"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">ເລີ່ມຕົ້ນ</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"ບໍ່ມີ feature flags ທີ່ຈະຄົ້ນຫາ.
+
+ສະເພາະ flags ທີ່ແອັບໄດ້ເຂົ້າເຖິງ ແລະ ບໍ່ໄດ້ຖືກບັງຄັບໃຫ້ເປີດໃຊ້ໃນປັດຈຸບັນເທົ່ານັ້ນ ທີ່ສາມາດໃຊ້ໃນການຄົ້ນຫາແບບ binary search ໄດ້"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"ຂັ້ນຕອນ %1$s
+
+ເຫຼືອ %2$s flags, %3$s ຂອງພວກມັນຖືກບລັອກສຳລັບຂັ້ນຕອນນີ້.
+
+ເລີ່ມແອັບໃໝ່, ກວດສອບວ່າພຶດຕິກຳດັ່ງກ່າວຍັງມີຢູ່ຫຼືບໍ່, ຈາກນັ້ນຕອບຄຳຖາມລຸ່ມນີ້"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">ກຳລັງຄົ້ນຫາ Feature flag</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">ພຶດຕິກຳດັ່ງກ່າວມີຢູ່</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">ພຶດຕິກຳດັ່ງກ່າວບໍ່ມີຢູ່</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">ຍົກເລີກການຄົ້ນຫາແບບ Binary search</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">ຍົກເລີກການຄົ້ນຫາແບບ Binary search ແລ້ວ</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Feature flag %s ເປັນສາເຫດຂອງພຶດຕິກຳນີ້.
+
+ຕອນນີ້ມັນຖືກບລັອກແລ້ວ"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"ບໍ່ສາມາດຊອກຫາ feature flag ໄດ້.
+
+ພຶດຕິກຳຂອງແອັບເບິ່ງຄືວ່າບໍ່ໄດ້ຖືກຄວບຄຸມໂດຍ feature flag"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"ບໍ່ສາມາດຊອກຫາ feature flag ດຽວໄດ້.
+
+ພຶດຕິກຳດັ່ງກ່າວໄດ້ຫາຍໄປກ່ອນໜ້ານີ້ໃນການຄົ້ນຫາ, ດັ່ງນັ້ນອາດຈະມີ flag ຫຼາຍກວ່າໜຶ່ງອັນທີ່ກ່ຽວຂ້ອງ ຫຼື ຄຳຕອບໜຶ່ງໃນນັ້ນບໍ່ຖືກຕ້ອງ"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">ເປີດການຕັ້ງຄ່າ MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">ບໍ່ໄດ້ຕິດຕັ້ງ MicroG. ກະລຸນາຕິດຕັ້ງ</string>
+  <string name="gms_core_dialog_title">ຕ້ອງດຳເນີນການ</string>
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1s ຂອງທ່ານເກົ່າເກີນໄປ ແລະ ອາດເຮັດໃຫ້ເກີດບັນຫາ.
+
+ກະລຸນາອັບເດດ MicroG ເປັນເວີຊັນຫຼ້າສຸດ v%2s"</string>
+  <string name="gms_core_dialog_update_text">ອັບເດດ</string>
+  <string name="gms_core_dialog_ignore_text">ເມີນເສີຍ</string>
+  <string name="gms_core_dialog_conflict_message">"MicroG ທີ່ຕິດຕັ້ງໄວ້ບໍ່ໄດ້ຮັບການແນະນຳໂດຍ Morphe:
+
+%1s
+
+ແຕະເພື່ອຖອນການຕິດຕັ້ງ, ຈາກນັ້ນເປີດແອັບນີ້ຄືນໃໝ່ ແລະ ຕິດຕັ້ງ MicroG RE"</string>
+  <string name="gms_core_dialog_uninstall_text">ຖອນການຕິດຕັ້ງ</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ບໍ່ມີສິດໃນການເຮັດວຽກຢູ່ເບื้องຫຼັງ.
+
+ໃຫ້ປະຕິບັດຕາມຄຳແນະນຳ \"Don't kill my app\" ສຳລັບໂທລະສັບຂອງທ່ານ, ແລະ ນຳໃຊ້ຂັ້ນຕອນດັ່ງກ່າວເຂົ້າໃນການຕິດຕັ້ງ MicroG ຂອງທ່ານ.
+
+ສິ່ງນີ້ແມ່ນຈຳເປັນເພື່ອໃຫ້ແອັບສາມາດເຮັດວຽກໄດ້"</string>
+  <string name="gms_core_dialog_open_website_text">ເປີດເວັບໄຊທ໌</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"ຕ້ອງປິດການປັບປຸງການໃຊ້ພະລັງງານຂອງ MicroG ເພື່ອປ້ອງກັນບັນຫາ.
+
+ການປິດການປັບປຸງພະລັງງານສຳລັບ MicroG ຈະບໍ່ສົ່ງຜົນກະທົບທາງລົບຕໍ່ການໃຊ້ແບັດເຕີຣີ.
+
+ແຕະປຸ່ມດຳເນີນການຕໍ່ ແລະ ອະນຸຍາດໃຫ້ມີການປ່ຽນແປງການປັບປຸງ"</string>
+  <string name="gms_core_dialog_continue_text">ດຳເນີນການຕໍ່</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">ສະແດງບ່ອນໂต้ຕອບການປັບປຸງແບັດເຕີຣີຂອງ MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ການປິດການນຳໃຊ້ອັນນີ້ ຈະຊ່ອນການແຈ້ງເຕືອນການປັບປຸງແບັດເຕີຣີຂອງ MicroG.
+
+ຫາກບໍ່ມີການປ່ຽນແປງການປັບປຸງແບັດເຕີຣີ, ທ່ານອາດຈະພົບກັບ:
+• ແອັບອາດຈະປິດລົງແບບສຸ່ມ
+• ການແຈ້ງເຕືອນອາດຈະບໍ່ເຮັດວຽກ
+• ການຫຼິ້ນໃນພື້ນຫຼັງອາດຈະບໍ່ເຮັດວຽກ"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">ການຈັດການລິ້ງຂອງແອັບ</string>
+  <string name="morphe_link_handling_summary">ກຳນົດຄ່າລິ້ງເພື່ອເປີດໃນແອັບນີ້</string>
+  <string name="morphe_link_handling_step1_title">ຂັ້ນຕອນທີ 1: ປິດການໃຊ້ງານລິ້ງຂອງແອັບຕົ້ນສະບັບ</string>
+  <string name="morphe_link_handling_step1_message">ເປີດການຕັ້ງຄ່າຂອງແອັບຕົ້ນສະບັບ ແລະ ປິດການໃຊ້ງານລິ້ງໂດເມນທັງໝົດ</string>
+  <string name="morphe_link_handling_step2_title">ຂັ້ນຕອນທີ 2: ເປີດການໃຊ້ງານລິ້ງຂອງແອັບທີ່ຜ່ານການ Patch</string>
+  <string name="morphe_link_handling_step2_message">ເປີດການຕັ້ງຄ່າຂອງແອັບທີ່ຜ່ານການ Patch ແລະ ເປີດການໃຊ້ງານລິ້ງໂດເມນທັງໝົດ</string>
+  <string name="morphe_link_handling_open">ເປີດການຕັ້ງຄ່າ</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 ການແຈ້ງເຕືອນການທົດລອງ 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"ທ່ານກຳລັງໃຊ້ແອັບເວີຊັນທົດລອງຂອງ ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 ອາດຈະມີການເຮັດວຽກຂອງແອັບທີ່ຜິດປົກກະຕິ ຫຼື ບັກທີ່ຍັງບໍ່ທັນຮູ້ ເນື່ອງຈາກພວກເຮົາກຳລັງປັບປຸງ patch ສຳລັບແອັບເວີຊັນນີ້.
+&lt;br/&gt;&lt;br/&gt;
+ຖ້າທ່ານຕ້ອງການປະສົບການທີ່ບໍ່ມີບັນຫາ, ກະລຸນາ &lt;b&gt;ຖອນການຕິດຕັ້ງ&lt;/b&gt; ອັນນີ້ ແລະ ຕິດຕັ້ງແອັບເວີຊັນທີ່ແນະນຳຂອງ ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ ຂ້ອຍຕ້ອງການແບບທົດລອງ</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ ຂ້ອຍຕ້ອງການແບບສະຖຽນ</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">ບັນທຶກປຶ້ມບັນທຶກການຂັດຂ້ອງໄວ້ໃນເອກະສານຂອງຜູ້ໃຊ້: %s</string>
+  <string name="morphe_crash_log_saved">ບັນທຶກປຶ້ມບັນທຶກການຂັດຂ້ອງແລ້ວ: %s</string>
 </resources>

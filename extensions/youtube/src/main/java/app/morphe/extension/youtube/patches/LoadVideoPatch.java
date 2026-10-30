@@ -166,7 +166,7 @@ public final class LoadVideoPatch {
 
             PlayerInterface playerInterface = playerInterfaceRef.get();
             if (playerInterface == null) {
-                Utils.showToastShort(str("morphe_dismiss_player_not_available_toast"));
+                Utils.showSnackbarShort(str("morphe_dismiss_player_not_available_toast"));
                 return;
             }
 
@@ -205,7 +205,7 @@ public final class LoadVideoPatch {
     public static PlayerInterface getPlayerInterface() {
         PlayerInterface playerInterface = playerInterfaceRef.get();
         if (playerInterface == null) {
-            Utils.showToastShort(str("morphe_dismiss_player_not_available_toast"));
+            Utils.showSnackbarShort(str("morphe_dismiss_player_not_available_toast"));
             return null;
         }
         return playerInterface;

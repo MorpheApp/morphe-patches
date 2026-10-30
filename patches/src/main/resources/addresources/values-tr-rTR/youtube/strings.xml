@@ -114,6 +114,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_surveys_title">Anketleri gizle</string>
   <string name="morphe_hide_surveys_summary">Akış öneri doğruluğuyla ilgili anketleri ve hatırlatmaları gizler</string>
   <string name="morphe_hide_ticket_shelf_title">Bilet rafını gizle</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">\"Kullanılamayan videolar gizlendi\" banner\'ını gizle</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Oynatma listelerindeki \"Kullanılamayan videolar gizlendi\" banner\'ını gizler</string>
   <string name="morphe_hide_upload_time_title">Yüklenme zamanını gizle</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Sınırlamalar:
@@ -1209,6 +1212,8 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_miniplayer_disable_resuming_summary">Uygulama başlangıcında görünen YouTube Premium özelliği \'İzlemeye devam edin\' mini oynatıcısını devre dışı bırakır</string>
   <string name="morphe_miniplayer_screen_title">Mini oynatıcı</string>
   <string name="morphe_miniplayer_screen_summary">Küçültülmüş video oynatıcısının görünümünü ve davranışını özelleştirin</string>
+  <string name="morphe_miniplayer_not_available_title">Ek mini oynatıcılar</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube tüm ek mini oynatıcıları kaldırdı. Daha fazla mini oynatıcı tiplerini geri getirmek için YouTube 21.28.208 veya daha eskisini yamalayın</string>
   <string name="morphe_miniplayer_type_title">Mini oynatıcı tipi</string>
   <string name="morphe_miniplayer_hide_title_title">Başlığı ve kanalı gizle</string>
   <string name="morphe_miniplayer_type_entry_0">Devre dışı</string>
@@ -1250,6 +1255,9 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_fix_status_bar_layout_summary">Üst barları kapatmaması ve oynatıcının üzerinde boş alan bırakmaması için durum çubuğu düzenini tutarlı hale getirir. Uygulama çöktüğünde veya üst barlar yanlış göründüğünde bu özelliği kapatın</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Işıltı</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Işıltı 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Işıltı 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Işıltılı açılış ekranı bu cihaz tarafından desteklenmiyor</string>
   <string name="morphe_theme_color_light_title">Açık tema arka plan</string>
   <string name="morphe_theme_color_light_entry_2">Beyaz</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Beyaz)</string>

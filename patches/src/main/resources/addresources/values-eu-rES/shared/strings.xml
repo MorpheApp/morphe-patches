@@ -71,6 +71,9 @@ Hizkuntza berriak itzuli edo itzulpen existenteak hobetzeko, bisitatu morphe.sof
   <string name="morphe_settings_import_file">Fitxutxutik importatu</string>
   <string name="morphe_settings_import_file_success">⚙️ Konfigurazioa arrakastaz inportatu da, 保存 sakatu aplikatzeko</string>
   <string name="morphe_settings_import_file_failed">Konfigurazioak inportatzea huts egin du</string>
+  <string name="morphe_settings_export_file">Fitxera batera esportatu</string>
+  <string name="morphe_settings_export_file_success">⚙️ Konfigurazioa arrakastaz esportatu da</string>
+  <string name="morphe_settings_export_file_failed">Konfigurazioa esportatzea huts egin du</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Morphe Patches-en azken bertsioa erabiltzen ari zara: &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches-en &lt;i&gt;%1$s&lt;/i&gt; bertsioa erabiltzen ari zara&lt;br&gt;&lt;br&gt;&lt;b&gt;Eguneratzea eskuragarri: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Patch-ak eguneratzeko, erabili Morphe aplikazio honek berriz patchatzeko</string>
@@ -89,11 +92,13 @@ Hizkuntza berriak itzuli edo itzulpen existenteak hobetzeko, bisitatu morphe.sof
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Lizentzia-ohartupenak</string>
   <string name="morphe_settings_about_licenses_loading">Kargatzen…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugatzea</string>
   <string name="morphe_debug_screen_summary">Konfiguratu garapide aurreratuko aukerak eta diagnostiko-logak</string>
   <string name="morphe_debug_title">Aktibu debug logak</string>
+  <string name="morphe_debug_stacktrace_title">Debug log-en stack trace-a</string>
   <string name="morphe_debug_stacktrace_summary">Sartzen ditu stack trace-ak debug logetan erroreak identifikatzen laguntzeko</string>
   <string name="morphe_debug_toast_on_error_title">Erakutsi jakinarazupen laburra Morphe errorean</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Erroen toastak txukituak egiteak Morphe-ren erroen jakinarazpen guztiak ezkutatzen ditu.
@@ -135,6 +140,7 @@ Ez zaizkizu ezusteko gertakari batzeik jakinaraziko"</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Ezaugarrien flagak pantailako kopiatzailean kopiatuta</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Berrifiziatu aplikazioa konfigurazio hau erabiltzeko</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Esportatu eta importatu</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s ezaugarri-bandera inportatu dira</string>
   <string name="morphe_debug_feature_flags_manager_import_failed">Ez da ezaugarri-banderaik aurkitu</string>
   <string name="morphe_debug_feature_flags_manager_export_file_success">Ezaugarri-banderak ar വിജയtsunez esportatuak dira</string>
   <string name="morphe_debug_feature_flags_manager_export_file_failed">Ezaugarri-banderak esportatzea huts egin du</string>
@@ -178,6 +184,8 @@ Jokamodua bilaketan aurrago desagertu zen, beraz, flag bat baino gehiago egon da
   <string name="gms_core_dialog_outdated_message">"Zure MicroG v%1s bertsioa zaharkituta dago eta arazoak sor ditzake.
 
 Eguneratu MicroG v%2s azken bertsiora"</string>
+  <string name="gms_core_dialog_update_text">Eguneratu</string>
+  <string name="gms_core_dialog_ignore_text">Ezaintzu</string>
   <string name="gms_core_dialog_conflict_message">"Instaluratutako MicroG bertsioa ez da Morphe-k gomendatzen duena:
 
 %1s
@@ -198,6 +206,12 @@ MicroG-ren bateria optimizazioak desaktibatzeak ez du eragina negatiboa izango b
 Sakatu jarraitu botoia eta onartu optimizazio aldaketak"</string>
   <string name="gms_core_dialog_continue_text">Jarraitu</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Erakutsi MicroG bateria optimizazioaren elkarrizuna</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Hau desaktuatzeak MicroG-ren bateria optimizazio-ohartupena ezkutuko du.
+
+Bateria optimizazioak aldatzen ez badira, honako hau gertatu daiteke:
+• App-a ausazki ixteko aukera dago
+• Jakinarazpenek funtzionatu behaz ez dute
+• Atzealdeko erreprodukzioak funtzionatu behaz ez du"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Aplikazio-estek들의 kudeaketa</string>
   <string name="morphe_link_handling_summary">Konfiguratu estekak aplikazio honetan irekitzeko</string>
@@ -205,6 +219,7 @@ Sakatu jarraitu botoia eta onartu optimizazio aldaketak"</string>
   <string name="morphe_link_handling_step1_message">Ireki aplikazio originalaren konfigurazioa eta desaktibu domeinu-esteka guztiak</string>
   <string name="morphe_link_handling_step2_title">2. urratsa: Aktibu patched aplikazioaren estekak</string>
   <string name="morphe_link_handling_step2_message">Ireki patched aplikazioaren konfigurazioa eta aktibu domeinu-esteka guztiak</string>
+  <string name="morphe_link_handling_open">Ireki konfigurazioa</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Ohartupen Esperimentala 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"⚠️ &lt;b&gt;%1$s&lt;/b&gt; aplikazioaren bertsio esperimental bat erabiltzen ari zara

@@ -113,6 +113,9 @@ Le modifiche includono:
   <string name="morphe_hide_surveys_title">Nascondi sondaggi</string>
   <string name="morphe_hide_surveys_summary">Nasconde i sondaggi e i suggerimenti relativi alla precisione dei consigli nel feed</string>
   <string name="morphe_hide_ticket_shelf_title">Nascondi la sezione dei biglietti</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Nascondi il banner \"I video non disponibili sono nascosti\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Nasconde il banner \"I video non disponibili sono nascosti\" nelle playlist</string>
   <string name="morphe_hide_upload_time_title">Nascondi l\'ora di caricamento</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Limitazioni:
@@ -1207,6 +1210,8 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_miniplayer_disable_resuming_summary">Impedisce al lettore minimizzato \'Continua a guardare\' di essere mostrato all\'avvio dell\'app</string>
   <string name="morphe_miniplayer_screen_title">Lettore minimizzato</string>
   <string name="morphe_miniplayer_screen_summary">Personalizza l\'aspetto e il comportamento del lettore minimizzato</string>
+  <string name="morphe_miniplayer_not_available_title">Miniplayer aggiuntivi</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube ha rimosso tutti i miniplayer aggiuntivi. Per ripristinare ulteriori tipologie di miniplayer, è necessario applicare una patch a YouTube versione 21.28.208 o precedente.</string>
   <string name="morphe_miniplayer_type_title">Tipo di Lettore minimizzato</string>
   <string name="morphe_miniplayer_hide_title_title">Nascondi titolo e canale</string>
   <string name="morphe_miniplayer_type_entry_0">Disattivato</string>
@@ -1248,6 +1253,9 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_fix_status_bar_layout_summary">Mantiene coerente il layout della barra di stato, in modo che non copra le barre superiori e non lasci spazio vuoto sopra il player. Disattiva questa opzione se l\'app si arresta in modo anomalo o se le barre superiori appaiono errate</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Bagliore</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Luminoso 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Luminoso 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">La schermata di avvio Glow non è supportata da questo dispositivo</string>
   <string name="morphe_theme_color_light_title">Sfondo del tema chiaro</string>
   <string name="morphe_theme_color_light_entry_2">Bianco</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Bianco)</string>

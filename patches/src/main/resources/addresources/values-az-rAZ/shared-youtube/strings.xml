@@ -21,9 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Başlanğıc animasiyası</string>
   <string name="morphe_splash_screen_style_entry_1">Qapalıdı</string>
   <string name="morphe_splash_screen_style_entry_2">Rəng</string>
-  <string name="morphe_splash_screen_style_entry_3">Morphe-ni Rənglə</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Rəngi</string>
   <string name="morphe_splash_screen_style_entry_4">Saya</string>
-  <string name="morphe_splash_screen_style_entry_5">Saya Morphe</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Saya</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Yeni tənzimləmələri vurğula</string>
+  <string name="morphe_settings_new_indicator_days_summary">Yeniləmə ilə əlavə edilən tənzimləmələr və seçimlər ilə yanaşı nöqtənin göstərildiyi günlərin sayı</string>
+  <string name="morphe_settings_new_indicator_days_off">Qapalı</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Tənzimləməni bitirmək üçün yenidən başlat</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

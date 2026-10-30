@@ -22,6 +22,7 @@ final class AlphabetRomanizer {
     private final Map<String, String> letters;
     private final Map<String, String> digraphs;
     private final boolean stripAccents;
+
     /**
      * @param letters      Readings keyed by the lower case letter.
      * @param digraphs     Readings keyed by a lower case pair of letters.

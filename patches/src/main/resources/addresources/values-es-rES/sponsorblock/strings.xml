@@ -58,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_already_read">Ya leídas</string>
   <string name="morphe_sb_guidelines_popup_open">Muéstrame</string>
   <string name="morphe_sb_general_title">General</string>
+  <string name="morphe_sb_offline_segments_title">Guardar segmentos de vídeos descargados</string>
+  <string name="morphe_sb_offline_segments_summary">Permite omitir los segmentos de los vídeos descargados sin conexión</string>
   <string name="morphe_sb_toast_on_connection_error_title">Mostrar alertas de error de conexión</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Muestra una notificación cuando el servidor de SponsorBlock no esté disponible</string>
   <string name="morphe_sb_track_skip_count_title">Activar seguimiento del conteo de omisiones</string>

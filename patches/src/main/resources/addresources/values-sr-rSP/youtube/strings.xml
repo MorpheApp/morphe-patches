@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">Сакриј анкете</string>
   <string name="morphe_hide_surveys_summary">Сакрива анкете и подстицаје у вези са тачношћу препорука фида</string>
   <string name="morphe_hide_ticket_shelf_title">Сакриј полицу са картама</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Сакриј банер „Недоступни видео снимци су сакривени”</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Скрива банер „Недоступни видео снимци су сакривени” у плејлистама</string>
   <string name="morphe_hide_upload_time_title">Сакриј време отпремања</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Ограничења:
@@ -1247,6 +1250,7 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">Одржава конзистентан распоред статусне траке, тако да не прекрива горње траке и не оставља празан простор изнад плејера. Исключи ово ако се апликација уруши или горње траке изгледају лоше</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Сјај</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Овај уређај не подржава Glow екран за почетак</string>
   <string name="morphe_theme_color_light_title">Позадина светле теме</string>
   <string name="morphe_theme_color_light_entry_2">Бела</string>
   <string name="morphe_theme_color_light_entry_3">Material You (бела)</string>

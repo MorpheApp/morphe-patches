@@ -17,6 +17,7 @@ import android.widget.Toolbar;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.GmsCoreSupportPatch;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.NewSettingsIndicator;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.youtube.patches.HideStatusBarPatch;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
@@ -54,6 +55,8 @@ public class YouTubePreferenceFragment extends ToolbarPreferenceFragment {
                         SharedYouTubeSettings.CUSTOM_BRANDING_NOTIFICATION_ICON.key,
                         SharedYouTubeSettings.CUSTOM_BRANDING_NAME.key);
             }
+
+            NewSettingsIndicator.markNewPreferences(preferenceScreen);
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         }

@@ -103,7 +103,7 @@ final class SeriesPlayback {
                 navigating = false;
                 // Autoplay at the end is consumed, so it does not continue with recommendations.
                 if (!autoplay) {
-                    Utils.showToastLong(UiText.get("morphe_series_tracker_playback_boundary"));
+                    Utils.showSnackbarLong(UiText.get("morphe_series_tracker_playback_boundary"));
                 }
                 return;
             }
@@ -145,7 +145,7 @@ final class SeriesPlayback {
 
     private static void fail(String message) {
         clear();
-        Utils.showToastLong(UiText.get(message));
+        Utils.showSnackbarLong(UiText.get(message));
     }
 
     private SeriesPlayback() {}

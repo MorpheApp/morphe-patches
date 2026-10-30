@@ -70,7 +70,6 @@ import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
-import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public final class NavigationBarPatch {
@@ -232,11 +231,11 @@ public final class NavigationBarPatch {
      * and the pages make room for the system navigation buttons, which is only right when
      * the window is drawn behind them. That comes from the edge to edge top bar feature flag,
      * so without it the room is added twice: the navigation bar is raised and an empty bar is left
-     * at the bottom (https://github.com/MorpheApp/morphe-patches/issues/3825).
+     * at the bottom (<a href="https://github.com/MorpheApp/morphe-patches/issues/3825">...</a>).
      * <p>
      * The app draws the window behind the system navigation buttons only on Android 12 and later,
      * so on older versions the flags are always turned off, or the room is added twice
-     * (https://github.com/MorpheApp/morphe-patches/issues/3864).
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3864">...</a>).
      * <p>
      * With {@link NavigationBarStyle#DEFAULT} the flags are left to the account.
      */
@@ -284,7 +283,7 @@ public final class NavigationBarPatch {
      * With the navigation bar covering the system navigation buttons, the room below the bar fixed
      * at the bottom of some pages, such as the reply bar of the comment replies, already holds
      * the system navigation buttons. The flag adds the navigation bar height to it as well, so an
-     * empty band is left between the two bars (https://github.com/MorpheApp/morphe-patches/issues/2300).
+     * empty band is left between the two bars (<a href="https://github.com/MorpheApp/morphe-patches/issues/2300">...</a>).
      */
     public static boolean useFixedBottomBarRoom(boolean original) {
         return original && !translucentNavigationBarForced;
@@ -336,7 +335,7 @@ public final class NavigationBarPatch {
      * surface is drawn twice in every frame, at two positions. Android 12 and 13 send the two
      * positions to the surface from two threads at the same time, and the app crashes while
      * the player moves, such as when it is slowly dragged down to the miniplayer
-     * (https://github.com/MorpheApp/morphe-patches/pull/3684#issuecomment-6322984709).
+     * (<a href="https://github.com/MorpheApp/morphe-patches/pull/3684#issuecomment-6322984709">...</a>).
      * With {@link NavigationBarStyle#TRANSPARENT} and {@link NavigationBarStyle#OPAQUE} the copy
      * is not drawn, so the bar keeps its translucent color, without the blur.
      *
@@ -348,65 +347,20 @@ public final class NavigationBarPatch {
                 || NAVIGATION_BAR_STYLE == NavigationBarStyle.OPAQUE));
     }
 
-    /**
-     * If the keyboard height was ever removed from the bottom margin of the layout that holds
-     * the page, the player and the navigation bar, so the keyboard covers them.
-     */
-    private static volatile boolean keyboardMarginRemoved;
-
-    /**
-     * Injection point.
-     * <p>
-     * The bottom margin of the layout that holds the page, the player and the navigation bar while
-     * the keyboard is open. With the feature flags turned on by
-     * {@link #useTranslucentNavigationBar(boolean)}, the keyboard height is removed from it, so
-     * the keyboard covers them again.
-     * <p>
-     * The legacy miniplayer, such as the minimal type before 21.29, rests at the bottom of that
-     * layout, so while it is shown the layout ends at the top of the keyboard instead
-     * (https://github.com/MorpheApp/morphe-patches/issues/4003). The margin of the app leaves
-     * the height of the system navigation buttons for the navigation bar, which is hidden while
-     * the keyboard is open, so the full keyboard height is used. The other miniplayers are moved
-     * above the keyboard by {@link MinimalMiniplayerPatch}.
-     *
-     * @param original The keyboard height the app uses as the margin.
-     */
     public static int getKeyboardMargin(int original) {
-        if (!translucentNavigationBarForced) {
-            return original;
-        }
-
-        try {
-            if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED
-                    && !MiniplayerPatch.getCurrentMiniplayerType().isModern()
-                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                Activity activity = Utils.getActivity();
-                WindowInsets insets = activity == null
-                        ? null
-                        : activity.getWindow().getDecorView().getRootWindowInsets();
-                if (insets != null) {
-                    return Math.max(original, insets.getInsets(WindowInsets.Type.ime()).bottom);
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "getKeyboardMargin failure", ex);
-        }
-
-        keyboardMarginRemoved = true;
-        return 0;
+        return FixPagePaddingPatch.getKeyboardMargin(original);
     }
 
     static boolean isKeyboardMarginRemoved() {
-        return keyboardMarginRemoved;
+        return FixPagePaddingPatch.isKeyboardMarginRemoved();
     }
-
     /**
      * Injection point.
      * <p>
      * When the navigation bar covers the system navigation buttons, the bottom window inset is
      * added to its height and bottom padding. With the keyboard open, that inset also holds
      * the keyboard, so the bar grows as tall as the keyboard and covers the page
-     * (https://github.com/MorpheApp/morphe-patches/issues/3909). The page above then ends
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3909">...</a>). The page above then ends
      * the height of the system bars below the top of the keyboard, so only that much room is left.
      * Only with the feature flags turned on by {@link #useTranslucentNavigationBar(boolean)}.
      */
@@ -535,7 +489,7 @@ public final class NavigationBarPatch {
      * navigation buttons, the navigation bar makes room for them, and the pages end above
      * the navigation bar. With the navigation bar hidden in the Shorts player, nothing makes that
      * room, so the Shorts player is drawn behind the system navigation buttons
-     * (https://github.com/MorpheApp/morphe-patches/issues/3908). The Shorts player then makes
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3908">...</a>). The Shorts player then makes
      * the room itself.
      * <p>
      * The room the Shorts player reserves for the navigation bar depends on how it's opened,

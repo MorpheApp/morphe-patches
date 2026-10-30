@@ -113,6 +113,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_surveys_title">Folaigh suirbhéanna</string>
   <string name="morphe_hide_surveys_summary">Folaigh suirbhéanna agus brúidí faoi chruinneas moltaí beatha</string>
   <string name="morphe_hide_ticket_shelf_title">Folaigh an seilf ticéad</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Folaigh an meirg \'Tá físeáin nach bhfuil ar fáil i bhfolach\'</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Folaíonn sé an meirgí \'Tá físeáin nach bhfuil ar fáil i bhfolach\' i seinmliostaí</string>
   <string name="morphe_hide_upload_time_title">Folaigh am uaslódála</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Teorainneacha:
@@ -500,8 +503,8 @@ Má oscailtí físeán a bhfuil cnaipe Iarrtas aige uair amháin, beidh an ghné
   <string name="morphe_external_downloader_quick_video">Físeán</string>
   <string name="morphe_external_downloader_quick_audio">Fuaim</string>
   <string name="morphe_external_downloader_quick_options">Gach rogha</string>
-  <string name="morphe_shorts_download_flyout_button_title">Taispeáin íoslódáil sa chláir Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Cuir earráid íoslódála seachtracha isteach i bpróiseas Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_title">Taispeáin an íoslódáil i roghchlár na Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Cuireann sé mír roghchláir aníos le haghaidh íoslódálaí seachtrach leis an seinnteoir Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Íoslódáil</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Aistriúchán gutha</string>
@@ -613,7 +616,7 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Ceadaítear físeáin a bhaineann le páistí a shábháil sa liosta \'Féach níos déanaí\' ón roghchlár aníos.</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Taispeáin an cnaipe \'Sábháil le breathnú air níos déanaí\' sa phainéal aníos do na físeáin ghearra.</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Ceadaíonn sé físeáin ghearra a shábháil sa liosta \'Féach níos déanaí\' ón roghchlár aníos.</string>
-  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Athdhionaigh \"Féach níos déanaí\" chuig liosta pleanála</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Atreoraigh \'Féach níos déanaí\' chuig seinmliosta</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Féach níos déanaí</string>
   <string name="morphe_queue_flyout_title">Cuir leis an scuaine Morphe</string>
   <string name="morphe_queue_restore_title">Coinnigh scuaine idir seisiúin</string>
@@ -778,8 +781,8 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
   <string name="morphe_action_buttons_screen_title">Cnaipí gníomhaíochta</string>
   <string name="morphe_action_buttons_screen_summary">Roghnaigh cé na cnaipí gníomhaíochta a thaispeántar i mód portráide agus lánscáileáin</string>
   <string name="morphe_portrait_buttons">Cnaipí portráide</string>
-  <string name="morphe_disable_like_subscribe_glow_title">Díchumasaigh lonradh na cnaipí Is maith liom / Liostáil</string>
-  <string name="morphe_disable_like_subscribe_glow_summary">Coscann sé seo na cnaipí Is maith liom agus Liostáil ó bheith ag lonrú nuair a luann cruthaitheoir iad</string>
+  <string name="morphe_disable_like_subscribe_glow_title">Díchumasaigh breo na cnaipí Is maith liom / Liostáil</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">Cuireann sé cosc ​​ar na cnaipí \'Is maith liom\' agus \'Liostáil\' a bheith ag breo nuair a luann cruthaitheoir iad</string>
   <string name="morphe_hide_action_bar_title">Folaigh barra gníomhaíochta</string>
   <string name="morphe_hide_like_dislike_button_title">Folaigh an cnaipe Is maith liom agus Ní maith liom</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1115,14 +1118,15 @@ Leagan amach táibléid
 • Tá poist phobail i bhfolach
 • Níl an socrú athsheinm sna fothaí ar fáil
 • Níl an cnaipe athmheasctha ná an cnaipe Fuaime ar fáil i Shorts
-• B’fhéidir nach mbeidh an forleagan ‘Tuilleadh físeáin’ ar fáil
+• Seans nach mbeidh an forleagan 'Tuilleadh físeáin' ar fáil
 • Taispeántar barra gníomhaíochta seanfhíseáin neamh-fhillte
+• Seans nach n-oibreoidh míreanna roghchláir eitilte i gceart
 
-Leagan amach gluaisteán
+Leagan amach feithicleach
 • Eagraítear an fotha de réir topaicí agus bealaí
 • Níl an socrú athsheinm sna fothaí ar fáil
 • Níl an cnaipe athmheasctha ná an cnaipe Fuaime ar fáil i Shorts
-• B’fhéidir nach mbeidh an forleagan ‘Tuilleadh físeáin’ ar fáil
+• Seans nach mbeidh an forleagan 'Tuilleadh físeáin' ar fáil
 • Oscailtear Shorts sa ghnáthimreoir
 • Taispeántar barra gníomhaíochta seanfhíseáin neamh-fhillte"</string>
   <string name="morphe_tablet_layout_in_player_title">Cumasaigh leagan amach táibléid sa seinnteoir</string>
@@ -1207,6 +1211,8 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_miniplayer_disable_resuming_summary">Díchumasaíonn sé an miniplayer \'Lean ar aghaidh ag breathnú\', gné de chuid YouTube Premium a thaispeántar nuair a thosaítear an aip</string>
   <string name="morphe_miniplayer_screen_title">Mion seinnteoir</string>
   <string name="morphe_miniplayer_screen_summary">Saincheap cuma agus iompar an seinnteora físe íoslaghdaithe</string>
+  <string name="morphe_miniplayer_not_available_title">Mionimreoirí breise</string>
+  <string name="morphe_miniplayer_not_available_summary">Bhain YouTube gach mionimreoir breise amach. Chun cineálacha breise mionimreoirí a thabhairt ar ais, déan paisteáil ar YouTube 21.28.208 nó leagan níos sine.</string>
   <string name="morphe_miniplayer_type_title">Cineál Mion seinnteoir</string>
   <string name="morphe_miniplayer_hide_title_title">Folaigh an teideal agus an cainéal</string>
   <string name="morphe_miniplayer_type_entry_0">Díchumasaithe</string>
@@ -1248,6 +1254,9 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_fix_status_bar_layout_summary">Coinníonn sé leagan amach an bharra stádais comhsheasmhach, ionas nach gclúdaíonn sé na barraí uachtaracha agus nach bhfágann sé spás folamh os cionn an imreora. Múch an rogha seo má thuairteálann an aip nó má bhíonn cuma mhícheart ar na barraí uachtaracha.</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Breo</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Breo 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Breo 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Ní thacaíonn an gléas seo le scáileán splancscáileáin Breo</string>
   <string name="morphe_theme_color_light_title">Cúlra téama éadrom</string>
   <string name="morphe_theme_color_light_entry_2">Bán</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Bán)</string>
@@ -1270,9 +1279,9 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_seekbar_custom_color_accent_summary">Socraigh an dath tánaisteach den bharra dul chun cinn físe</string>
   <string name="morphe_seekbar_custom_color_invalid">Luach datha barra cuardaigh neamhbhailí</string>
   <!-- layout.branding.customBrandingPatch -->
-  <string name="morphe_custom_branding_icon_entry_8">Anallóg Bunaidh</string>
+  <string name="morphe_custom_branding_icon_entry_8">Analógach bunaidh</string>
   <string name="morphe_custom_branding_icon_entry_9">Cáca bunaidh</string>
-  <string name="morphe_custom_branding_icon_entry_10">Miatal bunaidh</string>
+  <string name="morphe_custom_branding_icon_entry_10">Miotal bunaidh</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Lógó ceanntásca</string>
   <string name="morphe_header_logo_entry_1">Réamhshocrú</string>
@@ -1638,15 +1647,15 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_series_tracker_unavailable_episode">Eipeasóid nach bhfuil ar fáil</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
   <string name="morphe_niconico_comments_screen_title">Tuairimí Niconico</string>
-  <string name="morphe_niconico_comments_screen_summary">Taispeáin comhrá beo agus athsheallú comhrá mar thuairimí a scrolálann trasna an fhíseáin</string>
-  <string name="morphe_niconico_comments_summary">Taispeánann sé cnaipe forleagan san imreoir físeáin. Tapáil chun na tuairimí a thaispeánadh nó a fholamh, tapáil agus coinnigh le haghaidh socruithe tapa</string>
-  <string name="morphe_niconico_comments_font_size_title">Méid font tuairimí</string>
-  <string name="morphe_niconico_comments_font_size_summary">Méid téacs na tuairimí (12-40 sp)</string>
-  <string name="morphe_niconico_comments_opacity_title">Trédemsse tuairimí</string>
-  <string name="morphe_niconico_comments_opacity_summary">Tránspaireacht téacs na NósCórasa agus na gcumhachraí</string>
-  <string name="morphe_niconico_comments_travel_duration_title">Fad taistealaigh</string>
-  <string name="morphe_niconico_comments_travel_duration_summary">Cé mhéad seconda a thógann NósCórasa an scréin a thrasnú. Bogann luachanna íseacha níos tapúla</string>
-  <string name="morphe_niconico_comments_max_length_title">Fad iomlán anúllaithe</string>
-  <string name="morphe_niconico_comments_max_length_summary">Cheanglaíonn sé údarás. Gach emoji á ríomh mar shuíomh aonair</string>
+  <string name="morphe_niconico_comments_screen_summary">Taispeáin comhrá beo agus athsheinm comhrá mar thuairimí a scrollaíonn trasna an fhíseáin</string>
+  <string name="morphe_niconico_comments_summary">Taispeánann sé cnaipe forleagtha sa seinnteoir físeáin. Beartaigh chun na tuairimí a thaispeáint nó a cheilt; beartaigh agus coinnigh chun rochtain a fháil ar shocruithe tapa</string>
+  <string name="morphe_niconico_comments_font_size_title">Méid cló an tráchtaireachta</string>
+  <string name="morphe_niconico_comments_font_size_summary">Méid téacs na dtuairimí (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Teimhneacht an tráchtaireachta</string>
+  <string name="morphe_niconico_comments_opacity_summary">Teimhneacht théacs na dtráchtanna agus na gcúlraí</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Fad an turais</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Cé mhéad soicind a thógann sé ar thráchtanna an scáileán a thrasnú. Bogann luachanna níos ísle níos tapúla.</string>
+  <string name="morphe_niconico_comments_max_length_title">Uasfhad tráchtaireachta</string>
+  <string name="morphe_niconico_comments_max_length_summary">Folaíonn sé tuairimí a bhfuil níos mó carachtar iontu ná an méid seo. Áirítear gach emoji mar charachtar amháin</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Gan teorainn</string>
 </resources>

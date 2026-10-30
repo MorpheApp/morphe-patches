@@ -113,6 +113,9 @@ Perubahan mencakup:
   <string name="morphe_hide_surveys_title">Sembunyikan survei</string>
   <string name="morphe_hide_surveys_summary">Sembunyikan survei dan pengingat mengenai akurasi rekomendasi feed</string>
   <string name="morphe_hide_ticket_shelf_title">Sembunyikan rak tiket</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Sembunyikan banner \"Video yang tidak tersedia disembunyikan\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Menyembunyikan banner \"Video yang tidak tersedia disembunyikan\" di daftar putar</string>
   <string name="morphe_hide_upload_time_title">Sembunyikan waktu unggah</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Batasan:
@@ -438,9 +441,9 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_copy_comments_success">Komentar disalin ke papan klip</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <string name="morphe_feed_long_press_menu_title">Ketuk dan tahan untuk membuka menu video</string>
-  <string name="morphe_feed_long_press_menu_summary">Mengetuk dan menahan di mana saja pada video umpan membuka menunya</string>
+  <string name="morphe_feed_long_press_menu_summary">Mengetuk dan menahan di mana saja pada video feed membuka menunya</string>
   <string name="morphe_feed_watch_later_button_title">Tampilkan tombol Tonton nanti pada thumbnail</string>
-  <string name="morphe_feed_watch_later_button_summary">Tombol Tonton nanti ditampilkan pada thumbnail video umpan. Mengetuk dan menekannya akan membuka Simpan ke daftar putar</string>
+  <string name="morphe_feed_watch_later_button_summary">Tombol Tonton nanti ditampilkan pada feed thumbnail video. Mengetuk dan menekannya akan membuka Simpan ke daftar putar</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
   <string name="morphe_post_image_download_title">Unduh gambar postingan</string>
   <string name="morphe_post_image_download_summary">Tombol unduh ditampilkan di samping tombol Bagikan pada postingan dengan gambar atau GIF, dan item unduh ditambahkan ke menu mereka</string>
@@ -453,18 +456,18 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_post_image_download_failed">Tidak dapat mengunduh gambar</string>
   <string name="morphe_post_image_download_not_found">Tidak ditemukan gambar dalam postingan ini</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
-  <string name="morphe_ask_summarize_flyout_menu_title">Tambahkan item Ask ke menu flyout</string>
-  <string name="morphe_ask_summarize_flyout_menu_summary">Menambahkan item ringkasan video ke menu flyout umpan</string>
+  <string name="morphe_ask_summarize_flyout_menu_title">Tambahkan item Tanya ke menu flyout</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">Menambahkan item ringkasan video ke menu flyout feed</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Ask awalnya memerlukan akun yang sudah masuk di negara tempat Ask tersedia.
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"Tanya awalnya memerlukan akun yang sudah masuk di negara tempat Tanya tersedia.
 
-Setelah video dengan tombol Ask dibuka satu kali, fitur ini berfungsi untuk semua video, bahkan jika negara saat ini tidak memiliki fitur Ask."</string>
+Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk semua video, bahkan jika negara saat ini tidak memiliki fitur Tanya."</string>
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
   <string name="morphe_ask_summarize_title">Ringkas video</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_failed">Tidak dapat membuka Ask untuk video ini</string>
+  <string name="morphe_ask_summarize_failed">Tidak dapat membuka Tanya untuk video ini</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
-  <string name="morphe_ask_summarize_unavailable">Ask tidak tersedia untuk akun atau negara Anda saat ini</string>
+  <string name="morphe_ask_summarize_unavailable">Tanya tidak tersedia untuk akun atau negara Anda saat ini</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <string name="morphe_feed_view_count_title">Tampilkan jumlah tayangan pada thumbnail</string>
   <string name="morphe_feed_view_count_summary">Jumlah tayangan video feed ditampilkan di sudut kiri bawah thumbnail mereka, bukan di bawah judul. Beberapa video, seperti di rak, mungkin tidak menampilkan jumlah tayangan</string>
@@ -488,7 +491,7 @@ Setelah video dengan tombol Ask dibuka satu kali, fitur ini berfungsi untuk semu
   <string name="morphe_disable_chapter_skip_double_tap_summary">Menonaktifkan gerakan ketuk dua jari yang melewati bab, yang mungkin terpicu secara tidak sengaja dengan satu jari</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Unduh video, podcast, atau lagu menggunakan aplikasi pihak ketiga</string>
-  <string name="morphe_external_downloader_overlay_button_title">Tampilkan tombol unduh tumpang tindih pemutar</string>
+  <string name="morphe_external_downloader_overlay_button_title">Tampilkan tombol unduh di hamparan pemutar</string>
   <string name="morphe_external_downloader_overlay_button_summary">Menampilkan tombol di pemutar video yang membuka pengunduh eksternal Anda</string>
   <string name="morphe_external_downloader_quick_menu_title">Unduhan cepat sekali ketuk</string>
   <string name="morphe_external_downloader_quick_menu_summary">Perintah untuk mengunduh di latar belakang. Ketuk dan tahan untuk membuka pengunduh. Berfungsi dengan YTDLnis dan YTindir</string>
@@ -1248,6 +1251,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_fix_status_bar_layout_summary">Menjaga tata letak status bar konsisten, sehingga tidak menutupi bar atas dan tidak meninggalkan ruang kosong di atas pemutar. Matikan ini jika aplikasi mengalami crash atau bar atas terlihat salah</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Bercahaya</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Layar splash glow tidak didukung oleh perangkat ini</string>
   <string name="morphe_theme_color_light_title">Latar belakang tema terang</string>
   <string name="morphe_theme_color_light_entry_2">Putih</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Putih)</string>

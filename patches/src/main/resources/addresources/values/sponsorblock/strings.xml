@@ -57,6 +57,8 @@ Second \"item\" text"</string>
     <string name="morphe_sb_guidelines_popup_already_read">Already read</string>
     <string name="morphe_sb_guidelines_popup_open">Show me</string>
     <string name="morphe_sb_general_title">General</string>
+    <string name="morphe_sb_offline_segments_title">Save segments of downloaded videos</string>
+    <string name="morphe_sb_offline_segments_summary">Allows skipping segments of downloaded videos while offline</string>
     <string name="morphe_sb_toast_on_connection_error_title">Show connection error alerts</string>
     <string name="morphe_sb_toast_on_connection_error_summary">Shows a notification when the SponsorBlock server is unavailable</string>
     <string name="morphe_sb_track_skip_count_title">Enable skip count tracking</string>

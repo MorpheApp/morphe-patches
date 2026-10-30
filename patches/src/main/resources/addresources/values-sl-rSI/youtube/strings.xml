@@ -113,6 +113,9 @@ Spremembe vključujejo:
   <string name="morphe_hide_surveys_title">Skrij ankete</string>
   <string name="morphe_hide_surveys_summary">Skrije ankete in spodbude glede natančnosti priporočil za vir</string>
   <string name="morphe_hide_ticket_shelf_title">Skrij polico s karticami</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Skrij pasico »Nedostopni videoposnetki so skriti«</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Skrije pasico »Nedostopni videoposnetki so skriti« v seznamih predvajanja</string>
   <string name="morphe_hide_upload_time_title">Skrij čas nalaganja</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Omejitve:
@@ -1249,6 +1252,7 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_fix_status_bar_layout_summary">Ohranja dosledno zasnovo vrstice stanja, tako da ne prekriva zgornjih vrstic in ne pušča praznega prostora nad predvajalnikom. To funkcijo izklopite, če se aplikacija sesuje ali zgornje vrstice ne izgledajo pravilno</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Sijaj</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Ta naprava ne podpira zaslona s sijajem</string>
   <string name="morphe_theme_color_light_title">Ozadje svetle teme</string>
   <string name="morphe_theme_color_light_entry_2">Bela</string>
   <string name="morphe_theme_color_light_entry_3">Material You (bela)</string>

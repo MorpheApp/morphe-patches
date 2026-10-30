@@ -15,4 +15,17 @@
 Second \"item\" text"</string>
 
 -->
-<resources></resources>
+<resources>
+  <string name="reddit_privacy_policy">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວຂອງ Reddit</string>
+  <string name="morphe_google_signin_not_available_toast">ບໍ່ສາມາດເຂົ້າສູ່ລະບົບດ້ວຍ Google ໄດ້. ກະລຸນາໃຊ້ ອີເມວ ເພື່ອເຂົ້າສູ່ລະບົບ</string>
+  <string name="morphe_custom_font_title">ຟອນທີ່ກຳນົດເອງ</string>
+  <string name="morphe_custom_font_summary">ໂຫຼດໄຟລ໌ຟອນ TTF ຫຼື OTF ທີ່ກຳນົດເອງຈາກທີ່ຢູ່ດ້ານລຸ່ມ. ການເປີດໃຊ້ງານສິ່ງນີ້ ຈະປິດການໃຊ້ງານບັງຄັບໃຊ້ຟອນຂອງລະບົບນຳດ້ວຍ</string>
+  <string name="morphe_custom_font_file_path_title">ໄຟລ໌ຟອນທີ່ກຳນົດເອງ</string>
+  <string name="morphe_custom_font_file_path_summary">ແຕະເພື່ອເລືອກໄຟລ໌ຟອນ TTF ຫຼື OTF</string>
+  <string name="morphe_custom_font_selected_font">ຟອນທີ່ເລືອກ - %s</string>
+  <string name="morphe_custom_font_pick_file_first">ກະລຸນາເລືອກໄຟລ໌ຟອນທີ່ກຳນົດເອງກ່ອນ</string>
+  <string name="morphe_custom_font_invalid_file">ກະລຸນາເລືອກໄຟລ໌ຟອນ .ttf ຫຼື .otf</string>
+  <string name="morphe_custom_font_failed_to_load">ໂຫຼດຟອນທີ່ກຳນົດເອງບໍ່ສຳເລັດ. ກະລຸນາເລືອກໄຟລ໌ອື່ນ</string>
+  <string name="morphe_force_system_font_title">ບັງຄັບໃຊ້ຟອນຂອງລະບົບ</string>
+  <string name="morphe_force_system_font_summary">ໃຊ້ຟອນຂອງລະບົບອຸປະກອນ ແທນ Reddit Sans ຫຼື Roboto. ການເປີດໃຊ້ງານສິ່ງນີ້ ຈະປິດການໃຊ້ງານຟອນທີ່ກຳນົດເອງນຳດ້ວຍ</string>
+</resources>

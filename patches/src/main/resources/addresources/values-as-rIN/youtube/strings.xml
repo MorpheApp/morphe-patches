@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">জৰীপসমূহ লুকুৱাওক</string>
   <string name="morphe_hide_surveys_summary">ফীডৰ পৰামৰ্শৰ সঠিকতাৰ বিষয়ে সমীক্ষা আৰু নজৰ কাঢ়ি লোৱা বাৰ্তাসমূহ লুকুৱাওক</string>
   <string name="morphe_hide_ticket_shelf_title">টিকট শ্বেল্ফটো লুকুৱাওক</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">\'অনুপলব্ধ ভিডিঅ\'সমূহ লুকুৱাই থোৱা হৈছে\' বেনাৰটো লুকুৱাওক</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">প্লেলিষ্টত \'অনুপলব্ধ ভিডিঅ\'সমূহ লুকুৱাই থোৱা হৈছে\' বেনাৰটো লুকুৱায়</string>
   <string name="morphe_hide_upload_time_title">আপলোড কৰা সময় লুকুৱাওক</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"সীমাবদ্ধতা:
@@ -1248,6 +1251,8 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_fix_status_bar_layout_title">ষ্টেটাছ বাৰে টপ বাৰসমূহ ঢাকি থকা সমস্যাটো সমাধান কৰক</string>
   <string name="morphe_fix_status_bar_layout_summary">ষ্টেটাছ বাৰৰ লেআউটো সংগত কৰি ৰাখে, যাতে ই টপ বাৰসমূহক ঢাকি নেৰাখে আৰু প্লেয়াৰৰ ওপৰত কোনো খালী ঠাই নেৰে। যদি এপটো ক্ৰাশ কৰে বা টপ বাৰবোৰ ভুলকৈ দেখায় তেন্তে ইয়াক বন্ধ কৰক</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">গ্লৌ</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">এই ডিভাইচটোৱে গ্লৌ স্প্ল্যাশ স্ক্ৰীনৰ সহায় নকৰে</string>
   <string name="morphe_theme_color_light_title">লাইট থিমৰ পৃষ্ঠভূমি</string>
   <string name="morphe_theme_color_light_entry_2">বগা</string>
   <string name="morphe_theme_color_light_entry_3">Material You (বগা)</string>
@@ -1270,6 +1275,9 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">ভিডীঅ\' প্ৰগতি বাৰৰ গৌণ ৰং নিৰ্ধাৰণ কৰক</string>
   <string name="morphe_seekbar_custom_color_invalid">অবৈধ seekbar ৰঙৰ মান</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">অৰিজিনেল এনালগ</string>
+  <string name="morphe_custom_branding_icon_entry_9">অৰিজিনেল কেক</string>
+  <string name="morphe_custom_branding_icon_entry_10">অৰিজিনেল মেটাল</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">হেডাৰ ল’গ’</string>
   <string name="morphe_header_logo_entry_1">ডিফল্ট</string>
@@ -1562,6 +1570,7 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_series_tracker_marked">এপিসোডসমূহ চাইছোঁ বুলি চিহ্নিত কৰা হৈছে</string>
   <string name="morphe_series_tracker_undo">বাতিল কৰক</string>
   <string name="morphe_series_tracker_enable_short">সক্ৰিয় কৰক</string>
+  <string name="morphe_series_tracker_new_episode">১ টা নতুন এপিসোড</string>
   <string name="morphe_series_tracker_new_episodes">%1$s টা নতুন এপিসোড</string>
   <string name="morphe_series_tracker_record_short">এই ডিভাইচত প্ৰগতি ৰেকৰ্ড কৰক</string>
   <string name="morphe_series_tracker_follow_consent">"আপোনাৰ ছিৰিজ আৰু প্ৰগতি এই ডিভাইচটোত থাকিব, যিবোৰ বিভিন্ন YouTube একাউণ্টৰ মাজত ভাগ কৰি লোৱা হয়। YouTube ইতিহাস নিয়ন্ত্ৰকবোৰে ইয়াক সলনি নকৰে। ছিৰিজ মেনুৰ পৰা প্ৰগতি মুছক।

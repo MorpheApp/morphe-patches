@@ -27,6 +27,7 @@ public final class ScriptDetector {
     /** Hiragana is written for grammar and never for a loanword, so its count settles a line. */
     private static final int HIRAGANA = SCRIPTS.length;
     private static final int COUNTS = SCRIPTS.length + 1;
+
     private ScriptDetector() {
     }
 

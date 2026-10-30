@@ -113,6 +113,9 @@ Změny zahrnují:
   <string name="morphe_hide_surveys_title">Skrýt průzkumy</string>
   <string name="morphe_hide_surveys_summary">Skryje průzkumy a pobídky týkající se přesnosti doporučeného obsahu</string>
   <string name="morphe_hide_ticket_shelf_title">Skrýt sekci se vstupenkami</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Skrýt banner „Nedostupná videa jsou skryta“</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Skryje banner „Nedostupná videa jsou skryta“ v playlistech</string>
   <string name="morphe_hide_upload_time_title">Skrýt čas nahrání</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Omezení:
@@ -1247,6 +1250,9 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <string name="morphe_fix_status_bar_layout_summary">Udržuje konzistentní rozvržení stavového řádku, takže nezakrývá horní lišty a nezanechává prázdný prostor nad přehrávačem. Toto vypněte, pokud aplikace havaruje nebo pokud horní lišty vypadají špatně</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Záře</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Tento zařízení nepodporuje zářící obrazovku při spuštění</string>
   <string name="morphe_theme_color_light_title">Pozadí světlého motivu</string>
   <string name="morphe_theme_color_light_entry_2">Bílá</string>
   <string name="morphe_theme_color_light_entry_3">Material You (bílá)</string>

@@ -1,3 +1,24 @@
+## [2.0.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.49.0-dev.11...v2.0.0-dev.1) (2026-10-29)
+
+### ⚠ BREAKING CHANGES
+
+* Patches now use Morphe Patcher 2.0.0
+
+* Treat breaking changes as major releases ([c596d42](https://github.com/MorpheApp/morphe-patches/commit/c596d42afb48dd79be022f81f3b731eda8870941))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Download post images:** Match posts with texts of many lines or a single emoji ([#4167](https://github.com/MorpheApp/morphe-patches/issues/4167)) ([0c5dc17](https://github.com/MorpheApp/morphe-patches/commit/0c5dc17e215ad63b748570adea5894553d489dd6))
+
+### ✨ New Features
+
+* **YouTube:** Add offline sponsorblock segment support for in-app downloads ([#4140](https://github.com/MorpheApp/morphe-patches/issues/4140)) ([136851e](https://github.com/MorpheApp/morphe-patches/commit/136851e5a5690fd9e2488eb3f0e57537bdfffc2a))
+* **YouTube:** Highlight new in-app settings ([#4162](https://github.com/MorpheApp/morphe-patches/issues/4162)) ([a3b34d7](https://github.com/MorpheApp/morphe-patches/commit/a3b34d75d399fcc7dd3f9cb2c68f32fc112d979b))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add support for `9.30.53` ([f049c91](https://github.com/MorpheApp/morphe-patches/commit/f049c91c540f74da8dffe462a8fa5b10cb073305))
+
 ## [1.49.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.49.0-dev.10...v1.49.0-dev.11) (2026-10-29)
 
 ### ⚠ BREAKING CHANGES

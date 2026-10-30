@@ -235,6 +235,22 @@ internal fun spoofVideoStreamsPatch(
                     nop
                 """
 
+                // Parses the player config bytes in v3 to a new player config in v5.
+                val parsePlayerConfig = """
+                    sget-object v4, $playerConfigClass->a:$playerConfigClass
+                    invoke-virtual { v4 }, $createBuilderMethod
+                    move-result-object v4
+                    $castInstruction
+                    invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
+                    move-result-object v5
+                    invoke-virtual { v4, v3, v5 }, $mergeFromMethod
+                    move-result-object v5
+                    check-cast v5, $castReference
+                    invoke-virtual { v5 }, $buildMethod
+                    move-result-object v5
+                    check-cast v5, $playerConfigClass
+                """
+
                 val helperMethod = ImmutableMethod(
                     it.classDef.type,
                     "patch_setStreamingData",
@@ -282,18 +298,7 @@ internal fun spoofVideoStreamsPatch(
                             invoke-static { v2 }, $EXTENSION_CLASS->getPlayerConfig(Ljava/lang/String;)[B
                             move-result-object v3
                             if-eqz v3, :disabled
-                            sget-object v4, $playerConfigClass->a:$playerConfigClass
-                            invoke-virtual { v4 }, $createBuilderMethod
-                            move-result-object v4
-                            $castInstruction
-                            invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
-                            move-result-object v5
-                            invoke-virtual { v4, v3, v5 }, $mergeFromMethod
-                            move-result-object v5
-                            check-cast v5, $castReference
-                            invoke-virtual { v5 }, $buildMethod
-                            move-result-object v5
-                            check-cast v5, $playerConfigClass
+                            $parsePlayerConfig
 
                             # Check if player config contains android media lib config.
                             invoke-static { v2 }, $EXTENSION_CLASS->hasAndroidMedia(Ljava/lang/String;)Z
@@ -305,11 +310,15 @@ internal fun spoofVideoStreamsPatch(
                             iget-object v7, v6, $mediaUstreamerRequestConfig
                             if-eqz v7, :disabled
 
-                            # Set media uStreamer request config.
+                            # Set media uStreamer request config in a copy of the app player config.
+                            # The app config may already be serialized, which caches its size,
+                            # and changing it then breaks serializing it again.
                             iget-object v5, p2, $setPlayerConfigField
+                            invoke-virtual { v5 }, $playerConfigClass->toByteArray()[B
+                            move-result-object v3
+                            $parsePlayerConfig
                             iget-object v6, v5, $mediaCommonConfigField
                             iput-object v7, v6, $mediaUstreamerRequestConfig
-                            iput-object v6, v5, $mediaCommonConfigField
 
                             :override_all_player_config
                             # Set player config.

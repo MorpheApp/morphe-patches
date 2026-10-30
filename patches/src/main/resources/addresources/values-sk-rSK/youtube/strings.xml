@@ -113,6 +113,9 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_surveys_title">Skryť prieskumy</string>
   <string name="morphe_hide_surveys_summary">Skryje prieskumy a návrhy týkajúce sa presnosti odporúčania kanála</string>
   <string name="morphe_hide_ticket_shelf_title">Skryť policu lístkov</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Skryť banner „Nedostupné videá sú skryté“</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Skryje banner „Nedostupné videá sú skryté“ v zoznamoch prevzatia</string>
   <string name="morphe_hide_upload_time_title">Skryť čas nahrania</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Obmedzenia:
@@ -1249,6 +1252,7 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_fix_status_bar_layout_summary">Udržuje konzistentné rozloženie stavového riadka, takže nezakrýva horné panely a nenecháva prázdny priestor nad prehrávačom. Toto vypnite, ak sa aplikácia zrúti alebo horné panely vyzerajú nesprávne</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Žiarenie</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Tento zariadenie nepodporuje žiarivý úvodný obrazovku</string>
   <string name="morphe_theme_color_light_title">Pozadie svetlého motívu</string>
   <string name="morphe_theme_color_light_entry_2">Biela</string>
   <string name="morphe_theme_color_light_entry_3">Material You (biely)</string>

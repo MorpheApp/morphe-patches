@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">إخفاء الاستطلاعات</string>
   <string name="morphe_hide_surveys_summary">إخفاء استطلاعات الرأي والتنبيهات حول دقّة توصية الخلاصة</string>
   <string name="morphe_hide_ticket_shelf_title">إخفاء رف التذاكر</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">إخفاء لافتة \'يتم إخفاء الفيديوهات غير المتوفّرة\'</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">يخفي لافتة \'يتم إخفاء الفيديوهات غير المتوفّرة\' في قوائم التشغيل</string>
   <string name="morphe_hide_upload_time_title">إخفاء وقت التحميل</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"القيود:
@@ -1212,6 +1215,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_disable_resuming_summary">يعطّل مشغل \'متابعة المشاهدة\' المصغر، وهي ميزة YouTube Premium تظهر عند بدء تشغيل التطبيق</string>
   <string name="morphe_miniplayer_screen_title">المشغل المصغر</string>
   <string name="morphe_miniplayer_screen_summary">تخصيص مظهر ونمط مشغل الفيديو المصغر</string>
+  <string name="morphe_miniplayer_not_available_title">مشغلات مصغرة إضافية</string>
+  <string name="morphe_miniplayer_not_available_summary">أزال YouTube كل مشغلات الفيديو المصغرة الإضافية. لاستعادة المزيد من أنواع المشغلات الصغيرة، يُرجى تعديل YouTube إصدار 21.28.208 أو أقدم</string>
   <string name="morphe_miniplayer_type_title">نوع المشغل المصغر</string>
   <string name="morphe_miniplayer_hide_title_title">إخفاء العنوان والقناة</string>
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
@@ -1253,6 +1258,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_fix_status_bar_layout_summary">يحافظ على تخطيط شريط الحالة بشكل متسق، بحيث لا يغطي الأشرطة العلوية ولا يترك مساحة فارغة فوق المشغل. قم بإيقاف تشغيل هذا إذا تعطل التطبيق أو ظهرت الأشرطة العلوية بشكل خاطئ</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">توهج</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">شاشة البدء المتوهجة غير مدعومة في هذا الجهاز</string>
   <string name="morphe_theme_color_light_title">خلفية المظهر الفاتح</string>
   <string name="morphe_theme_color_light_entry_2">أبيض</string>
   <string name="morphe_theme_color_light_entry_3">Material You (أبيض)</string>

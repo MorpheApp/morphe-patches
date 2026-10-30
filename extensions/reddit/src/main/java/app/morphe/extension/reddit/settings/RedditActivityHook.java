@@ -109,7 +109,7 @@ public class RedditActivityHook {
             return false;
         }
 
-        return AbstractPreferenceFragment.showRestartDialogIfNeeded(activity, activity::finish);
+        return AbstractPreferenceFragment.showRestartDialogIfNeeded(activity);
     }
 
     /**
@@ -187,7 +187,7 @@ public class RedditActivityHook {
          * Closes the settings, after first showing the restart dialog if a changed setting requires it.
          */
         private void closeSettings() {
-            if (!AbstractPreferenceFragment.showRestartDialogIfNeeded(getActivity(), this::dismiss)) {
+            if (!AbstractPreferenceFragment.showRestartDialogIfNeeded(getActivity())) {
                 dismiss();
             }
         }

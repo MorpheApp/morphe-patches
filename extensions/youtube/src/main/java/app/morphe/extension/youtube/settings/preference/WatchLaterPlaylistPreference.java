@@ -36,7 +36,7 @@ public class WatchLaterPlaylistPreference extends Preference {
     @Override
     protected void onClick() {
         if (AuthUtils.isNotLoggedIn()) {
-            Utils.showToastShort(str("morphe_queue_manager_check_failed_auth"));
+            Utils.showSnackbarShort(str("morphe_queue_manager_check_failed_auth"));
             return;
         }
 

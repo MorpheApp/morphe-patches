@@ -58,9 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Menyembunyikan rak-rak Trending dari feed dan saran pencarian</string>
   <string name="morphe_remove_notification_dialog_title">Hapus dialog saran notifikasi</string>
   <string name="morphe_remove_notification_dialog_summary">Secara otomatis menutup dialog saran notifikasi saat mengunjungi subreddit</string>
-  <string name="morphe_show_flairs_in_home_feed_title">Tampilkan flair di umpan rumah</string>
-  <string name="morphe_show_flairs_in_home_feed_summary">Menampilkan badge flair postingan di umpan rumah</string>
-  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Beberapa item umpan mungkin tidak menampilkan flair</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Tampilkan flair di feed beranda</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Menampilkan badge flair postingan di feed beranda</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Beberapa item feed mungkin tidak menampilkan flair</string>
   <string name="morphe_show_view_count_title">Tampilkan jumlah tayangan di postingan</string>
   <string name="morphe_show_view_count_summary">Batasan: Hanya tersedia jika respons API menyertakan jumlah tampilan</string>
   <string name="morphe_flip_post_action_bar_title">Balik bilah aksi postingan</string>

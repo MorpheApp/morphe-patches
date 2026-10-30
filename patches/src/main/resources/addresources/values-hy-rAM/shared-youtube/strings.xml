@@ -21,6 +21,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Մեկնարկային անիմացիա</string>
   <string name="morphe_splash_screen_style_entry_1">Անջատված</string>
   <string name="morphe_splash_screen_style_entry_2">Գույն</string>
+  <string name="morphe_splash_screen_style_entry_4">Մոնոխրոմ</string>
+  <!-- misc.settings.settingsPatch -->
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Վերագործարկեք կարգավորումներն ավարտելու համար</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -47,6 +49,7 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Ներբեռնումներ</string>
   <string name="morphe_download_mode_title">Ներբեռնման ռեժիմ</string>
+  <string name="morphe_download_mode_entry_default">Լռում</string>
   <string name="morphe_download_mode_entry_in_app">Ներբեռնում հավելվածի միջոցով</string>
   <string name="morphe_download_mode_entry_external">Արտաքին ներբեռնող</string>
   <string name="morphe_external_downloader_name_title">Ներբեռնողի փաթեթի անվանում</string>
@@ -61,6 +64,11 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_empty_warning">Փաթեթի անվանումը չի կարող լինել դատարկ</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Պատ춤ային</string>
+  <string name="morphe_custom_branding_icon_title">Հավելվածի սիմվոլ</string>
+  <string name="morphe_custom_branding_icon_entry_1">Բնօրինակ</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe սև</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe մուգ</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe բաց</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_5">Morphe play light</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
@@ -133,6 +141,7 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-ի մուտքի ժամանակը լիքն է, փորձեք նորից մուտք գործել VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2-ը ժամանակավորապես հասանելի չէ (կարգավիճակ %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2-ը ժամանակավորապես հասանելի չէ</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Չի հաջողվում մուտք գործել VR, կայքի նույնականացումը չի հաստատվել</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Հնարավոր չէ մուտք գործել VR. %s</string>
   <string name="morphe_oauth2_toast_reset">Ելք է կատարվել Android VR-ից</string>
   <string name="morphe_oauth2_toast_invalid">VR մուտքի տոկենը անվավեր է, փորձեք կրկին մուտք գործել VR</string>
@@ -273,6 +282,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">Բացասական գնահատականները հասանելի չեն (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Թաքցված է սեփականատիրոջ կողմից</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Չի դուր գալիս այս տեսանյութը, ինչպես նաև %s այլ մարդկանց</string>
   <string name="morphe_ryd_accessibility_dislike_percentage">Չհավանել այս տեսանյութը, ձայների %s-ը չհավանություններ են</string>
   <string name="morphe_ryd_enabled_title">Միացնել Return YouTube Dislike-ը</string>
   <string name="morphe_ryd_dislike_percentage_title">Ցուցադրել անհավանմանները տոկոսով</string>

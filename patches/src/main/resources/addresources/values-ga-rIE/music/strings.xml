@@ -555,29 +555,29 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_mediasession_summary">Taispeánann sé an líne reatha ar an scáileán glasála, ar Android Auto agus trí Bluetooth. Teastaíonn Android 11 nó níos nuaí</string>
   <string name="morphe_music_lyrics_miniplayer_title">Taispeáin liricí an mhionimreora</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Taispeánann sé an líne reatha sa mhionsheinnteoir, agus an rian bogtha go dtí an fotheideal</string>
-  <string name="morphe_music_lyrics_mini_track_format_title">Format teideal amhráin/ealaíontóra</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Formáid teideal an amhráin/an ealaíontóra</string>
   <string name="morphe_music_lyrics_mini_track_format_summary">Format an riana a thaispeántar leis na liricí sa Miniplayer agus sa MediaSession. Is é {t} an teideal, is é {a} an t-artist agus is é {v} an leagan, mar shampla Acoustic, nuair a sholáthraíonn an t-uairceann liricí é. Ní thaispeántar téacs idir beirt gcolóin ach amháin nuair a bhíonn luach ag gach hathraí istigh ann; scríobh \\: le haghaidh colóin shimplí. Taispeántar gach líne in aice lena chéile, ag bogadh air gach uair a athraíonn an liric</string>
-  <string name="morphe_music_lyrics_mini_encapsulation_title">Format líne liricí</string>
-  <string name="morphe_music_lyrics_mini_encapsulation_summary">Format na líne liricí sa Miniplayer agus sa MediaSession. Is é {lrc} an líne agus is é {n} an líon uair a chanfar i ndiaidh a chéile. Ní thaispeántar téacs idir colóin ach amháin nuair a athchríonnann an líne. Úsáid \\: le haghaidh colóin</string>
-  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Caithfidh an format {lrc} a chomhሌir</string>
-  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Teampláin líne ealaíontóra agus timing animationa</string>
-  <string name="morphe_music_lyrics_mini_artist_min_label">Minimum ama scréine (ms)</string>
-  <string name="morphe_music_lyrics_mini_artist_max_label">Maximum ama scréine (ms)</string>
-  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Do animationa il-líne amháin. Coinnigh gach fréama arís an t-am íosaithe. Ag an íomhánú, sleamhnaigh líne an ealaíontóra fiú nuair a fhanann an liricneas an cineál céanna.</string>
-  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Caithfidh an íosaithe a bheith 0 nó níos mó. Caithfidh an íomhánú a bheith níos mó ná 0 agus ar a laghad mar an íosaithe.</string>
-  <string name="morphe_music_lyrics_mini_line_limits_title">Teorainneacha fad líne</string>
-  <string name="morphe_music_lyrics_mini_line_limits_summary">Teorainneacha líne liricneasa agus ealaíontóra, agus meáchan caractair lánleathnasaigh</string>
-  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Teorainneach líne liricneasa
-Rogaigh liricneasa níos faide ina leathanaí cothrom. Díallaíonn 0 an rogha rothaireachta."</string>
-  <string name="morphe_music_lyrics_mini_line_limits_artist">"Cuirteas líne an ealaíontóra
-Scail formáid rian pobuailte ina fhreamaí rothúla. Dícheistíonn 0 an scailte."</string>
-  <string name="morphe_music_lyrics_mini_line_limits_weight">"Meáchan carachtair lánleathas
-Cuirtear leis an dá chuirteas. Ag 1.75, cunann ceithre carachtar lánleathas mar 7."</string>
-  <string name="morphe_music_lyrics_mini_line_limits_invalid">Cuir isteach cuirteas uimhireán ó 0 go 10000 agus meáchan carachtair níos mó ná 0</string>
-  <string name="morphe_music_lyrics_mini_instrumental_title">Cuairt uirlise</string>
-  <string name="morphe_music_lyrics_mini_instrumental_summary">Taispeánfar sa mhinipléire agus sa Session Meán le linn cuairte uirlise. Is freama animation amháin gach líne. Is é {t} an teideal, is é {a} an ealaíontóir agus is í {lrc} an líne lirice is déanaí</string>
-  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Oifset timing an mhinipléire agus na Session Meán</string>
-  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Aistriaíonn é an am nuair a thaispeántaíonn an chéad líne eile sa Miniplayer agus sa MediaSession. Úsáid luach negativity má thaispeántaíonn líneanna go mall, mar shampla ar an scáileán glasa</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Formáid líne lirice</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Formáid na líne liricí sa Miniplayer agus sa MediaSession. Seasann {lrc} don líne, agus seasann {n} don líon uaireanta as a chéile a chantar í. Ní thaispeántar an téacs idir an dá colon ach amháin nuair a dhéantar an líne a athrá. Úsáid \\: chun colon a chur isteach.</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">Caithfidh an fhormáid {lrc} a bheith inti</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Teimpléad línte ealaíontóra agus uainiú beochana</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Íos-am scáileáin (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Uastréimhse scáileáin (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">I gcás beochan il-líne amháin. Coinnigh gach fráma ar feadh an íosfhad ama ar a laghad. Ar a mhéad, bog an líne ealaíontóra ar aghaidh fiú nuair a fhanann an liric mar an gcéanna.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">Caithfidh an t-íosmhéid a bheith 0 nó níos mó. Caithfidh an t-uasmhéid a bheith níos mó ná 0 agus ar a laghad cothrom leis an íosmhéid.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Teorainneacha ar fhad líne</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Teorainneacha línte do liricí agus d’ealaíontóirí, agus tiús carachtar ar leithead iomlán</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Teorainn le líon na línte liricí
+Roinn liricí níos faide ina dhá leath chothromaithe. Má shocraítear ar 0 é, ní dhéanfar aon roinnt."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Teorainn líne an ealaíontóra
+Roinn an fhormáid riain líonta ina frámaí rothlacha. Má shocraítear é go 0, díchumasaítear an roinnt."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Meáchan carachtar lánleithead
+Baineann sé leis an dá theorainn. Ag 1.75, comhairtear ceithre charachtar lánleithead mar 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Cuir isteach teorainneacha slánuimhreach ó 0 go 10000 agus meáchan carachtair atá níos mó ná 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Sos uirlise</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Ar taispeáint sa Mhini-imreoir agus sa MediaSession le linn sos uirlise. Is fráma beochana amháin é gach líne. Seasann {t} don teideal, {a} don ealaíontóir, agus {lrc} don líne dheireanach de na liricí.</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Fritháireamh ama idir an mionimreoir agus MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Athraíonn sé an tráth a thaispeántar an chéad líne eile sa Mhini-imreoir agus sa MediaSession. Úsáid luach diúltach má thaispeántar na línte ró-dhéanach, mar shampla ar an scáileán glasála.</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Scagairí</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex meiteashonraí</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Cuirtear gnáthshlonn i bhfeidhm ar theidil, ar ealaíontóirí, agus ar albaim roimh liricí a lorg agus nuair a dhéantar scóráil chun a chinneadh an meaitseálann dhá theideal. Fág folamh é chun an dá cheann a dhíchumasú. Baineann an réamhshocrú amach an tranglam coitianta ar nós \"Official Video\", \"Remaster\", \"【插曲】\", agus \"- Topic\".</string>
@@ -585,10 +585,10 @@ Cuirtear leis an dá chuirteas. Ag 1.75, cunann ceithre carachtar lánleathas ma
   <string name="morphe_music_lyrics_text_filter_summary">Slonn rialta a chuirtear i bhfeidhm ar théacs bunaidh na liricí amháin (ní ar aistriúcháin ná ar leaganacha rómánaithe). Fág folamh é chun é a dhíchumasú</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Marcóirí na líne eolais</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Má dhéantar na liricí a scagadh go mícheart go dtí an bun, déan é seo a choigeartú nó a ghlanadh. Marcóirí scartha le camóga: taispeántar línte ina bhfuil marcóir agus ansin idirponc mar eolas creidmheasa ag bun an leathanaigh.. Fág folamh é chun an ghné seo a dhíchumasú</string>
-  <string name="morphe_music_lyrics_force_capitalize_title">Cuir an chéad litir i bhmór</string>
-  <string name="morphe_music_lyrics_force_capitalize_summary">Cuireann sé an chéad litir de gach líne liric i bhmór</string>
-  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Bain puinctailleas ó thaobh thiar</string>
-  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Baineann sé phuinctálacha, commas, colóna agus semicolóna de scríobh ag críoch líneacha liric. Coimeádfar comhrácaí, comharthaí mianach, ellipsis, comhrais agus breisleanna</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Cuir an chéad litir i gceannlitir</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Cuireann sé an chéad litir de gach líne den amhrán i gceannlitir</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Bain an poncaíocht ag an deireadh</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Baineann sé pointí, camóga, colonanna agus leathcholonanna ag deireadh línte liricí. Coinnítear comharthaí ceiste, comharthaí exclamation, trí phonc, comharthaí athfhriotail agus lúibíní.</string>
   <string name="morphe_music_lyrics_text_size_title">Méid an téacs</string>
   <string name="morphe_music_lyrics_text_size_summary">Méid téacs na liricí</string>
   <string name="morphe_music_lyrics_offset_ms_title">Aistriú ama domhanda</string>

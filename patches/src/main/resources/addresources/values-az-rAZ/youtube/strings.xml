@@ -113,6 +113,9 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_surveys_title">Təftişləri gizlət</string>
   <string name="morphe_hide_surveys_summary">Axın tövsiyəsi dəqiqliyi haqqında təftişləri və xatırlatmaları gizlət</string>
   <string name="morphe_hide_ticket_shelf_title">Bilet bölməsin gizlət</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">\"Əlçatmaz videolar gizlidir\" panelini gizlət</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Pleylistlərdə \"Əlçatmaz videolar gizlidir\" panelini gizlədir</string>
   <string name="morphe_hide_upload_time_title">Yüklənilmə vaxtını gizlət</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Məhdudiyyətlər:
@@ -1208,6 +1211,8 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_miniplayer_disable_resuming_summary">Tətbiqin açılışında görünən, YouTube Premium xüsusiyyəti olan \"İzləməyə davam et\" kiçik oynadıcısını qapadır</string>
   <string name="morphe_miniplayer_screen_title">Kiçik oynadıcı</string>
   <string name="morphe_miniplayer_screen_summary">Kiçildilmiş video oynadıcı görünüşünü və davranışını fərdiləşdir</string>
+  <string name="morphe_miniplayer_not_available_title">Əlavə kiçik oynadıcılar</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube bütün əlavə kiçik oynadıcıları sildi. Daha çox kiçik oynadıcı növünü bərpa etmək üçün YouTube 21.28.208-i və ya daha köhnəni yamaqla</string>
   <string name="morphe_miniplayer_type_title">Kiçik oynadıcı növü</string>
   <string name="morphe_miniplayer_hide_title_title">Başlığı və kanalı gizlət</string>
   <string name="morphe_miniplayer_type_entry_0">Qapalıdı</string>
@@ -1249,6 +1254,9 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_fix_status_bar_layout_summary">Status zolağının tərtibatını sabit saxlayır, beləliklə o, yuxarı zolaqları örtmür və oynadıcı yuxarısında boş yer saxlamır. Tətbiq çöksə və ya yuxarı zolaqlar yanlış görünsə, bunu qapat</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Parlama</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Parıltı 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Parıltı 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Parlaq effektli ekran bu cihaz tərəfindən dəstəklənmir</string>
   <string name="morphe_theme_color_light_title">İşıqlı kolorit fonu</string>
   <string name="morphe_theme_color_light_entry_2">Ağ</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Ağ)</string>

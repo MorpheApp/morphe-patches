@@ -78,6 +78,7 @@ public final class LockScreenLyrics {
     };
     private static volatile long observedPositionMs;
     private static volatile long observedAtElapsedMs;
+
     private LockScreenLyrics() {
     }
 
@@ -308,8 +309,6 @@ public final class LockScreenLyrics {
         builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE, artist);
         return builder.build();
     }
-
-
 
 
 }

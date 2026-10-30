@@ -103,6 +103,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">Fela kannelana</string>
   <string name="morphe_hide_surveys_summary">Hylur kannanir og hröggur um nákvæmni um tillögur um umhverfi</string>
   <string name="morphe_hide_ticket_shelf_title">Fela miðaskjá</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Fela bannera „Óaðgengileg myndbönd eru falin“</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Felur bannera „Óaðgengileg myndbönd eru falin“ í spilunum</string>
   <string name="morphe_hide_upload_time_title">Fela hleðslutíma vídeós</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Takmarkanir:
@@ -1217,6 +1220,7 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_fix_status_bar_layout_summary">Heldir útliti stöðustikunnar í samræmi, svo hún þeki ekki efri tækin og skilur eftir sig enginn tómarúm ofan við spilarann. Slökktu á þessu ef forritið brotnar eða efri tækin líta ranglega út</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Glóð</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Glow-skjárstýring er ekki studduð af þessu tæki</string>
   <string name="morphe_theme_color_light_title">Ljósþemabakgrunnur</string>
   <string name="morphe_theme_color_light_entry_2">Hvítur</string>
   <string name="morphe_theme_color_light_entry_3">Material You (hvítur)</string>

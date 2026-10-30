@@ -86,12 +86,12 @@ public class CopyVideoLinkButton {
             final long currentVideoTimeInSeconds = appendCurrentVideoTimeInSeconds(withTimestamp, builder);
 
             Utils.setClipboard(builder.toString());
-            // Do not show a toast if using Android 13+ as it shows its own toast.
-            // But if the user copied with a timestamp then show a toast.
-            // Unfortunately this will show 2 toasts on Android 13+, but no way around this.
+            // Do not show a message if using Android 13+ as it shows its own toast.
+            // But if the user copied with a timestamp then show a message.
+            // Unfortunately this will show 2 messages on Android 13+, but no way around this.
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2
                     || (withTimestamp && currentVideoTimeInSeconds > 0)) {
-                Utils.showToastShort(withTimestamp && currentVideoTimeInSeconds > 0
+                Utils.showSnackbarShort(withTimestamp && currentVideoTimeInSeconds > 0
                         ? str("morphe_share_copy_link_with_timestamp_button_success")
                         : str("morphe_share_copy_link_button_success"));
             }

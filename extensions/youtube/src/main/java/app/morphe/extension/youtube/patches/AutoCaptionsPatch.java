@@ -10,9 +10,10 @@
 
 package app.morphe.extension.youtube.patches;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 
-import app.morphe.extension.shared.Utils;
+import android.os.SystemClock;
+
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -25,7 +26,7 @@ public class AutoCaptionsPatch {
         WITHOUT_VOLUME_ONLY
     }
 
-    private static final AtomicBoolean captionsButtonStatus = new AtomicBoolean(false);
+    private static final AtomicLong captionGuardUntil = new AtomicLong(Long.MAX_VALUE);
 
     /**
      * Injection point.
@@ -39,7 +40,7 @@ public class AutoCaptionsPatch {
         }
 
         // After the guard window (150ms), respect the user's manual CC button toggle.
-        if (captionsButtonStatus.get()) {
+        if (SystemClock.uptimeMillis() >= captionGuardUntil.get()) {
             return original;
         }
 
@@ -51,7 +52,7 @@ public class AutoCaptionsPatch {
     /**
      * Injection point.
      * <p>
-     * Note: 'captionsButtonStatus' field check is not needed here
+     * Note: 'captionGuardUntil' field check is not needed here
      * because it's only related to 'disableAutoCaptions()' method
      * in order to prevent auto-captioning with volume enabled
      */
@@ -66,7 +67,7 @@ public class AutoCaptionsPatch {
      * Called before {@link #disableAutoCaptions(boolean)}.
      */
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
-        captionsButtonStatus.set(false);
+        captionGuardUntil.set(Long.MAX_VALUE);
     }
 
     /**
@@ -74,6 +75,7 @@ public class AutoCaptionsPatch {
      * Called after {@link #disableAutoCaptions(boolean)}.
      */
     public static void videoInformationLoaded() {
-        Utils.runOnMainThreadDelayed(() -> captionsButtonStatus.compareAndSet(false, true), 150);
+        // Repeated loaded events must not re-lock a video after its initial guard expired.
+        captionGuardUntil.compareAndSet(Long.MAX_VALUE, SystemClock.uptimeMillis() + 150);
     }
 }

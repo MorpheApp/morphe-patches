@@ -157,6 +157,7 @@ public class FullscreenVideoScalePatch {
     }
 
     public static void applyScale() {
+        CaptionViewportPatch.onPresentationChanged();
         Utils.runOnMainThread(FullscreenVideoScalePatch::applyScaleOnMainThread);
     }
 

@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">Приховати опитування</string>
   <string name="morphe_hide_surveys_summary">Приховує опитування та підказки щодо точності рекомендацій у стрічці</string>
   <string name="morphe_hide_ticket_shelf_title">Приховати панель квитків</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Приховати банер \"Недоступні відео приховано\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Приховує банер \"Недоступні відео приховано\" у списках відтворення</string>
   <string name="morphe_hide_upload_time_title">Приховати час завантаження</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Обмеження:
@@ -1248,6 +1251,9 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">Підтримує сталий макет рядка стану, щоб він не перекривав верхні панелі та не залишав порожнього місця над плеєром. Вимкніть це, якщо застосунок аварійно завершує роботу або верхні панелі виглядають неправильно</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Сяйво</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe сяйво 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe сяйво 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Заставка \"Сяйво\" не підтримується цим пристроєм</string>
   <string name="morphe_theme_color_light_title">Фон світлої теми</string>
   <string name="morphe_theme_color_light_entry_2">Білий</string>
   <string name="morphe_theme_color_light_entry_3">Material You (білий)</string>
@@ -1270,9 +1276,9 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Встановлює додатковий колір смуги прогресу відтворення відео</string>
   <string name="morphe_seekbar_custom_color_invalid">Недійсне значення кольору смуги відтворення</string>
   <!-- layout.branding.customBrandingPatch -->
-  <string name="morphe_custom_branding_icon_entry_8">Оригінальний аналог</string>
-  <string name="morphe_custom_branding_icon_entry_9">Оригінальний торт</string>
-  <string name="morphe_custom_branding_icon_entry_10">Оригінальний метал</string>
+  <string name="morphe_custom_branding_icon_entry_8">Оригінальна - аналог</string>
+  <string name="morphe_custom_branding_icon_entry_9">Оригінальна - торт</string>
+  <string name="morphe_custom_branding_icon_entry_10">Оригінальна - метал</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Логотип заголовка</string>
   <string name="morphe_header_logo_entry_1">Стандартний</string>

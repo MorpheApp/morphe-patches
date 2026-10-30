@@ -33,6 +33,10 @@ internal object Constants {
                 isExperimental = true,
             ),
             AppTarget(
+                version = "9.30.53",
+                minSdk = 26
+            ),
+            AppTarget(
                 version = "9.20.53",
                 minSdk = 26
             ),

@@ -34,7 +34,7 @@ internal val translatedCaptionPensPatch = bytecodePatch(
     description = "Fixes auto-translated captions of styled caption tracks showing an empty background.",
 ) {
     // Adds the caption track interface.
-    dependsOn(sharedExtensionPatch, preferredCaptionLanguagePatch)
+    dependsOn(sharedExtensionPatch, autoTranslateCaptionsPatch)
 
     execute {
         // Track whether the caption track that is parsed is auto-translated.
@@ -75,6 +75,16 @@ internal val translatedCaptionPensPatch = bytecodePatch(
                 """
             )
         }
+
+        // Translated automatic captions can have orphan line break events,
+        // and stable caption blocks use the source timing of automatic captions.
+        CaptionFileParserFingerprint.instructionMatches.last().getMethodCalled().addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->repairInput(Ljava/io/InputStream;)Ljava/io/InputStream;
+                move-result-object p1
+            """
+        )
 
         // Every pen lookup of the timed text parser (<pen>, <p> and <s> elements) uses the same method.
         TimedTextSegmentElementFingerprint.instructionMatches[2].getMethodCalled().addInstructions(

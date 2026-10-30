@@ -139,19 +139,17 @@ val downloadsPatch = bytecodePatch(
 
         setExtensionIsPatchIncluded(EXTENSION_SHORTS_DOWNLOAD_BUTTON)
 
-        OfflineVideoEndpointFingerprint.method.apply {
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
-                    move-result v0
-                    if-eqz v0, :show_native_downloader
-                    return-void
-                    :show_native_downloader
-                    nop
-                """
-            )
-        }
+        OfflineVideoEndpointFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
+                move-result v0
+                if-eqz v0, :show_native_downloader
+                return-void
+                :show_native_downloader
+                nop
+            """
+        )
 
         // Open the external downloader with the playlist link, instead of saving the playlist.
         OfflinePlaylistEndpointFingerprint.method.addInstructionsWithLabels(

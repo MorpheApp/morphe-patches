@@ -113,6 +113,9 @@ Wijzigingen zijn:
   <string name="morphe_hide_surveys_title">Enquêtes verbergen</string>
   <string name="morphe_hide_surveys_summary">Verbergt enquêtes en aanmoedigingen over de nauwkeurigheid van feed-aanbevelingen</string>
   <string name="morphe_hide_ticket_shelf_title">Ticketsectie verbergen</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Verberg banner \'Niet beschikbare video\'s zijn verborgen\'</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Verbergt de banner \'Niet beschikbare video\'s zijn verborgen\' in afspeellijsten</string>
   <string name="morphe_hide_upload_time_title">Verberg uploadtijd</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Beperkingen:
@@ -1247,6 +1250,9 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_fix_status_bar_layout_summary">Houdt de lay-out van de statusbalk consistent, zodat deze de bovenste balken niet bedekt en er geen lege ruimte boven de speler overblijft. Schakel dit uit als de app crasht of als de bovenste balken verkeerd eruitzien</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Gloed</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Glow splash screen wordt niet ondersteund door dit apparaat</string>
   <string name="morphe_theme_color_light_title">Achtergrond van het lichtthema</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Wit)</string>

@@ -148,8 +148,6 @@ public final class LyricsPanelInstaller {
                     Settings.LYRICS_SHOW_ROMANIZE_BUTTON.key.equals(key)
                             && !Settings.LYRICS_SHOW_ROMANIZE_BUTTON.get();
             if (translateButtonOff || romanizeButtonOff) {
-                // A mode entered from a button leaves with it, or the panel would keep showing it
-                // with nothing left to turn it off.
                 panelView.releaseOnlyModesForHiddenButtons(translateButtonOff, romanizeButtonOff);
             }
             if (Settings.LYRICS_SHOW_COPY_BUTTON.key.equals(key)

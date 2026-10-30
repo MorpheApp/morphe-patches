@@ -110,7 +110,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                             if (errorMessage == null) {
                                 preference.setTitle(Html.fromHtml(str("morphe_sb_stats_username", newUserName), Html.FROM_HTML_MODE_COMPACT));
                                 preference.setText(newUserName);
-                                Utils.showToastLong(str("morphe_sb_stats_username_changed"));
+                                Utils.showSnackbarLong(str("morphe_sb_stats_username_changed"));
                             } else {
                                 preference.setText(userName); // revert to previous
                                 SponsorBlockUtils.showErrorDialog(errorMessage);

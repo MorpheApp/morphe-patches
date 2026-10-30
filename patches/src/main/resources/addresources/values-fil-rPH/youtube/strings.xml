@@ -113,6 +113,9 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_surveys_title">Itago ang mga pagsusuri</string>
   <string name="morphe_hide_surveys_summary">Itinatago ang mga survey at mga pahiwatig tungkol sa katumpakan ng rekomendasyon ng feed</string>
   <string name="morphe_hide_ticket_shelf_title">Itago ang ticket shelf</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Itago ang banner na \"Nakatagong mga video na hindi available\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Itinatago ang banner na \"Nakatagong mga video na hindi available\" sa mga playlist</string>
   <string name="morphe_hide_upload_time_title">Itago ang oras ng pag-upload</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Mga Limitasyon:
@@ -1247,6 +1250,7 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_fix_status_bar_layout_summary">Pinapanatiling consistent ang layout ng status bar upang hindi ito sumakop sa mga itaas na bar at walang walang laman na espasyo sa itaas ng player. I-off ito kung crash ang app o magmukha nang mali ang mga itaas na bar</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Kislap</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Hindi suportado ng device na ito ang glow splash screen</string>
   <string name="morphe_theme_color_light_title">Likuran ng maliwanag na tema</string>
   <string name="morphe_theme_color_light_entry_2">Puti</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Puti)</string>

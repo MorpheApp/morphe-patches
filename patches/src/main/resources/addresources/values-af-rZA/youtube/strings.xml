@@ -113,6 +113,9 @@ Veranderinge sluit in:
   <string name="morphe_hide_surveys_title">Verberg noodbokse</string>
   <string name="morphe_hide_surveys_summary">Verberg opnames en aansporings oor voer-aanbevelings akkuraatheid</string>
   <string name="morphe_hide_ticket_shelf_title">Verberg mediese panele</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Steek \'Onbeskikbare video\'s is versteek\' banier weg</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Steek die \'Onbeskikbare video\'s is versteek\' banier in speellyste weg</string>
   <string name="morphe_hide_upload_time_title">Verberg opylaaibody</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Beperkings:
@@ -1249,6 +1252,9 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_fix_status_bar_layout_summary">Hou die uitleg van die statusbalk konsekwent, sodat dit nie die boonste barkies bedek en geen spasie bo die speler los nie. Skakel dit af as die app ineenstort of die boonste barkies verkeerd lyk</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Gloei</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Gloei 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Gloei 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Glow-spatskerm word nie deur hierdie toestel ondersteun nie</string>
   <string name="morphe_theme_color_light_title">Ligte tema-agtergrond</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>
   <string name="morphe_theme_color_light_entry_3">Jou Materiaal (Wit)     </string>

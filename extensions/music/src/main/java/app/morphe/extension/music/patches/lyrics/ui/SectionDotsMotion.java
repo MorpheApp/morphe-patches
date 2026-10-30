@@ -41,6 +41,7 @@ public final class SectionDotsMotion {
     private static final float VANISH_TOTAL_MS = VANISH_DOT_MS + VANISH_STAGGER_MS * (DOT_COUNT - 1);
     /** Lets the label fade back in before the next line starts. */
     private static final float PRE_HIDE_MS = 500f;
+
     private SectionDotsMotion() {
     }
 

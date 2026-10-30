@@ -34,6 +34,7 @@ public final class LyricsFilter {
     private static volatile String cachedCreditMarkers;
     @Nullable
     private static volatile List<String> cachedCreditVariants;
+
     private LyricsFilter() {
     }
 

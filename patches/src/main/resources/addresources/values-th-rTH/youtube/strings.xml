@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">ซ่อนแบบสำรวจ</string>
   <string name="morphe_hide_surveys_summary">ซ่อนแบบสำรวจและการแนะนำเกี่ยวกับความแม่นยำของการแนะนำฟีด</string>
   <string name="morphe_hide_ticket_shelf_title">ซ่อนชั้นวางตั๋ว</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">ซ่อนแบนเนอร์ \"ซ่อนวิดีโอที่ไม่พร้อมใช้งานแล้ว\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">ซ่อนแบนเนอร์ \"ซ่อนวิดีโอที่ไม่พร้อมใช้งานแล้ว\" ในเพลย์ลิสต์</string>
   <string name="morphe_hide_upload_time_title">ซ่อนเวลาอัปโหลด</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"ข้อจำกัด:
@@ -1249,6 +1252,7 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">คงรูปแบบของแถบสถานะให้สอดคล้องกัน เพื่อไม่ให้เกิดการบังแถบด้านบนและเหลือพื้นที่ว่างเปล่าเหนือเครื่องเล่น เปิดการใช้งานนี้หากแอปค้างหรือแถบด้านบนแสดงผลผิดปกติ</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">เรืองแสง</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">อุปกรณ์นี้ไม่รองรับหน้าจอเปิดตัวแบบเรืองแสง</string>
   <string name="morphe_theme_color_light_title">พื้นหลังธีมสว่าง</string>
   <string name="morphe_theme_color_light_entry_2">สีขาว</string>
   <string name="morphe_theme_color_light_entry_3">Material You (สีขาว)</string>

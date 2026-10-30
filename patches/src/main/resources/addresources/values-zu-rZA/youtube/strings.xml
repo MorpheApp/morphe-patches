@@ -113,6 +113,9 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_surveys_title">Fihla imibuzo</string>
   <string name="morphe_hide_surveys_summary">Fihla imibuzo nokukhuthaza mayelana nokunemba kokunikezelwa kwe-feed</string>
   <string name="morphe_hide_ticket_shelf_title">Fihla ishelufu yamathikithi</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Fihla ibhena elithi \'Amavidiyo angatholakali afihliwe\'</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Lifihla ibhena elithi \'Amavidiyo angatholakali afihliwe\' ohlelweni lwamavidiyo</string>
   <string name="morphe_hide_upload_time_title">Fihla isikhathi sokukhuphula</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Imikhawulo:
@@ -395,6 +398,7 @@ Izibiko zivulekile futhi zibuyekezwa ngaphambi kokuba ishネル yengeke ohlwini.
   <string name="morphe_hide_youtube_premium_promotions_title">Fihla imikhangiso ye-YouTube Premium</string>
   <!-- layout.flyout.flyoutPatch -->
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">Kulodwa…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">Ishanali yamanje:</string>
   <string name="morphe_channel_whitelist_add">Yengeza ohlweni lwe-whitelist</string>
@@ -499,6 +503,9 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <string name="morphe_external_downloader_quick_video">Ividiyo</string>
   <string name="morphe_external_downloader_quick_audio">Umsindo</string>
   <string name="morphe_external_downloader_quick_options">Zonke izinketho</string>
+  <string name="morphe_shorts_download_flyout_button_title">Khombisa ukulandela ku-menu yama-Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Yengeza ithemba loku-downloader langaphandle ku-menu yomdlali wama-Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">Landa</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ukuhumusha ngezwi</string>
   <string name="morphe_vot_screen_summary">Funda imibhalo yevidiyo ngokuzwakalayo usebenzisa i-text-to-speech edivaisini, ihambisana nokudlalwa kwevidiyo</string>
@@ -609,6 +616,8 @@ Ulwazi: Kungase kungasebenzi kuma-live streams"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Kuvumela ukuvimba ama-vidiyo ahlobene nezingane ku-\'Buka kamuva\' kusuka ku-flyout menu</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Khombisa inkinobho ye-Save to Watch later ku-shorts flyout</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Kuvumela ukuvimba ama-shorts ku-\'Buka kamuva\' kusuka ku-flyout menu</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Dlulisela uBuka kamuva ku-playlist</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Buka kamuva</string>
   <string name="morphe_queue_flyout_title">Yengeza ohlwini lweMorphe</string>
   <string name="morphe_queue_restore_title">Gcina uhlu lokulinda phakathi kwezikhathi zokusetshenziswa</string>
   <string name="morphe_queue_restore_summary">Uhlu lokulinda lugcinwa ngemva kokuvula futhi uhlelo lokusebenza</string>
@@ -1103,6 +1112,23 @@ Settings $\rightarrow$ Playback (noma Autoplay) $\rightarrow$ Autoplay next vide
   <string name="morphe_change_form_factor_entry_2">Ucingo</string>
   <string name="morphe_change_form_factor_entry_3">Ithebhulethi</string>
   <string name="morphe_change_form_factor_entry_4">Ezimoto</string>
+  <string name="morphe_change_form_factor_user_dialog_message">"Izinguquko zihlanganisa:
+
+Indlela yokuhlela yethabhulethi
+• Izithamo zomphakathi zifihliwe
+• Isetingu sokudlala ema-feed asitholakali
+• Inkinobho ye-Remix nenkinobho ye-Sound azitholakali kuma-Shorts
+• I-overlay ethi 'Amavidiyo amaningi' kungenzeka ingatholakali
+• I-action bar yevidiyo endala engagobisiwe iyakhonjiswa
+• Izinto ze-flyout menu kungenzeka zingasebenzi ngendlela efanele
+
+Indlela yokuhlela yezimoto
+• I-feed ihlelwe ngokwezihloko namashaneli
+• Isetingu sokudlala ema-feed asitholakali
+• Inkinobho ye-Remix nenkinobho ye-Sound azitholakali kuma-Shorts
+• I-overlay ethi 'Amavidiyo amaningi' kungenzeka ingatholakali
+• Ama-Shorts avuleka kumdlali ojwayelekile
+• I-action bar yevidiyo endala engagobisiwe iyakhonjiswa"</string>
   <string name="morphe_tablet_layout_in_player_title">Vumela ukulungiseka kwe-tablet kudlali</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Buyisela ukulungiselelwa kwedlali yakudala
@@ -1225,6 +1251,8 @@ Ukukhawulelwa: Uma 'Buyisela ibha yezenzo yevidiyo yakudala' icishiwe, i-overlay
   <string name="morphe_fix_status_bar_layout_title">Lungisa i-status bar emboza imigqa engenhla</string>
   <string name="morphe_fix_status_bar_layout_summary">Gcina ukuhleleka kwe-status bar kukufana, ukuze ingabozi imigqa engenhla futhi ingashiyi isikhala esingenalutho ngaphezu kwedlala. Cima lokhu uma i-app i-crash noma imigqa engenhla ibukeka ngendlela engalungile</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">Khanya</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Isikrini sokuqala esikhanyayo asisekelwa yileli device</string>
   <string name="morphe_theme_color_light_title">Isizinda sethimu ekhanyayo</string>
   <string name="morphe_theme_color_light_entry_2">Mhlophe</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Mhlophe)</string>
@@ -1247,6 +1275,9 @@ Ukukhawulelwa: Uma 'Buyisela ibha yezenzo yevidiyo yakudala' icishiwe, i-overlay
   <string name="morphe_seekbar_custom_color_accent_summary">Setha umbala wesibili we-video progress bar</string>
   <string name="morphe_seekbar_custom_color_invalid">Inani lombala lwesekibar elingelona</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">I-analog yokuqala</string>
+  <string name="morphe_custom_branding_icon_entry_9">Ikhekhe lokuqala</string>
+  <string name="morphe_custom_branding_icon_entry_10">Insimbi yokuqala</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Ulogo we-Header</string>
   <string name="morphe_header_logo_entry_1">Okujwayelekile</string>
@@ -1539,7 +1570,6 @@ Ukuqopshwa ngokuzenzakalelayo kuyama ku-incognito, lapho ubunikazi be-account lu
   <string name="morphe_series_tracker_marked">Izinhlelo ezimakiwe njengezibukwe</string>
   <string name="morphe_series_tracker_undo">Buyisa</string>
   <string name="morphe_series_tracker_enable_short">Vula</string>
-  <string name="morphe_series_tracker_new_episode">{count, plural, one {iqonda elisha 1} other {iziqonda ezintsha {count}}}</string>
   <string name="morphe_series_tracker_new_episodes">{%1$s} episodes ezintsha</string>
   <string name="morphe_series_tracker_record_short">Qopha inqubekelaphambili kuleli device</string>
   <string name="morphe_series_tracker_follow_consent">"I-series yakho nenqubekela phambili ihlala kuleli device, ihlanganyelwa phakathi kwe-accounts ze-YouTube. Izilawuli zomlando we-YouTube azizishintshi. Sula inqubekela phambili kume-nu ye-Series.
@@ -1611,4 +1641,16 @@ Ukuqopha ngokuzenzakalelayo kuyinketho. Kuyama ku-incognito noma lapho i-account
   <string name="morphe_series_tracker_untitled_episode">Isiqephi esingenaisihloko</string>
   <string name="morphe_series_tracker_unavailable_episode">Isiqephi esingatholakali</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">Imibhalo ye-Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Khombisa i-live chat kanye ne-chat replay njengemibhalo ehambayo phakathi kwevidiyo</string>
+  <string name="morphe_niconico_comments_summary">Khombisa inkinobho engaphezulu kwe-video player. Thinta ukuze ukhombise noma ufihle imibhalo, thinta ubambe ukuze uthole izilungiselelo ezisheshayo</string>
+  <string name="morphe_niconico_comments_font_size_title">Usayizi wefonti yombhalo</string>
+  <string name="morphe_niconico_comments_font_size_summary">Usayizi wombhalo wemibhalo (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">Ukucaca kombhalo</string>
+  <string name="morphe_niconico_comments_opacity_summary">Ukucaca kombhalo wemibhalo kanye nezizinda</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Isikhathi sokuhamba</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Imizuzwana embalwa imibhalo ithatha ukundiza esikrinini. Amanani aphansi ahamba ngokushesha</string>
+  <string name="morphe_niconico_comments_max_length_title">Ubude obukhulu bembhalo</string>
+  <string name="morphe_niconico_comments_max_length_summary">Ifihla imibhalo enezinhlamu ezingaphezu kwalena. I-emoji ngayinye ibalwa njengohlamvu olulodwa</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">Alikho unyamezelo</string>
 </resources>

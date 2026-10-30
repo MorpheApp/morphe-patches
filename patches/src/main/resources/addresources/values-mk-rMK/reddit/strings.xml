@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="reddit_privacy_policy">Политика за приватност на Reddit</string>
+  <string name="morphe_google_signin_not_available_toast">Најавувањето преку Google не е достапно. Користете е-пошта за најавување</string>
   <string name="morphe_screen_ads_title">Огласи</string>
   <string name="morphe_hide_post_ads_title">Скриј реклами во feed</string>
   <string name="morphe_hide_comment_ads_title">Скриј реклами во коментари</string>
@@ -30,8 +32,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Скриј полица „За“</string>
   <string name="morphe_hide_resources_shelf_title">Скриј полица „Ресурси“</string>
   <string name="morphe_screen_layout_title">Изглед</string>
+  <string name="morphe_custom_font_title">Прилагоден фонт</string>
+  <string name="morphe_custom_font_summary">Вчитувајте прилагодена TTF или OTF датотека со фонт од патеката подолу. Активирањето на оваа опција исто така го исклучува Присили системен фонт</string>
+  <string name="morphe_custom_font_file_path_title">Датотека со прилагоден фонт</string>
+  <string name="morphe_custom_font_file_path_summary">Допрете за да изберете TTF или OTF датотека со фонт</string>
+  <string name="morphe_custom_font_selected_font">Избран фонт - %s</string>
+  <string name="morphe_custom_font_pick_file_first">Прво изберете датотека со прилагоден фонт</string>
+  <string name="morphe_custom_font_invalid_file">Ве молиме изберете .ttf или .otf датотека со фонт</string>
+  <string name="morphe_custom_font_failed_to_load">Не успеа вчитувањето на прилагодениот фонт. Изберете друга датотека</string>
   <string name="morphe_disable_screenshot_popup_title">Исклучи искачувачки прозорец за screenshots</string>
   <string name="morphe_disable_screenshot_popup_summary">Го исклучува искачувачкиот прозорец што се појавува кога се прави screenshot</string>
+  <string name="morphe_force_system_font_title">Присили системен фонт</string>
+  <string name="morphe_force_system_font_summary">Користете го системниот фонт на уредот наместо Reddit Sans или Roboto. Активирањето на оваа опција исто така го исклучува Прилагодениот фонт</string>
   <string name="morphe_hide_ask_button_title">Скриј копче „Прашај“</string>
   <string name="morphe_hide_ask_button_summary">Го крие копчето „Прашај“ во лентата за пребарување</string>
   <string name="morphe_remove_notification_dialog_title">Уклони дијалог за предлози за известувања</string>

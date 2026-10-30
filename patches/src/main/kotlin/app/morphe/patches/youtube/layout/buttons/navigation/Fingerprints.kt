@@ -148,7 +148,8 @@ internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
  */
 internal val TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS = listOf(
     45630927L, // Blurred, translucent background of the navigation bar.
-    NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG
+    NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG,
+    45631257L  // Feed laid out behind the navigation bar instead of above it.
 )
 
 /**
@@ -187,74 +188,6 @@ internal object NavigationBarBottomPaddingFingerprint : Fingerprint(
             definingClass = PIVOT_BAR_CLASS,
             name = "setPadding",
             location = MatchAfterWithin(10)
-        )
-    )
-)
-
-/**
- * Sets the bottom margin of the layout that holds the page and the navigation bar.
- * With the keyboard open and a text field focused, the margin is the keyboard height,
- * otherwise the bottom of the window insets.
- */
-internal object PageBottomMarginFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("Landroid/graphics/Rect;"),
-    filters = listOf(
-        methodCall(smali = "Landroid/view/View;->findFocus()Landroid/view/View;"),
-        methodCall(
-            smali = "Landroid/view/View;->onCheckIsTextEditor()Z",
-            location = MatchAfterWithin(5)
-        ),
-        fieldAccess(
-            opcode = Opcode.IGET,
-            definingClass = "Landroid/graphics/Rect;",
-            name = "bottom"
-        )
-    )
-)
-
-/**
- * Sets the padding of a feed list. When the feed is laid out behind the navigation bar,
- * the bottom padding holds the navigation bar height and the bottom window inset.
- */
-internal object FeedListPaddingFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        methodCall(
-            definingClass = "Landroid/support/v7/widget/RecyclerView;",
-            name = "setClipToPadding"
-        ),
-        methodCall(
-            definingClass = "Landroid/support/v7/widget/RecyclerView;",
-            name = "setPadding",
-            location = MatchAfterImmediately()
-        )
-    )
-)
-
-/**
- * Sets the bottom padding of the list of a browse page laid out behind the navigation bar,
- * to the navigation bar height plus the bottom window inset, once the window insets are known.
- */
-internal object BrowseListBottomPaddingFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("Ljava/lang/Object;"),
-    filters = listOf(
-        methodCall(
-            definingClass = "Landroid/support/v7/widget/RecyclerView;",
-            name = "getPaddingRight"
-        ),
-        fieldAccess(
-            opcode = Opcode.IGET,
-            definingClass = "Landroid/graphics/Rect;",
-            name = "bottom",
-            location = MatchAfterWithin(6)
-        ),
-        methodCall(
-            definingClass = "Landroid/support/v7/widget/RecyclerView;",
-            name = "setPadding",
-            location = MatchAfterWithin(3)
         )
     )
 )

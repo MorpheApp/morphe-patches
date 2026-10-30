@@ -18,7 +18,7 @@ import app.morphe.extension.shared.settings.preference.ResettableEditTextPrefere
 
 /**
  * Numeric input for the "create new segment" time-adjustment step. Rejects zero and noninteger
- * values with a toast, matching the legacy SponsorBlock preferences behavior.
+ * values with a message, matching the legacy SponsorBlock preferences behavior.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class SponsorBlockSegmentStepPreference extends ResettableEditTextPreference {
@@ -52,7 +52,7 @@ public class SponsorBlockSegmentStepPreference extends ResettableEditTextPrefere
             } catch (NumberFormatException ex) {
                 Logger.printInfo(() -> "Invalid new segment step", ex);
             }
-            Utils.showToastLong(str("morphe_sb_create_new_segment_step_invalid"));
+            Utils.showSnackbarLong(str("morphe_sb_create_new_segment_step_invalid"));
             return false;
         });
     }

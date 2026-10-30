@@ -248,7 +248,7 @@ Lagu yang diunduh akan muncul di sini"</string>
   <string name="morphe_music_crossfade_sabr_toast">Crossfade nonaktif saat pemutaran SABR</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade nonaktif saat casting</string>
   <string name="morphe_music_crossfade_about_how_title">Cara kerjanya</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Crossfade menumpangtindihkan akhir satu lagu dengan awal lagu berikutnya, menggunakan durasi dan kurva Anda
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade menumpangkan akhir satu lagu dengan awal lagu berikutnya, menggunakan durasi dan kurva Anda
 
 Ini berjalan pada lanjut otomatis dan lewati manual, masing-masing dengan sakelarnya sendiri. Pada lanjut otomatis, perpaduan dimulai beberapa detik sebelum lagu berakhir"</string>
   <string name="morphe_music_crossfade_about_quirks_title">Keterbatasan</string>
@@ -637,9 +637,7 @@ Berlaku untuk kedua batas. Pada 1,75, empat karakter lebar penuh dihitung sebaga
   <string name="morphe_music_lyrics_transcribe_no_text">1 lirik untuk diselaraskan - melainkan ditranskripsikan</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC tidak dapat memproses trek ini</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Kredit QuickLRC telah habis untuk trek ini</string>
-  <string name="morphe_music_lyrics_about_summary">"Lirik dicocokkan berdasarkan judul dan artis, metadata yang tidak biasa mungkin tidak menemukan apa-apa atau versi yang salah. Gunakan refresh untuk beralih versi. Penyedia yang ditandai * memerlukan token. Tidak semua penyedia yang diaktifkan selalu diminta sesuai urutan Anda, tetapi merespons berdasarkan kecepatan mereka.
-
-Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau didukung oleh Morphe. Masing-masing digunakan apa adanya: lirik, ketersediaan, dan lisensinya tetap berada di layanan tersebut dan pemberi lisensi, serta menggunakannya dapat tunduk pada syarat layanan mereka. Yang dikirim ke layanan yang diaktifkan hanyalah lookup yang Anda minta - yaitu judul, artis, dan, dimana layanan itu memerlukannya, ID video. Titik akhir AI opsional dan transkripsi QuickLRC hanya berjalan setelah Anda mengkonfigurasinya, dan menerima teks lirik atau URL video trek."</string>
+  <string name="morphe_music_lyrics_about_summary">"Lirik dicocokkan berdasarkan judul dan artis, metadata yang tidak biasa mungkin tidak menemukan apa-apa atau versi yang salah. Gunakan refresh untuk beralih versi. Penyedia yang ditandai * memerlukan token. Tidak semua penyedia yang diaktifkan selalu diminta sesuai urutan Anda, tetapi merespons berdasarkan kecepatan mereka.\n\nLirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau didukung oleh Morphe. Masing-masing digunakan apa adanya: lirik, ketersediaan, dan lisensinya tetap berada di layanan tersebut dan pemberi lisensi, serta menggunakannya dapat tunduk pada syarat layanan mereka. Yang dikirim ke layanan yang diaktifkan hanyalah lookup yang Anda minta - yaitu judul, artis, dan, dimana layanan itu memerlukannya, ID video. Titik akhir AI opsional dan transkripsi QuickLRC hanya berjalan setelah Anda mengkonfigurasinya, dan menerima teks lirik atau URL video trek."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Hanya aktifkan penyedia yang Anda gunakan, atau biarkan default - permintaan terus-menerus dapat membebani situs lirik komunitas kecil</string>
   <string name="morphe_music_lyrics_hide_info_title">Sembunyikan baris kredit</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sembunyikan baris kredit yang ditampilkan di bawah lirik</string>
@@ -660,7 +658,7 @@ Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau
   <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurasikan kunci API, model, endpoint, dan templat prompt untuk penyedia AI.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL endpoint API (contoh: https://api.openai.com/v1/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Templat Prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Penampung: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt disimpan</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Permintaan disimpan, tetapi endpoint AI belum dapat digunakan. Konfigurasikan terlebih dahulu di Pengaturan AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt diatur ulang</string>

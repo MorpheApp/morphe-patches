@@ -210,7 +210,7 @@ public class CustomPlaybackSpeedPatch {
     }
 
     private static void showInvalidCustomSpeedToast() {
-        Utils.showToastLong(str("morphe_custom_playback_speeds_invalid", VideoInformation.PLAYBACK_SPEED_MAXIMUM));
+        Utils.showSnackbarLong(str("morphe_custom_playback_speeds_invalid", VideoInformation.PLAYBACK_SPEED_MAXIMUM));
     }
 
     private static float[] loadCustomSpeeds() {
@@ -245,7 +245,7 @@ public class CustomPlaybackSpeedPatch {
             return speeds;
         } catch (Exception ex) {
             Logger.printInfo(() -> "Parse error", ex);
-            Utils.showToastShort(str("morphe_custom_playback_speeds_parse_exception"));
+            Utils.showSnackbarShort(str("morphe_custom_playback_speeds_parse_exception"));
             Settings.CUSTOM_PLAYBACK_SPEEDS.resetToDefault();
             return loadCustomSpeeds();
         }

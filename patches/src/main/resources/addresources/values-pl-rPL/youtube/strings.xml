@@ -113,6 +113,9 @@ Zmiany obejmują:
   <string name="morphe_hide_surveys_title">Ukryj ankiety</string>
   <string name="morphe_hide_surveys_summary">Ukrywa ankiety i monity dotyczące trafności rekomendacji</string>
   <string name="morphe_hide_ticket_shelf_title">Ukryj sekcję biletów</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Ukryj baner \"Niedostępne filmy są ukryte\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Ukrywa baner \"Niedostępne filmy są ukryte\" w playlistach</string>
   <string name="morphe_hide_upload_time_title">Ukryj datę publikacji</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Ograniczenia:
@@ -500,8 +503,8 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_external_downloader_quick_video">Film</string>
   <string name="morphe_external_downloader_quick_audio">Dźwięk</string>
   <string name="morphe_external_downloader_quick_options">Wszystkie opcje</string>
-  <string name="morphe_shorts_download_flyout_button_title">Pokaż pobieranie w menu Short</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Dodaje zewnętrzny element menu flyout pobierania do odtwarzacza Short</string>
+  <string name="morphe_shorts_download_flyout_button_title">Pokaż pobieranie w menu Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Dodaje opcję zewnętrznej aplikacji do pobierania do menu odtwarzacza Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Pobierz</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tłumaczenie głosowe</string>
@@ -613,7 +616,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umożliwia zapisywanie filmów przeznaczonych dla dzieci na liście \"Do obejrzenia\" z poziomu menu</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Pokaż przycisk \"Zapisz do obejrzenia\" w menu Shorts</string>
   <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Umożliwia zapisywanie filmów Short na liście \"Do obejrzenia\" z poziomu menu</string>
-  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Przekieruj \"Do obejrzenia później\" do playlisty</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Przekieruj \"Do obejrzenia\" na playlistę</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Do obejrzenia</string>
   <string name="morphe_queue_flyout_title">Dodaj do kolejki Morphe</string>
   <string name="morphe_queue_restore_title">Zachowaj kolejkę po wyjściu</string>
@@ -697,7 +700,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_live_stream_dvr_summary">Umożliwia przewijanie wszystkich transmisji na żywo, nawet tych, które normalnie to blokują</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Włącz podgląd na pasku postępu</string>
-  <string name="morphe_seekbar_thumbnail_preview_summary">Pokazuje podgląd filmu podczas przeciągania paska postępu</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Wyświetla podgląd filmu podczas przeciągania paska postępu</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Najczęściej odtwarzane</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_live_stream_dvr_not_available">"Opcja \"Włącz przewijanie transmisji na żywo\" może być niedostępna
@@ -891,8 +894,8 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_narrow_navigation_buttons_summary">Zmniejsza poziome odstępy między przyciskami</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Wyłącz przyciski nawigacji bez etykiet</string>
   <string name="morphe_disable_icon_only_navigation_buttons_summary">Wyświetla przyciski nawigacji z etykietami, jeśli YouTube przesyła je bez nich</string>
-  <string name="morphe_disable_toolbar_navigation_tabs_title">Wyłącz karty nawigacji na pasku narzędzi</string>
-  <string name="morphe_disable_toolbar_navigation_tabs_summary">Wyświetla Subskrypcje na pasku nawigacji, jeśli YouTube przeniesie je do karty na górze strony głównej</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">Wyłącz zakładki nawigacji na pasku narzędzi</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">Wyświetla Subskrypcje na pasku nawigacji, jeśli YouTube przeniesie je do zakładki na górze strony głównej</string>
   <string name="morphe_navigation_bar_animations_title">Włącz animacje paska nawigacji</string>
   <string name="morphe_navigation_bar_animations_summary">Animuje przejścia podczas przełączania między kartami</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Wyłącz automatyczne ukrywanie paska nawigacji</string>
@@ -1111,20 +1114,20 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_change_form_factor_user_dialog_message">"Zmiany obejmują:
 
 Układ tabletowy
-• Posty społeczności są ukryte
-• Ustawienie odtwarzania w kanałach nie jest dostępne
-• Przyciski Remiks i Dźwięk nie są dostępne w Shorts
-• Nakładka „Więcej filmów” może nie być dostępna
-• Pokazany jest nierozwinięty stary pasek akcji filmu
-• Elementy menu wyskakującego mogą nie działać poprawnie
+• Posty są ukryte
+• Ustawienie odtwarzania na stronie głównej nie jest dostępne
+• Przyciski Remiks i Dźwięk nie są dostępne w Shortsach
+• Nakładka \"Więcej filmów\" może nie być dostępna
+• Stary pasek akcji filmu nie jest zwinięty
+• Elementy menu mogą nie działać prawidłowo
 
 Układ samochodowy
-• Kanały są uporządkowane według tematów i kanałów
-• Ustawienie odtwarzania w kanałach nie jest dostępne
-• Przyciski Remiks i Dźwięk nie są dostępne w Shorts
-• Nakładka „Więcej filmów” może nie być dostępna
-• Shorts otwierają się w standardowym odtwarzaczu
-• Pokazany jest nierozwinięty stary pasek akcji filmu"</string>
+• Strona główna jest uporządkowana według tematów i kanałów
+• Ustawienie odtwarzania na stronie głównej nie jest dostępne
+• Przyciski Remiks i Dźwięk nie są dostępne w Shortsach
+• Nakładka \"Więcej filmów\" może nie być dostępna
+• Filmy Short otwierają się w zwykłym odtwarzaczu
+• Stary pasek akcji filmu nie jest zwinięty"</string>
   <string name="morphe_tablet_layout_in_player_title">Włącz układ tabletowy w odtwarzaczu</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Przywraca stary układ odtwarzacza
@@ -1248,6 +1251,9 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_fix_status_bar_layout_summary">Utrzymuje spójny układ paska stanu, dzięki czemu nie zasłania on górnych pasków ani nie zostawia pustego miejsca nad odtwarzaczem. Wyłącz tę opcję, jeśli aplikacja ulega awarii lub górne paski wyświetlają się nieprawidłowo</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Poświata</string>
+  <string name="morphe_splash_screen_style_entry_7">Poświata Morphe 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Poświata Morphe 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Animacja startowa \"Poświata\" nie jest obsługiwana przez to urządzenie</string>
   <string name="morphe_theme_color_light_title">Tło jasnego motywu</string>
   <string name="morphe_theme_color_light_entry_2">Białe</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Biały)</string>
@@ -1270,9 +1276,9 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_seekbar_custom_color_accent_summary">Ustaw dodatkowy kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_invalid">Nieprawidłowa wartość koloru</string>
   <!-- layout.branding.customBrandingPatch -->
-  <string name="morphe_custom_branding_icon_entry_8">Oryginał analogowy</string>
-  <string name="morphe_custom_branding_icon_entry_9">Oryginalny tort</string>
-  <string name="morphe_custom_branding_icon_entry_10">Oryginalny metal</string>
+  <string name="morphe_custom_branding_icon_entry_8">Oryginalna analogowa</string>
+  <string name="morphe_custom_branding_icon_entry_9">Oryginalna ciasto</string>
+  <string name="morphe_custom_branding_icon_entry_10">Oryginalna metalowa</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo w nagłówku</string>
   <string name="morphe_header_logo_entry_1">Domyślne</string>
@@ -1637,16 +1643,16 @@ Ograniczenie: Przywraca stary wygląd nakładki \"Więcej filmów\""</string>
   <string name="morphe_series_tracker_untitled_episode">Odcinek bez tytułu</string>
   <string name="morphe_series_tracker_unavailable_episode">Odcinek niedostępny</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
-  <string name="morphe_niconico_comments_screen_title">Komentarze Niconico</string>
-  <string name="morphe_niconico_comments_screen_summary">Wyświetlaj czat na żywo oraz powtórkę czatu jako komentarze przesuwające się przez wideo</string>
-  <string name="morphe_niconico_comments_summary">Wyświetla przycisk nakładki w odtwarzaczu wideo. Dotknij, aby pokazać lub ukryć komentarze, przytrzymaj, aby otworzyć szybkie ustawienia</string>
+  <string name="morphe_niconico_comments_screen_title">Komentarze w stylu Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">Pokaż czat na żywo oraz powtórkę czatu jako komentarze przewijające się przez ekran filmu</string>
+  <string name="morphe_niconico_comments_summary">Wyświetla przycisk w nakładce odtwarzacza. Dotknij, aby pokazać lub ukryć komentarze. Przytrzymaj, aby otworzyć szybkie ustawienia</string>
   <string name="morphe_niconico_comments_font_size_title">Rozmiar czcionki komentarzy</string>
   <string name="morphe_niconico_comments_font_size_summary">Rozmiar tekstu komentarzy (12-40 sp)</string>
-  <string name="morphe_niconico_comments_opacity_title">Przezroczystość komentarzy</string>
-  <string name="morphe_niconico_comments_opacity_summary">Przezroczystość tekstu i tła komentarzy</string>
-  <string name="morphe_niconico_comments_travel_duration_title">Czas trwania podróży</string>
-  <string name="morphe_niconico_comments_travel_duration_summary">Ile sekund komentarze potrzebują, aby przemieścić się przez ekran. Niższe wartości oznaczają szybszy ruch</string>
+  <string name="morphe_niconico_comments_opacity_title">Krycie komentarzy</string>
+  <string name="morphe_niconico_comments_opacity_summary">Krycie tekstu oraz tła komentarzy</string>
+  <string name="morphe_niconico_comments_travel_duration_title">Czas przelotu</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Liczba sekund potrzebna komentarzom na pokonanie ekranu. Mniejsze wartości oznaczają szybszy ruch</string>
   <string name="morphe_niconico_comments_max_length_title">Maksymalna długość komentarza</string>
-  <string name="morphe_niconico_comments_max_length_summary">Ukrywa komentarze, które mają więcej znaków niż ta wartość. Każdy emoji liczy się jako jeden znak</string>
+  <string name="morphe_niconico_comments_max_length_summary">Ukrywa komentarze przekraczające podaną liczbę znaków. Każda emotka liczy się jako jeden znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez limitu</string>
 </resources>

@@ -45,6 +45,7 @@ import app.morphe.extension.youtube.patches.FeedEngagementCountsPatch;
 import app.morphe.extension.youtube.patches.FeedVideoActionsPatch;
 import app.morphe.extension.youtube.patches.FeedViewCountPatch;
 import app.morphe.extension.youtube.patches.PostImageDownloadPatch;
+import app.morphe.extension.youtube.patches.PostTranslatePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -68,7 +69,8 @@ public final class FeedVideoCardsPatch {
     private static final boolean ENABLED = FeedEngagementCountsPatch.ENABLED
             || FeedViewCountPatch.ENABLED
             || Settings.FEED_WATCH_LATER_BUTTON.get()
-            || PostImageDownloadPatch.ENABLED;
+            || PostImageDownloadPatch.ENABLED
+            || PostTranslatePatch.ENABLED;
 
     /**
      * A card must be as wide as a card of a grid of up to three columns, such as the feed in landscape.
@@ -906,6 +908,7 @@ public final class FeedVideoCardsPatch {
                 FeedViewCountPatch.onCardLaidOut(root, cardVideoId);
                 FeedVideoActionsPatch.onCardLaidOut(root, cardVideoId);
                 PostImageDownloadPatch.onRootLaidOut(root);
+                PostTranslatePatch.onRootLaidOut(root);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "updateRoots failure", ex);

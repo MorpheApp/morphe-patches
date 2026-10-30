@@ -164,7 +164,7 @@ public final class AddToQueuePatch {
                 Logger.printDebug(() -> "Queue row " + buttonName + " video id: '" + videoId + "'");
                 item.setOnClickListener(v -> {
                     if (videoId.isEmpty()) {
-                        Utils.showToastShort(str(FlyoutUtils.getFlyoutPlaylistId().isEmpty()
+                        Utils.showSnackbarShort(str(FlyoutUtils.getFlyoutPlaylistId().isEmpty()
                                 ? "morphe_local_queue_unavailable"
                                 : "morphe_local_queue_playlist_unsupported"));
                         FlyoutUtils.dismissFlyout();
@@ -248,7 +248,7 @@ public final class AddToQueuePatch {
             Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
             if (LocalQueuePatch.isEnabled() && queueButtonOriginalNames.contains(FlyoutUtils.getCurrentButtonName())) {
                 return () -> {
-                    Utils.showToastShort(str("morphe_local_queue_playlist_unsupported"));
+                    Utils.showSnackbarShort(str("morphe_local_queue_playlist_unsupported"));
                     FlyoutUtils.dismissFlyout();
                 };
             }
@@ -365,7 +365,7 @@ public final class AddToQueuePatch {
         // An unsupported/stale menu context cannot silently invoke a Premium or
         // account-backed queue when the user explicitly selected Native queue.
         return action != null ? action : () -> {
-            Utils.showToastShort(str("morphe_native_playlist_queue_not_ready"));
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
             FlyoutUtils.dismissFlyout();
         };
     }

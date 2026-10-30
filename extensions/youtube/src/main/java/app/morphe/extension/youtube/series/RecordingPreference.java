@@ -58,7 +58,7 @@ public final class RecordingPreference extends SwitchPreference {
 
     static void requestEnable(Context context, Runnable done) {
         if (!RecordingPrivacy.canEnable()) {
-            Utils.showToastLong(UiText.get("morphe_series_tracker_identity_unavailable"));
+            Utils.showSnackbarLong(UiText.get("morphe_series_tracker_identity_unavailable"));
             return;
         }
         long consentGeneration = RecordingPrivacy.generation();
@@ -70,7 +70,7 @@ public final class RecordingPreference extends SwitchPreference {
                 () -> {
                     boolean enabled = RecordingPrivacy.enable(consentGeneration);
                     if (!enabled)
-                        Utils.showToastLong(UiText.get("morphe_series_tracker_identity_unavailable"));
+                        Utils.showSnackbarLong(UiText.get("morphe_series_tracker_identity_unavailable"));
                     done.run();
                 });
     }

@@ -108,7 +108,7 @@ public abstract class BaseActivityHook extends Activity {
      * Closes the settings, after first showing the restart dialog if a changed setting requires it.
      */
     public static void closeSettings(Activity activity) {
-        if (!AbstractPreferenceFragment.showRestartDialogIfNeeded(activity, activity::finish)) {
+        if (!AbstractPreferenceFragment.showRestartDialogIfNeeded(activity)) {
             activity.finish();
         }
     }

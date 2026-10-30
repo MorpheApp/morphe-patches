@@ -145,8 +145,8 @@ final class OriginalDescription {
                 ProtoNode content = segmentText == null || segmentText.children == null
                         ? null
                         : ProtoNode.field(segmentText.children, TEXT_CONTENT_FIELD);
-                if (content != null && content.getVarint() == null) {
-                    String decoded = decodeText(content);
+                if (content != null) {
+                    String decoded = content.decodeText();
                     hasText |= decoded != null && !decoded.isEmpty();
                 }
             }
@@ -164,21 +164,6 @@ final class OriginalDescription {
             }
         }
         return null;
-    }
-
-    /**
-     * @return The field decoded as text, or null if the field is not a text, such as bytes of other data.
-     */
-    @Nullable
-    static String decodeText(ProtoNode field) {
-        String decoded = field.decodeUtf8();
-        for (int i = 0, length = decoded.length(); i < length; i++) {
-            final char c = decoded.charAt(i);
-            if (c == '\uFFFD' || (Character.isISOControl(c) && c != '\n' && c != '\r' && c != '\t')) {
-                return null;
-            }
-        }
-        return decoded;
     }
 
     /**

@@ -31,6 +31,7 @@ Second \"item\" text"</string>
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
@@ -226,8 +227,5 @@ Second \"item\" text"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <!-- layout.player.icons.playerIconStylePatch -->
   <!-- video.series.seriesTrackerPatch -->
-  <string name="morphe_series_tracker_ui_save">محفوظ کریں</string>
-  <string name="morphe_series_tracker_plan_caught_up">تا تاریخ</string>
-  <string name="morphe_series_tracker_continue">जारी रखें</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import app.morphe.extension.shared.Logger;
+
 /**
  * Field of a proto message parsed without a schema.
  * <p>
@@ -36,6 +38,12 @@ import java.util.List;
 public final class ProtoNode {
 
     private static final int MAX_DEPTH = 64;
+
+    /** Decoders are not thread safe, and elements are parsed on many threads. */
+    private static final ThreadLocal<CharsetDecoder> UTF_8_DECODER = ThreadLocal.withInitial(() ->
+            StandardCharsets.UTF_8.newDecoder()
+                    .onMalformedInput(CodingErrorAction.REPORT)
+                    .onUnmappableCharacter(CodingErrorAction.REPORT));
 
     @Nullable
     private final ProtoNode parent;
@@ -82,15 +90,12 @@ public final class ProtoNode {
      */
     @Nullable
     public static List<ProtoNode> parse(byte[] bytes) {
-        CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder()
-                .onMalformedInput(CodingErrorAction.REPORT)
-                .onUnmappableCharacter(CodingErrorAction.REPORT);
-        return parse(bytes, 0, bytes.length, null, 0, decoder);
+        return parse(bytes, 0, bytes.length, null, 0);
     }
 
     @Nullable
     private static List<ProtoNode> parse(byte[] bytes, int start, int end, @Nullable ProtoNode parent,
-                                         int depth, CharsetDecoder decoder) {
+                                         int depth) {
         if (depth > MAX_DEPTH || start >= end) {
             return null;
         }
@@ -124,9 +129,9 @@ public final class ProtoNode {
                 ProtoNode node = new ProtoNode(parent, WireFormat.getTagFieldNumber(tag), bytes,
                         tagStart, valueStart, valueEnd, lengthDelimited);
                 if (lengthDelimited) {
-                    node.text = decodeText(bytes, valueStart, valueEnd, decoder);
+                    node.text = decodeText(bytes, valueStart, valueEnd, false);
                     if (node.text == null) {
-                        node.children = parse(bytes, valueStart, valueEnd, node, depth + 1, decoder);
+                        node.children = parse(bytes, valueStart, valueEnd, node, depth + 1);
                     }
                 }
                 nodes.add(node);
@@ -139,10 +144,12 @@ public final class ProtoNode {
     }
 
     /**
+     * @param allowLineBreaks If line breaks and tabs are allowed. Fields with line breaks are
+     *                        not parsed as text, because the tag of field 1 of a message is a line break.
      * @return The text, or null if the bytes are not printable UTF-8 text.
      */
     @Nullable
-    private static String decodeText(byte[] bytes, int start, int end, CharsetDecoder decoder) {
+    private static String decodeText(byte[] bytes, int start, int end, boolean allowLineBreaks) {
         if (start >= end) {
             return null;
         }
@@ -150,22 +157,29 @@ public final class ProtoNode {
         // Fast check for control characters, which messages usually start with.
         for (int i = start; i < end; i++) {
             final byte b = bytes[i];
-            if ((b >= 0 && b < 0x20) || b == 0x7F) {
+            if (((b >= 0 && b < 0x20) || b == 0x7F) && !(allowLineBreaks && isLineBreakOrTab(b))) {
                 return null;
             }
         }
 
         try {
-            String text = decoder.decode(ByteBuffer.wrap(bytes, start, end - start)).toString();
+            String text = UTF_8_DECODER.get().decode(ByteBuffer.wrap(bytes, start, end - start)).toString();
             for (int i = 0, length = text.length(); i < length; i++) {
-                if (Character.isISOControl(text.charAt(i))) {
+                final char c = text.charAt(i);
+                if (Character.isISOControl(c) && !(allowLineBreaks && isLineBreakOrTab(c))) {
                     return null;
                 }
             }
             return text;
         } catch (CharacterCodingException ex) {
+            Logger.printDebug(() -> "Could not decode bytes: " +
+                    Arrays.toString(Arrays.copyOfRange(bytes, start, end)), ex);
             return null;
         }
+    }
+
+    private static boolean isLineBreakOrTab(int c) {
+        return c == '\n' || c == '\r' || c == '\t';
     }
 
     public int getFieldNumber() {
@@ -198,6 +212,39 @@ public final class ProtoNode {
         return text != null
                 ? text
                 : new String(bytes, valueStart, valueEnd - valueStart, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * @return The text of a length delimited field, including text with line breaks that is not
+     *         parsed as text, or null if the payload is not printable UTF-8 text, such as other data.
+     */
+    @Nullable
+    public String decodeText() {
+        if (text != null) {
+            return text;
+        }
+        if (!lengthDelimited) {
+            return null;
+        }
+        return payload != null
+                ? decodeText(payload, 0, payload.length, true)
+                : decodeText(bytes, valueStart, valueEnd, true);
+    }
+
+    /**
+     * @return The text of a field with line breaks, such as a post text, which is not parsed
+     *         as text, or null if the field is not a text with line breaks.
+     */
+    @Nullable
+    private String getMultiLineText() {
+        if (text != null) {
+            return null;
+        }
+        String decoded = decodeText();
+        // A message starts with the tag of its first field, which can be a line break.
+        return decoded != null && !isLineBreakOrTab(decoded.charAt(0)) && decoded.indexOf('\n') > 0
+                ? decoded
+                : null;
     }
 
     public void setText(String text) {
@@ -320,6 +367,32 @@ public final class ProtoNode {
                 output.writeString(node.fieldNumber, node.text);
             } else if (node.varint != null) {
                 output.writeUInt64(node.fieldNumber, node.varint);
+            }
+        }
+    }
+
+    /**
+     * @return All texts of the message in order, including the texts with line breaks,
+     *         which are not parsed as text fields.
+     */
+    public static List<String> texts(List<ProtoNode> message) {
+        List<String> texts = new ArrayList<>();
+        addTexts(message, texts);
+        return texts;
+    }
+
+    private static void addTexts(List<ProtoNode> message, List<String> texts) {
+        for (ProtoNode node : message) {
+            if (node.text != null) {
+                texts.add(node.text);
+                continue;
+            }
+            if (node.children != null) {
+                addTexts(node.children, texts);
+            }
+            String multiLineText = node.getMultiLineText();
+            if (multiLineText != null) {
+                texts.add(multiLineText);
             }
         }
     }

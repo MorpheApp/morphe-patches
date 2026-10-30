@@ -92,13 +92,18 @@ public final class AutoTranslateCaptionsPatch {
             return tracks;
         }
 
-        // Native translations can use different originals for different targets.
-        // Only clone them when their signed URL and original VSS agree.
+        // Keep YouTube's first translation as the template for missing targets. Other native
+        // targets may use another original, but every track must be valid and from the same video.
         CaptionTrackInterface template = tracks.get(0);
         String identity = translationSourceIdentity(template);
         if (identity == null) return tracks;
+        String video = captionParameters(template.patch_getUrl()).get("v");
         for (CaptionTrackInterface track : tracks) {
-            if (!identity.equals(translationSourceIdentity(track))) return tracks;
+            String otherIdentity = translationSourceIdentity(track);
+            if (otherIdentity == null || !identity.equals(otherIdentity)
+                    && (video == null || !video.equals(captionParameters(track.patch_getUrl()).get("v")))) {
+                return tracks;
+            }
         }
         String templateCode = template.patch_getLanguageCode();
         String templateUrl = template.patch_getUrl();
@@ -230,6 +235,20 @@ public final class AutoTranslateCaptionsPatch {
                 "t" + source.patch_getVssId() + "." + language, name.isEmpty() ? language : name);
     }
 
+    /** ASR processing shares the same canonical URL validation as native translation tracks. */
+    static boolean isAutomaticCaption(String vss, String url) {
+        if (vss == null) return false;
+        boolean translated = vss.startsWith("ta.");
+        if (!translated && !vss.matches("a\\.[A-Za-z0-9_-]+")) return false;
+        Map<String, String> fields = captionParameters(url);
+        if (fields == null || !"asr".equals(fields.get("kind"))) return false;
+        String target = fields.get("tlang");
+        return translated
+                ? target != null && LANGUAGE_CODE_PATTERN.matcher(target).matches()
+                        && vss.endsWith("." + target)
+                : !fields.containsKey("tlang");
+    }
+
     /** Keep YouTube URL validation shared by original and native translated tracks. */
     private static Map<String, String> captionParameters(String url) {
         if (url == null) return null;
@@ -328,19 +347,30 @@ public final class AutoTranslateCaptionsPatch {
                 && VSS_ID_SUFFIX_PATTERN.matcher(value.substring(prefix.length() + 1)).matches());
     }
 
+    /** Canonical aliases while retaining the region/script for exact track selection. */
+    static String normalizeLanguageCode(String languageCode) {
+        if (languageCode == null) return "";
+        String code = languageCode.trim().replace('_', '-').toLowerCase(Locale.ROOT);
+        int dash = code.indexOf('-');
+        String primary = dash < 0 ? code : code.substring(0, dash);
+        String canonical = switch (primary) {
+            case "iw" -> "he";
+            case "in" -> "id";
+            case "ji" -> "yi";
+            case "tl" -> "fil";
+            case "nb" -> "no";
+            default -> primary;
+        };
+        return canonical + code.substring(primary.length());
+    }
+
     /**
      * @return Key that is the same for all codes of a language.
      */
-    private static String getLanguageKey(String languageCode) {
-        String code = languageCode.replace('_', '-').toLowerCase(Locale.ROOT);
+    static String getLanguageKey(String languageCode) {
+        String code = normalizeLanguageCode(languageCode);
         String primary = code.split("-")[0];
         switch (primary) {
-            // Legacy ISO 639 codes used by Java Locale and YouTube.
-            case "iw": return "he";
-            case "in": return "id";
-            case "ji": return "yi";
-            case "tl": return "fil";
-            case "nb": return "no";
             // Traditional and Simplified Chinese are different translations.
             case "zh":
                 // Script takes priority over region.

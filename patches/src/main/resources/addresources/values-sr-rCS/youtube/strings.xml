@@ -113,6 +113,9 @@ Promene uključuju:
   <string name="morphe_hide_surveys_title">Sakrij ankete</string>
   <string name="morphe_hide_surveys_summary">Sakriva ankete i predloge u vezi preciznosti preporuka za sadržaj</string>
   <string name="morphe_hide_ticket_shelf_title">Sakrij policu sa kartama</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Sakrij baner \"Nedostupni video snimci su sakriveni\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Sakriva baner \"Nedostupni video snimci su sakriveni\" u plejlistama</string>
   <string name="morphe_hide_upload_time_title">Sakrij vreme otpremanja</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Ograničenja:
@@ -1249,6 +1252,7 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_fix_status_bar_layout_summary">Održava dosledan izgled statusne trake, tako da ne prekrije gornje trake i ostavlja prazan prostor iznad plejera. Isključite ovo ako aplikacija padne ili gornje trake izgledaju pogrešno</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Sjaj</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Ovaj uređaj ne podržava Glow početni ekran</string>
   <string name="morphe_theme_color_light_title">Pozadina svetle teme</string>
   <string name="morphe_theme_color_light_entry_2">Bela</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Bela)</string>

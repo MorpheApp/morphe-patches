@@ -552,9 +552,9 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_unplayed_title">Ukryj nieodtworzony tekst</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Ukrywa linijki tekstu znajdujące się poniżej tej aktualnie odtwarzanej</string>
   <string name="morphe_music_lyrics_mediasession_title">Pokaż teksty MediaSession na ekranie blokady</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Pokazuje bieżący wers na ekranie blokady, w Android Auto i przez Bluetooth. Wymaga systemu Android 11 lub nowszego</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Wyświetla bieżący wers na ekranie blokady, w Android Auto i przez Bluetooth. Wymaga systemu Android 11 lub nowszego</string>
   <string name="morphe_music_lyrics_miniplayer_title">Pokaż teksty w miniodtwarzaczu</string>
-  <string name="morphe_music_lyrics_miniplayer_summary">Pokazuje bieżący wers w miniodtwarzaczu, przenosząc nazwę utworu do podtytułu</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">Wyświetla bieżący wers w miniodtwarzaczu, przenosząc nazwę utworu do podtytułu</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Format tytułu i wykonawcy utworu</string>
   <string name="morphe_music_lyrics_mini_track_format_summary">Format informacji o utworze wyświetlanych wraz z tekstem w miniodtwarzaczu i MediaSession. {t} to tytuł, {a} to wykonawca, a {v} to wersja (np. akustyczna), jeśli źródło tekstu ją udostępnia. Tekst między dwoma dwukropkami jest pokazywany tylko wtedy, gdy każda zawarta w nim zmienna ma wartość. Wpisz \:, aby wstawić zwykły dwukropek. Każdy wiersz jest wyświetlany po kolei i zmienia się wraz ze zmianą wersu tekstu</string>
   <string name="morphe_music_lyrics_mini_encapsulation_title">Format wersu tekstu</string>

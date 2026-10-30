@@ -113,6 +113,9 @@ Vissa serverbaserade layouts kanske inte återgår.
   <string name="morphe_hide_surveys_title">Dölj enkäter</string>
   <string name="morphe_hide_surveys_summary">Dölj enkäter och puffar om hur korrekta rekommendationerna är i flödet</string>
   <string name="morphe_hide_ticket_shelf_title">Dölj biljetthylla</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Dölj bannern \"Otillgängliga videor är dolda\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Döljer bannern \"Otillgängliga videor är dolda\" i spellistor</string>
   <string name="morphe_hide_upload_time_title">Dölj uppladdningstid</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Begränsningar:
@@ -1249,6 +1252,7 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_fix_status_bar_layout_summary">Behåller statusradens layout konsekvent, så att den inte täcker de övre fälten och lämnar inget tomt utrymme ovanför spelaren. Stäng av detta om appen kraschar eller om de övre fälten ser fel ut</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Glöd</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Glow-stänkbild skärm är inte supported av den här enheten</string>
   <string name="morphe_theme_color_light_title">Bakgrundsfärg för ljust tema</string>
   <string name="morphe_theme_color_light_entry_2">Vit</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Vit)</string>

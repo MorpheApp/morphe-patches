@@ -22,6 +22,10 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.text.Layout;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -40,6 +44,7 @@ import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.music.settings.preference.LyricsTargetLanguagePreference;
 import app.morphe.extension.shared.ui.Dim;
 
 /** All of it is static and reads no state of its own, which is why it lives outside the view. */
@@ -407,33 +412,90 @@ final class LyricsViewSupport {
         return false;
     }
 
-    static String sourceText(String providerName, boolean translated,
-                             boolean translatedFromGoogle, boolean translatedFromAI, @Nullable String translatedAiModel,
-                             boolean romanized, boolean romanizedFromGoogle, boolean romanizedFromAI,
-                             @Nullable String romanizedAiModel, LyricsPanelView.OnlyMode onlyMode,
-                             @Nullable String romanizedLocalDictionary) {
-        String text = String.format(str(LYRICS_SOURCE_KEY), providerName);
+    static CharSequence sourceText(String providerName, boolean translated,
+                                    boolean translatedFromGoogle, boolean translatedFromAI, @Nullable String translatedAiModel,
+                                    boolean romanized, boolean romanizedFromGoogle, boolean romanizedFromAI,
+                                    @Nullable String romanizedAiModel, LyricsPanelView.OnlyMode onlyMode,
+                                    @Nullable String romanizedLocalDictionary,
+                                    @Nullable Runnable onTranslationLanguage,
+                                    @Nullable Runnable onRomanizationLanguage,
+                                    @Nullable Runnable onSourceClicked) {
+        SpannableStringBuilder text = new SpannableStringBuilder();
+        appendSourceLine(text, String.format(str(LYRICS_SOURCE_KEY), providerName), onSourceClicked);
 
         if (onlyMode != LyricsPanelView.OnlyMode.ROMA) {
             if (translated && translatedFromGoogle) {
-                text += "\n" + str("morphe_music_lyrics_translated_by_google");
+                appendLink(text, str("morphe_music_lyrics_translated_by_google"),
+                        true, onTranslationLanguage);
             } else if (translated && translatedFromAI && translatedAiModel != null) {
-                text += "\n" + String.format(str("morphe_music_lyrics_translated_by_ai"),
-                        translatedAiModel);
+                appendLink(text, String.format(str("morphe_music_lyrics_translated_by_ai"),
+                        translatedAiModel), true, onTranslationLanguage);
             }
         }
         if (onlyMode != LyricsPanelView.OnlyMode.TRANS && romanized) {
             if (romanizedFromGoogle) {
-                text += "\n" + str("morphe_music_lyrics_romanized_by_google");
+                appendLink(text, str("morphe_music_lyrics_romanized_by_google"),
+                        false, onRomanizationLanguage);
             } else if (romanizedFromAI && romanizedAiModel != null) {
-                text += "\n" + String.format(str("morphe_music_lyrics_romanized_by_ai"),
-                        romanizedAiModel);
+                appendLink(text, String.format(str("morphe_music_lyrics_romanized_by_ai"),
+                        romanizedAiModel), false, onRomanizationLanguage);
             } else if (romanizedLocalDictionary != null) {
                 // Named and nothing more: the licences are in the About row.
-                text += "\n" + String.format(str("morphe_music_lyrics_romanized_by_local"),
-                        romanizedLocalDictionary);
+                appendLink(text, String.format(str("morphe_music_lyrics_romanized_by_local"),
+                        romanizedLocalDictionary), false, onRomanizationLanguage);
             }
         }
         return text;
+    }
+
+    /** Appends a source line that opens its URL, not a language picker. */
+    private static void appendSourceLine(SpannableStringBuilder out, String line, Runnable onSource) {
+        out.append(line);
+        final int start = out.length() - line.length();
+        final int end = out.length();
+        out.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                if (onSource != null) onSource.run();
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                ds.setUnderlineText(false);
+            }
+        }, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    }
+
+    /** Appends {@code line} as its own line, tappable to open its side's language picker. */
+    private static void appendLink(SpannableStringBuilder out, String line, boolean translation,
+                                   @Nullable Runnable onPicked) {
+        out.append('\n');
+        final int start = out.length();
+        out.append(line);
+        out.setSpan(new LanguageSpan(translation, onPicked), start, out.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    }
+
+    /** A footer line that opens the target language picker for its side. */
+    static final class LanguageSpan extends ClickableSpan {
+        final boolean translation;
+        @Nullable
+        final Runnable onPicked;
+
+        LanguageSpan(boolean translation, @Nullable Runnable onPicked) {
+            this.translation = translation;
+            this.onPicked = onPicked;
+        }
+
+        @Override
+        public void onClick(View widget) {
+            LyricsTargetLanguagePreference.showLanguageDialog(
+                    widget.getContext(), translation, onPicked);
+        }
+
+        @Override
+        public void updateDrawState(TextPaint ds) {
+            ds.setUnderlineText(false);
+        }
     }
 }

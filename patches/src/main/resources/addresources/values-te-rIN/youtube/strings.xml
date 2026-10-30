@@ -18,12 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">మా గురించి</string>
-  <string name="morphe_settings_screen_01_ads_title">ప్రకటనలు</string>
-  <string name="morphe_settings_screen_03_feed_title">ఫీడ్ </string>
-  <string name="morphe_settings_screen_04_general_title">సాధారణం</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
-  <string name="morphe_auto_pause_on_screen_lock_off">ఆపు </string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
@@ -36,6 +31,7 @@ Second \"item\" text"</string>
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
@@ -59,7 +55,6 @@ Second \"item\" text"</string>
   <!-- layout.flyout.flyoutPatch -->
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
-  <string name="morphe_channel_whitelist_remove">తొలగించు</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -74,8 +69,6 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_search">శోధించు </string>
-  <string name="morphe_search_comments_clear">క్లియర్ చేయి</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -88,7 +81,6 @@ Second \"item\" text"</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
-  <string name="morphe_local_queue_remove">తొలగించు</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
@@ -100,7 +92,6 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_zone_label_off">ఆపు </string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <!-- layout.buttons.action.hideButtonsPatch -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
@@ -123,7 +114,6 @@ Second \"item\" text"</string>
   <!-- layout.captions.captionsPatch -->
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.preferredCaptionLanguagePatch -->
-  <string name="morphe_preferred_caption_language_entry_off">ఆపు </string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
@@ -181,7 +171,6 @@ Second \"item\" text"</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_searchbar_type_entry_disabled">నిలిపివే</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
@@ -193,7 +182,6 @@ Second \"item\" text"</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
-  <string name="morphe_playback_in_feeds_entry_off">ఆపు </string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.feedcards.feedCardLayoutPatch -->
@@ -238,9 +226,6 @@ Second \"item\" text"</string>
   <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <!-- layout.player.icons.playerIconStylePatch -->
-  <string name="morphe_player_icon_style_entry_auto">స్వయం చాలకం</string>
   <!-- video.series.seriesTrackerPatch -->
-  <string name="morphe_series_tracker_ui_cancel">రద్దుచేయి</string>
-  <string name="morphe_series_tracker_undo">చర్య రద్దు</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
 </resources>

@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">সার্ভে লুকান</string>
   <string name="morphe_hide_surveys_summary">ফিডের সুপারিশ নির্ভুলতা সম্পর্কে সমীক্ষা এবং নাজগুলি লুকায়।</string>
   <string name="morphe_hide_ticket_shelf_title">টিকিট তাক লুকান</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">\' অনুপলব্ধ ভিডিওগুলি লুকানো হয়েছে\' ব্যানারটি হাইড করুন</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">প্লেলিস্টে \'অনুপলব্ধ ভিডিওগুলি লুকানো হয়েছে\' ব্যানারটি হাইড করে</string>
   <string name="morphe_hide_upload_time_title">আপলোডের সময় লুকান</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"সীমাবদ্ধতা:
@@ -1249,6 +1252,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_fix_status_bar_layout_summary">স্ট্যাটাস বারের লেআউট ধ্রুবক রাখে, তাই এটি উপরের বারগুলি ঢাকবে না এবং প্লেয়ারের উপরে কোনো খালি জায়গা থাকবে না। অ্যাপটি ক্র্যাশ হলে বা উপরের বারগুলো ভুল দেখালে এই সেটিংটি বন্ধ করুন</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">গ্লো</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">এই ডিভাইসটি গ্লো স্প্ল্যাশ স্ক্রিন সমর্থন করে না</string>
   <string name="morphe_theme_color_light_title">হালকা থিমের পটভূমি</string>
   <string name="morphe_theme_color_light_entry_2">সাদা</string>
   <string name="morphe_theme_color_light_entry_3">Material You (সাদা)</string>

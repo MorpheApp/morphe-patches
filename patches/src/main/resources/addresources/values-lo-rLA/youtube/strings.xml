@@ -18,213 +18,1640 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_screen_00_about_title">ກ່ຽວກັບ Morphe</string>
+  <string name="morphe_settings_screen_01_ads_title">ໂຄສະນາ</string>
+  <string name="morphe_settings_screen_03_feed_title">ຟີດ</string>
+  <string name="morphe_settings_screen_04_general_title">ທົ່ວໄປ</string>
+  <string name="morphe_settings_screen_05_player_title">ເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
+  <string name="morphe_settings_screen_07_seekbar_title">ແຖບເລື່ອນເວລາ</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">ການຄວບຄຸມດ້ວຍການປ້ັດ</string>
+  <string name="morphe_settings_screen_11_misc_title">ເບັດເຕເລັດ</string>
+  <string name="morphe_settings_screen_12_video_title">ວິດີໂອ</string>
+  <string name="morphe_restore_old_settings_menus_title">ກູ້ຄືນໜ້າຈໍການຕັ້ງຄ່າ YouTube ແບບເກົ່າ</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">ເອົາຂໍ້ຈຳກັດການຫຼິ້ນເບื้องຫຼັງອອກ</string>
+  <string name="morphe_shorts_disable_background_playback_title">ປິດການຫຼິ້ນເບื้องຫຼັງ</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">ຢຸດຊົ່ວຄາວອັດຕະໂນມັດເມື່ອລັອກອຸປະກອນ</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">ປິດ</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">ຢຸດຊົ່ວຄາວສະເໝີເມື່ອລັອກ</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">ຢຸດຊົ່ວຄາວ ຍົກເວັ້ນແຕ່ເຊື່ອມຕໍ່ສຽງແບບໄຮ້ສາຍ</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
+  <string name="morphe_disable_scrolling_speed_limit_title">ປິດການຈຳກັດຄວາມໄວໃນການເລື່ອນ</string>
   <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">ປິດການອັບເດດເລআᱣຕ໌</string>
+  <string name="morphe_disable_layout_updates_summary">ປ້ອງກັນບໍ່ໃຫ້ເຊີເວີອັບເດດເຄົ້າໂຄງຂອງແອັບ</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"ຮູບແບບແອັບຈະກັບຄືນໄປສູ່ຮູບແບບທີ່ໃຊ້ໃນຕອນຕິດຕັ້ງຄັ້ງທຳອິດ.
+
+ບາງຮູບແບບທາງຝັ່ງເຊີບເວີອາດຈະບໍ່ກັບຄືນ.
+
+ການປ່ຽນແປງລວມມີ:
+• ສ່ວນປະກອບໃນເມນູ flyout ຂອງເຄື່ອງຫຼິ້ນ (ຫຼື ການຕັ້ງຄ່າທີ່ກ່ຽວຂ້ອງ) ອາດຈະບໍ່ເຮັດວຽກ
+• ຕົວເລກທີ່ກຳລັງໝຸນຈະບໍ່ມີການເຄື່ອນໄຫວ
+• ແຖບຫ້ອງສະໝຸດຈະຖືກສະແດງ
+• ສ່ວນດົນຕີຂອງລາຍລະອຽດວິດີໂອອາດຈະບໍ່ເຮັດວຽກ
+• ລາຍການເມນູ flyout ຂອງເຄື່ອງຫຼິ້ນບໍ່ສາມາດເຊື່ອງໄດ້
+• ປຸ່ມສະຫຼັບບັນຊີອາດຈະບໍ່ປາກົດໃນແຖບຫ້ອງສະໝຸດ"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_feed_flyout_menu_title">ເປີດໃຊ້ຕົວຕອງເມນູ flyout ຂອງ feed</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">ຕົວຕອງເມນູ flyout ຂອງ feed</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">ປ້ອນຊື່ເມນູ flyout ທີ່ຕ້ອງການກັ່ນຕອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່</string>
+  <string name="morphe_hide_account_menu_title">ເປີດໃຊ້ການກັ່ນกรອງເມນູລຸ່ມ ຫ້ອງສະໝຸດ / ທ່ານ</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">ການກັ່ນกรອງເມນູລຸ່ມ ຫ້ອງສະໝຸດ / ທ່ານ</string>
+  <string name="morphe_hide_account_menu_filter_strings_summary">ປ້ອນຊື່ເມນູລຸ່ມ ຫ້ອງສະໝຸດ / ທ່ານ ທີ່ຕ້ອງການກັ່ນกรອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່</string>
+  <string name="morphe_hide_album_cards_title">ເຊື່ອງບັດອັນບັມ</string>
+  <string name="morphe_hide_album_cards_summary">ເຊື່ອງບັດອັນບັ້ມ ພາຍໃຕ້ຄໍາອະທິບາຍຂອງສິລະປິນ</string>
+  <string name="morphe_hide_artist_cards_title">ເຊື່ອງບັດສິລະປິນ</string>
+  <string name="morphe_hide_artist_cards_summary">ເຊື່ອງບັດສິລະປິນ ຢູ່ສ່ວນເທິງຂອງຜົນການຄົ້ນຫາ</string>
+  <string name="morphe_hide_channel_buttons_title">ເຊື່ອງປຸ່ມຊ່ອງ</string>
+  <string name="morphe_hide_channel_buttons_summary">ເຊື່ອງປຸ່ມຕ່າງໆ ເຊັ່ນ: ຕິດຕາມ, ເບິ່ງຊ່ອງ, ຊຸມຊົນ, ແລະ YouTube Music ຈາກໂປຣໄຟລ໌ຊ່ອງໃນຜົນການຄົ້ນຫາ</string>
+  <string name="morphe_hide_community_posts_title">ເຊື່ອງໂພສຊຸມຊົນ</string>
+  <string name="morphe_hide_compact_banner_title">ເຊື່ອງແບນເນີແບບກະທັດຮັດ</string>
+  <string name="morphe_hide_compact_banner_summary">ເຊື່ອງແບນເນີແບບກະທັດຮັດ ແລະ ໄລຍະຫ່າງລະຫວ່າງບາງອົງປະກອບ</string>
+  <string name="morphe_hide_expandable_card_title">ບັດທີ່ຂະຫຍາຍໄດ້ ພາຍໃຕ້ວິດີໂອ</string>
+  <string name="morphe_hide_expandable_card_entry_1">ສະແດງທັງໝົດ</string>
+  <string name="morphe_hide_expandable_card_entry_2">ເຊື່ອງສະເພາະການັດສະຫຼຸບ</string>
+  <string name="morphe_hide_expandable_card_entry_3">ເຊື່ອງທັງໝົດ</string>
+  <string name="morphe_hide_floating_microphone_button_title">ເຊື່ອງປຸ່ມໄມໂຄຣໂຟນແບບລອຍ</string>
+  <string name="morphe_hide_floating_microphone_button_summary">ເຊື່ອງປຸ່ມໄມໂຄຣໂຟນແບບລອຍ ຢູ່ມຸມຂວາລຸ່ມຂອງໜ້າຈໍຄໍາແນະນໍາການຄົ້ນຫາ</string>
+  <string name="morphe_hide_get_premium_button_title">ເຊື່ອງປຸ່ມ \'ຊື້ Premium\'</string>
+  <string name="morphe_hide_history_shelf_title">ເຊື່ອງຊັ້ນປະຫວັດ</string>
+  <string name="morphe_hide_horizontal_shelves_title">ເຊື່ອງຊັ້ນວາງແນວນອນ</string>
+  <string name="morphe_hide_horizontal_shelves_summary">ເຊື່ອງຊັ້ນແນວນອນ ເຊັ່ນ ຂ່າວດ່ວນ, ໂພສຊຸມຊົນທີ່ທ່ານອາດຈະມັກ, ເບິ່ງຕໍ່, ສຳຫຼວດຊ່ອງເພີ່ມເຕີມ, ສຳຫຼວດຫົວຂໍ້ເພີ່ມເຕີມ, ສຳລັບທ່ານ, ວິດີໂອຫຼ້າສຸດ, ທີ່ກ່ຽວຂ້ອງທີ່ສຸດ, ໂພສຈາກຊຸມຊົນຂອງຜູ້ສ້າງ, ການຊື້ເຄື່ອງ, ແລະ ເບິ່ງອີກຄັ້ງ</string>
+  <string name="morphe_hide_image_shelf_title">ເຊື່ອງຊັ້ນວາງຮູບພາບ</string>
+  <string name="morphe_hide_image_shelf_summary">ເຊື່ອງຊັ້ນຮູບພາບ ໃນຜົນການຄົ້ນຫາ</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
+  <string name="morphe_hide_invite_to_message_card_title">ເຊື່ອງບັດ \'ເຊີນຜູ້ນື່ນໃຫ້ສົ່ງຂໍ້ຄວາມ\'</string>
+  <string name="morphe_hide_invite_to_message_card_summary">ເຊື່ອງບັດເຊີນທີ່ສະແດງໃນສ່ວນຂໍ້ຄວາມຂອງແທັບການແຈ້ງເຕືອນ</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
+  <string name="morphe_hide_latest_videos_button_title">ເຊື່ອງປຸ່ມ \'ວິດີໂອຫຼ້າສຸດ\'</string>
+  <string name="morphe_hide_latest_videos_button_summary">ເຊື່ອງແບນເນີ \'ວິດີໂອຫຼ້າສຸດ\' ສີຟ້າທີ່ປາກົດຢູ່ດ້ານເທິງຂອງຟີດໜ້າຫຼັກ</string>
+  <string name="morphe_hide_live_streams_title">ເຊື່ອງການຖ່າຍທອດສົດ</string>
+  <string name="morphe_hide_live_streams_summary">ເຊື່ອງວິດີໂອທີ່ກຳລັງໄລຟ໌ສົດໃນຟີດໜ້າຫຼັກ ແລະ ຜົນການຄົ້ນຫາ</string>
+  <string name="morphe_hide_mix_playlists_title">ເຊື່ອງເພລລິສມິກສ໌</string>
+  <string name="morphe_hide_movies_section_title">ເຊື່ອງພາກສ່ວນຮູບເງົາ</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">ເຊື່ອງຫົວຂໍ້ເມນູການແຈ້ງເຕືອນ</string>
+  <string name="morphe_hide_notifications_menu_header_summary">ເຊື່ອງຫົວຂໍ້ເມນູການແຈ້ງເຕືອນເມື່ອຄລິກປຸ່ມລະຄັງ</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
+  <string name="morphe_hide_notify_me_button_title">ເຊື່ອງປຸ່ມ \'ແຈ້ງເຕືອນฉัน\'</string>
+  <string name="morphe_hide_notify_me_button_summary">ເຊື່ອງປຸ່ມເຕືອນສຳລັບການໄລຟ໌ສະຕຣີມ ແລະ ການເປີດຕົວທີ່ກຳນົດເວລາໄວ້</string>
+  <string name="morphe_hide_playables_title">ເຊື່ອງ Playables</string>
+  <string name="morphe_hide_playables_summary">ເຊື່ອງຟີເຈີທີ່ອະນຸຍາດໃຫ້ທ່ານຫຼິ້ນເກມ</string>
+  <string name="morphe_hide_search_term_thumbnails_title">ເຊື່ອງຮູບຕົວຢ່າງຂອງຄຳຄົ້ນຫາ</string>
+  <string name="morphe_hide_search_term_thumbnails_summary">ເຊື່ອງຕົວຢ່າງຮູບຂະໜາດນ້ອຍໃນລາຍການຄົ້ນຫາແບບອັດຕະໂນມັດ</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
+  <string name="morphe_hide_show_more_button_title">ເຊື່ອງປຸ່ມ \'ເບິ່ງເພີ່ມເຕີມ\'</string>
+  <string name="morphe_hide_show_more_button_summary">ເຊື່ອງປຸ່ມຂະຫຍາຍຢູ່ກ້ອງວິດີໂອໃນຜົນການຄົ້ນຫາ</string>
+  <string name="morphe_hide_subscribed_channels_bar_title">ເຊື່ອງແຖບຊ່ອງທີ່ຕິດຕາມ</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">ເຊື່ອງຊື່ຊ່ອງທີ່ຕິດຕາມແລ້ວ</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_summary">ເຊື່ອງຊື່ຊ່ອງໃນແຖບຊ່ອງທີ່ຕິດຕາມແລ້ວ</string>
+  <string name="morphe_hide_surveys_title">ເຊື່ອງການສຳຫຼວດ</string>
+  <string name="morphe_hide_surveys_summary">ເຊື່ອງການສຳຫຼວດ ແລະ ການເຕືອນກ່ຽວກັບຄວາມຖືກຕ້ອງຂອງການແນະນຳ feed</string>
+  <string name="morphe_hide_ticket_shelf_title">ເຊື່ອງຊັ້ນບັດ</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">ເຊື່ອງແບນເນີ \'ວິດີໂອທີ່ບໍ່ມີໃຫ້ຮັບຊົມຖືກເຊື່ອງໄວ້\'</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">ເຊື່ອງແບນເນີ \'ວິດີໂອທີ່ບໍ່ມີໃຫ້ຮັບຊົມຖືກເຊື່ອງໄວ້\' ໃນລາຍການວິດີໂອ</string>
+  <string name="morphe_hide_upload_time_title">ເຊື່ອງເວລາອັບໂຫຼດ</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"ຂໍ້ຈຳກັດ:
+• ຊັ້ນ Shorts, ໜ້າຊ່ອງ, ແລະ ຜົນການຄົ້ນຫາ ອາດຈະຍັງສະແດງເວລາອັບໂຫຼດ
+• ບໍ່ສາມາດໃຊ້ໄດ້ກັບ লেઆເອົາສຳລັບລົດຍົນ"</string>
+  <string name="morphe_hide_video_thumbnail_title">ເຊື່ອງຮູບຕົວຢ່າງວິດີໂອ</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_labels_title">ເຊື່ອງປ້າຍກຳກັບວິດີໂອ</string>
+  <string name="morphe_hide_video_labels_summary">ເຊື່ອງປ້າຍກຳກັບ ເຊັ່ນ \'ພາກສຽງອັດຕະໂນມັດ\' / \'ພາກສຽງ\', \'ໄດ້ຮັບຄ່ານາຍໜ້າ\', \'ຍອດນິຍົມ\', \'ຜູ້ຄົນຍັງໄດ້ເບິ່ງ\', \'ຜະລິດຕະພັນ(s)\' ແລະ \'ທ່ານອາດຈະມັກ\'</string>
+  <string name="morphe_hide_view_count_title">ເຊື່ອງຈຳນວນການເບິ່ງ</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"ຂໍ້ຈຳກັດ:
+• ຊັ້ນ Shorts, ໜ້າຊ່ອງ, ແລະ ຜົນການຄົ້ນຫາ ອາດຈະຍັງສະແດງຈຳນວນການເບິ່ງ
+• ບໍ່ສາມາດໃຊ້ໄດ້ກັບ ເລອາເອົາສຳລັບລົດຍົນ"</string>
+  <string name="morphe_hide_web_search_results_title">ເຊື່ອງຜົນການຄົ້ນຫາເວັບ</string>
+  <string name="morphe_hide_web_search_results_summary">ເຊື່ອງພາກ \'ຜົນລັດຈາກເວັບ\' ຈາກຜົນການຄົ້ນຫາ</string>
+  <string name="morphe_hide_you_may_like_section_title">ເຊື່ອງສ່ວນ \'ທ່ານອາດຈະມັກ\'</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
+  <string name="morphe_hide_youtube_doodles_title">ເຊື່ອງ YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary">ເຊື່ອງແອນິເມຊັນຕາມລະດູການ ແລະ ຕາມເຫດການໃນໂລໂກ້ YouTube</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">ການສະແດງ YouTube Doodles ອາດຈະຂັດຂວາງການສະແດງຜົນຂອງສ່ວນຫົວທີ່ກຳນົດເອງ</string>
+  <string name="morphe_hide_channel_bar_title">ເຊື່ອງແຖບຊ່ອງ</string>
+  <string name="morphe_hide_channel_watermark_title">ເຊື່ອງລາຍນ້ຳຂອງຊ່ອງ</string>
+  <string name="morphe_hide_chapters_timeline_button_title">ເຊື່ອງບົດ ແລະ ປຸ່ມ \'ໃນວິດີໂອນີ້\'</string>
+  <string name="morphe_hide_crowdfunding_box_title">ເຊື່ອງກ່ອງລະດົມທຶນ</string>
+  <string name="morphe_hide_emergency_box_title">ເຊື່ອງກ່ອງຂໍ້ຄວາມສຸກເສີນ</string>
+  <string name="morphe_hide_info_panels_title">ເຊື່ອງແຜງຂໍ້ມູນ</string>
+  <string name="morphe_hide_info_panels_summary">ເຊື່ອງແຜງຂໍ້ມູນບໍລິບົດ, ເຊັ່ນ ຂໍ້ມູນທາງການແພດ</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
+  <string name="morphe_hide_join_membership_button_title">ເຊື່ອງປຸ່ມເຂົ້າຮ່ວມ</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">ເຊື່ອງປຸ່ມ \'ຫຼິ້ນຊ້ຳການແຊັດສົດ\'</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">ເຊື່ອງປຸ່ມຫຼິ້ນແຊັດຄືນໃໝ່ໃນໂໝດເຕັມຈໍ</string>
+  <string name="morphe_hide_medical_panels_title">ເຊື່ອງແຜງຂໍ້ມູນທາງການແພດ</string>
+  <string name="morphe_hide_player_gesture_hints_title">ເຊື່ອງຄຳແນະນຳການໃຊ້ທ່າທາງຂອງເຄື່ອງຫຼິ້ນ</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">ເຊື່ອງຄຳແນະນຳທີ່ສະແດງໃນລະຫວ່າງການເຮັດທ່າທາງຂອງຜູ້ຫຼິ້ນ, ເຊັ່ນ \'ລາກຂຶ້ນເພື່ອຊອກຫາຢ່າງຊັດເຈນ\', \'ປ່ອຍເພື່ອຍົກເລີກ\' ແລະ \'2x\'</string>
+  <string name="morphe_hide_snackbar_title">ເຊື່ອງ snackbar</string>
+  <string name="morphe_hide_subscribers_community_guidelines_title">ເຊື່ອງຄຳແນະນຳສຳລັບຜູ້ຕິດຕາມ</string>
+  <string name="morphe_hide_sync_button_title">ເຊື່ອງປຸ່ມ \'ຊິງຄ໌ກັບວິດີໂອ\'</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">ເຊື່ອງການໄລ່ສີຂອງການແຕະ and ຄ້າງໄວ້</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">ເຊື່ອງການໄລ່ສີຂອງຕົວຄວບຄຸມເຄື່ອງຫຼິ້ນ ເມື່ອເລື່ອນນິ້ວມືໃນຂະນະທີ່ກົດຄ້າງໄວ້ເພື່ອເພີ່ມຄວາມໄວ</string>
+  <string name="morphe_hide_timed_reactions_title">ເຊື່ອງການຕອບສະໜອງແບບກຳນົດເວລາ</string>
+  <string name="morphe_hide_timed_reactions_summary">ເຊື່ອງຟີເຈີທີ່ຊ່ວຍໃຫ້ຜູ້ໃຊ້ສາມາດຕອບໂຕ້ດ້ວຍອີໂມຈິໃນສ່ວນຄຳຄິດເຫັນ ແລະ ແຊັດສົດ</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">ເຊື່ອງເມນູ \'ຄວາມຊ່ວຍເຫຼືອ &amp; ຄຳຄິດເຫັນ\'</string>
+  <string name="morphe_hide_help_feedback_menu_summary">ເຊື່ອງເມນູ \'ຄວາມຊ່ວຍເຫຼືອ &amp; ຄຳຄິດເຫັນ\' ເມື່ອໃຊ້ປຸ່ມສາມຈຸດ, ເຊັ່ນ ໃນຜົນການຄົ້ນຫາ</string>
+  <string name="morphe_hide_handle_title">ເຊື່ອງ handle</string>
+  <string name="morphe_hide_handle_summary">ເຊື່ອງ handle ຂອງຊ່ອງທ່ານໃນແຖບ \'ທ່ານ\'</string>
+  <string name="morphe_hide_video_title_title">ເຊື່ອງຫົວຂໍ້ວິດີໂອ</string>
+  <string name="morphe_hide_video_title_summary">ເຊື່ອງຫົວຂໍ້ວິດີໂອໃນໂໝດເຕັມຈໍ</string>
+  <string name="morphe_sanitize_video_subtitle_title">ລ້າງຂໍ້ມູນຄຳບັນຍາຍວິດີໂອ</string>
+  <string name="morphe_sanitize_video_subtitle_summary">ກຳຈັດວະລີເຊັ່ນ \'#\', \'Fundraiser\', \'product(s)\', ແລະ \'Shop\' ອອກຈາກຄຳບັນຍາຍວິດີໂອ</string>
+  <string name="morphe_hide_ask_gemini_button_title">ເຊື່ອງປຸ່ມ \'ຖາມ Gemini\'</string>
+  <string name="morphe_hide_ask_gemini_button_summary">ເຊື່ອງປຸ່ມ \'ຖາມ Gemini\' ຢູ່ລຸ່ມສຸດຂອງແຜງ \'ຖາມກ່ຽວກັບວິດີໂອນີ້\'</string>
+  <string name="morphe_hide_description_components_screen_title">ຄຳອະທິບາຍວິດີໂອ</string>
+  <string name="morphe_hide_description_components_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນລາຍລະອຽດຂອງວິດີໂອ</string>
+  <string name="morphe_hide_ai_generated_video_summary_section_title">ເຊື່ອງສ່ວນ \'ບົດສະຫຼຸບວິດີໂອທີ່ສ້າງໂດຍ AI\'</string>
+  <string name="morphe_hide_ask_section_title">ເຊື່ອງສ່ວນ Ask</string>
+  <string name="morphe_hide_attributes_section_title">ເຊື່ອງສ່ວນ Attributes</string>
+  <string name="morphe_hide_attributes_section_summary">ເຊື່ອງສ່ວນ ສະຖານທີ່ທີ່ໂດດເດັ່ນ, ເກມ, ດົນຕີ, ແລະ ບຸກຄົນທີ່ຖືກກ່າວເຖິງ</string>
+  <string name="morphe_hide_channel_links_section_title">ເຊື່ອງສ່ວນລິງ unforeseen ຂອງຊ່ອງ</string>
+  <string name="morphe_hide_chapters_section_title">ເຊື່ອງສ່ວນ Chapters</string>
+  <string name="morphe_hide_corrections_section_title">ເຊື່ອງສ່ວນ Corrections</string>
+  <string name="morphe_hide_course_progress_section_title">ເຊື່ອງສ່ວນ \'ຄວາມຄືບໜ້າຂອງຫຼັກສູດ\'</string>
+  <string name="morphe_hide_explore_section_title">ເຊື່ອງພາກສ່ວນສຳຫຼວດ</string>
+  <string name="morphe_hide_explore_section_summary">ເຊື່ອງພາກສ່ວນສຳຫຼວດຫຼັກສູດນີ້ ແລະ ສຳຫຼວດພອດແຄສ</string>
+  <string name="morphe_hide_explore_course_section_title">ເຊື່ອງພາກ \'ສຳຫຼວດຫຼັກສູດນີ້\'</string>
+  <string name="morphe_hide_explore_podcast_section_title">ເຊື່ອງພາກ \'ສຳຫຼວດພອດແຄສ\'</string>
+  <string name="morphe_hide_featured_channels_section_title">ເຊື່ອງພາກສ່ວນຊ່ອງທີ່ໂດດເດັ່ນ</string>
+  <string name="morphe_hide_featured_links_section_title">ເຊື່ອງພາກລິງກ໌ທີ່ໂດດເດັ່ນ</string>
+  <string name="morphe_hide_featured_playlists_section_title">ເຊື່ອງສ່ວນລາຍການຫຼິ້ນທີ່ໂດດເດັ່ນ</string>
+  <string name="morphe_hide_featured_videos_section_title">ເຊື່ອງພາກວິດີໂອທີ່ໂດດເດັ່ນ</string>
+  <string name="morphe_hide_hashtag_section_title">ເຊື່ອງສ່ວນ Hashtag</string>
+  <string name="morphe_hide_how_this_was_made_section_title">ເຊື່ອງພາກ \'ວິທີສ້າງສິ່ງນີ້\'</string>
+  <string name="morphe_hide_hype_points_title">ເຊື່ອງຄະແນນ Hype</string>
+  <string name="morphe_hide_info_cards_section_title">ເຊື່ອງພາກບັດຂໍ້ມູນ</string>
+  <string name="morphe_hide_key_concepts_section_title">ເຊື່ອງພາກ \'ແນວຄິດຫຼັກ\'</string>
+  <string name="morphe_hide_quizzes_section_title">ເຊື່ອງພາກແບບທົດສອບ</string>
+  <string name="morphe_hide_search_inside_this_video_section_title">ເຊື່ອງພາກ \'ຄົ້ນຫາພາຍໃນວິດີໂອນີ້\'</string>
+  <string name="morphe_hide_subscribe_button_title">ເຊື່ອງປຸ່ມຕິດຕາມ</string>
+  <string name="morphe_hide_transcript_section_title">ເຊື່ອງພາກບົດຖອດຄວາມ</string>
+  <string name="morphe_hide_video_details_section_title">ເຊື່ອງພາກ \'ລາຍລະອຽດວິດີໂອ\'</string>
+  <string name="morphe_hide_filter_bar_screen_title">ແຖບກັ່ນຕອງ</string>
+  <string name="morphe_hide_filter_bar_screen_summary">ເລືອກບ່ອນທີ່ຈະເຊື່ອງແຖບຕົວຕອງແບບເລື່ອນ</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">ເຊື່ອງໃນໜ້າຊ່ອງ</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">ເຊື່ອງໃນຄຳຄິດເຫັນ</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">ເຊື່ອງໃນຟີດ</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">ເຊື່ອງໃນວິດີໂອທີ່ກ່ຽວຂ້ອງ</string>
+  <string name="morphe_hide_filter_bar_in_search_title">ເຊື່ອງໃນຜົນການຄົ້ນຫາ</string>
+  <string name="morphe_hide_filter_bar_in_history_title">ເຊື່ອງໃນປະຫວັດການເບິ່ງ</string>
+  <string name="morphe_channel_screen_title">ໜ້າຊ່ອງ</string>
+  <string name="morphe_channel_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນໜ້າຊ່ອງ</string>
+  <string name="morphe_hide_channel_tab_title">ເປີດໃຊ້ຕົວຕອງແຖບຊ່ອງ</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">ຕົວຕອງແຖບຊ່ອງ</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">ປ້ອນຊື່ແທັບຂອງຊ່ອງເພື່ອຕອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_community_button_title">ເຊື່ອງປຸ່ມຊຸມຊົນ</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_join_button_title">ເຊື່ອງປຸ່ມເຂົ້າຮ່ວມ</string>
+  <string name="morphe_hide_links_preview_title">ເຊື່ອງການສະແດງຕົວຢ່າງລິງກ໌</string>
+  <string name="morphe_hide_links_preview_summary">ເຊື່ອງລິງກ໌ເວັບທີ່ສາມາດຄລິກໄດ້ໃນສ່ວນຫົວຂອງຊ່ອງ</string>
+  <string name="morphe_hide_members_only_chip_title">ເຊື່ອງປ້າຍ \'ສະເພາະສະມາຊິກ\'</string>
+  <string name="morphe_hide_members_only_chip_summary">ເຊື່ອງປ້າຍ \'ສະເພາະສະມາຊິກ\' ໃນແຖບກັ່ນຕອງຂອງຊ່ອງ</string>
+  <string name="morphe_hide_members_shelf_title">ເຊື່ອງຊັ້ນສະມາຊິກ</string>
+  <string name="morphe_hide_members_shelf_summary">ເຊື່ອງລາຍຊື່ສະມາຊິກຂອງຊ່ອງ</string>
+  <string name="morphe_hide_posts_shelf_title">ເຊື່ອງຊັ້ນໂພສ</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_store_button_title">ເຊື່ອງປຸ່ມຮ້ານຄ້າ</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">ເຊື່ອງປຸ່ມຕິດຕາມ</string>
+  <string name="morphe_explore_menu_screen_title">ເມນູສຳຫຼວດ</string>
+  <string name="morphe_explore_menu_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນເມນູສຳຫຼວດ</string>
+  <string name="morphe_hide_courses_menu_title">ເຊື່ອງເມນູຫຼັກສູດ</string>
+  <string name="morphe_hide_explore_button_title">ເຊື່ອງປຸ່ມສຳຫຼວດ</string>
+  <string name="morphe_hide_fashion_menu_title">ເຊື່ອງເມນູ \'ແຟຊັນ &amp; ຄວາມງາມ\'</string>
+  <string name="morphe_hide_gaming_menu_title">ເຊື່ອງເມນູເກມ</string>
+  <string name="morphe_hide_hype_menu_title">ເຊື່ອງເມນູ Hype</string>
+  <string name="morphe_hide_learning_menu_title">ເຊື່ອງເມນູການຮຽນຮູ້</string>
+  <string name="morphe_hide_live_menu_title">ເຊື່ອງເມນູໄລຟ໌</string>
+  <string name="morphe_hide_memberships_menu_title">ເຊື່ອງເມນູການເປັນສະມາຊິກ</string>
+  <string name="morphe_hide_movies_menu_title">ເຊື່ອງເມນູ \'ຮູບເງົາ &amp; ທີວີ\'</string>
+  <string name="morphe_hide_music_menu_title">ເຊື່ອງເມນູເພງ</string>
+  <string name="morphe_hide_news_menu_title">ເຊື່ອງເມນູຂ່າວ</string>
+  <string name="morphe_hide_playables_menu_title">ເຊື່ອງເມນູ Playables</string>
+  <string name="morphe_hide_podcasts_menu_title">ເຊື່ອງເມນູ Podcasts</string>
+  <string name="morphe_hide_shopping_menu_title">ເຊື່ອງເມນູ Shopping</string>
+  <string name="morphe_hide_sports_menu_title">ເຊື່ອງເມນູ Sports</string>
+  <string name="morphe_hide_youtube_premium_menu_title">ເຊື່ອງເມນູ YouTube Premium</string>
+  <string name="morphe_hide_youtube_studio_menu_title">ເຊື່ອງເມນູ YouTube Studio</string>
+  <string name="morphe_hide_youtube_music_menu_title">ເຊື່ອງເມນູ YouTube Music</string>
+  <string name="morphe_hide_youtube_kids_menu_title">ເຊື່ອງເມນູ YouTube Kids</string>
+  <string name="morphe_hide_youtube_create_menu_title">ເຊື່ອງເມນູ YouTube Create</string>
+  <string name="morphe_hide_youtube_works_menu_title">ເຊື່ອງເມນູ \'YouTube ເຮັດວຽກແນວໃດ\'</string>
+  <string name="morphe_hide_privacy_tos_footer_title">ເຊື່ອງສ່ວນທ້າຍຂອງກົດໝາຍ ແລະ ຄວາມເປັນສ່ວນຕົວ</string>
+  <string name="morphe_comments_screen_title">ຄວາມຄິດເຫັນ</string>
+  <string name="morphe_comments_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນສ່ວນຄໍາຄິດເຫັນ</string>
+  <string name="morphe_hide_comments_carousel_title">ເປີດໃຊ້ງານຕົວຕອງ carousel ຂອງຄຳຄິດເຫັນ</string>
+  <string name="morphe_hide_comments_carousel_summary">"• ກະລຸນາປ້ອນຊື່ທີ່ຖືກຕ້ອງຂອງລາຍການໃນ carousel (ຕົວຢ່າງ: Ask, Hype this video, Listen on YouTube Music)
+• ການເຊື່ອງລາຍການໃນ carousel ອາດສົ່ງຜົນກະທົບທີ່ບໍ່ໄດ້ຄາດຄິດ
+• ຖ້າລາຍການໃນ carousel ທັງໝົດຖືກເຊື່ອງ, ສ່ວນຄຳຄິດເຫັນທັງໝົດຈະຖືກເຊື່ອງໄປນຳ"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">ຕົວຕອງ carousel ຂອງຄຳຄິດເຫັນ</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">ປ້ອນຊື່ carousel ຂອງຄໍາຄິດເຫັນເພື່ອຕອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່</string>
+  <string name="morphe_hide_comments_ai_chat_summary_title">ເຊື່ອງບົດສະຫຼຸບການແຊັດດ້ວຍ AI</string>
+  <string name="morphe_hide_comments_channel_guidelines_title">ເຊື່ອງຄຳແນະນຳຂອງຊ່ອງ</string>
+  <string name="morphe_hide_comments_contexts_title">ເຊື່ອງຂໍ້ຄວາມບໍລິບົດ</string>
+  <string name="morphe_hide_comments_by_members_header_title">ເຊື່ອງຫົວຂໍ້ \"ຄວາມຄິດເຫັນໂດຍສະມາຊິກ\"</string>
+  <string name="morphe_hide_comments_section_title">ເຊື່ອງພາກສ່ວນຄຳຄິດເຫັນ</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">ເຊື່ອງພາກສ່ວນຄຳຄິດເຫັນໃນ feed ໜ້າຫຼັກ</string>
+  <string name="morphe_hide_comments_community_guidelines_title">ເຊື່ອງຄຳແນະນຳຊຸມຊົນ</string>
+  <string name="morphe_hide_comments_create_a_short_button_title">ເຊື່ອງປຸ່ມ \'ສ້າງ Short\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">ເຊື່ອງປຸ່ມບໍ່ມັກ</string>
+  <string name="morphe_hide_comments_emoji_button_title">ເຊື່ອງປຸ່ມ Emoji</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">ເຊື່ອງຕົວເລືອກແຖບການກັ່ນกรອງ</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">ເຊື່ອງທຸກຕົວເລືອກແຖບການກັ່ນกรອງ ຍົກເວັ້ນ \'ຍອດນິຍົມ\' ແລະ \'ໃໝ່ສຸດ\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">ເຊື່ອງແອນິເມຊັນຂອງຂວັນ ແລະ ການັດ</string>
+  <string name="morphe_hide_comments_gift_button_title">ເຊື່ອງປຸ່ມຂອງຂວັນ</string>
+  <string name="morphe_hide_comments_info_button_title">ເຊື່ອງປຸ່ມຂໍ້ມູນ</string>
+  <string name="morphe_hide_comments_live_chat_donators_bar_title">ເຊື່ອງແຖບຜູ້ບໍລິຈາກໃນແຊັດສົດ</string>
+  <string name="morphe_hide_comments_live_chat_scroll_to_bottom_button_title">ເຊື່ອງປຸ່ມເລື່ອນລົງລຸ່ມສຸດຂອງການແຊັດສົດ</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">ເຊື່ອງຄຳແນະນຳຂອງແຊັດສົດ</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">ເຊື່ອງປັອບອັບຄຳແນະນຳທີ່ສະແດງໃກ້ກັບແຖບປ້ອນຂໍ້ມູນແຊັດ, ເຊັ່ນ ແຈ້ງເຕືອນການແຊັດສະເພາະຜູ້ສະໝັກຮັບຂໍ້ມູນ</string>
+  <string name="morphe_hide_comments_menu_button_title">ເຊື່ອງປຸ່ມເມນູ</string>
+  <string name="morphe_hide_comments_menu_button_summary">ເຊື່ອງປຸ່ມເມນູ 3 ຈຸດ ຂອງແຕ່ລະຄຳເຫັນ</string>
+  <string name="morphe_hide_comments_preview_comment_title">ເຊື່ອງການເບິ່ງຄຳຄິດເຫັນລ່ວງໜ້າ</string>
+  <string name="morphe_hide_comments_preview_comment_summary">ເຊື່ອງຕົວຢ່າງຄໍາຄິດເຫັນພາຍໃຕ້ວິດີໂອກ່ອນທີ່ຈະເປີດສ່ວນຄໍາຄິດເຫັນທັງໝົດ</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">ຄວາມຄິດເຫັນຖືກເຊື່ອງໂດຍ Morphe…</string>
+  <string name="morphe_minimal_comments_button_title">ເປີດໃຊ້ປຸ່ມຄຳຄິດເຫັນແບບມິນິມອລ</string>
+  <string name="morphe_minimal_comments_button_summary">ເຊື່ອງບັດທີ່ເລື່ອນໄດ້ ແລະ ຕົວເລືອກໜ້າຂອງມັນ, ທີ່ສະແດງຢູ່ໃນປຸ່ມຄຳຄິດເຫັນ</string>
+  <string name="morphe_hide_comments_thanks_button_title">ເຊື່ອງປຸ່ມຂອບໃຈ</string>
+  <string name="morphe_hide_comments_timestamp_button_title">ເຊື່ອງປຸ່ມປະທັບເວລາ</string>
+  <string name="morphe_hide_comments_top_fans_button_title">ເຊື່ອງປຸ່ມ \'ແຟນໂຕຍິ່ງ\'</string>
+  <string name="morphe_hide_comments_translate_button_title">ເຊື່ອງປຸ່ມແປພາສາ</string>
+  <string name="morphe_hide_comments_zero_state_title">ເຊື່ອງຂໍ້ຄວາມ \'ຍັງບໍ່ມີຄຳຄິດເຫັນ\'</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">ເຮັດຄວາມສະອາດລິ້ງການຄົ້ນຫາທີ່ເນັ້ນ</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">ເຮັດຄວາມສະອາດລິ້ງການຄົ້ນຫາທີ່ເນັ້ນ, ໃຫ້ເຫຼືອພຽງແຕ່ຂໍ້ຄວາມທຳມະດາຕົ້ນສະບັບ</string>
+  <string name="morphe_hide_keyword_content_screen_title">ຕົວຕອງຄຳສັບຫຼັກ</string>
+  <string name="morphe_hide_keyword_content_screen_summary">ເລືອກຄໍາ ຫຼື ວະລີສະເພາະເພື່ອເຊື່ອງວິດີໂອໃນ feed ແລະ ການຄົ້ນຫາ</string>
+  <string name="morphe_hide_keyword_content_comments_title">ເຊື່ອງຄຳຄິດເຫັນຕາມຄຳຄົ້ນຫາ</string>
+  <string name="morphe_hide_keyword_content_home_title">ເຊື່ອງວິດີໂອໃນໜ້າຫຼັກດ້ວຍຄຳຄົ້ນຫາ</string>
+  <string name="morphe_hide_keyword_content_search_title">ເຊື່ອງຜົນການຄົ້ນຫາດ້ວຍຄຳຄົ້ນຫາ</string>
+  <string name="morphe_hide_keyword_content_subscriptions_title">ເຊື່ອງວິດີໂອໃນການຕິດຕາມດ້ວຍຄຳຄົ້ນຫາ</string>
+  <string name="morphe_hide_keyword_content_phrases_title">ຄຳຄົ້ນຫາທີ່ຈະເຊື່ອງ</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
+  <string name="morphe_hide_keyword_content_phrases_summary">"ປ້ອນຄຳສຳຄັນ ແລະ ວະລີທີ່ຕ້ອງການເຊື່ອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່
+
+ຄຳສຳຄັນສາມາດເປັນຂໍ້ຄວາມໃດກໍ່ໄດ້ທີ່ສະແດງໃນຫົວຂໍ້ວິດີໂອ ຫຼື ຊື່ຊ່ອງ
+
+ຄຳທີ່ມີຕົວອັກສອນໃຫຍ່ຢູ່ທາງກາງຕ້ອງຂຽນໃຫ້ຖືກຕ້ອງທັງໝົດ (ຕົວຢ່າງ: iPhone, TikTok, LeBlanc)"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"ໜ້າຫຼັກ / ການຕິດຕາມ / ການຄົ້ນຫາ / ຄຳຄິດເຫັນຖືກກັ່ນຕອງເພື່ອເຊື່ອງເນື້ອຫາທີ່ກົງກັບວະລີຄີເວີດ
+
+ຂໍ້ຈຳກັດ:
+• Shorts ບໍ່ສາມາດເຊື່ອງໄດ້ດ້ວຍຊື່ຊ່ອງ
+• ບາງສ່ວນປະກອບຂອງ UI ອາດຈະບໍ່ຖືກເຊື່ອງ
+• ການຄົ້ນຫາຄີເວີດອາດຈະບໍ່ພົບຜົນລັດ"</string>
+  <string name="morphe_hide_keyword_content_about_whole_words_title">ຈັບຄູ່ຄຳສັບທັງໝົດ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
+  <string name="morphe_hide_keyword_content_about_whole_words_summary">ການໃສ່ເຄື່ອງໝາຍຄຳເວົ້າຄູ່ລ້ອມຮອບຄຳສັບ/ວະລີ ຈະປ້ອງກັນການຈັບຄູ່ບາງສ່ວນຂອງຊື່ວິດີໂອ ແລະ ຊື່ຊ່ອງ&lt;br&gt;&lt;br&gt;ຕົວຢ່າງ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ຈະເຊື່ອງວິດີໂອ: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ແຕ່ຈະບໍ່ເຊື່ອງ: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_keyword_toast_invalid_common">ບໍ່ສາມາດໃຊ້ຄຳສັບ: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">ກະລຸນາໃສ່ເຄື່ອງໝາຍຄຳເວົ້າເພື່ອໃຊ້ຄຳສັບ: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_conflicting">ຄຳສັບມີການປະກາດທີ່ຂັດແຍ່ງກັນ: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_length">ຄຳສັບສັ້ນເກີນໄປ ແລະ ຕ້ອງໃສ່ເຄື່ອງໝາຍຄຳເວົ້າ: %s</string>
+  <string name="morphe_hide_keyword_toast_invalid_broad">ຄຳຄົ້ນຫາຈະເຊື່ອງທຸກວິດີໂອ: %s</string>
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• ໜ້າຫຼັກ: %s
+• ການຕິດຕາມ: %s
+• ຄົ້ນຫາ: %s
+• ຄໍາຄິດເຫັນ: %s
+• ທັງໝົດ: %s"</string>
+  <string name="morphe_hide_stats_category_title">ສະຖິຕິ</string>
+  <string name="morphe_hide_stats_hidden_24h_title">ວິດີໂອທີ່ຖືກເຊື່ອງ, 24 ຊົ່ວໂມງທີ່ຜ່ານມາ</string>
+  <string name="morphe_hide_stats_hidden_all_title">ວິດີໂອທີ່ຖືກເຊື່ອງ, ທັງໝົດ</string>
+  <string name="morphe_hide_stats_hidden_24h_reset_title">ຣີເຊັດຕົວນັບ 24 ຊົ່ວໂມງຜ່ານມາບໍ?</string>
+  <string name="morphe_hide_stats_hidden_all_reset_title">ຣີເຊັດຕົວນັບທັງໝົດບໍ?</string>
+  <string name="morphe_hide_aislist_screen_title">ຕົວຕອງຊ່ອງ AI</string>
+  <string name="morphe_hide_aislist_screen_summary">ເຊື່ອງວິດີໂອຈາກຊ່ອງທີ່ຖືກໝາຍວ່າເປັນເນື້ອຫາທີ່ສ້າງໂດຍ AI ໂດຍລາຍການຊຸມຊົນ AiSList</string>
+  <string name="morphe_hide_aislist_blocklist_category_title">ລາຍການບລັອກ: ຄວາມໝັ້ນໃຈສູງ</string>
+  <string name="morphe_hide_aislist_warnlist_category_title">ລາຍການເຕືອນ: ຄວາມໝັ້ນໃຈປານກາງ</string>
+  <string name="morphe_hide_aislist_hide_home_title">ເຊື່ອງວິດີໂອໃນໜ້າຫຼັກ</string>
+  <string name="morphe_hide_aislist_hide_search_title">ເຊື່ອງວິດີໂອໃນການຄົ້ນຫາ</string>
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• ໜ້າຫຼັກ: %s
+• ຄົ້ນຫາ: %s
+• ທັງໝົດ: %s"</string>
+  <string name="morphe_hide_aislist_stats_blocklist_channels_title">ຊ່ອງໃນລາຍຊື່ບລັອກ</string>
+  <string name="morphe_hide_aislist_stats_warnlist_channels_title">ຊ່ອງໃນລາຍຊື່ເຕືອນ</string>
+  <string name="morphe_hide_aislist_stats_channels_disabled_summary">ເປີດໃຊ້ຕົວຕອງເພື່ອໂຫລດຊ່ອງ</string>
+  <string name="morphe_hide_aislist_stats_channels_loading_summary">ກຳລັງໂຫລດຊ່ອງ…</string>
+  <string name="morphe_hide_aislist_about_summary">"ໜ້າຫຼັກ ແລະ ຜົນການຄົ້ນຫາຖືກກັ່ນຕອງເພື່ອເຊື່ອງວິດີໂອຈາກຊ່ອງທີ່ຖືກໝາຍໂດຍ AiSList
+
+ຂໍ້ຈຳກັດ:
+• AI Shorts ທີ່ຖືກກັ່ນຕອງອາດຈະສະແດງເປັນພື້ນທີ່ວ່າງ
+• ວິດີໂອ AI ບາງລາຍການອາດຈະຍັງສະແດງຢູ່"</string>
+  <string name="morphe_hide_aislist_attribution_summary">"AiSList ແມ່ນລາຍຊື່ open source ຂອງຊ່ອງ YouTube ທີ່ເຜີຍແຜ່ເນື້ອຫາທີ່ສ້າງໂດຍ AI, ເຊິ່ງຖືກຈັດການໂດຍອາສາມັກຄີ. ຊ່ອງຕ່າງໆຖືກລາຍງານໂດຍຜູ້ໃຊ້ ແລະ ຖືກກວດສອບກ່ອນທີ່ຈະຖືກເພີ່ມເຂົ້າໄປ
+
+ລາຍຊື່ແມ່ນຖືກດາວໂຫຼດຈາກ GitHub ແລະ ວິດີໂອຈະຖືກກັ່ນຕອງໃນອຸປະກອນຂອງທ່ານ"</string>
+  <string name="morphe_aislist_submit_category_title">ລາຍງານຊ່ອງ AI</string>
+  <string name="morphe_aislist_submit_flyout_menu_title">ເພີ່ມລາຍການລາຍງານໃນເມນູວິດີໂອ</string>
+  <string name="morphe_aislist_submit_flyout_menu_summary">ເພີ່ມລາຍການໃນເມນູວິດີໂອ ເພື່ອລາຍງານຊ່ອງຂອງວິດີໂອໄປຍັງ AiSList</string>
+  <string name="morphe_aislist_submit_username_title">ຊື່ຜູ້ສົ່ງລາຍງານ</string>
+  <string name="morphe_aislist_submit_username_summary">ຊື່ທີ່ສະແດງຂ້າງໆການລາຍງານຂອງທ່ານໃນຕາຕະລາງຈັດອັນດັບ AiSList ສາທາລະນະ. ການລາຍງານຈະບໍ່ສາມາດນຳໃຊ້ໄດ້ໃນຂະນະທີ່ຊ່ອງນີ້ວ່າງຢູ່</string>
+  <string name="morphe_aislist_submit_title">ລາຍງານຊ່ອງ AI</string>
+  <string name="morphe_aislist_submit_dialog_message">"ສົ່ງ %s ໄປຍັງ AiSList ໂດຍໃຊ້ວິດີໂອນີ້ເປັນຫຼັກຖານ?
+
+ລາຍງານສະເພາະຊ່ອງທີ່:
+• ໃຊ້ສຽງ, ຮູບພາບ, ບົດ ຫຼື ດົນຕີ AI ເປັນເນື້ອຫາຫຼັກ
+• ຜະລິດເນື້ອຫາຈຳນວນຫຼາຍດ້ວຍເຄື່ອງມື AI ແລະ ມີການເຮັດວຽກຂອງມະນຸດໜ້ອຍ
+
+ຢ່າລາຍງານຊ່ອງທີ່ພຽງແຕ່ສົນທະນາກ່ຽວກັບ AI ຫຼື ໃຊ້ AI ໃນບາງສ່ວນຂອງວິດີໂອຂອງພວກເຂົາ.
+
+ການລາຍງານແມ່ນເປັນສາທາລະນະ ແລະ ຈະຖືກກວດສອບກ່ອນທີ່ຊ່ອງຈະຖືກເພີ່ມເຂົ້າໃນລາຍຊື່. ການລຶບອອກສາມາດເຮັດໄດ້ໂດຍຜ່ານການຮ້ອງຂໍໃນ GitHub ເທົ່ານັ້ນ"</string>
+  <string name="morphe_aislist_submit_already_blocklisted">ຊ່ອງນີ້ຢູ່ໃນລາຍຊື່ບລັອກ AiSList ແລ້ວ</string>
+  <string name="morphe_aislist_submit_already_warnlisted">ຊ່ອງນີ້ຢູ່ໃນລາຍຊື່ເຕືອນຂອງ AiSList ແລ້ວ</string>
+  <string name="morphe_aislist_submit_dialog_confirm">ລາຍງານ</string>
+  <string name="morphe_aislist_submit_no_username">ກະລຸນາຕັ້ງຊື່ຜູ້ສົ່ງໃນການຕັ້ງຄ່າຕົວຕອງຊ່ອງ AI ເພື່ອລາຍງານຊ່ອງ</string>
+  <string name="morphe_aislist_submit_resolving">ກຳລັງຄົ້ນຫາຊ່ອງ...</string>
+  <string name="morphe_aislist_submit_failed_channel">ບໍ່ສາມາດຊອກຫາຊ່ອງຂອງວິດີໂອນີ້ໄດ້</string>
+  <string name="morphe_aislist_submit_success">ລາຍງານຊ່ອງແລ້ວ ແລະ ກຳລັງລໍຖ້າການກວດສອບ</string>
+  <string name="morphe_aislist_submit_failed_conflict">AiSList ບໍ່ສາມາດບັນທຶກການລາຍງານໄດ້, ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ</string>
+  <string name="morphe_aislist_submit_failed_rate_limit">ມີການສົ່ງລາຍງານຫຼາຍເກີນໄປ, ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ</string>
+  <string name="morphe_aislist_submit_failed_rejected">AiSList ປະຕິເສດການລາຍງານ</string>
+  <string name="morphe_aislist_submit_failed">ການລາຍງານລົ້ມເຫຼວ, ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_ads_channel_whitelist_title">ລາຍຊື່ຊ່ອງໂຄສະນາທີ່ຍອມຮັບ</string>
+  <string name="morphe_ads_channel_whitelist_summary">ວິດີໂອຈາກຊ່ອງທີ່ຢູ່ໃນລາຍການອະນຸຍາດຈະຫຼິ້ນພ້ອມກັບໂຄສະນາ ເພື່ອໃຫ້ຜູ້ສ້າງໄດ້ຮັບເງິນ. ໂຄສະນາຈະຍັງຄົງຖືກບລັອກໃນທຸກຊ່ອງອື່ນໆ</string>
+  <string name="morphe_ads_channel_whitelist_flyout_add">ເພີ່ມຊ່ອງເຂົ້າໃນລາຍການອະນຸຍາດໂຄສະນາ</string>
+  <string name="morphe_ads_channel_whitelist_flyout_remove">ລຶບຊ່ອງອອກຈາກລາຍການອະນຸຍາດໂຄສະນາ</string>
+  <string name="morphe_hide_creator_store_shelf_title">ເຊື່ອງຊັ້ນວາງຮ້ານຄ້າຂອງຜູ້ສ້າງ</string>
+  <string name="morphe_hide_end_screen_store_banner_title">ເຊື່ອງປ້າຍໂຄສະນາຮ້ານຄ້າໃນໜ້າຈົບ</string>
+  <string name="morphe_hide_general_ads_title">ເຊື່ອງໂຄສະນາທົ່ວໄປ</string>
+  <string name="morphe_hide_merchandise_banners_title">ເຊື່ອງປ້າຍໂຄສະນາສິນຄ້າ</string>
+  <string name="morphe_hide_paid_promotion_labels_title">ເຊື່ອງປ້າຍການສົ່ງເສີມທີ່ຊຳລະເງິນ</string>
+  <string name="morphe_hide_player_popup_ads_title">ເຊື່ອງໂຄສະນາປັອບອັບຂອງເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_hide_self_sponsor_ads_title">ເຊື່ອງບັດໂຄສະນາທີ່ສະປອນເຊີຕົນເອງ</string>
+  <string name="morphe_hide_shopping_links_title">ເຊື່ອງລິ້ງຊື້ເຄື່ອງ</string>
+  <string name="morphe_hide_video_ads_title">ເຊື່ອງໂຄສະນາວິດີໂອ</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">ເຊື່ອງໂປຣໂມຊັນ YouTube Premium</string>
   <!-- layout.flyout.flyoutPatch -->
   <!-- Shown instead of the text of a flyout menu item while the data it needs is loading. -->
+  <string name="morphe_flyout_button_loading">ກຳລັງໂຫຼດ…</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+  <string name="morphe_channel_whitelist_current_channel">ຊ່ອງປັດຈຸບັນ:</string>
+  <string name="morphe_channel_whitelist_add">ເພີ່ມເຂົ້າໃນລາຍການອະນຸຍາດ</string>
+  <string name="morphe_channel_whitelist_remove">ລຶບ</string>
+  <string name="morphe_channel_whitelist_channels_header">ຊ່ອງທີ່ຢູ່ໃນລາຍການອະນຸຍາດ</string>
+  <string name="morphe_channel_whitelist_empty">ບໍ່ມີຊ່ອງໃນລາຍການອະນຸຍາດ</string>
+  <string name="morphe_channel_whitelist_channel_added">ເພີ່ມຊ່ອງເຂົ້າໃນລາຍການອະນຸຍາດແລ້ວ</string>
+  <string name="morphe_channel_whitelist_channel_removed">ລຶບຊ່ອງອອກຈາກລາຍການອະນຸຍາດແລ້ວ</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">ຄົ້ນຫາພາຍໃນຊ່ອງ</string>
+  <string name="morphe_channel_search_summary">ເພີ່ມປຸ່ມຄົ້ນຫາທີສອງໃນໜ້າຊ່ອງ ເພື່ອຄົ້ນຫາສະເພາະຊ່ອງນັ້ນ</string>
+  <string name="morphe_channel_search_hint">ຄົ້ນຫາຊ່ອງ</string>
+  <string name="morphe_channel_search_results">ຜົນການຄົ້ນຫາຊ່ອງ</string>
+  <string name="morphe_channel_search_no_results">ບໍ່ພົບຂໍ້ມູນໃນຊ່ອງນີ້</string>
+  <string name="morphe_channel_search_failed">ບໍ່ສາມາດຄົ້ນຫາໃນຊ່ອງນີ້ໄດ້</string>
+  <string name="morphe_channel_search_videos">ວິດີໂອ</string>
+  <string name="morphe_channel_search_posts">ໂພສ</string>
+  <string name="morphe_channel_search_no_posts">ບໍ່ມີໂພສໃນຊ່ອງນີ້ທີ່ກົງກັນ</string>
+  <string name="morphe_channel_search_sort_relevance">ຄວາມກ່ຽວຂ້ອງ</string>
+  <string name="morphe_channel_search_sort_most_viewed">ມີຜູ້ຊົມຫຼາຍທີ່ສຸດ</string>
+  <string name="morphe_channel_search_sort_least_viewed">ມີຜູ້ຊົມໜ້ອຍທີ່ສຸດ</string>
+  <string name="morphe_channel_search_sort_newest">ໃໝ່ສຸດ</string>
+  <string name="morphe_channel_search_sort_oldest">ເກົ່າສຸດ</string>
+  <string name="morphe_channel_search_sort_shortest">ສັ້ນທີ່ສຸດ</string>
+  <string name="morphe_channel_search_sort_longest">ຍາວທີ່ສຸດ</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">ຄັດລອກລິ້ງໄປຍັງຄລິບບອດແລ້ວ</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">ຄັດລອກລິ້ງພ້ອມເວລາທີ່ກຳນົດໄວ້ໄປຍັງຄລິບບອດແລ້ວ</string>
+  <string name="morphe_copy_video_link_button_title">ສະແດງປຸ່ມຄັດລອກລິ້ງວິດີໂອ</string>
+  <string name="morphe_copy_video_link_button_summary">ແຕະເພື່ອຄັດລອກລິ້ງວິດີໂອ, ແຕະຄ້າງໄວ້ເພື່ອຄັດລອກພ້ອມເວລາທີ່ກຳນົດໄວ້</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">ຄັດລອກເວລາທີ່ລະບຸໂດຍຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">ປ່ຽນການເຮັດວຽກຂອງການແຕະ ແລະ ການແຕະຄ້າງໄວ້ຂອງປຸ່ມ \'ຄັດລອກລິ້ງວິດີໂອ\'</string>
   <!-- interaction.copytext.copyTextPatch -->
+  <string name="morphe_copy_video_title_title">ຄັດລອກຫົວຂໍ້ວິດີໂອ</string>
+  <string name="morphe_copy_video_title_summary">ແຕະ ແລະ ຄ້າງໄວ້ທີ່ຫົວຂໍ້ຂອງວິດີໂອເພື່ອຄັດລອກ</string>
+  <string name="morphe_copy_video_title_success">ຄັດລອກຫົວຂໍ້ວິດີໂອລົງໃນຄລິບບອດແລ້ວ</string>
+  <string name="morphe_copy_comments_title">ຄັດລອກຄຳຄິດເຫັນ</string>
+  <string name="morphe_copy_comments_summary">ແຕະ ແລະ ຄ້າງໄວ້ທີ່ຄຳຄິດເຫັນເພື່ອຄັດລອກ</string>
+  <string name="morphe_copy_comments_success">ຄັດລອກຄຳຄິດເຫັນລົງໃນຄລິບບອດແລ້ວ</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">ແຕະ and ກົດຄ້າງໄວ້ເພື່ອເປີດເມນູວິດີໂອ</string>
+  <string name="morphe_feed_long_press_menu_summary">ການແຕະ ແລະ ກົດຄ້າງໄວ້ຢູ່ບ່ອນໃດກໍໄດ້ໃນວິດີໂອຂອງຟີດ ຈະເປີດເມນູຂອງວິດີໂອນັ້ນ</string>
+  <string name="morphe_feed_watch_later_button_title">ສະແດງປຸ່ມ ເບິ່ງພາຍຫຼັງ ໃນຮູບຕົວຢ່າງ</string>
+  <string name="morphe_feed_watch_later_button_summary">ປຸ່ມ ເບິ່ງພາຍຫຼັງ ຈະຖືກສະແດງໃນຮູບຕົວຢ່າງຂອງວິດີໂອໃນຟີດ. ການແຕະ ແລະ ກົດຄ້າງໄວ້ທີ່ປຸ່ມນີ້ ຈະເປີດ ບັນທຶກລົງໃນລາຍການຫຼິ້ນ</string>
   <!-- interaction.postimages.postImageDownloadPatch -->
+  <string name="morphe_post_image_download_title">ດາວໂຫຼດຮູບພາບໂພສ</string>
+  <string name="morphe_post_image_download_summary">ປຸ່ມດາວໂຫຼດຈະສະແດງຂ້າງປຸ່ມແຊຣ໌ຂອງໂພສທີ່ມີຮູບພາບ ຫຼື GIFs, ແລະ ລາຍການດາວໂຫຼດຈະຖືກເພີ່ມເຂົ້າໃນເມນູຂອງພວກມັນ</string>
+  <string name="morphe_post_image_download_flyout">ດາວໂຫຼດຮູບພາບ</string>
+  <string name="morphe_post_image_download_flyout_single">ດາວໂຫຼດຮູບພາບ</string>
+  <string name="morphe_post_image_download_started">ກຳລັງດາວໂຫຼດ %s ຮູບພາບ…</string>
+  <string name="morphe_post_image_download_started_single">ກຳລັງດາວໂຫຼດຮູບພາບ…</string>
+  <string name="morphe_post_image_download_saved">ບັນທຶກຮູບພາບ %1$s ໃສ່ %2$s ແລ້ວ</string>
+  <string name="morphe_post_image_download_saved_single">ບັນທຶກຮູບພາບໃສ່ %s ແລ້ວ</string>
+  <string name="morphe_post_image_download_failed">ບໍ່ສາມາດດາວໂຫຼດຮູບພາບໄດ້</string>
+  <string name="morphe_post_image_download_not_found">ບໍ່ພົບຮູບພາບໃນໂພສນີ້</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
+  <string name="morphe_ask_summarize_flyout_menu_title">ເພີ່ມລາຍການ Ask ໄປยังເມນູ flyout</string>
+  <string name="morphe_ask_summarize_flyout_menu_summary">ເພີ່ມລາຍການສະຫຼຸບວິດີໂອໄປยังເມນູ flyout ຂອງ feed</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_flyout_menu_user_dialog_message">"ໃນເບື້ອງຕົ້ນ, Ask ຕ້ອງໃຊ້ບັນຊີທີ່ລົງຊື່ເຂົ້າໃຊ້ໃນປະເທດທີ່ມີ Ask ໃຫ້ບໍລິການ.
+
+ຫຼັງຈາກເປີດວິດີໂອທີ່ມີປຸ່ມ Ask ຄັ້ງໜຶ່ງແລ້ວ, ຟີເຈີນີ້ຈະໃຊ້ໄດ້ກັບທຸກວິດີໂອ ເຖິງແມ່ນວ່າປະເທດປັດຈຸບັນຈະບໍ່ມີຟີເຈີ Ask ກໍຕາມ."</string>
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
+  <string name="morphe_ask_summarize_title">ສະຫຼຸບເນື້ອໃນວິດີໂອ</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_failed">ບໍ່ສາມາດເປີດ Ask ສຳລັບວິດີໂອນີ້ໄດ້</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
+  <string name="morphe_ask_summarize_unavailable">Ask ບໍ່ມີໃຫ້ບໍລິການສຳລັບບັນຊີ ຫຼື ປະເທດປັດຈຸບັນຂອງທ່ານ</string>
   <!-- layout.feedviews.feedViewCountPatch -->
+  <string name="morphe_feed_view_count_title">ສະແດງຈໍານວນການເບິ່ງໃນຮູບຕົວຢ່າງ</string>
+  <string name="morphe_feed_view_count_summary">ຈໍານວນການເບິ່ງຂອງວິດີໂອໃນ feed ຈະຖືກສະແດງຢູ່ມຸມລຸ່ມຊ້າຍຂອງຮູບຕົວຢ່າງ ແທນທີ່ຈະຢູ່ກ້ອງຊື່ເລື່ອງ. ບາງວິດີໂອ, ເຊັ່ນໃນ shelves, ອາດຈະບໍ່ສະແດງຈໍານວນການເບິ່ງ</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_like_count_title">ສະແດງຈຳນວນການຖືກໃຈຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
+  <string name="morphe_ryd_feed_like_ratio_title">ສະແດງເປີເຊັນການຖືກໃຈຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
+  <string name="morphe_search_comments_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
+  <string name="morphe_search_comments_summary">ແຕະປຸ່ມຄົ້ນຫາໃນຄຳຄິດເຫັນ ເພື່ອສະແດງສະເພາະຄຳຄິດເຫັນທີ່ໂຫຼດແລ້ວ ເຊິ່ງມີຄຳສັບທັງໝົດທີ່ຄົ້ນຫາ. ໃສ່ຄຳສັບໃນເຄື່ອງໝາຍຄຳເວົ້າ ເພື່ອຄົ້ນຫາວະລີ</string>
+  <string name="morphe_search_comments_dialog_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
+  <string name="morphe_search_comments_hint">ຄຳສັບທີ່ຕ້ອງການຄົ້ນຫາ</string>
+  <string name="morphe_search_comments_search">ຄົ້ນຫາ</string>
+  <string name="morphe_search_comments_clear">ລ້າງຂໍ້ມູນ</string>
+  <string name="morphe_search_comments_applied">ປ່ຽນລຳດັບການຈັດຮຽງ ຫຼື ເປີດຄຳຄິດເຫັນອີກຄັ້ງເພື່ອຄົ້ນຫາ</string>
+  <string name="morphe_search_comments_cleared">ລ້າງການຄົ້ນຫາແລ້ວ. ປ່ຽນລຳດັບການຈັດຮຽງ ຫຼື ເປີດຄຳຄິດເຫັນອີກຄັ້ງເພື່ອສະແດງທຸກຄຳຄິດເຫັນ</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
+  <string name="morphe_disable_sign_in_to_tv_popup_title">ປິດປັອບອັບ \'ລົງຊື່ເຂົ້າໃຊ້ໃນ TV\'</string>
+  <string name="morphe_disable_connect_your_devices_popup_title">ປິດປັອບອັບ \'ເຊື່ອມຕໍ່ອຸປະກອນຂອງທ່ານ\'</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
+  <string name="morphe_disable_chapter_skip_double_tap_title">ປິດການຂ້າມບົດດ້ວຍການແຕະສອງຄັ້ງ</string>
+  <string name="morphe_disable_chapter_skip_double_tap_summary">ປິດການນຳໃຊ້ທ່າທາງການແຕະສອງຄັ້ງດ້ວຍສອງນິ້ວເພື່ອຂ້າມບົດ, ເຊິ່ງອາດຈະຖືກກະຕຸ້ນໂດຍບັງເອີນດ້ວຍນິ້ວດຽວ</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">ດາວໂຫຼດວິດີໂອ, ພອດແຄສ ຫຼື ເພງ ດ້ວຍແອັບດາວໂຫຼດຂອງບຸກຄົນທີສາມ</string>
+  <string name="morphe_external_downloader_overlay_button_title">ສະແດງປຸ່ມດາວໂຫຼດໃນຊັ້ນທັບຂອງເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_external_downloader_overlay_button_summary">ສະແດງປຸ່ມໃນເຄື່ອງຫຼິ້ນວິດີໂອ ທີ່ຈະເປີດໂປຣແກຣມດາວໂຫຼດພາຍນອກຂອງທ່ານ</string>
+  <string name="morphe_external_downloader_quick_menu_title">ດາວໂຫຼດໄວເມື່ອກົດ</string>
+  <string name="morphe_external_downloader_quick_menu_summary">ແຈ້ງເຕືອນໃຫ້ດາວໂຫຼດໃນພື້ນຫຼັງ. ກົດຄ້າງໄວ້ເພື່ອເປີດຕົວດາວໂຫຼດ. ໃຊ້ໄດ້ກັບ YTDLnis ແລະ YTindir</string>
+  <string name="morphe_external_downloader_mark_watched_title">ໝາຍການດາວໂຫຼດວ່າເບິ່ງແລ້ວ</string>
+  <string name="morphe_external_downloader_mark_watched_summary">ວິດີໂອທີ່ດາວໂຫຼດດ້ວຍຕົວດາວໂຫຼດພາຍນອກ ຈະຖືກເພີ່ມເຂົ້າໃນປະຫວັດການເບິ່ງ YouTube ຂອງທ່ານ</string>
+  <string name="morphe_external_downloader_quick_video_quality">Full HD (1080p)</string>
+  <string name="morphe_external_downloader_quick_audio_quality">ປານກາງ (192 kbps)</string>
+  <string name="morphe_external_downloader_quick_menu_header">ດາວໂຫຼດໄວ</string>
+  <string name="morphe_external_downloader_quick_video">ວິດີໂອ</string>
+  <string name="morphe_external_downloader_quick_audio">ສຽງ</string>
+  <string name="morphe_external_downloader_quick_options">ທຸກຕົວເລືອກ</string>
+  <string name="morphe_shorts_download_flyout_button_title">ສະແດງການດາວໂຫລດໃນເມນູ Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">ເພີ່ມລາຍການເມນູ flyout ຂອງຕົວດາວໂຫລດພາຍນອກໃນເຄື່ອງຫຼິ້ນ Shorts</string>
+  <string name="morphe_shorts_download_flyout_title">ດາວໂຫລດ</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">ການແປແບບພາກສຽງ</string>
+  <string name="morphe_vot_screen_summary">ອ່ານຄຳບັນຍາຍວິດີໂອອອກສຽງໂດຍໃຊ້ລະບົບປ່ຽນຂໍ້ຄວາມເປັນສຽງໃນເຄື່ອງ, ເຊິ່ງຈະເຮັດວຽກສອດຄ່ອງກັບການຫຼິ້ນວິດີໂອ</string>
+  <string name="morphe_vot_enabled_summary">ສະແດງປຸ່ມ overlay ໃນເຄື່ອງຫຼິ້ນວິດີໂອ. ແຕະເພື່ອປ່ຽນການແປພາສາ, ແຕະຄ້າງໄວ້ສຳລັບການຕັ້ງຄ່າແບບດ່ວນ</string>
+  <string name="morphe_vot_caption_language_title">ພາສາ</string>
+  <string name="morphe_vot_translation_service_title">ຜູ້ໃຫ້ບໍລິການແປພາສາ</string>
+  <string name="morphe_vot_original_audio_volume_title">ລະດັບສຽງຂອງສຽງຕົ້ນສະບັບ</string>
+  <string name="morphe_vot_original_audio_volume_summary">ລະດັບສຽງຂອງສຽງ YouTube ຕົ້ນສະບັບໃນຂະນະທີ່ສຽງແປກຳລັງເວົ້າ</string>
+  <string name="morphe_vot_translation_volume_title">ລະດັບສຽງຂອງການແປ</string>
+  <string name="morphe_vot_translation_volume_summary">ລະດັບສຽງຂອງສຽງພາກທີ່ແປ</string>
+  <string name="morphe_vot_max_speech_rate_title">ຄວາມໄວໃນການເວົ້າສູງສຸດ</string>
+  <string name="morphe_vot_max_speech_rate_summary">ຕົວຄູນຄວາມเร็วສູງສຸດ ເມື່ອປັບສຽງເວົ້າໃຫ້ພໍດີກັບຊ່ອງຄຳບັນຍາຍ</string>
+  <string name="morphe_vot_mymemory_info_summary">"API ການແປພາສາຟຣີ, ບໍ່ຕ້ອງໃຊ້ API key. ສູງສຸດ 5,000 ຕົວອັກສອນຕໍ່ມື້ ສຳລັບລະດັບຟຣີ, ຫຼື ສູງສຸດ 50,000 ຕົວອັກສອນຕໍ່ມື້ ຫາກມີທີ່ຢູ່ອີເມວ.
+
+ແຕະບ່ອນນີ້ເພື່ອເປີດ MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">ອີເມວ MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">ທາງເລືອກ. ປ້ອນທີ່ຢູ່ອີເມວ MyMemory ຂອງທ່ານ ເພື່ອເພີ່ມຂີດຈຳກັດລາຍວັນຈາກ 5,000 ເປັນ 50,000 ຕົວອັກສອນ. ປ່ອຍວ່າງໄວ້ເພື່ອໃຊ້ຂີດຈຳກັດແບບບໍ່ລະບຸຕົວຕົນ</string>
+  <string name="morphe_vot_openrouter_info_summary">"ການແປພາສາດ້ວຍ AI ແບບເສຍເງິນຜ່ານ OpenRouter. ເຕີມເງິນຄັ້ງດຽວ ແລະ ແປວິດີໂອໄດ້ນັບພັນ. Mistral Nemo ແມ່ນຕົວເລືອກທີ່ຖືກທີ່ສຸດ, Gemma 4 ໃຫ້ຄຸນນະພາບສູງທີ່ສຸດ.
+
+ແຕະບ່ອນນີ້ເພື່ອເປີດ OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">ຄີ API ຂອງ OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">OpenRouter API key ຂອງທ່ານ. ສ້າງ key ທີ່ OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">ໂມເດລ OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">ກຳນົດເອງ</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter ບໍ່ທັນໄດ້ຕັ້ງຄ່າ</string>
+  <string name="morphe_vot_openrouter_not_configured_message">ກະລຸນາປ້ອນ OpenRouter API key ຂອງທ່ານໃນການຕັ້ງຄ່າ ກ່ອນທີ່ຈະເລືອກຜູ້ໃຫ້ບໍລິການນີ້</string>
+  <string name="morphe_vot_cost_free">ຟຣີ</string>
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s ຕໍ່ 100 ຊົ່ວໂມງຂອງວິດີໂອ</string>
+  <string name="morphe_vot_tts_voice_type">ສຽງ</string>
+  <string name="morphe_vot_tts_system">ລະບົບ</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">ຜູ້ຊາຍຫຼາຍພາສາ</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">ຜູ້ຍິງຫຼາຍພາສາ</string>
+  <string name="morphe_vot_voice_gender_male">ຜູ້ຊາຍ</string>
+  <string name="morphe_vot_voice_gender_female">ຜູ້ຍິງ</string>
+  <string name="morphe_vot_tts_sample">ໄດ້ເວລາປ່ຽນຮູບຮ່າງແລ້ວ!</string>
+  <string name="morphe_vot_http_error_title">ບໍ່ມີການແປ</string>
+  <string name="morphe_vot_http_error_message">"ບໍລິການແປພາສາສົ່ງຂໍ້ຜິດພາດ HTTP %s ກັບຄືນມາ. ທີ່ຢູ່ IP ຂອງທ່ານອາດຈະຖືກຈຳກັດການນຳໃຊ້ເປັນເວລາສູງສຸດ 24 ຊົ່ວໂມງ.
+
+ເພື່ອສືບຕໍ່ນຳໃຊ້ການແປ, ໃຫ້ປ່ຽນໄປໃຊ້ຜູ້ໃຫ້ບໍລິການແປພາສາອື່ນໃນການຕັ້ງຄ່າ ຫຼື ໃຊ້ VPN"</string>
+  <string name="morphe_vot_do_not_show_again">ບໍ່ໃຫ້ສະແດງອີກ</string>
+  <string name="morphe_vot_export_api_key_warning">"ການຕັ້ງຄ່າຂອງທ່ານມີ OpenRouter API key.
+
+ທ່ານບໍ່ຄວນແບ່ງປັນ API key ຂອງທ່ານໃຫ້ຜູ້ອື່ນ. ໃຜກໍ່ຕາມທີ່ເຂົ້າເຖິງມັນໄດ້ ສາມາດໃຊ້ເຄຣດິດ OpenRouter ຂອງທ່ານໄດ້"</string>
+  <string name="morphe_vot_openrouter_credits_title">ເຄຣດິດ OpenRouter ສິ້ນສຸດລິມິດແລ້ວ</string>
+  <string name="morphe_vot_openrouter_credits_message">ທ່ານໄດ້ໃຊ້ວົງເງິນ OpenRouter ຄົບກຳນົດແລ້ວ. ກະລຸນາຕື່ມເງິນ ຫຼື ເພີ່ມວົງເງິນການໃຊ້ຈ່າຍຂອງຄີຂອງທ່ານຢູ່ທີ່ OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">ເປີດ OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">ການແປ OpenRouter ລົ້ມເຫຼວ (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">ໃຊ້ໂຄຕ້າປະຈຳວັນຂອງ MyMemory ຄົບແລ້ວ</string>
+  <string name="morphe_vot_mymemory_quota_next_available">ຈະມີໃຫ້ໃຊ້ງານຄັ້ງຕໍ່ໄປໃນ %s</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">ທ່ານໄດ້ໃຊ້ໂຄຕ້າການແປຟຣີຂອງ MyMemory ປະຈຳວັນນີ້ແລ້ວ (5,000 ຕົວອັກສອນ). ເພີ່ມອີເມວ MyMemory ໃນການຕັ້ງຄ່າເພື່ອເພີ່ມຂີດຈຳກັດປະຈຳວັນເປັນ 50,000 ຕົວອັກສອນ, ຫຼື ປ່ຽນໄປໃຊ້ບໍລິການແປພາສາອື່ນ</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">ທ່ານໄດ້ໃຊ້ໂຄຕ້າການແປ MyMemory ປະຈຳວັນນີ້ແລ້ວ (50,000 ຕົວອັກສອນ). ປ່ຽນໄປໃຊ້ບໍລິການແປພາສາອື່ນ ຫຼື ລອງໃໝ່ໃນມື້ອື່ນ</string>
+  <string name="morphe_vot_mymemory_error">ການແປ MyMemory ລົ້ມເຫຼວ (ສະຖານະ %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">ເປີດໃຊ້ການຫຼິບວິດີໂອຊ້ຳ</string>
+  <string name="morphe_do_not_remember_loop_video_title">ບໍ່ຈົດຈຳການວົນຊ້ຳວິດີໂອ</string>
+  <string name="morphe_do_not_remember_loop_video_summary">ປ້ອງກັນບໍ່ໃຫ້ບັນທຶກສະຖານະປັດຈຸບັນຂອງການວົນຊ້ຳວິດີໂອ ສຳລັບວິດີໂອຕໍ່ໄປ</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">ສະແດງປຸ່ມວົນຊ້ຳວິດີໂອ</string>
+  <string name="morphe_loop_video_button_toast_on">ເປີດການຫຼິບວິດີໂອຊ້ຳແລ້ວ</string>
+  <string name="morphe_loop_video_button_toast_off">ປິດການຫຼິບວິດີໂອຊ້ຳແລ້ວ</string>
+  <string name="morphe_loop_video_range_dialog_title">ຊ່ວງການວົນຊ້ຳ</string>
+  <string name="morphe_loop_video_range_label_start">ເລີ່ມ</string>
+  <string name="morphe_loop_video_range_label_end">ສິ້ນສຸດ</string>
+  <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
+  <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (ວ່າງໄວ້ = ສິ້ນສຸດວິດີໂອ)</string>
+  <string name="morphe_loop_video_range_set">ກຳນົດ</string>
+  <string name="morphe_loop_video_range_clear">ລ້າງ</string>
+  <string name="morphe_loop_video_range_toast_on">ກຳລັງວົນຊ້ຳ %1$s - %2$s</string>
+  <string name="morphe_loop_video_range_invalid_time">ຊ່ວງເວລາບໍ່ຖືກຕ້ອງ</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">ສະແດງປຸ່ມ Picture-in-Picture</string>
+  <string name="morphe_pip_button_flyout_title">ສະແດງເມນູ Picture-in-Picture</string>
+  <string name="morphe_pip_button_flyout_name">ປ່ຽນເປັນ Picture-in-Picture</string>
   <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">ສະແດງປຸ່ມຫຼິ້ນທັງໝົດ</string>
+  <string name="morphe_play_all_button_summary">"ແຕະເພື່ອສ້າງລາຍການຫຼິ້ນຂອງວິດີໂອທັງໝົດຈາກຊ່ອງ, ແຕະຄ້າງໄວ້ເພື່ອຍົກເລີກ
+
+ຂໍ້ມູນ: ອາດຈະບໍ່ໃຊ້ໄດ້ກັບການຖ່າຍທອດສົດ"</string>
+  <string name="morphe_play_all_button_type_title">ໂໝດສ້າງລາຍການຫຼິ້ນ</string>
+  <string name="morphe_play_all_button_type_entry_0">ເນື້ອຫາທັງໝົດ (ຈັດລຽງຕາມເວລາ, ຈາກນ້ອຍໄປຫາຫຼາຍ)</string>
+  <string name="morphe_play_all_button_type_entry_1">ເນື້ອຫາທັງໝົດ (ຈັດລຽງຕາມເວລາ)</string>
+  <string name="morphe_play_all_button_type_entry_2">ເນື້ອຫາທັງໝົດ (ຈັດລຽງຕາມຄວາມນິຍົມ)</string>
+  <string name="morphe_play_all_button_type_entry_3">ສະເພາະວິດີໂອ (ຈັດລຽງຕາມເວລາ)</string>
+  <string name="morphe_play_all_button_type_entry_4">ສະເພາະວິດີໂອ (ຈັດລຽງຕາມຄວາມນິຍົມ)</string>
+  <string name="morphe_play_all_button_type_entry_5">ສະເພາະ Shorts (ຈັດລຽງຕາມເວລາ)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts ເທົ່ານັ້ນ (ຈັດລຽງຕາມຄວາມນິຍົມ)</string>
+  <string name="morphe_play_all_button_type_entry_7">ວິດີໂອທີ່ສະຕຣີມເທົ່ານັ້ນ (ຈັດລຽງຕາມເວລາ)</string>
+  <string name="morphe_play_all_button_type_entry_8">ວິດີໂອທີ່ສະຕຣີມເທົ່ານັ້ນ (ຈັດລຽງຕາມຄວາມນິຍົມ)</string>
+  <string name="morphe_play_all_button_type_entry_9">ເນື້ອຫາສຳລັບສະມາຊິກທັງໝົດເທົ່ານັ້ນ</string>
+  <string name="morphe_play_all_button_type_entry_10">ວິດີໂອສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
+  <string name="morphe_play_all_button_type_entry_11">Shorts ສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
+  <string name="morphe_play_all_button_type_entry_12">ການສະຕຣີມສົດສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
+  <string name="morphe_play_all_button_not_available_toast">ບໍ່ສາມາດສ້າງລາຍການຫຼິ້ນໄດ້ ເນື່ອງຈາກ ID ຊ່ອງບໍ່ກົງກັນ</string>
   <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_button_title">ສະແດງປຸ່ມໂຫຼດວິດີໂອຄືນໃໝ່</string>
+  <string name="morphe_dismiss_player_not_available_toast">ບໍ່ພົບ ID ຂອງວິດີໂອ. ກະລຸນາໂຫຼດວິດີໂອຄືນໃໝ່ດ້ວຍຕົນເອງ</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">ສະແດງປຸ່ມບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງ</string>
+  <string name="morphe_save_to_watch_later_button_summary">ແຕະເພື່ອບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງ, ແຕະ and ຄ້າງໄວ້ສຳລັບຕົວເລືອກຄິວ</string>
+  <string name="morphe_save_to_watch_later_success_toast">ບັນທຶກວິດີໂອລົງໃນລາຍການຫຼິ້ນ ດູພາຍຫຼັງ ສຳເລັດແລ້ວ</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">ວິດີໂອນີ້ຖືກບັນທຶກໄວ້ໃນລາຍການເບິ່ງພາຍຫຼັງແລ້ວ</string>
+  <string name="morphe_save_to_watch_later_error_toast">ບໍ່ສາມາດບັນທຶກວິດີໂອນີ້ໃນລາຍການເບິ່ງພາຍຫຼັງໄດ້</string>
+  <string name="morphe_save_to_watch_later_flyout_title">ບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງ</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">ສະແດງປຸ່ມບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງໃນເມນູຕັ້ງຄ່າຂອງເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">ອະນຸຍາດໃຫ້ບັນທຶກວິດີໂອທີ່ກຳລັງເບິ່ງຢູ່ໃນ \'ເບິ່ງພາຍຫຼັງ\' ຈາກເມນູຕັ້ງຄ່າຂອງວິດີໂອ</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_title">ສະແດງປຸ່ມບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງໃນວິດີໂອສຳລັບເດັກ</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">ອະນຸຍາດໃຫ້ບັນທຶກວິດີໂອສຳລັບເດັກນ້ອຍໃນ \'ເບິ່ງພາຍຫຼັງ\' ຈາກເມນູ</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">ສະແດງປຸ່ມບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງໃນເມນູຂອງ Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">ອະນຸຍາດໃຫ້ບັນທຶກ Shorts ໃນ \'ເບິ່ງພາຍຫຼັງ\' ຈາກເມນູ</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_title">ປ່ຽນເສັ້ນທາງ \'ເບິ່ງພາຍຫຼັງ\' ໄປຍັງລາຍການຫຼິ້ນ</string>
+  <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">ເບິ່ງພາຍຫຼັງ</string>
+  <string name="morphe_queue_flyout_title">ເພີ່ມໃນຄິວຂອງ Morphe</string>
+  <string name="morphe_queue_restore_title">ຮັກສາລາຍການລໍຖ້າລະຫວ່າງເຊສຊັນ</string>
+  <string name="morphe_queue_restore_summary">ລາຍການລໍຖ້າຈະຖືກຮັກສາໄວ້ຫຼັງຈາກການເລີ່ມແອັບໃໝ່</string>
+  <string name="morphe_swap_save_and_queue_actions_title">ສະຫຼັບການດຳເນີນການ ບັນທຶກ ແລະ ຈັດລາຍການລໍຖ້າ</string>
+  <string name="morphe_swap_save_and_queue_actions_summary">ແຕະສຳລັບຕົວເລືອກຄິວ, ແຕະ and ຄ້າງໄວ້ເພື່ອບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງ</string>
   <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
+  <string name="morphe_queue_type_title">ປະເພດຫຼິ້ນຕໍ່ໄປໃນຄິວ</string>
+  <string name="morphe_queue_type_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_queue_type_entry_2">ຄິວພື້ນຖານ</string>
+  <string name="morphe_queue_type_entry_3">ຄິວ Morphe</string>
+  <string name="morphe_queue_type_entry_4">ຄິວ Morphe ຝັ່ງລູກຄ້າ</string>
+  <string name="morphe_queue_add_flyout_menu_title">ເພີ່ມລາຍການເມນູຄິວໃນ flyout ຂອງຟີດ</string>
+  <string name="morphe_queue_add_flyout_menu_summary">ເພີ່ມລາຍການ flyout ເສີມ. ເປີດໃຊ້ສິ່ງນີ້ຖ້າ \"ເພີ່ມໃນຄິວ\" ບໍ່ສະແດງ</string>
+  <string name="morphe_local_queue_sheet_title">ຄິວ</string>
+  <string name="morphe_local_queue_open">ຄິວ (%s)</string>
+  <string name="morphe_local_queue_clear">ລຶບທັງໝົດ</string>
+  <string name="morphe_local_queue_empty">ບໍ່ມີຫຍັງໃນຄິວ</string>
+  <string name="morphe_local_queue_empty_hint">ໃຊ້ \'ຫຼິ້ນຕໍ່ໄປໃນຄິວ\' ໃນວິດີໂອໃດກໍໄດ້</string>
+  <string name="morphe_local_queue_now_playing">ກຳລັງຫຼິ້ນ</string>
+  <string name="morphe_local_queue_play_next">ຫຼິ້ນຕໍ່ໄປໃນຄິວ</string>
+  <string name="morphe_local_queue_play_last">ຫຼິ້ນລາຍການສຸດທ້າຍໃນຄິວ</string>
+  <string name="morphe_local_queue_reorder">ຈັດລຳດັບໃໝ່</string>
+  <string name="morphe_local_queue_remove">ລຶບອອກ</string>
+  <string name="morphe_local_queue_added">ເພີ່ມເຂົ້າໃນຄິວແລ້ວ</string>
+  <string name="morphe_local_queue_unavailable">ບໍ່ສາມາດເພີ່ມວິດີໂອນີ້ລົງໃນຄິວໄດ້</string>
+  <string name="morphe_local_queue_playlist_unsupported">ບໍ່ສາມາດເພີ່ມລາຍການຫຼິ້ນລົງໃນຄິວໄດ້</string>
+  <string name="morphe_local_queue_full">ຄິວເຕັມແລ້ວ</string>
+  <string name="morphe_local_queue_play_failed">ບໍ່ສາມາດເລີ່ມວິດີໂອໄດ້</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">ລາຍຊື່ຂາວໂຄສະນາໃນເມນູ flyout</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">ເພີ່ມລາຍການ flyout ທີ່ອະນຸຍາດໃຫ້ໂຄສະນາຫຼິ້ນໃນຊ່ອງຂອງວິດີໂອນັ້ນ</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">ຟີເຈີນີ້ອາດຈະຕ້ອງໃຊ້ PotHelper ຫຼື ປ່ຽນ \"Spoof video streams\" ເປັນການເຂົ້າສູ່ລະບົບຂອງ TV ຫຼື Android VR</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">ລາຍຊື່ຂາວຄວາມໄວໃນເມນູ flyout</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">ເພີ່ມລາຍການ flyout ທີ່ຫຼິ້ນຊ່ອງຂອງວິດີໂອນັ້ນດ້ວຍຄວາມໄວ 1.0x ສະເໝີ</string>
+  <string name="morphe_queue_manager_check_failed_auth">ບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">ບໍ່ມີ ID ຂອງລາຍການຫຼິ້ນ</string>
+  <string name="morphe_queue_manager_check_failed_queue">ຄິວວ່າງເປົ່າ</string>
+  <string name="morphe_queue_manager_check_failed_video_id">ບໍ່ມີ ID ວິດີໂອ</string>
+  <string name="morphe_queue_manager_check_failed_generic">ລົ້ມເຫຼວ: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">ເພີ່ມເຂົ້າໃນຄິວບໍ່ສຳເລັດ</string>
+  <string name="morphe_queue_manager_fetch_failed_create">ສ້າງຄິວບໍ່ສຳເລັດ</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">ເອົາອອກຈາກຄິວບໍ່ສຳເລັດ</string>
+  <string name="morphe_queue_manager_fetch_failed_save">ບັນທຶກຄິວບໍ່ສຳເລັດ</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">ເພີ່ມເຂົ້າໃນຄິວແລ້ວ</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">ສ້າງຄິວແລ້ວ</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">ເອົາອອກຈາກຄິວແລ້ວ</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">ບັນທຶກຄິວລົງໃນ %s ແລ້ວ</string>
+  <string name="morphe_queue_manager_playlist_title">ລາຍການລໍຖ້າຂອງ Morphe</string>
+  <string name="morphe_queue_manager_add_to_queue">ເພີ່ມເຂົ້າໃນຄິວ</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">ເພີ່ມເຂົ້າໃນຄິວ ແລະ ເປີດ</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">ເພີ່ມເຂົ້າໃນຄິວ ແລະ and ຫຼິ້ນ</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">ເພີ່ມ ແລະ ໂຫຼດວິດີໂອໃໝ່</string>
+  <string name="morphe_queue_manager_remove_from_queue">ລຶບອອກຈາກຄິວ</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">ລຶບ ແລະ ເປີດຄິວ</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">ລຶບ ແລະ ໂຫຼດວິດີໂອໃໝ່</string>
+  <string name="morphe_queue_manager_open_queue">ເປີດຄິວ</string>
+  <string name="morphe_queue_manager_save_queue">ບັນທຶກຄິວໄວ້ໃນລາຍການຫຼິ້ນ</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_playlist_queue_saved">ບັນທຶກລາຍການຫຼິ້ນແລ້ວ</string>
+  <string name="morphe_native_playlist_queue_saved_to">ບັນທຶກໄວ້ໃນ %s</string>
+  <string name="morphe_native_playlist_queue_clear">ລ້າງຄິວ</string>
+  <string name="morphe_native_playlist_queue_cleared">ລ້າງຄິວແລ້ວ</string>
+  <string name="morphe_native_playlist_queue_title">ຄິວ</string>
+  <string name="morphe_native_playlist_queue_last">ຫຼິ້ນເປັນລຳດັບສຸດທ້າຍໃນຄິວ</string>
+  <string name="morphe_native_playlist_queue_next">ຫຼິ້ນເປັນລຳດັບຖັດໄປໃນຄິວ</string>
+  <string name="morphe_native_playlist_queue_unavailable">YouTube ບໍ່ສາມາດສະແດງຄິວໄດ້.</string>
+  <string name="morphe_native_playlist_queue_not_ready">ຄິວຍັງບໍ່ພ້ອມສຳລັບວິດີໂອນີ້. ກະລຸນາເປີດເຄື່ອງຫຼິ້ນວິດີໂອ ແລະ ລອງຄືນໃໝ່.</string>
+  <string name="morphe_native_playlist_queue_mix_choice">ເພີ່ມ Mix ເຂົ້າໃນຄິວ ຫຼື ເບິ່ງ Mix?</string>
+  <string name="morphe_native_playlist_queue_watch_mix">ເບິ່ງ</string>
+  <string name="morphe_native_playlist_queue_add_mix">ເພີ່ມເຂົ້າໃນລາຍຄິວ</string>
+  <string name="morphe_native_playlist_queue_loading_mix">ກຳລັງໂຫຼດ Mix…</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">ເປີດຊ່ອງຈາກຮູບໂປຣໄຟລ໌ການຖ່າຍທອດສົດ</string>
+  <string name="morphe_open_channel_of_live_avatar_summary">ປ້ອງກັນບໍ່ໃຫ້ການຖ່າຍທອດສົດເປີດຂຶ້ນເມື່ອແຕະຮູບໂປຣໄຟລ໌ຂອງຊ່ອງ</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
+  <string name="morphe_disable_precise_seeking_gesture_title">ປິດການນຳໃຊ້ທ່າທາງການຊອກຫາແບບລະອຽດ</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary">ປິດໂໝດການຊອກຫາທີ່ຊັດເຈນ ເຊິ່ງຈະຖືກເປີດໃຊ້ເມື່ອດຶງແຖບຊອກຫາຂຶ້ນ</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">ເປີດໃຊ້ DVR ສຳລັບໄລຟ໌ສະຕຣີມ</string>
+  <string name="morphe_live_stream_dvr_summary">ອະນຸຍາດໃຫ້ເລື່ອນຫາຈຸດທີ່ຕ້ອງການໃນທຸກໄລຟ໌ສະຕຣີມ, ແມ່ນແຕ່ໄລຟ໌ທີ່ປົກກະຕິຈະຈຳກັດການເຮັດດັ່ງກ່າວ</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">ເປີດໃຊ້ຮູບຕົວຢ່າງຂອງ seekbar</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">ສະແດງຮູບຕົວຢ່າງຂອງວິດີໂອໃນຂະນະທີ່ລາກ seekbar</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">ຖືກເປີດຊ້ຳຫຼາຍທີ່ສຸດ</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'ເປີດໃຊ້ DVR ສຳລັບໄລຟ໌ສະຕຣີມ' ອາດຈະບໍ່ສາມາດໃຊ້ໄດ້
+
+ເພື່ອແກ້ໄຂບັນຫານີ້, ໃຫ້ເປີດ 'ປອມແປງສະຕຣີມວິດີໂອ' ແລະ ປ່ຽນ 'ຄລາຍເອນເລີ່ມຕົ້ນ' ເປັນ 'TV Simply' ຫຼື 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">ຂະຫຍາຍໄລຍະເວລາ DVR ຂອງການຖ່າຍທອດສົດ</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">ຊ່ວຍໃຫ້ທ່ານສາມາດຍ້ອນກັບໄປເບິ່ງການຖ່າຍທອດສົດໄດ້ສູງສຸດ 7 ວັນທີ່ຜ່ານມາ</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'ຂະຫຍາຍໄລຍະເວລາ DVR ຂອງການຖ່າຍທອດສົດ' ອາດຈະບໍ່ສາມາດນຳໃຊ້ໄດ້
+
+ເພື່ອແກ້ໄຂບັນຫານີ້, ໃຫ້ເປີດ 'ປອມແປງສະຕຣີມວິດີໂອ' ແລະ ປ່ຽນ 'ລູກຄ້າເລີ່ມຕົ້ນ' ເປັນ 'TV Simply' ຫຼື 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
+  <string name="morphe_slide_to_seek_title">ເປີດໃຊ້ງານການເລື່ອນເພື່ອຊອກຫາ</string>
+  <string name="morphe_slide_to_seek_summary">ເປີດໃຊ້ການເລື່ອນເພື່ອຊອກຫາ ແທນທີ່ຈະຫຼິ້ນດ້ວຍຄວາມໄວ 2x ເມື່ອກົດຄ້າງໄວ້ທີ່ເຄື່ອງຫຼິ້ນວິດີໂອ</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
+  <string name="morphe_tap_to_seek_title">ເປີດໃຊ້ງານການແຕະເພື່ອຊອກຫາ</string>
+  <string name="morphe_tap_to_seek_summary">ພຽງແຕ່ແຕະທີ່ແຖບຊອກຫາເພື່ອຂ້າມໄປຫາຕຳແໜ່ງນັ້ນໂດຍບໍ່ຕ້ອງລາກ</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
+  <string name="morphe_swipe_left_zone_title">ທ່າທາງການປັດໄປທາງຊ້າຍ</string>
+  <string name="morphe_swipe_right_zone_title">ທ່າທາງການປັດໄປທາງຂວາ</string>
+  <string name="morphe_swipe_top_zone_title">ທ່າທາງການປັດຂຶ້ນເທິງ</string>
+  <string name="morphe_swipe_zone_width_title">ຄວາມກວ້າງຂອງເຂດ ຊ້າຍ/ຂວາ</string>
+  <string name="morphe_swipe_zone_width_summary">ເປີເຊັນຂອງຂອບໜ້າຈໍແຕ່ລະດ້ານທີ່ສຳຮອງໄວ້ສຳລັບການປັດຊ້າຍ ແລະ ຂວາ (5-50)</string>
+  <string name="morphe_swipe_zone_label_brightness">ຄວາມສະຫວ່າງ</string>
+  <string name="morphe_swipe_zone_label_volume">ລະດັບສຽງ</string>
+  <string name="morphe_swipe_zone_label_native">Native</string>
+  <string name="morphe_swipe_zone_label_off">ປິດ</string>
+  <string name="morphe_swipe_ignore_when_locked_title">ບໍ່ສົນໃຈການປັດເມື່ອລັອກຢູ່</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">ການປັດຈະຖືກບໍ່ສົນໃຈໃນຂະນະທີ່ເຄື່ອງຫຼິ້ນຖືກລັອກດ້ວຍ \'ລັອກໜ້າຈໍ\'</string>
+  <string name="morphe_swipe_press_to_engage_title">ເປີດໃຊ້ງານທ່າທາງການກົດເພື່ອປັດ</string>
+  <string name="morphe_swipe_press_to_engage_summary">ຕ້ອງກົດຄ້າງໄວ້ກ່ອນທີ່ການຮູດຈະຖືກເຮັດວຽກ</string>
+  <string name="morphe_swipe_haptic_feedback_title">ເປີດໃຊ້ງານການຕອບສະໜອງແບບສັ່ນ</string>
+  <string name="morphe_swipe_save_and_restore_brightness_title">ບັນທຶກ ແລະ ຟື້ນຟູຄວາມສະຫວ່າງ</string>
+  <string name="morphe_swipe_save_and_restore_brightness_summary">ຈົດຈຳລະດັບຄວາມສະຫວ່າງເມື່ອເຂົ້າ / ອອກຈາກໂໝດເຕັມຈໍ</string>
+  <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">ເປີດໃຊ້ງານທ່າທາງຄວາມສະຫວ່າງອັດຕະໂນມັດ</string>
+  <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary">ການເລື່ອນຄວາມສະຫວ່າງໄປຫາຄ່າຕ່ຳສຸດຈະເປີດໃຊ້ຄວາມສະຫວ່າງອັດຕະໂນມັດຂອງລະບົບ</string>
+  <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">ອັດຕະໂນມັດ</string>
+  <string name="morphe_swipe_overlay_timeout_title">ເວລາໝົດອາຍຸຂອງການສະແດງຜົນທັບຊ້ອນການປັດ</string>
+  <string name="morphe_swipe_overlay_timeout_summary">ຈຳນວນມິນລິວິນາທີທີ່ການສະແດງຜົນທັບຊ້ອນປະກົດໃຫ້ເຫັນ</string>
+  <string name="morphe_swipe_overlay_background_opacity_title">ຄວາມໂປ່ງໃສຂອງພື້ນຫຼັງການສະແດງຜົນທັບຊ້ອນການປັດ</string>
+  <string name="morphe_swipe_overlay_background_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
+  <string name="morphe_swipe_overlay_progress_brightness_color_title">ສີຂອງແຖບປົກຄຸມຄວາມສະຫວ່າງໃນການປັດ</string>
+  <string name="morphe_swipe_overlay_progress_brightness_color_summary">ກຳນົດສີຂອງແຖບຄວາມຄືບໜ້າໃນການຄວບຄຸມຄວາມສະຫວ່າງ</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_title">ສີຂອງແຖບປັບລະດັບສຽງໃນການປັດ</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_summary">ກຳນົດສີຂອງແຖບຄວາມຄືບໜ້າໃນການຄວບຄຸມລະດັບສຽງ</string>
+  <string name="morphe_swipe_overlay_progress_speed_color_title">ສີຄວາມໄວຂອງການປັດຊ້ອນທັບ</string>
+  <string name="morphe_swipe_overlay_progress_speed_color_summary">ກຳນົດສີຂອງແຖບຄວາມຄືບໜ້າຂອງການຄວບຄຸມຄວາມໄວໃນການຫຼິ້ນ</string>
+  <string name="morphe_swipe_text_overlay_size_title">ຂະໜາດຕົວອັກສອນຂອງແຖບປັດ</string>
+  <string name="morphe_swipe_text_overlay_size_summary">ປັບຂະໜາດຂອງຂໍ້ຄວາມໃນໜ້າຈໍ (1-30)</string>
+  <string name="morphe_swipe_threshold_title">ເກນໄລຍະການປັດ</string>
+  <string name="morphe_swipe_threshold_summary">ກຳນົດໄລຍະການປັດທີ່ຈຳເປັນ ກ່ອນທີ່ການປັບປຸງຈະເຮັດວຽກ</string>
+  <string name="morphe_swipe_volume_distance_title">ຄວາມໄວໃນການປັດປັບລະດັບສຽງ</string>
+  <string name="morphe_swipe_volume_distance_summary">ຄ່າທີ່ສູງຂຶ້ນຈະຕ້ອງປັດຫຼາຍຂຶ້ນຕໍ່ແຕ່ລະຂັ້ນຂອງລະດັບສຽງ</string>
+  <string name="morphe_swipe_volume_steps_title">ຂັ້ນລະດັບສຽງ</string>
+  <string name="morphe_volume_boost_title">ເພີ່ມລະດັບສຽງ</string>
+  <string name="morphe_volume_boost_summary">ການປັດຂຶ້ນເກີນລະດັບສຽງສູງສຸດຈະຊ່ວຍເພີ່ມສຽງ, ເຊິ່ງອາດເຮັດໃຫ້ສຽງທີ່ດັງເກີນໄປມີຄວາມບິດເບືອນ</string>
+  <string name="morphe_swipe_volume_steps_entry_default">ຄ່າເລີ່ມຕົ້ນຂອງອຸປະກອນ</string>
+  <string name="morphe_swipe_brightness_sensitivity_title">ຄວາມອ່ອນໄຫວຂອງການປັດປ່ຽນຄວາມສະຫວ່າງ</string>
+  <string name="morphe_swipe_brightness_sensitivity_summary">ຄ່າທີ່ສູງຂຶ້ນຈະຕ້ອງປັດຫຼາຍຂຶ້ນຕໍ່ແຕ່ລະຂັ້ນຂອງຄວາມສະຫວ່າງ</string>
+  <string name="morphe_swipe_speed_sensitivity_title">ຄວາມອ່ອນໄຫວຂອງການປັດປ່ຽນຄວາມໄວ</string>
+  <string name="morphe_swipe_speed_sensitivity_summary">ຄ່າທີ່ສູງຂຶ້ນຈະຕ້ອງປັດຫຼາຍຂຶ້ນຕໍ່ແຕ່ລະຂັ້ນຂອງຄວາມໄວ</string>
+  <string name="morphe_swipe_speed_step_title">ຂັ້ນຕອນຄວາມໄວ</string>
+  <string name="morphe_swipe_speed_zone_height_title">ຄວາມສູງຂອງເຂດຄວາມໄວ</string>
+  <string name="morphe_swipe_speed_zone_height_summary">ຄວາມສູງຂອງເຂດການປັດຄວາມໄວ ເປັນເປີເຊັນຂອງຄວາມສູງຂອງເຄື່ອງຫຼິ້ນ (5-75)</string>
+  <string name="morphe_swipe_zone_label_speed">ຄວາມໄວ</string>
+  <string name="morphe_swipe_overlay_style_title">ຮູບແບບແຖບປັດ</string>
+  <string name="morphe_swipe_overlay_style_entry_1">ແຖບປັດແນວນອນ</string>
+  <string name="morphe_swipe_overlay_style_entry_2">ແຖບປັດແນວນອນ (ແບບມິນິມໍ - ດ້ານເທິງ)</string>
+  <string name="morphe_swipe_overlay_style_entry_3">ແຖບປັດແນວນອນ (ແບບມິນິມໍ - ກາງ)</string>
+  <string name="morphe_swipe_overlay_style_entry_4">ແຖບປັດແບບວົງມົນ</string>
+  <string name="morphe_swipe_overlay_style_entry_5">ຊັ້ນທັບຮູບວົງມົນ (ແບບມິນິມໍ)</string>
+  <string name="morphe_swipe_overlay_style_entry_6">ຊັ້ນທັບແນວຕັ້ງ</string>
+  <string name="morphe_swipe_overlay_style_entry_7">ຊັ້ນທັບແນວຕັ້ງ (ແບບມິນິມໍ)</string>
+  <string name="morphe_swipe_change_video_title">ເປີດໃຊ້ການປັດເພື່ອປ່ຽນວິດີໂອ</string>
+  <string name="morphe_swipe_change_video_summary">ປັດໃນໂໝດເຕັມໜ້າຈໍ ເພື່ອຂ້າມໄປວິດີໂອຖັດໄປ ຫຼື ວິດີໂອກ່ອນໜ້ານີ້</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
+  <string name="morphe_action_buttons_screen_title">ປຸ່ມການເຮັດວຽກ</string>
+  <string name="morphe_action_buttons_screen_summary">ເລືອກປຸ່ມການຈັດການທີ່ຈະໃຫ້ສະແດງໃນໂໝດແຕ່ວງ ແລະ ໂໝດເຕັມໜ້າຈໍ</string>
+  <string name="morphe_portrait_buttons">ປຸ່ມແນວຕັ້ງ</string>
+  <string name="morphe_disable_like_subscribe_glow_title">ປິດການໃຊ້ງານແສງເຮືອງຂອງ ຖືກໃຈ ແລະ ຕິດຕາມ</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">ປ້ອງກັນບໍ່ໃຫ້ປຸ່ມ ຖືກໃຈ ແລະ ສະໝັກລົງທະບຽນ ເປັນແສງວິບວັບ ເມື່ອຜູ້ສ້າງເນື້ອຫາອ້າງເຖິງພວກມັນ</string>
+  <string name="morphe_hide_action_bar_title">ເຊື່ອງແຖບການເຮັດວຽກ</string>
+  <string name="morphe_hide_like_dislike_button_title">ເຊື່ອງປຸ່ມ ຖືກໃຈ ແລະ ບໍ່ຖືກໃຈ</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_share_button_title">ເຊື່ອງປຸ່ມ ແຊຣ໌</string>
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_stop_ads_button_title">ເຊື່ອງປຸ່ມ \'ຢຸດໂຄສະນາ\'</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <string name="morphe_hide_comments_button_title">ເຊື່ອງປຸ່ມຄວາມຄິດເຫັນ</string>
   <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">ເຊື່ອງປຸ່ມເຊື່ອມຕໍ່</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live stream videos. -->
+  <string name="morphe_hide_report_button_title">ເຊື່ອງປຸ່ມລາຍງານ</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_remix_button_title">ເຊື່ອງປຸ່ມຣີມິກຊ໌</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_download_button_title">ເຊື່ອງປຸ່ມດາວໂຫຼດ</string>
   <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on videos uploaded by the logged-in user. -->
+  <string name="morphe_hide_hype_button_title">ເຊື່ອງປຸ່ມ Hype</string>
   <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_promote_button_title">ເຊື່ອງປຸ່ມໂປຣໂມດ</string>
   <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_thanks_button_title">ເຊື່ອງປຸ່ມ ຂອບໃຈ</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <string name="morphe_hide_ask_button_title">ເຊື່ອງປຸ່ມ ຖາມ</string>
+  <string name="morphe_hide_channel_profile_button_title">ເຊື່ອງຊ່ອງ ແລະ ປຸ່ມຕິດຕາມ</string>
+  <string name="morphe_hide_channel_profile_button_summary">ເຊື່ອງຮູບໂປຣຟາຍຂອງຊ່ອງ ແລະ ປຸ່ມຕິດຕາມ ຢູ່ທີ່ຕອນເລີ່ມຕົ້ນຂອງແຖບການເຮັດວຽກ</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">ເຊື່ອງປຸ່ມຕິດຕາມ</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">ເຊື່ອງປຸ່ມຕິດຕາມ ແລະ ປຸ່ມເຂົ້າຮ່ວມ ທີ່ຢູ່ຂ້າງຮູບໂປຣໄຟລ໌ຂອງຊ່ອງ ຢູ່ສ່ວນເລີ່ມຕົ້ນຂອງແຖບການເຮັດວຽກ</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_clip_button_title">ເຊື່ອງປຸ່ມ ຄລິບ</string>
+  <string name="morphe_hide_clip_button_summary">ສິ່ງນີ້ອາດຈະບໍ່ໃຊ້ໄດ້ກັບບາງບັນຊີຜູ້ໃຊ້</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shop_button_title">ເຊື່ອງປຸ່ມ ຮ້ານຄ້າ</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_save_button_title">ເຊື່ອງປຸ່ມ ບັນທຶກ</string>
+  <string name="morphe_hide_more_button_title">ເຊື່ອງປຸ່ມຕື່ມອີກ</string>
+  <string name="morphe_fullscreen_buttons">ປຸ່ມເຕັມຈໍ</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">ເຊື່ອງປຸ່ມ ບໍ່ມັກ</string>
+  <string name="morphe_hide_quick_actions_like_button_title">ເຊື່ອງປຸ່ມ ມັກ</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">ເຊື່ອງປຸ່ມ \'ແຊັດສົດ\'</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">ເຊື່ອງປຸ່ມ ມິກສ໌</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">ເຊື່ອງປຸ່ມ \'ວິດີໂອເພີ່ມເຕີມ\'</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">ເຊື່ອງປຸ່ມລາຍການຫຼິ້ນ</string>
+  <string name="morphe_quick_actions_top_margin_title">ຂອບເທິງຂອງການດຳເນີນການດ່ວນ</string>
+  <string name="morphe_quick_actions_top_margin_summary">ກຳນົດຂອບເທິງຂອງແຖບການດຳເນີນການດ່ວນ (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">ຄຳບັນຍາກຳກັບ</string>
+  <string name="morphe_captions_screen_summary">ຈັດການຄຳບັນຍາກົດອັດຕະໂນມັດ ແລະ ຄຸກກີຂອງຄຳບັນຍາກົດ</string>
   <!-- layout.captions.autoCaptionsPatch -->
+  <string name="morphe_auto_captions_style_title">ການເບິ່ງເຫັນຄຳບັນຍາກທີ່ອັດຕະໂນມັດ</string>
+  <string name="morphe_auto_captions_style_entry_1">ສະແດງສະເໝີ</string>
+  <string name="morphe_auto_captions_style_entry_2">ບໍ່ໃຫ້ສະແດງເລີຍ</string>
+  <string name="morphe_auto_captions_style_entry_3">ສະແດງເມື່ອເປີດສຽງ</string>
+  <string name="morphe_auto_captions_style_entry_4">ສະແດງເມື່ອປິດສຽງ</string>
   <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_title">ພາສາຄຳບັນຍາຍທີ່ມັກ</string>
+  <string name="morphe_preferred_caption_language_summary">ເລືອກຄຳບັນຍາຍຈາກຜູ້ໃຫ້ບໍລິການກ່ອນ, ຈາກນັ້ນຈະແປເປັນພາສາທີ່ມັກໂດຍອັດຕະໂນມັດ</string>
+  <string name="morphe_preferred_caption_language_entry_off">ປິດ</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
+  <string name="morphe_auto_translate_additional_languages_title">ເພີ່ມພາສາແປອັດຕະໂນມັດເພີ່ມເຕີມ</string>
+  <string name="morphe_auto_translate_additional_languages_summary">ເພີ່ມພາສາຫຼາຍຂຶ້ນໃນເມນູແປອັດຕະໂນມັດ</string>
   <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">ຕັ້ງຄ່າຄຸກກີ້ຂອງຄຳບັນຍາກຳກັບ</string>
+  <string name="morphe_set_caption_cookies_summary">"ແກ້ໄຂບັກຂອງ YouTube ທີ່ຄຳບັນຍາກົດອັດຕະໂນມັດອາດຈະບໍ່ສາມາດນຳໃຊ້ໄດ້ ເນື່ອງຈາກຄຸກກີ້ຫາຍໄປ
+
+ຕ້ອງລະບຸ 'ຄຸກກີ້ຄຳບັນຍາກົດ'"</string>
+  <string name="morphe_caption_cookies_title">ຄຸກກີ້ຂອງຄຳບັນຍາກຳກັບ</string>
+  <string name="morphe_caption_cookies_summary">ຄຸກກີ້ທີ່ຈະຖືກຕັ້ງໃນຄຳຮ້ອງຂໍ Timed Text API (Caption Data API)</string>
+  <string name="morphe_get_caption_cookies_title">ດຶງຂໍ້ມູນຄຸກກີ້ຂອງຄຳບັນຍາກຳກັບ</string>
+  <string name="morphe_get_caption_cookies_summary">ຄລິກທີ່ນີ້ເພື່ອດຶງຂໍ້ມູນຄຸກກີ້</string>
+  <string name="morphe_get_caption_cookies_failed">ດຶງຂໍ້ມູນຄຸກກີ້ບໍ່ສຳເລັດ</string>
+  <string name="morphe_get_caption_cookies_duplicate">ມີຄຸກກີ້ຢູ່ແລ້ວ</string>
+  <string name="morphe_get_caption_cookies_success">ອັບເດດຄຸກກີ້ສຳເລັດແລ້ວ</string>
   <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">ແກ້ໄຂບົດບັນທຶກ</string>
+  <string name="morphe_fix_transcript_summary">ແກ້ໄຂຄວາມລົ້ມເຫຼວຂອງການກວດສອບເງື່ອນໄຂເບື້ອງຕົ້ນ ທີ່ອາດຈະປ້ອງກັນບໍ່ໃຫ້ໂຫຼດບົດບັນທຶກການສົນທະນາໄດ້</string>
+  <string name="morphe_captions_in_pip_title">ສະແດງຄຳບັນຍາຍໃນຮູບພາບໃນຮູບພາບ</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <string name="morphe_navigation_buttons_screen_title">ປຸ່ມນຳທາງ</string>
+  <string name="morphe_navigation_buttons_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ປາກົດໃນແຖບນຳທາງດ້ານລຸ່ມ</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_home_button_title">ເຊື່ອງປຸ່ມໜ້າຫຼັກ</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_button_title">ເຊື່ອງປຸ່ມ Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
+  <string name="morphe_hide_create_button_title">ເຊື່ອງປຸ່ມສ້າງ</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_subscriptions_button_title">ເຊື່ອງປຸ່ມການຕິດຕາມ</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_notifications_button_title">ເຊື່ອງປຸ່ມການແຈ້ງເຕືອນ</string>
+  <string name="morphe_show_search_button_title">ສະແດງປຸ່ມຄົ້ນຫາ</string>
+  <string name="morphe_show_search_button_index_title">ຕຳແໜ່ງປຸ່ມຄົ້ນຫາ</string>
+  <string name="morphe_show_settings_button_title">ສະແດງປຸ່ມການຕັ້ງຄ່າ</string>
+  <string name="morphe_show_settings_button_index_title">ຕຳແໜ່ງປຸ່ມການຕັ້ງຄ່າ</string>
+  <string name="morphe_show_settings_button_type_title">ການເຮັດວຽກຂອງປຸ່ມຕັ້ງຄ່າ</string>
+  <string name="morphe_show_settings_button_type_summary">ເປີດການຕັ້ງຄ່າ Morphe ເມື່ອເປີດໃຊ້ງານ, ຫຼື ການຕັ້ງຄ່າ YouTube ເມື່ອປິດໃຊ້ງານ</string>
+  <string name="morphe_swap_create_with_notifications_button_title">ສະຫຼັບປຸ່ມສ້າງ ດ້ວຍປຸ່ມການແຈ້ງເຕືອນ</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">ຖ້າການປ່ຽນແປງການຕັ້ງຄ່ານີ້ບໍ່ມີຜົນ, ໃຫ້ລອງປ່ຽນໄປໃຊ້ໂໝດບໍ່ລະບຸຕົວຕົນ</string>
+  <string name="morphe_hide_navigation_button_labels_title">ເຊື່ອງປ້າຍຊື່ປຸ່ມນຳທາງ</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">ເຊື່ອງຈຸດເນື້ອຫາໃໝ່</string>
+  <string name="morphe_hide_navigation_bar_title">ເຊື່ອງແຖບການນຳທາງ</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"ສິ່ງນີ້ຈະເຊື່ອງແຖບການນຳທາງທັງໝົດ, ລວມທັງແທັບ 'ທ່ານ'.
+
+ເພື່ອເຂົ້າເຖິງການຕັ້ງຄ່າ, ໃຫ້ເປີດປຸ່ມການຕັ້ງຄ່າຜ່ານ ທົ່ວໄປ → ແຖບເຄື່ອງມື → ສະແດງການຕັ້ງຄ່າ"</string>
+  <string name="morphe_narrow_navigation_buttons_title">ເປີດໃຊ້ປຸ່ມນຳທາງແບບແຄບ</string>
+  <string name="morphe_narrow_navigation_buttons_summary">ຫຼຸດໄລຍະຫ່າງຕາມແນວນອນລະຫວ່າງປຸ່ມ</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">ປິດການນຳໃຊ້ປຸ່ມນຳທາງທີ່ບໍ່ມີປ້າຍກຳກັບ</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">ສະແດງປຸ່ມນຳທາງພ້ອມກັບປ້າຍກຳກັບ, ຖ້າ YouTube ສົ່ງພວກມັນມາໂດຍບໍ່ມີປ້າຍກຳກັບ</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_title">ປິດການນຳໃຊ້ແຖບການນຳທາງຂອງແຖບເຄື່ອງມື</string>
+  <string name="morphe_disable_toolbar_navigation_tabs_summary">ສະແດງລາຍການຕິດຕາມໃນແຖບການນຳທາງ, ຖ້າ YouTube ຍ້າຍມັນໄປໄວ້ທີ່ແຖບດ້ານເທິງຂອງໜ້າຫຼັກ</string>
+  <string name="morphe_navigation_bar_animations_title">ເປີດໃຊ້ງານແອນິເມຊັນຂອງແຖບນຳທາງ</string>
+  <string name="morphe_navigation_bar_animations_summary">ສ້າງແອນິເມຊັນການປ່ຽນຜ່ານເມື່ອສະຫຼັບລະຫວ່າງແທັບ</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">ປິດການຊ່ອນແຖບນຳທາງອັດຕະໂນມັດ</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary">ໃຫ້ແຖບນຳທາງສະແດງຢູ່ສະເໝີໃນຂະນະທີ່ເລື່ອນ</string>
+  <string name="morphe_navigation_bar_style_title">ຮູບແບບແຖບນຳທາງ</string>
+  <string name="morphe_navigation_bar_style_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_navigation_bar_style_entry_2">ໂປ່ງໃສ</string>
+  <string name="morphe_navigation_bar_style_entry_3">ໂປ່ງໃສ</string>
+  <string name="morphe_navigation_bar_style_entry_4">ທຶບ</string>
+  <string name="morphe_navigation_bar_style_user_dialog_message">ຮູບແບບນີ້ອາດຈະບໍ່ຮອງຮັບໂດຍອຸປະກອນ ຫຼື ເວີຊັນ YouTube ຂອງທ່ານ, ແລະ ສາມາດເຮັດໃຫ້ເກີດບັນຫາໃນການຈັດວາງ ຫຼື ເຮັດໃຫ້ແອັບປິດລົງ</string>
+  <string name="morphe_toolbar_screen_title">ແຖບເຄື່ອງມື</string>
+  <string name="morphe_toolbar_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນແຖບເຄື່ອງມື</string>
+  <string name="morphe_hide_toolbar_cast_button_title">ເຊື່ອງປຸ່ມ Cast</string>
+  <string name="morphe_hide_toolbar_chat_button_title">ເຊື່ອງປຸ່ມແຊັດ</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">ເຊື່ອງປຸ່ມໄມໂຄຣໂຟນ</string>
+  <string name="morphe_hide_toolbar_search_button_title">ເຊື່ອງປຸ່ມຄົ້ນຫາ</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary">ເມື່ອເປີດໃຊ້ງານ, ແຕະເພື່ອເປີດການຕັ້ງຄ່າ Morphe ແລະ ກົດຄ້າງໄວ້ເພື່ອເປີດການຕັ້ງຄ່າ YouTube, ປິດເພື່ອສະຫຼັບກັນ</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
+  <string name="morphe_hide_player_flyout_title">ເມນູ Flyout</string>
+  <string name="morphe_hide_player_flyout_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ປາກົດໃນເມນູ flyout</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">ເຊື່ອງເມນູ \'ການຕັ້ງຄ່າເພີ່ມເຕີມ\' / ອື່ນໆ</string>
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">ເຊື່ອງເມນູ \'ໂໝດແສງສະຫວ່າງອ້ອມຂ້າງ\'</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"ເມນູ 'Audio Track' ຖືກເຊື່ອງໄວ້
+
+ເພື່ອສະແດງເມນູ 'Audio Track', ໃຫ້ປ່ຽນ 'Spoof video streams' ເປັນຄລາຍເອນໃດໜຶ່ງ ຍົກເວັ້ນ 'Android Studio' ແລະ 'Android VR Downgraded'"</string>
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">ເຊື່ອງເມນູ \'ແທຣັກສຽງ\'</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">ເຊື່ອງສ່ວນລຸ່ມຂອງເມນູ \'ແທຣັກສຽງ\'</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_captions_title">ເຊື່ອງເມນູ ຄຳບັນຍາຍ</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">ເຊື່ອງສ່ວນລຸ່ມຂອງເມນູ ຄຳບັນຍາຍ</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">ເຊື່ອງສ່ວນຫົວຂອງເມນູ ຄຳບັນຍາຍ</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_help_title">ເຊື່ອງເມນູ \'ຄວາມຊ່ວຍເຫຼືອ &amp; ຄຳຄິດເຫັນ\'</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">ເຊື່ອງເມນູ \'ຟັງດ້ວຍ YouTube Music\'</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">ເຊື່ອງເມນູ \'ລັອກໜ້າຈໍ\'</string>
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">ເຊື່ອງເມນູ \'ວົນຊ້ຳວິດີໂອ\'</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">ເຊື່ອງເມນູ \'ລະຫວ່າງການເດີນທາງ\'</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_quality_title">ເຊື່ອງເມນູຄຸນນະພາບ</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">ເຊື່ອງສ່ວນທ້າຍຂອງເມນູຄຸນນະພາບ</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">ເຊື່ອງສ່ວນຫົວຂອງເມນູຄຸນນະພາບ</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">ເຊື່ອງເມນູ \'ຕົວຈັບເວລາການນອນ\'</string>
   <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">ເຊື່ອງເມນູ \'ຄວາມໄວໃນການຫຼິ້ນ\'</string>
   <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">ເຊື່ອງເມນູ \'ລະດັບສຽງຄົງທີ່\'</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">ເຊື່ອງເມນູ \'ເບິ່ງໃນ VR\'</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
+  <string name="morphe_hide_autoplay_preview_title">ເຊື່ອງການທົດລອງເປີດອັດຕະໂນມັດ</string>
+  <string name="morphe_hide_autoplay_preview_summary">ເຊື່ອງການທ່ອງເບິ່ງວິດີໂອລ່ວງໜ້າໃນໜ້າຈໍເຕັມ ກ່ອນທີ່ການຫຼິ້ນອັດຕະໂນມັດຈະເລີ່ມຂຶ້ນ</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_overlay_buttons_screen_title">ປຸ່ມຊ້ອນທັບ</string>
+  <string name="morphe_overlay_buttons_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ປາກົດເທິງເຄື່ອງຫຼິ້ນວິດີໂອ</string>
+  <string name="morphe_hide_autoplay_button_title">ເຊື່ອງປຸ່ມຫຼິ້ນອັດຕະໂນມັດ</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
+  <string name="morphe_hide_captions_button_title">ປຸ່ມເຊື່ອງຄຳບັນຍາຍ</string>
+  <string name="morphe_hide_cast_button_title">ປຸ່ມເຊື່ອງ Cast</string>
+  <string name="morphe_hide_collapse_button_title">ປຸ່ມເຊື່ອງCollapse</string>
+  <string name="morphe_hide_fullscreen_button_title">ປຸ່ມເຊື່ອງໜ້າຈໍເຕັມ</string>
+  <string name="morphe_hide_player_control_buttons_background_title">ເຊື່ອງພື້ນຫຼັງຂອງປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_hide_player_control_buttons_background_summary">ເຊື່ອງການແລັງສີເຂັ້ມທີ່ລ້ອມຮອບປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນວິດີໂອ</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">ຄວາມໂປ່ງໃສຂອງພື້ນຫຼັງປຸ່ມຄວບຄຸມ</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">ປັບຄວາມໂປ່ງໃສຂອງພື້ນຫຼັງທາງຫຼັງປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນ ແລະ ແຖບເວລາ (0 ແມ່ນບໍ່ເຫັນ, 100 ແມ່ນທຶບ)</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">ເຊື່ອງປຸ່ມກ່ອນໜ້ານີ້ &amp; ຖັດໄປ</string>
+  <string name="morphe_hide_settings_button_title">ປຸ່ມເຊື່ອງການຕັ້ງຄ່າ</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
+  <string name="morphe_hide_end_screen_cards_title">ເຊື່ອງບັດໃນໜ້າຈໍຈົບ</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_ambient_mode_screen_title">ໂໝດ Ambient</string>
+  <string name="morphe_ambient_mode_screen_summary">ຈັດການການເບິ່ງເຫັນໂໝດ Ambient ແລະ ຂໍ້ຈຳກັດດ້ານພະລັງງານ</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">ຂ້າມຂໍ້ຈຳກັດຂອງໂໝດ Ambient</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary">ອະນຸຍາດໃຫ້ໂໝດ Ambient ຍັງຄົງເຮັດວຽກໃນໂໝດປະຢັດແບັດເຕີຣີ</string>
+  <string name="morphe_disable_ambient_mode_title">ປິດການນຳໃຊ້ໂໝດ Ambient</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_title">ປິດໂໝດ Ambient ໃນໜ້າຈໍເຕັມ</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
+  <string name="morphe_hide_info_cards_title">ເຊື່ອງບັດຂໍ້ມູນ</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
+  <string name="morphe_disable_rolling_number_animations_title">ປິດແອນິເມຊັນຕົວເລກກິ້ງ</string>
+  <string name="morphe_disable_rolling_number_animations_summary">ຢຸດການເຄື່ອນໄຫວການນັບຈຳນວນໄລອ໌ ແລະ ຈຳນວນການເບິ່ງ</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
+  <string name="morphe_hide_seekbar_title">ເຊື່ອງແຖບເລື່ອນຂອງເຄື່ອງຫຼິ້ນວິດີໂອ</string>
+  <string name="morphe_hide_seekbar_thumbnail_title">ເຊື່ອງຮູບຕົວຢ່າງໃນແຖບເລື່ອນວິດີໂອ</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary">ເຊື່ອງແຖບຄວາມຄືບໜ້າການເບິ່ງ ທີ່ສະແດງໃນຮູບຕົວຢ່າງຂອງວິດີໂອທີ່ທ່ານໄດ້ເບິ່ງແລ້ວ</string>
+  <string name="morphe_fullscreen_large_seekbar_title">ເປີດໃຊ້ແຖບເລື່ອນຂະໜາດໃຫຍ່ໃນໜ້າຈໍເຕັມ</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
+  <string name="morphe_hide_shorts_category_title">ເຊື່ອງ Shorts</string>
+  <string name="morphe_hide_shorts_channel_title">ເຊື່ອງໃນໜ້າຊ່ອງ</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_home_title">ເຊື່ອງໃນຟີດໜ້າຫຼັກ &amp; ວິດີໂອທີ່ກ່ຽວຂ້ອງ</string>
+  <string name="morphe_hide_shorts_search_title">ເຊື່ອງໃນຜົນການຄົ້ນຫາ</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_subscriptions_title">ເຊື່ອງໃນຟີດການຕິດຕາມ</string>
+  <string name="morphe_hide_shorts_video_description_title">ເຊື່ອງໃນຄຳອະທິບາຍວິດີໂອ</string>
+  <string name="morphe_hide_shorts_history_title">ເຊື່ອງໃນປະຫວັດການເບິ່ງ</string>
+  <string name="morphe_shorts_player_screen_title">ເຄື່ອງຫຼິ້ນ Shorts</string>
+  <string name="morphe_shorts_player_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນເຄື່ອງຫຼິ້ນ Shorts</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">ປິດການໃຊ້ງານການແຕະສອງຄັ້ງເພື່ອຖືກໃຈ</string>
+  <string name="morphe_hide_shorts_ai_button_title">ເຊື່ອງປຸ່ມ AI</string>
+  <string name="morphe_hide_shorts_auto_dubbed_label_title">ເຊື່ອງປ້າຍກຳກັບ \'ພາກສຽງອັດຕະໂນມັດ\'</string>
+  <string name="morphe_hide_shorts_channel_bar_title">ເຊື່ອງແຖບຊ່ອງ</string>
+  <string name="morphe_hide_shorts_comments_button_title">ເຊື່ອງປຸ່ມຄວາມຄິດເຫັນ</string>
+  <string name="morphe_hide_shorts_effect_button_title">ເຊື່ອງປຸ່ມເອັບເຟັກ</string>
+  <string name="morphe_hide_shorts_full_video_link_label_title">ເຊື່ອງປ້າຍລິ້ງວິດີໂອ</string>
+  <string name="morphe_hide_shorts_gesture_hints_title">ເຊື່ອງຄຳແນະນຳການໃຊ້ທ່າທາງ</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">ເຊື່ອງປຸ່ມ \'ຈໍສີຂຽວ\'</string>
+  <string name="morphe_hide_shorts_hashtag_button_title">ເຊື່ອງປຸ່ມແຮຊແທັກ</string>
+  <string name="morphe_hide_shorts_info_panel_title">ເຊື່ອງແຜງຂໍ້ມູນ</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_join_button_title">ເຊື່ອງປຸ່ມເຂົ້າຮ່ວມ</string>
+  <string name="morphe_hide_shorts_like_button_title">ເຊື່ອງປຸ່ມຖືກໃຈ</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+  <string name="morphe_hide_shorts_like_fountain_title">ເຊື່ອງແອນິເມຊັນນ້ຳພຸຂອງປຸ່ມຖືກໃຈ</string>
+  <string name="morphe_hide_shorts_live_preview_title">ເຊື່ອງການເບິ່ງລ່ວງໜ້າແບບສົດ</string>
+  <string name="morphe_hide_shorts_location_label_title">ເຊື່ອງປ້າຍບອກສະຖານທີ່</string>
+  <string name="morphe_hide_shorts_navigation_bar_title">ເຊື່ອງແຖບນຳທາງ</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">ເຊື່ອງປຸ່ມ \'ໂພສໃໝ່\'</string>
+  <string name="morphe_hide_shorts_paused_overlay_buttons_title">ເຊື່ອງປຸ່ມຊ້ອນທັບໃນຂະນະທີ່ຢຸດຊົ່ວຄາວ</string>
+  <string name="morphe_hide_shorts_preview_comment_title">ເຊື່ອງການເບິ່ງຄຳຄິດເຫັນລ່ວງໜ້າ</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_remix_button_title">ເຊື່ອງປຸ່ມຣີມິກຊ໌</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">ເຊື່ອງປຸ່ມບັນທຶກ</string>
+  <string name="morphe_hide_shorts_save_sound_button_title">ເຊື່ອງປຸ່ມ \'ບັນທຶກເພງ\'</string>
+  <string name="morphe_hide_shorts_search_suggestions_title">ເຊື່ອງຄຳແນະນຳໃນການຄົ້ນຫາ</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_share_button_title">ເຊື່ອງປຸ່ມແຊຣ໌</string>
+  <string name="morphe_hide_shorts_shop_button_title">ເຊື່ອງປຸ່ມຮ້ານຄ້າ</string>
+  <string name="morphe_hide_shorts_sound_button_title">ເຊື່ອງປຸ່ມສຽງ</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">ເຊື່ອງປ້າຍຂໍ້ມູນເມຕາດາຕາຂອງສຽງ</string>
+  <string name="morphe_hide_shorts_subscribe_button_title">ເຊື່ອງປຸ່ມຕິດຕາມ</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">ເຊື່ອງປຸ່ມ \'ຊື້ Super Thanks\'</string>
+  <string name="morphe_hide_shorts_tagged_products_title">ເຊື່ອງສິນຄ້າທີ່ຖືກແທັກ</string>
+  <string name="morphe_hide_shorts_upcoming_button_title">ເຊື່ອງປຸ່ມທີ່ກຳລັງຈະມາເຖິງ</string>
+  <string name="morphe_hide_shorts_use_sound_button_title">ເຊື່ອງປຸ່ມ \'ໃຊ້ສຽງນີ້\'</string>
+  <string name="morphe_hide_shorts_use_template_button_title">ເຊື່ອງປຸ່ມ \'ໃຊ້ແມ່ແບບນີ້\'</string>
+  <string name="morphe_hide_shorts_video_title_title">ເຊື່ອງຫົວຂໍ້ວິດີໂອ</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
+  <string name="morphe_hide_end_screen_suggested_video_title">ເຊື່ອງວິດີໂອທີ່ແນະນຳໃນໜ້າຈໍຈົບ</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary">"ເຊື່ອງວິດີໂອແນະນຳທີ່ປາກົດຂຶ້ນຫຼັງຈາກວິດີໂອສິ້ນສຸດ
+
+ການຕັ້ງຄ່ານີ້ຈະໃຊ້ໄດ້ກໍ່ຕໍ່ເມື່ອປິດການຫຼິ້ນອັດຕະໂນມັດ. ທ່ານສາມາດປ່ຽນແປງມັນໄດ້ໃນ YouTube:
+ການຕັ້ງຄ່າ → ການຫຼິ້ນ (ຫຼື ການຫຼິ້ນອັດຕະໂນມັດ) → ຫຼິ້ນວິດີໂອຕໍ່ໄປອັດຕະໂນມັດ"</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
+  <string name="morphe_hide_player_related_videos_title">ເຊື່ອງວິດີໂອທີ່ກ່ຽວຂ້ອງ</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
+  <string name="morphe_hide_player_related_videos_overlay_title">ເຊື່ອງສ່ວນທັບຊ້ອນ \'ວິດີໂອເພີ່ມເຕີມ\'</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary">ເຊື່ອງສ່ວນທັບຊ້ອນ \'ວິດີໂອເພີ່ມເຕີມ\' ທີ່ສະແດງເມື່ອປັດຂຶ້ນໃນໂໝດເຕັມຈໍ</string>
   <!-- layout.hide.time.hideTimestampPatch -->
+  <string name="morphe_hide_timestamp_title">ເຊື່ອງປະທັບເວລາຂອງວິດີໂອ</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">ປິດໃຊ້ແຜງປັອບອັບຂອງເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_disable_player_popup_panels_summary">ປິດການເປີດແຜງລາຍການຫຼິ້ນ ແລະ ແຊັດສົດໂດຍອັດຕະໂນມັດ</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">ປິດການຫຼິ້ນອັດຕະໂນມັດຂອງລາຍການຫຼິ້ນ</string>
+  <string name="morphe_disable_playlist_autoplay_summary">ປ້ອງກັນບໍ່ໃຫ້ລາຍການຫຼິ້ນເພງເລື່ອນໄປວິດີໂອຖັດໄປໂດຍອັດຕະໂນມັດ</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_disable_continue_watching_prompt_title">ປິດການໃຊ້ງານການເຕືອນ \'ເບິ່ງຕໍ່ຫຼືບໍ່?\'</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
+  <string name="morphe_exit_fullscreen_title">ອອກຈາກໂໝດເຕັມຈໍເມື່ອວິດີໂອສິ້ນສຸດ</string>
+  <string name="morphe_exit_fullscreen_entry_1">ປິດການໃຊ້ງານ</string>
+  <string name="morphe_exit_fullscreen_entry_2">ແນວຕັ້ງເທົ່ານັ້ນ</string>
+  <string name="morphe_exit_fullscreen_entry_3">ແນວນອນເທົ່ານັ້ນ</string>
+  <string name="morphe_exit_fullscreen_entry_4">ແນວຕັ້ງ ແລະ ແນວນອນ</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">ບັງຄັບໃຫ້ເປັນແນວນອນໃນໂໝດເຕັມຈໍ</string>
+  <string name="morphe_force_fullscreen_landscape_summary">ໝູນເຄື່ອງຫຼິ້ນໃຫ້ເປັນແນວນອນເມື່ອເຂົ້າສູ່ໂໝດເຕັມຈໍ. ບໍ່ສາມາດໃຊ້ໄດ້ໃນໜ້າຈໍຂະໜາດນ້ອຍ ທີ່ເປີດເຕັມຈໍເປັນແນວນອນຢູ່ແລ້ວ</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
+  <string name="morphe_disable_fullscreen_gestures_title">ທ່າທາງໜ້າຈໍເຕັມ</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">ທ່າທາງຂອງເຄື່ອງຫຼິ້ນໃນໂໝດເຕັມຈໍ</string>
+  <string name="morphe_disable_fullscreen_pulled_up_gesture_title">ປິດການໃຊ້ທ່າທາງປັດຂຶ້ນໃນແນວຕັ້ງ</string>
+  <string name="morphe_disable_fullscreen_sliding_down_gesture_title">ປິດການໃຊ້ທ່າທາງປັດລົງໃນແນວຕັ້ງ</string>
+  <string name="morphe_disable_fullscreen_dragged_down_gesture_title">ປິດການໃຊ້ທ່າທາງປັດລົງໃນແນວນອນ</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">ປິດການນຳໃຊ້ທ່າທາງໜີບເພື່ອຊູມ</string>
+  <string name="morphe_restore_pinch_to_zoom_title">ກູ້ຄືນການໃຊ້ສອງນິ້ວເພື່ອຊູມ</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">ເປີດວິດີໂອໃນໂໝດເຕັມຈໍ</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">ປິດການໃຊ້ງານ</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">ແນວຕັ້ງ</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">ແນວນອນ</string>
   <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <string name="morphe_fullscreen_video_scale_title">ຂະໜາດວິດີໂອເຕັມຈໍ</string>
+  <string name="morphe_fullscreen_video_scale_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_fullscreen_video_scale_entry_stretch">ຢືດ (ເຕັມຈໍ)</string>
+  <string name="morphe_fullscreen_video_scale_entry_zoom">ຊູມ (ຕັດໃຫ້ເຕັມ)</string>
+  <string name="morphe_fullscreen_video_scale_button_title">ສະແດງປຸ່ມຂະໜາດວິດີໂອ</string>
+  <string name="morphe_fullscreen_video_scale_button_summary">ແຕະເພື່ອປ່ຽນລະຫວ່າງ ຄ່າເລີ່ມຕົ້ນ, ຢືດ, ແລະ ຊູມ</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">ສະແດງສະເພາະໃນໂໝດເຕັມຈໍ</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">ເຊື່ອງປຸ່ມປັບຂະໜາດວິດີໂອໃນເຄື່ອງຫຼິ້ນແນວຕັ້ງ</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">ສະແດງປຸ່ມປິດສຽງ</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
+  <string name="morphe_player_overlay_opacity_title">ຄວາມໂປ່ງໃສຂອງບ່ອນຊ້ອນທັບເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_player_overlay_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
+  <string name="morphe_searchbar_type_title">ແຖບຄົ້ນຫາ</string>
+  <string name="morphe_searchbar_type_entry_disabled">ປິດການໃຊ້ງານ</string>
+  <string name="morphe_searchbar_type_entry_wide">ແບບກວ້າງ</string>
+  <string name="morphe_searchbar_type_entry_extra_wide">ກວ້າງພິເສດ</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
+  <string name="morphe_change_form_factor_title">ຮູບແບບອຸປະກອນ</string>
+  <string name="morphe_change_form_factor_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_change_form_factor_entry_2">ໂທລະສັບ</string>
+  <string name="morphe_change_form_factor_entry_3">ແທັບເລັດ</string>
+  <string name="morphe_change_form_factor_entry_4">ຍານພາຫະນະ</string>
+  <string name="morphe_change_form_factor_user_dialog_message">"ການປ່ຽນແປງລວມມີ:
+
+ຮູບແບບ Tablet
+• ໂພສຂອງຊຸມຊົນຖືກເຊື່ອງໄວ້
+• ການຕັ້ງຄ່າການຫຼິ້ນໃນ feed ບໍ່ສາມາດນຳໃຊ້ໄດ້
+• ປຸ່ມ Remix ແລະ ປຸ່ມ ສຽງ ບໍ່ສາມາດນຳໃຊ້ໄດ້ໃນ Shorts
+• ບ່ອນວາງຊ້ອນ 'ວິດີໂອເພີ່ມເຕີມ' ອາດຈະບໍ່ສາມາດນຳໃຊ້ໄດ້
+• ແຖບການເຮັດວິດີໂອແບບເກົ່າທີ່ບໍ່ໄດ້ຍຸບຈະສະແດງຂຶ້ນ
+• ລາຍການເມນູ Flyout ອາດຈະເຮັດວຽກບໍ່ຖືກຕ້ອງ
+
+ຮູບແບບ Automotive
+• feed ຖືກຈັດລະບຽບຕາມຫົວຂໍ້ ແລະ ຊ່ອງ
+• ການຕັ້ງຄ່າການຫຼິ້ນໃນ feed ບໍ່ສາມາດນຳໃຊ້ໄດ້
+• ປຸ່ມ Remix ແລະ ປຸ່ມ ສຽງ ບໍ່ສາມາດນຳໃຊ້ໄດ້ໃນ Shorts
+• ບ່ອນວາງຊ້ອນ 'ວິດີໂອເພີ່ມເຕີມ' ອາດຈະບໍ່ສາມາດນຳໃຊ້ໄດ້
+• Shorts ຈະເປີດໃນເຄື່ອງຫຼິ້ນປົກກະຕິ
+• ແຖບການເຮັດວິດີໂອແບບເກົ່າທີ່ບໍ່ໄດ້ຍຸບຈະສະແດງຂຶ້ນ"</string>
+  <string name="morphe_tablet_layout_in_player_title">ເປີດໃຊ້ການຈັດວາງແບບແທັບເລັດໃນເຄື່ອງຫຼິ້ນ</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"ຟື້ນຟູຮູບແບບເຄື່ອງຫຼິ້ນແບບເກົ່າ
+
+ຂໍ້ຈຳກັດ: ຖ້າ 'ຟື້ນຟູແຖບການເຮັດວຽກຂອງວິດີໂອແບບເກົ່າ' ຖືກປິດ, ປ່ອງຢ້ຽມ 'ວິດີໂອເພີ່ມເຕີມ' ອາດຈະບໍ່ສາມາດໃຊ້ງານໄດ້"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - ກູ້ຄືນພຶດຕິກຳຂອງຄຳບັນຍາກິດແບບເກົ່າ</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - ກູ້ຄືນການບັນທຶກເກົ່າໄປຍັງລາຍການຫຼິ້ນ</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - ປິດໄອຄອນຕົວໜາ</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - ຄືນຄ່າຊື່ຊ່ອງລຸ່ມເຄື່ອງຫຼິ້ນວິດີໂອ</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">ເປີດແຜ່ນແບ່ງປັນຂອງລະບົບ</string>
+  <string name="morphe_open_system_share_sheet_summary">ເປີດແຜງແບ່ງປັນຂອງລະບົບ ແທນທີ່ແຜງແບ່ງປັນພາຍໃນແອັບ ເມື່ອແບ່ງປັນເນື້ອຫາ</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">ປັບປ່ຽນປຸ່ມ YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary">ເປີດແອັບເພງທີ່ທ່ານມັກ ແທນທີ່ແອັບ YouTube Music ທີ່ຕິດຕັ້ງມາພ້ອມກັບເຄື່ອງ</string>
+  <string name="morphe_custom_music_package_name_title">ຊື່ແພັກເກດຂອງແອັບເພງ</string>
+  <string name="morphe_custom_music_package_name_summary">ຊື່ແພັກເກດຂອງແອັບເພງທີ່ທ່ານຕິດຕັ້ງໄວ້</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">ໜ້າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_change_start_page_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_change_start_page_entry_all_subscriptions">ການຕິດຕາມທັງໝົດ</string>
+  <string name="morphe_change_start_page_entry_browse">ຊອກຫາຊ່ອງ</string>
+  <string name="morphe_change_start_page_entry_courses">ຫຼັກສູດ / ການຮຽນຮູ້</string>
+  <string name="morphe_change_start_page_entry_explore">ສຳຫຼວດ</string>
+  <string name="morphe_change_start_page_entry_fashion">ແຟຊັນ &amp; ຄວາມງາມ</string>
+  <string name="morphe_change_start_page_entry_gaming">ເກມ</string>
+  <string name="morphe_change_start_page_entry_history">ປະຫວັດ</string>
+  <string name="morphe_change_start_page_entry_library">ຄັງຂໍ້ມູນ</string>
+  <string name="morphe_change_start_page_entry_liked_videos">ວິດີໂອທີ່ມັກ</string>
+  <string name="morphe_change_start_page_entry_live">ໄລຟ໌</string>
+  <string name="morphe_change_start_page_entry_movies">ຮູບເງົາ</string>
+  <string name="morphe_change_start_page_entry_music">ເພງ</string>
+  <string name="morphe_change_start_page_entry_news">ຂ່າວ</string>
+  <string name="morphe_change_start_page_entry_notifications">ການແຈ້ງເຕືອນ</string>
+  <string name="morphe_change_start_page_entry_playlists">ລາຍການຫຼິ້ນ</string>
+  <string name="morphe_change_start_page_entry_search">ຄົ້ນຫາ</string>
+  <string name="morphe_change_start_page_entry_shopping">ຊື້ເຄື່ອງ</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
+  <string name="morphe_change_start_page_entry_sports">ກິລາ</string>
+  <string name="morphe_change_start_page_entry_subscriptions">ການຕິດຕາມ</string>
+  <string name="morphe_change_start_page_entry_trending">ທີ່ກຳລັງຮິດ</string>
+  <string name="morphe_change_start_page_entry_virtual_reality">ຄວາມເປັນຈິງສະເໝືອນ</string>
+  <string name="morphe_change_start_page_entry_watch_later">ເບິ່ງພາຍຫຼັງ</string>
+  <string name="morphe_change_start_page_entry_your_clips">ຄລິບຂອງທ່ານ</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">ປິດການດຳເນີນການຕໍ່ໃນຕອນເລີ່ມຕົ້ນ</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
+  <string name="morphe_shorts_player_type_title">ເປີດ Shorts ດ້ວຍ</string>
+  <string name="morphe_shorts_player_type_shorts">ເຄື່ອງຫຼິ້ນ Shorts</string>
+  <string name="morphe_shorts_player_type_regular_player">ເຄື່ອງຫຼິ້ນປົກກະຕິ</string>
+  <string name="morphe_shorts_player_type_regular_player_fullscreen">ເຄື່ອງຫຼິ້ນປົກກະຕິແບບເຕັມຈໍ</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
+  <string name="morphe_shorts_autoplay_title">ຫຼິ້ນ Shorts ອັດຕະໂນມັດ</string>
+  <string name="morphe_shorts_autoplay_summary">ເລື່ອນໄປຫາ Short ຖັດໄປໂດຍອັດຕະໂນມັດ ແທນທີ່ຈະຫຼິ້ນອັນປັດຈຸບັນຊ້ຳ</string>
+  <string name="morphe_shorts_autoplay_background_title">ຫຼິ້ນອັດຕະໂນມັດໃນພື້ນຫຼັງ</string>
+  <string name="morphe_shorts_autoplay_background_summary">ເລື່ອນໄປຫາ Short ຖັດໄປໂດຍອັດຕະໂນມັດ ໃນລະຫວ່າງການຫຼິ້ນໃນພື້ນຫຼັງ</string>
+  <string name="morphe_skip_live_shorts_title">ຂ້າມ Shorts ສົດ</string>
+  <string name="morphe_skip_live_shorts_summary">ຂ້າມການຖ່າຍທອດສົດທີ່ປາກົດໃນຟີດ Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">ການຫຼິ້ນໃນຟີດ</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">ເປີດຕະຫຼອດ</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">ສະເພາະ Wi-Fi ເທົ່ານັ້ນ</string>
+  <string name="morphe_playback_in_feeds_entry_off">ປິດ</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">ຄືນຄ່າຫົວຂໍ້ດັ້ງເດີມ</string>
+  <string name="morphe_restore_original_titles_summary">ສະແດງຫົວຂໍ້ວິດີໂອ, ຄຳອະທິບາຍວິດີໂອ ແລະ ຄຳອະທິບາຍຊ່ອງຕົ້ນສະບັບ ແທນທີ່ການແປອັດຕະໂນມັດ</string>
+  <string name="morphe_restore_original_titles_loading">ກຳລັງໂຫຼດຫົວຂໍ້…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">ປິດການຣີເຟຣຊຟີດອັດຕະໂນມັດ</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">ປ້ອງກັນບໍ່ໃຫ້ຟີດຣີເຟຣຊອັດຕະໂນມັດຫຼັງຈາກທີ່ມັນເກົ່າໄປ</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
+  <string name="morphe_feed_card_layout_title">ຮູບແບບບັດຟີດ</string>
+  <string name="morphe_feed_card_layout_entry_1">ແບບຄລາສສິກ</string>
+  <string name="morphe_feed_card_layout_entry_2">ບັດ</string>
+  <string name="morphe_feed_card_layout_entry_3">ບັດທີ່ມີປຸ່ມຖືກໃຈ, ຄອມເມັ້ນ ແລະ ບັນທຶກ</string>
+  <string name="morphe_feed_card_layout_comments">ຄຳຄິດເຫັນ</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">ປິດການຫຼິ້ນຕໍ່ຂອງ miniplayer</string>
+  <string name="morphe_miniplayer_disable_resuming_summary">ປິດການໃຊ້ງານເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍ \'ເບິ່ງຕໍ່\', ເຊິ່ງເປັນຄຸນສົມບັດຂອງ YouTube Premium ທີ່ປາກົດຂຶ້ນເມື່ອເປີດແອັບ</string>
+  <string name="morphe_miniplayer_screen_title">ເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍ</string>
+  <string name="morphe_miniplayer_screen_summary">ປັບແຕ່ງຮູບລັກສະນະ ແລະ ພຶດຕິກຳຂອງເຄື່ອງຫຼິ້ນວິດີໂອຂະໜາດນ້ອຍ</string>
+  <string name="morphe_miniplayer_type_title">ປະເພດເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍ</string>
+  <string name="morphe_miniplayer_hide_title_title">ເຊື່ອງຫົວຂໍ້ ແລະ ຊ່ອງ</string>
+  <string name="morphe_miniplayer_type_entry_0">ປິດການໃຊ້ງານ</string>
+  <string name="morphe_miniplayer_type_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_miniplayer_type_entry_2">ແບບລຽບງ່າຍ</string>
+  <string name="morphe_miniplayer_type_entry_3">ແບບມິນິມໍ 2</string>
+  <string name="morphe_miniplayer_type_entry_4">ແທັບເລັດ</string>
+  <string name="morphe_miniplayer_type_entry_5">ແບບທັນສະໄໝ 1</string>
+  <string name="morphe_miniplayer_type_entry_6">ແບບທັນສະໄໝ 2</string>
+  <string name="morphe_miniplayer_type_entry_7">ແບບທັນສະໄໝ 3</string>
+  <string name="morphe_miniplayer_type_entry_8">ແບບທັນສະໄໝ 4</string>
+  <string name="morphe_miniplayer_disable_rounded_corners_title">ປິດການນຳໃຊ້ມຸມມົນ</string>
+  <string name="morphe_miniplayer_disable_drag_and_drop_title">ປິດການນຳໃຊ້ການລາກ ແລະ ວາງ</string>
+  <string name="morphe_miniplayer_disable_drag_and_drop_summary">ປ້ອງກັນການລາກເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍໄປຍັງມຸມຕ່າງໆຂອງໜ້າຈໍ</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_title">ປິດທ່າທາງການລາກໃນແນວນອນ</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_summary">ປ້ອງກັນການປິດເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍ ໂດຍການປັດມັນຕາມລວງນອນອອກຈາກໜ້າຈໍ</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">ຢຸດການຫຼິ້ນດ້ວຍການລາກຕາມແນວນອນ</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">ການຫຼິ້ນຈະຢຸດຊົ່ວຄາວເມື່ອລາກເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍອອກຈາກໜ້າຈໍ</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">ຈົດຈຳຕຳແໜ່ງສະຖານະການລາກ</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">ການລາກເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍອອກຈາກໜ້າຈໍຈະຮັກສາສະຖານະ UI ຂອງມັນໄວ້</string>
+  <string name="morphe_miniplayer_hide_overlay_buttons_title">ເຊື່ອງປຸ່ມທີ່ຊ້ອນທັບ</string>
+  <string name="morphe_miniplayer_width_dip_title">ຂະໜາດເລີ່ມຕົ້ນ</string>
+  <string name="morphe_miniplayer_width_dip_summary">ກຳນົດຂະໜາດເລີ່ມຕົ້ນໃນໜ້າຈໍ, ເປັນພິກເຊລ</string>
+  <string name="morphe_miniplayer_width_dip_invalid_toast">ຂະໜາດພິກເຊລຕ້ອງຢູ່ລະຫວ່າງ %1$s ແລະ %2$s</string>
+  <string name="morphe_miniplayer_opacity_title">ຄວາມໂປ່ງໃສຂອງການຊ້ອນທັບ</string>
+  <string name="morphe_miniplayer_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <string name="morphe_back_button_always_exits_feed_title">ປຸ່ມກັບຄືນຈະອອກຈາກຟີດ</string>
+  <string name="morphe_back_button_always_exits_feed_summary">ການກົດປຸ່ມກັບຄືນຈະອອກຈາກແອັບສະເໝີ ແທນທີ່ຈະເລື່ອນໄປຫາສ່ວນເທິງຂອງຟີດ</string>
   <!-- layout.animations.forceAnimationsPatch -->
+  <string name="morphe_force_animations_title">ບັງຄັບໃຊ້ແອນິເມຊັນ</string>
+  <string name="morphe_force_animations_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_force_animations_entry_always_on">ເປີດຕະຫຼອດ</string>
+  <string name="morphe_force_animations_entry_always_off">ປິດຕະຫຼອດ</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">ເຊື່ອງແຖບສະຖານະ</string>
+  <string name="morphe_hide_status_bar_summary">ເຊື່ອງແຖບສະຖານະຂອງລະບົບ. ປັດລົງຈາກຂອບເທິງເພື່ອສະແດງມັນຊົ່ວຄາວ</string>
+  <string name="morphe_fix_status_bar_layout_title">ແກ້ໄຂແຖບສະຖານະທີ່ປິດບັງແຖບດ້ານເທິງ</string>
+  <string name="morphe_fix_status_bar_layout_summary">ຮັກສາຮູບແບບຂອງແຖບສະຖານະໃຫ້ຄົງທີ່ ເພື່ອບໍ່ໃຫ້ມັນປິດບັງແຖບດ້ານເທິງ ແລະ ບໍ່ໃຫ້ມີຊ່ອງວ່າງເປົ່າຢູ່ເໜືອເຄື່ອງຫຼິ້ນ. ປິດຟັງຊັນນີ້ ຫາກແອັບມີບັນຫາ ຫຼື ແຖບດ້ານເທິງສະແດງຜົນຜິດພາດ</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_6">ແສງສະຫວ່າງ</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">ໜ້າຈໍເລີ່ມຕົ້ນແບບ Glow ບໍ່ຮອງຮັບໂດຍອຸປະກອນນີ້</string>
+  <string name="morphe_theme_color_light_title">ພື້ນຫຼັງຂອງຮູບແບບສີອ່ອນ</string>
+  <string name="morphe_theme_color_light_entry_2">ສີຂາວ</string>
+  <string name="morphe_theme_color_light_entry_3">Material You (ສີຂາວ)</string>
+  <string name="morphe_theme_color_light_entry_9">ສີບົວອ່ອນ</string>
+  <string name="morphe_theme_color_light_entry_10">ສີຟ້າອ່ອນ</string>
+  <string name="morphe_theme_color_light_entry_11">ສີຂຽວອ່ອນ</string>
+  <string name="morphe_theme_color_light_entry_12">ສີເຫຼືອງອ່ອນ</string>
+  <string name="morphe_theme_color_light_entry_13">ສີສົ້ມອ່ອນ</string>
+  <string name="morphe_theme_color_light_entry_14">ສີແດງອ່ອນ</string>
+  <string name="morphe_theme_color_light_custom_title">ພື້ນຫຼັງສີອ່ອນແບບກຳນົດເອງ</string>
+  <string name="morphe_theme_color_light_custom_summary">ຕັ້ງຄ່າສີພື້ນຫຼັງຂອງຮູບແບບສີອ່ອນ</string>
+  <string name="morphe_theme_color_change_foreground_title">ປ່ຽນສີພື້ນໜ້າ</string>
+  <string name="morphe_theme_color_change_foreground_summary">ໃຊ້ສີຂອງຮູບແບບສຳລັບຂໍ້ຄວາມ ແລະ ໄອຄອນ</string>
+  <string name="morphe_gradient_loading_screen_title">ເປີດໃຊ້ໜ້າຈໍໂຫຼດແບບໄລ່ສີ</string>
+  <string name="morphe_gradient_loading_screen_summary">ສະແດງພື້ນຫຼັງແບບໄລ່ສີໃນໜ້າຈໍກຳລັງໂຫລດ ແທນທີ່ຈະເປັນສີດຽວ</string>
+  <string name="morphe_seekbar_custom_color_title">ເປີດໃຊ້ສີແຖບເລື່ອນທີ່ກຳນົດເອງ</string>
+  <string name="morphe_seekbar_custom_color_primary_title">ສີຂອງແຖບເລື່ອນ</string>
+  <string name="morphe_seekbar_custom_color_primary_summary">ກຳນົດສີຫຼັກຂອງແຖບຄວາມຄືບໜ້າຂອງວິດີໂອ</string>
+  <string name="morphe_seekbar_custom_color_accent_title">ສີເນັ້ນຂອງແຖບເລື່ອນ</string>
+  <string name="morphe_seekbar_custom_color_accent_summary">ຕັ້ງຄ່າສີສຳຮອງຂອງແຖບຄວາມຄືບໜ້າຂອງວິດີໂອ</string>
+  <string name="morphe_seekbar_custom_color_invalid">ຄ່າສີຂອງ seekbar ບໍ່ຖືກຕ້ອງ</string>
   <!-- layout.branding.customBrandingPatch -->
+  <string name="morphe_custom_branding_icon_entry_8">Analog ຕົ້ນສະບັບ</string>
+  <string name="morphe_custom_branding_icon_entry_9">ເຄັກດັ້ງເດີມ</string>
+  <string name="morphe_custom_branding_icon_entry_10">ໂລຫະດັ້ງເດີມ</string>
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">ໂລໂກ້ສ່ວນຫົວ</string>
+  <string name="morphe_header_logo_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_header_logo_entry_2">ປົກກະຕິ</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
+  <string name="morphe_header_logo_entry_5">ກຳນົດເອງ</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
+  <string name="morphe_bypass_image_region_restrictions_title">ຂ້າມການຈຳກັດພື້ນທີ່ຂອງຮູບພາບ</string>
+  <string name="morphe_bypass_image_region_restrictions_summary">ປ່ຽນເສັ້ນທາງການຮ້ອງຂໍຮູບຕົວຢ່າງໄປຍັງເຊີບເວີທາງເລືອກ ເພື່ອແກ້ໄຂບັນຫາຮູບພາບທີ່ຫາຍໄປໃນປະເທດທີ່ຖືກຈຳກັດ</string>
   <!-- layout.dearrow.deArrowPatch -->
   <!-- "DeArrow" must be kept untranslated. -->
+  <string name="morphe_dearrow_titles_title">ຫົວຂໍ້ DeArrow</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_home_title">ແທັບໜ້າຫຼັກ</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_subscription_title">ແທັບການຕິດຕາມ</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_library_title">ແທັບທ່ານ</string>
+  <string name="morphe_dearrow_titles_player_title">ລາຍການວິດີໂອ &amp; ຄຳແນະນຳຂອງເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_dearrow_titles_search_title">ຜົນການຄົ້ນຫາ</string>
+  <string name="morphe_dearrow_titles_icon_title">ສະແດງໄອຄອນ DeArrow</string>
+  <string name="morphe_dearrow_titles_icon_summary">ສະແດງໄອຄອນ DeArrow ໃນຫົວຂໍ້ວິດີໂອທີ່ມາຈາກ crowdsourced</string>
+  <string name="morphe_dearrow_casual_mode_title">ໂໝດແບບບໍ່ເປັນທາງການ</string>
+  <string name="morphe_dearrow_casual_mode_summary">ສະແດງຫົວຂໍ້ດັ້ງເດີມ ແທນຫົວຂໍ້ຂອງ DeArrow ຖ້າຜູ້ໃຊ້ DeArrow ໂຫວດວ່າພວກເຂົາມັກຫົວຂໍ້ດັ້ງເດີມ</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">ຈຳນວນໂຫວດແບບບໍ່ເປັນທາງການຂັ້ນຕ່ຳ ເພື່ອສະແດງຫົວຂໍ້ດັ້ງເດີມ</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">ຈຳນວນໂຫວດແບບບໍ່ເປັນທາງການໃນໝວດໝູ່ດຽວ, ເຊັ່ນ ຕະລົກ ຫຼື ສ້າງສັນ, ທີ່ຈຳເປັນເພື່ອສະແດງຫົວຂໍ້ດັ້ງເດີມ</string>
+  <string name="morphe_dearrow_thumbnails_title">ຮູບຕົວຢ່າງ DeArrow</string>
+  <string name="morphe_dearrow_thumbnail_options_entry_1">ຮູບຕົວຢ່າງຕົ້ນສະບັບ</string>
+  <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; ຮູບຕົວຢ່າງຕົ້ນສະບັບ</string>
+  <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; ຮູບທີ່ຈັບພາບໄວ້</string>
+  <string name="morphe_dearrow_thumbnail_options_entry_4">ຮູບພາບນິ່ງ</string>
+  <string name="morphe_dearrow_about_summary">"DeArrow ປ່ຽນຫົວຂໍ້ ແລະ ພາບຕົວຢ່າງທີ່ເປັນ clickbait ດ້ວຍສິ່ງທີ່ໄດ້ມາຈາກ crowdsourced ເຊິ່ງມີຄວາມຖືກຕ້ອງກວ່າ ແລະ ບໍ່ເກີນຈິງ. ຫົວຂໍ້ຖືກຂຽນ ແລະ ໂຫວດໂດຍຊຸມຊົນ, ແລະ ພາບຕົວຢ່າງແມ່ນເຟຣມທີ່ຖ່າຍມາຈາກວິດີໂອ
+
+ວິດີໂອຖືກຮ້ອງຂໍໂດຍໃຊ້ prefix ສັ້ນໆຂອງ hashed video ID, ດັ່ງນັ້ນເຊີບເວີຈຶ່ງບໍ່ສາມາດບອກໄດ້ວ່າທ່ານກຳລັງເບິ່ງວິດີໂອໃດຢ່າງຊັດເຈນ. ຖ້າວິດີໂອບໍ່ມີພາບຕົວຢ່າງຂອງ DeArrow, ມັນຈະສະແດງອັນເດີມ ຫຼື ພາບນິ່ງທີ່ຈັບໄດ້"</string>
+  <string name="morphe_dearrow_connection_toast_title">ສະແດງການແຈ້ງເຕືອນຂໍ້ຜິດພາດໃນການເຊື່ອມຕໍ່</string>
+  <string name="morphe_dearrow_connection_toast_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອເຊີບເວີ DeArrow ບໍ່ສາມາດນຳໃຊ້ໄດ້</string>
+  <string name="morphe_dearrow_api_url_title">ຈຸດປາຍທາງ API</string>
+  <string name="morphe_dearrow_api_url_summary">URL ຂອງຈຸດປາຍທາງแคຊຮູບຕົວຢ່າງ DeArrow</string>
+  <string name="morphe_dearrow_thumbnail_stills_about_title">ການຈັບພາບວິດີໂອແບບນິ່ງ</string>
+  <string name="morphe_dearrow_thumbnail_stills_about_summary">ຍັງຄົງມີການຈັບພາບນ靜ຈາກຕອນເລີ່ມຕົ້ນ / ກາງ / ຕອນທ້າຍ ຂອງແຕ່ລະວິດີໂອ. ຮູບພາບເຫຼົ່ານີ້ຖືກສ້າງຂຶ້ນໃນ YouTube ແລະ ບໍ່ມີການໃຊ້ API ພາຍນອກ</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_title">ດຶງເຟຣມວິດີໂອຈາກ</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_entry_1">ຈຸດເລີ່ມຕົ້ນ</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_entry_2">ກາງ</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_entry_3">ທ້າຍ</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_dearrow_error">DeArrow ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (ລະຫັດສະຖານະ: %s)</string>
+  <string name="morphe_dearrow_error_generic">DeArrow ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">ກູ້ຄືນຮູບແບບປຸ່ມເຄື່ອງຫຼິ້ນແບບເກົ່າ</string>
+  <string name="morphe_restore_old_player_buttons_summary">ປ່ຽນປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນວິດີໂອແບບໜາ ໃຫ້ກັບໄປເປັນຮູບແບບທີ່ບາງກວ່າໃນສະບັບກ່ອນ</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
+  <string name="morphe_spoof_device_dimensions_title">ປອມແປງຂະໜາດຂອງອຸປະກອນ</string>
+  <string name="morphe_spoof_device_dimensions_summary">ການເປີດໃຊ້ງານສິ່ງນີ້ສາມາດປົດລັອກຄຸນນະພາບວິດີໂອທີ່ສູງຂຶ້ນ</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">ການເປີດໃຊ້ສິ່ງນີ້ອາດເຮັດໃຫ້ການຫຼິ້ນວິດີໂອກະຕຸກ, ແບັດເຕີຣີໝົດໄວຂຶ້ນ, ແລະ ມີຜົນກະທົບດ້ານລົບອື່ນໆທີ່ບໍ່ທັນຮູ້</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
+  <string name="morphe_disable_haptic_feedback_title">ການຕອບສະໜອງແບບສຳຜັດ</string>
+  <string name="morphe_disable_haptic_feedback_summary">ເລືອກການໂຕ້ຕອບທີ່ຈະເຮັດໃຫ້ອຸປະກອນສັ່ນ</string>
+  <string name="morphe_disable_haptic_feedback_chapters_title">ປິດການຕອບສະໜອງແບບສຳຜັດຂອງບົດ</string>
+  <string name="morphe_disable_haptic_feedback_precise_seeking_title">ປິດການຕອບສະໜອງແບບສຳຜັດຂອງການຄົ້ນຫາແບບລະອຽດ</string>
+  <string name="morphe_disable_haptic_feedback_seek_undo_title">ປິດການຕອບສະໜອງແບບສຳຜັດຂອງການຍົກເລີກການຄົ້ນຫາ</string>
+  <string name="morphe_disable_haptic_feedback_tap_and_hold_title">ປິດໃຊ້ການສັ່ນສະເທືອນເມື່ອແຕະຄ້າງ</string>
+  <string name="morphe_disable_haptic_feedback_zoom_title">ປິດການຕອບສະໜອງແບບສຳຜັດຂອງການຊູມ</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
+  <string name="microg_offline_account_login_error">ຖ້າທ່ານຫາກໍ່ປ່ຽນລາຍລະອຽດການເຂົ້າສູ່ລະບົບຂອງບັນຊີ, ໃຫ້ຖອນການຕິດຕັ້ງ ແລະ ຕິດຕັ້ງ MicroG ໃໝ່</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">ຂ້າມການປ່ຽນເສັ້ນທາງຂອງລິ້ງ</string>
+  <string name="morphe_bypass_link_redirects_summary">ເປີດລິ້ງຕົ້ນສະບັບໂດຍກົງ, ໂດຍຂ້າມລິ້ງຕິດຕາມ (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
+  <string name="morphe_external_browser_title">ເປີດລິ້ງໃນບຣາວເຊີ</string>
+  <string name="morphe_external_browser_summary">ເປີດລິ້ງໃນບຣາວເຊີພາຍນອກ ແທນທີ່ບຣາວເຊີພາຍໃນແອັບ</string>
   <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">ຂະໜາດບັບເຟີການຫຼິ້ນ</string>
+  <string name="morphe_playback_buffer_size_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_playback_buffer_size_entry_low">ຕ່ຳ</string>
+  <string name="morphe_playback_buffer_size_entry_medium">ປານກາງ</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">ສູງສຸດ</string>
   <!-- video.delay.videoDelayPatch -->
+  <string name="morphe_video_delay_title">ການໜ່ວງວິດີໂອ</string>
+  <string name="morphe_video_delay_summary">ໜ່ວງວິດີໂອເພື່ອໃຫ້ສອດຄ່ອງກັບສຽງທີ່ຊ້າ, ເຊັ່ນ: ຫູຟັງ Bluetooth (0-5000 ms)</string>
+  <string name="morphe_video_delay_bluetooth_only_title">ໜ່ວງສະເພາະເວລາໃຊ້ສຽງ Bluetooth ເທົ່ານັ້ນ</string>
+  <string name="morphe_video_delay_bluetooth_only_summary">ໜ່ວງວິດີໂອສະເພາະໃນຂະນະທີ່ເຊື່ອມຕໍ່ສຽງ Bluetooth ເທົ່ານັ້ນ, ເພື່ອໃຫ້ລຳໂພງໂທລະສັບຍັງຄົງສອດຄ່ອງກັນ</string>
+  <string name="morphe_video_delay_button_overlay_title">ສະແດງປຸ່ມໜ່ວງວິດີໂອ</string>
+  <string name="morphe_video_delay_button_overlay_summary">ແຕະ and ຄ້າງໄວ້ເພື່ອຣີເຊັດການໜ່ວງເປັນ 0 ms</string>
+  <string name="morphe_video_delay_button_flyout_title">ສະແດງເມນູໜ່ວງວິດີໂອ</string>
+  <string name="morphe_video_delay_dialog_input_hint">ການໜ່ວງເປັນມິນລິວິນາທີ</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">ອັດຕະໂນມັດ</string>
+  <string name="morphe_remember_video_quality_last_selected_title">ຈື່ຄຸນນະພາບວິດີໂອ</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">ນຳໃຊ້ການເລືອກຄຸນນະພາບດ້ວຍຕົນເອງຂອງທ່ານກັບທຸກວິດີໂອໃນອະນາຄົດ</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">ການແຈ້ງເຕືອນການປ່ຽນແປງຄຸນນະພາບ</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອມີການບັນທຶກຄຸນນະພາບເລີ່ມຕົ້ນໃໝ່</string>
+  <string name="morphe_video_quality_default_wifi_title">ຄຸນນະພາບວິດີໂອເລີ່ມຕົ້ນໃນເຄືອຂ່າຍ Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">ຄຸນນະພາບວິດີໂອເລີ່ມຕົ້ນໃນເຄືອຂ່າຍມືຖື</string>
+  <string name="morphe_remember_shorts_quality_last_selected_title">ຈື່ຄຸນນະພາບ Shorts</string>
+  <string name="morphe_remember_shorts_quality_last_selected_summary">ນຳໃຊ້ການເລືອກຄຸນນະພາບດ້ວຍຕົນເອງຂອງທ່ານກັບທຸກໆ Shorts ໃນອະນາຄົດ</string>
+  <string name="morphe_shorts_quality_default_wifi_title">ຄຸນນະພາບ Shorts ເລີ່ມຕົ້ນໃນເຄືອຂ່າຍ Wi-Fi</string>
+  <string name="morphe_shorts_quality_default_mobile_title">ຄຸນນະພາບ Shorts ເລີ່ມຕົ້ນໃນເຄືອຂ່າຍມືຖື</string>
+  <string name="morphe_remember_video_quality_toast_mobile">ປ່ຽນຄຸນນະພາບມືຖືເລີ່ມຕົ້ນເປັນ: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">ປ່ຽນຄຸນນະພາບ Wi-Fi ເລີ່ມຕົ້ນເປັນ: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">ປ່ຽນຄຸນນະພາບ Shorts ມືຖືເປັນ: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">ປ່ຽນຄຸນນະພາບ Wi-Fi ຂອງ Shorts ເປັນ: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
+  <string name="morphe_playback_speed_dialog_button_title">ສະແດງປຸ່ມຄວາມໄວໃນການຫຼິ້ນ</string>
+  <string name="morphe_playback_speed_dialog_button_summary">ແຕະ and ຄ້າງໄວ້ເພື່ອຣີເຊັດຄວາມໄວເປັນຄ່າເລີ່ມຕົ້ນ</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
+  <string name="morphe_video_quality_dialog_button_title">ສະແດງປຸ່ມຄຸນນະພາບ</string>
+  <string name="morphe_video_quality_dialog_button_summary">ແຕະ and ຄ້າງໄວ້ເພື່ອຣີເຊັດຄຸນນະພາບເປັນຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">ສະແດງຄວາມລະອຽດໃນປຸ່ມຄຸນນະພາບ</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">ສະແດງຄວາມລະອຽດ, ເຊັ່ນ 1080, ແທນທີ່ຈະເປັນປ້າຍກຳກັບ ເຊັ່ນ FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
+  <string name="morphe_custom_speed_menu_title">ເມນູຄວາມໄວໃນການຫຼິ້ນແບບກຳນົດເອງ</string>
+  <string name="morphe_restore_old_speed_menu_title">ຄືນຄ່າເມນູຄວາມໄວໃນການຫຼິ້ນແບບເກົ່າ</string>
+  <string name="morphe_custom_playback_speeds_title">ຄວາມໄວໃນການຫຼິ້ນແບບກຳນົດເອງ</string>
+  <string name="morphe_custom_playback_speeds_summary">ປ້ອນຕົວເລືອກຄວາມໄວໃນການຫຼິ້ນທີ່ທ່ານຕ້ອງການ</string>
+  <string name="morphe_custom_playback_speeds_invalid">ຄວາມໄວໃນການຫຼິ້ນແບບກຳນົດເອງຕ້ອງໜ້ອຍກວ່າ %s</string>
+  <string name="morphe_custom_playback_speeds_parse_exception">ຄວາມໄວໃນການຫຼິ້ນແບບກຳນົດເອງບໍ່ຖືກຕ້ອງ</string>
+  <string name="morphe_custom_playback_speeds_auto">ອັດຕະໂນມັດ</string>
+  <string name="morphe_speed_tap_and_hold_title">ແຕະ and ຄ້າງໄວ້ເພື່ອປັບຄວາມໄວໃນການຫຼິ້ນ</string>
+  <string name="morphe_speed_tap_and_hold_summary">ກຳນົດຕົວຄູນຄວາມໄວເມື່ອກົດ ແລະ ຄ້າງໄວ້ໃນໜ້າຈໍ, ກຳນົດເປັນ 0 ເພື່ອປິດການນຳໃຊ້</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
+  <string name="morphe_remember_playback_speed_last_selected_title">ຈື່ຄວາມໄວໃນການຫຼິ້ນ</string>
+  <string name="morphe_remember_playback_speed_last_selected_summary">ນຳໃຊ້ການເລືອກຄວາມໄວດ້ວຍຕົນເອງຂອງທ່ານກັບທຸກວິດີໂອໃນອະນາຄົດ</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_title">ການແຈ້ງເຕືອນການປ່ຽນຄວາມໄວ</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອມີການບັນທຶກຄວາມໄວໃນການຫຼິ້ນເລີ່ມຕົ້ນໃໝ່</string>
+  <string name="morphe_playback_speed_default_title">ຄວາມໄວໃນການຫຼິ້ນຄືນເລີ່ມຕົ້ນ</string>
+  <string name="morphe_shorts_playback_speed_default_title">ຄວາມໄວໃນການຫຼິ້ນເລີ່ມຕົ້ນໃນ Shorts</string>
+  <string name="morphe_shorts_remember_playback_speed_title">ຈື່ຄວາມໄວໃນການຫຼິ້ນໃນ Shorts</string>
+  <string name="morphe_shorts_remember_playback_speed_summary">ນຳໃຊ້ການເລືອກຄວາມໄວ Shorts ດ້ວຍຕົນເອງຂອງທ່ານໃຫ້ກັບ Shorts ທັງໝົດໃນອະນາຄົດ. ຖ້າປິດ, ຄວາມໄວຈະກັບຄືນເປັນຄ່າເລີ່ມຕົ້ນຫຼັງຈາກປິດເຄື່ອງຫຼິ້ນ Shorts</string>
+  <string name="morphe_shorts_playback_speed_flyout_button_title">ສະແດງຄວາມໄວໃນການຫຼິ້ນໃນເມນູ Shorts</string>
+  <string name="morphe_shorts_playback_speed_flyout_button_summary">ເພີ່ມລາຍການຄວາມໄວໃນການຫຼິ້ນລົງໃນເມນູເຄື່ອງຫຼິ້ນ Shorts</string>
+  <string name="morphe_shorts_playback_speed_flyout_title">ຄວາມໄວໃນການຫຼິ້ນ · %s</string>
+  <string name="morphe_remember_playback_speed_toast">ປ່ຽນຄວາມໄວໃນການຫຼິ້ນເລີ່ມຕົ້ນເປັນ: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">ໃຊ້ຄວາມໄວປົກກະຕິສຳລັບເພງ</string>
+  <string name="morphe_disable_playback_speed_music_summary">ຫຼິ້ນວິດີໂອເພງດ້ວຍຄວາມໄວ 1.0x ສະເໝີ</string>
+  <string name="morphe_playback_speed_channel_whitelist_title">ລາຍຊື່ຂາວຄວາມໄວຂອງຊ່ອງ</string>
+  <string name="morphe_playback_speed_channel_whitelist_summary">ວິດີໂອຈາກຊ່ອງທີ່ຢູ່ໃນລາຍຊື່ຂາວຈະຫຼິ້ນດ້ວຍຄວາມໄວ 1.0x ສະເໝີ</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_add">ເພີ່ມຊ່ອງເຂົ້າໃນລາຍຊື່ຂາວຄວາມໄວ</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_remove">ລຶບຊ່ອງອອກຈາກລາຍຊື່ຂາວຄວາມໄວ</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">ເປີດໃຊ້ການຄວບຄຸມລະດັບສຽງ</string>
+  <string name="morphe_playback_audio_pitch_default_title">ລະດັບສຽງຫຼິ້ນຕາມຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">ປ່ຽນລະດັບສຽງເລີ່ມຕົ້ນເປັນ: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">ການຍືດເວລາຂອງສຽງ</string>
+  <string name="morphe_playback_audio_time_stretching_summary">ອະນຸຍາດໃຫ້ຕັ້ງຄ່າຄວາມໄວ ແລະ ລະດັບສຽງແຍກກັນ, ເຊິ່ງອາດເຮັດໃຫ້ເກີດສຽງລົບກວນ</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">ຈື່ຕຳແໜ່ງການຫຼິ້ນການຖ່າຍທອດສົດ</string>
+  <string name="morphe_remember_live_stream_position_summary">ສຳລັບການຖ່າຍທອດສົດທີ່ກຳລັງດຳເນີນຢູ່, ຈະຈື່ ແລະ ເລີ່ມຫຼິ້ນຕໍ່ຈາກຕຳແໜ່ງທີ່ທ່ານຢຸດໄວ້ ແທນທີ່ຈະໄປທີ່ຕຳແໜ່ງສົດໃນປັດຈຸບັນ</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">ຟີເຈີນີ້ບໍ່ເຮັດວຽກກັບການຖ່າຍທອດສົດ 24/7 ແລະ ການຖ່າຍທອດສົດອື່ນໆທີ່ \'ເປີດໄວ້ຕະຫຼອດ\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
+  <string name="morphe_disable_hdr_video_title">ປິດການໃຊ້ງານວິດີໂອ HDR</string>
+  <string name="morphe_force_hdr_video_title">ບັງຄັບວິດີໂອ HDR</string>
+  <string name="morphe_force_hdr_video_summary">ບັງຄັບໃຫ້ແອັບຮັບຮູ້ວ່າອຸປະກອນນີ້ຮອງຮັບ HDR</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"ໃຊ້ສິ່ງນີ້ຖ້າການຖອດລະຫັດ HDR ໃຊ້ງານໄດ້ ແຕ່ YouTube ບໍ່ສະເໜີ HDR, ເຊັ່ນ ອຸປະກອນ HyperOS ບາງລຸ້ນທີ່ເຊື່ອງ HLG.
+
+ຂໍ້ຈຳກັດ:
+• ສີອາດຈະຜິດພ້ຽນ ຖ້າໜ້າຈໍບໍ່ສາມາດສະແດງ HDR ໄດ້ແທ້
+• ການຫຼິ້ນອາດຈະລົ້ມເຫຼວ ຖ້າຕົວຖອດລະຫັດບໍ່ສາມາດຈັດການ HDR ໄດ້
+• HDR ຍັງຂຶ້ນກັບການປອມແປງ stream ວິດີໂອຂອງ client"</string>
+  <string name="morphe_video_codec_title">ໂຄເດັກວິດີໂອ</string>
+  <string name="morphe_video_codec_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_video_codec_avc_not_available">ເພື່ອບັງຄັບໃຊ້ AVC, ໃຫ້ປ່ຽນ \'ປອມແປງສະຕຣີມວິດີໂອ\' ເປັນ \'Android Studio\', \'Android VR\' ຫຼື \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• ສາມາດປັບປຸງອາຍຸການໃຊ້ງານແບັດເຕີຣີ ແລະ ແກ້ໄຂການຕິດຂັດຂອງການຫຼິ້ນ
+• ໃຊ້ຂໍ້ມູນອິນເຕີເນັດຫຼາຍກວ່າ AV1
+
+AVC (H.264)
+• ຕ້ອງໃຊ້ໄຄລຽນ ປອມແປງສະຕຣີມວິດີໂອ 'Android Studio', 'Android VR', ຫຼື 'visionOS'
+• ສາມາດປັບປຸງອາຍຸການໃຊ້ງານແບັດເຕີຣີໄດ້ຫຼາຍຂຶ້ນຕື່ມອີກ
+• ສາມາດກູ້ຄືນຄວາມລະອຽດຂອງວິດີໂອທີ່ຫາຍໄປໃນອຸປະກອນລຸ້ນເກົ່າ
+• ຄວາມລະອຽດສູງສຸດແມ່ນ 1080p
+• ວິດີໂອ HDR ອາດຈະບໍ່ໃຊ້ AVC
+• ອຸປະກອນບາງລຸ້ນບໍ່ສາມາດບັງຄັບໃຊ້ AVC ໄດ້"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
+  <string name="morphe_advanced_video_quality_menu_title">ເປີດເມນູຄຸນນະພາບຂັ້ນສູງ</string>
+  <string name="morphe_advanced_video_quality_menu_summary">ຂ້າມເມນູເລືອກຄຸນນະພາບ ແລະ ເປີດເມນູຄຸນນະພາບຂັ້ນສູງໂດຍກົງ</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">ເຊື່ອງຕົວເລືອກຄຸນນະພາບ Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_video_quality_prioritize_title">ໃຫ້ບຸລິມະສິດດ້ານຄຸນນະພາບຂອງວິດີໂອ</string>
+  <string name="morphe_video_quality_prioritize_summary">ໃຫ້ບຸລິມະສິດຄຸນນະພາບວິດີໂອທີ່ສູງທີ່ສຸດທີ່ມີຢູ່ ເໜືອກວ່າປະສິດທິພາບຂອງ codec</string>
+  <string name="morphe_video_quality_prioritize_dialog">ຖ້າປິດການຕັ້ງຄ່ານີ້, ວິດີໂອເກົ່າອາດຈະບໍ່ສະແດງຕົວເລືອກຄຸນນະພາບຂອງວິດີໂອ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">ອະນຸຍາດ \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">ອະນຸຍາດການຖອດລະຫັດ AV1 ດ້ວຍຊອບແວ ເມື່ອໃຊ້ຄລາຍເອນ \'Android VR\' / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_user_dialog_message">"ການເປີດໃຊ້ການຕັ້ງຄ່ານີ້ອາດຈະໃຊ້ການຖອດລະຫັດ AV1 ດ້ວຍຊອບແວ.
+
+ການຫຼິ້ນວິດີໂອດ້ວຍ AV1 ອາດຈະກະຕຸກ ຫຼື ມີການຕົກຂອງເຟຣມ"</string>
+  <string name="morphe_spoof_video_streams_about_title">ຜົນກະທົບທາງລົບຂອງການປອມແປງ</string>
+  <string name="morphe_spoof_video_streams_about_failure">• ການຫຼິ້ນອາດຈະລົ້ມເຫຼວໃນນາທີທີ 1</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• ບໍ່ມີເມນູ \'ແທຣັກສຽງ\'</string>
+  <string name="morphe_spoof_video_streams_about_no_av1">• ບໍ່ມີຕົວຖອດລະຫັດວິດີໂອ AV1</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• ໂໝດ VR immersive 360° ບໍ່ສາມາດນຳໃຊ້ໄດ້</string>
+  <string name="morphe_spoof_video_streams_about_no_stable_volume">• ບໍ່ມີລະດັບສຽງທີ່ຄົງທີ່</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• ການຫຼິ້ນອາດຈະສິ້ນສຸດລົງກ່ອນ 1 ວິນາທີ</string>
+  <string name="morphe_spoof_video_streams_about_js">• ຖ້າການຖອດລະຫັດລົ້ມເຫຼວ, ການຫຼິ້ນອາດຈະລົ້ມເຫຼວ</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
+  <string name="morphe_spoof_video_streams_about_no_force_original_audio">• ບໍ່ມີການບັງຄັບໃຊ້ສຽງດັ້ງເດີມ</string>
+  <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• ຈໍາເປັນຕ້ອງໄດ້ລົງຊື່ເຂົ້າໃຊ້ Android VR</string>
   <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• ຄຸນນະພາບອາດຈະຖືກຈຳກັດຢູ່ທີ່ 720p</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">ຮຸ່ນ JavaScript ຂອງເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">ສະແດງການປອມແປງໃນ \'ສະຖິຕິສຳລັບນັກຮຽນຮູ້\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">ຄືນຄ່າແຖບການຈັດການວິດີໂອແບບເກົ່າ</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"ແກ້ໄຂປຸ່ມການຈັດການວິດີໂອທີ່ບໍ່ສາມາດເຊື່ອງໄດ້
+
+ຂໍ້ຈຳກັດ: ກັບໄປໃຊ້ຮູບແບບເກົ່າຂອງການວາງຊ້ອນ 'ວິດີໂອເພີ່ມເຕີມ'"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">ຮູບແບບໄອຄອນຂອງເຄື່ອງຫຼິ້ນ</string>
+  <string name="morphe_player_icon_style_entry_auto">ອັດຕະໂນມັດ</string>
+  <string name="morphe_player_icon_style_entry_default">ຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_player_icon_style_entry_regular">ບາງ</string>
+  <string name="morphe_player_icon_style_entry_bold">ເຂັ້ມ</string>
+  <string name="morphe_player_icon_style_entry_custom">ກຳນົດເອງ</string>
+  <string name="morphe_shorts_icon_style_title">ຮູບແບບໄອຄອນ Shorts</string>
   <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">ເຄື່ອງຕິດຕາມຊີຣີ</string>
+  <string name="morphe_series_tracker_screen_summary">ຕິດຕາມລາຍການຫຼິ້ນເປັນຊີຣີ ແລະ ບັນທຶກຈຸດທີ່ທ່ານເບິ່ງຄ້າງໄວ້</string>
+  <string name="morphe_series_tracker_title">ເປີດໃຊ້ການຕິດຕາມຊີຣີ</string>
+  <string name="morphe_series_tracker_summary">ເພີ່ມໜ້າຊີຣີໃນປະຫວັດ ແລະ ຕົວເລືອກຕິດຕາມຊີຣີໃຫ້ກັບລາຍການຫຼິ້ນ</string>
+  <string name="morphe_series_tracker_show_navigation_button_title">ສະແດງຊຸດລາຍການໃນແຖບນຳທາງ</string>
+  <string name="morphe_series_tracker_show_button_title">ສະແດງປຸ່ມເຄື່ອງຕິດຕາມຊີຣີ</string>
+  <string name="morphe_series_tracker_show_button_summary">ເພີ່ມປຸ່ມໃນເຄື່ອງຫຼິ້ນເພື່ອຕິດຕາມ ຫຼື ເປີດຊີຣີຂອງວິດີໂອປັດຈຸບັນ</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">ບັນທຶກຄວາມຄືບໜ້າຂອງຊີຣີທີ່ຕິດຕາມ</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">ບັນທຶກການຫຼິ້ນໃນໂທລະສັບເຄື່ອງນີ້ສຳລັບຊີຣີ ແລະ ບຸກມາກທີ່ບັນທຶກໄວ້</string>
+  <string name="morphe_series_tracker_ui_cancel">ຍົກເລີກ</string>
+  <string name="morphe_series_tracker_ui_save">ບັນທຶກ</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">ບັນທຶກບຸກມາກ</string>
+  <string name="morphe_series_tracker_ui_series_name">ຊື່ຊີຣີ</string>
+  <string name="morphe_series_tracker_ui_series_options">ຕົວເລືອກຊີຣີ</string>
+  <string name="morphe_series_tracker_ui_library_options">ຕົວເລືອກຫ້ອງສະໝຸດ</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">ຣີເຟຣຊຕອນ</string>
+  <string name="morphe_series_tracker_ui_rename">ປ່ຽນຊື່</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">ເປີດເພລລິສໃນ YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">ລຶບອອກຈາກຫ້ອງສະໝຸດ</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">ລິ້ງ ຫຼື ID ຂອງເພລລິສ</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">ລຶບຄວາມຄືບໜ້າທ້ອງຖິ່ນທັງໝົດ</string>
+  <string name="morphe_series_tracker_ui_clear_history">ລຶບປະຫວັດ</string>
+  <string name="morphe_series_tracker_clear_progress_title">ລຶບຄວາມຄືບໜ້າທ້ອງຖິ່ນທັງໝົດບໍ?</string>
+  <string name="morphe_series_tracker_clear_progress_message">ສິ່ງນີ້ຈະລຶບຕຳແໜ່ງ, ການປັບແກ້ການເບິ່ງ ແລະ ການເລືອກຫຼິ້ນຕໍ່ສຳລັບທຸກວິດີໂອ. ຊີຣີທີ່ບັນທຶກໄວ້ ແລະ ແຄັດຕາລັອກຂອງພວກມັນຈະຍັງຄົງຢູ່. ການຫຼິ້ນຄັ້ງໃໝ່ຈະຖືກບັນທຶກຖ້າຫາກການບັນທຶກຖືກເປີດໃຊ້</string>
+  <string name="morphe_series_tracker_ui_mark_watched">ໝາຍວ່າເບິ່ງແລ້ວ</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">ໝາຍວ່າບໍ່ທັນໄດ້ເບິ່ງ</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">ໃຊ້ສະຖານະອັດຕະໂນມັດ</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">ເລີ່ມໃໝ່ຈາກ 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">ຫຼິ້ນອີກຄັ້ງຈາກ 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">ບັນທຶກສະຖານະແລ້ວ</string>
+  <string name="morphe_series_tracker_ui_retry_saving">ລອງບັນທຶກໃໝ່</string>
+  <string name="morphe_series_tracker_ui_previous_100">100 ກ່ອນໜ້ານີ້</string>
+  <string name="morphe_series_tracker_ui_next_100">100 ອັນຖັດໄປ</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">ເປີດວິດີໂອທີ່ບັນທຶກໄວ້</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">ລ້າງຄວາມຄືບໜ້າທ້ອງຖິ່ນແລ້ວ</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">ເປີດປະຫວັດຈາກ ທ່ານ ເພື່ອເບິ່ງຊີຣີຂອງທ່ານ</string>
+  <string name="morphe_series_tracker_ui_watch_history">ປະຫວັດການເບິ່ງ</string>
+  <string name="morphe_series_tracker_ui_series">ຊີຣີ</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">ກຳລັງໂຫລດຊີຣີທີ່ບັນທຶກໄວ້…</string>
+  <string name="morphe_series_tracker_empty_library">ຕິດຕາມລາຍການຫຼິ້ນເພື່ອຕິດຕາມຕອນຕ່າງໆຂອງມັນ</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">ບຸກມາກເພລລິສ</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">ກຳລັງອັບເດດຕອນຕ່າງໆ…</string>
+  <string name="morphe_series_tracker_ui_all_series">ທຸກຊີຣີ</string>
+  <string name="morphe_series_tracker_watched">ເບິ່ງແລ້ວ</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">ກຳລັງໂຫຼດຕອນ...</string>
+  <string name="morphe_series_tracker_ui_more_options">ຕົວເລືອກເພີ່ມເຕີມ</string>
+  <string name="morphe_series_tracker_record_consent">"ບັນທຶກຄວາມຄືບໜ້າສະເພາະຊີຣີທີ່ທ່ານບັນທຶກໄວ້ ແລະ ວິດີໂອທີ່ໝາຍບຸກມາກໄວ້ເທົ່ານັ້ນ.
+
+ຫໍສະໝຸດນີ້ຖືກເກັບໄວ້ໃນອຸປະກອນນີ້ ແລະ ແບ່ງປັນໃນບັນຊີ YouTube ຕ່າງໆ. ການຄວບຄຸມການຢຸດຊົ່ວຄາວ ແລະ ການລຶກປະຫວັດຂອງ YouTube ຈະບໍ່ປ່ຽນແປງມັນ. ໃຊ້ ຊີຣີ → ອື່ນໆ → ລຶບຄວາມຄືບໜ້າທ້ອງຖິ່ນ ເພື່ອລຶບມັນ.
+
+ການບັນທຶກອັດຕະໂນມັດຈະຢຸດລົງໃນໂໝດບໍ່ລະບຸຕົວຕົນ, ເມື່ອບໍ່ສາມາດລະບຸຕົວຕົນຂອງບັນຊີໄດ້, ຫຼື ເມື່ອທ່ານປ່ຽນໄປໃຊ້ບັນຊີອື່ນ. ເປີດໃຊ້ການຕິດຕາມອີກຄັ້ງເພື່ອໃຊ້ງານກັບບັນຊີນັ້ນ"</string>
+  <string name="morphe_series_tracker_identity_unavailable">ບໍ່ສາມາດເປີດໃຊ້ການຕິດຕາມໃນໂໝດບໍ່ລະບຸຕົວຕົນ ຫຼື ກ່ອນທີ່ YouTube ຈະໂຫຼດສະຖານະບັນຊີປັດຈຸບັນ. ກະລຸນາກັບໄປທີ່ໜ້າຫຼັກ ແລະ ລອງໃໝ່ອີກຄັ້ງ. ບໍ່ຈຳເປັນຕ້ອງລົງຊື່ເຂົ້າໃຊ້</string>
+  <string name="morphe_series_tracker_enable">ເປີດໃຊ້ການຕິດຕາມທ້ອງຖິ່ນ</string>
+  <string name="morphe_series_tracker_tracking_paused">ການບັນທຶກຄວາມຄືບໜ້າຖືກປິດຢູ່</string>
+  <string name="morphe_series_tracker_resume_at">ດຳເນີນການຕໍ່ທີ່ %1$s</string>
+  <string name="morphe_series_tracker_watched_count">ເບິ່ງໄປແລ້ວ %1$s / %2$s ຕອນ</string>
+  <string name="morphe_series_tracker_episode_position">ຕອນທີ %1$s · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">ຕອນທີ %1$s-%2$s ຈາກ %3$s</string>
+  <string name="morphe_series_tracker_catalog_unavailable">ຣີເຟຣຊເພື່ອລອງໂຫຼດຕອນຕ່າງໆ. ພລິສເຕລໄຊສ່ວນຕົວຕ້ອງມີການເຂົ້າເຖິງບັນຊີ; ແຕ່ບຸກມາກຂອງພວກມັນຍັງຄົງເປີດໄດ້ໃນ YouTube</string>
+  <string name="morphe_series_tracker_open_failed">YouTube ບໍ່ສາມາດເປີດຕອນນີ້ໄດ້</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube ບໍ່ສາມາດເປີດລາຍການຫຼິ້ນນີ້ໄດ້</string>
+  <string name="morphe_series_tracker_plan_changed">ເລືອກຕອນ</string>
+  <string name="morphe_series_tracker_plan_caught_up">ເປັນປັດຈຸບັນແລ້ວ</string>
+  <string name="morphe_series_tracker_plan_none">ບໍ່ມີຕອນທີ່ສາມາດຫຼິ້ນໄດ້</string>
+  <string name="morphe_series_tracker_saved_position">ວິດີໂອທີ່ບັນທຶກໄວ້ · %1$s</string>
+  <string name="morphe_series_tracker_follow">ຕິດຕາມຊີຣີ</string>
+  <string name="morphe_series_tracker_view_series">ເບິ່ງຊີຣີ</string>
+  <string name="morphe_series_tracker_continue">ສືບຕໍ່</string>
+  <string name="morphe_series_tracker_start_here">ເລີ່ມຈາກບ່ອນນີ້</string>
+  <string name="morphe_series_tracker_start_saved">ບັນທຶກຈຸດເລີ່ມຕົ້ນແລ້ວ</string>
+  <string name="morphe_series_tracker_watched_to_here">ເບິ່ງມາຮອດບ່ອນນີ້</string>
+  <string name="morphe_series_tracker_marked">ໝາຍວ່າເບິ່ງຕອນເຫຼົ່ານີ້ແລ້ວ</string>
+  <string name="morphe_series_tracker_undo">ຍົກເລີກ</string>
+  <string name="morphe_series_tracker_enable_short">ເປີດໃຊ້</string>
+  <string name="morphe_series_tracker_new_episode">1 ຕອນໃໝ່</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s ຕອນໃໝ່</string>
+  <string name="morphe_series_tracker_record_short">ບັນທຶກຄວາມຄືບໜ້າໃນອຸປະກອນນີ້</string>
+  <string name="morphe_series_tracker_follow_consent">"ຊີຣີ ແລະ ຄວາມຄືບໜ້າຂອງທ່ານຈະຖືກເກັບໄວ້ໃນອຸປະກອນນີ້, ເຊິ່ງຖືກແບ່ງປັນລະຫວ່າງບັນຊີ YouTube. ການຄວບຄຸມປະຫວັດຂອງ YouTube ຈະບໍ່ປ່ຽນແປງສິ່ງເຫຼົ່ານີ້. ລຶບຄວາມຄືບໜ້າອອກຈາກເມນູຊີຣີ.
+
+ການບັນທຶກອັດຕະໂນມັດແມ່ນທາງເລືອກ. ມັນຈະຢຸດເຮັດວຽກໃນໂໝດບໍ່ລະບຸຕົວຕົນ ຫຼື ເມື່ອມີການປ່ຽນບັນຊີ"</string>
+  <string name="morphe_series_tracker_follow_unavailable">ບໍ່ສາມາດໂຫຼດຕອນໄດ້. ທ່ານສາມາດບັນທຶກລາຍການຫຼິ້ນເປັນບຸກມາກໄດ້</string>
+  <string name="morphe_series_tracker_error_pending_full">ມີການປ່ຽນແປງທີ່ຍັງບໍ່ທັນໄດ້ບັນທຶກຫຼາຍເກີນໄປ. ກະລຸນາລອງບັນທຶກຄືນໃໝ່ກ່ອນ</string>
+  <string name="morphe_series_tracker_error_storage_busy">ກຳລັງດຳເນີນການບັນທຶກ. ກະລຸນາລອງໃໝ່</string>
+  <string name="morphe_series_tracker_error_catalog_busy">ກຳລັງດຳເນີນການໂຫຼດຕອນ. ກະລຸນາລອງໃໝ່</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">ບໍ່ສາມາດນຳໃຊ້ບ່ອນເກັບຂໍ້ມູນໄດ້. ຂໍ້ມູນທີ່ບັນທຶກໄວ້ຂອງທ່ານຖືກເກັບຮັກສາໄວ້</string>
+  <string name="morphe_series_tracker_error_storage_save">ບໍ່ສາມາດບັນທຶກການປ່ຽນແປງໄດ້. ກະລຸນາລອງບັນທຶກຄືນໃໝ່ກ່ອນປິດ YouTube</string>
+  <string name="morphe_series_tracker_error_conflict">ຊີຣີນີ້ຖືກບັນທຶກໄວ້ແລ້ວ, ຫຼື ພລິສລິດຂອງມັນມີການປ່ຽນແປງ. ກະລຸນາເປີດມັນຄືນໃໝ່</string>
+  <string name="morphe_series_tracker_error_series_changed">ຊີຣີນີ້ມີການປ່ຽນແປງ ຫຼື ຖືກລຶບອອກ. ກະລຸນາເປີດຄັງເກັບຂໍ້ມູນຄືນໃໝ່</string>
+  <string name="morphe_series_tracker_error_playlist_changed">ພລິສລິດມີການປ່ຽນແປງ. ກະລຸນາເລືອກຕອນອີກຄັ້ງ</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">ຕອນນີ້ບໍ່ສາມາດນຳໃຊ້ໄດ້. ກະລຸນາເລືອກຕອນອື່ນ</string>
+  <string name="morphe_series_tracker_error_name_required">ກະລຸນາປ້ອນຊື່ຊີຣີ</string>
+  <string name="morphe_series_tracker_error_playlist_input">ກະລຸນາປ້ອນລິ້ງພລິສລິດ YouTube ຫຼື ID ຂອງພລິສລິດ</string>
+  <string name="morphe_series_tracker_error_retry_later">ກະລຸນາລໍຖ້າກ່ອນທີ່ຈະຣີເຟຣຊອີກຄັ້ງ</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">ບໍ່ສາມາດໂຫຼດຕອນໄດ້. ກະລຸນາລອງໃໝ່ໃນພາຍຫຼັງ</string>
+  <string name="morphe_series_tracker_error_operation">ບໍ່ສາມາດດຳເນີນການປ່ຽນແປງໄດ້ສຳເລັດ. ກະລຸນາລອງໃໝ່</string>
+  <string name="morphe_series_tracker_error_resume">ບໍ່ສາມາດຢືນຢັນການເບິ່ງຕໍ່ໄດ້. ກະລຸນາກວດສອບເຄື່ອງຫຼິ້ນ ແລະ ລອງໃໝ່</string>
+  <string name="morphe_series_tracker_followed">ກຳລັງຕິດຕາມຊີຣີ</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">ວິດີໂອນີ້ບໍ່ຢູ່ໃນລາຍການຫຼິ້ນນີ້</string>
+  <string name="morphe_series_tracker_finding_playlists">ກຳລັງຊອກຫາເພລລິສ...</string>
+  <string name="morphe_series_tracker_paste_playlist">ວາງລິ້ງເພລລິສ</string>
+  <string name="morphe_series_tracker_discovery_unavailable">ບໍ່ພົບເພລລິສ</string>
+  <string name="morphe_series_tracker_no_available_episodes">ບໍ່ມີຕອນທີ່ສາມາດຮັບຊົມໄດ້</string>
+  <string name="morphe_series_tracker_hide_watched">ເຊື່ອງຕອນທີ່ເບິ່ງແລ້ວ</string>
+  <string name="morphe_series_tracker_watch_previous">ໝາຍຕອນກ່ອນໜ້ານີ້ວ່າເບິ່ງແລ້ວ</string>
+  <string name="morphe_series_tracker_order_starts_with">ເລີ່ມຕົ້ນດ້ວຍ: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">ລຳດັບຕອນ</string>
+  <string name="morphe_series_tracker_playlist_order">ລຳດັບເພລລິສ</string>
+  <string name="morphe_series_tracker_reverse_order">ປີ້ນກັບລຳດັບເພລລິສ</string>
+  <string name="morphe_series_tracker_view_count">%1$s ຄັ້ງຂອງການຮັບຊົມ</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s ວິວ</string>
+  <string name="morphe_series_tracker_completion_title">ໝາຍຕອນທີ່ເບິ່ງແລ້ວ</string>
+  <string name="morphe_series_tracker_completion_summary">ເບິ່ງແລ້ວຢ່າງໜ້ອຍ %1$s%% ໂດຍມີເວລາເຫຼືອບໍ່ເກີນ 90 ວິນາທີ, ຫຼື ເຫຼືອເວລາ %2$s ວິນາທີ</string>
+  <string name="morphe_series_tracker_completion_explanation">ໝາຍຕອນວ່າເບິ່ງແລ້ວໂດຍອັດຕະໂນມັດຫຼັງຈາກຮອດເກນໃດໜຶ່ງ. ກົດເກນເປີເຊັນຍັງກຳນົດໃຫ້ເຫຼືອເວລາບໍ່ເກີນ 90 ວິນາທີ ເພື່ອບໍ່ໃຫ້ຂ້າມຕອນຈົບຂອງຕອນທີ່ຍາວ. ກົດເກນເວລາທີ່ເຫຼືອແມ່ນໃຊ້ກັບວິດີໂອທີ່ຍາວເກີນໜຶ່ງນາທີ; ຕັ້ງເປັນ 0 ເພື່ອປິດການໃຊ້ງານ. ການປ່ຽນແປງຈະມີຜົນຕໍ່ການອັບເດດຄວາມຄືບໜ້າໃນອະນາຄົດ. ທາງເລືອກເບິ່ງແລ້ວ/ຍັງບໍ່ທັນໄດ້ເບິ່ງ ທີ່ເລືອກດ້ວຍຕົນເອງຈະຖືກຮັກສາໄວ້</string>
+  <string name="morphe_series_tracker_completion_percent">ເປີເຊັນທີ່ເບິ່ງແລ້ວ (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">ວິນາທີທີ່ເຫຼືອ (0-300; 0 ແມ່ນປິດການໃຊ້ງານ)</string>
+  <string name="morphe_series_tracker_completion_range">ປ້ອນຄ່າຈາກ %1$s ຫາ %2$s</string>
+  <string name="morphe_series_tracker_youtube_progress_title">ໃຊ້ຄວາມຄືບໜ້າຂອງ YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">ຕິດຕາມຊີຣີທີ່ຕິດຕາມໄວ້ ຫຼັງຈາກເບິ່ງໃນອຸປະກອນອື່ນ</string>
+  <string name="morphe_series_tracker_sync_consent">ອ່ານສະຖານະການເບິ່ງ ແລະ ຕຳແໜ່ງການເບິ່ງຕໍ່ສຳລັບຊີຣີທີ່ທ່ານຕິດຕາມຈາກບັນຊີ YouTube ປັດຈຸບັນ. ພຽງແຕ່ຕອນທີ່ກົງກັນເທົ່ານັ້ນທີ່ຈະຖືກບັນທຶກໄວ້ໃນໂທລະສັບເຄື່ອງນີ້. ການກວດສອບຈະເຮັດວຽກໃນຂະນະທີ່ຄັງຊີຣີຖືກເປີດ ແລະ ກ່ອນການດຳເນີນການຕໍ່. ປະຫວັດ YouTube ຕ້ອງໄດ້ຖືກເປີດໃຊ້ງານໃນອຸປະກອນອື່ນຂອງທ່ານ</string>
+  <string name="morphe_series_tracker_sync_checking">ກຳລັງກວດສອບຄວາມຄືບໜ້າຂອງ YouTube…</string>
+  <string name="morphe_series_tracker_sync_failed">ບໍ່ສາມາດນຳໃຊ້ຄວາມຄືບໜ້າຂອງ YouTube ໄດ້. ພວມນຳໃຊ້ຄວາມຄືບໜ້າທີ່ບັນທຶກໄວ້</string>
+  <string name="morphe_series_tracker_sync_partial">ຄວາມຄືບໜ້າຂອງ YouTube ບາງສ່ວນບໍ່ສາມາດນຳໃຊ້ໄດ້. ຕຳແໜ່ງທີ່ບັນທຶກໄວ້ຈະຖືກເກັບຮັກສາໄວ້</string>
+  <string name="morphe_series_tracker_backup_title">ສຳຮອງ ແລະ ກູ້ຄືນ</string>
+  <string name="morphe_series_tracker_backup_summary">ບັນທຶກຄັງຊີຣີຂອງທ່ານລົງໃນໄຟລ໌ ຫຼື ກູ້ຄືນຂໍ້ມູນທີ່ສຳຮອງໄວ້</string>
+  <string name="morphe_series_tracker_backup_explanation">ບັນທຶກຊີຣີທີ່ຕິດຕາມ, ຕຳແໜ່ງຂອງຕອນ ແລະ ທາງເລືອກການເບິ່ງ. ການອະນຸຍາດບັນທຶກ ແລະ ຄວາມຄືບໜ້າຂອງ YouTube ບໍ່ໄດ້ລວມຢູ່ໃນນີ້</string>
+  <string name="morphe_series_tracker_backup_save">ບັນທຶກການສຳຮອງ</string>
+  <string name="morphe_series_tracker_backup_restore">ກູ້ຄືນການສຳຮອງ</string>
+  <string name="morphe_series_tracker_backup_preview">ເພີ່ມ %1$s ຊີຣີ. %2$s ຊີຣີທີ່ມີຢູ່ໃນຄັງຂອງທ່ານແລ້ວຈະຖືກເກັບຮັກສາໄວ້. ຄວາມຄືບໜ້າຂອງວິດີໂອທີ່ມີຢູ່ຈະຖືກເກັບຮັກສາໄວ້</string>
+  <string name="morphe_series_tracker_backup_saved">ບັນທຶກການສຳຮອງຊີຣີແລ້ວ</string>
+  <string name="morphe_series_tracker_backup_restored">ກູ້ຄືນ %1$s ຊີຣີແລ້ວ</string>
+  <string name="morphe_series_tracker_error_backup_invalid">ໄຟລ໌ນີ້ບໍ່ແມ່ນການສຳຮອງຂໍ້ມູນຊຸດທີ່ຮອງຮັບ, ຫຼື ມີຂະໜາດໃຫຍ່ເກີນໄປ. ຫ້ອງສະໝຸດຂອງທ່ານບໍ່ມີການປ່ຽນແປງ</string>
+  <string name="morphe_series_tracker_error_backup_write">ບໍ່ສາມາດບັນທຶກການສຳຮອງຂໍ້ມູນໄດ້. ກະລຸນາລອງໃຊ້ຕຳແໜ່ງອື່ນ</string>
+  <string name="morphe_series_tracker_removed">ລົບຊີຣີສ໌ອອກແລ້ວ</string>
+  <string name="morphe_series_tracker_recovery_duplicate">ຕອນນີ້ປາກົດຂຶ້ນຫຼາຍກວ່າໜຶ່ງຄັ້ງ. ເລືອກຕອນທີ່ທ່ານຕ້ອງການຈະສືບຕໍ່</string>
+  <string name="morphe_series_tracker_recovery_missing">ຕອນທີ່ທ່ານບັນທຶກໄວ້ບໍ່ມີຢູ່ໃນລາຍການຫຼິ້ນນີ້ອີກຕໍ່ໄປ. ຕຳແໜ່ງທີ່ບັນທຶກໄວ້ຂອງທ່ານຍັງຄົງຢູ່</string>
+  <string name="morphe_series_tracker_recovery_continue">ສືບຕໍ່ດ້ວຍຕອນ %1$s · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">ທ່ານຍັງສາມາດເລືອກຕອນໃດກໍໄດ້ລຸ່ມນີ້. ຕອນກ່ອນໜ້ານີ້ຈະບໍ່ມີການປ່ຽນແປງ</string>
+  <string name="morphe_series_tracker_playback_changed">ລາຍການຫຼິ້ນນີ້ໄດ້ປ່ຽນແປງ. ເປີດຊຸດເພື່ອເລືອກຈຸດທີ່ຈະສືບຕໍ່</string>
+  <string name="morphe_series_tracker_playback_boundary">ບໍ່ມີຕອນອື່ນອີກໃນທິດທາງນີ້</string>
+  <string name="morphe_series_tracker_continue_series">ສືບຕໍ່ %1$s</string>
+  <string name="morphe_series_tracker_search_series">ຄົ້ນຫາຊີຣີສ໌</string>
+  <string name="morphe_series_tracker_clear_search">ລ້າງການຄົ້ນຫາ</string>
+  <string name="morphe_series_tracker_no_search_results">ບໍ່ພົບຊີຣີສ໌</string>
+  <string name="morphe_series_tracker_untitled_episode">ຕອນທີ່ບໍ່ມີຊື່</string>
+  <string name="morphe_series_tracker_unavailable_episode">ຕອນທີ່ບໍ່ສາມາດນຳໃຊ້ໄດ້</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_screen_title">ຄຳຄິດເຫັນແບບ Niconico</string>
+  <string name="morphe_niconico_comments_screen_summary">ສະແດງແຊັດສົດ ແລະ ການຫຼິ້ນແຊັດຄືນໃໝ່ເປັນຄຳຄິດເຫັນທີ່ເລື່ອນຜ່ານວິດີໂອ</string>
+  <string name="morphe_niconico_comments_summary">ສະແດງປຸ່ມຊ້ອນທັບໃນເຄື່ອງຫຼິ້ນວິດີໂອ. ແຕະເພື່ອສະແດງ ຫຼື ຊ່ອນຄຳຄິດເຫັນ, ແຕະຄ້າງໄວ້ສຳລັບການຕັ້ງຄ່າແບບດ່ວນ</string>
+  <string name="morphe_niconico_comments_font_size_title">ຂະໜາດຕົວອັກສອນຂອງຄຳຄິດເຫັນ</string>
+  <string name="morphe_niconico_comments_font_size_summary">ຂະໜາດຕົວອັກສອນຂອງຄຳຄິດເຫັນ (12-40 sp)</string>
+  <string name="morphe_niconico_comments_opacity_title">ຄວາມໂປ່ງໃສຂອງຄຳຄິດເຫັນ</string>
+  <string name="morphe_niconico_comments_opacity_summary">ຄວາມໂປ່ງໃສຂອງຂໍ້ຄວາມຄຳຄິດເຫັນ ແລະ ພື້ນຫຼັງ</string>
+  <string name="morphe_niconico_comments_travel_duration_title">ໄລຍະເວລາໃນການເຄື່ອນທີ່</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">ຈຳນວນວິນາທີທີ່ຄຳຄິດເຫັນໃຊ້ໃນການເລື່ອນຜ່ານໜ້າຈໍ. ຄ່າທີ່ຕ່ຳກວ່າຈະເຄື່ອນທີ່ໄວຂຶ້ນ</string>
+  <string name="morphe_niconico_comments_max_length_title">ຄວາມຍາວສູງສຸດຂອງຄຳຄິດເຫັນ</string>
+  <string name="morphe_niconico_comments_max_length_summary">ເຊື່ອງຄຳຄິດເຫັນທີ່ມີຕົວອັກສອນຫຼາຍກວ່ານີ້. ແຕ່ລະ emoji ຖືກນັບເປັນໜຶ່ງຕົວອັກສອນ</string>
+  <string name="morphe_niconico_comments_max_length_no_limit">ບໍ່ມີຂີດຈຳກັດ</string>
 </resources>

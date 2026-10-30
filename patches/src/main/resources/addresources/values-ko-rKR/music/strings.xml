@@ -475,7 +475,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
 
 단계:
 1. music.apple.com에 회원 사용자로 로그인합니다
-2. 개발자 도구 → 응용 프로그램 → 쿠키 → music.apple.com을 엽니다
+2. 개발자 도구 → 애플리케이션 → 쿠키 → music.apple.com을 엽니다
 3. 'media-user-token' 값을 복사합니다"</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token이 저장됨</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token이 삭제됨</string>
@@ -485,7 +485,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
 
 단계:
 1. open.spotify.com에 로그인합니다
-2. 개발자 도구 → 응용 프로그램 → 쿠키 → open.spotify.com을 엽니다
+2. 개발자 도구 → 애플리케이션 → 쿠키 → open.spotify.com을 엽니다
 3. 'sp_dc' 값을 복사합니다"</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc가 저장됨</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc가 삭제됨</string>
@@ -496,7 +496,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
 
 단계:
 1. deezer.com에 로그인합니다
-2. 개발자 도구 → 응용 프로그램 → 쿠키 → deezer.com을 엽니다
+2. 개발자 도구 → 애플리케이션 → 쿠키 → deezer.com을 엽니다
 3. 'arl' 값을 복사합니다"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl 저장됨</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl 삭제됨</string>
@@ -513,7 +513,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
 
 단계:
 1. 브라우저에서 youtube.com을 열고 로그인합니다
-2. 개발자 도구(F12) → 응용 프로그램 → 쿠키 → youtube.com을 엽니다
+2. 개발자 도구 (F12) → 애플리케이션 → 쿠키 → youtube.com을 엽니다
 3. 전체 쿠키 문자열(세미콜론으로 구분된 키=값 쌍)을 복사합니다
 
 필수 쿠키: SID, HSID, SSID, SAPISID,
@@ -567,17 +567,17 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_mini_artist_max_label">최대 화면 표시 시간 (ms)</string>
   <string name="morphe_music_lyrics_mini_artist_timing_explanation">여러 줄로 구성된 애니메이션에만 적용됩니다. 각 프레임은 최소 표시 시간 동안 유지됩니다. 최대 표시 시간에 도달하면 가사가 바뀌지 않더라도 아티스트 표시 줄로 넘어갑니다</string>
   <string name="morphe_music_lyrics_mini_artist_timing_invalid">최소값은 0 이상이어야 합니다. 최대값은 0보다 커야 하며, 최소값 이상이어야 합니다</string>
-  <string name="morphe_music_lyrics_mini_line_limits_title">라인 길이 제한</string>
-  <string name="morphe_music_lyrics_mini_line_limits_summary">가사 및 아티스트 라인 제한, 전각 문자 가중치</string>
-  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"가사 라인 제한
-긴 가사를 균형 잡힌 두 부분으로 나눕니다. 0으로 설정하면 분할 기능이 비활성화됩니다."</string>
-  <string name="morphe_music_lyrics_mini_line_limits_artist">"아티스트 라인 제한
-입력된 트랙 형식을 순환 프레임으로 분할합니다. 0으로 설정하면 분할되지 않습니다."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">줄 길이 제한</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">가사 및 아티스트 줄 제한, 전각 문자 가중치</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"가사 줄 제한
+긴 가사를 균형 잡힌 두 부분으로 나눕니다. 0으로 설정하면 분할 기능이 비활성화됩니다"</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"아티스트 줄 제한
+입력된 트랙 형식을 순환 프레임으로 분할합니다. 0으로 설정하면 분할되지 않습니다"</string>
   <string name="morphe_music_lyrics_mini_line_limits_weight">"전각 문자 가중치
-두 제한 사항 모두에 적용됩니다. 1.75로 설정하면 전각 문자 4개가 7개로 계산됩니다."</string>
+두 가지 제한 모두에 적용됩니다. 가중치를 1.75로 설정하면 4개의 전각 문자가 7로 계산됩니다"</string>
   <string name="morphe_music_lyrics_mini_line_limits_invalid">0에서 10000 사이의 정수 제한 값과 0보다 큰 문자 가중치를 입력하세요</string>
-  <string name="morphe_music_lyrics_mini_instrumental_title">연주 간주</string>
-  <string name="morphe_music_lyrics_mini_instrumental_summary">연주 구간에서 미니 플레이어와 MediaSession에 표시됩니다. 각 줄은 애니메이션의 한 프레임입니다. {t}는 노래 제목, {a}는 아티스트, {lrc}는 마지막 가사 줄을 의미합니다</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">간주</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">긴주 구간에서 미니 플레이어와 MediaSession에 표시됩니다. 각 줄은 애니메이션의 한 프레임입니다. {t}는 노래 제목, {a}는 아티스트, {lrc}는 마지막 가사 줄을 의미합니다</string>
   <string name="morphe_music_lyrics_mini_next_offset_ms_title">미니 플레이어 및 MediaSession 타이밍 오프셋</string>
   <string name="morphe_music_lyrics_mini_next_offset_ms_summary">미니 플레이어와 MediaSession에서 다음 가사 줄이 표시되는 시점을 조정합니다. 예를 들어 잠금 화면에서 가사가 늦게 표시된다면 음수 값을 사용하세요</string>
   <string name="morphe_settings_music_lyrics_metadata_title">필터</string>
@@ -587,9 +587,9 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_text_filter_summary">원본 가사 텍스트에만 적용되는 정규식입니다. 번역이나 로마자 표기에는 적용되지 않습니다. 비워두면 비활성화됩니다</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">정보 줄 마커</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">가사가 잘못 필터링되어 하단으로 내려가는 경우 이 설정을 조정하거나 비워 두세요. 쉼표로 구분된 마커: 마커가 포함된 줄에 콜론(:)이 뒤따르면 해당 줄은 크레딧 정보로 간주되어 하단에 표시됩니다. 비워두면 비활성화됩니다</string>
-  <string name="morphe_music_lyrics_force_capitalize_title">첫 글자 대문자로 표시</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">첫 글자 대문자로 표시하기</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">각 가사 줄의 첫 글자를 대문자로 표시합니다</string>
-  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">끝 문장 부호 제거</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">끝 문장 부호 제거하기</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">가사 줄 끝에 있는 마침표, 쉼표, 콜론 및 세미콜론을 제거합니다. 물음표, 느낌표, 말줄임표, 따옴표 및 괄호는 유지됩니다</string>
   <string name="morphe_music_lyrics_text_size_title">텍스트 크기</string>
   <string name="morphe_music_lyrics_text_size_summary">가사 텍스트 크기</string>

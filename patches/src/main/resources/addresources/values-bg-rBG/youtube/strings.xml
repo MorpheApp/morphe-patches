@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">Скриване на анкетите</string>
   <string name="morphe_hide_surveys_summary">Скрива проучвания и подкани относно точността на препоръките за канала</string>
   <string name="morphe_hide_ticket_shelf_title">Скриване на рафта за билети</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Скриване на банера \"Недоступните видеоклипове са скрити\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Скрива банера \"Недоступните видеоклипове са скрити\" в плейлистовете</string>
   <string name="morphe_hide_upload_time_title">Скрийте информационни карти</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Ограничения:
@@ -1249,6 +1252,9 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">Поддържа последователен макет на статус бара, така че той да не покрива горните ленти и да не оставя празно пространство над плеъра. Изключете тази опция, ако приложението се счупи или горните ленти изглеждат неправилно</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Сяяне</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Екранът за зареждане с ефект на сияние не се поддържа от това устройство</string>
   <string name="morphe_theme_color_light_title">Фон на светлата тема</string>
   <string name="morphe_theme_color_light_entry_2">Бяло</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Бяло)‎</string>

@@ -129,15 +129,6 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
         return builder.toString();
     }
 
-    public boolean hasWords() {
-        return !words.isEmpty();
-    }
-
-    /** Whether Apple's group/other vocal agent is centered instead of placed on a duet side. */
-    public boolean isCentered() {
-        return isCenteredAgentId(agentId);
-    }
-
     private static boolean hasMultipleWords(String value) {
         boolean inWord = false;
         int wordCount = 0;
@@ -153,6 +144,15 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
             }
         }
         return false;
+    }
+
+    public boolean hasWords() {
+        return !words.isEmpty();
+    }
+
+    /** Whether Apple's group/other vocal agent is centered instead of placed on a duet side. */
+    public boolean isCentered() {
+        return isCenteredAgentId(agentId);
     }
 
     /**

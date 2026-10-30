@@ -209,9 +209,28 @@ public final class PostImageDownloadPatch {
     // region Elements
 
     private static boolean isPostText(String text) {
-        return text.length() >= MIN_TEXT_LENGTH
+        return (text.length() >= MIN_TEXT_LENGTH || isEmojiText(text))
                 && !text.contains(".eml")
                 && !text.startsWith("http");
+    }
+
+    /**
+     * @return If the text has only emojis or symbols, such as the text of a post that is a single emoji.
+     *         Short texts with letters or numbers, such as counts, are shown by many posts.
+     */
+    private static boolean isEmojiText(String text) {
+        boolean hasSymbol = false;
+        for (int i = 0, length = text.length(); i < length; ) {
+            final int codePoint = text.codePointAt(i);
+            if (Character.isLetterOrDigit(codePoint)) {
+                return false;
+            }
+            if (Character.getType(codePoint) == Character.OTHER_SYMBOL) {
+                hasSymbol = true;
+            }
+            i += Character.charCount(codePoint);
+        }
+        return hasSymbol;
     }
 
     private static String normalize(String text) {
@@ -287,12 +306,13 @@ public final class PostImageDownloadPatch {
             if (root == null) {
                 return bytes;
             }
-            List<ProtoNode> textNodes = ProtoNode.textNodes(root);
+            // Post texts with line breaks are not parsed as text fields.
+            List<String> texts = ProtoNode.texts(root);
 
             String identifier = null;
-            for (ProtoNode node : textNodes) {
-                if (node.getText().contains(".eml")) {
-                    identifier = node.getText();
+            for (String text : texts) {
+                if (text.contains(".eml")) {
+                    identifier = text;
                     break;
                 }
             }
@@ -302,16 +322,16 @@ public final class PostImageDownloadPatch {
             }
 
             if (!elementIdentifier.contains("shelf")) {
-                registerPost(textNodes, elementIdentifier, isImagePost(textNodes, elementIdentifier));
+                registerPost(texts, elementIdentifier, isImagePost(texts, elementIdentifier));
                 return bytes;
             }
 
             // A shelf of many posts. Each post starts with the avatar of its channel.
-            List<List<ProtoNode>> posts = new ArrayList<>();
-            List<ProtoNode> current = new ArrayList<>();
+            List<List<String>> posts = new ArrayList<>();
+            List<String> current = new ArrayList<>();
             boolean currentHasImage = false;
-            for (ProtoNode node : textNodes) {
-                final UrlKind kind = getUrlKind(node.getText());
+            for (String text : texts) {
+                final UrlKind kind = getUrlKind(text);
                 if (kind == UrlKind.AVATAR && currentHasImage) {
                     posts.add(current);
                     current = new ArrayList<>();
@@ -319,13 +339,13 @@ public final class PostImageDownloadPatch {
                 } else if (kind == UrlKind.IMAGE) {
                     currentHasImage = true;
                 }
-                current.add(node);
+                current.add(text);
             }
             if (currentHasImage) {
                 posts.add(current);
             }
             Logger.printDebug(() -> "Post shelf " + elementIdentifier + " with " + posts.size() + " posts");
-            for (List<ProtoNode> post : posts) {
+            for (List<String> post : posts) {
                 registerPost(post, elementIdentifier, isImagePost(post, null));
             }
         } catch (Exception ex) {
@@ -340,13 +360,12 @@ public final class PostImageDownloadPatch {
      *
      * @param identifier The identifier of the element of the post, or null for a post of a shelf.
      */
-    private static boolean isImagePost(List<ProtoNode> textNodes, @Nullable String identifier) {
+    private static boolean isImagePost(List<String> texts, @Nullable String identifier) {
         if (identifier != null && !identifier.startsWith("images_post")) {
             Logger.printDebug(() -> "Not an image post: " + identifier);
             return false;
         }
-        for (ProtoNode node : textNodes) {
-            String text = node.getText();
+        for (String text : texts) {
             if (text.contains(".eml") && (text.contains("options_post") || text.contains("poll_post")
                     || text.contains("videos_post") || text.contains("shared_post"))) {
                 Logger.printDebug(() -> "Not an image post: " + text);
@@ -365,11 +384,11 @@ public final class PostImageDownloadPatch {
      * a poll, are mapped too, so its card is not matched to another post that shares some
      * of its texts.
      */
-    private static void registerPost(List<ProtoNode> textNodes, String elementIdentifier,
+    private static void registerPost(List<String> texts, String elementIdentifier,
                                      boolean isImagePost) {
         String key = NOT_IMAGE_POST;
         if (isImagePost) {
-            Map<String, PostImage> images = findImages(textNodes);
+            Map<String, PostImage> images = findImages(texts);
             if (images.isEmpty()) {
                 return;
             }
@@ -382,8 +401,8 @@ public final class PostImageDownloadPatch {
         }
 
         synchronized (textPostKeys) {
-            for (ProtoNode node : textNodes) {
-                String text = normalize(node.getText());
+            for (String postText : texts) {
+                String text = normalize(postText);
                 if (!isPostText(text)) {
                     continue;
                 }
@@ -400,10 +419,10 @@ public final class PostImageDownloadPatch {
     /**
      * @return Base url -> image, in the order of the post.
      */
-    private static Map<String, PostImage> findImages(List<ProtoNode> textNodes) {
+    private static Map<String, PostImage> findImages(List<String> texts) {
         Map<String, PostImage> images = new LinkedHashMap<>();
-        for (ProtoNode node : textNodes) {
-            Matcher matcher = IMAGE_URL_PATTERN.matcher(node.getText());
+        for (String text : texts) {
+            Matcher matcher = IMAGE_URL_PATTERN.matcher(text);
             while (matcher.find()) {
                 String url = matcher.group();
                 if (url.startsWith("//")) {
@@ -970,10 +989,10 @@ public final class PostImageDownloadPatch {
 
     private static void download(@Nullable List<PostImage> images) {
         if (images == null || images.isEmpty()) {
-            Utils.showToastShort(str("morphe_post_image_download_not_found"));
+            Utils.showSnackbarShort(str("morphe_post_image_download_not_found"));
             return;
         }
-        Utils.showToastShort(images.size() == 1
+        Utils.showSnackbarShort(images.size() == 1
                 ? str("morphe_post_image_download_started_single")
                 : str("morphe_post_image_download_started", images.size()));
 
@@ -1012,7 +1031,7 @@ public final class PostImageDownloadPatch {
                 } else {
                     toast = str("morphe_post_image_download_saved", savedCount, folder);
                 }
-                Utils.showToastShort(toast);
+                Utils.showSnackbarShort(toast);
             });
         });
     }

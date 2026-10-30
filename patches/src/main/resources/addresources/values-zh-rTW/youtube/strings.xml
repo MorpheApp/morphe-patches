@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">隱藏問卷調查</string>
   <string name="morphe_hide_surveys_summary">隱藏關於資訊流推薦準確度的調查和提示</string>
   <string name="morphe_hide_ticket_shelf_title">隱藏票券架</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">隱藏「已隱藏無法播放的影片」橫幅</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">隱藏播放清單中的「已隱藏無法播放的影片」橫幅</string>
   <string name="morphe_hide_upload_time_title">隱藏「上載時間」</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"限制：
@@ -1249,6 +1252,7 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">保持狀態列的版面配置一致，使其不會遮蓋頂部工具列，且在播放器上方不會留有空白。如果應用程式發生當機或頂部工具列顯示異常，請停用此選項</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">發光</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">此裝置不支援發光啟動畫面</string>
   <string name="morphe_theme_color_light_title">淺色主題背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>
   <string name="morphe_theme_color_light_entry_3">動態顏色（白色）</string>

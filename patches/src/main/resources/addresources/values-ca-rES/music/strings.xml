@@ -17,73 +17,675 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.androidauto.androidAutoPatch -->
+  <string name="morphe_music_android_auto_last_played">Última reproducció</string>
+  <string name="morphe_music_android_auto_subscriptions">Subscripcions</string>
+  <string name="morphe_music_android_auto_videos">Vídeos</string>
+  <string name="morphe_music_android_auto_other_results">Altres resultats</string>
+  <string name="morphe_music_android_auto_uploaded_songs">Cançons pujades</string>
+  <string name="morphe_music_android_auto_uploaded_albums">Àlbums pujats</string>
+  <string name="morphe_music_android_auto_uploaded_artists">Artistes pujats</string>
   <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_update_host_controls">Actualitza el patch de Jam de l\'anfitrió per utilitzar la pausa i la reproducció</string>
+  <string name="morphe_music_jam_probe_title">Compartir la cua de Jam</string>
+  <string name="morphe_music_jam_probe_summary">Sigueu l\'anfitrió o uniteu-vos a un Jam proper i editeu la cua a través de Jam Layer</string>
+  <string name="morphe_music_jam_enabled_title">Habilitar el compartiment de la cua de Jam</string>
+  <string name="morphe_music_jam_enabled_summary">Habilita la integració de Jam després que YouTube Music es reiniciï</string>
+  <string name="morphe_music_jam_download_title">Descarrega Jam Layer per començar a funcionar</string>
+  <string name="morphe_music_jam_download_summary">Obre l\'última versió de Jam Layer al teu navegador</string>
+  <string name="morphe_music_jam_controls_title">Controls de Jam</string>
+  <string name="morphe_music_jam_controls_summary">Sigueu l\'anfitrió o uniteu-vos a un Jam proper i gestioneu la sessió</string>
+  <string name="morphe_music_jam_companion_package_title">Paquet de Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">Trieu l\'aplicació acompanyant instal·lada utilitzada per compartir la cua propera</string>
+  <string name="morphe_music_jam_package_message">Utilitza un paquet complementari instal·lat. El vincle requereix la teva aprovació i un token de capacitat local</string>
+  <string name="morphe_music_jam_wifi_title">Activar el Wi-Fi?</string>
+  <string name="morphe_music_jam_wifi_message">Activa el Wi-Fi i torna a intentar iniciar o unir-te al Jam</string>
+  <string name="morphe_music_jam_wifi_settings">Obrir la configuració del Wi-Fi</string>
   <string name="morphe_music_jam_cancel">Cancel·lar</string>
+  <string name="morphe_music_jam_use_package">Utilitzar paquet</string>
+  <string name="morphe_music_jam_invalid_package">Introduïu un nom de paquet d\'Android vàlid</string>
+  <string name="morphe_music_jam_package_saved">Paquet desat. Configura Jam Layer per connectar</string>
+  <string name="morphe_music_jam_disconnected">Jam desconnectat</string>
+  <string name="morphe_music_jam_enable_layer_first">Activeu primer Jam Layer</string>
+  <string name="morphe_music_jam_enable_patch_first">Activeu l\'establiment de la cua de Jam a la configuració i, després, reinicieu YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">Instal·la primer el paquet de Jam Layer seleccionat</string>
+  <string name="morphe_music_jam_join_hint">Introdueix el codi que apareix a l\'host. Wi-Fi Aware pot connectar dispositius propers encara que les seves LAN siguin diferents</string>
+  <string name="morphe_music_jam_join_with_code">Uneix-te amb un codi</string>
+  <string name="morphe_music_jam_join">Uneix-te</string>
+  <string name="morphe_music_jam_scan_qr">Escaneja el QR</string>
+  <string name="morphe_music_jam_invalid_invite">Introdueix el codi de vuit caràcters o enganxa una invitació</string>
+  <string name="morphe_music_jam_join_your_jam">Uneix-te al teu Jam</string>
+  <string name="morphe_music_jam_copy_code">Copia el codi</string>
+  <string name="morphe_music_jam_code_clip">Codi del Jam</string>
+  <string name="morphe_music_jam_show_qr">Mostra el QR</string>
+  <string name="morphe_music_jam_done">Fet</string>
+  <string name="morphe_music_jam_invite_title">Convida al teu Jam</string>
+  <string name="morphe_music_jam_invite_message">Escaneja per unir-te i editar aquesta cua. Finalitzar la Jam revoca la invitació</string>
+  <string name="morphe_music_jam_copy_link">Copiar enllaç</string>
+  <string name="morphe_music_jam_invitation_clip">Invitació a Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">La Jam s\'està reconnectant; torna-ho a intentar d\'aquí a poc</string>
+  <string name="morphe_music_jam_added_to_jam">Afegit a Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam no està disponible; la pista no s\'ha afegit</string>
+  <string name="morphe_music_jam_your_jam">El teu Jam</string>
+  <string name="morphe_music_jam_listening_together">Escoltant junts</string>
+  <string name="morphe_music_jam_joining_jam">Unint-se a Jam</string>
+  <string name="morphe_music_jam_listen_together">Escolta conjuntament</string>
+  <string name="morphe_music_jam_updating">Actualitzant Jam…</string>
+  <string name="morphe_music_jam_finding_host">Buscant el vostre host a Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">Esperant gent</string>
+  <string name="morphe_music_jam_one_connected">%s persona connectada</string>
+  <string name="morphe_music_jam_many_connected">%s persones connectades</string>
+  <string name="morphe_music_jam_code_expires">Introduïu aquest codi en un dispositiu proper. Wi-Fi Aware funciona a través de xarxes LAN separades quan és compatible. Caduca d\'aquí a %s minuts</string>
+  <string name="morphe_music_jam_seek_to">Desplaçar a %s?</string>
+  <string name="morphe_music_jam_edits_open">Edicions obertes</string>
+  <string name="morphe_music_jam_edits_locked">Edicions bloquejades</string>
+  <string name="morphe_music_jam_connected_aware">Connectat via Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Connectat via Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Connectat via Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">No suportat durant la Jam</string>
+  <string name="morphe_music_jam_cancelled">Unió cancel·lada</string>
+  <string name="morphe_music_jam_reconnecting_host">Reconnectant amb l\'anfitrió…</string>
+  <string name="morphe_music_jam_share_prompt">Compartiu una cua. Deixeu que tothom hi afegeixi cançons</string>
+  <string name="morphe_music_jam_invite_people">Convida gent</string>
+  <string name="morphe_music_jam_guest_edits">Els convidats poden editar la cua</string>
+  <string name="morphe_music_jam_end_jam">Finalitza la Jam</string>
+  <string name="morphe_music_jam_participant_help">L\'anfitrió reprodueix la música. Afegeix, mou o elimina cançons directament a la cua de YouTube Music</string>
+  <string name="morphe_music_jam_joining_help">Mantingueu els dos dispositius propers. Podeu cancel·lar mentre busquem l\'anfitrió</string>
+  <string name="morphe_music_jam_cancel_joining">Cancel·la la unió</string>
+  <string name="morphe_music_jam_leave_jam">Sortiu de la Jam</string>
+  <string name="morphe_music_jam_start_jam">Inicia una Jam</string>
+  <string name="morphe_music_jam_setup_layer">Configura la Capa de la Jam</string>
+  <string name="morphe_music_jam_manage">Gestiona</string>
+  <string name="morphe_music_jam_details">Detalls</string>
   <string name="morphe_music_jam_open">Obrir</string>
+  <string name="morphe_music_jam_loading_song_options">Carregant opcions de la cançó…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Les opcions de la cançó no estan disponibles; torna-ho a intentar</string>
+  <string name="morphe_music_jam_song_options_failed">No s\'han pogut obrir les opcions de la cançó</string>
+  <string name="morphe_music_jam_no_browser">No hi ha cap navegador disponible per descarregar Jam Layer</string>
+  <string name="morphe_music_jam_waiting_host_queue">Esperant la cua de l\'anfitrió</string>
+  <string name="morphe_music_jam_open_song_first">Obre primer una cançó a YouTube Music</string>
+  <string name="morphe_music_jam_play_on_host">Reprodueix a l\'anfitrió</string>
+  <string name="morphe_music_jam_quit_and_play">Surt de Jam i reprodueix localment</string>
+  <string name="morphe_music_jam_play_next">Reprodueix el següent a Jam</string>
+  <string name="morphe_music_jam_add_to_queue">Afegeix a la cua de Jam</string>
+  <string name="morphe_music_jam_play_track">Reprodueix aquesta pista de Jam</string>
+  <string name="morphe_music_jam_choose_playback">Tria on reproduir</string>
+  <string name="morphe_music_jam_move_host_here">Mou l\'anfitrió aquí</string>
+  <string name="morphe_music_jam_seek_not_ready">La cançó no s\'ha preparat per a la cerca</string>
+  <string name="morphe_music_jam_queue_changed_gesture">La cua ha canviat; intenta el gest nourament</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Logo del capçallet</string>
+  <string name="morphe_header_logo_entry_1">Per defecte</string>
+  <string name="morphe_header_logo_entry_3">Personalitzat</string>
   <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Reprodueix les pistes d\'àudio de l\'àlbum</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Reprodueix la versió només d\'àudio de l\'àlbum de les cançons en lloc d\'un vídeo musical. Requereix \'Simular fluxos de vídeo\'</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Habilita el commutador d\'àudio/vídeo</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Intenta canviar entre la versió de la pista d\'àudio i el vídeo musical oficial</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">Descarrega vídeos musicals, podcasts o cançons amb aplicacions de descàrrega de tercers</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_external_downloader_menu_title">Utilitza un descarregador extern per al menú de Descàrrega</string>
+  <string name="morphe_external_downloader_menu_summary">L\'opció de Descàrrega dels menus obre el teu descarregador extern en el seu lloc</string>
+  <string name="morphe_music_downloads_screen_title">Descàrregues</string>
+  <string name="morphe_music_downloads_empty">"No hi ha descàrregues
+Les pistes descarregades apareixen aquí"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_summary">%1$s pistes • %2$s MB</string>
+  <string name="morphe_music_downloads_search_hint">Cerca descàrregues</string>
+  <string name="morphe_music_downloads_sort">Ordena</string>
+  <string name="morphe_music_downloads_sort_artist">Ordena per artista</string>
+  <string name="morphe_music_downloads_sort_title">Ordena per títol</string>
+  <string name="morphe_music_downloads_sort_size">Ordena per mida</string>
+  <string name="morphe_music_downloads_delete_all">Suprimeix totes les descàrregues</string>
+  <string name="morphe_music_downloads_delete_all_title">Suprimeix totes les descàrregues?</string>
+  <string name="morphe_music_downloads_delete_all_message">Totes les pistes descarregades s\'eliminaran d\'aquest dispositiu</string>
+  <string name="morphe_music_downloads_all_deleted">Descàrregues eliminades</string>
+  <string name="morphe_music_downloads_nothing_found">No s\'ha trobat res</string>
+  <string name="morphe_music_downloads_actions_for">Accions per a %s</string>
+  <string name="morphe_music_downloads_play">Reprodueix</string>
+  <string name="morphe_music_downloads_play_pause">Reprodueix o pausa</string>
+  <string name="morphe_music_downloads_previous">Anterior</string>
+  <string name="morphe_music_downloads_next">Següent</string>
+  <string name="morphe_music_downloads_pause">Pausa</string>
   <string name="morphe_music_downloads_close">Tanca</string>
   <string name="morphe_music_downloads_delete">Eliminar</string>
+  <string name="morphe_music_downloads_delete_track">Eliminar descàrrega</string>
+  <string name="morphe_music_downloads_delete_track_title">Eliminar descàrrega?</string>
+  <string name="morphe_music_downloads_delete_track_message">%s s\'eliminarà d\'aquest dispositiu</string>
+  <string name="morphe_music_downloads_track_deleted">Descàrrega eliminada</string>
+  <string name="morphe_music_downloads_track_delete_failed">No s\'ha pogut eliminar la descàrrega</string>
+  <string name="morphe_music_downloads_play_failed">No s\'ha pogut reproduir la descàrrega</string>
+  <string name="morphe_music_downloads_notification_channel">Descàrregues d\'àudio</string>
+  <string name="morphe_music_downloads_playback_channel">Reproducció sense connexió</string>
+  <string name="morphe_music_downloads_unknown_track">No s\'ha pogut identificar la pista per descarregar</string>
+  <string name="morphe_music_downloads_already_running">La descarrega ja està en curs</string>
+  <string name="morphe_music_downloads_already_saved">Ja descarregat</string>
+  <string name="morphe_music_downloads_started">Descarrega iniciada</string>
+  <string name="morphe_music_downloads_starting">Iniciant la descarrega…</string>
+  <string name="morphe_music_downloads_progress">Descarregant %s%%</string>
+  <string name="morphe_music_downloads_complete">Descarrega completada</string>
+  <string name="morphe_music_downloads_failed">La descarrega ha fallat</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">Sobre Morphe</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Publicitat</string>
   <string name="morphe_settings_music_screen_2_feed_title">Canal</string>
   <string name="morphe_settings_music_screen_3_general_title">General</string>
   <string name="morphe_settings_music_screen_4_player_title">Reproductor</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Letres</string>
   <string name="morphe_settings_music_screen_9_misc_title">Miscel·lània</string>
+  <string name="morphe_music_app_language_title">Idioma de YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">Idioma del sistema</string>
+  <string name="morphe_music_app_language_summary_unsupported">Requireix Android 13 o posterior</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Ocultar l\'etiqueta \"Obtingiu Music Premium\"</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">Ocultar promocions de Music Premium</string>
+  <string name="morphe_music_hide_video_ads_title">Ocultar anuncis de vídeo</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Ocultar el selector d\'Àudio / Vídeo</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Ocultar el botó de descàrrega</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Oculta el botó de descàrrega a l\'emissió del podcast</string>
+  <string name="morphe_music_hide_explore_shelf_title">Ocultar l\'estant d\'exploració</string>
+  <string name="morphe_music_hide_filter_bar_title">Ocultar la barra de filtres</string>
+  <string name="morphe_music_hide_grid_shelves_title">Ocultar els estants de quadrícula</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Ocultar els estants horitzontals</string>
+  <string name="morphe_music_hide_list_shelves_title">Ocultar els estants de llista</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Panell de lets</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Ocultar el botó de Compartir</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Ocultar el botó de traduir</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Ocultar l\'estant \"Nou de\"</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Ocultar els estants de llistes de reproducció</string>
+  <string name="morphe_music_hide_repeat_button_title">Ocultar el botó de Repetir</string>
+  <string name="morphe_music_hide_shuffle_button_title">Amaga el botó de Aleatori</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Amaga l\'estanteria de \"Marcació ràpida\"</string>
+  <string name="morphe_music_comments_screen_title">Comentaris</string>
+  <string name="morphe_music_comments_screen_summary">Tria quins components apareixen a la secció de comentaris</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Amaga les Normes de la Comunitat</string>
+  <string name="morphe_music_hide_comments_context_title">Ocultar missatge de context</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Amaga el botó d\'Emoji</string>
+  <string name="morphe_music_hide_comments_info_button_title">Amaga el botó d\'Informació</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Amaga el botó de la marca temporal</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Crossfade</string>
+  <string name="morphe_music_crossfade_screen_summary">Mescla les pistes suaument entre elles</string>
+  <string name="morphe_music_crossfade_enabled_title">Habilita el crossfade</string>
+  <string name="morphe_music_crossfade_curve_title">Curva de fade</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Potència igual</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Retenció subtil</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Suavització lleugera</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Curva S suau</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Sortida</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Entrada</string>
+  <string name="morphe_music_crossfade_duration_title">Durada del crossfade</string>
+  <string name="morphe_crossfade_duration_250ms">{one, 250 mil·lisegons, other, 250 mil·lisegons}</string>
+  <string name="morphe_crossfade_duration_500ms">{one, 500 mil·lisegons, other, 500 mil·lisegons}</string>
+  <string name="morphe_crossfade_duration_750ms">{one, 750 mil·lisegons, other, 750 mil·lisegons}</string>
+  <string name="morphe_crossfade_duration_1000ms">1 segon</string>
+  <string name="morphe_crossfade_duration_2000ms">2 segons</string>
+  <string name="morphe_crossfade_duration_3000ms">3 segons</string>
+  <string name="morphe_crossfade_duration_4000ms">4 segons</string>
+  <string name="morphe_crossfade_duration_5000ms">5 segons</string>
+  <string name="morphe_crossfade_duration_6000ms">6 segons</string>
+  <string name="morphe_crossfade_duration_7000ms">7 segons</string>
+  <string name="morphe_crossfade_duration_8000ms">8 segons</string>
+  <string name="morphe_crossfade_duration_9000ms">9 segons</string>
+  <string name="morphe_crossfade_duration_10000ms">10 segons</string>
+  <string name="morphe_crossfade_duration_11000ms">11 segons</string>
+  <string name="morphe_crossfade_duration_12000ms">12 segons</string>
+  <string name="morphe_music_crossfade_on_skip_title">Crossfade en salt manual</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Aplica l\'efecte de dissolvència quan saltes manualment a la pista següent</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Dissolvència en l\'avanç automàtic</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Aplica l\'efecte de dissolvència quan una pista finalitza naturalment</string>
+  <string name="morphe_music_crossfade_session_control_title">Control de la sessió</string>
+  <string name="morphe_music_crossfade_session_control_summary">Mantingueu premut el botó de reproducció aleatòria per pausar o reprendre la dissolvència</string>
+  <string name="morphe_music_crossfade_paused_toast">Dissolvència pausada per a aquesta sessió</string>
+  <string name="morphe_music_crossfade_resumed_toast">Dissolvència reprèsa</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">El mode de vídeo no està disponible mentre la dissolvència està activada</string>
+  <string name="morphe_music_crossfade_sabr_toast">El crossfade està desactivat amb la reproducció SABR</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">El crossfade està desactivat mentre s\'està transmitent</string>
+  <string name="morphe_music_crossfade_about_how_title">Com funciona</string>
+  <string name="morphe_music_crossfade_about_how_summary">"El crossfade solapa el final d'una cançó amb l'inici de la següent, utilitzant la durada i la corba seleccionades
+
+S'executa en l'avanç automàtic i en el salt manual, cadascun amb el seu interruptor. En l'avanç automàtic, la mescla comença uns segons abans que la cançó s'acabi"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Limitacions</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Els vídeos musicals es reproduen només com a àudio mentre el crossfade està activat. Mantingueu premut el botó d'aleatorietat per pausar el crossfade i veure el vídeo
+
+Un vídeo musical que comença la reproducció es manté en mode vídeo fins a la cançó següent
+
+Les cançons més curtes que la durada de la transició no tenen crossfade
+
+La pantalla de bloqueig o la notificació poden mostrar breument un estat Antic durant la transició
+
+Pausar el crossfade per veure un vídeo musical pot deixar alguns vídeos en negre. Pausar el crossfade abans de triar la cançó evita que passi"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">No suportat</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Transmissió o mirroring d'àudio (Chromecast, mirroring de pantalla o d'àudio)
+
+Reproducció SABR (fluxos de vídeo simulats desactivats)"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Crèdits</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Funcionalitat de crossfade per VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
+  <string name="morphe_music_remember_repeat_state_title">Recordar l\'estat de repetició</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <string name="morphe_music_remember_shuffle_state_title">Recordar l\'estat de reproducció aleatòria</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Velocitat de reproducció</string>
+  <string name="morphe_music_playback_speed_summary">Velocitat utilitzada per a totes les pistes. Al 100% s\'utilitza la velocitat de l\'aplicació, com la velocitat de reproducció del podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Canvia l\'afinació amb la velocitat </string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Desactivar la redirecció de no m\'agrada</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Evita saltar a la següent cançó quan es prem el botó no m\'agrada</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Acció de tocar una pista de la llista de reproducció</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Reprodueix la llista de reproducció</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Reprodueix només la pista seleccionada</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Afegeix la pista seleccionada a la cua</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">S\'ha afegit a la cua</string>
   <!-- layout.buttons.hideButtonsPatch -->
+  <string name="morphe_music_hide_cast_button_title">Amaga el botó de Cast</string>
+  <string name="morphe_music_hide_history_button_title">Amaga el botó d\'Historial</string>
+  <string name="morphe_music_hide_notification_button_title">Amaga el botó de Notificacions</string>
+  <string name="morphe_music_hide_search_button_title">Amaga el botó de Cerca</string>
+  <string name="morphe_music_hide_voice_search_button_title">Amaga el botó de cerca per veu</string>
+  <string name="morphe_music_hide_sound_search_button_title">Amaga el botó de cerca per so</string>
+  <string name="morphe_music_hide_library_new_button_title">Amaga el botó Nou</string>
+  <string name="morphe_music_hide_library_new_button_summary">Amaga el botó Nou a la pestanya de la Biblioteca</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Botons d\'acció</string>
+  <string name="morphe_music_action_buttons_screen_summary">Tria quins botons d\'acció apareixen sota el reproductor</string>
+  <string name="morphe_music_hide_action_bar_title">Ocultar la barra d\'accions</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Amaga el botó de M\'agrada i No m\'agrada</string>
+  <string name="morphe_music_hide_comments_button_title">Amaga el botó de Comentaris</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Amaga el botó \'Reprodueix el xat en viu\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Amaga el botó de Letres</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Ocultar el botó Compartir</string>
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Ocultar el botó Desa</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Ocultar el botó Descarrega</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Amaga el botó \'Inicia la ràdio\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
+  <string name="morphe_music_hide_flyout_menu_components_screen_title">Menú desplegable</string>
+  <string name="morphe_music_hide_flyout_menu_components_screen_summary">Tria quins components apareixen als menús desplegables del reproductor i de la cua</string>
+  <string name="morphe_music_hide_flyout_menu_3_column_component_title">Amaga el component de 3 columnes</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Ocultar els botons de \"M\'agrada\" i \"No m\'agrada\"</string>
+  <string name="morphe_music_hide_flyout_menu_taste_match_title">Amaga el menú \"Taste match\"</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Ocultar el menú \'Afegeix a la llista d\'espera\'</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Ocultar el menú \'Afegeix a la cua\'</string>
+  <string name="morphe_music_hide_flyout_menu_captions_title">Ocultar el menú de subtítols</string>
+  <string name="morphe_music_hide_flyout_menu_delete_playlist_title">Amaga el menú \"Elimina la llista de reproducció\"</string>
+  <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">Ocultar el menú \'Neteja la cua\'</string>
+  <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">Amaga el menú \"No recomani aquest artista\"</string>
+  <string name="morphe_music_hide_flyout_menu_download_title">Ocultar el menú de descàrrega</string>
+  <string name="morphe_music_hide_flyout_menu_edit_playlist_title">Amaga el menú \"Edita la llista de reproducció\"</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_album_title">Amaga el menú \"Ves a l\'àlbum\"</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_artist_title">Amaga el menú \"Ves a l\'artista\"</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_episode_title">Ocultar el menú \"Anar a l\'episodi\"</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">Amaga el menú \"Ves al podcast\"</string>
+  <string name="morphe_music_hide_flyout_menu_help_title">Ocultar el menú d\'Ajuda</string>
+  <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">Amaga el menú \"Marca l\'episodi com a reproduït\"</string>
+  <string name="morphe_music_hide_flyout_menu_not_interested_title">Ocultar el menú \"No m\'interessa\"</string>
+  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Ocultar el menú \"Fixar a marcadors\"</string>
+  <string name="morphe_music_hide_flyout_menu_play_next_title">Ocultar el menú \"Reproduir després\"</string>
+  <string name="morphe_music_hide_flyout_menu_quality_title">Ocultar el menú de Qualitat</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_library_title">Ocultar el menú \"Eliminar de la biblioteca\"</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">Ocultar el menú \"Eliminar de la llista de reproducció\"</string>
+  <string name="morphe_music_hide_flyout_menu_report_title">Ocultar el menú d\'Informar</string>
+  <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">Ocultar el menú \"Desar l\'episodi per més tard\" / \"Desar a la biblioteca\"</string>
+  <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">Ocultar el menú \"Desar a la llista de reproducció\"</string>
+  <string name="morphe_music_hide_flyout_menu_share_title">Ocultar el menú de Compartir</string>
+  <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Ocultar el menú \"Reproducció aleatòria\"</string>
+  <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Ocultar el menú \"Temporitzador de suspensió\"</string>
+  <string name="morphe_music_hide_flyout_menu_start_radio_title">Ocultar el menú \"Iniciar ràdio\"</string>
+  <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Ocultar el menú \"Estadístiques per a experts\"</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">Ocultar el menú de Subscriure\'s</string>
+  <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Ocultar el menú \"Desfixar de la marcació ràpida\"</string>
+  <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Ocultar el menú \"Veure crèdits de la cançó\"</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Pàgina d\'inici</string>
+  <string name="morphe_change_start_page_entry_default">Per defecte</string>
+  <string name="morphe_change_start_page_entry_charts">Llistes d\'èxits</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Episodis per a més tard</string>
+  <string name="morphe_change_start_page_entry_explore">Explorar</string>
+  <string name="morphe_change_start_page_entry_history">Historial</string>
+  <string name="morphe_change_start_page_entry_library">Llibreria</string>
+  <string name="morphe_change_start_page_entry_liked_music">Música agradada</string>
+  <string name="morphe_change_start_page_entry_playlists">Llistes de reproducció</string>
+  <string name="morphe_change_start_page_entry_search">Cercar</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Subscripcions</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Forçar l\'orientació vertical</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Manté l\'aplicació en orientació vertical quan es gira el dispositiu</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
+  <string name="morphe_music_change_miniplayer_color_title">Canviar el color del miniplayer</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Ajusta el color del miniplayer al del reproductor a pantalla completa</string>
+  <string name="morphe_music_change_navigation_bar_color_title">Canvia el color de la barra de navegació</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">Ajusta el color de la barra de navegació al reproductor de pantalla completa</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
+  <string name="morphe_music_miniplayer_next_button_title">Mostrar el botó següent al miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Mostrar el botó anterior al miniplayer</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Habilitar el miniplayer forçat</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Evita que el reproductor s\'expanda automàticament a pantalla completa quan comença una nova cançó</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Habilita el desllisement per tancar el miniplayer</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Permet tancar el miniplayer desllisant-lo cap avall</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Barra de navegació</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Tria quins botons apareixen a la barra de navigació inferior</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Amaga el botó d\'Inici</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Amaga el botó de Mostres</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Amaga el botó d\'Explorar</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Ocultar el botó de Biblioteca</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ocultar botó de Actualitzar</string>
+  <string name="morphe_music_hide_navigation_bar_title">Ocultar la barra de navegació</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Ocultar les etiquetes dels botons de navegació</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary_logged_out">No has iniciat sessió. Toca per configurar</string>
+  <string name="morphe_music_scrobbling_log_out">Tanca la sessió</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Sessiont tancada</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_enabled_title">Activar scrobbling</string>
+  <string name="morphe_music_scrobbling_now_playing_title">Enviar l\'estat de \"S\'està reproduint\"</string>
+  <string name="morphe_music_scrobbling_min_song_duration_title">Durada mínima de la cançó</string>
   <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_min_song_duration_summary">Les cançons més curtes que aquest temps no es faran scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_title">Percentatge de retard de scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_percent_summary">Activar el scrobble després d\'escoltar aquest percentatge de la cançó</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_title">Segons de retard del scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_delay_seconds_summary">Activa el scrobble després d\'escoltar aquest nombre de segons</string>
+  <string name="morphe_music_listenbrainz_token_title">Compte de ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Session obertura. Toca per gestionar el compte</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Introdueix el teu Token d\'usuari de ListenBrainz per activar el scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Verificar</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Si us plau, introdueix un token</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Validant…</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Token vàlid! Usuari: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Token invàlid: %s</string>
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">desconegut</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Error de verificació: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token eliminat</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token desat</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Avís: El token desat és invàlid!</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Marcar com a \"encanta\" les pistes agradades</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Marcar automàticament com a \"encanta\" les pistes a Last.fm quan t\'agradin a YouTube Music (i eliminar l\'estat d\'\"encanta\" quan no t\'agradin o les marquis com a no agradades)</string>
+  <string name="morphe_music_lastfm_token_title">Compte de Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Session iniciada com a %s. Toca per gestionar el compte</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Introdueix les teves credencials de Last.fm per iniciar sessió</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Nom d\'usuari</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Contrasenya</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Inicia sessió</string>
+  <string name="morphe_music_lastfm_token_status_empty">Si us plau, introduceu el nom d\'usuari i la contrasenya</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Iniciant sessió…</string>
+  <string name="morphe_music_lastfm_token_status_success">S\'ha iniciat la sessió correctament!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Error en obtenir la sessió de Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Error en l\'inici de sessió: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Credencials de Last.fm desades!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Neteja de metadades</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Netejar metadades</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Neteja automàticament el desordre habitual (com \"Official Video\", \"Remaster\", \"Live\") dels títols, artistes i àlbums abans del scrobbling</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Neteja personalitzada per regex</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">Introdiu una expressió regular personalitzada per eliminar text addicional dels títols de les cançons, artistes o àlbums. Exemple: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Analitza l\'artista i la cançó des del títol</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Extreu el nom de l\'artista i de la cançó del títol del vídeo utilitzant el separador \" - \". Útil per a contingut tornat a pujar on el nom del canal pot ser utilitzat com a artista</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Omple l\'àlbum faltant</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Quan la música no inclou un àlbum, busca\'l a Last.fm perquè el teu scrobble estigui complet</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_about_summary">"El scrobbling sincronitza automàticament el vostre ús de YouTube Music amb el vostre perfil de Last.fm o ListenBrainz
+
+Per assegurar que el scrobbling es sincronitzi durant la reproducció en segon pla, assegureu-vos que l'ús de la bateria de l'aplicació de YouTube Music estigui configurat com a \"Sense restriccions\""</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Utilitzar letres de tercers</string>
+  <string name="morphe_music_lyrics_enabled_summary">Mostra les letres d\'un servei de tercers, revertint a les letres integrades quan no se\'n troba cap</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Mantenir la pantalla encesa mentre es veuen les lletres</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Evita que la pantalla s\'apagi mentre el panell de lletres està obert</string>
+  <string name="morphe_music_lyrics_section_service_title">Servei de lets</string>
+  <string name="morphe_music_lyrics_section_display_title">Visualització</string>
+  <string name="morphe_music_lyrics_section_sync_title">Sincronització</string>
+  <string name="morphe_music_lyrics_section_panel_title">Panell</string>
+  <string name="morphe_music_lyrics_section_ai_endpoint_title">Endpoint de la IA</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Tots els proveïdors desactivats: lletres integrades i lletres incrustades</string>
+  <string name="morphe_music_lyrics_source_reset_title">Restaurar l\'ordre del proveïdor?</string>
+  <string name="morphe_music_lyrics_source_reset_message">Restaura els proveïdors a l\'ordre de prioritat per defecte</string>
+  <string name="morphe_music_lyrics_clear_cache_title">Esborrar les lets guardades</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Elimina les lets guardades en aquest dispositiu</string>
+  <string name="morphe_music_lyrics_clear_cache_done">S\'han esborrat %1$s MB</string>
+  <string name="morphe_music_token_dialog_get_token">Obté el token</string>
+  <string name="morphe_music_apple_music_token_title">Token d\'usuari de mitjans d\'Apple Music</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Enganxa la cookie media-user-token de music.apple.com
+
+Passos:
+1. Inicia sessió a music.apple.com com a usuari membre
+2. Obre DevTools → Application → Cookies → music.apple.com
+3. Copia el valor de \"media-user-token\""</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token desat</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token esborrat</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token no vàlid; si us plau, comproveu-lo i torneu-ho a intentar</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"Enganxa la cookie sp_dc de Spotify.
+
+Passos:
+1. Inicia sessió a open.spotify.com
+2. Obre DevTools → Application → Cookies → open.spotify.com
+3. Copia el valor de \"sp_dc\""</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc desat</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc eliminat</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc no vàlid; si us plau, comproveu-lo i torneu-ho a intentar</string>
+  <string name="morphe_music_apple_token_optional_hint">El token d\'Apple Music és opcional. Sense ell, s\'utilitzarà Lyrically com a alternativa</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"Enganxa la cookie arl de Deezer.
+
+Passos:
+1. Inicia sessió a deezer.com
+2. Obre DevTools $→$ Application $→$ Cookies $→$ deezer.com
+3. Copia el valor de \"arl\""</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl desat</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl eliminat</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl no vàlid - si us plau, comproveu-lo i torneu a provar</string>
+  <string name="morphe_music_musixmatch_token_title">Token de Musixmatch</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Afegeix un token només per utilitzar el teu propi compte. Ha de provenir de l\'aplicació d\'Android de Musixmatch: els tokens copiats de musixmatch.com pertanyen al client d\'escriptori retirat i l\'API els rebutja</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funciona sense un token, per la qual cosa aquest camp pot quedar buit</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">token d\'usuari</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token d\'usuari desat</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token d\'usuari esborrat</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: token d\'usuari no vàlid - si us plau, comproveu-lo i torneu a provar</string>
+  <string name="morphe_music_youtube_cookies_title">Cookies de YouTube</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"Engranya les teves cookies de YouTube per consultar els subtítols i el text temporal de YouTube.
+
+Passos:
+1. Obre youtube.com en un navegador i inicia la sessió
+2. Obre DevTools (F12) → Application → Cookies → youtube.com
+3. Copia la cadena completa de cookies (parelles clau=valor separades per punts i coma)
+
+Cookies requerides: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies desades</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies esborrades</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookies no vàlides - si us plau, comproveu-les i torneu a provar</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Mantingueu premuda una línia</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Toca una línia per saltar a aquest moment de la cançó, mantingueu-la premuda per copiar la paraula sota el dit, o la línia sencera quan la pressió no sigui sobre una paraula. L\'opció desactivada elimina ambdós gestos</string>
+  <string name="morphe_music_lyrics_show_section_title">Mostrar etiquetes de secció</string>
+  <string name="morphe_music_lyrics_show_section_summary">Etiqueta cada secció nova de la lletra amb una etiqueta petita, com ara Vers o Estribi</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Mostrar botó de Copiar</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Toca per copiar la lletra original com a text pla; manté premut per desar el fitxer font de la lletra a Descàrregues</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Mostra el botó de Traduir</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Toca per alternar la traducció; manté premut per veure només la traducció. Utilitza traduccions del proveïdor, Google Translate o una API compatible amb OpenAI</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Mostrar botó de romanització</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Toca per alternar la romanització; manté premut per a romanització només. Utilitza la romanització del proveïdor, Google Translate o una API compatible amb OpenAI</string>
+  <string name="morphe_music_lyrics_local_romanization_title">Romanització i alignació locals</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Romanitza al dispositiu quan el proveïdor, el teu model i Google Translate fallen. La lectura segueix cada paraula d\'una lletra sincronitzada; la sincronització de paraules ha d\'estar activada. Xinès, cantonès, japonès, coreà, grec, rus, georgià, armèni; uns 120 MB</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Llegint %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">{0, plural, one {Lectures llistes (1 entrada)} other {Lectures llistes (%1$d entrades)}}</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_failed">Error de descàrrega: desactivi i torni a activar aquesta opció per reintentar-ho</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botó d\'actualització</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Toca per canviar al següent candidat de lletres; manté premut per buscar lletres pel títol de la cançó i l\'artista</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Cerca lets</string>
   <string name="morphe_music_lyrics_search_title_hint">Títol de la cançó</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artista</string>
   <string name="morphe_music_lyrics_search_empty">Introdueix un títol de la cançó i un artista</string>
+  <string name="morphe_music_lyrics_search_no_providers">Cap dels proveïdors habilitats pot cercar altres cançons</string>
+  <string name="morphe_music_lyrics_saved">Desat</string>
+  <string name="morphe_music_lyrics_word_sync_title">Resaltar paraules o sílabes sincronitzades</string>
+  <string name="morphe_music_lyrics_word_sync_summary">Prioritzar les lets paraula per paraula quan estiguin disponibles. Quan les lets tenen temporització de paraules, resalta cada paraula o sílaba al ritme de la música</string>
+  <string name="morphe_music_lyrics_hide_played_title">Ocultar lets reproduïdes</string>
+  <string name="morphe_music_lyrics_hide_played_summary">Ocultar les línies de lets per sobre de la línia que s\'està reproduint actualment</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">Ocultar lets no reproduïdes</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Ocultar les línies de lets per sota de la línia que s\'està reproduint actualment</string>
+  <string name="morphe_music_lyrics_mediasession_title">Mostrar les lets de MediaSession a la pantalla de bloqueig</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Mostra la línia actual a la pantalla de bloqueig, Android Auto i Bluetooth. Requereix Android 11 o posterior</string>
+  <string name="morphe_music_lyrics_miniplayer_title">Mostrar lletres al miniplayer</string>
+  <string name="morphe_music_lyrics_miniplayer_summary">Mostra la línia actual al reproductor minimitzat, amb la pista moguda al subtítol</string>
+  <string name="morphe_music_lyrics_mini_track_format_title">Format del títol de la cançó/artista</string>
+  <string name="morphe_music_lyrics_mini_track_format_summary">Format de la pista que es mostra amb la lletra al miniplayer i a la MediaSession. {t} és el títol, {a} és l\'artista i {v} és la versió, com ara Acústic, quan la font de la lletra en proporcioni una. El text entre dos dos punts només es mostra quan cada variable a l\'interior té un valor; escriviu \\: per a dos punts simples. Cada línia es mostra per torns, avançant sempre que la lletra canviï</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_title">Format de la línia de la lletra</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_summary">Format de la línia de la lletra al reproductor minimitzat i a la MediaSession. {lrc} és la línia i {n} és quantes vegades seguides es canta. El text entre dos punts només es mostra quan la línia es repeteix. Utilitzeu \\: per a els dos punts</string>
+  <string name="morphe_music_lyrics_mini_encapsulation_invalid">El format ha de contenir {lrc}</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Plantilla de la línia de l\'artista i temporització de l\'animació</string>
+  <string name="morphe_music_lyrics_mini_artist_min_label">Temps mínim a la pantalla (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_max_label">Temps màxim a la pantalla (ms)</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_explanation">Només per a animacions de diverses línies. Mantingueu cada quadre durant almenys el temps mínim. Al màxim, avanceu la línia de l\'artista encara que la lletra es mantingui igual.</string>
+  <string name="morphe_music_lyrics_mini_artist_timing_invalid">El mínim ha de ser 0 o superior. El màxim ha de ser superior a 0 i, com a mínim, el valor del mínim.</string>
+  <string name="morphe_music_lyrics_mini_line_limits_title">Limits de longitud de línia</string>
+  <string name="morphe_music_lyrics_mini_line_limits_summary">Limits de línia de la lletra i de l\'artista, i pes dels caracters de ple ampleur</string>
+  <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Limit de línia de la lletra
+Divideix les lletres més llargues en mitjats equilibrats. El 0 desactiva la divisió."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_artist">"Limit de línia de l'artista
+Divideix el format de pista omplert en marcs cíclics. El 0 desactiva la divisió."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_weight">"Pes dels caracters de ple ampleur
+S'aplica a ambos limits. A 1,75, quatre caracters de ple ampleur compten com a 7."</string>
+  <string name="morphe_music_lyrics_mini_line_limits_invalid">Introduïu limits de nombres enters de 0 a 10000 i un pes de caracters superior a 0</string>
+  <string name="morphe_music_lyrics_mini_instrumental_title">Interval instrumental</string>
+  <string name="morphe_music_lyrics_mini_instrumental_summary">Mostrat al reproductor minimitzat i a la MediaSession durant un interval instrumental. Cada línia és un quadre d\'animació. {t} és el títol, {a} és l\'artista i {lrc} és l\'última línia de la lletra</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Desplaçament temporal del reproductor minimitzat i de la MediaSession</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Desplaça quan es mostra la següent línia al reproductor minimitzat i a la MediaSession. Utilitzeu un valor negatiu si les línies apareixen tard, per exemple, a la pantalla de bloqueig</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">Filtres</string>
+  <string name="morphe_music_lyrics_custom_regex_title">Regex de metadades</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Expressió regular aplicada a títols, artistes i àlbums abans de buscar les lletres i en puntuar si dos títols coincideixen. Deixa-ho buit per desactivar ambdós. Per defecte, s\'eliminen elements comuns com \"Official Video\", \"Remaster\", \"【插曲】\" i \"- Topic\"</string>
+  <string name="morphe_music_lyrics_text_filter_title">Regex del filtre de lletres</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Expressió regular aplicada només al text original de les lletres (no a les traduccions ni a les romanitzacions). Deixa\'ho buit per desactivar-ho</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">Marcadors de línies d\'informació</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Si les lletres es filtren incorrectament cap a sota, ajusta o neteja això. Marcadors separats per comes: les línies que contenen un marcador seguit de dos punts es mostren com a informació de crèdits a la part inferior. Deixa\'ho buit per desactivar-ho</string>
+  <string name="morphe_music_lyrics_force_capitalize_title">Posa la primera lletra en majúscula</string>
+  <string name="morphe_music_lyrics_force_capitalize_summary">Posa en majúscula la primera lletra de cada línia de la lletra</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Elimina la puntuació final</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Elimina els punts finals, les comes, els dos punts i els punt i coma al final de les línies de la lletra. Es mantenen els signes d\'interrogació, els signes d\'exclamació, les el·lipsis, les cometes i els brackets</string>
+  <string name="morphe_music_lyrics_text_size_title">Mida del text</string>
+  <string name="morphe_music_lyrics_text_size_summary">Mida del text de les letres</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Desfasament temporal global</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Les lletres sincronitzades segueixen la reproducció. Si es desfasen, ajusteu el desplaçament temporal. Desplaceu les lletres sincronitzades cap endavant o cap enrere. Utilitzeu un valor positiu si les lletres van per davant de la cançó</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Utilitza els segments de SponsorBlock per al desplaçament de les lletres</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Coincideix sense els segments que SponsorBlock salta i desplaça les lletres sobre l\'àudio publicat. L\'opció desactivada ignora SponsorBlock completament</string>
+  <string name="morphe_music_lyrics_sb_no_video">Aquesta pista no té cap id de vídeo per enviar</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Font: %s</string>
+  <string name="morphe_music_lyrics_contribute_credit">Mantingueu premut el botó de copiar per desar aquest LRC; si podeu ajustar els temps i compartir-los amb els proveïdors de la comunitat, us ho agrairem</string>
+  <string name="morphe_music_lyrics_translated_by_google">Traduït per Google</string>
+  <string name="morphe_music_lyrics_romanized_by_google">Romanitzat per Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Traduït per %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Romanitzat per %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Romanitzat per %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_hide">Traduït</string>
+  <string name="morphe_music_lyrics_translation_language_title">Idioma de traducció</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Idioma de romanització</string>
+  <string name="morphe_music_lyrics_translating">Traduint…</string>
+  <string name="morphe_music_lyrics_translate_failed">No s\'han pogut traduir les letres</string>
+  <string name="morphe_music_lyrics_romanize_hide">Romanitzat</string>
   <string name="morphe_romanize_language_DEFAULT">Automàtic</string>
+  <string name="morphe_music_lyrics_romanizing">Romanitzant…</string>
+  <string name="morphe_music_lyrics_romanize_failed">No s\'han pogut romanitzar les lletres</string>
+  <string name="morphe_music_lyrics_translate_only">Només traduït</string>
+  <string name="morphe_music_lyrics_romanize_only">Només romanitzat</string>
+  <string name="morphe_music_lyrics_dual_only">Mode dual</string>
+  <string name="morphe_music_lyrics_copied">Copiat al porta-retals</string>
+  <string name="morphe_music_lyrics_refreshing">Actualitzant</string>
+  <string name="morphe_music_lyrics_refreshed">Actualitzat</string>
+  <string name="morphe_music_lyrics_transcribe_key_title">Clau de l\'API de QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transcribeix o aligna temporalment les lletres de la pista actual. Un servei independent, no relacionat amb l\'endpoint compatible amb OpenAI d\'a dalt</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">Clau de QuickLRC des guarded. Utilitzeu el botó d\'alineació al diàleg de cerca de lletres, o l\'avís del panell quan una pista no tingui lletres</string>
+  <string name="morphe_music_lyrics_transcribe_key_saved">Clau de l\'API de QuickLRC des guardedada</string>
+  <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC no ha acceptat aquesta clau</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">S\'ha esborrat la clau de l\'API de QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC assigna temps a les lletres que no en tenen, o les transcribeix de la pista, a canvi de crèdits. Amb una clau configurada, les pistes sense lletres ofereixen la transcripció i el diàleg de cerca obté un botó d\'alineació</string>
+  <string name="morphe_music_lyrics_transcribe_align">Sol·licitar l\'alineació de QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_aligning">Alineant</string>
+  <string name="morphe_music_lyrics_transcribe_apply_align">Aplicar alineació</string>
+  <string name="morphe_music_lyrics_transcribe_prompt">Sol·licitar la transcripció de QuickLRC</string>
+  <string name="morphe_music_lyrics_transcribe_working">Transcribent</string>
+  <string name="morphe_music_lyrics_transcribe_cancelled">Transcripció cancel·lada</string>
+  <string name="morphe_music_lyrics_transcribe_local_unsupported">Només es poden transcrire les pistes reproduïdes des de YouTube</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">No hi ha lletres per alinear; s\'està transcripció en el seu lloc</string>
+  <string name="morphe_music_lyrics_transcribe_failed">QuickLRC no ha pogut processar aquesta pista</string>
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">S\'han esgotat els crèdits de QuickLRC per a aquesta pista</string>
+  <string name="morphe_music_lyrics_about_summary">"Les lletres coincideixen per títol i artista; els metadades inusuals poden no trobar res o la versió incorrecta. Utilitzeu l'actualització per canviar de versió. Els proveïdors marcats amb * requereixen un token. No tots els proveïdors habilitats es solen sol·licitar en el vostre ordre, sinó que responen segons la seva velocitat.\n\nLes lletres provenen de serveis de tercers que no estan afiliats, patrocinats ni avalats per Morphe. Cadascun s'utilitza tal com és: les lletres, la seva disponibilitat i la seva llicència pertanyen a aquests serveis i als seus licenciants, i el seu ús pot estar subjecte als seus termes de servei. El que arriba a un servei habilitat és només la cerca que heu sol·licitat: el títol, l'artista i, quan aquest servei ho requereixi, l'ID del vídeo. El punt final d'IA opcional i la transcripció QuickLRC s'executen només després de configurar-los i reben el text de les lletres o la URL del vídeo de la pista."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Activeu només els proveïdors que utilitzeu, o mantingueu els per defecte: les sol·licituds constants poden saturar els lletres de petits llocs comunitaris</string>
+  <string name="morphe_music_lyrics_hide_info_title">Ocultar línia de crèdits</string>
+  <string name="morphe_music_lyrics_hide_info_summary">Oculta la línia de crèdits que apareix sota la lletra</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">Intercanvia la traducció i la romanització</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ACTIVAT posa la romanització sota la lletra i la traducció a sobre; DESACTIVAT manté la romanització a sobre i la traducció a sota</string>
+  <string name="morphe_music_lyrics_section_translation_title">Traducció</string>
+  <string name="morphe_music_lyrics_section_romanization_title">Romanització</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Proveïdor de traducció</string>
+  <string name="morphe_music_lyrics_translation_provider_google">Google (per defecte, gratuït)</string>
+  <string name="morphe_music_lyrics_translation_provider_openai_compatible">Compatible amb OpenAI (personalitzat)</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Proveïdor de romanització</string>
+  <string name="morphe_music_lyrics_romanization_provider_google">Google (per defecte)</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Diccionari local / fora de línia</string>
+  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">Compatible amb OpenAI (Personalitzat)</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Secció de IA</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Només s\'utilitza quan el proveïdor no envia etiquetes de secció com el tornestor o la strofa, que el vostre model compatible amb OpenAI detecta posteriorment</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">IA &amp; Cloud Endpoints</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configureu les claus API, els models, els punts d\'extremitat i les plantilles de prompt per als proveïdors de IA.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL de l\'endpoint de l\'API (p. ex. https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Plantilla del prompt</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Marcadors de posició: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt desat</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt guardat, però l\'endpoint de la IA encara no és utilitzable. Configureu-lo primer a l\'apartat de Configuració de la IA</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt reiniciat</string>
+  <string name="morphe_music_lyrics_ai_extra_body_invalid">JSON no vàlid. Corregiu-lo o buideu el camp abans de desar</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Configuració de traducció &amp; romanització guardada</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Configuració restableixida per defecte</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">L\'URL base ha de començar per http:// o https://</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Provar connexió</string>
+  <string name="morphe_music_lyrics_ai_config_endpoint_label">Configurar endpoints</string>
+  <string name="morphe_music_lyrics_ai_config_show_all">Mostrar tots els endpoints</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Validant la connexió…</string>
+  <string name="morphe_music_lyrics_ai_config_translation_provider_label">Proveïdor de traducció</string>
+  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">Proveïdor de romanització</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Obtenir models</string>
+  <string name="morphe_music_lyrics_ai_config_fetching_models">Obtint models…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_success">Seleccioneu un model</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models_failed">No s\'han pogut obtenir els models. Comproveu la clau API o la connexió.</string>
+  <string name="morphe_music_lyrics_ai_config_gemini_section">Configuració de l\'API de Gemini</string>
+  <string name="morphe_music_lyrics_ai_config_openai_compat_section">Compatible amb OpenAI (punta final personalitzada)</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_section">Configuració de l\'API de DeepL</string>
+  <string name="morphe_music_lyrics_ai_config_api_key_label">Clau de l\'API</string>
+  <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_label">URL base</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_label">Clau de l\'API (opcional)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt de traducció</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_label">Cos de la sol·licitud extra (JSON opcional)</string>
+  <string name="morphe_music_lyrics_ai_config_deepl_key_label">Clau d\'autenticació (Gratuïta o Pro)</string>
+  <string name="morphe_music_lyrics_ai_config_summary">Configureu les claus de l\'API, els models, els punts finals i els prompts</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Desactiva les icones en negreta</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restaura les pestanyes Pròxim del reproductor, Letres i Relacionats</string>
 </resources>

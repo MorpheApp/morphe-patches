@@ -72,12 +72,12 @@ public class GetCaptionCookiesPreference extends Preference implements Preferenc
                 AbstractPreferenceFragment.settingImportInProgress = false;
                 AbstractPreferenceFragment.setRestartNeeded();
 
-                Utils.showToastShort(str("morphe_get_caption_cookies_success"));
+                Utils.showSnackbarShort(str("morphe_get_caption_cookies_success"));
             } else {
-                Utils.showToastShort(str("morphe_get_caption_cookies_duplicate"));
+                Utils.showSnackbarShort(str("morphe_get_caption_cookies_duplicate"));
             }
         } else {
-            Utils.showToastShort(str("morphe_get_caption_cookies_failed"));
+            Utils.showSnackbarShort(str("morphe_get_caption_cookies_failed"));
         }
 
         return true;

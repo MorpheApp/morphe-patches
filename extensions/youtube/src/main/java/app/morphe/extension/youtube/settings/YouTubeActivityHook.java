@@ -187,7 +187,7 @@ public class YouTubeActivityHook extends BaseActivityHook {
         if (searchViewController != null && searchViewController.isSearchActive()) {
             return searchViewController.handleBackPress();
         }
-        return AbstractPreferenceFragment.showRestartDialogIfNeeded(activity, activity::finish);
+        return AbstractPreferenceFragment.showRestartDialogIfNeeded(activity);
     }
 
     /**

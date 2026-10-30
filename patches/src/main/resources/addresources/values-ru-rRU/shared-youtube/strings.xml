@@ -21,9 +21,11 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Анимация запуска</string>
   <string name="morphe_splash_screen_style_entry_1">Выключено</string>
   <string name="morphe_splash_screen_style_entry_2">Цветной</string>
-  <string name="morphe_splash_screen_style_entry_3">Цветной Morphe</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Цвет</string>
   <string name="morphe_splash_screen_style_entry_4">Монохромный</string>
-  <string name="morphe_splash_screen_style_entry_5">Монохромный Morphe</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Монохромный</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_off">Выключено</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Перезагрузите для завершения настройки</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

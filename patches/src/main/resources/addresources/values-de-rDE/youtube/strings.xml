@@ -113,6 +113,9 @@ Folgende Änderungen sind enthalten:
   <string name="morphe_hide_surveys_title">Umfragen ausblenden</string>
   <string name="morphe_hide_surveys_summary">Blendet Umfragen und Hinweise zur Genauigkeit der Feed-Empfehlungen aus</string>
   <string name="morphe_hide_ticket_shelf_title">Ticket-Bereich ausblenden</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Banner \"Nicht verfügbare Videos sind ausgeblendet\" ausblenden</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Blendet den Banner \"Nicht verfügbare Videos sind ausgeblendet\" in Playlists aus</string>
   <string name="morphe_hide_upload_time_title">Upload-Zeit ausblenden</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Einschränkungen:
@@ -1250,6 +1253,9 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_fix_status_bar_layout_summary">Behält das Layout der Statusleiste bei, sodass sie die oberen Leisten nicht überdeckt und über dem Player kein leerer Raum entsteht. Schalten Sie diese Option aus, wenn die App abstürzt oder die oberen Leisten falsch aussehen</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Leuchten</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">Glow-Splash-Screen wird von diesem Gerät nicht unterstützt</string>
   <string name="morphe_theme_color_light_title">Hintergrund des hellen Designs</string>
   <string name="morphe_theme_color_light_entry_2">Weiß</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Weiß)</string>

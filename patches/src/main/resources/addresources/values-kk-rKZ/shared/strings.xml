@@ -17,21 +17,218 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Баптаулар</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Жалғастырғыңыз келетініңізге сенімдісіз бе?</string>
+  <string name="morphe_settings_save">Сақтау</string>
+  <string name="morphe_settings_reset">Қайта орнату</string>
+  <string name="morphe_settings_reset_color">Түсті қайта орнату</string>
+  <string name="morphe_settings_color_invalid">Жарамсыз түс</string>
+  <string name="morphe_settings_restart_title">Қайта қосу қажет</string>
+  <string name="morphe_settings_restart_dialog_message">Осы өзгерістер күшіне енуі үшін қолданбаны қайта қосыңыз</string>
+  <string name="morphe_settings_restart">Қайта қосу</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Импорт</string>
+  <string name="morphe_settings_import_copy">Көшіру</string>
+  <string name="morphe_settings_import_reset">Morphe баптаулары әдепкі мәнге қайта орнатылды</string>
+  <string name="morphe_settings_import_success">%s баптаулары импортталды</string>
+  <string name="morphe_settings_import_failure_parse">Импорт сәтсіз аяқталды: %s</string>
+  <string name="morphe_settings_navigate_up">Жоғары жылжыту</string>
+  <string name="morphe_settings_search_hint">Баптауларды іздеу</string>
+  <string name="morphe_settings_screen_info_title">Жоғарырақ</string>
+  <string name="morphe_settings_search_no_results_title">\'%s\' бойынша нәтижелер табылмады</string>
+  <string name="morphe_settings_search_no_results_summary">Басқа кілт сөзді қолданып көріңіз</string>
+  <string name="morphe_settings_search_recent_searches">Соңғы іздеулер</string>
+  <string name="morphe_settings_search_remove_message">Іздеу тарихынан жоюды қалайсыз ба?</string>
+  <string name="morphe_settings_search_remove">Іздеу тарихынан жою</string>
+  <string name="morphe_settings_search_clear_history">Іздеу тарихын тазалау</string>
+  <string name="morphe_settings_search_clear_history_message">Барлық іздеу тарихын тазалауға сенімдісіз бе?</string>
+  <string name="morphe_settings_search_tips_title">Іздеу бойынша кеңестер</string>
+  <string name="morphe_settings_search_tips_summary">"• Оған өту үшін жолдың үстін басыңыз
+• Баптауға өту үшін оны ұзақ басып тұрыңыз
+• Іздеу сұранысын тарихқа сақтау үшін Enter басыңыз
+• Іздеу кезінде регистр және тыныс белгілері ескерілмейді
+• Басты баптаулар өшірілген қосалқы баптаулардан жоғары көрсетіледі"</string>
+  <string name="morphe_settings_search_empty_history_title">Іздеу тарихы бос</string>
+  <string name="morphe_settings_search_empty_history_summary">Іздеу тарихын сақтау үшін іздеу сұранысын енгізіп, Enter пернесін басыңыз</string>
+  <string name="morphe_settings_search_history_title">Баптаулардың іздеу тарихын көрсету</string>
+  <string name="morphe_settings_name_title">Morphe параметрлерінің атауы</string>
+  <string name="morphe_settings_name_default_item">Әдепкі</string>
+  <string name="morphe_settings_name_entry_2">Қосымша</string>
+  <string name="morphe_settings_name_entry_3">Түзетулер</string>
+  <string name="morphe_settings_name_entry_4">Морфинг уақыты</string>
+  <string name="morphe_settings_name_custom_item">Жеке</string>
+  <string name="morphe_settings_name_custom_item_hint">Атауды енгізіңіз</string>
+  <string name="morphe_settings_name_empty_warning">Аты бос болмауы керек</string>
+  <string name="morphe_show_menu_icons_title">Morphe баптауларының белгішелерін көрсету</string>
+  <string name="morphe_settings_menu_copy_path">Көшірілді: %s</string>
+  <string name="morphe_language_title">Morphe тілі</string>
+  <string name="morphe_language_user_dialog_message">"Кейбір тілдер үшін аудармалар жоқ немесе толық емес болуы мүмкін.
+
+Жаңа тілдерді аудару немесе қолданыстағы аудармаларды жақсарту үшін morphe.software/translate бетіне өтіңіз"</string>
+  <string name="morphe_language_DEFAULT">Қосымша тілі</string>
+  <string name="morphe_pref_import_export_title">Импорт / Экспорт</string>
+  <string name="morphe_pref_import_export_summary">Morphe баптауларын импорттау / экспорттау</string>
+  <string name="morphe_settings_import_file">Файлдан импорттау</string>
+  <string name="morphe_settings_import_file_success">Баптаулар сәтті импортталды, қолдану үшін Сақтау түймесін басыңыз</string>
+  <string name="morphe_settings_import_file_failed">Баптауларды импорттау сәтсіз аяқталды</string>
+  <string name="morphe_settings_export_file">Файлға экспорттау</string>
+  <string name="morphe_settings_export_file_success">Баптаулар сәтті экспортталды</string>
+  <string name="morphe_settings_export_file_failed">Баптауларды экспорттау сәтсіз аяқталды</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Сіз Morphe Patches нұсқасының ең соңғы &lt;i&gt;%s&lt;/i&gt; нұсқасын қолданып жатырсыз</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Сіз Morphe Patches нұсқасының &lt;i&gt;%1$s&lt;/i&gt; нұсқасын қолданып жатырсыз&lt;br&gt;&lt;br&gt;&lt;b&gt;Жаңарту қолжетімді: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Патчтарыңызды жаңарту үшін Morphe қолданып, осы қолданбаны қайта патчтаңыз</string>
+  <string name="morphe_settings_about_links_dev_header">Ескертпе</string>
+  <string name="morphe_settings_about_links_dev_body">Бұл нұсқа алдын ала шығарылған нұсқа және күтпеген мәселелер болуы мүмкін</string>
+  <string name="morphe_settings_about_links_header">Ресми сілтемелер</string>
+  <string name="morphe_settings_about_links_website">Веб-сайт</string>
+  <string name="morphe_settings_about_links_donate">Қайырымдылық жасау</string>
+  <string name="morphe_settings_about_links_translations">Аудармалар</string>
+  <string name="morphe_settings_about_links_credits">Авторы</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Жаңартылған</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Жаңарту қолжетімді</string>
+  <string name="morphe_settings_about_contributors_current">Ағымдағы әзірлеу</string>
+  <string name="morphe_settings_about_contributors_prior">Алдыңғы әзірлеу</string>
+  <string name="morphe_settings_about_links_morphe">Белсенді әзірлеу</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Лицензиялық ескертулер</string>
+  <string name="morphe_settings_about_licenses_loading">Жүктелуде…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Дебагтау</string>
+  <string name="morphe_debug_screen_summary">Кеңейтілген әзірлеуші параметрлері мен диагностикалық логтарды баптау</string>
+  <string name="morphe_debug_title">Дебаг логтарды қосу</string>
+  <string name="morphe_debug_stacktrace_title">Дебаг лог стегінің ізі</string>
+  <string name="morphe_debug_stacktrace_summary">Қателерді анықтауға көмектесу үшін дебаг логтарға стек трассаларын қосады</string>
+  <string name="morphe_debug_toast_on_error_title">Morphe қатесі кезінде хабарламаны көрсету</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Қателіктер туралы toast-хабарламаларды өшіру Morphe-тің барлық қателік хабарландыруларын жасырады.
+
+Кез келген күтпеген оқиғалар туралы сізге хабарланбайды"</string>
+  <string name="morphe_debug_export_logs_title">Дебаг логтарын экспорттау</string>
+  <string name="morphe_debug_export_logs_summary">Morphe беттау логтарын экспорттау</string>
+  <string name="morphe_debug_export_logs_success">Беттау логтары сәтті экспортталды</string>
+  <string name="morphe_debug_export_logs_failed">Беттау логтарын экспорттау сәтсіз аяқталды</string>
+  <string name="morphe_debug_logs_search_hint">Дебаг логтарын іздеу…</string>
+  <string name="morphe_debug_export_logs_clear">Тазалау</string>
+  <string name="morphe_debug_logs_disabled">Дебаг логтау өшірілген</string>
+  <string name="morphe_debug_logs_none_found">Беттау логтары табылмады</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Беттау логтары көшірілді</string>
+  <string name="morphe_debug_logs_failed_to_export">Беттау логтарын экспорттау сәтсіз аяқталды: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Беттау логтары тазартылды</string>
+  <string name="morphe_debug_feature_flags_manager_title">Функция белгілерінің менеджері</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Бульдір функция белгілерін басқару</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Функция белгілерін іздеу…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Белсенді емес (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Белсенді (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Блокталған (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Мәжбүрленген (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Авто</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Өшіру</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Қосу</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Мәжбүрлеп қосу</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Блоктау</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Жою</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Функция флагтары сақталды</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Функция белгілері sıғырылды</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Функция белгілері алмасу буферіне көшірілді</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Осы параметрді қолдану үшін қолданбаны қайта қосыңыз</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Экспорт және импорт</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Функция белгілері табылмады</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Функция белгілері сәтті экспортталды</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Функция белгілерін экспорттау сәтсіз аяқталды</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Функция белгілері жүктелді, қолдану үшін «Сақтау» түймесін басыңыз</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Файлды оқу мүмкін болмады</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Екілік іздеу</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Қолданба мінез-құлқына қай функция белгісі әсер ететінін анықтайды.
+
+%s белгісінің жартысы бұғатталған, әр қайта қосудан кейін сіз мінез-құлықтың әлі де бар-жоғын айтасыз.
+
+Бастамас бұрын мінез-құлықты бір рет қайталаңыз, әйтпесе қолданба әлі сұрамаған белгілер іздеуден тыс қалады"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Бастау</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Іздеу үшін мүмкіндік белгілері жоқ.
+
+Екілік іздеуде тек қолданба қолданған және қазіргі уақытта мәжбүрлеп қосылмаған белгілерді ғана пайдалануға болады"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Қадам %1$s
+
+%2$s белгі қалды, оның %3$s-і осы қадам үшін бұғатталды.
+
+Қолданбаны қайта қосыңыз, мінез-құлықтың бар-жоғын тексеріңіз, содан кейін төменде жауап беріңіз"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Мүмкіндік белгісін іздеу жүріп жатыр</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Мінез-құлық бар</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Мінез-құлық жоқ</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Екілік іздеуді тоқтату</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Екілік іздеу тоқтатылды</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"%s мүмкіндік белгісі осы мінез-құлыққа себеп болады.
+
+Ол қазір бұғатталды"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Функция белгісі табылмады.
+
+Қосымша мінез-құлқы функция белгісімен басқарылмайтын сияқты"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Бір ғана функция белгісін табу мүмкін болмады.
+
+Іздеу кезінде мінез-құлық ерте жоғалды, сондықтан бірнеше белгі қатысуы мүмкін немесе жауаптардың бірі қате болды"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">MicroG параметрлерін ашу</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG орнатылмаған. Оны орнатыңыз</string>
+  <string name="gms_core_dialog_title">Әрекет қажет</string>
+  <string name="gms_core_dialog_outdated_message">"Сіздің MicroG v%1s нұсқасы ескірген және мәселелер тудыруы мүмкін.
+
+MicroG-ді соңғы v%2s нұсқасына жаңартыңыз"</string>
+  <string name="gms_core_dialog_update_text">Жаңарту</string>
+  <string name="gms_core_dialog_ignore_text">Елемеу</string>
+  <string name="gms_core_dialog_conflict_message">"Орнатылған MicroG Morphe тарапынан ұсынылмаған:
+
+%1s
+
+Оны жою үшін басыңыз, содан кейін осы қолданбаны қайта ашып, MicroG RE орнатыңыз"</string>
+  <string name="gms_core_dialog_uninstall_text">Жою</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG қолданбасында фондық режимде жұмыс істеуге рұқсат жоқ.
+
+Телефоныңыз үшін \"Don't kill my app\" нұсқаулығын оқып, оны MicroG орнатылған жерге қолданыңыз.
+
+Бұл қолданбаның жұмыс істеуі үшін қажет"</string>
+  <string name="gms_core_dialog_open_website_text">Веб-сайтты ашу</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Мәселелердің алдын алу үшін MicroG батареясын оңтайландыру мүмкіндігі өшірілуі тиіс.
+
+MicroG үшін батареяны оңтайландыруды өшіру батареяны пайдалануға кері әсер етпейді.
+
+«Жалғастыру» батырмасын басып, оңтайландыру өзгерістеріне рұқсат беріңіз"</string>
+  <string name="gms_core_dialog_continue_text">Жалғастыру</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG батареясын оңтайландыру диалогын көрсету</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Мұны өшіру MicroG батареясын оңтайландыру туралы хабарламасын жасырады.
+
+Егер батареяны оңтайландыру өзгертілмесе, келесі жағдайлар болуы мүмкін:
+• Қосымша кездейсоқ жабылуы мүмкін
+• Хабарламалар жұмыс істемеуі мүмкін
+• Фонда ойнату жұмыс істемеуі мүмкін"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Қолданба сілтемелерін өңдеу</string>
+  <string name="morphe_link_handling_summary">Сілтемелерді осы қолданбада ашуды баптау</string>
+  <string name="morphe_link_handling_step1_title">1-қадам: Түпнұсқа қолданба сілтемелерін өшіру</string>
+  <string name="morphe_link_handling_step1_message">Түпнұсқа қолданбаның параметрлерін ашып, барлық домен сілтемелерін өшіріңіз</string>
+  <string name="morphe_link_handling_step2_title">2-қадам: Патчтелген қолданба сілтемелерін қосу</string>
+  <string name="morphe_link_handling_step2_message">Патчтелген қолданбаның параметрлерін ашып, барлық домен сілтемелерін қосыңыз</string>
+  <string name="morphe_link_handling_open">Параметрлерді ашу</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Эксперименталдық ескерту 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Сіз ⚠️ &lt;b&gt;%1$s&lt;/b&gt; қолданбасының эксперименталдық нұсқасын қолданып жатырсыз
+&lt;br/&gt;&lt;br/&gt;
+🔧 Осы нұсқа үшін патчтарды баптай келе, қолданбаның ерекше жұмысын немесе белгісіз қателерді күтіңіз.
+&lt;br/&gt;&lt;br/&gt;
+Егер сізге ең тұрақты жұмыс керек болса, онда мұны &lt;b&gt;жойыңыз&lt;/b&gt; және ✅ &lt;b&gt;%2$s&lt;/b&gt; ұсынылған нұсқасын орнатыңыз"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Маған эксперименталдық нұсқа керек</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Маған тұрақты нұсқа керек</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Қателік журналы пайдаланушы құжаттарына сақталды: %s</string>
+  <string name="morphe_crash_log_saved">Қателік журналы сақталды: %s</string>
 </resources>

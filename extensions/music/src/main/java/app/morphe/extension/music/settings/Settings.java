@@ -344,10 +344,7 @@ public class Settings extends SharedYouTubeSettings {
         migrateOldSettingToNew(DEPRECATED_PERMANENT_REPEAT, REMEMBER_REPEAT_STATE);
         migrateInAppDownloadsToDownloadMode();
         migrateDownloadButtonOverride();
-        migrateLyricsProvidersFrom148();
         migrateLyricsArtistFirstToTrackFormat();
-        // v1.48.0 could also store the endpoint's own name for the OpenAI-compatible provider.
-        migrateLyricsRenamedProviders();
         migrateQuickLrcEnabled();
     }
 
@@ -397,49 +394,12 @@ public class Settings extends SharedYouTubeSettings {
         DEPRECATED_MUSIC_IN_APP_DOWNLOADS.resetToDefault();
     }
 
-    /** Maps the v1.48.0 AI and local switches to provider lists. */
-    private static void migrateLyricsProvidersFrom148() {
-        final boolean aiTranslation = DEPRECATED_LYRICS_USE_AI_TRANSLATION.get();
-        final boolean aiRomanization = DEPRECATED_LYRICS_USE_AI_ROMANIZATION.get();
-        final boolean localRomanization = DEPRECATED_LYRICS_LOCAL_ROMANIZATION.get();
-
-        if (aiTranslation) {
-            LYRICS_TRANSLATION_PROVIDERS.save(AiProviders.migrateFrom148(
-                    true, false, AiProviders.TRANSLATION_ORDER));
-        }
-        if (aiRomanization || localRomanization) {
-            LYRICS_ROMANIZATION_PROVIDERS.save(AiProviders.migrateFrom148(
-                    aiRomanization, localRomanization, AiProviders.ROMANIZATION_ORDER));
-        }
-
-        DEPRECATED_LYRICS_USE_AI_TRANSLATION.resetToDefault();
-        DEPRECATED_LYRICS_USE_AI_ROMANIZATION.resetToDefault();
-        DEPRECATED_LYRICS_LOCAL_ROMANIZATION.resetToDefault();
-    }
-
     /** The artist first switch was replaced with the track label format. */
     private static void migrateLyricsArtistFirstToTrackFormat() {
         if (DEPRECATED_LYRICS_DISPLAY_ARTIST_FIRST.get() && LYRICS_MINI_TRACK_FORMAT.isSetToDefault()) {
             LYRICS_MINI_TRACK_FORMAT.save(MiniLyricsFormatter.ARTIST_FIRST_TRACK_FORMAT);
         }
         DEPRECATED_LYRICS_DISPLAY_ARTIST_FIRST.resetToDefault();
-    }
-
-    /**
-     * v1.48.0 stored the endpoint's own name for the OpenAI-compatible provider. Lists saved with
-     * that name would drop the entry, since only the current id is known.
-     */
-    private static void migrateLyricsRenamedProviders() {
-        migrateLyricsRenamedProviders(LYRICS_TRANSLATION_PROVIDERS);
-        migrateLyricsRenamedProviders(LYRICS_ROMANIZATION_PROVIDERS);
-    }
-
-    private static void migrateLyricsRenamedProviders(StringSetting providers) {
-        final String stored = providers.get();
-        final String renamed = AiProviders.renameLegacyProviders(stored);
-        if (!renamed.equals(stored)) {
-            providers.save(renamed);
-        }
     }
 
     /**

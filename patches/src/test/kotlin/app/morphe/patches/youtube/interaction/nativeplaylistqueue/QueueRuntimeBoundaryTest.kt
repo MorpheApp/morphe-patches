@@ -424,7 +424,7 @@ class QueueRuntimeBoundaryTest {
                     public static android.app.Activity getActivity() { return new android.app.Activity(); }
                     public static int toasts;
                     public static boolean failToast;
-                    public static void showToastShort(String text) {
+                    public static void showSnackbarShort(String text) {
                         if (failToast) throw new IllegalStateException("Unavailable feedback surface");
                         toasts++;
                     }

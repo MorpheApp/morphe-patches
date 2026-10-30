@@ -24,18 +24,22 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Врати ја бојата</string>
   <string name="morphe_settings_color_invalid">Невалидна боја</string>
   <string name="morphe_settings_restart_title">Рестартирање е потребно</string>
+  <string name="morphe_settings_restart_dialog_message">Рестартирајте ја апликацијата за оваа промена да стапи на сила</string>
   <string name="morphe_settings_restart">Рестартирај</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Импортирај</string>
   <string name="morphe_settings_import_copy">Копирај</string>
   <string name="morphe_settings_import_reset">Паденијата на Morphe се вратени на нивните вредности по дефолт</string>
+  <string name="morphe_settings_import_success">Импортирани се %s поставки</string>
   <string name="morphe_settings_import_failure_parse">Импортирањето не успеа: %s</string>
+  <string name="morphe_settings_navigate_up">Навигација нагоре</string>
   <string name="morphe_settings_search_hint">Пребарување на паденија</string>
   <string name="morphe_settings_screen_info_title">Филмови</string>
   <string name="morphe_settings_search_no_results_title">Не се пронајдени резултати за „%s“</string>
   <string name="morphe_settings_search_no_results_summary">Обидете се со друг клуч</string>
   <string name="morphe_settings_search_recent_searches">Неодамнешни пребарувања</string>
   <string name="morphe_settings_search_remove_message">Дали да се отстрани од историјата на пребарувања?</string>
+  <string name="morphe_settings_search_remove">Отстрани од историјата на пребарување</string>
   <string name="morphe_settings_search_clear_history">Избриши ја историјата на пребарувања</string>
   <string name="morphe_settings_search_clear_history_message">Дали сте сигурни дека сакате да ја избришете целата историја на пребарувања?</string>
   <string name="morphe_settings_search_tips_title">Совет за пребарување</string>
@@ -47,9 +51,16 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Нема пронајдено историја на пребарување</string>
   <string name="morphe_settings_search_empty_history_summary">За да ја зачувате историјата на пребарување, откучете пребарувачка прашање и притиснете Enter</string>
   <string name="morphe_settings_search_history_title">Прикажи историја на пребарувања на поставки</string>
+  <string name="morphe_settings_name_title">Име на поставките за Morphe</string>
   <string name="morphe_settings_name_default_item">Стандардно</string>
+  <string name="morphe_settings_name_entry_2">Дополнителни</string>
+  <string name="morphe_settings_name_entry_3">Прилагодувања</string>
+  <string name="morphe_settings_name_entry_4">Време на морфирање</string>
   <string name="morphe_settings_name_custom_item">По нарачка</string>
+  <string name="morphe_settings_name_custom_item_hint">Внесете име</string>
+  <string name="morphe_settings_name_empty_warning">Името не може да биде празно</string>
   <string name="morphe_show_menu_icons_title">Прикажи икони за поставки Morphe</string>
+  <string name="morphe_settings_menu_copy_path">Копирано: %s</string>
   <string name="morphe_language_title">Јазик на Morphe</string>
   <string name="morphe_language_user_dialog_message">"Преводи за некои јазици може да им недостигаат или да бидат нецелосни.
 
@@ -82,6 +93,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
   <string name="morphe_settings_about_links_licenses">Известувања за лиценца</string>
+  <string name="morphe_settings_about_licenses_loading">Вчитување…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Дебугирање</string>
   <string name="morphe_debug_screen_summary">Конфигурирајте ги напредните опции за развивач и завршните зафати</string>
@@ -89,10 +101,14 @@ Second \"item\" text"</string>
   <string name="morphe_debug_stacktrace_title">Дебугирај го тракот од позиција во скок</string>
   <string name="morphe_debug_stacktrace_summary">Вклучува завршни завршни завршни завршни завршни зафати за завршни зафати</string>
   <string name="morphe_debug_toast_on_error_title">Прикажи тост при грешка во Morphe</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Исклучувањето на нотификациите за грешки ги крие сите нотификации за грешки од Morphe.
+
+Нема да бидете известени за никакви неочекувани настани"</string>
   <string name="morphe_debug_export_logs_title">Извези ги завршните поруки за грешки</string>
   <string name="morphe_debug_export_logs_summary">Извези завршни поруки за грешки од Morphe</string>
   <string name="morphe_debug_export_logs_success">Завршни поруки за грешки се извезони успешно</string>
   <string name="morphe_debug_export_logs_failed">Неуспешно извезување на завршни поруки за грешки</string>
+  <string name="morphe_debug_logs_search_hint">Пребарај дебаг записници…</string>
   <string name="morphe_debug_export_logs_clear">Обриши</string>
   <string name="morphe_debug_logs_disabled">Дебугирањето е исклучено</string>
   <string name="morphe_debug_logs_none_found">Не се пронајдени завршни поруки за грешки</string>
@@ -101,28 +117,93 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Завршни поруки за грешки се обришани</string>
   <string name="morphe_debug_feature_flags_manager_title">Менаџер за ознаки за функции</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управление на булеан ознаки за функции</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Пребарај ознаки за функции…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Неактивни (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Активни (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Блокирани (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Присилени (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Автоматски</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Исклучено</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Вклучено</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Присилно вклучи</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Блокирај</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Отстрани</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ознаките за функции се зачувани</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ознаките за функции се вратени</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Ознаките за функции се копирани во привремениот простор</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Рестартирај ја апликацијата за да ја користите оваа настройка</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Извоз и увоз</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Увезени се %s ознаки за функции</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Не се пронајдени ознаки за функции</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Ознаките за функции се извозени успешно</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Неуспешен извоз на ознаките за функции</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Заставоците за функции се вчитани, допрете Зачувај за да ги примените</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Не успеа дрвењето на датотеката</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Бинарна пребарувачка</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Наоѓа кој заставок за функција предизвикува одредено однесување на апликацијата.
+
+Половина од %s заставоците се блокирани и по секое рестартирање вие кажувате дали однесувањето е сè уште присутно.
+
+Репродуцирајте го однесувањето еднаш пред да започнете, во спротивно заставоците за кои апликацијата сè уште не побарала ќе недостасуваат од пребарувањето"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Табела на водечки спонзори SponsorBlock</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Нема заставоци за функции за пребарување.
+
+Во бинарната пребарувачка можат да се користат само заставоци до кои апликацијата стигнала и кои моментално не се присилно вклучени"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Чекор %1$s
+
+Остануваат %2$s заставоци, од кои %3$s се блокирани за овој чекор.
+
+Рестартирајте ја апликацијата, проверете дали однесувањето е присутно, па одговорете подолу"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Пребарувањето на заставоците за функции е во тек</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Однесувањето е присутно</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Однесувањето не е присутно</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Откажи бинарно пребарување</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Бинарното пребарување е откажано</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Знамто за функција %s го предизвикува однесувањето.
+
+Сега е блокирано"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Не може да се најде знаме за функција.
+
+Изгледа дека однесувањето на апликацијата не е контролирано од знаме за функција"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Не може да се најде ниту едно знаме за функција.
+
+Однесувањето исчезна порано во пребарувањето, па затоа можеби се вклучени повеќе од едно знаме или еден од одговорите бил погрешен"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Отвори ги поставките на MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG не е инсталирано. Инсталирајте го</string>
   <string name="gms_core_dialog_title">Потребна е акција</string>
+  <string name="gms_core_dialog_outdated_message">"Вашата верзија на MicroG v%1s е застарена и може да предизвика проблеми.
+
+Ве молиме ажурирајте го MicroG на најновата верзија v%2s"</string>
+  <string name="gms_core_dialog_update_text">Ажурирај</string>
+  <string name="gms_core_dialog_ignore_text">Игнорирај</string>
+  <string name="gms_core_dialog_conflict_message">"Инсталираниот MicroG не е препорачан од Morphe:
+
+%1s
+
+Допрете за да го деинсталирате, потоа повторно отворете ја оваа апликација и инсталирајте MicroG RE"</string>
+  <string name="gms_core_dialog_uninstall_text">Деинсталирај</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG нема дозвола да работи во позадина.
+
+Следете го водичот \"Don't kill my app\" за вашиот телефон и применете ги упатствата за вашата инсталација на MicroG.
+
+Ова е потребно за работата на апликацијата"</string>
   <string name="gms_core_dialog_open_website_text">Отвори веб-страница</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Оптимизациите на батеријата за MicroG мора да се исклучат за да се спречат проблеми.
+
+Исклучувањето на оптимизациите на батеријата за MicroG нема негативно да влијае на користењето на батеријата.
+
+Допрете го копчето за продолжување и дозволете ги промените во оптимизацијата"</string>
   <string name="gms_core_dialog_continue_text">Продолжи</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Прикажи го дијалогот за оптимизација на батеријата на MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Исклучувањето на ова ќе го скрие повикувањето за оптимизација на батеријата на MicroG.
@@ -149,4 +230,6 @@ Second \"item\" text"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Сакам експериментално</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Сакам стабилно</string>
   <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Дневникот за во рок се зачуван во корисничките документи: %s</string>
+  <string name="morphe_crash_log_saved">Дневникот за во рок е зачуван: %s</string>
 </resources>

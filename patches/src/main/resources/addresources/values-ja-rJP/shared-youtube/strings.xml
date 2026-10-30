@@ -21,9 +21,9 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">起動時のアニメーション</string>
   <string name="morphe_splash_screen_style_entry_1">無効</string>
   <string name="morphe_splash_screen_style_entry_2">カラー</string>
-  <string name="morphe_splash_screen_style_entry_3">カラー Morphe</string>
   <string name="morphe_splash_screen_style_entry_4">モノクロ</string>
-  <string name="morphe_splash_screen_style_entry_5">モノクロ Morphe</string>
+  <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_off">オフ</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">設定を完了するには再起動してください</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

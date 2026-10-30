@@ -113,6 +113,9 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_surveys_title">Felmérések elrejtése</string>
   <string name="morphe_hide_surveys_summary">Értékelési felmérések és javaslatok elrejtése a hírcsatorna pontosságával kapcsolatban</string>
   <string name="morphe_hide_ticket_shelf_title">Jegyértékesítési polc elrejtése</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">Elrejtés az „Az elérhetetlen videók rejtve vannak” sávő</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Elrejti az „Az elérhetetlen videók rejtve vannak” sávot a lejátszási listákban</string>
   <string name="morphe_hide_upload_time_title">Feltöltési idő elrejtése</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Korlátozások:
@@ -1249,6 +1252,9 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_fix_status_bar_layout_summary">A status sáv elrendezése konzisztens marad, így nem takarja le a felső sávokat, és nincs üres hely a lejátszó felett. Kapcsolja ki ezt, ha az alkalmazás összeomlik vagy a felső sávok rossz megjelenésűek</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Ragyogás</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">A Glow beugratási képernyőt ez az eszköz nem támogatja</string>
   <string name="morphe_theme_color_light_title">Világos téma háttér</string>
   <string name="morphe_theme_color_light_entry_2">Fehér</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Fehér)</string>

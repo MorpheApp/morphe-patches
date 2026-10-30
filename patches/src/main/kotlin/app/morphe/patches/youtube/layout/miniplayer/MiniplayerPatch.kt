@@ -40,6 +40,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_37_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
@@ -100,15 +101,23 @@ val miniplayerPatch = bytecodePatch(
 
         if (is_20_37_or_greater) {
             // 21.29 removed all modern miniplayers except modern 4
-            preferences += if (!is_21_29_or_greater) {
-                ListPreference("morphe_miniplayer_type")
+            if (!is_21_29_or_greater) {
+                preferences += ListPreference("morphe_miniplayer_type")
             } else {
                 // Only modern 4 is left, plus the minimal bar rebuilt on top of it.
-                ListPreference(
+                preferences += ListPreference(
                     key = "morphe_miniplayer_type",
                     entriesKey = "morphe_miniplayer_type_21_29_entries",
                     entryValuesKey = "morphe_miniplayer_type_21_29_entry_values"
                 )
+                // TODO: Eventually remove this.
+                //       Tell stable users upgrading from 21.23 where the other miniplayers went.
+                if (!is_21_31_or_greater) {
+                    preferences += NonInteractivePreference(
+                        key = "morphe_miniplayer_not_available",
+                        selectable = false
+                    )
+                }
             }
         } else {
             preferences += ListPreference(

@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">הסתר סקרים</string>
   <string name="morphe_hide_surveys_summary">מסתיר סקרים והנחיות לגבי דיוק המלצות הפיד</string>
   <string name="morphe_hide_ticket_shelf_title">הסתר מדף כרטיסים</string>
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
+  <string name="morphe_hide_unavailable_videos_hidden_banner_title">הסתר את הבאנר \"סרטונים שאינם זמינים מוסתרים\"</string>
+  <string name="morphe_hide_unavailable_videos_hidden_banner_summary">מסתיר את הבאנר \"סרטונים שאינם זמינים מוסתרים\" ברשימות השמעה</string>
   <string name="morphe_hide_upload_time_title">הסתר זמן העלאה</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"הגבלות:
@@ -1249,6 +1252,9 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">שומר על עקביות תצורת מסך החיווי, כך שהוא לא יכסה את הפסים העליונים ולא יישאר רווח ריק מעל הנגן. כבה אפשרות זו אם האפליקציה קורסת או שהפסים העליונים נראים לא תקין</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">זוהר</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_glow_not_supported">מסך פתיחה עם אפקט Glow אינו נתמך במכשיר זה</string>
   <string name="morphe_theme_color_light_title">רקע של ערכת נושא בהירה</string>
   <string name="morphe_theme_color_light_entry_2">לבן</string>
   <string name="morphe_theme_color_light_entry_3">Material You (לבן)</string>

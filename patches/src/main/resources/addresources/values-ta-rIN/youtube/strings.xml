@@ -18,16 +18,6 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">விபரம்</string>
-  <string name="morphe_settings_screen_01_ads_title">விளம்பரங்கள்</string>
-  <string name="morphe_settings_screen_03_feed_title"> ஊட்டம்</string>
-  <string name="morphe_settings_screen_04_general_title">பொது</string>
-  <string name="morphe_settings_screen_05_player_title">பிளேயர்</string>
-  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
-  <string name="morphe_settings_screen_07_seekbar_title">தேடல்பட்டை</string>
-  <string name="morphe_settings_screen_08_swipe_controls_title">ஸ்வைப் கட்டுப்பாடுகள்</string>
-  <string name="morphe_settings_screen_11_misc_title">இதரவை</string>
-  <string name="morphe_settings_screen_12_video_title">காணொளி</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -41,6 +31,7 @@ Second \"item\" text"</string>
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
+  <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
@@ -81,7 +72,6 @@ Second \"item\" text"</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_quick_video">காணொளி</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
   <!-- interaction.loop.loopVideoPatch -->
@@ -177,12 +167,10 @@ Second \"item\" text"</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
-  <string name="morphe_open_videos_fullscreen_entry_1">முடக்கப்பட்டது</string>
   <!-- layout.player.fullscreen.stretchVideoPatch -->
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_searchbar_type_entry_disabled">முடக்கப்பட்டது</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->

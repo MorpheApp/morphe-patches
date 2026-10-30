@@ -141,7 +141,7 @@ public final class LocalQueuePatch {
             final boolean playNow = PlayerType.getCurrent().isNoneOrHidden() && size() == 0;
             if (playNow) {
                 if (!startPlayback(videoId)) {
-                    Utils.showToastShort(str("morphe_local_queue_play_failed"));
+                    Utils.showSnackbarShort(str("morphe_local_queue_play_failed"));
                 }
                 return;
             }
@@ -154,7 +154,7 @@ public final class LocalQueuePatch {
                     item = items.remove(existing);
                 } else {
                     if (items.size() >= MAX_ITEMS) {
-                        Utils.showToastShort(str("morphe_local_queue_full"));
+                        Utils.showSnackbarShort(str("morphe_local_queue_full"));
                         return;
                     }
                     item = new Item(videoId, null, null);
@@ -164,7 +164,7 @@ public final class LocalQueuePatch {
                 fetchMetadataIfNeeded(item);
             }
 
-            Utils.showToastShort(str("morphe_local_queue_added"));
+            Utils.showSnackbarShort(str("morphe_local_queue_added"));
             notifyChanged();
         } catch (Exception ex) {
             Logger.printException(() -> "add failure", ex);
@@ -213,7 +213,7 @@ public final class LocalQueuePatch {
             lastAdvanceTime = System.currentTimeMillis();
             remove(videoId);
         } else {
-            Utils.showToastShort(str("morphe_local_queue_play_failed"));
+            Utils.showSnackbarShort(str("morphe_local_queue_play_failed"));
         }
     }
 

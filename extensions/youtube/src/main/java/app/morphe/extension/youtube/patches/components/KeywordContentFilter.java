@@ -128,7 +128,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
                     // language that does not use spaces between words.
 
                     // Do not reset the setting. Keep the invalid keywords so the user can fix the mistake.
-                    Utils.showToastLong(str("morphe_hide_keyword_toast_invalid_length", phrase, MINIMUM_KEYWORD_LENGTH));
+                    Utils.showSnackbarLong(str("morphe_hide_keyword_toast_invalid_length", phrase, MINIMUM_KEYWORD_LENGTH));
                     continue;
                 } else {
                     wholeWordMatching = false;
@@ -159,14 +159,14 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
 
                 if (phrasesWillHideAllVideos(phraseVariations, wholeWordMatching)) {
                     String toastMessage;
-                    // If whole word matching is off, but would pass with on, then show a different toast.
+                    // If whole word matching is off, but would pass with on, then show a different message.
                     if (!wholeWordMatching && !phrasesWillHideAllVideos(phraseVariations, true)) {
                         toastMessage = "morphe_hide_keyword_toast_invalid_common_whole_word_required";
                     } else {
                         toastMessage = "morphe_hide_keyword_toast_invalid_common";
                     }
 
-                    Utils.showToastLong(str(toastMessage, phrase));
+                    Utils.showSnackbarLong(str(toastMessage, phrase));
                     continue;
                 }
 
@@ -176,7 +176,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
                     if (existing == null) {
                         keywords.put(variation, wholeWordMatching);
                     } else if (existing != wholeWordMatching) {
-                        Utils.showToastLong(str("morphe_hide_keyword_toast_invalid_conflicting", phrase));
+                        Utils.showSnackbarLong(str("morphe_hide_keyword_toast_invalid_conflicting", phrase));
                         break;
                     }
                 }
@@ -274,7 +274,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
 
     @Override
     protected void onBroadFilterDetected(@Nullable String matched) {
-        Utils.showToastLong(str("morphe_hide_keyword_toast_invalid_broad", matched));
+        Utils.showSnackbarLong(str("morphe_hide_keyword_toast_invalid_broad", matched));
     }
 
     private void recordHide(StringFilterGroup matchedGroup, byte[] buffer, ContextInterface contextInterface) {

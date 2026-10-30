@@ -31,6 +31,8 @@ Second \"item\" text"</string>
     <string name="morphe_settings_screen_11_misc_title">Miscellaneous</string>
     <string name="morphe_settings_screen_12_video_title">Video</string>
     <string name="morphe_restore_old_settings_menus_title">Restore old YouTube settings screen</string>
+    <string name="morphe_native_snackbar_title">Show messages in YouTube snackbar</string>
+    <string name="morphe_native_snackbar_summary">Morphe messages, such as the confirmation of a player button, are shown in the YouTube snackbar instead of a popup</string>
 
     <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
     <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>
@@ -490,6 +492,16 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_post_image_download_failed">Could not download the image</string>
     <string name="morphe_post_image_download_not_found">No image found in this post</string>
 
+    <!-- interaction.posttranslate.postTranslatePatch -->
+    <string name="morphe_post_translate_title">Translate posts</string>
+    <string name="morphe_post_translate_summary">Adds a flyout menu item to translate content creator posts</string>
+    <string name="morphe_post_translate_language_title">Post translation language</string>
+    <string name="morphe_post_translate_flyout">Translate</string>
+    <string name="morphe_post_translate_flyout_original">Show original</string>
+    <string name="morphe_post_translate_started">Translating…</string>
+    <string name="morphe_post_translate_failed">Could not translate the post</string>
+    <string name="morphe_post_translate_same_language">The post is already in the translation language</string>
+
     <!-- interaction.ask.askFlyoutMenuPatch -->
     <string name="morphe_ask_summarize_flyout_menu_title">Add Ask item to flyout menu</string>
     <string name="morphe_ask_summarize_flyout_menu_summary">Adds a video summarize item to the feed flyout menu</string>
@@ -935,6 +947,8 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_fix_transcript_title">Fix transcript</string>
     <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
     <string name="morphe_captions_in_pip_title">Show captions in picture-in-picture</string>
+    <string name="morphe_stable_caption_blocks_title">Stable caption blocks</string>
+    <string name="morphe_stable_caption_blocks_summary">Group automatic captions into stable, readable blocks. Some words may appear before they are spoken. Restart required.</string>
 
     <!-- layout.buttons.navigation.navigationButtonsPatch -->
     <string name="morphe_navigation_buttons_screen_title">Navigation buttons</string>
@@ -1323,6 +1337,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
     <string name="morphe_miniplayer_screen_title">Miniplayer</string>
     <string name="morphe_miniplayer_screen_summary">Customize the appearance and behavior of the minimized video player</string>
+    <string name="morphe_miniplayer_not_available_title">Additional miniplayers</string>
+    <string name="morphe_miniplayer_not_available_summary">YouTube removed all additional miniplayers. To restore more miniplayer types, then patch YouTube 21.28.208 or older</string>
     <string name="morphe_miniplayer_type_title">Miniplayer type</string>
     <string name="morphe_miniplayer_hide_title_title">Hide title and channel</string>
     <string name="morphe_miniplayer_type_entry_0">Disabled</string>

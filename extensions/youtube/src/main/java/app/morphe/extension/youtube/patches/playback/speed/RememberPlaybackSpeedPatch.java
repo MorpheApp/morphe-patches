@@ -217,8 +217,8 @@ public final class RememberPlaybackSpeedPatch {
                     ? Settings.SHORTS_PLAYBACK_SPEED_DEFAULT
                     : Settings.PLAYBACK_SPEED_DEFAULT;
 
-            // Prevent toast spamming if using the 0.05x adjustments.
-            // Show exactly one toast after the user stops interacting with the speed menu.
+            // Prevent message spamming if using the 0.05x adjustments.
+            // Show exactly one message after the user stops interacting with the speed menu.
             final long now = System.currentTimeMillis();
             lastTimeSpeedChanged = now;
 
@@ -237,7 +237,7 @@ public final class RememberPlaybackSpeedPatch {
                 defaultSpeedSetting.save(finalPlaybackSpeed);
 
                 if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED_TOAST.get())
-                    Utils.showToastShort(str("morphe_remember_playback_speed_toast",
+                    Utils.showSnackbarShort(str("morphe_remember_playback_speed_toast",
                             (String.format(java.util.Locale.US, "%.2fx", finalPlaybackSpeed))));
             }, TOAST_DELAY_MILLISECONDS);
         } catch (Exception ex) {
@@ -258,8 +258,8 @@ public final class RememberPlaybackSpeedPatch {
             // Will already be in range, below line is just a fail-safe.
             playbackAudioPitch = Math.min(playbackAudioPitch, VideoInformation.PLAYBACK_AUDIO_PITCH_MAXIMUM);
 
-            // Prevent toast spamming if using the 0.05x adjustments.
-            // Show exactly one toast after the user stops interacting with the pitch menu.
+            // Prevent message spamming if using the 0.05x adjustments.
+            // Show exactly one message after the user stops interacting with the pitch menu.
             final long now = System.currentTimeMillis();
             lastTimePitchChanged = now;
 
@@ -277,9 +277,9 @@ public final class RememberPlaybackSpeedPatch {
                 }
                 Settings.PLAYBACK_AUDIO_PITCH_DEFAULT.save(finalPlaybackAudioPitch);
 
-                // Sharing toast with video speed
+                // Sharing message with video speed
                 if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED_TOAST.get()) {
-                    Utils.showToastShort(str("morphe_remember_playback_audio_pitch_toast",
+                    Utils.showSnackbarShort(str("morphe_remember_playback_audio_pitch_toast",
                             (String.format(java.util.Locale.US, "%.2fx", finalPlaybackAudioPitch))));
                 }
             }, TOAST_DELAY_MILLISECONDS);

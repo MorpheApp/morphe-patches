@@ -26,6 +26,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
+import app.morphe.patches.youtube.interaction.downloads.OfflineVideoEndpointFingerprint
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -128,6 +129,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
                 key = "morphe_sb_general",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
+                    SwitchPreference("morphe_sb_offline_segments", summary = true),
                     SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
                     SwitchPreference("morphe_sb_track_skip_count", summary = true),
                     TextPreference(
@@ -343,6 +345,13 @@ val sponsorBlockPatch = bytecodePatch(
                 )
             }
         }
+
+        // Save and remove the segments of downloaded videos.
+        OfflineVideoEndpointFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p3 .. p4 }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->" +
+                    "offlineVideoAction(Ljava/lang/String;Ljava/lang/Enum;)V"
+        )
 
         // FIXME: Skip buttons do not show in new player controls layout.
         //        Skip buttons may need to be added at runtime like other overlay buttons.
