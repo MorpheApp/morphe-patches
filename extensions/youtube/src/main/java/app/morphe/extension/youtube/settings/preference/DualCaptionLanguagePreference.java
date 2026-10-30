@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
-import app.morphe.extension.youtube.patches.DualCaptionTracks;
+import app.morphe.extension.youtube.patches.CaptionTracks;
 
 import java.text.Collator;
 import java.util.Arrays;
@@ -16,8 +16,9 @@ import java.util.Locale;
 public final class DualCaptionLanguagePreference extends CustomDialogListPreference {
     public DualCaptionLanguagePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setDependency("morphe_translate_caption_blocks");
         Locale locale = context.getResources().getConfiguration().getLocales().get(0);
-        String[] codes = DualCaptionTracks.languageCodes();
+        String[] codes = CaptionTracks.languageCodes();
         Collator collator = Collator.getInstance(locale);
         Arrays.sort(
                 codes,

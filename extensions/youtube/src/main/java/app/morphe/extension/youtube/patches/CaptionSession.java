@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /** One source clock. Translation delivery and display geometry never choose new cue times. */
-final class CaptionTranslationSession {
+final class CaptionSession {
     interface Translator {
         List<String> translate(String source, String target, List<String> texts) throws IOException;
     }
@@ -42,7 +42,7 @@ final class CaptionTranslationSession {
     private int lastIndex = -1;
     private Snapshot displayed;
 
-    CaptionTranslationSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
+    CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
             String primaryLanguage, String secondaryLanguage, Translator translator, Executor worker,
             Runnable changed, Runnable failed) {
         this.source = List.copyOf(source);

@@ -58,17 +58,11 @@ final class StableCaptionBlockPolicy {
         }
     }
 
-    final StableCaptionBlockPolicy secondary;
     private final List<Atom> atoms;
     private final int[] characters;
     private final boolean[] boundaries;
 
     private StableCaptionBlockPolicy(List<Atom> atoms) {
-        this(atoms, null);
-    }
-
-    private StableCaptionBlockPolicy(List<Atom> atoms, StableCaptionBlockPolicy secondary) {
-        this.secondary = secondary;
         this.atoms = List.copyOf(atoms);
         characters = new int[atoms.size() + 1];
         boundaries = new boolean[atoms.size() + 1];
@@ -201,35 +195,6 @@ final class StableCaptionBlockPolicy {
             Logger.printException(() -> "parse failure", ex);
             return null;
         }
-    }
-
-    static StableCaptionBlockPolicy parsePairs(Document primary, Document secondary) {
-        StableCaptionBlockPolicy first = parse(primary), second = parse(secondary);
-        return first == null || second == null ? null : first.withTranslation(second);
-    }
-
-    StableCaptionBlockPolicy withTranslation(StableCaptionBlockPolicy translated) {
-        return new StableCaptionBlockPolicy(atoms, translated);
-    }
-
-    /** Borrow only geometry when the secondary language outlasts the primary. */
-    long displayTemplateTime(long time) {
-        long primary = templateTime(time);
-        if (primary >= 0 || secondary == null || secondary.templateTime(time) < 0) return primary;
-        int low = 0, high = atoms.size() - 1;
-        while (low < high) {
-            int mid = (low + high + 1) >>> 1;
-            if (atoms.get(mid).start <= time) low = mid;
-            else high = mid - 1;
-        }
-        return atoms.get(low).start;
-    }
-
-    long frameKey(long time, long template) {
-        return secondary == null
-                ? template
-                : ((templateTime(time) + 1) << 32)
-                        | ((secondary.templateTime(time) + 1) & 0xffffffffL);
     }
 
     /**

@@ -201,7 +201,7 @@ public class PreferredCaptionLanguagePatch {
                                                            @Nullable Enum<?> selectType) {
         try {
             if (StableCaptionBlocks.blockTranslationEnabled() && (track == null || isExplicitlyDisabled(track)))
-                DualCaptionTracks.onSelectedTrack(null);
+                CaptionTracks.onSelectedTrack(null);
             final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
             Logger.printDebug(() -> "onSetSubtitleTrack track: " + track
                     + " selectType: " + selectType

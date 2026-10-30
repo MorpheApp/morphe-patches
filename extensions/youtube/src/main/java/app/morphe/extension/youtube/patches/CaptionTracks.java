@@ -14,17 +14,17 @@ import java.util.Map;
 import java.util.List;
 
 /** Captures the selected source and binds caption outputs to its lifecycle. */
-public final class DualCaptionTracks {
+public final class CaptionTracks {
     private static final ThreadLocal<Track> parsing = new ThreadLocal<>();
     private static String source, video, selectedInputLanguage;
     private static boolean selectionDisabled;
-    private static CaptionTranslationSession translatedSession;
+    private static CaptionSession translatedSession;
     private static StableCaptionBlockPolicy translatedPolicy;
     private static String translatedKey;
     private static Object translatedToken;
     private static final List<WeakReference<StableCaptionBlocks.State>> translatedStates = new ArrayList<>();
 
-    private DualCaptionTracks() {}
+    private CaptionTracks() {}
 
     private static final class Track {
         final String source, language, secondary, video;
@@ -154,8 +154,7 @@ public final class DualCaptionTracks {
                     || captured == null
                     || !current(track)
                     || !track.source.equals(captured.track.source)
-                    || !track.language.equals(captured.track.language)
-) return;
+                    || !track.language.equals(captured.track.language)) return;
             attachTranslation(track, captured.policy, state);
         } catch (RuntimeException | LinkageError ignored) {
             // An unsupported native result must not interrupt the selected track.
@@ -165,8 +164,7 @@ public final class DualCaptionTracks {
     private static boolean current(Track track) {
         return !selectionDisabled && (video == null || track.video.equals(video))
                 && (source == null || track.source.equals(source))
-                && (!StableCaptionBlocks.blockTranslationEnabled() || selectedInputLanguage == null
-                        || selectedInputLanguage.equals(track.language));
+                && (selectedInputLanguage == null || selectedInputLanguage.equals(track.language));
     }
 
     static synchronized boolean observe(Document document, StableCaptionBlocks.State state) {
@@ -174,12 +172,10 @@ public final class DualCaptionTracks {
         parsing.remove();
         if (track == null || !current(track)) return false;
         StableCaptionBlockPolicy primary =
-                state != null && state.fallbackPolicy != null
-                        ? state.fallbackPolicy
+                state != null && state.policy != null
+                        ? state.policy
                         : track.automatic
-                                ? StableCaptionBlocks.blockTranslationEnabled()
-                                        ? StableCaptionBlockPolicy.parseSource(document)
-                                        : StableCaptionBlockPolicy.parse(document)
+                                ? StableCaptionBlockPolicy.parseSource(document)
                                 : StableCaptionBlockPolicy.parseManual(document);
         if (primary == null) {
             if (StableCaptionBlocks.blockTranslationEnabled()) invalidateTranslation();
@@ -209,9 +205,9 @@ public final class DualCaptionTracks {
             Object token = new Object();
             translatedToken = token;
             translatedKey = key; translatedPolicy = policy;
-            translatedSession = new CaptionTranslationSession(policy.sourceBlocks(track.language),
+            translatedSession = new CaptionSession(policy.sourceBlocks(track.language),
                     track.language, primary, track.secondary, CaptionBlockTranslator.DEFAULT::translate,
-                    CaptionTranslationSession.worker(), () -> translationChanged(token),
+                    CaptionSession.worker(), () -> translationChanged(token),
                     () -> translationFailed(token));
         }
         state.translation = translatedSession;
@@ -223,7 +219,7 @@ public final class DualCaptionTracks {
 
     private static void translationChanged(Object token) {
         Utils.runOnMainThread(() -> {
-            synchronized (DualCaptionTracks.class) {
+            synchronized (CaptionTracks.class) {
                 if (token != translatedToken || translatedSession == null) return;
                 for (WeakReference<StableCaptionBlocks.State> reference : translatedStates) {
                     StableCaptionBlocks.State state = reference.get();
@@ -235,7 +231,7 @@ public final class DualCaptionTracks {
 
     private static void translationFailed(Object token) {
         Utils.runOnMainThread(() -> {
-            synchronized (DualCaptionTracks.class) {
+            synchronized (CaptionTracks.class) {
                 if (token != translatedToken) return;
                 Utils.showToastShort(StringRef.str("morphe_caption_block_translation_failed"));
             }

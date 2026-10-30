@@ -444,4 +444,39 @@ public class StableCaptionBlockPolicyTest {
         assertEquals("words", blocks.get(1).text);
     }
 
+    private static org.w3c.dom.Document doc(String body) {
+        return CaptionXml.read(("<timedtext format='3'><head/><body><w t='0' id='1'/>"
+                + body + "</body></timedtext>").getBytes(StandardCharsets.UTF_8));
+    }
+
+    @Test public void sourceSnapshotIsImmutable() {
+        var document = doc(p(0, 4000, "original"));
+        var source = StableCaptionBlockPolicy.parse(document);
+        document.getElementsByTagName("p").item(0).setTextContent("changed");
+        assertEquals("original", source.sourceBlocks("en").get(0).text);
+    }
+    @Test
+    public void manualPositionsAreNotEligibleForDualReflow() {
+        var positioned = doc(p(0, 4000, "hello"));
+        var head = positioned.getElementsByTagName("head").item(0);
+        var position = positioned.createElement("wp");
+        position.setAttribute("id", "1");
+        position.setAttribute("ah", "10");
+        position.setAttribute("av", "10");
+        head.appendChild(position);
+        assertNotNull(StableCaptionBlockPolicy.parse(positioned));
+        assertNull(StableCaptionBlockPolicy.parseManual(positioned));
+        var inline = doc(p(0, 4000, "hello"));
+        ((org.w3c.dom.Element) inline.getElementsByTagName("w").item(0)).setAttribute("wp", "1");
+        assertNull(StableCaptionBlockPolicy.parseManual(inline));
+    }
+
+    @Test
+    public void plainManualAndAutomaticWindowStylesRemainEligible() {
+        assertNotNull(StableCaptionBlockPolicy.parseManual(doc(p(0, 4000, "hello"))));
+        var automatic = doc(p(0, 4000, "hello"));
+        automatic.getElementsByTagName("head").item(0).appendChild(automatic.createElement("ws"));
+        assertNotNull(StableCaptionBlockPolicy.parse(automatic));
+        assertNull(StableCaptionBlockPolicy.parseManual(automatic));
+    }
 }

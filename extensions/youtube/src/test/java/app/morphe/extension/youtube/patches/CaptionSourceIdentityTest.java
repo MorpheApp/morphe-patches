@@ -14,16 +14,16 @@ public class CaptionSourceIdentityTest {
         };
     }
     @Test public void selectedSourceIdentitySurvivesNativeTranslationAndOpaqueSignatures() {
-        String source=DualCaptionTracks.sourceIdentity(track("en",URL,"a.en.audio_1"));
+        String source=CaptionTracks.sourceIdentity(track("en",URL,"a.en.audio_1"));
         assertNotNull(source);
-        assertEquals(source,DualCaptionTracks.sourceIdentity(track("de",URL+"&tlang=de","ta.en.audio_1.de")));
-        assertEquals(source,DualCaptionTracks.sourceIdentity(track("en",URL.replace("a%2Bb","other"),"a.en.audio_1")));
-        assertNotEquals(source,DualCaptionTracks.sourceIdentity(track("en",URL,"a.en.audio_2")));
+        assertEquals(source,CaptionTracks.sourceIdentity(track("de",URL+"&tlang=de","ta.en.audio_1.de")));
+        assertEquals(source,CaptionTracks.sourceIdentity(track("en",URL.replace("a%2Bb","other"),"a.en.audio_1")));
+        assertNotEquals(source,CaptionTracks.sourceIdentity(track("en",URL,"a.en.audio_2")));
     }
     @Test public void mismatchedOrUntrustedSourcesAreRejected() {
-        assertNull(DualCaptionTracks.sourceIdentity(track("de",URL+"&tlang=fr","ta.en.fr")));
-        assertNull(DualCaptionTracks.sourceIdentity(track("en",URL.replace("www.youtube.com","youtube.com.invalid"),"a.en")));
-        assertNull(DualCaptionTracks.sourceIdentity(track("en",URL.replace("kind=asr","kind=manual"),"a.en")));
-        assertNull(DualCaptionTracks.sourceIdentity(track("en",URL.replace("v=P6pcTK0wTYA","v=bad"),"a.en")));
+        assertNull(CaptionTracks.sourceIdentity(track("de",URL+"&tlang=fr","ta.en.fr")));
+        assertNull(CaptionTracks.sourceIdentity(track("en",URL.replace("www.youtube.com","youtube.com.invalid"),"a.en")));
+        assertNull(CaptionTracks.sourceIdentity(track("en",URL.replace("kind=asr","kind=manual"),"a.en")));
+        assertNull(CaptionTracks.sourceIdentity(track("en",URL.replace("v=P6pcTK0wTYA","v=bad"),"a.en")));
     }
 }

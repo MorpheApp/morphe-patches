@@ -16,7 +16,7 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import java.util.logging.Logger
 
-private const val TRACKS = "Lapp/morphe/extension/youtube/patches/DualCaptionTracks;"
+private const val TRACKS = "Lapp/morphe/extension/youtube/patches/CaptionTracks;"
 private object NativeCaptionHandlerErrorFingerprint : Fingerprint(
     returnType = "V", parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Exception;"),
     filters = listOf(string("CabrSubtitleTrackHandler.java"), string("error retrieving subtitle")),

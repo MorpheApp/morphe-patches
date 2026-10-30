@@ -57,7 +57,7 @@ public final class StableCaptionBlocks {
     }
 
     static boolean blockTranslationEnabled() {
-        return SUPPORTED && DualCaptionTracks.isAvailable() && Settings.TRANSLATE_CAPTION_BLOCKS.get();
+        return SUPPORTED && CaptionTracks.isAvailable() && Settings.TRANSLATE_CAPTION_BLOCKS.get();
     }
 
     public interface Timeline {
@@ -121,15 +121,12 @@ public final class StableCaptionBlocks {
     public static final class State {
         final boolean automatic;
         volatile StableCaptionBlockPolicy policy;
-        volatile CaptionTranslationSession translation;
-        DualCaptionTracks.Captured captured;
-        StableCaptionBlockPolicy fallbackPolicy;
-        volatile boolean dualPending;
-        boolean secondaryOverflowNotified;
+        volatile CaptionSession translation;
+        CaptionTracks.Captured captured;
+        boolean overflowNotified;
         private final Map<View, Cache> caches = new WeakHashMap<>();
         // Keep inner, outer portrait and outer landscape plans across native view recreation.
         private final List<Cache> ready = new ArrayList<>();
-        private Cache lastFallbackReady;
 
         State(boolean automatic) {
             this.automatic = automatic;
@@ -139,8 +136,8 @@ public final class StableCaptionBlocks {
     private static final class Cache {
         final int width, overlayInset;
         final TextPaint paint;
-        final StableCaptionBlockPolicy policy, fallbackPolicy;
-        volatile List<StableCaptionBlockPolicy.Block> blocks, secondaryBlocks, fallbackBlocks;
+        final StableCaptionBlockPolicy policy;
+        volatile List<StableCaptionBlockPolicy.Block> blocks;
         volatile boolean cancelled;
         StableCaptionBlockPolicy.Block last;
         CharSequence text;
@@ -148,7 +145,6 @@ public final class StableCaptionBlocks {
 
         Cache(int width, TextPaint paint, State state, int overlayInset) {
             this.policy = state.policy;
-            this.fallbackPolicy = state.fallbackPolicy;
             this.width = width;
             this.overlayInset = overlayInset;
             this.paint = new TextPaint();
@@ -178,7 +174,7 @@ public final class StableCaptionBlocks {
     static void setAutomaticTrack(boolean automatic) {
         if (!SUPPORTED) return;
         parsing.remove();
-        if (DualCaptionTracks.observing() || automatic && ENABLED) {
+        if (CaptionTracks.observing() || automatic && ENABLED) {
             parsing.set(new State(automatic));
         }
     }
@@ -190,32 +186,11 @@ public final class StableCaptionBlocks {
     static void capture(Document document) {
         State state = parsing.get();
         if (state != null && state.automatic && ENABLED)
-            state.fallbackPolicy = StableCaptionBlockPolicy.parse(document);
-        boolean observed = DualCaptionTracks.observe(document, state);
-        if (state != null && !observed && ENABLED)
-            state.policy = state.fallbackPolicy;
+            state.policy = StableCaptionBlockPolicy.parse(document);
+        CaptionTracks.observe(document, state);
     }
 
-    static void completePair(State state, StableCaptionBlockPolicy policy) {
-        updateState(state, policy, false);
-    }
-
-    static void updateState(State state, StableCaptionBlockPolicy policy, boolean pending) {
-        Utils.runOnMainThread(
-                () -> {
-                    for (Map.Entry<View, Cache> entry : state.caches.entrySet()) {
-                        entry.getValue().cancelled = true;
-                        entry.getKey().requestLayout();
-                    }
-                    state.caches.clear();
-                    state.lastFallbackReady = state.ready.isEmpty() ? null : state.ready.get(0);
-                    state.ready.clear();
-                    state.policy = policy;
-                    state.dualPending = pending;
-                });
-    }
-
-    static void refreshTranslation(State state, CaptionTranslationSession session) {
+    static void refreshTranslation(State state, CaptionSession session) {
         if (state.translation != session || !session.isActive()) return;
         for (View view : new ArrayList<>(state.caches.keySet())) if (view != null) view.requestLayout();
     }
@@ -260,14 +235,13 @@ public final class StableCaptionBlocks {
         try {
             State state = timeline.patch_getBlockState();
             if (state == null
-                    || state.dualPending && state.fallbackPolicy == null
                     || original == null
                     || original.size() > 1) return original;
             if (state.translation != null) {
                 if (!state.translation.isActive()) return Collections.emptyList();
                 state.translation.demand(time);
             }
-            long template = state.policy.displayTemplateTime(time);
+            long template = state.policy.templateTime(time);
             if (template < 0) return Collections.emptyList();
 
             List<?> source = original;
@@ -281,7 +255,7 @@ public final class StableCaptionBlocks {
                 return original;
             Object copy =
                     cue.patch_copyBlockFrame(
-                            new Frame(state, time, state.policy.frameKey(time, template)));
+                            new Frame(state, time, template));
             return copy == null ? original : Collections.singletonList(copy);
         } catch (Exception ex) {
             Logger.printException(() -> "present failure", ex);
@@ -378,43 +352,15 @@ public final class StableCaptionBlocks {
                 } else if (ready != null) {
                     frame.state.ready.remove(ready);
                     frame.state.ready.add(0, ready);
-                    cache.secondaryBlocks = ready.secondaryBlocks;
                     cache.blocks = ready.blocks;
-                    cache.fallbackBlocks = ready.fallbackBlocks;
                 } else {
-                    Cache previous = frame.state.lastFallbackReady;
-                    if (previous != null
-                            && previous.fallbackPolicy == cache.fallbackPolicy
-                            && previous.matches(probe))
-                        cache.fallbackBlocks = previous.fallbackBlocks;
                     Cache next = cache;
                     WeakReference<View> redraw = new WeakReference<>(view);
                     StableCaptionBlockPolicy policy = cache.policy;
-                    StableCaptionBlockPolicy fallback = cache.fallbackPolicy;
                     Utils.runOnBackgroundThread(
                             () -> {
                                 try {
-                                    List<StableCaptionBlockPolicy.Block> primary =
-                                            policy.plan(
-                                                    text ->
-                                                            (policy.secondary == null
-                                                                                    ? next.layout(
-                                                                                            text)
-                                                                                    : next
-                                                                                            .overlayLayout(
-                                                                                                    text))
-                                                                            .getLineCount()
-                                                                    <= 2);
-                                    // Overlay fitting is narrower, so this also fits native rows.
-                                    if (fallback != null) next.fallbackBlocks = primary;
-                                    if (policy.secondary != null)
-                                        next.secondaryBlocks =
-                                                policy.secondary.plan(
-                                                        text ->
-                                                                next.overlayLayout(text)
-                                                                                .getLineCount()
-                                                                        <= 2);
-                                    next.blocks = primary;
+                                    next.blocks = policy.plan(text -> next.layout(text).getLineCount() <= 2);
                                 } catch (CancellationException ex) {
                                     next.blocks = List.of();
                                 } catch (Exception ex) {
@@ -451,39 +397,6 @@ public final class StableCaptionBlocks {
                     cache.blocks == null
                             ? null
                             : StableCaptionBlockPolicy.at(cache.blocks, frame.time);
-            if (cache.policy.secondary != null) {
-                StableCaptionBlockPolicy.Block second =
-                        cache.secondaryBlocks == null
-                                ? null
-                                : StableCaptionBlockPolicy.at(cache.secondaryBlocks, frame.time);
-                if (cache.blocks != null) {
-                    String firstText = block != null && block.fits ? block.text : "";
-                    if (firstText.isEmpty() && cache.policy.templateTime(frame.time) >= 0) {
-                        StringBuilder nativeText = new StringBuilder();
-                        for (CharSequence line : nativeVisible) {
-                            if (nativeText.length() > 0) nativeText.append(' ');
-                            nativeText.append(line);
-                        }
-                        String fallback = nativeText.toString();
-                        if (cache.overlayLayout(fallback).getLineCount() <= 2) firstText = fallback;
-                    }
-                    if (second != null && !second.fits && !frame.state.secondaryOverflowNotified) {
-                        frame.state.secondaryOverflowNotified = true;
-                        Utils.showToastShort(str("morphe_secondary_captions_too_large"));
-                    }
-                    String secondText = second == null || !second.fits ? "" : second.text;
-                    DualCaptionOverlay.show(view, firstText, secondText, cache.paint, cache.width);
-                    replace(full, visible, firstText);
-                    return;
-                }
-                // A borrowed native cue is geometry only, never stale/future primary words.
-                if (cache.policy.templateTime(frame.time) < 0) {
-                    replace(full, visible, "");
-                    return;
-                }
-            }
-            if ((block == null || !block.fits) && cache.fallbackBlocks != null)
-                block = StableCaptionBlockPolicy.at(cache.fallbackBlocks, frame.time);
             if (block == null || !block.fits) return;
             if (cache.last != block) {
                 SpannableStringBuilder text = new SpannableStringBuilder(block.text);
@@ -502,8 +415,8 @@ public final class StableCaptionBlocks {
 
     private static void renderTranslation(View view, Frame frame, Cache cache,
             List<CharSequence> full, List<CharSequence> visible) {
-        CaptionTranslationSession session = frame.state.translation;
-        CaptionTranslationSession.Snapshot cue = session.snapshot(frame.time,
+        CaptionSession session = frame.state.translation;
+        CaptionSession.Snapshot cue = session.snapshot(frame.time,
                 app.morphe.extension.youtube.shared.VideoState.getCurrent()
                         == app.morphe.extension.youtube.shared.VideoState.PAUSED);
         if (cue == null) { replace(full, visible, ""); return; }
@@ -516,12 +429,13 @@ public final class StableCaptionBlocks {
             StableCaptionBlockPolicy.Block source = StableCaptionBlockPolicy.at(session.source, frame.time);
             first = source == null ? "" : source.text;
             second = "";
-            if (!frame.state.secondaryOverflowNotified) {
-                frame.state.secondaryOverflowNotified = true;
-                Utils.showToastShort(str("morphe_secondary_captions_too_large"));
+            if (!frame.state.overflowNotified) {
+                frame.state.overflowNotified = true;
+                Utils.showToastShort(str("morphe_caption_blocks_too_large"));
             }
         }
-        if (dual) DualCaptionOverlay.show(view, first, second, cache.paint, cache.width);
+        if (dual && (!overflow || cache.overlayLayout(first).getLineCount() <= 2))
+            DualCaptionOverlay.show(view, first, second, cache.paint, cache.width);
         replace(full, visible, first);
     }
 

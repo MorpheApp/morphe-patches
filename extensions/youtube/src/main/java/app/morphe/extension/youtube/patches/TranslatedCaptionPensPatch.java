@@ -80,7 +80,7 @@ public class TranslatedCaptionPensPatch {
         // A failed native getter must not leave the previous track state enabled.
         isAutoTranslatedTrack.set(translated);
         isTranslatedAutomaticTrack.set(translated && automatic);
-        DualCaptionTracks.setTrack(parsedTrack);
+        CaptionTracks.setTrack(parsedTrack);
         StableCaptionBlocks.setAutomaticTrack(automatic);
     }
 
@@ -91,7 +91,7 @@ public class TranslatedCaptionPensPatch {
      */
     public static InputStream repairInput(@Nullable InputStream input) throws IOException {
         boolean repair = Boolean.TRUE.equals(isTranslatedAutomaticTrack.get());
-        if (input == null || (!repair && !StableCaptionBlocks.isCapturing() && !DualCaptionTracks.observing())) return input;
+        if (input == null || (!repair && !StableCaptionBlocks.isCapturing() && !CaptionTracks.observing())) return input;
         CaptionInputReplay.Copy copy = CaptionInputReplay.copy(input, CaptionXml.MAX_BYTES);
         if (!copy.complete) return copy.input;
         Document document = CaptionXml.read(copy.bytes);

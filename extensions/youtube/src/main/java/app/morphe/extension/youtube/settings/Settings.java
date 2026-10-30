@@ -17,6 +17,7 @@ import android.os.Build;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.patches.CaptionTracks;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.patches.CustomFontPatch.FontType;
 import app.morphe.extension.shared.patches.DownloadMode;
@@ -413,9 +414,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", TRUE, true);
     public static final BooleanSetting CAPTIONS_IN_PIP = new BooleanSetting("morphe_captions_in_pip", TRUE);
     public static final BooleanSetting TRANSLATE_CAPTION_BLOCKS = new BooleanSetting("morphe_translate_caption_blocks", FALSE, true,
-            () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q);
+            () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && CaptionTracks.isAvailable());
     public static final StringSetting SECONDARY_CAPTION_LANGUAGE = new StringSetting("morphe_secondary_caption_language", "off", true,
-            () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q);
+            parent(TRANSLATE_CAPTION_BLOCKS));
     public static final BooleanSetting STABLE_CAPTION_BLOCKS = new BooleanSetting("morphe_stable_caption_blocks", FALSE, true,
             () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q);
 

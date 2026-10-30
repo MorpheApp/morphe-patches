@@ -1660,10 +1660,9 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_niconico_comments_max_length_title">Maksimum yorum uzunluğu</string>
   <string name="morphe_niconico_comments_max_length_summary">Bunu aşan karakter sayısına sahip yorumları gizler. Her emoji bir karakter olarak sayılır</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sınırsız</string>
-    <string name="morphe_translate_caption_blocks_title">Altyazı bloklarını çevir</string>
-    <string name="morphe_translate_caption_blocks_summary">Kaynak altyazı bloklarını Microsoft veya Google ile tercih edilen ve isteğe bağlı ikinci dile çevirir. Altyazı metni bu hizmetlere gönderilir.</string>
+    <string name="morphe_translate_caption_blocks_title">Altyazı blok düzeni</string>
+    <string name="morphe_translate_caption_blocks_summary">Orijinal veya çevrilmiş altyazıları sabit bloklar halinde gösterir. Çeviri için altyazı metni Microsoft veya Google hizmetlerine gönderilir.</string>
     <string name="morphe_caption_block_translation_failed">Altyazı çevirisi kullanılamıyor. Mevcut kaynak altyazılar gösteriliyor.</string>
     <string name="morphe_secondary_caption_language_title">İkinci altyazı dili (deneysel)</string>
-    <string name="morphe_secondary_captions_unavailable">Bu video için ikinci altyazı yüklenemedi.</string>
-    <string name="morphe_secondary_captions_too_large">İkinci altyazı sığmıyor. İki dili göstermek için altyazı boyutunu küçültün.</string>
+    <string name="morphe_caption_blocks_too_large">Altyazı bloğu sığmıyor. Kullanılabilir kaynak altyazı gösteriliyor.</string>
 </resources>
