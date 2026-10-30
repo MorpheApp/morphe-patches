@@ -1,14 +1,8 @@
-/*
- * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/pull/2528
- *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
- */
-
 package app.morphe.extension.music.patches.downloads;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.app.AlertDialog;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
@@ -244,6 +238,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 str("morphe_music_downloads_sort"));
         sort.setOnClickListener(v -> showSortMenu(sort));
         line.addView(sort, new LinearLayout.LayoutParams(dp(40), dp(40)));
+
+        ImageButton createPlaylist = icon("yt_outline_experimental_playlist_vd_theme_24",
+                "Create playlist from downloaded songs");
+        createPlaylist.setOnClickListener(v -> showCreatePlaylistDialog());
+        line.addView(createPlaylist, new LinearLayout.LayoutParams(dp(40), dp(40)));
 
         ImageButton deleteAll = icon("yt_outline_experimental_trash_can_vd_theme_24",
                 str("morphe_music_downloads_delete_all"));
@@ -530,11 +529,88 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private void showTrackMenu(View anchor, OfflineTrack track) {
         String[] items = {
                 str("morphe_music_downloads_play"),
+                "Create playlist from this song",
                 str("morphe_music_downloads_delete_track"),
         };
         showMenu(anchor, items, -1, position -> {
-            if (position == 1) confirmDelete(track);
-            else play(track);
+            if (position == 1) {
+                createPlaylistFromDownloadedTracks(track.displayTitle(), List.of(track));
+                return;
+            }
+            if (position == 2) {
+                confirmDelete(track);
+                return;
+            }
+            play(track);
+        });
+    }
+
+    private void showCreatePlaylistDialog() {
+        List<OfflineTrack> selectedTracks = new ArrayList<>();
+        for (OfflineTrack track : tracks) {
+            if (matchesQuery(track)) {
+                selectedTracks.add(track);
+            }
+        }
+
+        if (selectedTracks.isEmpty()) {
+            Utils.showToastShort("No downloaded songs available");
+            return;
+        }
+
+        final EditText input = new EditText(getActivity());
+        input.setHint("Playlist name");
+        input.setText("Downloaded songs");
+
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Create playlist")
+                .setView(input)
+                .setPositiveButton("Create", (dialog, which) -> {
+                    String title = input.getText() == null
+                            ? ""
+                            : input.getText().toString().trim();
+
+                    if (title.isEmpty()) {
+                        Utils.showToastShort("Playlist name cannot be empty");
+                        return;
+                    }
+
+                    createPlaylistFromDownloadedTracks(title, selectedTracks);
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    private void createPlaylistFromDownloadedTracks(String title, List<OfflineTrack> selectedTracks) {
+        List<String> videoIds = new ArrayList<>();
+        for (OfflineTrack track : selectedTracks) {
+            if (track.videoId() != null && !track.videoId().isBlank()) {
+                videoIds.add(track.videoId());
+            }
+        }
+
+        if (videoIds.isEmpty()) {
+            Utils.showToastShort("No valid songs to add");
+            return;
+        }
+
+        Utils.submitOnBackgroundThread(() -> {
+            try {
+                String playlistId = LocalDownloadsPlaylistHelper.createPlaylist(title, videoIds);
+                if (getActivity() == null) return null;
+                getActivity().runOnUiThread(() ->
+                        Utils.showToastShort(playlistId == null
+                                ? "Could not create playlist"
+                                : "Playlist created"));
+                return null;
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to create playlist from downloads", ex);
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() ->
+                            Utils.showToastShort("Could not create playlist"));
+                }
+                return null;
+            }
         });
     }
 
@@ -822,3 +898,4 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return String.format(Locale.ROOT, "%.1f", bytes / 1048576.0);
     }
 }
+
