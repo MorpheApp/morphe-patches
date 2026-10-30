@@ -225,10 +225,15 @@ public class PreferredCaptionLanguagePatch {
                                                            @Nullable Enum<?> selectType) {
         rememberSelection(subtitleManager, track);
         try {
+            final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
+            final boolean userSelection = interactionAllowed && selectType != null
+                    && PREFERRED_TRACK_SELECT_TYPE.equals(selectType.name())
+                    && SystemClock.uptimeMillis() - videoStartTime > USER_SELECTION_GRACE_PERIOD_MILLISECONDS;
             if (CaptionTracks.dualCaptionEnabled()
                     && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface translated) {
                 var parameters = AutoTranslateCaptionsPatch.captionParameters(translated.patch_getUrl());
                 if (parameters != null && parameters.containsKey("tlang")) {
+                    if (userSelection) userSelectedTrack.set(true);
                     CaptionTrackInterface source = blockTranslationSource(subtitleManager, track);
                     if (source instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original
                             && CaptionTracks.requestOutput(original, translated.patch_getLanguageCode())) {
@@ -239,16 +244,13 @@ public class PreferredCaptionLanguagePatch {
             }
             if (StableCaptionBlocks.blockLayoutEnabled() && (track == null || isExplicitlyDisabled(track)))
                 CaptionTracks.onSelectedTrack(null);
-            final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
             Logger.printDebug(() -> "onSetSubtitleTrack track: " + track
                     + " selectType: " + selectType
                     + " interactionAllowed: " + interactionAllowed
                     + " userSelectedTrack: " + userSelectedTrack.get());
 
             // Respect explicit user selection only after the initial video load window.
-            if (interactionAllowed
-                    && selectType != null && PREFERRED_TRACK_SELECT_TYPE.equals(selectType.name())
-                    && SystemClock.uptimeMillis() - videoStartTime > USER_SELECTION_GRACE_PERIOD_MILLISECONDS) {
+            if (userSelection) {
                 if (CaptionTracks.dualCaptionEnabled()
                         && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original
                         && CaptionTracks.sourceIdentity(original) != null) {
