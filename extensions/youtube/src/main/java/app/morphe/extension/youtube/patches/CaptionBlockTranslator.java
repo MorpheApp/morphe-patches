@@ -18,11 +18,20 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.BooleanSupplier;
+import java.util.concurrent.CancellationException;
 
 /** Blocking, worker-only translation of an ordered source batch. Scheduling belongs to the session. */
 final class CaptionBlockTranslator {
     interface ConnectionFactory { HttpURLConnection open(String url) throws IOException; }
     interface Clock { long millis(); }
+    static final class Failure extends IOException {
+        final long retryAfterMs;
+        final boolean retryable;
+        Failure(String message, long retryAfterMs, boolean retryable) {
+            super(message); this.retryAfterMs = retryAfterMs; this.retryable = retryable;
+        }
+    }
     static final CaptionBlockTranslator DEFAULT = new CaptionBlockTranslator(
             url -> Requester.openConnection(url), () -> System.nanoTime() / 1_000_000L);
     private static final int BUDGET_MS = 8000, MAX_BYTES = 256 * 1024;
@@ -43,6 +52,12 @@ final class CaptionBlockTranslator {
 
     List<String> translate(String sourceLanguage, String targetLanguage, List<String> sourceTexts)
             throws IOException {
+        return translate(sourceLanguage, targetLanguage, sourceTexts, () -> true);
+    }
+
+    List<String> translate(String sourceLanguage, String targetLanguage, List<String> sourceTexts,
+            BooleanSupplier active) throws IOException {
+        checkActive(active);
         String source = language(sourceLanguage), target = language(targetLanguage);
         if (sourceTexts == null || sourceTexts.isEmpty() || sourceTexts.size() > 5)
             throw new IOException("Caption batch must contain 1..5 texts");
@@ -57,62 +72,93 @@ final class CaptionBlockTranslator {
             if (value == null) missing.add(text);
         }
         if (missing.isEmpty()) return Collections.unmodifiableList(result);
-        if (clock.millis() < cooldownUntil) throw new IOException("Caption provider cooling down");
         long deadline = clock.millis() + BUDGET_MS;
         List<String> translated;
+        IOException failure = null;
         try {
-            // Reserve half the total budget for fallback if the primary stalls.
-            translated = microsoft(source, target, missing, Math.min(deadline, clock.millis() + BUDGET_MS / 2));
-        } catch (CooldownException terminal) {
-            throw terminal;
-        } catch (IOException failure) {
-            translated = google(source, target, missing, deadline);
+            translated = microsoft(source, target, missing, Math.min(deadline, clock.millis() + BUDGET_MS / 2), active);
+        } catch (IOException unavailable) {
+            failure = unavailable;
+            translated = new ArrayList<>(Collections.nCopies(missing.size(), null));
         }
-        // Only a fully validated batch is published or cached.
-        int next = 0;
-        synchronized (cache) {
-            for (int i = 0; i < result.size(); i++) if (result.get(i) == null) {
-                String value = translated.get(next++);
-                result.set(i, value);
-                cache.put(key(source, target, texts.get(i)), value);
+        List<String> fallbackTexts = new ArrayList<>();
+        for (int i = 0; i < missing.size(); i++) if (translated.get(i) == null) fallbackTexts.add(missing.get(i));
+        checkActive(active);
+        if (!fallbackTexts.isEmpty()) {
+            try {
+                List<String> fallback = google(source, target, fallbackTexts, deadline, active);
+                int next = 0;
+                for (int i = 0; i < translated.size(); i++) if (translated.get(i) == null)
+                    translated.set(i, fallback.get(next++));
+            } catch (IOException unavailable) {
+                if (failure == null) failure = unavailable;
+                else {
+                    long firstDelay = failure instanceof Failure typed ? typed.retryAfterMs : 0;
+                    long secondDelay = unavailable instanceof Failure typed ? typed.retryAfterMs : 0;
+                    boolean retryable = !(failure instanceof Failure first && !first.retryable
+                            && unavailable instanceof Failure second && !second.retryable);
+                    failure = new Failure("Caption providers unavailable", Math.max(firstDelay, secondDelay), retryable);
+                }
             }
         }
+        checkActive(active);
+        // Each validated result has a known source index; a failed sibling must not erase it.
+        int next = 0;
+        boolean available = false;
+        synchronized (cache) {
+            for (int i = 0; i < result.size(); i++) {
+                if (result.get(i) == null) {
+                    String value = translated.get(next++);
+                    result.set(i, value);
+                    if (value != null) cache.put(key(source, target, texts.get(i)), value);
+                }
+                available |= result.get(i) != null;
+            }
+        }
+        if (!available) throw failure == null ? new Failure("No valid caption translation", 0, false) : failure;
         return Collections.unmodifiableList(result);
     }
 
-    private List<String> microsoft(String source, String target, List<String> texts, long deadline)
+    private List<String> microsoft(String source, String target, List<String> texts, long deadline, BooleanSupplier active)
             throws IOException {
+        if (clock.millis() < cooldownUntil)
+            throw new Failure("Caption primary cooling down", cooldownUntil - clock.millis(), true);
         JSONArray body = new JSONArray();
         for (String text : texts) body.put(text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"));
         String response = request("https://edge.microsoft.com/translate/translatetext?from="
-                + encode(source) + "&to=" + encode(target) + "&isEnterpriseClient=false", body.toString(), deadline);
+                + encode(source) + "&to=" + encode(target) + "&isEnterpriseClient=false", body.toString(), deadline, active);
         try {
             JSONArray array = new JSONArray(response);
             if (array.length() != texts.size()) throw new IOException("Caption response count mismatch");
             List<String> values = new ArrayList<>();
             for (int i = 0; i < array.length(); i++) {
-                JSONArray translations = array.getJSONObject(i).getJSONArray("translations");
-                if (translations.length() != 1) throw new IOException("Unexpected translation count");
-                JSONObject item = translations.getJSONObject(0);
-                // Android getString coerces JSON null/numbers/objects; require actual strings.
-                Object returnedLanguage = item.get("to"), returnedText = item.get("text");
-                if (!(returnedLanguage instanceof String) || !(returnedText instanceof String))
-                    throw new IOException("Invalid caption translation fields");
-                if (!language((String) returnedLanguage).equals(target)) throw new IOException("Wrong caption language");
-                values.add(output((String) returnedText));
+                try {
+                    JSONArray translations = array.getJSONObject(i).getJSONArray("translations");
+                    if (translations.length() != 1) throw new IOException("Unexpected translation count");
+                    JSONObject item = translations.getJSONObject(0);
+                    Object returnedLanguage = item.get("to"), returnedText = item.get("text");
+                    if (!(returnedLanguage instanceof String) || !(returnedText instanceof String))
+                        throw new IOException("Invalid caption translation fields");
+                    if (!language((String) returnedLanguage).equals(target)) throw new IOException("Wrong caption language");
+                    values.add(output((String) returnedText));
+                } catch (JSONException | IOException invalidItem) { values.add(null); }
             }
             return values;
         } catch (JSONException e) { throw new IOException("Malformed caption response", e); }
     }
 
-    private List<String> google(String source, String target, List<String> texts, long deadline)
+    private List<String> google(String source, String target, List<String> texts, long deadline, BooleanSupplier active)
             throws IOException {
-        if (clock.millis() < googleCooldownUntil) throw new IOException("Caption fallback cooling down");
+        if (clock.millis() < googleCooldownUntil)
+            throw new Failure("Caption fallback cooling down", googleCooldownUntil - clock.millis(), true);
         List<String> values = new ArrayList<>();
+        IOException failure = null;
         for (String text : texts) {
-            String response = request("https://translate.googleapis.com/translate_a/single?client=gtx&sl="
-                    + encode(source) + "&tl=" + encode(target) + "&dt=t&q=" + encode(text), null, deadline);
             try {
+                if (clock.millis() < googleCooldownUntil)
+                    throw new Failure("Caption fallback cooling down", googleCooldownUntil - clock.millis(), true);
+                String response = request("https://translate.googleapis.com/translate_a/single?client=gtx&sl="
+                        + encode(source) + "&tl=" + encode(target) + "&dt=t&q=" + encode(text), null, deadline, active);
                 JSONArray segments = new JSONArray(response).getJSONArray(0);
                 StringBuilder value = new StringBuilder();
                 for (int i = 0; i < segments.length(); i++) {
@@ -121,12 +167,18 @@ final class CaptionBlockTranslator {
                     value.append((String) segment);
                 }
                 values.add(output(value.toString()));
-            } catch (JSONException e) { throw new IOException("Malformed caption fallback", e); }
+            } catch (JSONException | IOException invalidItem) {
+                failure = invalidItem instanceof IOException io ? io : new Failure("Malformed caption fallback", 0, false);
+                values.add(null);
+            }
         }
+        if (values.stream().allMatch(value -> value == null))
+            throw failure == null ? new Failure("No caption fallback result", 0, false) : failure;
         return values;
     }
 
-    private String request(String url, String body, long deadline) throws IOException {
+    private String request(String url, String body, long deadline, BooleanSupplier active) throws IOException {
+        checkActive(active);
         int remaining = remaining(deadline);
         HttpURLConnection connection = connections.open(url);
         try {
@@ -141,6 +193,7 @@ final class CaptionBlockTranslator {
                 connection.setFixedLengthStreamingMode(payload.length);
             }
             connection.connect();
+            checkActive(active);
             connection.setReadTimeout(remaining(deadline));
             if (payload != null) {
                 try (OutputStream stream = connection.getOutputStream()) {
@@ -149,20 +202,23 @@ final class CaptionBlockTranslator {
             }
             connection.setReadTimeout(remaining(deadline));
             int status = connection.getResponseCode();
+            checkActive(active);
             if (status == 403 || status == 429) {
                 long seconds = 60;
                 try { seconds = Long.parseLong(connection.getHeaderField("Retry-After")); }
                 catch (NumberFormatException ignored) {}
                 seconds = Math.max(1, Math.min(300, seconds));
-                cooldownUntil = clock.millis() + seconds * 1000;
-                throw new CooldownException();
+                long until = clock.millis() + seconds * 1000;
+                if (url.startsWith("https://edge.microsoft.com/")) cooldownUntil = until;
+                else googleCooldownUntil = until;
+                throw new Failure("Caption provider HTTP " + status, seconds * 1000, status == 429);
             }
             String location = connection.getHeaderField("Location");
             if (status >= 300 && status < 400 && url.startsWith("https://translate.googleapis.com/")
                     && location != null && (location.startsWith("https://www.google.com/sorry/")
                             || location.startsWith("https://google.com/sorry/"))) {
                 googleCooldownUntil = clock.millis() + 60000;
-                throw new IOException("Caption fallback requires verification");
+                throw new Failure("Caption fallback requires verification", 60000, true);
             }
             if (status != 200) throw new IOException("Caption provider HTTP " + status);
             try (InputStream stream = connection.getInputStream();
@@ -170,6 +226,7 @@ final class CaptionBlockTranslator {
                 byte[] buffer = new byte[4096];
                 int count;
                 while (true) {
+                    checkActive(active);
                     connection.setReadTimeout(remaining(deadline));
                     count = stream.read(buffer);
                     if (count == -1) break;
@@ -184,6 +241,10 @@ final class CaptionBlockTranslator {
             if (error != null) try { error.close(); } catch (IOException ignored) {}
             connection.disconnect();
         }
+    }
+
+    private static void checkActive(BooleanSupplier active) {
+        if (!active.getAsBoolean()) throw new CancellationException("Caption session superseded");
     }
 
     private int remaining(long deadline) throws IOException {
@@ -212,8 +273,5 @@ final class CaptionBlockTranslator {
     }
     private static String encode(String value) throws IOException {
         return URLEncoder.encode(value, "UTF-8");
-    }
-    private static final class CooldownException extends IOException {
-        CooldownException() { super("Caption provider rate limited or forbidden"); }
     }
 }

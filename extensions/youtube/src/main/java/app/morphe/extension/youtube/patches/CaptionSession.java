@@ -4,6 +4,7 @@ package app.morphe.extension.youtube.patches;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.function.LongSupplier;
 
 /** One source clock. Translation delivery and display geometry never choose new cue times. */
 final class CaptionSession {
@@ -33,7 +34,10 @@ final class CaptionSession {
     private final Translator translator;
     private final Executor worker;
     private final Runnable changed, failed;
-    private final byte[] status;
+    private final byte[] status, attempts;
+    private final long[] retryAt;
+    private final LongSupplier clock;
+    private float playbackRate = 1;
     private final Map<Integer, String[]> ready = new LinkedHashMap<Integer, String[]>(64, .75f, true) {
         @Override protected boolean removeEldestEntry(Map.Entry<Integer, String[]> entry) { return size() > 64; }
     };
@@ -45,12 +49,19 @@ final class CaptionSession {
     CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
             String primaryLanguage, String secondaryLanguage, Translator translator, Executor worker,
             Runnable changed, Runnable failed) {
+        this(source, sourceLanguage, primaryLanguage, secondaryLanguage, translator, worker,
+                changed, failed, () -> System.nanoTime() / 1_000_000L);
+    }
+    CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
+            String primaryLanguage, String secondaryLanguage, Translator translator, Executor worker,
+            Runnable changed, Runnable failed, LongSupplier clock) {
         this.source = List.copyOf(source);
         this.sourceLanguage = Objects.requireNonNull(sourceLanguage);
         this.primaryLanguage = Objects.requireNonNull(primaryLanguage);
         this.secondaryLanguage = primaryLanguage.equalsIgnoreCase(secondaryLanguage) ? null : secondaryLanguage;
         this.translator = translator; this.worker = worker; this.changed = changed; this.failed = failed;
-        status = new byte[source.size()];
+        status = new byte[source.size()]; attempts = new byte[source.size()];
+        retryAt = new long[source.size()]; this.clock = clock;
         long previousEnd = -1;
         for (var cue : source) {
             if (cue.start < previousEnd || cue.end <= cue.start) throw new IllegalArgumentException("Invalid source clock");
@@ -59,13 +70,15 @@ final class CaptionSession {
     }
     synchronized boolean isActive() { return active; }
     synchronized void invalidate() { active = false; ready.clear(); displayed = null; }
-    void demand(long time) {
+    void demand(long time) { demand(time, 1); }
+    void demand(long time, float speed) {
         synchronized (this) {
             if (!active) return;
             // A user seek may recover transient failures; ordinary frames never retry them.
             if (time < position - 250)
-                for (int i = 0; i < status.length; i++) if (status[i] == 3) status[i] = 0;
+                for (int i = 0; i < status.length; i++) if (status[i] == 3) { status[i] = attempts[i] = 0; retryAt[i] = 0; }
             position = time;
+            playbackRate = Float.isFinite(speed) && speed > 0 ? speed : 1;
             if (running || !needsTranslation()) return;
             running = true;
         }
@@ -79,23 +92,40 @@ final class CaptionSession {
         List<Integer> batch = new ArrayList<>();
         for (int i = 0; i < source.size() && batch.size() < 5; i++) {
             var cue = source.get(i);
-            if (cue.start > position + 30000) break;
-            if (cue.end <= position || status[i] == 1 || status[i] == 3) continue;
+            if (cue.start > position + (long) (30000 * Math.min(4, Math.max(1, playbackRate)))) break;
+            if (cue.end <= position || status[i] == 1
+                    || status[i] == 3 && (attempts[i] >= 3 || clock.getAsLong() < retryAt[i])) continue;
             if (status[i] == 2 && ready.containsKey(i)) continue;
-            if (!cue.fits || cue.end - cue.start < StableCaptionBlockPolicy.MIN_DURATION_MS) {
-                status[i] = 3; continue;
+            if (!cue.fits) {
+                status[i] = attempts[i] = 3; continue;
             }
             status[i] = 1; batch.add(i);
         }
         return batch;
     }
-    private List<String> translated(String target, List<String> texts) throws IOException {
-        if (target == null) return null;
-        if (sourceLanguage.equalsIgnoreCase(target)) return texts;
-        List<String> result = translator.translate(sourceLanguage, target, texts);
-        if (result == null || result.size() != texts.size()) throw new IOException("Incomplete caption batch");
-        for (String text : result) if (text == null || text.isBlank()) throw new IOException("Empty caption result");
-        return List.copyOf(result);
+    private List<String> translated(String target, List<Integer> batch, int slot) throws IOException {
+        if (target == null) return Collections.nCopies(batch.size(), "");
+        List<String> result = new ArrayList<>(), missing = new ArrayList<>();
+        for (int index : batch) {
+            String value;
+            synchronized (this) {
+                String[] cached = ready.get(index);
+                value = sourceLanguage.equalsIgnoreCase(target) ? source.get(index).text
+                        : cached == null ? null : cached[slot];
+            }
+            result.add(value);
+            if (value == null) missing.add(source.get(index).text);
+        }
+        if (missing.isEmpty()) return result;
+        List<String> translated = translator.translate(sourceLanguage, target, missing);
+        if (translated == null || translated.size() != missing.size())
+            throw new CaptionBlockTranslator.Failure("Incomplete caption batch", 0, false);
+        int next = 0;
+        for (int i = 0; i < result.size(); i++) if (result.get(i) == null) {
+            String value = translated.get(next++);
+            result.set(i, value == null || value.isBlank() ? null : value);
+        }
+        return result;
     }
     private void pump() {
         for (;;) {
@@ -105,29 +135,52 @@ final class CaptionSession {
                 batch = nextBatch();
                 if (batch.isEmpty()) { running = false; return; }
             }
-            List<String> texts = new ArrayList<>();
-            for (int index : batch) texts.add(source.get(index).text);
-            List<String> first = null, second = null;
-            boolean error = false;
-            try {
-                first = translated(primaryLanguage, texts);
-            } catch (IOException | RuntimeException failure) { error = true; }
-            synchronized (this) { if (!active) { running = false; return; } }
-            try {
-                second = translated(secondaryLanguage, texts);
-            } catch (IOException | RuntimeException failure) { error = true; }
-            boolean notifyFailure;
+            long delay = 0;
+            for (int slot = 0; slot < 2; slot++) {
+                List<String> output = null;
+                try {
+                    output = translated(slot == 0 ? primaryLanguage : secondaryLanguage, batch, slot);
+                } catch (IOException | RuntimeException failure) {
+                    if (failure instanceof CaptionBlockTranslator.Failure typed) {
+                        if (!typed.retryable) synchronized (this) {
+                            if (!active) { running = false; return; }
+                            for (int index : batch) {
+                                String[] values = ready.computeIfAbsent(index, ignored -> new String[2]);
+                                if (values[slot] == null) values[slot] = "";
+                            }
+                        }
+                        delay = Math.max(delay, typed.retryAfterMs);
+                    }
+                }
+                synchronized (this) {
+                    if (!active) { running = false; return; }
+                    if (output != null) for (int i = 0; i < batch.size(); i++) {
+                        String[] values = ready.computeIfAbsent(batch.get(i), ignored -> new String[2]);
+                        if (output.get(i) != null) values[slot] = output.get(i);
+                    }
+                }
+                // One slow target must not hold an already translated language off screen.
+                changed.run();
+                synchronized (this) { if (!active) { running = false; return; } }
+            }
+            boolean error = false, notifyFailure;
             synchronized (this) {
-                if (!active) { running = false; return; }
-                for (int i = 0; i < batch.size(); i++) {
-                    int index = batch.get(i);
-                    ready.put(index, new String[] {first == null ? null : first.get(i), second == null ? null : second.get(i)});
-                    status[index] = (byte) (error ? 3 : 2);
+                for (int index : batch) {
+                    String[] values = ready.get(index);
+                    boolean missing = values == null || values[0] == null
+                            || secondaryLanguage != null && values[1] == null;
+                    boolean failedOutput = values != null && ("".equals(values[0])
+                            || secondaryLanguage != null && "".equals(values[1]));
+                    if (missing) {
+                        attempts[index]++;
+                        retryAt[index] = clock.getAsLong() + Math.max(delay, 1000L << (attempts[index] - 1));
+                    } else attempts[index] = (byte) (failedOutput ? 3 : 0);
+                    status[index] = (byte) (missing || failedOutput ? 3 : 2);
+                    error |= missing || failedOutput;
                 }
                 notifyFailure = error && !failureReported;
                 failureReported |= error;
             }
-            changed.run();
             if (notifyFailure) failed.run();
         }
     }
@@ -147,11 +200,13 @@ final class CaptionSession {
         String[] output = ready.get(found);
         String first = primaryLanguage.equalsIgnoreCase(sourceLanguage) ? cue.text : output == null ? null : output[0];
         String second = secondaryLanguage == null ? "" : secondaryLanguage.equalsIgnoreCase(sourceLanguage) ? cue.text : output == null ? null : output[1];
+        if (first != null && first.isEmpty()) first = null;
+        if (secondaryLanguage != null && second != null && second.isEmpty()) second = null;
         boolean complete = first != null && second != null;
         Snapshot candidate = new Snapshot(cue, first == null ? cue.text : first, second == null ? "" : second, complete);
         boolean seekBack = lastDisplayTime != Long.MIN_VALUE && time < lastDisplayTime - 250;
         if (found != lastIndex || displayed == null || seekBack) displayed = candidate;
-        else if (!displayed.complete && (paused || cue.end - time >= StableCaptionBlockPolicy.MIN_DURATION_MS)
+        else if (!displayed.complete && (paused || cue.end - time >= StableCaptionBlockPolicy.MIN_DURATION_MS * (double) playbackRate)
                 && (!candidate.primary.equals(displayed.primary) || !candidate.secondary.equals(displayed.secondary)))
             displayed = candidate;
         lastIndex = found; lastDisplayTime = time;

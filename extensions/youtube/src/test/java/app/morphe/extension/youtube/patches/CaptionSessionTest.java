@@ -118,4 +118,80 @@ public class CaptionSessionTest {
         assertEquals("de:first source", session.snapshot(100).primary);
         session.demand(200); jobs.run(); assertEquals(2, calls.get());
     }
+    @Test public void shortSourceIsStillTranslated() {
+        Jobs jobs = new Jobs(); AtomicInteger requests = new AtomicInteger();
+        var session = new CaptionSession(List.of(new StableCaptionBlockPolicy.Block(0, 1000, "short", true)), "en", "de", null,
+                (f,t,texts) -> { requests.incrementAndGet(); return List.of("kurz"); }, jobs, () -> {}, () -> {});
+        session.demand(0); jobs.run();
+        assertEquals(1, requests.get()); assertEquals("kurz", session.snapshot(100).primary);
+    }
+    @Test public void alignedPartialResultsKeepSuccessfulSiblings() {
+        Jobs jobs = new Jobs();
+        var session = new CaptionSession(SOURCE, "en", "de", null,
+                (f,t,texts) -> Arrays.asList("eins", null), jobs, () -> {}, () -> {});
+        session.demand(0); jobs.run();
+        assertEquals("eins", session.snapshot(100).primary);
+        assertEquals("second source", session.snapshot(4100).primary);
+    }
+    @Test public void primaryPublishesBeforeSecondaryFinishes() {
+        Jobs jobs = new Jobs(); CaptionSession[] holder = new CaptionSession[1]; AtomicInteger updates = new AtomicInteger();
+        holder[0] = new CaptionSession(SOURCE, "en", "de", "tr", (f,t,texts) -> {
+            if (t.equals("tr")) { assertTrue(updates.get() > 0); assertEquals("de:first source", holder[0].snapshot(100).primary); }
+            return texts.stream().map(x -> t + ":" + x).toList();
+        }, jobs, updates::incrementAndGet, () -> {});
+        holder[0].demand(0); jobs.run();
+        assertEquals("tr:first source", holder[0].snapshot(100).secondary);
+    }
+
+    @Test public void transientRetryIsBoundedAndKeepsSuccessfulLanguage() {
+        Jobs jobs = new Jobs(); long[] now = {0}; AtomicInteger first = new AtomicInteger(), second = new AtomicInteger();
+        var session = new CaptionSession(SOURCE, "en", "de", "tr", (f,t,texts) -> {
+            if (t.equals("de")) { first.incrementAndGet(); return texts.stream().map(x -> "de:" + x).toList(); }
+            second.incrementAndGet(); throw new IOException("temporary");
+        }, jobs, () -> {}, () -> {}, () -> now[0]);
+        session.demand(0); jobs.run(); now[0] = 999; session.demand(100); jobs.run();
+        assertEquals(1, second.get());
+        now[0] = 1000; session.demand(200); jobs.run();
+        now[0] = 3000; session.demand(300); jobs.run();
+        now[0] = 60000; session.demand(400); jobs.run();
+        assertEquals(1, first.get()); assertEquals(3, second.get());
+        assertEquals("de:first source", session.snapshot(400).primary);
+    }
+    @Test public void retryHonorsProviderDelayAndRecoversWithoutSeek() {
+        Jobs jobs = new Jobs(); long[] now = {0}; AtomicInteger calls = new AtomicInteger();
+        var session = new CaptionSession(SOURCE, "en", "de", null, (f,t,texts) -> {
+            if (calls.incrementAndGet() == 1) throw new CaptionBlockTranslator.Failure("limited", 60000, true);
+            return texts.stream().map(x -> "de:" + x).toList();
+        }, jobs, () -> {}, () -> {}, () -> now[0]);
+        session.demand(0); jobs.run(); now[0] = 59999; session.demand(100); jobs.run(); assertEquals(1, calls.get());
+        now[0] = 60000; session.demand(200); jobs.run();
+        assertEquals(2, calls.get()); assertEquals("de:first source", session.snapshot(200).primary);
+    }
+    @Test public void fastPlaybackPreparesFurtherAheadAndPreservesSourceClock() {
+        Jobs jobs = new Jobs(); List<Integer> sizes = new ArrayList<>();
+        var session = new CaptionSession(SOURCE, "en", "de", null, (f,t,texts) -> {
+            sizes.add(texts.size()); return texts.stream().map(x -> "de:" + x).toList();
+        }, jobs, () -> {}, () -> {});
+        session.demand(0, 2); jobs.run(); assertEquals(List.of(3), sizes);
+        var cue = session.snapshot(32000); assertEquals(31000, cue.start); assertEquals(34000, cue.end);
+    }
+    @Test public void lateTranslationGuardUsesWallTimeAtPlaybackSpeed() {
+        Jobs jobs = new Jobs(); var session = new CaptionSession(SOURCE, "en", "de", null,
+                (f,t,texts) -> texts.stream().map(x -> "de:" + x).toList(), jobs, () -> {}, () -> {});
+        session.demand(0, 2); assertEquals("first source", session.snapshot(0).primary); jobs.run();
+        assertEquals("first source", session.snapshot(1000).primary);
+        assertEquals("de:first source", session.snapshot(1000, true).primary);
+    }
+
+    @Test public void terminalMissingResultDoesNotEraseCachedPrimarySibling() {
+        Jobs jobs = new Jobs(); long[] now = {0}; AtomicInteger calls = new AtomicInteger();
+        var session = new CaptionSession(SOURCE, "en", "de", "tr", (f,t,texts) -> {
+            if (!t.equals("de")) throw new IOException("secondary unavailable");
+            if (calls.incrementAndGet() == 1) return Arrays.asList("eins", null);
+            throw new CaptionBlockTranslator.Failure("unsupported", 0, false);
+        }, jobs, () -> {}, () -> {}, () -> now[0]);
+        session.demand(0); jobs.run(); now[0] = 1000; session.demand(100); jobs.run();
+        assertEquals("eins", session.snapshot(200).primary);
+    }
+
 }

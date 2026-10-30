@@ -22,7 +22,7 @@ public final class DualCaptionOverlay extends LinearLayout {
     private static final Map<View, WeakReference<DualCaptionOverlay>> layers = new WeakHashMap<>();
     private final Part primary, secondary;
     private final Map<View, Float> originalAlphas = new WeakHashMap<>();
-    private boolean active;
+    private boolean active, sizeNotified;
     private int requestedWidth;
     private WeakReference<CaptionSession> session = new WeakReference<>(null);
     private long cueStart = Long.MIN_VALUE;
@@ -72,7 +72,10 @@ public final class DualCaptionOverlay extends LinearLayout {
         boolean newSession = layer.session.get() != session;
         boolean reset = newSession || layer.cueStart != cueStart || layer.requestedWidth != width
                 || !layer.primary.paint.equalsForTextMeasurement(paint);
-        if (newSession) layer.session = new WeakReference<>(session);
+        if (newSession) {
+            layer.session = new WeakReference<>(session);
+            layer.sizeNotified = false;
+        }
         layer.cueStart = cueStart;
         layer.requestedWidth = width;
         layer.primary.configure(first, paint, style, reset, !complete);
@@ -102,6 +105,19 @@ public final class DualCaptionOverlay extends LinearLayout {
         layer.measure(
                 MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
                 MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+        if (view.getParent() instanceof View parent) {
+            int height = parent.getHeight() - parent.getPaddingTop() - parent.getPaddingBottom();
+            if (height > 0 && layer.getMeasuredHeight() + view.getPaddingTop()
+                    + view.getPaddingBottom() > height) {
+                begin(view); // Native children already contain the full primary translation.
+                if (!layer.sizeNotified) {
+                    layer.sizeNotified = true;
+                    app.morphe.extension.shared.Utils.showToastShort(
+                            app.morphe.extension.shared.StringRef.str("morphe_caption_blocks_too_large"));
+                }
+                return;
+            }
+        }
         window.patch_setCaptionMeasuredSize(
                 Math.max(
                         view.getMeasuredWidth(),

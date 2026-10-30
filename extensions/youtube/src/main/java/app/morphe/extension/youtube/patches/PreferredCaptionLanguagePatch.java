@@ -200,6 +200,18 @@ public class PreferredCaptionLanguagePatch {
                                                            @Nullable CaptionTrackInterface track,
                                                            @Nullable Enum<?> selectType) {
         try {
+            if (StableCaptionBlocks.blockTranslationEnabled()
+                    && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface translated) {
+                var parameters = AutoTranslateCaptionsPatch.captionParameters(translated.patch_getUrl());
+                if (parameters != null && parameters.containsKey("tlang")) {
+                    CaptionTrackInterface source = blockTranslationSource(subtitleManager, track);
+                    if (source instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original) {
+                        CaptionTracks.requestOutput(original, translated.patch_getLanguageCode());
+                        return source;
+                    }
+                    return track;
+                }
+            }
             if (StableCaptionBlocks.blockTranslationEnabled() && (track == null || isExplicitlyDisabled(track)))
                 CaptionTracks.onSelectedTrack(null);
             final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
@@ -212,6 +224,14 @@ public class PreferredCaptionLanguagePatch {
             if (interactionAllowed
                     && selectType != null && PREFERRED_TRACK_SELECT_TYPE.equals(selectType.name())
                     && SystemClock.uptimeMillis() - videoStartTime > USER_SELECTION_GRACE_PERIOD_MILLISECONDS) {
+                if (StableCaptionBlocks.blockTranslationEnabled()
+                        && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original
+                        && CaptionTracks.sourceIdentity(original) != null) {
+                    userSelectedTrack.set(true);
+                    CaptionTracks.requestOutput(original, original.patch_getLanguageCode());
+                    return track;
+                }
+                CaptionTracks.clearRequestedOutput();
                 if (isSameTrack(track, lastProgrammaticTrackLang, lastProgrammaticTrackVss)) {
                     Logger.printDebug(() -> "Ignoring PREFERRED_TRACK as it matches programmatic selection");
                     return track;
@@ -283,6 +303,18 @@ public class PreferredCaptionLanguagePatch {
         if (selected != null && (!(selected instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface automatic)
                 || !AutoTranslateCaptionsPatch.isAutomaticCaption(automatic.patch_getVssId(), automatic.patch_getUrl())))
             return null;
+        if (selected instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface translated
+                && AutoTranslateCaptionsPatch.captionParameters(translated.patch_getUrl()).containsKey("tlang")) {
+            String identity = CaptionTracks.sourceIdentity(translated);
+            List<CaptionTrackInterface> direct = manager.patch_getDirectCaptionTracks();
+            if (identity == null || direct == null) return null;
+            for (CaptionTrackInterface candidate : direct)
+                if (candidate instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original
+                        && identity.equals(CaptionTracks.sourceIdentity(original))
+                        && !AutoTranslateCaptionsPatch.captionParameters(original.patch_getUrl()).containsKey("tlang"))
+                    return candidate;
+            return null;
+        }
         AutoTranslateCaptionsPatch.CaptionTrackInterface source = AutoTranslateCaptionsPatch.findFallbackSource(
                 manager.patch_getDirectCaptionTracks(), manager.patch_getCaptionTranslationSource());
         return source != null && "asr".equals(AutoTranslateCaptionsPatch.captionParameters(

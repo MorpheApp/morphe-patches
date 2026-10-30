@@ -123,7 +123,6 @@ public final class StableCaptionBlocks {
         volatile StableCaptionBlockPolicy policy;
         volatile CaptionSession translation;
         CaptionTracks.Captured captured;
-        boolean overflowNotified;
         private final Map<View, Cache> caches = new WeakHashMap<>();
         // Keep inner, outer portrait and outer landscape plans across native view recreation.
         private final List<Cache> ready = new ArrayList<>();
@@ -134,7 +133,7 @@ public final class StableCaptionBlocks {
     }
 
     private static final class Cache {
-        final int width, overlayInset;
+        final int width;
         final TextPaint paint;
         final StableCaptionBlockPolicy policy;
         volatile List<StableCaptionBlockPolicy.Block> blocks;
@@ -143,23 +142,15 @@ public final class StableCaptionBlocks {
         CharSequence text;
         List<CharSequence> nativeFull, nativeVisible;
 
-        Cache(int width, TextPaint paint, State state, int overlayInset) {
+        Cache(int width, TextPaint paint, State state) {
             this.policy = state.policy;
             this.width = width;
-            this.overlayInset = overlayInset;
             this.paint = new TextPaint();
             this.paint.set(paint);
         }
 
         boolean matches(StaticLayout probe) {
             return width == probe.getWidth() && paint.equalsForTextMeasurement(probe.getPaint());
-        }
-
-        StaticLayout overlayLayout(String text) {
-            if (cancelled) throw new CancellationException();
-            return blockLayout(text, paint, Math.max(1, width - overlayInset))
-                    .setIncludePad(true)
-                    .build();
         }
 
         StaticLayout layout(String text) {
@@ -239,7 +230,7 @@ public final class StableCaptionBlocks {
                     || original.size() > 1) return original;
             if (state.translation != null) {
                 if (!state.translation.isActive()) return Collections.emptyList();
-                state.translation.demand(time);
+                state.translation.demand(time, VideoInformation.getPlaybackSpeed());
             }
             long template = state.policy.templateTime(time);
             if (template < 0) return Collections.emptyList();
@@ -324,18 +315,15 @@ public final class StableCaptionBlocks {
                     View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
             StaticLayout probe = row.patch_getCaptionLayout();
             if (probe == null || probe.getWidth() <= 0) return;
-            int overlayInset = Math.round(view.getResources().getDisplayMetrics().density * 4);
             if (cache == null
                     || cache.policy != frame.state.policy
-                    || cache.overlayInset != overlayInset
                     || !cache.matches(probe)) {
                 if (cache != null) cache.cancelled = true;
-                cache = new Cache(probe.getWidth(), probe.getPaint(), frame.state, overlayInset);
+                cache = new Cache(probe.getWidth(), probe.getPaint(), frame.state);
                 frame.state.caches.put(view, cache);
                 Cache ready = null;
                 for (Cache previous : frame.state.ready) {
                     if (previous.policy == cache.policy
-                            && previous.overlayInset == cache.overlayInset
                             && previous.matches(probe)) {
                         ready = previous;
                         break;
@@ -344,8 +332,7 @@ public final class StableCaptionBlocks {
                 if (frame.state.translation != null) {
                     cache.blocks = List.of();
                     Cache measured = cache;
-                    frame.state.ready.removeIf(prepared -> prepared.overlayInset == measured.overlayInset
-                            && prepared.width == measured.width
+                    frame.state.ready.removeIf(prepared -> prepared.width == measured.width
                             && prepared.paint.equalsForTextMeasurement(measured.paint));
                     frame.state.ready.add(0, cache);
                     if (frame.state.ready.size() > 3) frame.state.ready.remove(3);
@@ -374,8 +361,7 @@ public final class StableCaptionBlocks {
                                             if (!next.blocks.isEmpty()) {
                                                 frame.state.ready.removeIf(
                                                         prepared ->
-                                                                prepared.overlayInset == next.overlayInset
-                                                                        && prepared.width == next.width
+                                                                prepared.width == next.width
                                                                         && prepared.paint.equalsForTextMeasurement(next.paint));
                                                 frame.state.ready.add(0, next);
                                                 if (frame.state.ready.size() > 3)
@@ -421,20 +407,8 @@ public final class StableCaptionBlocks {
                         == app.morphe.extension.youtube.shared.VideoState.PAUSED);
         if (cue == null) { replace(full, visible, ""); return; }
         String first = cue.primary, second = cue.secondary;
-        boolean dual = session.secondaryLanguage != null;
-        StaticLayout firstLayout = dual ? cache.overlayLayout(first) : cache.layout(first);
-        boolean overflow = firstLayout.getLineCount() > 2
-                || dual && cache.overlayLayout(second).getLineCount() > 2;
-        if (overflow) {
-            StableCaptionBlockPolicy.Block source = StableCaptionBlockPolicy.at(session.source, frame.time);
-            first = source == null ? "" : source.text;
-            second = "";
-            if (!frame.state.overflowNotified) {
-                frame.state.overflowNotified = true;
-                Utils.showToastShort(str("morphe_caption_blocks_too_large"));
-            }
-        }
-        if (dual && (!overflow || cache.overlayLayout(first).getLineCount() <= 2))
+        StableCaptionBlockPolicy.Block source = StableCaptionBlockPolicy.at(session.source, frame.time);
+        if (session.secondaryLanguage != null && source != null && source.fits)
             DualCaptionOverlay.show(view, first, second, cache.paint, cache.width,
                     session, cue.start, cue.complete);
         replace(full, visible, first);

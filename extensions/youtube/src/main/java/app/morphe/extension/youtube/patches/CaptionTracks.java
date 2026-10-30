@@ -17,11 +17,12 @@ import java.util.List;
 public final class CaptionTracks {
     private static final ThreadLocal<Track> parsing = new ThreadLocal<>();
     private static String source, video, selectedInputLanguage;
+    private static String requestedSource, requestedTarget;
     private static boolean selectionDisabled;
     private static CaptionSession translatedSession;
     private static StableCaptionBlockPolicy translatedPolicy;
     private static String translatedKey;
-    private static Object translatedToken;
+    private static volatile Object translatedToken;
     private static final List<WeakReference<StableCaptionBlocks.State>> translatedStates = new ArrayList<>();
 
     private CaptionTracks() {}
@@ -88,6 +89,8 @@ public final class CaptionTracks {
             String key = sourceIdentity(track);
             if (key == null) return null;
             var parameters = AutoTranslateCaptionsPatch.captionParameters(track.patch_getUrl());
+            // A native translated response is an output, never the source of another translation.
+            if (parameters.containsKey("tlang")) return null;
             return new Track(
                     key,
                     AutoTranslateCaptionsPatch.getLanguageKey(track.patch_getLanguageCode()),
@@ -105,6 +108,7 @@ public final class CaptionTracks {
             source = null;
             selectedInputLanguage = null;
             selectionDisabled = false;
+            clearRequestedOutput();
             invalidateTranslation();
         }
     }
@@ -114,13 +118,37 @@ public final class CaptionTracks {
      */
     public static synchronized void onSelectedTrack(Object object) {
         Track track = track(object);
-        if (track == null) { selectionDisabled = true; selectedInputLanguage = null; invalidateTranslation(); return; }
+        if (track == null) { selectionDisabled = true; selectedInputLanguage = null; clearRequestedOutput(); invalidateTranslation(); return; }
         onVideoId(track.video);
         selectionDisabled = false;
         selectedInputLanguage = track.language;
+        if (!track.source.equals(requestedSource)) clearRequestedOutput();
         if (translatedKey != null && !translatedKey.startsWith(track.source + "|" + track.language + "|"))
             invalidateTranslation();
         source = track.source;
+    }
+
+    static synchronized void requestOutput(AutoTranslateCaptionsPatch.CaptionTrackInterface original,
+            String target) {
+        var parameters = AutoTranslateCaptionsPatch.captionParameters(original.patch_getUrl());
+        onVideoId(parameters.get("v"));
+        requestedSource = sourceIdentity(original);
+        requestedTarget = AutoTranslateCaptionsPatch.getLanguageKey(target);
+        List<StableCaptionBlocks.State> cached = new ArrayList<>();
+        for (WeakReference<StableCaptionBlocks.State> ref : translatedStates) {
+            StableCaptionBlocks.State state = ref.get();
+            if (state != null && state.captured != null
+                    && state.captured.track.source.equals(requestedSource)) cached.add(state);
+        }
+        invalidateTranslation();
+        for (StableCaptionBlocks.State state : cached) {
+            attachTranslation(state.captured.track, state.captured.policy, state);
+        }
+        translationChanged(translatedToken);
+    }
+
+    static synchronized void clearRequestedOutput() {
+        requestedSource = requestedTarget = null;
     }
 
     public static void setTrack(Object object) {
@@ -198,6 +226,7 @@ public final class CaptionTracks {
         String primary = PreferredCaptionLanguagePatch.blockTranslationTarget(track.language,
                 Settings.PREFERRED_CAPTION_LANGUAGE.get(), PreferredCaptionLanguagePatch.hasUserSelectedTrack(),
                 Requester.getAppLocale());
+        if (track.source.equals(requestedSource)) primary = requestedTarget;
         String key = track.source + "|" + track.language + "|" + primary + "|" + track.secondary;
         if (translatedSession == null || !translatedSession.isActive()
                 || translatedPolicy != policy || !key.equals(translatedKey)) {
@@ -206,7 +235,9 @@ public final class CaptionTracks {
             translatedToken = token;
             translatedKey = key; translatedPolicy = policy;
             translatedSession = new CaptionSession(policy.sourceBlocks(track.language),
-                    track.language, primary, track.secondary, CaptionBlockTranslator.DEFAULT::translate,
+                    track.language, primary, track.secondary,
+                    (from, to, texts) -> CaptionBlockTranslator.DEFAULT.translate(from, to, texts,
+                            () -> translatedToken == token),
                     CaptionSession.worker(), () -> translationChanged(token),
                     () -> translationFailed(token));
         }

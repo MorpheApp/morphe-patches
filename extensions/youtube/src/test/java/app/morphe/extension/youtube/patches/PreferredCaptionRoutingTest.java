@@ -141,4 +141,19 @@ public class PreferredCaptionRoutingTest {
         assertEquals("en", PreferredCaptionLanguagePatch.blockTranslationTarget("en", "off", false, Locale.ENGLISH));
         assertEquals("de", PreferredCaptionLanguagePatch.blockTranslationTarget("en", "default", false, Locale.GERMANY));
     }
+    @Test public void nativeTranslationResolvesItsExactOriginalSource() {
+        Source english = new Source("en", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=en&kind=asr", "a.en");
+        Source german = new Source("de", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=de&kind=asr", "a.de");
+        Source translated = new Source("fr", english.url + "&tlang=fr", "ta.en.fr");
+        var manager = new PreferredCaptionLanguagePatch.SubtitleManagerInterface() {
+            public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getDirectCaptionTracks() { return List.of(english, german); }
+            public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getAutoTranslateCaptionTracks() { return List.of(translated); }
+            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCaptionTranslationSource() { return german; }
+        };
+        assertSame(english, PreferredCaptionLanguagePatch.blockTranslationSource(manager, translated));
+        Source missing = new Source("fr", english.url.replace("a.en", "a.es").replace("lang=en", "lang=es") + "&tlang=fr", "ta.es.fr");
+        assertNull(PreferredCaptionLanguagePatch.blockTranslationSource(manager, missing));
+        assertSame(german, PreferredCaptionLanguagePatch.blockTranslationSource(manager, german));
+    }
+
 }
