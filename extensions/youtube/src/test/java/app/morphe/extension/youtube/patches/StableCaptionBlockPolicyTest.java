@@ -495,6 +495,16 @@ public class StableCaptionBlockPolicyTest {
         }
         assertEquals("First\nphrase.", document.getElementsByTagName("p").item(0).getTextContent());
     }
+    @Test public void punctuationLeadingManualCueCannotMergeAcrossAuthorBoundary() {
+        var manual = StableCaptionBlockPolicy.parseManual(doc(p(1000, 1000, "First") + p(2200, 1800, ", continued.")));
+        assertNotNull(manual);
+        for (var blocks : List.of(manual.sourceBlocks("en"), manual.plan(text -> true))) {
+            assertEquals(2, blocks.size());
+            assertEquals("First", blocks.get(0).text);
+            assertEquals(2000, blocks.get(0).end);
+            assertEquals(2200, blocks.get(1).start);
+        }
+    }
     @Test public void standardBottomCenterManualWindowIsEligible() {
         String xml = "<timedtext format='3'><head><ws id='0'/><ws id='1' ju='2'/>"
                 + "<wp id='0'/><wp id='1' ap='7' ah='50' av='100' rc='2' cc='40'/></head>"

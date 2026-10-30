@@ -104,7 +104,11 @@ public class PreferredCaptionLanguagePatch {
             }
 
             if (CaptionTracks.dualCaptionEnabled() && !userSelectedTrack.get()) {
-                CaptionTrackInterface source = blockTranslationSource(subtitleManager, originalTrack);
+                // The native default is not an explicit source choice. Only an existing
+                // translation needs its exact original resolved to retain the requested target.
+                boolean translated = originalTrack instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface input
+                        && AutoTranslateCaptionsPatch.captionParameters(input.patch_getUrl()).containsKey("tlang");
+                CaptionTrackInterface source = blockTranslationSource(subtitleManager, translated ? originalTrack : null);
                 if (source != null) {
                     if ("off".equalsIgnoreCase(Settings.PREFERRED_CAPTION_LANGUAGE.get())
                             && originalTrack instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface selected

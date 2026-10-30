@@ -298,7 +298,7 @@ final class StableCaptionBlockPolicy {
     }
 
     private boolean boundary(int at) {
-        if (at >= atoms.size()) return true;
+        if (at >= atoms.size() || atoms.get(at).barrierBefore) return true;
         if (!boundaries[at]) return false;
         String raw = atoms.get(at).text;
         String next = raw.stripLeading();

@@ -17,7 +17,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.cloneMutable
@@ -58,10 +57,6 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 "Stable caption blocks requires YouTube 21.10+"
             )
         }
-
-        settingsMenuCaptionGroup.add(
-            SwitchPreference("morphe_stable_caption_blocks", summary = true)
-        )
 
         settingsMenuCaptionGroup.add(ListPreference(
             "morphe_secondary_caption_language",

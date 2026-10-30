@@ -945,8 +945,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_fix_transcript_title">Fix transcript</string>
     <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
     <string name="morphe_captions_in_pip_title">Show captions in picture-in-picture</string>
-    <string name="morphe_stable_caption_blocks_title">Stable caption blocks</string>
-    <string name="morphe_stable_caption_blocks_summary">Group automatic captions into stable, readable blocks. Some words may appear before they are spoken. Restart required.</string>
 
     <!-- layout.buttons.navigation.navigationButtonsPatch -->
     <string name="morphe_navigation_buttons_screen_title">Navigation buttons</string>
