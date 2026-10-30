@@ -21,7 +21,7 @@ import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.settings.preference.DualCaptionLanguagePreference;
+import app.morphe.extension.youtube.settings.preference.CaptionLanguagePreference;
 
 /** Native captions-menu control; language selection shares the Morphe preference catalogue. */
 public final class CaptionMenu {
@@ -121,7 +121,7 @@ public final class CaptionMenu {
         toggle.setChecked(CaptionTracks.dualCaptionEnabled());
         toggle.setOnCheckedChangeListener((button, enabled) -> {
             if (enabled && AutoTranslateCaptionsPatch.translationLanguage(Settings.SECONDARY_CAPTION_LANGUAGE.get()) == null) {
-                DualCaptionLanguagePreference languages = new DualCaptionLanguagePreference(context, null);
+                CaptionLanguagePreference languages = new CaptionLanguagePreference(context, null);
                 CharSequence[] values = languages.getEntryValues();
                 Dialog dialog = CustomDialogListPreference.createListDialog(context,
                     StringRef.str("morphe_secondary_caption_language_title"), languages.getEntries(), values,

@@ -342,7 +342,11 @@ public final class CaptionTracks {
         });
     }
 
-    public static String[] languageCodes() {
-        return AutoTranslateCaptionsPatch.translationLanguages();
+    public static String[] languageCodes(String selected) {
+        return AutoTranslateCaptionsPatch.translationLanguages(selected);
+    }
+
+    public static String languageName(String code, java.util.Locale locale) {
+        return AutoTranslateCaptionsPatch.translationLanguageName(code, locale);
     }
 }

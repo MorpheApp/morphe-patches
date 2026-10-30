@@ -63,7 +63,7 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
 
         settingsMenuCaptionGroup.add(ListPreference(
             "morphe_secondary_caption_language",
-            tag = "app.morphe.extension.youtube.settings.preference.DualCaptionLanguagePreference",
+            tag = "app.morphe.extension.youtube.settings.preference.CaptionLanguagePreference",
             entriesKey = null,
             entryValuesKey = null,
         ))

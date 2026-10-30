@@ -46,7 +46,12 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
     execute {
         settingsMenuCaptionGroup.add(
-            ListPreference("morphe_preferred_caption_language")
+            ListPreference(
+                "morphe_preferred_caption_language",
+                tag = "app.morphe.extension.youtube.settings.preference.CaptionLanguagePreference",
+                entriesKey = null,
+                entryValuesKey = null,
+            )
         )
 
         // Add interfaces and helper methods to allow extension code to call obfuscated code.
