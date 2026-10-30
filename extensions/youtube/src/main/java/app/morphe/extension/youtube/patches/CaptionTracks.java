@@ -47,7 +47,7 @@ public final class CaptionTracks {
     public static boolean isAvailable() { return isPatchIncluded(); }
 
     public static boolean dualCaptionEnabled() {
-        return StableCaptionBlocks.blockTranslationEnabled()
+        return StableCaptionBlocks.blockLayoutEnabled()
                 && AutoTranslateCaptionsPatch.translationLanguage(Settings.SECONDARY_CAPTION_LANGUAGE.get()) != null;
     }
 
@@ -84,7 +84,7 @@ public final class CaptionTracks {
     }
 
     private static Track track(Object object) {
-        if (!StableCaptionBlocks.blockTranslationEnabled()) return null;
+        if (!StableCaptionBlocks.blockLayoutEnabled()) return null;
         String target =
                 AutoTranslateCaptionsPatch.translationLanguage(
                         Settings.SECONDARY_CAPTION_LANGUAGE.get());
@@ -134,23 +134,26 @@ public final class CaptionTracks {
         source = track.source;
     }
 
-    static synchronized void requestOutput(AutoTranslateCaptionsPatch.CaptionTrackInterface original,
+    static synchronized boolean requestOutput(AutoTranslateCaptionsPatch.CaptionTrackInterface original,
             String target) {
-        var parameters = AutoTranslateCaptionsPatch.captionParameters(original.patch_getUrl());
-        onVideoId(parameters.get("v"));
-        requestedSource = sourceIdentity(original);
+        Track selected = track(original);
+        if (selected == null) return false;
+        onVideoId(selected.video);
+        requestedSource = selected.source;
         requestedTarget = AutoTranslateCaptionsPatch.getLanguageKey(target);
         List<StableCaptionBlocks.State> cached = new ArrayList<>();
         for (WeakReference<StableCaptionBlocks.State> ref : translatedStates) {
             StableCaptionBlocks.State state = ref.get();
             if (state != null && state.captured != null
-                    && state.captured.track.source.equals(requestedSource)) cached.add(state);
+                    && state.captured.track.source.equals(requestedSource)
+                    && state.captured.track.language.equals(selected.language)) cached.add(state);
         }
         invalidateTranslation();
         for (StableCaptionBlocks.State state : cached) {
-            attachTranslation(state.captured.track, state.captured.policy, state);
+            attachTranslation(selected, state.captured.policy, state);
         }
         translationChanged(translatedToken);
+        return true;
     }
 
     static synchronized void clearRequestedOutput() {
@@ -212,7 +215,7 @@ public final class CaptionTracks {
                                 ? StableCaptionBlockPolicy.parseSource(document)
                                 : StableCaptionBlockPolicy.parseManual(document);
         if (primary == null) {
-            if (StableCaptionBlocks.blockTranslationEnabled()) invalidateTranslation();
+            if (StableCaptionBlocks.blockLayoutEnabled()) invalidateTranslation();
             return false;
         }
         if (state != null) state.captured = new Captured(track, primary);

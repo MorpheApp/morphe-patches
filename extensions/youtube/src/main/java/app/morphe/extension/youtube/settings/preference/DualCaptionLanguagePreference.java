@@ -36,4 +36,11 @@ public final class DualCaptionLanguagePreference extends CustomDialogListPrefere
         setEntries(labels);
         setEntryValues(values);
     }
+    @Override
+    public CharSequence getSummary() {
+        CharSequence selected = getEntry();
+        return (selected == null ? "" : selected + "\n")
+                + StringRef.str("morphe_translate_caption_blocks_summary");
+    }
+
 }

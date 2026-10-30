@@ -413,12 +413,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
     public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", TRUE, true);
     public static final BooleanSetting CAPTIONS_IN_PIP = new BooleanSetting("morphe_captions_in_pip", TRUE);
-    public static final BooleanSetting TRANSLATE_CAPTION_BLOCKS = new BooleanSetting("morphe_translate_caption_blocks", FALSE, true,
-            () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && CaptionTracks.isAvailable());
-    public static final StringSetting SECONDARY_CAPTION_LANGUAGE = new StringSetting("morphe_secondary_caption_language", "off", true,
-            parent(TRANSLATE_CAPTION_BLOCKS));
-    public static final BooleanSetting STABLE_CAPTION_BLOCKS = new BooleanSetting("morphe_stable_caption_blocks", FALSE, true,
+    public static final BooleanSetting STABLE_CAPTION_BLOCKS = new BooleanSetting("morphe_stable_caption_blocks", TRUE, true,
             () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q);
+    public static final StringSetting SECONDARY_CAPTION_LANGUAGE = new StringSetting("morphe_secondary_caption_language", "off", true,
+            parentsAll(parent(STABLE_CAPTION_BLOCKS),
+                    () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && CaptionTracks.isAvailable()));
 
     // Miniplayer
     public static final BooleanSetting MINIPLAYER_DISABLE_RESUMING = new BooleanSetting("morphe_miniplayer_disable_resuming", FALSE, true);
@@ -918,7 +917,19 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = new BooleanSetting("morphe_disable_translucent_navigation_bar_dark", FALSE);
     private static final BooleanSetting DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION = new BooleanSetting("morphe_disable_translucent_navigation", FALSE);
 
+    /** Preserve stored choices when retiring the experimental second block switch. */
+    private static void migrateCaptionBlocks() {
+        String oldKey = "morphe_translate_caption_blocks";
+        if (Setting.preferences.preferences.contains(oldKey)) {
+            boolean oldStable = Setting.preferences.preferences.contains(STABLE_CAPTION_BLOCKS.key)
+                    && Setting.preferences.getBoolean(STABLE_CAPTION_BLOCKS.key, false);
+            STABLE_CAPTION_BLOCKS.save(oldStable || Setting.preferences.getBoolean(oldKey, false));
+        }
+        Setting.preferences.removeKey(oldKey);
+    }
+
     static {
+        migrateCaptionBlocks();
         migrateOldSettingToNew(DEPRECATED_BYPASS_URL_REDIRECTS, BYPASS_LINK_REDIRECTS);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL, DEPRECATED_COPY_VIDEO_URL_BUTTON);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_TIMESTAMP, DEPRECATED_COPY_VIDEO_URL_BUTTON_TIMESTAMP);

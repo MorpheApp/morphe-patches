@@ -101,7 +101,15 @@ public class PreferredCaptionLanguagePatch {
 
             if (CaptionTracks.dualCaptionEnabled() && !userSelectedTrack.get()) {
                 CaptionTrackInterface source = blockTranslationSource(subtitleManager, originalTrack);
-                if (source != null) return recordProgrammaticSelection(source);
+                if (source != null) {
+                    if ("off".equalsIgnoreCase(Settings.PREFERRED_CAPTION_LANGUAGE.get())
+                            && originalTrack instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface selected
+                            && AutoTranslateCaptionsPatch.captionParameters(selected.patch_getUrl()).containsKey("tlang")
+                            && source instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original
+                            && !CaptionTracks.requestOutput(original, selected.patch_getLanguageCode()))
+                        return originalTrack;
+                    return recordProgrammaticSelection(source);
+                }
             }
             String prefLang = Settings.PREFERRED_CAPTION_LANGUAGE.get();
             Logger.printDebug(() -> "getPreferredCaptionTrack orig: " + originalTrack + " prefLang: " + prefLang);
@@ -205,14 +213,14 @@ public class PreferredCaptionLanguagePatch {
                 var parameters = AutoTranslateCaptionsPatch.captionParameters(translated.patch_getUrl());
                 if (parameters != null && parameters.containsKey("tlang")) {
                     CaptionTrackInterface source = blockTranslationSource(subtitleManager, track);
-                    if (source instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original) {
-                        CaptionTracks.requestOutput(original, translated.patch_getLanguageCode());
+                    if (source instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original
+                            && CaptionTracks.requestOutput(original, translated.patch_getLanguageCode())) {
                         return source;
                     }
                     return track;
                 }
             }
-            if (StableCaptionBlocks.blockTranslationEnabled() && (track == null || isExplicitlyDisabled(track)))
+            if (StableCaptionBlocks.blockLayoutEnabled() && (track == null || isExplicitlyDisabled(track)))
                 CaptionTracks.onSelectedTrack(null);
             final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
             Logger.printDebug(() -> "onSetSubtitleTrack track: " + track

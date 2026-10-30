@@ -47,7 +47,7 @@ private const val EXTENSION_TIMELINE_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/StableCaptionBlocks$Timeline;"
 
 internal val stableCaptionBlocksPatch = bytecodePatch(
-    description = "Adds an option to show automatic captions in stable two-line blocks.",
+    description = "Shows automatic captions in stable blocks with optional bilingual translation.",
 ) {
     // The window measure method must be patched first, since this inserts instructions before it.
     dependsOn(versionCheckPatch, translatedCaptionPensPatch, captionWindowMeasurePatch)
@@ -61,10 +61,6 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
 
         settingsMenuCaptionGroup.add(
             SwitchPreference("morphe_stable_caption_blocks", summary = true)
-        )
-
-        settingsMenuCaptionGroup.add(
-            SwitchPreference("morphe_translate_caption_blocks", summary = true)
         )
 
         settingsMenuCaptionGroup.add(ListPreference(

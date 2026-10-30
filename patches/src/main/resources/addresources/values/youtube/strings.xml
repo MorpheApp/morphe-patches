@@ -1833,8 +1833,7 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
-    <string name="morphe_translate_caption_blocks_title">Caption block layout</string>
-    <string name="morphe_translate_caption_blocks_summary">Show original or translated captions in stable blocks. Caption text is sent to Microsoft or Google when translation is needed.</string>
+    <string name="morphe_translate_caption_blocks_summary">A second language uses Microsoft or Google to translate the original caption blocks.</string>
     <string name="morphe_caption_block_translation_failed">Some caption translations are unavailable. Showing available captions.</string>
     <string name="morphe_secondary_caption_language_title">Secondary caption language (experimental)</string>
     <string name="morphe_caption_blocks_too_large">Both caption languages do not fit in this player. Showing the primary language.</string>

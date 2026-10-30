@@ -44,7 +44,6 @@ public final class StableCaptionBlocks {
      */
     private static final boolean SUPPORTED = isPatchIncluded()
             && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q;
-    private static final boolean ENABLED = SUPPORTED && Settings.STABLE_CAPTION_BLOCKS.get();
 
     private StableCaptionBlocks() {}
 
@@ -56,8 +55,8 @@ public final class StableCaptionBlocks {
         return SUPPORTED;
     }
 
-    static boolean blockTranslationEnabled() {
-        return SUPPORTED && CaptionTracks.isAvailable() && Settings.TRANSLATE_CAPTION_BLOCKS.get();
+    static boolean blockLayoutEnabled() {
+        return SUPPORTED && CaptionTracks.isAvailable() && Settings.STABLE_CAPTION_BLOCKS.get();
     }
 
     public interface Timeline {
@@ -165,7 +164,7 @@ public final class StableCaptionBlocks {
     static void setAutomaticTrack(boolean automatic) {
         if (!SUPPORTED) return;
         parsing.remove();
-        if (CaptionTracks.observing() || automatic && ENABLED) {
+        if (CaptionTracks.observing() || automatic && Settings.STABLE_CAPTION_BLOCKS.get()) {
             parsing.set(new State(automatic));
         }
     }
@@ -176,7 +175,7 @@ public final class StableCaptionBlocks {
 
     static void capture(Document document) {
         State state = parsing.get();
-        if (state != null && state.automatic && ENABLED)
+        if (state != null && state.automatic && Settings.STABLE_CAPTION_BLOCKS.get())
             state.policy = StableCaptionBlockPolicy.parse(document);
         CaptionTracks.observe(document, state);
     }
@@ -447,7 +446,8 @@ public final class StableCaptionBlocks {
             float spacingMult,
             float spacingAdd,
             boolean includePad) {
-        if (ENABLED && text instanceof Spanned spans && spans.getSpanStart(FIXED_PARAGRAPH) >= 0) {
+        if (SUPPORTED && Settings.STABLE_CAPTION_BLOCKS.get()
+                && text instanceof Spanned spans && spans.getSpanStart(FIXED_PARAGRAPH) >= 0) {
             return blockLayout(text, paint, width)
                     .setLineSpacing(spacingAdd, spacingMult)
                     .setIncludePad(includePad)
