@@ -144,10 +144,11 @@ public final class AutoTranslateCaptionsPatch {
 
     /** Keep YouTube's native menu construction and its other availability checks. */
     public static int getTranslationCount(int nativeCount,
-            List<? extends PreferredCaptionLanguagePatch.CaptionTrackInterface> directTracks) {
+            List<? extends PreferredCaptionLanguagePatch.CaptionTrackInterface> directTracks,
+            PreferredCaptionLanguagePatch.CaptionTrackInterface defaultSource) {
         try {
             return nativeCount > 0 || !Settings.AUTO_TRANSLATE_ADDITIONAL_LANGUAGES.get()
-                    || findFallbackSource(directTracks, null) == null ? nativeCount : 1;
+                    || findFallbackSource(directTracks, defaultSource) == null ? nativeCount : 1;
         } catch (Exception ex) {
             Logger.printException(() -> "getTranslationCount failure", ex);
             return nativeCount;
