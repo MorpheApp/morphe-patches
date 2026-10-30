@@ -80,15 +80,39 @@ final class StableCaptionBlockPolicy {
         for (int i = 1; i < atoms.size(); i++) boundaries[i] = lines.isBoundary(offsets[i]);
     }
 
-    /** Authored styles and positions belong to the native renderer. */
+    /** Accept ordinary bottom-center authored captions, leaving special layouts native. */
     static StableCaptionBlockPolicy parseManual(Document document) {
         if (document == null) return null;
-        for (String tag : List.of("pen", "wp", "ws"))
-            if (document.getElementsByTagName(tag).getLength() != 0) return null;
+        for (String tag : List.of("wp", "ws")) {
+            NodeList definitions = document.getElementsByTagName(tag);
+            for (int i = 0; i < definitions.getLength(); i++) {
+                Element e = (Element) definitions.item(i);
+                if (!children(e).isEmpty()) return null;
+                if (tag.equals("wp")) {
+                    if (!attributes(e, "id", "ap", "ah", "av", "rc", "cc")
+                            || !defaultValue(e, "ap", "7") || !defaultValue(e, "ah", "50")
+                            || !defaultValue(e, "av", "100")) return null;
+                } else if (!attributes(e, "id", "ju") || !defaultValue(e, "ju", "2")) return null;
+            }
+        }
         NodeList windows = document.getElementsByTagName("w");
-        for (int i = 0; i < windows.getLength(); i++)
-            if (!attributes((Element) windows.item(i), "t", "id")) return null;
-        return parse(document);
+        for (int i = 0; i < windows.getLength(); i++) {
+            Element window = (Element) windows.item(i);
+            if (!attributes(window, "t", "id", "wp", "ws")) return null;
+            for (String tag : List.of("wp", "ws")) {
+                if (!window.hasAttribute(tag)) continue;
+                NodeList definitions = document.getElementsByTagName(tag);
+                int matches = 0;
+                for (int j = 0; j < definitions.getLength(); j++)
+                    if (window.getAttribute(tag).equals(((Element) definitions.item(j)).getAttribute("id"))) matches++;
+                if (matches != 1) return null;
+            }
+        }
+        return parse(document, false, true);
+    }
+
+    private static boolean defaultValue(Element element, String name, String value) {
+        return !element.hasAttribute(name) || element.getAttribute(name).equals(value);
     }
 
     static StableCaptionBlockPolicy parse(Document d) {
@@ -101,6 +125,10 @@ final class StableCaptionBlockPolicy {
     }
 
     private static StableCaptionBlockPolicy parse(Document d, boolean source) {
+        return parse(d, source, false);
+    }
+
+    private static StableCaptionBlockPolicy parse(Document d, boolean source, boolean manual) {
         try {
             if (d == null || d.getElementsByTagName("pen").getLength() != 0) return null;
             Element root = d.getDocumentElement(), body = null;
@@ -110,13 +138,13 @@ final class StableCaptionBlockPolicy {
                     body = e;
                 }
             if (body == null) return null;
-            String window = null;
+            String window = manual ? "" : null;
             List<Atom> atoms = new ArrayList<>();
             long previousParagraph = -1;
             boolean barrier = false;
             for (Element e : children(body)) {
                 if (e.getTagName().equals("w")) {
-                    if (window != null || number(e, "t") != 0 || e.getAttribute("id").isEmpty())
+                    if (window != null && !window.isEmpty() || number(e, "t") != 0 || e.getAttribute("id").isEmpty())
                         return null;
                     window = e.getAttribute("id");
                     continue;
@@ -139,6 +167,17 @@ final class StableCaptionBlockPolicy {
                 previousParagraph = start;
                 List<Element> segments = children(e);
                 if (segments.size() > 2048) return null;
+                if (manual) {
+                    if (e.hasAttribute("p") || e.hasAttribute("a")
+                            || !atoms.isEmpty() && start < atoms.get(atoms.size() - 1).end) return null;
+                    for (Element segment : segments)
+                        if (!segment.getTagName().equals("s") || !children(segment).isEmpty()
+                                || !attributes(segment, "t", "ac")
+                                || segment.hasAttribute("t") && number(segment, "t") != 0) return null;
+                    if (!add(atoms, start, start + duration,
+                            e.getTextContent().replaceAll("[\\r\\n]+", " "), true, true)) return null;
+                    continue;
+                }
                 int before = atoms.size();
                 long previousOffset = -1;
                 boolean first = true;

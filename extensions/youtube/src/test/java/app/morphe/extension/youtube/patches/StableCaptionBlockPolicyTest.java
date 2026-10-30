@@ -477,6 +477,37 @@ public class StableCaptionBlockPolicyTest {
         var automatic = doc(p(0, 4000, "hello"));
         automatic.getElementsByTagName("head").item(0).appendChild(automatic.createElement("ws"));
         assertNotNull(StableCaptionBlockPolicy.parse(automatic));
-        assertNull(StableCaptionBlockPolicy.parseManual(automatic));
+        assertNotNull(StableCaptionBlockPolicy.parseManual(automatic));
     }
+    @Test public void manualCuesKeepTheirOwnClockAndDoNotMergeAcrossShortGaps() {
+        var document = CaptionXml.read(("<timedtext format='3'><head/><body>"
+                + "<p t='1000' d='1000'>First\nphrase.</p>"
+                + "<p t='2200' d='1800'>Next phrase.</p></body></timedtext>").getBytes(StandardCharsets.UTF_8));
+        var manual = StableCaptionBlockPolicy.parseManual(document);
+        assertNotNull(manual);
+        for (var blocks : List.of(manual.sourceBlocks("en"), manual.plan(text -> true))) {
+            assertEquals(2, blocks.size());
+            assertEquals("First phrase.", blocks.get(0).text);
+            assertEquals(1000, blocks.get(0).start);
+            assertEquals(2000, blocks.get(0).end);
+            assertEquals(2200, blocks.get(1).start);
+            assertEquals(4000, blocks.get(1).end);
+        }
+        assertEquals("First\nphrase.", document.getElementsByTagName("p").item(0).getTextContent());
+    }
+    @Test public void standardBottomCenterManualWindowIsEligible() {
+        String xml = "<timedtext format='3'><head><ws id='0'/><ws id='1' ju='2'/>"
+                + "<wp id='0'/><wp id='1' ap='7' ah='50' av='100' rc='2' cc='40'/></head>"
+                + "<body><w t='0' id='1' wp='1' ws='1'/>"
+                + p(1000, 3000, "Normal caption.") + "</body></timedtext>";
+        assertNotNull(StableCaptionBlockPolicy.parseManual(CaptionXml.read(xml.getBytes(StandardCharsets.UTF_8))));
+        assertNull(StableCaptionBlockPolicy.parseManual(CaptionXml.read(xml.replace("ah='50'", "ah='10'").getBytes(StandardCharsets.UTF_8))));
+        assertNull(StableCaptionBlockPolicy.parseManual(CaptionXml.read(xml.replace("ju='2'", "ju='0'").getBytes(StandardCharsets.UTF_8))));
+        assertNull(StableCaptionBlockPolicy.parseManual(CaptionXml.read(xml.replace("ws='1'", "ws='9'").getBytes(StandardCharsets.UTF_8))));
+    }
+    @Test public void manualOverlapsAndTimedKaraokeStayNative() {
+        assertNull(StableCaptionBlockPolicy.parseManual(doc(p(1000, 3000, "one") + p(2000, 3000, "two"))));
+        assertNull(StableCaptionBlockPolicy.parseManual(doc(p(1000, 3000, s(0, "one") + s(500, " two")))));
+    }
+
 }
