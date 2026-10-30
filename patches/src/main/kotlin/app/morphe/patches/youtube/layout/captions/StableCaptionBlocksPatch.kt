@@ -16,7 +16,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.CaptionsOldBottomSheetLayoutInflaterFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.layout.flyout.FeedBottomSheetFlyoutFingerprint
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
@@ -31,8 +30,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import java.util.logging.Logger
 

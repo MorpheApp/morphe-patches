@@ -38,10 +38,7 @@ public final class StableCaptionBlocks {
     private static final ThreadLocal<State> parsing = new ThreadLocal<>();
     private static final Object FIXED_PARAGRAPH = new Object();
 
-    /**
-     * Text paint measurement comparison requires Android 10.
-     * The setting requires restarting the app.
-     */
+    /** Block rendering is supported on Android 10 and later. */
     private static final boolean SUPPORTED = isPatchIncluded()
             && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q;
 
