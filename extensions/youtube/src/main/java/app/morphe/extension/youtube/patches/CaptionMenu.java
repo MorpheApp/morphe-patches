@@ -6,7 +6,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.content.res.ColorStateList;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import android.widget.ListView;
@@ -63,13 +62,18 @@ public final class CaptionMenu {
         View view = dialog.findViewById(id);
         if (!(view instanceof ViewGroup list) || !(list.getParent() instanceof ViewGroup parent)) return;
         pendingSheet = false;
-        if (list instanceof ListView || menus.containsKey(list)) return;
+        if (list instanceof ListView) return;
+        if (menus.containsKey(list)) {
+            if (list.getParent() instanceof LinearLayout wrapper) moveHeaderInset(list, wrapper);
+            return;
+        }
         try {
             int index = parent.indexOfChild(list);
             ViewGroup.LayoutParams params = list.getLayoutParams();
             LinearLayout wrapper = new LinearLayout(list.getContext());
             wrapper.setOrientation(LinearLayout.VERTICAL);
             Switch toggle = createToggle(list.getContext());
+            moveHeaderInset(list, wrapper);
             parent.removeView(list);
             wrapper.addView(toggle, new LinearLayout.LayoutParams(-1, -2));
             wrapper.addView(list, new LinearLayout.LayoutParams(-1, -2, 1));
@@ -78,6 +82,14 @@ public final class CaptionMenu {
         } catch (Exception ex) {
             Logger.printException(() -> "Unable to decorate bilingual caption sheet", ex);
         }
+    }
+
+    /** The native recycler reserves space underneath its overlaid sheet header. */
+    private static void moveHeaderInset(View list, LinearLayout wrapper) {
+        int inset = list.getPaddingTop();
+        if (inset == 0) return;
+        wrapper.setPaddingRelative(0, inset, 0, 0);
+        list.setPaddingRelative(list.getPaddingStart(), 0, list.getPaddingEnd(), list.getPaddingBottom());
     }
 
     private static Switch createToggle(android.content.Context context) {
@@ -95,14 +107,13 @@ public final class CaptionMenu {
             toggle.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, null, null, null);
             toggle.setCompoundDrawablePadding(padding);
         }
-        int thumb = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "mtrl_switch_thumb");
-        int track = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "mtrl_switch_track");
+        int thumb = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "settings_switch_selector");
+        int track = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "settings_switch_track");
         if (thumb != 0 && track != 0) {
             toggle.setThumbDrawable(context.getDrawable(thumb));
             toggle.setTrackDrawable(context.getDrawable(track));
-            toggle.setThumbTintList(ColorStateList.valueOf(ThemeUtils.getDialogBackgroundColor()));
-            toggle.setTrackTintList(new ColorStateList(new int[][]{{android.R.attr.state_checked}, {}},
-                    new int[]{ThemeUtils.getAppForegroundColor(), ThemeUtils.getAppForegroundColor() & 0x66ffffff}));
+            toggle.setThumbTintList(null);
+            toggle.setTrackTintList(null);
             toggle.setShowText(false);
         }
         toggle.setGravity(Gravity.CENTER_VERTICAL);
