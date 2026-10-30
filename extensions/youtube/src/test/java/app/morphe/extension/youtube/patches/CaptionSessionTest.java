@@ -17,6 +17,28 @@ public class CaptionSessionTest {
         public void execute(Runnable r) { queue.add(r); }
         void run() { while (!queue.isEmpty()) queue.remove().run(); }
     }
+    @Test public void fastPrefetchCannotCycleThroughEvictedTranslations() {
+        assertBoundedPrefetch(1500, 4);
+    }
+    @Test public void denseAuthoredCuesCannotCycleAtNormalSpeed() {
+        assertBoundedPrefetch(300, 1);
+    }
+    private void assertBoundedPrefetch(int duration, float speed) {
+        List<StableCaptionBlockPolicy.Block> cues = new ArrayList<>();
+        for (int i = 0; i < 70; i++) cues.add(new StableCaptionBlockPolicy.Block(
+                (long) i * duration, (long) (i + 1) * duration, "cue" + i, true));
+        AtomicInteger calls = new AtomicInteger();
+        var session = new CaptionSession(cues, "en", "de", null, (from, to, texts) -> {
+            assertTrue("Prefetch must finish without revisiting evicted blocks", calls.incrementAndGet() < 30);
+            return texts.stream().map(text -> "de:" + text).toList();
+        }, Runnable::run, () -> {}, () -> {});
+        session.demand(0, speed);
+        assertTrue(session.isActive());
+        assertEquals("de:cue0", session.snapshot(0).primary);
+        session.demand(6L * duration, speed);
+        assertEquals("de:cue69", session.snapshot(69L * duration).primary);
+        assertTrue(calls.get() <= 15);
+    }
     @Test public void outputsUseOneSourceClockAndOneBoundedDemand() {
         Jobs jobs = new Jobs(); List<String> requests = new ArrayList<>();
         var session = new CaptionSession(SOURCE, "en", "de", "tr",

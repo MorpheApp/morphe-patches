@@ -20,6 +20,8 @@ final class CaptionSession {
             this.primary = primary; this.secondary = secondary; this.complete = complete;
         }
     }
+    private static final int CACHE_CAPACITY = 64;
+
     private static final class Worker {
         static final Executor INSTANCE = new ThreadPoolExecutor(1, 1, 30, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(1), task -> {
@@ -38,8 +40,8 @@ final class CaptionSession {
     private final long[] retryAt;
     private final LongSupplier clock;
     private float playbackRate = 1;
-    private final Map<Integer, String[]> ready = new LinkedHashMap<Integer, String[]>(64, .75f, true) {
-        @Override protected boolean removeEldestEntry(Map.Entry<Integer, String[]> entry) { return size() > 64; }
+    private final Map<Integer, String[]> ready = new LinkedHashMap<Integer, String[]>(CACHE_CAPACITY, .75f, true) {
+        @Override protected boolean removeEldestEntry(Map.Entry<Integer, String[]> entry) { return size() > CACHE_CAPACITY; }
     };
     private boolean active = true, running, failureReported;
     private long position, lastDisplayTime = Long.MIN_VALUE;
@@ -91,12 +93,16 @@ final class CaptionSession {
     }
     private List<Integer> nextBatch() {
         List<Integer> batch = new ArrayList<>();
-        for (int i = 0; i < source.size() && batch.size() < 5; i++) {
+        int first = 0;
+        while (first < source.size() && source.get(first).end <= position) first++;
+        // Never prefetch more blocks than can remain cached, or evictions requeue completed work.
+        int limit = Math.min(source.size(), first + CACHE_CAPACITY);
+        for (int i = first; i < limit && batch.size() < 5; i++) {
             var cue = source.get(i);
             if (cue.start > position + (long) (30000 * Math.min(4, Math.max(1, playbackRate)))) break;
             if (cue.end <= position || status[i] == 1
                     || status[i] == 3 && (attempts[i] >= 3 || clock.getAsLong() < retryAt[i])) continue;
-            if (status[i] == 2 && ready.containsKey(i)) continue;
+            if (status[i] == 2 && ready.get(i) != null) continue;
             if (!cue.fits) {
                 status[i] = attempts[i] = 3; continue;
             }
