@@ -107,7 +107,8 @@ public class PreferredCaptionRoutingTest {
         return PreferredCaptionLanguagePatch.blockTranslationSource(new PreferredCaptionLanguagePatch.SubtitleManagerInterface() {
             public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getDirectCaptionTracks() { return tracks; }
             public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getAutoTranslateCaptionTracks() { return List.of(); }
-            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCaptionTranslationSource() { return currentAudio; }
+            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCaptionTranslationSource() { return null; }
+            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCurrentAudioCaptionSource() { return currentAudio; }
         }, null);
     }
     @Test public void sourceTranslationUsesTheValidatedCurrentAudioAsr() {
@@ -117,14 +118,14 @@ public class PreferredCaptionRoutingTest {
         assertSame(german, source(List.of(english, german), german));
         assertNull(source(List.of(english, german), null));
     }
-    @Test public void sourceTranslationLeavesAuthoredAndUnrelatedTracksNative() {
+    @Test public void sourceTranslationAcceptsAuthoredButRejectsUnrelatedTracks() {
         Source authored = new Source("en", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=en", ".en");
         Source other = new Source("de", "https://www.youtube.com/api/timedtext?v=bYsvNgA-tEE&lang=de&kind=asr", "a.de");
-        assertNull(source(List.of(authored), authored));
+        assertSame(authored, source(List.of(authored), authored));
         assertNull(source(List.of(authored, other), other));
         assertNull(source(List.of(), null));
     }
-    @Test public void sourceTranslationDoesNotRedirectAnAuthoredSelection() {
+    @Test public void sourceTranslationPreservesAnAuthoredSelection() {
         Source asr = new Source("en", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=en&kind=asr", "a.en");
         Source authored = new Source("en", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=en", ".en");
         var manager = new PreferredCaptionLanguagePatch.SubtitleManagerInterface() {
@@ -132,7 +133,7 @@ public class PreferredCaptionRoutingTest {
             public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getAutoTranslateCaptionTracks() { return List.of(); }
             public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCaptionTranslationSource() { return asr; }
         };
-        assertNull(PreferredCaptionLanguagePatch.blockTranslationSource(manager, authored));
+        assertSame(authored, PreferredCaptionLanguagePatch.blockTranslationSource(manager, authored));
         assertSame(asr, PreferredCaptionLanguagePatch.blockTranslationSource(manager, asr));
     }
     @Test public void explicitSourceSelectionWinsOverConfiguredOutputLanguage() {
@@ -154,6 +155,21 @@ public class PreferredCaptionRoutingTest {
         Source missing = new Source("fr", english.url.replace("a.en", "a.es").replace("lang=en", "lang=es") + "&tlang=fr", "ta.es.fr");
         assertNull(PreferredCaptionLanguagePatch.blockTranslationSource(manager, missing));
         assertSame(german, PreferredCaptionLanguagePatch.blockTranslationSource(manager, german));
+    }
+
+    @Test public void selectedTurkishSourceWinsOverEnglishTranslationSource() {
+        Source english = new Source("en", "https://www.youtube.com/api/timedtext?v=sleuwTieVeE&lang=en&kind=asr", "a.en");
+        Source turkish = new Source("tr", "https://www.youtube.com/api/timedtext?v=sleuwTieVeE&lang=tr&kind=asr", "a.tr");
+        var manager = new PreferredCaptionLanguagePatch.SubtitleManagerInterface() {
+            public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getDirectCaptionTracks() { return List.of(english, turkish); }
+            public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getAutoTranslateCaptionTracks() { return List.of(); }
+            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCaptionTranslationSource() { return english; }
+            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCurrentAudioCaptionSource() { return turkish; }
+        };
+        assertSame(turkish, PreferredCaptionLanguagePatch.blockTranslationSource(manager, turkish));
+        assertSame(turkish, PreferredCaptionLanguagePatch.blockTranslationSource(manager, null));
+        Source stale = new Source("tr", turkish.url.replace("sleuwTieVeE", "RE3_PGwDwhw"), "a.tr");
+        assertNull(PreferredCaptionLanguagePatch.blockTranslationSource(manager, stale));
     }
 
 }

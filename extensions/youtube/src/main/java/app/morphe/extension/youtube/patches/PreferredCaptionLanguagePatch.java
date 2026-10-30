@@ -51,6 +51,10 @@ public class PreferredCaptionLanguagePatch {
          */
         @Nullable
         CaptionTrackInterface patch_getCaptionTranslationSource();
+
+        /** Default caption of the active audio, independent of translation-menu source order. */
+        @Nullable
+        default CaptionTrackInterface patch_getCurrentAudioCaptionSource() { return null; }
     }
 
     /**
@@ -305,15 +309,12 @@ public class PreferredCaptionLanguagePatch {
         return getLanguageKey(target == null ? actualLanguage : target);
     }
 
-    /** Select only a validated current-audio ASR source; authored track selection stays native. */
+    /** Preserve a selected original; otherwise use the active audio's default caption. */
     static CaptionTrackInterface blockTranslationSource(SubtitleManagerInterface manager,
             @Nullable CaptionTrackInterface selected) {
-        if (selected != null && (!(selected instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface automatic)
-                || !AutoTranslateCaptionsPatch.isAutomaticCaption(automatic.patch_getVssId(), automatic.patch_getUrl())))
-            return null;
-        if (selected instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface translated
-                && AutoTranslateCaptionsPatch.captionParameters(translated.patch_getUrl()).containsKey("tlang")) {
-            String identity = CaptionTracks.sourceIdentity(translated);
+        if (selected != null) {
+            if (!(selected instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface input)) return null;
+            String identity = CaptionTracks.sourceIdentity(input);
             List<CaptionTrackInterface> direct = manager.patch_getDirectCaptionTracks();
             if (identity == null || direct == null) return null;
             for (CaptionTrackInterface candidate : direct)
@@ -323,10 +324,8 @@ public class PreferredCaptionLanguagePatch {
                     return candidate;
             return null;
         }
-        AutoTranslateCaptionsPatch.CaptionTrackInterface source = AutoTranslateCaptionsPatch.findFallbackSource(
-                manager.patch_getDirectCaptionTracks(), manager.patch_getCaptionTranslationSource());
-        return source != null && "asr".equals(AutoTranslateCaptionsPatch.captionParameters(
-                source.patch_getUrl()).get("kind")) ? source : null;
+        return AutoTranslateCaptionsPatch.findFallbackSource(manager.patch_getDirectCaptionTracks(),
+                manager.patch_getCurrentAudioCaptionSource());
     }
 
     private static String getAppLanguage() {

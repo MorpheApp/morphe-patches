@@ -101,6 +101,9 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
         // Source YouTube uses to translate captions of the current audio track,
         // or the default caption track of the current audio track.
+        val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(
+            CaptionTrackBuilderBuildFingerprint.method.returnType
+        ).method
         val translationSourceMethod = CaptionTracksManagerTranslationSourceFingerprint.let {
             val captionTrackType = CaptionTrackBuilderBuildFingerprint.method.returnType
             val metadataField = it.instructionMatches[0].instruction.getReference<FieldReference>()!!
@@ -110,7 +113,6 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             val captionTracksField = it.instructionMatches[10].instruction.getReference<FieldReference>()!!
             val getMethod = it.instructionMatches[11].instruction.getReference<MethodReference>()!!
             val convertMethod = it.instructionMatches[12].instruction.getReference<MethodReference>()!!
-            val defaultSourceMethod = CaptionTracksManagerDefaultSourceFingerprint(captionTrackType).method
 
             it.classDef.addHelperMethod(
                 "patch_getTranslationSource",
@@ -177,18 +179,20 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
             addTracksGetter("patch_getDirectCaptionTracks", CaptionTracksManagerDirectTracksFingerprint)
             addTracksGetter("patch_getAutoTranslateCaptionTracks", CaptionTracksManagerAutoTranslateTracksFingerprint)
-            addHelperMethod(
-                "patch_getCaptionTranslationSource",
+            fun addSourceGetter(name: String, method: String) = addHelperMethod(
+                name,
                 EXTENSION_CAPTION_TRACK_INTERFACE,
                 smali = """
                     iget-object v0, p0, $tracksManagerField
                     if-eqz v0, :null
-                    invoke-virtual { v0 }, $translationSourceMethod
+                    invoke-virtual { v0 }, $method
                     move-result-object v0
                     :null
                     return-object v0
                 """
             )
+            addSourceGetter("patch_getCaptionTranslationSource", translationSourceMethod)
+            addSourceGetter("patch_getCurrentAudioCaptionSource", defaultSourceMethod.toString())
         }
 
         // Override the default caption track.
