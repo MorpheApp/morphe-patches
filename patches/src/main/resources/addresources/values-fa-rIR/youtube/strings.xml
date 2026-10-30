@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">متفرقه</string>
   <string name="morphe_settings_screen_12_video_title">ویدئو</string>
   <string name="morphe_restore_old_settings_menus_title">بازگرداندن صفحهٔ تنظیمات قدیمی YouTube</string>
+  <string name="morphe_native_snackbar_title">نمایش پیام‌ها در Snackbar یوتیوب</string>
+  <string name="morphe_native_snackbar_summary">پیام‌های Morphe، مانند تأیید دکمه پخش‌کننده، به جای پنجره بازشو در Snackbar یوتیوب نمایش داده می‌شوند</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">حذف محدودیت‌های پخش در پس‌زمینه</string>
   <string name="morphe_shorts_disable_background_playback_title">غیرفعال‌کردن پخش در پس‌زمینه</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">تصویر در %s ذخیره شد</string>
   <string name="morphe_post_image_download_failed">دانلود تصویر امکان‌پذیر نبود</string>
   <string name="morphe_post_image_download_not_found">تصویری در این پست یافت نشد</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">ترجمهٔ پست‌ها</string>
+  <string name="morphe_post_translate_summary">یک گزینه به منوی flyout برای ترجمهٔ پست‌های تولیدکنندگان محتوا اضافه می‌کند</string>
+  <string name="morphe_post_translate_language_title">زبان ترجمهٔ پست</string>
+  <string name="morphe_post_translate_flyout">ترجمه</string>
+  <string name="morphe_post_translate_flyout_original">نمایش متن اصلی</string>
+  <string name="morphe_post_translate_started">در حال ترجمه…</string>
+  <string name="morphe_post_translate_failed">ترجمهٔ پست ممکن نشد</string>
+  <string name="morphe_post_translate_same_language">پست در حال حاضر به زبان ترجمه است</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">افزودن آیتم Ask به منوی پرواز</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">افزودن آیتم خلاصه‌سازی ویدیو به منوی پرواز فید</string>
@@ -863,6 +874,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">رفع متن پیاده‌شده</string>
   <string name="morphe_fix_transcript_summary">شکست بررسی پیش‌شرطی را که می‌تواند مانع بارگذاری متن پیاده‌شده شود رفع می‌کند</string>
   <string name="morphe_captions_in_pip_title">نمایش زیرنویس‌ها در تصویر در تصویر</string>
+  <string name="morphe_stable_caption_blocks_title">بلاک‌های کپشن پایدار</string>
+  <string name="morphe_stable_caption_blocks_summary">دسته‌بندی کپشن‌های خودکار در بلاک‌های پایدار و خوانا. برخی کلمات ممکن است پیش از گفته شدن ظاهر شوند. نیاز به راه‌اندازی مجدد است.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">دکمه‌های پیمایش</string>
   <string name="morphe_navigation_buttons_screen_summary">انتخاب کنید کدام دکمه‌ها در نوار پیمایش پایین نمایش داده شوند</string>
@@ -1210,6 +1223,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">مینی‌پخش‌کنندهٔ «ادامهٔ تماشا» را که یکی از قابلیت‌های YouTube Premium است و هنگام راه‌اندازی برنامه ظاهر می‌شود غیرفعال می‌کند</string>
   <string name="morphe_miniplayer_screen_title">مینی‌پخش‌کننده</string>
   <string name="morphe_miniplayer_screen_summary">ظاهر و رفتار پخش‌کنندهٔ ویدئوی کوچک‌شده را سفارشی کنید</string>
+  <string name="morphe_miniplayer_not_available_title">مینی‌پلیرهای اضافی</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube همهٔ مینی‌پخش‌کننده‌های اضافی را حذف کرده است. برای بازیابی انواع بیشتر مینی‌پخش‌کننده، YouTube نسخهٔ 21.28.208 یا قدیمی‌تر را پچ کنید</string>
   <string name="morphe_miniplayer_type_title">نوع مینی‌پخش‌کننده</string>
   <string name="morphe_miniplayer_hide_title_title">پنهان کردن عنوان و کانال</string>
   <string name="morphe_miniplayer_type_entry_0">غیرفعال</string>
@@ -1251,6 +1266,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">چیدمان نوار وضعیت را یکپارچه نگه می‌دارد، بنابراین بر نوارهای بالایی پوشانده نمی‌شود و فضای خالی در بالای پخش‌کننده باقی نمی‌گذارد. اگر برنامه کرش کرد یا نوارهای بالایی به درستی نمایش داده نشدند، این گزینه را غیرفعال کنید</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">درخشش</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">صفحه شروع Glow توسط این دستگاه پشتیبانی نمی‌شود</string>
   <string name="morphe_theme_color_light_title">پس‌زمینهٔ طرح روشن</string>
   <string name="morphe_theme_color_light_entry_2">سفید</string>

@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Ilghnéitheach</string>
   <string name="morphe_settings_screen_12_video_title">Físeán</string>
   <string name="morphe_restore_old_settings_menus_title">Athchóirigh an scáileán socruithe YouTube sean</string>
+  <string name="morphe_native_snackbar_title">Teachtaireachtaí a thaispeáint i snackbar YouTube</string>
+  <string name="morphe_native_snackbar_summary">Taispeántar teachtaireachtaí Morphe, cosúil le dearbhú cnaipe imreora, i snackbar YouTube in ionad pop-up</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Bain srianta súgartha cúlra</string>
   <string name="morphe_shorts_disable_background_playback_title">Díchumasaigh súgradh sa chúlra</string>
@@ -455,6 +457,15 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_post_image_download_saved_single">Íomhá sábháilte chuig %s</string>
   <string name="morphe_post_image_download_failed">Níorbh fhéidir an íomhá a íoslódáil</string>
   <string name="morphe_post_image_download_not_found">Níor aimsíodh aon íomhá sa phostáil seo</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Postaí a aistriú</string>
+  <string name="morphe_post_translate_summary">Cuireannpromoting item 메뉴 flyout le postaí cruthaitheora ábhair a aistriú</string>
+  <string name="morphe_post_translate_language_title">Teanga aistriúcháin postaí</string>
+  <string name="morphe_post_translate_flyout">Aistrigh</string>
+  <string name="morphe_post_translate_flyout_original">Taispeáin an bunleagan</string>
+  <string name="morphe_post_translate_started">Ag aistriú…</string>
+  <string name="morphe_post_translate_failed">Ní féidir an post a aistriú</string>
+  <string name="morphe_post_translate_same_language">Tá an post cheers sa teanga aistriúcháin cheana féin</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Cuir an mhír Fiafraigh leis an roghchlár aníos</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Cuireann sé mír achoimrithe físe leis an roghchlár aníos sa bhfotha</string>
@@ -863,6 +874,8 @@ Ní mór 'fianáin fotheidil' a sholáthar."</string>
   <string name="morphe_fix_transcript_title">Deisigh an tras-scríbhinn</string>
   <string name="morphe_fix_transcript_summary">Réitíonn sé teip seiceála réamhchoinníoll a d’fhéadfadh cosc ​​a chur ar an trascríbhinn ó lódáil</string>
   <string name="morphe_captions_in_pip_title">Taispeáin fotheistí i bpirseal pictiúr-i-bpictiúr</string>
+  <string name="morphe_stable_caption_blocks_title">Bloclar fotheideal seasmhacha</string>
+  <string name="morphe_stable_caption_blocks_summary">Cruaigh fotheidil uathomatacha i mbloclar seasmhacha, léighfeartha. Seansár go bhfeicfear roinnt focal sula labharthaíodh iad. Teastaíonn atosú.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Cnaipí nascleanúna</string>
   <string name="morphe_navigation_buttons_screen_summary">Roghnaigh cé na cnaipí a thaispeántar sa bharra nascleanúna bun</string>

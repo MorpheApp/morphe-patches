@@ -63,12 +63,12 @@ val downloadLocationPatch = bytecodePatch(
 
         // Add an interface and helper methods to read the obfuscated image download parameters.
         LinkDownloadModelToStringFingerprint.let {
-            val subredditField = it.instructionMatches[2].getFieldAccessed()
-            val authorField = it.instructionMatches[3].getFieldAccessed()
+            val subredditField = it.instructionMatches[2].fieldReference
+            val authorField = it.instructionMatches[3].fieldReference
 
             imageDownloadParamsConstructorFingerprint(it.classDef.type).let { constructor ->
-                val urlField = constructor.instructionMatches[0].getFieldAccessed()
-                val modelField = constructor.instructionMatches[1].getFieldAccessed()
+                val urlField = constructor.instructionMatches[0].fieldReference
+                val modelField = constructor.instructionMatches[1].fieldReference
 
                 constructor.classDef.apply {
                     interfaces.add(EXTENSION_IMAGE_DOWNLOAD_PARAMS_INTERFACE)

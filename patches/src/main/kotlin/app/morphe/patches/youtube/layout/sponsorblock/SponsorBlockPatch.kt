@@ -51,8 +51,6 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val SB_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.sponsorblock.preferences"
 private const val YOUTUBE_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.settings.preference"
@@ -253,7 +251,7 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Set seekbar draw rectangle.
         val rectangleFieldName = RectangleFieldInvalidatorFingerprint.instructionMatches.last()
-            .getInstruction<ReferenceInstruction>().reference as FieldReference
+            .fieldReference
 
         // Seekbar drawing.
 

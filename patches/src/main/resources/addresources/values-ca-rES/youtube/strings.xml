@@ -455,6 +455,15 @@ Els informes són públics i es revisen abans d'afegir un canal a una llista. L'
   <string name="morphe_post_image_download_saved_single">Imatge guardada a %s</string>
   <string name="morphe_post_image_download_failed">No s\'ha pogut descarregar la imatge</string>
   <string name="morphe_post_image_download_not_found">No s\'ha trobat cap imatge en aquesta publicació</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Traduir publicacions</string>
+  <string name="morphe_post_translate_summary">Afegeix un element al menú desplegable per traduir les publicacions dels creadors de contingut</string>
+  <string name="morphe_post_translate_language_title">Idioma de traducció de la publicació</string>
+  <string name="morphe_post_translate_flyout">Traduïr</string>
+  <string name="morphe_post_translate_flyout_original">Mostrar l\'original</string>
+  <string name="morphe_post_translate_started">Traduint…</string>
+  <string name="morphe_post_translate_failed">No s\'ha pogut traduir la publicació</string>
+  <string name="morphe_post_translate_same_language">La publicació ja està en l\'idioma de traducció</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Afegeix l\'element Pregunta al menú desplegable</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Afegeix un element de resum de vídeo al menú desplegable del feed</string>
@@ -863,6 +872,8 @@ Cal proporcionar les 'cookies de subtítols'"</string>
   <string name="morphe_fix_transcript_title">Corrigir transcripció</string>
   <string name="morphe_fix_transcript_summary">Soluciona un error de comprovació de precondició que pot impedir que es carregui la transcripció</string>
   <string name="morphe_captions_in_pip_title">Mostrar els subtítols en el mode picture-in-picture</string>
+  <string name="morphe_stable_caption_blocks_title">Blocs de subtítols estables</string>
+  <string name="morphe_stable_caption_blocks_summary">Agrupa els subtítols automàtics en blocs estables i llegibles. Alguns mots poden aparèixer abans de ser pronunciats. Cal reiniciar.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botons de navegació</string>
   <string name="morphe_navigation_buttons_screen_summary">Tria quins botons apareixen a la barra de navigació inferior</string>
@@ -1211,6 +1222,8 @@ Limitació: Si 'Restaura la barra d'accions de vídeo antiga' està desactivada,
   <string name="morphe_miniplayer_disable_resuming_summary">Desactiva el miniplayer de \"Continuar veient\", una funció de YouTube Premium que apareix en iniciar l\'aplicació</string>
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">Personalitza l\'aparença i el comportament del reproductor de vídeo minimitzat</string>
+  <string name="morphe_miniplayer_not_available_title">Miniplayers addicionals</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube ha eliminat tots els miniplayers addicionals. Per restaurar més tipus de miniplayer, apliqueu el patch a YouTube 21.28.208 o anteriors</string>
   <string name="morphe_miniplayer_type_title">Tipus de miniplayer</string>
   <string name="morphe_miniplayer_hide_title_title">Ocultar títol i canal</string>
   <string name="morphe_miniplayer_type_entry_0">Deshabilitat</string>
@@ -1553,6 +1566,7 @@ El registre automàtic s'atura en mode incògnit, quan la identitat del compte n
   <string name="morphe_series_tracker_enable">Habilitar el seguiment local</string>
   <string name="morphe_series_tracker_tracking_paused">El registre del progrés està desactivat</string>
   <string name="morphe_series_tracker_resume_at">Reprèn a %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s episodis vistos</string>
   <string name="morphe_series_tracker_episode_position">Episodi %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Episodis %1$s-%2$s de %3$s</string>
   <string name="morphe_series_tracker_catalog_unavailable">Actualitza per intentar carregar els episodis. Les llistes de reproducció privades requereixen accés al compte; el seu marcador encara s\'obre a YouTube</string>
@@ -1571,6 +1585,8 @@ El registre automàtic s'atura en mode incògnit, quan la identitat del compte n
   <string name="morphe_series_tracker_marked">Episodis marcats com a vistos</string>
   <string name="morphe_series_tracker_undo">Desfer</string>
   <string name="morphe_series_tracker_enable_short">Habilitar</string>
+  <string name="morphe_series_tracker_new_episode">1 episodi</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s episodi</string>
   <string name="morphe_series_tracker_record_short">Registrar el progrés en aquest dispositiu</string>
   <string name="morphe_series_tracker_follow_consent">"Les teves sèries i el teu progrés es mantenen en aquest dispositiu, compartits entre comptes de YouTube. Els controls de l'historial de YouTube no els modifiquen. Esborra el progrés des del menú de Sèries.
 

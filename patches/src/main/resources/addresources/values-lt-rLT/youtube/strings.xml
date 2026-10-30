@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Įvairūs</string>
   <string name="morphe_settings_screen_12_video_title">Vaizdo įrašai</string>
   <string name="morphe_restore_old_settings_menus_title">Atkurti senąjį „YouTube“ nustatymų ekraną</string>
+  <string name="morphe_native_snackbar_title">Rodyti žinutes YouTube „snackbar\" valdyme</string>
+  <string name="morphe_native_snackbar_summary">„Morphe\" žinutės, pavyzdžiui, grojimo mygtuko patvirtinimas, rodomos YouTube „snackbar\" valdyme, o ne švyturiame</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Šalinti foninio atkūrimo apribojimus</string>
   <string name="morphe_shorts_disable_background_playback_title">Išjungti foninį atkūrimą</string>
@@ -455,6 +457,15 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_post_image_download_saved_single">Vaizdas išsaugotas į %s</string>
   <string name="morphe_post_image_download_failed">Nepavyko atsisiųsti vaizdo</string>
   <string name="morphe_post_image_download_not_found">Šiame įraše vaizdo nerasta</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Vertinti įrašus</string>
+  <string name="morphe_post_translate_summary">Prideda išskleidžiamojo meniu elementą turinio kūrėjų įrašams vertinti</string>
+  <string name="morphe_post_translate_language_title">Įrašo vertimo kalba</string>
+  <string name="morphe_post_translate_flyout">Vertinti</string>
+  <string name="morphe_post_translate_flyout_original">Rodyti originalą</string>
+  <string name="morphe_post_translate_started">Vertinama…</string>
+  <string name="morphe_post_translate_failed">Nepavyko išversti įrašo</string>
+  <string name="morphe_post_translate_same_language">Įrašas jau yra vertimo kalba</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Pridėti „Ask“ elementą į iškylančiąjį meniu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Pridėti vaizdo įrašo apibendrinimo elementą į feed\'o iškylančiąjį meniu</string>
@@ -863,6 +874,8 @@ Turi būti pateikti „Subtitrų slapukai“"</string>
   <string name="morphe_fix_transcript_title">Pataisyti transkripciją</string>
   <string name="morphe_fix_transcript_summary">Išsprendžia išankstinės sąlygos patikros gedimą, kuris gali neleisti įkelti transkripcijos</string>
   <string name="morphe_captions_in_pip_title">Rodyti antraštes vaizdo režime „vaizdas už vaizdo“</string>
+  <string name="morphe_stable_caption_blocks_title">Stabilių aprašymų blokai</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupuoti automatinis subtitrus į stabilius, lengvai skaitomus blokus. Kai kurie žodžiai gali pasirodyti anksčiau, nei jie bus ištarti. Reikia perkrauti.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Naršymo mygtukai</string>
   <string name="morphe_navigation_buttons_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
@@ -1211,6 +1224,8 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <string name="morphe_miniplayer_disable_resuming_summary">Išjungia mini grotuvą „Tęsti žiūrėjimą“, „YouTube Premium“ funkciją, rodomą paleidžiant programą</string>
   <string name="morphe_miniplayer_screen_title">Mini grotuvas</string>
   <string name="morphe_miniplayer_screen_summary">Tinkinkite sumažinto vaizdo grotuvo išvaizdą ir elgesį</string>
+  <string name="morphe_miniplayer_not_available_title">Papildomi minižaidalai</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube pašalino visus papildomus minižaidalus. Norėdami atstatyti daugiau minižaidalų tipų, pakeiskite YouTube 21.28.208 arba senesnę versiją</string>
   <string name="morphe_miniplayer_type_title">Mini grotuvo tipas</string>
   <string name="morphe_miniplayer_hide_title_title">Slėpti pavadinimą ir kanalą</string>
   <string name="morphe_miniplayer_type_entry_0">Išjungta</string>

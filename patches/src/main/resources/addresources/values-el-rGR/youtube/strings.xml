@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Διάφορα</string>
   <string name="morphe_settings_screen_12_video_title">Βίντεο</string>
   <string name="morphe_restore_old_settings_menus_title">Επαναφορά του παλιού μενού ρυθμίσεων YouTube</string>
+  <string name="morphe_native_snackbar_title">Εμφάνιση μηνυμάτων στο snackbar του YouTube</string>
+  <string name="morphe_native_snackbar_summary">Τα μηνύματα του Morphe, όπως η επιβεβαίωση ενός κουμπιού αναπαραγωγής, εμφανίζονται στο snackbar του YouTube αντί για παράθυρο διαλόγου</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Κατάργηση περιορισμών αναπαραγωγής στο παρασκήνιο</string>
   <string name="morphe_shorts_disable_background_playback_title">Απενεργοποίηση αναπαραγωγής παρασκηνίου</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">Η εικόνα αποθηκεύτηκε στο %s</string>
   <string name="morphe_post_image_download_failed">Δεν ήταν δυνατή η λήψη της εικόνας</string>
   <string name="morphe_post_image_download_not_found">Δεν βρέθηκε εικόνα σε αυτή τη δημοσίευση</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Μετάφραση αναρτήσεων</string>
+  <string name="morphe_post_translate_summary">Προσθέτει ένα στοιχείο στο αναδυόμενο μενού για τη μετάφραση αναρτήσεων δημιουργών περιεχομένου</string>
+  <string name="morphe_post_translate_language_title">Γλώσσα μετάφρασης αναρτήσεων</string>
+  <string name="morphe_post_translate_flyout">Μετάφραση</string>
+  <string name="morphe_post_translate_flyout_original">Εμφάνιση πρωτότυπου</string>
+  <string name="morphe_post_translate_started">Μετάφραση…</string>
+  <string name="morphe_post_translate_failed">Δεν ήταν δυνατή η μετάφραση της ανάρτησης</string>
+  <string name="morphe_post_translate_same_language">Η ανάρτηση είναι ήδη στη γλώσσα μετάφρασης</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Προσθήκη στοιχείου Ask στο μενού flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Προσθέτει στοιχείο σύνοψης βίντεο στο μενού flyout της ροής</string>
@@ -863,6 +874,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">Επљеφρώσε τη μεταγραφή</string>
   <string name="morphe_fix_transcript_summary">Απόκρυψη κουμπιού Ειδοποιήσεων</string>
   <string name="morphe_captions_in_pip_title">Εμφάνιση υποτίτλων σε εικόνα μέσα σε εικόνα</string>
+  <string name="morphe_stable_caption_blocks_title">Σταθερά τμήματα λεζάντας</string>
+  <string name="morphe_stable_caption_blocks_summary">Ομαδοποίηση αυτόματων λεζάντας σε σταθερά, αναγνώσιμα τμήματα. Ορισμένες λέξεις ενδέχεται να εμφανιστούν πριν προφερθούν. Απαιτείται επανεκκίνηση.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Κουμπιά γραμμής πλοήγησης</string>
   <string name="morphe_navigation_buttons_screen_summary">Απόκρυψη κουμπιού Αναζήτησης</string>
@@ -1211,6 +1224,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Απενεργοποιεί το μίνι player \"Συνέχιση παρακολούθησης\", μια λειτουργία YouTube Premium που εμφανίζεται κατά την εκκίνηση της εφαρμογής</string>
   <string name="morphe_miniplayer_screen_title">Ελαχιστοποιημένη οθόνη αναπαραγωγής</string>
   <string name="morphe_miniplayer_screen_summary">Προσαρμόστε την εμφάνιση και τη συμπεριφορά του μικρογραφικού αναπαραγωγέα βίντεο</string>
+  <string name="morphe_miniplayer_not_available_title">Πρόσθετοι miniplayers</string>
+  <string name="morphe_miniplayer_not_available_summary">Το YouTube αφαίρεσε όλους τους πρόσθετους miniplayers. Για να επαναφέρετε περισσότερους τύπους miniplayer, κάντε patch στο YouTube 21.28.208 ή παλαιότερη έκδοση</string>
   <string name="morphe_miniplayer_type_title">Τύπος ελαχιστοποιημένης οθόνης αναπαραγωγής</string>
   <string name="morphe_miniplayer_hide_title_title">Απόκρυψη τίτλου και καναλιού</string>
   <string name="morphe_miniplayer_type_entry_0">Απενεργοποιημένη</string>

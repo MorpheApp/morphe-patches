@@ -60,7 +60,7 @@ val flyoutPatch = bytecodePatch(
     execute {
         // Add interface method to get protocol buffer.
         InteractiveStickerRendererGetEditViewFingerprint.let {
-            val bufferField = it.instructionMatches.last().getFieldAccessed()
+            val bufferField = it.instructionMatches.last().fieldReference
 
             mutableClassDefBy(bufferField.definingClass).apply {
                 interfaces.add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
@@ -101,7 +101,7 @@ val flyoutPatch = bytecodePatch(
                         location = MatchAfterWithin(2)
                     )
                 )
-            ).instructionMatches.last().getFieldAccessed()
+            ).instructionMatches.last().fieldReference
 
             mutableClassDefBy(messageType).apply {
                 interfaces.add(EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE)

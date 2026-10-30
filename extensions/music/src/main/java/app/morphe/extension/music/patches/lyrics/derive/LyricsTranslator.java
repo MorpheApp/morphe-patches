@@ -30,11 +30,6 @@ public final class LyricsTranslator {
 
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    public interface Callback {
-        void onTranslated(@Nullable List<String> translatedLines,
-                          boolean fromGoogle, boolean fromAI, @Nullable String aiModel);
-    }
-
     private LyricsTranslator() {
     }
 
@@ -45,7 +40,7 @@ public final class LyricsTranslator {
             return null;
         }
         String targetLang = LyricsRequests.primarySubtag(target);
-        String targetScript = LyricsRequests.resolvedScript(target);
+        final String targetScript = LyricsRequests.resolvedScript(target);
         for (Map.Entry<String, List<LyricsLine>> entry : byLang.entrySet()) {
             String key = entry.getKey();
             if (key.startsWith(LyricsMerge.BACKGROUND_TRACK_PREFIX)) {
@@ -67,9 +62,9 @@ public final class LyricsTranslator {
         return null;
     }
 
-    /** Elsewhere the fallback would put the sung line's own words under different ones. */
+    /** For background lines without a translation of their own, fall back to the parent line. */
     private static List<String> embeddedTranslationLines(Lyrics lyrics, List<LyricsLine> lines,
-                                                          @Nullable List<LyricsLine> backgroundLines) {
+                                                         @Nullable List<LyricsLine> backgroundLines) {
         List<String> out = new ArrayList<>(lines.size());
         for (LyricsLine line : lines) {
             String text = line.text();
@@ -81,7 +76,7 @@ public final class LyricsTranslator {
             if (!allLines.get(i).isBG()) {
                 continue;
             }
-            String own = LyricsMerge.textAt(backgroundLines, i);
+            final String own = LyricsMerge.textAt(backgroundLines, i);
             if (!own.isEmpty()) {
                 out.set(i, own);
                 continue;
@@ -102,15 +97,6 @@ public final class LyricsTranslator {
         return out;
     }
 
-    private static List<LyricsLine> toLyricsLines(List<String> textLines) {
-        if (textLines == null) return java.util.Collections.emptyList();
-        List<LyricsLine> lines = new ArrayList<>(textLines.size());
-        for (String t : textLines) {
-            lines.add(new LyricsLine(LyricsLine.NO_TIME, t));
-        }
-        return lines;
-    }
-
     public static void translate(TrackInfo track, Lyrics lyrics, String source, Callback callback) {
         Utils.verifyOnMainThread();
 
@@ -120,54 +106,123 @@ public final class LyricsTranslator {
         }
 
         String language = LyricsRequests.translationLanguage();
+        List<String> providers = AiProviders.enabledProviders(
+                Settings.LYRICS_TRANSLATION_PROVIDERS.get(),
+                AiProviders.TRANSLATION_ORDER);
+        if (providers.isEmpty()) {
+            callback.onTranslated(null, false, false, null);
+            return;
+        }
 
-        List<String> embedded = embeddedTranslation(lyrics, language, lines.size());
-        if (embedded != null) {
-            Utils.runOnMainThread(() -> callback.onTranslated(embedded, false, false, null));
+        final List<String> embedded = providers.contains(AiProviders.EMBEDDED)
+                ? embeddedTranslation(lyrics, language, lines.size())
+                : null;
+
+        // Embedded translation is already in memory, so keep the old synchronous result.
+        if (AiProviders.EMBEDDED.equals(providers.get(0)) && embedded != null) {
+            callback.onTranslated(embedded, false, false, null);
             return;
         }
 
         executor.execute(() -> {
             try {
-                String provider = Settings.LYRICS_TRANSLATION_PROVIDER.get();
-                if (!AiProviders.GOOGLE.equals(provider)) {
-                    List<String> aiCached = LyricsCache.getTranslationAI(
-                            track, source, language, lines);
-                    if (aiCached != null) {
-                        Utils.runOnMainThread(() -> callback.onTranslated(aiCached, false, true, provider));
-                        return;
-                    }
-
-                    AiProviders.Result ai = AiProviders.DEEPL.equals(provider)
-                            ? deepLTranslate(lines, language)
-                            : AiProviders.mapLines(provider, OpenAIClient.renderPrompt(
-                                    Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), "translation",
-                                    language, track.title(), track.artist(), lines), lines);
-                    if (ai != null && ai.lines() != null && !ai.lines().isEmpty() && LyricsMerge.hasText(toLyricsLines(ai.lines()))) {
-                        LyricsCache.putTranslationAI(track, source, language, lines, ai.lines());
-                        Utils.runOnMainThread(() -> callback.onTranslated(ai.lines(), false, true, ai.model()));
-                        return;
-                    }
-                    // AI / DeepL request failed or returned empty; gracefully fall through to Google Translate.
-                }
-
-                List<String> translated = LyricsCache.getTranslation(
-                        track, source, language, lines);
-                if (translated == null) {
-                    translated = translateOnline(lines, language);
-                    if (translated != null) {
-                        LyricsCache.putTranslation(track, source, language, lines, translated);
+                for (String provider : providers) {
+                    try {
+                        ProviderTranslation result = AiProviders.EMBEDDED.equals(provider)
+                                ? (embedded == null ? null
+                                   : new ProviderTranslation(embedded, false, false, null))
+                                : translateWithProvider(
+                                provider, track, source, language, lines);
+                        if (result != null) {
+                            Utils.runOnMainThread(() -> callback.onTranslated(
+                                    result.lines(), result.fromGoogle(), result.fromAI(),
+                                    result.model()));
+                            return;
+                        }
+                    } catch (Exception ex) {
+                        Logger.printInfo(() -> "translation provider failed: " + provider, ex);
                     }
                 }
-
-                List<String> result = translated;
-                Utils.runOnMainThread(
-                        () -> callback.onTranslated(result, result != null, false, null));
+                Utils.runOnMainThread(() -> callback.onTranslated(null, false, false, null));
             } catch (Exception ex) {
-                Logger.printException(() -> "translate failure", ex);
+                Logger.printInfo(() -> "translate failure", ex);
                 Utils.runOnMainThread(() -> callback.onTranslated(null, false, false, null));
             }
         });
+    }
+
+    @Nullable
+    private static ProviderTranslation translateWithProvider(
+            String provider, TrackInfo track, String source, String language,
+            List<String> lines) {
+        if (AiProviders.GOOGLE.equals(provider)) {
+            List<String> translated = LyricsCache.getTranslation(
+                    track, source, language, lines);
+            if (hasTranslation(translated, lines)) {
+                return new ProviderTranslation(sanitizeTranslation(translated), true, false, null);
+            }
+
+            translated = translateOnline(lines, language);
+            if (hasTranslation(translated, lines)) {
+                translated = sanitizeTranslation(translated);
+                LyricsCache.putTranslation(track, source, language, lines, translated);
+                return new ProviderTranslation(translated, true, false, null);
+            }
+            return null;
+        }
+
+        final boolean deepl = AiProviders.DEEPL.equals(provider);
+        if (!deepl && !AiProviders.isAi(provider)) {
+            return null;
+        }
+
+        List<String> aiCached = LyricsCache.getTranslationAI(
+                track, source, language, lines, provider);
+        if (hasTranslation(aiCached, lines)) {
+            // The cache key includes the model that produced it; DeepL has no model.
+            return new ProviderTranslation(sanitizeTranslation(aiCached), false, true,
+                    deepl ? "DeepL" : Settings.LYRICS_AI_MODEL.get());
+        }
+
+        AiProviders.Result ai = deepl
+                ? deepLTranslate(lines, language)
+                : AiProviders.mapLines(provider, OpenAIClient.renderPrompt(
+                Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), "translation",
+                language, track.title(), track.artist(), lines), lines);
+        if (ai == null || ai.lines() == null || ai.lines().isEmpty()
+                || !hasTranslation(ai.lines(), lines)) {
+            return null;
+        }
+
+        List<String> translated = sanitizeTranslation(ai.lines());
+        LyricsCache.putTranslationAI(track, source, language, lines, translated, provider);
+        return new ProviderTranslation(translated, false, true, ai.model());
+    }
+
+    private static List<String> sanitizeTranslation(List<String> lines) {
+        List<String> clean = new ArrayList<>(lines.size());
+        for (String line : lines) {
+            clean.add(line == null ? "" : line);
+        }
+        return clean;
+    }
+
+    /** A translation is usable if at least one line differs from the source. */
+    private static boolean hasTranslation(@Nullable List<String> translated,
+                                          List<String> source) {
+        if (translated == null || translated.size() != source.size()) {
+            return false;
+        }
+        for (int i = 0; i < translated.size(); i++) {
+            String text = translated.get(i);
+            if (text != null) {
+                text = text.trim();
+                if (!text.isEmpty() && !text.equals(source.get(i).trim())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Nullable
@@ -190,5 +245,14 @@ public final class LyricsTranslator {
                         throw new RuntimeException(ex);
                     }
                 });
+    }
+
+    public interface Callback {
+        void onTranslated(@Nullable List<String> translatedLines,
+                          boolean fromGoogle, boolean fromAI, @Nullable String aiModel);
+    }
+
+    private record ProviderTranslation(List<String> lines, boolean fromGoogle,
+                                       boolean fromAI, @Nullable String model) {
     }
 }

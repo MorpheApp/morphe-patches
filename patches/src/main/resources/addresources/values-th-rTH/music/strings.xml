@@ -462,12 +462,47 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_section_display_title">แสดง</string>
   <string name="morphe_music_lyrics_section_sync_title">การซิงโครไนซ์</string>
   <string name="morphe_music_lyrics_section_panel_title">แผง</string>
-  <string name="morphe_music_lyrics_section_ai_endpoint_title">จุดปลายทาง AI</string>
   <string name="morphe_music_lyrics_source_all_disabled">ปิดใช้งานผู้ให้บริการทั้งหมด — เนื้อเพลงในตัวและเนื้อเพลงฝังตัว</string>
   <string name="morphe_music_lyrics_source_reset_title">รีเซ็ตผู้ให้บริการทั้งหมดหรือไม่</string>
   <string name="morphe_music_lyrics_source_reset_message">คืนค่าผู้ให้บริการกลับไปเป็นลำดับความสำคัญเริ่มต้น</string>
+  <string name="morphe_music_lyrics_rime_dict_title">รายการคำ Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist ยังต้องการ UniDict: ในผู้ให้บริการพจนานุกรมแบบออฟไลน์ ให้ติ๊ก \"ตัวอักษรจีนและภาษาแคะ (UniDict)\" และรอให้ดาวน์โหลดเสร็จสิ้นก่อน หากไม่มีรายการนี้ รายการที่อ่านตัวอักษรจะไม่สามารถแปลเสียงได้
+
+ติ๊กเลือกรายการที่ Rime Wordlist ควรอ่าน แล้วแตะบันทึกเพื่อดาวน์โหลด รายการที่คุณเพิ่มจะถูกนำออกเมื่อคุณยกเลิกการติ๊กมัน
+
+แต่ละรายการคือตารางจากคำไปจนถึงการอ่านของคุณเอง ซึ่งเป็นไฟล์ .dict.yaml ที่มีบรรทัดเช่น:
+字 ham
+典 din2
+คอลัมน์แรกคือคำ คอลัมน์ที่สองคือการอ่านของมัน; คอลัมน์เพิ่มเติมและบรรทัดที่ไม่มีแท็บจะถูกมองข้าม"</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">ไม่มีรายการคำ Rime สำหรับภาษาข้างต้นที่ทำเครื่องหมายไว้ แตะชื่อนี้เพื่อทำเครื่องหมายเลือกหนึ่งรายการ หรือเลือกภาษาที่มีรายการ</string>
+  <string name="morphe_music_lyrics_rime_dict_add">เพิ่ม</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">เพิ่มรายการคำ Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">ไฟล์ .dict.yaml หรือ zip ที่ครอบไฟล์ดังกล่าว โดยมีบรรทัดเช่น 字 ham และ 典 din2 รายการนี้จะถูกดึงเมื่อบางคนติ๊กเลือกและแตะบันทึก และใบอนุญาตของรายการนี้เป็นสิทธิ์ของคุณที่จะตรวจสอบ</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">รหัสภาษา</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">สองหรือสามตัวอักษร เช่น hak หรือ wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">ชื่อ</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">แสดงใต้เสียงอ่าน เช่น Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">ที่อยู่รายการคำ</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// ที่อยู่ของ .dict.yaml หรือไฟล์ zip ของมัน</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">ตัวอักษรที่ไม่อยู่ในคำ</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">อัตโนมัติ</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">ตัวอักษรกวางตุ้ง</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">ตัวอักษรมัณฑาร์ริน</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">ไม่มีการอ่านตัวอักษร</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">กรอกรหัส ชื่อ และที่อยู่</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">รหัสมUSTประกอบด้วยสองหรือสามตัวอักษร เช่น hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">ที่อยู่ต้องใช้ https:// เป็นจุดเริ่มต้น</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">ชื่อและที่อยู่ไม่สามารถมีเส้นตั้งกลางได้</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s มีตารางคำอยู่แล้ว</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s ถูกอ่านโดยระบบแปลงอักษรโรมันภายใน ไม่สามารถรับรายการคำได้</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">ไม่ได้ใช้งาน: ภาษา nàyมีเสียงอ่านของตัวเองแล้ว ดังนั้นยกเลิกการทำเครื่องหมายเพื่อลบออก</string>
+  <string name="morphe_music_lyrics_rime_dict_added">เพิ่ม %1$s - ทำเครื่องหมายเลือกและแตะบันทึกเพื่อกำเนินการดาวน์โหลด</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">รายการคำพร้อมใช้งาน</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">รายการคำพร้อมใช้งาน (%1$d รายการ)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">กำลังสร้างรายการคำเสียงอ่าน: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">ดาวน์โหลดรายการคำล้มเหลว - แตะบันทึกอีกครั้งเพื่อลองใหม่</string>
   <string name="morphe_music_lyrics_clear_cache_title">ล้างเนื้อเพลงที่จัดเก็บไว้</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">ลบเนื้อเพลงที่เก็บไว้ในอุปกรณ์นี้</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">ลบเนื้อเพลงที่เก็บไว้ในอุปกรณ์นี้ขนาด %1$s MB</string>
   <string name="morphe_music_lyrics_clear_cache_done">ล้างแล้ว %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">รับโทเค็น</string>
   <string name="morphe_music_apple_music_token_title">โทเค็นผู้ใช้สื่อ Apple Music</string>
@@ -527,14 +562,22 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">แสดงปุ่มคัดลอก</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">แตะเพื่อคัดลอกเนื้อเพลงต้นฉบับเป็นข้อความธรรมดา กดค้างเพื่อบันทึกไฟล์แหล่งที่มาของเนื้อเพลงดิบลงในโฟลเดอร์ดาวน์โหลด</string>
   <string name="morphe_music_lyrics_show_translate_button_title">แสดงปุ่มแปลภาษา</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">แตะเพื่อสลับแปล; กดค้างเฉพาะสำหรับการแปล ใช้การแปลของผู้ให้บริการ Google Translate หรือ API ที่เข้ากันได้กับ OpenAI</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">แสดงปุ่มโรมาไนซ์</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">แตะเพื่อสลับการถอดอักษร; กดค้างเฉพาะสำหรับการถอดอักษร ใช้การถอดอักษรของผู้ให้บริการ Google Translate หรือ API ที่เข้ากันได้กับ OpenAI</string>
-  <string name="morphe_music_lyrics_local_romanization_title">การถอดอักษรท้องถิ่นและการจัดตำแหน่ง</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">ถอดอักษรบนอุปกรณ์เมื่อผู้ให้บริการ โมเดลของคุณ และ Google Translate ล้มเหลว การอ่านจะติดตามแต่ละคำของเนื้อเพลงที่มีเวลาต้องเปิดการซิงค์คำ ภาษาจีน แคะ ญี่ปุ่น เกาหลี กรีก รัสเซีย จอร์เจีย อาร์เมเนีย ประมาณ 120 MB</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">กำลังสร้างคำอ่าน %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">แตะเพื่อสลับการแปล; กดค้างสำหรับการแปลเท่านั้น ใช้ผู้ให้บริการการแปลที่เปิดใช้งานตามลำดับที่ระบุ</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">แสดงปุ่มแปลงอักษรโรมันหรือถอดรหัส</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">แตะเพื่อสลับการแปลงอักษรโรมันหรือถอดรหัส; กดค้างสำหรับการแปลงอักษรโรมันหรือถอดรหัสเท่านั้น ใช้ผู้ให้บริการการแปลงอักษรโรมันที่เปิดใช้งานตามลำดับที่ระบุ</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">เปิดใช้การถอดรหัส</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">อนุญาตเสียงอ่านไม่ใช่ลาตินจากแหล่งเนื้อเพลง; เมื่อปิดอยู่ จะคงไว้เฉพาะตัวอักษรลาติน ตัวอักษรที่มีเครื่องหมายประสม และตัวเลขระดับเสียง</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">อ่านแต่ละคำในเนื้อเพลงตามเวลา (การซิงค์คำเปิด); ภาษาเกาหลีไม่จำเป็นต้องดาวน์โหลด; สิบสี่สคริปต์แชร์การดาวน์โหลด CLDR เดียวกัน; ตัวอักษรฮั่นถูกอ่านโดยรายการคำ Rime เมื่อตารางคำครอบคลุมภาษานั้น</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">กำลังดาวน์โหลดพจนานุกรมเสียงอ่าน…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">คำอ่านพร้อมแล้ว (%1$d รายการ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">การดาวน์โหลดล้มเหลว - ปิดและเปิดฟีเจอร์นี้ใหม่เพื่อลองอีกครั้ง</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">พจนานุกรมออฟไลน์</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">ภาษาญี่ปุ่น (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">ตัวอักษรจีนและกวางตุ้ง (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">คำภาษาจีน (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">การถอดรหัสภาษากรีก ไวยาيليةสลาฟ (รวมถึงรัสเซีย ยูเครน บัลแกเรีย เซอร์เบีย เบลารุส มาซิโดเนีย), จอร์เจีย อาร์เมเนียน ฮีบรู อาหรับ อัมฮาริก และซีรีแอค (CLDR, ~0.5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">กำลังสร้างคำอ่าน %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">เลือกพจนานุกรมอย่างน้อยหนึ่งรายการ</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">แสดงปุ่มรีเฟรช</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">แตะเพื่อสลับไปยังตัวเลือกเนื้อเพลงถัดไป; กดค้างเพื่อค้นหาเนื้อเพลงตามชื่อเพลงและศิลปิน</string>
   <string name="morphe_music_lyrics_search_dialog_title">ค้นหาเนื้อเพลง</string>
@@ -545,6 +588,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_saved">บันทึกแล้ว</string>
   <string name="morphe_music_lyrics_word_sync_title">ไฮไลต์คำหรือพยางค์ที่ซิงก์</string>
   <string name="morphe_music_lyrics_word_sync_summary">ให้ความสำคัญกับเนื้อเพลงแบบคำต่อคำเมื่อมีให้บริการ เมื่อเนื้อเพลงมีข้อมูลเวลาของคำ จะไฮไลต์แต่ละคำหรือพยางค์ให้ตรงกับจังหวะเพลง</string>
+  <string name="morphe_music_lyrics_line_scale_title">ลดขนาดบรรทัดที่ไม่ใช้งาน</string>
+  <string name="morphe_music_lyrics_line_scale_summary">วาดทุกบรรทัดที่ยังไม่ร้องอยู่ในขณะนี้น้อยลงเล็กน้อย โดยทำให้จางลงด้วย</string>
+  <string name="morphe_music_lyrics_split_background_title">แสดงเสียงประสานพื้นหลังแยกต่างหาก</string>
+  <string name="morphe_music_lyrics_split_background_summary">แยกเสียงร้องพื้นหลังและเสียงประสานออกจากทำนองหลัก ย้ายเสียงร้องพื้นหลังที่เขียนอยู่ในวงเล็บ เช่น \"(Oh) I want you\" ออกจากท่อนร้องหลักไปอยู่ในไลน์ของตัวเองที่มีความดังน้อยลง</string>
   <string name="morphe_music_lyrics_hide_played_title">ซ่อนบรรทัดที่เล่นแล้ว […]</string>
   <string name="morphe_music_lyrics_hide_played_summary">ซ่อนบรรทัดเนื้อเพลงที่อยู่เหนือบรรทัดที่กำลังเล่น</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">ซ่อนเนื้อเพลงที่ยังไม่เล่น</string>
@@ -602,10 +649,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_ai">แปลโดย %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">ถอดเป็นอักษรโรมันโดย %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">ถอดเป็นอักษรโรมันโดย %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">แปลงอักษรโรมันโดย Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">แปลแล้ว</string>
   <string name="morphe_music_lyrics_translation_language_title">ภาษาแปล</string>
-  <string name="morphe_music_lyrics_romanize_language_title">ภาษาสำหรับการถอดเป็นอักษรโรมัน</string>
+  <string name="morphe_music_lyrics_romanize_language_title">ภาษาการแปลงอักษรโรมันหรือถอดรหัส</string>
+  <string name="morphe_music_lyrics_translation_target_language">"ภาษาเป้าหมายสำหรับการแปล:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"ภาษาเป้าหมายสำหรับการโรมันไนซ์หรือการทับศัพท์:
+%s"</string>
   <string name="morphe_music_lyrics_translating">กำลังแปล...</string>
   <string name="morphe_music_lyrics_translate_failed">ไม่สามารถแปลเนื้อเพลงได้</string>
   <string name="morphe_music_lyrics_romanize_hide">โรมาไนซ์แล้ว</string>
@@ -619,7 +671,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_refreshing">กำลังรีเฟรช</string>
   <string name="morphe_music_lyrics_refreshed">รีเฟรชแล้ว</string>
   <string name="morphe_music_lyrics_transcribe_key_title">คีย์ API ของ QuickLRC</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC ช่วยถอดเสียงหรือจัดเวลาสำหรับเนื้อเพลงของแทร็กปัจจุบัน เป็นบริการแยกอิสระ ไม่เกี่ยวข้องกับจุดปลายทางที่เข้ากันได้กับ OpenAI ด้านบน</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC เขียนตัวอักษรหรือจับคู่เวลากับเนื้อเพลงสำหรับแทร็กปัจจุบัน</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">รหัส QuickLRC ถูกบันทึกแล้ว ใช้ปุ่มจัดตำแหน่งในกล่องโต้ตอบค้นหาเนื้อเพลง หรือข้อความแจ้งเตือนบนแผงควบคุมเมื่อแทร็กไม่มีเนื้อเพลง</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">บันทึกคีย์ API ของ QuickLRC เรียบร้อยแล้ว</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC ไม่ได้ยอมรับคีย์นั้น</string>
@@ -635,56 +687,50 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_transcribe_no_text">ไม่มีเนื้อเพลงให้จัดตำแหน่ง - กำลังถอดเสียงแทน</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC ไม่สามารถประมวลผลแทร็กนี้</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">หน่วยเครดิตของ QuickLRC สำหรับแทร็กนี้หมดแล้ว</string>
-  <string name="morphe_music_lyrics_about_summary">"เนื้อเพลงจะถูกจับคู่ตามชื่อเพลงและศิลปิน ข้อมูลเมตาที่ผิดปกติอาจทำให้ไม่พบอะไรเลยหรือเวอร์ชันที่ไม่ถูกต้อง ให้รีเฟรชเพื่อเปลี่ยนเวอร์ชัน ผู้ให้บริการที่มีเครื่องหมาย * ต้องใช้โทเค็น ผู้ให้บริการที่เปิดใช้งานทั้งหมดอาจไม่ได้ถูกร้องขอตามลำดับของคุณเสมอไป แต่จะตอบสนองตามความเร็วของแต่ละราย\n\nเนื้อเพลงมาจากบริการของบุคคลที่สาม ซึ่งไม่มีส่วนเกี่ยวข้อง สนับสนุน หรือรับรองโดย Morphe แต่อย่างใด แต่ละรายการจะถูกใช้งานตามที่เป็นอยู่: เนื้อเพลง ความพร้อมใช้งาน และลิขสิทธิ์ยังคงเป็นของบริการเหล่านั้นและผู้ให้ลิขสิทธิ์ และการใช้งานอาจอยู่ภายใต้เงื่อนไขบริการของพวกเขา สิ่งที่ส่งไปยังบริการที่เปิดใช้งานอยู่จะมีเพียงข้อมูลที่คุณร้องขอเท่านั้น - ชื่อเพลง ศิลปิน และเมื่อบริการนั้นต้องการ รหัสวิดีโอ จุดปลายทาง AI และการถอดเสียง QuickLRC ที่เป็นตัวเลือกเสริม จะทำงานหลังจากที่คุณได้ตั้งค่าและได้รับเนื้อเพลงหรือ URL วิดีโอของแทร็กแล้วเท่านั้น"</string>
+  <string name="morphe_music_lyrics_about_summary">"เนื้อเพลงจะถูกจับคู่ตามชื่อเพลงและศิลปิน ข้อมูลเมตาที่ผิดปกติอาจทำให้ไม่พบอะไรเลยหรือเวอร์ชันที่ไม่ถูกต้อง ให้รีเฟรชเพื่อเปลี่ยนเวอร์ชัน ผู้ให้บริการที่มีเครื่องหมาย * ต้องใช้โทเค็น ผู้ให้บริการที่เปิดใช้งานทั้งหมดอาจไม่ได้ถูกร้องขอตามลำดับของคุณเสมอไป แต่จะตอบสนองตามความเร็วของแต่ละราย
+
+เนื้อเพลงมาจากบริการของบุคคลที่สาม ซึ่งไม่มีส่วนเกี่ยวข้อง สนับสนุน หรือรับรองโดย Morphe แต่ละรายการจะถูกใช้งานตามที่เป็นอยู่: เนื้อเพลง ความพร้อมใช้งาน และลิขสิทธิ์ยังคงเป็นของบริการเหล่านั้นและผู้ให้ลิขสิทธิ์ และการใช้งานอาจอยู่ภายใต้เงื่อนไขบริการของพวกเขา สิ่งที่ส่งไปยังบริการที่เปิดใช้งานอยู่จะมีเพียงข้อมูลที่คุณร้องขอเท่านั้น - ชื่อเพลง ศิลปิน และเมื่อบริการนั้นต้องการ รหัสวิดีโอ จุดปลายทาง AI และการถอดเสียง QuickLRC ที่เป็นตัวเลือกเสริม จะทำงานหลังจากที่คุณได้ตั้งค่าและได้รับเนื้อเพลงหรือ URL วิดีโอของแทร็กแล้วเท่านั้น"</string>
   <string name="morphe_music_lyrics_source_advice_summary">เปิดใช้งานเฉพาะผู้ให้บริการที่คุณใช้ หรือคงค่าเริ่มต้นไว้ เนื่องจากคำขออย่างต่อเนื่องอาจทำให้ไซต์เนื้อร้องชุมชนขนาดเล็กล้นเกิน</string>
   <string name="morphe_music_lyrics_hide_info_title">ซ่อนบรรทัดเครดิต</string>
   <string name="morphe_music_lyrics_hide_info_summary">ซ่อนบรรทัดเครดิตที่แสดงใต้เนื้อเพลง</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">สลับคำแปลและการโรมาไนซ์</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">การเปิดจะวางการโรมาไนซ์ไว้ใต้เนื้อเพลงและคำแปลไว้ด้านบน การปิดจะให้การโรมาไนซ์อยู่ด้านบนและคำแปลอยู่ด้านล่าง</string>
-  <string name="morphe_music_lyrics_section_translation_title">การแปล</string>
-  <string name="morphe_music_lyrics_section_romanization_title">การถอดเป็นอักษรโรมัน</string>
-  <string name="morphe_music_lyrics_translation_provider_title">ผู้ให้บริการการแปล</string>
-  <string name="morphe_music_lyrics_translation_provider_google">Google (ค่าเริ่มต้น, ฟรี)</string>
-  <string name="morphe_music_lyrics_translation_provider_openai_compatible">OpenAI Compatible (กำหนดเอง)</string>
-  <string name="morphe_music_lyrics_romanization_provider_title">ผู้ให้บริการถอดเป็นอักษรโรมัน</string>
-  <string name="morphe_music_lyrics_romanization_provider_google">Google (ค่าเริ่มต้น)</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">พจนานุกรมในเครื่อง / ออฟไลน์</string>
-  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI Compatible (กำหนดเอง)</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">ส่วน AI</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">ใช้เมื่อผู้ให้บริการไม่ได้ส่งป้ายกำกับส่วนต่างๆ เช่น Chorus หรือ Verse ซึ่งโมเดลที่เข้ากันได้กับ OpenAI ของคุณจะตรวจจับให้แทน</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; จุดปลายทางคลาวด์</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">กำหนดค่าคีย์ API, โมเดล, จุดปลายทาง และเทมเพลตคำสั่งสำหรับผู้ให้บริการ AI</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL จุดปลายทาง API (เช่น https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON ใส่การแปลงอักษรโรมันหรือถอดรหัสไว้ด้านล่างเนื้อเพลงและการแปลไว้ด้านบน; OFF คงการแปลงอักษรโรมันหรือถอดรหัสไว้ด้านบนและการแปลไว้ด้านล่าง เสียงอ่านที่วางเหนือพยางค์ใดจะเคลื่อนไปกับมัน จากเหนือพยางค์ไปยังใต้พยางค์</string>
+  <string name="morphe_music_lyrics_force_center_title">จัดข้อความกลางเสมอ</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON จัดบรรทัดทุกบรรทัดตรงกลางและละเลยการจัดตำแหน่งต้นฉบับ รวมถึงด้านคู่ дуэт; OFF คงการจัดตำแหน่งตามที่ต้องการโดยเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_providers_keep_one">ต้องมีผู้ให้บริการอย่างน้อยหนึ่งรายการที่เปิดอยู่</string>
+  <string name="morphe_music_lyrics_translation_provider_title">การแปล</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">การแปลงอักษรโรมันหรือถอดรหัส</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">พจนานุกรมออฟไลน์</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">รายการคำ Rime</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">ตรวจจับส่วนด้วย AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">ใช้ก็ต่อเมื่อผู้ให้บริการไม่มีป้ายส่วน เช่น Chorus หรือ Verse ซึ่งโมเดลที่เข้ากันได้กับ OpenAI ของคุณจะตรวจจับ การแก้ไขแถวจะเปิดพรอมต์ของมันด้วย</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL จุดสิ้นสุด API (เช่น https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">เทมเพลตคำสั่ง</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ตัวแทน: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">บันทึกคำสั่งแล้ว</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">บันทึก Prompt แล้ว แต่จุดปลายทาง AI ยังใช้งานไม่ได้ โปรดกำหนดค่าภายใต้การตั้งค่า AI ก่อน</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">รีเซ็ตคำสั่งแล้ว</string>
-  <string name="morphe_music_lyrics_ai_extra_body_invalid">ไม่ใช่ JSON ที่ถูกต้อง แก้ไขหรือล้างฟิลด์ก่อนบันทึก</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">บันทึกการตั้งค่าการแปล &amp; การถอดเป็นอักษรโรมันแล้ว</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">รีเซ็ตการตั้งค่าเป็นค่าเริ่มต้นแล้ว</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL ฐานต้องเริ่มต้นด้วย http:// หรือ https://</string>
-  <string name="morphe_music_lyrics_ai_config_test_connection">ทดสอบการเชื่อมต่อ</string>
-  <string name="morphe_music_lyrics_ai_config_endpoint_label">กำหนดค่าจุดปลายทาง</string>
-  <string name="morphe_music_lyrics_ai_config_show_all">แสดงจุดปลายทางทั้งหมด</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">การตั้งค่าไม่ครบถ้วนหรือถูกปฏิเสธโดยผู้ให้บริการ</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">กำลังตรวจสอบการเชื่อมต่อ…</string>
-  <string name="morphe_music_lyrics_ai_config_translation_provider_label">ผู้ให้บริการแปลภาษา</string>
-  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">ผู้ให้บริการถอดเป็นอักษรโรมัน</string>
-  <string name="morphe_music_lyrics_ai_config_fetch_models">ดึงข้อมูลโมเดล</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: เชื่อมต่อแล้ว! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: การเชื่อมต่อล้มเหลว ตรวจสอบการตั้งค่า</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">ป้อนคีย์ API ก่อน</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">กำลังดึงข้อมูลโมเดล…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">เลือกโมเดล</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">ดึงข้อมูลโมเดลล้มเหลว โปรดตรวจสอบ API key หรือการเชื่อมต่อ</string>
-  <string name="morphe_music_lyrics_ai_config_gemini_section">การตั้งค่า Gemini API</string>
-  <string name="morphe_music_lyrics_ai_config_openai_compat_section">OpenAI Compatible (Custom Endpoint)</string>
-  <string name="morphe_music_lyrics_ai_config_deepl_section">การตั้งค่า DeepL API</string>
-  <string name="morphe_music_lyrics_ai_config_api_key_label">คีย์ API</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">พรอมต์</string>
   <string name="morphe_music_lyrics_ai_config_model_label">โมเดล</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">เลือกบริการ</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API key (ไม่บังคับ)</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">คำสั่งสำหรับการแปล</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">ส่วนขยายของ request body (JSON ไม่บังคับ)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">หัวเรื่องคำขอเพิ่มเติม (JSON ตัวเลือก)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">ใส่ชื่อและค่าในเครื่องหมายคำพูด เช่น {\"api-key\": \"abc\"}. ค่าที่ไม่มีเครื่องหมายคำพูดซึ่งมี / : หรือตัวเลขจะถูกปฏิเสธ ค่าว่างจะลบหัวเรื่อง</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">ใส่ชื่อและค่าในเครื่องหมายคำพูด เช่น {\"temperature\": 0.3}. ค่าที่ไม่มีเครื่องหมายคำพูดซึ่งมี / หรือ : ถูกปฏิเสธ Model และ messages ไม่สามารถตั้งค่าที่นี่ได้</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">คีย์การยืนยันตัวตน (Free หรือ Pro)</string>
-  <string name="morphe_music_lyrics_ai_config_summary">กำหนดค่า API key, โมเดล, จุดปลายทาง และคำสั่ง</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - ปิดใช้งานไอคอนตัวหนา</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - กู้คืนแท็บถัดไป เนื้อเพลง และที่เกี่ยวข้องของเครื่องเล่น</string>

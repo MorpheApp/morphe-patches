@@ -44,7 +44,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -183,26 +182,26 @@ internal fun spoofVideoStreamsPatch(
                 val videoDetailsMatch = it.instructionMatches[5]
                 val videoDetailsIndex = videoDetailsMatch.index
                 val videoDetailsRegister = getInstruction<TwoRegisterInstruction>(videoDetailsIndex).registerA
-                val videoDetailsClass = videoDetailsMatch.instruction.getReference<FieldReference>()!!.type
+                val videoDetailsClass = videoDetailsMatch.fieldReference.type
 
                 val playerProtoClass = parameterTypes.first().toString()
-                val getStreamingDataField = it.instructionMatches.first().instruction.getReference<FieldReference>()!!
-                val setStreamingDataField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
-                val setPlayerConfigField = it.instructionMatches.last().instruction.getReference<FieldReference>()!!
+                val getStreamingDataField = it.instructionMatches.first().fieldReference
+                val setStreamingDataField = it.instructionMatches[1].fieldReference
+                val setPlayerConfigField = it.instructionMatches.last().fieldReference
                 val playerConfigClass = setPlayerConfigField.type
                 val (mediaCommonConfigField, mediaUstreamerRequestConfig) =
                     with(abrStateDataFingerprint(playerConfigClass)) {
                         Pair(
-                            instructionMatches[1].instruction.getReference<FieldReference>()!!,
-                            instructionMatches[2].instruction.getReference<FieldReference>()!!,
+                            instructionMatches[1].fieldReference,
+                            instructionMatches[2].fieldReference,
                         )
                     }
 
                 val (createBuilderMethod, mergeFromMethod) =
                     with(PlayerConfigBuilderFingerprint) {
                         Pair(
-                            instructionMatches[2].instruction.getReference<MethodReference>()!!,
-                            instructionMatches[4].instruction.getReference<MethodReference>()!!,
+                            instructionMatches[2].methodReference,
+                            instructionMatches[4].methodReference,
                         )
                     }
 
@@ -210,7 +209,7 @@ internal fun spoofVideoStreamsPatch(
                     with(PlayerConfigBuilderFingerprint) {
                         Pair(
                             instructionMatches[5].instruction.getReference<TypeReference>()!!,
-                            instructionMatches[6].instruction.getReference<MethodReference>()!!
+                            instructionMatches[6].methodReference
                         )
                     }
 
@@ -347,9 +346,9 @@ internal fun spoofVideoStreamsPatch(
         // A proper fix may include modifying the request body to match the platforms expected body.
 
         BuildMediaDataSourceFingerprint.let {
-            val urlField = it.instructionMatches[0].getFieldAccessed()
-            val httpMethodField = it.instructionMatches[1].getFieldAccessed()
-            val httpBodyField = it.instructionMatches[2].getFieldAccessed()
+            val urlField = it.instructionMatches[0].fieldReference
+            val httpMethodField = it.instructionMatches[1].fieldReference
+            val httpBodyField = it.instructionMatches[2].fieldReference
             val index = it.instructionMatches.last().index
 
             it.method.addInstructions(
@@ -382,7 +381,7 @@ internal fun spoofVideoStreamsPatch(
                 field.type == "Ljava/lang/String;" && AccessFlags.FINAL.isSet(field.accessFlags)
             }
             val uploadField = fields.first { field -> field.type == "Lorg/chromium/net/UploadDataProvider;" }
-            val httpMethodField = CronetUrlRequestSetHttpMethodFingerprint.instructionMatches.first().getFieldAccessed()
+            val httpMethodField = CronetUrlRequestSetHttpMethodFingerprint.instructionMatches.first().fieldReference
 
             // Insert before the hook at the start of the method, which moves the index of the call.
             val createRequest = it.instructionMatches.last()
@@ -418,7 +417,7 @@ internal fun spoofVideoStreamsPatch(
         // like for a task of a higher priority, and the saved video continues from the last byte it got.
         // The response ends when its remaining byte count is zero, or when it is finished.
         CronetDataSourceReadFingerprint.let {
-            val remainingBytesField = it.instructionMatches.last().getFieldAccessed()
+            val remainingBytesField = it.instructionMatches.last().fieldReference
             val exceptionType = PriorityTooLowExceptionFingerprint.method.definingClass
 
             val helperMethod = ImmutableMethod(

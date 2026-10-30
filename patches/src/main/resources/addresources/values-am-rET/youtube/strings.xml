@@ -455,6 +455,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">ምስሉ በ %s ተቀምጧል</string>
   <string name="morphe_post_image_download_failed">ምስሉን ማውረድ አልተቻለም</string>
   <string name="morphe_post_image_download_not_found">በዚህ ፖስት ውስጥ ምንም ምስል አልተገኘም</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">ፖስቶችን ተርጉም</string>
+  <string name="morphe_post_translate_summary">የይዘት ፈጣሪዎችን ጽሑፎች ለመተርጎም የፍላይአውት ሜኑ आइटम ይጨምራል</string>
+  <string name="morphe_post_translate_language_title">የጽሑፍ ትርጉም ቋንቋ</string>
+  <string name="morphe_post_translate_flyout">ተርጉም</string>
+  <string name="morphe_post_translate_flyout_original">ዋናውን አሳይ</string>
+  <string name="morphe_post_translate_started">በመተርጎም ላይ…</string>
+  <string name="morphe_post_translate_failed">ጽሑፉን መተርጎም አልተቻለም</string>
+  <string name="morphe_post_translate_same_language">ጽሑፉ ቀድሞውኑ በትረጉም ቋንቋው ውስጥ ነው</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">\'ጠይቅ\' የሚለውን ንጥል ወደ ዝርዝር ሜኑ አክል</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">የቪዲዮ ማጠቃለያ ንጥልን ወደ ፊድ ዝርዝር ሜኑ ይጨምራል</string>
@@ -863,6 +872,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_fix_transcript_title">የንግግር ጽሁፉን አስተካክል</string>
   <string name="morphe_fix_transcript_summary">የጽሑፍ ትርጉም እንዳይጫን ሊያደርግ የሚችልን ቅድመ ሁኔታ የፍተሻ ስህተት ይፈታዋል</string>
   <string name="morphe_captions_in_pip_title">በምስል ውስጥ ምስል ውስጥ የግርጌ ጽሁፎችን አሳይ</string>
+  <string name="morphe_stable_caption_blocks_title">የተረጋጋ የርዕስ ብሎኮች</string>
+  <string name="morphe_stable_caption_blocks_summary">ራስ-ሰር የርዕስ ገለጻዎችን ወደ ተረጋጉ እና ሊነበቡ ወደሚችሉ ብሎኮች ያደራጃል። አንዳንድ ቃላት ከመነገራቸው በፊት ሊታዩ ይችላሉ። እንደገና ማስጀመር ያስፈልጋል።</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">የናቪጌሽን ቁልፎች</string>
   <string name="morphe_navigation_buttons_screen_summary">በታችኛው የናቪጌሽን ባር ላይ የትኞቹ ቁልፎች እንደሚታዩ ይምረጡ</string>
@@ -1211,6 +1222,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">በመተግበሪያው መጀመሪያ ላይ የሚታየውን የYouTube Premium ባህሪ የሆነውን \'መመልከት ይቀጥሉ\' የሚለውን ሚኒ-ፕሌየር ያጠፋል</string>
   <string name="morphe_miniplayer_screen_title">ትንሽ ተጫዋች</string>
   <string name="morphe_miniplayer_screen_summary">የተቀነሰውን የቪዲዮ ማጫወቻ ገጽታ እና ባህሪ ያስተካክሉ</string>
+  <string name="morphe_miniplayer_not_available_title">ተጨማሪ ሚኒ-ፕሌየሮች</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube ሁሉንም ተጨማሪ ሚኒ-ፕሌየሮች አስወግዷል። ተጨማሪ የሚኒ-ፕሌየር ዓይነቶችን ለመመለስ፣ YouTube 21.28.208 ወይም ከዚያ በበለጠ የድሮ ስሪትን ፓች ያድርጉ</string>
   <string name="morphe_miniplayer_type_title">የትንሽ ተጫዋች ዓይነት</string>
   <string name="morphe_miniplayer_hide_title_title">ርዕስን እና ቻናሉን ደብቅ</string>
   <string name="morphe_miniplayer_type_entry_0">ተዘግቷል</string>
@@ -1252,6 +1265,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_fix_status_bar_layout_summary">የሁኔታ ማሳወቂያ ስትሪክ አቀማመጥ ወጥ እንዲሆን በማድረግ የላይኞቹን ባሮች እንዳይሸፍን እና ከቪዲዮ ማጫወቻው በላይ ምንም ባዶ ቦታ እንዳይኖር ያደርጋል። መተግበሪያው ካቆመ ወይም የላይኞቹ ባሮች የተሳሳተ አቀማመጥ ካሳዩ ይህንን ያጥፉት</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">ብልጭታ</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">ይህ መሣሪያ የGlow ስፕላሽ ስክሪንን አይደግፍም</string>
   <string name="morphe_theme_color_light_title">የቀላል ጭብጥ ዳራ</string>
   <string name="morphe_theme_color_light_entry_2">ነጭ</string>
@@ -1570,6 +1585,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_marked">ክፍሎች እንደተመለከቱ ተሰምረዋል</string>
   <string name="morphe_series_tracker_undo">ቀይር</string>
   <string name="morphe_series_tracker_enable_short">አግብ</string>
+  <string name="morphe_series_tracker_new_episode">1 አዲስ ክፍል</string>
   <string name="morphe_series_tracker_new_episodes">%1$s አዳዲስ ክፍሎች</string>
   <string name="morphe_series_tracker_record_short">በዚህ መሳሪያ ላይ ሂደትን መዝግብ</string>
   <string name="morphe_series_tracker_follow_consent">"የተከታተሏቸው ተከታታይ ክፍሎች እና የደረሱበት ደረጃ በዚህ መሳሪያ ላይ ይቀመራሉ፣ እንዲሁም በYouTube አካውንቶች መካከል ይጋራሉ። የYouTube ታሪክ ቁጥጥሮች እነዚህን አይለውጡም። የደረሱበትን ደረጃ ከተከታታይ ክፍሎች ማውጫ ውስጥ ያጽዱ

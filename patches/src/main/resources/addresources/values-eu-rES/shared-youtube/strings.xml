@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Hasi-animazioa</string>
   <string name="morphe_splash_screen_style_entry_1">Desaktibatuta</string>
   <string name="morphe_splash_screen_style_entry_2">Kolorea</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Kolorea</string>
   <string name="morphe_splash_screen_style_entry_4">Monokromoa</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monokromoa</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Kokatu konfigurazio berriak</string>
+  <string name="morphe_settings_new_indicator_days_summary">Egunen kopurua eguneratze baten bidez gehitako konfigurazio eta aukeren ondoan puntua erakutsiko dena</string>
+  <string name="morphe_settings_new_indicator_days_off">Desaktibatu</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Berrifiziatu konfiguratzea amaitzeko</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

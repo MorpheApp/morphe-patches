@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Lain-lain</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Pulihkan layar setelan lama YouTube</string>
+  <string name="morphe_native_snackbar_title">Tampilkan pesan di snackbar YouTube</string>
+  <string name="morphe_native_snackbar_summary">Pesan Morphe, seperti konfirmasi tombol pemain, ditampilkan di snackbar YouTube daripada popup</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Hapus pembatasan pemutaran latar belakang</string>
   <string name="morphe_shorts_disable_background_playback_title">Nonaktifkan pemutaran di latar belakang</string>
@@ -455,6 +457,15 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_post_image_download_saved_single">Gambar disimpan ke %s</string>
   <string name="morphe_post_image_download_failed">Tidak dapat mengunduh gambar</string>
   <string name="morphe_post_image_download_not_found">Tidak ditemukan gambar dalam postingan ini</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Terjemahkan postingan</string>
+  <string name="morphe_post_translate_summary">Menambahkan item menu flyout untuk menerjemahkan postingan pembuat konten</string>
+  <string name="morphe_post_translate_language_title">Bahasa terjemahan postingan</string>
+  <string name="morphe_post_translate_flyout">Terjemahkan</string>
+  <string name="morphe_post_translate_flyout_original">Tampilkan yang asli</string>
+  <string name="morphe_post_translate_started">Menerjemahkan…</string>
+  <string name="morphe_post_translate_failed">Tidak dapat menerjemahkan postingan</string>
+  <string name="morphe_post_translate_same_language">Postingan sudah dalam bahasa terjemahan</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Tambahkan item Tanya ke menu flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Menambahkan item ringkasan video ke menu flyout feed</string>
@@ -863,6 +874,8 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_fix_transcript_title">Perbaiki transkrip</string>
   <string name="morphe_fix_transcript_summary">Memperbaiki prasyarat kegagalan pemeriksaan yang dapat menghalangi pemuatan transkrip</string>
   <string name="morphe_captions_in_pip_title">Tampilkan teks bantuan dalam picture-in-picture</string>
+  <string name="morphe_stable_caption_blocks_title">Blok teks tetap</string>
+  <string name="morphe_stable_caption_blocks_summary">Kelompokkan teks otomatis ke dalam blok yang stabil dan mudah dibaca. Beberapa kata mungkin muncul sebelum diucapkan. Diperlukan mulai ulang.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Tombol navigasi</string>
   <string name="morphe_navigation_buttons_screen_summary">Pilih tombol mana yang akan ditampilkan di bilah navigasi bawah</string>
@@ -1210,6 +1223,8 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_miniplayer_disable_resuming_summary">Menonaktifkan pemutar mini \'Lanjutkan menonton\', fitur YouTube Premium yang muncul saat aplikasi dimulai</string>
   <string name="morphe_miniplayer_screen_title">Pemutar mini</string>
   <string name="morphe_miniplayer_screen_summary">Kustomisasi tampilan dan perilaku pemutar video yang diperkecil</string>
+  <string name="morphe_miniplayer_not_available_title">Miniplayer tambahan</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube telah menghapus semua pemutar mini tambahan. Untuk mengembalikan lebih banyak jenis pemutar mini, terapkan tambalan pada YouTube 21.28.208 atau yang lebih lama</string>
   <string name="morphe_miniplayer_type_title">Jenis pemutar mini</string>
   <string name="morphe_miniplayer_hide_title_title">Sembunyikan judul dan saluran</string>
   <string name="morphe_miniplayer_type_entry_0">Dinonaktifkan</string>
@@ -1251,6 +1266,8 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_fix_status_bar_layout_summary">Menjaga tata letak status bar konsisten, sehingga tidak menutupi bar atas dan tidak meninggalkan ruang kosong di atas pemutar. Matikan ini jika aplikasi mengalami crash atau bar atas terlihat salah</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Bercahaya</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Layar splash glow tidak didukung oleh perangkat ini</string>
   <string name="morphe_theme_color_light_title">Latar belakang tema terang</string>
   <string name="morphe_theme_color_light_entry_2">Putih</string>

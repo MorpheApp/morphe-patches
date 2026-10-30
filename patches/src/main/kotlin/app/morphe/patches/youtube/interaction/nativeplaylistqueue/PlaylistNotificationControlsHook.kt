@@ -11,19 +11,16 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchSingle
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /** Publish queue capabilities before native notification actions and playback state are built. */
 internal fun installPlaylistNotificationControls(context: BytecodePatchContext, ownerType: String) = with(context) {
     val modelType = NotificationSkipActionsFingerprint
-        .instructionMatches.first().instruction.getReference<FieldReference>()!!.type
+        .instructionMatches.first().fieldReference.type
     val setter = notificationCapabilitiesSetterFingerprint(modelType).originalMethod
 
     // The original adapter returns V. The newer adapter returns its change flags.
@@ -39,12 +36,12 @@ internal fun installPlaylistNotificationControls(context: BytecodePatchContext, 
     adapters.forEach { match ->
         val adapterType = match.originalClassDef.type
         val adapter = mutableClassDefBy(adapterType)
-        val constructor = notificationAdapterConstructorFingerprint(adapterType, ownerType).matchSingle()
-        val owner = constructor.instructionMatches.single().instruction.getReference<FieldReference>()!!
+        val constructor = notificationAdapterConstructorFingerprint(adapterType, ownerType).match()
+        val owner = constructor.instructionMatches.single().fieldReference
         val computation = match.originalMethod
         val dispatch = if (computation.returnType == "I") {
             notificationCapabilitiesDispatchFingerprint(computation).matchAll().map {
-                it.instructionMatches.last().instruction.getReference<MethodReference>()!!
+                it.instructionMatches.last().methodReference
             }.distinct().single()
         } else null
 

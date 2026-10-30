@@ -462,12 +462,47 @@ Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastik
   <string name="morphe_music_lyrics_section_display_title">Tampilkan</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinkronisasi</string>
   <string name="morphe_music_lyrics_section_panel_title">Panel</string>
-  <string name="morphe_music_lyrics_section_ai_endpoint_title">Titik akhir AI</string>
   <string name="morphe_music_lyrics_source_all_disabled">Semua penyedia dinonaktifkan - lirik bawaan dan lirik tertanam</string>
   <string name="morphe_music_lyrics_source_reset_title">Setel ulang urutan penyedia?</string>
   <string name="morphe_music_lyrics_source_reset_message">Kembalikan penyedia ke urutan prioritas bawaan</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Daftar Kata Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Daftar Kata Rime juga membutuhkan UniDict: di Penyedia Kamus Offline, centang \"Karakter Tionghoa dan Kantonis (UniDict)\" dan biarkan selesai mengunduh terlebih dahulu. Tanpanya, daftar yang membaca karakter tidak menghasilkan pembacaan.
+
+Centang daftar yang harus dibaca oleh Daftar Kata Rime, lalu ketuk Simpan untuk mengunduhnya. Daftar yang Anda tambahkan akan dihapus saat Anda menghapusnya.
+
+Setiap daftar adalah tabel kata-ke-pembacaan Anda sendiri, file .dict.yaml dengan baris seperti:
+字 ham
+典 din2
+Kolom pertama adalah kata, kolom kedua adalah bacanya; kolom ekstra dan baris tanpa tab diabaikan."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Tidak ada daftar kata Rime yang dicentang untuk bahasa di atas. Ketuk nama ini untuk mencentangnya, atau pilih bahasa yang memiliki daftar</string>
+  <string name="morphe_music_lyrics_rime_dict_add">Tambah</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Tambah Daftar Kata Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">File .dict.yaml, atau zip yang berisi satu file, dengan baris seperti 字 ham dan 典 din2. Daftar diambil saat Anda mencentangnya dan mengetuk Simpan, dan lisensinya milik Anda untuk diperiksa</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">Kode Bahasa</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dua atau tiga huruf, seperti hak atau wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">Nama</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Ditampilkan di bawah bacaan, seperti Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Alamat daftar kata</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">Alamat URL https:// file .dict.yaml atau zip-nya</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Karakter yang tidak ada dalam kata</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">Otomatis</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Karakter Kantonis</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">Karakter Mandarin</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Tanpa bacaan karakter</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Isi kode, nama, dan alamat</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">Kode harus terdiri dari dua atau tiga huruf, seperti hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">Alamat harus dimulai dengan https://</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">Nama dan alamat tidak boleh mengandung tanda vertikal bar</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s sudah memiliki tabel kata</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s dibacakan oleh romanisasi bawaan dan tidak dapat menerima daftar kata</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Tidak digunakan: bahasa ini sudah memiliki bacaannya sendiri, jadi hapus centangnya untuk menghapusnya</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%1$s ditambahkan - centang dan ketuk Simpan untuk mengunduhnya</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Daftar kata siap</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Daftar kata siap (%1$d entri)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Membangun daftar bacaan: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Pengunduhan daftar kata gagal - ketuk Simpan lagi untuk mencoba lagi</string>
   <string name="morphe_music_lyrics_clear_cache_title">Hapus lirik tersimpan</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Hapus lirik yang disimpan di perangkat ini</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Hapus %1$s MB lirik yang disimpan di perangkat ini</string>
   <string name="morphe_music_lyrics_clear_cache_done">%1$s MB telah dihapus</string>
   <string name="morphe_music_token_dialog_get_token">Dapatkan token</string>
   <string name="morphe_music_apple_music_token_title">Token Pengguna Media Apple Music</string>
@@ -527,14 +562,22 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_show_copy_button_title">Tampilkan tombol Salin</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Ketuk untuk menyalin lirik asli sebagai teks biasa; tekan lama untuk menyimpan file sumber lirik mentah ke Unduhan</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Tampilkan tombol Terjemahan</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Ketuk untuk mengaktifkan/nonaktifkan terjemahan; tekan lama untuk hanya menampilkan terjemahan. Menggunakan penyedia terjemahan, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">Tampilkan tombol Romanisasi</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Ketuk untuk mengaktifkan/nonaktifkan romanisasi; tekan lama untuk hanya menampilkan romanisasi. Menggunakan penyedia romanisasi, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
-  <string name="morphe_music_lyrics_local_romanization_title">Romanisasi dan Penyelarasan Lokal</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">Romanisasi di perangkat saat penyedia, model Anda, dan Google Terjemahan gagal. Pembacaan mengikuti setiap kata dari lirik berwaktu; sinkronisasi kata harus aktif. Bahasa Mandarin, Kanton, Jepang, Korea, Yunani, Rusia, Georgia, Armenia; sekitar 120 MB</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Membaca %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Ketuk untuk mengaktifkan/menonaktifkan terjemahan; tekan lama hanya untuk terjemahan. Menggunakan penyedia terjemahan yang diaktifkan sesuai urutan yang tercantum</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Tampilkan tombol Romanisasi atau Transliterasi</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Ketuk untuk mengaktifkan/menonaktifkan romanisasi atau transliterasi; tekan lama hanya untuk romanisasi atau transliterasi. Menggunakan penyedia romanisasi yang diaktifkan sesuai urutan yang tercantum</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">Aktifkan transliterasi</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Izinkan bacaan non-Latin dari sumber lirik; saat dinonaktifkan, hanya pertahankan huruf Latin, huruf beraksen, dan digit nada</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Membacakan setiap kata dalam lirik bertepat waktu (sinkronisasi kata aktif); Korea tidak perlu unduhan; empat belas skrip berbagi satu unduhan CLDR; Karakter Han dibacakan oleh Daftar Kata Rime ketika tabel katanya mencakup bahasanya</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Mengunduh kamus bacaan…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Pembacaan siap (%1$d entri)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Pengunduhan gagal - matikan dan nyalakan kembali untuk mencoba lagi</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Kamus Luring</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Jepang (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Karakter Tionghoa dan Kantonis (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kata Tionghoa (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterasi Yunani, Slavia Cyrillic (termasuk Rusia, Ukraina, Bulgaria, Serbia, Belarusia, Makedonia), Georgia, Armenia, Ibrani, Arab, Amharik, dan Syria (CLDR, ~0,5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Membaca %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">Pilih setidaknya satu kamus</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Tampilkan tombol Segarkan</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk beralih ke kandidat lirik berikutnya; tekan lama untuk mencari lirik berdasarkan judul lagu dan artis</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cari lirik</string>
@@ -545,6 +588,10 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_saved">Tersimpan</string>
   <string name="morphe_music_lyrics_word_sync_title">Sorot kata atau suku kata yang disinkronkan</string>
   <string name="morphe_music_lyrics_word_sync_summary">Utamakan lirik kata per kata jika tersedia. Setiap kata atau suku kata akan disorot sesuai irama musik.</string>
+  <string name="morphe_music_lyrics_line_scale_title">Perkecil baris yang tidak aktif</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Menggambar setiap baris yang tidak sedang dinyanyikan sedikit lebih kecil, di atas efek meredupkannya</string>
+  <string name="morphe_music_lyrics_split_background_title">Tampilkan vokal latar belakang secara terpisah</string>
+  <string name="morphe_music_lyrics_split_background_summary">Memisahkan vokal latar belakang dan harmoni dari garis utama. Memindahkan vokal latar belakang yang ditulis dalam kurung, seperti \"(Oh) aku menginginkanmu\", keluar dari garis yang dinyanyikan ke dalam garis redup tersendiri</string>
   <string name="morphe_music_lyrics_hide_played_title">Sembunyikan lirik yang telah diputar</string>
   <string name="morphe_music_lyrics_hide_played_summary">Sembunyikan baris lirik di atas garis yang sedang diputar</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Sembunyikan lirik yang belum diputar</string>
@@ -602,10 +649,15 @@ Berlaku untuk kedua batas. Pada 1,75, empat karakter lebar penuh dihitung sebaga
   <string name="morphe_music_lyrics_translated_by_ai">Diterjemahkan oleh %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Diromanisasi oleh %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Diromani oleh %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Dromanisasi oleh Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Diterjemahkan</string>
   <string name="morphe_music_lyrics_translation_language_title">Bahasa terjemahan</string>
-  <string name="morphe_music_lyrics_romanize_language_title">Bahasa romanisasi</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Bahasa romanisasi atau transliterasi</string>
+  <string name="morphe_music_lyrics_translation_target_language">"Bahasa target terjemahan:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"Bahasa target romanisasi atau transliterasi:
+%s"</string>
   <string name="morphe_music_lyrics_translating">Menerjemahkan…</string>
   <string name="morphe_music_lyrics_translate_failed">Tidak dapat menerjemahkan lirik</string>
   <string name="morphe_music_lyrics_romanize_hide">Diromanisasi</string>
@@ -619,7 +671,7 @@ Berlaku untuk kedua batas. Pada 1,75, empat karakter lebar penuh dihitung sebaga
   <string name="morphe_music_lyrics_refreshing">MediaSession</string>
   <string name="morphe_music_lyrics_refreshed">Segarkan</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Kunci API QuickLRC</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC mentranskripsikan atau mencocokkan waktu lirik untuk trek saat ini. Layanan terpisah, tidak terkait dengan endpoint yang kompatibel dengan OpenAI di atas</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC mentranskripsikan atau menyelaraskan waktu lirik untuk trek saat ini</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">Kunci QuickLRC disimpan. Gunakan tombol susun dalam dialog pencarian lirik, atau ajakan panel ketika trek tidak memiliki lirik</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Kunci API QuickLRC telah disimpan</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC tidak menerima kunci tersebut</string>
@@ -635,56 +687,50 @@ Berlaku untuk kedua batas. Pada 1,75, empat karakter lebar penuh dihitung sebaga
   <string name="morphe_music_lyrics_transcribe_no_text">1 lirik untuk diselaraskan - melainkan ditranskripsikan</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC tidak dapat memproses trek ini</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Kredit QuickLRC telah habis untuk trek ini</string>
-  <string name="morphe_music_lyrics_about_summary">"Lirik dicocokkan berdasarkan judul dan artis, metadata yang tidak biasa mungkin tidak menemukan apa-apa atau versi yang salah. Gunakan refresh untuk beralih versi. Penyedia yang ditandai * memerlukan token. Tidak semua penyedia yang diaktifkan selalu diminta sesuai urutan Anda, tetapi merespons berdasarkan kecepatan mereka.\n\nLirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau didukung oleh Morphe. Masing-masing digunakan apa adanya: lirik, ketersediaan, dan lisensinya tetap berada di layanan tersebut dan pemberi lisensi, serta menggunakannya dapat tunduk pada syarat layanan mereka. Yang dikirim ke layanan yang diaktifkan hanyalah lookup yang Anda minta - yaitu judul, artis, dan, dimana layanan itu memerlukannya, ID video. Titik akhir AI opsional dan transkripsi QuickLRC hanya berjalan setelah Anda mengkonfigurasinya, dan menerima teks lirik atau URL video trek."</string>
+  <string name="morphe_music_lyrics_about_summary">"Lirik dicocokkan berdasarkan judul dan artis, metadata yang tidak biasa mungkin tidak menemukan apa-apa atau versi yang salah. Gunakan refresh untuk beralih versi. Penyedia yang ditandai * memerlukan token. Tidak semua penyedia yang diaktifkan selalu diminta sesuai urutan Anda, tetapi merespons berdasarkan kecepatan mereka.
+
+Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau didukung oleh Morphe. Masing-masing digunakan apa adanya: lirik, ketersediaan, dan lisensinya tetap berada di layanan tersebut dan pemberi lisensi, serta menggunakannya dapat tunduk pada syarat layanan mereka. Yang dikirim ke layanan yang diaktifkan hanyalah lookup yang Anda minta - yaitu judul, artis, dan, dimana layanan itu memerlukannya, ID video. Titik akhir AI opsional dan transkripsi QuickLRC hanya berjalan setelah Anda mengkonfigurasinya, dan menerima teks lirik atau URL video trek."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Hanya aktifkan penyedia yang Anda gunakan, atau biarkan default - permintaan terus-menerus dapat membebani situs lirik komunitas kecil</string>
   <string name="morphe_music_lyrics_hide_info_title">Sembunyikan baris kredit</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sembunyikan baris kredit yang ditampilkan di bawah lirik</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Tukar terjemahan dan romanisasi</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON menempatkan romanisasi di bawah lirik dan terjemahan di atasnya; OFF membiarkan romanisasi tetap di atas dan terjemahan di bawahnya</string>
-  <string name="morphe_music_lyrics_section_translation_title">Terjemahan</string>
-  <string name="morphe_music_lyrics_section_romanization_title">Romanisasi</string>
-  <string name="morphe_music_lyrics_translation_provider_title">Penyedia terjemahan</string>
-  <string name="morphe_music_lyrics_translation_provider_google">Google (Default, Gratis)</string>
-  <string name="morphe_music_lyrics_translation_provider_openai_compatible">Kompatibel OpenAI (Kustom)</string>
-  <string name="morphe_music_lyrics_romanization_provider_title">Penyedia romanisasi</string>
-  <string name="morphe_music_lyrics_romanization_provider_google">Google (Default)</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">Kamus Lokal / Offline</string>
-  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">Kompatibel OpenAI (Kustom)</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">Bagian AI</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">Hanya digunakan ketika provider tidak memberikan label bagian seperti Chorus atau Verse, yang kemudian akan dideteksi oleh model yang kompatibel dengan OpenAI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; Endpoint Cloud</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurasikan kunci API, model, endpoint, dan templat prompt untuk penyedia AI.</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL endpoint API (contoh: https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">AKTIF menempatkan romanisasi atau transliterasi di bawah lirik dan terjemahan di atas; NONAKTIF mempertahankan romanisasi atau transliterasi di atas dan terjemahan di bawah. Bacaan yang ditempatkan di atas setiap suku kata bergerak bersamanya, dari atas sukukatanya ke bawahnya</string>
+  <string name="morphe_music_lyrics_force_center_title">Selalu tengahkan lirik</string>
+  <string name="morphe_music_lyrics_force_center_summary">AKTIF menempatkan setiap baris di tengah dan mengabaikan penyelarasan sumber, termasuk sisi duet; NONAKTIF mempertahankan penyelarasan yang diminta oleh lirik</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Setidaknya satu penyedia harus tetap aktif</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Terjemahan</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Romanisasi atau transliterasi</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Kamus Luring</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Daftar Kata Rime</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Deteksi bagian dengan AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Hanya digunakan ketika penyedia tidak menyertakan label bagian seperti Refrain atau Strofa, yang kemudian dideteksi oleh model kompatibel OpenAI Anda. Mengedit baris juga membuka promtnya</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL titik akhir API (mis. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Templat Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt disimpan</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Permintaan disimpan, tetapi endpoint AI belum dapat digunakan. Konfigurasikan terlebih dahulu di Pengaturan AI</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt diatur ulang</string>
-  <string name="morphe_music_lyrics_ai_extra_body_invalid">JSON tidak valid. Perbaiki atau kosongkan bidang sebelum menyimpan</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Setelan Terjemahan &amp; Romanisasi disimpan</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Setelan diatur ke bawaan</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL dasar harus diawali dengan http:// atau https://</string>
-  <string name="morphe_music_lyrics_ai_config_test_connection">Uji Koneksi</string>
-  <string name="morphe_music_lyrics_ai_config_endpoint_label">Konfigurasi Endpoint</string>
-  <string name="morphe_music_lyrics_ai_config_show_all">Tampilkan Semua Endpoint</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Pengaturan tidak lengkap atau ditolak oleh penyedia</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Memvalidasi koneksi…</string>
-  <string name="morphe_music_lyrics_ai_config_translation_provider_label">Penyedia Terjemahan</string>
-  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">Penyedia Romanisasi</string>
-  <string name="morphe_music_lyrics_ai_config_fetch_models">Ambil Model</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Terhubung! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Koneksi gagal. Periksa pengaturan.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Masukkan kunci API terlebih dahulu</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Mengambil model…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Pilih Model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Gagal mengambil model. Periksa kunci API atau koneksi.</string>
-  <string name="morphe_music_lyrics_ai_config_gemini_section">Pengaturan API Gemini</string>
-  <string name="morphe_music_lyrics_ai_config_openai_compat_section">Kompatibel OpenAI (Endpoint Kustom)</string>
-  <string name="morphe_music_lyrics_ai_config_deepl_section">Pengaturan API DeepL</string>
-  <string name="morphe_music_lyrics_ai_config_api_key_label">Kunci API</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Ajakan</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL Dasar</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Pilih layanan</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Kunci API (opsional)</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt terjemahan</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Body permintaan tambahan (JSON opsional)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Header permintaan ekstra (JSON opsional)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Beri nama dan nilai tanda kutip, mis. {\"api-key\": \"abc\"}. Nilai tanpa tanda kutip yang mengandung / : atau angka ditolak. Nilai kosong menghapus header.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Beri nama dan nilai tanda kutip, mis. {\"temperature\": 0.3}. Nilai tanpa tanda kutip yang mengandung / atau : ditolak. Model dan pesan tidak dapat diatur di sini.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Kunci autentikasi (Gratis atau Pro)</string>
-  <string name="morphe_music_lyrics_ai_config_summary">Konfigurasikan kunci API, model, endpoint, dan prompt</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Nonaktifkan ikon tebal</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Kembalikan tab Pemutar Berikutnya, Lirik, dan Terkait</string>

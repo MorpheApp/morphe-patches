@@ -12,7 +12,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.getFreeRegisterProvider
-import app.morphe.patcher.util.getReference
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -31,7 +30,6 @@ import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCa
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private val returnYouTubeDislikeResourcePatch = resourcePatch {
     dependsOn(settingsPatch)
@@ -84,10 +82,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // region Hook like/dislike/remove like button clicks to send votes to the API.
 
         val endPointServiceNameField = EndpointServiceNameFingerprint
-            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+            .instructionMatches.last().fieldReference
         val likeEndpointParserClass = DislikeFingerprint.classDef.superclass!!
         val videoIdField = requestParameterCheckFingerprint(likeEndpointParserClass)
-            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+            .instructionMatches.last().fieldReference
 
         likeEndpointParserFingerprint(likeEndpointParserClass).let {
             it.method.apply {

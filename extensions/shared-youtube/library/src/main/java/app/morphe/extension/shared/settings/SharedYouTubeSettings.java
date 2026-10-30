@@ -43,7 +43,7 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final BooleanSetting SETTINGS_SEARCH_HISTORY = new BooleanSetting("morphe_settings_search_history", TRUE, true);
     public static final StringSetting SETTINGS_SEARCH_ENTRIES = new StringSetting("morphe_settings_search_entries", "");
-    public static final IntegerSetting SETTINGS_NEW_INDICATOR_DAYS = new IntegerSetting("morphe_settings_new_indicator_days", 3);
+    public static final IntegerSetting SETTINGS_NEW_INDICATOR_DAYS = new IntegerSetting("morphe_settings_new_indicator_days", 2);
 
     // Network proxy
     // There are multiple endpoint calls due to the spoof video streams patch. Place the proxy settings first.
@@ -152,7 +152,7 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     static {
         SeekBarPreference.register(new SeekBarConfig(SETTINGS_NEW_INDICATOR_DAYS,
-                0, 30, 1, "", 1, sf("morphe_settings_new_indicator_days_off"), null));
+                0, 14, 1, "", 1, sf("morphe_settings_new_indicator_days_off"), null));
 
         // TODO: Eventually remove these migrations
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);

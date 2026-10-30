@@ -21,26 +21,8 @@ import app.morphe.extension.music.patches.lyrics.ui.SectionDotsMotion;
  */
 public final class MiniLyricsTimeline {
 
-    public record Vocal(LyricsLine line, int index, long startMs, long endMs) {
-    }
-
-    /**
-     * @param previous The line sung before the gap, or null if the gap is before the first line.
-     */
-    public record Gap(long startMs, long endMs, @Nullable Vocal previous) {
-    }
-
-    /**
-     * At most one of vocal and gap is set.
-     *
-     * @param previous If neither is set, the line that started last, or null if none did yet.
-     */
-    public record Selection(@Nullable Vocal vocal, @Nullable Gap gap, @Nullable Vocal previous) {
-    }
-
     private static final int MUSICAL_NOTE = "🎵".codePointAt(0);
     private static final int MULTIPLE_MUSICAL_NOTES = "🎶".codePointAt(0);
-
     private final List<Vocal> vocals = new ArrayList<>();
     private final List<Gap> gaps = new ArrayList<>();
     /** The latest end time of the vocals up to and including each index. */
@@ -122,15 +104,6 @@ public final class MiniLyricsTimeline {
         }
     }
 
-    private void addGaps(List<SectionDotsMotion.Gap> classified, long start, long end,
-                         @Nullable Vocal previous) {
-        for (SectionDotsMotion.Gap gap : classified) {
-            long from = Math.max(start, gap.gapStartMs());
-            long to = Math.min(end, gap.gapEndMs());
-            if (from < to) gaps.add(new Gap(from, to, previous));
-        }
-    }
-
     /**
      * If a line is empty or only has music notes, such as the ♪♪♪ some providers use.
      */
@@ -150,6 +123,15 @@ public final class MiniLyricsTimeline {
             }
         }
         return note;
+    }
+
+    private void addGaps(List<SectionDotsMotion.Gap> classified, long start, long end,
+                         @Nullable Vocal previous) {
+        for (SectionDotsMotion.Gap gap : classified) {
+            long from = Math.max(start, gap.gapStartMs());
+            long to = Math.min(end, gap.gapEndMs());
+            if (from < to) gaps.add(new Gap(from, to, previous));
+        }
     }
 
     public Selection at(long positionMs) {
@@ -186,5 +168,22 @@ public final class MiniLyricsTimeline {
         if (background != null) return new Selection(background, null, null);
 
         return new Selection(null, null, high >= 0 ? vocals.get(high) : null);
+    }
+
+    public record Vocal(LyricsLine line, int index, long startMs, long endMs) {
+    }
+
+    /**
+     * @param previous The line sung before the gap, or null if the gap is before the first line.
+     */
+    public record Gap(long startMs, long endMs, @Nullable Vocal previous) {
+    }
+
+    /**
+     * At most one of vocal and gap is set.
+     *
+     * @param previous If neither is set, the line that started last, or null if none did yet.
+     */
+    public record Selection(@Nullable Vocal vocal, @Nullable Gap gap, @Nullable Vocal previous) {
     }
 }

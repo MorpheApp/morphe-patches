@@ -43,6 +43,67 @@ public final class UnisonProvider implements LyricsProvider {
             "0000000000000000000000000000000000000000000000000000000000000000";
     private static volatile String cachedKeyId;
 
+    private static String getKeyId() {
+        String cached = cachedKeyId;
+        if (cached != null) {
+            return cached;
+        }
+        synchronized (UnisonProvider.class) {
+            if (cachedKeyId != null) {
+                return cachedKeyId;
+            }
+            cachedKeyId = computeKeyId();
+            return cachedKeyId;
+        }
+    }
+
+    private static String computeKeyId() {
+        try {
+            final KeyPairGenerator generator = KeyPairGenerator.getInstance("EC");
+            generator.initialize(new ECGenParameterSpec("secp256r1"));
+            final ECPublicKey publicKey = (ECPublicKey) generator.generateKeyPair().getPublic();
+            final String x = base64Url(publicKey.getW().getAffineX());
+            final String y = base64Url(publicKey.getW().getAffineY());
+            final String canonical = "{\"crv\":\"P-256\",\"kty\":\"EC\",\"x\":\"" + x + "\",\"y\":\"" + y + "\"}";
+            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            final byte[] hash = digest.digest(canonical.getBytes(StandardCharsets.UTF_8));
+            return toHex(hash);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not compute Unison key ID", ex);
+            return FALLBACK_KEY_ID;
+        }
+    }
+
+    private static String base64Url(BigInteger value) {
+        final byte[] bytes = value.toByteArray();
+        final byte[] coordinate = new byte[32];
+        int srcPos = 0;
+        if (bytes.length > 32 && bytes[0] == 0) {
+            srcPos = 1;
+        }
+        final int copyLen = Math.min(32, bytes.length - srcPos);
+        System.arraycopy(bytes, srcPos, coordinate, 32 - copyLen, copyLen);
+        return Base64.encodeToString(coordinate,
+                Base64.URL_SAFE | Base64.NO_PADDING | Base64.NO_WRAP);
+    }
+
+    private static String toHex(byte[] bytes) {
+        final StringBuilder builder = new StringBuilder(bytes.length * 2);
+        for (byte b : bytes) {
+            builder.append(Character.forDigit((b >> 4) & 0xF, 16));
+            builder.append(Character.forDigit(b & 0xF, 16));
+        }
+        return builder.toString();
+    }
+
+    private static String sourceUrl(String videoId) {
+        return "https://unison.boidu.dev/song/" + videoId;
+    }
+
+    private static Lyrics withSubmitter(@Nullable Lyrics lyrics, @Nullable String submitter) {
+        return LyricsMerge.addSongwriter(lyrics, submitter == null ? null : "Submitted by " + submitter);
+    }
+
     @Override
     public String name() {
         return "Unison";
@@ -51,17 +112,17 @@ public final class UnisonProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        String videoId = VideoInformation.getVideoId();
+        final String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
             return null;
         }
-        String title = track.title() != null ? track.title() : "";
-        String artist = track.artist() != null ? track.artist() : "";
+        final String title = track.title() != null ? track.title() : "";
+        final String artist = track.artist() != null ? track.artist() : "";
         final long videoLengthMs = VideoInformation.getVideoLength();
         final int duration = videoLengthMs > 0
                 ? (int) (videoLengthMs / 1000)
                 : track.durationSeconds();
-        String album = track.album();
+        final String album = track.album();
 
         return FetchResult.of(fetchByVideoId(videoId, title, artist, duration, album));
     }
@@ -71,7 +132,7 @@ public final class UnisonProvider implements LyricsProvider {
                                   int duration, String album) {
         HttpURLConnection connection = null;
         try {
-            StringBuilder url = new StringBuilder(BASE_URL)
+            final StringBuilder url = new StringBuilder(BASE_URL)
                     .append("?v=").append(LyricsRequests.encode(videoId));
             if (!title.isEmpty()) {
                 url.append("&song=").append(LyricsRequests.encode(title));
@@ -102,13 +163,13 @@ public final class UnisonProvider implements LyricsProvider {
             if (data == null) {
                 return null;
             }
-            String format = LyricsRequests.optString(data, "format");
-            String lyrics = LyricsRequests.optString(data, "lyrics");
+            final String format = LyricsRequests.optString(data, "format");
+            final String lyrics = LyricsRequests.optString(data, "lyrics");
             if (format == null || lyrics == null) {
                 return null;
             }
-            JSONObject submitter = data.optJSONObject("submitter");
-            String submitterName = submitter != null
+            final JSONObject submitter = data.optJSONObject("submitter");
+            final String submitterName = submitter != null
                     ? LyricsRequests.optString(submitter, "displayName")
                     : null;
             return parseLyrics(format, lyrics, videoId, submitterName);
@@ -120,63 +181,6 @@ public final class UnisonProvider implements LyricsProvider {
                 connection.disconnect();
             }
         }
-    }
-
-    private static String getKeyId() {
-        String cached = cachedKeyId;
-        if (cached != null) {
-            return cached;
-        }
-        synchronized (UnisonProvider.class) {
-            if (cachedKeyId != null) {
-                return cachedKeyId;
-            }
-            cachedKeyId = computeKeyId();
-            return cachedKeyId;
-        }
-    }
-
-    private static String computeKeyId() {
-        try {
-            KeyPairGenerator generator = KeyPairGenerator.getInstance("EC");
-            generator.initialize(new ECGenParameterSpec("secp256r1"));
-            ECPublicKey publicKey = (ECPublicKey) generator.generateKeyPair().getPublic();
-            String x = base64Url(publicKey.getW().getAffineX());
-            String y = base64Url(publicKey.getW().getAffineY());
-            String canonical = "{\"crv\":\"P-256\",\"kty\":\"EC\",\"x\":\"" + x + "\",\"y\":\"" + y + "\"}";
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(canonical.getBytes(StandardCharsets.UTF_8));
-            return toHex(hash);
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not compute Unison key ID", ex);
-            return FALLBACK_KEY_ID;
-        }
-    }
-
-    private static String base64Url(BigInteger value) {
-        byte[] bytes = value.toByteArray();
-        byte[] coordinate = new byte[32];
-        int srcPos = 0;
-        if (bytes.length > 32 && bytes[0] == 0) {
-            srcPos = 1;
-        }
-        final int copyLen = Math.min(32, bytes.length - srcPos);
-        System.arraycopy(bytes, srcPos, coordinate, 32 - copyLen, copyLen);
-        return Base64.encodeToString(coordinate,
-                Base64.URL_SAFE | Base64.NO_PADDING | Base64.NO_WRAP);
-    }
-
-    private static String toHex(byte[] bytes) {
-        StringBuilder builder = new StringBuilder(bytes.length * 2);
-        for (byte b : bytes) {
-            builder.append(Character.forDigit((b >> 4) & 0xF, 16));
-            builder.append(Character.forDigit(b & 0xF, 16));
-        }
-        return builder.toString();
-    }
-
-    private static String sourceUrl(String videoId) {
-        return "https://unison.boidu.dev/song/" + videoId;
     }
 
     @Nullable
@@ -196,7 +200,7 @@ public final class UnisonProvider implements LyricsProvider {
                         result.creditLines.isEmpty() ? null : result.creditLines,
                         lyrics, "lrc", sourceUrl(videoId)), submitter);
             case "plain":
-                List<LyricsLine> plain = LRCParser.parsePlain(lyrics);
+                final List<LyricsLine> plain = LRCParser.parsePlain(lyrics);
                 if (plain.isEmpty()) {
                     return null;
                 }
@@ -205,9 +209,5 @@ public final class UnisonProvider implements LyricsProvider {
             default:
                 return null;
         }
-    }
-
-    private static Lyrics withSubmitter(@Nullable Lyrics lyrics, @Nullable String submitter) {
-        return LyricsMerge.addSongwriter(lyrics, submitter == null ? null : "Submitted by " + submitter);
     }
 }

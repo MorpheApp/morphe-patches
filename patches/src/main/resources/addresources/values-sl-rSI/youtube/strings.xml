@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Razno</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Povrni stare nastavitve zaslona YouTube</string>
+  <string name="morphe_native_snackbar_title">Prikaži sporočila v YouTube snackbaru</string>
+  <string name="morphe_native_snackbar_summary">Sporočila Morphe, kot je potrditev glosa igralca, se prikažejo v YouTube snackbaru namesto v pojavnem oknu</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Odstrani omejitve predvajanja v ozadju</string>
   <string name="morphe_shorts_disable_background_playback_title">Onemogoči predvajanje v ozadju</string>
@@ -455,6 +457,15 @@ Prijave so javne in so pregledane, preden je kanal dodan na seznam. Odstranitev 
   <string name="morphe_post_image_download_saved_single">Slika shranjena v %s</string>
   <string name="morphe_post_image_download_failed">Slike ni bilo mogoče prenesti</string>
   <string name="morphe_post_image_download_not_found">V tem objavi ni bilo najdene slike</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Prevedi objave</string>
+  <string name="morphe_post_translate_summary">Dodaja možnost v pojavni meni za prevajanje objav ustvarjalcev vsebine</string>
+  <string name="morphe_post_translate_language_title">Jezik za prevajanje objav</string>
+  <string name="morphe_post_translate_flyout">Prevedi</string>
+  <string name="morphe_post_translate_flyout_original">Prikaži izvirnik</string>
+  <string name="morphe_post_translate_started">Prevajanje…</string>
+  <string name="morphe_post_translate_failed">Objave ni bilo mogoče prevajati</string>
+  <string name="morphe_post_translate_same_language">Objava je že v jeziku prevajanja</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodaj element Zastavi v meni za hitro klicanje</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">V meni za hitro klicanje glavnega toka dodajte element za povzetek videa</string>
@@ -863,6 +874,8 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_fix_transcript_title">Popravi prepis</string>
   <string name="morphe_fix_transcript_summary">Odpravlja preverjanje pogojev, ki lahko prepreči nalaganje transkripcije</string>
   <string name="morphe_captions_in_pip_title">Prikaži podnapise v načinu slika v sliki</string>
+  <string name="morphe_stable_caption_blocks_title">Stabilni bloki podnapisov</string>
+  <string name="morphe_stable_caption_blocks_summary">Avtomatske podnapise združi v stabilne, berljive bloke. Nekatere besede se morda pojavijo, preden so izgovorene. Zaževalni ponoven zagon je potreben.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Nadzorni gumbi</string>
   <string name="morphe_navigation_buttons_screen_summary">Izberite, kateri elementi se pojavljajo v orodni vrstici</string>
@@ -1211,6 +1224,8 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_miniplayer_disable_resuming_summary">Onemogoči mini predvajalnik »Nadaljuj z gledanjem«, funkcijo YouTube Premium, ki se prikaže ob zagonu aplikacije</string>
   <string name="morphe_miniplayer_screen_title">Mini predvajalnik</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite videz in obnašanje minimiziranega predajalnika videa</string>
+  <string name="morphe_miniplayer_not_available_title">Dodatni mini predvoravatelji</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube je odstranil vse dodatne mini predvoravatelje. Če želite ponovno pridobiti več vrst mini predvoravateljev, nato zakrpajte YouTube 21.28.208 ali starejšjo različico</string>
   <string name="morphe_miniplayer_type_title">Vrsta predvajalnika</string>
   <string name="morphe_miniplayer_hide_title_title">Skrij naslov in kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogočen</string>
@@ -1252,6 +1267,8 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_fix_status_bar_layout_summary">Ohranja dosledno zasnovo vrstice stanja, tako da ne prekriva zgornjih vrstic in ne pušča praznega prostora nad predvajalnikom. To funkcijo izklopite, če se aplikacija sesuje ali zgornje vrstice ne izgledajo pravilno</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Sijaj</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Ta naprava ne podpira zaslona s sijajem</string>
   <string name="morphe_theme_color_light_title">Ozadje svetle teme</string>
   <string name="morphe_theme_color_light_entry_2">Bela</string>

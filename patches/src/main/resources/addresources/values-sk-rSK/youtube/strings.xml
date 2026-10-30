@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Ostatné</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Obnoviť starú obrazovku nastavení YouTube</string>
+  <string name="morphe_native_snackbar_title">Zobraziť správy v snackbari YouTube</string>
+  <string name="morphe_native_snackbar_summary">Správy aplikácie Morphe, ako je napríklad potvrdenie stlačenia tlačidla prehrávania, sa zobrazujú v snackbari YouTube namiesto vyskakovacieho okna</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Odstrániť obmedzenia prehrávania na pozadí</string>
   <string name="morphe_shorts_disable_background_playback_title">Zakázať prehrávanie Shorts na pozadí</string>
@@ -455,6 +457,15 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_post_image_download_saved_single">Obrázok uložený do %s</string>
   <string name="morphe_post_image_download_failed">Nebolo možné sťahovať obrázok</string>
   <string name="morphe_post_image_download_not_found">V tomto príspevku nebol nájdený žiadny obrázok</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Prekladať príspevky</string>
+  <string name="morphe_post_translate_summary">Pridáva položku do vysúvacieho menu na preklad príspevkov tvorcov obsahu</string>
+  <string name="morphe_post_translate_language_title">Jazyk prekladu príspevku</string>
+  <string name="morphe_post_translate_flyout">Preložiť</string>
+  <string name="morphe_post_translate_flyout_original">Zobraziť originál</string>
+  <string name="morphe_post_translate_started">Preklad prebieha…</string>
+  <string name="morphe_post_translate_failed">Nepodarilo sa preložiť príspevok</string>
+  <string name="morphe_post_translate_same_language">Príspevok je už v cieľovom jazyku prekladu</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Pridať položku Opýtať sa do rozbaľovacieho menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Pridá položku na zhrnutie videa do rozbaľovacieho menu predplatného</string>
@@ -863,6 +874,8 @@ Je potrebné poskytnúť 'Cookies pre titulky'"</string>
   <string name="morphe_fix_transcript_title">Opraviť prepis</string>
   <string name="morphe_fix_transcript_summary">Rieši zlyhanie kontroly predpokladov, ktoré môže zabrániť načítaniu prepisu</string>
   <string name="morphe_captions_in_pip_title">Zobraziť titulky v režime obraz v obraze</string>
+  <string name="morphe_stable_caption_blocks_title">Stabilné bloky popisov</string>
+  <string name="morphe_stable_caption_blocks_summary">Automatické titulky zгрупujte do stabilných a čitateľných blokov. Niektoré slová sa môžu zobraziť predtým, než budú vyslovené. Vyžaduje sa restart.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigačné tlačidlá</string>
   <string name="morphe_navigation_buttons_screen_summary">Vyberte, ktoré tlačidlá sa zobrazia v paneli nástrojov</string>
@@ -1211,6 +1224,8 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_miniplayer_disable_resuming_summary">Zakáže miniplayer s pokračovaním sledovania, funkciu YouTube Premium, ktorá sa zobrazuje pri spustení aplikácie</string>
   <string name="morphe_miniplayer_screen_title">Miniprehrávač</string>
   <string name="morphe_miniplayer_screen_summary">Prispôsobte vzhľad a správanie zmenšeného prehrávača videa</string>
+  <string name="morphe_miniplayer_not_available_title">Ďalšie miniplayerov</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube odstránilo všetky ďalšie miniplayery. Ak chcete obnoviť viac typov miniplayerov, patchujte YouTube 21.28.208 alebo staršie verzie</string>
   <string name="morphe_miniplayer_type_title">Typ miniprehrávača</string>
   <string name="morphe_miniplayer_hide_title_title">Skryť názov a kanál</string>
   <string name="morphe_miniplayer_type_entry_0">Vypnutý</string>
@@ -1252,6 +1267,8 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_fix_status_bar_layout_summary">Udržuje konzistentné rozloženie stavového riadka, takže nezakrýva horné panely a nenecháva prázdny priestor nad prehrávačom. Toto vypnite, ak sa aplikácia zrúti alebo horné panely vyzerajú nesprávne</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Žiarenie</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Tento zariadenie nepodporuje žiarivý úvodný obrazovku</string>
   <string name="morphe_theme_color_light_title">Pozadie svetlého motívu</string>
   <string name="morphe_theme_color_light_entry_2">Biela</string>

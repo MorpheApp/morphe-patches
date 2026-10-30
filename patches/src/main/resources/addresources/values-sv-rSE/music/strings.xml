@@ -462,12 +462,47 @@ För att säkerställa att scrobbling synkroniseras under bakgrundsuppspelning, 
   <string name="morphe_music_lyrics_section_display_title">Visning</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronisering</string>
   <string name="morphe_music_lyrics_section_panel_title">Panel</string>
-  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI-slutpunkt</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alla leverantörer inaktiverade - inbyggd text och inbäddad text</string>
   <string name="morphe_music_lyrics_source_reset_title">Återställ leverantörsordningen?</string>
   <string name="morphe_music_lyrics_source_reset_message">Återställ leverantörerna till standardprioriteringsordningen.</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Rime-ordlista</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist kräver också UniDict: markera \"Kinesiska och kantonesiska tecken (UniDict)\" i offline-ordbokspartiet och låt det vara klart att ladda ner först. Utan det ger en lista som läser in läsföring inget läsförande.
+
+Markera de listor som Rime Wordlist ska läsa in, tryck sedan Spara för att ladda ner dem. En lista du lagt till tas bort när du avmarkerar den.
+
+Varje lista är ditt eget ord-till-läsning-tabell, en .dict.yaml med rader som:
+字 ham
+典 din2
+Den första kolumnen är ordet, den andra dess läsning; extra kolumner och rader utan tabulering ignoreras."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Ingen Rime-ordlista är markerad för språket ovan. Tryck på detta namn för att markera en, eller välj ett språk som har en lista</string>
+  <string name="morphe_music_lyrics_rime_dict_add">Lägg till</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Lägg till en Rime-ordlista</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">En .dict.yaml-fil, eller en zip med en sådan innehållande rader som 字 ham och 典 din2. Listan hämtas när du markerar den och trycker Spara, och licensen äger du att kontrollera</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">Språkkod</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Två eller tre bokstäver, som t.ex. hak eller wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">Namn</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Visas under uttalet, t.ex. Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Adress till ordlista</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">https://-adress för .dict.yaml eller dess zip-fil</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Tecken inte ingående i ord</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">Automatiskt</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Kantonesiska tecken</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">Mandarintecken</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Inget teckenutlägg</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Fyll i kod, namn och adress</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">Koden måste bestå av två eller tre bokstäver, t.ex. hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">Adressen måste börja med https://</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">Namnet och adressen får inte innehålla en vertikal streck</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s har redan en ordtabell</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s läses upp av den inbyggda romaniseringstjänsten och kan inte ta emot en ordlista</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Ej använd: detta språk har redan sitt eget utlägg, så avmarkera det för att ta bort det</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Tillagd %1$s - markera den och tryck på Spara för att ladda ner den</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Ordlistor redo</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Ordlister redo (%1$d poster)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Bygger ordlista för utlägg: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Nedladdning av ordlista misslyckades - tryck på Spara igen för att försöka igen</string>
   <string name="morphe_music_lyrics_clear_cache_title">Rensa lagrad text</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Ta bort texterna som finns på den här enheten</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Ta bort %1$s MB texter som finns kvar på denna enhet</string>
   <string name="morphe_music_lyrics_clear_cache_done">Rensade %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">Hämta token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-användartoken</string>
@@ -522,14 +557,22 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_copy_button_title">Visa knappen Kopiera</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tryck för att kopiera originaltexten som vanlig text; långtryck för att spara råa textkällfilen till Nedladdningar</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Visa knappen Översätt</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Tryck för att växla översättning; långtryck för endast översättning. Användar provider-översättningar, Google Översättning eller en OpenAI-kompatibel API</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">Visa romaniseringsknapp</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Tryck för att växla romanisering; långtryck för endast romanisering. Användar provider-romanisering, Google Översättning eller en OpenAI-kompatibel API</string>
-  <string name="morphe_music_lyrics_local_romanization_title">Lokal Romanisering och Alignment</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">Romanisera på enheten när providern, din modell och Google Översättning misslyckas. Läsningen följer varje ord i en tidsstämmd text; ordsynkronisering måste vara på. Kinesiska, kantonesiska, japanska, koreanska, grekiska, ryska, georgiska, armeniska; cirka 120 MB</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Läsning %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Tryck för att växla översättning; långtryck för endast översättning. Använder de aktiverade översättningstjänsterna i deras angivna ordning</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Visa knappen för romanisering eller translitterering</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Tryck för att växla romanisering eller translitterering; långtryck för endast romanisering eller translitterering. Använder de aktiverade romaniseringstjänsterna i deras angivna ordning</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">Aktivera translitterering</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Tillåt icke-latinska utlägg från lyrics-källan; när avaktiverad behåll endast latinska bokstäver, bokstäver med diakritiska tecken och tonbitar</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Läser upp varje ord i en synkroniserad text (ordsynkronisering på); koreanska behöver ingen nedladdning; fjorton skript delar en CLDR-nedladdning; kinesiska tecken läses upp av Rime-ordlistan när dess ordtabell täcker språket</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Laddar ner utläggsordböcker…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Läsningsredskap redo (%1$d poster)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Nedladdning misslyckades - stäng av och på igen för att försöka igen</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline Dictionary</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japanska (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Kinesiska och kantonesiska tecken (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kinesiska ord (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grekiska, slaviska kyrilliska (inklusive ryska, ukrainska, bulgariska, serbiska, belarusiska, makedonska), georgiska, armeniska, hebreiska, arabiska, amhariska och syrisk translitterering (CLDR, ~0,5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Läsning %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">Välj minst en ordbok</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Visa uppdatera-knappen</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tryck för att växla till nästa textkandidat; långtryck för att söka text efter låttitel och artist</string>
   <string name="morphe_music_lyrics_search_dialog_title">Sök sångtext</string>
@@ -540,6 +583,10 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_saved">Sparad</string>
   <string name="morphe_music_lyrics_word_sync_title">Markera synkroniserade ord eller stavelser</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritera ord-för-ord-text när det finns. När texten har ordtajming markeras varje ord eller stavelse i takt med musiken.</string>
+  <string name="morphe_music_lyrics_line_scale_title">Dra ihop inaktiva rader</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Ritar varje rad som inte sjungs just nu något mindre, ovanpå att dämpa den</string>
+  <string name="morphe_music_lyrics_split_background_title">Visa bakgrundssång separat</string>
+  <string name="morphe_music_lyrics_split_background_summary">Separerar bakgrundssång och harmoni från huvudraden. Flyttar en bakgrundssång skriven inom klammerparenteser, t.ex. \"(Oh) I want you\", från sjunglinjen till en egen, mer dämpad rad</string>
   <string name="morphe_music_lyrics_hide_played_title">Dölj […] raden.</string>
   <string name="morphe_music_lyrics_hide_played_summary">Dölj textrader ovanför den raden som spelas för tillfället</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Dölj ospelade texter.</string>
@@ -597,10 +644,15 @@ Gäller båda gränserna. Vid 1,75 räknas fyra helbreddstecken som 7."</string>
   <string name="morphe_music_lyrics_translated_by_ai">Översatt av %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romaniserad av %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romaniserat av %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Romaniserad av Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Översatt</string>
   <string name="morphe_music_lyrics_translation_language_title">Översättningsspråk</string>
-  <string name="morphe_music_lyrics_romanize_language_title">Romaniseringsspråk</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Språk för romanisering eller translitterering</string>
+  <string name="morphe_music_lyrics_translation_target_language">"Målspråk för översättning:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"Målspråk för transkription eller romanisering:
+%s"</string>
   <string name="morphe_music_lyrics_translating">Översätter…</string>
   <string name="morphe_music_lyrics_translate_failed">Kunde inte översätta sångtexten</string>
   <string name="morphe_music_lyrics_romanize_hide">Romaniserad</string>
@@ -614,7 +666,7 @@ Gäller båda gränserna. Vid 1,75 räknas fyra helbreddstecken som 7."</string>
   <string name="morphe_music_lyrics_refreshing">Uppdaterar</string>
   <string name="morphe_music_lyrics_refreshed">Uppdaterad</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-nyckel</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkriberar eller tidssynkroniserar texterna till den aktuella låten. En separat tjänst, inte relaterad till OpenAI-kompatibla slutpunkten ovan</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkriberar eller tidsmärker texterna för det aktuella spåret</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-nyckel sparad. Använd synkroniseringsknappen i dialogrutan för lyrics-sökning, eller panelinstruktionen när en låt saknar texter</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API-nyckel sparad</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC accepterade inte den nyckeln</string>
@@ -630,58 +682,50 @@ Gäller båda gränserna. Vid 1,75 räknas fyra helbreddstecken som 7."</string>
   <string name="morphe_music_lyrics_transcribe_no_text">Inga texter att synkronisera - transkriberar istället</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC kunde inte bearbeta detta spår</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-kreditpoäng är upbrukade för detta spår</string>
-  <string name="morphe_music_lyrics_about_summary">"Lyriken matchas efter titel och artist. Onormal metadata kan ge inget resultat eller fel version. Använd uppdatering för att växla versioner. Leverantörer markerade * kräver en token. Alla aktiva leverantörer begås inte alltid i angiven ordning, men svarar baserat på sin hastighet.
+  <string name="morphe_music_lyrics_about_summary">"Låttexter matchas via titel och artist; onormal metadata kan inte hitta något eller fel version. Använd Uppfräschning för att växla mellan versioner. Markörer märkta * kräver en token. Alla aktiva leverantörer begärs inte alltid i din ordning, men svarar baserat på hastighet.
 
-Texterna kommer från tredjepartstjänster som inte är anslutna till, sponsrade eller godkända av Morphe. Varje tjänst används \"som den är\": texterna, deras tillgänglighet och licensiering stannar hos dessa tjänster och deras licensgivare, och användningen kan vara föremål för deras villkor. Vad som skickas till en aktiverad tjänst är endast sökningen du begärde – titeln, artisten och, där denna tjänst behöver det, videoid:n. Det valfria AI-slutpunktsanropet och QuickLRC-transkriptionen körs endast efter att du har konfigurerat dem, och de tar emot texten eller spårets video-URL."</string>
+Låttexter kommer från tredjeparts tjänster som inte är anslutna till, sponsrade av eller rekommenderade av Morphe. Varje används precis som det är: texterna, deras tillgänglighet och deras licensiering stannar kvar hos dessa tjänster och deras licensgivare, och användningen kan vara föremål för deras användarvillkor. Det som når en aktiv tjänst är bara sökningen du begärde - titeln, artisten, och där det behövs, videoiden. Den valfria AI-slutpunkten och QuickLRC-transkriptionen körs endast efter du konfigurerat dem, och får mottagandet av texten eller videolänken till spår."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Aktivera endast de leverantörer du använder, eller behåll standardinställningen - konstanta förfrågningar kan överbelasta små community-sidor för texter</string>
   <string name="morphe_music_lyrics_hide_info_title">Dölj kreditraden</string>
   <string name="morphe_music_lyrics_hide_info_summary">Dölj kreditraden som visas under texten.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Växla mellan översättning och romanisering</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">PÅ placerar romaniseringen under texten och översättningen ovanför; AV behåller romaniseringen ovanför och översättningen nedanför.</string>
-  <string name="morphe_music_lyrics_section_translation_title">Översättning</string>
-  <string name="morphe_music_lyrics_section_romanization_title">Romanisering</string>
-  <string name="morphe_music_lyrics_translation_provider_title">Översättningsleverantör</string>
-  <string name="morphe_music_lyrics_translation_provider_google">Google (standard, gratis)</string>
-  <string name="morphe_music_lyrics_translation_provider_openai_compatible">OpenAI-kompatibel (anpassad)</string>
-  <string name="morphe_music_lyrics_romanization_provider_title">Leverantör för romanisering</string>
-  <string name="morphe_music_lyrics_romanization_provider_google">Google (standard)</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">Lokal / offline-ordbok</string>
-  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI-kompatibel (anpassad)</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">AI-sektion</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">Används endast när leverantören inte skickar med sektionsetiketter som Chorus eller Verse, vilket din OpenAI-kompatibla modell sedan detekterar</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; molnslutpunkter</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurera API-nycklar, modeller, slutpunkter och promptmallar för AI-leverantörer.</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">API-slutpunkts-URL (t.ex. https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">PÅ placerar romanisering eller translitterering under texterna och översättningen ovanpå; AV håller romanisering eller translitterering ovanpå och översättning underst. Ett utlägg placerat över varje stavelse flyttas med den, från ovanför sin stavelse till underst den</string>
+  <string name="morphe_music_lyrics_force_center_title">Centrera alltid texterna</string>
+  <string name="morphe_music_lyrics_force_center_summary">PÅ centrerar varje rad och ignorerar källans aligment, inklusive duett-sidor; AV behåller det aligment texterna ber om</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Minst en tjänst måste vara påslagen</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Översättning</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Romanisering eller translitterering</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Offline Dictionary</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime-ordlista</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Kontrollera sektioner med AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Används endast när tjänsten inte levererar sektionsetiketter som Topp eller Vers, vilket din OpenAI-kompatibla modell då upptäcker. Att redigera raden öppnar också dess prompt</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API-slutpunkts-URL (t.ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Mall för prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Platshållare: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt sparad</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt sparad, men AI-slutpunkten är fortfarande inte användbar. Konfigurera den under AI-inställningar först</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt återställd</string>
-  <string name="morphe_music_lyrics_ai_extra_body_invalid">Inte giltig JSON. Rätta det eller rensa fältet innan du sparar</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Inställningar för översättning &amp; romanisering sparades</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Inställningarna återställdes till standard</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Bas-URL måste börja med http:// eller https://</string>
-  <string name="morphe_music_lyrics_ai_config_test_connection">Testa anslutning</string>
-  <string name="morphe_music_lyrics_ai_config_endpoint_label">Konfigurera slutpunkter</string>
-  <string name="morphe_music_lyrics_ai_config_show_all">Visa alla slutpunkter</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Inställningarna är ofullständiga eller har förkastats av tjänsten</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Validerar anslutning…</string>
-  <string name="morphe_music_lyrics_ai_config_translation_provider_label">Översättningsleverantör</string>
-  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">Leverantör för romanisering</string>
-  <string name="morphe_music_lyrics_ai_config_fetch_models">Hämta modeller</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Ansluten! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Anslutning misslyckades. Kontrollera inställningarna.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Ange API-nyckeln först</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Hämtar modeller…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Välj en modell</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Det gick inte att hämta modeller. Kontrollera API-nyckeln eller anslutningen.</string>
-  <string name="morphe_music_lyrics_ai_config_gemini_section">Inställningar för Gemini API</string>
-  <string name="morphe_music_lyrics_ai_config_openai_compat_section">OpenAI-kompatibel (egen slutpunkt)</string>
-  <string name="morphe_music_lyrics_ai_config_deepl_section">Inställningar för DeepL API</string>
-  <string name="morphe_music_lyrics_ai_config_api_key_label">API-nyckel</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modell</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Bas-URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Välj en tjänst</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API-nyckel (valfri)</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">Översättningsprompt</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra anförandekropp (valfri JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Extra begärande headers (valfri JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Citera namn och värden, t.ex. {\"api-key\": \"abc\"}. Ett ociterat värde som innehåller / : eller ett nummer förkastas. Ett tomt värde tar bort en header.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Citera namn och värden, t.ex. {\"temperature\": 0.3}. Ett ociterat värde som innehåller / eller : förkastas. Modell och meddelanden kan inte ställas in här.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Autentiseringsnyckel (Free eller Pro)</string>
-  <string name="morphe_music_lyrics_ai_config_summary">Konfigurera API-nycklar, modeller, slutpunkter och prompter</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 – Inaktivera ikoner i fet stil</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Återställ spelarens flikar Upp nästa, Sångtext och Relaterade</string>

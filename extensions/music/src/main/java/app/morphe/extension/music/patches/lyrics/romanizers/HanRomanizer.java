@@ -16,14 +16,6 @@ import androidx.annotation.Nullable;
  */
 final class HanRomanizer {
 
-    interface Readings {
-        @Nullable
-        String word(String word);
-
-        @Nullable
-        String character(char c);
-    }
-
     private HanRomanizer() {
     }
 
@@ -75,7 +67,7 @@ final class HanRomanizer {
      * @return how many characters the word took, 0 when none is known.
      */
     private static int appendLongestWord(String line, int index, Readings readings,
-            StringBuilder out) {
+                                         StringBuilder out) {
         int longest = Math.min(WordReadingTable.MAX_WORD_LENGTH, line.length() - index);
         for (int length = longest; length >= 1; length--) {
             String reading = readings.word(line.substring(index, index + length));
@@ -96,5 +88,13 @@ final class HanRomanizer {
         if (reading == null || reading.isEmpty()) return;
         if (out.length() > 0) out.append(' ');
         out.append(reading);
+    }
+
+    interface Readings {
+        @Nullable
+        String word(String word);
+
+        @Nullable
+        String character(char c);
     }
 }

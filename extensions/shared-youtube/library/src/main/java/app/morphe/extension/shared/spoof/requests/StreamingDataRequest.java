@@ -337,9 +337,17 @@ public class StreamingDataRequest {
                             + responseCode + " response: " + connection.getResponseMessage(),
                     null, showErrorToasts);
         } catch (SocketTimeoutException ex) {
-            handleConnectionError("Connection timeout", ex, showErrorToasts);
+            if (Utils.isNetworkConnected()) {
+                handleConnectionError("Connection timeout", ex, showErrorToasts);
+            } else {
+                Logger.printInfo(() -> "Connection timeout while network disconnected", ex);
+            }
         } catch (IOException ex) {
-            handleConnectionError("Network error", ex, showErrorToasts);
+            if (Utils.isNetworkConnected()) {
+                handleConnectionError("Network error", ex, showErrorToasts);
+            } else {
+                Logger.printInfo(() -> "Network error while network disconnected", ex);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "send failed", ex);
         } finally {
@@ -485,6 +493,11 @@ public class StreamingDataRequest {
 
     private static StreamData fetch(String videoId, boolean isInline, Map<String, String> playerHeaders,
                                     boolean includeVideoDetails, ClientType[] clientOrder, boolean isDownload) {
+        if (!Utils.isNetworkConnected()) {
+            Logger.printDebug(() -> "Network not connected, skipping stream fetch for: " + videoId);
+            return null;
+        }
+
         final boolean debugEnabled = BaseSettings.DEBUG.get();
         final long fetchStartTime = System.currentTimeMillis();
         String authorization = playerHeaders.get(AUTHORIZATION_HEADER);
@@ -538,6 +551,10 @@ public class StreamingDataRequest {
 
         if (isDownload) {
             Logger.printDebug(() -> "No client could resolve the download: " + videoId);
+            return null;
+        }
+
+        if (!Utils.isNetworkConnected()) {
             return null;
         }
 

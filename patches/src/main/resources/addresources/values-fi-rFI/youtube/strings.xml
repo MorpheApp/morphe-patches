@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Sekalaiset</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Palauta vanhat YouTube-asetusvalikot</string>
+  <string name="morphe_native_snackbar_title">Näytä YouTube-snackbarissa olevat viestit</string>
+  <string name="morphe_native_snackbar_summary">Morphe-viestit, kuten pelaajan painikkeen vahvistus, näytetään YouTube-snackbarissa ponnahdusikkunan sijaan</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Poista taustatoiston rajoitukset</string>
   <string name="morphe_shorts_disable_background_playback_title">Poista Shortsien taustatoisto käytöstä</string>
@@ -455,6 +457,15 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_post_image_download_saved_single">Kuva tallennettu kohteeseen %s</string>
   <string name="morphe_post_image_download_failed">Kuvaa ei voitu ladata</string>
   <string name="morphe_post_image_download_not_found">Tästä julkaisusta ei löydetty kuvaa</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Käännä julkaisut</string>
+  <string name="morphe_post_translate_summary">Lisää ponnahdusvalikkoon kohdan sisällöntuottajien julkaisujen kääntämiseksi</string>
+  <string name="morphe_post_translate_language_title">Julkaisun käännöskieli</string>
+  <string name="morphe_post_translate_flyout">Käännä</string>
+  <string name="morphe_post_translate_flyout_original">Näytä alkuperäinen</string>
+  <string name="morphe_post_translate_started">Käännetään…</string>
+  <string name="morphe_post_translate_failed">Julkaisua ei voitu kääntää</string>
+  <string name="morphe_post_translate_same_language">Julkaisu on jo käännöskielellä</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Lisää \"Kysy\"-kohde ponnahdusvalikkoon</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lisää videon tiivistäminen-sivunne kohteen syötteen ponnahdusvalikossa</string>
@@ -863,6 +874,8 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_fix_transcript_title">Korjaa transkriptio</string>
   <string name="morphe_fix_transcript_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
   <string name="morphe_captions_in_pip_title">Näytä tekstitykset kuvan-kuvassa</string>
+  <string name="morphe_stable_caption_blocks_title">Vakaat tekstityspalikat</string>
+  <string name="morphe_stable_caption_blocks_summary">Ryhmittele automaattiset tekstitykset vakaisiin, luettaviin palikoihin. Jotkin sanat saattavat ilmestyä ennen kuin niitä puhutaan. Käynnistys uudelleen vaaditaan.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigointipainikkeet</string>
   <string name="morphe_navigation_buttons_screen_summary">Piilota Luo-painike</string>
@@ -1211,6 +1224,8 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_miniplayer_disable_resuming_summary">Poistaa käytöstä ’Jatka katselua’ -minisoittimen, YouTube Premium -ominaisuuden, joka ilmestyy sovelluksen käynnistyessä</string>
   <string name="morphe_miniplayer_screen_title">Minisoitin</string>
   <string name="morphe_miniplayer_screen_summary">Muokkaa pienennetyn videotoistimen ulkoasua ja toimintaa</string>
+  <string name="morphe_miniplayer_not_available_title">Lisäminisoittimet</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube poisti kaikki lisäminisoittimet. Palauttaaksesi useampia minisoitin-tyyppejä, päivitä YouTube-versio 21.28.208 tai sitä vanhempi</string>
   <string name="morphe_miniplayer_type_title">Minisoittimen tyyppi</string>
   <string name="morphe_miniplayer_hide_title_title">Piilota otsikko ja kanava</string>
   <string name="morphe_miniplayer_type_entry_0">Pois käytöstä</string>

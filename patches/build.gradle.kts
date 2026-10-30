@@ -84,9 +84,13 @@ tasks {
     register<JavaExec>("checkStringResources") {
         description = "Checks resource strings for invalid formatting"
 
-        dependsOn(build)
-
-        classpath = sourceSets["main"].runtimeClasspath
+        // Only the compiled patches and the raw string resources are needed. Using the full
+        // main runtime classpath would run processResources, which builds and minifies all extensions.
+        classpath = files(
+            sourceSets["main"].output.classesDirs,
+            configurations.runtimeClasspath,
+            layout.projectDirectory.dir("src/main/resources"),
+        )
         mainClass.set("app.morphe.patches.util.resource.CheckStringResourcesKt")
     }
 

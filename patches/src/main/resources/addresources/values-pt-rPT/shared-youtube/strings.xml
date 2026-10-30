@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Animação de inicialização</string>
   <string name="morphe_splash_screen_style_entry_1">Desativado</string>
   <string name="morphe_splash_screen_style_entry_2">Cor</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Color</string>
   <string name="morphe_splash_screen_style_entry_4">Monocromático</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monocromático</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Destacar novas configurações</string>
+  <string name="morphe_settings_new_indicator_days_summary">Número de dias que um ponto é exibido ao lado de configurações e opções adicionadas por uma atualização</string>
+  <string name="morphe_settings_new_indicator_days_off">Desativado</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reiniciar para finalizar a configuração</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

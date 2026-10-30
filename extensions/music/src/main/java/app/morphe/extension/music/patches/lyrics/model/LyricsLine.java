@@ -110,8 +110,49 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
         this(startTimeMs, NO_TIME, text, List.of(), null, false, false, null);
     }
 
+    public static boolean isCenteredAgentId(@Nullable String agentId) {
+        if (agentId == null) {
+            return false;
+        }
+        final String id = agentId.trim();
+        return "v1000".equalsIgnoreCase(id) || "v2000".equalsIgnoreCase(id);
+    }
+
+    private static String compactText(String value) {
+        final StringBuilder builder = new StringBuilder(value.length());
+        for (int i = 0; i < value.length(); i++) {
+            final char c = value.charAt(i);
+            if (!Character.isWhitespace(c)) {
+                builder.append(c);
+            }
+        }
+        return builder.toString();
+    }
+
+    private static boolean hasMultipleWords(String value) {
+        boolean inWord = false;
+        int wordCount = 0;
+        for (int i = 0; i < value.length(); i++) {
+            if (Character.isWhitespace(value.charAt(i))) {
+                inWord = false;
+            } else if (!inWord) {
+                inWord = true;
+                wordCount++;
+                if (wordCount > 1) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public boolean hasWords() {
         return !words.isEmpty();
+    }
+
+    /** Whether Apple's group/other vocal agent is centered instead of placed on a duet side. */
+    public boolean isCentered() {
+        return isCenteredAgentId(agentId);
     }
 
     /**
@@ -128,43 +169,13 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
         }
         if (words.size() == 1) {
             Word single = words.get(0);
-            if (single.endMs() <= single.startMs()) {
+            // A span over several words is the line's own timing written back out.
+            if (hasMultipleWords(text)) {
                 return false;
             }
-            if (hasMultipleWords(text) && compactText(single.text()).equalsIgnoreCase(compactText(text))) {
-                return false;
-            }
+            return single.endMs() > single.startMs();
         }
         return true;
-    }
-
-    private static String compactText(String value) {
-        StringBuilder builder = new StringBuilder(value.length());
-        for (int i = 0; i < value.length(); i++) {
-            final char c = value.charAt(i);
-            if (!Character.isWhitespace(c)) {
-                builder.append(c);
-            }
-        }
-        return builder.toString();
-    }
-
-    // ponytail: whitespace word counting; upgrade to BreakIterator if space-less scripts mix dummy spans.
-    private static boolean hasMultipleWords(String value) {
-        boolean inWord = false;
-        int wordCount = 0;
-        for (int i = 0; i < value.length(); i++) {
-            if (Character.isWhitespace(value.charAt(i))) {
-                inWord = false;
-            } else if (!inWord) {
-                inWord = true;
-                wordCount++;
-                if (wordCount > 1) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     @NonNull

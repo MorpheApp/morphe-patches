@@ -21,11 +21,14 @@ final class DisplayState {
     final boolean wordSync;
     /** An explicit search waits for every stage, so the best result of the run is the one shown. */
     final boolean exhaustive;
-    @Nullable Lyrics published;
+    @Nullable
+    Lyrics published;
     long firstPaintAt;
-    @Nullable Lyrics bestResult;
+    @Nullable
+    Lyrics bestResult;
     int bestDisplayRank;
-    @Nullable Lyrics bestFallback;
+    @Nullable
+    Lyrics bestFallback;
     int bestFallbackRank;
     boolean windowClosed;
 

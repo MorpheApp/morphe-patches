@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Ýmislegt</string>
   <string name="morphe_settings_screen_12_video_title">Myndband</string>
   <string name="morphe_restore_old_settings_menus_title">Endurheimta gamla stillingaskjá YouTube</string>
+  <string name="morphe_native_snackbar_title">Sýna skilaboð í YouTube snackbar</string>
+  <string name="morphe_native_snackbar_summary">Skilaboð frá Morphe, svo sem staðfesting hnapps spilara, birtast í YouTube snackbar í stað sprettiglugga</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Fjarlægja takmarkanir á spilun í bakgrunni</string>
   <string name="morphe_shorts_disable_background_playback_title">Slökkva á spilun í bakgrunni</string>
@@ -445,6 +447,15 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_post_image_download_saved_single">Mynd vist í %s</string>
   <string name="morphe_post_image_download_failed">Gat ekki hlaðið niður myndinni</string>
   <string name="morphe_post_image_download_not_found">Engin mynd fannst í þessu færslunni</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Þýða færslur</string>
+  <string name="morphe_post_translate_summary">Bætir valmuni í útsleppivalmynd til að þýða færslur efnisstofnara</string>
+  <string name="morphe_post_translate_language_title">Þýðingarmál færslu</string>
+  <string name="morphe_post_translate_flyout">Þýða</string>
+  <string name="morphe_post_translate_flyout_original">Sýna upprunalega</string>
+  <string name="morphe_post_translate_started">Þýðing vinnur...</string>
+  <string name="morphe_post_translate_failed">Gat ekki þýtt færsluna</string>
+  <string name="morphe_post_translate_same_language">Færslan er þegar á þýðingarmálinu</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Bæta Ask hlut í útflytvalmynd</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Bætir myndbandssamantektarefni í færiborðsútflytvalynduna</string>
@@ -851,6 +862,8 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_fix_transcript_title">Lagfæra afrit</string>
   <string name="morphe_fix_transcript_summary">Leysir vandamál með forskotaskilyrði sem getur komið í veg fyrir að afritirinn hlaðist</string>
   <string name="morphe_captions_in_pip_title">Sýna texta í mynd-mi mynd-tilstandi</string>
+  <string name="morphe_stable_caption_blocks_title">Stöðugar textablokkir</string>
+  <string name="morphe_stable_caption_blocks_summary">Hópar sjálfvirkar textabreytur í stöðugum, læsilegum blokkum. Sum orð gætu komið fram áður en þau eru outgrowth. Endurræsing nauðsynleg.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Stýrihnappar</string>
   <string name="morphe_navigation_buttons_screen_summary">Veldu hvaða hnappa þú vilt sýna í neðri stjórnarborðinu</string>
@@ -1179,6 +1192,8 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_miniplayer_disable_resuming_summary">Gerir óvirkt \'Halda áfram að horfa\' litla spilara, YouTube Premium eiginleika sem birtist þegar appið ræsir</string>
   <string name="morphe_miniplayer_screen_title">Mini spilari</string>
   <string name="morphe_miniplayer_screen_summary">Sérsnið útlit og hegðun minnkaðs myndavörpunar</string>
+  <string name="morphe_miniplayer_not_available_title">Auknir smáspilarar</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube fjarlægði alla aukna smáspilara. Til að endursetja fleiri gerðir af smáspilarum, vinsamlegast pútta YouTube 21.28.208 eða eldri útgáfu</string>
   <string name="morphe_miniplayer_type_title">Gerð Mini spilara</string>
   <string name="morphe_miniplayer_hide_title_title">Fela titil og rás</string>
   <string name="morphe_miniplayer_type_entry_0">Gerðu óvirkt</string>
@@ -1220,6 +1235,8 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_fix_status_bar_layout_summary">Heldir útliti stöðustikunnar í samræmi, svo hún þeki ekki efri tækin og skilur eftir sig enginn tómarúm ofan við spilarann. Slökktu á þessu ef forritið brotnar eða efri tækin líta ranglega út</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Glóð</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow-skjárstýring er ekki studduð af þessu tæki</string>
   <string name="morphe_theme_color_light_title">Ljósþemabakgrunnur</string>
   <string name="morphe_theme_color_light_entry_2">Hvítur</string>

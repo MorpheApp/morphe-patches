@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">其他</string>
   <string name="morphe_settings_screen_12_video_title">影片</string>
   <string name="morphe_restore_old_settings_menus_title">還原舊版設定選單</string>
+  <string name="morphe_native_snackbar_title">在 YouTube Snackbar 中顯示訊息</string>
+  <string name="morphe_native_snackbar_summary">Morphe 訊息（如玩家按鈕的確認）會顯示於 YouTube Snackbar，而非彈出式視窗</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">移除背景播放限制</string>
   <string name="morphe_shorts_disable_background_playback_title">停用背景播放 Shorts</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">圖片已儲存至 %s</string>
   <string name="morphe_post_image_download_failed">無法下載圖片</string>
   <string name="morphe_post_image_download_not_found">此貼文中未找到圖片</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">翻譯貼文</string>
+  <string name="morphe_post_translate_summary">新增一個飛出式選單項目，用以翻譯內容創作者的貼文</string>
+  <string name="morphe_post_translate_language_title">貼文翻譯語言</string>
+  <string name="morphe_post_translate_flyout">翻譯</string>
+  <string name="morphe_post_translate_flyout_original">顯示原文</string>
+  <string name="morphe_post_translate_started">翻譯中……</string>
+  <string name="morphe_post_translate_failed">無法翻譯此貼文</string>
+  <string name="morphe_post_translate_same_language">貼文已是翻譯目標語言</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">在彈出式選單中加入「Ask」項目</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">在資訊流彈出式選單中加入影片摘要項目</string>
@@ -863,6 +874,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">修正轉錄稿</string>
   <string name="morphe_fix_transcript_summary">解決可能阻止載入字幕的預先檢查失敗問題</string>
   <string name="morphe_captions_in_pip_title">在畫中畫模式下顯示字幕</string>
+  <string name="morphe_stable_caption_blocks_title">穩定字幕區塊</string>
+  <string name="morphe_stable_caption_blocks_summary">將自動字幕分組為穩定且易讀的區塊。某些單字可能會在說出之前出現。需要重新啟動。</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">導覽列按鈕</string>
   <string name="morphe_navigation_buttons_screen_summary">選擇要在工具列中顯示哪些元件</string>
@@ -1211,6 +1224,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">停用「繼續觀看」迷你播放器，這是 YouTube Premium 的功能，會在應用程式啟動時顯示</string>
   <string name="morphe_miniplayer_screen_title">迷你播放器</string>
   <string name="morphe_miniplayer_screen_summary">自訂迷你影片播放器的外觀和行為</string>
+  <string name="morphe_miniplayer_not_available_title">額外的縮小播放器</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube 移除了所有額外的縮小播放器。若要恢復更多縮小播放器類型，請修補 YouTube 21.28.208 或更早版本</string>
   <string name="morphe_miniplayer_type_title">迷你播放器類型</string>
   <string name="morphe_miniplayer_hide_title_title">隱藏標題與頻道</string>
   <string name="morphe_miniplayer_type_entry_0">停用</string>
@@ -1252,6 +1267,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">保持狀態列的版面配置一致，使其不會遮蓋頂部工具列，且在播放器上方不會留有空白。如果應用程式發生當機或頂部工具列顯示異常，請停用此選項</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">發光</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">此裝置不支援發光啟動畫面</string>
   <string name="morphe_theme_color_light_title">淺色主題背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>

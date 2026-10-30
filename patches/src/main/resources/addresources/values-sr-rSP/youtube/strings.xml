@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Разно</string>
   <string name="morphe_settings_screen_12_video_title">Видео</string>
   <string name="morphe_restore_old_settings_menus_title">Врати старе меније подешавања</string>
+  <string name="morphe_native_snackbar_title">Прикажи поруке у YouTube SnackBar-у</string>
+  <string name="morphe_native_snackbar_summary">Morphe поруке, као што је потврда дугмета за репродукцију, приказују се у YouTube SnackBar-у уместо у искачућем прозору</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Уклоните ограничења за репродукцију у позадини</string>
   <string name="morphe_shorts_disable_background_playback_title">Онемогући пуштање Shorts видеа у позадини</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">Слика је сачувана у %s</string>
   <string name="morphe_post_image_download_failed">Није било могућности да се преузме слика</string>
   <string name="morphe_post_image_download_not_found">У овој објави нема слика</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Преведи објаве</string>
+  <string name="morphe_post_translate_summary">Додаје ставку у flyout мени за превођење објава креатора садржаја</string>
+  <string name="morphe_post_translate_language_title">Језик за превод објава</string>
+  <string name="morphe_post_translate_flyout">Преведи</string>
+  <string name="morphe_post_translate_flyout_original">Прикажи оригинал</string>
+  <string name="morphe_post_translate_started">Превођење…</string>
+  <string name="morphe_post_translate_failed">Није било могућности да се објава преведе</string>
+  <string name="morphe_post_translate_same_language">Објава је већ на језику за превод</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Додај ставку Питај у изборни мени</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Додаје ставку за сумирање видеа у изборни мени канала</string>
@@ -861,6 +872,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">Popravi transkript</string>
   <string name="morphe_fix_transcript_summary">Решава проблем са претпоставком која може да спречи учитавање транскрипта.</string>
   <string name="morphe_captions_in_pip_title">Прикажи титлове унутар слике-у-слици</string>
+  <string name="morphe_stable_caption_blocks_title">Стабилни блокови титлова</string>
+  <string name="morphe_stable_caption_blocks_summary">Групише аутоматске титлове у стабилне, читљиве блокове. Неке речи се могу појавити пре него што буду изговорене. Потребан је рестарт.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Дугмад навигације</string>
   <string name="morphe_navigation_buttons_screen_summary">Одаберите који дугмићи ће се појавити на доњој навигационој траци.</string>
@@ -1209,6 +1222,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Онемогућава мини-плејер „Настави гледање“, функцију YouTube Premium која се појављује при покретању апликације</string>
   <string name="morphe_miniplayer_screen_title">Мини-плејер</string>
   <string name="morphe_miniplayer_screen_summary">Прилагодите изглед и понашање мини-плејера</string>
+  <string name="morphe_miniplayer_not_available_title">Додатни миниплејери</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube је уклонио све додатне миниплејере. Да бисте вратили више типова миниплејера, пачирајте YouTube 21.28.208 или старију верзију</string>
   <string name="morphe_miniplayer_type_title">Тип мини-плејера</string>
   <string name="morphe_miniplayer_hide_title_title">Сакриј наслов и канал</string>
   <string name="morphe_miniplayer_type_entry_0">Онемогућен</string>
@@ -1250,6 +1265,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">Одржава конзистентан распоред статусне траке, тако да не прекрива горње траке и не оставља празан простор изнад плејера. Исключи ово ако се апликација уруши или горње траке изгледају лоше</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Сјај</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Овај уређај не подржава Glow екран за почетак</string>
   <string name="morphe_theme_color_light_title">Позадина светле теме</string>
   <string name="morphe_theme_color_light_entry_2">Бела</string>

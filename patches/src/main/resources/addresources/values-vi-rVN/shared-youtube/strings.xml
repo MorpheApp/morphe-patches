@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Hoạt ảnh khởi động</string>
   <string name="morphe_splash_screen_style_entry_1">Tắt</string>
   <string name="morphe_splash_screen_style_entry_2">Màu</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Có màu</string>
   <string name="morphe_splash_screen_style_entry_4">Đơn sắc</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Đơn sắc</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Làm nổi bật các cài đặt mới</string>
+  <string name="morphe_settings_new_indicator_days_summary">Số ngày hiển thị dấu chấm bên cạnh các cài đặt và tùy chọn được thêm vào thông qua bản cập nhật</string>
   <string name="morphe_settings_new_indicator_days_off">Tắt</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Khởi động lại để hoàn tất thiết lập</string>

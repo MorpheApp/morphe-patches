@@ -9,11 +9,9 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /** Observe the existing drag transaction; retain native animation and accessibility. */
 internal fun installPlaylistReordering(context: BytecodePatchContext, videoType: String) = with(context) {
@@ -38,7 +36,7 @@ internal fun installPlaylistReordering(context: BytecodePatchContext, videoType:
     // The native server-edit branch additionally requires playlistSetVideoId; our
     // renderer omits it, so normal account edits need no interception or replacement.
     val rowGetter = playlistEditEventsFingerprint(videoType)
-        .instructionMatches.single().instruction.getReference<MethodReference>()!!
+        .instructionMatches.single().methodReference
 
     val adapter = mutableClassDefBy(adapterType)
     adapter.interfaces.add(REORDER_ITEMS_INTERFACE)

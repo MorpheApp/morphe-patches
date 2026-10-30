@@ -86,7 +86,7 @@ public final class CopyTextPatch {
         }
 
         Utils.setClipboard(text);
-        Utils.showToastShort(str(touchedToastKey));
+        Utils.showSnackbarShort(str(touchedToastKey));
         return true;
     };
 

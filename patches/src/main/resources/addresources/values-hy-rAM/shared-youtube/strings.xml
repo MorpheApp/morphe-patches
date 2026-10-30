@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Մեկնարկային անիմացիա</string>
   <string name="morphe_splash_screen_style_entry_1">Անջատված</string>
   <string name="morphe_splash_screen_style_entry_2">Գույն</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe-ի գույնը</string>
   <string name="morphe_splash_screen_style_entry_4">Մոնոխրոմ</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Ընդգծել նոր կարգավորումները</string>
+  <string name="morphe_settings_new_indicator_days_summary">Օրերի քանակը, երբ կետը ցուցադրվում է թարմացման միջոցով ավելացված կարգավորումների և ընտրությունների կողքին</string>
+  <string name="morphe_settings_new_indicator_days_off">Անջատված</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Վերագործարկեք կարգավորումներն ավարտելու համար</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -303,8 +308,12 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Անհավանությունները ժամանակավորապես հասանելի չեն. գործում է Client API-ի հարցումների սահմանափակումը rate limit</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API-ով ձայների ստացում, կանչերի քանակը</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Ցանցային կանչեր չեն կատարվել</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">կատարվել է %s ցանցային կանչ</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-ով ձայների ստացում, ժամանակաժամկետի լիքացման timeout քանակը</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Ցանցային կանչերից ոչ մեկի ժամանակաժամկետը չի լիքացել</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s ցանցային կանչի ժամանակը սպառվել է</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API client-ի հարցումների սահմանափակումներ</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Client-ի հարցումների սահմանափակումներ չեն հանդիպել</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Կլիենտի հարցումների սահմանափակումը հ encountered է եղել %s անգամ</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s միլիվայրկյան</string>
 </resources>

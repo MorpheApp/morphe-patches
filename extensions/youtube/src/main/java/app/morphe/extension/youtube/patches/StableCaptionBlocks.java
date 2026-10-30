@@ -6,8 +6,8 @@
  */
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.shared.StringRef.str;
-
+import android.graphics.Paint;
+import android.graphics.text.LineBreaker;
 import android.os.Build;
 import android.text.Layout;
 import android.text.SpannableStringBuilder;
@@ -16,6 +16,7 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.view.View;
 
+import android.annotation.SuppressLint;
 import androidx.annotation.Nullable;
 
 import org.w3c.dom.Document;
@@ -148,7 +149,7 @@ public final class StableCaptionBlocks {
         }
 
         boolean matches(StaticLayout probe) {
-            return width == probe.getWidth() && paint.equalsForTextMeasurement(probe.getPaint());
+            return width == probe.getWidth() && equalsForTextMeasurement(paint, probe.getPaint());
         }
 
         StaticLayout layout(String text) {
@@ -335,7 +336,7 @@ public final class StableCaptionBlocks {
                     cache.blocks = List.of();
                     Cache measured = cache;
                     frame.state.ready.removeIf(prepared -> prepared.width == measured.width
-                            && prepared.paint.equalsForTextMeasurement(measured.paint));
+                            && equalsForTextMeasurement(prepared.paint, measured.paint));
                     frame.state.ready.add(0, cache);
                     if (frame.state.ready.size() > 3) frame.state.ready.remove(3);
                 } else if (ready != null) {
@@ -364,7 +365,9 @@ public final class StableCaptionBlocks {
                                                 frame.state.ready.removeIf(
                                                         prepared ->
                                                                 prepared.width == next.width
-                                                                        && prepared.paint.equalsForTextMeasurement(next.paint));
+                                                                        && equalsForTextMeasurement(
+                                                                                prepared.paint,
+                                                                        next.paint));
                                                 frame.state.ready.add(0, next);
                                                 if (frame.state.ready.size() > 3)
                                                     frame.state.ready.remove(3);
@@ -426,10 +429,20 @@ public final class StableCaptionBlocks {
         visible.add(marked);
     }
 
+    private static boolean equalsForTextMeasurement(Paint a, Paint b) {
+        if (a == b) return true;
+        if (a == null || b == null) return false;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            return a.equalsForTextMeasurement(b);
+        }
+        return false;
+    }
+
+    @SuppressLint("InlinedApi")
     private static StaticLayout.Builder blockLayout(CharSequence text, TextPaint paint, int width) {
         return StaticLayout.Builder.obtain(text, 0, text.length(), paint, width)
                 .setAlignment(Layout.Alignment.ALIGN_CENTER)
-                .setBreakStrategy(Layout.BREAK_STRATEGY_BALANCED)
+                .setBreakStrategy(LineBreaker.BREAK_STRATEGY_BALANCED)
                 .setHyphenationFrequency(Layout.HYPHENATION_FREQUENCY_NONE);
     }
 

@@ -92,13 +92,13 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
 
         // Cue fields in the order: id, time, visible text, full text, settings.
         val cueFields = CaptionCueToStringFingerprint.instructionMatches.take(5).map {
-            it.instruction.getReference<FieldReference>()!!
+            it.fieldReference
         }
         val (idField, timeField, visibleTextField, fullTextField, settingsField) = cueFields
         val cueType = idField.definingClass
         val cueConstructor = CaptionCueConstructorFingerprint.method
         val defaultSettingsField = getCaptionDefaultSettingsFingerprint(settingsField.type)
-            .instructionMatches.first().instruction.getReference<FieldReference>()!!
+            .instructionMatches.first().fieldReference
 
         // Cues of a block are copies with a frame span, and with the default settings
         // so blocks always use the default placement.
@@ -209,9 +209,9 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
                 "patch_getCaptionCue" to it.instructionMatches[0],
                 "patch_getVisibleCaptionLines" to it.instructionMatches[1],
                 "patch_getFullCaptionLines" to it.instructionMatches[3],
-            ).map { (name, match) -> name to match.instruction.getReference<FieldReference>()!! } +
+            ).map { (name, match) -> name to match.fieldReference } +
                     ("patch_getCaptionMeasureRow" to getCaptionWindowConstructorFingerprint(rowType)
-                        .instructionMatches.first().instruction.getReference<FieldReference>()!!)
+                        .instructionMatches.first().fieldReference)
 
             mutableClassDefBy(SUBTITLE_WINDOW_VIEW_CLASS).apply {
                 interfaces.add(EXTENSION_WINDOW_INTERFACE)

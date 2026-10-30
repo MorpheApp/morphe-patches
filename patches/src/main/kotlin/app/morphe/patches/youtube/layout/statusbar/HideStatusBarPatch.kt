@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.buttons.navigation.translucentNavigationBarFeatureFlagsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -33,6 +34,9 @@ val hideStatusBarPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         playerTypeHookPatch,
+        // The flags of the translucent navigation bar must be turned off with the edge to edge
+        // top bar, also if the Navigation bar patch is not included.
+        translucentNavigationBarFeatureFlagsPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

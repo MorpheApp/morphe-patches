@@ -455,6 +455,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">ছবিখন %s ত সংৰক্ষণ কৰা হৈছে</string>
   <string name="morphe_post_image_download_failed">ছবিখন ডাউনলোড কৰিব নোৱাৰিল</string>
   <string name="morphe_post_image_download_not_found">এই পোষ্টটোত কোনো ছবি পোৱা নগ\'ল</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">পোষ্টসমূহ অনুবাদ কৰক</string>
+  <string name="morphe_post_translate_summary">কন্টেন্ট ক্ৰিয়েটৰৰ পোষ্টসমূহ অনুবাদ কৰিবলৈ এটা ফ্লাইআউট মেনু আইটেম যোগ কৰে</string>
+  <string name="morphe_post_translate_language_title">পোষ্ট অনুবাদৰ ভাষা</string>
+  <string name="morphe_post_translate_flyout">অনুবাদ কৰক</string>
+  <string name="morphe_post_translate_flyout_original">মূলটো দেখুওক</string>
+  <string name="morphe_post_translate_started">অনুবাদ কৰা হৈছে…</string>
+  <string name="morphe_post_translate_failed">পোষ্টটো অনুবাদ কৰিব নোৱাৰিল</string>
+  <string name="morphe_post_translate_same_language">পোষ্টটো ইতিমধ্যে অনুবাদৰ ভাষাতে আছে</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">ফ্লাইআউট মেনুলৈ Ask আইটেম যোগ কৰক</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">ফিড ফ্লাইআউট মেনুলৈ এটা ভিডিঅ\' সামৰিপণ আইটেম যোগ কৰে</string>
@@ -863,6 +872,8 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_fix_transcript_title">ট্ৰান্সক্ৰিপ্ট ঠিক কৰক</string>
   <string name="morphe_fix_transcript_summary">এটা প্ৰাক-চৰ্ত পৰীক্ষাৰ বিফলতা সমাধান কৰে যাৰ বাবে ট্ৰান্সক্ৰিপ্ট লোড হোৱাত বাধা আহিব পাৰে</string>
   <string name="morphe_captions_in_pip_title">পিকচাৰ-ইন-পিকচাৰত কেপচন দেখুৱাওক</string>
+  <string name="morphe_stable_caption_blocks_title">ষ্টেবল কেপচন ব্লক</string>
+  <string name="morphe_stable_caption_blocks_summary">স্বয়ংক্ৰীয় কেপচনসমূহক সুস্থিৰ, পঢ়িব পৰা ব্লকত গ্ৰুপ কৰক। কিছুমান শব্দ কোৱাৰ আগতেই দেখা যাব পাৰে। পুনৰ আৰম্ভ কৰা প্ৰয়োজনীয়।</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">নেভিগেশ্বন বুটামসমূহ</string>
   <string name="morphe_navigation_buttons_screen_summary">তলৰ নেভিগেছন বাৰত কোনবোৰ বুটাম দেখুৱাব সেইটো বাছনি কৰক</string>
@@ -1211,6 +1222,8 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">\'Continue watching\' মিনিপ্লেয়াৰটো নিষ্ক্ৰীয় কৰে, যিটো এটা YouTube Premium বৈশিষ্ট্য আৰু এপটো আৰম্ভ হোৱাৰ সময়ত দেখা যায়</string>
   <string name="morphe_miniplayer_screen_title">মিনিপ্লেয়াৰ</string>
   <string name="morphe_miniplayer_screen_summary">মিনিমাইজ কৰা ভিডিঅ\' প্লেয়াৰৰ ৰূপ আৰু আচৰণ পছন্দ অনুযায়ী সজাই লওক</string>
+  <string name="morphe_miniplayer_not_available_title">অতিৰিক্ত মিনিপ্লেয়াৰসমূহ</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube-এ সকলো অতিৰিক্ত মিনিপ্লেয়াৰ আঁতৰাই পেলাইছে। অধিক মিনিপ্লেয়াৰ প্ৰকাৰসমূহ পুনৰুদ্ধাৰ কৰিবলৈ, YouTube 21.28.208 বা তাতকৈ পুৰণি সংস্কৰণ পেচ কৰক</string>
   <string name="morphe_miniplayer_type_title">মিনিপ্লেয়াৰৰ প্ৰকাৰ</string>
   <string name="morphe_miniplayer_hide_title_title">শিৰোনাম আৰু চেনেল লুকুৱাওক</string>
   <string name="morphe_miniplayer_type_entry_0">অক্ষম কৰা হৈছে</string>
@@ -1252,6 +1265,8 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_fix_status_bar_layout_summary">ষ্টেটাছ বাৰৰ লেআউটো সংগত কৰি ৰাখে, যাতে ই টপ বাৰসমূহক ঢাকি নেৰাখে আৰু প্লেয়াৰৰ ওপৰত কোনো খালী ঠাই নেৰে। যদি এপটো ক্ৰাশ কৰে বা টপ বাৰবোৰ ভুলকৈ দেখায় তেন্তে ইয়াক বন্ধ কৰক</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">গ্লৌ</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">এই ডিভাইচটোৱে গ্লৌ স্প্ল্যাশ স্ক্ৰীনৰ সহায় নকৰে</string>
   <string name="morphe_theme_color_light_title">লাইট থিমৰ পৃষ্ঠভূমি</string>
   <string name="morphe_theme_color_light_entry_2">বগা</string>

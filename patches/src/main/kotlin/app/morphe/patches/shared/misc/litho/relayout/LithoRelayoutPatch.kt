@@ -40,7 +40,7 @@ val lithoRelayoutPatch = bytecodePatch(
 
         LithoViewOnMeasureFingerprint.let {
             val (readFlag, clearFlag) = it.instructionMatches.take(2).map { match ->
-                match.instruction.getReference<FieldReference>()!!
+                match.fieldReference
             }
             if (readFlag != clearFlag) {
                 throw PatchException("Unexpected fields, read: $readFlag clear: $clearFlag")

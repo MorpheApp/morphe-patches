@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Indítási animáció</string>
   <string name="morphe_splash_screen_style_entry_1">Kikapcsolva</string>
   <string name="morphe_splash_screen_style_entry_2">Színes</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Szín</string>
   <string name="morphe_splash_screen_style_entry_4">Monokróm</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monokróm</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Új beállítások kiemelése</string>
+  <string name="morphe_settings_new_indicator_days_summary">Napok száma, amelyek alatt egy pont jelenik meg a frissítéssel hozzáadott beállítások és opciók mellett</string>
   <string name="morphe_settings_new_indicator_days_off">Ki</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Indíts újra a beállítások befejezéséhez</string>

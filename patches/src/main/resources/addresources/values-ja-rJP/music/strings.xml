@@ -462,12 +462,47 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_section_display_title">表示</string>
   <string name="morphe_music_lyrics_section_sync_title">同期</string>
   <string name="morphe_music_lyrics_section_panel_title">パネル</string>
-  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI エンドポイント</string>
   <string name="morphe_music_lyrics_source_all_disabled">すべてのプロバイダーが無効 - 内蔵歌詞と埋め込み歌詞</string>
   <string name="morphe_music_lyrics_source_reset_title">プロバイダーの順序をリセットしますか？</string>
   <string name="morphe_music_lyrics_source_reset_message">プロバイダーを既定の優先順位に戻します</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Rime 語彙リスト</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime 単語リストには UniDict も必要です。オフライン辞書プロバイダーで「中国語および広東語文字 (UniDict)」にチェックを入れて、ダウンロードが完了するまでお待ちください。これがなければ、文字を読み取るリストは読み方を返しません。
+
+Rime 単語リストが読み取るリストにチェックを入れ、[保存] をタップしてダウンロードしてください。追加したリストはチェックを外すと削除されます。
+
+各リストは独自の一対一の単語から読み方へのテーブルであり、.dict.yaml ファイルは次のような行になります：
+字 ham
+典 din2
+最初の列が単語、2 番目の列がその読み方です；タブがない余分な列や行は無視されます。"</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">上記の言語では Rime 語彙リストがチェックされていません。これをタップしてリストをチェックするか、リストがある他の言語を選択してください</string>
+  <string name="morphe_music_lyrics_rime_dict_add">追加</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Rime 語彙リストを追加</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham や 典 din2 のような行を含む .dict.yaml ファイル、またはそれを含む zip ファイル。リストはチェックを入れて [保存] をタップすると取得され、ライセンスは確認用にご自由にどうぞ。</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">言語コード</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">hakやwuuのように、2〜3文字</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">名称</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">読みの上に显示されるのは、客家語（梅県）のような形式です</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">語彙リストのアドレス</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml またはその zip ファイルの https:// アドレス</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">単語に含まれない文字</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">自動</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">広東語文字</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">標準語文字</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">文字の読みなし</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">コード、名称、アドレスを入力してください</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">コードはhakのように2〜3文字である必要があります</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">アドレスは https:// で始まる必要があります</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">名称とアドレスには縦棒を含めることはできません</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s は既に単語テーブルを持っています</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s は組み込みのローマ字変換器によって処理され、語彙リストを取ることができません</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">未使用：この言語は既に独自の読みを持っているため、チェックを外して削除してください</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%1$s を追加しました - チェックして保存をタップしてダウンロードしてください</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">語彙リスト準備完了</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">語彙リスト準備完了（%1$d エントリ）</string>
+  <string name="morphe_music_lyrics_rime_dict_building">読取中: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">語彙リストのダウンロードに失敗しました - 再試行するには保存をもう一度タップしてください</string>
   <string name="morphe_music_lyrics_clear_cache_title">保存された歌詞を消去</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">このデバイスに保存されている歌詞を削除します</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">このデバイスに保持されている歌詞の %1$s MB を削除します</string>
   <string name="morphe_music_lyrics_clear_cache_done">%1$s MB を消去しました</string>
   <string name="morphe_music_token_dialog_get_token">トークンを取得</string>
   <string name="morphe_music_apple_music_token_title">Apple Music media-user-token</string>
@@ -520,14 +555,22 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">コピーボタンを表示</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">タップして元の歌詞をプレーンテキストとしてコピー、長押しで歌詞ソースファイルをダウンロードディレクトリに保存</string>
   <string name="morphe_music_lyrics_show_translate_button_title">翻訳ボタンを表示</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">タップすると翻訳を表示 / 非表示にします。長押しすると翻訳のみを表示するモードに切り替えます。翻訳には、歌詞配信サービスが提供する翻訳、Google 翻訳、または OpenAI 互換 API を使用します</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">ローマ字化ボタンを表示</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">タップしてローマ字表記を切替、長押しでローマ字表記のみ使用。プロバイダーのローマ字表記、Google翻訳、またはOpenAI互換APIを使用</string>
-  <string name="morphe_music_lyrics_local_romanization_title">ローカルローマ字表記とアライメント</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">プロバイダー、ユーザーモデル、Google翻訳が失敗した場合にデバイス上でローマ字表記を行います。読みは時間付き歌詞の各単語に従います；単語同期が有効である必要があります。中国語、広東語、日本語、朝鮮語、ギリシャ語、ロシア語、ジョージア語、アルメニア語対応；約120 MB</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s を読み込み中: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">タップして翻訳を切り替えます；長押しすると翻訳のみ表示モードになります。有効になっている翻訳プロバイダーを登録順に使用します</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">ローマ字変換または翻記ボタンを表示</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">タップしてローマ字変換または翻記を切り替えます；長押しするとローマ字変換または翻記のみ表示モードになります。有効になっているローマ字変換プロバイダーを登録順に使用します</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">翻記を有効にする</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">歌詞ソースからの非ラテン文字の読みを許可します；無効にすると、ラテン文字、アクセント付き文字、声調数字のみを残します</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">タイマー歌詞（ワード同期オン）の各単語を読み取ります；韓国語にはダウンロード不要；14種類のスクリプトで1つのCLDRダウンロードを共有します；漢字は、Rime語彙リストの単語テーブルが対象言語をカバーしている場合に読み取られます</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">読取辞書をダウンロードしています…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">読みデータ準備完了 (%1$d エントリ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">ダウンロードに失敗しました。再試行するにはこの設定を一旦オフにしてから再度オンにしてください</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">オフライン辞書</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">日本語（SudachiDict、約75 MB）</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">中国語・広東語文字（UniDict、約8 MB）</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">中国語単語（pinyin-pro、約17 MB）</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">ギリシャ語、スラヴ系キリル文字（ロシア語、ウクライナ語、ブルガリア語、セルビア語、ベラルーシ語、マケドニア語を含む）、ジョージア語、アルメニア語、ヘブライ語、アラビア語、アムハラ語、シリア語の翻記（CLDR、約0.5 MB）</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s を読み込み中: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">少なくとも1つの辞書を選択してください</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">更新ボタンを表示</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">タップして次の歌詞候補に切り替え、長押しで曲名とアーティストから歌詞を検索</string>
   <string name="morphe_music_lyrics_search_dialog_title">歌詞を検索</string>
@@ -538,6 +581,10 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_saved">保存しました</string>
   <string name="morphe_music_lyrics_word_sync_title">同期中の単語や音節をハイライト表示</string>
   <string name="morphe_music_lyrics_word_sync_summary">利用可能な場合は単語ごとのタイミング情報を含む歌詞を優先します。単語ごとのタイミング情報を含む歌詞を使用する場合は、楽曲に合わせて各単語または音節をハイライト表示します</string>
+  <string name="morphe_music_lyrics_line_scale_title">非アクティブな行を縮小</string>
+  <string name="morphe_music_lyrics_line_scale_summary">現在歌われていない各行を少し小さく描画し、さらに暗く表示します</string>
+  <string name="morphe_music_lyrics_split_background_title">バックコーラスを分離して表示</string>
+  <string name="morphe_music_lyrics_split_background_summary">背景ボーカルとハーモニーをリードラインから分離します。「(Oh) I want you」のように括弧で書かれた背景ボーカルを、メインの歌詞行から分離し、独自の暗い行に移動します</string>
   <string name="morphe_music_lyrics_hide_played_title">再生済みの歌詞を非表示</string>
   <string name="morphe_music_lyrics_hide_played_summary">現在再生中の行より上に表示される歌詞を非表示にします</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">未再生の歌詞を非表示</string>
@@ -595,10 +642,15 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_translated_by_ai">翻訳: %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">ローマ字: %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">ローマ字: %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Rime によるローマ字表記（%s）</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">歌詞が見つかりません</string>
   <string name="morphe_music_lyrics_translation_language_title">翻訳言語</string>
-  <string name="morphe_music_lyrics_romanize_language_title">ローマ字変換言語</string>
+  <string name="morphe_music_lyrics_romanize_language_title">ローマ字変換または翻記の言語</string>
+  <string name="morphe_music_lyrics_translation_target_language">"翻訳先の言語：
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"ローマ字表記または翻音・転写先の言語：
+%s"</string>
   <string name="morphe_music_lyrics_translating">翻訳中…</string>
   <string name="morphe_music_lyrics_translate_failed">歌詞を翻訳できませんでした</string>
   <string name="morphe_music_lyrics_romanize_hide">歌詞が見つかりません</string>
@@ -612,7 +664,7 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_refreshing">更新中</string>
   <string name="morphe_music_lyrics_refreshed">更新済み</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC APIキー</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRCは現在のトラックの歌詞を文字起こしまたはタイムアラインします。上記のOpenAI互換エンドポイントとは無関係な別のサービスです</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC は現在のトラックの歌詞を文字起こしまたは時間軸合わせを行います</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRCキーが保存されました。歌詞検索ダイアログのアラインボタン、またはトラックに歌詞がない場合のパネルプロンプトで使用してください</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC APIキーが保存されました</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRCがそのキーを受け入れませんでした</string>
@@ -628,58 +680,50 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_transcribe_no_text">アラインする歌詞がありません - 代わりに文字起こししています</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRCはこのトラックを処理できませんでした</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRCのクレジットがこのトラックに対して使い切られました</string>
-  <string name="morphe_music_lyrics_about_summary">"歌詞はタイトルとアーティストでマッチングされます。珍しいメタデータの場合、見つからないか間違ったバージョンになることがあります。バージョンを切り替えるには更新を使用してください。*マークのあるプロバイダーにはトークンが必要です。すべての有効なプロバイダーが常に順番に要求されるわけではありませんが、速度に基づいて応答します。
+  <string name="morphe_music_lyrics_about_summary">"歌詞はタイトルとアーティストでマッチングされます。通常のメタデータ以外では何も見つからない場合や、間違ったバージョンが見つかる場合があります。バージョンを切り替えるには更新を使用してください。* マーク付きのプロバイダーにはトークンが必要です。有効化されたすべてのプロバイダーが常にリクエスト順に含まれるわけではありませんが、速度に基づいて応答します。
 
-歌詞はMorpheとは関係のない、後援も認可もされていないサードパーティサービスから提供されています。それぞれは現状で使用されます：歌詞、その利用可能性、ライセンスはそれらのサービスおよびその許諾者に留まり、それらを使用することはサービスの利用規約の対象となる場合があります。有効化されたサービスに送信されるのは、あなたが要求した検索情報だけです - タイトル、アーティスト、そして必要に応じてビデオID。任意のAIエンドポイントとQuickLRC文字起こしは設定後にのみ実行され、歌詞テキストまたはトラックのビデオURLを受信します。"</string>
+歌詞は Morphe に関係ない、スポンサーでもない、推奨もされていないサードパーティーサービスからのものです。それぞれのサービスはそのまま使用されます：歌詞、その利用可能性、ライセンスはすべてサービス提供元とその許諾元に属し、これらを使用することはサービスの利用規約の対象となる場合があります。有効化されたサービスに送信されるのは、検索要求のみです（タイトル、アーティスト、そのサービスが必要とする場合はビデオ ID）。オプショナルな AI エンドポイントと QuickLRC 文字起こしは、設定を行った後にのみ実行され、受け取る情報は歌詞テキストまたはトラックの動画 URL です。"</string>
   <string name="morphe_music_lyrics_source_advice_summary">使用中のプロバイダーのみ有効にするか、デフォルトのままにしてください。定期的なリクエストにより小規模なコミュニティの歌詞サイトが overload する可能性があります</string>
   <string name="morphe_music_lyrics_hide_info_title">クレジット行を非表示</string>
   <string name="morphe_music_lyrics_hide_info_summary">歌詞欄最下部の、作詞作曲などのクレジット情報を表示する行を非表示にします</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">翻訳とローマ字表記を入れ替える</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">オン: 歌詞の下にローマ字表記を、上に翻訳を表示します。オフ: 歌詞の下に翻訳を、上にローマ字表記を表示します</string>
-  <string name="morphe_music_lyrics_section_translation_title">翻訳</string>
-  <string name="morphe_music_lyrics_section_romanization_title">ローマ字表記</string>
-  <string name="morphe_music_lyrics_translation_provider_title">翻訳サービス</string>
-  <string name="morphe_music_lyrics_translation_provider_google">Google (デフォルト、無料)</string>
-  <string name="morphe_music_lyrics_translation_provider_openai_compatible">OpenAI 互換 (カスタム)</string>
-  <string name="morphe_music_lyrics_romanization_provider_title">ローマ字表記サービス</string>
-  <string name="morphe_music_lyrics_romanization_provider_google">Google (デフォルト)</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">ローカル / オフライン辞書</string>
-  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI 互換 (カスタム)</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">AI セクション</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">プロバイダーが「サビ」や「Aメロ」などのセクションラベルを提供せず、OpenAI 互換モデルがそれを検出する場合にのみ使用されます</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; クラウドエンドポイント</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AIプロバイダーのAPIキー、モデル、エンドポイント、およびプロンプトテンプレートを設定します。</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">API エンドポイント URL (例: https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON にすると、ローマ字変換または翻記が歌詞の下、翻訳が上に配置されます；OFF にすると、ローマ字変換または翻記が上、翻訳が下になります。各音節の上に配置された読みはそれと一緒に移動し、音節の上から下に移動します</string>
+  <string name="morphe_music_lyrics_force_center_title">常に歌詞を中央揃え</string>
+  <string name="morphe_music_lyrics_force_center_summary">ONにすると、各行を中央に配置し、ソースの配置（デュエットのサイドを含む）を無視します；OFFにすると、歌詞が要求する配置を保持します</string>
+  <string name="morphe_music_lyrics_providers_keep_one">少なくとも1つのプロバイダーをONにしておく必要があります</string>
+  <string name="morphe_music_lyrics_translation_provider_title">翻訳</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">ローマ字変換または翻記</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">オフライン辞書</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime 語彙リスト</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">AI でセクションを検出</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">プロバイダーがコーラスやヴァースなどのセクションラベルを提供しない場合にのみ使用されます。その後、あなたの OpenAI 互換モデルが検出します。行を編集するとプロンプトも開きます</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API エンドポイント URL（例：https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions）</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">プロンプト テンプレート</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">プレースホルダー: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">プロンプトを保存しました</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">プロンプトは保存されましたが、AIエンドポイントはまだ使用できません。まずAI設定で構成してください</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">プロンプトをリセットしました</string>
-  <string name="morphe_music_lyrics_ai_extra_body_invalid">無効なJSONです。保存前に修正するかフィールドをクリアしてください</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">翻訳 &amp; ローマ字表記の設定を保存しました</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">設定をデフォルトにリセットしました</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">ベース URL は http:// または https:// で始まる必要があります</string>
-  <string name="morphe_music_lyrics_ai_config_test_connection">接続テスト</string>
-  <string name="morphe_music_lyrics_ai_config_endpoint_label">エンドポイントを設定</string>
-  <string name="morphe_music_lyrics_ai_config_show_all">すべてのエンドポイントを表示</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">設定が不完全またはプロバイダーによって拒否されました</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">接続を確認中…</string>
-  <string name="morphe_music_lyrics_ai_config_translation_provider_label">翻訳サービス</string>
-  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">ローマ字表記プロバイダー</string>
-  <string name="morphe_music_lyrics_ai_config_fetch_models">モデルを取得</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：接続済み！（%2$s）</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s：接続に失敗しました。設定を確認してください。</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">まず API キーを入力してください</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">モデルを取得中…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">モデルを選択してください</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">モデルの取得に失敗しました。APIキーまたは接続を確認してください。</string>
-  <string name="morphe_music_lyrics_ai_config_gemini_section">Gemini API設定</string>
-  <string name="morphe_music_lyrics_ai_config_openai_compat_section">OpenAI互換（カスタムエンドポイント）</string>
-  <string name="morphe_music_lyrics_ai_config_deepl_section">DeepL API設定</string>
-  <string name="morphe_music_lyrics_ai_config_api_key_label">APIキー</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">プロンプト</string>
   <string name="morphe_music_lyrics_ai_config_model_label">モデル</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">ベースURL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">サービスを選択</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">APIキー（オプション）</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">翻訳プロンプト</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">追加のリクエストボディ（オプションのJSON）</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">追加のリクエストヘッダー（オプションの JSON）</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">名前と値を引用符で囲んでください。例：{\"api-key\": \"abc\"}。引用符のない / : または数字を含む値は拒否されます。空の値はヘッダーを削除します。</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">名前と値を引用符で囲んでください。例：{\"temperature\": 0.3}。引用符のない / または : を含む値は拒否されます。モデルとメッセージはここで設定できません。</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">認証キー（FreeまたはPro）</string>
-  <string name="morphe_music_lyrics_ai_config_summary">APIキー、モデル、エンドポイント、およびプロンプトを設定します</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - アイコンの太字表示を無効化</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - プレーヤーの「次のコンテンツ」「歌詞」「関連コンテンツ」タブを復元</string>

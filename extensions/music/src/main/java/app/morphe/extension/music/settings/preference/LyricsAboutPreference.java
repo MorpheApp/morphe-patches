@@ -14,15 +14,18 @@ import android.preference.Preference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
-import app.morphe.extension.music.patches.lyrics.romanizers.CantoneseDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.CldrTransformsStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.PinyinDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.UniDictStore;
 
 /**
  * The notes on what the lyrics patch does and where it looks, with whatever the reading
- * dictionaries ask to be shown below them. Their licences travel into the cache with the data
+ * dictionaries ask to be shown below them. Their licenses travel into the cache with the data
  * and are read back from there, so nothing appears until one has been fetched.
  */
+@SuppressWarnings({"deprecation", "unused"})
 public class LyricsAboutPreference extends Preference {
 
     public LyricsAboutPreference(Context context, AttributeSet attrs, int defStyleAttr,
@@ -48,6 +51,7 @@ public class LyricsAboutPreference extends Preference {
 
     /** Written here rather than in XML, since what the dictionaries add is not known
      * when the layout is built. */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private void init() {
         setPersistent(false);
         CharSequence notices = notices();
@@ -56,11 +60,13 @@ public class LyricsAboutPreference extends Preference {
                 : str("morphe_music_lyrics_about_summary"));
     }
 
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static CharSequence notices() {
         StringBuilder joined = new StringBuilder();
         for (String notice : new String[] {
-                PinyinDictStore.notice(), CantoneseDictStore.notice(), JapaneseDictStore.notice(),
-                PinyinDictStore.wordsNotice(), CantoneseDictStore.wordsNotice()
+                UniDictStore.notice(), JapaneseDictStore.notice(),
+                PinyinDictStore.notice(), RimeDictStore.allNotices(),
+                CldrTransformsStore.notice()
         }) {
             if (notice == null) continue;
             if (joined.length() > 0) joined.append("\n\n");

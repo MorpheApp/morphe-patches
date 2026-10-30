@@ -58,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_already_read">Već pročitano</string>
   <string name="morphe_sb_guidelines_popup_open">Pokaži mi</string>
   <string name="morphe_sb_general_title">Opširno</string>
+  <string name="morphe_sb_offline_segments_title">Sačuvaj segmente preuzetih videozapisa</string>
+  <string name="morphe_sb_offline_segments_summary">Omogućava preskakanje segmenata preuzetih videozapisa dok ste offline</string>
   <string name="morphe_sb_toast_on_connection_error_title">Prikaži upozorenja o grešci u povezivanju</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Prikazuje obavijest kada SponsorBlock server nije dostupan</string>
   <string name="morphe_sb_track_skip_count_title">Omogući praćenje broja preskakanja</string>
@@ -223,6 +225,9 @@ Ako ne šaljete istaknuti dio, dodirnite Otkaži i označite drugu lokaciju"</st
   <string name="morphe_sb_stats_self_saved">Preskočili ste &lt;b&gt;%s&lt;/b&gt; segmenata</string>
   <string name="morphe_sb_stats_self_saved_summary">To je &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_self_saved_reset_title">Resetujte brojač preskočenih segmenata?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s sati %2$s minuta</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s minuta %2$s sekundi</string>
+  <string name="morphe_sb_stats_saved_second_format">%s sekundi</string>
   <string name="morphe_sb_color_opacity_label">Prozirnost:</string>
   <string name="morphe_sb_color_dot_label">Boja:</string>
   <string name="morphe_sb_about_api_summary">"SponsorBlock je crowdsourced baza podataka video segmenata kao što su sponzori, uvodi, završnici i podsjetnici za pretplatu. Segmente šalje i glasa zajednica, a baza je otvorena i besplatna za preuzimanje

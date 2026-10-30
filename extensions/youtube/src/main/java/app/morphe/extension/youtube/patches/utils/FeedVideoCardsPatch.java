@@ -73,6 +73,18 @@ public final class FeedVideoCardsPatch {
             || PostTranslatePatch.ENABLED;
 
     /**
+     * If the video of every card is needed. The posts are found by their own texts, so with only
+     * the post features on, the elements of the videos are not parsed and the cards are not matched
+     * to their videos. The elements are parsed on the main thread, while the page loads.
+     * {@link FeedVideoActionsPatch} is also given the video of the card for its long press menu.
+     */
+    private static final boolean VIDEO_CARDS = ENABLED
+            && (FeedEngagementCountsPatch.ENABLED
+            || FeedViewCountPatch.ENABLED
+            || Settings.FEED_WATCH_LATER_BUTTON.get()
+            || Settings.FEED_LONG_PRESS_MENU.get());
+
+    /**
      * A card must be as wide as a card of a grid of up to three columns, such as the feed in landscape.
      * Shelves are not used, as they are horizontal lists.
      */
@@ -145,6 +157,18 @@ public final class FeedVideoCardsPatch {
     @GuardedBy("itself")
     private static final Map<String, String> textVideoIds = Utils
             .createSizeRestrictedMap(MAX_TEXTS, true);
+
+    /** Titles of the cards whose video was found that are kept. */
+    private static final int MAX_FOUND_TITLES = 1000;
+
+    /**
+     * Title of a card whose video was found -> its video id, or {@link #AMBIGUOUS}.
+     * While other pages are browsed, the texts of their elements replace the texts of the feed,
+     * and the feed can be shown again without its elements being parsed again.
+     * Used only on the main thread.
+     */
+    private static final Map<String, String> foundTitleVideoIds = Utils
+            .createSizeRestrictedMap(MAX_FOUND_TITLES, true);
 
     /**
      * Icon of the badge of a live video on its thumbnail, such as 'yt_outline_experimental_live_black_24'.
@@ -265,17 +289,58 @@ public final class FeedVideoCardsPatch {
      * @return If the bytes include the search bytes, such as an ASCII text of an element.
      */
     public static boolean contains(byte[] bytes, byte[] search) {
-        final int last = bytes.length - search.length;
-        outer:
-        for (int i = 0; i <= last; i++) {
-            for (int j = 0; j < search.length; j++) {
-                if (bytes[i + j] != search[j]) {
-                    continue outer;
-                }
+        return getElementText(bytes).contains(new String(search, StandardCharsets.ISO_8859_1));
+    }
+
+    /**
+     * @return If a text of the element that includes ".eml", such as the identifier of the element,
+     *         can include the search text. Every text around ".eml" is checked as a whole, from the
+     *         bytes before and after it that are printable ASCII, so any such text that includes
+     *         the search text is found. Faster than parsing the element to read its texts, as words
+     *         such as "post" are found in most elements.
+     */
+    public static boolean emlTextMayContain(byte[] bytes, String search) {
+        String element = getElementText(bytes);
+        int index = element.indexOf(".eml");
+        while (index >= 0) {
+            int start = index;
+            while (start > 0 && element.charAt(start - 1) >= 0x20 && element.charAt(start - 1) <= 0x7E) {
+                start--;
             }
-            return true;
+            int end = index + 4;
+            while (end < element.length() && element.charAt(end) >= 0x20 && element.charAt(end) <= 0x7E) {
+                end++;
+            }
+            final int found = element.indexOf(search, start);
+            if (found >= 0 && found + search.length() <= end) {
+                return true;
+            }
+            index = element.indexOf(".eml", end);
         }
         return false;
+    }
+
+    /**
+     * The bytes of the element last searched on each thread, and their string.
+     */
+    private static final ThreadLocal<Object[]> lastElementText = ThreadLocal.withInitial(() -> new Object[2]);
+
+    /**
+     * The element hooks search every element on the main thread, while the page loads. Every byte is
+     * one character in ISO-8859-1, so the bytes include some bytes when the string of the bytes includes
+     * their string, which is searched in native code. That is much faster than a loop that is not compiled
+     * yet, as when the app starts. The bytes of an element are a buffer of the app that is not changed,
+     * and the hooks are called one after another for it, so the string is made once for all of them.
+     *
+     * @return The bytes as a string with one character for each byte.
+     */
+    public static String getElementText(byte[] bytes) {
+        Object[] last = lastElementText.get();
+        if (last[0] != bytes) {
+            last[1] = new String(bytes, StandardCharsets.ISO_8859_1);
+            last[0] = bytes;
+        }
+        return (String) last[1];
     }
 
     /**
@@ -299,7 +364,7 @@ public final class FeedVideoCardsPatch {
      * Called when an element is parsed. The element is not changed.
      */
     public static byte[] onElementLoaded(byte[] bytes) {
-        if (!ENABLED || bytes == null || !contains(bytes, THUMBNAIL_PATH)) {
+        if (!VIDEO_CARDS || bytes == null || !contains(bytes, THUMBNAIL_PATH)) {
             return bytes;
         }
         try {
@@ -382,7 +447,7 @@ public final class FeedVideoCardsPatch {
      * of the video do not include. Can be called on any thread.
      */
     public static void addVideoText(String videoId, @Nullable String text) {
-        if (!ENABLED || text == null) {
+        if (!VIDEO_CARDS || text == null) {
             return;
         }
         String normalized = normalizeText(text);
@@ -390,12 +455,19 @@ public final class FeedVideoCardsPatch {
             return;
         }
         synchronized (textVideoIds) {
-            String previous = textVideoIds.get(normalized);
-            if (previous == null) {
-                textVideoIds.put(normalized, videoId);
-            } else if (!previous.equals(videoId)) {
-                textVideoIds.put(normalized, AMBIGUOUS);
-            }
+            putVideoText(textVideoIds, normalized, videoId);
+        }
+    }
+
+    /**
+     * Adds the text of the video, or marks it as {@link #AMBIGUOUS} if another video shows it too.
+     */
+    private static void putVideoText(Map<String, String> textVideoIds, String text, String videoId) {
+        String previous = textVideoIds.get(text);
+        if (previous == null) {
+            textVideoIds.put(text, videoId);
+        } else if (!previous.equals(videoId)) {
+            textVideoIds.put(text, AMBIGUOUS);
         }
     }
 
@@ -713,6 +785,36 @@ public final class FeedVideoCardsPatch {
         }
         // The texts of a mix or a playlist, which are never shared with a video.
         // A single short text can belong to an element of another video that was not seen.
+        String videoId = findBestMatch(scores);
+        if (videoId != null) {
+            for (String text : texts) {
+                if (text.length() >= TITLE_TEXT_LENGTH) {
+                    putVideoText(foundTitleVideoIds, text, videoId);
+                }
+            }
+            return videoId;
+        }
+        return scores.isEmpty() ? findVideoIdByFoundTitles(texts) : null;
+    }
+
+    /**
+     * The texts of the element of the card were removed, so the card is found by the titles
+     * of the cards that were found before. A long text of the card can be shared with another
+     * video of the same channel that was found, such as the channel and the view count,
+     * so at least two texts must match.
+     */
+    @Nullable
+    private static String findVideoIdByFoundTitles(List<String> texts) {
+        Map<String, Integer> scores = new HashMap<>();
+        for (String text : texts) {
+            if (text.length() < TITLE_TEXT_LENGTH) {
+                continue;
+            }
+            String videoId = foundTitleVideoIds.get(text);
+            if (videoId != null && !videoId.equals(AMBIGUOUS)) {
+                scores.merge(videoId, 1, Integer::sum);
+            }
+        }
         return findBestMatch(scores);
     }
 
@@ -790,6 +892,8 @@ public final class FeedVideoCardsPatch {
 
     /** Root host -> number of checks since its last layout. Used only on the main thread. */
     private static final Map<ComponentHost, Integer> retries = new WeakHashMap<>();
+    /** Cards that are checked again after a delay. Used only on the main thread. */
+    private static final Map<ComponentHost, Boolean> pendingRetries = new WeakHashMap<>();
 
     /**
      * Root hosts that are checked again when the list scrolls. Litho mounts only the part of a card
@@ -847,6 +951,14 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
+     * @return If the card is checked again later, such as while its video is not found yet.
+     *         Must be called on the main thread.
+     */
+    public static boolean isRetryPending(ComponentHost root) {
+        return pendingRetries.containsKey(root);
+    }
+
+    /**
      * Checks the card again a little later, such as when what is drawn on it was not found yet,
      * and when the list scrolls while the card is partly shown.
      * Must be called on the main thread.
@@ -862,7 +974,9 @@ public final class FeedVideoCardsPatch {
             return partlyShown;
         }
         retries.put(root, attempt + 1);
+        pendingRetries.put(root, Boolean.TRUE);
         root.postDelayed(() -> {
+            pendingRetries.remove(root);
             if (root.isAttachedToWindow()) {
                 scheduleUpdate(root);
             }
@@ -882,6 +996,12 @@ public final class FeedVideoCardsPatch {
                 // Added again below if the card is still checked again.
                 scrollChecks.remove(root);
                 if (!root.isAttachedToWindow() || root.getParent() instanceof ComponentHost) {
+                    continue;
+                }
+                if (!VIDEO_CARDS) {
+                    // Only the post features are on, which do not use the video of the card.
+                    PostImageDownloadPatch.onRootLaidOut(root);
+                    PostTranslatePatch.onRootLaidOut(root);
                     continue;
                 }
                 String videoId = findVideoId(root);

@@ -42,7 +42,7 @@ public final class AnnouncementsPatch {
                     return true;
 
                 Settings.ANNOUNCEMENT_LAST_ID.resetToDefault();
-                Utils.showToastLong(str("morphe_announcements_connection_failed"));
+                Utils.showSnackbarLong(str("morphe_announcements_connection_failed"));
 
                 return true;
             }

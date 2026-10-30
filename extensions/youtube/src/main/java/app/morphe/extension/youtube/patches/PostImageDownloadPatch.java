@@ -137,7 +137,10 @@ public final class PostImageDownloadPatch {
      */
     private static final String NOT_IMAGE_POST = "not_image_post";
 
-    private static final byte[] POST_BYTES = "post".getBytes(StandardCharsets.US_ASCII);
+    /**
+     * Included in the identifier of the post elements.
+     */
+    private static final String POST = "post";
     private static final byte[] GGPHT_BYTES = "ggpht.com/".getBytes(StandardCharsets.US_ASCII);
     private static final byte[] GOOGLE_USER_CONTENT_BYTES =
             "googleusercontent.com/".getBytes(StandardCharsets.US_ASCII);
@@ -296,7 +299,7 @@ public final class PostImageDownloadPatch {
      * Called when an element is parsed. The element is not changed.
      */
     public static byte[] onElementLoaded(byte[] bytes) {
-        if (!ENABLED || bytes == null || !FeedVideoCardsPatch.contains(bytes, POST_BYTES)
+        if (!ENABLED || bytes == null || !FeedVideoCardsPatch.emlTextMayContain(bytes, POST)
                 || !(FeedVideoCardsPatch.contains(bytes, GGPHT_BYTES)
                 || FeedVideoCardsPatch.contains(bytes, GOOGLE_USER_CONTENT_BYTES))) {
             return bytes;
@@ -317,7 +320,7 @@ public final class PostImageDownloadPatch {
                 }
             }
             final String elementIdentifier = identifier;
-            if (elementIdentifier == null || !elementIdentifier.contains("post")) {
+            if (elementIdentifier == null || !elementIdentifier.contains(POST)) {
                 return bytes;
             }
 
@@ -989,10 +992,10 @@ public final class PostImageDownloadPatch {
 
     private static void download(@Nullable List<PostImage> images) {
         if (images == null || images.isEmpty()) {
-            Utils.showToastShort(str("morphe_post_image_download_not_found"));
+            Utils.showSnackbarShort(str("morphe_post_image_download_not_found"));
             return;
         }
-        Utils.showToastShort(images.size() == 1
+        Utils.showSnackbarShort(images.size() == 1
                 ? str("morphe_post_image_download_started_single")
                 : str("morphe_post_image_download_started", images.size()));
 
@@ -1031,7 +1034,7 @@ public final class PostImageDownloadPatch {
                 } else {
                     toast = str("morphe_post_image_download_saved", savedCount, folder);
                 }
-                Utils.showToastShort(toast);
+                Utils.showSnackbarShort(toast);
             });
         });
     }

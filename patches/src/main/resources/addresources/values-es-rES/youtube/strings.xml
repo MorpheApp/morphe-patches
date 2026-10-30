@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Otros</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurar antigua pantalla de configuración de YouTube</string>
+  <string name="morphe_native_snackbar_title">Mostrar mensajes en el snackbar de YouTube</string>
+  <string name="morphe_native_snackbar_summary">Los mensajes de Morphe, como la confirmación de un botón del reproductor, se muestran en el snackbar de YouTube en lugar de una ventana emergente</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Eliminar restricciones de reproducción en segundo plano</string>
   <string name="morphe_shorts_disable_background_playback_title">Desactivar reproducción en segundo plano</string>
@@ -455,6 +457,15 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_post_image_download_saved_single">Imagen guardada en %s</string>
   <string name="morphe_post_image_download_failed">No se pudo descargar la imagen</string>
   <string name="morphe_post_image_download_not_found">No se encontró ninguna imagen en esta publicación</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Traducir publicaciones</string>
+  <string name="morphe_post_translate_summary">Añade un elemento de menú desplegable para traducir las publicaciones de los creadores de contenido</string>
+  <string name="morphe_post_translate_language_title">Idioma de traducción de publicaciones</string>
+  <string name="morphe_post_translate_flyout">Traducir</string>
+  <string name="morphe_post_translate_flyout_original">Mostrar original</string>
+  <string name="morphe_post_translate_started">Traduciendo…</string>
+  <string name="morphe_post_translate_failed">No se ha podido traducir la publicación</string>
+  <string name="morphe_post_translate_same_language">La publicación ya está en el idioma de traducción</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Añadir elemento «Preguntar» al menú desplegable</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Añade un elemento de resumen de vídeo al menú desplegable del feed</string>
@@ -863,6 +874,8 @@ Se deben proporcionar 'cookies de subtítulos'"</string>
   <string name="morphe_fix_transcript_title">Corregir transcripción</string>
   <string name="morphe_fix_transcript_summary">Soluciona un fallo de la comprobación de un requisito previo que puede impedir la carga de la transcripción</string>
   <string name="morphe_captions_in_pip_title">Mostrar subtítulos en «imagen en imagen»</string>
+  <string name="morphe_stable_caption_blocks_title">Bloques de subtítulos estables</string>
+  <string name="morphe_stable_caption_blocks_summary">Agrupa los subtítulos automáticos en bloques estables y legibles. Es posible que algunas palabras aparezcan antes de que se pronuncien. Es necesario reiniciar.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botones de navegación</string>
   <string name="morphe_navigation_buttons_screen_summary">Elige qué botones aparecen en la barra de navegación inferior</string>
@@ -1210,6 +1223,8 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <string name="morphe_miniplayer_disable_resuming_summary">Desactiva el reproductor en miniatura de \'Seguir viendo\', una función de YouTube Premium que aparece al iniciar la aplicación.</string>
   <string name="morphe_miniplayer_screen_title">Reproductor en miniatura</string>
   <string name="morphe_miniplayer_screen_summary">Personaliza la apariencia y el comportamiento del reproductor de vídeo minimizado</string>
+  <string name="morphe_miniplayer_not_available_title">Mini-reproductores adicionales</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube eliminó todos los reproductores en miniatura adicionales. Para restaurar más tipos de reproductores en miniatura, parchea YouTube 21.28.208 o anterior</string>
   <string name="morphe_miniplayer_type_title">Tipo de reproductor en miniatura</string>
   <string name="morphe_miniplayer_hide_title_title">Ocultar título y canal</string>
   <string name="morphe_miniplayer_type_entry_0">Desactivado</string>
@@ -1251,6 +1266,8 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <string name="morphe_fix_status_bar_layout_summary">Mantiene la uniformidad del diseño de la barra de estado, de modo que no cubra las barras superiores y no deje ningún espacio vacío encima del reproductor. Desactiva esta opción si la aplicación se bloquea o las barras superiores no se ven bien.</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Resplandor</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">La pantalla de inicio con efecto de resplandor no es compatible con este dispositivo</string>
   <string name="morphe_theme_color_light_title">Fondo del tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Blanco</string>
@@ -1570,7 +1587,7 @@ La grabación automática se detiene en modo incógnito, cuando la identidad de 
   <string name="morphe_series_tracker_undo">Deshacer</string>
   <string name="morphe_series_tracker_enable_short">Activar</string>
   <string name="morphe_series_tracker_new_episode">1 nuevo episodio</string>
-  <string name="morphe_series_tracker_new_episodes"><b>%1$s</b> nuevos episodios</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s nuevos episodios</string>
   <string name="morphe_series_tracker_record_short">Registrar progreso en este dispositivo</string>
   <string name="morphe_series_tracker_follow_consent">"Tus series y el progreso se mantienen en este dispositivo, compartidos entre cuentas de YouTube. Los controles de historial de YouTube no los modifican. Borra el progreso desde el menú de Series.
 

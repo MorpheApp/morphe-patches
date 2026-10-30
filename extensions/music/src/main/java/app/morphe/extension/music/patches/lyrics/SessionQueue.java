@@ -20,15 +20,13 @@ import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.shared.Logger;
 
 /**
- * Reads the track that plays after a given one from the queue the app published to its
- * own media session.
+ * Reads the track that plays after a given one from the queue the app published to its own
+ * media session.
  *
- * <p>The media session is part of the platform, so this needs no other patch: whatever
- * the app hands the system, the controller of that same session hands back. An app that
- * publishes none simply yields nothing here, which leaves the caller as it was.
- *
- * <p>Reading it means calling across the session binder, so it blocks and must not run
- * on the main thread.
+ * <p>The media session is part of the platform, so no other patch is needed: whatever the app
+ * hands the system, the controller of that same session hands back; an app that publishes
+ * none yields nothing here. Reading it crosses the session binder, so it blocks and must not
+ * run on the main thread.
  */
 final class SessionQueue {
 
@@ -36,13 +34,10 @@ final class SessionQueue {
     }
 
     /**
-     * Matching is by the item media id, so the answer stays right while the session is
-     * still catching up with a switch. The item after the last one is the first one,
-     * which is where autoplay and a repeat of a single track land.
-     *
-     * <p>{@code videoIdOut} receives the media id of the successor. Comparing it with
-     * the playing id tells a repeat from a successor, and any other value is only ever
-     * a title to prefetch.
+     * Matching is by item media id, so the answer stays right while the session catches up
+     * with a switch. The item after the last is the first - where autoplay and single-track
+     * repeat land. {@code videoIdOut} receives the successor's media id: equal to the playing
+     * id it is a repeat, any other value is only a title to prefetch.
      */
     @Nullable
     static TrackInfo nextTrackOf(@NonNull String currentVideoId,
@@ -87,7 +82,7 @@ final class SessionQueue {
 
     @Nullable
     private static TrackInfo trackOf(@Nullable MediaSession.QueueItem item,
-                                    @NonNull String[] videoIdOut) {
+                                     @NonNull String[] videoIdOut) {
         if (item == null) return null;
 
         videoIdOut[0] = mediaIdOf(item);

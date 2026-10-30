@@ -416,9 +416,18 @@ public final class FlyoutUtils {
      * via the video player's comments button.
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
-        List<Integer> kidsVideoElementsBytesIndexes = byteIndexesOf(bytes, KIDS_VIDEO_ELEMENTS_BYTES);
-        if (!kidsVideoElementsBytesIndexes.isEmpty() &&
-                kidsVideoElementsBytesIndexes.size() == KIDS_VIDEO_ELEMENTS_BYTES.size() - 1) {
+        if (bytes == null) {
+            return null;
+        }
+
+        // Every element is searched on the main thread, see FeedVideoCardsPatch.getElementText().
+        int found = 0;
+        for (byte[] search : KIDS_VIDEO_ELEMENTS_BYTES) {
+            if (FeedVideoCardsPatch.contains(bytes, search)) {
+                found++;
+            }
+        }
+        if (found == KIDS_VIDEO_ELEMENTS_BYTES.size() - 1) {
             videoMarkedAsForKids = true;
         }
 

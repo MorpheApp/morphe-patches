@@ -29,25 +29,19 @@ import app.morphe.extension.shared.Logger;
  * lock screen, Android Auto and Bluetooth displays. The artist field is rewritten to
  * {@code "artist - title"} so the track identity is preserved.
  *
- * <p>The app's {@link MediaSession#setMetadata(MediaMetadata)} call site is observed to
- * capture the {@link MediaSession} instance and the original metadata. Modified metadata is
- * then pushed from a ticker via the captured session. Because that push goes through the
- * framework directly, it does not re-enter the hooked app call site, so the lyrics and
- * scrobbling observers (which read the original metadata at that site) are never affected.
+ * <p>Observed at the app's {@link MediaSession#setMetadata(MediaMetadata)} call site to capture
+ * the session and the original metadata; modified metadata is pushed from a ticker via the
+ * framework directly, so it never re-enters the hooked call site and the lyrics/scrobbling
+ * observers reading the original metadata are unaffected. Other fields, notably album art, are
+ * preserved by copying the original metadata, including the display variants of title and artist.
  *
- * <p>All fields other than title and artist, notably the album art, are preserved by copying
- * the original metadata with {@link MediaMetadata.Builder}. The display variants of the title
- * and of the artist are rewritten as well, because the lock screen prefers them over the plain
- * ones when both are present.
- *
- * <p>The MediaSession push only supports Android 11 and above: Android 10 lock screens render
- * the media notification (whose text is baked into the RemoteViews at post time) instead of
- * reading session metadata, so a line pushed here would never be shown there. Android 10 and
- * older are not adapted.
+ * <p>Android 11+ only: Android 10 lock screens render the media notification (text baked into the
+ * RemoteViews at post time) instead of session metadata, so a pushed line would never be shown.
  */
 @SuppressWarnings("unused")
 public final class LockScreenLyrics {
 
+    private static final long MAX_NUDGE_RECEIPT_AGE_MS = 6 * 60 * 60 * 1000L;
     @Nullable
     private static volatile WeakReference<MediaSession> sessionRef;
     @Nullable
@@ -58,24 +52,21 @@ public final class LockScreenLyrics {
     private static volatile String realTitle;
     @Nullable
     private static volatile String realArtist;
-
     @Nullable
     private static String cachedCleanedTitle;
     @Nullable
     private static String cachedCleanedArtist;
-
     /** Title and artist pushed on the last tick, to avoid redundant {@code setMetadata} calls. */
     @Nullable
     private static volatile String lastPushedTitle;
     @Nullable
     private static String lastPushedArtist;
-
     /** Set when the app pushes fresh metadata, so the next tick pushes it again. */
     private static volatile boolean needsRepush;
-
     /** Drives the periodic check that mirrors the current line into the MediaSession. */
     private static final LyricsTicker ticker = new LyricsTicker(LockScreenLyrics::tick);
-
+    @Nullable
+    private static volatile PlaybackState playbackState;
     /**
      * Re-arms the ticker whenever lyrics arrive or disappear, so a late lookup does not
      * leave the mirror stuck on the track title.
@@ -85,14 +76,8 @@ public final class LockScreenLyrics {
             ticker.schedule();
         }
     };
-
-    @Nullable
-    private static volatile PlaybackState playbackState;
-
     private static volatile long observedPositionMs;
     private static volatile long observedAtElapsedMs;
-
-    private static final long MAX_NUDGE_RECEIPT_AGE_MS = 6 * 60 * 60 * 1000L;
 
     private LockScreenLyrics() {
     }
@@ -228,11 +213,10 @@ public final class LockScreenLyrics {
 
     /**
      * Re-dispatches the app's playback state with a rebased position so media surfaces that
-     * refresh their metadata only when the playback state changes pick up the line that was
-     * just pushed. The position continues from the receipt-time reading on the
-     * {@link SystemClock#elapsedRealtime} timebase that {@link PlaybackState} mandates, so
-     * the system seek bar keeps advancing instead of jumping backwards. The push goes
-     * through the framework directly and does not re-enter the hooked app call site.
+     * refresh only on a state change pick up the line just pushed. The position continues from
+     * the receipt-time reading on the {@link SystemClock#elapsedRealtime} timebase
+     * {@link PlaybackState} mandates, so the seek bar keeps advancing instead of jumping
+     * backwards. Pushed through the framework, so the hooked app call site is not re-entered.
      */
     private static void nudgePlaybackState(MediaSession session) {
         PlaybackState captured = playbackState;
@@ -325,4 +309,6 @@ public final class LockScreenLyrics {
         builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE, artist);
         return builder.build();
     }
+
+
 }

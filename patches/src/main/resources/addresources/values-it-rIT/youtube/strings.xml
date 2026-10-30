@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Varie</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Ripristina la vecchia schermata delle impostazioni di YouTube</string>
+  <string name="morphe_native_snackbar_title">Mostra messaggi nella snackbar di YouTube</string>
+  <string name="morphe_native_snackbar_summary">I messaggi di Morphe, come la conferma relativa a un pulsante del player, vengono visualizzati nella snackbar di YouTube anziché in un popup.</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Rimuovi le restrizioni alla riproduzione in secondo piano</string>
   <string name="morphe_shorts_disable_background_playback_title">Disattiva la riproduzione degli Shorts in secondo piano</string>
@@ -455,6 +457,15 @@ Le segnalazioni sono pubbliche e vengono esaminate prima che un canale venga agg
   <string name="morphe_post_image_download_saved_single">Immagine salvata in %s</string>
   <string name="morphe_post_image_download_failed">Impossibile scaricare l\'immagine</string>
   <string name="morphe_post_image_download_not_found">Nessuna immagine trovata in questo post</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Traduci i post</string>
+  <string name="morphe_post_translate_summary">Aggiunge una voce al menu a comparsa per tradurre i post dei creatori di contenuti</string>
+  <string name="morphe_post_translate_language_title">Lingua di traduzione del post</string>
+  <string name="morphe_post_translate_flyout">Traduci</string>
+  <string name="morphe_post_translate_flyout_original">Mostra originale</string>
+  <string name="morphe_post_translate_started">Traduzione in corso…</string>
+  <string name="morphe_post_translate_failed">Impossibile tradurre il post</string>
+  <string name="morphe_post_translate_same_language">Il post è già nella lingua di traduzione</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Aggiungi elemento Chiedi al menu a discesa</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Aggiunge un elemento di sintesi video al menu a discesa del feed</string>
@@ -863,6 +874,8 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_fix_transcript_title">Correggi trascrizione</string>
   <string name="morphe_fix_transcript_summary">Risolve un errore di controllo dei prerequisiti che potrebbe impedire il caricamento della trascrizione</string>
   <string name="morphe_captions_in_pip_title">Mostra i sottotitoli in picture-in-picture</string>
+  <string name="morphe_stable_caption_blocks_title">Blocchi sottotitoli stabili</string>
+  <string name="morphe_stable_caption_blocks_summary">Raggruppa i sottotitoli automatici in blocchi stabili e leggibili. Alcune parole potrebbero apparire prima di essere pronunciate. È necessario riavviare.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Pulsanti di navigazione</string>
   <string name="morphe_navigation_buttons_screen_summary">Scegli quali pulsanti visualizzare nella barra di navigazione inferiore</string>

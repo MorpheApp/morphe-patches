@@ -33,11 +33,9 @@ import app.morphe.extension.shared.requests.Requester;
 
 public final class QuickLRCClient {
 
-    private static final ExecutorService executor = Executors.newSingleThreadExecutor();
-
-    private static final String ENDPOINT = "https://quicklrc.com/api/v1/transcribe";
     public static final String PROVIDER_NAME = "QuickLRC";
-
+    private static final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private static final String ENDPOINT = "https://quicklrc.com/api/v1/transcribe";
     private static final int CONNECT_TIMEOUT_MS = 15_000;
     private static final int READ_TIMEOUT_MS = 180_000;
 
@@ -45,38 +43,16 @@ public final class QuickLRCClient {
 
     private static volatile Future<?> running;
 
-    /** Why a run produced nothing, so the caller can say something more useful than "failed". */
-    public enum Failure {
-        CANCELLED,
-        NO_KEY,
-        UNSUPPORTED_SOURCE,
-        OUT_OF_CREDITS,
-        FAILED
-    }
-
-    /**
-     * What a key check concluded. {@link #REJECTED} is the only one that should refuse a save.
-     */
-    public enum KeyCheck {
-        /** The service read the key and objected to something else. */
-        ACCEPTED,
-        /** The service refused the key itself. */
-        REJECTED,
-        /** The service could not be asked, so the key is neither proven nor disproven. */
-        UNREACHABLE
-    }
-
-    public interface KeyCheckCallback {
-        void onChecked(KeyCheck result);
+    private QuickLRCClient() {
     }
 
     public static void checkKey(String apiKey, KeyCheckCallback callback) {
-        String key = apiKey == null ? "" : apiKey.trim();
+        final String key = apiKey == null ? "" : apiKey.trim();
         if (key.isEmpty()) {
             callback.onChecked(KeyCheck.REJECTED);
             return;
         }
-        Thread worker = new Thread(() -> {
+        final Thread worker = new Thread(() -> {
             KeyCheck result;
             HttpURLConnection conn = null;
             try {
@@ -99,33 +75,29 @@ public final class QuickLRCClient {
                     conn.disconnect();
                 }
             }
-            KeyCheck answer = result;
+            final KeyCheck answer = result;
             Utils.runOnMainThread(() -> callback.onChecked(answer));
         }, "QuickLRC key check");
         worker.setDaemon(true);
         worker.start();
     }
 
-    public interface Callback {
-        void onTranscribed(@Nullable Lyrics lyrics, @Nullable Failure failure);
-    }
-
-    private QuickLRCClient() {
-    }
-
     @SuppressWarnings("ConstantValue")
     public static boolean isConfigured() {
-        String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
+        if (!Settings.LYRICS_QUICKLRC_ENABLED.get()) {
+            return false;
+        }
+        final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
         return key != null && !key.trim().isEmpty();
     }
 
     public static boolean isRunning() {
-        Future<?> current = running;
+        final Future<?> current = running;
         return current != null && !current.isDone();
     }
 
     public static void cancel() {
-        Future<?> current = running;
+        final Future<?> current = running;
         running = null;
         if (current != null) {
             current.cancel(true);
@@ -135,17 +107,17 @@ public final class QuickLRCClient {
     @SuppressWarnings("ConstantValue")
     public static void transcribe(String videoId, @Nullable String lyrics,
                                   BooleanSupplier stillWanted, Callback callback) {
-        String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
+        final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
         if (key == null || key.trim().isEmpty()) {
             Utils.runOnMainThread(() -> callback.onTranscribed(null, Failure.NO_KEY));
             return;
         }
-        String source = videoId == null ? "" : videoId.trim();
+        final String source = videoId == null ? "" : videoId.trim();
         if (source.isEmpty()) {
             Utils.runOnMainThread(() -> callback.onTranscribed(null, Failure.UNSUPPORTED_SOURCE));
             return;
         }
-        String text = lyrics == null ? "" : lyrics.trim();
+        final String text = lyrics == null ? "" : lyrics.trim();
 
         cancel();
         running = executor.submit(() -> {
@@ -153,7 +125,7 @@ public final class QuickLRCClient {
             Lyrics result = null;
             try {
                 if (stillWanted.getAsBoolean()) {
-                    String ttml = post(source, text, key.trim());
+                    final String ttml = post(source, text, key.trim());
                     if (ttml == null) {
                         failure = Failure.FAILED;
                     } else {
@@ -176,21 +148,15 @@ public final class QuickLRCClient {
                 }
             }
 
-            Lyrics deliver = result;
-            Failure reason = failure;
+            final Lyrics deliver = result;
+            final Failure reason = failure;
             Utils.runOnMainThread(() -> callback.onTranscribed(deliver, reason));
         });
     }
 
-    private static final class OutOfCreditsException extends IOException {
-        OutOfCreditsException() {
-            super("QuickLRC credits exhausted");
-        }
-    }
-
     private static String post(String videoId, String lyrics, String apiKey)
             throws IOException, JSONException {
-        JSONObject body = new JSONObject();
+        final JSONObject body = new JSONObject();
         body.put("fileUrl", "https://www.youtube.com/watch?v=" + videoId);
         body.put("format", "lrc");
         body.put("isWordLevel", true);
@@ -198,19 +164,19 @@ public final class QuickLRCClient {
             body.put("lyrics", lyrics);
         }
 
-        String json = body.toString();
+        final String json = body.toString();
 
         String target = ENDPOINT;
         for (int hop = 0; hop <= MAX_REDIRECTS; hop++) {
-            Attempt attempt = sendOnce(target, json, apiKey);
+            final Attempt attempt = sendOnce(target, json, apiKey);
             final int code = attempt.code();
 
             if (code == 307 || code == 308 || code == 301 || code == 302) {
-                String location = attempt.location();
+                final String location = attempt.location();
                 if (location == null || location.isEmpty()) {
                     return null;
                 }
-                String next = resolve(target, location);
+                final String next = resolve(target, location);
                 if (next == null) {
                     return null;
                 }
@@ -238,13 +204,6 @@ public final class QuickLRCClient {
         return null;
     }
 
-    private record Attempt(int code, String message, String contentType, int contentLength,
-                           String location, String body, String errorBody) {
-        public Attempt {
-            if (message == null) message = "";
-        }
-    }
-
     private static Attempt sendOnce(String url, String json, String apiKey) throws IOException {
         HttpURLConnection conn = null;
         try {
@@ -258,15 +217,15 @@ public final class QuickLRCClient {
             conn.setDoOutput(true);
             conn.setInstanceFollowRedirects(false);
 
-            byte[] payload = json.getBytes(StandardCharsets.UTF_8);
+            final byte[] payload = json.getBytes(StandardCharsets.UTF_8);
             try (java.io.OutputStream out = conn.getOutputStream()) {
                 out.write(payload);
             }
 
             final int code = conn.getResponseCode();
-            String location = conn.getHeaderField("Location");
+            final String location = conn.getHeaderField("Location");
             if (code == 200) {
-                String body = Requester.parseString(conn);
+                final String body = Requester.parseString(conn);
                 return new Attempt(code, conn.getResponseMessage(), conn.getContentType(),
                         conn.getContentLength(), location, body, null);
             }
@@ -282,7 +241,7 @@ public final class QuickLRCClient {
     @Nullable
     private static String resolve(String base, String location) {
         try {
-            java.net.URL resolved = new URL(new URL(base), location);
+            final java.net.URL resolved = new URL(new URL(base), location);
             return resolved.getProtocol() + "://" + resolved.getAuthority() + resolved.getPath()
                     + (resolved.getQuery() == null ? "" : "?" + resolved.getQuery());
         } catch (java.net.MalformedURLException ex) {
@@ -292,13 +251,11 @@ public final class QuickLRCClient {
 
     /**
      * Drops the gaps the service puts between CJK tokens, as in {@code <t>我 <t>靠 <t>， <t>我}.
-     *
-     * <p>On the body, so the cleaned text becomes the raw format and the cache and the
-     * exporter store it. Hand-scanned: both sides have to agree, and no regex form that looks
-     * that far past the tag matches.
+     * Applied to the body so the cleaned text is what the raw format, cache and exporter store;
+     * hand-rolled because no regex looks that far past the tags.
      */
     private static String dropCjkSeparators(String lrc) {
-        StringBuilder out = new StringBuilder(lrc.length());
+        final StringBuilder out = new StringBuilder(lrc.length());
         for (int i = 0; i < lrc.length(); ) {
             if (Character.isWhitespace(lrc.charAt(i)) && isCjkGap(lrc, i)) {
                 i = skipWhitespace(lrc, i);
@@ -380,8 +337,8 @@ public final class QuickLRCClient {
     private static Lyrics toLyrics(String lrc) {
         try {
             // Cleaned first, so the raw format and everything reading it are the clean one.
-            String body = dropCjkSeparators(lrc);
-            List<LyricsLine> lines = LRCParser.parseSynced(body);
+            final String body = dropCjkSeparators(lrc);
+            final List<LyricsLine> lines = LRCParser.parseSynced(body);
             if (lines == null || lines.isEmpty()) {
                 return null;
             }
@@ -410,6 +367,48 @@ public final class QuickLRCClient {
                     null, body, "lrc", null);
         } catch (Exception ex) {
             return null;
+        }
+    }
+
+    /** Why a run produced nothing, so the caller can say something more useful than "failed". */
+    public enum Failure {
+        CANCELLED,
+        NO_KEY,
+        UNSUPPORTED_SOURCE,
+        OUT_OF_CREDITS,
+        FAILED
+    }
+
+    /**
+     * What a key check concluded. {@link #REJECTED} is the only one that should refuse a save.
+     */
+    public enum KeyCheck {
+        /** The service read the key and objected to something else. */
+        ACCEPTED,
+        /** The service refused the key itself. */
+        REJECTED,
+        /** The service could not be asked, so the key is neither proven nor disproven. */
+        UNREACHABLE
+    }
+
+    public interface KeyCheckCallback {
+        void onChecked(KeyCheck result);
+    }
+
+    public interface Callback {
+        void onTranscribed(@Nullable Lyrics lyrics, @Nullable Failure failure);
+    }
+
+    private static final class OutOfCreditsException extends IOException {
+        OutOfCreditsException() {
+            super("QuickLRC credits exhausted");
+        }
+    }
+
+    private record Attempt(int code, String message, String contentType, int contentLength,
+                           String location, String body, String errorBody) {
+        public Attempt {
+            if (message == null) message = "";
         }
     }
 }

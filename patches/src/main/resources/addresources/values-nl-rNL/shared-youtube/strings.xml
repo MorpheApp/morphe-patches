@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Opstartanimatie</string>
   <string name="morphe_splash_screen_style_entry_1">Uitgeschakeld</string>
   <string name="morphe_splash_screen_style_entry_2">Kleur</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Kleur</string>
   <string name="morphe_splash_screen_style_entry_4">Monochroom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Nieuwe instellingen markeren</string>
+  <string name="morphe_settings_new_indicator_days_summary">Aantal dagen dat een stip wordt getoond naast instellingen en opties die door een update zijn toegevoegd</string>
   <string name="morphe_settings_new_indicator_days_off">Uit</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Herstarten om de installatie te voltooien</string>

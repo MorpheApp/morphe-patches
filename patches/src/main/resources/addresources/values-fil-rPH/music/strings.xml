@@ -462,12 +462,47 @@ Para matiyak na naka-sync ang scrobbling habang nagpe-play sa background, sigura
   <string name="morphe_music_lyrics_section_display_title">Ipakita</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronisasyon</string>
   <string name="morphe_music_lyrics_section_panel_title">Panel</string>
-  <string name="morphe_music_lyrics_section_ai_endpoint_title">Endpoint ng AI</string>
   <string name="morphe_music_lyrics_source_all_disabled">Lahat ng provider ay naka-disable - built-in lyrics at embedded lyrics</string>
   <string name="morphe_music_lyrics_source_reset_title">I-reset ang pagkakasunud-sunod ng provider?</string>
   <string name="morphe_music_lyrics_source_reset_message">Ibalik ang mga provider sa default na pagkakasunud-sunod ng priyoridad.</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Talaan ng mga salita sa Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Ang Rime Wordlist ay nangangailangan din ng UniDict: sa Offline Dictionary provider, piliin ang \"Chinese and Cantonese characters (UniDict)\" at hayaan itong matapos mag-download muna. Kung wala ito, isang listahan na nagbabasa ng mga karakter ay hindi magbibigay ng pagbasa.
+
+Piliin ang mga listahan na basahin ng Rime Wordlist, pagkatapos ay i-tap ang Save upang ma-download ang mga ito. Ang listahang idinagdag mo ay tinatanggal kapag ini-uncheck mo ito.
+
+Bawat listahan ay iyong sariling table ng salita-pagbasa, isang .dict.yaml na may mga linya tulad ng:
+字 ham
+典 din2
+Ang unang kolunma ay ang salita, ang pangalawa ay ang pagbasa nito; karagdagang mga kolunma at mga lining walang tab ay kinikilala."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Walang listang word sa Rime ang naka-tick para sa wika sa itaas. I-tap ang pangalang ito upang i-tick ang isa, o pumili ng wika na may listang</string>
+  <string name="morphe_music_lyrics_rime_dict_add">Idagdag</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Magdagdag ng listang word sa Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Isang .dict.yaml file, o isang zip na naglalaman nito, na may mga linya tulad ng 字 ham at 典 din2. Ang listahang hinahabol kapag pinili mo ito at i-tap ang Save, at ang lisensya nito ay para sa iyo upang suriin</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">Code ng wika</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dalawa o tatlong letra, gaya ng hak o wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">Pangalan</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Ipapakita sa ilalim ng pagbasa, gaya ng Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Address ng listang word</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// address ng .dict.yaml o ng zip nito</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Mga character na hindi nasa word</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">Awtomatiko</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Mga character na Cantonese</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">Mga character na Mandarin</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Walang pagbasa ng character</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Punan ang code, pangalan at address</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">Dapat dalawa o tatlong letters ang code, gaya ng hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">Dapat simulan sa https:// ang address</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">Hindi pwedeng maglaman ng vertical bar ang pangalan at address</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">Mayroon nang table ng word ang %1$s</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">Binabasa ang %1$s ng built-in romanizer at hindi pwedeng kunin ang listang word</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Hindi ginagamit: may sariling pagbasa na ang wikang ito, kaya tanggalin mo ito sa pamamagitan ng hindi pagtandaan</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Idinagdag ang %1$s - tandaan mo ito at i-tap ang Save para i-download</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Handa na ang mga listang word</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Handa na ang mga listang word (%1$d entries)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Pagbabasa ng listang word: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Nabigo ang download ng listang word - i-tap muli ang Save para subukan ulit</string>
   <string name="morphe_music_lyrics_clear_cache_title">Linisin ang naka-store na lyrics</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Tanggalin ang mga lyrics na nakapanatili sa device na ito</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Burahin ang %1$s MB ng mga lyrics na naka-save sa device na ito</string>
   <string name="morphe_music_lyrics_clear_cache_done">Na-linisan na %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">Kumuha ng token</string>
   <string name="morphe_music_apple_music_token_title">Token ng Media-user ng Apple Music</string>
@@ -522,14 +557,22 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_show_copy_button_title">Ipakita ang button na Kopyahin</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Pindutin para kopyahin ang orihinal na lyrics bilang plain text; long-press para ilabas ang raw lyrics source file sa Downloads</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Ipakita ang button na Isalin</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Pindutin para toggle ang translation; long-press para translation only. Gumagamit ng provider translations, Google Translate, o isang OpenAI-compatible API</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">Ipakita ang Romanize button</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Pindutin para toggle ang romanization; long-press para romanization only. Gumagamit ng provider romanization, Google Translate, o isang OpenAI-compatible API</string>
-  <string name="morphe_music_lyrics_local_romanization_title">Local Romanization at Alignment</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">I-romanize sa device kapag ang provider, iyong modelo at Google Translate ay nabigo. Ang pagbabasa ay sumusunod sa bawat salita ng timed lyric; word sync must be on. Chinese, Cantonese, Japanese, Korean, Greek, Russian, Georgian, Armenian; about 120 MB</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Pagbabasa %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">I-tap para ibalik/itago ang translation; long-press para translation lang. Ginagamit ang enabled translation providers ayon sa nakasulat na order</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Ipakita ang Romanize o Transliterate button</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">I-tap para ibalik/itago ang romanization o transliteration; long-press para romanization o transliteration lang. Ginagamit ang enabled romanization providers ayon sa nakasulat na order</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">Paganahin ang transliteration</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Hayaan ang non-Latin readings mula sa lyrics source; kapag off, panatilihing Latin letters, accented letters at tone digits lang</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Binabasa ang bawat salita ng timed lyric (word sync on); Walang kailangang download para sa Korean; sampung scripts ang naghihigugupit ng CLDR download; Ang Han characters ay binabasa ng Rime Wordlist kapag ang word table nito ay sakop ang wika</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Nagde-download ng mga dictionary para sa pagbasa…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Handa na ang mga basihan (%1$d na pagsunod)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Nabigo ang pag-download - patayin at buuin ito muli upang subukan muli</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline Dictionary</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japanese (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Mga character na Chinese at Cantonese (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Mga salitang Chinese (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteration para sa Greek, Slavic Cyrillic (kasama ang Russian, Ukrainian, Bulgarian, Serbian, Belarusian, Macedonian), Georgian, Armenian, Hebrew, Arabic, Amharic at Syriac (CLDR, ~0.5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Pagbabasa %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">Pumili ng hindi bababa sa isang dictionary</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ipakita ang button na Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Pindutin para lumipat sa susunod na lyrics candidate; long-press para maghanap ng lyrics gamit ang pamagat ng kanta at artist</string>
   <string name="morphe_music_lyrics_search_dialog_title">Maghanap ng lyrics</string>
@@ -540,6 +583,10 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_saved">Na-save</string>
   <string name="morphe_music_lyrics_word_sync_title">I-highlight ang mga salita o pantig na naka-sync</string>
   <string name="morphe_music_lyrics_word_sync_summary">Unahin ang word-by-word na lyrics kung available. Kapag may word timing ang lyrics, ine-highlight ang bawat salita o pantig na kasabay ng musika.</string>
+  <string name="morphe_music_lyrics_line_scale_title">Papakinikinisan ang mga inactive lines</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Ilalarawan ang bawat line na hindi kasalukuyang inawit nang bahagyang mas maliit, sa itaas ng pagdim ng ilaw nito</string>
+  <string name="morphe_music_lyrics_split_background_title">Ipakita hiwalay ang background vocals</string>
+  <string name="morphe_music_lyrics_split_background_summary">Hinihiwalay ang background vocals at harmony mula sa lead line. Ginagalaw ang background vocal na nakasulat sa brackets, tulad ng \"(Oh) I want you\", labas ng sung line patungo sa sarili nitong dimmed line</string>
   <string name="morphe_music_lyrics_hide_played_title">Itago ang linyang na-play na.</string>
   <string name="morphe_music_lyrics_hide_played_summary">Itago ang mga linya ng lyrics sa itaas ng linyang kasalukuyang pinapatugtog</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Itago ang mga lyrics na hindi pa na-play.</string>
@@ -597,10 +644,15 @@ Nalalapat sa parehong limitasyon. Sa 1.75, ang apat na full-width character ay m
   <string name="morphe_music_lyrics_translated_by_ai">Isinalin ni %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Isina-romanisa ni %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Napag-romanisan ni %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Romanized ng Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Isinalin</string>
   <string name="morphe_music_lyrics_translation_language_title">Wika ng pagsasalin</string>
-  <string name="morphe_music_lyrics_romanize_language_title">Wika ng romanisasyon</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Wika para sa romanization o transliteration</string>
+  <string name="morphe_music_lyrics_translation_target_language">"Wika ng target ng pagsasalin:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"Wika ng target ng Romanization o transliteration:
+%s"</string>
   <string name="morphe_music_lyrics_translating">Nagsasalin…</string>
   <string name="morphe_music_lyrics_translate_failed">Hindi ma-isalin ang lyrics</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanisado</string>
@@ -614,7 +666,7 @@ Nalalapat sa parehong limitasyon. Sa 1.75, ang apat na full-width character ay m
   <string name="morphe_music_lyrics_refreshing">Nagre-refresh</string>
   <string name="morphe_music_lyrics_refreshed">Na-refresh</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API key</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">Ang QuickLRC ay nagtutranscribe o nag-a-align ng lyrics para sa kasalukuyang track. Isang hiwalay na serbisyo, walang kaugnayan sa OpenAI-compatible endpoint sa itaas.</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC ay nagttrancription o time-aligns ng mga lyrics para sa current track</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">Na-save ang QuickLRC key. Gamitin ang align button sa lyrics search dialog, o ang panel prompt kapag may track na walang lyrics.</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Na-save ang QuickLRC API key</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">Hindi tinanggap ng QuickLRC na key na iyon</string>
@@ -630,58 +682,50 @@ Nalalapat sa parehong limitasyon. Sa 1.75, ang apat na full-width character ay m
   <string name="morphe_music_lyrics_transcribe_no_text">Walang lyrics para i-align - imbes ay nagtutranscribe.</string>
   <string name="morphe_music_lyrics_transcribe_failed">Hindi na-processing ng QuickLRC ang track na ito</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Tumapos na ang QuickLRC credits para sa track na ito</string>
-  <string name="morphe_music_lyrics_about_summary">"Ang mga lyrics ay ini-match base sa titulo at artist. Maaaring walang makita o maling bersyon dahil sa abnormal metadata. Gamitin ang refresh para lumipat ng mga bersyon. Mga provider na may marka * ay nangangailangan ng token. Hindi laging hinahanap ang lahat ng enabled providers ayon sa order, ngunit sumasagot ang bawat isa base sa bilis nito.
+  <string name="morphe_music_lyrics_about_summary">"Ang mga lyrics ay ina-match ayon sa pamagat at artist, ang hindi karaniwang metadata ay maaaring makahanap ng walang anumang bagay o mali bersyon. Gamitin ang refresh upang lumipat sa mga bersyon. Mga provider na may marka * ay nangangailangan ng token. Lahat ng pinagana na provider ay hindi laging hinahanap ayon sa iyong order, ngunit tumutugon base sa bilis nila.
 
-Ang mga lyrics ay galing sa third-party services na hindi related, sponsored, o endorsed by Morphe. Bawat isa ay ginagamit kung ano man ito: ang mga lyrics, availability, at licensing ay nananatiling nasa serbisyo at mga licensor nila, at ang paggamit nito ay maaaring subject to their terms of service. Ano man ang maabot sa enabled service ay ang lookup na hiniling mo - ang title, artist, at, kung kinakailangan ng serbisyong iyon, video ID. Ang optional AI endpoint at QuickLRC transcription ay tumatakbo lamang matapos ka itong i-configure, at tatanggapin ang lyrics text o video URL ng track."</string>
+Ang mga lyrics ay galing sa mga third-party services na walang koneksyon, hindi sinusuportahan, o kinilala ng Morphe. Bawat isa ay ginagamit kung ano ito: ang mga lyrics, ang kanilang availability, at ang kanilang licensing ay mananatili sa mga serbisyo at ang mga tagapagbigay-lisensya, at ang paggamit ng mga ito ay maaaring magsaklaw sa mga kondisyon ng serbisyo nila. Ano ang abot sa isang enabled service ay lamang ang lookup na hinihingi mo - ang pamagat, ang artist, at, kung kinakailangan ng serbisong iyon, ang video ID. Ang opsyonal na AI endpoint at QuickLRC transcription ay tumatakbo lamang pagkatapos mong i-configure ang mga ito, at tatanggapin ang mga teksto ng lyrics o URL ng track."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Gawing enabled lamang ang mga provider na ginagamit mo, o panatilihin ang default - ang tuloy-tuloy na mga request ay maaaring magpabigat sa maliit na community lyrics sites</string>
   <string name="morphe_music_lyrics_hide_info_title">Itago ang linya ng kredito</string>
   <string name="morphe_music_lyrics_hide_info_summary">Itago ang linya ng kredito na ipinapakita sa ibaba ng lyrics.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Pagpalitin ang pagsasalin at romanisasyon.</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Kapag ON, nasa ibaba ng lyrics ang romanisasyon at nasa itaas ang pagsasalin; kapag OFF, nananatili sa itaas ang romanisasyon at nasa ibaba ang pagsasalin.</string>
-  <string name="morphe_music_lyrics_section_translation_title">Pagsasalin</string>
-  <string name="morphe_music_lyrics_section_romanization_title">Romanisasyon</string>
-  <string name="morphe_music_lyrics_translation_provider_title">Tagapagbigay ng pagsasalin</string>
-  <string name="morphe_music_lyrics_translation_provider_google">Google (Default, Libre)</string>
-  <string name="morphe_music_lyrics_translation_provider_openai_compatible">Compatible sa OpenAI (Custom)</string>
-  <string name="morphe_music_lyrics_romanization_provider_title">Provider ng Romanization</string>
-  <string name="morphe_music_lyrics_romanization_provider_google">Google (Default)</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">Lokal / Offline na Diksyunaryo</string>
-  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">Compatible sa OpenAI (Custom)</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">Seksyon ng AI</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">Ginagamit lamang kapag walang kasamang mga label ng seksyon ang provider tulad ng Chorus o Verse, na tutukuyin naman ng iyong OpenAI-compatible na model</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; Cloud Endpoints</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">I-configure ang mga API key, modelo, endpoint, at prompt template para sa mga AI provider.</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (hal. https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON ay naglalagay ng romanization o transliteration sa ilalim ng mga lyrics at translation sa itaas; OFF ay pinapanatili ang romanization o transliteration sa itaas at translation sa ilalim. Ang pagbasa na inilagay sa itaas ng bawat syllable ay gumagalaw kasama ito, mula sa itaas ng kanyang syllage patungo sa ilalim nito</string>
+  <string name="morphe_music_lyrics_force_center_title">Palaging i-center ang mga lyrics</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON ay naglalagay ng bawat line sa gitna at naiiwalat ang source alignment, kasama ang duet sides; OFF ay pinapanatili ang alignment na hiningi ng mga lyrics</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Dapat napanatiling on ang hindi bababa sa isang provider</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Mga Pagsasalin</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Romanization o transliteration</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Offline Dictionary</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Talaan ng mga salita sa Rime</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Detektahin ang sections gamit ang AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Ginagamit lamang kapag ang provider ay walang label ng section tulad ng Chorus o Verse, na detektahin ng iyong OpenAI-compatible model pagkatapos. Ang pag-edit ng row ay bubukas din ng prompt nito</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (hal. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Template ng Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Mga Placeholder: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Nai-save na ang prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Na-save ang prompt, ngunit hindi pa gagamit ang AI endpoint. I-configure muna ito sa ilalim ng AI Settings.</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Na-reset na ang prompt</string>
-  <string name="morphe_music_lyrics_ai_extra_body_invalid">Hindi valid JSON. Ayusin ito o linisin ang field bago save</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Na-save ang mga setting ng Translation &amp; Romanization</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Ibinalik sa default ang mga setting</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Ang Base URL ay dapat magsimula sa http:// o https://</string>
-  <string name="morphe_music_lyrics_ai_config_test_connection">I-test ang Koneksyon</string>
-  <string name="morphe_music_lyrics_ai_config_endpoint_label">I-configure ang mga Endpoint</string>
-  <string name="morphe_music_lyrics_ai_config_show_all">Ipakita ang Lahat ng Endpoint</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Hindi kumpleto ang settings o tinanggihan ng provider</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Tinitignan ang koneksyon…</string>
-  <string name="morphe_music_lyrics_ai_config_translation_provider_label">Provider ng Pagsasalin</string>
-  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">Provider ng Romanization</string>
-  <string name="morphe_music_lyrics_ai_config_fetch_models">Kuhanin ang mga Modelo</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Nakakonekta! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Nabigo ang koneksyon. Tingnan ang settings.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Ilagay muna ang API key</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Kukuha ng mga modelo…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Pumili ng Modelo</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Nabigong kuhanin ang mga modelo. Suriin ang API key o koneksyon.</string>
-  <string name="morphe_music_lyrics_ai_config_gemini_section">Mga Setting ng Gemini API</string>
-  <string name="morphe_music_lyrics_ai_config_openai_compat_section">Compatible sa OpenAI (Custom Endpoint)</string>
-  <string name="morphe_music_lyrics_ai_config_deepl_section">Mga Setting ng DeepL API</string>
-  <string name="morphe_music_lyrics_ai_config_api_key_label">API key</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modelo</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Pumili ng serbisyo</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API key (opsyonal)</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt sa pagsasalin</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Karagdagang request body (opsyonal na JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Extra request headers (optional JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Kuwentuhin ang mga pangalan at values, hal. {\"api-key\": \"abc\"}. Ang walang quote value na naglalaman ng / : o number ay tinatanggi. Ang walang laman na value ay inaalis ng header.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Kuwentuhin ang mga pangalan at values, hal. {\"temperature\": 0.3}. Ang walang quote value na naglalaman ng / o : ay tinatanggi. Hindi maia-setup ang Model at messages dito.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Authentication key (Libre o Pro)</string>
-  <string name="morphe_music_lyrics_ai_config_summary">I-configure ang mga API key, modelo, endpoint, at prompt</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - I-disable ang mga bold na icon</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Ibalik ang Player Up next, Lyrics, at Related tabs</string>

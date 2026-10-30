@@ -451,9 +451,19 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_post_image_download_flyout_single">Laadi pilt alla</string>
   <string name="morphe_post_image_download_started">{one, one:\"Laaditakse pilti…\", other:\"Laaditakse %s pilti…\"}</string>
   <string name="morphe_post_image_download_started_single">Laaditakse pilti…</string>
+  <string name="morphe_post_image_download_saved">%1$s pilti salvestatud asukohta %2$s</string>
   <string name="morphe_post_image_download_saved_single">Pilt salvestati asukohta %s</string>
   <string name="morphe_post_image_download_failed">Pildi allalaadimine ebaõnnestus</string>
   <string name="morphe_post_image_download_not_found">Selle postitusest ei leitud ühtki pilti</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Tõlgi postitusi</string>
+  <string name="morphe_post_translate_summary">Lisab riputmenu elementi sisuloojate postituste tõlmeks</string>
+  <string name="morphe_post_translate_language_title">Postituse tõlke keel</string>
+  <string name="morphe_post_translate_flyout">Tõlgi</string>
+  <string name="morphe_post_translate_flyout_original">Näita algset</string>
+  <string name="morphe_post_translate_started">Tõlgitakse…</string>
+  <string name="morphe_post_translate_failed">Postitust ei õnnestunud tõlkida</string>
+  <string name="morphe_post_translate_same_language">Postitus on juba tõlke keeles</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Lisa \"Küsige\" üksus riputmenuusse</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lisab video kokkuvõtte üksuse feedi riputmenuusse</string>
@@ -862,6 +872,8 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_fix_transcript_title">Paranda transkriptsiooni</string>
   <string name="morphe_fix_transcript_summary">Lahendab eeltingimuste kontrolli ebaõnnestumise, mis võib takistada transkriptsiooni laadimist</string>
   <string name="morphe_captions_in_pip_title">Kuva altekstid pildis-pildis</string>
+  <string name="morphe_stable_caption_blocks_title">Stabiilsed pealkirjade plokid</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupeerib automaatsed pealkirjad stabiilsetesse ja loetavatesse plokkidesse. Mõned sõnad võivad ilmuda enne, kui neid on hääldatud. Vajalik on taaskäivitus.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigeerimisnupud</string>
   <string name="morphe_navigation_buttons_screen_summary">Valige, millised nupud alumises navigatsioonisribas kuvatakse</string>
@@ -1210,6 +1222,8 @@ Piirang: kui \"Taasta vana video tegevusriba\" on välja lülitatud, ei prugu ol
   <string name="morphe_miniplayer_disable_resuming_summary">Lülitab välja \'Jätka vaatamist\' minimängija, mis on YouTube Premium funktsioon ja ilmub rakenduse käivitamisel</string>
   <string name="morphe_miniplayer_screen_title">Minipleier</string>
   <string name="morphe_miniplayer_screen_summary">Kohandage minimeeritud videopleieri välimust ja käitumist</string>
+  <string name="morphe_miniplayer_not_available_title">Täiendavad minisinuletid</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube eemaldas kõik täiendavad minisinuletid. Enam minisinuleti tüüpide taastamiseks paigutage YouTube\'i versioon 21.28.208 või vanem</string>
   <string name="morphe_miniplayer_type_title">Minipleieri tüüp</string>
   <string name="morphe_miniplayer_hide_title_title">Peita pealkiri ja kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Välja lülitatud</string>
@@ -1251,6 +1265,8 @@ Piirang: kui \"Taasta vana video tegevusriba\" on välja lülitatud, ei prugu ol
   <string name="morphe_fix_status_bar_layout_summary">Hoiab staatusriba paigutuse ühiseks, et see ei kataks ülaribasid ega jätaks mängija kohale tühja ruumi. Lülitage see välja, kui rakendus tõrkes või kui ülaribad näevad valesti</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Kere</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Seda seadet ei toeta säraefektiga avamise ekraan</string>
   <string name="morphe_theme_color_light_title">Helle teema taust</string>
   <string name="morphe_theme_color_light_entry_2">Valge</string>
@@ -1569,6 +1585,7 @@ Automaatne salvestamine peatub incognito režiimis, kui konto identiteet pole sa
   <string name="morphe_series_tracker_marked">Episoodid märgitud vaadatudaks</string>
   <string name="morphe_series_tracker_undo">Undoi</string>
   <string name="morphe_series_tracker_enable_short">Luba</string>
+  <string name="morphe_series_tracker_new_episode">1 uus episood</string>
   <string name="morphe_series_tracker_new_episodes">%1$s uut episoodi</string>
   <string name="morphe_series_tracker_record_short">Registreeri edenemine selles seadmes</string>
   <string name="morphe_series_tracker_follow_consent">"Teie sarjad ja edukujutlus jäävad sellele seadmele ja on jagatud erinevate YouTube'i kontode vahel. YouTube'i ajaloo juhtimised neid ei muuda. Puhastage edukujutlus sarjade menüüst.

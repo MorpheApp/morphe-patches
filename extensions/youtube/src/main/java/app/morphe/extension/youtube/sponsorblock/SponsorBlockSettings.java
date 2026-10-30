@@ -68,9 +68,9 @@ public class SponsorBlockSettings {
                 final int desktopValue = categorySelectionObject.getInt("option");
                 CategoryBehaviour behaviour = CategoryBehaviour.byDesktopKeyValue(desktopValue);
                 if (behaviour == null) {
-                    Utils.showToastLong(categoryKey + " unknown behavior key: " + desktopValue);
+                    Utils.showSnackbarLong(categoryKey + " unknown behavior key: " + desktopValue);
                 } else if (category == SegmentCategory.HIGHLIGHT && behaviour == CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE) {
-                    Utils.showToastLong("Skip-once behavior not allowed for " + category.keyValue);
+                    Utils.showSnackbarLong("Skip-once behavior not allowed for " + category.keyValue);
                     category.setBehaviour(CategoryBehaviour.SKIP_AUTOMATICALLY); // Use the closest match.
                 } else {
                     category.setBehaviour(behaviour);
@@ -117,10 +117,10 @@ public class SponsorBlockSettings {
                 Settings.SB_LOCAL_TIME_SAVED_MILLISECONDS.save((long) (minutesSaved * 60 * 1000));
             }
 
-            Utils.showToastLong(str("morphe_sb_settings_import_successful"));
+            Utils.showSnackbarLong(str("morphe_sb_settings_import_successful"));
         } catch (Exception ex) {
-            Logger.printInfo(() -> "failed to import settings", ex); // Use info level, as we are showing our own toast.
-            Utils.showToastLong(str("morphe_sb_settings_import_failed", ex.getMessage()));
+            Logger.printInfo(() -> "failed to import settings", ex); // Use info level, as we are showing our own message.
+            Utils.showSnackbarLong(str("morphe_sb_settings_import_failed", ex.getMessage()));
         }
     }
 
@@ -167,8 +167,8 @@ public class SponsorBlockSettings {
 
             return json.toString(2);
         } catch (Exception ex) {
-            Logger.printInfo(() -> "failed to export settings", ex); // Use info level, as we are showing our own toast.
-            Utils.showToastLong(str("morphe_sb_settings_export_failed", ex));
+            Logger.printInfo(() -> "failed to export settings", ex); // Use info level, as we are showing our own message.
+            Utils.showSnackbarLong(str("morphe_sb_settings_export_failed", ex));
             return "";
         }
     }

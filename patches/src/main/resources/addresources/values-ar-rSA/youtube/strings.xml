@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">خيارات متنوعة</string>
   <string name="morphe_settings_screen_12_video_title">الفيديو</string>
   <string name="morphe_restore_old_settings_menus_title">استعادة شاشة إعدادات YouTube القديمة</string>
+  <string name="morphe_native_snackbar_title">عرض الرسائل في شريط تنبيهات YouTube</string>
+  <string name="morphe_native_snackbar_summary">يتم عرض رسائل Morphe، مثل تأكيد زر المشغل، في شريط تنبيهات YouTube بدلًا من ظهور نافذة منبثقة</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">إزالة قيود التشغيل في الخلفية</string>
   <string name="morphe_shorts_disable_background_playback_title">تعطيل التشغيل في الخلفية</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">تم حفظ الصورة في %s</string>
   <string name="morphe_post_image_download_failed">تعذر تنزيل الصورة</string>
   <string name="morphe_post_image_download_not_found">لم يتم العثور على صورة في هذا المنشور</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">ترجمة المنشورات</string>
+  <string name="morphe_post_translate_summary">يُضيف عنصر بالقائمة المنبثقة لترجمة منشورات صانعي المحتوى</string>
+  <string name="morphe_post_translate_language_title">لغة ترجمة المنشور</string>
+  <string name="morphe_post_translate_flyout">ترجمة</string>
+  <string name="morphe_post_translate_flyout_original">عرض الأصل</string>
+  <string name="morphe_post_translate_started">جارٍ الترجمة...</string>
+  <string name="morphe_post_translate_failed">تعذّر ترجمة المنشور</string>
+  <string name="morphe_post_translate_same_language">المنشور موجود بالفعل باللغة المحددة للترجمة</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">إضافة عنصر اسأل إلى القائمة المنبثقة</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">إضافة عنصر تلخيص الفيديو إلى قائمة الخلاصة المنبثقة</string>
@@ -867,6 +878,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_fix_transcript_title">إصلاح النصوص</string>
   <string name="morphe_fix_transcript_summary">يحل مشكلة فشل التحقق من شرط مسبق قد يمنع تحميل النص</string>
   <string name="morphe_captions_in_pip_title">عرض الترجمة في وضع صورة داخل صورة</string>
+  <string name="morphe_stable_caption_blocks_title">تنسيق الترجمة الآلية</string>
+  <string name="morphe_stable_caption_blocks_summary">تجميع الترجمة الآلية في كتل ثابتة وواضحة للقراءة. قد تظهر بعض الكلمات قبل نطقها. يلزم إعادة تشغيل التطبيق.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">أزرار التنقل</string>
   <string name="morphe_navigation_buttons_screen_summary">اختر الأزرار التي تظهر في شريط التنقل السفلي</string>

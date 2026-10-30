@@ -8,6 +8,7 @@
 package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.graphics.Color;
+
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -21,14 +22,18 @@ final class LyricsColors {
     /** Dimmed until the word is sung. */
     static final float UNSUNG_ALPHA = 0.35f;
 
-    /** The reading of the active line once it is lit, or all along when it is not read word by word. */
+    /** Smaller than the lyric it reads, so at the same weight the two would read as one line. */
     static final float ACTIVE_READING_ALPHA = 0.85f;
 
-    /** The translation of the active line. */
+    /** The translation sits between the lyric and its reading in prominence. */
     static final float ACTIVE_TRANSLATION_ALPHA = 0.6f;
 
-    /** A background vocal while it is shown. */
+    /** A background vocal is drawn on its own, so it is not dimmed with the lead line. */
     static final float ACTIVE_BG_ALPHA = 0.8f;
+    private static int cachedLineColor;
+    private static int cachedUnsungColor;
+    private static int cachedSecondaryColor;
+    private static boolean colorCacheValid;
 
     static int secondaryTextColor() {
         ensureColorCache();
@@ -40,13 +45,8 @@ final class LyricsColors {
         if (secondary != 0) {
             return secondary;
         }
-        return Color.argb(0x99, Color.red(base), Color.green(base), Color.blue(base));
+        return Color.argb(0x66, Color.red(base), Color.green(base), Color.blue(base));
     }
-
-    private static int cachedLineColor;
-    private static int cachedUnsungColor;
-    private static int cachedSecondaryColor;
-    private static boolean colorCacheValid;
 
     private static void ensureColorCache() {
         if (!colorCacheValid) {

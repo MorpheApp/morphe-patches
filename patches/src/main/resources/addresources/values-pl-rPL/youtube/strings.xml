@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Pozostałe</string>
   <string name="morphe_settings_screen_12_video_title">Film</string>
   <string name="morphe_restore_old_settings_menus_title">Przywróć stary ekran ustawień YouTube</string>
+  <string name="morphe_native_snackbar_title">Pokaż wiadomości w pasku snackbar YouTube</string>
+  <string name="morphe_native_snackbar_summary">Wiadomości Morphe, takie jak potwierdzenie przycisku odtwarzania, są wyświetlane w pasku snackbar YouTube zamiast okna wyskakującego</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Usuń ograniczenia odtwarzania w tle</string>
   <string name="morphe_shorts_disable_background_playback_title">Wyłącz odtwarzanie w tle</string>
@@ -455,6 +457,15 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_post_image_download_saved_single">Zapisano obraz w %s</string>
   <string name="morphe_post_image_download_failed">Nie udało się pobrać obrazu</string>
   <string name="morphe_post_image_download_not_found">Nie znaleziono obrazu w tym poście</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Tłumacz posty</string>
+  <string name="morphe_post_translate_summary">Dodaje element do menu rozwijanego w celu tłumaczenia postów twórców treści</string>
+  <string name="morphe_post_translate_language_title">Język tłumaczenia postów</string>
+  <string name="morphe_post_translate_flyout">Przetłumacz</string>
+  <string name="morphe_post_translate_flyout_original">Pokaż oryginał</string>
+  <string name="morphe_post_translate_started">Tłumaczenie…</string>
+  <string name="morphe_post_translate_failed">Nie udało się przetłumaczyć posta</string>
+  <string name="morphe_post_translate_same_language">Post jest już w języku tłumaczenia</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodaj opcję \"Zapytaj\" do menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje opcję podsumowania filmu do menu na liście</string>
@@ -863,6 +874,8 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_fix_transcript_title">Napraw transkrypcję</string>
   <string name="morphe_fix_transcript_summary">Rozwiązuje błąd weryfikacji warunków wstępnych, który może uniemożliwiać wczytanie transkrypcji</string>
   <string name="morphe_captions_in_pip_title">Pokaż napisy w trybie \"Obraz w obrazie\"</string>
+  <string name="morphe_stable_caption_blocks_title">Stabilne bloki napisów</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupuj automatyczne napisy w stabilne, czytelne bloki. Niektóre słowa mogą pojawić się przed ich wypowiedzeniem. Wymagany restart.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Przyciski nawigacji</string>
   <string name="morphe_navigation_buttons_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
@@ -1210,6 +1223,8 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_miniplayer_disable_resuming_summary">Wyłącza miniodtwarzacz \"Kontynuuj oglądanie\", funkcję YouTube Premium wyświetlaną przy starcie aplikacji</string>
   <string name="morphe_miniplayer_screen_title">Miniodtwarzacz</string>
   <string name="morphe_miniplayer_screen_summary">Dostosuj wygląd i zachowanie miniodtwarzacza</string>
+  <string name="morphe_miniplayer_not_available_title">Dodatkowe miniodtwarzacze</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube usunął wszystkie dodatkowe miniodtwarzacze. Aby przywrócić więcej typów miniodtwarzaczy, zmodyfikuj YouTube w wersji 21.28.208 lub starszej</string>
   <string name="morphe_miniplayer_type_title">Typ miniodtwarzacza</string>
   <string name="morphe_miniplayer_hide_title_title">Ukryj tytuł i kanał</string>
   <string name="morphe_miniplayer_type_entry_0">Wyłączony</string>

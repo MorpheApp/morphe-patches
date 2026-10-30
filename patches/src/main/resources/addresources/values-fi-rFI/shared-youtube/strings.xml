@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Käynnistysanimaatio</string>
   <string name="morphe_splash_screen_style_entry_1">Pois käytöstä</string>
   <string name="morphe_splash_screen_style_entry_2">Väri</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Color</string>
   <string name="morphe_splash_screen_style_entry_4">Monokromi</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Korosta uusia asetuksia</string>
+  <string name="morphe_settings_new_indicator_days_summary">Päivien määrä, jonka ajan piste näkyy päivityksellä lisättyjen asetusten ja vaihtoehtojen vieressä</string>
+  <string name="morphe_settings_new_indicator_days_off">pois</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Käynnistä uudelleen valituksen suorittamiseksi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

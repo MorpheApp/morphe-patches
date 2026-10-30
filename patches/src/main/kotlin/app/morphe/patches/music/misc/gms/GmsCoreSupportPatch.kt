@@ -4,12 +4,12 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.fileprovider.fileProviderPatch
 import app.morphe.patches.music.misc.gms.Constants.MORPHE_MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
+import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
-import app.morphe.patches.shared.CastContextFetchFingerprint
 import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
 
@@ -18,14 +18,19 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     fromPackageName = MUSIC_PACKAGE_NAME,
     toPackageNameDefault = MORPHE_MUSIC_PACKAGE_NAME,
     primeMethodFingerprint = PrimeMethodFingerprint,
-    earlyReturnFingerprints = setOf(
-        CastContextFetchFingerprint,
-    ),
     mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
+    executeBlock = {
+        hidePlayServicesCastRoutes()
+        sendQueueMovesToReceiver()
+        skipQueueRestorationWhileCasting()
+    },
 ) {
-    dependsOn(spoofVideoStreamsPatch)
+    dependsOn(
+        spoofVideoStreamsPatch,
+        versionCheckPatch,
+    )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 }

@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">แอนิเมชันเริ่มต้น</string>
   <string name="morphe_splash_screen_style_entry_1">ปิดการใช้งาน</string>
   <string name="morphe_splash_screen_style_entry_2">สี</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe แบบมีสี</string>
   <string name="morphe_splash_screen_style_entry_4">โมโนโครม</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe แบบขาวดำ</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">ไฮไลต์การตั้งค่าใหม่</string>
+  <string name="morphe_settings_new_indicator_days_summary">จำนวนวันที่จุดจะปรากฏข้างการตั้งค่าและตัวเลือกที่เพิ่มเข้ามาจากการอัปเดต</string>
   <string name="morphe_settings_new_indicator_days_off">ปิด</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">รีสตาร์ทเพื่อดำเนินการตั้งค่าให้เสร็จสิ้น</string>

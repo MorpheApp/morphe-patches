@@ -455,6 +455,15 @@ Məhdudiyyətlər:
   <string name="morphe_post_image_download_saved_single">Şəkil %s qovluğunda saxlanıldı</string>
   <string name="morphe_post_image_download_failed">Şəkli yükləmək olmadı</string>
   <string name="morphe_post_image_download_not_found">Bu postda şəkil tapılmadı</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Postları tərcümə et</string>
+  <string name="morphe_post_translate_summary">Məzmun yaradıcısı postlarını tərcümə etmək üçün açılan menyu elementi əlavə edir</string>
+  <string name="morphe_post_translate_language_title">Post tərcümə dili</string>
+  <string name="morphe_post_translate_flyout">Tərcümə et</string>
+  <string name="morphe_post_translate_flyout_original">Orijinalı göstər</string>
+  <string name="morphe_post_translate_started">Tərcümə olunur…</string>
+  <string name="morphe_post_translate_failed">Postları tərcümə etmək olmadı</string>
+  <string name="morphe_post_translate_same_language">Post artıq tərcümə dilindədir</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Soruş elementini açılan menyuya əlavə et</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Axın açılan menyusuna video xülasəsi elementi əlavə edir</string>
@@ -863,6 +872,8 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_fix_transcript_title">Transkripti düzəlt</string>
   <string name="morphe_fix_transcript_summary">Transkripti yükləməyə mane ola biləcək ilkin status yoxlanılması uğursuzluğun həll edir</string>
   <string name="morphe_captions_in_pip_title">Şəkil içində şəkildə titrləri göstər</string>
+  <string name="morphe_stable_caption_blocks_title">Stabil titr blokları</string>
+  <string name="morphe_stable_caption_blocks_summary">Avtomatik titrləri stabil, oxunaqlı bloklara qruplaşdırın. Bəzi sözlər tələffüz edilməmişdən əvvəl görünə bilər. Yenidən başlatmaq tələb olunur.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Fəaliyyət düymələri</string>
   <string name="morphe_navigation_buttons_screen_summary">Aşağı fəaliyyət cərgəsində hansı düymələr görünür seç</string>

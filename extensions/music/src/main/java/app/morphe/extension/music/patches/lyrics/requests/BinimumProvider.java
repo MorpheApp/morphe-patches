@@ -37,6 +37,97 @@ public final class BinimumProvider implements LyricsProvider {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                     + "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
+    @Nullable
+    private static LyricsLine buildLineFromCandidates(
+            List<WordCandidate> candidates,
+            long lineStart,
+            long lineEnd,
+            long lineDuration,
+            @Nullable String rawFallbackText,
+            @Nullable String agentId,
+            boolean isDuet,
+            boolean isBackground,
+            @Nullable String songPart
+    ) {
+        if (candidates.isEmpty()) {
+            return null;
+        }
+
+        List<Word> words = new ArrayList<>(candidates.size());
+        StringBuilder textBuf = new StringBuilder();
+
+        for (WordCandidate candidate : candidates) {
+            long startTime = candidate.syl.optLong("time");
+            long duration = candidate.syl.optLong("duration");
+            long endTime = startTime + duration;
+            String text = candidate.syl.optString("text", "");
+            boolean endsWithSpace = text.endsWith(" ") || text.endsWith("\t");
+
+            String cleanWord = isBackground ? text.replaceAll("[()（）]", "").trim() : text.trim();
+            String cleanRoma = candidate.romaji;
+            if (isBackground && cleanRoma != null) {
+                cleanRoma = cleanRoma.replaceAll("[()（）]", "").trim();
+            }
+
+            if (!cleanWord.isEmpty()) {
+                words.add(new Word(startTime, endTime, cleanWord, cleanRoma, endsWithSpace));
+                textBuf.append(cleanWord);
+                if (endsWithSpace) {
+                    textBuf.append(' ');
+                }
+            }
+        }
+
+        String fullText = textBuf.toString().trim();
+
+        // Words with no spaces between them in a spaced script are joined with spaces.
+        if (fullText.indexOf(' ') < 0 && words.size() > 1 && !TTMLParser.isContinuousCjk(words.get(0).text())) {
+            StringBuilder reconstructed = new StringBuilder();
+            for (int i = 0; i < words.size(); i++) {
+                Word word = words.get(i);
+                if (i > 0) {
+                    reconstructed.append(' ');
+                }
+                reconstructed.append(word.text());
+                boolean hasSpace = (i < words.size() - 1);
+                words.set(i, new Word(word.startMs(), word.endMs(), word.text(), word.romaji(), hasSpace));
+            }
+            fullText = reconstructed.toString();
+        }
+
+        // The last word ends the line, so it has no space after it.
+        if (!words.isEmpty()) {
+            Word lastWord = words.get(words.size() - 1);
+            if (lastWord.endsWithSpace()) {
+                words.set(words.size() - 1, new Word(lastWord.startMs(), lastWord.endMs(), lastWord.text(), lastWord.romaji(), false));
+            }
+        }
+
+        if (fullText.isEmpty() && rawFallbackText != null && !rawFallbackText.isEmpty()) {
+            fullText = rawFallbackText.trim();
+        }
+
+        if (fullText.isEmpty() && words.isEmpty()) {
+            return null;
+        }
+
+        long start = words.isEmpty() ? lineStart : words.get(0).startMs();
+        long end = words.isEmpty() ? lineEnd : words.get(words.size() - 1).endMs();
+        if (end < start && lineDuration > 0) {
+            end = start + lineDuration;
+        }
+
+        return new LyricsLine(start, end, fullText, words, agentId, isDuet, isBackground, songPart);
+    }
+
+    private static boolean isAgentDuet(@Nullable String agentId) {
+        if (agentId == null || !agentId.matches("v\\d{1,6}")) {
+            return false;
+        }
+        int num = Integer.parseInt(agentId.substring(1));
+        return num > 0 && num % 2 == 0;
+    }
+
     @Override
     public String name() {
         return "BiniLyrics";
@@ -60,7 +151,7 @@ public final class BinimumProvider implements LyricsProvider {
         }
 
         // A title with a video tag is asked again without it.
-        String cleanTitle = track.title()
+        final String cleanTitle = track.title()
                 .replace("(Official Video)", "")
                 .replace("(Official Music Video)", "")
                 .replace("(Official Audio)", "")
@@ -273,107 +364,6 @@ public final class BinimumProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static LyricsLine buildLineFromCandidates(
-            List<WordCandidate> candidates,
-            long lineStart,
-            long lineEnd,
-            long lineDuration,
-            @Nullable String rawFallbackText,
-            @Nullable String agentId,
-            boolean isDuet,
-            boolean isBackground,
-            @Nullable String songPart
-    ) {
-        if (candidates.isEmpty()) {
-            return null;
-        }
-
-        List<Word> words = new ArrayList<>(candidates.size());
-        StringBuilder textBuf = new StringBuilder();
-
-        for (WordCandidate candidate : candidates) {
-            long startTime = candidate.syl.optLong("time");
-            long duration = candidate.syl.optLong("duration");
-            long endTime = startTime + duration;
-            String text = candidate.syl.optString("text", "");
-            boolean endsWithSpace = text.endsWith(" ") || text.endsWith("\t");
-
-            String cleanWord = isBackground ? text.replaceAll("[()（）]", "").trim() : text.trim();
-            String cleanRoma = candidate.romaji;
-            if (isBackground && cleanRoma != null) {
-                cleanRoma = cleanRoma.replaceAll("[()（）]", "").trim();
-            }
-
-            if (!cleanWord.isEmpty()) {
-                words.add(new Word(startTime, endTime, cleanWord, cleanRoma, endsWithSpace));
-                textBuf.append(cleanWord);
-                if (endsWithSpace) {
-                    textBuf.append(' ');
-                }
-            }
-        }
-
-        String fullText = textBuf.toString().trim();
-
-        // Words with no spaces between them in a spaced script are joined with spaces.
-        if (fullText.indexOf(' ') < 0 && words.size() > 1 && !TTMLParser.isContinuousCjk(words.get(0).text())) {
-            StringBuilder reconstructed = new StringBuilder();
-            for (int i = 0; i < words.size(); i++) {
-                Word word = words.get(i);
-                if (i > 0) {
-                    reconstructed.append(' ');
-                }
-                reconstructed.append(word.text());
-                boolean hasSpace = (i < words.size() - 1);
-                words.set(i, new Word(word.startMs(), word.endMs(), word.text(), word.romaji(), hasSpace));
-            }
-            fullText = reconstructed.toString();
-        }
-
-        // The last word ends the line, so it has no space after it.
-        if (!words.isEmpty()) {
-            Word lastWord = words.get(words.size() - 1);
-            if (lastWord.endsWithSpace()) {
-                words.set(words.size() - 1, new Word(lastWord.startMs(), lastWord.endMs(), lastWord.text(), lastWord.romaji(), false));
-            }
-        }
-
-        if (fullText.isEmpty() && rawFallbackText != null && !rawFallbackText.isEmpty()) {
-            fullText = rawFallbackText.trim();
-        }
-
-        if (fullText.isEmpty() && words.isEmpty()) {
-            return null;
-        }
-
-        long start = words.isEmpty() ? lineStart : words.get(0).startMs();
-        long end = words.isEmpty() ? lineEnd : words.get(words.size() - 1).endMs();
-        if (end < start && lineDuration > 0) {
-            end = start + lineDuration;
-        }
-
-        return new LyricsLine(start, end, fullText, words, agentId, isDuet, isBackground, songPart);
-    }
-
-    private static boolean isAgentDuet(@Nullable String agentId) {
-        if (agentId == null || !agentId.matches("v\\d{1,6}")) {
-            return false;
-        }
-        int num = Integer.parseInt(agentId.substring(1));
-        return num > 0 && num % 2 == 0;
-    }
-
-    private static class WordCandidate {
-        final JSONObject syl;
-        final @Nullable String romaji;
-
-        WordCandidate(JSONObject syl, @Nullable String romaji) {
-            this.syl = syl;
-            this.romaji = romaji;
-        }
-    }
-
-    @Nullable
     private String resolveLyricsUrl(TrackInfo track) throws IOException, JSONException {
         if (track.title().isEmpty() || track.artist().isEmpty()) {
             return null;
@@ -416,5 +406,8 @@ public final class BinimumProvider implements LyricsProvider {
                 connection.disconnect();
             }
         }
+    }
+
+    private record WordCandidate(JSONObject syl, @Nullable String romaji) {
     }
 }

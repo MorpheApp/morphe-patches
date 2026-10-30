@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Gjenopprett gamle YouTube-innstillingsskjerm</string>
+  <string name="morphe_native_snackbar_title">Vis meldinger i YouTube-snackbar</string>
+  <string name="morphe_native_snackbar_summary">Morphe-meldinger, for eksempel bekreftelse av en spillerknapp, vises i YouTube-snackbar i stedet for et popup-vindu</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Fjern restriksjoner for avspilling i bakgrunnen</string>
   <string name="morphe_shorts_disable_background_playback_title">Deaktiver avspilling i bakgrunnen</string>
@@ -455,6 +457,15 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <string name="morphe_post_image_download_saved_single">Bilde lagret i %s</string>
   <string name="morphe_post_image_download_failed">Kunne ikke laste ned bildet</string>
   <string name="morphe_post_image_download_not_found">Ingen bilder funnet i dette innlegget</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Oversett innlegg</string>
+  <string name="morphe_post_translate_summary">Legger til et element i flyout-menyen for å oversette innlegg fra innholdsskapere</string>
+  <string name="morphe_post_translate_language_title">Oversettelsesspråk for innlegg</string>
+  <string name="morphe_post_translate_flyout">Oversett</string>
+  <string name="morphe_post_translate_flyout_original">Vis original</string>
+  <string name="morphe_post_translate_started">Oversetter…</string>
+  <string name="morphe_post_translate_failed">Kunne ikke oversette innlegget</string>
+  <string name="morphe_post_translate_same_language">Innlegget er allerede på oversettelsesspråket</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Legg til Ask-objekt i uttrekksmenyen</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Legger til et videooppsummeringsobjekt i strømmens uttrekksmeny</string>
@@ -863,6 +874,8 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_fix_transcript_title">Fiks transkripsjon</string>
   <string name="morphe_fix_transcript_summary">Løser en forhåndsvilkårsjekkfeil som kan hindre transkripsjonen i å lastes inn</string>
   <string name="morphe_captions_in_pip_title">Vis undertekster i bilde-ibilde</string>
+  <string name="morphe_stable_caption_blocks_title">Stabile tekstingsblokker</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupperer automatiske undertekster i stabile, lettleselige blokker. Enkelte ord kan vises før de blir sagt. Omstart kreves.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigasjonsknapper</string>
   <string name="morphe_navigation_buttons_screen_summary">Velg hvilke komponenter som vises i verktøylinjen</string>
@@ -1211,6 +1224,8 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiverer minispilleren «Fortsett å se på», en YouTube Premium-funksjon som vises ved oppstart av appen</string>
   <string name="morphe_miniplayer_screen_title">Minispiller</string>
   <string name="morphe_miniplayer_screen_summary">Tilpass utseendet og oppførselen til den minimerte videospilleren</string>
+  <string name="morphe_miniplayer_not_available_title">Ytterligere minispillere</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube fjernet alle ytterligere minispillere. For å gjenopprette flere minispillertyper, må du patche YouTube 21.28.208 eller eldre</string>
   <string name="morphe_miniplayer_type_title">Minispiller type</string>
   <string name="morphe_miniplayer_hide_title_title">Skjul tittel og kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktivert</string>
@@ -1252,6 +1267,8 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_fix_status_bar_layout_summary">Holder utseendet til statuslinjen konsistent, slik at den ikke dekker topparene og etterlater ingen tom plass over avspilleren. Skru dette av hvis appen krasjer eller topparene ser feil ut</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Glød</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow-sprutskjerm støttes ikke av denne enheten</string>
   <string name="morphe_theme_color_light_title">Bakgrunn for lyst tema</string>
   <string name="morphe_theme_color_light_entry_2">Hvit</string>

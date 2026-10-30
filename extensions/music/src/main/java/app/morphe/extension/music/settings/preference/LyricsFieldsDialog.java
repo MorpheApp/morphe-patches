@@ -43,8 +43,31 @@ final class LyricsFieldsDialog {
         content.addView(label);
     }
 
+    /** A field label, such as the format hint, in the dimmed note style the dictionaries use. */
+    void addNoteLabel(String key) {
+        TextView label = new TextView(context);
+        label.setText(str(key));
+        label.setTextColor(withAlpha(ThemeUtils.getAppForegroundColor(), 0x99));
+        label.setTextSize(14);
+        label.setPadding(0, Dim.dp12, 0, Dim.dp8);
+        content.addView(label);
+    }
+
+    private static int withAlpha(int color, int alpha) {
+        return (alpha << 24) | (color & 0x00FFFFFF);
+    }
+
     EditText addInput(String labelKey, String value, int inputType) {
         addLabel(labelKey);
+        EditText input = ThemedInput.create(context);
+        input.setInputType(inputType);
+        input.setText(value);
+        content.addView(input);
+        return input;
+    }
+
+    EditText addNoteInput(String labelKey, String value, int inputType) {
+        addNoteLabel(labelKey);
         EditText input = ThemedInput.create(context);
         input.setInputType(inputType);
         input.setText(value);

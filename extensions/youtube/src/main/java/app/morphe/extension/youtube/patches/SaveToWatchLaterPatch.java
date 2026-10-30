@@ -86,11 +86,11 @@ public final class SaveToWatchLaterPatch {
             return;
         }
         if (AuthUtils.isNotLoggedIn()) {
-            Utils.showToastShort(str("morphe_queue_manager_check_failed_auth"));
+            Utils.showSnackbarShort(str("morphe_queue_manager_check_failed_auth"));
             return;
         }
         if (TextUtils.isEmpty(videoId)) {
-            Utils.showToastShort(str("morphe_queue_manager_check_failed_video_id"));
+            Utils.showSnackbarShort(str("morphe_queue_manager_check_failed_video_id"));
             return;
         }
         try {
@@ -101,7 +101,7 @@ public final class SaveToWatchLaterPatch {
                 );
                 Boolean result = saveToWatchLaterRequest.getResult();
                 if (result != null) {
-                    Utils.showToastShort(str(result
+                    Utils.showSnackbarShort(str(result
                             ? "morphe_save_to_watch_later_success_toast"
                             : "morphe_save_to_watch_later_already_exists_toast"));
                 } else {
@@ -110,7 +110,7 @@ public final class SaveToWatchLaterPatch {
             });
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not fetch save to Watch later request", ex);
-            Utils.showToastShort(str("morphe_save_to_watch_later_error_toast"));
+            Utils.showSnackbarShort(str("morphe_save_to_watch_later_error_toast"));
         }
     }
 }

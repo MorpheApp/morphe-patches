@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.0.0-dev.1](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.0.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;193 patches total
+> **[v2.0.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;194 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;108 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;109 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -151,6 +151,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Swipe controls](#swipe-controls) | Adds options to enable and configure volume and brightness swipe controls. |  |
 | [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color<br>• Light theme color |
+| [Translate posts](#translate-posts) | Adds a menu item to translate the text of posts. |  |
 | [Video delay](#video-delay) | Adds an option to delay the video, to keep it in sync with laggy Bluetooth audio. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 | [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |

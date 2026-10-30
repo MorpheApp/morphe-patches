@@ -44,7 +44,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -113,7 +112,7 @@ private const val GET_GENERATED_REGISTRY =
  * @return The default instance field of a proto message, which the message is parsed with.
  */
 private fun BytecodePatchContext.protoDefaultInstance(messageType: String) =
-    protoDefaultInstanceFingerprint(messageType).instructionMatches.first().getFieldAccessed()
+    protoDefaultInstanceFingerprint(messageType).instructionMatches.first().fieldReference
 
 @Suppress("unused")
 val downloadsPatch = bytecodePatch(
@@ -226,7 +225,7 @@ val downloadsPatch = bytecodePatch(
         // Save the video instead of showing the Premium upsell of the offline upsell endpoint.
         OfflineUpsellResponseFingerprint.let {
             val responseType = it.instructionMatches.first().instruction.getReference<TypeReference>()!!.type
-            val commandField = it.instructionMatches[2].instruction.getReference<FieldReference>()!!
+            val commandField = it.instructionMatches[2].fieldReference
 
             it.method.addInstructionsWithLabels(
                 0,

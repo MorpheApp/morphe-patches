@@ -36,70 +36,7 @@ public final class RomanizationDict {
 
     private static final int PROGRESS_STEP_PERCENT = 2;
 
-    /** How the settings row follows along with a dictionary being fetched and built. */
-    public interface Listener {
-        void onDownload(String fileName, int percent);
-        void onBuilding(int percent);
-        void onReady(int entries);
-        void onFailed();
-    }
-
     private RomanizationDict() {
-    }
-
-    static final class Channel implements Listener {
-
-        private volatile Listener to;
-        private volatile String fileName;
-        private volatile int percent;
-        private volatile boolean building;
-
-        /** Takes over as the listener, and is told where the build is if one is going. */
-        void attach(Listener listener, boolean running) {
-            to = listener;
-            if (!running) return;
-            if (building) {
-                listener.onBuilding(percent);
-            } else if (fileName != null) {
-                listener.onDownload(fileName, percent);
-            }
-        }
-
-        /** Lets go, because holding the listener past the build would keep its page alive. */
-        void detach() {
-            to = null;
-            fileName = null;
-            building = false;
-        }
-
-        @Override
-        public void onDownload(String fileName, int percent) {
-            this.fileName = fileName;
-            this.percent = percent;
-            this.building = false;
-            Listener current = to;
-            if (current != null) current.onDownload(fileName, percent);
-        }
-
-        @Override
-        public void onBuilding(int percent) {
-            this.percent = percent;
-            this.building = true;
-            Listener current = to;
-            if (current != null) current.onBuilding(percent);
-        }
-
-        @Override
-        public void onReady(int entries) {
-            Listener current = to;
-            if (current != null) current.onReady(entries);
-        }
-
-        @Override
-        public void onFailed() {
-            Listener current = to;
-            if (current != null) current.onFailed();
-        }
     }
 
     @Nullable
@@ -107,10 +44,22 @@ public final class RomanizationDict {
         return LyricsDirectories.directory(LyricsDirectories.ROMAN_DICT);
     }
 
-    /** Fetches a file under a name that says it is unfinished, so an interrupted
-     * download is never mistaken for a whole file. */
+    /**
+     * Fetches a file under a name that says it is unfinished, so an interrupted
+     * download is never mistaken for a whole file.
+     */
     static void download(String url, File target, String reportedName, Listener listener)
             throws IOException {
+        download(url, target, reportedName, listener, Long.MAX_VALUE);
+    }
+
+    /**
+     * As {@link #download(String, File, String, Listener)}, refusing a file larger than
+     * {@code maxBytes}. A user-supplied address is not a promise of a reasonable size, and a
+     * stream with no length would otherwise fill the disk before anything could object.
+     */
+    static void download(String url, File target, String reportedName, Listener listener,
+                         long maxBytes) throws IOException {
         File partial = new File(target.getPath() + DOWNLOAD_SUFFIX);
         HttpURLConnection connection = null;
         try {
@@ -125,6 +74,10 @@ public final class RomanizationDict {
             }
 
             long expected = connection.getContentLength();
+            if (expected > maxBytes) {
+                throw new IOException("download of " + reportedName + " is larger than "
+                        + maxBytes + " bytes");
+            }
             long written = 0;
             int lastPercent = -1;
 
@@ -137,8 +90,12 @@ public final class RomanizationDict {
                 byte[] buffer = new byte[BUFFER_BYTES];
                 int read;
                 while ((read = in.read(buffer)) != -1) {
-                    out.write(buffer, 0, read);
                     written += read;
+                    if (written > maxBytes) {
+                        throw new IOException("download of " + reportedName
+                                + " is larger than " + maxBytes + " bytes");
+                    }
+                    out.write(buffer, 0, read);
                     if (expected > 0) {
                         int percent = (int) (written * 100 / expected);
                         if (percent - lastPercent >= PROGRESS_STEP_PERCENT || percent >= 100) {
@@ -193,6 +150,72 @@ public final class RomanizationDict {
         }
         if (!built.renameTo(target)) {
             throw new IOException("could not put the table in place");
+        }
+    }
+
+    /** How the settings row follows along with a dictionary being fetched and built. */
+    public interface Listener {
+        void onDownload(String fileName, int percent);
+
+        void onBuilding(int percent);
+
+        void onReady(int entries);
+
+        void onFailed();
+    }
+
+    static final class Channel implements Listener {
+
+        private volatile Listener to;
+        private volatile String fileName;
+        private volatile int percent;
+        private volatile boolean building;
+
+        /** Takes over as the listener, and is told where the build is if one is going. */
+        void attach(Listener listener, boolean running) {
+            to = listener;
+            if (!running) return;
+            if (building) {
+                listener.onBuilding(percent);
+            } else if (fileName != null) {
+                listener.onDownload(fileName, percent);
+            }
+        }
+
+        /** Lets go, because holding the listener past the build would keep its page alive. */
+        void detach() {
+            to = null;
+            fileName = null;
+            building = false;
+        }
+
+        @Override
+        public void onDownload(String fileName, int percent) {
+            this.fileName = fileName;
+            this.percent = percent;
+            this.building = false;
+            Listener current = to;
+            if (current != null) current.onDownload(fileName, percent);
+        }
+
+        @Override
+        public void onBuilding(int percent) {
+            this.percent = percent;
+            this.building = true;
+            Listener current = to;
+            if (current != null) current.onBuilding(percent);
+        }
+
+        @Override
+        public void onReady(int entries) {
+            Listener current = to;
+            if (current != null) current.onReady(entries);
+        }
+
+        @Override
+        public void onFailed() {
+            Listener current = to;
+            if (current != null) current.onFailed();
         }
     }
 }

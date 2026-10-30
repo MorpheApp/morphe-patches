@@ -197,6 +197,9 @@ final class LyricsLineView extends TextView {
      * @param instant Skips the animation, for a row that was only just built.
      */
     void animateSecondaryExpansion(boolean expand, boolean instant) {
+        if (!Settings.LYRICS_SPLIT_BACKGROUND.get()) {
+            return;
+        }
         // Called on every highlight tick, so one already on its way there is left to finish.
         if (!instant && expand == secondaryExpanded
                 && (secondaryAnimator != null || secondaryFraction == (expand ? 1f : 0f))) {
@@ -683,7 +686,7 @@ final class LyricsLineView extends TextView {
     }
 
     private void drawTextRun(Canvas canvas, Layout layout, int firstLine, int lastLine,
-            int alpha, int tintColor) {
+                             int alpha, int tintColor) {
         if (firstLine > lastLine || alpha <= 0) {
             return;
         }
@@ -757,8 +760,8 @@ final class LyricsLineView extends TextView {
         final int secondaryAlpha = Math.round(lineAlpha * secondaryBaseAlpha * contentNow);
         final float readingBaseAlpha = activeLine
                 ? (perWordReading && Settings.LYRICS_WORD_SYNC.get()
-                        ? LyricsColors.UNSUNG_ALPHA * 255f
-                        : LyricsColors.ACTIVE_READING_ALPHA * 255f)
+                   ? LyricsColors.UNSUNG_ALPHA * 255f
+                   : LyricsColors.ACTIVE_READING_ALPHA * 255f)
                 : Color.alpha(LyricsColors.secondaryTextColor());
         final int romaAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow);
 
@@ -1099,12 +1102,13 @@ final class LyricsLineView extends TextView {
     // syllable it reads and pushes the rest of the line along to make room.
 
     /** A word timing and where it sits in the laid out lyric. */
-    private record AlignedSyllable(LyricsSpanBuilder.WordTiming syllable, int startOffset, int endOffset) {
+    private record AlignedSyllable(LyricsSpanBuilder.WordTiming syllable, int startOffset,
+                                   int endOffset) {
     }
 
     /** One syllable's reading, laid out on its own. */
     private record RomanizedWordCluster(int wordIndex, int startIndex, int lineIdx,
-            StaticLayout subLayout, float romanWidth) {
+                                        StaticLayout subLayout, float romanWidth) {
     }
 
     /** One character of the lyric as the main layout places it. */
@@ -1113,7 +1117,7 @@ final class LyricsLineView extends TextView {
 
     /** A run of the lyric drawn in one piece: a whole syllable, or a character between syllables. */
     private record VisualCluster(int lineIdx, float x, float y, float width, StaticLayout subLayout,
-            int syllableIndex, int shiftIndex) {
+                                 int syllableIndex, int shiftIndex) {
     }
 
     /** Where each visual cluster is drawn once the readings have pushed it along. */
@@ -1150,12 +1154,12 @@ final class LyricsLineView extends TextView {
         final int totalHeightPx;
 
         SyllableRomanCache(int widthPx, float fontSizePx, boolean hasSyllableRomanization,
-                @Nullable String mainText, int lineCount, List<AlignedSyllable> alignedSyllables,
-                int extraRomanHeightPx, List<VisualCluster> clusters, ClusterStatics statics,
-                RomanLineStatics[] romanLines, int[] sylLine,
-                float[] sylShiftedLeadX, float[] sylShiftedTrailX,
-                @Nullable String transText, @Nullable StaticLayout transLayout,
-                int transTopY, int mainTopY, int totalHeightPx) {
+                           @Nullable String mainText, int lineCount, List<AlignedSyllable> alignedSyllables,
+                           int extraRomanHeightPx, List<VisualCluster> clusters, ClusterStatics statics,
+                           RomanLineStatics[] romanLines, int[] sylLine,
+                           float[] sylShiftedLeadX, float[] sylShiftedTrailX,
+                           @Nullable String transText, @Nullable StaticLayout transLayout,
+                           int transTopY, int mainTopY, int totalHeightPx) {
             this.widthPx = widthPx;
             this.fontSizePx = fontSizePx;
             this.hasSyllableRomanization = hasSyllableRomanization;
@@ -2000,8 +2004,8 @@ final class LyricsLineView extends TextView {
         final int transAlpha = Math.round(lineAlpha * secondaryBaseAlpha * contentNow * transReveal);
         final float readingBaseAlpha = activeLine
                 ? (Settings.LYRICS_WORD_SYNC.get() && unsungColor != 0 && !wordTimings.isEmpty()
-                        ? LyricsColors.UNSUNG_ALPHA * 255f
-                        : LyricsColors.ACTIVE_READING_ALPHA * 255f)
+                   ? LyricsColors.UNSUNG_ALPHA * 255f
+                   : LyricsColors.ACTIVE_READING_ALPHA * 255f)
                 : Color.alpha(LyricsColors.secondaryTextColor());
         final int romaUnsungAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow * romaReveal);
 

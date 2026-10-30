@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurare meniuri setări vechi</string>
+  <string name="morphe_native_snackbar_title">Afișează mesajele în snackbar-ul YouTube</string>
+  <string name="morphe_native_snackbar_summary">Mesajele Morphe, cum ar fi confirmarea unui buton al playerului, sunt afișate în snackbar-ul YouTube în loc de o fereastră pop-up</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Elimină restricțiile de redare în fundal</string>
   <string name="morphe_shorts_disable_background_playback_title">Dezactivează redarea în fundal</string>
@@ -455,6 +457,15 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_post_image_download_saved_single">Imaginea a fost salvată în %s</string>
   <string name="morphe_post_image_download_failed">Imaginea nu a putut fi descărcată</string>
   <string name="morphe_post_image_download_not_found">Nu s-a găsit nicio imagine în această postare</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Traducere postări</string>
+  <string name="morphe_post_translate_summary">Adaugă un element în meniul flyout pentru a traduce postările creatorilor de conținut</string>
+  <string name="morphe_post_translate_language_title">Limba de traducere a postării</string>
+  <string name="morphe_post_translate_flyout">Traduce</string>
+  <string name="morphe_post_translate_flyout_original">Afișează originalul</string>
+  <string name="morphe_post_translate_started">Se traduce…</string>
+  <string name="morphe_post_translate_failed">Postarea nu a putut fi tradusă</string>
+  <string name="morphe_post_translate_same_language">Postarea este deja în limba de traducere</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Adăugarea elementului Ask la meniul flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Adaugă un element de sumarizare video în meniul flyout al șirului de alimentare</string>
@@ -863,6 +874,8 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <string name="morphe_fix_transcript_title">Corectează transcriere</string>
   <string name="morphe_fix_transcript_summary">Elimină o eroare de verificare a precondițiilor care poate împiedica încărcarea transcrierii</string>
   <string name="morphe_captions_in_pip_title">Arată subtitrările în picture-in-picture</string>
+  <string name="morphe_stable_caption_blocks_title">Blocuri de subtitrări stabile</string>
+  <string name="morphe_stable_caption_blocks_summary">Gruparea subtitrărilor automate în blocuri stabile și lizibile. Unele cuvinte pot apărea înainte de a fi rostite. Este necesară repornirea.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Butoane de navigare</string>
   <string name="morphe_navigation_buttons_screen_summary">Ascunde subsolul meniului Pista audio</string>
@@ -1211,6 +1224,8 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_miniplayer_disable_resuming_summary">Dezactivează playerul mini „Urmărește mai departe”, o funcție YouTube Premium care apare la pornirea aplicației</string>
   <string name="morphe_miniplayer_screen_title">Minijucător</string>
   <string name="morphe_miniplayer_screen_summary">Personalizează aspectul și comportamentul miniplayerului mic</string>
+  <string name="morphe_miniplayer_not_available_title">Miniplayere suplimentare</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube a eliminat toate miniplayerele suplimentare. Pentru a restaura mai multe tipuri de miniplayer, patch-uiește YouTube 21.28.208 sau o versiune mai veche</string>
   <string name="morphe_miniplayer_type_title">Tip minijucător</string>
   <string name="morphe_miniplayer_hide_title_title">Ascunde titlul și canalul</string>
   <string name="morphe_miniplayer_type_entry_0">Dezactivat</string>
@@ -1252,6 +1267,8 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_fix_status_bar_layout_summary">Păstrează aspectul fermei de stare constant, astfel încât să nu acopere barele superioare și să lase spațiu liber deasupra player-ului. Dezactivează această opțiune dacă aplicația se blochează sau dacă barele superioare arată incorect</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Strălucire</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Ecranul de pornire Glow nu este suportat de acest dispozitiv</string>
   <string name="morphe_theme_color_light_title">Fundalul temei luminoase</string>
   <string name="morphe_theme_color_light_entry_2">Alb</string>

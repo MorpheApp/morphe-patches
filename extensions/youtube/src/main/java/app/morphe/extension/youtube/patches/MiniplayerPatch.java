@@ -115,7 +115,7 @@ public final class MiniplayerPatch {
         // 170 seems to be the smallest that can be used and using less makes no difference.
         final int WIDTH_DIP_MIN = 170; // Seems to be the smallest that works.
         final int HORIZONTAL_PADDING_DIP = 15; // Estimated padding.
-        // Round down to the nearest 5 pixels, to keep any error toasts easier to read.
+        // Round down to the nearest 5 pixels, to keep any error messages easier to read.
         final int estimatedWidthDipMax = 5 * ((deviceDipWidth - HORIZONTAL_PADDING_DIP) / 5);
         // On some ultra-low-end devices the pixel width and density are the same number,
         // which causes the estimate to always give a value of 1.
@@ -128,7 +128,7 @@ public final class MiniplayerPatch {
         int dipWidth = Settings.MINIPLAYER_WIDTH_DIP.get();
 
         if (dipWidth < WIDTH_DIP_MIN || dipWidth > WIDTH_DIP_MAX) {
-            Utils.showToastLong(str("morphe_miniplayer_width_dip_invalid_toast",
+            Utils.showSnackbarLong(str("morphe_miniplayer_width_dip_invalid_toast",
                     WIDTH_DIP_MIN, WIDTH_DIP_MAX));
 
             // Instead of resetting, clamp the size at the bounds.

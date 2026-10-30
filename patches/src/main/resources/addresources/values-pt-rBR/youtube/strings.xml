@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Diversos</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurar menus de configurações antigos</string>
+  <string name="morphe_native_snackbar_title">Mostrar mensagens no snackbar do YouTube</string>
+  <string name="morphe_native_snackbar_summary">As mensagens do Morphe, como a confirmação de um botão do jogador, são exibidas no snackbar do YouTube em vez de uma caixa de diálogo pop-up</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Remover restrições de reprodução em segundo plano</string>
   <string name="morphe_shorts_disable_background_playback_title">Desativar reprodução em segundo plano</string>
@@ -455,6 +457,15 @@ As denúncias são públicas e passam por revisão antes de um canal ser adicion
   <string name="morphe_post_image_download_saved_single">Imagem salva em %s</string>
   <string name="morphe_post_image_download_failed">Não foi possível baixar a imagem</string>
   <string name="morphe_post_image_download_not_found">Nenhuma imagem encontrada nesta publicação</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Traduzir publicações</string>
+  <string name="morphe_post_translate_summary">Adiciona um item ao menu suspenso para traduzir publicações de criadores de conteúdo</string>
+  <string name="morphe_post_translate_language_title">Idioma de tradução da publicação</string>
+  <string name="morphe_post_translate_flyout">Traduzir</string>
+  <string name="morphe_post_translate_flyout_original">Mostrar original</string>
+  <string name="morphe_post_translate_started">Traduzindo…</string>
+  <string name="morphe_post_translate_failed">Não foi possível traduzir a publicação</string>
+  <string name="morphe_post_translate_same_language">A publicação já está no idioma de tradução</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Adicionar item Perguntar ao menu flutuante</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Adiciona um item de resumo de vídeo ao menu flutuador do feed</string>
@@ -863,6 +874,8 @@ Os 'cookies de legenda' devem ser fornecidos"</string>
   <string name="morphe_fix_transcript_title">Corrigir transcrição</string>
   <string name="morphe_fix_transcript_summary">Resolve uma falha na verificação de pré-condições que pode impedir o carregamento da transcrição</string>
   <string name="morphe_captions_in_pip_title">Mostrar legendas em modo picture-in-picture</string>
+  <string name="morphe_stable_caption_blocks_title">Blocos de legendas estáveis</string>
+  <string name="morphe_stable_caption_blocks_summary">Agrupa legendas automáticas em blocos estáveis e legíveis. Algumas palavras podem aparecer antes de serem faladas. Reinicialização necessária.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botões de navegação</string>
   <string name="morphe_navigation_buttons_screen_summary">Escolha quais botões aparecem na barra de navegação inferior</string>
@@ -1210,6 +1223,8 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_miniplayer_disable_resuming_summary">Desativa o miniplayer \'Continuar assistindo\', um recurso do YouTube Premium que aparece na inicialização do app</string>
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">Personalize a aparência e o comportamento do mini player minimizado</string>
+  <string name="morphe_miniplayer_not_available_title">Miniplayers adicionais</string>
+  <string name="morphe_miniplayer_not_available_summary">O YouTube removeu todos os miniplayers adicionais. Para restaurar mais tipos de miniplayer, faça o patch do YouTube 21.28.208 ou versões anteriores</string>
   <string name="morphe_miniplayer_type_title">Tipo de miniplayer</string>
   <string name="morphe_miniplayer_hide_title_title">Ocultar título e canal</string>
   <string name="morphe_miniplayer_type_entry_0">Desativado</string>
@@ -1251,6 +1266,8 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_fix_status_bar_layout_summary">Mantém o layout da barra de status consistente, para que não cubra as barras superiores e não deixe espaço vazio acima do player. Desative esta opção se o aplicativo travar ou se as barras superiores parecerem incorretas</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Brilho</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">A tela de abertura Glow não é suportada por este dispositivo</string>
   <string name="morphe_theme_color_light_title">Fundo do tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Branco</string>

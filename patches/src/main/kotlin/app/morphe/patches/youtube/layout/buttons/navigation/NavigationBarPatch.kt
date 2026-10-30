@@ -69,7 +69,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -128,6 +127,34 @@ private val navigationBarResourcePatch = resourcePatch {
     }
 }
 
+/**
+ * The feature flags of the translucent navigation bar. The navigation bar covering the system navigation
+ * buttons and the feed laid out behind it are only right with the window drawn behind the system
+ * navigation buttons, which comes from the edge to edge feature flag. The Hide status bar patch can turn
+ * that flag off, so the flags are overridden also without the Navigation bar patch, to keep them off then.
+ */
+internal val translucentNavigationBarFeatureFlagsPatch = bytecodePatch {
+    dependsOn(sharedExtensionPatch)
+
+    execute {
+        TranslucentNavigationBarFeatureFlagsFingerprint.matchAll().forEach { match ->
+            match.method.apply {
+                TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS.forEach { flag ->
+                    if (containsLiteralInstruction(flag)) {
+                        val override = when (flag) {
+                            NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG -> "useTranslucentNavigationBar"
+                            FEED_BEHIND_NAVIGATION_BAR_FLAG -> "useFeedBehindNavigationBar"
+                            else -> "useTranslucentNavigationBarBackground"
+                        }
+                        // Overrides every read of the flag in the method.
+                        insertLiteralOverride(flag, "$EXTENSION_CLASS->$override(Z)Z")
+                    }
+                }
+            }
+        }
+    }
+}
+
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
     description = "Adds options to hide and change the bottom navigation bar (such as the Shorts button) "
@@ -142,6 +169,7 @@ val navigationBarPatch = bytecodePatch(
         toolBarHookPatch,
         fixProtoLibraryPatch,
         navigationBarResourcePatch,
+        translucentNavigationBarFeatureFlagsPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -219,31 +247,9 @@ val navigationBarPatch = bytecodePatch(
 
         // region Translucent navigation bar
 
-        // Turning on the feature flags of the translucent navigation bar, and the fixes for what
-        // they break. Every fix checks that the flags are turned on by this patch, so the fixes do
-        // nothing if the flags are left to the account, as with the default navigation bar style.
-
-        // The translucent navigation bar comes from three feature flags that not every account
-        // gets, so they are turned on to make the bar look the same on every account, and the opaque
-        // style below paints over the same translucent bar everywhere. The flag that makes the bar
-        // cover the system navigation buttons is turned on only when the window is drawn edge to
-        // edge. The blur and the feed behind the bar do not change the room left for the system
-        // navigation buttons, so they are also turned on without it.
-        TranslucentNavigationBarFeatureFlagsFingerprint.matchAll().forEach { match ->
-            match.method.apply {
-                TRANSLUCENT_NAVIGATION_BAR_FEATURE_FLAGS.forEach { flag ->
-                    if (containsLiteralInstruction(flag)) {
-                        val override = if (flag == NAVIGATION_BAR_COVERS_SYSTEM_BUTTONS_FLAG) {
-                            "useTranslucentNavigationBar"
-                        } else {
-                            "useTranslucentNavigationBarBackground"
-                        }
-                        // Overrides every read of the flag in the method.
-                        insertLiteralOverride(flag, "$EXTENSION_CLASS->$override(Z)Z")
-                    }
-                }
-            }
-        }
+        // Turning on the feature flags of the translucent navigation bar (translucentNavigationBarFeatureFlagsPatch),
+        // and the fixes for what they break. Every fix checks that the flags are turned on by this patch,
+        // so the fixes do nothing if the flags are left to the account, as with the default navigation bar style.
 
         // The blurred background of the translucent navigation bar is drawn only if the canvas is
         // hardware accelerated. The transparent and opaque styles leave it out, as it can crash
@@ -269,7 +275,7 @@ val navigationBarPatch = bytecodePatch(
         // method called right after adds to its height. The extension moves that room below
         // the slim status bar while it is shown, so the bar is given a method that sets it.
         navigationBarBottomPaddingMatches.first().instructionMatches.let { matches ->
-            val roomField = matches[0].getFieldAccessed()
+            val roomField = matches[0].fieldReference
             val updateHeightMethod = matches[1].getMethodCalled()
 
             mutableClassDefBy(PIVOT_BAR_CLASS).apply {
@@ -552,7 +558,7 @@ val navigationBarPatch = bytecodePatch(
 
                 val protoListBuilderMethod = Fingerprint(
                     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-                    returnType = insertMatch.instruction.getReference<FieldReference>()!!.type,
+                    returnType = insertMatch.fieldReference.type,
                     parameters = listOf("Ljava/util/Collection;")
                 ).method
 

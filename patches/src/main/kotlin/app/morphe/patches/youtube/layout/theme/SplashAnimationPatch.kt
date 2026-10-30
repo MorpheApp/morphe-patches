@@ -17,7 +17,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.shared.layout.branding.startupAnimationResourcePatch
@@ -33,10 +32,10 @@ import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_39_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.fiveRegisters
 import app.morphe.util.insertLiteralOverride
@@ -44,7 +43,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
@@ -83,14 +81,20 @@ val splashAnimationPatch = bytecodePatch {
         )
 
         // Lottie splash screen exists in earlier versions, but it may not be always on.
-        SplashScreenStyleFingerprint.let {
+        val splashScreenStyleFingerprint = if (is_21_44_or_greater) {
+            SplashScreenStyleDelegateFingerprint
+        } else {
+            SplashScreenStyleFingerprint
+        }
+
+        splashScreenStyleFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->getLoadingScreenType(I)I"
             )
         }
 
-        ShowSplashScreenFingerprint.let {
+        ShowSplashScreenFingerprint.match(splashScreenStyleFingerprint.method).let {
             it.method.apply {
                 val lastIndex = it.instructionMatches.last().index
                 val lastInstruction = getInstruction<TwoRegisterInstruction>(lastIndex)
@@ -185,7 +189,7 @@ val splashAnimationPatch = bytecodePatch {
                     RiveSplashScreenAnimationViewFingerprint to 4
                 }
 
-            animationViewFingerprint.let {
+            animationViewFingerprint.match(splashScreenStyleFingerprint.method).let {
                 it.method.apply {
                     val index = it.instructionMatches[animationViewMatchIndex].index
                     val viewRegister = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -201,7 +205,8 @@ val splashAnimationPatch = bytecodePatch {
             // The backdrop of the glow animation is changed to the color of the splash screen
             // when the file is read, and the animation is given the shape of the screen.
             // The app keeps the file in memory with a key of that color and shape.
-            RiveRawResourceSourceFingerprint.let {
+            // 21.44+ has a second copy of the Rive library, which is hooked as well.
+            RiveRawResourceSourceFingerprint.matchAll(1..2).forEach {
                 it.method.apply {
                     val index = it.instructionMatches[1].index
                     val register = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -216,7 +221,7 @@ val splashAnimationPatch = bytecodePatch {
                 }
             }
 
-            RiveReadRawResourceFingerprint.let {
+            RiveReadRawResourceFingerprint.matchAll(1..2).forEach {
                 it.method.apply {
                     val index = it.instructionMatches.last().index
                     val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -275,7 +280,7 @@ val splashAnimationPatch = bytecodePatch {
             // start the animation is instead closed by the timeout of the app, or by the
             // extension when the Morphe glow animation has played.
             val riveAnimationShownField = RiveSplashScreenViewFingerprint.instructionMatches[1]
-                .instruction.getReference<FieldReference>()!!
+                .fieldReference
 
             SplashScreenOnStartFingerprint.method.addInstructionsWithLabels(
                 0,
@@ -291,7 +296,7 @@ val splashAnimationPatch = bytecodePatch {
             )
         }
 
-        YouTubeActivityOnCreateFingerprint.method.apply {
+        splashScreenStyleFingerprint.method.apply {
             val setAnimationIntMethodName =
                 LottieAnimationViewSetAnimationIntFingerprint.originalMethod.name
 

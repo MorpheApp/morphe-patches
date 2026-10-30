@@ -462,12 +462,47 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_section_display_title">תצוגה</string>
   <string name="morphe_music_lyrics_section_sync_title">סנכרון</string>
   <string name="morphe_music_lyrics_section_panel_title">פאנל</string>
-  <string name="morphe_music_lyrics_section_ai_endpoint_title">נקודת קצה של בינה מלאכותית</string>
   <string name="morphe_music_lyrics_source_all_disabled">כל הספקים מבוטלים - שירים מובנים ושירים מוטבעים</string>
   <string name="morphe_music_lyrics_source_reset_title">לאפס את סדר הספקים?</string>
   <string name="morphe_music_lyrics_source_reset_message">שחזר את הספקים לסדר העדיפות המוגדר כברירת מחדל</string>
+  <string name="morphe_music_lyrics_rime_dict_title">רשימת מילים של Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"רשימת המילים של Rime דורשת גם את UniDict: בספק המילי המקומי, סמן \"תווים סיניים וקנטונזיים (UniDict)\" והמתן לסיום ההורדה. בלעדיו, רשימה הקוראת תווים לא תספק הגייה.
+
+סמן את הרשימות ש-Rime Wordlist צריך לקרוא, ואז הקש על שמור להורדתן. רשימה שהוספת תוסר כאשר תבטל את הסימון שלה.
+
+כל רשימה היא טבלה משלך למילת-הגייה, קובץ .dict.yaml עם שורות כמו:
+字 ham
+典 din2
+העמודה הראשונה היא המילה, השנייה ההגייה שלה; עמודות נוספות ושורות ללא טאב מוזנחים."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">לא מסומנת אף רשימת מילים של Rime לשפה למעלה. הקש על השם כדי לסמן אחת, או בחר שפה שיש לה רשימה</string>
+  <string name="morphe_music_lyrics_rime_dict_add">הוסף</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">הוסף רשימת מילים של Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">קובץ .dict.yaml, או ארכיון zip המחזיק בו, עם שורות כמו 字 ham ו-典 din2. הרשימה נשלפת כאשר מסמנים אותה ולוחצים על שמור, והרישיון שלה בידיך לבדוק</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">קוד שפה</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">שתי או שלוש אותיות, כמו ב-hak או wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">שם</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">מוצג מתחת להגייה, כמו ב-Mandarin (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">כתובת רשימת המילים</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">כתובת https:// של ה-.dict.yaml או ה-zip שלו</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">תווים שלא במילה</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">אוטומטי</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">תווים קנטונזיים</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">תווים מנדרינית</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">אין הגיית תו</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">מלא את הקוד, השם והכתובת</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">הקוד חייב להיות שתי או שלוש אותיות, כמו b-hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">הכתובת חייבת להתחיל ב-https://</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">השם והכתובת לא יכולים להכיל פס אנכי</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s כבר יש לו טבלת מילים</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s מבוטא על ידי הרומניזר הבנוי ולא יכול לקחת רשימת מילים</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">לא משמש: השפה הזו כבר יש לה את ההגייה שלה עצמה, כך שתבטל את הסימון שלה כדי להסיר אותו</string>
+  <string name="morphe_music_lyrics_rime_dict_added">נוסף %1$s - סמן אותו ולחץ על שמור להוריד אותו</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">רשימות מילים מוכנות</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">רשימות המילים מוכנות (%1$d רשומות)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">קורא רשימת מילים: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">הורדת רשימת המילים נכשלה - לחץ על שמור שוב כדי לנסות שוב</string>
   <string name="morphe_music_lyrics_clear_cache_title">נקה שיריות מאוחסנות</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">מחק את השיריות שנשמרו במכשיר זה</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">מחק את %1$s MB של המילים שנשמרו במכשיר זה</string>
   <string name="morphe_music_lyrics_clear_cache_done">נוקו %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">קבל טוקן</string>
   <string name="morphe_music_apple_music_token_title">אסימון משתמש מדיה של Apple Music</string>
@@ -527,14 +562,22 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">הצג לחצן העתקה</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">לחץ להעתקת שיריות מקוריות כטקסט רגיל; לחיצה ארוכה לשמירת קובץ המקור הגולמי של השיריות להורדות</string>
   <string name="morphe_music_lyrics_show_translate_button_title">הצג לחצן תרגום</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">לחץ כדי לסובב תרגום; לחיצה ארוכה לתרגום בלבד. משתמש בתרגומי ספק, גוגל תרגום או API תואם OpenAI</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">הצג את כפתור הרומניזציה</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">לחץ כדי לסובב רומניזציה; לחיצה ארוכה לרומניזציה בלבד. משתמש ברומניזציה של ספק, גוגל תרגום או API תואם OpenAI</string>
-  <string name="morphe_music_lyrics_local_romanization_title">רומניזציה מקומית ויישור</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">רומניזציה במכשיר כאשר הספק, המודל שלך וגוגל תרגום נכשלים. הקריאה עוקבת אחרי כל מילה של שיריה זמן-מתואם; סינכרון מילים חייב להיות פעיל. סינית, קנטונזית, יפנית, קוריאנית, יוונית, רוסית, גאורגית, ארמנית; כ-120 MB</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">קריאה %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">הקש כדי להפעיל/לכבות תרגום; לחיצה ארוכה לתרגום בלבד. משתמש בספקי התרגום המופעלים לפי הסדר המפורט</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">הצג כפתור רומניזציה או האברה</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">הקש כדי להפעיל/לכבות רומניזציה או האברה; לחיצה ארוכה לרומניזציה או האברה בלבד. משתמש בספקי הרומניזציה המופעלים לפי הסדר המפורט</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">הפעל האברה</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">אפשר הגיות שאינן לטיניות ממקור המילים; כאשר הוא מכובה, שמור רק על אותיות לטיניות, אותיות עם ניבים ומספרי הצלילות</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">קורא כל מילה של מילים מזומנות (סינכרון מילים פעיל); קוריאנית אינה דורשת הורדה; ארבעה עשר סקיפטים חולקים הורדה CLDR אחת; תווים Han מבוטאים על ידי רשימת מילים של Rime כאשר טבלת המילים שלה מכסה את השפה</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">מוריד מילונים להגייה...</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">קריאות מוכנות (%1$d ערכים)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">ההורדה נכשלה - כבה הדלק מחדש כדי לנסות שוב</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">מילון חינתי</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">יפנית (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">תווים סיניים וקנטונזיים (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">מילים סיניות (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">יוונית, סלאביים קיריליים (כולל רוסי, אוקראיני, בולגרי, סרבי, בלארוסי, מקדוני), גיאורגי, ארמני, עברי, ערבית, אמארית וסורית האברה (CLDR, ~0.5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">קריאה %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">בחר לפחות מילון אחד</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">הצג את כפתור הרענון</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">לחץ כדי לעבור למועמד השירים הבא; לחיצה ארוכה לחפש שיריות לפי שם השיר ואמן</string>
   <string name="morphe_music_lyrics_search_dialog_title">חפש מילים</string>
@@ -545,6 +588,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_saved">נשמר</string>
   <string name="morphe_music_lyrics_word_sync_title">הדגש מילים או הברות מסונכרנות</string>
   <string name="morphe_music_lyrics_word_sync_summary">תעדף מילים מילה-מילה כשהן זמינות. כשמילות השיר כוללות תזמון מילים, הדגש כל מילה או הברה בקצב המוזיקה</string>
+  <string name="morphe_music_lyrics_line_scale_title">כווץ קווים לא פעילים</string>
+  <string name="morphe_music_lyrics_line_scale_summary">מציר כל קו שהוא לא באופן זמני שרה קצת יותר קטן, מעל לעמעום אותו</string>
+  <string name="morphe_music_lyrics_split_background_title">הצג שירה ברקע בנפרד</string>
+  <string name="morphe_music_lyrics_split_background_summary">מפריד בין שירת רקע והרמוניה לקו הראשי. מניח שירה ברקע שנכתבה בסוגריים, כמו \"(Oh) אני רוצה אותך\", מחוץ לקו שרים לקו עצמו מפויס</string>
   <string name="morphe_music_lyrics_hide_played_title">הסתר מילים שכבר נוגנו</string>
   <string name="morphe_music_lyrics_hide_played_summary">הסתר שורות מילים מעל השורה המושמעת כעת</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">הסתר מילים שטרם נוגנו</string>
@@ -602,10 +649,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_ai">תורגם על ידי %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">רומניזציה על ידי %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">רומניזה על ידי %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">הועבר ע\"י Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">תרגום</string>
   <string name="morphe_music_lyrics_translation_language_title">שפת התרגום</string>
-  <string name="morphe_music_lyrics_romanize_language_title">שפת רומניזציה</string>
+  <string name="morphe_music_lyrics_romanize_language_title">שפה רומניזציה או האברה</string>
+  <string name="morphe_music_lyrics_translation_target_language">"שפת יעד לתרגום:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"שפת יעד לרומניזציה או העתקה פונטית:
+%s"</string>
   <string name="morphe_music_lyrics_translating">מתרגם…</string>
   <string name="morphe_music_lyrics_translate_failed">לא ניתן לתרגם את המילים</string>
   <string name="morphe_music_lyrics_romanize_hide">רומניזציה</string>
@@ -619,7 +671,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_refreshing">מרענן</string>
   <string name="morphe_music_lyrics_refreshed">רוענן</string>
   <string name="morphe_music_lyrics_transcribe_key_title">מפתח API של QuickLRC</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC מתרגם או מסתנכרן את המילים לרצועה הנוכחית. שירות נפרד, שאינו קשור לנקודת הקצה התואמת OpenAI הנ\"ל</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC מעתיק או מסדר זמן את המילים לפסי העכשווי</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">מפתח QuickLRC נשמר. השתמש בכפתור הסנכרון בדיאלוג חיפוש המילים, או בהודעת הפאנל כאשר רצועה אין לה מילים</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">מפתח API של QuickLRC נשמר</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC לא קיבל את המפתח הזה</string>
@@ -635,58 +687,50 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_transcribe_no_text">אין מילים לסנchronize - מתרגם במקום</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC לא הצפה לעבד את השיר הזה</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">קרדיטים של QuickLRC אזלו עבור השיר הזה</string>
-  <string name="morphe_music_lyrics_about_summary">"Shiriot matchu be-shem v'arev, shironim matadata onyim imkin liltanot lo o et ha-versiya ha-haraga. Use refresh l'Shita versa'ot. Sfa'im mark * doresh token. Kol har-sifim h'amurim le'im yinsharu talmudim b'sederha, imkin lilshot ve'nishvu ba'zera'anam.
+  <string name="morphe_music_lyrics_about_summary">"שירים מתאימים לפי כותרת ואמן; מטא-נתונים חריגים עשויים לא להציג כלום או להציג גרסה שגויה. השתמש ברענון כדי להתחלף בין גרסאות. ספקים המסומנים ב-* דורשים אסימון. לא כל הספקים המופעלים נתבקשים לפי הסדר שלך, אלא מגיבים לפי מהירותם.
 
-Shiriot ba'am hashlshimiyim she'em lo mitkadimim, mispansim, lo menuchsim by Morphe. Each one is used as it is: the lyrics, their availability, and their licensing stay with those services and their licensors, and using them can be subject to their terms of service. What reaches an enabled service is only the lookup you asked for - the title, the artist, and, where that service needs it, the video ID. The optional AI endpoint and QuickLRC transcription run only after you configure them, and receive the lyrics text or the track's video URL."</string>
+שירים מגיעים משירותים של צד שלישי שאינם שייכים, ממומנים או מאושרים על ידי Morphe. כל אחד מהם משמש כפי שהוא: השירים, זמינותם ורישיונם נשארים בידי השירותים הללו והמעניקים את הרישיון, והשימוש בהם עשוי להיות כפוף לתנאי השימוש שלהם. מה שמגיע לשירות מופעל הוא רק ביקשת החיפוש שביקשת - הכותרת, האמן, וכאשר שירות זה זקוק לכך, מזהה הווידאו. נקודת הקצה האופציונלית של הבינה המלאכותית ותמלול QuickLRC פועלים רק לאחר שתכניס אותם לתצורה, ומקבלים את טקסט השיר או כתובת ה-URL של וידאו הרצועה."</string>
   <string name="morphe_music_lyrics_source_advice_summary">הפעל רק את הספקים שבהם אתה משתמש, או שמור על ברירת המחדל - בקשות מתמשכות יכולות להעמיס על אתרי מילים לקהילות קטנות</string>
   <string name="morphe_music_lyrics_hide_info_title">הסתר שורת קרדיט</string>
   <string name="morphe_music_lyrics_hide_info_summary">הסתר את שורת הקרדיט המוצגת מתחת למילות השיר</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">החלף בין תרגום לרומניזציה</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">במצב ON הרומניזציה מופיעה מתחת למילות השיר והתרגום מעל; במצב OFF הרומניזציה נשארת מעל והתרגום מתחת</string>
-  <string name="morphe_music_lyrics_section_translation_title">תרגום</string>
-  <string name="morphe_music_lyrics_section_romanization_title">רומניזציה</string>
-  <string name="morphe_music_lyrics_translation_provider_title">ספק תרגום</string>
-  <string name="morphe_music_lyrics_translation_provider_google">Google (ברירת מחדל, חינם)</string>
-  <string name="morphe_music_lyrics_translation_provider_openai_compatible">תואם OpenAI (מותאם אישית)</string>
-  <string name="morphe_music_lyrics_romanization_provider_title">ספק רומניזציה</string>
-  <string name="morphe_music_lyrics_romanization_provider_google">Google (ברירת מחדל)</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">מילון מקומי / לא מקוון</string>
-  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">תואם OpenAI (מותאם אישית)</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">חלק AI</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">משמש רק כאשר הספק אינו מספק תוויות חלקים כגון פזמון או בית, אותן המודל התואם ל-OpenAI שלך יזהה</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; Cloud Endpoints</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">הגדר מפתחות API, מודלים, נקודות קצה ותבניות הנחיה עבור ספקי AI.</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">כתובת URL של נקודת קצה של API (לדוגמה https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON מציב רומניזציה או האברה מתחת למילים ותרגום מעל; OFF שומר רומניזציה או האברה מעל ותרגום מתחת. הגייה שמוצבת מעל כל צליל זזה איתה, מהמעל לצליל עד מתחת לצליל</string>
+  <string name="morphe_music_lyrics_force_center_title">תמיד למרכז מילים</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON מציב כל קו באמצע ולא מתעלם מהיישור המקורי, כולל צדדי דואט; OFF שומר על היישור שהמילים מבקשות</string>
+  <string name="morphe_music_lyrics_providers_keep_one">חייב להישאר לפחות ספק אחד פעיל</string>
+  <string name="morphe_music_lyrics_translation_provider_title">תרגום</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">רומניזציה או האברה</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">מילון חינתי</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">רשימת מילים של Rime</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">גלה קטעים עם AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">משמש רק כאשר הספק לא מכיל תוויות קטע כמו Chorus או Verse, שהדגם התואם OpenAI שלך מאתר לאחר מכן. עריכת השורה פותחת גם את הפוקט שלו</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL נקודת API (למשל https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">תבנית הנחיה</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ממלאי מקום: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">ההנחיה נשמרה</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ההנחיה נשמרה, אך נקודת הקצה של AI אינה ניתנת לשימוש עדיין. הגדר אותה תחת הגדרות AI ראשון</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">ההנחיה אופסה</string>
-  <string name="morphe_music_lyrics_ai_extra_body_invalid">Lo valid JSON. Takanhu o nuke ha-shida leshanor sha\'mar</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">הגדרות תרגום &amp; רומניזציה נשמרו</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">הגדרות אופסו לברירת מחדל</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">כתובת ה-URL הבסיסית חייבת להתחיל ב-http:// או ב-https://</string>
-  <string name="morphe_music_lyrics_ai_config_test_connection">בדיקת חיבור</string>
-  <string name="morphe_music_lyrics_ai_config_endpoint_label">הגדרת נקודות קצה</string>
-  <string name="morphe_music_lyrics_ai_config_show_all">הצג את כל נקודות הקצה</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">הגדרות חסרות או נדחו על ידי הספק</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">מאמת חיבור…</string>
-  <string name="morphe_music_lyrics_ai_config_translation_provider_label">ספק תרגום</string>
-  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">ספק רומניזציה</string>
-  <string name="morphe_music_lyrics_ai_config_fetch_models">הבאת מודלים</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: מחובר! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: חיבור נכשל. בדוק את ההגדרות.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">הזן את מפתח ה-API קודם</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">מביא מודלים...</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">בחר מודל</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">נכשל השליפה של המודלים. בדוק את מפתח ה-API או את החיבור.</string>
-  <string name="morphe_music_lyrics_ai_config_gemini_section">הגדרות Gemini API</string>
-  <string name="morphe_music_lyrics_ai_config_openai_compat_section">תואם OpenAI (נקודת קצה מותאמת אישית)</string>
-  <string name="morphe_music_lyrics_ai_config_deepl_section">הגדרות DeepL API</string>
-  <string name="morphe_music_lyrics_ai_config_api_key_label">מפתח API</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">פקודה</string>
   <string name="morphe_music_lyrics_ai_config_model_label">מודל</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL בסיסי</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">בחר שירות</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">מפתח API (אופציונלי)</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">הנחיית תרגום</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">גוף בקשה נוסף (JSON אופציונלי)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">כותרות בקשה נוספות (JSON אפשרי)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">הקף שמות וערכים בגרשיים, למשל {\"api-key\": \"abc\"}. ערך לא מוקף המכיל / : או מספר יידחה. ערך ריק מוריד כותרת.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">הקף שמות וערכים בגרשיים, למשל {\"temperature\": 0.3}. ערך לא מוקף המכיל / או : יידחה. מודל והודעות לא יכולים להיות מוגדרים כאן.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">מפתח אימות (חינמי או Pro)</string>
-  <string name="morphe_music_lyrics_ai_config_summary">הגדרת מפתחות API, מודלים, נקודות קצה והנחיות</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - השבת אייקונים מודגשים</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - שחזור לשוניות הבא בתור, מילים, וקשורות בנגן</string>

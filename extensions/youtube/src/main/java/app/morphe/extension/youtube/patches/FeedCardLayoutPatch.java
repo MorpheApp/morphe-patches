@@ -129,6 +129,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWith
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoWithContextModel;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
 import app.morphe.extension.youtube.patches.theme.SeekbarColorPatch;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -311,13 +312,14 @@ public class FeedCardLayoutPatch {
      */
     private static final Pattern METADATA_SEPARATOR_PATTERN = Pattern.compile(" {2,}| · ");
 
-    private static final ByteTrieSearch elementSearch = new ByteTrieSearch(
-            CARD_LAYOUT
-                    ? ByteTrieSearch.convertStringsToBytes(CLASSIC_TEMPLATE, SHELF_HEADER_TEMPLATE,
-                    HORIZONTAL_SHELF_TEMPLATE, SHORTS_VIDEO_CELL_TEMPLATE, SHORTS_SHELF_TEMPLATE,
-                    GRID_VIDEO_TEMPLATE)
-                    : ByteTrieSearch.convertStringsToBytes(CARD_TEMPLATE)
-    );
+    /**
+     * Templates of the elements that are converted. Every element is searched on the main thread,
+     * so the element is searched as a string in native code, see {@link FeedVideoCardsPatch#getElementText(byte[])}.
+     */
+    private static final String[] elementTemplates = CARD_LAYOUT
+            ? new String[]{CLASSIC_TEMPLATE, SHELF_HEADER_TEMPLATE, HORIZONTAL_SHELF_TEMPLATE,
+            SHORTS_VIDEO_CELL_TEMPLATE, SHORTS_SHELF_TEMPLATE, GRID_VIDEO_TEMPLATE}
+            : new String[]{CARD_TEMPLATE};
     /**
      * Label of the shelf headers, in the bytes of the converted elements.
      */
@@ -557,14 +559,15 @@ public class FeedCardLayoutPatch {
      */
     public static byte[] setFeedCardLayout(byte[] bytes) {
         try {
-            if (!elementSearch.matches(bytes)) {
+            final String elementText = FeedVideoCardsPatch.getElementText(bytes);
+            if (!Utils.containsAny(elementText, elementTemplates)) {
                 // The elements of the layout of the setting give the current version of its template:
                 // the uri and the fields are taken from the element, if it's an element of the template.
                 // After the first element, the elements are checked once in a while, to follow a new version.
                 VideoTemplate template = CARD_LAYOUT ? CARD : CLASSIC;
                 final long now = System.currentTimeMillis();
                 if ((!template.fromElement || now - template.checkTime >= TEMPLATE_CHECK_INTERVAL_MILLIS)
-                        && template.search.matches(bytes)) {
+                        && elementText.contains(template.name)) {
                     ComponentType componentType = Element.parseFrom(bytes).getType().getComponentType();
                     String elementUri = componentType.getTemplateConfig().getUriTemplateConfig().getUri();
                     if (isTemplate(elementUri, template.name)) {

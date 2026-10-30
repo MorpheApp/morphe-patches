@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Razno</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Vrati stare postavke YouTube izbornika</string>
+  <string name="morphe_native_snackbar_title">Prikaži poruke u YouTube snackbaru</string>
+  <string name="morphe_native_snackbar_summary">Poruke Morphea, kao što su potvrde gumba za reprodukciju, prikazuju se u YouTube snackbaru umjesto u skočnom prozoru</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Ukloni ograničenja reprodukcije u pozadini</string>
   <string name="morphe_shorts_disable_background_playback_title">Onemogući reprodukciju u pozadini</string>
@@ -445,6 +447,15 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <string name="morphe_post_image_download_saved_single">Slika sačuvana u %s</string>
   <string name="morphe_post_image_download_failed">Slika nije mogla biti preuzeta</string>
   <string name="morphe_post_image_download_not_found">U ovoj objavi nije pronađena slika</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Prevedi objave</string>
+  <string name="morphe_post_translate_summary">Dodaje stavku u izbornik za prevođenje objava kreatora sadržaja</string>
+  <string name="morphe_post_translate_language_title">Jezik za prijevod objava</string>
+  <string name="morphe_post_translate_flyout">Prevedi</string>
+  <string name="morphe_post_translate_flyout_original">Prikaži original</string>
+  <string name="morphe_post_translate_started">Prevođenje…</string>
+  <string name="morphe_post_translate_failed">Objava se nije mogla prevesti</string>
+  <string name="morphe_post_translate_same_language">Objava je već na jeziku za prijevod</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodaj stavku Aska u izbornik flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje stavku za sažetak videa u izbornik flyout naloga</string>
@@ -853,6 +864,8 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_fix_transcript_title">Popravi transkript</string>
   <string name="morphe_fix_transcript_summary">Rješava neuspjeh provjere preduvjeta koji može spriječiti učitavanje transkripta</string>
   <string name="morphe_captions_in_pip_title">Prikaži titlove u slici u slici</string>
+  <string name="morphe_stable_caption_blocks_title">Stabilni blokovi titlova</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupirajte automatske titlove u stabilne, čitljive blokove. Neke riječi se mogu pojaviti prije nego što budu izgovorene. Potrebno je ponovno pokretanje.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Traka navigacije</string>
   <string name="morphe_navigation_buttons_screen_summary">Odaberite koje će tipke pojaviti u donjoj navigacijskoj traci</string>
@@ -1199,6 +1212,8 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_miniplayer_disable_resuming_summary">Onemogućuje miniplayer \'Nastavi gledati\', značajku YouTube Premiuma koja se pojavljuje pri pokretanju aplikacije</string>
   <string name="morphe_miniplayer_screen_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite izgled i ponašanje minimiziranog video playera</string>
+  <string name="morphe_miniplayer_not_available_title">Dodatni miniplayeri</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube je uklonio sve dodatne miniplayere. Kako biste vratili više vrsta miniplayera, zakrpite YouTube 21.28.208 ili stariju verziju</string>
   <string name="morphe_miniplayer_type_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_hide_title_title">Sakrij naslov i kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućeno</string>
@@ -1240,6 +1255,8 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_fix_status_bar_layout_summary">Održava dosljednost rasporeda statusne trake, tako da ne prekriva gornje trake i ne ostavlja prazan prostor iznad playera. Isključite ovo ako aplikacija zapne ili gornje trake izgledaju pogrešno</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Sjaj</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Ovaj uređaj ne podržava Glow zaslon s početnim prikazom</string>
   <string name="morphe_theme_color_light_title">Boja pozadine u svijetloj temi</string>
   <string name="morphe_theme_color_light_entry_2">Bijela</string>
@@ -1552,7 +1569,8 @@ Ograničenje: Vraća se na stari stil 'More videos' prekrivača"</string>
   <string name="morphe_series_tracker_marked">Epizode obilježene kao gledane</string>
   <string name="morphe_series_tracker_undo">Poništi</string>
   <string name="morphe_series_tracker_enable_short">Omogući</string>
-  <string name="morphe_series_tracker_new_episodes"><b>%1$s</b> nove epizode</string>
+  <string name="morphe_series_tracker_new_episode">1 nova epizoda</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s nove epizode</string>
   <string name="morphe_series_tracker_record_short">Snimanje napretka na ovom uređaju</string>
   <string name="morphe_series_tracker_follow_consent">"Vaše serije i napredak ostaju na ovom uređaju, dijeleći se između YouTube računa. Kontrola povijesti YouTuba ne mijenja te podatke. Očistite napredak iz izbornika Serije.\n\nAutomatsko snimanje je opcionalno. Zaustavlja se u incognito načinu rada ili kada se račun promijeni"</string>
   <string name="morphe_series_tracker_follow_unavailable">Epizode nisu mogle biti učitane. Playlistu možete spremiti kao oznaku</string>

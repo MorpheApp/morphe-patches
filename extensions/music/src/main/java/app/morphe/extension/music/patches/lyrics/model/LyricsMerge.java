@@ -28,11 +28,15 @@ import app.morphe.extension.shared.translation.TextTranslator;
  */
 public final class LyricsMerge {
 
-    /** Only TTML states background lines separately, so only there does the prefix mean anything. */
+    /**
+     * Only TTML states background lines separately, so only there does the prefix mean anything.
+     */
     public static final String BACKGROUND_TRACK_PREFIX = "bg:";
 
-    /** A sung line matches anywhere before the next one starts, which would let a background line
-     *  take the following line's own. */
+    /**
+     * A sung line matches anywhere before the next one starts, which would let a background line
+     * take the following line's own.
+     */
     private static final long BACKGROUND_MATCH_WINDOW_MS = 300L;
 
     private LyricsMerge() {
@@ -45,7 +49,7 @@ public final class LyricsMerge {
     }
 
     public static boolean hasBackgroundTrack(Lyrics lyrics,
-                                            @Nullable Map<String, List<LyricsLine>> tracks) {
+                                             @Nullable Map<String, List<LyricsLine>> tracks) {
         if ("ttml".equals(lyrics.formatType())) {
             return true;
         }
@@ -64,7 +68,7 @@ public final class LyricsMerge {
         if (track == null || index < 0 || index >= track.size()) {
             return "";
         }
-        String text = track.get(index).text();
+        final String text = track.get(index).text();
         return text == null ? "" : text.trim();
     }
 
@@ -107,7 +111,7 @@ public final class LyricsMerge {
 
     @Nullable
     public static List<String> mapLinesOnline(List<String> lines,
-                                       Function<List<String>, List<String>> batch) {
+                                              Function<List<String>, List<String>> batch) {
         if (!Utils.isNetworkConnected()) {
             return null;
         }
@@ -169,7 +173,7 @@ public final class LyricsMerge {
     }
 
     public static List<LyricsLine> mergeRomanization(List<LyricsLine> original,
-                                                    @Nullable List<LyricsLine> auxiliary) {
+                                                     @Nullable List<LyricsLine> auxiliary) {
         List<LyricsLine> result = new ArrayList<>(original.size());
         if (auxiliary == null || auxiliary.isEmpty()) {
             for (LyricsLine line : original) {
@@ -241,7 +245,9 @@ public final class LyricsMerge {
         return result;
     }
 
-    /** Lines sharing a start would leave an empty window, matching nothing and stranding an entry. */
+    /**
+     * Lines sharing a start would leave an empty window, matching nothing and stranding an entry.
+     */
     private static long windowEnd(List<LyricsLine> lines, int index, long winStart) {
         final long next = (index + 1 < lines.size())
                 ? lines.get(index + 1).startTimeMs()

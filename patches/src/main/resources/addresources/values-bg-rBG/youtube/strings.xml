@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Други</string>
   <string name="morphe_settings_screen_12_video_title">Видео</string>
   <string name="morphe_restore_old_settings_menus_title">Възстановяване на старите менюта за настройки</string>
+  <string name="morphe_native_snackbar_title">Показвай съобщенията в изскачащата лента на YouTube</string>
+  <string name="morphe_native_snackbar_summary">Съобщенията от Morphe, като например потвърждението при натискане на бутон в плейъра, се показват в изскачащата лента на YouTube вместо в изскачащ прозорец.</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Премахване на ограниченията за възпроизвеждане във фонов режим</string>
   <string name="morphe_shorts_disable_background_playback_title">Забраняване на възпроизвеждането във фонов режим</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">Изображението е запазено в %s</string>
   <string name="morphe_post_image_download_failed">Изображението не можа да бъде изтеглено</string>
   <string name="morphe_post_image_download_not_found">В този пост не е намерено изображение</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Превод на publicaciones</string>
+  <string name="morphe_post_translate_summary">Добавя елемент в изскачащото меню за превод на публикации на създатели на съдържание</string>
+  <string name="morphe_post_translate_language_title">Език за превод на публикацията</string>
+  <string name="morphe_post_translate_flyout">Превод</string>
+  <string name="morphe_post_translate_flyout_original">Покажи оригинала</string>
+  <string name="morphe_post_translate_started">Превеждане…</string>
+  <string name="morphe_post_translate_failed">Публикацията не можа да бъде преведена</string>
+  <string name="morphe_post_translate_same_language">Публикацията вече е на езика за превод</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Добавяне на елемент Ask в изплъзгащото се меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Добавяне на елемент за обобщение на видео към изплъзгащото се меню на емисията</string>
@@ -863,6 +874,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">Изправи препис</string>
   <string name="morphe_fix_transcript_summary">Отстранява грешка при проверка на предварително условие, която може да попречи на зареждането на транскрипцията</string>
   <string name="morphe_captions_in_pip_title">Показване на надписи в режим \"карта върху карта\"</string>
+  <string name="morphe_stable_caption_blocks_title">Стабилни блокове за описание</string>
+  <string name="morphe_stable_caption_blocks_summary">Групиране на автоматичните субтитри в стабилни, лесни за четене блокове. Някои думи може да се появят преди да бъдат изречени. Изисква се рестартиране.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Думиращи бутони</string>
   <string name="morphe_navigation_buttons_screen_summary">Скрий футъра на менюто „Аудио писта“</string>
@@ -1211,6 +1224,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Деактивира мини плейъра „Продължи да гледаш“, функция на YouTube Premium, която се появява при стартиране на приложението</string>
   <string name="morphe_miniplayer_screen_title">Миниплеер</string>
   <string name="morphe_miniplayer_screen_summary">Персонализирайте външния вид и поведението на минимизирания видео плейър</string>
+  <string name="morphe_miniplayer_not_available_title">Допълнителни миниплеъри</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube премахна всички допълнителни миниплейъри. За да възстановите повече типове миниплейъри, пачнете YouTube 21.28.208 или по-стара версия</string>
   <string name="morphe_miniplayer_type_title">Тип на миниплеера</string>
   <string name="morphe_miniplayer_hide_title_title">Скриване на заглавието и канала</string>
   <string name="morphe_miniplayer_type_entry_0">Изключен</string>
@@ -1252,8 +1267,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">Поддържа последователен макет на статус бара, така че той да не покрива горните ленти и да не оставя празно пространство над плеъра. Изключете тази опция, ако приложението се счупи или горните ленти изглеждат неправилно</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Сяяне</string>
-  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
-  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Блясък 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Блясък 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Екранът за зареждане с ефект на сияние не се поддържа от това устройство</string>
   <string name="morphe_theme_color_light_title">Фон на светлата тема</string>
   <string name="morphe_theme_color_light_entry_2">Бяло</string>

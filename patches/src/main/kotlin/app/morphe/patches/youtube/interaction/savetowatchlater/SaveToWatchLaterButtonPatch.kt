@@ -100,8 +100,8 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
         EditPlaylistRequestBuildFingerprint.let {
-            val playlistIdField = it.instructionMatches[0].getFieldAccessed()
-            val actionsField = it.instructionMatches[1].getFieldAccessed()
+            val playlistIdField = it.instructionMatches[0].fieldReference
+            val actionsField = it.instructionMatches[1].fieldReference
 
             it.method.addInstructions(
                 0,

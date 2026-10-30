@@ -35,7 +35,7 @@ public record TrackVersion(String title, String variant) {
     public static String clean(String version) {
         String s = version.strip();
         while (!s.isEmpty()) {
-            String core = core(s);
+            final String core = core(s);
             final int first = s.codePointAt(0);
             if (isEdgePunctuation(first) && !hasPartner(first, core)) {
                 s = s.substring(Character.charCount(first)).strip();
@@ -71,15 +71,15 @@ public record TrackVersion(String title, String variant) {
     private static boolean isEdgePunctuation(int cp) {
         return switch (Character.getType(cp)) {
             case Character.CONNECTOR_PUNCTUATION, Character.DASH_PUNCTUATION,
-                    Character.START_PUNCTUATION, Character.END_PUNCTUATION,
-                    Character.INITIAL_QUOTE_PUNCTUATION, Character.FINAL_QUOTE_PUNCTUATION,
-                    Character.OTHER_PUNCTUATION -> true;
+                 Character.START_PUNCTUATION, Character.END_PUNCTUATION,
+                 Character.INITIAL_QUOTE_PUNCTUATION, Character.FINAL_QUOTE_PUNCTUATION,
+                 Character.OTHER_PUNCTUATION -> true;
             default -> false;
         };
     }
 
     private static boolean hasPartner(int cp, String core) {
-        String symbol = new String(Character.toChars(cp));
+        final String symbol = new String(Character.toChars(cp));
         for (PairedPunctuation.Pair pair : PairedPunctuation.PAIRS) {
             if (pair.opening().equals(symbol) && core.contains(pair.closing())
                     || pair.closing().equals(symbol) && core.contains(pair.opening())) {
@@ -95,8 +95,8 @@ public record TrackVersion(String title, String variant) {
      */
     public static boolean matchesStructuredTitle(String displayed, String full, String shortTitle, String version) {
         if (shortTitle.isBlank()) return false;
-        String wanted = normalize(displayed);
-        String variant = clean(version);
+        final String wanted = normalize(displayed);
+        final String variant = clean(version);
         if (variant.isEmpty()) {
             return wanted.equals(normalize(shortTitle)) && normalize(full).equals(normalize(shortTitle));
         }

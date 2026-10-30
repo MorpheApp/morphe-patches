@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Gendan gamle indstillingsmenuer</string>
+  <string name="morphe_native_snackbar_title">Vis beskeder i YouTube-snackbar</string>
+  <string name="morphe_native_snackbar_summary">Morphe-beskeder, såsom bekræftelsen af en afspillerknap, vises i YouTube-snackbar i stedet for et pop op-vindue</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Fjern restriktioner for afspilning i baggrunden</string>
   <string name="morphe_shorts_disable_background_playback_title">Deaktiver baggrundsafspilning</string>
@@ -453,6 +455,15 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_post_image_download_saved_single">Billede gemt i %s</string>
   <string name="morphe_post_image_download_failed">Kunne ikke downloade billedet</string>
   <string name="morphe_post_image_download_not_found">Intet billede fundet i dette opslag</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Oversæt indlæg</string>
+  <string name="morphe_post_translate_summary">Tilføjer et punkt i flyout-menuen til at oversætte indlæg fra indholdsskabere</string>
+  <string name="morphe_post_translate_language_title">Sprog til oversættelse af indlæg</string>
+  <string name="morphe_post_translate_flyout">Oversæt</string>
+  <string name="morphe_post_translate_flyout_original">Vis original</string>
+  <string name="morphe_post_translate_started">Oversætter…</string>
+  <string name="morphe_post_translate_failed">Kunne ikke oversætte indlægget</string>
+  <string name="morphe_post_translate_same_language">Indlægget er allerede på oversættelsessproget</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Tilføj \"Ask\"-emne til flyout-menuen</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Tilføjer et emne til videofeed-sammenfatning i feedets flyout-menu</string>
@@ -859,6 +870,8 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_fix_transcript_title">Ret transkription</string>
   <string name="morphe_fix_transcript_summary">Skjul Settings knap</string>
   <string name="morphe_captions_in_pip_title">Vis undertekster i billede-i-billede</string>
+  <string name="morphe_stable_caption_blocks_title">Stabile tekstblokke</string>
+  <string name="morphe_stable_caption_blocks_summary">Gruppér automatiske undertekster i stabile, læsbare blokke. Nogle ord kan vises, før de bliver talt. Genstart påkrævet.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigationsknapper</string>
   <string name="morphe_navigation_buttons_screen_summary">Administrer Ambient mode synlighed og strømbegrænsninger</string>
@@ -1207,6 +1220,8 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiverer \'Fortsæt med at se\'-miniafspilleren, en YouTube Premium-funktion, der vises, når appen startes</string>
   <string name="morphe_miniplayer_screen_title">Mini-afspiller</string>
   <string name="morphe_miniplayer_screen_summary">Tilpas udseendet og adfærden af den minimerede videoplayer</string>
+  <string name="morphe_miniplayer_not_available_title">Yderligere miniplayere</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube fjernede alle yderligere miniplayere. For at genoprette flere miniplayer-typer skal du patche YouTube 21.28.208 eller ældre</string>
   <string name="morphe_miniplayer_type_title">Type af miniplayer</string>
   <string name="morphe_miniplayer_hide_title_title">Skjul titel og kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiveret</string>

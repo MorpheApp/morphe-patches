@@ -47,6 +47,24 @@ public final class LRCLIBProvider implements LyricsProvider {
 
     private static final Map<String, String> HEADERS = Map.of("Lrclib-App-Id", APP_ID);
 
+    /**
+     * Orders candidates so every synced one comes before every plain one, by score within
+     * each group. Word timings rank above line timings.
+     */
+    static List<Lyrics.ScoredLyrics> syncedFirst(List<Lyrics.ScoredLyrics> scored) {
+        List<Lyrics.ScoredLyrics> ordered = new ArrayList<>(Lyrics.sortScoredByScore(scored));
+        // List.sort is stable, so the score order survives within each timing rank.
+        ordered.sort((a, b) -> LyricsRequests.syncRank(b.lyrics()) - LyricsRequests.syncRank(a.lyrics()));
+        return ordered;
+    }
+
+    private static int scoreCandidate(JSONObject item, TrackInfo track) {
+        String title = item.optString("trackName", "");
+        String artist = item.optString("artistName", "");
+        return LyricsRequests.scoreTrackCandidate(title, artist,
+                item.optInt("duration", 0), track);
+    }
+
     @Override
     public String name() {
         return "LRCLIB";
@@ -153,24 +171,6 @@ public final class LRCLIBProvider implements LyricsProvider {
                 : ordered;
     }
 
-    /**
-     * Orders candidates so every synced one comes before every plain one, by score within
-     * each group. Word timings rank above line timings.
-     */
-    static List<Lyrics.ScoredLyrics> syncedFirst(List<Lyrics.ScoredLyrics> scored) {
-        List<Lyrics.ScoredLyrics> ordered = new ArrayList<>(Lyrics.sortScoredByScore(scored));
-        // List.sort is stable, so the score order survives within each timing rank.
-        ordered.sort((a, b) -> LyricsRequests.syncRank(b.lyrics()) - LyricsRequests.syncRank(a.lyrics()));
-        return ordered;
-    }
-
-    private static int scoreCandidate(JSONObject item, TrackInfo track) {
-        String title = item.optString("trackName", "");
-        String artist = item.optString("artistName", "");
-        return LyricsRequests.scoreTrackCandidate(title, artist,
-                item.optInt("duration", 0), track);
-    }
-
     @Nullable
     private FetchResult fetchExact(TrackInfo track) throws Exception {
         StringBuilder url = new StringBuilder(BASE_URL);
@@ -258,7 +258,7 @@ public final class LRCLIBProvider implements LyricsProvider {
         }
 
         final int id = response.optInt("id", -1);
-        String sourceUrl = id > 0 ? "https://lrclib.net/tracks/" + id : null;
+        final String sourceUrl = id > 0 ? "https://lrclib.net/tracks/" + id : null;
 
         String lyricsFile = LyricsRequests.optString(response, "lyricsFile");
         if (lyricsFile == null) {

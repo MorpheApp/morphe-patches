@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">เบ็ดเตล็ด</string>
   <string name="morphe_settings_screen_12_video_title">วิดีโอ</string>
   <string name="morphe_restore_old_settings_menus_title">กู้คืนเมนูการตั้งค่าแบบเก่า</string>
+  <string name="morphe_native_snackbar_title">แสดงข้อความใน YouTube snackbar</string>
+  <string name="morphe_native_snackbar_summary">ข้อความของ Morphe เช่นการยืนยันปุ่มผู้เล่น จะแสดงใน YouTube snackbar แทนป๊อปอัป</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">ลบข้อจำกัดการเล่นในพื้นหลัง</string>
   <string name="morphe_shorts_disable_background_playback_title">ปิดการเล่นพื้นหลัง</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">บันทึกรูปภาพไปยัง %s แล้ว</string>
   <string name="morphe_post_image_download_failed">ไม่สามารถดาวน์โหลดรูปภาพได้</string>
   <string name="morphe_post_image_download_not_found">ไม่พบรูปภาพในโพสต์นี้</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">แปลโพสต์</string>
+  <string name="morphe_post_translate_summary">เพิ่มรายการในเมนู flyout เพื่อแปลโพสต์ของผู้สร้างเนื้อหา</string>
+  <string name="morphe_post_translate_language_title">ภาษาสำหรับแปลโพสต์</string>
+  <string name="morphe_post_translate_flyout">แปลภาษา</string>
+  <string name="morphe_post_translate_flyout_original">แสดงต้นฉบับ</string>
+  <string name="morphe_post_translate_started">กำลังแปล...</string>
+  <string name="morphe_post_translate_failed">ไม่สามารถแปลโพสต์ได้</string>
+  <string name="morphe_post_translate_same_language">โพสต์นี้เป็นภาษาที่ใช้ในการแปลอยู่แล้ว</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">เพิ่มรายการ Ask ไปยังเมนูแบบเลื่อนออก</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">เพิ่มรายการสรุปวิดีโอไปยังเมนูแบบเลื่อนออกของฟีด</string>
@@ -863,6 +874,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">แก้ไขข้อความถอดเสียง</string>
   <string name="morphe_fix_transcript_summary">แก้ไขข้อผิดพลาดในการตรวจสอบเงื่อนไขเบื้องต้นที่อาจทำให้การโหลดข้อความถอดเสียงไม่สำเร็จ</string>
   <string name="morphe_captions_in_pip_title">แสดงคำบรรยายในภาพซ้อนภาพ</string>
+  <string name="morphe_stable_caption_blocks_title">บล็อกคำบรรยายแบบเสถียร</string>
+  <string name="morphe_stable_caption_blocks_summary">จัดกลุ่มคำบรรยายอัตโนมัติให้เป็นบล็อกที่เสถียรและอ่านง่าย คำบางคำอาจปรากฏขึ้นก่อนที่จะมีการพูด จำเป็นต้องรีสตาร์ท</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ปุ่มนำทาง</string>
   <string name="morphe_navigation_buttons_screen_summary">เลือกปุ่มที่จะปรากฏในแถบนำทางด้านล่าง</string>
@@ -1211,6 +1224,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">ปิดใช้งานเครื่องเล่นขนาดเล็ก \'ดูต่อ\' ซึ่งเป็นคุณสมบัติพิเศษสำหรับ YouTube Premium ที่ปรากฏขึ้นเมื่อเริ่มต้นแอป</string>
   <string name="morphe_miniplayer_screen_title">มินิเพลเยอร์</string>
   <string name="morphe_miniplayer_screen_summary">ปรับแต่งรูปลักษณ์และพฤติกรรมของเครื่องเล่นวิดีโอขนาดเล็ก</string>
+  <string name="morphe_miniplayer_not_available_title">มินิเพลเยอร์เพิ่มเติม</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube ได้ลบมินิเพลเยอร์เพิ่มเติมทั้งหมดออกแล้ว หากต้องการคืนค่าประเภทมินิเพลเยอร์เพิ่มเติม โปรดลงแพตช์ YouTube เวอร์ชัน 21.28.208 หรือเก่ากว่า</string>
   <string name="morphe_miniplayer_type_title">ประเภทของมินิเพลเยอร์</string>
   <string name="morphe_miniplayer_hide_title_title">ซ่อนชื่อและช่อง</string>
   <string name="morphe_miniplayer_type_entry_0">ปิดการใช้งานอยู่</string>
@@ -1252,6 +1267,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">คงรูปแบบของแถบสถานะให้สอดคล้องกัน เพื่อไม่ให้เกิดการบังแถบด้านบนและเหลือพื้นที่ว่างเปล่าเหนือเครื่องเล่น เปิดการใช้งานนี้หากแอปค้างหรือแถบด้านบนแสดงผลผิดปกติ</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">เรืองแสง</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">อุปกรณ์นี้ไม่รองรับหน้าจอเปิดตัวแบบเรืองแสง</string>
   <string name="morphe_theme_color_light_title">พื้นหลังธีมสว่าง</string>
   <string name="morphe_theme_color_light_entry_2">สีขาว</string>

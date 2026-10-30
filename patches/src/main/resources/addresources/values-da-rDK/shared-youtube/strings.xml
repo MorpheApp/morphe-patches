@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Startanimation</string>
   <string name="morphe_splash_screen_style_entry_1">Deaktiveret</string>
   <string name="morphe_splash_screen_style_entry_2">Farve</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Farve</string>
   <string name="morphe_splash_screen_style_entry_4">Monokrom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monokrom</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Fremhæv nye indstillinger</string>
+  <string name="morphe_settings_new_indicator_days_summary">Antal dage en prik vises ved siden af indstillinger og valgmuligheder tilføjet af en opdatering</string>
+  <string name="morphe_settings_new_indicator_days_off">Fra</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Genstart for at færdiggøre opsætningen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

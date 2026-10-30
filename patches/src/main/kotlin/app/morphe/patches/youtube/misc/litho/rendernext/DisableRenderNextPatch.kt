@@ -48,7 +48,7 @@ val disableRenderNextPatch = bytecodePatch(
         enablementCheckMethod.returnEarly(false)
 
         val configRenderNextField = getRenderNextConfigFieldFingerprint(enablementCheckMethod)
-            .instructionMatches.first().getFieldAccessed()
+            .instructionMatches.first().fieldReference
 
         // Every read of the config field decides if an element is RenderNext.
         getRenderNextConfigFieldReadFingerprint(configRenderNextField).matchAll().forEach {

@@ -55,61 +55,11 @@ public final class DeezerProvider extends ScoredSongProvider {
 
     private static final long REQUEST_THROTTLE_MS = 250;
     private static final AtomicLong lastRequestTime = new AtomicLong(0);
-
+    /** Lookups that succeeded, including tracks without a version. Failed requests are retried. */
+    private static final Map<TrackInfo, TrackVersion> versions = Utils.createSizeRestrictedMap(64, true);
     private static String cachedArl;
     private static String cachedJwt;
     private static long jwtExpiryMs;
-
-    @Override
-    public String name() {
-        return "Deezer";
-    }
-
-    @Override
-    protected List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
-        String arl = getArl();
-        if (arl == null) {
-            return Collections.emptyList();
-        }
-
-        String jwt = getJwt(arl);
-        if (jwt == null) {
-            return Collections.emptyList();
-        }
-
-        JSONArray searchResults = searchTracks(track);
-        if (searchResults == null || searchResults.length() == 0) {
-            return Collections.emptyList();
-        }
-
-        List<JSONObject> sorted = sortCandidates(searchResults, track);
-
-        List<ScoredSong> scored = new ArrayList<>();
-        for (JSONObject item : sorted) {
-            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
-
-            final long trackId = item.optLong("id", -1);
-            if (trackId <= 0) continue;
-
-            try {
-                Lyrics lyrics = fetchLyricsByTrackId(trackId, arl);
-                if (lyrics != null) {
-                    String title = item.optString("title", "");
-                    JSONObject artistObj = item.optJSONObject("artist");
-                    String artist = artistObj != null ? artistObj.optString("name", "") : "";
-                    long durationSec = item.optInt("duration", 0);
-                    int score = LyricsRequests.scoreLyricsCandidate(
-                            title, artist, durationSec, lyrics, track);
-                    scored.add(new ScoredSong(score, lyrics, title, artist, durationSec));
-                }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Could not fetch Deezer lyrics by track ID", ex);
-            }
-        }
-
-        scored.sort((a, b) -> Integer.compare(b.score(), a.score()));
-        return scored;
-    }
 
     private static int scoreCandidate(JSONObject item, TrackInfo track) {
         String title = item.optString("title", "");
@@ -192,9 +142,6 @@ public final class DeezerProvider extends ScoredSongProvider {
         jwtExpiryMs = 0;
     }
 
-    /** Lookups that succeeded, including tracks without a version. Failed requests are retried. */
-    private static final Map<TrackInfo, TrackVersion> versions = Utils.createSizeRestrictedMap(64, true);
-
     /**
      * The version of the track, from the title_short and title_version fields of Deezer's own
      * search results. The variant is empty when Deezer has no exact match or the track has no
@@ -223,8 +170,8 @@ public final class DeezerProvider extends ScoredSongProvider {
         JSONArray data = getJson(url).optJSONArray("data");
         if (data == null) throw new IOException("Deezer search has no results array");
 
-        String wantedTitle = TrackVersion.normalize(track.title());
-        String wantedArtist = TrackVersion.normalize(track.artist());
+        final String wantedTitle = TrackVersion.normalize(track.title());
+        final String wantedArtist = TrackVersion.normalize(track.artist());
         // The full title is matched first. Short title equality alone would confuse the
         // original recording with a remix or acoustic version of that same song.
         for (int pass = 0; pass < 2; pass++) {
@@ -235,9 +182,9 @@ public final class DeezerProvider extends ScoredSongProvider {
                 if (artist == null || !wantedArtist.equals(TrackVersion.normalize(artist.optString("name", "")))) {
                     continue;
                 }
-                String full = item.optString("title", "");
-                String shortTitle = item.optString("title_short", "");
-                String version = item.optString("title_version", "");
+                final String full = item.optString("title", "");
+                final String shortTitle = item.optString("title_short", "");
+                final String version = item.optString("title_version", "");
                 final boolean matches = pass == 0
                         ? wantedTitle.equals(TrackVersion.normalize(full))
                         : TrackVersion.matchesStructuredTitle(track.title(), full, shortTitle, version);
@@ -254,13 +201,187 @@ public final class DeezerProvider extends ScoredSongProvider {
         HttpURLConnection connection = LyricsRequests.openConnection(url, Map.of("Accept", "application/json"));
         try {
             final int httpCode = connection.getResponseCode();
-            if (httpCode != Requester.HTTP_STATUS_CODE_SUCCESS) throw new IOException("Deezer HTTP " + httpCode);
+            if (httpCode != Requester.HTTP_STATUS_CODE_SUCCESS)
+                throw new IOException("Deezer HTTP " + httpCode);
             JSONObject json = Requester.parseJSONObject(connection);
-            if (json.has("error")) throw new IOException("Deezer error: " + json.optString("error"));
+            if (json.has("error"))
+                throw new IOException("Deezer error: " + json.optString("error"));
             return json;
         } finally {
             connection.disconnect();
         }
+    }
+
+    private static String payload(long trackId, String query) throws Exception {
+        JSONObject variables = new JSONObject();
+        variables.put("trackId", String.valueOf(trackId));
+        JSONObject payload = new JSONObject();
+        payload.put("operationName", "SynchronizedTrackLyrics");
+        payload.put("variables", variables);
+        payload.put("query", query);
+        return payload.toString();
+    }
+
+    /**
+     * @param retryOnExpiry Fetches a fresh token and repeats the call once when the token
+     *                      is refused, because tokens expire after a few minutes.
+     */
+    @Nullable
+    private static JSONObject postPipe(String body, String arl, boolean retryOnExpiry)
+            throws Exception {
+        LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
+
+        String jwt = getJwt(arl);
+        if (jwt == null) {
+            return null;
+        }
+
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "Bearer " + jwt);
+        headers.put("Accept", "application/json");
+
+        HttpURLConnection connection = LyricsRequests.postJson(PIPE_URL, body, headers);
+        try {
+            final int httpCode = connection.getResponseCode();
+            if (httpCode == 401 || httpCode == 403) {
+                dropJwt();
+                return retryOnExpiry ? postPipe(body, arl, false) : null;
+            }
+            if (httpCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                LyricsRequests.logFailure("Deezer", connection);
+                return null;
+            }
+            return Requester.parseJSONObject(connection);
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not postPipe", ex);
+            return null;
+        } finally {
+            connection.disconnect();
+        }
+    }
+
+    @Nullable
+    private static List<String> creditLines(JSONObject lyrics) {
+        List<String> credits = new ArrayList<>(2);
+        final String writers = flatten(lyrics.opt("writers"));
+        if (writers != null) {
+            credits.add("Writer(s): " + writers);
+        }
+        final String copyright = LyricsRequests.optString(lyrics, "copyright");
+        if (copyright != null) {
+            credits.add("Copyright: " + copyright);
+        }
+        return credits.isEmpty() ? null : credits;
+    }
+
+    /** The writers field is a string on some tracks and a list on others. */
+    @Nullable
+    private static String flatten(@Nullable Object value) {
+        if (value instanceof String string) {
+            return string.trim().isEmpty() ? null : string.trim();
+        }
+        if (value instanceof JSONArray array) {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < array.length(); i++) {
+                final String entry = array.optString(i, "").trim();
+                if (entry.isEmpty()) continue;
+                //noinspection SizeReplaceableByIsEmpty
+                if (builder.length() > 0) builder.append(", ");
+                builder.append(entry);
+            }
+            //noinspection SizeReplaceableByIsEmpty
+            return builder.length() == 0 ? null : builder.toString();
+        }
+        return null;
+    }
+
+    public static boolean validateArl(String arl) {
+        if (arl == null || arl.trim().isEmpty() || "null".equals(arl)) return false;
+        return accountId(arl) > 0;
+    }
+
+    /**
+     * @return the account behind the arl, or 0 when the cookie is rejected. Deezer answers
+     * an anonymous session instead of an error, so the user id is what tells them apart.
+     */
+    private static long accountId(String arl) {
+        try {
+            String url = GW_URL
+                    + "?method=deezer.getUserData"
+                    + "&input=3"
+                    + "&api_version=1.0"
+                    + "&api_token=";
+
+            Map<String, String> headers = new HashMap<>();
+            headers.put("Cookie", "arl=" + arl);
+            headers.put("Accept", "application/json");
+
+            HttpURLConnection connection = LyricsRequests.postJson(url, "{}", headers);
+            try {
+                if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                    return 0;
+                }
+                JSONObject response = Requester.parseJSONObject(connection);
+                JSONObject user = LyricsRequests.optPath(response, "results", "USER");
+                return user == null ? 0 : user.optLong("USER_ID", 0);
+            } finally {
+                connection.disconnect();
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not get Deezer account ID", ex);
+            return 0;
+        }
+    }
+
+    @Override
+    public String name() {
+        return "Deezer";
+    }
+
+    @Override
+    protected List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
+        String arl = getArl();
+        if (arl == null) {
+            return Collections.emptyList();
+        }
+
+        String jwt = getJwt(arl);
+        if (jwt == null) {
+            return Collections.emptyList();
+        }
+
+        JSONArray searchResults = searchTracks(track);
+        if (searchResults == null || searchResults.length() == 0) {
+            return Collections.emptyList();
+        }
+
+        List<JSONObject> sorted = sortCandidates(searchResults, track);
+
+        List<ScoredSong> scored = new ArrayList<>();
+        for (JSONObject item : sorted) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
+
+            final long trackId = item.optLong("id", -1);
+            if (trackId <= 0) continue;
+
+            try {
+                Lyrics lyrics = fetchLyricsByTrackId(trackId, arl);
+                if (lyrics != null) {
+                    String title = item.optString("title", "");
+                    JSONObject artistObj = item.optJSONObject("artist");
+                    String artist = artistObj != null ? artistObj.optString("name", "") : "";
+                    long durationSec = item.optInt("duration", 0);
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            title, artist, durationSec, lyrics, track);
+                    scored.add(new ScoredSong(score, lyrics, title, artist, durationSec));
+                }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch Deezer lyrics by track ID", ex);
+            }
+        }
+
+        scored.sort((a, b) -> Integer.compare(b.score(), a.score()));
+        return scored;
     }
 
     @Nullable
@@ -323,89 +444,6 @@ public final class DeezerProvider extends ScoredSongProvider {
         return null;
     }
 
-    private static String payload(long trackId, String query) throws Exception {
-        JSONObject variables = new JSONObject();
-        variables.put("trackId", String.valueOf(trackId));
-        JSONObject payload = new JSONObject();
-        payload.put("operationName", "SynchronizedTrackLyrics");
-        payload.put("variables", variables);
-        payload.put("query", query);
-        return payload.toString();
-    }
-
-    /**
-     * @param retryOnExpiry Fetches a fresh token and repeats the call once when the token
-     *                      is refused, because tokens expire after a few minutes.
-     */
-    @Nullable
-    private static JSONObject postPipe(String body, String arl, boolean retryOnExpiry)
-            throws Exception {
-        LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
-
-        String jwt = getJwt(arl);
-        if (jwt == null) {
-            return null;
-        }
-
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Authorization", "Bearer " + jwt);
-        headers.put("Accept", "application/json");
-
-        HttpURLConnection connection = LyricsRequests.postJson(PIPE_URL, body, headers);
-        try {
-            final int httpCode = connection.getResponseCode();
-            if (httpCode == 401 || httpCode == 403) {
-                dropJwt();
-                return retryOnExpiry ? postPipe(body, arl, false) : null;
-            }
-            if (httpCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
-                LyricsRequests.logFailure("Deezer", connection);
-                return null;
-            }
-            return Requester.parseJSONObject(connection);
-        } catch (IOException ex) {
-            Logger.printDebug(() -> "Could not postPipe", ex);
-            return null;
-        } finally {
-            connection.disconnect();
-        }
-    }
-
-    @Nullable
-    private static List<String> creditLines(JSONObject lyrics) {
-        List<String> credits = new ArrayList<>(2);
-        String writers = flatten(lyrics.opt("writers"));
-        if (writers != null) {
-            credits.add("Writer(s): " + writers);
-        }
-        String copyright = LyricsRequests.optString(lyrics, "copyright");
-        if (copyright != null) {
-            credits.add("Copyright: " + copyright);
-        }
-        return credits.isEmpty() ? null : credits;
-    }
-
-    /** The writers field is a string on some tracks and a list on others. */
-    @Nullable
-    private static String flatten(@Nullable Object value) {
-        if (value instanceof String string) {
-            return string.trim().isEmpty() ? null : string.trim();
-        }
-        if (value instanceof JSONArray array) {
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < array.length(); i++) {
-                String entry = array.optString(i, "").trim();
-                if (entry.isEmpty()) continue;
-                //noinspection SizeReplaceableByIsEmpty
-                if (builder.length() > 0) builder.append(", ");
-                builder.append(entry);
-            }
-            //noinspection SizeReplaceableByIsEmpty
-            return builder.length() == 0 ? null : builder.toString();
-        }
-        return null;
-    }
-
     @Nullable
     private Lyrics parseSyncedLyrics(JSONArray syncedLines, long trackId, String rawFormat,
                                      @Nullable List<String> creditLines) {
@@ -440,43 +478,5 @@ public final class DeezerProvider extends ScoredSongProvider {
         String sourceUrl = "https://www.deezer.com/track/" + trackId;
         return new Lyrics(lines, name(), false, null, null, null, creditLines,
                 rawFormat, "txt", sourceUrl);
-    }
-
-    public static boolean validateArl(String arl) {
-        if (arl == null || arl.trim().isEmpty() || "null".equals(arl)) return false;
-        return accountId(arl) > 0;
-    }
-
-    /**
-     * @return the account behind the arl, or 0 when the cookie is rejected. Deezer answers
-     *         an anonymous session instead of an error, so the user id is what tells them apart.
-     */
-    private static long accountId(String arl) {
-        try {
-            String url = GW_URL
-                    + "?method=deezer.getUserData"
-                    + "&input=3"
-                    + "&api_version=1.0"
-                    + "&api_token=";
-
-            Map<String, String> headers = new HashMap<>();
-            headers.put("Cookie", "arl=" + arl);
-            headers.put("Accept", "application/json");
-
-            HttpURLConnection connection = LyricsRequests.postJson(url, "{}", headers);
-            try {
-                if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
-                    return 0;
-                }
-                JSONObject response = Requester.parseJSONObject(connection);
-                JSONObject user = LyricsRequests.optPath(response, "results", "USER");
-                return user == null ? 0 : user.optLong("USER_ID", 0);
-            } finally {
-                connection.disconnect();
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not get Deezer account ID", ex);
-            return 0;
-        }
     }
 }

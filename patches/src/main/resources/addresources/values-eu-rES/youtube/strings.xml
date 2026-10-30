@@ -456,6 +456,15 @@ Txostenak publikoak dira eta kanal bat zerrendara gehitu aurretik berrikusi egit
   <string name="morphe_post_image_download_saved_single">Irudia %snon gorde da</string>
   <string name="morphe_post_image_download_failed">Ezin izan da irudia deskargatu</string>
   <string name="morphe_post_image_download_not_found">Ez da irurik aurkitu post honetan</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Postak itzuli</string>
+  <string name="morphe_post_translate_summary">Eduki sortzaileen postak itzulitzeko menu bateko elementua gehitzen du</string>
+  <string name="morphe_post_translate_language_title">Postaren itzulpen hizkuntza</string>
+  <string name="morphe_post_translate_flyout">Itzuli</string>
+  <string name="morphe_post_translate_flyout_original">Erakutsi jatorrizkoa</string>
+  <string name="morphe_post_translate_started">Itzulitzen...</string>
+  <string name="morphe_post_translate_failed">Ezin izan da posta itzuli</string>
+  <string name="morphe_post_translate_same_language">Posta dagoすでに itzulpen hizkuntzan</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Galdetu elementua gehitu menu zabagarria</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Bideoaren laburpen elementu bat gehitzen du feed-eko menu zabagarrian</string>
@@ -864,6 +873,8 @@ Hona konponduz, aktibu 'Bideo-emisioak imitatzea' eta alda 'Beherako bezeroa' 'T
   <string name="morphe_fix_transcript_title">Konpondu transkripzioa</string>
   <string name="morphe_fix_transcript_summary">Transkripzioa kargatzea eragoindu ditzakeen baldintza aurreko egiaztapen hutsbaten arazoa konpondu</string>
   <string name="morphe_captions_in_pip_title">Erakutsi subtituluak irudi-irudian</string>
+  <string name="morphe_stable_caption_blocks_title">Kaptuen blokak egonkorrak</string>
+  <string name="morphe_stable_caption_blocks_summary">Kaptuak automatikoak blok egonkor eta irakurgarretan sailatu. Batzuetan hitzak esan baino lehen agertu daitezke. Berrifundatzea beharrezkoa da.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Nabigazio botoiak</string>
   <string name="morphe_navigation_buttons_screen_summary">Aukeratu zein botoiak agertu behar diren behera navigazio barra</string>
@@ -1212,6 +1223,8 @@ Limitazioa: 'Bideo ekintza barra zaharra berreskuratu' tắt dago bada, 'Bideo g
   <string name="morphe_miniplayer_disable_resuming_summary">Desaktibatzen du \'Jarraitu ikusten\' miniplayer-a, app-a hasterean agertzen den YouTube Premium ezaugarri bat</string>
   <string name="morphe_miniplayer_screen_title">Mini-jokalaria</string>
   <string name="morphe_miniplayer_screen_summary">Personalizatu bideo pantaila txikiagoaren itxura eta jokapena</string>
+  <string name="morphe_miniplayer_not_available_title">Mini-erreproduzitzaile gehigarriak</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube-k mini-erreproduzitzaile gehigarri guztiak kendu ditu. Mini-erreproduzitzaile mota gehiago berreskuratzeko, patchatu YouTube 21.28.208 bertsioa edo lehenagokoak</string>
   <string name="morphe_miniplayer_type_title">Mini-jokalariaren mota</string>
   <string name="morphe_miniplayer_hide_title_title">Ezkutatu izenburua eta kanala</string>
   <string name="morphe_miniplayer_type_entry_0">Desaktibatuta</string>
@@ -1573,7 +1586,8 @@ Grabaketa automatikoa gelditu egiten da inkognito moduan, kontuen identitatea es
   <string name="morphe_series_tracker_marked">Episodioak ikusita markatu dira</string>
   <string name="morphe_series_tracker_undo">Utzi</string>
   <string name="morphe_series_tracker_enable_short">Gaitu</string>
-  <string name="morphe_series_tracker_new_episodes">{%1$s} episodico berri</string>
+  <string name="morphe_series_tracker_new_episode">one episodio berri</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s episodico berri</string>
   <string name="morphe_series_tracker_record_short">Grabatu progresua gailu honetan</string>
   <string name="morphe_series_tracker_follow_consent">"Zure sailak eta progresua gaildu honetan geratzen dira, YouTube kontu guztien artean partekatuz. YouTube historiako kontrolak ez dituzte aldatzen. Series menutik garbitu progresua.
 

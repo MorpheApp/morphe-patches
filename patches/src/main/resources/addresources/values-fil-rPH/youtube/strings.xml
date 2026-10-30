@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Mga sari-sari</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Ibalik ang mga lumang menu ng pagpipilian</string>
+  <string name="morphe_native_snackbar_title">Ipakita ang mga mensahe sa YouTube snackbar</string>
+  <string name="morphe_native_snackbar_summary">Ang mga mensahe ng Morphe, tulad ng kumpirmasyon ng button ng manlalaro, ay ipinapakita sa YouTube snackbar imbes na popup</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Alisin ang mga paghihigpit sa pagtugtog sa likuran</string>
   <string name="morphe_shorts_disable_background_playback_title">Patayin ang pag-play ng Shorts sa likuran</string>
@@ -455,6 +457,15 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_post_image_download_saved_single">Na-save ang imahe sa %s</string>
   <string name="morphe_post_image_download_failed">Hindi ma-download ang imahe</string>
   <string name="morphe_post_image_download_not_found">Walang nakitang imahe sa post na ito</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Isalin ang mga post</string>
+  <string name="morphe_post_translate_summary">Nagdaragdag ng flyout menu item para isalin ang mga post ng content creator</string>
+  <string name="morphe_post_translate_language_title">Wika ng pagsasalin ng post</string>
+  <string name="morphe_post_translate_flyout">Isalin</string>
+  <string name="morphe_post_translate_flyout_original">Ipakita ang orihinal</string>
+  <string name="morphe_post_translate_started">Isinasalin…</string>
+  <string name="morphe_post_translate_failed">Hindi maisalin ang post</string>
+  <string name="morphe_post_translate_same_language">Ang post ay nasa wika na ng pagsasalin</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Idagdag ang Ask item sa flyout menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Idinadagdag ang video summarize item sa feed flyout menu</string>
@@ -863,6 +874,8 @@ Dapat ibigay ang 'Caption cookies'"</string>
   <string name="morphe_fix_transcript_title">Ayusin ang transcript</string>
   <string name="morphe_fix_transcript_summary">Nilulutas ang isang failure ng precondition check na maaaring pumigil sa pag-load ng transcript</string>
   <string name="morphe_captions_in_pip_title">Ipakita ang mga caption sa picture-in-picture</string>
+  <string name="morphe_stable_caption_blocks_title">Stable na mga caption block</string>
+  <string name="morphe_stable_caption_blocks_summary">Igrupo ang mga automatic caption sa mga stable at madaling basahing block. Maaaring lumitaw ang ilang salita bago pa man mabigkas. Kailangang i-restart.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Mga pindutan ng nabigasyon</string>
   <string name="morphe_navigation_buttons_screen_summary">Pumili kung aling mga component ang lilitaw sa toolbar</string>
@@ -1209,6 +1222,8 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_miniplayer_disable_resuming_summary">Hindi pinapagana ang \'Continue watching\' miniplayer, isang tampok ng YouTube Premium na lumalabas sa paglunsad ng app.</string>
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">I-customize ang hitsura at pag-uugali ng minimize video player</string>
+  <string name="morphe_miniplayer_not_available_title">Karagdagang mga miniplayer</string>
+  <string name="morphe_miniplayer_not_available_summary">Inalis ng YouTube ang lahat ng karagdagang mga miniplayer. Upang maibalik ang higit pang mga uri ng miniplayer, i-patch ang YouTube 21.28.208 o mas luma</string>
   <string name="morphe_miniplayer_type_title">Uri ng miniplayer</string>
   <string name="morphe_miniplayer_hide_title_title">Itago ang pamagat at channel</string>
   <string name="morphe_miniplayer_type_entry_0">Na-disable</string>
@@ -1250,6 +1265,8 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_fix_status_bar_layout_summary">Pinapanatiling consistent ang layout ng status bar upang hindi ito sumakop sa mga itaas na bar at walang walang laman na espasyo sa itaas ng player. I-off ito kung crash ang app o magmukha nang mali ang mga itaas na bar</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Kislap</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Hindi suportado ng device na ito ang glow splash screen</string>
   <string name="morphe_theme_color_light_title">Likuran ng maliwanag na tema</string>
   <string name="morphe_theme_color_light_entry_2">Puti</string>

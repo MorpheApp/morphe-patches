@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Různé</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Obnovit starý vzhled nastavení YouTube</string>
+  <string name="morphe_native_snackbar_title">Zobrazit zprávy v YouTube snackbaru</string>
+  <string name="morphe_native_snackbar_summary">Zprávy Morphe, jako potvrzení tlačítka přehrávače, se zobrazují v YouTube snackbaru místo vyskakovacího okna</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Odstranit omezení přehrávání na pozadí</string>
   <string name="morphe_shorts_disable_background_playback_title">Zakázat automatické přehrávání Shorts v pozadí</string>
@@ -455,6 +457,15 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_post_image_download_saved_single">Obrázek byl uložen do %s</string>
   <string name="morphe_post_image_download_failed">Obrázek se nepodařilo stáhnout</string>
   <string name="morphe_post_image_download_not_found">V tomto příspěvku nebyl nalezen žádný obrázek</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Překládat příspěvky</string>
+  <string name="morphe_post_translate_summary">Přidá do vysouvacího menu položku pro překlad příspěvků tvůrců obsahu</string>
+  <string name="morphe_post_translate_language_title">Jazyk překladu příspěvku</string>
+  <string name="morphe_post_translate_flyout">Přeložit</string>
+  <string name="morphe_post_translate_flyout_original">Zobrazit originál</string>
+  <string name="morphe_post_translate_started">Překládání…</string>
+  <string name="morphe_post_translate_failed">Příspěvek se nepodařilo přeložit</string>
+  <string name="morphe_post_translate_same_language">Příspěvek je již v cílovém jazyce překladu</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Přidat položku Ask do rozbalovací nabídky</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Přidá položku shrnutí videa do rozbalovací nabídky v kanálu</string>
@@ -861,6 +872,8 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_fix_transcript_title">Opravte přepis</string>
   <string name="morphe_fix_transcript_summary">Vyřeší problém se selháním kontroly předpokladů, který může zabránit načtení přepisu</string>
   <string name="morphe_captions_in_pip_title">Zobrazovat titulky v režimu obraz v obraze</string>
+  <string name="morphe_stable_caption_blocks_title">Stabilní bloky titulků</string>
+  <string name="morphe_stable_caption_blocks_summary">Seskupuje automatické titulky do stabilních, čitelných bloků. Některá slova se mohou objevit dříve, než jsou vyslovena. Vyžaduje restart.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigační tlačítka</string>
   <string name="morphe_navigation_buttons_screen_summary">Vyberte, které komponenty se zobrazí v panelu nástrojů</string>
@@ -1209,6 +1222,8 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <string name="morphe_miniplayer_disable_resuming_summary">Vypne minipřehrávač \'Pokračovat ve sledování\', funkci YouTube Premium, která se zobrazí při spuštění aplikace</string>
   <string name="morphe_miniplayer_screen_title">Mini přehrávač</string>
   <string name="morphe_miniplayer_screen_summary">Přizpůsobte vzhled a chování minimalizovaného přehrávače videa</string>
+  <string name="morphe_miniplayer_not_available_title">Další mini přehrávače</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube odstranil všechny další mini přehrávače. Chcete-li obnovit více typů mini přehrávačů, patchujte YouTube 21.28.208 nebo starší verzi</string>
   <string name="morphe_miniplayer_type_title">Typ mini přehrávače</string>
   <string name="morphe_miniplayer_hide_title_title">Skrýt název a kanál</string>
   <string name="morphe_miniplayer_type_entry_0">Vypnuto</string>

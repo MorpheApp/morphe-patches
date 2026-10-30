@@ -12,7 +12,6 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import java.util.logging.Logger
 
@@ -29,7 +28,7 @@ internal val captionTrackCapturePatch = bytecodePatch {
         if (!is_21_10_or_greater) return@execute
         val hooks = try {
             val requestTrack = CaptionFileParserFingerprint.instructionMatches[1]
-                .instruction.getReference<FieldReference>()!!
+                .fieldReference
             val handler = NativeCaptionHandlerErrorFingerprint.classDef
             val error = NativeCaptionHandlerErrorFingerprint.method
             val selected = handler.methods.single { method ->

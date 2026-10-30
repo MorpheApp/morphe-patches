@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">その他</string>
   <string name="morphe_settings_screen_12_video_title">動画</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube の設定メニューを旧仕様に戻す</string>
+  <string name="morphe_native_snackbar_title">YouTubeのsnackbarにメッセージを表示</string>
+  <string name="morphe_native_snackbar_summary">プレイヤーボタンの確認など、Morpheのメッセージはポップアップの代わりにYouTubeのsnackbarで表示されます</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">バックグラウンド再生の制限を解除</string>
   <string name="morphe_shorts_disable_background_playback_title">ショートのバックグラウンド再生を無効化</string>
@@ -456,6 +458,15 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_post_image_download_saved_single">%s に画像を保存しました</string>
   <string name="morphe_post_image_download_failed">画像のダウンロードに失敗しました</string>
   <string name="morphe_post_image_download_not_found">この投稿には画像がありません</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">投稿を翻訳</string>
+  <string name="morphe_post_translate_summary">コンテンツクリエイターの投稿を翻訳するためのフライアウトメニュー項目を追加します</string>
+  <string name="morphe_post_translate_language_title">投稿の翻訳言語</string>
+  <string name="morphe_post_translate_flyout">翻訳</string>
+  <string name="morphe_post_translate_flyout_original">原文を表示</string>
+  <string name="morphe_post_translate_started">翻訳中…</string>
+  <string name="morphe_post_translate_failed">投稿を翻訳できませんでした</string>
+  <string name="morphe_post_translate_same_language">投稿はすでに翻訳先の言語で記述されています</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">「動画を要約して」をフライアウト メニューに追加</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">「この動画について質問する」欄を、欄内の「動画を要約して」がタップされた状態で開く項目を、フィードのフライアウト メニューに追加します</string>
@@ -864,6 +875,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_fix_transcript_title">文字起こしの不具合を修正</string>
   <string name="morphe_fix_transcript_summary">文字起こしの読み込み失敗の原因となる前提条件チェックのエラーを修正します</string>
   <string name="morphe_captions_in_pip_title">ピクチャー イン ピクチャーで字幕を表示</string>
+  <string name="morphe_stable_caption_blocks_title">安定した字幕ブロック</string>
+  <string name="morphe_stable_caption_blocks_summary">自動字幕を安定して読みやすいブロックにグループ化します。一部の単語は話される前に表示される場合があります。再起動が必要です。</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ナビゲーション ボタン</string>
   <string name="morphe_navigation_buttons_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
@@ -1212,6 +1225,8 @@ Automotive レイアウト
   <string name="morphe_miniplayer_disable_resuming_summary">アプリの起動にミニプレーヤーで動画を再開する YouTube Premium 機能「続きを見る」を無効にします</string>
   <string name="morphe_miniplayer_screen_title">ミニプレーヤー</string>
   <string name="morphe_miniplayer_screen_summary">アプリ内に表示される小さな画面のプレーヤーの外観と動作をカスタマイズします</string>
+  <string name="morphe_miniplayer_not_available_title">追加のミニプレーヤー</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube によってすべての追加のミニプレーヤーが削除されました。より多くのミニプレーヤーの種類を復元するには、YouTube 21.28.208 またはそれ以前のバージョンにパッチを適用してください</string>
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
   <string name="morphe_miniplayer_hide_title_title">タイトルとチャンネル名を非表示</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>

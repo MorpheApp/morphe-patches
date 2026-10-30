@@ -29,8 +29,6 @@ import app.morphe.patches.youtube.shared.WatchNextResponseParserFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -58,7 +56,7 @@ val hideRelatedVideosPatch = bytecodePatch(
 
         val continuationsField = with (WatchNextResponseParserFingerprint) {
             clearMatch() // Fingerprint is shared and indexes may no longer be correct.
-            instructionMatches[2].instruction.getReference<FieldReference>()!!
+            instructionMatches[2].fieldReference
         }
         val resultsClass = continuationsField.definingClass
 
@@ -73,10 +71,10 @@ val hideRelatedVideosPatch = bytecodePatch(
                     name = "emptyProtobufList"
                 )
             )
-        ).instructionMatches.last().instruction.getReference<MethodReference>()!!
+        ).instructionMatches.last().methodReference
 
         val sectionIdentifierField = RelatedItemSectionFingerprint
-            .instructionMatches[1].instruction.getReference<FieldReference>()!!
+            .instructionMatches[1].fieldReference
 
         val watchNextResponseModelClass = WatchNextResponseModelClassResolverFingerprint
             .instructionMatches.last().instruction.getReference<TypeReference>()!!.type
@@ -104,9 +102,9 @@ val hideRelatedVideosPatch = bytecodePatch(
             )
         ).let {
             val contentsField =
-                it.instructionMatches.first().instruction.getReference<FieldReference>()!!
+                it.instructionMatches.first().fieldReference
             val itemSectionRendererField =
-                it.instructionMatches.last().instruction.getReference<FieldReference>()!!
+                it.instructionMatches.last().fieldReference
             val itemSectionRendererDefaultInstance =
                 "${itemSectionRendererField.type}->a:${itemSectionRendererField.type}"
 
@@ -127,7 +125,7 @@ val hideRelatedVideosPatch = bytecodePatch(
             )
 
             val shelfRendererField = firstHomeThumbnailCrawlerFingerprint.instructionMatches[1]
-                .instruction.getReference<FieldReference>()!!
+                .fieldReference
             val shelfRendererDefaultInstance =
                 "${shelfRendererField.type}->a:${shelfRendererField.type}"
 

@@ -462,12 +462,47 @@ Om ervoor te zorgen dat scrobbling tijdens het afspelen op de achtergrond wordt 
   <string name="morphe_music_lyrics_section_display_title">Weergeven</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronisatie</string>
   <string name="morphe_music_lyrics_section_panel_title">Paneel</string>
-  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI-eindpunt</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alle providers uitgeschakeld - ingebouwde songteksten en ingesloten songteksten</string>
   <string name="morphe_music_lyrics_source_reset_title">Providerorder resetten?</string>
   <string name="morphe_music_lyrics_source_reset_message">Providers terugzetten naar de standaardprioriteitsvolgorde</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Rime-woordlijst</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"De Rime-wordlijst heeft ook UniDict nodig: vink in de Offline Dictionary-provider \"Chinese en Kantonese karakters (UniDict)\" aan en laat het eerst klaar downloaden. Zonder dit levert een lijst die karakters uitleest geen uitspraak.
+
+Vink de lijsten aan die de Rime Wordlist moet uitlezen, en tik dan op Opslaan om ze te downloaden. Een lijst die je hebt toegevoegd, wordt verwijderd als je hem uitvinkt.
+
+Elke lijst is jouw eigen tabel van woord naar uitspraak, een .dict.yaml met regels zoals:
+字 ham
+典 din2
+De eerste kolom is het woord, de tweede de uitspraak; extra kolommen en regels zonder tabblad worden genegeerd."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">No Rime word list is ticked for the language above. Tap this name to tick one, or pick a language that has a list</string>
+  <string name="morphe_music_lyrics_rime_dict_add">Toevoegen</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Rime-woordlijst toevoegen</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Een .dict.yaml-bestand, of een zip die er één bevat, met regels zoals 字 ham en 典 din2. De lijst wordt opgehaald zodra je hem aanvinkt en op Opslaan tikt, en de licentie kun je zelf controleren</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">Taalcode</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Twee of drie letters, bijvoorbeeld hak of wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">Naam</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">Wordt weergegeven onder de uitspraak, bijvoorbeeld Hakka (Meixian)</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">Adres van de woordlijst</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">https://-adres van het .dict.yaml-bestand of de bijbehorende zip</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">Karakters die niet in een woord voorkomen</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">Automatisch</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Cantonese karakters</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">Mandarijnkarakters</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">Geen karkteruitspraak</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">Vul de code, naam en adres in</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">De code moet uit twee of drie letters bestaan, bijvoorbeeld hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">Het adres moet beginnen met https://</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">De naam en het adres mogen geen verticale balk bevatten</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s heeft al een woordenlijst</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s wordt gelezen door de ingebouwde romaniseerder en kan geen woordlijst gebruiken</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Not used: this language already has its own reading, so untick it to remove it</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%1$s is toegevoegd - vink het aan en tik op Opslaan om het te downloaden</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">Woordlijsten gereed</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">Woordlijsten gereed (%1$d items)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">Uitziende woordlijst: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Downloaden van woordlijst mislukt - tik opnieuw op Opslaan om het opnieuw te proberen</string>
   <string name="morphe_music_lyrics_clear_cache_title">Opsgeslagen songteksten wissen</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Verwijder de songteksten die op dit apparaat zijn opgeslagen</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Verwijder de %1$s MB aan opgeslagen lyrics op dit apparaat</string>
   <string name="morphe_music_lyrics_clear_cache_done">%1$s MB gewist</string>
   <string name="morphe_music_token_dialog_get_token">Token ophalen</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-gebruikerstoken</string>
@@ -517,14 +552,22 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_copy_button_title">Toon Kopieer knop</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tik om originele songteksten als platte tekst te kopiëren; lang drukken om het ruwe songtekstbestand op te slaan in Downloads</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Toon Vertaal knop</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling aan/uit te schakelen; lang drukken voor alleen vertaling. Gebruikt providervertalingen, Google Translate of een OpenAI-compatible API</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">Toon romaniseerknop</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om transliteratie aan/uit te schakelen; lang drukken voor alleen transliteratie. Gebruikt providertransliteratie, Google Translate of een OpenAI-compatible API</string>
-  <string name="morphe_music_lyrics_local_romanization_title">Lokale transliteratie en uitlijning</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">Translitereren op het apparaat wanneer de provider, uw model en Google Translate falen. De lezing volgt elk woord van een tijdgebonden songtekst; woord-synchronisatie moet ingeschakeld zijn. Chinees, Kantonese, Japans, Koreaans, Grieks, Russisch, Georgisch, Armeens; ongeveer 120 MB</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Uitspraak %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling in-/uit te schakelen; lang indrukken alleen voor vertaling. Gebruikt de ingeschakelde vertaaldiensten in de volgorde zoals vermeld</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Romaniseringsknop translitereren weergeven</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om romanisatie of transliteratie in-/uit te schakelen; lang indrukken alleen voor romanisatie of transliteratie. Gebruikt de ingeschakelde romaniseerders in de volgorde zoals vermeld</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">Transliteratie inschakelen</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">Toestaan dat uitspraken uit de lyricsonderdeel niet-latinisch zijn; indien uitgeschakeld worden alleen latinische letters, getekende letters en toongedigitalen behouden</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Lees elk woord uit een getimed lyric (woorden-synchronisatie ingeschakeld); Koreaans vereist geen download; veertien scripts delen één CLDR-download; Han-karakters worden uitgelezen door de Rime-woordlijst wanneer de woordenlijst de taal ondersteunt</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">Uitspraakwoordenboeken downloaden…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Lezingen gereed (%1$d items)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Downloaden mislukt - zet dit uit en weer aan om opnieuw te proberen</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Offline woordenboek</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japans (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Chinese en Cantonese karakters (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chinese woorden (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grieks, Slavisch Cyrillisch (inclusief Russisch, Oekraïens, Bulgaars, Servisch, Wit-Russisch, Macedonisch), Georgisch, Armeens, Hebreeuws, Arabisch, Amharsiërs en Syrisch transliteratie (CLDR, ~0,5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Uitspraak %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">Kies ten minste één woordenboek</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vernieuwknop weergeven</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tik om over te schakelen naar de volgende songtekstkandidaat; lang drukken om songteksten te zoeken op titel en artiest</string>
   <string name="morphe_music_lyrics_search_dialog_title">Zoek songteksten</string>
@@ -535,6 +578,10 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_saved">Opgeslagen</string>
   <string name="morphe_music_lyrics_word_sync_title">Gesynchroniseerde woorden of lettergrepen markeren</string>
   <string name="morphe_music_lyrics_word_sync_summary">Geef prioriteit aan woord-voor-woord songteksten wanneer beschikbaar. Wanneer songteksten woordtiming bevatten, wordt elk woord of elke lettergreep gemarkeerd in de maat met de muziek</string>
+  <string name="morphe_music_lyrics_line_scale_title">Inactieve regels comprimeren</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Maakt elke regel die momenteel niet wordt gezongen iets kleiner, bovenop het dimmen</string>
+  <string name="morphe_music_lyrics_split_background_title">Achtergrondzang apart tonen</string>
+  <string name="morphe_music_lyrics_split_background_summary">Scheidt achtergrondzang en harmonie van de hoofdzang. Verplaatst een achtergrondzang die in haakjes staat, zoals \'(Oh) I want you\', uit de gezongen regel naar een aparte, gedimde regel</string>
   <string name="morphe_music_lyrics_hide_played_title">Verberg […] regel</string>
   <string name="morphe_music_lyrics_hide_played_summary">Verberg songtekstregels boven de regel die momenteel wordt afgespeeld</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Verberg niet-afgespeelde songteksten</string>
@@ -592,10 +639,15 @@ Van toepassing op beide limieten. Bij 1,75 tellen vier tekens van volledige bree
   <string name="morphe_music_lyrics_translated_by_ai">Vertaald door %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Geromaniseerd door %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Getranslitereerd door %s</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Romaniseerd door Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Vertaald</string>
   <string name="morphe_music_lyrics_translation_language_title">Vertalingstaal</string>
-  <string name="morphe_music_lyrics_romanize_language_title">Taalfrequentie voor transliteratie</string>
+  <string name="morphe_music_lyrics_romanize_language_title">Taalkode romanisering of transliteratie</string>
+  <string name="morphe_music_lyrics_translation_target_language">"Doeltaal voor vertaling:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"Doeltaal voor romanisering of transliteratie:
+%s"</string>
   <string name="morphe_music_lyrics_translating">Bezig met vertalen…</string>
   <string name="morphe_music_lyrics_translate_failed">Kon de songtekst niet vertalen</string>
   <string name="morphe_music_lyrics_romanize_hide">Geromaniseerd</string>
@@ -609,7 +661,7 @@ Van toepassing op beide limieten. Bij 1,75 tellen vier tekens van volledige bree
   <string name="morphe_music_lyrics_refreshing">Vernieuwen</string>
   <string name="morphe_music_lyrics_refreshed">Vernieuwd</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-sleutel</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transcribeert of time-aligns de teksten voor het huidige nummer. Een aparte service, niet gerelateerd aan de OpenAI-compatible endpoint hierboven</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transcribeert of time-alignt de lyrics voor het huidige nummer</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-sleutel opgeslagen. Gebruik de uitlijningsknop in het zoekdialoogvenster voor teksten, of de paneelaanwijzing wanneer een nummer geen teksten heeft</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API-sleutel opgeslagen</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC accepteerde die sleutel niet</string>
@@ -625,58 +677,50 @@ Van toepassing op beide limieten. Bij 1,75 tellen vier tekens van volledige bree
   <string name="morphe_music_lyrics_transcribe_no_text">Geen teksten om uit te lijnen - in plaats daarvan transcriberen</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC kon dit nummer niet verwerken</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-credits zijn op voor dit nummer</string>
-  <string name="morphe_music_lyrics_about_summary">"Songteksten worden gekoppeld op basis van titel en artiest; ongebruikelijke metadata kan leiden tot niets of de verkeerde versie. Gebruik vernieuwen om van versie te wisselen. Providers met * vereisen een token. Niet alle ingeschakelde providers worden altijd om beurt aangevraagd, maar reageren op basis van hun snelheid.
+  <string name="morphe_music_lyrics_about_summary">"Songteksten worden afgewerkt op titel en artiest; ongewone metadata kan resulteren in geen resultaat of de verkeerde versie. Gebruik Vernieuwen om van versie te wisselen. Providers gemarkeerd met * vereisen een token. Niet alle ingeschakelde providers worden altijd in volgorde gevraagd, maar reageren op basis van hun snelheid.
 
-Songteksten komen van derde partijen die geen verbinding hebben gesponsord of goedgekeurd zijn door Morphe. Elk wordt gebruikt zoals het is: de songteksten, hun beschikbaarheid en licentie blijven bij die diensten en hun licentieverstrekkers, en het gebruik ervan kan onderworpen zijn aan hun servicevoorwaarden. Wat een ingeschakelde dienst bereikt, is alleen het opzoeken dat u heeft gevraagd - de titel, de artiest, en waar die dienst dat nodig heeft, de video-ID. Het optionele AI-eindpunt en QuickLRC-transcriptie werken alleen nadat u ze hebt geconfigureerd, en ontvangen de songtekst of de video-URL van het nummer."</string>
+Songteksten komen van derde-dienstverleners die niet gelieerd zijn aan, gesponsord worden door of gesteund worden door Morphe. Elke dienst wordt gebruikt zoals hij is: de songteksten, hun beschikbaarheid en hun licenties blijven bij deze diensten en hun licentiegevers, en het gebruik ervan kan onderworpen zijn aan hun servicevoorwaarden. Wat naar een ingeschakelde dienst gaat, is alleen de opvraag die je hebt gedaan - de titel, de artiest en, waar die dienst dat nodig heeft, de video-ID. Het optionele AI-eindpunt en QuickLRC-transcriptie worden alleen uitgevoerd nadat je ze hebt geconfigureerd, en ontvangen de songtekst of de video-URL van het nummer."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Schakel alleen de providers in die je gebruikt, of behoud de standaardinstelling - constante aanvragen kunnen kleine community-lyricsites overweldigen</string>
   <string name="morphe_music_lyrics_hide_info_title">Verberg creditregel</string>
   <string name="morphe_music_lyrics_hide_info_summary">Verberg de creditregel die onder de songteksten wordt weergegeven</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Wissel vertaling en romanisatie om</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">AAN zet romanisatie onder de songteksten en vertaling erboven; UIT houdt romanisatie boven en vertaling onder.</string>
-  <string name="morphe_music_lyrics_section_translation_title">Vertaling</string>
-  <string name="morphe_music_lyrics_section_romanization_title">Romanisatie</string>
-  <string name="morphe_music_lyrics_translation_provider_title">Vertalingsprovider</string>
-  <string name="morphe_music_lyrics_translation_provider_google">Google (Standaard, Gratis)</string>
-  <string name="morphe_music_lyrics_translation_provider_openai_compatible">OpenAI Compatibel (Aangepast)</string>
-  <string name="morphe_music_lyrics_romanization_provider_title">Romanisatieprovider</string>
-  <string name="morphe_music_lyrics_romanization_provider_google">Google (Standaard)</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">Lokaal / Offline Woordenboek</string>
-  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI Compatibel (Aangepast)</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">AI-sectie</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">Wordt alleen gebruikt wanneer de provider geen sectielabels zoals Refrein of Couplet levert, die vervolgens door je OpenAI-compatibele model worden gedetecteerd</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; Cloud Eindpunten</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configureer API-sleutels, modellen, eindpunten en prompt-sjablonen voor AI-providers.</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt URL (bijv. https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON plaatst romanisering of transliteratie onder de lyrics en vertaling bovenaan; OFF houdt romanisering of transliteratie boven en vertaling onder. Een uitspraak die boven elke lettergreep staat, bewaagt mee met de lettergreep, van boven naar beneden</string>
+  <string name="morphe_music_lyrics_force_center_title">Altijd lyrics centreren</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON plaatst elke regel in het midden en negeert de bronalignement, inclusief duet-partijen; OFF behoudt de alignement zoals de lyrics vragen</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Minstens één aanbieder moet ingeschakeld blijven</string>
+  <string name="morphe_music_lyrics_translation_provider_title">Vertaling</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">Romanisering of transliteratie</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Offline woordenboek</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime-woordlijst</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Secties detecteren met AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Alleen gebruikt wanneer de aanbieder geen sectielabels zoals Refrein of Strofe aanbiedt, die uw OpenAI-compatibele model dan detecteert. Het bewerken van de rij opent ook de prompt</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt-URL (bijv. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt-sjabloon</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt opgeslagen</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt opgeslagen, maar het AI-endpoint is nog niet bruikbaar. Configureer het eerst onder AI-instellingen</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt gereset</string>
-  <string name="morphe_music_lyrics_ai_extra_body_invalid">Geen geldige JSON. Corrigeer het of wis het veld voordat u opslaat</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Instellingen voor vertaling &amp; romanisatie opgeslagen</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Instellingen zijn teruggezet naar de standaardinstellingen</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Basis-URL moet beginnen met http:// of https://</string>
-  <string name="morphe_music_lyrics_ai_config_test_connection">Verbinding testen</string>
-  <string name="morphe_music_lyrics_ai_config_endpoint_label">Endpoints configureren</string>
-  <string name="morphe_music_lyrics_ai_config_show_all">Alle endpoints tonen</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Instellingen onvolledig of afgewezen door de aanbieder</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Verbinding valideren…</string>
-  <string name="morphe_music_lyrics_ai_config_translation_provider_label">Vertalingsprovider</string>
-  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">Romanisatieprovider</string>
-  <string name="morphe_music_lyrics_ai_config_fetch_models">Modellen ophalen</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Verbonden! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Verbinding mislukt. Controleer de instellingen.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Voer eerst de API-sleutel in</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Modellen ophalen…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Selecteer een model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Het ophalen van modellen is mislukt. Controleer de API-sleutel of verbinding.</string>
-  <string name="morphe_music_lyrics_ai_config_gemini_section">Gemini API-instellingen</string>
-  <string name="morphe_music_lyrics_ai_config_openai_compat_section">OpenAI-compatibel (aangepast eindpunt)</string>
-  <string name="morphe_music_lyrics_ai_config_deepl_section">DeepL API-instellingen</string>
-  <string name="morphe_music_lyrics_ai_config_api_key_label">API-sleutel</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Basis-URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Kies een service</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API-sleutel (optioneel)</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">Vertaalprompt</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra request body (optionele JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Extra verzoekheaders (optionele JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Citeer namen en waarden, bijv. {\"api-key\": \"abc\"}. Een niet-geciteerde waarde die / : of een cijfer bevat, wordt afgewezen. Een lege waarde verwijdert een header.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Citeer namen en waarden, bijv. {\"temperature\": 0,3}. Een niet-geciteerde waarde die / of : bevat, wordt afgewezen. Model en berichten kunnen hier niet worden ingesteld.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Authenticatiesleutel (Gratis of Pro)</string>
-  <string name="morphe_music_lyrics_ai_config_summary">Configureer API-sleutels, modellen, endpoints en prompts</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Vetgedrukte pictogrammen uitschakelen</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Herstel Player Up next, Lyrics en Related tabbladen</string>

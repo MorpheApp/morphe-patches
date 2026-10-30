@@ -262,7 +262,7 @@ public final class DeArrowPatch {
         // Cannot use unsecured 'http', otherwise the connections fail to start and no callbacks hooks are made.
         String scheme = apiURI.getScheme();
         if (scheme == null || scheme.equals("http") || apiURI.getHost() == null) {
-            Utils.showToastLong("Invalid DeArrow API URL. Using default");
+            Utils.showSnackbarLong("Invalid DeArrow API URL. Using default");
             Settings.DEARROW_API_URL.resetToDefault();
             return validateSettings();
         }
@@ -445,7 +445,7 @@ public final class DeArrowPatch {
                 String toastMessage = (statusCode != 0)
                         ? str("morphe_dearrow_error", statusCode)
                         : str("morphe_dearrow_error_generic");
-                Utils.showToastLong(toastMessage);
+                Utils.showSnackbarLong(toastMessage);
             }
             // Load the DeArrow thumbnails again, which now use the fallback thumbnails.
             LithoRelayoutPatch.remountListViews();

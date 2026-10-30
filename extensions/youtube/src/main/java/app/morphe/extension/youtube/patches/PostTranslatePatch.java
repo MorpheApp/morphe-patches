@@ -42,7 +42,6 @@ import com.facebook.litho.TextContent;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -112,7 +111,10 @@ public final class PostTranslatePatch {
     /** Texts that overlap the first text by more than this are in the header of the post. */
     private static final int HEADER_TOLERANCE_DP = 2;
 
-    private static final byte[] POST_BYTES = "post".getBytes(StandardCharsets.US_ASCII);
+    /**
+     * Included in the identifier of the post elements.
+     */
+    private static final String POST = "post";
 
     /** The shown text can join the lines of the post text, or show invisible format characters. */
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("[\\s\\p{Cf}]+");
@@ -221,7 +223,7 @@ public final class PostTranslatePatch {
      * Called when an element is parsed. The element is not changed.
      */
     public static byte[] onElementLoaded(byte[] bytes) {
-        if (!ENABLED || bytes == null || !FeedVideoCardsPatch.contains(bytes, POST_BYTES)) {
+        if (!ENABLED || bytes == null || !FeedVideoCardsPatch.emlTextMayContain(bytes, POST)) {
             return bytes;
         }
         try {
@@ -240,7 +242,7 @@ public final class PostTranslatePatch {
                     break;
                 }
             }
-            if (identifier == null || !identifier.contains("post")) {
+            if (identifier == null || !identifier.contains(POST)) {
                 return bytes;
             }
 

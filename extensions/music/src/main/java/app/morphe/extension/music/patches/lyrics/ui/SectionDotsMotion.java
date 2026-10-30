@@ -23,34 +23,12 @@ public final class SectionDotsMotion {
 
     /** Below this a silence is breathing room, not a break. */
     public static final long MIN_GAP_MS = 3000L;
-
+    public static final State IDLE = new State(1f, false, 0f, new float[DOT_COUNT], 0f);
     private static final long INFERRED_FLOOR_MS = 1200L;
     private static final long INFERRED_MS_PER_CHAR = 90L;
     /** Caps the guess so a long line cannot reach into the next one. */
     private static final int INFERRED_MAX_CHARS = 40;
     private static final long INFERRED_CEILING_MS = 5000L;
-
-    /**
-     * A silence long enough to play the dots, anchored on the line that follows it.
-     *
-     * @param tagLineIndex The line the motion plays on, which is where its label would sit.
-     * @param gapStartMs   Where the previous line stops, or 0 for a silence before the first line.
-     */
-    public record Gap(int tagLineIndex, long gapStartMs, long gapEndMs) {
-    }
-
-    /**
-     * @param pillAlpha  Opacity of the label: 1 outside the gap, 0 while the dots are up.
-     * @param groupAlpha Opacity of the dot row.
-     * @param dotAlpha   Per dot, lighting up and going out in turn.
-     * @param expand     How far a line without a label opens up for the dots, 0 to 1.
-     */
-    public record State(float pillAlpha, boolean dotsVisible, float groupAlpha, float[] dotAlpha,
-                        float expand) {
-    }
-
-    public static final State IDLE = new State(1f, false, 0f, new float[DOT_COUNT], 0f);
-
     /** Reference cycle head at full size, scaled down for shorter gaps. */
     private static final float ENTER_MS = 3000f;
     private static final float DIP_MS = 3000f;
@@ -86,7 +64,7 @@ public final class SectionDotsMotion {
             firstIndex++;
         }
         if (firstIndex < lines.size()) {
-            LyricsLine first = lines.get(firstIndex);
+            final LyricsLine first = lines.get(firstIndex);
             if (first.startTimeMs() >= MIN_GAP_MS) {
                 gaps = new ArrayList<>(4);
                 gaps.add(new Gap(firstIndex, 0L, first.startTimeMs()));
@@ -94,7 +72,7 @@ public final class SectionDotsMotion {
         }
         int previousLead = -1;
         for (int i = 0; i < lines.size(); i++) {
-            LyricsLine line = lines.get(i);
+            final LyricsLine line = lines.get(i);
             if (line == null || line.isBG()) {
                 continue;
             }
@@ -144,7 +122,7 @@ public final class SectionDotsMotion {
 
         // Staggered so the last dot finishes exactly when the row hides.
         final float dotSpan = Math.max(1f, (vanishStart - enterEnd) / DOT_COUNT);
-        float[] dotAlpha = new float[DOT_COUNT];
+        final float[] dotAlpha = new float[DOT_COUNT];
         for (int i = 0; i < DOT_COUNT; i++) {
             final float lit = DOT_UNLIT + (1f - DOT_UNLIT)
                     * clamp((t - enterEnd - dotSpan * i) / dotSpan);
@@ -170,7 +148,7 @@ public final class SectionDotsMotion {
         if (end > line.startTimeMs()) {
             return end;
         }
-        List<Word> words = line.words();
+        final List<Word> words = line.words();
         for (int i = words.size() - 1; i >= 0; i--) {
             final long wordEnd = words.get(i).endMs();
             if (wordEnd > line.startTimeMs()) {
@@ -203,5 +181,24 @@ public final class SectionDotsMotion {
     private static float smooth(float v) {
         final float x = clamp(v);
         return x * x * (3f - 2f * x);
+    }
+
+    /**
+     * A silence long enough to play the dots, anchored on the line that follows it.
+     *
+     * @param tagLineIndex The line the motion plays on, which is where its label would sit.
+     * @param gapStartMs   Where the previous line stops, or 0 for a silence before the first line.
+     */
+    public record Gap(int tagLineIndex, long gapStartMs, long gapEndMs) {
+    }
+
+    /**
+     * @param pillAlpha  Opacity of the label: 1 outside the gap, 0 while the dots are up.
+     * @param groupAlpha Opacity of the dot row.
+     * @param dotAlpha   Per dot, lighting up and going out in turn.
+     * @param expand     How far a line without a label opens up for the dots, 0 to 1.
+     */
+    public record State(float pillAlpha, boolean dotsVisible, float groupAlpha, float[] dotAlpha,
+                        float expand) {
     }
 }

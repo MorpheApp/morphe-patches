@@ -104,7 +104,13 @@ public final class NavigationBarPatch {
         OPAQUE
     }
 
-    private static final NavigationBarStyle NAVIGATION_BAR_STYLE = Settings.NAVIGATION_BAR_STYLE.get();
+    /**
+     * The flags of the translucent navigation bar are also overridden without this patch,
+     * see {@link #isNavigationBarBehindSystemButtons(boolean)}. They are then left to the account.
+     */
+    private static final NavigationBarStyle NAVIGATION_BAR_STYLE = isPatchIncluded()
+            ? Settings.NAVIGATION_BAR_STYLE.get()
+            : NavigationBarStyle.DEFAULT;
 
     private static final boolean NARROW_NAVIGATION_BUTTONS = Settings.NARROW_NAVIGATION_BUTTONS.get();
 
@@ -224,43 +230,122 @@ public final class NavigationBarPatch {
     }
 
     /**
-     * Injection point.
-     * <p>
+     * Value of the navigation bar covering the system navigation buttons flag first read by the app,
+     * or null if not read yet.
+     */
+    @Nullable
+    private static volatile Boolean accountCoversSystemButtons;
+
+    /**
+     * Value of the feed behind the navigation bar flag first read by the app, or null if not read yet.
+     */
+    @Nullable
+    private static volatile Boolean accountFeedBehindNavigationBar;
+
+    /**
      * The translucent navigation bar comes from feature flags that not every account gets, so they
-     * are turned on to make the bar look the same on every account. With them, the navigation bar
-     * and the pages make room for the system navigation buttons, which is only right when
-     * the window is drawn behind them. That comes from the edge to edge top bar feature flag,
-     * so without it the room is added twice: the navigation bar is raised and an empty bar is left
-     * at the bottom (<a href="https://github.com/MorpheApp/morphe-patches/issues/3825">...</a>).
+     * are turned on to make the bar look the same on every account. With the navigation bar covering
+     * the system navigation buttons and the feed laid out behind it, the navigation bar and the pages
+     * make room for the system navigation buttons, which is only right when the window is drawn behind
+     * them. That comes from the edge to edge top bar feature flag, so without it the room is added twice:
+     * the navigation bar is raised and an empty bar is left at the bottom
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3825">...</a>), or the pages and
+     * the Shorts player end the height of the navigation bar above it
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/4159">...</a>,
+     * <a href="https://github.com/MorpheApp/morphe-patches/issues/4173">...</a>).
      * <p>
      * The app draws the window behind the system navigation buttons only on Android 12 and later,
      * so on older versions the flags are always turned off, or the room is added twice
      * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3864">...</a>).
      * <p>
-     * With {@link NavigationBarStyle#DEFAULT} the flags are left to the account.
+     * With {@link NavigationBarStyle#DEFAULT} the flags are left to the account, but they are still
+     * turned off without the edge to edge layout, which the Hide status bar patch can turn off
+     * for an account that has both.
+     *
+     * @param original The value the account first got, so all the classes that read the flag
+     *                 use the same value even if the account value changes while the app starts,
+     *                 the same as the edge to edge top bar flag.
      */
-    public static boolean useTranslucentNavigationBar(boolean original) {
-        if (NAVIGATION_BAR_STYLE == NavigationBarStyle.DEFAULT) {
+    private static boolean isNavigationBarBehindSystemButtons(boolean original) {
+        try {
+            // Some devices keep the window above the system navigation buttons also with the edge
+            // to edge layout, as found at a previous app start by the Hide status bar patch.
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || HideStatusBarPatch.isWindowAboveNavigationBar()) {
+                return false;
+            }
+
+            Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
+            // Null if not known yet, or the Hide status bar patch is not included.
+            // The edge to edge layout is then the one of the account, which the flags of the account follow.
+            if (edgeToEdge == null) {
+                return original;
+            }
+
+            return edgeToEdge && (original || NAVIGATION_BAR_STYLE != NavigationBarStyle.DEFAULT);
+        } catch (Exception ex) {
+            Logger.printException(() -> "isNavigationBarBehindSystemButtons failure", ex);
             return original;
         }
+    }
 
-        boolean translucent = original;
-        try {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-                translucent = false;
-            } else {
-                Boolean edgeToEdge = HideStatusBarPatch.isEdgeToEdgeTopBar();
-                // Null if not known yet, or the Hide status bar patch is not included.
-                if (edgeToEdge != null) {
-                    translucent = edgeToEdge;
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "useTranslucentNavigationBar failure", ex);
+    /**
+     * Injection point.
+     * <p>
+     * The navigation bar covers the system navigation buttons, see
+     * {@link #isNavigationBarBehindSystemButtons(boolean)}.
+     */
+    public static boolean useTranslucentNavigationBar(boolean original) {
+        Boolean accountValue = accountCoversSystemButtons;
+        final boolean firstRead = accountValue == null;
+        if (firstRead) {
+            accountValue = original;
+            accountCoversSystemButtons = accountValue;
         }
 
-        translucentNavigationBarForced = translucent;
+        final boolean translucent = isNavigationBarBehindSystemButtons(accountValue);
+        if (firstRead) {
+            Logger.printDebug(() -> "Navigation bar covers system buttons: " + translucent + " (account: " + original
+                    + ", edge to edge: " + HideStatusBarPatch.isEdgeToEdgeTopBar()
+                    + ", window above navigation bar: " + HideStatusBarPatch.isWindowAboveNavigationBar()
+                    + ", style: " + NAVIGATION_BAR_STYLE + ")");
+        }
+        translucentNavigationBarForced = NAVIGATION_BAR_STYLE != NavigationBarStyle.DEFAULT && translucent;
+        navigationBarCoversSystemButtons = translucent;
         return translucent;
+    }
+
+    /**
+     * If the app was last told the navigation bar covers the system navigation buttons,
+     * with any navigation bar style.
+     */
+    private static volatile boolean navigationBarCoversSystemButtons;
+
+    static boolean isNavigationBarCoveringSystemButtons() {
+        return navigationBarCoversSystemButtons;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The feed is laid out behind the navigation bar. It follows the navigation bar covering
+     * the system navigation buttons: some pages add the navigation bar height below their content
+     * when the navigation bar covers the system navigation buttons, as they are expected to be
+     * laid out behind it, and the list padding for the navigation bar is only set with the edge
+     * to edge layout. See {@link #isNavigationBarBehindSystemButtons(boolean)}.
+     */
+    public static boolean useFeedBehindNavigationBar(boolean original) {
+        Boolean accountValue = accountFeedBehindNavigationBar;
+        final boolean firstRead = accountValue == null;
+        if (firstRead) {
+            accountValue = original;
+            accountFeedBehindNavigationBar = accountValue;
+        }
+
+        final boolean feedBehind = isNavigationBarBehindSystemButtons(accountValue);
+        if (firstRead) {
+            Logger.printDebug(() -> "Feed behind navigation bar: " + feedBehind + " (account: " + original + ")");
+        }
+        return feedBehind;
     }
 
     /**
@@ -292,11 +377,11 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      * <p>
-     * The blurred, translucent background of the navigation bar and the feed laid out behind it
-     * only change how the bar looks, not the room left for the system navigation buttons, so they
-     * are turned on from Android 12 also when the window is not drawn edge to edge. With
-     * {@link NavigationBarStyle#OPAQUE}, they follow {@link #useTranslucentNavigationBar(boolean)}
-     * instead. With {@link NavigationBarStyle#DEFAULT} they are left to the account.
+     * The blurred, translucent background of the navigation bar only changes how the bar looks,
+     * not the room left for the system navigation buttons, so it is turned on from Android 12 also
+     * when the window is not drawn edge to edge. With {@link NavigationBarStyle#OPAQUE}, it follows
+     * {@link #isNavigationBarBehindSystemButtons(boolean)} instead. With {@link NavigationBarStyle#DEFAULT}
+     * it is left to the account.
      */
     public static boolean useTranslucentNavigationBarBackground(boolean original) {
         if (NAVIGATION_BAR_STYLE == NavigationBarStyle.DEFAULT) {
@@ -307,7 +392,7 @@ public final class NavigationBarPatch {
         if (NAVIGATION_BAR_STYLE != NavigationBarStyle.OPAQUE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             translucent = true;
         } else {
-            translucent = useTranslucentNavigationBar(original);
+            translucent = isNavigationBarBehindSystemButtons(original);
         }
 
         translucentNavigationBarBackgroundForced = translucent;

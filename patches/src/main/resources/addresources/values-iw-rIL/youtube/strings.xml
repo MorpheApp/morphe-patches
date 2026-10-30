@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">שונות</string>
   <string name="morphe_settings_screen_12_video_title">סרטון</string>
   <string name="morphe_restore_old_settings_menus_title">שחזר את מסך הגדרות YouTube הישן</string>
+  <string name="morphe_native_snackbar_title">הצג הודעות ב-snackbar של YouTube</string>
+  <string name="morphe_native_snackbar_summary">הודעות Morphe, כמו אישור כפתור נגן, מוצגות ב-snackbar של YouTube במקום חלונית קופצת</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">הסר הגבלות השמעת רקע</string>
   <string name="morphe_shorts_disable_background_playback_title">השבת הפעלת רקע</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">התמונה נשמרה ב-%s</string>
   <string name="morphe_post_image_download_failed">לא ניתן להוריד את התמונה</string>
   <string name="morphe_post_image_download_not_found">לא נמצאה תמונה בפוסט זה</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">תרגום פוסטים</string>
+  <string name="morphe_post_translate_summary">מוסיף פריט לתפריט הצף לתרגום פוסטים של יוצרי תוכן</string>
+  <string name="morphe_post_translate_language_title">שפת תרגום הפוסט</string>
+  <string name="morphe_post_translate_flyout">תרגום</string>
+  <string name="morphe_post_translate_flyout_original">הצג מקור</string>
+  <string name="morphe_post_translate_started">מתרגם...</string>
+  <string name="morphe_post_translate_failed">לא ניתן היה לתרגם את הפוסט</string>
+  <string name="morphe_post_translate_same_language">הפוסט כבר כתוב בשפת התרגום</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">הוספת פריט שאל לתפריט קיבול</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">מוסיף פריט סיכום וידאו לתפריט קיבול הזרם</string>
@@ -863,6 +874,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">תיקון תמליל</string>
   <string name="morphe_fix_transcript_summary">פותר כשל בבדיקת תנאי מוקדם שעלול למנוע טעינה של התמלול</string>
   <string name="morphe_captions_in_pip_title">הצג כתוביות במופע בתוך תמונה</string>
+  <string name="morphe_stable_caption_blocks_title">בלוקים יציבים של כתוביות</string>
+  <string name="morphe_stable_caption_blocks_summary">קיבוץ כתוביות אוטומטיות לבלוקים יציבים וקריאים. ייתכן שחלק מהמילים יופיעו לפני שנאמרו. נדרשת הפעלה מחדש.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">לחצני ניווט</string>
   <string name="morphe_navigation_buttons_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
@@ -1211,6 +1224,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">משבית את הנגן המיני \'המשך לצפות\', תכונה בתשלום של YouTube Premium שמופיעה בעת הפעלת האפליקציה</string>
   <string name="morphe_miniplayer_screen_title">מיני-נגן</string>
   <string name="morphe_miniplayer_screen_summary">התאם אישית את המראה וההתנהגות של נגן הווידאו הממוזער</string>
+  <string name="morphe_miniplayer_not_available_title">נגני מיניเพิ่มเติม</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube הסירה את כל נגני המיני הנוספים. כדי לשחזר סוגי נגני מיני נוספים, יש להפעיל פאץ\' לגרסה 21.28.208 של YouTube או גרסה ישנה יותר</string>
   <string name="morphe_miniplayer_type_title">סוג מיני-נגן</string>
   <string name="morphe_miniplayer_hide_title_title">הסתר כותרת וערוץ</string>
   <string name="morphe_miniplayer_type_entry_0">מושבת</string>
@@ -1572,7 +1587,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_marked">פרקים מסומנים כנצפים</string>
   <string name="morphe_series_tracker_undo">בטל</string>
   <string name="morphe_series_tracker_enable_short">הפעל</string>
-  <string name="morphe_series_tracker_new_episode"><b>1</b> פרק חדש</string>
+  <string name="morphe_series_tracker_new_episode">1 פרק חדש</string>
   <string name="morphe_series_tracker_new_episodes">%1$s פרקים חדשים</string>
   <string name="morphe_series_tracker_record_short">תעד התקדמות במכשיר זה</string>
   <string name="morphe_series_tracker_follow_consent">"הסדרה שלך וההתקדמות נשארים על מכשיר זה, משותפים בין חשבונות של YouTube. בקרות היסטוריית YouTube אינה משנות אותם. נקה התקדמות מהתפריט סדרה.

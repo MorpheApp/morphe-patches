@@ -151,7 +151,7 @@ val feedCardLayoutPatch = bytecodePatch(
 
             // The cards are found by the bytes of their element.
             ElementItemConstructorFingerprint.let {
-                val elementBytesField = it.instructionMatches[1].getFieldAccessed()
+                val elementBytesField = it.instructionMatches[1].fieldReference
 
                 it.classDef.apply {
                     interfaces.add(EXTENSION_ELEMENT_ITEM_INTERFACE)
@@ -210,8 +210,8 @@ val feedCardLayoutPatch = bytecodePatch(
 
         WatchNextUiReadyFingerprint(uiReadyCommandMethod).let {
             it.method.apply {
-                val responseField = it.instructionMatches.first().getFieldAccessed()
-                val uiReadyCommandField = it.instructionMatches[3].getFieldAccessed()
+                val responseField = it.instructionMatches.first().fieldReference
+                val uiReadyCommandField = it.instructionMatches[3].fieldReference
                 val parameterType = parameterTypes.first().toString()
 
                 it.classDef.methods.add(

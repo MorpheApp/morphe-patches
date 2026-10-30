@@ -11,7 +11,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -22,7 +21,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
@@ -49,7 +47,7 @@ internal val fixPreferenceIconPatch = bytecodePatch{
 
         FindPreferenceByIndexFingerprint.let {
             val getAllPreferenceField = it.instructionMatches.last()
-                .instruction.getReference<FieldReference>()!!
+                .fieldReference
 
             it.classDef.apply {
                 helperMethod = ImmutableMethod(

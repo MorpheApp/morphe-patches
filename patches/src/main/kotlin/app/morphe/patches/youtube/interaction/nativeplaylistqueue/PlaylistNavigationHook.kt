@@ -11,7 +11,6 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.layout.playlistautoplay.NavigationIntentEnumFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 /** Resolve the shared native navigation owner for controls and the playback-engine bridge. */
@@ -25,7 +24,7 @@ internal fun installPlaylistNavigation(
     // The playlist controls are created with the playlist's own navigator.
     val creation = playlistControlsCreationFingerprint(controllerType).match()
     val navigatorType = creation.instructionMatches[4].instruction.getReference<TypeReference>()!!.type
-    val controlsField = creation.instructionMatches.last().instruction.getReference<FieldReference>()!!
+    val controlsField = creation.instructionMatches.last().fieldReference
 
     // 21.28+ declares the controls as an interface with two implementations.
     val controlsImplementations = if (AccessFlags.INTERFACE.isSet(classDefBy(controlsField.type).accessFlags)) {
@@ -37,7 +36,7 @@ internal fun installPlaylistNavigation(
     check(controlsImplementations.isNotEmpty()) { "Native playlist queue: playlist controls are missing" }
 
     controlsImplementations.forEach { constructor ->
-        val navigatorField = constructor.instructionMatches.single().instruction.getReference<FieldReference>()!!
+        val navigatorField = constructor.instructionMatches.single().fieldReference
         val controls = mutableClassDefBy(constructor.originalClassDef.type)
 
         controls.interfaces.add(NAVIGATOR_OWNER_INTERFACE)

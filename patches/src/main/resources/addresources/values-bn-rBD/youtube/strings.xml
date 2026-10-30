@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">বিবিধ</string>
   <string name="morphe_settings_screen_12_video_title">ভিডিও</string>
   <string name="morphe_restore_old_settings_menus_title">পুরানো YouTube সেটিংস স্ক্রিন পুনরুদ্ধার করুন</string>
+  <string name="morphe_native_snackbar_title">YouTube স্ন্যাকবারে বার্তা দেখান</string>
+  <string name="morphe_native_snackbar_summary">প্লেয়ার বাটনের নিশ্চিতকরণের মতো মোর্ফি বার্তা পপআপের পরিবর্তে YouTube স্ন্যাকবারে দেখানো হয়</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">পটভূমির প্লেব্যাক সীমাবদ্ধতা সরান</string>
   <string name="morphe_shorts_disable_background_playback_title">ব্যাকগ্রাউন্ড প্লে অক্ষম করুন</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">ছবিটি %s-এ সংরক্ষণ করা হয়েছে</string>
   <string name="morphe_post_image_download_failed">ছবিটি ডাউনলোড করা সম্ভব হয়নি</string>
   <string name="morphe_post_image_download_not_found">এই পোস্টে কোনো ছবি পাওয়া যায়নি</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">পোস্ট অনুবাদ করুন</string>
+  <string name="morphe_post_translate_summary">কনটেন্ট ক্রিয়েটরদের পোস্ট অনুবাদ করার জন্য একটি ফ্লাইআউট মেনু আইটেম যোগ করে</string>
+  <string name="morphe_post_translate_language_title">পোস্ট অনুবাদের ভাষা</string>
+  <string name="morphe_post_translate_flyout">অনুবাদ করুন</string>
+  <string name="morphe_post_translate_flyout_original">মূলটি দেখুন</string>
+  <string name="morphe_post_translate_started">অনুবাদ করা হচ্ছে…</string>
+  <string name="morphe_post_translate_failed">পোস্টটি অনুবাদ করা সম্ভব হয়নি</string>
+  <string name="morphe_post_translate_same_language">পোস্টটি ইতিমধ্যেই অনুবাদের ভাষায় রয়েছে</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">ফ্লাইআউট মেনুতে \'Ask\' আইটেম যোগ করুন</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">ফিড ফ্লাইআউট মেনুতে ভিডিও সামারাইজ আইটেম যোগ করা হয়</string>
@@ -863,6 +874,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_fix_transcript_title">ট্রান্সক্রিপ্ট সংশোধন</string>
   <string name="morphe_fix_transcript_summary">একটি প্রিকন্ডিশন চেক ব্যর্থতা সমাধান করে যা ট্রান্সক্রিপ্ট লোড হওয়া থেকে আটকাতে পারে</string>
   <string name="morphe_captions_in_pip_title">পি-ইন-পি-তে ক্যাপশন দেখান</string>
+  <string name="morphe_stable_caption_blocks_title">স্থিতিশীল ক্যাপশন ব্লক</string>
+  <string name="morphe_stable_caption_blocks_summary">স্বয়ংক্রিয় ক্যাপশনগুলোকে স্থিতিশীল এবং পঠনযোগ্য ব্লকে গ্রুপ করুন। কিছু শব্দ উচ্চারণের আগেই উপস্থিত হতে পারে। রিস্টার্ট করা প্রয়োজন।</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">নেভিগেশন বোতাম</string>
   <string name="morphe_navigation_buttons_screen_summary">নিচের নেভিগেশন বার-এ কোন বোতামগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
@@ -1211,6 +1224,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_miniplayer_disable_resuming_summary">\'কন্টিনিউ ওয়াচিং\' মিনিপ্লেয়ারকে নিষ্ক্রিয় করে, যা একটি ইউটিউব প্রিমিয়াম বৈশিষ্ট্য যা অ্যাপ চালু করার সময় প্রদর্শিত হয়</string>
   <string name="morphe_miniplayer_screen_title">মিনিপ্লেয়ার</string>
   <string name="morphe_miniplayer_screen_summary">সংক্ষেপিত ভিডিও প্লেয়ারের চেহারা এবং আচরণ কাস্টমাইজ করুন</string>
+  <string name="morphe_miniplayer_not_available_title">অতিরিক্ত মিনিপ্লেয়ার</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube সমস্ত অতিরিক্ত মিনিপ্লেয়ার সরিয়ে দিয়েছে। আরও মিনিপ্লেয়ার টাইপ পুনরুদ্ধার করতে, YouTube 21.28.208 বা তার আগের সংস্করণ প্যাচ করুন</string>
   <string name="morphe_miniplayer_type_title">মিনিপ্লেয়ার ধরণ</string>
   <string name="morphe_miniplayer_hide_title_title">শিরোনাম এবং চ্যানেল লুকান</string>
   <string name="morphe_miniplayer_type_entry_0">নিষ্ক্রিয় হয়েছে</string>
@@ -1252,6 +1267,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_fix_status_bar_layout_summary">স্ট্যাটাস বারের লেআউট ধ্রুবক রাখে, তাই এটি উপরের বারগুলি ঢাকবে না এবং প্লেয়ারের উপরে কোনো খালি জায়গা থাকবে না। অ্যাপটি ক্র্যাশ হলে বা উপরের বারগুলো ভুল দেখালে এই সেটিংটি বন্ধ করুন</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">গ্লো</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">এই ডিভাইসটি গ্লো স্প্ল্যাশ স্ক্রিন সমর্থন করে না</string>
   <string name="morphe_theme_color_light_title">হালকা থিমের পটভূমি</string>
   <string name="morphe_theme_color_light_entry_2">সাদা</string>

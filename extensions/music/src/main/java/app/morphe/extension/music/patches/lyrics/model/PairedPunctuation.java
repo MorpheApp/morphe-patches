@@ -59,9 +59,6 @@ import java.util.List;
  * Restores only complete enclosing punctuation shells that a split crosses.
  */
 public final class PairedPunctuation {
-    public record Pair(String opening, String closing) {
-    }
-
     public static final List<Pair> PAIRS = List.of(
             new Pair("\"", "\""),
             new Pair("'", "'"),
@@ -148,9 +145,6 @@ public final class PairedPunctuation {
             new Pair("｢", "｣")
     );
 
-    private record Shell(Pair pair, int openEnd, int closeStart) {
-    }
-
     private PairedPunctuation() {
     }
 
@@ -190,6 +184,56 @@ public final class PairedPunctuation {
         return Character.isWhitespace(cp) || Character.isSpaceChar(cp);
     }
 
+    /**
+     * Excludes whole-line shells, which {@link #restore} completes without an ellipsis.
+     */
+    static Pair crossedAt(String whole, int mid) {
+        for (int at = mid; at > 0; ) {
+            final int cp = whole.codePointBefore(at);
+            final int start = at - Character.charCount(cp);
+            final String ch = whole.substring(start, at);
+            for (Pair pair : PAIRS) {
+                if (!pair.opening().equals(ch)) continue;
+                int closeAt = findMatchingClose(whole, pair, start + pair.opening().length(), mid);
+                if (closeAt >= 0 && closeAt >= mid && closesAtEnd(whole, pair, start + pair.opening().length(), closeAt)
+                        && !wholeLineShell(whole, pair, start, closeAt)) {
+                    return pair;
+                }
+            }
+            at = start;
+        }
+        return null;
+    }
+
+    private static int findMatchingClose(String whole, Pair pair, int scanStart, int minClose) {
+        int depth = 1;
+        for (int i = scanStart; i < whole.length(); ) {
+            int cp = whole.codePointAt(i);
+            int len = Character.charCount(cp);
+            String ch = whole.substring(i, i + len);
+            if (pair.opening().equals(ch)) depth++;
+            else if (pair.closing().equals(ch)) {
+                depth--;
+                if (depth == 0) {
+                    if (i >= minClose) return i;
+                    else return -1; // matched too early; don't use for split after mid
+                }
+            }
+            i += len;
+        }
+        return -1;
+    }
+
+    private static boolean wholeLineShell(String whole, Pair pair, int openAt, int closeAt) {
+        int first = 0;
+        while (first < whole.length() && space(whole.codePointAt(first)))
+            first += Character.charCount(whole.codePointAt(first));
+        int last = whole.length();
+        while (last > first && space(whole.codePointBefore(last)))
+            last -= Character.charCount(whole.codePointBefore(last));
+        return openAt == first && closeAt + pair.closing().length() == last;
+    }
+
     private static boolean escaped(String text, int at) {
         int count = 0;
         while (at > 0 && text.charAt(--at) == '\\') count++;
@@ -218,5 +262,11 @@ public final class PairedPunctuation {
             } else at += Character.charCount(text.codePointAt(at));
         }
         return false;
+    }
+
+    public record Pair(String opening, String closing) {
+    }
+
+    private record Shell(Pair pair, int openEnd, int closeStart) {
     }
 }

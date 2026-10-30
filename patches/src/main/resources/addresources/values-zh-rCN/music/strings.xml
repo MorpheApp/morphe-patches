@@ -462,12 +462,47 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_section_display_title">显示</string>
   <string name="morphe_music_lyrics_section_sync_title">同步</string>
   <string name="morphe_music_lyrics_section_panel_title">面板</string>
-  <string name="morphe_music_lyrics_section_ai_endpoint_title">AI 端点</string>
   <string name="morphe_music_lyrics_source_all_disabled">所有提供商已禁用 - 内置歌词和嵌入歌词</string>
   <string name="morphe_music_lyrics_source_reset_title">重置提供程序顺序？</string>
   <string name="morphe_music_lyrics_source_reset_message">将提供程序恢复为默认优先级顺序</string>
+  <string name="morphe_music_lyrics_rime_dict_title">Rime词表</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"词库还需要UniDict：在离线字典提供程序中，勾选“中文和粤语字（UniDict）”，并等待其下载完成。没有它，读字列表将无法输出读音。
+
+勾选词库需要读取的列表，然后点击保存以下载。取消勾选已添加的列表时，该列表将被移除。
+
+每个列表都是您自己的字词对照表，即一个 .dict.yaml 文件，包含类似以下的行：
+字 ham
+典 din2
+第一列是字词，第二列是读音；额外列及没有制表符的行将被忽略。"</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">上方语言未勾选任何Rime词表。点击此名称以勾选一个，或选择一个有词表的语言</string>
+  <string name="morphe_music_lyrics_rime_dict_add">添加</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">添加Rime词表</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml 文件，或包含此类文件的压缩包，其中包含类似 字 ham 和 典 din2 的行。当您勾选列表并点击保存时，将获取该列表，您可以自行检查其许可协议</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">语言代码</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">两三个字母，如hak或wuu</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">名称</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">显示在读音下方，如客家话（梅县）</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">词表地址</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml或其zip的https://地址</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">非字词字符</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">自动</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">粤语字</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">普通话字</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">无字符读音</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">请填写代码、名称和地址</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">代码必须是两三个字母，如hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">地址必须以https://开头</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">名称和地址不能包含竖线</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s已有一个字词表</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s由内置罗马化程序读取，无法使用词表</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">未使用：此语言已有自己的读音，因此取消勾选以移除</string>
+  <string name="morphe_music_lyrics_rime_dict_added">已添加%1$s - 勾选并点击保存以下载</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">词表就绪</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">词表就绪（共%1$d项）</string>
+  <string name="morphe_music_lyrics_rime_dict_building">正在构建词表：%1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">词表下载失败 - 再次点击保存以重试</string>
   <string name="morphe_music_lyrics_clear_cache_title">清除缓存歌词</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">删除此设备上保留的歌词</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">删除设备上保留的歌词缓存 %1$s MB</string>
   <string name="morphe_music_lyrics_clear_cache_done">已清除 %1$s MB</string>
   <string name="morphe_music_token_dialog_get_token">获取令牌</string>
   <string name="morphe_music_apple_music_token_title">Apple Music 媒体用户令牌</string>
@@ -527,14 +562,22 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">显示复制按钮</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">点击以纯文本形式复制原始歌词；长按将原始歌词源文件保存至下载目录</string>
   <string name="morphe_music_lyrics_show_translate_button_title">显示翻译按钮</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">点击切换翻译；长按仅显示翻译。使用提供商翻译、Google 翻译或兼容 OpenAI 的 API</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">显示音译按钮</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">点击切换罗马音标注；长按仅显示罗马音。使用提供商罗马音、Google 翻译或兼容 OpenAI 的 API</string>
-  <string name="morphe_music_lyrics_local_romanization_title">本地罗马音与对齐</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">当提供商、您的模型及 Google 翻译均失败时，在设备上执行罗马音。读取内容跟随时间轴歌词的每一词；必须开启单词同步。支持中文、粤语、日语、韩语、希腊语、俄语、格鲁吉亚语、亚美尼亚语；约 120 MB</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">阅读 %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">点击切换翻译；长按仅翻译。使用按顺序排列的已启用翻译提供商</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">显示罗马化或意译按钮</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">点击切换罗马化或意译；长按仅进行罗马化或意译。使用按顺序排列的已启用罗马化提供商</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">启用意译</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">允许来自歌词源的非拉丁读音；关闭时，仅保留拉丁字母、带重音的字母和声调数字</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">读取时间对齐歌词（词同步开启）中的每个词；韩语无需下载；十四个脚本共享一个CLDR下载；当Rime词表的词表覆盖该语言时，汉字由Rime词表读取</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">正在下载读音字典……</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">读音准备就绪（%1$d 条条目）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">下载失败 - 请关闭后重新开启以重试</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">离线字典</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">日语（SudachiDict，约75 MB）</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">中文及粤语字（UniDict，约8 MB）</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">中文词（pinyin-pro，约17 MB）</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">希腊语、斯拉夫西里尔字母（包括俄语、乌克兰语、保加利亚语、塞尔维亚语、白俄罗斯语、马其顿语）、格鲁吉亚语、亚美尼亚语、希伯来语、阿拉伯语、阿姆哈拉语和叙利亚语意译（CLDR，约0.5 MB）</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">阅读 %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">请至少选择一个字典</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">显示刷新按钮</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">点击切换下一个歌词候选项；长按通过歌曲标题和歌手搜索歌词</string>
   <string name="morphe_music_lyrics_search_dialog_title">搜索歌词</string>
@@ -545,6 +588,10 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_saved">已保存</string>
   <string name="morphe_music_lyrics_word_sync_title">高亮显示同步的单词或音节</string>
   <string name="morphe_music_lyrics_word_sync_summary">优先考虑可用逐字歌词。当歌词带有时间标志，随着音乐及时高亮每个单词或音节</string>
+  <string name="morphe_music_lyrics_line_scale_title">收缩非活动行</string>
+  <string name="morphe_music_lyrics_line_scale_summary">将当前未演唱的每行稍微缩小，并在变暗的基础上绘制</string>
+  <string name="morphe_music_lyrics_split_background_title">单独显示背景人声</string>
+  <string name="morphe_music_lyrics_split_background_summary">将背景人声和和声从主唱行分开。将写在括号中的背景人声（例如“哦 我想要你”）移出演唱行，进入自己的一条较暗的行</string>
   <string name="morphe_music_lyrics_hide_played_title">隐藏已播歌词</string>
   <string name="morphe_music_lyrics_hide_played_summary">隐藏当前播放行之上的歌词行</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">隐藏未播歌词</string>
@@ -602,10 +649,15 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_translated_by_ai">由 %s 翻译</string>
   <string name="morphe_music_lyrics_romanized_by_ai">由 %s 音译</string>
   <string name="morphe_music_lyrics_romanized_by_local">由 %s 罗马化</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">由Rime罗马化（%s）</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">翻译</string>
   <string name="morphe_music_lyrics_translation_language_title">翻译目标语言</string>
-  <string name="morphe_music_lyrics_romanize_language_title">罗马化语言</string>
+  <string name="morphe_music_lyrics_romanize_language_title">罗马化或意译语言</string>
+  <string name="morphe_music_lyrics_translation_target_language">"翻译目标语言：
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"罗马化或转写目标语言：
+%s"</string>
   <string name="morphe_music_lyrics_translating">正在翻译…</string>
   <string name="morphe_music_lyrics_translate_failed">无法翻译歌词</string>
   <string name="morphe_music_lyrics_romanize_hide">已音译</string>
@@ -619,7 +671,7 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_refreshing">正在刷新</string>
   <string name="morphe_music_lyrics_refreshed">已刷新</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API 密钥</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC 为当前曲目转录或对齐歌词。这是一项独立服务，与上述兼容 OpenAI 的端点无关</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC为当前曲目转录或时间对齐歌词</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">已保存 QuickLRC 密钥。使用歌词搜索对话框中的对齐按钮，或在没有歌词的曲目出现面板提示时使用</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API 密钥已保存</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC 不接受该密钥</string>
@@ -635,58 +687,50 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_transcribe_no_text">无可对齐的歌词 - 改为进行转录</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC 无法处理此曲目</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">此曲目的 QuickLRC 积分已用完</string>
-  <string name="morphe_music_lyrics_about_summary">"歌词通过标题和歌手进行匹配，异常元数据可能导致无结果或找到错误版本。使用刷新按钮切换版本。标记 * 的提供商需要令牌。并非所有启用的提供商都会按顺序请求，而是根据其响应速度返回结果。
+  <string name="morphe_music_lyrics_about_summary">"歌词通过标题和艺术家进行匹配，不寻常的元数据可能导致找不到内容或找到错误版本。使用刷新切换版本。标记为 * 的提供程序需要令牌。并非总是按照您的顺序请求所有启用的提供程序，而是根据它们的响应速度返回结果。
 
-歌词来自第三方服务，这些服务与 Morphe 无关，未受其赞助或认可。每个服务的使用方式保持不变：歌词、可用性及许可权仍归服务商及其许可方所有，使用它们可能需遵守其服务条款。发送至启用服务的请求仅包含您查询的内容 — 标题、歌手以及该服务所需的视频 ID。可选 AI 端点和 QuickLRC 转录仅在您配置后运行，并接收歌词文本或曲目的视频 URL。"</string>
+歌词来自第三方服务，这些服务与Morphe无关，也未得到Morphe赞助或认可。每个服务按原样使用：歌词、其可用性及许可权仍归这些服务及其授权方所有，使用它们可能受其服务条款约束。发送至启用服务的查询仅包含您请求的信息——标题、艺术家以及该服务所需的视频ID。可选的AI端点和QuickLRC转录仅在配置后运行，并接收歌词文本或音轨的视频URL。"</string>
   <string name="morphe_music_lyrics_source_advice_summary">仅启用您使用的提供者，或保留默认值 - 频繁请求可能会压垮小型社区歌词网站</string>
   <string name="morphe_music_lyrics_hide_info_title">隐藏署名行</string>
   <string name="morphe_music_lyrics_hide_info_summary">隐藏显示在歌词下方的署名行</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交换翻译和音译</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">开启时，音译在歌词下方、翻译在歌词上方；关闭时，音译在歌词上方、翻译在歌词下方</string>
-  <string name="morphe_music_lyrics_section_translation_title">翻译</string>
-  <string name="morphe_music_lyrics_section_romanization_title">罗马化</string>
-  <string name="morphe_music_lyrics_translation_provider_title">翻译提供商</string>
-  <string name="morphe_music_lyrics_translation_provider_google">Google (默认，免费)</string>
-  <string name="morphe_music_lyrics_translation_provider_openai_compatible">OpenAI 兼容 (自定义)</string>
-  <string name="morphe_music_lyrics_romanization_provider_title">罗马化提供者</string>
-  <string name="morphe_music_lyrics_romanization_provider_google">Google (默认)</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">本地 / 离线词典</string>
-  <string name="morphe_music_lyrics_romanization_provider_openai_compatible">OpenAI 兼容 (自定义)</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">AI 段落识别</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">仅在提供商未发送如副歌或主歌等段落标签，且由您的 OpenAI 兼容模型检测到时使用</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">AI &amp; 云端端点</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">为 AI 提供者配置 API 密钥、模型、端点和提示词模板。</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">API 端点 URL (例如 https://api.openai.com/v1/chat/completions)</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">开启时将罗马化或意译置于歌词下方，翻译置于上方；关闭时将罗马化或意译置于上方，翻译置于下方。放置在每个音节上的读音会随之移动，从其音节上方移至下方</string>
+  <string name="morphe_music_lyrics_force_center_title">始终居中歌词</string>
+  <string name="morphe_music_lyrics_force_center_summary">开启时将每一行置于中间，忽略源对齐方式，包括对唱部分；关闭时保持歌词要求的对齐方式</string>
+  <string name="morphe_music_lyrics_providers_keep_one">必须至少保留一个提供商开启</string>
+  <string name="morphe_music_lyrics_translation_provider_title">翻译</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">罗马化或意译</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">离线字典</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime词表</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">使用AI检测段落</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">仅在提供商未提供诸如副歌或主歌等段落标签时使用，然后由你的兼容OpenAI模型进行检测。编辑该行也会打开其提示词</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API端点URL（例如 https://api.openai.com/v1/chat/completions，https://api.anthropic.com/v1/chat/completions，https://generativelanguage.googleapis.com/v1beta/openai/chat/completions）</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">提示词模板</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">占位符：{language}, {task}, {title}, {artist}, {count}, {lines}</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">提示词已保存</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">提示词已保存，但 AI 端点尚不可用。请先在 AI 设置中进行配置</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">提示词已重置</string>
-  <string name="morphe_music_lyrics_ai_extra_body_invalid">无效的 JSON。保存前请修复或清空该字段</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">翻译 &amp; 罗马化设置已保存</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">设置已重置为默认</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">基础 URL 必须以 http:// 或 https:// 开头</string>
-  <string name="morphe_music_lyrics_ai_config_test_connection">测试连接</string>
-  <string name="morphe_music_lyrics_ai_config_endpoint_label">配置端点</string>
-  <string name="morphe_music_lyrics_ai_config_show_all">显示所有端点</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">设置不完整或被提供商拒绝</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">正在验证连接…</string>
-  <string name="morphe_music_lyrics_ai_config_translation_provider_label">翻译提供商</string>
-  <string name="morphe_music_lyrics_ai_config_romanization_provider_label">罗马化提供商</string>
-  <string name="morphe_music_lyrics_ai_config_fetch_models">获取模型</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：已连接！（%2$s）</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s：连接失败。请检查设置。</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">请先输入API密钥</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">正在获取模型……</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">选择模型</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">获取模型失败。请检查 API 密钥或网络连接。</string>
-  <string name="morphe_music_lyrics_ai_config_gemini_section">Gemini API 设置</string>
-  <string name="morphe_music_lyrics_ai_config_openai_compat_section">OpenAI 兼容 (自定义端点)</string>
-  <string name="morphe_music_lyrics_ai_config_deepl_section">DeepL API 设置</string>
-  <string name="morphe_music_lyrics_ai_config_api_key_label">API 密钥</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">提示词</string>
   <string name="morphe_music_lyrics_ai_config_model_label">型号</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">基础 URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">选择服务</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API 密钥 (可选)</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">翻译提示词</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">额外请求正文（可选 JSON）</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">额外请求头（可选JSON）</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">引号名称和值，例如 {\"api-key\": \"abc\"}。包含/ : 或数字的未引用值将被拒绝。空值将移除标头。</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">引号名称和值，例如 {\"temperature\": 0.3}。包含/或: 的未引用值将被拒绝。模型和消息不能在此处设置。</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">身份验证密钥（免费版或专业版）</string>
-  <string name="morphe_music_lyrics_ai_config_summary">配置 API 密钥、模型、端点和提示词</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 禁用粗体图标</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 恢复播放器的「接下来播放」「歌词」和「相关」标签页</string>

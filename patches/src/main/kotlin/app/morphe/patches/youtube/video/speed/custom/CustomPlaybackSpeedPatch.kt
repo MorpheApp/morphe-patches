@@ -18,7 +18,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -230,7 +229,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
 
                     onItemClickClass = definingClass
                     fragmentManagerMethod = it.instructionMatches.first()
-                        .instruction.getReference<MethodReference>()!!
+                        .methodReference
 
                     val insertIndex = implementation!!.instructions.lastIndex
 
@@ -246,7 +245,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             val bottomSheetBuilderMethodCall : String
             AudioTrackOldBottomSheetFingerprint.instructionMatches.apply {
                 fun getMethodCall(offset: Int):String {
-                    val methodReference = this[offset].instruction.getReference<MethodReference>()!!
+                    val methodReference = this[offset].methodReference
 
                     return methodReference.toString()
                         .replace(methodReference.definingClass, onItemClickClass)

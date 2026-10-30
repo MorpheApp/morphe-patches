@@ -103,7 +103,7 @@ val fullscreenVideoScalePatch = bytecodePatch(
         }
 
         PlayerViewConstructorFingerprint.let {
-            val videoViewField = it.instructionMatches.last().getFieldAccessed()
+            val videoViewField = it.instructionMatches.last().fieldReference
 
             it.classDef.apply {
                 interfaces.add(EXTENSION_PLAYER_VIEW_INTERFACE)

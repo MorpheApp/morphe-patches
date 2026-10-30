@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
   <string name="morphe_restore_old_settings_menus_title">Herstel ou YouTube instellings skerm</string>
+  <string name="morphe_native_snackbar_title">Vertoon boodskappe in YouTube-snackbar</string>
+  <string name="morphe_native_snackbar_summary">Morphe-boodskappe, soos die bevestiging van \'n spelerknoppie, word in die YouTube-snackbar vertoon in plaas van \'n opspringvenster</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Verwyder agtergrond speel beperkings</string>
   <string name="morphe_shorts_disable_background_playback_title">Deaktiveer agtergrondweergawe</string>
@@ -455,6 +457,15 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <string name="morphe_post_image_download_saved_single">Beeld gestoor in %s</string>
   <string name="morphe_post_image_download_failed">Kon nie die beeld aflaai nie</string>
   <string name="morphe_post_image_download_not_found">Geen beeld in hierdie plasing gevind nie</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Vertaal plasings</string>
+  <string name="morphe_post_translate_summary">Voeg \'n uitvou-spyskaartitem by om inhoudskeppers se plasings te vertaal</string>
+  <string name="morphe_post_translate_language_title">Plasingvertalings taal</string>
+  <string name="morphe_post_translate_flyout">Vertaal</string>
+  <string name="morphe_post_translate_flyout_original">Wys oorspronklike</string>
+  <string name="morphe_post_translate_started">Besig om te vertaal…</string>
+  <string name="morphe_post_translate_failed">Kon nie die plasing vertaal nie</string>
+  <string name="morphe_post_translate_same_language">Die plasing is reeds in die vertalings taal</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Voeg Ask-item by vlieëmenu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Voeg \'n video-opvattingsitem by die voervaartuig-vlieëmenu</string>
@@ -863,6 +874,8 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_fix_transcript_title">Regstel transkripsie</string>
   <string name="morphe_fix_transcript_summary">Resolves a precondition check failure that can prevent the transcript from loading</string>
   <string name="morphe_captions_in_pip_title">Wys onderskrifte in prent-in-prent</string>
+  <string name="morphe_stable_caption_blocks_title">Stabiele byskrifblokke</string>
+  <string name="morphe_stable_caption_blocks_summary">Groepeer outomatiese onderskrifte in stabiele, leesbare blokke. Sommige woorde mag verskyn voordat dit gespreek word. Herbegin word vereis.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigasieknoppies</string>
   <string name="morphe_navigation_buttons_screen_summary">Choose which components appear in the toolbar</string>
@@ -1211,6 +1224,8 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiveer die \'Gaan voort om te kyk\' minispeler, \'n YouTube Premium-funksie wat op app-opstart verskyn</string>
   <string name="morphe_miniplayer_screen_title">Mini-speler</string>
   <string name="morphe_miniplayer_screen_summary">Pas die voorkoms en gedrag van die verkleinde videospeler aan</string>
+  <string name="morphe_miniplayer_not_available_title">Addisionele mini-spelers</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube het alle addisionele mini-spelers verwyder. Om meer mini-speler-tipes te herstel, patch YouTube 21.28.208 of ouer</string>
   <string name="morphe_miniplayer_type_title">Mini-speler tipe</string>
   <string name="morphe_miniplayer_hide_title_title">Versteek titel en kanaal</string>
   <string name="morphe_miniplayer_type_entry_0">Gedeaktiveer</string>

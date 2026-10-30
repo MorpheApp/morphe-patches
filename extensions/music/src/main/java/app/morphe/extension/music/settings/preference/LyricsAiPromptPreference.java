@@ -9,6 +9,7 @@ package app.morphe.extension.music.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -63,23 +64,19 @@ public class LyricsAiPromptPreference extends SwitchPreference {
     private BooleanSetting switchSetting() {
         String key = getKey();
         if (key == null) return null;
-        switch (key) {
-            case "morphe_music_lyrics_use_ai_section":
-                return Settings.LYRICS_USE_AI_SECTION;
-            default:
-                return null;
+        if (key.equals("morphe_music_lyrics_use_ai_section")) {
+            return Settings.LYRICS_USE_AI_SECTION;
         }
+        return null;
     }
 
     private StringSetting promptSetting() {
         String key = getKey();
         if (key == null) return null;
-        switch (key) {
-            case "morphe_music_lyrics_use_ai_section":
-                return Settings.LYRICS_AI_SECTION_PROMPT;
-            default:
-                return null;
+        if (key.equals("morphe_music_lyrics_use_ai_section")) {
+            return Settings.LYRICS_AI_SECTION_PROMPT;
         }
+        return null;
     }
 
     private void setCheckedSilently(boolean checked) {
@@ -130,7 +127,7 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         promptInput.setMinLines(4);
         promptInput.setMaxLines(8);
         promptInput.setVerticalScrollBarEnabled(true);
-        promptInput.setHint(str("morphe_music_lyrics_ai_prompt_dialog_title"));
+        promptInput.setHint(str("morphe_music_lyrics_ai_prompt_dialog_hint"));
         String currentPrompt = promptSetting.get();
         if (!currentPrompt.isEmpty()) {
             promptInput.setText(currentPrompt);
@@ -139,16 +136,6 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         content.addView(promptInput, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-
-        TextView caption = new TextView(context);
-        caption.setText(str("morphe_music_lyrics_ai_prompt_dialog_hint"));
-        caption.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        caption.setTextColor(ThemeUtils.getAppForegroundColor() & 0xAAFFFFFF);
-        LinearLayout.LayoutParams captionParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        captionParams.topMargin = Dim.dp8;
-        content.addView(caption, captionParams);
 
         LinearLayout.LayoutParams reasoningParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -206,7 +193,7 @@ public class LyricsAiPromptPreference extends SwitchPreference {
 
     /**
      * <p>An AI feature pointed at an endpoint that rejects requests produces nothing at
-     * all, and it fails silently at playback time where nothing says why. Refusing here
+     * all, and it fails silently at playback time when nothing says why. Refusing here
      * turns that into something the user can act on.
      */
     private void enableAfterValidation(BooleanSetting switchSetting) {
@@ -231,7 +218,7 @@ public class LyricsAiPromptPreference extends SwitchPreference {
 
     private static final ExecutorService VALIDATION = Executors.newSingleThreadExecutor(
             runnable -> {
-                Thread thread = new Thread(runnable, "lyrics-ai-validate");
+                final Thread thread = new Thread(runnable, "lyrics-ai-validate");
                 thread.setDaemon(true);
                 return thread;
             });
@@ -239,8 +226,9 @@ public class LyricsAiPromptPreference extends SwitchPreference {
     /**
      * The reasoning effort sent with each request. Which levels exist belongs to the endpoint, so the
      * row stays hidden until it has asked: an endpoint that names no levels takes no effort from us,
-     * and showing a fixed list would offer choices the model cannot honour.
+     * and showing a fixed list would offer choices the model cannot honor.
      */
+    @SuppressLint("SetTextI18n")
     private View createReasoningRow(Context context) {
         LinearLayout row = new LinearLayout(context);
         row.setOrientation(LinearLayout.HORIZONTAL);
@@ -265,10 +253,10 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         row.setPadding(Dim.dp12, Dim.dp10, Dim.dp12, Dim.dp10);
         row.setVisibility(View.GONE);
 
-        String stored = Settings.LYRICS_AI_REASONING_EFFORT.get();
+        final String stored = Settings.LYRICS_AI_REASONING_EFFORT.get();
         value.setText(display(stored));
         MODEL_QUERY.execute(() -> {
-            String[] efforts = OpenAIClient.fetchReasoningEfforts(
+            final String[] efforts = OpenAIClient.fetchReasoningEfforts(
                     Settings.LYRICS_AI_BASE_URL.get(), Settings.LYRICS_AI_API_TOKEN.get(),
                     Settings.LYRICS_AI_MODEL.get());
             Utils.runOnMainThread(() -> {
@@ -276,14 +264,14 @@ public class LyricsAiPromptPreference extends SwitchPreference {
                     return;
                 }
                 row.setVisibility(View.VISIBLE);
-                CharSequence[] labels = new CharSequence[efforts.length];
+                final CharSequence[] labels = new CharSequence[efforts.length];
                 for (int i = 0; i < efforts.length; i++) {
                     labels[i] = display(efforts[i]);
                 }
                 row.setOnClickListener(v -> CustomDialogListPreference.createListDialog(context,
                                 "Reasoning effort", labels, efforts,
                                 Settings.LYRICS_AI_REASONING_EFFORT.get(), index -> {
-                                    String chosen = efforts[index];
+                                    final String chosen = efforts[index];
                                     Settings.LYRICS_AI_REASONING_EFFORT.save(chosen);
                                     value.setText(display(chosen));
                                 })
@@ -302,7 +290,7 @@ public class LyricsAiPromptPreference extends SwitchPreference {
 
     private static final ExecutorService MODEL_QUERY = Executors.newSingleThreadExecutor(
             runnable -> {
-                Thread thread = new Thread(runnable, "lyrics-ai-models");
+                final Thread thread = new Thread(runnable, "lyrics-ai-models");
                 thread.setDaemon(true);
                 return thread;
             });

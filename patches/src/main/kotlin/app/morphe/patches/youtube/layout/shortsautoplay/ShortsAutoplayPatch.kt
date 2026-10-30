@@ -30,8 +30,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -114,9 +112,9 @@ val shortsAutoplayPatch = bytecodePatch(
         // Manually restore the removed 'Autoplay' code.
         // Variable names are only a rough guess of what these methods do.
         val userActionMethodReference = ReelPlaybackLegacyFingerprint.instructionMatches[1]
-            .getInstruction<ReferenceInstruction>().reference as MethodReference
+            .methodReference
         val reelSequenceControllerMethodReference = ReelPlaybackLegacyFingerprint.instructionMatches[2]
-            .getInstruction<ReferenceInstruction>().reference as MethodReference
+            .methodReference
 
         reelPlaybackRepeat.method.apply {
             // Find the first call modified by extension code above.
@@ -128,7 +126,7 @@ val shortsAutoplayPatch = bytecodePatch(
             val getReelSequenceControllerReference = getInstanceFieldGetFingerprint(
                 reelSequenceControllerMethodReference.definingClass
             ).match(reelPlaybackRepeat.originalMethod)
-                .instructionMatches.first().instruction.getReference<FieldReference>()!!
+                .instructionMatches.first().fieldReference
 
             // Add a helper method to avoid finding multiple free registers.
             // If enum is autoplay then method performs autoplay and returns null,

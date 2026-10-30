@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">अन्य</string>
   <string name="morphe_settings_screen_12_video_title">वीडियो</string>
   <string name="morphe_restore_old_settings_menus_title">पुरानी YouTube सेटिंग स्क्रीन वापस लाएँ</string>
+  <string name="morphe_native_snackbar_title">YouTube स्नैकबार में संदेश दिखाएं</string>
+  <string name="morphe_native_snackbar_summary">प्लेयर बटन की पुष्टि के रूप में मोर्फे संदेश पॉपअप के बजाय YouTube स्नैकबार में दिखाए जाते हैं</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">बैकग्राउंड प्ले से पाबंदियाँ हटाएँ</string>
   <string name="morphe_shorts_disable_background_playback_title">बैकग्राउंड प्ले बंद करें</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">छवि %s में सहेजी गई</string>
   <string name="morphe_post_image_download_failed">छवि डाउनलोड नहीं की जा सकी</string>
   <string name="morphe_post_image_download_not_found">इस पोस्ट में कोई छवि नहीं मिली</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">पोस्ट का अनुवाद करें</string>
+  <string name="morphe_post_translate_summary">कंटेंट क्रिएटर की पोस्ट का अनुवाद करने के लिए एक फ्लाईआउट मेनू आइटम जोड़ता है</string>
+  <string name="morphe_post_translate_language_title">पोस्ट अनुवाद भाषा</string>
+  <string name="morphe_post_translate_flyout">अनुवाद करें</string>
+  <string name="morphe_post_translate_flyout_original">मूल दिखाएं</string>
+  <string name="morphe_post_translate_started">अनुवाद हो रहा है…</string>
+  <string name="morphe_post_translate_failed">पोस्ट का अनुवाद नहीं किया जा सका</string>
+  <string name="morphe_post_translate_same_language">पोस्ट पहले से ही अनुवाद भाषा में है</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ask आइटम को फ्लाउट मेनू में जोड़ें</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">फीड फ्लाउट मेनू में वीडियो सारांश आइटम जोड़ता है</string>
@@ -863,6 +874,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_fix_transcript_title">ट्रांसक्रिप्ट को ठीक करें</string>
   <string name="morphe_fix_transcript_summary">एक पूर्व शर्त जांच विफलता को हल करता है जो ट्रांसक्रिप्ट को लोड होने से रोक सकता है</string>
   <string name="morphe_captions_in_pip_title">पिक्चर-इन-पिक्चर में सबटाइटल्स दिखाएं</string>
+  <string name="morphe_stable_caption_blocks_title">स्थिर कैप्शन ब्लॉक</string>
+  <string name="morphe_stable_caption_blocks_summary">स्वचालित कैप्शन को स्थिर, पढ़ने योग्य ब्लॉकों में समूहित करें। कुछ शब्द बोले जाने से पहले दिखाई दे सकते हैं। रीस्टार्ट आवश्यक है।</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">नविगेशन बटन</string>
   <string name="morphe_navigation_buttons_screen_summary">टूलबार में प्रदर्शित होने वाले घटकों को चुनें</string>
@@ -1211,6 +1224,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_miniplayer_disable_resuming_summary">\'जारी रखें देखें\' मिनीप्लेयर को अक्षम करता है, एक YouTube प्रीमियम सुविधा जो ऐप शुरू होने पर दिखाई देती है।</string>
   <string name="morphe_miniplayer_screen_title">मिनीप्लेयर</string>
   <string name="morphe_miniplayer_screen_summary">मिनीकृत प्लेयर को कस्टमाइज़ करें</string>
+  <string name="morphe_miniplayer_not_available_title">अतिरिक्त मिनीप्लेयर</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube ने सभी अतिरिक्त मिनीप्लेयर हटा दिए हैं। अधिक मिनीप्लेयर प्रकारों को रिस्टोर करने के लिए, YouTube 21.28.208 या उससे पुराने वर्ज़न को पैच करें</string>
   <string name="morphe_miniplayer_type_title">मिनीप्लेयर प्रकार</string>
   <string name="morphe_miniplayer_hide_title_title">शीर्षक और चैनल छिपाएँ</string>
   <string name="morphe_miniplayer_type_entry_0">अक्षम</string>
@@ -1252,6 +1267,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_fix_status_bar_layout_summary">स्टेटस बार की लेआउट को स्थिर रखता है, ताकि यह टॉप बार्स को न कवर करे और प्लेयर के ऊपर खाली जगह न छोड़े। अगर ऐप क्रैश हो जाए या टॉप बार्स गलत दिखें तो इसे बंद करें</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">ग्लो</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe ग्लो 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe ग्लो 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">यह डिवाइस ग्लो स्प्लैश स्क्रीन का समर्थन नहीं करता है</string>
   <string name="morphe_theme_color_light_title">लाइट थीम की पृष्ठभूमि</string>
   <string name="morphe_theme_color_light_entry_2">सफेद</string>
