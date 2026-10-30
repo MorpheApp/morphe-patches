@@ -230,7 +230,10 @@ public final class StableCaptionBlocks {
                     || original.size() > 1) return original;
             if (state.translation != null) {
                 if (!state.translation.isActive()) return Collections.emptyList();
-                state.translation.demand(time, VideoInformation.getPlaybackSpeed());
+                // Native sampling can run ahead while buffering; it is not the playback clock.
+                long playbackTime = VideoInformation.getVideoTime();
+                state.translation.demand(playbackTime >= 0 ? playbackTime : time,
+                        VideoInformation.getPlaybackSpeed());
             }
             long template = state.policy.templateTime(time);
             if (template < 0) return Collections.emptyList();
@@ -404,7 +407,8 @@ public final class StableCaptionBlocks {
     private static void renderTranslation(View view, Frame frame, Cache cache,
             List<CharSequence> full, List<CharSequence> visible) {
         CaptionSession session = frame.state.translation;
-        long time = session.playbackTime();
+        long time = VideoInformation.getVideoTime();
+        if (time < 0) time = session.playbackTime();
         CaptionSession.Snapshot cue = session.snapshot(time,
                 app.morphe.extension.youtube.shared.VideoState.getCurrent()
                         == app.morphe.extension.youtube.shared.VideoState.PAUSED);
