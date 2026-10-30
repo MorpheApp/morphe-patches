@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.graphics.Bitmap;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.LayoutTransition;
@@ -158,6 +159,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private final Runnable updateTranslateLabelRunnable = this::updateTranslateLabel;
     private final Runnable updateRomanizeLabelRunnable = this::updateRomanizeLabel;
 
+    private final DynamicBackgroundView dynamicBgView;
     private final ScrollView scrollView;
     private final LinearLayout linesContainer;
     private final TextView creditView;
@@ -487,6 +489,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     public LyricsPanelView(Context context) {
         super(context);
+
+        dynamicBgView = new DynamicBackgroundView(context);
+        addView(dynamicBgView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
         final int horizontalPadding = Dim.dp24;
         final int verticalPadding = Dim.dp16;
@@ -870,6 +875,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             switch (state) {
                 case LOADING:
+                    Bitmap loadingArt = LyricsManager.getInstance().getCurrentArtworkBitmap();
+                    dynamicBgView.setArtwork(loadingArt, VideoInformation.getVideoId(),
+                            track != null ? track.title() : null,
+                            track != null ? track.artist() : null);
                     if (newLyrics == null || newLyrics.isEmpty()) {
                         showLoading();
                     } else {
@@ -885,6 +894,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                             updateRefreshLabel();
                         }
                     } else {
+                        Bitmap art = LyricsManager.getInstance().getCurrentArtworkBitmap();
+                        dynamicBgView.setArtwork(art, VideoInformation.getVideoId(),
+                                track != null ? track.title() : null,
+                                track != null ? track.artist() : null);
                         showLyrics(newLyrics);
                         setOverlayVisible(true);
                         if (Settings.LYRICS_TRANSLATE_ONLY.get()) {
@@ -1084,12 +1097,15 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 parent.removeView(this);
             }
             setVisibility(GONE);
+            dynamicBgView.setVisibility(GONE);
             return;
         }
 
         final boolean visible = overlayVisible && cachedLyricsPanelOpen;
         final boolean wasVisible = getVisibility() == VISIBLE;
         setVisibility(visible ? VISIBLE : GONE);
+        final boolean bgVisible = visible && Settings.LYRICS_DYNAMIC_BACKGROUND.get();
+        dynamicBgView.setVisibility(bgVisible ? VISIBLE : GONE);
 
         if (visible && !wasVisible) {
             animate().cancel();
@@ -4388,6 +4404,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final boolean visible = !Settings.LYRICS_HIDE_INFO.get()
                 && info != null && info.length() > 0;
         creditView.setVisibility(visible ? VISIBLE : GONE);
+    }
+
+    public void applyDynamicBackgroundSettings() {
+        applyOverlayVisibility();
+        dynamicBgView.onSettingsChanged();
     }
 
     public void applyLineOverlaySettings() {
