@@ -14,6 +14,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.CaptionsOldBottomSheetLayoutInflaterFingerprint
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -64,6 +66,13 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
             entriesKey = null,
             entryValuesKey = null,
         ))
+
+        CaptionsOldBottomSheetLayoutInflaterFingerprint.matchAll(1 .. 2).forEach { match ->
+            val footer = match.instructionMatches.last()
+            val list = (footer.instruction as FiveRegisterInstruction).registerC
+            match.method.addInstructions(footer.index,
+                "invoke-static { v$list }, Lapp/morphe/extension/youtube/patches/CaptionMenu;->addToggle(Landroid/widget/ListView;)V")
+        }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 

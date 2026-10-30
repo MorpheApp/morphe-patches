@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -20,6 +21,8 @@ import app.morphe.patches.youtube.shared.hookVideoStarted
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -217,9 +220,47 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             )
         }
 
+        // Keep native selection arguments before the extension redirects a translated track.
+        // Repeating them lets the player perform its normal source/target transition.
+        val setter = SetSubtitleTrackFingerprint.method
+        val owner = SetSubtitleTrackFingerprint.classDef
+        var argument = 1
+        var local = 1
+        val save = StringBuilder()
+        val load = StringBuilder()
+        setter.parameterTypes.map { it.toString() }.forEachIndexed { index, type ->
+            val field = "${owner.type}->patch_captionSelection$index:$type"
+            owner.fields.add(ImmutableField(owner.type, "patch_captionSelection$index", type,
+                AccessFlags.PRIVATE.value, null, null, null).toMutable())
+            val suffix = when {
+                type.startsWith("L") || type.startsWith("[") -> "-object"
+                type == "J" || type == "D" -> "-wide"
+                type == "Z" -> "-boolean"
+                else -> ""
+            }
+            save.append("iput$suffix p$argument, p0, $field\n")
+            load.append("iget$suffix v$local, p0, $field\n")
+            if (index == 0) load.append("if-eqz v1, :none\n")
+            val width = if (suffix == "-wide") 2 else 1
+            argument += width
+            local += width
+        }
+        owner.addHelperMethod("patch_refreshCaptionTrack", "Z", freeRegisters = local,
+            smali = """
+                $load
+                move-object v0, p0
+                invoke-virtual/range { v0 .. v${local - 1} }, $setter
+                const/4 v0, 0x1
+                return v0
+                :none
+                const/4 v0, 0x0
+                return v0
+            """)
+
         SetSubtitleTrackFingerprint.method.addInstructions(
             0,
             """
+                $save
                 invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->onSetSubtitleTrack($EXTENSION_SUBTITLE_MANAGER_INTERFACE${EXTENSION_CAPTION_TRACK_INTERFACE}Ljava/lang/Enum;)$EXTENSION_CAPTION_TRACK_INTERFACE
                 move-result-object p1
                 check-cast p1, $trackType

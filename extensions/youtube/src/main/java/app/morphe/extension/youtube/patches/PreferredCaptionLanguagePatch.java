@@ -15,6 +15,7 @@ import android.os.SystemClock;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.lang.ref.WeakReference;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
@@ -55,6 +56,8 @@ public class PreferredCaptionLanguagePatch {
         /** Default caption of the active audio, independent of translation-menu source order. */
         @Nullable
         default CaptionTrackInterface patch_getCurrentAudioCaptionSource() { return null; }
+
+        default boolean patch_refreshCaptionTrack() { return false; }
     }
 
     /**
@@ -86,6 +89,7 @@ public class PreferredCaptionLanguagePatch {
     private static final AtomicBoolean userSelectedTrack = new AtomicBoolean(false);
     private static final AtomicLong userInteractionAllowedAt = new AtomicLong(Long.MAX_VALUE);
     private static volatile long videoStartTime;
+    private static volatile WeakReference<SubtitleManagerInterface> activeManager = new WeakReference<>(null);
 
     @Nullable
     private static volatile String lastProgrammaticTrackLang;
@@ -215,6 +219,7 @@ public class PreferredCaptionLanguagePatch {
     public static CaptionTrackInterface onSetSubtitleTrack(SubtitleManagerInterface subtitleManager,
                                                            @Nullable CaptionTrackInterface track,
                                                            @Nullable Enum<?> selectType) {
+        activeManager = new WeakReference<>(subtitleManager);
         try {
             if (CaptionTracks.dualCaptionEnabled()
                     && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface translated) {
@@ -285,6 +290,7 @@ public class PreferredCaptionLanguagePatch {
      */
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredController) {
         userInteractionAllowedAt.set(Long.MAX_VALUE);
+        activeManager.clear();
         userSelectedTrack.set(false);
         recordProgrammaticSelection(null);
         videoStartTime = SystemClock.uptimeMillis();
@@ -297,6 +303,11 @@ public class PreferredCaptionLanguagePatch {
     public static void videoInformationLoaded() {
         // Only the first loaded event starts the window; later events must not re-lock selection.
         userInteractionAllowedAt.compareAndSet(Long.MAX_VALUE, SystemClock.uptimeMillis() + 300);
+    }
+
+    static boolean refreshCaptionSelection() {
+        SubtitleManagerInterface manager = activeManager.get();
+        return manager != null && manager.patch_refreshCaptionTrack();
     }
 
     static boolean hasUserSelectedTrack() { return userSelectedTrack.get(); }

@@ -413,6 +413,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
     public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", TRUE, true);
     public static final BooleanSetting CAPTIONS_IN_PIP = new BooleanSetting("morphe_captions_in_pip", TRUE);
+    public static final BooleanSetting DUAL_CAPTIONS_ENABLED = new BooleanSetting("morphe_dual_captions_enabled", TRUE);
     public static final StringSetting SECONDARY_CAPTION_LANGUAGE = new StringSetting("morphe_secondary_caption_language", "off", true,
             () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && CaptionTracks.isAvailable());
 

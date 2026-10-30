@@ -29,14 +29,15 @@ public final class CaptionTracks {
 
     private static final class Track {
         final String source, language, secondary, video;
-        final boolean automatic;
+        final boolean automatic, translated;
 
-        Track(String source, String language, String secondary, String video, boolean automatic) {
+        Track(String source, String language, String secondary, String video, boolean automatic, boolean translated) {
             this.video = video;
             this.source = source;
             this.language = language;
             this.secondary = secondary;
             this.automatic = automatic;
+            this.translated = translated;
         }
     }
 
@@ -47,8 +48,34 @@ public final class CaptionTracks {
     public static boolean isAvailable() { return isPatchIncluded(); }
 
     public static boolean dualCaptionEnabled() {
-        return StableCaptionBlocks.blockLayoutEnabled()
+        return Settings.DUAL_CAPTIONS_ENABLED.get() && StableCaptionBlocks.blockLayoutEnabled()
                 && AutoTranslateCaptionsPatch.translationLanguage(Settings.SECONDARY_CAPTION_LANGUAGE.get()) != null;
+    }
+
+    /** Reapply the actual native selection; cached originals may need no native reload. */
+    public static void setDualCaptionsEnabled(boolean enabled) {
+        List<StableCaptionBlocks.State> cached = new ArrayList<>();
+        synchronized (CaptionTracks.class) {
+            Settings.DUAL_CAPTIONS_ENABLED.save(enabled);
+            for (WeakReference<StableCaptionBlocks.State> ref : translatedStates) {
+                StableCaptionBlocks.State state = ref.get();
+                if (state != null && state.captured != null) cached.add(state);
+            }
+            invalidateTranslation();
+        }
+        PreferredCaptionLanguagePatch.refreshCaptionSelection();
+        synchronized (CaptionTracks.class) {
+            for (StableCaptionBlocks.State state : cached) {
+                Captured captured = state.captured;
+                Track previous = captured.track;
+                if (!current(previous) || enabled && previous.translated) continue;
+                Track next = new Track(previous.source, previous.language,
+                        dualCaptionEnabled() ? Settings.SECONDARY_CAPTION_LANGUAGE.get() : null,
+                        previous.video, previous.automatic, previous.translated);
+                state.captured = new Captured(next, captured.policy);
+                attachTranslation(next, captured.policy, state);
+            }
+        }
     }
 
     /** Validated identity shared across original and translated forms of the same source. */
@@ -85,9 +112,7 @@ public final class CaptionTracks {
 
     private static Track track(Object object) {
         if (!StableCaptionBlocks.blockLayoutEnabled()) return null;
-        String target =
-                AutoTranslateCaptionsPatch.translationLanguage(
-                        Settings.SECONDARY_CAPTION_LANGUAGE.get());
+        String target = dualCaptionEnabled() ? Settings.SECONDARY_CAPTION_LANGUAGE.get() : null;
         if (!(object instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface track))
             return null;
         try {
@@ -102,7 +127,7 @@ public final class CaptionTracks {
                     AutoTranslateCaptionsPatch.getLanguageKey(track.patch_getLanguageCode()),
                     target == null ? null : AutoTranslateCaptionsPatch.getLanguageKey(target),
                     parameters.get("v"),
-                    "asr".equals(parameters.get("kind")));
+                    "asr".equals(parameters.get("kind")), parameters.containsKey("tlang"));
         } catch (RuntimeException | LinkageError ignored) {
             return null;
         }
@@ -145,6 +170,7 @@ public final class CaptionTracks {
         for (WeakReference<StableCaptionBlocks.State> ref : translatedStates) {
             StableCaptionBlocks.State state = ref.get();
             if (state != null && state.captured != null
+                    && !state.captured.track.translated
                     && state.captured.track.source.equals(requestedSource)
                     && state.captured.track.language.equals(selected.language)) cached.add(state);
         }
