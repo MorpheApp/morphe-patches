@@ -40,7 +40,7 @@ public final class LyricsMatch {
         if (lyrics == null) {
             return "";
         }
-        String providerName = lyrics.providerName();
+        final String providerName = lyrics.providerName();
         for (String id : LyricsProviders.PROVIDER_ORDER) {
             if (providerName.equals(id)) {
                 return id;

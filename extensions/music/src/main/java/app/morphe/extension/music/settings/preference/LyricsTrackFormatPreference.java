@@ -14,7 +14,11 @@ import android.content.Context;
 import android.preference.Preference;
 import android.text.InputType;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import app.morphe.extension.shared.theme.ThemeUtils;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
@@ -30,7 +34,7 @@ public class LyricsTrackFormatPreference extends Preference {
     @Override
     protected void onClick() {
         LyricsFieldsDialog dialog = new LyricsFieldsDialog(getContext());
-        EditText template = dialog.addInput("morphe_music_lyrics_mini_track_format_summary",
+        EditText template = dialog.addNoteInput("morphe_music_lyrics_mini_track_format_summary",
                 Settings.LYRICS_MINI_TRACK_FORMAT.get(),
                 InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         template.setSingleLine(false);
@@ -40,7 +44,7 @@ public class LyricsTrackFormatPreference extends Preference {
                 Settings.LYRICS_MINI_ARTIST_MIN_MS.get(), false);
         EditText maximum = dialog.addNumberInput("morphe_music_lyrics_mini_artist_max_label",
                 Settings.LYRICS_MINI_ARTIST_MAX_MS.get(), false);
-        dialog.addLabel("morphe_music_lyrics_mini_artist_timing_explanation");
+        dialog.addNoteLabel("morphe_music_lyrics_mini_artist_timing_explanation");
 
         dialog.show("morphe_music_lyrics_mini_track_format_title", () -> {
             final int min;
@@ -66,7 +70,20 @@ public class LyricsTrackFormatPreference extends Preference {
         });
     }
 
+    @Override
+    protected void onBindView(View view) {
+        super.onBindView(view);
+        TextView summary = (TextView) view.findViewById(android.R.id.summary);
+        if (summary != null) {
+            summary.setTextColor(withAlpha(ThemeUtils.getAppForegroundColor(), 0x99));
+        }
+    }
+
     private static void showInvalidToast() {
         Utils.showToastShort(str("morphe_music_lyrics_mini_artist_timing_invalid"));
+    }
+
+    private static int withAlpha(int color, int alpha) {
+        return (alpha << 24) | (color & 0x00FFFFFF);
     }
 }

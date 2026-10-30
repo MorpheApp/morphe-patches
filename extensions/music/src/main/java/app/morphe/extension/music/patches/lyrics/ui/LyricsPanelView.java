@@ -2083,6 +2083,49 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         updateFooter();
     }
 
+    /** Clears every only mode and its flags, then rebuilds from the lyrics alone. */
+    private void exitOnlyModes() {
+        Settings.LYRICS_TRANSLATE_ONLY.save(false);
+        Settings.LYRICS_ROMANIZE_ONLY.save(false);
+        Settings.LYRICS_TRANSLATE.save(false);
+        Settings.LYRICS_ROMANIZE.save(false);
+        cancelNormalTranslate();
+        cancelNormalRomanize();
+        onlyMode = OnlyMode.NONE;
+        applyOnlyModeState();
+        updateDualPill();
+        final Lyrics current = lyrics;
+        if (current != null) {
+            showLyrics(current);
+        }
+        updateTranslateLabel();
+        updateRomanizeLabel();
+        updateFooter();
+    }
+
+    /**
+     * Leaves the only modes held by a hidden button, so a mode reached from a button goes when
+     * the button does.
+     */
+    public boolean releaseOnlyModesForHiddenButtons(boolean translateOff, boolean romanizeOff) {
+        if (!translateOff && !romanizeOff) {
+            return false;
+        }
+        final boolean translateClaims = Settings.LYRICS_TRANSLATE_ONLY.get()
+                || onlyMode == OnlyMode.TRANS
+                || onlyMode == OnlyMode.BOTH || dualPillActive;
+        final boolean romanizeClaims = Settings.LYRICS_ROMANIZE_ONLY.get()
+                || onlyMode == OnlyMode.ROMA
+                || onlyMode == OnlyMode.BOTH || dualPillActive;
+        if (!(translateOff && translateClaims) && !(romanizeOff && romanizeClaims)) {
+            return false;
+        }
+        // Every mode that needed a button is left together: one side of a dual mode cannot stay
+        // while the pill it was shown under is gone.
+        exitOnlyModes();
+        return true;
+    }
+
     /**
      * Leaves the dual mode, the original coming back with whichever side survived as its small
      * run. Entering claims both flags before either side is known to have arrived, so both are
@@ -4152,6 +4195,19 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                     sectionTagHeightPx = measuredTag.getHeight();
                 }
             });
+        }
+    }
+
+    public void applyLineScale() {
+        final boolean enabled = Settings.LYRICS_LINE_SCALE.get();
+        for (TextView textView : lineViews) {
+            if (!(textView instanceof LyricsLineView view)) {
+                continue;
+            }
+            view.lineScale = enabled && view.lineAlpha < 1f
+                    ? LyricsViewSupport.INACTIVE_LINE_SCALE
+                    : LyricsViewSupport.ACTIVE_LINE_SCALE;
+            LyricsViewSupport.applyLineScaleTransform(view, view.lineScale);
         }
     }
 

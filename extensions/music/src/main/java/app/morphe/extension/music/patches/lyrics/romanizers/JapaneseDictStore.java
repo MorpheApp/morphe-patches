@@ -47,7 +47,7 @@ public final class JapaneseDictStore {
      */
     private static final WordTableFile TABLE = new WordTableFile(
             "japanese_readings_" + VERSION + ".bin",
-            new byte[] {'M', 'J', 'P', 'W', '0', '0', '0', '2'}, 1 << 23);
+            new byte[]{'M', 'J', 'P', 'W', '0', '0', '0', '2'}, 1 << 23);
     private static final String NOTICE_NAME = "japanese_readings.NOTICE.txt";
 
     /** How many entries go in before the row is worth moving. */
@@ -68,6 +68,21 @@ public final class JapaneseDictStore {
 
     public static boolean isReady() {
         return table() != null;
+    }
+
+    /** Removes the table and its licence notice. Called when the user turns Japanese off. */
+    public static void delete() {
+        TABLE.clear();
+        File file = TABLE.file();
+        if (file != null && file.exists()) {
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
+        }
+        File directory = RomanizationDict.directory();
+        if (directory != null) {
+            //noinspection ResultOfMethodCallIgnored
+            new File(directory, NOTICE_NAME).delete();
+        }
     }
 
     /** Starts a build if the table is missing. Safe to call whenever the setting is on. */
@@ -135,7 +150,7 @@ public final class JapaneseDictStore {
     }
 
     private static void addSource(WordReadingTable.Builder builder, File archive,
-            RomanizationDict.Listener listener) throws IOException {
+                                  RomanizationDict.Listener listener) throws IOException {
         int seen = 0;
 
         try (ZipInputStream zip = new ZipInputStream(
@@ -184,8 +199,10 @@ public final class JapaneseDictStore {
         return -1;
     }
 
-    /** A field may be quoted and hold commas, so a plain split would shift every
-     * column after it. */
+    /**
+     * A field may be quoted and hold commas, so a plain split would shift every
+     * column after it.
+     */
     private static String[] split(String line) {
         if (line == null) return new String[0];
 
@@ -237,8 +254,10 @@ public final class JapaneseDictStore {
         return fileName.replace("_lex", "").replace('_', ' ');
     }
 
-    /** Downloaded rather than shipped, so the licence travels with the data into the
-     * cache and is shown from the About row. */
+    /**
+     * Downloaded rather than shipped, so the licence travels with the data into the
+     * cache and is shown from the About row.
+     */
     private static String noticeText() {
         return "SudachiDict reading data\n"
                 + "https://github.com/WorksApplications/SudachiDict\n\n"

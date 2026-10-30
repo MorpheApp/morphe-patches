@@ -67,239 +67,20 @@ public final class MiniLyricsFormatter {
     public static final String ARTIST_FIRST_TRACK_FORMAT = "{a} - {t} :({v}):";
     public static final String DEFAULT_ENCAPSULATION = "{lrc} :(x{n}):";
     public static final String DEFAULT_INSTRUMENTAL = "♪\n♪♪\n♪♪♪";
+    /** Marks where a line without spaces was split. */
+    public static final String SPLIT_ELLIPSIS = "…";
     private static final String LYRIC_PLACEHOLDER = "{lrc}";
     private static final String VARIANT_PLACEHOLDER = "{v}";
     /** Placeholder names, written inside braces in a template. */
     private static final String[] PLACEHOLDERS = {"lrc", "t", "a", "v", "n"};
-    /** Marks where a line without spaces was split. */
-    public static final String SPLIT_ELLIPSIS = "…";
     /** How many times a track format line is halved at most. */
     private static final int MAX_FRAME_SPLIT_DEPTH = 6;
     /** An extended grapheme cluster, so a character with combining marks or an emoji is not split. */
     private static final Pattern GRAPHEME = Pattern.compile("\\X");
     private static final Pattern LINE_BREAK = Pattern.compile("\\R");
     private static final Pattern REPEATED_SPACES = Pattern.compile("[ \\t\\u00A0]{2,}");
-
-    public record Chunk(String text, long startMs) {
-    }
-
-    private record Unit(int start, int end, long timeMs) {
-    }
-
-    private MiniLyricsFormatter() {
-    }
-
-    public static boolean validEncapsulation(@Nullable String template) {
-        return template != null && template.contains(LYRIC_PLACEHOLDER);
-    }
-
-    /** If the track format shows the version, which then has to be looked up. */
-    public static boolean usesVariant(@Nullable String template) {
-        return (template == null ? DEFAULT_TRACK_FORMAT : template).contains(VARIANT_PLACEHOLDER);
-    }
-
-    public static String trackLabel(@Nullable String template, @Nullable String title, @Nullable String artist) {
-        return trackLabel(template, title, artist, null);
-    }
-
     /**
-     * {t} is the title, {a} the artist and {v} the variant, such as Acoustic. The variant is only
-     * known when the backend reports it separately from the title, and is never parsed out of a
-     * title. Text between unescaped colons only appears when every placeholder in it has a value.
-     * Each line of the template is one frame of the artist line.
-     */
-    public static String trackLabel(@Nullable String template, @Nullable String title,
-                                    @Nullable String artist, @Nullable String variant) {
-        Map<String, String> values = new HashMap<>();
-        values.put("t", title == null ? "" : title);
-        values.put("a", artist == null ? "" : artist);
-        values.put("v", variant == null ? "" : variant.trim());
-        String rendered = render(template == null ? DEFAULT_TRACK_FORMAT : template, values, true);
-        StringBuilder out = new StringBuilder();
-        for (String line : LINE_BREAK.split(rendered, -1)) {
-            // A hidden section leaves the spaces around it behind.
-            String tidy = REPEATED_SPACES.matcher(line).replaceAll(" ").trim();
-            if (tidy.isEmpty()) continue;
-            if (out.length() > 0) out.append('\n');
-            out.append(tidy);
-        }
-        return out.toString();
-    }
-
-    /**
-     * The frames the artist line cycles through: one per template line, and a line wider than the
-     * limit is split into frames the same way a long lyric is. The split is decided from the whole
-     * rendered line, not from any single placeholder.
-     */
-    public static List<String> trackFrames(@Nullable String template, @Nullable String title,
-                                           @Nullable String artist, @Nullable String variant,
-                                           int limit, double fullWidthMultiplier) {
-        List<String> frames = new ArrayList<>();
-        String label = trackLabel(template, title, artist, variant);
-        for (String line : label.split("\n")) {
-            if (line.isEmpty()) continue;
-            if (limit <= 0 || width(line, fullWidthMultiplier) <= limit) {
-                frames.add(line);
-                continue;
-            }
-            splitFrame(line, limit, fullWidthMultiplier, frames, 0);
-        }
-        if (frames.isEmpty()) frames.add("");
-        return List.copyOf(frames);
-    }
-
-    /** Halves a frame the way a long lyric is halved, again and again until every part fits. */
-    private static void splitFrame(String frame, int limit, double fullWidthMultiplier,
-                                   List<String> frames, int depth) {
-        if (depth >= MAX_FRAME_SPLIT_DEPTH || width(frame, fullWidthMultiplier) <= limit) {
-            frames.add(frame);
-            return;
-        }
-        List<Chunk> halves = chunks(new LyricsLine(0, frame), -1, limit, false, false, fullWidthMultiplier);
-        if (halves.size() < 2) {
-            frames.add(frame);
-            return;
-        }
-        for (Chunk half : halves) {
-            String text = half.text();
-            if (text.isEmpty()) continue;
-            // An ellipsis added at a split does not count against the limit, or a two-character
-            // part would never fit a limit of two.
-            String bare = text.endsWith(SPLIT_ELLIPSIS)
-                    ? text.substring(0, text.length() - SPLIT_ELLIPSIS.length()) : text;
-            if (bare.equals(frame) || width(bare, fullWidthMultiplier) <= limit) {
-                frames.add(text);
-                continue;
-            }
-            final int before = frames.size();
-            splitFrame(bare, limit, fullWidthMultiplier, frames, depth + 1);
-            if (!bare.equals(text) && frames.size() > before) {
-                final int last = frames.size() - 1;
-                String lastFrame = frames.get(last);
-                if (!lastFrame.endsWith(SPLIT_ELLIPSIS)) frames.set(last, lastFrame + SPLIT_ELLIPSIS);
-            }
-        }
-    }
-
-    /**
-     * Replaces {t} with the title, {a} with the artist and {lrc} with the lyric if one is given.
-     * This is done in one pass, so a placeholder in a song title is kept as is.
-     */
-    private static String replacePlaceholders(String template, @Nullable String title,
-                                              @Nullable String artist, @Nullable String lyric) {
-        StringBuilder out = new StringBuilder();
-        for (int i = 0, length = template.length(); i < length; ) {
-            if (template.startsWith("{t}", i)) {
-                out.append(title == null ? "" : title);
-                i += 3;
-            } else if (template.startsWith("{a}", i)) {
-                out.append(artist == null ? "" : artist);
-                i += 3;
-            } else if (lyric != null && template.startsWith(LYRIC_PLACEHOLDER, i)) {
-                out.append(lyric);
-                i += LYRIC_PLACEHOLDER.length();
-            } else {
-                out.append(template.charAt(i++));
-            }
-        }
-        return out.toString();
-    }
-
-    /**
-     * {lrc} is the lyric and {n} its repeat count. Text between unescaped colons appears only when
-     * the count is above 1; a backslash before a colon keeps it literal.
-     */
-    public static String encapsulate(@Nullable String template, String lyric, int repeat) {
-        String source = validEncapsulation(template) ? template : DEFAULT_ENCAPSULATION;
-        Map<String, String> values = new HashMap<>();
-        values.put("lrc", lyric);
-        values.put("n", String.valueOf(repeat));
-        return render(source, values, repeat > 1);
-    }
-
-    /**
-     * Fills in placeholders in one pass, so a placeholder inside a value is kept as is. Text between
-     * unescaped colons appears only when every placeholder in it is populated: a non-empty value,
-     * and for the count {n} a value other than 1. A section without placeholders appears when
-     * {@code bareShown} is set. A backslash before a colon keeps it literal.
-     */
-    static String render(String template, Map<String, String> values, boolean bareShown) {
-        StringBuilder out = new StringBuilder();
-        StringBuilder segment = new StringBuilder();
-        boolean inside = false;
-        boolean populated = true;
-        boolean placeholders = false;
-        for (int i = 0, length = template.length(); i < length; ) {
-            final char c = template.charAt(i);
-            if (c == '\\' && i + 1 < length && template.charAt(i + 1) == ':') {
-                segment.append(':');
-                i += 2;
-                continue;
-            }
-            if (c == ':') {
-                if (!inside || (placeholders ? populated : bareShown)) out.append(segment);
-                segment.setLength(0);
-                inside = !inside;
-                populated = true;
-                placeholders = false;
-                i++;
-                continue;
-            }
-            String name = c == '{' ? placeholderAt(template, i, values) : null;
-            if (name != null) {
-                String value = values.get(name);
-                if (inside) {
-                    placeholders = true;
-                    if (!isPopulated(name, value)) populated = false;
-                }
-                segment.append(value == null ? "" : value);
-                i += name.length() + 2;
-                continue;
-            }
-            segment.append(c);
-            i++;
-        }
-        if (!inside || (placeholders ? populated : bareShown)) out.append(segment);
-        return out.toString();
-    }
-
-    @Nullable
-    private static String placeholderAt(String template, int index, Map<String, String> values) {
-        for (String name : PLACEHOLDERS) {
-            if (values.containsKey(name) && template.startsWith("{" + name + "}", index)) return name;
-        }
-        return null;
-    }
-
-    private static boolean isPopulated(String name, @Nullable String value) {
-        if (value == null || value.isEmpty()) return false;
-        return !"n".equals(name) || !value.equals("1");
-    }
-
-    /** How many times in a row the line at the index is sung, counting up to and including it. */
-    public static int repeatCount(List<LyricsLine> lines, int index) {
-        String text = lines.get(index).text();
-        int count = 1;
-        for (int i = index - 1; i >= 0 && lines.get(i).text().equals(text); i--) {
-            count++;
-        }
-        return count;
-    }
-
-    /**
-     * The width of the text against a character limit: a full-width character, such as a CJK
-     * ideograph or kana, counts as the multiplier and any other character as 1.
-     */
-    public static double width(String text, double fullWidthMultiplier) {
-        final double wide = Double.isFinite(fullWidthMultiplier) && fullWidthMultiplier > 0
-                ? fullWidthMultiplier : 1;
-        Matcher matcher = GRAPHEME.matcher(text);
-        double total = 0;
-        while (matcher.find()) total += isFullWidth(text.codePointAt(matcher.start())) ? wide : 1;
-        return total;
-    }
-
-    /** Unicode 17 EastAsianWidth.txt W/F properties, merged into inclusive ranges.
+     * Unicode 17 EastAsianWidth.txt W/F properties, merged into inclusive ranges.
      * https://www.unicode.org/Public/17.0.0/ucd/EastAsianWidth.txt
      * Distributed under Unicode License V3 (see the file header).
      */
@@ -337,6 +118,221 @@ public final class MiniLyricsFormatter {
             0x1FAEF, 0x1FAF8, 0x20000, 0x2FFFD, 0x30000, 0x3FFFD,
     };
 
+    private MiniLyricsFormatter() {
+    }
+
+    public static boolean validEncapsulation(@Nullable String template) {
+        return template != null && template.contains(LYRIC_PLACEHOLDER);
+    }
+
+    /** If the track format shows the version, which then has to be looked up. */
+    public static boolean usesVariant(@Nullable String template) {
+        return (template == null ? DEFAULT_TRACK_FORMAT : template).contains(VARIANT_PLACEHOLDER);
+    }
+
+    public static String trackLabel(@Nullable String template, @Nullable String title, @Nullable String artist) {
+        return trackLabel(template, title, artist, null);
+    }
+
+    /**
+     * {t} is the title, {a} the artist and {v} the variant, such as Acoustic. The variant is only
+     * known when the backend reports it separately from the title, and is never parsed out of a
+     * title. Text between unescaped colons only appears when every placeholder in it has a value.
+     * Each line of the template is one frame of the artist line.
+     */
+    public static String trackLabel(@Nullable String template, @Nullable String title,
+                                    @Nullable String artist, @Nullable String variant) {
+        final Map<String, String> values = new HashMap<>();
+        values.put("t", title == null ? "" : title);
+        values.put("a", artist == null ? "" : artist);
+        values.put("v", variant == null ? "" : variant.trim());
+        final String rendered = render(template == null ? DEFAULT_TRACK_FORMAT : template, values, true);
+        final StringBuilder out = new StringBuilder();
+        for (String line : LINE_BREAK.split(rendered, -1)) {
+            // A hidden section leaves the spaces around it behind.
+            final String tidy = REPEATED_SPACES.matcher(line).replaceAll(" ").trim();
+            if (tidy.isEmpty()) continue;
+            if (out.length() > 0) out.append('\n');
+            out.append(tidy);
+        }
+        return out.toString();
+    }
+
+    /**
+     * The frames the artist line cycles through: one per template line, and a line wider than the
+     * limit is split into frames the same way a long lyric is. The split is decided from the whole
+     * rendered line, not from any single placeholder.
+     */
+    public static List<String> trackFrames(@Nullable String template, @Nullable String title,
+                                           @Nullable String artist, @Nullable String variant,
+                                           int limit, double fullWidthMultiplier) {
+        final List<String> frames = new ArrayList<>();
+        final String label = trackLabel(template, title, artist, variant);
+        for (String line : label.split("\n")) {
+            if (line.isEmpty()) continue;
+            if (limit <= 0 || width(line, fullWidthMultiplier) <= limit) {
+                frames.add(line);
+                continue;
+            }
+            splitFrame(line, limit, fullWidthMultiplier, frames, 0);
+        }
+        if (frames.isEmpty()) frames.add("");
+        return List.copyOf(frames);
+    }
+
+    /** Halves a frame the way a long lyric is halved, again and again until every part fits. */
+    private static void splitFrame(String frame, int limit, double fullWidthMultiplier,
+                                   List<String> frames, int depth) {
+        if (depth >= MAX_FRAME_SPLIT_DEPTH || width(frame, fullWidthMultiplier) <= limit) {
+            frames.add(frame);
+            return;
+        }
+        final List<Chunk> halves = chunks(new LyricsLine(0, frame), -1, limit, false, false, fullWidthMultiplier);
+        if (halves.size() < 2) {
+            frames.add(frame);
+            return;
+        }
+        for (Chunk half : halves) {
+            final String text = half.text();
+            if (text.isEmpty()) continue;
+            // An ellipsis added at a split does not count against the limit, or a two-character
+            // part would never fit a limit of two.
+            final String bare = text.endsWith(SPLIT_ELLIPSIS)
+                    ? text.substring(0, text.length() - SPLIT_ELLIPSIS.length()) : text;
+            if (bare.equals(frame) || width(bare, fullWidthMultiplier) <= limit) {
+                frames.add(text);
+                continue;
+            }
+            final int before = frames.size();
+            splitFrame(bare, limit, fullWidthMultiplier, frames, depth + 1);
+            if (!bare.equals(text) && frames.size() > before) {
+                final int last = frames.size() - 1;
+                final String lastFrame = frames.get(last);
+                if (!lastFrame.endsWith(SPLIT_ELLIPSIS))
+                    frames.set(last, lastFrame + SPLIT_ELLIPSIS);
+            }
+        }
+    }
+
+    /**
+     * Replaces {t} with the title, {a} with the artist and {lrc} with the lyric if one is given.
+     * This is done in one pass, so a placeholder in a song title is kept as is.
+     */
+    private static String replacePlaceholders(String template, @Nullable String title,
+                                              @Nullable String artist, @Nullable String lyric) {
+        final StringBuilder out = new StringBuilder();
+        for (int i = 0, length = template.length(); i < length; ) {
+            if (template.startsWith("{t}", i)) {
+                out.append(title == null ? "" : title);
+                i += 3;
+            } else if (template.startsWith("{a}", i)) {
+                out.append(artist == null ? "" : artist);
+                i += 3;
+            } else if (lyric != null && template.startsWith(LYRIC_PLACEHOLDER, i)) {
+                out.append(lyric);
+                i += LYRIC_PLACEHOLDER.length();
+            } else {
+                out.append(template.charAt(i++));
+            }
+        }
+        return out.toString();
+    }
+
+    /**
+     * {lrc} is the lyric and {n} its repeat count. Text between unescaped colons appears only when
+     * the count is above 1; a backslash before a colon keeps it literal.
+     */
+    public static String encapsulate(@Nullable String template, String lyric, int repeat) {
+        final String source = validEncapsulation(template) ? template : DEFAULT_ENCAPSULATION;
+        final Map<String, String> values = new HashMap<>();
+        values.put("lrc", lyric);
+        values.put("n", String.valueOf(repeat));
+        return render(source, values, repeat > 1);
+    }
+
+    /**
+     * Fills in placeholders in one pass, so a placeholder inside a value is kept as is. Text between
+     * unescaped colons appears only when every placeholder in it is populated: a non-empty value,
+     * and for the count {n} a value other than 1. A section without placeholders appears when
+     * {@code bareShown} is set. A backslash before a colon keeps it literal.
+     */
+    static String render(String template, Map<String, String> values, boolean bareShown) {
+        final StringBuilder out = new StringBuilder();
+        final StringBuilder segment = new StringBuilder();
+        boolean inside = false;
+        boolean populated = true;
+        boolean placeholders = false;
+        for (int i = 0, length = template.length(); i < length; ) {
+            final char c = template.charAt(i);
+            if (c == '\\' && i + 1 < length && template.charAt(i + 1) == ':') {
+                segment.append(':');
+                i += 2;
+                continue;
+            }
+            if (c == ':') {
+                if (!inside || (placeholders ? populated : bareShown)) out.append(segment);
+                segment.setLength(0);
+                inside = !inside;
+                populated = true;
+                placeholders = false;
+                i++;
+                continue;
+            }
+            final String name = c == '{' ? placeholderAt(template, i, values) : null;
+            if (name != null) {
+                final String value = values.get(name);
+                if (inside) {
+                    placeholders = true;
+                    if (!isPopulated(name, value)) populated = false;
+                }
+                segment.append(value == null ? "" : value);
+                i += name.length() + 2;
+                continue;
+            }
+            segment.append(c);
+            i++;
+        }
+        if (!inside || (placeholders ? populated : bareShown)) out.append(segment);
+        return out.toString();
+    }
+
+    @Nullable
+    private static String placeholderAt(String template, int index, Map<String, String> values) {
+        for (String name : PLACEHOLDERS) {
+            if (values.containsKey(name) && template.startsWith("{" + name + "}", index))
+                return name;
+        }
+        return null;
+    }
+
+    private static boolean isPopulated(String name, @Nullable String value) {
+        if (value == null || value.isEmpty()) return false;
+        return !"n".equals(name) || !value.equals("1");
+    }
+
+    /** How many times in a row the line at the index is sung, counting up to and including it. */
+    public static int repeatCount(List<LyricsLine> lines, int index) {
+        final String text = lines.get(index).text();
+        int count = 1;
+        for (int i = index - 1; i >= 0 && lines.get(i).text().equals(text); i--) {
+            count++;
+        }
+        return count;
+    }
+
+    /**
+     * The width of the text against a character limit: a full-width character, such as a CJK
+     * ideograph or kana, counts as the multiplier and any other character as 1.
+     */
+    public static double width(String text, double fullWidthMultiplier) {
+        final double wide = Double.isFinite(fullWidthMultiplier) && fullWidthMultiplier > 0
+                ? fullWidthMultiplier : 1;
+        final Matcher matcher = GRAPHEME.matcher(text);
+        double total = 0;
+        while (matcher.find()) total += isFullWidth(text.codePointAt(matcher.start())) ? wide : 1;
+        return total;
+    }
+
     static boolean isFullWidth(int cp) {
         int lo = 0, hi = FULL_WIDTH_RANGES.length / 2 - 1;
         while (lo <= hi) {
@@ -349,7 +345,7 @@ public final class MiniLyricsFormatter {
     }
 
     public static int characterCount(String text) {
-        Matcher matcher = GRAPHEME.matcher(text);
+        final Matcher matcher = GRAPHEME.matcher(text);
         int count = 0;
         while (matcher.find()) count++;
         return count;
@@ -383,15 +379,15 @@ public final class MiniLyricsFormatter {
      */
     public static List<Chunk> chunks(LyricsLine line, long intervalEndMs, int limit,
                                      boolean capitalize, boolean strip, double fullWidthMultiplier) {
-        LyricsTextFormatter.Result cleaned = LyricsTextFormatter.format(line.text(), false, strip);
-        String text = cleaned.text();
+        final LyricsTextFormatter.Result cleaned = LyricsTextFormatter.format(line.text(), false, strip);
+        final String text = cleaned.text();
         if (limit <= 0 || width(text, fullWidthMultiplier) <= limit) {
             return List.of(new Chunk(LyricsTextFormatter.format(text, capitalize, false).text(),
                     line.startTimeMs()));
         }
-        List<Unit> timed = timedUnits(line, cleaned);
-        List<Unit> units = timed.isEmpty() ? untimedUnits(text) : timed;
-        List<Unit> groups = new ArrayList<>(2);
+        final List<Unit> timed = timedUnits(line, cleaned);
+        final List<Unit> units = timed.isEmpty() ? untimedUnits(text) : timed;
+        final List<Unit> groups = new ArrayList<>(2);
         final int middle = (units.size() + 1) / 2;
         if (middle > 0) {
             groups.add(new Unit(units.get(0).start(), units.get(middle - 1).end(), units.get(0).timeMs()));
@@ -400,25 +396,35 @@ public final class MiniLyricsFormatter {
             groups.add(new Unit(units.get(middle).start(), units.get(units.size() - 1).end(),
                     units.get(middle).timeMs()));
         }
-        List<Chunk> result = new ArrayList<>(groups.size());
+        final List<Chunk> result = new ArrayList<>(groups.size());
         final int total = Math.max(1, characterCount(text));
         long previousTime = line.startTimeMs();
+        final PairedPunctuation.Pair[] crossed = new PairedPunctuation.Pair[groups.size()];
+        for (int i = 0; i + 1 < groups.size(); i++) {
+            crossed[i] = PairedPunctuation.crossedAt(text, groups.get(i).end());
+        }
         for (int i = 0; i < groups.size(); i++) {
-            Unit group = groups.get(i);
+            final Unit group = groups.get(i);
             long start = group.timeMs();
             if (i == 0) start = line.startTimeMs();
             else if (start < line.startTimeMs() || start < previousTime) {
                 start = intervalEndMs > line.startTimeMs() && line.startTimeMs() >= 0
                         ? line.startTimeMs() + (intervalEndMs - line.startTimeMs())
-                          * characterCount(text.substring(0, group.start())) / total
+                                               * characterCount(text.substring(0, group.start())) / total
                         : -1;
             }
             if (start >= 0) previousTime = start;
             String formatted = LyricsTextFormatter.format(
                     text.substring(group.start(), group.end()), capitalize, strip).text();
-            // The ellipsis marks the split itself, so it goes inside any quotes closed around the part.
-            if (i + 1 < groups.size() && !hasWhitespace(text) && !formatted.endsWith(SPLIT_ELLIPSIS)) {
+            final boolean spaced = hasWhitespace(text);
+            if (i + 1 < groups.size() && !spaced && !formatted.endsWith(SPLIT_ELLIPSIS)) {
                 formatted += SPLIT_ELLIPSIS;
+            }
+            if (spaced && crossed[i] != null) {
+                formatted += SPLIT_ELLIPSIS + crossed[i].closing();
+            }
+            if (spaced && i > 0 && crossed[i - 1] != null) {
+                formatted = crossed[i - 1].opening() + SPLIT_ELLIPSIS + formatted;
             }
             result.add(new Chunk(PairedPunctuation.restore(text, formatted, group.start(), group.end()), start));
         }
@@ -436,21 +442,21 @@ public final class MiniLyricsFormatter {
      */
     public static String instrumental(@Nullable String template, long startMs, long endMs, long positionMs,
                                       @Nullable String title, @Nullable String artist, @Nullable String lastLyric) {
-        String[] frames = LINE_BREAK.split(template == null ? DEFAULT_INSTRUMENTAL : template, -1);
+        final String[] frames = LINE_BREAK.split(template == null ? DEFAULT_INSTRUMENTAL : template, -1);
         final long duration = endMs - startMs;
         final int index = endMs == Long.MAX_VALUE || duration <= 0 ? 0
                 : (int) Math.min(frames.length - 1,
-                        Math.max(0, positionMs - startMs) / (double) duration * frames.length);
+                Math.max(0, positionMs - startMs) / (double) duration * frames.length);
         return replacePlaceholders(frames[index], title, artist, lastLyric == null ? "" : lastLyric);
     }
 
     private static List<Unit> timedUnits(LyricsLine line, LyricsTextFormatter.Result cleaned) {
         if (!line.hasWordTimings()) return List.of();
-        List<Unit> units = new ArrayList<>();
+        final List<Unit> units = new ArrayList<>();
         int cursor = 0;
         final boolean spaced = hasWhitespace(line.text());
         for (Word word : line.words()) {
-            String own = word.text().trim();
+            final String own = word.text().trim();
             if (own.isEmpty()) continue;
             final int start = line.text().indexOf(own, cursor);
             if (start < 0 || word.startMs() < 0) return List.of();
@@ -459,7 +465,7 @@ public final class MiniLyricsFormatter {
                 return List.of();
             }
             final int end = start + own.length();
-            Unit next = new Unit(cleaned.offset(start), cleaned.offset(end), word.startMs());
+            final Unit next = new Unit(cleaned.offset(start), cleaned.offset(end), word.startMs());
             if (!units.isEmpty() && spaced && !hasWhitespace(line.text().substring(cursor, start))) {
                 Unit previous = units.remove(units.size() - 1);
                 units.add(new Unit(previous.start(), next.end(), previous.timeMs()));
@@ -474,9 +480,9 @@ public final class MiniLyricsFormatter {
                 || hasLetterOrDigit(cleaned.text().substring(units.get(units.size() - 1).end()))) {
             return List.of();
         }
-        List<Unit> covering = new ArrayList<>(units.size());
+        final List<Unit> covering = new ArrayList<>(units.size());
         for (int i = 0; i < units.size(); i++) {
-            Unit unit = units.get(i);
+            final Unit unit = units.get(i);
             int end = i + 1 < units.size() ? units.get(i + 1).start() : cleaned.text().length();
             while (end > unit.end()) {
                 final int cp = cleaned.text().codePointBefore(end);
@@ -502,16 +508,16 @@ public final class MiniLyricsFormatter {
      * dictionary words are the units. Punctuation joins the word before it.
      */
     private static List<Unit> untimedUnits(String text) {
-        List<Unit> units = new ArrayList<>();
+        final List<Unit> units = new ArrayList<>();
         final boolean spaced = hasWhitespace(text);
-        BreakIterator words = BreakIterator.getWordInstance(Locale.ROOT);
+        final BreakIterator words = BreakIterator.getWordInstance(Locale.ROOT);
         words.setText(text);
         int start = words.first();
         // Opening punctuation is held back and joins the word after it.
         int opening = -1;
         int worded = 0;
         for (int end = words.next(); end != BreakIterator.DONE; start = end, end = words.next()) {
-            String piece = text.substring(start, end);
+            final String piece = text.substring(start, end);
             if (!hasNonWhitespace(piece)) continue;
             final boolean letters = hasLetterOrDigit(piece);
             final boolean joined = start > 0 && !isWhitespace(text.codePointBefore(start));
@@ -522,7 +528,7 @@ public final class MiniLyricsFormatter {
             final int from = opening >= 0 ? opening : start;
             opening = -1;
             if (!units.isEmpty() && joined && from == start && (spaced || !letters)) {
-                Unit previous = units.remove(units.size() - 1);
+                final Unit previous = units.remove(units.size() - 1);
                 units.add(new Unit(previous.start(), end, -1));
             } else {
                 units.add(new Unit(from, end, -1));
@@ -532,14 +538,14 @@ public final class MiniLyricsFormatter {
         if (opening >= 0) {
             if (units.isEmpty()) units.add(new Unit(opening, text.length(), -1));
             else {
-                Unit previous = units.remove(units.size() - 1);
+                final Unit previous = units.remove(units.size() - 1);
                 units.add(new Unit(previous.start(), text.length(), -1));
             }
         }
         if (worded < 2 && !spaced) {
             // One dictionary word longer than the limit: fall back to characters.
             units.clear();
-            Matcher matcher = GRAPHEME.matcher(text);
+            final Matcher matcher = GRAPHEME.matcher(text);
             while (matcher.find()) units.add(new Unit(matcher.start(), matcher.end(), -1));
         }
         return units;
@@ -559,5 +565,11 @@ public final class MiniLyricsFormatter {
 
     private static boolean hasNonWhitespace(String text) {
         return text.codePoints().anyMatch(cp -> !isWhitespace(cp));
+    }
+
+    public record Chunk(String text, long startMs) {
+    }
+
+    private record Unit(int start, int end, long timeMs) {
     }
 }

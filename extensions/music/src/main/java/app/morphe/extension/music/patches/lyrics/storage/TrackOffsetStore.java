@@ -23,11 +23,9 @@ import app.morphe.extension.shared.Utils;
  * The timing offset the user dragged out for one track, kept so a loop, a trip to another song
  * and a restart all find it again.
  *
- * <p>Keyed by the track alone: a different provider or a refreshed cache must not silently drop a
- * value the user dialled in, and one that no longer fits is corrected by dragging as before.
- *
- * <p>Kept apart from the lyrics on purpose: those are trimmed to a fixed number of entries, and an
- * offset the user dialled in should not be one of the ones that goes.
+ * <p>Keyed by the track alone: a different provider or a refreshed cache must not silently drop
+ * a value the user dialled in. Kept apart from the lyrics on purpose, since those are trimmed to
+ * a fixed number of entries.
  */
 public final class TrackOffsetStore {
 
@@ -58,7 +56,7 @@ public final class TrackOffsetStore {
         if (preferences == null) {
             return;
         }
-        String key = key(track);
+        final String key = key(track);
         SharedPreferences.Editor editor = preferences.edit();
         if (ms == 0) {
             editor.remove(key);
@@ -76,7 +74,7 @@ public final class TrackOffsetStore {
 
     private static List<String> order(SharedPreferences preferences, String key, boolean present) {
         List<String> order = new ArrayList<>();
-        String stored = preferences.getString(KEY_ORDER, null);
+        final String stored = preferences.getString(KEY_ORDER, null);
         if (stored != null) {
             for (String entry : stored.split(SEPARATOR)) {
                 if (!entry.isEmpty() && !entry.equals(key)) {

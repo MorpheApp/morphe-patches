@@ -12,7 +12,9 @@ import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
+
 import java.util.Objects;
 
 final class LyricsFit {
@@ -22,8 +24,9 @@ final class LyricsFit {
     private static final float FIT_MIN_LETTER_SPACING_EM = -0.05f;
     private static final float FIT_WIDTH_AXIS_STEP = 1.5f;
     private static final float FIT_MIN_WIDTH_AXIS = 85f;
+    private static Boolean widthAxisSupport;
 
-private static boolean hasOrphanTail(Layout layout, CharSequence text) {
+    private static boolean hasOrphanTail(Layout layout, CharSequence text) {
         final int length = text.length();
         int segmentStart = 0;
         while (segmentStart < length) {
@@ -70,13 +73,13 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
     }
 
     private static Layout buildCandidateLayout(TextView view, int sizePx, int width,
-            CharSequence text, float letterSpacingEm, @Nullable String fontVariation) {
-        TextPaint paint = new TextPaint(view.getPaint());
+                                               CharSequence text, float letterSpacingEm, @Nullable String fontVariation) {
+        final TextPaint paint = new TextPaint(view.getPaint());
         paint.setTextSize(sizePx);
         paint.setLetterSpacing(letterSpacingEm);
         paint.setFontVariationSettings(fontVariation);
-        Layout current = view.getLayout();
-        Layout.Alignment alignment = current != null
+        final Layout current = view.getLayout();
+        final Layout.Alignment alignment = current != null
                 ? current.getAlignment() : Layout.Alignment.ALIGN_NORMAL;
         return StaticLayout.Builder.obtain(text, 0, text.length(), paint, width)
                 .setAlignment(alignment)
@@ -86,13 +89,11 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
                 .build();
     }
 
-    private static Boolean widthAxisSupport;
-
     private static boolean widthAxisSupported(TextPaint paint) {
         if (widthAxisSupport == null) {
-            TextPaint probe = new TextPaint(paint);
+            final TextPaint probe = new TextPaint(paint);
             probe.setTextSize(100f);
-            String[] sample = {"WAVEWIDTH", "MOMENT", "LONGERSONGTEXT"};
+            final String[] sample = {"WAVEWIDTH", "MOMENT", "LONGERSONGTEXT"};
             float before = 0f;
             for (String part : sample) {
                 before += probe.measureText(part);
@@ -107,28 +108,16 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
         return widthAxisSupport;
     }
 
-    private record CompressionFit(float letterSpacingEm, @Nullable String fontVariation) {}
-
-    static final class FittedState {
-        int width = -1;
-        int textSizePx;
-        float letterSpacingEm;
-        @Nullable
-        String fontVariation;
-        @Nullable
-        CharSequence text;
-    }
-
     @Nullable
     private static CompressionFit findCompression(TextView view, int sizePx, int width,
-            CharSequence text) {
+                                                  CharSequence text) {
         if (!widthAxisSupported(view.getPaint())) {
             return null;
         }
         for (int i = 1; i <= FIT_MAX_STEPS; i++) {
             final float spacing = Math.max(FIT_MIN_LETTER_SPACING_EM,
                     -i * FIT_LETTER_SPACING_STEP_EM);
-            String variation = "'wdth' "
+            final String variation = "'wdth' "
                     + Math.max(FIT_MIN_WIDTH_AXIS, 100f - i * FIT_WIDTH_AXIS_STEP);
             if (!hasOrphanTail(buildCandidateLayout(view, sizePx, width, text, spacing,
                     variation), text)) {
@@ -139,7 +128,7 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
     }
 
     static boolean applyOrphanFit(TextView view, int width, CharSequence text,
-            FittedState state) {
+                                  FittedState state) {
         final int sizePx = (int) view.getTextSize();
         if (width == state.width && sizePx == state.textSizePx
                 && view.getLetterSpacing() == state.letterSpacingEm
@@ -150,16 +139,18 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
         if (base == null) {
             return false;
         }
-        if (view.getLetterSpacing() != 0f || view.getFontVariationSettings() != null) {
+        final String currentVariation = view.getFontVariationSettings();
+        final String weightVariation = extractWeightVariation(currentVariation);
+        if (view.getLetterSpacing() != 0f || currentVariation != null) {
             base = buildCandidateLayout(view, sizePx, width, text, 0f, null);
         }
         float spacing = 0f;
-        String variation = null;
+        String variation = weightVariation;
         if (hasOrphanTail(base, text)) {
-            CompressionFit fit = findCompression(view, sizePx, width, text);
+            final CompressionFit fit = findCompression(view, sizePx, width, text);
             if (fit != null) {
                 spacing = fit.letterSpacingEm;
-                variation = fit.fontVariation;
+                variation = combineAxes(weightVariation, fit.fontVariation);
             }
         }
         final boolean changed = view.getLetterSpacing() != spacing
@@ -179,6 +170,51 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
         state.fontVariation = variation;
         state.text = text;
         return changed;
+    }
+
+    /** Pulls the bold weight set by {@code applyLyricsBoldPaint} out of a variation setting. */
+    @Nullable
+    private static String extractWeightVariation(@Nullable String settings) {
+        if (settings == null) {
+            return null;
+        }
+        final int tag = settings.indexOf("'wght'");
+        if (tag < 0) {
+            return null;
+        }
+        int valueStart = tag + "'wght'".length();
+        while (valueStart < settings.length()
+                && Character.isWhitespace(settings.charAt(valueStart))) {
+            valueStart++;
+        }
+        int valueEnd = valueStart;
+        while (valueEnd < settings.length()
+                && (Character.isDigit(settings.charAt(valueEnd)) || settings.charAt(valueEnd) == '.')) {
+            valueEnd++;
+        }
+        return valueEnd == valueStart ? null : settings.substring(tag, valueEnd);
+    }
+
+    /** Keeps the bold weight when a compression fit sets its own width axis. */
+    @Nullable
+    private static String combineAxes(@Nullable String weight, @Nullable String fit) {
+        if (weight == null) {
+            return fit;
+        }
+        return fit == null ? weight : fit + ", " + weight;
+    }
+
+    private record CompressionFit(float letterSpacingEm, @Nullable String fontVariation) {
+    }
+
+    static final class FittedState {
+        int width = -1;
+        int textSizePx;
+        float letterSpacingEm;
+        @Nullable
+        String fontVariation;
+        @Nullable
+        CharSequence text;
     }
 
     static final class FittingTextView extends TextView {
@@ -205,7 +241,7 @@ private static boolean hasOrphanTail(Layout layout, CharSequence text) {
             if (width <= 0) {
                 return;
             }
-            CharSequence text = getText();
+            final CharSequence text = getText();
             if (text == null || text.length() == 0) {
                 return;
             }

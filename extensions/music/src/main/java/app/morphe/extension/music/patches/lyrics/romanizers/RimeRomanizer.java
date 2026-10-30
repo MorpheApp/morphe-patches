@@ -10,17 +10,18 @@ package app.morphe.extension.music.patches.lyrics.romanizers;
 import androidx.annotation.Nullable;
 
 /**
- * Jyutping for a line of Cantonese: {@link CantoneseDictStore#word()} reads it a word at a time,
- * and {@link CantoneseDictStore#reading(char)} reads the rest a character at a time. A character
- * neither has is kept as it is, since dropping it would lose the characters around it.
+ * The reading of a line of Han characters in the romanization language's script: {@link
+ * RimeDictStore#word()} reads it a word at a time, and {@link RimeDictStore#reading(char)} reads
+ * the rest a character at a time. A character neither has is kept as it is, since dropping it
+ * would lose the characters around it.
  */
-public final class JyutpingRomanizer {
+public final class RimeRomanizer {
 
-    private JyutpingRomanizer() {
+    private RimeRomanizer() {
     }
 
     public static String romanize(String line) {
-        WordReadingTable table = CantoneseDictStore.word();
+        final WordReadingTable table = RimeDictStore.word();
         return HanRomanizer.romanize(line, new HanRomanizer.Readings() {
             @Nullable
             @Override
@@ -31,7 +32,7 @@ public final class JyutpingRomanizer {
             @Nullable
             @Override
             public String character(char c) {
-                return CantoneseDictStore.reading(c);
+                return RimeDictStore.reading(c);
             }
         });
     }

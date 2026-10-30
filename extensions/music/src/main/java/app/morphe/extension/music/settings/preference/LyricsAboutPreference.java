@@ -14,9 +14,11 @@ import android.preference.Preference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
-import app.morphe.extension.music.patches.lyrics.romanizers.CantoneseDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.CldrTransformsStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.JapaneseDictStore;
 import app.morphe.extension.music.patches.lyrics.romanizers.PinyinDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.RimeDictStore;
+import app.morphe.extension.music.patches.lyrics.romanizers.UniDictStore;
 
 /**
  * The notes on what the lyrics patch does and where it looks, with whatever the reading
@@ -59,8 +61,9 @@ public class LyricsAboutPreference extends Preference {
     private static CharSequence notices() {
         StringBuilder joined = new StringBuilder();
         for (String notice : new String[] {
-                PinyinDictStore.notice(), CantoneseDictStore.notice(), JapaneseDictStore.notice(),
-                PinyinDictStore.wordsNotice(), CantoneseDictStore.wordsNotice()
+                UniDictStore.notice(), JapaneseDictStore.notice(),
+                PinyinDictStore.notice(), RimeDictStore.allNotices(),
+                CldrTransformsStore.notice()
         }) {
             if (notice == null) continue;
             if (joined.length() > 0) joined.append("\n\n");

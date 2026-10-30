@@ -15,19 +15,11 @@ import java.io.IOException;
 /** A {@link WordReadingTable} in the dictionary directory, opened on first use and kept open. */
 final class WordTableFile {
 
-    /** Reads a downloaded source into the table being built. */
-    interface Source {
-        void addTo(File archive, WordReadingTable.Builder builder,
-                RomanizationDict.Listener listener) throws IOException;
-    }
-
     /** How many entries a source reads between two progress reports. */
     static final int PROGRESS_EVERY = 20000;
-
     private final String name;
     private final byte[] magic;
     private final int slotCount;
-
     @Nullable
     private volatile WordReadingTable table;
 
@@ -64,29 +56,57 @@ final class WordTableFile {
         return open;
     }
 
+    /** Drops the cached table so a later open re-reads from disk, or finds nothing. */
+    void clear() {
+        table = null;
+    }
+
     WordReadingTable.Builder newBuilder(File built) throws IOException {
         return new WordReadingTable.Builder(built.toPath(), magic, slotCount);
     }
 
     /** Downloads the source unless an earlier attempt left it behind, and builds the table. */
     void build(File directory, String url, String archiveName, Source source,
-            RomanizationDict.Listener listener) throws IOException {
+               RomanizationDict.Listener listener) throws IOException {
+        build(directory, url, archiveName, source, listener, Long.MAX_VALUE);
+    }
+
+    /**
+     * As {@link #build(File, String, String, Source, RomanizationDict.Listener)}, refusing a
+     * source larger than {@code maxBytes}.
+     */
+    void build(File directory, String url, String archiveName, Source source,
+               RomanizationDict.Listener listener, long maxBytes) throws IOException {
         File target = new File(directory, name);
         if (target.isFile()) return;
 
         File archive = new File(directory, archiveName);
         if (!archive.isFile()) {
-            RomanizationDict.download(url, archive, archiveName, listener);
+            RomanizationDict.download(url, archive, archiveName, listener, maxBytes);
         }
 
         File built = new File(directory, name + ".building");
         WordReadingTable.Builder builder = newBuilder(built);
-        source.addTo(archive, builder, listener);
-        builder.finish(0);
+        try {
+            source.addTo(archive, builder, listener);
+            builder.finish(0);
+        } catch (IOException | RuntimeException ex) {
+            // A source that cannot be read must not leave a partial table behind that the next
+            // open would take for a finished one.
+            //noinspection ResultOfMethodCallIgnored
+            built.delete();
+            throw ex;
+        }
         //noinspection ResultOfMethodCallIgnored
         archive.delete();
 
         RomanizationDict.commit(built, target);
         table = null;
+    }
+
+    /** Reads a downloaded source into the table being built. */
+    interface Source {
+        void addTo(File archive, WordReadingTable.Builder builder,
+                   RomanizationDict.Listener listener) throws IOException;
     }
 }

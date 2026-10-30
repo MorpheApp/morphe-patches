@@ -36,7 +36,7 @@ public final class PinyinRomanizer {
 
     /** Pinyin for a Chinese line, with a space between readings. */
     public static String romanize(String line) {
-        WordReadingTable table = PinyinDictStore.word();
+        final WordReadingTable table = PinyinDictStore.word();
         return HanRomanizer.romanize(line, new HanRomanizer.Readings() {
             @Nullable
             @Override

@@ -33,12 +33,6 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsTextFormatter;
 import app.morphe.extension.music.patches.lyrics.model.Word;
-import app.morphe.extension.music.patches.lyrics.romanizers.ArmenianRomanizer;
-import app.morphe.extension.music.patches.lyrics.romanizers.CyrillicRomanizer;
-import app.morphe.extension.music.patches.lyrics.romanizers.GeorgianRomanizer;
-import app.morphe.extension.music.patches.lyrics.romanizers.GreekRomanizer;
-import app.morphe.extension.music.patches.lyrics.romanizers.HangulRomanizer;
-import app.morphe.extension.music.patches.lyrics.romanizers.KanaRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.LocalRomanizer;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
@@ -437,7 +431,7 @@ final class LyricsSpanBuilder {
             for (int i = 0; i < n; i++) {
                 String own = ownWords[i];
                 syllables.add(own);
-                guides.add(phoneticGuideFor(own, mainText, timings.get(i).end(), isLatinWord[i]));
+                guides.add(phoneticGuideFor(own, mainText, isLatinWord[i]));
             }
 
             if (wholeRoman != null && !wholeRoman.trim().isEmpty()) {
@@ -523,55 +517,15 @@ final class LyricsSpanBuilder {
      * A local reading of one syllable, so the alignment compares Latin letters with Latin letters
      * and never with the script being read.
      */
-    private static String phoneticGuideFor(
-            String ownWord,
-            String fullLineText,
-            int wordEndOffset,
-            boolean isLatin) {
+    private static String phoneticGuideFor(String ownWord, String fullLineText, boolean isLatin) {
         if (ownWord == null || ownWord.isEmpty()) {
             return "";
         }
         if (isLatin) {
             return ownWord;
         }
-        if (ScriptDetector.contains(ownWord, Character.UnicodeScript.HANGUL)) {
-            // A lone Hangul syllable is read with the one after it, which can change how it ends.
-            if (ownWord.length() == 1 && wordEndOffset < fullLineText.length()) {
-                final char nextC = fullLineText.charAt(wordEndOffset);
-                if (nextC >= 0xAC00 && nextC <= 0xD7A3) {
-                    String twoChar = HangulRomanizer.romanize(ownWord + nextC);
-                    String nextOnly = HangulRomanizer.romanize(String.valueOf(nextC));
-                    if (twoChar.length() > nextOnly.length() && twoChar.endsWith(nextOnly)) {
-                        return twoChar.substring(0, twoChar.length() - nextOnly.length()).replace("-", "");
-                    }
-                }
-            }
-            return HangulRomanizer.romanize(ownWord).replace("-", "").trim();
-        }
-        if (ScriptDetector.containsCjk(ownWord)) {
-            LocalRomanizer.Result local = LocalRomanizer.romanize(Collections.singletonList(ownWord));
-            if (local != null && !local.lines.isEmpty()) {
-                String r = local.lines.get(0);
-                if (r != null && !r.isEmpty() && !ScriptDetector.containsCjk(r)) {
-                    return r.trim();
-                }
-            }
-            if (ScriptDetector.containsKana(ownWord)) {
-                return KanaRomanizer.romanize(ownWord).trim();
-            }
-            return "";
-        }
-        ScriptDetector.Script script = ScriptDetector.detect(ownWord);
-        if (script != null) {
-            return switch (script) {
-                case CYRILLIC -> CyrillicRomanizer.romanize(ownWord).trim();
-                case GREEK -> GreekRomanizer.romanize(ownWord).trim();
-                case GEORGIAN -> GeorgianRomanizer.romanize(ownWord).trim();
-                case ARMENIAN -> ArmenianRomanizer.romanize(ownWord).trim();
-                default -> "";
-            };
-        }
-        return "";
+        final String reading = LocalRomanizer.syllableReading(ownWord, fullLineText);
+        return reading != null ? reading : "";
     }
 
     /**

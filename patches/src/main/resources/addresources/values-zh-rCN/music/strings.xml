@@ -545,6 +545,8 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_saved">已保存</string>
   <string name="morphe_music_lyrics_word_sync_title">高亮显示同步的单词或音节</string>
   <string name="morphe_music_lyrics_word_sync_summary">优先考虑可用逐字歌词。当歌词带有时间标志，随着音乐及时高亮每个单词或音节</string>
+  <string name="morphe_music_lyrics_split_background_title">单独显示背景人声</string>
+  <string name="morphe_music_lyrics_split_background_summary">将写在括号中的背景人声（如“(Oh) I want you”）从演唱行中分离出来，形成独立的弱音行</string>
   <string name="morphe_music_lyrics_hide_played_title">隐藏已播歌词</string>
   <string name="morphe_music_lyrics_hide_played_summary">隐藏当前播放行之上的歌词行</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">隐藏未播歌词</string>
@@ -642,7 +644,7 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_hide_info_title">隐藏署名行</string>
   <string name="morphe_music_lyrics_hide_info_summary">隐藏显示在歌词下方的署名行</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交换翻译和音译</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">开启时，音译在歌词下方、翻译在歌词上方；关闭时，音译在歌词上方、翻译在歌词下方</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">开启时，音译在歌词下方、翻译在歌词上方；关闭时，音译在歌词上方、翻译在歌词下方。逐音节读数随之移动，从音节上方移到音节下方</string>
   <string name="morphe_music_lyrics_section_translation_title">翻译</string>
   <string name="morphe_music_lyrics_section_romanization_title">罗马化</string>
   <string name="morphe_music_lyrics_translation_provider_title">翻译提供商</string>

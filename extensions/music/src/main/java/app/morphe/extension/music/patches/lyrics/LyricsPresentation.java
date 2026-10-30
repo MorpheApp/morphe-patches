@@ -28,12 +28,12 @@ import app.morphe.extension.music.settings.Settings;
  */
 public final class LyricsPresentation {
 
+    private static final ArtistLineCycle artistCycle = new ArtistLineCycle();
     @Nullable
     private static Lyrics timelineLyrics;
     private static long timelineDurationMs;
     @Nullable
     private static MiniLyricsTimeline timeline;
-
     @Nullable
     private static LyricsLine chunksLine;
     private static long chunksEndMs;
@@ -42,12 +42,6 @@ public final class LyricsPresentation {
     private static boolean chunksStrip;
     private static float chunksMultiplier = 1;
     private static List<MiniLyricsFormatter.Chunk> chunks = List.of();
-
-    private static final ArtistLineCycle artistCycle = new ArtistLineCycle();
-
-    /** The lyric shown with a track format frame. The line tells apart repeats of the same text. */
-    private record FrameKey(@Nullable LyricsLine line, @Nullable String text) {
-    }
 
     private LyricsPresentation() {
     }
@@ -103,7 +97,7 @@ public final class LyricsPresentation {
      * The text the miniplayer and the media session show at a playback position.
      *
      * @return Null if no lyric applies and the track title should be shown instead.
-     *         An empty string is a blank instrumental frame the user configured.
+     * An empty string is a blank instrumental frame the user configured.
      */
     @Nullable
     public static String miniLine(Lyrics lyrics, long durationMs, long positionMs,
@@ -158,5 +152,9 @@ public final class LyricsPresentation {
 
         return MiniLyricsFormatter.current(chunks, positionMs, Settings.LYRICS_MINI_ENCAPSULATION.get(),
                 MiniLyricsFormatter.repeatCount(lines, vocal.index()));
+    }
+
+    /** The lyric shown with a track format frame. The line tells apart repeats of the same text. */
+    private record FrameKey(@Nullable LyricsLine line, @Nullable String text) {
     }
 }

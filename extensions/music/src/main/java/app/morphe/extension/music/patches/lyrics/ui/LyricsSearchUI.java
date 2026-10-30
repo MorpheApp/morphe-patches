@@ -17,12 +17,17 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import app.morphe.extension.shared.theme.ThemeUtils;
-import app.morphe.extension.shared.ui.Dim;
+
 import java.util.List;
 
+import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.Dim;
+
 final class LyricsSearchUI {
+
+    private static final float SUGGESTION_TEXT_SIZE_SP = 14;
 
     static AutoCompleteTextView createSearchInput(Context context, String hint) {
         AutoCompleteTextView input = new AutoCompleteTextView(context);
@@ -40,7 +45,7 @@ final class LyricsSearchUI {
         input.setClipToOutline(true);
 
         input.addOnLayoutChangeListener((v, left, top, right, bottom,
-                oldLeft, oldTop, oldRight, oldBottom) -> {
+                                         oldLeft, oldTop, oldRight, oldBottom) -> {
             int width = v.getWidth();
             if (width > 0) {
                 input.setDropDownWidth(width);
@@ -50,8 +55,6 @@ final class LyricsSearchUI {
         return input;
     }
 
-    private static final float SUGGESTION_TEXT_SIZE_SP = 14;
-
     private static TextView createSuggestionRow(Context context) {
         TextView row = new TextView(context);
         row.setTextSize(TypedValue.COMPLEX_UNIT_SP, SUGGESTION_TEXT_SIZE_SP);
@@ -60,6 +63,11 @@ final class LyricsSearchUI {
         row.setLayoutParams(new AbsListView.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         return row;
+    }
+
+    static void setSuggestionAdapter(Context context, AutoCompleteTextView input,
+                                     List<String> suggestions) {
+        input.setAdapter(new SuggestionAdapter(context, suggestions, input));
     }
 
     private static final class SuggestionAdapter extends ArrayAdapter<String> {
@@ -87,11 +95,6 @@ final class LyricsSearchUI {
         public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
             return getView(position, convertView, parent);
         }
-    }
-
-    static void setSuggestionAdapter(Context context, AutoCompleteTextView input,
-                                             List<String> suggestions) {
-        input.setAdapter(new SuggestionAdapter(context, suggestions, input));
     }
 
 }

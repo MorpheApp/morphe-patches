@@ -68,7 +68,8 @@ public final class LyricsProviders {
         List<LyricsProvider> result = new ArrayList<>(providers.size());
         for (LyricsProvider provider : providers) {
             switch (provider.name()) {
-                case "YTMusic", "Captions", "Unison", "SimpMusic" -> { }
+                case "YTMusic", "Captions", "Unison", "SimpMusic" -> {
+                }
                 default -> result.add(provider);
             }
         }

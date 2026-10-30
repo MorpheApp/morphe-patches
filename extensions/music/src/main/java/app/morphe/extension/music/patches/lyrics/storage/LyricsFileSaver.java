@@ -157,10 +157,10 @@ public final class LyricsFileSaver {
         StringBuilder sb = new StringBuilder(50 * lines.size());
         for (LyricsLine line : lines) {
             sb.append('[')
-              .append(LRCParser.formatCentiseconds(line.startTimeMs()))
-              .append(']')
-              .append(line.text())
-              .append('\n');
+                    .append(LRCParser.formatCentiseconds(line.startTimeMs()))
+                    .append(']')
+                    .append(line.text())
+                    .append('\n');
         }
         return sb.toString();
     }
@@ -170,9 +170,9 @@ public final class LyricsFileSaver {
         sb.append("[type:LyricifyLines]\n");
         for (LyricsLine line : lines) {
             sb.append('[').append(line.startTimeMs())
-              .append(',').append(line.endTimeMs())
-              .append(']').append(line.text())
-              .append('\n');
+                    .append(',').append(line.endTimeMs())
+                    .append(']').append(line.text())
+                    .append('\n');
         }
         return sb.toString();
     }
@@ -189,8 +189,8 @@ public final class LyricsFileSaver {
                     Word word = words.get(j);
                     long durMs = word.endMs() - word.startMs();
                     sb.append(word.text())
-                      .append('(').append(word.startMs())
-                      .append(',').append(durMs).append(')');
+                            .append('(').append(word.startMs())
+                            .append(',').append(durMs).append(')');
                 }
             } else {
                 sb.append(line.text());

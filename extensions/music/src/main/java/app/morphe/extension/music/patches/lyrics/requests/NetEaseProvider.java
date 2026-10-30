@@ -68,114 +68,12 @@ public final class NetEaseProvider implements LyricsProvider {
     private static final String clientSign = generateClientSign();
     private static final String osver = "Microsoft-Windows-10--build-" + (20000 + RANDOM.nextInt(10000)) + "-64bit";
     private static final String mode = MOTHERBOARD_MODES[RANDOM.nextInt(MOTHERBOARD_MODES.length)];
-    private static boolean initialized;
     private static final Map<String, String> cookieJar = new HashMap<>();
-
     private static final Pattern YRC_LINE = Pattern.compile("^\\[(\\d+),(\\d+)](.*)");
     private static final Pattern YRC_WORD = Pattern.compile("\\((\\d+),(\\d+),\\d+\\)([^()]*)");
     private static final Pattern LRC_TIME = Pattern.compile("\\[(\\d+):(\\d{2})(?:[.:](\\d{1,3}))?]");
     private static final Pattern RICH_JSON = Pattern.compile("^\\s*\\{\"");
-
-    @Override
-    public String name() {
-        return "NetEase";
-    }
-
-    @Override
-    public boolean hasCandidates() {
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
-        String keyword = track.title() + " " + track.artist();
-        JSONObject song = searchBest(keyword, track);
-        if (song == null || !song.has("id")) {
-            return null;
-        }
-        Lyrics lyrics = fetchFromSong(song);
-        if (lyrics == null) {
-            return null;
-        }
-        final long durationMs = song.optLong("duration", 0);
-        return FetchResult.of(lyrics,
-                song.optString("name", ""),
-                song.optString("artist", ""),
-                durationMs > 0 ? durationMs / 1000 : 0,
-                track);
-    }
-
-    @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
-        String keyword = track.title() + " " + track.artist();
-        List<JSONObject> songs = searchAll(keyword, track);
-
-        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-        for (JSONObject song : songs) {
-            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
-                break;
-            }
-            if (song == null || !song.has("id")) {
-                continue;
-            }
-            try {
-                Lyrics lyrics = fetchFromSong(song);
-                if (lyrics != null) {
-                    final long durationMs = song.optLong("duration", 0);
-                    int score = LyricsRequests.scoreLyricsCandidate(
-                            song.optString("name", ""), song.optString("artist", ""),
-                            durationMs > 0 ? durationMs / 1000 : 0, lyrics, track);
-                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
-                }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Could not fetch NetEase lyrics for a song", ex);
-            }
-        }
-
-        return Lyrics.sortScoredByScore(scored);
-    }
-
-    @Nullable
-    private Lyrics fetchFromSong(JSONObject song) throws Exception {
-        JSONObject root = eapiRequest("/eapi/song/lyric/v1", new JSONObject()
-                .put("id", song.getLong("id"))
-                .put("lv", "-1")
-                .put("tv", "-1")
-                .put("rv", "-1")
-                .put("yv", "-1"));
-
-        String yrc = optLyric(root, "yrc");
-        String lrc = optLyric(root, "lrc");
-        String tlyric = optLyric(root, "tlyric");
-        String romalrc = optLyric(root, "romalrc");
-
-        List<LyricsLine> lines = parseNeteaseOriginalLyrics(yrc, lrc);
-        if (lines.isEmpty()) {
-            return null;
-        }
-
-        List<String> creditLines = parseYrcCredits(yrc);
-
-        List<LyricsLine> romaLines = romalrc.isEmpty() ? null : LRCParser.parseSynced(romalrc);
-        List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, romaLines);
-
-        // NetEase writes this translation itself, in the Chinese the mainland uses.
-        Map<String, List<LyricsLine>> translations = null;
-        if (LyricsRequests.isSimplifiedChinese()) {
-            List<LyricsLine> transLines = tlyric.isEmpty() ? null : LRCParser.parseSynced(tlyric);
-            List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, transLines);
-            translations = LyricsMerge.singleLanguageTranslations(
-                    translation, LyricsRequests.SIMPLIFIED_CHINESE);
-        }
-
-        String rawFormat = filterJsonLines(!yrc.isEmpty() ? yrc : lrc);
-        String formatType = !yrc.isEmpty() ? "yrc" : "lrc";
-        long songId = song.getLong("id");
-        String sourceUrl = "https://music.163.com/song?id=" + songId;
-        return new Lyrics(lines, name(), true, romanization, translations, null,
-                creditLines.isEmpty() ? null : creditLines, rawFormat, formatType, sourceUrl);
-    }
+    private static boolean initialized;
 
     /** YRC files carry the credits as JSON lines mixed in with the timed lines. */
     private static List<String> parseYrcCredits(String yrc) {
@@ -778,8 +676,6 @@ public final class NetEaseProvider implements LyricsProvider {
         return (min * 60 + sec) * 1000 + Long.parseLong(fractionText.substring(0, 3));
     }
 
-    private record Item(long start, String text) {}
-
     private static String randomChars(int length, String alphabet) {
         StringBuilder builder = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
@@ -801,5 +697,109 @@ public final class NetEaseProvider implements LyricsProvider {
 
     private static String generateClientSign() {
         return randomMac() + "@@@" + randomChars(8, "ABCDEFGHIJKLMNOPQRSTUVWXYZ") + "@@@@@@" + randomChars(64, "0123456789abcdef");
+    }
+
+    @Override
+    public String name() {
+        return "NetEase";
+    }
+
+    @Override
+    public boolean hasCandidates() {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public FetchResult fetch(TrackInfo track) throws Exception {
+        String keyword = track.title() + " " + track.artist();
+        JSONObject song = searchBest(keyword, track);
+        if (song == null || !song.has("id")) {
+            return null;
+        }
+        Lyrics lyrics = fetchFromSong(song);
+        if (lyrics == null) {
+            return null;
+        }
+        final long durationMs = song.optLong("duration", 0);
+        return FetchResult.of(lyrics,
+                song.optString("name", ""),
+                song.optString("artist", ""),
+                durationMs > 0 ? durationMs / 1000 : 0,
+                track);
+    }
+
+    @Override
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        String keyword = track.title() + " " + track.artist();
+        List<JSONObject> songs = searchAll(keyword, track);
+
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (JSONObject song : songs) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
+                break;
+            }
+            if (song == null || !song.has("id")) {
+                continue;
+            }
+            try {
+                Lyrics lyrics = fetchFromSong(song);
+                if (lyrics != null) {
+                    final long durationMs = song.optLong("duration", 0);
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            song.optString("name", ""), song.optString("artist", ""),
+                            durationMs > 0 ? durationMs / 1000 : 0, lyrics, track);
+                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+                }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch NetEase lyrics for a song", ex);
+            }
+        }
+
+        return Lyrics.sortScoredByScore(scored);
+    }
+
+    @Nullable
+    private Lyrics fetchFromSong(JSONObject song) throws Exception {
+        JSONObject root = eapiRequest("/eapi/song/lyric/v1", new JSONObject()
+                .put("id", song.getLong("id"))
+                .put("lv", "-1")
+                .put("tv", "-1")
+                .put("rv", "-1")
+                .put("yv", "-1"));
+
+        String yrc = optLyric(root, "yrc");
+        String lrc = optLyric(root, "lrc");
+        String tlyric = optLyric(root, "tlyric");
+        String romalrc = optLyric(root, "romalrc");
+
+        List<LyricsLine> lines = parseNeteaseOriginalLyrics(yrc, lrc);
+        if (lines.isEmpty()) {
+            return null;
+        }
+
+        List<String> creditLines = parseYrcCredits(yrc);
+
+        List<LyricsLine> romaLines = romalrc.isEmpty() ? null : LRCParser.parseSynced(romalrc);
+        List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, romaLines);
+
+        // NetEase writes this translation itself, in the Chinese the mainland uses.
+        Map<String, List<LyricsLine>> translations = null;
+        if (LyricsRequests.isSimplifiedChinese()) {
+            List<LyricsLine> transLines = tlyric.isEmpty() ? null : LRCParser.parseSynced(tlyric);
+            List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, transLines);
+            translations = LyricsMerge.singleLanguageTranslations(
+                    translation, LyricsRequests.SIMPLIFIED_CHINESE);
+        }
+
+        String rawFormat = filterJsonLines(!yrc.isEmpty() ? yrc : lrc);
+        String formatType = !yrc.isEmpty() ? "yrc" : "lrc";
+        long songId = song.getLong("id");
+        String sourceUrl = "https://music.163.com/song?id=" + songId;
+        return new Lyrics(lines, name(), true, romanization, translations, null,
+                creditLines.isEmpty() ? null : creditLines, rawFormat, formatType, sourceUrl);
+    }
+
+    private record Item(long start, String text) {
     }
 }
