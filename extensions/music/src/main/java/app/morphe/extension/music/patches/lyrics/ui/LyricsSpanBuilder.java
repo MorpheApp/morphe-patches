@@ -1320,32 +1320,36 @@ final class LyricsSpanBuilder {
         int romaEnd = -1;
         int transStart = -1;
         int transEnd = -1;
-        // The swap puts the translation above the lyric and the reading below it.
-        String above = swap ? translation : romanization;
-        if (above != null) {
-            builder.append(above);
+        // main lyrics always on top, reading and translation put below it
+        final int originalStart = 0;
+        builder.append(original);
+        final int originalEnd = builder.length();
+
+        String firstBelow = swap ? translation : romanization;
+        String secondBelow = swap ? romanization : translation;
+
+        if (firstBelow != null) {
             builder.append('\n');
             if (swap) {
-                transStart = 0;
+                transStart = builder.length();
+                builder.append(firstBelow);
                 transEnd = builder.length();
             } else {
-                romaStart = 0;
+                romaStart = builder.length();
+                builder.append(firstBelow);
                 romaEnd = builder.length();
             }
         }
-        final int originalStart = builder.length();
-        builder.append(original);
-        final int originalEnd = builder.length();
-        String below = swap ? romanization : translation;
-        if (below != null) {
+
+        if (secondBelow != null) {
             builder.append('\n');
             if (swap) {
                 romaStart = builder.length();
-                builder.append(below);
+                builder.append(secondBelow);
                 romaEnd = builder.length();
             } else {
                 transStart = builder.length();
-                builder.append(below);
+                builder.append(secondBelow);
                 transEnd = builder.length();
             }
         }

@@ -470,7 +470,7 @@ public final class DynamicBackgroundView extends View {
         float reachX = 1.0f + bx;
         float reachY = 1.0f + by;
         float hypot = (float) Math.hypot(reachX * aspectScaleX, reachY * aspectScaleY);
-        return hypot * LAYER_SCALES[layerIndex] * (1.0f + smoothBeatScale * BEAT_SCALE_BOOST[layerIndex]);
+        return hypot * LAYER_SCALES[layerIndex] + smoothBeatScale * BEAT_SCALE_BOOST[layerIndex];
     }
 
     @Override
