@@ -33,6 +33,8 @@ public final class ClassicSwipeController extends BaseGestureController {
     @Nullable
     private MotionEvent lastOnDownEvent;
 
+    private boolean lastOnDownWasConsumed;
+
     /**
      * @param controller Reference to the main swipe controller.
      */
@@ -50,11 +52,13 @@ public final class ClassicSwipeController extends BaseGestureController {
 
     @Override
     protected boolean shouldDropMotion(MotionEvent motionEvent) {
-        // ignore gestures with more than one pointer
-        // when such a gesture is detected, dispatch the first event of the gesture to downstream
+        // Leave gestures with more than one pointer to the player.
+        // Replay the initial DOWN only if swipe controls consumed it.
         if (motionEvent.getPointerCount() > 1) {
             if (lastOnDownEvent != null) {
-                controller.dispatchDownstreamTouchEvent(lastOnDownEvent);
+                if (lastOnDownWasConsumed) {
+                    controller.dispatchDownstreamTouchEvent(lastOnDownEvent);
+                }
                 lastOnDownEvent.recycle();
             }
             lastOnDownEvent = null;
@@ -83,7 +87,8 @@ public final class ClassicSwipeController extends BaseGestureController {
         lastOnDownEvent = MotionEvent.obtain(motionEvent);
 
         // must be inside swipe zone
-        return isInSwipeZone(motionEvent);
+        lastOnDownWasConsumed = isInSwipeZone(motionEvent);
+        return lastOnDownWasConsumed;
     }
 
     @Override
