@@ -160,7 +160,18 @@ public final class CaptionTracks {
      */
     public static synchronized void onSelectedTrack(Object object) {
         Track track = track(object);
-        if (track == null) { selectionDisabled = true; selectedInputLanguage = null; clearRequestedOutput(); invalidateTranslation(); return; }
+        if (track == null) {
+            if (dualCaptionEnabled()) {
+                if (translatedSession != null && source != null) {
+                    requestedSource = source;
+                    requestedTarget = translatedSession.primaryLanguage;
+                }
+            } else clearRequestedOutput();
+            selectionDisabled = true;
+            selectedInputLanguage = null;
+            invalidateTranslation();
+            return;
+        }
         onVideoId(track.video);
         selectionDisabled = false;
         selectedInputLanguage = track.language;
@@ -191,6 +202,22 @@ public final class CaptionTracks {
         }
         translationChanged(translatedToken);
         return true;
+    }
+
+    /** The native player remembers the source track while bilingual output uses another language. */
+    static synchronized PreferredCaptionLanguagePatch.CaptionTrackInterface primaryTrack(
+            PreferredCaptionLanguagePatch.CaptionTrackInterface track) {
+        try {
+            if (track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original
+                    && requestedSource != null && requestedSource.equals(sourceIdentity(original))) {
+                var translated = AutoTranslateCaptionsPatch.createTranslation(
+                        original, requestedTarget, Requester.getAppLocale());
+                if (translated != null) return translated;
+            }
+        } catch (RuntimeException | LinkageError ignored) {
+            // An unavailable native copy must preserve the current selection.
+        }
+        return track;
     }
 
     static synchronized void clearRequestedOutput() {

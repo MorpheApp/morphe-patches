@@ -242,8 +242,10 @@ public class PreferredCaptionLanguagePatch {
                     return track;
                 }
             }
-            if (StableCaptionBlocks.blockLayoutEnabled() && (track == null || isExplicitlyDisabled(track)))
+            if (StableCaptionBlocks.blockLayoutEnabled() && (track == null || isExplicitlyDisabled(track))) {
                 CaptionTracks.onSelectedTrack(null);
+                return track;
+            }
             Logger.printDebug(() -> "onSetSubtitleTrack track: " + track
                     + " selectType: " + selectType
                     + " interactionAllowed: " + interactionAllowed
@@ -338,7 +340,7 @@ public class PreferredCaptionLanguagePatch {
         CaptionTrackInterface track = activeTrack;
         if (manager == null || track == null || isExplicitlyDisabled(track)
                 || !CaptionTracks.isCurrentVideo(managerVideo)) return false;
-        CaptionTrackInterface selected = getPreferredCaptionTrack(manager, track);
+        CaptionTrackInterface selected = getPreferredCaptionTrack(manager, CaptionTracks.primaryTrack(track));
         if (selected == null) return false;
         replayingSelection.set(true);
         try {
