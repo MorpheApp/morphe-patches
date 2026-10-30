@@ -537,7 +537,8 @@ val rememberVideoQualityPatch = bytecodePatch {
             // The buffered video is cleared after and before the segment that is playing.
             val videoTrackTypeField = PlaybackControllerSetVideoFormatsFingerprint.instructionMatches
                 .last().getFieldAccessed()
-            val discardBufferAfterSegmentMethod = BufferManagerDiscardBufferAfterSegmentFingerprint.method
+            val discardBufferAfterSegmentMethod = MediaSegmentHolderDiscardBufferAfterSegmentFingerprint
+                .instructionMatches.last().getMethodCalled()
             val getMediaSegmentHolderMethod = BufferManagerGetMediaSegmentHolderFingerprint.method
 
             // The video buffered before the segment that is playing is cleared too,
@@ -611,9 +612,9 @@ val rememberVideoQualityPatch = bytecodePatch {
                         if-ltz v2, :clear_buffer
                         invoke-virtual { p0 }, $stopRequestsMethod
                         iget-object v2, p0, $bufferManagerField
-                        invoke-virtual { v2, p1, v0, v1 }, $discardBufferAfterSegmentMethod
                         invoke-virtual { v2, p1 }, $getMediaSegmentHolderMethod
                         move-result-object v2
+                        invoke-virtual { v2, v0, v1 }, $discardBufferAfterSegmentMethod
                         check-cast v2, $SAMPLE_HOLDER_CLASS
                         invoke-virtual { v2, v0, v1 }, $sampleHolderDiscardBufferMethod
                         return-void

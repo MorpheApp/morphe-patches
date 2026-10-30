@@ -1334,6 +1334,21 @@ internal fun queuePlayerCloseTouchFingerprint(dismiss: MethodReference) = Finger
     filters = listOf(methodCall(reference = dismiss))
 )
 
+/** 21.44+ onFling forwards an accepted fling to the mini player controller, which dismisses. */
+internal fun queuePlayerControllerFlingFingerprint(dismiss: MethodReference) = Fingerprint(
+    parameters = listOf("Landroid/view/MotionEvent;", "F", "F"),
+    returnType = "V",
+    filters = listOf(methodCall(reference = dismiss))
+)
+
+/** 21.44+ touch release is also forwarded to the mini player controller. */
+internal fun queuePlayerControllerReleaseFingerprint(dismiss: MethodReference) = Fingerprint(
+    classFingerprint = queuePlayerControllerFlingFingerprint(dismiss),
+    parameters = emptyList(),
+    returnType = "V",
+    filters = listOf(methodCall(reference = dismiss))
+)
+
 /** The playlist controller dispatches commands through the activity's command resolver. */
 internal fun playlistControllerDispatcherFingerprint(controllerType: String, dispatcherType: String) = Fingerprint(
     definingClass = controllerType,

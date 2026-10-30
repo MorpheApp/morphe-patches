@@ -44,6 +44,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -383,7 +384,11 @@ val miniplayerPatch = bytecodePatch(
                 "getRoundedCorners",
             )
         } else {
-            MiniplayerRoundedCornersFingerprint.let {
+            (if (is_21_44_or_greater) {
+                MiniplayerRoundedCornersFingerprint
+            } else {
+                MiniplayerRoundedCornersLegacyFingerprint
+            }).let {
                 it.method.apply {
                     val index = it.instructionMatches.last().index
                     val free = findFreeRegister(index)
@@ -436,7 +441,7 @@ val miniplayerPatch = bytecodePatch(
         MiniplayerOffscreenHandlerFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
-                val free = findFreeRegister(index)
+                val free = findFreeRegister(index + 1)
 
                 addInstructionsWithLabels(
                     index + 1,

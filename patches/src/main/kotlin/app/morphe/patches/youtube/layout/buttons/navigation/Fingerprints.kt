@@ -331,7 +331,8 @@ internal object PivotBarRendererListFingerprint : Fingerprint(
             definingClass = "this",
             type = "L"
         ),
-        literal(45633821L),
+        // The new list is compared to the previous list.
+        methodCall(smali = "Ljava/lang/Class;->isInstance(Ljava/lang/Object;)Z")
     )
 )
 

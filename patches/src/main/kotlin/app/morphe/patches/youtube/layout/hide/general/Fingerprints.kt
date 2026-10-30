@@ -525,11 +525,6 @@ internal object ChannelTabBuilderLegacyFingerprint : Fingerprint(
 internal object ChannelTabRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(
-        "L",
-        "Ljava/util/List;",
-        "I"
-    ),
     filters = listOf(
         opcode(Opcode.IF_EQ),
         anyInstruction(
