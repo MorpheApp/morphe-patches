@@ -14,12 +14,15 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Icon;
 import android.media.MediaCodec;
 import android.media.MediaDataSource;
 import android.media.MediaExtractor;
@@ -107,6 +110,7 @@ public final class OfflineVideoExporter {
      */
     private static final long NOTIFICATION_INTERVAL_MILLISECONDS = 1000;
     private static final int PROGRESS_MAX = 100;
+    private static final String CANCEL_ACTION_PREFIX = "app.morphe.extension.youtube.EXPORT_CANCEL.";
 
     /**
      * Same as MediaFormat.MIMETYPE_VIDEO_AV1, which is only available with Android 10 and newer.
@@ -144,6 +148,12 @@ public final class OfflineVideoExporter {
     private record ExportResult(String location, @Nullable Uri uri, String mimeType) {
     }
 
+    /**
+     * Thrown to stop an export that is canceled with the notification.
+     */
+    private static final class ExportCanceledException extends IOException {
+    }
+
     private OfflineVideoExporter() {
     }
 
@@ -170,6 +180,10 @@ public final class OfflineVideoExporter {
                 String text = str("morphe_export_download_saved", result.location());
                 notification.showResult(text, result.uri(), result.mimeType());
                 Utils.showToastLong(text);
+            } catch (ExportCanceledException ex) {
+                Logger.printDebug(() -> "Export canceled: " + videoId);
+                notification.dismiss();
+                Utils.showToastShort(str("morphe_export_download_canceled"));
             } catch (Exception ex) {
                 Logger.printException(() -> "exportVideo failure", ex);
                 String text = str("morphe_export_download_failed");
@@ -340,6 +354,8 @@ public final class OfflineVideoExporter {
             // The streams can't be muxed together on this device, so each stream is saved as its own file.
             // The streams are complete media files, so they play by themselves.
             ExportResult result = null;
+            // If a stream can't be saved, the other streams are deleted too, so no partial export is left.
+            List<OutputFile> finished = new ArrayList<>();
             for (int i = 0, size = sources.size(); i < size; i++) {
                 String mimeType = getMimeType(formats.get(i));
                 final boolean audio = mimeType.startsWith("audio/");
@@ -353,12 +369,16 @@ public final class OfflineVideoExporter {
                 try {
                     copy(sources.get(i), output.descriptor, notification);
                     String location = output.finish();
+                    finished.add(output);
                     // The notification opens the video file.
                     if (result == null || !audio) {
                         result = new ExportResult(location, output.uri, mimeType);
                     }
                 } catch (Exception ex) {
                     output.delete();
+                    for (OutputFile file : finished) {
+                        file.delete();
+                    }
                     throw ex;
                 }
             }
@@ -615,20 +635,54 @@ public final class OfflineVideoExporter {
     private static final class ExportNotification {
         private final int id;
         private final String title;
+        private final PendingIntent cancelIntent;
+        private final BroadcastReceiver cancelReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                canceled = true;
+            }
+        };
+        private volatile boolean canceled;
         private List<StreamSource> sources = List.of();
         private long nextUpdateTime;
 
+        @SuppressLint("UnspecifiedRegisterReceiverFlag") // The flags only exist with Android 13 and newer.
         ExportNotification(String videoId, String title) {
             this.id = videoId.hashCode();
             this.title = title;
-            showProgress();
+
+            Context context = Utils.getContext();
+            String action = CANCEL_ACTION_PREFIX + id;
+            IntentFilter filter = new IntentFilter(action);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                context.registerReceiver(cancelReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+            } else {
+                context.registerReceiver(cancelReceiver, filter);
+            }
+            cancelIntent = PendingIntent.getBroadcast(context, id,
+                    new Intent(action).setPackage(context.getPackageName()),
+                    PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+
+            postProgress();
         }
 
         void setSources(List<StreamSource> sources) {
             this.sources = sources;
         }
 
-        void showProgress() {
+        /**
+         * Called while the export is written.
+         *
+         * @throws ExportCanceledException If the export was canceled with the notification.
+         */
+        void showProgress() throws ExportCanceledException {
+            if (canceled) {
+                throw new ExportCanceledException();
+            }
+            postProgress();
+        }
+
+        private void postProgress() {
             final long now = System.currentTimeMillis();
             if (now < nextUpdateTime) {
                 return;
@@ -647,7 +701,11 @@ public final class OfflineVideoExporter {
                     .setSmallIcon(android.R.drawable.stat_sys_download)
                     .setContentText(str("morphe_export_download_progress", progress))
                     .setProgress(PROGRESS_MAX, progress, total == 0)
-                    .setOngoing(true);
+                    .setOngoing(true)
+                    .addAction(new Notification.Action.Builder(
+                            Icon.createWithResource(Utils.getContext(), android.R.drawable.ic_menu_close_clear_cancel),
+                            Utils.getContext().getString(android.R.string.cancel),
+                            cancelIntent).build());
             post(builder);
         }
 
@@ -655,6 +713,7 @@ public final class OfflineVideoExporter {
          * @param uri The file the notification opens, or null if there is none.
          */
         void showResult(String text, @Nullable Uri uri, @Nullable String mimeType) {
+            stopCancelReceiver();
             Notification.Builder builder = createBuilder()
                     .setSmallIcon(android.R.drawable.stat_sys_download_done)
                     .setContentText(text)
@@ -669,6 +728,23 @@ public final class OfflineVideoExporter {
             post(builder);
         }
 
+        /**
+         * Removes the notification of a canceled export.
+         */
+        void dismiss() {
+            stopCancelReceiver();
+            getManager().cancel(id);
+        }
+
+        private void stopCancelReceiver() {
+            Utils.getContext().unregisterReceiver(cancelReceiver);
+            cancelIntent.cancel();
+        }
+
+        private static NotificationManager getManager() {
+            return (NotificationManager) Utils.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        }
+
         private Notification.Builder createBuilder() {
             return new Notification.Builder(Utils.getContext(), NOTIFICATION_CHANNEL)
                     .setContentTitle(title)
@@ -677,8 +753,7 @@ public final class OfflineVideoExporter {
 
         @SuppressLint("NotificationPermission") // The app declares POST_NOTIFICATIONS.
         private void post(Notification.Builder builder) {
-            NotificationManager manager = (NotificationManager) Utils.getContext()
-                    .getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationManager manager = getManager();
             manager.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL,
                     str("morphe_export_download_notification_channel"),
                     NotificationManager.IMPORTANCE_LOW));
