@@ -273,6 +273,8 @@ public class Settings extends SharedYouTubeSettings {
     /** Master switch for separating background vocals and harmony from the lead line. */
     public static final BooleanSetting LYRICS_SPLIT_BACKGROUND = new BooleanSetting("morphe_music_lyrics_split_background", TRUE, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_UNPLAYED = new BooleanSetting("morphe_music_lyrics_hide_unplayed", FALSE, false, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_LIGHTWEIGHT_MODE = new BooleanSetting("morphe_music_lyrics_lightweight_mode", FALSE, false, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_DYNAMIC_BACKGROUND = new BooleanSetting("morphe_music_lyrics_dynamic_background", TRUE, false, parent(LYRICS_ENABLED));
     public static final IntegerSetting LYRICS_TEXT_SIZE = new IntegerSetting("morphe_music_lyrics_text_size", 28, false, parent(LYRICS_ENABLED));
     public static final IntegerSetting LYRICS_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_offset_ms", 0, false, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SB_MATCHING = new BooleanSetting("morphe_music_lyrics_sb_matching", TRUE, false, parent(LYRICS_ENABLED));

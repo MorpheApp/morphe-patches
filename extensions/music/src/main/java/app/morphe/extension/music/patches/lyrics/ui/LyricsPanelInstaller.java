@@ -173,6 +173,9 @@ public final class LyricsPanelInstaller {
             } else if (Settings.LYRICS_HIDE_PLAYED.key.equals(key)
                     || Settings.LYRICS_HIDE_UNPLAYED.key.equals(key)) {
                 panelView.applyLineOverlaySettings();
+            } else if (Settings.LYRICS_DYNAMIC_BACKGROUND.key.equals(key)
+                    || Settings.LYRICS_LIGHTWEIGHT_MODE.key.equals(key)) {
+                panelView.applyDynamicBackgroundSettings();
             }
         } catch (Throwable ex) {
             Logger.printException(() -> "Could not apply lyrics setting change", ex);

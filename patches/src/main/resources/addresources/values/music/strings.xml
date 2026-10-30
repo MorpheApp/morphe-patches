@@ -647,6 +647,10 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_hide_played_summary">Hide lyrics lines above the currently playing line</string>
     <string name="morphe_music_lyrics_hide_unplayed_title">Hide unplayed lyrics</string>
     <string name="morphe_music_lyrics_hide_unplayed_summary">Hide lyrics lines below the currently playing line</string>
+    <string name="morphe_music_lyrics_dynamic_background_title">Enable Dynamic Background (Player View)</string>
+    <string name="morphe_music_lyrics_dynamic_background_summary">Applies animated album backgrounds when the player is expanded.</string>
+    <string name="morphe_music_lyrics_lightweight_mode_title">Lightweight Mode</string>
+    <string name="morphe_music_lyrics_lightweight_mode_summary">Reduces animations and visual effects for better performance on older devices.</string>
     <string name="morphe_music_lyrics_mediasession_title">Show MediaSession Lyrics on lock screen</string>
     <string name="morphe_music_lyrics_mediasession_summary">Shows the current line on the lock screen, Android Auto and Bluetooth. Needs Android 11 or newer</string>
     <string name="morphe_music_lyrics_miniplayer_title">Show Miniplayer Lyrics</string>

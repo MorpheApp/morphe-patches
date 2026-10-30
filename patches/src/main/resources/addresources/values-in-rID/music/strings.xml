@@ -596,6 +596,10 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_hide_played_summary">Sembunyikan baris lirik di atas garis yang sedang diputar</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Sembunyikan lirik yang belum diputar</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">Sembunyikan baris lirik di bawah garis yang sedang diputar</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Aktifkan Latar Belakang Dinamis (Tampilan Pemutar)</string>
+  <string name="morphe_music_lyrics_dynamic_background_summary">Menerapkan latar belakang sampul album beranimasi saat pemutar diperluas.</string>
+  <string name="morphe_music_lyrics_lightweight_mode_title">Mode Ringan</string>
+  <string name="morphe_music_lyrics_lightweight_mode_summary">Menyederhanakan efek visual untuk performa lebih lancar di perangkat spesifikasi rendah.</string>
   <string name="morphe_music_lyrics_mediasession_title">Tampilkan lirik MediaSession di layar kunci</string>
   <string name="morphe_music_lyrics_mediasession_summary">Menampilkan baris saat ini di layar kunci, Android Auto dan Bluetooth. Memerlukan Android 11 atau versi yang lebih baru</string>
   <string name="morphe_music_lyrics_miniplayer_title">Tampilkan lirik Pemutar mini</string>
