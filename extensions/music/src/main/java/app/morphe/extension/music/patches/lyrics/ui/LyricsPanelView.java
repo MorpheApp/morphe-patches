@@ -1683,7 +1683,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
         currentSourceUrl = newLyrics.sourceUrl();
         updateFooter();
-        footerView.setOnClickListener(view -> onSourceClicked());
 
         List<String> songwriters = newLyrics.songwriters();
         String about = newLyrics.about();

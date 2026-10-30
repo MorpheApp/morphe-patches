@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Animácia spustenia</string>
   <string name="morphe_splash_screen_style_entry_1">Vypnutý</string>
   <string name="morphe_splash_screen_style_entry_2">Farebná</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Farba</string>
   <string name="morphe_splash_screen_style_entry_4">Monochromatické</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochromatický</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Zdôrazniť nové nastavenia</string>
+  <string name="morphe_settings_new_indicator_days_summary">Počet dní, počas ktorých sa vedľa nastavení a možností pridaných aktualizáciou zobrazuje bod</string>
   <string name="morphe_settings_new_indicator_days_off">Vypnuté</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reštartujte aplikáciu, aby sa dokončila konfigurácia</string>

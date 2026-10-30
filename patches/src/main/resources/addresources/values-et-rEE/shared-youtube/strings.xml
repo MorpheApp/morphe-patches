@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Käivitusanimatsioon</string>
   <string name="morphe_splash_screen_style_entry_1">Välja lülitatud</string>
   <string name="morphe_splash_screen_style_entry_2">Värv</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Color</string>
   <string name="morphe_splash_screen_style_entry_4">Monokroomne</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Rõtusta uusi seadeid</string>
+  <string name="morphe_settings_new_indicator_days_summary">Päevade arv, mille jooksul kuvatakse uuendusega lisatud seadete ja valikute kõrval punkt</string>
+  <string name="morphe_settings_new_indicator_days_off">Väljas</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Seadistamise lõpetamiseks taaskäivitage</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

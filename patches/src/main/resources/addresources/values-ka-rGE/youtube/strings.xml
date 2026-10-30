@@ -455,6 +455,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">სურათი შენახულია %s-ში</string>
   <string name="morphe_post_image_download_failed">სურათის ჩამოტვირთვა ვერ მოხერხდა</string>
   <string name="morphe_post_image_download_not_found">ამ პოსტში სურათი ვერ მოიძებნა</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">პოსტების თარგმნა</string>
+  <string name="morphe_post_translate_summary">ამატებს ჩამოსაშლელი მენიუს ელემენტს კონტენტის ავტორების პოსტების სვთარგმნელად</string>
+  <string name="morphe_post_translate_language_title">პოსტის თარგმნის ენა</string>
+  <string name="morphe_post_translate_flyout">თარგმნა</string>
+  <string name="morphe_post_translate_flyout_original">ორიგინალის ჩვენება</string>
+  <string name="morphe_post_translate_started">თარგმნა მიმდინარეობს…</string>
+  <string name="morphe_post_translate_failed">პოსტის თარგმნა ვერ მოხერხდა</string>
+  <string name="morphe_post_translate_same_language">პოსტი უკვე არის თარგმნის ენაზე</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ask-ის ელემენტის დამატება ჩამოსაშლელ მენიუში</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">ამატებს ვიდეოს შეჯამების ელემენტს ფიდის გასაშლელ მენიუში</string>
@@ -863,6 +872,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">ტრანსკრიპტის გასწორება</string>
   <string name="morphe_fix_transcript_summary">ასწორებს წინაპირობის შემოწმების შეცდომას, რამაც შესაძლოა ტრანსკრიპტის ჩატვირთვა წაშალოს</string>
   <string name="morphe_captions_in_pip_title">სუბტიტრების ჩვენება სურათში-სურათის რეჟიმში</string>
+  <string name="morphe_stable_caption_blocks_title">სუბტიტრების სტაბილური ბლოკები</string>
+  <string name="morphe_stable_caption_blocks_summary">დააჯგუფეთ ავტომატური სუბტიტრები სტაბილურ, წაკითხვად ბლოკებად. ზოგიერთი სიტყვა შესაძლოა გამოჩნდეს მანამ, სანამ წარმოთქმულად იქნება. საჭიროა გადატვირთვა.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ნავიგაციის ღილაკები</string>
   <string name="morphe_navigation_buttons_screen_summary">აირჩიეთ, რომელი ღილაკები გამოჩნდეს ქვედა навіგაციის პანელზე</string>
@@ -1211,6 +1222,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">გათიშავს „გააგრძელეთ ყურება“-ს მინი-პლეერს, YouTube Premium-ის ფუნქციას, რომელიც ჩნდება აპლიკაციის გაშვებისას</string>
   <string name="morphe_miniplayer_screen_title">მინიპლეიერი</string>
   <string name="morphe_miniplayer_screen_summary">მორგეთ მინიმალისტური ვიდეო პლეერის გარეგნული სახე და ქცევა</string>
+  <string name="morphe_miniplayer_not_available_title">დამატებითი მინი-პლეიერები</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube-მა წაშალა ყველა დამატებითი მინი-პლეიერი. მეტი მინი-პლეიერის ტიპის აღსადგენად, დააპატჩეთ YouTube 21.28.208 ან უფრო ძველი ვერსია</string>
   <string name="morphe_miniplayer_type_title">მინიპლეიერის ტიპი</string>
   <string name="morphe_miniplayer_hide_title_title">სათაურისა და არხის დამალვა</string>
   <string name="morphe_miniplayer_type_entry_0">გამორთვებული</string>
@@ -1572,6 +1585,7 @@ AV1-ით ვიდეოს უკუკვევა შესაძლოა 
   <string name="morphe_series_tracker_marked">ეპიზოდები მონიშნულია როგორც ნანახი</string>
   <string name="morphe_series_tracker_undo">გაუქმება</string>
   <string name="morphe_series_tracker_enable_short">ჩართვა</string>
+  <string name="morphe_series_tracker_new_episode">1 ახალი ეპიზოდი</string>
   <string name="morphe_series_tracker_new_episodes">%1$s ახალი ეპიზოდი</string>
   <string name="morphe_series_tracker_record_short">პროგრესის ჩაწერა ამ მოწყობილობაზე</string>
   <string name="morphe_series_tracker_follow_consent">"თქვენი სერიალები და პროგრესი რჩება ამ მოწყობილობაზე და გაზიარებულია YouTube-ის ანგარიშებს შორის. YouTube-ის ისტორიის მართვის ფუნქციები მათ არ ცვლის. პროგრესის გასუფთავება მოახდინეთ სერიალების მენიუდან.

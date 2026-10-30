@@ -25,6 +25,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_4">Монохромный</string>
   <string name="morphe_splash_screen_style_entry_5">Morphe Монохромный</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Подсвечивать новые настройки</string>
+  <string name="morphe_settings_new_indicator_days_summary">Количество дней, в течение которых точка отображается рядом с настройками и опциями, добавленными в обновлении</string>
   <string name="morphe_settings_new_indicator_days_off">Выключено</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Перезагрузите для завершения настройки</string>

@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">გაშვების ანიმაცია</string>
   <string name="morphe_splash_screen_style_entry_1">გამორთული</string>
   <string name="morphe_splash_screen_style_entry_2">ფერი</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe ფერადი</string>
   <string name="morphe_splash_screen_style_entry_4">მონოქრომული</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe მონოქრომული</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">ახალი პარამეტრების გამოყოფა</string>
+  <string name="morphe_settings_new_indicator_days_summary">დღეების რაოდენობა, რომლის განმავლობაშიც განახლებით დამატებულ პარამეტრებთან და ოფციებთან გამოჩნდება წერტილი</string>
+  <string name="morphe_settings_new_indicator_days_off">გამორთვრა</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">გადატვირთეთ კონფიგურაციის დასასრულებლად</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

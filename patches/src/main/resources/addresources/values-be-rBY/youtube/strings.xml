@@ -455,6 +455,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">Выява захавана ў %s</string>
   <string name="morphe_post_image_download_failed">Не ўдалося спампаваць выяву</string>
   <string name="morphe_post_image_download_not_found">У гэтым пасе выявы не знойдзены</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Перакласці пасты</string>
+  <string name="morphe_post_translate_summary">Дадае пункт у выпадаючыя меню для перакладу пастоў стваральнікаў кантэнту</string>
+  <string name="morphe_post_translate_language_title">Мова перакладу пастоў</string>
+  <string name="morphe_post_translate_flyout">Перакласці</string>
+  <string name="morphe_post_translate_flyout_original">Паказаць арыгінал</string>
+  <string name="morphe_post_translate_started">Пераклад...</string>
+  <string name="morphe_post_translate_failed">Не ўдалося перакласці паст</string>
+  <string name="morphe_post_translate_same_language">Паст ужо напрымаўленыя мовай перакладу</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Дадаць пункт «Спытаць» у выпадаючае меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Дадае пункт «Сціснуць відэа» у выпадаюе меню стужкі</string>
@@ -863,6 +872,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">Выправіць транскрыпцыю</string>
   <string name="morphe_fix_transcript_summary">Выпраўляе памылку праверкі папярэдніх умоў, якая можа перашкодзіць загрузцы тэксту відэа</string>
   <string name="morphe_captions_in_pip_title">Паказваць субтытры ў рэжыме „карціна ў карціне“</string>
+  <string name="morphe_stable_caption_blocks_title">Стабільныя блокі субтытраў</string>
+  <string name="morphe_stable_caption_blocks_summary">Групаваць аўтаматычныя субтытры ў стабільныя, чытэльныя блокі. Некаторыя словы могуць з\'явіцца раней, чым яны будуць вымаўлены. Патрабуецца перазапуск.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Кнопкі навігацыі</string>
   <string name="morphe_navigation_buttons_screen_summary">Выберыце, якія кнопкі будуць адлюстроўвацца ў ніжняй панэлі навігацыі</string>
@@ -1211,6 +1222,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Выключае мініплэер \"Працягнуць прагляд\", функцыю YouTube Premium, якая з\'яўляецца пры запуску праграмы</string>
   <string name="morphe_miniplayer_screen_title">Мініплэер</string>
   <string name="morphe_miniplayer_screen_summary">Настройце выгляд і паводзіны зведзенага відэаплэера</string>
+  <string name="morphe_miniplayer_not_available_title">Дадатковыя мініплэеры</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube выдаліў усе дадатковыя мініплэеры. Каб аднавіць больш тыпаў мініплэераў, патчыце YouTube 21.28.208 або больш старую версію</string>
   <string name="morphe_miniplayer_type_title">Тып мініплэера</string>
   <string name="morphe_miniplayer_hide_title_title">Схаваць загаловак і канал</string>
   <string name="morphe_miniplayer_type_entry_0">Адключана</string>
@@ -1572,6 +1585,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_marked">Эпізоды пазначаны як праглядзеныя</string>
   <string name="morphe_series_tracker_undo">Скасаваць</string>
   <string name="morphe_series_tracker_enable_short">Уключыць</string>
+  <string name="morphe_series_tracker_new_episode">1 новы эпізод</string>
   <string name="morphe_series_tracker_new_episodes">%1$s новых серый</string>
   <string name="morphe_series_tracker_record_short">Запісвайце прагрэс на гэтай прыладзе</string>
   <string name="morphe_series_tracker_follow_consent">"Вашы серыялы і прагрэс застаюцца на гэтай прыладзе і будуць сумеснымі для розных улікоў YouTube. Спрыміяныя налады гісторыі YouTube не ўплываюць на іх. Ачысціце прагрэс у меню «Серыялы».

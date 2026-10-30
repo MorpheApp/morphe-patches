@@ -58,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_already_read">Irkurria</string>
   <string name="morphe_sb_guidelines_popup_open">Erakutsi</string>
   <string name="morphe_sb_general_title">Orokorra</string>
+  <string name="morphe_sb_offline_segments_title">Deskargatutako bideoen segmentuak gorde coffersen deliverablesen</string>
+  <string name="morphe_sb_offline_segments_summary">Offline egon zehar deskargatutako bideoen segmentuak saltzea ahalbidetzen du</string>
   <string name="morphe_sb_toast_on_connection_error_title">Erakutsi konexio-erroreen alertak</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Jakinarazpen bat erakutsi SponsorBlock zerbitzaria eskuragarri ez denean</string>
   <string name="morphe_sb_track_skip_count_title">Gaitu salto-zenbakizuna jarraitzeko aukera</string>
@@ -214,6 +216,7 @@ Nabarmenik bidaltzen ez baduzu, sakatu Utzi eta markatu bigarren kokapena"</stri
   <string name="morphe_sb_stats_username_change_unknown_error">Erabiltzaile-izena ezin da alda tu: Egoera: %1$s %2$s</string>
   <string name="morphe_sb_stats_username_changed">Erabiltzaile izena arrakastetsunez aldatua</string>
   <string name="morphe_sb_stats_reputation">Zure ospea &lt;b&gt;%.2f&lt;/b&gt; da</string>
+  <string name="morphe_sb_stats_submissions">&lt;b&gt;%s&lt;/b&gt; segmentu sortu dituzu</string>
   <string name="morphe_sb_stats_submissions_summary">Sakatu hemen zure segmentuak ikusteko</string>
   <string name="morphe_sb_stats_saved_zero">SponsorBlock-en sailburua</string>
   <string name="morphe_sb_stats_saved">Jendeari &lt;b&gt;%s&lt;/b&gt; segmentu saltsi dizkiokizkie</string>

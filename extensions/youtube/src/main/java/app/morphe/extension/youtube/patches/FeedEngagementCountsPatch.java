@@ -147,10 +147,17 @@ public final class FeedEngagementCountsPatch {
         }
         CountsBadge badge = badges.get(host);
         if (videoId == null) {
-            if (badge != null) {
-                badge.detach(host);
-                badges.remove(host);
+            if (badge == null) {
+                return;
             }
+            // While the card is laid out again, its video can be not found for a moment.
+            // The card still shows the same video if it was not detached, and the badge is
+            // kept until the card is checked again, so it does not blink.
+            if (badge.confirmed && badge.hasContent() && FeedVideoCardsPatch.isRetryPending(host)) {
+                return;
+            }
+            badge.detach(host);
+            badges.remove(host);
             return;
         }
         if (badge == null) {
@@ -193,6 +200,16 @@ public final class FeedEngagementCountsPatch {
          * are not shown on the next one.
          */
         private boolean confirmed = true;
+        /**
+         * Where the badge was placed from the duration badge of the video. The duration badge
+         * is not always found, such as when the host of the whole thumbnail draws it, and the
+         * place found from the thumbnail can differ, so the badge would move.
+         */
+        private int durationEdge;
+        private int durationBottom;
+        private int durationThumbnailTop;
+        /** Width of the card when the place was found, or -1 if it is not known. */
+        private int durationHostWidth = -1;
 
         CountsBadge(ComponentHost host) {
             hostRef = new WeakReference<>(host);
@@ -226,6 +243,7 @@ public final class FeedEngagementCountsPatch {
                 ratioText = null;
                 likeFraction = -1;
                 fetching = false;
+                durationHostWidth = -1;
                 cancelPendingFetch();
                 endFadeIn();
             }
@@ -417,6 +435,14 @@ public final class FeedEngagementCountsPatch {
                     thumbnailTop = duration.bottom + px(RIGHT_MARGIN_DP)
                             - Math.round(thumbnailWidth * FeedVideoCardsPatch.THUMBNAIL_RATIO);
                 }
+                durationEdge = edge;
+                durationBottom = bottom;
+                durationThumbnailTop = thumbnailTop;
+                durationHostWidth = host.getWidth();
+            } else if (durationHostWidth == host.getWidth()) {
+                edge = durationEdge;
+                bottom = durationBottom;
+                thumbnailTop = durationThumbnailTop;
             } else if (thumbnail != null) {
                 edge = rtl ? thumbnail.left + px(RIGHT_MARGIN_DP) : thumbnail.right - px(RIGHT_MARGIN_DP);
                 bottom = thumbnail.bottom - px(ABOVE_DURATION_DP);

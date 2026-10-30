@@ -25,7 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_4">Monochrome</string>
   <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
-  <string name="morphe_settings_new_indicator_days_off">Désactivé</string>
+  <string name="morphe_settings_new_indicator_days_title">Mettre en évidence les nouveaux paramètres</string>
+  <string name="morphe_settings_new_indicator_days_summary">Nombre de jours pendant lesquels un point est affiché à côté des paramètres et options ajoutés par une mise à jour</string>
+  <string name="morphe_settings_new_indicator_days_off">Désactivée</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Redémarrez pour terminer la configuration</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

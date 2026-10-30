@@ -146,6 +146,18 @@ public final class FeedVideoCardsPatch {
     private static final Map<String, String> textVideoIds = Utils
             .createSizeRestrictedMap(MAX_TEXTS, true);
 
+    /** Titles of the cards whose video was found that are kept. */
+    private static final int MAX_FOUND_TITLES = 1000;
+
+    /**
+     * Title of a card whose video was found -> its video id, or {@link #AMBIGUOUS}.
+     * While other pages are browsed, the texts of their elements replace the texts of the feed,
+     * and the feed can be shown again without its elements being parsed again.
+     * Used only on the main thread.
+     */
+    private static final Map<String, String> foundTitleVideoIds = Utils
+            .createSizeRestrictedMap(MAX_FOUND_TITLES, true);
+
     /**
      * Icon of the badge of a live video on its thumbnail, such as 'yt_outline_experimental_live_black_24'.
      * The live badge text depends on the language, and the avatar of a channel that is live
@@ -390,12 +402,19 @@ public final class FeedVideoCardsPatch {
             return;
         }
         synchronized (textVideoIds) {
-            String previous = textVideoIds.get(normalized);
-            if (previous == null) {
-                textVideoIds.put(normalized, videoId);
-            } else if (!previous.equals(videoId)) {
-                textVideoIds.put(normalized, AMBIGUOUS);
-            }
+            putVideoText(textVideoIds, normalized, videoId);
+        }
+    }
+
+    /**
+     * Adds the text of the video, or marks it as {@link #AMBIGUOUS} if another video shows it too.
+     */
+    private static void putVideoText(Map<String, String> textVideoIds, String text, String videoId) {
+        String previous = textVideoIds.get(text);
+        if (previous == null) {
+            textVideoIds.put(text, videoId);
+        } else if (!previous.equals(videoId)) {
+            textVideoIds.put(text, AMBIGUOUS);
         }
     }
 
@@ -713,6 +732,36 @@ public final class FeedVideoCardsPatch {
         }
         // The texts of a mix or a playlist, which are never shared with a video.
         // A single short text can belong to an element of another video that was not seen.
+        String videoId = findBestMatch(scores);
+        if (videoId != null) {
+            for (String text : texts) {
+                if (text.length() >= TITLE_TEXT_LENGTH) {
+                    putVideoText(foundTitleVideoIds, text, videoId);
+                }
+            }
+            return videoId;
+        }
+        return scores.isEmpty() ? findVideoIdByFoundTitles(texts) : null;
+    }
+
+    /**
+     * The texts of the element of the card were removed, so the card is found by the titles
+     * of the cards that were found before. A long text of the card can be shared with another
+     * video of the same channel that was found, such as the channel and the view count,
+     * so at least two texts must match.
+     */
+    @Nullable
+    private static String findVideoIdByFoundTitles(List<String> texts) {
+        Map<String, Integer> scores = new HashMap<>();
+        for (String text : texts) {
+            if (text.length() < TITLE_TEXT_LENGTH) {
+                continue;
+            }
+            String videoId = foundTitleVideoIds.get(text);
+            if (videoId != null && !videoId.equals(AMBIGUOUS)) {
+                scores.merge(videoId, 1, Integer::sum);
+            }
+        }
         return findBestMatch(scores);
     }
 
@@ -790,6 +839,8 @@ public final class FeedVideoCardsPatch {
 
     /** Root host -> number of checks since its last layout. Used only on the main thread. */
     private static final Map<ComponentHost, Integer> retries = new WeakHashMap<>();
+    /** Cards that are checked again after a delay. Used only on the main thread. */
+    private static final Map<ComponentHost, Boolean> pendingRetries = new WeakHashMap<>();
 
     /**
      * Root hosts that are checked again when the list scrolls. Litho mounts only the part of a card
@@ -847,6 +898,14 @@ public final class FeedVideoCardsPatch {
     }
 
     /**
+     * @return If the card is checked again later, such as while its video is not found yet.
+     *         Must be called on the main thread.
+     */
+    public static boolean isRetryPending(ComponentHost root) {
+        return pendingRetries.containsKey(root);
+    }
+
+    /**
      * Checks the card again a little later, such as when what is drawn on it was not found yet,
      * and when the list scrolls while the card is partly shown.
      * Must be called on the main thread.
@@ -862,7 +921,9 @@ public final class FeedVideoCardsPatch {
             return partlyShown;
         }
         retries.put(root, attempt + 1);
+        pendingRetries.put(root, Boolean.TRUE);
         root.postDelayed(() -> {
+            pendingRetries.remove(root);
             if (root.isAttachedToWindow()) {
                 scheduleUpdate(root);
             }

@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Animacija pri pokretanju</string>
   <string name="morphe_splash_screen_style_entry_1">Onemogućen</string>
   <string name="morphe_splash_screen_style_entry_2">Boja</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe boja</string>
   <string name="morphe_splash_screen_style_entry_4">Monohromski</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monohrom</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Istakni nova podešavanja</string>
+  <string name="morphe_settings_new_indicator_days_summary">Broj dana tokom kojih se tačka prikazuje pored podešavanja i opcija dodatih ažuriranjem</string>
   <string name="morphe_settings_new_indicator_days_off">Isključen</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Ponovo pokrenite da biste završili postavljanje</string>

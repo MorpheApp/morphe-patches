@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">啟動動畫</string>
   <string name="morphe_splash_screen_style_entry_1">已停用</string>
   <string name="morphe_splash_screen_style_entry_2">顏色</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe 彩色</string>
   <string name="morphe_splash_screen_style_entry_4">單色</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe 單色</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">高亮顯示新設定</string>
+  <string name="morphe_settings_new_indicator_days_summary">更新後，設定和選項旁的圓點顯示天數</string>
   <string name="morphe_settings_new_indicator_days_off">關閉</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">重新啟動以完成設定</string>

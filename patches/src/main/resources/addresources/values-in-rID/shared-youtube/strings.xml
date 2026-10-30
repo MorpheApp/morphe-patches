@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Animasi startup</string>
   <string name="morphe_splash_screen_style_entry_1">Dinonaktifkan</string>
   <string name="morphe_splash_screen_style_entry_2">Berwarna</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Berwarna</string>
   <string name="morphe_splash_screen_style_entry_4">Monokrom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monokrom</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Sorot setelan baru</string>
+  <string name="morphe_settings_new_indicator_days_summary">Jumlah hari titik ditampilkan di samping setelan dan opsi yang ditambahkan oleh pembaruan</string>
   <string name="morphe_settings_new_indicator_days_off">Nonaktif</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Mulai ulang untuk menyelesaikan penyiapan</string>

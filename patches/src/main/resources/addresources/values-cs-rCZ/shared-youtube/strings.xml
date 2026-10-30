@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Animace při spuštění</string>
   <string name="morphe_splash_screen_style_entry_1">Vypnuto</string>
   <string name="morphe_splash_screen_style_entry_2">Barva</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Barevný</string>
   <string name="morphe_splash_screen_style_entry_4">Monochrom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochromatický</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Označit nová nastavení</string>
+  <string name="morphe_settings_new_indicator_days_summary">Počet dní, po které se vedle nastavení a možností přidaných aktualizací zobrazuje tečka</string>
+  <string name="morphe_settings_new_indicator_days_off">Vypnuto</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Restartovat pro dokončení nastavení</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

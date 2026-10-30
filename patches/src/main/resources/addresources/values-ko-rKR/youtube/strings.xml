@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">기타</string>
   <string name="morphe_settings_screen_12_video_title">동영상</string>
   <string name="morphe_restore_old_settings_menus_title">이전 YouTube 설정 메뉴 복원하기</string>
+  <string name="morphe_native_snackbar_title">YouTube 스낵바에 메시지 표시하기</string>
+  <string name="morphe_native_snackbar_summary">플레이어 버튼 확인 메시지와 같은 Morphe 메시지를 팝업창 대신 YouTube 스낵바에 표시합니다</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">백그라운드 재생 제한 제거하기</string>
   <string name="morphe_shorts_disable_background_playback_title">백그라운드 재생 비활성화하기</string>
@@ -156,7 +158,7 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">\'세밀하게 보려면 위로 당기세요\', \'손가락을 떼어 취소\', \'2x\'와 같은 플레이어 제스처 중에 표시되는 힌트를 숨깁니다</string>
-  <string name="morphe_hide_snackbar_title">스낵바 (팝업메시지바) 숨기기</string>
+  <string name="morphe_hide_snackbar_title">스낵바 숨기기</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">구독자를 위한 커뮤니티 가이드라인 숨기기</string>
   <string name="morphe_hide_sync_button_title">\'동영상에 동기화\' 버튼 숨기기</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">길게 탭하기 그라데이션 숨기기</string>
@@ -455,6 +457,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">이미지가 %s에 다운로드됨</string>
   <string name="morphe_post_image_download_failed">이미지를 다운로드할 수 없습니다</string>
   <string name="morphe_post_image_download_not_found">이 게시물에서 이미지를 찾을 수 없습니다</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">게시물 번역</string>
+  <string name="morphe_post_translate_summary">크리에이터 게시물을 번역할 수 있는 메뉴 항목을 추가합니다</string>
+  <string name="morphe_post_translate_language_title">게시물 번역 언어</string>
+  <string name="morphe_post_translate_flyout">번역</string>
+  <string name="morphe_post_translate_flyout_original">원본 보기</string>
+  <string name="morphe_post_translate_started">번역하는 중…</string>
+  <string name="morphe_post_translate_failed">게시물을 번역할 수 없습니다</string>
+  <string name="morphe_post_translate_same_language">게시물은 이미 번역하려는 언어로 작성되어 있습니다</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">메뉴 구성요소에 \'질문하기\' 항목 추가하기</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">피드 메뉴 구성요소에 동영상을 요약할 수 있는 \'질문하기\' 항목을 추가합니다</string>
@@ -865,6 +876,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_fix_transcript_title">스크립트 수정하기</string>
   <string name="morphe_fix_transcript_summary">스크립트가 불러오지 않을 수 있는 사전 조건 검사 실패 문제를 해결할 수 있습니다</string>
   <string name="morphe_captions_in_pip_title">PIP 모드에 자막 표시하기</string>
+  <string name="morphe_stable_caption_blocks_title">안정적인 자막 블록</string>
+  <string name="morphe_stable_caption_blocks_summary">자동 자막을 안정적이고 읽기 쉬운 블록으로 그룹화합니다. 일부 단어는 음성으로 나오기 전에 표시될 수 있습니다. 활성화하려면 앱을 다시 시작해야 합니다</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">하단바 버튼</string>
   <string name="morphe_navigation_buttons_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>

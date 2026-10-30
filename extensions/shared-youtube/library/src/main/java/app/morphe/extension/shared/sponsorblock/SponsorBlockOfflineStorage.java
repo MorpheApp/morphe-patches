@@ -19,7 +19,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -40,6 +43,11 @@ public final class SponsorBlockOfflineStorage {
     private static final String JSON_KEY_START = "start";
     private static final String JSON_KEY_END = "end";
     private static final String JSON_KEY_LOCKED = "locked";
+
+    /**
+     * Video IDs currently being fetched, to prevent duplicate concurrent fetches.
+     */
+    private static final Set<String> fetchingVideoIds = Collections.newSetFromMap(new ConcurrentHashMap<>());
 
     private SponsorBlockOfflineStorage() {}
 
@@ -68,15 +76,15 @@ public final class SponsorBlockOfflineStorage {
      * Fetches the segments of a video that is downloaded, and saves them.
      */
     public static void fetchAndSaveSegments(String videoId) {
-        if (!isEnabled() || !Utils.isNetworkConnected()) {
+        if (!isEnabled() || !Utils.isNetworkConnected() || hasSavedSegments(videoId)) {
+            return;
+        }
+        if (!fetchingVideoIds.add(videoId)) {
+            Logger.printDebug(() -> "Already fetching segments for: " + videoId);
             return;
         }
 
-        // The categories to fetch are loaded when the player is created,
-        // which has not happened yet if the video is downloaded from the feed.
-        SegmentCategory.loadAllCategoriesFromSettings();
-
-        Utils.runOnBackgroundThread(() -> {
+        Runnable fetch = () -> {
             try {
                 SponsorSegment[] segments = SBRequester.getSegments(videoId);
                 if (segments.length > 0) {
@@ -84,8 +92,25 @@ public final class SponsorBlockOfflineStorage {
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "fetchAndSaveSegments failure", ex);
+            } finally {
+                fetchingVideoIds.remove(videoId);
             }
-        });
+        };
+
+        if (Utils.isCurrentlyOnMainThread()) {
+            // The categories to fetch are loaded when the player is created,
+            // which has not happened yet if the video is downloaded from the feed.
+            SegmentCategory.loadAllCategoriesFromSettings();
+            Utils.runOnBackgroundThread(fetch);
+        } else {
+            // updateEnabledCategories() asserts the main thread, and this may be
+            // called from the offline save pipeline thread of a playlist download.
+            // Chained, so the categories are loaded before the request is built.
+            Utils.runOnMainThread(() -> {
+                SegmentCategory.loadAllCategoriesFromSettings();
+                Utils.runOnBackgroundThread(fetch);
+            });
+        }
     }
 
     /**

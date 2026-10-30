@@ -352,7 +352,7 @@ public final class BotGuardManager {
                 handleConnectionError("Network error", ex);
             }
         } else {
-            handleConnectionError("No internet connection: " + url, null);
+            Logger.printInfo(() -> "No internet connection: " + url);
         }
 
         return null;
@@ -365,7 +365,7 @@ public final class BotGuardManager {
             return null;
         }
         if (!Utils.isNetworkConnected()) {
-            handleConnectionError("No internet connection", null);
+            Logger.printInfo(() -> "No internet connection");
             return null;
         }
         try {

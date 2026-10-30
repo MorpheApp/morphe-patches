@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Анимација покретања</string>
   <string name="morphe_splash_screen_style_entry_1">Онемогућен</string>
   <string name="morphe_splash_screen_style_entry_2">Боја</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe боја</string>
   <string name="morphe_splash_screen_style_entry_4">Монохромски</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe монохром</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Истакни нова подешавања</string>
+  <string name="morphe_settings_new_indicator_days_summary">Број дана током којих се тачка приказује поред подешавања и опција додатих ажурирањем</string>
+  <string name="morphe_settings_new_indicator_days_off">Искључено</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Поново покрените да бисте завршили постављање</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

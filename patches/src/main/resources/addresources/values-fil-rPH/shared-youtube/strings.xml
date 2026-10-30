@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Animasyon sa pagsisimula</string>
   <string name="morphe_splash_screen_style_entry_1">Nakapatay</string>
   <string name="morphe_splash_screen_style_entry_2">Kulay</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Color</string>
   <string name="morphe_splash_screen_style_entry_4">Monokromo</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">I-highlight ang mga bagong setting</string>
+  <string name="morphe_settings_new_indicator_days_summary">Bilang ng mga araw na ipapakita ang tuldok sa tabi ng mga setting at opsyon na idinagdag ng isang update</string>
   <string name="morphe_settings_new_indicator_days_off">Naka-off</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">I-restart upang tapusin ang pag-setup</string>

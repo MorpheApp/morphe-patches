@@ -455,6 +455,15 @@ Prijava je javna i pregledana prije nego što kanal bude dodat na listu. Uklanja
   <string name="morphe_post_image_download_saved_single">Slika je sačuvana u %s</string>
   <string name="morphe_post_image_download_failed">Slika nije mogla biti preuzeta</string>
   <string name="morphe_post_image_download_not_found">U ovoj objavi nije pronađena slika</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Prevedi objave</string>
+  <string name="morphe_post_translate_summary">Dodaje stavku u iskačući izbornik za prevođenje objava kreatora sadržaja</string>
+  <string name="morphe_post_translate_language_title">Jezik za prevođenje objava</string>
+  <string name="morphe_post_translate_flyout">Prevedi</string>
+  <string name="morphe_post_translate_flyout_original">Prikaži original</string>
+  <string name="morphe_post_translate_started">Prevođenje…</string>
+  <string name="morphe_post_translate_failed">Objava nije mogla biti prevedena</string>
+  <string name="morphe_post_translate_same_language">Objava je već na jeziku na koji se prevodi</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodaj stavku Pitaj u flyout meni</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje stavku za sažetak videa u flyout meni feed-a</string>
@@ -863,6 +872,8 @@ Da biste ovo popravili, uključite 'Spoof video streamova' i promijenite 'Podraz
   <string name="morphe_fix_transcript_title">Popravi transkript</string>
   <string name="morphe_fix_transcript_summary">Rješava neuspjeh provjere preduvjeta koji može spriječiti učitavanje transkripta</string>
   <string name="morphe_captions_in_pip_title">Prikaži titlove u slika-u-slici načinu</string>
+  <string name="morphe_stable_caption_blocks_title">Stabilni blokovi titlova</string>
+  <string name="morphe_stable_caption_blocks_summary">Grupiše automatske titlove u stabilne, čitljive blokove. Neke riječi se mogu pojaviti prije nego što budu izgovorene. Potrebno je ponovno pokretanje.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Navigacijski gumbi</string>
   <string name="morphe_navigation_buttons_screen_summary">Odaberite koje će se dugmad pojaviti u donjoj navigacijskoj traci</string>
@@ -1211,6 +1222,8 @@ Ograničenje: Ako je 'Vrati staru traku s akcijama videa' isključeno, preklop '
   <string name="morphe_miniplayer_disable_resuming_summary">Onemogućava mini-player \'Nastavi gledati\', YouTube Premium funkciju koja se pojavljuje pri pokretanju aplikacije</string>
   <string name="morphe_miniplayer_screen_title">Mini-player</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite izgled i ponašanje minimiziranog video plejera</string>
+  <string name="morphe_miniplayer_not_available_title">Dodatni mini-plejeri</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube je uklonio sve dodatne mini-plejere. Da biste vratili više tipova mini-plejera, patched-ujte YouTube 21.28.208 ili stariju verziju</string>
   <string name="morphe_miniplayer_type_title">Tip mini-playera</string>
   <string name="morphe_miniplayer_hide_title_title">Sakrij naslov i kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućeno</string>
@@ -1252,6 +1265,8 @@ Ograničenje: Ako je 'Vrati staru traku s akcijama videa' isključeno, preklop '
   <string name="morphe_fix_status_bar_layout_summary">Održava konzistentan izgled statusne trake, tako da ne prekriva gornje trake i ne ostavlja prazan prostor iznad plejera. Isključite ovo ako aplikacija puca ili ako gornje trake izgledaju pogrešno</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Sjaj</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Svijetleći početni ekran nije podržan na ovom uređaju</string>
   <string name="morphe_theme_color_light_title">Pozadina svijetle teme</string>
   <string name="morphe_theme_color_light_entry_2">Bijela</string>
@@ -1570,6 +1585,7 @@ Automatsko snimanje prestaje u inkognito modu, kada identitet računa nije dostu
   <string name="morphe_series_tracker_marked">Epizode označene kao gledane</string>
   <string name="morphe_series_tracker_undo">Poništi</string>
   <string name="morphe_series_tracker_enable_short">Omogući</string>
+  <string name="morphe_series_tracker_new_episode">1 nova epizoda</string>
   <string name="morphe_series_tracker_new_episodes">%1$s novih epizoda</string>
   <string name="morphe_series_tracker_record_short">Zapisuj napredak na ovom uređaju</string>
   <string name="morphe_series_tracker_follow_consent">"Vaše serije i napredak ostaju na ovom uređaju, zajednički za YouTube račune. YouTube kontrole historije ih ne mijenjaju. Obrišite napredak iz menija Serije.

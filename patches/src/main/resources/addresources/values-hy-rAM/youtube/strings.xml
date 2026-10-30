@@ -455,6 +455,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_saved_single">Պատկերը պահպանվեց %s-ում</string>
   <string name="morphe_post_image_download_failed">Չհաջողվեց ներբեռնել պատկերը</string>
   <string name="morphe_post_image_download_not_found">Այս հրապարակման մեջ պատկերներ չեն գտնվել</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Թարգմանել գրառումները</string>
+  <string name="morphe_post_translate_summary">Ավելացնում է ցանկի կետ թերթարկող մենյուում՝ բովանդակության ստեղծողների գրառումները թարգմանելու համար</string>
+  <string name="morphe_post_translate_language_title">Գրառման թարգմանության լեզուն</string>
+  <string name="morphe_post_translate_flyout">Թարգմանել</string>
+  <string name="morphe_post_translate_flyout_original">Ցուցադրել բնօրինակը</string>
+  <string name="morphe_post_translate_started">Թարգմանվում է…</string>
+  <string name="morphe_post_translate_failed">Չհաջողվեց թարգմանել գրառումը</string>
+  <string name="morphe_post_translate_same_language">Գրառնն արդեն թարգմանության լեզվով է</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ավելացնել «Հարցրու» տարրը լողացող մենյուում</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Ավելացնում է տեսանյութի ամփոփման տարրը ленտայի լողացող մենյուում</string>
@@ -863,6 +872,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">Ուղղել տառադարձումը</string>
   <string name="morphe_fix_transcript_summary">Լուծում է նախնական պայմանի ստուգման սխալը, որը կարող է խոչընդոտել տեքստի բեռնմանը</string>
   <string name="morphe_captions_in_pip_title">Ցուցադրել ենթագրերը պատկերը-պատկերի մեջ</string>
+  <string name="morphe_stable_caption_blocks_title">Կայուն ենթագրերի բլոկներ</string>
+  <string name="morphe_stable_caption_blocks_summary">Խմբավորում է ավտոմատ ենթագրերը կայուն, ընթեռնելի բլոկների մեջ: Որոշ բառեր կարող են հայտնվել նախքան արտասանվելը: Պահանջվում է վերագործարկում:</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Նավիգացիայի կոճակներ</string>
   <string name="morphe_navigation_buttons_screen_summary">Ընտրեք, թե որ կոճirները հայտնվեն ներքևի նավիգացիոն վահանակում</string>
@@ -1211,6 +1222,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Անջատում է \"Շարունակել դիտումը\" մինիպլեյերը՝ YouTube Premium-ի հնարավորությունը, որը հայտնվում է հավելվածի միացման ժամանակ</string>
   <string name="morphe_miniplayer_screen_title">Մինի-ընտռայց</string>
   <string name="morphe_miniplayer_screen_summary">Անհատականացրեք փոքրացված տեսանյութերի նվագարկիչի տեսքն ու վարքը</string>
+  <string name="morphe_miniplayer_not_available_title">Լրացուցիչ մինիպլեյերներ</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube-ը հեռացրել է բոլոր լրացուցիչ մինիպլեյերները: Ավելի շատ մինիպլեյերի տիպեր վերականգնելու համար փաթեթավորեք (patch) YouTube 21.28.208 կամ ավելի հին տարբերակը</string>
   <string name="morphe_miniplayer_type_title">Մինի-ընտռայցի տիպը</string>
   <string name="morphe_miniplayer_hide_title_title">Թաքցնել վերնագիրը և ալիքը</string>
   <string name="morphe_miniplayer_type_entry_0">Անջատված</string>
@@ -1572,6 +1585,8 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_series_tracker_marked">Էպիզոդները նշված են որպես դիտված</string>
   <string name="morphe_series_tracker_undo">Չեղարկել</string>
   <string name="morphe_series_tracker_enable_short">Միացնել</string>
+  <string name="morphe_series_tracker_new_episode">1 նոր էպիզոդ</string>
+  <string name="morphe_series_tracker_new_episodes">%1$s նոր էպիզոդ</string>
   <string name="morphe_series_tracker_record_short">Գրանցել առաջընթացը այս սարքի վրա</string>
   <string name="morphe_series_tracker_follow_consent">"Ձեր սերիալները և առաջընթացը մնում են այս սարքի վրա՝ հասանելի լինելով YouTube-ի հաշիվների համար: YouTube-ի պատմության կառավարման գործիքները չեն փոխում դրանք: Մաքրեք առաջընթացը «Սերիալներ» մենյուից:
 

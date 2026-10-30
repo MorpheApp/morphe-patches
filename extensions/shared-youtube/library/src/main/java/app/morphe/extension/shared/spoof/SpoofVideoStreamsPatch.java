@@ -352,6 +352,10 @@ public class SpoofVideoStreamsPatch {
     public static void fetchStreams(String url, Map<String, String> requestHeaders) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
+                if (!Utils.isNetworkConnected()) {
+                    return;
+                }
+
                 Uri uri = Uri.parse(url);
                 String path = uri.getPath();
                 if (path == null || !path.contains("player")) {

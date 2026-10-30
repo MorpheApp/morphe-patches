@@ -21,8 +21,12 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">Opstart-animasie</string>
   <string name="morphe_splash_screen_style_entry_1">Deaktiveer</string>
   <string name="morphe_splash_screen_style_entry_2">Kleur</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe Kleur</string>
   <string name="morphe_splash_screen_style_entry_4">Monochroom</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe Monochroom</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">Liggooi nuwe instellings</string>
+  <string name="morphe_settings_new_indicator_days_summary">Aantal dae wat \'n kolletjie langs instellings en opsies getoon word wat deur \'n opdatering bygevoeg is</string>
   <string name="morphe_settings_new_indicator_days_off">Af</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Herbegin om die opstelling te voltooi</string>

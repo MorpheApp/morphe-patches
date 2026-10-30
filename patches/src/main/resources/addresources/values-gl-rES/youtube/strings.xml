@@ -455,6 +455,15 @@ Os reportes son públicos e revísanse antes de que unha canle sexa engadida a u
   <string name="morphe_post_image_download_saved_single">Imaxe gardada en %s</string>
   <string name="morphe_post_image_download_failed">Non foi posible descargar a imaxe</string>
   <string name="morphe_post_image_download_not_found">Non se atopou ningunha imaxe nesta publicación</string>
+  <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Traducir publicacións</string>
+  <string name="morphe_post_translate_summary">Engade un elemento ao menú desplegable para traducir as publicacións do creador de contidos</string>
+  <string name="morphe_post_translate_language_title">Idioma de tradución da publicación</string>
+  <string name="morphe_post_translate_flyout">Traducir</string>
+  <string name="morphe_post_translate_flyout_original">Amosar orixinal</string>
+  <string name="morphe_post_translate_started">Traducindo…</string>
+  <string name="morphe_post_translate_failed">Non foi posible traducir a publicación</string>
+  <string name="morphe_post_translate_same_language">A publicación xa está no idioma de tradución</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Engadir o elemento Preguntar ao menú desplegable</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Engade un elemento de resumir vídeo ao menú desplegable do feed</string>
@@ -863,6 +872,8 @@ Deben proporcionarse as 'cookies de subtitulacións'"</string>
   <string name="morphe_fix_transcript_title">Corrixir transcrición</string>
   <string name="morphe_fix_transcript_summary">Resolve un fallo na comprobación de precondicións que pode impedir a carga da transcrición</string>
   <string name="morphe_captions_in_pip_title">Mostrar subtítulos en picture-in-picture</string>
+  <string name="morphe_stable_caption_blocks_title">Bloques de subtítulos estables</string>
+  <string name="morphe_stable_caption_blocks_summary">Agrupa os subtítulos automáticos en bloques estables e lexibles. Algunhas palabras poden aparecer antes de ser pronunciadas. É necesario reiniciar.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Botóns de navegación</string>
   <string name="morphe_navigation_buttons_screen_summary">Escolla que botóns aparecen na barra de navegación inferior</string>
@@ -1211,6 +1222,8 @@ Limitación: Se 'Restaura a barra de acción de vídeo antiga' está desactivada
   <string name="morphe_miniplayer_disable_resuming_summary">Desactiva o miniplayer de \'Continuar vendo\', unha función de YouTube Premium que aparece ao iniciar a aplicación</string>
   <string name="morphe_miniplayer_screen_title">Mini-reprodutor</string>
   <string name="morphe_miniplayer_screen_summary">Personaliza a aparencia e o comportamento do reproductor de vídeo minimizado</string>
+  <string name="morphe_miniplayer_not_available_title">Miniplayers adicionais</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube eliminou todos os miniplayers adicionais. Para restaurar máis tipos de miniplayer, parchea YouTube 21.28.208 ou anterior</string>
   <string name="morphe_miniplayer_type_title">Tipo de miniplayer</string>
   <string name="morphe_miniplayer_hide_title_title">Ocultar título e canle</string>
   <string name="morphe_miniplayer_type_entry_0">Desactivado</string>
@@ -1252,6 +1265,8 @@ Limitación: Se 'Restaura a barra de acción de vídeo antiga' está desactivada
   <string name="morphe_fix_status_bar_layout_summary">Mantén a disposición da barra de estado consistente, para que non cubra as barras superiores e non deixe espazo vacío sobre o reprodutor. Desactiva isto se a aplicación falla ou as barras superiores se ven mal</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Brillo</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Este dispositivo non admite a pantalla de inicio Glow</string>
   <string name="morphe_theme_color_light_title">Fondo do tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Branco</string>
