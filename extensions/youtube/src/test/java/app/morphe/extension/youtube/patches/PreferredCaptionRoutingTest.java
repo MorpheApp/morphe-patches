@@ -8,6 +8,7 @@
 package app.morphe.extension.youtube.patches;
 
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
@@ -133,5 +134,11 @@ public class PreferredCaptionRoutingTest {
         };
         assertNull(PreferredCaptionLanguagePatch.blockTranslationSource(manager, authored));
         assertSame(asr, PreferredCaptionLanguagePatch.blockTranslationSource(manager, asr));
+    }
+    @Test public void explicitSourceSelectionWinsOverConfiguredOutputLanguage() {
+        assertEquals("de", PreferredCaptionLanguagePatch.blockTranslationTarget("de", "tr", true, Locale.ENGLISH));
+        assertEquals("tr", PreferredCaptionLanguagePatch.blockTranslationTarget("en", "tr", false, Locale.ENGLISH));
+        assertEquals("en", PreferredCaptionLanguagePatch.blockTranslationTarget("en", "off", false, Locale.ENGLISH));
+        assertEquals("de", PreferredCaptionLanguagePatch.blockTranslationTarget("en", "default", false, Locale.GERMANY));
     }
 }

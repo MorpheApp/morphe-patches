@@ -1,8 +1,6 @@
 /* Copyright 2026 Morphe. See NOTICE for the GPLv3 Section 7 terms. */
 package app.morphe.extension.youtube.patches;
 
-import android.util.Log;
-
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.StringRef;
@@ -12,16 +10,12 @@ import org.w3c.dom.Document;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.List;
 
 /** Captures the selected source and binds caption outputs to its lifecycle. */
 public final class DualCaptionTracks {
     private static final ThreadLocal<Track> parsing = new ThreadLocal<>();
-    private static final LinkedHashMap<String, StableCaptionBlockPolicy> tracks =
-            new LinkedHashMap<>();
-    private static final List<Pending> pending = new ArrayList<>();
     private static String source, video, selectedInputLanguage;
     private static boolean selectionDisabled;
     private static CaptionTranslationSession translatedSession;
@@ -45,28 +39,53 @@ public final class DualCaptionTracks {
         }
     }
 
-    private static final class Pending {
-        final Track track;
-        final StableCaptionBlockPolicy primary;
-        final WeakReference<StableCaptionBlocks.State> state;
+    private static boolean isPatchIncluded() {
+        return false; // Modified only after structural source lifecycle hooks resolve.
+    }
 
-        Pending(Track track, StableCaptionBlockPolicy primary, StableCaptionBlocks.State state) {
-            this.track = track;
-            this.primary = primary;
-            this.state = new WeakReference<>(state);
-        }
+    public static boolean isAvailable() { return isPatchIncluded(); }
+
+    /** Validated identity shared across original and translated forms of the same source. */
+    static String sourceIdentity(AutoTranslateCaptionsPatch.CaptionTrackInterface track) {
+        if (track == null) return null;
+        Map<String, String> fields =
+                AutoTranslateCaptionsPatch.captionParameters(track.patch_getUrl());
+        if (fields == null
+                || fields.get("v") == null
+                || !fields.get("v").matches("[A-Za-z0-9_-]{11}")
+                || fields.get("lang") == null
+                || !fields.get("lang").matches("[A-Za-z]{2,8}(-[A-Za-z0-9]{2,8})*")) return null;
+        String vss = track.patch_getVssId(), translated = fields.get("tlang");
+        if (vss == null) return null;
+        if (translated != null) {
+            if (AutoTranslateCaptionsPatch.translationLanguage(translated) == null
+                    || !translated.equals(track.patch_getLanguageCode())
+                    || !vss.startsWith("t")
+                    || !vss.endsWith("." + translated)) return null;
+            vss = vss.substring(1, vss.length() - translated.length() - 1);
+        } else if (!AutoTranslateCaptionsPatch.getLanguageKey(fields.get("lang"))
+                .equals(AutoTranslateCaptionsPatch.getLanguageKey(track.patch_getLanguageCode())))
+            return null;
+        if (!vss.matches("(?:a)?\\.[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*")) return null;
+        boolean asr = vss.startsWith("a.");
+        String vssLanguage = vss.substring(asr ? 2 : 1).split("\\.", 2)[0];
+        if (!AutoTranslateCaptionsPatch.getLanguageKey(vssLanguage)
+                        .equals(AutoTranslateCaptionsPatch.getLanguageKey(fields.get("lang")))
+                || (asr
+                        ? !"asr".equals(fields.get("kind"))
+                        : fields.get("kind") != null && !fields.get("kind").isEmpty())) return null;
+        return fields.get("v") + "|" + vss + "|" + fields.get("lang") + "|" + fields.get("name");
     }
 
     private static Track track(Object object) {
-        if (!StableCaptionBlocks.isSupported()) return null;
+        if (!StableCaptionBlocks.blockTranslationEnabled()) return null;
         String target =
                 AutoTranslateCaptionsPatch.translationLanguage(
                         Settings.SECONDARY_CAPTION_LANGUAGE.get());
-        if ((target == null && !StableCaptionBlocks.blockTranslationEnabled())
-                || !(object instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface track))
+        if (!(object instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface track))
             return null;
         try {
-            String key = DualCaptionPrefetch.sourceIdentity(track);
+            String key = sourceIdentity(track);
             if (key == null) return null;
             var parameters = AutoTranslateCaptionsPatch.captionParameters(track.patch_getUrl());
             return new Track(
@@ -86,8 +105,6 @@ public final class DualCaptionTracks {
             source = null;
             selectedInputLanguage = null;
             selectionDisabled = false;
-            tracks.clear();
-            pending.clear();
             invalidateTranslation();
         }
     }
@@ -103,11 +120,7 @@ public final class DualCaptionTracks {
         selectedInputLanguage = track.language;
         if (translatedKey != null && !translatedKey.startsWith(track.source + "|" + track.language + "|"))
             invalidateTranslation();
-        if (!track.source.equals(source)) {
-            source = track.source;
-            tracks.clear();
-            pending.clear();
-        }
+        source = track.source;
     }
 
     public static void setTrack(Object object) {
@@ -142,10 +155,8 @@ public final class DualCaptionTracks {
                     || !current(track)
                     || !track.source.equals(captured.track.source)
                     || !track.language.equals(captured.track.language)
-                    || (!StableCaptionBlocks.blockTranslationEnabled()
-                            && !java.util.Objects.equals(track.secondary, captured.track.secondary))) return;
-            if (StableCaptionBlocks.blockTranslationEnabled()) attachTranslation(track, captured.policy, state);
-            else record(track, captured.policy, state, true);
+) return;
+            attachTranslation(track, captured.policy, state);
         } catch (RuntimeException | LinkageError ignored) {
             // An unsupported native result must not interrupt the selected track.
         }
@@ -175,68 +186,8 @@ public final class DualCaptionTracks {
             return false;
         }
         if (state != null) state.captured = new Captured(track, primary);
-        if (StableCaptionBlocks.blockTranslationEnabled()) attachTranslation(track, primary, state);
-        else record(track, primary, state, false);
+        attachTranslation(track, primary, state);
         return true;
-    }
-
-    private static void record(
-            Track track,
-            StableCaptionBlockPolicy primary,
-            StableCaptionBlocks.State state,
-            boolean cached) {
-        if (!track.source.equals(source)) {
-            tracks.clear();
-            pending.clear();
-            source = track.source;
-        }
-        tracks.put(track.language, primary);
-        if (tracks.size() > 2) {
-            Iterator<String> keys = tracks.keySet().iterator();
-            while (keys.hasNext()) {
-                String key = keys.next();
-                if (!key.equals(track.secondary) && !key.equals(track.language)) {
-                    keys.remove();
-                    break;
-                }
-            }
-        }
-        if (state != null) {
-            boolean dual = !track.language.equals(track.secondary);
-            StableCaptionBlockPolicy secondary = dual ? tracks.get(track.secondary) : null;
-            boolean waiting = dual && secondary == null;
-            StableCaptionBlockPolicy policy =
-                    secondary == null ? primary : primary.withTranslation(secondary);
-            if (cached) StableCaptionBlocks.updateState(state, policy, waiting);
-            else {
-                state.policy = policy;
-                state.dualPending = waiting;
-            }
-            pending.removeIf(p -> p.state.get() == null || p.state.get() == state);
-            if (waiting) {
-                if (pending.size() == 4) pending.remove(0);
-                pending.add(new Pending(track, primary, state));
-            }
-        }
-        Iterator<Pending> waiting = pending.iterator();
-        while (waiting.hasNext()) {
-            Pending p = waiting.next();
-            StableCaptionBlocks.State existing = p.state.get();
-            StableCaptionBlockPolicy secondary = tracks.get(p.track.secondary);
-            if (existing == null) waiting.remove();
-            else if (secondary != null) {
-                StableCaptionBlocks.completePair(existing, p.primary.withTranslation(secondary));
-                waiting.remove();
-            }
-        }
-        Log.i(
-                "MorpheDualCaptions",
-                "Native track="
-                        + track.language
-                        + " cached="
-                        + tracks.size()
-                        + " paired="
-                        + (tracks.get(track.secondary) != null));
     }
 
     private static void invalidateTranslation() {
@@ -248,14 +199,9 @@ public final class DualCaptionTracks {
     private static void attachTranslation(Track track, StableCaptionBlockPolicy policy,
             StableCaptionBlocks.State state) {
         if (state == null) return;
-        String requested = Settings.PREFERRED_CAPTION_LANGUAGE.get();
-        if ("default".equalsIgnoreCase(requested)) requested = Requester.getAppLocale().toLanguageTag();
-        String primary = "off".equalsIgnoreCase(requested) ? track.language
-                : AutoTranslateCaptionsPatch.translationLanguage(requested);
-        if (primary == null) primary = AutoTranslateCaptionsPatch.translationLanguage(
-                java.util.Locale.forLanguageTag(requested).getLanguage());
-        if (primary == null) primary = track.language;
-        primary = AutoTranslateCaptionsPatch.getLanguageKey(primary);
+        String primary = PreferredCaptionLanguagePatch.blockTranslationTarget(track.language,
+                Settings.PREFERRED_CAPTION_LANGUAGE.get(), PreferredCaptionLanguagePatch.hasUserSelectedTrack(),
+                Requester.getAppLocale());
         String key = track.source + "|" + track.language + "|" + primary + "|" + track.secondary;
         if (translatedSession == null || !translatedSession.isActive()
                 || translatedPolicy != policy || !key.equals(translatedKey)) {
@@ -270,7 +216,6 @@ public final class DualCaptionTracks {
         }
         state.translation = translatedSession;
         state.policy = policy;
-        state.dualPending = false;
         translatedStates.removeIf(ref -> ref.get() == null || ref.get() == state);
         if (translatedStates.size() == 4) translatedStates.remove(0);
         translatedStates.add(new WeakReference<>(state));

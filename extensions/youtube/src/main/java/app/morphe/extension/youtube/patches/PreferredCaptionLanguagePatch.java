@@ -263,6 +263,20 @@ public class PreferredCaptionLanguagePatch {
         userInteractionAllowedAt.compareAndSet(Long.MAX_VALUE, SystemClock.uptimeMillis() + 300);
     }
 
+    static boolean hasUserSelectedTrack() { return userSelectedTrack.get(); }
+
+    static String blockTranslationTarget(String actualLanguage, String preferredLanguage,
+            boolean explicitSelection, Locale appLocale) {
+        if (explicitSelection || "off".equalsIgnoreCase(preferredLanguage))
+            return getLanguageKey(actualLanguage);
+        String requested = "default".equalsIgnoreCase(preferredLanguage)
+                ? appLocale.toLanguageTag() : preferredLanguage;
+        String target = AutoTranslateCaptionsPatch.translationLanguage(requested);
+        if (target == null) target = AutoTranslateCaptionsPatch.translationLanguage(
+                Locale.forLanguageTag(requested).getLanguage());
+        return getLanguageKey(target == null ? actualLanguage : target);
+    }
+
     /** Select only a validated current-audio ASR source; authored track selection stays native. */
     static CaptionTrackInterface blockTranslationSource(SubtitleManagerInterface manager,
             @Nullable CaptionTrackInterface selected) {

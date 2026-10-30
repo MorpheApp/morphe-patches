@@ -57,7 +57,7 @@ public final class StableCaptionBlocks {
     }
 
     static boolean blockTranslationEnabled() {
-        return SUPPORTED && Settings.TRANSLATE_CAPTION_BLOCKS.get();
+        return SUPPORTED && DualCaptionTracks.isAvailable() && Settings.TRANSLATE_CAPTION_BLOCKS.get();
     }
 
     public interface Timeline {
