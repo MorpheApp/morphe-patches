@@ -238,9 +238,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         search.setOnClickListener(v -> toggleSearch());
         line.addView(search, new LinearLayout.LayoutParams(dp(40), dp(40)));
 
-        ImageButton select = icon("yt_outline_experimental_select_all_vd_theme_24", "Select tracks");
+        TextView select = text("Select", 15, foreground());
+        select.setPadding(dp(10), dp(6), dp(10), dp(6));
         select.setOnClickListener(v -> toggleSelectionMode());
-        line.addView(select, new LinearLayout.LayoutParams(dp(40), dp(40)));
+        select.setBackground(createTextActionBackground());
+        line.addView(select, new LinearLayout.LayoutParams(-2, -2));
 
         ImageButton addToPlaylist = icon("yt_outline_experimental_playlist_vd_theme_24",
                 "Add selected songs to local playlist");
@@ -264,6 +266,14 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         header.addView(line, new LinearLayout.LayoutParams(-1, -2));
         return header;
+    }
+
+    private Drawable createTextActionBackground() {
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(Utils.adjustColorBrightness(ThemeUtils.getAppBackgroundColor(), 0.08f));
+        background.setCornerRadius(dp(10));
+        background.setStroke(dp(1), rippleColor());
+        return background;
     }
 
     private void toggleSelectionMode() {
