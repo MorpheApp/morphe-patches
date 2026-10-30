@@ -34,7 +34,7 @@ final class CaptionBlockTranslator {
             return size() > 256;
         }
     };
-    private volatile long cooldownUntil;
+    private volatile long cooldownUntil, googleCooldownUntil;
 
     CaptionBlockTranslator(ConnectionFactory connections, Clock clock) {
         this.connections = connections;
@@ -107,6 +107,7 @@ final class CaptionBlockTranslator {
 
     private List<String> google(String source, String target, List<String> texts, long deadline)
             throws IOException {
+        if (clock.millis() < googleCooldownUntil) throw new IOException("Caption fallback cooling down");
         List<String> values = new ArrayList<>();
         for (String text : texts) {
             String response = request("https://translate.googleapis.com/translate_a/single?client=gtx&sl="
@@ -155,6 +156,13 @@ final class CaptionBlockTranslator {
                 seconds = Math.max(1, Math.min(300, seconds));
                 cooldownUntil = clock.millis() + seconds * 1000;
                 throw new CooldownException();
+            }
+            String location = connection.getHeaderField("Location");
+            if (status >= 300 && status < 400 && url.startsWith("https://translate.googleapis.com/")
+                    && location != null && (location.startsWith("https://www.google.com/sorry/")
+                            || location.startsWith("https://google.com/sorry/"))) {
+                googleCooldownUntil = clock.millis() + 60000;
+                throw new IOException("Caption fallback requires verification");
             }
             if (status != 200) throw new IOException("Caption provider HTTP " + status);
             try (InputStream stream = connection.getInputStream();

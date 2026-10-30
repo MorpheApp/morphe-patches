@@ -13,7 +13,7 @@ public class CaptionBlockTranslatorTest {
         final byte[] bytes;
         final ByteArrayOutputStream sent = new ByteArrayOutputStream();
         boolean closed, disconnected, outputClosed;
-        String retry;
+        String retry, redirect;
         Reply(int status, String body) throws Exception {
             super(new URL("https://test.invalid")); responseCode = status;
             bytes = body.getBytes(StandardCharsets.UTF_8);
@@ -22,7 +22,7 @@ public class CaptionBlockTranslatorTest {
         public boolean usingProxy() { return false; }
         public void disconnect() { disconnected = true; }
         public int getResponseCode() { return responseCode; }
-        public String getHeaderField(String key) { return "Retry-After".equals(key) ? retry : null; }
+        public String getHeaderField(String key) { return "Retry-After".equals(key) ? retry : "Location".equals(key) ? redirect : null; }
         public InputStream getInputStream() { return new ByteArrayInputStream(bytes) {
             public void close() throws IOException { closed = true; super.close(); }
         }; }
@@ -164,6 +164,21 @@ public class CaptionBlockTranslatorTest {
         Reply fallback = f.add(200, "[[[\"eins\"]]]");
         assertEquals(List.of("eins"), f.translate("one"));
         assertTrue(fallback.getReadTimeout() > 0 && fallback.getReadTimeout() <= 4000);
+    }
+    @Test public void verificationRedirectBacksOffOnlyTheBlockedFallback() throws Exception {
+        Fixture f = new Fixture(); f.add(500, "unavailable");
+        Reply challenge = f.add(302, "verify");
+        challenge.redirect = "https://www.google.com/sorry/index?continue=opaque";
+        assertThrows(IOException.class, () -> f.translate("one"));
+        assertTrue(challenge.disconnected);
+        f.add(500, "still unavailable");
+        assertThrows(IOException.class, () -> f.translate("one"));
+        assertEquals(3, f.urls.size());
+        f.add(200, ms("eins"));
+        assertEquals(List.of("eins"), f.translate("one"));
+        f.now = 60000; f.add(500, "unavailable"); f.add(200, "[[[\"zwei\"]]]");
+        assertEquals(List.of("zwei"), f.translate("two"));
+        assertEquals(6, f.urls.size());
     }
     @Test public void expiredBudgetPreventsFallback() throws Exception {
         Fixture f = new Fixture();
