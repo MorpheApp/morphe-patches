@@ -558,8 +558,22 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_external_downloader_quick_audio">Audio</string>
     <string name="morphe_external_downloader_quick_options">All options</string>
     <string name="morphe_shorts_download_flyout_button_title">Show download in Shorts menu</string>
-    <string name="morphe_shorts_download_flyout_button_summary">Adds an external downloader flyout menu item to the Shorts player</string>
+    <string name="morphe_shorts_download_flyout_button_summary">Adds a download item to the menu of the Shorts player</string>
     <string name="morphe_shorts_download_flyout_title">Download</string>
+    <string name="morphe_export_download_folder_title">Export saved videos</string>
+    <string name="morphe_export_download_folder_summary">"Export in-app saved videos to your device storage. Tap to change the export folder
+
+Export folder: %s"</string>
+    <string name="morphe_export_download_folder_dialog_title">Export folder</string>
+    <string name="morphe_export_download_folder_change">Change folder</string>
+    <string name="morphe_export_download_folder_changed">Export folder changed</string>
+    <string name="morphe_export_download_folder_reset">Export folder reset</string>
+    <string name="morphe_export_download_flyout_title">Export to device</string>
+    <string name="morphe_export_download_started">Exporting video</string>
+    <string name="morphe_export_download_progress">Exporting video: %d%%</string>
+    <string name="morphe_export_download_notification_channel">Video exports</string>
+    <string name="morphe_export_download_saved">Video exported to %s</string>
+    <string name="morphe_export_download_failed">Could not export the video</string>
 
     <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
     <string name="morphe_vot_screen_title">Voice over translation</string>

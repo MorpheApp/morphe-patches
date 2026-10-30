@@ -283,12 +283,14 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     private int currentUiMode = -1;
     private static final int WRITE_TEXT_REQUEST_CODE = 45;
     private static final int READ_TEXT_REQUEST_CODE = 46;
+    private static final int PICK_FOLDER_REQUEST_CODE = 47;
 
     private String existingSettings = "";
 
     private Collection<String> pendingLinesToExport = null;
     private Consumer<Boolean> pendingTextExportResult = null;
     private Consumer<String> pendingTextImportResult = null;
+    private Consumer<Uri> pendingFolderResult = null;
 
     private EditText currentImportExportEditText;
     private Dialog currentImportExportDialog = null;
@@ -785,6 +787,22 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
     }
 
+    /**
+     * Opens the folder picker, for preferences that save files to a folder.
+     *
+     * @param onResult Called with the tree uri of the folder. Not called if the user picks no folder.
+     */
+    public void pickFolderActivity(Consumer<Uri> onResult) {
+        try {
+            pendingFolderResult = onResult;
+
+            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+            startActivityForResult(intent, PICK_FOLDER_REQUEST_CODE);
+        } catch (Exception ex) {
+            Logger.printException(() -> "pickFolderActivity failure", ex);
+        }
+    }
+
     private void saveTextToUri(Uri uri) {
         if (pendingTextExportResult == null || pendingLinesToExport == null) return;
 
@@ -1085,6 +1103,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             saveTextToUri(data.getData());
         } else if (requestCode == READ_TEXT_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             readTextFromUri(data.getData());
+        } else if (requestCode == PICK_FOLDER_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null
+                && data.getData() != null && pendingFolderResult != null) {
+            pendingFolderResult.accept(data.getData());
         }
     }
 

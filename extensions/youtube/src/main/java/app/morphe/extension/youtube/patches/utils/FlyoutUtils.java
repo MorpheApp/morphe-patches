@@ -73,6 +73,7 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import app.morphe.extension.youtube.videoplayer.ExportDownloadButton;
 import app.morphe.extension.youtube.videoplayer.PictureinPictureButton;
 import app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton;
 import app.morphe.extension.youtube.videoplayer.ShortsDownloadButton;
@@ -345,6 +346,11 @@ public final class FlyoutUtils {
     private static PopupWindow flyoutPopupWindow;
     private static String flyoutVideoId = "";
     private static String flyoutPlaylistId = "";
+    /**
+     * The buffer of the open menu, if the menu has one.
+     */
+    @Nullable
+    private static byte[] flyoutBuffer;
 
     private static boolean videoMarkedAsForKids;
     private static boolean isMyTabHistoryFlyout;
@@ -381,6 +387,36 @@ public final class FlyoutUtils {
 
     public static String getFlyoutPlaylistId() {
         return flyoutPlaylistId;
+    }
+
+    /**
+     * Some menus, such as the menus of the downloads list, have no description to find
+     * the video by. Their buffer is of a single video, so its first thumbnail is of that video.
+     *
+     * @return The video of the first thumbnail of the open menu, or an empty string if there is none.
+     */
+    public static String getFlyoutThumbnailVideoId() {
+        byte[] buffer = flyoutBuffer;
+        if (buffer == null) {
+            return "";
+        }
+
+        byte[] prefix = VIDEO_ID_PREFIXES_BYTES.get(0);
+        final int index = byteIndexOf(buffer, prefix);
+        final int videoIdStart = index + prefix.length;
+        if (index < 0 || videoIdStart + VIDEO_ID_LENGTH > buffer.length) {
+            return "";
+        }
+        return new String(buffer, videoIdStart, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+    }
+
+    public static boolean hasVisibleFlyoutButton(String buttonName) {
+        for (Pair<String, Integer> button : visibleFlyoutButtons) {
+            if (button.first.equals(buttonName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -558,6 +594,7 @@ public final class FlyoutUtils {
         currentButtonIndex = 0;
         flyoutVideoId = "";
         flyoutPlaylistId = "";
+        flyoutBuffer = null;
         if (flyoutChannelIdRequest != null) {
             // The buttons waiting for the channel are gone with the menu.
             flyoutChannelIdRequest.cancelIfNotDone();
@@ -705,6 +742,14 @@ public final class FlyoutUtils {
                     flyoutPanel,
                     nextButtonIndex,
                     flyoutVideoId
+            );
+        }
+
+        if (ExportDownloadButton.isPatchIncluded()) {
+            nextButtonIndex = ExportDownloadButton.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    allButtonsVideoId
             );
         }
 
@@ -1235,6 +1280,7 @@ public final class FlyoutUtils {
         byte[] flyoutBuffer = bufferObject instanceof ProtocolBufferFieldInterface bufferInterface
                 ? bufferInterface.patch_getBuffer()
                 : null;
+        FlyoutUtils.flyoutBuffer = flyoutBuffer;
         if (flyoutBuffer == null) {
             return;
         }

@@ -49,29 +49,39 @@ public final class NativeSnackbarPatch {
             return false;
         }
 
+        // The app has no duration for it, YouTube shows every snackbar for the same time.
+        return executeCommand(NavigationEndpoint.newBuilder()
+                .setAddToToastAction(AddToToastAction.newBuilder()
+                        .setItem(QueueToastItem.newBuilder()
+                                .setToastRenderer(QueueToastRenderer.newBuilder()
+                                        .setResponseText(Text.newBuilder().setSimpleText(message)))))
+                .build()
+                .toByteArray());
+    };
+
+    /**
+     * Runs a command in the activity that is shown, the same as a command of a server response.
+     * Must be called from the main thread.
+     *
+     * @return If an activity is shown, and the command was run.
+     */
+    public static boolean executeCommand(byte[] command) {
         for (Map.Entry<Activity, WeakReference<CommandRouter>> entry : routers.entrySet()) {
             Activity activity = entry.getKey();
             CommandRouter router = entry.getValue().get();
             // Stopped behind another screen, such as the Morphe settings, or in the background,
-            // where nobody would see the snackbar.
+            // where nobody would see the result of the command.
             if (router == null || activity == null || activity.isFinishing()
                     || !activity.getWindow().getDecorView().isShown()) {
                 continue;
             }
 
-            // The app has no duration for it, YouTube shows every snackbar for the same time.
-            router.patch_executeCommand(NavigationEndpoint.newBuilder()
-                    .setAddToToastAction(AddToToastAction.newBuilder()
-                            .setItem(QueueToastItem.newBuilder()
-                                    .setToastRenderer(QueueToastRenderer.newBuilder()
-                                            .setResponseText(Text.newBuilder().setSimpleText(message)))))
-                    .build()
-                    .toByteArray());
+            router.patch_executeCommand(command);
             return true;
         }
 
         return false;
-    };
+    }
 
     /**
      * Injection point.
