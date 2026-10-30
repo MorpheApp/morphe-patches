@@ -46,6 +46,11 @@ public final class CaptionTracks {
 
     public static boolean isAvailable() { return isPatchIncluded(); }
 
+    public static boolean dualCaptionEnabled() {
+        return StableCaptionBlocks.blockTranslationEnabled()
+                && AutoTranslateCaptionsPatch.translationLanguage(Settings.SECONDARY_CAPTION_LANGUAGE.get()) != null;
+    }
+
     /** Validated identity shared across original and translated forms of the same source. */
     static String sourceIdentity(AutoTranslateCaptionsPatch.CaptionTrackInterface track) {
         if (track == null) return null;
@@ -89,8 +94,9 @@ public final class CaptionTracks {
             String key = sourceIdentity(track);
             if (key == null) return null;
             var parameters = AutoTranslateCaptionsPatch.captionParameters(track.patch_getUrl());
-            // A native translated response is an output, never the source of another translation.
-            if (parameters.containsKey("tlang")) return null;
+            // Single output keeps YouTube's translated text and its own clock. A translated
+            // response must never become the source for a second-language translation.
+            if (target != null && parameters.containsKey("tlang")) return null;
             return new Track(
                     key,
                     AutoTranslateCaptionsPatch.getLanguageKey(track.patch_getLanguageCode()),
@@ -223,10 +229,10 @@ public final class CaptionTracks {
     private static void attachTranslation(Track track, StableCaptionBlockPolicy policy,
             StableCaptionBlocks.State state) {
         if (state == null) return;
-        String primary = PreferredCaptionLanguagePatch.blockTranslationTarget(track.language,
+        String primary = track.secondary == null ? track.language : PreferredCaptionLanguagePatch.blockTranslationTarget(track.language,
                 Settings.PREFERRED_CAPTION_LANGUAGE.get(), PreferredCaptionLanguagePatch.hasUserSelectedTrack(),
                 Requester.getAppLocale());
-        if (track.source.equals(requestedSource)) primary = requestedTarget;
+        if (track.secondary != null && track.source.equals(requestedSource)) primary = requestedTarget;
         String key = track.source + "|" + track.language + "|" + primary + "|" + track.secondary;
         if (translatedSession == null || !translatedSession.isActive()
                 || translatedPolicy != policy || !key.equals(translatedKey)) {

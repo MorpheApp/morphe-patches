@@ -99,7 +99,7 @@ public class PreferredCaptionLanguagePatch {
                 return originalTrack;
             }
 
-            if (StableCaptionBlocks.blockTranslationEnabled() && !userSelectedTrack.get()) {
+            if (CaptionTracks.dualCaptionEnabled() && !userSelectedTrack.get()) {
                 CaptionTrackInterface source = blockTranslationSource(subtitleManager, originalTrack);
                 if (source != null) return recordProgrammaticSelection(source);
             }
@@ -200,7 +200,7 @@ public class PreferredCaptionLanguagePatch {
                                                            @Nullable CaptionTrackInterface track,
                                                            @Nullable Enum<?> selectType) {
         try {
-            if (StableCaptionBlocks.blockTranslationEnabled()
+            if (CaptionTracks.dualCaptionEnabled()
                     && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface translated) {
                 var parameters = AutoTranslateCaptionsPatch.captionParameters(translated.patch_getUrl());
                 if (parameters != null && parameters.containsKey("tlang")) {
@@ -224,7 +224,7 @@ public class PreferredCaptionLanguagePatch {
             if (interactionAllowed
                     && selectType != null && PREFERRED_TRACK_SELECT_TYPE.equals(selectType.name())
                     && SystemClock.uptimeMillis() - videoStartTime > USER_SELECTION_GRACE_PERIOD_MILLISECONDS) {
-                if (StableCaptionBlocks.blockTranslationEnabled()
+                if (CaptionTracks.dualCaptionEnabled()
                         && track instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface original
                         && CaptionTracks.sourceIdentity(original) != null) {
                     userSelectedTrack.set(true);
