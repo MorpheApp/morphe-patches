@@ -1,8 +1,10 @@
 package app.morphe.patches.youtube.core.compatibility
 
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+
 /**
- * Compatibility layer for version-specific YouTube behavior.
+ * Compatibility-layer alias for the original YouTube version check patch.
+ *
+ * This keeps the refactored package usable without breaking the existing implementation.
  */
-object VersionCheckPatch {
-    const val NAME = "VersionCheckPatch"
-}
+internal val versionCheckPatch = app.morphe.patches.youtube.misc.playservice.versionCheckPatch
