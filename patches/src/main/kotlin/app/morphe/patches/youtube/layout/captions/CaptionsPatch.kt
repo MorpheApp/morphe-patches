@@ -62,6 +62,7 @@ val captionsPatch = bytecodePatch(
         captionCookiesPatch,
         transcriptPatch,
         translatedCaptionPensPatch,
+        dualCaptionPrefetchPatch,
         captionWindowMeasurePatch,
         stableCaptionBlocksPatch,
         captionViewportPatch,

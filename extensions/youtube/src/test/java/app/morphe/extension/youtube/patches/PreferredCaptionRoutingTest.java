@@ -91,4 +91,47 @@ public class PreferredCaptionRoutingTest {
         assertSame(norwegian, find(List.of(norwegian), "no"));
     }
 
+    private static final class Source implements AutoTranslateCaptionsPatch.CaptionTrackInterface {
+        final String language, url, vss;
+        Source(String language, String url, String vss) { this.language=language; this.url=url; this.vss=vss; }
+        public String patch_getLanguageCode() { return language; }
+        public String patch_getUrl() { return url; }
+        public String patch_getVssId() { return vss; }
+        public AutoTranslateCaptionsPatch.CaptionTrackInterface patch_copyTranslation(String language, String url, String vss, CharSequence label) {
+            return new Source(language, url, vss);
+        }
+    }
+    private static PreferredCaptionLanguagePatch.CaptionTrackInterface source(List<PreferredCaptionLanguagePatch.CaptionTrackInterface> tracks,
+            PreferredCaptionLanguagePatch.CaptionTrackInterface currentAudio) {
+        return PreferredCaptionLanguagePatch.blockTranslationSource(new PreferredCaptionLanguagePatch.SubtitleManagerInterface() {
+            public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getDirectCaptionTracks() { return tracks; }
+            public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getAutoTranslateCaptionTracks() { return List.of(); }
+            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCaptionTranslationSource() { return currentAudio; }
+        }, null);
+    }
+    @Test public void sourceTranslationUsesTheValidatedCurrentAudioAsr() {
+        Source english = new Source("en", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=en&kind=asr", "a.en");
+        Source german = new Source("de", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=de&kind=asr", "a.de");
+        assertSame(english, source(List.of(english), null));
+        assertSame(german, source(List.of(english, german), german));
+        assertNull(source(List.of(english, german), null));
+    }
+    @Test public void sourceTranslationLeavesAuthoredAndUnrelatedTracksNative() {
+        Source authored = new Source("en", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=en", ".en");
+        Source other = new Source("de", "https://www.youtube.com/api/timedtext?v=bYsvNgA-tEE&lang=de&kind=asr", "a.de");
+        assertNull(source(List.of(authored), authored));
+        assertNull(source(List.of(authored, other), other));
+        assertNull(source(List.of(), null));
+    }
+    @Test public void sourceTranslationDoesNotRedirectAnAuthoredSelection() {
+        Source asr = new Source("en", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=en&kind=asr", "a.en");
+        Source authored = new Source("en", "https://www.youtube.com/api/timedtext?v=P6pcTK0wTYA&lang=en", ".en");
+        var manager = new PreferredCaptionLanguagePatch.SubtitleManagerInterface() {
+            public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getDirectCaptionTracks() { return List.of(asr, authored); }
+            public List<PreferredCaptionLanguagePatch.CaptionTrackInterface> patch_getAutoTranslateCaptionTracks() { return List.of(); }
+            public PreferredCaptionLanguagePatch.CaptionTrackInterface patch_getCaptionTranslationSource() { return asr; }
+        };
+        assertNull(PreferredCaptionLanguagePatch.blockTranslationSource(manager, authored));
+        assertSame(asr, PreferredCaptionLanguagePatch.blockTranslationSource(manager, asr));
+    }
 }

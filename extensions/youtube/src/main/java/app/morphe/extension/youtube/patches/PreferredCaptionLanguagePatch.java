@@ -99,6 +99,10 @@ public class PreferredCaptionLanguagePatch {
                 return originalTrack;
             }
 
+            if (StableCaptionBlocks.blockTranslationEnabled() && !userSelectedTrack.get()) {
+                CaptionTrackInterface source = blockTranslationSource(subtitleManager, originalTrack);
+                if (source != null) return recordProgrammaticSelection(source);
+            }
             String prefLang = Settings.PREFERRED_CAPTION_LANGUAGE.get();
             Logger.printDebug(() -> "getPreferredCaptionTrack orig: " + originalTrack + " prefLang: " + prefLang);
 
@@ -196,6 +200,8 @@ public class PreferredCaptionLanguagePatch {
                                                            @Nullable CaptionTrackInterface track,
                                                            @Nullable Enum<?> selectType) {
         try {
+            if (StableCaptionBlocks.blockTranslationEnabled() && (track == null || isExplicitlyDisabled(track)))
+                DualCaptionTracks.onSelectedTrack(null);
             final boolean interactionAllowed = SystemClock.uptimeMillis() >= userInteractionAllowedAt.get();
             Logger.printDebug(() -> "onSetSubtitleTrack track: " + track
                     + " selectType: " + selectType
@@ -255,6 +261,18 @@ public class PreferredCaptionLanguagePatch {
     public static void videoInformationLoaded() {
         // Only the first loaded event starts the window; later events must not re-lock selection.
         userInteractionAllowedAt.compareAndSet(Long.MAX_VALUE, SystemClock.uptimeMillis() + 300);
+    }
+
+    /** Select only a validated current-audio ASR source; authored track selection stays native. */
+    static CaptionTrackInterface blockTranslationSource(SubtitleManagerInterface manager,
+            @Nullable CaptionTrackInterface selected) {
+        if (selected != null && (!(selected instanceof AutoTranslateCaptionsPatch.CaptionTrackInterface automatic)
+                || !AutoTranslateCaptionsPatch.isAutomaticCaption(automatic.patch_getVssId(), automatic.patch_getUrl())))
+            return null;
+        AutoTranslateCaptionsPatch.CaptionTrackInterface source = AutoTranslateCaptionsPatch.findFallbackSource(
+                manager.patch_getDirectCaptionTracks(), manager.patch_getCaptionTranslationSource());
+        return source != null && "asr".equals(AutoTranslateCaptionsPatch.captionParameters(
+                source.patch_getUrl()).get("kind")) ? source : null;
     }
 
     private static String getAppLanguage() {

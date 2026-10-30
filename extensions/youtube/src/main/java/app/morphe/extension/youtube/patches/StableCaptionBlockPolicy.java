@@ -13,10 +13,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+import java.text.BreakIterator;
 
 import app.morphe.extension.shared.Logger;
 
@@ -55,18 +58,55 @@ final class StableCaptionBlockPolicy {
         }
     }
 
+    final StableCaptionBlockPolicy secondary;
     private final List<Atom> atoms;
     private final int[] characters;
+    private final boolean[] boundaries;
 
     private StableCaptionBlockPolicy(List<Atom> atoms) {
+        this(atoms, null);
+    }
+
+    private StableCaptionBlockPolicy(List<Atom> atoms, StableCaptionBlockPolicy secondary) {
+        this.secondary = secondary;
         this.atoms = List.copyOf(atoms);
         characters = new int[atoms.size() + 1];
-        for (int i = 0; i < atoms.size(); i++)
+        boundaries = new boolean[atoms.size() + 1];
+        int[] offsets = new int[atoms.size()];
+        StringBuilder text = new StringBuilder();
+        for (int i = 0; i < atoms.size(); i++) {
+            String raw = atoms.get(i).text;
+            offsets[i] = text.length() + raw.length() - raw.stripLeading().length();
+            text.append(raw);
             characters[i + 1] =
                     characters[i] + atoms.get(i).text.codePointCount(0, atoms.get(i).text.length());
+        }
+        BreakIterator lines = BreakIterator.getLineInstance(Locale.ROOT);
+        lines.setText(text.toString());
+        for (int i = 1; i < atoms.size(); i++) boundaries[i] = lines.isBoundary(offsets[i]);
+    }
+
+    /** Authored styles and positions belong to the native renderer. */
+    static StableCaptionBlockPolicy parseManual(Document document) {
+        if (document == null) return null;
+        for (String tag : List.of("pen", "wp", "ws"))
+            if (document.getElementsByTagName(tag).getLength() != 0) return null;
+        NodeList windows = document.getElementsByTagName("w");
+        for (int i = 0; i < windows.getLength(); i++)
+            if (!attributes((Element) windows.item(i), "t", "id")) return null;
+        return parse(document);
     }
 
     static StableCaptionBlockPolicy parse(Document d) {
+        return parse(d, false);
+    }
+
+    /** Native ASR may contain untimed line wraps; retain its paragraph clock. */
+    static StableCaptionBlockPolicy parseSource(Document d) {
+        return parse(d, true);
+    }
+
+    private static StableCaptionBlockPolicy parse(Document d, boolean source) {
         try {
             if (d == null || d.getElementsByTagName("pen").getLength() != 0) return null;
             Element root = d.getDocumentElement(), body = null;
@@ -110,7 +150,9 @@ final class StableCaptionBlockPolicy {
                 boolean first = true;
                 StringBuilder whitespace = new StringBuilder();
                 if (segments.isEmpty()) {
-                    if (!add(atoms, start, start + duration, e.getTextContent(), true, barrier))
+                    String text = e.getTextContent();
+                    if (source) text = text.replaceAll("[\\r\\n]+", " ");
+                    if (!add(atoms, start, start + duration, text, true, barrier))
                         return null;
                 } else {
                     for (Node n = e.getFirstChild(); n != null; n = n.getNextSibling())
@@ -125,6 +167,7 @@ final class StableCaptionBlockPolicy {
                         if (offset < 0 || offset < previousOffset || offset >= duration) return null;
                         previousOffset = offset;
                         String text = segment.getTextContent();
+                        if (source) text = text.replaceAll("[\\r\\n]+", " ");
                         if (text.isBlank()) {
                             if (text.indexOf('\n') >= 0 || text.indexOf('\r') >= 0) return null;
                             whitespace.append(text);
@@ -158,6 +201,35 @@ final class StableCaptionBlockPolicy {
             Logger.printException(() -> "parse failure", ex);
             return null;
         }
+    }
+
+    static StableCaptionBlockPolicy parsePairs(Document primary, Document secondary) {
+        StableCaptionBlockPolicy first = parse(primary), second = parse(secondary);
+        return first == null || second == null ? null : first.withTranslation(second);
+    }
+
+    StableCaptionBlockPolicy withTranslation(StableCaptionBlockPolicy translated) {
+        return new StableCaptionBlockPolicy(atoms, translated);
+    }
+
+    /** Borrow only geometry when the secondary language outlasts the primary. */
+    long displayTemplateTime(long time) {
+        long primary = templateTime(time);
+        if (primary >= 0 || secondary == null || secondary.templateTime(time) < 0) return primary;
+        int low = 0, high = atoms.size() - 1;
+        while (low < high) {
+            int mid = (low + high + 1) >>> 1;
+            if (atoms.get(mid).start <= time) low = mid;
+            else high = mid - 1;
+        }
+        return atoms.get(low).start;
+    }
+
+    long frameKey(long time, long template) {
+        return secondary == null
+                ? template
+                : ((templateTime(time) + 1) << 32)
+                        | ((secondary.templateTime(time) + 1) & 0xffffffffL);
     }
 
     /**
@@ -223,9 +295,8 @@ final class StableCaptionBlockPolicy {
 
     private boolean boundary(int at) {
         if (at >= atoms.size()) return true;
-        String before = atoms.get(at - 1).text, raw = atoms.get(at).text;
-        if (!Character.isWhitespace(before.charAt(before.length() - 1))
-                && !Character.isWhitespace(raw.charAt(0))) return false;
+        if (!boundaries[at]) return false;
+        String raw = atoms.get(at).text;
         String next = raw.stripLeading();
         if (next.isEmpty()) return false;
         int first = next.codePointAt(0), type = Character.getType(first);
@@ -234,7 +305,19 @@ final class StableCaptionBlockPolicy {
                 && type != Character.FINAL_QUOTE_PUNCTUATION;
     }
 
+    /** Use the same reading-time planner before either translation or screen measurement. */
+    List<Block> sourceBlocks(String language) {
+        String code = Locale.forLanguageTag(language).getLanguage();
+        boolean compact = List.of("zh", "ja", "ko", "th", "lo", "km", "my").contains(code);
+        return plan(text -> (compact ? text.codePointCount(0, text.length())
+                : text.split("\\s+").length) <= (compact ? 30 : 15), true);
+    }
+
     List<Block> plan(Fit fit) {
+        return plan(fit, false);
+    }
+
+    private List<Block> plan(Fit fit, boolean source) {
         int size = atoms.size();
         int[] next = new int[size];
         boolean[] supported = new boolean[size];
@@ -260,7 +343,8 @@ final class StableCaptionBlockPolicy {
                 if (!boundary(to)) continue;
                 Block candidate = block(from, to, true);
                 long duration = candidate.end - candidate.start;
-                if (duration <= 0) continue;
+                if (duration <= 0 || source && (duration > MAX_PREVIEW_MS
+                        || to > from + 1 && candidate.text.codePointCount(0, candidate.text.length()) > 80)) continue;
                 long missing = shortfall(candidate) + shortfall[to];
                 int chars = candidate.text.codePointCount(0, candidate.text.length());
                 // Relative reading load, not a language-specific characters-per-second limit.
@@ -279,7 +363,9 @@ final class StableCaptionBlockPolicy {
             }
             if (next[from] == 0) {
                 int to = from + 1;
-                while (to < size && !boundary(to)) to++;
+                while (to < size && !boundary(to) && (!source
+                        || !atoms.get(to).barrierBefore
+                                && atoms.get(to).start - atoms.get(to - 1).end <= MAX_GAP_MS)) to++;
                 next[from] = to;
                 Block nativeBlock = block(from, to, false);
                 bestShort = shortfall(nativeBlock) + shortfall[to];

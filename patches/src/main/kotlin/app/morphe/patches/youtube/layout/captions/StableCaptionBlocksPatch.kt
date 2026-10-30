@@ -16,6 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -61,6 +62,17 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
         settingsMenuCaptionGroup.add(
             SwitchPreference("morphe_stable_caption_blocks", summary = true)
         )
+
+        settingsMenuCaptionGroup.add(
+            SwitchPreference("morphe_translate_caption_blocks", summary = true)
+        )
+
+        settingsMenuCaptionGroup.add(ListPreference(
+            "morphe_secondary_caption_language",
+            tag = "app.morphe.extension.youtube.settings.preference.DualCaptionLanguagePreference",
+            entriesKey = null,
+            entryValuesKey = null,
+        ))
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
@@ -189,6 +201,21 @@ internal val stableCaptionBlocksPatch = bytecodePatch(
 
             mutableClassDefBy(SUBTITLE_WINDOW_VIEW_CLASS).apply {
                 interfaces.add(EXTENSION_WINDOW_INTERFACE)
+
+                addHelperMethod(
+                    "patch_setCaptionMeasuredSize", "V", parameters = listOf("I", "I"),
+                    smali = "invoke-virtual { p0, p1, p2 }, Landroid/view/View;->setMeasuredDimension(II)V\nreturn-void",
+                )
+                for ((method, hook) in listOf(
+                    CaptionWindowMeasureFingerprint.method to "afterMeasure",
+                    methods.single { it.name == "onLayout" && it.parameterTypes == listOf("Z", "I", "I", "I", "I") } to "afterLayout",
+                )) {
+                    method.implementation!!.instructions.withIndex()
+                        .filter { it.value.opcode == Opcode.RETURN_VOID }
+                        .map { it.index }.reversed().forEach { at ->
+                            method.addInstructions(at, "invoke-static/range { p0 .. p0 }, Lapp/morphe/extension/youtube/patches/DualCaptionOverlay;->$hook(Landroid/view/View;)V")
+                        }
+                }
 
                 windowFields.forEach { (name, field) ->
                     addHelperMethod(

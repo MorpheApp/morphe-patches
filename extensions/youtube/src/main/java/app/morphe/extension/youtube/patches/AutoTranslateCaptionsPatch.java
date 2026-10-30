@@ -211,6 +211,8 @@ public final class AutoTranslateCaptionsPatch {
         return preferred != null ? preferred : mixedSources ? null : first;
     }
 
+    static String[] translationLanguages() { return TRANSLATION_LANGUAGES.clone(); }
+
     static String translationLanguage(String language) {
         if (language == null || !LANGUAGE_CODE_PATTERN.matcher(language).matches()) return null;
         for (String code : TRANSLATION_LANGUAGES) {
@@ -250,7 +252,7 @@ public final class AutoTranslateCaptionsPatch {
     }
 
     /** Keep YouTube URL validation shared by original and native translated tracks. */
-    private static Map<String, String> captionParameters(String url) {
+    static Map<String, String> captionParameters(String url) {
         if (url == null) return null;
         try {
             URI uri = URI.create(url);
