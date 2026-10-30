@@ -105,4 +105,17 @@ public class CaptionSessionTest {
         assertEquals(4000, cue.start); assertEquals(7000, cue.end);
         assertEquals("訳:second source", cue.primary); assertEquals("", cue.secondary);
     }
+    @Test public void failedCueRetriesOnExplicitBackwardSeekButNotEveryFrame() {
+        Jobs jobs = new Jobs(); AtomicInteger calls = new AtomicInteger(); boolean[] unavailable = {true};
+        var session = new CaptionSession(SOURCE, "en", "de", null, (from, to, texts) -> {
+            calls.incrementAndGet(); if (unavailable[0]) throw new IOException("temporary failure");
+            return texts.stream().map(text -> "de:" + text).toList();
+        }, jobs, () -> {}, () -> {});
+        session.demand(2000); jobs.run(); assertEquals(1, calls.get());
+        session.demand(2100); jobs.run(); assertEquals(1, calls.get());
+        unavailable[0] = false;
+        session.demand(100); jobs.run(); assertEquals(2, calls.get());
+        assertEquals("de:first source", session.snapshot(100).primary);
+        session.demand(200); jobs.run(); assertEquals(2, calls.get());
+    }
 }

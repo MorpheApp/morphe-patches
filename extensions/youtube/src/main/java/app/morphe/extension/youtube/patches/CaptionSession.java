@@ -62,6 +62,9 @@ final class CaptionSession {
     void demand(long time) {
         synchronized (this) {
             if (!active) return;
+            // A user seek may recover transient failures; ordinary frames never retry them.
+            if (time < position - 250)
+                for (int i = 0; i < status.length; i++) if (status[i] == 3) status[i] = 0;
             position = time;
             if (running || !needsTranslation()) return;
             running = true;
