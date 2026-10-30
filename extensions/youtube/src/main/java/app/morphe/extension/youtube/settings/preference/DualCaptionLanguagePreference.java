@@ -16,7 +16,6 @@ import java.util.Locale;
 public final class DualCaptionLanguagePreference extends CustomDialogListPreference {
     public DualCaptionLanguagePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setDependency("morphe_translate_caption_blocks");
         Locale locale = context.getResources().getConfiguration().getLocales().get(0);
         String[] codes = CaptionTracks.languageCodes();
         Collator collator = Collator.getInstance(locale);
