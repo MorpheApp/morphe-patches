@@ -825,8 +825,9 @@ public final class LiveChatTranslatePatch {
     }
 
     private static void remember(CharSequence input, int configHash, CharSequence result) {
-        // Enables the relayout hooks, which otherwise return immediately for every text of the app.
-        LithoRelayoutPatch.setHasRelayoutSpans(true);
+        // Enables the relayout hooks for a while, as they otherwise return immediately for every
+        // text of the app. A permanent flag made entering and leaving fullscreen stutter.
+        LithoRelayoutPatch.onRelayoutSpanRegistered();
         synchronized (instanceResults) {
             if (instanceResults.size() >= MAX_INSTANCE_RESULTS) {
                 // Dropping the whole cache would re-parse every visible row at once, which is a
@@ -857,10 +858,33 @@ public final class LiveChatTranslatePatch {
         scheduleVisibleScan(VISIBLE_SCAN_DELAY_MS);
     }
 
-    /** @return If the chat list is gone, so no row can be translated or laid out any more. */
+    /**
+     * @return If no chat row was seen for a while, so no row can be translated or laid out any more.
+     *         Cheap enough for the per row paths, as it only reads a timestamp.
+     */
     private static boolean isChatIdle() {
         final long last = lastChatRowAt;
         return last == 0L || System.currentTimeMillis() - last > CHAT_IDLE_MS;
+    }
+
+    /**
+     * @return If the chat list is gone. Only called from the scan, which runs on the main thread at
+     *         most every few hundred milliseconds, as it walks the mounted texts to tell a closed
+     *         chat from a paused one where no new row is created.
+     */
+    private static boolean isChatListGone() {
+        if (isChatIdle()) {
+            return true;
+        }
+        for (Object[] entry : LithoRelayoutPatch.findShownTexts()) {
+            if (!(entry[1] instanceof Spanned spanned)) {
+                continue;
+            }
+            if (spanned.getSpans(0, spanned.length(), ChatRowSpan.class).length > 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static void scheduleVisibleScan(long delayMs) {
@@ -924,6 +948,11 @@ public final class LiveChatTranslatePatch {
 
     private static void attachCopyListeners() {
         try {
+            // Runs on the main thread after a row was translated. While the chat is closed there is
+            // no row to attach to, so the walk over every mounted text is skipped.
+            if (isChatIdle()) {
+                return;
+            }
             for (Object[] entry : LithoRelayoutPatch.findShownTexts()) {
                 final View host = (View) entry[0];
                 final CharSequence text = (CharSequence) entry[1];
@@ -1013,7 +1042,7 @@ public final class LiveChatTranslatePatch {
     /** Runs on the main thread. */
     private static void runVisibleScan() {
         scanScheduled.set(0);
-        if (isChatIdle()) {
+        if (isChatListGone()) {
             // The chat was closed. A translation that already arrived is still written into its row,
             // as the row can be on screen in a paused replay where no new rows are created. Then the
             // queued requests are dropped so nothing is sent for a chat that is gone.

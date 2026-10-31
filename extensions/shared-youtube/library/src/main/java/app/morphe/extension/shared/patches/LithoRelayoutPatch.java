@@ -100,11 +100,17 @@ public final class LithoRelayoutPatch {
     private static final Set<View> lithoViews = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
-     * Set while any text with a {@link RelayoutSpan} is registered. The two hooks below run for every
-     * view and text of the app, so they return immediately when no patch ever created such a span,
-     * which is the case on every screen except the one that uses it.
+     * Until when a text with a {@link RelayoutSpan} may be mounted. The hooks below run for every view
+     * and text of the app, so they return immediately while this window is closed, which is the case
+     * on every screen that never shows such a text.
+     * <p>
+     * A permanent flag would leave them scanning every text of the app after the chat was seen once,
+     * which made entering and leaving fullscreen stutter.
      */
-    private static final AtomicBoolean hasRelayoutSpans = new AtomicBoolean();
+    private static volatile long relayoutSpansUntil;
+
+    /** How long the hooks stay enabled after a span was registered or seen. */
+    private static final long RELAYOUT_SPANS_WINDOW_MILLISECONDS = 10_000;
 
     /**
      * If a relayout is scheduled. Requests can be made on different threads at the same time,
@@ -155,7 +161,7 @@ public final class LithoRelayoutPatch {
      */
     public static <T extends RelayoutSpan> Set<T> findShownSpans(Class<T> spanClass) {
         Set<T> shownSpans = new HashSet<>();
-        for (Drawable textDrawable : new ArrayList<>(relayoutTextDrawables)) {
+        for (Drawable textDrawable : snapshotTextDrawables()) {
             // The callback is the host, or null if the text was unmounted.
             if (!(textDrawable.getCallback() instanceof View host) || !host.isShown()
                     || !(textDrawable instanceof TextContent textContent)) {
@@ -178,7 +184,7 @@ public final class LithoRelayoutPatch {
      */
     public static List<Object[]> findShownTexts() {
         List<Object[]> result = new ArrayList<>();
-        for (Drawable textDrawable : new ArrayList<>(relayoutTextDrawables)) {
+        for (Drawable textDrawable : snapshotTextDrawables()) {
             if (!(textDrawable.getCallback() instanceof View host) || !host.isShown()
                     || !(textDrawable instanceof TextContent textContent)) {
                 continue;
@@ -217,10 +223,15 @@ public final class LithoRelayoutPatch {
 
     /**
      * Called by a patch that puts {@link RelayoutSpan}s on texts, so the hooks that look for them are
-     * enabled. Without this the hooks return immediately and cost nothing.
+     * enabled for a while. Without this the hooks return immediately and cost nothing.
      */
-    public static void setHasRelayoutSpans(boolean hasSpans) {
-        hasRelayoutSpans.set(hasSpans);
+    public static void onRelayoutSpanRegistered() {
+        relayoutSpansUntil = System.currentTimeMillis() + RELAYOUT_SPANS_WINDOW_MILLISECONDS;
+    }
+
+    /** @return If a text with a {@link RelayoutSpan} may be mounted right now. */
+    private static boolean areRelayoutSpansActive() {
+        return System.currentTimeMillis() < relayoutSpansUntil;
     }
 
     /**
@@ -240,11 +251,13 @@ public final class LithoRelayoutPatch {
         try {
             // Runs for every text the app mounts, so the span walk is skipped while no relayout is
             // pending: without a registered RelayoutSpan there is nothing to lay out again.
-            if (!hasRelayoutSpans.get()) {
+            if (!areRelayoutSpansActive()) {
                 return;
             }
             Boolean outdated = isOutdated(text);
             if (outdated != null) {
+                // The chat is still on screen, so the next text may carry a span as well.
+                onRelayoutSpanRegistered();
                 relayoutTextDrawables.add(textDrawable);
                 // The text can be outdated before it's mounted, such as a title fetched meanwhile.
                 if (outdated) {
@@ -256,6 +269,18 @@ public final class LithoRelayoutPatch {
         }
     }
 
+    /**
+     * @return The mounted text drawables. A WeakHashMap cannot be iterated while the map is being
+     *         modified by another thread, and a copy is needed anyway, so the copy is made once here
+     *         and skipped entirely while no text is registered.
+     */
+    private static List<Drawable> snapshotTextDrawables() {
+        if (relayoutTextDrawables.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return new ArrayList<>(relayoutTextDrawables);
+    }
+
     private static void relayoutOutdatedViews() {
         relayoutScheduled.set(false);
         final boolean remountListViews = remountListViewsRequested.getAndSet(false);
@@ -265,7 +290,7 @@ public final class LithoRelayoutPatch {
             // The outdated views mounted again are then laid out again by this relayout,
             // instead of a later relayout requested when their outdated texts are mounted again.
             Set<LithoViewInterface> relayoutViews = new LinkedHashSet<>();
-            for (Drawable textDrawable : new ArrayList<>(relayoutTextDrawables)) {
+            for (Drawable textDrawable : snapshotTextDrawables()) {
                 // The callback is the host, or null if the text was unmounted.
                 if (!(textDrawable.getCallback() instanceof View host)
                         || !(textDrawable instanceof TextContent textContent)) {
