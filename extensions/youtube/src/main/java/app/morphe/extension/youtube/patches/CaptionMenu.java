@@ -8,6 +8,7 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
@@ -140,8 +141,15 @@ public final class CaptionMenu {
                 switchShape(density, 18, 18, ColorStateList.valueOf(dark))});
         thumb.setLayerSize(0, Math.round(18 * density), Math.round(18 * density));
         thumb.setLayerGravity(0, Gravity.CENTER);
+        LayerDrawable closedThumb = (LayerDrawable) thumb.getConstantState().newDrawable().mutate();
+        int closedInset = Math.round(1.5f * density);
+        // Move the off glyph inward without changing the thumb's measured width.
+        closedThumb.setLayerInset(0, closedInset, 0, -closedInset, 0);
+        StateListDrawable thumbStates = new StateListDrawable();
+        thumbStates.addState(states[0], thumb);
+        thumbStates.addState(states[1], closedThumb);
         int thumbInset = Math.round(density);
-        toggle.setThumbDrawable(new InsetDrawable(thumb, thumbInset, 0, thumbInset, 0));
+        toggle.setThumbDrawable(new InsetDrawable(thumbStates, thumbInset, 0, thumbInset, 0));
         GradientDrawable track = switchShape(density, 37, 22, new ColorStateList(states,
                 new int[]{light, inactive}));
         int insetX = Math.round(1.5f * density), insetY = Math.round(density);
