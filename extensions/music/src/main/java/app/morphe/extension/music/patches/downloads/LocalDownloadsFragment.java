@@ -79,6 +79,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private static final int MENU_CORNER_DP = 12;
     private static final int ICON_BUTTON_DP = 48;
 
+    /** Tracks the actual queue sent to OfflinePlaybackService (whether main list or playlist). */
+    private static final List<String> activeQueuePaths = new ArrayList<>();
+
     private File musicRoot;
     private OfflinePlaylistManager playlistManager;
     private List<OfflinePlaylist> createdPlaylists = new ArrayList<>();
@@ -97,13 +100,13 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private LinearLayout songsList;
     private LinearLayout createdPlaylistsContainer;
     private LinearLayout selectionToolbar;
-    private TextView selectButton;
+    private TextView newPlaylistSelectButton;
     private ImageButton playlistsToggleButton;
 
     private boolean showingPause;
     private List<OfflineTrack> tracks = new ArrayList<>();
     private final List<View> rowViews = new ArrayList<>();
-    private List<String> queuePaths = new ArrayList<>();
+    private List<String> displayedTrackPaths = new ArrayList<>();
     private String playingPath = "";
     private String query = "";
     private TextView summary;
@@ -120,6 +123,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 return ARTIST;
             }
         }
+    }
+
+    static void setActiveQueue(List<String> queue) {
+        activeQueuePaths.clear();
+        activeQueuePaths.addAll(queue);
     }
 
     @Override
@@ -179,7 +187,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         createdPlaylistsContainer.setVisibility(playlistsExpanded ? View.VISIBLE : View.GONE);
         if (!playlistsExpanded) return;
 
-        // Top row of collapsible section: Title + "+ New playlist" pill button
+        // Top row of collapsible section: Title + "+ New playlist" (toggles multi-select mode)
         LinearLayout topBar = new LinearLayout(getActivity());
         topBar.setGravity(Gravity.CENTER_VERTICAL);
         topBar.setPadding(dp(4), dp(6), dp(4), dp(6));
@@ -188,9 +196,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         sectionHeader.setTypeface(Typeface.DEFAULT_BOLD);
         topBar.addView(sectionHeader, new LinearLayout.LayoutParams(0, -2, 1));
 
-        TextView newPlaylistBtn = pillButton("+ New playlist", false);
-        newPlaylistBtn.setOnClickListener(v -> createPlaylistFromAllSongsDialog());
-        topBar.addView(newPlaylistBtn, new LinearLayout.LayoutParams(-2, -2));
+        String btnLabel = selectionMode
+                ? "Selected (" + selectedTrackPaths.size() + ")"
+                : "+ New playlist";
+        newPlaylistSelectButton = pillButton(btnLabel, false);
+        newPlaylistSelectButton.setOnClickListener(v -> toggleSelectionMode());
+        topBar.addView(newPlaylistSelectButton, new LinearLayout.LayoutParams(-2, -2));
 
         createdPlaylistsContainer.addView(topBar, new LinearLayout.LayoutParams(-1, -2));
 
@@ -232,7 +243,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 listInner.addView(row);
             }
 
-            // Cap height so the collapsible list doesn't push songs completely off screen
             int maxHeight = createdPlaylists.size() > 4 ? dp(210) : ViewGroup.LayoutParams.WRAP_CONTENT;
             playlistScroll.addView(listInner);
             createdPlaylistsContainer.addView(playlistScroll, new LinearLayout.LayoutParams(-1, maxHeight));
@@ -332,10 +342,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         search.setOnClickListener(v -> toggleSearch());
         line.addView(search, new LinearLayout.LayoutParams(dp(40), dp(40)));
 
-        selectButton = pillButton("Select", false);
-        selectButton.setOnClickListener(v -> toggleSelectionMode());
-        line.addView(selectButton, new LinearLayout.LayoutParams(-2, -2));
-
         ImageButton sort = icon("yt_outline_experimental_sort_vd_theme_24",
                 str("morphe_music_downloads_sort"));
         sort.setOnClickListener(v -> showSortMenu(sort));
@@ -391,10 +397,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return header;
     }
 
-    /**
-     * Creates a pill-shaped button whose background uses a translucent foreground tint
-     * instead of a fixed dark color, so it automatically adapts to any dynamic background.
-     */
     private TextView pillButton(String label, boolean primary) {
         TextView btn = text(label, 13, primary ? background() : foreground());
         btn.setPadding(dp(14), dp(6), dp(14), dp(6));
@@ -409,7 +411,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         if (primary) {
             shape.setColor(fg);
         } else {
-            // Translucent tint blends naturally with any background (black, grey, purple, etc.)
             shape.setColor(Color.argb(26, Color.red(fg), Color.green(fg), Color.blue(fg)));
             shape.setStroke(dp(1), Color.argb(65, Color.red(fg), Color.green(fg), Color.blue(fg)));
         }
@@ -430,10 +431,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     }
 
     private void updateSelectionUi() {
-        if (selectButton != null) {
-            selectButton.setText(selectionMode
+        if (newPlaylistSelectButton != null) {
+            newPlaylistSelectButton.setText(selectionMode
                     ? "Selected (" + selectedTrackPaths.size() + ")"
-                    : "Select");
+                    : "+ New playlist");
         }
         if (selectionToolbar != null) {
             selectionToolbar.setVisibility(selectionMode ? View.VISIBLE : View.GONE);
@@ -461,8 +462,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         if (!selectedTrackPaths.remove(path)) {
             selectedTrackPaths.add(path);
         }
-        if (selectButton != null && selectionMode) {
-            selectButton.setText("Selected (" + selectedTrackPaths.size() + ")");
+        if (newPlaylistSelectButton != null && selectionMode) {
+            newPlaylistSelectButton.setText("Selected (" + selectedTrackPaths.size() + ")");
         }
         refreshRowsSelectionState();
     }
@@ -491,10 +492,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         showAddTracksToPlaylistDialog(new ArrayList<>(selectedTrackPaths), true);
     }
 
-    /**
-     * Uses CustomDialog.create to match the rounded dialog & pill buttons of "Delete download?".
-     * Tapping any playlist row auto-adds the tracks and dismisses the dialog immediately.
-     */
     private void showAddTracksToPlaylistDialog(List<String> pathsToAdd, boolean exitSelectOnSave) {
         if (createdPlaylists.isEmpty()) {
             showCreatePlaylistDialog("", pathsToAdd, exitSelectOnSave);
@@ -559,7 +556,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         LinearLayout.LayoutParams scrollParams = new LinearLayout.LayoutParams(-1, maxHeight);
         scrollParams.bottomMargin = dp(12);
 
-        // Insert the playlist rows right above the dialog button row
         int insertIndex = Math.max(1, dialogRoot.getChildCount() - 1);
         dialogRoot.addView(scroll, insertIndex, scrollParams);
 
@@ -574,24 +570,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         showCreatePlaylistDialog("", new ArrayList<>(selectedTrackPaths), true);
     }
 
-    private void createPlaylistFromAllSongsDialog() {
-        List<String> allVisiblePaths = new ArrayList<>();
-        for (OfflineTrack track : tracks) {
-            if (matchesQuery(track)) {
-                allVisiblePaths.add(track.audioFile().getAbsolutePath());
-            }
-        }
-        if (allVisiblePaths.isEmpty()) {
-            Utils.showToastShort("No downloaded songs available");
-            return;
-        }
-        showCreatePlaylistDialog("Downloaded songs", allVisiblePaths, false);
-    }
-
-    /**
-     * Uses CustomDialog.create with an EditText so "Create playlist" matches the rounded
-     * border radius and pill buttons of the rest of the extension.
-     */
     private void showCreatePlaylistDialog(String defaultName, List<String> pathsToSave, boolean exitSelectOnSave) {
         final EditText input = new EditText(getActivity());
         input.setHint("Playlist name");
@@ -618,10 +596,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                         playlistManager.savePlaylist(playlist);
                         refreshCreatedPlaylists();
                         playlistsExpanded = true;
-                        renderCreatedPlaylists();
                         if (exitSelectOnSave) {
                             clearSelection();
                         }
+                        renderCreatedPlaylists();
                         Utils.showToastShort("Playlist created");
                     } catch (Exception ex) {
                         Utils.showToastShort("Could not create playlist");
@@ -693,7 +671,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         loadTracks();
         songsList.removeAllViews();
         rowViews.clear();
-        queuePaths = new ArrayList<>();
+        displayedTrackPaths = new ArrayList<>();
 
         long totalBytes = 0;
         for (OfflineTrack track : tracks) {
@@ -704,11 +682,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         for (OfflineTrack track : tracks) {
             if (!matchesQuery(track)) continue;
-            queuePaths.add(track.audioFile().getAbsolutePath());
+            displayedTrackPaths.add(track.audioFile().getAbsolutePath());
             songsList.addView(songRow(track));
         }
 
-        if (queuePaths.isEmpty()) {
+        if (displayedTrackPaths.isEmpty()) {
             TextView empty = text(str(tracks.isEmpty()
                     ? "morphe_music_downloads_empty"
                     : "morphe_music_downloads_nothing_found"), 16, secondary());
@@ -770,7 +748,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     }
 
     private void markPlayingRow() {
-        int playingIndex = queuePaths.indexOf(playingPath);
+        int playingIndex = displayedTrackPaths.indexOf(playingPath);
         for (int i = 0; i < rowViews.size(); i++) {
             rowViews.get(i).setBackground(rowBackground(i == playingIndex));
         }
@@ -912,7 +890,6 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         };
         showMenu(anchor, items, -1, position -> {
             if (position == 1) {
-                // Opens the Add to playlist picker and auto-adds this track when a playlist is tapped
                 showAddTracksToPlaylistDialog(List.of(track.audioFile().getAbsolutePath()), false);
                 return;
             }
@@ -936,6 +913,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             Utils.showToastShort("No local tracks available in this playlist");
             return;
         }
+
+        // Update active queue to the playlist's tracks
+        setActiveQueue(queue);
 
         String firstPath = queue.get(0);
         OfflineTrack firstTrack = findByPath(firstPath);
@@ -1041,7 +1021,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private void play(OfflineTrack track) {
         try {
-            ArrayList<String> queue = new ArrayList<>(queuePaths);
+            ArrayList<String> queue = new ArrayList<>(displayedTrackPaths);
+            setActiveQueue(queue);
             final int queueIndex = Math.max(0, queue.indexOf(track.audioFile().getAbsolutePath()));
 
             Intent intent = new Intent(getActivity(), OfflinePlaybackService.class)
@@ -1075,14 +1056,20 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             if (!path.equals(playingPath)) {
                 playingPath = path;
                 OfflineTrack track = findByPath(path);
+                if (track == null && new File(path).isFile()) {
+                    track = OfflineTrack.load(new File(path));
+                }
                 if (track != null) applyTrackVisuals(track);
                 else miniTitle.setText(title);
 
-                int index = queuePaths.indexOf(path);
-                setButtonEnabled(miniPrevious, index > 0);
-                setButtonEnabled(miniNext, index >= 0 && index + 1 < queuePaths.size());
                 markPlayingRow();
             }
+
+            // Always evaluate Previous/Next against the active playback queue (playlist or downloads list)
+            List<String> currentQueue = activeQueuePaths.isEmpty() ? displayedTrackPaths : activeQueuePaths;
+            int index = currentQueue.indexOf(path);
+            setButtonEnabled(miniPrevious, index > 0);
+            setButtonEnabled(miniNext, index >= 0 && index + 1 < currentQueue.size());
 
             updatePlayIcon(playing, wasVisible && playing != showingPause);
             miniSeek.setMax(Math.max(1, duration));
