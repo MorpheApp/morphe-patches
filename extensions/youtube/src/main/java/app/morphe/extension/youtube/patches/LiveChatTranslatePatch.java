@@ -16,6 +16,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.Typeface;
 import android.view.View;
 import android.text.SpannableString;
@@ -23,6 +24,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
+import android.text.style.ImageSpan;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
@@ -116,6 +118,8 @@ public final class LiveChatTranslatePatch {
 
     /** How often on-screen untranslated rows are looked for. */
     private static final long VISIBLE_SCAN_DELAY_MS = 350L;
+    /** Slow rescan while the chat is open but nothing is waiting, such as a quiet chat. */
+    private static final long VISIBLE_SCAN_IDLE_DELAY_MS = 1500L;
     /** Delay used when rows are waiting on the rate limit instead of on a request already in flight. */
     private static final long VISIBLE_SCAN_SLOW_DELAY_MS = 1_200L;
 
@@ -310,6 +314,9 @@ public final class LiveChatTranslatePatch {
     private static final int COPY_BUTTON_COLOR = 0xFFAAAAAA;
     /** The button itself. A small square outline, which renders in the chat font. */
     private static final String COPY_BUTTON_TEXT = "\u29C9";
+    @Nullable
+    private static Drawable copyIcon;
+    private static boolean copyIconLoaded;
     /** Views that already carry the copy listener, so a rebind only refreshes the stored message. */
     /** Resource ids already resolved by {@link #isLiveChatId(View, int)}, so it runs once per id. */
     private static final Map<Integer, Boolean> liveChatIds = new HashMap<>();
@@ -883,14 +890,22 @@ public final class LiveChatTranslatePatch {
      *         left the chat untranslated for the rest of the session.
      */
     private static boolean isChatListGone() {
-        if (!isChatIdle()) {
-            return false;
+        // A mounted chat row means the chat is open, however long ago the last row was created.
+        // Only the timestamp was checked before, so a chat that went quiet once was treated as
+        // closed and stayed untranslated for the rest of the session.
+        for (Object[] entry : LithoRelayoutPatch.findShownTexts()) {
+            if (!(entry[1] instanceof Spanned spanned)) {
+                continue;
+            }
+            if (spanned.getSpans(0, spanned.length(), ChatRowSpan.class).length > 0) {
+                return false;
+            }
         }
-        return pendingLookups.isEmpty();
+        return true;
     }
 
     private static void scheduleVisibleScan(long delayMs) {
-        if (!Settings.LIVE_CHAT_TRANSLATE_ONLY_VISIBLE.get() || isChatIdle()) {
+        if (!Settings.LIVE_CHAT_TRANSLATE_ONLY_VISIBLE.get()) {
             return;
         }
         if (scanScheduled.compareAndSet(0, 1)) {
@@ -918,11 +933,59 @@ public final class LiveChatTranslatePatch {
         if (builder == null || message == null || message.isEmpty()) {
             return builder;
         }
+        builder.append(' ');
         final int start = builder.length();
-        builder.append(' ').append(COPY_BUTTON_TEXT);
+        // One character holds the icon. An ImageSpan replaces it, so the span still has a range.
+        builder.append('\u00A0');
         final int end = builder.length();
-        builder.setSpan(new CopyMessageSpan(message), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        final Drawable icon = copyIcon();
+        if (icon != null) {
+            final int size = copyIconSize();
+            icon.setBounds(0, 0, size, size);
+            builder.setSpan(new ImageSpan(icon, ImageSpan.ALIGN_CENTER), start, end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } else {
+            // The app always ships the icon, so this only happens if its name changed.
+            builder.append(COPY_BUTTON_TEXT);
+        }
+        builder.setSpan(new CopyMessageSpan(message), start, builder.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return builder;
+    }
+
+    /**
+     * @return The copy icon of the app, or null if it cannot be loaded. Resolved once.
+     */
+    @Nullable
+    private static Drawable copyIcon() {
+        if (copyIconLoaded) {
+            return copyIcon;
+        }
+        copyIconLoaded = true;
+        try {
+            final Context context = Utils.getContext();
+            if (context == null) {
+                return null;
+            }
+            final int id = context.getResources().getIdentifier(
+                    "morphe_yt_copy", "drawable", context.getPackageName());
+            if (id == 0) {
+                Logger.printDebug(() -> "copy icon resource not found");
+                return null;
+            }
+            final Drawable drawable = context.getDrawable(id);
+            if (drawable != null) {
+                drawable.setTint(COPY_BUTTON_COLOR);
+            }
+            copyIcon = drawable;
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "copy icon not available: " + ex);
+        }
+        return copyIcon;
+    }
+
+    private static int copyIconSize() {
+        return Math.round(14 * Utils.getContext().getResources().getDisplayMetrics().density);
     }
 
     /**
@@ -1062,6 +1125,11 @@ public final class LiveChatTranslatePatch {
             // Rows are on screen but could not be queued (rate limit or full queue). Backing off
             // keeps the scan from walking the mounted texts several times per second.
             scheduleVisibleScan(VISIBLE_SCAN_SLOW_DELAY_MS);
+        } else {
+            // Nothing to do right now, but the chat is still open. The scan keeps running slowly so
+            // a row that arrives while the chat is quiet is still picked up. Stopping here was what
+            // left the chat untranslated for the rest of the session once it went quiet once.
+            scheduleVisibleScan(VISIBLE_SCAN_IDLE_DELAY_MS);
         }
     }
 
@@ -1484,9 +1552,20 @@ public final class LiveChatTranslatePatch {
     }
 
     private static SpannableString attachPendingSpan(CharSequence baseText, PendingChatSpan pendingSpan) {
-        SpannableString spanned = baseText instanceof SpannableString s
+        final SpannableString spanned = baseText instanceof SpannableString s
                 ? new SpannableString(s)
                 : new SpannableString(baseText);
+        // The button is a span on the text, so the row shows it without being rebuilt. It is only
+        // added when the row is returned, never stored, so a row that is loaded again still starts
+        // from the text the app built and does not accumulate buttons.
+        if (Settings.LIVE_CHAT_TRANSLATE_COPY_BUTTON.get()) {
+            final SpannableStringBuilder withButton = new SpannableStringBuilder(spanned);
+            copySpans(spanned, 0, spanned.length(), withButton, 0);
+            appendCopyButton(withButton, pendingSpan.messageBody);
+            final SpannableString result = new SpannableString(withButton);
+            result.setSpan(pendingSpan, 0, result.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            return result;
+        }
         spanned.setSpan(pendingSpan, 0, spanned.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spanned;
     }
