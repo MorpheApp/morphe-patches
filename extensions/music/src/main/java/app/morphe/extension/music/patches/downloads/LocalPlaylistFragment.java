@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2528
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.music.patches.downloads;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -65,6 +72,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
     private OfflinePlaylist playlist;
     private final List<OfflineTrack> playlistTracks = new ArrayList<>();
 
+    // Reorder and drag state variables
     private boolean reorderMode;
     private int draggedIndex = -1;
     private int targetIndex = -1;
@@ -78,6 +86,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
     private LinearLayout tracksContainer;
     private Runnable onPlaylistChanged;
 
+    /** Factory method to instantiate the fragment with a specific playlist ID and callback. */
     public static LocalPlaylistFragment newInstance(String playlistId, Runnable onPlaylistChanged) {
         LocalPlaylistFragment fragment = new LocalPlaylistFragment();
         Bundle args = new Bundle();
@@ -93,6 +102,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         playlistManager = new OfflinePlaylistManager(musicRoot);
         playlistId = getArguments() != null ? getArguments().getString(ARG_PLAYLIST_ID, "") : "";
 
+        // Root layout container for the dedicated playlist screen
         LinearLayout root = new LinearLayout(getActivity());
         root.setOrientation(LinearLayout.VERTICAL);
         root.setBackgroundColor(background());
@@ -101,6 +111,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
 
         root.addView(createHeader(), new LinearLayout.LayoutParams(-1, -2));
 
+        // Scrollable container holding the list of tracks inside the playlist
         scrollView = new ScrollView(getActivity());
         tracksContainer = new LinearLayout(getActivity());
         tracksContainer.setOrientation(LinearLayout.VERTICAL);
@@ -114,6 +125,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         return root;
     }
 
+    /** Creates the top header containing back button, title, track counts, and action buttons. */
     private LinearLayout createHeader() {
         LinearLayout header = new LinearLayout(getActivity());
         header.setOrientation(LinearLayout.VERTICAL);
@@ -122,6 +134,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         LinearLayout topRow = new LinearLayout(getActivity());
         topRow.setGravity(Gravity.CENTER_VERTICAL);
 
+        // Back button or exit reorder mode trigger
         TextView backBtn = text("←", 22, foreground());
         backBtn.setPadding(0, dp(4), dp(16), dp(4));
         backBtn.setOnClickListener(v -> {
@@ -149,6 +162,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
 
         header.addView(topRow, new LinearLayout.LayoutParams(-1, -2));
 
+        // Action buttons row: Play all, Delete playlist, and Done (when reordering)
         LinearLayout actionsRow = new LinearLayout(getActivity());
         actionsRow.setGravity(Gravity.CENTER_VERTICAL);
         actionsRow.setPadding(0, dp(12), 0, 0);
@@ -176,6 +190,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         return header;
     }
 
+    /** Enables or disables track reordering mode across the playlist. */
     private void setReorderMode(boolean enabled) {
         if (this.reorderMode == enabled) return;
         this.reorderMode = enabled;
@@ -186,12 +201,14 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         refreshActionButtonsState();
     }
 
+    /** Updates the subtitle text to guide the user when reorder mode is active. */
     private void updateSubtitleText() {
         if (countView == null) return;
         String baseCount = playlistTracks.size() + (playlistTracks.size() == 1 ? " track" : " tracks");
         countView.setText(reorderMode ? baseCount + " • Drag handle to reorder" : baseCount);
     }
 
+    /** Switches between trash/remove buttons and drag handles on all rows based on reorder state. */
     private void refreshActionButtonsState() {
         for (int i = 0; i < tracksContainer.getChildCount(); i++) {
             View child = tracksContainer.getChildAt(i);
@@ -203,6 +220,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         }
     }
 
+    /** Helper to create styled pill buttons with ripple feedback. */
     private TextView actionButton(String label, boolean primary) {
         final int fg = foreground();
         TextView btn = text(label, 14, primary ? background() : fg);
@@ -222,6 +240,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         return btn;
     }
 
+    /** Reloads playlist tracks from disk and rebuilds the song list UI. */
     private void refreshPlaylistView() {
         playlist = playlistManager.getPlaylist(playlistId);
         tracksContainer.removeAllViews();
@@ -257,6 +276,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         }
     }
 
+    /** Constructs an individual track row view with artwork, metadata, remove action, and reorder handle. */
     @SuppressLint("ClickableViewAccessibility")
     private View createTrackRow(OfflineTrack track, int index) {
         LinearLayout row = new LinearLayout(getActivity());
@@ -303,11 +323,13 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         reorderBtn.setOnTouchListener((v, event) -> handleReorderTouch(row, index, event));
         row.addView(reorderBtn, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
+        // Tapping a row plays the track unless reordering is active
         row.setOnClickListener(v -> {
             if (reorderMode) return;
             playFromIndex(index);
         });
 
+        // Long-pressing any song row toggles reorder mode instantly
         row.setOnLongClickListener(v -> {
             setReorderMode(!reorderMode);
             return true;
@@ -316,6 +338,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         return row;
     }
 
+    /** Handles touch events for drag-and-drop reordering of playlist items. */
     private boolean handleReorderTouch(View draggedRow, int startIndex, MotionEvent event) {
         if (!reorderMode || playlistTracks.size() <= 1) return false;
 
@@ -336,6 +359,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
             case MotionEvent.ACTION_MOVE -> {
                 if (draggedIndex < 0) return false;
 
+                // Auto-scroll ScrollView if dragging near top or bottom edges
                 if (scrollView != null) {
                     int[] loc = new int[2];
                     scrollView.getLocationOnScreen(loc);
@@ -358,6 +382,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
                 int offsetSteps = Math.round(deltaY / rowHeight);
                 targetIndex = Math.max(0, Math.min(playlistTracks.size() - 1, draggedIndex + offsetSteps));
 
+                // Animate neighboring rows to indicate position change
                 for (int i = 0; i < tracksContainer.getChildCount(); i++) {
                     if (i == draggedIndex) continue;
                     View child = tracksContainer.getChildAt(i);
@@ -379,6 +404,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
                 draggedIndex = -1;
                 targetIndex = -1;
 
+                // Reset elevations and translations
                 for (int i = 0; i < tracksContainer.getChildCount(); i++) {
                     View child = tracksContainer.getChildAt(i);
                     child.animate().cancel();
@@ -387,6 +413,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
                 }
                 draggedRow.setBackground(rowBackground(false));
 
+                // Commit reorder changes if position changed
                 if (from != to && to >= 0 && to < playlistTracks.size()) {
                     OfflineTrack moved = playlistTracks.remove(from);
                     playlistTracks.add(to, moved);
@@ -399,6 +426,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         return false;
     }
 
+    /** Saves the newly reordered track path sequence to disk via OfflinePlaylistManager. */
     private void saveCurrentTrackOrder() {
         List<String> orderedPaths = new ArrayList<>();
         for (OfflineTrack track : playlistTracks) {
@@ -413,6 +441,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         }
     }
 
+    /** Creates the row background drawable with optional highlighting for active/dragging states. */
     private Drawable rowBackground(boolean highlighted) {
         Drawable card = highlighted
                 ? CustomDialog.createRoundedBackground(ROW_CORNER_DP, Utils.adjustColorBrightness(
@@ -422,6 +451,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
                 CustomDialog.createRoundedBackground(ROW_CORNER_DP, Color.WHITE));
     }
 
+    /** Generates a custom 3-bar drag handle icon (≡) matching the app foreground color. */
     private Drawable createDragHandleDrawable() {
         final int size = dp(24);
         final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -469,6 +499,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         };
     }
 
+    /** Removes a specific track path from the playlist metadata without deleting the underlying audio file. */
     private void removeTrackFromPlaylist(OfflineTrack track) {
         try {
             playlistManager.removeTrackPathFromPlaylist(playlistId, track.audioFile().getAbsolutePath());
@@ -480,6 +511,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         }
     }
 
+    /** Prompts the user for confirmation before deleting the playlist metadata file. */
     private void confirmDeletePlaylist() {
         String name = playlist != null ? playlist.name() : "";
         CustomDialog.create(
@@ -501,6 +533,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         ).first.show();
     }
 
+    /** Starts playing the playlist queue starting from the specified index. */
     private void playFromIndex(int startIndex) {
         if (playlistTracks.isEmpty() || startIndex < 0 || startIndex >= playlistTracks.size()) {
             Utils.showToastShort("No local tracks available in this playlist");
@@ -512,6 +545,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
             queue.add(t.audioFile().getAbsolutePath());
         }
 
+        // Sync queue with LocalDownloadsFragment so mini-player skip buttons work correctly
         LocalDownloadsFragment.setActiveQueue(queue);
 
         OfflineTrack target = playlistTracks.get(startIndex);
@@ -531,12 +565,14 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         }
     }
 
+    /** Pops this fragment off the back stack to return to the downloads screen. */
     private void closeScreen() {
         if (getFragmentManager() != null) {
             getFragmentManager().popBackStack();
         }
     }
 
+    /** Generates an artwork view with rounded corners and placeholder fallback. */
     private ImageView artworkView(@Nullable Bitmap bitmap) {
         ImageView view = new ImageView(getActivity());
         view.setBackgroundColor(Utils.adjustColorBrightness(foreground(), 0.2f));
@@ -560,6 +596,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         return view;
     }
 
+    /** Creates a standard square icon button with ripple click feedback. */
     private ImageButton icon(String drawable, String description) {
         ImageButton button = new ImageButton(getActivity());
         button.setImageDrawable(ResourceUtils.getDrawable(drawable));
@@ -572,6 +609,7 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
         return button;
     }
 
+    /** Utility helper to construct styled text views. */
     private TextView text(String value, int sp, int color) {
         TextView view = new TextView(getActivity());
         view.setText(value);
