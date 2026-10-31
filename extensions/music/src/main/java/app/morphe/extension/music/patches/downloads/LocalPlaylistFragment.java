@@ -275,6 +275,9 @@ public final class LocalPlaylistFragment extends PreferenceFragment {
             queue.add(t.audioFile().getAbsolutePath());
         }
 
+        // Sync active queue with LocalDownloadsFragment mini-player
+        LocalDownloadsFragment.setActiveQueue(queue);
+
         OfflineTrack target = playlistTracks.get(startIndex);
         try {
             Intent intent = new Intent(getActivity(), OfflinePlaybackService.class)
