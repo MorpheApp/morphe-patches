@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3899
+ * https://github.com/MorpheApp/morphe-patches/pull/4268
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -12,6 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.music.misc.playservice.is_9_30_or_greater
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -19,6 +21,16 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 // Fixes for casting through a GmsCore with Cast support.
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/CastFixesPatch;"
+
+/**
+ * Accounts without Premium cannot cast songs to audio only devices such as speakers and
+ * Chromecast Audio. The app shows a Premium dialog instead of connecting, removes songs from the
+ * queue and disconnects the session. All of these use the same account check, which is forced on.
+ */
+internal fun BytecodePatchContext.allowCastingToAudioOnlyDevices() {
+    AudioCastAccountStateChangedFingerprint.instructionMatches.first()
+        .getMethodCalled().returnEarly(true)
+}
 
 /**
  * On a phone that also has the real Play Services, its MediaRouter2 provider lists every cast
