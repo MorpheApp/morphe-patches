@@ -459,6 +459,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LIVE_CHAT_TRANSLATE_COLOR =
             new StringSetting("morphe_live_chat_translate_color", "#38BDF8",
                     parentsAll(LIVE_CHAT_TRANSLATE, LIVE_CHAT_TRANSLATE_USE_COLOR));
+    /** Shows a copy button on chat rows, so a message can be copied without a long press. */
+    public static final BooleanSetting LIVE_CHAT_TRANSLATE_COPY_BUTTON =
+            new BooleanSetting("morphe_live_chat_translate_copy_button", TRUE, parent(LIVE_CHAT_TRANSLATE));
     /** Messages longer than this are shown untranslated. Zero means no limit. */
     public static final IntegerSetting LIVE_CHAT_TRANSLATE_MAX_LENGTH =
             new IntegerSetting("morphe_live_chat_translate_max_length", 500, parent(LIVE_CHAT_TRANSLATE));

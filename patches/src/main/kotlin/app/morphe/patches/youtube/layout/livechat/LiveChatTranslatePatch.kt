@@ -72,6 +72,7 @@ val liveChatTranslatePatch = bytecodePatch(
                     TextPreference("morphe_live_chat_translate_source"),
                     TextPreference("morphe_live_chat_translate_exclude"),
                     SwitchPreference("morphe_live_chat_translate_only_visible", summary = true),
+                    SwitchPreference("morphe_live_chat_translate_copy_button", summary = true),
                     ListPreference("morphe_live_chat_translate_style"),
                     SwitchPreference("morphe_live_chat_translate_bold", summary = true),
                     SwitchPreference("morphe_live_chat_translate_use_color", summary = true),
