@@ -64,6 +64,9 @@ SETTINGS_BLOCK = """
     public static final StringSetting LIVE_CHAT_TRANSLATE_COLOR =
             new StringSetting("morphe_live_chat_translate_color", "#38BDF8",
                     parentsAll(LIVE_CHAT_TRANSLATE, LIVE_CHAT_TRANSLATE_USE_COLOR));
+    /** Shows a copy button on chat rows, so a message can be copied without a long press. */
+    public static final BooleanSetting LIVE_CHAT_TRANSLATE_COPY_BUTTON =
+            new BooleanSetting("morphe_live_chat_translate_copy_button", TRUE, parent(LIVE_CHAT_TRANSLATE));
     /** Messages longer than this are shown untranslated. Zero means no limit. */
     public static final IntegerSetting LIVE_CHAT_TRANSLATE_MAX_LENGTH =
             new IntegerSetting("morphe_live_chat_translate_max_length", 500, parent(LIVE_CHAT_TRANSLATE));
@@ -97,6 +100,8 @@ STRINGS_BLOCK = """
     <string name="morphe_live_chat_translate_style_translated_only">Translated only</string>
     <string name="morphe_live_chat_translate_style_original_and_translated">Original (translated)</string>
     <string name="morphe_live_chat_translate_style_translated_and_original">(Translated) original</string>
+    <string name="morphe_live_chat_translate_copy_button_title">Show copy message button</string>
+    <string name="morphe_live_chat_translate_copy_button_summary">Adds a small copy button to every chat message</string>
     <string name="morphe_live_chat_translate_bold_title">Bold translated text</string>
     <string name="morphe_live_chat_translate_bold_summary">Shows the translated text in bold</string>
     <string name="morphe_live_chat_translate_use_color_title">Custom translated text color</string>
