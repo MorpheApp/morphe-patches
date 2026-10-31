@@ -13,7 +13,6 @@ import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
@@ -42,7 +41,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
@@ -718,43 +716,6 @@ public final class PostTranslatePatch {
 
     // region Translation
 
-    /**
-     * @return The language the texts are translated to, as a Google Translate language code.
-     */
-    private static String getTargetLanguage() {
-        String language;
-        if (Settings.POST_TRANSLATE_LANGUAGE.isSetToDefault()) {
-            Configuration configuration = Utils.getContext().getResources().getConfiguration();
-            Locale locale = configuration.getLocales().isEmpty()
-                    ? Locale.getDefault()
-                    : configuration.getLocales().get(0);
-            language = getLanguageCode(locale);
-        } else {
-            language = Settings.POST_TRANSLATE_LANGUAGE.get();
-        }
-        return switch (language.toLowerCase(Locale.ROOT)) {
-            case "fil" -> "tl";
-            case "nb", "nn" -> "no";
-            case "in" -> "id";
-            case "iw" -> "he";
-            case "ji" -> "yi";
-            default -> language;
-        };
-    }
-
-    private static String getLanguageCode(Locale locale) {
-        String language = locale.getLanguage();
-        if ("zh".equals(language)) {
-            String country = locale.getCountry();
-            return "Hant".equals(locale.getScript()) || "TW".equals(country)
-                    || "HK".equals(country) || "MO".equals(country) ? "zh-TW" : "zh-CN";
-        }
-        if ("pt".equals(language) && "PT".equals(locale.getCountry())) {
-            return "pt-PT";
-        }
-        return language.isEmpty() ? "en" : language;
-    }
-
     private static void translate(PostText postText, Context context) {
         final String key = postText.key();
         String translation = getTranslation(key);
@@ -768,7 +729,7 @@ public final class PostTranslatePatch {
         Utils.showToastShort(str("morphe_post_translate_started"));
 
         final String original = postText.original();
-        final String language = getTargetLanguage();
+        final String language = TextTranslator.resolveLanguage(Settings.POST_TRANSLATE_LANGUAGE.get());
         Utils.runOnBackgroundThread(() -> {
             String result = null;
             try {
