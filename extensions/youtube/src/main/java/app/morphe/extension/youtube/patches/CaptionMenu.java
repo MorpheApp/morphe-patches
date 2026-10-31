@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,13 +133,17 @@ public final class CaptionMenu {
         int light = switchColor(context, "yt_ref_color_constants_baseline_opaque_white1_overlay10", 0xffe6e6e6);
         int dark = switchColor(context, "yt_ref_color_constants_baseline_opaque_black3_overlay10", 0xff272727);
         int inactive = switchColor(context, "yt_ref_color_constants_default_grey50", 0xff717171);
-        boolean lightTheme = !Utils.isDarkModeEnabled();
         int[][] states = {new int[]{android.R.attr.state_checked}, new int[0]};
         // Match the native 40x24dp glyph, including its transparent edge margins.
-        toggle.setThumbDrawable(switchShape(density, 18, 18, new ColorStateList(states,
-                new int[]{lightTheme ? light : dark, light})));
+        // Switch gives its thumb the full track height; keep the circle at its own size.
+        LayerDrawable thumb = new LayerDrawable(new Drawable[]{
+                switchShape(density, 18, 18, ColorStateList.valueOf(dark))});
+        thumb.setLayerSize(0, Math.round(18 * density), Math.round(18 * density));
+        thumb.setLayerGravity(0, Gravity.CENTER);
+        int thumbInset = Math.round(density);
+        toggle.setThumbDrawable(new InsetDrawable(thumb, thumbInset, 0, thumbInset, 0));
         GradientDrawable track = switchShape(density, 37, 22, new ColorStateList(states,
-                new int[]{lightTheme ? dark : light, inactive}));
+                new int[]{light, inactive}));
         int insetX = Math.round(1.5f * density), insetY = Math.round(density);
         toggle.setTrackDrawable(new InsetDrawable(track, insetX, insetY, insetX, insetY));
         toggle.setSwitchMinWidth(Math.round(40 * density));
