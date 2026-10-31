@@ -287,6 +287,20 @@ public final class CaptionTracks {
         return true;
     }
 
+    /** CC may reuse a cached native timeline without delivering another result callback. */
+    static synchronized boolean restoreTranslation(StableCaptionBlocks.State state) {
+        Captured captured = state.captured;
+        if (captured == null || !current(captured.track)) return false;
+        Track previous = captured.track;
+        String secondary = dualCaptionEnabled()
+                ? AutoTranslateCaptionsPatch.getLanguageKey(Settings.SECONDARY_CAPTION_LANGUAGE.get()) : null;
+        if (secondary != null && previous.translated) return false;
+        Track selected = new Track(previous.source, previous.language, secondary,
+                previous.video, previous.automatic, previous.translated);
+        attachTranslation(selected, captured.policy, state);
+        return state.translation != null && state.translation.isActive();
+    }
+
     private static void invalidateTranslation() {
         if (translatedSession != null) translatedSession.invalidate();
         translatedSession = null; translatedPolicy = null; translatedKey = null; translatedToken = null;

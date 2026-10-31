@@ -229,7 +229,8 @@ public final class StableCaptionBlocks {
                     || original == null
                     || original.size() > 1) return original;
             if (state.translation != null) {
-                if (!state.translation.isActive()) return Collections.emptyList();
+                if (!state.translation.isActive() && !CaptionTracks.restoreTranslation(state))
+                    return Collections.emptyList();
                 // Native sampling can run ahead on a worker; the player clock is main-thread only.
                 if (Utils.isCurrentlyOnMainThread()) {
                     long playbackTime = VideoInformation.getVideoTime();
