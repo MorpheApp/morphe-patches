@@ -120,16 +120,10 @@ public final class LiveChatTranslatePatch {
     private static final int WORKER_THREADS = 2;
     private static final int WORK_QUEUE_CAPACITY = 24;
     private static final long WORKER_KEEP_ALIVE_SECONDS = 30;
-    /** The endpoint limits by address, which then stalls the chat, so at most 8 requests per second. */
-    /**
-     * Gap between two requests. The public endpoint answers 429 above roughly one request per
-     * second, and a chat that is busy enough asks for more than that. A slower chat that keeps
-     * translating is better than a fast one that gets limited.
-     */
+    /** The endpoint answers 429 above about one request per second. */
     private static final long MIN_REQUEST_INTERVAL_MILLISECONDS = 700;
-    /** First wait after a failed request. Doubles per failure while the endpoint keeps failing. */
+    /** Doubles per failure, and resets after a success. */
     private static final long MIN_BACKOFF_MILLISECONDS = 5_000;
-    /** Longest wait, so a rate limit that lasts minutes is still retried. */
     private static final long MAX_BACKOFF_MILLISECONDS = 120_000;
     private static final long VISIBLE_SCAN_DELAY_MILLISECONDS = 350;
 
@@ -161,7 +155,6 @@ public final class LiveChatTranslatePatch {
     /** Guarded by {@link #requestLock}. */
     private static long nextRequestTime;
     private static volatile long retryAfterFailureTime;
-    /** Current wait after a failure, doubled on each further failure and reset on a success. */
     private static volatile long backoffMilliseconds = MIN_BACKOFF_MILLISECONDS;
 
     /** Resource id -> if its name is a live chat view. Used only on the main thread. */
@@ -829,21 +822,14 @@ public final class LiveChatTranslatePatch {
             final boolean isTranslated = !translation.isEmpty() && !translation.equalsIgnoreCase(message)
                     && (detected == null || !(detected.equalsIgnoreCase(language) || isExcludedLanguage(detected)));
             translations.put(key, isTranslated ? translation : NOT_TRANSLATED);
-            // A success means the endpoint answers again, so the next outage starts from the short
-            // wait instead of the long one.
             backoffMilliseconds = MIN_BACKOFF_MILLISECONDS;
             LithoRelayoutPatch.relayoutOutdatedTexts();
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
             Logger.printInfo(() -> "Translation was interrupted", ex);
         } catch (Exception ex) {
-            // A chat asks for many messages, so a rate limited endpoint is left alone for longer
-            // each time it answers 429. The wait doubles so the requests stop arriving at a rate
-            // the endpoint rejects, and it resets after a success.
-            //
-            // The status is read from the message: the shared translator wraps every failure in a
-            // plain exception, and its own retry is meant for a patch that sends one request and
-            // stops. This patch is the one that keeps asking, so it is the one that waits.
+            // The shared translator wraps every failure in a plain exception, so the status is read
+            // from the message. Its own retry suits a patch that asks once; this one keeps asking.
             final boolean rateLimited = isRateLimited(ex);
             final long now = System.currentTimeMillis();
             if (now >= retryAfterFailureTime) {
@@ -856,10 +842,7 @@ public final class LiveChatTranslatePatch {
         }
     }
 
-    /**
-     * @return If the failure was a rate limit. The shared translator reports the status in the
-     *         message of the exception it throws, as it wraps every failure the same way.
-     */
+    /** @return If the failure was a rate limit, which the shared translator reports in the message. */
     private static boolean isRateLimited(@Nullable Throwable throwable) {
         for (Throwable t = throwable; t != null; t = t.getCause()) {
             final String message = t.getMessage();
