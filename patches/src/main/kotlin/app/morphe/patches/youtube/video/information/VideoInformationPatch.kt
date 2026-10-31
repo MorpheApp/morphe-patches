@@ -258,7 +258,7 @@ val videoInformationPatch = bytecodePatch(
                 method.getInstruction<TwoRegisterInstruction>(index).registerA
 
             val setPlaybackSpeedMethod =
-                instructionMatches.last().instruction.getReference<MethodReference>()!!
+                instructionMatches.last().methodReference
 
             setPlaybackSpeedMethodRef = WeakReference(
                 mutableClassDefBy(
@@ -466,8 +466,8 @@ val videoInformationPatch = bytecodePatch(
         val (onQualityItemClickListenerField, setQualityField) =
             with(SetVideoQualityFingerprint) {
                 Pair(
-                    instructionMatches[0].instruction.getReference<FieldReference>()!!,
-                    instructionMatches[1].instruction.getReference<FieldReference>()!!
+                    instructionMatches[0].fieldReference,
+                    instructionMatches[1].fieldReference
                 )
             }
 
@@ -527,19 +527,19 @@ val videoInformationPatch = bytecodePatch(
             val (videoIsLiveMethodCall, channelIdMethodCall) =
                 with(getChannelIdFingerprint(playerResponseType)) {
                     Pair(
-                        instructionMatches[0].instruction.getReference<MethodReference>()!!,
-                        instructionMatches[1].instruction.getReference<MethodReference>()!!
+                        instructionMatches[0].methodReference,
+                        instructionMatches[1].methodReference
                     )
                 }
 
             val channelNameMethodCall = getChannelNameFingerprint(playerResponseType).instructionMatches.last()
-                .instruction.getReference<MethodReference>()!!
+                .methodReference
 
             // The helper this resolves through only exists in later targets, and the title is
             // only used by the minimal miniplayer, which is only rebuilt for those.
             val videoTitleInstructions = if (is_21_29_or_greater) {
                 val videoTitleMethodCall = getVideoTitleFingerprint(playerResponseType)
-                    .instructionMatches.first().instruction.getReference<MethodReference>()!!
+                    .instructionMatches.first().methodReference
 
                 """
                     invoke-interface { p1 }, $videoTitleMethodCall
@@ -638,8 +638,8 @@ internal fun addExoPlayerHooks(extensionClass: String) {
     val playbackParametersSpeedField: FieldReference
     val playbackParametersPitchField: FieldReference
     PlaybackParametersToStringFingerprint.instructionMatches.let {
-        playbackParametersSpeedField = it.first().getFieldAccessed()
-        playbackParametersPitchField = it.last().getFieldAccessed()
+        playbackParametersSpeedField = it.first().fieldReference
+        playbackParametersPitchField = it.last().fieldReference
     }
 
     val setPlaybackParametersFingerprint = getPlaybackParametersSetterFingerprint(playbackParametersType)

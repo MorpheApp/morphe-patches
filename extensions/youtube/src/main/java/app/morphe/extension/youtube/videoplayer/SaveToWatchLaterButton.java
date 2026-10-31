@@ -111,18 +111,14 @@ public class SaveToWatchLaterButton {
     }
 
     public static int addFlyoutButton(Object flyoutPanel, int nextButtonIndex, String flyoutVideoId,
-                                      boolean videoMarkedAsForKids, boolean isShortFlyout, boolean isTopFlyout) {
+                                      boolean isTopFlyout) {
         final String saveToWatchLaterButtonVideoId;
         if (!flyoutVideoId.isEmpty()) {
-            if (Settings.KIDS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
-                    videoMarkedAsForKids) {
-                saveToWatchLaterButtonVideoId = flyoutVideoId;
-            } else if (Settings.SHORTS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
-                    isShortFlyout) {
-                saveToWatchLaterButtonVideoId = flyoutVideoId;
-            } else {
-                saveToWatchLaterButtonVideoId = "";
-            }
+            // Only if the menu has no save item of the app, otherwise there are two items for the same action.
+            // The menus of playlists have no video to save.
+            saveToWatchLaterButtonVideoId = !FlyoutUtils.hasAppSaveButton() && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
+                    ? flyoutVideoId
+                    : "";
         } else if (Settings.SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
                 isTopFlyout) {
             saveToWatchLaterButtonVideoId = VideoInformation.getVideoId();
@@ -131,7 +127,7 @@ public class SaveToWatchLaterButton {
         }
 
         if (!saveToWatchLaterButtonVideoId.isEmpty()) {
-            nextButtonIndex = FlyoutUtils.addFlyoutButton(
+            nextButtonIndex = FlyoutUtils.addFlyoutSaveButton(
                     flyoutPanel,
                     saveToWatchLaterDrawable,
                     saveToWatchLaterButtonName,

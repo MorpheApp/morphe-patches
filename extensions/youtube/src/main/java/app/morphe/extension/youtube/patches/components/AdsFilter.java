@@ -14,7 +14,6 @@ import android.view.View;
 
 import java.util.List;
 
-import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
@@ -26,6 +25,7 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.youtube.patches.NavigationBarPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
 import app.morphe.extension.youtube.whitelist.WhitelistType;
@@ -44,10 +44,11 @@ public final class AdsFilter extends Filter {
             Settings.HIDE_END_SCREEN_STORE_BANNER.get();
 
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-    private static final ByteTrieSearch statementBannerSearch = new ByteTrieSearch(
-            ByteTrieSearch.convertStringsToBytes("statement_banner"));
-    private static final ByteTrieSearch yoodleSearch = new ByteTrieSearch(
-            ByteTrieSearch.convertStringsToBytes("EgliaWd5b29kbGU")); // Base64 chunk that decodes to 'bigyoodle'
+    /**
+     * Searched in every element on the main thread, see FeedVideoCardsPatch.getElementText().
+     */
+    private static final String STATEMENT_BANNER = "statement_banner";
+    private static final String YOODLE = "EgliaWd5b29kbGU"; // Base64 chunk that decodes to 'bigyoodle'
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
@@ -313,8 +314,9 @@ public final class AdsFilter extends Filter {
      */
     public static byte[] hideStatementBanner(byte[] bytes) {
         try {
-            if (statementBannerSearch.matches(bytes)) {
-                final boolean isDoodle = yoodleSearch.matches(bytes);
+            final String elementText = FeedVideoCardsPatch.getElementText(bytes);
+            if (elementText.contains(STATEMENT_BANNER)) {
+                final boolean isDoodle = elementText.contains(YOODLE);
 
                 if (isDoodle) {
                     if (Settings.HIDE_YOUTUBE_DOODLES.get()) {

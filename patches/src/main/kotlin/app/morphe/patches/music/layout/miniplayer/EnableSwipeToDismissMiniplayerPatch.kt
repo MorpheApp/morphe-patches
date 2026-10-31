@@ -65,8 +65,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
 
         val interactionLoggingSwipeField = InteractionLoggingEnumFingerprint
             .instructionMatches[1]
-            .instruction
-            .getReference<FieldReference>()!!
+            .fieldReference
 
         val widgetReferences = mutableListOf<Reference>()
         val widgetInstructionMatches = MusicActivityWidgetFingerprint.instructionMatches
@@ -226,8 +225,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
             val motionField = PlayerPageBehaviorInterceptTouchEventFingerprint
                 .instructionMatches
                 .first()
-                .instruction
-                .getReference<FieldReference>()!!
+                .fieldReference
 
             listOf(
                 PlayerPageBehaviorInterceptTouchEventFingerprint,

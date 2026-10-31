@@ -13,7 +13,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -23,7 +22,6 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AutoTranslateCaptionsPatch;"
@@ -47,9 +45,9 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
         )
 
         val labelField = CaptionTrackBuilderBuildFingerprint.instructionMatches[0]
-            .instruction.getReference<FieldReference>()!!
+            .fieldReference
         val urlField = CaptionTracksManagerAutoTranslateTracksFingerprint.instructionMatches[0]
-            .instruction.getReference<FieldReference>()!!
+            .fieldReference
 
         val setLanguageCodeMethod = CaptionTrackBuilderSetterFingerprint("Null languageCode").method
         val setUrlMethod = CaptionTrackBuilderSetterFingerprint("Null url").method

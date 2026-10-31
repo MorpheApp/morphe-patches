@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Омогући библиотеку / Филтер доњег менија</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Омогући библиотеку / Филтер доњег менија</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Унесите називе библиотека / доњег менија које желите да филтрирате, одвојене новим редовима</string>
+  <string name="morphe_hide_account_menu_downloads_title">Сакриј преуззимања</string>
   <string name="morphe_hide_album_cards_title">Сакриј картице албума</string>
   <string name="morphe_hide_album_cards_summary">Саскрива картице албума испод описа уметника</string>
   <string name="morphe_hide_artist_cards_title">Сакриј картице извођача</string>
@@ -515,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Аудио</string>
   <string name="morphe_external_downloader_quick_options">Све опције</string>
   <string name="morphe_shorts_download_flyout_button_title">Прикажи преузимање у менију Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Додаје ставку спољног менија за преузимање на плејер Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Додаје ставку за преуззимање у мени Shorts плејера</string>
   <string name="morphe_shorts_download_flyout_title">Преузми</string>
+  <string name="morphe_export_download_folder_title">Извези сачуване видео записе</string>
+  <string name="morphe_export_download_folder_summary">"Извезите у апликацији сачуване видео записе у складиште вашег уређаја помоћу искакујућег менија за преузимања. Додирните да промените фолдер за извоз
+
+Фолдер за извоз: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Фолдер за извоз</string>
+  <string name="morphe_export_download_folder_change">Промени фолдер</string>
+  <string name="morphe_export_download_folder_changed">Фолдер за извоз је промењен</string>
+  <string name="morphe_export_download_folder_reset">Фолдер за извоз је ресетован</string>
+  <string name="morphe_export_download_flyout_title">Извези на уређај</string>
+  <string name="morphe_export_download_started">Извоз видеозаписа</string>
+  <string name="morphe_export_download_progress">Извоз видео записа: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Извози видео записа</string>
+  <string name="morphe_export_download_saved">Видео запис је извезен у %s</string>
+  <string name="morphe_export_download_failed">Није било могућности да се извезе видео запис</string>
+  <string name="morphe_export_download_canceled">Извоз је отказан</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод гласовног надзора</string>
   <string name="morphe_vot_screen_summary">Учитавајте титлове видео записа наглас користећи текст у говор на уређају, синхронизовано са репродукцијом</string>
@@ -591,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">Прикажи дугме за слику у слици</string>
   <string name="morphe_pip_button_flyout_title">Прикажи мени за слику у слици</string>
   <string name="morphe_pip_button_flyout_name">Пређи на слику у слици</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Акције у режиму слике у слици</string>
+  <string name="morphe_pip_actions_screen_summary">Промени дугмад која се приказују у режиму слике у слици</string>
+  <string name="morphe_pip_action_left_title">Лево дугме</string>
+  <string name="morphe_pip_action_center_title">Средње дугме</string>
+  <string name="morphe_pip_action_right_title">Десно дугме</string>
+  <string name="morphe_pip_action_entry_default">Подразумевано</string>
+  <string name="morphe_pip_action_entry_previous">Претходни видео запис</string>
+  <string name="morphe_pip_action_entry_next">Следећи видео запис</string>
+  <string name="morphe_pip_action_entry_rewind">Врати уназад 10 секунда</string>
+  <string name="morphe_pip_action_entry_fast_forward">Пропусти унапред 10 секунда</string>
+  <string name="morphe_pip_action_entry_play_pause">Пусти/заустави</string>
+  <string name="morphe_pip_action_entry_background_playback">Репродукција у позадини</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Прикажи дугме „Пусти све”</string>
   <string name="morphe_play_all_button_summary">"Додините да бисте генерисали листу свих видео снимака са канала, додините и задржите да бисте поништили
@@ -623,10 +652,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Сачувај за касније</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Прикажи дугме Сачувај за касније у искачућем менију подешавања плејера</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Омогућава чување тренутно гледаног видео снимка у листу „Погледај касније“ из искачућег менија подешавања видеа.</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Прикажи дугме Сачувај за касније у дечијим видео снимцима</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Омогућава чување дечијих видео снимака у листу „Погледај касније“ из искачућег менија.</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Прикажи дугме „Сачувај у Погледај касније“ у искачућем менију за кратке видео снимке.</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Омогућава чување кратких видео снимака у листу „Погледај касније“ из искачућег менија.</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Преусмери „Гледај kasnije” на плејлисту</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">За касније</string>
   <string name="morphe_queue_flyout_title">Додај у Morphe ред</string>
@@ -1226,6 +1251,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube је уклонио све додатне миниплејере. Да бисте вратили више типова миниплејера, пачирајте YouTube 21.28.208 или старију верзију</string>
   <string name="morphe_miniplayer_type_title">Тип мини-плејера</string>
   <string name="morphe_miniplayer_hide_title_title">Сакриј наслов и канал</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Прошири повлачењем нагоре</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Повлачење мини-плејера нагоре проширује плејер, уместо да помера мини-плејер на врх екрана</string>
+  <string name="morphe_miniplayer_docked_title">Причвршћен мини-плејер</string>
+  <string name="morphe_miniplayer_docked_summary">Причвршћује мини-плејер за навигациону траку и стране екрана, уместо да левитира изнад њих</string>
   <string name="morphe_miniplayer_type_entry_0">Онемогућен</string>
   <string name="morphe_miniplayer_type_entry_1">Подразумеван</string>
   <string name="morphe_miniplayer_type_entry_2">Минималан</string>
@@ -1268,6 +1297,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Овај уређај не подржава Glow екран за почетак</string>
+  <string name="morphe_splash_screen_duration_title">Трајање анимације при покретању</string>
+  <string name="morphe_splash_screen_duration_summary">Колико дуго траје анимација сјаја. Додирните анимацију да бисте је прескочили</string>
   <string name="morphe_theme_color_light_title">Позадина светле теме</string>
   <string name="morphe_theme_color_light_entry_2">Бела</string>
   <string name="morphe_theme_color_light_entry_3">Material You (бела)</string>

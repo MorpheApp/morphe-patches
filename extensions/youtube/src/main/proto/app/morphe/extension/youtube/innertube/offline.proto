@@ -133,6 +133,7 @@ message OfflineExoPlayerConfig {
 
 message OfflineVideoDetails {
     optional string videoId = 1;
+    optional string title = 15;
 }
 
 message OfflineStreamingData {

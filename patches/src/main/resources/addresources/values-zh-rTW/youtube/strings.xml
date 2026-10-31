@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">啟用資料庫 / 您在底部選單中的篩選選項</string>
   <string name="morphe_hide_account_menu_filter_strings_title">啟用資料庫 / 您在底部選單中的篩選選項</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">輸入資料庫 / 您要在底部選單中篩選的名稱，以新行分隔</string>
+  <string name="morphe_hide_account_menu_downloads_title">隱藏下載</string>
   <string name="morphe_hide_album_cards_title">隱藏專輯資訊卡</string>
   <string name="morphe_hide_album_cards_summary">隱藏藝術家描述下方的專輯卡片</string>
   <string name="morphe_hide_artist_cards_title">隱藏藝人資訊卡</string>
@@ -515,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">音訊</string>
   <string name="morphe_external_downloader_quick_options">所有選項</string>
   <string name="morphe_shorts_download_flyout_button_title">在 Shorts 選單中顯示下載</string>
-  <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器中新增外部下載器的彈出式選單項目</string>
+  <string name="morphe_shorts_download_flyout_button_summary">在 Shorts 播放器的選單中新增下載項目</string>
   <string name="morphe_shorts_download_flyout_title">下載</string>
+  <string name="morphe_export_download_folder_title">匯出已儲存的影片</string>
+  <string name="morphe_export_download_folder_summary">"使用應用程式內下載彈出式選單，將應用程式內儲存的影片匯出到裝置儲存空間。點選即可更改匯出資料夾
+
+匯出資料夾：%s"</string>
+  <string name="morphe_export_download_folder_dialog_title">匯出資料夾</string>
+  <string name="morphe_export_download_folder_change">更改資料夾</string>
+  <string name="morphe_export_download_folder_changed">匯出資料夾已更改</string>
+  <string name="morphe_export_download_folder_reset">重設匯出資料夾</string>
+  <string name="morphe_export_download_flyout_title">匯出到裝置</string>
+  <string name="morphe_export_download_started">正在匯出影片</string>
+  <string name="morphe_export_download_progress">匯出影片進度： %d%%</string>
+  <string name="morphe_export_download_notification_channel">匯出影片</string>
+  <string name="morphe_export_download_saved">影片匯出進度 %s</string>
+  <string name="morphe_export_download_failed">無法匯出影片</string>
+  <string name="morphe_export_download_canceled">取消匯出</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">語音轉錄翻譯</string>
   <string name="morphe_vot_screen_summary">使用裝置上的文字轉語音功能朗讀影片字幕，並與播放同步</string>
@@ -591,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">顯示子母畫面按鈕</string>
   <string name="morphe_pip_button_flyout_title">顯示子母畫面選單</string>
   <string name="morphe_pip_button_flyout_name">切換至子母畫面</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">畫中畫操作</string>
+  <string name="morphe_pip_actions_screen_summary">更改畫中畫模式中顯示的按鈕</string>
+  <string name="morphe_pip_action_left_title">左側按鈕</string>
+  <string name="morphe_pip_action_center_title">中間按鈕</string>
+  <string name="morphe_pip_action_right_title">右側按鈕</string>
+  <string name="morphe_pip_action_entry_default">預設</string>
+  <string name="morphe_pip_action_entry_previous">上一部影片</string>
+  <string name="morphe_pip_action_entry_next">下一部影片</string>
+  <string name="morphe_pip_action_entry_rewind">返回10秒</string>
+  <string name="morphe_pip_action_entry_fast_forward">快轉10秒</string>
+  <string name="morphe_pip_action_entry_play_pause">播放/暫停</string>
+  <string name="morphe_pip_action_entry_background_playback">背景播放</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">顯示播放全部按鈕</string>
   <string name="morphe_play_all_button_summary">"點擊播放頻道中的所有影片，長按取消
@@ -623,10 +652,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">儲存至「稍後觀看」</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">在播放器設定彈出視窗中顯示「儲存以稍後觀看」按鈕</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">允許將目前觀看的影片儲存在影片設定彈出視窗的「稍後觀看」中</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">在兒童影片中顯示「稍後觀看」按鈕</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">允許將與兒童相關的影片從彈出式選單儲存到「稍後觀看」中</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">在 Shorts 彈出視窗中顯示「儲存以稍後觀看」按鈕</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">允許將 Shorts 儲存在彈出式選單的「稍後觀看」中</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">將「稍後觀看」重新導向至播放清單</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">稍後觀看</string>
   <string name="morphe_queue_flyout_title">加入 Morphe 佇列</string>
@@ -1228,6 +1253,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube 移除了所有額外的縮小播放器。若要恢復更多縮小播放器類型，請修補 YouTube 21.28.208 或更早版本</string>
   <string name="morphe_miniplayer_type_title">迷你播放器類型</string>
   <string name="morphe_miniplayer_hide_title_title">隱藏標題與頻道</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">向上滑動展開</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">向上滑動小型播放器將展開播放器，而非將小型播放器移至螢幕頂端</string>
+  <string name="morphe_miniplayer_docked_title">停靠小型播放器</string>
+  <string name="morphe_miniplayer_docked_summary">將小型播放器停靠在導覽列和螢幕兩側，而非使其懸浮在上方</string>
   <string name="morphe_miniplayer_type_entry_0">停用</string>
   <string name="morphe_miniplayer_type_entry_1">預設</string>
   <string name="morphe_miniplayer_type_entry_2">極簡</string>
@@ -1270,6 +1299,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">此裝置不支援發光啟動畫面</string>
+  <string name="morphe_splash_screen_duration_title">啟動動畫時長</string>
+  <string name="morphe_splash_screen_duration_summary">發光動畫的播放時間。點擊動畫即可跳過</string>
   <string name="morphe_theme_color_light_title">淺色主題背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>
   <string name="morphe_theme_color_light_entry_3">動態顏色（白色）</string>

@@ -769,12 +769,15 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Connected! (%2$s)</string>
     <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Connection failed. Check the settings.</string>
     <string name="morphe_music_lyrics_ai_config_status_empty_key">Enter the API key first</string>
+    <string name="morphe_music_lyrics_ai_config_test_connection">Test connection</string>
     <string name="morphe_music_lyrics_ai_config_fetching_models">Fetching models…</string>
+    <string name="morphe_music_lyrics_ai_config_fetch_models">Fetch models</string>
     <string name="morphe_music_lyrics_ai_config_fetch_models_success">Select a Model</string>
     <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Failed to fetch models. Check API key or connection.</string>
     <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
     <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
     <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
+    <string name="morphe_music_lyrics_ai_config_base_url_presets">Service presets</string>
     <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Choose a service</string>
     <string name="morphe_music_lyrics_ai_config_api_token_label">API key (optional)</string>
     <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra request body (optional JSON)</string>

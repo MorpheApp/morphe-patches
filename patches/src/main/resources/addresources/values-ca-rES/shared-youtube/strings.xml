@@ -308,8 +308,10 @@ L'ID del vídeo que Miros veu s'envia a l'API de Return YouTube Dislike, i els v
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Els \"no m\'agrada\" no estan disponibles temporalment - El límit de velocitat de l\'API del client està actiu</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API de recuperació de vots, nombre de trucades</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">No s\'han realitzat trucades de xarxa</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s trucades de xarxa realitzades</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API de recuperació de vots, nombre de temporitzadors esgotats</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Ninguna trucada de xarxa ha esgotat el temps d\'espera</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s trucades de xarxa amb temps d\'espera esgotat</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Límits de velocitat del client de l\'API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">No s\'han trobat límits de velocitat del client</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">S\'ha trobat el límit de freqüència del client %s vegades</string>

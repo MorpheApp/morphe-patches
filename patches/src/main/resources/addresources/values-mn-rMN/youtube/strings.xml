@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Бусад</string>
   <string name="morphe_settings_screen_12_video_title">Видео</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube-ийн хуучин тохиргооны дэлгэцийг сэргээх</string>
+  <string name="morphe_native_snackbar_title">Зурвасуудыг YouTube snackbar-т näyttэх</string>
+  <string name="morphe_native_snackbar_summary">Тоглуулагчийн товчлуурын баталгаагаа зэрэг Morphe-ийн зурвасууд нь popup-ын оронд YouTube snackbar-т харагдана</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Арын горимын тоглуулалтын хязгаарлалтыг авч хаяха</string>
   <string name="morphe_shorts_disable_background_playback_title">Ард фондоор тоглуулахыг идэвхгүй болгох</string>
@@ -455,6 +457,14 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_failed">Зургийг татаж авж чадсангүй</string>
   <string name="morphe_post_image_download_not_found">Энэхүү нийтлэлээс зураг олдсонгүй</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Постуудыг орчуулах</string>
+  <string name="morphe_post_translate_summary">Контент бүтээгчийн постуудыг орчуулах цэсний тохиргоог нэмнэ</string>
+  <string name="morphe_post_translate_language_title">Пост орчуулах хэл</string>
+  <string name="morphe_post_translate_flyout">Орчуулах</string>
+  <string name="morphe_post_translate_flyout_original">Эх хувийг харах</string>
+  <string name="morphe_post_translate_started">Орчуулж байна…</string>
+  <string name="morphe_post_translate_failed">Постыг орчуулж чадсангүй</string>
+  <string name="morphe_post_translate_same_language">Пост аль хэдийн орчуулга хэл дээр байна</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Дэлгэрэнгүй цэсэнд Асуух хэсгийг нэмэх</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Фидийн дэлгэрэнгүй цэсэнд видеог нэгтгэн дүгнэх хэсгийг нэмнэ</string>
@@ -504,7 +514,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Аудио</string>
   <string name="morphe_external_downloader_quick_options">Бүх сонголтууд</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts цэсэнд татаж авах товчийг харуулах</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Shorts тоглуулагчид гадаад татаж авах цэсний хэсгийг нэмнэ</string>
   <string name="morphe_shorts_download_flyout_title">Татаж авах</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Дууг орчуулах</string>
@@ -580,6 +589,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_pip_button_overlay_title">Дүрсийг дүрсийн дотор харуулах товчийг харуулах</string>
   <string name="morphe_pip_button_flyout_title">Дүрсийг дүрсийн дотор харуулах цэсийг харуулах</string>
   <string name="morphe_pip_button_flyout_name">Дүрсийг дүрсийн дотор харуулах горимд шилжих</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Бүгдийг тоглуулах товчийг харуулах</string>
   <string name="morphe_play_all_button_summary">"Сувгийн бүх видеог жагсаалтаар үүсгэхийн тулд товхлоно уу, цуцлахын тулд удаан дарна уу
@@ -612,10 +622,6 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Дараа үзэх хэсэгт хадгалах</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Тоглуулагчийн тохиргооны цэсэнд \"Дараа үзэх\" хэсэгт хадгалах товчийг харуулах</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Видео тохиргооны цэснээс одоо үзэж буй видеог \"Дараа үзэх\" хэсэгт хадгалах боломжийг олгоно</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Хүүхдийн видеонд \"Дараа үзэх хэсэгт хадгалах\" товчийг харуулах</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Цэснээс хүүхдэд зориулсан видеог \"Дараа үзэх\" хэсэгт хадгалах боломжийг олгоно</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts-ийн цэсэнд \"Дараа үзэх\" хэсэгт хадгалах товчийг харуулах</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Цэснээс Shorts-ийг \"Дараа үзэх\" хэсэгт хадгалах боломжийг олгоно</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\"Дараа үзэх\"-ийг тоглолтын жагсаалрууг шилжүүлэх</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Дараа үзэх</string>
   <string name="morphe_queue_flyout_title">Morphe дараалald нэмэх</string>
@@ -863,6 +869,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_fix_transcript_title">Тэмдэглэлийг засах</string>
   <string name="morphe_fix_transcript_summary">Тэмдэглэлийг ачаалахад саад болдог урьдчилсан шалгалтын алдааг засна</string>
   <string name="morphe_captions_in_pip_title">Дүрсэн зураг доторх хадмал гарчгийг харуулах</string>
+  <string name="morphe_stable_caption_blocks_title">Тогтвортой хадмал текстийн блокууд</string>
+  <string name="morphe_stable_caption_blocks_summary">Автомат хадмал текстийг тогтвортой, уншигдахуйц блокуудаар бүлэглэнэ. Зарим үгс хэлэгдэхээс өмнө гарч ирж болзошгүй. Дахин ачаалах шаардлагатай.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Навигацийн товчлуурууд</string>
   <string name="morphe_navigation_buttons_screen_summary">Доод навигацийн хэсэгт аль товчнуудыг харуулахыг сонгоно уу</string>
@@ -1211,6 +1219,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Аппликейшн эхлүүлэхэд гардаг YouTube Premium-ийн боломж болох \'Үргэлжлүүлэн үзэх\' минитоглуулагчийг идэвхгүй болгоно</string>
   <string name="morphe_miniplayer_screen_title">Жижиг тоглуулагч</string>
   <string name="morphe_miniplayer_screen_summary">Багассан видео тоглуулагчийн үзэмж болон үйлдлийг тохируулах</string>
+  <string name="morphe_miniplayer_not_available_title">Нэмэлт мини тоглуулагчууд</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube бүх нэмэлт мини тоглуулагчдыг устгасан. Мини тоглуулагчийн илүү олон төрлийг сэргээхийн тулд YouTube 21.28.208 эсвэл түүнээс өмнөх хувилбарыг патчлах шаардлагатай</string>
   <string name="morphe_miniplayer_type_title">Жижиг тоглуулагчийн төрөл</string>
   <string name="morphe_miniplayer_hide_title_title">Гарчиг болон сувгийг нуух</string>
   <string name="morphe_miniplayer_type_entry_0">Идэвхгүй болгосон</string>
@@ -1252,6 +1262,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_fix_status_bar_layout_summary">Статус баарыг тогтмол байлгаж, дээд хэсгийг халхлахгүй, тоглуулагчийн дээр хоосон зай үлдээхгүй болгоно. Хэрэв апп гацах эсвэл дээд хэсэг буруу харагдах бол үүнийг унтраагаарай</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Гэрэлтэл</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Энэ төхөөрөмж Glow splash screen-ийг дэмжихгүй байна</string>
   <string name="morphe_theme_color_light_title">Цайвар сэвийн арын дэвсгэр</string>
   <string name="morphe_theme_color_light_entry_2">Цагаан</string>

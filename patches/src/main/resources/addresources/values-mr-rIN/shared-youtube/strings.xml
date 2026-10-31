@@ -21,8 +21,13 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_title">स्टार्टअप ॲनिमेशन</string>
   <string name="morphe_splash_screen_style_entry_1">बंद</string>
   <string name="morphe_splash_screen_style_entry_2">रंग</string>
+  <string name="morphe_splash_screen_style_entry_3">Morphe कलर</string>
   <string name="morphe_splash_screen_style_entry_4">मोनोक्रोम</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe मोनोक्रोम</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">नवीन सेटिंग्ज हायलाइट करा</string>
+  <string name="morphe_settings_new_indicator_days_summary">अपडेटद्वारे जोडलेल्या सेटिंग्ज आणि पर्यायांच्या शेजारी किती दिवस डॉट दिसावा याची संख्या</string>
+  <string name="morphe_settings_new_indicator_days_off">बंद</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">सेटअप पूर्ण करण्यासाठी रीस्टार्ट करा</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -306,6 +311,7 @@ PotHelper डाउनलोड करण्यासाठी येथे ट�
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s नेटवर्क कॉल्स केले</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API fetch votes, टाइमआउटची संख्या</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">नेटवर्क कॉल टाइमआउट झाले नाहीत</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s नेटवर्क कॉल्सचा वेळ संपला</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API क्लायंट दर मर्यादा</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">क्लायंट दर मर्यादा आढळली नाही</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">क्लायंट रेट लिमिट %s वेळा आढळली</string>

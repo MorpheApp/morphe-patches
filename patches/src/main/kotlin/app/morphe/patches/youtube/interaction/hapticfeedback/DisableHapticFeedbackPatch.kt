@@ -10,7 +10,6 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -22,7 +21,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch;"
 
@@ -69,7 +67,7 @@ val disableHapticFeedbackPatch = bytecodePatch(
         }
 
         val vibratorField = TapAndHoldHapticsHandlerFingerprint.instructionMatches.last()
-            .instruction.getReference<FieldReference>()!!
+            .fieldReference
 
         Fingerprint(
             name = "run",

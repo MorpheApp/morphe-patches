@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Разнастайнае</string>
   <string name="morphe_settings_screen_12_video_title">Відэа</string>
   <string name="morphe_restore_old_settings_menus_title">Аднавіць стары экран налад YouTube</string>
+  <string name="morphe_native_snackbar_title">Паказваць паведамленні ў snackbar YouTube</string>
+  <string name="morphe_native_snackbar_summary">Паведамленні Morphe, такія як пацверджанне кнопкі прагравальніка, паказваюцца ў snackbar YouTube замест ўсплывальнага okна</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Выдаліць абмежаванні прайгравання ў фоне</string>
   <string name="morphe_shorts_disable_background_playback_title">Выключаць фоновы працу</string>
@@ -59,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Уключаць фільтр ніжняга меню \"Бібліятэка / Вы\"</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Фільтр ніжняга меню \"Бібліятэка / Вы\"</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Увядзіце назвы меню Бібліятэкі / ніжняга меню для фільтрацыі, аддзеленыя новымі радкамі</string>
+  <string name="morphe_hide_account_menu_downloads_title">Схаваць загрузкі</string>
   <string name="morphe_hide_album_cards_title">Схаваць карткі альбомаў</string>
   <string name="morphe_hide_album_cards_summary">Схаваць карткі альбомаў пад апісаннем выканаўцы</string>
   <string name="morphe_hide_artist_cards_title">Схаваць карткі артыстаў</string>
@@ -513,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Аудыё</string>
   <string name="morphe_external_downloader_quick_options">Усе параметры</string>
   <string name="morphe_shorts_download_flyout_button_title">Паказваць спампаваць у меню Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Дадае пункт выпадаючага меню з вонкавым загрузчыкам у плеер Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Дадае пункт загрузкі ў меню прайгравача Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Загрузіць</string>
+  <string name="morphe_export_download_folder_title">Экспартаваць захаваныя відэа</string>
+  <string name="morphe_export_download_folder_summary">"Экспартуйце відэа, захаваныя ў праграме, у памяць вашай прылады, выкарыстоўваючы выпадальнае меню загрузкі. Націсніце, каб змяніць папку экспарту
+
+Папка экспарту: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Папка экспарту</string>
+  <string name="morphe_export_download_folder_change">Змяніць папку</string>
+  <string name="morphe_export_download_folder_changed">Папку экспарту зменена</string>
+  <string name="morphe_export_download_folder_reset">Папку экспарту скінута</string>
+  <string name="morphe_export_download_flyout_title">Экспартаваць на прыладу</string>
+  <string name="morphe_export_download_started">Экспартаванне відэа</string>
+  <string name="morphe_export_download_progress">Экспартаванне відэа: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Экспарт відэа</string>
+  <string name="morphe_export_download_saved">Відэа экспартавана ў %s</string>
+  <string name="morphe_export_download_failed">Не удалося экспартаваць відэа</string>
+  <string name="morphe_export_download_canceled">Экспарт скасаваны</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Галасовы пераклад</string>
   <string name="morphe_vot_screen_summary">Чытайце субтытры відэа ўгульс з дапамогой сінтэзаўчы мовы на прыладзе, сінхранізаванага з відэазапісам</string>
@@ -589,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">Паказваць кнопку \"Карцінка ў карцінцы\"</string>
   <string name="morphe_pip_button_flyout_title">Паказваць меню \"Карцінка ў карцінцы\"</string>
   <string name="morphe_pip_button_flyout_name">Пераключыцца на режим \"Карцінка ў карцінцы\"</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Дзеянні «карцінка ў карцінцы»</string>
+  <string name="morphe_pip_actions_screen_summary">Змяніць кнопкі, якія паказваюцца ў режиме «карцінка ў карцінцы»</string>
+  <string name="morphe_pip_action_left_title">Левая кнопка</string>
+  <string name="morphe_pip_action_center_title">Цэнтрымальная кнопка</string>
+  <string name="morphe_pip_action_right_title">Правая кнопка</string>
+  <string name="morphe_pip_action_entry_default">Звычайны</string>
+  <string name="morphe_pip_action_entry_previous">Папярэдняе відэа</string>
+  <string name="morphe_pip_action_entry_next">Наступнае відэа</string>
+  <string name="morphe_pip_action_entry_rewind">Пераматываць на 10 секунд назад</string>
+  <string name="morphe_pip_action_entry_fast_forward">Пераматываць на 10 секунд наперад</string>
+  <string name="morphe_pip_action_entry_play_pause">Відtwigраваць/паўза</string>
+  <string name="morphe_pip_action_entry_background_playback">Фонічнае прайграванне</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Паказваць кнопку \"Праіграць усё\"</string>
   <string name="morphe_play_all_button_summary">"Націсніце, каб стварыць плэйліст з усіх відэа канала, націсніце і ўтрымайце, каб скасаваць
@@ -621,10 +652,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Захаваць у «Глядзець пазней»</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Паказать кнопки \"Зглядеть пазней\" у выпадаусим настройки наградки</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Дазвляе зарахить текущий видеавио у список \"Зглядеть пазней\" з настройки наградки видеавио</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Паказваць кнопку «Захаваць у «Глядзець пазней»» у дзіцячых відэа</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Дазвляе зарахить дети для детей видеавио у список \"Зглядеть пазней\" з выпадаусим меню</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Паказать кнопки \"Зглядеть пазней\" у выпадаусим шортсой</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Дазваляе захаваць Shorts у спіс \"Паглядзець пазней\" праз выпадаючае меню</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Перанакіраваць \"Глядзець пазней\" на плейліст</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Глядзець пазней</string>
   <string name="morphe_queue_flyout_title">Дадаць у чаргу Morphe</string>
@@ -1226,6 +1253,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube выдаліў усе дадатковыя мініплэеры. Каб аднавіць больш тыпаў мініплэераў, патчыце YouTube 21.28.208 або больш старую версію</string>
   <string name="morphe_miniplayer_type_title">Тып мініплэера</string>
   <string name="morphe_miniplayer_hide_title_title">Схаваць загаловак і канал</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Разгарнуць свайпам угору</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Свайп мініплэера ўгору разгарнае прайгравач замест таго, каб перамясціць мініплэер у верхнюю частку экрана</string>
+  <string name="morphe_miniplayer_docked_title">Прыклеплены мініплэер</string>
+  <string name="morphe_miniplayer_docked_summary">Прыкляпляе мініплэер да панэлі навігацыі і бакоў экрана замест таго, каб ён плаваў над імі</string>
   <string name="morphe_miniplayer_type_entry_0">Адключана</string>
   <string name="morphe_miniplayer_type_entry_1">Звычайны</string>
   <string name="morphe_miniplayer_type_entry_2">Мінімалістычны</string>
@@ -1268,6 +1299,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Гэтая прылада не падтрымлівае эфект святлення для экрана загрузкі</string>
+  <string name="morphe_splash_screen_duration_title">Трываласць анімацыі запуску</string>
+  <string name="morphe_splash_screen_duration_summary">Колькі часу працуе анімацыя святлення. Націсніце на анімацыю, каб прапусціць яе</string>
   <string name="morphe_theme_color_light_title">Фон светлай тэмы</string>
   <string name="morphe_theme_color_light_entry_2">Белы</string>
   <string name="morphe_theme_color_light_entry_3">Material You (белы)</string>

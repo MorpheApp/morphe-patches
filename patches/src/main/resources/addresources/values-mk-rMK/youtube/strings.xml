@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Разно</string>
   <string name="morphe_settings_screen_12_video_title">Видео</string>
   <string name="morphe_restore_old_settings_menus_title">Врати го стариот екран за поставки на YouTube</string>
+  <string name="morphe_native_snackbar_title">Прикажи пораки во YouTube snackbar</string>
+  <string name="morphe_native_snackbar_summary">Пораките од Morphe, како што е потврдата за копчето на играчот, се прикажуваат во YouTube snackbar-от наместо во popup прозорец</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Отстрани го оганичувањето за пуштање видеа во позадина</string>
   <string name="morphe_shorts_disable_background_playback_title">Исклучи пуштање видеа во позадина</string>
@@ -456,6 +458,14 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_failed">Не може да се преземе сликата</string>
   <string name="morphe_post_image_download_not_found">Во оваа објава нема пронајдено слики</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">Преведи објави</string>
+  <string name="morphe_post_translate_summary">Додава ставка во излетачкото мени за преведување на објави од креаторите на содржини</string>
+  <string name="morphe_post_translate_language_title">Јазик за превод на објавата</string>
+  <string name="morphe_post_translate_flyout">Преведи</string>
+  <string name="morphe_post_translate_flyout_original">Прикажи го оригиналот</string>
+  <string name="morphe_post_translate_started">Преведување…</string>
+  <string name="morphe_post_translate_failed">Не успеа преводот на објавата</string>
+  <string name="morphe_post_translate_same_language">Објавата веќе е на јазикот за превод</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Додај ставка „Прашај“ во менито</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Додава ставка за резиме на видео во менито на фидот</string>
@@ -505,7 +515,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">Аудио</string>
   <string name="morphe_external_downloader_quick_options">Сите опции</string>
   <string name="morphe_shorts_download_flyout_button_title">Прикажи преземање во менито за Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Додава ставка во искакувачкото мени за надворешен преземач во Shorts плеерот</string>
   <string name="morphe_shorts_download_flyout_title">Преземи</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод со глас</string>
@@ -581,6 +590,8 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">Прикажи копче за слика во слика</string>
   <string name="morphe_pip_button_flyout_title">Прикажи мени за слика во слика</string>
   <string name="morphe_pip_button_flyout_name">Префрли на слика во слика</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_action_entry_default">Стандардно</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Прикажи копче за репродукција на сите</string>
   <string name="morphe_play_all_button_summary">"Допрете за да генерирате листа на репродукција со сите видеа од каналот, допрете и задржете за да го поништите"</string>
@@ -611,10 +622,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Зачувај во Гледај подоцна</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Прикажи го копчето „Зачувај за подоцна“ во менито со поставки на плеерот</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Овозможува зачувување на моменталното видео во „Гледај подоцна“ од менито со поставки на видеото</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Прикажи копче Зачувај за подоцна во видеата за деца</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Овозможува зачувување на видеа поврзани со деца во „Гледај подоцна“ од искакувачкото мени</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Прикажи копче Зачувај за подоцна во искакувачкото мени за кратки видеа</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Овозможува зачувување на кратки видеа во „Гледај подоцна“ од искакувачкото мени</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Пренасочи „Гледај подоцна“ кон листа за 재생</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Гледај подоцна</string>
   <string name="morphe_queue_flyout_title">Додај во Morphe редослед</string>
@@ -862,6 +869,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">Поправете го транскриптот</string>
   <string name="morphe_fix_transcript_summary">Отстранува проблем со претходни услови што може да спречи да се вчита транскрипт</string>
   <string name="morphe_captions_in_pip_title">Прикажи написи во слика-во-слика</string>
+  <string name="morphe_stable_caption_blocks_title">Стабилни блокови на титлови</string>
+  <string name="morphe_stable_caption_blocks_summary">Групирајте ги автоматските титлови во стабилни, читливи блокови. Некои зборови може да се појават пред да бидат изговорени. Потребно е рестартирање.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Копчиња за навигација</string>
   <string name="morphe_navigation_buttons_screen_summary">Изберете кои копчиња да се појавуваат во лентата за навигација</string>
@@ -1210,6 +1219,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Го оневозможува миниплеерот „Продолжи со гледање“, функција на YouTube Premium која се појавува при стартување на апликацијата</string>
   <string name="morphe_miniplayer_screen_title">Мини-плеер</string>
   <string name="morphe_miniplayer_screen_summary">Прилагодете го изгледот и однесувањето на минимизираниот видео плеер</string>
+  <string name="morphe_miniplayer_not_available_title">Дополнителни мини-плејери</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube ги отстрани сите дополнителни мини-плејери. За да ги вратите повеќе типови на мини-плејери, пачирајте YouTube 21.28.208 или постара верзија</string>
   <string name="morphe_miniplayer_type_title">Тип на мини-плеер</string>
   <string name="morphe_miniplayer_hide_title_title">Скриј ја насловот и каналот</string>
   <string name="morphe_miniplayer_type_entry_0">Оневозможено</string>
@@ -1251,6 +1262,8 @@ Second \"item\" text"</string>
   <string name="morphe_fix_status_bar_layout_summary">Ја одржува конзистентна поставката на лентата со статус, така што таа нема да ги покрива горните ленти и нема да остави празен простор над плеерот. Исклучете го ова ако апликацијата се руши или горните ленти изгледаат погрешно</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">Сјај</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Светкавиот почетен екран не е поддржан од овој уред</string>
   <string name="morphe_theme_color_light_title">Позадина на светла тема</string>
   <string name="morphe_theme_color_light_entry_2">Бела</string>

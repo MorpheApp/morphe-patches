@@ -117,7 +117,7 @@ val hideButtonsPatch = bytecodePatch(
             it.method.apply {
                 val targetIndex = it.instructionMatches[1].index
                 val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
-                val optionalField = it.instructionMatches.last().getFieldAccessed()
+                val optionalField = it.instructionMatches.last().fieldReference
 
                 // Before this point only the inflated layout and the image view are still in use.
                 val insertIndex = targetIndex + 1

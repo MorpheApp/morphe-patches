@@ -10,24 +10,22 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.cloneParameters
-import app.morphe.patcher.util.getReference
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 /** Observe the native playlist title after inflation and model rebinding. */
 internal fun installPlaylistTitle(context: BytecodePatchContext) = with(context) {
     val titleMatch = PlaylistTitleFingerprint.match()
     val headerType = titleMatch.originalClassDef.type
     val titleStore = titleMatch.instructionMatches.last()
-    val title = titleStore.instruction.getReference<FieldReference>()!!
+    val title = titleStore.fieldReference
     val panelType = PlaylistModelDescriptionFingerprint.match().originalMethod
         .findFieldFromToString(", playlistPanel=").type
     val binding = playlistTitleBindingFingerprint(headerType, panelType).match()
-    val panel = binding.instructionMatches.single().instruction.getReference<FieldReference>()!!
+    val panel = binding.instructionMatches.single().fieldReference
 
     mutableClassDefBy(headerType).apply {
         interfaces.add(PLAYLIST_TITLE_INTERFACE)

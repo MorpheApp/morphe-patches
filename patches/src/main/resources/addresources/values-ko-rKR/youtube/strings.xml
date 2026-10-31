@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_12_video_title">동영상</string>
   <string name="morphe_restore_old_settings_menus_title">이전 YouTube 설정 메뉴 복원하기</string>
   <string name="morphe_native_snackbar_title">YouTube 스낵바에 메시지 표시하기</string>
-  <string name="morphe_native_snackbar_summary">플레이어 버튼 확인 메시지와 같은 Morphe 메시지를 팝업창 대신 YouTube 스낵바에 표시합니다</string>
+  <string name="morphe_native_snackbar_summary">플레이어 버튼 확인 메시지와 같은 Morphe 메시지를 팝업창 대신 YouTube 스낵바(팝업 메시지바)에 표시합니다</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">백그라운드 재생 제한 제거하기</string>
   <string name="morphe_shorts_disable_background_playback_title">백그라운드 재생 비활성화하기</string>
@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">\'보관함\' / \'내 페이지\' 하단 메뉴 필터 활성화하기</string>
   <string name="morphe_hide_account_menu_filter_strings_title">\'보관함\' / \'내 페이지\' 하단 메뉴 필터</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">필터링할 \'보관함\' / \'내 페이지\' 하단 메뉴 이름을 줄바꿈으로 구분하여 설정하세요</string>
+  <string name="morphe_hide_account_menu_downloads_title">\'오프라인 저장 동영상\' 숨기기</string>
   <string name="morphe_hide_album_cards_title">음악 앨범 카드 숨기기</string>
   <string name="morphe_hide_album_cards_summary">아티스트 설명 아래에서 앨범 카드를 숨깁니다</string>
   <string name="morphe_hide_artist_cards_title">아티스트 카드 숨기기</string>
@@ -158,7 +159,7 @@ Second \"item\" text"</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_player_gesture_hints_summary">\'세밀하게 보려면 위로 당기세요\', \'손가락을 떼어 취소\', \'2x\'와 같은 플레이어 제스처 중에 표시되는 힌트를 숨깁니다</string>
-  <string name="morphe_hide_snackbar_title">스낵바 숨기기</string>
+  <string name="morphe_hide_snackbar_title">스낵바 (팝업 메시지바) 숨기기</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">구독자를 위한 커뮤니티 가이드라인 숨기기</string>
   <string name="morphe_hide_sync_button_title">\'동영상에 동기화\' 버튼 숨기기</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">길게 탭하기 그라데이션 숨기기</string>
@@ -515,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">오디오</string>
   <string name="morphe_external_downloader_quick_options">모든 옵션</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts 메뉴에 다운로드 표시하기</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Shorts 플레이어에 외부 다운로더 메뉴 항목을 추가합니다</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts 플레이어 메뉴에 다운로드 항목을 추가합니다</string>
   <string name="morphe_shorts_download_flyout_title">다운로드</string>
+  <string name="morphe_export_download_folder_title">저장된 동영상 내보내기</string>
+  <string name="morphe_export_download_folder_summary">"앱 내 다운로드 메뉴를 사용하여 앱에 저장된 동영상을 기기 저장소로 내보낼 수 있습니다. 내보내기 폴더를 변경하려면 여기를 탭하세요
+
+내보내기 폴더: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">내보내기 폴더</string>
+  <string name="morphe_export_download_folder_change">폴더 변경</string>
+  <string name="morphe_export_download_folder_changed">내보내기 폴더를 변경하였습니다</string>
+  <string name="morphe_export_download_folder_reset">내보내기 폴더를 초기화하였습니다</string>
+  <string name="morphe_export_download_flyout_title">기기로 내보내기</string>
+  <string name="morphe_export_download_started">동영상을 내보내는 중</string>
+  <string name="morphe_export_download_progress">동영상을 내보내는 중: %d%%</string>
+  <string name="morphe_export_download_notification_channel">동영상 내보내기</string>
+  <string name="morphe_export_download_saved">동영상을 \'%s\'로 내보냈습니다</string>
+  <string name="morphe_export_download_failed">동영상을 내보낼 수 없습니다</string>
+  <string name="morphe_export_download_canceled">내보내기를 취소하였습니다</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">음성 번역</string>
   <string name="morphe_vot_screen_summary">기기의 텍스트 음성 변환(TTS)을 사용하여 재생에 맞춰 동기화된 동영상 자막을 읽어줍니다</string>
@@ -591,6 +607,19 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_pip_button_overlay_title">PIP 모드 버튼 표시하기</string>
   <string name="morphe_pip_button_flyout_title">PIP 모드 메뉴 표시하기</string>
   <string name="morphe_pip_button_flyout_name">PIP 모드로 전환</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">PIP 모드 작업</string>
+  <string name="morphe_pip_actions_screen_summary">PIP 모드에서 표시되는 버튼을 변경할 수 있습니다</string>
+  <string name="morphe_pip_action_left_title">왼쪽 버튼</string>
+  <string name="morphe_pip_action_center_title">가운데 버튼</string>
+  <string name="morphe_pip_action_right_title">오른쪽 버튼</string>
+  <string name="morphe_pip_action_entry_default">기본값</string>
+  <string name="morphe_pip_action_entry_previous">이전 동영상</string>
+  <string name="morphe_pip_action_entry_next">다음 동영상</string>
+  <string name="morphe_pip_action_entry_rewind">10초 되감기</string>
+  <string name="morphe_pip_action_entry_fast_forward">10초 빨리 감기</string>
+  <string name="morphe_pip_action_entry_play_pause">재생/일시정지</string>
+  <string name="morphe_pip_action_entry_background_playback">백그라운드 재생</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">모두 재생 버튼 표시하기</string>
   <string name="morphe_play_all_button_summary">"버튼을 탭하여 채널의 모든 동영상 재생목록을 생성할 수 있습니다
@@ -625,10 +654,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_save_to_watch_later_flyout_title">나중에 볼 동영상에 저장</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">플레이어 설정 메뉴에 \'나중에 볼 동영상에 저장\' 메뉴 표시하기</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">플레이어 설정 메뉴로 현재 시청 중인 동영상을 \'나중에 볼 동영상’에 저장할 수 있습니다</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Kids 동영상에 \'나중에 볼 동영상에 저장\' 메뉴 표시하기</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">피드 메뉴로 관련 동영상에 있는 Kids 동영상을 \'나중에 볼 동영상\'에 저장할 수 있습니다</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts에 \'나중에 볼 동영상에 저장\' 메뉴 표시하기</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">피드 메뉴로 Shorts를 \'나중에 볼 동영상\'에 저장할 수 있습니다</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">나중에 볼 동영상을 재생목록으로 리디렉션하기</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">나중에 볼 동영상</string>
   <string name="morphe_queue_flyout_title">Morphe 현재 재생목록에 추가</string>
@@ -1229,6 +1254,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_not_available_summary">YouTube에서 추가 미니 플레이어 기능이 모두 제거되었습니다. 다양한 유형의 미니 플레이어를 복원하려면 YouTube 21.28.208 이하 버전에 패치를 적용하세요</string>
   <string name="morphe_miniplayer_type_title">미니 플레이어 유형</string>
   <string name="morphe_miniplayer_hide_title_title">제목 및 채널 숨기기</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">위로 스와이프하여 펼치기</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">미니 플레이어를 위로 스와이프하면 화면 상단으로 이동하는 대신 플레이어가 펼쳐집니다</string>
+  <string name="morphe_miniplayer_docked_title">하단 고정 미니 플레이어</string>
+  <string name="morphe_miniplayer_docked_summary">미니 플레이어가 화면 위에 떠 있는 대신 하단바와 화면 양쪽 가장자리에 맞닿도록 고정됩니다</string>
   <string name="morphe_miniplayer_type_entry_0">사용 안함</string>
   <string name="morphe_miniplayer_type_entry_1">기본값</string>
   <string name="morphe_miniplayer_type_entry_2">최소화 1</string>
@@ -1271,6 +1300,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_splash_screen_style_entry_7">Morphe 글로우 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe 글로우 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">이 기기에서는 글로우 스플래시 화면을 지원하지 않습니다</string>
+  <string name="morphe_splash_screen_duration_title">앱 시작 애니메이션 지속 시간</string>
+  <string name="morphe_splash_screen_duration_summary">빛나는 애니메이션이 재생되는 시간을 지정하세요. 애니메이션을 건너뛰려면 탭하세요</string>
   <string name="morphe_theme_color_light_title">밝은 테마 배경 색상</string>
   <string name="morphe_theme_color_light_entry_2">하얀색</string>
   <string name="morphe_theme_color_light_entry_3">Material You (하얀색)</string>

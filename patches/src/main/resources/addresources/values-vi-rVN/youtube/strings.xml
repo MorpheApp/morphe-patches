@@ -61,6 +61,7 @@ Các thay đổi bao gồm:
   <string name="morphe_hide_account_menu_title">Bật bộ lọc menu trong thẻ Thư viện / Bạn ở dưới cùng</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Bộ lọc menu trong thẻ Thư viện / Bạn ở dưới cùng</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Nhập tên các menu trong thẻ Thư viện / Bạn mà bạn muốn lọc, mỗi dòng một menu</string>
+  <string name="morphe_hide_account_menu_downloads_title">Ẩn Tải xuống</string>
   <string name="morphe_hide_album_cards_title">Ẩn thẻ đĩa nhạc</string>
   <string name="morphe_hide_album_cards_summary">Ẩn các thẻ album bên dưới phần mô tả nghệ sĩ</string>
   <string name="morphe_hide_artist_cards_title">Ẩn thẻ nghệ sĩ</string>
@@ -515,8 +516,23 @@ Sau khi mở một video có nút Ask một lần, tính năng này hoạt độ
   <string name="morphe_external_downloader_quick_audio">Âm thanh</string>
   <string name="morphe_external_downloader_quick_options">Tất cả tùy chọn</string>
   <string name="morphe_shorts_download_flyout_button_title">Hiển thị tải xuống trong menu Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Thêm mục menu bay ngoài trình tải xuống bên thứ ba vào trình phát Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Thêm một mục tải xuống vào menu của trình phát Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Tải về</string>
+  <string name="morphe_export_download_folder_title">Xuất các video đã lưu</string>
+  <string name="morphe_export_download_folder_summary">"Xuất các video đã lưu trong ứng dụng sang bộ nhớ thiết bị bằng menu tải xuống trong ứng dụng. Nhấn để thay đổi thư mục xuất
+
+Thư mục xuất: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Thư mục xuất</string>
+  <string name="morphe_export_download_folder_change">Thay đổi thư mục</string>
+  <string name="morphe_export_download_folder_changed">Đã thay đổi thư mục xuất</string>
+  <string name="morphe_export_download_folder_reset">Đã đặt lại thư mục xuất</string>
+  <string name="morphe_export_download_flyout_title">Xuất sang thiết bị</string>
+  <string name="morphe_export_download_started">Đang xuất video</string>
+  <string name="morphe_export_download_progress">Đang xuất video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Xuất video</string>
+  <string name="morphe_export_download_saved">Video đã được xuất vào %s</string>
+  <string name="morphe_export_download_failed">Không thể xuất video</string>
+  <string name="morphe_export_download_canceled">Đã hủy xuất</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Dịch giọng nói</string>
   <string name="morphe_vot_screen_summary">Đọc to phụ đề video bằng tính năng chuyển văn bản thành giọng nói trên thiết bị, đồng bộ với video</string>
@@ -591,6 +607,19 @@ Tuyệt đối không được chia sẻ khoá API. Bởi vì, bất kỳ ai có
   <string name="morphe_pip_button_overlay_title">Hiển thị nút Hình trong hình</string>
   <string name="morphe_pip_button_flyout_title">Hiển thị menu Hình trong hình</string>
   <string name="morphe_pip_button_flyout_name">Chuyển sang Hình trong hình</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Hành động hình trong hình</string>
+  <string name="morphe_pip_actions_screen_summary">Thay đổi các nút hiển thị trong chế độ hình trong hình</string>
+  <string name="morphe_pip_action_left_title">Nút trái</string>
+  <string name="morphe_pip_action_center_title">Nút giữa</string>
+  <string name="morphe_pip_action_right_title">Nút phải</string>
+  <string name="morphe_pip_action_entry_default">Mặc định</string>
+  <string name="morphe_pip_action_entry_previous">Video trước</string>
+  <string name="morphe_pip_action_entry_next">Video tiếp theo</string>
+  <string name="morphe_pip_action_entry_rewind">Tua lại 10 giây</string>
+  <string name="morphe_pip_action_entry_fast_forward">Tua đi 10 giây</string>
+  <string name="morphe_pip_action_entry_play_pause">Phát/tạm dừng</string>
+  <string name="morphe_pip_action_entry_background_playback">Phát trong nền</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Hiện nút Phát tất cả</string>
   <string name="morphe_play_all_button_summary">"Chạm để tạo danh sách phát của tất cả các video từ kênh, nhấn giữ để hoàn tác
@@ -623,10 +652,6 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_save_to_watch_later_flyout_title">Lưu vào Xem sau</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Hiển thị nút Lưu vào Xem sau trong menu cài đặt trình phát</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Cho phép lưu video đang xem vào \'Xem sau\' từ menu cài đặt video</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Hiển thị nút Lưu vào Xem sau trong video dành cho trẻ em</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Cho phép lưu video liên quan đến trẻ em vào \'Xem sau\' từ menu bật lên</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Hiển thị nút Lưu vào Xem sau trong menu bật lên của Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Cho phép lưu Shorts vào \'Xem sau\' từ menu bật lên</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Chuyển hướng Xem sau đến danh sách phát</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Xem sau</string>
   <string name="morphe_queue_flyout_title">Thêm vào hàng chờ Morphe</string>
@@ -1228,6 +1253,10 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <string name="morphe_miniplayer_not_available_summary">YouTube đã xóa tất cả các trình phát thu nhỏ bổ sung. Để khôi phục nhiều loại trình phát thu nhỏ hơn, hãy vá YouTube 21.28.208 hoặc cũ hơn</string>
   <string name="morphe_miniplayer_type_title">Loại trình phát thu nhỏ</string>
   <string name="morphe_miniplayer_hide_title_title">Ẩn tiêu đề và kênh</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Mở rộng bằng cách vuốt lên</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Vuốt trình phát thu nhỏ lên sẽ mở rộng trình phát, thay vì di chuyển trình phát thu nhỏ lên trên cùng của màn hình</string>
+  <string name="morphe_miniplayer_docked_title">Trình phát thu nhỏ cố định</string>
+  <string name="morphe_miniplayer_docked_summary">Gắn trình phát thu nhỏ vào thanh điều hướng và các cạnh của màn hình, thay vì trôi lơ lửng phía trên chúng</string>
   <string name="morphe_miniplayer_type_entry_0">Tắt</string>
   <string name="morphe_miniplayer_type_entry_1">Mặc định</string>
   <string name="morphe_miniplayer_type_entry_2">Tối giản</string>
@@ -1270,6 +1299,8 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Màn hình chào hiệu ứng phát sáng không được hỗ trợ bởi thiết bị này</string>
+  <string name="morphe_splash_screen_duration_title">Thời lượng hoạt ảnh khởi động</string>
+  <string name="morphe_splash_screen_duration_summary">Thời lượng hoạt ảnh phát sáng. Nhấn vào hoạt ảnh để bỏ qua</string>
   <string name="morphe_theme_color_light_title">Nền chủ đề sáng</string>
   <string name="morphe_theme_color_light_entry_2">Trắng</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Trắng)</string>

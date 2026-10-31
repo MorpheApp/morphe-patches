@@ -61,6 +61,7 @@ Nogle server-side layouts kan måske ikke gå tilbage.
   <string name="morphe_hide_account_menu_title">Aktiver Bibliotek / Dit nederste menufilter</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Bibliotek / Dit nederste menufilter</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Indtast Bibliotek / Dine bundmenu navne, der skal filtreres efter, adskilt af nye linjer</string>
+  <string name="morphe_hide_account_menu_downloads_title">Skjul downloads</string>
   <string name="morphe_hide_album_cards_title">Skjul albumkort</string>
   <string name="morphe_hide_album_cards_summary">Skjuler albumkortene under kunstnerbeskrivelsen</string>
   <string name="morphe_hide_artist_cards_title">Skjul kunstnerkort</string>
@@ -513,8 +514,23 @@ Efter at en video med Ask-knappen er åbnet én gang, fungerer funktionen med al
   <string name="morphe_external_downloader_quick_audio">Lyd</string>
   <string name="morphe_external_downloader_quick_options">Alle valgmuligheder</string>
   <string name="morphe_shorts_download_flyout_button_title">Vis download i Shorts-menuen</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Tilføjer et eksternt download-menupunkt til Shorts-afspilleren</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Tilføjer et download-element til menuen i Shorts-afspilleren</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
+  <string name="morphe_export_download_folder_title">Eksporter gemte videoer</string>
+  <string name="morphe_export_download_folder_summary">"Eksporter videoer gemt i appen til din enhedslager ved hjælp af menuen til downloads i appen. Tryk for at ændre eksportermappen
+
+Eksportermappe: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Eksportermappe</string>
+  <string name="morphe_export_download_folder_change">Skift mappe</string>
+  <string name="morphe_export_download_folder_changed">Eksportermappe ændret</string>
+  <string name="morphe_export_download_folder_reset">Eksportermappe nulstillet</string>
+  <string name="morphe_export_download_flyout_title">Eksporter til enhed</string>
+  <string name="morphe_export_download_started">Eksporterer video</string>
+  <string name="morphe_export_download_progress">Eksporterer video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Videoeksport</string>
+  <string name="morphe_export_download_saved">Video eksporteret til %s</string>
+  <string name="morphe_export_download_failed">Kunne ikke eksportere videoen</string>
+  <string name="morphe_export_download_canceled">Eksportering annulleret</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tekstlæsning</string>
   <string name="morphe_vot_screen_summary">Læs videoundertitler højt ved hjælp af tekst-til-tale på enheden, synkroniseret med afspilningen</string>
@@ -589,6 +605,19 @@ Din API-nøgle bør aldrig deles. Enhver med adgang til den kan bruge dine OpenR
   <string name="morphe_pip_button_overlay_title">Vis billede-i-billede-knappen</string>
   <string name="morphe_pip_button_flyout_title">Vis billede-i-billede-menuen</string>
   <string name="morphe_pip_button_flyout_name">Skift til billede-i-billede</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Billed-i-billedde handlinger</string>
+  <string name="morphe_pip_actions_screen_summary">Skift de knapper, der vises i billed-i-billed</string>
+  <string name="morphe_pip_action_left_title">Venstre knap</string>
+  <string name="morphe_pip_action_center_title">Midterknap</string>
+  <string name="morphe_pip_action_right_title">Højre knap</string>
+  <string name="morphe_pip_action_entry_default">Standard</string>
+  <string name="morphe_pip_action_entry_previous">Forrige video</string>
+  <string name="morphe_pip_action_entry_next">Næste video</string>
+  <string name="morphe_pip_action_entry_rewind">Spol 10 sekunder tilbage</string>
+  <string name="morphe_pip_action_entry_fast_forward">Spol 10 sekunder frem</string>
+  <string name="morphe_pip_action_entry_play_pause">Afspil/pause</string>
+  <string name="morphe_pip_action_entry_background_playback">Afspilning i baggrunden</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Kræver tryk og hold, før en strygebevægelse genkendes</string>
   <string name="morphe_play_all_button_summary">"Tryk for at generere en playliste over alle videoer fra kanalen, tryk og hold for at fortryde
@@ -621,10 +650,6 @@ Info: Virker muligvis ikke på live streams"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Gem til Se senere</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Vis knappen Gem til Se senere i afspillerens indstillingsmenu</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Giver mulighed for at gemme den aktuelle video i \'Se senere\' fra videoindstillingsmenuen</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Vis knappen Gem til Se senere i børnevideoer</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Giver mulighed for at gemme børnerelaterede videoer i \'Se senere\' fra flyoutmenuen</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Vis knappen Gem til Se senere i Shorts-flyoutmenuen</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Giver mulighed for at gemme Shorts i \'Se senere\' fra flyoutmenuen</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Omdiriger Se senere til afspilningsliste</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Se senere</string>
   <string name="morphe_queue_flyout_title">Tilføj til Morphe-kø</string>
@@ -1224,6 +1249,10 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_miniplayer_not_available_summary">YouTube fjernede alle yderligere miniplayere. For at genoprette flere miniplayer-typer skal du patche YouTube 21.28.208 eller ældre</string>
   <string name="morphe_miniplayer_type_title">Type af miniplayer</string>
   <string name="morphe_miniplayer_hide_title_title">Skjul titel og kanal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Udvid med swipe op</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Hvis du swiper miniafspilleren op, udvides afspilleren, i stedet for at flytte miniafspilleren til toppen af skærmen</string>
+  <string name="morphe_miniplayer_docked_title">Fastgjort miniafspiller</string>
+  <string name="morphe_miniplayer_docked_summary">Fastgør miniafspilleren til navigationslinjen og siderne af skærmen, i stedet for at den svæver over dem</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiveret</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1266,6 +1295,8 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow-splashskærm understøttes ikke af denne enhed</string>
+  <string name="morphe_splash_screen_duration_title">Varighed af startanimation</string>
+  <string name="morphe_splash_screen_duration_summary">Hvor længe glødeanimationen afspilles. Tryk på animationen for at springe den over</string>
   <string name="morphe_theme_color_light_title">Lyst tema baggrund</string>
   <string name="morphe_theme_color_light_entry_2">Hvid</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Hvid)!</string>

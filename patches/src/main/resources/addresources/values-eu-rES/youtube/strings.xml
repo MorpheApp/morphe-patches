@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">besteak</string>
   <string name="morphe_settings_screen_12_video_title">Bideoa</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube konfigurazio-pantaila zaharra berreskuratu</string>
+  <string name="morphe_native_snackbar_title">Mezuak YouTube snackbarrean erakutsi</string>
+  <string name="morphe_native_snackbar_summary">Morphe mezuak, adibidez, sekoialdiko botoi baten berostea, popup baten ordez YouTube snackbarrean erakutsiko dira</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Kendu fondoan erreproduziteko gehikizunak</string>
   <string name="morphe_shorts_disable_background_playback_title">Desgaitu atzeko planeko erreprodukzioa</string>
@@ -60,6 +62,7 @@ Liburutegi fitxa erakusten da
   <string name="morphe_hide_account_menu_title">Aktibatu Liburutegia / Zu beheko menu-iragazkia</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Liburutegia / Zu beheko menu-iragazkia</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Sartu Library / You beheko menuen izenak filtratzeko, berriztatze-lerrekintzatituta</string>
+  <string name="morphe_hide_account_menu_downloads_title">Ezkutatu deskargak</string>
   <string name="morphe_hide_album_cards_title">Ezkutatu album-txartelak</string>
   <string name="morphe_hide_album_cards_summary">Album-txartelak ezkutatzen ditu artista-deskribapenaren azpian</string>
   <string name="morphe_hide_artist_cards_title">Ezkutatu artista-txartelak</string>
@@ -514,8 +517,23 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_external_downloader_quick_audio">Audioa</string>
   <string name="morphe_external_downloader_quick_options">Aukera guztiak</string>
   <string name="morphe_shorts_download_flyout_button_title">Erakutsi deskarga Shorts menuan</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Deskargatzaile kanpora egon menu-elementu bat gehitzen dio Shorts atariari</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Descarga-elementu bat gehitu Shorts playeren menuera</string>
   <string name="morphe_shorts_download_flyout_title">Deskargatu</string>
+  <string name="morphe_export_download_folder_title">Gorde duten bideoak exportatu</string>
+  <string name="morphe_export_download_folder_summary">"Aplikazioan gordutako bideoak zure gailuko bilbidean exportatu aplikazioko deskargak flyout menuaren bidez. Tapatu exportazio folderra aldatzeko
+
+Exportazio folderra: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportazio folderra</string>
+  <string name="morphe_export_download_folder_change">Folderra aldatu</string>
+  <string name="morphe_export_download_folder_changed">Exportazio folderra aldatuta</string>
+  <string name="morphe_export_download_folder_reset">Exportazio folderra berreratuta</string>
+  <string name="morphe_export_download_flyout_title">Gailuera exportatu</string>
+  <string name="morphe_export_download_started">Bideoa exportatzen</string>
+  <string name="morphe_export_download_progress">Bideoa exportatzen: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Bideo exportazioak</string>
+  <string name="morphe_export_download_saved">Bideoa %s ra exportatuta</string>
+  <string name="morphe_export_download_failed">Bideoa ezin izan da exportatu</string>
+  <string name="morphe_export_download_canceled">Exportazioaly bertzebe</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ahots-gain translationa</string>
   <string name="morphe_vot_screen_summary">Bideoaren azpitituluak ozen irakurri gailuaren testu-ahots sistemaren bidez, erreprodukzioarekin sinkronizatuta</string>
@@ -590,6 +608,19 @@ Zure API gakoa inoiz ez dela partekat knockout. Hura duen edozeinek zure OpenRou
   <string name="morphe_pip_button_overlay_title">Erdi-irudia botoia erakutsi</string>
   <string name="morphe_pip_button_flyout_title">Erdi-irudia menua erakutsi</string>
   <string name="morphe_pip_button_flyout_name">Erdi-irudiari aldatu</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Irudi-irudiko ekintzak</string>
+  <string name="morphe_pip_actions_screen_summary">Aldatu irudi-irudiko botoiak</string>
+  <string name="morphe_pip_action_left_title">Ezkerreko botoia</string>
+  <string name="morphe_pip_action_center_title">Erdiko botoia</string>
+  <string name="morphe_pip_action_right_title">Eskuineko botoia</string>
+  <string name="morphe_pip_action_entry_default">Lehenerakoa</string>
+  <string name="morphe_pip_action_entry_previous">Bideo aurreragokoa</string>
+  <string name="morphe_pip_action_entry_next">Hurrengo bideoa</string>
+  <string name="morphe_pip_action_entry_rewind">10 segundoko atzerakoa</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 segundoko aurrerakoa</string>
+  <string name="morphe_pip_action_entry_play_pause">Errenditzea/Kertzea</string>
+  <string name="morphe_pip_action_entry_background_playback">Atzeko planeko erreprodukzioa</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Erakutsi Denak jarrai botoia</string>
   <string name="morphe_play_all_button_summary">"Sakatu kanaleko bideo guztien zerrenda sortzeko, sakatu eta mantendu atzean uzteko
@@ -622,10 +653,6 @@ Informazioa: Agian ez funtzionatzen duen zuzeneko emanbisteetan"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Gorde geroago ikusteko</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Erakutsi \'Gero ikusteko gorde\' botoia seiatzailearen konfigurazio-menuan</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Gaur egungo bideoa \'Gero ikusteko\' gorde sailkatzailearen konfigurazio-menuatik</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Erakutsi \"Gero ikusi\"n gorde botoia haurren bideoetan</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umeen bideoak \'Gero ikusteko\' gorde menu-txikiatik</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Erakutsi \'Gero ikusteko gorde\' botoia shorts-en menu-txikian</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Shortsak \'Gero ikusi\'n gordetzea ahalbidetzen du menu txikiari bidez</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Bideratu \"Gero ikusi\" zerrendara</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Gero ikusi</string>
   <string name="morphe_queue_flyout_title">Gehitu Morphe zerrendara</string>
@@ -1227,6 +1254,10 @@ Limitazioa: 'Bideo ekintza barra zaharra berreskuratu' tắt dago bada, 'Bideo g
   <string name="morphe_miniplayer_not_available_summary">YouTube-k mini-erreproduzitzaile gehigarri guztiak kendu ditu. Mini-erreproduzitzaile mota gehiago berreskuratzeko, patchatu YouTube 21.28.208 bertsioa edo lehenagokoak</string>
   <string name="morphe_miniplayer_type_title">Mini-jokalariaren mota</string>
   <string name="morphe_miniplayer_hide_title_title">Ezkutatu izenburua eta kanala</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Zuzen goituz zabaltu</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Miniplayerra goituz, playerra zabaltzen da, miniplayerra pantailaren goiko aldera mugistean beherean</string>
+  <string name="morphe_miniplayer_docked_title">Miniplayerra finkatuta</string>
+  <string name="morphe_miniplayer_docked_summary">Miniplayerra nabigazio barrarean eta pantailaren alboetan finkatzen du, gainean flotatzen egiteko beharrean</string>
   <string name="morphe_miniplayer_type_entry_0">Desaktibatuta</string>
   <string name="morphe_miniplayer_type_entry_1">Lehenesteko</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalista</string>
@@ -1269,6 +1300,8 @@ Limitazioa: 'Bideo ekintza barra zaharra berreskuratu' tắt dago bada, 'Bideo g
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Gailu honek ez du distira duten splash screen-ak onartzen</string>
+  <string name="morphe_splash_screen_duration_title">Hasi-animazioaren iraupena</string>
+  <string name="morphe_splash_screen_duration_summary">Glow-animazioak zenbat denbora joku behar duen. Tapatu animazioa saltatzeko</string>
   <string name="morphe_theme_color_light_title">Tema argiaren atzeondoa</string>
   <string name="morphe_theme_color_light_entry_2">Zuria</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Zuria)</string>

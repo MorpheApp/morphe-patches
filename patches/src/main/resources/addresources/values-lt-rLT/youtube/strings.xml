@@ -61,6 +61,7 @@ Pakeitimai apima:
   <string name="morphe_hide_account_menu_title">Įjungti bibliotekos / „Jūs“ apatinio meniu filtrą</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Bibliotekos / „Jūs“ apatinio meniu filtras</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Įveskite bibliotekos / „Jūs“ apatinio meniu pavadinimus, pagal kuriuos filtruoti, atskirtus naujomis eilutėmis</string>
+  <string name="morphe_hide_account_menu_downloads_title">Paslėpti atsisiuntimus</string>
   <string name="morphe_hide_album_cards_title">Slėpti albumų korteles</string>
   <string name="morphe_hide_album_cards_summary">Paslepia albumų korteles po atlikėjo aprašymu</string>
   <string name="morphe_hide_artist_cards_title">Slėpti atlikėjų korteles</string>
@@ -515,8 +516,23 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <string name="morphe_external_downloader_quick_audio">Garsas</string>
   <string name="morphe_external_downloader_quick_options">Visi nustatymai</string>
   <string name="morphe_shorts_download_flyout_button_title">Rodyti atsisiuntimą „Shorts“ meniu</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Prideda išorinio atsisiuntimo įskiepio meniu punktą „Shorts“ grotuveje</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Prideda atsisiuntimo elementą į Shorts pleitoko meniu</string>
   <string name="morphe_shorts_download_flyout_title">Atsisiųsti</string>
+  <string name="morphe_export_download_folder_title">Eksportuoti išsaugotus vaizdo įrašus</string>
+  <string name="morphe_export_download_folder_summary">"Eksportuokite programėlėje išsaugotus vaizdo įrašus į savo įrenginio atmintį naudodami programėlės atsisiuntimų išsiskleidžiamąjį meniu. Bakstelėkite, kad pakeitumėte eksportavimo aplanką
+
+Eksportavimo aplankas: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Eksportavimo aplankas</string>
+  <string name="morphe_export_download_folder_change">Pakeisti aplanką</string>
+  <string name="morphe_export_download_folder_changed">Eksportavimo aplankas pakeistas</string>
+  <string name="morphe_export_download_folder_reset">Eksportavimo aplankas nustatytas iš naujo</string>
+  <string name="morphe_export_download_flyout_title">Eksportuoti į įrenginį</string>
+  <string name="morphe_export_download_started">Vaizdo įrašas eksportuojamas</string>
+  <string name="morphe_export_download_progress">Vaizdo įrašas eksportuojamas: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Vaizdo įrašų eksportavimas</string>
+  <string name="morphe_export_download_saved">Vaizdo įrašas eksportuotas į %s</string>
+  <string name="morphe_export_download_failed">Nepavyko eksportuoti vaizdo įrašo</string>
+  <string name="morphe_export_download_canceled">Eksportavimas atšauktas</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Balso vertimas</string>
   <string name="morphe_vot_screen_summary">Skaito vaizdo įrašo subtitrus garsiai naudodamas įrenginio teksto į kalbą sintezatorių, sinchronizuotą su atkūrimu</string>
@@ -591,6 +607,19 @@ Jūsų API raktas niekada neturėtų būti dalijamas. Kiekvienas, turintis priei
   <string name="morphe_pip_button_overlay_title">Rodyti „Vaizdas vaizde“ mygtuką</string>
   <string name="morphe_pip_button_flyout_title">Rodyti „Vaizdas vaizde“ meniu</string>
   <string name="morphe_pip_button_flyout_name">Perjungti į vaizdą vaizde</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">„Vaizdas vaizde“ veiksmai</string>
+  <string name="morphe_pip_actions_screen_summary">Pakeiskite mygtukus, kurie rodomi „vaizdas vaizde“ režime</string>
+  <string name="morphe_pip_action_left_title">Kairysis mygtukas</string>
+  <string name="morphe_pip_action_center_title">Centrinis mygtukas</string>
+  <string name="morphe_pip_action_right_title">Dešinys mygtukas</string>
+  <string name="morphe_pip_action_entry_default">Numatytasis</string>
+  <string name="morphe_pip_action_entry_previous">Buvęs vaizdo įrašas</string>
+  <string name="morphe_pip_action_entry_next">Kitas vaizdo įrašas</string>
+  <string name="morphe_pip_action_entry_rewind">Grąžyti 10 sekundžių</string>
+  <string name="morphe_pip_action_entry_fast_forward">Kelioti pirmyn 10 sekundžių</string>
+  <string name="morphe_pip_action_entry_play_pause">Leisti/pripildyti</string>
+  <string name="morphe_pip_action_entry_background_playback">Grota fone</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Rodyti mygtuką „Leisti viską“</string>
   <string name="morphe_play_all_button_summary">"Palietus sugeneruojamas visų kanalo vaizdo įrašų grojaraštis; palietus ir palaikius veiksmas atšaukiamas
@@ -623,10 +652,6 @@ Informacija: gali neveikti tiesioginių transliacijų atveju"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Išsaugoti žiūrėti vėliau</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Rodyti „Išsaugoti žiūrėti vėliau“ mygtuką grotuvo nustatymų iškylančiajame meniu</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Leidžia išsaugoti šiuo metu žiūrimą vaizdo įrašą sąraše „Žiūrėti vėliau“ iš vaizdo įrašo nustatymų iškylančiojo meniu</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Rodyti mygtuką „Išsaugoti žiūrėti vėliau“ vaikų vaizdo įrašuose</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Leidžia išsaugoti su vaikais susijusius vaizdo įrašus sąraše „Žiūrėti vėliau“ iš iškylančiojo meniu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Rodyti „Išsaugoti žiūrėti vėliau“ mygtuką „Shorts“ iškylančiajame meniu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Leidžia išsaugoti „Shorts“ įrašus sąraše „Žiūrėti vėliau“ iš iškylančiojo meniu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Per nukreipti „Žiūrėti vėliau“ į playlistą</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Žiūrėti vėliau</string>
   <string name="morphe_queue_flyout_title">Pridėti į Morphe eilę</string>
@@ -1228,6 +1253,10 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <string name="morphe_miniplayer_not_available_summary">YouTube pašalino visus papildomus minižaidalus. Norėdami atstatyti daugiau minižaidalų tipų, pakeiskite YouTube 21.28.208 arba senesnę versiją</string>
   <string name="morphe_miniplayer_type_title">Mini grotuvo tipas</string>
   <string name="morphe_miniplayer_hide_title_title">Slėpti pavadinimą ir kanalą</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Išplėsti braukiant į viršų</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Braukštelėjus mini-pleitokiu į viršų, išplečiamas pleitokas, o ne perkeliama mini-pleitokas į ekrano viršų</string>
+  <string name="morphe_miniplayer_docked_title">Pridėtas mini-pleitokas</string>
+  <string name="morphe_miniplayer_docked_summary">Prisijungia mini-pleitoką prie navigacijos juostos ir ekrano šonų, vietoj to, kad jis plaukiotų virš jų</string>
   <string name="morphe_miniplayer_type_entry_0">Išjungta</string>
   <string name="morphe_miniplayer_type_entry_1">Numatyta</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalus</string>
@@ -1270,6 +1299,8 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Šis įrenginys nepalaiko švytinčio įvadimo ekrano stiliaus</string>
+  <string name="morphe_splash_screen_duration_title">Paleidimo animacijos trukmė</string>
+  <string name="morphe_splash_screen_duration_summary">Kiek truks švytėjimo animacija. Bakstelėkite animaciją, kad ją praleidimo</string>
   <string name="morphe_theme_color_light_title">Šviesios temos fonas</string>
   <string name="morphe_theme_color_light_entry_2">Balta</string>
   <string name="morphe_theme_color_light_entry_3">Material You (balta)</string>

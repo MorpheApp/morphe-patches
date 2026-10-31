@@ -51,6 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Uključi Knjižnicu / Filter donjeg izbornika</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Knjiga / Filter donjeg izbornika</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Unesite nazive izbornika Knjižnice / Donjeg izbornika za filtriranje, odvojene novim redcima</string>
+  <string name="morphe_hide_account_menu_downloads_title">Sakrij preuzimanja</string>
   <string name="morphe_hide_album_cards_title">Sakrij kartice albuma</string>
   <string name="morphe_hide_album_cards_summary">Skriva kartice albuma ispod opisa izvođača</string>
   <string name="morphe_hide_artist_cards_title">Sakrij kartice izvođača</string>
@@ -505,8 +506,23 @@ Nakon što se jednom otvori video s gumbom Ask, funkcija radi sa svim videima, �
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Sve opcije</string>
   <string name="morphe_shorts_download_flyout_button_title">Prikaži preuzimanje u Shorts izborniku</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Dodaje stavku izbornika za vanjski preuzimač u Shorts player</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Dodaje stavku za preuzimanje u izbornik Shorts playera</string>
   <string name="morphe_shorts_download_flyout_title">Preuzmi</string>
+  <string name="morphe_export_download_folder_title">Izvezi spremljene videozapise</string>
+  <string name="morphe_export_download_folder_summary">"Izvezite u aplikaciji spremljene videozapise u pohralište vašeg uređaja koristeći izbornik za preuzimanja u aplikaciji. Dodirnite za promjenu mape za izvoz
+
+Mapa za izvoz: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Mapa za izvoz</string>
+  <string name="morphe_export_download_folder_change">Promijeni mapu</string>
+  <string name="morphe_export_download_folder_changed">Mapa za izvoz promijenjena</string>
+  <string name="morphe_export_download_folder_reset">Mapa za izvoz resetirana</string>
+  <string name="morphe_export_download_flyout_title">Izvezi na uređaj</string>
+  <string name="morphe_export_download_started">Izvoz videozapisa</string>
+  <string name="morphe_export_download_progress">Izvoz videozapisa: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Izvozi videozapisa</string>
+  <string name="morphe_export_download_saved">Videozapis izvezen u %s</string>
+  <string name="morphe_export_download_failed">Nije bilo moguće izvesti videozapis</string>
+  <string name="morphe_export_download_canceled">Izvoz otkazan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Prevođenje glasom</string>
   <string name="morphe_vot_screen_summary">Čitaj titlove videozapisa naglas koristeći uređajni text-to-speech, sinkronizirano s reprodukcijom</string>
@@ -581,6 +597,19 @@ Vaš API ključ nikada ne smijete dijeliti. Bilo tko s pristupom njemu može kor
   <string name="morphe_pip_button_overlay_title">Prikaži gumb za sliku u slici</string>
   <string name="morphe_pip_button_flyout_title">Prikaži izbornik za sliku u slici</string>
   <string name="morphe_pip_button_flyout_name">Prebaci na sliku u slici</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Radnje slika-u-slici</string>
+  <string name="morphe_pip_actions_screen_summary">Promijenite tipke koje se prikazuju u načinu slika-u-slici</string>
+  <string name="morphe_pip_action_left_title">Lijeva tipka</string>
+  <string name="morphe_pip_action_center_title">Središnja tipka</string>
+  <string name="morphe_pip_action_right_title">Desna tipka</string>
+  <string name="morphe_pip_action_entry_default">Zadano</string>
+  <string name="morphe_pip_action_entry_previous">Prethodni videozapis</string>
+  <string name="morphe_pip_action_entry_next">Sljedeći videozapis</string>
+  <string name="morphe_pip_action_entry_rewind">Premotaj 10 sekundi unatrag</string>
+  <string name="morphe_pip_action_entry_fast_forward">Premotaj 10 sekundi unaprijed</string>
+  <string name="morphe_pip_action_entry_play_pause">Reproduciraj/zaustavi</string>
+  <string name="morphe_pip_action_entry_background_playback">Reprodukcija u pozadini</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Prikaži tipku Reproduciraj sve</string>
   <string name="morphe_play_all_button_summary">"Dodirnite za generiranje popisa pjesama, dodirnite i držite da biste poništili
@@ -613,10 +642,6 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Spremi za kasnije gledanje</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Prikaži gumb Spremi u popis \'Pogledaj kasnije\' u skočnom izborniku postavki playera</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Omogućuje spremanje trenutačno prikazanog videozapisa u \'Pogledaj kasnije\' iz skočnog izbornika postavki videa.</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Prikaži tipku Spremi za kasnije gledanje u dječjim videozapisima</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Omogućuje spremanje videozapisa za djecu u \"Gledaj kasnije\" iz skočnog izbornika</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Prikaži tipku Spremi za kasnije gledanje u skočnom izborniku za Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Omogućuje spremanje Shorts videozapisa u \"Gledaj kasnije\" iz skočnog izbornika</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Preusmjeri \"Gledaj kasnije\" na popis za reprodukciju</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Gledaj kasnije</string>
   <string name="morphe_queue_flyout_title">Dodaj u Morphe red čekanja</string>
@@ -1216,6 +1241,10 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_miniplayer_not_available_summary">YouTube je uklonio sve dodatne miniplayere. Kako biste vratili više vrsta miniplayera, zakrpite YouTube 21.28.208 ili stariju verziju</string>
   <string name="morphe_miniplayer_type_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_hide_title_title">Sakrij naslov i kanal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Proširi povlačenjem prema gore</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Povlačenje minimiziranog playera prema gore proširuje player, umjesto pomicanja minimiziranog playera na vrh zaslona</string>
+  <string name="morphe_miniplayer_docked_title">Pridružen minimizirani player</string>
+  <string name="morphe_miniplayer_docked_summary">Pridruži minimizirani player navigacijskoj traci i rubovima zaslona, umjesto da lebdi iznad njih</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućeno</string>
   <string name="morphe_miniplayer_type_entry_1">Zadano</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalno</string>
@@ -1258,6 +1287,8 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Ovaj uređaj ne podržava Glow zaslon s početnim prikazom</string>
+  <string name="morphe_splash_screen_duration_title">Trajanje animacije pokretanja</string>
+  <string name="morphe_splash_screen_duration_summary">Koliko dugo traje animacija sjaja. Dodirnite animaciju kako biste je preskočili</string>
   <string name="morphe_theme_color_light_title">Boja pozadine u svijetloj temi</string>
   <string name="morphe_theme_color_light_entry_2">Bijela</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Bijela)</string>

@@ -713,12 +713,15 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Повезано! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Веза није успостављена. Проверите подешавања.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Унесите API кључ прво</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Тестирај везу</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Преузимање модела…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Преузми моделе</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Изаберите модел</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Неуспешно преузимање модела. Проверите API кључ или повезивање.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Позив</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Модел</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Базни URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Пресети за услугу</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Изаберите услугу</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API кључ (опционо)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Додатно тело захтева (опционо JSON)</string>

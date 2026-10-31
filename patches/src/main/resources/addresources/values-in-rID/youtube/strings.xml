@@ -61,6 +61,7 @@ Perubahan mencakup:
   <string name="morphe_hide_account_menu_title">Aktifkan penyaring menu bawah Koleksi / Anda</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Penyaring menu bawah Koleksi / Anda</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Masukkan nama menu Koleksi / Anda yang ingin disaring, dipisahkan oleh baris baru</string>
+  <string name="morphe_hide_account_menu_downloads_title">Sembunyikan Download</string>
   <string name="morphe_hide_album_cards_title">Sembunyikan kartu album</string>
   <string name="morphe_hide_album_cards_summary">Menyembunyikan kartu album di bawah deskripsi artis</string>
   <string name="morphe_hide_artist_cards_title">Sembunyikan kartu artis</string>
@@ -515,8 +516,23 @@ Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk se
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Semua opsi</string>
   <string name="morphe_shorts_download_flyout_button_title">Tampilkan download di menu Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Menambahkan item menu flyout pengunduh eksternal ke pemutar Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Menambahkan item download ke menu pemutar Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
+  <string name="morphe_export_download_folder_title">Ekspor video yang disimpan</string>
+  <string name="morphe_export_download_folder_summary">"Ekspor video yang disimpan di dalam aplikasi ke penyimpanan perangkat Anda menggunakan menu flyout unduhan dalam aplikasi. Ketuk untuk mengganti folder ekspor
+
+Folder ekspor: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Folder ekspor</string>
+  <string name="morphe_export_download_folder_change">Ganti folder</string>
+  <string name="morphe_export_download_folder_changed">Folder ekspor diganti</string>
+  <string name="morphe_export_download_folder_reset">Atur ulang folder ekspor</string>
+  <string name="morphe_export_download_flyout_title">Ekspor ke perangkat</string>
+  <string name="morphe_export_download_started">Mengekspor video</string>
+  <string name="morphe_export_download_progress">Mengekspor video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Ekspor video</string>
+  <string name="morphe_export_download_saved">Video diekspor ke %s</string>
+  <string name="morphe_export_download_failed">Tidak dapat mengekspor video</string>
+  <string name="morphe_export_download_canceled">Ekspor dibatalkan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Terjemahan sulih suara</string>
   <string name="morphe_vot_screen_summary">Baca teks keterangan video dengan suara keras menggunakan fitur text-to-speech bawaan perangkat, yang disinkronkan dengan pemutaran video</string>
@@ -591,6 +607,19 @@ Kunci API Anda tidak boleh dibagikan. Siapa pun yang memiliki akses ke kunci ter
   <string name="morphe_pip_button_overlay_title">Tampilkan tombol Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Tampilkan menu Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_name">Beralih ke Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Tindakan gambar-dalam-gambar</string>
+  <string name="morphe_pip_actions_screen_summary">Ubah tombol yang ditampilkan dalam gambar-dalam-gambar</string>
+  <string name="morphe_pip_action_left_title">Tombol kiri</string>
+  <string name="morphe_pip_action_center_title">Tombol tengah</string>
+  <string name="morphe_pip_action_right_title">Tombol kanan</string>
+  <string name="morphe_pip_action_entry_default">Bawaan</string>
+  <string name="morphe_pip_action_entry_previous">Video sebelumnya</string>
+  <string name="morphe_pip_action_entry_next">Video berikutnya</string>
+  <string name="morphe_pip_action_entry_rewind">Mundur 10 detik</string>
+  <string name="morphe_pip_action_entry_fast_forward">Maju cepat 10 detik</string>
+  <string name="morphe_pip_action_entry_play_pause">Putar/jeda</string>
+  <string name="morphe_pip_action_entry_background_playback">Pemutaran latar belakang</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Tampilkan tombol Putar semua</string>
   <string name="morphe_play_all_button_summary">"Ketuk untuk membuat daftar putar dari semua video dari saluran, ketuk dan tahan untuk membatalkan
@@ -623,10 +652,6 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Simpan ke Tonton Nanti</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Tampilkan tombol Simpan ke Tonton Nanti di flyout setelan pemutar</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Memungkinkan Anda menyimpan video yang sedang ditonton ke \'Tonton Nanti\' melalui flyout setelan video.</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Tampilkan tombol Simpan ke Tonton Nanti di video anak-anak</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Memungkinkan Anda menyimpan video terkait anak-anak ke \'Tonton Nanti\' melalui menu flyout.</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Tampilkan tombol Simpan ke Tonton Nanti di flyout Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Memungkinkan Anda menyimpan Shorts ke \'Tonton Nanti\' melalui menu flyout.</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Alihkan Tonton nanti ke daftar putar</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Tonton nanti</string>
   <string name="morphe_queue_flyout_title">Tambahkan ke antrean Morphe</string>
@@ -1227,6 +1252,10 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_miniplayer_not_available_summary">YouTube telah menghapus semua pemutar mini tambahan. Untuk mengembalikan lebih banyak jenis pemutar mini, terapkan tambalan pada YouTube 21.28.208 atau yang lebih lama</string>
   <string name="morphe_miniplayer_type_title">Jenis pemutar mini</string>
   <string name="morphe_miniplayer_hide_title_title">Sembunyikan judul dan saluran</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Perluas dengan usapan ke atas</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Mengusap miniplayer ke atas akan memperluas pemutar, alih-alih memindahkan miniplayer ke bagian atas layar</string>
+  <string name="morphe_miniplayer_docked_title">Miniplayer tertambat</string>
+  <string name="morphe_miniplayer_docked_summary">Menempelkan miniplayer ke bilah navigasi dan sisi layar, alih-alih mengapung di atasnya</string>
   <string name="morphe_miniplayer_type_entry_0">Dinonaktifkan</string>
   <string name="morphe_miniplayer_type_entry_1">Bawaan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1269,6 +1298,8 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Layar splash glow tidak didukung oleh perangkat ini</string>
+  <string name="morphe_splash_screen_duration_title">Durasi animasi startup</string>
+  <string name="morphe_splash_screen_duration_summary">Berapa lama animasi glow diputar. Ketuk animasi untuk melewatinya</string>
   <string name="morphe_theme_color_light_title">Latar belakang tema terang</string>
   <string name="morphe_theme_color_light_entry_2">Putih</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Putih)</string>

@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">เปิดใช้งานตัวกรองเมนูด้านล่าง คลัง / คุณ</string>
   <string name="morphe_hide_account_menu_filter_strings_title">ตัวกรองเมนูด้านล่าง คลัง / คุณ</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">ป้อนชื่อเมนูด้านล่างคลัง / คุณที่คุณต้องการกรอง คั่นด้วยบรรทัดใหม่</string>
+  <string name="morphe_hide_account_menu_downloads_title">ซ่อนรายการดาวน์โหลด</string>
   <string name="morphe_hide_album_cards_title">ซ่อนการ์ดอัลบั้ม</string>
   <string name="morphe_hide_album_cards_summary">ซ่อนการ์ดอัลบั้มภายใต้คำอธิบายของศิลปิน</string>
   <string name="morphe_hide_artist_cards_title">ซ่อนการ์ดศิลปิน</string>
@@ -515,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">เสียง</string>
   <string name="morphe_external_downloader_quick_options">ตัวเลือกทั้งหมด</string>
   <string name="morphe_shorts_download_flyout_button_title">แสดงการดาวน์โหลดในเมนู Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">เพิ่มรายการเมนู Flyout ของโปรแกรมดาวน์โหลดภายนอกในตัวเล่น Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">เพิ่มรายการดาวน์โหลดลงในเมนูของเครื่องเล่น Shorts</string>
   <string name="morphe_shorts_download_flyout_title">ดาวน์โหลด</string>
+  <string name="morphe_export_download_folder_title">ส่งออกวิดีโอที่บันทึกไว้</string>
+  <string name="morphe_export_download_folder_summary">"ส่งออกวิดีโอที่บันทึกไว้ในแอปไปยังที่เก็บข้อมูลในอุปกรณ์ของคุณโดยใช้เมนูดาวน์โหลดในแอป แตะเพื่อเปลี่ยนโฟลเดอร์ส่งออก
+
+โฟลเดอร์ส่งออก: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">โฟลเดอร์ส่งออก</string>
+  <string name="morphe_export_download_folder_change">เปลี่ยนโฟลเดอร์</string>
+  <string name="morphe_export_download_folder_changed">เปลี่ยนโฟลเดอร์ส่งออกแล้ว</string>
+  <string name="morphe_export_download_folder_reset">รีเซ็ตโฟลเดอร์ส่งออก</string>
+  <string name="morphe_export_download_flyout_title">ส่งออกไปยังอุปกรณ์</string>
+  <string name="morphe_export_download_started">กำลังส่งออกวิดีโอ</string>
+  <string name="morphe_export_download_progress">กำลังส่งออกวิดีโอ: %d%%</string>
+  <string name="morphe_export_download_notification_channel">การส่งออกวิดีโอ</string>
+  <string name="morphe_export_download_saved">ส่งออกวิดีโอไปยัง %s แล้ว</string>
+  <string name="morphe_export_download_failed">ไม่สามารถส่งออกวิดีโอได้</string>
+  <string name="morphe_export_download_canceled">ยกเลิกการส่งออก</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">การแปลเสียงบรรยาย</string>
   <string name="morphe_vot_screen_summary">อ่านคำบรรยายวิดีโอออกเสียงด้วยระบบแปลงข้อความเป็นเสียงบนอุปกรณ์ โดยซิงโครไนซ์กับการเล่น</string>
@@ -591,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">แสดงปุ่มภาพซ้อนภาพ</string>
   <string name="morphe_pip_button_flyout_title">แสดงเมนูภาพซ้อนภาพ</string>
   <string name="morphe_pip_button_flyout_name">สลับไปยังภาพซ้อนภาพ</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">การดำเนินการของภาพซ้อนภาพ</string>
+  <string name="morphe_pip_actions_screen_summary">เปลี่ยนปุ่มที่แสดงในโหมดภาพซ้อนภาพ</string>
+  <string name="morphe_pip_action_left_title">ปุ่มซ้าย</string>
+  <string name="morphe_pip_action_center_title">ปุ่มกลาง</string>
+  <string name="morphe_pip_action_right_title">ปุ่มขวา</string>
+  <string name="morphe_pip_action_entry_default">ค่าเริ่มต้นThe</string>
+  <string name="morphe_pip_action_entry_previous">วิดีโอก่อนหน้า</string>
+  <string name="morphe_pip_action_entry_next">วิดีโอถัดไป</string>
+  <string name="morphe_pip_action_entry_rewind">ย้อนกลับ 10 วินาที</string>
+  <string name="morphe_pip_action_entry_fast_forward">กรอไปข้างหน้า 10 วินาที</string>
+  <string name="morphe_pip_action_entry_play_pause">เล่น/หยุดชั่วคราว</string>
+  <string name="morphe_pip_action_entry_background_playback">การเล่นพื้นหลัง</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">แสดงปุ่มเล่นทั้งหมด</string>
   <string name="morphe_play_all_button_summary">"แตะเพื่อสร้างเพลย์ลิสต์ของวิดีโอทั้งหมดจากช่อง แตะค้างเพื่อยกเลิก
@@ -623,10 +652,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">บันทึกไปยังดูภายหลัง</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">แสดงปุ่มบันทึกไปยังดูภายหลังในเมนูการตั้งค่าเครื่องเล่น</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">อนุญาตให้บันทึกวิดีโอที่กำลังดูอยู่ไว้ใน \'ดูภายหลัง\' จากเมนูการตั้งค่าวิดีโอ</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">แสดงปุ่ม \'บันทึกไปยังดูภายหลัง\' ในวิดีโอสำหรับเด็ก</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">อนุญาตให้บันทึกวิดีโอที่เกี่ยวข้องกับเด็กไว้ใน \'ดูภายหลัง\' จากเมนูแบบเลื่อนออก</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">แสดงปุ่มบันทึกไปยังดูภายหลังในเมนูแบบเลื่อนออกของ Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">อนุญาตให้บันทึก Shorts ไว้ใน \'ดูภายหลัง\' จากเมนูแบบเลื่อนออก</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">เปลี่ยนเส้นทาง \"ดูภายหลัง\" ไปยังเพลย์ลิสต์</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">ดูต่อภายหลัง</string>
   <string name="morphe_queue_flyout_title">เพิ่มลงในคิว Morphe</string>
@@ -1228,6 +1253,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube ได้ลบมินิเพลเยอร์เพิ่มเติมทั้งหมดออกแล้ว หากต้องการคืนค่าประเภทมินิเพลเยอร์เพิ่มเติม โปรดลงแพตช์ YouTube เวอร์ชัน 21.28.208 หรือเก่ากว่า</string>
   <string name="morphe_miniplayer_type_title">ประเภทของมินิเพลเยอร์</string>
   <string name="morphe_miniplayer_hide_title_title">ซ่อนชื่อและช่อง</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">ขยายด้วยการปัดขึ้น</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">การปัดเครื่องเล่นย่อขนาดขึ้นจะขยายเครื่องเล่น แทนที่จะเป็นการย้ายเครื่องเล่นย่อขนาดไปที่ด้านบนของหน้าจอ</string>
+  <string name="morphe_miniplayer_docked_title">เครื่องเล่นย่อขนาดแบบยึด</string>
+  <string name="morphe_miniplayer_docked_summary">ยึดเครื่องเล่นย่อขนาดเข้ากับแถบนำทางและด้านข้างของหน้าจอ แทนที่จะลอยอยู่เหนือสิ่งเหล่านั้น</string>
   <string name="morphe_miniplayer_type_entry_0">ปิดการใช้งานอยู่</string>
   <string name="morphe_miniplayer_type_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_miniplayer_type_entry_2">น้อยที่สุด</string>
@@ -1270,6 +1299,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">อุปกรณ์นี้ไม่รองรับหน้าจอเปิดตัวแบบเรืองแสง</string>
+  <string name="morphe_splash_screen_duration_title">ระยะเวลาแอนิเมชันเริ่มต้น</string>
+  <string name="morphe_splash_screen_duration_summary">ระยะเวลาที่แอนิเมชันเรืองแสงจะเล่น แตะที่แอนิเมชันเพื่อข้าม</string>
   <string name="morphe_theme_color_light_title">พื้นหลังธีมสว่าง</string>
   <string name="morphe_theme_color_light_entry_2">สีขาว</string>
   <string name="morphe_theme_color_light_entry_3">Material You (สีขาว)</string>

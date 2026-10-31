@@ -41,7 +41,7 @@ internal val translatedCaptionPensPatch = bytecodePatch(
         // The track is set from the request being parsed and not from the last requested url,
         // because cached tracks are parsed without a new request.
         CaptionFileParserFingerprint.let {
-            val trackField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
+            val trackField = it.instructionMatches[1].fieldReference
 
             mutableClassDefBy(trackField.definingClass).apply {
                 interfaces.add(EXTENSION_CAPTION_REQUEST_INTERFACE)

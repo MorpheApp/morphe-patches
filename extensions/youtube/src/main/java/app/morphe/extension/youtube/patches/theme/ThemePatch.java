@@ -38,6 +38,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Map;
@@ -49,7 +50,9 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.patches.SplashAnimationPatch;
 import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.BaseThemePatch;
 import app.morphe.extension.shared.theme.ThemeColorPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -140,11 +143,14 @@ public class ThemePatch extends BaseThemePatch {
     /**
      * The timeline of the glow animation, as it is written in the Rive file: a linear animation
      * (type 31) named "Timeline 1", 150 frames long, that loops. Its keyed objects follow it.
+     * It has no frame rate, so it plays at the default 60 frames per second.
+     * Its last keyframe is at frame 108.
      */
     private static final byte[] RIVE_GLOW_TIMELINE = {
             0x1F, 0x37, 0x0A, 'T', 'i', 'm', 'e', 'l', 'i', 'n', 'e', ' ', '1',
             0x39, (byte) 0x96, 0x01, 0x3B, 0x01, 0x00
     };
+    private static final int RIVE_GLOW_LAST_FRAME = 108;
 
     /**
      * Keyframes added to the timeline of the glow animation. The animation starts with a glow
@@ -221,17 +227,27 @@ public class ThemePatch extends BaseThemePatch {
     private static volatile boolean riveSplashScreenFirstStart;
 
     /**
-     * How long the Morphe Glow animation plays from its first frame until the splash screen closes.
-     * The animation ends after 1.3 seconds, and the timeout of the app would keep it longer.
-     */
-    private static final long RIVE_GLOW_MORPHE_DURATION_MILLISECONDS = 1400;
-
-    /**
-     * Closes the splash screen when the Morphe Glow animation has played,
+     * Closes the splash screen when the Rive animation has played,
      * or null if the animation is not waiting for its first frame.
      */
     @Nullable
-    private static volatile Runnable riveGlowMorpheSplashScreenCloser;
+    private static volatile Runnable riveSplashScreenCloser;
+
+    /**
+     * The view the Rive animation is drawn in, until the splash screen starts
+     * and the view is made to close the splash screen when tapped.
+     */
+    private static volatile WeakReference<View> riveSplashScreenView = new WeakReference<>(null);
+
+    /**
+     * The duration setting is shown for the Rive styles.
+     */
+    public static final class RiveSplashScreenDurationAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return isRiveSplashScreenEnabled();
+        }
+    }
 
     /**
      * The Morphe Glow 1 animation for the dark theme, which is played in place of the startup
@@ -291,6 +307,39 @@ public class ThemePatch extends BaseThemePatch {
             0x07, 0x00, 0x00, (byte) 0xD8, 0x43,
             0x08, 0x00, 0x00, (byte) 0xD8, 0x43
     };
+
+    /**
+     * The timeline of the Morphe Glow 1 animations, as it is written in the Rive file: a linear
+     * animation (type 31) named "Focus", 300 frames long, that loops, and ends with its frame rate
+     * (property key 56) of 120 frames per second. Its last keyframe is at frame 188.
+     */
+    private static final byte[] RIVE_GLOW_MORPHE_1_TIMELINE = {
+            0x1F, 0x37, 0x05, 'F', 'o', 'c', 'u', 's',
+            0x39, (byte) 0xAC, 0x02, 0x3B, 0x01, 0x38, 0x78
+    };
+    private static final int RIVE_GLOW_MORPHE_1_LAST_FRAME = 188;
+
+    /**
+     * The timeline of the Morphe Glow 2 animations, as it is written in the Rive file: a linear
+     * animation (type 31) named "Morphe" that ends with its frame rate (property key 56) of
+     * 60 frames per second. Its last keyframe is at frame 78.
+     */
+    private static final byte[] RIVE_GLOW_MORPHE_2_TIMELINE = {
+            0x1F, 0x37, 0x06, 'M', 'o', 'r', 'p', 'h', 'e', 0x38, 0x3C
+    };
+    private static final int RIVE_GLOW_MORPHE_2_LAST_FRAME = 78;
+
+    /**
+     * How long the logo is shown after the Rive animation has ended, until the splash screen closes.
+     */
+    private static final long RIVE_SPLASH_SCREEN_END_HOLD_MILLISECONDS = 100;
+
+    private static final byte RIVE_PROPERTY_KEY_FPS = 56;
+
+    /**
+     * Ends the properties of an object in a Rive file.
+     */
+    private static final byte RIVE_OBJECT_END = 0;
 
     private static boolean riveSplashScreenCrashChecked;
 
@@ -483,6 +532,7 @@ public class ThemePatch extends BaseThemePatch {
                 riveSplashScreenFramesUntilSupported = RIVE_SPLASH_SCREEN_SUPPORTED_FRAMES;
             }
             riveSplashScreenFirstStart = true;
+            riveSplashScreenView = new WeakReference<>(animationView);
         } catch (Exception ex) {
             Logger.printException(() -> "setRiveSplashScreenBackground failure", ex);
         }
@@ -526,10 +576,10 @@ public class ThemePatch extends BaseThemePatch {
                 Utils.runOnMainThreadNowOrLater(ThemePatch::removeRiveSplashScreen);
             }
 
-            Runnable closer = riveGlowMorpheSplashScreenCloser;
+            Runnable closer = riveSplashScreenCloser;
             if (closer != null) {
-                riveGlowMorpheSplashScreenCloser = null;
-                Utils.runOnMainThreadDelayed(closer, RIVE_GLOW_MORPHE_DURATION_MILLISECONDS);
+                riveSplashScreenCloser = null;
+                Utils.runOnMainThreadDelayed(closer, getRiveSplashScreenDuration());
             }
 
             final int framesUntilSupported = riveSplashScreenFramesUntilSupported;
@@ -551,22 +601,58 @@ public class ThemePatch extends BaseThemePatch {
      */
     public static void onSplashScreenStop() {
         try {
-            if (riveSplashScreenFramesUntilSupported > 0) {
-                riveSplashScreenFramesUntilSupported = 0;
-                Settings.RIVE_SPLASH_SCREEN_STATE.save(RIVE_SPLASH_SCREEN_STATE_NOT_PLAYED);
-            }
+            cancelRiveSplashScreenSupportCheck();
         } catch (Exception ex) {
             Logger.printException(() -> "onSplashScreenStop failure", ex);
         }
     }
 
     /**
+     * The animation stops drawing before the device is known to support it,
+     * so the next launch checks it again.
+     */
+    private static void cancelRiveSplashScreenSupportCheck() {
+        if (riveSplashScreenFramesUntilSupported > 0) {
+            riveSplashScreenFramesUntilSupported = 0;
+            Settings.RIVE_SPLASH_SCREEN_STATE.save(RIVE_SPLASH_SCREEN_STATE_NOT_PLAYED);
+        }
+    }
+
+    /**
+     * How long the Rive animation plays from its first frame until the splash screen closes.
+     * The animation is sped up or slowed down to end just before then.
+     */
+    private static long getRiveSplashScreenDuration() {
+        return SeekBarPreference.clampToRange(Settings.RIVE_SPLASH_SCREEN_DURATION);
+    }
+
+    /**
      * Injection point.
      * <p>
-     * A home feed that is shown quickly closes the glow animation before it has drawn
-     * anything, so on the first start the timeout of the app closes it instead.
-     * The Morphe Glow animation is shorter, and closes when it has played.
-     * Stopping the app cancels the timeout, and then the home feed closes it as usual.
+     * The app closes the splash screen after a timeout, in case the animation never draws.
+     * The Rive animation is closed when it has played for its duration after the
+     * animation has loaded, so the timeout is made long enough for both.
+     *
+     * @param original The timeout in milliseconds, counted from when the activity is created.
+     */
+    public static long getSplashScreenTimeout(long original) {
+        try {
+            if (isRiveSplashScreenEnabled()) {
+                return Math.max(original, RIVE_SPLASH_SCREEN_TIMEOUT_MILLISECONDS + getRiveSplashScreenDuration());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getSplashScreenTimeout failure", ex);
+        }
+        return original;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * A home feed that is shown quickly closes the Rive animation before it has drawn
+     * anything, so on the first start it closes when it has played for its duration instead.
+     * Stopping the app cancels the timeout of the app, and then the home feed closes it as usual.
+     * Tapping the animation closes it.
      *
      * @param splashScreen       Removes the splash screen when run.
      * @param riveAnimationShown If the app shows a Rive animation.
@@ -577,8 +663,21 @@ public class ThemePatch extends BaseThemePatch {
             if (riveAnimationShown && riveSplashScreenFirstStart) {
                 riveSplashScreenFirstStart = false;
 
-                if (SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().isRiveGlowMorphe()) {
-                    riveGlowMorpheSplashScreenCloser = splashScreen;
+                riveSplashScreenCloser = splashScreen;
+
+                View view = riveSplashScreenView.get();
+                if (view != null) {
+                    view.setOnClickListener(v -> {
+                        try {
+                            Logger.printDebug(() -> "Rive splash screen tapped");
+                            riveSplashScreenCloser = null;
+                            // The view is removed and stops drawing.
+                            cancelRiveSplashScreenSupportCheck();
+                            splashScreen.run();
+                        } catch (Exception ex) {
+                            Logger.printException(() -> "Rive splash screen click failure", ex);
+                        }
+                    });
                 }
                 return true;
             }
@@ -616,7 +715,8 @@ public class ThemePatch extends BaseThemePatch {
                 return key + "_" + Integer.toHexString(backgroundColor)
                         + "_" + riveGlowArtboardWidth + "x" + riveGlowArtboardHeight
                         + "_" + SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get().name()
-                        + (CustomBrandingPatch.iconIsPlay() ? "_play" : "");
+                        + (CustomBrandingPatch.iconIsPlay() ? "_play" : "")
+                        + "_" + getRiveSplashScreenDuration();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "getRiveRawResourceKey failure", ex);
@@ -665,7 +765,9 @@ public class ThemePatch extends BaseThemePatch {
                                 ? RIVE_GLOW_MORPHE_2_LIGHT_RESOURCE
                                 : RIVE_GLOW_MORPHE_2_DARK_RESOURCE;
                     }
-                    fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, resourceName));
+                    fileBytes = setRiveFrameRate(
+                            readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, resourceName)),
+                            RIVE_GLOW_MORPHE_2_TIMELINE, RIVE_GLOW_MORPHE_2_LAST_FRAME);
                     return resizeArtboard
                             ? setRiveArtboardSize(fileBytes, RIVE_GLOW_MORPHE_2_ARTBOARD_SIZE,
                             RIVE_GLOW_MORPHE_2_ARTBOARD_WIDTH, RIVE_GLOW_MORPHE_2_ARTBOARD_HEIGHT,
@@ -683,7 +785,9 @@ public class ThemePatch extends BaseThemePatch {
                             ? RIVE_GLOW_MORPHE_1_LIGHT_RESOURCE
                             : RIVE_GLOW_MORPHE_1_DARK_RESOURCE;
                 }
-                fileBytes = readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, resourceName));
+                fileBytes = setRiveFrameRate(
+                        readRawResource(ResourceUtils.getIdentifier(ResourceType.RAW, resourceName)),
+                        RIVE_GLOW_MORPHE_1_TIMELINE, RIVE_GLOW_MORPHE_1_LAST_FRAME);
             }
 
             if (backgroundColor != RIVE_GLOW_ORIGINAL_BACKGROUND_COLOR) {
@@ -706,8 +810,9 @@ public class ThemePatch extends BaseThemePatch {
                 return fileBytes;
             }
 
-            return replaceBytes(fileBytes, timelineIndex + RIVE_GLOW_TIMELINE.length, 0,
+            fileBytes = replaceBytes(fileBytes, timelineIndex + RIVE_GLOW_TIMELINE.length, 0,
                     RIVE_GLOW_FADE_IN_KEYFRAMES);
+            return setRiveFrameRate(fileBytes, RIVE_GLOW_TIMELINE, RIVE_GLOW_LAST_FRAME);
         } catch (Exception ex) {
             Logger.printException(() -> "getRiveFile failure", ex);
         }
@@ -725,6 +830,41 @@ public class ThemePatch extends BaseThemePatch {
             }
             return output.toByteArray();
         }
+    }
+
+    /**
+     * Changes the frame rate of a Rive animation, so its last keyframe is at the end of
+     * the duration setting. The runtime finds the time of each keyframe from its frame number
+     * and the frame rate, so this changes the speed of the whole animation.
+     *
+     * @param timelineBytes The timeline as it is written in the Rive file. It ends with its frame rate,
+     *                      or with the end of its properties if it plays at the default frame rate.
+     * @param lastFrame     The frame of the last keyframe.
+     */
+    private static byte[] setRiveFrameRate(byte[] fileBytes, byte[] timelineBytes, int lastFrame) {
+        final int index = indexOf(fileBytes, timelineBytes);
+        if (index < 0) {
+            Logger.printException(() -> "Could not find the timeline of the Rive animation");
+            return fileBytes;
+        }
+
+        final long animationMilliseconds = getRiveSplashScreenDuration() - RIVE_SPLASH_SCREEN_END_HOLD_MILLISECONDS;
+        final int frameRate = Math.round(lastFrame * 1000f / animationMilliseconds);
+        Logger.printDebug(() -> "Rive animation frame rate: " + frameRate);
+
+        // The property key followed by the frame rate as a variable length unsigned integer.
+        final byte[] frameRateProperty = frameRate < 0x80
+                ? new byte[]{RIVE_PROPERTY_KEY_FPS, (byte) frameRate}
+                : new byte[]{RIVE_PROPERTY_KEY_FPS, (byte) (frameRate & 0x7F | 0x80), (byte) (frameRate >>> 7)};
+
+        final int end = index + timelineBytes.length;
+        if (timelineBytes[timelineBytes.length - 1] == RIVE_OBJECT_END) {
+            // Add the frame rate before the end of the properties.
+            return replaceBytes(fileBytes, end - 1, 0, frameRateProperty);
+        }
+
+        // Replace the frame rate property, which has a one byte value.
+        return replaceBytes(fileBytes, end - 2, 2, frameRateProperty);
     }
 
     private static void setRiveGlowBackgroundColor(byte[] fileBytes, @ColorInt int color) {

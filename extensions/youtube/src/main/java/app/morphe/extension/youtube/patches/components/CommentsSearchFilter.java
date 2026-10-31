@@ -89,6 +89,7 @@ public final class CommentsSearchFilter extends Filter {
     private static final List<String> COMMENTS_PANEL_IDS = List.of(
             "comment-item-section",
             "engagement-panel-comments-section",
+            "post-comments",
             "shorts-comments-panel"
     );
 

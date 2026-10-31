@@ -718,12 +718,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Підключено! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Помилка підключення. Перевірте налаштування.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Спочатку введіть ключ API</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Перевірити з\'єднання</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Отримання моделей…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Отримати моделі</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Виберіть модель</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Не вдалося отримати моделі. Перевірте ключ API або з\'єднання</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Запит</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Модель</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Базова URL-адреса</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Попередні налаштування сервісу</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Обрати сервіс</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">Ключ API (необов\'язково)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Додаткове тіло запиту (необов\'язковий JSON)</string>

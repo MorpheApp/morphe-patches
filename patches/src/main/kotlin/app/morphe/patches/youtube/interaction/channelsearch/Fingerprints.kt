@@ -42,6 +42,10 @@ internal object SearchSubmitFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     filters = listOf(
+        methodCall(
+            name = "toByteArray",
+            returnType = "[B"
+        ),
         anyInstruction(
             methodCall( // 21.43+
                 parameters = listOf(

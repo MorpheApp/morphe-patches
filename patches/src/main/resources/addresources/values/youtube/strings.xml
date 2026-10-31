@@ -67,6 +67,7 @@ Changes include:
     <string name="morphe_hide_account_menu_title">Enable Library / You bottom menu filter</string>
     <string name="morphe_hide_account_menu_filter_strings_title">Library / You bottom menu filter</string>
     <string name="morphe_hide_account_menu_filter_strings_summary">Enter the Library / You bottom menu names to filter by, separated by new lines</string>
+    <string name="morphe_hide_account_menu_downloads_title">Hide Downloads</string>
     <string name="morphe_hide_album_cards_title">Hide album cards</string>
     <string name="morphe_hide_album_cards_summary">Hides the album cards under the artist description</string>
     <string name="morphe_hide_artist_cards_title">Hide artist cards</string>
@@ -558,8 +559,23 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_external_downloader_quick_audio">Audio</string>
     <string name="morphe_external_downloader_quick_options">All options</string>
     <string name="morphe_shorts_download_flyout_button_title">Show download in Shorts menu</string>
-    <string name="morphe_shorts_download_flyout_button_summary">Adds an external downloader flyout menu item to the Shorts player</string>
+    <string name="morphe_shorts_download_flyout_button_summary">Adds a download item to the menu of the Shorts player</string>
     <string name="morphe_shorts_download_flyout_title">Download</string>
+    <string name="morphe_export_download_folder_title">Export saved videos</string>
+    <string name="morphe_export_download_folder_summary">"Export in-app saved videos to your device storage using the in-app downloads flyout menu. Tap to change the export folder
+
+Export folder: %s"</string>
+    <string name="morphe_export_download_folder_dialog_title">Export folder</string>
+    <string name="morphe_export_download_folder_change">Change folder</string>
+    <string name="morphe_export_download_folder_changed">Export folder changed</string>
+    <string name="morphe_export_download_folder_reset">Export folder reset</string>
+    <string name="morphe_export_download_flyout_title">Export to device</string>
+    <string name="morphe_export_download_started">Exporting video</string>
+    <string name="morphe_export_download_progress">Exporting video: %d%%</string>
+    <string name="morphe_export_download_notification_channel">Video exports</string>
+    <string name="morphe_export_download_saved">Video exported to %s</string>
+    <string name="morphe_export_download_failed">Could not export the video</string>
+    <string name="morphe_export_download_canceled">Export canceled</string>
 
     <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
     <string name="morphe_vot_screen_title">Voice over translation</string>
@@ -646,6 +662,20 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_pip_button_flyout_title">Show Picture-in-Picture menu</string>
     <string name="morphe_pip_button_flyout_name">Switch to Picture-in-Picture</string>
 
+    <!-- interaction.pictureinpicture.changePipActionsPatch -->
+    <string name="morphe_pip_actions_screen_title">Picture-in-picture actions</string>
+    <string name="morphe_pip_actions_screen_summary">Change the buttons shown in picture-in-picture</string>
+    <string name="morphe_pip_action_left_title">Left button</string>
+    <string name="morphe_pip_action_center_title">Center button</string>
+    <string name="morphe_pip_action_right_title">Right button</string>
+    <string name="morphe_pip_action_entry_default">Default</string>
+    <string name="morphe_pip_action_entry_previous">Previous video</string>
+    <string name="morphe_pip_action_entry_next">Next video</string>
+    <string name="morphe_pip_action_entry_rewind">Rewind 10 seconds</string>
+    <string name="morphe_pip_action_entry_fast_forward">Fast forward 10 seconds</string>
+    <string name="morphe_pip_action_entry_play_pause">Play/pause</string>
+    <string name="morphe_pip_action_entry_background_playback">Background playback</string>
+
     <!-- interaction.playall.playAllButtonPatch -->
     <string name="morphe_play_all_button_title">Show Play all button</string>
     <string name="morphe_play_all_button_summary">"Tap to generate a playlist of all videos from channel, tap and hold to undo
@@ -680,10 +710,6 @@ Info: May not work on live streams"</string>
     <string name="morphe_save_to_watch_later_flyout_title">Save to Watch later</string>
     <string name="morphe_save_to_watch_later_flyout_button_title">Show Save to Watch later button in the player settings flyout</string>
     <string name="morphe_save_to_watch_later_flyout_button_summary">Allows saving the current watching video in the \'Watch later\' from the video settings flyout</string>
-    <string name="morphe_save_to_watch_later_kids_flyout_button_title">Show Save to Watch later button in kids videos</string>
-    <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Allows saving kid related videos in the \'Watch later\' from the flyout menu</string>
-    <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Show Save to Watch later button in the shorts flyout</string>
-    <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Allows saving shorts in the \'Watch later\' from the flyout menu</string>
     <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirect Watch later to playlist</string>
     <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Watch later</string>
     <string name="morphe_queue_flyout_title">Add to Morphe queue</string>
@@ -1341,6 +1367,10 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_not_available_summary">YouTube removed all additional miniplayers. To restore more miniplayer types, then patch YouTube 21.28.208 or older</string>
     <string name="morphe_miniplayer_type_title">Miniplayer type</string>
     <string name="morphe_miniplayer_hide_title_title">Hide title and channel</string>
+    <string name="morphe_miniplayer_swipe_up_expand_title">Expand with swipe up</string>
+    <string name="morphe_miniplayer_swipe_up_expand_summary">Swiping the miniplayer up expands the player, instead of moving the miniplayer to the top of the screen</string>
+    <string name="morphe_miniplayer_docked_title">Docked miniplayer</string>
+    <string name="morphe_miniplayer_docked_summary">Attaches the miniplayer to the navigation bar and the sides of the screen, instead of floating above them</string>
     <string name="morphe_miniplayer_type_entry_0">Disabled</string>
     <string name="morphe_miniplayer_type_entry_1">Default</string>
     <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1387,6 +1417,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
     <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
     <string name="morphe_splash_screen_style_glow_not_supported">Glow splash screen is not supported by this device</string>
+    <string name="morphe_splash_screen_duration_title">Startup animation duration</string>
+    <string name="morphe_splash_screen_duration_summary">How long the glow animation plays. Tap the animation to skip it</string>
     <string name="morphe_theme_color_light_title">Light theme background</string>
     <string name="morphe_theme_color_light_entry_2">White</string>
     <string name="morphe_theme_color_light_entry_3">Material You (White)</string>
@@ -1580,7 +1612,7 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_playback_speed_channel_whitelist_summary">Videos from whitelisted channels always play at 1.0x speed</string>
     <string name="morphe_playback_speed_channel_whitelist_flyout_add">Add channel to speed whitelist</string>
     <string name="morphe_playback_speed_channel_whitelist_flyout_remove">Remove channel from speed whitelist</string>
-    <string name="morphe_enable_playback_audio_pitch_controls_title">Enable audio pitch controls</string> 
+    <string name="morphe_enable_playback_audio_pitch_controls_title">Enable audio pitch controls</string>
     <string name="morphe_playback_audio_pitch_default_title">Default playback audio pitch</string>
     <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
     <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>

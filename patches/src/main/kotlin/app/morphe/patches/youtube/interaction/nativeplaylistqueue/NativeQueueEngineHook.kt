@@ -19,8 +19,6 @@ import app.morphe.util.findFieldFromToString
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 
@@ -35,26 +33,26 @@ internal fun installNativeQueueEngine(
     val queueType = queueMatch.originalClassDef.type
     val requestType = queueMatch.originalMethod.parameterTypes.single().toString()
     val descriptorType = queueMatch.originalMethod.returnType
-    val beginQueueChange = queueMatch.instructionMatches[0].instruction.getReference<MethodReference>()!!
-    val queueOwner = queueMatch.instructionMatches[2].instruction.getReference<FieldReference>()!!
-    val endQueueChange = queueMatch.instructionMatches[5].instruction.getReference<MethodReference>()!!
+    val beginQueueChange = queueMatch.instructionMatches[0].methodReference
+    val queueOwner = queueMatch.instructionMatches[2].fieldReference
+    val endQueueChange = queueMatch.instructionMatches[5].methodReference
 
     val queueChangeEnd = nativeQueueChangeEndFingerprint(endQueueChange)
-    val changeGuard = queueChangeEnd.instructionMatches[0].instruction.getReference<FieldReference>()!!
-    val releaseChange = queueChangeEnd.instructionMatches[1].instruction.getReference<MethodReference>()!!
-    val refresh = queueChangeEnd.instructionMatches[2].instruction.getReference<MethodReference>()!!
+    val changeGuard = queueChangeEnd.instructionMatches[0].fieldReference
+    val releaseChange = queueChangeEnd.instructionMatches[1].methodReference
+    val refresh = queueChangeEnd.instructionMatches[2].methodReference
 
     val queueDisposeMatch = nativeQueueDisposeFingerprint(queueType)
     val queueDispose = queueDisposeMatch.originalMethod
 
     // The wrapper switches between the server's navigator and the local queue.
     val wrapperFlag = nativeQueueWrapperConstructorFingerprint(queueType)
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
     val wrapperType = wrapperFlag.definingClass
 
     val receive = nativeQueueReceiveFingerprint(wrapperFlag)
-    fun receiveField(index: Int) = receive.instructionMatches[index].instruction.getReference<FieldReference>()!!
-    fun receiveMethod(index: Int) = receive.instructionMatches[index].instruction.getReference<MethodReference>()!!
+    fun receiveField(index: Int) = receive.instructionMatches[index].fieldReference
+    fun receiveMethod(index: Int) = receive.instructionMatches[index].methodReference
     val responseType = receive.originalMethod.parameterTypes.single().toString()
     val responsePanel = receiveField(1)
     val nativeNavigator = receiveField(3)
@@ -72,35 +70,35 @@ internal fun installNativeQueueEngine(
 
     val acceptMatch = nativeQueueAcceptFingerprint(queueType, responseType, beginQueueChange)
     val accept = acceptMatch.originalMethod
-    val storedResponse = acceptMatch.instructionMatches.last().instruction.getReference<FieldReference>()!!
+    val storedResponse = acceptMatch.instructionMatches.last().fieldReference
 
     val repeatSetter = nativeQueueRepeatSetterFingerprint(wrapperType)
-        .instructionMatches.last().instruction.getReference<MethodReference>()!!
+        .instructionMatches.last().methodReference
     val repeatGetter = nativeQueueRepeatGetterFingerprint(wrapperType)
-        .instructionMatches.last().instruction.getReference<MethodReference>()!!
+        .instructionMatches.last().methodReference
 
     val responseConstructor = nativeQueueResponseConstructorFingerprint(responseType).originalMethod
     val sourceResponse = nativeQueueResponseSourceFingerprint(
         responseType,
         responseConstructor.parameterTypes.single().toString()
-    ).instructionMatches.single().instruction.getReference<FieldReference>()!!
+    ).instructionMatches.single().fieldReference
     val navigationType = PlaylistModelDescriptionFingerprint.originalMethod
         .findFieldFromToString(", navigationSets=").type
     val responseNavigation = nativeQueueResponseNavigationFingerprint(responseType, navigationType)
-        .instructionMatches.single().instruction.getReference<FieldReference>()!!
+        .instructionMatches.single().fieldReference
 
     // The mutable queue holds local rows and builds the shuffle order.
     val shuffle = NativeQueueShuffleFingerprint
     val mutableType = shuffle.originalClassDef.type
     val shuffleSetter = shuffle.originalMethod
-    val position = shuffle.instructionMatches[2].instruction.getReference<MethodReference>()!!
+    val position = shuffle.instructionMatches[2].methodReference
     val shuffleLinks = listOf(
-        shuffle.instructionMatches[5].instruction.getReference<FieldReference>()!!,
-        shuffle.instructionMatches[7].instruction.getReference<FieldReference>()!!
+        shuffle.instructionMatches[5].fieldReference,
+        shuffle.instructionMatches[7].fieldReference
     )
 
     val localLoad = nativeQueueLocalLoadFingerprint(mutableType, descriptorType, requestType)
-    val playlistId = localLoad.instructionMatches.first().instruction.getReference<MethodReference>()!!
+    val playlistId = localLoad.instructionMatches.first().methodReference
 
     val localFlag = ImmutableField(
         wrapperType, "patch_localQueue", "Z", AccessFlags.PRIVATE.value, null, null, null
@@ -519,7 +517,7 @@ internal fun installNativeQueueEngine(
     // Local row loads must be JUMP within the native queue, rather than new ordinary playback.
     val requestConstructor = playlistNavigationRequestFingerprint(enumType).originalMethod
     val jump = playlistNavigationIntentFingerprint(enumType, "JUMP")
-        .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        .instructionMatches.last().fieldReference
     bridge(
         mutableType,
         "patch_localJump",
@@ -554,12 +552,12 @@ internal fun installNativeQueueEngine(
 
     // The playback service holds the active sequencer, which holds the wrapper.
     val loader = nativeQueueLoaderFingerprint(serviceType)
-    val sequencer = loader.instructionMatches[0].instruction.getReference<FieldReference>()!!
+    val sequencer = loader.instructionMatches[0].fieldReference
     val sequencerType = loader.instructionMatches[2].instruction.getReference<TypeReference>()!!.type
     val sequencerOwner = nativeQueueSequencerOwnerFingerprint(serviceType, sequencer.definingClass)
-        .instructionMatches.first().instruction.getReference<FieldReference>()!!
+        .instructionMatches.first().fieldReference
     val sequencerField = nativeQueueSequencerNavigatorFingerprint(sequencerType, navigatorType)
-        .instructionMatches.single().instruction.getReference<FieldReference>()!!
+        .instructionMatches.single().fieldReference
 
     bridge(
         serviceType,

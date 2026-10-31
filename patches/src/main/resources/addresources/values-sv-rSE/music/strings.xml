@@ -713,12 +713,15 @@ Låttexter kommer från tredjeparts tjänster som inte är anslutna till, sponsr
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Ansluten! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: Anslutning misslyckades. Kontrollera inställningarna.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Ange API-nyckeln först</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">Testa anslutning</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Hämtar modeller…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">Hämta modeller</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Välj en modell</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Det gick inte att hämta modeller. Kontrollera API-nyckeln eller anslutningen.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modell</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Bas-URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">Tjänstförinställningar</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Välj en tjänst</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API-nyckel (valfri)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Extra anförandekropp (valfri JSON)</string>

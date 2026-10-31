@@ -227,16 +227,6 @@ public class LegacyPlayerControlsPatch {
     /**
      * Injection point.
      */
-    public static boolean allowModernPlayerLayoutFlags(boolean original) {
-        if (RESTORE_OLD_PLAYER_BUTTONS) {
-            return false; // Flag causes app crash on startup if old player buttons is used.
-        }
-        return original;
-    }
-
-    /**
-     * Injection point.
-     */
     public static boolean useModernPlayerTopControls(boolean original) {
         if (original) {
             Logger.printDebug(() -> "useModernPlayerTopControls is set on");

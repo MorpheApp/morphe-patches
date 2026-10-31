@@ -417,6 +417,11 @@ public final class AskFlyoutMenuPatch {
      */
     private static void updateMenuItem(String videoId, boolean isLive) {
         try {
+            // The menu closed, or the menu of another video opened. A row created for a closed menu
+            // is counted as a button of the next menu, whose buttons then do not match its rows.
+            if (!videoId.equals(FlyoutUtils.getFlyoutVideoId())) {
+                return;
+            }
             MenuAccess menu = menuRef.get();
             if (menu == null) {
                 return;

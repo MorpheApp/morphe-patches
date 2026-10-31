@@ -61,6 +61,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_account_menu_title">Könyvtár / Az alsó menü szűrője</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Könyvtár / Az alsó menü szűrője</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Add meg a szűrni kívánt felugró menüpontok nevét, soronként elválasztva</string>
+  <string name="morphe_hide_account_menu_downloads_title">Letöltések elrejtése</string>
   <string name="morphe_hide_album_cards_title">Albumkártyák elrejtése</string>
   <string name="morphe_hide_album_cards_summary">Elrejti az albumkártyákat az előadó leírása alatt</string>
   <string name="morphe_hide_artist_cards_title">Előadó kártyák elrejtése</string>
@@ -515,8 +516,23 @@ Egy alkalommal megnyitott, Ask gombbal ellátott videó esetén a funkció minde
   <string name="morphe_external_downloader_quick_audio">Hang</string>
   <string name="morphe_external_downloader_quick_options">Összes beállítás</string>
   <string name="morphe_shorts_download_flyout_button_title">Letöltés megjelenítése a Shorts menüben</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Egy külső letöltő alkalmazás menüpontot ad a Shorts lejátszóhoz</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Letöltési lehetőséget ad a Shorts lejószó lendítómenüjéhez</string>
   <string name="morphe_shorts_download_flyout_title">Letöltés</string>
+  <string name="morphe_export_download_folder_title">Mentett videók exportálása</string>
+  <string name="morphe_export_download_folder_summary">"Exportálja az alkalmazáson belül mentett videókat a készüléke tárolójába a letöltések lendítómenüjével. Koppints a mappa megváltoztatásához
+
+Export mappa: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Export mappája</string>
+  <string name="morphe_export_download_folder_change">Mappa megváltoztatása</string>
+  <string name="morphe_export_download_folder_changed">Export mappa megváltoztatva</string>
+  <string name="morphe_export_download_folder_reset">Export mappa visszaállítva</string>
+  <string name="morphe_export_download_flyout_title">Exportálás a készülékre</string>
+  <string name="morphe_export_download_started">Videó exportálása</string>
+  <string name="morphe_export_download_progress">Videó exportálása: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Videó exportálások</string>
+  <string name="morphe_export_download_saved">Videó exportálva: %s</string>
+  <string name="morphe_export_download_failed">Nem sikerült exportálni a videót</string>
+  <string name="morphe_export_download_canceled">Exportálás törölve</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hangfelirat hangos felolvasása</string>
   <string name="morphe_vot_screen_summary">Olvassa fel a videó feliratait hangosan a készüléken található szöveg-beszéddé alakító segítségével, szinkronban a lejátszással.</string>
@@ -591,6 +607,19 @@ A API kulcsodat soha nem szabad megosztani. Bárki, akinek hozzáférése van ho
   <string name="morphe_pip_button_overlay_title">Kép a képben gomb megjelenítése</string>
   <string name="morphe_pip_button_flyout_title">Kép a képben menü megjelenítése</string>
   <string name="morphe_pip_button_flyout_name">Váltás kép a képben módra</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Képről képre műveletek</string>
+  <string name="morphe_pip_actions_screen_summary">Módosítsa a képről képren megjelenő gombokat</string>
+  <string name="morphe_pip_action_left_title">Bal gomb</string>
+  <string name="morphe_pip_action_center_title">Középső gomb</string>
+  <string name="morphe_pip_action_right_title">Jobb gomb</string>
+  <string name="morphe_pip_action_entry_default">Alapértelmezett</string>
+  <string name="morphe_pip_action_entry_previous">Előző videó</string>
+  <string name="morphe_pip_action_entry_next">Következő videó</string>
+  <string name="morphe_pip_action_entry_rewind">10 másodperccel vissza</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 másodperccel előre</string>
+  <string name="morphe_pip_action_entry_play_pause">Lejátszítás/szünet</string>
+  <string name="morphe_pip_action_entry_background_playback">Háttérben történő lejátszítás</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mind lejátszási gomb megjelenítése</string>
   <string name="morphe_play_all_button_summary">"Koppintson meg a csatorna összes videójának lejátszási listájának létrehozásához, hosszan megnyomva a művelet visszavonásához
@@ -623,10 +652,6 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Mentés későbbre</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">A „Mentés a Később nézem listába” gomb megjelenítése a lejátszó beállítási felugró menüjében</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Lehetővé teszi az aktuálisan nézett videó mentését a \'Watch later\' listába a videóbeállítások felugró menüjéből</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mentés későbbre gomb megjelenítése a gyerekvideókban</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Lehetővé teszi gyerekeknek szóló videók mentését a \'Watch later\' listába a felugró menüből</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">A \'Watch later\' mentése gomb megjelenítése a Shorts felugró menüjében</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Lehetővé teszi a Shorts mentését a \'Watch later\' listába a felugró menüből</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Később megnézem átirányítása lejátszási listára</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Megnézem később</string>
   <string name="morphe_queue_flyout_title">Hozzáadás a Morphe sorhoz</string>
@@ -1228,6 +1253,10 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_miniplayer_not_available_summary">A YouTube eltávolította az összes további minimalizált lejátszót. További minimalizált lejátszó típusok visszaállításához módosítsa a YouTube 21.28.208 vagy korábbi verzióját</string>
   <string name="morphe_miniplayer_type_title">Minilejátszó típus</string>
   <string name="morphe_miniplayer_hide_title_title">Cím és csatorna elrejtése</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Bővítés felfelé törlésre</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">A minimizált lejátszó felfelé törlése kibontja a lejátszót, แทนnem pedig a képernyő tetejére mozgatja azt</string>
+  <string name="morphe_miniplayer_docked_title">Dokkolt minimizált lejátszó</string>
+  <string name="morphe_miniplayer_docked_summary">Rögzíti a minimizált lejátszót a navigációs sávhoz és a képernyő széleihez, nem pedig felette lebすることで</string>
   <string name="morphe_miniplayer_type_entry_0">Kikapcsolva</string>
   <string name="morphe_miniplayer_type_entry_1">Alapértelmezett</string>
   <string name="morphe_miniplayer_type_entry_2">Minimális</string>
@@ -1270,6 +1299,8 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">A Glow beugratási képernyőt ez az eszköz nem támogatja</string>
+  <string name="morphe_splash_screen_duration_title">Indítási animáció időtartama</string>
+  <string name="morphe_splash_screen_duration_summary">Meddig játssza le a ragyogási animációt. Koppints az animációra az átugrásához</string>
   <string name="morphe_theme_color_light_title">Világos téma háttér</string>
   <string name="morphe_theme_color_light_entry_2">Fehér</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Fehér)</string>

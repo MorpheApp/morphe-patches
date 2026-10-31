@@ -176,7 +176,7 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
                         0 to "patch_setColdConfigData",
                         1 to "patch_setColdHashData"
                     ).forEach { (matchIndex, interfaceMethodName) ->
-                        val coldDataField = it.instructionMatches[matchIndex].instruction.getReference<FieldReference>()!!
+                        val coldDataField = it.instructionMatches[matchIndex].fieldReference
 
                         methods.add(
                             ImmutableMethod(

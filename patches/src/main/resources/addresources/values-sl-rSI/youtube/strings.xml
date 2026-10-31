@@ -61,6 +61,7 @@ Spremembe vključujejo:
   <string name="morphe_hide_account_menu_title">Omogoči knjižnico / Filter spodnjega menija</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Omogoči knjižnico / Filter nizov spodnjega menija</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Vnesite imena menijev knjižnice, po katerih želite filtrirati, ločena z novimi vrsticami</string>
+  <string name="morphe_hide_account_menu_downloads_title">Skrij prenose</string>
   <string name="morphe_hide_album_cards_title">Skrij kartice albumov</string>
   <string name="morphe_hide_album_cards_summary">Skrije kartice albumov pod opisom izvajalca</string>
   <string name="morphe_hide_artist_cards_title">Skrij kartice izvajalcev</string>
@@ -515,8 +516,23 @@ Ko enkrat odprete video s gumbom Zastavi, bo funkcija delovala za vse videe, tud
   <string name="morphe_external_downloader_quick_audio">Avdio</string>
   <string name="morphe_external_downloader_quick_options">Vse možnosti</string>
   <string name="morphe_shorts_download_flyout_button_title">Prikaži prenos v meniju Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Dodaja zunanji element menija za prenos v predvajalnik Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Doda element za prenos v meni predvajalnika Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Prenesite</string>
+  <string name="morphe_export_download_folder_title">Izvozi shranjene videoposnetke</string>
+  <string name="morphe_export_download_folder_summary">"Izvozite v aplikaciji shranjene videoposnetke v pomnilnik vaše naprave s pomočjo vnaprej pripravljenega menija za prenose. Dotaknite se za spremembo izvozne mape
+
+Izvozna mapa: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Izvozna mapa</string>
+  <string name="morphe_export_download_folder_change">Spremeni mapo</string>
+  <string name="morphe_export_download_folder_changed">Izvozna mapa spremenjena</string>
+  <string name="morphe_export_download_folder_reset">Izvozna mapa ponastavljena</string>
+  <string name="morphe_export_download_flyout_title">Izvozi na napravo</string>
+  <string name="morphe_export_download_started">Izvoz videoposnetka</string>
+  <string name="morphe_export_download_progress">Izvoz videoposnetka: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Izvozi videoposnetkov</string>
+  <string name="morphe_export_download_saved">Videoposnetek izvožen v %s</string>
+  <string name="morphe_export_download_failed">Videoposnetka ni bilo mogoče izvoziti</string>
+  <string name="morphe_export_download_canceled">Izvoz prekringan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Prevajanje z glasom</string>
   <string name="morphe_vot_screen_summary">Prebiranje napisov videoposnetka v glas z uporabo pretvorbe besedila v govor v napravi, sinhronizirano s predvajanjem</string>
@@ -591,6 +607,19 @@ Vaš API ključ nikoli ne smete deliti. Kdorkoli, ki ima dostop do njega, lahko 
   <string name="morphe_pip_button_overlay_title">Prikaži gumb za sliko v sliki</string>
   <string name="morphe_pip_button_flyout_title">Prikaži meni za sliko v sliki</string>
   <string name="morphe_pip_button_flyout_name">Preklopi na sliko v sliki</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Dejanja v sliki v sliki</string>
+  <string name="morphe_pip_actions_screen_summary">Spremenite gumbe, ki so prikazani v sliki v sliki</string>
+  <string name="morphe_pip_action_left_title">Levi gumb</string>
+  <string name="morphe_pip_action_center_title">Srednji gumb</string>
+  <string name="morphe_pip_action_right_title">Desni gumb</string>
+  <string name="morphe_pip_action_entry_default">Privzeto</string>
+  <string name="morphe_pip_action_entry_previous">Prejšnji videoposnetek</string>
+  <string name="morphe_pip_action_entry_next">Naslednji videoposnetek</string>
+  <string name="morphe_pip_action_entry_rewind">Nazaj 10 sekund</string>
+  <string name="morphe_pip_action_entry_fast_forward">Knaprej 10 sekund</string>
+  <string name="morphe_pip_action_entry_play_pause">Predvajaj/pavziraj</string>
+  <string name="morphe_pip_action_entry_background_playback">Predvajanje v ozadju</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Prikaži gumb \'Predvajaj vse\'</string>
   <string name="morphe_play_all_button_summary">"Tapnite, da ustvarite seznam vseh videoposnetkov kanala, tapnite in pridržite, da to razveljavite
@@ -623,10 +652,6 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Shrani za pozneje</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Prikaži gumb Shrani v Ogled pozneje v pojavnem meniju nastavitev predvajalnika</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Omogoča shranjevanje trenutno gledanega videoposnetka v \'Ogled pozneje\' iz pojavnega menija nastavitev videoposnetka</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Prikaži gumb Shrani za pozneje v otroških videoposnetkih</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Omogoča shranjevanje videoposnetkov za otroke v \'Ogled pozneje\' iz pojavnega menija</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Prikaži gumb Shrani v Ogled pozneje v pojavnem meniju Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Omogoča shranjevanje kratkih videoposnetkov v \'Ogled pozneje\' iz pojavnega menija</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Preusmerji \"Glej pozneje\" na seznam predvajanja</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Glej pozneje</string>
   <string name="morphe_queue_flyout_title">Dodaj v Morphe čakalno vrsto</string>
@@ -1228,6 +1253,10 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_miniplayer_not_available_summary">YouTube je odstranil vse dodatne mini predvoravatelje. Če želite ponovno pridobiti več vrst mini predvoravateljev, nato zakrpajte YouTube 21.28.208 ali starejšjo različico</string>
   <string name="morphe_miniplayer_type_title">Vrsta predvajalnika</string>
   <string name="morphe_miniplayer_hide_title_title">Skrij naslov in kanal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Razširi z povrtanjem navzgor</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Povrtanje mini-predvajalnika navzgor razširi predvajalnik, namesto da bi mini-predvajalnik premaknilo na vrh zaslona</string>
+  <string name="morphe_miniplayer_docked_title">Pridobljen mini-predvajalnik</string>
+  <string name="morphe_miniplayer_docked_summary">Pripomoči mini-predvajalnik k navigacijski vrstici in robom zaslona, namesto da bi plaval nad njimi</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogočen</string>
   <string name="morphe_miniplayer_type_entry_1">Privzeta</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalen</string>
@@ -1270,6 +1299,8 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Ta naprava ne podpira zaslona s sijajem</string>
+  <string name="morphe_splash_screen_duration_title">Trajanje animacije ob zagonu</string>
+  <string name="morphe_splash_screen_duration_summary">Koliko dolgo traja animacija s sijajem. Dotaknite se animacije za preskok</string>
   <string name="morphe_theme_color_light_title">Ozadje svetle teme</string>
   <string name="morphe_theme_color_light_entry_2">Bela</string>
   <string name="morphe_theme_color_light_entry_3">Material You (bela)</string>

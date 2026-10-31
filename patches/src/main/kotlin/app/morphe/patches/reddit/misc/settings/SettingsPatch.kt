@@ -8,6 +8,7 @@
 package app.morphe.patches.reddit.misc.settings
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -50,6 +51,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
+
+private const val APP_DOWNGRADE_EXTENSION_CLASS =
+    "Lapp/morphe/extension/reddit/patches/AppDowngradeNoticePatch;"
 
 val settingsPatch = bytecodePatch(
     description = "Applies mandatory patches to implement Morphe settings into the application."
@@ -109,6 +113,12 @@ val settingsPatch = bytecodePatch(
                 """
             )
         }
+
+        // Disable Play Store updates allows downgrading, but older app data can cause app crashes and other problems.
+        RedditActivityOnCreateFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p0 .. p0 }, $APP_DOWNGRADE_EXTENSION_CLASS->showDowngradeNoticeIfNeeded(Landroid/app/Activity;)V"
+        )
 
         // Turn off Google Play in app update prompt.
         GooglePlayUpdateCheckFingerprint.method.returnEarly(null)

@@ -33,7 +33,7 @@ val keepFeedPositionPatch = bytecodePatch(
         // post as the first visible item, so the feed jumps. Home also scrolls to it directly
         // ("android_feed_pdp_scroll_anchor" experiment). Stop remembering the opened post.
         val postIdType = FeedStateToStringFingerprint.instructionMatches
-            .last().getFieldAccessed().type
+            .last().fieldReference.type
 
         rememberOpenedPostFingerprint(postIdType).method.addInstructionsWithLabels(
             0,

@@ -25,6 +25,7 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
+  <string name="morphe_music_downloads_summary">%1$s பாடல்கள் • %2$s MB</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.hideAdsPatch -->
@@ -68,7 +69,95 @@ Second \"item\" text"</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_rime_dict_title">Rime வார்த்தைப் பட்டியல்</string>
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist-க்கு UniDict-ம் தேவை: ஆஃப்லைன் அகராதி வழங்குநரில் (Offline Dictionary provider), \"Chinese and Cantonese characters (UniDict)\"-ஐ டிக் செய்து, அது பதிவிறக்கம் செய்து முடிக்கும் வரை காத்திருக்கவும். இது இல்லையெனில், எழுத்துக்களை வாசிக்கும் பட்டியல் எந்த வாசிப்பையும் வழங்காது.
+
+Rime Wordlist வாசிக்க வேண்டிய பட்டியல்களை டிக் செய்து, பின்னர் அவற்றை பதிவிறக்கம் செய்ய சேமி (Save)-ஐத் தட்டவும். நீங்கள் டிக் செய்யாத பட்டியலில் நீங்கள் சேர்த்த பட்டியல் நீக்கப்படும்.
+
+ஒவ்வொரு பட்டியலும் உங்களுக்கே உரித்தான சொல்-வாசிப்பு அட்டவணை ஆகும், இது பின்வரும் வரிகளைக் கொண்ட ஒரு .dict.yaml கோப்பாகும்:
+字 ham
+典 din2
+முதல் நெடுவரிசை சொல்லையும், இரண்டாவது அதன் வாசிப்பையும் குறிக்கும்; கூடுதல் நெடுவரிசைகள் மற்றும் டேப் (tab) இல்லாத வரிகள் புறக்கணிக்கப்படும்."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">மேலே உள்ள மொழிக்கு Rime வார்த்தைப் பட்டியல் எதுவும் தேர்வு செய்யப்படவில்லை. ஒன்றைத் தேர்வு செய்ய இந்தப் பெயரைத் தட்டவும், அல்லது பட்டியல் உள்ள மொழியைத் தேர்வு செய்யவும்</string>
+  <string name="morphe_music_lyrics_rime_dict_add">சேர்</string>
+  <string name="morphe_music_lyrics_rime_dict_add_title">Rime வார்த்தைப் பட்டியலைச் சேர்</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham மற்றும் 典 din2 போன்ற வரிகளைக் கொண்ட ஒரு .dict.yaml கோப்பு, அல்லது அதை உள்ளடக்கிய ஒரு zip கோப்பு. நீங்கள் அதை டிக் செய்து சேமி-ஐத் தட்டும்போது பட்டியல் பெறப்படும், மேலும் அதன் உரிமத்தை நீங்கள் சரிபார்த்துக் கொள்ள வேண்டும்</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code">மொழி குறியீடு</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">Hak அல்லது wuu என்பது போல இரண்டு அல்லது மூன்று எழுத்துக்கள்</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label">பெயர்</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">வாசிப்பிற்கு கீழே காட்டப்படும், ஹக்கா (Meixian)-இல் உள்ளது போல</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">சொல் பட்டியலின் முகவரி</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml அல்லது அதன் zip கோப்பின் https:// முகவரி</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">சொல்லில் இல்லாத எழுத்துக்கள்</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">தானியங்கி</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">காண்டோனீஸ் எழுத்துக்கள்</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">மாண்டரின் எழுத்துக்கள்</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">எழுத்து வாசிப்பு இல்லை</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">குறியீடு, பெயர் மற்றும் முகவரியை நிரப்பவும்</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">குறியீடு hak என்பதைப் போல இரண்டு அல்லது மூன்று எழுத்துக்களாக இருக்க வேண்டும்</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_url">முகவரி https:// இல் தொடங்க வேண்டும்</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">பெயர் மற்றும் முகவரியில் செங்குத்து கோடு இருக்கக்கூடாது</string>
+  <string name="morphe_music_lyrics_rime_dict_duplicate">%1$s ஏற்கனவே ஒரு வார்த்தை அட்டவணையை கொண்டுள்ளது</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%1$s உள்ளமைக்கப்பட்ட ரோமனைஸர் மூலம் படிக்கப்படுகிறது மற்றும் வார்த்தை பட்டியலை எடுத்துக்கொள்ள முடியாது</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">பயன்படுத்தப்படவில்லை: இந்த மொழிக்கு ஏற்கனவே அதன் சொந்த வாசிப்பு உள்ளது, எனவே அதை நீக்க சரி குறியீட்டை நீக்கவும்</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%1$s சேர்க்கப்பட்டது - அதை பதிவிறக்கம் செய்ய சரி குறியிட்டு சேமி என்பதைத் தட்டவும்</string>
+  <string name="morphe_music_lyrics_rime_dict_ready">வார்த்தை பட்டியல்கள் தயாராக உள்ளன</string>
+  <string name="morphe_music_lyrics_rime_dict_ready_toast">சொல் பட்டியல்கள் தயாராக உள்ளன (%1$d பதிவுகள்)</string>
+  <string name="morphe_music_lyrics_rime_dict_building">சொல் பட்டியலை வாசிக்கிறது: %1$d%%</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">சொல் பட்டியல் பதிவிறக்கம் தோல்வியடைந்தது - மீண்டும் முயற்சிக்க சேமிக்க மீண்டும் தட்டவும்</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">இந்த சாதனத்தில் சேமிக்கப்பட்டுள்ள %1$s MB பாடல் வரிகளை நீக்கவும்</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">மொழிபெயர்ப்பை மாற்ற தட்டவும்; மொழிபெயர்ப்புக்கு மட்டும் நீண்ட நேரம் அழுத்தவும். பட்டியலிடப்பட்ட வரிசையில் செயல்படுத்தப்பட்ட மொழிபெயர்ப்பு வழங்குநர்களைப் பயன்படுத்துகிறது</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு பொத்தானைக் காட்டவும்</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பை மாற்ற தட்டவும்; ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்புக்கு மட்டும் நீண்ட நேரம் அழுத்தவும். பட்டியலிடப்பட்ட வரிசையில் செயல்படுத்தப்பட்ட ரோமமயமாக்கல் வழங்குநர்களைப் பயன்படுத்துகிறது</string>
+  <string name="morphe_music_lyrics_allow_transliteration_title">ஒலிபெயர்ப்பைச் செயல்படுத்தவும்</string>
+  <string name="morphe_music_lyrics_allow_transliteration_summary">பாடல்களின் மூலத்திலிருந்து லத்தீன் அல்லாத வாசிப்புகளை அனுமதிக்கவும்; ஆஃப் செய்யும்போது, லத்தீன் எழுத்துக்கள், உச்சரிப்புக்குறியீடு கொண்ட எழுத்துக்கள் மற்றும் டோன் எண்களை மட்டும் வைத்திருங்கள்</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">நேரம் நிர்ணயிக்கப்பட்ட பாடலின் ஒவ்வொரு வார்த்தையையும் வாசிக்கிறது (வார்த்தை ஒத்திசைவு ஆன்; கொரிய மொழிக்கு பதிவிறக்கம் தேவையில்லை; பதிநான்கு ஸ்கிரிப்டுகள் ஒரே CLDR பதிவிறக்கத்தைப் பகிர்ந்து கொள்கின்றன; ஹான் எழுத்துக்கள் Rime Wordlist-ஆல் வாசிக்கப்படுகின்றன, அதன் வார்த்தை அட்டவணை அந்த மொழியை உள்ளடக்கியிருக்கும் போது)</string>
+  <string name="morphe_music_lyrics_local_romanization_download_started">வாசிப்பு அகராதிகள் பதிவிறக்கப்படுகின்றன…</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">வாசிப்புகள் தயாராக உள்ளன (%1$d பதிவுகள்)</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">ஆஃப்லைன் அகராதி</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">ஜப்பானிய மொழி (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">சீன மற்றும் காண்டனீஸ் எழுத்துக்கள் (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">சீன வார்த்தைகள் (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">கிரேக்க, ஸ்லாவிக் சிரிலிக் (ரஷ்யன், உக்ரேனியன், பல்கேரியன், செர்பியன், பெலாரூசியன், மாகிடோனியன் உட்பட), ஜார்ஜியன், அர்மேனியன், ஹீப்ரு, அரபு, அம்ஹாரிக் மற்றும் சிரியாக் ஒலிபெயர்ப்பு (CLDR, ~0.5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_empty">குறைந்தது ஒரு அகராதியையாவது தேர்வு செய்யவும்</string>
+  <string name="morphe_music_lyrics_line_scale_title">செயலில் இல்லாத வரிகளைக் குறுக்கவும்</string>
+  <string name="morphe_music_lyrics_line_scale_summary">தற்போது பாடப்படாத ஒவ்வொரு வரியையும் சற்று சிறியதாக வரைந்து, அதே சமயம் மங்கலாகக் காட்டும்</string>
+  <string name="morphe_music_lyrics_split_background_title">பின்னணி குரல்களைத் தனியாகக் காட்டவும்</string>
+  <string name="morphe_music_lyrics_split_background_summary">முக்கிய வரியிலிருந்து பின்னணி குரல்கள் மற்றும் ஹார்மோனியைப் பிரிக்கும். \"(Oh) I want you\" என்பது போல அடைப்புக்குறிக்குள் எழுதப்பட்ட பின்னணி குரலை, பாடப்படும் வரியிலிருந்து நீக்கி அதற்குரிய மங்கலான வரியில் வைக்கும்</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_romanized_by_rime">Rime-ஆல் ரோமனிஸ்டு செய்யப்பட்டது (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_romanize_language_title">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு மொழி</string>
+  <string name="morphe_music_lyrics_translation_target_language">"மொழிபெயர்ப்பு இலக்கு மொழி:
+%s"</string>
+  <string name="morphe_music_lyrics_romanization_target_language">"ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு இலக்கு மொழி:
+%s"</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC தற்போதைய பாடலுக்கான வரிகளைப் பிரதி எடுக்கிறது அல்லது நேரத்துடன் சீரமைக்கிறது</string>
+  <string name="morphe_music_lyrics_about_summary">"பாடல்கள் தலைப்பு மற்றும் கலைஞரின் அடிப்படையில் பொருத்தப்படுகின்றன, அசாதாரண மெட்டாடேட்டா எதுவும் கிடைக்காமல் போகலாம் அல்லது தவறான பதிப்பைக் கண்டறியலாம். பதிப்புகளை மாற்ற refresh-ஐப் பயன்படுத்தவும். * குறியிடப்பட்ட வழங்குநர்களுக்கு டோக்கன் தேவை. செயல்படுத்தப்பட்ட அனைத்து வழங்குநர்களும் எப்போதும் உங்கள் வரிசையிலேயே கோரப்படுவதில்லை, ஆனால் அவர்களின் வேகத்தின் அடிப்படையில் பதிலளிக்கிறார்கள்.
+
+பாடல்கள் Morphe-உடன் இணைக்கப்படாத, ஸ்பான்சர் செய்யப்படாத அல்லது அங்கீகரிக்கப்படாத மூன்றாம் தரப்பு சேவைகளிலிருந்து வருகின்றன. ஒவ்வொன்றும் அப்படியே பயன்படுத்தப்படுகிறது: பாடல்கள், அவற்றின் கிடைக்கும் தன்மை மற்றும் அவற்றின் உரிமங்கள் அந்த சேவைகளிடமும் அவற்றின் உரிம வழங்குநர்களிடமும் இருக்கும், மேலும் அவற்றைப் பயன்படுத்துவது அவர்களின் சேவை விதிமுறைகளுக்கு உட்பட்டிருக்கலாம். செயல்படுத்தப்பட்ட சேவைக்கு நீங்கள் கேட்ட தேடல் மட்டுமே சென்றடையும் - தலைப்பு, கலைஞர் மற்றும் அந்த சேவைக்கு தேவைப்படும் இடத்தில் வீடியோ ஐடி. விருப்பத்தேர்வு AI எண்ட்பாயிண்ட் மற்றும் QuickLRC டிரான்ஸ்கிரிப்ஷன் நீங்கள் அவற்றைக் கட்டமைத்த பின்னரே இயங்கும், மேலும் பாடல் உரை அல்லது டிரேக்கின் வீடியோ URL-ஐப் பெறும்."</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ON என்பதைத் தேர்ந்தெடுத்தால் ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு வரிகளுக்குக் கீழும், மொழிபெயர்ப்பு மேலே இருக்கும்; OFF என்பதைத் தேர்ந்தெடுத்தால் ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு மேலேயும், மொழிபெயர்ப்பு கீழும் இருக்கும். ஒவ்வொரு அசரிலும் வைக்கப்பட்டுள்ள வாசிப்பு அதன் সাথে நகரும், அதன் அசரின் மேலிருந்து கீழேக்கு மாறும்</string>
+  <string name="morphe_music_lyrics_force_center_title">வரிகளை எப்போதும் மையப்படுத்து</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON என்பதைத் தேர்ந்தெடுத்தால், இருவர் பாடும் பக்கங்கள் உட்பட ஒவ்வொரு வரியும் மையப்பகுதியில் வைக்கப்படும் மற்றும் மூல சீரமைப்பு புறக்கணிக்கப்படும்; OFF என்பதைத் தேர்ந்தெடுத்தால் வரிகள் கோரும் சீரமைப்பே இருக்கும்</string>
+  <string name="morphe_music_lyrics_providers_keep_one">குறைந்தபட்சம் ஒரு வழங்குநர் ஆன் செய்யப்பட வேண்டும்</string>
+  <string name="morphe_music_lyrics_translation_provider_title">மொழிபெயர்ப்பு</string>
+  <string name="morphe_music_lyrics_romanization_provider_title">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">ஆஃப்லைன் அகராதி</string>
+  <string name="morphe_music_lyrics_romanization_provider_rime">Rime வார்த்தைப் பட்டியல்</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">AI மூலம் பிரிவுகளைக் கண்டறியவும்</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Chorus அல்லது Verse போன்ற பிரிவு லேபிள்களை வழங்குநர் அனுப்பாதபோது மட்டுமே இது பயன்படுத்தப்படும், அவற்றை உங்கள் OpenAI-க்கு இணக்கமான மாடல் கண்டறியும். வரிசையைத் திருத்துவது அதன் தூண்டுதலையும் திறக்கும்</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (உதாரணமாக https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">அமைப்புகள் முழுமையற்றவை அல்லது வழங்குநரால் நிராகரிக்கப்பட்டன</string>
+  <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: இணைக்கப்பட்டது! (%2$s)</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: இணைப்பு தோல்வியடைந்தது. அமைப்புகளைச் சரிபார்க்கவும்.</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">முதலில் API விசையை உள்ளிடவும்</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">இணைப்பைச் சோதிக்கவும்</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">மாடல்களைப் பெறவும்</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">தூண்டுதல்</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">சேவை முன்கூட்டியமைப்புகள்</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets_title">ஒரு சேவையைத் தேர்ந்தெடுக்கவும்</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">கூடுதல் கோரிக்கை தலைப்புகள் (விருப்பமான JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">பெயர்கள் மற்றும் மதிப்புகளை மேற்கோள் குறிகளுக்குள் இடவும், எ.கா. {\"api-key\": \"abc\"}. / : அல்லது எண்ணைக் கொண்ட மேற்கோள் இல்லாத மதிப்பு நிராகரிக்கப்படும். காலியான மதிப்பு ஒரு தலைப்பை நீக்கும்.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">பெயர்கள் மற்றும் மதிப்புகளை மேற்கோள் குறிகளுக்குள் இடவும், எ.கா. {\"temperature\": 0.3}. / அல்லது : ஐக் கொண்ட மேற்கோள் இல்லாத மதிப்பு நிராகரிக்கப்படும். மாடல் மற்றும் செய்திகளை இங்கே அமைக்க முடியாது.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

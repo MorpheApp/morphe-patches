@@ -1376,4 +1376,24 @@
         <item>SHARP</item>
         <item>CUSTOM</item>
     </string-array>
+
+    <!-- interaction.pictureinpicture.changePipActionsPatch -->
+    <string-array name="morphe_pip_action_entries">
+        <item>@string/morphe_pip_action_entry_default</item>
+        <item>@string/morphe_pip_action_entry_previous</item>
+        <item>@string/morphe_pip_action_entry_next</item>
+        <item>@string/morphe_pip_action_entry_rewind</item>
+        <item>@string/morphe_pip_action_entry_fast_forward</item>
+        <item>@string/morphe_pip_action_entry_play_pause</item>
+        <item>@string/morphe_pip_action_entry_background_playback</item>
+    </string-array>
+    <string-array name="morphe_pip_action_entry_values">
+        <item>DEFAULT</item>
+        <item>PREVIOUS</item>
+        <item>NEXT</item>
+        <item>REWIND</item>
+        <item>FAST_FORWARD</item>
+        <item>PLAY_PAUSE</item>
+        <item>BACKGROUND_PLAYBACK</item>
+    </string-array>
 </resources>

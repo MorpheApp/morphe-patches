@@ -156,6 +156,10 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static void navigationTabCreated(NavigationBar.NavigationButton button, View tabView) {
+        if (button == NavigationBar.NavigationButton.NOTIFICATIONS) {
+            notificationsTabCreated = true;
+        }
+
         if (SHOW_SEARCH_BUTTON && button == NavigationBar.NavigationButton.SEARCH) {
             Utils.runOnMainThread(() -> tabView.setOnClickListener(openSearchBarOnClickListener));
             return;
@@ -866,6 +870,19 @@ public final class NavigationBarPatch {
 
     private static final String SETTING_BUTTON_ENUM_NAME = "SETTINGS_CAIRO";
 
+    /**
+     * The toolbar of some pages, such as the You tab, comes from their own response, which still has
+     * the notifications button, so it is replaced with the create button of the toolbar of another page.
+     */
+    @Nullable
+    private static volatile MessageLite toolbarCreateButton;
+
+    /**
+     * The swap has effect only if the server added the notifications tab to the navigation bar.
+     * Otherwise the toolbar button is the only way to open the notifications.
+     */
+    private static volatile boolean notificationsTabCreated;
+
     private static final boolean HIDE_TOOLBAR_CAST_BUTTON = Settings.HIDE_TOOLBAR_CAST_BUTTON.get();
 
     private static final boolean HIDE_TOOLBAR_CHAT_BUTTON = Settings.HIDE_TOOLBAR_CHAT_BUTTON.get();
@@ -1075,6 +1092,44 @@ public final class NavigationBarPatch {
      */
     private static ExtensionRegistryLite getGeneratedRegistry() {
         return null; // Modified during patching.
+    }
+
+    /**
+     * Injection point.
+     * Called when a toolbar button is created, on any page.
+     *
+     * @param buttonRenderer The renderer of the button.
+     * @return The renderer the button is created with.
+     */
+    public static MessageLite swapToolbarNotificationButton(MessageLite buttonRenderer) {
+        if (!SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON || buttonRenderer == null) {
+            return buttonRenderer;
+        }
+        try {
+            String iconName = ButtonRenderer.parseFrom(buttonRenderer.toByteArray()).getIcon().getYtIconType().name();
+            if (Utils.equalsAny(iconName, CREATE_BUTTON_ENUMS)) {
+                toolbarCreateButton = buttonRenderer;
+            } else if (Utils.equalsAny(iconName, NOTIFICATION_BUTTON_ENUMS) && notificationsTabCreated
+                    && !HIDE_NAVIGATION_BAR && !Settings.HIDE_NOTIFICATIONS_BUTTON.get()) {
+                MessageLite createButton = toolbarCreateButton;
+                if (createButton != null) {
+                    return createButton;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "swapToolbarNotificationButton failure", ex);
+        }
+        return buttonRenderer;
+    }
+
+    /**
+     * Injection point.
+     * The create button does not show the new content count of the notifications button it replaced.
+     *
+     * @param countIds The ids of the pages whose new content count the button shows.
+     */
+    public static List<String> getToolbarButtonCountIds(MessageLite buttonRenderer, List<String> countIds) {
+        return buttonRenderer == toolbarCreateButton ? new ArrayList<>() : countIds;
     }
 
     /**

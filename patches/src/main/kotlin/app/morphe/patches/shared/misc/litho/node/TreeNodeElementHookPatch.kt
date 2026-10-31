@@ -116,7 +116,7 @@ internal fun createTreeNodeElementHookPatch(
 
         if (addLithoContainerInterface) {
             TreeNodeListFingerprint.let {
-                val field = it.instructionMatches.first().getFieldAccessed()
+                val field = it.instructionMatches.first().fieldReference
                 addLithoContainerInterface(it.classDef, field)
             }
 

@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">სხვადასხვა</string>
   <string name="morphe_settings_screen_12_video_title">ვიდეო</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube-ის პარამეტრების ძველი ეკრანის აღდგენა</string>
+  <string name="morphe_native_snackbar_title">შეტყობინებების ჩვენება YouTube-ის snackbar-ში</string>
+  <string name="morphe_native_snackbar_summary">Morphe-ის შეტყობინებები, მაგალითად, პლეერის ღილაკის დადასტურება, ჩნდება YouTube-ის snackbar-ში და არა popup ფანჯარაში</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">ფონური დაკვრის შეზღუდვების მოხსნა</string>
   <string name="morphe_shorts_disable_background_playback_title">ფონური დაკვრის გათიშვა</string>
@@ -59,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">ჩართეთ ბიბლიოთეკის / თქვენი ქვედა მენიუს ფილტრი</string>
   <string name="morphe_hide_account_menu_filter_strings_title">ბიბლიოთეკის / თქვენი ქვედა მენიუს ფილტრი</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">შეიყვანეთ ბიბლიოთეკის / თქვენი ქვედა მენიუს სახელები გასაფილტრად, გან隔ებული ახალი ხაზებით</string>
+  <string name="morphe_hide_account_menu_downloads_title">ჩამოტვირთულების დამალვა</string>
   <string name="morphe_hide_album_cards_title">ალბომის ბარათების დამალვა</string>
   <string name="morphe_hide_album_cards_summary">მალავს ალბომის ბარათებს არტისტის აღწერილობის ქვემოთ</string>
   <string name="morphe_hide_artist_cards_title">არტისტების ბარათების დამალვა</string>
@@ -513,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">აუდიო</string>
   <string name="morphe_external_downloader_quick_options">ყველა ოფცია</string>
   <string name="morphe_shorts_download_flyout_button_title">ჩამოტვირთვის ჩვენება Shorts-ის მენიუში</string>
-  <string name="morphe_shorts_download_flyout_button_summary">ამატებს გარე ჩამტვირთავის ჩამოსაშლელ მენიუს ელემენტს Shorts-ის ప్ლეიერში</string>
+  <string name="morphe_shorts_download_flyout_button_summary">ამატებს ჩამოტვირთვის ელემენტს Shorts-ის პლეერის მენიუში</string>
   <string name="morphe_shorts_download_flyout_title">ჩამოტვირთვა</string>
+  <string name="morphe_export_download_folder_title">შენახული ვიდეოების ექსპორტი</string>
+  <string name="morphe_export_download_folder_summary">"გადაიტანეთ აპლიკაციაში შენახული ვიდეოები თქვენი მოწყობილობის მეხსიერებაში ჩამოტვირთვის მენიუს გამოყენებით. ექსპორტის საქაღალდის შესაცვლელად დააწკაპუნეთ.
+
+ექსპორტის საქაღალდე: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">ექსპორტის საქაღალდე</string>
+  <string name="morphe_export_download_folder_change">საქაღალდის შეცვლა</string>
+  <string name="morphe_export_download_folder_changed">ექსპორტის საქაღალდე შეიცვალა</string>
+  <string name="morphe_export_download_folder_reset">ექსპორტის საქაღალდე განის resetting-და</string>
+  <string name="morphe_export_download_flyout_title">ექსპორტი მოწყობილობაში</string>
+  <string name="morphe_export_download_started">ვიდეოს ექსპორტირება</string>
+  <string name="morphe_export_download_progress">ვიდეოს ექსპორტირება: %d%%</string>
+  <string name="morphe_export_download_notification_channel">ვიდეოების ექსპორტი</string>
+  <string name="morphe_export_download_saved">ვიდეო ექსპორტირებულია %s-ში</string>
+  <string name="morphe_export_download_failed">ვიდეოს ექსპორტირება ვერ მოხერხდა</string>
+  <string name="morphe_export_download_canceled">ექსპორტი გაუქმებულია</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ხმის ზედsetოვანი თარგმანი</string>
   <string name="morphe_vot_screen_summary">წაიკითხეთ ვიდეოს სუბტიტრები ხმამაღლა მოწყობილობის ტექსტის მეტყველების ფუნქციით, დაკვრასთან სინქრონულად</string>
@@ -589,6 +607,19 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">სურათის სურათში ღილაკის ჩვენება</string>
   <string name="morphe_pip_button_flyout_title">სურათის სურათში მენიუს ჩვენება</string>
   <string name="morphe_pip_button_flyout_name">გადმორთვა სურათის სურათში რეჟიმზე</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">სურათი სურათში მოქმედებები</string>
+  <string name="morphe_pip_actions_screen_summary">შეცვალეთ ღილაკები, რომლებიც ჩანს სურათი სურათში რეჟიმში</string>
+  <string name="morphe_pip_action_left_title">მარცხენა ღილაკი</string>
+  <string name="morphe_pip_action_center_title">ცენტრალური ღილაკი</string>
+  <string name="morphe_pip_action_right_title">მარჯვენა ღილაკი</string>
+  <string name="morphe_pip_action_entry_default">ნაგულისხმები</string>
+  <string name="morphe_pip_action_entry_previous">წინა ვიდეო</string>
+  <string name="morphe_pip_action_entry_next">შემდეგი ვიდეო</string>
+  <string name="morphe_pip_action_entry_rewind">უკუგდება 10 წამით</string>
+  <string name="morphe_pip_action_entry_fast_forward">გადახვევა 10 წამით წინ</string>
+  <string name="morphe_pip_action_entry_play_pause">გაშვება/პაუზა</string>
+  <string name="morphe_pip_action_entry_background_playback">ფონური დაკვრა</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">ყველას გაშვების ღილაკის ჩვენება</string>
   <string name="morphe_play_all_button_summary">"დააჭირეთ არხის ყველა ვიდეოსგან პლეილისტის შესაქმნელად, დააჭირეთ და გეჭიროთ გაუქმებისთვის
@@ -621,10 +652,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">შენახვა მოგვიანებით საყურებლად</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">აჩვენეთ ღილაკი „შენახვა მოგვიანებით საყურებლად“ მოთამაშის პარამეტრების მენიუში</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">სტრიმინგის პარამეტრების მენიუდან ამტვირთავს მიმდინარე ვიდეოს სექციაში „მოგვიანებით საყურებლად“</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">აჩვენე ღილაკი „შენახვა მოგვიანებით საყურებლად“ ბავშვების ვიდეოებში</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">სამენიურო პანელიდან ამტვირთავს ბავშვებისთვის განკუთვნილ ვიდეოებს სექციაში „მოგვიანებით საყურებლად“</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">აჩვენეთ ღილაკი „შენახვა მოგვიანებით საყურებლად“ Shorts-ის მენიუში</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">სამენიურო პანელიდან ამტვირთავს Shorts-ებს სექციაში „მოგვიანებით საყურებლად“</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">გადაამისამართეთ „მოგვიანებით ნახვა“ ფლეილისტზე</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">მოგვიანებით ნახვა</string>
   <string name="morphe_queue_flyout_title">დაამატეთ Morphe-ის რიგში</string>
@@ -1226,6 +1253,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube-მა წაშალა ყველა დამატებითი მინი-პლეიერი. მეტი მინი-პლეიერის ტიპის აღსადგენად, დააპატჩეთ YouTube 21.28.208 ან უფრო ძველი ვერსია</string>
   <string name="morphe_miniplayer_type_title">მინიპლეიერის ტიპი</string>
   <string name="morphe_miniplayer_hide_title_title">სათაურისა და არხის დამალვა</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">გაშვება ზემოთ სვაივით</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">მინი-პლეერის ზემოთ სვაიმით ხდება პლეერის გაფართოება, ნაცვლად მინი-პლეერის ეკრანის ზედა ნაწილში გადატანისა</string>
+  <string name="morphe_miniplayer_docked_title">დამაგრებული მინი-პლეერი</string>
+  <string name="morphe_miniplayer_docked_summary">აკავშირებს მინი-პლეერს ნავიგაციის პანელთან და ეკრანის გვერდებთან, ნაცვლად მათზე სრიალით განთავსებისა</string>
   <string name="morphe_miniplayer_type_entry_0">გამორთვებული</string>
   <string name="morphe_miniplayer_type_entry_1">ნაგულისხმები</string>
   <string name="morphe_miniplayer_type_entry_2">მინიმალისტური</string>
@@ -1268,6 +1299,8 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow ეფექტის საწყისი ეკრანი არ არის მხარდაჭერილი ამ მოწყობილობის მიერ</string>
+  <string name="morphe_splash_screen_duration_title">გაშვების ანიმაციის ხანგრძლივობა</string>
+  <string name="morphe_splash_screen_duration_summary">얼마 ያტარებს განათების ანიმაცია. ანიმაციის გადასახტელად დააწკაპუნეთ მასზე</string>
   <string name="morphe_theme_color_light_title">ღია თემის ფონი</string>
   <string name="morphe_theme_color_light_entry_2">თეთრი</string>
   <string name="morphe_theme_color_light_entry_3">Material You (თეთრი)</string>

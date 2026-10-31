@@ -81,10 +81,10 @@ val searchCommentsPatch = bytecodePatch(
         // The comments are reloaded after a search, as when the sort order is changed,
         // so the search applies to all of them.
         val refreshMatches = SectionListRefreshFingerprint.instructionMatches
-        val reloadContinuationType = refreshMatches.first().getFieldAccessed()
+        val reloadContinuationType = refreshMatches.first().fieldReference
         val hasContinuationMethod = refreshMatches[1].getMethodCalled()
         val reloadMethod = refreshMatches.last().getMethodCalled()
-        val listViewField = SectionListControllerConstructorFingerprint.instructionMatches.first().getFieldAccessed()
+        val listViewField = SectionListControllerConstructorFingerprint.instructionMatches.first().fieldReference
 
         mutableClassDefBy(listViewField.definingClass).apply {
             interfaces.add(SECTION_LIST_ACCESS_INTERFACE)

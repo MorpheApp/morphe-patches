@@ -7,7 +7,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import android.app.Dialog;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -24,16 +23,12 @@ import android.os.SystemClock;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.TextUtils;
-import android.util.Pair;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,6 +39,7 @@ import com.facebook.litho.TextContent;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -52,8 +48,10 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
+import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
@@ -67,10 +65,9 @@ import app.morphe.extension.youtube.settings.Settings;
  * (on the right, or on the left in right to left languages).
  * <ul>
  *   <li>Tap and hold anywhere on the video: clicks the menu button of the video.</li>
- *   <li>Watch later button: drawn on the overlay of the root host. Tapping it opens the menu
- *       of the video without showing it, and clicks its own Watch later item, so the app
- *       saves the video and shows its own message. If the item is not found, the video is
- *       saved with the same request as the player button.</li>
+ *   <li>Watch later button: drawn on the overlay of the root host. Tapping it saves the video to
+ *       Watch later, and tapping and holding it opens the Save to playlist panel. Both run the
+ *       command of the app directly, so they do not depend on the menu of the video.</li>
  * </ul>
  * The content description of the menu button is localized and contains the title of its
  * video. The texts of the video are removed from it, and the remaining pattern is learned
@@ -140,12 +137,10 @@ public final class FeedVideoActionsPatch {
     private static final Pattern LETTERS_PATTERN = Pattern.compile("\\p{L}{2,}");
     private static final Pattern VIDEO_ID_PATTERN = Pattern.compile("^[\\w-]{11}$");
 
-    /** Time the menu click has to open the menu, before a Watch later tap is forgotten. */
-    private static final long PENDING_WATCH_LATER_TIMEOUT_MS = 2000;
-    /** Time the hidden menu has to bind its items, before the request is used instead. */
-    private static final long NATIVE_ITEM_TIMEOUT_MS = 700;
-    /** The menu may be created before it is shown, so it is closed after each of these delays. */
-    private static final long[] DISMISS_DELAYS_MS = {50, 300};
+    /** {@code ACTION_ADD_VIDEO} of a playlist edit. */
+    private static final int PLAYLIST_ACTION_ADD_VIDEO = 1;
+
+    private static final StringRef VIDEO_ID_NOT_FOUND = StringRef.sfc("morphe_queue_manager_check_failed_video_id");
 
     private static final int GESTURE_NONE = 0;
     private static final int GESTURE_LONG_PRESS_PENDING = 1;
@@ -185,18 +180,6 @@ public final class FeedVideoActionsPatch {
 
     /** Sender of the last menu, which is learned once the menu really opens for a video. */
     private static WeakReference<View> lastSenderRef = new WeakReference<>(null);
-
-    private static WeakReference<View> pendingMenuButtonRef = new WeakReference<>(null);
-    private static long pendingWatchLaterUptime;
-    /** If the pending menu item is Save to playlist instead of Watch later. */
-    private static boolean pendingSaveToPlaylist;
-    private static String pendingVideoId = "";
-    /** Video of the tapped card, used if the menu does not give the video id. */
-    private static String pendingCardVideoId = "";
-    /** Menu that is hidden until its Watch later item is clicked. */
-    private static WeakReference<Object> pendingFlyoutRef = new WeakReference<>(null);
-    private static boolean pendingItemClicked;
-    private static final Runnable pendingFallbackRunnable = FeedVideoActionsPatch::onPendingFallback;
 
     @Nullable
     private static Drawable clockIcon;
@@ -808,10 +791,9 @@ public final class FeedVideoActionsPatch {
                             card.badge.setPressed(false);
                             // Saves the video to Watch later.
                             if (action == MotionEvent.ACTION_UP
-                                    && card.isBadgeHit(host, event.getX(), event.getY())
-                                    && card.getMenuButton() != null) {
+                                    && card.isBadgeHit(host, event.getX(), event.getY())) {
                                 vibrate(host, false);
-                                openMenuItem(card, false);
+                                runVideoCommand(host, false);
                             }
                         }
                         resetGesture();
@@ -957,7 +939,7 @@ public final class FeedVideoActionsPatch {
             }
             card.badge.setPressed(false);
             vibrate(host, true);
-            openMenuItem(card, true);
+            runVideoCommand(host, true);
         } catch (Exception ex) {
             Logger.printException(() -> "onBadgeLongPressTimeout failure", ex);
             resetGesture();
@@ -988,54 +970,38 @@ public final class FeedVideoActionsPatch {
     }
 
     /**
-     * Opens the menu of the video without showing it, and clicks its own item.
+     * Runs the command of the app that its own menu items run, with the video of the card.
      *
-     * @param saveToPlaylist If the item is Save to playlist, which opens the panel of the app.
-     *                       Otherwise the item is Watch later.
+     * @param saveToPlaylist If the Save to playlist panel is opened.
+     *                       Otherwise the video is saved to Watch later.
      */
-    private static void openMenuItem(VideoCard card, boolean saveToPlaylist) {
-        View menuButton = card.getMenuButton();
-        if (menuButton == null) {
+    private static void runVideoCommand(ComponentHost host, boolean saveToPlaylist) {
+        String cardVideoId = FeedVideoCardsPatch.findVideoId(host);
+        // The texts of a card that is not fully shown may not be drawn.
+        final String videoId = cardVideoId != null && VIDEO_ID_PATTERN.matcher(cardVideoId).matches()
+                ? cardVideoId
+                : FeedVideoCardsPatch.findVideoIdByDescription(host);
+        if (videoId == null) {
+            Logger.printDebug(() -> "Video of the card not found: " + cardVideoId);
+            Utils.showSnackbarShort(VIDEO_ID_NOT_FOUND.toString());
             return;
         }
 
-        // The menu of the video is opened without showing it, and its own Watch later item
-        // is clicked, so the app saves the video and shows its own message.
-        pendingMenuButtonRef = new WeakReference<>(menuButton);
-        pendingVideoId = "";
-        ComponentHost root = findRootHost(menuButton);
-        String cardVideoId = root == null ? null : FeedVideoCardsPatch.findVideoId(root);
-        pendingCardVideoId = cardVideoId != null && VIDEO_ID_PATTERN.matcher(cardVideoId).matches()
-                ? cardVideoId
-                : "";
-        pendingWatchLaterUptime = SystemClock.uptimeMillis();
-        pendingSaveToPlaylist = saveToPlaylist;
-        pendingItemClicked = false;
-        menuButton.performClick();
-    }
-
-    private static boolean isWatchLaterPending() {
-        if (pendingWatchLaterUptime == 0) {
-            return false;
+        Logger.printDebug(() -> (saveToPlaylist ? "Opening Save to playlist: " : "Saving to Watch later: ") + videoId);
+        var command = PlaylistQueueRenderer.NavigationEndpoint.newBuilder();
+        if (saveToPlaylist) {
+            command.setAddToPlaylistEndpoint(PlaylistQueueRenderer.AddToPlaylistEndpoint.newBuilder()
+                    .setVideoId(videoId));
+        } else {
+            command.setPlaylistEditEndpoint(PlaylistQueueRenderer.PlaylistEditEndpoint.newBuilder()
+                    .setPlaylistId(SaveToWatchLaterPatch.WATCH_LATER_PLAYLIST_ID)
+                    .addActions(PlaylistQueueRenderer.PlaylistEditAction.newBuilder()
+                            .setAction(PLAYLIST_ACTION_ADD_VIDEO)
+                            .setAddedVideoId(videoId)));
         }
-        if (SystemClock.uptimeMillis() - pendingWatchLaterUptime > PENDING_WATCH_LATER_TIMEOUT_MS) {
-            clearPendingWatchLater();
-            return false;
+        if (!CommandRouterPatch.executeCommand(command.build().toByteArray(), new HashMap<>())) {
+            Logger.printDebug(() -> "No command router of a shown activity");
         }
-        return true;
-    }
-
-    private static void clearPendingWatchLater() {
-        pendingWatchLaterUptime = 0;
-        pendingSaveToPlaylist = false;
-        pendingVideoId = "";
-        pendingCardVideoId = "";
-        pendingMenuButtonRef = new WeakReference<>(null);
-        pendingFlyoutRef = new WeakReference<>(null);
-        pendingItemClicked = false;
-        handler.removeCallbacks(pendingFallbackRunnable);
-        handler.removeCallbacks(pendingItemCheckRunnable);
-        pendingItemListRef = new WeakReference<>(null);
     }
 
     /**
@@ -1043,406 +1009,48 @@ public final class FeedVideoActionsPatch {
      * Not every such button opens a menu, such as the comment button of posts.
      */
     public static void onFlyoutSender(@Nullable View sender) {
-        if (!ENABLED || sender == null) {
-            return;
-        }
-        try {
+        if (ENABLED && sender != null) {
             lastSenderRef = new WeakReference<>(sender);
-
-            if (isWatchLaterPending()) {
-                if (sender == pendingMenuButtonRef.get()) {
-                    pendingVideoId = FlyoutUtils.getFlyoutVideoId();
-                } else {
-                    // Another menu was opened.
-                    clearPendingWatchLater();
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onFlyoutSender failure", ex);
         }
     }
 
     /**
+     * Called by {@link FlyoutUtils} when a feed menu is created.
      * Saves the localized description of the menu button, so the menu button of other videos
      * is found by it. Only a sender that opened a menu with a video id is the menu button.
      */
-    private static void learnMenuButtonDescription() {
-        View sender = lastSenderRef.get();
-        lastSenderRef = new WeakReference<>(null);
-        if (sender == null || FlyoutUtils.getFlyoutVideoId().isEmpty()) {
-            return;
-        }
-
-        CharSequence description = sender.getContentDescription();
-        if (TextUtils.isEmpty(description)) {
-            return;
-        }
-        ComponentHost root = findRootHost(sender);
-        if (root == null || !isVideoShaped(root) || !isMenuButtonShaped(root, sender, new Rect())) {
-            return;
-        }
-
-        String pattern = getDescriptionPattern(description, collectVideoTexts(root));
-        if (pattern.isEmpty()) {
-            return;
-        }
-        String learned = getLanguage(root) + LANGUAGE_SEPARATOR + pattern;
-        if (!learned.equals(Settings.FEED_MENU_BUTTON_DESCRIPTION.get())) {
-            Logger.printDebug(() -> "Learned feed menu button pattern: " + learned
-                    + " (description: " + description + ")");
-            Settings.FEED_MENU_BUTTON_DESCRIPTION.save(learned);
-        }
-    }
-
-    /**
-     * Called by {@link FlyoutUtils} when a feed menu dialog is created.
-     */
-    public static void onBottomSheetFlyout(Dialog dialog) {
+    public static void onFlyoutCreated() {
         if (!ENABLED) {
             return;
         }
         try {
-            learnMenuButtonDescription();
-            if (!isWatchLaterPending()) {
+            View sender = lastSenderRef.get();
+            lastSenderRef = new WeakReference<>(null);
+            if (sender == null || FlyoutUtils.getFlyoutVideoId().isEmpty()) {
                 return;
             }
-            Window window = dialog.getWindow();
-            if (window != null) {
-                window.setWindowAnimations(0);
-                window.setDimAmount(0f);
-                WindowManager.LayoutParams params = window.getAttributes();
-                params.alpha = 0f;
-                window.setAttributes(params);
+
+            CharSequence description = sender.getContentDescription();
+            if (TextUtils.isEmpty(description)) {
+                return;
             }
-            startPendingFlyout(dialog);
+            ComponentHost root = findRootHost(sender);
+            if (root == null || !isVideoShaped(root) || !isMenuButtonShaped(root, sender, new Rect())) {
+                return;
+            }
+
+            String pattern = getDescriptionPattern(description, collectVideoTexts(root));
+            if (pattern.isEmpty()) {
+                return;
+            }
+            String learned = getLanguage(root) + LANGUAGE_SEPARATOR + pattern;
+            if (!learned.equals(Settings.FEED_MENU_BUTTON_DESCRIPTION.get())) {
+                Logger.printDebug(() -> "Learned feed menu button pattern: " + learned
+                        + " (description: " + description + ")");
+                Settings.FEED_MENU_BUTTON_DESCRIPTION.save(learned);
+            }
         } catch (Exception ex) {
-            Logger.printException(() -> "onBottomSheetFlyout failure", ex);
-        }
-    }
-
-    /**
-     * Called by {@link FlyoutUtils} when a feed menu popup is about to be shown.
-     */
-    public static void onPopupWindowFlyout(PopupWindow popupWindow) {
-        if (!ENABLED) {
-            return;
-        }
-        try {
-            learnMenuButtonDescription();
-            if (!isWatchLaterPending()) {
-                return;
-            }
-            popupWindow.setAnimationStyle(0);
-            View content = popupWindow.getContentView();
-            if (content != null) {
-                content.setAlpha(0f);
-            }
-            startPendingFlyout(popupWindow);
-        } catch (Exception ex) {
-            Logger.printException(() -> "onPopupWindowFlyout failure", ex);
-        }
-    }
-
-    private static void startPendingFlyout(Object flyout) {
-        pendingFlyoutRef = new WeakReference<>(flyout);
-        pendingItemListRef = new WeakReference<>(null);
-        handler.removeCallbacks(pendingFallbackRunnable);
-        handler.removeCallbacks(pendingItemCheckRunnable);
-        handler.postDelayed(pendingFallbackRunnable, NATIVE_ITEM_TIMEOUT_MS);
-        handler.postDelayed(pendingItemCheckRunnable, PENDING_ITEM_CHECK_MS);
-    }
-
-    @Nullable
-    private static ViewGroup getFlyoutRootView(@Nullable Object flyout) {
-        View root = null;
-        if (flyout instanceof Dialog dialog && dialog.getWindow() != null) {
-            root = dialog.getWindow().getDecorView();
-        } else if (flyout instanceof PopupWindow popupWindow) {
-            root = popupWindow.getContentView();
-        }
-        return root instanceof ViewGroup group ? group : null;
-    }
-
-    /** Items of the hidden menu, which can be bound before all their names are known. */
-    private static WeakReference<ViewGroup> pendingItemListRef = new WeakReference<>(null);
-    private static final long PENDING_ITEM_CHECK_MS = 50;
-
-    /**
-     * The items are checked again until the item is clicked or the fallback runs,
-     * because the menu does not always bind its items again after the names are known.
-     */
-    private static final Runnable pendingItemCheckRunnable = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                if (pendingItemClicked || pendingFlyoutRef.get() == null || !isWatchLaterPending()) {
-                    return;
-                }
-                ViewGroup itemList = pendingItemListRef.get();
-                if (itemList == null) {
-                    // The list was not reported, so the items are searched in the menu itself.
-                    itemList = getFlyoutRootView(pendingFlyoutRef.get());
-                }
-                if (itemList != null) {
-                    onFlyoutListBound(itemList);
-                }
-                if (!pendingItemClicked && pendingFlyoutRef.get() != null) {
-                    handler.postDelayed(this, PENDING_ITEM_CHECK_MS);
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "pendingItemCheck failure", ex);
-            }
-        }
-    };
-
-    /**
-     * Called by {@link FlyoutUtils} each time the items of a menu are bound.
-     */
-    public static void onFlyoutListBound(ViewGroup itemList) {
-        if (!WATCH_LATER_BUTTON || !ENABLED) {
-            return;
-        }
-        try {
-            if (pendingItemClicked || !isWatchLaterPending()) {
-                return;
-            }
-            // Kept even before the menu is known, so the item check can use it later.
-            pendingItemListRef = new WeakReference<>(itemList);
-            if (pendingFlyoutRef.get() == null) {
-                return;
-            }
-
-            final Pair<String, Integer> button = pendingSaveToPlaylist ? findSaveToPlaylistButton() : findWatchLaterButton();
-            if (button == null) {
-                return;
-            }
-            // The item is found by its text, as the index of the buttons does not always match the items
-            // of the menu, such as when an item has no text or a button is not an item of the list.
-            View item = findItemByText(itemList, FlyoutUtils.getVisibleFlyoutButtonText(button.first));
-            final boolean foundByText = item != null;
-            if (item == null) {
-                final int itemIndex = button.second - 1;
-                ViewGroup items = findItemGroup(itemList, itemIndex);
-                if (items == null) {
-                    // The items may not be bound yet. The fallback runs if they never are.
-                    return;
-                }
-                // The index is only right if every button is an item, and no other item was added,
-                // otherwise another item is clicked, such as the share item. The fallback runs instead.
-                final int buttonCount = FlyoutUtils.getVisibleFlyoutButtons().size();
-                if (items.getChildCount() != buttonCount) {
-                    Logger.printDebug(() -> "Menu items do not match the buttons: " + items.getChildCount()
-                            + " items, " + buttonCount + " buttons");
-                    return;
-                }
-                item = items.getChildAt(itemIndex);
-            }
-
-            pendingItemClicked = true;
-            final View clickedItem = item;
-            Logger.printDebug(() -> "Clicking the " + (pendingSaveToPlaylist ? "Save to playlist" : "Watch later")
-                    + " item of the hidden menu, found by " + (foundByText ? "text" : "index"));
-            final boolean saveToPlaylist = pendingSaveToPlaylist;
-            // Watch later: the app saves the video, shows its own message and closes the menu.
-            // Save to playlist: the app closes the menu and opens its own panel.
-            handler.post(() -> {
-                try {
-                    clickedItem.performClick();
-                } catch (Exception ex) {
-                    Logger.printException(() -> "Menu item click failure", ex);
-                }
-                Object flyout = pendingFlyoutRef.get();
-                clearPendingWatchLater();
-                if (saveToPlaylist) {
-                    // If the panel is shown in the same sheet as the menu, the sheet must be visible again.
-                    // A menu that the app closed is not shown again.
-                    showHiddenMenu(flyout);
-                } else {
-                    dismissSoon(flyout);
-                }
-            });
-        } catch (Exception ex) {
-            Logger.printException(() -> "onFlyoutListBound failure", ex);
-        }
-    }
-
-    /**
-     * The items are known by the names of the enum of the app, which do not depend on the language.
-     */
-    @Nullable
-    private static Pair<String, Integer> findWatchLaterButton() {
-        for (Pair<String, Integer> button : FlyoutUtils.getVisibleFlyoutButtons()) {
-            String name = button.first;
-            if (name.contains("WATCH_LATER") && !name.contains("REMOVE")) {
-                return button;
-            }
-        }
-        Logger.printDebug(() -> "No Watch later item in: " + FlyoutUtils.getVisibleFlyoutButtons());
-        return null;
-    }
-
-    /**
-     * @return The clickable item of the menu that shows the text, or null if it's not found.
-     */
-    @Nullable
-    private static View findItemByText(ViewGroup itemList, @Nullable String text) {
-        if (text == null || text.isEmpty()) {
-            return null;
-        }
-        TextView textView = Utils.getChildView(itemList, true, view ->
-                view instanceof TextView candidate && text.contentEquals(candidate.getText()));
-        if (textView == null) {
-            return null;
-        }
-
-        // The item is the clickable view that contains the text.
-        View item = textView;
-        while (!item.isClickable()) {
-            if (item == itemList || !(item.getParent() instanceof View parent)) {
-                return null;
-            }
-            item = parent;
-        }
-        return item == itemList ? null : item;
-    }
-
-    /**
-     * @return The view group of the menu items: the list itself, or in some layouts
-     *         the view group inside it with the most children.
-     */
-    @Nullable
-    private static ViewGroup findItemGroup(ViewGroup itemList, int itemIndex) {
-        if (itemList.getChildCount() > itemIndex) {
-            return itemList;
-        }
-        ViewGroup best = null;
-        List<ViewGroup> groups = new ArrayList<>();
-        groups.add(itemList);
-        for (int g = 0; g < groups.size(); g++) {
-            ViewGroup group = groups.get(g);
-            if (group.getChildCount() > itemIndex
-                    && (best == null || group.getChildCount() > best.getChildCount())) {
-                best = group;
-            }
-            for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                if (group.getChildAt(i) instanceof ViewGroup child) {
-                    groups.add(child);
-                }
-            }
-        }
-        if (best != null) {
-            ViewGroup found = best;
-            Logger.printDebug(() -> "Menu items found in a nested group: " + found.getClass().getName()
-                    + " (" + found.getChildCount() + " items)");
-        } else {
-            Logger.printDebug(() -> "Menu items not bound yet: " + itemList.getChildCount() + " children");
-        }
-        return best;
-    }
-
-    /**
-     * The icon names of the Save to playlist item, by preference.
-     * The item uses the icon of a playlist or of a bookmark, depending on the app version.
-     */
-    private static final String[] SAVE_TO_PLAYLIST_ICON_NAMES = {"PLAYLIST_ADD", "ADD_TO_PLAYLIST", "BOOKMARK", "SAVE"};
-
-    private static final Pattern NOT_SAVE_ITEM_PATTERN =
-            Pattern.compile("DOWNLOAD|OFFLINE|SHARE|QUEUE|NOT_INTERESTED|DISMISS|FLAG|REPORT|CAST");
-
-    @Nullable
-    private static Pair<String, Integer> findSaveToPlaylistButton() {
-        List<Pair<String, Integer>> buttons = FlyoutUtils.getVisibleFlyoutButtons();
-        for (String iconName : SAVE_TO_PLAYLIST_ICON_NAMES) {
-            for (Pair<String, Integer> button : buttons) {
-                String name = button.first;
-                if (name.contains(iconName) && !name.contains("WATCH_LATER") && !name.contains("REMOVE")) {
-                    return button;
-                }
-            }
-        }
-        // The item is right after the Watch later item, if its icon has another name.
-        for (int i = 0, size = buttons.size(); i < size - 1; i++) {
-            String name = buttons.get(i).first;
-            if (name.contains("WATCH_LATER") && !name.contains("REMOVE")) {
-                Pair<String, Integer> next = buttons.get(i + 1);
-                if (!NOT_SAVE_ITEM_PATTERN.matcher(next.first).find()) {
-                    Logger.printDebug(() -> "Using the item after Watch later as Save to playlist: " + next.first);
-                    return next;
-                }
-                break;
-            }
-        }
-        Logger.printDebug(() -> "No Save to playlist item in: " + buttons);
-        return null;
-    }
-
-    /**
-     * The Save to playlist item was not found, so the hidden menu is shown,
-     * and the item can be chosen from it.
-     */
-    private static void showHiddenMenu(@Nullable Object flyout) {
-        if (flyout instanceof Dialog dialog && dialog.isShowing()) {
-            Window window = dialog.getWindow();
-            if (window != null) {
-                window.setDimAmount(0.5f);
-                WindowManager.LayoutParams params = window.getAttributes();
-                params.alpha = 1f;
-                window.setAttributes(params);
-            }
-        } else if (flyout instanceof PopupWindow popupWindow && popupWindow.isShowing()) {
-            View content = popupWindow.getContentView();
-            if (content != null) {
-                content.setAlpha(1f);
-            }
-        }
-    }
-
-    /**
-     * The Watch later item was not found, such as when the video is already saved,
-     * so the video is saved with the same request as the player button.
-     */
-    private static void onPendingFallback() {
-        try {
-            if (pendingItemClicked) {
-                return;
-            }
-            Object flyout = pendingFlyoutRef.get();
-            String videoId = pendingVideoId.isEmpty() ? pendingCardVideoId : pendingVideoId;
-            final boolean saveToPlaylist = pendingSaveToPlaylist;
-            clearPendingWatchLater();
-            if (saveToPlaylist) {
-                showHiddenMenu(flyout);
-                return;
-            }
-            dismissSoon(flyout);
-
-            // Shows a toast if the id is not found.
-            SaveToWatchLaterPatch.saveVideo(videoId);
-        } catch (Exception ex) {
-            Logger.printException(() -> "onPendingFallback failure", ex);
-        }
-    }
-
-    /**
-     * The menu may be created before it is shown, so it is closed again after it is shown.
-     */
-    private static void dismissSoon(@Nullable Object flyout) {
-        if (flyout == null) {
-            return;
-        }
-        Runnable dismissIfShowing = () -> {
-            try {
-                if (flyout instanceof Dialog dialog && dialog.isShowing()) {
-                    dialog.dismiss();
-                } else if (flyout instanceof PopupWindow popupWindow && popupWindow.isShowing()) {
-                    popupWindow.dismiss();
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "dismiss failure", ex);
-            }
-        };
-        for (long delay : DISMISS_DELAYS_MS) {
-            handler.postDelayed(dismissIfShowing, delay);
+            Logger.printException(() -> "onFlyoutCreated failure", ex);
         }
     }
 }

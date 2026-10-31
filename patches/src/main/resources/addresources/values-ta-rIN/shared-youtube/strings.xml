@@ -18,7 +18,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_style_entry_3">Morphe நிறம்</string>
+  <string name="morphe_splash_screen_style_entry_5">Morphe மோனோக்ரோம்</string>
   <!-- misc.settings.settingsPatch -->
+  <string name="morphe_settings_new_indicator_days_title">புதிய அமைப்புகளை முன்னிலைப்படுத்து</string>
+  <string name="morphe_settings_new_indicator_days_summary">ஒரு புதுப்பிப்பின் மூலம் சேர்க்கப்பட்ட அமைப்புகள் மற்றும் விருப்பங்களுக்கு அருகில் எத்தனை நாட்களுக்கு ஒரு புள்ளி காட்டப்பட வேண்டும்</string>
+  <string name="morphe_settings_new_indicator_days_off">ஆஃப்</string>
   <!-- misc.initialization.initializationPatch -->
   <!-- layout.branding.baseCustomBrandingPatch -->
   <!-- layout.theme.baseThemePatch -->
@@ -60,5 +65,8 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- Video likes have been set to hidden by the video uploader. -->
+  <string name="morphe_ryd_accessibility_dislike_count">மற்ற %s பேருடன் சேர்ந்து இந்த வீடியோவை விரும்பவில்லை</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s நெட்வொர்க் அழைப்புகள் செய்யப்பட்டன</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s நெட்வொர்க் அழைப்புகள் காலாவதி ஆகின</string>
 </resources>

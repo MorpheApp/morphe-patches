@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">विविध</string>
   <string name="morphe_settings_screen_12_video_title">व्हिडिओ</string>
   <string name="morphe_restore_old_settings_menus_title">YouTube सेटिंग्ज स्क्रीन जुनी करा</string>
+  <string name="morphe_native_snackbar_title">YouTube स्नॅकबार्‌मध्ये संदेश दाखवा</string>
+  <string name="morphe_native_snackbar_summary">प्लेअर बटणची पुष्टी यांसारखे Morphe संदेश, पॉपअपऐवजी YouTube स्नॅकबारमध्ये दाखवले जातात</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">पार्श्वभूमीतील प्ले निर्बंध काढून टाका</string>
   <string name="morphe_shorts_disable_background_playback_title">पार्श्वभूमीतील प्लेबॅक बंद करा</string>
@@ -456,6 +458,14 @@ Second \"item\" text"</string>
   <string name="morphe_post_image_download_failed">प्रतिमा डाउनलोड करता आली नाही</string>
   <string name="morphe_post_image_download_not_found">या पोस्टमध्ये कोणतीही प्रतिमा आढळली नाही</string>
   <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">पोस्ट्स अनुवादित करा</string>
+  <string name="morphe_post_translate_summary">कंटेंट क्रिएटरच्या पोस्ट्स अनुवादित करण्यासाठी फ्लाईआउट मेनू आइटम जोडते</string>
+  <string name="morphe_post_translate_language_title">पोस्ट भाषांतरण भाषा</string>
+  <string name="morphe_post_translate_flyout">भाषांतर करा</string>
+  <string name="morphe_post_translate_flyout_original">मूळ दाखवा</string>
+  <string name="morphe_post_translate_started">भाषांतरित होत आहे…</string>
+  <string name="morphe_post_translate_failed">पोस्टचे भाषांतर होऊ शकले नाही</string>
+  <string name="morphe_post_translate_same_language">पोस्ट आधीच भाषांतरण भाषेत आहे</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">फ्लाईआउट मेनूमध्ये \'Ask\' आयटम जोडा</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">फीड फ्लाईआउट मेनूमध्ये व्हिडिओ सारांश आयटम जोडते</string>
@@ -505,7 +515,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">ऑडिओ</string>
   <string name="morphe_external_downloader_quick_options">सर्व पर्याय</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts मेनूमध्ये डाउनलोड दाखवा</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Shorts प्लेयरमध्ये बाह्य डाउनलोडर फ्लाईआउट मेनू आइटम जोडते</string>
   <string name="morphe_shorts_download_flyout_title">डाउनलोड</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">व्हॉईस ओव्हर भाषांतर</string>
@@ -581,6 +590,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_pip_button_overlay_title">पिक्चर-इन-पिक्चर बटण दाखवा</string>
   <string name="morphe_pip_button_flyout_title">पिक्चर-इन-पिक्चर मेनू दाखवा</string>
   <string name="morphe_pip_button_flyout_name">पिक्चर-इन-पिक्चरवर स्विच करा</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">\'प्ले ऑल\' बटण दर्शवा</string>
   <string name="morphe_play_all_button_summary">"चॅनेलवरील सर्व व्हिडिओंची प्लेलिस्ट तयार करण्यासाठी टॅप करा, पूर्ववत करण्यासाठी टॅप आणि होल्ड करा
@@ -613,10 +623,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_save_to_watch_later_flyout_title">नंतर पाहण्यासाठी सेव्ह करा</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">प्लेयर सेटिंग्ज फ्लाईआउटमध्ये \'नंतर पहा\' मध्ये जतन करा बटण दाखवा</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">व्हिडिओ सेटिंग्ज फ्लाईआउटमधून सध्या पाहत असलेला व्हिडिओ \'नंतर पहा\' मध्ये जतन करण्याची परवानगी देते</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">मुलांच्या व्हिडिओंमध्ये नंतर पाहण्यासाठी सेव्ह करा बटण दाखवा</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">फ्लाईआउट मेनूमधून मुलांशी संबंधित व्हिडिओ \'नंतर पहा\' मध्ये जतन करण्याची परवानगी देते</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">शॉर्ट्स फ्लाईआउटमध्ये \'नंतर पहा\' मध्ये जतन करा बटण दाखवा</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">फ्लाईआउट मेनूमधून शॉर्ट्स \'नंतर पहा\' मध्ये जतन करण्याची परवानगी देते</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Watch later ला प्लेलिस्टवर रिडायरेक्ट करा</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">नंतर पहा</string>
   <string name="morphe_queue_flyout_title">Morphe कतारमध्ये जोडा</string>
@@ -864,6 +870,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_fix_transcript_title">ट्रान्सक्रिप्ट सुधारा</string>
   <string name="morphe_fix_transcript_summary">ट्रान्सक्रिप्ट लोड होण्यापासून प्रतिबंधित करणारी अट तपासणी अपयश दूर करते</string>
   <string name="morphe_captions_in_pip_title">पिक्चर-इन-पिक्चरमध्ये कॅप्शन्स दाखवा</string>
+  <string name="morphe_stable_caption_blocks_title">स्थिर कॅप्शन ब्लॉक्स</string>
+  <string name="morphe_stable_caption_blocks_summary">स्वयंचलित कॅप्शन्सना स्थिर, वाचनीय ब्लॉक्समध्ये ग्रुप करा. काही शब्द बोलले जाण्यापूर्वी दिसू शकतात. रीस्टार्ट आवश्यक आहे.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">नेव्हिगेशन बटणे</string>
   <string name="morphe_navigation_buttons_screen_summary">तळाच्या नेव्हिगेशन बारमध्ये कोणते घटक दिसतात ते निवडा</string>
@@ -1212,6 +1220,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_miniplayer_disable_resuming_summary">\'Continue watching\' मिनीप्लेअर अक्षम करते, YouTube Premium चे वैशिष्ट्य जे ॲप सुरू झाल्यावर दिसते.</string>
   <string name="morphe_miniplayer_screen_title">मिनीप्लेअर</string>
   <string name="morphe_miniplayer_screen_summary">मिनीप्लेअरचे (Miniplayer) स्वरूप आणि वर्तन सानुकूलित (Customize) करा</string>
+  <string name="morphe_miniplayer_not_available_title">अतिरिक्त मिनीप्लेयर्स</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube ने सर्व अतिरिक्त मिनीप्लेयर्स काढून टाकले आहेत. अधिक मिनीप्लेयर प्रकार पुन्हा मिळवण्यासाठी, YouTube 21.28.208 किंवा त्यापेक्षा जुन्या आवृत्तीला पॅच करा</string>
   <string name="morphe_miniplayer_type_title">मिनीप्लेअर प्रकार</string>
   <string name="morphe_miniplayer_hide_title_title">शीर्षक आणि चॅनेल लपवा</string>
   <string name="morphe_miniplayer_type_entry_0">अक्षम</string>
@@ -1253,6 +1263,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_fix_status_bar_layout_summary">स्टेटस बारची लेआउट सुसंगत ठेवते, जेणेकरून तो टॉप बार्सना झाकणार नाही आणि प्लेयरच्या वर रिकामी जागा राहणार नाही. जर ॲप क्रॅश झाले किंवा टॉप बार्स चुकीचे दिसत असतील तर हे बंद करा</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_style_entry_6">ग्लो</string>
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">या डिव्हाइसद्वारे ग्लो स्प्लॅश स्क्रीनला सपोर्ट मिळत नाही</string>
   <string name="morphe_theme_color_light_title">लाइट थीम पार्श्वभूमी</string>
   <string name="morphe_theme_color_light_entry_2">पांढरा</string>

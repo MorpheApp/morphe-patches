@@ -29,6 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">Miscel·lània</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurar la pantalla de configuració antiga de YouTube</string>
+  <string name="morphe_native_snackbar_title">Mostrar els missatges a la barra de notifications de YouTube</string>
+  <string name="morphe_native_snackbar_summary">Els missatges de Morphe, com la confirmació d\'un botó del reproductor, es mostren a la barra de notifications de YouTube en lloc d\'una finestra emergent</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Eliminar restriccions de reproducció en segon pla</string>
   <string name="morphe_shorts_disable_background_playback_title">Desactivar la reproducció en segon pla</string>
@@ -59,6 +61,7 @@ Els canvis inclouen:
   <string name="morphe_hide_account_menu_title">Habilita el filtre del menú inferior de Biblioteca / Tu</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filtre del menú inferior de Biblioteca / Tu</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introdueix els noms del menú inferior de Biblioteca / Tu per filtrar, separats per noves línies</string>
+  <string name="morphe_hide_account_menu_downloads_title">Oculta les descàrregues</string>
   <string name="morphe_hide_album_cards_title">Ocultar targetes d\'àlbums</string>
   <string name="morphe_hide_album_cards_summary">Amaga les targetes d\'àlbums sota la descripció de l\'artista</string>
   <string name="morphe_hide_artist_cards_title">Ocultar targetes d\'artistes</string>
@@ -513,8 +516,23 @@ Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els v
   <string name="morphe_external_downloader_quick_audio">Àudio</string>
   <string name="morphe_external_downloader_quick_options">Totes les opcions</string>
   <string name="morphe_shorts_download_flyout_button_title">Mostra la descàrrega al menú de Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Afegeix un element de menú desplegable de descàrrega externa al reproductor de Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Afegeix un element de descàrrega al menú del reproductor de Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Descárrega</string>
+  <string name="morphe_export_download_folder_title">Exporta els vídeos descarregats</string>
+  <string name="morphe_export_download_folder_summary">"Exporta els vídeos descarregats dins de l'app a l'emmagatzematge del teu dispositiu mitjançant el menú desplegable de descàrregues de l'app. Toqueu per canviar la carpeta d'exportació
+
+Carpeta d'exportació: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Carpeta d\'exportació</string>
+  <string name="morphe_export_download_folder_change">Canvia la carpeta</string>
+  <string name="morphe_export_download_folder_changed">Carpeta d\'exportació canviada</string>
+  <string name="morphe_export_download_folder_reset">Carpeta d\'exportació ressetjada</string>
+  <string name="morphe_export_download_flyout_title">Exporta al dispositiu</string>
+  <string name="morphe_export_download_started">Exportant el vídeo</string>
+  <string name="morphe_export_download_progress">Exportant el vídeo: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Exportacions de vídeos</string>
+  <string name="morphe_export_download_saved">Vídeo exportat a %s</string>
+  <string name="morphe_export_download_failed">No s\'ha pogut exportar el vídeo</string>
+  <string name="morphe_export_download_canceled">Exportació cancel·lada</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducció de veu en off</string>
   <string name="morphe_vot_screen_summary">Llegeix els subtítols del vídeo en veu alta mitjançant el text a veu del dispositiu, sincronitzat amb la reproducció</string>
@@ -589,6 +607,19 @@ La vostra clau API mai s'ha de compartir. Qualsevol persona amb accés a ella po
   <string name="morphe_pip_button_overlay_title">Mostrar el botó de Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Mostrar el menú de Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_name">Passar a Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Accions de la imatge sobre imatge</string>
+  <string name="morphe_pip_actions_screen_summary">Canvia els botons que s\'esten mostrant en el mode imatge sobre imatge</string>
+  <string name="morphe_pip_action_left_title">Botó esquerre</string>
+  <string name="morphe_pip_action_center_title">Botó central</string>
+  <string name="morphe_pip_action_right_title">Botó dret</string>
+  <string name="morphe_pip_action_entry_default">Per defecte</string>
+  <string name="morphe_pip_action_entry_previous">Vídeo anterior</string>
+  <string name="morphe_pip_action_entry_next">Vídeo següent</string>
+  <string name="morphe_pip_action_entry_rewind">Roda enrere 10 segons</string>
+  <string name="morphe_pip_action_entry_fast_forward">Avança 10 segons</string>
+  <string name="morphe_pip_action_entry_play_pause">Reproduir/pausar</string>
+  <string name="morphe_pip_action_entry_background_playback">Reproducció en second pla</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mostra el botó de Reproduir tot</string>
   <string name="morphe_play_all_button_summary">"Toca per generar una llista de reproducció de tots els vídeos del canal, manté premut per desfer
@@ -621,10 +652,6 @@ Info: Potser no funcioni en les retransmissions en directe"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Desar a Veure més tard</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Mostra el botó Desar per veure més tard al menú desplegable de configuració del reproductor</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Permet desar el vídeo que s\'està veient actualment a \'Veure més tard\' des del menú desplegable de configuració del vídeo</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostrar el botó de Desau a Veure més tard en els vídeos per a nens</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permet desar els vídeos infantils a \'Veure més tard\' des del menú desplegable</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostra el botó de desar a Veure més tard al desplegable de shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permet desar els shorts a \'Veure més tard\' des del menú desplegable</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Redirigeix \"Veure més tard\" a una llista de reproducció</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Veure més tard</string>
   <string name="morphe_queue_flyout_title">Afegir a la cua de Morphe</string>
@@ -1226,6 +1253,10 @@ Limitació: Si 'Restaura la barra d'accions de vídeo antiga' està desactivada,
   <string name="morphe_miniplayer_not_available_summary">YouTube ha eliminat tots els miniplayers addicionals. Per restaurar més tipus de miniplayer, apliqueu el patch a YouTube 21.28.208 o anteriors</string>
   <string name="morphe_miniplayer_type_title">Tipus de miniplayer</string>
   <string name="morphe_miniplayer_hide_title_title">Ocultar títol i canal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Expandeix amb un desllisement cap amunt</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Desllisar el mini-reproductor cap amunt expandeix el reproductor, en lloc de moure el mini-reproductor a la part superior de la pantalla</string>
+  <string name="morphe_miniplayer_docked_title">Mini-reproductor fixat</string>
+  <string name="morphe_miniplayer_docked_summary">Fixa el mini-reproductor a la barra de navegació i als costats de la pantalla, en lloc de flotar per sobre d\'ells</string>
   <string name="morphe_miniplayer_type_entry_0">Deshabilitat</string>
   <string name="morphe_miniplayer_type_entry_1">Per defecte</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalista</string>
@@ -1268,6 +1299,8 @@ Limitació: Si 'Restaura la barra d'accions de vídeo antiga' està desactivada,
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">La pantalla de iniciació resplandecent no és compatible amb aquest dispositiu</string>
+  <string name="morphe_splash_screen_duration_title">Durada de l\'animació d\'inici</string>
+  <string name="morphe_splash_screen_duration_summary">Quant de temps es reprodueix l\'animació de resplendor. Toqueu l\'animació per saltar-la</string>
   <string name="morphe_theme_color_light_title">Fons del tema clar</string>
   <string name="morphe_theme_color_light_entry_2">Blanc</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Blanc)</string>

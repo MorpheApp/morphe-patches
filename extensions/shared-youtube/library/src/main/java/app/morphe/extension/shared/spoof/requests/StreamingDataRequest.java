@@ -218,12 +218,17 @@ public class StreamingDataRequest {
      * <p>
      * The clients are given by the caller instead of taken from the playback order, which stays at
      * the enum default while spoofing is off and then begins with a SABR client that has no urls.
+     *
+     * @param preferredClient Tried first, unless it is a SABR client.
      */
     public static StreamingDataRequest fetchRequestForDownload(String videoId,
                                                                List<ClientType> downloadClients,
                                                                ClientType preferredClient) {
-        ClientType[] clientOrder = buildClientOrder(downloadClients, preferredClient)
-                .toArray(new ClientType[0]);
+        List<ClientType> clients = buildClientOrder(downloadClients, preferredClient);
+        // SABR clients answer without the format urls a download needs,
+        // so the next client would never be tried.
+        clients.removeIf(client -> client.requireSABR);
+        ClientType[] clientOrder = clients.toArray(new ClientType[0]);
         // The video details name the saved file, so the download asks for them as well.
         // The auth hook keeps the headers even if spoofing is off, but it is not used by all apps.
         Map<String, String> headers = AuthUtils.getAuthorization().isEmpty()

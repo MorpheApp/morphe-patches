@@ -61,6 +61,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_account_menu_title">Bibliotheek / U onderste menufilter</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Bibliotheek / U onderste menufilter</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Voer de bibliotheek-/U onderste menunamen in om op te filteren, gescheiden door nieuwe regels</string>
+  <string name="morphe_hide_account_menu_downloads_title">Downloaden verbergen</string>
   <string name="morphe_hide_album_cards_title">Verberg albumkaarten</string>
   <string name="morphe_hide_album_cards_summary">Verbergt de albumkaarten onder de artiestbeschrijving</string>
   <string name="morphe_hide_artist_cards_title">Verberg artistkaarten</string>
@@ -515,8 +516,23 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Alle opties</string>
   <string name="morphe_shorts_download_flyout_button_title">Download tonen in Shorts-menu</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Voegt een extern downloadmenu-item toe aan de Shorts-speler</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Voegt een downloaditem toe aan het menu van de Shorts-speler</string>
   <string name="morphe_shorts_download_flyout_title">Download</string>
+  <string name="morphe_export_download_folder_title">Opgeslagen video\'s exporteren</string>
+  <string name="morphe_export_download_folder_summary">"Exporteer in de app opgeslagen video's naar de opslag van je apparaat via het downloadmenu. Tik om de exportmap te wijzigen
+
+Exportmap: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportmap</string>
+  <string name="morphe_export_download_folder_change">Map wijzigen</string>
+  <string name="morphe_export_download_folder_changed">Exportmap gewijzigd</string>
+  <string name="morphe_export_download_folder_reset">Exportmap hersteld</string>
+  <string name="morphe_export_download_flyout_title">Exporteren naar apparaat</string>
+  <string name="morphe_export_download_started">Video exporteren</string>
+  <string name="morphe_export_download_progress">Video exporteren: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Video-exports</string>
+  <string name="morphe_export_download_saved">Video geëxporteerd naar %s</string>
+  <string name="morphe_export_download_failed">Kon de video niet exporteren</string>
+  <string name="morphe_export_download_canceled">Export geannuleerd</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Spraakvertaling</string>
   <string name="morphe_vot_screen_summary">Lees ondertitels hardop voor met behulp van tekst-naar-spraak op het apparaat, gesynchroniseerd met het afspelen</string>
@@ -591,6 +607,19 @@ Uw API-sleutel mag nooit worden gedeeld. Iedereen met toegang tot deze sleutel k
   <string name="morphe_pip_button_overlay_title">Toon Picture-in-Picture-knop</string>
   <string name="morphe_pip_button_flyout_title">Toon Picture-in-Picture-menu</string>
   <string name="morphe_pip_button_flyout_name">Overschakelen naar Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Picture-in-picture acties</string>
+  <string name="morphe_pip_actions_screen_summary">Wijzig de knoppen die in picture-in-picture worden weergegeven</string>
+  <string name="morphe_pip_action_left_title">Linkerknop</string>
+  <string name="morphe_pip_action_center_title">Middenknop</string>
+  <string name="morphe_pip_action_right_title">Rechterknop</string>
+  <string name="morphe_pip_action_entry_default">Standaard</string>
+  <string name="morphe_pip_action_entry_previous">Vorige video</string>
+  <string name="morphe_pip_action_entry_next">Volgende video</string>
+  <string name="morphe_pip_action_entry_rewind">10 seconden terugspoelen</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 seconden vooruitspoelen</string>
+  <string name="morphe_pip_action_entry_play_pause">Afspelen/pauzeren</string>
+  <string name="morphe_pip_action_entry_background_playback">Achtergrondafspeling</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Toon Speel alles-knop</string>
   <string name="morphe_play_all_button_summary">"Tik om een afspeellijst van alle video's van het kanaal te genereren, houd ingedrukt om ongedaan te maken
@@ -623,10 +652,6 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Opslaan in Watch later</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Toon de knop \'Opslaan in Later bekijken\' in de instellingenflyout van de speler.</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Hiermee kun je de video die je momenteel bekijkt vanuit het uitklapmenu voor video-instellingen opslaan in \'Later bekijken\'.</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Toon knop Opslaan in Watch later bij kindervideo\'s</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Hiermee kunt u kindgerelateerde video\'s opslaan in \'Later bekijken\' via het flyoutmenu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Toon de knop \'Opslaan in Later bekijken\' in het flyoutmenu voor Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Hiermee kunt u Shorts opslaan in \'Later bekijken\' via het flyoutmenu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Stuur \'Later bekijken\' door naar afspeellijst</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Later bekijken</string>
   <string name="morphe_queue_flyout_title">Toevoegen aan Morphe-wachtrij</string>
@@ -1226,6 +1251,10 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_miniplayer_not_available_summary">YouTube heeft alle extra miniplayers verwijderd. Om meer miniplayer-typen te herstellen, patch dan YouTube 21.28.208 of ouder</string>
   <string name="morphe_miniplayer_type_title">\"miniplayer\"-type</string>
   <string name="morphe_miniplayer_hide_title_title">Verberg titel en kanaal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Uitvouwen door omhoog te vegen</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Door de geminiaturiseerde speler omhoog te vegen, wordt de speler uitgevouwen in plaats van de geminiaturiseerde speler naar de bovenkant van het scherm te verplaatsen</string>
+  <string name="morphe_miniplayer_docked_title">Gekoppelde geminiaturiseerde speler</string>
+  <string name="morphe_miniplayer_docked_summary">Koppelt de geminiaturiseerde speler aan de navigatiebalk en de zijkanten van het scherm, in plaats van eroverheen te zweven</string>
   <string name="morphe_miniplayer_type_entry_0">Uitgeschakeld</string>
   <string name="morphe_miniplayer_type_entry_1">Standaard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaal</string>
@@ -1268,6 +1297,8 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow splash screen wordt niet ondersteund door dit apparaat</string>
+  <string name="morphe_splash_screen_duration_title">Duur startanimatie</string>
+  <string name="morphe_splash_screen_duration_summary">Hoe lang de gloei-animatie wordt afgespeeld. Tik op de animatie om deze over te slaan</string>
   <string name="morphe_theme_color_light_title">Achtergrond van het lichtthema</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Wit)</string>

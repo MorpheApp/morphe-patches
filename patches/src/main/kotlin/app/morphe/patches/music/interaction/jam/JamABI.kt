@@ -301,7 +301,7 @@ private fun BytecodePatchContext.resolveLocalMode(mode: MethodReference): FieldR
     require(AccessFlags.ENUM.isSet(enum.accessFlags)) { "Jam queue mode is not an enum" }
     return localQueueModeFingerprint(enum.type)
         .instructionMatches[2]
-        .getFieldAccessed()
+        .fieldReference
 }
 
 internal fun BytecodePatchContext.resolveDisplays(

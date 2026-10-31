@@ -713,12 +713,15 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: जुड़ा हुआ! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: कनेक्शन विफल। सेटिंग्स की जाँच करें।</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">सबसे पहले API कुंजी दर्ज करें</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">कनेक्शन टेस्ट करें</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">मॉडल लाए जा रहे हैं…</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">मॉडल प्राप्त करें</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">एक मॉडल चुनें</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">मॉडल लाने में विफल। API कुंजी या कनेक्शन की जाँच करें।</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">प्रॉम्प्ट</string>
   <string name="morphe_music_lyrics_ai_config_model_label">मॉडल</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">बेस URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">सर्विस प्रीसेट्स</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">सेवा चुनें</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API कुंजी (वैकल्पिक)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">अतिरिक्त अनुरोध बॉडी (वैकल्पिक JSON)</string>

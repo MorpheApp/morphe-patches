@@ -18,6 +18,8 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_native_snackbar_title">YouTube snackbar-இல் செய்திகளைக் காட்டு</string>
+  <string name="morphe_native_snackbar_summary">பிளேயர் பொத்தானின் உறுதிப்படுத்தல் போன்ற Morphe செய்திகள், பாப்-அப்-க்கு பதிலாக YouTube snackbar-இல் காட்டப்படும்</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -62,6 +64,14 @@ Second \"item\" text"</string>
   <!-- interaction.feedactions.feedVideoActionsPatch -->
   <!-- interaction.postimages.postImageDownloadPatch -->
   <!-- interaction.posttranslate.postTranslatePatch -->
+  <string name="morphe_post_translate_title">பதிவுகளை மொழிபெயர்க்கவும்</string>
+  <string name="morphe_post_translate_summary">உள்ளடக்க உருவாக்குநர்களின் பதிவுகளை மொழிபெயர்ப்பதற்கான ஒரு flyout மெனு உருப்படியைச் சேர்க்கிறது</string>
+  <string name="morphe_post_translate_language_title">பதிவு மொழிபெயர்ப்பு மொழி</string>
+  <string name="morphe_post_translate_flyout">மொழிபெயர்க்கவும்</string>
+  <string name="morphe_post_translate_flyout_original">அசல் பதிவைக் காட்டு</string>
+  <string name="morphe_post_translate_started">மொழிபெயர்க்கப்படுகிறது…</string>
+  <string name="morphe_post_translate_failed">பதிவை மொழிபெயர்க்க முடியவில்லை</string>
+  <string name="morphe_post_translate_same_language">பதிவு ஏற்கனவே மொழிபெயர்ப்பு மொழியிலேயே உள்ளது</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
@@ -78,6 +88,7 @@ Second \"item\" text"</string>
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
   <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
@@ -118,6 +129,8 @@ Second \"item\" text"</string>
   <!-- layout.captions.autoTranslateCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_stable_caption_blocks_title">நிலையான தலைப்பு தொகுதிகள்</string>
+  <string name="morphe_stable_caption_blocks_summary">தானியங்கி தலைப்புகளை நிலையான, படிக்கக்கூடிய தொகுதிகளாக குழுவாக்கவும். சில வார்த்தைகள் பேசப்படுவதற்கு முன்பே தோன்றலாம். மறுதொடக்கம் அவசியம்.</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -187,10 +200,14 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.feedcards.feedCardLayoutPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_not_available_title">கூடுதல் மினிபிளேயர்கள்</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube அனைத்து கூடுதல் மினிபிளேயர்களையும் நீக்கிவிட்டது. கூடுதல் மினிபிளேயர் வகைகளை மீட்டெடுக்க, YouTube 21.28.208 அல்லது அதற்கு முந்தைய பதிப்பை பேட்ச் செய்யவும்</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.animations.forceAnimationsPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
+  <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->

@@ -61,6 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">लाइब्रेरी / आप निचला मेनू फ़िल्टर चालू करें</string>
   <string name="morphe_hide_account_menu_filter_strings_title">लाइब्रेरी / आप निचला मेनू फ़िल्टर</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">फ़िल्टर करने के लिए लाइब्रेरी / आप निचले मेनू के नाम दर्ज करें, प्रत्येक नाम नई लाइन में</string>
+  <string name="morphe_hide_account_menu_downloads_title">डाउनलोड छुपाएं</string>
   <string name="morphe_hide_album_cards_title">एल्बम कार्ड छिपाएँ</string>
   <string name="morphe_hide_album_cards_summary">कलाकार के विवरण के नीचे दिखने वाले एल्बम कार्ड छिपाता है</string>
   <string name="morphe_hide_artist_cards_title">कलाकार कार्ड छिपाएँ</string>
@@ -515,8 +516,23 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">ऑडियो</string>
   <string name="morphe_external_downloader_quick_options">सभी विकल्प</string>
   <string name="morphe_shorts_download_flyout_button_title">Shorts मेनू में डाउनलोड दिखाएं</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Shorts प्लेयर में बाहरी डाउनलोडर फ्लाउट मेनू आइटम जोड़ें</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Shorts प्लेयर के मेनू में डाउनलोड आइटम जोड़ता है</string>
   <string name="morphe_shorts_download_flyout_title">डाउनलोड करें</string>
+  <string name="morphe_export_download_folder_title">सेव किए गए वीडियो एक्सपोर्ट करें</string>
+  <string name="morphe_export_download_folder_summary">"इन-ऐप डाउनलोड्स फ्लाईआउट मेनू का उपयोग करके इन-ऐप सेव किए गए वीडियो को अपने डिवाइस स्टोरेज में एक्सपोर्ट करें। एक्सपोर्ट फ़ोल्डर बदलने के लिए टैप करें
+
+एक्सपोर्ट फ़ोल्डर: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">एक्सपोर्ट फ़ोल्डर</string>
+  <string name="morphe_export_download_folder_change">फ़ोल्डर बदलें</string>
+  <string name="morphe_export_download_folder_changed">एक्सपोर्ट फ़ोल्डर बदल गया</string>
+  <string name="morphe_export_download_folder_reset">एक्सपोर्ट फ़ोल्डर रीसेट किया गया</string>
+  <string name="morphe_export_download_flyout_title">डिवाइस पर एक्सपोर्ट करें</string>
+  <string name="morphe_export_download_started">वीडियो एक्सपोर्ट हो रहा है</string>
+  <string name="morphe_export_download_progress">वीडियो एक्सपोर्ट हो रहा है: %d%%</string>
+  <string name="morphe_export_download_notification_channel">वीडियो एक्सपोर्ट</string>
+  <string name="morphe_export_download_saved">वीडियो %s पर एक्सपोर्ट किया गया</string>
+  <string name="morphe_export_download_failed">वीडियो एक्सपोर्ट नहीं किया जा सका</string>
+  <string name="morphe_export_download_canceled">एक्सपोर्ट रद्द कर दिया गया</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">वॉइस ओवर अनुवाद</string>
   <string name="morphe_vot_screen_summary">डिवाइस पर टेक्स्ट-टू-स्पीच का उपयोग करके वीडियो कैप्शन को ज़ोर से पढ़ें, जो प्लेबैक के साथ सिंक्रनाइज़ किया गया है।</string>
@@ -591,6 +607,19 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_pip_button_overlay_title">पिक्चर-इन-पिक्चर बटन दिखाएँ</string>
   <string name="morphe_pip_button_flyout_title">पिक्चर-इन-पिक्चर मेनू दिखाएँ</string>
   <string name="morphe_pip_button_flyout_name">पिक्चर-इन-पिक्चर पर स्विच करें</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">पिक्चर-इन-पिक्चर एक्शन</string>
+  <string name="morphe_pip_actions_screen_summary">पिक्चर-इन-पिक्चर में दिखाए जाने वाले बटन बदलें</string>
+  <string name="morphe_pip_action_left_title">बायां बटन</string>
+  <string name="morphe_pip_action_center_title">बीच वाला बटन</string>
+  <string name="morphe_pip_action_right_title">दायां बटन</string>
+  <string name="morphe_pip_action_entry_default">डिफ़ॉल्ट</string>
+  <string name="morphe_pip_action_entry_previous">पिछला वीडियो</string>
+  <string name="morphe_pip_action_entry_next">अगला वीडियो</string>
+  <string name="morphe_pip_action_entry_rewind">10 सेकंड पीछे जाएं</string>
+  <string name="morphe_pip_action_entry_fast_forward">10 सेकंड आगे जाएं</string>
+  <string name="morphe_pip_action_entry_play_pause">चलाएं/रोकें</string>
+  <string name="morphe_pip_action_entry_background_playback">बैकग्राउंड प्लेबैक</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">प्ले ऑल बटन दिखाएं</string>
   <string name="morphe_play_all_button_summary">"प्लेलिस्ट उत्पन्न करने के लिए टैप करें चैनल के सभी वीडियो का, टैप और होल्ड करके पूर्ववत करें
@@ -623,10 +652,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_save_to_watch_later_flyout_title">बाद में देखने के लिए सहेजें</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">प्लेयर सेटिंग फ्लाईआउट में बाद में देखने के लिए सेव करें बटन दिखाएँ</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">वीडियो सेटिंग फ्लाईआउट से वर्तमान में देखे जा रहे वीडियो को \'बाद में देखें\' में सेव करने की अनुमति देता है</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">बच्चों के वीडियो में \'बाद में देखने के लिए सहेजें\' बटन दिखाएं</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">फ्लाईआउट मेनू से बच्चों से जुड़े वीडियो को \'बाद में देखें\' में सेव करने की अनुमति देता है</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">शॉर्ट्स फ्लाईआउट में बाद में देखने के लिए सेव करें बटन दिखाएँ</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">फ्लाईआउट मेनू से शॉर्ट्स को \'बाद में देखें\' में सेव करने की अनुमति देता है</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">\'Watch later\' को प्लेलिस्ट पर रीडायरेक्ट करें</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">बाद में देखें</string>
   <string name="morphe_queue_flyout_title">Morphe कतार में जोड़ें</string>
@@ -1228,6 +1253,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_miniplayer_not_available_summary">YouTube ने सभी अतिरिक्त मिनीप्लेयर हटा दिए हैं। अधिक मिनीप्लेयर प्रकारों को रिस्टोर करने के लिए, YouTube 21.28.208 या उससे पुराने वर्ज़न को पैच करें</string>
   <string name="morphe_miniplayer_type_title">मिनीप्लेयर प्रकार</string>
   <string name="morphe_miniplayer_hide_title_title">शीर्षक और चैनल छिपाएँ</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">ऊपर की ओर स्वाइप करके विस्तार करें</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">मिनीप्लेयर को ऊपर की ओर स्वाइप करने से प्लेयर विस्तार करता है, बजाय मिनीप्लेयर को स्क्रीन के शीर्ष पर ले जाने के</string>
+  <string name="morphe_miniplayer_docked_title">डॉक्ड मिनीप्लेयर</string>
+  <string name="morphe_miniplayer_docked_summary">मिनीप्लेयर को नेविगेशन बार और स्क्रीन के किनारों से जोड़ता है, बजाय उनके ऊपर तैरने के</string>
   <string name="morphe_miniplayer_type_entry_0">अक्षम</string>
   <string name="morphe_miniplayer_type_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_miniplayer_type_entry_2">न्यूनतम</string>
@@ -1270,6 +1299,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_splash_screen_style_entry_7">Morphe ग्लो 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe ग्लो 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">यह डिवाइस ग्लो स्प्लैश स्क्रीन का समर्थन नहीं करता है</string>
+  <string name="morphe_splash_screen_duration_title">स्टार्टअप एनीमेशन अवधि</string>
+  <string name="morphe_splash_screen_duration_summary">ग्लो एनीमेशन कितनी देर तक चलेगा। इसे स्किप करने के लिए एनीमेशन पर टैप करें</string>
   <string name="morphe_theme_color_light_title">लाइट थीम की पृष्ठभूमि</string>
   <string name="morphe_theme_color_light_entry_2">सफेद</string>
   <string name="morphe_theme_color_light_entry_3">मटेरियल यू (सफेद) </string>

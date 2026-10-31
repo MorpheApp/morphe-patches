@@ -61,6 +61,7 @@ Vissa serverbaserade layouts kanske inte återgår.
   <string name="morphe_hide_account_menu_title">Aktivera filter för nedre meny i Bibliotek/Ditt YouTube </string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filter för nedre meny i Bibliotek/Ditt YouTube</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Ange namnen på de objekt i nedre menyn i Bibliotek/Ditt YouTube som ska filtreras bort, åtskilda av nya rader</string>
+  <string name="morphe_hide_account_menu_downloads_title">Dölj nedladdningar</string>
   <string name="morphe_hide_album_cards_title">Dölj albumkort</string>
   <string name="morphe_hide_album_cards_summary">Döljer albumkorten under artistbeskrivningen</string>
   <string name="morphe_hide_artist_cards_title">Dölj artistkort</string>
@@ -515,8 +516,23 @@ När en video med Ask-knappen har öppnats en gång fungerar funktionen med alla
   <string name="morphe_external_downloader_quick_audio">Ljud</string>
   <string name="morphe_external_downloader_quick_options">Alla alternativ</string>
   <string name="morphe_shorts_download_flyout_button_title">Visa nedladdning i Shorts-menyn</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Lägger till ett menyalternativ för extern nedladdare i Shorts-spelaren</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Lägger till ett alternativ för nedladdning i menyn för Shorts-spelaren</string>
   <string name="morphe_shorts_download_flyout_title">Ladda ned</string>
+  <string name="morphe_export_download_folder_title">Exportera sparade videor</string>
+  <string name="morphe_export_download_folder_summary">"Exportera videor sparade i appen till enhetens lagring med hjälp av menyn för nedladdningar i appen. Trycka för att ändra exportmapp
+
+Exportmapp: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportmapp</string>
+  <string name="morphe_export_download_folder_change">Byt mapp</string>
+  <string name="morphe_export_download_folder_changed">Exportmapp ändrad</string>
+  <string name="morphe_export_download_folder_reset">Exportmapp återställd</string>
+  <string name="morphe_export_download_flyout_title">Exportera till enhet</string>
+  <string name="morphe_export_download_started">Exporterar video</string>
+  <string name="morphe_export_download_progress">Exporterar video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Videoexporter</string>
+  <string name="morphe_export_download_saved">Video exporterad till %s</string>
+  <string name="morphe_export_download_failed">Kunde inte exportera videon</string>
+  <string name="morphe_export_download_canceled">Export avbruten</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Voice over-översättning</string>
   <string name="morphe_vot_screen_summary">Läs upp video-textning med hjälp av enhetens text-till-tal, synkroniserat med uppspelning</string>
@@ -591,6 +607,19 @@ Din API-nyckel ska aldrig delas. Alla som har åtkomst till den kan använda din
   <string name="morphe_pip_button_overlay_title">Visa bild-i-bild-knappen</string>
   <string name="morphe_pip_button_flyout_title">Visa bild-i-bild-menyn</string>
   <string name="morphe_pip_button_flyout_name">Växla till bild-i-bild</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Åtgärder för bild-i-bild</string>
+  <string name="morphe_pip_actions_screen_summary">Ändra knapparna som visas i bild-i-bild</string>
+  <string name="morphe_pip_action_left_title">Vänster knapp</string>
+  <string name="morphe_pip_action_center_title">Mittenknapp</string>
+  <string name="morphe_pip_action_right_title">Höger knapp</string>
+  <string name="morphe_pip_action_entry_default">Standard</string>
+  <string name="morphe_pip_action_entry_previous">Föregående video</string>
+  <string name="morphe_pip_action_entry_next">Nästa video</string>
+  <string name="morphe_pip_action_entry_rewind">Spola tillbaka 10 sekunder</string>
+  <string name="morphe_pip_action_entry_fast_forward">Spola framåt 10 sekunder</string>
+  <string name="morphe_pip_action_entry_play_pause">Spela/pausa</string>
+  <string name="morphe_pip_action_entry_background_playback">Bakgrundsuppspelning</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Visa knappen Spela upp alla</string>
   <string name="morphe_play_all_button_summary">"Tryck för att generera en spellista med alla videor från kanalen, tryck länge för att ångra
@@ -623,10 +652,6 @@ Information: Kanske inte fungerar i livestreamar"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Spara till Titta senare</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Visa knappen Spara till Titta senare i den utfällbara menyn för spelarinställningar</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Gör det möjligt att spara den video som du tittar på just nu i \'Titta senare\' från den utfällbara menyn för videoinställningar</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Visa knappen Spara till Titta senare i barnvideor</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Gör det möjligt att spara barnrelaterade videor i \'Titta senare\' från den utfällbara menyn</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Visa knappen Spara till Titta senare i den utfällbara menyn för Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Gör det möjligt att spara Shorts i \'Titta senare\' från den utfällbara menyn</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Omdirigera Se senare till spellista</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Titta senare</string>
   <string name="morphe_queue_flyout_title">Lägg till i Morphe-kön</string>
@@ -1228,6 +1253,10 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_miniplayer_not_available_summary">YouTube tog bort alla ytterligare minispelare. För att återställa fler typer av minispelare, patcha YouTube 21.28.208 eller äldre</string>
   <string name="morphe_miniplayer_type_title">Minispelartyp</string>
   <string name="morphe_miniplayer_hide_title_title">Dölj titel och kanal</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Expandera genom att svepa uppåt</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Genom att svepa minispelaren uppåt expanderas spelaren, istället för att minispelaren flyttas till skärmens överkant</string>
+  <string name="morphe_miniplayer_docked_title">Fastlåst minispelare</string>
+  <string name="morphe_miniplayer_docked_summary">Fäster minispelaren vid navigeringsfältet och skärmens sidor, istället för att den svävar ovanför dem</string>
   <string name="morphe_miniplayer_type_entry_0">Inaktiverad</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1270,6 +1299,8 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow-stänkbild skärm är inte supported av den här enheten</string>
+  <string name="morphe_splash_screen_duration_title">Varaktighet för startanimation</string>
+  <string name="morphe_splash_screen_duration_summary">Hur länge glödanimationen spelas. Tryck på animationen för att hoppa över den</string>
   <string name="morphe_theme_color_light_title">Bakgrundsfärg för ljust tema</string>
   <string name="morphe_theme_color_light_entry_2">Vit</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Vit)</string>

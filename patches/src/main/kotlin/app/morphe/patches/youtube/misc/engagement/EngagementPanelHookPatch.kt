@@ -3,7 +3,6 @@ package app.morphe.patches.youtube.misc.engagement
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.EngagementPanelControllerFingerprint
@@ -28,7 +27,7 @@ val engagementPanelHookPatch = bytecodePatch(
     execute {
         EngagementPanelControllerFingerprint.let {
             it.method.apply {
-                panelIdField = it.instructionMatches.last().instruction.getReference<FieldReference>()!!
+                panelIdField = it.instructionMatches.last().fieldReference
                 panelIdIndex = it.instructionMatches[5].index
 
                 with(getInstruction<TwoRegisterInstruction>(panelIdIndex)) {

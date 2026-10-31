@@ -718,12 +718,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: מחובר! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s: חיבור נכשל. בדוק את ההגדרות.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">הזן את מפתח ה-API קודם</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">בדיקת חיבור</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">מביא מודלים...</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">הבאת מודלים</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">בחר מודל</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">נכשל השליפה של המודלים. בדוק את מפתח ה-API או את החיבור.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">פקודה</string>
   <string name="morphe_music_lyrics_ai_config_model_label">מודל</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL בסיסי</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">הגדרות קבע של השירות</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">בחר שירות</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">מפתח API (אופציונלי)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">גוף בקשה נוסף (JSON אופציונלי)</string>

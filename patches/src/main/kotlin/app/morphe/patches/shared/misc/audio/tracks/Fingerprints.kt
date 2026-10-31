@@ -15,9 +15,9 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -56,7 +56,7 @@ internal object AudioTrackRecordToStringFingerprint : Fingerprint(
             opcode = Opcode.IGET_BOOLEAN,
             definingClass = "this",
             type = "Z",
-            location = MatchAfterWithin(5)
+            location = MatchAfterWithin(8)
         ),
         string("id;displayName;isAutoDubbed;isDefault")
     )

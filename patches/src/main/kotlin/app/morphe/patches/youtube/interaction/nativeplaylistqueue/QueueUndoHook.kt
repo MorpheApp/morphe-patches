@@ -10,12 +10,10 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 /** Parse feedback with the native registry and chain its existing snackbar callback. */
@@ -35,13 +33,13 @@ internal fun installQueueUndo(context: BytecodePatchContext, callback: MethodRef
     )
 
     val modern = QueueSnackbarModernFactoryFingerprint.matchSingle()
-    val listenerType = modern.instructionMatches.first().instruction.getReference<MethodReference>()!!.definingClass
+    val listenerType = modern.instructionMatches.first().methodReference.definingClass
 
     installQueueSaveConfirmationDuration(context)
     installQueuePlayerClose(this, endpointType, callback)
 
     val dispatcher = queueSnackbarDispatcherFingerprint(callback.definingClass).matchSingle()
-        .instructionMatches.single().instruction.getReference<FieldReference>()!!
+        .instructionMatches.single().fieldReference
 
     // Modern buttons can carry service, navigation and command endpoints. Intercept
     // only the three dispatches supplied by this snackbar factory, not other lambda cases.

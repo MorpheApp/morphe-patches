@@ -195,15 +195,15 @@ val ambientModePatch = bytecodePatch(
         val rendererType = rendererClass.type
 
         val styleMatches = cinematicContainerPresentationStyleFingerprint(rendererType).instructionMatches
-        val hasBitsField = styleMatches[0].getFieldAccessed()
+        val hasBitsField = styleMatches[0].fieldReference
         val styleHasBitMask = styleMatches[1].getInstruction<NarrowLiteralInstruction>().narrowLiteral
-        val styleField = styleMatches[3].getFieldAccessed()
+        val styleField = styleMatches[3].fieldReference
 
         val configField = cinematicContainerConfigFingerprint(rendererType).matchSingle()
-            .instructionMatches.last().getFieldAccessed()
+            .instructionMatches.last().fieldReference
         val configType = configField.type
         val enabledByDefaultField = cinematicContainerEnabledByDefaultFingerprint(configType).matchSingle()
-            .instructionMatches[3].getFieldAccessed()
+            .instructionMatches[3].fieldReference
 
         val defaultRendererField = rendererClass.fields.first { field ->
             field.type == rendererType && AccessFlags.STATIC.isSet(field.accessFlags)
@@ -212,8 +212,8 @@ val ambientModePatch = bytecodePatch(
         val stateType = CinematicContainerRendererWithStateFingerprint.method
             .findFieldFromToString("rendererLoadedState=").type
         val stateMatch = cinematicContainerRendererLoadedStateFingerprint(stateType).matchSingle()
-        val waitingStateField = stateMatch.instructionMatches[1].getFieldAccessed()
-        val loadedStateField = stateMatch.instructionMatches[3].getFieldAccessed()
+        val waitingStateField = stateMatch.instructionMatches[1].fieldReference
+        val loadedStateField = stateMatch.instructionMatches[3].fieldReference
 
         CinematicContainerRendererWithStateFingerprint.classDef.apply {
             val constructor = methods.first { method ->

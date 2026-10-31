@@ -718,12 +718,15 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：已连接！（%2$s）</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%1$s：连接失败。请检查设置。</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">请先输入API密钥</string>
+  <string name="morphe_music_lyrics_ai_config_test_connection">测试连接</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">正在获取模型……</string>
+  <string name="morphe_music_lyrics_ai_config_fetch_models">获取模型</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">选择模型</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">获取模型失败。请检查 API 密钥或网络连接。</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">提示词</string>
   <string name="morphe_music_lyrics_ai_config_model_label">型号</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">基础 URL</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_presets">服务预设</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">选择服务</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API 密钥 (可选)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">额外请求正文（可选 JSON）</string>

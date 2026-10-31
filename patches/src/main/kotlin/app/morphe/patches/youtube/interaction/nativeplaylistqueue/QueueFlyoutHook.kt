@@ -11,13 +11,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.youtube.layout.flyout.FeedFlyoutButtonsInitializerFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val ACTIONS = "Lapp/morphe/extension/youtube/patches/queue/QueueFlyoutActions;"
 private const val MESSAGE = "Lcom/google/protobuf/MessageLite;"
@@ -26,12 +23,12 @@ private const val MESSAGE = "Lcom/google/protobuf/MessageLite;"
 internal fun installQueueFlyout(context: BytecodePatchContext) = with(context) {
     val sheets = QueueFlyoutRendererFingerprint.matchAll(2..2)
     val menuTypes = sheets.map {
-        it.instructionMatches[0].instruction.getReference<FieldReference>()!!.type
+        it.instructionMatches[0].fieldReference.type
     }.distinct()
     check(menuTypes.size == 1) { "Native queue menus must share their renderer type" }
     val menuType = menuTypes.single()
     val itemFields = sheets.map {
-        it.instructionMatches[1].instruction.getReference<FieldReference>()!!
+        it.instructionMatches[1].fieldReference
     }.distinctBy { it.toString() }
     check(itemFields.size == 1) { "Native queue menus must share their item list" }
     val resolverType = QueueFlyoutResolverFingerprint.originalClassDef.type
@@ -41,13 +38,13 @@ internal fun installQueueFlyout(context: BytecodePatchContext) = with(context) {
     // type. Direct sheet clicks can bypass its Runnable, so intercept both native
     // dispatchers before their backend command, retaining their dismissal branch.
     val factory = FeedFlyoutButtonsInitializerFingerprint.instructionMatches
-    val iconGetter = factory.first().instruction.getReference<MethodReference>()!!
-    val iconField = factory[6].instruction.getReference<FieldReference>()!!
-    val iconEnum = factory[7].instruction.getReference<MethodReference>()!!
+    val iconGetter = factory.first().methodReference
+    val iconField = factory[6].fieldReference
+    val iconEnum = factory[7].methodReference
     val itemType = iconGetter.parameterTypes.single().toString()
     val buttonType = queueFlyoutButtonConstructorFingerprint(
         FeedFlyoutButtonsInitializerFingerprint.originalMethod, itemType
-    ).instructionMatches.single().instruction.getReference<MethodReference>()!!.definingClass
+    ).instructionMatches.single().methodReference.definingClass
     for (sheet in sheets) {
         val click = queueFlyoutClickFingerprint(
             sheet.originalClassDef.type, buttonType, itemType

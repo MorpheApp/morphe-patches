@@ -61,6 +61,7 @@ Změny zahrnují:
   <string name="morphe_hide_account_menu_title">Povolit filtr spodní karty Knihovna / Vy</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filtr spodní karty Knihovna / Vy</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Zadáním názvů (každý na nový řádek) vyfiltrujete položky spodní kartě Knihovna / Vy</string>
+  <string name="morphe_hide_account_menu_downloads_title">Skrýt Stáhnuté</string>
   <string name="morphe_hide_album_cards_title">Skrýt karty alb</string>
   <string name="morphe_hide_album_cards_summary">Skryje karty alb pod popisem interpreta</string>
   <string name="morphe_hide_artist_cards_title">Skrýt karty interpretů</string>
@@ -515,8 +516,23 @@ Po jednom otevření videa s tlačítkem Ask funguje funkce se všemi videi, i k
   <string name="morphe_external_downloader_quick_audio">Zvuk</string>
   <string name="morphe_external_downloader_quick_options">Všechny možnosti</string>
   <string name="morphe_shorts_download_flyout_button_title">Zobrazit stahování v menu Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Přidá položku externího stahovače do vysouvacího menu přehrávače Shorts</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Přidá položku stahování do menu přehrávače Shorts</string>
   <string name="morphe_shorts_download_flyout_title">Stáhnout</string>
+  <string name="morphe_export_download_folder_title">Exportovat uložená videa</string>
+  <string name="morphe_export_download_folder_summary">"Exportujte v aplikaci uložená videa do úložiště svého zařízení pomocí menu stahování. Klepnutím změníte složku pro export
+
+Složka pro export: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Složka pro export</string>
+  <string name="morphe_export_download_folder_change">Změnit složku</string>
+  <string name="morphe_export_download_folder_changed">Složka pro export byla změněna</string>
+  <string name="morphe_export_download_folder_reset">Složka pro export byla resetována</string>
+  <string name="morphe_export_download_flyout_title">Exportovat do zařízení</string>
+  <string name="morphe_export_download_started">Exportování videa</string>
+  <string name="morphe_export_download_progress">Exportování videa: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Exporty videí</string>
+  <string name="morphe_export_download_saved">Video bylo exportováno do %s</string>
+  <string name="morphe_export_download_failed">Nepodařilo se exportovat video</string>
+  <string name="morphe_export_download_canceled">Export zrušen</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hlasový překlad</string>
   <string name="morphe_vot_screen_summary">Přečte titulky videa nahlas pomocí text-to-speech v zařízení, synchronizovaně s přehráváním</string>
@@ -591,6 +607,19 @@ API klíč by se nikdy neměl sdílet. Kdokoli s přístupem k němu může pou�
   <string name="morphe_pip_button_overlay_title">Zobrazit tlačítko pro obraz v obraze</string>
   <string name="morphe_pip_button_flyout_title">Zobrazit nabídku pro obraz v obraze</string>
   <string name="morphe_pip_button_flyout_name">Přepnout na obraz v obraze</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Akce picture-in-picture</string>
+  <string name="morphe_pip_actions_screen_summary">Změňte tlačítka zobrazená v režimu picture-in-picture</string>
+  <string name="morphe_pip_action_left_title">Levé tlačítko</string>
+  <string name="morphe_pip_action_center_title">Středové tlačítko</string>
+  <string name="morphe_pip_action_right_title">Pravé tlačítko</string>
+  <string name="morphe_pip_action_entry_default">Výchozí</string>
+  <string name="morphe_pip_action_entry_previous">Předchozí video</string>
+  <string name="morphe_pip_action_entry_next">Další video</string>
+  <string name="morphe_pip_action_entry_rewind">Vracet o 10 sekund</string>
+  <string name="morphe_pip_action_entry_fast_forward">Vycházet o 10 sekund vpřed</string>
+  <string name="morphe_pip_action_entry_play_pause">Hrát/pauza</string>
+  <string name="morphe_pip_action_entry_background_playback">Přehrávání na pozadí</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Zobrazit tlačítko Přehrát vše</string>
   <string name="morphe_play_all_button_summary">"Klepnutím vygenerujete seznam přehrávání všech videí z kanálu, podržením zrušíte
@@ -623,10 +652,6 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Uložit do seznamu Později</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Zobrazit tlačítko Uložit do seznamu Přehrát později v rozbalovací nabídce nastavení přehrávače</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Umožňuje uložit právě sledované video do seznamu „Přehrát později“ z rozbalovací nabídky nastavení videa</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Zobrazit tlačítko Uložit do seznamu Později u videí pro děti</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umožňuje ukládat videa související s dětmi do seznamu „Přehrát později“ z rozbalovací nabídky</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Zobrazit tlačítko Uložit k přehrání později v nabídce Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Umožňuje ukládat Shorts do seznamu „Přehrát později“ z rozbalovací nabídky</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Přesměrovat \"Sledovat později\" do seznamu přehrávání</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Sledovat později</string>
   <string name="morphe_queue_flyout_title">Přidat do Morphe fronty</string>
@@ -1226,6 +1251,10 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <string name="morphe_miniplayer_not_available_summary">YouTube odstranil všechny další mini přehrávače. Chcete-li obnovit více typů mini přehrávačů, patchujte YouTube 21.28.208 nebo starší verzi</string>
   <string name="morphe_miniplayer_type_title">Typ mini přehrávače</string>
   <string name="morphe_miniplayer_hide_title_title">Skrýt název a kanál</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Rozbalit potažením nahoru</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Potažením minimalizovaného přehrávače nahoru se přehrávač rozbalí, namísto toho, aby se minimalizovaný přehrávač pouze přesunul na horní část obrazovky</string>
+  <string name="morphe_miniplayer_docked_title">Přikotvený minimalizovaný přehrávač</string>
+  <string name="morphe_miniplayer_docked_summary">Přichytí minimalizovaný přehrávač k navigační liště a okrajům obrazovky, místo aby nad nimi plaval</string>
   <string name="morphe_miniplayer_type_entry_0">Vypnuto</string>
   <string name="morphe_miniplayer_type_entry_1">Výchozí</string>
   <string name="morphe_miniplayer_type_entry_2">Minimální</string>
@@ -1268,6 +1297,8 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Tento zařízení nepodporuje zářící obrazovku při spuštění</string>
+  <string name="morphe_splash_screen_duration_title">Doba trvání animačního úvodu</string>
+  <string name="morphe_splash_screen_duration_summary">Jak dlouho hraje animační záře. Klepnutím na animaci ji přeskočíte</string>
   <string name="morphe_theme_color_light_title">Pozadí světlého motivu</string>
   <string name="morphe_theme_color_light_entry_2">Bílá</string>
   <string name="morphe_theme_color_light_entry_3">Material You (bílá)</string>

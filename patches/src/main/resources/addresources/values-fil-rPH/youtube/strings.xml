@@ -61,6 +61,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_account_menu_title">Paganahin ang Library / Filter ng iyong menu sa ibaba</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Library / Filter ng iyong menu sa ibaba</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Ilagay ang mga pangalan ng Library / filter ng iyong menu sa ibaba, na pinaghihiwalay ng mga bagong linya</string>
+  <string name="morphe_hide_account_menu_downloads_title">Itago ang mga Download</string>
   <string name="morphe_hide_album_cards_title">Itago ang mga album card</string>
   <string name="morphe_hide_album_cards_summary">Itinatago ang mga album card sa ilalim ng paglalarawan ng artist</string>
   <string name="morphe_hide_artist_cards_title">Itago ang mga artist card</string>
@@ -515,8 +516,23 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_external_downloader_quick_audio">Audio</string>
   <string name="morphe_external_downloader_quick_options">Lahat ng opsyon</string>
   <string name="morphe_shorts_download_flyout_button_title">Ipakita ang pag-download sa Shorts menu</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Nagdadagdag ng item ng external downloader flyout menu sa Shorts player</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Nagdaragdag ng download item sa menu ng Shorts player</string>
   <string name="morphe_shorts_download_flyout_title">I-download</string>
+  <string name="morphe_export_download_folder_title">I-export ang mga na-save na video</string>
+  <string name="morphe_export_download_folder_summary">"I-export ang mga na-save na video sa app sa storage ng iyong device gamit ang in-app downloads flyout menu. I-tap para baguhin ang export folder
+
+Export folder: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">I-export ang folder</string>
+  <string name="morphe_export_download_folder_change">Baguhin ang folder</string>
+  <string name="morphe_export_download_folder_changed">Nabago ang export folder</string>
+  <string name="morphe_export_download_folder_reset">Na-reset ang export folder</string>
+  <string name="morphe_export_download_flyout_title">I-export sa device</string>
+  <string name="morphe_export_download_started">Ine-export ang video</string>
+  <string name="morphe_export_download_progress">Ine-export ang video: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Mga export ng video</string>
+  <string name="morphe_export_download_saved">Na-export ang video sa %s</string>
+  <string name="morphe_export_download_failed">Hindi ma-export ang video</string>
+  <string name="morphe_export_download_canceled">Kinansela ang export</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Pagsasalin ng boses</string>
   <string name="morphe_vot_screen_summary">Basahin nang malakas ang mga caption ng video gamit ang text-to-speech sa iyong device, na naka-synchronize sa pagpapatugtog</string>
@@ -591,6 +607,19 @@ Hindi dapat ibahagi ang iyong API key. Sinumang may access dito ay maaaring guma
   <string name="morphe_pip_button_overlay_title">Ipakita ang button na Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Ipakita ang menu ng Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_name">Lumipat sa Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Mga aksyon sa picture-in-picture</string>
+  <string name="morphe_pip_actions_screen_summary">Baguhin ang mga button na ipinapakita sa picture-in-picture</string>
+  <string name="morphe_pip_action_left_title">Kaliwang button</string>
+  <string name="morphe_pip_action_center_title">Gitnang button</string>
+  <string name="morphe_pip_action_right_title">Kanang button</string>
+  <string name="morphe_pip_action_entry_default">Awtomatiko</string>
+  <string name="morphe_pip_action_entry_previous">Nakaraang video</string>
+  <string name="morphe_pip_action_entry_next">Susunod na video</string>
+  <string name="morphe_pip_action_entry_rewind">I-rewind nang 10 segundo</string>
+  <string name="morphe_pip_action_entry_fast_forward">I-fast forward nang 10 segundo</string>
+  <string name="morphe_pip_action_entry_play_pause">Play/pause</string>
+  <string name="morphe_pip_action_entry_background_playback">Playback sa background</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Ipakita ang button na magpatugtog ng lahat</string>
   <string name="morphe_play_all_button_summary">"I-tap upang makabuo ng playlist ng lahat ng mga video mula sa channel, i-tap at hawakan upang i-undo
@@ -623,10 +652,6 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_save_to_watch_later_flyout_title">I-save sa Panoorin Mamaya</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa flyout ng mga setting ng player</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Nagbibigay-daan sa pag-save ng kasalukuyang pinapanood na video sa \'Panoorin Mamaya\' mula sa flyout ng mga setting ng video</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa mga video ng mga bata</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Nagbibigay-daan sa pag-save ng mga video na nauugnay sa mga bata sa \'Panoorin Mamaya\' mula sa flyout menu</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa flyout ng shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Nagbibigay-daan sa pag-save ng mga shorts sa \'Panoorin Mamaya\' mula sa flyout menu</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">I-redirect ang \"Panoorin mamaya\" sa playlist</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Panoorin mamaya</string>
   <string name="morphe_queue_flyout_title">Idagdag sa Morphe queue</string>
@@ -1226,6 +1251,10 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_miniplayer_not_available_summary">Inalis ng YouTube ang lahat ng karagdagang mga miniplayer. Upang maibalik ang higit pang mga uri ng miniplayer, i-patch ang YouTube 21.28.208 o mas luma</string>
   <string name="morphe_miniplayer_type_title">Uri ng miniplayer</string>
   <string name="morphe_miniplayer_hide_title_title">Itago ang pamagat at channel</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">I-expand gamit ang swipe up</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Ang pag-swipe paitaas sa miniplayer ay mag-e-expand sa player, sa halip na ilipat ang miniplayer sa itaas ng screen</string>
+  <string name="morphe_miniplayer_docked_title">Docked na miniplayer</string>
+  <string name="morphe_miniplayer_docked_summary">Ikinakabit ang miniplayer sa navigation bar at sa mga gilid ng screen, sa halip na lumutang sa ibabaw ng mga ito</string>
   <string name="morphe_miniplayer_type_entry_0">Na-disable</string>
   <string name="morphe_miniplayer_type_entry_1">Default</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1268,6 +1297,8 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Hindi suportado ng device na ito ang glow splash screen</string>
+  <string name="morphe_splash_screen_duration_title">Tagal ng startup animation</string>
+  <string name="morphe_splash_screen_duration_summary">Kung gaano katagal tutugtog ang glow animation. I-tap ang animation para laktawan ito</string>
   <string name="morphe_theme_color_light_title">Likuran ng maliwanag na tema</string>
   <string name="morphe_theme_color_light_entry_2">Puti</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Puti)</string>

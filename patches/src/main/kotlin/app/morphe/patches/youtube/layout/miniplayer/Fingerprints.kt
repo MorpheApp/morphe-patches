@@ -53,6 +53,25 @@ internal object MiniplayerModernConstructorFingerprint : Fingerprint(
 )
 
 internal object MiniplayerRoundedCornersFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "Z"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setClipToOutline(Z)V"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setOutlineProvider(Landroid/view/ViewOutlineProvider;)V"
+        )
+    )
+)
+
+/**
+ * 21.30 - 21.43.
+ */
+internal object MiniplayerRoundedCornersLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;", "L"),
@@ -197,7 +216,7 @@ internal object MiniplayerHorizontalRepositionFingerprint : Fingerprint(
 )
 
 internal object MiniplayerOffscreenRectValidatorFingerprint : Fingerprint (
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    // Private in 21.44+.
     parameters = listOf("I", "I", "I"),
     filters = listOf(
         opcode(opcode = Opcode.IGET_OBJECT),

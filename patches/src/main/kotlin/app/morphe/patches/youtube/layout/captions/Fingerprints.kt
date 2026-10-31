@@ -149,6 +149,12 @@ internal object RequestResponseParserFingerprint : Fingerprint(
             parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
             returnType = "V",
             location = MatchAfterImmediately()
+        ),
+        // Parse failure handler.
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;", "L", "Ljava/lang/Exception;"),
+            returnType = "V"
         )
     )
 )
@@ -305,7 +311,7 @@ internal object CaptionTracksManagerTranslationSourceFingerprint : Fingerprint(
         methodCall(opcode = Opcode.INVOKE_DIRECT, definingClass = "this", parameters = listOf("L")),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         // Indices of the general translation sources.
-        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(1)),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(4)),
         methodCall(smali = "Ljava/util/List;->iterator()Ljava/util/Iterator;", location = MatchAfterImmediately()),
         methodCall(smali = "Ljava/lang/Integer;->intValue()I", location = MatchAfterWithin(7)),
         // Caption track indices of the current audio track.

@@ -505,7 +505,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_audio">ສຽງ</string>
   <string name="morphe_external_downloader_quick_options">ທຸກຕົວເລືອກ</string>
   <string name="morphe_shorts_download_flyout_button_title">ສະແດງການດາວໂຫລດໃນເມນູ Shorts</string>
-  <string name="morphe_shorts_download_flyout_button_summary">ເພີ່ມລາຍການເມນູ flyout ຂອງຕົວດາວໂຫລດພາຍນອກໃນເຄື່ອງຫຼິ້ນ Shorts</string>
   <string name="morphe_shorts_download_flyout_title">ດາວໂຫລດ</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ການແປແບບພາກສຽງ</string>
@@ -581,6 +580,7 @@ Second \"item\" text"</string>
   <string name="morphe_pip_button_overlay_title">ສະແດງປຸ່ມ Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">ສະແດງເມນູ Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_name">ປ່ຽນເປັນ Picture-in-Picture</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">ສະແດງປຸ່ມຫຼິ້ນທັງໝົດ</string>
   <string name="morphe_play_all_button_summary">"ແຕະເພື່ອສ້າງລາຍການຫຼິ້ນຂອງວິດີໂອທັງໝົດຈາກຊ່ອງ, ແຕະຄ້າງໄວ້ເພື່ອຍົກເລີກ
@@ -613,10 +613,6 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_flyout_title">ບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງ</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">ສະແດງປຸ່ມບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງໃນເມນູຕັ້ງຄ່າຂອງເຄື່ອງຫຼິ້ນ</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">ອະນຸຍາດໃຫ້ບັນທຶກວິດີໂອທີ່ກຳລັງເບິ່ງຢູ່ໃນ \'ເບິ່ງພາຍຫຼັງ\' ຈາກເມນູຕັ້ງຄ່າຂອງວິດີໂອ</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">ສະແດງປຸ່ມບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງໃນວິດີໂອສຳລັບເດັກ</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">ອະນຸຍາດໃຫ້ບັນທຶກວິດີໂອສຳລັບເດັກນ້ອຍໃນ \'ເບິ່ງພາຍຫຼັງ\' ຈາກເມນູ</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">ສະແດງປຸ່ມບັນທຶກໄວ້ເບິ່ງພາຍຫຼັງໃນເມນູຂອງ Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">ອະນຸຍາດໃຫ້ບັນທຶກ Shorts ໃນ \'ເບິ່ງພາຍຫຼັງ\' ຈາກເມນູ</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">ປ່ຽນເສັ້ນທາງ \'ເບິ່ງພາຍຫຼັງ\' ໄປຍັງລາຍການຫຼິ້ນ</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">ເບິ່ງພາຍຫຼັງ</string>
   <string name="morphe_queue_flyout_title">ເພີ່ມໃນຄິວຂອງ Morphe</string>

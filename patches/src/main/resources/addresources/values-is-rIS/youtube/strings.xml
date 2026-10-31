@@ -51,6 +51,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_account_menu_title">Virkja síu fyrir neðri valmynd „Safn / Þú“</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Sía fyrir neðri valmynd „Safn / Þú“</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Sláðu inn nöfn atriða í neðri valmynd „Safn / Þú“ sem á að sía eftir, eitt nafn í hverri línu</string>
+  <string name="morphe_hide_account_menu_downloads_title">Fela upphleppningar</string>
   <string name="morphe_hide_album_cards_title">Fela albúmspjöld</string>
   <string name="morphe_hide_album_cards_summary">Felur albúmspjöld undir lýsingu listamannsins</string>
   <string name="morphe_hide_artist_cards_title">Fela listamannaspjöld</string>
@@ -505,8 +506,23 @@ Eftir að myndband með Ask hnappi hefur verið opnað einu sinni, virkar eiginl
   <string name="morphe_external_downloader_quick_audio">Hljóð</string>
   <string name="morphe_external_downloader_quick_options">Allar stillingar</string>
   <string name="morphe_shorts_download_flyout_button_title">Sýna niðurhal í Shorts-valmynd</string>
-  <string name="morphe_shorts_download_flyout_button_summary">Bætir við útvíkkuðu niðurhalstæki í Shorts-spilaranum</string>
+  <string name="morphe_shorts_download_flyout_button_summary">Bætir upphleppningsatriðis í valmynd Shorts-spilara</string>
   <string name="morphe_shorts_download_flyout_title">Niðurhal</string>
+  <string name="morphe_export_download_folder_title">Flytja vistuð myndbönd</string>
+  <string name="morphe_export_download_folder_summary">"Flytja myndbönd vistuð í forritinu á tækilageymslu með upphleppningsvalmynd forritsins. Ýttu til að breyta útfærslumöppu
+
+Útfærslumappa: %s"</string>
+  <string name="morphe_export_download_folder_dialog_title">Útfærslumöppu</string>
+  <string name="morphe_export_download_folder_change">Breyta möppu</string>
+  <string name="morphe_export_download_folder_changed">Útfærslumappa breytt</string>
+  <string name="morphe_export_download_folder_reset">Útfærslumappa endurstillt</string>
+  <string name="morphe_export_download_flyout_title">Flytja á tæki</string>
+  <string name="morphe_export_download_started">Að flytja myndband</string>
+  <string name="morphe_export_download_progress">Að flytja myndband: %d%%</string>
+  <string name="morphe_export_download_notification_channel">Myndbandsútfærslur</string>
+  <string name="morphe_export_download_saved">Myndband flutt á %s</string>
+  <string name="morphe_export_download_failed">Gat ekki flutt myndbandið</string>
+  <string name="morphe_export_download_canceled">Útfærslu blisters</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Þýðing á raddsegulmagni</string>
   <string name="morphe_vot_screen_summary">Les upp undirtitla myndbandsins með texta-til-tala á tækinu, samhæmt með endursendingu</string>
@@ -581,6 +597,19 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_pip_button_overlay_title">Sýna mynd-í-mynd-hnapp</string>
   <string name="morphe_pip_button_flyout_title">Sýna mynd-í-mynd-valmynd</string>
   <string name="morphe_pip_button_flyout_name">Skipta yfir í mynd-í-mynd</string>
+  <!-- interaction.pictureinpicture.changePipActionsPatch -->
+  <string name="morphe_pip_actions_screen_title">Aðgerðir mynd-í-mynd</string>
+  <string name="morphe_pip_actions_screen_summary">Breyta hnappunum sem sýna í mynd-í-mynd</string>
+  <string name="morphe_pip_action_left_title">Vinstri hnappur</string>
+  <string name="morphe_pip_action_center_title">Miðhnappur</string>
+  <string name="morphe_pip_action_right_title">Hægri hnappur</string>
+  <string name="morphe_pip_action_entry_default">Byrgð</string>
+  <string name="morphe_pip_action_entry_previous">Fyrmund myndband</string>
+  <string name="morphe_pip_action_entry_next">Næsta myndband</string>
+  <string name="morphe_pip_action_entry_rewind">Sekkja 10 sekúndur</string>
+  <string name="morphe_pip_action_entry_fast_forward">Spegla 10 sekúndur</string>
+  <string name="morphe_pip_action_entry_play_pause">Seta á/stöðva</string>
+  <string name="morphe_pip_action_entry_background_playback">Bakgrunnshlekkun</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Sýnir Spila allt hnappinn</string>
   <string name="morphe_play_all_button_summary">"Tap til að hrista allar myndasida í reit, tap og haltu til að aftur"</string>
@@ -611,10 +640,6 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_save_to_watch_later_flyout_title">Vista í Horfa síðar</string>
   <string name="morphe_save_to_watch_later_flyout_button_title">Sýna hnappinn Vista í Horfa seinna í sprettivalmynd spilarastillinga</string>
   <string name="morphe_save_to_watch_later_flyout_button_summary">Leyfir að vista myndbandið sem verið er að horfa á núna í \'Horfa seinna\' úr sprettivalmynd myndbandsstillinga</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Sýna hnappinn „Vista í Horfa síðar“ í barnamyndböndum</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Leyfir að vista barnatengd myndbönd í \'Horfa seinna\' úr sprettivalmyndinni</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Sýna hnappinn Vista í Horfa seinna í sprettivalmynd Shorts</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Leyfir að vista Shorts í \'Horfa seinna\' úr sprettivalmyndinni</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_title">Stefna „Horfa síðar“ á spilalista</string>
   <string name="morphe_save_to_watch_later_redirect_playlist_id_summary">Horfa síðar</string>
   <string name="morphe_queue_flyout_title">Bæta í Morphe biðröð</string>
@@ -1196,6 +1221,10 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_miniplayer_not_available_summary">YouTube fjarlægði alla aukna smáspilara. Til að endursetja fleiri gerðir af smáspilarum, vinsamlegast pútta YouTube 21.28.208 eða eldri útgáfu</string>
   <string name="morphe_miniplayer_type_title">Gerð Mini spilara</string>
   <string name="morphe_miniplayer_hide_title_title">Fela titil og rás</string>
+  <string name="morphe_miniplayer_swipe_up_expand_title">Víkka með uppstrið</string>
+  <string name="morphe_miniplayer_swipe_up_expand_summary">Að striða lágmarkspilara upp víkkar spilarann, í stað þess að flytja lágmarkspilarann upp í efra horn skjásins</string>
+  <string name="morphe_miniplayer_docked_title">Fastur lágmarkspilari</string>
+  <string name="morphe_miniplayer_docked_summary">Festir lágmarkspilara við vistrunarbarinn og hliðir skjásins, í stað þess að svæfa yfir þeim</string>
   <string name="morphe_miniplayer_type_entry_0">Gerðu óvirkt</string>
   <string name="morphe_miniplayer_type_entry_1">Lágmark</string>
   <string name="morphe_miniplayer_type_entry_2">Tafla</string>
@@ -1238,6 +1267,8 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_splash_screen_style_entry_7">Morphe Glow 1</string>
   <string name="morphe_splash_screen_style_entry_8">Morphe Glow 2</string>
   <string name="morphe_splash_screen_style_glow_not_supported">Glow-skjárstýring er ekki studduð af þessu tæki</string>
+  <string name="morphe_splash_screen_duration_title">Tíðni ræsianímasjons</string>
+  <string name="morphe_splash_screen_duration_summary">Hversu lengi glæmanímasjons spilar. Ýttu á anímasjons fyrir að sleppa henni</string>
   <string name="morphe_theme_color_light_title">Ljósþemabakgrunnur</string>
   <string name="morphe_theme_color_light_entry_2">Hvítur</string>
   <string name="morphe_theme_color_light_entry_3">Material You (hvítur)</string>
