@@ -1,3 +1,10 @@
+## [2.1.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.3...v2.1.0-dev.4) (2026-10-31)
+
+### 🐛 Bug Fixes
+
+* **Spoof video streams:** Do not fetch streams again if a fetch for the same video is in progress ([14cfd47](https://github.com/MorpheApp/morphe-patches/commit/14cfd47d0a5bd0ccf7d388506678fa5e68dd8361))
+* **YouTube - Translate posts:** Patch may crash on devices older than Android 10 ([589c3ab](https://github.com/MorpheApp/morphe-patches/commit/589c3abbe540026426f3336b04c2f13cd692b127))
+
 ## [2.1.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0-dev.2...v2.1.0-dev.3) (2026-10-31)
 
 ### ✨ New Features
